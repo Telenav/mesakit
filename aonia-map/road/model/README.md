@@ -19,7 +19,7 @@ This project supplies a model of the roads in a road network.
 #### Maven Dependency
 
     <dependency>
-        <groupId>com.telenav.kivakit</groupId>
+        <groupId>com.telenav.aonia</groupId>
         <artifactId></artifactId>
         <version>0.9.0-SNAPSHOTc</version>
     </dependency>
@@ -61,36 +61,36 @@ The following significant classes are undocumented:
 
 | Class | Documentation Sections |
 |---|---|
-| [*BetweenCrossRoads*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/BetweenCrossRoads.html) |  |  
-| [*BridgeType*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/BridgeType.html) |  |  
-| [*DeCartaRoadType*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/DeCartaRoadType.html) |  |  
-| [*DeCartaRoadTypeConverter*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/converters/DeCartaRoadTypeConverter.html) |  |  
-| [*DirectionOfTrafficFlow*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/DirectionOfTrafficFlow.html) |  |  
-| [*DirectionOfTrafficFlowConverter*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/converters/DirectionOfTrafficFlowConverter.html) |  |  
-| [*ExitNumber*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/ExitNumber.html) |  |  
-| [*GradeSeparation*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/GradeSeparation.html) |  |  
-| [*HighwayType*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/HighwayType.html) |  |  
-| [*Intersection*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/Intersection.html) |  |  
-| [*MapRoadModelProject*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/project/MapRoadModelProject.html) |  |  
-| [*NamedRoadTypeMileages*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/NamedRoadTypeMileages.html) |  |  
-| [*OverpassUnderpassType*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/OverpassUnderpassType.html) |  |  
-| [*RampType*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RampType.html) |  |  
-| [*RoadFunctionalClass*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RoadFunctionalClass.html) |  |  
-| [*RoadLimits*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RoadLimits.html) |  |  
-| [*RoadName*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RoadName.html) |  |  
-| [*RoadName.Type*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RoadName.Type.html) |  |  
-| [*RoadNameConverter*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/converters/RoadNameConverter.html) |  |  
-| [*RoadShapeConverter*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/converters/RoadShapeConverter.html) |  |  
-| [*RoadShapeConverter.Type*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/converters/RoadShapeConverter.Type.html) |  |  
-| [*RoadState*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RoadState.html) |  |  
-| [*RoadSubType*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RoadSubType.html) |  |  
-| [*RoadSurface*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RoadSurface.html) |  |  
-| [*RoadType*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RoadType.html) |  |  
-| [*RoadTypeMileages*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RoadTypeMileages.html) |  |  
-| [*ShieldIcon*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/ShieldIcon.html) |  |  
-| [*SpeedCategory*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/SpeedCategory.html) |  |  
-| [*SpeedCategory.Converter*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/SpeedCategory.Converter.html) |  |  
-| [*TrafficDeCartaRoadTypeStringConverter*](https://telenav.github.io/aonia/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/converters/TrafficDeCartaRoadTypeStringConverter.html) |  |  
+| [*BetweenCrossRoads*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/BetweenCrossRoads.html) |  |  
+| [*BridgeType*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/BridgeType.html) |  |  
+| [*DeCartaRoadType*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/DeCartaRoadType.html) |  |  
+| [*DeCartaRoadTypeConverter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/converters/DeCartaRoadTypeConverter.html) |  |  
+| [*DirectionOfTrafficFlow*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/DirectionOfTrafficFlow.html) |  |  
+| [*DirectionOfTrafficFlowConverter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/converters/DirectionOfTrafficFlowConverter.html) |  |  
+| [*ExitNumber*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/ExitNumber.html) |  |  
+| [*GradeSeparation*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/GradeSeparation.html) |  |  
+| [*HighwayType*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/HighwayType.html) |  |  
+| [*Intersection*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/Intersection.html) |  |  
+| [*MapRoadModelProject*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/project/MapRoadModelProject.html) |  |  
+| [*NamedRoadTypeMileages*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/NamedRoadTypeMileages.html) |  |  
+| [*OverpassUnderpassType*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/OverpassUnderpassType.html) |  |  
+| [*RampType*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RampType.html) |  |  
+| [*RoadFunctionalClass*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RoadFunctionalClass.html) |  |  
+| [*RoadLimits*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RoadLimits.html) |  |  
+| [*RoadName*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RoadName.html) |  |  
+| [*RoadName.Type*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RoadName.Type.html) |  |  
+| [*RoadNameConverter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/converters/RoadNameConverter.html) |  |  
+| [*RoadShapeConverter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/converters/RoadShapeConverter.html) |  |  
+| [*RoadShapeConverter.Type*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/converters/RoadShapeConverter.Type.html) |  |  
+| [*RoadState*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RoadState.html) |  |  
+| [*RoadSubType*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RoadSubType.html) |  |  
+| [*RoadSurface*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RoadSurface.html) |  |  
+| [*RoadType*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RoadType.html) |  |  
+| [*RoadTypeMileages*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/RoadTypeMileages.html) |  |  
+| [*ShieldIcon*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/ShieldIcon.html) |  |  
+| [*SpeedCategory*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/SpeedCategory.html) |  |  
+| [*SpeedCategory.Converter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/SpeedCategory.Converter.html) |  |  
+| [*TrafficDeCartaRoadTypeStringConverter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.model/com/telenav/aonia/map/road/model/converters/TrafficDeCartaRoadTypeStringConverter.html) |  |  
 
 [//]: # (start-user-text)
 
@@ -103,6 +103,6 @@ The following significant classes are undocumented:
 ![](documentation/images/horizontal-line.png)
 
 <sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>  
-<sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai) on 2021.04.13. UML diagrams courtesy
+<sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai) on 2021.04.14. UML diagrams courtesy
 of [PlantUML](http://plantuml.com).</sub>
 

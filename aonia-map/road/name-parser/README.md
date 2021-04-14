@@ -19,7 +19,7 @@ This project provides parsers for road names in different languages.
 #### Maven Dependency
 
     <dependency>
-        <groupId>com.telenav.kivakit</groupId>
+        <groupId>com.telenav.aonia</groupId>
         <artifactId></artifactId>
         <version>0.9.0-SNAPSHOTc</version>
     </dependency>
@@ -66,31 +66,31 @@ The following significant classes are undocumented:
 
 | Class | Documentation Sections |
 |---|---|
-| [*BaseRoadNameParser*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/BaseRoadNameParser.html) |  |  
-| [*EnglishCanadaRoadNameParser*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/locales/english/EnglishCanadaRoadNameParser.html) |  |  
-| [*EnglishCanadaTokenizer*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/locales/english/EnglishCanadaTokenizer.html) |  |  
-| [*EnglishRoadNameParser*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/locales/english/EnglishRoadNameParser.html) |  |  
-| [*EnglishTokenizer*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/locales/english/EnglishTokenizer.html) |  |  
-| [*EnglishUnitedStatesRoadNameParser*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/locales/english/EnglishUnitedStatesRoadNameParser.html) |  |  
-| [*EnglishUnitedStatesTokenizer*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/locales/english/EnglishUnitedStatesTokenizer.html) |  |  
-| [*IndonesianRoadNameParser*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/locales/indonesian/IndonesianRoadNameParser.html) |  |  
-| [*IndonesianRoadNameParser.Capitalization*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/locales/indonesian/IndonesianRoadNameParser.Capitalization.html) |  |  
-| [*IndonesianTokenizer*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/locales/indonesian/IndonesianTokenizer.html) |  |  
-| [*MapRoadNameParserProject*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/project/MapRoadNameParserProject.html) |  |  
-| [*ParsedRoadName*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/ParsedRoadName.html) |  |  
-| [*ParsedRoadName.Builder*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/ParsedRoadName.Builder.html) |  |  
-| [*ParsedRoadName.DirectionFormat*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/ParsedRoadName.DirectionFormat.html) |  |  
-| [*ParsedRoadName.TypePosition*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/ParsedRoadName.TypePosition.html) |  |  
-| [*RoadNameParser*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/RoadNameParser.html) |  |  
-| [*Symbol*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/tokenizer/symbols/Symbol.html) |  |  
-| [*SymbolList*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/tokenizer/symbols/SymbolList.html) |  |  
-| [*SymbolStream*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/tokenizer/symbols/SymbolStream.html) |  |  
-| [*Token*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/tokenizer/Token.html) |  |  
-| [*TokenList*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/tokenizer/TokenList.html) |  |  
-| [*TokenList.Builder*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/tokenizer/TokenList.Builder.html) |  |  
-| [*TokenMatcher*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/tokenizer/TokenMatcher.html) |  |  
-| [*Tokenizer*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/tokenizer/Tokenizer.html) |  |  
-| [*Word*](https://telenav.github.io/aonia/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/tokenizer/symbols/Word.html) |  |  
+| [*BaseRoadNameParser*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/BaseRoadNameParser.html) |  |  
+| [*EnglishCanadaRoadNameParser*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/locales/english/EnglishCanadaRoadNameParser.html) |  |  
+| [*EnglishCanadaTokenizer*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/locales/english/EnglishCanadaTokenizer.html) |  |  
+| [*EnglishRoadNameParser*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/locales/english/EnglishRoadNameParser.html) |  |  
+| [*EnglishTokenizer*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/locales/english/EnglishTokenizer.html) |  |  
+| [*EnglishUnitedStatesRoadNameParser*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/locales/english/EnglishUnitedStatesRoadNameParser.html) |  |  
+| [*EnglishUnitedStatesTokenizer*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/locales/english/EnglishUnitedStatesTokenizer.html) |  |  
+| [*IndonesianRoadNameParser*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/locales/indonesian/IndonesianRoadNameParser.html) |  |  
+| [*IndonesianRoadNameParser.Capitalization*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/locales/indonesian/IndonesianRoadNameParser.Capitalization.html) |  |  
+| [*IndonesianTokenizer*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/locales/indonesian/IndonesianTokenizer.html) |  |  
+| [*MapRoadNameParserProject*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/project/MapRoadNameParserProject.html) |  |  
+| [*ParsedRoadName*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/ParsedRoadName.html) |  |  
+| [*ParsedRoadName.Builder*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/ParsedRoadName.Builder.html) |  |  
+| [*ParsedRoadName.DirectionFormat*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/ParsedRoadName.DirectionFormat.html) |  |  
+| [*ParsedRoadName.TypePosition*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/ParsedRoadName.TypePosition.html) |  |  
+| [*RoadNameParser*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/RoadNameParser.html) |  |  
+| [*Symbol*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/tokenizer/symbols/Symbol.html) |  |  
+| [*SymbolList*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/tokenizer/symbols/SymbolList.html) |  |  
+| [*SymbolStream*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/tokenizer/symbols/SymbolStream.html) |  |  
+| [*Token*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/tokenizer/Token.html) |  |  
+| [*TokenList*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/tokenizer/TokenList.html) |  |  
+| [*TokenList.Builder*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/tokenizer/TokenList.Builder.html) |  |  
+| [*TokenMatcher*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/tokenizer/TokenMatcher.html) |  |  
+| [*Tokenizer*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/tokenizer/Tokenizer.html) |  |  
+| [*Word*](https://telenav.github.io/aonia-data/javadoc/aonia.map.road.name.parser/com/telenav/aonia/map/road/name/parser/tokenizer/symbols/Word.html) |  |  
 
 [//]: # (start-user-text)
 
@@ -103,6 +103,6 @@ The following significant classes are undocumented:
 ![](documentation/images/horizontal-line.png)
 
 <sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>  
-<sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai) on 2021.04.13. UML diagrams courtesy
+<sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai) on 2021.04.14. UML diagrams courtesy
 of [PlantUML](http://plantuml.com).</sub>
 
