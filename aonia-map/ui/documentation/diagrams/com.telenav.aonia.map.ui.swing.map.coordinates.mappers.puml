@@ -1,0 +1,36 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.ui.swing.map.coordinates.mappers"
+    
+    interface CoordinateMapper
+    
+    interface CoordinateMapper
+    {
+        --
+        +Location locationForPoint(Point2D)
+        +Point2D pointForLocation(Location)
+        +java.awt.Rectangle toAwt(Size)
+        +java.awt.Rectangle toAwt(Rectangle)
+        --(conversion)--
+        +Rectangle toAonian(java.awt.Rectangle)
+        +Rectangle2D toAwt2D(Rectangle)
+    }
+    
+    CoordinateMapper <|-- SwingCartesianCoordinateMapper
+    class SwingCartesianCoordinateMapper
+    {
+        --(constructors)--
+        +SwingCartesianCoordinateMapper(Rectangle, java.awt.Rectangle)
+    }
+    
+    CoordinateMapper <|-- SwingMercatorCoordinateMapper
+    class SwingMercatorCoordinateMapper
+    {
+        --(constructors)--
+        +SwingMercatorCoordinateMapper(Rectangle, java.awt.Rectangle, Dimension)
+    }
+    
+@enduml
+

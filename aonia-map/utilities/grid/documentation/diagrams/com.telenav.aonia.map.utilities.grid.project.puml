@@ -1,0 +1,24 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.utilities.grid.project"
+    
+    KryoTypes <|-- MapUtilitiesGridKryoTypes
+    class MapUtilitiesGridKryoTypes
+    {
+        --(constructors)--
+        +MapUtilitiesGridKryoTypes()
+    }
+    
+    Project <|-- MapUtilitiesGridProject
+    class MapUtilitiesGridProject
+    {
+        --(constructors)--
+        #MapUtilitiesGridProject()
+        --(collection)--
+        +MapUtilitiesGridProject get()
+    }
+    
+@enduml
+

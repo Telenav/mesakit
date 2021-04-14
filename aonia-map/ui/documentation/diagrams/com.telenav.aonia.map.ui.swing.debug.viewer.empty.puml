@@ -1,0 +1,28 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.ui.swing.debug.viewer.empty"
+    
+    interface InteractiveView
+    interface Viewer
+    interface View
+    
+    NullView <|-- NullInteractiveView
+    InteractiveView <|-- NullInteractiveView
+    class NullInteractiveView
+    {
+    }
+    
+    View <|-- NullView
+    class NullView
+    {
+    }
+    
+    Viewer <|-- NullViewer
+    class NullViewer
+    {
+    }
+    
+@enduml
+

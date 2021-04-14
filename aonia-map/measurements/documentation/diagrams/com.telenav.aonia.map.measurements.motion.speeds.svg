@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="523.9583px" preserveAspectRatio="none" style="width:573px;height:523px;background:#333333;" version="1.1" viewBox="0 0 573 523" width="573.9583px" zoomAndPan="magnify"><defs/><g><rect fill="#48494B" height="41.2028" rx="8.3333" ry="8.3333" style="stroke:#545454;stroke-width:1.0416666666666667;" width="561.4583" x="2.0833" y="2.0833"/><text fill="#C0C0C0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="20.8333" lengthAdjust="spacing" textLength="538.5417" x="13.5417" y="30.5583">com.telenav.aonia.map.measurements.motion.speeds</text><!--MD5=[cc8bdd4a75b8c12356a13db8d1cdad21]
+class Average--><rect fill="#282828" height="48.055" id="Average" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="89.5833" x="97.6563" y="107.3486"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="89.5833" x="97.6563" y="107.3486"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="89.5833" x="97.6563" y="130.4036"/><rect fill="none" height="48.055" id="Average" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="89.5833" x="97.6563" y="107.3486"/><ellipse cx="112.2396" cy="123.0428" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M114.15,127.4679 Q113.7227,127.6876 113.2528,127.7974 Q112.7828,127.9073 112.264,127.9073 Q110.4207,127.9073 109.4503,126.6927 Q108.4798,125.4781 108.4798,123.1832 Q108.4798,120.8822 109.4503,119.6676 Q110.4207,118.453 112.264,118.453 Q112.7828,118.453 113.2589,118.5628 Q113.7349,118.6727 114.15,118.8924 L114.15,120.8944 Q113.6861,120.4671 113.2497,120.2688 Q112.8133,120.0704 112.3494,120.0704 Q111.3607,120.0704 110.8571,120.8547 Q110.3536,121.639 110.3536,123.1832 Q110.3536,124.7213 110.8571,125.5056 Q111.3607,126.2899 112.3494,126.2899 Q112.8133,126.2899 113.2497,126.0915 Q113.6861,125.8931 114.15,125.4659 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="52.0833" x="128.9063" y="127.7669">Average</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="98.6979" x2="186.1979" y1="138.737" y2="138.737"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="98.6979" x2="186.1979" y1="147.0703" y2="147.0703"/><!--MD5=[1aac0109e0afd688be33496e21b961e4]
+class AverageSpeed--><rect codeLine="8" fill="#282828" height="111.4563" id="AverageSpeed" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="154.1667" x="65.3646" y="272.4528"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="154.1667" x="65.3646" y="272.4528"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="154.1667" x="65.3646" y="295.5078"/><rect codeLine="8" fill="none" height="111.4563" id="AverageSpeed" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="154.1667" x="65.3646" y="272.4528"/><ellipse cx="91.6667" cy="288.147" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M93.5771,292.572 Q93.1498,292.7917 92.6799,292.9016 Q92.2099,293.0115 91.6911,293.0115 Q89.8478,293.0115 88.8774,291.7969 Q87.9069,290.5823 87.9069,288.2874 Q87.9069,285.9863 88.8774,284.7717 Q89.8478,283.5571 91.6911,283.5571 Q92.2099,283.5571 92.686,283.667 Q93.162,283.7769 93.5771,283.9966 L93.5771,285.9985 Q93.1132,285.5713 92.6768,285.3729 Q92.2404,285.1746 91.7765,285.1746 Q90.7878,285.1746 90.2842,285.9589 Q89.7807,286.7432 89.7807,288.2874 Q89.7807,289.8254 90.2842,290.6097 Q90.7878,291.394 91.7765,291.394 Q92.2404,291.394 92.6768,291.1957 Q93.1132,290.9973 93.5771,290.5701 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="90.625" x="110.9375" y="292.8711">AverageSpeed</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="66.4063" x2="218.4896" y1="303.8411" y2="303.8411"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="66.4063" x2="218.4896" y1="312.1745" y2="312.1745"/><ellipse cx="76.8229" cy="323.6328" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="121.875" x="88.2813" y="330.544">Speed averageSpeed()</text><ellipse cx="76.8229" cy="367.2892" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="89.5833" x="88.2813" y="374.2004">void add(Speed)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="66.4063" x2="108.0729" y1="350.1251" y2="350.1251"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="111.1979" y="353.9347">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="176.8229" x2="218.4896" y1="350.1251" y2="350.1251"/><!--MD5=[aaa2e902e619045a6f24d394d34237d2]
+class Speed--><rect fill="#282828" height="48.055" id="Speed" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="76.0417" x="212.7604" y="469.3278"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="76.0417" x="212.7604" y="469.3278"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="76.0417" x="212.7604" y="492.3828"/><rect fill="none" height="48.055" id="Speed" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="76.0417" x="212.7604" y="469.3278"/><ellipse cx="227.3438" cy="485.022" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M229.2542,489.447 Q228.8269,489.6667 228.3569,489.7766 Q227.887,489.8865 227.3682,489.8865 Q225.5249,489.8865 224.5544,488.6719 Q223.584,487.4573 223.584,485.1624 Q223.584,482.8613 224.5544,481.6467 Q225.5249,480.4321 227.3682,480.4321 Q227.887,480.4321 228.363,480.542 Q228.8391,480.6519 229.2542,480.8716 L229.2542,482.8735 Q228.7903,482.4463 228.3539,482.2479 Q227.9175,482.0496 227.4536,482.0496 Q226.4648,482.0496 225.9613,482.8339 Q225.4578,483.6182 225.4578,485.1624 Q225.4578,486.7004 225.9613,487.4847 Q226.4648,488.269 227.4536,488.269 Q227.9175,488.269 228.3539,488.0707 Q228.7903,487.8723 229.2542,487.4451 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="38.5417" x="244.0104" y="489.7461">Speed</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="213.8021" x2="287.7604" y1="500.7161" y2="500.7161"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="213.8021" x2="287.7604" y1="509.0495" y2="509.0495"/><!--MD5=[94b127aae3f95e7c313ce4454ddf5cc4]
+class WeightedAverageSpeed--><rect codeLine="17" fill="#282828" height="111.4563" id="WeightedAverageSpeed" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="206.25" x="255.9896" y="272.4528"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="206.25" x="255.9896" y="272.4528"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="206.25" x="255.9896" y="295.5078"/><rect codeLine="17" fill="none" height="111.4563" id="WeightedAverageSpeed" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="206.25" x="255.9896" y="272.4528"/><ellipse cx="278.5417" cy="288.147" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M280.4521,292.572 Q280.0248,292.7917 279.5549,292.9016 Q279.0849,293.0115 278.5661,293.0115 Q276.7228,293.0115 275.7524,291.7969 Q274.7819,290.5823 274.7819,288.2874 Q274.7819,285.9863 275.7524,284.7717 Q276.7228,283.5571 278.5661,283.5571 Q279.0849,283.5571 279.561,283.667 Q280.037,283.7769 280.4521,283.9966 L280.4521,285.9985 Q279.9882,285.5713 279.5518,285.3729 Q279.1154,285.1746 278.6515,285.1746 Q277.6628,285.1746 277.1592,285.9589 Q276.6557,286.7432 276.6557,288.2874 Q276.6557,289.8254 277.1592,290.6097 Q277.6628,291.394 278.6515,291.394 Q279.1154,291.394 279.5518,291.1957 Q279.9882,290.9973 280.4521,290.5701 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="151.0417" x="296.9792" y="292.8711">WeightedAverageSpeed</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="257.0313" x2="461.1979" y1="303.8411" y2="303.8411"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="257.0313" x2="461.1979" y1="312.1745" y2="312.1745"/><ellipse cx="267.4479" cy="323.6328" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="88.5417" x="278.9063" y="330.544">Speed average()</text><ellipse cx="267.4479" cy="367.2892" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="173.9583" x="278.9063" y="374.2004">void add(Speed, double weight)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="257.0313" x2="324.7396" y1="350.1251" y2="350.1251"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="327.8646" y="353.9347">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="393.4896" x2="461.1979" y1="350.1251" y2="350.1251"/><!--MD5=[8bcb1da606c944ac066bb81ace41ecdb]
+class WeightedAverageSpeed.WeightedSpeed--><rect codeLine="25" fill="#282828" height="155.1127" id="WeightedAverageSpeed.WeightedSpeed" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="290.625" x="224.2188" y="53.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="290.625" x="224.2188" y="53.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="290.625" x="224.2188" y="76.7578"/><rect codeLine="25" fill="none" height="155.1127" id="WeightedAverageSpeed.WeightedSpeed" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="290.625" x="224.2188" y="53.7028"/><ellipse cx="238.8021" cy="69.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M240.7125,73.822 Q240.2852,74.0417 239.8153,74.1516 Q239.3453,74.2615 238.8265,74.2615 Q236.9832,74.2615 236.0128,73.0469 Q235.0423,71.8323 235.0423,69.5374 Q235.0423,67.2363 236.0128,66.0217 Q236.9832,64.8071 238.8265,64.8071 Q239.3453,64.8071 239.8214,64.917 Q240.2974,65.0269 240.7125,65.2466 L240.7125,67.2485 Q240.2486,66.8213 239.8122,66.6229 Q239.3758,66.4246 238.9119,66.4246 Q237.9232,66.4246 237.4196,67.2089 Q236.9161,67.9932 236.9161,69.5374 Q236.9161,71.0754 237.4196,71.8597 Q237.9232,72.644 238.9119,72.644 Q239.3758,72.644 239.8122,72.4457 Q240.2486,72.2473 240.7125,71.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="253.125" x="255.4688" y="74.1211">WeightedAverageSpeed.WeightedSpeed</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="225.2604" x2="513.8021" y1="85.0911" y2="85.0911"/><ellipse cx="235.6771" cy="120.461" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="170.8333" x="247.1354" y="127.3722">WeightedSpeed(Speed, double)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="225.2604" x2="325.7813" y1="103.2969" y2="103.2969"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="328.9063" y="107.1065">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="413.2813" x2="513.8021" y1="103.2969" y2="103.2969"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="225.2604" x2="513.8021" y1="137.0809" y2="137.0809"/><ellipse cx="235.6771" cy="148.5392" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="86.4583" x="247.1354" y="155.4504">double weight()</text><ellipse cx="235.6771" cy="192.1956" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="177.0833" x="247.1354" y="199.1069">double speedInMetersPerHour()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="225.2604" x2="350.2604" y1="175.0315" y2="175.0315"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="32.2917" x="353.3854" y="178.8411">(time)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="388.8021" x2="513.8021" y1="175.0315" y2="175.0315"/><!--MD5=[0fe3e5a1f5ed395d20d56f2ba3c4274e]
+reverse link Average to AverageSpeed--><path codeLine="6" d="M142.4479,176.5049 C142.4479,204.9215 142.4479,242.057 142.4479,272.3486 " fill="none" id="Average-backto-AverageSpeed" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="135.1563,176.2965,142.4479,155.4632,149.7396,176.2965,135.1563,176.2965" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[ca11b72ed3b5914dff352d41c78b5b81]
+link AverageSpeed to Speed--><path codeLine="7" d="M178.8229,383.9632 C196.8438,411.0778 217.8125,442.6403 232.4583,464.6715 " fill="none" id="AverageSpeed-to-Speed" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#545454" points="235.4792,469.2236,233.7457,459.1119,232.5901,464.89,226.812,463.7344,235.4792,469.2236" style="stroke:#545454;stroke-width:1.5625;"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="63.5417" x="217.4479" y="431.4128">computes</text><!--MD5=[ed4b317a2410fce9cfc0f494d849f2d4]
+link WeightedAverageSpeed to Speed--><path codeLine="16" d="M327.875,384.057 C317.3958,401.609 305.3542,420.932 293.4896,438.0778 C287.2292,447.1299 279.9479,456.6715 273.1979,465.182 " fill="none" id="WeightedAverageSpeed-to-Speed" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#545454" points="269.9375,469.2653,279.0455,464.5435,273.1893,465.1968,272.536,459.3406,269.9375,469.2653" style="stroke:#545454;stroke-width:1.5625;"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="63.5417" x="310.1563" y="431.4128">computes</text><!--MD5=[0e92358eb945db4b641a59df78de2f89]
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.measurements.motion.speeds"
+    
+    Average <|- - AverageSpeed
+    AverageSpeed - -> Speed : "computes"
+    class AverageSpeed
+    {
+        - -
+        +Speed averageSpeed()
+        - -(collection)- -
+        +void add(Speed)
+    }
+    
+    WeightedAverageSpeed - -> Speed : "computes"
+    class WeightedAverageSpeed
+    {
+        - -
+        +Speed average()
+        - -(collection)- -
+        +void add(Speed, double weight)
+    }
+    
+    class WeightedAverageSpeed.WeightedSpeed
+    {
+        - -(constructors)- -
+        +WeightedSpeed(Speed, double)
+        - -
+        +double weight()
+        - -(time)- -
+        +double speedInMetersPerHour()
+    }
+    
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+
+
+skinparam backgroundColor #333333
+
+
+
+
+
+
+skinparam  {
+    defaultFontName   "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+    defaultFontSize   12
+    defaultTextAlignment left
+    shadowing false
+    RoundCorner 10
+    TitleFontSize 18
+}
+
+skinparam defaultFontName       "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           16
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               3
+skinparam ArrowColor            #545454
+skinparam stereotype {
+    CBackgroundColor #0066cf
+    CBorderColor #0086ef
+    ABackgroundColor #C8Ac00
+    ABorderColor #D8Bc00
+    IBackgroundColor #008400
+    IBorderColor #239c23
+    EBackgroundColor #cf6300
+    EBorderColor #ef8300
+    NBackgroundColor #3380b9
+    NBorderColor #004d86
+}
+skinparam title {
+	FontColor	                 #c0c0c0
+ 	BorderColor                  #545454
+	FontSize	    	         20
+	BorderRoundCorner            16
+	BorderThickness 	         1
+	BackgroundColor              #48494b
+}
+
+
+skinparam legend {
+	BackgroundColor #303030
+	BorderColor #404040
+	FontColor #a0a0a0
+}
+
+	skinparam swimlane {
+	BorderColor #5e5e5e
+	BorderThickness 2
+	TitleBackgroundColor  #6d6d6d-#484848
+	TitleFontColor #303030
+}
+
+skinparam activity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BarColor #00FF00
+	StartColor #0060a8
+	EndColor #0060a8
+	DiamondBackgroundColor #6d6d6d-#3a3a3a
+  	DiamondBorderColor #3a3a3a
+  	DiamondFontColor #fefefe
+}
+
+
+skinparam participant {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam arrow {
+	Thickness 1.5
+	Color #545454
+	FontColor #a0a0a0
+    FontStyle bold
+    MessageAlignment center
+}
+
+
+
+skinparam sequence {
+	BorderColor #303030
+	TitleFontColor #303030
+	BackgroundColor #333333
+	StartColor #303030
+	EndColor #303030
+	BoxBackgroundColor #333333
+	BoxBorderColor #484848
+	BoxFontColor #484848
+	LifeLineBorderColor #484848
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor #3a3a3a
+	GroupBorderColor #484848
+	GroupFontColor #484848
+	GroupHeaderFontColor #0060a8
+	GroupBackgroundColor #484848
+	GroupHeaderBackgroundColor #333333
+	DividerBackgroundColor #484848
+    DividerBorderColor #484848
+    DividerBorderThickness 2
+    DividerFontColor #D8Bc00
+	ReferenceBackgroundColor #333333
+	ReferenceBorderColor #484848
+	ReferenceFontColor #fefefe
+	ReferenceHeaderBackgroundColor #484848
+}
+
+
+skinparam partition {
+	BorderColor #303030
+	FontColor #333333
+	BackgroundColor #333333
+}
+
+
+skinparam collections {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam control {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam entity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam boundary {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam agent {
+	BackgroundColor #ff8000
+	BorderColor #ff9933
+	FontColor #484848
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor #1b1b1a
+	BorderColor #5e5e5e
+	FontSize 11
+	FontColor #a0a0a0
+}
+
+
+skinparam artifact {
+	BorderThickness 10
+	BorderColor #5e5e5e
+	BackgroundColor #1b1b1a
+	FontColor #D8Bc00
+}
+
+
+skinparam component {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam interface {
+	BackgroundColor  #008400
+	BorderColor  #007F00
+	FontColor #484848
+}
+
+
+skinparam storage {
+	BackgroundColor #ff8000
+  	BorderColor #cc6600
+	FontColor #222222
+}
+
+
+skinparam node {
+	BackgroundColor #333333
+	BorderColor #333333
+	FontColor #C8Ac00
+}
+
+
+skinparam cloud {
+	BackgroundColor #484848-black
+	BorderColor #484848
+	FontColor #D8Bc00
+}
+
+
+skinparam database {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor  #333333
+}
+
+
+skinparam class {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	HeaderBackgroundColor #1b1b1a
+    BackgroundColor #282828
+    BorderColor #5e5e5e
+ 	StereotypeFontColor #a0a0a0
+    StereotypeFontStyle bold
+	BorderThickness 1
+	AttributeFontColor #D8Bc00
+	AttributeFontSize 11
+    FontColor #D8Bc00
+    FontStyle bold
+}
+
+
+skinparam object {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StereotypeFontColor #484848
+	BorderThickness 1
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam rectangle {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam package {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor #6d6d6d
+  	BorderColor #ff8000
+	FontColor #ff8000
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor #6d6d6d
+  	BorderColor #0060a8
+	FontColor #0060a8
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StartColor #0060a8
+	EndColor #0060a8
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam card {
+	BackgroundColor #0060a8
+	BorderColor #004d86
+	FontColor $INFO_TEXT
+}
+
+
+skinparam file {
+	BackgroundColor #6d6d6d-#484848
+	BorderColor #0060a8
+	FontColor #fefefe
+}
+
+
+skinparam stack {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+    
+    title "com.telenav.aonia.map.measurements.motion.speeds"
+    
+    Average <|- - AverageSpeed
+    AverageSpeed - -> Speed : "computes"
+    class AverageSpeed
+    {
+        - -
+        +Speed averageSpeed()
+        - -(collection)- -
+        +void add(Speed)
+    }
+    
+    WeightedAverageSpeed - -> Speed : "computes"
+    class WeightedAverageSpeed
+    {
+        - -
+        +Speed average()
+        - -(collection)- -
+        +void add(Speed, double weight)
+    }
+    
+    class WeightedAverageSpeed.WeightedSpeed
+    {
+        - -(constructors)- -
+        +WeightedSpeed(Speed, double)
+        - -
+        +double weight()
+        - -(time)- -
+        +double speedInMetersPerHour()
+    }
+    
+@enduml
+
+PlantUML version 1.2021.01(Tue Feb 02 00:55:08 MST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

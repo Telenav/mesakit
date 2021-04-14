@@ -1,0 +1,68 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "diagram-pbf-processing-filters"
+    
+    interface Filter
+    
+    RelationFilter <|-- AllRelationsFilter
+    class AllRelationsFilter
+    {
+        --(constructors)--
+        +AllRelationsFilter()
+    }
+    
+    WayFilter <|-- AllWaysFilter
+    class AllWaysFilter
+    {
+        --(constructors)--
+        +AllWaysFilter()
+    }
+    
+    class PbfFilters
+    {
+        --(read)--
+        +void loadAll()
+    }
+    
+    Filter <|-- RelationFilter
+    class RelationFilter
+    {
+        --(constructors)--
+        +RelationFilter(String, String)
+        --
+        +String description()
+        --(command line parsing)--
+        +SwitchParser.Builder<RelationFilter> switchParser(String name, String description)
+        --(filtering)--
+        +void exclude(String type)
+        +RelationFilter forName(String name)
+        +void include(String type)
+        +SwitchParser.Builder<RelationFilter> relationFilter()
+        #boolean isExcluded(PbfRelation)
+        #boolean isIncluded(PbfRelation)
+    }
+    
+    Filter <|-- WayFilter
+    class WayFilter
+    {
+        --(constructors)--
+        +WayFilter(String, String)
+        --
+        +String description()
+        --(command line parsing)--
+        +SwitchParser.Builder<WayFilter> switchParser(String name, String description)
+        --(filtering)--
+        +void exclude(String highway)
+        +WayFilter exclude(String name, Resource)
+        +WayFilter forName(String name)
+        +void include(String highway)
+        +WayFilter include(String name, Resource)
+        +SwitchParser.Builder<WayFilter> wayFilter()
+        #boolean isExcluded(PbfWay)
+        #boolean isIncluded(PbfWay)
+    }
+    
+@enduml
+

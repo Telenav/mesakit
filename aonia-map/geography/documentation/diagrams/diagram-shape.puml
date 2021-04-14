@@ -1,0 +1,23 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "Shapes"
+    
+    interface Outline
+    {
+        --
+        +Containment containment(Location)
+        --(collection)--
+        +boolean contains(Located)
+        +boolean contains(Location)
+    }
+    
+    interface Outline
+    Outline <|-- Shape
+    interface Shape
+    {
+    }
+    
+@enduml
+

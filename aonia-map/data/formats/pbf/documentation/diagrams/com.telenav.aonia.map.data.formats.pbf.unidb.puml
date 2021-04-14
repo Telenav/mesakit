@@ -1,0 +1,22 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.data.formats.pbf.unidb"
+    
+    class UniDb
+    {
+        --(checks)--
+        +boolean isNavigable(PbfWay)
+    }
+    
+    class UniDbRelationTag
+    {
+        --(checks)--
+        +boolean isAdasRelations(PbfTagMap tags)
+        +boolean isJunctionView(PbfTagMap tags)
+        +boolean isTrafficCamera(PbfTagMap tags)
+    }
+    
+@enduml
+

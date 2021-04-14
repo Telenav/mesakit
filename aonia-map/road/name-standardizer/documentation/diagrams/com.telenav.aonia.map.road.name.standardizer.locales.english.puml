@@ -1,0 +1,31 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.road.name.standardizer.locales.english"
+    
+    abstract BaseRoadNameStandardizer
+    
+    EnglishRoadNameStandardizer <|-- EnglishCanadaRoadNameStandardizer
+    class EnglishCanadaRoadNameStandardizer
+    {
+        --(constructors)--
+        +EnglishCanadaRoadNameStandardizer()
+    }
+    
+    BaseRoadNameStandardizer <|-- EnglishRoadNameStandardizer
+    class EnglishRoadNameStandardizer
+    {
+        --(constructors)--
+        +EnglishRoadNameStandardizer(MapLocale)
+    }
+    
+    EnglishRoadNameStandardizer <|-- EnglishUnitedStatesRoadNameStandardizer
+    class EnglishUnitedStatesRoadNameStandardizer
+    {
+        --(constructors)--
+        +EnglishUnitedStatesRoadNameStandardizer()
+    }
+    
+@enduml
+

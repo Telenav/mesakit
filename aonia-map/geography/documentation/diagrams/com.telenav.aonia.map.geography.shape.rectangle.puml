@@ -1,0 +1,207 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.geography.shape.rectangle"
+    
+    abstract BaseStringConverter
+    
+    interface LocationSequence
+    interface Bounded
+    interface Dimensioned
+    interface Outline
+    interface Intersectable
+    
+    interface Bounded
+    {
+        --
+        +Rectangle bounds()
+    }
+    
+    BoundingBoxBuilder --> Rectangle : "builds"
+    class BoundingBoxBuilder
+    {
+        --(building)--
+        +Rectangle build()
+        --(checks)--
+        +boolean isValid()
+        --(collection)--
+        +void add(long locationInDm7)
+        +void add(double latitude, double longitude)
+        +void add(Segment)
+        +void add(Rectangle)
+        +void add(int latitudeInDm7, int longitudeDm7)
+        +void add(Iterable<Location> locations)
+        +void add(Location)
+    }
+    
+    BaseStringConverter <|-- Rectangle.Converter
+    class Rectangle.Converter
+    {
+        --(constructors)--
+        +Converter(Listener)
+    }
+    
+    interface Dimensioned
+    {
+        --
+        +Height height()
+        +Width width()
+    }
+    
+    BaseStringConverter <|-- Rectangle.FileNameConverter
+    class Rectangle.FileNameConverter
+    {
+        --(constructors)--
+        +FileNameConverter(Listener)
+        --
+        +Group<Rectangle> group(Listener)
+    }
+    
+    Angle <|-- Height
+    class Height
+    {
+        --(constructors)--
+        #Height(long)
+        --
+        +Height nanodegrees(long nanodegrees)
+        --(angle)--
+        +Height angle(Angle difference)
+        +Height degrees(double degrees)
+        +Height microdegrees(int microdegrees)
+    }
+    
+    interface Intersectable
+    {
+        --
+        +boolean intersects(Rectangle)
+    }
+    
+    Dimensioned <|-- Offset
+    class Offset
+    {
+        --(constructors)--
+        +Offset(Width, Height)
+    }
+    
+    Intersectable <|-- Rectangle
+    LocationSequence <|-- Rectangle
+    Bounded <|-- Rectangle
+    Outline <|-- Rectangle
+    Dimensioned <|-- Rectangle
+    class Rectangle
+    {
+        --(constructors)--
+        #Rectangle()
+        #Rectangle(Location, Location)
+        #Rectangle(int, int)
+        --
+        +Area area()
+        +Latitude bottom()
+        +int bottomInDm7()
+        +Location bottomLeft()
+        +Location bottomRight()
+        +Location center()
+        +int compareHorizontal(Rectangle that)
+        +int compareVertical(Rectangle that)
+        +int compareVerticalThenHorizontal(Rectangle that)
+        +boolean crossesEquator()
+        +Rectangle fromCenterAndRadius(Location center, Distance approximateOrthogonalRadius)
+        +Rectangle fromLocation(Location)
+        +Rectangle fromLocationWidthAndHeight(Location, Width, Height)
+        +Rectangle fromLocations(Location, Location b)
+        +Rectangle fromLocationsInclusive(Location, Location b)
+        +Distance heightAsDistance()
+        +Rectangle intersect(Rectangle that)
+        +Longitude left()
+        +int leftInDm7()
+        +Rectangle northEastQuadrant()
+        +Rectangle northWestQuadrant()
+        +Longitude right()
+        +int rightInDm7()
+        +Rectangle shrunken(Angle)
+        +Rectangle shrunken()
+        +Rectangle shrunken(Distance)
+        +Rectangle shrunken(Latitude, Longitude)
+        +Rectangle shrunken(Percent scaleFactor)
+        +Rectangle southEastQuadrant()
+        +Rectangle southWestQuadrant()
+        +Latitude top()
+        +int topInDm7()
+        +Location topLeft()
+        +Location topRight()
+        +Rectangle union(Rectangle that)
+        +Distance widestWidth()
+        +Distance widthAtBase()
+        --(checks)--
+        +boolean isHorizontal()
+        +boolean isMaximum()
+        +boolean isVertical()
+        --(collection)--
+        +Iterable<Rectangle> cells(Distance size)
+        +boolean contains(Rectangle that)
+        +boolean isEmpty()
+        +Size size()
+        +Iterable<Rectangle> verticalStrips(int stripCount, Width overlap)
+        +Iterable<Rectangle> verticalStrips(Distance width, Distance overlap)
+        --(conversion)--
+        +Polygon asPolygon()
+        +Polyline asPolyline()
+        +String toCommaSeparatedString()
+        +String toFileString()
+        --(functional)--
+        +Rectangle decremented()
+        +Rectangle expanded(Distance)
+        +Rectangle expanded(Percent scaleFactor)
+        +Rectangle expandedBottom(Distance)
+        +Rectangle expandedLeft(Distance)
+        +Rectangle expandedRight(Distance)
+        +Rectangle expandedToInclude(Location)
+        +Rectangle expandedTop(Distance)
+        +Rectangle fromBoundedObjects(Bounded[] objects)
+        +Rectangle fromBoundedObjects(Iterable<? extends Bounded> objects)
+        +Rectangle incremented()
+        +Rectangle moved(Offset)
+        +Rectangle withBottom(Latitude)
+        +Rectangle withLeft(Longitude)
+        +Rectangle withRight(Longitude)
+        +Rectangle withTop(Latitude)
+        --(parsing)--
+        +ArgumentParser.Builder<Rectangle> argumentParser(String description)
+        +Rectangle parse(String)
+        +SwitchParser.Builder<Rectangle> switchParser(String name, String description)
+        --(primitive)--
+        +Rectangle fromInts(int bottom, int left, int top, int right)
+        +Rectangle fromLongs(long bottomLeft, long topRight)
+    }
+    
+    Dimensioned <|-- Size
+    Size o-- Width
+    Size o-- Height
+    class Size
+    {
+        --(constructors)--
+        +Size(Width, Height)
+        --(checks)--
+        +boolean isGreaterThan(Dimensioned that)
+        --(collection)--
+        +Size scaledBy(double widthMultiplier, double heightMultiplier)
+        +Size withHeight(Height)
+        +Size withWidth(Width)
+    }
+    
+    Angle <|-- Width
+    class Width
+    {
+        --(constructors)--
+        #Width(long)
+        --
+        +Width nanodegrees(long nanodegrees)
+        --(angle)--
+        +Width angle(Angle)
+        +Width degrees(double degrees)
+        +Width microdegrees(int microdegrees)
+    }
+    
+@enduml
+

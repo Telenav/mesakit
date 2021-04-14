@@ -1,0 +1,188 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.geography.indexing.rtree"
+    
+    interface Bounded
+    interface Intersectable
+    
+    enum RTreeSpatialIndex.DumpDetailLevel
+    {
+        SHOW_OBJECTS
+        SUMMARY_ONLY
+    }
+    
+    Node <|-- InteriorNode
+    class InteriorNode<T>
+    {
+        --(constructors)--
+        #InteriorNode()
+        +InteriorNode(RTreeSpatialIndex<T>, InteriorNode<T>)
+        --
+        +void children(List<Node<T>> children)
+        --(collection)--
+        #void remove(Node<T>)
+    }
+    
+    Node <|-- Leaf
+    abstract class Leaf<T>
+    {
+        --(constructors)--
+        #Leaf()
+        #Leaf(RTreeSpatialIndex<T>, InteriorNode<T>)
+        --(collection)--
+        +void addAll(List<T> elements)
+        #void addElement(T element)
+        #Count count()
+        #Iterable<T> elements()
+        #int size()
+    }
+    
+    abstract class LinearSplit<T>
+    {
+        --
+        #InteriorNode<T> split(Iterable<T> objects)
+        --(extension points)--
+        #InteriorNode<T> onSplit(T a, T b)
+    }
+    
+    Bounded <|-- Node
+    Intersectable <|-- Node
+    abstract class Node<T>
+    {
+        --(constructors)--
+        #Node()
+        #Node(RTreeSpatialIndex<T>, InteriorNode<T>)
+        --
+        +void bounds(Rectangle bounds)
+        +void dump(PrintStream out, int level, DumpDetailLevel)
+        +void statistics(int depth, Statistics)
+        #Node<T> bestFit(List<N> nodes, Bounded element)
+        #void parent(InteriorNode<T> parent)
+        #InteriorNode<T> parent()
+        #InteriorNode<T> replace(Node<T> siblingA, Node<T> siblingB)
+        #RTreeSettings settings()
+        --(checks)--
+        +boolean isLeaf()
+        #boolean isFull()
+        --(collection)--
+        +void add(T element)
+        +void index(RTreeSpatialIndex<T>)
+        +RTreeSpatialIndex<T> index()
+        +Iterator<T> intersecting(Rectangle that, Matcher<T>)
+        #void add(Node<T> child)
+        --(filtering)--
+        #void expandToInclude(Rectangle bounds)
+    }
+    
+    enum RTreeSpatialIndexKryoSerializer.NodeType
+    {
+        INTERIOR_NODE
+        LEAF
+    }
+    
+    RTreeBulkLoader --> RTreeSpatialIndex : "loads"
+    class RTreeBulkLoader<Element>
+    {
+        --(constructors)--
+        +RTreeBulkLoader(RTreeSpatialIndex<Element>)
+        --
+        +double log(int base, int num)
+        #int compareHorizontal(Element a, Element b)
+        #int compareVertical(Element a, Element b)
+        --(read)--
+        +void load(List<Element> elements)
+    }
+    
+    class RTreeSettings
+    {
+        --(constructors)--
+        +RTreeSettings()
+        --(checks)--
+        +boolean isInteriorNodeFull(Count size)
+        +boolean isLeafFull(Count size)
+        --(functional)--
+        +Estimate estimatedChildrenPerInteriorNode()
+        +Estimate estimatedChildrenPerLeaf()
+        +Count estimatedElements()
+        +Count estimatedLeaves()
+        +RTreeSettings withEstimatedChildrenPerInteriorNode(Estimate)
+        +RTreeSettings withEstimatedChildrenPerLeaf(Estimate)
+        +RTreeSettings withEstimatedNodes(Estimate)
+        +RTreeSettings withMaximumChildrenPerInteriorNode(Maximum)
+        +RTreeSettings withMaximumChildrenPerLeaf(Maximum)
+        --(math)--
+        +Maximum maximumChildrenPerInteriorNode()
+        +Maximum maximumChildrenPerLeaf()
+    }
+    
+    Bounded <|-- RTreeSpatialIndex
+    class RTreeSpatialIndex<Element>
+    {
+        --(constructors)--
+        #RTreeSpatialIndex()
+        +RTreeSpatialIndex(String, RTreeSettings)
+        --
+        +void debugger(RTreeSpatialIndexDebugger<Element>)
+        +void dump(PrintStream out)
+        +void dump(PrintStream out, DumpDetailLevel)
+        +void root(Node<Element> root)
+        +RTreeSettings settings()
+        +Statistics statistics()
+        --(collection)--
+        +void add(Element)
+        +Iterable<Element> all()
+        +Count count()
+        +RTreeSpatialIndexDebugger<Element> debugger()
+        +Iterable<Element> intersecting(Rectangle bounds)
+        +Iterable<Element> intersecting(Rectangle bounds, Matcher<Element>)
+        --(factory)--
+        +Leaf<Element> newLeaf(InteriorNode<Element> parent)
+        --(read)--
+        +void bulkLoad(List<Element> elements)
+    }
+    
+    interface RTreeSpatialIndexDebugger<T>
+    {
+        --
+        +void update(Node<T>)
+        +void update(Leaf<T>, T element)
+        --(collection)--
+        +RTreeSpatialIndexDebugger<T> nullDebugger()
+        +void remove(Node<T>)
+    }
+    
+    KryoSerializer <|-- RTreeSpatialIndexKryoSerializer
+    abstract class RTreeSpatialIndexKryoSerializer<T>
+    {
+        --(constructors)--
+        #RTreeSpatialIndexKryoSerializer()
+        --(collection)--
+        #RTreeSpatialIndex newSpatialIndex(RTreeSettings)
+        --(read)--
+        #Leaf readLeaf(KryoSerializationSession, RTreeSpatialIndex, InteriorNode parent)
+        --(write)--
+        #void writeLeaf(KryoSerializationSession, Leaf<T>)
+    }
+    
+    enum RTreeBulkLoader.Sort
+    {
+        HORIZONTAL
+        NONE
+        VERTICAL
+    }
+    
+    class Statistics
+    {
+    }
+    
+    Leaf <|-- UncompressedLeaf
+    class UncompressedLeaf<T>
+    {
+        --(constructors)--
+        +UncompressedLeaf(RTreeSpatialIndex<T>, InteriorNode<T>)
+    }
+    
+@enduml
+

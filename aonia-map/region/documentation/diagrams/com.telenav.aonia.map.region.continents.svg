@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="254.1667px" preserveAspectRatio="none" style="width:972px;height:254px;background:#333333;" version="1.1" viewBox="0 0 972 254" width="972.9167px" zoomAndPan="magnify"><defs/><g><rect fill="#48494B" height="41.2028" rx="8.3333" ry="8.3333" style="stroke:#545454;stroke-width:1.0416666666666667;" width="433.3333" x="262.5" y="2.0833"/><text fill="#C0C0C0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="20.8333" lengthAdjust="spacing" textLength="410.4167" x="273.9583" y="30.5583">com.telenav.aonia.map.region.continents</text><!--MD5=[e2c3cf1f717dbe59ae4ba9c73a677022]
+class Continent--><rect fill="#282828" height="48.055" id="Continent" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="102.0833" x="407.2917" y="53.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="102.0833" x="407.2917" y="53.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="102.0833" x="407.2917" y="76.7578"/><rect fill="none" height="48.055" id="Continent" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="102.0833" x="407.2917" y="53.7028"/><ellipse cx="421.875" cy="69.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M423.7854,73.822 Q423.3582,74.0417 422.8882,74.1516 Q422.4182,74.2615 421.8994,74.2615 Q420.0562,74.2615 419.0857,73.0469 Q418.1152,71.8323 418.1152,69.5374 Q418.1152,67.2363 419.0857,66.0217 Q420.0562,64.8071 421.8994,64.8071 Q422.4182,64.8071 422.8943,64.917 Q423.3704,65.0269 423.7854,65.2466 L423.7854,67.2485 Q423.3215,66.8213 422.8851,66.6229 Q422.4487,66.4246 421.9849,66.4246 Q420.9961,66.4246 420.4926,67.2089 Q419.989,67.9932 419.989,69.5374 Q419.989,71.0754 420.4926,71.8597 Q420.9961,72.644 421.9849,72.644 Q422.4487,72.644 422.8851,72.4457 Q423.3215,72.2473 423.7854,71.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="64.5833" x="438.5417" y="74.1211">Continent</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="408.3333" x2="508.3333" y1="85.0911" y2="85.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="408.3333" x2="508.3333" y1="93.4245" y2="93.4245"/><!--MD5=[2dfc3bbc2daf86acb0bf841bdc001397]
+class Africa--><rect codeLine="7" fill="#282828" height="83.3781" id="Africa" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="95.8333" x="7.2917" y="164.1195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="95.8333" x="7.2917" y="164.1195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="95.8333" x="7.2917" y="187.1745"/><rect codeLine="7" fill="none" height="83.3781" id="Africa" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="95.8333" x="7.2917" y="164.1195"/><ellipse cx="31.25" cy="179.8136" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M33.1604,184.2387 Q32.7332,184.4584 32.2632,184.5683 Q31.7932,184.6781 31.2744,184.6781 Q29.4312,184.6781 28.4607,183.4635 Q27.4902,182.2489 27.4902,179.954 Q27.4902,177.653 28.4607,176.4384 Q29.4312,175.2238 31.2744,175.2238 Q31.7932,175.2238 32.2693,175.3337 Q32.7454,175.4435 33.1604,175.6632 L33.1604,177.6652 Q32.6965,177.238 32.2601,177.0396 Q31.8237,176.8412 31.3599,176.8412 Q30.3711,176.8412 29.8676,177.6255 Q29.364,178.4098 29.364,179.954 Q29.364,181.4921 29.8676,182.2764 Q30.3711,183.0607 31.3599,183.0607 Q31.8237,183.0607 32.2601,182.8623 Q32.6965,182.664 33.1604,182.2367 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="37.5" x="50" y="184.5378">Africa</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="8.3333" x2="102.0833" y1="195.5078" y2="195.5078"/><ellipse cx="18.75" cy="230.8777" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="41.6667" x="30.2083" y="237.7889">Africa()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="8.3333" x2="11.4583" y1="213.7136" y2="213.7136"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="14.5833" y="217.5232">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="98.9583" x2="102.0833" y1="213.7136" y2="213.7136"/><!--MD5=[34c72c93570036bf8a7ab798114227fc]
+class Antarctica--><rect codeLine="14" fill="#282828" height="83.3781" id="Antarctica" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="102.0833" x="139.5833" y="164.1195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="102.0833" x="139.5833" y="164.1195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="102.0833" x="139.5833" y="187.1745"/><rect codeLine="14" fill="none" height="83.3781" id="Antarctica" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="102.0833" x="139.5833" y="164.1195"/><ellipse cx="154.1667" cy="179.8136" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M156.0771,184.2387 Q155.6498,184.4584 155.1799,184.5683 Q154.7099,184.6781 154.1911,184.6781 Q152.3478,184.6781 151.3774,183.4635 Q150.4069,182.2489 150.4069,179.954 Q150.4069,177.653 151.3774,176.4384 Q152.3478,175.2238 154.1911,175.2238 Q154.7099,175.2238 155.186,175.3337 Q155.662,175.4435 156.0771,175.6632 L156.0771,177.6652 Q155.6132,177.238 155.1768,177.0396 Q154.7404,176.8412 154.2765,176.8412 Q153.2878,176.8412 152.7842,177.6255 Q152.2807,178.4098 152.2807,179.954 Q152.2807,181.4921 152.7842,182.2764 Q153.2878,183.0607 154.2765,183.0607 Q154.7404,183.0607 155.1768,182.8623 Q155.6132,182.664 156.0771,182.2367 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="64.5833" x="170.8333" y="184.5378">Antarctica</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="140.625" x2="240.625" y1="195.5078" y2="195.5078"/><ellipse cx="151.0417" cy="230.8777" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="65.625" x="162.5" y="237.7889">Antarctica()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="140.625" x2="146.875" y1="213.7136" y2="213.7136"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="150" y="217.5232">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="234.375" x2="240.625" y1="213.7136" y2="213.7136"/><!--MD5=[745d76774b183e20351ac5084d436dbc]
+class Asia--><rect codeLine="21" fill="#282828" height="83.3781" id="Asia" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="95.8333" x="278.125" y="164.1195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="95.8333" x="278.125" y="164.1195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="95.8333" x="278.125" y="187.1745"/><rect codeLine="21" fill="none" height="83.3781" id="Asia" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="95.8333" x="278.125" y="164.1195"/><ellipse cx="306.3021" cy="179.8136" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M308.2125,184.2387 Q307.7852,184.4584 307.3153,184.5683 Q306.8453,184.6781 306.3265,184.6781 Q304.4832,184.6781 303.5128,183.4635 Q302.5423,182.2489 302.5423,179.954 Q302.5423,177.653 303.5128,176.4384 Q304.4832,175.2238 306.3265,175.2238 Q306.8453,175.2238 307.3214,175.3337 Q307.7974,175.4435 308.2125,175.6632 L308.2125,177.6652 Q307.7486,177.238 307.3122,177.0396 Q306.8758,176.8412 306.4119,176.8412 Q305.4232,176.8412 304.9196,177.6255 Q304.4161,178.4098 304.4161,179.954 Q304.4161,181.4921 304.9196,182.2764 Q305.4232,183.0607 306.4119,183.0607 Q306.8758,183.0607 307.3122,182.8623 Q307.7486,182.664 308.2125,182.2367 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="28.125" x="325.9896" y="184.5378">Asia</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="279.1667" x2="372.9167" y1="195.5078" y2="195.5078"/><ellipse cx="289.5833" cy="230.8777" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="32.2917" x="301.0417" y="237.7889">Asia()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="279.1667" x2="282.2917" y1="213.7136" y2="213.7136"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="285.4167" y="217.5232">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="369.7917" x2="372.9167" y1="213.7136" y2="213.7136"/><!--MD5=[b771f0add0b3dfa19fe60e52d5c9934a]
+class Europe--><rect codeLine="28" fill="#282828" height="83.3781" id="Europe" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="95.8333" x="410.4167" y="164.1195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="95.8333" x="410.4167" y="164.1195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="95.8333" x="410.4167" y="187.1745"/><rect codeLine="28" fill="none" height="83.3781" id="Europe" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="95.8333" x="410.4167" y="164.1195"/><ellipse cx="431.0938" cy="179.8136" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M433.0042,184.2387 Q432.5769,184.4584 432.1069,184.5683 Q431.637,184.6781 431.1182,184.6781 Q429.2749,184.6781 428.3044,183.4635 Q427.334,182.2489 427.334,179.954 Q427.334,177.653 428.3044,176.4384 Q429.2749,175.2238 431.1182,175.2238 Q431.637,175.2238 432.113,175.3337 Q432.5891,175.4435 433.0042,175.6632 L433.0042,177.6652 Q432.5403,177.238 432.1039,177.0396 Q431.6675,176.8412 431.2036,176.8412 Q430.2148,176.8412 429.7113,177.6255 Q429.2078,178.4098 429.2078,179.954 Q429.2078,181.4921 429.7113,182.2764 Q430.2148,183.0607 431.2036,183.0607 Q431.6675,183.0607 432.1039,182.8623 Q432.5403,182.664 433.0042,182.2367 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="44.7917" x="449.1146" y="184.5378">Europe</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="411.4583" x2="505.2083" y1="195.5078" y2="195.5078"/><ellipse cx="421.875" cy="230.8777" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="47.9167" x="433.3333" y="237.7889">Europe()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="411.4583" x2="414.5833" y1="213.7136" y2="213.7136"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="417.7083" y="217.5232">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="502.0833" x2="505.2083" y1="213.7136" y2="213.7136"/><!--MD5=[2240759c115e3871acd27cc597f3c6a3]
+class NorthAmerica--><rect codeLine="35" fill="#282828" height="83.3781" id="NorthAmerica" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="126.0417" x="543.2292" y="164.1195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="126.0417" x="543.2292" y="164.1195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="126.0417" x="543.2292" y="187.1745"/><rect codeLine="35" fill="none" height="83.3781" id="NorthAmerica" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="126.0417" x="543.2292" y="164.1195"/><ellipse cx="557.8125" cy="179.8136" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M559.7229,184.2387 Q559.2957,184.4584 558.8257,184.5683 Q558.3557,184.6781 557.8369,184.6781 Q555.9937,184.6781 555.0232,183.4635 Q554.0527,182.2489 554.0527,179.954 Q554.0527,177.653 555.0232,176.4384 Q555.9937,175.2238 557.8369,175.2238 Q558.3557,175.2238 558.8318,175.3337 Q559.3079,175.4435 559.7229,175.6632 L559.7229,177.6652 Q559.259,177.238 558.8226,177.0396 Q558.3862,176.8412 557.9224,176.8412 Q556.9336,176.8412 556.4301,177.6255 Q555.9265,178.4098 555.9265,179.954 Q555.9265,181.4921 556.4301,182.2764 Q556.9336,183.0607 557.9224,183.0607 Q558.3862,183.0607 558.8226,182.8623 Q559.259,182.664 559.7229,182.2367 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="88.5417" x="574.4792" y="184.5378">NorthAmerica</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="544.2708" x2="668.2292" y1="195.5078" y2="195.5078"/><ellipse cx="554.6875" cy="230.8777" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="86.4583" x="566.1458" y="237.7889">NorthAmerica()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="544.2708" x2="562.5" y1="213.7136" y2="213.7136"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="565.625" y="217.5232">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="650" x2="668.2292" y1="213.7136" y2="213.7136"/><!--MD5=[09028358d359e2754f72feb1509ec0ae]
+class Oceania--><rect codeLine="42" fill="#282828" height="83.3781" id="Oceania" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="95.8333" x="706.25" y="164.1195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="95.8333" x="706.25" y="164.1195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="95.8333" x="706.25" y="187.1745"/><rect codeLine="42" fill="none" height="83.3781" id="Oceania" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="95.8333" x="706.25" y="164.1195"/><ellipse cx="724.1146" cy="179.8136" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M726.025,184.2387 Q725.5977,184.4584 725.1278,184.5683 Q724.6578,184.6781 724.139,184.6781 Q722.2957,184.6781 721.3253,183.4635 Q720.3548,182.2489 720.3548,179.954 Q720.3548,177.653 721.3253,176.4384 Q722.2957,175.2238 724.139,175.2238 Q724.6578,175.2238 725.1339,175.3337 Q725.6099,175.4435 726.025,175.6632 L726.025,177.6652 Q725.5611,177.238 725.1247,177.0396 Q724.6883,176.8412 724.2244,176.8412 Q723.2357,176.8412 722.7321,177.6255 Q722.2286,178.4098 722.2286,179.954 Q722.2286,181.4921 722.7321,182.2764 Q723.2357,183.0607 724.2244,183.0607 Q724.6883,183.0607 725.1247,182.8623 Q725.5611,182.664 726.025,182.2367 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="51.0417" x="741.5104" y="184.5378">Oceania</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="707.2917" x2="801.0417" y1="195.5078" y2="195.5078"/><ellipse cx="717.7083" cy="230.8777" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="53.125" x="729.1667" y="237.7889">Oceania()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="707.2917" x2="710.4167" y1="213.7136" y2="213.7136"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="713.5417" y="217.5232">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="797.9167" x2="801.0417" y1="213.7136" y2="213.7136"/><!--MD5=[4b0fd6943ccc63dac95af0858f6fa831]
+class SouthAmerica--><rect codeLine="49" fill="#282828" height="83.3781" id="SouthAmerica" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="127.0833" x="838.5417" y="164.1195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="127.0833" x="838.5417" y="164.1195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="127.0833" x="838.5417" y="187.1745"/><rect codeLine="49" fill="none" height="83.3781" id="SouthAmerica" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="127.0833" x="838.5417" y="164.1195"/><ellipse cx="853.125" cy="179.8136" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M855.0354,184.2387 Q854.6082,184.4584 854.1382,184.5683 Q853.6682,184.6781 853.1494,184.6781 Q851.3062,184.6781 850.3357,183.4635 Q849.3652,182.2489 849.3652,179.954 Q849.3652,177.653 850.3357,176.4384 Q851.3062,175.2238 853.1494,175.2238 Q853.6682,175.2238 854.1443,175.3337 Q854.6204,175.4435 855.0354,175.6632 L855.0354,177.6652 Q854.5715,177.238 854.1351,177.0396 Q853.6987,176.8412 853.2349,176.8412 Q852.2461,176.8412 851.7426,177.6255 Q851.239,178.4098 851.239,179.954 Q851.239,181.4921 851.7426,182.2764 Q852.2461,183.0607 853.2349,183.0607 Q853.6987,183.0607 854.1351,182.8623 Q854.5715,182.664 855.0354,182.2367 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="89.5833" x="869.7917" y="184.5378">SouthAmerica</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="839.5833" x2="964.5833" y1="195.5078" y2="195.5078"/><ellipse cx="850" cy="230.8777" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="86.4583" x="861.4583" y="237.7889">SouthAmerica()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="839.5833" x2="858.3333" y1="213.7136" y2="213.7136"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="861.4583" y="217.5232">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="945.8333" x2="964.5833" y1="213.7136" y2="213.7136"/><!--MD5=[31d95661efe2a4d3160a2a0d35c8e896]
+reverse link Continent to Africa--><path codeLine="6" d="M386.2083,90.3278 C316.4375,103.0986 208.6354,126.8799 120.8333,164.1195 C115.0313,166.5778 109.1563,169.5049 103.4167,172.6403 " fill="none" id="Continent-backto-Africa" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="385.2292,83.0986,407.0208,86.6403,387.7708,97.4528,385.2292,83.0986" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[e1b6f89c263699a95dc9488494634300]
+reverse link Continent to Antarctica--><path codeLine="13" d="M387.7813,106.4111 C349.2813,122.1715 301.0938,142.9424 259.375,164.1195 C253.6875,167.0049 247.8229,170.1611 242.0313,173.4111 " fill="none" id="Continent-backto-Antarctica" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="385.1771,99.5986,407.2292,98.5361,390.6458,113.1195,385.1771,99.5986" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[9459d4d057c4dce48f4daada8580239c]
+reverse link Continent to Asia--><path codeLine="20" d="M418.75,116.4215 C403.0313,131.3903 384.9167,148.6507 368.8854,163.9215 " fill="none" id="Continent-backto-Asia" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="413.9583,110.9111,434.0729,101.8174,424.0104,121.4736,413.9583,110.9111" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[7ce516fc68063b9ebd7feef02d5d958f]
+reverse link Continent to Europe--><path codeLine="27" d="M458.3333,122.682 C458.3333,136.0778 458.3333,150.7445 458.3333,163.9215 " fill="none" id="Continent-backto-Europe" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="451.0417,122.6507,458.3333,101.8174,465.625,122.6507,451.0417,122.6507" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[b91bec146b7cf16db7344f15d7cb6d3c]
+reverse link Continent to NorthAmerica--><path codeLine="34" d="M501.4896,115.4736 C519.3125,130.6611 540.0417,148.3278 558.3438,163.9215 " fill="none" id="Continent-backto-NorthAmerica" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="496.5938,120.8799,485.4583,101.8174,506.0521,109.7861,496.5938,120.8799" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[79ae7782a422d31d30f11e0d7f92af9a]
+reverse link Continent to Oceania--><path codeLine="41" d="M529.5729,101.3382 C575.5521,116.8903 636.1563,139.1924 687.5,164.1195 C693.5938,167.0778 699.8542,170.432 705.9792,173.9111 " fill="none" id="Continent-backto-Oceania" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="527.0208,108.1715,509.5521,94.6715,531.625,94.3382,527.0208,108.1715" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[5989b316f38ec3901b14b92bd8a089a8]
+reverse link Continent to SouthAmerica--><path codeLine="48" d="M530.1563,90.5361 C604.3333,103.9215 722.7604,128.5986 820.8333,164.1195 C826.6146,166.2132 832.5208,168.609 838.3854,171.1715 " fill="none" id="Continent-backto-SouthAmerica" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="528.8021,97.6924,509.5521,86.9007,531.3333,83.3382,528.8021,97.6924" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[9b7ef55071c0099b167577fbcc31833c]
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.region.continents"
+    
+    Continent <|- - Africa
+    class Africa
+    {
+        - -(constructors)- -
+        +Africa()
+    }
+    
+    Continent <|- - Antarctica
+    class Antarctica
+    {
+        - -(constructors)- -
+        +Antarctica()
+    }
+    
+    Continent <|- - Asia
+    class Asia
+    {
+        - -(constructors)- -
+        +Asia()
+    }
+    
+    Continent <|- - Europe
+    class Europe
+    {
+        - -(constructors)- -
+        +Europe()
+    }
+    
+    Continent <|- - NorthAmerica
+    class NorthAmerica
+    {
+        - -(constructors)- -
+        +NorthAmerica()
+    }
+    
+    Continent <|- - Oceania
+    class Oceania
+    {
+        - -(constructors)- -
+        +Oceania()
+    }
+    
+    Continent <|- - SouthAmerica
+    class SouthAmerica
+    {
+        - -(constructors)- -
+        +SouthAmerica()
+    }
+    
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+
+
+skinparam backgroundColor #333333
+
+
+
+
+
+
+skinparam  {
+    defaultFontName   "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+    defaultFontSize   12
+    defaultTextAlignment left
+    shadowing false
+    RoundCorner 10
+    TitleFontSize 18
+}
+
+skinparam defaultFontName       "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           16
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               3
+skinparam ArrowColor            #545454
+skinparam stereotype {
+    CBackgroundColor #0066cf
+    CBorderColor #0086ef
+    ABackgroundColor #C8Ac00
+    ABorderColor #D8Bc00
+    IBackgroundColor #008400
+    IBorderColor #239c23
+    EBackgroundColor #cf6300
+    EBorderColor #ef8300
+    NBackgroundColor #3380b9
+    NBorderColor #004d86
+}
+skinparam title {
+	FontColor	                 #c0c0c0
+ 	BorderColor                  #545454
+	FontSize	    	         20
+	BorderRoundCorner            16
+	BorderThickness 	         1
+	BackgroundColor              #48494b
+}
+
+
+skinparam legend {
+	BackgroundColor #303030
+	BorderColor #404040
+	FontColor #a0a0a0
+}
+
+	skinparam swimlane {
+	BorderColor #5e5e5e
+	BorderThickness 2
+	TitleBackgroundColor  #6d6d6d-#484848
+	TitleFontColor #303030
+}
+
+skinparam activity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BarColor #00FF00
+	StartColor #0060a8
+	EndColor #0060a8
+	DiamondBackgroundColor #6d6d6d-#3a3a3a
+  	DiamondBorderColor #3a3a3a
+  	DiamondFontColor #fefefe
+}
+
+
+skinparam participant {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam arrow {
+	Thickness 1.5
+	Color #545454
+	FontColor #a0a0a0
+    FontStyle bold
+    MessageAlignment center
+}
+
+
+
+skinparam sequence {
+	BorderColor #303030
+	TitleFontColor #303030
+	BackgroundColor #333333
+	StartColor #303030
+	EndColor #303030
+	BoxBackgroundColor #333333
+	BoxBorderColor #484848
+	BoxFontColor #484848
+	LifeLineBorderColor #484848
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor #3a3a3a
+	GroupBorderColor #484848
+	GroupFontColor #484848
+	GroupHeaderFontColor #0060a8
+	GroupBackgroundColor #484848
+	GroupHeaderBackgroundColor #333333
+	DividerBackgroundColor #484848
+    DividerBorderColor #484848
+    DividerBorderThickness 2
+    DividerFontColor #D8Bc00
+	ReferenceBackgroundColor #333333
+	ReferenceBorderColor #484848
+	ReferenceFontColor #fefefe
+	ReferenceHeaderBackgroundColor #484848
+}
+
+
+skinparam partition {
+	BorderColor #303030
+	FontColor #333333
+	BackgroundColor #333333
+}
+
+
+skinparam collections {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam control {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam entity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam boundary {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam agent {
+	BackgroundColor #ff8000
+	BorderColor #ff9933
+	FontColor #484848
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor #1b1b1a
+	BorderColor #5e5e5e
+	FontSize 11
+	FontColor #a0a0a0
+}
+
+
+skinparam artifact {
+	BorderThickness 10
+	BorderColor #5e5e5e
+	BackgroundColor #1b1b1a
+	FontColor #D8Bc00
+}
+
+
+skinparam component {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam interface {
+	BackgroundColor  #008400
+	BorderColor  #007F00
+	FontColor #484848
+}
+
+
+skinparam storage {
+	BackgroundColor #ff8000
+  	BorderColor #cc6600
+	FontColor #222222
+}
+
+
+skinparam node {
+	BackgroundColor #333333
+	BorderColor #333333
+	FontColor #C8Ac00
+}
+
+
+skinparam cloud {
+	BackgroundColor #484848-black
+	BorderColor #484848
+	FontColor #D8Bc00
+}
+
+
+skinparam database {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor  #333333
+}
+
+
+skinparam class {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	HeaderBackgroundColor #1b1b1a
+    BackgroundColor #282828
+    BorderColor #5e5e5e
+ 	StereotypeFontColor #a0a0a0
+    StereotypeFontStyle bold
+	BorderThickness 1
+	AttributeFontColor #D8Bc00
+	AttributeFontSize 11
+    FontColor #D8Bc00
+    FontStyle bold
+}
+
+
+skinparam object {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StereotypeFontColor #484848
+	BorderThickness 1
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam rectangle {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam package {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor #6d6d6d
+  	BorderColor #ff8000
+	FontColor #ff8000
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor #6d6d6d
+  	BorderColor #0060a8
+	FontColor #0060a8
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StartColor #0060a8
+	EndColor #0060a8
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam card {
+	BackgroundColor #0060a8
+	BorderColor #004d86
+	FontColor $INFO_TEXT
+}
+
+
+skinparam file {
+	BackgroundColor #6d6d6d-#484848
+	BorderColor #0060a8
+	FontColor #fefefe
+}
+
+
+skinparam stack {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+    
+    title "com.telenav.aonia.map.region.continents"
+    
+    Continent <|- - Africa
+    class Africa
+    {
+        - -(constructors)- -
+        +Africa()
+    }
+    
+    Continent <|- - Antarctica
+    class Antarctica
+    {
+        - -(constructors)- -
+        +Antarctica()
+    }
+    
+    Continent <|- - Asia
+    class Asia
+    {
+        - -(constructors)- -
+        +Asia()
+    }
+    
+    Continent <|- - Europe
+    class Europe
+    {
+        - -(constructors)- -
+        +Europe()
+    }
+    
+    Continent <|- - NorthAmerica
+    class NorthAmerica
+    {
+        - -(constructors)- -
+        +NorthAmerica()
+    }
+    
+    Continent <|- - Oceania
+    class Oceania
+    {
+        - -(constructors)- -
+        +Oceania()
+    }
+    
+    Continent <|- - SouthAmerica
+    class SouthAmerica
+    {
+        - -(constructors)- -
+        +SouthAmerica()
+    }
+    
+@enduml
+
+PlantUML version 1.2021.01(Tue Feb 02 00:55:08 MST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

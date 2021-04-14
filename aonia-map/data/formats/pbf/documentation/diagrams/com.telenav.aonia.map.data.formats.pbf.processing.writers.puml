@@ -1,0 +1,35 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.data.formats.pbf.processing.writers"
+    
+    PbfWriter o-- WritableResource
+    PbfWriter o-- PbfWriter.Phase
+    class PbfWriter
+    {
+        --(constructors)--
+        +PbfWriter(WritableResource, boolean)
+        --
+        +WritableResource resource()
+        --(io)--
+        +void close()
+        --(write)--
+        +void write(PbfWay)
+        +void write(PbfNode)
+        +void write(PbfRelation)
+        +void write(Bound)
+        +void writeNodes(List<PbfNode> nodes)
+        +void writeRelations(Collection<PbfRelation> relations)
+        +void writeWays(List<PbfWay> ways)
+    }
+    
+    enum PbfWriter.Phase
+    {
+        NODES
+        RELATIONS
+        WAYS
+    }
+    
+@enduml
+

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--                                                                                                                 -->
+<!--  © 2011-2021 Telenav, Inc.                                                                                      -->
+<!--  Licensed under Apache License, Version 2.0                                                                     -->
+<!--                                                                                                                 -->
+<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+<project xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.telenav.aonia</groupId>
+        <artifactId>aonia-map-road</artifactId>
+        <version>0.9.0-SNAPSHOT</version>
+    </parent>
+
+    <name>Aonia Map Road - Name Standardizer</name>
+
+    <artifactId>aonia-map-road-name-standardizer</artifactId>
+    <packaging>jar</packaging>
+
+    <dependencies>
+
+        <!-- Aonia -->
+
+        <dependency>
+            <groupId>com.telenav.aonia</groupId>
+            <artifactId>aonia-map-road-name-parser</artifactId>
+            <version>${aonia.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.telenav.aonia</groupId>
+            <artifactId>aonia-map-data-formats-pbf</artifactId>
+            <version>${aonia.version}</version>
+        </dependency>
+
+    </dependencies>
+
+</project>

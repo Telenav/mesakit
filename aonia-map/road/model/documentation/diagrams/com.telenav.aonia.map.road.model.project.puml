@@ -1,0 +1,17 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.road.model.project"
+    
+    Project <|-- MapRoadModelProject
+    class MapRoadModelProject
+    {
+        --(constructors)--
+        #MapRoadModelProject()
+        --(collection)--
+        +MapRoadModelProject get()
+    }
+    
+@enduml
+

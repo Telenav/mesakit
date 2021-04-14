@@ -1,0 +1,15 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.region.countries.states.cities"
+    
+    City <|-- Seattle
+    class Seattle
+    {
+        --(constructors)--
+        +Seattle()
+    }
+    
+@enduml
+

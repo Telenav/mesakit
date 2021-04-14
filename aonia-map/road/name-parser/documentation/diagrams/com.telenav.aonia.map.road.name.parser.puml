@@ -1,0 +1,101 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.road.name.parser"
+    
+    interface RoadNameParser
+    
+    RoadNameParser <|-- BaseRoadNameParser
+    abstract class BaseRoadNameParser
+    {
+        --
+        #int at()
+        #void at(int at)
+        #Token current()
+        #Token lookahead()
+        #boolean lookingAt(Token)
+        #int previous()
+        #String rawText()
+        #String remainder()
+        #String remainderCapitalized()
+        #void skipAny(Token)
+        #Token token(int index)
+        #void tokenize(Tokenizer, String input)
+        --(collection)--
+        #boolean atLast()
+        #Token first()
+        #boolean isEmpty()
+        #Token last()
+        #Token remove(int index)
+        #Token removeFirst()
+        #Token removeLast()
+        #int size()
+        #TokenList tokens()
+        --(iteration)--
+        #boolean hasMore()
+        #void next()
+        --(lifecycle)--
+        #void reset()
+        --(matching)--
+        #boolean match(Token)
+    }
+    
+    class ParsedRoadName.Builder
+    {
+        --(constructors)--
+        +Builder()
+        +Builder(ParsedRoadName)
+        --
+        +void position(TypePosition)
+        --(naming)--
+        +Builder baseName(String baseName, String rawName)
+        +ParsedRoadName build()
+        +Builder direction(String direction, String rawDirection)
+        +Builder directionFormat(DirectionFormat)
+        +Builder exception(Exception)
+        +Builder type(String type, String rawType)
+    }
+    
+    enum ParsedRoadName.DirectionFormat
+    {
+        NONE
+        PREFIXED
+        SUFFIXED
+    }
+    
+    class ParsedRoadName
+    {
+        --
+        +Exception exception()
+        +boolean failed()
+        +String rawType()
+        +String type()
+        --(angle)--
+        +Direction direction()
+        +String rawDirection()
+        --(checks)--
+        +boolean isValid()
+        --(naming)--
+        +RoadName asRawRoadName()
+        +RoadName asRoadName()
+        +String baseName()
+        +DirectionFormat directionFormat()
+        +String rawBaseName()
+    }
+    
+    interface RoadNameParser
+    {
+        --(naming)--
+        +RoadNameParser get(MapLocale)
+        +ParsedRoadName parse(RoadName)
+    }
+    
+    enum ParsedRoadName.TypePosition
+    {
+        FIRST
+        LAST
+    }
+    
+@enduml
+

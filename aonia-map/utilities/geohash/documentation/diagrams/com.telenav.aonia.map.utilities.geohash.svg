@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1093.75px" preserveAspectRatio="none" style="width:1795px;height:1093px;background:#333333;" version="1.1" viewBox="0 0 1795 1093" width="1795.8333px" zoomAndPan="magnify"><defs/><g><rect fill="#48494B" height="41.2028" rx="8.3333" ry="8.3333" style="stroke:#545454;stroke-width:1.0416666666666667;" width="423.9583" x="678.9063" y="2.0833"/><text fill="#C0C0C0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="20.8333" lengthAdjust="spacing" textLength="401.0417" x="690.3646" y="30.5583">com.telenav.aonia.map.utilities.geohash</text><!--MD5=[b31e89a4f9850b06c2ac31720c0ceec1]
+cluster Geohasher--><polygon fill="#333333" points="1316.1458,52.6611,1397.3958,52.6611,1404.6875,79.8828,1778.6458,79.8828,1778.6458,335.9945,1316.1458,335.9945,1316.1458,52.6611" style="stroke:#333333;stroke-width:2.0833333333333335;"/><line style="stroke:#333333;stroke-width:2.0833333333333335;" x1="1316.1458" x2="1404.6875" y1="79.8828" y2="79.8828"/><text fill="#C8AC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="68.75" x="1323.4375" y="69.9544">Geohasher</text><!--MD5=[465bbee13867fe0d56258fd630d0b861]
+class Geohasher.Builder--><rect codeLine="24" fill="#282828" height="225.7589" id="Geohasher.Builder" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="429.1667" x="1332.8125" y="93.2861"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="429.1667" x="1332.8125" y="93.2861"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="429.1667" x="1332.8125" y="116.3411"/><rect codeLine="24" fill="none" height="225.7589" id="Geohasher.Builder" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="429.1667" x="1332.8125" y="93.2861"/><ellipse cx="1517.1875" cy="108.9803" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M1519.0979,113.4054 Q1518.6707,113.6251 1518.2007,113.7349 Q1517.7307,113.8448 1517.2119,113.8448 Q1515.3687,113.8448 1514.3982,112.6302 Q1513.4277,111.4156 1513.4277,109.1207 Q1513.4277,106.8197 1514.3982,105.6051 Q1515.3687,104.3905 1517.2119,104.3905 Q1517.7307,104.3905 1518.2068,104.5003 Q1518.6829,104.6102 1519.0979,104.8299 L1519.0979,106.8319 Q1518.634,106.4046 1518.1976,106.2063 Q1517.7612,106.0079 1517.2974,106.0079 Q1516.3086,106.0079 1515.8051,106.7922 Q1515.3015,107.5765 1515.3015,109.1207 Q1515.3015,110.6588 1515.8051,111.4431 Q1516.3086,112.2274 1517.2974,112.2274 Q1517.7612,112.2274 1518.1976,112.029 Q1518.634,111.8306 1519.0979,111.4034 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="45.8333" x="1540.1042" y="113.7044">Builder</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="1333.8542" x2="1760.9375" y1="124.6745" y2="124.6745"/><ellipse cx="1344.2708" cy="160.0444" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="46.875" x="1355.7292" y="166.9556">Builder()</text><ellipse cx="1344.2708" cy="179.7892" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="145.8333" x="1355.7292" y="186.7004">Builder(GeohashAlphabet)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1333.8542" x2="1503.6458" y1="142.8802" y2="142.8802"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="1506.7708" y="146.6899">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1591.1458" x2="1760.9375" y1="142.8802" y2="142.8802"/><ellipse cx="1344.2708" cy="223.4456" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="343.75" x="1355.7292" y="230.3569">Builder allowBorderCrossings(boolean allowBorderCrossings)</text><ellipse cx="1344.2708" cy="243.1905" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="390.625" x="1355.7292" y="250.1017">Builder borderCompactingTolerance(int borderCompactingTolerance)</text><ellipse cx="1344.2708" cy="262.9354" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="100" x="1355.7292" y="269.8466">Geohasher build()</text><ellipse cx="1344.2708" cy="282.6803" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="396.875" x="1355.7292" y="289.5915">Builder interiorCompactingTolerance(int interiorCompactingTolerance)</text><ellipse cx="1344.2708" cy="302.4251" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="182.2917" x="1355.7292" y="309.3363">Builder resolution(int resolution)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1333.8542" x2="1517.1875" y1="206.2815" y2="206.2815"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="54.1667" x="1520.3125" y="210.0911">(building)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1577.6042" x2="1760.9375" y1="206.2815" y2="206.2815"/><!--MD5=[08b1eb332678c3c237e23d659915082b]
+class CharSequence--><rect codeLine="6" fill="#282828" height="48.055" id="CharSequence" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="128.125" x="875" y="182.3486"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="128.125" x="875" y="182.3486"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="128.125" x="875" y="205.4036"/><rect codeLine="6" fill="none" height="48.055" id="CharSequence" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="128.125" x="875" y="182.3486"/><ellipse cx="889.5833" cy="198.0428" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M886.4665,195.2047 L886.4665,193.6178 L891.8925,193.6178 L891.8925,195.2047 L890.0798,195.2047 L890.0798,201.1434 L891.8925,201.1434 L891.8925,202.7303 L886.4665,202.7303 L886.4665,201.1434 L888.2792,201.1434 L888.2792,195.2047 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="90.625" x="906.25" y="202.7669">CharSequence</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="876.0417" x2="1002.0833" y1="213.737" y2="213.737"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="876.0417" x2="1002.0833" y1="222.0703" y2="222.0703"/><!--MD5=[6837e8d9da88d1ac2d0b70d7dd9814d5]
+class GeohashAlphabet--><rect codeLine="84" fill="#282828" height="281.9153" id="GeohashAlphabet" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="233.3333" x="1063.0208" y="65.1611"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="233.3333" x="1063.0208" y="65.1611"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="233.3333" x="1063.0208" y="88.2161"/><rect codeLine="84" fill="none" height="281.9153" id="GeohashAlphabet" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="233.3333" x="1063.0208" y="65.1611"/><ellipse cx="1115.1042" cy="80.8553" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M1111.9873,78.0172 L1111.9873,76.4303 L1117.4133,76.4303 L1117.4133,78.0172 L1115.6006,78.0172 L1115.6006,83.9559 L1117.4133,83.9559 L1117.4133,85.5428 L1111.9873,85.5428 L1111.9873,83.9559 L1113.8,83.9559 L1113.8,78.0172 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="114.5833" x="1138.0208" y="85.5794">GeohashAlphabet</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="1064.0625" x2="1295.3125" y1="96.5495" y2="96.5495"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1064.0625" x2="1295.3125" y1="104.8828" y2="104.8828"/><ellipse cx="1074.4792" cy="116.3411" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="103.125" x="1085.9375" y="123.2524">char get(int index)</text><ellipse cx="1074.4792" cy="159.9976" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="151.0417" x="1085.9375" y="166.9088">boolean isValid(String text)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1064.0625" x2="1153.125" y1="142.8335" y2="142.8335"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="46.875" x="1156.25" y="146.6431">(checks)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1206.25" x2="1295.3125" y1="142.8335" y2="142.8335"/><ellipse cx="1074.4792" cy="203.654" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="152.0833" x="1085.9375" y="210.5652">int indexOf(char character)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1064.0625" x2="1145.3125" y1="186.4899" y2="186.4899"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="1148.4375" y="190.2995">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1214.0625" x2="1295.3125" y1="186.4899" y2="186.4899"/><ellipse cx="1074.4792" cy="247.3104" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="144.7917" x="1085.9375" y="254.2216">int maximumTextLength()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1064.0625" x2="1158.3333" y1="230.1463" y2="230.1463"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="36.4583" x="1161.4583" y="233.9559">(math)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1201.0417" x2="1295.3125" y1="230.1463" y2="230.1463"/><ellipse cx="1074.4792" cy="290.9668" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="119.7917" x="1085.9375" y="297.878">int bitsPerCharacter()</text><ellipse cx="1074.4792" cy="310.7117" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="201.0417" x="1085.9375" y="317.6229">Collection&lt;Character&gt; characters()</text><ellipse cx="1074.4792" cy="330.4565" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="144.7917" x="1085.9375" y="337.3678">int numberOfCharacters()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1064.0625" x2="1147.9167" y1="273.8027" y2="273.8027"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="57.2917" x="1151.0417" y="277.6123">(primitive)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1211.4583" x2="1295.3125" y1="273.8027" y2="273.8027"/><!--MD5=[ac8cea6a3fa3fb4dad4fbb0dbccb55c1]
+class Base32GeohashAlphabet--><rect codeLine="10" fill="#282828" height="48.055" id="Base32GeohashAlphabet" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="198.9583" x="1080.2083" y="574.0153"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="198.9583" x="1080.2083" y="574.0153"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="198.9583" x="1080.2083" y="597.0703"/><rect codeLine="10" fill="none" height="48.055" id="Base32GeohashAlphabet" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="198.9583" x="1080.2083" y="574.0153"/><ellipse cx="1094.7917" cy="589.7095" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M1096.7021,594.1345 Q1096.2748,594.3542 1095.8049,594.4641 Q1095.3349,594.574 1094.8161,594.574 Q1092.9728,594.574 1092.0024,593.3594 Q1091.0319,592.1448 1091.0319,589.8499 Q1091.0319,587.5488 1092.0024,586.3342 Q1092.9728,585.1196 1094.8161,585.1196 Q1095.3349,585.1196 1095.811,585.2295 Q1096.287,585.3394 1096.7021,585.5591 L1096.7021,587.561 Q1096.2382,587.1338 1095.8018,586.9354 Q1095.3654,586.7371 1094.9015,586.7371 Q1093.9128,586.7371 1093.4092,587.5214 Q1092.9057,588.3057 1092.9057,589.8499 Q1092.9057,591.3879 1093.4092,592.1722 Q1093.9128,592.9565 1094.9015,592.9565 Q1095.3654,592.9565 1095.8018,592.7582 Q1096.2382,592.5598 1096.7021,592.1326 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="161.4583" x="1111.4583" y="594.4336">Base32GeohashAlphabet</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1081.25" x2="1278.125" y1="605.4036" y2="605.4036"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1081.25" x2="1278.125" y1="613.737" y2="613.737"/><!--MD5=[d8c2e70a55ec512510dbb7512951aaa9]
+class BitArray--><rect codeLine="14" fill="#282828" height="155.1127" id="BitArray" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="163.5417" x="57.2917" y="128.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="163.5417" x="57.2917" y="128.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="163.5417" x="57.2917" y="151.7578"/><rect codeLine="14" fill="none" height="155.1127" id="BitArray" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="163.5417" x="57.2917" y="128.7028"/><ellipse cx="105.7292" cy="144.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M107.6396,148.822 Q107.2123,149.0417 106.7424,149.1516 Q106.2724,149.2615 105.7536,149.2615 Q103.9103,149.2615 102.9399,148.0469 Q101.9694,146.8323 101.9694,144.5374 Q101.9694,142.2363 102.9399,141.0217 Q103.9103,139.8071 105.7536,139.8071 Q106.2724,139.8071 106.7485,139.917 Q107.2245,140.0269 107.6396,140.2466 L107.6396,142.2485 Q107.1757,141.8213 106.7393,141.6229 Q106.3029,141.4246 105.839,141.4246 Q104.8503,141.4246 104.3467,142.2089 Q103.8432,142.9932 103.8432,144.5374 Q103.8432,146.0754 104.3467,146.8597 Q104.8503,147.644 105.839,147.644 Q106.3029,147.644 106.7393,147.4457 Q107.1757,147.2473 107.6396,146.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="52.0833" x="128.6458" y="149.1211">BitArray</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="58.3333" x2="219.7917" y1="160.0911" y2="160.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="58.3333" x2="219.7917" y1="168.4245" y2="168.4245"/><ellipse cx="68.75" cy="179.8828" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="61.4583" x="80.2083" y="186.794">int length()</text><ellipse cx="68.75" cy="223.5392" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="131.25" x="80.2083" y="230.4504">boolean isSet(int index)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="58.3333" x2="112.5" y1="206.3751" y2="206.3751"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="46.875" x="115.625" y="210.1847">(checks)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="165.625" x2="219.7917" y1="206.3751" y2="206.3751"/><ellipse cx="68.75" cy="267.1956" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="126.0417" x="80.2083" y="274.1069">List&lt;Boolean&gt; allBits()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="58.3333" x2="104.6875" y1="250.0315" y2="250.0315"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="107.8125" y="253.8411">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="173.4375" x2="219.7917" y1="250.0315" y2="250.0315"/><!--MD5=[6b41cf5949e73aa4b00b28284d82abe3]
+class BitArray.Builder--><rect codeLine="37" fill="#282828" height="48.055" id="BitArray.Builder" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="138.5417" x="257.2917" y="182.3486"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="138.5417" x="257.2917" y="182.3486"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="138.5417" x="257.2917" y="205.4036"/><rect codeLine="37" fill="none" height="48.055" id="BitArray.Builder" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="138.5417" x="257.2917" y="182.3486"/><ellipse cx="271.875" cy="198.0428" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M273.7854,202.4679 Q273.3582,202.6876 272.8882,202.7974 Q272.4182,202.9073 271.8994,202.9073 Q270.0562,202.9073 269.0857,201.6927 Q268.1152,200.4781 268.1152,198.1832 Q268.1152,195.8822 269.0857,194.6676 Q270.0562,193.453 271.8994,193.453 Q272.4182,193.453 272.8943,193.5628 Q273.3704,193.6727 273.7854,193.8924 L273.7854,195.8944 Q273.3215,195.4671 272.8851,195.2688 Q272.4487,195.0704 271.9849,195.0704 Q270.9961,195.0704 270.4926,195.8547 Q269.989,196.639 269.989,198.1832 Q269.989,199.7213 270.4926,200.5056 Q270.9961,201.2899 271.9849,201.2899 Q272.4487,201.2899 272.8851,201.0915 Q273.3215,200.8931 273.7854,200.4659 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="101.0417" x="288.5417" y="202.7669">BitArray.Builder</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="258.3333" x2="394.7917" y1="213.737" y2="213.737"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="258.3333" x2="394.7917" y1="222.0703" y2="222.0703"/><!--MD5=[ba580110b1777f63e0f1dfe3fcefdac0]
+class Code--><rect codeLine="42" fill="#282828" height="194.6025" id="Code" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="208.3333" x="834.8958" y="500.5778"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="208.3333" x="834.8958" y="500.5778"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="208.3333" x="834.8958" y="523.6328"/><rect codeLine="42" fill="none" height="194.6025" id="Code" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="208.3333" x="834.8958" y="500.5778"/><ellipse cx="915.1042" cy="516.272" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M917.0146,520.697 Q916.5873,520.9167 916.1174,521.0266 Q915.6474,521.1365 915.1286,521.1365 Q913.2853,521.1365 912.3149,519.9219 Q911.3444,518.7073 911.3444,516.4124 Q911.3444,514.1113 912.3149,512.8967 Q913.2853,511.6821 915.1286,511.6821 Q915.6474,511.6821 916.1235,511.792 Q916.5995,511.9019 917.0146,512.1216 L917.0146,514.1235 Q916.5507,513.6963 916.1143,513.4979 Q915.6779,513.2996 915.214,513.2996 Q914.2253,513.2996 913.7217,514.0839 Q913.2182,514.8682 913.2182,516.4124 Q913.2182,517.9504 913.7217,518.7347 Q914.2253,519.519 915.214,519.519 Q915.6779,519.519 916.1143,519.3207 Q916.5507,519.1223 917.0146,518.6951 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="33.3333" x="938.0208" y="520.9961">Code</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="835.9375" x2="1042.1875" y1="531.9661" y2="531.9661"/><ellipse cx="846.3542" cy="567.336" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="176.0417" x="857.8125" y="574.2472">Code(GeohashAlphabet, String)</text><ellipse cx="846.3542" cy="587.0809" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="70.8333" x="857.8125" y="593.9921">Code(String)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="835.9375" x2="895.3125" y1="550.1719" y2="550.1719"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="898.4375" y="553.9815">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="982.8125" x2="1042.1875" y1="550.1719" y2="550.1719"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="835.9375" x2="1042.1875" y1="603.7008" y2="603.7008"/><ellipse cx="846.3542" cy="615.1591" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="64.5833" x="857.8125" y="622.0703">Code root()</text><ellipse cx="846.3542" cy="634.904" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="163.5417" x="857.8125" y="641.8152">Code root(GeohashAlphabet)</text><ellipse cx="846.3542" cy="678.5604" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="91.6667" x="857.8125" y="685.4716">boolean isRoot()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="835.9375" x2="912.5" y1="661.3963" y2="661.3963"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="46.875" x="915.625" y="665.2059">(checks)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="965.625" x2="1042.1875" y1="661.3963" y2="661.3963"/><!--MD5=[19bab21d94a99911073f24de8dec88db]
+class Codec--><rect codeLine="54" fill="#282828" height="131.2012" id="Codec" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="242.7083" x="432.2917" y="140.682"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="242.7083" x="432.2917" y="140.682"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="242.7083" x="432.2917" y="163.737"/><rect codeLine="54" fill="none" height="131.2012" id="Codec" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="242.7083" x="432.2917" y="140.682"/><ellipse cx="526.5625" cy="156.3761" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M528.4729,160.8012 Q528.0457,161.0209 527.5757,161.1308 Q527.1057,161.2406 526.5869,161.2406 Q524.7437,161.2406 523.7732,160.026 Q522.8027,158.8114 522.8027,156.5165 Q522.8027,154.2155 523.7732,153.0009 Q524.7437,151.7863 526.5869,151.7863 Q527.1057,151.7863 527.5818,151.8962 Q528.0579,152.006 528.4729,152.2257 L528.4729,154.2277 Q528.009,153.8005 527.5726,153.6021 Q527.1362,153.4037 526.6724,153.4037 Q525.6836,153.4037 525.1801,154.188 Q524.6765,154.9723 524.6765,156.5165 Q524.6765,158.0546 525.1801,158.8389 Q525.6836,159.6232 526.6724,159.6232 Q527.1362,159.6232 527.5726,159.4248 Q528.009,159.2265 528.4729,158.7992 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="39.5833" x="549.4792" y="161.1003">Codec</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="433.3333" x2="673.9583" y1="172.0703" y2="172.0703"/><ellipse cx="443.75" cy="207.4402" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="142.7083" x="455.2083" y="214.3514">Codec(GeohashAlphabet)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="433.3333" x2="509.8958" y1="190.2761" y2="190.2761"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="513.0208" y="194.0857">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="597.3958" x2="673.9583" y1="190.2761" y2="190.2761"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="433.3333" x2="673.9583" y1="224.0601" y2="224.0601"/><ellipse cx="443.75" cy="235.5184" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="135.4167" x="455.2083" y="242.4296">Rectangle decode(Code)</text><ellipse cx="443.75" cy="255.2633" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="210.4167" x="455.2083" y="262.1745">Code encode(Location, int resolution)</text><!--MD5=[2a081769997a3fca299c288384407bfc]
+class Geohash--><rect codeLine="63" fill="#282828" height="376.473" id="Geohash" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="263.5417" x="7.2917" y="409.9528"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="263.5417" x="7.2917" y="409.9528"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="263.5417" x="7.2917" y="433.0078"/><rect codeLine="63" fill="none" height="376.473" id="Geohash" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="263.5417" x="7.2917" y="409.9528"/><ellipse cx="103.6458" cy="425.647" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M105.5562,430.072 Q105.129,430.2917 104.659,430.4016 Q104.189,430.5115 103.6702,430.5115 Q101.827,430.5115 100.8565,429.2969 Q99.8861,428.0823 99.8861,425.7874 Q99.8861,423.4863 100.8565,422.2717 Q101.827,421.0571 103.6702,421.0571 Q104.189,421.0571 104.6651,421.167 Q105.1412,421.2769 105.5562,421.4966 L105.5562,423.4985 Q105.0924,423.0713 104.656,422.8729 Q104.2196,422.6746 103.7557,422.6746 Q102.7669,422.6746 102.2634,423.4589 Q101.7598,424.2432 101.7598,425.7874 Q101.7598,427.3254 102.2634,428.1097 Q102.7669,428.894 103.7557,428.894 Q104.2196,428.894 104.656,428.6957 Q105.0924,428.4973 105.5562,428.0701 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="56.25" x="126.5625" y="430.3711">Geohash</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="8.3333" x2="269.7917" y1="441.3411" y2="441.3411"/><ellipse cx="18.75" cy="476.711" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="86.4583" x="30.2083" y="483.6222">Geohash(Code)</text><ellipse cx="18.75" cy="496.4559" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="231.25" x="30.2083" y="503.3671">Geohash(GeohashAlphabet, Location, int)</text><ellipse cx="18.75" cy="516.2008" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="126.0417" x="30.2083" y="523.112">Geohash(Location, int)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="8.3333" x2="95.3125" y1="459.5469" y2="459.5469"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="98.4375" y="463.3565">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="182.8125" x2="269.7917" y1="459.5469" y2="459.5469"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="8.3333" x2="269.7917" y1="532.8206" y2="532.8206"/><ellipse cx="18.75" cy="544.279" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="108.3333" x="30.2083" y="551.1902">Rectangle bounds()</text><ellipse cx="18.75" cy="564.0238" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="181.25" x="30.2083" y="570.9351">Collection&lt;Geohash&gt; children()</text><ellipse cx="18.75" cy="583.7687" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="67.7083" x="30.2083" y="590.6799">Code code()</text><ellipse cx="18.75" cy="603.5136" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="58.3333" x="30.2083" y="610.4248">int depth()</text><ellipse cx="18.75" cy="623.2585" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="131.25" x="30.2083" y="630.1697">int numberOfChildren()</text><ellipse cx="18.75" cy="643.0033" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="96.875" x="30.2083" y="649.9146">Geohash parent()</text><ellipse cx="18.75" cy="662.7482" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="91.6667" x="30.2083" y="669.6594">Geohash world()</text><ellipse cx="18.75" cy="682.4931" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="190.625" x="30.2083" y="689.4043">Geohash world(GeohashAlphabet)</text><ellipse cx="18.75" cy="726.1495" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="97.9167" x="30.2083" y="733.0607">boolean isWorld()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="8.3333" x2="112.5" y1="708.9854" y2="708.9854"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="46.875" x="115.625" y="712.795">(checks)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="165.625" x2="269.7917" y1="708.9854" y2="708.9854"/><ellipse cx="18.75" cy="769.8059" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="114.5833" x="30.2083" y="776.7171">int maximumDepth()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="8.3333" x2="117.7083" y1="752.6418" y2="752.6418"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="36.4583" x="120.8333" y="756.4514">(math)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="160.4167" x2="269.7917" y1="752.6418" y2="752.6418"/><!--MD5=[872285eb6e7120f102175fd06e5e6977]
+class GeohashOrganizer--><rect codeLine="100" fill="#282828" height="174.8576" id="GeohashOrganizer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="181.25" x="307.8125" y="510.4736"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="181.25" x="307.8125" y="510.4736"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="181.25" x="307.8125" y="533.5286"/><rect codeLine="100" fill="none" height="174.8576" id="GeohashOrganizer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="181.25" x="307.8125" y="510.4736"/><ellipse cx="333.1771" cy="526.1678" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M335.0875,530.5929 Q334.6602,530.8126 334.1903,530.9224 Q333.7203,531.0323 333.2015,531.0323 Q331.3582,531.0323 330.3878,529.8177 Q329.4173,528.6031 329.4173,526.3082 Q329.4173,524.0072 330.3878,522.7926 Q331.3582,521.578 333.2015,521.578 Q333.7203,521.578 334.1964,521.6878 Q334.6724,521.7977 335.0875,522.0174 L335.0875,524.0194 Q334.6236,523.5921 334.1872,523.3938 Q333.7508,523.1954 333.2869,523.1954 Q332.2982,523.1954 331.7946,523.9797 Q331.2911,524.764 331.2911,526.3082 Q331.2911,527.8463 331.7946,528.6306 Q332.2982,529.4149 333.2869,529.4149 Q333.7508,529.4149 334.1872,529.2165 Q334.6236,529.0181 335.0875,528.5909 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="119.7917" x="352.2396" y="530.8919">GeohashOrganizer</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="308.8542" x2="488.0208" y1="541.862" y2="541.862"/><polygon fill="#FFFF44" points="319.2708,572.0235,323.4375,576.1902,319.2708,580.3569,315.1042,576.1902" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="113.5417" x="330.7292" y="584.1431">GeohashOrganizer()</text><ellipse cx="319.2708" cy="596.9767" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="148.9583" x="330.7292" y="603.8879">GeohashOrganizer(int, int)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="308.8542" x2="354.6875" y1="560.0677" y2="560.0677"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="357.8125" y="563.8774">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="442.1875" x2="488.0208" y1="560.0677" y2="560.0677"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="308.8542" x2="488.0208" y1="613.5966" y2="613.5966"/><ellipse cx="319.2708" cy="625.0549" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="147.9167" x="330.7292" y="631.9661">Collection&lt;Geohash&gt; all()</text><ellipse cx="319.2708" cy="668.7113" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="105.2083" x="330.7292" y="675.6226">void add(Geohash)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="308.8542" x2="364.0625" y1="651.5472" y2="651.5472"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="367.1875" y="655.3569">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="432.8125" x2="488.0208" y1="651.5472" y2="651.5472"/><!--MD5=[a105afbbc108a9e7a2bdb8a2c210af81]
+class Geohasher--><rect codeLine="111" fill="#282828" height="67.7999" id="Geohasher" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="272.9167" x="525.5208" y="564.1195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="272.9167" x="525.5208" y="564.1195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="272.9167" x="525.5208" y="587.1745"/><rect codeLine="111" fill="none" height="67.7999" id="Geohasher" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="272.9167" x="525.5208" y="564.1195"/><ellipse cx="620.3125" cy="579.8136" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M622.2229,584.2387 Q621.7957,584.4584 621.3257,584.5683 Q620.8557,584.6781 620.3369,584.6781 Q618.4937,584.6781 617.5232,583.4635 Q616.5527,582.2489 616.5527,579.954 Q616.5527,577.653 617.5232,576.4384 Q618.4937,575.2238 620.3369,575.2238 Q620.8557,575.2238 621.3318,575.3337 Q621.8079,575.4435 622.2229,575.6632 L622.2229,577.6652 Q621.759,577.238 621.3226,577.0396 Q620.8862,576.8412 620.4224,576.8412 Q619.4336,576.8412 618.9301,577.6255 Q618.4265,578.4098 618.4265,579.954 Q618.4265,581.4921 618.9301,582.2764 Q619.4336,583.0607 620.4224,583.0607 Q620.8862,583.0607 621.3226,582.8623 Q621.759,582.664 622.2229,582.2367 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="68.75" x="643.2292" y="584.5378">Geohasher</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="526.5625" x2="797.3958" y1="595.5078" y2="595.5078"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="526.5625" x2="797.3958" y1="603.8411" y2="603.8411"/><ellipse cx="536.9792" cy="615.2995" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="240.625" x="548.4375" y="622.2107">Collection&lt;Geohash&gt; geohashes(Polygon)</text><!--MD5=[f7e29b5a8ddd98024947a8ebefcadb13]
+class GeohashOrganizer.Node--><rect codeLine="117" fill="#282828" height="238.2589" id="GeohashOrganizer.Node" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="206.25" x="35.9375" y="848.4945"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="206.25" x="35.9375" y="848.4945"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="206.25" x="35.9375" y="871.5495"/><rect codeLine="117" fill="none" height="238.2589" id="GeohashOrganizer.Node" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="206.25" x="35.9375" y="848.4945"/><ellipse cx="56.1458" cy="864.1886" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M58.0562,868.6137 Q57.629,868.8334 57.159,868.9433 Q56.689,869.0531 56.1702,869.0531 Q54.327,869.0531 53.3565,867.8385 Q52.3861,866.6239 52.3861,864.329 Q52.3861,862.028 53.3565,860.8134 Q54.327,859.5988 56.1702,859.5988 Q56.689,859.5988 57.1651,859.7087 Q57.6412,859.8185 58.0562,860.0382 L58.0562,862.0402 Q57.5924,861.613 57.156,861.4146 Q56.7196,861.2162 56.2557,861.2162 Q55.2669,861.2162 54.7634,862.0005 Q54.2598,862.7848 54.2598,864.329 Q54.2598,865.8671 54.7634,866.6514 Q55.2669,867.4357 56.2557,867.4357 Q56.7196,867.4357 57.156,867.2373 Q57.5924,867.039 58.0562,866.6117 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="156.25" x="74.0625" y="868.9128">GeohashOrganizer.Node</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="36.9792" x2="241.1458" y1="879.8828" y2="879.8828"/><ellipse cx="47.3958" cy="915.2527" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="86.4583" x="58.8542" y="922.1639">Node(Geohash)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="36.9792" x2="95.3125" y1="898.0886" y2="898.0886"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="98.4375" y="901.8982">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="182.8125" x2="241.1458" y1="898.0886" y2="898.0886"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="36.9792" x2="241.1458" y1="931.8726" y2="931.8726"/><ellipse cx="47.3958" cy="943.3309" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="83.3333" x="58.8542" y="950.2421">void compact()</text><ellipse cx="47.3958" cy="963.0758" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="108.3333" x="58.8542" y="969.987">Geohash geohash()</text><ellipse cx="47.3958" cy="982.8206" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="173.9583" x="58.8542" y="989.7319">int numberOfMissingChildren()</text><ellipse cx="47.3958" cy="1026.4771" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="88.5417" x="58.8542" y="1033.3883">boolean isLeaf()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="36.9792" x2="112.5" y1="1009.3129" y2="1009.3129"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="46.875" x="115.625" y="1013.1226">(checks)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="165.625" x2="241.1458" y1="1009.3129" y2="1009.3129"/><ellipse cx="47.3958" cy="1070.1335" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="85.4167" x="58.8542" y="1077.0447">void add(Node)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="36.9792" x2="104.6875" y1="1052.9694" y2="1052.9694"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="107.8125" y="1056.779">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="173.4375" x2="241.1458" y1="1052.9694" y2="1052.9694"/><!--MD5=[9d395e6b044b4dc4669eeea97666dc4e]
+class GeohashOrganizer.TreeLevel--><rect codeLine="131" fill="#282828" height="170.6909" id="GeohashOrganizer.TreeLevel" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="221.875" x="279.1667" y="882.3486"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="221.875" x="279.1667" y="882.3486"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="221.875" x="279.1667" y="905.4036"/><rect codeLine="131" fill="none" height="170.6909" id="GeohashOrganizer.TreeLevel" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="221.875" x="279.1667" y="882.3486"/><ellipse cx="293.75" cy="898.0428" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M295.6604,902.4679 Q295.2332,902.6876 294.7632,902.7974 Q294.2932,902.9073 293.7744,902.9073 Q291.9312,902.9073 290.9607,901.6927 Q289.9902,900.4781 289.9902,898.1832 Q289.9902,895.8822 290.9607,894.6676 Q291.9312,893.453 293.7744,893.453 Q294.2932,893.453 294.7693,893.5628 Q295.2454,893.6727 295.6604,893.8924 L295.6604,895.8944 Q295.1965,895.4671 294.7601,895.2688 Q294.3237,895.0704 293.8599,895.0704 Q292.8711,895.0704 292.3676,895.8547 Q291.864,896.639 291.864,898.1832 Q291.864,899.7213 292.3676,900.5056 Q292.8711,901.2899 293.8599,901.2899 Q294.3237,901.2899 294.7601,901.0915 Q295.1965,900.8931 295.6604,900.4659 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="184.375" x="310.4167" y="902.7669">GeohashOrganizer.TreeLevel</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="280.2083" x2="500" y1="913.737" y2="913.737"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="280.2083" x2="500" y1="922.0703" y2="922.0703"/><ellipse cx="290.625" cy="933.5286" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="107.2917" x="302.0833" y="940.4399">Node get(Geohash)</text><ellipse cx="290.625" cy="953.2735" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="150" x="302.0833" y="960.1847">Collection&lt;Node&gt; nodes()</text><ellipse cx="290.625" cy="996.9299" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="110.4167" x="302.0833" y="1003.8411">Node add(Geohash)</text><ellipse cx="290.625" cy="1016.6748" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="153.125" x="302.0833" y="1023.586">boolean contains(Geohash)</text><ellipse cx="290.625" cy="1036.4197" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="126.0417" x="302.0833" y="1043.3309">void remove(Geohash)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="280.2083" x2="355.7292" y1="979.7658" y2="979.7658"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="358.8542" y="983.5754">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="424.4792" x2="500" y1="979.7658" y2="979.7658"/><!--MD5=[47e81559c350905935bb68ec3e27fd3a]
+reverse link GeohashAlphabet to Base32GeohashAlphabet--><path codeLine="9" d="M1179.6875,368.5882 C1179.6875,447.2132 1179.6875,533.3695 1179.6875,573.6924 " fill="none" id="GeohashAlphabet-backto-Base32GeohashAlphabet" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="1172.3958,368.557,1179.6875,347.7236,1186.9792,368.557,1172.3958,368.557" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[31d6295b3ccc082084673d1cae6b346a]
+reverse link CharSequence to Code--><path codeLine="41" d="M939.0625,251.7653 C939.0625,311.9736 939.0625,421.0986 939.0625,500.5778 " fill="none" id="CharSequence-backto-Code" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="931.7708,251.3903,939.0625,230.557,946.3542,251.3903,931.7708,251.3903" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[afe0db92f746e4be5430d0dfa49ea136]
+link BitArray to BitArray.Builder--><!--MD5=[b0aa82596fb2685f9da131566629bb12]
+link BitArray.Builder to Codec--><!--MD5=[c56f7481ab32e5e4e5e6850e9ec339e8]
+link BitArray to Geohash--><!--MD5=[5e18dff3b1d8590b6b366fa86d2bdfe8]
+link Geohash to GeohashOrganizer--><!--MD5=[4c8adbc01585cd6f0fe6849230a08286]
+link GeohashOrganizer to Geohasher--><!--MD5=[4f47c475f1c5e1b1eb2e9a86064a1cc0]
+link Geohash to GeohashOrganizer.Node--><!--MD5=[8843d48abe5036146abdad8438177fcd]
+link GeohashOrganizer.Node to GeohashOrganizer.TreeLevel--><!--MD5=[a68d28d11464a4971ed77b7028b049a4]
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.utilities.geohash"
+    
+    interface CharSequence
+    interface GeohashAlphabet
+    
+    GeohashAlphabet <|- - Base32GeohashAlphabet
+    class Base32GeohashAlphabet
+    {
+    }
+    
+    class BitArray
+    {
+        - -
+        +int length()
+        - -(checks)- -
+        +boolean isSet(int index)
+        - -(collection)- -
+        +List<Boolean> allBits()
+    }
+    
+    class Geohasher.Builder
+    {
+        - -(constructors)- -
+        +Builder()
+        +Builder(GeohashAlphabet)
+        - -(building)- -
+        +Builder allowBorderCrossings(boolean allowBorderCrossings)
+        +Builder borderCompactingTolerance(int borderCompactingTolerance)
+        +Geohasher build()
+        +Builder interiorCompactingTolerance(int interiorCompactingTolerance)
+        +Builder resolution(int resolution)
+    }
+    
+    class BitArray.Builder
+    {
+    }
+    
+    CharSequence <|- - Code
+    class Code
+    {
+        - -(constructors)- -
+        +Code(GeohashAlphabet, String)
+        +Code(String)
+        - -
+        +Code root()
+        +Code root(GeohashAlphabet)
+        - -(checks)- -
+        +boolean isRoot()
+    }
+    
+    class Codec
+    {
+        - -(constructors)- -
+        +Codec(GeohashAlphabet)
+        - -
+        +Rectangle decode(Code)
+        +Code encode(Location, int resolution)
+    }
+    
+    class Geohash
+    {
+        - -(constructors)- -
+        +Geohash(Code)
+        +Geohash(GeohashAlphabet, Location, int)
+        +Geohash(Location, int)
+        - -
+        +Rectangle bounds()
+        +Collection<Geohash> children()
+        +Code code()
+        +int depth()
+        +int numberOfChildren()
+        +Geohash parent()
+        +Geohash world()
+        +Geohash world(GeohashAlphabet)
+        - -(checks)- -
+        +boolean isWorld()
+        - -(math)- -
+        +int maximumDepth()
+    }
+    
+    interface GeohashAlphabet
+    {
+        - -
+        +char get(int index)
+        - -(checks)- -
+        +boolean isValid(String text)
+        - -(collection)- -
+        +int indexOf(char character)
+        - -(math)- -
+        +int maximumTextLength()
+        - -(primitive)- -
+        +int bitsPerCharacter()
+        +Collection<Character> characters()
+        +int numberOfCharacters()
+    }
+    
+    class GeohashOrganizer
+    {
+        - -(constructors)- -
+        #GeohashOrganizer()
+        +GeohashOrganizer(int, int)
+        - -
+        +Collection<Geohash> all()
+        - -(collection)- -
+        +void add(Geohash)
+    }
+    
+    class Geohasher
+    {
+        - -
+        +Collection<Geohash> geohashes(Polygon)
+    }
+    
+    class GeohashOrganizer.Node
+    {
+        - -(constructors)- -
+        +Node(Geohash)
+        - -
+        +void compact()
+        +Geohash geohash()
+        +int numberOfMissingChildren()
+        - -(checks)- -
+        +boolean isLeaf()
+        - -(collection)- -
+        +void add(Node)
+    }
+    
+    class GeohashOrganizer.TreeLevel
+    {
+        - -
+        +Node get(Geohash)
+        +Collection<Node> nodes()
+        - -(collection)- -
+        +Node add(Geohash)
+        +boolean contains(Geohash)
+        +void remove(Geohash)
+    }
+    
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+
+
+skinparam backgroundColor #333333
+
+
+
+
+
+
+skinparam  {
+    defaultFontName   "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+    defaultFontSize   12
+    defaultTextAlignment left
+    shadowing false
+    RoundCorner 10
+    TitleFontSize 18
+}
+
+skinparam defaultFontName       "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           16
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               3
+skinparam ArrowColor            #545454
+skinparam stereotype {
+    CBackgroundColor #0066cf
+    CBorderColor #0086ef
+    ABackgroundColor #C8Ac00
+    ABorderColor #D8Bc00
+    IBackgroundColor #008400
+    IBorderColor #239c23
+    EBackgroundColor #cf6300
+    EBorderColor #ef8300
+    NBackgroundColor #3380b9
+    NBorderColor #004d86
+}
+skinparam title {
+	FontColor	                 #c0c0c0
+ 	BorderColor                  #545454
+	FontSize	    	         20
+	BorderRoundCorner            16
+	BorderThickness 	         1
+	BackgroundColor              #48494b
+}
+
+
+skinparam legend {
+	BackgroundColor #303030
+	BorderColor #404040
+	FontColor #a0a0a0
+}
+
+	skinparam swimlane {
+	BorderColor #5e5e5e
+	BorderThickness 2
+	TitleBackgroundColor  #6d6d6d-#484848
+	TitleFontColor #303030
+}
+
+skinparam activity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BarColor #00FF00
+	StartColor #0060a8
+	EndColor #0060a8
+	DiamondBackgroundColor #6d6d6d-#3a3a3a
+  	DiamondBorderColor #3a3a3a
+  	DiamondFontColor #fefefe
+}
+
+
+skinparam participant {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam arrow {
+	Thickness 1.5
+	Color #545454
+	FontColor #a0a0a0
+    FontStyle bold
+    MessageAlignment center
+}
+
+
+
+skinparam sequence {
+	BorderColor #303030
+	TitleFontColor #303030
+	BackgroundColor #333333
+	StartColor #303030
+	EndColor #303030
+	BoxBackgroundColor #333333
+	BoxBorderColor #484848
+	BoxFontColor #484848
+	LifeLineBorderColor #484848
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor #3a3a3a
+	GroupBorderColor #484848
+	GroupFontColor #484848
+	GroupHeaderFontColor #0060a8
+	GroupBackgroundColor #484848
+	GroupHeaderBackgroundColor #333333
+	DividerBackgroundColor #484848
+    DividerBorderColor #484848
+    DividerBorderThickness 2
+    DividerFontColor #D8Bc00
+	ReferenceBackgroundColor #333333
+	ReferenceBorderColor #484848
+	ReferenceFontColor #fefefe
+	ReferenceHeaderBackgroundColor #484848
+}
+
+
+skinparam partition {
+	BorderColor #303030
+	FontColor #333333
+	BackgroundColor #333333
+}
+
+
+skinparam collections {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam control {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam entity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam boundary {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam agent {
+	BackgroundColor #ff8000
+	BorderColor #ff9933
+	FontColor #484848
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor #1b1b1a
+	BorderColor #5e5e5e
+	FontSize 11
+	FontColor #a0a0a0
+}
+
+
+skinparam artifact {
+	BorderThickness 10
+	BorderColor #5e5e5e
+	BackgroundColor #1b1b1a
+	FontColor #D8Bc00
+}
+
+
+skinparam component {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam interface {
+	BackgroundColor  #008400
+	BorderColor  #007F00
+	FontColor #484848
+}
+
+
+skinparam storage {
+	BackgroundColor #ff8000
+  	BorderColor #cc6600
+	FontColor #222222
+}
+
+
+skinparam node {
+	BackgroundColor #333333
+	BorderColor #333333
+	FontColor #C8Ac00
+}
+
+
+skinparam cloud {
+	BackgroundColor #484848-black
+	BorderColor #484848
+	FontColor #D8Bc00
+}
+
+
+skinparam database {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor  #333333
+}
+
+
+skinparam class {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	HeaderBackgroundColor #1b1b1a
+    BackgroundColor #282828
+    BorderColor #5e5e5e
+ 	StereotypeFontColor #a0a0a0
+    StereotypeFontStyle bold
+	BorderThickness 1
+	AttributeFontColor #D8Bc00
+	AttributeFontSize 11
+    FontColor #D8Bc00
+    FontStyle bold
+}
+
+
+skinparam object {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StereotypeFontColor #484848
+	BorderThickness 1
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam rectangle {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam package {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor #6d6d6d
+  	BorderColor #ff8000
+	FontColor #ff8000
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor #6d6d6d
+  	BorderColor #0060a8
+	FontColor #0060a8
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StartColor #0060a8
+	EndColor #0060a8
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam card {
+	BackgroundColor #0060a8
+	BorderColor #004d86
+	FontColor $INFO_TEXT
+}
+
+
+skinparam file {
+	BackgroundColor #6d6d6d-#484848
+	BorderColor #0060a8
+	FontColor #fefefe
+}
+
+
+skinparam stack {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+    
+    title "com.telenav.aonia.map.utilities.geohash"
+    
+    interface CharSequence
+    interface GeohashAlphabet
+    
+    GeohashAlphabet <|- - Base32GeohashAlphabet
+    class Base32GeohashAlphabet
+    {
+    }
+    
+    class BitArray
+    {
+        - -
+        +int length()
+        - -(checks)- -
+        +boolean isSet(int index)
+        - -(collection)- -
+        +List<Boolean> allBits()
+    }
+    
+    class Geohasher.Builder
+    {
+        - -(constructors)- -
+        +Builder()
+        +Builder(GeohashAlphabet)
+        - -(building)- -
+        +Builder allowBorderCrossings(boolean allowBorderCrossings)
+        +Builder borderCompactingTolerance(int borderCompactingTolerance)
+        +Geohasher build()
+        +Builder interiorCompactingTolerance(int interiorCompactingTolerance)
+        +Builder resolution(int resolution)
+    }
+    
+    class BitArray.Builder
+    {
+    }
+    
+    CharSequence <|- - Code
+    class Code
+    {
+        - -(constructors)- -
+        +Code(GeohashAlphabet, String)
+        +Code(String)
+        - -
+        +Code root()
+        +Code root(GeohashAlphabet)
+        - -(checks)- -
+        +boolean isRoot()
+    }
+    
+    class Codec
+    {
+        - -(constructors)- -
+        +Codec(GeohashAlphabet)
+        - -
+        +Rectangle decode(Code)
+        +Code encode(Location, int resolution)
+    }
+    
+    class Geohash
+    {
+        - -(constructors)- -
+        +Geohash(Code)
+        +Geohash(GeohashAlphabet, Location, int)
+        +Geohash(Location, int)
+        - -
+        +Rectangle bounds()
+        +Collection<Geohash> children()
+        +Code code()
+        +int depth()
+        +int numberOfChildren()
+        +Geohash parent()
+        +Geohash world()
+        +Geohash world(GeohashAlphabet)
+        - -(checks)- -
+        +boolean isWorld()
+        - -(math)- -
+        +int maximumDepth()
+    }
+    
+    interface GeohashAlphabet
+    {
+        - -
+        +char get(int index)
+        - -(checks)- -
+        +boolean isValid(String text)
+        - -(collection)- -
+        +int indexOf(char character)
+        - -(math)- -
+        +int maximumTextLength()
+        - -(primitive)- -
+        +int bitsPerCharacter()
+        +Collection<Character> characters()
+        +int numberOfCharacters()
+    }
+    
+    class GeohashOrganizer
+    {
+        - -(constructors)- -
+        #GeohashOrganizer()
+        +GeohashOrganizer(int, int)
+        - -
+        +Collection<Geohash> all()
+        - -(collection)- -
+        +void add(Geohash)
+    }
+    
+    class Geohasher
+    {
+        - -
+        +Collection<Geohash> geohashes(Polygon)
+    }
+    
+    class GeohashOrganizer.Node
+    {
+        - -(constructors)- -
+        +Node(Geohash)
+        - -
+        +void compact()
+        +Geohash geohash()
+        +int numberOfMissingChildren()
+        - -(checks)- -
+        +boolean isLeaf()
+        - -(collection)- -
+        +void add(Node)
+    }
+    
+    class GeohashOrganizer.TreeLevel
+    {
+        - -
+        +Node get(Geohash)
+        +Collection<Node> nodes()
+        - -(collection)- -
+        +Node add(Geohash)
+        +boolean contains(Geohash)
+        +void remove(Geohash)
+    }
+    
+@enduml
+
+PlantUML version 1.2021.01(Tue Feb 02 00:55:08 MST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

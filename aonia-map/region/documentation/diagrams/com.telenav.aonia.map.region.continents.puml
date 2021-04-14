@@ -1,0 +1,57 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.region.continents"
+    
+    Continent <|-- Africa
+    class Africa
+    {
+        --(constructors)--
+        +Africa()
+    }
+    
+    Continent <|-- Antarctica
+    class Antarctica
+    {
+        --(constructors)--
+        +Antarctica()
+    }
+    
+    Continent <|-- Asia
+    class Asia
+    {
+        --(constructors)--
+        +Asia()
+    }
+    
+    Continent <|-- Europe
+    class Europe
+    {
+        --(constructors)--
+        +Europe()
+    }
+    
+    Continent <|-- NorthAmerica
+    class NorthAmerica
+    {
+        --(constructors)--
+        +NorthAmerica()
+    }
+    
+    Continent <|-- Oceania
+    class Oceania
+    {
+        --(constructors)--
+        +Oceania()
+    }
+    
+    Continent <|-- SouthAmerica
+    class SouthAmerica
+    {
+        --(constructors)--
+        +SouthAmerica()
+    }
+    
+@enduml
+

@@ -1,0 +1,1016 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="3767.7083px" preserveAspectRatio="none" style="width:3357px;height:3767px;background:#333333;" version="1.1" viewBox="0 0 3357 3767" width="3357.2917px" zoomAndPan="magnify"><defs/><g><rect fill="#48494B" height="41.2028" rx="8.3333" ry="8.3333" style="stroke:#545454;stroke-width:1.0416666666666667;" width="516.6667" x="1413.0208" y="2.0833"/><text fill="#C0C0C0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="20.8333" lengthAdjust="spacing" textLength="493.75" x="1424.4792" y="30.5583">com.telenav.aonia.map.geography.shape.polyline</text><!--MD5=[50e22ea0ef6795f0e945e16a02c7a8db]
+cluster Polyline--><polygon fill="#333333" points="16.6667,1504.2236,80.2083,1504.2236,87.5,1531.4453,1401.0417,1531.4453,1401.0417,1792.7653,16.6667,1792.7653,16.6667,1504.2236" style="stroke:#333333;stroke-width:2.0833333333333335;"/><line style="stroke:#333333;stroke-width:2.0833333333333335;" x1="16.6667" x2="87.5" y1="1531.4453" y2="1531.4453"/><text fill="#C8AC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="51.0417" x="23.9583" y="1521.5169">Polyline</text><!--MD5=[a0afdcc7b8b3ebd452a24838997bfa64]
+class Polyline.Converter--><rect codeLine="16" fill="#282828" height="83.3781" id="Polyline.Converter" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="208.3333" x="350" y="1618.807"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="208.3333" x="350" y="1618.807"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="208.3333" x="350" y="1641.862"/><rect codeLine="16" fill="none" height="83.3781" id="Polyline.Converter" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="208.3333" x="350" y="1618.807"/><ellipse cx="415.1042" cy="1634.5011" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M417.0146,1638.9262 Q416.5873,1639.1459 416.1174,1639.2558 Q415.6474,1639.3656 415.1286,1639.3656 Q413.2853,1639.3656 412.3149,1638.151 Q411.3444,1636.9364 411.3444,1634.6415 Q411.3444,1632.3405 412.3149,1631.1259 Q413.2853,1629.9113 415.1286,1629.9113 Q415.6474,1629.9113 416.1235,1630.0212 Q416.5995,1630.131 417.0146,1630.3507 L417.0146,1632.3527 Q416.5507,1631.9255 416.1143,1631.7271 Q415.6779,1631.5287 415.214,1631.5287 Q414.2253,1631.5287 413.7217,1632.313 Q413.2182,1633.0973 413.2182,1634.6415 Q413.2182,1636.1796 413.7217,1636.9639 Q414.2253,1637.7482 415.214,1637.7482 Q415.6779,1637.7482 416.1143,1637.5498 Q416.5507,1637.3515 417.0146,1636.9242 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="63.5417" x="438.0208" y="1639.2253">Converter</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="351.0417" x2="557.2917" y1="1650.1953" y2="1650.1953"/><ellipse cx="361.4583" cy="1685.5652" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="176.0417" x="372.9167" y="1692.4764">Converter(Listener, Separators)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="351.0417" x2="410.4167" y1="1668.4011" y2="1668.4011"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="413.5417" y="1672.2107">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="497.9167" x2="557.2917" y1="1668.4011" y2="1668.4011"/><!--MD5=[b86307deb76fd0707f66c162a519a0fa]
+class Polyline.GoogleEncodingConverter--><rect codeLine="23" fill="#282828" height="83.3781" id="Polyline.GoogleEncodingConverter" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="233.3333" x="837.5" y="1618.807"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="233.3333" x="837.5" y="1618.807"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="233.3333" x="837.5" y="1641.862"/><rect codeLine="23" fill="none" height="83.3781" id="Polyline.GoogleEncodingConverter" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="233.3333" x="837.5" y="1618.807"/><ellipse cx="864.2708" cy="1634.5011" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M866.1812,1638.9262 Q865.754,1639.1459 865.284,1639.2558 Q864.814,1639.3656 864.2952,1639.3656 Q862.452,1639.3656 861.4815,1638.151 Q860.5111,1636.9364 860.5111,1634.6415 Q860.5111,1632.3405 861.4815,1631.1259 Q862.452,1629.9113 864.2952,1629.9113 Q864.814,1629.9113 865.2901,1630.0212 Q865.7662,1630.131 866.1812,1630.3507 L866.1812,1632.3527 Q865.7174,1631.9255 865.281,1631.7271 Q864.8446,1631.5287 864.3807,1631.5287 Q863.3919,1631.5287 862.8884,1632.313 Q862.3848,1633.0973 862.3848,1634.6415 Q862.3848,1636.1796 862.8884,1636.9639 Q863.3919,1637.7482 864.3807,1637.7482 Q864.8446,1637.7482 865.281,1637.5498 Q865.7174,1637.3515 866.1812,1636.9242 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="168.75" x="883.6458" y="1639.2253">GoogleEncodingConverter</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="838.5417" x2="1069.7917" y1="1650.1953" y2="1650.1953"/><ellipse cx="848.9583" cy="1685.5652" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="201.0417" x="860.4167" y="1692.4764">GoogleEncodingConverter(Listener)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="838.5417" x2="910.4167" y1="1668.4011" y2="1668.4011"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="913.5417" y="1672.2107">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="997.9167" x2="1069.7917" y1="1668.4011" y2="1668.4011"/><!--MD5=[c27cef2389b66fd97612b47e127951b5]
+class Polyline.Intersection--><rect codeLine="29" fill="#282828" height="155.1127" id="Polyline.Intersection" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="206.25" x="594.7917" y="1582.8695"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="206.25" x="594.7917" y="1582.8695"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="206.25" x="594.7917" y="1605.9245"/><rect codeLine="29" fill="none" height="155.1127" id="Polyline.Intersection" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="206.25" x="594.7917" y="1582.8695"/><ellipse cx="652.0833" cy="1598.5636" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M653.9937,1602.9887 Q653.5665,1603.2084 653.0965,1603.3183 Q652.6265,1603.4281 652.1077,1603.4281 Q650.2645,1603.4281 649.294,1602.2135 Q648.3236,1600.9989 648.3236,1598.704 Q648.3236,1596.403 649.294,1595.1884 Q650.2645,1593.9738 652.1077,1593.9738 Q652.6265,1593.9738 653.1026,1594.0837 Q653.5787,1594.1935 653.9937,1594.4132 L653.9937,1596.4152 Q653.5299,1595.988 653.0935,1595.7896 Q652.6571,1595.5912 652.1932,1595.5912 Q651.2044,1595.5912 650.7009,1596.3755 Q650.1973,1597.1598 650.1973,1598.704 Q650.1973,1600.2421 650.7009,1601.0264 Q651.2044,1601.8107 652.1932,1601.8107 Q652.6571,1601.8107 653.0935,1601.6123 Q653.5299,1601.414 653.9937,1600.9867 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="77.0833" x="675" y="1603.2878">Intersection</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="595.8333" x2="800" y1="1614.2578" y2="1614.2578"/><ellipse cx="606.25" cy="1649.6277" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="173.9583" x="617.7083" y="1656.5389">Intersection(Location, boolean)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="595.8333" x2="654.1667" y1="1632.4636" y2="1632.4636"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="657.2917" y="1636.2732">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="741.6667" x2="800" y1="1632.4636" y2="1632.4636"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="595.8333" x2="800" y1="1666.2476" y2="1666.2476"/><ellipse cx="606.25" cy="1677.7059" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="104.1667" x="617.7083" y="1684.6171">Location location()</text><ellipse cx="606.25" cy="1721.3623" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="113.5417" x="617.7083" y="1728.2735">boolean isModified()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="595.8333" x2="678.6458" y1="1704.1982" y2="1704.1982"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="32.2917" x="681.7708" y="1708.0078">(time)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="717.1875" x2="800" y1="1704.1982" y2="1704.1982"/><!--MD5=[318e6b7a0e3c902f1091b63df731de31]
+class Polyline.LongArrayConverter--><rect codeLine="40" fill="#282828" height="83.3781" id="Polyline.LongArrayConverter" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="267.7083" x="1107.8125" y="1618.807"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="267.7083" x="1107.8125" y="1618.807"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="267.7083" x="1107.8125" y="1641.862"/><rect codeLine="40" fill="none" height="83.3781" id="Polyline.LongArrayConverter" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="267.7083" x="1107.8125" y="1618.807"/><ellipse cx="1169.2708" cy="1634.5011" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M1171.1812,1638.9262 Q1170.754,1639.1459 1170.284,1639.2558 Q1169.814,1639.3656 1169.2952,1639.3656 Q1167.452,1639.3656 1166.4815,1638.151 Q1165.5111,1636.9364 1165.5111,1634.6415 Q1165.5111,1632.3405 1166.4815,1631.1259 Q1167.452,1629.9113 1169.2952,1629.9113 Q1169.814,1629.9113 1170.2901,1630.0212 Q1170.7662,1630.131 1171.1812,1630.3507 L1171.1812,1632.3527 Q1170.7174,1631.9255 1170.281,1631.7271 Q1169.8446,1631.5287 1169.3807,1631.5287 Q1168.3919,1631.5287 1167.8884,1632.313 Q1167.3848,1633.0973 1167.3848,1634.6415 Q1167.3848,1636.1796 1167.8884,1636.9639 Q1168.3919,1637.7482 1169.3807,1637.7482 Q1169.8446,1637.7482 1170.281,1637.5498 Q1170.7174,1637.3515 1171.1812,1636.9242 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="130.2083" x="1192.1875" y="1639.2253">LongArrayConverter</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="1108.8542" x2="1374.4792" y1="1650.1953" y2="1650.1953"/><ellipse cx="1119.2708" cy="1685.5652" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="235.4167" x="1130.7292" y="1692.4764">LongArrayConverter(Listener, Separators)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1108.8542" x2="1197.9167" y1="1668.4011" y2="1668.4011"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="1201.0417" y="1672.2107">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1285.4167" x2="1374.4792" y1="1668.4011" y2="1668.4011"/><!--MD5=[25c11d67962d2cc4ca87037bd59c09c2]
+class Polyline.Loop--><rect codeLine="46" fill="#282828" height="214.3473" id="Polyline.Loop" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="251.0417" x="61.9792" y="1553.182"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="251.0417" x="61.9792" y="1553.182"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="251.0417" x="61.9792" y="1576.237"/><rect codeLine="46" fill="none" height="214.3473" id="Polyline.Loop" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="251.0417" x="61.9792" y="1553.182"/><ellipse cx="164.0625" cy="1568.8761" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M165.9729,1573.3012 Q165.5457,1573.5209 165.0757,1573.6308 Q164.6057,1573.7406 164.0869,1573.7406 Q162.2437,1573.7406 161.2732,1572.526 Q160.3027,1571.3114 160.3027,1569.0165 Q160.3027,1566.7155 161.2732,1565.5009 Q162.2437,1564.2863 164.0869,1564.2863 Q164.6057,1564.2863 165.0818,1564.3962 Q165.5579,1564.506 165.9729,1564.7257 L165.9729,1566.7277 Q165.509,1566.3005 165.0726,1566.1021 Q164.6362,1565.9037 164.1724,1565.9037 Q163.1836,1565.9037 162.6801,1566.688 Q162.1765,1567.4723 162.1765,1569.0165 Q162.1765,1570.5546 162.6801,1571.3389 Q163.1836,1572.1232 164.1724,1572.1232 Q164.6362,1572.1232 165.0726,1571.9248 Q165.509,1571.7265 165.9729,1571.2992 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="32.2917" x="186.9792" y="1573.6003">Loop</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="63.0208" x2="311.9792" y1="1584.5703" y2="1584.5703"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="63.0208" x2="311.9792" y1="1592.9036" y2="1592.9036"/><ellipse cx="73.4375" cy="1604.362" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="121.875" x="84.8958" y="1611.2732">PolylineSection head()</text><ellipse cx="73.4375" cy="1624.1069" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="218.75" x="84.8958" y="1631.0181">void intersections(Count intersections)</text><ellipse cx="73.4375" cy="1643.8517" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="111.4583" x="84.8958" y="1650.7629">PolylineSection tail()</text><ellipse cx="73.4375" cy="1687.5081" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="118.75" x="84.8958" y="1694.4194">Count intersections()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="63.0208" x2="153.125" y1="1670.344" y2="1670.344"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="156.25" y="1674.1536">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="221.875" x2="311.9792" y1="1670.344" y2="1670.344"/><ellipse cx="73.4375" cy="1731.1646" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="119.7917" x="84.8958" y="1738.0758">PolylineSection loop()</text><ellipse cx="73.4375" cy="1750.9094" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="96.875" x="84.8958" y="1757.8206">Location loopAt()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="63.0208" x2="156.7708" y1="1714.0004" y2="1714.0004"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="55.2083" x="159.8958" y="1717.8101">(iteration)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="218.2292" x2="311.9792" y1="1714.0004" y2="1714.0004"/><!--MD5=[9aa687ed59f428548907e723dba1087a]
+class BaseStringConverter--><rect codeLine="6" fill="#282828" height="48.055" id="BaseStringConverter" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="169.7917" x="869.2708" y="318.807"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="169.7917" x="869.2708" y="318.807"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="169.7917" x="869.2708" y="341.862"/><rect codeLine="6" fill="none" height="48.055" id="BaseStringConverter" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="169.7917" x="869.2708" y="318.807"/><ellipse cx="883.8542" cy="334.5011" fill="#C8AC00" rx="10.4167" ry="10.4167" style="stroke:#D8BC00;stroke-width:1.0416666666666667;"/><path d="M883.9681,331.2032 L883.1197,334.9325 L884.8226,334.9325 Z M882.8695,329.5553 L885.0728,329.5553 L887.5326,338.6678 L885.732,338.6678 L885.1705,336.4156 L882.7596,336.4156 L882.2103,338.6678 L880.4097,338.6678 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="132.2917" x="900.5208" y="339.2253">BaseStringConverter</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="870.3125" x2="1038.0208" y1="350.1953" y2="350.1953"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="870.3125" x2="1038.0208" y1="358.5286" y2="358.5286"/><!--MD5=[426e75666daf533f17226ff4c87e20fd]
+class Shape--><rect codeLine="8" fill="#282828" height="48.055" id="Shape" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="76.0417" x="1674.4792" y="1636.5153"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="76.0417" x="1674.4792" y="1636.5153"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="76.0417" x="1674.4792" y="1659.5703"/><rect codeLine="8" fill="none" height="48.055" id="Shape" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="76.0417" x="1674.4792" y="1636.5153"/><ellipse cx="1689.0625" cy="1652.2095" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M1685.9456,1649.3713 L1685.9456,1647.7844 L1691.3717,1647.7844 L1691.3717,1649.3713 L1689.5589,1649.3713 L1689.5589,1655.3101 L1691.3717,1655.3101 L1691.3717,1656.897 L1685.9456,1656.897 L1685.9456,1655.3101 L1687.7584,1655.3101 L1687.7584,1649.3713 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="38.5417" x="1705.7292" y="1656.9336">Shape</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1675.5208" x2="1749.4792" y1="1667.9036" y2="1667.9036"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1675.5208" x2="1749.4792" y1="1676.237" y2="1676.237"/><!--MD5=[eb60a0db34e0f87ce571ea8e468e0925]
+class Bounded--><rect codeLine="9" fill="#282828" height="48.055" id="Bounded" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="94.7917" x="2532.8125" y="318.807"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="94.7917" x="2532.8125" y="318.807"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="94.7917" x="2532.8125" y="341.862"/><rect codeLine="9" fill="none" height="48.055" id="Bounded" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="94.7917" x="2532.8125" y="318.807"/><ellipse cx="2547.3958" cy="334.5011" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M2544.279,331.663 L2544.279,330.0761 L2549.705,330.0761 L2549.705,331.663 L2547.8923,331.663 L2547.8923,337.6017 L2549.705,337.6017 L2549.705,339.1886 L2544.279,339.1886 L2544.279,337.6017 L2546.0917,337.6017 L2546.0917,331.663 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="57.2917" x="2564.0625" y="339.2253">Bounded</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2533.8542" x2="2626.5625" y1="350.1953" y2="350.1953"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2533.8542" x2="2626.5625" y1="358.5286" y2="358.5286"/><!--MD5=[822075329b983e373709f40dc98b618d]
+class LocationSequence--><rect codeLine="10" fill="#282828" height="48.055" id="LocationSequence" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="153.125" x="1729.6875" y="318.807"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="153.125" x="1729.6875" y="318.807"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="153.125" x="1729.6875" y="341.862"/><rect codeLine="10" fill="none" height="48.055" id="LocationSequence" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="153.125" x="1729.6875" y="318.807"/><ellipse cx="1744.2708" cy="334.5011" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M1741.154,331.663 L1741.154,330.0761 L1746.58,330.0761 L1746.58,331.663 L1744.7673,331.663 L1744.7673,337.6017 L1746.58,337.6017 L1746.58,339.1886 L1741.154,339.1886 L1741.154,337.6017 L1742.9667,337.6017 L1742.9667,331.663 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="115.625" x="1760.9375" y="339.2253">LocationSequence</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1730.7292" x2="1881.7708" y1="350.1953" y2="350.1953"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1730.7292" x2="1881.7708" y1="358.5286" y2="358.5286"/><!--MD5=[c18f7ed30c23a7bda252089dc60b3328]
+class Indexable--><rect codeLine="11" fill="#282828" height="48.055" id="Indexable" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="100" x="1919.7917" y="318.807"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="100" x="1919.7917" y="318.807"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="100" x="1919.7917" y="341.862"/><rect codeLine="11" fill="none" height="48.055" id="Indexable" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="100" x="1919.7917" y="318.807"/><ellipse cx="1934.375" cy="334.5011" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M1931.2581,331.663 L1931.2581,330.0761 L1936.6842,330.0761 L1936.6842,331.663 L1934.8714,331.663 L1934.8714,337.6017 L1936.6842,337.6017 L1936.6842,339.1886 L1931.2581,339.1886 L1931.2581,337.6017 L1933.0709,337.6017 L1933.0709,331.663 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="62.5" x="1951.0417" y="339.2253">Indexable</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1920.8333" x2="2018.75" y1="350.1953" y2="350.1953"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1920.8333" x2="2018.75" y1="358.5286" y2="358.5286"/><!--MD5=[3c2d1629e1ef91a24b6f1bf0217565aa]
+class Outline--><rect codeLine="12" fill="#282828" height="48.055" id="Outline" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="85.4167" x="2980.2083" y="318.807"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="85.4167" x="2980.2083" y="318.807"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="85.4167" x="2980.2083" y="341.862"/><rect codeLine="12" fill="none" height="48.055" id="Outline" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="85.4167" x="2980.2083" y="318.807"/><ellipse cx="2994.7917" cy="334.5011" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M2991.6748,331.663 L2991.6748,330.0761 L2997.1008,330.0761 L2997.1008,331.663 L2995.2881,331.663 L2995.2881,337.6017 L2997.1008,337.6017 L2997.1008,339.1886 L2991.6748,339.1886 L2991.6748,337.6017 L2993.4875,337.6017 L2993.4875,331.663 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="47.9167" x="3011.4583" y="339.2253">Outline</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2981.25" x2="3064.5833" y1="350.1953" y2="350.1953"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2981.25" x2="3064.5833" y1="358.5286" y2="358.5286"/><!--MD5=[302594849024c7219bb74589a8b38298]
+class Intersectable--><rect codeLine="13" fill="#282828" height="48.055" id="Intersectable" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="120.8333" x="2056.25" y="318.807"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="120.8333" x="2056.25" y="318.807"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="120.8333" x="2056.25" y="341.862"/><rect codeLine="13" fill="none" height="48.055" id="Intersectable" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="120.8333" x="2056.25" y="318.807"/><ellipse cx="2070.8333" cy="334.5011" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M2067.7165,331.663 L2067.7165,330.0761 L2073.1425,330.0761 L2073.1425,331.663 L2071.3298,331.663 L2071.3298,337.6017 L2073.1425,337.6017 L2073.1425,339.1886 L2067.7165,339.1886 L2067.7165,337.6017 L2069.5292,337.6017 L2069.5292,331.663 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="83.3333" x="2087.5" y="339.2253">Intersectable</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2057.2917" x2="2176.0417" y1="350.1953" y2="350.1953"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2057.2917" x2="2176.0417" y1="358.5286" y2="358.5286"/><!--MD5=[129471aa5ea5c93eb409af5033b83b34]
+class Polygon--><rect codeLine="61" fill="#282828" height="523.0204" id="Polygon" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="547.9167" x="1438.5417" y="2689.1195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="547.9167" x="1438.5417" y="2689.1195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="547.9167" x="1438.5417" y="2712.1745"/><rect codeLine="61" fill="none" height="523.0204" id="Polygon" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="547.9167" x="1438.5417" y="2689.1195"/><ellipse cx="1679.1667" cy="2704.8136" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M1681.0771,2709.2387 Q1680.6498,2709.4584 1680.1799,2709.5683 Q1679.7099,2709.6781 1679.1911,2709.6781 Q1677.3478,2709.6781 1676.3774,2708.4635 Q1675.4069,2707.2489 1675.4069,2704.954 Q1675.4069,2702.653 1676.3774,2701.4384 Q1677.3478,2700.2238 1679.1911,2700.2238 Q1679.7099,2700.2238 1680.186,2700.3337 Q1680.662,2700.4435 1681.0771,2700.6632 L1681.0771,2702.6652 Q1680.6132,2702.238 1680.1768,2702.0396 Q1679.7404,2701.8412 1679.2765,2701.8412 Q1678.2878,2701.8412 1677.7842,2702.6255 Q1677.2807,2703.4098 1677.2807,2704.954 Q1677.2807,2706.4921 1677.7842,2707.2764 Q1678.2878,2708.0607 1679.2765,2708.0607 Q1679.7404,2708.0607 1680.1768,2707.8623 Q1680.6132,2707.664 1681.0771,2707.2367 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="52.0833" x="1702.0833" y="2709.5378">Polygon</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="1439.5833" x2="1985.4167" y1="2720.5078" y2="2720.5078"/><polygon fill="#FFFF44" points="1450,2750.6694,1454.1667,2754.836,1450,2759.0027,1445.8333,2754.836" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="53.125" x="1461.4583" y="2762.7889">Polygon()</text><ellipse cx="1450" cy="2775.6226" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="139.5833" x="1461.4583" y="2782.5338">Polygon(List&lt;Location&gt;)</text><ellipse cx="1450" cy="2795.3674" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="86.4583" x="1461.4583" y="2802.2786">Polygon(long[])</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1439.5833" x2="1668.75" y1="2738.7136" y2="2738.7136"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="1671.875" y="2742.5232">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1756.25" x2="1985.4167" y1="2738.7136" y2="2738.7136"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1439.5833" x2="1985.4167" y1="2811.9873" y2="2811.9873"/><ellipse cx="1450" cy="2823.4456" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="125" x="1461.4583" y="2830.3569">void fast(boolean fast)</text><ellipse cx="1450" cy="2843.1905" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="515.625" x="1461.4583" y="2850.1017">Polygon fromLocationSequence(Location one, Location two, Location three, Location... more)</text><ellipse cx="1450" cy="2862.9354" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="346.875" x="1461.4583" y="2869.8466">Polygon fromLocationSequence(Iterable&lt;Location&gt; locations)</text><ellipse cx="1450" cy="2882.6803" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="90.625" x="1461.4583" y="2889.5915">Outline outline()</text><ellipse cx="1450" cy="2926.3367" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="268.75" x="1461.4583" y="2933.2479">java.awt.Polygon asAwtPolygonInMicroDegrees()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1439.5833" x2="1690.1042" y1="2909.1726" y2="2909.1726"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="38.5417" x="1693.2292" y="2912.9822">(angle)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1734.8958" x2="1985.4167" y1="2909.1726" y2="2909.1726"/><ellipse cx="1450" cy="2969.9931" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="120.8333" x="1461.4583" y="2976.9043">boolean isClockwise()</text><ellipse cx="1450" cy="2989.738" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="166.6667" x="1461.4583" y="2996.6492">boolean isCounterClockwise()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1439.5833" x2="1685.9375" y1="2952.829" y2="2952.829"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="46.875" x="1689.0625" y="2956.6386">(checks)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1739.0625" x2="1985.4167" y1="2952.829" y2="2952.829"/><ellipse cx="1450" cy="3033.3944" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="153.125" x="1461.4583" y="3040.3056">void addHole(Polygon hole)</text><ellipse cx="1450" cy="3053.1392" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="133.3333" x="1461.4583" y="3060.0505">Bytes approximateSize()</text><ellipse cx="1450" cy="3072.8841" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="158.3333" x="1461.4583" y="3079.7953">boolean contains(Rectangle)</text><ellipse cx="1450" cy="3092.629" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="146.875" x="1461.4583" y="3099.5402">boolean contains(Polyline)</text><ellipse cx="1450" cy="3112.3739" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="369.7917" x="1461.4583" y="3119.2851">List&lt;Segment&gt; intersections(Rectangle bounds, Count maximum)</text><ellipse cx="1450" cy="3132.1187" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="218.75" x="1461.4583" y="3139.0299">boolean intersectsOrContains(Polyline)</text><ellipse cx="1450" cy="3151.8636" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="275" x="1461.4583" y="3158.7748">SegmentRTreeSpatialIndex segmentSpatialIndex()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1439.5833" x2="1678.125" y1="3016.2303" y2="3016.2303"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="1681.25" y="3020.0399">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1746.875" x2="1985.4167" y1="3016.2303" y2="3016.2303"/><ellipse cx="1450" cy="3195.52" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="1461.4583" y="3202.4312">void initialize()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1439.5833" x2="1682.8125" y1="3178.3559" y2="3178.3559"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="53.125" x="1685.9375" y="3182.1655">(lifecycle)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1742.1875" x2="1985.4167" y1="3178.3559" y2="3178.3559"/><!--MD5=[9db06d4e06f185d17d250a98cff58578]
+class PolylineBuilder--><rect codeLine="206" fill="#282828" height="578.0884" id="PolylineBuilder" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="457.2917" x="1235.9375" y="53.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="457.2917" x="1235.9375" y="53.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="457.2917" x="1235.9375" y="76.7578"/><rect codeLine="206" fill="none" height="578.0884" id="PolylineBuilder" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="457.2917" x="1235.9375" y="53.7028"/><ellipse cx="1408.8542" cy="69.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M1410.7646,73.822 Q1410.3373,74.0417 1409.8674,74.1516 Q1409.3974,74.2615 1408.8786,74.2615 Q1407.0353,74.2615 1406.0649,73.0469 Q1405.0944,71.8323 1405.0944,69.5374 Q1405.0944,67.2363 1406.0649,66.0217 Q1407.0353,64.8071 1408.8786,64.8071 Q1409.3974,64.8071 1409.8735,64.917 Q1410.3495,65.0269 1410.7646,65.2466 L1410.7646,67.2485 Q1410.3007,66.8213 1409.8643,66.6229 Q1409.4279,66.4246 1408.964,66.4246 Q1407.9753,66.4246 1407.4717,67.2089 Q1406.9682,67.9932 1406.9682,69.5374 Q1406.9682,71.0754 1407.4717,71.8597 Q1407.9753,72.644 1408.964,72.644 Q1409.4279,72.644 1409.8643,72.4457 Q1410.3007,72.2473 1410.7646,71.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="96.875" x="1431.7708" y="74.1211">PolylineBuilder</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="1236.9792" x2="1692.1875" y1="85.0911" y2="85.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1236.9792" x2="1692.1875" y1="93.4245" y2="93.4245"/><ellipse cx="1247.3958" cy="104.8828" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="130.2083" x="1258.8542" y="111.794">void prepend(Location)</text><ellipse cx="1247.3958" cy="124.6277" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="155.2083" x="1258.8542" y="131.5389">void set(int index, Location)</text><ellipse cx="1247.3958" cy="168.2841" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="82.2917" x="1258.8542" y="175.1953">Polyline build()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1236.9792" x2="1434.375" y1="151.12" y2="151.12"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="54.1667" x="1437.5" y="154.9296">(building)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1494.7917" x2="1692.1875" y1="151.12" y2="151.12"/><ellipse cx="1247.3958" cy="211.9405" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="134.375" x="1258.8542" y="218.8517">boolean hasDuplicates()</text><ellipse cx="1247.3958" cy="231.6854" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="92.7083" x="1258.8542" y="238.5966">boolean isValid()</text><ellipse cx="1247.3958" cy="251.4303" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="130.2083" x="1258.8542" y="258.3415">boolean isZeroLength()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1236.9792" x2="1438.0208" y1="194.7764" y2="194.7764"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="46.875" x="1441.1458" y="198.586">(checks)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1491.1458" x2="1692.1875" y1="194.7764" y2="194.7764"/><ellipse cx="1247.3958" cy="295.0867" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="161.4583" x="1258.8542" y="301.9979">PolylineBuilder add(Location)</text><ellipse cx="1247.3958" cy="314.8315" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="297.9167" x="1258.8542" y="321.7428">PolylineBuilder add(double latitude, double longitude)</text><ellipse cx="1247.3958" cy="334.5764" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="290.625" x="1258.8542" y="341.4876">PolylineBuilder addAll(Iterable&lt;Location&gt; locations)</text><ellipse cx="1247.3958" cy="354.3213" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="290.625" x="1258.8542" y="361.2325">PolylineBuilder addAll(Iterator&lt;Location&gt; locations)</text><ellipse cx="1247.3958" cy="374.0662" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="333.3333" x="1258.8542" y="380.9774">PolylineBuilder addAllButFirst(Iterable&lt;Location&gt; locations)</text><ellipse cx="1247.3958" cy="393.811" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="331.25" x="1258.8542" y="400.7222">PolylineBuilder addAllButLast(Iterable&lt;Location&gt; locations)</text><ellipse cx="1247.3958" cy="413.5559" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="330.2083" x="1258.8542" y="420.4671">PolylineBuilder addAllUnique(Iterable&lt;Location&gt; locations)</text><ellipse cx="1247.3958" cy="433.3008" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="425" x="1258.8542" y="440.212">Intersection addIntersectionWith(Segment, Distance maximumSnapDistance)</text><ellipse cx="1247.3958" cy="453.0457" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="295.8333" x="1258.8542" y="459.9569">PolylineBuilder addTail(Iterable&lt;Location&gt; locations)</text><ellipse cx="1247.3958" cy="472.7905" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="164.5833" x="1258.8542" y="479.7017">boolean addUnique(Location)</text><ellipse cx="1247.3958" cy="492.5354" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="100" x="1258.8542" y="499.4466">boolean isEmpty()</text><ellipse cx="1247.3958" cy="512.2803" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="152.0833" x="1258.8542" y="519.1915">List&lt;Segment&gt; segments()</text><ellipse cx="1247.3958" cy="532.0251" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="47.9167" x="1258.8542" y="538.9364">int size()</text><polygon fill="#FFFF44" points="1247.3958,546.5617,1251.5625,550.7284,1247.3958,554.895,1243.2292,550.7284" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="148.9583" x="1258.8542" y="558.6812">List&lt;Location&gt; locations()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1236.9792" x2="1430.2083" y1="277.9226" y2="277.9226"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="1433.3333" y="281.7322">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1498.9583" x2="1692.1875" y1="277.9226" y2="277.9226"/><ellipse cx="1247.3958" cy="595.4264" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="80.2083" x="1258.8542" y="602.3376">Location end()</text><ellipse cx="1247.3958" cy="615.1713" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="85.4167" x="1258.8542" y="622.0825">Location start()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1236.9792" x2="1434.8958" y1="578.2623" y2="578.2623"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="53.125" x="1438.0208" y="582.0719">(lifecycle)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1494.2708" x2="1692.1875" y1="578.2623" y2="578.2623"/><!--MD5=[2f5477034a901f0d60454f9b2d5b96a9]
+class PolygonBuilder--><rect codeLine="91" fill="#282828" height="83.3781" id="PolygonBuilder" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="135.4167" x="1426.0417" y="1618.807"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="135.4167" x="1426.0417" y="1618.807"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="135.4167" x="1426.0417" y="1641.862"/><rect codeLine="91" fill="none" height="83.3781" id="PolygonBuilder" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="135.4167" x="1426.0417" y="1618.807"/><ellipse cx="1440.625" cy="1634.5011" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M1442.5354,1638.9262 Q1442.1082,1639.1459 1441.6382,1639.2558 Q1441.1682,1639.3656 1440.6494,1639.3656 Q1438.8062,1639.3656 1437.8357,1638.151 Q1436.8652,1636.9364 1436.8652,1634.6415 Q1436.8652,1632.3405 1437.8357,1631.1259 Q1438.8062,1629.9113 1440.6494,1629.9113 Q1441.1682,1629.9113 1441.6443,1630.0212 Q1442.1204,1630.131 1442.5354,1630.3507 L1442.5354,1632.3527 Q1442.0715,1631.9255 1441.6351,1631.7271 Q1441.1987,1631.5287 1440.7349,1631.5287 Q1439.7461,1631.5287 1439.2426,1632.313 Q1438.739,1633.0973 1438.739,1634.6415 Q1438.739,1636.1796 1439.2426,1636.9639 Q1439.7461,1637.7482 1440.7349,1637.7482 Q1441.1987,1637.7482 1441.6351,1637.5498 Q1442.0715,1637.3515 1442.5354,1636.9242 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="97.9167" x="1457.2917" y="1639.2253">PolygonBuilder</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="1427.0833" x2="1560.4167" y1="1650.1953" y2="1650.1953"/><ellipse cx="1437.5" cy="1685.5652" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="91.6667" x="1448.9583" y="1692.4764">^Polygon build()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1427.0833" x2="1463.5417" y1="1668.4011" y2="1668.4011"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="54.1667" x="1466.6667" y="1672.2107">(building)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1523.9583" x2="1560.4167" y1="1668.4011" y2="1668.4011"/><!--MD5=[7702b39735af4283c9db33ec29e195d8]
+class KryoSerializer--><rect fill="#282828" height="48.055" id="KryoSerializer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="127.0833" x="3196.875" y="318.807"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="127.0833" x="3196.875" y="318.807"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="127.0833" x="3196.875" y="341.862"/><rect fill="none" height="48.055" id="KryoSerializer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="127.0833" x="3196.875" y="318.807"/><ellipse cx="3211.4583" cy="334.5011" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M3213.3687,338.9262 Q3212.9415,339.1459 3212.4715,339.2558 Q3212.0015,339.3656 3211.4827,339.3656 Q3209.6395,339.3656 3208.669,338.151 Q3207.6986,336.9364 3207.6986,334.6415 Q3207.6986,332.3405 3208.669,331.1259 Q3209.6395,329.9113 3211.4827,329.9113 Q3212.0015,329.9113 3212.4776,330.0212 Q3212.9537,330.131 3213.3687,330.3507 L3213.3687,332.3527 Q3212.9049,331.9255 3212.4685,331.7271 Q3212.0321,331.5287 3211.5682,331.5287 Q3210.5794,331.5287 3210.0759,332.313 Q3209.5723,333.0973 3209.5723,334.6415 Q3209.5723,336.1796 3210.0759,336.9639 Q3210.5794,337.7482 3211.5682,337.7482 Q3212.0321,337.7482 3212.4685,337.5498 Q3212.9049,337.3515 3213.3687,336.9242 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="89.5833" x="3228.125" y="339.2253">KryoSerializer</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="3197.9167" x2="3322.9167" y1="350.1953" y2="350.1953"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="3197.9167" x2="3322.9167" y1="358.5286" y2="358.5286"/><!--MD5=[c9e49f4473ddcd3956b1d4d248517a69]
+class PolygonKryoSerializer--><rect codeLine="98" fill="#282828" height="83.3781" id="PolygonKryoSerializer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="179.1667" x="3170.8333" y="1618.807"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="179.1667" x="3170.8333" y="1618.807"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="179.1667" x="3170.8333" y="1641.862"/><rect codeLine="98" fill="none" height="83.3781" id="PolygonKryoSerializer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="179.1667" x="3170.8333" y="1618.807"/><ellipse cx="3185.4167" cy="1634.5011" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M3187.3271,1638.9262 Q3186.8998,1639.1459 3186.4299,1639.2558 Q3185.9599,1639.3656 3185.4411,1639.3656 Q3183.5978,1639.3656 3182.6274,1638.151 Q3181.6569,1636.9364 3181.6569,1634.6415 Q3181.6569,1632.3405 3182.6274,1631.1259 Q3183.5978,1629.9113 3185.4411,1629.9113 Q3185.9599,1629.9113 3186.436,1630.0212 Q3186.912,1630.131 3187.3271,1630.3507 L3187.3271,1632.3527 Q3186.8632,1631.9255 3186.4268,1631.7271 Q3185.9904,1631.5287 3185.5265,1631.5287 Q3184.5378,1631.5287 3184.0342,1632.313 Q3183.5307,1633.0973 3183.5307,1634.6415 Q3183.5307,1636.1796 3184.0342,1636.9639 Q3184.5378,1637.7482 3185.5265,1637.7482 Q3185.9904,1637.7482 3186.4268,1637.5498 Q3186.8632,1637.3515 3187.3271,1636.9242 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="141.6667" x="3202.0833" y="1639.2253">PolygonKryoSerializer</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="3171.875" x2="3348.9583" y1="1650.1953" y2="1650.1953"/><ellipse cx="3182.2917" cy="1685.5652" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="130.2083" x="3193.75" y="1692.4764">PolygonKryoSerializer()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="3171.875" x2="3216.6667" y1="1668.4011" y2="1668.4011"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="3219.7917" y="1672.2107">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="3304.1667" x2="3348.9583" y1="1668.4011" y2="1668.4011"/><!--MD5=[4f1f3706c1a355a8488e154afcaed5df]
+class Location--><rect fill="#282828" height="48.055" id="Location" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="92.7083" x="2060.9375" y="2926.6195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="92.7083" x="2060.9375" y="2926.6195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="92.7083" x="2060.9375" y="2949.6745"/><rect fill="none" height="48.055" id="Location" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="92.7083" x="2060.9375" y="2926.6195"/><ellipse cx="2075.5208" cy="2942.3136" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M2077.4312,2946.7387 Q2077.004,2946.9584 2076.534,2947.0683 Q2076.064,2947.1781 2075.5452,2947.1781 Q2073.702,2947.1781 2072.7315,2945.9635 Q2071.7611,2944.7489 2071.7611,2942.454 Q2071.7611,2940.153 2072.7315,2938.9384 Q2073.702,2937.7238 2075.5452,2937.7238 Q2076.064,2937.7238 2076.5401,2937.8337 Q2077.0162,2937.9435 2077.4312,2938.1632 L2077.4312,2940.1652 Q2076.9674,2939.738 2076.531,2939.5396 Q2076.0946,2939.3412 2075.6307,2939.3412 Q2074.6419,2939.3412 2074.1384,2940.1255 Q2073.6348,2940.9098 2073.6348,2942.454 Q2073.6348,2943.9921 2074.1384,2944.7764 Q2074.6419,2945.5607 2075.6307,2945.5607 Q2076.0946,2945.5607 2076.531,2945.3623 Q2076.9674,2945.164 2077.4312,2944.7367 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="55.2083" x="2092.1875" y="2947.0378">Location</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2061.9792" x2="2152.6042" y1="2958.0078" y2="2958.0078"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2061.9792" x2="2152.6042" y1="2966.3411" y2="2966.3411"/><!--MD5=[eedda9a4bab0df7696b8829056aea585]
+class Polyline--><rect codeLine="109" fill="#282828" height="1886.5051" id="Polyline" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="563.5417" x="1825.5208" y="717.2445"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="563.5417" x="1825.5208" y="717.2445"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="563.5417" x="1825.5208" y="740.2995"/><rect codeLine="109" fill="none" height="1886.5051" id="Polyline" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="563.5417" x="1825.5208" y="717.2445"/><ellipse cx="2074.4792" cy="732.9386" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M2076.3896,737.3637 Q2075.9623,737.5834 2075.4924,737.6933 Q2075.0224,737.8031 2074.5036,737.8031 Q2072.6603,737.8031 2071.6899,736.5885 Q2070.7194,735.3739 2070.7194,733.079 Q2070.7194,730.778 2071.6899,729.5634 Q2072.6603,728.3488 2074.5036,728.3488 Q2075.0224,728.3488 2075.4985,728.4587 Q2075.9745,728.5685 2076.3896,728.7882 L2076.3896,730.7902 Q2075.9257,730.363 2075.4893,730.1646 Q2075.0529,729.9662 2074.589,729.9662 Q2073.6003,729.9662 2073.0967,730.7505 Q2072.5932,731.5348 2072.5932,733.079 Q2072.5932,734.6171 2073.0967,735.4014 Q2073.6003,736.1857 2074.589,736.1857 Q2075.0529,736.1857 2075.4893,735.9873 Q2075.9257,735.789 2076.3896,735.3617 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="51.0417" x="2097.3958" y="737.6628">Polyline</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="1826.5625" x2="2388.0208" y1="748.6328" y2="748.6328"/><polygon fill="#FFFF44" points="1836.9792,778.7944,1841.1458,782.961,1836.9792,787.1277,1832.8125,782.961" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="51.0417" x="1848.4375" y="790.9139">Polyline()</text><ellipse cx="1836.9792" cy="803.7476" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="137.5" x="1848.4375" y="810.6588">Polyline(List&lt;Location&gt;)</text><ellipse cx="1836.9792" cy="823.4924" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="84.375" x="1848.4375" y="830.4036">Polyline(long[])</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1826.5625" x2="2063.5417" y1="766.8386" y2="766.8386"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="2066.6667" y="770.6482">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2151.0417" x2="2388.0208" y1="766.8386" y2="766.8386"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1826.5625" x2="2388.0208" y1="840.1123" y2="840.1123"/><ellipse cx="1836.9792" cy="851.5706" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="163.5417" x="1848.4375" y="858.4819">Polyline append(Polyline that)</text><ellipse cx="1836.9792" cy="871.3155" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="171.875" x="1848.4375" y="878.2267">Set&lt;Location&gt; asLocationSet()</text><ellipse cx="1836.9792" cy="891.0604" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="117.7083" x="1848.4375" y="897.9716">Location at(Distance)</text><ellipse cx="1836.9792" cy="910.8053" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="171.875" x="1848.4375" y="917.7165">Location at(Percent parameter)</text><ellipse cx="1836.9792" cy="930.5501" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="156.25" x="1848.4375" y="937.4613">Polyline attach(Polyline that)</text><ellipse cx="1836.9792" cy="950.295" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="167.7083" x="1848.4375" y="957.2062">boolean crosses(Polyline that)</text><ellipse cx="1836.9792" cy="970.0399" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="139.5833" x="1848.4375" y="976.9511">Distance directDistance()</text><ellipse cx="1836.9792" cy="989.7847" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="168.75" x="1848.4375" y="996.696">Distance distanceTo(Location)</text><ellipse cx="1836.9792" cy="1009.5296" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="200" x="1848.4375" y="1016.4408">Set&lt;Location&gt; duplicateLocations()</text><ellipse cx="1836.9792" cy="1029.2745" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="200" x="1848.4375" y="1036.1857">Set&lt;Segment&gt; duplicateSegments()</text><ellipse cx="1836.9792" cy="1049.0194" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="297.9167" x="1848.4375" y="1055.9306">Polyline fromLocations(Iterator&lt;Location&gt; locations)</text><ellipse cx="1836.9792" cy="1068.7642" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="380.2083" x="1848.4375" y="1075.6755">Polyline fromLocations(Location one, Location two, Location... more)</text><ellipse cx="1836.9792" cy="1088.5091" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="297.9167" x="1848.4375" y="1095.4203">Polyline fromLocations(Iterable&lt;Location&gt; locations)</text><ellipse cx="1836.9792" cy="1108.254" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="244.7917" x="1848.4375" y="1115.1652">Polyline fromLocations(long start, long end)</text><ellipse cx="1836.9792" cy="1127.9989" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="123.9583" x="1848.4375" y="1134.9101">boolean has(Location)</text><ellipse cx="1836.9792" cy="1147.7437" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="193.75" x="1848.4375" y="1154.6549">Location intersection(Polyline that)</text><ellipse cx="1836.9792" cy="1167.4886" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="198.9583" x="1848.4375" y="1174.3998">Location intersection(Segment that)</text><ellipse cx="1836.9792" cy="1187.2335" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="184.375" x="1848.4375" y="1194.1447">boolean intersects(Segment that)</text><ellipse cx="1836.9792" cy="1206.9784" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="94.7917" x="1848.4375" y="1213.8896">Distance length()</text><ellipse cx="1836.9792" cy="1226.7232" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="96.875" x="1848.4375" y="1233.6344">Location middle()</text><ellipse cx="1836.9792" cy="1246.4681" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="144.7917" x="1848.4375" y="1253.3793">Segment middleSegment()</text><ellipse cx="1836.9792" cy="1266.213" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="109.375" x="1848.4375" y="1273.1242">Location midpoint()</text><ellipse cx="1836.9792" cy="1285.9578" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="229.1667" x="1848.4375" y="1292.8691">Set&lt;Segment&gt; overlapping(Polyline that)</text><ellipse cx="1836.9792" cy="1305.7027" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="171.875" x="1848.4375" y="1312.6139">boolean overlaps(Polyline that)</text><ellipse cx="1836.9792" cy="1325.4476" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="230.2083" x="1848.4375" y="1332.3588">Polyline parallel(Heading, Distance offset)</text><ellipse cx="1836.9792" cy="1345.1925" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="250" x="1848.4375" y="1352.1037">Polyline section(Location start, Location end)</text><ellipse cx="1836.9792" cy="1364.9373" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="286.4583" x="1848.4375" y="1371.8486">PolylineSection section(int startIndex, int endIndex)</text><ellipse cx="1836.9792" cy="1384.6822" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="250" x="1848.4375" y="1391.5934">Polyline section(Distance start, Distance end)</text><ellipse cx="1836.9792" cy="1404.4271" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="145.8333" x="1848.4375" y="1411.3383">Location selfIntersection()</text><ellipse cx="1836.9792" cy="1424.172" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="211.4583" x="1848.4375" y="1431.0832">Polyline simplified(Distance tolerance)</text><ellipse cx="1836.9792" cy="1443.9168" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="184.375" x="1848.4375" y="1450.828">Polyline smooth(Angle tolerance)</text><ellipse cx="1836.9792" cy="1463.6617" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="348.9583" x="1848.4375" y="1470.5729">Polyline snapAndSection(Location origin, Location destination)</text><ellipse cx="1836.9792" cy="1483.4066" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="154.1667" x="1848.4375" y="1490.3178">Polyline withoutDuplicates()</text><polygon fill="#FFFF44" points="1836.9792,1497.9431,1841.1458,1502.1098,1836.9792,1506.2764,1832.8125,1502.1098" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="192.7083" x="1848.4375" y="1510.0627">long expandBounds(long location)</text><polygon fill="#FFFF44" points="1836.9792,1517.688,1841.1458,1521.8547,1836.9792,1526.0213,1832.8125,1521.8547" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="150" x="1848.4375" y="1529.8075">long[] locationsInDecimal()</text><ellipse cx="1836.9792" cy="1566.5527" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="71.875" x="1848.4375" y="1573.4639">Angle bend()</text><ellipse cx="1836.9792" cy="1586.2976" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="127.0833" x="1848.4375" y="1593.2088">Heading finalHeading()</text><ellipse cx="1836.9792" cy="1606.0425" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="133.3333" x="1848.4375" y="1612.9537">Heading initialHeading()</text><ellipse cx="1836.9792" cy="1625.7874" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="188.5417" x="1848.4375" y="1632.6986">SegmentPair sharpestTurnAngle()</text><ellipse cx="1836.9792" cy="1645.5322" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="182.2917" x="1848.4375" y="1652.4434">Angle turnAngleTo(Polyline that)</text><ellipse cx="1836.9792" cy="1665.2771" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="235.4167" x="1848.4375" y="1672.1883">Angle turnAngleTo(Polyline that, Chirality)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1826.5625" x2="2084.8958" y1="1549.3886" y2="1549.3886"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="38.5417" x="2088.0208" y="1553.1982">(angle)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2129.6875" x2="2388.0208" y1="1549.3886" y2="1549.3886"/><ellipse cx="1836.9792" cy="1708.9335" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="267.7083" x="1848.4375" y="1715.8447">boolean isBent(Distance within, Angle tolerance)</text><ellipse cx="1836.9792" cy="1728.6784" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="208.3333" x="1848.4375" y="1735.5896">boolean isConnectedTo(Polyline that)</text><ellipse cx="1836.9792" cy="1748.4233" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="93.75" x="1848.4375" y="1755.3345">boolean isLoop()</text><ellipse cx="1836.9792" cy="1768.1681" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="113.5417" x="1848.4375" y="1775.0793">boolean isSegment()</text><ellipse cx="1836.9792" cy="1787.913" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="152.0833" x="1848.4375" y="1794.8242">boolean isSelfIntersecting()</text><ellipse cx="1836.9792" cy="1807.6579" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="287.5" x="1848.4375" y="1814.5691">boolean isStraight(Distance within, Angle tolerance)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1826.5625" x2="2080.7292" y1="1691.7694" y2="1691.7694"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="46.875" x="2083.8542" y="1695.579">(checks)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2133.8542" x2="2388.0208" y1="1691.7694" y2="1691.7694"/><ellipse cx="1836.9792" cy="1851.3143" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="142.7083" x="1848.4375" y="1858.2255">LongArray asLongArray()</text><ellipse cx="1836.9792" cy="1871.0592" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="227.0833" x="1848.4375" y="1877.9704">Iterator&lt;Location&gt; backwardLocations()</text><ellipse cx="1836.9792" cy="1890.804" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="166.6667" x="1848.4375" y="1897.7153">List&lt;PolylineSection&gt; bisect()</text><ellipse cx="1836.9792" cy="1910.5489" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="130.2083" x="1848.4375" y="1917.4601">Segment firstSegment()</text><ellipse cx="1836.9792" cy="1930.2938" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="254.1667" x="1848.4375" y="1937.205">Polyline fromLongArray(LongArray locations)</text><ellipse cx="1836.9792" cy="1950.0387" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="127.0833" x="1848.4375" y="1956.9499">Segment lastSegment()</text><ellipse cx="1836.9792" cy="1969.7835" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="148.9583" x="1848.4375" y="1976.6947">List&lt;Location&gt; locations()</text><ellipse cx="1836.9792" cy="1989.5284" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="109.375" x="1848.4375" y="1996.4396">List&lt;Loop&gt; loops()</text><ellipse cx="1836.9792" cy="2009.2733" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="169.7917" x="1848.4375" y="2016.1845">Segment nextToLastSegment()</text><ellipse cx="1836.9792" cy="2029.0181" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="325" x="1848.4375" y="2035.9294">List&lt;PolylineSection&gt; sections(Distance maximumLength)</text><ellipse cx="1836.9792" cy="2048.763" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="128.125" x="1848.4375" y="2055.6742">Count segmentCount()</text><ellipse cx="1836.9792" cy="2068.5079" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="162.5" x="1848.4375" y="2075.4191">int segmentCountAsInteger()</text><ellipse cx="1836.9792" cy="2088.2528" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="152.0833" x="1848.4375" y="2095.164">List&lt;Segment&gt; segments()</text><ellipse cx="1836.9792" cy="2107.9976" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="168.75" x="1848.4375" y="2114.9089">List&lt;PolylineSection&gt; trisect()</text><ellipse cx="1836.9792" cy="2127.7425" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="203.125" x="1848.4375" y="2134.6537">Iterable&lt;LocatedHeading&gt; vectors()</text><ellipse cx="1836.9792" cy="2147.4874" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="200" x="1848.4375" y="2154.3986">Polyline withFirstReplaced(Location)</text><ellipse cx="1836.9792" cy="2167.2323" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="197.9167" x="1848.4375" y="2174.1435">Polyline withLastReplaced(Location)</text><ellipse cx="1836.9792" cy="2186.9771" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="120.8333" x="1848.4375" y="2193.8883">Polyline withoutFirst()</text><ellipse cx="1836.9792" cy="2206.722" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="118.75" x="1848.4375" y="2213.6332">Polyline withoutLast()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1826.5625" x2="2072.9167" y1="1834.1502" y2="1834.1502"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="2076.0417" y="1837.9598">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2141.6667" x2="2388.0208" y1="1834.1502" y2="1834.1502"/><ellipse cx="1836.9792" cy="2250.3784" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="328.125" x="1848.4375" y="2257.2896">Polyline augmented(Distance maximumShapePointSpacing)</text><ellipse cx="1836.9792" cy="2270.1233" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="116.6667" x="1848.4375" y="2277.0345">Polyline augmented()</text><ellipse cx="1836.9792" cy="2289.8682" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="193.75" x="1848.4375" y="2296.7794">CompressedPolyline compressed()</text><ellipse cx="1836.9792" cy="2309.613" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="227.0833" x="1848.4375" y="2316.5243">Polyline moved(Heading, Distance offset)</text><ellipse cx="1836.9792" cy="2329.3579" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="103.125" x="1848.4375" y="2336.2691">Polyline reversed()</text><ellipse cx="1836.9792" cy="2349.1028" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="182.2917" x="1848.4375" y="2356.014">Polyline withAppended(Location)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1826.5625" x2="2071.875" y1="2233.2143" y2="2233.2143"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="64.5833" x="2075" y="2237.0239">(functional)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2142.7083" x2="2388.0208" y1="2233.2143" y2="2233.2143"/><ellipse cx="1836.9792" cy="2392.7592" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="80.2083" x="1848.4375" y="2399.6704">Location end()</text><ellipse cx="1836.9792" cy="2412.5041" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="85.4167" x="1848.4375" y="2419.4153">Location start()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1826.5625" x2="2077.6042" y1="2375.5951" y2="2375.5951"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="53.125" x="2080.7292" y="2379.4047">(lifecycle)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2136.9792" x2="2388.0208" y1="2375.5951" y2="2375.5951"/><ellipse cx="1836.9792" cy="2456.1605" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="531.25" x="1848.4375" y="2463.0717">Percent closeness(Polyline that, Distance maximumDistance, Angle maximumHeadingDeviation)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1826.5625" x2="2085.9375" y1="2438.9964" y2="2438.9964"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="36.4583" x="2089.0625" y="2442.806">(math)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2128.6458" x2="2388.0208" y1="2438.9964" y2="2438.9964"/><ellipse cx="1836.9792" cy="2499.8169" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="151.0417" x="1848.4375" y="2506.7281">Polyline parse(String value)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1826.5625" x2="2078.6458" y1="2482.6528" y2="2482.6528"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="51.0417" x="2081.7708" y="2486.4624">(parsing)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2135.9375" x2="2388.0208" y1="2482.6528" y2="2482.6528"/><ellipse cx="1836.9792" cy="2543.4733" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="203.125" x="1848.4375" y="2550.3845">Polyline fromLongs(long[] locations)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1826.5625" x2="2075.5208" y1="2526.3092" y2="2526.3092"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="57.2917" x="2078.6458" y="2530.1188">(primitive)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2139.0625" x2="2388.0208" y1="2526.3092" y2="2526.3092"/><ellipse cx="1836.9792" cy="2587.1297" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="147.9167" x="1848.4375" y="2594.0409">Segment secondSegment()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1826.5625" x2="2088.0208" y1="2569.9656" y2="2569.9656"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="32.2917" x="2091.1458" y="2573.7752">(time)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2126.5625" x2="2388.0208" y1="2569.9656" y2="2569.9656"/><!--MD5=[2d3828c77c2bee9bc061da9a6d829376]
+class PolylineSection--><rect codeLine="237" fill="#282828" height="194.6025" id="PolylineSection" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="208.3333" x="2666.6667" y="1563.0778"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="208.3333" x="2666.6667" y="1563.0778"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="208.3333" x="2666.6667" y="1586.1328"/><rect codeLine="237" fill="none" height="194.6025" id="PolylineSection" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="208.3333" x="2666.6667" y="1563.0778"/><ellipse cx="2714.5833" cy="1578.772" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M2716.4937,1583.197 Q2716.0665,1583.4167 2715.5965,1583.5266 Q2715.1265,1583.6365 2714.6077,1583.6365 Q2712.7645,1583.6365 2711.794,1582.4219 Q2710.8236,1581.2073 2710.8236,1578.9124 Q2710.8236,1576.6113 2711.794,1575.3967 Q2712.7645,1574.1821 2714.6077,1574.1821 Q2715.1265,1574.1821 2715.6026,1574.292 Q2716.0787,1574.4019 2716.4937,1574.6216 L2716.4937,1576.6235 Q2716.0299,1576.1963 2715.5935,1575.9979 Q2715.1571,1575.7996 2714.6932,1575.7996 Q2713.7044,1575.7996 2713.2009,1576.5839 Q2712.6973,1577.3682 2712.6973,1578.9124 Q2712.6973,1580.4504 2713.2009,1581.2347 Q2713.7044,1582.019 2714.6932,1582.019 Q2715.1571,1582.019 2715.5935,1581.8207 Q2716.0299,1581.6223 2716.4937,1581.1951 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="97.9167" x="2737.5" y="1583.4961">PolylineSection</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="2667.7083" x2="2873.9583" y1="1594.4661" y2="1594.4661"/><ellipse cx="2678.125" cy="1629.836" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="176.0417" x="2689.5833" y="1636.7472">PolylineSection(Polyline, int, int)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2667.7083" x2="2727.0833" y1="1612.6719" y2="1612.6719"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="2730.2083" y="1616.4815">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2814.5833" x2="2873.9583" y1="1612.6719" y2="1612.6719"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2667.7083" x2="2873.9583" y1="1646.4559" y2="1646.4559"/><ellipse cx="2678.125" cy="1657.9142" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="90.625" x="2689.5833" y="1664.8254">Polyline parent()</text><ellipse cx="2678.125" cy="1677.6591" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="87.5" x="2689.5833" y="1684.5703">Polyline shape()</text><ellipse cx="2678.125" cy="1721.3155" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="84.375" x="2689.5833" y="1728.2267">int fromIndex()</text><ellipse cx="2678.125" cy="1741.0604" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="68.75" x="2689.5833" y="1747.9716">int toIndex()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2667.7083" x2="2736.4583" y1="1704.1514" y2="1704.1514"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="2739.5833" y="1707.961">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2805.2083" x2="2873.9583" y1="1704.1514" y2="1704.1514"/><!--MD5=[4ee8273c68203613d72a042831dbd2f1]
+class PolylineSectioner--><rect codeLine="251" fill="#282828" height="146.7794" id="PolylineSectioner" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="212.5" x="2664.5833" y="269.3278"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="212.5" x="2664.5833" y="269.3278"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="212.5" x="2664.5833" y="292.3828"/><rect codeLine="251" fill="none" height="146.7794" id="PolylineSectioner" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="212.5" x="2664.5833" y="269.3278"/><ellipse cx="2708.3333" cy="285.022" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M2710.2437,289.447 Q2709.8165,289.6667 2709.3465,289.7766 Q2708.8765,289.8865 2708.3577,289.8865 Q2706.5145,289.8865 2705.544,288.6719 Q2704.5736,287.4573 2704.5736,285.1624 Q2704.5736,282.8613 2705.544,281.6467 Q2706.5145,280.4321 2708.3577,280.4321 Q2708.8765,280.4321 2709.3526,280.542 Q2709.8287,280.6519 2710.2437,280.8716 L2710.2437,282.8735 Q2709.7799,282.4463 2709.3435,282.2479 Q2708.9071,282.0496 2708.4432,282.0496 Q2707.4544,282.0496 2706.9509,282.8339 Q2706.4473,283.6182 2706.4473,285.1624 Q2706.4473,286.7004 2706.9509,287.4847 Q2707.4544,288.269 2708.4432,288.269 Q2708.9071,288.269 2709.3435,288.0707 Q2709.7799,287.8723 2710.2437,287.4451 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="110.4167" x="2731.25" y="289.7461">PolylineSectioner</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="2665.625" x2="2876.0417" y1="300.7161" y2="300.7161"/><ellipse cx="2676.0417" cy="336.086" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="145.8333" x="2687.5" y="342.9972">PolylineSectioner(Polyline)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2665.625" x2="2727.0833" y1="318.9219" y2="318.9219"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="2730.2083" y="322.7315">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2814.5833" x2="2876.0417" y1="318.9219" y2="318.9219"/><ellipse cx="2676.0417" cy="379.7424" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="145.8333" x="2687.5" y="386.6536">void cutAtIndex(int index)</text><ellipse cx="2676.0417" cy="399.4873" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="180.2083" x="2687.5" y="406.3985">List&lt;PolylineSection&gt; sections()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2665.625" x2="2736.4583" y1="362.5783" y2="362.5783"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="2739.5833" y="366.3879">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2805.2083" x2="2876.0417" y1="362.5783" y2="362.5783"/><!--MD5=[abfd0f5c3640f239ca6198c2f26dbdbc]
+class PolylineSimplifier--><rect codeLine="261" fill="#282828" height="67.7999" id="PolylineSimplifier" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="282.2917" x="2214.0625" y="308.9111"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="282.2917" x="2214.0625" y="308.9111"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="282.2917" x="2214.0625" y="331.9661"/><rect codeLine="261" fill="none" height="67.7999" id="PolylineSimplifier" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="282.2917" x="2214.0625" y="308.9111"/><ellipse cx="2291.1458" cy="324.6053" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M2293.0562,329.0304 Q2292.629,329.2501 2292.159,329.3599 Q2291.689,329.4698 2291.1702,329.4698 Q2289.327,329.4698 2288.3565,328.2552 Q2287.3861,327.0406 2287.3861,324.7457 Q2287.3861,322.4447 2288.3565,321.2301 Q2289.327,320.0155 2291.1702,320.0155 Q2291.689,320.0155 2292.1651,320.1253 Q2292.6412,320.2352 2293.0562,320.4549 L2293.0562,322.4569 Q2292.5924,322.0296 2292.156,321.8313 Q2291.7196,321.6329 2291.2557,321.6329 Q2290.2669,321.6329 2289.7634,322.4172 Q2289.2598,323.2015 2289.2598,324.7457 Q2289.2598,326.2838 2289.7634,327.0681 Q2290.2669,327.8524 2291.2557,327.8524 Q2291.7196,327.8524 2292.156,327.654 Q2292.5924,327.4556 2293.0562,327.0284 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="113.5417" x="2314.0625" y="329.3294">PolylineSimplifier</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="2215.1042" x2="2495.3125" y1="340.2995" y2="340.2995"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2215.1042" x2="2495.3125" y1="348.6328" y2="348.6328"/><ellipse cx="2225.5208" cy="360.0911" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="250" x="2236.9792" y="367.0024">Polyline simplify(Polyline, Distance tolerance)</text><!--MD5=[7975f145cb815d4e263503673eb71485]
+class PolylineSnap--><rect codeLine="268" fill="#282828" height="463.7858" id="PolylineSnap" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="434.375" x="2060.9375" y="3297.4528"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="434.375" x="2060.9375" y="3297.4528"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="434.375" x="2060.9375" y="3320.5078"/><rect codeLine="268" fill="none" height="463.7858" id="PolylineSnap" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="434.375" x="2060.9375" y="3297.4528"/><ellipse cx="2229.6875" cy="3313.147" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M2231.5979,3317.572 Q2231.1707,3317.7917 2230.7007,3317.9016 Q2230.2307,3318.0115 2229.7119,3318.0115 Q2227.8687,3318.0115 2226.8982,3316.7969 Q2225.9277,3315.5823 2225.9277,3313.2874 Q2225.9277,3310.9863 2226.8982,3309.7717 Q2227.8687,3308.5571 2229.7119,3308.5571 Q2230.2307,3308.5571 2230.7068,3308.667 Q2231.1829,3308.7769 2231.5979,3308.9966 L2231.5979,3310.9985 Q2231.134,3310.5713 2230.6976,3310.3729 Q2230.2612,3310.1746 2229.7974,3310.1746 Q2228.8086,3310.1746 2228.3051,3310.9589 Q2227.8015,3311.7432 2227.8015,3313.2874 Q2227.8015,3314.8254 2228.3051,3315.6097 Q2228.8086,3316.394 2229.7974,3316.394 Q2230.2612,3316.394 2230.6976,3316.1957 Q2231.134,3315.9973 2231.5979,3315.5701 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="82.2917" x="2252.6042" y="3317.8711">PolylineSnap</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="2061.9792" x2="2494.2708" y1="3328.8411" y2="3328.8411"/><ellipse cx="2072.3958" cy="3364.211" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="402.0833" x="2083.8542" y="3371.1222">PolylineSnap(Latitude, Longitude, LocationSequence, Level, Location, int)</text><ellipse cx="2072.3958" cy="3383.9559" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="342.7083" x="2083.8542" y="3390.8671">PolylineSnap(Location, LocationSequence, Level, Location, int)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2061.9792" x2="2234.375" y1="3347.0469" y2="3347.0469"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="2237.5" y="3350.8565">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2321.875" x2="2494.2708" y1="3347.0469" y2="3347.0469"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2061.9792" x2="2494.2708" y1="3400.5758" y2="3400.5758"/><ellipse cx="2072.3958" cy="3412.0341" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="159.375" x="2083.8542" y="3418.9453">Distance distanceToSource()</text><ellipse cx="2072.3958" cy="3431.779" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="71.875" x="2083.8542" y="3438.6902">Level offset()</text><ellipse cx="2072.3958" cy="3451.5238" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="136.4583" x="2083.8542" y="3458.4351">Level offsetOnSegment()</text><ellipse cx="2072.3958" cy="3471.2687" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="107.2917" x="2083.8542" y="3478.1799">Segment segment()</text><ellipse cx="2072.3958" cy="3491.0136" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="97.9167" x="2083.8542" y="3497.9248">Location source()</text><ellipse cx="2072.3958" cy="3510.7585" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="145.8333" x="2083.8542" y="3517.6697">LocationSequence target()</text><ellipse cx="2072.3958" cy="3554.4149" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="73.9583" x="2083.8542" y="3561.3261">Angle angle()</text><ellipse cx="2072.3958" cy="3574.1597" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="151.0417" x="2083.8542" y="3581.071">Heading segmentHeading()</text><ellipse cx="2072.3958" cy="3593.9046" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="94.7917" x="2083.8542" y="3600.8158">Segment vector()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2061.9792" x2="2255.7292" y1="3537.2508" y2="3537.2508"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="38.5417" x="2258.8542" y="3541.0604">(angle)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2300.5208" x2="2494.2708" y1="3537.2508" y2="3537.2508"/><ellipse cx="2072.3958" cy="3637.561" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="86.4583" x="2083.8542" y="3644.4722">boolean isLeft()</text><ellipse cx="2072.3958" cy="3657.3059" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="94.7917" x="2083.8542" y="3664.2171">boolean isRight()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2061.9792" x2="2251.5625" y1="3620.3969" y2="3620.3969"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="46.875" x="2254.6875" y="3624.2065">(checks)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2304.6875" x2="2494.2708" y1="3620.3969" y2="3620.3969"/><ellipse cx="2072.3958" cy="3700.9623" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="101.0417" x="2083.8542" y="3707.8735">int polylineIndex()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2061.9792" x2="2243.75" y1="3683.7982" y2="3683.7982"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="2246.875" y="3687.6078">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2312.5" x2="2494.2708" y1="3683.7982" y2="3683.7982"/><ellipse cx="2072.3958" cy="3744.6187" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="126.0417" x="2083.8542" y="3751.5299">String toDebugString()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2061.9792" x2="2239.5833" y1="3727.4546" y2="3727.4546"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="70.8333" x="2242.7083" y="3731.2642">(conversion)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2316.6667" x2="2494.2708" y1="3727.4546" y2="3727.4546"/><!--MD5=[a3abd9b969f59622ef253882fbfb9136]
+class PolylineSnapper--><rect codeLine="294" fill="#282828" height="87.5448" id="PolylineSnapper" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="515.625" x="2190.1042" y="2906.8278"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="515.625" x="2190.1042" y="2906.8278"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="515.625" x="2190.1042" y="2929.8828"/><rect codeLine="294" fill="none" height="87.5448" id="PolylineSnapper" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="515.625" x="2190.1042" y="2906.8278"/><ellipse cx="2389.0625" cy="2922.522" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M2390.9729,2926.947 Q2390.5457,2927.1667 2390.0757,2927.2766 Q2389.6057,2927.3865 2389.0869,2927.3865 Q2387.2437,2927.3865 2386.2732,2926.1719 Q2385.3027,2924.9573 2385.3027,2922.6624 Q2385.3027,2920.3613 2386.2732,2919.1467 Q2387.2437,2917.9321 2389.0869,2917.9321 Q2389.6057,2917.9321 2390.0818,2918.042 Q2390.5579,2918.1519 2390.9729,2918.3716 L2390.9729,2920.3735 Q2390.509,2919.9463 2390.0726,2919.7479 Q2389.6362,2919.5496 2389.1724,2919.5496 Q2388.1836,2919.5496 2387.6801,2920.3339 Q2387.1765,2921.1182 2387.1765,2922.6624 Q2387.1765,2924.2004 2387.6801,2924.9847 Q2388.1836,2925.769 2389.1724,2925.769 Q2389.6362,2925.769 2390.0726,2925.5707 Q2390.509,2925.3723 2390.9729,2924.9451 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="103.125" x="2411.9792" y="2927.2461">PolylineSnapper</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="2191.1458" x2="2704.6875" y1="2938.2161" y2="2938.2161"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2191.1458" x2="2704.6875" y1="2946.5495" y2="2946.5495"/><ellipse cx="2201.5625" cy="2958.0078" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="342.7083" x="2213.0208" y="2964.919">PolylineSnap snap(LocationSequence polyline, Location point)</text><ellipse cx="2201.5625" cy="2977.7527" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="483.3333" x="2213.0208" y="2984.6639">PolylineSnap snap(LocationSequence polyline, Location point, Heading headingAtPoint)</text><!--MD5=[e4819d0c2ffb1f5d4bc6f591f3375e77]
+class Polygon.SegmentShapeLocationIndex--><rect codeLine="302" fill="#282828" height="48.055" id="Polygon.SegmentShapeLocationIndex" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="222.9167" x="2911.4583" y="1636.5153"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="222.9167" x="2911.4583" y="1636.5153"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="222.9167" x="2911.4583" y="1659.5703"/><rect codeLine="302" fill="none" height="48.055" id="Polygon.SegmentShapeLocationIndex" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="222.9167" x="2911.4583" y="1636.5153"/><ellipse cx="2926.0417" cy="1652.2095" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M2927.9521,1656.6345 Q2927.5248,1656.8542 2927.0549,1656.9641 Q2926.5849,1657.074 2926.0661,1657.074 Q2924.2228,1657.074 2923.2524,1655.8594 Q2922.2819,1654.6448 2922.2819,1652.3499 Q2922.2819,1650.0488 2923.2524,1648.8342 Q2924.2228,1647.6196 2926.0661,1647.6196 Q2926.5849,1647.6196 2927.061,1647.7295 Q2927.537,1647.8394 2927.9521,1648.0591 L2927.9521,1650.061 Q2927.4882,1649.6338 2927.0518,1649.4354 Q2926.6154,1649.2371 2926.1515,1649.2371 Q2925.1628,1649.2371 2924.6592,1650.0214 Q2924.1557,1650.8057 2924.1557,1652.3499 Q2924.1557,1653.8879 2924.6592,1654.6722 Q2925.1628,1655.4565 2926.1515,1655.4565 Q2926.6154,1655.4565 2927.0518,1655.2582 Q2927.4882,1655.0598 2927.9521,1654.6326 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="185.4167" x="2942.7083" y="1656.9336">SegmentShapeLocationIndex</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2912.5" x2="3133.3333" y1="1667.9036" y2="1667.9036"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="2912.5" x2="3133.3333" y1="1676.237" y2="1676.237"/><!--MD5=[aaee2661a09053386a2ac57c957e10da]
+reverse link BaseStringConverter to Polyline.Converter--><path codeLine="15" d="M900.7604,378.5986 C815.8438,437.1715 651.9063,564.1715 576.0417,717.2445 C418.75,1034.609 439.5938,1482.5361 450.3854,1618.6507 " fill="none" id="BaseStringConverter-backto-Polyline.Converter" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="896.7813,372.4945,918.1146,366.8278,904.9583,384.557,896.7813,372.4945" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[fcc737fd7b22ffacc2f37101cc137d29]
+reverse link BaseStringConverter to Polyline.GoogleEncodingConverter--><path codeLine="22" d="M954.1667,387.8278 C954.1667,589.557 954.1667,1424.1924 954.1667,1618.7549 " fill="none" id="BaseStringConverter-backto-Polyline.GoogleEncodingConverter" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="946.875,387.7549,954.1667,366.9215,961.4583,387.7549,946.875,387.7549" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[8a28389f7c8040282e9dc374189148b1]
+reverse link BaseStringConverter to Polyline.LongArrayConverter--><path codeLine="39" d="M972.3125,386.1507 C1000.9688,454.5674 1056.6979,594.1924 1088.5417,717.2445 C1177.1979,1059.7757 1224.4792,1486.2965 1237.7396,1618.4736 " fill="none" id="BaseStringConverter-backto-Polyline.LongArrayConverter" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="965.5833,388.9528,964.1875,366.932,979.0208,383.2757,965.5833,388.9528" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[7fe5ae61da1e9ca5d9a58f4183502c10]
+reverse link Polyline to Polygon--><path codeLine="59" d="M1825.5,2580.8695 C1813.8958,2618.7445 1802.7604,2655.0465 1792.3229,2689.0986 " fill="none" id="Polyline-backto-Polygon" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[c749d6d7a2fdf5a4bce2ba6bb77749e6]
+reverse link Shape to Polygon--><path codeLine="60" d="M1712.5,1705.6299 C1712.5,1858.1924 1712.5,2371.4528 1712.5,2689.0257 " fill="none" id="Shape-backto-Polygon" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="1705.2083,1705.5257,1712.5,1684.6924,1719.7917,1705.5257,1705.2083,1705.5257" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[d271086c74c1fdf060c87040a96f295e]
+reverse link PolylineBuilder to PolygonBuilder--><path codeLine="89" d="M1471.4375,653.057 C1478.7292,982.0257 1489.6563,1474.5361 1492.8438,1618.5361 " fill="none" id="PolylineBuilder-backto-PolygonBuilder" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="1464.1458,653.109,1470.9792,632.1195,1478.7292,652.7861,1464.1458,653.109" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[09b26f1812b91b73d9893cf29efb7e7b]
+link PolygonBuilder to Polygon--><path codeLine="90" d="M1499.875,1702.4111 C1520.3646,1838.4111 1588.9167,2287.8799 1655.2083,2657.8695 C1656.7188,2666.2861 1658.2708,2674.8278 1659.8542,2683.4528 " fill="none" id="PolygonBuilder-to-Polygon" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#545454" points="1660.8438,2688.8278,1663.2585,2678.8568,1659.9081,2683.7042,1655.0608,2680.3538,1660.8438,2688.8278" style="stroke:#545454;stroke-width:1.5625;"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="40.625" x="1659.375" y="2651.2044">builds</text><!--MD5=[cabd119efb5999f8b5c5e91bbfa77d42]
+reverse link KryoSerializer to PolygonKryoSerializer--><path codeLine="97" d="M3260.4167,387.8278 C3260.4167,589.557 3260.4167,1424.1924 3260.4167,1618.7549 " fill="none" id="KryoSerializer-backto-PolygonKryoSerializer" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="3253.125,387.7549,3260.4167,366.9215,3267.7083,387.7549,3253.125,387.7549" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[58dd69fc43130a1d8cf835ea800210a4]
+reverse link Indexable to Polyline--><path codeLine="104" d="M1974.375,387.6924 C1980.8646,449.7861 1993.6458,572.0257 2008.8125,717.1403 " fill="none" id="Indexable-backto-Polyline" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="1967.125,388.4007,1972.2083,366.9215,1981.625,386.8799,1967.125,388.4007" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[90ad57fc7a58731605adbf7a03f89ca4]
+reverse link Bounded to Polyline--><path codeLine="105" d="M2572.3854,387.7028 C2561.7292,444.6611 2540.9479,546.7965 2514.5833,631.8278 C2478.1042,749.484 2434.3021,872.734 2389.1667,991.3903 " fill="none" id="Bounded-backto-Polyline" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="2565.2708,386.0778,2576.1979,366.9007,2579.6146,388.7028,2565.2708,386.0778" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[c8787eb8823f11a03da9264ef3f902a1]
+reverse link Intersectable to Polyline--><path codeLine="106" d="M2116.3542,388.109 C2115.9063,450.3278 2115.0417,572.3382 2114.0104,717.1403 " fill="none" id="Intersectable-backto-Polyline" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="2109.0625,387.7028,2116.5,366.9215,2123.6458,387.807,2109.0625,387.7028" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[2855f2747fd17d0a5210302856050369]
+reverse link LocationSequence to Polyline--><path codeLine="107" d="M1816.1979,387.2861 C1830.375,449.2445 1858.3958,571.7028 1891.6771,717.1403 " fill="none" id="LocationSequence-backto-Polyline" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="1809.0729,388.859,1811.5417,366.9215,1823.2917,385.5986,1809.0729,388.859" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[977e8be405cfb482394982f72f536728]
+link Polyline to Location--><path codeLine="108" d="M2107.2917,2603.9424 C2107.2917,2749.1924 2107.2917,2868.432 2107.2917,2920.8278 " fill="none" id="Polyline-to-Location" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#545454" points="2107.2917,2926.2861,2111.4583,2916.9111,2107.2917,2921.0778,2103.125,2916.9111,2107.2917,2926.2861" style="stroke:#545454;stroke-width:1.5625;"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="55.2083" x="2111.4583" y="2651.2044">contains</text><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="18.75" x="2082.526" y="2912.6365">2+</text><!--MD5=[df6ddd3fc78e0d109127650b1a1e6a61]
+link PolylineBuilder to Polyline--><path codeLine="205" d="M1693.5104,612.6195 C1726.9583,654.8174 1754.8125,692.5778 1768.75,717.2445 C1787.6146,750.6507 1805.75,785.2965 1823.1354,820.7236 " fill="none" id="PolylineBuilder-to-Polyline" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#545454" points="1825.4688,825.4945,1825.0944,815.2421,1823.1812,820.8154,1817.6079,818.9022,1825.4688,825.4945" style="stroke:#545454;stroke-width:1.5625;"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="40.625" x="1751.0417" y="679.3294">builds</text><!--MD5=[7c9ef0f4ee2e8eebe5f859523e09798e]
+link PolylineSectioner to PolylineSection--><path codeLine="249" d="M2770.8333,416.4111 C2770.8333,637.3695 2770.8333,1302.0674 2770.8333,1557.7132 " fill="none" id="PolylineSectioner-to-PolylineSection" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#545454" points="2770.8333,1562.932,2775,1553.557,2770.8333,1557.7236,2766.6667,1553.557,2770.8333,1562.932" style="stroke:#545454;stroke-width:1.5625;"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="45.8333" x="2775" y="679.3294">creates</text><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="8.3333" x="2758.68" y="439.6445">1</text><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="6.25" x="2760.9798" y="1549.0556">*</text><!--MD5=[69dc73cbf82139f22e78e064549008cf]
+reverse link PolylineSectioner to Polyline--><path codeLine="250" d="M2735.75,429.109 C2711.5313,486.8278 2678.0313,564.5049 2645.8333,631.8278 C2565.9896,798.7757 2474.0938,978.2445 2389.0833,1139.7445 " fill="none" id="PolylineSectioner-backto-Polyline" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#333333" points="2741.0729,416.3695,2734.8169,420.5271,2736.2486,427.901,2742.5046,423.7433,2741.0729,416.3695" style="stroke:#545454;stroke-width:1.5625;"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="27.0833" x="2629.1667" y="679.3294">cuts</text><!--MD5=[73eb8c65fbd20650a731b68d09920cff]
+link PolylineSimplifier to Polyline--><path codeLine="260" d="M2349.0208,376.6611 C2338.2604,433.7445 2314.5104,559.7965 2285.8958,711.6195 " fill="none" id="PolylineSimplifier-to-Polyline" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#545454" points="2284.875,717.0257,2290.6861,708.571,2285.8276,711.9052,2282.4934,707.0468,2284.875,717.0257" style="stroke:#545454;stroke-width:1.5625;"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="64.5833" x="2295.8333" y="679.3294">simplifies</text><!--MD5=[5ea635c1e62b390c78dd97fd22901b4c]
+reverse link Location to PolylineSnap--><path codeLine="267" d="M2116.9688,2995.2236 C2128.7604,3047.182 2149.8438,3136.4632 2171.875,3212.0361 C2179.9375,3239.6924 2188.875,3268.5361 2198.0521,3297.0674 " fill="none" id="Location-backto-PolylineSnap" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="2109.8229,2996.7028,2112.375,2974.7757,2124.0521,2993.5049,2109.8229,2996.7028" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[4aa5282df21107a132c5899f27ef0272]
+link PolylineSnapper to PolylineSnap--><path codeLine="293" d="M2435.2917,2994.484 C2416.6979,3057.6195 2380.5938,3180.234 2347.6667,3292.0257 " fill="none" id="PolylineSnapper-to-PolylineSnap" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#545454" points="2346.1042,3297.3486,2352.7292,3289.5153,2347.5625,3292.3486,2344.7292,3287.182,2346.1042,3297.3486" style="stroke:#545454;stroke-width:1.5625;"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="63.5417" x="2361.4583" y="3259.5378">calculates</text><!--MD5=[da7c37d9e6c5c7d977b3a0effc862498]
+reverse link Outline to Polygon.SegmentShapeLocationIndex--><path codeLine="301" d="M3022.9167,387.984 C3022.9167,596.9424 3022.9167,1482.3799 3022.9167,1636.5049 " fill="none" id="Outline-backto-Polygon.SegmentShapeLocationIndex" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="3015.625,387.7549,3022.9167,366.9215,3030.2083,387.7549,3015.625,387.7549" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[e0fc539312f18db0ba2c4bee0acec369]
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.geography.shape.polyline"
+    
+    abstract BaseStringConverter
+    
+    interface Shape
+    interface Bounded
+    interface LocationSequence
+    interface Indexable
+    interface Outline
+    interface Intersectable
+    
+    BaseStringConverter <|- - Polyline.Converter
+    class Polyline.Converter
+    {
+        - -(constructors)- -
+        +Converter(Listener, Separators)
+    }
+    
+    BaseStringConverter <|- - Polyline.GoogleEncodingConverter
+    class Polyline.GoogleEncodingConverter
+    {
+        - -(constructors)- -
+        +GoogleEncodingConverter(Listener)
+    }
+    
+    class Polyline.Intersection
+    {
+        - -(constructors)- -
+        +Intersection(Location, boolean)
+        - -
+        +Location location()
+        - -(time)- -
+        +boolean isModified()
+    }
+    
+    BaseStringConverter <|- - Polyline.LongArrayConverter
+    class Polyline.LongArrayConverter
+    {
+        - -(constructors)- -
+        +LongArrayConverter(Listener, Separators)
+    }
+    
+    class Polyline.Loop
+    {
+        - -
+        +PolylineSection head()
+        +void intersections(Count intersections)
+        +PolylineSection tail()
+        - -(collection)- -
+        +Count intersections()
+        - -(iteration)- -
+        +PolylineSection loop()
+        +Location loopAt()
+    }
+    
+    Polyline <|- - Polygon
+    Shape <|- - Polygon
+    class Polygon
+    {
+        - -(constructors)- -
+        #Polygon()
+        +Polygon(List<Location>)
+        +Polygon(long[])
+        - -
+        +void fast(boolean fast)
+        +Polygon fromLocationSequence(Location one, Location two, Location three, Location... more)
+        +Polygon fromLocationSequence(Iterable<Location> locations)
+        +Outline outline()
+        - -(angle)- -
+        +java.awt.Polygon asAwtPolygonInMicroDegrees()
+        - -(checks)- -
+        +boolean isClockwise()
+        +boolean isCounterClockwise()
+        - -(collection)- -
+        +void addHole(Polygon hole)
+        +Bytes approximateSize()
+        +boolean contains(Rectangle)
+        +boolean contains(Polyline)
+        +List<Segment> intersections(Rectangle bounds, Count maximum)
+        +boolean intersectsOrContains(Polyline)
+        +SegmentRTreeSpatialIndex segmentSpatialIndex()
+        - -(lifecycle)- -
+        +void initialize()
+    }
+    
+    PolylineBuilder <|- - PolygonBuilder
+    PolygonBuilder - -> Polygon : "builds"
+    class PolygonBuilder
+    {
+        - -(building)- -
+        +^Polygon build()
+    }
+    
+    KryoSerializer <|- - PolygonKryoSerializer
+    class PolygonKryoSerializer
+    {
+        - -(constructors)- -
+        +PolygonKryoSerializer()
+    }
+    
+    Indexable <|- - Polyline
+    Bounded <|- - Polyline
+    Intersectable <|- - Polyline
+    LocationSequence <|- - Polyline
+    Polyline - -> "2+" Location : "contains"
+    class Polyline
+    {
+        - -(constructors)- -
+        #Polyline()
+        +Polyline(List<Location>)
+        +Polyline(long[])
+        - -
+        +Polyline append(Polyline that)
+        +Set<Location> asLocationSet()
+        +Location at(Distance)
+        +Location at(Percent parameter)
+        +Polyline attach(Polyline that)
+        +boolean crosses(Polyline that)
+        +Distance directDistance()
+        +Distance distanceTo(Location)
+        +Set<Location> duplicateLocations()
+        +Set<Segment> duplicateSegments()
+        +Polyline fromLocations(Iterator<Location> locations)
+        +Polyline fromLocations(Location one, Location two, Location... more)
+        +Polyline fromLocations(Iterable<Location> locations)
+        +Polyline fromLocations(long start, long end)
+        +boolean has(Location)
+        +Location intersection(Polyline that)
+        +Location intersection(Segment that)
+        +boolean intersects(Segment that)
+        +Distance length()
+        +Location middle()
+        +Segment middleSegment()
+        +Location midpoint()
+        +Set<Segment> overlapping(Polyline that)
+        +boolean overlaps(Polyline that)
+        +Polyline parallel(Heading, Distance offset)
+        +Polyline section(Location start, Location end)
+        +PolylineSection section(int startIndex, int endIndex)
+        +Polyline section(Distance start, Distance end)
+        +Location selfIntersection()
+        +Polyline simplified(Distance tolerance)
+        +Polyline smooth(Angle tolerance)
+        +Polyline snapAndSection(Location origin, Location destination)
+        +Polyline withoutDuplicates()
+        #long expandBounds(long location)
+        #long[] locationsInDecimal()
+        - -(angle)- -
+        +Angle bend()
+        +Heading finalHeading()
+        +Heading initialHeading()
+        +SegmentPair sharpestTurnAngle()
+        +Angle turnAngleTo(Polyline that)
+        +Angle turnAngleTo(Polyline that, Chirality)
+        - -(checks)- -
+        +boolean isBent(Distance within, Angle tolerance)
+        +boolean isConnectedTo(Polyline that)
+        +boolean isLoop()
+        +boolean isSegment()
+        +boolean isSelfIntersecting()
+        +boolean isStraight(Distance within, Angle tolerance)
+        - -(collection)- -
+        +LongArray asLongArray()
+        +Iterator<Location> backwardLocations()
+        +List<PolylineSection> bisect()
+        +Segment firstSegment()
+        +Polyline fromLongArray(LongArray locations)
+        +Segment lastSegment()
+        +List<Location> locations()
+        +List<Loop> loops()
+        +Segment nextToLastSegment()
+        +List<PolylineSection> sections(Distance maximumLength)
+        +Count segmentCount()
+        +int segmentCountAsInteger()
+        +List<Segment> segments()
+        +List<PolylineSection> trisect()
+        +Iterable<LocatedHeading> vectors()
+        +Polyline withFirstReplaced(Location)
+        +Polyline withLastReplaced(Location)
+        +Polyline withoutFirst()
+        +Polyline withoutLast()
+        - -(functional)- -
+        +Polyline augmented(Distance maximumShapePointSpacing)
+        +Polyline augmented()
+        +CompressedPolyline compressed()
+        +Polyline moved(Heading, Distance offset)
+        +Polyline reversed()
+        +Polyline withAppended(Location)
+        - -(lifecycle)- -
+        +Location end()
+        +Location start()
+        - -(math)- -
+        +Percent closeness(Polyline that, Distance maximumDistance, Angle maximumHeadingDeviation)
+        - -(parsing)- -
+        +Polyline parse(String value)
+        - -(primitive)- -
+        +Polyline fromLongs(long[] locations)
+        - -(time)- -
+        +Segment secondSegment()
+    }
+    
+    PolylineBuilder - -> Polyline : "builds"
+    class PolylineBuilder
+    {
+        - -
+        +void prepend(Location)
+        +void set(int index, Location)
+        - -(building)- -
+        +Polyline build()
+        - -(checks)- -
+        +boolean hasDuplicates()
+        +boolean isValid()
+        +boolean isZeroLength()
+        - -(collection)- -
+        +PolylineBuilder add(Location)
+        +PolylineBuilder add(double latitude, double longitude)
+        +PolylineBuilder addAll(Iterable<Location> locations)
+        +PolylineBuilder addAll(Iterator<Location> locations)
+        +PolylineBuilder addAllButFirst(Iterable<Location> locations)
+        +PolylineBuilder addAllButLast(Iterable<Location> locations)
+        +PolylineBuilder addAllUnique(Iterable<Location> locations)
+        +Intersection addIntersectionWith(Segment, Distance maximumSnapDistance)
+        +PolylineBuilder addTail(Iterable<Location> locations)
+        +boolean addUnique(Location)
+        +boolean isEmpty()
+        +List<Segment> segments()
+        +int size()
+        #List<Location> locations()
+        - -(lifecycle)- -
+        +Location end()
+        +Location start()
+    }
+    
+    class PolylineSection
+    {
+        - -(constructors)- -
+        +PolylineSection(Polyline, int, int)
+        - -
+        +Polyline parent()
+        +Polyline shape()
+        - -(collection)- -
+        +int fromIndex()
+        +int toIndex()
+    }
+    
+    PolylineSectioner "1" - -> "*" PolylineSection : "creates"
+    PolylineSectioner o- - Polyline : "cuts"
+    class PolylineSectioner
+    {
+        - -(constructors)- -
+        +PolylineSectioner(Polyline)
+        - -(collection)- -
+        +void cutAtIndex(int index)
+        +List<PolylineSection> sections()
+    }
+    
+    PolylineSimplifier - -> Polyline : "simplifies"
+    class PolylineSimplifier
+    {
+        - -
+        +Polyline simplify(Polyline, Distance tolerance)
+    }
+    
+    Location <|- - PolylineSnap
+    class PolylineSnap
+    {
+        - -(constructors)- -
+        +PolylineSnap(Latitude, Longitude, LocationSequence, Level, Location, int)
+        +PolylineSnap(Location, LocationSequence, Level, Location, int)
+        - -
+        +Distance distanceToSource()
+        +Level offset()
+        +Level offsetOnSegment()
+        +Segment segment()
+        +Location source()
+        +LocationSequence target()
+        - -(angle)- -
+        +Angle angle()
+        +Heading segmentHeading()
+        +Segment vector()
+        - -(checks)- -
+        +boolean isLeft()
+        +boolean isRight()
+        - -(collection)- -
+        +int polylineIndex()
+        - -(conversion)- -
+        +String toDebugString()
+    }
+    
+    PolylineSnapper - -> PolylineSnap : "calculates"
+    class PolylineSnapper
+    {
+        - -
+        +PolylineSnap snap(LocationSequence polyline, Location point)
+        +PolylineSnap snap(LocationSequence polyline, Location point, Heading headingAtPoint)
+    }
+    
+    Outline <|- - Polygon.SegmentShapeLocationIndex
+    class Polygon.SegmentShapeLocationIndex
+    {
+    }
+    
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+
+
+skinparam backgroundColor #333333
+
+
+
+
+
+
+skinparam  {
+    defaultFontName   "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+    defaultFontSize   12
+    defaultTextAlignment left
+    shadowing false
+    RoundCorner 10
+    TitleFontSize 18
+}
+
+skinparam defaultFontName       "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           16
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               3
+skinparam ArrowColor            #545454
+skinparam stereotype {
+    CBackgroundColor #0066cf
+    CBorderColor #0086ef
+    ABackgroundColor #C8Ac00
+    ABorderColor #D8Bc00
+    IBackgroundColor #008400
+    IBorderColor #239c23
+    EBackgroundColor #cf6300
+    EBorderColor #ef8300
+    NBackgroundColor #3380b9
+    NBorderColor #004d86
+}
+skinparam title {
+	FontColor	                 #c0c0c0
+ 	BorderColor                  #545454
+	FontSize	    	         20
+	BorderRoundCorner            16
+	BorderThickness 	         1
+	BackgroundColor              #48494b
+}
+
+
+skinparam legend {
+	BackgroundColor #303030
+	BorderColor #404040
+	FontColor #a0a0a0
+}
+
+	skinparam swimlane {
+	BorderColor #5e5e5e
+	BorderThickness 2
+	TitleBackgroundColor  #6d6d6d-#484848
+	TitleFontColor #303030
+}
+
+skinparam activity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BarColor #00FF00
+	StartColor #0060a8
+	EndColor #0060a8
+	DiamondBackgroundColor #6d6d6d-#3a3a3a
+  	DiamondBorderColor #3a3a3a
+  	DiamondFontColor #fefefe
+}
+
+
+skinparam participant {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam arrow {
+	Thickness 1.5
+	Color #545454
+	FontColor #a0a0a0
+    FontStyle bold
+    MessageAlignment center
+}
+
+
+
+skinparam sequence {
+	BorderColor #303030
+	TitleFontColor #303030
+	BackgroundColor #333333
+	StartColor #303030
+	EndColor #303030
+	BoxBackgroundColor #333333
+	BoxBorderColor #484848
+	BoxFontColor #484848
+	LifeLineBorderColor #484848
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor #3a3a3a
+	GroupBorderColor #484848
+	GroupFontColor #484848
+	GroupHeaderFontColor #0060a8
+	GroupBackgroundColor #484848
+	GroupHeaderBackgroundColor #333333
+	DividerBackgroundColor #484848
+    DividerBorderColor #484848
+    DividerBorderThickness 2
+    DividerFontColor #D8Bc00
+	ReferenceBackgroundColor #333333
+	ReferenceBorderColor #484848
+	ReferenceFontColor #fefefe
+	ReferenceHeaderBackgroundColor #484848
+}
+
+
+skinparam partition {
+	BorderColor #303030
+	FontColor #333333
+	BackgroundColor #333333
+}
+
+
+skinparam collections {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam control {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam entity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam boundary {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam agent {
+	BackgroundColor #ff8000
+	BorderColor #ff9933
+	FontColor #484848
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor #1b1b1a
+	BorderColor #5e5e5e
+	FontSize 11
+	FontColor #a0a0a0
+}
+
+
+skinparam artifact {
+	BorderThickness 10
+	BorderColor #5e5e5e
+	BackgroundColor #1b1b1a
+	FontColor #D8Bc00
+}
+
+
+skinparam component {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam interface {
+	BackgroundColor  #008400
+	BorderColor  #007F00
+	FontColor #484848
+}
+
+
+skinparam storage {
+	BackgroundColor #ff8000
+  	BorderColor #cc6600
+	FontColor #222222
+}
+
+
+skinparam node {
+	BackgroundColor #333333
+	BorderColor #333333
+	FontColor #C8Ac00
+}
+
+
+skinparam cloud {
+	BackgroundColor #484848-black
+	BorderColor #484848
+	FontColor #D8Bc00
+}
+
+
+skinparam database {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor  #333333
+}
+
+
+skinparam class {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	HeaderBackgroundColor #1b1b1a
+    BackgroundColor #282828
+    BorderColor #5e5e5e
+ 	StereotypeFontColor #a0a0a0
+    StereotypeFontStyle bold
+	BorderThickness 1
+	AttributeFontColor #D8Bc00
+	AttributeFontSize 11
+    FontColor #D8Bc00
+    FontStyle bold
+}
+
+
+skinparam object {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StereotypeFontColor #484848
+	BorderThickness 1
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam rectangle {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam package {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor #6d6d6d
+  	BorderColor #ff8000
+	FontColor #ff8000
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor #6d6d6d
+  	BorderColor #0060a8
+	FontColor #0060a8
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StartColor #0060a8
+	EndColor #0060a8
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam card {
+	BackgroundColor #0060a8
+	BorderColor #004d86
+	FontColor $INFO_TEXT
+}
+
+
+skinparam file {
+	BackgroundColor #6d6d6d-#484848
+	BorderColor #0060a8
+	FontColor #fefefe
+}
+
+
+skinparam stack {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+    
+    title "com.telenav.aonia.map.geography.shape.polyline"
+    
+    abstract BaseStringConverter
+    
+    interface Shape
+    interface Bounded
+    interface LocationSequence
+    interface Indexable
+    interface Outline
+    interface Intersectable
+    
+    BaseStringConverter <|- - Polyline.Converter
+    class Polyline.Converter
+    {
+        - -(constructors)- -
+        +Converter(Listener, Separators)
+    }
+    
+    BaseStringConverter <|- - Polyline.GoogleEncodingConverter
+    class Polyline.GoogleEncodingConverter
+    {
+        - -(constructors)- -
+        +GoogleEncodingConverter(Listener)
+    }
+    
+    class Polyline.Intersection
+    {
+        - -(constructors)- -
+        +Intersection(Location, boolean)
+        - -
+        +Location location()
+        - -(time)- -
+        +boolean isModified()
+    }
+    
+    BaseStringConverter <|- - Polyline.LongArrayConverter
+    class Polyline.LongArrayConverter
+    {
+        - -(constructors)- -
+        +LongArrayConverter(Listener, Separators)
+    }
+    
+    class Polyline.Loop
+    {
+        - -
+        +PolylineSection head()
+        +void intersections(Count intersections)
+        +PolylineSection tail()
+        - -(collection)- -
+        +Count intersections()
+        - -(iteration)- -
+        +PolylineSection loop()
+        +Location loopAt()
+    }
+    
+    Polyline <|- - Polygon
+    Shape <|- - Polygon
+    class Polygon
+    {
+        - -(constructors)- -
+        #Polygon()
+        +Polygon(List<Location>)
+        +Polygon(long[])
+        - -
+        +void fast(boolean fast)
+        +Polygon fromLocationSequence(Location one, Location two, Location three, Location... more)
+        +Polygon fromLocationSequence(Iterable<Location> locations)
+        +Outline outline()
+        - -(angle)- -
+        +java.awt.Polygon asAwtPolygonInMicroDegrees()
+        - -(checks)- -
+        +boolean isClockwise()
+        +boolean isCounterClockwise()
+        - -(collection)- -
+        +void addHole(Polygon hole)
+        +Bytes approximateSize()
+        +boolean contains(Rectangle)
+        +boolean contains(Polyline)
+        +List<Segment> intersections(Rectangle bounds, Count maximum)
+        +boolean intersectsOrContains(Polyline)
+        +SegmentRTreeSpatialIndex segmentSpatialIndex()
+        - -(lifecycle)- -
+        +void initialize()
+    }
+    
+    PolylineBuilder <|- - PolygonBuilder
+    PolygonBuilder - -> Polygon : "builds"
+    class PolygonBuilder
+    {
+        - -(building)- -
+        +^Polygon build()
+    }
+    
+    KryoSerializer <|- - PolygonKryoSerializer
+    class PolygonKryoSerializer
+    {
+        - -(constructors)- -
+        +PolygonKryoSerializer()
+    }
+    
+    Indexable <|- - Polyline
+    Bounded <|- - Polyline
+    Intersectable <|- - Polyline
+    LocationSequence <|- - Polyline
+    Polyline - -> "2+" Location : "contains"
+    class Polyline
+    {
+        - -(constructors)- -
+        #Polyline()
+        +Polyline(List<Location>)
+        +Polyline(long[])
+        - -
+        +Polyline append(Polyline that)
+        +Set<Location> asLocationSet()
+        +Location at(Distance)
+        +Location at(Percent parameter)
+        +Polyline attach(Polyline that)
+        +boolean crosses(Polyline that)
+        +Distance directDistance()
+        +Distance distanceTo(Location)
+        +Set<Location> duplicateLocations()
+        +Set<Segment> duplicateSegments()
+        +Polyline fromLocations(Iterator<Location> locations)
+        +Polyline fromLocations(Location one, Location two, Location... more)
+        +Polyline fromLocations(Iterable<Location> locations)
+        +Polyline fromLocations(long start, long end)
+        +boolean has(Location)
+        +Location intersection(Polyline that)
+        +Location intersection(Segment that)
+        +boolean intersects(Segment that)
+        +Distance length()
+        +Location middle()
+        +Segment middleSegment()
+        +Location midpoint()
+        +Set<Segment> overlapping(Polyline that)
+        +boolean overlaps(Polyline that)
+        +Polyline parallel(Heading, Distance offset)
+        +Polyline section(Location start, Location end)
+        +PolylineSection section(int startIndex, int endIndex)
+        +Polyline section(Distance start, Distance end)
+        +Location selfIntersection()
+        +Polyline simplified(Distance tolerance)
+        +Polyline smooth(Angle tolerance)
+        +Polyline snapAndSection(Location origin, Location destination)
+        +Polyline withoutDuplicates()
+        #long expandBounds(long location)
+        #long[] locationsInDecimal()
+        - -(angle)- -
+        +Angle bend()
+        +Heading finalHeading()
+        +Heading initialHeading()
+        +SegmentPair sharpestTurnAngle()
+        +Angle turnAngleTo(Polyline that)
+        +Angle turnAngleTo(Polyline that, Chirality)
+        - -(checks)- -
+        +boolean isBent(Distance within, Angle tolerance)
+        +boolean isConnectedTo(Polyline that)
+        +boolean isLoop()
+        +boolean isSegment()
+        +boolean isSelfIntersecting()
+        +boolean isStraight(Distance within, Angle tolerance)
+        - -(collection)- -
+        +LongArray asLongArray()
+        +Iterator<Location> backwardLocations()
+        +List<PolylineSection> bisect()
+        +Segment firstSegment()
+        +Polyline fromLongArray(LongArray locations)
+        +Segment lastSegment()
+        +List<Location> locations()
+        +List<Loop> loops()
+        +Segment nextToLastSegment()
+        +List<PolylineSection> sections(Distance maximumLength)
+        +Count segmentCount()
+        +int segmentCountAsInteger()
+        +List<Segment> segments()
+        +List<PolylineSection> trisect()
+        +Iterable<LocatedHeading> vectors()
+        +Polyline withFirstReplaced(Location)
+        +Polyline withLastReplaced(Location)
+        +Polyline withoutFirst()
+        +Polyline withoutLast()
+        - -(functional)- -
+        +Polyline augmented(Distance maximumShapePointSpacing)
+        +Polyline augmented()
+        +CompressedPolyline compressed()
+        +Polyline moved(Heading, Distance offset)
+        +Polyline reversed()
+        +Polyline withAppended(Location)
+        - -(lifecycle)- -
+        +Location end()
+        +Location start()
+        - -(math)- -
+        +Percent closeness(Polyline that, Distance maximumDistance, Angle maximumHeadingDeviation)
+        - -(parsing)- -
+        +Polyline parse(String value)
+        - -(primitive)- -
+        +Polyline fromLongs(long[] locations)
+        - -(time)- -
+        +Segment secondSegment()
+    }
+    
+    PolylineBuilder - -> Polyline : "builds"
+    class PolylineBuilder
+    {
+        - -
+        +void prepend(Location)
+        +void set(int index, Location)
+        - -(building)- -
+        +Polyline build()
+        - -(checks)- -
+        +boolean hasDuplicates()
+        +boolean isValid()
+        +boolean isZeroLength()
+        - -(collection)- -
+        +PolylineBuilder add(Location)
+        +PolylineBuilder add(double latitude, double longitude)
+        +PolylineBuilder addAll(Iterable<Location> locations)
+        +PolylineBuilder addAll(Iterator<Location> locations)
+        +PolylineBuilder addAllButFirst(Iterable<Location> locations)
+        +PolylineBuilder addAllButLast(Iterable<Location> locations)
+        +PolylineBuilder addAllUnique(Iterable<Location> locations)
+        +Intersection addIntersectionWith(Segment, Distance maximumSnapDistance)
+        +PolylineBuilder addTail(Iterable<Location> locations)
+        +boolean addUnique(Location)
+        +boolean isEmpty()
+        +List<Segment> segments()
+        +int size()
+        #List<Location> locations()
+        - -(lifecycle)- -
+        +Location end()
+        +Location start()
+    }
+    
+    class PolylineSection
+    {
+        - -(constructors)- -
+        +PolylineSection(Polyline, int, int)
+        - -
+        +Polyline parent()
+        +Polyline shape()
+        - -(collection)- -
+        +int fromIndex()
+        +int toIndex()
+    }
+    
+    PolylineSectioner "1" - -> "*" PolylineSection : "creates"
+    PolylineSectioner o- - Polyline : "cuts"
+    class PolylineSectioner
+    {
+        - -(constructors)- -
+        +PolylineSectioner(Polyline)
+        - -(collection)- -
+        +void cutAtIndex(int index)
+        +List<PolylineSection> sections()
+    }
+    
+    PolylineSimplifier - -> Polyline : "simplifies"
+    class PolylineSimplifier
+    {
+        - -
+        +Polyline simplify(Polyline, Distance tolerance)
+    }
+    
+    Location <|- - PolylineSnap
+    class PolylineSnap
+    {
+        - -(constructors)- -
+        +PolylineSnap(Latitude, Longitude, LocationSequence, Level, Location, int)
+        +PolylineSnap(Location, LocationSequence, Level, Location, int)
+        - -
+        +Distance distanceToSource()
+        +Level offset()
+        +Level offsetOnSegment()
+        +Segment segment()
+        +Location source()
+        +LocationSequence target()
+        - -(angle)- -
+        +Angle angle()
+        +Heading segmentHeading()
+        +Segment vector()
+        - -(checks)- -
+        +boolean isLeft()
+        +boolean isRight()
+        - -(collection)- -
+        +int polylineIndex()
+        - -(conversion)- -
+        +String toDebugString()
+    }
+    
+    PolylineSnapper - -> PolylineSnap : "calculates"
+    class PolylineSnapper
+    {
+        - -
+        +PolylineSnap snap(LocationSequence polyline, Location point)
+        +PolylineSnap snap(LocationSequence polyline, Location point, Heading headingAtPoint)
+    }
+    
+    Outline <|- - Polygon.SegmentShapeLocationIndex
+    class Polygon.SegmentShapeLocationIndex
+    {
+    }
+    
+@enduml
+
+PlantUML version 1.2021.01(Tue Feb 02 00:55:08 MST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

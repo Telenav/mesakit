@@ -1,0 +1,110 @@
+######################################################################################
+#  [HuffmanCodec size = 53, bits = 8]:                                               #
+#      1. 11001010 -> 'Grant, NM' (4,130)                                            #
+#      2. 11001011 -> 'Socorro, NM' (4,206)                                          #
+#      3. 11010110 -> 'designated' (4,311)                                           #
+#      4. 11010111 -> 'secondary' (4,324)                                            #
+#      5. 11011010 -> 'Taos, NM' (4,394)                                             #
+#      6. 11011011 -> 'Luna, NM' (4,398)                                             #
+#      7. 11011100 -> 'sidewalk' (4,492)                                             #
+#      8. 11011101 -> 'gate' (4,542)                                                 #
+#      9. 0000110 -> 'alley' (4,648)                                                 #
+#      10. 0000111 -> 'Lincoln, NM' (4,907)                                          #
+#      11. 0010010 -> 'Catron, NM' (4,908)                                           #
+#      12. 0010011 -> 'crossing' (5,027)                                             #
+#      13. 0010110 -> 'Cibola, NM' (5,243)                                           #
+#      14. 0010111 -> 'San Miguel, NM' (5,246)                                       #
+#      15. 0110010 -> 'reservoir' (5,494)                                            #
+#      16. 0110011 -> 'unpaved' (5,808)                                              #
+#      17. 1001000 -> '11/13/1980' (6,361)                                           #
+#      18. 1001001 -> 'Otero, NM' (6,484)                                            #
+#      19. 1001010 -> 'Dona Ana, NM' (6,486)                                         #
+#      20. 1001011 -> 'path' (6,515)                                                 #
+#      21. 1011000 -> 'unclassified' (7,152)                                         #
+#      22. 1011001 -> 'bulk_upload.pl-66a4cfd9-bb2d-45b0-815a-cbee1df6fc1c' (7,535)  #
+#      23. 1100000 -> 'Chaves, NM' (7,921)                                           #
+#      24. 1100001 -> 'Santa Fe, NM' (8,021)                                         #
+#      25. 1100010 -> 'dirt' (8,195)                                                 #
+#      26. 1100011 -> 'bulk_upload.pl-75d70b34-5421-4b1e-9d4a-dab29a036429' (8,196)  #
+#      27. 1100100 -> 'tertiary' (8,281)                                             #
+#      28. 1100110 -> 'survey' (8,358)                                               #
+#      29. 1100111 -> 'Sandoval, NM' (8,389)                                         #
+#      30. 1101010 -> 'street_lamp' (8,567)                                          #
+#      31. 1101100 -> 'bulk_upload.pl-32917825-42cc-4714-a100-624a5c2b7243' (8,720)  #
+#      32. 1101111 -> 'bulk_upload.pl-061d544b-a107-49b2-b96a-7f93be89ae15' (9,368)  #
+#      33. 000010 -> 'asphalt' (9,421)                                               #
+#      34. 001000 -> 'Lea, NM' (9,651)                                               #
+#      35. 001010 -> 'turning_circle' (10,479)                                       #
+#      36. 011000 -> 'Rio Arriba, NM' (11,124)                                       #
+#      37. 100010 -> 'tree' (11,824)                                                 #
+#      38. 100011 -> 'pole' (12,522)                                                 #
+#      39. 100110 -> 'McKinley, NM' (13,130)                                         #
+#      40. 100111 -> 'Eddy, NM' (14,533)                                             #
+#      41. 101101 -> 'San Juan, NM' (14,831)                                         #
+#      42. 101110 -> 'Bernalillo, NM' (15,019)                                       #
+#      43. 101111 -> 'parking_aisle' (15,871)                                        #
+#      44. 110100 -> 'footway' (16,778)                                              #
+#      45. 00000 -> 'Bing' (18,555)                                                  #
+#      46. 01101 -> 'driveway' (22,472)                                              #
+#      47. 10000 -> 'private' (23,412)                                               #
+#      48. 0001 -> 'tower' (39,596)                                                  #
+#      49. 0011 -> 'tiger_import_dch_v0.6_20070828' (43,016)                         #
+#      50. 0111 -> 'track' (45,180)                                                  #
+#      51. 1010 -> 'tiger_import_dch_v0.6_20070829' (54,966)                         #
+#      52. 010 -> 'service' (87,450)                                                 #
+#      53. 111 -> 'residential' (144,023)                                            #
+######################################################################################
+
+11/13/1980 = 6,361
+Bernalillo, NM = 15,019
+Bing = 18,555
+Catron, NM = 4,908
+Chaves, NM = 7,921
+Cibola, NM = 5,243
+Dona Ana, NM = 6,486
+Eddy, NM = 14,533
+Grant, NM = 4,130
+Lea, NM = 9,651
+Lincoln, NM = 4,907
+Luna, NM = 4,398
+McKinley, NM = 13,130
+Otero, NM = 6,484
+Rio Arriba, NM = 11,124
+San Juan, NM = 14,831
+San Miguel, NM = 5,246
+Sandoval, NM = 8,389
+Santa Fe, NM = 8,021
+Socorro, NM = 4,206
+Taos, NM = 4,394
+alley = 4,648
+asphalt = 9,421
+bulk_upload.pl-061d544b-a107-49b2-b96a-7f93be89ae15 = 9,368
+bulk_upload.pl-32917825-42cc-4714-a100-624a5c2b7243 = 8,720
+bulk_upload.pl-66a4cfd9-bb2d-45b0-815a-cbee1df6fc1c = 7,535
+bulk_upload.pl-75d70b34-5421-4b1e-9d4a-dab29a036429 = 8,196
+crossing = 5,027
+designated = 4,311
+dirt = 8,195
+driveway = 22,472
+footway = 16,778
+gate = 4,542
+parking_aisle = 15,871
+path = 6,515
+pole = 12,522
+private = 23,412
+reservoir = 5,494
+residential = 144,023
+secondary = 4,324
+service = 87,450
+sidewalk = 4,492
+street_lamp = 8,567
+survey = 8,358
+tertiary = 8,281
+tiger_import_dch_v0.6_20070828 = 43,016
+tiger_import_dch_v0.6_20070829 = 54,966
+tower = 39,596
+track = 45,180
+tree = 11,824
+turning_circle = 10,479
+unclassified = 7,152
+unpaved = 5,808

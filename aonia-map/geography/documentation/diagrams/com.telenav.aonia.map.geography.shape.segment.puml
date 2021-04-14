@@ -1,0 +1,86 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.geography.shape.segment"
+    
+    abstract BaseStringConverter
+    
+    interface Bounded
+    interface LocationSequence
+    interface Headed
+    interface Intersectable
+    
+    BaseStringConverter <|-- Segment.Converter
+    class Segment.Converter
+    {
+        --(constructors)--
+        +Converter(Listener)
+        +Converter(Listener, Separators)
+    }
+    
+    Bounded <|-- Segment
+    Intersectable <|-- Segment
+    Headed <|-- Segment
+    LocationSequence <|-- Segment
+    class Segment
+    {
+        --(constructors)--
+        +Segment(Location, Location)
+        +Segment(long, long)
+        --
+        +Distance approximateLength()
+        +Location at(Distance)
+        +Polyline backwardArrow(Angle offset, Distance arrowSize)
+        +Location center()
+        +Polyline forwardArrow(Angle offset, Distance arrowSize)
+        +Location intersection(Segment that)
+        +boolean intersects(Segment that)
+        +boolean leadsTo(Segment that)
+        +Distance length()
+        +Location midpoint()
+        +Segment parallel(boolean left, Distance offset)
+        +Segment perpendicular(Location, Distance length)
+        +Polygon surroundingBox(Distance range)
+        --(angle)--
+        +Angle turnAngleTo(Segment that, Chirality)
+        --(checks)--
+        +boolean isConnectedTo(Segment that)
+        +boolean isHorizontal()
+        +boolean isParallel(Segment that, Angle threshold)
+        +boolean isPoint()
+        +boolean isVertical()
+        --(collection)--
+        +Iterable<Segment> sections(Distance length)
+        --(conversion)--
+        +Polyline asPolyline()
+        --(functional)--
+        +Segment reversed()
+        --(lifecycle)--
+        +Location end()
+        +long endInDm7()
+        +Location start()
+        +long startInDm7()
+        +Segment withEndExtended(Distance)
+        +Segment withStartExtended(Distance)
+    }
+    
+    SegmentPair --> Segment : "first segment"
+    SegmentPair --> Segment : "second segment"
+    class SegmentPair
+    {
+        --(constructors)--
+        +SegmentPair(Segment, Segment)
+        --(angle)--
+        +Angle angle()
+        +Heading bisect(Chirality)
+        --(collection)--
+        +Segment first()
+        --(conversion)--
+        +SegmentPair asClockHands()
+        --(time)--
+        +Segment second()
+    }
+    
+@enduml
+

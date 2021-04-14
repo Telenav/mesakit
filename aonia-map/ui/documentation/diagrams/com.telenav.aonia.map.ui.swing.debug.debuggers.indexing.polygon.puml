@@ -1,0 +1,17 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.ui.swing.debug.debuggers.indexing.polygon"
+    
+    interface PolygonSpatialIndexDebugger
+    
+    PolygonSpatialIndexDebugger <|-- VisualPolygonSpatialIndexDebugger
+    class VisualPolygonSpatialIndexDebugger
+    {
+        --(constructors)--
+        +VisualPolygonSpatialIndexDebugger(View)
+    }
+    
+@enduml
+

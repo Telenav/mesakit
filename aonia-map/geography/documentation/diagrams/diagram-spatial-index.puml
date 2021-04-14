@@ -1,0 +1,92 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "Spatial Indexes"
+    
+    interface Bounded
+    interface Outline
+    interface Intersectable
+    
+    Intersectable <|-- PolygonSpatialIndex
+    Bounded <|-- PolygonSpatialIndex
+    Outline <|-- PolygonSpatialIndex
+    class PolygonSpatialIndex
+    {
+        --(constructors)--
+        #PolygonSpatialIndex()
+        +PolygonSpatialIndex(Polygon)
+        --
+        +void debug(PolygonSpatialIndexDebugger)
+        +void visit(Visitor)
+    }
+    
+    class QuadTreeSpatialIndex<Element>
+    {
+        --(constructors)--
+        +QuadTreeSpatialIndex()
+        +QuadTreeSpatialIndex(int, Distance)
+        --
+        +Rectangle bounds()
+        +void dump(PrintStream out)
+        +boolean replace(Element oldValue, Element newValue)
+        --(collection)--
+        +void add(Element object)
+        +void addAll(Iterable<Element> objects)
+        +void clear()
+        +Count count()
+        +Iterator<Element> inside(Rectangle bounds, Matcher<Element>)
+        +Iterator<Element> inside(Rectangle bounds)
+        +void remove(Element object)
+        +void removeAll(Rectangle bounds, Matcher<Element>)
+        +int size()
+    }
+    
+    RTreeBulkLoader --> RTreeSpatialIndex : "loads"
+    class RTreeBulkLoader<Element>
+    {
+        --(constructors)--
+        +RTreeBulkLoader(RTreeSpatialIndex<Element>)
+        --
+        +double log(int base, int num)
+        #int compareHorizontal(Element a, Element b)
+        #int compareVertical(Element a, Element b)
+        --(read)--
+        +void load(List<Element> elements)
+    }
+    
+    Bounded <|-- RTreeSpatialIndex
+    class RTreeSpatialIndex<Element>
+    {
+        --(constructors)--
+        #RTreeSpatialIndex()
+        +RTreeSpatialIndex(String, RTreeSettings)
+        --
+        +void debugger(RTreeSpatialIndexDebugger<Element>)
+        +void dump(PrintStream out)
+        +void dump(PrintStream out, DumpDetailLevel)
+        +void root(Node<Element> root)
+        +RTreeSettings settings()
+        +Statistics statistics()
+        --(collection)--
+        +void add(Element)
+        +Iterable<Element> all()
+        +Count count()
+        +RTreeSpatialIndexDebugger<Element> debugger()
+        +Iterable<Element> intersecting(Rectangle bounds)
+        +Iterable<Element> intersecting(Rectangle bounds, Matcher<Element>)
+        --(factory)--
+        +Leaf<Element> newLeaf(InteriorNode<Element> parent)
+        --(read)--
+        +void bulkLoad(List<Element> elements)
+    }
+    
+    RTreeSpatialIndex <|-- SegmentRTreeSpatialIndex
+    class SegmentRTreeSpatialIndex
+    {
+        --(constructors)--
+        +SegmentRTreeSpatialIndex(String, Maximum, Iterable<Segment>)
+    }
+    
+@enduml
+

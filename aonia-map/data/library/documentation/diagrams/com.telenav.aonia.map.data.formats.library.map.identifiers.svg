@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="709.375px" preserveAspectRatio="none" style="width:686px;height:709px;background:#333333;" version="1.1" viewBox="0 0 686 709" width="686.4583px" zoomAndPan="magnify"><defs/><g><rect fill="#48494B" height="41.2028" rx="8.3333" ry="8.3333" style="stroke:#545454;stroke-width:1.0416666666666667;" width="616.6667" x="27.6042" y="2.0833"/><text fill="#C0C0C0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="20.8333" lengthAdjust="spacing" textLength="593.75" x="39.0625" y="30.5583">com.telenav.aonia.map.data.formats.library.map.identifiers</text><!--MD5=[ee33cdae2e501e39ac787670c2f3c87d]
+cluster MapNodeIdentifier--><polygon fill="#333333" points="16.6667,253.7028,148.9583,253.7028,156.25,280.9245,201.0417,280.9245,201.0417,375.5778,16.6667,375.5778,16.6667,253.7028" style="stroke:#333333;stroke-width:2.0833333333333335;"/><line style="stroke:#333333;stroke-width:2.0833333333333335;" x1="16.6667" x2="156.25" y1="280.9245" y2="280.9245"/><text fill="#C8AC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="119.7917" x="23.9583" y="270.9961">MapNodeIdentifier</text><!--MD5=[0e49251eb0dec343c6588c1b69b37871]
+class MapNodeIdentifier.Comparator--><rect codeLine="9" fill="#282828" height="48.055" id="MapNodeIdentifier.Comparator" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="114.5833" x="61.4583" y="302.6611"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="114.5833" x="61.4583" y="302.6611"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="114.5833" x="61.4583" y="325.7161"/><rect codeLine="9" fill="none" height="48.055" id="MapNodeIdentifier.Comparator" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="114.5833" x="61.4583" y="302.6611"/><ellipse cx="76.0417" cy="318.3553" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M77.9521,322.7804 Q77.5248,323.0001 77.0549,323.1099 Q76.5849,323.2198 76.0661,323.2198 Q74.2228,323.2198 73.2524,322.0052 Q72.2819,320.7906 72.2819,318.4957 Q72.2819,316.1947 73.2524,314.9801 Q74.2228,313.7655 76.0661,313.7655 Q76.5849,313.7655 77.061,313.8753 Q77.537,313.9852 77.9521,314.2049 L77.9521,316.2069 Q77.4882,315.7796 77.0518,315.5813 Q76.6154,315.3829 76.1515,315.3829 Q75.1628,315.3829 74.6592,316.1672 Q74.1557,316.9515 74.1557,318.4957 Q74.1557,320.0338 74.6592,320.8181 Q75.1628,321.6024 76.1515,321.6024 Q76.6154,321.6024 77.0518,321.404 Q77.4882,321.2056 77.9521,320.7784 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="77.0833" x="92.7083" y="323.0794">Comparator</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="62.5" x2="175" y1="334.0495" y2="334.0495"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="62.5" x2="175" y1="342.3828" y2="342.3828"/><!--MD5=[bfbc09f118ac649fa938666fcb82962a]
+class Comparator--><rect codeLine="6" fill="#282828" height="48.055" id="Comparator" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="114.5833" x="61.4583" y="93.2861"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="114.5833" x="61.4583" y="93.2861"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="114.5833" x="61.4583" y="116.3411"/><rect codeLine="6" fill="none" height="48.055" id="Comparator" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="114.5833" x="61.4583" y="93.2861"/><ellipse cx="76.0417" cy="108.9803" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M72.9248,106.1422 L72.9248,104.5553 L78.3508,104.5553 L78.3508,106.1422 L76.5381,106.1422 L76.5381,112.0809 L78.3508,112.0809 L78.3508,113.6678 L72.9248,113.6678 L72.9248,112.0809 L74.7375,112.0809 L74.7375,106.1422 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="77.0833" x="92.7083" y="113.7044">Comparator</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="62.5" x2="175" y1="124.6745" y2="124.6745"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="62.5" x2="175" y1="133.0078" y2="133.0078"/><!--MD5=[75430099834887034d36f3efdb02bb45]
+class Identifier--><rect fill="#282828" height="48.055" id="Identifier" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="96.875" x="310.9375" y="93.2861"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="96.875" x="310.9375" y="93.2861"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="96.875" x="310.9375" y="116.3411"/><rect fill="none" height="48.055" id="Identifier" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="96.875" x="310.9375" y="93.2861"/><ellipse cx="325.5208" cy="108.9803" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M327.4312,113.4054 Q327.004,113.6251 326.534,113.7349 Q326.064,113.8448 325.5452,113.8448 Q323.702,113.8448 322.7315,112.6302 Q321.7611,111.4156 321.7611,109.1207 Q321.7611,106.8197 322.7315,105.6051 Q323.702,104.3905 325.5452,104.3905 Q326.064,104.3905 326.5401,104.5003 Q327.0162,104.6102 327.4312,104.8299 L327.4312,106.8319 Q326.9674,106.4046 326.531,106.2063 Q326.0946,106.0079 325.6307,106.0079 Q324.6419,106.0079 324.1384,106.7922 Q323.6348,107.5765 323.6348,109.1207 Q323.6348,110.6588 324.1384,111.4431 Q324.6419,112.2274 325.6307,112.2274 Q326.0946,112.2274 326.531,112.029 Q326.9674,111.8306 327.4312,111.4034 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="59.375" x="342.1875" y="113.7044">Identifier</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="311.9792" x2="406.7708" y1="124.6745" y2="124.6745"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="311.9792" x2="406.7708" y1="133.0078" y2="133.0078"/><!--MD5=[7b3160e75f047fe6597b3beba6849862]
+class MapIdentifier--><rect codeLine="14" fill="#282828" height="166.5243" id="MapIdentifier" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="266.6667" x="226.0417" y="243.2861"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="266.6667" x="226.0417" y="243.2861"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="266.6667" x="226.0417" y="266.3411"/><rect codeLine="14" fill="none" height="166.5243" id="MapIdentifier" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="266.6667" x="226.0417" y="243.2861"/><ellipse cx="308.8542" cy="258.9803" fill="#C8AC00" rx="10.4167" ry="10.4167" style="stroke:#D8BC00;stroke-width:1.0416666666666667;"/><path d="M308.9681,255.6824 L308.1197,259.4116 L309.8226,259.4116 Z M307.8695,254.0344 L310.0728,254.0344 L312.5326,263.147 L310.732,263.147 L310.1705,260.8948 L307.7596,260.8948 L307.2103,263.147 L305.4097,263.147 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="86.4583" x="331.7708" y="263.7044">MapIdentifier</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="227.0833" x2="491.6667" y1="274.6745" y2="274.6745"/><polygon fill="#FFFF44" points="237.5,304.836,241.6667,309.0027,237.5,313.1694,233.3333,309.0027" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="106.25" x="248.9583" y="316.9556">MapIdentifier(long)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="227.0833" x2="315.625" y1="292.8802" y2="292.8802"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="318.75" y="296.6899">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="403.125" x2="491.6667" y1="292.8802" y2="292.8802"/><ellipse cx="237.5" cy="353.7008" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="109.375" x="248.9583" y="360.612">MapIdentifier next()</text><ellipse cx="237.5" cy="373.4456" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="248.9583" y="380.3569">Type type()</text><polygon fill="#FFFF44" points="237.5,387.9822,241.6667,392.1488,237.5,396.3155,233.3333,392.1488" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="234.375" x="248.9583" y="400.1017">MapIdentifier newIdentifier(long identifier)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="227.0833" x2="325" y1="336.5367" y2="336.5367"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="328.125" y="340.3463">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="393.75" x2="491.6667" y1="336.5367" y2="336.5367"/><!--MD5=[8bfed88436a9bfa4bb17c855c75eb32c]
+class MapNodeIdentifier--><rect codeLine="25" fill="#282828" height="83.3781" id="MapNodeIdentifier" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="167.7083" x="63.0208" y="545.8903"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="167.7083" x="63.0208" y="545.8903"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="167.7083" x="63.0208" y="568.9453"/><rect codeLine="25" fill="none" height="83.3781" id="MapNodeIdentifier" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="167.7083" x="63.0208" y="545.8903"/><ellipse cx="82.2917" cy="561.5845" fill="#C8AC00" rx="10.4167" ry="10.4167" style="stroke:#D8BC00;stroke-width:1.0416666666666667;"/><path d="M82.4056,558.2865 L81.5572,562.0158 L83.2601,562.0158 Z M81.307,556.6386 L83.5103,556.6386 L85.9701,565.7511 L84.1695,565.7511 L83.608,563.4989 L81.1971,563.4989 L80.6478,565.7511 L78.8472,565.7511 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="119.7917" x="100" y="566.3086">MapNodeIdentifier</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="64.0625" x2="229.6875" y1="577.2786" y2="577.2786"/><polygon fill="#FFFF44" points="74.4792,607.4402,78.6458,611.6069,74.4792,615.7735,70.3125,611.6069" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="135.4167" x="85.9375" y="619.5597">MapNodeIdentifier(long)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="64.0625" x2="103.125" y1="595.4844" y2="595.4844"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="106.25" y="599.294">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="190.625" x2="229.6875" y1="595.4844" y2="595.4844"/><!--MD5=[47cd0c7d4370e0a298acbedef4d47587]
+class MapRelationIdentifier--><rect codeLine="32" fill="#282828" height="83.3781" id="MapRelationIdentifier" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="183.3333" x="267.7083" y="545.8903"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="183.3333" x="267.7083" y="545.8903"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="183.3333" x="267.7083" y="568.9453"/><rect codeLine="32" fill="none" height="83.3781" id="MapRelationIdentifier" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="183.3333" x="267.7083" y="545.8903"/><ellipse cx="285.1042" cy="561.5845" fill="#C8AC00" rx="10.4167" ry="10.4167" style="stroke:#D8BC00;stroke-width:1.0416666666666667;"/><path d="M285.2181,558.2865 L284.3697,562.0158 L286.0726,562.0158 Z M284.1195,556.6386 L286.3228,556.6386 L288.7826,565.7511 L286.982,565.7511 L286.4205,563.4989 L284.0096,563.4989 L283.4603,565.7511 L281.6597,565.7511 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="139.5833" x="302.3958" y="566.3086">MapRelationIdentifier</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="268.75" x2="450" y1="577.2786" y2="577.2786"/><polygon fill="#FFFF44" points="279.1667,607.4402,283.3333,611.6069,279.1667,615.7735,275,611.6069" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="151.0417" x="290.625" y="619.5597">MapRelationIdentifier(long)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="268.75" x2="315.625" y1="595.4844" y2="595.4844"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="318.75" y="599.294">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="403.125" x2="450" y1="595.4844" y2="595.4844"/><!--MD5=[a70f796058c166090def5472fc2bbaff]
+class MapWayIdentifier--><rect codeLine="39" fill="#282828" height="229.9255" id="MapWayIdentifier" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="191.6667" x="487.5" y="472.4528"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="191.6667" x="487.5" y="472.4528"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="191.6667" x="487.5" y="495.5078"/><rect codeLine="39" fill="none" height="229.9255" id="MapWayIdentifier" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="191.6667" x="487.5" y="472.4528"/><ellipse cx="520.8333" cy="488.147" fill="#C8AC00" rx="10.4167" ry="10.4167" style="stroke:#D8BC00;stroke-width:1.0416666666666667;"/><path d="M520.9473,484.849 L520.0989,488.5783 L521.8018,488.5783 Z M519.8486,483.2011 L522.052,483.2011 L524.5117,492.3136 L522.7112,492.3136 L522.1497,490.0614 L519.7388,490.0614 L519.1895,492.3136 L517.3889,492.3136 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="112.5" x="541.6667" y="492.8711">MapWayIdentifier</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="488.5417" x2="678.125" y1="503.8411" y2="503.8411"/><polygon fill="#FFFF44" points="498.9583,534.0027,503.125,538.1694,498.9583,542.336,494.7917,538.1694" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="128.125" x="510.4167" y="546.1222">MapWayIdentifier(long)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="488.5417" x2="539.5833" y1="522.0469" y2="522.0469"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="542.7083" y="525.8565">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="627.0833" x2="678.125" y1="522.0469" y2="522.0469"/><ellipse cx="498.9583" cy="582.8674" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="111.4583" x="510.4167" y="589.7786">boolean isForward()</text><ellipse cx="498.9583" cy="602.6123" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="109.375" x="510.4167" y="609.5235">boolean isReverse()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="488.5417" x2="556.7708" y1="565.7033" y2="565.7033"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="46.875" x="559.8958" y="569.5129">(checks)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="609.8958" x2="678.125" y1="565.7033" y2="565.7033"/><ellipse cx="498.9583" cy="646.2687" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="159.375" x="510.4167" y="653.1799">MapWayIdentifier backward()</text><ellipse cx="498.9583" cy="666.0136" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="150" x="510.4167" y="672.9248">MapWayIdentifier forward()</text><ellipse cx="498.9583" cy="685.7585" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="155.2083" x="510.4167" y="692.6697">MapWayIdentifier reversed()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="488.5417" x2="548.9583" y1="629.1046" y2="629.1046"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="552.0833" y="632.9142">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="617.7083" x2="678.125" y1="629.1046" y2="629.1046"/><!--MD5=[ed497fdaa03236ba034bff697a1dccaa]
+class MapIdentifier.Type--><rect codeLine="52" fill="#282828" height="127.0345" id="MapIdentifier.Type" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="158.3333" x="444.7917" y="53.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="158.3333" x="444.7917" y="53.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="158.3333" x="444.7917" y="76.7578"/><rect codeLine="52" fill="none" height="127.0345" id="MapIdentifier.Type" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="158.3333" x="444.7917" y="53.7028"/><ellipse cx="459.375" cy="69.397" fill="#CF6300" rx="10.4167" ry="10.4167" style="stroke:#EF8300;stroke-width:1.0416666666666667;"/><path d="M462.4308,74.0845 L456.7546,74.0845 L456.7546,64.9719 L462.4308,64.9719 L462.4308,66.5588 L458.5551,66.5588 L458.5551,68.5242 L462.0646,68.5242 L462.0646,70.1111 L458.5551,70.1111 L458.5551,72.4976 L462.4308,72.4976 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="120.8333" x="476.0417" y="74.1211">MapIdentifier.Type</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="445.8333" x2="602.0833" y1="85.0911" y2="85.0911"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="44.7917" x="454.1667" y="103.4607">INVALID</text><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="32.2917" x="454.1667" y="123.2056">NODE</text><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="56.25" x="454.1667" y="142.9504">RELATION</text><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="25" x="454.1667" y="162.6953">WAY</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="445.8333" x2="602.0833" y1="172.404" y2="172.404"/><!--MD5=[69b1a077ea674256ced05fa2f4ed4c6b]
+reverse link Comparator to MapNodeIdentifier.Comparator--><path codeLine="8" d="M118.75,162.3695 C118.75,205.2653 118.75,268.7445 118.75,302.4945 " fill="none" id="Comparator-backto-MapNodeIdentifier.Comparator" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="111.4583,162.0986,118.75,141.2653,126.0417,162.0986,111.4583,162.0986" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[37aab44249487bde4d4cfa5dea5a6d46]
+reverse link Identifier to MapIdentifier--><path codeLine="13" d="M359.375,162.3486 C359.375,185.7861 359.375,215.3799 359.375,242.9111 " fill="none" id="Identifier-backto-MapIdentifier" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="352.0833,162.0986,359.375,141.2653,366.6667,162.0986,352.0833,162.0986" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[b994ec7407f20be861b9d5ceb1fe7a15]
+reverse link MapIdentifier to MapNodeIdentifier--><path codeLine="24" d="M278.2292,426.5153 C244.1771,467.984 206.4792,513.9007 180.2396,545.8695 " fill="none" id="MapIdentifier-backto-MapNodeIdentifier" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="272.6979,421.7549,291.5521,410.2757,283.9688,431.0049,272.6979,421.7549" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[7a61c9597055188b6f1cc2eab03aebb6]
+reverse link MapIdentifier to MapRelationIdentifier--><path codeLine="31" d="M359.375,431.2132 C359.375,471.4215 359.375,515.109 359.375,545.8695 " fill="none" id="MapIdentifier-backto-MapRelationIdentifier" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="352.0833,431.109,359.375,410.2757,366.6667,431.109,352.0833,431.109" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[5e01d1b74a09795fde28b828936f896e]
+reverse link MapIdentifier to MapWayIdentifier--><path codeLine="38" d="M444.5625,426.1195 C458.5,442.2236 473.0208,459.0153 487.1979,475.4007 " fill="none" id="MapIdentifier-backto-MapWayIdentifier" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="438.9688,430.807,430.8542,410.2757,450,421.2549,438.9688,430.807" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[af805c5d7782a8ac60c99a50d0d35f14]
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.data.formats.library.map.identifiers"
+    
+    interface Comparator
+    
+    Comparator <|- - MapNodeIdentifier.Comparator
+    class MapNodeIdentifier.Comparator
+    {
+    }
+    
+    Identifier <|- - MapIdentifier
+    abstract class MapIdentifier
+    {
+        - -(constructors)- -
+        #MapIdentifier(long)
+        - -(collection)- -
+        +MapIdentifier next()
+        +Type type()
+        #MapIdentifier newIdentifier(long identifier)
+    }
+    
+    MapIdentifier <|- - MapNodeIdentifier
+    abstract class MapNodeIdentifier
+    {
+        - -(constructors)- -
+        #MapNodeIdentifier(long)
+    }
+    
+    MapIdentifier <|- - MapRelationIdentifier
+    abstract class MapRelationIdentifier
+    {
+        - -(constructors)- -
+        #MapRelationIdentifier(long)
+    }
+    
+    MapIdentifier <|- - MapWayIdentifier
+    abstract class MapWayIdentifier
+    {
+        - -(constructors)- -
+        #MapWayIdentifier(long)
+        - -(checks)- -
+        +boolean isForward()
+        +boolean isReverse()
+        - -(collection)- -
+        +MapWayIdentifier backward()
+        +MapWayIdentifier forward()
+        +MapWayIdentifier reversed()
+    }
+    
+    enum MapIdentifier.Type
+    {
+        INVALID
+        NODE
+        RELATION
+        WAY
+    }
+    
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+
+
+skinparam backgroundColor #333333
+
+
+
+
+
+
+skinparam  {
+    defaultFontName   "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+    defaultFontSize   12
+    defaultTextAlignment left
+    shadowing false
+    RoundCorner 10
+    TitleFontSize 18
+}
+
+skinparam defaultFontName       "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           16
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               3
+skinparam ArrowColor            #545454
+skinparam stereotype {
+    CBackgroundColor #0066cf
+    CBorderColor #0086ef
+    ABackgroundColor #C8Ac00
+    ABorderColor #D8Bc00
+    IBackgroundColor #008400
+    IBorderColor #239c23
+    EBackgroundColor #cf6300
+    EBorderColor #ef8300
+    NBackgroundColor #3380b9
+    NBorderColor #004d86
+}
+skinparam title {
+	FontColor	                 #c0c0c0
+ 	BorderColor                  #545454
+	FontSize	    	         20
+	BorderRoundCorner            16
+	BorderThickness 	         1
+	BackgroundColor              #48494b
+}
+
+
+skinparam legend {
+	BackgroundColor #303030
+	BorderColor #404040
+	FontColor #a0a0a0
+}
+
+	skinparam swimlane {
+	BorderColor #5e5e5e
+	BorderThickness 2
+	TitleBackgroundColor  #6d6d6d-#484848
+	TitleFontColor #303030
+}
+
+skinparam activity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BarColor #00FF00
+	StartColor #0060a8
+	EndColor #0060a8
+	DiamondBackgroundColor #6d6d6d-#3a3a3a
+  	DiamondBorderColor #3a3a3a
+  	DiamondFontColor #fefefe
+}
+
+
+skinparam participant {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam arrow {
+	Thickness 1.5
+	Color #545454
+	FontColor #a0a0a0
+    FontStyle bold
+    MessageAlignment center
+}
+
+
+
+skinparam sequence {
+	BorderColor #303030
+	TitleFontColor #303030
+	BackgroundColor #333333
+	StartColor #303030
+	EndColor #303030
+	BoxBackgroundColor #333333
+	BoxBorderColor #484848
+	BoxFontColor #484848
+	LifeLineBorderColor #484848
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor #3a3a3a
+	GroupBorderColor #484848
+	GroupFontColor #484848
+	GroupHeaderFontColor #0060a8
+	GroupBackgroundColor #484848
+	GroupHeaderBackgroundColor #333333
+	DividerBackgroundColor #484848
+    DividerBorderColor #484848
+    DividerBorderThickness 2
+    DividerFontColor #D8Bc00
+	ReferenceBackgroundColor #333333
+	ReferenceBorderColor #484848
+	ReferenceFontColor #fefefe
+	ReferenceHeaderBackgroundColor #484848
+}
+
+
+skinparam partition {
+	BorderColor #303030
+	FontColor #333333
+	BackgroundColor #333333
+}
+
+
+skinparam collections {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam control {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam entity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam boundary {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam agent {
+	BackgroundColor #ff8000
+	BorderColor #ff9933
+	FontColor #484848
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor #1b1b1a
+	BorderColor #5e5e5e
+	FontSize 11
+	FontColor #a0a0a0
+}
+
+
+skinparam artifact {
+	BorderThickness 10
+	BorderColor #5e5e5e
+	BackgroundColor #1b1b1a
+	FontColor #D8Bc00
+}
+
+
+skinparam component {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam interface {
+	BackgroundColor  #008400
+	BorderColor  #007F00
+	FontColor #484848
+}
+
+
+skinparam storage {
+	BackgroundColor #ff8000
+  	BorderColor #cc6600
+	FontColor #222222
+}
+
+
+skinparam node {
+	BackgroundColor #333333
+	BorderColor #333333
+	FontColor #C8Ac00
+}
+
+
+skinparam cloud {
+	BackgroundColor #484848-black
+	BorderColor #484848
+	FontColor #D8Bc00
+}
+
+
+skinparam database {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor  #333333
+}
+
+
+skinparam class {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	HeaderBackgroundColor #1b1b1a
+    BackgroundColor #282828
+    BorderColor #5e5e5e
+ 	StereotypeFontColor #a0a0a0
+    StereotypeFontStyle bold
+	BorderThickness 1
+	AttributeFontColor #D8Bc00
+	AttributeFontSize 11
+    FontColor #D8Bc00
+    FontStyle bold
+}
+
+
+skinparam object {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StereotypeFontColor #484848
+	BorderThickness 1
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam rectangle {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam package {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor #6d6d6d
+  	BorderColor #ff8000
+	FontColor #ff8000
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor #6d6d6d
+  	BorderColor #0060a8
+	FontColor #0060a8
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StartColor #0060a8
+	EndColor #0060a8
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam card {
+	BackgroundColor #0060a8
+	BorderColor #004d86
+	FontColor $INFO_TEXT
+}
+
+
+skinparam file {
+	BackgroundColor #6d6d6d-#484848
+	BorderColor #0060a8
+	FontColor #fefefe
+}
+
+
+skinparam stack {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+    
+    title "com.telenav.aonia.map.data.formats.library.map.identifiers"
+    
+    interface Comparator
+    
+    Comparator <|- - MapNodeIdentifier.Comparator
+    class MapNodeIdentifier.Comparator
+    {
+    }
+    
+    Identifier <|- - MapIdentifier
+    abstract class MapIdentifier
+    {
+        - -(constructors)- -
+        #MapIdentifier(long)
+        - -(collection)- -
+        +MapIdentifier next()
+        +Type type()
+        #MapIdentifier newIdentifier(long identifier)
+    }
+    
+    MapIdentifier <|- - MapNodeIdentifier
+    abstract class MapNodeIdentifier
+    {
+        - -(constructors)- -
+        #MapNodeIdentifier(long)
+    }
+    
+    MapIdentifier <|- - MapRelationIdentifier
+    abstract class MapRelationIdentifier
+    {
+        - -(constructors)- -
+        #MapRelationIdentifier(long)
+    }
+    
+    MapIdentifier <|- - MapWayIdentifier
+    abstract class MapWayIdentifier
+    {
+        - -(constructors)- -
+        #MapWayIdentifier(long)
+        - -(checks)- -
+        +boolean isForward()
+        +boolean isReverse()
+        - -(collection)- -
+        +MapWayIdentifier backward()
+        +MapWayIdentifier forward()
+        +MapWayIdentifier reversed()
+    }
+    
+    enum MapIdentifier.Type
+    {
+        INVALID
+        NODE
+        RELATION
+        WAY
+    }
+    
+@enduml
+
+PlantUML version 1.2021.01(Tue Feb 02 00:55:08 MST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="562.5px" preserveAspectRatio="none" style="width:952px;height:562px;background:#333333;" version="1.1" viewBox="0 0 952 562" width="952.0833px" zoomAndPan="magnify"><defs/><g><rect fill="#48494B" height="41.2028" rx="8.3333" ry="8.3333" style="stroke:#545454;stroke-width:1.0416666666666667;" width="555.2083" x="191.4063" y="2.0833"/><text fill="#C0C0C0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="20.8333" lengthAdjust="spacing" textLength="532.2917" x="202.8646" y="30.5583">com.telenav.aonia.map.geography.indexing.quadtree</text><!--MD5=[5ab64e8aa8a50a140d7dbe747164f125]
+cluster QuadTreeSpatialIndex.Quadrant--><polygon fill="#333333" points="171.875,450.5778,389.5833,450.5778,396.875,477.7995,400,477.7995,400,555.7861,171.875,555.7861,171.875,450.5778" style="stroke:#333333;stroke-width:2.0833333333333335;"/><line style="stroke:#333333;stroke-width:2.0833333333333335;" x1="171.875" x2="396.875" y1="477.7995" y2="477.7995"/><text fill="#C8AC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="205.2083" x="179.1667" y="467.8711">QuadTreeSpatialIndex.Quadrant</text><!--MD5=[9e9c2bc7d060f05975b28bbaf26c272d]
+class QuadTreeSpatialIndex.Quadrant.BoundedLeafIterator--><rect codeLine="9" fill="#282828" height="48.055" id="QuadTreeSpatialIndex.Quadrant.BoundedLeafIterator" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="169.7917" x="190.1042" y="491.2028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="169.7917" x="190.1042" y="491.2028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="169.7917" x="190.1042" y="514.2578"/><rect codeLine="9" fill="none" height="48.055" id="QuadTreeSpatialIndex.Quadrant.BoundedLeafIterator" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="169.7917" x="190.1042" y="491.2028"/><ellipse cx="204.6875" cy="506.897" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M206.5979,511.322 Q206.1707,511.5417 205.7007,511.6516 Q205.2307,511.7615 204.7119,511.7615 Q202.8687,511.7615 201.8982,510.5469 Q200.9277,509.3323 200.9277,507.0374 Q200.9277,504.7363 201.8982,503.5217 Q202.8687,502.3071 204.7119,502.3071 Q205.2307,502.3071 205.7068,502.417 Q206.1829,502.5269 206.5979,502.7466 L206.5979,504.7485 Q206.134,504.3213 205.6976,504.1229 Q205.2612,503.9246 204.7974,503.9246 Q203.8086,503.9246 203.3051,504.7089 Q202.8015,505.4932 202.8015,507.0374 Q202.8015,508.5754 203.3051,509.3597 Q203.8086,510.144 204.7974,510.144 Q205.2612,510.144 205.6976,509.9457 Q206.134,509.7473 206.5979,509.3201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="132.2917" x="221.3542" y="511.6211">BoundedLeafIterator</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="191.1458" x2="358.8542" y1="522.5911" y2="522.5911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="191.1458" x2="358.8542" y1="530.9245" y2="530.9245"/><!--MD5=[6d914cbc3c068362115e7a36db2eae5b]
+class BaseIterator--><rect codeLine="6" fill="#282828" height="48.055" id="BaseIterator" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="115.625" x="119.2708" y="218.807"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="115.625" x="119.2708" y="218.807"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="115.625" x="119.2708" y="241.862"/><rect codeLine="6" fill="none" height="48.055" id="BaseIterator" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="115.625" x="119.2708" y="218.807"/><ellipse cx="133.8542" cy="234.5011" fill="#C8AC00" rx="10.4167" ry="10.4167" style="stroke:#D8BC00;stroke-width:1.0416666666666667;"/><path d="M133.9681,231.2032 L133.1197,234.9325 L134.8226,234.9325 Z M132.8695,229.5553 L135.0728,229.5553 L137.5326,238.6678 L135.732,238.6678 L135.1705,236.4156 L132.7596,236.4156 L132.2103,238.6678 L130.4097,238.6678 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="78.125" x="150.5208" y="239.2253">BaseIterator</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="120.3125" x2="233.8542" y1="250.1953" y2="250.1953"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="120.3125" x2="233.8542" y1="258.5286" y2="258.5286"/><!--MD5=[e55c0d3f60fef5906d7eacb7827dfb0e]
+class QuadTreeSpatialIndex--><rect codeLine="13" fill="#282828" height="372.3063" id="QuadTreeSpatialIndex" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="394.7917" x="271.3542" y="56.8278"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="394.7917" x="271.3542" y="56.8278"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="394.7917" x="271.3542" y="79.8828"/><rect codeLine="13" fill="none" height="372.3063" id="QuadTreeSpatialIndex" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="394.7917" x="271.3542" y="56.8278"/><ellipse cx="359.375" cy="72.522" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M361.2854,76.947 Q360.8582,77.1667 360.3882,77.2766 Q359.9182,77.3865 359.3994,77.3865 Q357.5562,77.3865 356.5857,76.1719 Q355.6152,74.9573 355.6152,72.6624 Q355.6152,70.3613 356.5857,69.1467 Q357.5562,67.9321 359.3994,67.9321 Q359.9182,67.9321 360.3943,68.042 Q360.8704,68.1519 361.2854,68.3716 L361.2854,70.3735 Q360.8215,69.9463 360.3851,69.7479 Q359.9487,69.5496 359.4849,69.5496 Q358.4961,69.5496 357.9926,70.3339 Q357.489,71.1182 357.489,72.6624 Q357.489,74.2004 357.9926,74.9847 Q358.4961,75.769 359.4849,75.769 Q359.9487,75.769 360.3851,75.5707 Q360.8215,75.3723 361.2854,74.9451 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="141.6667" x="382.2917" y="77.2461">QuadTreeSpatialIndex</text><rect fill="#333333" height="23.055" style="stroke:#A0A0A0;stroke-width:1.0416666666666667;stroke-dasharray:2.0,2.0;" width="60.4167" x="608.8542" y="53.7028"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="52.0833" x="613.0208" y="69.9544">Element</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="272.3958" x2="665.1042" y1="88.2161" y2="88.2161"/><ellipse cx="282.8125" cy="123.586" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="131.25" x="294.2708" y="130.4972">QuadTreeSpatialIndex()</text><ellipse cx="282.8125" cy="143.3309" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="200" x="294.2708" y="150.2421">QuadTreeSpatialIndex(int, Distance)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="272.3958" x2="425" y1="106.4219" y2="106.4219"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="428.125" y="110.2315">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="512.5" x2="665.1042" y1="106.4219" y2="106.4219"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="272.3958" x2="665.1042" y1="159.9508" y2="159.9508"/><ellipse cx="282.8125" cy="171.4091" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="108.3333" x="294.2708" y="178.3203">Rectangle bounds()</text><ellipse cx="282.8125" cy="191.154" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="154.1667" x="294.2708" y="198.0652">void dump(PrintStream out)</text><ellipse cx="282.8125" cy="210.8988" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="296.875" x="294.2708" y="217.8101">boolean replace(Element oldValue, Element newValue)</text><ellipse cx="282.8125" cy="254.5553" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="137.5" x="294.2708" y="261.4665">void add(Element object)</text><ellipse cx="282.8125" cy="274.3001" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="218.75" x="294.2708" y="281.2113">void addAll(Iterable&lt;Element&gt; objects)</text><ellipse cx="282.8125" cy="294.045" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="294.2708" y="300.9562">void clear()</text><ellipse cx="282.8125" cy="313.7899" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="78.125" x="294.2708" y="320.7011">Count count()</text><ellipse cx="282.8125" cy="333.5347" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="362.5" x="294.2708" y="340.446">Iterator&lt;Element&gt; inside(Rectangle bounds, Matcher&lt;Element&gt;)</text><ellipse cx="282.8125" cy="353.2796" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="248.9583" x="294.2708" y="360.1908">Iterator&lt;Element&gt; inside(Rectangle bounds)</text><ellipse cx="282.8125" cy="373.0245" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="158.3333" x="294.2708" y="379.9357">void remove(Element object)</text><ellipse cx="282.8125" cy="392.7694" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="305.2083" x="294.2708" y="399.6806">void removeAll(Rectangle bounds, Matcher&lt;Element&gt;)</text><ellipse cx="282.8125" cy="412.5142" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="47.9167" x="294.2708" y="419.4255">int size()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="272.3958" x2="434.375" y1="237.3912" y2="237.3912"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="437.5" y="241.2008">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="503.125" x2="665.1042" y1="237.3912" y2="237.3912"/><!--MD5=[5a765d7ac2c7fdc20d7e345cd9d5095f]
+class QuadTreeSpatialIndex.Quadrant--><rect codeLine="34" fill="#282828" height="83.3781" id="QuadTreeSpatialIndex.Quadrant" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="242.7083" x="702.6042" y="201.0986"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="242.7083" x="702.6042" y="201.0986"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="242.7083" x="702.6042" y="224.1536"/><rect codeLine="34" fill="none" height="83.3781" id="QuadTreeSpatialIndex.Quadrant" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="242.7083" x="702.6042" y="201.0986"/><ellipse cx="717.1875" cy="216.7928" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M719.0979,221.2179 Q718.6707,221.4376 718.2007,221.5474 Q717.7307,221.6573 717.2119,221.6573 Q715.3687,221.6573 714.3982,220.4427 Q713.4277,219.2281 713.4277,216.9332 Q713.4277,214.6322 714.3982,213.4176 Q715.3687,212.203 717.2119,212.203 Q717.7307,212.203 718.2068,212.3128 Q718.6829,212.4227 719.0979,212.6424 L719.0979,214.6444 Q718.634,214.2171 718.1976,214.0188 Q717.7612,213.8204 717.2974,213.8204 Q716.3086,213.8204 715.8051,214.6047 Q715.3015,215.389 715.3015,216.9332 Q715.3015,218.4713 715.8051,219.2556 Q716.3086,220.0399 717.2974,220.0399 Q717.7612,220.0399 718.1976,219.8415 Q718.634,219.6431 719.0979,219.2159 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="205.2083" x="733.8542" y="221.5169">QuadTreeSpatialIndex.Quadrant</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="703.6458" x2="944.2708" y1="232.487" y2="232.487"/><polygon fill="#FFFF44" points="714.0625,262.6485,718.2292,266.8152,714.0625,270.9819,709.8958,266.8152" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="61.4583" x="725.5208" y="274.7681">Quadrant()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="703.6458" x2="780.2083" y1="250.6927" y2="250.6927"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="783.3333" y="254.5024">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="867.7083" x2="944.2708" y1="250.6927" y2="250.6927"/><!--MD5=[9558f3e86c1a2a9879b3db796d7af2f1]
+class QuadTreeSpatialIndex.Quadrant.QuadrantIterator--><rect codeLine="41" fill="#282828" height="48.055" id="QuadTreeSpatialIndex.Quadrant.QuadrantIterator" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="145.8333" x="7.2917" y="491.2028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="145.8333" x="7.2917" y="491.2028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="145.8333" x="7.2917" y="514.2578"/><rect codeLine="41" fill="none" height="48.055" id="QuadTreeSpatialIndex.Quadrant.QuadrantIterator" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="145.8333" x="7.2917" y="491.2028"/><ellipse cx="21.875" cy="506.897" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M23.7854,511.322 Q23.3582,511.5417 22.8882,511.6516 Q22.4182,511.7615 21.8994,511.7615 Q20.0562,511.7615 19.0857,510.5469 Q18.1152,509.3323 18.1152,507.0374 Q18.1152,504.7363 19.0857,503.5217 Q20.0562,502.3071 21.8994,502.3071 Q22.4182,502.3071 22.8943,502.417 Q23.3704,502.5269 23.7854,502.7466 L23.7854,504.7485 Q23.3215,504.3213 22.8851,504.1229 Q22.4487,503.9246 21.9849,503.9246 Q20.9961,503.9246 20.4926,504.7089 Q19.989,505.4932 19.989,507.0374 Q19.989,508.5754 20.4926,509.3597 Q20.9961,510.144 21.9849,510.144 Q22.4487,510.144 22.8851,509.9457 Q23.3215,509.7473 23.7854,509.3201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="108.3333" x="38.5417" y="511.6211">QuadrantIterator</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="8.3333" x2="152.0833" y1="522.5911" y2="522.5911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="8.3333" x2="152.0833" y1="530.9245" y2="530.9245"/><!--MD5=[e0ba2f4bf30e005ffd32e9f0370d53fd]
+reverse link BaseIterator to QuadTreeSpatialIndex.Quadrant.BoundedLeafIterator--><path codeLine="8" d="M192.6354,286.7445 C213.625,344.6924 250.2917,445.8903 266.6771,491.1299 " fill="none" id="BaseIterator-backto-QuadTreeSpatialIndex.Quadrant.BoundedLeafIterator" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="185.6667,288.9215,185.4271,266.8486,199.3854,283.9632,185.6667,288.9215" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[cecc5da298af8271ce9be9de8acb2413]
+reverse link BaseIterator to QuadTreeSpatialIndex.Quadrant.QuadrantIterator--><path codeLine="40" d="M161.6979,286.7445 C140.9271,344.6924 104.6563,445.8903 88.4479,491.1299 " fill="none" id="BaseIterator-backto-QuadTreeSpatialIndex.Quadrant.QuadrantIterator" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="154.9271,284.0049,168.8229,266.8486,168.6563,288.9215,154.9271,284.0049" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[b6102eda95aafb1ec4e16405aa2f370e]
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.geography.indexing.quadtree"
+    
+    abstract BaseIterator
+    
+    BaseIterator <|- - QuadTreeSpatialIndex.Quadrant.BoundedLeafIterator
+    class QuadTreeSpatialIndex.Quadrant.BoundedLeafIterator
+    {
+    }
+    
+    class QuadTreeSpatialIndex<Element>
+    {
+        - -(constructors)- -
+        +QuadTreeSpatialIndex()
+        +QuadTreeSpatialIndex(int, Distance)
+        - -
+        +Rectangle bounds()
+        +void dump(PrintStream out)
+        +boolean replace(Element oldValue, Element newValue)
+        - -(collection)- -
+        +void add(Element object)
+        +void addAll(Iterable<Element> objects)
+        +void clear()
+        +Count count()
+        +Iterator<Element> inside(Rectangle bounds, Matcher<Element>)
+        +Iterator<Element> inside(Rectangle bounds)
+        +void remove(Element object)
+        +void removeAll(Rectangle bounds, Matcher<Element>)
+        +int size()
+    }
+    
+    class QuadTreeSpatialIndex.Quadrant
+    {
+        - -(constructors)- -
+        #Quadrant()
+    }
+    
+    BaseIterator <|- - QuadTreeSpatialIndex.Quadrant.QuadrantIterator
+    class QuadTreeSpatialIndex.Quadrant.QuadrantIterator
+    {
+    }
+    
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+
+
+skinparam backgroundColor #333333
+
+
+
+
+
+
+skinparam  {
+    defaultFontName   "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+    defaultFontSize   12
+    defaultTextAlignment left
+    shadowing false
+    RoundCorner 10
+    TitleFontSize 18
+}
+
+skinparam defaultFontName       "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           16
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               3
+skinparam ArrowColor            #545454
+skinparam stereotype {
+    CBackgroundColor #0066cf
+    CBorderColor #0086ef
+    ABackgroundColor #C8Ac00
+    ABorderColor #D8Bc00
+    IBackgroundColor #008400
+    IBorderColor #239c23
+    EBackgroundColor #cf6300
+    EBorderColor #ef8300
+    NBackgroundColor #3380b9
+    NBorderColor #004d86
+}
+skinparam title {
+	FontColor	                 #c0c0c0
+ 	BorderColor                  #545454
+	FontSize	    	         20
+	BorderRoundCorner            16
+	BorderThickness 	         1
+	BackgroundColor              #48494b
+}
+
+
+skinparam legend {
+	BackgroundColor #303030
+	BorderColor #404040
+	FontColor #a0a0a0
+}
+
+	skinparam swimlane {
+	BorderColor #5e5e5e
+	BorderThickness 2
+	TitleBackgroundColor  #6d6d6d-#484848
+	TitleFontColor #303030
+}
+
+skinparam activity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BarColor #00FF00
+	StartColor #0060a8
+	EndColor #0060a8
+	DiamondBackgroundColor #6d6d6d-#3a3a3a
+  	DiamondBorderColor #3a3a3a
+  	DiamondFontColor #fefefe
+}
+
+
+skinparam participant {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam arrow {
+	Thickness 1.5
+	Color #545454
+	FontColor #a0a0a0
+    FontStyle bold
+    MessageAlignment center
+}
+
+
+
+skinparam sequence {
+	BorderColor #303030
+	TitleFontColor #303030
+	BackgroundColor #333333
+	StartColor #303030
+	EndColor #303030
+	BoxBackgroundColor #333333
+	BoxBorderColor #484848
+	BoxFontColor #484848
+	LifeLineBorderColor #484848
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor #3a3a3a
+	GroupBorderColor #484848
+	GroupFontColor #484848
+	GroupHeaderFontColor #0060a8
+	GroupBackgroundColor #484848
+	GroupHeaderBackgroundColor #333333
+	DividerBackgroundColor #484848
+    DividerBorderColor #484848
+    DividerBorderThickness 2
+    DividerFontColor #D8Bc00
+	ReferenceBackgroundColor #333333
+	ReferenceBorderColor #484848
+	ReferenceFontColor #fefefe
+	ReferenceHeaderBackgroundColor #484848
+}
+
+
+skinparam partition {
+	BorderColor #303030
+	FontColor #333333
+	BackgroundColor #333333
+}
+
+
+skinparam collections {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam control {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam entity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam boundary {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam agent {
+	BackgroundColor #ff8000
+	BorderColor #ff9933
+	FontColor #484848
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor #1b1b1a
+	BorderColor #5e5e5e
+	FontSize 11
+	FontColor #a0a0a0
+}
+
+
+skinparam artifact {
+	BorderThickness 10
+	BorderColor #5e5e5e
+	BackgroundColor #1b1b1a
+	FontColor #D8Bc00
+}
+
+
+skinparam component {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam interface {
+	BackgroundColor  #008400
+	BorderColor  #007F00
+	FontColor #484848
+}
+
+
+skinparam storage {
+	BackgroundColor #ff8000
+  	BorderColor #cc6600
+	FontColor #222222
+}
+
+
+skinparam node {
+	BackgroundColor #333333
+	BorderColor #333333
+	FontColor #C8Ac00
+}
+
+
+skinparam cloud {
+	BackgroundColor #484848-black
+	BorderColor #484848
+	FontColor #D8Bc00
+}
+
+
+skinparam database {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor  #333333
+}
+
+
+skinparam class {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	HeaderBackgroundColor #1b1b1a
+    BackgroundColor #282828
+    BorderColor #5e5e5e
+ 	StereotypeFontColor #a0a0a0
+    StereotypeFontStyle bold
+	BorderThickness 1
+	AttributeFontColor #D8Bc00
+	AttributeFontSize 11
+    FontColor #D8Bc00
+    FontStyle bold
+}
+
+
+skinparam object {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StereotypeFontColor #484848
+	BorderThickness 1
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam rectangle {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam package {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor #6d6d6d
+  	BorderColor #ff8000
+	FontColor #ff8000
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor #6d6d6d
+  	BorderColor #0060a8
+	FontColor #0060a8
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StartColor #0060a8
+	EndColor #0060a8
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam card {
+	BackgroundColor #0060a8
+	BorderColor #004d86
+	FontColor $INFO_TEXT
+}
+
+
+skinparam file {
+	BackgroundColor #6d6d6d-#484848
+	BorderColor #0060a8
+	FontColor #fefefe
+}
+
+
+skinparam stack {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+    
+    title "com.telenav.aonia.map.geography.indexing.quadtree"
+    
+    abstract BaseIterator
+    
+    BaseIterator <|- - QuadTreeSpatialIndex.Quadrant.BoundedLeafIterator
+    class QuadTreeSpatialIndex.Quadrant.BoundedLeafIterator
+    {
+    }
+    
+    class QuadTreeSpatialIndex<Element>
+    {
+        - -(constructors)- -
+        +QuadTreeSpatialIndex()
+        +QuadTreeSpatialIndex(int, Distance)
+        - -
+        +Rectangle bounds()
+        +void dump(PrintStream out)
+        +boolean replace(Element oldValue, Element newValue)
+        - -(collection)- -
+        +void add(Element object)
+        +void addAll(Iterable<Element> objects)
+        +void clear()
+        +Count count()
+        +Iterator<Element> inside(Rectangle bounds, Matcher<Element>)
+        +Iterator<Element> inside(Rectangle bounds)
+        +void remove(Element object)
+        +void removeAll(Rectangle bounds, Matcher<Element>)
+        +int size()
+    }
+    
+    class QuadTreeSpatialIndex.Quadrant
+    {
+        - -(constructors)- -
+        #Quadrant()
+    }
+    
+    BaseIterator <|- - QuadTreeSpatialIndex.Quadrant.QuadrantIterator
+    class QuadTreeSpatialIndex.Quadrant.QuadrantIterator
+    {
+    }
+    
+@enduml
+
+PlantUML version 1.2021.01(Tue Feb 02 00:55:08 MST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

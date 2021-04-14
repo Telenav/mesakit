@@ -1,0 +1,17 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.ui.project"
+    
+    Project <|-- MapUiProject
+    class MapUiProject
+    {
+        --(constructors)--
+        #MapUiProject()
+        --(collection)--
+        +MapUiProject get()
+    }
+    
+@enduml
+

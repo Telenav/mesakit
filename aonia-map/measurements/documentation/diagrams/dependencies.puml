@@ -1,0 +1,51 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "aonia-map-measurements"
+    
+    artifact kryo
+    artifact minlog
+    artifact reflectasm
+    artifact jackson_annotations
+    artifact aonia_map_measurements
+    artifact kivakit_build_metadata
+    artifact kivakit_core_collections
+    artifact kivakit_core_commandline
+    artifact kivakit_core_kernel
+    artifact kivakit_core_serialization_core
+    artifact kivakit_core_serialization_kryo
+    artifact kivakit_core_test
+    artifact kivakit_math
+    artifact lexakai_annotations
+    artifact kryo_serializers
+    artifact swagger_annotations
+    artifact junit
+    artifact commons_math
+    artifact hamcrest_core
+    artifact annotations
+    artifact objenesis
+    artifact asm
+    aonia_map_measurements --> kivakit_core_commandline
+    aonia_map_measurements --> kivakit_core_test
+    aonia_map_measurements --> kivakit_math
+    junit --> hamcrest_core
+    kivakit_core_collections --> kivakit_core_serialization_kryo
+    kivakit_core_commandline --> kivakit_core_kernel
+    kivakit_core_kernel --> annotations
+    kivakit_core_kernel --> jackson_annotations
+    kivakit_core_kernel --> junit
+    kivakit_core_kernel --> kivakit_build_metadata
+    kivakit_core_kernel --> lexakai_annotations
+    kivakit_core_kernel --> swagger_annotations
+    kivakit_core_serialization_kryo --> kivakit_core_serialization_core
+    kivakit_core_serialization_kryo --> kryo
+    kivakit_core_serialization_kryo --> kryo_serializers
+    kivakit_math --> commons_math
+    kivakit_math --> kivakit_core_collections
+    kryo --> minlog
+    kryo --> objenesis
+    kryo --> reflectasm
+    reflectasm --> asm
+    
+@enduml

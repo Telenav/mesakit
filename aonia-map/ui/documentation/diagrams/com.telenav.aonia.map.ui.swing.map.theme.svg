@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="479.1667px" preserveAspectRatio="none" style="width:953px;height:479px;background:#333333;" version="1.1" viewBox="0 0 953 479" width="953.125px" zoomAndPan="magnify"><defs/><g><rect fill="#48494B" height="41.2028" rx="8.3333" ry="8.3333" style="stroke:#545454;stroke-width:1.0416666666666667;" width="462.5" x="238.2813" y="2.0833"/><text fill="#C0C0C0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="20.8333" lengthAdjust="spacing" textLength="439.5833" x="249.7396" y="30.5583">com.telenav.aonia.map.ui.swing.map.theme</text><!--MD5=[0be0f48ce96dfe404b1ac7d53dab9dde]
+cluster MapStyles--><polygon fill="#333333" points="717.1875,52.6611,795.3125,52.6611,802.6042,79.8828,935.9375,79.8828,935.9375,268.2861,717.1875,268.2861,717.1875,52.6611" style="stroke:#333333;stroke-width:2.0833333333333335;"/><line style="stroke:#333333;stroke-width:2.0833333333333335;" x1="717.1875" x2="802.6042" y1="79.8828" y2="79.8828"/><text fill="#C8AC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="65.625" x="724.4792" y="69.9544">MapStyles</text><!--MD5=[2035663806ba282822b355e25f5e6794]
+class MapStyles.Base--><rect codeLine="10" fill="#282828" height="48.055" id="MapStyles.Base" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="67.7083" x="734.375" y="93.2861"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="67.7083" x="734.375" y="93.2861"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="67.7083" x="734.375" y="116.3411"/><rect codeLine="10" fill="none" height="48.055" id="MapStyles.Base" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="67.7083" x="734.375" y="93.2861"/><ellipse cx="748.9583" cy="108.9803" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M750.8687,113.4054 Q750.4415,113.6251 749.9715,113.7349 Q749.5015,113.8448 748.9827,113.8448 Q747.1395,113.8448 746.169,112.6302 Q745.1986,111.4156 745.1986,109.1207 Q745.1986,106.8197 746.169,105.6051 Q747.1395,104.3905 748.9827,104.3905 Q749.5015,104.3905 749.9776,104.5003 Q750.4537,104.6102 750.8687,104.8299 L750.8687,106.8319 Q750.4049,106.4046 749.9685,106.2063 Q749.5321,106.0079 749.0682,106.0079 Q748.0794,106.0079 747.5759,106.7922 Q747.0723,107.5765 747.0723,109.1207 Q747.0723,110.6588 747.5759,111.4431 Q748.0794,112.2274 749.0682,112.2274 Q749.5321,112.2274 749.9685,112.029 Q750.4049,111.8306 750.8687,111.4034 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="30.2083" x="765.625" y="113.7044">Base</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="735.4167" x2="801.0417" y1="124.6745" y2="124.6745"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="735.4167" x2="801.0417" y1="133.0078" y2="133.0078"/><!--MD5=[9e9c04ceac265f5aaef1788932f146cf]
+class MapStyles.Debug--><rect codeLine="14" fill="#282828" height="48.055" id="MapStyles.Debug" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="80.2083" x="838.5417" y="93.2861"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="80.2083" x="838.5417" y="93.2861"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="80.2083" x="838.5417" y="116.3411"/><rect codeLine="14" fill="none" height="48.055" id="MapStyles.Debug" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="80.2083" x="838.5417" y="93.2861"/><ellipse cx="853.125" cy="108.9803" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M855.0354,113.4054 Q854.6082,113.6251 854.1382,113.7349 Q853.6682,113.8448 853.1494,113.8448 Q851.3062,113.8448 850.3357,112.6302 Q849.3652,111.4156 849.3652,109.1207 Q849.3652,106.8197 850.3357,105.6051 Q851.3062,104.3905 853.1494,104.3905 Q853.6682,104.3905 854.1443,104.5003 Q854.6204,104.6102 855.0354,104.8299 L855.0354,106.8319 Q854.5715,106.4046 854.1351,106.2063 Q853.6987,106.0079 853.2349,106.0079 Q852.2461,106.0079 851.7426,106.7922 Q851.239,107.5765 851.239,109.1207 Q851.239,110.6588 851.7426,111.4431 Q852.2461,112.2274 853.2349,112.2274 Q853.6987,112.2274 854.1351,112.029 Q854.5715,111.8306 855.0354,111.4034 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="42.7083" x="869.7917" y="113.7044">Debug</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="839.5833" x2="917.7083" y1="124.6745" y2="124.6745"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="839.5833" x2="917.7083" y1="133.0078" y2="133.0078"/><!--MD5=[c7388e4b131b75a2293a205507160186]
+class MapStyles.Edge--><rect codeLine="22" fill="#282828" height="48.055" id="MapStyles.Edge" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="68.75" x="733.8542" y="203.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="68.75" x="733.8542" y="203.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="68.75" x="733.8542" y="226.7578"/><rect codeLine="22" fill="none" height="48.055" id="MapStyles.Edge" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="68.75" x="733.8542" y="203.7028"/><ellipse cx="748.4375" cy="219.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M750.3479,223.822 Q749.9207,224.0417 749.4507,224.1516 Q748.9807,224.2615 748.4619,224.2615 Q746.6187,224.2615 745.6482,223.0469 Q744.6777,221.8323 744.6777,219.5374 Q744.6777,217.2363 745.6482,216.0217 Q746.6187,214.8071 748.4619,214.8071 Q748.9807,214.8071 749.4568,214.917 Q749.9329,215.0269 750.3479,215.2466 L750.3479,217.2485 Q749.884,216.8213 749.4476,216.6229 Q749.0112,216.4246 748.5474,216.4246 Q747.5586,216.4246 747.0551,217.2089 Q746.5515,217.9932 746.5515,219.5374 Q746.5515,221.0754 747.0551,221.8597 Q747.5586,222.644 748.5474,222.644 Q749.0112,222.644 749.4476,222.4457 Q749.884,222.2473 750.3479,221.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="31.25" x="765.1042" y="224.1211">Edge</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="734.8958" x2="801.5625" y1="235.0911" y2="235.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="734.8958" x2="801.5625" y1="243.4245" y2="243.4245"/><!--MD5=[e597518bec96d36d61f7da554ee2b4a7]
+class Arrows--><rect codeLine="6" fill="#282828" height="48.055" id="Arrows" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="83.3333" x="39.0625" y="93.2861"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="83.3333" x="39.0625" y="93.2861"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="83.3333" x="39.0625" y="116.3411"/><rect codeLine="6" fill="none" height="48.055" id="Arrows" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="83.3333" x="39.0625" y="93.2861"/><ellipse cx="53.6458" cy="108.9803" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M55.5562,113.4054 Q55.129,113.6251 54.659,113.7349 Q54.189,113.8448 53.6702,113.8448 Q51.827,113.8448 50.8565,112.6302 Q49.8861,111.4156 49.8861,109.1207 Q49.8861,106.8197 50.8565,105.6051 Q51.827,104.3905 53.6702,104.3905 Q54.189,104.3905 54.6651,104.5003 Q55.1412,104.6102 55.5562,104.8299 L55.5562,106.8319 Q55.0924,106.4046 54.656,106.2063 Q54.2196,106.0079 53.7557,106.0079 Q52.7669,106.0079 52.2634,106.7922 Q51.7598,107.5765 51.7598,109.1207 Q51.7598,110.6588 52.2634,111.4431 Q52.7669,112.2274 53.7557,112.2274 Q54.2196,112.2274 54.656,112.029 Q55.0924,111.8306 55.5562,111.4034 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="45.8333" x="70.3125" y="113.7044">Arrows</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="40.1042" x2="121.3542" y1="124.6745" y2="124.6745"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="40.1042" x2="121.3542" y1="133.0078" y2="133.0078"/><!--MD5=[5cceaae9e7c8241f9512051e53da01ce]
+class Dots--><rect codeLine="18" fill="#282828" height="48.055" id="Dots" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="68.75" x="158.8542" y="93.2861"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="68.75" x="158.8542" y="93.2861"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="68.75" x="158.8542" y="116.3411"/><rect codeLine="18" fill="none" height="48.055" id="Dots" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="68.75" x="158.8542" y="93.2861"/><ellipse cx="173.4375" cy="108.9803" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M175.3479,113.4054 Q174.9207,113.6251 174.4507,113.7349 Q173.9807,113.8448 173.4619,113.8448 Q171.6187,113.8448 170.6482,112.6302 Q169.6777,111.4156 169.6777,109.1207 Q169.6777,106.8197 170.6482,105.6051 Q171.6187,104.3905 173.4619,104.3905 Q173.9807,104.3905 174.4568,104.5003 Q174.9329,104.6102 175.3479,104.8299 L175.3479,106.8319 Q174.884,106.4046 174.4476,106.2063 Q174.0112,106.0079 173.5474,106.0079 Q172.5586,106.0079 172.0551,106.7922 Q171.5515,107.5765 171.5515,109.1207 Q171.5515,110.6588 172.0551,111.4431 Q172.5586,112.2274 173.5474,112.2274 Q174.0112,112.2274 174.4476,112.029 Q174.884,111.8306 175.3479,111.4034 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="31.25" x="190.1042" y="113.7044">Dots</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="159.8958" x2="226.5625" y1="124.6745" y2="124.6745"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="159.8958" x2="226.5625" y1="133.0078" y2="133.0078"/><!--MD5=[ae1ad4dc490036541371d3e5d4218f34]
+class Labels--><rect codeLine="26" fill="#282828" height="48.055" id="Labels" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="79.1667" x="264.0625" y="93.2861"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="79.1667" x="264.0625" y="93.2861"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="79.1667" x="264.0625" y="116.3411"/><rect codeLine="26" fill="none" height="48.055" id="Labels" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="79.1667" x="264.0625" y="93.2861"/><ellipse cx="278.6458" cy="108.9803" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M280.5562,113.4054 Q280.129,113.6251 279.659,113.7349 Q279.189,113.8448 278.6702,113.8448 Q276.827,113.8448 275.8565,112.6302 Q274.8861,111.4156 274.8861,109.1207 Q274.8861,106.8197 275.8565,105.6051 Q276.827,104.3905 278.6702,104.3905 Q279.189,104.3905 279.6651,104.5003 Q280.1412,104.6102 280.5562,104.8299 L280.5562,106.8319 Q280.0924,106.4046 279.656,106.2063 Q279.2196,106.0079 278.7557,106.0079 Q277.7669,106.0079 277.2634,106.7922 Q276.7598,107.5765 276.7598,109.1207 Q276.7598,110.6588 277.2634,111.4431 Q277.7669,112.2274 278.7557,112.2274 Q279.2196,112.2274 279.656,112.029 Q280.0924,111.8306 280.5562,111.4034 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="41.6667" x="295.3125" y="113.7044">Labels</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="265.1042" x2="342.1875" y1="124.6745" y2="124.6745"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="265.1042" x2="342.1875" y1="133.0078" y2="133.0078"/><!--MD5=[7c37a91e969cd730cf6521ed75133ace]
+class Lines--><rect codeLine="30" fill="#282828" height="48.055" id="Lines" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="71.875" x="380.2083" y="93.2861"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="71.875" x="380.2083" y="93.2861"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="71.875" x="380.2083" y="116.3411"/><rect codeLine="30" fill="none" height="48.055" id="Lines" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="71.875" x="380.2083" y="93.2861"/><ellipse cx="394.7917" cy="108.9803" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M396.7021,113.4054 Q396.2748,113.6251 395.8049,113.7349 Q395.3349,113.8448 394.8161,113.8448 Q392.9728,113.8448 392.0024,112.6302 Q391.0319,111.4156 391.0319,109.1207 Q391.0319,106.8197 392.0024,105.6051 Q392.9728,104.3905 394.8161,104.3905 Q395.3349,104.3905 395.811,104.5003 Q396.287,104.6102 396.7021,104.8299 L396.7021,106.8319 Q396.2382,106.4046 395.8018,106.2063 Q395.3654,106.0079 394.9015,106.0079 Q393.9128,106.0079 393.4092,106.7922 Q392.9057,107.5765 392.9057,109.1207 Q392.9057,110.6588 393.4092,111.4431 Q393.9128,112.2274 394.9015,112.2274 Q395.3654,112.2274 395.8018,112.029 Q396.2382,111.8306 396.7021,111.4034 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="34.375" x="411.4583" y="113.7044">Lines</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="381.25" x2="451.0417" y1="124.6745" y2="124.6745"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="381.25" x2="451.0417" y1="133.0078" y2="133.0078"/><!--MD5=[dffe955d7108640c3ae342231dee1189]
+class MapStyles--><rect codeLine="34" fill="#282828" height="48.055" id="MapStyles" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="103.125" x="29.1667" y="203.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="103.125" x="29.1667" y="203.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="103.125" x="29.1667" y="226.7578"/><rect codeLine="34" fill="none" height="48.055" id="MapStyles" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="103.125" x="29.1667" y="203.7028"/><ellipse cx="43.75" cy="219.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M45.6604,223.822 Q45.2332,224.0417 44.7632,224.1516 Q44.2932,224.2615 43.7744,224.2615 Q41.9312,224.2615 40.9607,223.0469 Q39.9902,221.8323 39.9902,219.5374 Q39.9902,217.2363 40.9607,216.0217 Q41.9312,214.8071 43.7744,214.8071 Q44.2932,214.8071 44.7693,214.917 Q45.2454,215.0269 45.6604,215.2466 L45.6604,217.2485 Q45.1965,216.8213 44.7601,216.6229 Q44.3237,216.4246 43.8599,216.4246 Q42.8711,216.4246 42.3676,217.2089 Q41.864,217.9932 41.864,219.5374 Q41.864,221.0754 42.3676,221.8597 Q42.8711,222.644 43.8599,222.644 Q44.3237,222.644 44.7601,222.4457 Q45.1965,222.2473 45.6604,221.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="65.625" x="60.4167" y="224.1211">MapStyles</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="30.2083" x2="131.25" y1="235.0911" y2="235.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="30.2083" x2="131.25" y1="243.4245" y2="243.4245"/><!--MD5=[2e9f65b055b283bd6911e723931b01d5]
+class MapStyles.Place--><rect codeLine="38" fill="#282828" height="48.055" id="MapStyles.Place" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="138.5417" x="168.75" y="203.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="138.5417" x="168.75" y="203.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="138.5417" x="168.75" y="226.7578"/><rect codeLine="38" fill="none" height="48.055" id="MapStyles.Place" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="138.5417" x="168.75" y="203.7028"/><ellipse cx="183.3333" cy="219.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M185.2437,223.822 Q184.8165,224.0417 184.3465,224.1516 Q183.8765,224.2615 183.3577,224.2615 Q181.5145,224.2615 180.544,223.0469 Q179.5736,221.8323 179.5736,219.5374 Q179.5736,217.2363 180.544,216.0217 Q181.5145,214.8071 183.3577,214.8071 Q183.8765,214.8071 184.3526,214.917 Q184.8287,215.0269 185.2437,215.2466 L185.2437,217.2485 Q184.7799,216.8213 184.3435,216.6229 Q183.9071,216.4246 183.4432,216.4246 Q182.4544,216.4246 181.9509,217.2089 Q181.4473,217.9932 181.4473,219.5374 Q181.4473,221.0754 181.9509,221.8597 Q182.4544,222.644 183.4432,222.644 Q183.9071,222.644 184.3435,222.4457 Q184.7799,222.2473 185.2437,221.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="101.0417" x="200" y="224.1211">MapStyles.Place</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="169.7917" x2="306.25" y1="235.0911" y2="235.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="169.7917" x2="306.25" y1="243.4245" y2="243.4245"/><!--MD5=[355a443488a186a8033b0d7a005486bc]
+class MapStyles.Polyline--><rect codeLine="42" fill="#282828" height="48.055" id="MapStyles.Polyline" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="157.2917" x="343.75" y="203.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="157.2917" x="343.75" y="203.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="157.2917" x="343.75" y="226.7578"/><rect codeLine="42" fill="none" height="48.055" id="MapStyles.Polyline" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="157.2917" x="343.75" y="203.7028"/><ellipse cx="358.3333" cy="219.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M360.2437,223.822 Q359.8165,224.0417 359.3465,224.1516 Q358.8765,224.2615 358.3577,224.2615 Q356.5145,224.2615 355.544,223.0469 Q354.5736,221.8323 354.5736,219.5374 Q354.5736,217.2363 355.544,216.0217 Q356.5145,214.8071 358.3577,214.8071 Q358.8765,214.8071 359.3526,214.917 Q359.8287,215.0269 360.2437,215.2466 L360.2437,217.2485 Q359.7799,216.8213 359.3435,216.6229 Q358.9071,216.4246 358.4432,216.4246 Q357.4544,216.4246 356.9509,217.2089 Q356.4473,217.9932 356.4473,219.5374 Q356.4473,221.0754 356.9509,221.8597 Q357.4544,222.644 358.4432,222.644 Q358.9071,222.644 359.3435,222.4457 Q359.7799,222.2473 360.2437,221.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="119.7917" x="375" y="224.1211">MapStyles.Polyline</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="344.7917" x2="500" y1="235.0911" y2="235.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="344.7917" x2="500" y1="243.4245" y2="243.4245"/><!--MD5=[a1c937049b7b4cef1f30f567b9886b68]
+class MapStyles.Relation--><rect codeLine="46" fill="#282828" height="48.055" id="MapStyles.Relation" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="159.375" x="537.5" y="203.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="159.375" x="537.5" y="203.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="159.375" x="537.5" y="226.7578"/><rect codeLine="46" fill="none" height="48.055" id="MapStyles.Relation" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="159.375" x="537.5" y="203.7028"/><ellipse cx="552.0833" cy="219.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M553.9937,223.822 Q553.5665,224.0417 553.0965,224.1516 Q552.6265,224.2615 552.1077,224.2615 Q550.2645,224.2615 549.294,223.0469 Q548.3236,221.8323 548.3236,219.5374 Q548.3236,217.2363 549.294,216.0217 Q550.2645,214.8071 552.1077,214.8071 Q552.6265,214.8071 553.1026,214.917 Q553.5787,215.0269 553.9937,215.2466 L553.9937,217.2485 Q553.5299,216.8213 553.0935,216.6229 Q552.6571,216.4246 552.1932,216.4246 Q551.2044,216.4246 550.7009,217.2089 Q550.1973,217.9932 550.1973,219.5374 Q550.1973,221.0754 550.7009,221.8597 Q551.2044,222.644 552.1932,222.644 Q552.6571,222.644 553.0935,222.4457 Q553.5299,222.2473 553.9937,221.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="121.875" x="568.75" y="224.1211">MapStyles.Relation</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="538.5417" x2="695.8333" y1="235.0911" y2="235.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="538.5417" x2="695.8333" y1="243.4245" y2="243.4245"/><!--MD5=[b11e3c434b4fdbe5030822c3ce846f0a]
+class MapStyles.Road--><rect codeLine="50" fill="#282828" height="48.055" id="MapStyles.Road" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="138.5417" x="11.4583" y="314.1195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="138.5417" x="11.4583" y="314.1195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="138.5417" x="11.4583" y="337.1745"/><rect codeLine="50" fill="none" height="48.055" id="MapStyles.Road" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="138.5417" x="11.4583" y="314.1195"/><ellipse cx="26.0417" cy="329.8136" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M27.9521,334.2387 Q27.5248,334.4584 27.0549,334.5683 Q26.5849,334.6781 26.0661,334.6781 Q24.2228,334.6781 23.2524,333.4635 Q22.2819,332.2489 22.2819,329.954 Q22.2819,327.653 23.2524,326.4384 Q24.2228,325.2238 26.0661,325.2238 Q26.5849,325.2238 27.061,325.3337 Q27.537,325.4435 27.9521,325.6632 L27.9521,327.6652 Q27.4882,327.238 27.0518,327.0396 Q26.6154,326.8412 26.1515,326.8412 Q25.1628,326.8412 24.6592,327.6255 Q24.1557,328.4098 24.1557,329.954 Q24.1557,331.4921 24.6592,332.2764 Q25.1628,333.0607 26.1515,333.0607 Q26.6154,333.0607 27.0518,332.8623 Q27.4882,332.664 27.9521,332.2367 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="101.0417" x="42.7083" y="334.5378">MapStyles.Road</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="12.5" x2="148.9583" y1="345.5078" y2="345.5078"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="12.5" x2="148.9583" y1="353.8411" y2="353.8411"/><!--MD5=[5ebe5e7d672262ee131e71c41f47775e]
+class MapStyles.ShapePoint--><rect codeLine="54" fill="#282828" height="48.055" id="MapStyles.ShapePoint" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="178.125" x="186.4583" y="314.1195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="178.125" x="186.4583" y="314.1195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="178.125" x="186.4583" y="337.1745"/><rect codeLine="54" fill="none" height="48.055" id="MapStyles.ShapePoint" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="178.125" x="186.4583" y="314.1195"/><ellipse cx="201.0417" cy="329.8136" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M202.9521,334.2387 Q202.5248,334.4584 202.0549,334.5683 Q201.5849,334.6781 201.0661,334.6781 Q199.2228,334.6781 198.2524,333.4635 Q197.2819,332.2489 197.2819,329.954 Q197.2819,327.653 198.2524,326.4384 Q199.2228,325.2238 201.0661,325.2238 Q201.5849,325.2238 202.061,325.3337 Q202.537,325.4435 202.9521,325.6632 L202.9521,327.6652 Q202.4882,327.238 202.0518,327.0396 Q201.6154,326.8412 201.1515,326.8412 Q200.1628,326.8412 199.6592,327.6255 Q199.1557,328.4098 199.1557,329.954 Q199.1557,331.4921 199.6592,332.2764 Q200.1628,333.0607 201.1515,333.0607 Q201.6154,333.0607 202.0518,332.8623 Q202.4882,332.664 202.9521,332.2367 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="140.625" x="217.7083" y="334.5378">MapStyles.ShapePoint</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="187.5" x2="363.5417" y1="345.5078" y2="345.5078"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="187.5" x2="363.5417" y1="353.8411" y2="353.8411"/><!--MD5=[40f4431c104446006dd2f79f8c4d0fa8]
+class Strokes--><rect codeLine="58" fill="#282828" height="48.055" id="Strokes" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="86.4583" x="401.0417" y="314.1195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="86.4583" x="401.0417" y="314.1195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="86.4583" x="401.0417" y="337.1745"/><rect codeLine="58" fill="none" height="48.055" id="Strokes" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="86.4583" x="401.0417" y="314.1195"/><ellipse cx="415.625" cy="329.8136" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M417.5354,334.2387 Q417.1082,334.4584 416.6382,334.5683 Q416.1682,334.6781 415.6494,334.6781 Q413.8062,334.6781 412.8357,333.4635 Q411.8652,332.2489 411.8652,329.954 Q411.8652,327.653 412.8357,326.4384 Q413.8062,325.2238 415.6494,325.2238 Q416.1682,325.2238 416.6443,325.3337 Q417.1204,325.4435 417.5354,325.6632 L417.5354,327.6652 Q417.0715,327.238 416.6351,327.0396 Q416.1987,326.8412 415.7349,326.8412 Q414.7461,326.8412 414.2426,327.6255 Q413.739,328.4098 413.739,329.954 Q413.739,331.4921 414.2426,332.2764 Q414.7461,333.0607 415.7349,333.0607 Q416.1987,333.0607 416.6351,332.8623 Q417.0715,332.664 417.5354,332.2367 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="48.9583" x="432.2917" y="334.5378">Strokes</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="402.0833" x2="486.4583" y1="345.5078" y2="345.5078"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="402.0833" x2="486.4583" y1="353.8411" y2="353.8411"/><!--MD5=[5e530b0dd3d77d8e525ee2107bfff992]
+class Styles--><rect codeLine="62" fill="#282828" height="48.055" id="Styles" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="76.0417" x="523.9583" y="314.1195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="76.0417" x="523.9583" y="314.1195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="76.0417" x="523.9583" y="337.1745"/><rect codeLine="62" fill="none" height="48.055" id="Styles" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="76.0417" x="523.9583" y="314.1195"/><ellipse cx="538.5417" cy="329.8136" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M540.4521,334.2387 Q540.0248,334.4584 539.5549,334.5683 Q539.0849,334.6781 538.5661,334.6781 Q536.7228,334.6781 535.7524,333.4635 Q534.7819,332.2489 534.7819,329.954 Q534.7819,327.653 535.7524,326.4384 Q536.7228,325.2238 538.5661,325.2238 Q539.0849,325.2238 539.561,325.3337 Q540.037,325.4435 540.4521,325.6632 L540.4521,327.6652 Q539.9882,327.238 539.5518,327.0396 Q539.1154,326.8412 538.6515,326.8412 Q537.6628,326.8412 537.1592,327.6255 Q536.6557,328.4098 536.6557,329.954 Q536.6557,331.4921 537.1592,332.2764 Q537.6628,333.0607 538.6515,333.0607 Q539.1154,333.0607 539.5518,332.8623 Q539.9882,332.664 540.4521,332.2367 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="38.5417" x="555.2083" y="334.5378">Styles</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="525" x2="598.9583" y1="345.5078" y2="345.5078"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="525" x2="598.9583" y1="353.8411" y2="353.8411"/><!--MD5=[9c1f9b19bfb087292b6c494fe1fd2c6e]
+class MapStyles.Vertex--><rect codeLine="66" fill="#282828" height="48.055" id="MapStyles.Vertex" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="146.875" x="7.2917" y="424.5361"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="146.875" x="7.2917" y="424.5361"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="146.875" x="7.2917" y="447.5911"/><rect codeLine="66" fill="none" height="48.055" id="MapStyles.Vertex" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="146.875" x="7.2917" y="424.5361"/><ellipse cx="21.875" cy="440.2303" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M23.7854,444.6554 Q23.3582,444.8751 22.8882,444.9849 Q22.4182,445.0948 21.8994,445.0948 Q20.0562,445.0948 19.0857,443.8802 Q18.1152,442.6656 18.1152,440.3707 Q18.1152,438.0697 19.0857,436.8551 Q20.0562,435.6405 21.8994,435.6405 Q22.4182,435.6405 22.8943,435.7503 Q23.3704,435.8602 23.7854,436.0799 L23.7854,438.0819 Q23.3215,437.6546 22.8851,437.4563 Q22.4487,437.2579 21.9849,437.2579 Q20.9961,437.2579 20.4926,438.0422 Q19.989,438.8265 19.989,440.3707 Q19.989,441.9088 20.4926,442.6931 Q20.9961,443.4774 21.9849,443.4774 Q22.4487,443.4774 22.8851,443.279 Q23.3215,443.0806 23.7854,442.6534 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="109.375" x="38.5417" y="444.9544">MapStyles.Vertex</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="8.3333" x2="153.125" y1="455.9245" y2="455.9245"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="8.3333" x2="153.125" y1="464.2578" y2="464.2578"/><!--MD5=[3e3c89056aac1d87bf72fe5dd3e7b3ff]
+link Arrows to Dots--><!--MD5=[dc6391fb8093d312657f7d6ef879f9ff]
+link Dots to Labels--><!--MD5=[9486617eb8ab9a2d9aac9b552eada517]
+link Labels to Lines--><!--MD5=[e8b42b9962eddcc0bfc1450f3a123fb6]
+link Arrows to MapStyles--><!--MD5=[849a9009e42def740c17eca4b8c675f4]
+link MapStyles to MapStyles.Place--><!--MD5=[636138e7072c927e7621b81c956c921f]
+link MapStyles.Place to MapStyles.Polyline--><!--MD5=[7547939fab1bb724153c92462439ac74]
+link MapStyles.Polyline to MapStyles.Relation--><!--MD5=[14edad75558272995ef2c69f8891ceb5]
+link MapStyles to MapStyles.Road--><!--MD5=[41d5286b43456288b6cc425bf9d7af5f]
+link MapStyles.Road to MapStyles.ShapePoint--><!--MD5=[14463079ac79c97be6d2661650ee415b]
+link MapStyles.ShapePoint to Strokes--><!--MD5=[a64940287ef9c59de082c858a90f88a3]
+link Strokes to Styles--><!--MD5=[a579d688e254d1eb31772f23573184ba]
+link MapStyles.Road to MapStyles.Vertex--><!--MD5=[1fdf0531ed1b647aba912511a21860d4]
+link MapStyles.Base to MapStyles.Debug--><!--MD5=[27c1bec6a3cd9e10fcd3438f82c955f0]
+link MapStyles.Base to MapStyles.Edge--><!--MD5=[a3163017c5514811d1913fe84f42e6f9]
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.ui.swing.map.theme"
+    
+    class Arrows
+    {
+    }
+    
+    class MapStyles.Base
+    {
+    }
+    
+    class MapStyles.Debug
+    {
+    }
+    
+    class Dots
+    {
+    }
+    
+    class MapStyles.Edge
+    {
+    }
+    
+    class Labels
+    {
+    }
+    
+    class Lines
+    {
+    }
+    
+    class MapStyles
+    {
+    }
+    
+    class MapStyles.Place
+    {
+    }
+    
+    class MapStyles.Polyline
+    {
+    }
+    
+    class MapStyles.Relation
+    {
+    }
+    
+    class MapStyles.Road
+    {
+    }
+    
+    class MapStyles.ShapePoint
+    {
+    }
+    
+    class Strokes
+    {
+    }
+    
+    class Styles
+    {
+    }
+    
+    class MapStyles.Vertex
+    {
+    }
+    
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+
+
+skinparam backgroundColor #333333
+
+
+
+
+
+
+skinparam  {
+    defaultFontName   "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+    defaultFontSize   12
+    defaultTextAlignment left
+    shadowing false
+    RoundCorner 10
+    TitleFontSize 18
+}
+
+skinparam defaultFontName       "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           16
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               3
+skinparam ArrowColor            #545454
+skinparam stereotype {
+    CBackgroundColor #0066cf
+    CBorderColor #0086ef
+    ABackgroundColor #C8Ac00
+    ABorderColor #D8Bc00
+    IBackgroundColor #008400
+    IBorderColor #239c23
+    EBackgroundColor #cf6300
+    EBorderColor #ef8300
+    NBackgroundColor #3380b9
+    NBorderColor #004d86
+}
+skinparam title {
+	FontColor	                 #c0c0c0
+ 	BorderColor                  #545454
+	FontSize	    	         20
+	BorderRoundCorner            16
+	BorderThickness 	         1
+	BackgroundColor              #48494b
+}
+
+
+skinparam legend {
+	BackgroundColor #303030
+	BorderColor #404040
+	FontColor #a0a0a0
+}
+
+	skinparam swimlane {
+	BorderColor #5e5e5e
+	BorderThickness 2
+	TitleBackgroundColor  #6d6d6d-#484848
+	TitleFontColor #303030
+}
+
+skinparam activity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BarColor #00FF00
+	StartColor #0060a8
+	EndColor #0060a8
+	DiamondBackgroundColor #6d6d6d-#3a3a3a
+  	DiamondBorderColor #3a3a3a
+  	DiamondFontColor #fefefe
+}
+
+
+skinparam participant {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam arrow {
+	Thickness 1.5
+	Color #545454
+	FontColor #a0a0a0
+    FontStyle bold
+    MessageAlignment center
+}
+
+
+
+skinparam sequence {
+	BorderColor #303030
+	TitleFontColor #303030
+	BackgroundColor #333333
+	StartColor #303030
+	EndColor #303030
+	BoxBackgroundColor #333333
+	BoxBorderColor #484848
+	BoxFontColor #484848
+	LifeLineBorderColor #484848
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor #3a3a3a
+	GroupBorderColor #484848
+	GroupFontColor #484848
+	GroupHeaderFontColor #0060a8
+	GroupBackgroundColor #484848
+	GroupHeaderBackgroundColor #333333
+	DividerBackgroundColor #484848
+    DividerBorderColor #484848
+    DividerBorderThickness 2
+    DividerFontColor #D8Bc00
+	ReferenceBackgroundColor #333333
+	ReferenceBorderColor #484848
+	ReferenceFontColor #fefefe
+	ReferenceHeaderBackgroundColor #484848
+}
+
+
+skinparam partition {
+	BorderColor #303030
+	FontColor #333333
+	BackgroundColor #333333
+}
+
+
+skinparam collections {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam control {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam entity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam boundary {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam agent {
+	BackgroundColor #ff8000
+	BorderColor #ff9933
+	FontColor #484848
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor #1b1b1a
+	BorderColor #5e5e5e
+	FontSize 11
+	FontColor #a0a0a0
+}
+
+
+skinparam artifact {
+	BorderThickness 10
+	BorderColor #5e5e5e
+	BackgroundColor #1b1b1a
+	FontColor #D8Bc00
+}
+
+
+skinparam component {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam interface {
+	BackgroundColor  #008400
+	BorderColor  #007F00
+	FontColor #484848
+}
+
+
+skinparam storage {
+	BackgroundColor #ff8000
+  	BorderColor #cc6600
+	FontColor #222222
+}
+
+
+skinparam node {
+	BackgroundColor #333333
+	BorderColor #333333
+	FontColor #C8Ac00
+}
+
+
+skinparam cloud {
+	BackgroundColor #484848-black
+	BorderColor #484848
+	FontColor #D8Bc00
+}
+
+
+skinparam database {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor  #333333
+}
+
+
+skinparam class {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	HeaderBackgroundColor #1b1b1a
+    BackgroundColor #282828
+    BorderColor #5e5e5e
+ 	StereotypeFontColor #a0a0a0
+    StereotypeFontStyle bold
+	BorderThickness 1
+	AttributeFontColor #D8Bc00
+	AttributeFontSize 11
+    FontColor #D8Bc00
+    FontStyle bold
+}
+
+
+skinparam object {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StereotypeFontColor #484848
+	BorderThickness 1
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam rectangle {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam package {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor #6d6d6d
+  	BorderColor #ff8000
+	FontColor #ff8000
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor #6d6d6d
+  	BorderColor #0060a8
+	FontColor #0060a8
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StartColor #0060a8
+	EndColor #0060a8
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam card {
+	BackgroundColor #0060a8
+	BorderColor #004d86
+	FontColor $INFO_TEXT
+}
+
+
+skinparam file {
+	BackgroundColor #6d6d6d-#484848
+	BorderColor #0060a8
+	FontColor #fefefe
+}
+
+
+skinparam stack {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+    
+    title "com.telenav.aonia.map.ui.swing.map.theme"
+    
+    class Arrows
+    {
+    }
+    
+    class MapStyles.Base
+    {
+    }
+    
+    class MapStyles.Debug
+    {
+    }
+    
+    class Dots
+    {
+    }
+    
+    class MapStyles.Edge
+    {
+    }
+    
+    class Labels
+    {
+    }
+    
+    class Lines
+    {
+    }
+    
+    class MapStyles
+    {
+    }
+    
+    class MapStyles.Place
+    {
+    }
+    
+    class MapStyles.Polyline
+    {
+    }
+    
+    class MapStyles.Relation
+    {
+    }
+    
+    class MapStyles.Road
+    {
+    }
+    
+    class MapStyles.ShapePoint
+    {
+    }
+    
+    class Strokes
+    {
+    }
+    
+    class Styles
+    {
+    }
+    
+    class MapStyles.Vertex
+    {
+    }
+    
+@enduml
+
+PlantUML version 1.2021.01(Tue Feb 02 00:55:08 MST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

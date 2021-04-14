@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="254.1667px" preserveAspectRatio="none" style="width:498px;height:254px;background:#333333;" version="1.1" viewBox="0 0 498 254" width="498.9583px" zoomAndPan="magnify"><defs/><g><rect fill="#48494B" height="41.2028" rx="8.3333" ry="8.3333" style="stroke:#545454;stroke-width:1.0416666666666667;" width="486.4583" x="2.0833" y="2.0833"/><text fill="#C0C0C0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="20.8333" lengthAdjust="spacing" textLength="463.5417" x="13.5417" y="30.5583">com.telenav.aonia.map.region.countries.states</text><!--MD5=[60d6b92408f98aed8df94d5c6e04aa63]
+class State--><rect fill="#282828" height="48.055" id="State" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="69.7917" x="211.1979" y="53.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="69.7917" x="211.1979" y="53.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="69.7917" x="211.1979" y="76.7578"/><rect fill="none" height="48.055" id="State" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="69.7917" x="211.1979" y="53.7028"/><ellipse cx="225.7813" cy="69.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M227.6917,73.822 Q227.2644,74.0417 226.7944,74.1516 Q226.3245,74.2615 225.8057,74.2615 Q223.9624,74.2615 222.9919,73.0469 Q222.0215,71.8323 222.0215,69.5374 Q222.0215,67.2363 222.9919,66.0217 Q223.9624,64.8071 225.8057,64.8071 Q226.3245,64.8071 226.8005,64.917 Q227.2766,65.0269 227.6917,65.2466 L227.6917,67.2485 Q227.2278,66.8213 226.7914,66.6229 Q226.355,66.4246 225.8911,66.4246 Q224.9023,66.4246 224.3988,67.2089 Q223.8953,67.9932 223.8953,69.5374 Q223.8953,71.0754 224.3988,71.8597 Q224.9023,72.644 225.8911,72.644 Q226.355,72.644 226.7914,72.4457 Q227.2278,72.2473 227.6917,71.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="32.2917" x="242.4479" y="74.1211">State</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="212.2396" x2="279.9479" y1="85.0911" y2="85.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="212.2396" x2="279.9479" y1="93.4245" y2="93.4245"/><!--MD5=[547799a2e48e088b3384758c8ac574e9]
+class California--><rect codeLine="7" fill="#282828" height="83.3781" id="California" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="101.0417" x="60.1563" y="164.1195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="101.0417" x="60.1563" y="164.1195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="101.0417" x="60.1563" y="187.1745"/><rect codeLine="7" fill="none" height="83.3781" id="California" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="101.0417" x="60.1563" y="164.1195"/><ellipse cx="74.7396" cy="179.8136" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M76.65,184.2387 Q76.2227,184.4584 75.7528,184.5683 Q75.2828,184.6781 74.764,184.6781 Q72.9207,184.6781 71.9503,183.4635 Q70.9798,182.2489 70.9798,179.954 Q70.9798,177.653 71.9503,176.4384 Q72.9207,175.2238 74.764,175.2238 Q75.2828,175.2238 75.7589,175.3337 Q76.2349,175.4435 76.65,175.6632 L76.65,177.6652 Q76.1861,177.238 75.7497,177.0396 Q75.3133,176.8412 74.8494,176.8412 Q73.8607,176.8412 73.3571,177.6255 Q72.8536,178.4098 72.8536,179.954 Q72.8536,181.4921 73.3571,182.2764 Q73.8607,183.0607 74.8494,183.0607 Q75.3133,183.0607 75.7497,182.8623 Q76.1861,182.664 76.65,182.2367 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="63.5417" x="91.4063" y="184.5378">California</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="61.1979" x2="160.1563" y1="195.5078" y2="195.5078"/><ellipse cx="71.6146" cy="230.8777" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="83.0729" y="237.7889">California()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="61.1979" x2="66.9271" y1="213.7136" y2="213.7136"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="70.0521" y="217.5232">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="154.4271" x2="160.1563" y1="213.7136" y2="213.7136"/><!--MD5=[c4108afdb167b6f550f746a3d25c4d94]
+class NewYork--><rect codeLine="14" fill="#282828" height="83.3781" id="NewYork" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="95.8333" x="198.1771" y="164.1195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="95.8333" x="198.1771" y="164.1195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="95.8333" x="198.1771" y="187.1745"/><rect codeLine="14" fill="none" height="83.3781" id="NewYork" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="95.8333" x="198.1771" y="164.1195"/><ellipse cx="213.2292" cy="179.8136" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M215.1396,184.2387 Q214.7123,184.4584 214.2424,184.5683 Q213.7724,184.6781 213.2536,184.6781 Q211.4103,184.6781 210.4399,183.4635 Q209.4694,182.2489 209.4694,179.954 Q209.4694,177.653 210.4399,176.4384 Q211.4103,175.2238 213.2536,175.2238 Q213.7724,175.2238 214.2485,175.3337 Q214.7245,175.4435 215.1396,175.6632 L215.1396,177.6652 Q214.6757,177.238 214.2393,177.0396 Q213.8029,176.8412 213.339,176.8412 Q212.3503,176.8412 211.8467,177.6255 Q211.3432,178.4098 211.3432,179.954 Q211.3432,181.4921 211.8467,182.2764 Q212.3503,183.0607 213.339,183.0607 Q213.8029,183.0607 214.2393,182.8623 Q214.6757,182.664 215.1396,182.2367 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="57.2917" x="230" y="184.5378">NewYork</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="199.2188" x2="292.9688" y1="195.5078" y2="195.5078"/><ellipse cx="209.6354" cy="230.8777" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="57.2917" x="221.0938" y="237.7889">NewYork()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="199.2188" x2="202.3438" y1="213.7136" y2="213.7136"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="205.4688" y="217.5232">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="289.8438" x2="292.9688" y1="213.7136" y2="213.7136"/><!--MD5=[261cc97a665fc967fc9e1795d0b69fd1]
+class Washington--><rect codeLine="21" fill="#282828" height="83.3781" id="Washington" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="114.5833" x="330.4688" y="164.1195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="114.5833" x="330.4688" y="164.1195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="114.5833" x="330.4688" y="187.1745"/><rect codeLine="21" fill="none" height="83.3781" id="Washington" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="114.5833" x="330.4688" y="164.1195"/><ellipse cx="345.0521" cy="179.8136" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M346.9625,184.2387 Q346.5352,184.4584 346.0653,184.5683 Q345.5953,184.6781 345.0765,184.6781 Q343.2332,184.6781 342.2628,183.4635 Q341.2923,182.2489 341.2923,179.954 Q341.2923,177.653 342.2628,176.4384 Q343.2332,175.2238 345.0765,175.2238 Q345.5953,175.2238 346.0714,175.3337 Q346.5474,175.4435 346.9625,175.6632 L346.9625,177.6652 Q346.4986,177.238 346.0622,177.0396 Q345.6258,176.8412 345.1619,176.8412 Q344.1732,176.8412 343.6696,177.6255 Q343.1661,178.4098 343.1661,179.954 Q343.1661,181.4921 343.6696,182.2764 Q344.1732,183.0607 345.1619,183.0607 Q345.6258,183.0607 346.0622,182.8623 Q346.4986,182.664 346.9625,182.2367 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="77.0833" x="361.7188" y="184.5378">Washington</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="331.5104" x2="444.0104" y1="195.5078" y2="195.5078"/><ellipse cx="341.9271" cy="230.8777" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="73.9583" x="353.3854" y="237.7889">Washington()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="331.5104" x2="344.0104" y1="213.7136" y2="213.7136"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="347.1354" y="217.5232">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="431.5104" x2="444.0104" y1="213.7136" y2="213.7136"/><!--MD5=[d138d1bac007977bcadad1fc23340d32]
+reverse link State to California--><path codeLine="6" d="M205.5729,116.4215 C189.4896,131.3903 170.9375,148.6507 154.5417,163.9215 " fill="none" id="State-backto-California" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="201.0417,110.682,221.2604,101.8174,210.9792,121.3486,201.0417,110.682" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[7e6efc3e845e28ef75d0c37a7a8d9e92]
+reverse link State to NewYork--><path codeLine="13" d="M246.0938,122.682 C246.0938,136.0778 246.0938,150.7445 246.0938,163.9215 " fill="none" id="State-backto-NewYork" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="238.8021,122.6507,246.0938,101.8174,253.3854,122.6507,238.8021,122.6507" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[62c437f582c0a763216332e372754d73]
+reverse link State to Washington--><path codeLine="20" d="M287.6875,115.7132 C304.6979,130.8486 324.4479,148.4111 341.875,163.9215 " fill="none" id="State-backto-Washington" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="282.7917,121.1195,272.0729,101.8174,292.4896,110.2236,282.7917,121.1195" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[aa58882ee84d4d3475518c181be22367]
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.region.countries.states"
+    
+    State <|- - California
+    class California
+    {
+        - -(constructors)- -
+        +California()
+    }
+    
+    State <|- - NewYork
+    class NewYork
+    {
+        - -(constructors)- -
+        +NewYork()
+    }
+    
+    State <|- - Washington
+    class Washington
+    {
+        - -(constructors)- -
+        +Washington()
+    }
+    
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+
+
+skinparam backgroundColor #333333
+
+
+
+
+
+
+skinparam  {
+    defaultFontName   "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+    defaultFontSize   12
+    defaultTextAlignment left
+    shadowing false
+    RoundCorner 10
+    TitleFontSize 18
+}
+
+skinparam defaultFontName       "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           16
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               3
+skinparam ArrowColor            #545454
+skinparam stereotype {
+    CBackgroundColor #0066cf
+    CBorderColor #0086ef
+    ABackgroundColor #C8Ac00
+    ABorderColor #D8Bc00
+    IBackgroundColor #008400
+    IBorderColor #239c23
+    EBackgroundColor #cf6300
+    EBorderColor #ef8300
+    NBackgroundColor #3380b9
+    NBorderColor #004d86
+}
+skinparam title {
+	FontColor	                 #c0c0c0
+ 	BorderColor                  #545454
+	FontSize	    	         20
+	BorderRoundCorner            16
+	BorderThickness 	         1
+	BackgroundColor              #48494b
+}
+
+
+skinparam legend {
+	BackgroundColor #303030
+	BorderColor #404040
+	FontColor #a0a0a0
+}
+
+	skinparam swimlane {
+	BorderColor #5e5e5e
+	BorderThickness 2
+	TitleBackgroundColor  #6d6d6d-#484848
+	TitleFontColor #303030
+}
+
+skinparam activity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BarColor #00FF00
+	StartColor #0060a8
+	EndColor #0060a8
+	DiamondBackgroundColor #6d6d6d-#3a3a3a
+  	DiamondBorderColor #3a3a3a
+  	DiamondFontColor #fefefe
+}
+
+
+skinparam participant {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam arrow {
+	Thickness 1.5
+	Color #545454
+	FontColor #a0a0a0
+    FontStyle bold
+    MessageAlignment center
+}
+
+
+
+skinparam sequence {
+	BorderColor #303030
+	TitleFontColor #303030
+	BackgroundColor #333333
+	StartColor #303030
+	EndColor #303030
+	BoxBackgroundColor #333333
+	BoxBorderColor #484848
+	BoxFontColor #484848
+	LifeLineBorderColor #484848
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor #3a3a3a
+	GroupBorderColor #484848
+	GroupFontColor #484848
+	GroupHeaderFontColor #0060a8
+	GroupBackgroundColor #484848
+	GroupHeaderBackgroundColor #333333
+	DividerBackgroundColor #484848
+    DividerBorderColor #484848
+    DividerBorderThickness 2
+    DividerFontColor #D8Bc00
+	ReferenceBackgroundColor #333333
+	ReferenceBorderColor #484848
+	ReferenceFontColor #fefefe
+	ReferenceHeaderBackgroundColor #484848
+}
+
+
+skinparam partition {
+	BorderColor #303030
+	FontColor #333333
+	BackgroundColor #333333
+}
+
+
+skinparam collections {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam control {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam entity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam boundary {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam agent {
+	BackgroundColor #ff8000
+	BorderColor #ff9933
+	FontColor #484848
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor #1b1b1a
+	BorderColor #5e5e5e
+	FontSize 11
+	FontColor #a0a0a0
+}
+
+
+skinparam artifact {
+	BorderThickness 10
+	BorderColor #5e5e5e
+	BackgroundColor #1b1b1a
+	FontColor #D8Bc00
+}
+
+
+skinparam component {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam interface {
+	BackgroundColor  #008400
+	BorderColor  #007F00
+	FontColor #484848
+}
+
+
+skinparam storage {
+	BackgroundColor #ff8000
+  	BorderColor #cc6600
+	FontColor #222222
+}
+
+
+skinparam node {
+	BackgroundColor #333333
+	BorderColor #333333
+	FontColor #C8Ac00
+}
+
+
+skinparam cloud {
+	BackgroundColor #484848-black
+	BorderColor #484848
+	FontColor #D8Bc00
+}
+
+
+skinparam database {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor  #333333
+}
+
+
+skinparam class {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	HeaderBackgroundColor #1b1b1a
+    BackgroundColor #282828
+    BorderColor #5e5e5e
+ 	StereotypeFontColor #a0a0a0
+    StereotypeFontStyle bold
+	BorderThickness 1
+	AttributeFontColor #D8Bc00
+	AttributeFontSize 11
+    FontColor #D8Bc00
+    FontStyle bold
+}
+
+
+skinparam object {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StereotypeFontColor #484848
+	BorderThickness 1
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam rectangle {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam package {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor #6d6d6d
+  	BorderColor #ff8000
+	FontColor #ff8000
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor #6d6d6d
+  	BorderColor #0060a8
+	FontColor #0060a8
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StartColor #0060a8
+	EndColor #0060a8
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam card {
+	BackgroundColor #0060a8
+	BorderColor #004d86
+	FontColor $INFO_TEXT
+}
+
+
+skinparam file {
+	BackgroundColor #6d6d6d-#484848
+	BorderColor #0060a8
+	FontColor #fefefe
+}
+
+
+skinparam stack {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+    
+    title "com.telenav.aonia.map.region.countries.states"
+    
+    State <|- - California
+    class California
+    {
+        - -(constructors)- -
+        +California()
+    }
+    
+    State <|- - NewYork
+    class NewYork
+    {
+        - -(constructors)- -
+        +NewYork()
+    }
+    
+    State <|- - Washington
+    class Washington
+    {
+        - -(constructors)- -
+        +Washington()
+    }
+    
+@enduml
+
+PlantUML version 1.2021.01(Tue Feb 02 00:55:08 MST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

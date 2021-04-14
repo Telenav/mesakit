@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="752.0833px" preserveAspectRatio="none" style="width:1390px;height:752px;background:#333333;" version="1.1" viewBox="0 0 1390 752" width="1390.625px" zoomAndPan="magnify"><defs/><g><rect fill="#48494B" height="41.2028" rx="8.3333" ry="8.3333" style="stroke:#545454;stroke-width:1.0416666666666667;" width="397.9167" x="489.0625" y="2.0833"/><text fill="#C0C0C0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="20.8333" lengthAdjust="spacing" textLength="375" x="500.5208" y="30.5583">com.telenav.aonia.map.region.border</text><!--MD5=[eb60a0db34e0f87ce571ea8e468e0925]
+class Bounded--><rect codeLine="6" fill="#282828" height="48.055" id="Bounded" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="94.7917" x="7.2917" y="182.8695"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="94.7917" x="7.2917" y="182.8695"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="94.7917" x="7.2917" y="205.9245"/><rect codeLine="6" fill="none" height="48.055" id="Bounded" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="94.7917" x="7.2917" y="182.8695"/><ellipse cx="21.875" cy="198.5636" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M18.7581,195.7255 L18.7581,194.1386 L24.1842,194.1386 L24.1842,195.7255 L22.3714,195.7255 L22.3714,201.6642 L24.1842,201.6642 L24.1842,203.2511 L18.7581,203.2511 L18.7581,201.6642 L20.5709,201.6642 L20.5709,195.7255 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="57.2917" x="38.5417" y="203.2878">Bounded</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="8.3333" x2="101.0417" y1="214.2578" y2="214.2578"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="8.3333" x2="101.0417" y1="222.5911" y2="222.5911"/><!--MD5=[302594849024c7219bb74589a8b38298]
+class Intersectable--><rect codeLine="7" fill="#282828" height="48.055" id="Intersectable" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="120.8333" x="139.0625" y="182.8695"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="120.8333" x="139.0625" y="182.8695"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="120.8333" x="139.0625" y="205.9245"/><rect codeLine="7" fill="none" height="48.055" id="Intersectable" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="120.8333" x="139.0625" y="182.8695"/><ellipse cx="153.6458" cy="198.5636" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M150.529,195.7255 L150.529,194.1386 L155.955,194.1386 L155.955,195.7255 L154.1423,195.7255 L154.1423,201.6642 L155.955,201.6642 L155.955,203.2511 L150.529,203.2511 L150.529,201.6642 L152.3417,201.6642 L152.3417,195.7255 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="83.3333" x="170.3125" y="203.2878">Intersectable</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="140.1042" x2="258.8542" y1="214.2578" y2="214.2578"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="140.1042" x2="258.8542" y1="222.5911" y2="222.5911"/><!--MD5=[fa52db58e9f7777f57a05e12546afc9a]
+class Configured--><rect codeLine="8" fill="#282828" height="48.055" id="Configured" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="110.4167" x="638.0208" y="53.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="110.4167" x="638.0208" y="53.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="110.4167" x="638.0208" y="76.7578"/><rect codeLine="8" fill="none" height="48.055" id="Configured" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="110.4167" x="638.0208" y="53.7028"/><ellipse cx="652.6042" cy="69.397" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M649.4873,66.5588 L649.4873,64.9719 L654.9133,64.9719 L654.9133,66.5588 L653.1006,66.5588 L653.1006,72.4976 L654.9133,72.4976 L654.9133,74.0845 L649.4873,74.0845 L649.4873,72.4976 L651.3,72.4976 L651.3,66.5588 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="72.9167" x="669.2708" y="74.1211">Configured</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="639.0625" x2="747.3958" y1="85.0911" y2="85.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="639.0625" x2="747.3958" y1="93.4245" y2="93.4245"/><!--MD5=[a0336aaa8110b78d9cacadb9d45e00a3]
+class Border--><rect codeLine="14" fill="#282828" height="277.7486" id="Border" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="189.5833" x="104.6875" y="333.9111"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="189.5833" x="104.6875" y="333.9111"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="189.5833" x="104.6875" y="356.9661"/><rect codeLine="14" fill="none" height="277.7486" id="Border" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="189.5833" x="104.6875" y="333.9111"/><ellipse cx="161.4583" cy="349.6053" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M163.3687,354.0304 Q162.9415,354.2501 162.4715,354.3599 Q162.0015,354.4698 161.4827,354.4698 Q159.6395,354.4698 158.669,353.2552 Q157.6986,352.0406 157.6986,349.7457 Q157.6986,347.4447 158.669,346.2301 Q159.6395,345.0155 161.4827,345.0155 Q162.0015,345.0155 162.4776,345.1253 Q162.9537,345.2352 163.3687,345.4549 L163.3687,347.4569 Q162.9049,347.0296 162.4685,346.8313 Q162.0321,346.6329 161.5682,346.6329 Q160.5794,346.6329 160.0759,347.4172 Q159.5723,348.2015 159.5723,349.7457 Q159.5723,351.2838 160.0759,352.0681 Q160.5794,352.8524 161.5682,352.8524 Q162.0321,352.8524 162.4685,352.654 Q162.9049,352.4556 163.3687,352.0284 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="42.7083" x="184.375" y="354.3294">Border</text><rect fill="#333333" height="23.055" style="stroke:#A0A0A0;stroke-width:1.0416666666666667;stroke-dasharray:2.0,2.0;" width="16.6667" x="280.7292" y="330.7861"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="8.3333" x="284.8958" y="347.0378">T</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="105.7292" x2="293.2292" y1="365.2995" y2="365.2995"/><ellipse cx="116.1458" cy="400.6694" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="104.1667" x="127.6042" y="407.5806">Border(T, Polygon)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="105.7292" x2="155.7292" y1="383.5052" y2="383.5052"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="158.8542" y="387.3149">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="243.2292" x2="293.2292" y1="383.5052" y2="383.5052"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="105.7292" x2="293.2292" y1="417.2892" y2="417.2892"/><ellipse cx="116.1458" cy="428.7476" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="133.3333" x="127.6042" y="435.6588">RegionIdentity identity()</text><ellipse cx="116.1458" cy="448.4924" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="157.2917" x="127.6042" y="455.4036">void identity(RegionIdentity)</text><ellipse cx="116.1458" cy="468.2373" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="102.0833" x="127.6042" y="475.1485">Polygon polygon()</text><ellipse cx="116.1458" cy="487.9822" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="55.2083" x="127.6042" y="494.8934">T region()</text><ellipse cx="116.1458" cy="507.7271" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="118.75" x="127.6042" y="514.6383">void region(T region)</text><ellipse cx="116.1458" cy="551.3835" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="92.7083" x="127.6042" y="558.2947">boolean isValid()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="105.7292" x2="172.9167" y1="534.2194" y2="534.2194"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="46.875" x="176.0417" y="538.029">(checks)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="226.0417" x2="293.2292" y1="534.2194" y2="534.2194"/><ellipse cx="116.1458" cy="595.0399" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="152.0833" x="127.6042" y="601.9511">boolean contains(Location)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="105.7292" x2="165.1042" y1="577.8758" y2="577.8758"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="168.2292" y="581.6854">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="233.8542" x2="293.2292" y1="577.8758" y2="577.8758"/><!--MD5=[129471aa5ea5c93eb409af5033b83b34]
+class Polygon--><rect fill="#282828" height="48.055" id="Polygon" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="89.5833" x="359.8958" y="697.4528"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="89.5833" x="359.8958" y="697.4528"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="89.5833" x="359.8958" y="720.5078"/><rect fill="none" height="48.055" id="Polygon" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="89.5833" x="359.8958" y="697.4528"/><ellipse cx="374.4792" cy="713.147" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M376.3896,717.572 Q375.9623,717.7917 375.4924,717.9016 Q375.0224,718.0115 374.5036,718.0115 Q372.6603,718.0115 371.6899,716.7969 Q370.7194,715.5823 370.7194,713.2874 Q370.7194,710.9863 371.6899,709.7717 Q372.6603,708.5571 374.5036,708.5571 Q375.0224,708.5571 375.4985,708.667 Q375.9745,708.7769 376.3896,708.9966 L376.3896,710.9985 Q375.9257,710.5713 375.4893,710.3729 Q375.0529,710.1746 374.589,710.1746 Q373.6003,710.1746 373.0967,710.9589 Q372.5932,711.7432 372.5932,713.2874 Q372.5932,714.8254 373.0967,715.6097 Q373.6003,716.394 374.589,716.394 Q375.0529,716.394 375.4893,716.1957 Q375.9257,715.9973 376.3896,715.5701 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="52.0833" x="391.1458" y="717.8711">Polygon</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="360.9375" x2="448.4375" y1="728.8411" y2="728.8411"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="360.9375" x2="448.4375" y1="737.1745" y2="737.1745"/><!--MD5=[b5313cd49da22b0744b541f414f8445e]
+class Rectangle--><rect fill="#282828" height="48.055" id="Rectangle" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="100" x="115.1042" y="697.4528"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="100" x="115.1042" y="697.4528"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="100" x="115.1042" y="720.5078"/><rect fill="none" height="48.055" id="Rectangle" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="100" x="115.1042" y="697.4528"/><ellipse cx="129.6875" cy="713.147" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M131.5979,717.572 Q131.1707,717.7917 130.7007,717.9016 Q130.2307,718.0115 129.7119,718.0115 Q127.8687,718.0115 126.8982,716.7969 Q125.9277,715.5823 125.9277,713.2874 Q125.9277,710.9863 126.8982,709.7717 Q127.8687,708.5571 129.7119,708.5571 Q130.2307,708.5571 130.7068,708.667 Q131.1829,708.7769 131.5979,708.9966 L131.5979,710.9985 Q131.134,710.5713 130.6976,710.3729 Q130.2612,710.1746 129.7974,710.1746 Q128.8086,710.1746 128.3051,710.9589 Q127.8015,711.7432 127.8015,713.2874 Q127.8015,714.8254 128.3051,715.6097 Q128.8086,716.394 129.7974,716.394 Q130.2612,716.394 130.6976,716.1957 Q131.134,715.9973 131.5979,715.5701 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="62.5" x="146.3542" y="717.8711">Rectangle</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="116.1458" x2="214.0625" y1="728.8411" y2="728.8411"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="116.1458" x2="214.0625" y1="737.1745" y2="737.1745"/><!--MD5=[3670a9b67b8a752f6e42da25dea7e2da]
+class Leaf--><rect fill="#282828" height="48.055" id="Leaf" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="64.5833" x="1125.5208" y="53.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="64.5833" x="1125.5208" y="53.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="64.5833" x="1125.5208" y="76.7578"/><rect fill="none" height="48.055" id="Leaf" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="64.5833" x="1125.5208" y="53.7028"/><ellipse cx="1140.1042" cy="69.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M1142.0146,73.822 Q1141.5873,74.0417 1141.1174,74.1516 Q1140.6474,74.2615 1140.1286,74.2615 Q1138.2853,74.2615 1137.3149,73.0469 Q1136.3444,71.8323 1136.3444,69.5374 Q1136.3444,67.2363 1137.3149,66.0217 Q1138.2853,64.8071 1140.1286,64.8071 Q1140.6474,64.8071 1141.1235,64.917 Q1141.5995,65.0269 1142.0146,65.2466 L1142.0146,67.2485 Q1141.5507,66.8213 1141.1143,66.6229 Q1140.6779,66.4246 1140.214,66.4246 Q1139.2253,66.4246 1138.7217,67.2089 Q1138.2182,67.9932 1138.2182,69.5374 Q1138.2182,71.0754 1138.7217,71.8597 Q1139.2253,72.644 1140.214,72.644 Q1140.6779,72.644 1141.1143,72.4457 Q1141.5507,72.2473 1142.0146,71.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="27.0833" x="1156.7708" y="74.1211">Leaf</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1126.5625" x2="1189.0625" y1="85.0911" y2="85.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1126.5625" x2="1189.0625" y1="93.4245" y2="93.4245"/><!--MD5=[ff5863b9e719f3ce16365d7078b1f1f3]
+class BorderLeaf--><rect codeLine="31" fill="#282828" height="83.3781" id="BorderLeaf" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="442.7083" x="936.4583" y="165.1611"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="442.7083" x="936.4583" y="165.1611"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="442.7083" x="936.4583" y="188.2161"/><rect codeLine="31" fill="none" height="83.3781" id="BorderLeaf" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="442.7083" x="936.4583" y="165.1611"/><ellipse cx="1106.25" cy="180.8553" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M1108.1604,185.2804 Q1107.7332,185.5001 1107.2632,185.6099 Q1106.7932,185.7198 1106.2744,185.7198 Q1104.4312,185.7198 1103.4607,184.5052 Q1102.4902,183.2906 1102.4902,180.9957 Q1102.4902,178.6947 1103.4607,177.4801 Q1104.4312,176.2655 1106.2744,176.2655 Q1106.7932,176.2655 1107.2693,176.3753 Q1107.7454,176.4852 1108.1604,176.7049 L1108.1604,178.7069 Q1107.6965,178.2796 1107.2601,178.0813 Q1106.8237,177.8829 1106.3599,177.8829 Q1105.3711,177.8829 1104.8676,178.6672 Q1104.364,179.4515 1104.364,180.9957 Q1104.364,182.5338 1104.8676,183.3181 Q1105.3711,184.1024 1106.3599,184.1024 Q1106.8237,184.1024 1107.2601,183.904 Q1107.6965,183.7056 1108.1604,183.2784 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="69.7917" x="1129.1667" y="185.5794">BorderLeaf</text><rect fill="#333333" height="23.055" style="stroke:#A0A0A0;stroke-width:1.0416666666666667;stroke-dasharray:2.0,2.0;" width="16.6667" x="1365.625" y="162.0361"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="8.3333" x="1369.7917" y="178.2878">T</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="937.5" x2="1378.125" y1="196.5495" y2="196.5495"/><ellipse cx="947.9167" cy="231.9194" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="410.4167" x="959.375" y="238.8306">BorderLeaf(RTreeSpatialIndex&lt;Border&lt;T&gt;&gt;, InteriorNode&lt;Border&lt;T&gt;&gt;)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="937.5" x2="1114.0625" y1="214.7552" y2="214.7552"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="1117.1875" y="218.5649">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1201.5625" x2="1378.125" y1="214.7552" y2="214.7552"/><!--MD5=[15f6998b248c0726664b9d827148f7fc]
+class RTreeSpatialIndex--><rect fill="#282828" height="48.055" id="RTreeSpatialIndex" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="153.125" x="351.0417" y="53.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="153.125" x="351.0417" y="53.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="153.125" x="351.0417" y="76.7578"/><rect fill="none" height="48.055" id="RTreeSpatialIndex" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="153.125" x="351.0417" y="53.7028"/><ellipse cx="365.625" cy="69.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M367.5354,73.822 Q367.1082,74.0417 366.6382,74.1516 Q366.1682,74.2615 365.6494,74.2615 Q363.8062,74.2615 362.8357,73.0469 Q361.8652,71.8323 361.8652,69.5374 Q361.8652,67.2363 362.8357,66.0217 Q363.8062,64.8071 365.6494,64.8071 Q366.1682,64.8071 366.6443,64.917 Q367.1204,65.0269 367.5354,65.2466 L367.5354,67.2485 Q367.0715,66.8213 366.6351,66.6229 Q366.1987,66.4246 365.7349,66.4246 Q364.7461,66.4246 364.2426,67.2089 Q363.739,67.9932 363.739,69.5374 Q363.739,71.0754 364.2426,71.8597 Q364.7461,72.644 365.7349,72.644 Q366.1987,72.644 366.6351,72.4457 Q367.0715,72.2473 367.5354,71.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="115.625" x="382.2917" y="74.1211">RTreeSpatialIndex</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="352.0833" x2="503.125" y1="85.0911" y2="85.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="352.0833" x2="503.125" y1="93.4245" y2="93.4245"/><!--MD5=[4496f7a37b95fe126b8aa047d342cac5]
+class BorderSpatialIndex--><rect codeLine="39" fill="#282828" height="83.3781" id="BorderSpatialIndex" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="262.5" x="296.3542" y="165.1611"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="262.5" x="296.3542" y="165.1611"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="262.5" x="296.3542" y="188.2161"/><rect codeLine="39" fill="none" height="83.3781" id="BorderSpatialIndex" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="262.5" x="296.3542" y="165.1611"/><ellipse cx="350" cy="180.8553" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M351.9104,185.2804 Q351.4832,185.5001 351.0132,185.6099 Q350.5432,185.7198 350.0244,185.7198 Q348.1812,185.7198 347.2107,184.5052 Q346.2402,183.2906 346.2402,180.9957 Q346.2402,178.6947 347.2107,177.4801 Q348.1812,176.2655 350.0244,176.2655 Q350.5432,176.2655 351.0193,176.3753 Q351.4954,176.4852 351.9104,176.7049 L351.9104,178.7069 Q351.4465,178.2796 351.0101,178.0813 Q350.5737,177.8829 350.1099,177.8829 Q349.1211,177.8829 348.6176,178.6672 Q348.114,179.4515 348.114,180.9957 Q348.114,182.5338 348.6176,183.3181 Q349.1211,184.1024 350.1099,184.1024 Q350.5737,184.1024 351.0101,183.904 Q351.4465,183.7056 351.9104,183.2784 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="121.875" x="372.9167" y="185.5794">BorderSpatialIndex</text><rect fill="#333333" height="23.055" style="stroke:#A0A0A0;stroke-width:1.0416666666666667;stroke-dasharray:2.0,2.0;" width="16.6667" x="545.3125" y="162.0361"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="8.3333" x="549.4792" y="178.2878">T</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="297.3958" x2="557.8125" y1="196.5495" y2="196.5495"/><ellipse cx="307.8125" cy="231.9194" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="230.2083" x="319.2708" y="238.8306">BorderSpatialIndex(String, RTreeSettings)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="297.3958" x2="383.8542" y1="214.7552" y2="214.7552"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="386.9792" y="218.5649">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="471.3542" x2="557.8125" y1="214.7552" y2="214.7552"/><!--MD5=[66b793461075db5cbf24955c1ced378e]
+class RTreeSpatialIndexKryoSerializer--><rect fill="#282828" height="48.055" id="RTreeSpatialIndexKryoSerializer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="242.7083" x="785.4167" y="53.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="242.7083" x="785.4167" y="53.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="242.7083" x="785.4167" y="76.7578"/><rect fill="none" height="48.055" id="RTreeSpatialIndexKryoSerializer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="242.7083" x="785.4167" y="53.7028"/><ellipse cx="800" cy="69.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M801.9104,73.822 Q801.4832,74.0417 801.0132,74.1516 Q800.5432,74.2615 800.0244,74.2615 Q798.1812,74.2615 797.2107,73.0469 Q796.2402,71.8323 796.2402,69.5374 Q796.2402,67.2363 797.2107,66.0217 Q798.1812,64.8071 800.0244,64.8071 Q800.5432,64.8071 801.0193,64.917 Q801.4954,65.0269 801.9104,65.2466 L801.9104,67.2485 Q801.4465,66.8213 801.0101,66.6229 Q800.5737,66.4246 800.1099,66.4246 Q799.1211,66.4246 798.6176,67.2089 Q798.114,67.9932 798.114,69.5374 Q798.114,71.0754 798.6176,71.8597 Q799.1211,72.644 800.1099,72.644 Q800.5737,72.644 801.0101,72.4457 Q801.4465,72.2473 801.9104,71.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="205.2083" x="816.6667" y="74.1211">RTreeSpatialIndexKryoSerializer</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="786.4583" x2="1027.0833" y1="85.0911" y2="85.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="786.4583" x2="1027.0833" y1="93.4245" y2="93.4245"/><!--MD5=[2910ed0816fb2091356f76e32a65a8f3]
+class BorderSpatialIndexKryoSerializer--><rect codeLine="47" fill="#282828" height="48.055" id="BorderSpatialIndexKryoSerializer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="267.7083" x="595.8333" y="182.8695"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="267.7083" x="595.8333" y="182.8695"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="267.7083" x="595.8333" y="205.9245"/><rect codeLine="47" fill="none" height="48.055" id="BorderSpatialIndexKryoSerializer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="267.7083" x="595.8333" y="182.8695"/><ellipse cx="610.4167" cy="198.5636" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M612.3271,202.9887 Q611.8998,203.2084 611.4299,203.3183 Q610.9599,203.4281 610.4411,203.4281 Q608.5978,203.4281 607.6274,202.2135 Q606.6569,200.9989 606.6569,198.704 Q606.6569,196.403 607.6274,195.1884 Q608.5978,193.9738 610.4411,193.9738 Q610.9599,193.9738 611.436,194.0837 Q611.912,194.1935 612.3271,194.4132 L612.3271,196.4152 Q611.8632,195.988 611.4268,195.7896 Q610.9904,195.5912 610.5265,195.5912 Q609.5378,195.5912 609.0342,196.3755 Q608.5307,197.1598 608.5307,198.704 Q608.5307,200.2421 609.0342,201.0264 Q609.5378,201.8107 610.5265,201.8107 Q610.9904,201.8107 611.4268,201.6123 Q611.8632,201.414 612.3271,200.9867 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="211.4583" x="627.0833" y="203.2878">BorderSpatialIndexKryoSerializer</text><rect fill="#333333" height="23.055" style="stroke:#A0A0A0;stroke-width:1.0416666666666667;stroke-dasharray:2.0,2.0;" width="16.6667" x="850" y="179.7445"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="8.3333" x="854.1667" y="195.9961">T</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="596.875" x2="862.5" y1="214.2578" y2="214.2578"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="596.875" x2="862.5" y1="222.5911" y2="222.5911"/><!--MD5=[ffb4683500baccd98229b4155e8ab3a5]
+class Bordered--><rect codeLine="52" fill="#282828" height="87.5448" id="Bordered" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="208.3333" x="364.0625" y="429.2236"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="208.3333" x="364.0625" y="429.2236"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="208.3333" x="364.0625" y="452.2786"/><rect codeLine="52" fill="none" height="87.5448" id="Bordered" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="208.3333" x="364.0625" y="429.2236"/><ellipse cx="431.7708" cy="444.9178" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M428.654,442.0797 L428.654,440.4928 L434.08,440.4928 L434.08,442.0797 L432.2673,442.0797 L432.2673,448.0184 L434.08,448.0184 L434.08,449.6053 L428.654,449.6053 L428.654,448.0184 L430.4667,448.0184 L430.4667,442.0797 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="58.3333" x="454.6875" y="449.6419">Bordered</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="365.1042" x2="571.3542" y1="460.612" y2="460.612"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="365.1042" x2="571.3542" y1="468.9453" y2="468.9453"/><ellipse cx="375.5208" cy="480.4036" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="176.0417" x="386.9792" y="487.3149">Collection&lt;Polygon&gt; borders()</text><ellipse cx="375.5208" cy="500.1485" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="133.3333" x="386.9792" y="507.0597">RegionIdentity identity()</text><!--MD5=[544aaab356d9c0d1fc8b4f289d5b3137]
+reverse link Bounded to Border--><path codeLine="10" d="M77.3542,249.2028 C90.0833,272.4215 106.7813,302.8695 123.7292,333.7757 " fill="none" id="Bounded-backto-Border" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="70.9063,252.6195,67.2813,230.8382,83.6979,245.5986,70.9063,252.6195" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[2a8db19d736c9a7f2bb46b46b40b26b9]
+reverse link Intersectable to Border--><path codeLine="11" d="M199.4792,251.6924 C199.4792,274.5778 199.4792,303.9632 199.4792,333.7757 " fill="none" id="Intersectable-backto-Border" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="192.1875,251.6715,199.4792,230.8382,206.7708,251.6715,192.1875,251.6715" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[50c749c806778cf918c3c57ccc3887b8]
+reverse link Border to Polygon--><path codeLine="12" d="M296.9792,623.4528 C308.7708,638.4215 321.1563,652.9528 333.8542,666.2028 C344.6771,677.4945 357.9792,688.307 370.125,697.2549 " fill="none" id="Border-backto-Polygon" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#333333" points="288.4896,612.4945,289.0183,619.9874,296.1381,622.3813,295.6095,614.8884,288.4896,612.4945" style="stroke:#545454;stroke-width:1.5625;"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="77.0833" x="338.0208" y="659.5378">bounded by</text><!--MD5=[bd495ce2e2fb71d40665440739ad6dc6]
+reverse link Border to Rectangle--><path codeLine="13" d="M164.1875,625.8903 C163.3438,631.7549 162.6042,637.5674 161.9792,643.2861 C160.875,653.4111 161.6875,656.0257 161.9792,666.2028 C162.2708,676.4632 162.8854,687.807 163.4896,697.4528 " fill="none" id="Border-backto-Rectangle" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#333333" points="166.3021,612.1715,161.2293,617.7115,164.3921,624.5248,169.4648,618.9848,166.3021,612.1715" style="stroke:#545454;stroke-width:1.5625;"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="126.0417" x="166.1458" y="659.5378">bounding rectangle</text><!--MD5=[2c861a6084a221a733406d1522df40a7]
+reverse link Leaf to BorderLeaf--><path codeLine="30" d="M1157.8125,122.9424 C1157.8125,136.5882 1157.8125,151.5465 1157.8125,164.9528 " fill="none" id="Leaf-backto-BorderLeaf" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="1150.5208,122.5465,1157.8125,101.7132,1165.1042,122.5465,1150.5208,122.5465" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[a9c4656ceb693888a21404c72fe681e9]
+reverse link RTreeSpatialIndex to BorderSpatialIndex--><path codeLine="37" d="M427.6042,122.9424 C427.6042,136.5882 427.6042,151.5465 427.6042,164.9528 " fill="none" id="RTreeSpatialIndex-backto-BorderSpatialIndex" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="420.3125,122.5465,427.6042,101.7132,434.8958,122.5465,420.3125,122.5465" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[19213f44d892385c9de96a91ffd2f064]
+link BorderSpatialIndex to Border--><path codeLine="38" d="M392.4583,248.5465 C367.1354,277.859 331.6354,318.9632 297.9688,357.9215 " fill="none" id="BorderSpatialIndex-to-Border" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#545454" points="294.3021,362.1715,303.5845,357.8025,297.7075,358.2308,297.2792,352.3538,294.3021,362.1715" style="stroke:#545454;stroke-width:1.5625;"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="50" x="365.1042" y="295.9961">indexes</text><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="18.75" x="305.644" y="347.2871">1+</text><!--MD5=[802cbf109aa5d0062ea7c54d22aab375]
+reverse link RTreeSpatialIndexKryoSerializer to BorderSpatialIndexKryoSerializer--><path codeLine="45" d="M857.7396,113.8903 C827.125,135.859 788.5833,163.5257 761.8125,182.734 " fill="none" id="RTreeSpatialIndexKryoSerializer-backto-BorderSpatialIndexKryoSerializer" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="853.5208,107.9424,874.6979,101.7132,862.0313,119.7861,853.5208,107.9424" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[fc10086bea2711555399bd90f495b12c]
+reverse link Configured to BorderSpatialIndexKryoSerializer--><path codeLine="46" d="M705.6667,122.057 C711.4792,142.3174 718.1667,165.6403 723.0104,182.5153 " fill="none" id="Configured-backto-BorderSpatialIndexKryoSerializer" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="698.5625,123.7549,699.8333,101.7132,712.5833,119.734,698.5625,123.7549" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[268b775c0f9faf2189376434f9543ca0]
+link Bordered to Polygon--><path codeLine="51" d="M461.5833,516.984 C454.9167,556.3382 443.3854,615.932 427.6042,666.2028 C424.8958,674.8382 421.3125,683.984 417.7917,692.2549 " fill="none" id="Bordered-to-Polygon" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#545454" points="415.6146,697.2757,423.1635,690.3283,417.6842,692.4962,415.5163,687.017,415.6146,697.2757" style="stroke:#545454;stroke-width:1.5625;"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="77.0833" x="438.0208" y="659.5378">bounded by</text><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="8.3333" x="448.0779" y="540.1949">1</text><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="18.75" x="393.3562" y="683.2303">1+</text><!--MD5=[7aee94b5d6a52b003ae48570ef35ab28]
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.region.border"
+    
+    interface Bounded
+    interface Intersectable
+    interface Configured
+    
+    Bounded <|- - Border
+    Intersectable <|- - Border
+    Border o- - Polygon : "bounded by"
+    Border o- - Rectangle : "bounding rectangle"
+    class Border<T>
+    {
+        - -(constructors)- -
+        +Border(T, Polygon)
+        - -
+        +RegionIdentity identity()
+        +void identity(RegionIdentity)
+        +Polygon polygon()
+        +T region()
+        +void region(T region)
+        - -(checks)- -
+        +boolean isValid()
+        - -(collection)- -
+        +boolean contains(Location)
+    }
+    
+    Leaf <|- - BorderLeaf
+    class BorderLeaf<T>
+    {
+        - -(constructors)- -
+        +BorderLeaf(RTreeSpatialIndex<Border<T>>, InteriorNode<Border<T>>)
+    }
+    
+    RTreeSpatialIndex <|- - BorderSpatialIndex
+    BorderSpatialIndex - -> "1+" Border : "indexes"
+    class BorderSpatialIndex<T>
+    {
+        - -(constructors)- -
+        +BorderSpatialIndex(String, RTreeSettings)
+    }
+    
+    RTreeSpatialIndexKryoSerializer <|- - BorderSpatialIndexKryoSerializer
+    Configured <|- - BorderSpatialIndexKryoSerializer
+    class BorderSpatialIndexKryoSerializer<T>
+    {
+    }
+    
+    Bordered "1" - -> "1+" Polygon : "bounded by"
+    interface Bordered
+    {
+        - -
+        +Collection<Polygon> borders()
+        +RegionIdentity identity()
+    }
+    
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+
+
+skinparam backgroundColor #333333
+
+
+
+
+
+
+skinparam  {
+    defaultFontName   "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+    defaultFontSize   12
+    defaultTextAlignment left
+    shadowing false
+    RoundCorner 10
+    TitleFontSize 18
+}
+
+skinparam defaultFontName       "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           16
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               3
+skinparam ArrowColor            #545454
+skinparam stereotype {
+    CBackgroundColor #0066cf
+    CBorderColor #0086ef
+    ABackgroundColor #C8Ac00
+    ABorderColor #D8Bc00
+    IBackgroundColor #008400
+    IBorderColor #239c23
+    EBackgroundColor #cf6300
+    EBorderColor #ef8300
+    NBackgroundColor #3380b9
+    NBorderColor #004d86
+}
+skinparam title {
+	FontColor	                 #c0c0c0
+ 	BorderColor                  #545454
+	FontSize	    	         20
+	BorderRoundCorner            16
+	BorderThickness 	         1
+	BackgroundColor              #48494b
+}
+
+
+skinparam legend {
+	BackgroundColor #303030
+	BorderColor #404040
+	FontColor #a0a0a0
+}
+
+	skinparam swimlane {
+	BorderColor #5e5e5e
+	BorderThickness 2
+	TitleBackgroundColor  #6d6d6d-#484848
+	TitleFontColor #303030
+}
+
+skinparam activity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BarColor #00FF00
+	StartColor #0060a8
+	EndColor #0060a8
+	DiamondBackgroundColor #6d6d6d-#3a3a3a
+  	DiamondBorderColor #3a3a3a
+  	DiamondFontColor #fefefe
+}
+
+
+skinparam participant {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam arrow {
+	Thickness 1.5
+	Color #545454
+	FontColor #a0a0a0
+    FontStyle bold
+    MessageAlignment center
+}
+
+
+
+skinparam sequence {
+	BorderColor #303030
+	TitleFontColor #303030
+	BackgroundColor #333333
+	StartColor #303030
+	EndColor #303030
+	BoxBackgroundColor #333333
+	BoxBorderColor #484848
+	BoxFontColor #484848
+	LifeLineBorderColor #484848
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor #3a3a3a
+	GroupBorderColor #484848
+	GroupFontColor #484848
+	GroupHeaderFontColor #0060a8
+	GroupBackgroundColor #484848
+	GroupHeaderBackgroundColor #333333
+	DividerBackgroundColor #484848
+    DividerBorderColor #484848
+    DividerBorderThickness 2
+    DividerFontColor #D8Bc00
+	ReferenceBackgroundColor #333333
+	ReferenceBorderColor #484848
+	ReferenceFontColor #fefefe
+	ReferenceHeaderBackgroundColor #484848
+}
+
+
+skinparam partition {
+	BorderColor #303030
+	FontColor #333333
+	BackgroundColor #333333
+}
+
+
+skinparam collections {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam control {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam entity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam boundary {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam agent {
+	BackgroundColor #ff8000
+	BorderColor #ff9933
+	FontColor #484848
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor #1b1b1a
+	BorderColor #5e5e5e
+	FontSize 11
+	FontColor #a0a0a0
+}
+
+
+skinparam artifact {
+	BorderThickness 10
+	BorderColor #5e5e5e
+	BackgroundColor #1b1b1a
+	FontColor #D8Bc00
+}
+
+
+skinparam component {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam interface {
+	BackgroundColor  #008400
+	BorderColor  #007F00
+	FontColor #484848
+}
+
+
+skinparam storage {
+	BackgroundColor #ff8000
+  	BorderColor #cc6600
+	FontColor #222222
+}
+
+
+skinparam node {
+	BackgroundColor #333333
+	BorderColor #333333
+	FontColor #C8Ac00
+}
+
+
+skinparam cloud {
+	BackgroundColor #484848-black
+	BorderColor #484848
+	FontColor #D8Bc00
+}
+
+
+skinparam database {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor  #333333
+}
+
+
+skinparam class {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	HeaderBackgroundColor #1b1b1a
+    BackgroundColor #282828
+    BorderColor #5e5e5e
+ 	StereotypeFontColor #a0a0a0
+    StereotypeFontStyle bold
+	BorderThickness 1
+	AttributeFontColor #D8Bc00
+	AttributeFontSize 11
+    FontColor #D8Bc00
+    FontStyle bold
+}
+
+
+skinparam object {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StereotypeFontColor #484848
+	BorderThickness 1
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam rectangle {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam package {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor #6d6d6d
+  	BorderColor #ff8000
+	FontColor #ff8000
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor #6d6d6d
+  	BorderColor #0060a8
+	FontColor #0060a8
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StartColor #0060a8
+	EndColor #0060a8
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam card {
+	BackgroundColor #0060a8
+	BorderColor #004d86
+	FontColor $INFO_TEXT
+}
+
+
+skinparam file {
+	BackgroundColor #6d6d6d-#484848
+	BorderColor #0060a8
+	FontColor #fefefe
+}
+
+
+skinparam stack {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+    
+    title "com.telenav.aonia.map.region.border"
+    
+    interface Bounded
+    interface Intersectable
+    interface Configured
+    
+    Bounded <|- - Border
+    Intersectable <|- - Border
+    Border o- - Polygon : "bounded by"
+    Border o- - Rectangle : "bounding rectangle"
+    class Border<T>
+    {
+        - -(constructors)- -
+        +Border(T, Polygon)
+        - -
+        +RegionIdentity identity()
+        +void identity(RegionIdentity)
+        +Polygon polygon()
+        +T region()
+        +void region(T region)
+        - -(checks)- -
+        +boolean isValid()
+        - -(collection)- -
+        +boolean contains(Location)
+    }
+    
+    Leaf <|- - BorderLeaf
+    class BorderLeaf<T>
+    {
+        - -(constructors)- -
+        +BorderLeaf(RTreeSpatialIndex<Border<T>>, InteriorNode<Border<T>>)
+    }
+    
+    RTreeSpatialIndex <|- - BorderSpatialIndex
+    BorderSpatialIndex - -> "1+" Border : "indexes"
+    class BorderSpatialIndex<T>
+    {
+        - -(constructors)- -
+        +BorderSpatialIndex(String, RTreeSettings)
+    }
+    
+    RTreeSpatialIndexKryoSerializer <|- - BorderSpatialIndexKryoSerializer
+    Configured <|- - BorderSpatialIndexKryoSerializer
+    class BorderSpatialIndexKryoSerializer<T>
+    {
+    }
+    
+    Bordered "1" - -> "1+" Polygon : "bounded by"
+    interface Bordered
+    {
+        - -
+        +Collection<Polygon> borders()
+        +RegionIdentity identity()
+    }
+    
+@enduml
+
+PlantUML version 1.2021.01(Tue Feb 02 00:55:08 MST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

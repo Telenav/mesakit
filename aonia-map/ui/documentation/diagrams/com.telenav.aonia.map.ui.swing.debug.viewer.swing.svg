@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="728.125px" preserveAspectRatio="none" style="width:2090px;height:728px;background:#333333;" version="1.1" viewBox="0 0 2090 728" width="2090.625px" zoomAndPan="magnify"><defs/><g><rect fill="#48494B" height="41.2028" rx="8.3333" ry="8.3333" style="stroke:#545454;stroke-width:1.0416666666666667;" width="545.8333" x="765.3646" y="2.0833"/><text fill="#C0C0C0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="20.8333" lengthAdjust="spacing" textLength="522.9167" x="776.8229" y="30.5583">com.telenav.aonia.map.ui.swing.debug.viewer.swing</text><!--MD5=[46af388b3c63f84e804b204421f5c973]
+cluster SwingViewPanel--><polygon fill="#333333" points="1932.8125,52.6611,2048.4375,52.6611,2055.7292,79.8828,2073.4375,79.8828,2073.4375,233.9111,1932.8125,233.9111,1932.8125,52.6611" style="stroke:#333333;stroke-width:2.0833333333333335;"/><line style="stroke:#333333;stroke-width:2.0833333333333335;" x1="1932.8125" x2="2055.7292" y1="79.8828" y2="79.8828"/><text fill="#C8AC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="103.125" x="1940.1042" y="69.9544">SwingViewPanel</text><!--MD5=[c08cbc788d1a83ad848d17b47d0d1b91]
+class SwingViewPanel.State--><rect codeLine="50" fill="#282828" height="107.2896" id="SwingViewPanel.State" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="70.8333" x="1977.6042" y="101.6195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="70.8333" x="1977.6042" y="101.6195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="70.8333" x="1977.6042" y="124.6745"/><rect codeLine="50" fill="none" height="107.2896" id="SwingViewPanel.State" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="70.8333" x="1977.6042" y="101.6195"/><ellipse cx="1992.6563" cy="117.3136" fill="#CF6300" rx="10.4167" ry="10.4167" style="stroke:#EF8300;stroke-width:1.0416666666666667;"/><path d="M1995.7121,122.0011 L1990.0358,122.0011 L1990.0358,112.8886 L1995.7121,112.8886 L1995.7121,114.4755 L1991.8363,114.4755 L1991.8363,116.4408 L1995.3459,116.4408 L1995.3459,118.0278 L1991.8363,118.0278 L1991.8363,120.4142 L1995.7121,120.4142 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="32.2917" x="2009.4271" y="122.0378">State</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1978.6458" x2="2047.3958" y1="133.0078" y2="133.0078"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="43.75" x="1986.9792" y="151.3774">PAUSED</text><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="52.0833" x="1986.9792" y="171.1222">RUNNING</text><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="52.0833" x="1986.9792" y="190.8671">STEPPING</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1978.6458" x2="2047.3958" y1="200.5758" y2="200.5758"/><!--MD5=[1c4f61964b481a2bf1d4c5a4c401d89c]
+class BaseViewer--><rect codeLine="6" fill="#282828" height="48.055" id="BaseViewer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="110.4167" x="1451.5625" y="131.307"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="110.4167" x="1451.5625" y="131.307"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="110.4167" x="1451.5625" y="154.362"/><rect codeLine="6" fill="none" height="48.055" id="BaseViewer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="110.4167" x="1451.5625" y="131.307"/><ellipse cx="1466.1458" cy="147.0011" fill="#C8AC00" rx="10.4167" ry="10.4167" style="stroke:#D8BC00;stroke-width:1.0416666666666667;"/><path d="M1466.2598,143.7032 L1465.4114,147.4325 L1467.1143,147.4325 Z M1465.1611,142.0553 L1467.3645,142.0553 L1469.8242,151.1678 L1468.0237,151.1678 L1467.4622,148.9156 L1465.0513,148.9156 L1464.502,151.1678 L1462.7014,151.1678 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="72.9167" x="1482.8125" y="151.7253">BaseViewer</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1452.6042" x2="1560.9375" y1="162.6953" y2="162.6953"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1452.6042" x2="1560.9375" y1="171.0286" y2="171.0286"/><!--MD5=[737880177de1ac01acd3fce58d07e50e]
+class MouseListener--><rect codeLine="8" fill="#282828" height="48.055" id="MouseListener" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="132.2917" x="532.2917" y="131.307"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="132.2917" x="532.2917" y="131.307"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="132.2917" x="532.2917" y="154.362"/><rect codeLine="8" fill="none" height="48.055" id="MouseListener" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="132.2917" x="532.2917" y="131.307"/><ellipse cx="546.875" cy="147.0011" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M543.7581,144.163 L543.7581,142.5761 L549.1842,142.5761 L549.1842,144.163 L547.3714,144.163 L547.3714,150.1017 L549.1842,150.1017 L549.1842,151.6886 L543.7581,151.6886 L543.7581,150.1017 L545.5709,150.1017 L545.5709,144.163 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="94.7917" x="563.5417" y="151.7253">MouseListener</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="533.3333" x2="663.5417" y1="162.6953" y2="162.6953"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="533.3333" x2="663.5417" y1="171.0286" y2="171.0286"/><!--MD5=[5380544c80c75f795b7e65d9600632ba]
+class InteractiveView--><rect codeLine="9" fill="#282828" height="48.055" id="InteractiveView" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="135.4167" x="701.5625" y="131.307"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="135.4167" x="701.5625" y="131.307"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="135.4167" x="701.5625" y="154.362"/><rect codeLine="9" fill="none" height="48.055" id="InteractiveView" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="135.4167" x="701.5625" y="131.307"/><ellipse cx="716.1458" cy="147.0011" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M713.029,144.163 L713.029,142.5761 L718.455,142.5761 L718.455,144.163 L716.6423,144.163 L716.6423,150.1017 L718.455,150.1017 L718.455,151.6886 L713.029,151.6886 L713.029,150.1017 L714.8417,150.1017 L714.8417,144.163 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="97.9167" x="732.8125" y="151.7253">InteractiveView</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="702.6042" x2="835.9375" y1="162.6953" y2="162.6953"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="702.6042" x2="835.9375" y1="171.0286" y2="171.0286"/><!--MD5=[78a0a8896af46eeb54f327c7212e6100]
+class InteractiveDrawingSurface--><rect codeLine="10" fill="#282828" height="48.055" id="InteractiveDrawingSurface" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="206.25" x="1698.4375" y="131.307"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="206.25" x="1698.4375" y="131.307"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="206.25" x="1698.4375" y="154.362"/><rect codeLine="10" fill="none" height="48.055" id="InteractiveDrawingSurface" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="206.25" x="1698.4375" y="131.307"/><ellipse cx="1713.0208" cy="147.0011" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M1709.904,144.163 L1709.904,142.5761 L1715.33,142.5761 L1715.33,144.163 L1713.5173,144.163 L1713.5173,150.1017 L1715.33,150.1017 L1715.33,151.6886 L1709.904,151.6886 L1709.904,150.1017 L1711.7167,150.1017 L1711.7167,144.163 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="168.75" x="1729.6875" y="151.7253">InteractiveDrawingSurface</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1699.4792" x2="1903.6458" y1="162.6953" y2="162.6953"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1699.4792" x2="1903.6458" y1="171.0286" y2="171.0286"/><!--MD5=[ca727575a11b91d060112bc1b021e986]
+class MouseWheelListener--><rect codeLine="11" fill="#282828" height="48.055" id="MouseWheelListener" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="170.8333" x="873.4375" y="131.307"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="170.8333" x="873.4375" y="131.307"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="170.8333" x="873.4375" y="154.362"/><rect codeLine="11" fill="none" height="48.055" id="MouseWheelListener" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="170.8333" x="873.4375" y="131.307"/><ellipse cx="888.0208" cy="147.0011" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M884.904,144.163 L884.904,142.5761 L890.33,142.5761 L890.33,144.163 L888.5173,144.163 L888.5173,150.1017 L890.33,150.1017 L890.33,151.6886 L884.904,151.6886 L884.904,150.1017 L886.7167,150.1017 L886.7167,144.163 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="133.3333" x="904.6875" y="151.7253">MouseWheelListener</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="874.4792" x2="1043.2292" y1="162.6953" y2="162.6953"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="874.4792" x2="1043.2292" y1="171.0286" y2="171.0286"/><!--MD5=[f2883cdefd3b962ee9d27e22f43a0ecf]
+class MouseMotionListener--><rect codeLine="12" fill="#282828" height="48.055" id="MouseMotionListener" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="178.125" x="1081.25" y="131.307"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="178.125" x="1081.25" y="131.307"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="178.125" x="1081.25" y="154.362"/><rect codeLine="12" fill="none" height="48.055" id="MouseMotionListener" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="178.125" x="1081.25" y="131.307"/><ellipse cx="1095.8333" cy="147.0011" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M1092.7165,144.163 L1092.7165,142.5761 L1098.1425,142.5761 L1098.1425,144.163 L1096.3298,144.163 L1096.3298,150.1017 L1098.1425,150.1017 L1098.1425,151.6886 L1092.7165,151.6886 L1092.7165,150.1017 L1094.5292,150.1017 L1094.5292,144.163 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="140.625" x="1112.5" y="151.7253">MouseMotionListener</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1082.2917" x2="1258.3333" y1="162.6953" y2="162.6953"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1082.2917" x2="1258.3333" y1="171.0286" y2="171.0286"/><!--MD5=[c4df9b95f6f4e4e1c32bb5a44abd175a]
+class Colors--><rect codeLine="14" fill="#282828" height="48.055" id="Colors" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="80.2083" x="7.2917" y="131.307"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="80.2083" x="7.2917" y="131.307"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="80.2083" x="7.2917" y="154.362"/><rect codeLine="14" fill="none" height="48.055" id="Colors" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="80.2083" x="7.2917" y="131.307"/><ellipse cx="21.875" cy="147.0011" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M23.7854,151.4262 Q23.3582,151.6459 22.8882,151.7558 Q22.4182,151.8656 21.8994,151.8656 Q20.0562,151.8656 19.0857,150.651 Q18.1152,149.4364 18.1152,147.1415 Q18.1152,144.8405 19.0857,143.6259 Q20.0562,142.4113 21.8994,142.4113 Q22.4182,142.4113 22.8943,142.5212 Q23.3704,142.631 23.7854,142.8507 L23.7854,144.8527 Q23.3215,144.4255 22.8851,144.2271 Q22.4487,144.0287 21.9849,144.0287 Q20.9961,144.0287 20.4926,144.813 Q19.989,145.5973 19.989,147.1415 Q19.989,148.6796 20.4926,149.4639 Q20.9961,150.2482 21.9849,150.2482 Q22.4487,150.2482 22.8851,150.0498 Q23.3215,149.8515 23.7854,149.4242 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="42.7083" x="38.5417" y="151.7253">Colors</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="8.3333" x2="86.4583" y1="162.6953" y2="162.6953"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="8.3333" x2="86.4583" y1="171.0286" y2="171.0286"/><!--MD5=[84b67da4cf59b7915eba4480c1b80af9]
+class SwingViewer--><rect codeLine="76" fill="#282828" height="48.055" id="SwingViewer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="118.75" x="1447.3958" y="293.2861"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="118.75" x="1447.3958" y="293.2861"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="118.75" x="1447.3958" y="316.3411"/><rect codeLine="76" fill="none" height="48.055" id="SwingViewer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="118.75" x="1447.3958" y="293.2861"/><ellipse cx="1461.9792" cy="308.9803" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M1463.8896,313.4054 Q1463.4623,313.6251 1462.9924,313.7349 Q1462.5224,313.8448 1462.0036,313.8448 Q1460.1603,313.8448 1459.1899,312.6302 Q1458.2194,311.4156 1458.2194,309.1207 Q1458.2194,306.8197 1459.1899,305.6051 Q1460.1603,304.3905 1462.0036,304.3905 Q1462.5224,304.3905 1462.9985,304.5003 Q1463.4745,304.6102 1463.8896,304.8299 L1463.8896,306.8319 Q1463.4257,306.4046 1462.9893,306.2063 Q1462.5529,306.0079 1462.089,306.0079 Q1461.1003,306.0079 1460.5967,306.7922 Q1460.0932,307.5765 1460.0932,309.1207 Q1460.0932,310.6588 1460.5967,311.4431 Q1461.1003,312.2274 1462.089,312.2274 Q1462.5529,312.2274 1462.9893,312.029 Q1463.4257,311.8306 1463.8896,311.4034 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="81.25" x="1478.6458" y="313.7044">SwingViewer</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1448.4375" x2="1565.1042" y1="324.6745" y2="324.6745"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1448.4375" x2="1565.1042" y1="333.0078" y2="333.0078"/><!--MD5=[4d857a20b46f03b129d59360f3197b04]
+class DebugViewer--><rect codeLine="19" fill="#282828" height="297.4935" id="DebugViewer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="216.6667" x="1398.4375" y="423.4945"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="216.6667" x="1398.4375" y="423.4945"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="216.6667" x="1398.4375" y="446.5495"/><rect codeLine="19" fill="none" height="297.4935" id="DebugViewer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="216.6667" x="1398.4375" y="423.4945"/><ellipse cx="1456.7708" cy="439.1886" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M1458.6812,443.6137 Q1458.254,443.8334 1457.784,443.9433 Q1457.314,444.0531 1456.7952,444.0531 Q1454.952,444.0531 1453.9815,442.8385 Q1453.0111,441.6239 1453.0111,439.329 Q1453.0111,437.028 1453.9815,435.8134 Q1454.952,434.5988 1456.7952,434.5988 Q1457.314,434.5988 1457.7901,434.7087 Q1458.2662,434.8185 1458.6812,435.0382 L1458.6812,437.0402 Q1458.2174,436.613 1457.781,436.4146 Q1457.3446,436.2162 1456.8807,436.2162 Q1455.8919,436.2162 1455.3884,437.0005 Q1454.8848,437.7848 1454.8848,439.329 Q1454.8848,440.8671 1455.3884,441.6514 Q1455.8919,442.4357 1456.8807,442.4357 Q1457.3446,442.4357 1457.781,442.2373 Q1458.2174,442.039 1458.6812,441.6117 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="85.4167" x="1479.6875" y="443.9128">DebugViewer</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="1399.4792" x2="1614.0625" y1="454.8828" y2="454.8828"/><ellipse cx="1409.8958" cy="490.2527" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="126.0417" x="1421.3542" y="497.1639">DebugViewer(boolean)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1399.4792" x2="1463.0208" y1="473.0886" y2="473.0886"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="1466.1458" y="476.8982">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1550.5208" x2="1614.0625" y1="473.0886" y2="473.0886"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1399.4792" x2="1614.0625" y1="506.8726" y2="506.8726"/><ellipse cx="1409.8958" cy="518.3309" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="120.8333" x="1421.3542" y="525.2421">void frameComplete()</text><ellipse cx="1409.8958" cy="538.0758" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="182.2917" x="1421.3542" y="544.987">void frameSpeed(Duration delay)</text><ellipse cx="1409.8958" cy="557.8206" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="118.75" x="1421.3542" y="564.7319">InteractiveView view()</text><ellipse cx="1409.8958" cy="601.4771" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="1421.3542" y="608.3883">void clear()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1399.4792" x2="1472.3958" y1="584.3129" y2="584.3129"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="1475.5208" y="588.1226">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1541.1458" x2="1614.0625" y1="584.3129" y2="584.3129"/><ellipse cx="1409.8958" cy="645.1335" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="128.125" x="1421.3542" y="652.0447">void end(Location end)</text><ellipse cx="1409.8958" cy="664.8783" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="173.9583" x="1421.3542" y="671.7896">void endColor(Color endColor)</text><ellipse cx="1409.8958" cy="684.6232" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="138.5417" x="1421.3542" y="691.5344">void start(Location start)</text><ellipse cx="1409.8958" cy="704.3681" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="184.375" x="1421.3542" y="711.2793">void startColor(Color startColor)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1399.4792" x2="1477.0833" y1="627.9694" y2="627.9694"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="53.125" x="1480.2083" y="631.779">(lifecycle)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1536.4583" x2="1614.0625" y1="627.9694" y2="627.9694"/><!--MD5=[fd94480a5b392c58b1247b8340fb34e2]
+class LabelRenderer--><rect codeLine="36" fill="#282828" height="111.4563" id="LabelRenderer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="371.875" x="123.9583" y="99.5361"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="371.875" x="123.9583" y="99.5361"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="371.875" x="123.9583" y="122.5911"/><rect codeLine="36" fill="none" height="111.4563" id="LabelRenderer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="371.875" x="123.9583" y="99.5361"/><ellipse cx="256.7708" cy="115.2303" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M258.6812,119.6554 Q258.254,119.8751 257.784,119.9849 Q257.314,120.0948 256.7952,120.0948 Q254.952,120.0948 253.9815,118.8802 Q253.0111,117.6656 253.0111,115.3707 Q253.0111,113.0697 253.9815,111.8551 Q254.952,110.6405 256.7952,110.6405 Q257.314,110.6405 257.7901,110.7503 Q258.2662,110.8602 258.6812,111.0799 L258.6812,113.0819 Q258.2174,112.6546 257.781,112.4563 Q257.3446,112.2579 256.8807,112.2579 Q255.8919,112.2579 255.3884,113.0422 Q254.8848,113.8265 254.8848,115.3707 Q254.8848,116.9088 255.3884,117.6931 Q255.8919,118.4774 256.8807,118.4774 Q257.3446,118.4774 257.781,118.279 Q258.2174,118.0806 258.6812,117.6534 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="91.6667" x="279.6875" y="119.9544">LabelRenderer</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="125" x2="494.7917" y1="130.9245" y2="130.9245"/><ellipse cx="135.4167" cy="166.2944" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="121.875" x="146.875" y="173.2056">LabelRenderer(String)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="125" x2="266.1458" y1="149.1302" y2="149.1302"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="269.2708" y="152.9399">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="353.6458" x2="494.7917" y1="149.1302" y2="149.1302"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="125" x2="494.7917" y1="182.9142" y2="182.9142"/><ellipse cx="135.4167" cy="194.3726" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="339.5833" x="146.875" y="201.2838">void draw(Graphics2D, Point2D at, Position, Rectangle within)</text><!--MD5=[9bb29d8339281544d69f6b04a0f32235]
+class LabelRenderer.Position--><rect codeLine="44" fill="#282828" height="87.5448" id="LabelRenderer.Position" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="185.4167" x="310.9375" y="273.4945"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="185.4167" x="310.9375" y="273.4945"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="185.4167" x="310.9375" y="296.5495"/><rect codeLine="44" fill="none" height="87.5448" id="LabelRenderer.Position" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="185.4167" x="310.9375" y="273.4945"/><ellipse cx="325.5208" cy="289.1886" fill="#CF6300" rx="10.4167" ry="10.4167" style="stroke:#EF8300;stroke-width:1.0416666666666667;"/><path d="M328.5767,293.8761 L322.9004,293.8761 L322.9004,284.7636 L328.5767,284.7636 L328.5767,286.3505 L324.7009,286.3505 L324.7009,288.3158 L328.2104,288.3158 L328.2104,289.9028 L324.7009,289.9028 L324.7009,292.2892 L328.5767,292.2892 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="147.9167" x="342.1875" y="293.9128">LabelRenderer.Position</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="311.9792" x2="495.3125" y1="304.8828" y2="304.8828"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="89.5833" x="320.3125" y="323.2524">BOTTOM_RIGHT</text><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="55.2083" x="320.3125" y="342.9972">TOP_LEFT</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="311.9792" x2="495.3125" y1="352.7059" y2="352.7059"/><!--MD5=[427b0ca376e8de5ff27717e97e0120c6]
+class SwingDrawingSurface--><rect codeLine="58" fill="#282828" height="83.3781" id="SwingDrawingSurface" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="396.875" x="1603.125" y="275.5778"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="396.875" x="1603.125" y="275.5778"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="396.875" x="1603.125" y="298.6328"/><rect codeLine="58" fill="none" height="83.3781" id="SwingDrawingSurface" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="396.875" x="1603.125" y="275.5778"/><ellipse cx="1724.4792" cy="291.272" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M1726.3896,295.697 Q1725.9623,295.9167 1725.4924,296.0266 Q1725.0224,296.1365 1724.5036,296.1365 Q1722.6603,296.1365 1721.6899,294.9219 Q1720.7194,293.7073 1720.7194,291.4124 Q1720.7194,289.1113 1721.6899,287.8967 Q1722.6603,286.6821 1724.5036,286.6821 Q1725.0224,286.6821 1725.4985,286.792 Q1725.9745,286.9019 1726.3896,287.1216 L1726.3896,289.1235 Q1725.9257,288.6963 1725.4893,288.4979 Q1725.0529,288.2996 1724.589,288.2996 Q1723.6003,288.2996 1723.0967,289.0839 Q1722.5932,289.8682 1722.5932,291.4124 Q1722.5932,292.9504 1723.0967,293.7347 Q1723.6003,294.519 1724.589,294.519 Q1725.0529,294.519 1725.4893,294.3207 Q1725.9257,294.1223 1726.3896,293.6951 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="139.5833" x="1747.3958" y="295.9961">SwingDrawingSurface</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="1604.1667" x2="1998.9583" y1="306.9661" y2="306.9661"/><ellipse cx="1614.5833" cy="342.336" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="364.5833" x="1626.0417" y="349.2472">SwingDrawingSurface(Graphics2D, CoordinateMapper, Rectangle)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1604.1667" x2="1757.8125" y1="325.1719" y2="325.1719"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="1760.9375" y="328.9815">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1845.3125" x2="1998.9583" y1="325.1719" y2="325.1719"/><!--MD5=[af350730d7ca78e611dba100a1200108]
+class KivaKitPanel--><rect fill="#282828" height="48.055" id="KivaKitPanel" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="118.75" x="1296.3542" y="131.307"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="118.75" x="1296.3542" y="131.307"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="118.75" x="1296.3542" y="154.362"/><rect fill="none" height="48.055" id="KivaKitPanel" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="118.75" x="1296.3542" y="131.307"/><ellipse cx="1310.9375" cy="147.0011" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M1312.8479,151.4262 Q1312.4207,151.6459 1311.9507,151.7558 Q1311.4807,151.8656 1310.9619,151.8656 Q1309.1187,151.8656 1308.1482,150.651 Q1307.1777,149.4364 1307.1777,147.1415 Q1307.1777,144.8405 1308.1482,143.6259 Q1309.1187,142.4113 1310.9619,142.4113 Q1311.4807,142.4113 1311.9568,142.5212 Q1312.4329,142.631 1312.8479,142.8507 L1312.8479,144.8527 Q1312.384,144.4255 1311.9476,144.2271 Q1311.5112,144.0287 1311.0474,144.0287 Q1310.0586,144.0287 1309.5551,144.813 Q1309.0515,145.5973 1309.0515,147.1415 Q1309.0515,148.6796 1309.5551,149.4639 Q1310.0586,150.2482 1311.0474,150.2482 Q1311.5112,150.2482 1311.9476,150.0498 Q1312.384,149.8515 1312.8479,149.4242 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="81.25" x="1327.6042" y="151.7253">KivaKitPanel</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1297.3958" x2="1414.0625" y1="162.6953" y2="162.6953"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1297.3958" x2="1414.0625" y1="171.0286" y2="171.0286"/><!--MD5=[51e11a302b3de3ba57772931bc46edc4]
+class SwingViewPanel--><rect codeLine="69" fill="#282828" height="83.3781" id="SwingViewPanel" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="140.625" x="793.75" y="275.5778"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="140.625" x="793.75" y="275.5778"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="140.625" x="793.75" y="298.6328"/><rect codeLine="69" fill="none" height="83.3781" id="SwingViewPanel" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="140.625" x="793.75" y="275.5778"/><ellipse cx="808.3333" cy="291.272" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M810.2437,295.697 Q809.8165,295.9167 809.3465,296.0266 Q808.8765,296.1365 808.3577,296.1365 Q806.5145,296.1365 805.544,294.9219 Q804.5736,293.7073 804.5736,291.4124 Q804.5736,289.1113 805.544,287.8967 Q806.5145,286.6821 808.3577,286.6821 Q808.8765,286.6821 809.3526,286.792 Q809.8287,286.9019 810.2437,287.1216 L810.2437,289.1235 Q809.7799,288.6963 809.3435,288.4979 Q808.9071,288.2996 808.4432,288.2996 Q807.4544,288.2996 806.9509,289.0839 Q806.4473,289.8682 806.4473,291.4124 Q806.4473,292.9504 806.9509,293.7347 Q807.4544,294.519 808.4432,294.519 Q808.9071,294.519 809.3435,294.3207 Q809.7799,294.1223 810.2437,293.6951 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="103.125" x="825" y="295.9961">SwingViewPanel</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="794.7917" x2="933.3333" y1="306.9661" y2="306.9661"/><ellipse cx="805.2083" cy="342.336" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="94.7917" x="816.6667" y="349.2472">SwingViewPanel()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="794.7917" x2="820.3125" y1="325.1719" y2="325.1719"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="823.4375" y="328.9815">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="907.8125" x2="933.3333" y1="325.1719" y2="325.1719"/><!--MD5=[e79998f4114dacf9fd3ad99324ff23fa]
+reverse link SwingViewer to DebugViewer--><path codeLine="18" d="M1506.7708,362.5882 C1506.7708,380.0674 1506.7708,401.234 1506.7708,423.2965 " fill="none" id="SwingViewer-backto-DebugViewer" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="1499.4792,362.484,1506.7708,341.6507,1514.0625,362.484,1499.4792,362.484" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[0dd025b8a84b8e23f799e5052378f196]
+reverse link InteractiveDrawingSurface to SwingDrawingSurface--><path codeLine="57" d="M1801.5625,200.4424 C1801.5625,223.8278 1801.5625,252.3695 1801.5625,275.2653 " fill="none" id="InteractiveDrawingSurface-backto-SwingDrawingSurface" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="1794.2708,200.3903,1801.5625,179.557,1808.8542,200.3903,1794.2708,200.3903" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[984e3db0e135e0329abfb5ec4542879b]
+reverse link KivaKitPanel to SwingViewPanel--><path codeLine="64" d="M1331.7292,197.2236 C1318.2708,216.484 1299.7396,237.9632 1277.6042,250.5778 C1220.375,283.2028 1036.8854,302.5257 934.6042,311.0257 " fill="none" id="KivaKitPanel-backto-SwingViewPanel" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="1325.7917,192.9736,1343.2292,179.4424,1338.0313,200.9007,1325.7917,192.9736" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[7c6aef2845b5adee079e453023d6518a]
+reverse link InteractiveView to SwingViewPanel--><path codeLine="65" d="M793.7292,197.557 C807.8854,221.4528 825.6563,251.4215 839.7917,275.2653 " fill="none" id="InteractiveView-backto-SwingViewPanel" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="787.4063,201.1924,783.0521,179.557,799.9479,193.7549,787.4063,201.1924" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[26e55b75355554b3a0fffccc60988d6e]
+reverse link MouseMotionListener to SwingViewPanel--><path codeLine="66" d="M1134.2917,194.1403 C1114.4479,213.2236 1088.5104,235.4528 1061.9792,250.5778 C1022.3542,273.1715 973.7917,289.4215 934.6875,300.0986 " fill="none" id="MouseMotionListener-backto-SwingViewPanel" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="1129.1979,188.932,1149.1042,179.4007,1139.4792,199.2757,1129.1979,188.932" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[615ca6452494dbbfc6dd4d31149ede5d]
+reverse link MouseListener to SwingViewPanel--><path codeLine="67" d="M626.75,196.2028 C641.6563,214.8278 661.2917,236.0465 682.8125,250.5778 C716.2292,273.1507 758.3438,289.0153 793.5729,299.484 " fill="none" id="MouseListener-backto-SwingViewPanel" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="620.8125,200.4424,614,179.4424,632.4167,191.609,620.8125,200.4424" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[db42b5f45f5c0683a78e489944d79324]
+reverse link MouseWheelListener to SwingViewPanel--><path codeLine="68" d="M934.3958,197.557 C920.2396,221.4528 902.4688,251.4215 888.3333,275.2653 " fill="none" id="MouseWheelListener-backto-SwingViewPanel" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="928.1771,193.7549,945.0729,179.557,940.7188,201.1924,928.1771,193.7549" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[afd933861aeffe50ce12463f5f2729e3]
+reverse link BaseViewer to SwingViewer--><path codeLine="75" d="M1506.7708,200.4945 C1506.7708,230.5257 1506.7708,269.0465 1506.7708,293.182 " fill="none" id="BaseViewer-backto-SwingViewer" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="1499.4792,200.3903,1506.7708,179.557,1514.0625,200.3903,1499.4792,200.3903" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[de5088d09fc620e22a41f0de0c1192c5]
+link Colors to LabelRenderer--><!--MD5=[26e685d7e8802de9d9ba3e6158ee2bad]
+link Colors to LabelRenderer.Position--><!--MD5=[51786ce6a33d2aad88a9610c874a78fc]
+link LabelRenderer.Position to SwingViewPanel--><!--MD5=[5da1b485379cc4974a788f06b9d1fd0b]
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.ui.swing.debug.viewer.swing"
+    
+    abstract BaseViewer
+    
+    interface MouseListener
+    interface InteractiveView
+    interface InteractiveDrawingSurface
+    interface MouseWheelListener
+    interface MouseMotionListener
+    
+    class Colors
+    {
+    }
+    
+    SwingViewer <|- - DebugViewer
+    class DebugViewer
+    {
+        - -(constructors)- -
+        +DebugViewer(boolean)
+        - -
+        +void frameComplete()
+        +void frameSpeed(Duration delay)
+        +InteractiveView view()
+        - -(collection)- -
+        +void clear()
+        - -(lifecycle)- -
+        +void end(Location end)
+        +void endColor(Color endColor)
+        +void start(Location start)
+        +void startColor(Color startColor)
+    }
+    
+    class LabelRenderer
+    {
+        - -(constructors)- -
+        +LabelRenderer(String)
+        - -
+        +void draw(Graphics2D, Point2D at, Position, Rectangle within)
+    }
+    
+    enum LabelRenderer.Position
+    {
+        BOTTOM_RIGHT
+        TOP_LEFT
+    }
+    
+    enum SwingViewPanel.State
+    {
+        PAUSED
+        RUNNING
+        STEPPING
+    }
+    
+    InteractiveDrawingSurface <|- - SwingDrawingSurface
+    class SwingDrawingSurface
+    {
+        - -(constructors)- -
+        +SwingDrawingSurface(Graphics2D, CoordinateMapper, Rectangle)
+    }
+    
+    KivaKitPanel <|- - SwingViewPanel
+    InteractiveView <|- - SwingViewPanel
+    MouseMotionListener <|- - SwingViewPanel
+    MouseListener <|- - SwingViewPanel
+    MouseWheelListener <|- - SwingViewPanel
+    class SwingViewPanel
+    {
+        - -(constructors)- -
+        +SwingViewPanel()
+    }
+    
+    BaseViewer <|- - SwingViewer
+    class SwingViewer
+    {
+    }
+    
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+
+
+skinparam backgroundColor #333333
+
+
+
+
+
+
+skinparam  {
+    defaultFontName   "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+    defaultFontSize   12
+    defaultTextAlignment left
+    shadowing false
+    RoundCorner 10
+    TitleFontSize 18
+}
+
+skinparam defaultFontName       "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           16
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               3
+skinparam ArrowColor            #545454
+skinparam stereotype {
+    CBackgroundColor #0066cf
+    CBorderColor #0086ef
+    ABackgroundColor #C8Ac00
+    ABorderColor #D8Bc00
+    IBackgroundColor #008400
+    IBorderColor #239c23
+    EBackgroundColor #cf6300
+    EBorderColor #ef8300
+    NBackgroundColor #3380b9
+    NBorderColor #004d86
+}
+skinparam title {
+	FontColor	                 #c0c0c0
+ 	BorderColor                  #545454
+	FontSize	    	         20
+	BorderRoundCorner            16
+	BorderThickness 	         1
+	BackgroundColor              #48494b
+}
+
+
+skinparam legend {
+	BackgroundColor #303030
+	BorderColor #404040
+	FontColor #a0a0a0
+}
+
+	skinparam swimlane {
+	BorderColor #5e5e5e
+	BorderThickness 2
+	TitleBackgroundColor  #6d6d6d-#484848
+	TitleFontColor #303030
+}
+
+skinparam activity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BarColor #00FF00
+	StartColor #0060a8
+	EndColor #0060a8
+	DiamondBackgroundColor #6d6d6d-#3a3a3a
+  	DiamondBorderColor #3a3a3a
+  	DiamondFontColor #fefefe
+}
+
+
+skinparam participant {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam arrow {
+	Thickness 1.5
+	Color #545454
+	FontColor #a0a0a0
+    FontStyle bold
+    MessageAlignment center
+}
+
+
+
+skinparam sequence {
+	BorderColor #303030
+	TitleFontColor #303030
+	BackgroundColor #333333
+	StartColor #303030
+	EndColor #303030
+	BoxBackgroundColor #333333
+	BoxBorderColor #484848
+	BoxFontColor #484848
+	LifeLineBorderColor #484848
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor #3a3a3a
+	GroupBorderColor #484848
+	GroupFontColor #484848
+	GroupHeaderFontColor #0060a8
+	GroupBackgroundColor #484848
+	GroupHeaderBackgroundColor #333333
+	DividerBackgroundColor #484848
+    DividerBorderColor #484848
+    DividerBorderThickness 2
+    DividerFontColor #D8Bc00
+	ReferenceBackgroundColor #333333
+	ReferenceBorderColor #484848
+	ReferenceFontColor #fefefe
+	ReferenceHeaderBackgroundColor #484848
+}
+
+
+skinparam partition {
+	BorderColor #303030
+	FontColor #333333
+	BackgroundColor #333333
+}
+
+
+skinparam collections {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam control {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam entity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam boundary {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam agent {
+	BackgroundColor #ff8000
+	BorderColor #ff9933
+	FontColor #484848
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor #1b1b1a
+	BorderColor #5e5e5e
+	FontSize 11
+	FontColor #a0a0a0
+}
+
+
+skinparam artifact {
+	BorderThickness 10
+	BorderColor #5e5e5e
+	BackgroundColor #1b1b1a
+	FontColor #D8Bc00
+}
+
+
+skinparam component {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam interface {
+	BackgroundColor  #008400
+	BorderColor  #007F00
+	FontColor #484848
+}
+
+
+skinparam storage {
+	BackgroundColor #ff8000
+  	BorderColor #cc6600
+	FontColor #222222
+}
+
+
+skinparam node {
+	BackgroundColor #333333
+	BorderColor #333333
+	FontColor #C8Ac00
+}
+
+
+skinparam cloud {
+	BackgroundColor #484848-black
+	BorderColor #484848
+	FontColor #D8Bc00
+}
+
+
+skinparam database {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor  #333333
+}
+
+
+skinparam class {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	HeaderBackgroundColor #1b1b1a
+    BackgroundColor #282828
+    BorderColor #5e5e5e
+ 	StereotypeFontColor #a0a0a0
+    StereotypeFontStyle bold
+	BorderThickness 1
+	AttributeFontColor #D8Bc00
+	AttributeFontSize 11
+    FontColor #D8Bc00
+    FontStyle bold
+}
+
+
+skinparam object {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StereotypeFontColor #484848
+	BorderThickness 1
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam rectangle {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam package {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor #6d6d6d
+  	BorderColor #ff8000
+	FontColor #ff8000
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor #6d6d6d
+  	BorderColor #0060a8
+	FontColor #0060a8
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StartColor #0060a8
+	EndColor #0060a8
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam card {
+	BackgroundColor #0060a8
+	BorderColor #004d86
+	FontColor $INFO_TEXT
+}
+
+
+skinparam file {
+	BackgroundColor #6d6d6d-#484848
+	BorderColor #0060a8
+	FontColor #fefefe
+}
+
+
+skinparam stack {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+    
+    title "com.telenav.aonia.map.ui.swing.debug.viewer.swing"
+    
+    abstract BaseViewer
+    
+    interface MouseListener
+    interface InteractiveView
+    interface InteractiveDrawingSurface
+    interface MouseWheelListener
+    interface MouseMotionListener
+    
+    class Colors
+    {
+    }
+    
+    SwingViewer <|- - DebugViewer
+    class DebugViewer
+    {
+        - -(constructors)- -
+        +DebugViewer(boolean)
+        - -
+        +void frameComplete()
+        +void frameSpeed(Duration delay)
+        +InteractiveView view()
+        - -(collection)- -
+        +void clear()
+        - -(lifecycle)- -
+        +void end(Location end)
+        +void endColor(Color endColor)
+        +void start(Location start)
+        +void startColor(Color startColor)
+    }
+    
+    class LabelRenderer
+    {
+        - -(constructors)- -
+        +LabelRenderer(String)
+        - -
+        +void draw(Graphics2D, Point2D at, Position, Rectangle within)
+    }
+    
+    enum LabelRenderer.Position
+    {
+        BOTTOM_RIGHT
+        TOP_LEFT
+    }
+    
+    enum SwingViewPanel.State
+    {
+        PAUSED
+        RUNNING
+        STEPPING
+    }
+    
+    InteractiveDrawingSurface <|- - SwingDrawingSurface
+    class SwingDrawingSurface
+    {
+        - -(constructors)- -
+        +SwingDrawingSurface(Graphics2D, CoordinateMapper, Rectangle)
+    }
+    
+    KivaKitPanel <|- - SwingViewPanel
+    InteractiveView <|- - SwingViewPanel
+    MouseMotionListener <|- - SwingViewPanel
+    MouseListener <|- - SwingViewPanel
+    MouseWheelListener <|- - SwingViewPanel
+    class SwingViewPanel
+    {
+        - -(constructors)- -
+        +SwingViewPanel()
+    }
+    
+    BaseViewer <|- - SwingViewer
+    class SwingViewer
+    {
+    }
+    
+@enduml
+
+PlantUML version 1.2021.01(Tue Feb 02 00:55:08 MST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

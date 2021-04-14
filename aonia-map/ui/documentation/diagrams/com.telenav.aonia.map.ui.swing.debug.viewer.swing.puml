@@ -1,0 +1,82 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.ui.swing.debug.viewer.swing"
+    
+    abstract BaseViewer
+    
+    interface MouseListener
+    interface InteractiveView
+    interface InteractiveDrawingSurface
+    interface MouseWheelListener
+    interface MouseMotionListener
+    
+    class Colors
+    {
+    }
+    
+    SwingViewer <|-- DebugViewer
+    class DebugViewer
+    {
+        --(constructors)--
+        +DebugViewer(boolean)
+        --
+        +void frameComplete()
+        +void frameSpeed(Duration delay)
+        +InteractiveView view()
+        --(collection)--
+        +void clear()
+        --(lifecycle)--
+        +void end(Location end)
+        +void endColor(Color endColor)
+        +void start(Location start)
+        +void startColor(Color startColor)
+    }
+    
+    class LabelRenderer
+    {
+        --(constructors)--
+        +LabelRenderer(String)
+        --
+        +void draw(Graphics2D, Point2D at, Position, Rectangle within)
+    }
+    
+    enum LabelRenderer.Position
+    {
+        BOTTOM_RIGHT
+        TOP_LEFT
+    }
+    
+    enum SwingViewPanel.State
+    {
+        PAUSED
+        RUNNING
+        STEPPING
+    }
+    
+    InteractiveDrawingSurface <|-- SwingDrawingSurface
+    class SwingDrawingSurface
+    {
+        --(constructors)--
+        +SwingDrawingSurface(Graphics2D, CoordinateMapper, Rectangle)
+    }
+    
+    KivaKitPanel <|-- SwingViewPanel
+    InteractiveView <|-- SwingViewPanel
+    MouseMotionListener <|-- SwingViewPanel
+    MouseListener <|-- SwingViewPanel
+    MouseWheelListener <|-- SwingViewPanel
+    class SwingViewPanel
+    {
+        --(constructors)--
+        +SwingViewPanel()
+    }
+    
+    BaseViewer <|-- SwingViewer
+    class SwingViewer
+    {
+    }
+    
+@enduml
+

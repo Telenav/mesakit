@@ -1,0 +1,109 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.utilities.geojson"
+    
+    interface Serializable
+    interface Iterable
+    interface Bounded
+    interface Intersectable
+    interface JsonSerializer
+    interface JsonDeserializer
+    
+    Iterable <|-- GeoJsonDocument
+    class GeoJsonDocument
+    {
+        --
+        +Rectangle bounds()
+        +GeoJsonDocument forJson(String json)
+        +GeoJsonFeature get(int index)
+        +void main(String[] args)
+        --(collection)--
+        +void add(GeoJsonFeature)
+        +Count count()
+        +List<GeoJsonFeature> features()
+        +GeoJsonFeature[] featuresAsArray()
+        +Map<String,Object> properties()
+        +Map<String,String> propertiesAsStringToStringMap()
+        +int size()
+        +void sortFeatures(Comparator<? super GeoJsonFeature> featureComparator)
+        --(write)--
+        +void save(WritableResource)
+    }
+    
+    Iterable <|-- GeoJsonFeature
+    Bounded <|-- GeoJsonFeature
+    Intersectable <|-- GeoJsonFeature
+    Serializable <|-- GeoJsonFeature
+    class GeoJsonFeature
+    {
+        --(constructors)--
+        +GeoJsonFeature()
+        +GeoJsonFeature(String)
+        --
+        +void title(String title)
+        +String title()
+        --(collection)--
+        +void add(GeoJsonGeometry)
+        +List<GeoJsonGeometry> geometries()
+        +Map<String,Object> properties()
+        +void put(String key, Object value)
+    }
+    
+    abstract class GeoJsonGeometry
+    {
+        --
+        +Rectangle bounds()
+    }
+    
+    GeoJsonGeometry <|-- GeoJsonGeometryCollection
+    Iterable <|-- GeoJsonGeometryCollection
+    class GeoJsonGeometryCollection
+    {
+        --(collection)--
+        +void add(GeoJsonGeometry)
+        +List<GeoJsonGeometry> geometries()
+    }
+    
+    JsonSerializer <|-- GeoJsonGeometryTypeAdapter
+    JsonDeserializer <|-- GeoJsonGeometryTypeAdapter
+    class GeoJsonGeometryTypeAdapter
+    {
+    }
+    
+    GeoJsonGeometry <|-- GeoJsonPoint
+    class GeoJsonPoint
+    {
+        --(constructors)--
+        +GeoJsonPoint(Location)
+        --
+        +Location location()
+        --(collection)--
+        #void add(Location)
+    }
+    
+    GeoJsonGeometry <|-- GeoJsonPolygon
+    class GeoJsonPolygon
+    {
+        --(constructors)--
+        +GeoJsonPolygon(Polygon)
+        --
+        +Polyline polyline()
+        --(collection)--
+        #void add(Location)
+    }
+    
+    GeoJsonGeometry <|-- GeoJsonPolyline
+    class GeoJsonPolyline
+    {
+        --(constructors)--
+        +GeoJsonPolyline(Polyline)
+        --
+        +Polyline polyline()
+        --(collection)--
+        #void add(Location)
+    }
+    
+@enduml
+

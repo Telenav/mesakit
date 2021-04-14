@@ -1,0 +1,120 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.ui.swing.map.tiles"
+    
+    abstract BaseRepeater
+    
+    interface AsString
+    interface Iterable
+    interface CoordinateMapper
+    
+    class SlippyTile
+    {
+        --(constructors)--
+        +SlippyTile(ZoomLevel, int, int)
+        --
+        +Rectangle bounds()
+        +Dimension dimension()
+        +void drawOutline(Graphics2D, Rectangle view, CoordinateMapper)
+        +int getX()
+        +int getY()
+        +ZoomLevel getZoomLevel()
+        +SlippyTile parent()
+        +SlippyTile withX(int x)
+        +SlippyTile withY(int y)
+        --(collection)--
+        +Size size()
+        +List<SlippyTile> tilesInside()
+        --(filesystem)--
+        +FileName asFileName()
+        --(functional)--
+        +SlippyTile withZoomLevel(ZoomLevel)
+        --(math)--
+        +SlippyTile largerThan(Size)
+    }
+    
+    class SlippyTileCacheFolder
+    {
+        --(constructors)--
+        +SlippyTileCacheFolder(Folder)
+        --
+        +Resource resource(SlippyTile)
+        --(collection)--
+        +void add(SlippyTile, BufferedImage)
+    }
+    
+    CoordinateMapper <|-- SlippyTileCoordinateSystem
+    class SlippyTileCoordinateSystem
+    {
+        --(constructors)--
+        +SlippyTileCoordinateSystem(ZoomLevel)
+        +SlippyTileCoordinateSystem(ZoomLevel, Dimension)
+        --
+        +Rectangle bounds(SlippyTile)
+        +SlippyTile tileForLocation(Location)
+        +SlippyTile tileForPoint(Point2D)
+    }
+    
+    BaseRepeater <|-- SlippyTileGrid
+    Iterable <|-- SlippyTileGrid
+    class SlippyTileGrid
+    {
+        --(constructors)--
+        +SlippyTileGrid(Rectangle)
+        +SlippyTileGrid(Rectangle, ZoomLevel)
+        --
+        +void drawOutlines(Graphics2D, CoordinateMapper)
+        +ZoomLevel zoomLevel()
+        --(collection)--
+        +boolean contains(SlippyTile)
+        +int size()
+    }
+    
+    BaseRepeater <|-- SlippyTileImageCache
+    abstract class SlippyTileImageCache
+    {
+        --(constructors)--
+        #SlippyTileImageCache(Maximum)
+        --
+        +Dimension dimension()
+        +void drawTiles(Graphics2D, CoordinateMapper, Iterable<SlippyTile> tiles)
+        #void onCacheUpdated()
+        --(network)--
+        #HttpNetworkLocation networkLocation(SlippyTile)
+    }
+    
+    AsString <|-- ZoomLevel
+    class ZoomLevel
+    {
+        --
+        +ZoomLevel bestFit(Rectangle2D visible, Dimension tileSize, Rectangle bounds)
+        +int heightInPixels(Dimension tileSize)
+        +int heightInTiles()
+        +Point inRange(Point, Dimension tileSize)
+        +int level()
+        +ZoomLevel osm(int level)
+        +ZoomLevel telenav(int level)
+        +SlippyTile tileAt(Location)
+        +long totalTiles()
+        +int widthInPixels(Dimension tileSize)
+        +int widthInTiles()
+        +ZoomLevel zoomIn()
+        +ZoomLevel zoomIn(int levels)
+        +ZoomLevel zoomOut()
+        +ZoomLevel zoomOut(int levels)
+        --(checks)--
+        +boolean isCloserThan(ZoomLevel that)
+        +boolean isClosestIn()
+        +boolean isFurtherThan(ZoomLevel that)
+        +boolean isFurthestOut()
+        --(collection)--
+        +List<ZoomLevel> all()
+        +Dimension sizeInPixels(Dimension tileSize)
+        --(conversion)--
+        +int asTelenavZoomLevel()
+    }
+    
+@enduml
+

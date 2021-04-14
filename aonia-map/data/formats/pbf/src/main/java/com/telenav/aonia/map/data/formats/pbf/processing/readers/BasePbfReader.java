@@ -1,0 +1,480 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// © 2011-2021 Telenav, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+package com.telenav.aonia.map.data.formats.pbf.processing.readers;
+
+import com.telenav.aonia.map.data.formats.pbf.model.entities.PbfNode;
+import com.telenav.aonia.map.data.formats.pbf.model.entities.PbfRelation;
+import com.telenav.aonia.map.data.formats.pbf.model.entities.PbfWay;
+import com.telenav.aonia.map.data.formats.pbf.processing.PbfDataProcessor;
+import com.telenav.aonia.map.data.formats.pbf.processing.PbfDataSource;
+import com.telenav.aonia.map.data.formats.pbf.processing.PbfDataStatistics;
+import com.telenav.aonia.map.data.formats.pbf.processing.PbfStopProcessingException;
+import com.telenav.aonia.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessing;
+import com.telenav.kivakit.core.kernel.language.progress.ProgressReporter;
+import com.telenav.kivakit.core.kernel.language.progress.reporters.Progress;
+import com.telenav.kivakit.core.kernel.language.values.count.Count;
+import com.telenav.kivakit.core.kernel.language.values.identifier.Identifier;
+import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.resource.Resource;
+import com.telenav.kivakit.core.resource.path.Extension;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.associations.UmlAggregation;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
+import org.openstreetmap.osmosis.core.domain.v0_6.Bound;
+import org.openstreetmap.osmosis.core.domain.v0_6.Entity;
+import org.openstreetmap.osmosis.core.domain.v0_6.Node;
+import org.openstreetmap.osmosis.core.domain.v0_6.Relation;
+import org.openstreetmap.osmosis.core.domain.v0_6.Way;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
+
+/**
+ * Base class for PBF readers, handling progress reporting and gathering statistics.
+ *
+ * @see SerialPbfReader
+ * @see ParallelPbfReader
+ */
+@UmlClassDiagram(diagram = DiagramPbfProcessing.class)
+public abstract class BasePbfReader extends BaseRepeater implements PbfDataSource
+{
+    // Progress in processing each entity type
+    private ProgressReporter nodeProgress = Progress.create(this, "nodes");
+
+    private ProgressReporter wayProgress = Progress.create(this, "ways");
+
+    private ProgressReporter relationProgress = Progress.create(this, "relations");
+
+    // The resource being read
+    @UmlAggregation
+    private final Resource resource;
+
+    // True if we're processing a given entity type
+    private boolean processingNodes;
+
+    private boolean processingWays;
+
+    private boolean processingRelations;
+
+    // True if we're done processing a given entity type
+    private boolean doneProcessingNodes;
+
+    private boolean doneProcessingWays;
+
+    private boolean doneProcessingRelations;
+
+    // Maximum identifiers
+    private long maximumNodeIdentifier;
+
+    private long maximumWayIdentifier;
+
+    private long maximumRelationIdentifier;
+
+    // Statistics on nodes, ways and relations read
+    @UmlAggregation
+    private final PbfDataStatistics statistics;
+
+    // Processor to call
+    @UmlAggregation
+    private PbfDataProcessor processor;
+
+    private boolean started;
+
+    private Count nodes;
+
+    private Count ways;
+
+    private Count relations;
+
+    protected BasePbfReader(final Resource resource)
+    {
+        if (!resource.hasExtension(Extension.PBF) && !resource.hasExtension(Extension.OSM_PBF))
+        {
+            fail("Resource '$' does not end in .osm.pbf or .pbf", resource);
+        }
+        this.resource = resource;
+        statistics = new PbfDataStatistics(resource);
+    }
+
+    /**
+     * @return Statistics on PBF data once reading has completed
+     */
+    public PbfDataStatistics dataStatistics()
+    {
+        return statistics;
+    }
+
+    /**
+     * Called when the subclass is finished reading and processing data
+     */
+    public void end()
+    {
+        // It's possible we didn't get any of some entity types,
+        // so we make sure the start/end methods got called here.
+        trace("Done reading data");
+        startProcessingNodes();
+        doneProcessingNodes();
+        startProcessingWays();
+        doneProcessingWays();
+        startProcessingRelations();
+        doneProcessingRelations();
+    }
+
+    @Override
+    public void expectedNodes(final Count nodes)
+    {
+        this.nodes = nodes;
+        nodeProgress.steps(nodes.asMaximum());
+    }
+
+    @Override
+    public void expectedRelations(final Count relations)
+    {
+        this.relations = relations;
+        relationProgress.steps(relations.asMaximum());
+    }
+
+    @Override
+    public void expectedWays(final Count ways)
+    {
+        this.ways = ways;
+        wayProgress.steps(ways.asMaximum());
+    }
+
+    /**
+     * @return The maximum node identifier encountered during reading
+     */
+    public Identifier maximumNodeIdentifier()
+    {
+        return new Identifier(maximumNodeIdentifier);
+    }
+
+    /**
+     * @return The maximum relation identifier encountered during reading
+     */
+    public Identifier maximumRelationIdentifier()
+    {
+        return new Identifier(maximumRelationIdentifier);
+    }
+
+    /**
+     * @return The maximum way identifier encountered during reading
+     */
+    public Identifier maximumWayIdentifier()
+    {
+        return new Identifier(maximumWayIdentifier);
+    }
+
+    public BasePbfReader noProgress()
+    {
+        nodeProgress = ProgressReporter.NULL;
+        wayProgress = ProgressReporter.NULL;
+        relationProgress = ProgressReporter.NULL;
+        return this;
+    }
+
+    @Override
+    public Count nodes()
+    {
+        return nodes;
+    }
+
+    @Override
+    @MustBeInvokedByOverriders
+    public void onEnd()
+    {
+        nodeProgress.end();
+        wayProgress.end();
+        relationProgress.end();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @MustBeInvokedByOverriders
+    public void onStart()
+    {
+        ensure(!started);
+        started = true;
+    }
+
+    @Override
+    public void phase(final String phase)
+    {
+        nodeProgress.phase("  [" + phase + "] ");
+        wayProgress.phase("  [" + phase + "] ");
+        relationProgress.phase("  [" + phase + "] ");
+    }
+
+    /**
+     * Called when the subclass has an entity to process
+     */
+    public void process(final Entity entity)
+    {
+        final var type = entity.getType();
+
+        switch (type)
+        {
+            case Bound:
+                processor.onBounds((Bound) entity);
+                break;
+
+            case Node:
+
+                // Now we're reading nodes
+                startProcessingNodes();
+
+                // Process the node
+                final var node = new PbfNode((Node) entity);
+                processor.onEntity(node);
+                processNode(node);
+                break;
+
+            case Relation:
+
+                // If we didn't get any nodes or ways, these might not have been called yet
+                startProcessingNodes();
+                doneProcessingNodes();
+
+                startProcessingWays();
+                doneProcessingWays();
+
+                // Process the relation
+                final var relation = new PbfRelation((Relation) entity);
+                processor.onEntity(relation);
+                processRelation(relation);
+                break;
+
+            case Way:
+
+                // If we didn't get any nodes, these might not have been called yet
+                startProcessingNodes();
+                doneProcessingNodes();
+
+                // Now we're reading ways
+                startProcessingWays();
+
+                // Process the way
+                final var way = new PbfWay((Way) entity);
+                processor.onEntity(way);
+                processWay(way);
+                break;
+        }
+    }
+
+    public void processBounds(final Bound bound)
+    {
+        processor.onBounds(bound);
+    }
+
+    /**
+     * Called when the subclass encounters PBF metadata
+     */
+    public void processMetadata(final Map<String, Object> metadata)
+    {
+        final Map<String, String> properties = new HashMap<>();
+        for (final var key : metadata.keySet())
+        {
+            properties.put(key, metadata.get(key).toString());
+        }
+        processor.onMetadata(properties);
+    }
+
+    @Override
+    public Count relations()
+    {
+        return relations;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Resource resource()
+    {
+        return resource;
+    }
+
+    public void start(final PbfDataProcessor processor)
+    {
+        trace("Processing data");
+        this.processor = processor;
+    }
+
+    @Override
+    public String toString()
+    {
+        return resource().toString();
+    }
+
+    @Override
+    public Count ways()
+    {
+        return ways;
+    }
+
+    private void doneProcessingNodes()
+    {
+        if (!doneProcessingNodes)
+        {
+            doneProcessingNodes = true;
+            processor.onEndNodes();
+            nodeProgress.end();
+            wayProgress.start();
+        }
+    }
+
+    private void doneProcessingRelations()
+    {
+        if (!doneProcessingRelations)
+        {
+            doneProcessingRelations = true;
+            processor.onEndRelations();
+            relationProgress.end();
+        }
+    }
+
+    private void doneProcessingWays()
+    {
+        if (!doneProcessingWays)
+        {
+            doneProcessingWays = true;
+            processor.onEndWays();
+            wayProgress.end();
+            relationProgress.start();
+        }
+    }
+
+    private void processNode(final PbfNode node)
+    {
+        try
+        {
+            // and process it
+            processedNode(node, processor.onNode(node));
+        }
+        catch (final PbfStopProcessingException e)
+        {
+            throw e;
+        }
+        catch (final Exception e)
+        {
+            problem(e, "Exception thrown by onNode($)", node.identifierAsLong());
+        }
+    }
+
+    private void processRelation(final PbfRelation relation)
+    {
+        try
+        {
+            // and process it
+            processedRelation(relation, processor.onRelation(relation));
+        }
+        catch (final PbfStopProcessingException e)
+        {
+            throw e;
+        }
+        catch (final Exception e)
+        {
+            problem(e, "Exception thrown by onRelation($)", relation.identifierAsLong());
+        }
+    }
+
+    private void processWay(final PbfWay way)
+    {
+        try
+        {
+            // and process it
+            processedWay(way, processor.onWay(way));
+        }
+        catch (final PbfStopProcessingException e)
+        {
+            throw e;
+        }
+        catch (final Exception e)
+        {
+            problem(e, "Exception thrown by onWay($)", way.identifierAsLong());
+        }
+    }
+
+    private void processedNode(final PbfNode node, final PbfDataProcessor.Action result)
+    {
+        if (result == PbfDataProcessor.Action.ACCEPTED)
+        {
+            maximumNodeIdentifier = Math.max(maximumNodeIdentifier, node.identifierAsLong());
+            statistics.incrementNodes();
+        }
+        nodeProgress.next();
+    }
+
+    private void processedRelation(final PbfRelation relation, final PbfDataProcessor.Action result)
+    {
+        if (result == PbfDataProcessor.Action.ACCEPTED)
+        {
+            maximumRelationIdentifier = Math.max(maximumRelationIdentifier, relation.identifierAsLong());
+            statistics.incrementRelations();
+        }
+        relationProgress.next();
+    }
+
+    private void processedWay(final PbfWay way, final PbfDataProcessor.Action result)
+    {
+        if (result == PbfDataProcessor.Action.ACCEPTED)
+        {
+            maximumWayIdentifier = Math.max(maximumWayIdentifier, way.identifierAsLong());
+            statistics.incrementWays();
+        }
+        wayProgress.next();
+    }
+
+    private void startProcessingNodes()
+    {
+        if (!processingNodes)
+        {
+            processingNodes = true;
+            nodeProgress.start();
+            processor.onStartNodes();
+        }
+    }
+
+    private void startProcessingRelations()
+    {
+        if (!processingRelations)
+        {
+            processingRelations = true;
+            wayProgress.end();
+            relationProgress.start();
+            processor.onStartRelations();
+        }
+    }
+
+    private void startProcessingWays()
+    {
+        if (!processingWays)
+        {
+            processingWays = true;
+            nodeProgress.end();
+            wayProgress.start();
+            processor.onStartWays();
+        }
+    }
+}

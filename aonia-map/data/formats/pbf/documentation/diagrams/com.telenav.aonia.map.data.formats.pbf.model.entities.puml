@@ -1,0 +1,79 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.data.formats.pbf.model.entities"
+    
+    abstract class PbfEntity<T>
+    {
+        --(constructors)--
+        +PbfEntity(T)
+        --
+        +T get()
+        +String tagValue(String key, String defaultValue)
+        +String tagValue(String key)
+        +int tagValueAsNaturalNumber(String key)
+        +boolean tagValueIs(String key, String value)
+        +boolean tagValueIsNegativeOne(String key)
+        +boolean tagValueIsNo(String key)
+        +boolean tagValueIsYes(String key)
+        +Date timestamp()
+        +EntityType type()
+        +OsmUser user()
+        --(checks)--
+        +boolean hasTags()
+        --(collection)--
+        +boolean hasKey(String key)
+        +MapIdentifier identifier()
+        +int tagCount()
+        +PbfTagList tagList(PbfTagFilter)
+        +PbfTagList tagList()
+        +PbfTagMap tagMap()
+        +PbfTagMap tagMap(PbfTagFilter)
+        +Count tagValueAsCount(String key)
+        +StringList tagValueAsWords(String key)
+        +StringList tagValueSplit(String key)
+        +StringList tagValueSplit(String key, char delimiter)
+        --(identity)--
+        +long changeSetIdentifier()
+        +long identifierAsLong()
+        +int version()
+        --(primitive)--
+        +int tagValueAsInt(String key)
+    }
+    
+    PbfEntity <|-- PbfNode
+    class PbfNode
+    {
+        --(constructors)--
+        +PbfNode(Node)
+        --
+        +double latitude()
+        +double longitude()
+    }
+    
+    PbfEntity <|-- PbfRelation
+    class PbfRelation
+    {
+        --(constructors)--
+        +PbfRelation(Relation)
+        --(collection)--
+        +List<RelationMember> members()
+    }
+    
+    PbfEntity <|-- PbfWay
+    class PbfWay
+    {
+        --(constructors)--
+        +PbfWay(Way)
+        --
+        +String highway()
+        --(collection)--
+        +StringList highways()
+        +List<WayNode> nodes()
+        --(functional)--
+        +PbfWay withTags(Collection<Tag> tags)
+    }
+    
+@enduml
+

@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1116.6667px" preserveAspectRatio="none" style="width:1362px;height:1116px;background:#333333;" version="1.1" viewBox="0 0 1362 1116" width="1362.5px" zoomAndPan="magnify"><defs/><g><rect fill="#48494B" height="41.2028" rx="8.3333" ry="8.3333" style="stroke:#545454;stroke-width:1.0416666666666667;" width="437.5" x="455.2083" y="2.0833"/><text fill="#C0C0C0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="20.8333" lengthAdjust="spacing" textLength="414.5833" x="466.6667" y="30.5583">com.telenav.aonia.map.road.name.parser</text><!--MD5=[36640642375a153f42671581bd29b1cd]
+cluster ParsedRoadName--><polygon fill="#333333" points="798.9583,54.2236,922.9167,54.2236,930.2083,81.4453,1344.7917,81.4453,1344.7917,385.4736,798.9583,385.4736,798.9583,54.2236" style="stroke:#333333;stroke-width:2.0833333333333335;"/><line style="stroke:#333333;stroke-width:2.0833333333333335;" x1="798.9583" x2="930.2083" y1="81.4453" y2="81.4453"/><text fill="#C8AC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="111.4583" x="806.25" y="71.5169">ParsedRoadName</text><!--MD5=[cdd9f9666a620ec0cf9632a972dfe5b0]
+class ParsedRoadName.Builder--><rect codeLine="43" fill="#282828" height="273.5819" id="ParsedRoadName.Builder" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="332.2917" x="995.3125" y="94.8486"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="332.2917" x="995.3125" y="94.8486"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="332.2917" x="995.3125" y="117.9036"/><rect codeLine="43" fill="none" height="273.5819" id="ParsedRoadName.Builder" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="332.2917" x="995.3125" y="94.8486"/><ellipse cx="1131.25" cy="110.5428" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M1133.1604,114.9679 Q1132.7332,115.1876 1132.2632,115.2974 Q1131.7932,115.4073 1131.2744,115.4073 Q1129.4312,115.4073 1128.4607,114.1927 Q1127.4902,112.9781 1127.4902,110.6832 Q1127.4902,108.3822 1128.4607,107.1676 Q1129.4312,105.953 1131.2744,105.953 Q1131.7932,105.953 1132.2693,106.0628 Q1132.7454,106.1727 1133.1604,106.3924 L1133.1604,108.3944 Q1132.6965,107.9671 1132.2601,107.7688 Q1131.8237,107.5704 1131.3599,107.5704 Q1130.3711,107.5704 1129.8676,108.3547 Q1129.364,109.139 1129.364,110.6832 Q1129.364,112.2213 1129.8676,113.0056 Q1130.3711,113.7899 1131.3599,113.7899 Q1131.8237,113.7899 1132.2601,113.5915 Q1132.6965,113.3931 1133.1604,112.9659 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="45.8333" x="1154.1667" y="115.2669">Builder</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="996.3542" x2="1326.5625" y1="126.237" y2="126.237"/><ellipse cx="1006.7708" cy="161.6069" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="46.875" x="1018.2292" y="168.5181">Builder()</text><ellipse cx="1006.7708" cy="181.3517" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="143.75" x="1018.2292" y="188.2629">Builder(ParsedRoadName)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="996.3542" x2="1117.7083" y1="144.4427" y2="144.4427"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="1120.8333" y="148.2524">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1205.2083" x2="1326.5625" y1="144.4427" y2="144.4427"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="996.3542" x2="1326.5625" y1="197.9716" y2="197.9716"/><ellipse cx="1006.7708" cy="209.4299" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="153.125" x="1018.2292" y="216.3411">void position(TypePosition)</text><ellipse cx="1006.7708" cy="253.0863" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="294.7917" x="1018.2292" y="259.9976">Builder baseName(String baseName, String rawName)</text><ellipse cx="1006.7708" cy="272.8312" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="136.4583" x="1018.2292" y="279.7424">ParsedRoadName build()</text><ellipse cx="1006.7708" cy="292.5761" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="300" x="1018.2292" y="299.4873">Builder direction(String direction, String rawDirection)</text><ellipse cx="1006.7708" cy="312.321" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="230.2083" x="1018.2292" y="319.2322">Builder directionFormat(DirectionFormat)</text><ellipse cx="1006.7708" cy="332.0658" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="160.4167" x="1018.2292" y="338.9771">Builder exception(Exception)</text><ellipse cx="1006.7708" cy="351.8107" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="223.9583" x="1018.2292" y="358.7219">Builder type(String type, String rawType)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="996.3542" x2="1133.3333" y1="235.9222" y2="235.9222"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="50" x="1136.4583" y="239.7319">(naming)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1189.5833" x2="1326.5625" y1="235.9222" y2="235.9222"/><!--MD5=[eba50083ac5f9f1e3de2ddb8188e6323]
+class ParsedRoadName.DirectionFormat--><rect codeLine="59" fill="#282828" height="107.2896" id="ParsedRoadName.DirectionFormat" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="142.7083" x="816.1458" y="178.182"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="142.7083" x="816.1458" y="178.182"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="142.7083" x="816.1458" y="201.237"/><rect codeLine="59" fill="none" height="107.2896" id="ParsedRoadName.DirectionFormat" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="142.7083" x="816.1458" y="178.182"/><ellipse cx="830.7292" cy="193.8761" fill="#CF6300" rx="10.4167" ry="10.4167" style="stroke:#EF8300;stroke-width:1.0416666666666667;"/><path d="M833.785,198.5636 L828.1087,198.5636 L828.1087,189.4511 L833.785,189.4511 L833.785,191.038 L829.9093,191.038 L829.9093,193.0033 L833.4188,193.0033 L833.4188,194.5903 L829.9093,194.5903 L829.9093,196.9767 L833.785,196.9767 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="105.2083" x="847.3958" y="198.6003">DirectionFormat</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="817.1875" x2="957.8125" y1="209.5703" y2="209.5703"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="32.2917" x="825.5208" y="227.9399">NONE</text><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="51.0417" x="825.5208" y="247.6847">PREFIXED</text><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="52.0833" x="825.5208" y="267.4296">SUFFIXED</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="817.1875" x2="957.8125" y1="277.1383" y2="277.1383"/><!--MD5=[4814754361ae37ebed86cd2f145b30da]
+class RoadNameParser--><rect codeLine="86" fill="#282828" height="103.123" id="RoadNameParser" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="231.25" x="14.5833" y="180.2653"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="231.25" x="14.5833" y="180.2653"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="231.25" x="14.5833" y="203.3203"/><rect codeLine="86" fill="none" height="103.123" id="RoadNameParser" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="231.25" x="14.5833" y="180.2653"/><ellipse cx="68.75" cy="195.9595" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M65.6331,193.1213 L65.6331,191.5344 L71.0592,191.5344 L71.0592,193.1213 L69.2464,193.1213 L69.2464,199.0601 L71.0592,199.0601 L71.0592,200.647 L65.6331,200.647 L65.6331,199.0601 L67.4459,199.0601 L67.4459,193.1213 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="108.3333" x="91.6667" y="200.6836">RoadNameParser</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="15.625" x2="244.7917" y1="211.6536" y2="211.6536"/><ellipse cx="26.0417" cy="247.0235" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="182.2917" x="37.5" y="253.9347">RoadNameParser get(MapLocale)</text><ellipse cx="26.0417" cy="266.7684" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="198.9583" x="37.5" y="273.6796">ParsedRoadName parse(RoadName)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="15.625" x2="102.0833" y1="229.8594" y2="229.8594"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="50" x="105.2083" y="233.669">(naming)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="158.3333" x2="244.7917" y1="229.8594" y2="229.8594"/><!--MD5=[0c34076d643e7f14c9ce6cf3d845ea30]
+class BaseRoadNameParser--><rect codeLine="9" fill="#282828" height="637.323" id="BaseRoadNameParser" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="241.6667" x="9.375" y="472.4528"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="241.6667" x="9.375" y="472.4528"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="241.6667" x="9.375" y="495.5078"/><rect codeLine="9" fill="none" height="637.323" id="BaseRoadNameParser" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="241.6667" x="9.375" y="472.4528"/><ellipse cx="53.6458" cy="488.147" fill="#C8AC00" rx="10.4167" ry="10.4167" style="stroke:#D8BC00;stroke-width:1.0416666666666667;"/><path d="M53.7598,484.849 L52.9114,488.5783 L54.6143,488.5783 Z M52.6611,483.2011 L54.8645,483.2011 L57.3242,492.3136 L55.5237,492.3136 L54.9622,490.0614 L52.5513,490.0614 L52.002,492.3136 L50.2014,492.3136 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="138.5417" x="76.5625" y="492.8711">BaseRoadNameParser</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="10.4167" x2="250" y1="503.8411" y2="503.8411"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="10.4167" x2="250" y1="512.1745" y2="512.1745"/><polygon fill="#FFFF44" points="20.8333,518.4245,25,522.5911,20.8333,526.7578,16.6667,522.5911" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="36.4583" x="32.2917" y="530.544">int at()</text><polygon fill="#FFFF44" points="20.8333,538.1694,25,542.336,20.8333,546.5027,16.6667,542.336" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="73.9583" x="32.2917" y="550.2889">void at(int at)</text><polygon fill="#FFFF44" points="20.8333,557.9142,25,562.0809,20.8333,566.2476,16.6667,562.0809" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="87.5" x="32.2917" y="570.0338">Token current()</text><polygon fill="#FFFF44" points="20.8333,577.6591,25,581.8258,20.8333,585.9924,16.6667,581.8258" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="103.125" x="32.2917" y="589.7786">Token lookahead()</text><polygon fill="#FFFF44" points="20.8333,597.404,25,601.5706,20.8333,605.7373,16.6667,601.5706" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="144.7917" x="32.2917" y="609.5235">boolean lookingAt(Token)</text><polygon fill="#FFFF44" points="20.8333,617.1488,25,621.3155,20.8333,625.4822,16.6667,621.3155" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="75" x="32.2917" y="629.2684">int previous()</text><polygon fill="#FFFF44" points="20.8333,636.8937,25,641.0604,20.8333,645.2271,16.6667,641.0604" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="89.5833" x="32.2917" y="649.0133">String rawText()</text><polygon fill="#FFFF44" points="20.8333,656.6386,25,660.8053,20.8333,664.9719,16.6667,660.8053" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="102.0833" x="32.2917" y="668.7581">String remainder()</text><polygon fill="#FFFF44" points="20.8333,676.3835,25,680.5501,20.8333,684.7168,16.6667,680.5501" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="163.5417" x="32.2917" y="688.503">String remainderCapitalized()</text><polygon fill="#FFFF44" points="20.8333,696.1283,25,700.295,20.8333,704.4617,16.6667,700.295" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="114.5833" x="32.2917" y="708.2479">void skipAny(Token)</text><polygon fill="#FFFF44" points="20.8333,715.8732,25,720.0399,20.8333,724.2065,16.6667,720.0399" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="126.0417" x="32.2917" y="727.9928">Token token(int index)</text><polygon fill="#FFFF44" points="20.8333,735.6181,25,739.7847,20.8333,743.9514,16.6667,739.7847" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="209.375" x="32.2917" y="747.7376">void tokenize(Tokenizer, String input)</text><polygon fill="#FFFF44" points="20.8333,779.2745,25,783.4412,20.8333,787.6078,16.6667,783.4412" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="89.5833" x="32.2917" y="791.394">boolean atLast()</text><polygon fill="#FFFF44" points="20.8333,799.0194,25,803.186,20.8333,807.3527,16.6667,803.186" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="68.75" x="32.2917" y="811.1389">Token first()</text><polygon fill="#FFFF44" points="20.8333,818.7642,25,822.9309,20.8333,827.0976,16.6667,822.9309" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="100" x="32.2917" y="830.8838">boolean isEmpty()</text><polygon fill="#FFFF44" points="20.8333,838.5091,25,842.6758,20.8333,846.8424,16.6667,842.6758" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="65.625" x="32.2917" y="850.6287">Token last()</text><polygon fill="#FFFF44" points="20.8333,858.254,25,862.4207,20.8333,866.5873,16.6667,862.4207" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="136.4583" x="32.2917" y="870.3735">Token remove(int index)</text><polygon fill="#FFFF44" points="20.8333,877.9989,25,882.1655,20.8333,886.3322,16.6667,882.1655" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="112.5" x="32.2917" y="890.1184">Token removeFirst()</text><polygon fill="#FFFF44" points="20.8333,897.7437,25,901.9104,20.8333,906.0771,16.6667,901.9104" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="110.4167" x="32.2917" y="909.8633">Token removeLast()</text><polygon fill="#FFFF44" points="20.8333,917.4886,25,921.6553,20.8333,925.8219,16.6667,921.6553" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="47.9167" x="32.2917" y="929.6082">int size()</text><polygon fill="#FFFF44" points="20.8333,937.2335,25,941.4001,20.8333,945.5668,16.6667,941.4001" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="103.125" x="32.2917" y="949.353">TokenList tokens()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="10.4167" x2="95.8333" y1="767.3187" y2="767.3187"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="98.9583" y="771.1283">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="164.5833" x2="250" y1="767.3187" y2="767.3187"/><polygon fill="#FFFF44" points="20.8333,980.8899,25,985.0566,20.8333,989.2232,16.6667,985.0566" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="104.1667" x="32.2917" y="993.0094">boolean hasMore()</text><polygon fill="#FFFF44" points="20.8333,1000.6348,25,1004.8014,20.8333,1008.9681,16.6667,1004.8014" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="60.4167" x="32.2917" y="1012.7543">void next()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="10.4167" x2="99.4792" y1="968.9341" y2="968.9341"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="55.2083" x="102.6042" y="972.7437">(iteration)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="160.9375" x2="250" y1="968.9341" y2="968.9341"/><polygon fill="#FFFF44" points="20.8333,1044.2912,25,1048.4578,20.8333,1052.6245,16.6667,1048.4578" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="63.5417" x="32.2917" y="1056.4107">void reset()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="10.4167" x2="100.5208" y1="1032.3354" y2="1032.3354"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="53.125" x="103.6458" y="1036.145">(lifecycle)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="159.8958" x2="250" y1="1032.3354" y2="1032.3354"/><polygon fill="#FFFF44" points="20.8333,1087.9476,25,1092.1143,20.8333,1096.2809,16.6667,1092.1143" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="125" x="32.2917" y="1100.0671">boolean match(Token)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="10.4167" x2="96.875" y1="1075.9918" y2="1075.9918"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="60.4167" x="100" y="1079.8014">(matching)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="163.5417" x2="250" y1="1075.9918" y2="1075.9918"/><!--MD5=[39243fe9a31dcd067557a56f8305358b]
+class ParsedRoadName--><rect codeLine="66" fill="#282828" height="356.7281" id="ParsedRoadName" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="223.9583" x="282.8125" y="53.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="223.9583" x="282.8125" y="53.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="223.9583" x="282.8125" y="76.7578"/><rect codeLine="66" fill="none" height="356.7281" id="ParsedRoadName" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="223.9583" x="282.8125" y="53.7028"/><ellipse cx="331.7708" cy="69.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M333.6812,73.822 Q333.254,74.0417 332.784,74.1516 Q332.314,74.2615 331.7952,74.2615 Q329.952,74.2615 328.9815,73.0469 Q328.0111,71.8323 328.0111,69.5374 Q328.0111,67.2363 328.9815,66.0217 Q329.952,64.8071 331.7952,64.8071 Q332.314,64.8071 332.7901,64.917 Q333.2662,65.0269 333.6812,65.2466 L333.6812,67.2485 Q333.2174,66.8213 332.781,66.6229 Q332.3446,66.4246 331.8807,66.4246 Q330.8919,66.4246 330.3884,67.2089 Q329.8848,67.9932 329.8848,69.5374 Q329.8848,71.0754 330.3884,71.8597 Q330.8919,72.644 331.8807,72.644 Q332.3446,72.644 332.781,72.4457 Q333.2174,72.2473 333.6812,71.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="111.4583" x="354.6875" y="74.1211">ParsedRoadName</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="283.8542" x2="505.7292" y1="85.0911" y2="85.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="283.8542" x2="505.7292" y1="93.4245" y2="93.4245"/><ellipse cx="294.2708" cy="104.8828" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="121.875" x="305.7292" y="111.794">Exception exception()</text><ellipse cx="294.2708" cy="124.6277" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="86.4583" x="305.7292" y="131.5389">boolean failed()</text><ellipse cx="294.2708" cy="144.3726" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="91.6667" x="305.7292" y="151.2838">String rawType()</text><ellipse cx="294.2708" cy="164.1174" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="68.75" x="305.7292" y="171.0286">String type()</text><ellipse cx="294.2708" cy="207.7738" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="112.5" x="305.7292" y="214.6851">Direction direction()</text><ellipse cx="294.2708" cy="227.5187" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="115.625" x="305.7292" y="234.4299">String rawDirection()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="283.8542" x2="372.3958" y1="190.6097" y2="190.6097"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="38.5417" x="375.5208" y="194.4194">(angle)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="417.1875" x2="505.7292" y1="190.6097" y2="190.6097"/><ellipse cx="294.2708" cy="271.1751" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="92.7083" x="305.7292" y="278.0863">boolean isValid()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="283.8542" x2="368.2292" y1="254.011" y2="254.011"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="46.875" x="371.3542" y="257.8206">(checks)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="421.3542" x2="505.7292" y1="254.011" y2="254.011"/><ellipse cx="294.2708" cy="314.8315" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="164.5833" x="305.7292" y="321.7428">RoadName asRawRoadName()</text><ellipse cx="294.2708" cy="334.5764" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="142.7083" x="305.7292" y="341.4876">RoadName asRoadName()</text><ellipse cx="294.2708" cy="354.3213" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="102.0833" x="305.7292" y="361.2325">String baseName()</text><ellipse cx="294.2708" cy="374.0662" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="191.6667" x="305.7292" y="380.9774">DirectionFormat directionFormat()</text><ellipse cx="294.2708" cy="393.811" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="120.8333" x="305.7292" y="400.7222">String rawBaseName()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="283.8542" x2="366.6667" y1="297.6674" y2="297.6674"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="50" x="369.7917" y="301.4771">(naming)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="422.9167" x2="505.7292" y1="297.6674" y2="297.6674"/><!--MD5=[77849f49e5169cfbf3401786ea3d00b9]
+class ParsedRoadName.TypePosition--><rect codeLine="93" fill="#282828" height="87.5448" id="ParsedRoadName.TypePosition" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="236.4583" x="543.2292" y="188.0778"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="236.4583" x="543.2292" y="188.0778"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="236.4583" x="543.2292" y="211.1328"/><rect codeLine="93" fill="none" height="87.5448" id="ParsedRoadName.TypePosition" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="236.4583" x="543.2292" y="188.0778"/><ellipse cx="557.8125" cy="203.772" fill="#CF6300" rx="10.4167" ry="10.4167" style="stroke:#EF8300;stroke-width:1.0416666666666667;"/><path d="M560.8683,208.4595 L555.1921,208.4595 L555.1921,199.3469 L560.8683,199.3469 L560.8683,200.9338 L556.9926,200.9338 L556.9926,202.8992 L560.5021,202.8992 L560.5021,204.4861 L556.9926,204.4861 L556.9926,206.8726 L560.8683,206.8726 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="198.9583" x="574.4792" y="208.4961">ParsedRoadName.TypePosition</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="544.2708" x2="778.6458" y1="219.4661" y2="219.4661"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="30.2083" x="552.6042" y="237.8357">FIRST</text><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="28.125" x="552.6042" y="257.5806">LAST</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="544.2708" x2="778.6458" y1="267.2892" y2="267.2892"/><!--MD5=[b8c3e28eb1e362664892ca8821cb3449]
+reverse link RoadNameParser to BaseRoadNameParser--><path codeLine="8" d="M130.2083,304.8382 C130.2083,349.1611 130.2083,409.4111 130.2083,472.3799 " fill="none" id="RoadNameParser-backto-BaseRoadNameParser" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="122.9167,304.6403,130.2083,283.807,137.5,304.6403,122.9167,304.6403" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[098e88a6fb3f73f01ad3f00ee9b24773]
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.road.name.parser"
+    
+    interface RoadNameParser
+    
+    RoadNameParser <|- - BaseRoadNameParser
+    abstract class BaseRoadNameParser
+    {
+        - -
+        #int at()
+        #void at(int at)
+        #Token current()
+        #Token lookahead()
+        #boolean lookingAt(Token)
+        #int previous()
+        #String rawText()
+        #String remainder()
+        #String remainderCapitalized()
+        #void skipAny(Token)
+        #Token token(int index)
+        #void tokenize(Tokenizer, String input)
+        - -(collection)- -
+        #boolean atLast()
+        #Token first()
+        #boolean isEmpty()
+        #Token last()
+        #Token remove(int index)
+        #Token removeFirst()
+        #Token removeLast()
+        #int size()
+        #TokenList tokens()
+        - -(iteration)- -
+        #boolean hasMore()
+        #void next()
+        - -(lifecycle)- -
+        #void reset()
+        - -(matching)- -
+        #boolean match(Token)
+    }
+    
+    class ParsedRoadName.Builder
+    {
+        - -(constructors)- -
+        +Builder()
+        +Builder(ParsedRoadName)
+        - -
+        +void position(TypePosition)
+        - -(naming)- -
+        +Builder baseName(String baseName, String rawName)
+        +ParsedRoadName build()
+        +Builder direction(String direction, String rawDirection)
+        +Builder directionFormat(DirectionFormat)
+        +Builder exception(Exception)
+        +Builder type(String type, String rawType)
+    }
+    
+    enum ParsedRoadName.DirectionFormat
+    {
+        NONE
+        PREFIXED
+        SUFFIXED
+    }
+    
+    class ParsedRoadName
+    {
+        - -
+        +Exception exception()
+        +boolean failed()
+        +String rawType()
+        +String type()
+        - -(angle)- -
+        +Direction direction()
+        +String rawDirection()
+        - -(checks)- -
+        +boolean isValid()
+        - -(naming)- -
+        +RoadName asRawRoadName()
+        +RoadName asRoadName()
+        +String baseName()
+        +DirectionFormat directionFormat()
+        +String rawBaseName()
+    }
+    
+    interface RoadNameParser
+    {
+        - -(naming)- -
+        +RoadNameParser get(MapLocale)
+        +ParsedRoadName parse(RoadName)
+    }
+    
+    enum ParsedRoadName.TypePosition
+    {
+        FIRST
+        LAST
+    }
+    
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+
+
+skinparam backgroundColor #333333
+
+
+
+
+
+
+skinparam  {
+    defaultFontName   "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+    defaultFontSize   12
+    defaultTextAlignment left
+    shadowing false
+    RoundCorner 10
+    TitleFontSize 18
+}
+
+skinparam defaultFontName       "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           16
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               3
+skinparam ArrowColor            #545454
+skinparam stereotype {
+    CBackgroundColor #0066cf
+    CBorderColor #0086ef
+    ABackgroundColor #C8Ac00
+    ABorderColor #D8Bc00
+    IBackgroundColor #008400
+    IBorderColor #239c23
+    EBackgroundColor #cf6300
+    EBorderColor #ef8300
+    NBackgroundColor #3380b9
+    NBorderColor #004d86
+}
+skinparam title {
+	FontColor	                 #c0c0c0
+ 	BorderColor                  #545454
+	FontSize	    	         20
+	BorderRoundCorner            16
+	BorderThickness 	         1
+	BackgroundColor              #48494b
+}
+
+
+skinparam legend {
+	BackgroundColor #303030
+	BorderColor #404040
+	FontColor #a0a0a0
+}
+
+	skinparam swimlane {
+	BorderColor #5e5e5e
+	BorderThickness 2
+	TitleBackgroundColor  #6d6d6d-#484848
+	TitleFontColor #303030
+}
+
+skinparam activity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BarColor #00FF00
+	StartColor #0060a8
+	EndColor #0060a8
+	DiamondBackgroundColor #6d6d6d-#3a3a3a
+  	DiamondBorderColor #3a3a3a
+  	DiamondFontColor #fefefe
+}
+
+
+skinparam participant {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam arrow {
+	Thickness 1.5
+	Color #545454
+	FontColor #a0a0a0
+    FontStyle bold
+    MessageAlignment center
+}
+
+
+
+skinparam sequence {
+	BorderColor #303030
+	TitleFontColor #303030
+	BackgroundColor #333333
+	StartColor #303030
+	EndColor #303030
+	BoxBackgroundColor #333333
+	BoxBorderColor #484848
+	BoxFontColor #484848
+	LifeLineBorderColor #484848
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor #3a3a3a
+	GroupBorderColor #484848
+	GroupFontColor #484848
+	GroupHeaderFontColor #0060a8
+	GroupBackgroundColor #484848
+	GroupHeaderBackgroundColor #333333
+	DividerBackgroundColor #484848
+    DividerBorderColor #484848
+    DividerBorderThickness 2
+    DividerFontColor #D8Bc00
+	ReferenceBackgroundColor #333333
+	ReferenceBorderColor #484848
+	ReferenceFontColor #fefefe
+	ReferenceHeaderBackgroundColor #484848
+}
+
+
+skinparam partition {
+	BorderColor #303030
+	FontColor #333333
+	BackgroundColor #333333
+}
+
+
+skinparam collections {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam control {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam entity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam boundary {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam agent {
+	BackgroundColor #ff8000
+	BorderColor #ff9933
+	FontColor #484848
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor #1b1b1a
+	BorderColor #5e5e5e
+	FontSize 11
+	FontColor #a0a0a0
+}
+
+
+skinparam artifact {
+	BorderThickness 10
+	BorderColor #5e5e5e
+	BackgroundColor #1b1b1a
+	FontColor #D8Bc00
+}
+
+
+skinparam component {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam interface {
+	BackgroundColor  #008400
+	BorderColor  #007F00
+	FontColor #484848
+}
+
+
+skinparam storage {
+	BackgroundColor #ff8000
+  	BorderColor #cc6600
+	FontColor #222222
+}
+
+
+skinparam node {
+	BackgroundColor #333333
+	BorderColor #333333
+	FontColor #C8Ac00
+}
+
+
+skinparam cloud {
+	BackgroundColor #484848-black
+	BorderColor #484848
+	FontColor #D8Bc00
+}
+
+
+skinparam database {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor  #333333
+}
+
+
+skinparam class {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	HeaderBackgroundColor #1b1b1a
+    BackgroundColor #282828
+    BorderColor #5e5e5e
+ 	StereotypeFontColor #a0a0a0
+    StereotypeFontStyle bold
+	BorderThickness 1
+	AttributeFontColor #D8Bc00
+	AttributeFontSize 11
+    FontColor #D8Bc00
+    FontStyle bold
+}
+
+
+skinparam object {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StereotypeFontColor #484848
+	BorderThickness 1
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam rectangle {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam package {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor #6d6d6d
+  	BorderColor #ff8000
+	FontColor #ff8000
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor #6d6d6d
+  	BorderColor #0060a8
+	FontColor #0060a8
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StartColor #0060a8
+	EndColor #0060a8
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam card {
+	BackgroundColor #0060a8
+	BorderColor #004d86
+	FontColor $INFO_TEXT
+}
+
+
+skinparam file {
+	BackgroundColor #6d6d6d-#484848
+	BorderColor #0060a8
+	FontColor #fefefe
+}
+
+
+skinparam stack {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+    
+    title "com.telenav.aonia.map.road.name.parser"
+    
+    interface RoadNameParser
+    
+    RoadNameParser <|- - BaseRoadNameParser
+    abstract class BaseRoadNameParser
+    {
+        - -
+        #int at()
+        #void at(int at)
+        #Token current()
+        #Token lookahead()
+        #boolean lookingAt(Token)
+        #int previous()
+        #String rawText()
+        #String remainder()
+        #String remainderCapitalized()
+        #void skipAny(Token)
+        #Token token(int index)
+        #void tokenize(Tokenizer, String input)
+        - -(collection)- -
+        #boolean atLast()
+        #Token first()
+        #boolean isEmpty()
+        #Token last()
+        #Token remove(int index)
+        #Token removeFirst()
+        #Token removeLast()
+        #int size()
+        #TokenList tokens()
+        - -(iteration)- -
+        #boolean hasMore()
+        #void next()
+        - -(lifecycle)- -
+        #void reset()
+        - -(matching)- -
+        #boolean match(Token)
+    }
+    
+    class ParsedRoadName.Builder
+    {
+        - -(constructors)- -
+        +Builder()
+        +Builder(ParsedRoadName)
+        - -
+        +void position(TypePosition)
+        - -(naming)- -
+        +Builder baseName(String baseName, String rawName)
+        +ParsedRoadName build()
+        +Builder direction(String direction, String rawDirection)
+        +Builder directionFormat(DirectionFormat)
+        +Builder exception(Exception)
+        +Builder type(String type, String rawType)
+    }
+    
+    enum ParsedRoadName.DirectionFormat
+    {
+        NONE
+        PREFIXED
+        SUFFIXED
+    }
+    
+    class ParsedRoadName
+    {
+        - -
+        +Exception exception()
+        +boolean failed()
+        +String rawType()
+        +String type()
+        - -(angle)- -
+        +Direction direction()
+        +String rawDirection()
+        - -(checks)- -
+        +boolean isValid()
+        - -(naming)- -
+        +RoadName asRawRoadName()
+        +RoadName asRoadName()
+        +String baseName()
+        +DirectionFormat directionFormat()
+        +String rawBaseName()
+    }
+    
+    interface RoadNameParser
+    {
+        - -(naming)- -
+        +RoadNameParser get(MapLocale)
+        +ParsedRoadName parse(RoadName)
+    }
+    
+    enum ParsedRoadName.TypePosition
+    {
+        FIRST
+        LAST
+    }
+    
+@enduml
+
+PlantUML version 1.2021.01(Tue Feb 02 00:55:08 MST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

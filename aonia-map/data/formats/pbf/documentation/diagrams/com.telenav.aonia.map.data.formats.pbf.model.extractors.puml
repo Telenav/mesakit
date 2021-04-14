@@ -1,0 +1,32 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.data.formats.pbf.model.extractors"
+    
+    abstract BaseExtractor
+    
+    BaseExtractor <|-- IntegerExtractor
+    class IntegerExtractor
+    {
+        --(constructors)--
+        +IntegerExtractor(Listener)
+        +IntegerExtractor(Listener, String)
+    }
+    
+    BaseExtractor <|-- RevisionNumberExtractor
+    class RevisionNumberExtractor
+    {
+        --(constructors)--
+        +RevisionNumberExtractor(Listener)
+    }
+    
+    BaseExtractor <|-- TimestampExtractor
+    class TimestampExtractor
+    {
+        --(constructors)--
+        +TimestampExtractor(Listener)
+    }
+    
+@enduml
+

@@ -1,0 +1,72 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "Region Borders"
+    
+    abstract BaseRepeater
+    
+    interface Bounded
+    interface Intersectable
+    
+    Bounded <|-- Border
+    Intersectable <|-- Border
+    Border o-- Polygon : "bounded by"
+    Border o-- Rectangle : "bounding rectangle"
+    class Border<T>
+    {
+        --(constructors)--
+        +Border(T, Polygon)
+        --
+        +RegionIdentity identity()
+        +void identity(RegionIdentity)
+        +Polygon polygon()
+        +T region()
+        +void region(T region)
+        --(checks)--
+        +boolean isValid()
+        --(collection)--
+        +boolean contains(Location)
+    }
+    
+    BaseRepeater <|-- BorderCache
+    BorderCache --> Region : "loads borders for"
+    BorderCache o-- BorderSpatialIndex : "indexed by"
+    abstract class BorderCache<T>
+    {
+        --(constructors)--
+        #BorderCache(Settings<T>)
+        --
+        +Collection<Polygon> borders(T object)
+        +T object(Location)
+        #void assignMultiPolygonIdentity(PbfTagMap relationTags, Collection<Border<T>> objects)
+        #RegionIdentity identityForRegion(T region)
+        #T regionForIdentity(RegionIdentity)
+        #Settings<T> settings()
+        --(collection)--
+        #BorderSpatialIndex<T> index()
+        --(naming)--
+        +String name()
+        --(read)--
+        +boolean loadBorders()
+        +BorderCache<T> loadIdentities()
+    }
+    
+    RTreeSpatialIndex <|-- BorderSpatialIndex
+    BorderSpatialIndex --> "1+" Border : "indexes"
+    class BorderSpatialIndex<T>
+    {
+        --(constructors)--
+        +BorderSpatialIndex(String, RTreeSettings)
+    }
+    
+    Bordered "1" --> "1+" Polygon : "bounded by"
+    interface Bordered
+    {
+        --
+        +Collection<Polygon> borders()
+        +RegionIdentity identity()
+    }
+    
+@enduml
+

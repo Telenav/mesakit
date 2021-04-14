@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="254.1667px" preserveAspectRatio="none" style="width:703px;height:254px;background:#333333;" version="1.1" viewBox="0 0 703 254" width="703.125px" zoomAndPan="magnify"><defs/><g><rect fill="#48494B" height="41.2028" rx="8.3333" ry="8.3333" style="stroke:#545454;stroke-width:1.0416666666666667;" width="690.625" x="2.0833" y="2.0833"/><text fill="#C0C0C0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="20.8333" lengthAdjust="spacing" textLength="667.7083" x="13.5417" y="30.5583">com.telenav.aonia.map.road.name.standardizer.locales.indonesian</text><!--MD5=[eafe4655d8d93d36e78770ec7e7e41f8]
+class BaseRoadNameStandardizer--><rect codeLine="6" fill="#282828" height="48.055" id="BaseRoadNameStandardizer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="217.7083" x="102.3438" y="71.4111"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="217.7083" x="102.3438" y="71.4111"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="217.7083" x="102.3438" y="94.4661"/><rect codeLine="6" fill="none" height="48.055" id="BaseRoadNameStandardizer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="217.7083" x="102.3438" y="71.4111"/><ellipse cx="116.9271" cy="87.1053" fill="#C8AC00" rx="10.4167" ry="10.4167" style="stroke:#D8BC00;stroke-width:1.0416666666666667;"/><path d="M117.041,83.8074 L116.1926,87.5366 L117.8955,87.5366 Z M115.9424,82.1594 L118.1458,82.1594 L120.6055,91.272 L118.8049,91.272 L118.2434,89.0198 L115.8325,89.0198 L115.2832,91.272 L113.4827,91.272 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="180.2083" x="133.5938" y="91.8294">BaseRoadNameStandardizer</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="103.3854" x2="319.0104" y1="102.7995" y2="102.7995"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="103.3854" x2="319.0104" y1="111.1328" y2="111.1328"/><!--MD5=[3eba5a67252b0be29bad0cd228580d70]
+class IndonesianIndonesiaRoadNameStandardizer--><rect codeLine="9" fill="#282828" height="48.055" id="IndonesianIndonesiaRoadNameStandardizer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="322.9167" x="49.7396" y="199.5361"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="322.9167" x="49.7396" y="199.5361"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="322.9167" x="49.7396" y="222.5911"/><rect codeLine="9" fill="none" height="48.055" id="IndonesianIndonesiaRoadNameStandardizer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="322.9167" x="49.7396" y="199.5361"/><ellipse cx="64.3229" cy="215.2303" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M66.2333,219.6554 Q65.8061,219.8751 65.3361,219.9849 Q64.8661,220.0948 64.3473,220.0948 Q62.5041,220.0948 61.5336,218.8802 Q60.5632,217.6656 60.5632,215.3707 Q60.5632,213.0697 61.5336,211.8551 Q62.5041,210.6405 64.3473,210.6405 Q64.8661,210.6405 65.3422,210.7503 Q65.8183,210.8602 66.2333,211.0799 L66.2333,213.0819 Q65.7694,212.6546 65.333,212.4563 Q64.8966,212.2579 64.4328,212.2579 Q63.444,212.2579 62.9405,213.0422 Q62.4369,213.8265 62.4369,215.3707 Q62.4369,216.9088 62.9405,217.6931 Q63.444,218.4774 64.4328,218.4774 Q64.8966,218.4774 65.333,218.279 Q65.7694,218.0806 66.2333,217.6534 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="285.4167" x="80.9896" y="219.9544">IndonesianIndonesiaRoadNameStandardizer</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="50.7813" x2="371.6146" y1="230.9245" y2="230.9245"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="50.7813" x2="371.6146" y1="239.2578" y2="239.2578"/><!--MD5=[450b808e9485e8d24661b48df8984cd6]
+class SimpleIndonesianRoadNameStandardizer--><rect codeLine="13" fill="#282828" height="83.3781" id="SimpleIndonesianRoadNameStandardizer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="303.125" x="356.5104" y="53.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="303.125" x="356.5104" y="53.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="303.125" x="356.5104" y="76.7578"/><rect codeLine="13" fill="none" height="83.3781" id="SimpleIndonesianRoadNameStandardizer" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="303.125" x="356.5104" y="53.7028"/><ellipse cx="371.0938" cy="69.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M373.0042,73.822 Q372.5769,74.0417 372.1069,74.1516 Q371.637,74.2615 371.1182,74.2615 Q369.2749,74.2615 368.3044,73.0469 Q367.334,71.8323 367.334,69.5374 Q367.334,67.2363 368.3044,66.0217 Q369.2749,64.8071 371.1182,64.8071 Q371.637,64.8071 372.113,64.917 Q372.5891,65.0269 373.0042,65.2466 L373.0042,67.2485 Q372.5403,66.8213 372.1039,66.6229 Q371.6675,66.4246 371.2036,66.4246 Q370.2148,66.4246 369.7113,67.2089 Q369.2078,67.9932 369.2078,69.5374 Q369.2078,71.0754 369.7113,71.8597 Q370.2148,72.644 371.2036,72.644 Q371.6675,72.644 372.1039,72.4457 Q372.5403,72.2473 373.0042,71.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="265.625" x="387.7604" y="74.1211">SimpleIndonesianRoadNameStandardizer</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="357.5521" x2="658.5938" y1="85.0911" y2="85.0911"/><ellipse cx="367.9688" cy="120.461" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="195.8333" x="379.4271" y="127.3722">RoadName standardize(RoadName)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="357.5521" x2="479.9479" y1="103.2969" y2="103.2969"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="50" x="483.0729" y="107.1065">(naming)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="536.1979" x2="658.5938" y1="103.2969" y2="103.2969"/><!--MD5=[03ccaba55e0278ca721cba22c95b34ba]
+reverse link BaseRoadNameStandardizer to IndonesianIndonesiaRoadNameStandardizer--><path codeLine="8" d="M211.1979,140.6611 C211.1979,160.5049 211.1979,183.0882 211.1979,199.484 " fill="none" id="BaseRoadNameStandardizer-backto-IndonesianIndonesiaRoadNameStandardizer" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="203.9063,140.359,211.1979,119.5257,218.4896,140.359,203.9063,140.359" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[a82629d82ee9306509a0a91e9c0b68e6]
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.road.name.standardizer.locales.indonesian"
+    
+    abstract BaseRoadNameStandardizer
+    
+    BaseRoadNameStandardizer <|- - IndonesianIndonesiaRoadNameStandardizer
+    class IndonesianIndonesiaRoadNameStandardizer
+    {
+    }
+    
+    class SimpleIndonesianRoadNameStandardizer
+    {
+        - -(naming)- -
+        +RoadName standardize(RoadName)
+    }
+    
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+
+
+skinparam backgroundColor #333333
+
+
+
+
+
+
+skinparam  {
+    defaultFontName   "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+    defaultFontSize   12
+    defaultTextAlignment left
+    shadowing false
+    RoundCorner 10
+    TitleFontSize 18
+}
+
+skinparam defaultFontName       "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           16
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               3
+skinparam ArrowColor            #545454
+skinparam stereotype {
+    CBackgroundColor #0066cf
+    CBorderColor #0086ef
+    ABackgroundColor #C8Ac00
+    ABorderColor #D8Bc00
+    IBackgroundColor #008400
+    IBorderColor #239c23
+    EBackgroundColor #cf6300
+    EBorderColor #ef8300
+    NBackgroundColor #3380b9
+    NBorderColor #004d86
+}
+skinparam title {
+	FontColor	                 #c0c0c0
+ 	BorderColor                  #545454
+	FontSize	    	         20
+	BorderRoundCorner            16
+	BorderThickness 	         1
+	BackgroundColor              #48494b
+}
+
+
+skinparam legend {
+	BackgroundColor #303030
+	BorderColor #404040
+	FontColor #a0a0a0
+}
+
+	skinparam swimlane {
+	BorderColor #5e5e5e
+	BorderThickness 2
+	TitleBackgroundColor  #6d6d6d-#484848
+	TitleFontColor #303030
+}
+
+skinparam activity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BarColor #00FF00
+	StartColor #0060a8
+	EndColor #0060a8
+	DiamondBackgroundColor #6d6d6d-#3a3a3a
+  	DiamondBorderColor #3a3a3a
+  	DiamondFontColor #fefefe
+}
+
+
+skinparam participant {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam arrow {
+	Thickness 1.5
+	Color #545454
+	FontColor #a0a0a0
+    FontStyle bold
+    MessageAlignment center
+}
+
+
+
+skinparam sequence {
+	BorderColor #303030
+	TitleFontColor #303030
+	BackgroundColor #333333
+	StartColor #303030
+	EndColor #303030
+	BoxBackgroundColor #333333
+	BoxBorderColor #484848
+	BoxFontColor #484848
+	LifeLineBorderColor #484848
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor #3a3a3a
+	GroupBorderColor #484848
+	GroupFontColor #484848
+	GroupHeaderFontColor #0060a8
+	GroupBackgroundColor #484848
+	GroupHeaderBackgroundColor #333333
+	DividerBackgroundColor #484848
+    DividerBorderColor #484848
+    DividerBorderThickness 2
+    DividerFontColor #D8Bc00
+	ReferenceBackgroundColor #333333
+	ReferenceBorderColor #484848
+	ReferenceFontColor #fefefe
+	ReferenceHeaderBackgroundColor #484848
+}
+
+
+skinparam partition {
+	BorderColor #303030
+	FontColor #333333
+	BackgroundColor #333333
+}
+
+
+skinparam collections {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam control {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam entity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam boundary {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam agent {
+	BackgroundColor #ff8000
+	BorderColor #ff9933
+	FontColor #484848
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor #1b1b1a
+	BorderColor #5e5e5e
+	FontSize 11
+	FontColor #a0a0a0
+}
+
+
+skinparam artifact {
+	BorderThickness 10
+	BorderColor #5e5e5e
+	BackgroundColor #1b1b1a
+	FontColor #D8Bc00
+}
+
+
+skinparam component {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam interface {
+	BackgroundColor  #008400
+	BorderColor  #007F00
+	FontColor #484848
+}
+
+
+skinparam storage {
+	BackgroundColor #ff8000
+  	BorderColor #cc6600
+	FontColor #222222
+}
+
+
+skinparam node {
+	BackgroundColor #333333
+	BorderColor #333333
+	FontColor #C8Ac00
+}
+
+
+skinparam cloud {
+	BackgroundColor #484848-black
+	BorderColor #484848
+	FontColor #D8Bc00
+}
+
+
+skinparam database {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor  #333333
+}
+
+
+skinparam class {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	HeaderBackgroundColor #1b1b1a
+    BackgroundColor #282828
+    BorderColor #5e5e5e
+ 	StereotypeFontColor #a0a0a0
+    StereotypeFontStyle bold
+	BorderThickness 1
+	AttributeFontColor #D8Bc00
+	AttributeFontSize 11
+    FontColor #D8Bc00
+    FontStyle bold
+}
+
+
+skinparam object {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StereotypeFontColor #484848
+	BorderThickness 1
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam rectangle {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam package {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor #6d6d6d
+  	BorderColor #ff8000
+	FontColor #ff8000
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor #6d6d6d
+  	BorderColor #0060a8
+	FontColor #0060a8
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StartColor #0060a8
+	EndColor #0060a8
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam card {
+	BackgroundColor #0060a8
+	BorderColor #004d86
+	FontColor $INFO_TEXT
+}
+
+
+skinparam file {
+	BackgroundColor #6d6d6d-#484848
+	BorderColor #0060a8
+	FontColor #fefefe
+}
+
+
+skinparam stack {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+    
+    title "com.telenav.aonia.map.road.name.standardizer.locales.indonesian"
+    
+    abstract BaseRoadNameStandardizer
+    
+    BaseRoadNameStandardizer <|- - IndonesianIndonesiaRoadNameStandardizer
+    class IndonesianIndonesiaRoadNameStandardizer
+    {
+    }
+    
+    class SimpleIndonesianRoadNameStandardizer
+    {
+        - -(naming)- -
+        +RoadName standardize(RoadName)
+    }
+    
+@enduml
+
+PlantUML version 1.2021.01(Tue Feb 02 00:55:08 MST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

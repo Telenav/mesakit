@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="515.625px" preserveAspectRatio="none" style="width:1367px;height:515px;background:#333333;" version="1.1" viewBox="0 0 1367 515" width="1367.7083px" zoomAndPan="magnify"><defs/><g><rect fill="#48494B" height="41.2028" rx="8.3333" ry="8.3333" style="stroke:#545454;stroke-width:1.0416666666666667;" width="441.6667" x="455.9896" y="2.0833"/><text fill="#C0C0C0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="20.8333" lengthAdjust="spacing" textLength="418.75" x="467.4479" y="30.5583">com.telenav.aonia.map.geography.project</text><!--MD5=[d776228a55af1f9e7dd99d395538019c]
+class KryoTypes--><rect fill="#282828" height="48.055" id="KryoTypes" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="106.25" x="55.7292" y="53.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="106.25" x="55.7292" y="53.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="106.25" x="55.7292" y="76.7578"/><rect fill="none" height="48.055" id="KryoTypes" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="106.25" x="55.7292" y="53.7028"/><ellipse cx="70.3125" cy="69.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M72.2229,73.822 Q71.7957,74.0417 71.3257,74.1516 Q70.8557,74.2615 70.3369,74.2615 Q68.4937,74.2615 67.5232,73.0469 Q66.5527,71.8323 66.5527,69.5374 Q66.5527,67.2363 67.5232,66.0217 Q68.4937,64.8071 70.3369,64.8071 Q70.8557,64.8071 71.3318,64.917 Q71.8079,65.0269 72.2229,65.2466 L72.2229,67.2485 Q71.759,66.8213 71.3226,66.6229 Q70.8862,66.4246 70.4224,66.4246 Q69.4336,66.4246 68.9301,67.2089 Q68.4265,67.9932 68.4265,69.5374 Q68.4265,71.0754 68.9301,71.8597 Q69.4336,72.644 70.4224,72.644 Q70.8862,72.644 71.3226,72.4457 Q71.759,72.2473 72.2229,71.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="68.75" x="86.9792" y="74.1211">KryoTypes</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="56.7708" x2="160.9375" y1="85.0911" y2="85.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="56.7708" x2="160.9375" y1="93.4245" y2="93.4245"/><!--MD5=[995323111866e4dfadcb4ca003e79e51]
+class MapGeographyKryoTypes--><rect codeLine="7" fill="#282828" height="83.3781" id="MapGeographyKryoTypes" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="203.125" x="7.2917" y="294.3278"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="203.125" x="7.2917" y="294.3278"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="203.125" x="7.2917" y="317.3828"/><rect codeLine="7" fill="none" height="83.3781" id="MapGeographyKryoTypes" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="203.125" x="7.2917" y="294.3278"/><ellipse cx="21.875" cy="310.022" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M23.7854,314.447 Q23.3582,314.6667 22.8882,314.7766 Q22.4182,314.8865 21.8994,314.8865 Q20.0562,314.8865 19.0857,313.6719 Q18.1152,312.4573 18.1152,310.1624 Q18.1152,307.8613 19.0857,306.6467 Q20.0562,305.4321 21.8994,305.4321 Q22.4182,305.4321 22.8943,305.542 Q23.3704,305.6519 23.7854,305.8716 L23.7854,307.8735 Q23.3215,307.4463 22.8851,307.2479 Q22.4487,307.0496 21.9849,307.0496 Q20.9961,307.0496 20.4926,307.8339 Q19.989,308.6182 19.989,310.1624 Q19.989,311.7004 20.4926,312.4847 Q20.9961,313.269 21.9849,313.269 Q22.4487,313.269 22.8851,313.0707 Q23.3215,312.8723 23.7854,312.4451 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="165.625" x="38.5417" y="314.7461">MapGeographyKryoTypes</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="8.3333" x2="209.375" y1="325.7161" y2="325.7161"/><ellipse cx="18.75" cy="361.086" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="152.0833" x="30.2083" y="367.9972">MapGeographyKryoTypes()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="8.3333" x2="65.1042" y1="343.9219" y2="343.9219"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="68.2292" y="347.7315">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="152.6042" x2="209.375" y1="343.9219" y2="343.9219"/><!--MD5=[aec2301b9fec8306ab6d453899a0c4e1]
+class MapGeographyLimits--><rect codeLine="13" fill="#282828" height="48.055" id="MapGeographyLimits" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="175" x="198.4375" y="53.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="175" x="198.4375" y="53.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="175" x="198.4375" y="76.7578"/><rect codeLine="13" fill="none" height="48.055" id="MapGeographyLimits" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="175" x="198.4375" y="53.7028"/><ellipse cx="213.0208" cy="69.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M214.9312,73.822 Q214.504,74.0417 214.034,74.1516 Q213.564,74.2615 213.0452,74.2615 Q211.202,74.2615 210.2315,73.0469 Q209.2611,71.8323 209.2611,69.5374 Q209.2611,67.2363 210.2315,66.0217 Q211.202,64.8071 213.0452,64.8071 Q213.564,64.8071 214.0401,64.917 Q214.5162,65.0269 214.9312,65.2466 L214.9312,67.2485 Q214.4674,66.8213 214.031,66.6229 Q213.5946,66.4246 213.1307,66.4246 Q212.1419,66.4246 211.6384,67.2089 Q211.1348,67.9932 211.1348,69.5374 Q211.1348,71.0754 211.6384,71.8597 Q212.1419,72.644 213.1307,72.644 Q213.5946,72.644 214.031,72.4457 Q214.4674,72.2473 214.9312,71.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="137.5" x="229.6875" y="74.1211">MapGeographyLimits</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="199.4792" x2="372.3958" y1="85.0911" y2="85.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="199.4792" x2="372.3958" y1="93.4245" y2="93.4245"/><!--MD5=[79d378210367c0c6ec62ef762ddfbd1b]
+class Project--><rect fill="#282828" height="48.055" id="Project" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="81.25" x="409.8958" y="53.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="81.25" x="409.8958" y="53.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="81.25" x="409.8958" y="76.7578"/><rect fill="none" height="48.055" id="Project" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="81.25" x="409.8958" y="53.7028"/><ellipse cx="424.4792" cy="69.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M426.3896,73.822 Q425.9623,74.0417 425.4924,74.1516 Q425.0224,74.2615 424.5036,74.2615 Q422.6603,74.2615 421.6899,73.0469 Q420.7194,71.8323 420.7194,69.5374 Q420.7194,67.2363 421.6899,66.0217 Q422.6603,64.8071 424.5036,64.8071 Q425.0224,64.8071 425.4985,64.917 Q425.9745,65.0269 426.3896,65.2466 L426.3896,67.2485 Q425.9257,66.8213 425.4893,66.6229 Q425.0529,66.4246 424.589,66.4246 Q423.6003,66.4246 423.0967,67.2089 Q422.5932,67.9932 422.5932,69.5374 Q422.5932,71.0754 423.0967,71.8597 Q423.6003,72.644 424.589,72.644 Q425.0529,72.644 425.4893,72.4457 Q425.9257,72.2473 426.3896,71.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="43.75" x="441.1458" y="74.1211">Project</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="410.9375" x2="490.1042" y1="85.0911" y2="85.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="410.9375" x2="490.1042" y1="93.4245" y2="93.4245"/><!--MD5=[d3c1d9c50e4fe7b33647a1c913744de0]
+class MapGeographyProject--><rect codeLine="18" fill="#282828" height="155.1127" id="MapGeographyProject" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="184.375" x="358.3333" y="258.3903"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="184.375" x="358.3333" y="258.3903"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="184.375" x="358.3333" y="281.4453"/><rect codeLine="18" fill="none" height="155.1127" id="MapGeographyProject" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="184.375" x="358.3333" y="258.3903"/><ellipse cx="375.7292" cy="274.0845" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M377.6396,278.5095 Q377.2123,278.7292 376.7424,278.8391 Q376.2724,278.949 375.7536,278.949 Q373.9103,278.949 372.9399,277.7344 Q371.9694,276.5198 371.9694,274.2249 Q371.9694,271.9238 372.9399,270.7092 Q373.9103,269.4946 375.7536,269.4946 Q376.2724,269.4946 376.7485,269.6045 Q377.2245,269.7144 377.6396,269.9341 L377.6396,271.936 Q377.1757,271.5088 376.7393,271.3104 Q376.3029,271.1121 375.839,271.1121 Q374.8503,271.1121 374.3467,271.8964 Q373.8432,272.6807 373.8432,274.2249 Q373.8432,275.7629 374.3467,276.5472 Q374.8503,277.3315 375.839,277.3315 Q376.3029,277.3315 376.7393,277.1332 Q377.1757,276.9348 377.6396,276.5076 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="140.625" x="393.0208" y="278.8086">MapGeographyProject</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="359.375" x2="541.6667" y1="289.7786" y2="289.7786"/><polygon fill="#FFFF44" points="369.7917,319.9402,373.9583,324.1069,369.7917,328.2735,365.625,324.1069" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="131.25" x="381.25" y="332.0597">MapGeographyProject()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="359.375" x2="406.7708" y1="307.9844" y2="307.9844"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="409.8958" y="311.794">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="494.2708" x2="541.6667" y1="307.9844" y2="307.9844"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="359.375" x2="541.6667" y1="341.7684" y2="341.7684"/><ellipse cx="369.7917" cy="353.2267" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="129.1667" x="381.25" y="360.1379">KryoTypes kryoTypes()</text><ellipse cx="369.7917" cy="396.8831" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="152.0833" x="381.25" y="403.7944">MapGeographyProject get()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="359.375" x2="416.1458" y1="379.719" y2="379.719"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="62.5" x="419.2708" y="383.5286">(collection)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="484.8958" x2="541.6667" y1="379.719" y2="379.719"/><!--MD5=[79e0819f41b14e4b578ad9e243ba811f]
+class MapMeasurementsRandomValueFactory--><rect fill="#282828" height="48.055" id="MapMeasurementsRandomValueFactory" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="294.7917" x="643.75" y="53.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="294.7917" x="643.75" y="53.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="294.7917" x="643.75" y="76.7578"/><rect fill="none" height="48.055" id="MapMeasurementsRandomValueFactory" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="294.7917" x="643.75" y="53.7028"/><ellipse cx="658.3333" cy="69.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M660.2437,73.822 Q659.8165,74.0417 659.3465,74.1516 Q658.8765,74.2615 658.3577,74.2615 Q656.5145,74.2615 655.544,73.0469 Q654.5736,71.8323 654.5736,69.5374 Q654.5736,67.2363 655.544,66.0217 Q656.5145,64.8071 658.3577,64.8071 Q658.8765,64.8071 659.3526,64.917 Q659.8287,65.0269 660.2437,65.2466 L660.2437,67.2485 Q659.7799,66.8213 659.3435,66.6229 Q658.9071,66.4246 658.4432,66.4246 Q657.4544,66.4246 656.9509,67.2089 Q656.4473,67.9932 656.4473,69.5374 Q656.4473,71.0754 656.9509,71.8597 Q657.4544,72.644 658.4432,72.644 Q658.9071,72.644 659.3435,72.4457 Q659.7799,72.2473 660.2437,71.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="257.2917" x="675" y="74.1211">MapMeasurementsRandomValueFactory</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="644.7917" x2="937.5" y1="85.0911" y2="85.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="644.7917" x2="937.5" y1="93.4245" y2="93.4245"/><!--MD5=[3dfa1f53fe6f9afdea2098ad25878e56]
+class MapGeographyRandomValueFactory--><rect codeLine="29" fill="#282828" height="344.2281" id="MapGeographyRandomValueFactory" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="423.9583" x="579.1667" y="164.1195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="423.9583" x="579.1667" y="164.1195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="423.9583" x="579.1667" y="187.1745"/><rect codeLine="29" fill="none" height="344.2281" id="MapGeographyRandomValueFactory" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="423.9583" x="579.1667" y="164.1195"/><ellipse cx="667.7083" cy="179.8136" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M669.6187,184.2387 Q669.1915,184.4584 668.7215,184.5683 Q668.2515,184.6781 667.7327,184.6781 Q665.8895,184.6781 664.919,183.4635 Q663.9486,182.2489 663.9486,179.954 Q663.9486,177.653 664.919,176.4384 Q665.8895,175.2238 667.7327,175.2238 Q668.2515,175.2238 668.7276,175.3337 Q669.2037,175.4435 669.6187,175.6632 L669.6187,177.6652 Q669.1549,177.238 668.7185,177.0396 Q668.2821,176.8412 667.8182,176.8412 Q666.8294,176.8412 666.3259,177.6255 Q665.8223,178.4098 665.8223,179.954 Q665.8223,181.4921 666.3259,182.2764 Q666.8294,183.0607 667.8182,183.0607 Q668.2821,183.0607 668.7185,182.8623 Q669.1549,182.664 669.6187,182.2367 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="232.2917" x="690.625" y="184.5378">MapGeographyRandomValueFactory</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="580.2083" x2="1002.0833" y1="195.5078" y2="195.5078"/><ellipse cx="590.625" cy="230.8777" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="210.4167" x="602.0833" y="237.7889">MapGeographyRandomValueFactory()</text><ellipse cx="590.625" cy="250.6226" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="235.4167" x="602.0833" y="257.5338">MapGeographyRandomValueFactory(long)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="580.2083" x2="747.3958" y1="213.7136" y2="213.7136"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="750.5208" y="217.5232">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="834.8958" x2="1002.0833" y1="213.7136" y2="213.7136"/><ellipse cx="590.625" cy="294.279" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="269.7917" x="602.0833" y="301.1902">Latitude newLatitude(Latitude min, Latitude max)</text><ellipse cx="590.625" cy="314.0238" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="122.9167" x="602.0833" y="320.9351">Latitude newLatitude()</text><ellipse cx="590.625" cy="333.7687" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="129.1667" x="602.0833" y="340.6799">Location newLocation()</text><ellipse cx="590.625" cy="353.5136" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="229.1667" x="602.0833" y="360.4248">Location newLocation(Rectangle bounds)</text><ellipse cx="590.625" cy="373.2585" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="145.8333" x="602.0833" y="380.1697">Longitude newLongitude()</text><ellipse cx="590.625" cy="393.0033" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="315.625" x="602.0833" y="399.9146">Longitude newLongitude(Longitude min, Longitude max)</text><ellipse cx="590.625" cy="412.7482" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="241.6667" x="602.0833" y="419.6594">Rectangle newRectangle(Rectangle bounds)</text><ellipse cx="590.625" cy="432.4931" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="141.6667" x="602.0833" y="439.4043">Rectangle newRectangle()</text><ellipse cx="590.625" cy="452.238" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="391.6667" x="602.0833" y="459.1492">Rectangle newRectangle(Rectangle bounds, Distance maximumRadius)</text><ellipse cx="590.625" cy="471.9828" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="157.2917" x="602.0833" y="478.894">Size newSize(Size maximum)</text><ellipse cx="590.625" cy="491.7277" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="178.125" x="602.0833" y="498.6389">Size newSize(Size min, Size max)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="580.2083" x2="764.0625" y1="277.1149" y2="277.1149"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="47.9167" x="767.1875" y="280.9245">(factory)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="818.2292" x2="1002.0833" y1="277.1149" y2="277.1149"/><!--MD5=[a647bf8a2b21214e714a0cf577652e6d]
+class MapMeasurementsUnitTest--><rect fill="#282828" height="48.055" id="MapMeasurementsUnitTest" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="214.5833" x="1093.2292" y="53.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="214.5833" x="1093.2292" y="53.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="214.5833" x="1093.2292" y="76.7578"/><rect fill="none" height="48.055" id="MapMeasurementsUnitTest" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="214.5833" x="1093.2292" y="53.7028"/><ellipse cx="1107.8125" cy="69.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M1109.7229,73.822 Q1109.2957,74.0417 1108.8257,74.1516 Q1108.3557,74.2615 1107.8369,74.2615 Q1105.9937,74.2615 1105.0232,73.0469 Q1104.0527,71.8323 1104.0527,69.5374 Q1104.0527,67.2363 1105.0232,66.0217 Q1105.9937,64.8071 1107.8369,64.8071 Q1108.3557,64.8071 1108.8318,64.917 Q1109.3079,65.0269 1109.7229,65.2466 L1109.7229,67.2485 Q1109.259,66.8213 1108.8226,66.6229 Q1108.3862,66.4246 1107.9224,66.4246 Q1106.9336,66.4246 1106.4301,67.2089 Q1105.9265,67.9932 1105.9265,69.5374 Q1105.9265,71.0754 1106.4301,71.8597 Q1106.9336,72.644 1107.9224,72.644 Q1108.3862,72.644 1108.8226,72.4457 Q1109.259,72.2473 1109.7229,71.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="177.0833" x="1124.4792" y="74.1211">MapMeasurementsUnitTest</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1094.2708" x2="1306.7708" y1="85.0911" y2="85.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1094.2708" x2="1306.7708" y1="93.4245" y2="93.4245"/><!--MD5=[bf44db367380f179c40c3108b4f7e1df]
+class MapGeographyUnitTest--><rect codeLine="49" fill="#282828" height="87.5448" id="MapGeographyUnitTest" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="320.8333" x="1040.1042" y="292.2445"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="320.8333" x="1040.1042" y="292.2445"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="320.8333" x="1040.1042" y="315.2995"/><rect codeLine="49" fill="none" height="87.5448" id="MapGeographyUnitTest" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="320.8333" x="1040.1042" y="292.2445"/><ellipse cx="1117.1875" cy="307.9386" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M1119.0979,312.3637 Q1118.6707,312.5834 1118.2007,312.6933 Q1117.7307,312.8031 1117.2119,312.8031 Q1115.3687,312.8031 1114.3982,311.5885 Q1113.4277,310.3739 1113.4277,308.079 Q1113.4277,305.778 1114.3982,304.5634 Q1115.3687,303.3488 1117.2119,303.3488 Q1117.7307,303.3488 1118.2068,303.4587 Q1118.6829,303.5685 1119.0979,303.7882 L1119.0979,305.7902 Q1118.634,305.363 1118.1976,305.1646 Q1117.7612,304.9662 1117.2974,304.9662 Q1116.3086,304.9662 1115.8051,305.7505 Q1115.3015,306.5348 1115.3015,308.079 Q1115.3015,309.6171 1115.8051,310.4014 Q1116.3086,311.1857 1117.2974,311.1857 Q1117.7612,311.1857 1118.1976,310.9873 Q1118.634,310.789 1119.0979,310.3617 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="152.0833" x="1140.1042" y="312.6628">MapGeographyUnitTest</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="1041.1458" x2="1359.8958" y1="323.6328" y2="323.6328"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1041.1458" x2="1359.8958" y1="331.9661" y2="331.9661"/><polygon fill="#FFFF44" points="1051.5625,338.2161,1055.7292,342.3828,1051.5625,346.5495,1047.3958,342.3828" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="288.5417" x="1063.0208" y="350.3357">Location location(double latitude, double longitude)</text><polygon fill="#FFFF44" points="1051.5625,357.961,1055.7292,362.1277,1051.5625,366.2944,1047.3958,362.1277" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="206.25" x="1063.0208" y="370.0806">Rectangle rectangle(String rectangle)</text><!--MD5=[58b527388cbfd4de9295577f0047455b]
+reverse link KryoTypes to MapGeographyKryoTypes--><path codeLine="6" d="M108.8542,123.0049 C108.8542,171.1195 108.8542,247.3382 108.8542,294.0674 " fill="none" id="KryoTypes-backto-MapGeographyKryoTypes" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="101.5625,122.7236,108.8542,101.8903,116.1458,122.7236,101.5625,122.7236" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[8d6fa04f980fc62bd9fc56a876a86a4e]
+reverse link Project to MapGeographyProject--><path codeLine="17" d="M450.5208,122.8695 C450.5208,160.0465 450.5208,214.0674 450.5208,258.2757 " fill="none" id="Project-backto-MapGeographyProject" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="443.2292,122.7236,450.5208,101.8903,457.8125,122.7236,443.2292,122.7236" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[58ba07dbb9bb3bd8a171d927c037b6a8]
+reverse link MapMeasurementsRandomValueFactory to MapGeographyRandomValueFactory--><path codeLine="28" d="M791.1458,122.9007 C791.1458,135.109 791.1458,149.1403 791.1458,164.0465 " fill="none" id="MapMeasurementsRandomValueFactory-backto-MapGeographyRandomValueFactory" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="783.8542,122.7236,791.1458,101.8903,798.4375,122.7236,783.8542,122.7236" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[84b757e3af5a554b21d4afd31d478a5b]
+reverse link MapMeasurementsUnitTest to MapGeographyUnitTest--><path codeLine="48" d="M1200.5208,122.734 C1200.5208,170.2028 1200.5208,245.2445 1200.5208,292.2028 " fill="none" id="MapMeasurementsUnitTest-backto-MapGeographyUnitTest" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="1193.2292,122.7236,1200.5208,101.8903,1207.8125,122.7236,1193.2292,122.7236" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[9c0281684232fa4f7af13cc1c9eb227b]
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.geography.project"
+    
+    KryoTypes <|- - MapGeographyKryoTypes
+    class MapGeographyKryoTypes
+    {
+        - -(constructors)- -
+        +MapGeographyKryoTypes()
+    }
+    
+    class MapGeographyLimits
+    {
+    }
+    
+    Project <|- - MapGeographyProject
+    class MapGeographyProject
+    {
+        - -(constructors)- -
+        #MapGeographyProject()
+        - -
+        +KryoTypes kryoTypes()
+        - -(collection)- -
+        +MapGeographyProject get()
+    }
+    
+    MapMeasurementsRandomValueFactory <|- - MapGeographyRandomValueFactory
+    class MapGeographyRandomValueFactory
+    {
+        - -(constructors)- -
+        +MapGeographyRandomValueFactory()
+        +MapGeographyRandomValueFactory(long)
+        - -(factory)- -
+        +Latitude newLatitude(Latitude min, Latitude max)
+        +Latitude newLatitude()
+        +Location newLocation()
+        +Location newLocation(Rectangle bounds)
+        +Longitude newLongitude()
+        +Longitude newLongitude(Longitude min, Longitude max)
+        +Rectangle newRectangle(Rectangle bounds)
+        +Rectangle newRectangle()
+        +Rectangle newRectangle(Rectangle bounds, Distance maximumRadius)
+        +Size newSize(Size maximum)
+        +Size newSize(Size min, Size max)
+    }
+    
+    MapMeasurementsUnitTest <|- - MapGeographyUnitTest
+    class MapGeographyUnitTest
+    {
+        - -
+        #Location location(double latitude, double longitude)
+        #Rectangle rectangle(String rectangle)
+    }
+    
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+
+
+skinparam backgroundColor #333333
+
+
+
+
+
+
+skinparam  {
+    defaultFontName   "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+    defaultFontSize   12
+    defaultTextAlignment left
+    shadowing false
+    RoundCorner 10
+    TitleFontSize 18
+}
+
+skinparam defaultFontName       "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           16
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               3
+skinparam ArrowColor            #545454
+skinparam stereotype {
+    CBackgroundColor #0066cf
+    CBorderColor #0086ef
+    ABackgroundColor #C8Ac00
+    ABorderColor #D8Bc00
+    IBackgroundColor #008400
+    IBorderColor #239c23
+    EBackgroundColor #cf6300
+    EBorderColor #ef8300
+    NBackgroundColor #3380b9
+    NBorderColor #004d86
+}
+skinparam title {
+	FontColor	                 #c0c0c0
+ 	BorderColor                  #545454
+	FontSize	    	         20
+	BorderRoundCorner            16
+	BorderThickness 	         1
+	BackgroundColor              #48494b
+}
+
+
+skinparam legend {
+	BackgroundColor #303030
+	BorderColor #404040
+	FontColor #a0a0a0
+}
+
+	skinparam swimlane {
+	BorderColor #5e5e5e
+	BorderThickness 2
+	TitleBackgroundColor  #6d6d6d-#484848
+	TitleFontColor #303030
+}
+
+skinparam activity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BarColor #00FF00
+	StartColor #0060a8
+	EndColor #0060a8
+	DiamondBackgroundColor #6d6d6d-#3a3a3a
+  	DiamondBorderColor #3a3a3a
+  	DiamondFontColor #fefefe
+}
+
+
+skinparam participant {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam arrow {
+	Thickness 1.5
+	Color #545454
+	FontColor #a0a0a0
+    FontStyle bold
+    MessageAlignment center
+}
+
+
+
+skinparam sequence {
+	BorderColor #303030
+	TitleFontColor #303030
+	BackgroundColor #333333
+	StartColor #303030
+	EndColor #303030
+	BoxBackgroundColor #333333
+	BoxBorderColor #484848
+	BoxFontColor #484848
+	LifeLineBorderColor #484848
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor #3a3a3a
+	GroupBorderColor #484848
+	GroupFontColor #484848
+	GroupHeaderFontColor #0060a8
+	GroupBackgroundColor #484848
+	GroupHeaderBackgroundColor #333333
+	DividerBackgroundColor #484848
+    DividerBorderColor #484848
+    DividerBorderThickness 2
+    DividerFontColor #D8Bc00
+	ReferenceBackgroundColor #333333
+	ReferenceBorderColor #484848
+	ReferenceFontColor #fefefe
+	ReferenceHeaderBackgroundColor #484848
+}
+
+
+skinparam partition {
+	BorderColor #303030
+	FontColor #333333
+	BackgroundColor #333333
+}
+
+
+skinparam collections {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam control {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam entity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam boundary {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam agent {
+	BackgroundColor #ff8000
+	BorderColor #ff9933
+	FontColor #484848
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor #1b1b1a
+	BorderColor #5e5e5e
+	FontSize 11
+	FontColor #a0a0a0
+}
+
+
+skinparam artifact {
+	BorderThickness 10
+	BorderColor #5e5e5e
+	BackgroundColor #1b1b1a
+	FontColor #D8Bc00
+}
+
+
+skinparam component {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam interface {
+	BackgroundColor  #008400
+	BorderColor  #007F00
+	FontColor #484848
+}
+
+
+skinparam storage {
+	BackgroundColor #ff8000
+  	BorderColor #cc6600
+	FontColor #222222
+}
+
+
+skinparam node {
+	BackgroundColor #333333
+	BorderColor #333333
+	FontColor #C8Ac00
+}
+
+
+skinparam cloud {
+	BackgroundColor #484848-black
+	BorderColor #484848
+	FontColor #D8Bc00
+}
+
+
+skinparam database {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor  #333333
+}
+
+
+skinparam class {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	HeaderBackgroundColor #1b1b1a
+    BackgroundColor #282828
+    BorderColor #5e5e5e
+ 	StereotypeFontColor #a0a0a0
+    StereotypeFontStyle bold
+	BorderThickness 1
+	AttributeFontColor #D8Bc00
+	AttributeFontSize 11
+    FontColor #D8Bc00
+    FontStyle bold
+}
+
+
+skinparam object {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StereotypeFontColor #484848
+	BorderThickness 1
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam rectangle {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam package {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor #6d6d6d
+  	BorderColor #ff8000
+	FontColor #ff8000
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor #6d6d6d
+  	BorderColor #0060a8
+	FontColor #0060a8
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StartColor #0060a8
+	EndColor #0060a8
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam card {
+	BackgroundColor #0060a8
+	BorderColor #004d86
+	FontColor $INFO_TEXT
+}
+
+
+skinparam file {
+	BackgroundColor #6d6d6d-#484848
+	BorderColor #0060a8
+	FontColor #fefefe
+}
+
+
+skinparam stack {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+    
+    title "com.telenav.aonia.map.geography.project"
+    
+    KryoTypes <|- - MapGeographyKryoTypes
+    class MapGeographyKryoTypes
+    {
+        - -(constructors)- -
+        +MapGeographyKryoTypes()
+    }
+    
+    class MapGeographyLimits
+    {
+    }
+    
+    Project <|- - MapGeographyProject
+    class MapGeographyProject
+    {
+        - -(constructors)- -
+        #MapGeographyProject()
+        - -
+        +KryoTypes kryoTypes()
+        - -(collection)- -
+        +MapGeographyProject get()
+    }
+    
+    MapMeasurementsRandomValueFactory <|- - MapGeographyRandomValueFactory
+    class MapGeographyRandomValueFactory
+    {
+        - -(constructors)- -
+        +MapGeographyRandomValueFactory()
+        +MapGeographyRandomValueFactory(long)
+        - -(factory)- -
+        +Latitude newLatitude(Latitude min, Latitude max)
+        +Latitude newLatitude()
+        +Location newLocation()
+        +Location newLocation(Rectangle bounds)
+        +Longitude newLongitude()
+        +Longitude newLongitude(Longitude min, Longitude max)
+        +Rectangle newRectangle(Rectangle bounds)
+        +Rectangle newRectangle()
+        +Rectangle newRectangle(Rectangle bounds, Distance maximumRadius)
+        +Size newSize(Size maximum)
+        +Size newSize(Size min, Size max)
+    }
+    
+    MapMeasurementsUnitTest <|- - MapGeographyUnitTest
+    class MapGeographyUnitTest
+    {
+        - -
+        #Location location(double latitude, double longitude)
+        #Rectangle rectangle(String rectangle)
+    }
+    
+@enduml
+
+PlantUML version 1.2021.01(Tue Feb 02 00:55:08 MST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

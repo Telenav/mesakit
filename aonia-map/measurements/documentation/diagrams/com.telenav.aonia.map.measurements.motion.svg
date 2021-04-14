@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1158.3333px" preserveAspectRatio="none" style="width:1788px;height:1158px;background:#333333;" version="1.1" viewBox="0 0 1788 1158" width="1788.5417px" zoomAndPan="magnify"><defs/><g><rect fill="#48494B" height="41.2028" rx="8.3333" ry="8.3333" style="stroke:#545454;stroke-width:1.0416666666666667;" width="484.375" x="645.0521" y="2.0833"/><text fill="#C0C0C0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="20.8333" lengthAdjust="spacing" textLength="461.4583" x="656.5104" y="30.5583">com.telenav.aonia.map.measurements.motion</text><!--MD5=[9aa687ed59f428548907e723dba1087a]
+class BaseStringConverter--><rect codeLine="6" fill="#282828" height="48.055" id="BaseStringConverter" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="169.7917" x="374.4792" y="101.0986"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="169.7917" x="374.4792" y="101.0986"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="169.7917" x="374.4792" y="124.1536"/><rect codeLine="6" fill="none" height="48.055" id="BaseStringConverter" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="169.7917" x="374.4792" y="101.0986"/><ellipse cx="389.0625" cy="116.7928" fill="#C8AC00" rx="10.4167" ry="10.4167" style="stroke:#D8BC00;stroke-width:1.0416666666666667;"/><path d="M389.1764,113.4949 L388.328,117.2241 L390.0309,117.2241 Z M388.0778,111.8469 L390.2812,111.8469 L392.7409,120.9595 L390.9403,120.9595 L390.3788,118.7073 L387.9679,118.7073 L387.4186,120.9595 L385.6181,120.9595 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="132.2917" x="405.7292" y="121.5169">BaseStringConverter</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="375.5208" x2="543.2292" y1="132.487" y2="132.487"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="375.5208" x2="543.2292" y1="140.8203" y2="140.8203"/><!--MD5=[7a4729d26b999f6a4650b01106c103c5]
+class Comparable--><rect codeLine="8" fill="#282828" height="48.055" id="Comparable" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="115.625" x="1189.0625" y="101.0986"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="115.625" x="1189.0625" y="101.0986"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="115.625" x="1189.0625" y="124.1536"/><rect codeLine="8" fill="none" height="48.055" id="Comparable" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="115.625" x="1189.0625" y="101.0986"/><ellipse cx="1203.6458" cy="116.7928" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M1200.529,113.9547 L1200.529,112.3678 L1205.955,112.3678 L1205.955,113.9547 L1204.1423,113.9547 L1204.1423,119.8934 L1205.955,119.8934 L1205.955,121.4803 L1200.529,121.4803 L1200.529,119.8934 L1202.3417,119.8934 L1202.3417,113.9547 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="78.125" x="1220.3125" y="121.5169">Comparable</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1190.1042" x2="1303.6458" y1="132.487" y2="132.487"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1190.1042" x2="1303.6458" y1="140.8203" y2="140.8203"/><!--MD5=[bc39a93972ee56a020d0ede45fbe8c90]
+class Acceleration--><rect codeLine="12" fill="#282828" height="142.6127" id="Acceleration" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="440.625" x="1341.1458" y="53.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="440.625" x="1341.1458" y="53.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="440.625" x="1341.1458" y="76.7578"/><rect codeLine="12" fill="none" height="142.6127" id="Acceleration" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="440.625" x="1341.1458" y="53.7028"/><ellipse cx="1514.5833" cy="69.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M1516.4937,73.822 Q1516.0665,74.0417 1515.5965,74.1516 Q1515.1265,74.2615 1514.6077,74.2615 Q1512.7645,74.2615 1511.794,73.0469 Q1510.8236,71.8323 1510.8236,69.5374 Q1510.8236,67.2363 1511.794,66.0217 Q1512.7645,64.8071 1514.6077,64.8071 Q1515.1265,64.8071 1515.6026,64.917 Q1516.0787,65.0269 1516.4937,65.2466 L1516.4937,67.2485 Q1516.0299,66.8213 1515.5935,66.6229 Q1515.1571,66.4246 1514.6932,66.4246 Q1513.7044,66.4246 1513.2009,67.2089 Q1512.6973,67.9932 1512.6973,69.5374 Q1512.6973,71.0754 1513.2009,71.8597 Q1513.7044,72.644 1514.6932,72.644 Q1515.1571,72.644 1515.5935,72.4457 Q1516.0299,72.2473 1516.4937,71.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="79.1667" x="1537.5" y="74.1211">Acceleration</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="1342.1875" x2="1780.7292" y1="85.0911" y2="85.0911"/><ellipse cx="1352.6042" cy="120.461" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="204.1667" x="1364.0625" y="127.3722">double asMetersPerSecondSquared()</text><ellipse cx="1352.6042" cy="140.2059" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="182.2917" x="1364.0625" y="147.1171">double asMilesPerHourSquared()</text><ellipse cx="1352.6042" cy="159.9508" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="408.3333" x="1364.0625" y="166.862">Acceleration metersPerSecondSquared(double metersPerSecondSquared)</text><ellipse cx="1352.6042" cy="179.6956" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="364.5833" x="1364.0625" y="186.6069">Acceleration milesPerHourSquared(double milesPerHourSquared)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1342.1875" x2="1542.1875" y1="103.2969" y2="103.2969"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="32.2917" x="1545.3125" y="107.1065">(time)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1580.7292" x2="1780.7292" y1="103.2969" y2="103.2969"/><!--MD5=[aaa2e902e619045a6f24d394d34237d2]
+class Speed--><rect codeLine="52" fill="#282828" height="736.0474" id="Speed" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="452.0833" x="1036.4583" y="281.8278"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="452.0833" x="1036.4583" y="281.8278"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="452.0833" x="1036.4583" y="304.8828"/><rect codeLine="52" fill="none" height="736.0474" id="Speed" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="452.0833" x="1036.4583" y="281.8278"/><ellipse cx="1235.9375" cy="297.522" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M1237.8479,301.947 Q1237.4207,302.1667 1236.9507,302.2766 Q1236.4807,302.3865 1235.9619,302.3865 Q1234.1187,302.3865 1233.1482,301.1719 Q1232.1777,299.9573 1232.1777,297.6624 Q1232.1777,295.3613 1233.1482,294.1467 Q1234.1187,292.9321 1235.9619,292.9321 Q1236.4807,292.9321 1236.9568,293.042 Q1237.4329,293.1519 1237.8479,293.3716 L1237.8479,295.3735 Q1237.384,294.9463 1236.9476,294.7479 Q1236.5112,294.5496 1236.0474,294.5496 Q1235.0586,294.5496 1234.5551,295.3339 Q1234.0515,296.1182 1234.0515,297.6624 Q1234.0515,299.2004 1234.5551,299.9847 Q1235.0586,300.769 1236.0474,300.769 Q1236.5112,300.769 1236.9476,300.5707 Q1237.384,300.3723 1237.8479,299.9451 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="38.5417" x="1258.8542" y="302.2461">Speed</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="1037.5" x2="1487.5" y1="313.2161" y2="313.2161"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1037.5" x2="1487.5" y1="321.5495" y2="321.5495"/><ellipse cx="1047.9167" cy="333.0078" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="159.375" x="1059.375" y="339.919">Speed difference(Speed that)</text><ellipse cx="1047.9167" cy="352.7527" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="162.5" x="1059.375" y="359.6639">Speed scale(Level coefficient)</text><ellipse cx="1047.9167" cy="396.4091" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="203.125" x="1059.375" y="403.3203">boolean isBetween(Speed a, Speed b)</text><ellipse cx="1047.9167" cy="416.154" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="193.75" x="1059.375" y="423.0652">boolean isGreaterThan(Speed that)</text><ellipse cx="1047.9167" cy="435.8988" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="253.125" x="1059.375" y="442.8101">boolean isGreaterThanOrEqualTo(Speed that)</text><ellipse cx="1047.9167" cy="455.6437" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="102.0833" x="1059.375" y="462.5549">boolean isInvalid()</text><ellipse cx="1047.9167" cy="475.3886" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="177.0833" x="1059.375" y="482.2998">boolean isLessThan(Speed that)</text><ellipse cx="1047.9167" cy="495.1335" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="236.4583" x="1059.375" y="502.0447">boolean isLessThanOrEqualTo(Speed that)</text><ellipse cx="1047.9167" cy="514.8783" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="94.7917" x="1059.375" y="521.7896">boolean isNone()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1037.5" x2="1235.9375" y1="379.245" y2="379.245"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="46.875" x="1239.0625" y="383.0546">(checks)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1289.0625" x2="1487.5" y1="379.245" y2="379.245"/><ellipse cx="1047.9167" cy="558.5347" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="158.3333" x="1059.375" y="565.446">Speed maximum(Speed that)</text><ellipse cx="1047.9167" cy="578.2796" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="155.2083" x="1059.375" y="585.1908">Speed minimum(Speed that)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1037.5" x2="1241.1458" y1="541.3706" y2="541.3706"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="36.4583" x="1244.2708" y="545.1803">(math)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1283.8542" x2="1487.5" y1="541.3706" y2="541.3706"/><ellipse cx="1047.9167" cy="621.936" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="134.375" x="1059.375" y="628.8472">Speed parse(String text)</text><ellipse cx="1047.9167" cy="641.6809" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="419.7917" x="1059.375" y="648.5921">SwitchParser.Builder&lt;Speed&gt; switchParser(String name, String description)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1037.5" x2="1233.8542" y1="604.7719" y2="604.7719"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="51.0417" x="1236.9792" y="608.5815">(parsing)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1291.1458" x2="1487.5" y1="604.7719" y2="604.7719"/><ellipse cx="1047.9167" cy="685.3373" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="194.7917" x="1059.375" y="692.2485">int asHundredthsOfAMilePerHour()</text><ellipse cx="1047.9167" cy="705.0822" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="167.7083" x="1059.375" y="711.9934">double asKilometersPerHour()</text><ellipse cx="1047.9167" cy="724.8271" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="145.8333" x="1059.375" y="731.7383">double asMetersPerHour()</text><ellipse cx="1047.9167" cy="744.5719" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="158.3333" x="1059.375" y="751.4832">double asMetersPerSecond()</text><ellipse cx="1047.9167" cy="764.3168" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="173.9583" x="1059.375" y="771.228">int asMicroDegreesPerSecond()</text><ellipse cx="1047.9167" cy="784.0617" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="136.4583" x="1059.375" y="790.9729">double asMilesPerHour()</text><ellipse cx="1047.9167" cy="803.8066" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="168.75" x="1059.375" y="810.7178">double asMillimetersPerHour()</text><ellipse cx="1047.9167" cy="823.5514" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="261.4583" x="1059.375" y="830.4626">Speed distancePerDuration(Distance, Duration)</text><ellipse cx="1047.9167" cy="843.2963" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="417.7083" x="1059.375" y="850.2075">Speed hundredthsOfAMilePerHour(int speedInHundredthsOfAMilePerHour)</text><ellipse cx="1047.9167" cy="863.0412" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="211.4583" x="1059.375" y="869.9524">Speed kilometersPerHour(double kph)</text><ellipse cx="1047.9167" cy="882.7861" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="255.2083" x="1059.375" y="889.6973">Speed metersPerHour(double metersPerHour)</text><ellipse cx="1047.9167" cy="902.5309" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="280.2083" x="1059.375" y="909.4421">Speed metersPerSecond(double metersPerSecond)</text><ellipse cx="1047.9167" cy="922.2758" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="228.125" x="1059.375" y="929.187">Speed microDegreesPerSecond(int value)</text><ellipse cx="1047.9167" cy="942.0207" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="186.4583" x="1059.375" y="948.9319">Speed milesPerHour(double mph)</text><ellipse cx="1047.9167" cy="961.7655" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="287.5" x="1059.375" y="968.6768">Speed millimetersPerHour(long millimetersPerHour)</text><ellipse cx="1047.9167" cy="981.5104" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="219.7917" x="1059.375" y="988.4216">Duration timeToTravel(Distance length)</text><ellipse cx="1047.9167" cy="1001.2553" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="275" x="1059.375" y="1008.1665">long timeToTravelInMilliseconds(Distance length)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1037.5" x2="1243.2292" y1="668.1732" y2="668.1732"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="32.2917" x="1246.3542" y="671.9828">(time)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1281.7708" x2="1487.5" y1="668.1732" y2="668.1732"/><!--MD5=[e7713a66b67445a0eb297b7e73c442e5]
+class Duration--><rect fill="#282828" height="48.055" id="Duration" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="94.7917" x="1407.8125" y="1103.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="94.7917" x="1407.8125" y="1103.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="94.7917" x="1407.8125" y="1126.7578"/><rect fill="none" height="48.055" id="Duration" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="94.7917" x="1407.8125" y="1103.7028"/><ellipse cx="1422.3958" cy="1119.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M1424.3062,1123.822 Q1423.879,1124.0417 1423.409,1124.1516 Q1422.939,1124.2615 1422.4202,1124.2615 Q1420.577,1124.2615 1419.6065,1123.0469 Q1418.6361,1121.8323 1418.6361,1119.5374 Q1418.6361,1117.2363 1419.6065,1116.0217 Q1420.577,1114.8071 1422.4202,1114.8071 Q1422.939,1114.8071 1423.4151,1114.917 Q1423.8912,1115.0269 1424.3062,1115.2466 L1424.3062,1117.2485 Q1423.8424,1116.8213 1423.406,1116.6229 Q1422.9696,1116.4246 1422.5057,1116.4246 Q1421.5169,1116.4246 1421.0134,1117.2089 Q1420.5098,1117.9932 1420.5098,1119.5374 Q1420.5098,1121.0754 1421.0134,1121.8597 Q1421.5169,1122.644 1422.5057,1122.644 Q1422.9696,1122.644 1423.406,1122.4457 Q1423.8424,1122.2473 1424.3062,1121.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="57.2917" x="1439.0625" y="1124.1211">Duration</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1408.8542" x2="1501.5625" y1="1135.0911" y2="1135.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1408.8542" x2="1501.5625" y1="1143.4245" y2="1143.4245"/><!--MD5=[1c7ba61b785f20e96c2cfede24454b1c]
+class Speed.Converter--><rect codeLine="22" fill="#282828" height="83.3781" id="Speed.Converter" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="141.6667" x="7.2917" y="608.3903"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="141.6667" x="7.2917" y="608.3903"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="141.6667" x="7.2917" y="631.4453"/><rect codeLine="22" fill="none" height="83.3781" id="Speed.Converter" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="141.6667" x="7.2917" y="608.3903"/><ellipse cx="40.1563" cy="624.0845" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M42.0667,628.5095 Q41.6394,628.7292 41.1694,628.8391 Q40.6995,628.949 40.1807,628.949 Q38.3374,628.949 37.3669,627.7344 Q36.3965,626.5198 36.3965,624.2249 Q36.3965,621.9238 37.3669,620.7092 Q38.3374,619.4946 40.1807,619.4946 Q40.6995,619.4946 41.1755,619.6045 Q41.6516,619.7144 42.0667,619.9341 L42.0667,621.936 Q41.6028,621.5088 41.1664,621.3104 Q40.73,621.1121 40.2661,621.1121 Q39.2773,621.1121 38.7738,621.8964 Q38.2703,622.6807 38.2703,624.2249 Q38.2703,625.7629 38.7738,626.5472 Q39.2773,627.3315 40.2661,627.3315 Q40.73,627.3315 41.1664,627.1332 Q41.6028,626.9348 42.0667,626.5076 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="63.5417" x="60.8854" y="628.8086">Converter</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="8.3333" x2="147.9167" y1="639.7786" y2="639.7786"/><ellipse cx="18.75" cy="675.1485" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="109.375" x="30.2083" y="682.0597">Converter(Listener)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="8.3333" x2="34.375" y1="657.9844" y2="657.9844"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="37.5" y="661.794">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="121.875" x2="147.9167" y1="657.9844" y2="657.9844"/><!--MD5=[52ebc07e10c775453d56c3cfbc555431]
+class Speed.KilometersPerHourConverter--><rect codeLine="29" fill="#282828" height="83.3781" id="Speed.KilometersPerHourConverter" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="246.875" x="185.9375" y="608.3903"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="246.875" x="185.9375" y="608.3903"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="246.875" x="185.9375" y="631.4453"/><rect codeLine="29" fill="none" height="83.3781" id="Speed.KilometersPerHourConverter" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="246.875" x="185.9375" y="608.3903"/><ellipse cx="211.3021" cy="624.0845" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M213.2125,628.5095 Q212.7852,628.7292 212.3153,628.8391 Q211.8453,628.949 211.3265,628.949 Q209.4832,628.949 208.5128,627.7344 Q207.5423,626.5198 207.5423,624.2249 Q207.5423,621.9238 208.5128,620.7092 Q209.4832,619.4946 211.3265,619.4946 Q211.8453,619.4946 212.3214,619.6045 Q212.7974,619.7144 213.2125,619.9341 L213.2125,621.936 Q212.7486,621.5088 212.3122,621.3104 Q211.8758,621.1121 211.4119,621.1121 Q210.4232,621.1121 209.9196,621.8964 Q209.4161,622.6807 209.4161,624.2249 Q209.4161,625.7629 209.9196,626.5472 Q210.4232,627.3315 211.4119,627.3315 Q211.8758,627.3315 212.3122,627.1332 Q212.7486,626.9348 213.2125,626.5076 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="185.4167" x="230.3646" y="628.8086">KilometersPerHourConverter</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="186.9792" x2="431.7708" y1="639.7786" y2="639.7786"/><ellipse cx="197.3958" cy="675.1485" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="214.5833" x="208.8542" y="682.0597">KilometersPerHourConverter(Listener)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="186.9792" x2="265.625" y1="657.9844" y2="657.9844"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="268.75" y="661.794">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="353.125" x2="431.7708" y1="657.9844" y2="657.9844"/><!--MD5=[f2019afc9d7059450a7716190dfb756e]
+class Speed.MicroDegreesPerSecondConverter--><rect codeLine="36" fill="#282828" height="83.3781" id="Speed.MicroDegreesPerSecondConverter" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="277.0833" x="469.7917" y="608.3903"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="277.0833" x="469.7917" y="608.3903"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="277.0833" x="469.7917" y="631.4453"/><rect codeLine="36" fill="none" height="83.3781" id="Speed.MicroDegreesPerSecondConverter" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="277.0833" x="469.7917" y="608.3903"/><ellipse cx="494.2188" cy="624.0845" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M496.1292,628.5095 Q495.7019,628.7292 495.2319,628.8391 Q494.762,628.949 494.2432,628.949 Q492.3999,628.949 491.4294,627.7344 Q490.459,626.5198 490.459,624.2249 Q490.459,621.9238 491.4294,620.7092 Q492.3999,619.4946 494.2432,619.4946 Q494.762,619.4946 495.238,619.6045 Q495.7141,619.7144 496.1292,619.9341 L496.1292,621.936 Q495.6653,621.5088 495.2289,621.3104 Q494.7925,621.1121 494.3286,621.1121 Q493.3398,621.1121 492.8363,621.8964 Q492.3328,622.6807 492.3328,624.2249 Q492.3328,625.7629 492.8363,626.5472 Q493.3398,627.3315 494.3286,627.3315 Q494.7925,627.3315 495.2289,627.1332 Q495.6653,626.9348 496.1292,626.5076 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="217.7083" x="513.0729" y="628.8086">MicroDegreesPerSecondConverter</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="470.8333" x2="745.8333" y1="639.7786" y2="639.7786"/><ellipse cx="481.25" cy="675.1485" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="244.7917" x="492.7083" y="682.0597">MicroDegreesPerSecondConverter(Listener)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="470.8333" x2="564.5833" y1="657.9844" y2="657.9844"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="567.7083" y="661.794">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="652.0833" x2="745.8333" y1="657.9844" y2="657.9844"/><!--MD5=[ac406160cfbb6851f6cd6b38a3984313]
+class Speed.MilesPerHourConverter--><rect codeLine="43" fill="#282828" height="83.3781" id="Speed.MilesPerHourConverter" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="215.625" x="783.8542" y="608.3903"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="215.625" x="783.8542" y="608.3903"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="215.625" x="783.8542" y="631.4453"/><rect codeLine="43" fill="none" height="83.3781" id="Speed.MilesPerHourConverter" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="215.625" x="783.8542" y="608.3903"/><ellipse cx="811.5625" cy="624.0845" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M813.4729,628.5095 Q813.0457,628.7292 812.5757,628.8391 Q812.1057,628.949 811.5869,628.949 Q809.7437,628.949 808.7732,627.7344 Q807.8027,626.5198 807.8027,624.2249 Q807.8027,621.9238 808.7732,620.7092 Q809.7437,619.4946 811.5869,619.4946 Q812.1057,619.4946 812.5818,619.6045 Q813.0579,619.7144 813.4729,619.9341 L813.4729,621.936 Q813.009,621.5088 812.5726,621.3104 Q812.1362,621.1121 811.6724,621.1121 Q810.6836,621.1121 810.1801,621.8964 Q809.6765,622.6807 809.6765,624.2249 Q809.6765,625.7629 810.1801,626.5472 Q810.6836,627.3315 811.6724,627.3315 Q812.1362,627.3315 812.5726,627.1332 Q813.009,626.9348 813.4729,626.5076 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="148.9583" x="831.1458" y="628.8086">MilesPerHourConverter</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="784.8958" x2="998.4375" y1="639.7786" y2="639.7786"/><ellipse cx="795.3125" cy="675.1485" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="183.3333" x="806.7708" y="682.0597">MilesPerHourConverter(Listener)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="784.8958" x2="847.9167" y1="657.9844" y2="657.9844"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="851.0417" y="661.794">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="935.4167" x2="998.4375" y1="657.9844" y2="657.9844"/><!--MD5=[cc15daeb8b4e6bacf34831777829d2c1]
+class Distance--><rect fill="#282828" height="48.055" id="Distance" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="93.75" x="1215.625" y="1103.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="93.75" x="1215.625" y="1103.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="93.75" x="1215.625" y="1126.7578"/><rect fill="none" height="48.055" id="Distance" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="93.75" x="1215.625" y="1103.7028"/><ellipse cx="1230.2083" cy="1119.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M1232.1187,1123.822 Q1231.6915,1124.0417 1231.2215,1124.1516 Q1230.7515,1124.2615 1230.2327,1124.2615 Q1228.3895,1124.2615 1227.419,1123.0469 Q1226.4486,1121.8323 1226.4486,1119.5374 Q1226.4486,1117.2363 1227.419,1116.0217 Q1228.3895,1114.8071 1230.2327,1114.8071 Q1230.7515,1114.8071 1231.2276,1114.917 Q1231.7037,1115.0269 1232.1187,1115.2466 L1232.1187,1117.2485 Q1231.6549,1116.8213 1231.2185,1116.6229 Q1230.7821,1116.4246 1230.3182,1116.4246 Q1229.3294,1116.4246 1228.8259,1117.2089 Q1228.3223,1117.9932 1228.3223,1119.5374 Q1228.3223,1121.0754 1228.8259,1121.8597 Q1229.3294,1122.644 1230.3182,1122.644 Q1230.7821,1122.644 1231.2185,1122.4457 Q1231.6549,1122.2473 1232.1187,1121.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="56.25" x="1246.875" y="1124.1211">Distance</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1216.6667" x2="1308.3333" y1="1135.0911" y2="1135.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="1216.6667" x2="1308.3333" y1="1143.4245" y2="1143.4245"/><!--MD5=[b9b2d2d66296eada3585c4132f0ec078]
+reverse link Acceleration to Speed--><path codeLine="10" d="M1479.1875,207.057 C1473.6354,213.8174 1468.3542,220.7236 1463.5417,227.6611 C1451.5313,244.984 1439.8958,263.1299 1428.6667,281.7549 " fill="none" id="Acceleration-backto-Speed" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#333333" points="1488.0938,196.5674,1480.8713,198.6313,1479.9985,206.092,1487.221,204.0281,1488.0938,196.5674" style="stroke:#545454;stroke-width:1.5625;"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="62.5" x="1467.7083" y="243.9128">change in</text><!--MD5=[2af5377e527fc3ddb7a98eaa3df9aafa]
+reverse link Acceleration to Duration--><path codeLine="11" d="M1567.0104,210.6299 C1575.2292,371.057 1582.3958,729.4528 1507.2917,1018.2861 C1499.2083,1049.3903 1482,1082.2757 1469.5729,1103.5465 " fill="none" id="Acceleration-backto-Duration" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#333333" points="1566.2708,196.6507,1562.447,203.1162,1566.9444,209.1326,1570.7682,202.6671,1566.2708,196.6507" style="stroke:#545454;stroke-width:1.5625;"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="20.8333" x="1576.0417" y="654.8503">per</text><!--MD5=[909954fde0f348f0c6c65c5110f10b49]
+reverse link BaseStringConverter to Speed.Converter--><path codeLine="21" d="M358.2396,156.2028 C294.4688,180.2653 215.4375,220.307 167.7083,281.8278 C91.1875,380.4632 78.9271,535.2861 77.6771,608.307 " fill="none" id="BaseStringConverter-backto-Speed.Converter" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="355.8438,149.3174,377.9167,149.0986,360.8021,163.0361,355.8438,149.3174" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[c7423a9c6e15e3e0d3bd40d4ad9dad4d]
+reverse link BaseStringConverter to Speed.KilometersPerHourConverter--><path codeLine="28" d="M446.9479,169.432 C418.4688,268.7028 348.8438,511.432 321.0833,608.2132 " fill="none" id="BaseStringConverter-backto-Speed.KilometersPerHourConverter" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="439.9792,167.2549,452.7396,149.2445,454,171.2757,439.9792,167.2549" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[192115acd2c5bbeb86fe44626d64e3ee]
+reverse link BaseStringConverter to Speed.MicroDegreesPerSecondConverter--><path codeLine="35" d="M471.7188,169.432 C500,268.7028 569.1458,511.432 596.7083,608.2132 " fill="none" id="BaseStringConverter-backto-Speed.MicroDegreesPerSecondConverter" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="464.6667,171.2757,465.9688,149.2445,478.6875,167.2861,464.6667,171.2757" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[53475034665d9d26ce3507772bc916b8]
+reverse link BaseStringConverter to Speed.MilesPerHourConverter--><path codeLine="42" d="M562.5104,156.109 C628.8229,180.2445 712.2604,220.4215 765.625,281.8278 C849.8542,378.734 878.5208,534.7445 887.6771,608.234 " fill="none" id="BaseStringConverter-backto-Speed.MilesPerHourConverter" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="559.8021,162.8799,542.5417,149.1195,564.6042,149.109,559.8021,162.8799" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[2bc178f73d24bc8660c1c811a4e7eef3]
+reverse link Comparable to Speed--><path codeLine="49" d="M1248.1979,170.4424 C1249.0417,198.4632 1250.2083,237.6507 1251.5208,281.6403 " fill="none" id="Comparable-backto-Speed" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="1240.8958,170.2861,1247.5625,149.2445,1255.4792,169.8486,1240.8958,170.2861" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[e98a5e2c32debfb1ddb17aff36820232]
+reverse link Speed to Distance--><path codeLine="50" d="M1262.5,1031.9736 C1262.5,1061.8174 1262.5,1086.8695 1262.5,1103.682 " fill="none" id="Speed-backto-Distance" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#333333" points="1262.5,1018.4215,1258.3333,1024.6715,1262.5,1030.9215,1266.6667,1024.6715,1262.5,1018.4215" style="stroke:#545454;stroke-width:1.5625;"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="62.5" x="1266.6667" y="1065.7878">change in</text><!--MD5=[028f17ae4d0ddadb1d7167073739eea9]
+reverse link Speed to Duration--><path codeLine="51" d="M1416.5208,1031.1715 C1428.7604,1061.359 1439.0417,1086.7132 1445.9167,1103.682 " fill="none" id="Speed-backto-Duration" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#333333" points="1411.3542,1018.4215,1409.8352,1025.7779,1416.0415,1030.0094,1417.5605,1022.653,1411.3542,1018.4215" style="stroke:#545454;stroke-width:1.5625;"/><text fill="#A0A0A0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="20.8333" x="1435.4167" y="1065.7878">per</text><!--MD5=[1e2d140ef906cc67332bc70e6fc9e9d6]
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.measurements.motion"
+    
+    abstract BaseStringConverter
+    
+    interface Comparable
+    
+    Acceleration o- - Speed : "change in"
+    Acceleration o- - Duration : "per"
+    class Acceleration
+    {
+        - -(time)- -
+        +double asMetersPerSecondSquared()
+        +double asMilesPerHourSquared()
+        +Acceleration metersPerSecondSquared(double metersPerSecondSquared)
+        +Acceleration milesPerHourSquared(double milesPerHourSquared)
+    }
+    
+    BaseStringConverter <|- - Speed.Converter
+    class Speed.Converter
+    {
+        - -(constructors)- -
+        +Converter(Listener)
+    }
+    
+    BaseStringConverter <|- - Speed.KilometersPerHourConverter
+    class Speed.KilometersPerHourConverter
+    {
+        - -(constructors)- -
+        +KilometersPerHourConverter(Listener)
+    }
+    
+    BaseStringConverter <|- - Speed.MicroDegreesPerSecondConverter
+    class Speed.MicroDegreesPerSecondConverter
+    {
+        - -(constructors)- -
+        +MicroDegreesPerSecondConverter(Listener)
+    }
+    
+    BaseStringConverter <|- - Speed.MilesPerHourConverter
+    class Speed.MilesPerHourConverter
+    {
+        - -(constructors)- -
+        +MilesPerHourConverter(Listener)
+    }
+    
+    Comparable <|- - Speed
+    Speed o- - Distance : "change in"
+    Speed o- - Duration : "per"
+    class Speed
+    {
+        - -
+        +Speed difference(Speed that)
+        +Speed scale(Level coefficient)
+        - -(checks)- -
+        +boolean isBetween(Speed a, Speed b)
+        +boolean isGreaterThan(Speed that)
+        +boolean isGreaterThanOrEqualTo(Speed that)
+        +boolean isInvalid()
+        +boolean isLessThan(Speed that)
+        +boolean isLessThanOrEqualTo(Speed that)
+        +boolean isNone()
+        - -(math)- -
+        +Speed maximum(Speed that)
+        +Speed minimum(Speed that)
+        - -(parsing)- -
+        +Speed parse(String text)
+        +SwitchParser.Builder<Speed> switchParser(String name, String description)
+        - -(time)- -
+        +int asHundredthsOfAMilePerHour()
+        +double asKilometersPerHour()
+        +double asMetersPerHour()
+        +double asMetersPerSecond()
+        +int asMicroDegreesPerSecond()
+        +double asMilesPerHour()
+        +double asMillimetersPerHour()
+        +Speed distancePerDuration(Distance, Duration)
+        +Speed hundredthsOfAMilePerHour(int speedInHundredthsOfAMilePerHour)
+        +Speed kilometersPerHour(double kph)
+        +Speed metersPerHour(double metersPerHour)
+        +Speed metersPerSecond(double metersPerSecond)
+        +Speed microDegreesPerSecond(int value)
+        +Speed milesPerHour(double mph)
+        +Speed millimetersPerHour(long millimetersPerHour)
+        +Duration timeToTravel(Distance length)
+        +long timeToTravelInMilliseconds(Distance length)
+    }
+    
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+
+
+skinparam backgroundColor #333333
+
+
+
+
+
+
+skinparam  {
+    defaultFontName   "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+    defaultFontSize   12
+    defaultTextAlignment left
+    shadowing false
+    RoundCorner 10
+    TitleFontSize 18
+}
+
+skinparam defaultFontName       "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           16
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               3
+skinparam ArrowColor            #545454
+skinparam stereotype {
+    CBackgroundColor #0066cf
+    CBorderColor #0086ef
+    ABackgroundColor #C8Ac00
+    ABorderColor #D8Bc00
+    IBackgroundColor #008400
+    IBorderColor #239c23
+    EBackgroundColor #cf6300
+    EBorderColor #ef8300
+    NBackgroundColor #3380b9
+    NBorderColor #004d86
+}
+skinparam title {
+	FontColor	                 #c0c0c0
+ 	BorderColor                  #545454
+	FontSize	    	         20
+	BorderRoundCorner            16
+	BorderThickness 	         1
+	BackgroundColor              #48494b
+}
+
+
+skinparam legend {
+	BackgroundColor #303030
+	BorderColor #404040
+	FontColor #a0a0a0
+}
+
+	skinparam swimlane {
+	BorderColor #5e5e5e
+	BorderThickness 2
+	TitleBackgroundColor  #6d6d6d-#484848
+	TitleFontColor #303030
+}
+
+skinparam activity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BarColor #00FF00
+	StartColor #0060a8
+	EndColor #0060a8
+	DiamondBackgroundColor #6d6d6d-#3a3a3a
+  	DiamondBorderColor #3a3a3a
+  	DiamondFontColor #fefefe
+}
+
+
+skinparam participant {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam arrow {
+	Thickness 1.5
+	Color #545454
+	FontColor #a0a0a0
+    FontStyle bold
+    MessageAlignment center
+}
+
+
+
+skinparam sequence {
+	BorderColor #303030
+	TitleFontColor #303030
+	BackgroundColor #333333
+	StartColor #303030
+	EndColor #303030
+	BoxBackgroundColor #333333
+	BoxBorderColor #484848
+	BoxFontColor #484848
+	LifeLineBorderColor #484848
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor #3a3a3a
+	GroupBorderColor #484848
+	GroupFontColor #484848
+	GroupHeaderFontColor #0060a8
+	GroupBackgroundColor #484848
+	GroupHeaderBackgroundColor #333333
+	DividerBackgroundColor #484848
+    DividerBorderColor #484848
+    DividerBorderThickness 2
+    DividerFontColor #D8Bc00
+	ReferenceBackgroundColor #333333
+	ReferenceBorderColor #484848
+	ReferenceFontColor #fefefe
+	ReferenceHeaderBackgroundColor #484848
+}
+
+
+skinparam partition {
+	BorderColor #303030
+	FontColor #333333
+	BackgroundColor #333333
+}
+
+
+skinparam collections {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam control {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam entity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam boundary {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam agent {
+	BackgroundColor #ff8000
+	BorderColor #ff9933
+	FontColor #484848
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor #1b1b1a
+	BorderColor #5e5e5e
+	FontSize 11
+	FontColor #a0a0a0
+}
+
+
+skinparam artifact {
+	BorderThickness 10
+	BorderColor #5e5e5e
+	BackgroundColor #1b1b1a
+	FontColor #D8Bc00
+}
+
+
+skinparam component {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam interface {
+	BackgroundColor  #008400
+	BorderColor  #007F00
+	FontColor #484848
+}
+
+
+skinparam storage {
+	BackgroundColor #ff8000
+  	BorderColor #cc6600
+	FontColor #222222
+}
+
+
+skinparam node {
+	BackgroundColor #333333
+	BorderColor #333333
+	FontColor #C8Ac00
+}
+
+
+skinparam cloud {
+	BackgroundColor #484848-black
+	BorderColor #484848
+	FontColor #D8Bc00
+}
+
+
+skinparam database {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor  #333333
+}
+
+
+skinparam class {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	HeaderBackgroundColor #1b1b1a
+    BackgroundColor #282828
+    BorderColor #5e5e5e
+ 	StereotypeFontColor #a0a0a0
+    StereotypeFontStyle bold
+	BorderThickness 1
+	AttributeFontColor #D8Bc00
+	AttributeFontSize 11
+    FontColor #D8Bc00
+    FontStyle bold
+}
+
+
+skinparam object {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StereotypeFontColor #484848
+	BorderThickness 1
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam rectangle {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam package {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor #6d6d6d
+  	BorderColor #ff8000
+	FontColor #ff8000
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor #6d6d6d
+  	BorderColor #0060a8
+	FontColor #0060a8
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StartColor #0060a8
+	EndColor #0060a8
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam card {
+	BackgroundColor #0060a8
+	BorderColor #004d86
+	FontColor $INFO_TEXT
+}
+
+
+skinparam file {
+	BackgroundColor #6d6d6d-#484848
+	BorderColor #0060a8
+	FontColor #fefefe
+}
+
+
+skinparam stack {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+    
+    title "com.telenav.aonia.map.measurements.motion"
+    
+    abstract BaseStringConverter
+    
+    interface Comparable
+    
+    Acceleration o- - Speed : "change in"
+    Acceleration o- - Duration : "per"
+    class Acceleration
+    {
+        - -(time)- -
+        +double asMetersPerSecondSquared()
+        +double asMilesPerHourSquared()
+        +Acceleration metersPerSecondSquared(double metersPerSecondSquared)
+        +Acceleration milesPerHourSquared(double milesPerHourSquared)
+    }
+    
+    BaseStringConverter <|- - Speed.Converter
+    class Speed.Converter
+    {
+        - -(constructors)- -
+        +Converter(Listener)
+    }
+    
+    BaseStringConverter <|- - Speed.KilometersPerHourConverter
+    class Speed.KilometersPerHourConverter
+    {
+        - -(constructors)- -
+        +KilometersPerHourConverter(Listener)
+    }
+    
+    BaseStringConverter <|- - Speed.MicroDegreesPerSecondConverter
+    class Speed.MicroDegreesPerSecondConverter
+    {
+        - -(constructors)- -
+        +MicroDegreesPerSecondConverter(Listener)
+    }
+    
+    BaseStringConverter <|- - Speed.MilesPerHourConverter
+    class Speed.MilesPerHourConverter
+    {
+        - -(constructors)- -
+        +MilesPerHourConverter(Listener)
+    }
+    
+    Comparable <|- - Speed
+    Speed o- - Distance : "change in"
+    Speed o- - Duration : "per"
+    class Speed
+    {
+        - -
+        +Speed difference(Speed that)
+        +Speed scale(Level coefficient)
+        - -(checks)- -
+        +boolean isBetween(Speed a, Speed b)
+        +boolean isGreaterThan(Speed that)
+        +boolean isGreaterThanOrEqualTo(Speed that)
+        +boolean isInvalid()
+        +boolean isLessThan(Speed that)
+        +boolean isLessThanOrEqualTo(Speed that)
+        +boolean isNone()
+        - -(math)- -
+        +Speed maximum(Speed that)
+        +Speed minimum(Speed that)
+        - -(parsing)- -
+        +Speed parse(String text)
+        +SwitchParser.Builder<Speed> switchParser(String name, String description)
+        - -(time)- -
+        +int asHundredthsOfAMilePerHour()
+        +double asKilometersPerHour()
+        +double asMetersPerHour()
+        +double asMetersPerSecond()
+        +int asMicroDegreesPerSecond()
+        +double asMilesPerHour()
+        +double asMillimetersPerHour()
+        +Speed distancePerDuration(Distance, Duration)
+        +Speed hundredthsOfAMilePerHour(int speedInHundredthsOfAMilePerHour)
+        +Speed kilometersPerHour(double kph)
+        +Speed metersPerHour(double metersPerHour)
+        +Speed metersPerSecond(double metersPerSecond)
+        +Speed microDegreesPerSecond(int value)
+        +Speed milesPerHour(double mph)
+        +Speed millimetersPerHour(long millimetersPerHour)
+        +Duration timeToTravel(Distance length)
+        +long timeToTravelInMilliseconds(Distance length)
+    }
+    
+@enduml
+
+PlantUML version 1.2021.01(Tue Feb 02 00:55:08 MST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

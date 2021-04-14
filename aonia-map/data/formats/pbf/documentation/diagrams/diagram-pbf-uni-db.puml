@@ -1,0 +1,36 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "diagram-pbf-uni-db"
+    
+    WayFilter <|-- NavTeamWayFilter
+    class NavTeamWayFilter
+    {
+        --(constructors)--
+        +NavTeamWayFilter()
+    }
+    
+    RelationFilter <|-- UniDbExcludeAdasRelationFilter
+    class UniDbExcludeAdasRelationFilter
+    {
+        --(constructors)--
+        +UniDbExcludeAdasRelationFilter()
+    }
+    
+    WayFilter <|-- UniDbNavigableWayFilter
+    class UniDbNavigableWayFilter
+    {
+        --(constructors)--
+        +UniDbNavigableWayFilter()
+    }
+    
+    RelationFilter <|-- UniDbRelationsFilter
+    class UniDbRelationsFilter
+    {
+        --(constructors)--
+        +UniDbRelationsFilter()
+    }
+    
+@enduml
+

@@ -1,0 +1,87 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.ui.swing.map.graphics.drawables"
+    
+    Drawable <|-- Arrow
+    class Arrow
+    {
+        --(constructors)--
+        +Arrow(Dot, Style)
+        --
+        +Dot dot()
+        +Shape draw(MapCanvas, Location, Heading)
+        --(functional)--
+        +Arrow withDot(Dot)
+        +Arrow withWidth(Width)
+    }
+    
+    Drawable <|-- Dot
+    class Dot
+    {
+        --(constructors)--
+        +Dot()
+        +Dot(Width, Style, Width, Style)
+        --
+        +Shape draw(MapCanvas, Location)
+        +Width width()
+        --(functional)--
+        +Dot fattened(Percent)
+        +Dot withOutlineStyle(Style)
+        +Dot withOutlineWidth(Width)
+        +Dot withStyle(Style)
+        +Dot withWidth(Width)
+    }
+    
+    abstract class Drawable
+    {
+        --(constructors)--
+        #Drawable()
+        #Drawable(Drawable)
+        #Drawable(Style)
+        --
+        +void style(Style)
+        +Style style()
+    }
+    
+    Drawable <|-- Label
+    class Label
+    {
+        --(constructors)--
+        #Label(Label)
+        +Label(Width, Style)
+        --
+        +Shape draw(MapCanvas, Location, String text)
+    }
+    
+    Drawable <|-- Line
+    class Line
+    {
+        --(constructors)--
+        +Line()
+        +Line(Width, Style, Width, Style)
+        --
+        +Width arrowWidth()
+        +Shape draw(MapCanvas, Polyline)
+        --(functional)--
+        +Line darkened(Percent)
+        +Line darkened()
+        +Line fattened(Percent)
+        +Line lightened(Percent)
+        +Line lightened()
+        +Line withColor(Color)
+        +Line withDrawColor(Color)
+        +Line withDrawStroke(Stroke)
+        +Line withFill(Color)
+        +Line withFillStroke(Stroke)
+        +Line withFromArrow(Arrow)
+        +Line withOutlineStyle(Style)
+        +Line withOutlineWidth(Width)
+        +Line withStyle(Style)
+        +Line withToArrow(Arrow)
+        +Line withWidth(Width)
+    }
+    
+@enduml
+

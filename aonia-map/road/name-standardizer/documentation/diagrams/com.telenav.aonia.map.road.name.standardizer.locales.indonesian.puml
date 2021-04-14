@@ -1,0 +1,21 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.road.name.standardizer.locales.indonesian"
+    
+    abstract BaseRoadNameStandardizer
+    
+    BaseRoadNameStandardizer <|-- IndonesianIndonesiaRoadNameStandardizer
+    class IndonesianIndonesiaRoadNameStandardizer
+    {
+    }
+    
+    class SimpleIndonesianRoadNameStandardizer
+    {
+        --(naming)--
+        +RoadName standardize(RoadName)
+    }
+    
+@enduml
+

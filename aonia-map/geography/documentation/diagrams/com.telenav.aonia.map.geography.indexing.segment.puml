@@ -1,0 +1,27 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.geography.indexing.segment"
+    
+    abstract AbstractList
+    
+    Leaf <|-- SegmentRTreeSpatialIndex.CompressedLeaf
+    class SegmentRTreeSpatialIndex.CompressedLeaf
+    {
+    }
+    
+    AbstractList <|-- CompressedSegmentList
+    class CompressedSegmentList
+    {
+    }
+    
+    RTreeSpatialIndex <|-- SegmentRTreeSpatialIndex
+    class SegmentRTreeSpatialIndex
+    {
+        --(constructors)--
+        +SegmentRTreeSpatialIndex(String, Maximum, Iterable<Segment>)
+    }
+    
+@enduml
+

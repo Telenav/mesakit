@@ -1,0 +1,36 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.data.formats.pbf.osm"
+    
+    interface PbfTagFilter
+    
+    class Osm
+    {
+        --(checks)--
+        +boolean isNavigable(PbfWay)
+    }
+    
+    class OsmHighwayTag
+    {
+        --(checks)--
+        +boolean isNavigableHighway(Tag)
+        +boolean isNullServiceWay(Tag)
+        +boolean isPrivateAccess(Tag)
+        +boolean isServiceWay(Tag)
+    }
+    
+    PbfTagFilter <|-- OsmIgnoredTags
+    class OsmIgnoredTags
+    {
+        --(constructors)--
+        +OsmIgnoredTags()
+    }
+    
+    class OsmRelationTag
+    {
+    }
+    
+@enduml
+

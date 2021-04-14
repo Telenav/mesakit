@@ -1,0 +1,267 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "Polylines"
+    
+    interface Shape
+    interface Bounded
+    interface LocationSequence
+    interface Indexable
+    interface Intersectable
+    
+    Polyline <|-- CompressedPolyline
+    class CompressedPolyline
+    {
+        --(constructors)--
+        #CompressedPolyline()
+        --
+        +Polyline decompress()
+        +long[] decompressedInDecimal()
+        +CompressedPolyline fromLocationSequence(Location... locations)
+        +CompressedPolyline fromLocationSequence(Iterable<Location> locations)
+        +CompressedPolyline fromLocationSequence(LocationSequence)
+        +void main(String[] args)
+        --(collection)--
+        +ByteList asBytes()
+        +BitArray compress(Iterable<Location> locations)
+        +CompressedPolyline fromBitArray(BitArray bits)
+    }
+    
+    Polyline <|-- Polygon
+    Shape <|-- Polygon
+    class Polygon
+    {
+        --(constructors)--
+        #Polygon()
+        +Polygon(List<Location>)
+        +Polygon(long[])
+        --
+        +void fast(boolean fast)
+        +Polygon fromLocationSequence(Location one, Location two, Location three, Location... more)
+        +Polygon fromLocationSequence(Iterable<Location> locations)
+        +Outline outline()
+        --(angle)--
+        +java.awt.Polygon asAwtPolygonInMicroDegrees()
+        --(checks)--
+        +boolean isClockwise()
+        +boolean isCounterClockwise()
+        --(collection)--
+        +void addHole(Polygon hole)
+        +Bytes approximateSize()
+        +boolean contains(Rectangle)
+        +boolean contains(Polyline)
+        +List<Segment> intersections(Rectangle bounds, Count maximum)
+        +boolean intersectsOrContains(Polyline)
+        +SegmentRTreeSpatialIndex segmentSpatialIndex()
+        --(lifecycle)--
+        +void initialize()
+    }
+    
+    PolylineBuilder <|-- PolygonBuilder
+    PolygonBuilder --> Polygon : "builds"
+    class PolygonBuilder
+    {
+        --(building)--
+        +^Polygon build()
+    }
+    
+    Indexable <|-- Polyline
+    Bounded <|-- Polyline
+    Intersectable <|-- Polyline
+    LocationSequence <|-- Polyline
+    Polyline --> "2+" Location : "contains"
+    class Polyline
+    {
+        --(constructors)--
+        #Polyline()
+        +Polyline(List<Location>)
+        +Polyline(long[])
+        --
+        +Polyline append(Polyline that)
+        +Set<Location> asLocationSet()
+        +Location at(Distance)
+        +Location at(Percent parameter)
+        +Polyline attach(Polyline that)
+        +boolean crosses(Polyline that)
+        +Distance directDistance()
+        +Distance distanceTo(Location)
+        +Set<Location> duplicateLocations()
+        +Set<Segment> duplicateSegments()
+        +Polyline fromLocations(Iterator<Location> locations)
+        +Polyline fromLocations(Location one, Location two, Location... more)
+        +Polyline fromLocations(Iterable<Location> locations)
+        +Polyline fromLocations(long start, long end)
+        +boolean has(Location)
+        +Location intersection(Polyline that)
+        +Location intersection(Segment that)
+        +boolean intersects(Segment that)
+        +Distance length()
+        +Location middle()
+        +Segment middleSegment()
+        +Location midpoint()
+        +Set<Segment> overlapping(Polyline that)
+        +boolean overlaps(Polyline that)
+        +Polyline parallel(Heading, Distance offset)
+        +Polyline section(Location start, Location end)
+        +PolylineSection section(int startIndex, int endIndex)
+        +Polyline section(Distance start, Distance end)
+        +Location selfIntersection()
+        +Polyline simplified(Distance tolerance)
+        +Polyline smooth(Angle tolerance)
+        +Polyline snapAndSection(Location origin, Location destination)
+        +Polyline withoutDuplicates()
+        #long expandBounds(long location)
+        #long[] locationsInDecimal()
+        --(angle)--
+        +Angle bend()
+        +Heading finalHeading()
+        +Heading initialHeading()
+        +SegmentPair sharpestTurnAngle()
+        +Angle turnAngleTo(Polyline that)
+        +Angle turnAngleTo(Polyline that, Chirality)
+        --(checks)--
+        +boolean isBent(Distance within, Angle tolerance)
+        +boolean isConnectedTo(Polyline that)
+        +boolean isLoop()
+        +boolean isSegment()
+        +boolean isSelfIntersecting()
+        +boolean isStraight(Distance within, Angle tolerance)
+        --(collection)--
+        +LongArray asLongArray()
+        +Iterator<Location> backwardLocations()
+        +List<PolylineSection> bisect()
+        +Segment firstSegment()
+        +Polyline fromLongArray(LongArray locations)
+        +Segment lastSegment()
+        +List<Location> locations()
+        +List<Loop> loops()
+        +Segment nextToLastSegment()
+        +List<PolylineSection> sections(Distance maximumLength)
+        +Count segmentCount()
+        +int segmentCountAsInteger()
+        +List<Segment> segments()
+        +List<PolylineSection> trisect()
+        +Iterable<LocatedHeading> vectors()
+        +Polyline withFirstReplaced(Location)
+        +Polyline withLastReplaced(Location)
+        +Polyline withoutFirst()
+        +Polyline withoutLast()
+        --(functional)--
+        +Polyline augmented(Distance maximumShapePointSpacing)
+        +Polyline augmented()
+        +CompressedPolyline compressed()
+        +Polyline moved(Heading, Distance offset)
+        +Polyline reversed()
+        +Polyline withAppended(Location)
+        --(lifecycle)--
+        +Location end()
+        +Location start()
+        --(math)--
+        +Percent closeness(Polyline that, Distance maximumDistance, Angle maximumHeadingDeviation)
+        --(parsing)--
+        +Polyline parse(String value)
+        --(primitive)--
+        +Polyline fromLongs(long[] locations)
+        --(time)--
+        +Segment secondSegment()
+    }
+    
+    PolylineBuilder --> Polyline : "builds"
+    class PolylineBuilder
+    {
+        --
+        +void prepend(Location)
+        +void set(int index, Location)
+        --(building)--
+        +Polyline build()
+        --(checks)--
+        +boolean hasDuplicates()
+        +boolean isValid()
+        +boolean isZeroLength()
+        --(collection)--
+        +PolylineBuilder add(Location)
+        +PolylineBuilder add(double latitude, double longitude)
+        +PolylineBuilder addAll(Iterable<Location> locations)
+        +PolylineBuilder addAll(Iterator<Location> locations)
+        +PolylineBuilder addAllButFirst(Iterable<Location> locations)
+        +PolylineBuilder addAllButLast(Iterable<Location> locations)
+        +PolylineBuilder addAllUnique(Iterable<Location> locations)
+        +Intersection addIntersectionWith(Segment, Distance maximumSnapDistance)
+        +PolylineBuilder addTail(Iterable<Location> locations)
+        +boolean addUnique(Location)
+        +boolean isEmpty()
+        +List<Segment> segments()
+        +int size()
+        #List<Location> locations()
+        --(lifecycle)--
+        +Location end()
+        +Location start()
+    }
+    
+    class PolylineSection
+    {
+        --(constructors)--
+        +PolylineSection(Polyline, int, int)
+        --
+        +Polyline parent()
+        +Polyline shape()
+        --(collection)--
+        +int fromIndex()
+        +int toIndex()
+    }
+    
+    PolylineSectioner "1" --> "*" PolylineSection : "creates"
+    PolylineSectioner o-- Polyline : "cuts"
+    class PolylineSectioner
+    {
+        --(constructors)--
+        +PolylineSectioner(Polyline)
+        --(collection)--
+        +void cutAtIndex(int index)
+        +List<PolylineSection> sections()
+    }
+    
+    PolylineSimplifier --> Polyline : "simplifies"
+    class PolylineSimplifier
+    {
+        --
+        +Polyline simplify(Polyline, Distance tolerance)
+    }
+    
+    Location <|-- PolylineSnap
+    class PolylineSnap
+    {
+        --(constructors)--
+        +PolylineSnap(Latitude, Longitude, LocationSequence, Level, Location, int)
+        +PolylineSnap(Location, LocationSequence, Level, Location, int)
+        --
+        +Distance distanceToSource()
+        +Level offset()
+        +Level offsetOnSegment()
+        +Segment segment()
+        +Location source()
+        +LocationSequence target()
+        --(angle)--
+        +Angle angle()
+        +Heading segmentHeading()
+        +Segment vector()
+        --(checks)--
+        +boolean isLeft()
+        +boolean isRight()
+        --(collection)--
+        +int polylineIndex()
+        --(conversion)--
+        +String toDebugString()
+    }
+    
+    PolylineSnapper --> PolylineSnap : "calculates"
+    class PolylineSnapper
+    {
+        --
+        +PolylineSnap snap(LocationSequence polyline, Location point)
+        +PolylineSnap snap(LocationSequence polyline, Location point, Heading headingAtPoint)
+    }
+    
+@enduml
+

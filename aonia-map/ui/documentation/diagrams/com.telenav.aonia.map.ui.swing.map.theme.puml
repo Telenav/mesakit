@@ -1,0 +1,72 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.ui.swing.map.theme"
+    
+    class Arrows
+    {
+    }
+    
+    class MapStyles.Base
+    {
+    }
+    
+    class MapStyles.Debug
+    {
+    }
+    
+    class Dots
+    {
+    }
+    
+    class MapStyles.Edge
+    {
+    }
+    
+    class Labels
+    {
+    }
+    
+    class Lines
+    {
+    }
+    
+    class MapStyles
+    {
+    }
+    
+    class MapStyles.Place
+    {
+    }
+    
+    class MapStyles.Polyline
+    {
+    }
+    
+    class MapStyles.Relation
+    {
+    }
+    
+    class MapStyles.Road
+    {
+    }
+    
+    class MapStyles.ShapePoint
+    {
+    }
+    
+    class Strokes
+    {
+    }
+    
+    class Styles
+    {
+    }
+    
+    class MapStyles.Vertex
+    {
+    }
+    
+@enduml
+

@@ -1,0 +1,211 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//  © 2020 Telenav - All rights reserved.                                                                              /
+//  This software is the confidential and proprietary information of Telenav ("Confidential Information").             /
+//  You shall not disclose such Confidential Information and shall use it only in accordance with the                  /
+//  terms of the license agreement you entered into with Telenav.                                                      /
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+package com.telenav.aonia.map.road.name.standardizer.locales.english;
+
+import com.telenav.aonia.map.region.locale.MapLocale;
+import com.telenav.aonia.map.road.model.RoadName;
+import com.telenav.aonia.map.road.name.parser.ParsedRoadName;
+import com.telenav.aonia.map.road.name.parser.RoadNameParser;
+import com.telenav.aonia.map.road.name.standardizer.BaseRoadNameStandardizer;
+import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.core.kernel.messaging.Debug;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.telenav.aonia.map.road.name.parser.ParsedRoadName.DirectionFormat.PREFIXED;
+import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
+
+@SuppressWarnings("SpellCheckingInspection")
+public class EnglishRoadNameStandardizer extends BaseRoadNameStandardizer
+{
+    private static final Debug DEBUG = new Debug(LoggerFactory.newLogger());
+
+    private final ThreadLocal<RoadNameParser> parser;
+
+    private final Map<String, String> baseName = new HashMap<>();
+
+    private final Map<String, String> type = new HashMap<>();
+
+    private Mode mode;
+
+    public EnglishRoadNameStandardizer(final MapLocale locale)
+    {
+        parser = ThreadLocal.withInitial(() -> RoadNameParser.get(locale));
+    }
+
+    @Override
+    public void mode(final Mode mode)
+    {
+        this.mode = mode;
+        initialize(mode);
+    }
+
+    @Override
+    public ParsedRoadName standardize(final RoadName name)
+    {
+        if (mode == null)
+        {
+            return fail("Must set standardizer mode");
+        }
+        try
+        {
+            final var parsed = parser.get().parse(name);
+            if (parsed != null)
+            {
+                return standardize(parsed);
+            }
+        }
+        catch (final Exception e)
+        {
+            DEBUG.warning(e, "Unable to standardize '$'", name);
+        }
+        return null;
+    }
+
+    private void initialize(final Mode mode)
+    {
+        baseName.put("Metro", "Metropolitan");
+        baseName.put("Saint", "St");
+
+        type.put("Arcade", "Arc");
+        type.put("Avenue", "Ave");
+        type.put("Beach", "Bch");
+        type.put("Boulevard", "Blvd");
+        type.put("Branch", "Br");
+        type.put("Bridge", "Brg");
+        type.put("Brook", "Brk");
+        type.put("BusLoop", "Bl");
+        type.put("Bypass", "Byp");
+        type.put("Camp", "Cp");
+        type.put("Canyon", "Cyn");
+        type.put("Center", "Ctr");
+        type.put("Circle", "Cir");
+        type.put("Club", "Clb");
+        type.put("Connector", "Conn");
+        type.put("Corners", "Cors");
+        type.put("Court", "Ct");
+        type.put("Cove", "Cv");
+        type.put("Crest", "Crst");
+        type.put("Crescent", "Cres");
+        type.put("Crossing", "Xing");
+        type.put("Dale", "Dl");
+        type.put("Dam", "Dm");
+        type.put("Drive", "Dr");
+        type.put("Driveway", "Drwy");
+        type.put("Estate", "Est");
+        type.put("Estates", "Ests");
+        type.put("Expressway", "Expy");
+        type.put("Extension", "Ext");
+        type.put("Field", "Fld");
+        type.put("Flats", "Flts");
+        type.put("Freeway", "Fwy");
+        type.put("Forest", "Frst");
+        type.put("Garden", "Gdn");
+        type.put("Gardens", "Gdns");
+        type.put("Gateway", "Gtwy");
+        type.put("Glen", "Gln");
+        type.put("Green", "Grn");
+        type.put("Grove", "Grv");
+        type.put("Heights", "Hts");
+        type.put("Highway", "Hwy");
+        type.put("Hill", "Hl");
+        type.put("Hills", "Hls");
+        type.put("Junction", "Jct");
+        type.put("Lane", "Ln");
+        type.put("Landing", "Lndg");
+        type.put("Lanes", "Ln");
+        type.put("Monitor", "Lck");
+        type.put("Meadow", "Mdw");
+        type.put("Meadows", "Mdws");
+        type.put("Mills", "Mls");
+        type.put("Motorway", "Mtwy");
+        type.put("Mountain", "Mtn");
+        type.put("Overpass", "Opas");
+        type.put("Parkway", "Pkwy");
+        type.put("Passage", "Psge");
+        if (mode == Mode.AONIA_STANDARDIZATION)
+        {
+            type.put("Park", "Pk");
+            type.put("Place", "Pl");
+            type.put("Point", "Pt");
+        }
+        type.put("Pines", "Pnes");
+        type.put("Ridge", "Rdg");
+        type.put("Road", "Rd");
+        type.put("Roads", "Rds");
+        type.put("Route", "Rte");
+        type.put("Shores", "Shrs");
+        type.put("Skyway", "Skwy");
+        type.put("Springs", "Spgs");
+        type.put("Spur", "Spur");
+        type.put("Square", "Sq");
+        type.put("StateRoute", "SR");
+        type.put("Station", "Sta");
+        type.put("Street", "St");
+        type.put("Track", "Trk");
+        type.put("Terrace", "Ter");
+        type.put("Throughway", "Trwy");
+        type.put("Trafficway", "Trfwy");
+        type.put("Trail", "Trl");
+        type.put("Tunnel", "Tunl");
+        type.put("Turnpike", "Tpke");
+        type.put("Underpass", "Upas");
+        type.put("Viaduct", "Via");
+    }
+
+    private ParsedRoadName standardize(final ParsedRoadName name)
+    {
+        final var builder = new ParsedRoadName.Builder(name);
+        builder.type(standardizedType(name.type()), name.rawType());
+        builder.baseName(standardizedBaseName(name), name.rawBaseName());
+        return builder.build();
+    }
+
+    private String standardizedBaseName(final ParsedRoadName name)
+    {
+        final var words = StringList.words(name.baseName());
+        for (var i = 0; i < words.size(); i++)
+        {
+            final var standardized = baseName.get(words.get(i));
+            if (standardized != null)
+            {
+                words.set(i, standardized);
+            }
+            // If we're looking at the first word of a multi-word base name and there isn't a
+            // direction prefix (as in East North Water St), then we can change that first word to
+            // an abbreviation
+            if (i == 0 && words.size() > 1 && name.directionFormat() != PREFIXED)
+            {
+                switch (words.get(i))
+                {
+                    case "North":
+                        words.set(i, "N");
+                        break;
+                    case "South":
+                        words.set(i, "S");
+                        break;
+                    case "East":
+                        words.set(i, "E");
+                        break;
+                    case "West":
+                        words.set(i, "W");
+                        break;
+                }
+            }
+        }
+        return words.join(' ');
+    }
+
+    private String standardizedType(final String type)
+    {
+        final var standardized = this.type.get(type);
+        return standardized != null ? standardized : type;
+    }
+}

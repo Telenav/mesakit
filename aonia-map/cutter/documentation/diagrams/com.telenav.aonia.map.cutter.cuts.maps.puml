@@ -1,0 +1,55 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.cutter.cuts.maps"
+    
+    class RegionIndexMap
+    {
+        --
+        +RegionSet regionsForIndexes(Iterable<Integer> indexes)
+        --(collection)--
+        +void add(Region)
+        +void addAll(Iterable<? extends Region> regions)
+        +Count count()
+        +Integer indexForRegion(Region)
+        +boolean isValidRegionIndex(Integer regionIndex)
+        +boolean isValidRegionIndexList(Collection<Integer> regionIndexes)
+        +Region regionForIndex(int index)
+        +int size()
+    }
+    
+    class RegionNodes
+    {
+        --(constructors)--
+        +RegionNodes(String, RegionIndexMap)
+        --
+        +boolean inRegion(long nodeIdentifier, int regionIndex)
+        +RegionSet regions(long wayIdentifier)
+        +RegionSet regions()
+        +RegionSet regions(Iterable<Integer> identifiers)
+        --(collection)--
+        +void add(long nodeIdentifier, int regionIndex)
+        +void addAll(List<Node> nodes, int regionIndex)
+        +Region<?> regionForIndex(int index)
+        +RegionIndexMap regionIndexMap()
+        --(primitive)--
+        +Set<Integer> regionIndexes(PbfWay)
+    }
+    
+    class RegionWays
+    {
+        --(constructors)--
+        +RegionWays(String, RegionIndexMap)
+        --
+        +RegionSet regions(long wayIdentifier)
+        +RegionSet regions()
+        --(collection)--
+        +void add(Region<?>, PbfWay)
+        +void add(int regionIndex, long wayIdentifier)
+        +void addAll(int regionIndex, List<Way> ways)
+        +boolean contains(int regionIndex, long wayIdentifier)
+    }
+    
+@enduml
+

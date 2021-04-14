@@ -1,0 +1,36 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.data.formats.pbf.model.metadata"
+    
+    Identifier <|-- PbfChangeSetIdentifier
+    class PbfChangeSetIdentifier
+    {
+        --(constructors)--
+        +PbfChangeSetIdentifier(long)
+    }
+    
+    IntegerIdentifier <|-- PbfRevisionNumber
+    class PbfRevisionNumber
+    {
+        --(constructors)--
+        +PbfRevisionNumber(int)
+    }
+    
+    IntegerIdentifier <|-- PbfUserIdentifier
+    class PbfUserIdentifier
+    {
+        --(constructors)--
+        +PbfUserIdentifier(int)
+    }
+    
+    Name <|-- PbfUserName
+    class PbfUserName
+    {
+        --(constructors)--
+        +PbfUserName(String)
+    }
+    
+@enduml
+

@@ -1,0 +1,31 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.ui.swing.debug.viewables"
+    
+    interface Viewable
+    
+    Viewable <|-- ViewableLocation
+    class ViewableLocation
+    {
+        --(constructors)--
+        +ViewableLocation(Location, Color, Color, String)
+    }
+    
+    Viewable <|-- ViewablePolyline
+    class ViewablePolyline
+    {
+        --(constructors)--
+        +ViewablePolyline(Polyline, Color, Color, String)
+    }
+    
+    Viewable <|-- ViewableRectangle
+    class ViewableRectangle
+    {
+        --(constructors)--
+        +ViewableRectangle(Rectangle, Color, Color, String)
+    }
+    
+@enduml
+

@@ -1,0 +1,305 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.measurements.geographic"
+    
+    abstract BaseStringConverter
+    
+    interface Comparable
+    interface Minimizable
+    interface Maximizable
+    interface Headed
+    interface Validatable
+    interface Quantizable
+    
+    Validatable <|-- Angle
+    Comparable <|-- Angle
+    Minimizable <|-- Angle
+    Maximizable <|-- Angle
+    class Angle
+    {
+        --(constructors)--
+        #Angle()
+        #Angle(long)
+        --
+        +Distance projectionOnEarthSurface()
+        --(angle)--
+        +Angle absoluteDifference(Angle that)
+        +double asDegrees()
+        +int asMicrodegrees()
+        +double asRadians()
+        +Angle bisect(Angle that, Chirality)
+        +Angle decremented()
+        +Angle degrees(double degrees)
+        +double degreesPerRadian()
+        +Angle difference(Angle that, Chirality type)
+        +Angle dividedBy(Angle that)
+        +Angle dividedBy(double by)
+        +boolean isOppositeDirection(Angle that, Angle tolerance)
+        +Angle maximum()
+        +Angle microdegrees(int microdegrees)
+        +Angle minimum()
+        +Angle minus(Angle that)
+        +Angle nanodegrees(long nanodegrees)
+        +Angle plus(Angle that)
+        +Angle radians(double radians)
+        +Angle reversed()
+        +Angle times(double multiplier)
+        #long maximumInNanoDegrees()
+        #long minimumInNanoDegrees()
+        --(checks)--
+        +boolean isAcute()
+        +boolean isBetween(Angle, Angle b, Chirality type)
+        +boolean isClose(Angle that, Angle tolerance)
+        +boolean isCloseOrReverseIsClose(Angle that, Angle tolerance)
+        +boolean isMaximum()
+        +boolean isMinimum()
+        --(command line parsing)--
+        +SwitchParser.Builder<Angle> switchParser(String name, String description)
+        --(conversion)--
+        +int asDm5()
+        +int asDm6()
+        +int asDm7()
+        +long asNanodegrees()
+    }
+    
+    Comparable <|-- Area
+    class Area
+    {
+        --
+        +Area difference(Area that)
+        +Area of(Distance width, Distance height)
+        +double ratio(Area divisor)
+        +Area squareFeet(double squareFeet)
+        --(checks)--
+        +boolean isGreaterThan(Area that)
+        +boolean isGreaterThanOrEqualTo(Area that)
+        +boolean isLessThan(Area that)
+        +boolean isLessThanOrEqualTo(Area that)
+        --(conversion)--
+        +double asSquareFeet()
+        --(distance)--
+        +double asSquareKilometers()
+        +double asSquareMeters()
+        +double asSquareMiles()
+        +Area squareKilometers(double squareKilometers)
+        +Area squareMeters(double squareMeters)
+        +Area squareMiles(double squareMiles)
+        --(math)--
+        +Area maximum(Area that)
+        +Area minimum(Area that)
+        +Area minus(Area that)
+        +Area plus(Area that)
+        +Area times(double multiplier)
+    }
+    
+    Average <|-- AverageDistance
+    AverageDistance --> Distance : "computes"
+    class AverageDistance
+    {
+        --
+        +Distance averageDistance()
+        --(collection)--
+        +void add(Distance)
+    }
+    
+    enum Angle.Chirality
+    {
+        CLOCKWISE
+        COUNTERCLOCKWISE
+        SMALLEST
+    }
+    
+    BaseStringConverter <|-- Heading.Converter
+    class Heading.Converter
+    {
+        --(constructors)--
+        +Converter(Listener)
+    }
+    
+    BaseStringConverter <|-- Angle.Converter
+    class Angle.Converter
+    {
+        --(constructors)--
+        +Converter(Listener)
+    }
+    
+    BaseStringConverter <|-- Distance.Converter
+    class Distance.Converter
+    {
+        --(constructors)--
+        +Converter(Listener)
+    }
+    
+    BaseStringConverter <|-- Direction.Converter
+    class Direction.Converter
+    {
+        --(constructors)--
+        +Converter(Listener)
+    }
+    
+    BaseStringConverter <|-- Heading.DegreesConverter
+    class Heading.DegreesConverter
+    {
+        --(constructors)--
+        +DegreesConverter(Listener)
+    }
+    
+    BaseStringConverter <|-- Angle.DegreesConverter
+    class Angle.DegreesConverter
+    {
+        --(constructors)--
+        +DegreesConverter(Listener)
+    }
+    
+    enum Direction
+    {
+        EAST
+        NORTH
+        NORTHEAST
+        NORTHWEST
+        SOUTH
+        SOUTHEAST
+        SOUTHWEST
+        WEST
+    }
+    
+    Quantizable <|-- Distance
+    Comparable <|-- Distance
+    class Distance
+    {
+        --
+        +Area by(Distance that)
+        +Distance difference(Distance that)
+        +Distance feet(double feet)
+        +Distance of(double value, Unit)
+        +double ratio(Distance divisor)
+        --(checks)--
+        +boolean isGreaterThan(Distance that)
+        +boolean isGreaterThanOrEqualTo(Distance that)
+        +boolean isLessThan(Distance that)
+        +boolean isLessThanOrEqualTo(Distance that)
+        --(conversion)--
+        +double as(Unit)
+        +Angle asAngle()
+        +long asCentimeters()
+        +double asDegrees()
+        +double asDm5()
+        +double asDm6()
+        +double asFeet()
+        +int asInt(Unit)
+        +double asKilometers()
+        +double asMeters()
+        +double asMiles()
+        +long asMillimeters()
+        +String toCommaSeparatedString()
+        --(distance)--
+        +Distance centimeters(long centimeters)
+        +Distance kilometers(double kilometers)
+        +Distance meters(double meters)
+        +Distance miles(double miles)
+        +Distance millimeters(long millimeters)
+        --(functional)--
+        +Area squared()
+        --(math)--
+        +Distance add(Distance that)
+        +Distance dividedBy(Count divisor)
+        +Distance maximum(Distance that)
+        +Distance minimum(Distance that)
+        +Distance minus(Distance that)
+        +Percent percentageOf(Distance that)
+        +Distance times(double multiplier)
+        +Distance times(Percent)
+        --(parsing)--
+        +ArgumentParser.Builder<Distance> argumentParser(String description)
+        +Distance parse(String value)
+        +SwitchParser.Builder<Distance> switchParser(String name, String description)
+    }
+    
+    Headed --> Heading : "specifies"
+    interface Headed
+    {
+        --(angle)--
+        +Heading heading()
+    }
+    
+    Angle <|-- Heading
+    Headed <|-- Heading
+    class Heading
+    {
+        --(angle)--
+        +Direction asApproximateDirection()
+        +Heading average(Heading that)
+        +Heading bisect(Heading that, Chirality)
+        +Heading degrees(double degrees)
+        +Heading microdegrees(int microdegrees)
+        +Heading minimum(Heading that)
+        +Heading nanodegrees(long nanodegrees)
+        +Heading parse(String text)
+        +Heading quantize(Angle quantum)
+        +Heading radians(double radians)
+    }
+    
+    BaseStringConverter <|-- Distance.KilometersConverter
+    class Distance.KilometersConverter
+    {
+        --(constructors)--
+        +KilometersConverter(Listener)
+    }
+    
+    BaseStringConverter <|-- Distance.MetersConverter
+    class Distance.MetersConverter
+    {
+        --(constructors)--
+        +MetersConverter(Listener)
+    }
+    
+    BaseStringConverter <|-- Distance.MilesConverter
+    class Distance.MilesConverter
+    {
+        --(constructors)--
+        +MilesConverter(Listener)
+    }
+    
+    BaseStringConverter <|-- Distance.MillimetersConverter
+    class Distance.MillimetersConverter
+    {
+        --(constructors)--
+        +MillimetersConverter(Listener)
+    }
+    
+    Angle <|-- Slope
+    class Slope
+    {
+        --
+        +Slope difference(Slope that)
+        +Slope of(Angle)
+        --(angle)--
+        +Slope degrees(double degrees)
+    }
+    
+    Span o-- Distance
+    class Span
+    {
+        --(constructors)--
+        +Span(Distance, Distance)
+        --
+        +Distance length()
+        --(lifecycle)--
+        +Distance end()
+        +Distance start()
+    }
+    
+    enum Distance.Unit
+    {
+        CENTIMETERS
+        FEET
+        KILOMETERS
+        METERS
+        MILES
+        MILLIMETERS
+    }
+    
+@enduml
+

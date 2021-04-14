@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="701.0417px" preserveAspectRatio="none" style="width:744px;height:701px;background:#333333;" version="1.1" viewBox="0 0 744 701" width="744.7917px" zoomAndPan="magnify"><defs/><g><rect fill="#48494B" height="41.2028" rx="8.3333" ry="8.3333" style="stroke:#545454;stroke-width:1.0416666666666667;" width="623.9583" x="53.125" y="2.0833"/><text fill="#C0C0C0" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="20.8333" lengthAdjust="spacing" textLength="601.0417" x="64.5833" y="30.5583">com.telenav.aonia.map.data.formats.pbf.processing.readers</text><!--MD5=[762aa3d0df6a9d47bd8e105afbd066b5]
+class BaseRepeater--><rect codeLine="6" fill="#282828" height="48.055" id="BaseRepeater" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="123.9583" x="320.3125" y="53.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="123.9583" x="320.3125" y="53.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="123.9583" x="320.3125" y="76.7578"/><rect codeLine="6" fill="none" height="48.055" id="BaseRepeater" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="123.9583" x="320.3125" y="53.7028"/><ellipse cx="334.8958" cy="69.397" fill="#C8AC00" rx="10.4167" ry="10.4167" style="stroke:#D8BC00;stroke-width:1.0416666666666667;"/><path d="M335.0098,66.099 L334.1614,69.8283 L335.8643,69.8283 Z M333.9111,64.4511 L336.1145,64.4511 L338.5742,73.5636 L336.7737,73.5636 L336.2122,71.3114 L333.8013,71.3114 L333.252,73.5636 L331.4514,73.5636 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="86.4583" x="351.5625" y="74.1211">BaseRepeater</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="321.3542" x2="443.2292" y1="85.0911" y2="85.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="321.3542" x2="443.2292" y1="93.4245" y2="93.4245"/><!--MD5=[7c202fef3573b43a9d8922a378fea193]
+class BasePbfReader--><rect codeLine="16" fill="#282828" height="384.8063" id="BasePbfReader" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="331.25" x="140.625" y="164.1195"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="331.25" x="140.625" y="164.1195"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="331.25" x="140.625" y="187.1745"/><rect codeLine="16" fill="none" height="384.8063" id="BasePbfReader" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="331.25" x="140.625" y="164.1195"/><ellipse cx="251.5625" cy="179.8136" fill="#C8AC00" rx="10.4167" ry="10.4167" style="stroke:#D8BC00;stroke-width:1.0416666666666667;"/><path d="M251.6764,176.5157 L250.828,180.245 L252.5309,180.245 Z M250.5778,174.8678 L252.7812,174.8678 L255.2409,183.9803 L253.4403,183.9803 L252.8788,181.7281 L250.4679,181.7281 L249.9186,183.9803 L248.1181,183.9803 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="94.7917" x="274.4792" y="184.5378">BasePbfReader</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="141.6667" x2="470.8333" y1="195.5078" y2="195.5078"/><polygon fill="#FFFF44" points="152.0833,225.6694,156.25,229.836,152.0833,234.0027,147.9167,229.836" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="141.6667" x="163.5417" y="237.7889">BasePbfReader(Resource)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="141.6667" x2="262.5" y1="213.7136" y2="213.7136"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="265.625" y="217.5232">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="350" x2="470.8333" y1="213.7136" y2="213.7136"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="141.6667" x2="470.8333" y1="247.4976" y2="247.4976"/><ellipse cx="152.0833" cy="258.9559" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="178.125" x="163.5417" y="265.8671">PbfDataStatistics dataStatistics()</text><ellipse cx="152.0833" cy="278.7008" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="111.4583" x="163.5417" y="285.612">void process(Entity)</text><ellipse cx="152.0833" cy="298.4456" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="157.2917" x="163.5417" y="305.3569">void processBounds(Bound)</text><ellipse cx="152.0833" cy="342.1021" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="56.25" x="163.5417" y="349.0133">void end()</text><ellipse cx="152.0833" cy="361.8469" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="160.4167" x="163.5417" y="368.7581">void start(PbfDataProcessor)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="141.6667" x2="276.5625" y1="324.9379" y2="324.9379"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="53.125" x="279.6875" y="328.7476">(lifecycle)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="335.9375" x2="470.8333" y1="324.9379" y2="324.9379"/><ellipse cx="152.0833" cy="405.5033" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="195.8333" x="163.5417" y="412.4146">Identifier maximumNodeIdentifier()</text><ellipse cx="152.0833" cy="425.2482" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="211.4583" x="163.5417" y="432.1594">Identifier maximumRelationIdentifier()</text><ellipse cx="152.0833" cy="444.9931" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="188.5417" x="163.5417" y="451.9043">Identifier maximumWayIdentifier()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="141.6667" x2="284.8958" y1="388.3392" y2="388.3392"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="36.4583" x="288.0208" y="392.1488">(math)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="327.6042" x2="470.8333" y1="388.3392" y2="388.3392"/><ellipse cx="152.0833" cy="488.6495" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="298.9583" x="163.5417" y="495.5607">void processMetadata(Map&lt;String,Object&gt; metadata)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="141.6667" x2="273.4375" y1="471.4854" y2="471.4854"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="59.375" x="276.5625" y="475.295">(metadata)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="339.0625" x2="470.8333" y1="471.4854" y2="471.4854"/><ellipse cx="152.0833" cy="532.3059" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="157.2917" x="163.5417" y="539.2171">BasePbfReader noProgress()</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="141.6667" x2="286.4583" y1="515.1418" y2="515.1418"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="33.3333" x="289.5833" y="518.9514">(read)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="326.0417" x2="470.8333" y1="515.1418" y2="515.1418"/><!--MD5=[9b18ed549806d86353c6d2f9c501e8a9]
+class PbfDataSource--><rect codeLine="9" fill="#282828" height="48.055" id="PbfDataSource" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="131.25" x="518.75" y="53.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="131.25" x="518.75" y="53.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="131.25" x="518.75" y="76.7578"/><rect codeLine="9" fill="none" height="48.055" id="PbfDataSource" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="131.25" x="518.75" y="53.7028"/><ellipse cx="533.3333" cy="69.397" fill="#008400" rx="10.4167" ry="10.4167" style="stroke:#239C23;stroke-width:1.0416666666666667;"/><path d="M530.2165,66.5588 L530.2165,64.9719 L535.6425,64.9719 L535.6425,66.5588 L533.8298,66.5588 L533.8298,72.4976 L535.6425,72.4976 L535.6425,74.0845 L530.2165,74.0845 L530.2165,72.4976 L532.0292,72.4976 L532.0292,66.5588 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="93.75" x="550" y="74.1211">PbfDataSource</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="519.7917" x2="648.9583" y1="85.0911" y2="85.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="519.7917" x2="648.9583" y1="93.4245" y2="93.4245"/><!--MD5=[6b13f1b330d33795af281e5c1dfe1e98]
+class Resource--><rect fill="#282828" height="48.055" id="Resource" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="95.8333" x="7.2917" y="628.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="95.8333" x="7.2917" y="628.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="95.8333" x="7.2917" y="651.7578"/><rect fill="none" height="48.055" id="Resource" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="95.8333" x="7.2917" y="628.7028"/><ellipse cx="21.875" cy="644.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M23.7854,648.822 Q23.3582,649.0417 22.8882,649.1516 Q22.4182,649.2615 21.8994,649.2615 Q20.0562,649.2615 19.0857,648.0469 Q18.1152,646.8323 18.1152,644.5374 Q18.1152,642.2363 19.0857,641.0217 Q20.0562,639.8071 21.8994,639.8071 Q22.4182,639.8071 22.8943,639.917 Q23.3704,640.0269 23.7854,640.2466 L23.7854,642.2485 Q23.3215,641.8213 22.8851,641.6229 Q22.4487,641.4246 21.9849,641.4246 Q20.9961,641.4246 20.4926,642.2089 Q19.989,642.9932 19.989,644.5374 Q19.989,646.0754 20.4926,646.8597 Q20.9961,647.644 21.9849,647.644 Q22.4487,647.644 22.8851,647.4457 Q23.3215,647.2473 23.7854,646.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="58.3333" x="38.5417" y="649.1211">Resource</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="8.3333" x2="102.0833" y1="660.0911" y2="660.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="8.3333" x2="102.0833" y1="668.4245" y2="668.4245"/><!--MD5=[97946d5e3c7045403d1449eddde6064b]
+class PbfDataStatistics--><rect fill="#282828" height="48.055" id="PbfDataStatistics" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="147.9167" x="139.5833" y="628.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="147.9167" x="139.5833" y="628.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="147.9167" x="139.5833" y="651.7578"/><rect fill="none" height="48.055" id="PbfDataStatistics" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="147.9167" x="139.5833" y="628.7028"/><ellipse cx="154.1667" cy="644.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M156.0771,648.822 Q155.6498,649.0417 155.1799,649.1516 Q154.7099,649.2615 154.1911,649.2615 Q152.3478,649.2615 151.3774,648.0469 Q150.4069,646.8323 150.4069,644.5374 Q150.4069,642.2363 151.3774,641.0217 Q152.3478,639.8071 154.1911,639.8071 Q154.7099,639.8071 155.186,639.917 Q155.662,640.0269 156.0771,640.2466 L156.0771,642.2485 Q155.6132,641.8213 155.1768,641.6229 Q154.7404,641.4246 154.2765,641.4246 Q153.2878,641.4246 152.7842,642.2089 Q152.2807,642.9932 152.2807,644.5374 Q152.2807,646.0754 152.7842,646.8597 Q153.2878,647.644 154.2765,647.644 Q154.7404,647.644 155.1768,647.4457 Q155.6132,647.2473 156.0771,646.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="110.4167" x="170.8333" y="649.1211">PbfDataStatistics</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="140.625" x2="286.4583" y1="660.0911" y2="660.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="140.625" x2="286.4583" y1="668.4245" y2="668.4245"/><!--MD5=[d5930c10e6eaeb4ab8b71064b1e5acb0]
+class PbfDataProcessor--><rect fill="#282828" height="48.055" id="PbfDataProcessor" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="151.0417" x="324.4792" y="628.7028"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="151.0417" x="324.4792" y="628.7028"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="151.0417" x="324.4792" y="651.7578"/><rect fill="none" height="48.055" id="PbfDataProcessor" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="151.0417" x="324.4792" y="628.7028"/><ellipse cx="339.0625" cy="644.397" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M340.9729,648.822 Q340.5457,649.0417 340.0757,649.1516 Q339.6057,649.2615 339.0869,649.2615 Q337.2437,649.2615 336.2732,648.0469 Q335.3027,646.8323 335.3027,644.5374 Q335.3027,642.2363 336.2732,641.0217 Q337.2437,639.8071 339.0869,639.8071 Q339.6057,639.8071 340.0818,639.917 Q340.5579,640.0269 340.9729,640.2466 L340.9729,642.2485 Q340.509,641.8213 340.0726,641.6229 Q339.6362,641.4246 339.1724,641.4246 Q338.1836,641.4246 337.6801,642.2089 Q337.1765,642.9932 337.1765,644.5374 Q337.1765,646.0754 337.6801,646.8597 Q338.1836,647.644 339.1724,647.644 Q339.6362,647.644 340.0726,647.4457 Q340.509,647.2473 340.9729,646.8201 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="113.5417" x="355.7292" y="649.1211">PbfDataProcessor</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="325.5208" x2="474.4792" y1="660.0911" y2="660.0911"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="325.5208" x2="474.4792" y1="668.4245" y2="668.4245"/><!--MD5=[7e0cabb85603e80585045cd075d94ba3]
+class ParallelPbfReader--><rect codeLine="39" fill="#282828" height="150.946" id="ParallelPbfReader" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="229.1667" x="508.3333" y="280.7861"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="229.1667" x="508.3333" y="280.7861"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="229.1667" x="508.3333" y="303.8411"/><rect codeLine="39" fill="none" height="150.946" id="ParallelPbfReader" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="229.1667" x="508.3333" y="280.7861"/><ellipse cx="559.8958" cy="296.4803" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M561.8062,300.9054 Q561.379,301.1251 560.909,301.2349 Q560.439,301.3448 559.9202,301.3448 Q558.077,301.3448 557.1065,300.1302 Q556.1361,298.9156 556.1361,296.6207 Q556.1361,294.3197 557.1065,293.1051 Q558.077,291.8905 559.9202,291.8905 Q560.439,291.8905 560.9151,292.0003 Q561.3912,292.1102 561.8062,292.3299 L561.8062,294.3319 Q561.3424,293.9046 560.906,293.7063 Q560.4696,293.5079 560.0057,293.5079 Q559.0169,293.5079 558.5134,294.2922 Q558.0098,295.0765 558.0098,296.6207 Q558.0098,298.1588 558.5134,298.9431 Q559.0169,299.7274 560.0057,299.7274 Q560.4696,299.7274 560.906,299.529 Q561.3424,299.3306 561.8062,298.9034 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="111.4583" x="582.8125" y="301.2044">ParallelPbfReader</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="509.375" x2="736.4583" y1="312.1745" y2="312.1745"/><ellipse cx="519.7917" cy="347.5444" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="196.875" x="531.25" y="354.4556">ParallelPbfReader(Resource, Count)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="509.375" x2="579.1667" y1="330.3802" y2="330.3802"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="582.2917" y="334.1899">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="666.6667" x2="736.4583" y1="330.3802" y2="330.3802"/><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="509.375" x2="736.4583" y1="364.1642" y2="364.1642"/><ellipse cx="519.7917" cy="375.6226" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="141.6667" x="531.25" y="382.5338">void nodes(Count nodes)</text><ellipse cx="519.7917" cy="395.3674" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="170.8333" x="531.25" y="402.2786">void relations(Count relations)</text><ellipse cx="519.7917" cy="415.1123" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="127.0833" x="531.25" y="422.0235">void ways(Count ways)</text><!--MD5=[adf02371ae73018b7e2025d725bb81bf]
+class SerialPbfReader--><rect codeLine="50" fill="#282828" height="83.3781" id="SerialPbfReader" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="179.1667" x="512.5" y="610.9945"/><rect fill="#1B1B1A" height="31.3883" rx="8.3333" ry="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="179.1667" x="512.5" y="610.9945"/><rect fill="#1B1B1A" height="8.3333" style="stroke:#1B1B1A;stroke-width:1.0416666666666667;" width="179.1667" x="512.5" y="634.0495"/><rect codeLine="50" fill="none" height="83.3781" id="SerialPbfReader" rx="8.3333" ry="8.3333" style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" width="179.1667" x="512.5" y="610.9945"/><ellipse cx="545.8333" cy="626.6886" fill="#0066CF" rx="10.4167" ry="10.4167" style="stroke:#0086EF;stroke-width:1.0416666666666667;"/><path d="M547.7437,631.1137 Q547.3165,631.3334 546.8465,631.4433 Q546.3765,631.5531 545.8577,631.5531 Q544.0145,631.5531 543.044,630.3385 Q542.0736,629.1239 542.0736,626.829 Q542.0736,624.528 543.044,623.3134 Q544.0145,622.0988 545.8577,622.0988 Q546.3765,622.0988 546.8526,622.2087 Q547.3287,622.3185 547.7437,622.5382 L547.7437,624.5402 Q547.2799,624.113 546.8435,623.9146 Q546.4071,623.7162 545.9432,623.7162 Q544.9544,623.7162 544.4509,624.5005 Q543.9473,625.2848 543.9473,626.829 Q543.9473,628.3671 544.4509,629.1514 Q544.9544,629.9357 545.9432,629.9357 Q546.4071,629.9357 546.8435,629.7373 Q547.2799,629.539 547.7437,629.1117 Z " fill="#000000"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="100" x="566.6667" y="631.4128">SerialPbfReader</text><line style="stroke:#5E5E5E;stroke-width:1.5625;" x1="513.5417" x2="690.625" y1="642.3828" y2="642.3828"/><ellipse cx="523.9583" cy="677.7527" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="146.875" x="535.4167" y="684.6639">SerialPbfReader(Resource)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="513.5417" x2="558.3333" y1="660.5886" y2="660.5886"/><text fill="#D8BC00" font-family="Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="561.4583" y="664.3982">(constructors)</text><line style="stroke:#5E5E5E;stroke-width:1.0416666666666667;" x1="645.8333" x2="690.625" y1="660.5886" y2="660.5886"/><!--MD5=[7afe02fd9304e50e7fa6c1de337973dd]
+reverse link BaseRepeater to BasePbfReader--><path codeLine="11" d="M370.3333,122.1924 C366.9583,134.4528 363.0625,148.6403 358.8854,163.8278 " fill="none" id="BaseRepeater-backto-BasePbfReader" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="363.3854,119.9632,375.9375,101.807,377.4479,123.8278,363.3854,119.9632" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[eca7b35cd1ddc9cdf0056eca8b2124c9]
+reverse link PbfDataSource to BasePbfReader--><path codeLine="12" d="M542.1458,116.1299 C525.8333,130.859 507.1458,148.057 490.625,164.1195 C484.5104,170.0674 478.3125,176.1507 472.0833,182.3174 " fill="none" id="PbfDataSource-backto-BasePbfReader" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="537.7188,110.307,558.0938,101.8278,547.4479,121.1611,537.7188,110.307" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[d5bd708ea40884c143be34d8473d3146]
+reverse link BasePbfReader to Resource--><path codeLine="13" d="M134.1354,559.0986 C110.3646,586.9736 89.1771,611.7965 74.7604,628.6924 " fill="none" id="BasePbfReader-backto-Resource" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#333333" points="143.0104,548.7028,135.783,550.7494,134.8925,558.208,142.1199,556.1614,143.0104,548.7028" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[0ad7dd7865f7c2016bb41ecd850f4e2a]
+reverse link BasePbfReader to PbfDataStatistics--><path codeLine="14" d="M241.8854,561.6507 C233.4271,588.484 225.9271,612.3174 220.7604,628.6924 " fill="none" id="BasePbfReader-backto-PbfDataStatistics" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#333333" points="245.9688,548.7028,240.1189,553.4148,242.2184,560.6269,248.0683,555.915,245.9688,548.7028" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[b6c15d4f3c016bed6035f4844b9b62d7]
+reverse link BasePbfReader to PbfDataProcessor--><path codeLine="15" d="M371.3438,561.6507 C379.8854,588.484 387.4792,612.3174 392.6979,628.6924 " fill="none" id="BasePbfReader-backto-PbfDataProcessor" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="#333333" points="367.2083,548.7028,365.1339,555.9222,371.0001,560.6138,373.0746,553.3944,367.2083,548.7028" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[c66023f82e89f70afbd2bd2dbfeaadf8]
+reverse link BaseRepeater to ParallelPbfReader--><path codeLine="37" d="M433.6979,114.2549 C452.6563,128.5986 473.6354,146.0361 490.625,164.1195 C523.7917,199.4111 554.9271,243.6195 578.6563,280.6299 " fill="none" id="BaseRepeater-backto-ParallelPbfReader" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="429.1667,119.9736,416.6875,101.7653,437.7917,108.2132,429.1667,119.9736" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[100abe2f53729d41d890c0b336702886]
+reverse link PbfDataSource to ParallelPbfReader--><path codeLine="38" d="M590.4792,122.5257 C596.3958,164.932 605.4688,230.0361 612.5104,280.6195 " fill="none" id="PbfDataSource-backto-ParallelPbfReader" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="583.25,123.4424,587.5938,101.807,597.6875,121.432,583.25,123.4424" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[726fb6590115c79cc6bae69d3561ab29]
+reverse link BasePbfReader to SerialPbfReader--><path codeLine="49" d="M487.1875,545.1195 C488.3333,546.2549 489.4792,547.3799 490.625,548.4945 C512,569.432 536.3333,592.0778 556.7917,610.7965 " fill="none" id="BasePbfReader-backto-SerialPbfReader" style="stroke:#545454;stroke-width:1.5625;"/><polygon fill="none" points="481.8229,550.0674,472.1458,530.234,492.0833,539.7028,481.8229,550.0674" style="stroke:#545454;stroke-width:1.5625;"/><!--MD5=[3f7c8f00424b02970d0c4af13a4288dc]
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.data.formats.pbf.processing.readers"
+    
+    abstract BaseRepeater
+    abstract BasePbfReader
+    
+    interface PbfDataSource
+    
+    BaseRepeater <|- - BasePbfReader
+    PbfDataSource <|- - BasePbfReader
+    BasePbfReader o- - Resource
+    BasePbfReader o- - PbfDataStatistics
+    BasePbfReader o- - PbfDataProcessor
+    abstract class BasePbfReader
+    {
+        - -(constructors)- -
+        #BasePbfReader(Resource)
+        - -
+        +PbfDataStatistics dataStatistics()
+        +void process(Entity)
+        +void processBounds(Bound)
+        - -(lifecycle)- -
+        +void end()
+        +void start(PbfDataProcessor)
+        - -(math)- -
+        +Identifier maximumNodeIdentifier()
+        +Identifier maximumRelationIdentifier()
+        +Identifier maximumWayIdentifier()
+        - -(metadata)- -
+        +void processMetadata(Map<String,Object> metadata)
+        - -(read)- -
+        +BasePbfReader noProgress()
+    }
+    
+    BaseRepeater <|- - ParallelPbfReader
+    PbfDataSource <|- - ParallelPbfReader
+    class ParallelPbfReader
+    {
+        - -(constructors)- -
+        +ParallelPbfReader(Resource, Count)
+        - -
+        +void nodes(Count nodes)
+        +void relations(Count relations)
+        +void ways(Count ways)
+    }
+    
+    BasePbfReader <|- - SerialPbfReader
+    class SerialPbfReader
+    {
+        - -(constructors)- -
+        +SerialPbfReader(Resource)
+    }
+    
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+
+
+skinparam backgroundColor #333333
+
+
+
+
+
+
+skinparam  {
+    defaultFontName   "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+    defaultFontSize   12
+    defaultTextAlignment left
+    shadowing false
+    RoundCorner 10
+    TitleFontSize 18
+}
+
+skinparam defaultFontName       "Open Sans,Avenir,Nunito,Arial,Helvetica,SansSerif"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           16
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               3
+skinparam ArrowColor            #545454
+skinparam stereotype {
+    CBackgroundColor #0066cf
+    CBorderColor #0086ef
+    ABackgroundColor #C8Ac00
+    ABorderColor #D8Bc00
+    IBackgroundColor #008400
+    IBorderColor #239c23
+    EBackgroundColor #cf6300
+    EBorderColor #ef8300
+    NBackgroundColor #3380b9
+    NBorderColor #004d86
+}
+skinparam title {
+	FontColor	                 #c0c0c0
+ 	BorderColor                  #545454
+	FontSize	    	         20
+	BorderRoundCorner            16
+	BorderThickness 	         1
+	BackgroundColor              #48494b
+}
+
+
+skinparam legend {
+	BackgroundColor #303030
+	BorderColor #404040
+	FontColor #a0a0a0
+}
+
+	skinparam swimlane {
+	BorderColor #5e5e5e
+	BorderThickness 2
+	TitleBackgroundColor  #6d6d6d-#484848
+	TitleFontColor #303030
+}
+
+skinparam activity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BarColor #00FF00
+	StartColor #0060a8
+	EndColor #0060a8
+	DiamondBackgroundColor #6d6d6d-#3a3a3a
+  	DiamondBorderColor #3a3a3a
+  	DiamondFontColor #fefefe
+}
+
+
+skinparam participant {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam arrow {
+	Thickness 1.5
+	Color #545454
+	FontColor #a0a0a0
+    FontStyle bold
+    MessageAlignment center
+}
+
+
+
+skinparam sequence {
+	BorderColor #303030
+	TitleFontColor #303030
+	BackgroundColor #333333
+	StartColor #303030
+	EndColor #303030
+	BoxBackgroundColor #333333
+	BoxBorderColor #484848
+	BoxFontColor #484848
+	LifeLineBorderColor #484848
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor #3a3a3a
+	GroupBorderColor #484848
+	GroupFontColor #484848
+	GroupHeaderFontColor #0060a8
+	GroupBackgroundColor #484848
+	GroupHeaderBackgroundColor #333333
+	DividerBackgroundColor #484848
+    DividerBorderColor #484848
+    DividerBorderThickness 2
+    DividerFontColor #D8Bc00
+	ReferenceBackgroundColor #333333
+	ReferenceBorderColor #484848
+	ReferenceFontColor #fefefe
+	ReferenceHeaderBackgroundColor #484848
+}
+
+
+skinparam partition {
+	BorderColor #303030
+	FontColor #333333
+	BackgroundColor #333333
+}
+
+
+skinparam collections {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam control {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam entity {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam boundary {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam agent {
+	BackgroundColor #ff8000
+	BorderColor #ff9933
+	FontColor #484848
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor #1b1b1a
+	BorderColor #5e5e5e
+	FontSize 11
+	FontColor #a0a0a0
+}
+
+
+skinparam artifact {
+	BorderThickness 10
+	BorderColor #5e5e5e
+	BackgroundColor #1b1b1a
+	FontColor #D8Bc00
+}
+
+
+skinparam component {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam interface {
+	BackgroundColor  #008400
+	BorderColor  #007F00
+	FontColor #484848
+}
+
+
+skinparam storage {
+	BackgroundColor #ff8000
+  	BorderColor #cc6600
+	FontColor #222222
+}
+
+
+skinparam node {
+	BackgroundColor #333333
+	BorderColor #333333
+	FontColor #C8Ac00
+}
+
+
+skinparam cloud {
+	BackgroundColor #484848-black
+	BorderColor #484848
+	FontColor #D8Bc00
+}
+
+
+skinparam database {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor  #333333
+}
+
+
+skinparam class {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	HeaderBackgroundColor #1b1b1a
+    BackgroundColor #282828
+    BorderColor #5e5e5e
+ 	StereotypeFontColor #a0a0a0
+    StereotypeFontStyle bold
+	BorderThickness 1
+	AttributeFontColor #D8Bc00
+	AttributeFontSize 11
+    FontColor #D8Bc00
+    FontStyle bold
+}
+
+
+skinparam object {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StereotypeFontColor #484848
+	BorderThickness 1
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam rectangle {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+	StereotypeFontColor #303030
+}
+
+
+skinparam package {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	BackgroundColor #333333
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor #6d6d6d
+  	BorderColor #ff8000
+	FontColor #ff8000
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor #6d6d6d
+  	BorderColor #0060a8
+	FontColor #0060a8
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+	StartColor #0060a8
+	EndColor #0060a8
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+
+skinparam card {
+	BackgroundColor #0060a8
+	BorderColor #004d86
+	FontColor $INFO_TEXT
+}
+
+
+skinparam file {
+	BackgroundColor #6d6d6d-#484848
+	BorderColor #0060a8
+	FontColor #fefefe
+}
+
+
+skinparam stack {
+		FontColor #C8Ac00
+	BorderColor #333333
+	BackgroundColor #333333-#333333
+}
+
+    
+    title "com.telenav.aonia.map.data.formats.pbf.processing.readers"
+    
+    abstract BaseRepeater
+    abstract BasePbfReader
+    
+    interface PbfDataSource
+    
+    BaseRepeater <|- - BasePbfReader
+    PbfDataSource <|- - BasePbfReader
+    BasePbfReader o- - Resource
+    BasePbfReader o- - PbfDataStatistics
+    BasePbfReader o- - PbfDataProcessor
+    abstract class BasePbfReader
+    {
+        - -(constructors)- -
+        #BasePbfReader(Resource)
+        - -
+        +PbfDataStatistics dataStatistics()
+        +void process(Entity)
+        +void processBounds(Bound)
+        - -(lifecycle)- -
+        +void end()
+        +void start(PbfDataProcessor)
+        - -(math)- -
+        +Identifier maximumNodeIdentifier()
+        +Identifier maximumRelationIdentifier()
+        +Identifier maximumWayIdentifier()
+        - -(metadata)- -
+        +void processMetadata(Map<String,Object> metadata)
+        - -(read)- -
+        +BasePbfReader noProgress()
+    }
+    
+    BaseRepeater <|- - ParallelPbfReader
+    PbfDataSource <|- - ParallelPbfReader
+    class ParallelPbfReader
+    {
+        - -(constructors)- -
+        +ParallelPbfReader(Resource, Count)
+        - -
+        +void nodes(Count nodes)
+        +void relations(Count relations)
+        +void ways(Count ways)
+    }
+    
+    BasePbfReader <|- - SerialPbfReader
+    class SerialPbfReader
+    {
+        - -(constructors)- -
+        +SerialPbfReader(Resource)
+    }
+    
+@enduml
+
+PlantUML version 1.2021.01(Tue Feb 02 00:55:08 MST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

@@ -1,0 +1,29 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.data.formats.pbf.processing.filters.unidb"
+    
+    RelationFilter <|-- UniDbExcludeAdasRelationFilter
+    class UniDbExcludeAdasRelationFilter
+    {
+        --(constructors)--
+        +UniDbExcludeAdasRelationFilter()
+    }
+    
+    WayFilter <|-- UniDbNavigableWayFilter
+    class UniDbNavigableWayFilter
+    {
+        --(constructors)--
+        +UniDbNavigableWayFilter()
+    }
+    
+    RelationFilter <|-- UniDbRelationsFilter
+    class UniDbRelationsFilter
+    {
+        --(constructors)--
+        +UniDbRelationsFilter()
+    }
+    
+@enduml
+

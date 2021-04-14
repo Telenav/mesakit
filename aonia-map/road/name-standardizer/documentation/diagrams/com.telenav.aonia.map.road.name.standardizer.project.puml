@@ -1,0 +1,17 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.road.name.standardizer.project"
+    
+    Project <|-- MapRoadNameStandardizerProject
+    class MapRoadNameStandardizerProject
+    {
+        --(constructors)--
+        #MapRoadNameStandardizerProject()
+        --(collection)--
+        +MapRoadNameStandardizerProject get()
+    }
+    
+@enduml
+

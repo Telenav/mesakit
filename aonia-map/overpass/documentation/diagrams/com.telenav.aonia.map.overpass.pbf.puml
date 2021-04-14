@@ -1,0 +1,19 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.overpass.pbf"
+    
+    abstract BaseRepeater
+    
+    BaseRepeater <|-- OsmToPbfConverter
+    class OsmToPbfConverter
+    {
+        --(constructors)--
+        +OsmToPbfConverter(Listener)
+        --
+        +void convert(File in, File out)
+    }
+    
+@enduml
+

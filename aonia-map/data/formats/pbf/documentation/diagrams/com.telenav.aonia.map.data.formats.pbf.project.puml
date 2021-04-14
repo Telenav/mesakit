@@ -1,0 +1,21 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.data.formats.pbf.project"
+    
+    class DataFormatsPbfLimits
+    {
+    }
+    
+    Project <|-- DataFormatsPbfProject
+    class DataFormatsPbfProject
+    {
+        --(constructors)--
+        #DataFormatsPbfProject()
+        --
+        +DataFormatsPbfProject get()
+    }
+    
+@enduml
+

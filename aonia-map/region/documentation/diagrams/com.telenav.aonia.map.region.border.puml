@@ -1,0 +1,61 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.region.border"
+    
+    interface Bounded
+    interface Intersectable
+    interface Configured
+    
+    Bounded <|-- Border
+    Intersectable <|-- Border
+    Border o-- Polygon : "bounded by"
+    Border o-- Rectangle : "bounding rectangle"
+    class Border<T>
+    {
+        --(constructors)--
+        +Border(T, Polygon)
+        --
+        +RegionIdentity identity()
+        +void identity(RegionIdentity)
+        +Polygon polygon()
+        +T region()
+        +void region(T region)
+        --(checks)--
+        +boolean isValid()
+        --(collection)--
+        +boolean contains(Location)
+    }
+    
+    Leaf <|-- BorderLeaf
+    class BorderLeaf<T>
+    {
+        --(constructors)--
+        +BorderLeaf(RTreeSpatialIndex<Border<T>>, InteriorNode<Border<T>>)
+    }
+    
+    RTreeSpatialIndex <|-- BorderSpatialIndex
+    BorderSpatialIndex --> "1+" Border : "indexes"
+    class BorderSpatialIndex<T>
+    {
+        --(constructors)--
+        +BorderSpatialIndex(String, RTreeSettings)
+    }
+    
+    RTreeSpatialIndexKryoSerializer <|-- BorderSpatialIndexKryoSerializer
+    Configured <|-- BorderSpatialIndexKryoSerializer
+    class BorderSpatialIndexKryoSerializer<T>
+    {
+    }
+    
+    Bordered "1" --> "1+" Polygon : "bounded by"
+    interface Bordered
+    {
+        --
+        +Collection<Polygon> borders()
+        +RegionIdentity identity()
+    }
+    
+@enduml
+

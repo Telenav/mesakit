@@ -1,0 +1,62 @@
+@startuml
+
+    !include ../lexakai/lexakai.theme
+    
+    title "com.telenav.aonia.map.data.formats.library.map.identifiers"
+    
+    interface Comparator
+    
+    Comparator <|-- MapNodeIdentifier.Comparator
+    class MapNodeIdentifier.Comparator
+    {
+    }
+    
+    Identifier <|-- MapIdentifier
+    abstract class MapIdentifier
+    {
+        --(constructors)--
+        #MapIdentifier(long)
+        --(collection)--
+        +MapIdentifier next()
+        +Type type()
+        #MapIdentifier newIdentifier(long identifier)
+    }
+    
+    MapIdentifier <|-- MapNodeIdentifier
+    abstract class MapNodeIdentifier
+    {
+        --(constructors)--
+        #MapNodeIdentifier(long)
+    }
+    
+    MapIdentifier <|-- MapRelationIdentifier
+    abstract class MapRelationIdentifier
+    {
+        --(constructors)--
+        #MapRelationIdentifier(long)
+    }
+    
+    MapIdentifier <|-- MapWayIdentifier
+    abstract class MapWayIdentifier
+    {
+        --(constructors)--
+        #MapWayIdentifier(long)
+        --(checks)--
+        +boolean isForward()
+        +boolean isReverse()
+        --(collection)--
+        +MapWayIdentifier backward()
+        +MapWayIdentifier forward()
+        +MapWayIdentifier reversed()
+    }
+    
+    enum MapIdentifier.Type
+    {
+        INVALID
+        NODE
+        RELATION
+        WAY
+    }
+    
+@enduml
+
