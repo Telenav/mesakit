@@ -1,11 +1,11 @@
-## Aonia - Java Migration Notes &nbsp;  ![](../images/footprints-40.png)
+## MesaKit - Java Migration Notes &nbsp;  ![](../images/footprints-40.png)
 
 ![](../images/horizontal-line.png)
 
 ### Welcome to Java 11+ &nbsp;&nbsp;    ![](../images/coffee-40.png)
 
 Starting with Java 9, the JDK has supported _modules_.  
-Aonia has a modular design and runs on Java 11+.
+MesaKit has a modular design and runs on Java 11+.
 
 ### Why Upgrade from Java 8?
 
@@ -44,7 +44,7 @@ Modules provide strong encapsulation, which has some advantages:
 * Packages can be hidden from outside use
 * Modules are more secure
 * HotSpot can perform more aggressive optimizations on code that isn't public
-* It's easier to use only part of the KivaKit or Aonia without dragging in a lot of unneeded dependencies
+* It's easier to use only part of the KivaKit or MesaKit without dragging in a lot of unneeded dependencies
 
 ### Strong Encapsulation   ![](../images/box-40.png)
 
@@ -52,7 +52,7 @@ Modular Java is more secure and performs better, but it places certain restricti
 
 Under modular Java, reflection is **only permitted** if code declares itself to be an _open_ module.
 
-Since Aonia uses reflection, most modules in Aonia are open modules. This allows reflective  
+Since MesaKit uses reflection, most modules in MesaKit are open modules. This allows reflective  
 code like Kryo serialization to access private members and constructors. Even though this works,  
 you will see this warning (which is by design from the developers of Java):
 
@@ -63,20 +63,20 @@ will restrict reflection further, it is nothing to worry about under Java 12.
 
 ### Making Your Application Modular &nbsp; ![](../images/tools-40.png)
 
-For users of Aonia, it's only _required_ to declare your application to be an open module if you  
-want Aonia to be able to reflect on _your_ code. Even so, it can be useful to make your  
-application modular, because you can specify exactly what parts of Aonia you want to use.
+For users of MesaKit, it's only _required_ to declare your application to be an open module if you  
+want MesaKit to be able to reflect on _your_ code. Even so, it can be useful to make your  
+application modular, because you can specify exactly what parts of MesaKit you want to use.
 
 To make your application modular, you need to put a module-info.java file in the root of your main  
 source tree (in src/main/java). Your module declaration file might look like:
 
     open module navigation.myapplication 
     { 
-        requires aonia.map.geography;
-        requires aonia.map.utilities.geohash;
+        requires mesakit.map.geography;
+        requires mesakit.map.utilities.geohash;
     }
 
-This provides access to specific modules in Aonia to your application and only those modules  
+This provides access to specific modules in MesaKit to your application and only those modules  
 and their transitive dependencies. This can help control your dependency use.
 
 <br/> 

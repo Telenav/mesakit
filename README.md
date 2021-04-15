@@ -1,6 +1,6 @@
-# aonia &nbsp;&nbsp;![](documentation/images/aonia-64.png)
+# mesakit &nbsp;&nbsp;![](documentation/images/mesakit-64.png)
 
-Aonia is a modular toolkit for developing map and navigation software.
+MesaKit is a modular toolkit for developing map and navigation software.
 
 ![](documentation/images/horizontal-line.png)
 
@@ -21,27 +21,27 @@ Aonia is a modular toolkit for developing map and navigation software.
 
 ### Welcome <a name = "welcome"></a>! &nbsp; ![](documentation/images/stars-32.png)
 
-> *The mission of Aonia is to accelerate the development of mapping and navigation software*
+> *The mission of MesaKit is to accelerate the development of mapping and navigation software*
 
 ![](documentation/images/horizontal-line.png)
 
 ### Summary <a name = "summary"></a>
 
-Aonia provides useful APIs and tools for complex back-end map data analysis problems.  
+MesaKit provides useful APIs and tools for complex back-end map data analysis problems.  
 It may also appropriate for serving map data in some specialized production applications.
 
 #### What is it?
 
-Aonia is a way to rapidly develop mapping and navigation software.
+MesaKit is a way to rapidly develop mapping and navigation software.
 
 #### Why use it?
 
-Aonia simplifies access to map data by providing an object-oriented API.  
+MesaKit simplifies access to map data by providing an object-oriented API.  
 This API makes it easy to perform complex data analysis operations with minimal code.
 
 #### What can it do?
 
-Aonia provides support for:
+MesaKit provides support for:
 
 - [OpenStreetMap (OSM)](https://www.openstreetmap.org/) data processing
     - OSM [Protobuf (PBF)](https://wiki.openstreetmap.org/wiki/PBF_Format) format
@@ -72,16 +72,16 @@ Aonia provides support for:
 
 | Resource     |     Description                   |
 |--------------|-----------------------------------|
-| Project Name | Aonia |
+| Project Name | MesaKit |
 | Summary | A toolkit for developing mapping and navigation software |
 | Javadoc Coverage |  <!-- ${project-javadoc-average-coverage-meter} -->  ![](documentation/images/meter-40-12.png) <!-- end --> |
 | Lead | Jonathan Locke (Luo, Shibo) <br/> [jonathanl@telenav.com](mailto:jonathanl@telenav.com) |
 | Administrator | Jonathan Locke (Luo, Shibo) <br/> [jonathanl@telenav.com](mailto:jonathanl@telenav.com) |
 | Email | [jonathanl@telenav.com](mailto:jonathanl@telenav.com) |
-| Twitter | [@OpenAonia](https://twitter.com/openaonia) |
-| Issues | [GitHub Issues](https://github.com/Telenav/aonia/issues) |
-| Code | [GitHub](https://github.com/Telenav/aonia) |
-| Checkout | `git clone git@github.com:Telenav/aonia.git` |
+| Twitter | [@OpenMesaKit](https://twitter.com/openmesakit) |
+| Issues | [GitHub Issues](https://github.com/Telenav/mesakit/issues) |
+| Code | [GitHub](https://github.com/Telenav/mesakit) |
+| Checkout | `git clone git@github.com:Telenav/mesakit.git` |
 
 ![](documentation/images/short-horizontal-line.png)
 
@@ -95,8 +95,8 @@ Aonia provides support for:
 
 ### Reference <a name = "reference"></a>&nbsp; ![](documentation/images/books-40.png)
 
-[**Javadoc**](https://telenav.github.io/aonia/javadoc)  
-[**CodeFlowers**](https://telenav.github.io/aonia/codeflowers/site/index.html)  
+[**Javadoc**](https://telenav.github.io/mesakit/javadoc)  
+[**CodeFlowers**](https://telenav.github.io/mesakit/codeflowers/site/index.html)  
 [**System Properties**](documentation/developing/system-properties.md)
 
 ![](documentation/images/short-horizontal-line.png)
@@ -105,32 +105,32 @@ Aonia provides support for:
 
 ### Projects <a name = "projects"></a> &nbsp; ![](documentation/images/gears-40.png)
 
-[**aonia-map**](aonia-map/README.md)  
+[**mesakit-map**](mesakit-map/README.md)  
 
 ![](documentation/images/short-horizontal-line.png)
 
 ### Javadoc Coverage <a name = "javadoc-coverage"></a> &nbsp; ![](documentation/images/bargraph-32.png)
 
-&nbsp;  ![](documentation/images/meter-30-12.png) &nbsp; &nbsp; [**aonia-map-cutter**](cutter/README.md)  
-&nbsp;  ![](documentation/images/meter-40-12.png) &nbsp; &nbsp; [**aonia-map-data-formats-pbf**](pbf/README.md)  
-&nbsp;  ![](documentation/images/meter-50-12.png) &nbsp; &nbsp; [**aonia-map-data-library**](library/README.md)  
-&nbsp;  ![](documentation/images/meter-40-12.png) &nbsp; &nbsp; [**aonia-map-geography**](geography/README.md)  
-&nbsp;  ![](documentation/images/meter-60-12.png) &nbsp; &nbsp; [**aonia-map-measurements**](measurements/README.md)  
-&nbsp;  ![](documentation/images/meter-10-12.png) &nbsp; &nbsp; [**aonia-map-overpass**](overpass/README.md)  
-&nbsp;  ![](documentation/images/meter-40-12.png) &nbsp; &nbsp; [**aonia-map-region**](region/README.md)  
-&nbsp;  ![](documentation/images/meter-40-12.png) &nbsp; &nbsp; [**aonia-map-road-model**](model/README.md)  
-&nbsp;  ![](documentation/images/meter-50-12.png) &nbsp; &nbsp; [**aonia-map-road-name-parser**](name-parser/README.md)  
-&nbsp;  ![](documentation/images/meter-30-12.png) &nbsp; &nbsp; [**aonia-map-road-name-standardizer**](name-standardizer/README.md)  
-&nbsp;  ![](documentation/images/meter-40-12.png) &nbsp; &nbsp; [**aonia-map-ui**](ui/README.md)  
-&nbsp;  ![](documentation/images/meter-40-12.png) &nbsp; &nbsp; [**aonia-map-utilities-geohash**](geohash/README.md)  
-&nbsp;  ![](documentation/images/meter-30-12.png) &nbsp; &nbsp; [**aonia-map-utilities-geojson**](geojson/README.md)  
-&nbsp;  ![](documentation/images/meter-50-12.png) &nbsp; &nbsp; [**aonia-map-utilities-grid**](grid/README.md)
+&nbsp;  ![](documentation/images/meter-30-12.png) &nbsp; &nbsp; [**mesakit-map-cutter**](cutter/README.md)  
+&nbsp;  ![](documentation/images/meter-40-12.png) &nbsp; &nbsp; [**mesakit-map-data-formats-pbf**](pbf/README.md)  
+&nbsp;  ![](documentation/images/meter-50-12.png) &nbsp; &nbsp; [**mesakit-map-data-library**](library/README.md)  
+&nbsp;  ![](documentation/images/meter-40-12.png) &nbsp; &nbsp; [**mesakit-map-geography**](geography/README.md)  
+&nbsp;  ![](documentation/images/meter-60-12.png) &nbsp; &nbsp; [**mesakit-map-measurements**](measurements/README.md)  
+&nbsp;  ![](documentation/images/meter-10-12.png) &nbsp; &nbsp; [**mesakit-map-overpass**](overpass/README.md)  
+&nbsp;  ![](documentation/images/meter-40-12.png) &nbsp; &nbsp; [**mesakit-map-region**](region/README.md)  
+&nbsp;  ![](documentation/images/meter-40-12.png) &nbsp; &nbsp; [**mesakit-map-road-model**](model/README.md)  
+&nbsp;  ![](documentation/images/meter-50-12.png) &nbsp; &nbsp; [**mesakit-map-road-name-parser**](name-parser/README.md)  
+&nbsp;  ![](documentation/images/meter-30-12.png) &nbsp; &nbsp; [**mesakit-map-road-name-standardizer**](name-standardizer/README.md)  
+&nbsp;  ![](documentation/images/meter-40-12.png) &nbsp; &nbsp; [**mesakit-map-ui**](ui/README.md)  
+&nbsp;  ![](documentation/images/meter-40-12.png) &nbsp; &nbsp; [**mesakit-map-utilities-geohash**](geohash/README.md)  
+&nbsp;  ![](documentation/images/meter-30-12.png) &nbsp; &nbsp; [**mesakit-map-utilities-geojson**](geojson/README.md)  
+&nbsp;  ![](documentation/images/meter-50-12.png) &nbsp; &nbsp; [**mesakit-map-utilities-grid**](grid/README.md)
 
 [//]: # (start-user-text)
 
 ![](documentation/images/horizontal-line.png)
 
-[**Issues**](https://github.com/Telenav/aonia/issues) |
+[**Issues**](https://github.com/Telenav/mesakit/issues) |
 [**Change Log**](change-log.md) |
 [**Java Migration Notes**](documentation/overview/java-migration-notes.md)
 

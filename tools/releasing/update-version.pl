@@ -97,8 +97,8 @@ sub update_root_pom {
     my $path = "$root/pom.xml";
     my $text = read_file($path);
     $text =~ s!<version>(?<version>.*?)</version>!<version>$new_version</version>!;
-    $text =~ s!<aonia.version>(?<version>.*?)</aonia.version>!<aonia.version>$new_version</aonia.version>!;
-    $text =~ s!<aonia.base.version>(?<version>.*?)</aonia.base.version>!<aonia.base.version>$base_version</aonia.base.version>!;
+    $text =~ s!<mesakit.version>(?<version>.*?)</mesakit.version>!<mesakit.version>$new_version</mesakit.version>!;
+    $text =~ s!<mesakit.base.version>(?<version>.*?)</mesakit.base.version>!<mesakit.base.version>$base_version</mesakit.base.version>!;
     write_file($path, $text);
     print "Updated root pom.xml\n";
 }

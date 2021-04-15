@@ -1,25 +1,25 @@
-## Releasing Aonia &nbsp; ![](../images/rocket-40.png)
+## Releasing MesaKit &nbsp; ![](../images/rocket-40.png)
 
 ### Step-by-Step Instructions &nbsp; ![](../images/footprints-40.png)
 
-This section documents how to release a new version of Aonia, step by step.
+This section documents how to release a new version of MesaKit, step by step.
 
-In the text below *\[aonia-version\]* refers to a [semantic versioning](https://semver.org) identifier, such  
+In the text below *\[mesakit-version\]* refers to a [semantic versioning](https://semver.org) identifier, such  
 as 2.1.7 or 1.0.0-beta.
 
-Aonia adheres to the standard [Git Flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) branching model.
+MesaKit adheres to the standard [Git Flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) branching model.
 
 ### 1. Creating the Release Branch ![](../images/branch-40.png)
 
 Start a new release branch with the following command:
 
-    aonia-release-start.sh [aonia-version]
+    mesakit-release-start.sh [mesakit-version]
 
 This script does the following:
 
-1. Creates the release branch *release/[aonia-version\]* using git flow
-2. Updates *$AONIA_HOME/project.properties* file
-3. Updates the version of all pom.xml files to *[aonia-version]*
+1. Creates the release branch *release/[mesakit-version\]* using git flow
+2. Updates *$MESAKIT_HOME/project.properties* file
+3. Updates the version of all pom.xml files to *[mesakit-version]*
 
 Restart your terminal window to ensure all environment variables are updated.
 
@@ -33,28 +33,28 @@ the branch for publication.
 In order to ensure that the build will work on the build server, it is a good idea to completely  
 clean out your maven repository and cache folders by building the project completely from scratch:
 
-    aonia-build.sh all sparkling
+    mesakit-build.sh all sparkling
 
 This will remove (after prompting) the following before building:
 
 1. Maven repository *~/.m2*
-2. Aonia cache folder *~/.aonia/\[aonia-version\]*
+2. MesaKit cache folder *~/.mesakit/\[mesakit-version\]*
 3. Temporary files, logs, etc. in the source tree
 
 #### 2.2 Building the Documentation
 
 The following command will build Javadoc, UML diagrams and update project README.md indexes.
 
-    aonia-build-documentation.sh
+    mesakit-build-documentation.sh
 
 #### 2.3 Updating Code Flowers
 
 To publish code flowers for the build:
 
-1. Run *aonia-build-codeflowers.sh* to build codeflowers for Aonia
-2. Insert in *$AONIA\_HOME/tools/codeflowers/site/index.html* the HTML code output by the build process   
+1. Run *mesakit-build-codeflowers.sh* to build codeflowers for MesaKit
+2. Insert in *$MESAKIT\_HOME/tools/codeflowers/site/index.html* the HTML code output by the build process   
    This will change the options in the dropdown to include any new projects
-3. Run *aonia-upload-codeflowers.sh* to install the codeflowers on their web server
+3. Run *mesakit-upload-codeflowers.sh* to install the codeflowers on their web server
 
 #### 2.4 Commit Changes
 
@@ -64,5 +64,5 @@ Commit any changes to the release branch.
 
 The release is finished and merged into master with another script that uses git flow:
 
-    aonia-release-finish.sh [aonia-version]
+    mesakit-release-finish.sh [mesakit-version]
 

@@ -1,6 +1,6 @@
-# aonia &nbsp;&nbsp;![](images/aonia-64.png)
+# mesakit &nbsp;&nbsp;![](images/mesakit-64.png)
 
-Aonia is a modular toolkit for developing mapping and navigation applications.
+MesaKit is a modular toolkit for developing mapping and navigation applications.
 
 ![](images/horizontal-line.png)
 
@@ -8,27 +8,27 @@ Aonia is a modular toolkit for developing mapping and navigation applications.
 
 ### Welcome <a name = "welcome"></a>! &nbsp; ![](images/stars-32.png)
 
-> *The mission of Aonia is to make complex mapping software easy*
+> *The mission of MesaKit is to make complex mapping software easy*
 
 ![](images/horizontal-line.png)
 
 ### Summary <a name = "summary"></a>
 
-Aonia provides useful APIs and tools for complex back-end map data analysis problems.  
+MesaKit provides useful APIs and tools for complex back-end map data analysis problems.  
 It may also appropriate for serving map data in some specialized production applications.
 
 #### What is it?
 
-Aonia is a way to rapidly develop mapping and navigation software. 
+MesaKit is a way to rapidly develop mapping and navigation software. 
 
 #### Why use it?
 
-Aonia simplifies access to map data by providing an object-oriented API.  
+MesaKit simplifies access to map data by providing an object-oriented API.  
 This API makes it easy to perform complex data analysis operations with minimal code. 
 
 #### What can it do?
 
-Aonia provides support for:
+MesaKit provides support for:
 
 - [OpenStreetMap (OSM)](https://www.openstreetmap.org/) data processing  
     - OSM [Protobuf (PBF)](https://wiki.openstreetmap.org/wiki/PBF_Format) format
@@ -57,15 +57,15 @@ Aonia provides support for:
 
 | Resource     |     Description                   |
 |--------------|-----------------------------------|
-| Project Name | Aonia |
+| Project Name | MesaKit |
 | Summary | A toolkit for developing mapping and navigation software |
 | Lead | Jonathan Locke (Luo, Shibo) <br/> [jonathanl@telenav.com](mailto:jonathanl@telenav.com) |
 | Administrator | Jonathan Locke (Luo, Shibo) <br/> [jonathanl@telenav.com](mailto:jonathanl@telenav.com) |
 | Email | [jonathanl@telenav.com](mailto:jonathanl@telenav.com) |
-| Twitter | [@OpenAonia](https://twitter.com/openaonia) |
-| Issues | [GitHub Issues](https://github.com/Telenav/aonia/issues) |
-| Code | [GitHub](https://github.com/Telenav/aonia) |
-| Checkout | `git clone git@github.com:Telenav/aonia.git` |
+| Twitter | [@OpenMesaKit](https://twitter.com/openmesakit) |
+| Issues | [GitHub Issues](https://github.com/Telenav/mesakit/issues) |
+| Code | [GitHub](https://github.com/Telenav/mesakit) |
+| Checkout | `git clone git@github.com:Telenav/mesakit.git` |
 
 <br/> 
 

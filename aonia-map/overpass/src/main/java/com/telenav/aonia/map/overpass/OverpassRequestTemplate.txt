@@ -1,6 +1,0 @@
-(
-  node(${string});
-  way(bn);
-  node(w);
-);
-out meta;

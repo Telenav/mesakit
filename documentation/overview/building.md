@@ -1,33 +1,33 @@
-# Aonia - Building   ![](../images/gears-40.png)
+# MesaKit - Building   ![](../images/gears-40.png)
 
 ![](../images/horizontal-line.png)
 
-### Building Aonia
+### Building MesaKit
 
-Aonia can be built in [IntelliJ](https://www.jetbrains.com/idea/download/) or from the command line with Maven or the convenient scripts
+MesaKit can be built in [IntelliJ](https://www.jetbrains.com/idea/download/) or from the command line with Maven or the convenient scripts
 below.
 
 ### Key Build Scripts
 
-Once you have completed the [Setup](setup.md) process, it is easy to build projects from the command line with **aonia-build.sh**.
+Once you have completed the [Setup](setup.md) process, it is easy to build projects from the command line with **mesakit-build.sh**.
 
 | Script | Purpose |
 |--------|---------|
-| *aonia-build.sh* | Builds Aonia using the givens build type and modifiers (see below) |  
-| *aonia-build-documentation.sh* | Builds Javadoc and Lexakai documentation |
-| *aonia-version.sh* | Shows the version of Aonia you are building |
+| *mesakit-build.sh* | Builds MesaKit using the givens build type and modifiers (see below) |  
+| *mesakit-build-documentation.sh* | Builds Javadoc and Lexakai documentation |
+| *mesakit-version.sh* | Shows the version of MesaKit you are building |
 
-Aonia scripts are named so that you can easily discover them with command-line completion.
+MesaKit scripts are named so that you can easily discover them with command-line completion.
 
-To see what scripts are available, type "aonia" and hit tab.
+To see what scripts are available, type "mesakit" and hit tab.
 
 ### Build Parameters
 
-The **aonia-build.sh** script takes a build-type parameter and zero or more build-modifier parameters.  
+The **mesakit-build.sh** script takes a build-type parameter and zero or more build-modifier parameters.  
 These parameters are translated into a particular set of maven switches and arguments. To see what  
-build types are available, run *aonia-build.sh help*:
+build types are available, run *mesakit-build.sh help*:
 
-Usage: aonia-build.sh *[build-type] [build-modifiers]*
+Usage: mesakit-build.sh *[build-type] [build-modifiers]*
 
 **Build Types**:
 
@@ -45,7 +45,7 @@ Usage: aonia-build.sh *[build-type] [build-modifiers]*
 
                clean - prompt to remove cached and temporary files
     
-           all-clean - prompt to remove cached and temporary files and aonia artifacts from ~/.m2
+           all-clean - prompt to remove cached and temporary files and mesakit artifacts from ~/.m2
     
                debug - turn maven debug mode on
     

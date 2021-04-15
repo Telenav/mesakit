@@ -7,15 +7,15 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-if [ -z "$AONIA_HOME" ]; then
-    echo "You must set up your environment to use Aonia."
+if [ -z "$MESAKIT_HOME" ]; then
+    echo "You must set up your environment to use MesaKit."
     echo "See https://tinyurl.com/3pn9huv6 for details."
     exit 1
 fi
 
-cd $AONIA_WORKSPACE
-git clone git@github.com:Telenav/aonia-data.git
+cd $MESAKIT_WORKSPACE
+git clone git@github.com:Telenav/mesakit-data.git
 
-cd $AONIA_HOME
+cd $MESAKIT_HOME
 git checkout develop
-aonia-build.sh all clean
+mesakit-build.sh all clean

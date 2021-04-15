@@ -7,13 +7,13 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-if [ -z "$AONIA_PROJECT_HOME" ]; then
-    AONIA_PROJECT_HOME=$AONIA_HOME
+if [ -z "$MESAKIT_PROJECT_HOME" ]; then
+    MESAKIT_PROJECT_HOME=$MESAKIT_HOME
 fi
 
-PROJECT_VERSION=$(cat $AONIA_PROJECT_HOME/project.properties | grep "project-version" | cut -d'=' -f2 | xargs echo)
-AONIA_VERSION=$(cat $AONIA_HOME/project.properties | grep "project-version" | cut -d'=' -f2 | xargs echo)
+PROJECT_VERSION=$(cat $MESAKIT_PROJECT_HOME/project.properties | grep "project-version" | cut -d'=' -f2 | xargs echo)
+MESAKIT_VERSION=$(cat $MESAKIT_HOME/project.properties | grep "project-version" | cut -d'=' -f2 | xargs echo)
 
 # -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=1044
 
-java -jar $AONIA_HOME/tools/building/bin/lexakai-0.9.3.jar -project-version=$PROJECT_VERSION -update-readme=true $@
+java -jar $MESAKIT_HOME/tools/building/bin/lexakai-0.9.3.jar -project-version=$PROJECT_VERSION -update-readme=true $@

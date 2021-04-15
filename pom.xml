@@ -9,20 +9,20 @@
          xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.telenav.aonia</groupId>
-    <artifactId>aonia</artifactId>
+    <groupId>com.telenav.mesakit</groupId>
+    <artifactId>mesakit</artifactId>
     <version>0.9.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Aonia</name>
+    <name>MesaKit</name>
 
     <modules>
 
-        <module>aonia-map</module>
+        <module>mesakit-map</module>
 
     </modules>
 
-    <description>Aonia is a framework for developing mapping and navigation software.</description>
+    <description>MesaKit is a framework for developing mapping and navigation software.</description>
 
     <organization>
         <name>Telenav</name>
@@ -41,7 +41,7 @@
 
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/Telenav/aonia/issues</url>
+        <url>https://github.com/Telenav/mesakit/issues</url>
     </issueManagement>
 
     <developers>
@@ -58,10 +58,10 @@
 
     <properties>
 
-        <!-- Aonia Version -->
+        <!-- MesaKit Version -->
 
-        <aonia.version>0.9.0-SNAPSHOT</aonia.version>
-        <aonia.base.version>0.9.0</aonia.base.version>
+        <mesakit.version>0.9.0-SNAPSHOT</mesakit.version>
+        <mesakit.base.version>0.9.0</mesakit.base.version>
 
         <!-- KivaKit Version -->
 
@@ -117,8 +117,8 @@
 
         <repository>
             <id>github</id>
-            <name>GitHub Aonia Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/Telenav/aonia</url>
+            <name>GitHub MesaKit Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/Telenav/mesakit</url>
         </repository>
 
     </distributionManagement>
@@ -174,7 +174,7 @@
                                     <equals arg1 = "${source.exists}" arg2 = "true"/>
                                     <then>
                                         <echo file = "src/main/java/project.properties">
-                                            project-name=${project.name}${line.separator}project-version=${project.version}${line.separator}project-group-id=com.telenav.aonia
+                                            project-name=${project.name}${line.separator}project-version=${project.version}${line.separator}project-group-id=com.telenav.mesakit
                                         </echo>
                                         <java jar = "${maven.multiModuleProjectDirectory}/tools/building/bin/kivakit-build-metadata-0.9.3.jar"
                                               failonerror = "true"
@@ -184,10 +184,10 @@
                                     </then>
                                 </if>
                                 <if>
-                                    <equals arg1 = "${project.name}" arg2 = "Aonia"/>
+                                    <equals arg1 = "${project.name}" arg2 = "MesaKit"/>
                                     <then>
                                         <echo file = "${maven.multiModuleProjectDirectory}/project.properties">
-                                            project-name=${project.name}${line.separator}project-version=${project.version}${line.separator}project-group-id=com.telenav.aonia
+                                            project-name=${project.name}${line.separator}project-version=${project.version}${line.separator}project-group-id=com.telenav.mesakit
                                         </echo>
                                         <java jar = "${maven.multiModuleProjectDirectory}/tools/building/bin/kivakit-build-metadata-0.9.3.jar"
                                               failonerror = "true"
@@ -307,7 +307,7 @@
                         <detectJavaApiLink>false</detectJavaApiLink>
                         <doclint>none</doclint>
                         <nohelp>true</nohelp>
-                        <reportOutputDirectory>${env.AONIA_WORKSPACE}/aonia-data/docs/javadoc</reportOutputDirectory>
+                        <reportOutputDirectory>${env.MESAKIT_WORKSPACE}/mesakit-data/docs/javadoc</reportOutputDirectory>
                         <destDir>javadoc</destDir>
                         <additionalOptions>--show-module-contents all --show-packages all --show-types private</additionalOptions>
                     </configuration>

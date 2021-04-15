@@ -1,7 +1,0 @@
-     323 com/telenav/aonia/map/utilities/grid/Grid.java
-     101 com/telenav/aonia/map/utilities/grid/GridCell.java
-     101 com/telenav/aonia/map/utilities/grid/GridCellIdentifier.java
-      40 com/telenav/aonia/map/utilities/grid/project/MapUtilitiesGridKryoTypes.java
-      21 com/telenav/aonia/map/utilities/grid/project/MapUtilitiesGridProject.java
-       7 module-info.java
-     593 total
