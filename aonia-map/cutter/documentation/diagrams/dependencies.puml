@@ -2,7 +2,7 @@
 
     !include ../lexakai/lexakai.theme
     
-    title "kivakit-map-cutter"
+    title "aonia-map-cutter"
     
     artifact kryo
     artifact minlog
@@ -11,6 +11,7 @@
     artifact woodstox_core
     artifact flatlaf
     artifact protobuf_java
+    artifact aonia_map_cutter
     artifact aonia_map_data_formats_pbf
     artifact aonia_map_data_library
     artifact aonia_map_geography
@@ -18,7 +19,6 @@
     artifact aonia_map_region
     artifact aonia_map_ui
     artifact aonia_map_utilities_grid
-    artifact kivakit_map_cutter
     artifact kivakit_build_metadata
     artifact kivakit_core_collections
     artifact kivakit_core_commandline
@@ -60,6 +60,7 @@
     artifact spring_jdbc
     artifact spring_tx
     artifact xercesImpl
+    aonia_map_cutter --> aonia_map_region
     aonia_map_data_formats_pbf --> aonia_map_data_library
     aonia_map_data_formats_pbf --> kivakit_data_formats_library
     aonia_map_data_formats_pbf --> osmosis_core
@@ -97,7 +98,6 @@
     kivakit_core_resource --> kivakit_core_serialization_core
     kivakit_core_serialization_kryo --> kryo
     kivakit_core_serialization_kryo --> kryo_serializers
-    kivakit_map_cutter --> aonia_map_region
     kivakit_math --> commons_math
     kivakit_ui_swing --> flatlaf
     kryo --> minlog

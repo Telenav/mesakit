@@ -62,8 +62,10 @@
     aonia_map_data_formats_pbf --> osmosis_pbf
     aonia_map_geography --> aonia_map_measurements
     aonia_map_geography --> kivakit_core_collections
+    aonia_map_geography --> kivakit_core_resource
     aonia_map_geography --> kivakit_data_compression
     aonia_map_geography --> kivakit_math
+    aonia_map_measurements --> kivakit_core_commandline
     aonia_map_measurements --> kivakit_core_test
     aonia_map_overpass --> aonia_map_data_formats_pbf
     aonia_map_overpass --> aonia_map_geography
@@ -80,11 +82,9 @@
     kivakit_core_kernel --> kivakit_build_metadata
     kivakit_core_kernel --> lexakai_annotations
     kivakit_core_kernel --> swagger_annotations
-    kivakit_core_network_core --> kivakit_core_commandline
     kivakit_core_network_core --> kivakit_core_security
     kivakit_core_network_http --> httpclient
     kivakit_core_network_http --> kivakit_core_network_core
-    kivakit_core_network_http --> kivakit_core_resource
     kivakit_core_resource --> kivakit_core_serialization_core
     kivakit_core_serialization_kryo --> kryo
     kivakit_core_serialization_kryo --> kryo_serializers

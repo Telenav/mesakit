@@ -178,87 +178,95 @@ an application to write an arbitrary set of entities to a PBF file.
 
 ### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; ![](documentation/images/books-40.png)
 
-Javadoc coverage for this project is 13.4%.  
+Javadoc coverage for this project is 43.0%.  
   
-&nbsp; &nbsp;  ![](documentation/images/meter-10-12.png)
+&nbsp; &nbsp;  ![](documentation/images/meter-40-12.png)
 
 The following significant classes are undocumented:  
 
 - BasePbfReader  
 - OsmHighwayTag  
+- ParallelPbfReader  
+- PbfDefaultCodecs  
+- PbfEntity  
+- PbfNodeIdentifier  
 - PbfTagCodecBuilder  
 - PbfTagList  
+- PbfTagMap  
+- PbfTagPatternFilter  
+- PbfWriter  
+- RelationFilter  
 - WayFilter
 
 | Class | Documentation Sections |
 |---|---|
-| [*AllRelationsFilter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/all/AllRelationsFilter.html) |  |  
-| [*AllWaysFilter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/all/AllWaysFilter.html) |  |  
-| [*BasePbfReader*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/readers/BasePbfReader.html) |  |  
-| [*DataFormatsPbfLimits*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/project/DataFormatsPbfLimits.html) |  |  
-| [*DataFormatsPbfProject*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/project/DataFormatsPbfProject.html) |  |  
-| [*EmptyPbfTagMap*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/EmptyPbfTagMap.html) |  |  
-| [*IntegerExtractor*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/extractors/IntegerExtractor.html) |  |  
-| [*NavTeamWayFilter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/navteam/NavTeamWayFilter.html) |  |  
-| [*Osm*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/osm/Osm.html) |  |  
-| [*OsmExcludeNonDrivableWaysFilter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/osm/OsmExcludeNonDrivableWaysFilter.html) |  |  
-| [*OsmHighwayTag*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/osm/OsmHighwayTag.html) |  |  
-| [*OsmIgnoredTags*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/osm/OsmIgnoredTags.html) |  |  
-| [*OsmMajorRoadsWayFilter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/osm/OsmMajorRoadsWayFilter.html) |  |  
-| [*OsmNavigableWayFilter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/osm/OsmNavigableWayFilter.html) |  |  
-| [*OsmRelationTag*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/osm/OsmRelationTag.html) |  |  
-| [*OsmRelationsFilter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/osm/OsmRelationsFilter.html) |  |  
-| [*OsmTeamDataPipelineWayFilter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/osmteam/OsmTeamDataPipelineWayFilter.html) |  |  
-| [*OsmTeamWayFilter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/osmteam/OsmTeamWayFilter.html) |  |  
-| [*OsmWaysFilter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/osm/OsmWaysFilter.html) |  |  
-| [*ParallelPbfReader*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/readers/ParallelPbfReader.html) |  |  
-| [*PbfChangeSetIdentifier*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/metadata/PbfChangeSetIdentifier.html) |  |  
-| [*PbfCharacterCodecBuilder*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/compression/PbfCharacterCodecBuilder.html) |  |  
-| [*PbfDataProcessor*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/PbfDataProcessor.html) |  |  
-| [*PbfDataProcessor.Action*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/PbfDataProcessor.Action.html) |  |  
-| [*PbfDataSource*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/PbfDataSource.html) |  |  
-| [*PbfDataStatistics*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/PbfDataStatistics.html) |  |  
-| [*PbfDefaultCodecs*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/compression/PbfDefaultCodecs.html) |  |  
-| [*PbfEntity*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/entities/PbfEntity.html) |  |  
-| [*PbfFilters*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/PbfFilters.html) |  |  
-| [*PbfIdentifierType*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/identifiers/PbfIdentifierType.html) |  |  
-| [*PbfNode*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/entities/PbfNode.html) |  |  
-| [*PbfNodeIdentifier*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/identifiers/PbfNodeIdentifier.html) |  |  
-| [*PbfNodeIdentifier.Converter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/identifiers/PbfNodeIdentifier.Converter.html) |  |  
-| [*PbfNodeIdentifier.Factory*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/identifiers/PbfNodeIdentifier.Factory.html) |  |  
-| [*PbfRelation*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/entities/PbfRelation.html) |  |  
-| [*PbfRelationIdentifier*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/identifiers/PbfRelationIdentifier.html) |  |  
-| [*PbfRelationIdentifier.Converter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/identifiers/PbfRelationIdentifier.Converter.html) |  |  
-| [*PbfRevisionNumber*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/metadata/PbfRevisionNumber.html) |  |  
-| [*PbfStopProcessingException*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/PbfStopProcessingException.html) |  |  
-| [*PbfStringListTagCodec*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/compression/PbfStringListTagCodec.html) |  |  
-| [*PbfTagCodec*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/compression/PbfTagCodec.html) |  |  
-| [*PbfTagCodecBuilder*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/compression/PbfTagCodecBuilder.html) |  |  
-| [*PbfTagFilter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/PbfTagFilter.html) |  |  
-| [*PbfTagList*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/PbfTagList.html) |  |  
-| [*PbfTagMap*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/PbfTagMap.html) |  |  
-| [*PbfTagPatternFilter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/PbfTagPatternFilter.html) |  |  
-| [*PbfTagPatternFilter.Converter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/PbfTagPatternFilter.Converter.html) |  |  
-| [*PbfTags*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/PbfTags.html) |  |  
-| [*PbfUserIdentifier*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/metadata/PbfUserIdentifier.html) |  |  
-| [*PbfUserName*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/metadata/PbfUserName.html) |  |  
-| [*PbfWay*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/entities/PbfWay.html) |  |  
-| [*PbfWayIdentifier*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/identifiers/PbfWayIdentifier.html) |  |  
-| [*PbfWayIdentifier.Converter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/identifiers/PbfWayIdentifier.Converter.html) |  |  
-| [*PbfWriter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/writers/PbfWriter.html) |  |  
-| [*PbfWriter.Phase*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/writers/PbfWriter.Phase.html) |  |  
-| [*RelationFilter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/RelationFilter.html) |  |  
-| [*RelationFilter.Converter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/RelationFilter.Converter.html) |  |  
-| [*RevisionNumberExtractor*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/extractors/RevisionNumberExtractor.html) |  |  
-| [*SerialPbfReader*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/readers/SerialPbfReader.html) |  |  
-| [*TimestampExtractor*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/extractors/TimestampExtractor.html) |  |  
-| [*UniDb*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/unidb/UniDb.html) |  |  
-| [*UniDbExcludeAdasRelationFilter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/unidb/UniDbExcludeAdasRelationFilter.html) |  |  
-| [*UniDbNavigableWayFilter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/unidb/UniDbNavigableWayFilter.html) |  |  
-| [*UniDbRelationTag*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/unidb/UniDbRelationTag.html) |  |  
-| [*UniDbRelationsFilter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/unidb/UniDbRelationsFilter.html) |  |  
-| [*WayFilter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/WayFilter.html) |  |  
-| [*WayFilter.Converter*](https://telenav.github.io/aonia/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/WayFilter.Converter.html) |  |  
+| [*AllRelationsFilter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/all/AllRelationsFilter.html) |  |  
+| [*AllWaysFilter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/all/AllWaysFilter.html) |  |  
+| [*BasePbfReader*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/readers/BasePbfReader.html) |  |  
+| [*DataFormatsPbfLimits*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/project/DataFormatsPbfLimits.html) |  |  
+| [*DataFormatsPbfProject*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/project/DataFormatsPbfProject.html) |  |  
+| [*EmptyPbfTagMap*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/EmptyPbfTagMap.html) |  |  
+| [*IntegerExtractor*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/extractors/IntegerExtractor.html) |  |  
+| [*NavTeamWayFilter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/navteam/NavTeamWayFilter.html) |  |  
+| [*Osm*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/osm/Osm.html) |  |  
+| [*OsmExcludeNonDrivableWaysFilter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/osm/OsmExcludeNonDrivableWaysFilter.html) |  |  
+| [*OsmHighwayTag*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/osm/OsmHighwayTag.html) |  |  
+| [*OsmIgnoredTags*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/osm/OsmIgnoredTags.html) |  |  
+| [*OsmMajorRoadsWayFilter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/osm/OsmMajorRoadsWayFilter.html) |  |  
+| [*OsmNavigableWayFilter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/osm/OsmNavigableWayFilter.html) |  |  
+| [*OsmRelationTag*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/osm/OsmRelationTag.html) |  |  
+| [*OsmRelationsFilter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/osm/OsmRelationsFilter.html) |  |  
+| [*OsmTeamDataPipelineWayFilter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/osmteam/OsmTeamDataPipelineWayFilter.html) |  |  
+| [*OsmTeamWayFilter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/osmteam/OsmTeamWayFilter.html) |  |  
+| [*OsmWaysFilter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/osm/OsmWaysFilter.html) |  |  
+| [*ParallelPbfReader*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/readers/ParallelPbfReader.html) |  |  
+| [*PbfChangeSetIdentifier*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/metadata/PbfChangeSetIdentifier.html) |  |  
+| [*PbfCharacterCodecBuilder*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/compression/PbfCharacterCodecBuilder.html) |  |  
+| [*PbfDataProcessor*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/PbfDataProcessor.html) |  |  
+| [*PbfDataProcessor.Action*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/PbfDataProcessor.Action.html) |  |  
+| [*PbfDataSource*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/PbfDataSource.html) |  |  
+| [*PbfDataStatistics*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/PbfDataStatistics.html) |  |  
+| [*PbfDefaultCodecs*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/compression/PbfDefaultCodecs.html) |  |  
+| [*PbfEntity*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/entities/PbfEntity.html) |  |  
+| [*PbfFilters*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/PbfFilters.html) |  |  
+| [*PbfIdentifierType*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/identifiers/PbfIdentifierType.html) |  |  
+| [*PbfNode*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/entities/PbfNode.html) |  |  
+| [*PbfNodeIdentifier*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/identifiers/PbfNodeIdentifier.html) |  |  
+| [*PbfNodeIdentifier.Converter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/identifiers/PbfNodeIdentifier.Converter.html) |  |  
+| [*PbfNodeIdentifier.Factory*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/identifiers/PbfNodeIdentifier.Factory.html) |  |  
+| [*PbfRelation*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/entities/PbfRelation.html) |  |  
+| [*PbfRelationIdentifier*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/identifiers/PbfRelationIdentifier.html) |  |  
+| [*PbfRelationIdentifier.Converter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/identifiers/PbfRelationIdentifier.Converter.html) |  |  
+| [*PbfRevisionNumber*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/metadata/PbfRevisionNumber.html) |  |  
+| [*PbfStopProcessingException*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/PbfStopProcessingException.html) |  |  
+| [*PbfStringListTagCodec*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/compression/PbfStringListTagCodec.html) |  |  
+| [*PbfTagCodec*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/compression/PbfTagCodec.html) |  |  
+| [*PbfTagCodecBuilder*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/compression/PbfTagCodecBuilder.html) |  |  
+| [*PbfTagFilter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/PbfTagFilter.html) |  |  
+| [*PbfTagList*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/PbfTagList.html) |  |  
+| [*PbfTagMap*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/PbfTagMap.html) |  |  
+| [*PbfTagPatternFilter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/PbfTagPatternFilter.html) |  |  
+| [*PbfTagPatternFilter.Converter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/PbfTagPatternFilter.Converter.html) |  |  
+| [*PbfTags*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/tags/PbfTags.html) |  |  
+| [*PbfUserIdentifier*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/metadata/PbfUserIdentifier.html) |  |  
+| [*PbfUserName*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/metadata/PbfUserName.html) |  |  
+| [*PbfWay*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/entities/PbfWay.html) |  |  
+| [*PbfWayIdentifier*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/identifiers/PbfWayIdentifier.html) |  |  
+| [*PbfWayIdentifier.Converter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/identifiers/PbfWayIdentifier.Converter.html) |  |  
+| [*PbfWriter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/writers/PbfWriter.html) |  |  
+| [*PbfWriter.Phase*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/writers/PbfWriter.Phase.html) |  |  
+| [*RelationFilter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/RelationFilter.html) |  |  
+| [*RelationFilter.Converter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/RelationFilter.Converter.html) |  |  
+| [*RevisionNumberExtractor*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/extractors/RevisionNumberExtractor.html) |  |  
+| [*SerialPbfReader*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/readers/SerialPbfReader.html) |  |  
+| [*TimestampExtractor*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/model/extractors/TimestampExtractor.html) |  |  
+| [*UniDb*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/unidb/UniDb.html) |  |  
+| [*UniDbExcludeAdasRelationFilter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/unidb/UniDbExcludeAdasRelationFilter.html) |  |  
+| [*UniDbNavigableWayFilter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/unidb/UniDbNavigableWayFilter.html) |  |  
+| [*UniDbRelationTag*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/unidb/UniDbRelationTag.html) |  |  
+| [*UniDbRelationsFilter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/unidb/UniDbRelationsFilter.html) |  |  
+| [*WayFilter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/WayFilter.html) |  |  
+| [*WayFilter.Converter*](https://telenav.github.io/aonia-data/javadoc/aonia.map.cutter/com/telenav/aonia/map/data/formats/pbf/processing/filters/WayFilter.Converter.html) |  |  
 
 [//]: # (start-user-text)
 
@@ -271,6 +279,6 @@ The following significant classes are undocumented:
 ![](documentation/images/horizontal-line.png)
 
 <sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>  
-<sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai) on 2021.04.13. UML diagrams courtesy
+<sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai) on 2021.04.15. UML diagrams courtesy
 of [PlantUML](http://plantuml.com).</sub>
 

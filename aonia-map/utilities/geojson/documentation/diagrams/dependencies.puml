@@ -33,21 +33,21 @@
     artifact objenesis
     artifact asm
     aonia_map_geography --> aonia_map_measurements
+    aonia_map_geography --> kivakit_core_collections
     aonia_map_geography --> kivakit_data_compression
     aonia_map_geography --> kivakit_math
+    aonia_map_measurements --> kivakit_core_test
     aonia_map_utilities_geojson --> aonia_map_geography
     aonia_map_utilities_geojson --> kivakit_core_resource
     aonia_map_utilities_geojson --> kivakit_core_serialization_json
     junit --> hamcrest_core
     kivakit_core_collections --> kivakit_core_serialization_kryo
-    kivakit_core_collections --> kivakit_core_test
     kivakit_core_kernel --> annotations
     kivakit_core_kernel --> jackson_annotations
     kivakit_core_kernel --> junit
     kivakit_core_kernel --> kivakit_build_metadata
     kivakit_core_kernel --> lexakai_annotations
     kivakit_core_kernel --> swagger_annotations
-    kivakit_core_resource --> kivakit_core_collections
     kivakit_core_resource --> kivakit_core_commandline
     kivakit_core_resource --> kivakit_core_serialization_core
     kivakit_core_serialization_json --> gson

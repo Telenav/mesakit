@@ -22,13 +22,8 @@
 
     <dependencies>
 
-        <!-- TDK -->
+        <!-- Aonia -->
 
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-core-network-http</artifactId>
-            <version>${kivakit.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.telenav.aonia</groupId>
             <artifactId>aonia-map-geography</artifactId>
@@ -38,6 +33,14 @@
             <groupId>com.telenav.aonia</groupId>
             <artifactId>aonia-map-data-formats-pbf</artifactId>
             <version>${aonia.version}</version>
+        </dependency>
+
+        <!-- KivaKit -->
+
+        <dependency>
+            <groupId>com.telenav.kivakit</groupId>
+            <artifactId>kivakit-core-network-http</artifactId>
+            <version>${kivakit.version}</version>
         </dependency>
 
         <!-- OSM -->

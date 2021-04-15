@@ -22,7 +22,7 @@
 
     <dependencies>
 
-        <!-- TDK -->
+        <!-- Aonia -->
 
         <dependency>
             <groupId>com.telenav.aonia</groupId>
