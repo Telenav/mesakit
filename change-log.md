@@ -1,10 +1,10 @@
-![](documentation/images/horizontal-line.png)
+![](https://kivakit.org/images/horizontal-line.png)
 
 ### Version 0.9.0 (2021.04.12)
 
 Initial version.
 
-![](documentation/images/horizontal-line.png)
+![](https://kivakit.org/images/horizontal-line.png)
 
 #### updated
 
@@ -26,5 +26,5 @@ Initial version.
 
 * All
 
-![](documentation/images/horizontal-line.png)
+![](https://kivakit.org/images/horizontal-line.png)
 

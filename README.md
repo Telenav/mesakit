@@ -1,8 +1,8 @@
-# mesakit &nbsp;&nbsp;![](documentation/images/mesakit-64.png)
+# mesakit &nbsp;&nbsp;![](https://kivakit.org/images/mesakit-64.png)
 
 MesaKit is a modular toolkit for developing map and navigation software.
 
-![](documentation/images/horizontal-line.png)
+![](https://kivakit.org/images/horizontal-line.png)
 
 [//]: # (start-user-text)
 
@@ -17,13 +17,13 @@ MesaKit is a modular toolkit for developing map and navigation software.
 [**Projects**](#projects)  
 [**Javadoc Coverage**](#javadoc-coverage)
 
-![](documentation/images/short-horizontal-line.png)
+![](https://kivakit.org/images/short-horizontal-line.png)
 
-### Welcome <a name = "welcome"></a>! &nbsp; ![](documentation/images/stars-32.png)
+### Welcome <a name = "welcome"></a>! &nbsp; ![](https://kivakit.org/images/stars-32.png)
 
 > *The mission of MesaKit is to accelerate the development of mapping and navigation software*
 
-![](documentation/images/horizontal-line.png)
+![](https://kivakit.org/images/horizontal-line.png)
 
 ### Summary <a name = "summary"></a>
 
@@ -66,15 +66,15 @@ MesaKit provides support for:
     - Historical data processing
     - Tomtom and Navteq codes
 
-![](documentation/images/short-horizontal-line.png)
+![](https://kivakit.org/images/short-horizontal-line.png)
 
-### Project Resources <a name = "project-resources"></a> &nbsp; ![](documentation/images/water-32.png)
+### Project Resources <a name = "project-resources"></a> &nbsp; ![](https://kivakit.org/images/water-32.png)
 
 | Resource     |     Description                   |
 |--------------|-----------------------------------|
 | Project Name | MesaKit |
 | Summary | A toolkit for developing mapping and navigation software |
-| Javadoc Coverage |  <!-- ${project-javadoc-average-coverage-meter} -->  ![](documentation/images/meter-40-12.png) <!-- end --> |
+| Javadoc Coverage |  <!-- ${project-javadoc-average-coverage-meter} -->  ![](https://kivakit.org/images/meter-40-12.png) <!-- end --> |
 | Lead | Jonathan Locke (Luo, Shibo) <br/> [jonathanl@telenav.com](mailto:jonathanl@telenav.com) |
 | Administrator | Jonathan Locke (Luo, Shibo) <br/> [jonathanl@telenav.com](mailto:jonathanl@telenav.com) |
 | Email | [jonathanl@telenav.com](mailto:jonathanl@telenav.com) |
@@ -83,52 +83,52 @@ MesaKit provides support for:
 | Code | [GitHub](https://github.com/Telenav/mesakit) |
 | Checkout | `git clone git@github.com:Telenav/mesakit.git` |
 
-![](documentation/images/short-horizontal-line.png)
+![](https://kivakit.org/images/short-horizontal-line.png)
 
-### Quick Start <a name = "quick-start"></a>&nbsp; ![](documentation/images/rocket-40.png)
+### Quick Start <a name = "quick-start"></a>&nbsp; ![](https://kivakit.org/images/rocket-40.png)
 
 [**Setup**](documentation/overview/setup.md)  
 [**Building**](documentation/overview/building.md)  
 [**Developing**](documentation/developing/index.md)
 
-![](documentation/images/short-horizontal-line.png)
+![](https://kivakit.org/images/short-horizontal-line.png)
 
-### Reference <a name = "reference"></a>&nbsp; ![](documentation/images/books-40.png)
+### Reference <a name = "reference"></a>&nbsp; ![](https://kivakit.org/images/books-40.png)
 
 [**Javadoc**](https://telenav.github.io/mesakit/javadoc)  
 [**CodeFlowers**](https://telenav.github.io/mesakit/codeflowers/site/index.html)  
 [**System Properties**](documentation/developing/system-properties.md)
 
-![](documentation/images/short-horizontal-line.png)
+![](https://kivakit.org/images/short-horizontal-line.png)
 
 [//]: # (end-user-text)
 
-### Projects <a name = "projects"></a> &nbsp; ![](documentation/images/gears-40.png)
+### Projects <a name = "projects"></a> &nbsp; ![](https://kivakit.org/images/gears-40.png)
 
 [**mesakit-map**](mesakit-map/README.md)  
 
-![](documentation/images/short-horizontal-line.png)
+![](https://kivakit.org/images/short-horizontal-line.png)
 
-### Javadoc Coverage <a name = "javadoc-coverage"></a> &nbsp; ![](documentation/images/bargraph-32.png)
+### Javadoc Coverage <a name = "javadoc-coverage"></a> &nbsp; ![](https://kivakit.org/images/bargraph-32.png)
 
-&nbsp;  ![](documentation/images/meter-30-12.png) &nbsp; &nbsp; [**mesakit-map-cutter**](cutter/README.md)  
-&nbsp;  ![](documentation/images/meter-40-12.png) &nbsp; &nbsp; [**mesakit-map-data-formats-pbf**](pbf/README.md)  
-&nbsp;  ![](documentation/images/meter-50-12.png) &nbsp; &nbsp; [**mesakit-map-data-library**](library/README.md)  
-&nbsp;  ![](documentation/images/meter-40-12.png) &nbsp; &nbsp; [**mesakit-map-geography**](geography/README.md)  
-&nbsp;  ![](documentation/images/meter-60-12.png) &nbsp; &nbsp; [**mesakit-map-measurements**](measurements/README.md)  
-&nbsp;  ![](documentation/images/meter-10-12.png) &nbsp; &nbsp; [**mesakit-map-overpass**](overpass/README.md)  
-&nbsp;  ![](documentation/images/meter-40-12.png) &nbsp; &nbsp; [**mesakit-map-region**](region/README.md)  
-&nbsp;  ![](documentation/images/meter-40-12.png) &nbsp; &nbsp; [**mesakit-map-road-model**](model/README.md)  
-&nbsp;  ![](documentation/images/meter-50-12.png) &nbsp; &nbsp; [**mesakit-map-road-name-parser**](name-parser/README.md)  
-&nbsp;  ![](documentation/images/meter-30-12.png) &nbsp; &nbsp; [**mesakit-map-road-name-standardizer**](name-standardizer/README.md)  
-&nbsp;  ![](documentation/images/meter-40-12.png) &nbsp; &nbsp; [**mesakit-map-ui**](ui/README.md)  
-&nbsp;  ![](documentation/images/meter-40-12.png) &nbsp; &nbsp; [**mesakit-map-utilities-geohash**](geohash/README.md)  
-&nbsp;  ![](documentation/images/meter-30-12.png) &nbsp; &nbsp; [**mesakit-map-utilities-geojson**](geojson/README.md)  
-&nbsp;  ![](documentation/images/meter-50-12.png) &nbsp; &nbsp; [**mesakit-map-utilities-grid**](grid/README.md)
+&nbsp;  ![](https://kivakit.org/images/meter-30-12.png) &nbsp; &nbsp; [**mesakit-map-cutter**](cutter/README.md)  
+&nbsp;  ![](https://kivakit.org/images/meter-40-12.png) &nbsp; &nbsp; [**mesakit-map-data-formats-pbf**](pbf/README.md)  
+&nbsp;  ![](https://kivakit.org/images/meter-50-12.png) &nbsp; &nbsp; [**mesakit-map-data-library**](library/README.md)  
+&nbsp;  ![](https://kivakit.org/images/meter-40-12.png) &nbsp; &nbsp; [**mesakit-map-geography**](geography/README.md)  
+&nbsp;  ![](https://kivakit.org/images/meter-60-12.png) &nbsp; &nbsp; [**mesakit-map-measurements**](measurements/README.md)  
+&nbsp;  ![](https://kivakit.org/images/meter-10-12.png) &nbsp; &nbsp; [**mesakit-map-overpass**](overpass/README.md)  
+&nbsp;  ![](https://kivakit.org/images/meter-40-12.png) &nbsp; &nbsp; [**mesakit-map-region**](region/README.md)  
+&nbsp;  ![](https://kivakit.org/images/meter-40-12.png) &nbsp; &nbsp; [**mesakit-map-road-model**](model/README.md)  
+&nbsp;  ![](https://kivakit.org/images/meter-50-12.png) &nbsp; &nbsp; [**mesakit-map-road-name-parser**](name-parser/README.md)  
+&nbsp;  ![](https://kivakit.org/images/meter-30-12.png) &nbsp; &nbsp; [**mesakit-map-road-name-standardizer**](name-standardizer/README.md)  
+&nbsp;  ![](https://kivakit.org/images/meter-40-12.png) &nbsp; &nbsp; [**mesakit-map-ui**](ui/README.md)  
+&nbsp;  ![](https://kivakit.org/images/meter-40-12.png) &nbsp; &nbsp; [**mesakit-map-utilities-geohash**](geohash/README.md)  
+&nbsp;  ![](https://kivakit.org/images/meter-30-12.png) &nbsp; &nbsp; [**mesakit-map-utilities-geojson**](geojson/README.md)  
+&nbsp;  ![](https://kivakit.org/images/meter-50-12.png) &nbsp; &nbsp; [**mesakit-map-utilities-grid**](grid/README.md)
 
 [//]: # (start-user-text)
 
-![](documentation/images/horizontal-line.png)
+![](https://kivakit.org/images/horizontal-line.png)
 
 [**Issues**](https://github.com/Telenav/mesakit/issues) |
 [**Change Log**](change-log.md) |
@@ -136,7 +136,7 @@ MesaKit provides support for:
 
 [//]: # (end-user-text)
 
-![](documentation/images/horizontal-line.png)
+![](https://kivakit.org/images/horizontal-line.png)
 
 <sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>  
 <sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai) on 2021.04.15. UML diagrams courtesy
