@@ -42,35 +42,35 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; ![](https://www.kivakit.org/images/box-40.png)
 
-[*com.telenav.mesakit.map.road.name.standardizer*](documentation/diagrams/com.telenav.mesakit.map.road.name.standardizer.svg)  
-[*com.telenav.mesakit.map.road.name.standardizer.locales.english*](documentation/diagrams/com.telenav.mesakit.map.road.name.standardizer.locales.english.svg)  
-[*com.telenav.mesakit.map.road.name.standardizer.locales.indonesian*](documentation/diagrams/com.telenav.mesakit.map.road.name.standardizer.locales.indonesian.svg)  
-[*com.telenav.mesakit.map.road.name.standardizer.project*](documentation/diagrams/com.telenav.mesakit.map.road.name.standardizer.project.svg)  
+[*com.telenav.mesakit.map.road.name.standardizer*](documentation/diagrams/com.telenav.mesakit.map.road.name.standardizer.svg)
+[*com.telenav.mesakit.map.road.name.standardizer.locales.english*](documentation/diagrams/com.telenav.mesakit.map.road.name.standardizer.locales.english.svg)
+[*com.telenav.mesakit.map.road.name.standardizer.locales.indonesian*](documentation/diagrams/com.telenav.mesakit.map.road.name.standardizer.locales.indonesian.svg)
+[*com.telenav.mesakit.map.road.name.standardizer.project*](documentation/diagrams/com.telenav.mesakit.map.road.name.standardizer.project.svg)
 
 ![](https://www.kivakit.org/images/short-horizontal-line.png)
 
 ### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; ![](https://www.kivakit.org/images/books-40.png)
 
-Javadoc coverage for this project is 25.0%.  
-  
+Javadoc coverage for this project is 25.0%.
+
 &nbsp; &nbsp;  ![](https://www.kivakit.org/images/meter-30-12.png)
 
-The following significant classes are undocumented:  
+The following significant classes are undocumented:
 
-- EnglishRoadNameStandardizer  
+- EnglishRoadNameStandardizer
 - SimpleIndonesianRoadNameStandardizer
 
 | Class | Documentation Sections |
 |---|---|
-| [*BaseRoadNameStandardizer*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/BaseRoadNameStandardizer.html) |  |  
-| [*EnglishCanadaRoadNameStandardizer*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/english/EnglishCanadaRoadNameStandardizer.html) |  |  
-| [*EnglishRoadNameStandardizer*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/english/EnglishRoadNameStandardizer.html) |  |  
-| [*EnglishUnitedStatesRoadNameStandardizer*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/english/EnglishUnitedStatesRoadNameStandardizer.html) |  |  
-| [*IndonesianIndonesiaRoadNameStandardizer*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/indonesian/IndonesianIndonesiaRoadNameStandardizer.html) |  |  
-| [*MapRoadNameStandardizerProject*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/project/MapRoadNameStandardizerProject.html) |  |  
-| [*RoadNameStandardizer*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/RoadNameStandardizer.html) |  |  
-| [*RoadNameStandardizer.Mode*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/RoadNameStandardizer.Mode.html) |  |  
-| [*SimpleIndonesianRoadNameStandardizer*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/indonesian/SimpleIndonesianRoadNameStandardizer.html) |  |  
+| [*BaseRoadNameStandardizer*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/BaseRoadNameStandardizer.html) |  |
+| [*EnglishCanadaRoadNameStandardizer*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/english/EnglishCanadaRoadNameStandardizer.html) |  |
+| [*EnglishRoadNameStandardizer*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/english/EnglishRoadNameStandardizer.html) |  |
+| [*EnglishUnitedStatesRoadNameStandardizer*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/english/EnglishUnitedStatesRoadNameStandardizer.html) |  |
+| [*IndonesianIndonesiaRoadNameStandardizer*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/indonesian/IndonesianIndonesiaRoadNameStandardizer.html) |  |
+| [*MapRoadNameStandardizerProject*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/project/MapRoadNameStandardizerProject.html) |  |
+| [*RoadNameStandardizer*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/RoadNameStandardizer.html) |  |
+| [*RoadNameStandardizer.Mode*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/RoadNameStandardizer.Mode.html) |  |
+| [*SimpleIndonesianRoadNameStandardizer*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/indonesian/SimpleIndonesianRoadNameStandardizer.html) |  |
 
 [//]: # (start-user-text)
 
@@ -82,7 +82,7 @@ The following significant classes are undocumented:
 
 ![](https://www.kivakit.org/images/horizontal-line.png)
 
-<sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>  
+<sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>
 <sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai) on 2021.04.15. UML diagrams courtesy
 of [PlantUML](http://plantuml.com).</sub>
 

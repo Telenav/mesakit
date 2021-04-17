@@ -22,7 +22,7 @@ The MesaKit project will look roughly like this when we're done with the setup p
 >     * mesakit-graph
 >     * [...]
 
-Notice how the *mesakit* project (**MESAKIT_HOME**) is checked out in the IDE workspace called  
+Notice how the *mesakit* project (**MESAKIT_HOME**) is checked out in the IDE workspace called
 *Workspace* (**MESAKIT_WORKSPACE**).
 
 To check out the *mesakit* project:
@@ -37,7 +37,7 @@ To check out the *mesakit* project:
 
 2. Open a *bash* shell and go to your IDE workspace (the folder *Workspace* above)
 3. Clone the *mesakit* git repository into your workspace
-   
+
        cd Workspace 
        git clone git@github.com:Telenav/mesakit.git
 
@@ -50,12 +50,12 @@ To configure your environment, you will need several environment variables set.
 > Without the correct environment variables set, the setup script in Step 3 won't work.
 
 1. Copy the provided mesakit-profile to your root folder 
-   
+
         cp mesakit/setup/mesakit-profile ~
 
-2.  *If you have checked MesaKit out in a different workspace* from KivaKit, you will need to  
+2.  *If you have checked MesaKit out in a different workspace* from KivaKit, you will need to
     change the **MESAKIT_WORKSPACE** variable to the workspace where you checked it out.
-    
+
         export MESAKIT_WORKSPACE=$HOME/Workspace
 
    > **MESAKIT_WORKSPACE** must point to your *workspace* **NOT** the *mesakit* project in the workspace
@@ -70,7 +70,7 @@ To configure your environment, you will need several environment variables set.
 
 ### 3. Finishing the Job  ![](../images/stars-32.png)
 
-Once you have cloned the project into your workspace and set up your environment,  
+Once you have cloned the project into your workspace and set up your environment,
 you can complete your set up with one final command:
 
     $MESAKIT_HOME/setup/setup.sh

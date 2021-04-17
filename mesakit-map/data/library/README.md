@@ -6,7 +6,7 @@ This module contains code generally relevant to map data.
 
 ### Index
 
-[**Summary**](#summary)  
+[**Summary**](#summary)
 
 [**Dependencies**](#dependencies) | [**Class Diagrams**](#class-diagrams) | [**Package Diagrams**](#package-diagrams) | [**Javadoc**](#javadoc)
 
@@ -30,8 +30,8 @@ This module contains code generally relevant to map data.
 
 ### Summary <a name = "summary"></a>
 
-This module defines map identifiers for nodes, ways and relations as they relate to the  
-OpenStreetMap (OSM) Protobuf (PBF) data format. These identifiers are not specific to   
+This module defines map identifiers for nodes, ways and relations as they relate to the
+OpenStreetMap (OSM) Protobuf (PBF) data format. These identifiers are not specific to
 OSM and are used by other data sources.
 
 [//]: # (end-user-text)
@@ -40,37 +40,37 @@ OSM and are used by other data sources.
 
 ### Class Diagrams <a name="class-diagrams"></a> &nbsp; &nbsp; ![](https://www.kivakit.org/images/diagram-48.png)
 
-[*Data Formats*](documentation/diagrams/diagram-data-format.svg)  
-[*Map Identifiers*](documentation/diagrams/diagram-data-map-identifier.svg)  
+[*Data Formats*](documentation/diagrams/diagram-data-format.svg)
+[*Map Identifiers*](documentation/diagrams/diagram-data-map-identifier.svg)
 
 ![](https://www.kivakit.org/images/short-horizontal-line.png)
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; ![](https://www.kivakit.org/images/box-40.png)
 
-[*com.telenav.mesakit.map.data.formats.library*](documentation/diagrams/com.telenav.mesakit.map.data.formats.library.svg)  
-[*com.telenav.mesakit.map.data.formats.library.map.identifiers*](documentation/diagrams/com.telenav.mesakit.map.data.formats.library.map.identifiers.svg)  
-[*com.telenav.mesakit.map.data.formats.library.project*](documentation/diagrams/com.telenav.mesakit.map.data.formats.library.project.svg)  
+[*com.telenav.mesakit.map.data.formats.library*](documentation/diagrams/com.telenav.mesakit.map.data.formats.library.svg)
+[*com.telenav.mesakit.map.data.formats.library.map.identifiers*](documentation/diagrams/com.telenav.mesakit.map.data.formats.library.map.identifiers.svg)
+[*com.telenav.mesakit.map.data.formats.library.project*](documentation/diagrams/com.telenav.mesakit.map.data.formats.library.project.svg)
 
 ![](https://www.kivakit.org/images/short-horizontal-line.png)
 
 ### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; ![](https://www.kivakit.org/images/books-40.png)
 
-Javadoc coverage for this project is 47.2%.  
-  
+Javadoc coverage for this project is 47.2%.
+
 &nbsp; &nbsp;  ![](https://www.kivakit.org/images/meter-50-12.png)
 
 
 
 | Class | Documentation Sections |
 |---|---|
-| [*DataFormat*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/DataFormat.html) |  |  
-| [*DataFormatsLibraryProject*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/project/DataFormatsLibraryProject.html) |  |  
-| [*MapIdentifier*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapIdentifier.html) |  |  
-| [*MapIdentifier.Type*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapIdentifier.Type.html) |  |  
-| [*MapNodeIdentifier*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapNodeIdentifier.html) |  |  
-| [*MapNodeIdentifier.Comparator*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapNodeIdentifier.Comparator.html) |  |  
-| [*MapRelationIdentifier*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapRelationIdentifier.html) |  |  
-| [*MapWayIdentifier*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapWayIdentifier.html) |  |  
+| [*DataFormat*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/DataFormat.html) |  |
+| [*DataFormatsLibraryProject*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/project/DataFormatsLibraryProject.html) |  |
+| [*MapIdentifier*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapIdentifier.html) |  |
+| [*MapIdentifier.Type*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapIdentifier.Type.html) |  |
+| [*MapNodeIdentifier*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapNodeIdentifier.html) |  |
+| [*MapNodeIdentifier.Comparator*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapNodeIdentifier.Comparator.html) |  |
+| [*MapRelationIdentifier*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapRelationIdentifier.html) |  |
+| [*MapWayIdentifier*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapWayIdentifier.html) |  |
 
 [//]: # (start-user-text)
 
@@ -82,7 +82,7 @@ Javadoc coverage for this project is 47.2%.
 
 ![](https://www.kivakit.org/images/horizontal-line.png)
 
-<sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>  
+<sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>
 <sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai) on 2021.04.15. UML diagrams courtesy
 of [PlantUML](http://plantuml.com).</sub>
 

@@ -42,39 +42,39 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; ![](https://www.kivakit.org/images/box-40.png)
 
-[*com.telenav.mesakit.map.utilities.geohash*](documentation/diagrams/com.telenav.mesakit.map.utilities.geohash.svg)  
-[*com.telenav.mesakit.map.utilities.geohash.project*](documentation/diagrams/com.telenav.mesakit.map.utilities.geohash.project.svg)  
+[*com.telenav.mesakit.map.utilities.geohash*](documentation/diagrams/com.telenav.mesakit.map.utilities.geohash.svg)
+[*com.telenav.mesakit.map.utilities.geohash.project*](documentation/diagrams/com.telenav.mesakit.map.utilities.geohash.project.svg)
 
 ![](https://www.kivakit.org/images/short-horizontal-line.png)
 
 ### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; ![](https://www.kivakit.org/images/books-40.png)
 
-Javadoc coverage for this project is 40.0%.  
-  
+Javadoc coverage for this project is 40.0%.
+
 &nbsp; &nbsp;  ![](https://www.kivakit.org/images/meter-40-12.png)
 
-The following significant classes are undocumented:  
+The following significant classes are undocumented:
 
-- Code  
-- Codec  
-- Geohash  
+- Code
+- Codec
+- Geohash
 - Geohasher
 
 | Class | Documentation Sections |
 |---|---|
-| [*Base32GeohashAlphabet*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/Base32GeohashAlphabet.html) |  |  
-| [*BitArray*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/BitArray.html) |  |  
-| [*BitArray.Builder*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/BitArray.Builder.html) |  |  
-| [*Code*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/Code.html) |  |  
-| [*Codec*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/Codec.html) |  |  
-| [*Geohash*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/Geohash.html) |  |  
-| [*GeohashAlphabet*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/GeohashAlphabet.html) |  |  
-| [*GeohashOrganizer*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/GeohashOrganizer.html) |  |  
-| [*GeohashOrganizer.Node*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/GeohashOrganizer.Node.html) |  |  
-| [*GeohashOrganizer.TreeLevel*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/GeohashOrganizer.TreeLevel.html) |  |  
-| [*Geohasher*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/Geohasher.html) |  |  
-| [*Geohasher.Builder*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/Geohasher.Builder.html) |  |  
-| [*MapUtilitiesGeohashProject*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/project/MapUtilitiesGeohashProject.html) |  |  
+| [*Base32GeohashAlphabet*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/Base32GeohashAlphabet.html) |  |
+| [*BitArray*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/BitArray.html) |  |
+| [*BitArray.Builder*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/BitArray.Builder.html) |  |
+| [*Code*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/Code.html) |  |
+| [*Codec*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/Codec.html) |  |
+| [*Geohash*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/Geohash.html) |  |
+| [*GeohashAlphabet*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/GeohashAlphabet.html) |  |
+| [*GeohashOrganizer*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/GeohashOrganizer.html) |  |
+| [*GeohashOrganizer.Node*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/GeohashOrganizer.Node.html) |  |
+| [*GeohashOrganizer.TreeLevel*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/GeohashOrganizer.TreeLevel.html) |  |
+| [*Geohasher*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/Geohasher.html) |  |
+| [*Geohasher.Builder*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/Geohasher.Builder.html) |  |
+| [*MapUtilitiesGeohashProject*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/project/MapUtilitiesGeohashProject.html) |  |
 
 [//]: # (start-user-text)
 
@@ -86,7 +86,7 @@ The following significant classes are undocumented:
 
 ![](https://www.kivakit.org/images/horizontal-line.png)
 
-<sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>  
+<sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>
 <sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai) on 2021.04.15. UML diagrams courtesy
 of [PlantUML](http://plantuml.com).</sub>
 

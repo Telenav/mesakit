@@ -4,7 +4,7 @@
 
 This section documents how to release a new version of MesaKit, step by step.
 
-In the text below *\[mesakit-version\]* refers to a [semantic versioning](https://semver.org) identifier, such  
+In the text below *\[mesakit-version\]* refers to a [semantic versioning](https://semver.org) identifier, such
 as 2.1.7 or 1.0.0-beta.
 
 MesaKit adheres to the standard [Git Flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) branching model.
@@ -25,12 +25,12 @@ Restart your terminal window to ensure all environment variables are updated.
 
 ### 2. Preparing the Release &nbsp; ![](../images/box-40.png)
 
-Once the release branch has been created, several steps need to be performed manually to prepare  
+Once the release branch has been created, several steps need to be performed manually to prepare
 the branch for publication.
 
 #### 2.1 Building the Release
 
-In order to ensure that the build will work on the build server, it is a good idea to completely  
+In order to ensure that the build will work on the build server, it is a good idea to completely
 clean out your maven repository and cache folders by building the project completely from scratch:
 
     mesakit-build.sh all sparkling
@@ -52,7 +52,7 @@ The following command will build Javadoc, UML diagrams and update project README
 To publish code flowers for the build:
 
 1. Run *mesakit-build-codeflowers.sh* to build codeflowers for MesaKit
-2. Insert in *$MESAKIT\_HOME/tools/codeflowers/site/index.html* the HTML code output by the build process   
+2. Insert in *$MESAKIT\_HOME/tools/codeflowers/site/index.html* the HTML code output by the build process
    This will change the options in the dropdown to include any new projects
 3. Run *mesakit-upload-codeflowers.sh* to install the codeflowers on their web server
 

@@ -2,7 +2,7 @@
 
 ![](../images/horizontal-line.png)
 
-The *README.md* markdown file for each MesaKit project includes the Maven dependency, so it can  
+The *README.md* markdown file for each MesaKit project includes the Maven dependency, so it can
 be easily cut and pasted into the *pom.xml* file of a project using MesaKit.
 
 ### Maven Repositories
@@ -36,7 +36,7 @@ For example, this is the dependency for *mesakit-map-measurements*:
 
 ### Module Names
 
-Module names use the fully qualified group and artifact ids with dots substituted for any hyphens.  
+Module names use the fully qualified group and artifact ids with dots substituted for any hyphens.
 For example, this *module-info.java* statement imports the *mesakit-map-measurements* project:
 
     requires com.telenav.mesakit.map.measurements;
