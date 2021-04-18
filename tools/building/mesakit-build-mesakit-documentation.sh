@@ -7,15 +7,6 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-if [ -z "$MESAKIT_HOME" ]; then
-    echo "You must set up your environment to use MesaKit."
-    echo "See https://www.mesakit.org/ for details."
-    exit 1
-fi
+source library-functions.sh
 
-cd $MESAKIT_WORKSPACE
-git clone git@github.com:Telenav/mesakit-data.git
-
-cd $MESAKIT_HOME
-git checkout develop
-mesakit-build.sh all clean
+mesakit -project-version=$MESAKIT_VERSION -output-folder=$MESAKIT_DATA_HOME/docs/mesakit $MESAKIT_HOME

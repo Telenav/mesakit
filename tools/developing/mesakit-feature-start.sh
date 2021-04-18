@@ -7,13 +7,17 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-if [ -z "$1" ]; then
+source library-functions.sh
+source mesakit-projects.sh
 
-    echo "Usage: mesakit-git-feature-start.sh [feature-name]"
-    exit 0
+ARGUMENT_HELP="[feature-name]"
 
-else
+feature_name=$1
 
-    git-flow feature start MesaKit-$1
+require_variable feature-name
 
-fi
+for project_home in "${MESAKIT_PROJECT_HOMES[@]}"; do
+
+    git_flow_feature_start $project_home $feature_name
+
+done

@@ -7,27 +7,17 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-NEW_VERSION=$1
+source library-functions.sh
+source mesakit-projects.sh
 
-if [ -z "$NEW_VERSION" ]; then
+ARGUMENT_HELP="[version]"
 
-    echo "Usage: mesakit-release-version.sh [new-version-number]"
-    exit 0
+version=$1
 
-else
+require_variable version
 
-    CURRENT_VERSION=$(cat $MESAKIT_HOME/project.properties | grep "project-version" | cut -d'=' -f2 | xargs echo)
+for project_home in "${MESAKIT_PROJECT_HOMES[@]}"; do
 
-    echo " "
-    echo "Updating MesaKit version from $CURRENT_VERSION to $NEW_VERSION"
+    update_version $project_home $version
 
-    # Update POM versions and .md files
-    update-version.pl $MESAKIT_HOME $CURRENT_VERSION $NEW_VERSION
-
-    # Update project.properties file
-    perl -pi -e "s/$CURRENT_VERSION/$NEW_VERSION/g" $MESAKIT_HOME/project.properties
-
-    echo "Updated"
-    echo " "
-
-fi
+done

@@ -7,15 +7,8 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-source mesakit-build-common.sh
+source library-functions.sh
+source library-build.sh
+source mesakit-projects.sh
 
-if [[ "$1" == "." ]]; then
-
-    shift
-    build . $@
-
-else
-
-    build mesakit $@
-
-fi
+build $MESAKIT_HOME $@

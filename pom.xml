@@ -176,7 +176,7 @@
                                         <echo file = "src/main/java/project.properties">
                                             project-name=${project.name}${line.separator}project-version=${project.version}${line.separator}project-group-id=com.telenav.mesakit
                                         </echo>
-                                        <java jar = "${maven.multiModuleProjectDirectory}/tools/building/bin/kivakit-build-metadata-0.9.3.jar"
+                                        <java jar = "${env.KIVAKIT_DATA_HOME}/docs/applications/kivakit-build-metadata-${env.KIVAKIT_BUILD_METADATA_VERSION}.jar"
                                               failonerror = "true"
                                               fork = "true">
                                             <arg value = "src/main/java"/>
@@ -189,7 +189,7 @@
                                         <echo file = "${maven.multiModuleProjectDirectory}/project.properties">
                                             project-name=${project.name}${line.separator}project-version=${project.version}${line.separator}project-group-id=com.telenav.mesakit
                                         </echo>
-                                        <java jar = "${maven.multiModuleProjectDirectory}/tools/building/bin/kivakit-build-metadata-0.9.3.jar"
+                                        <java jar = "${env.KIVAKIT_DATA_HOME}/docs/applications/kivakit-build-metadata-${env.KIVAKIT_BUILD_METADATA_VERSION}.Jar"
                                               failonerror = "true"
                                               fork = "true">
                                             <arg value = "${maven.multiModuleProjectDirectory}"/>

@@ -7,10 +7,8 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-read -p "┋ Remove MesaKit artifacts from ~\.m2 (y/n)? " -n 1 -r
-echo " "
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    rm -rf ~/.m2/repository/com/telenav/mesakit/*
-fi
+source $KIVAKIT_FUNCTIONS
+
+clean_maven_repository $MESAKIT_HOME
 
 bash mesakit-clean.sh

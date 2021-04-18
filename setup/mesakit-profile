@@ -1,42 +1,7 @@
-#―――― Setup ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+#―――― Setup ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 
-export MESAKIT_WORKSPACE=$KIVAKIT_WORKSPACE
-export MESAKIT_HOME="$MESAKIT_WORKSPACE/mesakit"
-export MESAKIT_VERSION=$(cat $MESAKIT_HOME/project.properties | grep "project-version" | cut -d'=' -f2 | xargs echo)
-export MESAKIT_TOOLS="$MESAKIT_HOME/tools"
+system_variable MESAKIT_WORKSPACE $KIVAKIT_WORKSPACE
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    launchctl setenv MESAKIT_HOME $MESAKIT_HOME
-    launchctl setenv MESAKIT_WORKSPACE $MESAKIT_WORKSPACE
-    launchctl setenv MESAKIT_WORKSPACE $MESAKIT_VERSION
-fi
+#―――― MesaKit ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 
-append() {
-    export PATH="$PATH:$1"
-}
-
-prepend() {
-    export PATH="$1:$PATH"
-}
-
-append "$MESAKIT_TOOLS/building"
-append "$MESAKIT_TOOLS/developing"
-append "$MESAKIT_TOOLS/releasing"
-append "$MESAKIT_TOOLS/codeflowers"
-
-NORMAL='\033[0m'
-ATTENTION='\033[1;32m'
-
-echo " "
-echo "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ MesaKit Environment ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
-echo "┋"
-echo -e "┋   MESAKIT_WORKSPACE: ${ATTENTION}$MESAKIT_WORKSPACE${NORMAL}"
-echo "┋"
-echo "┋        MESAKIT_HOME: $MESAKIT_HOME"
-echo "┋"
-echo "┋     MESAKIT_VERSION: $MESAKIT_VERSION"
-echo "┋"
-echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
-echo " "
-
-cd $MESAKIT_HOME
+source $MESAKIT_WORKSPACE/mesakit/tools/library/mesakit-common-profile.sh

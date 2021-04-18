@@ -7,6 +7,7 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-MESAKIT_VERSION=$(cat $MESAKIT_HOME/project.properties | grep "project-version" | cut -d'=' -f2 | xargs echo)
+source library-functions.sh
+source library-build.sh
 
-bash mesakit-build.sh javadoc
+build $MESAKIT_HOME javadoc

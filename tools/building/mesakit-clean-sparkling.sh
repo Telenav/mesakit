@@ -7,14 +7,8 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-cd $MESAKIT_WORKSPACE
+source $KIVAKIT_FUNCTIONS
 
-MESAKIT_VERSION=$(cat $MESAKIT_HOME/project.properties | grep "project-version" | cut -d'=' -f2 | xargs echo)
-
-read -p "┋ Remove maven repository (y/n)? " -n 1 -r
-echo "┋ "
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    rm -rf ~/.m2
-fi
+remove_maven_repository
 
 bash mesakit-clean.sh

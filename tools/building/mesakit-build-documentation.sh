@@ -7,10 +7,5 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-cd $MESAKIT_WORKSPACE
-
-# Build javadoc
 bash mesakit-build-javadoc.sh
-
-# Build diagrams and indexes
-bash mesakit-build-lexakai-documentation.sh
+bash mesakit-build-mesakit-documentation.sh

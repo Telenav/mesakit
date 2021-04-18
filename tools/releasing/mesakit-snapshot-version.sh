@@ -7,24 +7,18 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-NEW_VERSION="${1%-SNAPSHOT}-SNAPSHOT"
+source library-functions.sh
+source mesakit-projects.sh
 
-if [ -z "$NEW_VERSION" ]; then
+project_home=$1
+version="${2%-SNAPSHOT}-SNAPSHOT"
 
-    echo "Usage: mesakit-snapshot.sh [new-version-number]"
-    exit 0
+ARGUMENT_HELP="[version]"
 
-else
+require_variable version
 
-    MESAKIT_VERSION=$(cat $MESAKIT_HOME/project.properties | grep "project-version" | cut -d'=' -f2 | xargs echo)
+for project_home in "${MESAKIT_PROJECT_HOMES[@]}"; do
 
-    echo " "
-    echo "Updating MesaKit version from $MESAKIT_VERSION to $NEW_VERSION"
+    update_version $project_home $version
 
-    # Update POM versions
-    update-version.pl $MESAKIT_HOME $MESAKIT_VERSION $NEW_VERSION
-
-    echo "Updated"
-    echo " "
-
-fi
+done

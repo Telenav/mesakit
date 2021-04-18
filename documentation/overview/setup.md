@@ -51,7 +51,7 @@ To configure your environment, you will need several environment variables set.
 
 1. Copy the provided mesakit-profile to your root folder 
 
-        cp mesakit/setup/mesakit-profile ~
+        cp mesakit/setup/mesakit-profile ~/.mesakit-profile
 
 2.  *If you have checked MesaKit out in a different workspace* from KivaKit, you will need to
     change the **MESAKIT_WORKSPACE** variable to the workspace where you checked it out.
@@ -60,11 +60,7 @@ To configure your environment, you will need several environment variables set.
 
    > **MESAKIT_WORKSPACE** must point to your *workspace* **NOT** the *mesakit* project in the workspace
 
-3. Add to the end of ~/.profile (which should include KivaKit setup) this command:
-
-        source ~/.mesakit-profile
-
-4. Start a new shell window
+3. Start a new shell window
 
 ![](../images/horizontal-line.png)
 
