@@ -309,7 +309,7 @@
                         <nohelp>true</nohelp>
                         <reportOutputDirectory>${env.MESAKIT_WORKSPACE}/mesakit-data/docs/javadoc</reportOutputDirectory>
                         <destDir>javadoc</destDir>
-                        <additionalOptions>--show-module-contents all --show-packages all --show-types private</additionalOptions>
+                        <additionalOptions>-notimestamp --show-module-contents all --show-packages all --show-types private</additionalOptions>
                     </configuration>
                     <executions>
                         <execution>
