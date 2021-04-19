@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.road.name.parser.locales.english;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.Token;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.symbols.Symbol;
-import com.telenav.kivakit.core.kernel.language.strings.PathStrings;
+import com.telenav.kivakit.core.kernel.language.strings.Paths;
 
 public class EnglishUnitedStatesTokenizer extends EnglishTokenizer
 {
@@ -105,7 +105,7 @@ public class EnglishUnitedStatesTokenizer extends EnglishTokenizer
         // WA-520, GA-99, etc.
         for (final var state : Country.UNITED_STATES.states())
         {
-            final var code = PathStrings.optionalSuffix(state.identity().iso().code(), '-');
+            final var code = Paths.optionalSuffix(state.identity().iso().code(), '-');
             US_HIGHWAY.matches(code, (stream) ->
             {
                 stream.next();

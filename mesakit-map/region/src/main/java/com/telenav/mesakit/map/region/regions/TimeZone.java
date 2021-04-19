@@ -33,7 +33,7 @@ import com.telenav.mesakit.map.region.project.MapRegionLimits;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
 import com.telenav.kivakit.core.commandline.SwitchParser;
 import com.telenav.kivakit.core.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.core.kernel.language.strings.PathStrings;
+import com.telenav.kivakit.core.kernel.language.strings.Paths;
 import com.telenav.kivakit.core.kernel.logging.Logger;
 import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
@@ -124,7 +124,7 @@ public class TimeZone extends Region<TimeZone>
     public ZoneId asZoneId()
     {
         final var code = identity().mesakit().code();
-        final var zone = PathStrings.tail(code, "TimeZone_");
+        final var zone = Paths.tail(code, "TimeZone_");
         if (zone != null)
         {
             return ZoneId.of(zone);
