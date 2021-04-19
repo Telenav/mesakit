@@ -1,6 +1,6 @@
-## Releasing MesaKit &nbsp; ![](../images/rocket-40.png)
+## Releasing MesaKit &nbsp; ![](../images/rocket-32.png)
 
-### Step-by-Step Instructions &nbsp; ![](../images/footprints-40.png)
+### Step-by-Step Instructions &nbsp; ![](../images/footprints-32.png)
 
 This section documents how to release a new version of MesaKit, step by step.
 
@@ -9,7 +9,7 @@ as 2.1.7 or 1.0.0-beta.
 
 MesaKit adheres to the standard [Git Flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) branching model.
 
-### 1. Creating the Release Branch ![](../images/branch-40.png)
+### 1. Creating the Release Branch ![](../images/branch-32.png)
 
 Start a new release branch with the following command:
 
@@ -23,7 +23,7 @@ This script does the following:
 
 Restart your terminal window to ensure all environment variables are updated.
 
-### 2. Preparing the Release &nbsp; ![](../images/box-40.png)
+### 2. Preparing the Release &nbsp; ![](../images/box-32.png)
 
 Once the release branch has been created, several steps need to be performed manually to prepare
 the branch for publication.

@@ -1,4 +1,4 @@
-# MesaKit - System Properties   ![](../images/gears-48.png)
+# MesaKit - System Properties   ![](../images/gears-32.png)
 
 ### Summary
 

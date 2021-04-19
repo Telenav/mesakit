@@ -1,4 +1,4 @@
-# MesaKit - Building   ![](../images/gears-40.png)
+# MesaKit - Building   ![](../images/gears-32.png)
 
 ![](../images/horizontal-line.png)
 

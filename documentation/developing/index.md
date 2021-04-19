@@ -1,4 +1,4 @@
-## KivaKit Development &nbsp; &nbsp; ![](../images/toolbox-40.png)
+## KivaKit Development &nbsp; &nbsp; ![](../images/toolbox-32.png)
 
 [**Setup**](setup.md)
 [**Maven Dependencies**](maven-dependencies.md)

@@ -1,8 +1,8 @@
-## MesaKit - Java Migration Notes &nbsp;  ![](../images/footprints-40.png)
+## MesaKit - Java Migration Notes &nbsp;  ![](../images/footprints-32.png)
 
 ![](../images/horizontal-line.png)
 
-### Welcome to Java 11+ &nbsp;&nbsp;    ![](../images/coffee-40.png)
+### Welcome to Java 11+ &nbsp;&nbsp;    ![](../images/coffee-32.png)
 
 Starting with Java 9, the JDK has supported _modules_.
 MesaKit has a modular design and runs on Java 11+.
@@ -46,7 +46,7 @@ Modules provide strong encapsulation, which has some advantages:
 * HotSpot can perform more aggressive optimizations on code that isn't public
 * It's easier to use only part of the KivaKit or MesaKit without dragging in a lot of unneeded dependencies
 
-### Strong Encapsulation   ![](../images/box-40.png)
+### Strong Encapsulation   ![](../images/box-32.png)
 
 Modular Java is more secure and performs better, but it places certain restrictions of Java 9+ code.
 
@@ -61,7 +61,7 @@ you will see this warning (which is by design from the developers of Java):
 This warning is annoying, but it cannot be turned off by design. Although future versions of Java
 will restrict reflection further, it is nothing to worry about under Java 12.
 
-### Making Your Application Modular &nbsp; ![](../images/tools-40.png)
+### Making Your Application Modular &nbsp; ![](../images/tools-32.png)
 
 For users of MesaKit, it's only _required_ to declare your application to be an open module if you
 want MesaKit to be able to reflect on _your_ code. Even so, it can be useful to make your
