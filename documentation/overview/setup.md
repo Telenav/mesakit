@@ -43,7 +43,7 @@ To check out the *mesakit* project:
 
 ![](../images/horizontal-line.png)
 
-### 2. Setting Up Your Environment   <img src="https://www.kivakit.org/images/bluebook-32.png" srcset="https://www.kivakit.org/images/bluebook-32-2x.png 2x"></img>
+### 2. Setting Up Your Environment   <img src="https://www.kivakit.org/images/bluebook-32.png" srcset="https://www.kivakit.org/images/bluebook-32-2x.png 2x"/>
 
 To configure your environment, you will need several environment variables set.
 
