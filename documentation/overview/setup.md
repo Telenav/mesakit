@@ -1,4 +1,4 @@
-# MesaKit - Setup   ![](../images/box-40.png)
+# MesaKit - Setup   ![](../images/box-32.png)
 
 ![](../images/horizontal-line.png)
 
@@ -43,7 +43,7 @@ To check out the *mesakit* project:
 
 ![](../images/horizontal-line.png)
 
-### 2. Setting Up Your Environment   ![](https://www.kivakit.org/images/bluebook-32.png)
+### 2. Setting Up Your Environment   <img src="https://www.kivakit.org/images/bluebook-32.png" srcset="https://www.kivakit.org/images/bluebook-32-2x.png 2x"></img>
 
 To configure your environment, you will need several environment variables set.
 
@@ -73,13 +73,13 @@ you can complete your set up with one final command:
 
 ![](../images/horizontal-line.png)
 
-### Done!   ![](../images/rocket-40.png)
+### Done!   ![](../images/rocket-32.png)
 
 Congratulations! You're set up and ready to build or help to develop MesaKit.
 
 ![](../images/horizontal-line.png)
 
-### Next Steps &nbsp; &nbsp;  ![](../images/footprints-40.png)
+### Next Steps &nbsp; &nbsp;  ![](../images/footprints-32.png)
 
 [I want to build MesaKit](building.md)
 

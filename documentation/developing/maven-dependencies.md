@@ -1,4 +1,4 @@
-# MesaKit - Maven Dependencies &nbsp; ![](../images/dependencies-40.png)
+# MesaKit - Maven Dependencies &nbsp; ![](../images/dependencies-32.png)
 
 ![](../images/horizontal-line.png)
 
