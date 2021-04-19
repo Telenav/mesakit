@@ -1,6 +1,6 @@
-# MesaKit - Building   ![](../images/gears-32.png)
+# MesaKit - Building   <img src="https://www.kivakit.org/images/gears-32.png" srcset="https://www.kivakit.org/images/gears-32-2x.png 2x"></img>
 
-![](../images/horizontal-line.png)
+<img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512.png-2x.png 2x"></img>
 
 ### Building MesaKit
 
@@ -69,4 +69,4 @@ Usage: mesakit-build.sh *[build-type] [build-modifiers]*
 
 <br/> 
 
-![](../images/horizontal-line.png)
+<img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512.png-2x.png 2x"></img>

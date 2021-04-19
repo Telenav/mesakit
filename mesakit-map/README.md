@@ -22,7 +22,7 @@ This project provides modules for basic GIS functions and map data access.
 [**mesakit-map-ui**](ui/README.md)
 [**mesakit-map-utilities**](utilities/README.md)
 
-<img src="https://www.kivakit.org/images/short-horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
+<img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
 ### Javadoc Coverage
 

@@ -16,7 +16,7 @@ This project provides miscellaneous mapping utilities.
 [**mesakit-map-utilities-geojson**](geojson/README.md)
 [**mesakit-map-utilities-grid**](grid/README.md)
 
-<img src="https://www.kivakit.org/images/short-horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
+<img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
 ### Javadoc Coverage
 

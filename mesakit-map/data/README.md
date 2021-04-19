@@ -15,7 +15,7 @@ This project contains modules for processing map data.
 [**mesakit-map-data-formats**](formats/README.md)
 [**mesakit-map-data-library**](library/README.md)
 
-<img src="https://www.kivakit.org/images/short-horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
+<img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
 ### Javadoc Coverage
 

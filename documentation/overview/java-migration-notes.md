@@ -1,8 +1,8 @@
-## MesaKit - Java Migration Notes &nbsp;  ![](../images/footprints-32.png)
+## MesaKit - Java Migration Notes &nbsp;  <img src="https://www.kivakit.org/images/footprints-32.png" srcset="https://www.kivakit.org/images/footprints-32-2x.png 2x"></img>
 
-![](../images/horizontal-line.png)
+<img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512.png-2x.png 2x"></img>
 
-### Welcome to Java 11+ &nbsp;&nbsp;    ![](../images/coffee-32.png)
+### Welcome to Java 11+ &nbsp;&nbsp;    <img src="https://www.kivakit.org/images/coffee-32.png" srcset="https://www.kivakit.org/images/coffee-32-2x.png 2x"></img>
 
 Starting with Java 9, the JDK has supported _modules_.
 MesaKit has a modular design and runs on Java 11+.
@@ -37,7 +37,7 @@ don't want customers waiting for GC pauses. A picture is worth a thousand words:
 
 ![](../images/gc.png)
 
-### Advantages of Modules   ![](../images/stars-32.png)
+### Advantages of Modules   <img src="https://www.kivakit.org/images/stars-32.png" srcset="https://www.kivakit.org/images/stars-32-2x.png 2x"></img>
 
 Modules provide strong encapsulation, which has some advantages:
 
@@ -46,7 +46,7 @@ Modules provide strong encapsulation, which has some advantages:
 * HotSpot can perform more aggressive optimizations on code that isn't public
 * It's easier to use only part of the KivaKit or MesaKit without dragging in a lot of unneeded dependencies
 
-### Strong Encapsulation   ![](../images/box-32.png)
+### Strong Encapsulation   <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"></img>
 
 Modular Java is more secure and performs better, but it places certain restrictions of Java 9+ code.
 
@@ -61,7 +61,7 @@ you will see this warning (which is by design from the developers of Java):
 This warning is annoying, but it cannot be turned off by design. Although future versions of Java
 will restrict reflection further, it is nothing to worry about under Java 12.
 
-### Making Your Application Modular &nbsp; ![](../images/tools-32.png)
+### Making Your Application Modular &nbsp; <img src="https://www.kivakit.org/images/tools-32.png" srcset="https://www.kivakit.org/images/tools-32-2x.png 2x"></img>
 
 For users of MesaKit, it's only _required_ to declare your application to be an open module if you
 want MesaKit to be able to reflect on _your_ code. Even so, it can be useful to make your
@@ -81,4 +81,4 @@ and their transitive dependencies. This can help control your dependency use.
 
 <br/> 
 
-![](../images/horizontal-line.png)
+<img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512.png-2x.png 2x"></img>

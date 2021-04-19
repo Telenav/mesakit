@@ -1,6 +1,6 @@
-# MesaKit - Maven Dependencies &nbsp; ![](../images/dependencies-32.png)
+# MesaKit - Maven Dependencies &nbsp; <img src="https://www.kivakit.org/images/dependencies-32.png" srcset="https://www.kivakit.org/images/dependencies-32-2x.png 2x"></img>
 
-![](../images/horizontal-line.png)
+<img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512.png-2x.png 2x"></img>
 
 The *README.md* markdown file for each MesaKit project includes the Maven dependency, so it can
 be easily cut and pasted into the *pom.xml* file of a project using MesaKit.
@@ -43,4 +43,4 @@ For example, this *module-info.java* statement imports the *mesakit-map-measurem
 
 <br/> 
 
-![](../images/horizontal-line.png)
+<img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512.png-2x.png 2x"></img>

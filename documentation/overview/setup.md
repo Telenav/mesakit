@@ -1,6 +1,6 @@
-# MesaKit - Setup   ![](../images/box-32.png)
+# MesaKit - Setup   <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"></img>
 
-![](../images/horizontal-line.png)
+<img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512.png-2x.png 2x"></img>
 
 ## Setting Up MesaKit
 
@@ -10,9 +10,9 @@ Whether you plan to use MesaKit or help to develop it, this page will help you g
 
 *You will need to set up [KivaKit](https://github.com/Telenav/mesakit) for development.*
 
-![](../images/horizontal-line.png)
+<img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512.png-2x.png 2x"></img>
 
-### 1. Checking Out the Project  ![](../images/down-arrow-32.png)
+### 1. Checking Out the Project  <img src="https://www.kivakit.org/images/down-arrow-32.png" srcset="https://www.kivakit.org/images/down-arrow-32-2x.png 2x"></img>
 
 The MesaKit project will look roughly like this when we're done with the setup process:
  
@@ -41,7 +41,7 @@ To check out the *mesakit* project:
        cd Workspace 
        git clone git@github.com:Telenav/mesakit.git
 
-![](../images/horizontal-line.png)
+<img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512.png-2x.png 2x"></img>
 
 ### 2. Setting Up Your Environment   <img src="https://www.kivakit.org/images/bluebook-32.png" srcset="https://www.kivakit.org/images/bluebook-32-2x.png 2x"/>
 
@@ -62,27 +62,27 @@ To configure your environment, you will need several environment variables set.
 
 3. Start a new shell window
 
-![](../images/horizontal-line.png)
+<img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512.png-2x.png 2x"></img>
 
-### 3. Finishing the Job  ![](../images/stars-32.png)
+### 3. Finishing the Job  <img src="https://www.kivakit.org/images/stars-32.png" srcset="https://www.kivakit.org/images/stars-32-2x.png 2x"></img>
 
 Once you have cloned the project into your workspace and set up your environment,
 you can complete your set up with one final command:
 
     $MESAKIT_HOME/setup/setup.sh
 
-![](../images/horizontal-line.png)
+<img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512.png-2x.png 2x"></img>
 
-### Done!   ![](../images/rocket-32.png)
+### Done!   <img src="https://www.kivakit.org/images/rocket-32.png" srcset="https://www.kivakit.org/images/rocket-32-2x.png 2x"></img>
 
 Congratulations! You're set up and ready to build or help to develop MesaKit.
 
-![](../images/horizontal-line.png)
+<img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512.png-2x.png 2x"></img>
 
-### Next Steps &nbsp; &nbsp;  ![](../images/footprints-32.png)
+### Next Steps &nbsp; &nbsp;  <img src="https://www.kivakit.org/images/footprints-32.png" srcset="https://www.kivakit.org/images/footprints-32-2x.png 2x"></img>
 
 [I want to build MesaKit](building.md)
 
 [I want to work on MesaKit](../developing/index.md)
 
-![](../images/horizontal-line.png)
+<img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512.png-2x.png 2x"></img>
