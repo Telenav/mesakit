@@ -53,15 +53,14 @@ This module contains packages for processing data in OpenStreetMap PBF format.
 
 ### Class Diagrams <a name="class-diagrams"></a> &nbsp; &nbsp; <img src="https://www.kivakit.org/images/diagram-40.png" srcset="https://www.kivakit.org/images/diagram-40-2x.png 2x"/>
 
-[*diagram-pbf-model-compression*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/diagram-pbf-model-compression.svg)  
-[*diagram-pbf-model-entities*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/diagram-pbf-model-entities.svg)  
-[*diagram-pbf-model-identifiers*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/diagram-pbf-model-identifiers.svg)  
-[*diagram-pbf-model-metadata*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/diagram-pbf-model-metadata.svg)  
-[*diagram-pbf-model-tags*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/diagram-pbf-model-tags.svg)  
-[*diagram-pbf-osm*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/diagram-pbf-osm.svg)  
-[*diagram-pbf-processing*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/diagram-pbf-processing.svg)  
-[*diagram-pbf-processing-filters*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/diagram-pbf-processing-filters.svg)  
-[*diagram-pbf-uni-db*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/diagram-pbf-uni-db.svg)
+[*OSM PBF*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/diagram-pbf-osm.svg)  
+[*PBF Compression*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/diagram-pbf-model-compression.svg)  
+[*PBF Entities*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/diagram-pbf-model-entities.svg)  
+[*PBF Identifiers*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/diagram-pbf-model-identifiers.svg)  
+[*PBF Metadata*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/diagram-pbf-model-metadata.svg)  
+[*PBF Processing*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/diagram-pbf-processing.svg)  
+[*PBF Processing Filters*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/diagram-pbf-processing-filters.svg)  
+[*PBF Tags*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/diagram-pbf-model-tags.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
@@ -77,22 +76,19 @@ This module contains packages for processing data in OpenStreetMap PBF format.
 [*com.telenav.mesakit.map.data.formats.pbf.processing*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/com.telenav.mesakit.map.data.formats.pbf.processing.svg)  
 [*com.telenav.mesakit.map.data.formats.pbf.processing.filters*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/com.telenav.mesakit.map.data.formats.pbf.processing.filters.svg)  
 [*com.telenav.mesakit.map.data.formats.pbf.processing.filters.all*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/com.telenav.mesakit.map.data.formats.pbf.processing.filters.all.svg)  
-[*com.telenav.mesakit.map.data.formats.pbf.processing.filters.navteam*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/com.telenav.mesakit.map.data.formats.pbf.processing.filters.navteam.svg)  
 [*com.telenav.mesakit.map.data.formats.pbf.processing.filters.osm*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/com.telenav.mesakit.map.data.formats.pbf.processing.filters.osm.svg)  
-[*com.telenav.mesakit.map.data.formats.pbf.processing.filters.osmteam*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/com.telenav.mesakit.map.data.formats.pbf.processing.filters.osmteam.svg)  
-[*com.telenav.mesakit.map.data.formats.pbf.processing.filters.unidb*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/com.telenav.mesakit.map.data.formats.pbf.processing.filters.unidb.svg)  
 [*com.telenav.mesakit.map.data.formats.pbf.processing.readers*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/com.telenav.mesakit.map.data.formats.pbf.processing.readers.svg)  
 [*com.telenav.mesakit.map.data.formats.pbf.processing.writers*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/com.telenav.mesakit.map.data.formats.pbf.processing.writers.svg)  
 [*com.telenav.mesakit.map.data.formats.pbf.project*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/com.telenav.mesakit.map.data.formats.pbf.project.svg)  
-[*com.telenav.mesakit.map.data.formats.pbf.unidb*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/com.telenav.mesakit.map.data.formats.pbf.unidb.svg)
+[*com.telenav.mesakit.map.data.formats.pbf.project.mesakit.diagrams*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/com.telenav.mesakit.map.data.formats.pbf.project.mesakit.diagrams.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
 ### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/books-32.png" srcset="https://www.kivakit.org/images/books-32-2x.png 2x"/>
 
-Javadoc coverage for this project is 46.1%.  
+Javadoc coverage for this project is 46.0%.  
   
-&nbsp; &nbsp; <img src="https://www.kivakit.org/images/meter-50-96.png" srcset="https://www.kivakit.org/images/meter-50-96-2x.png 2x"/>
+&nbsp; &nbsp; <img src="https://www.mesakit.org/images/meter-50-96.png" srcset="https://www.mesakit.org/images/meter-50-96-2x.png 2x"/>
 
 
 The following significant classes are undocumented:  
@@ -115,9 +111,16 @@ The following significant classes are undocumented:
 | [*BasePbfReader*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/processing/readers/BasePbfReader.html) |  |  
 | [*DataFormatsPbfLimits*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/project/DataFormatsPbfLimits.html) |  |  
 | [*DataFormatsPbfProject*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/project/DataFormatsPbfProject.html) |  |  
+| [*DiagramPbfModelCompression*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/project/mesakit/diagrams/DiagramPbfModelCompression.html) |  |  
+| [*DiagramPbfModelEntities*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/project/mesakit/diagrams/DiagramPbfModelEntities.html) |  |  
+| [*DiagramPbfModelIdentifiers*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/project/mesakit/diagrams/DiagramPbfModelIdentifiers.html) |  |  
+| [*DiagramPbfModelMetadata*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/project/mesakit/diagrams/DiagramPbfModelMetadata.html) |  |  
+| [*DiagramPbfModelTags*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/project/mesakit/diagrams/DiagramPbfModelTags.html) |  |  
+| [*DiagramPbfOsm*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/project/mesakit/diagrams/DiagramPbfOsm.html) |  |  
+| [*DiagramPbfProcessing*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/project/mesakit/diagrams/DiagramPbfProcessing.html) |  |  
+| [*DiagramPbfProcessingFilters*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/project/mesakit/diagrams/DiagramPbfProcessingFilters.html) |  |  
 | [*EmptyPbfTagMap*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/model/tags/EmptyPbfTagMap.html) |  |  
 | [*IntegerExtractor*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/model/extractors/IntegerExtractor.html) |  |  
-| [*NavTeamWayFilter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/processing/filters/navteam/NavTeamWayFilter.html) |  |  
 | [*Osm*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/osm/Osm.html) |  |  
 | [*OsmExcludeNonDrivableWaysFilter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/processing/filters/osm/OsmExcludeNonDrivableWaysFilter.html) |  |  
 | [*OsmHighwayTag*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/osm/OsmHighwayTag.html) |  |  
@@ -126,8 +129,6 @@ The following significant classes are undocumented:
 | [*OsmNavigableWayFilter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/processing/filters/osm/OsmNavigableWayFilter.html) |  |  
 | [*OsmRelationTag*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/osm/OsmRelationTag.html) |  |  
 | [*OsmRelationsFilter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/processing/filters/osm/OsmRelationsFilter.html) |  |  
-| [*OsmTeamDataPipelineWayFilter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/processing/filters/osmteam/OsmTeamDataPipelineWayFilter.html) |  |  
-| [*OsmTeamWayFilter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/processing/filters/osmteam/OsmTeamWayFilter.html) |  |  
 | [*OsmWaysFilter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/processing/filters/osm/OsmWaysFilter.html) |  |  
 | [*ParallelPbfReader*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/processing/readers/ParallelPbfReader.html) |  |  
 | [*PbfChangeSetIdentifier*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/model/metadata/PbfChangeSetIdentifier.html) |  |  
@@ -170,11 +171,6 @@ The following significant classes are undocumented:
 | [*RevisionNumberExtractor*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/model/extractors/RevisionNumberExtractor.html) |  |  
 | [*SerialPbfReader*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/processing/readers/SerialPbfReader.html) |  |  
 | [*TimestampExtractor*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/model/extractors/TimestampExtractor.html) |  |  
-| [*UniDb*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/unidb/UniDb.html) |  |  
-| [*UniDbExcludeAdasRelationFilter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/processing/filters/unidb/UniDbExcludeAdasRelationFilter.html) |  |  
-| [*UniDbNavigableWayFilter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/processing/filters/unidb/UniDbNavigableWayFilter.html) |  |  
-| [*UniDbRelationTag*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/unidb/UniDbRelationTag.html) |  |  
-| [*UniDbRelationsFilter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/processing/filters/unidb/UniDbRelationsFilter.html) |  |  
 | [*WayFilter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/processing/filters/WayFilter.html) |  |  
 | [*WayFilter.Converter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/pbf/processing/filters/WayFilter.Converter.html) |  |  
 
@@ -186,7 +182,7 @@ The following significant classes are undocumented:
 
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
-<sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>  
+<sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc., distributed under [Apache License, Version 2.0](LICENSE). Made with Natural Earth, free vector and raster map data at naturalearthdata.com. Portions of map data &#169; OpenStreetMap contributors, distributed under [ODC Open Database License](legal/OPEN_DATABASE_LICENSE).</sub>  
 <sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai). UML diagrams courtesy
 of [PlantUML](http://plantuml.com).</sub>
 

@@ -1,0 +1,24 @@
+
+OpenStreetMap (openstreetmap.com)
+---------------------------------
+
+Some administrative boundary data is © OpenStreetMap contributors and redistributed under the
+terms of Open Data Commons Open Database License (ODbL) v1.0 in the accompanying file
+OPEN-DATABASE-LICENSE. Further details are available at https://wiki.osmfoundation.org/
+
+
+Geofabrik (geofabrik.de)
+------------------------
+
+Geofabrik GmbH Karlsruhe provides processed OpenStreetMap data for free under the terms above.
+Geofabrik also provides the Overpass API on public servers which are used in this toolkit.
+For those with more stringent requirements, Geofabrik provides paid options. For details, see
+https://www.geofabrik.de/data/overpass-api.html
+
+
+Natural Earth (naturalearthdata.com)
+------------------------------------
+
+Made with Natural Earth. Some administrative boundary data in this toolkit is provided
+courtesy of Natural Earth. This data is in the public domain.
+

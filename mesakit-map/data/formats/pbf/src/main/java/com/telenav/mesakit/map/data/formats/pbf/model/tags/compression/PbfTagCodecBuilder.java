@@ -1,13 +1,5 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
-import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
-import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
-import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
-import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor;
-import com.telenav.mesakit.map.data.formats.pbf.processing.filters.RelationFilter;
-import com.telenav.mesakit.map.data.formats.pbf.processing.filters.WayFilter;
-import com.telenav.mesakit.map.data.formats.pbf.processing.readers.SerialPbfReader;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelCompression;
 import com.telenav.kivakit.core.filesystem.File;
 import com.telenav.kivakit.core.kernel.language.strings.AsciiArt;
 import com.telenav.kivakit.core.kernel.language.values.count.Count;
@@ -22,10 +14,18 @@ import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringC
 import com.telenav.kivakit.data.compression.codecs.huffman.string.StringFrequencies;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
+import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor;
+import com.telenav.mesakit.map.data.formats.pbf.processing.filters.RelationFilter;
+import com.telenav.mesakit.map.data.formats.pbf.processing.filters.WayFilter;
+import com.telenav.mesakit.map.data.formats.pbf.processing.readers.SerialPbfReader;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelCompression;
 
+import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.FILTERED_OUT;
-import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
 
 /**
  * @author jonathanl (shibo)
@@ -257,7 +257,7 @@ public class PbfTagCodecBuilder
     public void output()
     {
         System.out.println(AsciiArt.box("The properties files output by this program can be be read by a PbfStringListTagCodec.\n"
-                + "See OsmDataSpecification or UniDbDataSpecification for an example."));
+                + "See OsmDataSpecification for an example."));
         System.out.println();
 
         System.out.println(AsciiArt.box("Key Character Codec"));

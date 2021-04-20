@@ -18,19 +18,19 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
-import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
-import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelCompression;
 import com.telenav.kivakit.core.collections.primitive.array.bits.io.BitReader;
 import com.telenav.kivakit.core.collections.primitive.array.bits.io.BitWriter;
 import com.telenav.kivakit.core.collections.primitive.list.ByteList;
 import com.telenav.kivakit.data.compression.codecs.huffman.HuffmanCodec;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelCompression;
 
 /**
  * A tag codec is used to compress the key / value pairs found in tags. Different codecs can be tuned to different data
  * sets. For example, keys and values may have different distributions of letter frequencies in any data source, and
- * keys in OSM data may have different frequencies than keys in UniDb data. Individual UniDb data suppliers may have
+ * keys in OSM data may have different frequencies than keys in other data sources. Individual data suppliers may have
  * different characteristics as well. See {@link PbfStringListTagCodec} for information on how tag codecs can be tuned
  * to different data sets.
  * <p>

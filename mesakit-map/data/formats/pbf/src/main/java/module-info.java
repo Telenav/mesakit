@@ -17,10 +17,7 @@ open module mesakit.data.formats.pbf
     exports com.telenav.mesakit.map.data.formats.pbf.model.tags;
     exports com.telenav.mesakit.map.data.formats.pbf.osm;
     exports com.telenav.mesakit.map.data.formats.pbf.processing.filters.all;
-    exports com.telenav.mesakit.map.data.formats.pbf.processing.filters.navteam;
     exports com.telenav.mesakit.map.data.formats.pbf.processing.filters.osm;
-    exports com.telenav.mesakit.map.data.formats.pbf.processing.filters.osmteam;
-    exports com.telenav.mesakit.map.data.formats.pbf.processing.filters.unidb;
     exports com.telenav.mesakit.map.data.formats.pbf.processing.filters;
     exports com.telenav.mesakit.map.data.formats.pbf.processing.readers;
     exports com.telenav.mesakit.map.data.formats.pbf.processing.writers;

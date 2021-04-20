@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.data.formats.library;
 
-import com.telenav.mesakit.map.data.formats.library.project.lexakai.diagrams.DiagramDataFormat;
 import com.telenav.kivakit.core.resource.Resource;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.data.formats.library.project.lexakai.diagrams.DiagramDataFormat;
 
 import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
 
@@ -36,7 +36,7 @@ public enum DataFormat
     CSV, // Comma-separated variables format
     Database, // The data came directly from database
     XML, // OSM XML format
-    PBF, // OpenStreetMap native protobuf format being used for data from UniDB and OSM community
+    PBF, // OpenStreetMap protobuf format
     ;
 
     public static DataFormat of(final Resource input)

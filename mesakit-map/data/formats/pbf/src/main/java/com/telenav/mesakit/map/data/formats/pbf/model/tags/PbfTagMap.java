@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelTags;
 import com.telenav.kivakit.core.kernel.interfaces.collection.Keyed;
 import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.core.kernel.language.objects.Hash;
@@ -28,6 +27,7 @@ import com.telenav.kivakit.core.kernel.language.strings.Strings;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelTags;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.Collection;
@@ -42,8 +42,7 @@ import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensu
  * <p>
  * HOTSPOT: This class has been identified as a hotpot by YourKit and so it has been optimized to avoid allocating
  * {@link HashMap} instances for smaller tag maps. The average number of tags per entity in OSM is between 2.3 and 3.95,
- * so 8 fields should cover the majority of OSM tag maps. UniDb entities all have a larger number of tags, so this
- * optimization won't help that case.
+ * so 8 fields should cover the majority of OSM tag maps.
  */
 @SuppressWarnings("StaticInitializerReferencesSubClass")
 @UmlClassDiagram(diagram = DiagramPbfModelTags.class)
