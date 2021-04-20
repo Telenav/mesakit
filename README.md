@@ -18,7 +18,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit &nbsp;&nbsp; <img src="https://www.kivakit.org/images/mesakit-64.png" srcset="https://www.kivakit.org/images/mesakit-64-2x.png 2x"/>
+# mesakit &nbsp;&nbsp; <img src="https://www.mesakit.org/images/mesakit-64.png" srcset="https://www.mesakit.org/images/mesakit-64-2x.png 2x"/>
 
 MesaKit is a modular toolkit for developing map and navigation software.
 
