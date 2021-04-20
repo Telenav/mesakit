@@ -1,7 +1,0 @@
-     117 com/telenav/mesakit/map/overpass/OverpassDataDownloader.java
-      76 com/telenav/mesakit/map/overpass/OverpassOsmResource.java
-      90 com/telenav/mesakit/map/overpass/pbf/OsmToPbfConverter.java
-      21 com/telenav/mesakit/map/overpass/project/MapOverpassProject.java
-      10 com/telenav/mesakit/map/overpass/project/lexakai/diagrams/DiagramOverpass.java
-      12 module-info.java
-     326 total

@@ -1,23 +1,45 @@
-# mesakit &nbsp;&nbsp;<img src="https://www.kivakit.org/images/mesakit-64.png" srcset="https://www.kivakit.org/images/mesakit-32-2x.png 2x"/>
+
+
+[//]: # (start-user-text)
+
+<a href="https://www.mesakit.org">
+<img src="https://www.kivakit.org/images/web-32.png" srcset="https://www.kivakit.org/images/web-32-2x.png 2x"/>
+</a>
+&nbsp;
+<a href="https://twitter.com/openmesakit">
+<img src="https://www.kivakit.org/images/twitter-32.png" srcset="https://www.kivakit.org/images/twitter-32-2x.png 2x"/>
+</a>
+&nbsp;
+<a href="https://mesakit.zulipchat.com">
+<img src="https://www.kivakit.org/images/zulip-32.png" srcset="https://www.kivakit.org/images/zulip-32-2x.png 2x"/>
+</a>
+
+<p></p>
+
+<img src="https://www.kivakit.org/images/kivakit-background-512.png" srcset="https://www.kivakit.org/images/kivakit-background-512-2x.png 2x"/>
+
+[//]: # (end-user-text)
+
+# mesakit &nbsp;&nbsp;<img src="https://www.mesakit.org/images/mesakit-64.png" srcset="https://www.mesakit.org/images/mesakit-64-2x.png 2x"/>
 
 MesaKit is a modular toolkit for developing map and navigation software.
 
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
-[//]: # (start-user-text)
-
 ### Index <a name = "index"></a>
 
-[**Welcome!**](#welcome)
-[**Summary**](#summary)
-[**Project Resources**](#project-resources)
-[**Quick Start**](#quick-start)
-[**Downloads**](#downloads)
-[**Reference**](#reference)
-[**Projects**](#projects)
+[**Welcome!**](#welcome)  
+[**Summary**](#summary)  
+[**Project Resources**](#project-resources)  
+[**Quick Start**](#quick-start)  
+[**Downloads**](#downloads)  
+[**Reference**](#reference)  
+[**Projects**](#projects)  
 [**Javadoc Coverage**](#javadoc-coverage)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
+
+[//]: # (start-user-text)
 
 ### Welcome <a name = "welcome"></a>! &nbsp; <img src="https://www.kivakit.org/images/stars-32.png" srcset="https://www.kivakit.org/images/stars-32-2x.png 2x"/>
 

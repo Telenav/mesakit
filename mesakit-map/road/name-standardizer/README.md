@@ -1,3 +1,19 @@
+[//]: # (start-user-text)
+
+<a href="https://www.mesakit.org">
+<img src="https://www.kivakit.org/images/web-32.png" srcset="https://www.kivakit.org/images/web-32-2x.png 2x"/>
+</a>
+&nbsp;
+<a href="https://twitter.com/openmesakit">
+<img src="https://www.kivakit.org/images/twitter-32.png" srcset="https://www.kivakit.org/images/twitter-32-2x.png 2x"/>
+</a>
+&nbsp;
+<a href="https://mesakit.zulipchat.com">
+<img src="https://www.kivakit.org/images/zulip-32.png" srcset="https://www.kivakit.org/images/zulip-32-2x.png 2x"/>
+</a>
+
+[//]: # (end-user-text)
+
 # mesakit-map-road name-standardizer &nbsp;&nbsp;<img src="https://www.kivakit.org/images/gears-32.png" srcset="https://www.kivakit.org/images/gears-32-2x.png 2x"/>
 
 This project transforms non-standard road names from a data source like OpenStreetMap into a standard form.
