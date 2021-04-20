@@ -307,8 +307,9 @@
                         <detectJavaApiLink>false</detectJavaApiLink>
                         <doclint>none</doclint>
                         <nohelp>true</nohelp>
-                        <reportOutputDirectory>${env.MESAKIT_WORKSPACE}/mesakit-data/docs/javadoc</reportOutputDirectory>
-                        <destDir>javadoc</destDir>
+
+                        <reportOutputDirectory>${env.MESAKIT_DATA_HOME}/docs/javadoc</reportOutputDirectory>
+                        <destDir>mesakit</destDir>
                         <additionalOptions>-notimestamp --show-module-contents all --show-packages all --show-types private</additionalOptions>
                     </configuration>
                     <executions>

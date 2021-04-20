@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-utilities-geohash &nbsp;&nbsp;<img src="https://www.kivakit.org/images/gears-32.png" srcset="https://www.kivakit.org/images/gears-32-2x.png 2x"/>
+# mesakit-map-utilities-geohash &nbsp;&nbsp; <img src="https://www.kivakit.org/images/gears-32.png" srcset="https://www.kivakit.org/images/gears-32-2x.png 2x"/>
 
 This project provides a package for geohashing.
 
@@ -30,15 +30,16 @@ This project provides a package for geohashing.
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/dependencies-32.png" srcset="https://www.kivakit.org/images/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/utilities/geohash/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
-        <artifactId></artifactId>
-        <version>0.9.0-SNAPSHOTc</version>
+        <artifactId>lexakai</artifactId>
+        <version>0.9.0-SNAPSHOT</version>
     </dependency>
+
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
@@ -58,39 +59,39 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"/>
 
-[*com.telenav.mesakit.map.utilities.geohash*](documentation/diagrams/com.telenav.mesakit.map.utilities.geohash.svg)
-[*com.telenav.mesakit.map.utilities.geohash.project*](documentation/diagrams/com.telenav.mesakit.map.utilities.geohash.project.svg)
+[*com.telenav.mesakit.map.utilities.geohash*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/utilities/geohash/documentation/diagrams/com.telenav.mesakit.map.utilities.geohash.svg)  
+[*com.telenav.mesakit.map.utilities.geohash.project*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/utilities/geohash/documentation/diagrams/com.telenav.mesakit.map.utilities.geohash.project.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
 ### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/books-32.png" srcset="https://www.kivakit.org/images/books-32-2x.png 2x"/>
 
-Javadoc coverage for this project is 40.0%.
+Javadoc coverage for this project is 46.3%.  
+  
+&nbsp; &nbsp; <img src="https://www.kivakit.org/images/meter-50-96.png" srcset="https://www.kivakit.org/images/meter-50-96-2x.png 2x"/>
 
-&nbsp; &nbsp;  <img src="https://www.kivakit.org/images/meter-40-12.png" srcset="https://www.kivakit.org/images/meter-40-12-2x.png 2x"/>
 
-The following significant classes are undocumented:
+The following significant classes are undocumented:  
 
-- Code
-- Codec
+- Code  
+- Codec  
 - Geohash
-- Geohasher
 
 | Class | Documentation Sections |
 |---|---|
-| [*Base32GeohashAlphabet*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/Base32GeohashAlphabet.html) |  |
-| [*BitArray*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/BitArray.html) |  |
-| [*BitArray.Builder*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/BitArray.Builder.html) |  |
-| [*Code*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/Code.html) |  |
-| [*Codec*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/Codec.html) |  |
-| [*Geohash*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/Geohash.html) |  |
-| [*GeohashAlphabet*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/GeohashAlphabet.html) |  |
-| [*GeohashOrganizer*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/GeohashOrganizer.html) |  |
-| [*GeohashOrganizer.Node*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/GeohashOrganizer.Node.html) |  |
-| [*GeohashOrganizer.TreeLevel*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/GeohashOrganizer.TreeLevel.html) |  |
-| [*Geohasher*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/Geohasher.html) |  |
-| [*Geohasher.Builder*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/Geohasher.Builder.html) |  |
-| [*MapUtilitiesGeohashProject*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.geohash/com/telenav/mesakit/map/utilities/geohash/project/MapUtilitiesGeohashProject.html) |  |
+| [*Base32GeohashAlphabet*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/geohash/Base32GeohashAlphabet.html) |  |  
+| [*BitArray*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/geohash/BitArray.html) |  |  
+| [*BitArray.Builder*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/geohash/BitArray.Builder.html) |  |  
+| [*Code*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/geohash/Code.html) |  |  
+| [*Codec*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/geohash/Codec.html) |  |  
+| [*Geohash*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/geohash/Geohash.html) |  |  
+| [*GeohashAlphabet*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/geohash/GeohashAlphabet.html) |  |  
+| [*GeohashOrganizer*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/geohash/GeohashOrganizer.html) |  |  
+| [*GeohashOrganizer.Node*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/geohash/GeohashOrganizer.Node.html) |  |  
+| [*GeohashOrganizer.TreeLevel*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/geohash/GeohashOrganizer.TreeLevel.html) |  |  
+| [*Geohasher*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/geohash/Geohasher.html) |  |  
+| [*Geohasher.Builder*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/geohash/Geohasher.Builder.html) |  |  
+| [*MapUtilitiesGeohashProject*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/geohash/project/MapUtilitiesGeohashProject.html) |  |  
 
 [//]: # (start-user-text)
 
@@ -98,11 +99,9 @@ The following significant classes are undocumented:
 
 [//]: # (end-user-text)
 
-<br/>
-
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
-<sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>
-<sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai) on 2021.04.15. UML diagrams courtesy
+<sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>  
+<sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai). UML diagrams courtesy
 of [PlantUML](http://plantuml.com).</sub>
 

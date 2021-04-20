@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-utilities-grid &nbsp;&nbsp;<img src="https://www.kivakit.org/images/gears-32.png" srcset="https://www.kivakit.org/images/gears-32-2x.png 2x"/>
+# mesakit-map-utilities-grid &nbsp;&nbsp; <img src="https://www.kivakit.org/images/gears-32.png" srcset="https://www.kivakit.org/images/gears-32-2x.png 2x"/>
 
 This project provides the rectangular grids used in core-graph-world.
 
@@ -30,15 +30,16 @@ This project provides the rectangular grids used in core-graph-world.
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/dependencies-32.png" srcset="https://www.kivakit.org/images/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/utilities/grid/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
-        <artifactId></artifactId>
-        <version>0.9.0-SNAPSHOTc</version>
+        <artifactId>lexakai</artifactId>
+        <version>0.9.0-SNAPSHOT</version>
     </dependency>
+
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
@@ -58,28 +59,29 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"/>
 
-[*com.telenav.mesakit.map.utilities.grid*](documentation/diagrams/com.telenav.mesakit.map.utilities.grid.svg)
-[*com.telenav.mesakit.map.utilities.grid.project*](documentation/diagrams/com.telenav.mesakit.map.utilities.grid.project.svg)
+[*com.telenav.mesakit.map.utilities.grid*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/utilities/grid/documentation/diagrams/com.telenav.mesakit.map.utilities.grid.svg)  
+[*com.telenav.mesakit.map.utilities.grid.project*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/utilities/grid/documentation/diagrams/com.telenav.mesakit.map.utilities.grid.project.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
 ### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/books-32.png" srcset="https://www.kivakit.org/images/books-32-2x.png 2x"/>
 
-Javadoc coverage for this project is 50.0%.
+Javadoc coverage for this project is 50.0%.  
+  
+&nbsp; &nbsp; <img src="https://www.kivakit.org/images/meter-50-96.png" srcset="https://www.kivakit.org/images/meter-50-96-2x.png 2x"/>
 
-&nbsp; &nbsp;  <img src="https://www.kivakit.org/images/meter-50-12.png" srcset="https://www.kivakit.org/images/meter-50-12-2x.png 2x"/>
 
-The following significant classes are undocumented:
+The following significant classes are undocumented:  
 
 - Grid
 
 | Class | Documentation Sections |
 |---|---|
-| [*Grid*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.grid/com/telenav/mesakit/map/utilities/grid/Grid.html) |  |
-| [*GridCell*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.grid/com/telenav/mesakit/map/utilities/grid/GridCell.html) |  |
-| [*GridCellIdentifier*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.grid/com/telenav/mesakit/map/utilities/grid/GridCellIdentifier.html) |  |
-| [*MapUtilitiesGridKryoTypes*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.grid/com/telenav/mesakit/map/utilities/grid/project/MapUtilitiesGridKryoTypes.html) |  |
-| [*MapUtilitiesGridProject*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.utilities.grid/com/telenav/mesakit/map/utilities/grid/project/MapUtilitiesGridProject.html) |  |
+| [*Grid*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/grid/Grid.html) |  |  
+| [*GridCell*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/grid/GridCell.html) |  |  
+| [*GridCellIdentifier*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/grid/GridCellIdentifier.html) |  |  
+| [*MapUtilitiesGridKryoTypes*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/grid/project/MapUtilitiesGridKryoTypes.html) |  |  
+| [*MapUtilitiesGridProject*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/grid/project/MapUtilitiesGridProject.html) |  |  
 
 [//]: # (start-user-text)
 
@@ -87,11 +89,9 @@ The following significant classes are undocumented:
 
 [//]: # (end-user-text)
 
-<br/>
-
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
-<sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>
-<sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai) on 2021.04.15. UML diagrams courtesy
+<sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>  
+<sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai). UML diagrams courtesy
 of [PlantUML](http://plantuml.com).</sub>
 

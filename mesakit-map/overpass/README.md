@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-overpass &nbsp;&nbsp;<img src="https://www.kivakit.org/images/gears-32.png" srcset="https://www.kivakit.org/images/gears-32-2x.png 2x"/>
+# mesakit-map-overpass &nbsp;&nbsp; <img src="https://www.kivakit.org/images/gears-32.png" srcset="https://www.kivakit.org/images/gears-32-2x.png 2x"/>
 
 This module provides access to map data via the Geofabrik OpenStreetMap "overpass" service.
 
@@ -30,15 +30,16 @@ This module provides access to map data via the Geofabrik OpenStreetMap "overpas
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/dependencies-32.png" srcset="https://www.kivakit.org/images/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
-        <artifactId></artifactId>
-        <version>0.9.0-SNAPSHOTc</version>
+        <artifactId>lexakai</artifactId>
+        <version>0.9.0-SNAPSHOT</version>
     </dependency>
+
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
@@ -52,34 +53,35 @@ This module provides access to map data via the Geofabrik OpenStreetMap "overpas
 
 ### Class Diagrams <a name="class-diagrams"></a> &nbsp; &nbsp; <img src="https://www.kivakit.org/images/diagram-40.png" srcset="https://www.kivakit.org/images/diagram-40-2x.png 2x"/>
 
-[*Overpass*](documentation/diagrams/diagram-overpass.svg)
+[*Overpass*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/diagram-overpass.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"/>
 
-[*com.telenav.mesakit.map.overpass*](documentation/diagrams/com.telenav.mesakit.map.overpass.svg)
-[*com.telenav.mesakit.map.overpass.pbf*](documentation/diagrams/com.telenav.mesakit.map.overpass.pbf.svg)
-[*com.telenav.mesakit.map.overpass.project*](documentation/diagrams/com.telenav.mesakit.map.overpass.project.svg)
+[*com.telenav.mesakit.map.overpass*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/com.telenav.mesakit.map.overpass.svg)  
+[*com.telenav.mesakit.map.overpass.pbf*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/com.telenav.mesakit.map.overpass.pbf.svg)  
+[*com.telenav.mesakit.map.overpass.project*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/com.telenav.mesakit.map.overpass.project.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
 ### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/books-32.png" srcset="https://www.kivakit.org/images/books-32-2x.png 2x"/>
 
-Javadoc coverage for this project is 12.5%.
+Javadoc coverage for this project is 12.5%.  
+  
+&nbsp; &nbsp; <img src="https://www.kivakit.org/images/meter-10-96.png" srcset="https://www.kivakit.org/images/meter-10-96-2x.png 2x"/>
 
-&nbsp; &nbsp;  <img src="https://www.kivakit.org/images/meter-10-12.png" srcset="https://www.kivakit.org/images/meter-10-12-2x.png 2x"/>
 
-The following significant classes are undocumented:
+The following significant classes are undocumented:  
 
 - OverpassDataDownloader
 
 | Class | Documentation Sections |
 |---|---|
-| [*MapOverpassProject*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.overpass/com/telenav/mesakit/map/overpass/project/MapOverpassProject.html) |  |
-| [*OsmToPbfConverter*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.overpass/com/telenav/mesakit/map/overpass/pbf/OsmToPbfConverter.html) |  |
-| [*OverpassDataDownloader*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.overpass/com/telenav/mesakit/map/overpass/OverpassDataDownloader.html) |  |
-| [*OverpassOsmResource*](https://telenav.github.io/mesakit-data/javadoc/mesakit.map.overpass/com/telenav/mesakit/map/overpass/OverpassOsmResource.html) |  |
+| [*MapOverpassProject*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/overpass/project/MapOverpassProject.html) |  |  
+| [*OsmToPbfConverter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/overpass/pbf/OsmToPbfConverter.html) |  |  
+| [*OverpassDataDownloader*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/overpass/OverpassDataDownloader.html) |  |  
+| [*OverpassOsmResource*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/overpass/OverpassOsmResource.html) |  |  
 
 [//]: # (start-user-text)
 
@@ -87,11 +89,9 @@ The following significant classes are undocumented:
 
 [//]: # (end-user-text)
 
-<br/>
-
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
-<sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>
-<sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai) on 2021.04.15. UML diagrams courtesy
+<sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>  
+<sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai). UML diagrams courtesy
 of [PlantUML](http://plantuml.com).</sub>
 

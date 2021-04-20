@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map &nbsp;&nbsp;<img src="https://www.kivakit.org/images/map-32.png" srcset="https://www.kivakit.org/images/map-32-2x.png 2x"/>
+# mesakit-map &nbsp;&nbsp; <img src="https://www.kivakit.org/images/map-32.png" srcset="https://www.kivakit.org/images/map-32-2x.png 2x"/>
 
 This project provides modules for basic GIS functions and map data access.
 
@@ -26,36 +26,50 @@ This project provides modules for basic GIS functions and map data access.
 
 [//]: # (end-user-text)
 
-### Projects &nbsp; <img src="https://www.kivakit.org/images/gears-32.png" srcset="https://www.kivakit.org/images/gears-32-2x.png 2x"/>
+### Projects <a name = "projects"></a> &nbsp; <img src="https://www.kivakit.org/images/gears-32.png" srcset="https://www.kivakit.org/images/gears-32-2x.png 2x"/>
 
-[**mesakit-map-cutter**](cutter/README.md)
-[**mesakit-map-data**](data/README.md)
-[**mesakit-map-geography**](geography/README.md)
-[**mesakit-map-measurements**](measurements/README.md)
-[**mesakit-map-overpass**](overpass/README.md)
-[**mesakit-map-region**](region/README.md)
-[**mesakit-map-road**](road/README.md)
-[**mesakit-map-ui**](ui/README.md)
-[**mesakit-map-utilities**](utilities/README.md)
+[**mesakit-map-cutter**](cutter/README.md)  
+[**mesakit-map-data**](data/README.md)  
+[**mesakit-map-geography**](geography/README.md)  
+[**mesakit-map-measurements**](measurements/README.md)  
+[**mesakit-map-overpass**](overpass/README.md)  
+[**mesakit-map-region**](region/README.md)  
+[**mesakit-map-road**](road/README.md)  
+[**mesakit-map-ui**](ui/README.md)  
+[**mesakit-map-utilities**](utilities/README.md)  
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
-### Javadoc Coverage
+### Javadoc Coverage <a name = "javadoc-coverage"></a> &nbsp; <img src="https://www.kivakit.org/images/bargraph-32.png" srcset="https://www.kivakit.org/images/bargraph-32-2x.png 2x"/>
 
-&nbsp;  <img src="https://www.kivakit.org/images/meter-30-12.png" srcset="https://www.kivakit.org/images/meter-30-12-2x.png 2x"/> &nbsp; &nbsp; [**mesakit-map-cutter**](cutter/README.md)
-&nbsp;  <img src="https://www.kivakit.org/images/meter-40-12.png" srcset="https://www.kivakit.org/images/meter-40-12-2x.png 2x"/> &nbsp; &nbsp; [**mesakit-map-data-formats-pbf**](pbf/README.md)
-&nbsp;  <img src="https://www.kivakit.org/images/meter-50-12.png" srcset="https://www.kivakit.org/images/meter-50-12-2x.png 2x"/> &nbsp; &nbsp; [**mesakit-map-data-library**](library/README.md)
-&nbsp;  <img src="https://www.kivakit.org/images/meter-40-12.png" srcset="https://www.kivakit.org/images/meter-40-12-2x.png 2x"/> &nbsp; &nbsp; [**mesakit-map-geography**](geography/README.md)
-&nbsp;  <img src="https://www.kivakit.org/images/meter-60-12.png" srcset="https://www.kivakit.org/images/meter-60-12-2x.png 2x"/> &nbsp; &nbsp; [**mesakit-map-measurements**](measurements/README.md)
-&nbsp;  <img src="https://www.kivakit.org/images/meter-10-12.png" srcset="https://www.kivakit.org/images/meter-10-12-2x.png 2x"/> &nbsp; &nbsp; [**mesakit-map-overpass**](overpass/README.md)
-&nbsp;  <img src="https://www.kivakit.org/images/meter-40-12.png" srcset="https://www.kivakit.org/images/meter-40-12-2x.png 2x"/> &nbsp; &nbsp; [**mesakit-map-region**](region/README.md)
-&nbsp;  <img src="https://www.kivakit.org/images/meter-40-12.png" srcset="https://www.kivakit.org/images/meter-40-12-2x.png 2x"/> &nbsp; &nbsp; [**mesakit-map-road-model**](model/README.md)
-&nbsp;  <img src="https://www.kivakit.org/images/meter-50-12.png" srcset="https://www.kivakit.org/images/meter-50-12-2x.png 2x"/> &nbsp; &nbsp; [**mesakit-map-road-name-parser**](name-parser/README.md)
-&nbsp;  <img src="https://www.kivakit.org/images/meter-30-12.png" srcset="https://www.kivakit.org/images/meter-30-12-2x.png 2x"/> &nbsp; &nbsp; [**mesakit-map-road-name-standardizer**](name-standardizer/README.md)
-&nbsp;  <img src="https://www.kivakit.org/images/meter-40-12.png" srcset="https://www.kivakit.org/images/meter-40-12-2x.png 2x"/> &nbsp; &nbsp; [**mesakit-map-ui**](ui/README.md)
-&nbsp;  <img src="https://www.kivakit.org/images/meter-40-12.png" srcset="https://www.kivakit.org/images/meter-40-12-2x.png 2x"/> &nbsp; &nbsp; [**mesakit-map-utilities-geohash**](geohash/README.md)
-&nbsp;  <img src="https://www.kivakit.org/images/meter-30-12.png" srcset="https://www.kivakit.org/images/meter-30-12-2x.png 2x"/> &nbsp; &nbsp; [**mesakit-map-utilities-geojson**](geojson/README.md)
-&nbsp;  <img src="https://www.kivakit.org/images/meter-50-12.png" srcset="https://www.kivakit.org/images/meter-50-12-2x.png 2x"/> &nbsp; &nbsp; [**mesakit-map-utilities-grid**](grid/README.md)
+&nbsp; <img src="https://www.kivakit.org/images/meter-40-96.png" srcset="https://www.kivakit.org/images/meter-40-96-2x.png 2x"/>
+ &nbsp; &nbsp; [**mesakit-map-cutter**](cutter/README.md)  
+&nbsp; <img src="https://www.kivakit.org/images/meter-50-96.png" srcset="https://www.kivakit.org/images/meter-50-96-2x.png 2x"/>
+ &nbsp; &nbsp; [**mesakit-map-data-formats-pbf**](data/formats/pbf/README.md)  
+&nbsp; <img src="https://www.kivakit.org/images/meter-50-96.png" srcset="https://www.kivakit.org/images/meter-50-96-2x.png 2x"/>
+ &nbsp; &nbsp; [**mesakit-map-data-library**](data/library/README.md)  
+&nbsp; <img src="https://www.kivakit.org/images/meter-50-96.png" srcset="https://www.kivakit.org/images/meter-50-96-2x.png 2x"/>
+ &nbsp; &nbsp; [**mesakit-map-geography**](geography/README.md)  
+&nbsp; <img src="https://www.kivakit.org/images/meter-70-96.png" srcset="https://www.kivakit.org/images/meter-70-96-2x.png 2x"/>
+ &nbsp; &nbsp; [**mesakit-map-measurements**](measurements/README.md)  
+&nbsp; <img src="https://www.kivakit.org/images/meter-10-96.png" srcset="https://www.kivakit.org/images/meter-10-96-2x.png 2x"/>
+ &nbsp; &nbsp; [**mesakit-map-overpass**](overpass/README.md)  
+&nbsp; <img src="https://www.kivakit.org/images/meter-40-96.png" srcset="https://www.kivakit.org/images/meter-40-96-2x.png 2x"/>
+ &nbsp; &nbsp; [**mesakit-map-region**](region/README.md)  
+&nbsp; <img src="https://www.kivakit.org/images/meter-50-96.png" srcset="https://www.kivakit.org/images/meter-50-96-2x.png 2x"/>
+ &nbsp; &nbsp; [**mesakit-map-road-model**](road/model/README.md)  
+&nbsp; <img src="https://www.kivakit.org/images/meter-50-96.png" srcset="https://www.kivakit.org/images/meter-50-96-2x.png 2x"/>
+ &nbsp; &nbsp; [**mesakit-map-road-name-parser**](road/name-parser/README.md)  
+&nbsp; <img src="https://www.kivakit.org/images/meter-30-96.png" srcset="https://www.kivakit.org/images/meter-30-96-2x.png 2x"/>
+ &nbsp; &nbsp; [**mesakit-map-road-name-standardizer**](road/name-standardizer/README.md)  
+&nbsp; <img src="https://www.kivakit.org/images/meter-40-96.png" srcset="https://www.kivakit.org/images/meter-40-96-2x.png 2x"/>
+ &nbsp; &nbsp; [**mesakit-map-ui**](ui/README.md)  
+&nbsp; <img src="https://www.kivakit.org/images/meter-50-96.png" srcset="https://www.kivakit.org/images/meter-50-96-2x.png 2x"/>
+ &nbsp; &nbsp; [**mesakit-map-utilities-geohash**](utilities/geohash/README.md)  
+&nbsp; <img src="https://www.kivakit.org/images/meter-30-96.png" srcset="https://www.kivakit.org/images/meter-30-96-2x.png 2x"/>
+ &nbsp; &nbsp; [**mesakit-map-utilities-geojson**](utilities/geojson/README.md)  
+&nbsp; <img src="https://www.kivakit.org/images/meter-50-96.png" srcset="https://www.kivakit.org/images/meter-50-96-2x.png 2x"/>
+ &nbsp; &nbsp; [**mesakit-map-utilities-grid**](utilities/grid/README.md)
 
 [//]: # (start-user-text)
 
@@ -65,6 +79,6 @@ This project provides modules for basic GIS functions and map data access.
 
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
-<sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>
-<sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai) on 2021.04.15. UML diagrams courtesy
+<sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>  
+<sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai). UML diagrams courtesy
 of [PlantUML](http://plantuml.com).</sub>

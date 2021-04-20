@@ -6,6 +6,9 @@ system_variable MESAKIT_VERSION "$(project_version $MESAKIT_HOME)"
 system_variable MESAKIT_BUILD "$(project_build $MESAKIT_HOME)"
 system_variable MESAKIT_TOOLS "$MESAKIT_HOME/tools"
 
+system_variable MESAKIT_DATA_HOME "$MESAKIT_WORKSPACE/mesakit-data"
+system_variable MESAKIT_CACHE_HOME "$HOME/.mesakit/$MESAKIT_VERSION"
+
 append_path "$MESAKIT_TOOLS/building"
 append_path "$MESAKIT_TOOLS/developing"
 append_path "$MESAKIT_TOOLS/library"
