@@ -36,7 +36,7 @@ This module cuts maps into pieces based on region boundaries.
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
-        <artifactId>lexakai</artifactId>
+        <artifactId>mesakit-map-cutter</artifactId>
         <version>0.9.0-SNAPSHOT</version>
     </dependency>
 
@@ -87,14 +87,14 @@ The following significant classes are undocumented:
 
 | Class | Documentation Sections |
 |---|---|
-| [*Cut*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/cutter/Cut.html) |  |  
-| [*FastCut*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/cutter/cuts/FastCut.html) |  |  
-| [*MapCutterProject*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/cutter/project/MapCutterProject.html) |  |  
-| [*PbfRegionCutter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/cutter/PbfRegionCutter.html) |  |  
-| [*RegionIndexMap*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/cutter/cuts/maps/RegionIndexMap.html) |  |  
-| [*RegionNodes*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/cutter/cuts/maps/RegionNodes.html) |  |  
-| [*RegionWays*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/cutter/cuts/maps/RegionWays.html) |  |  
-| [*SoftCut*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/cutter/cuts/SoftCut.html) |  |  
+| [*Cut*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.cutter/com/telenav/mesakit/map/cutter/Cut.html) |  |  
+| [*FastCut*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.cutter/com/telenav/mesakit/map/cutter/cuts/FastCut.html) |  |  
+| [*MapCutterProject*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.cutter/com/telenav/mesakit/map/cutter/project/MapCutterProject.html) |  |  
+| [*PbfRegionCutter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.cutter/com/telenav/mesakit/map/cutter/PbfRegionCutter.html) |  |  
+| [*RegionIndexMap*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.cutter/com/telenav/mesakit/map/cutter/cuts/maps/RegionIndexMap.html) |  |  
+| [*RegionNodes*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.cutter/com/telenav/mesakit/map/cutter/cuts/maps/RegionNodes.html) |  |  
+| [*RegionWays*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.cutter/com/telenav/mesakit/map/cutter/cuts/maps/RegionWays.html) |  |  
+| [*SoftCut*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.cutter/com/telenav/mesakit/map/cutter/cuts/SoftCut.html) |  |  
 
 [//]: # (start-user-text)
 

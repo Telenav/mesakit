@@ -36,7 +36,7 @@ This module contains code generally relevant to map data.
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
-        <artifactId>lexakai</artifactId>
+        <artifactId>mesakit-map-data-library</artifactId>
         <version>0.9.0-SNAPSHOT</version>
     </dependency>
 
@@ -77,14 +77,14 @@ Javadoc coverage for this project is 53.5%.
 
 | Class | Documentation Sections |
 |---|---|
-| [*DataFormat*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/library/DataFormat.html) |  |  
-| [*DataFormatsLibraryProject*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/library/project/DataFormatsLibraryProject.html) |  |  
-| [*MapIdentifier*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapIdentifier.html) |  |  
-| [*MapIdentifier.Type*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapIdentifier.Type.html) |  |  
-| [*MapNodeIdentifier*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapNodeIdentifier.html) |  |  
-| [*MapNodeIdentifier.Comparator*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapNodeIdentifier.Comparator.html) |  |  
-| [*MapRelationIdentifier*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapRelationIdentifier.html) |  |  
-| [*MapWayIdentifier*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapWayIdentifier.html) |  |  
+| [*DataFormat*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/DataFormat.html) |  |  
+| [*DataFormatsLibraryProject*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/project/DataFormatsLibraryProject.html) |  |  
+| [*MapIdentifier*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapIdentifier.html) |  |  
+| [*MapIdentifier.Type*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapIdentifier.Type.html) |  |  
+| [*MapNodeIdentifier*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapNodeIdentifier.html) |  |  
+| [*MapNodeIdentifier.Comparator*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapNodeIdentifier.Comparator.html) |  |  
+| [*MapRelationIdentifier*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapRelationIdentifier.html) |  |  
+| [*MapWayIdentifier*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapWayIdentifier.html) |  |  
 
 [//]: # (start-user-text)
 

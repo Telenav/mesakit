@@ -36,7 +36,7 @@ This project transforms non-standard road names from a data source like OpenStre
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
-        <artifactId>lexakai</artifactId>
+        <artifactId>mesakit-map-road-name-standardizer</artifactId>
         <version>0.9.0-SNAPSHOT</version>
     </dependency>
 
@@ -80,15 +80,15 @@ The following significant classes are undocumented:
 
 | Class | Documentation Sections |
 |---|---|
-| [*BaseRoadNameStandardizer*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/road/name/standardizer/BaseRoadNameStandardizer.html) |  |  
-| [*EnglishCanadaRoadNameStandardizer*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/road/name/standardizer/locales/english/EnglishCanadaRoadNameStandardizer.html) |  |  
-| [*EnglishRoadNameStandardizer*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/road/name/standardizer/locales/english/EnglishRoadNameStandardizer.html) |  |  
-| [*EnglishUnitedStatesRoadNameStandardizer*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/road/name/standardizer/locales/english/EnglishUnitedStatesRoadNameStandardizer.html) |  |  
-| [*IndonesianIndonesiaRoadNameStandardizer*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/road/name/standardizer/locales/indonesian/IndonesianIndonesiaRoadNameStandardizer.html) |  |  
-| [*MapRoadNameStandardizerProject*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/road/name/standardizer/project/MapRoadNameStandardizerProject.html) |  |  
-| [*RoadNameStandardizer*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/road/name/standardizer/RoadNameStandardizer.html) |  |  
-| [*RoadNameStandardizer.Mode*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/road/name/standardizer/RoadNameStandardizer.Mode.html) |  |  
-| [*SimpleIndonesianRoadNameStandardizer*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/road/name/standardizer/locales/indonesian/SimpleIndonesianRoadNameStandardizer.html) |  |  
+| [*BaseRoadNameStandardizer*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/BaseRoadNameStandardizer.html) |  |  
+| [*EnglishCanadaRoadNameStandardizer*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/english/EnglishCanadaRoadNameStandardizer.html) |  |  
+| [*EnglishRoadNameStandardizer*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/english/EnglishRoadNameStandardizer.html) |  |  
+| [*EnglishUnitedStatesRoadNameStandardizer*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/english/EnglishUnitedStatesRoadNameStandardizer.html) |  |  
+| [*IndonesianIndonesiaRoadNameStandardizer*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/indonesian/IndonesianIndonesiaRoadNameStandardizer.html) |  |  
+| [*MapRoadNameStandardizerProject*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/project/MapRoadNameStandardizerProject.html) |  |  
+| [*RoadNameStandardizer*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/RoadNameStandardizer.html) |  |  
+| [*RoadNameStandardizer.Mode*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/RoadNameStandardizer.Mode.html) |  |  
+| [*SimpleIndonesianRoadNameStandardizer*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/indonesian/SimpleIndonesianRoadNameStandardizer.html) |  |  
 
 [//]: # (start-user-text)
 

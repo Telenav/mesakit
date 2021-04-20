@@ -26,7 +26,6 @@ MesaKit is a modular toolkit for developing map and navigation software.
 
 [//]: # (start-user-text)
 
-
 ### Welcome <a name = "welcome"></a>! &nbsp; <img src="https://www.kivakit.org/images/stars-32.png" srcset="https://www.kivakit.org/images/stars-32-2x.png 2x"/>
 
 > *The mission of MesaKit is to accelerate the development of mapping and navigation software*
@@ -82,7 +81,8 @@ MesaKit provides support for:
 |--------------|-----------------------------------|
 | Project Name | MesaKit |
 | Summary | A toolkit for developing mapping and navigation software |
-| Javadoc Coverage |  <!-- ${project-javadoc-average-coverage-meter} -->  <img src="https://www.kivakit.org/images/meter-40-12.png" srcset="https://www.kivakit.org/images/meter-40-12-2x.png 2x"/> <!-- end --> |
+| Javadoc Coverage |  <!-- ${project-javadoc-average-coverage-meter} --> <img src="https://www.mesakit.org/images/meter-40-96.png" srcset="https://www.mesakit.org/images/meter-40-96-2x.png 2x"/>
+ <!-- end --> |
 | Lead | Jonathan Locke (Luo, Shibo) <br/> [jonathanl@telenav.com](mailto:jonathanl@telenav.com) |
 | Administrator | Jonathan Locke (Luo, Shibo) <br/> [jonathanl@telenav.com](mailto:jonathanl@telenav.com) |
 | Email | [jonathanl@telenav.com](mailto:jonathanl@telenav.com) |

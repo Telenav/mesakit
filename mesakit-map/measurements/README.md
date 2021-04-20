@@ -36,7 +36,7 @@ This module contains units of measure for mapping applications.
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
-        <artifactId>lexakai</artifactId>
+        <artifactId>mesakit-map-measurements</artifactId>
         <version>0.9.0-SNAPSHOT</version>
     </dependency>
 
@@ -78,44 +78,44 @@ Javadoc coverage for this project is 72.5%.
 
 | Class | Documentation Sections |
 |---|---|
-| [*Acceleration*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/motion/Acceleration.html) |  |  
-| [*Angle*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Angle.html) | DM5, DM6 and DM7 |  
+| [*Acceleration*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/motion/Acceleration.html) |  |  
+| [*Angle*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Angle.html) | DM5, DM6 and DM7 |  
 | | Creating Angles |  
 | | Conversions |  
 | | Checks |  
 | | Operations |  
-| [*Angle.Chirality*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Angle.Chirality.html) |  |  
-| [*Angle.Converter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Angle.Converter.html) |  |  
-| [*Angle.DegreesConverter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Angle.DegreesConverter.html) |  |  
-| [*Area*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Area.html) |  |  
-| [*AverageDistance*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/AverageDistance.html) |  |  
-| [*AverageSpeed*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/motion/speeds/AverageSpeed.html) |  |  
-| [*Direction*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Direction.html) |  |  
-| [*Direction.Converter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Direction.Converter.html) |  |  
-| [*Distance*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Distance.html) |  |  
-| [*Distance.Converter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Distance.Converter.html) |  |  
-| [*Distance.KilometersConverter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Distance.KilometersConverter.html) |  |  
-| [*Distance.MetersConverter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Distance.MetersConverter.html) |  |  
-| [*Distance.MilesConverter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Distance.MilesConverter.html) |  |  
-| [*Distance.MillimetersConverter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Distance.MillimetersConverter.html) |  |  
-| [*Distance.Unit*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Distance.Unit.html) |  |  
-| [*Headed*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Headed.html) |  |  
-| [*Heading*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Heading.html) |  |  
-| [*Heading.Converter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Heading.Converter.html) |  |  
-| [*Heading.DegreesConverter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Heading.DegreesConverter.html) |  |  
-| [*MapMeasurementsKryoTypes*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/project/MapMeasurementsKryoTypes.html) |  |  
-| [*MapMeasurementsProject*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/project/MapMeasurementsProject.html) |  |  
-| [*MapMeasurementsRandomValueFactory*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/project/MapMeasurementsRandomValueFactory.html) |  |  
-| [*MapMeasurementsUnitTest*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/project/MapMeasurementsUnitTest.html) |  |  
-| [*Slope*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Slope.html) |  |  
-| [*Span*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Span.html) |  |  
-| [*Speed*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/motion/Speed.html) |  |  
-| [*Speed.Converter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/motion/Speed.Converter.html) |  |  
-| [*Speed.KilometersPerHourConverter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/motion/Speed.KilometersPerHourConverter.html) |  |  
-| [*Speed.MicroDegreesPerSecondConverter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/motion/Speed.MicroDegreesPerSecondConverter.html) |  |  
-| [*Speed.MilesPerHourConverter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/motion/Speed.MilesPerHourConverter.html) |  |  
-| [*WeightedAverageSpeed*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/motion/speeds/WeightedAverageSpeed.html) |  |  
-| [*WeightedAverageSpeed.WeightedSpeed*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/motion/speeds/WeightedAverageSpeed.WeightedSpeed.html) |  |  
+| [*Angle.Chirality*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Angle.Chirality.html) |  |  
+| [*Angle.Converter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Angle.Converter.html) |  |  
+| [*Angle.DegreesConverter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Angle.DegreesConverter.html) |  |  
+| [*Area*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Area.html) |  |  
+| [*AverageDistance*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/AverageDistance.html) |  |  
+| [*AverageSpeed*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/motion/speeds/AverageSpeed.html) |  |  
+| [*Direction*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Direction.html) |  |  
+| [*Direction.Converter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Direction.Converter.html) |  |  
+| [*Distance*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Distance.html) |  |  
+| [*Distance.Converter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Distance.Converter.html) |  |  
+| [*Distance.KilometersConverter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Distance.KilometersConverter.html) |  |  
+| [*Distance.MetersConverter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Distance.MetersConverter.html) |  |  
+| [*Distance.MilesConverter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Distance.MilesConverter.html) |  |  
+| [*Distance.MillimetersConverter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Distance.MillimetersConverter.html) |  |  
+| [*Distance.Unit*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Distance.Unit.html) |  |  
+| [*Headed*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Headed.html) |  |  
+| [*Heading*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Heading.html) |  |  
+| [*Heading.Converter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Heading.Converter.html) |  |  
+| [*Heading.DegreesConverter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Heading.DegreesConverter.html) |  |  
+| [*MapMeasurementsKryoTypes*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/project/MapMeasurementsKryoTypes.html) |  |  
+| [*MapMeasurementsProject*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/project/MapMeasurementsProject.html) |  |  
+| [*MapMeasurementsRandomValueFactory*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/project/MapMeasurementsRandomValueFactory.html) |  |  
+| [*MapMeasurementsUnitTest*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/project/MapMeasurementsUnitTest.html) |  |  
+| [*Slope*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Slope.html) |  |  
+| [*Span*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/geographic/Span.html) |  |  
+| [*Speed*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/motion/Speed.html) |  |  
+| [*Speed.Converter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/motion/Speed.Converter.html) |  |  
+| [*Speed.KilometersPerHourConverter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/motion/Speed.KilometersPerHourConverter.html) |  |  
+| [*Speed.MicroDegreesPerSecondConverter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/motion/Speed.MicroDegreesPerSecondConverter.html) |  |  
+| [*Speed.MilesPerHourConverter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/motion/Speed.MilesPerHourConverter.html) |  |  
+| [*WeightedAverageSpeed*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/motion/speeds/WeightedAverageSpeed.html) |  |  
+| [*WeightedAverageSpeed.WeightedSpeed*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.measurements/com/telenav/mesakit/map/measurements/motion/speeds/WeightedAverageSpeed.WeightedSpeed.html) |  |  
 
 [//]: # (start-user-text)
 

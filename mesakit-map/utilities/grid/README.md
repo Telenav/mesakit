@@ -36,7 +36,7 @@ This project provides the rectangular grids used in core-graph-world.
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
-        <artifactId>lexakai</artifactId>
+        <artifactId>mesakit-map-utilities-grid</artifactId>
         <version>0.9.0-SNAPSHOT</version>
     </dependency>
 
@@ -77,11 +77,11 @@ The following significant classes are undocumented:
 
 | Class | Documentation Sections |
 |---|---|
-| [*Grid*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/grid/Grid.html) |  |  
-| [*GridCell*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/grid/GridCell.html) |  |  
-| [*GridCellIdentifier*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/grid/GridCellIdentifier.html) |  |  
-| [*MapUtilitiesGridKryoTypes*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/grid/project/MapUtilitiesGridKryoTypes.html) |  |  
-| [*MapUtilitiesGridProject*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/utilities/grid/project/MapUtilitiesGridProject.html) |  |  
+| [*Grid*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.utilities.grid/com/telenav/mesakit/map/utilities/grid/Grid.html) |  |  
+| [*GridCell*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.utilities.grid/com/telenav/mesakit/map/utilities/grid/GridCell.html) |  |  
+| [*GridCellIdentifier*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.utilities.grid/com/telenav/mesakit/map/utilities/grid/GridCellIdentifier.html) |  |  
+| [*MapUtilitiesGridKryoTypes*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.utilities.grid/com/telenav/mesakit/map/utilities/grid/project/MapUtilitiesGridKryoTypes.html) |  |  
+| [*MapUtilitiesGridProject*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.utilities.grid/com/telenav/mesakit/map/utilities/grid/project/MapUtilitiesGridProject.html) |  |  
 
 [//]: # (start-user-text)
 

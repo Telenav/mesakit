@@ -174,7 +174,7 @@
                                     <equals arg1 = "${source.exists}" arg2 = "true"/>
                                     <then>
                                         <echo file = "src/main/java/project.properties">
-                                            project-name=${project.name}${line.separator}project-version=${project.version}${line.separator}project-group-id=com.telenav.mesakit
+                                            project-name        = ${project.name}${line.separator}project-version     = ${project.version}${line.separator}project-group-id    = ${project.groupId}${line.separator}project-artifact-id = ${project.artifactId}
                                         </echo>
                                         <java jar = "${env.KIVAKIT_DATA_HOME}/docs/applications/kivakit-build-metadata-${env.KIVAKIT_BUILD_METADATA_VERSION}.jar"
                                               failonerror = "true"
@@ -184,12 +184,12 @@
                                     </then>
                                 </if>
                                 <if>
-                                    <equals arg1 = "${project.name}" arg2 = "MesaKit"/>
+                                    <equals arg1 = "${project.name}" arg2 = "KivaKit"/>
                                     <then>
                                         <echo file = "${maven.multiModuleProjectDirectory}/project.properties">
-                                            project-name=${project.name}${line.separator}project-version=${project.version}${line.separator}project-group-id=com.telenav.mesakit
+                                            project-name        = ${project.name}${line.separator}project-version     = ${project.version}${line.separator}project-group-id    = ${project.groupId}${line.separator}project-artifact-id = ${project.artifactId}
                                         </echo>
-                                        <java jar = "${env.KIVAKIT_DATA_HOME}/docs/applications/kivakit-build-metadata-${env.KIVAKIT_BUILD_METADATA_VERSION}.Jar"
+                                        <java jar = "${env.KIVAKIT_DATA_HOME}/docs/applications/kivakit-build-metadata-${env.KIVAKIT_BUILD_METADATA_VERSION}.jar"
                                               failonerror = "true"
                                               fork = "true">
                                             <arg value = "${maven.multiModuleProjectDirectory}"/>

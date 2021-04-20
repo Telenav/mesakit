@@ -36,7 +36,7 @@ This module provides access to map data via the Geofabrik OpenStreetMap "overpas
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
-        <artifactId>lexakai</artifactId>
+        <artifactId>mesakit-map-overpass</artifactId>
         <version>0.9.0-SNAPSHOT</version>
     </dependency>
 
@@ -78,10 +78,10 @@ The following significant classes are undocumented:
 
 | Class | Documentation Sections |
 |---|---|
-| [*MapOverpassProject*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/overpass/project/MapOverpassProject.html) |  |  
-| [*OsmToPbfConverter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/overpass/pbf/OsmToPbfConverter.html) |  |  
-| [*OverpassDataDownloader*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/overpass/OverpassDataDownloader.html) |  |  
-| [*OverpassOsmResource*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/overpass/OverpassOsmResource.html) |  |  
+| [*MapOverpassProject*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.overpass/com/telenav/mesakit/map/overpass/project/MapOverpassProject.html) |  |  
+| [*OsmToPbfConverter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.overpass/com/telenav/mesakit/map/overpass/pbf/OsmToPbfConverter.html) |  |  
+| [*OverpassDataDownloader*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.overpass/com/telenav/mesakit/map/overpass/OverpassDataDownloader.html) |  |  
+| [*OverpassOsmResource*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.overpass/com/telenav/mesakit/map/overpass/OverpassOsmResource.html) |  |  
 
 [//]: # (start-user-text)
 
