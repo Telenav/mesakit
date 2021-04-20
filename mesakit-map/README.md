@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map &nbsp;&nbsp; <img src="https://www.kivakit.org/images/map-32.png" srcset="https://www.kivakit.org/images/map-32-2x.png 2x"/>
+# mesakit-map &nbsp;&nbsp; <img src="https://www.mesakit.org/images/map-32.png" srcset="https://www.mesakit.org/images/map-32-2x.png 2x"/>
 
 This project provides modules for basic GIS functions and map data access.
 

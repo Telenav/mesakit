@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-road model &nbsp;&nbsp; <img src="https://www.kivakit.org/images/gears-32.png" srcset="https://www.kivakit.org/images/gears-32-2x.png 2x"/>
+# mesakit-map-road model &nbsp;&nbsp; <img src="https://www.mesakit.org/images/gears-32.png" srcset="https://www.mesakit.org/images/gears-32-2x.png 2x"/>
 
 This project supplies a model of the roads in a road network.
 

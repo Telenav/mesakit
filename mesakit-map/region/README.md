@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map region &nbsp;&nbsp; <img src="https://www.kivakit.org/images/map-32.png" srcset="https://www.kivakit.org/images/map-32-2x.png 2x"/>
+# mesakit-map region &nbsp;&nbsp; <img src="https://www.mesakit.org/images/map-32.png" srcset="https://www.mesakit.org/images/map-32-2x.png 2x"/>
 
 This module contains packages for handling administrative regions.
 
@@ -70,14 +70,13 @@ This module contains packages for handling administrative regions.
 [*com.telenav.mesakit.map.region.countries.states.cities*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.countries.states.cities.svg)  
 [*com.telenav.mesakit.map.region.locale*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.locale.svg)  
 [*com.telenav.mesakit.map.region.project*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.project.svg)  
-[*com.telenav.mesakit.map.region.project.mesakit.diagrams*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.project.mesakit.diagrams.svg)  
 [*com.telenav.mesakit.map.region.regions*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.regions.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
 ### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/books-32.png" srcset="https://www.kivakit.org/images/books-32-2x.png 2x"/>
 
-Javadoc coverage for this project is 40.0%.  
+Javadoc coverage for this project is 40.1%.  
   
 &nbsp; &nbsp; <img src="https://www.mesakit.org/images/meter-40-96.png" srcset="https://www.mesakit.org/images/meter-40-96-2x.png 2x"/>
 
@@ -130,9 +129,6 @@ The following significant classes are undocumented:
 | [*Country.DrivingSide*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/region/regions/Country.DrivingSide.html) |  |  
 | [*Country.ListConverter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/region/regions/Country.ListConverter.html) |  |  
 | [*County*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/region/regions/County.html) |  |  
-| [*DiagramBorder*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/region/project/mesakit/diagrams/DiagramBorder.html) |  |  
-| [*DiagramRegion*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/region/project/mesakit/diagrams/DiagramRegion.html) |  |  
-| [*DiagramRegions*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/region/project/mesakit/diagrams/DiagramRegions.html) |  |  
 | [*District*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/region/regions/District.html) |  |  
 | [*Europe*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/region/continents/Europe.html) |  |  
 | [*HascCode*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/region/locale/HascCode.html) |  |  

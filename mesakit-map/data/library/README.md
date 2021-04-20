@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-data library &nbsp;&nbsp; <img src="https://www.kivakit.org/images/books-32.png" srcset="https://www.kivakit.org/images/books-32-2x.png 2x"/>
+# mesakit-map-data library &nbsp;&nbsp; <img src="https://www.mesakit.org/images/books-32.png" srcset="https://www.mesakit.org/images/books-32-2x.png 2x"/>
 
 This module contains code generally relevant to map data.
 
@@ -62,14 +62,13 @@ This module contains code generally relevant to map data.
 
 [*com.telenav.mesakit.map.data.formats.library*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/library/documentation/diagrams/com.telenav.mesakit.map.data.formats.library.svg)  
 [*com.telenav.mesakit.map.data.formats.library.map.identifiers*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/library/documentation/diagrams/com.telenav.mesakit.map.data.formats.library.map.identifiers.svg)  
-[*com.telenav.mesakit.map.data.formats.library.project*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/library/documentation/diagrams/com.telenav.mesakit.map.data.formats.library.project.svg)  
-[*com.telenav.mesakit.map.data.formats.library.project.mesakit.diagrams*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/library/documentation/diagrams/com.telenav.mesakit.map.data.formats.library.project.mesakit.diagrams.svg)
+[*com.telenav.mesakit.map.data.formats.library.project*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/data/library/documentation/diagrams/com.telenav.mesakit.map.data.formats.library.project.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
 ### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/books-32.png" srcset="https://www.kivakit.org/images/books-32-2x.png 2x"/>
 
-Javadoc coverage for this project is 52.2%.  
+Javadoc coverage for this project is 53.5%.  
   
 &nbsp; &nbsp; <img src="https://www.mesakit.org/images/meter-50-96.png" srcset="https://www.mesakit.org/images/meter-50-96-2x.png 2x"/>
 
@@ -80,8 +79,6 @@ Javadoc coverage for this project is 52.2%.
 |---|---|
 | [*DataFormat*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/library/DataFormat.html) |  |  
 | [*DataFormatsLibraryProject*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/library/project/DataFormatsLibraryProject.html) |  |  
-| [*DiagramDataFormat*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/library/project/mesakit/diagrams/DiagramDataFormat.html) |  |  
-| [*DiagramDataMapIdentifier*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/library/project/mesakit/diagrams/DiagramDataMapIdentifier.html) |  |  
 | [*MapIdentifier*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapIdentifier.html) |  |  
 | [*MapIdentifier.Type*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapIdentifier.Type.html) |  |  
 | [*MapNodeIdentifier*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapNodeIdentifier.html) |  |  

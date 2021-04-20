@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-overpass &nbsp;&nbsp; <img src="https://www.kivakit.org/images/gears-32.png" srcset="https://www.kivakit.org/images/gears-32-2x.png 2x"/>
+# mesakit-map-overpass &nbsp;&nbsp; <img src="https://www.mesakit.org/images/gears-32.png" srcset="https://www.mesakit.org/images/gears-32-2x.png 2x"/>
 
 This module provides access to map data via the Geofabrik OpenStreetMap "overpass" service.
 
@@ -61,8 +61,7 @@ This module provides access to map data via the Geofabrik OpenStreetMap "overpas
 
 [*com.telenav.mesakit.map.overpass*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/com.telenav.mesakit.map.overpass.svg)  
 [*com.telenav.mesakit.map.overpass.pbf*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/com.telenav.mesakit.map.overpass.pbf.svg)  
-[*com.telenav.mesakit.map.overpass.project*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/com.telenav.mesakit.map.overpass.project.svg)  
-[*com.telenav.mesakit.map.overpass.project.mesakit.diagrams*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/com.telenav.mesakit.map.overpass.project.mesakit.diagrams.svg)
+[*com.telenav.mesakit.map.overpass.project*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/com.telenav.mesakit.map.overpass.project.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
@@ -79,7 +78,6 @@ The following significant classes are undocumented:
 
 | Class | Documentation Sections |
 |---|---|
-| [*DiagramOverpass*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/overpass/project/mesakit/diagrams/DiagramOverpass.html) |  |  
 | [*MapOverpassProject*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/overpass/project/MapOverpassProject.html) |  |  
 | [*OsmToPbfConverter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/overpass/pbf/OsmToPbfConverter.html) |  |  
 | [*OverpassDataDownloader*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/overpass/OverpassDataDownloader.html) |  |  

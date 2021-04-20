@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-data formats &nbsp;&nbsp; <img src="https://www.kivakit.org/images/bits-32.png" srcset="https://www.kivakit.org/images/bits-32-2x.png 2x"/>
+# mesakit-map-data formats &nbsp;&nbsp; <img src="https://www.mesakit.org/images/bits-32.png" srcset="https://www.mesakit.org/images/bits-32-2x.png 2x"/>
 
 This project contains modules for working with map data formats.
 

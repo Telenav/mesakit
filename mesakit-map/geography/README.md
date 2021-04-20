@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-geography &nbsp;&nbsp; <img src="https://www.kivakit.org/images/map-32.png" srcset="https://www.kivakit.org/images/map-32-2x.png 2x"/>
+# mesakit-map-geography &nbsp;&nbsp; <img src="https://www.mesakit.org/images/map-32.png" srcset="https://www.mesakit.org/images/map-32-2x.png 2x"/>
 
 This module contains packages for geographic mapping.
 
@@ -70,7 +70,6 @@ This module contains packages for geographic mapping.
 [*com.telenav.mesakit.map.geography.indexing.rtree*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/geography/documentation/diagrams/com.telenav.mesakit.map.geography.indexing.rtree.svg)  
 [*com.telenav.mesakit.map.geography.indexing.segment*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/geography/documentation/diagrams/com.telenav.mesakit.map.geography.indexing.segment.svg)  
 [*com.telenav.mesakit.map.geography.project*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/geography/documentation/diagrams/com.telenav.mesakit.map.geography.project.svg)  
-[*com.telenav.mesakit.map.geography.project.mesakit.diagrams*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/geography/documentation/diagrams/com.telenav.mesakit.map.geography.project.mesakit.diagrams.svg)  
 [*com.telenav.mesakit.map.geography.shape*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/geography/documentation/diagrams/com.telenav.mesakit.map.geography.shape.svg)  
 [*com.telenav.mesakit.map.geography.shape.polyline*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/geography/documentation/diagrams/com.telenav.mesakit.map.geography.shape.polyline.svg)  
 [*com.telenav.mesakit.map.geography.shape.polyline.compression.differential*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/geography/documentation/diagrams/com.telenav.mesakit.map.geography.shape.polyline.compression.differential.svg)  
@@ -82,7 +81,7 @@ This module contains packages for geographic mapping.
 
 ### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/books-32.png" srcset="https://www.kivakit.org/images/books-32-2x.png 2x"/>
 
-Javadoc coverage for this project is 47.4%.  
+Javadoc coverage for this project is 48.0%.  
   
 &nbsp; &nbsp; <img src="https://www.mesakit.org/images/meter-50-96.png" srcset="https://www.mesakit.org/images/meter-50-96-2x.png 2x"/>
 
@@ -116,12 +115,6 @@ The following significant classes are undocumented:
 | [*CompressedPolyline.Encoding*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/geography/shape/polyline/compression/differential/CompressedPolyline.Encoding.html) |  |  
 | [*CompressedPolyline.Proximity*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/geography/shape/polyline/compression/differential/CompressedPolyline.Proximity.html) |  |  
 | [*CompressedSegmentList*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/geography/indexing/segment/CompressedSegmentList.html) |  |  
-| [*DiagramLocation*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/geography/project/mesakit/diagrams/DiagramLocation.html) |  |  
-| [*DiagramPolyline*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/geography/project/mesakit/diagrams/DiagramPolyline.html) |  |  
-| [*DiagramRectangle*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/geography/project/mesakit/diagrams/DiagramRectangle.html) |  |  
-| [*DiagramSegment*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/geography/project/mesakit/diagrams/DiagramSegment.html) |  |  
-| [*DiagramShape*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/geography/project/mesakit/diagrams/DiagramShape.html) |  |  
-| [*DiagramSpatialIndex*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/geography/project/mesakit/diagrams/DiagramSpatialIndex.html) |  |  
 | [*Dimensioned*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/geography/shape/rectangle/Dimensioned.html) |  |  
 | [*Height*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/geography/shape/rectangle/Height.html) |  |  
 | [*HuffmanPolyline*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/geography/shape/polyline/compression/huffman/HuffmanPolyline.html) |  |  

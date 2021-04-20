@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-ui &nbsp;&nbsp; <img src="https://www.kivakit.org/images/gears-32.png" srcset="https://www.kivakit.org/images/gears-32-2x.png 2x"/>
+# mesakit-map-ui &nbsp;&nbsp; <img src="https://www.mesakit.org/images/gears-32.png" srcset="https://www.mesakit.org/images/gears-32-2x.png 2x"/>
 
 This project provides support for map-related desktop UIs.
 

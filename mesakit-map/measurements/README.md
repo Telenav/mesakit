@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map measurements &nbsp;&nbsp; <img src="https://www.kivakit.org/images/ruler-32.png" srcset="https://www.kivakit.org/images/ruler-32-2x.png 2x"/>
+# mesakit-map measurements &nbsp;&nbsp; <img src="https://www.mesakit.org/images/ruler-32.png" srcset="https://www.mesakit.org/images/ruler-32-2x.png 2x"/>
 
 This module contains units of measure for mapping applications.
 
@@ -63,14 +63,13 @@ This module contains units of measure for mapping applications.
 [*com.telenav.mesakit.map.measurements.geographic*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/measurements/documentation/diagrams/com.telenav.mesakit.map.measurements.geographic.svg)  
 [*com.telenav.mesakit.map.measurements.motion*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/measurements/documentation/diagrams/com.telenav.mesakit.map.measurements.motion.svg)  
 [*com.telenav.mesakit.map.measurements.motion.speeds*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/measurements/documentation/diagrams/com.telenav.mesakit.map.measurements.motion.speeds.svg)  
-[*com.telenav.mesakit.map.measurements.project*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/measurements/documentation/diagrams/com.telenav.mesakit.map.measurements.project.svg)  
-[*com.telenav.mesakit.map.measurements.project.mesakit.diagrams*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/measurements/documentation/diagrams/com.telenav.mesakit.map.measurements.project.mesakit.diagrams.svg)
+[*com.telenav.mesakit.map.measurements.project*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/measurements/documentation/diagrams/com.telenav.mesakit.map.measurements.project.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
 ### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/books-32.png" srcset="https://www.kivakit.org/images/books-32-2x.png 2x"/>
 
-Javadoc coverage for this project is 70.7%.  
+Javadoc coverage for this project is 72.5%.  
   
 &nbsp; &nbsp; <img src="https://www.mesakit.org/images/meter-70-96.png" srcset="https://www.mesakit.org/images/meter-70-96-2x.png 2x"/>
 
@@ -91,8 +90,6 @@ Javadoc coverage for this project is 70.7%.
 | [*Area*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Area.html) |  |  
 | [*AverageDistance*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/AverageDistance.html) |  |  
 | [*AverageSpeed*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/motion/speeds/AverageSpeed.html) |  |  
-| [*DiagramMapMeasurementGeographic*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/project/mesakit/diagrams/DiagramMapMeasurementGeographic.html) |  |  
-| [*DiagramMapMeasurementMotion*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/project/mesakit/diagrams/DiagramMapMeasurementMotion.html) |  |  
 | [*Direction*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Direction.html) |  |  
 | [*Direction.Converter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Direction.Converter.html) |  |  
 | [*Distance*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/measurements/geographic/Distance.html) |  |  

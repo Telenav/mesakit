@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-road name-standardizer &nbsp;&nbsp; <img src="https://www.kivakit.org/images/gears-32.png" srcset="https://www.kivakit.org/images/gears-32-2x.png 2x"/>
+# mesakit-map-road name-standardizer &nbsp;&nbsp; <img src="https://www.mesakit.org/images/gears-32.png" srcset="https://www.mesakit.org/images/gears-32-2x.png 2x"/>
 
 This project transforms non-standard road names from a data source like OpenStreetMap into a standard form.
 

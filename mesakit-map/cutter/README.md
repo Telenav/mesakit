@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map cutter &nbsp;&nbsp; <img src="https://www.kivakit.org/images/gears-32.png" srcset="https://www.kivakit.org/images/gears-32-2x.png 2x"/>
+# mesakit-map cutter &nbsp;&nbsp; <img src="https://www.mesakit.org/images/gears-32.png" srcset="https://www.mesakit.org/images/gears-32-2x.png 2x"/>
 
 This module cuts maps into pieces based on region boundaries.
 
@@ -66,14 +66,13 @@ are left uncut.
 [*com.telenav.mesakit.map.cutter*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/cutter/documentation/diagrams/com.telenav.mesakit.map.cutter.svg)  
 [*com.telenav.mesakit.map.cutter.cuts*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/cutter/documentation/diagrams/com.telenav.mesakit.map.cutter.cuts.svg)  
 [*com.telenav.mesakit.map.cutter.cuts.maps*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/cutter/documentation/diagrams/com.telenav.mesakit.map.cutter.cuts.maps.svg)  
-[*com.telenav.mesakit.map.cutter.project*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/cutter/documentation/diagrams/com.telenav.mesakit.map.cutter.project.svg)  
-[*com.telenav.mesakit.map.cutter.project.mesakit.diagrams*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/cutter/documentation/diagrams/com.telenav.mesakit.map.cutter.project.mesakit.diagrams.svg)
+[*com.telenav.mesakit.map.cutter.project*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/cutter/documentation/diagrams/com.telenav.mesakit.map.cutter.project.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
 ### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/books-32.png" srcset="https://www.kivakit.org/images/books-32-2x.png 2x"/>
 
-Javadoc coverage for this project is 37.4%.  
+Javadoc coverage for this project is 38.1%.  
   
 &nbsp; &nbsp; <img src="https://www.mesakit.org/images/meter-40-96.png" srcset="https://www.mesakit.org/images/meter-40-96-2x.png 2x"/>
 
@@ -89,7 +88,6 @@ The following significant classes are undocumented:
 | Class | Documentation Sections |
 |---|---|
 | [*Cut*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/cutter/Cut.html) |  |  
-| [*DiagramMapCutter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/cutter/project/mesakit/diagrams/DiagramMapCutter.html) |  |  
 | [*FastCut*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/cutter/cuts/FastCut.html) |  |  
 | [*MapCutterProject*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/cutter/project/MapCutterProject.html) |  |  
 | [*PbfRegionCutter*](https://www.mesakit.org/javadoc/mesakit/lexakai/com/telenav/mesakit/map/cutter/PbfRegionCutter.html) |  |  
