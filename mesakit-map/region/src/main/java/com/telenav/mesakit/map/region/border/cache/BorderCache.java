@@ -565,7 +565,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                                 final var entry = archive.entry(zipEntryName);
                                 if (entry != null)
                                 {
-                                    entry.safeCopyTo(extracted, OVERWRITE, ProgressReporter.NULL);
+                                    entry.safeCopyTo(extracted, OVERWRITE);
                                 }
                             }
                             catch (final Exception e)
