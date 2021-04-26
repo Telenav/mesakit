@@ -8,11 +8,11 @@ import com.telenav.kivakit.core.kernel.project.Project;
  */
 public class MapUtilitiesGridProject extends Project
 {
-    private static final Lazy<MapUtilitiesGridProject> singleton = Lazy.of(MapUtilitiesGridProject::new);
+    private static final Lazy<MapUtilitiesGridProject> project = Lazy.of(MapUtilitiesGridProject::new);
 
     public static MapUtilitiesGridProject get()
     {
-        return singleton.get();
+        return project.get();
     }
 
     protected MapUtilitiesGridProject()

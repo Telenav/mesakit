@@ -8,11 +8,11 @@ import com.telenav.kivakit.core.kernel.project.Project;
  */
 public class MapCutterProject extends Project
 {
-    private static final Lazy<MapCutterProject> singleton = Lazy.of(MapCutterProject::new);
+    private static final Lazy<MapCutterProject> project = Lazy.of(MapCutterProject::new);
 
     public static MapCutterProject get()
     {
-        return singleton.get();
+        return project.get();
     }
 
     protected MapCutterProject()

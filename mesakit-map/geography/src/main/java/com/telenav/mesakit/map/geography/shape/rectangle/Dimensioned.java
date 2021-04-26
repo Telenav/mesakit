@@ -26,5 +26,7 @@ public interface Dimensioned
 {
     Height height();
 
+    Size size();
+
     Width width();
 }

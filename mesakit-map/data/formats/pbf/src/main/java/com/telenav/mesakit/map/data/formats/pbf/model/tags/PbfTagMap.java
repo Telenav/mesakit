@@ -281,7 +281,6 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
     }
 
     @Override
-    @SuppressWarnings("NullableProblems")
     public Iterator<Tag> iterator()
     {
         return new Iterator<>()

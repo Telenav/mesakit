@@ -111,7 +111,6 @@ public class GeoJsonFeature implements Iterable<GeoJsonGeometry>, Bounded, Inter
         return bounds != null && bounds.intersects(that);
     }
 
-    @SuppressWarnings("NullableProblems")
     @Override
     public Iterator<GeoJsonGeometry> iterator()
     {

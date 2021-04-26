@@ -18,6 +18,13 @@
 
 package com.telenav.mesakit.map.region.regions;
 
+import com.telenav.kivakit.core.commandline.SwitchParser;
+import com.telenav.kivakit.core.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.core.kernel.data.extraction.Extractor;
+import com.telenav.kivakit.core.kernel.logging.Logger;
+import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
 import com.telenav.mesakit.map.geography.Location;
@@ -38,13 +45,6 @@ import com.telenav.mesakit.map.region.continents.Oceania;
 import com.telenav.mesakit.map.region.continents.SouthAmerica;
 import com.telenav.mesakit.map.region.project.MapRegionLimits;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.core.kernel.data.extraction.Extractor;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -194,7 +194,6 @@ public abstract class Continent extends Region<Continent> implements Iterable<Co
         return false;
     }
 
-    @SuppressWarnings("NullableProblems")
     @Override
     public Iterator<Country> iterator()
     {

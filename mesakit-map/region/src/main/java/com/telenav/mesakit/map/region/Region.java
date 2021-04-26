@@ -18,29 +18,6 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
-import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.shape.Outline;
-import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
-import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
-import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
-import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
-import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.geography.shape.segment.Segment;
-import com.telenav.mesakit.map.measurements.geographic.Area;
-import com.telenav.mesakit.map.region.border.Bordered;
-import com.telenav.mesakit.map.region.border.cache.BorderCache;
-import com.telenav.mesakit.map.region.countries.UnitedStates;
-import com.telenav.mesakit.map.region.locale.MapLocale;
-import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegion;
-import com.telenav.mesakit.map.region.regions.City;
-import com.telenav.mesakit.map.region.regions.Continent;
-import com.telenav.mesakit.map.region.regions.Country;
-import com.telenav.mesakit.map.region.regions.County;
-import com.telenav.mesakit.map.region.regions.District;
-import com.telenav.mesakit.map.region.regions.MetropolitanArea;
-import com.telenav.mesakit.map.region.regions.State;
-import com.telenav.mesakit.map.region.regions.World;
 import com.telenav.kivakit.core.commandline.ArgumentParser;
 import com.telenav.kivakit.core.commandline.SwitchParser;
 import com.telenav.kivakit.core.filesystem.Folder;
@@ -70,6 +47,30 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
+import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndex;
+import com.telenav.mesakit.map.geography.shape.Outline;
+import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
+import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
+import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
+import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.geography.shape.segment.Segment;
+import com.telenav.mesakit.map.measurements.geographic.Area;
+import com.telenav.mesakit.map.region.border.Bordered;
+import com.telenav.mesakit.map.region.border.cache.BorderCache;
+import com.telenav.mesakit.map.region.countries.UnitedStates;
+import com.telenav.mesakit.map.region.locale.MapLocale;
+import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegion;
+import com.telenav.mesakit.map.region.regions.City;
+import com.telenav.mesakit.map.region.regions.Continent;
+import com.telenav.mesakit.map.region.regions.Country;
+import com.telenav.mesakit.map.region.regions.County;
+import com.telenav.mesakit.map.region.regions.District;
+import com.telenav.mesakit.map.region.regions.MetropolitanArea;
+import com.telenav.mesakit.map.region.regions.State;
+import com.telenav.mesakit.map.region.regions.World;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -239,7 +240,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
             Continent.create();
 
             // Load region identity data
-            final var executor = Executors.newFixedThreadPool(5);
+            final var executor = Executors.newFixedThreadPool(RTreeSpatialIndex.visualDebug() ? 1 : 5);
             executor.execute(() -> type(Continent.class).loadIdentities());
             executor.execute(() -> type(Country.class).loadIdentities());
             executor.execute(() -> type(State.class).loadIdentities());

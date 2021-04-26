@@ -8,11 +8,11 @@ import com.telenav.kivakit.core.kernel.project.Project;
  */
 public class MapUtilitiesGeoJsonProject extends Project
 {
-    private static final Lazy<MapUtilitiesGeoJsonProject> singleton = Lazy.of(MapUtilitiesGeoJsonProject::new);
+    private static final Lazy<MapUtilitiesGeoJsonProject> project = Lazy.of(MapUtilitiesGeoJsonProject::new);
 
     public static MapUtilitiesGeoJsonProject get()
     {
-        return singleton.get();
+        return project.get();
     }
 
     protected MapUtilitiesGeoJsonProject()

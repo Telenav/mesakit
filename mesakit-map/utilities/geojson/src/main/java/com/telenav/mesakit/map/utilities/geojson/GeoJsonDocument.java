@@ -20,17 +20,17 @@ package com.telenav.mesakit.map.utilities.geojson;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.telenav.kivakit.core.kernel.language.collections.map.string.StringToStringMap;
+import com.telenav.kivakit.core.kernel.language.values.count.Count;
+import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.core.resource.WritableResource;
+import com.telenav.kivakit.core.resource.path.Extension;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
-import com.telenav.kivakit.core.kernel.language.collections.map.string.StringToStringMap;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.core.resource.WritableResource;
-import com.telenav.kivakit.core.resource.path.Extension;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -62,7 +62,7 @@ public class GeoJsonDocument implements Iterable<GeoJsonFeature>
         final var b = a.moved(Heading.SOUTHEAST, Distance.meters(50));
         feature.add(new GeoJsonPolyline(Polyline.fromLocations(a, b)));
         document.add(feature);
-        System.out.println(document.toString());
+        System.out.println(document);
     }
 
     private final List<GeoJsonFeature> features = new ArrayList<>();
@@ -111,7 +111,6 @@ public class GeoJsonDocument implements Iterable<GeoJsonFeature>
         return features.get(index);
     }
 
-    @SuppressWarnings("NullableProblems")
     @Override
     public Iterator<GeoJsonFeature> iterator()
     {
@@ -136,7 +135,7 @@ public class GeoJsonDocument implements Iterable<GeoJsonFeature>
     public void save(final WritableResource resource)
     {
         final var out = resource.printWriter();
-        out.print(toString());
+        out.print(this);
         out.close();
     }
 

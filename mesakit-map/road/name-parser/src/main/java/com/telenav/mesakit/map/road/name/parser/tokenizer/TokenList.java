@@ -95,7 +95,6 @@ public class TokenList implements Iterable<Token>
         return size() == 0;
     }
 
-    @SuppressWarnings("NullableProblems")
     @Override
     public Iterator<Token> iterator()
     {

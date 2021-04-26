@@ -1,13 +1,13 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelCompression;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.kivakit.core.kernel.language.objects.Lazy;
 import com.telenav.kivakit.core.kernel.language.paths.PackagePath;
 import com.telenav.kivakit.core.resource.resources.other.PropertyMap;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.associations.UmlRelation;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelCompression;
 import org.jetbrains.annotations.NotNull;
 
 import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
@@ -18,11 +18,11 @@ import static com.telenav.kivakit.data.compression.codecs.huffman.character.Huff
 @UmlClassDiagram(diagram = DiagramPbfModelCompression.class)
 public class PbfDefaultCodecs
 {
-    private static final Lazy<PbfDefaultCodecs> singleton = Lazy.of(PbfDefaultCodecs::new);
+    private static final Lazy<PbfDefaultCodecs> defaultCodecs = Lazy.of(PbfDefaultCodecs::new);
 
     public static PbfDefaultCodecs get()
     {
-        return singleton.get();
+        return defaultCodecs.get();
     }
 
     private final Lazy<PropertyMap> keyCharacterCodecFrequencies = Lazy.of(() -> load("codecs/default-key-character.codec"));

@@ -18,20 +18,21 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramSpatialIndex;
-import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
-import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
-import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.kivakit.core.kernel.interfaces.comparison.Matcher;
 import com.telenav.kivakit.core.kernel.interfaces.naming.NamedObject;
 import com.telenav.kivakit.core.kernel.language.iteration.Iterables;
 import com.telenav.kivakit.core.kernel.language.iteration.Next;
 import com.telenav.kivakit.core.kernel.language.objects.Objects;
+import com.telenav.kivakit.core.kernel.language.primitives.Booleans;
 import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.kernel.language.values.count.Count;
 import com.telenav.kivakit.core.kernel.messaging.filters.operators.All;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
+import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramSpatialIndex;
+import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
+import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
 import java.io.PrintStream;
 import java.util.Iterator;
@@ -50,6 +51,14 @@ import java.util.List;
 @UmlExcludeSuperTypes(NamedObject.class)
 public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implements Bounded, NamedObject
 {
+    /**
+     * @return True if visual debugging is enabled
+     */
+    public static boolean visualDebug()
+    {
+        return Booleans.isTrue(System.getProperty("MESAKIT_RTREE_VISUAL_DEBUG"));
+    }
+
     public enum DumpDetailLevel
     {
         SUMMARY_ONLY,

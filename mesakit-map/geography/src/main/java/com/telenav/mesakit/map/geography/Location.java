@@ -18,18 +18,6 @@
 
 package com.telenav.mesakit.map.geography;
 
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
-import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
-import com.telenav.mesakit.map.geography.shape.rectangle.Dimensioned;
-import com.telenav.mesakit.map.geography.shape.rectangle.Height;
-import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
-import com.telenav.mesakit.map.geography.shape.rectangle.Offset;
-import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.geography.shape.rectangle.Width;
-import com.telenav.mesakit.map.geography.shape.segment.Segment;
-import com.telenav.mesakit.map.measurements.geographic.Angle;
-import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.mesakit.map.measurements.geographic.Heading;
 import com.telenav.kivakit.core.commandline.SwitchParser;
 import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.core.kernel.data.validation.Validatable;
@@ -52,13 +40,26 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
+import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
+import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
+import com.telenav.mesakit.map.geography.shape.rectangle.Dimensioned;
+import com.telenav.mesakit.map.geography.shape.rectangle.Height;
+import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
+import com.telenav.mesakit.map.geography.shape.rectangle.Offset;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.geography.shape.rectangle.Size;
+import com.telenav.mesakit.map.geography.shape.rectangle.Width;
+import com.telenav.mesakit.map.geography.shape.segment.Segment;
+import com.telenav.mesakit.map.measurements.geographic.Angle;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
+import com.telenav.mesakit.map.measurements.geographic.Heading;
 
 import java.awt.Point;
 import java.io.Serializable;
 
-import static com.telenav.mesakit.map.geography.Precision.DM7;
 import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
 import static com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat.USER_LABEL_IDENTIFIER;
+import static com.telenav.mesakit.map.geography.Precision.DM7;
 
 /**
  * Representation of a location on the globe in terms of latitude and longitude. Locations are stored internally in
@@ -787,6 +788,11 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         return Heading.radians(Trigonometry.arcTangent2(y, x));
     }
 
+    public Height height()
+    {
+        return bounds().height();
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -845,6 +851,11 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         return latitude;
     }
 
+    public double latitudeInDegrees()
+    {
+        return DM7.toDegrees(latitudeInDm7);
+    }
+
     public int latitudeInDm7()
     {
         return latitudeInDm7;
@@ -885,6 +896,11 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
             longitude = Longitude.dm7(longitudeInDm7);
         }
         return longitude;
+    }
+
+    public double longitudeInDegrees()
+    {
+        return DM7.toDegrees(longitudeInDm7);
     }
 
     public int longitudeInDm7()
@@ -997,6 +1013,11 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         return new Location(latitude().times(latitudeScale), longitude().times(longitudeScale));
     }
 
+    public Size size()
+    {
+        return bounds().size();
+    }
+
     public Segment to(final Location to)
     {
         return new Segment(this, to);
@@ -1021,6 +1042,11 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
                 problemIf(!longitude().isValid(), "longitude is invalid");
             }
         };
+    }
+
+    public Width width()
+    {
+        return bounds().width();
     }
 
     public Location withLatitude(final Latitude latitude)

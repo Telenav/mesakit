@@ -18,6 +18,42 @@
 
 package com.telenav.mesakit.map.region.border.cache;
 
+import com.telenav.kivakit.core.collections.map.MultiMap;
+import com.telenav.kivakit.core.filesystem.File;
+import com.telenav.kivakit.core.filesystem.FileCache;
+import com.telenav.kivakit.core.filesystem.Folder;
+import com.telenav.kivakit.core.kernel.KivaKit;
+import com.telenav.kivakit.core.kernel.data.extraction.Extractor;
+import com.telenav.kivakit.core.kernel.interfaces.lifecycle.Configured;
+import com.telenav.kivakit.core.kernel.language.collections.CompressibleCollection;
+import com.telenav.kivakit.core.kernel.language.collections.CompressibleCollection.Method;
+import com.telenav.kivakit.core.kernel.language.io.IO;
+import com.telenav.kivakit.core.kernel.language.objects.Objects;
+import com.telenav.kivakit.core.kernel.language.progress.ProgressReporter;
+import com.telenav.kivakit.core.kernel.language.progress.reporters.Progress;
+import com.telenav.kivakit.core.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.core.kernel.language.time.Time;
+import com.telenav.kivakit.core.kernel.language.values.count.Bytes;
+import com.telenav.kivakit.core.kernel.language.values.count.Count;
+import com.telenav.kivakit.core.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.core.kernel.language.values.count.MutableCount;
+import com.telenav.kivakit.core.kernel.language.values.version.VersionedObject;
+import com.telenav.kivakit.core.kernel.messaging.Message;
+import com.telenav.kivakit.core.kernel.messaging.messages.status.Problem;
+import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.network.core.Host;
+import com.telenav.kivakit.core.network.core.NetworkPath;
+import com.telenav.kivakit.core.network.http.secure.SecureHttpNetworkLocation;
+import com.telenav.kivakit.core.resource.Resource;
+import com.telenav.kivakit.core.resource.compression.archive.ZipArchive;
+import com.telenav.kivakit.core.resource.path.FileName;
+import com.telenav.kivakit.core.serialization.core.SerializationSession;
+import com.telenav.kivakit.core.serialization.core.SerializationSessionFactory;
+import com.telenav.kivakit.core.serialization.kryo.KryoSerializationSession;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.associations.UmlAggregation;
+import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
@@ -28,6 +64,7 @@ import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSettings;
+import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndex;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.geography.shape.polyline.PolygonBuilder;
 import com.telenav.mesakit.map.measurements.geographic.Area;
@@ -47,45 +84,7 @@ import com.telenav.mesakit.map.region.regions.County;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
 import com.telenav.mesakit.map.region.regions.TimeZone;
-import com.telenav.mesakit.map.ui.swing.debug.debuggers.indexing.rtree.VisualRTreeSpatialIndexDebugger;
-import com.telenav.mesakit.map.ui.swing.debug.viewer.swing.SwingViewer;
-import com.telenav.kivakit.core.collections.map.MultiMap;
-import com.telenav.kivakit.core.filesystem.File;
-import com.telenav.kivakit.core.filesystem.FileCache;
-import com.telenav.kivakit.core.filesystem.Folder;
-import com.telenav.kivakit.core.kernel.KivaKit;
-import com.telenav.kivakit.core.kernel.data.extraction.Extractor;
-import com.telenav.kivakit.core.kernel.interfaces.lifecycle.Configured;
-import com.telenav.kivakit.core.kernel.language.collections.CompressibleCollection;
-import com.telenav.kivakit.core.kernel.language.collections.CompressibleCollection.Method;
-import com.telenav.kivakit.core.kernel.language.io.IO;
-import com.telenav.kivakit.core.kernel.language.objects.Objects;
-import com.telenav.kivakit.core.kernel.language.primitives.Booleans;
-import com.telenav.kivakit.core.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.core.kernel.language.progress.reporters.Progress;
-import com.telenav.kivakit.core.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.core.kernel.language.time.Time;
-import com.telenav.kivakit.core.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.core.kernel.language.values.count.MutableCount;
-import com.telenav.kivakit.core.kernel.language.values.version.VersionedObject;
-import com.telenav.kivakit.core.kernel.messaging.Message;
-import com.telenav.kivakit.core.kernel.messaging.messages.status.Problem;
-import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.kivakit.core.network.core.Host;
-import com.telenav.kivakit.core.network.core.NetworkPath;
-import com.telenav.kivakit.core.network.http.HttpNetworkLocation;
-import com.telenav.kivakit.core.resource.Resource;
-import com.telenav.kivakit.core.resource.compression.archive.ZipArchive;
-import com.telenav.kivakit.core.resource.path.FileName;
-import com.telenav.kivakit.core.serialization.core.SerializationSession;
-import com.telenav.kivakit.core.serialization.core.SerializationSessionFactory;
-import com.telenav.kivakit.core.serialization.kryo.KryoSerializationSession;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.associations.UmlAggregation;
-import com.telenav.lexakai.annotations.associations.UmlRelation;
+import com.telenav.mesakit.map.ui.desktop.debug.debuggers.indexing.rtree.RTreeSpatialIndexVisualDebugger;
 
 import java.io.IOException;
 import java.nio.file.attribute.PosixFilePermission;
@@ -97,13 +96,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
 import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensureEqual;
 import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
 import static com.telenav.kivakit.core.resource.CopyMode.OVERWRITE;
 import static com.telenav.kivakit.core.resource.compression.archive.ZipArchive.Mode.READ;
 import static com.telenav.kivakit.core.serialization.core.SerializationSession.Type.RESOURCE;
+import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
 
 /**
  * There should be no need for end-users of MesaKit to use {@link BorderCache} objects since they are an implementation
@@ -125,13 +124,8 @@ import static com.telenav.kivakit.core.serialization.core.SerializationSession.T
 @UmlRelation(label = "loads borders for", referent = Region.class)
 public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
 {
-    /**
-     * Command line switch to enable visual debugging of RTreeSpatialIndex.add() when loading borders. This is mainly
-     * useful as a demonstration of the {@link SwingViewer} and for understanding how RTreeSpatialIndex builds an RTree,
-     * as the bulk loading code that is used when DEBUG=false is much more efficient and results in a more performant
-     * and balanced tree.
-     */
-    private static final boolean DETAILED = false;
+    /** True to show extra tracing details */
+    private static final boolean DETAILED_TRACE = false;
 
     /**
      * Set this to true to use the fast (and large) polygon spatial index implementation. Set to false to use a method
@@ -150,9 +144,11 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
     /**
      * Border data path on S3
      */
-    private static final NetworkPath NETWORK_PATH = Host.parse("github.com").https().path(
-            Message.format("Telenav/mesakit-data/raw/master/administrative-borders/$/administrative-borders-$.jar",
-                    MapRegionProject.get().borderDataVersion(), MapRegionProject.get().borderDataVersion()));
+    private static final NetworkPath NETWORK_PATH = Host.parse("www.mesakit.org")
+            .https()
+            .path(Message.format("/data/$/administrative-borders-$.jar",
+                    MapRegionProject.get().borderDataVersion(),
+                    MapRegionProject.get().borderDataVersion()));
 
     public static class Settings<R extends Region<R>>
     {
@@ -382,6 +378,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
     public T object(final Location location)
     {
         ensure(location != null);
+
         if (loadBorders())
         {
             for (final var border : index().intersecting(location.bounds().expanded(Distance.ONE_METER)))
@@ -483,7 +480,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
             cacheFolder().mkdirs();
 
             // then get the jar location on S3
-            final var source = new HttpNetworkLocation(NETWORK_PATH);
+            final var source = new SecureHttpNetworkLocation(NETWORK_PATH);
 
             // and the zip file target we're going to download to and unzip.
             final var jar = localJar(NETWORK_PATH.fileName());
@@ -724,9 +721,10 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
 
         index = new BorderSpatialIndex<>(name() + ".index", settings);
 
-        if (isDebugOn() && Booleans.isTrue(System.getProperty("MESAKIT_VISUAL_DEBUG")))
+        if (RTreeSpatialIndex.visualDebug())
         {
-            index().debugger(new VisualRTreeSpatialIndexDebugger<>());
+            final var title = "RTree Debugger (" + name() + ")";
+            index().debugger(new RTreeSpatialIndexVisualDebugger<>(title));
         }
 
         try
@@ -851,7 +849,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                                 }
 
                                 // Show information about the loaded border
-                                if (DETAILED)
+                                if (DETAILED_TRACE)
                                 {
                                     trace("Loaded $ ($ segments) in $ $", region, border.segmentCount(), elapsed,
                                             (size != null ? "(" + size + ")" : ""));
@@ -881,7 +879,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
             }
 
             // Show what was loaded
-            if (DETAILED)
+            if (DETAILED_TRACE)
             {
                 trace("Loaded $ polygons with $ locations $ in $", total.asCount(), totalLocations.asCount(),
                         SHOW_APPROXIMATE_SIZES ? "(" + Bytes.bytes(totalSize.asLong()) + ") " : "", start.elapsedSince());

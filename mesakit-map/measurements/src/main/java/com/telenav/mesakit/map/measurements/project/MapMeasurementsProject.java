@@ -10,11 +10,11 @@ import com.telenav.kivakit.core.kernel.project.Project;
  */
 public class MapMeasurementsProject extends Project
 {
-    private static final Lazy<MapMeasurementsProject> singleton = Lazy.of(MapMeasurementsProject::new);
+    private static final Lazy<MapMeasurementsProject> project = Lazy.of(MapMeasurementsProject::new);
 
     public static MapMeasurementsProject get()
     {
-        return singleton.get();
+        return project.get();
     }
 
     protected MapMeasurementsProject()

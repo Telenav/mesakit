@@ -8,11 +8,11 @@ import com.telenav.kivakit.core.kernel.project.Project;
  */
 public class MapRoadNameStandardizerProject extends Project
 {
-    private static final Lazy<MapRoadNameStandardizerProject> singleton = Lazy.of(MapRoadNameStandardizerProject::new);
+    private static final Lazy<MapRoadNameStandardizerProject> project = Lazy.of(MapRoadNameStandardizerProject::new);
 
     public static MapRoadNameStandardizerProject get()
     {
-        return singleton.get();
+        return project.get();
     }
 
     protected MapRoadNameStandardizerProject()

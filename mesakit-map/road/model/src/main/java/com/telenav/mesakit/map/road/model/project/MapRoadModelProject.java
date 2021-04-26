@@ -8,11 +8,11 @@ import com.telenav.kivakit.core.kernel.project.Project;
  */
 public class MapRoadModelProject extends Project
 {
-    private static final Lazy<MapRoadModelProject> singleton = Lazy.of(MapRoadModelProject::new);
+    private static final Lazy<MapRoadModelProject> project = Lazy.of(MapRoadModelProject::new);
 
     public static MapRoadModelProject get()
     {
-        return singleton.get();
+        return project.get();
     }
 
     protected MapRoadModelProject()

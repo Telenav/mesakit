@@ -22,9 +22,6 @@ import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
 import com.telenav.mesakit.map.measurements.geographic.Direction;
 import org.junit.Test;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensureEqual;
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensureNull;
-
 @SuppressWarnings("ConstantConditions")
 public class RoadNameTest extends MapGeographyUnitTest
 {

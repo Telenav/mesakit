@@ -8,11 +8,11 @@ import com.telenav.kivakit.core.kernel.project.Project;
  */
 public class MapOverpassProject extends Project
 {
-    private static final Lazy<MapOverpassProject> singleton = Lazy.of(MapOverpassProject::new);
+    private static final Lazy<MapOverpassProject> project = Lazy.of(MapOverpassProject::new);
 
     public static MapOverpassProject get()
     {
-        return singleton.get();
+        return project.get();
     }
 
     protected MapOverpassProject()

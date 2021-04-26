@@ -18,12 +18,6 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
-import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
-import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.region.locale.MapLocale;
-import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegion;
-import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.kivakit.core.collections.set.ConcurrentHashSet;
 import com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode;
 import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
@@ -36,6 +30,12 @@ import com.telenav.kivakit.core.kernel.messaging.Debug;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
+import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
+import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.region.locale.MapLocale;
+import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegion;
+import com.telenav.mesakit.map.region.regions.Country;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -251,7 +251,7 @@ public class RegionInstance<T extends Region<T>> implements AsString
     {
         final var builder = new StringBuilder();
         builder.append(AsciiArt.repeat(level, ' '));
-        builder.append(toString());
+        builder.append(this);
         builder.append("\n");
         for (final Region<?> child : children())
         {

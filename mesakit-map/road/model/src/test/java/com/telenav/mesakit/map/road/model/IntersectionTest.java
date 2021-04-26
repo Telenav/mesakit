@@ -21,9 +21,6 @@ package com.telenav.mesakit.map.road.model;
 import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
 import org.junit.Test;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensureFalse;
-
 public class IntersectionTest extends MapGeographyUnitTest
 {
     @SuppressWarnings({ "ConstantConditions", "EqualsWithItself" })

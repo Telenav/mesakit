@@ -23,4 +23,4 @@ The following properties affect the function of MesaKit in useful ways.
 
 | System Property | Description |
 |-----------------|-------------|
-| **MESAKIT_VISUAL_DEBUG** | Turns on visual debugging of RTree spatial indexes |
+| **MESAKIT_RTREE_VISUAL_DEBUG** | Turns on visual debugging of RTree spatial indexes |

@@ -8,11 +8,11 @@ import com.telenav.kivakit.core.kernel.project.Project;
  */
 public class DataFormatsPbfProject extends Project
 {
-    private static final Lazy<DataFormatsPbfProject> singleton = Lazy.of(DataFormatsPbfProject::new);
+    private static final Lazy<DataFormatsPbfProject> project = Lazy.of(DataFormatsPbfProject::new);
 
     public static DataFormatsPbfProject get()
     {
-        return singleton.get();
+        return project.get();
     }
 
     protected DataFormatsPbfProject()

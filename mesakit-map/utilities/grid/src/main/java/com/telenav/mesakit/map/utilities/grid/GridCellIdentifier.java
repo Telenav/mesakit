@@ -58,7 +58,7 @@ public class GridCellIdentifier implements AsString
     @Override
     public String asString(final StringFormat format)
     {
-        return "[CellIdentifier " + toString() + "]";
+        return "[CellIdentifier " + this + "]";
     }
 
     @Override

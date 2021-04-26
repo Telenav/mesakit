@@ -18,9 +18,6 @@
 
 package com.telenav.mesakit.map.region.border.cache;
 
-import com.telenav.mesakit.map.region.Region;
-import com.telenav.mesakit.map.region.RegionIdentity;
-import com.telenav.mesakit.map.region.project.MapRegionProject;
 import com.telenav.kivakit.core.filesystem.File;
 import com.telenav.kivakit.core.kernel.KivaKit;
 import com.telenav.kivakit.core.kernel.language.time.Time;
@@ -29,6 +26,10 @@ import com.telenav.kivakit.core.kernel.language.values.version.Version;
 import com.telenav.kivakit.core.kernel.language.values.version.VersionedObject;
 import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.serialization.core.SerializationSession;
+import com.telenav.mesakit.core.MesaKit;
+import com.telenav.mesakit.map.region.Region;
+import com.telenav.mesakit.map.region.RegionIdentity;
+import com.telenav.mesakit.map.region.project.MapRegionProject;
 
 import java.io.InputStream;
 import java.util.Set;
@@ -85,8 +86,8 @@ public class RegionIdentityCache<T extends Region<T>> extends BaseRepeater
         {
             trace("Region identities cache file is version $, written by KivaKit version $", identities.version(), kivakitVersion);
 
-            // ensure that this KivaKit version can read the data (data is backwards compatible but not forward),
-            if (KivaKit.get().version().isNewerThanOrEqualTo(MapRegionProject.get().borderDataVersion()))
+            // ensure that this MesaKit version can read the data (data is backwards compatible but not forward),
+            if (MesaKit.get().version().isNewerThanOrEqualTo(MapRegionProject.get().borderDataVersion()))
             {
                 // and loop through them
                 for (final var identity : identities.get())

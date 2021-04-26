@@ -1,5 +1,6 @@
 open module mesakit.map.region
 {
+    requires transitive mesakit.core;
     requires transitive mesakit.data.formats.pbf;
     requires transitive mesakit.map.geography;
     requires transitive mesakit.map.ui;

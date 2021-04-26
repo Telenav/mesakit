@@ -18,20 +18,6 @@
 
 package com.telenav.mesakit.map.geography.shape.rectangle;
 
-import com.telenav.mesakit.map.geography.Latitude;
-import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.LocationSequence;
-import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramRectangle;
-import com.telenav.mesakit.map.geography.shape.Outline;
-import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
-import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
-import com.telenav.mesakit.map.geography.shape.polyline.PolylineBuilder;
-import com.telenav.mesakit.map.geography.shape.segment.Segment;
-import com.telenav.mesakit.map.measurements.geographic.Angle;
-import com.telenav.mesakit.map.measurements.geographic.Area;
-import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.mesakit.map.measurements.geographic.Heading;
 import com.telenav.kivakit.core.commandline.ArgumentParser;
 import com.telenav.kivakit.core.commandline.SwitchParser;
 import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
@@ -46,6 +32,20 @@ import com.telenav.kivakit.core.kernel.logging.Logger;
 import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.core.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.geography.Latitude;
+import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.LocationSequence;
+import com.telenav.mesakit.map.geography.Longitude;
+import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramRectangle;
+import com.telenav.mesakit.map.geography.shape.Outline;
+import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
+import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
+import com.telenav.mesakit.map.geography.shape.polyline.PolylineBuilder;
+import com.telenav.mesakit.map.geography.shape.segment.Segment;
+import com.telenav.mesakit.map.measurements.geographic.Angle;
+import com.telenav.mesakit.map.measurements.geographic.Area;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
+import com.telenav.mesakit.map.measurements.geographic.Heading;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -446,6 +446,11 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         return Latitude.dm7(bottomInDm7);
     }
 
+    public double bottomInDegrees()
+    {
+        return DM7.toDegrees(bottomInDm7);
+    }
+
     public int bottomInDm7()
     {
         return bottomInDm7;
@@ -770,6 +775,11 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         return bottomLeft().preciseDistanceTo(topLeft());
     }
 
+    public double heightInDegrees()
+    {
+        return Math.abs(topInDegrees() - bottomInDegrees());
+    }
+
     /**
      * @return A new rectangle with the top right corner incremented
      */
@@ -842,6 +852,11 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         return Longitude.dm7(leftInDm7);
     }
 
+    public double leftInDegrees()
+    {
+        return DM7.toDegrees(leftInDm7);
+    }
+
     public int leftInDm7()
     {
         return leftInDm7;
@@ -876,6 +891,11 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     public Longitude right()
     {
         return Longitude.dm7(rightInDm7);
+    }
+
+    public double rightInDegrees()
+    {
+        return DM7.toDegrees(rightInDm7);
     }
 
     public int rightInDm7()
@@ -947,6 +967,11 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     public Latitude top()
     {
         return Latitude.dm7(topInDm7);
+    }
+
+    public double topInDegrees()
+    {
+        return DM7.toDegrees(topInDm7);
     }
 
     public int topInDm7()
@@ -1085,6 +1110,11 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
             point2 = topRight();
         }
         return point1.preciseDistanceTo(point2);
+    }
+
+    public double widthInDegrees()
+    {
+        return Math.abs(rightInDegrees() - leftInDegrees());
     }
 
     public Rectangle withBottom(final Latitude latitude)

@@ -115,7 +115,6 @@ public class SymbolList implements Iterable<Symbol>
         return symbols.isEmpty();
     }
 
-    @SuppressWarnings("NullableProblems")
     @Override
     public Iterator<Symbol> iterator()
     {

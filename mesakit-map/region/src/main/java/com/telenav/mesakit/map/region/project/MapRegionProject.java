@@ -18,9 +18,6 @@
 
 package com.telenav.mesakit.map.region.project;
 
-import com.telenav.mesakit.map.geography.project.MapGeographyKryoTypes;
-import com.telenav.mesakit.map.measurements.project.MapMeasurementsKryoTypes;
-import com.telenav.mesakit.map.region.Region;
 import com.telenav.kivakit.core.collections.project.CoreCollectionsKryoTypes;
 import com.telenav.kivakit.core.filesystem.Folder;
 import com.telenav.kivakit.core.kernel.language.collections.set.Sets;
@@ -30,12 +27,16 @@ import com.telenav.kivakit.core.kernel.project.Project;
 import com.telenav.kivakit.core.serialization.core.SerializationSessionFactory;
 import com.telenav.kivakit.core.serialization.kryo.CoreKernelKryoTypes;
 import com.telenav.kivakit.core.serialization.kryo.KryoTypes;
+import com.telenav.mesakit.core.MesaKit;
+import com.telenav.mesakit.map.geography.project.MapGeographyKryoTypes;
+import com.telenav.mesakit.map.measurements.project.MapMeasurementsKryoTypes;
+import com.telenav.mesakit.map.region.Region;
 
 import java.util.Set;
 
 public class MapRegionProject extends Project
 {
-    private static final Lazy<MapRegionProject> singleton = Lazy.of(MapRegionProject::new);
+    private static final Lazy<MapRegionProject> project = Lazy.of(MapRegionProject::new);
 
     private static final KryoTypes KRYO_TYPES = new MapRegionKryoTypes()
             .mergedWith(new MapGeographyKryoTypes())
@@ -45,21 +46,11 @@ public class MapRegionProject extends Project
 
     public static MapRegionProject get()
     {
-        return singleton.get();
+        return project.get();
     }
 
     protected MapRegionProject()
     {
-    }
-
-    /**
-     * @return The folder where various kinds of data are cached
-     */
-    public Folder mesakitMapFolder()
-    {
-        return Folder.kivakitCacheFolder()
-                .folder("map")
-                .mkdirs();
     }
 
     /**
@@ -74,6 +65,16 @@ public class MapRegionProject extends Project
     public Set<Project> dependencies()
     {
         return Sets.of();
+    }
+
+    /**
+     * @return The folder where various kinds of data are cached
+     */
+    public Folder mesakitMapFolder()
+    {
+        return MesaKit.get().cacheFolder()
+                .folder("map")
+                .mkdirs();
     }
 
     @Override

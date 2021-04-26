@@ -18,6 +18,7 @@
 
     <modules>
 
+        <module>mesakit-core</module>
         <module>mesakit-map</module>
 
     </modules>

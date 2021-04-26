@@ -18,31 +18,11 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mesakit-map-ui</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
-    <dependencies>
-
-        <!-- MesaKit -->
-
-        <dependency>
-            <groupId>com.telenav.mesakit</groupId>
-            <artifactId>mesakit-map-geography</artifactId>
-            <version>${mesakit.version}</version>
-        </dependency>
-
-        <!-- KivaKit -->
-
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-core-network-http</artifactId>
-            <version>${kivakit.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-ui-swing</artifactId>
-            <version>${kivakit.version}</version>
-        </dependency>
-
-    </dependencies>
+    <modules>
+        <module>desktop</module>
+        <module>debug</module>
+    </modules>
 
 </project>

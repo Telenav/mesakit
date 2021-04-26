@@ -50,7 +50,6 @@ public class GeoJsonGeometryCollection extends GeoJsonGeometry implements Iterab
         return geometries;
     }
 
-    @SuppressWarnings("NullableProblems")
     @Override
     public Iterator<GeoJsonGeometry> iterator()
     {

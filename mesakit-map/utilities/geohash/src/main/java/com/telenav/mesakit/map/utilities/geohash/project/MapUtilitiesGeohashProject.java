@@ -8,11 +8,11 @@ import com.telenav.kivakit.core.kernel.project.Project;
  */
 public class MapUtilitiesGeohashProject extends Project
 {
-    private static final Lazy<MapUtilitiesGeohashProject> singleton = Lazy.of(MapUtilitiesGeohashProject::new);
+    private static final Lazy<MapUtilitiesGeohashProject> project = Lazy.of(MapUtilitiesGeohashProject::new);
 
     public static MapUtilitiesGeohashProject get()
     {
-        return singleton.get();
+        return project.get();
     }
 
     protected MapUtilitiesGeohashProject()

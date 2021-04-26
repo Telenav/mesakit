@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.measurements.geographic;
 
-import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
 import com.telenav.kivakit.core.collections.map.CaseFoldingStringMap;
 import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.core.kernel.interfaces.naming.Named;
 import com.telenav.kivakit.core.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
 
 import java.util.regex.Pattern;
 
@@ -48,7 +48,7 @@ public enum Direction implements Named
     SOUTHWEST("SW", Heading.SOUTHWEST),
     WEST("W", Heading.WEST);
 
-    private static final CaseFoldingStringMap<Direction> nameToDirection = new CaseFoldingStringMap<Direction>();
+    private static final CaseFoldingStringMap<Direction> nameToDirection = new CaseFoldingStringMap<>();
 
     private static final Pattern SPACES_AND_PERIODS = Pattern.compile("[\\s.]");
 

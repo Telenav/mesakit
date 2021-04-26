@@ -20,6 +20,7 @@ package com.telenav.mesakit.map.geography.shape.rectangle;
 
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
+import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramRectangle;
 
 @UmlClassDiagram(diagram = DiagramRectangle.class)
@@ -45,6 +46,11 @@ public class Size implements Dimensioned
         this.height = height;
     }
 
+    public Location asLocation()
+    {
+        return Location.degrees(height.asDegrees(), width.asDegrees());
+    }
+
     @Override
     public Height height()
     {
@@ -64,6 +70,12 @@ public class Size implements Dimensioned
         final var width = Math.min(360, this.width.asDegrees() * widthMultiplier);
         final var height = Math.min(180, this.height.asDegrees() * heightMultiplier);
         return new Size(Width.degrees(width), Height.degrees(height));
+    }
+
+    @Override
+    public Size size()
+    {
+        return new Size(width(), height());
     }
 
     @Override
