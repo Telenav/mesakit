@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.geography.indexing.polygon;
 
+import com.telenav.kivakit.core.resource.resources.packaged.PackageResource;
+import com.telenav.kivakit.core.test.annotations.SlowTests;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
-import com.telenav.kivakit.core.resource.resources.packaged.PackageResource;
-import com.telenav.kivakit.core.test.annotations.SlowTests;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -58,7 +58,7 @@ public class PolygonSpatialIndexTest extends MapGeographyUnitTest
         for (final Polygon polygon : world().polygons())
         {
             final var index = new PolygonSpatialIndex(polygon);
-            final var center = polygon.bounds().center();
+            final var center = polygon.asBoundsFromOrigin().center();
             if (!index.containment(center).matches(polygon.containment(center)))
             {
                 trace("#" + i + ". failed: index = " + index.containment(center)
@@ -132,7 +132,7 @@ public class PolygonSpatialIndexTest extends MapGeographyUnitTest
     private void testPolygonIndex(final Polygon polygon)
     {
         final var index = new PolygonSpatialIndex(polygon);
-        final var bounds = polygon.bounds();
+        final var bounds = polygon.asBoundsFromOrigin();
         for (var i = 0; i < 100; i++)
         {
             final var location = randomValueFactory().newLocation(bounds);

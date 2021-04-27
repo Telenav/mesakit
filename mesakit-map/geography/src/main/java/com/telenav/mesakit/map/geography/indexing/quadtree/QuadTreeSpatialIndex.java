@@ -18,18 +18,18 @@
 
 package com.telenav.mesakit.map.geography.indexing.quadtree;
 
-import com.telenav.mesakit.map.geography.Latitude;
-import com.telenav.mesakit.map.geography.Located;
-import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramSpatialIndex;
-import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.kivakit.core.kernel.interfaces.comparison.Matcher;
 import com.telenav.kivakit.core.kernel.language.collections.list.LinkedObjectList;
 import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.core.kernel.language.iteration.BaseIterator;
 import com.telenav.kivakit.core.kernel.language.values.count.Count;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.geography.Latitude;
+import com.telenav.mesakit.map.geography.Located;
+import com.telenav.mesakit.map.geography.Longitude;
+import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramSpatialIndex;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 import java.io.PrintStream;
 import java.util.Collection;
@@ -389,7 +389,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
     {
         if (bounds == null)
         {
-            bounds = object.location().bounds();
+            bounds = object.location().asBoundsFromOrigin();
         }
         else
         {

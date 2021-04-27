@@ -37,7 +37,7 @@ This module cuts maps into pieces based on region boundaries.
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-cutter</artifactId>
-        <version>0.9.0-SNAPSHOT</version>
+        <version>-SNAPSHOT</version>
     </dependency>
 
 

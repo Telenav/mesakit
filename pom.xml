@@ -11,7 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit</artifactId>
-    <version>0.9.0-SNAPSHOT</version>
+    <version>0.9.5-alpha-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>MesaKit</name>
@@ -61,12 +61,12 @@
 
         <!-- MesaKit Version -->
 
-        <mesakit.version>0.9.0-SNAPSHOT</mesakit.version>
-        <mesakit.base.version>0.9.0</mesakit.base.version>
+        <mesakit.version>0.9.5-alpha-SNAPSHOT</mesakit.version>
+        <mesakit.base.version>0.9.5-alpha</mesakit.base.version>
 
         <!-- KivaKit Version -->
 
-        <kivakit.version>0.9.0-SNAPSHOT</kivakit.version>
+        <kivakit.version>0.9.5-alpha-SNAPSHOT</kivakit.version>
 
         <!-- Java -->
 

@@ -1,14 +1,14 @@
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas;
 
-import com.telenav.kivakit.ui.swing.graphics.drawing.DrawingDistance;
-import com.telenav.kivakit.ui.swing.graphics.drawing.DrawingPoint;
-import com.telenav.kivakit.ui.swing.graphics.drawing.DrawingSize;
-import com.telenav.kivakit.ui.swing.graphics.geometry.Coordinate;
-import com.telenav.kivakit.ui.swing.graphics.geometry.CoordinateDistance;
-import com.telenav.kivakit.ui.swing.graphics.geometry.CoordinateHeight;
-import com.telenav.kivakit.ui.swing.graphics.geometry.CoordinateSize;
-import com.telenav.kivakit.ui.swing.graphics.geometry.CoordinateSystem;
-import com.telenav.kivakit.ui.swing.graphics.geometry.CoordinateWidth;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingDistance;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingPoint;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSize;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateHeight;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSize;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSystem;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateWidth;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.ui.desktop.coordinates.MapCoordinateMapper;
 

@@ -18,21 +18,21 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas;
 
-import com.telenav.kivakit.ui.swing.graphics.drawing.DrawingDistance;
-import com.telenav.kivakit.ui.swing.graphics.drawing.DrawingPoint;
-import com.telenav.kivakit.ui.swing.graphics.drawing.DrawingSize;
-import com.telenav.kivakit.ui.swing.graphics.drawing.awt.AwtDrawingSurface;
-import com.telenav.kivakit.ui.swing.graphics.drawing.drawables.Box;
-import com.telenav.kivakit.ui.swing.graphics.drawing.drawables.Dot;
-import com.telenav.kivakit.ui.swing.graphics.drawing.drawables.Label;
-import com.telenav.kivakit.ui.swing.graphics.drawing.drawables.Text;
-import com.telenav.kivakit.ui.swing.graphics.geometry.Coordinate;
-import com.telenav.kivakit.ui.swing.graphics.geometry.CoordinateDistance;
-import com.telenav.kivakit.ui.swing.graphics.geometry.CoordinateHeight;
-import com.telenav.kivakit.ui.swing.graphics.geometry.CoordinateSize;
-import com.telenav.kivakit.ui.swing.graphics.geometry.CoordinateSlope;
-import com.telenav.kivakit.ui.swing.graphics.geometry.CoordinateWidth;
-import com.telenav.kivakit.ui.swing.graphics.style.Style;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingDistance;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingPoint;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSize;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.awt.AwtDrawingSurface;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Box;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Dot;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Label;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Text;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateHeight;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSize;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSlope;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateWidth;
+import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.rectangle.Dimensioned;

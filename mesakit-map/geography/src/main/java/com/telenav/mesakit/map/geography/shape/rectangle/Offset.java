@@ -41,6 +41,12 @@ public class Offset implements Dimensioned
     }
 
     @Override
+    public Size size()
+    {
+        return new Size(width, height);
+    }
+
+    @Override
     public String toString()
     {
         return "[Offset width = " + width.asDegrees() + ", height = " + height.asDegrees() + "]";

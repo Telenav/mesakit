@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
+import com.telenav.kivakit.core.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.core.kernel.language.objects.Hash;
+import com.telenav.kivakit.core.kernel.language.strings.AsciiArt;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndex.DumpDetailLevel;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Area;
-import com.telenav.kivakit.core.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.core.kernel.language.objects.Hash;
-import com.telenav.kivakit.core.kernel.language.strings.AsciiArt;
 
 import java.io.PrintStream;
 import java.util.Iterator;
@@ -59,7 +59,7 @@ public abstract class Node<T extends Bounded & Intersectable> implements Bounded
     public abstract void add(final T element);
 
     @Override
-    public Rectangle bounds()
+    public Rectangle asBoundsFromOrigin()
     {
         if (bottomLeft != Location.NULL && topRight != Location.NULL)
         {
@@ -127,7 +127,7 @@ public abstract class Node<T extends Bounded & Intersectable> implements Bounded
     @Override
     public boolean intersects(final Rectangle rectangle)
     {
-        return bounds().intersects(rectangle);
+        return asBoundsFromOrigin().intersects(rectangle);
     }
 
     public abstract boolean isLeaf();
@@ -146,8 +146,8 @@ public abstract class Node<T extends Bounded & Intersectable> implements Bounded
         N minimum = null;
         for (final var node : nodes)
         {
-            final var before = node.bounds().area();
-            final var after = node.bounds().union(element.bounds()).area();
+            final var before = node.asBoundsFromOrigin().area();
+            final var after = node.asBoundsFromOrigin().union(element.asBoundsFromOrigin()).area();
             final var increase = after.minus(before);
             if (minimum == null || increase.isLessThan(minimumIncrease))
             {
@@ -163,7 +163,7 @@ public abstract class Node<T extends Bounded & Intersectable> implements Bounded
         // Walk up the parent tree
         for (var at = this; at != null; at = at.parent())
         {
-            final var current = at.bounds();
+            final var current = at.asBoundsFromOrigin();
             if (current == null)
             {
                 at.bounds(bounds);

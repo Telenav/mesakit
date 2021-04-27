@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
-import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
-import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
-import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.kivakit.core.collections.iteration.iterators.FilteredIterator;
 import com.telenav.kivakit.core.kernel.interfaces.comparison.Matcher;
 import com.telenav.kivakit.core.kernel.language.collections.list.ObjectList;
 import com.telenav.kivakit.core.kernel.language.values.count.Count;
+import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
+import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
 import java.util.Iterator;
 import java.util.List;
@@ -65,7 +65,7 @@ public abstract class Leaf<T extends Bounded & Intersectable> extends Node<T>
             index().debugger().update(this, element);
 
             // Expand the parents of this element if need be
-            expandToInclude(element.bounds());
+            expandToInclude(element.asBoundsFromOrigin());
         }
     }
 
@@ -127,7 +127,7 @@ public abstract class Leaf<T extends Bounded & Intersectable> extends Node<T>
     @Override
     protected String toString(final RTreeSpatialIndex.DumpDetailLevel detail)
     {
-        return "[Leaf bounds = " + bounds() + ", size = " + size() + ", elements = "
+        return "[Leaf bounds = " + asBoundsFromOrigin() + ", size = " + size() + ", elements = "
                 + (detail == RTreeSpatialIndex.DumpDetailLevel.SUMMARY_ONLY ? "" + size() : new ObjectList<>().appendAll(elements()).join())
                 + "]";
     }
@@ -157,9 +157,9 @@ public abstract class Leaf<T extends Bounded & Intersectable> extends Node<T>
                     // and if it's not one of the two we started with,
                     if (!element.equals(a) && !element.equals(b))
                     {
-                        final var center = element.bounds().center();
-                        if (center.preciseDistanceTo(a.bounds().center())
-                                .isLessThan(center.preciseDistanceTo(b.bounds().center())))
+                        final var center = element.asBoundsFromOrigin().center();
+                        if (center.preciseDistanceTo(a.asBoundsFromOrigin().center())
+                                .isLessThan(center.preciseDistanceTo(b.asBoundsFromOrigin().center())))
                         {
                             leafA.add(element);
                         }

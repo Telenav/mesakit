@@ -19,10 +19,11 @@
 package com.telenav.mesakit.map.ui.desktop.coordinates.mappers;
 
 import com.telenav.kivakit.core.kernel.language.primitives.Doubles;
-import com.telenav.kivakit.ui.swing.graphics.drawing.DrawingPoint;
-import com.telenav.kivakit.ui.swing.graphics.drawing.DrawingSize;
-import com.telenav.kivakit.ui.swing.graphics.drawing.DrawingSurface;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingPoint;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingRectangle;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
 import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.ui.desktop.coordinates.MapCoordinateMapper;
 
 import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
@@ -34,16 +35,19 @@ import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail
  */
 public class MercatorCoordinateMapper implements MapCoordinateMapper
 {
+    private final Rectangle bounds;
+
     /**
      * The dimension of the Swing area to project from/to
      */
-    private final DrawingSize maximum;
+    private final DrawingRectangle maximum;
 
     /**
      * @param maximum The dimensions of the Swing coordinate system
      */
-    public MercatorCoordinateMapper(final DrawingSize maximum)
+    public MercatorCoordinateMapper(final Rectangle bounds, final DrawingRectangle maximum)
     {
+        this.bounds = bounds;
         this.maximum = maximum;
     }
 
@@ -52,8 +56,10 @@ public class MercatorCoordinateMapper implements MapCoordinateMapper
      * @return The Swing point for the given location
      */
     @Override
-    public DrawingPoint toDrawingPoint(final Location location)
+    public DrawingPoint toDrawingPoint(Location location)
     {
+        location = location.relativeTo(bounds.topLeft());
+
         final var siny = Math.sin(Math.toRadians(location.latitude().asDegrees()));
         if (Double.isNaN(siny))
         {
@@ -84,6 +90,6 @@ public class MercatorCoordinateMapper implements MapCoordinateMapper
             fail("Cannot map point " + point);
         }
         final var latitudeInDegrees = Doubles.inRange(90 - Math.toDegrees(radians), -90, 90);
-        return Location.degrees(latitudeInDegrees, longitudeInDegrees);
+        return Location.degrees(latitudeInDegrees, longitudeInDegrees).offsetBy(bounds.topLeft().asSizeFromOrigin());
     }
 }

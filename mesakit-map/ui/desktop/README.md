@@ -37,7 +37,7 @@ This project provides support for map-related desktop UIs.
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-ui</artifactId>
-        <version>0.9.0-SNAPSHOT</version>
+        <version>-SNAPSHOT</version>
     </dependency>
 
 

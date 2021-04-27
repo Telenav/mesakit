@@ -64,7 +64,7 @@ public class RectangleTest extends MapGeographyUnitTest
 
         // Determine the center point.
         final var size = new Size(Width.nanodegrees(width / 2), Height.nanodegrees(height / 2));
-        final var expected = rectangle.bottomLeft().offset(size);
+        final var expected = rectangle.bottomLeft().offsetBy(size);
 
         ensureEqual(expected, rectangle.center());
     }
@@ -244,14 +244,14 @@ public class RectangleTest extends MapGeographyUnitTest
         final var rect1 = Rectangle.fromLocations(loc, loc).expanded(Distance.ONE_MILE);
 
         final var size = new Size(Width.degrees(0), Height.degrees(1));
-        final var loc2 = loc.offset(size);
+        final var loc2 = loc.offsetBy(size);
         final var rect2 = Rectangle.fromLocations(loc2, loc2).expanded(Distance.ONE_MILE);
 
         ensure(!rect1.intersects(rect2));
         ensure(rect1.intersects(rect1));
 
-        final var o1 = Location.ORIGIN.bounds().expanded(Distance.ONE_METER);
-        final var o2 = Location.ORIGIN.bounds().expanded(Distance.TEN_METERS);
+        final var o1 = Location.ORIGIN.asBoundsFromOrigin().expanded(Distance.ONE_METER);
+        final var o2 = Location.ORIGIN.asBoundsFromOrigin().expanded(Distance.TEN_METERS);
         ensure(o1.intersects(o2));
         ensure(o2.intersects(o1));
     }
@@ -269,7 +269,7 @@ public class RectangleTest extends MapGeographyUnitTest
 
         // Determine the center point.
         final var size = new Size(Width.microdegrees(width / 2), Height.microdegrees(height / 2));
-        final var expected = rectangle.bottomLeft().offset(size);
+        final var expected = rectangle.bottomLeft().offsetBy(size);
 
         ensureEqual(expected, rectangle.center());
     }

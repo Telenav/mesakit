@@ -20,10 +20,10 @@ package com.telenav.mesakit.map.ui.desktop.tiles;
 
 import com.telenav.kivakit.core.kernel.language.objects.Hash;
 import com.telenav.kivakit.core.resource.path.FileName;
-import com.telenav.kivakit.ui.swing.graphics.drawing.DrawingPoint;
-import com.telenav.kivakit.ui.swing.graphics.style.Color;
-import com.telenav.kivakit.ui.swing.graphics.style.Style;
-import com.telenav.kivakit.ui.swing.theme.KivaKitColors;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingPoint;
+import com.telenav.kivakit.ui.desktop.graphics.style.Color;
+import com.telenav.kivakit.ui.desktop.graphics.style.Style;
+import com.telenav.kivakit.ui.desktop.theme.KivaKitColors;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.geography.shape.rectangle.Size;

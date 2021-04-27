@@ -19,24 +19,17 @@
 package com.telenav.mesakit.map.ui.desktop.coordinates;
 
 import com.telenav.kivakit.core.test.UnitTest;
-import com.telenav.kivakit.ui.swing.graphics.drawing.awt.Points;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingPoint;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingRectangle;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 
-import java.awt.geom.Point2D;
-
 public abstract class BaseCoordinateMapperTest extends UnitTest
 {
-    @SuppressWarnings("SameParameterValue")
-    protected java.awt.Rectangle awtRectangle(final int x, final int y, final int width, final int height)
-    {
-        return new java.awt.Rectangle(x, y, width, height);
-    }
-
-    protected void checkMapping(final MapCoordinateMapper mapper, final Point2D point, final Location location)
+    protected void checkMapping(final MapCoordinateMapper mapper, final DrawingPoint point, final Location location)
     {
         final var mappedLocation = mapper.toDrawingPoint(location);
-        ensureEqual(Points.to2d(point), Points.to2d(mappedLocation));
+        ensureEqual(point, mappedLocation);
         final var mappedPoint = mapper.toMapLocation(point);
         if (!location.isClose(mappedPoint, Angle.degrees(0.001)))
         {
@@ -44,8 +37,14 @@ public abstract class BaseCoordinateMapperTest extends UnitTest
         }
     }
 
-    protected Point2D point(final int x, final int y)
+    @SuppressWarnings("SameParameterValue")
+    protected DrawingRectangle drawingRectangle(final int x, final int y, final int width, final int height)
     {
-        return new Point2D.Double(x, y);
+        return DrawingRectangle.rectangle(x, y, width, height);
+    }
+
+    protected DrawingPoint point(final int x, final int y)
+    {
+        return DrawingPoint.at(x, y);
     }
 }

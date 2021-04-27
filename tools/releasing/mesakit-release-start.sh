@@ -10,13 +10,13 @@
 source library-functions.sh
 source mesakit-projects.sh
 
-ARGUMENT_HELP="[version]"
+help="[version]"
 
 version=$1
 
-require_variable version
+require_variable version "$help"
 
-for project_home in "${MESAKIT_PROJECT_HOMES[@]}"; do
+for project_home in "${MESAKIT_ALL_HOMES[@]}"; do
 
     git_flow_release_start $project_home $version
 

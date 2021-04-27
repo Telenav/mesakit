@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.ui.desktop.coordinates;
 
-import com.telenav.kivakit.ui.swing.graphics.drawing.DrawingPoint;
-import com.telenav.kivakit.ui.swing.graphics.drawing.DrawingRectangle;
-import com.telenav.kivakit.ui.swing.graphics.drawing.DrawingSize;
-import com.telenav.kivakit.ui.swing.graphics.drawing.DrawingSurface;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingPoint;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingRectangle;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSize;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.geography.shape.rectangle.Size;

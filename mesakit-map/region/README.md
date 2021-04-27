@@ -37,7 +37,7 @@ This module contains packages for handling administrative regions.
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-region</artifactId>
-        <version>0.9.0-SNAPSHOT</version>
+        <version>-SNAPSHOT</version>
     </dependency>
 
 

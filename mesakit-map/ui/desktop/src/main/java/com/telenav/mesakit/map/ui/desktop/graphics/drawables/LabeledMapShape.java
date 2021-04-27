@@ -1,7 +1,7 @@
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
-import com.telenav.kivakit.ui.swing.graphics.geometry.Coordinate;
-import com.telenav.kivakit.ui.swing.graphics.style.Style;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
+import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 
@@ -10,7 +10,7 @@ import java.awt.Shape;
 /**
  * @author jonathanl (shibo)
  */
-public abstract class LabeledMapShape extends MapShape
+public abstract class LabeledMapShape extends BaseMapShape
 {
     private String label;
 
@@ -19,6 +19,8 @@ public abstract class LabeledMapShape extends MapShape
     private double labelYOffset = -10;
 
     private int margin = 10;
+
+    private Style labelStyle;
 
     public LabeledMapShape(final Style style, final String label)
     {
@@ -39,6 +41,7 @@ public abstract class LabeledMapShape extends MapShape
         labelXOffset = that.labelXOffset;
         labelYOffset = that.labelYOffset;
         margin = that.margin;
+        labelStyle = that.labelStyle;
     }
 
     @Override
@@ -50,6 +53,7 @@ public abstract class LabeledMapShape extends MapShape
         {
             return label(label)
                     .at(coordinate)
+                    .withStyle(labelStyle)
                     .withMargin(margin)
                     .draw(canvas);
         }
@@ -72,6 +76,13 @@ public abstract class LabeledMapShape extends MapShape
     {
         final var copy = copy();
         copy.label = label;
+        return copy;
+    }
+
+    public LabeledMapShape withLabelStyle(final Style style)
+    {
+        final var copy = copy();
+        copy.labelStyle = labelStyle;
         return copy;
     }
 

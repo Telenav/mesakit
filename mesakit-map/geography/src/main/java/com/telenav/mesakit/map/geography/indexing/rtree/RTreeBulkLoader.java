@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
+import com.telenav.kivakit.core.kernel.language.values.count.Count;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramSpatialIndex;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.associations.UmlRelation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,12 +77,12 @@ public class RTreeBulkLoader<Element extends Bounded & Intersectable>
 
     protected int compareHorizontal(final Element a, final Element b)
     {
-        return a.bounds().compareHorizontal(b.bounds());
+        return a.asBoundsFromOrigin().compareHorizontal(b.asBoundsFromOrigin());
     }
 
     protected int compareVertical(final Element a, final Element b)
     {
-        return a.bounds().compareVertical(b.bounds());
+        return a.asBoundsFromOrigin().compareVertical(b.asBoundsFromOrigin());
     }
 
     private Node<Element> tree(final InteriorNode<Element> parent,

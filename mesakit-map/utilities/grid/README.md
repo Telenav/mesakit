@@ -37,7 +37,7 @@ This project provides the rectangular grids used in core-graph-world.
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-utilities-grid</artifactId>
-        <version>0.9.0-SNAPSHOT</version>
+        <version>-SNAPSHOT</version>
     </dependency>
 
 

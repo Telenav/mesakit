@@ -37,7 +37,7 @@ This module provides access to map data via the Geofabrik OpenStreetMap "overpas
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-overpass</artifactId>
-        <version>0.9.0-SNAPSHOT</version>
+        <version>-SNAPSHOT</version>
     </dependency>
 
 

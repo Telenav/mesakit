@@ -22,8 +22,7 @@ import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Height;
 import com.telenav.mesakit.map.geography.shape.rectangle.Size;
 import com.telenav.mesakit.map.geography.shape.rectangle.Width;
-import com.telenav.mesakit.map.ui.desktop.coordinates.mappers.SwingMercatorCoordinateMapper;
-import com.telenav.mesakit.map.ui.desktop.tiles.SlippyTile;
+import com.telenav.mesakit.map.ui.desktop.coordinates.mappers.MercatorCoordinateMapper;
 import com.telenav.mesakit.map.ui.desktop.tiles.SlippyTileCoordinateSystem;
 import org.junit.Test;
 
@@ -37,22 +36,22 @@ public class SwingMercatorCoordinateMapperTest extends BaseCoordinateMapperTest
         final var height = Height.degrees(10);
         final var size = new Size(width, height);
 
-        // Map from 100,100:200,200 swing rectangle to 0,0:10,10 geographic rectangle
-        final var mapper = new SwingMercatorCoordinateMapper(Location.ORIGIN.rectangle(size),
-                awtRectangle(100, 100, 100, 100), SlippyTile.STANDARD_TILE_SIZE);
+        // Map from 100,100:200,200 drawing surface rectangle to 0,0:10,10 geographic rectangle
+        final var mapper = new MercatorCoordinateMapper(Location.ORIGIN.rectangle(size),
+                drawingRectangle(100, 100, 100, 100));
 
         // Ensure simple cases in the corners (the middle will be distorted by the projection)
-        checkMapping(mapper, point(100, 100), Location.ORIGIN.offset(height));
+        checkMapping(mapper, point(100, 100), Location.ORIGIN.offsetBy(height));
         checkMapping(mapper, point(100, 200), Location.ORIGIN);
-        checkMapping(mapper, point(200, 100), Location.ORIGIN.offset(size));
-        checkMapping(mapper, point(200, 200), Location.ORIGIN.offset(width));
+        checkMapping(mapper, point(200, 100), Location.ORIGIN.offsetBy(size));
+        checkMapping(mapper, point(200, 200), Location.ORIGIN.offsetBy(width));
     }
 
     @Test
     public void testWorld()
     {
-        final var mapper = new SwingMercatorCoordinateMapper(SlippyTileCoordinateSystem.BOUNDS,
-                awtRectangle(100, 100, 100, 100), SlippyTile.STANDARD_TILE_SIZE);
+        final var mapper = new MercatorCoordinateMapper(SlippyTileCoordinateSystem.BOUNDS,
+                drawingRectangle(100, 100, 100, 100));
 
         // The origin will not be distorted
         checkMapping(mapper, point(150, 150), Location.ORIGIN);
@@ -73,10 +72,9 @@ public class SwingMercatorCoordinateMapperTest extends BaseCoordinateMapperTest
         final var size = new Size(width, height);
         final var seattle = Location.degrees(47.601765, -122.332335).rectangle(size);
 
-        // Map from 100,100:200,200 swing rectangle to 47.601765,-122.332335:48.601765,-121.332335
+        // Map from 100,100:200,200 drawing surface rectangle to 47.601765,-122.332335:48.601765,-121.332335
         // geographic rectangle around downtown Seattle
-        final var mapper = new SwingMercatorCoordinateMapper(seattle, awtRectangle(100, 100, 100, 100),
-                SlippyTile.STANDARD_TILE_SIZE);
+        final var mapper = new MercatorCoordinateMapper(seattle, drawingRectangle(100, 100, 100, 100));
 
         // Ensure simple cases in the corners (the middle will be distorted by the projection)
         checkMapping(mapper, point(100, 100), seattle.topLeft());

@@ -37,7 +37,7 @@ This project transforms non-standard road names from a data source like OpenStre
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-road-name-standardizer</artifactId>
-        <version>0.9.0-SNAPSHOT</version>
+        <version>-SNAPSHOT</version>
     </dependency>
 
 

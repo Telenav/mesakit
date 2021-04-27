@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
-import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
-import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
-import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.kivakit.core.collections.iteration.iterators.CompoundIterator;
 import com.telenav.kivakit.core.kernel.interfaces.comparison.Matcher;
 import com.telenav.kivakit.core.kernel.language.objects.Hash;
 import com.telenav.kivakit.core.kernel.language.values.count.Count;
+import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
+import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -103,7 +103,7 @@ public class InteriorNode<T extends Bounded & Intersectable> extends Node<T>
         for (final var child : children())
         {
             // and if the child's bounds intersects the given rectangle,
-            if (that.intersects(child.bounds()))
+            if (that.intersects(child.asBoundsFromOrigin()))
             {
                 // add any intersecting elements from the child.
                 matches.add(child.intersecting(that, matcher));
@@ -159,7 +159,7 @@ public class InteriorNode<T extends Bounded & Intersectable> extends Node<T>
             index().debugger().update(child);
 
             // Expand the parents of this node if need be
-            expandToInclude(child.bounds());
+            expandToInclude(child.asBoundsFromOrigin());
         }
     }
 
@@ -178,7 +178,7 @@ public class InteriorNode<T extends Bounded & Intersectable> extends Node<T>
     @Override
     protected String toString(final RTreeSpatialIndex.DumpDetailLevel detail)
     {
-        return "[InteriorNode bounds = " + bounds() + ", children = " + children().size() + "]";
+        return "[InteriorNode bounds = " + asBoundsFromOrigin() + ", children = " + children().size() + "]";
     }
 
     List<Node<T>> children()
@@ -225,9 +225,9 @@ public class InteriorNode<T extends Bounded & Intersectable> extends Node<T>
             private void addChildToBestBucket(final Node<T> child, final InteriorNode<T> bucketA,
                                               final InteriorNode<T> bucketB)
             {
-                final var center = child.bounds().center();
-                if (center.preciseDistanceTo(bucketA.bounds().center())
-                        .isLessThan(center.preciseDistanceTo(bucketB.bounds().center())))
+                final var center = child.asBoundsFromOrigin().center();
+                if (center.preciseDistanceTo(bucketA.asBoundsFromOrigin().center())
+                        .isLessThan(center.preciseDistanceTo(bucketB.asBoundsFromOrigin().center())))
                 {
                     bucketA.add(child);
                 }

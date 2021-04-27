@@ -37,7 +37,7 @@ This module contains code generally relevant to map data.
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-data-library</artifactId>
-        <version>0.9.0-SNAPSHOT</version>
+        <version>-SNAPSHOT</version>
     </dependency>
 
 

@@ -10,14 +10,14 @@
 source library-functions.sh
 source mesakit-projects.sh
 
-ARGUMENT_HELP="[feature-name]"
+help="[feature-name]"
 
 feature_name=$1
 
-require_variable feature-name
+require_variable feature_name "$help"
 
-for project_home in "${MESAKIT_PROJECT_HOMES[@]}"; do
+for project_home in "${MESAKIT_ALL_HOMES[@]}"; do
 
-    git_flow_feature_finish $project_home $feature_name
+    git_flow_feature_finish "$project_home" "$feature_name"
 
 done

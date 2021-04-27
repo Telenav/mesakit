@@ -112,9 +112,9 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     }
 
     @Override
-    public Rectangle bounds()
+    public Rectangle asBoundsFromOrigin()
     {
-        return root.bounds();
+        return root.asBoundsFromOrigin();
     }
 
     public void bulkLoad(final List<Element> elements)

@@ -18,18 +18,19 @@
 
 package com.telenav.mesakit.map.ui.desktop.theme;
 
-import com.telenav.mesakit.map.ui.desktop.graphics.canvas.Stroke;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingDistance;
 
-import java.awt.BasicStroke;
+import static java.awt.BasicStroke.CAP_ROUND;
+import static java.awt.BasicStroke.JOIN_ROUND;
 
 public class Strokes
 {
-    public static final Stroke DASHED =
-            new Stroke(BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[] { 8 }, 0);
+    public static final MapStroke ROUNDED = MapStroke.stroke()
+            .withCap(CAP_ROUND)
+            .withJoin(JOIN_ROUND)
+            .withWidth(DrawingDistance.of(1));
 
-    public static final Stroke DOTTED =
-            new Stroke(BasicStroke.CAP_SQUARE, BasicStroke.JOIN_ROUND, 0, new float[] { 1 }, 0);
+    public static final MapStroke DASHED = ROUNDED.withDash(new float[] { 8 });
 
-    public static final Stroke ROUNDED =
-            new Stroke(BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
+    public static final MapStroke DOTTED = ROUNDED.withDash(new float[] { 1 });
 }

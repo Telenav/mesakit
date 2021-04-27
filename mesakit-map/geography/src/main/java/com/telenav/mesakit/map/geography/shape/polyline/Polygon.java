@@ -18,6 +18,10 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
+import com.telenav.kivakit.core.kernel.language.objects.Objects;
+import com.telenav.kivakit.core.kernel.language.values.count.Bytes;
+import com.telenav.kivakit.core.kernel.language.values.count.Count;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.polygon.PolygonSpatialIndex;
 import com.telenav.mesakit.map.geography.indexing.segment.SegmentRTreeSpatialIndex;
@@ -26,11 +30,7 @@ import com.telenav.mesakit.map.geography.shape.Outline;
 import com.telenav.mesakit.map.geography.shape.Shape;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.geography.shape.segment.Segment;
-import com.telenav.kivakit.core.kernel.language.objects.Objects;
-import com.telenav.kivakit.core.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -90,7 +90,7 @@ public class Polygon extends Polyline implements Shape
             // Create a strip from the left side of the polygon to the location, that is 10 meters
             // high and contains the location and is also 5 meters left and right of the bounds to
             // take care of edge cases where the location is right on the edge of the polygon.
-            final var bounds = location.bounds().withLeft(bounds().left()).withRight(location.longitude())
+            final var bounds = location.asBoundsFromOrigin().withLeft(asBoundsFromOrigin().left()).withRight(location.longitude())
                     .expanded(Distance.meters(5));
 
             // Create a horizontal from the left size of the polygon to the location
@@ -180,7 +180,7 @@ public class Polygon extends Polyline implements Shape
     @Override
     public Containment containment(final Location location)
     {
-        if (bounds().containment(location).isInside())
+        if (asBoundsFromOrigin().containment(location).isInside())
         {
             final var containment = outline().containment(location);
             if (containment != Containment.OUTSIDE)
@@ -203,7 +203,7 @@ public class Polygon extends Polyline implements Shape
 
     public boolean contains(final Polyline line)
     {
-        if (!bounds().contains(line.bounds()))
+        if (!asBoundsFromOrigin().contains(line.asBoundsFromOrigin()))
         {
             return false;
         }
@@ -220,7 +220,7 @@ public class Polygon extends Polyline implements Shape
     public boolean contains(final Rectangle rectangle)
     {
         // The rectangle is fully contained if the bounds contains the rectangle fully,
-        if (bounds().contains(rectangle))
+        if (asBoundsFromOrigin().contains(rectangle))
         {
             // and there are no segments that intersect the rectangle
             if (intersections(rectangle, Count._1).isEmpty())

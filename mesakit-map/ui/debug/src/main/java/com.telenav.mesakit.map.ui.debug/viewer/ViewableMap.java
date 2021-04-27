@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.ui.desktop.debug.viewer;
 
-import com.telenav.kivakit.ui.swing.graphics.drawing.DrawingSurface;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
 import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.ui.desktop.debug.Viewable;

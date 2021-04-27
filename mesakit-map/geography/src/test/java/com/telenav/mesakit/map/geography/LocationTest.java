@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.map.geography;
 
+import com.telenav.kivakit.core.kernel.language.values.level.Percent;
+import com.telenav.kivakit.core.kernel.logging.Logger;
+import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
 import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.geography.shape.rectangle.Size;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
-import com.telenav.kivakit.core.kernel.language.values.level.Percent;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
 import org.junit.Test;
 
 @SuppressWarnings("ConstantConditions")
@@ -46,7 +46,7 @@ public class LocationTest extends MapGeographyUnitTest
         final var expectedLongitude = location.longitude().plus(size.width());
         final var expectedLocation = new Location(expectedLatitude, expectedLongitude);
 
-        ensureEqual(expectedLocation, location.offset(size));
+        ensureEqual(expectedLocation, location.offsetBy(size));
     }
 
     @Test
@@ -76,7 +76,7 @@ public class LocationTest extends MapGeographyUnitTest
         loop(() ->
         {
             final var from = randomValueFactory().newLocation(Rectangle.MINIMUM.expanded(Distance.kilometers(5_000)));
-            final var to = randomValueFactory().newLocation(from.bounds().expanded(Distance.kilometers(1)));
+            final var to = randomValueFactory().newLocation(from.asBoundsFromOrigin().expanded(Distance.kilometers(1)));
             final var haversine = from.haversineDistanceTo(to);
             final var cosines = from.lawOfCosinesDistanceTo(to);
             final var rectangular = from.equirectangularDistanceTo(to);

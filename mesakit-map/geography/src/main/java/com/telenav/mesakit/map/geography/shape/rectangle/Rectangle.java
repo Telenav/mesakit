@@ -63,68 +63,68 @@ import static com.telenav.mesakit.map.geography.Precision.DM7;
 @UmlClassDiagram(diagram = DiagramRectangle.class)
 public class Rectangle implements Intersectable, LocationSequence, Bounded, Outline, Dimensioned
 {
-    public static final Rectangle CONTINENTAL_US = new Rectangle(
-            new Location(Latitude.degrees(24), Longitude.degrees(-128)),
-            new Location(Latitude.degrees(52), Longitude.degrees(-64)));
-
-    public static final Rectangle PUERTO_RICO_US = new Rectangle(
-            new Location(Latitude.degrees(17), Longitude.degrees(-68)),
-            new Location(Latitude.degrees(19), Longitude.degrees(-65)));
-
     public static final Rectangle ALASKA_US = new Rectangle(new Location(Latitude.degrees(52), Longitude.degrees(-172)),
             new Location(Latitude.degrees(72), Longitude.degrees(-141)));
 
-    public static final Rectangle HAWAII_US = new Rectangle(new Location(Latitude.degrees(18), Longitude.degrees(-161)),
-            new Location(Latitude.degrees(24), Longitude.degrees(-153)));
-
-    public static final Rectangle SUNNYVALE_CA_US = new Rectangle(
-            new Location(Latitude.degrees(37.352147), Longitude.degrees(-122.059492)),
-            new Location(Latitude.degrees(37.386893), Longitude.degrees(-122.004238)));
-
-    public static final Rectangle LOS_ANGLES_US = new Rectangle(
-            new Location(Latitude.degrees(33.20192), Longitude.degrees(-119.11377)),
-            new Location(Latitude.degrees(35.37114), Longitude.degrees(-116.36719)));
-
-    public static final Rectangle TELENAV_CA_US = new Rectangle(
-            new Location(Latitude.degrees(37.385572), Longitude.degrees(-122.006137)),
-            new Location(Latitude.degrees(37.416664), Longitude.degrees(-121.987064)));
+    public static final Rectangle BAY_AREA = fromLocations(
+            new Location(Latitude.degrees(37.84016), Longitude.degrees(-122.60468)),
+            new Location(Latitude.degrees(37.20627), Longitude.degrees(-121.70654)));
 
     public static final Rectangle BERLIN_DE_EU = new Rectangle(
             new Location(Latitude.degrees(52.2202), Longitude.degrees(12.8925)),
             new Location(Latitude.degrees(52.7621), Longitude.degrees(13.9993)));
 
-    public static final Rectangle EU = new Rectangle(
-            new Location(Latitude.degrees(32.84267), Longitude.degrees(-14.58984)),
-            new Location(Latitude.degrees(60.67318), Longitude.degrees(43.24219)));
-
-    public static final Rectangle WEST_NA = new Rectangle(
-            new Location(Latitude.degrees(18.39623), Longitude.degrees(-126.12305)),
-            new Location(Latitude.degrees(60.06484), Longitude.degrees(-106.69922)));
+    public static final Rectangle CALIFORNIA_AND_NEVADA = fromLocations(
+            new Location(Latitude.degrees(32.13841), Longitude.degrees(-124.73877)),
+            new Location(Latitude.degrees(42.0), Longitude.degrees(-114.19189)));
 
     public static final Rectangle CENTRAL_NA = new Rectangle(
             new Location(Latitude.degrees(12.72608), Longitude.degrees(-108.36914)),
             new Location(Latitude.degrees(63.54855), Longitude.degrees(-87.45117)));
 
+    public static final Rectangle CONTINENTAL_US = new Rectangle(
+            new Location(Latitude.degrees(24), Longitude.degrees(-128)),
+            new Location(Latitude.degrees(52), Longitude.degrees(-64)));
+
     public static final Rectangle EAST_NA = new Rectangle(
             new Location(Latitude.degrees(7.9722), Longitude.degrees(-93.69141)),
             new Location(Latitude.degrees(58.44773), Longitude.degrees(-48.33984)));
+
+    public static final Rectangle EU = new Rectangle(
+            new Location(Latitude.degrees(32.84267), Longitude.degrees(-14.58984)),
+            new Location(Latitude.degrees(60.67318), Longitude.degrees(43.24219)));
+
+    public static final Rectangle HAWAII_US = new Rectangle(new Location(Latitude.degrees(18), Longitude.degrees(-161)),
+            new Location(Latitude.degrees(24), Longitude.degrees(-153)));
+
+    private static final Logger LOGGER = LoggerFactory.newLogger();
+
+    private static final Location.DegreesConverter LOCATION_CONVERTER = new Location.DegreesConverter(LOGGER);
+
+    public static final Rectangle LOS_ANGLES_US = new Rectangle(
+            new Location(Latitude.degrees(33.20192), Longitude.degrees(-119.11377)),
+            new Location(Latitude.degrees(35.37114), Longitude.degrees(-116.36719)));
 
     public static final Rectangle MAXIMUM = new Rectangle(new Location(Latitude.MINIMUM, Longitude.MINIMUM),
             new Location(Latitude.MAXIMUM, Longitude.MAXIMUM));
 
     public static final Rectangle MINIMUM = new Rectangle(Location.ORIGIN, Location.ORIGIN);
 
-    public static final Rectangle CALIFORNIA_AND_NEVADA = fromLocations(
-            new Location(Latitude.degrees(32.13841), Longitude.degrees(-124.73877)),
-            new Location(Latitude.degrees(42.0), Longitude.degrees(-114.19189)));
+    public static final Rectangle PUERTO_RICO_US = new Rectangle(
+            new Location(Latitude.degrees(17), Longitude.degrees(-68)),
+            new Location(Latitude.degrees(19), Longitude.degrees(-65)));
 
-    public static final Rectangle BAY_AREA = fromLocations(
-            new Location(Latitude.degrees(37.84016), Longitude.degrees(-122.60468)),
-            new Location(Latitude.degrees(37.20627), Longitude.degrees(-121.70654)));
+    public static final Rectangle SUNNYVALE_CA_US = new Rectangle(
+            new Location(Latitude.degrees(37.352147), Longitude.degrees(-122.059492)),
+            new Location(Latitude.degrees(37.386893), Longitude.degrees(-122.004238)));
 
-    private static final Logger LOGGER = LoggerFactory.newLogger();
+    public static final Rectangle TELENAV_CA_US = new Rectangle(
+            new Location(Latitude.degrees(37.385572), Longitude.degrees(-122.006137)),
+            new Location(Latitude.degrees(37.416664), Longitude.degrees(-121.987064)));
 
-    private static final Location.DegreesConverter LOCATION_CONVERTER = new Location.DegreesConverter(LOGGER);
+    public static final Rectangle WEST_NA = new Rectangle(
+            new Location(Latitude.degrees(18.39623), Longitude.degrees(-126.12305)),
+            new Location(Latitude.degrees(60.06484), Longitude.degrees(-106.69922)));
 
     public static ArgumentParser.Builder<Rectangle> argumentParser(final String description)
     {
@@ -141,7 +141,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         final var builder = new BoundingBoxBuilder();
         for (final var object : objects)
         {
-            builder.add(object.bounds());
+            builder.add(object.asBoundsFromOrigin());
         }
         return builder.build();
     }
@@ -155,7 +155,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         final var builder = new BoundingBoxBuilder();
         for (final Bounded object : objects)
         {
-            builder.add(object.bounds());
+            builder.add(object.asBoundsFromOrigin());
         }
         return builder.build();
     }
@@ -201,7 +201,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
      */
     public static Rectangle fromLocationWidthAndHeight(final Location location, final Width width, final Height height)
     {
-        return new Rectangle(location, location.offset(width).offset(height));
+        return new Rectangle(location, location.offsetBy(width).offsetBy(height));
     }
 
     /**
@@ -425,6 +425,12 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         return Area.squareMeters((long) squareMeters);
     }
 
+    @Override
+    public Rectangle asBoundsFromOrigin()
+    {
+        return this;
+    }
+
     public Polygon asPolygon()
     {
         return Polygon.fromLocationSequence(locationSequence());
@@ -468,12 +474,6 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     public Location bottomRight()
     {
         return new Location(bottomLeft().latitude(), topRight().longitude());
-    }
-
-    @Override
-    public Rectangle bounds()
-    {
-        return this;
     }
 
     public Iterable<Rectangle> cells(final Distance size)
@@ -693,7 +693,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     {
         final var latitude = Latitude.degrees(scaleFactor.scale(height().asDegrees()));
         final var longitude = Longitude.degrees(scaleFactor.scale(width().asDegrees()));
-        return fromLocations(bottomLeft().minus(latitude, longitude), topRight().offset(latitude, longitude));
+        return fromLocations(bottomLeft().relativeTo(latitude, longitude), topRight().offsetBy(latitude, longitude));
     }
 
     public Rectangle expandedBottom(final Distance distance)
@@ -875,7 +875,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
 
     public Rectangle moved(final Offset offset)
     {
-        return fromLocations(topLeft().offset(offset), bottomRight().offset(offset));
+        return fromLocations(topLeft().offsetBy(offset), bottomRight().offsetBy(offset));
     }
 
     public Rectangle northEastQuadrant()
@@ -910,7 +910,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
 
     public Rectangle shrunken(final Angle angle)
     {
-        return fromLocations(bottomLeft().offset(Width.angle(angle)).offset(Height.angle(angle)),
+        return fromLocations(bottomLeft().offsetBy(Width.angle(angle)).offsetBy(Height.angle(angle)),
                 topRight().minus(Width.angle(angle)).minus(Height.angle(angle)));
     }
 
@@ -922,7 +922,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
 
     public Rectangle shrunken(final Latitude latitude, final Longitude longitude)
     {
-        return fromLocations(bottomLeft().offset(latitude, longitude), topRight().minus(latitude, longitude));
+        return fromLocations(bottomLeft().offsetBy(latitude, longitude), topRight().relativeTo(latitude, longitude));
     }
 
     public Rectangle shrunken(final Percent scaleFactor)
@@ -932,6 +932,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         return shrunken(latitude, longitude);
     }
 
+    @Override
     public Size size()
     {
         return new Size(width(), height());

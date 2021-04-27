@@ -18,23 +18,6 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
-import com.telenav.mesakit.map.geography.Latitude;
-import com.telenav.mesakit.map.geography.LocatedHeading;
-import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.LocationSequence;
-import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.MapGeographyLimits;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
-import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
-import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
-import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
-import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.geography.shape.segment.Segment;
-import com.telenav.mesakit.map.geography.shape.segment.SegmentPair;
-import com.telenav.mesakit.map.measurements.geographic.Angle;
-import com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
-import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.mesakit.map.measurements.geographic.Heading;
 import com.telenav.kivakit.core.collections.primitive.array.scalars.LongArray;
 import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.core.kernel.interfaces.collection.Indexable;
@@ -54,6 +37,23 @@ import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.core.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
+import com.telenav.mesakit.map.geography.Latitude;
+import com.telenav.mesakit.map.geography.LocatedHeading;
+import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.LocationSequence;
+import com.telenav.mesakit.map.geography.Longitude;
+import com.telenav.mesakit.map.geography.project.MapGeographyLimits;
+import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
+import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
+import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
+import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.geography.shape.segment.Segment;
+import com.telenav.mesakit.map.geography.shape.segment.SegmentPair;
+import com.telenav.mesakit.map.measurements.geographic.Angle;
+import com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
+import com.telenav.mesakit.map.measurements.geographic.Heading;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.ref.SoftReference;
@@ -76,8 +76,8 @@ import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensu
  * <pre>
  *     for (var location : polyline) { ... }
  * </pre>
- * Polylines also have a bounding rectangle retrieved with {@link Bounded#bounds()}. It can be determined if the
- * polyline intersects a rectangle or segment with {@link Intersectable#intersects(Rectangle)} and {@link
+ * Polylines also have a bounding rectangle retrieved with {@link Bounded#asBoundsFromOrigin()}. It can be determined if
+ * the polyline intersects a rectangle or segment with {@link Intersectable#intersects(Rectangle)} and {@link
  * #intersects(Segment)}, and whether it intersects itself with {@link #selfIntersection()}. The point of intersection
  * with another polyline or with a segment can be determined with {@link #intersection(Polyline)} and {@link
  * #intersection(Segment)}. Whether two polylines cross each other can be determined with {@link #crosses(Polyline)}.
@@ -583,6 +583,19 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         return builder.build();
     }
 
+    /**
+     * @return The minimum bounding rectangle of all shapepoints
+     */
+    @Override
+    public final Rectangle asBoundsFromOrigin()
+    {
+        if (leftInDecimal == Integer.MAX_VALUE)
+        {
+            expandBounds(locationsInDecimal());
+        }
+        return Rectangle.fromInts(bottomInDecimal, leftInDecimal, topInDecimal, rightInDecimal);
+    }
+
     @Override
     public @NotNull
     Iterator<Location> asIterator()
@@ -811,19 +824,6 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     }
 
     /**
-     * @return The minimum bounding rectangle of all shapepoints
-     */
-    @Override
-    public final Rectangle bounds()
-    {
-        if (leftInDecimal == Integer.MAX_VALUE)
-        {
-            expandBounds(locationsInDecimal());
-        }
-        return Rectangle.fromInts(bottomInDecimal, leftInDecimal, topInDecimal, rightInDecimal);
-    }
-
-    /**
      * @return The percentage of this polyline that is within the given distance from that polyline. Areas where the
      * headings of the two polylines deviate by more than the given maximumHeadingDeviation are not considered close,
      * nor are areas where the polylines are more end-to-end than side-by-side.
@@ -869,7 +869,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
 
     public boolean crosses(final Polyline that)
     {
-        if (bounds().intersects(that.bounds()))
+        if (asBoundsFromOrigin().intersects(that.asBoundsFromOrigin()))
         {
             for (final var thisSegment : segments())
             {
@@ -1055,7 +1055,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     @Override
     public boolean intersects(final Rectangle rectangle)
     {
-        if (bounds().intersects(rectangle))
+        if (asBoundsFromOrigin().intersects(rectangle))
         {
             for (final var segment : segments())
             {

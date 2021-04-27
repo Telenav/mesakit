@@ -88,8 +88,8 @@ import static com.telenav.mesakit.map.geography.Precision.DM7;
  * <ul>
  *     <li>{@link #moved(Heading, Distance)} - This location moved the given distance at the given heading</li>
  *     <li>{@link #scaledBy(double, double)} - This location multiplied by the given scale factors</li>
- *     <li>{@link #offset(Width)} - This location offset by the given {@link Width}</li>
- *     <li>{@link #offset(Height)} - This location offset by the given {@link Height}</li>
+ *     <li>{@link #offsetBy(Width)} - This location offset by the given {@link Width}</li>
+ *     <li>{@link #offsetBy(Height)} - This location offset by the given {@link Height}</li>
  *     <li>{@link #minus(Width)} - This location offset by the given {@link Width}</li>
  *     <li>{@link #minus(Height)} - This location offset by the given {@link Height}</li>
  * </ul>
@@ -116,8 +116,8 @@ import static com.telenav.mesakit.map.geography.Precision.DM7;
  *     <li>{@link #isClose(Location, Angle)} - True if the given location's latitude and longitude are within the given angle of this location</li>
  * </ul>
  * Locations support validation via {@link Validatable}, and they can be intersected with a rectangle using
- * {@link Intersectable#intersects(com.telenav.mesakit.map.geography.shape.rectangle.Rectangle)}. Although a location is a zero-dimensional point, it also supports
- * retrieval of a bounding rectangle of zero width and height with {@link Bounded#bounds()}. Naturally, a location is
+ * {@link Intersectable#intersects(Rectangle)}. Although a location is a zero-dimensional point, it also supports
+ * retrieval of a bounding rectangle of zero width and height with {@link Bounded#asBoundsFromOrigin()}. Naturally, a location is
  * also {@link Located} for interoperation with other objects that are also {@link Located}.
  *
  * @author jonathanl (shibo)
@@ -133,22 +133,22 @@ import static com.telenav.mesakit.map.geography.Precision.DM7;
 @UmlRelation(label = "represented at", referent = Precision.class)
 public class Location implements Validatable, Located, Identifiable, Bounded, Intersectable, AsString, Serializable
 {
-    public static final Location TELENAV_HEADQUARTERS = new Location(Latitude.degrees(37.3859),
-            Longitude.degrees(-122.0046));
-
-    public static final Location ORIGIN = new Location(Latitude.ORIGIN, Longitude.ORIGIN);
-
-    public static final Location MINIMUM = new Location(Latitude.MINIMUM, Longitude.MINIMUM);
-
-    public static final Location MAXIMUM = new Location(Latitude.MAXIMUM, Longitude.MAXIMUM);
-
-    public static final long NULL = Long.MIN_VALUE;
-
-    public static final BitCount SIZE_IN_BITS = BitCount.bitCount(64);
+    private static final long EARTH_RADIUS_IN_METERS = (long) Distance.EARTH_RADIUS.asMeters();
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    private static final long EARTH_RADIUS_IN_METERS = (long) Distance.EARTH_RADIUS.asMeters();
+    public static final Location MAXIMUM = new Location(Latitude.MAXIMUM, Longitude.MAXIMUM);
+
+    public static final Location MINIMUM = new Location(Latitude.MINIMUM, Longitude.MINIMUM);
+
+    public static final long NULL = Long.MIN_VALUE;
+
+    public static final Location ORIGIN = new Location(Latitude.ORIGIN, Longitude.ORIGIN);
+
+    public static final BitCount SIZE_IN_BITS = BitCount.bitCount(64);
+
+    public static final Location TELENAV_HEADQUARTERS = new Location(Latitude.degrees(37.3859),
+            Longitude.degrees(-122.0046));
 
     private static final double[] latitudeCosine = { 1.0,
             0.9998476951563913, 0.9993908270190958, 0.9986295347545738, 0.9975640502598242, 0.9961946980917455,
@@ -597,6 +597,16 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         return new Point(longitude().asMicrodegrees(), latitude().asMicrodegrees());
     }
 
+    /**
+     * @return A zero-area bounding rectangle at this location, which can be expanded with {@link
+     * Rectangle#expanded(Distance)}
+     */
+    @Override
+    public Rectangle asBoundsFromOrigin()
+    {
+        return Rectangle.fromLocations(this, this);
+    }
+
     public long asDecimal(final Precision precision)
     {
         return DM7.to(precision, asDm7Long());
@@ -620,6 +630,11 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
     public long asDm7Long()
     {
         return toLong(latitudeInDm7, longitudeInDm7);
+    }
+
+    public Height asHeightFromOrigin()
+    {
+        return boundsFromOrigin().height();
     }
 
     public long asLong()
@@ -651,6 +666,11 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         }
     }
 
+    public Size asSizeFromOrigin()
+    {
+        return new Size(asWidthFromOrigin(), asHeightFromOrigin());
+    }
+
     @Override
     public String asString(final StringFormat format)
     {
@@ -664,14 +684,17 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         }
     }
 
-    /**
-     * @return A zero-area bounding rectangle at this location, which can be expanded with {@link
-     * com.telenav.mesakit.map.geography.shape.rectangle.Rectangle#expanded(Distance)}
-     */
-    @Override
-    public com.telenav.mesakit.map.geography.shape.rectangle.Rectangle bounds()
+    public Width asWidthFromOrigin()
     {
-        return com.telenav.mesakit.map.geography.shape.rectangle.Rectangle.fromLocations(this, this);
+        return asBoundsFromOrigin().width();
+    }
+
+    /**
+     * @return A rectangle including the origin and this point
+     */
+    public Rectangle boundsFromOrigin()
+    {
+        return Rectangle.fromLocations(this, ORIGIN);
     }
 
     public Location decremented()
@@ -788,11 +811,6 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         return Heading.radians(Trigonometry.arcTangent2(y, x));
     }
 
-    public Height height()
-    {
-        return bounds().height();
-    }
-
     /**
      * {@inheritDoc}
      */
@@ -813,7 +831,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
      * @return True if the given rectangle contains this location
      */
     @Override
-    public boolean intersects(final com.telenav.mesakit.map.geography.shape.rectangle.Rectangle rectangle)
+    public boolean intersects(final Rectangle rectangle)
     {
         return rectangle.contains(this);
     }
@@ -918,11 +936,6 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         return new Location(latitude().minus(height), longitude());
     }
 
-    public Location minus(final Latitude latitude, final Longitude longitude)
-    {
-        return new Location(latitude().minus(latitude), longitude().minus(longitude));
-    }
-
     public Location minus(final Width width)
     {
         return new Location(latitude(), longitude().minus(width));
@@ -962,22 +975,22 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         return new Location(Latitude.angle(Angle.radians(movedLatitude)), Longitude.angle(newLongitude));
     }
 
-    public Location offset(final Dimensioned sized)
+    public Location offsetBy(final Dimensioned sized)
     {
         return new Location(latitude().plus(sized.height()), longitude().plus(sized.width()));
     }
 
-    public Location offset(final Height height)
+    public Location offsetBy(final Height height)
     {
         return new Location(latitude().plus(height), longitude());
     }
 
-    public Location offset(final Latitude latitude, final Longitude longitude)
+    public Location offsetBy(final Latitude latitude, final Longitude longitude)
     {
         return new Location(latitude().plus(latitude), longitude().plus(longitude));
     }
 
-    public Location offset(final Width width)
+    public Location offsetBy(final Width width)
     {
         return new Location(latitude(), longitude().plus(width));
     }
@@ -1003,9 +1016,19 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         return new Location(latitude, longitude);
     }
 
-    public com.telenav.mesakit.map.geography.shape.rectangle.Rectangle rectangle(final Dimensioned sized)
+    public Rectangle rectangle(final Dimensioned sized)
     {
-        return Rectangle.fromLocations(this, offset(sized));
+        return Rectangle.fromLocations(this, offsetBy(sized));
+    }
+
+    public Location relativeTo(final Location that)
+    {
+        return new Location(latitude().minus(that.latitude()), longitude().minus(that.longitude()));
+    }
+
+    public Location relativeTo(final Latitude latitude, final Longitude longitude)
+    {
+        return new Location(latitude().minus(latitude), longitude().minus(longitude));
     }
 
     public Location scaledBy(final double latitudeScale, final double longitudeScale)
@@ -1015,7 +1038,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
 
     public Size size()
     {
-        return bounds().size();
+        return boundsFromOrigin().size();
     }
 
     public Segment to(final Location to)
@@ -1044,11 +1067,6 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         };
     }
 
-    public Width width()
-    {
-        return bounds().width();
-    }
-
     public Location withLatitude(final Latitude latitude)
     {
         return new Location(latitude, longitude());
@@ -1059,7 +1077,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         return new Location(latitude(), longitude);
     }
 
-    public com.telenav.mesakit.map.geography.shape.rectangle.Rectangle within(final Distance distance)
+    public Rectangle within(final Distance distance)
     {
         return Rectangle.fromLocations(this, this).expanded(distance);
     }

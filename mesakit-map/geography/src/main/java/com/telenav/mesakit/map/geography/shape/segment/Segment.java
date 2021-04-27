@@ -18,6 +18,16 @@
 
 package com.telenav.mesakit.map.geography.shape.segment;
 
+import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.core.kernel.language.iteration.Iterables;
+import com.telenav.kivakit.core.kernel.language.iteration.Next;
+import com.telenav.kivakit.core.kernel.language.objects.Hash;
+import com.telenav.kivakit.core.kernel.language.objects.Pair;
+import com.telenav.kivakit.core.kernel.language.strings.formatting.Separators;
+import com.telenav.kivakit.core.kernel.messaging.Listener;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.LocationSequence;
@@ -34,16 +44,6 @@ import com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.geographic.Headed;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.core.kernel.language.iteration.Iterables;
-import com.telenav.kivakit.core.kernel.language.iteration.Next;
-import com.telenav.kivakit.core.kernel.language.objects.Hash;
-import com.telenav.kivakit.core.kernel.language.objects.Pair;
-import com.telenav.kivakit.core.kernel.language.strings.formatting.Separators;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 
 import java.awt.geom.Line2D;
 import java.io.Serializable;
@@ -148,6 +148,12 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
         return start().distanceTo(end());
     }
 
+    @Override
+    public Rectangle asBoundsFromOrigin()
+    {
+        return Rectangle.fromLongs(startInDm7, endInDm7);
+    }
+
     public Polyline asPolyline()
     {
         return Polyline.fromLocations(start(), end());
@@ -175,12 +181,6 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
         final var line1 = start().moved(arrowHeading.plus(offset), arrowSize);
         final var line2 = start().moved(arrowHeading.minus(offset), arrowSize);
         return Polyline.fromLocations(line1, start(), line2);
-    }
-
-    @Override
-    public Rectangle bounds()
-    {
-        return Rectangle.fromLongs(startInDm7, endInDm7);
     }
 
     public Location center()

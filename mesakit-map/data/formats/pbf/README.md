@@ -37,7 +37,7 @@ This module contains packages for processing data in OpenStreetMap PBF format.
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-data-formats-pbf</artifactId>
-        <version>0.9.0-SNAPSHOT</version>
+        <version>-SNAPSHOT</version>
     </dependency>
 
 

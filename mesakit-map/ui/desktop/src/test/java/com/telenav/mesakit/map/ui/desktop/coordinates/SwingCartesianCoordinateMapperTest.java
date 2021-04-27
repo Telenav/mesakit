@@ -33,7 +33,7 @@ public class SwingCartesianCoordinateMapperTest extends BaseCoordinateMapperTest
     public void testLocationForPoint1()
     {
         final CartesianCoordinateMapper mapper = new CartesianCoordinateMapper(Rectangle.MAXIMUM,
-                awtRectangle(0, 0, 100, 100));
+                drawingRectangle(0, 0, 100, 100));
 
         ensureEqual(Rectangle.MAXIMUM.topLeft(), mapper.toMapLocation(point(0, 0)));
         ensureEqual(Rectangle.MAXIMUM.bottomLeft(), mapper.toMapLocation(point(0, 100)));
@@ -47,7 +47,7 @@ public class SwingCartesianCoordinateMapperTest extends BaseCoordinateMapperTest
     public void testLocationForPoint2()
     {
         final CartesianCoordinateMapper mapper = new CartesianCoordinateMapper(Rectangle.MAXIMUM,
-                awtRectangle(100, 100, 100, 100));
+                drawingRectangle(100, 100, 100, 100));
 
         ensureEqual(Rectangle.MAXIMUM.topLeft(), mapper.toMapLocation(point(100, 100)));
         ensureEqual(Rectangle.MAXIMUM.bottomLeft(), mapper.toMapLocation(point(100, 200)));
@@ -61,7 +61,7 @@ public class SwingCartesianCoordinateMapperTest extends BaseCoordinateMapperTest
     public void testPointForLocation1()
     {
         final CartesianCoordinateMapper mapper = new CartesianCoordinateMapper(Rectangle.MAXIMUM,
-                awtRectangle(0, 0, 100, 100));
+                drawingRectangle(0, 0, 100, 100));
 
         ensureEqual(point(0, 0), mapper.toDrawingPoint(Rectangle.MAXIMUM.topLeft()));
         ensureEqual(point(0, 100), mapper.toDrawingPoint(Rectangle.MAXIMUM.bottomLeft()));
@@ -75,7 +75,7 @@ public class SwingCartesianCoordinateMapperTest extends BaseCoordinateMapperTest
     public void testPointForLocation2()
     {
         final CartesianCoordinateMapper mapper = new CartesianCoordinateMapper(Rectangle.MAXIMUM,
-                awtRectangle(100, 100, 100, 100));
+                drawingRectangle(100, 100, 100, 100));
 
         ensureEqual(point(100, 100), mapper.toDrawingPoint(Rectangle.MAXIMUM.topLeft()));
         ensureEqual(point(100, 200), mapper.toDrawingPoint(Rectangle.MAXIMUM.bottomLeft()));
@@ -95,20 +95,20 @@ public class SwingCartesianCoordinateMapperTest extends BaseCoordinateMapperTest
 
         // Map from 100,100:200,200 swing rectangle to 0,0:10,10 geographic rectangle
         final CartesianCoordinateMapper mapper = new CartesianCoordinateMapper(
-                Location.ORIGIN.rectangle(size), awtRectangle(100, 100, 100, 100));
+                Location.ORIGIN.rectangle(size), drawingRectangle(100, 100, 100, 100));
 
         // Ensure simple cases in the corners (the middle will be distorted by the projection)
-        checkMapping(mapper, point(100, 100), Location.ORIGIN.offset(height));
+        checkMapping(mapper, point(100, 100), Location.ORIGIN.offsetBy(height));
         checkMapping(mapper, point(100, 200), Location.ORIGIN);
-        checkMapping(mapper, point(200, 100), Location.ORIGIN.offset(size));
-        checkMapping(mapper, point(200, 200), Location.ORIGIN.offset(width));
+        checkMapping(mapper, point(200, 100), Location.ORIGIN.offsetBy(size));
+        checkMapping(mapper, point(200, 200), Location.ORIGIN.offsetBy(width));
     }
 
     @Test
     public void testWorld()
     {
         final CartesianCoordinateMapper mapper = new CartesianCoordinateMapper(
-                SlippyTileCoordinateSystem.BOUNDS, awtRectangle(100, 100, 100, 100));
+                SlippyTileCoordinateSystem.BOUNDS, drawingRectangle(100, 100, 100, 100));
 
         // The origin will not be distorted
         checkMapping(mapper, point(150, 150), Location.ORIGIN);
@@ -132,7 +132,7 @@ public class SwingCartesianCoordinateMapperTest extends BaseCoordinateMapperTest
         // Map from 100,100:200,200 swing rectangle to 47.601765,-122.332335:48.601765,-121.332335
         // geographic rectangle around downtown Seattle
         final CartesianCoordinateMapper mapper = new CartesianCoordinateMapper(seattle,
-                awtRectangle(100, 100, 100, 100));
+                drawingRectangle(100, 100, 100, 100));
 
         // Ensure simple cases in the corners (the middle will be distorted by the projection)
         checkMapping(mapper, point(100, 100), seattle.topLeft());

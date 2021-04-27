@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.geography.indexing.polygon;
 
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramSpatialIndex;
 import com.telenav.mesakit.map.geography.shape.Outline;
@@ -27,7 +28,6 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.geography.shape.segment.Segment;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**
  * A {@link PolygonSpatialIndex} indexes a polygon with a quad-tree-like structure that allows for fast containment
@@ -78,7 +78,7 @@ public class PolygonSpatialIndex implements Intersectable, Bounded, Outline
 
         // Save the polygon and it's bounds
         this.polygon = polygon;
-        bounds = polygon.bounds();
+        bounds = polygon.asBoundsFromOrigin();
 
         // Recursively construct the spatial index
         root = store.add(new Node(this, bounds));
@@ -92,7 +92,7 @@ public class PolygonSpatialIndex implements Intersectable, Bounded, Outline
     }
 
     @Override
-    public Rectangle bounds()
+    public Rectangle asBoundsFromOrigin()
     {
         return bounds;
     }

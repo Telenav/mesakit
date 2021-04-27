@@ -10,12 +10,11 @@
 source library-functions.sh
 source mesakit-projects.sh
 
-project_home=$1
-version="${2%-SNAPSHOT}-SNAPSHOT"
+help="[version]"
 
-ARGUMENT_HELP="[version]"
+version="${1%-SNAPSHOT}-SNAPSHOT"
 
-require_variable version
+require_variable version "$help"
 
 for project_home in "${MESAKIT_PROJECT_HOMES[@]}"; do
 
