@@ -23,12 +23,12 @@ package com.telenav.mesakit.map.ui.debug.debuggers;
 
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.polygon.PolygonSpatialIndexDebugger;
-import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.geography.shape.segment.Segment;
 import com.telenav.mesakit.map.ui.debug.viewer.View;
-
-import java.awt.Color;
+import com.telenav.mesakit.map.ui.desktop.theme.shapes.Bounds;
+import com.telenav.mesakit.map.ui.desktop.theme.shapes.Locations;
+import com.telenav.mesakit.map.ui.desktop.theme.shapes.Polylines;
 
 /**
  * @author jonathanl (shibo)
@@ -45,34 +45,24 @@ public class PolygonSpatialIndexVisualDebugger implements PolygonSpatialIndexDeb
     @Override
     public void leaf(final Rectangle bounds, final Segment a, final Segment b, final Location inside)
     {
-        view(bounds, Color.LIGHT_GRAY, Color.RED, null);
+        view.add(Bounds.ACTIVE_BOUNDING_BOX.withRectangle(bounds));
         if (a != null)
         {
-            view(a.asPolyline(), Color.LIGHT_GRAY, Color.BLUE, null);
+            view.add(Polylines.NORMAL.withPolyline(a.asPolyline()));
         }
         if (b != null)
         {
-            view(b.asPolyline(), Color.LIGHT_GRAY, Color.BLUE, null);
+            view.add(Polylines.NORMAL.withPolyline(b.asPolyline()));
         }
         if (inside != null)
         {
-            view.add(new ViewableLocation(inside, Color.LIGHT_GRAY, Color.GREEN, null));
+            view.add(Locations.LOCATION.atLocation(inside));
         }
     }
 
     @Override
     public void quadrant(final Rectangle bounds)
     {
-        view(bounds, Color.LIGHT_GRAY, Color.RED, null);
-    }
-
-    private void view(final Rectangle rectangle, final Color background, final Color foreground, final String label)
-    {
-        view.add(new ViewableRectangle(rectangle, background, foreground, label));
-    }
-
-    private void view(final Polyline polyline, final Color background, final Color foreground, final String label)
-    {
-        view.add(new ViewablePolyline(polyline, background, foreground, label));
+        view.add(Bounds.INACTIVE_BOUNDING_BOX.withRectangle(bounds));
     }
 }

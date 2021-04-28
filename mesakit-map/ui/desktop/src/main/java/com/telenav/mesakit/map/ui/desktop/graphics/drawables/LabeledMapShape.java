@@ -66,7 +66,7 @@ public abstract class LabeledMapShape extends BaseMapShape
     {
         if (label != null)
         {
-            return drawLabel(canvas, anchor(canvas, location()));
+            return drawLabel(canvas, anchor(canvas, atLocation()));
         }
 
         return null;

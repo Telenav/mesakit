@@ -22,6 +22,7 @@
 package com.telenav.mesakit.map.ui.debug.viewer;
 
 import com.telenav.kivakit.core.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.Drawable;
 
 /**
  * A view is a named repository of {@link Viewable} objects which can be updated.
@@ -33,7 +34,7 @@ public interface View extends Named
     /**
      * Adds the given object to the view. Since it is not identified, it can never be removed or updated.
      */
-    void add(Viewable object);
+    void add(Drawable drawable);
 
     /**
      * Clears the set of {@link Viewable} objects held by this view. Not all views necessarily support this operation.

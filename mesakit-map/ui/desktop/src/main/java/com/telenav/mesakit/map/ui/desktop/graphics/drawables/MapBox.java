@@ -72,22 +72,22 @@ public class MapBox extends LabeledMapShape
     }
 
     @Override
+    public MapBox atLocation(final Location at)
+    {
+        return (MapBox) super.atLocation(at);
+    }
+
+    @Override
     public MapBox copy()
     {
         return new MapBox(this);
     }
 
     @Override
-    public MapBox location(final Location at)
-    {
-        return (MapBox) super.location(at);
-    }
-
-    @Override
     public Shape onDraw(final MapCanvas canvas)
     {
         final var box = box(canvas.toCoordinates(size))
-                .at(canvas.toCoordinates(location()))
+                .at(canvas.toCoordinates(atLocation()))
                 .draw(canvas);
 
         final var label = super.onDraw(canvas);
@@ -159,6 +159,13 @@ public class MapBox extends LabeledMapShape
     public MapBox withOffset(final int dx, final int dy)
     {
         return (MapBox) super.withOffset(dx, dy);
+    }
+
+    public MapBox withRectangle(final Rectangle rectangle)
+    {
+        return copy()
+                .atLocation(rectangle.topLeft())
+                .withSize(rectangle.size());
     }
 
     public MapBox withSize(final Size size)

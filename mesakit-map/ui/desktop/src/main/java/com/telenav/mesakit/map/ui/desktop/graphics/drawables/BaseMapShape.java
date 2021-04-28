@@ -53,22 +53,22 @@ public abstract class BaseMapShape extends BaseDrawable
         super(style);
     }
 
-    @Override
-    public final Shape draw(final DrawingSurface surface)
-    {
-        return onDraw((MapCanvas) surface);
-    }
-
-    public BaseMapShape location(final Location at)
+    public BaseMapShape atLocation(final Location at)
     {
         final var copy = (BaseMapShape) copy();
         copy.location = at;
         return copy;
     }
 
-    public Location location()
+    public Location atLocation()
     {
         return location;
+    }
+
+    @Override
+    public final Shape draw(final DrawingSurface surface)
+    {
+        return onDraw((MapCanvas) surface);
     }
 
     public abstract Shape onDraw(final MapCanvas canvas);

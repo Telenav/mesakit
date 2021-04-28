@@ -52,7 +52,7 @@ public class MapPolyline extends LabeledMapShape
         return new MapPolyline(style, null);
     }
 
-    private final Polyline polyline;
+    private Polyline polyline;
 
     private String startLabel;
 
@@ -190,6 +190,13 @@ public class MapPolyline extends LabeledMapShape
     public MapPolyline withOffset(final int dx, final int dy)
     {
         return (MapPolyline) super.withOffset(dx, dy);
+    }
+
+    public MapPolyline withPolyline(final Polyline polyline)
+    {
+        final var copy = copy();
+        copy.polyline = polyline;
+        return copy;
     }
 
     public MapPolyline withStartLabel(final String text)

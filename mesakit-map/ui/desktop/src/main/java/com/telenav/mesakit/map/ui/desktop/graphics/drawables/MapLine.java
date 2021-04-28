@@ -86,6 +86,12 @@ public class MapLine extends LabeledMapShape
     }
 
     @Override
+    public MapLine atLocation(final Location at)
+    {
+        return (MapLine) super.atLocation(at);
+    }
+
+    @Override
     public MapLine copy()
     {
         return new MapLine(this);
@@ -93,13 +99,7 @@ public class MapLine extends LabeledMapShape
 
     public Location from()
     {
-        return location();
-    }
-
-    @Override
-    public MapLine location(final Location at)
-    {
-        return (MapLine) super.location(at);
+        return atLocation();
     }
 
     @Override
@@ -108,7 +108,7 @@ public class MapLine extends LabeledMapShape
         final var line = line(style(), from(), to, label)
                 .withFromArrowHead(fromArrowHead)
                 .withToArrowHead(toArrowHead)
-                .at(canvas.toCoordinates(location()))
+                .at(canvas.toCoordinates(atLocation()))
                 .draw(canvas);
 
         return AwtShapes.combine(line, super.onDraw(canvas));
@@ -170,7 +170,7 @@ public class MapLine extends LabeledMapShape
 
     public MapLine withFrom(final Location from)
     {
-        return location(from);
+        return atLocation(from);
     }
 
     public MapLine withFromArrowHead(final Drawable arrowHead)

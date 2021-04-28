@@ -12,4 +12,5 @@ open module mesakit.map.ui.debug
     exports com.telenav.mesakit.map.ui.debug.viewer.empty;
     exports com.telenav.mesakit.map.ui.debug.viewer.desktop;
     exports com.telenav.mesakit.map.ui.debug.viewer;
+    exports com.telenav.mesakit.map.ui.debug.viewer.desktop.theme;
 }

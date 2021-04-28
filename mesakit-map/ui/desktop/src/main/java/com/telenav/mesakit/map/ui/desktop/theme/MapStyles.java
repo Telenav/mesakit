@@ -26,7 +26,9 @@ import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.OCEAN;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.STEEL_BLUE;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.TRANSLUCENT_OCEAN;
+import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.TRANSPARENT;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.ARUBA;
+import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.GOLF;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.MANHATTAN;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.MOJITO;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.NIGHT_SHIFT;
@@ -38,6 +40,9 @@ import static com.telenav.mesakit.map.ui.desktop.theme.Strokes.DASHED;
 public class MapStyles
 {
     public static final Style ACTIVE = NIGHT_SHIFT;
+
+    public static final Style ACTIVE_BOUNDS = GOLF
+            .withFillColor(TRANSPARENT);
 
     public static final Style ARROWHEAD = ARUBA;
 
@@ -54,6 +59,9 @@ public class MapStyles
     public static final Style HIGHLIGHTED = NIGHT_SHIFT;
 
     public static final Style INACTIVE = SEATTLE;
+
+    public static final Style INACTIVE_BOUNDS = SEATTLE
+            .withFillColor(TRANSPARENT);
 
     public static final Style NORMAL = BASE;
 

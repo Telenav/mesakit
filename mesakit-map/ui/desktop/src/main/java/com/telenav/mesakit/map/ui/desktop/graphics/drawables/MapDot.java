@@ -75,15 +75,15 @@ public class MapDot extends LabeledMapShape
     }
 
     @Override
-    public MapDot copy()
+    public MapDot atLocation(final Location at)
     {
-        return new MapDot(this);
+        return (MapDot) super.atLocation(at);
     }
 
     @Override
-    public MapDot location(final Location at)
+    public MapDot copy()
     {
-        return (MapDot) super.location(at);
+        return new MapDot(this);
     }
 
     @Override
@@ -95,7 +95,7 @@ public class MapDot extends LabeledMapShape
 
         final var box = dot()
                 .withRadius(radius)
-                .at(canvas.toCoordinates(location()))
+                .at(canvas.toCoordinates(atLocation()))
                 .draw(canvas);
 
         final var label = super.onDraw(canvas);
