@@ -6,11 +6,8 @@ open module mesakit.map.ui.debug
 
     requires transitive kivakit.core.network.http;
 
-    exports com.telenav.mesakit.map.ui.debug;
-    exports com.telenav.mesakit.map.ui.debug.indexing.rtree;
-    exports com.telenav.mesakit.map.ui.debug.indexing.polygon;
     exports com.telenav.mesakit.map.ui.debug.viewer.empty;
     exports com.telenav.mesakit.map.ui.debug.viewer.desktop;
     exports com.telenav.mesakit.map.ui.debug.viewer;
-    exports com.telenav.mesakit.map.ui.debug.viewer.desktop.theme;
+    exports com.telenav.mesakit.map.ui.debug.debuggers;
 }

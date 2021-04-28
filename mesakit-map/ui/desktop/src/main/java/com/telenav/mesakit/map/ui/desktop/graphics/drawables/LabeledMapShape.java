@@ -10,7 +10,7 @@ import java.awt.Shape;
 /**
  * @author jonathanl (shibo)
  */
-public abstract class LabeledMapShape extends BaseMapShape
+public abstract class LabeledMapShape extends BaseMapDrawable
 {
     private String label;
 

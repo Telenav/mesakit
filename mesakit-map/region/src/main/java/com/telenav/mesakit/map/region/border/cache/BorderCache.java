@@ -84,7 +84,7 @@ import com.telenav.mesakit.map.region.regions.County;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
 import com.telenav.mesakit.map.region.regions.TimeZone;
-import com.telenav.mesakit.map.ui.desktop.debug.debuggers.indexing.rtree.RTreeSpatialIndexVisualDebugger;
+import com.telenav.mesakit.map.ui.debug.debuggers.RTreeSpatialIndexVisualDebugger;
 
 import java.io.IOException;
 import java.nio.file.attribute.PosixFilePermission;
@@ -128,20 +128,6 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
     private static final boolean DETAILED_TRACE = false;
 
     /**
-     * Set this to true to use the fast (and large) polygon spatial index implementation. Set to false to use a method
-     * based on RTreeSpatialIndex.
-     * <p>
-     * NOTE: Once the CACHED_SPATIAL_INDEX file has been created (using this value), it will be necessary to remove the
-     * cached file if you change this value again (or it will keep loading the old cached data).
-     */
-    private static final boolean USE_FAST_POLYGON_SPATIAL_INDEX = true;
-
-    /**
-     * Set to true to show approximate sizes of polygon objects
-     */
-    private static final boolean SHOW_APPROXIMATE_SIZES = false;
-
-    /**
      * Border data path on S3
      */
     private static final NetworkPath NETWORK_PATH = Host.parse("www.mesakit.org")
@@ -149,6 +135,20 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
             .path(Message.format("/data/$/administrative-borders-$.jar",
                     MapRegionProject.get().borderDataVersion(),
                     MapRegionProject.get().borderDataVersion()));
+
+    /**
+     * Set to true to show approximate sizes of polygon objects
+     */
+    private static final boolean SHOW_APPROXIMATE_SIZES = false;
+
+    /**
+     * Set this to true to use the fast (and large) polygon spatial index implementation. Set to false to use a method
+     * based on RTreeSpatialIndex.
+     * <p>
+     * NOTE: Once the CACHED_SPATIAL_INDEX file has been created (using this value), it will be necessary to remove the
+     * cached file if you change this value again (or it will keep loading the old cached data).
+     */
+    private static final boolean USE_FAST_POLYGON_SPATIAL_INDEX = true;
 
     public static class Settings<R extends Region<R>>
     {

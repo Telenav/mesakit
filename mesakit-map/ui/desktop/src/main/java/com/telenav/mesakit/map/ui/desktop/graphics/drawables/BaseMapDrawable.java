@@ -31,31 +31,31 @@ import java.awt.Shape;
 /**
  * @author jonathanl (shibo)
  */
-public abstract class BaseMapShape extends BaseDrawable
+public abstract class BaseMapDrawable extends BaseDrawable implements MapDrawable
 {
     private Location location;
 
-    public BaseMapShape(final Style style,
-                        final Location location)
+    public BaseMapDrawable(final Style style,
+                           final Location location)
     {
         super(style);
         this.location = location;
     }
 
-    public BaseMapShape(final BaseMapShape that)
+    public BaseMapDrawable(final BaseMapDrawable that)
     {
         super(that);
         location = that.location;
     }
 
-    protected BaseMapShape(final Style style)
+    protected BaseMapDrawable(final Style style)
     {
         super(style);
     }
 
-    public BaseMapShape atLocation(final Location at)
+    public BaseMapDrawable atLocation(final Location at)
     {
-        final var copy = (BaseMapShape) copy();
+        final var copy = (BaseMapDrawable) copy();
         copy.location = at;
         return copy;
     }
@@ -73,13 +73,13 @@ public abstract class BaseMapShape extends BaseDrawable
 
     public abstract Shape onDraw(final MapCanvas canvas);
 
-    public BaseMapShape withDrawStrokeWidth(final Distance width)
+    public BaseMapDrawable withDrawStrokeWidth(final Distance width)
     {
-        return (BaseMapShape) withDrawStroke(MapStroke.stroke(width));
+        return (BaseMapDrawable) withDrawStroke(MapStroke.stroke(width));
     }
 
-    public BaseMapShape withFillStrokeWidth(final Distance width)
+    public BaseMapDrawable withFillStrokeWidth(final Distance width)
     {
-        return (BaseMapShape) withFillStroke(MapStroke.stroke(width));
+        return (BaseMapDrawable) withFillStroke(MapStroke.stroke(width));
     }
 }

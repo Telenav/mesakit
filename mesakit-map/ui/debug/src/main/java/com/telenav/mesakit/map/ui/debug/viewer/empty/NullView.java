@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.map.ui.debug.viewer.empty;
 
+import com.telenav.mesakit.map.ui.debug.viewer.DrawableIdentifier;
 import com.telenav.mesakit.map.ui.debug.viewer.View;
-import com.telenav.mesakit.map.ui.debug.viewer.Viewable;
-import com.telenav.mesakit.map.ui.debug.viewer.ViewableIdentifier;
+import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDrawable;
 
 public class NullView implements View
 {
     @Override
-    public void add(final Viewable object)
+    public void add(final MapDrawable object)
     {
     }
 
@@ -41,12 +41,12 @@ public class NullView implements View
     }
 
     @Override
-    public void remove(final ViewableIdentifier identifier)
+    public void remove(final DrawableIdentifier identifier)
     {
     }
 
     @Override
-    public void update(final ViewableIdentifier identifier, final Viewable object)
+    public void update(final DrawableIdentifier identifier, final MapDrawable object)
     {
     }
 }

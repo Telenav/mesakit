@@ -73,10 +73,10 @@ public class SlippyTileGrid extends BaseRepeater implements Iterable<SlippyTile>
         final var bottomRight = zoom.tileAt(bounds.bottomRight());
 
         // Iterate through the tile coordinates, adding one for each tile in the grid
-        final var startx = topLeft.getX();
-        final var starty = topLeft.getY();
-        final var endx = bottomRight.getX();
-        final var endy = bottomRight.getY();
+        final var startx = topLeft.x();
+        final var starty = topLeft.y();
+        final var endx = bottomRight.x();
+        final var endy = bottomRight.y();
         if (isDebugOn())
         {
             information("startx = " + startx + ", starty = " + starty + ", endx = " + endx + ", endy = " + endy);

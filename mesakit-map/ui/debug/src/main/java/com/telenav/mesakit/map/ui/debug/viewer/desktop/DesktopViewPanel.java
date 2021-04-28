@@ -32,18 +32,19 @@ import com.telenav.kivakit.core.kernel.messaging.Message;
 import com.telenav.kivakit.core.network.core.Host;
 import com.telenav.kivakit.core.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.ui.desktop.component.KivaKitPanel;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingPoint;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingRectangle;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSize;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Label;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.ui.debug.viewer.DrawableIdentifier;
 import com.telenav.mesakit.map.ui.debug.viewer.InteractiveView;
 import com.telenav.mesakit.map.ui.desktop.coordinates.MapCoordinateMapper;
 import com.telenav.mesakit.map.ui.desktop.coordinates.mappers.CartesianCoordinateMapper;
-import com.telenav.mesakit.map.ui.desktop.debug.Viewable;
-import com.telenav.mesakit.map.ui.desktop.debug.ViewableIdentifier;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapScale;
+import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDrawable;
 import com.telenav.mesakit.map.ui.desktop.tiles.SlippyTile;
 import com.telenav.mesakit.map.ui.desktop.tiles.SlippyTileCoordinateSystem;
 import com.telenav.mesakit.map.ui.desktop.tiles.SlippyTileGrid;
@@ -66,6 +67,10 @@ import java.awt.event.MouseWheelListener;
 
 import static com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat.USER_LABEL;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingPoint.at;
+import static com.telenav.mesakit.map.ui.debug.viewer.desktop.DesktopViewPanel.State.PAUSED;
+import static com.telenav.mesakit.map.ui.debug.viewer.desktop.DesktopViewPanel.State.RUNNING;
+import static com.telenav.mesakit.map.ui.debug.viewer.desktop.DesktopViewPanel.State.STEPPING;
+import static com.telenav.mesakit.map.ui.desktop.tiles.SlippyTile.STANDARD_TILE_SIZE;
 
 /**
  * A JPanel implementation of {@link InteractiveView}
@@ -86,7 +91,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     }
 
     /**
-     * Map of {@link Viewable} objects in the display
+     * Map of {@link MapDrawable} objects in the display
      */
     private final ViewableMap viewables = new ViewableMap();
 
@@ -156,9 +161,9 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     private final SlippyTileImageCache tileCache = listenTo(new SlippyTileImageCache(Maximum._256)
     {
         @Override
-        public Dimension dimension()
+        public DrawingSize tileSize()
         {
-            return SlippyTile.STANDARD_TILE_SIZE;
+            return STANDARD_TILE_SIZE;
         }
 
         /**
@@ -167,8 +172,8 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
         @Override
         protected HttpNetworkLocation networkLocation(final SlippyTile tile)
         {
-            final var x = tile.getX();
-            final var y = tile.getY();
+            final var x = tile.x();
+            final var y = tile.y();
             final var z = tile.getZoomLevel().level();
 
             return new HttpNetworkLocation(Host.parse("b.tile.openstreetmap.org")
@@ -264,7 +269,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
      * {@inheritDoc}
      */
     @Override
-    public void add(final Viewable viewable)
+    public void add(final MapDrawable viewable)
     {
         viewables.add(viewable);
         zoomToContents(Percent.of(5));
@@ -356,7 +361,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
                 final var offset = at.offsetTo(start);
 
                 // set the view to the original view we started panning at with the given offset
-                view(panStart.offset(offset), zoom);
+                view(panStart.offsetBy(offset), zoom);
             }
             else
             {
@@ -476,7 +481,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
         {
             // Get drawing surface
             final var mapper = new CartesianCoordinateMapper(mapBounds, drawingSurfaceBounds());
-            final var canvas = new MapCanvas(graphics, mapBounds, MapScale.STATE, mapper);
+            final var canvas = MapCanvas.canvas(graphics, mapBounds, MapScale.STATE, mapper);
 
             // Clear the background
             graphics.setColor(Color.BLACK);
@@ -491,7 +496,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
             // Draw tile outlines
             if (DEBUG.isDebugOn())
             {
-                tileGrid.drawOutlines(graphics, this.mapper);
+                tileGrid.drawOutlines(canvas);
             }
 
             // If we're drawing a zoom selection rectangle,
@@ -537,14 +542,14 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     }
 
     @Override
-    public void pullToFront(final ViewableIdentifier identifier)
+    public void pullToFront(final DrawableIdentifier identifier)
     {
         viewables.pullToFront(identifier);
         requestRedraw();
     }
 
     @Override
-    public void pushToBack(final ViewableIdentifier identifier)
+    public void pushToBack(final DrawableIdentifier identifier)
     {
         viewables.pushToBack(identifier);
         requestRedraw();
@@ -554,7 +559,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
      * {@inheritDoc}
      */
     @Override
-    public void remove(final ViewableIdentifier identifier)
+    public void remove(final DrawableIdentifier identifier)
     {
         viewables.remove(identifier);
         requestRedraw();
@@ -564,7 +569,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
      * {@inheritDoc}
      */
     @Override
-    public void update(final ViewableIdentifier identifier, final Viewable viewable)
+    public void update(final DrawableIdentifier identifier, final MapDrawable viewable)
     {
         viewables.update(identifier, viewable);
         requestRedraw();
@@ -613,13 +618,13 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
             LOGGER.information("centerPoint = $", centerPoint);
         }
         final var topLeftPoint = this.zoom.inRange(
-                new Point((int) centerPoint.getX() - getWidth() / 2, (int) centerPoint.getY() - getHeight() / 2), tileCache.dimension());
+                DrawingPoint.at(centerPoint.x() - getWidth() / 2.0, centerPoint.y() - getHeight() / 2.0), tileCache.tileSize());
         if (DEBUG.isDebugOn())
         {
             LOGGER.information("topLeftPoint = $", topLeftPoint);
         }
         final var bottomRightPoint = this.zoom.inRange(
-                new Point((int) centerPoint.getX() + getWidth() / 2, (int) centerPoint.getY() + getHeight() / 2), tileCache.dimension());
+                DrawingPoint.at(centerPoint.x() + getWidth() / 2.0, centerPoint.y() + getHeight() / 2.0), tileCache.tileSize());
         if (DEBUG.isDebugOn())
         {
             LOGGER.information("bottomRightPoint = $", bottomRightPoint);
@@ -751,7 +756,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
      */
     private void zoom(final Rectangle bounds)
     {
-        view(bounds.center(), ZoomLevel.bestFit(getBounds(), tileCache.dimension(), bounds));
+        view(bounds.center(), ZoomLevel.bestFit(DrawingRectangle.rectangle(getBounds()), tileCache.tileSize(), bounds));
     }
 
     private void zoomIn()

@@ -19,54 +19,52 @@
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
 import com.telenav.kivakit.core.kernel.language.primitives.Ints;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingPoint;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSize;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.ui.desktop.coordinates.MapCoordinateMapper;
 import com.telenav.mesakit.map.ui.desktop.coordinates.mappers.MercatorCoordinateMapper;
-
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.geom.Point2D;
 
 public class SlippyTileCoordinateSystem implements MapCoordinateMapper
 {
     /**
      * The bounds of the slippy tile coordinate system
      */
-    public static final Rectangle BOUNDS = Rectangle.fromLocations(Location.degrees(-85.0511, -180),
+    public static final Rectangle BOUNDS = Rectangle.fromLocations(
+            Location.degrees(-85.0511, -180),
             Location.degrees(85.0511, 180));
 
-    private final MercatorCoordinateMapper projection;
+    private final MercatorCoordinateMapper mapper;
 
     private final ZoomLevel zoom;
 
-    private final Dimension tileSize;
+    private final DrawingSize tileSize;
 
     public SlippyTileCoordinateSystem(final ZoomLevel zoom)
     {
         this(zoom, SlippyTile.STANDARD_TILE_SIZE);
     }
 
-    public SlippyTileCoordinateSystem(final ZoomLevel zoomlevel, final Dimension tileSize)
+    public SlippyTileCoordinateSystem(final ZoomLevel zoomlevel, final DrawingSize tileSize)
     {
         zoom = zoomlevel;
         this.tileSize = tileSize;
-        projection = new MercatorCoordinateMapper(zoom.sizeInPixels(tileSize));
+        mapper = new MercatorCoordinateMapper(BOUNDS, zoom.sizeInDrawingUnits(tileSize).asRectangle());
     }
 
     public Rectangle bounds(final SlippyTile tile)
     {
         final var upperLeft = locationForPoint(
-                new Point(tile.getX() * tileSize.width, tile.getY() * tileSize.height));
+                DrawingPoint.at(tile.x() * tileSize.width(), tile.y() * tileSize.height()));
         final var lowerRight = locationForPoint(
-                new Point((tile.getX() + 1) * tileSize.width, (tile.getY() + 1) * tileSize.height));
+                DrawingPoint.at((tile.x() + 1) * tileSize.width(), (tile.y() + 1) * tileSize.height()));
         return Rectangle.fromLocations(upperLeft, lowerRight);
     }
 
-    @Override
-    public Location locationForPoint(final Point2D point)
+    public Location locationForPoint(final DrawingPoint point)
     {
-        return projection.locationForPoint(point);
+        return mapper.toMapLocation(point);
     }
 
     public SlippyTile tileForLocation(final Location location)
@@ -75,16 +73,22 @@ public class SlippyTileCoordinateSystem implements MapCoordinateMapper
         return tileForPoint(point);
     }
 
-    public SlippyTile tileForPoint(final Point2D point)
+    public SlippyTile tileForPoint(final DrawingPoint point)
     {
-        final var x = Ints.inRange((int) (point.getX() / tileSize.width), 0, zoom.widthInTiles());
-        final var y = Ints.inRange((int) (point.getY() / tileSize.height), 0, zoom.heightInTiles());
+        final var x = Ints.inRange((int) (point.x() / tileSize.width()), 0, zoom.widthInTiles());
+        final var y = Ints.inRange((int) (point.y() / tileSize.height()), 0, zoom.heightInTiles());
         return new SlippyTile(zoom, x, y);
     }
 
     @Override
-    public Point2D toDrawingPoint(final Location location)
+    public DrawingPoint toDrawingPoint(final Location location)
     {
-        return projection.toDrawingPoint(location);
+        return mapper.toDrawingPoint(location);
+    }
+
+    @Override
+    public Location toMapLocation(final DrawingPoint point)
+    {
+        return null;
     }
 }

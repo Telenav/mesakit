@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.map.measurements.geographic;
 
-import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
 import com.telenav.kivakit.core.commandline.ArgumentParser;
 import com.telenav.kivakit.core.commandline.SwitchParser;
 import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
@@ -31,6 +30,7 @@ import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.core.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
 
 import java.util.regex.Pattern;
 
@@ -45,21 +45,6 @@ import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail
 @LexakaiJavadoc(complete = true)
 public final class Distance implements Quantizable, Comparable<Distance>
 {
-    /**
-     * Zero distance
-     */
-    public static final Distance ZERO = millimeters(0);
-
-    /**
-     * The largest distance we can represent
-     */
-    public static final Distance MAXIMUM = millimeters(Long.MAX_VALUE);
-
-    /**
-     * The smallest distance we can represent (NONE)
-     */
-    public static final Distance MINIMUM = ZERO;
-
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
     // Conversion ratios
@@ -71,10 +56,21 @@ public final class Distance implements Quantizable, Comparable<Distance>
 
     private static final long MILLIMETERS_PER_METER = 1_000;
 
-    /**
-     * Choose the Great Circle Radius
-     */
+    /** The largest distance we can represent */
+    public static final Distance MAXIMUM = millimeters(Long.MAX_VALUE);
+
+    /** Great circle radius of planet Earth */
     public static final Distance EARTH_RADIUS = meters(6_372_797);
+
+    private static final double DM5_PER_DEGREE = 100_000;
+
+    private static final double DM7_PER_DEGREE = 10_000_000;
+
+    private static final double DM5_PER_KILOMETER = 1000.0 / EARTH_RADIUS.asMeters() * Angle.degreesPerRadian() * DM5_PER_DEGREE;
+
+    private static final double DM7_PER_KILOMETER = 1000.0 / EARTH_RADIUS.asMeters() * Angle.degreesPerRadian() * DM7_PER_DEGREE;
+
+    private static final double KILOMETERS_PER_DM7 = 1 / DM7_PER_KILOMETER;
 
     /**
      * Distance around the earth
@@ -82,9 +78,9 @@ public final class Distance implements Quantizable, Comparable<Distance>
     public static final Distance EARTH_CIRCUMFERENCE = kilometers(40_008);
 
     /**
-     * Distance of one mile
+     * Distance of five meters
      */
-    public static final Distance ONE_MILE = miles(1);
+    public static final Distance FIVE_METERS = meters(5);
 
     /**
      * Distance of one kilometer
@@ -97,9 +93,9 @@ public final class Distance implements Quantizable, Comparable<Distance>
     public static final Distance ONE_METER = meters(1);
 
     /**
-     * Distance of five meters
+     * Distance of one mile
      */
-    public static final Distance FIVE_METERS = meters(5);
+    public static final Distance ONE_MILE = miles(1);
 
     /**
      * Distance of _10 meters
@@ -107,14 +103,19 @@ public final class Distance implements Quantizable, Comparable<Distance>
     public static final Distance TEN_METERS = meters(10);
 
     /**
+     * Zero distance
+     */
+    public static final Distance ZERO = millimeters(0);
+
+    /**
+     * The smallest distance we can represent (NONE)
+     */
+    public static final Distance MINIMUM = ZERO;
+
+    /**
      * Distance of one hundred meters
      */
     public static final Distance _100_METERS = meters(100);
-
-    private static final double DM5_PER_DEGREE = 100000;
-
-    private static final double DM5_PER_KILOMETER = 1000.0 / EARTH_RADIUS.asMeters() * Angle.degreesPerRadian()
-            * DM5_PER_DEGREE;
 
     public static ArgumentParser.Builder<Distance> argumentParser(final String description)
     {
@@ -124,6 +125,11 @@ public final class Distance implements Quantizable, Comparable<Distance>
     public static Distance centimeters(final long centimeters)
     {
         return millimeters(centimeters * 10);
+    }
+
+    public static Distance degrees(final double degrees)
+    {
+        return Distance.meters(degrees * DM7_PER_DEGREE * KILOMETERS_PER_DM7);
     }
 
     public static Distance feet(final double feet)

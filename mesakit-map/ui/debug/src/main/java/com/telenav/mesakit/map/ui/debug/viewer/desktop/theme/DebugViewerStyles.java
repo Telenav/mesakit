@@ -21,10 +21,25 @@
 
 package com.telenav.mesakit.map.ui.debug.viewer.desktop.theme;
 
+import com.telenav.kivakit.ui.desktop.graphics.style.Style;
+
+import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.TRANSPARENT;
+import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.GOLF;
+import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.MANHATTAN;
+import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.MOJITO;
+import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.SEATTLE;
+
 /**
  * @author jonathanl (shibo)
  */
 public class DebugViewerStyles
 {
+    public static final Style ACTIVE_BOX = GOLF
+            .withFillColor(TRANSPARENT);
 
+    public static Style END = MANHATTAN;
+
+    public static Style INACTIVE_BOX = SEATTLE.withFillColor(TRANSPARENT);
+
+    public static Style START = MOJITO;
 }

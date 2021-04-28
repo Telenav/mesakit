@@ -25,6 +25,7 @@ import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
 import com.telenav.kivakit.ui.desktop.graphics.style.Color;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 
@@ -79,6 +80,12 @@ public class MapPolyline extends LabeledMapShape
     public MapPolyline at(final Coordinate at)
     {
         return (MapPolyline) super.at(at);
+    }
+
+    @Override
+    public Rectangle bounds()
+    {
+        return polyline.bounds();
     }
 
     @Override

@@ -24,6 +24,7 @@ import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
 import com.telenav.kivakit.ui.desktop.graphics.style.Color;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 
@@ -80,6 +81,17 @@ public class MapDot extends LabeledMapShape
         return (MapDot) super.atLocation(at);
     }
 
+    /**
+     * Note that this method cannot be called until this drawable has been drawn
+     *
+     * @return The bounds of this dot on the world map
+     */
+    @Override
+    public Rectangle bounds()
+    {
+        return Rectangle.fromCenterAndRadius(atLocation(), radius);
+    }
+
     @Override
     public MapDot copy()
     {
@@ -89,18 +101,24 @@ public class MapDot extends LabeledMapShape
     @Override
     public Shape onDraw(final MapCanvas canvas)
     {
-        final var radius = this.radius == null
-                ? drawingRadius
-                : canvas.toDrawingUnits(this.radius);
+        if (radius == null)
+        {
+            radius = canvas.toMap(drawingRadius);
+        }
 
-        final var box = dot()
-                .withRadius(radius)
+        if (drawingRadius == null)
+        {
+            drawingRadius = canvas.toDrawingUnits(radius);
+        }
+
+        final var dot = dot()
+                .withRadius(drawingRadius)
                 .at(canvas.toCoordinates(atLocation()))
                 .draw(canvas);
 
         final var label = super.onDraw(canvas);
 
-        return AwtShapes.combine(box, label);
+        return AwtShapes.combine(dot, label);
     }
 
     @Override

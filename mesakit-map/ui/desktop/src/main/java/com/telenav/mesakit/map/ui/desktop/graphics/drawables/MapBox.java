@@ -78,6 +78,12 @@ public class MapBox extends LabeledMapShape
     }
 
     @Override
+    public Rectangle bounds()
+    {
+        return atLocation().rectangle(size);
+    }
+
+    @Override
     public MapBox copy()
     {
         return new MapBox(this);

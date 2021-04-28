@@ -21,8 +21,8 @@ package com.telenav.mesakit.map.ui.debug.viewer.empty;
 import com.telenav.kivakit.core.kernel.language.time.Duration;
 import com.telenav.kivakit.core.kernel.language.values.level.Percent;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.ui.debug.viewer.DrawableIdentifier;
 import com.telenav.mesakit.map.ui.debug.viewer.InteractiveView;
-import com.telenav.mesakit.map.ui.debug.viewer.ViewableIdentifier;
 
 public class NullInteractiveView extends NullView implements InteractiveView
 {
@@ -37,12 +37,12 @@ public class NullInteractiveView extends NullView implements InteractiveView
     }
 
     @Override
-    public void pullToFront(final ViewableIdentifier identifier)
+    public void pullToFront(final DrawableIdentifier identifier)
     {
     }
 
     @Override
-    public void pushToBack(final ViewableIdentifier identifier)
+    public void pushToBack(final DrawableIdentifier identifier)
     {
     }
 

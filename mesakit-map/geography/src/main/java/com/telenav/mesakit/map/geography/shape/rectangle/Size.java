@@ -22,13 +22,24 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramRectangle;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 @UmlClassDiagram(diagram = DiagramRectangle.class)
 public class Size implements Dimensioned
 {
+    public static final Size MAXIMUM = new Size(Width.MAXIMUM, Height.MAXIMUM);
+
     public static final Size ZERO = new Size(Width.ZERO, Height.ZERO);
 
-    public static final Size MAXIMUM = new Size(Width.MAXIMUM, Height.MAXIMUM);
+    public static Size of(final Width width, final Height height)
+    {
+        return new Size(width, height);
+    }
+
+    public static Size of(final Distance width, final Distance height)
+    {
+        return new Size(Width.degrees(width.asDegrees()), Height.degrees(height.asDegrees()));
+    }
 
     @UmlAggregation
     private final Width width;
@@ -49,6 +60,11 @@ public class Size implements Dimensioned
     public Location asLocation()
     {
         return Location.degrees(height.asDegrees(), width.asDegrees());
+    }
+
+    public Rectangle asRectangle()
+    {
+        return Location.ORIGIN.rectangle(this);
     }
 
     @Override

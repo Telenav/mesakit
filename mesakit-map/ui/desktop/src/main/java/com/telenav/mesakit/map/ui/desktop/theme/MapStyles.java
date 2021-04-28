@@ -41,8 +41,7 @@ public class MapStyles
 {
     public static final Style ACTIVE = NIGHT_SHIFT;
 
-    public static final Style ACTIVE_BOUNDS = GOLF
-            .withFillColor(TRANSPARENT);
+    public static final Style ACTIVE_BOX = GOLF.withFillColor(TRANSPARENT);
 
     public static final Style ARROWHEAD = ARUBA;
 
@@ -52,24 +51,19 @@ public class MapStyles
 
     public static final Style GRAYED = SEATTLE;
 
-    public static final Style GRID_LINES = BASE
-            .withDrawColor(STEEL_BLUE)
-            .withDrawStroke(DASHED);
+    public static final Style GRID_LINES = BASE.withDrawColor(STEEL_BLUE).withDrawStroke(DASHED);
 
     public static final Style HIGHLIGHTED = NIGHT_SHIFT;
 
     public static final Style INACTIVE = SEATTLE;
 
-    public static final Style INACTIVE_BOUNDS = SEATTLE
-            .withFillColor(TRANSPARENT);
+    public static final Style INACTIVE_BOX = SEATTLE.withFillColor(TRANSPARENT);
 
     public static final Style NORMAL = BASE;
 
     public static final Style RESTRICTION_STYLE = ERROR;
 
-    public static final Style ROUTE_STYLE = BASE
-            .withFillColor(TRANSLUCENT_OCEAN)
-            .withDrawColor(OCEAN);
+    public static final Style ROUTE_STYLE = BASE.withFillColor(TRANSLUCENT_OCEAN).withDrawColor(OCEAN);
 
     public static final Style SELECTED = VALENCIA;
 

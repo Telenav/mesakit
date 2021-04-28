@@ -150,6 +150,8 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
     public static final Location TELENAV_HEADQUARTERS = new Location(Latitude.degrees(37.3859),
             Longitude.degrees(-122.0046));
 
+    public static final Location TOP_LEFT = new Location(Latitude.MAXIMUM, Longitude.MINIMUM);
+
     private static final double[] latitudeCosine = { 1.0,
             0.9998476951563913, 0.9993908270190958, 0.9986295347545738, 0.9975640502598242, 0.9961946980917455,
             0.9945218953682733, 0.992546151641322, 0.9902680687415704, 0.9876883405951378, 0.984807753012208,

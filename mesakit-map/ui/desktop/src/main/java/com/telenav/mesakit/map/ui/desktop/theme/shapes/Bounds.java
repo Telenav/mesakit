@@ -23,8 +23,8 @@ package com.telenav.mesakit.map.ui.desktop.theme.shapes;
 
 import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapBox;
 
-import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.ACTIVE_BOUNDS;
-import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.INACTIVE_BOUNDS;
+import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.ACTIVE_BOX;
+import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.INACTIVE_BOX;
 
 /**
  * @author jonathanl (shibo)
@@ -32,8 +32,8 @@ import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.INACTIVE_BOUNDS
 public class Bounds
 {
     public static MapBox ACTIVE_BOUNDING_BOX = MapBox.box()
-            .withStyle(ACTIVE_BOUNDS);
+            .withStyle(ACTIVE_BOX);
 
     public static MapBox INACTIVE_BOUNDING_BOX = MapBox.box()
-            .withStyle(INACTIVE_BOUNDS);
+            .withStyle(INACTIVE_BOX);
 }

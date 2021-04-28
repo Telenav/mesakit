@@ -21,14 +21,42 @@
 
 package com.telenav.mesakit.map.ui.debug.viewer;
 
-import com.telenav.kivakit.ui.desktop.graphics.drawing.Drawable;
-import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
+import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDrawable;
 
 /**
- * A {@link Viewable} object is {@link Drawable}.
+ * Any unique identifier for a {@link MapDrawable} object
  *
  * @author jonathanl (shibo)
  */
-public interface Viewable extends Bounded, Drawable
+public class DrawableIdentifier
 {
+    private final Object object;
+
+    public DrawableIdentifier(final Object object)
+    {
+        this.object = object;
+    }
+
+    @Override
+    public boolean equals(final Object object)
+    {
+        if (object instanceof DrawableIdentifier)
+        {
+            final var that = (DrawableIdentifier) object;
+            return this.object.equals(that.object);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return object.hashCode();
+    }
+
+    @Override
+    public String toString()
+    {
+        return object.toString();
+    }
 }

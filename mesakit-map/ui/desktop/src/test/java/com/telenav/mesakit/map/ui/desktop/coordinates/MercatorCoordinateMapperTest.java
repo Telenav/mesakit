@@ -26,7 +26,7 @@ import com.telenav.mesakit.map.ui.desktop.coordinates.mappers.MercatorCoordinate
 import com.telenav.mesakit.map.ui.desktop.tiles.SlippyTileCoordinateSystem;
 import org.junit.Test;
 
-public class SwingMercatorCoordinateMapperTest extends BaseCoordinateMapperTest
+public class MercatorCoordinateMapperTest extends BaseCoordinateMapperTest
 {
     @Test
     public void testSmall()
@@ -34,13 +34,13 @@ public class SwingMercatorCoordinateMapperTest extends BaseCoordinateMapperTest
         // 10x10 degree square
         final var width = Width.degrees(10);
         final var height = Height.degrees(10);
-        final var size = new Size(width, height);
+        final var size = Size.of(width, height);
 
         // Map from 100,100:200,200 drawing surface rectangle to 0,0:10,10 geographic rectangle
-        final var mapper = new MercatorCoordinateMapper(Location.ORIGIN.rectangle(size),
+        final var mapper = new MercatorCoordinateMapper(size.asRectangle(),
                 drawingRectangle(100, 100, 100, 100));
 
-        // Ensure simple cases in the corners (the middle will be distorted by the projection)
+        // Check the simple cases in the corners (the middle will be distorted by the projection)
         checkMapping(mapper, point(100, 100), Location.ORIGIN.offsetBy(height));
         checkMapping(mapper, point(100, 200), Location.ORIGIN);
         checkMapping(mapper, point(200, 100), Location.ORIGIN.offsetBy(size));

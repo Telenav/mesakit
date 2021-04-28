@@ -27,12 +27,12 @@ import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.core.kernel.messaging.Debug;
 import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.network.http.HttpNetworkLocation;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSize;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.map.ui.desktop.coordinates.MapCoordinateMapper;
 
 import javax.imageio.ImageIO;
 import java.awt.AlphaComposite;
-import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -88,12 +88,6 @@ public abstract class SlippyTileImageCache extends BaseRepeater
     }
 
     /**
-     * @return The size of a slippy tile in pixels, as determined by fetching a tile from the server
-     */
-    @SuppressWarnings("SameReturnValue")
-    public abstract Dimension dimension();
-
-    /**
      * Draw map tiles on the given graphics
      */
     public void drawTiles(final Graphics2D graphics, final MapCoordinateMapper mapper, final Iterable<SlippyTile> tiles)
@@ -113,13 +107,19 @@ public abstract class SlippyTileImageCache extends BaseRepeater
                 if (DEBUG.isDebugOn())
                 {
                     LOGGER.information("drawing tile $ with bounds of $ at $, $", tile,
-                            tile.tileBounds(), bounds.x, bounds.y);
+                            tile.tileBounds(), bounds.x(), bounds.y());
                 }
-                graphics.drawImage(image, bounds.x, bounds.y, null);
+                graphics.drawImage(image, (int) bounds.x(), (int) bounds.y(), null);
             }
         }
         graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
     }
+
+    /**
+     * @return The size of a slippy tile in pixels, as determined by fetching a tile from the server
+     */
+    @SuppressWarnings("SameReturnValue")
+    public abstract DrawingSize tileSize();
 
     /**
      * @return The HTTP network location of the given slippy tile

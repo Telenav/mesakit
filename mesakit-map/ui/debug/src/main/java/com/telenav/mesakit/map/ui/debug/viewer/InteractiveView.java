@@ -41,12 +41,12 @@ public interface InteractiveView extends View
     /**
      * Moves the given viewable to the top of the view
      */
-    void pullToFront(ViewableIdentifier identifier);
+    void pullToFront(DrawableIdentifier identifier);
 
     /**
      * Moves the given viewable to the back of the view
      */
-    void pushToBack(ViewableIdentifier identifier);
+    void pushToBack(DrawableIdentifier identifier);
 
     /**
      * @param bounds The rectangle to view

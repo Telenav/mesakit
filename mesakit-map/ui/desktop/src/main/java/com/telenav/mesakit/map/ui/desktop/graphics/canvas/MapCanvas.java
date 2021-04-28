@@ -124,11 +124,6 @@ public class MapCanvas extends AwtDrawingSurface
                 .draw(this);
     }
 
-    public Location location(final DrawingPoint point)
-    {
-        return Location.degrees(point.y(), point.x());
-    }
-
     public MapScale scale()
     {
         return scale;
@@ -243,6 +238,16 @@ public class MapCanvas extends AwtDrawingSurface
     public DrawingSize toDrawingUnits(final Size size)
     {
         return coordinateSystem.toDrawingUnits(toCoordinates(size));
+    }
+
+    public Location toMap(final DrawingPoint point)
+    {
+        return Location.degrees(point.y(), point.x());
+    }
+
+    public Distance toMap(final DrawingDistance distance)
+    {
+        return Distance.degrees(coordinateSystem.toCoordinates(distance).units());
     }
 
     public Distance width()

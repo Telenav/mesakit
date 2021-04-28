@@ -26,16 +26,16 @@ public class SlippyTileGridTest extends MapGeographyUnitTest
     @Test
     public void testZoomLevel0()
     {
-        final SlippyTileGrid grid = new SlippyTileGrid(SlippyTileCoordinateSystem.BOUNDS, ZoomLevel.FURTHEST);
+        final var grid = new SlippyTileGrid(SlippyTileCoordinateSystem.BOUNDS, ZoomLevel.FURTHEST);
         ensure(grid.contains(new SlippyTile(ZoomLevel.FURTHEST, 0, 0)));
     }
 
     @Test
     public void testZoomLevels()
     {
-        for (ZoomLevel zoom = ZoomLevel.FURTHEST; zoom.level() < 4; zoom = zoom.zoomIn())
+        for (var zoom = ZoomLevel.FURTHEST; zoom.level() < 4; zoom = zoom.zoomIn())
         {
-            final SlippyTileGrid grid = new SlippyTileGrid(SlippyTileCoordinateSystem.BOUNDS, zoom);
+            final var grid = new SlippyTileGrid(SlippyTileCoordinateSystem.BOUNDS, zoom);
             ensureEqual((int) zoom.totalTiles(), grid.size());
         }
     }

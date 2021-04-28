@@ -19,23 +19,14 @@
  *
  */
 
-package com.telenav.mesakit.map.ui.debug.viewer.desktop.theme;
+package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
-import java.awt.Color;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.Drawable;
+import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 
-public class DebugViewerColors
+/**
+ * @author jonathanl (shibo)
+ */
+public interface MapDrawable extends Drawable, Bounded
 {
-    private static final Color CHARCOAL = new Color(0x5e5e5e);
-
-    public static final Color TEXT = Color.BLUE;
-
-    public static final Color TEXT_BACKGROUND = CHARCOAL;
-
-    public static final Color TEXT_BACKGROUND_OUTLINE = Color.LIGHT_GRAY;
-
-    private static final Color TRANSPARENT_BLUE = new Color(0, 0, 255, 150);
-
-    public static final Color LOADING_TEXT = TRANSPARENT_BLUE;
-
-    public static final Color GRID = TRANSPARENT_BLUE;
 }

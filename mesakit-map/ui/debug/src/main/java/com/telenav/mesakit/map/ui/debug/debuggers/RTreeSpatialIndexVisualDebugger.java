@@ -27,14 +27,17 @@ import com.telenav.mesakit.map.geography.indexing.rtree.Node;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndexDebugger;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
+import com.telenav.mesakit.map.ui.debug.viewer.DrawableIdentifier;
 import com.telenav.mesakit.map.ui.debug.viewer.InteractiveView;
 import com.telenav.mesakit.map.ui.debug.viewer.View;
-import com.telenav.mesakit.map.ui.debug.viewer.ViewableIdentifier;
 import com.telenav.mesakit.map.ui.debug.viewer.desktop.DebugViewer;
+import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapBox;
 
-import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.telenav.mesakit.map.ui.debug.viewer.desktop.theme.DebugViewerStyles.ACTIVE_BOX;
+import static com.telenav.mesakit.map.ui.debug.viewer.desktop.theme.DebugViewerStyles.INACTIVE_BOX;
 
 /**
  * @author jonathanl (shibo)
@@ -45,11 +48,11 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
     private final transient View view;
 
     /** Identifier maps for debugging */
-    private final transient Map<T, ViewableIdentifier> identifierForElement = new HashMap<>();
+    private final transient Map<T, DrawableIdentifier> identifierForElement = new HashMap<>();
 
-    private final transient Map<InteriorNode<T>, ViewableIdentifier> identifierForNode = new HashMap<>();
+    private final transient Map<InteriorNode<T>, DrawableIdentifier> identifierForNode = new HashMap<>();
 
-    private final transient Map<Leaf<T>, ViewableIdentifier> identifierForLeaf = new HashMap<>();
+    private final transient Map<Leaf<T>, DrawableIdentifier> identifierForLeaf = new HashMap<>();
 
     public RTreeSpatialIndexVisualDebugger(final String title)
     {
@@ -89,7 +92,13 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
         {
             final var identifier = identifier(leaf, element);
             final var label = identifier + "-" + element.toString();
-            view.update(identifier, new ViewableRectangle(element.bounds(), Color.LIGHT_GRAY, Color.GREEN.darker(), label));
+
+            final var box = MapBox.box()
+                    .withStyle(ACTIVE_BOX)
+                    .withRectangle(element.bounds())
+                    .withLabel(label);
+
+            view.update(identifier, box);
             frameComplete();
         }
     }
@@ -98,7 +107,14 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
     {
         if (view != null)
         {
-            view.update(identifier(node), new ViewableRectangle(node.bounds(), Color.LIGHT_GRAY, Color.ORANGE.darker(), identifier(node).toString()));
+            final var identifier = identifier(node);
+
+            final var box = MapBox.box()
+                    .withStyle(INACTIVE_BOX)
+                    .withRectangle(node.bounds())
+                    .withLabel(identifier.toString());
+
+            view.update(identifier, box);
         }
         frameComplete();
     }
@@ -111,40 +127,40 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
         }
     }
 
-    private ViewableIdentifier identifier(final InteriorNode<T> node)
+    private DrawableIdentifier identifier(final InteriorNode<T> node)
     {
         var identifier = identifierForNode.get(node);
         if (identifier == null)
         {
-            identifier = new ViewableIdentifier("Node-" + identifierForNode.size());
+            identifier = new DrawableIdentifier("Node-" + identifierForNode.size());
             identifierForNode.put(node, identifier);
         }
         return identifier;
     }
 
-    private ViewableIdentifier identifier(final Leaf<T> leaf)
+    private DrawableIdentifier identifier(final Leaf<T> leaf)
     {
         var identifier = identifierForLeaf.get(leaf);
         if (identifier == null)
         {
-            identifier = new ViewableIdentifier("Leaf-" + identifierForLeaf.size());
+            identifier = new DrawableIdentifier("Leaf-" + identifierForLeaf.size());
             identifierForLeaf.put(leaf, identifier);
         }
         return identifier;
     }
 
-    private ViewableIdentifier identifier(final Leaf<T> leaf, final T element)
+    private DrawableIdentifier identifier(final Leaf<T> leaf, final T element)
     {
         var identifier = identifierForElement.get(element);
         if (identifier == null)
         {
-            identifier = new ViewableIdentifier(identifier(leaf) + ":" + identifierForElement.size());
+            identifier = new DrawableIdentifier(identifier(leaf) + ":" + identifierForElement.size());
             identifierForElement.put(element, identifier);
         }
         return identifier;
     }
 
-    private ViewableIdentifier identifier(final Node<T> node)
+    private DrawableIdentifier identifier(final Node<T> node)
     {
         return node.isLeaf() ? identifier((Leaf<T>) node) : identifier((InteriorNode<T>) node);
     }

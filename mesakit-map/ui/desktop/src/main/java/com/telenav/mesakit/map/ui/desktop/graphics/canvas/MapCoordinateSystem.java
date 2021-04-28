@@ -12,6 +12,8 @@ import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateWidth;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.ui.desktop.coordinates.MapCoordinateMapper;
 
+import static com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingDistance.pixels;
+
 /**
  * @author jonathanl (shibo)
  */
@@ -60,18 +62,18 @@ public class MapCoordinateSystem implements CoordinateSystem
     @Override
     public DrawingDistance toDrawingUnits(final CoordinateHeight height)
     {
-        return DrawingDistance.of(mapper.toDrawingPoint(Location.degrees(height.units(), 0)).y());
+        return pixels(mapper.toDrawingPoint(Location.degrees(height.units(), 0)).y());
     }
 
     @Override
     public DrawingDistance toDrawingUnits(final CoordinateWidth width)
     {
-        return DrawingDistance.of(mapper.toDrawingPoint(Location.degrees(0.0, width.units())).x());
+        return pixels(mapper.toDrawingPoint(Location.degrees(0.0, width.units())).x());
     }
 
     @Override
     public DrawingDistance toDrawingUnits(final CoordinateDistance distance)
     {
-        return DrawingDistance.of(mapper.toDrawingPoint(Location.degrees(0.0, distance.units())).x());
+        return pixels(mapper.toDrawingPoint(Location.degrees(0.0, distance.units())).x());
     }
 }

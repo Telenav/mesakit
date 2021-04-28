@@ -19,42 +19,26 @@
  *
  */
 
-package com.telenav.mesakit.map.ui.debug.viewer;
+package com.telenav.mesakit.map.ui.debug.viewer.desktop.theme;
+
+import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDot;
+
+import static com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingDistance.pixels;
+import static com.telenav.mesakit.map.ui.debug.viewer.desktop.theme.DebugViewerStyles.END;
+import static com.telenav.mesakit.map.ui.debug.viewer.desktop.theme.DebugViewerStyles.START;
 
 /**
- * Any unique identifier for a {@link Viewable} object
- *
  * @author jonathanl (shibo)
  */
-public class ViewableIdentifier
+public class DebugViewerIcons
 {
-    private final Object object;
+    public static final MapDot END_ICON = MapDot.dot()
+            .withStyle(END)
+            .withRadius(pixels(10))
+            .withLabel("end");
 
-    public ViewableIdentifier(final Object object)
-    {
-        this.object = object;
-    }
-
-    @Override
-    public boolean equals(final Object object)
-    {
-        if (object instanceof ViewableIdentifier)
-        {
-            final var that = (ViewableIdentifier) object;
-            return this.object.equals(that.object);
-        }
-        return false;
-    }
-
-    @Override
-    public int hashCode()
-    {
-        return object.hashCode();
-    }
-
-    @Override
-    public String toString()
-    {
-        return object.toString();
-    }
+    public static final MapDot START_ICON = MapDot.dot()
+            .withStyle(START)
+            .withRadius(pixels(10))
+            .withLabel("start");
 }

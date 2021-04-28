@@ -22,10 +22,10 @@
 package com.telenav.mesakit.map.ui.debug.viewer;
 
 import com.telenav.kivakit.core.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.ui.desktop.graphics.drawing.Drawable;
+import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDrawable;
 
 /**
- * A view is a named repository of {@link Viewable} objects which can be updated.
+ * A view is a named repository of {@link MapDrawable} objects which can be updated.
  *
  * @author jonathanl (shibo)
  */
@@ -34,21 +34,21 @@ public interface View extends Named
     /**
      * Adds the given object to the view. Since it is not identified, it can never be removed or updated.
      */
-    void add(Drawable drawable);
+    void add(MapDrawable drawable);
 
     /**
-     * Clears the set of {@link Viewable} objects held by this view. Not all views necessarily support this operation.
-     * If the view does not support the operation, calling this method will have no effect.
+     * Clears the set of {@link MapDrawable} objects held by this view. Not all views necessarily support this
+     * operation. If the view does not support the operation, calling this method will have no effect.
      */
     void clear();
 
     /**
-     * Remove the identified {@link Viewable} object from the view
+     * Remove the identified {@link MapDrawable} object from the view
      */
-    void remove(ViewableIdentifier identifier);
+    void remove(DrawableIdentifier identifier);
 
     /**
-     * Updates the identified {@link Viewable} object in this view.
+     * Updates the identified {@link MapDrawable} object in this view.
      */
-    void update(ViewableIdentifier identifier, Viewable object);
+    void update(DrawableIdentifier identifier, MapDrawable object);
 }

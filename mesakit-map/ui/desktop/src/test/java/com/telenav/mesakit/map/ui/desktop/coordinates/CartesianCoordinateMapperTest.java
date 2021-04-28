@@ -27,7 +27,7 @@ import com.telenav.mesakit.map.ui.desktop.coordinates.mappers.CartesianCoordinat
 import com.telenav.mesakit.map.ui.desktop.tiles.SlippyTileCoordinateSystem;
 import org.junit.Test;
 
-public class SwingCartesianCoordinateMapperTest extends BaseCoordinateMapperTest
+public class CartesianCoordinateMapperTest extends BaseCoordinateMapperTest
 {
     @Test
     public void testLocationForPoint1()

@@ -35,31 +35,25 @@ import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail
  */
 public class MercatorCoordinateMapper implements MapCoordinateMapper
 {
-    private final Rectangle bounds;
+    /** The dimensions of the map area */
+    private final Rectangle mapArea;
 
-    /**
-     * The dimension of the Swing area to project from/to
-     */
-    private final DrawingRectangle maximum;
+    /** The dimension of the drawing area */
+    private final DrawingRectangle drawingArea;
 
-    /**
-     * @param maximum The dimensions of the Swing coordinate system
-     */
-    public MercatorCoordinateMapper(final Rectangle bounds, final DrawingRectangle maximum)
+    public MercatorCoordinateMapper(final Rectangle mapArea, final DrawingRectangle drawingArea)
     {
-        this.bounds = bounds;
-        this.maximum = maximum;
+        this.mapArea = mapArea;
+        this.drawingArea = drawingArea;
     }
 
     /**
      * @param location The geographic location
-     * @return The Swing point for the given location
+     * @return The drawing area point for the given location
      */
     @Override
-    public DrawingPoint toDrawingPoint(Location location)
+    public DrawingPoint toDrawingPoint(final Location location)
     {
-        location = location.relativeTo(bounds.topLeft());
-
         final var siny = Math.sin(Math.toRadians(location.latitude().asDegrees()));
         if (Double.isNaN(siny))
         {
@@ -69,9 +63,10 @@ public class MercatorCoordinateMapper implements MapCoordinateMapper
         final var x = location.longitude().asDegrees() / 360 + 0.5;
         final var y = 0.5 * Math.log((1 + siny) / (1 - siny)) / -(2 * Math.PI) + .5;
 
-        return DrawingPoint.at(
-                (int) Math.round(x * (maximum.width() - 1)),
-                (int) Math.round(y * (maximum.height() - 1)));
+        final var dx = (int) Math.round(x * ((int) drawingArea.width() - 1));
+        final var dy = (int) Math.round(y * ((int) drawingArea.height() - 1));
+
+        return DrawingPoint.at(drawingArea.x() + dx, drawingArea.y() + dy);
     }
 
     /**
@@ -81,8 +76,8 @@ public class MercatorCoordinateMapper implements MapCoordinateMapper
     @Override
     public Location toMapLocation(final DrawingPoint point)
     {
-        final var x = point.x() / maximum.width() - 0.5;
-        final var y = 0.5 - (point.y() / maximum.height());
+        final var x = point.x() / drawingArea.width() - 0.5;
+        final var y = 0.5 - (point.y() / drawingArea.height());
         final var longitudeInDegrees = Doubles.inRange(x * 360, -180, 180);
         final var radians = Math.atan(Math.exp(-y * 2 * Math.PI)) * 2;
         if (Double.isNaN(radians))
@@ -90,6 +85,7 @@ public class MercatorCoordinateMapper implements MapCoordinateMapper
             fail("Cannot map point " + point);
         }
         final var latitudeInDegrees = Doubles.inRange(90 - Math.toDegrees(radians), -90, 90);
-        return Location.degrees(latitudeInDegrees, longitudeInDegrees).offsetBy(bounds.topLeft().asSizeFromOrigin());
+        return Location.degrees(latitudeInDegrees, longitudeInDegrees)
+                .offsetBy(mapArea.topLeft().asSizeFromOrigin());
     }
 }

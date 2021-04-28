@@ -26,6 +26,7 @@ import com.telenav.kivakit.ui.desktop.graphics.style.Color;
 import com.telenav.kivakit.ui.desktop.graphics.style.Stroke;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 
@@ -92,6 +93,12 @@ public class MapLine extends LabeledMapShape
     }
 
     @Override
+    public Rectangle bounds()
+    {
+        return Rectangle.fromLocations(from(), to());
+    }
+
+    @Override
     public MapLine copy()
     {
         return new MapLine(this);
@@ -118,6 +125,11 @@ public class MapLine extends LabeledMapShape
     public MapLine scaled(final double scaleFactor)
     {
         return unsupported();
+    }
+
+    public Location to()
+    {
+        return to;
     }
 
     @Override

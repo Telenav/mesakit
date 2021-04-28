@@ -21,7 +21,7 @@
 
 package com.telenav.mesakit.map.ui.debug.viewer.desktop;
 
-import com.telenav.mesakit.map.ui.desktop.debug.InteractiveView;
+import com.telenav.mesakit.map.ui.debug.viewer.InteractiveView;
 
 import javax.swing.JFrame;
 

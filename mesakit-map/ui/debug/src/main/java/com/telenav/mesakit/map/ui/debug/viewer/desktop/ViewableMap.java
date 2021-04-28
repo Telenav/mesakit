@@ -24,8 +24,8 @@ package com.telenav.mesakit.map.ui.debug.viewer.desktop;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
 import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.ui.debug.viewer.Viewable;
-import com.telenav.mesakit.map.ui.debug.viewer.ViewableIdentifier;
+import com.telenav.mesakit.map.ui.debug.viewer.DrawableIdentifier;
+import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDrawable;
 
 import java.awt.Point;
 import java.awt.Shape;
@@ -44,13 +44,13 @@ public class ViewableMap
 {
     private static class Entry
     {
-        private final ViewableIdentifier identifier;
+        private final DrawableIdentifier identifier;
 
-        private Viewable viewable;
+        private MapDrawable viewable;
 
         private Shape shape;
 
-        public Entry(final ViewableIdentifier identifier, final Viewable viewable)
+        public Entry(final DrawableIdentifier identifier, final MapDrawable viewable)
         {
             this.identifier = identifier;
             this.viewable = viewable;
@@ -84,7 +84,7 @@ public class ViewableMap
             return identifier.toString();
         }
 
-        public void viewable(final Viewable viewable)
+        public void viewable(final MapDrawable viewable)
         {
             this.viewable = viewable;
         }
@@ -103,7 +103,7 @@ public class ViewableMap
     /**
      * Map from viewable identifier to entry
      */
-    private final Map<ViewableIdentifier, Entry> entryForIdentifier = new HashMap<>();
+    private final Map<DrawableIdentifier, Entry> entryForIdentifier = new HashMap<>();
 
     /**
      * Next unique identifier
@@ -118,7 +118,7 @@ public class ViewableMap
     /**
      * Adds the given viewable
      */
-    public void add(final Viewable viewable)
+    public void add(final MapDrawable viewable)
     {
         update(nextIdentifier(), viewable);
     }
@@ -142,8 +142,8 @@ public class ViewableMap
     }
 
     /**
-     * Draws the {@link Viewable} objects in this map on the given drawing surface, keeping outlines for hit-testing in
-     * the entry structure.
+     * Draws the {@link MapDrawable} objects in this map on the given drawing surface, keeping outlines for hit-testing
+     * in the entry structure.
      */
     public void draw(final DrawingSurface surface)
     {
@@ -175,7 +175,7 @@ public class ViewableMap
     /**
      * Moves the given viewable to the top of the view
      */
-    public synchronized void pullToFront(final ViewableIdentifier identifier)
+    public synchronized void pullToFront(final DrawableIdentifier identifier)
     {
         final var entry = entry(identifier);
         entries.remove(new Entry(identifier, null));
@@ -185,7 +185,7 @@ public class ViewableMap
     /**
      * Moves the given viewable to the back of the view
      */
-    public synchronized void pushToBack(final ViewableIdentifier identifier)
+    public synchronized void pushToBack(final DrawableIdentifier identifier)
     {
         final var entry = entry(identifier);
         entries.remove(new Entry(identifier, null));
@@ -195,7 +195,7 @@ public class ViewableMap
     /**
      * Remove the identified viewable
      */
-    public synchronized void remove(final ViewableIdentifier identifier)
+    public synchronized void remove(final DrawableIdentifier identifier)
     {
         entries.remove(new Entry(identifier, null));
         entryForIdentifier.remove(identifier);
@@ -241,7 +241,7 @@ public class ViewableMap
     /**
      * Update the viewable with the given unique identifier
      */
-    public synchronized void update(final ViewableIdentifier identifier, final Viewable viewable)
+    public synchronized void update(final DrawableIdentifier identifier, final MapDrawable viewable)
     {
         var entry = entry(identifier);
         if (entry != null)
@@ -281,7 +281,7 @@ public class ViewableMap
         return entries;
     }
 
-    private synchronized Entry entry(final ViewableIdentifier identifier)
+    private synchronized Entry entry(final DrawableIdentifier identifier)
     {
         return entryForIdentifier.get(identifier);
     }
@@ -302,8 +302,8 @@ public class ViewableMap
         entries.addLast(entry);
     }
 
-    private ViewableIdentifier nextIdentifier()
+    private DrawableIdentifier nextIdentifier()
     {
-        return new ViewableIdentifier("auto::" + nextIdentifier.getAndIncrement());
+        return new DrawableIdentifier("auto::" + nextIdentifier.getAndIncrement());
     }
 }

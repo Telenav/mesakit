@@ -3,7 +3,8 @@ open module mesakit.map.region
     requires transitive mesakit.core;
     requires transitive mesakit.data.formats.pbf;
     requires transitive mesakit.map.geography;
-    requires transitive mesakit.map.ui;
+    requires transitive mesakit.map.ui.desktop;
+    requires transitive mesakit.map.ui.debug;
     requires transitive mesakit.map.utilities.grid;
 
     requires transitive kivakit.core.network.http;

@@ -24,25 +24,24 @@ package com.telenav.mesakit.map.ui.debug.viewer.desktop;
 import com.telenav.kivakit.core.kernel.language.time.Duration;
 import com.telenav.kivakit.core.kernel.language.values.level.Percent;
 import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.ui.debug.viewer.DrawableIdentifier;
 import com.telenav.mesakit.map.ui.debug.viewer.InteractiveView;
-import com.telenav.mesakit.map.ui.debug.viewer.ViewableIdentifier;
+import com.telenav.mesakit.map.ui.debug.viewer.View;
+import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDrawable;
 
-import java.awt.Color;
+import static com.telenav.mesakit.map.ui.debug.viewer.desktop.theme.DebugViewerIcons.END_ICON;
+import static com.telenav.mesakit.map.ui.debug.viewer.desktop.theme.DebugViewerIcons.START_ICON;
 
 /**
- * A {@link DesktopViewer} with convenience methods to update typical {@link Viewable}s.
+ * A {@link DesktopViewer} with convenience methods to update typical {@link MapDrawable}s.
  *
  * @author jonathanl (shibo)
  */
 public class DebugViewer extends DesktopViewer
 {
-    private static final ViewableIdentifier END = new ViewableIdentifier("end");
+    private static final DrawableIdentifier END = new DrawableIdentifier("end");
 
-    private static final ViewableIdentifier START = new ViewableIdentifier("start");
-
-    private Color startColor = new Color(0xf0f0f0);
-
-    private Color endColor = new Color(0xf0f0f0);
+    private static final DrawableIdentifier START = new DrawableIdentifier("start");
 
     private InteractiveView view;
 
@@ -53,12 +52,7 @@ public class DebugViewer extends DesktopViewer
 
     public void end(final Location end)
     {
-        view.update(END, new ViewableLocation(end, Color.RED.darker(), endColor, "end"));
-    }
-
-    public void endColor(final Color endColor)
-    {
-        this.endColor = endColor;
+        view.update(END, END_ICON);
     }
 
     public void frameComplete()
@@ -74,12 +68,7 @@ public class DebugViewer extends DesktopViewer
 
     public void start(final Location start)
     {
-        view.update(START, new ViewableLocation(start, Color.GREEN.darker(), startColor, "start"));
-    }
-
-    public void startColor(final Color startColor)
-    {
-        this.startColor = startColor;
+        view.update(START, START_ICON);
     }
 
     @Override
