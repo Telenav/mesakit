@@ -19,27 +19,39 @@
  *
  */
 
-package com.telenav.mesakit.map.ui.debug.viewer.desktop.theme;
+package com.telenav.mesakit.map.ui.desktop.viewer.desktop;
 
-import com.telenav.kivakit.ui.desktop.graphics.style.Style;
+import com.telenav.mesakit.map.ui.desktop.viewer.View;
+import com.telenav.mesakit.map.ui.desktop.viewer.Viewer;
 
-import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.TRANSPARENT;
-import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.GOLF;
-import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.MANHATTAN;
-import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.MOJITO;
-import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.SEATTLE;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-/**
- * @author jonathanl (shibo)
- */
-public class DebugViewerStyles
+public abstract class BaseViewer implements Viewer
 {
-    public static final Style ACTIVE_BOX = GOLF
-            .withFillColor(TRANSPARENT);
+    private final List<View> views = new ArrayList<>();
 
-    public static Style END = MANHATTAN;
+    @Override
+    public View view(final String title)
+    {
+        for (final var view : views)
+        {
+            if (view.name().equals(title))
+            {
+                return view;
+            }
+        }
+        final var view = newView(title);
+        views.add(view);
+        return view;
+    }
 
-    public static Style INACTIVE_BOX = SEATTLE.withFillColor(TRANSPARENT);
+    @Override
+    public Collection<View> views()
+    {
+        return views;
+    }
 
-    public static Style START = MOJITO;
+    protected abstract View newView(String title);
 }

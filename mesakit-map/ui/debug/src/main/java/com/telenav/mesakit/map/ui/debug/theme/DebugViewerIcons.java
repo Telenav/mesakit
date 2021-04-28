@@ -19,28 +19,26 @@
  *
  */
 
-package com.telenav.mesakit.map.ui.debug.viewer.desktop;
+package com.telenav.mesakit.map.ui.debug.theme;
 
-import com.telenav.mesakit.map.ui.debug.viewer.InteractiveView;
+import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDot;
 
-import javax.swing.JFrame;
+import static com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingDistance.pixels;
+import static com.telenav.mesakit.map.ui.debug.theme.DebugViewerStyles.END;
+import static com.telenav.mesakit.map.ui.debug.theme.DebugViewerStyles.START;
 
-public class DesktopViewer extends BaseViewer
+/**
+ * @author jonathanl (shibo)
+ */
+public class DebugViewerIcons
 {
-    @Override
-    protected InteractiveView newView(final String title)
-    {
-        // Create view panel
-        final var view = new DesktopViewPanel();
-        view.setName(title);
+    public static final MapDot END_ICON = MapDot.dot()
+            .withStyle(END)
+            .withRadius(pixels(10))
+            .withLabel("end");
 
-        // Add to JFrame
-        final var frame = new JFrame(title);
-        frame.setContentPane(view);
-        frame.pack();
-        frame.setVisible(true);
-
-        // Return view panel
-        return view;
-    }
+    public static final MapDot START_ICON = MapDot.dot()
+            .withStyle(START)
+            .withRadius(pixels(10))
+            .withLabel("start");
 }

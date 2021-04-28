@@ -19,18 +19,19 @@
  *
  */
 
-package com.telenav.mesakit.map.ui.debug.viewer.desktop;
+package com.telenav.mesakit.map.ui.debug;
 
 import com.telenav.kivakit.core.kernel.language.time.Duration;
 import com.telenav.kivakit.core.kernel.language.values.level.Percent;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.ui.debug.viewer.DrawableIdentifier;
-import com.telenav.mesakit.map.ui.debug.viewer.InteractiveView;
-import com.telenav.mesakit.map.ui.debug.viewer.View;
 import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDrawable;
+import com.telenav.mesakit.map.ui.desktop.viewer.DrawableIdentifier;
+import com.telenav.mesakit.map.ui.desktop.viewer.InteractiveView;
+import com.telenav.mesakit.map.ui.desktop.viewer.View;
+import com.telenav.mesakit.map.ui.desktop.viewer.desktop.DesktopViewer;
 
-import static com.telenav.mesakit.map.ui.debug.viewer.desktop.theme.DebugViewerIcons.END_ICON;
-import static com.telenav.mesakit.map.ui.debug.viewer.desktop.theme.DebugViewerIcons.START_ICON;
+import static com.telenav.mesakit.map.ui.debug.theme.DebugViewerIcons.END_ICON;
+import static com.telenav.mesakit.map.ui.debug.theme.DebugViewerIcons.START_ICON;
 
 /**
  * A {@link DesktopViewer} with convenience methods to update typical {@link MapDrawable}s.

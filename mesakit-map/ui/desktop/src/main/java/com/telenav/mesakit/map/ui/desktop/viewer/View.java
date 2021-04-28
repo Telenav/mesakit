@@ -19,24 +19,28 @@
  *
  */
 
-package com.telenav.mesakit.map.ui.debug.viewer;
+package com.telenav.mesakit.map.ui.desktop.viewer;
 
-import com.telenav.kivakit.core.kernel.language.time.Duration;
-import com.telenav.kivakit.core.kernel.language.values.level.Percent;
-import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.kivakit.core.kernel.interfaces.naming.Named;
+import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDrawable;
 
-public interface InteractiveView extends View
+/**
+ * A view is a named repository of {@link MapDrawable} objects which can be updated.
+ *
+ * @author jonathanl (shibo)
+ */
+public interface View extends Named
 {
     /**
-     * Called to indicate the current frame has been updated. This allows the user to freeze and step through frames
-     * with key strokes.
+     * Adds the given object to the view. Since it is not identified, it can never be removed or updated.
      */
-    void frameComplete();
+    void add(MapDrawable drawable);
 
     /**
-     * @param delay The delay between frames
+     * Clears the set of {@link MapDrawable} objects held by this view. Not all views necessarily support this
+     * operation. If the view does not support the operation, calling this method will have no effect.
      */
-    void frameSpeed(Duration delay);
+    void clear();
 
     /**
      * Moves the given viewable to the top of the view
@@ -49,12 +53,12 @@ public interface InteractiveView extends View
     void pushToBack(DrawableIdentifier identifier);
 
     /**
-     * @param bounds The rectangle to view
+     * Remove the identified {@link MapDrawable} object from the view
      */
-    void zoomTo(Rectangle bounds);
+    void remove(DrawableIdentifier identifier);
 
     /**
-     * Zooms the view to include all contents
+     * Updates the identified {@link MapDrawable} object in this view.
      */
-    void zoomToContents(Percent margin);
+    void update(DrawableIdentifier identifier, MapDrawable object);
 }

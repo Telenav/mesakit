@@ -19,24 +19,32 @@
  *
  */
 
-package com.telenav.mesakit.map.ui.debug.viewer;
+package com.telenav.mesakit.map.ui.desktop.viewer;
 
-import java.util.Collection;
+import com.telenav.kivakit.core.kernel.language.time.Duration;
+import com.telenav.kivakit.core.kernel.language.values.level.Percent;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
-/**
- * A viewer maintains a set of {@link View}s.
- *
- * @author jonathanl (shibo)
- */
-public interface Viewer
+public interface InteractiveView extends View
 {
     /**
-     * @return The view with the given name
+     * Called to indicate the current frame has been updated. This allows the user to freeze and step through frames
+     * with key strokes.
      */
-    View view(String title);
+    void frameComplete();
 
     /**
-     * @return The collection of views held by this viewer
+     * @param delay The delay between frames
      */
-    Collection<View> views();
+    void frameSpeed(Duration delay);
+
+    /**
+     * @param bounds The rectangle to view
+     */
+    void zoomTo(Rectangle bounds);
+
+    /**
+     * Zooms the view to include all contents
+     */
+    void zoomToContents(Percent margin);
 }

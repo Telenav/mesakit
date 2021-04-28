@@ -19,39 +19,27 @@
  *
  */
 
-package com.telenav.mesakit.map.ui.debug.viewer.desktop;
+package com.telenav.mesakit.map.ui.desktop.viewer.empty;
 
-import com.telenav.mesakit.map.ui.debug.viewer.View;
-import com.telenav.mesakit.map.ui.debug.viewer.Viewer;
+import com.telenav.mesakit.map.ui.desktop.viewer.View;
+import com.telenav.mesakit.map.ui.desktop.viewer.Viewer;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.Collections;
 
-public abstract class BaseViewer implements Viewer
+public class NullViewer implements Viewer
 {
-    private final List<View> views = new ArrayList<>();
+    private final View view = new NullInteractiveView();
 
     @Override
-    public View view(final String title)
+    public View view(final String name)
     {
-        for (final var view : views)
-        {
-            if (view.name().equals(title))
-            {
-                return view;
-            }
-        }
-        final var view = newView(title);
-        views.add(view);
         return view;
     }
 
     @Override
     public Collection<View> views()
     {
-        return views;
+        return Collections.singleton(view);
     }
-
-    protected abstract View newView(String title);
 }

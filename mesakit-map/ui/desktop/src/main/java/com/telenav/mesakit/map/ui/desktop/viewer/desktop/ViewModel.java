@@ -19,13 +19,13 @@
  *
  */
 
-package com.telenav.mesakit.map.ui.debug.viewer.desktop;
+package com.telenav.mesakit.map.ui.desktop.viewer.desktop;
 
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
 import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.ui.debug.viewer.DrawableIdentifier;
 import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDrawable;
+import com.telenav.mesakit.map.ui.desktop.viewer.DrawableIdentifier;
 
 import java.awt.Point;
 import java.awt.Shape;
@@ -40,7 +40,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class ViewableMap
+public class ViewModel
 {
     private static class Entry
     {

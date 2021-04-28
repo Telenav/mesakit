@@ -19,44 +19,28 @@
  *
  */
 
-package com.telenav.mesakit.map.ui.debug.viewer;
+package com.telenav.mesakit.map.ui.desktop.viewer.desktop;
 
-import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDrawable;
+import com.telenav.mesakit.map.ui.desktop.viewer.InteractiveView;
 
-/**
- * Any unique identifier for a {@link MapDrawable} object
- *
- * @author jonathanl (shibo)
- */
-public class DrawableIdentifier
+import javax.swing.JFrame;
+
+public class DesktopViewer extends BaseViewer
 {
-    private final Object object;
-
-    public DrawableIdentifier(final Object object)
-    {
-        this.object = object;
-    }
-
     @Override
-    public boolean equals(final Object object)
+    protected InteractiveView newView(final String title)
     {
-        if (object instanceof DrawableIdentifier)
-        {
-            final var that = (DrawableIdentifier) object;
-            return this.object.equals(that.object);
-        }
-        return false;
-    }
+        // Create view panel
+        final var view = new DesktopViewPanel();
+        view.setName(title);
 
-    @Override
-    public int hashCode()
-    {
-        return object.hashCode();
-    }
+        // Add to JFrame
+        final var frame = new JFrame(title);
+        frame.setContentPane(view);
+        frame.pack();
+        frame.setVisible(true);
 
-    @Override
-    public String toString()
-    {
-        return object.toString();
+        // Return view panel
+        return view;
     }
 }

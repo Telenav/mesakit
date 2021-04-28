@@ -19,26 +19,44 @@
  *
  */
 
-package com.telenav.mesakit.map.ui.debug.viewer.desktop.theme;
+package com.telenav.mesakit.map.ui.desktop.viewer;
 
-import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDot;
-
-import static com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingDistance.pixels;
-import static com.telenav.mesakit.map.ui.debug.viewer.desktop.theme.DebugViewerStyles.END;
-import static com.telenav.mesakit.map.ui.debug.viewer.desktop.theme.DebugViewerStyles.START;
+import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDrawable;
 
 /**
+ * Any unique identifier for a {@link MapDrawable} object
+ *
  * @author jonathanl (shibo)
  */
-public class DebugViewerIcons
+public class DrawableIdentifier
 {
-    public static final MapDot END_ICON = MapDot.dot()
-            .withStyle(END)
-            .withRadius(pixels(10))
-            .withLabel("end");
+    private final Object object;
 
-    public static final MapDot START_ICON = MapDot.dot()
-            .withStyle(START)
-            .withRadius(pixels(10))
-            .withLabel("start");
+    public DrawableIdentifier(final Object object)
+    {
+        this.object = object;
+    }
+
+    @Override
+    public boolean equals(final Object object)
+    {
+        if (object instanceof DrawableIdentifier)
+        {
+            final var that = (DrawableIdentifier) object;
+            return this.object.equals(that.object);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return object.hashCode();
+    }
+
+    @Override
+    public String toString()
+    {
+        return object.toString();
+    }
 }

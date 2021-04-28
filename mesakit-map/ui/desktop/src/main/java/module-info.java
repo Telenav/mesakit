@@ -14,4 +14,7 @@ open module mesakit.map.ui.desktop
     exports com.telenav.mesakit.map.ui.desktop.theme;
     exports com.telenav.mesakit.map.ui.desktop.theme.shapes;
     exports com.telenav.mesakit.map.ui.desktop.tiles;
+    exports com.telenav.mesakit.map.ui.desktop.viewer;
+    exports com.telenav.mesakit.map.ui.desktop.viewer.desktop;
+    exports com.telenav.mesakit.map.ui.desktop.viewer.empty;
 }

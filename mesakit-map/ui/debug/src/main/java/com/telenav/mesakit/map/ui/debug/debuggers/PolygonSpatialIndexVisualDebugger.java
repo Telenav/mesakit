@@ -25,10 +25,10 @@ import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.polygon.PolygonSpatialIndexDebugger;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.geography.shape.segment.Segment;
-import com.telenav.mesakit.map.ui.debug.viewer.View;
 import com.telenav.mesakit.map.ui.desktop.theme.shapes.Bounds;
 import com.telenav.mesakit.map.ui.desktop.theme.shapes.Locations;
 import com.telenav.mesakit.map.ui.desktop.theme.shapes.Polylines;
+import com.telenav.mesakit.map.ui.desktop.viewer.View;
 
 /**
  * @author jonathanl (shibo)

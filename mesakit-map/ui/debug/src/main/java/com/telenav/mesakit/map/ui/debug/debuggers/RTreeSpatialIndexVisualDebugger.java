@@ -27,17 +27,17 @@ import com.telenav.mesakit.map.geography.indexing.rtree.Node;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndexDebugger;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
-import com.telenav.mesakit.map.ui.debug.viewer.DrawableIdentifier;
-import com.telenav.mesakit.map.ui.debug.viewer.InteractiveView;
-import com.telenav.mesakit.map.ui.debug.viewer.View;
-import com.telenav.mesakit.map.ui.debug.viewer.desktop.DebugViewer;
+import com.telenav.mesakit.map.ui.debug.DebugViewer;
 import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapBox;
+import com.telenav.mesakit.map.ui.desktop.viewer.DrawableIdentifier;
+import com.telenav.mesakit.map.ui.desktop.viewer.InteractiveView;
+import com.telenav.mesakit.map.ui.desktop.viewer.View;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.telenav.mesakit.map.ui.debug.viewer.desktop.theme.DebugViewerStyles.ACTIVE_BOX;
-import static com.telenav.mesakit.map.ui.debug.viewer.desktop.theme.DebugViewerStyles.INACTIVE_BOX;
+import static com.telenav.mesakit.map.ui.debug.theme.DebugViewerStyles.ACTIVE_BOX;
+import static com.telenav.mesakit.map.ui.debug.theme.DebugViewerStyles.INACTIVE_BOX;
 
 /**
  * @author jonathanl (shibo)

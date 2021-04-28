@@ -19,36 +19,24 @@
  *
  */
 
-package com.telenav.mesakit.map.ui.debug.viewer;
+package com.telenav.mesakit.map.ui.desktop.viewer;
 
-import com.telenav.kivakit.core.kernel.interfaces.naming.Named;
-import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDrawable;
+import java.util.Collection;
 
 /**
- * A view is a named repository of {@link MapDrawable} objects which can be updated.
+ * A viewer maintains a set of {@link View}s.
  *
  * @author jonathanl (shibo)
  */
-public interface View extends Named
+public interface Viewer
 {
     /**
-     * Adds the given object to the view. Since it is not identified, it can never be removed or updated.
+     * @return The view with the given name
      */
-    void add(MapDrawable drawable);
+    View view(String title);
 
     /**
-     * Clears the set of {@link MapDrawable} objects held by this view. Not all views necessarily support this
-     * operation. If the view does not support the operation, calling this method will have no effect.
+     * @return The collection of views held by this viewer
      */
-    void clear();
-
-    /**
-     * Remove the identified {@link MapDrawable} object from the view
-     */
-    void remove(DrawableIdentifier identifier);
-
-    /**
-     * Updates the identified {@link MapDrawable} object in this view.
-     */
-    void update(DrawableIdentifier identifier, MapDrawable object);
+    Collection<View> views();
 }

@@ -19,15 +19,12 @@
  *
  */
 
-package com.telenav.mesakit.map.ui.debug.viewer.desktop;
+package com.telenav.mesakit.map.ui.desktop.viewer.desktop;
 
 import com.telenav.kivakit.core.kernel.language.threading.conditions.StateMachine;
 import com.telenav.kivakit.core.kernel.language.time.Duration;
 import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.core.kernel.language.values.level.Percent;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
 import com.telenav.kivakit.core.kernel.messaging.Message;
 import com.telenav.kivakit.core.network.core.Host;
 import com.telenav.kivakit.core.network.http.HttpNetworkLocation;
@@ -38,8 +35,6 @@ import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSize;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Label;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.ui.debug.viewer.DrawableIdentifier;
-import com.telenav.mesakit.map.ui.debug.viewer.InteractiveView;
 import com.telenav.mesakit.map.ui.desktop.coordinates.MapCoordinateMapper;
 import com.telenav.mesakit.map.ui.desktop.coordinates.mappers.CartesianCoordinateMapper;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
@@ -50,6 +45,8 @@ import com.telenav.mesakit.map.ui.desktop.tiles.SlippyTileCoordinateSystem;
 import com.telenav.mesakit.map.ui.desktop.tiles.SlippyTileGrid;
 import com.telenav.mesakit.map.ui.desktop.tiles.SlippyTileImageCache;
 import com.telenav.mesakit.map.ui.desktop.tiles.ZoomLevel;
+import com.telenav.mesakit.map.ui.desktop.viewer.DrawableIdentifier;
+import com.telenav.mesakit.map.ui.desktop.viewer.InteractiveView;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -67,10 +64,10 @@ import java.awt.event.MouseWheelListener;
 
 import static com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat.USER_LABEL;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingPoint.at;
-import static com.telenav.mesakit.map.ui.debug.viewer.desktop.DesktopViewPanel.State.PAUSED;
-import static com.telenav.mesakit.map.ui.debug.viewer.desktop.DesktopViewPanel.State.RUNNING;
-import static com.telenav.mesakit.map.ui.debug.viewer.desktop.DesktopViewPanel.State.STEPPING;
 import static com.telenav.mesakit.map.ui.desktop.tiles.SlippyTile.STANDARD_TILE_SIZE;
+import static com.telenav.mesakit.map.ui.desktop.viewer.desktop.DesktopViewPanel.State.PAUSED;
+import static com.telenav.mesakit.map.ui.desktop.viewer.desktop.DesktopViewPanel.State.RUNNING;
+import static com.telenav.mesakit.map.ui.desktop.viewer.desktop.DesktopViewPanel.State.STEPPING;
 
 /**
  * A JPanel implementation of {@link InteractiveView}
@@ -79,10 +76,6 @@ import static com.telenav.mesakit.map.ui.desktop.tiles.SlippyTile.STANDARD_TILE_
  */
 class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMotionListener, MouseListener, MouseWheelListener
 {
-    private static final Logger LOGGER = LoggerFactory.newLogger();
-
-    private static final Debug DEBUG = new Debug(LOGGER);
-
     public enum State
     {
         RUNNING,
@@ -93,7 +86,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     /**
      * Map of {@link MapDrawable} objects in the display
      */
-    private final ViewableMap viewables = new ViewableMap();
+    private final ViewModel viewables = new ViewModel();
 
     /**
      * The center of the current view
@@ -447,9 +440,9 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
         {
             // zoom to that rectangle
             final var selected = mapper.toMapRectangle(DrawingRectangle.rectangle(zoomSelection));
-            if (DEBUG.isDebugOn())
+            if (isDebugOn())
             {
-                LOGGER.information("zooming to $ = $", zoomSelection, selected);
+                information("zooming to $ = $", zoomSelection, selected);
             }
             zoom(selected);
         }
@@ -494,7 +487,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
             viewables.draw(canvas);
 
             // Draw tile outlines
-            if (DEBUG.isDebugOn())
+            if (isDebugOn())
             {
                 tileGrid.drawOutlines(canvas);
             }
@@ -613,21 +606,21 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     {
         final var mapper = new SlippyTileCoordinateSystem(zoom);
         final var centerPoint = mapper.toDrawingPoint(center);
-        if (DEBUG.isDebugOn())
+        if (isDebugOn())
         {
-            LOGGER.information("centerPoint = $", centerPoint);
+            information("centerPoint = $", centerPoint);
         }
         final var topLeftPoint = this.zoom.inRange(
                 DrawingPoint.at(centerPoint.x() - getWidth() / 2.0, centerPoint.y() - getHeight() / 2.0), tileCache.tileSize());
-        if (DEBUG.isDebugOn())
+        if (isDebugOn())
         {
-            LOGGER.information("topLeftPoint = $", topLeftPoint);
+            information("topLeftPoint = $", topLeftPoint);
         }
         final var bottomRightPoint = this.zoom.inRange(
                 DrawingPoint.at(centerPoint.x() + getWidth() / 2.0, centerPoint.y() + getHeight() / 2.0), tileCache.tileSize());
-        if (DEBUG.isDebugOn())
+        if (isDebugOn())
         {
-            LOGGER.information("bottomRightPoint = $", bottomRightPoint);
+            information("bottomRightPoint = $", bottomRightPoint);
         }
         final var topLeft = mapper.locationForPoint(topLeftPoint);
         final var bottomRight = mapper.locationForPoint(bottomRightPoint);
@@ -699,16 +692,16 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
         {
             viewCenter = Location.ORIGIN;
         }
-        if (DEBUG.isDebugOn())
+        if (isDebugOn())
         {
-            LOGGER.information("center = " + center + ", zoom = " + zoom);
+            information("center = " + center + ", zoom = " + zoom);
         }
 
         // Compute view rectangle
         mapBounds = computeBounds(center, zoom);
-        if (DEBUG.isDebugOn())
+        if (isDebugOn())
         {
-            LOGGER.information("view = " + mapBounds);
+            information("view = " + mapBounds);
         }
 
         // Map view rectangle back to pixels
@@ -723,9 +716,9 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
             isZoomedIn = false;
 
             // Show mapping of view
-            if (DEBUG.isDebugOn())
+            if (isDebugOn())
             {
-                LOGGER.information(mapBounds + " -> " + drawingArea);
+                information(mapBounds + " -> " + drawingArea);
             }
         }
         else
@@ -735,9 +728,9 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
             isZoomedIn = true;
 
             // Show drawing surface mapping
-            if (DEBUG.isDebugOn())
+            if (isDebugOn())
             {
-                LOGGER.information(mapBounds + " -> " + drawingSurfaceBounds());
+                information(mapBounds + " -> " + drawingSurfaceBounds());
             }
         }
 
