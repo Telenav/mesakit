@@ -20,16 +20,15 @@ package com.telenav.mesakit.map.ui.desktop.tiles;
 
 import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
-import com.telenav.kivakit.ui.desktop.theme.KivaKitTheme;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.ui.desktop.coordinates.MapCoordinateMapper;
+import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 
-import java.awt.Graphics2D;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
 import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.GRID_LINES;
 
 /**
  * A set of {@link SlippyTile}s that covers a given rectangular area.
@@ -42,7 +41,7 @@ public class SlippyTileGrid extends BaseRepeater implements Iterable<SlippyTile>
 
     private final ZoomLevel zoom;
 
-    private Style outlineStyle = KivaKitTheme.get().styleLabel();
+    private Style outlineStyle = GRID_LINES;
 
     private final Set<SlippyTile> tiles = new HashSet<>();
 
@@ -120,16 +119,13 @@ public class SlippyTileGrid extends BaseRepeater implements Iterable<SlippyTile>
     }
 
     /**
-     * Draws outlines of all the tiles in this grid
-     *
-     * @param graphics The graphics to draw on
-     * @param mapper The coordinate mapper
+     * Draws outlines of all the tiles in this grid on the given canvas
      */
-    public void drawOutlines(final Graphics2D graphics, final MapCoordinateMapper mapper)
+    public void drawOutlines(final MapCanvas canvas)
     {
         for (final var tile : tiles)
         {
-            tile.drawOutline(graphics, mapper, outlineStyle, bounds);
+            tile.drawOutline(canvas, outlineStyle, bounds);
         }
     }
 

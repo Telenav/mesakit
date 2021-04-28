@@ -1,22 +1,25 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// © 2011-2021 Telenav, Inc.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+ * ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ * //
+ * // © 2011-2021 Telenav, Inc.
+ * //
+ * // Licensed under the Apache License, Version 2.0 (the "License");
+ * // you may not use this file except in compliance with the License.
+ * // You may obtain a copy of the License at
+ * //
+ * // http://www.apache.org/licenses/LICENSE-2.0
+ * //
+ * // Unless required by applicable law or agreed to in writing, software
+ * // distributed under the License is distributed on an "AS IS" BASIS,
+ * // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * // See the License for the specific language governing permissions and
+ * // limitations under the License.
+ * //
+ * ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ *
+ */
 
-package com.telenav.mesakit.map.ui.desktop.debug.debuggers.indexing.rtree;
+package com.telenav.mesakit.map.ui.debug.debuggers;
 
 import com.telenav.mesakit.map.geography.indexing.rtree.InteriorNode;
 import com.telenav.mesakit.map.geography.indexing.rtree.Leaf;
@@ -24,11 +27,10 @@ import com.telenav.mesakit.map.geography.indexing.rtree.Node;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndexDebugger;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
-import com.telenav.mesakit.map.ui.desktop.debug.InteractiveView;
-import com.telenav.mesakit.map.ui.desktop.debug.View;
-import com.telenav.mesakit.map.ui.desktop.debug.ViewableIdentifier;
-import com.telenav.mesakit.map.ui.desktop.debug.viewables.ViewableRectangle;
-import com.telenav.mesakit.map.ui.desktop.debug.viewer.swing.DebugViewer;
+import com.telenav.mesakit.map.ui.debug.viewer.InteractiveView;
+import com.telenav.mesakit.map.ui.debug.viewer.View;
+import com.telenav.mesakit.map.ui.debug.viewer.ViewableIdentifier;
+import com.telenav.mesakit.map.ui.debug.viewer.desktop.DebugViewer;
 
 import java.awt.Color;
 import java.util.HashMap;

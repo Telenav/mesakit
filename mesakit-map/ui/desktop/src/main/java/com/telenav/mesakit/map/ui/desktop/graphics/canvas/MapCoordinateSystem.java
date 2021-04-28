@@ -25,53 +25,53 @@ public class MapCoordinateSystem implements CoordinateSystem
     }
 
     @Override
-    public Coordinate inCoordinates(final DrawingPoint point)
+    public CoordinateDistance toCoordinates(final DrawingDistance distance)
+    {
+        return CoordinateDistance.units(this, distance.units());
+    }
+
+    @Override
+    public Coordinate toCoordinates(final DrawingPoint point)
     {
         final var location = mapper.toMapLocation(point);
         return Coordinate.at(this, location.longitude().asDegrees(), location.latitude().asDegrees());
     }
 
     @Override
-    public CoordinateSize inCoordinates(final DrawingSize size)
+    public CoordinateSize toCoordinates(final DrawingSize size)
     {
         final var location = mapper.toMapLocation(size.asPoint());
         return CoordinateSize.size(this, location.longitude().asDegrees(), location.latitude().asDegrees());
     }
 
     @Override
-    public CoordinateDistance inCoordinates(final DrawingDistance distance)
-    {
-        return CoordinateDistance.units(this, distance.units());
-    }
-
-    @Override
-    public DrawingDistance inDrawingUnits(final CoordinateHeight height)
-    {
-        return DrawingDistance.of(mapper.toDrawingPoint(Location.degrees(height.units(), 0)).y());
-    }
-
-    @Override
-    public DrawingDistance inDrawingUnits(final CoordinateWidth width)
-    {
-        return DrawingDistance.of(mapper.toDrawingPoint(Location.degrees(0.0, width.units())).x());
-    }
-
-    @Override
-    public DrawingDistance inDrawingUnits(final CoordinateDistance distance)
-    {
-        return DrawingDistance.of(mapper.toDrawingPoint(Location.degrees(0.0, distance.units())).x());
-    }
-
-    @Override
-    public DrawingPoint inDrawingUnits(final Coordinate coordinate)
+    public DrawingPoint toDrawingUnits(final Coordinate coordinate)
     {
         return mapper.toDrawingPoint(Location.degrees(coordinate.y(), coordinate.x()));
     }
 
     @Override
-    public DrawingSize inDrawingUnits(final CoordinateSize coordinate)
+    public DrawingSize toDrawingUnits(final CoordinateSize coordinate)
     {
         final var point = mapper.toDrawingPoint(Location.degrees(coordinate.height(), coordinate.width()));
         return DrawingSize.size(point.x(), point.y());
+    }
+
+    @Override
+    public DrawingDistance toDrawingUnits(final CoordinateHeight height)
+    {
+        return DrawingDistance.of(mapper.toDrawingPoint(Location.degrees(height.units(), 0)).y());
+    }
+
+    @Override
+    public DrawingDistance toDrawingUnits(final CoordinateWidth width)
+    {
+        return DrawingDistance.of(mapper.toDrawingPoint(Location.degrees(0.0, width.units())).x());
+    }
+
+    @Override
+    public DrawingDistance toDrawingUnits(final CoordinateDistance distance)
+    {
+        return DrawingDistance.of(mapper.toDrawingPoint(Location.degrees(0.0, distance.units())).x());
     }
 }

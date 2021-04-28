@@ -40,7 +40,7 @@ public class MapStroke extends Stroke
     public void apply(final Graphics2D graphics, final MapCanvas canvas)
     {
         super.apply(graphics);
-        drawingWidth = canvas.inDrawingUnits(canvas.inCoordinates(width));
+        drawingWidth = canvas.toDrawingUnits(width);
     }
 
     @Override

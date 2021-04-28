@@ -77,12 +77,12 @@ public class RTreeBulkLoader<Element extends Bounded & Intersectable>
 
     protected int compareHorizontal(final Element a, final Element b)
     {
-        return a.asBoundsFromOrigin().compareHorizontal(b.asBoundsFromOrigin());
+        return a.bounds().compareHorizontal(b.bounds());
     }
 
     protected int compareVertical(final Element a, final Element b)
     {
-        return a.asBoundsFromOrigin().compareVertical(b.asBoundsFromOrigin());
+        return a.bounds().compareVertical(b.bounds());
     }
 
     private Node<Element> tree(final InteriorNode<Element> parent,

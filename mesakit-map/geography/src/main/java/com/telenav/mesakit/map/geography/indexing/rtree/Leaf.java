@@ -65,7 +65,7 @@ public abstract class Leaf<T extends Bounded & Intersectable> extends Node<T>
             index().debugger().update(this, element);
 
             // Expand the parents of this element if need be
-            expandToInclude(element.asBoundsFromOrigin());
+            expandToInclude(element.bounds());
         }
     }
 
@@ -127,7 +127,7 @@ public abstract class Leaf<T extends Bounded & Intersectable> extends Node<T>
     @Override
     protected String toString(final RTreeSpatialIndex.DumpDetailLevel detail)
     {
-        return "[Leaf bounds = " + asBoundsFromOrigin() + ", size = " + size() + ", elements = "
+        return "[Leaf bounds = " + bounds() + ", size = " + size() + ", elements = "
                 + (detail == RTreeSpatialIndex.DumpDetailLevel.SUMMARY_ONLY ? "" + size() : new ObjectList<>().appendAll(elements()).join())
                 + "]";
     }
@@ -157,9 +157,9 @@ public abstract class Leaf<T extends Bounded & Intersectable> extends Node<T>
                     // and if it's not one of the two we started with,
                     if (!element.equals(a) && !element.equals(b))
                     {
-                        final var center = element.asBoundsFromOrigin().center();
-                        if (center.preciseDistanceTo(a.asBoundsFromOrigin().center())
-                                .isLessThan(center.preciseDistanceTo(b.asBoundsFromOrigin().center())))
+                        final var center = element.bounds().center();
+                        if (center.preciseDistanceTo(a.bounds().center())
+                                .isLessThan(center.preciseDistanceTo(b.bounds().center())))
                         {
                             leafA.add(element);
                         }

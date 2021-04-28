@@ -19,9 +19,9 @@
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingDistance;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.awt.AwtShapes;
 import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
 import com.telenav.kivakit.ui.desktop.graphics.style.Color;
-import com.telenav.kivakit.ui.desktop.graphics.style.Shapes;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
@@ -86,13 +86,13 @@ public class MapBox extends LabeledMapShape
     @Override
     public Shape onDraw(final MapCanvas canvas)
     {
-        final var box = box(canvas.inCoordinates(size))
-                .at(canvas.inCoordinates(location()))
+        final var box = box(canvas.toCoordinates(size))
+                .at(canvas.toCoordinates(location()))
                 .draw(canvas);
 
         final var label = super.onDraw(canvas);
 
-        return Shapes.combine(box, label);
+        return AwtShapes.combine(box, label);
     }
 
     @Override

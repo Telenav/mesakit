@@ -16,27 +16,43 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.map.ui.desktop.debug.viewer.empty;
+package com.telenav.mesakit.map.ui.debug.viewer.empty;
 
-import com.telenav.mesakit.map.ui.desktop.debug.View;
-import com.telenav.mesakit.map.ui.desktop.debug.Viewer;
+import com.telenav.kivakit.core.kernel.language.time.Duration;
+import com.telenav.kivakit.core.kernel.language.values.level.Percent;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.ui.debug.viewer.InteractiveView;
+import com.telenav.mesakit.map.ui.debug.viewer.ViewableIdentifier;
 
-import java.util.Collection;
-import java.util.Collections;
-
-public class NullViewer implements Viewer
+public class NullInteractiveView extends NullView implements InteractiveView
 {
-    private final View view = new NullView();
-
     @Override
-    public View view(final String name)
+    public void frameComplete()
     {
-        return view;
     }
 
     @Override
-    public Collection<View> views()
+    public void frameSpeed(final Duration delay)
     {
-        return Collections.singleton(view);
+    }
+
+    @Override
+    public void pullToFront(final ViewableIdentifier identifier)
+    {
+    }
+
+    @Override
+    public void pushToBack(final ViewableIdentifier identifier)
+    {
+    }
+
+    @Override
+    public void zoomTo(final Rectangle bounds)
+    {
+    }
+
+    @Override
+    public void zoomToContents(final Percent margin)
+    {
     }
 }

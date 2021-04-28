@@ -19,9 +19,9 @@
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingDistance;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.awt.AwtShapes;
 import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
 import com.telenav.kivakit.ui.desktop.graphics.style.Color;
-import com.telenav.kivakit.ui.desktop.graphics.style.Shapes;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
@@ -91,16 +91,16 @@ public class MapDot extends LabeledMapShape
     {
         final var radius = this.radius == null
                 ? drawingRadius
-                : canvas.inDrawingUnits(canvas.inCoordinates(this.radius));
+                : canvas.toDrawingUnits(this.radius);
 
         final var box = dot()
                 .withRadius(radius)
-                .at(canvas.inCoordinates(location()))
+                .at(canvas.toCoordinates(location()))
                 .draw(canvas);
 
         final var label = super.onDraw(canvas);
 
-        return Shapes.combine(box, label);
+        return AwtShapes.combine(box, label);
     }
 
     @Override

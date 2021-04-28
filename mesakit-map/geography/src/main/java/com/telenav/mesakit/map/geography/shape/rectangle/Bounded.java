@@ -32,5 +32,5 @@ public interface Bounded
     /**
      * @return The bounding rectangle
      */
-    Rectangle asBoundsFromOrigin();
+    Rectangle bounds();
 }

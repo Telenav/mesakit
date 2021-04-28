@@ -78,7 +78,7 @@ public class PolygonSpatialIndex implements Intersectable, Bounded, Outline
 
         // Save the polygon and it's bounds
         this.polygon = polygon;
-        bounds = polygon.asBoundsFromOrigin();
+        bounds = polygon.bounds();
 
         // Recursively construct the spatial index
         root = store.add(new Node(this, bounds));
@@ -92,7 +92,7 @@ public class PolygonSpatialIndex implements Intersectable, Bounded, Outline
     }
 
     @Override
-    public Rectangle asBoundsFromOrigin()
+    public Rectangle bounds()
     {
         return bounds;
     }

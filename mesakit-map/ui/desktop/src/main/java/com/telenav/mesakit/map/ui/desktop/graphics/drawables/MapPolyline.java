@@ -20,9 +20,9 @@ package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
 import com.telenav.kivakit.core.kernel.language.collections.list.ObjectList;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingDistance;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.awt.AwtShapes;
 import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
 import com.telenav.kivakit.ui.desktop.graphics.style.Color;
-import com.telenav.kivakit.ui.desktop.graphics.style.Shapes;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
@@ -109,7 +109,7 @@ public class MapPolyline extends LabeledMapShape
             shapes.add(super.drawLabel(canvas, anchor(canvas, polyline.end())));
         }
 
-        return Shapes.combine(shapes);
+        return AwtShapes.combine(shapes);
     }
 
     @Override

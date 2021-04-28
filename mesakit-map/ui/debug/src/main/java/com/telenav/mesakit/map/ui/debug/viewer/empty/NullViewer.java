@@ -16,24 +16,27 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.map.ui.desktop.debug;
+package com.telenav.mesakit.map.ui.debug.viewer.empty;
+
+import com.telenav.mesakit.map.ui.debug.viewer.View;
+import com.telenav.mesakit.map.ui.debug.viewer.Viewer;
 
 import java.util.Collection;
+import java.util.Collections;
 
-/**
- * A viewer maintains a set of {@link View}s.
- *
- * @author jonathanl (shibo)
- */
-public interface Viewer
+public class NullViewer implements Viewer
 {
-    /**
-     * @return The view with the given name
-     */
-    View view(String title);
+    private final View view = new NullView();
 
-    /**
-     * @return The collection of views held by this viewer
-     */
-    Collection<View> views();
+    @Override
+    public View view(final String name)
+    {
+        return view;
+    }
+
+    @Override
+    public Collection<View> views()
+    {
+        return Collections.singleton(view);
+    }
 }

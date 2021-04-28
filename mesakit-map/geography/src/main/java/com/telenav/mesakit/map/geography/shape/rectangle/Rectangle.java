@@ -141,7 +141,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         final var builder = new BoundingBoxBuilder();
         for (final var object : objects)
         {
-            builder.add(object.asBoundsFromOrigin());
+            builder.add(object.bounds());
         }
         return builder.build();
     }
@@ -155,7 +155,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         final var builder = new BoundingBoxBuilder();
         for (final Bounded object : objects)
         {
-            builder.add(object.asBoundsFromOrigin());
+            builder.add(object.bounds());
         }
         return builder.build();
     }
@@ -425,12 +425,6 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         return Area.squareMeters((long) squareMeters);
     }
 
-    @Override
-    public Rectangle asBoundsFromOrigin()
-    {
-        return this;
-    }
-
     public Polygon asPolygon()
     {
         return Polygon.fromLocationSequence(locationSequence());
@@ -474,6 +468,12 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     public Location bottomRight()
     {
         return new Location(bottomLeft().latitude(), topRight().longitude());
+    }
+
+    @Override
+    public Rectangle bounds()
+    {
+        return this;
     }
 
     public Iterable<Rectangle> cells(final Distance size)

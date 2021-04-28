@@ -20,9 +20,9 @@ package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
 import com.telenav.kivakit.ui.desktop.graphics.drawing.Drawable;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingDistance;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.awt.AwtShapes;
 import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
 import com.telenav.kivakit.ui.desktop.graphics.style.Color;
-import com.telenav.kivakit.ui.desktop.graphics.style.Shapes;
 import com.telenav.kivakit.ui.desktop.graphics.style.Stroke;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.Location;
@@ -108,10 +108,10 @@ public class MapLine extends LabeledMapShape
         final var line = line(style(), from(), to, label)
                 .withFromArrowHead(fromArrowHead)
                 .withToArrowHead(toArrowHead)
-                .at(canvas.inCoordinates(location()))
+                .at(canvas.toCoordinates(location()))
                 .draw(canvas);
 
-        return Shapes.combine(line, super.onDraw(canvas));
+        return AwtShapes.combine(line, super.onDraw(canvas));
     }
 
     @Override

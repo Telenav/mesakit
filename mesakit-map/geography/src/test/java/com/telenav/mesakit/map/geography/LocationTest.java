@@ -76,7 +76,7 @@ public class LocationTest extends MapGeographyUnitTest
         loop(() ->
         {
             final var from = randomValueFactory().newLocation(Rectangle.MINIMUM.expanded(Distance.kilometers(5_000)));
-            final var to = randomValueFactory().newLocation(from.asBoundsFromOrigin().expanded(Distance.kilometers(1)));
+            final var to = randomValueFactory().newLocation(from.bounds().expanded(Distance.kilometers(1)));
             final var haversine = from.haversineDistanceTo(to);
             final var cosines = from.lawOfCosinesDistanceTo(to);
             final var rectangular = from.equirectangularDistanceTo(to);

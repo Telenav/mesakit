@@ -58,7 +58,7 @@ public class PolygonSpatialIndexTest extends MapGeographyUnitTest
         for (final Polygon polygon : world().polygons())
         {
             final var index = new PolygonSpatialIndex(polygon);
-            final var center = polygon.asBoundsFromOrigin().center();
+            final var center = polygon.bounds().center();
             if (!index.containment(center).matches(polygon.containment(center)))
             {
                 trace("#" + i + ". failed: index = " + index.containment(center)
@@ -132,7 +132,7 @@ public class PolygonSpatialIndexTest extends MapGeographyUnitTest
     private void testPolygonIndex(final Polygon polygon)
     {
         final var index = new PolygonSpatialIndex(polygon);
-        final var bounds = polygon.asBoundsFromOrigin();
+        final var bounds = polygon.bounds();
         for (var i = 0; i < 100; i++)
         {
             final var location = randomValueFactory().newLocation(bounds);

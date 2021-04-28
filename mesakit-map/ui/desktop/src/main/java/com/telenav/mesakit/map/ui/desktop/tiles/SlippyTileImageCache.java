@@ -109,11 +109,11 @@ public abstract class SlippyTileImageCache extends BaseRepeater
             if (image != null)
             {
                 // draw it at the appropriate x, y location using the coordinate mapper
-                final var bounds = mapper.toDrawingRectangle(tile.bounds());
+                final var bounds = mapper.toDrawingRectangle(tile.tileBounds());
                 if (DEBUG.isDebugOn())
                 {
                     LOGGER.information("drawing tile $ with bounds of $ at $, $", tile,
-                            tile.bounds(), bounds.x, bounds.y);
+                            tile.tileBounds(), bounds.x, bounds.y);
                 }
                 graphics.drawImage(image, bounds.x, bounds.y, null);
             }

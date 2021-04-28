@@ -1,22 +1,25 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// © 2011-2021 Telenav, Inc.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+ * ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ * //
+ * // © 2011-2021 Telenav, Inc.
+ * //
+ * // Licensed under the Apache License, Version 2.0 (the "License");
+ * // you may not use this file except in compliance with the License.
+ * // You may obtain a copy of the License at
+ * //
+ * // http://www.apache.org/licenses/LICENSE-2.0
+ * //
+ * // Unless required by applicable law or agreed to in writing, software
+ * // distributed under the License is distributed on an "AS IS" BASIS,
+ * // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * // See the License for the specific language governing permissions and
+ * // limitations under the License.
+ * //
+ * ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ *
+ */
 
-package com.telenav.mesakit.map.ui.desktop.debug.viewer.swing;
+package com.telenav.mesakit.map.ui.debug.viewer.desktop;
 
 import com.telenav.kivakit.core.kernel.language.threading.conditions.StateMachine;
 import com.telenav.kivakit.core.kernel.language.time.Duration;
@@ -34,12 +37,11 @@ import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSize;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Label;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.ui.debug.viewer.InteractiveView;
 import com.telenav.mesakit.map.ui.desktop.coordinates.MapCoordinateMapper;
 import com.telenav.mesakit.map.ui.desktop.coordinates.mappers.CartesianCoordinateMapper;
-import com.telenav.mesakit.map.ui.desktop.debug.InteractiveView;
 import com.telenav.mesakit.map.ui.desktop.debug.Viewable;
 import com.telenav.mesakit.map.ui.desktop.debug.ViewableIdentifier;
-import com.telenav.mesakit.map.ui.desktop.debug.viewer.ViewableMap;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapScale;
 import com.telenav.mesakit.map.ui.desktop.tiles.SlippyTile;
@@ -64,9 +66,6 @@ import java.awt.event.MouseWheelListener;
 
 import static com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat.USER_LABEL;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingPoint.at;
-import static com.telenav.mesakit.map.ui.desktop.debug.viewer.swing.DesktopViewPanel.State.PAUSED;
-import static com.telenav.mesakit.map.ui.desktop.debug.viewer.swing.DesktopViewPanel.State.RUNNING;
-import static com.telenav.mesakit.map.ui.desktop.debug.viewer.swing.DesktopViewPanel.State.STEPPING;
 
 /**
  * A JPanel implementation of {@link InteractiveView}
@@ -513,16 +512,16 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
                 // draw the cursor's latitude and longitude in the lower right
                 final var style = theme().styleCaption();
                 final var text = cursorAt.asString(USER_LABEL);
-                final var size = canvas.size(style, text);
+                final var textSize = canvas.size(style, text);
                 Label.label(style)
-                        .at(canvas.inCoordinates(getWidth() - size.width() - 10, getHeight() - size.height() - 10))
+                        .at(canvas.toCoordinates(getWidth() - textSize.width() - 10, getHeight() - textSize.height() - 10))
                         .withText(text)
                         .draw(canvas);
             }
 
             // Show help message
             Label.label(theme().styleCaption())
-                    .at(canvas.inCoordinates(10, 10))
+                    .at(canvas.toCoordinates(10, 10))
                     .withText(state.at()
                             + " | <space> pause/resume "
                             + "  '<' slower "

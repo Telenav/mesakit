@@ -22,16 +22,18 @@
 package com.telenav.mesakit.map.ui.desktop.theme;
 
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
-import com.telenav.kivakit.ui.desktop.theme.KivaKitStyles;
 
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.OCEAN;
+import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.STEEL_BLUE;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.TRANSLUCENT_OCEAN;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.ARUBA;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.MANHATTAN;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.MOJITO;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.NIGHT_SHIFT;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.SEATTLE;
+import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.SUNNY;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.VALENCIA;
+import static com.telenav.mesakit.map.ui.desktop.theme.Strokes.DASHED;
 
 public class MapStyles
 {
@@ -39,27 +41,31 @@ public class MapStyles
 
     public static final Style ARROWHEAD = ARUBA;
 
+    public static final Style BASE = MOJITO;
+
     public static final Style ERROR = MANHATTAN;
 
     public static final Style GRAYED = SEATTLE;
+
+    public static final Style GRID_LINES = BASE
+            .withDrawColor(STEEL_BLUE)
+            .withDrawStroke(DASHED);
 
     public static final Style HIGHLIGHTED = NIGHT_SHIFT;
 
     public static final Style INACTIVE = SEATTLE;
 
-    public static final Style NORMAL = MOJITO;
-
-    public static final Style BASE = NORMAL;
+    public static final Style NORMAL = BASE;
 
     public static final Style RESTRICTION_STYLE = ERROR;
 
-    public static final Style ROUTE_STYLE = MapStyles.BASE
+    public static final Style ROUTE_STYLE = BASE
             .withFillColor(TRANSLUCENT_OCEAN)
             .withDrawColor(OCEAN);
 
     public static final Style SELECTED = VALENCIA;
 
-    public static final Style SELECTED_ROUTE = KivaKitStyles.SUNNY;
+    public static final Style SELECTED_ROUTE = SUNNY;
 
-    public static final Style VIA_NODE_STYLE = KivaKitStyles.MANHATTAN;
+    public static final Style VIA_NODE_STYLE = MANHATTAN;
 }

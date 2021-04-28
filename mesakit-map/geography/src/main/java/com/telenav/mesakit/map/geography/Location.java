@@ -117,7 +117,7 @@ import static com.telenav.mesakit.map.geography.Precision.DM7;
  * </ul>
  * Locations support validation via {@link Validatable}, and they can be intersected with a rectangle using
  * {@link Intersectable#intersects(Rectangle)}. Although a location is a zero-dimensional point, it also supports
- * retrieval of a bounding rectangle of zero width and height with {@link Bounded#asBoundsFromOrigin()}. Naturally, a location is
+ * retrieval of a bounding rectangle of zero width and height with {@link Bounded#bounds()}. Naturally, a location is
  * also {@link Located} for interoperation with other objects that are also {@link Located}.
  *
  * @author jonathanl (shibo)
@@ -598,13 +598,11 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
     }
 
     /**
-     * @return A zero-area bounding rectangle at this location, which can be expanded with {@link
-     * Rectangle#expanded(Distance)}
+     * @return A rectangle including the origin and this point
      */
-    @Override
     public Rectangle asBoundsFromOrigin()
     {
-        return Rectangle.fromLocations(this, this);
+        return Rectangle.fromLocations(this, ORIGIN);
     }
 
     public long asDecimal(final Precision precision)
@@ -634,7 +632,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
 
     public Height asHeightFromOrigin()
     {
-        return boundsFromOrigin().height();
+        return asBoundsFromOrigin().height();
     }
 
     public long asLong()
@@ -686,15 +684,17 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
 
     public Width asWidthFromOrigin()
     {
-        return asBoundsFromOrigin().width();
+        return bounds().width();
     }
 
     /**
-     * @return A rectangle including the origin and this point
+     * @return A zero-area bounding rectangle at this location, which can be expanded with {@link
+     * Rectangle#expanded(Distance)}
      */
-    public Rectangle boundsFromOrigin()
+    @Override
+    public Rectangle bounds()
     {
-        return Rectangle.fromLocations(this, ORIGIN);
+        return Rectangle.fromLocations(this, this);
     }
 
     public Location decremented()
@@ -1038,7 +1038,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
 
     public Size size()
     {
-        return boundsFromOrigin().size();
+        return asBoundsFromOrigin().size();
     }
 
     public Segment to(final Location to)

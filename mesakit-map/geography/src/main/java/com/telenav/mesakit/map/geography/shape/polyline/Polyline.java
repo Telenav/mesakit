@@ -76,8 +76,8 @@ import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensu
  * <pre>
  *     for (var location : polyline) { ... }
  * </pre>
- * Polylines also have a bounding rectangle retrieved with {@link Bounded#asBoundsFromOrigin()}. It can be determined if
- * the polyline intersects a rectangle or segment with {@link Intersectable#intersects(Rectangle)} and {@link
+ * Polylines also have a bounding rectangle retrieved with {@link Bounded#bounds()}. It can be determined if the
+ * polyline intersects a rectangle or segment with {@link Intersectable#intersects(Rectangle)} and {@link
  * #intersects(Segment)}, and whether it intersects itself with {@link #selfIntersection()}. The point of intersection
  * with another polyline or with a segment can be determined with {@link #intersection(Polyline)} and {@link
  * #intersection(Segment)}. Whether two polylines cross each other can be determined with {@link #crosses(Polyline)}.
@@ -583,19 +583,6 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         return builder.build();
     }
 
-    /**
-     * @return The minimum bounding rectangle of all shapepoints
-     */
-    @Override
-    public final Rectangle asBoundsFromOrigin()
-    {
-        if (leftInDecimal == Integer.MAX_VALUE)
-        {
-            expandBounds(locationsInDecimal());
-        }
-        return Rectangle.fromInts(bottomInDecimal, leftInDecimal, topInDecimal, rightInDecimal);
-    }
-
     @Override
     public @NotNull
     Iterator<Location> asIterator()
@@ -824,6 +811,19 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     }
 
     /**
+     * @return The minimum bounding rectangle of all shapepoints
+     */
+    @Override
+    public final Rectangle bounds()
+    {
+        if (leftInDecimal == Integer.MAX_VALUE)
+        {
+            expandBounds(locationsInDecimal());
+        }
+        return Rectangle.fromInts(bottomInDecimal, leftInDecimal, topInDecimal, rightInDecimal);
+    }
+
+    /**
      * @return The percentage of this polyline that is within the given distance from that polyline. Areas where the
      * headings of the two polylines deviate by more than the given maximumHeadingDeviation are not considered close,
      * nor are areas where the polylines are more end-to-end than side-by-side.
@@ -869,7 +869,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
 
     public boolean crosses(final Polyline that)
     {
-        if (asBoundsFromOrigin().intersects(that.asBoundsFromOrigin()))
+        if (bounds().intersects(that.bounds()))
         {
             for (final var thisSegment : segments())
             {
@@ -1055,7 +1055,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     @Override
     public boolean intersects(final Rectangle rectangle)
     {
-        if (asBoundsFromOrigin().intersects(rectangle))
+        if (bounds().intersects(rectangle))
         {
             for (final var segment : segments())
             {

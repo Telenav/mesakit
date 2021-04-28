@@ -90,7 +90,7 @@ public class Polygon extends Polyline implements Shape
             // Create a strip from the left side of the polygon to the location, that is 10 meters
             // high and contains the location and is also 5 meters left and right of the bounds to
             // take care of edge cases where the location is right on the edge of the polygon.
-            final var bounds = location.asBoundsFromOrigin().withLeft(asBoundsFromOrigin().left()).withRight(location.longitude())
+            final var bounds = location.bounds().withLeft(bounds().left()).withRight(location.longitude())
                     .expanded(Distance.meters(5));
 
             // Create a horizontal from the left size of the polygon to the location
@@ -180,7 +180,7 @@ public class Polygon extends Polyline implements Shape
     @Override
     public Containment containment(final Location location)
     {
-        if (asBoundsFromOrigin().containment(location).isInside())
+        if (bounds().containment(location).isInside())
         {
             final var containment = outline().containment(location);
             if (containment != Containment.OUTSIDE)
@@ -203,7 +203,7 @@ public class Polygon extends Polyline implements Shape
 
     public boolean contains(final Polyline line)
     {
-        if (!asBoundsFromOrigin().contains(line.asBoundsFromOrigin()))
+        if (!bounds().contains(line.bounds()))
         {
             return false;
         }
@@ -220,7 +220,7 @@ public class Polygon extends Polyline implements Shape
     public boolean contains(final Rectangle rectangle)
     {
         // The rectangle is fully contained if the bounds contains the rectangle fully,
-        if (asBoundsFromOrigin().contains(rectangle))
+        if (bounds().contains(rectangle))
         {
             // and there are no segments that intersect the rectangle
             if (intersections(rectangle, Count._1).isEmpty())

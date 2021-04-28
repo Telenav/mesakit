@@ -2,13 +2,14 @@ open module mesakit.map.ui.debug
 {
     requires transitive mesakit.core;
     requires transitive mesakit.map.geography;
+    requires transitive mesakit.map.ui.desktop;
 
     requires transitive kivakit.core.network.http;
-    requires transitive kivakit.ui.desktop;
 
-    exports com.telenav.mesakit.map.ui.desktop.debug.debuggers.indexing.rtree;
-    exports com.telenav.mesakit.map.ui.desktop.debug.viewer.empty;
-    exports com.telenav.mesakit.map.ui.desktop.debug.viewer.swing;
-    exports com.telenav.mesakit.map.ui.desktop.debug.viewer;
-    exports com.telenav.mesakit.map.ui.desktop.debug;
+    exports com.telenav.mesakit.map.ui.debug;
+    exports com.telenav.mesakit.map.ui.debug.indexing.rtree;
+    exports com.telenav.mesakit.map.ui.debug.indexing.polygon;
+    exports com.telenav.mesakit.map.ui.debug.viewer.empty;
+    exports com.telenav.mesakit.map.ui.debug.viewer.desktop;
+    exports com.telenav.mesakit.map.ui.debug.viewer;
 }

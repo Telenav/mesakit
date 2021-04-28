@@ -148,12 +148,6 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
         return start().distanceTo(end());
     }
 
-    @Override
-    public Rectangle asBoundsFromOrigin()
-    {
-        return Rectangle.fromLongs(startInDm7, endInDm7);
-    }
-
     public Polyline asPolyline()
     {
         return Polyline.fromLocations(start(), end());
@@ -181,6 +175,12 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
         final var line1 = start().moved(arrowHeading.plus(offset), arrowSize);
         final var line2 = start().moved(arrowHeading.minus(offset), arrowSize);
         return Polyline.fromLocations(line1, start(), line2);
+    }
+
+    @Override
+    public Rectangle bounds()
+    {
+        return Rectangle.fromLongs(startInDm7, endInDm7);
     }
 
     public Location center()

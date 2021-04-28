@@ -59,7 +59,7 @@ public abstract class Node<T extends Bounded & Intersectable> implements Bounded
     public abstract void add(final T element);
 
     @Override
-    public Rectangle asBoundsFromOrigin()
+    public Rectangle bounds()
     {
         if (bottomLeft != Location.NULL && topRight != Location.NULL)
         {
@@ -127,7 +127,7 @@ public abstract class Node<T extends Bounded & Intersectable> implements Bounded
     @Override
     public boolean intersects(final Rectangle rectangle)
     {
-        return asBoundsFromOrigin().intersects(rectangle);
+        return bounds().intersects(rectangle);
     }
 
     public abstract boolean isLeaf();
@@ -146,8 +146,8 @@ public abstract class Node<T extends Bounded & Intersectable> implements Bounded
         N minimum = null;
         for (final var node : nodes)
         {
-            final var before = node.asBoundsFromOrigin().area();
-            final var after = node.asBoundsFromOrigin().union(element.asBoundsFromOrigin()).area();
+            final var before = node.bounds().area();
+            final var after = node.bounds().union(element.bounds()).area();
             final var increase = after.minus(before);
             if (minimum == null || increase.isLessThan(minimumIncrease))
             {
@@ -163,7 +163,7 @@ public abstract class Node<T extends Bounded & Intersectable> implements Bounded
         // Walk up the parent tree
         for (var at = this; at != null; at = at.parent())
         {
-            final var current = at.asBoundsFromOrigin();
+            final var current = at.bounds();
             if (current == null)
             {
                 at.bounds(bounds);

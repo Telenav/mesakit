@@ -16,16 +16,37 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.map.ui.desktop.debug;
+package com.telenav.mesakit.map.ui.debug.viewer.empty;
 
-import com.telenav.kivakit.ui.desktop.graphics.drawing.Drawable;
-import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
+import com.telenav.mesakit.map.ui.debug.viewer.View;
+import com.telenav.mesakit.map.ui.debug.viewer.Viewable;
+import com.telenav.mesakit.map.ui.debug.viewer.ViewableIdentifier;
 
-/**
- * A {@link Viewable} object is {@link Drawable}.
- *
- * @author jonathanl (shibo)
- */
-public interface Viewable extends Bounded, Drawable
+public class NullView implements View
 {
+    @Override
+    public void add(final Viewable object)
+    {
+    }
+
+    @Override
+    public void clear()
+    {
+    }
+
+    @Override
+    public String name()
+    {
+        return "null";
+    }
+
+    @Override
+    public void remove(final ViewableIdentifier identifier)
+    {
+    }
+
+    @Override
+    public void update(final ViewableIdentifier identifier, final Viewable object)
+    {
+    }
 }

@@ -103,6 +103,6 @@ public abstract class LabeledMapShape extends BaseMapShape
 
     protected Coordinate anchor(final MapCanvas canvas, final Location location)
     {
-        return canvas.inCoordinates(location).plus(labelXOffset, labelYOffset);
+        return canvas.toCoordinates(location).plus(labelXOffset, labelYOffset);
     }
 }

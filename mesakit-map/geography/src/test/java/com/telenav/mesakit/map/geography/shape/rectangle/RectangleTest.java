@@ -250,8 +250,8 @@ public class RectangleTest extends MapGeographyUnitTest
         ensure(!rect1.intersects(rect2));
         ensure(rect1.intersects(rect1));
 
-        final var o1 = Location.ORIGIN.asBoundsFromOrigin().expanded(Distance.ONE_METER);
-        final var o2 = Location.ORIGIN.asBoundsFromOrigin().expanded(Distance.TEN_METERS);
+        final var o1 = Location.ORIGIN.bounds().expanded(Distance.ONE_METER);
+        final var o2 = Location.ORIGIN.bounds().expanded(Distance.TEN_METERS);
         ensure(o1.intersects(o2));
         ensure(o2.intersects(o1));
     }

@@ -389,7 +389,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
     {
         if (bounds == null)
         {
-            bounds = object.location().asBoundsFromOrigin();
+            bounds = object.location().bounds();
         }
         else
         {

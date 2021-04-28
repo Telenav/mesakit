@@ -36,8 +36,10 @@ import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.rectangle.Dimensioned;
+import com.telenav.mesakit.map.geography.shape.rectangle.Height;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.geography.shape.rectangle.Size;
+import com.telenav.mesakit.map.geography.shape.rectangle.Width;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.ui.desktop.coordinates.MapCoordinateMapper;
 
@@ -48,16 +50,24 @@ import java.awt.geom.Path2D;
 @SuppressWarnings({ "ConstantConditions" })
 public class MapCanvas extends AwtDrawingSurface
 {
+    public static MapCanvas canvas(final Graphics2D graphics,
+                                   final Rectangle bounds,
+                                   final MapScale scale,
+                                   final MapCoordinateMapper mapper)
+    {
+        return new MapCanvas(graphics, bounds, scale, mapper);
+    }
+
     private final MapScale scale;
 
     private final Rectangle bounds;
 
     private final MapCoordinateSystem coordinateSystem;
 
-    public MapCanvas(final Graphics2D graphics,
-                     final Rectangle bounds,
-                     final MapScale scale,
-                     final MapCoordinateMapper mapper)
+    protected MapCanvas(final Graphics2D graphics,
+                        final Rectangle bounds,
+                        final MapScale scale,
+                        final MapCoordinateMapper mapper)
     {
         super(graphics);
 
@@ -80,8 +90,8 @@ public class MapCanvas extends AwtDrawingSurface
     public Shape drawBox(final Style style, final Rectangle rectangle)
     {
         return Box.box(style)
-                .at(inCoordinates(rectangle.topLeft()))
-                .withSize(inCoordinates(rectangle))
+                .at(toCoordinates(rectangle.topLeft()))
+                .withSize(toCoordinates(rectangle))
                 .draw(this);
     }
 
@@ -90,15 +100,15 @@ public class MapCanvas extends AwtDrawingSurface
                          final Distance radius)
     {
         return Dot.dot(style)
-                .at(inCoordinates(at))
-                .withRadius(inCoordinates(radius))
+                .at(toCoordinates(at))
+                .withRadius(toCoordinates(radius))
                 .draw(this);
     }
 
     public Shape drawLabel(final Style style, final Location location, final String text)
     {
         return Label.label(style, text)
-                .at(inCoordinates(location))
+                .at(toCoordinates(location))
                 .draw(this);
     }
 
@@ -110,78 +120,8 @@ public class MapCanvas extends AwtDrawingSurface
     public Shape drawText(final Style style, final Location at, final String text)
     {
         return Text.text(style, text)
-                .at(inCoordinates(at))
+                .at(toCoordinates(at))
                 .draw(this);
-    }
-
-    public Coordinate inCoordinates(final Location location)
-    {
-        return at(location.longitudeInDegrees(), location.latitudeInDegrees());
-    }
-
-    public CoordinateDistance inCoordinates(final Distance distance)
-    {
-        return distance(distance.asDegrees());
-    }
-
-    @Override
-    public Coordinate inCoordinates(final DrawingPoint point)
-    {
-        return coordinateSystem.inCoordinates(point);
-    }
-
-    @Override
-    public CoordinateSize inCoordinates(final DrawingSize size)
-    {
-        return coordinateSystem.inCoordinates(size);
-    }
-
-    @Override
-    public CoordinateDistance inCoordinates(final DrawingDistance distance)
-    {
-        return coordinateSystem.inCoordinates(distance);
-    }
-
-    public CoordinateSize inCoordinates(final Size size)
-    {
-        return size(size.width().asDegrees(), size.height().asDegrees());
-    }
-
-    public CoordinateSize inCoordinates(final Dimensioned size)
-    {
-        return size(
-                size.height().asDegrees(),
-                size.width().asDegrees());
-    }
-
-    @Override
-    public DrawingDistance inDrawingUnits(final CoordinateHeight height)
-    {
-        return coordinateSystem.inDrawingUnits(height);
-    }
-
-    @Override
-    public DrawingDistance inDrawingUnits(final CoordinateWidth width)
-    {
-        return coordinateSystem.inDrawingUnits(width);
-    }
-
-    @Override
-    public DrawingDistance inDrawingUnits(final CoordinateDistance distance)
-    {
-        return coordinateSystem.inDrawingUnits(distance);
-    }
-
-    @Override
-    public DrawingPoint inDrawingUnits(final Coordinate coordinate)
-    {
-        return coordinateSystem.inDrawingUnits(coordinate);
-    }
-
-    @Override
-    public DrawingSize inDrawingUnits(final CoordinateSize coordinate)
-    {
-        return coordinateSystem.inDrawingUnits(coordinate);
     }
 
     public Location location(final DrawingPoint point)
@@ -200,6 +140,111 @@ public class MapCanvas extends AwtDrawingSurface
         return coordinateSystem.slope(a, b);
     }
 
+    public Coordinate toCoordinates(final Location location)
+    {
+        return at(location.longitudeInDegrees(), location.latitudeInDegrees());
+    }
+
+    public CoordinateDistance toCoordinates(final Distance distance)
+    {
+        return distance(distance.asDegrees());
+    }
+
+    @Override
+    public Coordinate toCoordinates(final DrawingPoint point)
+    {
+        return coordinateSystem.toCoordinates(point);
+    }
+
+    @Override
+    public CoordinateSize toCoordinates(final DrawingSize size)
+    {
+        return coordinateSystem.toCoordinates(size);
+    }
+
+    @Override
+    public CoordinateDistance toCoordinates(final DrawingDistance distance)
+    {
+        return coordinateSystem.toCoordinates(distance);
+    }
+
+    public CoordinateSize toCoordinates(final Size size)
+    {
+        return size(size.width().asDegrees(), size.height().asDegrees());
+    }
+
+    public CoordinateHeight toCoordinates(final Height height)
+    {
+        return CoordinateHeight.height(coordinateSystem, height.asDegrees());
+    }
+
+    public CoordinateWidth toCoordinates(final Width width)
+    {
+        return CoordinateWidth.width(coordinateSystem, width.asDegrees());
+    }
+
+    public CoordinateSize toCoordinates(final Dimensioned size)
+    {
+        return size(
+                size.height().asDegrees(),
+                size.width().asDegrees());
+    }
+
+    @Override
+    public DrawingDistance toDrawingUnits(final CoordinateHeight height)
+    {
+        return coordinateSystem.toDrawingUnits(height);
+    }
+
+    @Override
+    public DrawingDistance toDrawingUnits(final CoordinateWidth width)
+    {
+        return coordinateSystem.toDrawingUnits(width);
+    }
+
+    @Override
+    public DrawingDistance toDrawingUnits(final CoordinateDistance distance)
+    {
+        return coordinateSystem.toDrawingUnits(distance);
+    }
+
+    @Override
+    public DrawingPoint toDrawingUnits(final Coordinate coordinate)
+    {
+        return coordinateSystem.toDrawingUnits(coordinate);
+    }
+
+    @Override
+    public DrawingSize toDrawingUnits(final CoordinateSize coordinate)
+    {
+        return coordinateSystem.toDrawingUnits(coordinate);
+    }
+
+    public DrawingDistance toDrawingUnits(final Height height)
+    {
+        return coordinateSystem.toDrawingUnits(toCoordinates(height));
+    }
+
+    public DrawingDistance toDrawingUnits(final Width width)
+    {
+        return coordinateSystem.toDrawingUnits(toCoordinates(width));
+    }
+
+    public DrawingDistance toDrawingUnits(final Distance distance)
+    {
+        return coordinateSystem.toDrawingUnits(toCoordinates(distance));
+    }
+
+    public DrawingPoint toDrawingUnits(final Location location)
+    {
+        return coordinateSystem.toDrawingUnits(toCoordinates(location));
+    }
+
+    public DrawingSize toDrawingUnits(final Size size)
+    {
+        return coordinateSystem.toDrawingUnits(toCoordinates(size));
+    }
+
     public Distance width()
     {
         return bounds().widestWidth();
@@ -211,7 +256,7 @@ public class MapCanvas extends AwtDrawingSurface
         final Path2D path = new Path2D.Double();
         for (final var to : line.locationSequence())
         {
-            final var point = inDrawingUnits(inCoordinates(to));
+            final var point = toDrawingUnits(to);
             if (first)
             {
                 path.moveTo(point.x(), point.y());
