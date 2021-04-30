@@ -41,7 +41,6 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.geography.shape.rectangle.Size;
 import com.telenav.mesakit.map.geography.shape.rectangle.Width;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.mesakit.map.ui.desktop.coordinates.MapCoordinateMapper;
 
 import java.awt.Graphics2D;
 import java.awt.Shape;
@@ -53,9 +52,9 @@ public class MapCanvas extends AwtDrawingSurface
     public static MapCanvas canvas(final Graphics2D graphics,
                                    final Rectangle bounds,
                                    final MapScale scale,
-                                   final MapCoordinateMapper mapper)
+                                   final MapDrawingSurfaceProjection projection)
     {
-        return new MapCanvas(graphics, bounds, scale, mapper);
+        return new MapCanvas(graphics, bounds, scale, projection);
     }
 
     private final MapScale scale;
@@ -67,11 +66,11 @@ public class MapCanvas extends AwtDrawingSurface
     protected MapCanvas(final Graphics2D graphics,
                         final Rectangle bounds,
                         final MapScale scale,
-                        final MapCoordinateMapper mapper)
+                        final MapDrawingSurfaceProjection projection)
     {
         super(graphics);
 
-        coordinateSystem = new MapCoordinateSystem(mapper);
+        coordinateSystem = new MapCoordinateSystem(projection);
 
         this.bounds = bounds;
         this.scale = scale;

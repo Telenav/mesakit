@@ -18,6 +18,10 @@
 
 package com.telenav.mesakit.map.utilities.grid;
 
+import com.telenav.kivakit.core.kernel.language.primitives.Ints;
+import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.kernel.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.core.kernel.language.values.count.Count;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
@@ -27,10 +31,6 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Size;
 import com.telenav.mesakit.map.geography.shape.rectangle.Width;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.kivakit.core.kernel.language.primitives.Ints;
-import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.kernel.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,7 +70,7 @@ public class Grid
 
     public Grid(final Angle cellSize, final Latitude maximum)
     {
-        approximateCellSize = Distance.EARTH_RADIUS.times(cellSize.asRadians());
+        approximateCellSize = Distance.EARTH_RADIUS_MINOR.times(cellSize.asRadians());
         final var approximateCellSizeInMicroDegrees = (int) (cellSize.asDegrees() * 1000000L);
 
         initialize(maximum, approximateCellSizeInMicroDegrees);

@@ -133,7 +133,7 @@ import static com.telenav.mesakit.map.geography.Precision.DM7;
 @UmlRelation(label = "represented at", referent = Precision.class)
 public class Location implements Validatable, Located, Identifiable, Bounded, Intersectable, AsString, Serializable
 {
-    private static final long EARTH_RADIUS_IN_METERS = (long) Distance.EARTH_RADIUS.asMeters();
+    private static final long EARTH_RADIUS_IN_METERS = (long) Distance.EARTH_RADIUS_MINOR.asMeters();
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -151,6 +151,12 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
             Longitude.degrees(-122.0046));
 
     public static final Location TOP_LEFT = new Location(Latitude.MAXIMUM, Longitude.MINIMUM);
+
+    public static final Location BOTTOM_LEFT = new Location(Latitude.MINIMUM, Longitude.MINIMUM);
+
+    public static final Location BOTTOM_RIGHT = new Location(Latitude.MINIMUM, Longitude.MAXIMUM);
+
+    public static final Location TOP_RIGHT = new Location(Latitude.MAXIMUM, Longitude.MAXIMUM);
 
     private static final double[] latitudeCosine = { 1.0,
             0.9998476951563913, 0.9993908270190958, 0.9986295347545738, 0.9975640502598242, 0.9961946980917455,
@@ -599,14 +605,6 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         return new Point(longitude().asMicrodegrees(), latitude().asMicrodegrees());
     }
 
-    /**
-     * @return A rectangle including the origin and this point
-     */
-    public Rectangle asBoundsFromOrigin()
-    {
-        return Rectangle.fromLocations(this, ORIGIN);
-    }
-
     public long asDecimal(final Precision precision)
     {
         return DM7.to(precision, asDm7Long());
@@ -632,9 +630,9 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         return toLong(latitudeInDm7, longitudeInDm7);
     }
 
-    public Height asHeightFromOrigin()
+    public Height asHeight()
     {
-        return asBoundsFromOrigin().height();
+        return asRectangle().height();
     }
 
     public long asLong()
@@ -666,9 +664,17 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         }
     }
 
-    public Size asSizeFromOrigin()
+    /**
+     * @return A rectangle including the origin and this point
+     */
+    public Rectangle asRectangle()
     {
-        return new Size(asWidthFromOrigin(), asHeightFromOrigin());
+        return Rectangle.fromLocations(this, ORIGIN);
+    }
+
+    public Size asSize()
+    {
+        return asRectangle().size();
     }
 
     @Override
@@ -684,9 +690,9 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         }
     }
 
-    public Width asWidthFromOrigin()
+    public Width asWidth()
     {
-        return bounds().width();
+        return asRectangle().width();
     }
 
     /**
@@ -795,7 +801,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
                 + Math.pow(Math.sin(longitudeDifference.asRadians() / 2.0), 2.0) * Math.cos(latitude().asRadians())
                 * Math.cos(that.latitude().asRadians());
         final var resultAngle = 2.0 * Math.atan2(Math.sqrt(hav), Math.sqrt(1.0 - hav));
-        return Distance.meters(Distance.EARTH_RADIUS.asMeters() * resultAngle);
+        return Distance.meters(Distance.EARTH_RADIUS_MINOR.asMeters() * resultAngle);
     }
 
     /***
@@ -958,7 +964,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
     {
         final var latitude = latitude().asRadians();
         final var longitude = longitude().asRadians();
-        final var angularDistance = offset.ratio(Distance.EARTH_RADIUS);
+        final var angularDistance = offset.ratio(Distance.EARTH_RADIUS_MINOR);
 
         final var movedLatitude = Math.asin(Math.sin(latitude) * Math.cos(angularDistance)
                 + Math.cos(latitude) * Math.sin(angularDistance) * Math.cos(heading.asRadians()));
@@ -1040,7 +1046,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
 
     public Size size()
     {
-        return asBoundsFromOrigin().size();
+        return asRectangle().size();
     }
 
     public Segment to(final Location to)

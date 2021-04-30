@@ -137,7 +137,7 @@ public class RectangleTest extends MapGeographyUnitTest
     public void testExpand()
     {
         final var rectangle = randomValueFactory().newRectangle();
-        final var distance = randomValueFactory().newDistance(Distance.MINIMUM, Distance.EARTH_RADIUS);
+        final var distance = randomValueFactory().newDistance(Distance.MINIMUM, Distance.EARTH_RADIUS_MINOR);
         final var expansion = Angle.degrees(distance.asDegrees()).asNanodegrees();
 
         // Grow the lower left down and to the left.

@@ -6,8 +6,6 @@ open module mesakit.map.ui.desktop
     requires transitive kivakit.core.network.http;
     requires transitive kivakit.ui.desktop;
 
-    exports com.telenav.mesakit.map.ui.desktop.coordinates.mappers;
-    exports com.telenav.mesakit.map.ui.desktop.coordinates;
     exports com.telenav.mesakit.map.ui.desktop.graphics.canvas;
     exports com.telenav.mesakit.map.ui.desktop.graphics.drawables;
     exports com.telenav.mesakit.map.ui.desktop.project;
@@ -17,4 +15,5 @@ open module mesakit.map.ui.desktop
     exports com.telenav.mesakit.map.ui.desktop.viewer;
     exports com.telenav.mesakit.map.ui.desktop.viewer.desktop;
     exports com.telenav.mesakit.map.ui.desktop.viewer.empty;
+    exports com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections;
 }

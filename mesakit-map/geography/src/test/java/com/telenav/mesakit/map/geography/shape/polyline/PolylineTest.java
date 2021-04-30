@@ -18,6 +18,9 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
+import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.core.kernel.messaging.Listener;
+import com.telenav.kivakit.core.test.UnitTest;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
@@ -26,9 +29,6 @@ import com.telenav.mesakit.map.geography.shape.segment.Segment;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
-import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
-import com.telenav.kivakit.core.test.UnitTest;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -141,7 +141,7 @@ public class PolylineTest extends UnitTest
 
         // Loop
         final var loop = polyline(0, 0, 1, 1, 2, 2, 3, 1, 2, 0, 0, 0);
-        final var simple2 = loop.simplified(Distance.EARTH_RADIUS);
+        final var simple2 = loop.simplified(Distance.EARTH_RADIUS_MINOR);
         ensure(simple2.size() == 3);
 
         // Easy

@@ -13,7 +13,7 @@
         <version>0.9.5-alpha-SNAPSHOT</version>
     </parent>
 
-    <name>MesaKit Map</name>
+    <name>MesaKit - Map</name>
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mesakit-map</artifactId>

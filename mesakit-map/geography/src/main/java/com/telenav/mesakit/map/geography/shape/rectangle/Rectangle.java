@@ -413,7 +413,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
      */
     public Area area()
     {
-        final var earthRadius = Distance.EARTH_RADIUS.asMeters();
+        final var earthRadius = Distance.EARTH_RADIUS_MINOR.asMeters();
         final var earthSquare = earthRadius * earthRadius;
         final var radiansTop = top().asRadians();
         final var radiansBottom = bottom().asRadians();

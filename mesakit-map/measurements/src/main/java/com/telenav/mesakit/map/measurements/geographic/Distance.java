@@ -59,16 +59,17 @@ public final class Distance implements Quantizable, Comparable<Distance>
     /** The largest distance we can represent */
     public static final Distance MAXIMUM = millimeters(Long.MAX_VALUE);
 
-    /** Great circle radius of planet Earth */
-    public static final Distance EARTH_RADIUS = meters(6_372_797);
+    public static final Distance EARTH_RADIUS_MINOR = meters(6_372_797);
+
+    public static final Distance EARTH_RADIUS_MAJOR = meters(6_378_137);
 
     private static final double DM5_PER_DEGREE = 100_000;
 
     private static final double DM7_PER_DEGREE = 10_000_000;
 
-    private static final double DM5_PER_KILOMETER = 1000.0 / EARTH_RADIUS.asMeters() * Angle.degreesPerRadian() * DM5_PER_DEGREE;
+    private static final double DM5_PER_KILOMETER = 1000.0 / EARTH_RADIUS_MINOR.asMeters() * Angle.degreesPerRadian() * DM5_PER_DEGREE;
 
-    private static final double DM7_PER_KILOMETER = 1000.0 / EARTH_RADIUS.asMeters() * Angle.degreesPerRadian() * DM7_PER_DEGREE;
+    private static final double DM7_PER_KILOMETER = 1000.0 / EARTH_RADIUS_MINOR.asMeters() * Angle.degreesPerRadian() * DM7_PER_DEGREE;
 
     private static final double KILOMETERS_PER_DM7 = 1 / DM7_PER_KILOMETER;
 

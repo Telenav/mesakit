@@ -29,7 +29,7 @@ import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSize;
 import com.telenav.mesakit.core.MesaKit;
-import com.telenav.mesakit.map.ui.desktop.coordinates.MapCoordinateMapper;
+import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapDrawingSurfaceProjection;
 
 import javax.imageio.ImageIO;
 import java.awt.AlphaComposite;
@@ -90,7 +90,9 @@ public abstract class SlippyTileImageCache extends BaseRepeater
     /**
      * Draw map tiles on the given graphics
      */
-    public void drawTiles(final Graphics2D graphics, final MapCoordinateMapper mapper, final Iterable<SlippyTile> tiles)
+    public void drawTiles(final Graphics2D graphics,
+                          final MapDrawingSurfaceProjection projection,
+                          final Iterable<SlippyTile> tiles)
     {
         // Go through each tile
         graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
@@ -103,7 +105,7 @@ public abstract class SlippyTileImageCache extends BaseRepeater
             if (image != null)
             {
                 // draw it at the appropriate x, y location using the coordinate mapper
-                final var bounds = mapper.toDrawingRectangle(tile.tileBounds());
+                final var bounds = projection.toDrawingRectangle(tile.tileBounds());
                 if (DEBUG.isDebugOn())
                 {
                     LOGGER.information("drawing tile $ with bounds of $ at $, $", tile,

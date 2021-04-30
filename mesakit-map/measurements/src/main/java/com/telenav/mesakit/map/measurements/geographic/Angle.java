@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.map.measurements.geographic;
 
-import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
 import com.telenav.kivakit.core.commandline.SwitchParser;
 import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.core.kernel.data.validation.Validatable;
@@ -36,6 +35,7 @@ import com.telenav.kivakit.core.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
+import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
 
 import java.io.Serializable;
 import java.util.regex.Pattern;
@@ -580,7 +580,7 @@ public class Angle implements
      */
     public Distance projectionOnEarthSurface()
     {
-        return Distance.EARTH_RADIUS.times(asRadians());
+        return Distance.EARTH_RADIUS_MINOR.times(asRadians());
     }
 
     @Override
