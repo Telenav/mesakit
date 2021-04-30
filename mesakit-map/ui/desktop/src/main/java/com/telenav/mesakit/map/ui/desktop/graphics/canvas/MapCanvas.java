@@ -18,28 +18,17 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas;
 
-import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingDistance;
-import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingPoint;
-import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSize;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.awt.AwtDrawingSurface;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Box;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Dot;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Label;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Text;
 import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateHeight;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSize;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSlope;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateWidth;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateRectangle;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
-import com.telenav.mesakit.map.geography.shape.rectangle.Dimensioned;
-import com.telenav.mesakit.map.geography.shape.rectangle.Height;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.geography.shape.rectangle.Size;
-import com.telenav.mesakit.map.geography.shape.rectangle.Width;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 import java.awt.Graphics2D;
@@ -47,50 +36,50 @@ import java.awt.Shape;
 import java.awt.geom.Path2D;
 
 @SuppressWarnings({ "ConstantConditions" })
-public class MapCanvas extends AwtDrawingSurface
+public class MapCanvas extends AwtDrawingSurface implements MapProjection
 {
     public static MapCanvas canvas(final Graphics2D graphics,
-                                   final Rectangle bounds,
                                    final MapScale scale,
-                                   final MapDrawingSurfaceProjection projection)
+                                   final MapProjection projection)
     {
-        return new MapCanvas(graphics, bounds, scale, projection);
+        return new MapCanvas(graphics, scale, projection);
     }
 
     private final MapScale scale;
 
-    private final Rectangle bounds;
-
-    private final MapCoordinateSystem coordinateSystem;
+    private final MapProjection projection;
 
     protected MapCanvas(final Graphics2D graphics,
-                        final Rectangle bounds,
                         final MapScale scale,
-                        final MapDrawingSurfaceProjection projection)
+                        final MapProjection projection)
     {
-        super(graphics);
+        super(graphics, projection.coordinateArea().topLeft(), projection.coordinateArea().size());
 
-        coordinateSystem = new MapCoordinateSystem(projection);
-
-        this.bounds = bounds;
         this.scale = scale;
-    }
-
-    public Rectangle bounds()
-    {
-        return bounds;
+        this.projection = projection;
     }
 
     public Location center()
     {
-        return bounds().center();
+        return mapBounds().center();
+    }
+
+    @Override
+    public CoordinateRectangle coordinateArea()
+    {
+        return projection.coordinateArea();
+    }
+
+    public CoordinateRectangle coordinateBounds()
+    {
+        return projection.coordinateArea();
     }
 
     public Shape drawBox(final Style style, final Rectangle rectangle)
     {
         return Box.box(style)
                 .at(toCoordinates(rectangle.topLeft()))
-                .withSize(toCoordinates(rectangle))
+                .withSize(toCoordinates(rectangle).size())
                 .draw(this);
     }
 
@@ -123,135 +112,37 @@ public class MapCanvas extends AwtDrawingSurface
                 .draw(this);
     }
 
+    @Override
+    public Rectangle mapArea()
+    {
+        return projection.mapArea();
+    }
+
+    public Rectangle mapBounds()
+    {
+        return projection.mapArea();
+    }
+
     public MapScale scale()
     {
         return scale;
     }
 
     @Override
-    public CoordinateSlope slope(final Coordinate a, final Coordinate b)
-    {
-        return coordinateSystem.slope(a, b);
-    }
-
     public Coordinate toCoordinates(final Location location)
     {
-        return at(location.longitudeInDegrees(), location.latitudeInDegrees());
-    }
-
-    public CoordinateDistance toCoordinates(final Distance distance)
-    {
-        return distance(distance.asDegrees());
+        return projection.toCoordinates(location);
     }
 
     @Override
-    public Coordinate toCoordinates(final DrawingPoint point)
+    public Location toMapUnits(final Coordinate coordinate)
     {
-        return coordinateSystem.toCoordinates(point);
-    }
-
-    @Override
-    public CoordinateSize toCoordinates(final DrawingSize size)
-    {
-        return coordinateSystem.toCoordinates(size);
-    }
-
-    @Override
-    public CoordinateDistance toCoordinates(final DrawingDistance distance)
-    {
-        return coordinateSystem.toCoordinates(distance);
-    }
-
-    public CoordinateSize toCoordinates(final Size size)
-    {
-        return size(size.width().asDegrees(), size.height().asDegrees());
-    }
-
-    public CoordinateHeight toCoordinates(final Height height)
-    {
-        return CoordinateHeight.height(coordinateSystem, height.asDegrees());
-    }
-
-    public CoordinateWidth toCoordinates(final Width width)
-    {
-        return CoordinateWidth.width(coordinateSystem, width.asDegrees());
-    }
-
-    public CoordinateSize toCoordinates(final Dimensioned size)
-    {
-        return size(
-                size.height().asDegrees(),
-                size.width().asDegrees());
-    }
-
-    @Override
-    public DrawingDistance toDrawingUnits(final CoordinateHeight height)
-    {
-        return coordinateSystem.toDrawingUnits(height);
-    }
-
-    @Override
-    public DrawingDistance toDrawingUnits(final CoordinateWidth width)
-    {
-        return coordinateSystem.toDrawingUnits(width);
-    }
-
-    @Override
-    public DrawingDistance toDrawingUnits(final CoordinateDistance distance)
-    {
-        return coordinateSystem.toDrawingUnits(distance);
-    }
-
-    @Override
-    public DrawingPoint toDrawingUnits(final Coordinate coordinate)
-    {
-        return coordinateSystem.toDrawingUnits(coordinate);
-    }
-
-    @Override
-    public DrawingSize toDrawingUnits(final CoordinateSize coordinate)
-    {
-        return coordinateSystem.toDrawingUnits(coordinate);
-    }
-
-    public DrawingDistance toDrawingUnits(final Height height)
-    {
-        return coordinateSystem.toDrawingUnits(toCoordinates(height));
-    }
-
-    public DrawingDistance toDrawingUnits(final Width width)
-    {
-        return coordinateSystem.toDrawingUnits(toCoordinates(width));
-    }
-
-    public DrawingDistance toDrawingUnits(final Distance distance)
-    {
-        return coordinateSystem.toDrawingUnits(toCoordinates(distance));
-    }
-
-    public DrawingPoint toDrawingUnits(final Location location)
-    {
-        return coordinateSystem.toDrawingUnits(toCoordinates(location));
-    }
-
-    public DrawingSize toDrawingUnits(final Size size)
-    {
-        return coordinateSystem.toDrawingUnits(toCoordinates(size));
-    }
-
-    public Location toMap(final DrawingPoint point)
-    {
-        return Location.degrees(point.y(), point.x());
-    }
-
-    public Distance toMap(final DrawingDistance distance)
-    {
-        return Distance.degrees(coordinateSystem.toCoordinates(distance).units());
+        return projection.toMapUnits(coordinate);
     }
 
     public Distance width()
     {
-        return bounds().widestWidth();
+        return mapBounds().widestWidth();
     }
 
     private Path2D path(final Polyline line)
@@ -260,7 +151,7 @@ public class MapCanvas extends AwtDrawingSurface
         final Path2D path = new Path2D.Double();
         for (final var to : line.locationSequence())
         {
-            final var point = toDrawingUnits(to);
+            final var point = projection.toCoordinates(to);
             if (first)
             {
                 path.moveTo(point.x(), point.y());

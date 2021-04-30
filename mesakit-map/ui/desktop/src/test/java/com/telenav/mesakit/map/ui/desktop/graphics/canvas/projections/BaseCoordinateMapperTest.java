@@ -22,20 +22,21 @@
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections;
 
 import com.telenav.kivakit.core.test.UnitTest;
-import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingPoint;
-import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingRectangle;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateRectangle;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
-import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapDrawingSurfaceProjection;
+import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 
 public abstract class BaseCoordinateMapperTest extends UnitTest
 {
-    protected void checkMapping(final MapDrawingSurfaceProjection projection, final DrawingPoint point,
+    protected void checkMapping(final MapProjection projection,
+                                final Coordinate point,
                                 final Location location)
     {
-        final var projected = projection.toDrawingPoint(location);
+        final var projected = projection.toCoordinates(location);
         ensureEqual(point, projected);
-        final var mappedPoint = projection.toMapLocation(point);
+        final var mappedPoint = projection.toMapUnits(point);
         if (!location.isClose(mappedPoint, Angle.degrees(0.001)))
         {
             fail("location " + location + " is not close enough to " + mappedPoint);
@@ -43,13 +44,13 @@ public abstract class BaseCoordinateMapperTest extends UnitTest
     }
 
     @SuppressWarnings("SameParameterValue")
-    protected DrawingRectangle drawingRectangle(final int x, final int y, final int width, final int height)
+    protected CoordinateRectangle drawingRectangle(final int x, final int y, final int width, final int height)
     {
-        return DrawingRectangle.rectangle(x, y, width, height);
+        return CoordinateRectangle.rectangle(x, y, width, height);
     }
 
-    protected DrawingPoint point(final int x, final int y)
+    protected Coordinate point(final int x, final int y)
     {
-        return DrawingPoint.at(x, y);
+        return Coordinate.at(x, y);
     }
 }

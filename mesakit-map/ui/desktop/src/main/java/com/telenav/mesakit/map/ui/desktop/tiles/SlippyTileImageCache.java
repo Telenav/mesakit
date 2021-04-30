@@ -27,9 +27,10 @@ import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.core.kernel.messaging.Debug;
 import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.network.http.HttpNetworkLocation;
-import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSize;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSize;
 import com.telenav.mesakit.core.MesaKit;
-import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapDrawingSurfaceProjection;
+import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 
 import javax.imageio.ImageIO;
 import java.awt.AlphaComposite;
@@ -43,6 +44,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 import static com.telenav.kivakit.core.network.core.NetworkAccessConstraints.DEFAULT;
+import static java.awt.AlphaComposite.SRC_OVER;
 
 /**
  * Cache of {@link SlippyTile} images
@@ -91,11 +93,12 @@ public abstract class SlippyTileImageCache extends BaseRepeater
      * Draw map tiles on the given graphics
      */
     public void drawTiles(final Graphics2D graphics,
-                          final MapDrawingSurfaceProjection projection,
+                          final Coordinate offset,
+                          final MapProjection projection,
                           final Iterable<SlippyTile> tiles)
     {
         // Go through each tile
-        graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
+        graphics.setComposite(AlphaComposite.getInstance(SRC_OVER, 0.5f));
         for (final var tile : tiles)
         {
             // get any available image for the tile
@@ -105,23 +108,23 @@ public abstract class SlippyTileImageCache extends BaseRepeater
             if (image != null)
             {
                 // draw it at the appropriate x, y location using the coordinate mapper
-                final var bounds = projection.toDrawingRectangle(tile.tileBounds());
+                final var bounds = projection.toCoordinates(tile.tileBounds());
                 if (DEBUG.isDebugOn())
                 {
                     LOGGER.information("drawing tile $ with bounds of $ at $, $", tile,
                             tile.tileBounds(), bounds.x(), bounds.y());
                 }
-                graphics.drawImage(image, (int) bounds.x(), (int) bounds.y(), null);
+                graphics.drawImage(image, (int) (offset.x() + bounds.x()), (int) (offset.y() + bounds.y()), null);
             }
         }
-        graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
+        graphics.setComposite(AlphaComposite.getInstance(SRC_OVER, 1.0f));
     }
 
     /**
      * @return The size of a slippy tile in pixels, as determined by fetching a tile from the server
      */
     @SuppressWarnings("SameReturnValue")
-    public abstract DrawingSize tileSize();
+    public abstract CoordinateSize tileSize();
 
     /**
      * @return The HTTP network location of the given slippy tile

@@ -18,9 +18,10 @@
 
 package com.telenav.mesakit.map.geography.shape.rectangle;
 
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramRectangle;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**
  * A longitudinal geographic width from -360 to 360
@@ -59,6 +60,11 @@ public class Width extends Angle
     protected Width(final long nanodegrees)
     {
         super(nanodegrees);
+    }
+
+    public Location asLocation()
+    {
+        return Location.degrees(0, asDegrees());
     }
 
     @Override

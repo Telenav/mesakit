@@ -20,8 +20,8 @@ package com.telenav.mesakit.map.ui.desktop.tiles;
 
 import com.telenav.kivakit.core.kernel.language.objects.Hash;
 import com.telenav.kivakit.core.resource.path.FileName;
-import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSize;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Label;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSize;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
@@ -59,7 +59,7 @@ public class SlippyTile
     /**
      * Width and height of standard slippy tiles
      */
-    public static final DrawingSize STANDARD_TILE_SIZE = DrawingSize.size(256, 256);
+    public static final CoordinateSize STANDARD_TILE_SIZE = CoordinateSize.size(256, 256);
 
     /**
      * @return The smallest tile that is larger than the given size
@@ -112,7 +112,7 @@ public class SlippyTile
         return FileName.parse(x + "-" + y + "-" + zoom.level() + ".png");
     }
 
-    public DrawingSize dimension()
+    public CoordinateSize dimension()
     {
         return STANDARD_TILE_SIZE;
     }
@@ -126,9 +126,9 @@ public class SlippyTile
     {
         // Draw tile grid rectangle for this tile
         final var tileBounds = tileBounds();
-        final var bottomLeft = canvas.toDrawingUnits(tileBounds.bottomLeft());
-        final var bottomRight = canvas.toDrawingUnits(tileBounds.bottomRight());
-        final var topRight = canvas.toDrawingUnits(tileBounds.topRight());
+        final var bottomLeft = canvas.toCoordinates(tileBounds.bottomLeft());
+        final var bottomRight = canvas.toCoordinates(tileBounds.bottomRight());
+        final var topRight = canvas.toCoordinates(tileBounds.topRight());
         canvas.drawLine(style, bottomLeft, bottomRight);
         canvas.drawLine(style, topRight, bottomRight);
 
@@ -137,9 +137,9 @@ public class SlippyTile
         if (visible != null)
         {
             final var text = toString();
-            final var topLeft = canvas.toDrawingUnits(visible.topLeft()).plus(10, 10);
+            final var topLeft = canvas.toCoordinates(visible.topLeft()).plus(10, 10);
             Label.label(style)
-                    .at(canvas.toCoordinates(topLeft))
+                    .at(topLeft)
                     .withText(text)
                     .draw(canvas);
         }

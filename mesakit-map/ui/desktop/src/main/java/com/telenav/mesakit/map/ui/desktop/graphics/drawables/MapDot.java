@@ -18,9 +18,10 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
-import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingDistance;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.awt.AwtShapes;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Dot;
 import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance;
 import com.telenav.kivakit.ui.desktop.graphics.style.Color;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.Location;
@@ -54,7 +55,7 @@ public class MapDot extends LabeledMapShape
 
     private Distance radius;
 
-    private DrawingDistance drawingRadius;
+    private CoordinateDistance coordinateRadius;
 
     protected MapDot(final Style style, final Location at, final Distance radius, final String label)
     {
@@ -66,7 +67,7 @@ public class MapDot extends LabeledMapShape
     {
         super(that);
         radius = that.radius;
-        drawingRadius = that.drawingRadius;
+        coordinateRadius = that.coordinateRadius;
     }
 
     @Override
@@ -101,19 +102,13 @@ public class MapDot extends LabeledMapShape
     @Override
     public Shape onDraw(final MapCanvas canvas)
     {
-        if (radius == null)
-        {
-            radius = canvas.toMap(drawingRadius);
-        }
+        final var radius = coordinateRadius != null
+                ? coordinateRadius
+                : canvas.toCoordinates(this.radius);
 
-        if (drawingRadius == null)
-        {
-            drawingRadius = canvas.toDrawingUnits(radius);
-        }
-
-        final var dot = dot()
-                .withRadius(drawingRadius)
-                .at(canvas.toCoordinates(atLocation()))
+        final var dot = Dot.dot()
+                .withRadius(radius)
+                .at(at())
                 .draw(canvas);
 
         final var label = super.onDraw(canvas);
@@ -122,7 +117,7 @@ public class MapDot extends LabeledMapShape
     }
 
     @Override
-    public MapDot scaled(final double scaleFactor)
+    public MapDot scaledBy(final double scaleFactor)
     {
         return unsupported();
     }
@@ -140,7 +135,7 @@ public class MapDot extends LabeledMapShape
     }
 
     @Override
-    public MapDot withDrawStrokeWidth(final DrawingDistance width)
+    public MapDot withDrawStrokeWidth(final CoordinateDistance width)
     {
         return (MapDot) super.withDrawStrokeWidth(width);
     }
@@ -164,7 +159,7 @@ public class MapDot extends LabeledMapShape
     }
 
     @Override
-    public MapDot withFillStrokeWidth(final DrawingDistance width)
+    public MapDot withFillStrokeWidth(final CoordinateDistance width)
     {
         return (MapDot) super.withFillStrokeWidth(width);
     }
@@ -194,10 +189,10 @@ public class MapDot extends LabeledMapShape
         return copy;
     }
 
-    public MapDot withRadius(final DrawingDistance radius)
+    public MapDot withRadius(final CoordinateDistance radius)
     {
         final var copy = copy();
-        copy.drawingRadius = drawingRadius;
+        copy.coordinateRadius = radius;
         return copy;
     }
 

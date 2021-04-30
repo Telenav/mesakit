@@ -34,57 +34,57 @@ public class CartesianDrawingSurfaceProjectionTest extends BaseCoordinateMapperT
     @Test
     public void testLocationForPoint1()
     {
-        final CartesianDrawingSurfaceProjection projection = new CartesianDrawingSurfaceProjection(Rectangle.MAXIMUM,
+        final CartesianMapProjection projection = new CartesianMapProjection(Rectangle.MAXIMUM,
                 drawingRectangle(0, 0, 100, 100));
 
-        ensureEqual(Rectangle.MAXIMUM.topLeft(), projection.toMapLocation(point(0, 0)));
-        ensureEqual(Rectangle.MAXIMUM.bottomLeft(), projection.toMapLocation(point(0, 100)));
-        ensureEqual(Rectangle.MAXIMUM.topRight(), projection.toMapLocation(point(100, 0)));
-        ensureEqual(Rectangle.MAXIMUM.bottomRight(), projection.toMapLocation(point(100, 100)));
+        ensureEqual(Rectangle.MAXIMUM.topLeft(), projection.toMapUnits(point(0, 0)));
+        ensureEqual(Rectangle.MAXIMUM.bottomLeft(), projection.toMapUnits(point(0, 100)));
+        ensureEqual(Rectangle.MAXIMUM.topRight(), projection.toMapUnits(point(100, 0)));
+        ensureEqual(Rectangle.MAXIMUM.bottomRight(), projection.toMapUnits(point(100, 100)));
 
-        ensureEqual(Location.ORIGIN, projection.toMapLocation(point(50, 50)));
+        ensureEqual(Location.ORIGIN, projection.toMapUnits(point(50, 50)));
     }
 
     @Test
     public void testLocationForPoint2()
     {
-        final CartesianDrawingSurfaceProjection projection = new CartesianDrawingSurfaceProjection(Rectangle.MAXIMUM,
+        final CartesianMapProjection projection = new CartesianMapProjection(Rectangle.MAXIMUM,
                 drawingRectangle(100, 100, 100, 100));
 
-        ensureEqual(Rectangle.MAXIMUM.topLeft(), projection.toMapLocation(point(100, 100)));
-        ensureEqual(Rectangle.MAXIMUM.bottomLeft(), projection.toMapLocation(point(100, 200)));
-        ensureEqual(Rectangle.MAXIMUM.topRight(), projection.toMapLocation(point(200, 100)));
-        ensureEqual(Rectangle.MAXIMUM.bottomRight(), projection.toMapLocation(point(200, 200)));
+        ensureEqual(Rectangle.MAXIMUM.topLeft(), projection.toMapUnits(point(100, 100)));
+        ensureEqual(Rectangle.MAXIMUM.bottomLeft(), projection.toMapUnits(point(100, 200)));
+        ensureEqual(Rectangle.MAXIMUM.topRight(), projection.toMapUnits(point(200, 100)));
+        ensureEqual(Rectangle.MAXIMUM.bottomRight(), projection.toMapUnits(point(200, 200)));
 
-        ensureEqual(Location.ORIGIN, projection.toMapLocation(point(150, 150)));
+        ensureEqual(Location.ORIGIN, projection.toMapUnits(point(150, 150)));
     }
 
     @Test
     public void testPointForLocation1()
     {
-        final CartesianDrawingSurfaceProjection projection = new CartesianDrawingSurfaceProjection(Rectangle.MAXIMUM,
+        final CartesianMapProjection projection = new CartesianMapProjection(Rectangle.MAXIMUM,
                 drawingRectangle(0, 0, 100, 100));
 
-        ensureEqual(point(0, 0), projection.toDrawingPoint(Rectangle.MAXIMUM.topLeft()));
-        ensureEqual(point(0, 100), projection.toDrawingPoint(Rectangle.MAXIMUM.bottomLeft()));
-        ensureEqual(point(100, 0), projection.toDrawingPoint(Rectangle.MAXIMUM.topRight()));
-        ensureEqual(point(100, 100), projection.toDrawingPoint(Rectangle.MAXIMUM.bottomRight()));
+        ensureEqual(point(0, 0), projection.toCoordinates(Rectangle.MAXIMUM.topLeft()));
+        ensureEqual(point(0, 100), projection.toCoordinates(Rectangle.MAXIMUM.bottomLeft()));
+        ensureEqual(point(100, 0), projection.toCoordinates(Rectangle.MAXIMUM.topRight()));
+        ensureEqual(point(100, 100), projection.toCoordinates(Rectangle.MAXIMUM.bottomRight()));
 
-        ensureEqual(point(50, 50), projection.toDrawingPoint(Location.ORIGIN));
+        ensureEqual(point(50, 50), projection.toCoordinates(Location.ORIGIN));
     }
 
     @Test
     public void testPointForLocation2()
     {
-        final CartesianDrawingSurfaceProjection projection = new CartesianDrawingSurfaceProjection(Rectangle.MAXIMUM,
+        final CartesianMapProjection projection = new CartesianMapProjection(Rectangle.MAXIMUM,
                 drawingRectangle(100, 100, 100, 100));
 
-        ensureEqual(point(100, 100), projection.toDrawingPoint(Rectangle.MAXIMUM.topLeft()));
-        ensureEqual(point(100, 200), projection.toDrawingPoint(Rectangle.MAXIMUM.bottomLeft()));
-        ensureEqual(point(200, 100), projection.toDrawingPoint(Rectangle.MAXIMUM.topRight()));
-        ensureEqual(point(200, 200), projection.toDrawingPoint(Rectangle.MAXIMUM.bottomRight()));
+        ensureEqual(point(100, 100), projection.toCoordinates(Rectangle.MAXIMUM.topLeft()));
+        ensureEqual(point(100, 200), projection.toCoordinates(Rectangle.MAXIMUM.bottomLeft()));
+        ensureEqual(point(200, 100), projection.toCoordinates(Rectangle.MAXIMUM.topRight()));
+        ensureEqual(point(200, 200), projection.toCoordinates(Rectangle.MAXIMUM.bottomRight()));
 
-        ensureEqual(point(150, 150), projection.toDrawingPoint(Location.ORIGIN));
+        ensureEqual(point(150, 150), projection.toCoordinates(Location.ORIGIN));
     }
 
     @Test
@@ -96,7 +96,7 @@ public class CartesianDrawingSurfaceProjectionTest extends BaseCoordinateMapperT
         final var size = new Size(width, height);
 
         // Map from 100,100:200,200 swing rectangle to 0,0:10,10 geographic rectangle
-        final CartesianDrawingSurfaceProjection projection = new CartesianDrawingSurfaceProjection(
+        final CartesianMapProjection projection = new CartesianMapProjection(
                 Location.ORIGIN.rectangle(size), drawingRectangle(100, 100, 100, 100));
 
         // Ensure simple cases in the corners (the middle will be distorted by the projection)
@@ -109,7 +109,7 @@ public class CartesianDrawingSurfaceProjectionTest extends BaseCoordinateMapperT
     @Test
     public void testWorld()
     {
-        final CartesianDrawingSurfaceProjection projection = new CartesianDrawingSurfaceProjection(
+        final CartesianMapProjection projection = new CartesianMapProjection(
                 SlippyTileCoordinateSystem.SLIPPY_TILE_BOUNDS, drawingRectangle(100, 100, 100, 100));
 
         // The origin will not be distorted
@@ -133,7 +133,7 @@ public class CartesianDrawingSurfaceProjectionTest extends BaseCoordinateMapperT
 
         // Map from 100,100:200,200 swing rectangle to 47.601765,-122.332335:48.601765,-121.332335
         // geographic rectangle around downtown Seattle
-        final CartesianDrawingSurfaceProjection projection = new CartesianDrawingSurfaceProjection(seattle,
+        final CartesianMapProjection projection = new CartesianMapProjection(seattle,
                 drawingRectangle(100, 100, 100, 100));
 
         // Ensure simple cases in the corners (the middle will be distorted by the projection)

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.ui.desktop.theme;
 
-import static com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingDistance.pixels;
+import static com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance.units;
 import static java.awt.BasicStroke.CAP_ROUND;
 import static java.awt.BasicStroke.JOIN_ROUND;
 
@@ -27,7 +27,7 @@ public class Strokes
     public static final MapStroke ROUNDED = MapStroke.stroke()
             .withCap(CAP_ROUND)
             .withJoin(JOIN_ROUND)
-            .withWidth(pixels(1));
+            .withWidth(units(1));
 
     public static final MapStroke DASHED = ROUNDED.withDash(new float[] { 8 });
 

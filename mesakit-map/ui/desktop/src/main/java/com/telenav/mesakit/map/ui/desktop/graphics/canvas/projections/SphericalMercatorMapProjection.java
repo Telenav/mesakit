@@ -21,26 +21,26 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections;
 
-import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingPoint;
-import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingRectangle;
-import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateRectangle;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSystem;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.projection.MetricCoordinate;
 import com.telenav.mesakit.map.geography.projection.projections.SphericalMercatorMetricProjection;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapDrawingSurfaceProjection;
+import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 
 /**
- * Maps points between the {@link DrawingSurface} coordinate system and spherical geographic coordinates. The mapping is
- * accomplished by using {@link SphericalMercatorMetricProjection} to map between {@link Location}s in degrees and
- * {@link MetricCoordinate}s in meters. The (Cartesian) metric value is then used to produce normalized values between 0
- * and 1 which are used to interpolate a location within the {@link DrawingRectangle}.
+ * Maps points between a {@link CoordinateSystem} and spherical geographic coordinates. The mapping is accomplished by
+ * using {@link SphericalMercatorMetricProjection} to map between {@link Location}s in degrees and {@link
+ * MetricCoordinate}s in meters. The (Cartesian) metric value is then used to produce normalized values between 0 and 1
+ * which are used to interpolate a location within the {@link CoordinateRectangle}.
  *
  * @author jonathanl (shibo)
  * @see <a href="https://wiki.openstreetmap.org/wiki/Mercator">OpenStreetMap Wiki - Mercator Projection</a>
  * @see SphericalMercatorMetricProjection
  */
-public class SphericalMercatorDrawingSurfaceProjection implements MapDrawingSurfaceProjection
+public class SphericalMercatorMapProjection implements MapProjection
 {
     /** Radius of Earth at equator */
     public static final double RADIUS_IN_METERS = 6378137.0;
@@ -57,12 +57,15 @@ public class SphericalMercatorDrawingSurfaceProjection implements MapDrawingSurf
 
     private final double mapAreaHeightInMeters;
 
-    private final DrawingRectangle drawingArea;
+    private final CoordinateRectangle coordinateArea;
 
-    public SphericalMercatorDrawingSurfaceProjection(final Rectangle mapArea, final DrawingRectangle drawingArea)
+    private final Rectangle mapArea;
+
+    public SphericalMercatorMapProjection(final Rectangle mapArea, final CoordinateRectangle coordinateArea)
     {
-        // Save the drawing area,
-        this.drawingArea = drawingArea;
+        // Save the areas we're mapping to and from,
+        this.mapArea = mapArea;
+        this.coordinateArea = coordinateArea;
 
         // project the top left and bottom right corners of the map area to x,y values in meters
         mapAreaTopLeftInMeters = mercatorProjection.toCoordinate(mapArea.topLeft());
@@ -73,12 +76,24 @@ public class SphericalMercatorDrawingSurfaceProjection implements MapDrawingSurf
         mapAreaHeightInMeters = metricBottomRight.yInMeters() - mapAreaTopLeftInMeters.yInMeters();
     }
 
+    @Override
+    public CoordinateRectangle coordinateArea()
+    {
+        return coordinateArea;
+    }
+
+    @Override
+    public Rectangle mapArea()
+    {
+        return mapArea;
+    }
+
     /**
      * @param location The geographic location
      * @return The drawing area point for the given location
      */
     @Override
-    public DrawingPoint toDrawingPoint(final Location location)
+    public Coordinate toCoordinates(final Location location)
     {
         // Project the location to a coordinate in meters from the map origin
         final var projected = mercatorProjection.toCoordinate(location);
@@ -88,11 +103,11 @@ public class SphericalMercatorDrawingSurfaceProjection implements MapDrawingSurf
         final double yUnit = (projected.yInMeters() - mapAreaTopLeftInMeters.yInMeters()) / mapAreaHeightInMeters;
 
         // compute the offset into the drawing area by scaling the width and height by the unit values,
-        final var dx = xUnit * drawingArea.width();
-        final var dy = yUnit * drawingArea.height();
+        final var dx = xUnit * coordinateArea.width();
+        final var dy = yUnit * coordinateArea.height();
 
         // and return the point within the drawing area.
-        return DrawingPoint.at(drawingArea.x() + dx, drawingArea.y() + dy);
+        return Coordinate.at(coordinateArea.at().coordinateSystem(), coordinateArea.x() + dx, coordinateArea.y() + dy);
     }
 
     /**
@@ -100,11 +115,11 @@ public class SphericalMercatorDrawingSurfaceProjection implements MapDrawingSurf
      * @return The geographic location for the given point
      */
     @Override
-    public Location toMapLocation(final DrawingPoint point)
+    public Location toMapUnits(final Coordinate point)
     {
         // Normalize the x,y location on the drawing surface to the unit interval (0 to 1)
-        final double xUnit = (point.x() - drawingArea.x()) / drawingArea.width();
-        final double yUnit = (point.y() - drawingArea.y()) / drawingArea.height();
+        final double xUnit = (point.x() - coordinateArea.x()) / coordinateArea.width();
+        final double yUnit = (point.y() - coordinateArea.y()) / coordinateArea.height();
 
         // then convert the unit interval to meters within the map width
         final var xMeters = mapAreaWidthInMeters * xUnit;

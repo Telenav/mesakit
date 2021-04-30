@@ -19,9 +19,9 @@
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
 import com.telenav.kivakit.ui.desktop.graphics.drawing.Drawable;
-import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingDistance;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.awt.AwtShapes;
 import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance;
 import com.telenav.kivakit.ui.desktop.graphics.style.Color;
 import com.telenav.kivakit.ui.desktop.graphics.style.Stroke;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
@@ -122,7 +122,7 @@ public class MapLine extends LabeledMapShape
     }
 
     @Override
-    public MapLine scaled(final double scaleFactor)
+    public MapLine scaledBy(final double scaleFactor)
     {
         return unsupported();
     }
@@ -151,7 +151,7 @@ public class MapLine extends LabeledMapShape
     }
 
     @Override
-    public MapLine withDrawStrokeWidth(final DrawingDistance width)
+    public MapLine withDrawStrokeWidth(final CoordinateDistance width)
     {
         return (MapLine) super.withDrawStrokeWidth(width);
     }
@@ -175,7 +175,7 @@ public class MapLine extends LabeledMapShape
     }
 
     @Override
-    public MapLine withFillStrokeWidth(final DrawingDistance width)
+    public MapLine withFillStrokeWidth(final CoordinateDistance width)
     {
         return (MapLine) super.withFillStrokeWidth(width);
     }

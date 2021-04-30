@@ -41,7 +41,7 @@ public class MercatorDrawingSurfaceProjectionTest extends BaseCoordinateMapperTe
         // Map from 100,100:200,200 drawing surface rectangle to 0,0:10,10 geographic rectangle
         final var mapArea = size.asRectangle();
         final var drawingArea = drawingRectangle(100, 100, 100, 100);
-        final var projection = new SphericalMercatorDrawingSurfaceProjection(mapArea, drawingArea);
+        final var projection = new SphericalMercatorMapProjection(mapArea, drawingArea);
 
         // Check the simple cases in the corners (the middle will be distorted by the projection)
         checkMapping(projection, point(100, 100), Location.ORIGIN.offsetBy(height));
@@ -53,7 +53,7 @@ public class MercatorDrawingSurfaceProjectionTest extends BaseCoordinateMapperTe
     @Test
     public void testWorld()
     {
-        final var projection = new SphericalMercatorDrawingSurfaceProjection(SlippyTileCoordinateSystem.SLIPPY_TILE_BOUNDS,
+        final var projection = new SphericalMercatorMapProjection(SlippyTileCoordinateSystem.SLIPPY_TILE_BOUNDS,
                 drawingRectangle(100, 100, 100, 100));
 
         // The origin will not be distorted
@@ -77,7 +77,7 @@ public class MercatorDrawingSurfaceProjectionTest extends BaseCoordinateMapperTe
 
         // Map from 100,100:200,200 drawing surface rectangle to 47.601765,-122.332335:48.601765,-121.332335
         // geographic rectangle around downtown Seattle
-        final var projection = new SphericalMercatorDrawingSurfaceProjection(seattle, drawingRectangle(100, 100, 100, 100));
+        final var projection = new SphericalMercatorMapProjection(seattle, drawingRectangle(100, 100, 100, 100));
 
         // Ensure simple cases in the corners (the middle will be distorted by the projection)
         checkMapping(projection, point(100, 100), seattle.topLeft());

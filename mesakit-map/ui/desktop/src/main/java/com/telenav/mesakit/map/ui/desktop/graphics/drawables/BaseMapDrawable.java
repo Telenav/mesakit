@@ -20,6 +20,7 @@ package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
 import com.telenav.kivakit.ui.desktop.graphics.drawing.BaseDrawable;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
@@ -81,5 +82,15 @@ public abstract class BaseMapDrawable extends BaseDrawable implements MapDrawabl
     public BaseMapDrawable withFillStrokeWidth(final Distance width)
     {
         return (BaseMapDrawable) withFillStroke(MapStroke.stroke(width));
+    }
+
+    protected Coordinate at(final MapCanvas surface)
+    {
+        var at = at();
+        if (at == null)
+        {
+            at = surface.toCoordinates(atLocation());
+        }
+        return at;
     }
 }
