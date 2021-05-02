@@ -81,7 +81,7 @@ public interface MapProjection
                 -180 + size.width().asDegrees());
 
         // project that to coordinate space, and return it as a size.
-        return toCoordinates(at).asSize();
+        return toCoordinates(at).minus(coordinateArea().topLeft()).asSize();
     }
 
     default Size toMapUnits(final CoordinateSize size)

@@ -107,6 +107,7 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
 
             view.map(at -> at.withStyle(INACTIVE_BOX));
             view.update(identifier, box);
+            view.pullToFront(identifier);
             frameComplete();
         }
     }
@@ -126,6 +127,7 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
 
             view.map(at -> ((LabeledMapShape) at).withLabelStyle(INACTIVE_LABEL).withStyle(INACTIVE_BOX));
             view.update(identifier, box);
+            view.pullToFront(identifier);
         }
         frameComplete();
     }
