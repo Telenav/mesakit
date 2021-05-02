@@ -31,6 +31,9 @@ import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSystem.drawingSurface;
+
 /**
  * A "slippy tile" is a rectangle defined by a zoom level and x, y coordinates in the grid of all tiles. You can get the
  * bounds of a particular slippy tile like this:
@@ -59,7 +62,7 @@ public class SlippyTile
     /**
      * Width and height of standard slippy tiles
      */
-    public static final CoordinateSize STANDARD_TILE_SIZE = CoordinateSize.size(256, 256);
+    public static final CoordinateSize STANDARD_TILE_SIZE = CoordinateSize.size(drawingSurface(), 256, 256);
 
     /**
      * @return The smallest tile that is larger than the given size
@@ -88,14 +91,10 @@ public class SlippyTile
     protected SlippyTile(final ZoomLevel zoom, final int x, final int y)
     {
         this.zoom = zoom;
-        if (x < 0 || x >= zoom.widthInTiles())
-        {
-            throw new IllegalArgumentException("Invalid x = " + x);
-        }
-        if (y < 0 || y >= zoom.heightInTiles())
-        {
-            throw new IllegalArgumentException("Invalid y = " + y);
-        }
+
+        ensure(x >= 0 && x < zoom.widthInTiles());
+        ensure(y >= 0 && y < zoom.heightInTiles());
+
         this.x = x;
         this.y = y;
     }

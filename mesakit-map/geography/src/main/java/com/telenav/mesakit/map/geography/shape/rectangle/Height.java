@@ -67,6 +67,11 @@ public class Height extends Angle
         return Location.degrees(asDegrees(), 0);
     }
 
+    public Size asSize()
+    {
+        return Size.of(Width.ZERO, this);
+    }
+
     @Override
     public Height maximum()
     {

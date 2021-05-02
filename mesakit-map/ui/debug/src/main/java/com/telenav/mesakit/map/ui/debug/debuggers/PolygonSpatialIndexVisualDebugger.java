@@ -56,7 +56,7 @@ public class PolygonSpatialIndexVisualDebugger implements PolygonSpatialIndexDeb
         }
         if (inside != null)
         {
-            view.add(Locations.LOCATION.atLocation(inside));
+            view.add(Locations.LOCATION.withLocation(inside));
         }
     }
 

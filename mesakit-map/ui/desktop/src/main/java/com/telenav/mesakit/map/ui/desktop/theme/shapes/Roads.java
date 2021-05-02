@@ -26,6 +26,7 @@ import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDot;
 
 import static com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance.units;
+import static com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSystem.drawingSurface;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.HIGHWAY_SIGN_GREEN;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.STREET_SIGN_BLUE;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.WHITE;
@@ -52,9 +53,9 @@ public class Roads
             .withFillColor(STREET_SIGN_BLUE.translucent());
 
     public static final MapDot ROAD_NAME_CALLOUT = MapDot.dot()
-            .withRadius(units(9f))
+            .withRadius(units(drawingSurface(), 9f))
             .withStyle(HEADACHE)
-            .withDrawStrokeWidth(units(2));
+            .withDrawStrokeWidth(units(drawingSurface(), 2));
 
     public static final Style STREET_LABEL = BASE
             .withTextFont(Fonts.component(12))

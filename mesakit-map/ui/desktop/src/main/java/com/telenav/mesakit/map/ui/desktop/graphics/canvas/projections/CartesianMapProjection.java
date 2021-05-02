@@ -21,12 +21,13 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections;
 
-import com.telenav.kivakit.core.kernel.language.primitives.Doubles;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
 import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
 import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateRectangle;
 import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSystem;
+import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.Longitude;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 
@@ -135,6 +136,11 @@ public class CartesianMapProjection implements MapProjection
         final var latitude = mapBottomInDegrees + latitudeOffset;
         final var longitude = mapLeftInDegrees + longitudeOffset;
 
-        return Location.degrees(Doubles.inRange(latitude, -90, 90), Doubles.inRange(longitude, -180, 180));
+        if (Latitude.isValid(latitude) && Longitude.isValid(longitude))
+        {
+            return Location.degrees(latitude, longitude);
+        }
+
+        return null;
     }
 }

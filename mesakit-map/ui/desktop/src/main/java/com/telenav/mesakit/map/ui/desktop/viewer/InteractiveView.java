@@ -36,7 +36,7 @@ public interface InteractiveView extends View
     /**
      * @param delay The delay between frames
      */
-    void frameSpeed(Duration delay);
+    void frameDelay(Duration delay);
 
     /**
      * @param bounds The rectangle to view

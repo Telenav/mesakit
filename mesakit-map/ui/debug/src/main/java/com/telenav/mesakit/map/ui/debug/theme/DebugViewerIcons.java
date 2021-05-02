@@ -24,6 +24,7 @@ package com.telenav.mesakit.map.ui.debug.theme;
 import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDot;
 
 import static com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance.units;
+import static com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSystem.drawingSurface;
 import static com.telenav.mesakit.map.ui.debug.theme.DebugViewerStyles.END;
 import static com.telenav.mesakit.map.ui.debug.theme.DebugViewerStyles.START;
 
@@ -34,11 +35,11 @@ public class DebugViewerIcons
 {
     public static final MapDot END_ICON = MapDot.dot()
             .withStyle(END)
-            .withRadius(units(10))
+            .withRadius(units(drawingSurface(), 10))
             .withLabel("end");
 
     public static final MapDot START_ICON = MapDot.dot()
             .withStyle(START)
-            .withRadius(units(10))
+            .withRadius(units(drawingSurface(), 10))
             .withLabel("start");
 }

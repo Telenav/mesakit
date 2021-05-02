@@ -28,6 +28,8 @@ import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDrawable;
 import com.telenav.mesakit.map.ui.desktop.viewer.DrawableIdentifier;
 import com.telenav.mesakit.map.ui.desktop.viewer.InteractiveView;
 
+import java.util.function.Function;
+
 public class NullInteractiveView implements InteractiveView
 {
     @Override
@@ -46,7 +48,12 @@ public class NullInteractiveView implements InteractiveView
     }
 
     @Override
-    public void frameSpeed(final Duration delay)
+    public void frameDelay(final Duration delay)
+    {
+    }
+
+    @Override
+    public void map(final Function<MapDrawable, MapDrawable> function)
     {
     }
 

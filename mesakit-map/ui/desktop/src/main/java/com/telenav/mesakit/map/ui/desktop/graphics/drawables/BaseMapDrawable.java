@@ -21,6 +21,9 @@ package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.BaseDrawable;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
 import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance;
+import com.telenav.kivakit.ui.desktop.graphics.style.Color;
+import com.telenav.kivakit.ui.desktop.graphics.style.Stroke;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
@@ -54,34 +57,90 @@ public abstract class BaseMapDrawable extends BaseDrawable implements MapDrawabl
         super(style);
     }
 
-    public BaseMapDrawable atLocation(final Location at)
-    {
-        final var copy = (BaseMapDrawable) copy();
-        copy.location = at;
-        return copy;
-    }
-
-    public Location atLocation()
-    {
-        return location;
-    }
-
     @Override
     public final Shape draw(final DrawingSurface surface)
     {
         return onDraw((MapCanvas) surface);
     }
 
+    @Override
+    public Location location()
+    {
+        return location;
+    }
+
     public abstract Shape onDraw(final MapCanvas canvas);
+
+    @Override
+    public BaseMapDrawable withColors(final Style style)
+    {
+        return (BaseMapDrawable) super.withColors(style);
+    }
+
+    @Override
+    public BaseMapDrawable withDrawColor(final Color color)
+    {
+        return (BaseMapDrawable) super.withDrawColor(color);
+    }
+
+    @Override
+    public BaseMapDrawable withDrawStroke(final Stroke stroke)
+    {
+        return (BaseMapDrawable) super.withDrawStroke(stroke);
+    }
+
+    @Override
+    public BaseMapDrawable withDrawStrokeWidth(final CoordinateDistance width)
+    {
+        return (BaseMapDrawable) super.withDrawStrokeWidth(width);
+    }
 
     public BaseMapDrawable withDrawStrokeWidth(final Distance width)
     {
-        return (BaseMapDrawable) withDrawStroke(MapStroke.stroke(width));
+        return withDrawStroke(MapStroke.stroke(width));
+    }
+
+    @Override
+    public BaseMapDrawable withFillColor(final Color color)
+    {
+        return (BaseMapDrawable) super.withFillColor(color);
+    }
+
+    @Override
+    public BaseMapDrawable withFillStroke(final Stroke stroke)
+    {
+        return (BaseMapDrawable) super.withFillStroke(stroke);
+    }
+
+    @Override
+    public BaseMapDrawable withFillStrokeWidth(final CoordinateDistance width)
+    {
+        return (BaseMapDrawable) super.withFillStrokeWidth(width);
     }
 
     public BaseMapDrawable withFillStrokeWidth(final Distance width)
     {
-        return (BaseMapDrawable) withFillStroke(MapStroke.stroke(width));
+        return withFillStroke(MapStroke.stroke(width));
+    }
+
+    @Override
+    public BaseMapDrawable withLocation(final Location at)
+    {
+        final var copy = (BaseMapDrawable) copy();
+        copy.location = at;
+        return copy;
+    }
+
+    @Override
+    public BaseMapDrawable withStyle(final Style style)
+    {
+        return (BaseMapDrawable) super.withStyle(style);
+    }
+
+    @Override
+    public BaseMapDrawable withTextColor(final Color color)
+    {
+        return (BaseMapDrawable) super.withTextColor(color);
     }
 
     protected Coordinate at(final MapCanvas surface)
@@ -89,7 +148,7 @@ public abstract class BaseMapDrawable extends BaseDrawable implements MapDrawabl
         var at = at();
         if (at == null)
         {
-            at = surface.toCoordinates(atLocation());
+            at = surface.toCoordinates(location());
         }
         return at;
     }

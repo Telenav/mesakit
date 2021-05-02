@@ -206,6 +206,19 @@ public class MapPolyline extends LabeledMapShape
         return copy;
     }
 
+    @Override
+    public MapPolyline withRoundedLabelCorners(final CoordinateDistance corner)
+    {
+        return (MapPolyline) super.withRoundedLabelCorners(corner);
+    }
+
+    @Override
+    public MapPolyline withRoundedLabelCorners(final CoordinateDistance cornerWidth,
+                                               final CoordinateDistance cornerHeight)
+    {
+        return (MapPolyline) super.withRoundedLabelCorners(cornerWidth, cornerHeight);
+    }
+
     public MapPolyline withStartLabel(final String text)
     {
         final var copy = copy();

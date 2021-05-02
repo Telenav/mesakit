@@ -76,12 +76,6 @@ public class MapDot extends LabeledMapShape
         return (MapDot) super.at(at);
     }
 
-    @Override
-    public MapDot atLocation(final Location at)
-    {
-        return (MapDot) super.atLocation(at);
-    }
-
     /**
      * Note that this method cannot be called until this drawable has been drawn
      *
@@ -90,7 +84,7 @@ public class MapDot extends LabeledMapShape
     @Override
     public Rectangle bounds()
     {
-        return Rectangle.fromCenterAndRadius(atLocation(), radius);
+        return Rectangle.fromCenterAndRadius(location(), radius);
     }
 
     @Override
@@ -171,6 +165,12 @@ public class MapDot extends LabeledMapShape
     }
 
     @Override
+    public MapDot withLocation(final Location at)
+    {
+        return (MapDot) super.withLocation(at);
+    }
+
+    @Override
     public MapDot withMargin(final int margin)
     {
         return (MapDot) super.withMargin(margin);
@@ -194,6 +194,19 @@ public class MapDot extends LabeledMapShape
         final var copy = copy();
         copy.coordinateRadius = radius;
         return copy;
+    }
+
+    @Override
+    public MapDot withRoundedLabelCorners(final CoordinateDistance corner)
+    {
+        return (MapDot) super.withRoundedLabelCorners(corner);
+    }
+
+    @Override
+    public MapDot withRoundedLabelCorners(final CoordinateDistance cornerWidth,
+                                          final CoordinateDistance cornerHeight)
+    {
+        return (MapDot) super.withRoundedLabelCorners(cornerWidth, cornerHeight);
     }
 
     @Override

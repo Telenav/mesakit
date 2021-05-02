@@ -28,6 +28,7 @@ import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndexDebugge
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
 import com.telenav.mesakit.map.ui.debug.DebugViewer;
+import com.telenav.mesakit.map.ui.desktop.graphics.drawables.LabeledMapShape;
 import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapBox;
 import com.telenav.mesakit.map.ui.desktop.viewer.DrawableIdentifier;
 import com.telenav.mesakit.map.ui.desktop.viewer.InteractiveView;
@@ -36,8 +37,12 @@ import com.telenav.mesakit.map.ui.desktop.viewer.View;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance.units;
+import static com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSystem.drawingSurface;
 import static com.telenav.mesakit.map.ui.debug.theme.DebugViewerStyles.ACTIVE_BOX;
 import static com.telenav.mesakit.map.ui.debug.theme.DebugViewerStyles.INACTIVE_BOX;
+import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.ACTIVE_LABEL;
+import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.INACTIVE_LABEL;
 
 /**
  * @author jonathanl (shibo)
@@ -95,9 +100,12 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
 
             final var box = MapBox.box()
                     .withStyle(ACTIVE_BOX)
+                    .withLabelStyle(ACTIVE_LABEL)
+                    .withRoundedLabelCorners(units(drawingSurface(), 10))
                     .withRectangle(element.bounds())
                     .withLabel(label);
 
+            view.map(at -> at.withStyle(INACTIVE_BOX));
             view.update(identifier, box);
             frameComplete();
         }
@@ -110,10 +118,13 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
             final var identifier = identifier(node);
 
             final var box = MapBox.box()
-                    .withStyle(INACTIVE_BOX)
+                    .withStyle(ACTIVE_BOX)
+                    .withLabelStyle(ACTIVE_LABEL)
+                    .withRoundedLabelCorners(units(drawingSurface(), 10))
                     .withRectangle(node.bounds())
                     .withLabel(identifier.toString());
 
+            view.map(at -> ((LabeledMapShape) at).withLabelStyle(INACTIVE_LABEL).withStyle(INACTIVE_BOX));
             view.update(identifier, box);
         }
         frameComplete();

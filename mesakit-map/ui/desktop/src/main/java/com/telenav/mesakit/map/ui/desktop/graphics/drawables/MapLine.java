@@ -87,12 +87,6 @@ public class MapLine extends LabeledMapShape
     }
 
     @Override
-    public MapLine atLocation(final Location at)
-    {
-        return (MapLine) super.atLocation(at);
-    }
-
-    @Override
     public Rectangle bounds()
     {
         return Rectangle.fromLocations(from(), to());
@@ -106,7 +100,7 @@ public class MapLine extends LabeledMapShape
 
     public Location from()
     {
-        return atLocation();
+        return location();
     }
 
     @Override
@@ -115,7 +109,7 @@ public class MapLine extends LabeledMapShape
         final var line = line(style(), from(), to, label)
                 .withFromArrowHead(fromArrowHead)
                 .withToArrowHead(toArrowHead)
-                .at(canvas.toCoordinates(atLocation()))
+                .at(canvas.toCoordinates(location()))
                 .draw(canvas);
 
         return AwtShapes.combine(line, super.onDraw(canvas));
@@ -182,7 +176,7 @@ public class MapLine extends LabeledMapShape
 
     public MapLine withFrom(final Location from)
     {
-        return atLocation(from);
+        return withLocation(from);
     }
 
     public MapLine withFromArrowHead(final Drawable arrowHead)
@@ -199,6 +193,12 @@ public class MapLine extends LabeledMapShape
     }
 
     @Override
+    public MapLine withLocation(final Location at)
+    {
+        return (MapLine) super.withLocation(at);
+    }
+
+    @Override
     public MapLine withMargin(final int margin)
     {
         return (MapLine) super.withMargin(margin);
@@ -208,6 +208,19 @@ public class MapLine extends LabeledMapShape
     public MapLine withOffset(final int dx, final int dy)
     {
         return (MapLine) super.withOffset(dx, dy);
+    }
+
+    @Override
+    public MapLine withRoundedLabelCorners(final CoordinateDistance corner)
+    {
+        return (MapLine) super.withRoundedLabelCorners(corner);
+    }
+
+    @Override
+    public MapLine withRoundedLabelCorners(final CoordinateDistance cornerWidth,
+                                           final CoordinateDistance cornerHeight)
+    {
+        return (MapLine) super.withRoundedLabelCorners(cornerWidth, cornerHeight);
     }
 
     @Override

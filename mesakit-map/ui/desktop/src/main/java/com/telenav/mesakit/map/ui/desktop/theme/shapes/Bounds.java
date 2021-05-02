@@ -24,6 +24,7 @@ package com.telenav.mesakit.map.ui.desktop.theme.shapes;
 import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapBox;
 
 import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.ACTIVE_BOX;
+import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.ACTIVE_LABEL;
 import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.INACTIVE_BOX;
 
 /**
@@ -32,8 +33,10 @@ import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.INACTIVE_BOX;
 public class Bounds
 {
     public static MapBox ACTIVE_BOUNDING_BOX = MapBox.box()
+            .withLabelStyle(ACTIVE_LABEL)
             .withStyle(ACTIVE_BOX);
 
     public static MapBox INACTIVE_BOUNDING_BOX = MapBox.box()
+            .withLabelStyle(ACTIVE_LABEL)
             .withStyle(INACTIVE_BOX);
 }

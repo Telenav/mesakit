@@ -58,14 +58,9 @@ public interface MapProjection
                 toCoordinates(rectangle.bottomRight()));
     }
 
-    default CoordinateSize toCoordinates(final Size size)
-    {
-        return toCoordinates(size.asLocation()).asSize();
-    }
-
     default CoordinateWidth toCoordinates(final Width width)
     {
-        return toCoordinates(width.asLocation()).asSize().width();
+        return toCoordinates(width.asSize()).width();
     }
 
     default CoordinateDistance toCoordinates(final Distance distance)
@@ -75,30 +70,45 @@ public interface MapProjection
 
     default CoordinateHeight toCoordinates(final Height height)
     {
-        return toCoordinates(height.asLocation()).asSize().height();
+        return toCoordinates(height.asSize()).height();
+    }
+
+    default CoordinateSize toCoordinates(final Size size)
+    {
+        // Convert width and height to a location relative to the top left,
+        final var at = Location.degrees(
+                90 - size.height().asDegrees(),
+                -180 + size.width().asDegrees());
+
+        // project that to coordinate space, and return it as a size.
+        return toCoordinates(at).asSize();
     }
 
     default Size toMapUnits(final CoordinateSize size)
     {
-        return Size.of(toMapUnits(size.width()), toMapUnits(size.height()));
+        final var width = toMapUnits(size.width());
+        final var height = toMapUnits(size.height());
+        return width == null || height == null ? null : Size.of(width, height);
     }
 
     default Height toMapUnits(final CoordinateHeight height)
     {
-        return toMapUnits(height.asCoordinate()).asHeight();
+        final var location = toMapUnits(height.asCoordinate());
+        return location == null ? null : location.asHeight();
     }
 
     default Width toMapUnits(final CoordinateWidth width)
     {
-        return toMapUnits(width.asCoordinate()).asWidth();
+        final var location = toMapUnits(width.asCoordinate());
+        return location == null ? null : location.asWidth();
     }
 
     Location toMapUnits(Coordinate point);
 
     default Rectangle toMapUnits(final CoordinateRectangle rectangle)
     {
-        return Rectangle.fromLocations(
-                toMapUnits(rectangle.at()),
-                toMapUnits(rectangle.to()));
+        final var at = toMapUnits(rectangle.at());
+        final var to = toMapUnits(rectangle.to());
+        return at == null || to == null ? null : Rectangle.fromLocations(at, to);
     }
 }

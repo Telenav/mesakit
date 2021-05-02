@@ -22,12 +22,8 @@ import com.telenav.kivakit.core.collections.map.CacheMap;
 import com.telenav.kivakit.core.collections.set.ConcurrentHashSet;
 import com.telenav.kivakit.core.kernel.language.threading.RepeatingKivaKitThread;
 import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
 import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.network.http.HttpNetworkLocation;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
 import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSize;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
@@ -53,10 +49,6 @@ import static java.awt.AlphaComposite.SRC_OVER;
  */
 public abstract class SlippyTileImageCache extends BaseRepeater
 {
-    private static final Logger LOGGER = LoggerFactory.newLogger();
-
-    private static final Debug DEBUG = new Debug(LOGGER);
-
     /**
      * Map from slippy tile to buffered image
      */
@@ -86,14 +78,13 @@ public abstract class SlippyTileImageCache extends BaseRepeater
         requested = new ArrayBlockingQueue<>(maximumTiles.asInt());
 
         // Request tiles (on a single thread only because of limits on OpenStreetMap tile servers)
-        RepeatingKivaKitThread.run(LOGGER, "TileDownloader", this::downloadNext);
+        RepeatingKivaKitThread.run(this, "TileDownloader", this::downloadNext);
     }
 
     /**
      * Draw map tiles on the given graphics
      */
     public void drawTiles(final Graphics2D graphics,
-                          final Coordinate offset,
                           final MapProjection projection,
                           final Iterable<SlippyTile> tiles)
     {
@@ -109,12 +100,9 @@ public abstract class SlippyTileImageCache extends BaseRepeater
             {
                 // draw it at the appropriate x, y location using the coordinate mapper
                 final var bounds = projection.toCoordinates(tile.tileBounds());
-                if (DEBUG.isDebugOn())
-                {
-                    LOGGER.information("drawing tile $ with bounds of $ at $, $", tile,
-                            tile.tileBounds(), bounds.x(), bounds.y());
-                }
-                graphics.drawImage(image, (int) (offset.x() + bounds.x()), (int) (offset.y() + bounds.y()), null);
+                information("drawing tile $ with bounds of $ at $, $", tile,
+                        tile.tileBounds(), bounds.x(), bounds.y());
+                graphics.drawImage(image, (int) bounds.x(), (int) bounds.y(), null);
             }
         }
         graphics.setComposite(AlphaComposite.getInstance(SRC_OVER, 1.0f));

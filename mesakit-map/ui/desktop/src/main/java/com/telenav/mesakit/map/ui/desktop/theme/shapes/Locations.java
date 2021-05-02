@@ -24,6 +24,7 @@ package com.telenav.mesakit.map.ui.desktop.theme.shapes;
 import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDot;
 
 import static com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance.units;
+import static com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSystem.drawingSurface;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.VALENCIA;
 
 /**
@@ -32,7 +33,7 @@ import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.VALENCIA;
 public class Locations
 {
     public static final MapDot LOCATION = MapDot.dot()
-            .withRadius(units(8))
+            .withRadius(units(drawingSurface(), 8))
             .withStyle(VALENCIA)
-            .withDrawStrokeWidth(units(2));
+            .withDrawStrokeWidth(units(drawingSurface(), 2));
 }

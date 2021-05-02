@@ -1,11 +1,15 @@
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
 import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 
 import java.awt.Shape;
+
+import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 /**
  * @author jonathanl (shibo)
@@ -22,21 +26,27 @@ public abstract class LabeledMapShape extends BaseMapDrawable
 
     private Style labelStyle;
 
+    private CoordinateDistance labelCornerWidth;
+
+    private CoordinateDistance labelCornerHeight;
+
     public LabeledMapShape(final Style style, final String label)
     {
         super(style);
         this.label = label;
     }
 
-    public LabeledMapShape(final Style style, final Location location, final String label)
+    public LabeledMapShape(final Style style, final Location at, final String label)
     {
-        super(style);
+        super(style, at);
         this.label = label;
     }
 
     public LabeledMapShape(final LabeledMapShape that)
     {
         super(that);
+        labelCornerWidth = that.labelCornerWidth;
+        labelCornerHeight = that.labelCornerHeight;
         label = that.label;
         labelXOffset = that.labelXOffset;
         labelYOffset = that.labelYOffset;
@@ -49,11 +59,16 @@ public abstract class LabeledMapShape extends BaseMapDrawable
 
     public Shape drawLabel(final MapCanvas canvas, final Coordinate coordinate)
     {
+        ensureNotNull(canvas);
+        ensureNotNull(coordinate);
+        ensureNotNull(labelStyle);
+
         if (label != null)
         {
             return label(label)
                     .at(coordinate)
                     .withStyle(labelStyle)
+                    .withRoundedCorners(labelCornerWidth, labelCornerHeight)
                     .withMargin(margin)
                     .draw(canvas);
         }
@@ -66,7 +81,8 @@ public abstract class LabeledMapShape extends BaseMapDrawable
     {
         if (label != null)
         {
-            return drawLabel(canvas, anchor(canvas, atLocation()));
+            ensure(labelStyle != null);
+            return drawLabel(canvas, anchor(canvas, location()));
         }
 
         return null;
@@ -82,7 +98,7 @@ public abstract class LabeledMapShape extends BaseMapDrawable
     public LabeledMapShape withLabelStyle(final Style style)
     {
         final var copy = copy();
-        copy.labelStyle = labelStyle;
+        copy.labelStyle = style;
         return copy;
     }
 
@@ -99,6 +115,20 @@ public abstract class LabeledMapShape extends BaseMapDrawable
         copy.labelXOffset = dx;
         copy.labelYOffset = dy;
         return copy;
+    }
+
+    public LabeledMapShape withRoundedLabelCorners(final CoordinateDistance cornerWidth,
+                                                   final CoordinateDistance cornerHeight)
+    {
+        final var copy = copy();
+        copy.labelCornerWidth = cornerWidth;
+        copy.labelCornerHeight = cornerHeight;
+        return copy;
+    }
+
+    public LabeledMapShape withRoundedLabelCorners(final CoordinateDistance corner)
+    {
+        return withRoundedLabelCorners(corner, corner);
     }
 
     protected Coordinate anchor(final MapCanvas canvas, final Location location)

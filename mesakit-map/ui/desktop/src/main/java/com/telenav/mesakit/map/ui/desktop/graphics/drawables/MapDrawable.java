@@ -22,6 +22,11 @@
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
 import com.telenav.kivakit.ui.desktop.graphics.drawing.Drawable;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance;
+import com.telenav.kivakit.ui.desktop.graphics.style.Color;
+import com.telenav.kivakit.ui.desktop.graphics.style.Stroke;
+import com.telenav.kivakit.ui.desktop.graphics.style.Style;
+import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 
 /**
@@ -29,4 +34,34 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
  */
 public interface MapDrawable extends Drawable, Bounded
 {
+    Location location();
+
+    @Override
+    MapDrawable withColors(final Style style);
+
+    @Override
+    MapDrawable withDrawColor(final Color color);
+
+    @Override
+    MapDrawable withDrawStroke(final Stroke stroke);
+
+    @Override
+    MapDrawable withDrawStrokeWidth(final CoordinateDistance width);
+
+    @Override
+    MapDrawable withFillColor(final Color color);
+
+    @Override
+    MapDrawable withFillStroke(final Stroke stroke);
+
+    @Override
+    MapDrawable withFillStrokeWidth(final CoordinateDistance width);
+
+    MapDrawable withLocation(final Location at);
+
+    @Override
+    MapDrawable withStyle(final Style style);
+
+    @Override
+    MapDrawable withTextColor(final Color color);
 }

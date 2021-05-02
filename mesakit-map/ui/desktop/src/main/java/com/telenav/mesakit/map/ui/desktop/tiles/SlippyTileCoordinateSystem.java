@@ -27,6 +27,8 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections.SphericalMercatorMapProjection;
 
+import static com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSystem.drawingSurface;
+
 public class SlippyTileCoordinateSystem implements MapProjection
 {
     /**
@@ -58,12 +60,12 @@ public class SlippyTileCoordinateSystem implements MapProjection
     public Rectangle bounds(final SlippyTile tile)
     {
         final var upperLeft = toMapUnits(
-                Coordinate.at(
+                Coordinate.at(drawingSurface(),
                         tile.x() * tileSize.widthInUnits(),
                         tile.y() * tileSize.heightInUnits()));
 
         final var lowerRight = toMapUnits(
-                Coordinate.at(
+                Coordinate.at(drawingSurface(),
                         (tile.x() + 1) * tileSize.widthInUnits(),
                         (tile.y() + 1) * tileSize.heightInUnits()));
 

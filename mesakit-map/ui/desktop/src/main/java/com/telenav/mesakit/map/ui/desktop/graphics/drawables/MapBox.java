@@ -22,6 +22,7 @@ import com.telenav.kivakit.ui.desktop.graphics.drawing.awt.AwtShapes;
 import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
 import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance;
 import com.telenav.kivakit.ui.desktop.graphics.style.Color;
+import com.telenav.kivakit.ui.desktop.graphics.style.Stroke;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
@@ -30,6 +31,8 @@ import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 
 import java.awt.Shape;
+
+import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 /**
  * @author jonathanl (shibo)
@@ -51,12 +54,15 @@ public class MapBox extends LabeledMapShape
         return box(null, null, null);
     }
 
-    private final Size size;
+    private Size size;
 
     protected MapBox(final Style style, final Rectangle box, final String label)
     {
-        super(style, box.topLeft(), label);
-        size = box.size();
+        super(style, box == null ? null : box.topLeft(), label);
+        if (box != null)
+        {
+            size = box.size();
+        }
     }
 
     protected MapBox(final MapBox that)
@@ -72,15 +78,9 @@ public class MapBox extends LabeledMapShape
     }
 
     @Override
-    public MapBox atLocation(final Location at)
-    {
-        return (MapBox) super.atLocation(at);
-    }
-
-    @Override
     public Rectangle bounds()
     {
-        return atLocation().rectangle(size);
+        return location().rectangle(size);
     }
 
     @Override
@@ -93,7 +93,7 @@ public class MapBox extends LabeledMapShape
     public Shape onDraw(final MapCanvas canvas)
     {
         final var box = box(canvas.toCoordinates(size))
-                .at(canvas.toCoordinates(atLocation()))
+                .at(canvas.toCoordinates(location()))
                 .draw(canvas);
 
         final var label = super.onDraw(canvas);
@@ -125,6 +125,12 @@ public class MapBox extends LabeledMapShape
     }
 
     @Override
+    public MapBox withDrawStroke(final Stroke stroke)
+    {
+        return (MapBox) super.withDrawStroke(stroke);
+    }
+
+    @Override
     public MapBox withDrawStrokeWidth(final CoordinateDistance width)
     {
         return (MapBox) super.withDrawStrokeWidth(width);
@@ -140,6 +146,12 @@ public class MapBox extends LabeledMapShape
     public MapBox withFillColor(final Color color)
     {
         return (MapBox) super.withFillColor(color);
+    }
+
+    @Override
+    public MapBox withFillStroke(final Stroke stroke)
+    {
+        return (MapBox) super.withFillStroke(stroke);
     }
 
     @Override
@@ -161,6 +173,19 @@ public class MapBox extends LabeledMapShape
     }
 
     @Override
+    public MapBox withLabelStyle(final Style style)
+    {
+        ensureNotNull(style);
+        return (MapBox) super.withLabelStyle(style);
+    }
+
+    @Override
+    public MapBox withLocation(final Location at)
+    {
+        return (MapBox) super.withLocation(at);
+    }
+
+    @Override
     public MapBox withMargin(final int margin)
     {
         return (MapBox) super.withMargin(margin);
@@ -175,13 +200,28 @@ public class MapBox extends LabeledMapShape
     public MapBox withRectangle(final Rectangle rectangle)
     {
         return copy()
-                .atLocation(rectangle.topLeft())
+                .withLocation(rectangle.topLeft())
                 .withSize(rectangle.size());
+    }
+
+    @Override
+    public MapBox withRoundedLabelCorners(final CoordinateDistance corner)
+    {
+        return (MapBox) super.withRoundedLabelCorners(corner);
+    }
+
+    @Override
+    public MapBox withRoundedLabelCorners(final CoordinateDistance cornerWidth,
+                                          final CoordinateDistance cornerHeight)
+    {
+        return (MapBox) super.withRoundedLabelCorners(cornerWidth, cornerHeight);
     }
 
     public MapBox withSize(final Size size)
     {
-        return copy().withSize(size);
+        final var copy = copy();
+        copy.size = size;
+        return copy;
     }
 
     @Override

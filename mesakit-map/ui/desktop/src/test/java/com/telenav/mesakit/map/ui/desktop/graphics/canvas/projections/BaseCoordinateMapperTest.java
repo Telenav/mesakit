@@ -28,6 +28,8 @@ import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 
+import static com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSystem.drawingSurface;
+
 public abstract class BaseCoordinateMapperTest extends UnitTest
 {
     protected void checkMapping(final MapProjection projection,
@@ -46,11 +48,11 @@ public abstract class BaseCoordinateMapperTest extends UnitTest
     @SuppressWarnings("SameParameterValue")
     protected CoordinateRectangle drawingRectangle(final int x, final int y, final int width, final int height)
     {
-        return CoordinateRectangle.rectangle(x, y, width, height);
+        return CoordinateRectangle.rectangle(drawingSurface(), x, y, width, height);
     }
 
     protected Coordinate point(final int x, final int y)
     {
-        return Coordinate.at(x, y);
+        return Coordinate.at(drawingSurface(), x, y);
     }
 }

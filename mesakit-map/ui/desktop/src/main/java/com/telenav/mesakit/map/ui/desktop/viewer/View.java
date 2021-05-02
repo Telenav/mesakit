@@ -24,6 +24,8 @@ package com.telenav.mesakit.map.ui.desktop.viewer;
 import com.telenav.kivakit.core.kernel.interfaces.naming.Named;
 import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDrawable;
 
+import java.util.function.Function;
+
 /**
  * A view is a named repository of {@link MapDrawable} objects which can be updated.
  *
@@ -41,6 +43,8 @@ public interface View extends Named
      * operation. If the view does not support the operation, calling this method will have no effect.
      */
     void clear();
+
+    void map(Function<MapDrawable, MapDrawable> consumer);
 
     /**
      * Moves the given viewable to the top of the view

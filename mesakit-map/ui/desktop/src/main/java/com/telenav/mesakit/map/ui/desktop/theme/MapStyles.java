@@ -23,15 +23,16 @@ package com.telenav.mesakit.map.ui.desktop.theme;
 
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 
+import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.KIVAKIT_BLACK;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.OCEAN;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.STEEL_BLUE;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.TRANSLUCENT_OCEAN;
-import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.TRANSPARENT;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.ARUBA;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.GOLF;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.MANHATTAN;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.MOJITO;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.NIGHT_SHIFT;
+import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.OCEAN_SURF;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.SEATTLE;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.SUNNY;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.VALENCIA;
@@ -41,11 +42,13 @@ public class MapStyles
 {
     public static final Style ACTIVE = NIGHT_SHIFT;
 
-    public static final Style ACTIVE_BOX = GOLF.withFillColor(TRANSPARENT);
+    public static final Style ACTIVE_BOX = GOLF;
 
     public static final Style ARROWHEAD = ARUBA;
 
     public static final Style BASE = MOJITO;
+
+    public static final Style MAP_BACKGROUND = BASE.withFillColor(KIVAKIT_BLACK);
 
     public static final Style ERROR = MANHATTAN;
 
@@ -57,7 +60,11 @@ public class MapStyles
 
     public static final Style INACTIVE = SEATTLE;
 
-    public static final Style INACTIVE_BOX = SEATTLE.withFillColor(TRANSPARENT);
+    public static final Style INACTIVE_BOX = SEATTLE.transparent();
+
+    public static final Style ACTIVE_LABEL = OCEAN_SURF;
+
+    public static final Style INACTIVE_LABEL = SEATTLE;
 
     public static final Style NORMAL = BASE;
 

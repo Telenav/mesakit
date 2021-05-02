@@ -39,6 +39,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Function;
 
 public class ViewModel
 {
@@ -170,6 +171,11 @@ public class ViewModel
         {
             draw(surface, selected);
         }
+    }
+
+    public void map(final Function<MapDrawable, MapDrawable> function)
+    {
+        entries.forEach(entry -> entry.viewable = function.apply(entry.viewable));
     }
 
     /**

@@ -23,8 +23,7 @@ package com.telenav.mesakit.map.ui.debug.theme;
 
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 
-import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.TRANSPARENT;
-import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.GOLF;
+import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.ARUBA;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.MANHATTAN;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.MOJITO;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.SEATTLE;
@@ -34,12 +33,11 @@ import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.SEATTLE;
  */
 public class DebugViewerStyles
 {
-    public static final Style ACTIVE_BOX = GOLF
-            .withFillColor(TRANSPARENT);
+    public static final Style ACTIVE_BOX = ARUBA.withAlpha(128);
 
-    public static Style END = MANHATTAN;
+    public static final Style END = MANHATTAN;
 
-    public static Style INACTIVE_BOX = SEATTLE.withFillColor(TRANSPARENT);
+    public static final Style INACTIVE_BOX = SEATTLE.transparent();
 
-    public static Style START = MOJITO;
+    public static final Style START = MOJITO;
 }

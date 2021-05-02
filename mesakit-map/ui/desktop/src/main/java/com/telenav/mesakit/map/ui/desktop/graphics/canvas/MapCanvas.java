@@ -25,10 +25,12 @@ import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Label;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Text;
 import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
 import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateRectangle;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSize;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.geography.shape.rectangle.Size;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 import java.awt.Graphics2D;
@@ -132,6 +134,12 @@ public class MapCanvas extends AwtDrawingSurface implements MapProjection
     public Coordinate toCoordinates(final Location location)
     {
         return projection.toCoordinates(location);
+    }
+
+    @Override
+    public CoordinateSize toCoordinates(final Size size)
+    {
+        return projection.toCoordinates(size);
     }
 
     @Override
