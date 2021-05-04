@@ -1,40 +1,36 @@
-/*
- * ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- * //
- * // © 2011-2021 Telenav, Inc.
- * //
- * // Licensed under the Apache License, Version 2.0 (the "License");
- * // you may not use this file except in compliance with the License.
- * // You may obtain a copy of the License at
- * //
- * // http://www.apache.org/licenses/LICENSE-2.0
- * //
- * // Unless required by applicable law or agreed to in writing, software
- * // distributed under the License is distributed on an "AS IS" BASIS,
- * // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * // See the License for the specific language governing permissions and
- * // limitations under the License.
- * //
- * ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- *
- */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// © 2011-2021 Telenav, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections;
 
-import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateRectangle;
 import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSystem;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Point;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Rectangle;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.projection.MetricCoordinate;
 import com.telenav.mesakit.map.geography.projection.projections.SphericalMercatorMetricProjection;
-import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 
 /**
  * Maps points between a {@link CoordinateSystem} and spherical geographic coordinates. The mapping is accomplished by
  * using {@link SphericalMercatorMetricProjection} to map between {@link Location}s in degrees and {@link
  * MetricCoordinate}s in meters. The (Cartesian) metric value is then used to produce normalized values between 0 and 1
- * which are used to interpolate a location within the {@link CoordinateRectangle}.
+ * which are used to interpolate a location within the {@link Rectangle}.
  *
  * @author jonathanl (shibo)
  * @see <a href="https://wiki.openstreetmap.org/wiki/Mercator">OpenStreetMap Wiki - Mercator Projection</a>
@@ -57,11 +53,12 @@ public class SphericalMercatorMapProjection implements MapProjection
 
     private final double mapAreaHeightInMeters;
 
-    private final CoordinateRectangle coordinateArea;
+    private final Rectangle coordinateArea;
 
-    private final Rectangle mapArea;
+    private final com.telenav.mesakit.map.geography.shape.rectangle.Rectangle mapArea;
 
-    public SphericalMercatorMapProjection(final Rectangle mapArea, final CoordinateRectangle coordinateArea)
+    public SphericalMercatorMapProjection(final com.telenav.mesakit.map.geography.shape.rectangle.Rectangle mapArea,
+                                          final Rectangle coordinateArea)
     {
         // Save the areas we're mapping to and from,
         this.mapArea = mapArea;
@@ -77,13 +74,13 @@ public class SphericalMercatorMapProjection implements MapProjection
     }
 
     @Override
-    public CoordinateRectangle coordinateArea()
+    public Rectangle drawingArea()
     {
         return coordinateArea;
     }
 
     @Override
-    public Rectangle mapArea()
+    public com.telenav.mesakit.map.geography.shape.rectangle.Rectangle mapArea()
     {
         return mapArea;
     }
@@ -93,7 +90,7 @@ public class SphericalMercatorMapProjection implements MapProjection
      * @return The drawing area point for the given location
      */
     @Override
-    public Coordinate toCoordinates(final Location location)
+    public Point toDrawing(final Location location)
     {
         // Project the location to a coordinate in meters from the map origin
         final var projected = mercatorProjection.toCoordinate(location);
@@ -107,7 +104,7 @@ public class SphericalMercatorMapProjection implements MapProjection
         final var dy = yUnit * coordinateArea.height();
 
         // and return the point within the drawing area.
-        return Coordinate.at(coordinateArea.at().coordinateSystem(), coordinateArea.x() + dx, coordinateArea.y() + dy);
+        return Point.at(coordinateArea.at().coordinateSystem(), coordinateArea.x() + dx, coordinateArea.y() + dy);
     }
 
     /**
@@ -115,7 +112,7 @@ public class SphericalMercatorMapProjection implements MapProjection
      * @return The geographic location for the given point
      */
     @Override
-    public Location toMapUnits(final Coordinate point)
+    public Location toMap(final Point point)
     {
         // Normalize the x,y location on the drawing surface to the unit interval (0 to 1)
         final double xUnit = (point.x() - coordinateArea.x()) / coordinateArea.width();

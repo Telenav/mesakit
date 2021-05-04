@@ -1,7 +1,7 @@
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
-import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.measurements.Length;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Point;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
@@ -22,13 +22,13 @@ public abstract class LabeledMapShape extends BaseMapDrawable
 
     private double labelYOffset = -10;
 
-    private int margin = 10;
+    private int margin = 8;
 
     private Style labelStyle;
 
-    private CoordinateDistance labelCornerWidth;
+    private Length labelCornerWidth;
 
-    private CoordinateDistance labelCornerHeight;
+    private Length labelCornerHeight;
 
     public LabeledMapShape(final Style style, final String label)
     {
@@ -57,7 +57,7 @@ public abstract class LabeledMapShape extends BaseMapDrawable
     @Override
     public abstract LabeledMapShape copy();
 
-    public Shape drawLabel(final MapCanvas canvas, final Coordinate coordinate)
+    public Shape drawLabel(final MapCanvas canvas, final Point coordinate)
     {
         ensureNotNull(canvas);
         ensureNotNull(coordinate);
@@ -117,8 +117,8 @@ public abstract class LabeledMapShape extends BaseMapDrawable
         return copy;
     }
 
-    public LabeledMapShape withRoundedLabelCorners(final CoordinateDistance cornerWidth,
-                                                   final CoordinateDistance cornerHeight)
+    public LabeledMapShape withRoundedLabelCorners(final Length cornerWidth,
+                                                   final Length cornerHeight)
     {
         final var copy = copy();
         copy.labelCornerWidth = cornerWidth;
@@ -126,13 +126,13 @@ public abstract class LabeledMapShape extends BaseMapDrawable
         return copy;
     }
 
-    public LabeledMapShape withRoundedLabelCorners(final CoordinateDistance corner)
+    public LabeledMapShape withRoundedLabelCorners(final Length corner)
     {
         return withRoundedLabelCorners(corner, corner);
     }
 
-    protected Coordinate anchor(final MapCanvas canvas, final Location location)
+    protected Point anchor(final MapCanvas canvas, final Location location)
     {
-        return canvas.toCoordinates(location).plus(labelXOffset, labelYOffset);
+        return canvas.toDrawing(location).plus(labelXOffset, labelYOffset);
     }
 }

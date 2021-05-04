@@ -1,6 +1,6 @@
 package com.telenav.mesakit.map.ui.desktop.theme;
 
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.measurements.Length;
 import com.telenav.kivakit.ui.desktop.graphics.style.Stroke;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
@@ -24,7 +24,7 @@ public class MapStroke extends Stroke
 
     private Distance width;
 
-    private CoordinateDistance drawingWidth;
+    private Length drawingWidth;
 
     protected MapStroke()
     {
@@ -40,7 +40,7 @@ public class MapStroke extends Stroke
     public void apply(final Graphics2D graphics, final MapCanvas canvas)
     {
         super.apply(graphics);
-        drawingWidth = canvas.toCoordinates(width);
+        drawingWidth = canvas.toDrawing(width);
     }
 
     @Override
@@ -86,7 +86,7 @@ public class MapStroke extends Stroke
     }
 
     @Override
-    public MapStroke withWidth(final CoordinateDistance width)
+    public MapStroke withWidth(final Length width)
     {
         return (MapStroke) super.withWidth(width);
     }
@@ -99,7 +99,7 @@ public class MapStroke extends Stroke
     }
 
     @Override
-    protected CoordinateDistance width()
+    protected Length width()
     {
         return drawingWidth;
     }

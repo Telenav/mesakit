@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
-import com.telenav.kivakit.ui.desktop.graphics.drawing.awt.AwtShapes;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.java2d.Java2dShapes;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.measurements.Length;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Point;
 import com.telenav.kivakit.ui.desktop.graphics.style.Color;
 import com.telenav.kivakit.ui.desktop.graphics.style.Stroke;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
@@ -72,7 +72,7 @@ public class MapBox extends LabeledMapShape
     }
 
     @Override
-    public MapBox at(final Coordinate at)
+    public MapBox at(final Point at)
     {
         return (MapBox) super.at(at);
     }
@@ -92,13 +92,13 @@ public class MapBox extends LabeledMapShape
     @Override
     public Shape onDraw(final MapCanvas canvas)
     {
-        final var box = box(canvas.toCoordinates(size))
-                .at(canvas.toCoordinates(location()))
+        final var box = box(canvas.toDrawing(size))
+                .at(canvas.toDrawing(location()))
                 .draw(canvas);
 
         final var label = super.onDraw(canvas);
 
-        return AwtShapes.combine(box, label);
+        return Java2dShapes.combine(box, label);
     }
 
     @Override
@@ -131,7 +131,7 @@ public class MapBox extends LabeledMapShape
     }
 
     @Override
-    public MapBox withDrawStrokeWidth(final CoordinateDistance width)
+    public MapBox withDrawStrokeWidth(final Length width)
     {
         return (MapBox) super.withDrawStrokeWidth(width);
     }
@@ -161,7 +161,7 @@ public class MapBox extends LabeledMapShape
     }
 
     @Override
-    public MapBox withFillStrokeWidth(final CoordinateDistance width)
+    public MapBox withFillStrokeWidth(final Length width)
     {
         return (MapBox) super.withFillStrokeWidth(width);
     }
@@ -205,14 +205,14 @@ public class MapBox extends LabeledMapShape
     }
 
     @Override
-    public MapBox withRoundedLabelCorners(final CoordinateDistance corner)
+    public MapBox withRoundedLabelCorners(final Length corner)
     {
         return (MapBox) super.withRoundedLabelCorners(corner);
     }
 
     @Override
-    public MapBox withRoundedLabelCorners(final CoordinateDistance cornerWidth,
-                                          final CoordinateDistance cornerHeight)
+    public MapBox withRoundedLabelCorners(final Length cornerWidth,
+                                          final Length cornerHeight)
     {
         return (MapBox) super.withRoundedLabelCorners(cornerWidth, cornerHeight);
     }

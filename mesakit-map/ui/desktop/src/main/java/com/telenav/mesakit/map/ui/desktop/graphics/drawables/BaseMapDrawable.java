@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
-import com.telenav.kivakit.ui.desktop.graphics.drawing.BaseDrawable;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.BaseDrawable;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.measurements.Length;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Point;
 import com.telenav.kivakit.ui.desktop.graphics.style.Color;
 import com.telenav.kivakit.ui.desktop.graphics.style.Stroke;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
@@ -90,7 +90,7 @@ public abstract class BaseMapDrawable extends BaseDrawable implements MapDrawabl
     }
 
     @Override
-    public BaseMapDrawable withDrawStrokeWidth(final CoordinateDistance width)
+    public BaseMapDrawable withDrawStrokeWidth(final Length width)
     {
         return (BaseMapDrawable) super.withDrawStrokeWidth(width);
     }
@@ -113,7 +113,7 @@ public abstract class BaseMapDrawable extends BaseDrawable implements MapDrawabl
     }
 
     @Override
-    public BaseMapDrawable withFillStrokeWidth(final CoordinateDistance width)
+    public BaseMapDrawable withFillStrokeWidth(final Length width)
     {
         return (BaseMapDrawable) super.withFillStrokeWidth(width);
     }
@@ -143,12 +143,12 @@ public abstract class BaseMapDrawable extends BaseDrawable implements MapDrawabl
         return (BaseMapDrawable) super.withTextColor(color);
     }
 
-    protected Coordinate at(final MapCanvas surface)
+    protected Point at(final MapCanvas surface)
     {
         var at = at();
         if (at == null)
         {
-            at = surface.toCoordinates(location());
+            at = surface.toDrawing(location());
         }
         return at;
     }

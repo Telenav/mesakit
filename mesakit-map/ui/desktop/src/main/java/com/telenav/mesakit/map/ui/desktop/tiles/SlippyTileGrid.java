@@ -37,8 +37,6 @@ import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.GRID_LINES;
  */
 public class SlippyTileGrid extends BaseRepeater implements Iterable<SlippyTile>
 {
-    private final Rectangle bounds;
-
     private final ZoomLevel zoom;
 
     private Style outlineStyle = GRID_LINES;
@@ -59,14 +57,9 @@ public class SlippyTileGrid extends BaseRepeater implements Iterable<SlippyTile>
      */
     public SlippyTileGrid(final Rectangle bounds, final ZoomLevel zoom)
     {
-        // Save bounds and zoom level
-        this.bounds = bounds;
         this.zoom = zoom;
-        if (isDebugOn())
-        {
-            information("bounds = " + bounds);
-            information("zoom = " + zoom);
-        }
+        trace("bounds = " + bounds);
+        trace("zoom = " + zoom);
 
         // Get the top left and bottom right slippy tiles
         final var topLeft = zoom.tileAt(bounds.topLeft());
@@ -77,17 +70,11 @@ public class SlippyTileGrid extends BaseRepeater implements Iterable<SlippyTile>
         final var starty = topLeft.y();
         final var endx = bottomRight.x();
         final var endy = bottomRight.y();
-        if (isDebugOn())
-        {
-            information("startx = " + startx + ", starty = " + starty + ", endx = " + endx + ", endy = " + endy);
-        }
+        trace("startx = " + startx + ", starty = " + starty + ", endx = " + endx + ", endy = " + endy);
 
         // Compute the total number of tiles in the grid
         final var total = (endx - startx + 1) * (endy - starty + 1);
-        if (isDebugOn())
-        {
-            information("total = " + total);
-        }
+        trace("total = " + total);
         if (total < 0)
         {
             fail("Unable to construct tile grid");
@@ -125,7 +112,7 @@ public class SlippyTileGrid extends BaseRepeater implements Iterable<SlippyTile>
     {
         for (final var tile : tiles)
         {
-            tile.drawOutline(canvas, outlineStyle, bounds);
+            tile.drawOutline(canvas, outlineStyle);
         }
     }
 

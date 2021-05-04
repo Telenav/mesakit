@@ -24,8 +24,9 @@ import com.telenav.kivakit.core.kernel.language.threading.RepeatingKivaKitThread
 import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.network.http.HttpNetworkLocation;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSize;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Size;
 import com.telenav.mesakit.core.MesaKit;
+import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 
 import javax.imageio.ImageIO;
@@ -90,19 +91,22 @@ public abstract class SlippyTileImageCache extends BaseRepeater
     {
         // Go through each tile
         graphics.setComposite(AlphaComposite.getInstance(SRC_OVER, 0.5f));
+        final var topLeft = projection.toDrawing(Location.TOP_LEFT).rounded();
         for (final var tile : tiles)
         {
-            // get any available image for the tile
-            final var image = image(tile);
-
-            // and if one is available,
-            if (image != null)
+            final var tileBounds = tile.drawingArea().plus(topLeft);
+            if (projection.drawingArea().intersects(tileBounds))
             {
-                // draw it at the appropriate x, y location using the coordinate mapper
-                final var bounds = projection.toCoordinates(tile.tileBounds());
-                information("drawing tile $ with bounds of $ at $, $", tile,
-                        tile.tileBounds(), bounds.x(), bounds.y());
-                graphics.drawImage(image, (int) bounds.x(), (int) bounds.y(), null);
+                // get any available image for the tile
+                final var image = image(tile);
+
+                // and if one is available,
+                if (image != null)
+                {
+                    // draw it at the appropriate x, y location using the coordinate mapper
+                    information("drawing tile $ with bounds of $", tile, tileBounds);
+                    graphics.drawImage(image, (int) tileBounds.x(), (int) tileBounds.y(), null);
+                }
             }
         }
         graphics.setComposite(AlphaComposite.getInstance(SRC_OVER, 1.0f));
@@ -112,7 +116,7 @@ public abstract class SlippyTileImageCache extends BaseRepeater
      * @return The size of a slippy tile in pixels, as determined by fetching a tile from the server
      */
     @SuppressWarnings("SameReturnValue")
-    public abstract CoordinateSize tileSize();
+    public abstract Size tileSize();
 
     /**
      * @return The HTTP network location of the given slippy tile

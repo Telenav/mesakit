@@ -1,26 +1,24 @@
-/*
- * ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- * //
- * // © 2011-2021 Telenav, Inc.
- * //
- * // Licensed under the Apache License, Version 2.0 (the "License");
- * // you may not use this file except in compliance with the License.
- * // You may obtain a copy of the License at
- * //
- * // http://www.apache.org/licenses/LICENSE-2.0
- * //
- * // Unless required by applicable law or agreed to in writing, software
- * // distributed under the License is distributed on an "AS IS" BASIS,
- * // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * // See the License for the specific language governing permissions and
- * // limitations under the License.
- * //
- * ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- *
- */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// © 2011-2021 Telenav, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 package com.telenav.mesakit.map.ui.debug.debuggers;
 
+import com.telenav.kivakit.ui.desktop.graphics.geometry.measurements.Length;
 import com.telenav.mesakit.map.geography.indexing.rtree.InteriorNode;
 import com.telenav.mesakit.map.geography.indexing.rtree.Leaf;
 import com.telenav.mesakit.map.geography.indexing.rtree.Node;
@@ -37,8 +35,6 @@ import com.telenav.mesakit.map.ui.desktop.viewer.View;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance.units;
-import static com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSystem.drawingSurface;
 import static com.telenav.mesakit.map.ui.debug.theme.DebugViewerStyles.ACTIVE_BOX;
 import static com.telenav.mesakit.map.ui.debug.theme.DebugViewerStyles.INACTIVE_BOX;
 import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.ACTIVE_LABEL;
@@ -101,7 +97,7 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
             final var box = MapBox.box()
                     .withStyle(ACTIVE_BOX)
                     .withLabelStyle(ACTIVE_LABEL)
-                    .withRoundedLabelCorners(units(drawingSurface(), 10))
+                    .withRoundedLabelCorners(Length.pixels(10))
                     .withRectangle(element.bounds())
                     .withLabel(label);
 
@@ -121,7 +117,7 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
             final var box = MapBox.box()
                     .withStyle(ACTIVE_BOX)
                     .withLabelStyle(ACTIVE_LABEL)
-                    .withRoundedLabelCorners(units(drawingSurface(), 10))
+                    .withRoundedLabelCorners(Length.pixels(10))
                     .withRectangle(node.bounds())
                     .withLabel(identifier.toString());
 

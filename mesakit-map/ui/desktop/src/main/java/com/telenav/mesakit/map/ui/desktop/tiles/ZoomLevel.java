@@ -21,11 +21,10 @@ package com.telenav.mesakit.map.ui.desktop.tiles;
 import com.telenav.kivakit.core.kernel.language.primitives.Doubles;
 import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateRectangle;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSize;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Point;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Rectangle;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Size;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,9 +69,9 @@ public class ZoomLevel implements AsString
      * @return The zoom level that is the best to fit the given bounds into the visible drawing rectangle using the
      * given tile size
      */
-    public static ZoomLevel bestFit(final CoordinateRectangle visible,
-                                    final CoordinateSize tileSize,
-                                    final Rectangle bounds)
+    public static ZoomLevel bestFit(final Rectangle visible,
+                                    final Size tileSize,
+                                    final com.telenav.mesakit.map.geography.shape.rectangle.Rectangle bounds)
     {
         // If the bounds is all in the same tile at the highest zoom level
         if (CLOSEST.tileAt(bounds.topLeft()).equals(CLOSEST.tileAt(bounds.bottomRight())))
@@ -173,7 +172,7 @@ public class ZoomLevel implements AsString
     /**
      * @return The total height in pixels for all tiles at the given tile size
      */
-    public double heightInPixels(final CoordinateSize tileSize)
+    public double heightInPixels(final Size tileSize)
     {
         return heightInTiles() * tileSize.heightInUnits();
     }
@@ -186,9 +185,9 @@ public class ZoomLevel implements AsString
         return 1 << level;
     }
 
-    public Coordinate inRange(final Coordinate point, final CoordinateSize tileSize)
+    public Point inRange(final Point point, final Size tileSize)
     {
-        return Coordinate.at(point.coordinateSystem(), Doubles.inRange(point.x(), 0, widthInPixels(tileSize)),
+        return Point.at(point.coordinateSystem(), Doubles.inRange(point.x(), 0, widthInPixels(tileSize)),
                 Doubles.inRange(point.y(), 0, heightInPixels(tileSize)));
     }
 
@@ -236,9 +235,9 @@ public class ZoomLevel implements AsString
     /**
      * @return The total dimension of an image of the world at this zoom level using the given tile size
      */
-    public CoordinateSize sizeInDrawingUnits(final CoordinateSize tileSize)
+    public Size sizeInDrawingUnits(final Size tileSize)
     {
-        return CoordinateSize.size(tileSize.coordinateSystem(), widthInPixels(tileSize), heightInPixels(tileSize));
+        return Size.size(tileSize.coordinateSystem(), widthInPixels(tileSize), heightInPixels(tileSize));
     }
 
     /**
@@ -252,7 +251,7 @@ public class ZoomLevel implements AsString
     @Override
     public String toString()
     {
-        return "[ZoomLevel level = " + level() + ", telenav = " + asTelenavZoomLevel() + "]";
+        return Integer.toString(level());
     }
 
     /**
@@ -266,7 +265,7 @@ public class ZoomLevel implements AsString
     /**
      * @return The total width in pixels for all tiles at the given tile size
      */
-    public double widthInPixels(final CoordinateSize tileSize)
+    public double widthInPixels(final Size tileSize)
     {
         return widthInTiles() * tileSize.widthInUnits();
     }

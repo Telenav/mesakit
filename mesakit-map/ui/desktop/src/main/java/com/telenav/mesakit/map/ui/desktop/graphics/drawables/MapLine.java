@@ -19,9 +19,9 @@
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
 import com.telenav.kivakit.ui.desktop.graphics.drawing.Drawable;
-import com.telenav.kivakit.ui.desktop.graphics.drawing.awt.AwtShapes;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateDistance;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.java2d.Java2dShapes;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.measurements.Length;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Point;
 import com.telenav.kivakit.ui.desktop.graphics.style.Color;
 import com.telenav.kivakit.ui.desktop.graphics.style.Stroke;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
@@ -81,7 +81,7 @@ public class MapLine extends LabeledMapShape
     }
 
     @Override
-    public MapLine at(final Coordinate at)
+    public MapLine at(final Point at)
     {
         return (MapLine) super.at(at);
     }
@@ -109,10 +109,10 @@ public class MapLine extends LabeledMapShape
         final var line = line(style(), from(), to, label)
                 .withFromArrowHead(fromArrowHead)
                 .withToArrowHead(toArrowHead)
-                .at(canvas.toCoordinates(location()))
+                .at(canvas.toDrawing(location()))
                 .draw(canvas);
 
-        return AwtShapes.combine(line, super.onDraw(canvas));
+        return Java2dShapes.combine(line, super.onDraw(canvas));
     }
 
     @Override
@@ -145,7 +145,7 @@ public class MapLine extends LabeledMapShape
     }
 
     @Override
-    public MapLine withDrawStrokeWidth(final CoordinateDistance width)
+    public MapLine withDrawStrokeWidth(final Length width)
     {
         return (MapLine) super.withDrawStrokeWidth(width);
     }
@@ -169,7 +169,7 @@ public class MapLine extends LabeledMapShape
     }
 
     @Override
-    public MapLine withFillStrokeWidth(final CoordinateDistance width)
+    public MapLine withFillStrokeWidth(final Length width)
     {
         return (MapLine) super.withFillStrokeWidth(width);
     }
@@ -211,14 +211,14 @@ public class MapLine extends LabeledMapShape
     }
 
     @Override
-    public MapLine withRoundedLabelCorners(final CoordinateDistance corner)
+    public MapLine withRoundedLabelCorners(final Length corner)
     {
         return (MapLine) super.withRoundedLabelCorners(corner);
     }
 
     @Override
-    public MapLine withRoundedLabelCorners(final CoordinateDistance cornerWidth,
-                                           final CoordinateDistance cornerHeight)
+    public MapLine withRoundedLabelCorners(final Length cornerWidth,
+                                           final Length cornerHeight)
     {
         return (MapLine) super.withRoundedLabelCorners(cornerWidth, cornerHeight);
     }

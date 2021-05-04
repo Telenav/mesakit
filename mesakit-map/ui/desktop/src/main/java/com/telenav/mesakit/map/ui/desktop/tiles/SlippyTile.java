@@ -21,18 +21,18 @@ package com.telenav.mesakit.map.ui.desktop.tiles;
 import com.telenav.kivakit.core.kernel.language.objects.Hash;
 import com.telenav.kivakit.core.resource.path.FileName;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Label;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSize;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.measurements.Length;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Rectangle;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Size;
 import com.telenav.kivakit.ui.desktop.graphics.style.Style;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.geography.shape.rectangle.Size;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSystem.drawingSurface;
+import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.GRID_LABEL;
 
 /**
  * A "slippy tile" is a rectangle defined by a zoom level and x, y coordinates in the grid of all tiles. You can get the
@@ -62,12 +62,12 @@ public class SlippyTile
     /**
      * Width and height of standard slippy tiles
      */
-    public static final CoordinateSize STANDARD_TILE_SIZE = CoordinateSize.size(drawingSurface(), 256, 256);
+    public static final Size STANDARD_TILE_SIZE = Size.pixels(256, 256);
 
     /**
      * @return The smallest tile that is larger than the given size
      */
-    public static SlippyTile largerThan(final Size size)
+    public static SlippyTile largerThan(final com.telenav.mesakit.map.geography.shape.rectangle.Size size)
     {
         var tile = ZoomLevel.CLOSEST.tileAt(Location.ORIGIN);
         while (!tile.size().isGreaterThan(size) && !tile.getZoomLevel().isFurthestOut())
@@ -111,37 +111,35 @@ public class SlippyTile
         return FileName.parse(x + "-" + y + "-" + zoom.level() + ".png");
     }
 
-    public CoordinateSize dimension()
-    {
-        return STANDARD_TILE_SIZE;
-    }
-
     /**
      * Draws the outline of this slippy tile on the given canvas in the given style clipped to the given bounds
      */
-    public void drawOutline(final MapCanvas canvas,
-                            final Style style,
-                            final Rectangle mapBounds)
+    public void drawOutline(final MapCanvas canvas, final Style style)
     {
-        // Draw tile grid rectangle for this tile
-        final var tileBounds = tileBounds();
-        final var bottomLeft = canvas.toCoordinates(tileBounds.bottomLeft());
-        final var bottomRight = canvas.toCoordinates(tileBounds.bottomRight());
-        final var topRight = canvas.toCoordinates(tileBounds.topRight());
-        canvas.drawLine(style, bottomLeft, bottomRight);
-        canvas.drawLine(style, topRight, bottomRight);
+        // Get the drawing area for this tile in slippy tile coordinates
+        final var drawingArea = drawingArea();
 
-        // Draw label for tile rectangle
-        final var visible = mapBounds.intersect(tileBounds);
-        if (visible != null)
+        // then draw lines
+        canvas.drawBox(style, drawingArea);
+
+        // and draw label for tile rectangle
+        final var at = drawingArea.topLeft().plus(8, 8);
+        final var visible = canvas.drawingArea().contains(at);
+        if (visible)
         {
-            final var text = toString();
-            final var topLeft = canvas.toCoordinates(visible.topLeft()).plus(10, 10);
-            Label.label(style)
-                    .at(topLeft)
-                    .withText(text)
+            Label.label()
+                    .at(at)
+                    .withStyle(GRID_LABEL)
+                    .withMargin(4)
+                    .withText(toString())
+                    .withRoundedCorners(Length.pixels(8))
                     .draw(canvas);
         }
+    }
+
+    public Rectangle drawingArea()
+    {
+        return new SlippyTileCoordinateSystem(zoom).drawingArea(this);
     }
 
     @Override
@@ -166,19 +164,24 @@ public class SlippyTile
         return Hash.many(x, y, zoom);
     }
 
+    public com.telenav.mesakit.map.geography.shape.rectangle.Rectangle mapArea()
+    {
+        return new SlippyTileCoordinateSystem(zoom).mapArea(this);
+    }
+
     public SlippyTile parent()
     {
-        return getZoomLevel().zoomOut().tileAt(tileBounds().center());
+        return getZoomLevel().zoomOut().tileAt(mapArea().center());
     }
 
-    public Size size()
+    public com.telenav.mesakit.map.geography.shape.rectangle.Size size()
     {
-        return tileBounds().size();
+        return mapArea().size();
     }
 
-    public Rectangle tileBounds()
+    public Size tileSize()
     {
-        return new SlippyTileCoordinateSystem(zoom).bounds(this);
+        return STANDARD_TILE_SIZE;
     }
 
     public List<SlippyTile> tilesInside()

@@ -1,23 +1,20 @@
-/*
- * ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- * //
- * // © 2011-2021 Telenav, Inc.
- * //
- * // Licensed under the Apache License, Version 2.0 (the "License");
- * // you may not use this file except in compliance with the License.
- * // You may obtain a copy of the License at
- * //
- * // http://www.apache.org/licenses/LICENSE-2.0
- * //
- * // Unless required by applicable law or agreed to in writing, software
- * // distributed under the License is distributed on an "AS IS" BASIS,
- * // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * // See the License for the specific language governing permissions and
- * // limitations under the License.
- * //
- * ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- *
- */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// © 2011-2021 Telenav, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections;
 
@@ -53,17 +50,17 @@ public class MercatorDrawingSurfaceProjectionTest extends BaseCoordinateMapperTe
     @Test
     public void testWorld()
     {
-        final var projection = new SphericalMercatorMapProjection(SlippyTileCoordinateSystem.SLIPPY_TILE_BOUNDS,
+        final var projection = new SphericalMercatorMapProjection(SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA,
                 drawingRectangle(100, 100, 100, 100));
 
         // The origin will not be distorted
         checkMapping(projection, point(150, 150), Location.ORIGIN);
 
         // Ensure simple corner cases where there is no distortion
-        checkMapping(projection, point(100, 100), SlippyTileCoordinateSystem.SLIPPY_TILE_BOUNDS.topLeft());
-        checkMapping(projection, point(200, 100), SlippyTileCoordinateSystem.SLIPPY_TILE_BOUNDS.topRight());
-        checkMapping(projection, point(100, 200), SlippyTileCoordinateSystem.SLIPPY_TILE_BOUNDS.bottomLeft());
-        checkMapping(projection, point(200, 200), SlippyTileCoordinateSystem.SLIPPY_TILE_BOUNDS.bottomRight());
+        checkMapping(projection, point(100, 100), SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA.topLeft());
+        checkMapping(projection, point(200, 100), SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA.topRight());
+        checkMapping(projection, point(100, 200), SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA.bottomLeft());
+        checkMapping(projection, point(200, 200), SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA.bottomRight());
     }
 
     @Test

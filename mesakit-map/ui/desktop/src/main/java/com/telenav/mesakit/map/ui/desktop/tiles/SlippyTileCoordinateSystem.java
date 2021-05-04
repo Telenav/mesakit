@@ -19,78 +19,78 @@
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
 import com.telenav.kivakit.core.kernel.language.primitives.Ints;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateRectangle;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSize;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.coordinates.CartesianCoordinateSystem;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Point;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Rectangle;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Size;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections.SphericalMercatorMapProjection;
 
-import static com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSystem.drawingSurface;
+import static com.telenav.mesakit.map.ui.desktop.tiles.SlippyTile.STANDARD_TILE_SIZE;
 
-public class SlippyTileCoordinateSystem implements MapProjection
+public class SlippyTileCoordinateSystem extends CartesianCoordinateSystem
 {
     /**
      * The bounds of the slippy tile coordinate system
      */
-    public static final Rectangle SLIPPY_TILE_BOUNDS = Rectangle.fromLocations(
+    public static final com.telenav.mesakit.map.geography.shape.rectangle.Rectangle SLIPPY_TILE_MAP_AREA = com.telenav.mesakit.map.geography.shape.rectangle.Rectangle.fromLocations(
             Location.degrees(-85.0511, -180),
             Location.degrees(85.0511, 180));
 
-    private final SphericalMercatorMapProjection projection;
+    private final MapProjection projection;
 
     private final ZoomLevel zoom;
 
-    private final CoordinateSize tileSize;
+    private final Size tileSize;
 
     public SlippyTileCoordinateSystem(final ZoomLevel zoom)
     {
-        this(zoom, SlippyTile.STANDARD_TILE_SIZE);
+        this(zoom, STANDARD_TILE_SIZE);
     }
 
-    public SlippyTileCoordinateSystem(final ZoomLevel zoomlevel, final CoordinateSize tileSize)
+    public SlippyTileCoordinateSystem(final ZoomLevel zoom, final Size tileSize)
     {
-        zoom = zoomlevel;
+        super(Point.pixels(0, 0));
+
+        this.zoom = zoom;
         this.tileSize = tileSize;
-        projection = new SphericalMercatorMapProjection(SLIPPY_TILE_BOUNDS,
-                zoom.sizeInDrawingUnits(tileSize).asRectangle());
+
+        projection = new SphericalMercatorMapProjection(SLIPPY_TILE_MAP_AREA, size().asRectangle());
     }
 
-    public Rectangle bounds(final SlippyTile tile)
+    public Rectangle drawingArea(final SlippyTile tile)
     {
-        final var upperLeft = toMapUnits(
-                Coordinate.at(drawingSurface(),
+        final var upperLeft =
+                Point.at(this,
                         tile.x() * tileSize.widthInUnits(),
-                        tile.y() * tileSize.heightInUnits()));
+                        tile.y() * tileSize.heightInUnits());
 
-        final var lowerRight = toMapUnits(
-                Coordinate.at(drawingSurface(),
+        final var lowerRight =
+                Point.at(this,
                         (tile.x() + 1) * tileSize.widthInUnits(),
-                        (tile.y() + 1) * tileSize.heightInUnits()));
+                        (tile.y() + 1) * tileSize.heightInUnits());
 
-        return Rectangle.fromLocations(upperLeft, lowerRight);
+        return Rectangle.rectangle(upperLeft, lowerRight);
+    }
+
+    public com.telenav.mesakit.map.geography.shape.rectangle.Rectangle mapArea(final SlippyTile tile)
+    {
+        return projection.toMap(drawingArea(tile));
     }
 
     @Override
-    public CoordinateRectangle coordinateArea()
+    public Size size()
     {
-        return null;
-    }
-
-    @Override
-    public Rectangle mapArea()
-    {
-        return projection.mapArea();
+        return zoom.sizeInDrawingUnits(tileSize);
     }
 
     public SlippyTile tileForLocation(final Location location)
     {
-        final var point = toCoordinates(location);
-        return tileForPoint(point);
+        return tileForPoint(projection.toDrawing(location));
     }
 
-    public SlippyTile tileForPoint(final Coordinate point)
+    public SlippyTile tileForPoint(final Point point)
     {
         final var x = Ints.inRange((int) (point.x() / tileSize.widthInUnits()), 0, zoom.widthInTiles() - 1);
         final var y = Ints.inRange((int) (point.y() / tileSize.heightInUnits()), 0, zoom.heightInTiles() - 1);
@@ -98,15 +98,13 @@ public class SlippyTileCoordinateSystem implements MapProjection
         return new SlippyTile(zoom, x, y);
     }
 
-    @Override
-    public Coordinate toCoordinates(final Location location)
+    public Point toDrawing(final Location at)
     {
-        return projection.toCoordinates(location);
+        return projection.toDrawing(at);
     }
 
-    @Override
-    public Location toMapUnits(final Coordinate point)
+    public Location toMap(final Point at)
     {
-        return projection.toMapUnits(point);
+        return projection.toMap(at);
     }
 }

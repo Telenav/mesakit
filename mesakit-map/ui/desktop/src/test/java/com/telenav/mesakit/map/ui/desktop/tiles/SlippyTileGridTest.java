@@ -21,14 +21,14 @@ package com.telenav.mesakit.map.ui.desktop.tiles;
 import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
 import org.junit.Test;
 
-import static com.telenav.mesakit.map.ui.desktop.tiles.SlippyTileCoordinateSystem.SLIPPY_TILE_BOUNDS;
+import static com.telenav.mesakit.map.ui.desktop.tiles.SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA;
 
 public class SlippyTileGridTest extends MapGeographyUnitTest
 {
     @Test
     public void testZoomLevel0()
     {
-        final var grid = new SlippyTileGrid(SLIPPY_TILE_BOUNDS, ZoomLevel.FURTHEST);
+        final var grid = new SlippyTileGrid(SLIPPY_TILE_MAP_AREA, ZoomLevel.FURTHEST);
         ensure(grid.contains(new SlippyTile(ZoomLevel.FURTHEST, 0, 0)));
     }
 
@@ -37,7 +37,7 @@ public class SlippyTileGridTest extends MapGeographyUnitTest
     {
         for (var zoom = ZoomLevel.FURTHEST; zoom.level() < 4; zoom = zoom.zoomIn())
         {
-            final var grid = new SlippyTileGrid(SLIPPY_TILE_BOUNDS, zoom);
+            final var grid = new SlippyTileGrid(SLIPPY_TILE_MAP_AREA, zoom);
             ensureEqual((int) zoom.totalTiles(), grid.size());
         }
     }

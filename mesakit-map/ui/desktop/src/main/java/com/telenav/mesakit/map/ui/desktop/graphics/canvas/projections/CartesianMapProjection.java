@@ -1,40 +1,36 @@
-/*
- * ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- * //
- * // © 2011-2021 Telenav, Inc.
- * //
- * // Licensed under the Apache License, Version 2.0 (the "License");
- * // you may not use this file except in compliance with the License.
- * // You may obtain a copy of the License at
- * //
- * // http://www.apache.org/licenses/LICENSE-2.0
- * //
- * // Unless required by applicable law or agreed to in writing, software
- * // distributed under the License is distributed on an "AS IS" BASIS,
- * // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * // See the License for the specific language governing permissions and
- * // limitations under the License.
- * //
- * ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- *
- */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// © 2011-2021 Telenav, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections;
 
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.Coordinate;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateRectangle;
 import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSystem;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Point;
+import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Rectangle;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 
 /**
- * Does a simple linear mapping between a (Cartesian) {@link CoordinateSystem} and a {@link Rectangle} of the world in
- * degrees of latitude and longitude. This projection is fast, but it is inaccurate at longer distances at high
- * latitudes.
+ * Does a simple linear mapping between a (Cartesian) {@link CoordinateSystem} and a {@link
+ * com.telenav.mesakit.map.geography.shape.rectangle.Rectangle} of the world in degrees of latitude and longitude. This
+ * projection is fast, but it is inaccurate at longer distances at high latitudes.
  *
  * @author jonathanl (shibo)
  */
@@ -60,16 +56,16 @@ public class CartesianMapProjection implements MapProjection
 
     private final double mapBottomInDegrees;
 
-    private final Rectangle mapArea;
+    private final com.telenav.mesakit.map.geography.shape.rectangle.Rectangle mapArea;
 
-    private final CoordinateRectangle coordinateArea;
+    private final Rectangle coordinateArea;
 
     /**
      * @param mapArea The map map to map to and from
      * @param coordinateArea The {@link DrawingSurface} map to map to and from
      */
-    public CartesianMapProjection(final Rectangle mapArea,
-                                  final CoordinateRectangle coordinateArea)
+    public CartesianMapProjection(final com.telenav.mesakit.map.geography.shape.rectangle.Rectangle mapArea,
+                                  final Rectangle coordinateArea)
     {
         this.mapArea = mapArea;
         this.coordinateArea = coordinateArea;
@@ -88,19 +84,19 @@ public class CartesianMapProjection implements MapProjection
     }
 
     @Override
-    public CoordinateRectangle coordinateArea()
+    public Rectangle drawingArea()
     {
         return coordinateArea;
     }
 
     @Override
-    public Rectangle mapArea()
+    public com.telenav.mesakit.map.geography.shape.rectangle.Rectangle mapArea()
     {
         return mapArea;
     }
 
     @Override
-    public Coordinate toCoordinates(final Location location)
+    public Point toDrawing(final Location location)
     {
         // Get the latitude and longitude of the location,
         final var latitude = location.latitudeInDegrees();
@@ -114,11 +110,11 @@ public class CartesianMapProjection implements MapProjection
         final var x = coordinateLeft + coordinateWidth * longitudeUnit;
         final var y = coordinateTop + coordinateHeight * latitudeUnit;
 
-        return Coordinate.at(coordinateSystem, x, y);
+        return Point.at(coordinateSystem, x, y);
     }
 
     @Override
-    public Location toMapUnits(final Coordinate point)
+    public Location toMap(final Point point)
     {
         // Get the offset of the drawing point from the bottom left
         final var xOffset = point.x() - coordinateLeft;
