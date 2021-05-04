@@ -19,10 +19,10 @@
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
 import com.telenav.kivakit.ui.desktop.graphics.drawing.Drawable;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.measurements.Length;
-import com.telenav.kivakit.ui.desktop.graphics.style.Color;
-import com.telenav.kivakit.ui.desktop.graphics.style.Stroke;
-import com.telenav.kivakit.ui.desktop.graphics.style.Style;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingWidth;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Color;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Stroke;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Style;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 
@@ -43,7 +43,7 @@ public interface MapDrawable extends Drawable, Bounded
     MapDrawable withDrawStroke(final Stroke stroke);
 
     @Override
-    MapDrawable withDrawStrokeWidth(final Length width);
+    MapDrawable withDrawStrokeWidth(final DrawingWidth width);
 
     @Override
     MapDrawable withFillColor(final Color color);
@@ -52,7 +52,7 @@ public interface MapDrawable extends Drawable, Bounded
     MapDrawable withFillStroke(final Stroke stroke);
 
     @Override
-    MapDrawable withFillStrokeWidth(final Length width);
+    MapDrawable withFillStrokeWidth(final DrawingWidth width);
 
     MapDrawable withLocation(final Location at);
 

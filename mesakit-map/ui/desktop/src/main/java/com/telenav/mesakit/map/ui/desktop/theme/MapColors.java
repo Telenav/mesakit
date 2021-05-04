@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.ui.desktop.theme;
 
-import com.telenav.kivakit.ui.desktop.graphics.style.Color;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Color;
 
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.AQUA;
 

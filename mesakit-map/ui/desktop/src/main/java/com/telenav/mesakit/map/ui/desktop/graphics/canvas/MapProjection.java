@@ -18,56 +18,59 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas;
 
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSystem;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.measurements.Height;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.measurements.Length;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.measurements.Width;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Point;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Rectangle;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Size;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingHeight;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingWidth;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
+import com.telenav.mesakit.map.geography.shape.rectangle.Height;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.geography.shape.rectangle.Size;
+import com.telenav.mesakit.map.geography.shape.rectangle.Width;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 /**
- * Maps between {@link CoordinateSystem} coordinates and map coordinates, as expressed by {@link Location}, {@link
- * Latitude} and {@link Longitude}.
+ * Maps between drawing coordinates, as expressed by <i>Drawing*</i> classes, and map coordinates, as expressed by
+ * {@link Location}, {@link Latitude}, {@link Longitude}, {@link Rectangle,} {@link Distance}, {@link Width}, {@link
+ * Height} and {@link Size}.
  *
  * @author jonathanl (shibo)
  */
 public interface MapProjection
 {
     /**
-     * @return The drawing area in coordinate space
+     * @return The drawing area in drawing coordinates
      */
-    Rectangle drawingArea();
+    DrawingRectangle drawingArea();
 
     /**
-     * @return The map area as a {@link com.telenav.mesakit.map.geography.shape.rectangle.Rectangle} in latitude and
-     * longitude
+     * @return The map area as a {@link Rectangle} in latitude and longitude
      */
-    com.telenav.mesakit.map.geography.shape.rectangle.Rectangle mapArea();
+    Rectangle mapArea();
 
     /**
      * @return The given {@link Location} in the drawing area
      */
-    Point toDrawing(Location location);
+    DrawingPoint toDrawing(Location location);
 
     /**
-     * @return The given {@link com.telenav.mesakit.map.geography.shape.rectangle.Rectangle} in the drawing area
+     * @return The given {@link Rectangle} in the drawing area
      */
-    default Rectangle toDrawing(final com.telenav.mesakit.map.geography.shape.rectangle.Rectangle rectangle)
+    default DrawingRectangle toDrawing(final Rectangle rectangle)
     {
-        return Rectangle.rectangle(
+        return DrawingRectangle.rectangle(
                 toDrawing(rectangle.topLeft()),
                 toDrawing(rectangle.bottomRight()));
     }
 
     /**
-     * @return The given {@link com.telenav.mesakit.map.geography.shape.rectangle.Width} in the drawing area
+     * @return The given {@link Width} in the drawing area
      */
-    default Width toDrawing(final com.telenav.mesakit.map.geography.shape.rectangle.Width width)
+    default DrawingWidth toDrawing(final Width width)
     {
         return toDrawing(width.asSize()).width();
     }
@@ -75,23 +78,23 @@ public interface MapProjection
     /**
      * @return The given {@link Distance} in the drawing area
      */
-    default Length toDrawing(final Distance distance)
+    default DrawingLength toDrawing(final Distance distance)
     {
-        return toDrawing(com.telenav.mesakit.map.geography.shape.rectangle.Width.degrees(distance.asDegrees()));
+        return toDrawing(Width.degrees(distance.asDegrees()));
     }
 
     /**
-     * @return The given {@link com.telenav.mesakit.map.geography.shape.rectangle.Height} in the drawing area
+     * @return The given {@link Height} in the drawing area
      */
-    default Height toDrawing(final com.telenav.mesakit.map.geography.shape.rectangle.Height height)
+    default DrawingHeight toDrawing(final Height height)
     {
         return toDrawing(height.asSize()).height();
     }
 
     /**
-     * @return The given {@link com.telenav.mesakit.map.geography.shape.rectangle.Size} in the drawing area
+     * @return The given {@link Size} in the drawing area
      */
-    default Size toDrawing(final com.telenav.mesakit.map.geography.shape.rectangle.Size size)
+    default DrawingSize toDrawing(final Size size)
     {
         // Convert width and height to a location relative to the top left,
         final var at = Location.degrees(
@@ -103,45 +106,53 @@ public interface MapProjection
     }
 
     /**
-     * @return The given drawing area size as a map {@link com.telenav.mesakit.map.geography.shape.rectangle.Size}
+     * @return The given drawing area size as a map {@link Size}
      */
-    default com.telenav.mesakit.map.geography.shape.rectangle.Size toMap(final Size size)
+    default Size toMap(final DrawingSize size)
     {
         final var width = toMap(size.width());
         final var height = toMap(size.height());
-        return width == null || height == null ? null : com.telenav.mesakit.map.geography.shape.rectangle.Size.of(width, height);
+        return width == null || height == null ? null : Size.of(width, height);
     }
 
     /**
-     * @return The given drawing area height as a map {@link com.telenav.mesakit.map.geography.shape.rectangle.Height}
+     * @return The given drawing area height as a map {@link Height}
      */
-    default com.telenav.mesakit.map.geography.shape.rectangle.Height toMap(final Height height)
+    default Height toMap(final DrawingHeight height)
     {
         final var location = toMap(height.asCoordinate());
         return location == null ? null : location.asHeight();
     }
 
     /**
-     * @return The given drawing area width as a map {@link com.telenav.mesakit.map.geography.shape.rectangle.Width}
+     * @return The given drawing area width as a map {@link Width}
      */
-    default com.telenav.mesakit.map.geography.shape.rectangle.Width toMap(final Width width)
+    default Width toMap(final DrawingWidth width)
     {
         final var location = toMap(width.asCoordinate());
         return location == null ? null : location.asWidth();
     }
 
     /**
-     * @return The given drawing space coordinate as a map {@link Location}
+     * @return The given drawing area length as a map {@link Distance}
      */
-    Location toMap(Point coordinate);
+    default Distance toMap(final DrawingLength length)
+    {
+        return Distance.degrees(toMap(length.asWidth()).asDegrees());
+    }
 
     /**
-     * @return The given rectangle in drawing coordinates as a map {@link com.telenav.mesakit.map.geography.shape.rectangle.Rectangle}
+     * @return The given drawing space coordinate as a map {@link Location}
      */
-    default com.telenav.mesakit.map.geography.shape.rectangle.Rectangle toMap(final Rectangle rectangle)
+    Location toMap(DrawingPoint point);
+
+    /**
+     * @return The given rectangle in drawing coordinates as a map {@link Rectangle}
+     */
+    default Rectangle toMap(final DrawingRectangle rectangle)
     {
         final var at = toMap(rectangle.at());
         final var to = toMap(rectangle.to());
-        return at == null || to == null ? null : com.telenav.mesakit.map.geography.shape.rectangle.Rectangle.fromLocations(at, to);
+        return at == null || to == null ? null : Rectangle.fromLocations(at, to);
     }
 }

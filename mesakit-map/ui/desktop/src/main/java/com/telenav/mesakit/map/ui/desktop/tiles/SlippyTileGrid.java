@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
 import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.kivakit.ui.desktop.graphics.style.Style;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Style;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 

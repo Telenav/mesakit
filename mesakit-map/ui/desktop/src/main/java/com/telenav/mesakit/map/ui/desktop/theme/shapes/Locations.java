@@ -18,7 +18,8 @@
 
 package com.telenav.mesakit.map.ui.desktop.theme.shapes;
 
-import com.telenav.kivakit.ui.desktop.graphics.geometry.measurements.Length;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingWidth;
 import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDot;
 
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.VALENCIA;
@@ -29,7 +30,7 @@ import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.VALENCIA;
 public class Locations
 {
     public static final MapDot LOCATION = MapDot.dot()
-            .withRadius(Length.pixels(8))
+            .withRadius(DrawingLength.pixels(8))
             .withStyle(VALENCIA)
-            .withDrawStrokeWidth(Length.pixels(2));
+            .withDrawStrokeWidth(DrawingWidth.pixels(2));
 }

@@ -18,21 +18,25 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
+import com.telenav.kivakit.ui.desktop.graphics.drawing.Drawable;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.BaseDrawable;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.measurements.Length;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Point;
-import com.telenav.kivakit.ui.desktop.graphics.style.Color;
-import com.telenav.kivakit.ui.desktop.graphics.style.Stroke;
-import com.telenav.kivakit.ui.desktop.graphics.style.Style;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingWidth;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Color;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Stroke;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Style;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
-import com.telenav.mesakit.map.ui.desktop.theme.MapStroke;
+import com.telenav.mesakit.map.ui.desktop.graphics.style.MapStroke;
 
 import java.awt.Shape;
 
 /**
+ * A {@link Drawable} base class for objects that can be drawn on a map. Adds a map {@link Location} to the {@link
+ * DrawingPoint} location in {@link BaseDrawable}.
+ *
  * @author jonathanl (shibo)
  */
 public abstract class BaseMapDrawable extends BaseDrawable implements MapDrawable
@@ -90,7 +94,7 @@ public abstract class BaseMapDrawable extends BaseDrawable implements MapDrawabl
     }
 
     @Override
-    public BaseMapDrawable withDrawStrokeWidth(final Length width)
+    public BaseMapDrawable withDrawStrokeWidth(final DrawingWidth width)
     {
         return (BaseMapDrawable) super.withDrawStrokeWidth(width);
     }
@@ -113,7 +117,7 @@ public abstract class BaseMapDrawable extends BaseDrawable implements MapDrawabl
     }
 
     @Override
-    public BaseMapDrawable withFillStrokeWidth(final Length width)
+    public BaseMapDrawable withFillStrokeWidth(final DrawingWidth width)
     {
         return (BaseMapDrawable) super.withFillStrokeWidth(width);
     }
@@ -143,7 +147,7 @@ public abstract class BaseMapDrawable extends BaseDrawable implements MapDrawabl
         return (BaseMapDrawable) super.withTextColor(color);
     }
 
-    protected Point at(final MapCanvas surface)
+    protected DrawingPoint at(final MapCanvas surface)
     {
         var at = at();
         if (at == null)

@@ -18,7 +18,20 @@
 
 package com.telenav.mesakit.map.ui.desktop.theme;
 
-public class Labels
-{
+import com.telenav.mesakit.map.ui.desktop.graphics.style.MapStroke;
 
+import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingWidth.pixels;
+import static java.awt.BasicStroke.CAP_ROUND;
+import static java.awt.BasicStroke.JOIN_ROUND;
+
+public class MapStrokes
+{
+    public static final MapStroke ROUNDED = MapStroke.stroke()
+            .withCap(CAP_ROUND)
+            .withJoin(JOIN_ROUND)
+            .withWidth(pixels(1));
+
+    public static final MapStroke DASHED = ROUNDED.withDash(new float[] { 8 });
+
+    public static final MapStroke DOTTED = ROUNDED.withDash(new float[] { 1 });
 }

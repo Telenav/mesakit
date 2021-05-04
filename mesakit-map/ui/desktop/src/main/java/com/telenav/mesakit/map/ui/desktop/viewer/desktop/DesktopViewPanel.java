@@ -27,11 +27,12 @@ import com.telenav.kivakit.core.network.core.Host;
 import com.telenav.kivakit.core.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.ui.desktop.component.KivaKitPanel;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Label;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.measurements.Length;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Point;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Rectangle;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Size;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
 import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapScale;
@@ -45,7 +46,6 @@ import com.telenav.mesakit.map.ui.desktop.tiles.ZoomLevel;
 import com.telenav.mesakit.map.ui.desktop.viewer.DrawableIdentifier;
 import com.telenav.mesakit.map.ui.desktop.viewer.InteractiveView;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ComponentAdapter;
@@ -60,8 +60,8 @@ import java.awt.event.MouseWheelListener;
 import java.util.function.Function;
 
 import static com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat.USER_LABEL;
-import static com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Rectangle.rectangle;
-import static com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Size.pixels;
+import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle.rectangle;
+import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize.pixels;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.DARK_TANGERINE;
 import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.CAPTION;
 import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.MAP_BACKGROUND;
@@ -95,7 +95,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     private Location viewCenter = Location.ORIGIN;
 
     /** The view area being displayed */
-    private com.telenav.mesakit.map.geography.shape.rectangle.Rectangle viewArea;
+    private Rectangle viewArea;
 
     /** The canvas to draw on */
     private MapCanvas canvas;
@@ -116,10 +116,10 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     private ZoomLevel zoom = FURTHEST;
 
     /** When drawing a zoom rectangle, this is the current rectangle */
-    private Rectangle zoomSelection;
+    private DrawingRectangle zoomSelection;
 
     /** The point where dragging started when zooming or panning */
-    private Point dragStart;
+    private DrawingPoint dragStart;
 
     /** The original center point that was visible when panning started */
     private Location panStart;
@@ -140,7 +140,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     private final SlippyTileImageCache mapTileCache = listenTo(new SlippyTileImageCache(Maximum._256)
     {
         @Override
-        public Size tileSize()
+        public DrawingSize tileSize()
         {
             return STANDARD_TILE_SIZE;
         }
@@ -296,10 +296,10 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
      * {@inheritDoc}
      */
     @Override
-    public Dimension getPreferredSize()
+    public java.awt.Dimension getPreferredSize()
     {
         // Default component size
-        return new Dimension(800, 500);
+        return new java.awt.Dimension(800, 500);
     }
 
     @Override
@@ -539,7 +539,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
                                 getWidth() - textSize.widthInUnits() - margin * 3,
                                 getHeight() - textSize.heightInUnits() - margin * 3))
                         .withStyle(style)
-                        .withRoundedCorners(Length.pixels(10))
+                        .withRoundedCorners(DrawingLength.pixels(10))
                         .withMargin(margin)
                         .withText(text)
                         .draw(canvas);
@@ -550,7 +550,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
                     .at(canvas.at(margin, margin))
                     .withStyle(CAPTION)
                     .withMargin(margin)
-                    .withRoundedCorners(Length.pixels(10))
+                    .withRoundedCorners(DrawingLength.pixels(10))
                     .withText("(p)ause (r)un (n)ext"
                             + " \u2503 (s)lower (q)uicker"
                             + " \u2503 zoom (i)n (o)ut (f)it"
@@ -595,7 +595,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     }
 
     @Override
-    public void zoomTo(final com.telenav.mesakit.map.geography.shape.rectangle.Rectangle bounds)
+    public void zoomTo(final Rectangle bounds)
     {
         zoom(bounds);
     }
@@ -634,7 +634,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
         canvas = MapCanvas.canvas(graphics, MapScale.STATE, projection);
     }
 
-    private Rectangle drawingArea()
+    private DrawingRectangle drawingArea()
     {
         // Get the size of the entire zoom level in drawing units,
         final var size = zoom.sizeInDrawingUnits(STANDARD_TILE_SIZE);
@@ -654,13 +654,13 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
         }
     }
 
-    private Rectangle drawingSurfaceBounds()
+    private DrawingRectangle drawingSurfaceBounds()
     {
         final var bounds = getBounds();
         return rectangle(canvas, bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight());
     }
 
-    private Size drawingSurfaceSize()
+    private DrawingSize drawingSurfaceSize()
     {
         return pixels(getWidth(), getHeight());
     }
@@ -711,8 +711,8 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     /**
      * @return The view area to display for the given center location and zoom level
      */
-    private com.telenav.mesakit.map.geography.shape.rectangle.Rectangle viewArea(final Location centerLocation,
-                                                                                 final ZoomLevel zoom)
+    private Rectangle viewArea(final Location centerLocation,
+                               final ZoomLevel zoom)
     {
         final var system = new SlippyTileCoordinateSystem(zoom);
 
@@ -723,13 +723,13 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
         final var dy = getHeight() / 2.0;
 
         final var drawingTopLeft = this.zoom.inRange(
-                Point.pixels(
+                DrawingPoint.pixels(
                         center.x() - dx,
                         center.y() - dy), mapTileCache.tileSize());
         trace("topLeft = $", drawingTopLeft);
 
         final var drawingBottomRight = this.zoom.inRange(
-                Point.pixels(
+                DrawingPoint.pixels(
                         center.x() + dx,
                         center.y() + dy), mapTileCache.tileSize());
         trace("bottomRight = $", drawingBottomRight);
@@ -737,10 +737,10 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
         final var topLeft = system.toMap(drawingTopLeft);
         final var bottomRight = system.toMap(drawingBottomRight);
 
-        return com.telenav.mesakit.map.geography.shape.rectangle.Rectangle.fromLocations(topLeft, bottomRight);
+        return Rectangle.fromLocations(topLeft, bottomRight);
     }
 
-    private com.telenav.mesakit.map.geography.shape.rectangle.Rectangle viewArea()
+    private Rectangle viewArea()
     {
         return viewArea;
     }
@@ -748,7 +748,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     /**
      * @param bounds The bounds we'd ideally like to be viewing
      */
-    private void zoom(final com.telenav.mesakit.map.geography.shape.rectangle.Rectangle bounds)
+    private void zoom(final Rectangle bounds)
     {
         zoomTo(bounds.center(), ZoomLevel.bestFit(drawingSurfaceBounds(), mapTileCache.tileSize(), bounds));
     }

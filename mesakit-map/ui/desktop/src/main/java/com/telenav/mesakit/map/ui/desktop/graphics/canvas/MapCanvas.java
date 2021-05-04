@@ -23,13 +23,21 @@ import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Box;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Dot;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Label;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Text;
-import com.telenav.kivakit.ui.desktop.graphics.drawing.java2d.Java2dDrawingSurface;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Point;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Rectangle;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Size;
-import com.telenav.kivakit.ui.desktop.graphics.style.Style;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.DrawingCoordinateSystem;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingHeight;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingWidth;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Style;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.surfaces.java2d.Java2dDrawingSurface;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
+import com.telenav.mesakit.map.geography.shape.rectangle.Height;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.geography.shape.rectangle.Size;
+import com.telenav.mesakit.map.geography.shape.rectangle.Width;
 import com.telenav.mesakit.map.geography.shape.segment.Segment;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapLine;
@@ -39,7 +47,54 @@ import java.awt.Shape;
 import java.awt.geom.Path2D;
 
 /**
- * A {@link DrawingSurface} where map objects can be drawn
+ * A {@link DrawingSurface} with a {@link #mapArea()} and a {@link #drawingArea()} and a {@link #projection()} that maps
+ * between the two:
+ *
+ * <ul>
+ *     <li>{@link #toDrawing(Location)}</li>
+ *     <li>{@link #toDrawing(Distance)}</li>
+ *     <li>{@link #toDrawing(Rectangle)}</li>
+ *     <li>{@link #toDrawing(Width)}</li>
+ *     <li>{@link #toDrawing(Height)}</li>
+ *     <li>{@link #toDrawing(Size)}</li>
+ * </ul>
+ *
+ * <ul>
+ *     <li>{@link #toMap(DrawingPoint)}</li>
+ *     <li>{@link #toMap(DrawingLength)}</li>
+ *     <li>{@link #toMap(DrawingRectangle)}</li>
+ *     <li>{@link #toMap(DrawingWidth)}</li>
+ *     <li>{@link #toMap(DrawingHeight)}</li>
+ *     <li>{@link #toMap(DrawingSize)}</li>
+ * </ul>
+ *
+ * <p>
+ * Graphic objects can be drawn using inherited methods for drawing in the {@link DrawingCoordinateSystem} for this canvas:
+ * </p>
+ *
+ * <ul>
+ *     <li>{@link #drawBox(Style, DrawingRectangle)}</li>
+ *     <li>{@link #drawBox(Style, DrawingPoint, DrawingSize)}</li>
+ *     <li>{@link #drawBox(Style, DrawingPoint, DrawingWidth, DrawingHeight)}</li>
+ *     <li>{@link #drawDot(Style, DrawingPoint, DrawingLength)}</li>
+ *     <li>{@link #drawLine(Style, DrawingPoint, DrawingPoint)}</li>
+ *     <li>{@link #drawPath(Style, Path2D)}</li>
+ *     <li>{@link #drawRoundedBox(Style, DrawingPoint, DrawingSize, DrawingLength, DrawingLength)}</li>
+ *     <li>{@link #drawText(Style, DrawingPoint, String)}</li>
+ * </ul>
+ *
+ * <p>
+ * or in the coordinate system of a map, using a {@link MapProjection} onto the {@link DrawingSurface}:
+ * </p>
+ *
+ * <ul>
+ *     <li>{@link #drawBox(Style, Rectangle)}</li>
+ *     <li>{@link #drawDot(Style, Location, Distance)}</li>
+ *     <li>{@link #drawLabel(Style, Location, String)}</li>
+ *     <li>{@link #drawPolyline(Style, Polyline)}</li>
+ *     <li>{@link #drawSegment(Style, Segment)}</li>
+ *     <li>{@link #drawText(Style, Location, String)}</li>
+ * </ul>
  */
 public class MapCanvas extends Java2dDrawingSurface implements MapProjection
 {
@@ -64,13 +119,13 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
                         final MapScale scale,
                         final MapProjection projection)
     {
-        super(graphics, projection.drawingArea().topLeft(), projection.drawingArea().size());
+        super(graphics, projection.drawingArea());
 
         this.scale = scale;
         this.projection = projection;
     }
 
-    public Shape drawBox(final Style style, final com.telenav.mesakit.map.geography.shape.rectangle.Rectangle rectangle)
+    public Shape drawBox(final Style style, final Rectangle rectangle)
     {
         return Box.box(style)
                 .at(toDrawing(rectangle.topLeft()))
@@ -120,7 +175,7 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
      * @return The coordinate area being mapped to on the drawing surface
      */
     @Override
-    public Rectangle drawingArea()
+    public DrawingRectangle drawingArea()
     {
         return projection.drawingArea();
     }
@@ -129,7 +184,7 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
      * @return The map area being projected to the {@link #drawingArea()} on this canvas
      */
     @Override
-    public com.telenav.mesakit.map.geography.shape.rectangle.Rectangle mapArea()
+    public Rectangle mapArea()
     {
         return projection.mapArea();
     }
@@ -158,11 +213,16 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
         return mapArea().widestWidth();
     }
 
+    public MapProjection projection()
+    {
+        return projection;
+    }
+
     /**
      * @return The given location in projected coordinates
      */
     @Override
-    public Point toDrawing(final Location location)
+    public DrawingPoint toDrawing(final Location location)
     {
         return projection.toDrawing(location);
     }
@@ -171,7 +231,7 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
      * @return The given map size in projected coordinates
      */
     @Override
-    public Size toDrawing(final com.telenav.mesakit.map.geography.shape.rectangle.Size size)
+    public DrawingSize toDrawing(final Size size)
     {
         return projection.toDrawing(size);
     }
@@ -180,9 +240,9 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
      * @return The given coordinate as a map {@link Location}
      */
     @Override
-    public Location toMap(final Point coordinate)
+    public Location toMap(final DrawingPoint point)
     {
-        return projection.toMap(coordinate);
+        return projection.toMap(point);
     }
 
     private Path2D path(final Polyline line)

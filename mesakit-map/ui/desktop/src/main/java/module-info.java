@@ -16,4 +16,5 @@ open module mesakit.map.ui.desktop
     exports com.telenav.mesakit.map.ui.desktop.viewer.desktop;
     exports com.telenav.mesakit.map.ui.desktop.viewer.empty;
     exports com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections;
+    exports com.telenav.mesakit.map.ui.desktop.graphics.style;
 }

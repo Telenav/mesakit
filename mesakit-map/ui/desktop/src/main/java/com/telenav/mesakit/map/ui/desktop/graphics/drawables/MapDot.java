@@ -19,11 +19,13 @@
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Dot;
-import com.telenav.kivakit.ui.desktop.graphics.drawing.java2d.Java2dShapes;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.measurements.Length;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Point;
-import com.telenav.kivakit.ui.desktop.graphics.style.Color;
-import com.telenav.kivakit.ui.desktop.graphics.style.Style;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingHeight;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingWidth;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Color;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Style;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.surfaces.java2d.Java2dShapes;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
@@ -55,7 +57,7 @@ public class MapDot extends LabeledMapShape
 
     private Distance radius;
 
-    private Length coordinateRadius;
+    private DrawingLength coordinateRadius;
 
     protected MapDot(final Style style, final Location at, final Distance radius, final String label)
     {
@@ -71,7 +73,7 @@ public class MapDot extends LabeledMapShape
     }
 
     @Override
-    public MapDot at(final Point at)
+    public MapDot at(final DrawingPoint at)
     {
         return (MapDot) super.at(at);
     }
@@ -129,7 +131,7 @@ public class MapDot extends LabeledMapShape
     }
 
     @Override
-    public MapDot withDrawStrokeWidth(final Length width)
+    public MapDot withDrawStrokeWidth(final DrawingWidth width)
     {
         return (MapDot) super.withDrawStrokeWidth(width);
     }
@@ -153,7 +155,7 @@ public class MapDot extends LabeledMapShape
     }
 
     @Override
-    public MapDot withFillStrokeWidth(final Length width)
+    public MapDot withFillStrokeWidth(final DrawingWidth width)
     {
         return (MapDot) super.withFillStrokeWidth(width);
     }
@@ -189,7 +191,7 @@ public class MapDot extends LabeledMapShape
         return copy;
     }
 
-    public MapDot withRadius(final Length radius)
+    public MapDot withRadius(final DrawingLength radius)
     {
         final var copy = copy();
         copy.coordinateRadius = radius;
@@ -197,14 +199,14 @@ public class MapDot extends LabeledMapShape
     }
 
     @Override
-    public MapDot withRoundedLabelCorners(final Length corner)
+    public MapDot withRoundedLabelCorners(final DrawingLength corner)
     {
         return (MapDot) super.withRoundedLabelCorners(corner);
     }
 
     @Override
-    public MapDot withRoundedLabelCorners(final Length cornerWidth,
-                                          final Length cornerHeight)
+    public MapDot withRoundedLabelCorners(final DrawingWidth cornerWidth,
+                                          final DrawingHeight cornerHeight)
     {
         return (MapDot) super.withRoundedLabelCorners(cornerWidth, cornerHeight);
     }

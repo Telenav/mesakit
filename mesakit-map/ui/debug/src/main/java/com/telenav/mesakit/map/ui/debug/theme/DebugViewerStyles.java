@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.ui.debug.theme;
 
-import com.telenav.kivakit.ui.desktop.graphics.style.Style;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Style;
 
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.ARUBA;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.MANHATTAN;

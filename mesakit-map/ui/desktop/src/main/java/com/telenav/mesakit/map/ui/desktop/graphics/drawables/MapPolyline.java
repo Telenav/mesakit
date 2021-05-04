@@ -19,11 +19,13 @@
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
 import com.telenav.kivakit.core.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.ui.desktop.graphics.drawing.java2d.Java2dShapes;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.measurements.Length;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Point;
-import com.telenav.kivakit.ui.desktop.graphics.style.Color;
-import com.telenav.kivakit.ui.desktop.graphics.style.Style;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingHeight;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingWidth;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Color;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Style;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.surfaces.java2d.Java2dShapes;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
@@ -77,7 +79,7 @@ public class MapPolyline extends LabeledMapShape
     }
 
     @Override
-    public MapPolyline at(final Point at)
+    public MapPolyline at(final DrawingPoint at)
     {
         return (MapPolyline) super.at(at);
     }
@@ -151,7 +153,7 @@ public class MapPolyline extends LabeledMapShape
     }
 
     @Override
-    public MapPolyline withDrawStrokeWidth(final Length width)
+    public MapPolyline withDrawStrokeWidth(final DrawingWidth width)
     {
         return (MapPolyline) super.withDrawStrokeWidth(width);
     }
@@ -176,7 +178,7 @@ public class MapPolyline extends LabeledMapShape
     }
 
     @Override
-    public MapPolyline withFillStrokeWidth(final Length width)
+    public MapPolyline withFillStrokeWidth(final DrawingWidth width)
     {
         return (MapPolyline) super.withFillStrokeWidth(width);
     }
@@ -207,14 +209,14 @@ public class MapPolyline extends LabeledMapShape
     }
 
     @Override
-    public MapPolyline withRoundedLabelCorners(final Length corner)
+    public MapPolyline withRoundedLabelCorners(final DrawingLength corner)
     {
         return (MapPolyline) super.withRoundedLabelCorners(corner);
     }
 
     @Override
-    public MapPolyline withRoundedLabelCorners(final Length cornerWidth,
-                                               final Length cornerHeight)
+    public MapPolyline withRoundedLabelCorners(final DrawingWidth cornerWidth,
+                                               final DrawingHeight cornerHeight)
     {
         return (MapPolyline) super.withRoundedLabelCorners(cornerWidth, cornerHeight);
     }

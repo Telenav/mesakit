@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.ui.debug.debuggers;
 
-import com.telenav.kivakit.ui.desktop.graphics.geometry.measurements.Length;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
 import com.telenav.mesakit.map.geography.indexing.rtree.InteriorNode;
 import com.telenav.mesakit.map.geography.indexing.rtree.Leaf;
 import com.telenav.mesakit.map.geography.indexing.rtree.Node;
@@ -97,7 +97,7 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
             final var box = MapBox.box()
                     .withStyle(ACTIVE_BOX)
                     .withLabelStyle(ACTIVE_LABEL)
-                    .withRoundedLabelCorners(Length.pixels(10))
+                    .withRoundedLabelCorners(DrawingLength.pixels(10))
                     .withRectangle(element.bounds())
                     .withLabel(label);
 
@@ -117,7 +117,7 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
             final var box = MapBox.box()
                     .withStyle(ACTIVE_BOX)
                     .withLabelStyle(ACTIVE_LABEL)
-                    .withRoundedLabelCorners(Length.pixels(10))
+                    .withRoundedLabelCorners(DrawingLength.pixels(10))
                     .withRectangle(node.bounds())
                     .withLabel(identifier.toString());
 

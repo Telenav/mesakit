@@ -18,19 +18,20 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections;
 
+import com.telenav.kivakit.ui.desktop.graphics.drawing.CoordinateSystem;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.CoordinateSystem;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Point;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Rectangle;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 
 /**
- * Does a simple linear mapping between a (Cartesian) {@link CoordinateSystem} and a {@link
- * com.telenav.mesakit.map.geography.shape.rectangle.Rectangle} of the world in degrees of latitude and longitude. This
- * projection is fast, but it is inaccurate at longer distances at high latitudes.
+ * Does a simple linear mapping between a (Cartesian) {@link CoordinateSystem} and a {@link Rectangle} of the world in
+ * degrees of latitude and longitude. This projection is fast, but it is inaccurate at longer distances, especially at
+ * high latitudes.
  *
  * @author jonathanl (shibo)
  */
@@ -56,16 +57,16 @@ public class CartesianMapProjection implements MapProjection
 
     private final double mapBottomInDegrees;
 
-    private final com.telenav.mesakit.map.geography.shape.rectangle.Rectangle mapArea;
+    private final Rectangle mapArea;
 
-    private final Rectangle coordinateArea;
+    private final DrawingRectangle coordinateArea;
 
     /**
      * @param mapArea The map map to map to and from
      * @param coordinateArea The {@link DrawingSurface} map to map to and from
      */
-    public CartesianMapProjection(final com.telenav.mesakit.map.geography.shape.rectangle.Rectangle mapArea,
-                                  final Rectangle coordinateArea)
+    public CartesianMapProjection(final Rectangle mapArea,
+                                  final DrawingRectangle coordinateArea)
     {
         this.mapArea = mapArea;
         this.coordinateArea = coordinateArea;
@@ -84,19 +85,19 @@ public class CartesianMapProjection implements MapProjection
     }
 
     @Override
-    public Rectangle drawingArea()
+    public DrawingRectangle drawingArea()
     {
         return coordinateArea;
     }
 
     @Override
-    public com.telenav.mesakit.map.geography.shape.rectangle.Rectangle mapArea()
+    public Rectangle mapArea()
     {
         return mapArea;
     }
 
     @Override
-    public Point toDrawing(final Location location)
+    public DrawingPoint toDrawing(final Location location)
     {
         // Get the latitude and longitude of the location,
         final var latitude = location.latitudeInDegrees();
@@ -110,11 +111,11 @@ public class CartesianMapProjection implements MapProjection
         final var x = coordinateLeft + coordinateWidth * longitudeUnit;
         final var y = coordinateTop + coordinateHeight * latitudeUnit;
 
-        return Point.at(coordinateSystem, x, y);
+        return DrawingPoint.at(coordinateSystem, x, y);
     }
 
     @Override
-    public Location toMap(final Point point)
+    public Location toMap(final DrawingPoint point)
     {
         // Get the offset of the drawing point from the bottom left
         final var xOffset = point.x() - coordinateLeft;

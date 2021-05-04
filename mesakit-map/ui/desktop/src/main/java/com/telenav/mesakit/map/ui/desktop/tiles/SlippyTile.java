@@ -21,10 +21,10 @@ package com.telenav.mesakit.map.ui.desktop.tiles;
 import com.telenav.kivakit.core.kernel.language.objects.Hash;
 import com.telenav.kivakit.core.resource.path.FileName;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Label;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.measurements.Length;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Rectangle;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Size;
-import com.telenav.kivakit.ui.desktop.graphics.style.Style;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Style;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 
@@ -62,7 +62,7 @@ public class SlippyTile
     /**
      * Width and height of standard slippy tiles
      */
-    public static final Size STANDARD_TILE_SIZE = Size.pixels(256, 256);
+    public static final DrawingSize STANDARD_TILE_SIZE = DrawingSize.pixels(256, 256);
 
     /**
      * @return The smallest tile that is larger than the given size
@@ -132,12 +132,12 @@ public class SlippyTile
                     .withStyle(GRID_LABEL)
                     .withMargin(4)
                     .withText(toString())
-                    .withRoundedCorners(Length.pixels(8))
+                    .withRoundedCorners(DrawingLength.pixels(8))
                     .draw(canvas);
         }
     }
 
-    public Rectangle drawingArea()
+    public DrawingRectangle drawingArea()
     {
         return new SlippyTileCoordinateSystem(zoom).drawingArea(this);
     }
@@ -179,7 +179,7 @@ public class SlippyTile
         return mapArea().size();
     }
 
-    public Size tileSize()
+    public DrawingSize tileSize()
     {
         return STANDARD_TILE_SIZE;
     }

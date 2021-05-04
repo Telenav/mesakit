@@ -24,7 +24,7 @@ import com.telenav.kivakit.core.kernel.language.threading.RepeatingKivaKitThread
 import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.network.http.HttpNetworkLocation;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Size;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
@@ -116,7 +116,7 @@ public abstract class SlippyTileImageCache extends BaseRepeater
      * @return The size of a slippy tile in pixels, as determined by fetching a tile from the server
      */
     @SuppressWarnings("SameReturnValue")
-    public abstract Size tileSize();
+    public abstract DrawingSize tileSize();
 
     /**
      * @return The HTTP network location of the given slippy tile

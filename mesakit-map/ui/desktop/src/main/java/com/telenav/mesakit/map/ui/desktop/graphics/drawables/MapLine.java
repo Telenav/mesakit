@@ -19,12 +19,14 @@
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
 import com.telenav.kivakit.ui.desktop.graphics.drawing.Drawable;
-import com.telenav.kivakit.ui.desktop.graphics.drawing.java2d.Java2dShapes;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.measurements.Length;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Point;
-import com.telenav.kivakit.ui.desktop.graphics.style.Color;
-import com.telenav.kivakit.ui.desktop.graphics.style.Stroke;
-import com.telenav.kivakit.ui.desktop.graphics.style.Style;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingHeight;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingWidth;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Color;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Stroke;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Style;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.surfaces.java2d.Java2dShapes;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
@@ -81,7 +83,7 @@ public class MapLine extends LabeledMapShape
     }
 
     @Override
-    public MapLine at(final Point at)
+    public MapLine at(final DrawingPoint at)
     {
         return (MapLine) super.at(at);
     }
@@ -145,7 +147,7 @@ public class MapLine extends LabeledMapShape
     }
 
     @Override
-    public MapLine withDrawStrokeWidth(final Length width)
+    public MapLine withDrawStrokeWidth(final DrawingWidth width)
     {
         return (MapLine) super.withDrawStrokeWidth(width);
     }
@@ -169,7 +171,7 @@ public class MapLine extends LabeledMapShape
     }
 
     @Override
-    public MapLine withFillStrokeWidth(final Length width)
+    public MapLine withFillStrokeWidth(final DrawingWidth width)
     {
         return (MapLine) super.withFillStrokeWidth(width);
     }
@@ -211,14 +213,14 @@ public class MapLine extends LabeledMapShape
     }
 
     @Override
-    public MapLine withRoundedLabelCorners(final Length corner)
+    public MapLine withRoundedLabelCorners(final DrawingLength corner)
     {
         return (MapLine) super.withRoundedLabelCorners(corner);
     }
 
     @Override
-    public MapLine withRoundedLabelCorners(final Length cornerWidth,
-                                           final Length cornerHeight)
+    public MapLine withRoundedLabelCorners(final DrawingWidth cornerWidth,
+                                           final DrawingHeight cornerHeight)
     {
         return (MapLine) super.withRoundedLabelCorners(cornerWidth, cornerHeight);
     }

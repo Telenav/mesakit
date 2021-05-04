@@ -19,8 +19,8 @@
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections;
 
 import com.telenav.kivakit.core.test.UnitTest;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Point;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Rectangle;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
@@ -28,7 +28,7 @@ import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 public abstract class BaseCoordinateMapperTest extends UnitTest
 {
     protected void checkMapping(final MapProjection projection,
-                                final Point point,
+                                final DrawingPoint point,
                                 final Location location)
     {
         final var projected = projection.toDrawing(location);
@@ -41,13 +41,13 @@ public abstract class BaseCoordinateMapperTest extends UnitTest
     }
 
     @SuppressWarnings("SameParameterValue")
-    protected Rectangle drawingRectangle(final int x, final int y, final int width, final int height)
+    protected DrawingRectangle drawingRectangle(final int x, final int y, final int width, final int height)
     {
-        return Rectangle.pixels(x, y, width, height);
+        return DrawingRectangle.pixels(x, y, width, height);
     }
 
-    protected Point point(final int x, final int y)
+    protected DrawingPoint point(final int x, final int y)
     {
-        return Point.pixels(x, y);
+        return DrawingPoint.pixels(x, y);
     }
 }

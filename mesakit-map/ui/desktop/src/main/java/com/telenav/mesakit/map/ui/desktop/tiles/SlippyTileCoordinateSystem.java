@@ -19,17 +19,17 @@
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
 import com.telenav.kivakit.core.kernel.language.primitives.Ints;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.coordinates.CartesianCoordinateSystem;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Point;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Rectangle;
-import com.telenav.kivakit.ui.desktop.graphics.geometry.objects.Size;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.DrawingCoordinateSystem;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections.SphericalMercatorMapProjection;
 
 import static com.telenav.mesakit.map.ui.desktop.tiles.SlippyTile.STANDARD_TILE_SIZE;
 
-public class SlippyTileCoordinateSystem extends CartesianCoordinateSystem
+public class SlippyTileCoordinateSystem extends DrawingCoordinateSystem
 {
     /**
      * The bounds of the slippy tile coordinate system
@@ -42,16 +42,16 @@ public class SlippyTileCoordinateSystem extends CartesianCoordinateSystem
 
     private final ZoomLevel zoom;
 
-    private final Size tileSize;
+    private final DrawingSize tileSize;
 
     public SlippyTileCoordinateSystem(final ZoomLevel zoom)
     {
         this(zoom, STANDARD_TILE_SIZE);
     }
 
-    public SlippyTileCoordinateSystem(final ZoomLevel zoom, final Size tileSize)
+    public SlippyTileCoordinateSystem(final ZoomLevel zoom, final DrawingSize tileSize)
     {
-        super(Point.pixels(0, 0));
+        super(DrawingPoint.pixels(0, 0));
 
         this.zoom = zoom;
         this.tileSize = tileSize;
@@ -59,19 +59,19 @@ public class SlippyTileCoordinateSystem extends CartesianCoordinateSystem
         projection = new SphericalMercatorMapProjection(SLIPPY_TILE_MAP_AREA, size().asRectangle());
     }
 
-    public Rectangle drawingArea(final SlippyTile tile)
+    public DrawingRectangle drawingArea(final SlippyTile tile)
     {
         final var upperLeft =
-                Point.at(this,
+                DrawingPoint.at(this,
                         tile.x() * tileSize.widthInUnits(),
                         tile.y() * tileSize.heightInUnits());
 
         final var lowerRight =
-                Point.at(this,
+                DrawingPoint.at(this,
                         (tile.x() + 1) * tileSize.widthInUnits(),
                         (tile.y() + 1) * tileSize.heightInUnits());
 
-        return Rectangle.rectangle(upperLeft, lowerRight);
+        return DrawingRectangle.rectangle(upperLeft, lowerRight);
     }
 
     public com.telenav.mesakit.map.geography.shape.rectangle.Rectangle mapArea(final SlippyTile tile)
@@ -80,7 +80,7 @@ public class SlippyTileCoordinateSystem extends CartesianCoordinateSystem
     }
 
     @Override
-    public Size size()
+    public DrawingSize size()
     {
         return zoom.sizeInDrawingUnits(tileSize);
     }
@@ -90,7 +90,7 @@ public class SlippyTileCoordinateSystem extends CartesianCoordinateSystem
         return tileForPoint(projection.toDrawing(location));
     }
 
-    public SlippyTile tileForPoint(final Point point)
+    public SlippyTile tileForPoint(final DrawingPoint point)
     {
         final var x = Ints.inRange((int) (point.x() / tileSize.widthInUnits()), 0, zoom.widthInTiles() - 1);
         final var y = Ints.inRange((int) (point.y() / tileSize.heightInUnits()), 0, zoom.heightInTiles() - 1);
@@ -98,12 +98,12 @@ public class SlippyTileCoordinateSystem extends CartesianCoordinateSystem
         return new SlippyTile(zoom, x, y);
     }
 
-    public Point toDrawing(final Location at)
+    public DrawingPoint toDrawing(final Location at)
     {
         return projection.toDrawing(at);
     }
 
-    public Location toMap(final Point at)
+    public Location toMap(final DrawingPoint at)
     {
         return projection.toMap(at);
     }

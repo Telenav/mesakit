@@ -1,6 +1,6 @@
 package com.telenav.mesakit.map.ui.desktop.theme.shapes;
 
-import com.telenav.kivakit.ui.desktop.graphics.style.Style;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Style;
 import com.telenav.kivakit.ui.desktop.theme.KivaKitTheme;
 import com.telenav.mesakit.map.ui.desktop.theme.MapStyles;
 

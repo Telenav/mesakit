@@ -1,7 +1,7 @@
 package com.telenav.mesakit.map.ui.desktop.theme.shapes;
 
 import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDot;
-import com.telenav.mesakit.map.ui.desktop.theme.MapStroke;
+import com.telenav.mesakit.map.ui.desktop.graphics.style.MapStroke;
 import com.telenav.mesakit.map.ui.desktop.theme.MapStyles;
 
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitStyles.GOLF;
