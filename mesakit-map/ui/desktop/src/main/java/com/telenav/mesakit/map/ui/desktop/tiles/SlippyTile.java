@@ -117,14 +117,14 @@ public class SlippyTile
     public void drawOutline(final MapCanvas canvas, final Style style)
     {
         // Get the drawing area for this tile in slippy tile coordinates
-        final var drawingArea = drawingArea();
+        final var tileArea = drawingArea();
 
-        // then draw lines
-        canvas.drawBox(style, drawingArea);
+        // then draw it on the canvas
+        canvas.drawBox(style, tileArea);
 
         // and draw label for tile rectangle
-        final var at = drawingArea.topLeft().plus(8, 8);
-        final var visible = canvas.drawingArea().contains(at);
+        final var at = tileArea.topLeft().plus(8, 8);
+        final var visible = canvas.bounds().contains(at);
         if (visible)
         {
             Label.label()

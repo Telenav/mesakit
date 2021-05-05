@@ -60,8 +60,8 @@ import java.awt.event.MouseWheelListener;
 import java.util.function.Function;
 
 import static com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat.USER_LABEL;
+import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.DrawingCoordinateSystem.drawingCoordinateSystem;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle.rectangle;
-import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize.pixels;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.DARK_TANGERINE;
 import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.CAPTION;
 import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.MAP_BACKGROUND;
@@ -72,7 +72,7 @@ import static com.telenav.mesakit.map.ui.desktop.viewer.desktop.DesktopViewPanel
 import static com.telenav.mesakit.map.ui.desktop.viewer.desktop.DesktopViewPanel.State.STEPPING;
 
 /**
- * A JPanel implementation of {@link InteractiveView}
+ * A Swing panel implementation of {@link InteractiveView}
  *
  * @author jonathanl (shibo)
  */
@@ -105,9 +105,6 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
 
     /** Translates between the view area and drawing coordinates */
     private MapProjection projection;
-
-    /** Grid of slippy tiles */
-    private SlippyTileGrid mapTiles;
 
     /** True when this component is ready to paint itself */
     private boolean readyToPaint;
@@ -497,19 +494,15 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
             createCanvas(graphics);
 
             // draw map tiles layer on canvas,
-            //mapTileCache.drawTiles(graphics, projection, mapTiles);
-
-            // re-create the canvas because drawing the map tiles changes the projection,
-            createCanvas(graphics);
-
-            // draw tile outlines
+            final var mapTiles = listenTo(new SlippyTileGrid(viewArea(), zoom));
+            mapTileCache.drawTiles(canvas, mapTiles);
             if (isDebugOn())
             {
-                mapTiles.drawOutlines(canvas);
+                mapTiles.drawTileOutlines(canvas);
             }
 
             // draw viewables on top of tiles,
-            viewModel.draw(canvas);
+            // viewModel.draw(canvas);
 
             // and then, if we're drawing a zoom selection rectangle,
             if (zoomSelection != null)
@@ -630,8 +623,14 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
 
     private void createCanvas(final Graphics2D graphics)
     {
+        // Create a map projection using this panel's drawing area in pixel coordinates,
         projection = new CartesianMapProjection(viewArea(), drawingArea());
+
+        // create a canvas using the projection
         canvas = MapCanvas.canvas(graphics, MapScale.STATE, projection);
+
+        // and then update the projection to use the canvas as its coordinate system.
+        projection.coordinateSystem(canvas);
     }
 
     private DrawingRectangle drawingArea()
@@ -639,30 +638,15 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
         // Get the size of the entire zoom level in drawing units,
         final var size = zoom.sizeInDrawingUnits(STANDARD_TILE_SIZE);
 
-        // and if the view doesn't completely cover the drawing area,
-        if (size.width().units() < getWidth() || size.height().units() < getHeight())
-        {
-            // then put the view  area in the middle of the drawing surface
-            isZoomedIn = false;
-            return size.centeredIn(drawingSurfaceSize().asRectangle());
-        }
-        else
-        {
-            // otherwise map the view to the whole drawing surface
-            isZoomedIn = true;
-            return drawingSurfaceBounds();
-        }
+        isZoomedIn = size.width().units() < getWidth() || size.height().units() < getHeight();
+
+        return size.centeredIn(drawingSurfaceBounds());
     }
 
     private DrawingRectangle drawingSurfaceBounds()
     {
         final var bounds = getBounds();
-        return rectangle(canvas, bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight());
-    }
-
-    private DrawingSize drawingSurfaceSize()
-    {
-        return pixels(getWidth(), getHeight());
+        return rectangle(drawingCoordinateSystem(), bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight());
     }
 
     /**
@@ -780,9 +764,6 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
         // compute the view area to display,
         viewArea = viewArea(center, zoom);
         trace("mapArea = " + viewArea());
-
-        // and create tile grid for the given view area.
-        mapTiles = listenTo(new SlippyTileGrid(viewArea(), zoom));
 
         // Request a repaint
         readyToPaint = true;

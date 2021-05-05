@@ -37,16 +37,6 @@ import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
  */
 public class CartesianMapProjection implements MapProjection
 {
-    private final CoordinateSystem coordinateSystem;
-
-    private final double coordinateTop;
-
-    private final double coordinateLeft;
-
-    private final double coordinateWidth;
-
-    private final double coordinateHeight;
-
     private final double mapTopInDegrees;
 
     private final double mapLeftInDegrees;
@@ -59,35 +49,37 @@ public class CartesianMapProjection implements MapProjection
 
     private final Rectangle mapArea;
 
-    private final DrawingRectangle coordinateArea;
+    private final DrawingRectangle drawingArea;
 
     /**
      * @param mapArea The map map to map to and from
-     * @param coordinateArea The {@link DrawingSurface} map to map to and from
+     * @param drawingArea The {@link DrawingSurface} map to map to and from
      */
     public CartesianMapProjection(final Rectangle mapArea,
-                                  final DrawingRectangle coordinateArea)
+                                  final DrawingRectangle drawingArea)
     {
         this.mapArea = mapArea;
-        this.coordinateArea = coordinateArea;
+        this.drawingArea = drawingArea;
 
         mapBottomInDegrees = mapArea.bottom().asDegrees();
         mapLeftInDegrees = mapArea.left().asDegrees();
         mapTopInDegrees = mapArea.top().asDegrees();
         mapWidthInDegrees = mapArea.width().asDegrees();
         mapHeightInDegrees = mapArea.height().asDegrees();
+    }
 
-        coordinateSystem = coordinateArea.at().coordinateSystem();
-        coordinateTop = coordinateArea.y();
-        coordinateLeft = coordinateArea.x();
-        coordinateWidth = coordinateArea.width();
-        coordinateHeight = coordinateArea.height();
+    /**
+     * Updates the {@link CoordinateSystem} of the drawing area for this projection
+     */
+    public void coordinateSystem(final CoordinateSystem coordinateSystem)
+    {
+        drawingArea.coordinateSystem(coordinateSystem);
     }
 
     @Override
     public DrawingRectangle drawingArea()
     {
-        return coordinateArea;
+        return drawingArea;
     }
 
     @Override
@@ -108,22 +100,22 @@ public class CartesianMapProjection implements MapProjection
         final var longitudeUnit = (longitude - mapLeftInDegrees) / mapWidthInDegrees;
 
         // then compute the x, y location.
-        final var x = coordinateLeft + coordinateWidth * longitudeUnit;
-        final var y = coordinateTop + coordinateHeight * latitudeUnit;
+        final var x = drawingArea.left() + drawingArea.width() * longitudeUnit;
+        final var y = drawingArea.top() + drawingArea.height() * latitudeUnit;
 
-        return DrawingPoint.at(coordinateSystem, x, y);
+        return DrawingPoint.at(drawingArea.coordinateSystem(), x, y);
     }
 
     @Override
     public Location toMap(final DrawingPoint point)
     {
         // Get the offset of the drawing point from the bottom left
-        final var xOffset = point.x() - coordinateLeft;
-        final var yOffset = coordinateHeight - (point.y() - coordinateTop);
+        final var xOffset = point.x() - drawingArea.left();
+        final var yOffset = drawingArea.height() - (point.y() - drawingArea.top());
 
         // compute a unit value between 0 and 1 from bottom left,
-        final var xUnit = xOffset / coordinateWidth;
-        final var yUnit = yOffset / coordinateHeight;
+        final var xUnit = xOffset / drawingArea.width();
+        final var yUnit = yOffset / drawingArea.height();
 
         // scale the map area map by the unit value,
         final var latitudeOffset = mapHeightInDegrees * yUnit;

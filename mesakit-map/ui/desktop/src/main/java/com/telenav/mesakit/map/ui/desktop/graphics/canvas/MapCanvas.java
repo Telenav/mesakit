@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas;
 
+import com.telenav.kivakit.ui.desktop.graphics.drawing.CoordinateSystem;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Box;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Dot;
@@ -47,7 +48,7 @@ import java.awt.Shape;
 import java.awt.geom.Path2D;
 
 /**
- * A {@link DrawingSurface} with a {@link #mapArea()} and a {@link #drawingArea()} and a {@link #projection()} that maps
+ * A {@link DrawingSurface} with a {@link #mapArea()} and a {@link #bounds()} and a {@link #projection()} that maps
  * between the two:
  *
  * <ul>
@@ -125,6 +126,21 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
         this.projection = projection;
     }
 
+    /**
+     * @return The coordinate area being mapped to on the drawing surface
+     */
+    @Override
+    public DrawingRectangle bounds()
+    {
+        return projection().drawingArea();
+    }
+
+    @Override
+    public void coordinateSystem(final CoordinateSystem system)
+    {
+        projection.coordinateSystem(system);
+    }
+
     public Shape drawBox(final Style style, final Rectangle rectangle)
     {
         return Box.box(style)
@@ -171,22 +187,19 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
                 .draw(this);
     }
 
-    /**
-     * @return The coordinate area being mapped to on the drawing surface
-     */
     @Override
     public DrawingRectangle drawingArea()
     {
-        return projection.drawingArea();
+        return bounds();
     }
 
     /**
-     * @return The map area being projected to the {@link #drawingArea()} on this canvas
+     * @return The map area being projected to the {@link #bounds()} on this canvas
      */
     @Override
     public Rectangle mapArea()
     {
-        return projection.mapArea();
+        return projection().mapArea();
     }
 
     /**
@@ -224,7 +237,7 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
     @Override
     public DrawingPoint toDrawing(final Location location)
     {
-        return projection.toDrawing(location);
+        return projection().toDrawing(location);
     }
 
     /**
@@ -233,7 +246,7 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
     @Override
     public DrawingSize toDrawing(final Size size)
     {
-        return projection.toDrawing(size);
+        return projection().toDrawing(size);
     }
 
     /**
@@ -242,7 +255,7 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
     @Override
     public Location toMap(final DrawingPoint point)
     {
-        return projection.toMap(point);
+        return projection().toMap(point);
     }
 
     private Path2D path(final Polyline line)
@@ -251,7 +264,7 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
         final Path2D path = new Path2D.Double();
         for (final var to : line.locationSequence())
         {
-            final var point = projection.toDrawing(to);
+            final var point = projection().toDrawing(to);
             if (first)
             {
                 path.moveTo(point.x(), point.y());

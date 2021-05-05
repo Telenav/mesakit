@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas;
 
+import com.telenav.kivakit.ui.desktop.graphics.drawing.CoordinateSystem;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingHeight;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingWidth;
@@ -35,13 +36,18 @@ import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 /**
  * Maps between drawing coordinates, as expressed by <i>Drawing*</i> classes, and map coordinates, as expressed by
- * {@link Location}, {@link Latitude}, {@link Longitude}, {@link Rectangle,} {@link Distance}, {@link Width}, {@link
+ * {@link Location}, {@link Latitude}, {@link Longitude}, {@link Rectangle} {@link Distance}, {@link Width}, {@link
  * Height} and {@link Size}.
  *
  * @author jonathanl (shibo)
  */
 public interface MapProjection
 {
+    /**
+     * Assigns the given coordinate system to this map projection
+     */
+    void coordinateSystem(CoordinateSystem system);
+
     /**
      * @return The drawing area in drawing coordinates
      */

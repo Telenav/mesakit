@@ -108,7 +108,7 @@ public class SlippyTileGrid extends BaseRepeater implements Iterable<SlippyTile>
     /**
      * Draws outlines of all the tiles in this grid on the given canvas
      */
-    public void drawOutlines(final MapCanvas canvas)
+    public void drawTileOutlines(final MapCanvas canvas)
     {
         for (final var tile : tiles)
         {

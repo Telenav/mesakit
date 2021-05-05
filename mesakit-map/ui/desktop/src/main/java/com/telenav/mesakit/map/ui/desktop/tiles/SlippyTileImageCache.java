@@ -24,14 +24,12 @@ import com.telenav.kivakit.core.kernel.language.threading.RepeatingKivaKitThread
 import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.network.http.HttpNetworkLocation;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
 import com.telenav.mesakit.core.MesaKit;
-import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 
 import javax.imageio.ImageIO;
 import java.awt.AlphaComposite;
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Collections;
@@ -85,17 +83,14 @@ public abstract class SlippyTileImageCache extends BaseRepeater
     /**
      * Draw map tiles on the given graphics
      */
-    public void drawTiles(final Graphics2D graphics,
-                          final MapProjection projection,
+    public void drawTiles(final DrawingSurface surface,
                           final Iterable<SlippyTile> tiles)
     {
         // Go through each tile
-        graphics.setComposite(AlphaComposite.getInstance(SRC_OVER, 0.5f));
-        final var topLeft = projection.toDrawing(Location.TOP_LEFT).rounded();
         for (final var tile : tiles)
         {
-            final var tileBounds = tile.drawingArea().plus(topLeft);
-            if (projection.drawingArea().intersects(tileBounds))
+            final var tileArea = tile.drawingArea();
+            if (surface.bounds().intersects(tileArea))
             {
                 // get any available image for the tile
                 final var image = image(tile);
@@ -104,12 +99,11 @@ public abstract class SlippyTileImageCache extends BaseRepeater
                 if (image != null)
                 {
                     // draw it at the appropriate x, y location using the coordinate mapper
-                    information("drawing tile $ with bounds of $", tile, tileBounds);
-                    graphics.drawImage(image, (int) tileBounds.x(), (int) tileBounds.y(), null);
+                    information("drawing tile $ with bounds of $", tile, tileArea);
+                    surface.drawImage(tileArea.topLeft(), image, AlphaComposite.getInstance(SRC_OVER, 0.5f));
                 }
             }
         }
-        graphics.setComposite(AlphaComposite.getInstance(SRC_OVER, 1.0f));
     }
 
     /**
