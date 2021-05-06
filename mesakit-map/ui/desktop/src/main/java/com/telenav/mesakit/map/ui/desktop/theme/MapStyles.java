@@ -46,14 +46,15 @@ public class MapStyles
 
     public static final Style BASE = MOJITO;
 
-    public static final Style MAP_BACKGROUND = BASE.withFillColor(KIVAKIT_BLACK);
+    public static final Style MAP_BACKGROUND = Style.create().withFillColor(KIVAKIT_BLACK);
 
     public static final Style ERROR = MANHATTAN;
 
     public static final Style GRAYED = SEATTLE;
 
     public static final Style GRID_LINES = BASE
-            .withDrawColor(DARK_TANGERINE);
+            .withDrawColor(DARK_TANGERINE)
+            .withFillColor(DARK_TANGERINE.withAlpha(64));
 
     public static final Style GRID_LABEL = BASE
             .withFillColor(DARK_TANGERINE.translucent())
@@ -61,6 +62,8 @@ public class MapStyles
             .withTextColor(IRON);
 
     public static final Style HIGHLIGHTED = NIGHT_SHIFT;
+
+    public static final Style SELECTION_AREA = NIGHT_SHIFT;
 
     public static final Style CAPTION = BASE
             .withTextColor(DARK_TANGERINE)

@@ -21,10 +21,12 @@ package com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.CoordinateSystem;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.projection.MetricCoordinate;
 import com.telenav.mesakit.map.geography.projection.projections.SphericalMercatorMetricProjection;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.geography.shape.rectangle.Size;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 
 /**
@@ -51,16 +53,16 @@ public class SphericalMercatorMapProjection implements MapProjection
 
     private final double mapAreaHeightInMeters;
 
-    private final DrawingRectangle drawingArea;
+    private final DrawingSize drawingSize;
 
     private final Rectangle mapArea;
 
     public SphericalMercatorMapProjection(final Rectangle mapArea,
-                                          final DrawingRectangle drawingArea)
+                                          final DrawingSize drawingSize)
     {
         // Save the areas we're mapping to and from,
         this.mapArea = mapArea;
-        this.drawingArea = drawingArea;
+        this.drawingSize = drawingSize;
 
         // project the top left and bottom right corners of the map area to x,y values in meters
         mapAreaTopLeftInMeters = mercatorProjection.toCoordinate(mapArea.topLeft());
@@ -72,15 +74,9 @@ public class SphericalMercatorMapProjection implements MapProjection
     }
 
     @Override
-    public void coordinateSystem(final CoordinateSystem system)
+    public DrawingSize drawingSize()
     {
-        drawingArea.coordinateSystem(system);
-    }
-
-    @Override
-    public DrawingRectangle drawingArea()
-    {
-        return drawingArea;
+        return drawingSize;
     }
 
     @Override
@@ -104,11 +100,29 @@ public class SphericalMercatorMapProjection implements MapProjection
         final double yUnit = (projected.yInMeters() - mapAreaTopLeftInMeters.yInMeters()) / mapAreaHeightInMeters;
 
         // compute the offset into the drawing area by scaling the width and height by the unit values,
-        final var dx = xUnit * drawingArea.width();
-        final var dy = yUnit * drawingArea.height();
+        final var dx = xUnit * drawingSize.widthInUnits();
+        final var dy = yUnit * drawingSize.heightInUnits();
 
         // and return the point within the drawing area.
-        return DrawingPoint.at(drawingArea.at().coordinateSystem(), drawingArea.x() + dx, drawingArea.y() + dy);
+        return DrawingPoint.point(coordinates(), dx, dy);
+    }
+
+    @Override
+    public DrawingSize toDrawing(final Size size)
+    {
+        // Project the size as a location to a coordinate in meters from the map origin
+        final var projected = mercatorProjection.toCoordinate(size.asLocation());
+
+        // then normalize the projected point to the unit interval (0 to 1)
+        final double xUnit = projected.xInMeters() / mapAreaWidthInMeters;
+        final double yUnit = projected.yInMeters() / mapAreaHeightInMeters;
+
+        // compute the offset into the drawing area by scaling the width and height by the unit values,
+        final var dx = xUnit * drawingSize.widthInUnits();
+        final var dy = yUnit * drawingSize.heightInUnits();
+
+        // and return the point within the drawing area.
+        return DrawingSize.size(coordinates(), dx, dy);
     }
 
     /**
@@ -119,8 +133,8 @@ public class SphericalMercatorMapProjection implements MapProjection
     public Location toMap(final DrawingPoint point)
     {
         // Normalize the x,y location on the drawing surface to the unit interval (0 to 1)
-        final double xUnit = (point.x() - drawingArea.x()) / drawingArea.width();
-        final double yUnit = (point.y() - drawingArea.y()) / drawingArea.height();
+        final double xUnit = point.x() / drawingSize.widthInUnits();
+        final double yUnit = point.y() / drawingSize.heightInUnits();
 
         // then convert the unit interval to meters within the map width
         final var xMeters = mapAreaWidthInMeters * xUnit;
@@ -132,5 +146,10 @@ public class SphericalMercatorMapProjection implements MapProjection
 
         // Project the drawing surface point to
         return mercatorProjection.toLocation(new MetricCoordinate(x, y));
+    }
+
+    private CoordinateSystem coordinates()
+    {
+        return drawingSize.coordinates();
     }
 }

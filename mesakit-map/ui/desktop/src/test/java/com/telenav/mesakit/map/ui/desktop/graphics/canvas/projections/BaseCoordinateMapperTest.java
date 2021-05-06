@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections;
 
 import com.telenav.kivakit.core.test.UnitTest;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
-import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
@@ -41,9 +41,9 @@ public abstract class BaseCoordinateMapperTest extends UnitTest
     }
 
     @SuppressWarnings("SameParameterValue")
-    protected DrawingRectangle drawingRectangle(final int x, final int y, final int width, final int height)
+    protected DrawingSize drawingSize(final int width, final int height)
     {
-        return DrawingRectangle.pixels(x, y, width, height);
+        return DrawingSize.pixels(width, height);
     }
 
     protected DrawingPoint point(final int x, final int y)

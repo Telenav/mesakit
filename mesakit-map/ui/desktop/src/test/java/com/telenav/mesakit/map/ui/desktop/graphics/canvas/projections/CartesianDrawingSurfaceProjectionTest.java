@@ -32,7 +32,7 @@ public class CartesianDrawingSurfaceProjectionTest extends BaseCoordinateMapperT
     public void testLocationForPoint1()
     {
         final CartesianMapProjection projection = new CartesianMapProjection(Rectangle.MAXIMUM,
-                drawingRectangle(0, 0, 100, 100));
+                drawingSize(100, 100));
 
         ensureEqual(Rectangle.MAXIMUM.topLeft(), projection.toMap(point(0, 0)));
         ensureEqual(Rectangle.MAXIMUM.bottomLeft(), projection.toMap(point(0, 100)));
@@ -46,7 +46,7 @@ public class CartesianDrawingSurfaceProjectionTest extends BaseCoordinateMapperT
     public void testLocationForPoint2()
     {
         final CartesianMapProjection projection = new CartesianMapProjection(Rectangle.MAXIMUM,
-                drawingRectangle(100, 100, 100, 100));
+                drawingSize(100, 100));
 
         ensureEqual(Rectangle.MAXIMUM.topLeft(), projection.toMap(point(100, 100)));
         ensureEqual(Rectangle.MAXIMUM.bottomLeft(), projection.toMap(point(100, 200)));
@@ -60,7 +60,7 @@ public class CartesianDrawingSurfaceProjectionTest extends BaseCoordinateMapperT
     public void testPointForLocation1()
     {
         final CartesianMapProjection projection = new CartesianMapProjection(Rectangle.MAXIMUM,
-                drawingRectangle(0, 0, 100, 100));
+                drawingSize(100, 100));
 
         ensureEqual(point(0, 0), projection.toDrawing(Rectangle.MAXIMUM.topLeft()));
         ensureEqual(point(0, 100), projection.toDrawing(Rectangle.MAXIMUM.bottomLeft()));
@@ -74,12 +74,12 @@ public class CartesianDrawingSurfaceProjectionTest extends BaseCoordinateMapperT
     public void testPointForLocation2()
     {
         final CartesianMapProjection projection = new CartesianMapProjection(Rectangle.MAXIMUM,
-                drawingRectangle(100, 100, 100, 100));
+                drawingSize(100, 100));
 
-        ensureEqual(point(100, 100), projection.toDrawing(Rectangle.MAXIMUM.topLeft()));
-        ensureEqual(point(100, 200), projection.toDrawing(Rectangle.MAXIMUM.bottomLeft()));
-        ensureEqual(point(200, 100), projection.toDrawing(Rectangle.MAXIMUM.topRight()));
-        ensureEqual(point(200, 200), projection.toDrawing(Rectangle.MAXIMUM.bottomRight()));
+        ensureEqual(point(0, 0), projection.toDrawing(Rectangle.MAXIMUM.topLeft()));
+        ensureEqual(point(0, 100), projection.toDrawing(Rectangle.MAXIMUM.bottomLeft()));
+        ensureEqual(point(100, 0), projection.toDrawing(Rectangle.MAXIMUM.topRight()));
+        ensureEqual(point(100, 100), projection.toDrawing(Rectangle.MAXIMUM.bottomRight()));
 
         ensureEqual(point(150, 150), projection.toDrawing(Location.ORIGIN));
     }
@@ -94,29 +94,29 @@ public class CartesianDrawingSurfaceProjectionTest extends BaseCoordinateMapperT
 
         // Map from 100,100:200,200 swing rectangle to 0,0:10,10 geographic rectangle
         final CartesianMapProjection projection = new CartesianMapProjection(
-                Location.ORIGIN.rectangle(size), drawingRectangle(100, 100, 100, 100));
+                Location.ORIGIN.rectangle(size), drawingSize(100, 100));
 
         // Ensure simple cases in the corners (the middle will be distorted by the projection)
-        checkMapping(projection, point(100, 100), Location.ORIGIN.offsetBy(height));
-        checkMapping(projection, point(100, 200), Location.ORIGIN);
-        checkMapping(projection, point(200, 100), Location.ORIGIN.offsetBy(size));
-        checkMapping(projection, point(200, 200), Location.ORIGIN.offsetBy(width));
+        checkMapping(projection, point(0, 0), Location.ORIGIN.offsetBy(height));
+        checkMapping(projection, point(0, 100), Location.ORIGIN);
+        checkMapping(projection, point(100, 0), Location.ORIGIN.offsetBy(size));
+        checkMapping(projection, point(100, 100), Location.ORIGIN.offsetBy(width));
     }
 
     @Test
     public void testWorld()
     {
         final CartesianMapProjection projection = new CartesianMapProjection(
-                SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA, drawingRectangle(100, 100, 100, 100));
+                SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA, drawingSize(100, 100));
 
         // The origin will not be distorted
         checkMapping(projection, point(150, 150), Location.ORIGIN);
 
         // Ensure simple corner cases where there is no distortion
-        checkMapping(projection, point(100, 100), SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA.topLeft());
-        checkMapping(projection, point(200, 100), SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA.topRight());
-        checkMapping(projection, point(100, 200), SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA.bottomLeft());
-        checkMapping(projection, point(200, 200), SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA.bottomRight());
+        checkMapping(projection, point(0, 0), SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA.topLeft());
+        checkMapping(projection, point(100, 0), SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA.topRight());
+        checkMapping(projection, point(0, 100), SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA.bottomLeft());
+        checkMapping(projection, point(100, 100), SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA.bottomRight());
     }
 
     @Test
@@ -131,12 +131,12 @@ public class CartesianDrawingSurfaceProjectionTest extends BaseCoordinateMapperT
         // Map from 100,100:200,200 swing rectangle to 47.601765,-122.332335:48.601765,-121.332335
         // geographic rectangle around downtown Seattle
         final CartesianMapProjection projection = new CartesianMapProjection(seattle,
-                drawingRectangle(100, 100, 100, 100));
+                drawingSize(100, 100));
 
         // Ensure simple cases in the corners (the middle will be distorted by the projection)
-        checkMapping(projection, point(100, 100), seattle.topLeft());
-        checkMapping(projection, point(100, 200), seattle.bottomLeft());
-        checkMapping(projection, point(200, 100), seattle.topRight());
-        checkMapping(projection, point(200, 200), seattle.bottomRight());
+        checkMapping(projection, point(0, 0), seattle.topLeft());
+        checkMapping(projection, point(0, 100), seattle.bottomLeft());
+        checkMapping(projection, point(100, 0), seattle.topRight());
+        checkMapping(projection, point(100, 100), seattle.bottomRight());
     }
 }

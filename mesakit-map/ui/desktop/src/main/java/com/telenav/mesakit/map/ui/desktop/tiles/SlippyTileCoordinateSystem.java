@@ -24,17 +24,25 @@ import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingP
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
 import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections.SphericalMercatorMapProjection;
 
 import static com.telenav.mesakit.map.ui.desktop.tiles.SlippyTile.STANDARD_TILE_SIZE;
 
+/**
+ * A tile coordinate system with an origin at 0, 0 and an extent based on the {@link ZoomLevel} and tile size. The
+ * coordinate system supports mapping between {@link Location}s and {@link DrawingPoint}s using a {@link
+ * SphericalMercatorMapProjection}.
+ *
+ * @author jonathanl (shibo)
+ */
 public class SlippyTileCoordinateSystem extends DrawingCoordinateSystem
 {
     /**
      * The bounds of the slippy tile coordinate system
      */
-    public static final com.telenav.mesakit.map.geography.shape.rectangle.Rectangle SLIPPY_TILE_MAP_AREA = com.telenav.mesakit.map.geography.shape.rectangle.Rectangle.fromLocations(
+    public static final Rectangle SLIPPY_TILE_MAP_AREA = Rectangle.fromLocations(
             Location.degrees(-85.0511, -180),
             Location.degrees(85.0511, 180));
 
@@ -51,38 +59,39 @@ public class SlippyTileCoordinateSystem extends DrawingCoordinateSystem
 
     public SlippyTileCoordinateSystem(final ZoomLevel zoom, final DrawingSize tileSize)
     {
-        super(DrawingPoint.pixels(0, 0));
+        super("slippy-tile");
+
+        origin(0, 0);
+
+        final var width = zoom.widthInPixels(tileSize);
+        final var height = zoom.heightInPixels(tileSize);
+
+        extent(width, height);
 
         this.zoom = zoom;
         this.tileSize = tileSize;
 
-        projection = new SphericalMercatorMapProjection(SLIPPY_TILE_MAP_AREA, size().asRectangle());
+        projection = new SphericalMercatorMapProjection(SLIPPY_TILE_MAP_AREA, extent());
     }
 
     public DrawingRectangle drawingArea(final SlippyTile tile)
     {
         final var upperLeft =
-                DrawingPoint.at(this,
+                DrawingPoint.point(this,
                         tile.x() * tileSize.widthInUnits(),
                         tile.y() * tileSize.heightInUnits());
 
         final var lowerRight =
-                DrawingPoint.at(this,
+                DrawingPoint.point(this,
                         (tile.x() + 1) * tileSize.widthInUnits(),
                         (tile.y() + 1) * tileSize.heightInUnits());
 
         return DrawingRectangle.rectangle(upperLeft, lowerRight);
     }
 
-    public com.telenav.mesakit.map.geography.shape.rectangle.Rectangle mapArea(final SlippyTile tile)
+    public Rectangle mapArea(final SlippyTile tile)
     {
         return projection.toMap(drawingArea(tile));
-    }
-
-    @Override
-    public DrawingSize size()
-    {
-        return zoom.sizeInDrawingUnits(tileSize);
     }
 
     public SlippyTile tileForLocation(final Location location)

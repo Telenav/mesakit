@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
+import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Box;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingHeight;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingWidth;
@@ -94,8 +95,10 @@ public class MapBox extends LabeledMapShape
     @Override
     public Shape onDraw(final MapCanvas canvas)
     {
-        final var box = box(canvas.toDrawing(size))
+        final var box = Box.box()
                 .at(canvas.toDrawing(location()))
+                .withStyle(style())
+                .withSize(canvas.toDrawing(size))
                 .draw(canvas);
 
         final var label = super.onDraw(canvas);

@@ -19,13 +19,13 @@
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections;
 
 import com.telenav.kivakit.ui.desktop.graphics.drawing.CoordinateSystem;
-import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
-import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.geography.shape.rectangle.Size;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 
 /**
@@ -49,17 +49,17 @@ public class CartesianMapProjection implements MapProjection
 
     private final Rectangle mapArea;
 
-    private final DrawingRectangle drawingArea;
+    private final DrawingSize drawingSize;
 
     /**
      * @param mapArea The map map to map to and from
-     * @param drawingArea The {@link DrawingSurface} map to map to and from
+     * @param drawingSize The size of the drawing area to map to and from
      */
     public CartesianMapProjection(final Rectangle mapArea,
-                                  final DrawingRectangle drawingArea)
+                                  final DrawingSize drawingSize)
     {
         this.mapArea = mapArea;
-        this.drawingArea = drawingArea;
+        this.drawingSize = drawingSize;
 
         mapBottomInDegrees = mapArea.bottom().asDegrees();
         mapLeftInDegrees = mapArea.left().asDegrees();
@@ -68,18 +68,10 @@ public class CartesianMapProjection implements MapProjection
         mapHeightInDegrees = mapArea.height().asDegrees();
     }
 
-    /**
-     * Updates the {@link CoordinateSystem} of the drawing area for this projection
-     */
-    public void coordinateSystem(final CoordinateSystem coordinateSystem)
-    {
-        drawingArea.coordinateSystem(coordinateSystem);
-    }
-
     @Override
-    public DrawingRectangle drawingArea()
+    public DrawingSize drawingSize()
     {
-        return drawingArea;
+        return drawingSize;
     }
 
     @Override
@@ -100,36 +92,82 @@ public class CartesianMapProjection implements MapProjection
         final var longitudeUnit = (longitude - mapLeftInDegrees) / mapWidthInDegrees;
 
         // then compute the x, y location.
-        final var x = drawingArea.left() + drawingArea.width() * longitudeUnit;
-        final var y = drawingArea.top() + drawingArea.height() * latitudeUnit;
+        final var x = drawingSize.widthInUnits() * longitudeUnit;
+        final var y = drawingSize.heightInUnits() * latitudeUnit;
 
-        return DrawingPoint.at(drawingArea.coordinateSystem(), x, y);
+        return DrawingPoint.point(coordinates(), x, y);
+    }
+
+    @Override
+    public DrawingSize toDrawing(final Size size)
+    {
+        // Get the size in degrees,
+        final var latitude = size.height().asDegrees();
+        final var longitude = size.width().asDegrees();
+
+        // convert to unit values,
+        final var latitudeUnit = latitude / mapHeightInDegrees;
+        final var longitudeUnit = longitude / mapWidthInDegrees;
+
+        // then compute the x, y location.
+        final var width = drawingSize.widthInUnits() * longitudeUnit;
+        final var height = drawingSize.heightInUnits() * latitudeUnit;
+
+        return DrawingSize.size(coordinates(), width, height);
     }
 
     @Override
     public Location toMap(final DrawingPoint point)
     {
-        // Get the offset of the drawing point from the bottom left
-        final var xOffset = point.x() - drawingArea.left();
-        final var yOffset = drawingArea.height() - (point.y() - drawingArea.top());
-
-        // compute a unit value between 0 and 1 from bottom left,
-        final var xUnit = xOffset / drawingArea.width();
-        final var yUnit = yOffset / drawingArea.height();
-
-        // scale the map area map by the unit value,
-        final var latitudeOffset = mapHeightInDegrees * yUnit;
-        final var longitudeOffset = mapWidthInDegrees * xUnit;
-
-        // and add the offset to the bottom left of the map map area.
-        final var latitude = mapBottomInDegrees + latitudeOffset;
-        final var longitude = mapLeftInDegrees + longitudeOffset;
-
-        if (Latitude.isValid(latitude) && Longitude.isValid(longitude))
+        if (coordinates().isBounded())
         {
-            return Location.degrees(latitude, longitude);
+            final var localPoint = point.toCoordinates(coordinates());
+
+            // Get the offset of the drawing point from the bottom left
+            final var xOffset = localPoint.x();
+            final var yOffset = drawingSize.heightInUnits() - localPoint.y();
+
+            // compute a unit value between 0 and 1 from bottom left,
+            final var xUnit = xOffset / drawingSize.widthInUnits();
+            final var yUnit = yOffset / drawingSize.heightInUnits();
+
+            // scale the map area map by the unit value,
+            final var latitudeOffset = mapHeightInDegrees * yUnit;
+            final var longitudeOffset = mapWidthInDegrees * xUnit;
+
+            // and add the offset to the bottom left of the map map area.
+            final var latitude = mapBottomInDegrees + latitudeOffset;
+            final var longitude = mapLeftInDegrees + longitudeOffset;
+
+            if (Latitude.isValid(latitude) && Longitude.isValid(longitude))
+            {
+                return Location.degrees(latitude, longitude);
+            }
+        }
+        else
+        {
+            final var xUnit = point.x() / drawingSize.widthInUnits();
+            final var yUnit = point.y() / drawingSize.heightInUnits();
+
+            // scale the map area map by the unit value,
+            final var latitudeOffset = mapHeightInDegrees * yUnit;
+            final var longitudeOffset = mapWidthInDegrees * xUnit;
+
+            // and add the offset to the bottom left of the map map area.
+            final var latitude = mapBottomInDegrees + latitudeOffset;
+            final var longitude = mapLeftInDegrees + longitudeOffset;
+
+            if (Latitude.isValid(latitude) && Longitude.isValid(longitude))
+            {
+                return Location.degrees(latitude, longitude);
+            }
         }
 
         return null;
+    }
+
+    private CoordinateSystem coordinates()
+    {
+        return drawingSize.coordinates();
     }
 }

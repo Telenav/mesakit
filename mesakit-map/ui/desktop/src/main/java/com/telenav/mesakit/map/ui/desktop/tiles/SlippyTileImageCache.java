@@ -90,7 +90,7 @@ public abstract class SlippyTileImageCache extends BaseRepeater
         for (final var tile : tiles)
         {
             final var tileArea = tile.drawingArea();
-            if (surface.bounds().intersects(tileArea))
+            if (surface.drawingArea().intersects(tileArea))
             {
                 // get any available image for the tile
                 final var image = image(tile);

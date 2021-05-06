@@ -26,6 +26,8 @@ import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingR
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Style;
 import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.geography.shape.rectangle.Size;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 
 import java.util.ArrayList;
@@ -67,7 +69,7 @@ public class SlippyTile
     /**
      * @return The smallest tile that is larger than the given size
      */
-    public static SlippyTile largerThan(final com.telenav.mesakit.map.geography.shape.rectangle.Size size)
+    public static SlippyTile largerThan(final Size size)
     {
         var tile = ZoomLevel.CLOSEST.tileAt(Location.ORIGIN);
         while (!tile.size().isGreaterThan(size) && !tile.getZoomLevel().isFurthestOut())
@@ -124,7 +126,7 @@ public class SlippyTile
 
         // and draw label for tile rectangle
         final var at = tileArea.topLeft().plus(8, 8);
-        final var visible = canvas.bounds().contains(at);
+        final var visible = canvas.drawingArea().contains(at);
         if (visible)
         {
             Label.label()
@@ -164,7 +166,7 @@ public class SlippyTile
         return Hash.many(x, y, zoom);
     }
 
-    public com.telenav.mesakit.map.geography.shape.rectangle.Rectangle mapArea()
+    public Rectangle mapArea()
     {
         return new SlippyTileCoordinateSystem(zoom).mapArea(this);
     }
@@ -174,7 +176,7 @@ public class SlippyTile
         return getZoomLevel().zoomOut().tileAt(mapArea().center());
     }
 
-    public com.telenav.mesakit.map.geography.shape.rectangle.Size size()
+    public Size size()
     {
         return mapArea().size();
     }

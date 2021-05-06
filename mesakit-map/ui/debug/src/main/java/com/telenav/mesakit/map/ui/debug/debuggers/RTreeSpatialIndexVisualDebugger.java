@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.map.ui.debug.debuggers;
 
-import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
 import com.telenav.mesakit.map.geography.indexing.rtree.InteriorNode;
 import com.telenav.mesakit.map.geography.indexing.rtree.Leaf;
 import com.telenav.mesakit.map.geography.indexing.rtree.Node;
@@ -35,6 +34,7 @@ import com.telenav.mesakit.map.ui.desktop.viewer.View;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength.pixels;
 import static com.telenav.mesakit.map.ui.debug.theme.DebugViewerStyles.ACTIVE_BOX;
 import static com.telenav.mesakit.map.ui.debug.theme.DebugViewerStyles.INACTIVE_BOX;
 import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.ACTIVE_LABEL;
@@ -78,54 +78,62 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
     @Override
     public void update(final Leaf<T> leaf, final T element)
     {
-        updateElementInView(leaf, element);
+        updateView(leaf, element);
     }
 
     @Override
     public void update(final Node<T> node)
     {
-        updateNodeInView(node);
+        updateView(node);
     }
 
-    public void updateElementInView(final Leaf<T> leaf, final T element)
+    public void updateView(final Node<T> node)
+    {
+        if (view != null)
+        {
+            final var identifier = identifier(node);
+            final var label = identifier.toString();
+
+            addToView(identifier, box(node, label));
+        }
+    }
+
+    public void updateView(final Leaf<T> leaf, final T element)
     {
         if (view != null)
         {
             final var identifier = identifier(leaf, element);
             final var label = identifier + "-" + element.toString();
 
-            final var box = MapBox.box()
-                    .withStyle(ACTIVE_BOX)
-                    .withLabelStyle(ACTIVE_LABEL)
-                    .withRoundedLabelCorners(DrawingLength.pixels(10))
-                    .withRectangle(element.bounds())
-                    .withLabel(label);
-
-            view.map(at -> at.withStyle(INACTIVE_BOX));
-            view.update(identifier, box);
-            view.pullToFront(identifier);
-            frameComplete();
+            addToView(identifier, box(leaf, label));
         }
     }
 
-    public void updateNodeInView(final Node<T> node)
+    private void addToView(final DrawableIdentifier identifier, final MapBox box)
     {
-        if (view != null)
-        {
-            final var identifier = identifier(node);
+        // Make all existing labeled shapes inactive
+        view.map(at -> ((LabeledMapShape) at)
+                .withLabelStyle(INACTIVE_LABEL)
+                .withStyle(INACTIVE_BOX));
 
-            final var box = MapBox.box()
-                    .withStyle(ACTIVE_BOX)
-                    .withLabelStyle(ACTIVE_LABEL)
-                    .withRoundedLabelCorners(DrawingLength.pixels(10))
-                    .withRectangle(node.bounds())
-                    .withLabel(identifier.toString());
+        // then add the box to the view,
+        view.update(identifier, box);
 
-            view.map(at -> ((LabeledMapShape) at).withLabelStyle(INACTIVE_LABEL).withStyle(INACTIVE_BOX));
-            view.update(identifier, box);
-            view.pullToFront(identifier);
-        }
+        // pull it to the front,
+        view.pullToFront(identifier);
+
+        // and we're done with the frame.
         frameComplete();
+    }
+
+    private MapBox box(final Node<T> node, final String label)
+    {
+        return MapBox.box()
+                .withStyle(ACTIVE_BOX)
+                .withLabelStyle(ACTIVE_LABEL)
+                .withRoundedLabelCorners(pixels(10))
+                .withRectangle(node.bounds())
+                .withLabel(label);
     }
 
     private void frameComplete()

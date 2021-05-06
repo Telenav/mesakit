@@ -25,6 +25,7 @@ import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingP
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
 import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +72,7 @@ public class ZoomLevel implements AsString
      */
     public static ZoomLevel bestFit(final DrawingRectangle visible,
                                     final DrawingSize tileSize,
-                                    final com.telenav.mesakit.map.geography.shape.rectangle.Rectangle bounds)
+                                    final Rectangle bounds)
     {
         // If the bounds is all in the same tile at the highest zoom level
         if (CLOSEST.tileAt(bounds.topLeft()).equals(CLOSEST.tileAt(bounds.bottomRight())))
@@ -187,7 +188,7 @@ public class ZoomLevel implements AsString
 
     public DrawingPoint inRange(final DrawingPoint point, final DrawingSize tileSize)
     {
-        return DrawingPoint.at(point.coordinateSystem(), Doubles.inRange(point.x(), 0, widthInPixels(tileSize)),
+        return DrawingPoint.point(point.coordinates(), Doubles.inRange(point.x(), 0, widthInPixels(tileSize)),
                 Doubles.inRange(point.y(), 0, heightInPixels(tileSize)));
     }
 
@@ -237,7 +238,7 @@ public class ZoomLevel implements AsString
      */
     public DrawingSize sizeInDrawingUnits(final DrawingSize tileSize)
     {
-        return DrawingSize.size(tileSize.coordinateSystem(), widthInPixels(tileSize), heightInPixels(tileSize));
+        return DrawingSize.size(tileSize.coordinates(), widthInPixels(tileSize), heightInPixels(tileSize));
     }
 
     /**

@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas;
 
-import com.telenav.kivakit.ui.desktop.graphics.drawing.CoordinateSystem;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingHeight;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingWidth;
@@ -35,23 +34,19 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Width;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 /**
- * Maps between drawing coordinates, as expressed by <i>Drawing*</i> classes, and map coordinates, as expressed by
+ * Maps between drawing coordinates, as expressed by <i>Drawing*</i> objects, and map coordinates, as expressed by
  * {@link Location}, {@link Latitude}, {@link Longitude}, {@link Rectangle} {@link Distance}, {@link Width}, {@link
- * Height} and {@link Size}.
+ * Height} and {@link Size}. The projection area has an origin at 0, 0 in the upper left and an extent defined by {@link
+ * #drawingSize()}
  *
  * @author jonathanl (shibo)
  */
 public interface MapProjection
 {
     /**
-     * Assigns the given coordinate system to this map projection
+     * @return The drawing area in drawing coordinates in the coordinate system for this projection
      */
-    void coordinateSystem(CoordinateSystem system);
-
-    /**
-     * @return The drawing area in drawing coordinates
-     */
-    DrawingRectangle drawingArea();
+    DrawingSize drawingSize();
 
     /**
      * @return The map area as a {@link Rectangle} in latitude and longitude
@@ -100,16 +95,7 @@ public interface MapProjection
     /**
      * @return The given {@link Size} in the drawing area
      */
-    default DrawingSize toDrawing(final Size size)
-    {
-        // Convert width and height to a location relative to the top left,
-        final var at = Location.degrees(
-                90 - size.height().asDegrees(),
-                -180 + size.width().asDegrees());
-
-        // project that to coordinate space, and return it as a size.
-        return toDrawing(at).minus(drawingArea().topLeft()).asSize();
-    }
+    DrawingSize toDrawing(final Size size);
 
     /**
      * @return The given drawing area size as a map {@link Size}
@@ -126,7 +112,7 @@ public interface MapProjection
      */
     default Height toMap(final DrawingHeight height)
     {
-        final var location = toMap(height.asCoordinate());
+        final var location = toMap(height.asPoint());
         return location == null ? null : location.asHeight();
     }
 
@@ -135,7 +121,7 @@ public interface MapProjection
      */
     default Width toMap(final DrawingWidth width)
     {
-        final var location = toMap(width.asCoordinate());
+        final var location = toMap(width.asPoint());
         return location == null ? null : location.asWidth();
     }
 
@@ -158,7 +144,7 @@ public interface MapProjection
     default Rectangle toMap(final DrawingRectangle rectangle)
     {
         final var at = toMap(rectangle.at());
-        final var to = toMap(rectangle.to());
+        final var to = toMap(rectangle.asPoint());
         return at == null || to == null ? null : Rectangle.fromLocations(at, to);
     }
 }

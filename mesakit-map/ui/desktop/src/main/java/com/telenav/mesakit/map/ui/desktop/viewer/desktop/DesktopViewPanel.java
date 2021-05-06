@@ -26,11 +26,13 @@ import com.telenav.kivakit.core.kernel.messaging.Message;
 import com.telenav.kivakit.core.network.core.Host;
 import com.telenav.kivakit.core.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.ui.desktop.component.KivaKitPanel;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Box;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Label;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.surfaces.java2d.Java2dDrawingSurface;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
@@ -45,6 +47,7 @@ import com.telenav.mesakit.map.ui.desktop.tiles.SlippyTileImageCache;
 import com.telenav.mesakit.map.ui.desktop.tiles.ZoomLevel;
 import com.telenav.mesakit.map.ui.desktop.viewer.DrawableIdentifier;
 import com.telenav.mesakit.map.ui.desktop.viewer.InteractiveView;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -57,14 +60,16 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.awt.geom.Point2D;
 import java.util.function.Function;
 
 import static com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat.USER_LABEL;
-import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.DrawingCoordinateSystem.drawingCoordinateSystem;
+import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle.pixels;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle.rectangle;
-import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.DARK_TANGERINE;
+import static com.telenav.kivakit.ui.desktop.graphics.drawing.surfaces.java2d.Java2dDrawingSurface.surface;
 import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.CAPTION;
 import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.MAP_BACKGROUND;
+import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.SELECTION_AREA;
 import static com.telenav.mesakit.map.ui.desktop.tiles.SlippyTile.STANDARD_TILE_SIZE;
 import static com.telenav.mesakit.map.ui.desktop.tiles.ZoomLevel.FURTHEST;
 import static com.telenav.mesakit.map.ui.desktop.viewer.desktop.DesktopViewPanel.State.PAUSED;
@@ -98,13 +103,13 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     private Rectangle viewArea;
 
     /** The canvas to draw on */
-    private MapCanvas canvas;
+    private MapCanvas mapCanvas;
 
     /** Location of cursor when not dragging */
     private Location cursorAt;
 
     /** Translates between the view area and drawing coordinates */
-    private MapProjection projection;
+    private MapProjection mapProjection;
 
     /** True when this component is ready to paint itself */
     private boolean readyToPaint;
@@ -166,6 +171,8 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
             requestRedraw();
         }
     });
+
+    private Java2dDrawingSurface drawingSurface;
 
     /**
      * Construct
@@ -333,7 +340,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     @Override
     public void mouseDragged(final MouseEvent event)
     {
-        final var point = event.getPoint();
+        final var dragPoint = point2dToDrawingPoint(event.getPoint());
 
         // If we're dragging the mouse
         if (isDragging())
@@ -345,7 +352,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
                 final var start = panProjection.toMap(dragStart);
 
                 // and the location we're at now,
-                final var at = panProjection.toMap(canvas.at(point));
+                final var at = panProjection.toMap(dragPoint);
 
                 if (start != null && at != null)
                 {
@@ -359,29 +366,26 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
             else
             {
                 // We're drawing a zoom selection rectangle, so get the width and height of it
-                final var width = point.getX() - dragStart.x();
+                final var width = dragPoint.x() - dragStart.x();
                 final var height = heightForWidth(width);
 
                 // If the selection is down and to the right
                 if (width > 0)
                 {
                     // set the zoom area down and to the right
-                    zoomSelection = rectangle(canvas, dragStart.x(), dragStart.y(), width, height);
+                    zoomSelection = rectangle(drawingSurface, dragStart.x(), dragStart.y(), width, height);
                 }
                 else
                 {
                     // for up and to the left selections, we have to invert the AWT rectangle
                     // because it cannot handle negative values
-                    zoomSelection = rectangle(canvas, dragStart.x() + width, dragStart.y() + height, -width, -height);
+                    zoomSelection = rectangle(drawingSurface, dragStart.x() + width, dragStart.y() + height, -width, -height);
                 }
             }
         }
         else
         {
-            if (projection != null)
-            {
-                cursorAt = projection.toMap(canvas.at(point));
-            }
+            cursorAt = pointToLocation(dragPoint);
         }
 
         // Redraw
@@ -419,24 +423,24 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     @Override
     public void mousePressed(final MouseEvent e)
     {
-        // Get the point where the mouse is pressed
-        final var dragStart = canvas.at(e.getPoint());
+        // Get the drawing surface point where the mouse is pressed,
+        final var pressedAt = point2dToDrawingPoint(e.getPoint());
 
-        // project it to map units,
-        final var projected = canvas.toMap(dragStart);
+        // project it to a map location,
+        final var pressedLocation = pointToLocation(pressedAt);
 
-        // and if that projection is valid,
-        if (projected != null)
+        // and if that location is valid,
+        if (pressedLocation != null)
         {
             // then the user clicked on the map, which potentially starts a drag operation.
-            this.dragStart = dragStart;
+            dragStart = pressedAt;
 
             // If we're zoomed in and the control key is down,
             if (isZoomedIn && e.isControlDown())
             {
                 // save the starting view center and projection for panning
                 panStart = viewCenter;
-                panProjection = projection;
+                panProjection = mapProjection;
             }
         }
     }
@@ -451,7 +455,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
         if (zoomSelection != null)
         {
             // zoom to that rectangle
-            final var selected = projection.toMap(zoomSelection);
+            final var selected = mapCanvas.toMap(zoomSelection);
             if (selected != null)
             {
                 trace("zooming to $ = $", zoomSelection, selected);
@@ -486,34 +490,37 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
         // If we are ready to paint,
         if (readyToPaint)
         {
-            // clear the canvas,
-            graphics.setColor(MAP_BACKGROUND.fillColor().asAwtColor());
-            graphics.fillRect(0, 0, getWidth(), getHeight());
+            // create a drawing surface for the entire panel,
+            drawingSurface = createDrawingSurface(graphics);
 
-            // create the canvas to draw on,
-            createCanvas(graphics);
+            // create a canvas area to project the map onto
+            mapCanvas = createMapCanvas(graphics);
+
+            // clear the background,
+            Box.box()
+                    .withArea(drawingSurface.drawingArea())
+                    .withStyle(MAP_BACKGROUND)
+                    .draw(drawingSurface);
 
             // draw map tiles layer on canvas,
             final var mapTiles = listenTo(new SlippyTileGrid(viewArea(), zoom));
-            mapTileCache.drawTiles(canvas, mapTiles);
+            mapTileCache.drawTiles(mapCanvas, mapTiles);
             if (isDebugOn())
             {
-                mapTiles.drawTileOutlines(canvas);
+                mapTiles.drawTileOutlines(mapCanvas);
             }
 
             // draw viewables on top of tiles,
-            // viewModel.draw(canvas);
+            viewModel.draw(mapCanvas);
 
             // and then, if we're drawing a zoom selection rectangle,
             if (zoomSelection != null)
             {
                 // draw it on top.
-                graphics.setColor(DARK_TANGERINE.asAwtColor());
-                graphics.drawRect(
-                        (int) zoomSelection.x(),
-                        (int) zoomSelection.y(),
-                        (int) zoomSelection.width(),
-                        (int) zoomSelection.height());
+                Box.box()
+                        .withStyle(SELECTION_AREA)
+                        .withArea(zoomSelection)
+                        .draw(drawingSurface);
             }
 
             // If we're just moving around and we know where the cursor is,
@@ -526,21 +533,21 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
                 final var text = state.at().name().toLowerCase()
                         + " \u2503 zoom level " + zoom.level()
                         + cursorText;
-                final var textSize = canvas.textSize(style, text);
+                final var textSize = mapCanvas.textSize(style, text);
                 Label.label()
-                        .at(canvas.at(
+                        .at(drawingSurface.point(
                                 getWidth() - textSize.widthInUnits() - margin * 3,
                                 getHeight() - textSize.heightInUnits() - margin * 3))
                         .withStyle(style)
                         .withRoundedCorners(DrawingLength.pixels(10))
                         .withMargin(margin)
                         .withText(text)
-                        .draw(canvas);
+                        .draw(drawingSurface);
             }
 
             // Show help message
             Label.label()
-                    .at(canvas.at(margin, margin))
+                    .at(drawingSurface.point(margin, margin))
                     .withStyle(CAPTION)
                     .withMargin(margin)
                     .withRoundedCorners(DrawingLength.pixels(10))
@@ -549,7 +556,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
                             + " \u2503 zoom (i)n (o)ut (f)it"
                             + " \u2503 map data \u00a9 openstreetmap contributors"
                     )
-                    .draw(canvas);
+                    .draw(drawingSurface);
         }
     }
 
@@ -621,16 +628,19 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
         panProjection = null;
     }
 
-    private void createCanvas(final Graphics2D graphics)
+    @NotNull
+    private Java2dDrawingSurface createDrawingSurface(final Graphics2D graphics)
+    {
+        return surface("drawing-surface", graphics, drawingSurfaceBounds());
+    }
+
+    private MapCanvas createMapCanvas(final Graphics2D graphics)
     {
         // Create a map projection using this panel's drawing area in pixel coordinates,
-        projection = new CartesianMapProjection(viewArea(), drawingArea());
+        mapProjection = new CartesianMapProjection(viewArea(), drawingArea().size());
 
         // create a canvas using the projection
-        canvas = MapCanvas.canvas(graphics, MapScale.STATE, projection);
-
-        // and then update the projection to use the canvas as its coordinate system.
-        projection.coordinateSystem(canvas);
+        return MapCanvas.canvas("map-canvas", graphics, MapScale.STATE, drawingArea(), mapProjection);
     }
 
     private DrawingRectangle drawingArea()
@@ -646,7 +656,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     private DrawingRectangle drawingSurfaceBounds()
     {
         final var bounds = getBounds();
-        return rectangle(drawingCoordinateSystem(), bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight());
+        return pixels(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight());
     }
 
     /**
@@ -671,6 +681,16 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     private boolean isPanning()
     {
         return panStart != null;
+    }
+
+    private DrawingPoint point2dToDrawingPoint(final Point2D point)
+    {
+        return DrawingPoint.point(drawingSurface, point.getX(), point.getY());
+    }
+
+    private Location pointToLocation(final DrawingPoint point)
+    {
+        return mapCanvas.toMap(point);
     }
 
     private void requestRedraw()
