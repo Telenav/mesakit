@@ -18,10 +18,6 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline.compression.huffman;
 
-import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
-import com.telenav.kivakit.core.collections.primitive.array.scalars.ByteArray;
-import com.telenav.kivakit.core.collections.primitive.list.ByteList;
 import com.telenav.kivakit.core.kernel.data.conversion.string.primitive.IntegerConverter;
 import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.core.kernel.logging.Logger;
@@ -29,6 +25,10 @@ import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.core.resource.resources.other.PropertyMap;
 import com.telenav.kivakit.data.compression.codecs.huffman.HuffmanCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
+import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
+import com.telenav.kivakit.primitive.collections.list.ByteList;
+import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 
 import java.util.Arrays;
 

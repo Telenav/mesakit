@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.geography.indexing.polygon;
 
-import com.telenav.mesakit.map.geography.Location;
-import com.telenav.kivakit.core.collections.primitive.array.scalars.LongArray;
 import com.telenav.kivakit.core.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
+import com.telenav.mesakit.map.geography.Location;
 
 public class LocationArray
 {

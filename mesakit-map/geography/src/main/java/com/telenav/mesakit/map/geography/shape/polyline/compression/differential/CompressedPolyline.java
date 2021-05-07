@@ -18,15 +18,6 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline.compression.differential;
 
-import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.LocationSequence;
-import com.telenav.mesakit.map.geography.Precision;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
-import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
-import com.telenav.kivakit.core.collections.primitive.array.bits.BitArray;
-import com.telenav.kivakit.core.collections.primitive.array.bits.io.BitReader;
-import com.telenav.kivakit.core.collections.primitive.array.bits.io.BitWriter;
-import com.telenav.kivakit.core.collections.primitive.list.ByteList;
 import com.telenav.kivakit.core.kernel.interfaces.numeric.Sized;
 import com.telenav.kivakit.core.kernel.language.collections.CompressibleCollection;
 import com.telenav.kivakit.core.kernel.language.primitives.Ints;
@@ -35,9 +26,18 @@ import com.telenav.kivakit.core.kernel.language.values.count.Count;
 import com.telenav.kivakit.core.kernel.logging.Logger;
 import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.core.kernel.messaging.Debug;
-import com.telenav.mesakit.map.measurements.geographic.Distance;
+import com.telenav.kivakit.primitive.collections.array.bits.BitArray;
+import com.telenav.kivakit.primitive.collections.array.bits.io.BitReader;
+import com.telenav.kivakit.primitive.collections.array.bits.io.BitWriter;
+import com.telenav.kivakit.primitive.collections.list.ByteList;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
+import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.LocationSequence;
+import com.telenav.mesakit.map.geography.Precision;
+import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
+import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 import java.util.Arrays;
 import java.util.Collection;

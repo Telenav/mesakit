@@ -18,6 +18,14 @@
 
 package com.telenav.mesakit.map.cutter;
 
+import com.telenav.kivakit.core.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.core.kernel.logging.Logger;
+import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.core.kernel.messaging.Debug;
+import com.telenav.kivakit.core.resource.Resource;
+import com.telenav.kivakit.core.resource.path.Extension;
+import com.telenav.kivakit.primitive.collections.set.SplitLongSet;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.cutter.project.lexakai.diagrams.DiagramMapCutter;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
@@ -26,14 +34,6 @@ import com.telenav.mesakit.map.data.formats.pbf.processing.writers.PbfWriter;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionSet;
-import com.telenav.kivakit.core.collections.primitive.set.SplitLongSet;
-import com.telenav.kivakit.core.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
-import com.telenav.kivakit.core.resource.Resource;
-import com.telenav.kivakit.core.resource.path.Extension;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
 

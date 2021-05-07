@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.geography.indexing.polygon;
 
-import com.telenav.mesakit.map.geography.shape.segment.Segment;
-import com.telenav.kivakit.core.collections.primitive.array.scalars.IntArray;
 import com.telenav.kivakit.core.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
+import com.telenav.mesakit.map.geography.shape.segment.Segment;
 
 public class QuadrantStore
 {

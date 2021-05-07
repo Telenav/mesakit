@@ -18,8 +18,6 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
-import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
-import com.telenav.kivakit.core.collections.primitive.array.scalars.ByteArray;
 import com.telenav.kivakit.core.kernel.language.paths.PackagePath;
 import com.telenav.kivakit.core.kernel.language.progress.reporters.Progress;
 import com.telenav.kivakit.core.kernel.logging.Logger;
@@ -30,6 +28,8 @@ import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanChar
 import com.telenav.kivakit.data.compression.codecs.huffman.list.HuffmanStringListCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
+import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import org.junit.Test;
 
 import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;

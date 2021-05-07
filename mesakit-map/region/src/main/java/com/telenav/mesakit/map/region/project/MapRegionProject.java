@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.map.region.project;
 
-import com.telenav.kivakit.core.collections.project.CoreCollectionsKryoTypes;
 import com.telenav.kivakit.core.filesystem.Folder;
 import com.telenav.kivakit.core.kernel.language.collections.set.Sets;
 import com.telenav.kivakit.core.kernel.language.objects.Lazy;
@@ -27,6 +26,7 @@ import com.telenav.kivakit.core.kernel.project.Project;
 import com.telenav.kivakit.core.serialization.core.SerializationSessionFactory;
 import com.telenav.kivakit.core.serialization.kryo.CoreKernelKryoTypes;
 import com.telenav.kivakit.core.serialization.kryo.KryoTypes;
+import com.telenav.kivakit.primitive.collections.project.PrimitiveCollectionsKryoTypes;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.map.geography.project.MapGeographyKryoTypes;
 import com.telenav.mesakit.map.measurements.project.MapMeasurementsKryoTypes;
@@ -41,7 +41,7 @@ public class MapRegionProject extends Project
     private static final KryoTypes KRYO_TYPES = new MapRegionKryoTypes()
             .mergedWith(new MapGeographyKryoTypes())
             .mergedWith(new MapMeasurementsKryoTypes())
-            .mergedWith(new CoreCollectionsKryoTypes())
+            .mergedWith(new PrimitiveCollectionsKryoTypes())
             .mergedWith(new CoreKernelKryoTypes());
 
     public static MapRegionProject get()

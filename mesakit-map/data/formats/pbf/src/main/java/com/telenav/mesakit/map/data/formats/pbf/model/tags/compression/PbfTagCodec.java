@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
-import com.telenav.kivakit.core.collections.primitive.array.bits.io.BitReader;
-import com.telenav.kivakit.core.collections.primitive.array.bits.io.BitWriter;
-import com.telenav.kivakit.core.collections.primitive.list.ByteList;
 import com.telenav.kivakit.data.compression.codecs.huffman.HuffmanCodec;
+import com.telenav.kivakit.primitive.collections.array.bits.io.BitReader;
+import com.telenav.kivakit.primitive.collections.array.bits.io.BitWriter;
+import com.telenav.kivakit.primitive.collections.list.ByteList;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;

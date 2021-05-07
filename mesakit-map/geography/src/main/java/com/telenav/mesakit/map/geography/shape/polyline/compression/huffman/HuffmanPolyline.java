@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline.compression.huffman;
 
-import com.telenav.kivakit.core.collections.primitive.array.scalars.ByteArray;
-import com.telenav.kivakit.core.collections.primitive.list.ByteList;
 import com.telenav.kivakit.core.kernel.language.collections.CompressibleCollection;
+import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
+import com.telenav.kivakit.primitive.collections.list.ByteList;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
