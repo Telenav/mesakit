@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
+import com.telenav.kivakit.core.kernel.messaging.Listener;
 import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Style;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
@@ -46,17 +47,19 @@ public class SlippyTileGrid extends BaseRepeater implements Iterable<SlippyTile>
     /**
      * @param bounds The bounds that this grid of slippy tiles should cover
      */
-    public SlippyTileGrid(final Rectangle bounds)
+    public SlippyTileGrid(final Listener listener, final Rectangle bounds)
     {
-        this(bounds, SlippyTile.largerThan(bounds.size()).getZoomLevel());
+        this(listener, bounds, SlippyTile.largerThan(bounds.size()).getZoomLevel());
     }
 
     /**
      * @param bounds The bounds for this slippy tile grid
      * @param zoom The zoom level of tiles
      */
-    public SlippyTileGrid(final Rectangle bounds, final ZoomLevel zoom)
+    public SlippyTileGrid(final Listener listener, final Rectangle bounds, final ZoomLevel zoom)
     {
+        listener.listenTo(this);
+
         this.zoom = zoom;
         trace("bounds = " + bounds);
         trace("zoom = " + zoom);

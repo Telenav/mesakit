@@ -498,12 +498,12 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
 
             // clear the background,
             Box.box()
-                    .withArea(drawingSurface.drawingArea())
                     .withStyle(MAP_BACKGROUND)
+                    .withArea(drawingSurface.drawingArea())
                     .draw(drawingSurface);
 
             // draw map tiles layer on canvas,
-            final var mapTiles = listenTo(new SlippyTileGrid(viewArea(), zoom));
+            final var mapTiles = new SlippyTileGrid(this, viewArea(), zoom);
             mapTileCache.drawTiles(mapCanvas, mapTiles);
             if (isDebugOn())
             {
@@ -648,7 +648,8 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
         // Get the size of the entire zoom level in drawing units,
         final var size = zoom.sizeInDrawingUnits(STANDARD_TILE_SIZE);
 
-        isZoomedIn = size.width().units() < getWidth() || size.height().units() < getHeight();
+        isZoomedIn = size.width().units() < getWidth() ||
+                size.height().units() < getHeight();
 
         return size.centeredIn(drawingSurfaceBounds());
     }
@@ -783,7 +784,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
 
         // compute the view area to display,
         viewArea = viewArea(center, zoom);
-        trace("mapArea = " + viewArea());
+        trace("viewArea = " + viewArea());
 
         // Request a repaint
         readyToPaint = true;
