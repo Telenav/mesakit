@@ -18,16 +18,18 @@
 
 package com.telenav.mesakit.map.geography.indexing.quadtree;
 
-import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
-import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.kivakit.core.kernel.language.collections.list.BaseList;
 import com.telenav.kivakit.core.kernel.language.collections.list.ObjectList;
 import com.telenav.kivakit.core.kernel.language.threading.KivaKitThread;
 import com.telenav.kivakit.core.kernel.language.values.count.Count;
 import com.telenav.kivakit.core.kernel.logging.Logger;
 import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
+import com.telenav.mesakit.map.geography.Latitude;
+import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.Longitude;
+import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -108,9 +110,9 @@ public class QuadTreeSpatialIndexTest extends MapGeographyUnitTest
     public void testBoundaries()
     {
         final var index = new QuadTreeSpatialIndex<Location>(8, Distance.miles(10));
-        for (var latitude = -90; latitude <= 90; latitude += 90)
+        for (var latitude = Latitude.MINIMUM_DEGREES; latitude <= Latitude.MAXIMUM_DEGREES; latitude += Latitude.MAXIMUM_DEGREES)
         {
-            for (var longitude = -180; longitude <= 180; longitude += 180)
+            for (var longitude = Longitude.MINIMUM_DEGREES; longitude <= Longitude.MAXIMUM_DEGREES; longitude += Longitude.MAXIMUM_DEGREES)
             {
                 index.add(location(latitude, longitude));
             }

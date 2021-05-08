@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.ui.desktop.viewer.desktop;
 
+import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.mesakit.map.ui.desktop.viewer.View;
 import com.telenav.mesakit.map.ui.desktop.viewer.Viewer;
 
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public abstract class BaseViewer implements Viewer
+public abstract class BaseViewer extends BaseRepeater implements Viewer
 {
     private final List<View> views = new ArrayList<>();
 

@@ -64,7 +64,7 @@ public class LocationTest extends MapGeographyUnitTest
     @Test
     public void testDistance()
     {
-        for (double latitude = 0; latitude < 90; latitude += 1.0)
+        for (double latitude = 0; latitude < Latitude.MAXIMUM_DEGREES; latitude += 1.0)
         {
             final var north = Location.degrees(latitude, 0.0);
             final var location = north.moved(Heading.EAST, Distance.meters(100));

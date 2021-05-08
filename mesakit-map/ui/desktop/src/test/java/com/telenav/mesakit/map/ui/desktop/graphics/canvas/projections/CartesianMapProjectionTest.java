@@ -26,7 +26,7 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Width;
 import com.telenav.mesakit.map.ui.desktop.tiles.SlippyTileCoordinateSystem;
 import org.junit.Test;
 
-public class CartesianDrawingSurfaceProjectionTest extends BaseCoordinateMapperTest
+public class CartesianMapProjectionTest extends BaseCoordinateMapperTest
 {
     @Test
     public void testLocationForPoint1()
@@ -48,12 +48,12 @@ public class CartesianDrawingSurfaceProjectionTest extends BaseCoordinateMapperT
         final CartesianMapProjection projection = new CartesianMapProjection(Rectangle.MAXIMUM,
                 drawingSize(100, 100));
 
-        ensureEqual(Rectangle.MAXIMUM.topLeft(), projection.toMap(point(100, 100)));
-        ensureEqual(Rectangle.MAXIMUM.bottomLeft(), projection.toMap(point(100, 200)));
-        ensureEqual(Rectangle.MAXIMUM.topRight(), projection.toMap(point(200, 100)));
-        ensureEqual(Rectangle.MAXIMUM.bottomRight(), projection.toMap(point(200, 200)));
+        ensureEqual(Rectangle.MAXIMUM.topLeft(), projection.toMap(point(0, 0)));
+        ensureEqual(Rectangle.MAXIMUM.bottomLeft(), projection.toMap(point(0, 100)));
+        ensureEqual(Rectangle.MAXIMUM.topRight(), projection.toMap(point(100, 0)));
+        ensureEqual(Rectangle.MAXIMUM.bottomRight(), projection.toMap(point(100, 100)));
 
-        ensureEqual(Location.ORIGIN, projection.toMap(point(150, 150)));
+        ensureEqual(Location.ORIGIN, projection.toMap(point(50, 50)));
     }
 
     @Test
@@ -81,7 +81,7 @@ public class CartesianDrawingSurfaceProjectionTest extends BaseCoordinateMapperT
         ensureEqual(point(100, 0), projection.toDrawing(Rectangle.MAXIMUM.topRight()));
         ensureEqual(point(100, 100), projection.toDrawing(Rectangle.MAXIMUM.bottomRight()));
 
-        ensureEqual(point(150, 150), projection.toDrawing(Location.ORIGIN));
+        ensureEqual(point(50, 50), projection.toDrawing(Location.ORIGIN));
     }
 
     @Test
@@ -110,7 +110,7 @@ public class CartesianDrawingSurfaceProjectionTest extends BaseCoordinateMapperT
                 SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA, drawingSize(100, 100));
 
         // The origin will not be distorted
-        checkMapping(projection, point(150, 150), Location.ORIGIN);
+        checkMapping(projection, point(50, 50), Location.ORIGIN);
 
         // Ensure simple corner cases where there is no distortion
         checkMapping(projection, point(0, 0), SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA.topLeft());

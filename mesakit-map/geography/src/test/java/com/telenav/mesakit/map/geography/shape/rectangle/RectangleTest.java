@@ -115,10 +115,10 @@ public class RectangleTest extends MapGeographyUnitTest
         ensure(r2.contains(x2));
 
         final var maximum = Rectangle.MAXIMUM;
-        ensure(maximum.contains(Location.degrees(90, 180)));
-        ensure(maximum.contains(Location.degrees(90, -180)));
-        ensure(maximum.contains(Location.degrees(-90, 180)));
-        ensure(maximum.contains(Location.degrees(-90, -180)));
+        ensure(maximum.contains(Location.degrees(Latitude.MAXIMUM_DEGREES, Longitude.MAXIMUM_DEGREES)));
+        ensure(maximum.contains(Location.degrees(Latitude.MAXIMUM_DEGREES, Longitude.MINIMUM_DEGREES)));
+        ensure(maximum.contains(Location.degrees(Latitude.MINIMUM_DEGREES, Longitude.MAXIMUM_DEGREES)));
+        ensure(maximum.contains(Location.degrees(Latitude.MINIMUM_DEGREES, Longitude.MINIMUM_DEGREES)));
     }
 
     @Test

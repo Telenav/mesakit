@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.map.geography;
 
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
-import com.telenav.mesakit.map.geography.shape.rectangle.Width;
-import com.telenav.mesakit.map.measurements.geographic.Angle;
-import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.core.kernel.language.strings.Strings;
 import com.telenav.kivakit.core.kernel.language.values.count.Range;
 import com.telenav.kivakit.core.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
+import com.telenav.mesakit.map.geography.shape.rectangle.Width;
+import com.telenav.mesakit.map.measurements.geographic.Angle;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 import java.util.regex.Pattern;
 
@@ -47,6 +47,10 @@ public final class Longitude extends Angle
     public static final Longitude MINIMUM;
 
     public static final Longitude ORIGIN = new Longitude(0);
+
+    public static final double MAXIMUM_DEGREES = 180.0;
+
+    public static final double MINIMUM_DEGREES = -180.0;
 
     private static final long MAXIMUM_NANODEGREES = 180_000_000_000L;
 

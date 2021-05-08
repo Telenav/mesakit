@@ -45,7 +45,7 @@ public class SphericalMercatorMapProjection implements MapProjection
      * Maps between coordinates in degrees and coordinates in meters from the map origin (0, 0) using a simple spherical
      * Mercator projection.
      */
-    private final SphericalMercatorMetricProjection mercatorProjection = new SphericalMercatorMetricProjection();
+    private final SphericalMercatorMetricProjection metricProjection = new SphericalMercatorMetricProjection();
 
     private final MetricCoordinate mapAreaTopLeftInMeters;
 
@@ -65,12 +65,12 @@ public class SphericalMercatorMapProjection implements MapProjection
         this.drawingSize = drawingSize;
 
         // project the top left and bottom right corners of the map area to x,y values in meters
-        mapAreaTopLeftInMeters = mercatorProjection.toCoordinate(mapArea.topLeft());
-        final var metricBottomRight = mercatorProjection.toCoordinate(mapArea.bottomRight());
+        mapAreaTopLeftInMeters = metricProjection.toCoordinate(mapArea.topLeft());
+        final var metricBottomRight = metricProjection.toCoordinate(mapArea.bottomRight());
 
         // then compute the width of the map area in meters
         mapAreaWidthInMeters = metricBottomRight.xInMeters() - mapAreaTopLeftInMeters.xInMeters();
-        mapAreaHeightInMeters = metricBottomRight.yInMeters() - mapAreaTopLeftInMeters.yInMeters();
+        mapAreaHeightInMeters = metricBottomRight.yInMeters();
     }
 
     @Override
@@ -93,7 +93,7 @@ public class SphericalMercatorMapProjection implements MapProjection
     public DrawingPoint toDrawing(final Location location)
     {
         // Project the location to a coordinate in meters from the map origin
-        final var projected = mercatorProjection.toCoordinate(location);
+        final var projected = metricProjection.toCoordinate(location);
 
         // then normalize the projected point to the unit interval (0 to 1)
         final double xUnit = (projected.xInMeters() - mapAreaTopLeftInMeters.xInMeters()) / mapAreaWidthInMeters;
@@ -111,7 +111,7 @@ public class SphericalMercatorMapProjection implements MapProjection
     public DrawingSize toDrawing(final Size size)
     {
         // Project the size as a location to a coordinate in meters from the map origin
-        final var projected = mercatorProjection.toCoordinate(size.asLocation());
+        final var projected = metricProjection.toCoordinate(size.asLocation());
 
         // then normalize the projected point to the unit interval (0 to 1)
         final double xUnit = projected.xInMeters() / mapAreaWidthInMeters;
@@ -145,7 +145,7 @@ public class SphericalMercatorMapProjection implements MapProjection
         final var y = mapAreaTopLeftInMeters.yInMeters() + yMeters;
 
         // Project the drawing surface point to
-        return mercatorProjection.toLocation(new MetricCoordinate(x, y));
+        return metricProjection.toLocation(new MetricCoordinate(x, y));
     }
 
     private CoordinateSystem coordinates()

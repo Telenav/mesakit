@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.map.geography;
 
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
-import com.telenav.mesakit.map.geography.shape.rectangle.Height;
-import com.telenav.mesakit.map.measurements.geographic.Angle;
-import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.core.kernel.language.strings.Strings;
 import com.telenav.kivakit.core.kernel.language.values.count.Range;
 import com.telenav.kivakit.core.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
+import com.telenav.mesakit.map.geography.shape.rectangle.Height;
+import com.telenav.mesakit.map.measurements.geographic.Angle;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 import java.util.regex.Pattern;
 
@@ -35,7 +35,7 @@ import static com.telenav.mesakit.map.geography.Precision.DM6;
 import static com.telenav.mesakit.map.geography.Precision.DM7;
 
 /**
- * Latitude implementation or a simple angle between -90 and 90.
+ * Latitude implementation or a simple angle between -85 and 85.
  *
  * @author jonathanl (shibo)
  */
@@ -46,17 +46,17 @@ public final class Latitude extends Angle
 
     public static final Latitude ORIGIN = new Latitude(0);
 
-    // See http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#X_and_Y
-    // to understand why the OSM maximum latitude is 85.0511
-    public static final Latitude OSM_MAXIMUM = degrees(85.0511);
-
     public static final Latitude MAXIMUM;
 
     public static final Latitude MINIMUM;
 
-    private static final long MAXIMUM_NANODEGREES = 90_000_000_000L;
+    public static final double MAXIMUM_DEGREES = 85.0;
 
-    private static final long MINIMUM_NANODEGREES = -90_000_000_000L;
+    public static final double MINIMUM_DEGREES = -85.0;
+
+    private static final long MAXIMUM_NANODEGREES = (long) (MAXIMUM_DEGREES * 1E9);
+
+    private static final long MINIMUM_NANODEGREES = (long) (MINIMUM_DEGREES * 1E9);
 
     static
     {
@@ -72,7 +72,7 @@ public final class Latitude extends Angle
 
     public static Latitude degrees(final double degrees)
     {
-        return nanodegrees((long) (degrees * 1_000_000_000));
+        return nanodegrees((long) (degrees * 1E9));
     }
 
     public static Latitude degreesInRange(final double degrees)
@@ -106,12 +106,20 @@ public final class Latitude extends Angle
 
     public static double inRange(final double degrees)
     {
-        return degrees % 90.0;
+        if (degrees < MINIMUM_DEGREES)
+        {
+            return MINIMUM_DEGREES;
+        }
+        if (degrees > MAXIMUM_DEGREES)
+        {
+            return MAXIMUM_DEGREES;
+        }
+        return degrees;
     }
 
     public static boolean isValid(final double latitude)
     {
-        return latitude >= -90 && latitude <= 90;
+        return latitude >= MINIMUM_DEGREES && latitude <= MAXIMUM_DEGREES;
     }
 
     public static Latitude microdegrees(final int microdegrees)
@@ -236,7 +244,7 @@ public final class Latitude extends Angle
 
     /**
      * @param that The angle to be subtracted.
-     * @return The resulting latitude or -90 if the minimum latitude has been reached.
+     * @return The resulting latitude or -85 if the minimum latitude has been reached.
      */
     @Override
     public Latitude minus(final Angle that)
@@ -253,7 +261,7 @@ public final class Latitude extends Angle
 
     /**
      * @param that The angle to be added.
-     * @return The resulting latitude or 90 if the maximum latitude has been reached.
+     * @return The resulting latitude or 85 if the maximum latitude has been reached.
      */
     @Override
     public Latitude plus(final Angle that)

@@ -18,7 +18,9 @@
 
 package com.telenav.mesakit.map.geography.projection.projections;
 
+import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.Longitude;
 import com.telenav.mesakit.map.geography.projection.MetricCoordinate;
 import com.telenav.mesakit.map.geography.projection.MetricProjection;
 
@@ -26,8 +28,6 @@ import static com.telenav.mesakit.map.measurements.geographic.Distance.EARTH_RAD
 import static java.lang.Math.PI;
 import static java.lang.Math.atan;
 import static java.lang.Math.exp;
-import static java.lang.Math.log;
-import static java.lang.Math.tan;
 import static java.lang.Math.toDegrees;
 import static java.lang.Math.toRadians;
 
@@ -56,21 +56,22 @@ public class SphericalMercatorMetricProjection implements MetricProjection
 
     private double latitudeInDegreesToMeters(final double latitudeInDegrees)
     {
-        return log(tan(toRadians(latitudeInDegrees) / 2 + PI / 4)) * EARTH_RADIUS_IN_METERS;
+        final var latitudeInRadians = toRadians(Latitude.inRange(latitudeInDegrees));
+        return EARTH_RADIUS_IN_METERS * Math.log(Math.tan(Math.PI / 4 + latitudeInRadians / 2));
     }
 
     private double longitudeInDegreesToMeters(final double longitudeInDegrees)
     {
-        return toRadians(longitudeInDegrees) * EARTH_RADIUS_IN_METERS;
+        return EARTH_RADIUS_IN_METERS * toRadians(Longitude.inRange(longitudeInDegrees));
     }
 
     private double metersToLatitudeInDegrees(final double yInMeters)
     {
-        return toDegrees(atan(exp(yInMeters / EARTH_RADIUS_IN_METERS)) * 2 - PI / 2);
+        return Latitude.inRange(toDegrees(atan(exp(yInMeters / EARTH_RADIUS_IN_METERS)) * 2 - PI / 2));
     }
 
     private double metersToLongitudeInDegrees(final double xInMeters)
     {
-        return toDegrees(xInMeters / EARTH_RADIUS_IN_METERS);
+        return Longitude.inRange(toDegrees(xInMeters / EARTH_RADIUS_IN_METERS));
     }
 }

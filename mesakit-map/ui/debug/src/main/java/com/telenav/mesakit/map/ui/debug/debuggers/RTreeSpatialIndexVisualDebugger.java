@@ -18,6 +18,8 @@
 
 package com.telenav.mesakit.map.ui.debug.debuggers;
 
+import com.telenav.kivakit.core.kernel.messaging.Listener;
+import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.mesakit.map.geography.indexing.rtree.InteriorNode;
 import com.telenav.mesakit.map.geography.indexing.rtree.Leaf;
 import com.telenav.mesakit.map.geography.indexing.rtree.Node;
@@ -43,7 +45,7 @@ import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.INACTIVE_LABEL;
 /**
  * @author jonathanl (shibo)
  */
-public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> implements RTreeSpatialIndexDebugger<T>
+public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> extends BaseRepeater implements RTreeSpatialIndexDebugger<T>
 {
     /** View for debugging */
     private final transient View view;
@@ -55,9 +57,9 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
 
     private final transient Map<Leaf<T>, DrawableIdentifier> identifierForLeaf = new HashMap<>();
 
-    public RTreeSpatialIndexVisualDebugger(final String title)
+    public RTreeSpatialIndexVisualDebugger(final Listener listener, final String title)
     {
-        view = new DebugViewer().view(title);
+        view = listener.listenTo(new DebugViewer()).view(title);
     }
 
     @Override

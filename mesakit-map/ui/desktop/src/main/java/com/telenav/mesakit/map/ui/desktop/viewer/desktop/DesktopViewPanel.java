@@ -22,6 +22,7 @@ import com.telenav.kivakit.core.kernel.language.threading.conditions.StateMachin
 import com.telenav.kivakit.core.kernel.language.time.Duration;
 import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.core.kernel.language.values.level.Percent;
+import com.telenav.kivakit.core.kernel.messaging.Listener;
 import com.telenav.kivakit.core.kernel.messaging.Message;
 import com.telenav.kivakit.core.network.core.Host;
 import com.telenav.kivakit.core.network.http.HttpNetworkLocation;
@@ -38,7 +39,7 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapScale;
-import com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections.CartesianMapProjection;
+import com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections.SphericalMercatorMapProjection;
 import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDrawable;
 import com.telenav.mesakit.map.ui.desktop.tiles.SlippyTile;
 import com.telenav.mesakit.map.ui.desktop.tiles.SlippyTileCoordinateSystem;
@@ -139,46 +140,20 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     private Duration delay = Duration.NONE;
 
     /** Cache of slippy tile images */
-    private final SlippyTileImageCache mapTileCache = listenTo(new SlippyTileImageCache(Maximum._256)
-    {
-        @Override
-        public DrawingSize tileSize()
-        {
-            return STANDARD_TILE_SIZE;
-        }
+    private SlippyTileImageCache mapTileCache;
 
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected HttpNetworkLocation networkLocation(final SlippyTile tile)
-        {
-            final var x = tile.x();
-            final var y = tile.y();
-            final var z = tile.getZoomLevel().level();
-
-            return new HttpNetworkLocation(Host.parse("b.tile.openstreetmap.org")
-                    .http()
-                    .path(Message.format("/${long}/${long}/${long}.png", z, x, y)));
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void onCacheUpdated()
-        {
-            requestRedraw();
-        }
-    });
-
+    /** The drawing surface of the entire panel */
     private Java2dDrawingSurface drawingSurface;
 
     /**
      * Construct
      */
-    public DesktopViewPanel()
+    public DesktopViewPanel(final Listener listener)
     {
+        listener.listenTo(this);
+
+        createMapTileCache();
+
         setDoubleBuffered(true);
 
         // If the panel is resized
@@ -340,7 +315,8 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     @Override
     public void mouseDragged(final MouseEvent event)
     {
-        final var dragPoint = point2dToDrawingPoint(event.getPoint());
+        final Point2D point = event.getPoint();
+        final var dragPoint = DrawingPoint.point(drawingSurface, point.getX(), point.getY());
 
         // If we're dragging the mouse
         if (isDragging())
@@ -366,7 +342,10 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
             else
             {
                 // We're drawing a zoom selection rectangle, so get the width and height of it
+                Message.println("dragPoint = " + dragPoint);
+                Message.println("dragStart = " + dragStart);
                 final var width = dragPoint.x() - dragStart.x();
+                Message.println("width = " + width);
                 final var height = heightForWidth(width);
 
                 // If the selection is down and to the right
@@ -424,16 +403,19 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     public void mousePressed(final MouseEvent e)
     {
         // Get the drawing surface point where the mouse is pressed,
-        final var pressedAt = point2dToDrawingPoint(e.getPoint());
+        final Point2D point = e.getPoint();
+        final var pressedAt = DrawingPoint.point(drawingSurface, point.getX(), point.getY());
 
         // project it to a map location,
         final var pressedLocation = pointToLocation(pressedAt);
+        Message.println("Location = $", pressedLocation);
 
         // and if that location is valid,
         if (pressedLocation != null)
         {
             // then the user clicked on the map, which potentially starts a drag operation.
             dragStart = pressedAt;
+            Message.println("dragStart = " + dragStart);
 
             // If we're zoomed in and the control key is down,
             if (isZoomedIn && e.isControlDown())
@@ -637,10 +619,46 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     private MapCanvas createMapCanvas(final Graphics2D graphics)
     {
         // Create a map projection using this panel's drawing area in pixel coordinates,
-        mapProjection = new CartesianMapProjection(viewArea(), drawingArea().size());
+        mapProjection = new SphericalMercatorMapProjection(viewArea(), drawingArea().size());
 
         // create a canvas using the projection
         return MapCanvas.canvas("map-canvas", graphics, MapScale.STATE, drawingArea(), mapProjection);
+    }
+
+    private void createMapTileCache()
+    {
+        mapTileCache = new SlippyTileImageCache(this, Maximum._256)
+        {
+            @Override
+            public DrawingSize tileSize()
+            {
+                return STANDARD_TILE_SIZE;
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            protected HttpNetworkLocation networkLocation(final SlippyTile tile)
+            {
+                final var x = tile.x();
+                final var y = tile.y();
+                final var z = tile.getZoomLevel().level();
+
+                return new HttpNetworkLocation(Host.parse("b.tile.openstreetmap.org")
+                        .http()
+                        .path(Message.format("/${long}/${long}/${long}.png", z, x, y)));
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            protected void onCacheUpdated()
+            {
+                requestRedraw();
+            }
+        };
     }
 
     private DrawingRectangle drawingArea()
@@ -684,11 +702,6 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
         return panStart != null;
     }
 
-    private DrawingPoint point2dToDrawingPoint(final Point2D point)
-    {
-        return DrawingPoint.point(drawingSurface, point.getX(), point.getY());
-    }
-
     private Location pointToLocation(final DrawingPoint point)
     {
         return mapCanvas.toMap(point);
@@ -719,9 +732,9 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     private Rectangle viewArea(final Location centerLocation,
                                final ZoomLevel zoom)
     {
-        final var system = new SlippyTileCoordinateSystem(zoom);
+        final var tileCoordinates = new SlippyTileCoordinateSystem(zoom);
 
-        final var center = system.toDrawing(centerLocation);
+        final var center = tileCoordinates.toDrawing(centerLocation);
         trace("center = $", center);
 
         final var dx = getWidth() / 2.0;
@@ -739,8 +752,8 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
                         center.y() + dy), mapTileCache.tileSize());
         trace("bottomRight = $", drawingBottomRight);
 
-        final var topLeft = system.toMap(drawingTopLeft);
-        final var bottomRight = system.toMap(drawingBottomRight);
+        final var topLeft = tileCoordinates.toMap(drawingTopLeft);
+        final var bottomRight = tileCoordinates.toMap(drawingBottomRight);
 
         return Rectangle.fromLocations(topLeft, bottomRight);
     }

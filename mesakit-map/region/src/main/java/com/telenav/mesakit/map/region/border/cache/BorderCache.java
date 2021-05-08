@@ -724,7 +724,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
         if (RTreeSpatialIndex.visualDebug())
         {
             final var title = "RTree Debugger (" + name() + ")";
-            index().debugger(new RTreeSpatialIndexVisualDebugger<>(title));
+            index().debugger(new RTreeSpatialIndexVisualDebugger<>(this, title));
         }
 
         try

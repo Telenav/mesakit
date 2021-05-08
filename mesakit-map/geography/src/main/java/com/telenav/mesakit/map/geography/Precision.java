@@ -18,14 +18,6 @@
 
 package com.telenav.mesakit.map.geography;
 
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
-import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
-import com.telenav.mesakit.map.geography.shape.rectangle.Height;
-import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.geography.shape.rectangle.Width;
-import com.telenav.mesakit.map.measurements.geographic.Angle;
-import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.mesakit.map.measurements.geographic.Heading;
 import com.telenav.kivakit.core.commandline.SwitchParser;
 import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.core.kernel.data.conversion.string.enumeration.EnumConverter;
@@ -35,6 +27,14 @@ import com.telenav.kivakit.core.kernel.logging.Logger;
 import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.core.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
+import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
+import com.telenav.mesakit.map.geography.shape.rectangle.Height;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.geography.shape.rectangle.Width;
+import com.telenav.mesakit.map.measurements.geographic.Angle;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
+import com.telenav.mesakit.map.measurements.geographic.Heading;
 
 /**
  * Decimal precision for {@link Angle}, {@link Latitude}, {@link Longitude}, {@link Width}, {@link Height} and {@link
@@ -42,9 +42,9 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
  * <p>
  * DM{N} is a value that has N digits after the decimal.
  * <p>
- * For example, 90 degrees in DM6 is 90.000000 which is 90,000,000 as an integer.
+ * For example, 85 degrees in DM6 is 85.000000 which is 85,000,000 as an integer.
  * <p>
- * In DM7, 90 degrees is 900,000,000.
+ * In DM7, 85 degrees is 850,000,000.
  *
  * @author jonathanl (shibo)
  */
@@ -61,9 +61,9 @@ public enum Precision
 
     private static final long[] NANODEGREES_PER_DECIMAL = {
             0, // NONE
-            10_000L, // DM5
+            1_0000L, // DM5
             1_000L, // DM6
-            100L // DM7
+            1_00L // DM7
     };
 
     private static final long[] MAXIMUM = {
@@ -226,7 +226,7 @@ public enum Precision
         if (latitude != 0)
         {
             latitude = latitude / Ints.powerOfTen(places());
-            return latitude != 0 && Ints.isBetween(latitude, -90, 90);
+            return latitude != 0 && Ints.isBetween(latitude, (int) Latitude.MINIMUM_DEGREES, (int) Latitude.MAXIMUM_DEGREES);
         }
         return true;
     }
@@ -236,7 +236,7 @@ public enum Precision
         if (longitude != 0)
         {
             longitude = longitude / Ints.powerOfTen(places());
-            return longitude != 0 && Ints.isBetween(longitude, -180, 180);
+            return longitude != 0 && Ints.isBetween(longitude, (int) Longitude.MINIMUM_DEGREES, (int) Longitude.MAXIMUM_DEGREES);
         }
         return true;
     }

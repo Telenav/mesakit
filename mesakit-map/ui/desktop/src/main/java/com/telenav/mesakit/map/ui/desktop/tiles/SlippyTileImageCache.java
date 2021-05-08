@@ -22,6 +22,7 @@ import com.telenav.kivakit.core.collections.map.CacheMap;
 import com.telenav.kivakit.core.collections.set.ConcurrentHashSet;
 import com.telenav.kivakit.core.kernel.language.threading.RepeatingKivaKitThread;
 import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.core.kernel.messaging.Listener;
 import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
@@ -66,13 +67,17 @@ public abstract class SlippyTileImageCache extends BaseRepeater
     /**
      * The disk cache folder
      */
-    private final SlippyTileCache cache = listenTo(new SlippyTileCache(MesaKit.get().mesakitAllVersionsFolder().folder("tile-cache")));
+    private final SlippyTileCache cache;
 
     /**
      * @param maximumTiles The maximum number of images to hold in the cache
      */
-    protected SlippyTileImageCache(final Maximum maximumTiles)
+    protected SlippyTileImageCache(final Listener listener, final Maximum maximumTiles)
     {
+        listener.listenTo(this);
+
+        cache = listenTo(new SlippyTileCache(MesaKit.get().mesakitAllVersionsFolder().folder("tile-cache")));
+
         imageForTile = Collections.synchronizedMap(new CacheMap<>(maximumTiles));
         requested = new ArrayBlockingQueue<>(maximumTiles.asInt());
 

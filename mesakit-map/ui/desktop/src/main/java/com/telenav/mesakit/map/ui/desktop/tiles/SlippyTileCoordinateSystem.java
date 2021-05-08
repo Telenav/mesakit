@@ -23,7 +23,9 @@ import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.DrawingCoordinat
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
+import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.Longitude;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections.SphericalMercatorMapProjection;
@@ -43,8 +45,8 @@ public class SlippyTileCoordinateSystem extends DrawingCoordinateSystem
      * The bounds of the slippy tile coordinate system
      */
     public static final Rectangle SLIPPY_TILE_MAP_AREA = Rectangle.fromLocations(
-            Location.degrees(-85.0511, -180),
-            Location.degrees(85.0511, 180));
+            Location.degrees(Latitude.MINIMUM_DEGREES, Longitude.MINIMUM_DEGREES),
+            Location.degrees(Latitude.MAXIMUM_DEGREES, Longitude.MAXIMUM_DEGREES));
 
     private final MapProjection projection;
 

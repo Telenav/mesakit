@@ -308,7 +308,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
     public static void main(final String[] args)
     {
         // Generate latitudeCosine table
-        for (var latitude = 0.0; latitude <= 90; latitude += 1.0)
+        for (var latitude = 0.0; latitude <= Latitude.MAXIMUM_DEGREES; latitude += 1.0)
         {
             final var cosine = Math.cos(Math.toRadians(latitude));
             System.out.print(cosine + ", ");
@@ -593,8 +593,8 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         this.latitudeInDm7 = latitudeInDm7;
         this.longitudeInDm7 = longitudeInDm7;
 
-        assert this.latitudeInDm7 <= 90_000_000_0;
-        assert this.longitudeInDm7 <= 180_000_000_0;
+        assert this.latitudeInDm7 <= (long) 90E7;
+        assert this.longitudeInDm7 <= (long) 180E7;
 
         assert DM7.isValidLatitude(latitudeInDm7) : "DM7 latitude " + latitudeInDm7 + " is out of range";
         assert DM7.isValidLongitude(longitudeInDm7) : "DM7 longitude " + longitudeInDm7 + " is out of range";

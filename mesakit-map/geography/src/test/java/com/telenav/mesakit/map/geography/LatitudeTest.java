@@ -47,8 +47,8 @@ public class LatitudeTest extends MapGeographyUnitTest
     @Test
     public void testMaximum()
     {
-        final var smallLatitude = randomValueFactory().newLatitude(Latitude.degrees(-90), Latitude.degrees(0));
-        final var bigLatitude = randomValueFactory().newLatitude(Latitude.degrees(0), Latitude.degrees(90));
+        final var smallLatitude = randomValueFactory().newLatitude(Latitude.degrees(Latitude.MINIMUM_DEGREES), Latitude.degrees(0));
+        final var bigLatitude = randomValueFactory().newLatitude(Latitude.degrees(0), Latitude.degrees(Latitude.MAXIMUM_DEGREES));
 
         ensureEqual(bigLatitude, smallLatitude.maximum(bigLatitude));
         ensureEqual(bigLatitude, bigLatitude.maximum(smallLatitude));
@@ -58,8 +58,8 @@ public class LatitudeTest extends MapGeographyUnitTest
     @Test
     public void testMinimum()
     {
-        final var smallLatitude = randomValueFactory().newLatitude(Latitude.degrees(-90), Latitude.degrees(0));
-        final var bigLatitude = randomValueFactory().newLatitude(Latitude.degrees(0), Latitude.degrees(90));
+        final var smallLatitude = randomValueFactory().newLatitude(Latitude.degrees(Latitude.MINIMUM_DEGREES), Latitude.degrees(0));
+        final var bigLatitude = randomValueFactory().newLatitude(Latitude.degrees(0), Latitude.degrees(Latitude.MAXIMUM_DEGREES));
 
         ensureEqual(smallLatitude, smallLatitude.minimum(bigLatitude));
         ensureEqual(smallLatitude, bigLatitude.minimum(smallLatitude));

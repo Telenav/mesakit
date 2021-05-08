@@ -25,7 +25,7 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Width;
 import com.telenav.mesakit.map.ui.desktop.tiles.SlippyTileCoordinateSystem;
 import org.junit.Test;
 
-public class MercatorDrawingSurfaceProjectionTest extends BaseCoordinateMapperTest
+public class MercatorMapProjectionTest extends BaseCoordinateMapperTest
 {
     @Test
     public void testSmall()

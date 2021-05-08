@@ -28,7 +28,7 @@ public class DesktopViewer extends BaseViewer
     protected InteractiveView newView(final String title)
     {
         // Create view panel
-        final var view = new DesktopViewPanel();
+        final var view = new DesktopViewPanel(this);
         view.setName(title);
 
         // Add to JFrame

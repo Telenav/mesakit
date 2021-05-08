@@ -40,7 +40,7 @@ public class MetricCoordinate
         this.yInMeters = yInMeters;
     }
 
-    public boolean isClose(final MetricCoordinate that)
+    public boolean isCloseTo(final MetricCoordinate that)
     {
         return Math.abs(xInMeters - that.xInMeters) < 1.0 &&
                 Math.abs(yInMeters - that.yInMeters) < 1.0;
