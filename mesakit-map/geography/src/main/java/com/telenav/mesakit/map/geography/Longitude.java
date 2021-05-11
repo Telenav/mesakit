@@ -52,9 +52,9 @@ public final class Longitude extends Angle
 
     public static final double MINIMUM_DEGREES = -180.0;
 
-    private static final long MAXIMUM_NANODEGREES = 180_000_000_000L;
+    private static final long MAXIMUM_NANODEGREES = (long) (MAXIMUM_DEGREES * 1E9);
 
-    private static final long MINIMUM_NANODEGREES = -180_000_000_000L;
+    private static final long MINIMUM_NANODEGREES = (long) (MINIMUM_DEGREES * 1E9);
 
     static
     {
@@ -104,7 +104,15 @@ public final class Longitude extends Angle
 
     public static double inRange(final double degrees)
     {
-        return degrees % 180.0;
+        if (degrees < MINIMUM_DEGREES)
+        {
+            return MINIMUM_DEGREES;
+        }
+        if (degrees > MAXIMUM_DEGREES)
+        {
+            return MAXIMUM_DEGREES;
+        }
+        return degrees;
     }
 
     public static boolean isValid(final double longitude)

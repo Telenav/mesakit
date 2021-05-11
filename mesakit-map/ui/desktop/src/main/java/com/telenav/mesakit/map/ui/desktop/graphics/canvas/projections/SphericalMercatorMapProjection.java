@@ -70,7 +70,7 @@ public class SphericalMercatorMapProjection implements MapProjection
 
         // then compute the width of the map area in meters
         mapAreaWidthInMeters = metricBottomRight.xInMeters() - mapAreaTopLeftInMeters.xInMeters();
-        mapAreaHeightInMeters = metricBottomRight.yInMeters();
+        mapAreaHeightInMeters = mapAreaTopLeftInMeters.yInMeters() - metricBottomRight.yInMeters();
     }
 
     @Override
