@@ -110,7 +110,7 @@ import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcess
  * other such tests.
  * <p>
  * Loads PBF border data for regions and converts it to an indexed form, {@link BorderSpatialIndex}, that can be rapidly
- * queried. The border data can be found in the mesakit-data project under the folder "boundaries". The borders can be
+ * queried. The border data can be found in the mesakit-assets project under the folder "boundaries". The borders can be
  * loaded with {@link #loadBorders()} and region codes associated with the borders with {@link #loadIdentities()}. The
  * borders themselves can be retrieved with {@link #borders(Region)}.
  *

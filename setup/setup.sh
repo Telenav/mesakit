@@ -14,7 +14,7 @@ if [ -z "$MESAKIT_HOME" ]; then
 fi
 
 cd $MESAKIT_WORKSPACE
-git clone git@github.com:Telenav/mesakit-data.git
+git clone git@github.com:Telenav/mesakit-assets.git
 
 cd $MESAKIT_HOME
 git checkout develop

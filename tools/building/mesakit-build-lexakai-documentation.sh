@@ -9,4 +9,4 @@
 
 source library-functions.sh
 
-lexakai -project-version=$MESAKIT_VERSION -output-folder=$MESAKIT_DATA_HOME/docs/lexakai/mesakit $MESAKIT_HOME
+lexakai -project-version=$MESAKIT_VERSION -output-folder=$MESAKIT_ASSETS_HOME/docs/lexakai/mesakit $MESAKIT_HOME
