@@ -7,6 +7,13 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-source library-functions.sh
+source mesakit-library-functions.sh
+source mesakit-projects.sh
 
-lexakai -project-version=$MESAKIT_VERSION -output-folder=$MESAKIT_ASSETS_HOME/docs/lexakai/mesakit $MESAKIT_HOME
+for project_home in "${MESAKIT_PROJECT_HOMES[@]}"; do
+
+    project_name=$(project_name $project_home)
+
+    lexakai -project-version=$MESAKIT_VERSION -output-folder=$MESAKIT_ASSETS_HOME/docs/$MESAKIT_VERSION/lexakai/$project_name $project_home
+
+done

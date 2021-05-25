@@ -18,23 +18,23 @@
 
 package com.telenav.mesakit.map.measurements.geographic;
 
-import com.telenav.kivakit.core.commandline.ArgumentParser;
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.core.kernel.language.primitives.Doubles;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.language.values.level.Percent;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
+import com.telenav.kivakit.commandline.ArgumentParser;
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.language.primitives.Doubles;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.level.Percent;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
 
 import java.util.regex.Pattern;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 /**
  * Abstract representation of the spatial separation of two points.

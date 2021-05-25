@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.extractors;
 
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfRevisionNumber;
-import com.telenav.kivakit.core.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
 
 public class RevisionNumberExtractor extends BaseExtractor<PbfRevisionNumber, PbfWay>
 {

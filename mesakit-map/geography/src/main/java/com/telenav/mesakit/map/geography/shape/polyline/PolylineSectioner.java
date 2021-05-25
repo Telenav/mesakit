@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 @UmlClassDiagram(diagram = DiagramPolyline.class)
 public class PolylineSectioner

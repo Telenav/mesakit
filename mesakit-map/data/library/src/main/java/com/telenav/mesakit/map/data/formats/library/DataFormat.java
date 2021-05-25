@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.data.formats.library;
 
-import com.telenav.kivakit.core.resource.Resource;
+import com.telenav.kivakit.resource.Resource;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.library.project.lexakai.diagrams.DiagramDataFormat;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 /**
  * The (binary or text) format of an input {@link Resource}.

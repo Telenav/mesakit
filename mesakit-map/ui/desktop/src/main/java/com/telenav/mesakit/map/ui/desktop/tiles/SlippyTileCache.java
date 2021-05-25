@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
-import com.telenav.kivakit.core.filesystem.File;
-import com.telenav.kivakit.core.filesystem.FileCache;
-import com.telenav.kivakit.core.filesystem.Folder;
-import com.telenav.kivakit.core.resource.CopyMode;
-import com.telenav.kivakit.core.resource.Resource;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.filesystem.FileCache;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.resource.CopyMode;
+import com.telenav.kivakit.resource.Resource;
 
 /**
  * A persistent cache of tile images.

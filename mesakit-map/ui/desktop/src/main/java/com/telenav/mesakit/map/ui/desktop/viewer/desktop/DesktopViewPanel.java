@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.map.ui.desktop.viewer.desktop;
 
-import com.telenav.kivakit.core.kernel.language.threading.conditions.StateMachine;
-import com.telenav.kivakit.core.kernel.language.time.Duration;
-import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.core.kernel.language.values.level.Percent;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
-import com.telenav.kivakit.core.kernel.messaging.Message;
-import com.telenav.kivakit.core.network.core.Host;
-import com.telenav.kivakit.core.network.http.HttpNetworkLocation;
+import com.telenav.kivakit.kernel.language.threading.conditions.StateMachine;
+import com.telenav.kivakit.kernel.language.time.Duration;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.language.values.level.Percent;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.network.core.Host;
+import com.telenav.kivakit.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.ui.desktop.component.KivaKitPanel;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Box;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Label;
@@ -64,7 +64,7 @@ import java.awt.event.MouseWheelListener;
 import java.awt.geom.Point2D;
 import java.util.function.Function;
 
-import static com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat.USER_LABEL;
+import static com.telenav.kivakit.kernel.language.strings.conversion.StringFormat.USER_LABEL;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle.pixels;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle.rectangle;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.surfaces.java2d.Java2dDrawingSurface.surface;

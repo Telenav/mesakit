@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.map.region.border.cache;
 
-import com.telenav.kivakit.core.filesystem.File;
-import com.telenav.kivakit.core.kernel.KivaKit;
-import com.telenav.kivakit.core.kernel.language.time.Time;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.language.values.version.Version;
-import com.telenav.kivakit.core.kernel.language.values.version.VersionedObject;
-import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.kivakit.core.serialization.core.SerializationSession;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.kernel.KivaKit;
+import com.telenav.kivakit.kernel.language.time.Time;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.version.Version;
+import com.telenav.kivakit.kernel.language.values.version.VersionedObject;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.serialization.core.SerializationSession;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionIdentity;
@@ -34,7 +34,7 @@ import com.telenav.mesakit.map.region.project.MapRegionProject;
 import java.io.InputStream;
 import java.util.Set;
 
-import static com.telenav.kivakit.core.serialization.core.SerializationSession.Type.RESOURCE;
+import static com.telenav.kivakit.serialization.core.SerializationSession.Type.RESOURCE;
 
 /**
  * Holds a set of region identities for a given region type, so they can be quickly loaded, creating a region object for

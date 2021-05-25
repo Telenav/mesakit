@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.geography.projection;
 
-import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.kernel.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
 
 /**
  * An x,y cartesian coordinate in meters from the lower left of the map projection

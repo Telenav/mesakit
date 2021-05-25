@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.cutter;
 
-import com.telenav.kivakit.core.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
-import com.telenav.kivakit.core.resource.Resource;
-import com.telenav.kivakit.core.resource.path.Extension;
+import com.telenav.kivakit.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.kivakit.primitive.collections.set.SplitLongSet;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.cutter.project.lexakai.diagrams.DiagramMapCutter;

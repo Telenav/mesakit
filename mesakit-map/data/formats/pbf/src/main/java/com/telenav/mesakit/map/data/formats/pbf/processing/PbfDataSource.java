@@ -18,18 +18,18 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing;
 
-import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
-import com.telenav.mesakit.map.data.formats.pbf.processing.readers.SerialPbfReader;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessing;
-import com.telenav.kivakit.core.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.core.kernel.language.time.Time;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.language.values.mutable.MutableValue;
-import com.telenav.kivakit.core.kernel.messaging.Broadcaster;
-import com.telenav.kivakit.core.resource.Resourceful;
+import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.time.Time;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.mutable.MutableValue;
+import com.telenav.kivakit.kernel.messaging.Broadcaster;
+import com.telenav.kivakit.resource.Resourceful;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
+import com.telenav.mesakit.map.data.formats.pbf.processing.readers.SerialPbfReader;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessing;
 
 import java.util.Map;
 

@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing.writers;
 
+import com.telenav.kivakit.resource.WritableResource;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessing;
-import com.telenav.kivakit.core.resource.WritableResource;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import crosby.binary.osmosis.OsmosisSerializer;
 import org.openstreetmap.osmosis.core.container.v0_6.BoundContainer;
 import org.openstreetmap.osmosis.core.container.v0_6.NodeContainer;
@@ -36,7 +36,7 @@ import org.openstreetmap.osmosis.osmbinary.file.BlockOutputStream;
 import java.util.Collection;
 import java.util.List;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 @UmlClassDiagram(diagram = DiagramPbfProcessing.class)
 public class PbfWriter

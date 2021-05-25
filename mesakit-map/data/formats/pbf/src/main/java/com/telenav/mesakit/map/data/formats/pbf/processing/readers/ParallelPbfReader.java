@@ -25,11 +25,11 @@ import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataSource;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataStatistics;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessing;
-import com.telenav.kivakit.core.collections.batcher.Batcher;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.kivakit.core.resource.Resource;
+import com.telenav.kivakit.collections.batcher.Batcher;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.resource.Resource;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**

@@ -22,7 +22,7 @@ import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 
 import java.util.Collection;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 /**
  * Finds a collection of {@link Geohash}es that cover a given polygon.

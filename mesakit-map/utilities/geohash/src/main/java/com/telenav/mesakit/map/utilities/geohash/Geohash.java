@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.map.utilities.geohash;
 
+import com.telenav.kivakit.kernel.language.objects.Objects;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.kivakit.core.kernel.language.objects.Objects;
 
 import java.util.Collection;
 import java.util.HashSet;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 /**
  * @author Mihai Chintoanu

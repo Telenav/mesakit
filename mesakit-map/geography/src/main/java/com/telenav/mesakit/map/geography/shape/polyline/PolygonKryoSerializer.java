@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
-import com.telenav.kivakit.core.serialization.kryo.KryoSerializationSession;
-import com.telenav.kivakit.core.serialization.kryo.KryoSerializer;
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
+import com.telenav.kivakit.serialization.kryo.KryoSerializer;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 public class PolygonKryoSerializer extends KryoSerializer<Polygon>
 {

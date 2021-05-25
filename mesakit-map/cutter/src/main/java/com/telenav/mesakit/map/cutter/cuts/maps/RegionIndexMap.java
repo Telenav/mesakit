@@ -20,9 +20,9 @@ package com.telenav.mesakit.map.cutter.cuts.maps;
 
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionSet;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;

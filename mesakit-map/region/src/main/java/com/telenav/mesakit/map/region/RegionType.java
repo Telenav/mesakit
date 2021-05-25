@@ -18,17 +18,17 @@
 
 package com.telenav.mesakit.map.region;
 
+import com.telenav.kivakit.collections.map.CaseFoldingStringMap;
+import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.kernel.language.collections.set.Sets;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.region.border.cache.BorderCache;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegion;
-import com.telenav.kivakit.core.collections.map.CaseFoldingStringMap;
-import com.telenav.kivakit.core.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.core.kernel.language.collections.set.Sets;
-import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -38,7 +38,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 @UmlClassDiagram(diagram = DiagramRegion.class)
 public class RegionType<T extends Region<T>>

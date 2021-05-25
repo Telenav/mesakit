@@ -1,16 +1,16 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelTags;
-import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.core.kernel.language.iteration.Iterators;
-import com.telenav.kivakit.core.kernel.language.primitives.Ints;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.iteration.Iterators;
+import com.telenav.kivakit.kernel.language.primitives.Ints;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelTags;
 import org.jetbrains.annotations.NotNull;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.Iterator;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 
 /**
  * @author jonathanl (shibo)

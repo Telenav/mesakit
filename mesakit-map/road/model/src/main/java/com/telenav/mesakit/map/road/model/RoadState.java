@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.core.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
 
 public enum RoadState implements Quantizable
 {

@@ -7,7 +7,7 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-source library-functions.sh
+source mesakit-library-functions.sh
 source mesakit-projects.sh
 
 help="[version]"
@@ -16,8 +16,4 @@ version=$1
 
 require_variable version "$help"
 
-for project_home in "${MESAKIT_ALL_HOMES[@]}"; do
-
-    git_flow_release_finish $project_home $version
-
-done
+git_flow_release_finish $MESAKIT_HOME $version

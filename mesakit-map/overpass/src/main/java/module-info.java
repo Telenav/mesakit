@@ -1,7 +1,7 @@
 open module mesakit.map.overpass
 {
     requires transitive mesakit.map.geography;
-    requires transitive kivakit.core.network.http;
+    requires transitive kivakit.network.http;
 
     requires transitive osmosis.xml;
     requires transitive osmosis.core;

@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.identifiers;
 
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapRelationIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelIdentifiers;
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 import org.openstreetmap.osmosis.core.domain.v0_6.EntityType;
 import org.openstreetmap.osmosis.core.domain.v0_6.Relation;
 

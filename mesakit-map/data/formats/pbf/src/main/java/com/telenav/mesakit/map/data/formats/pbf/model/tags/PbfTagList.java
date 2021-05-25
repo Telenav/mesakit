@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
-import com.telenav.kivakit.core.kernel.language.objects.Hash;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.AsIndentedString;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.AsStringIndenter;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat;
+import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
+import com.telenav.kivakit.kernel.language.strings.conversion.AsStringIndenter;
+import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -35,7 +35,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 @UmlClassDiagram(diagram = DiagramPbfModelTags.class)
 @UmlExcludeSuperTypes({ AsIndentedString.class, Iterable.class })

@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.geography.project;
 
+import com.telenav.kivakit.serialization.kryo.KryoTypes;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
@@ -37,7 +38,6 @@ import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.kivakit.core.serialization.kryo.KryoTypes;
 
 public class MapGeographyKryoTypes extends KryoTypes
 {

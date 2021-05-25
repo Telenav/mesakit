@@ -21,8 +21,8 @@ package com.telenav.mesakit.map.geography.indexing.rtree;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.kivakit.core.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.core.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.objects.Hash;
 
 import java.util.List;
 

@@ -25,7 +25,7 @@ import com.telenav.mesakit.map.geography.Longitude;
 import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
 import com.telenav.mesakit.map.geography.shape.segment.Segment;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
-import com.telenav.kivakit.core.kernel.language.values.level.Level;
+import com.telenav.kivakit.kernel.language.values.level.Level;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 

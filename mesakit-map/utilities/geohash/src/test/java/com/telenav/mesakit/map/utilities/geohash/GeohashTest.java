@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.map.utilities.geohash;
 
+import com.telenav.kivakit.test.UnitTest;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.kivakit.core.test.UnitTest;
 import org.junit.Test;
 
 import java.util.Collection;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 
 /**
  * @author Mihai Chintoanu

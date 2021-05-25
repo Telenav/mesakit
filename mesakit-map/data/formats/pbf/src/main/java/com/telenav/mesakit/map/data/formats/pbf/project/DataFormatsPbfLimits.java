@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.project;
 
-import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
 
 public class DataFormatsPbfLimits
 {

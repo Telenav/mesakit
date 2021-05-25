@@ -18,6 +18,9 @@
 
 package com.telenav.mesakit.map.region.border;
 
+import com.telenav.kivakit.kernel.interfaces.lifecycle.Configured;
+import com.telenav.kivakit.kernel.language.values.count.MutableCount;
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.rtree.InteriorNode;
 import com.telenav.mesakit.map.geography.indexing.rtree.Leaf;
@@ -29,9 +32,6 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.border.cache.BorderCache;
-import com.telenav.kivakit.core.kernel.interfaces.lifecycle.Configured;
-import com.telenav.kivakit.core.kernel.language.values.count.MutableCount;
-import com.telenav.kivakit.core.serialization.kryo.KryoSerializationSession;
 
 public class BorderSpatialIndexKryoSerializer<T extends Region<T>> extends RTreeSpatialIndexKryoSerializer<Border<T>> implements Configured<BorderCache.Settings<T>>
 {

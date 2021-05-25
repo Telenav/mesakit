@@ -18,16 +18,16 @@
 
 package com.telenav.mesakit.map.road.name.standardizer.locales.indonesian;
 
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.ParsedRoadName;
 import com.telenav.mesakit.map.road.name.parser.RoadNameParser;
 import com.telenav.mesakit.map.road.name.standardizer.BaseRoadNameStandardizer;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
 
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 import static com.telenav.mesakit.map.road.name.parser.ParsedRoadName.TypePosition.FIRST;
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
 
 /**
  * Takes a {@link ParsedRoadName} and standardizes it. There is very little that needs to be done for Indonesia in terms

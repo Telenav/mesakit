@@ -21,8 +21,8 @@ package com.telenav.mesakit.map.road.name.standardizer.locales.indonesian;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.locales.indonesian.IndonesianTokenizer;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.Token;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
 
 import java.util.HashMap;
 import java.util.Map;

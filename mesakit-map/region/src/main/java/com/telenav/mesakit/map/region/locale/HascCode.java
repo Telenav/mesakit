@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.region.locale;
 
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.mesakit.map.region.RegionCode;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.State;
-import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
 
 public class HascCode
 {

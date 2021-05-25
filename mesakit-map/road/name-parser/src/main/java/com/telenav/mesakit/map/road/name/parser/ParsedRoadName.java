@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.road.name.parser;
 
+import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.objects.Objects;
 import com.telenav.mesakit.map.measurements.geographic.Direction;
 import com.telenav.mesakit.map.road.model.RoadName;
-import com.telenav.kivakit.core.kernel.language.objects.Hash;
-import com.telenav.kivakit.core.kernel.language.objects.Objects;
 
 public class ParsedRoadName
 {

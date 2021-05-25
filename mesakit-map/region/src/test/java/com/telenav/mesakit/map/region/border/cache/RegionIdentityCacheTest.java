@@ -19,15 +19,15 @@
 package com.telenav.mesakit.map.region.border.cache;
 
 import com.esotericsoftware.kryo.io.Output;
+import com.telenav.kivakit.kernel.KivaKit;
+import com.telenav.kivakit.kernel.language.io.IO;
+import com.telenav.kivakit.kernel.language.values.version.VersionedObject;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.map.region.RegionIdentifier;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.project.MapRegionProject;
 import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
 import com.telenav.mesakit.map.region.regions.State;
-import com.telenav.kivakit.core.kernel.KivaKit;
-import com.telenav.kivakit.core.kernel.language.io.IO;
-import com.telenav.kivakit.core.kernel.language.values.version.VersionedObject;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -35,7 +35,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.telenav.kivakit.core.serialization.core.SerializationSession.Type.RESOURCE;
+import static com.telenav.kivakit.serialization.core.SerializationSession.Type.RESOURCE;
 
 public class RegionIdentityCacheTest extends MapRegionUnitTest
 {

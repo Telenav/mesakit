@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.map.geography.shape.segment;
 
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.core.kernel.language.iteration.Iterables;
-import com.telenav.kivakit.core.kernel.language.iteration.Next;
-import com.telenav.kivakit.core.kernel.language.objects.Hash;
-import com.telenav.kivakit.core.kernel.language.objects.Pair;
-import com.telenav.kivakit.core.kernel.language.strings.formatting.Separators;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.iteration.Iterables;
+import com.telenav.kivakit.kernel.language.iteration.Next;
+import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.objects.Pair;
+import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.geography.Latitude;

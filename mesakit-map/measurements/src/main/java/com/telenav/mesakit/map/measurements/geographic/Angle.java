@@ -18,20 +18,20 @@
 
 package com.telenav.mesakit.map.measurements.geographic;
 
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.data.validation.Validatable;
-import com.telenav.kivakit.core.kernel.data.validation.Validation;
-import com.telenav.kivakit.core.kernel.data.validation.Validator;
-import com.telenav.kivakit.core.kernel.data.validation.validators.BaseValidator;
-import com.telenav.kivakit.core.kernel.interfaces.numeric.Maximizable;
-import com.telenav.kivakit.core.kernel.interfaces.numeric.Minimizable;
-import com.telenav.kivakit.core.kernel.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.data.validation.Validatable;
+import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.Validator;
+import com.telenav.kivakit.kernel.data.validation.validators.BaseValidator;
+import com.telenav.kivakit.kernel.interfaces.numeric.Maximizable;
+import com.telenav.kivakit.kernel.interfaces.numeric.Minimizable;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
+import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -40,8 +40,8 @@ import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapM
 import java.io.Serializable;
 import java.util.regex.Pattern;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.unsupported;
-import static com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat.USER_LABEL_IDENTIFIER;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.kernel.language.strings.conversion.StringFormat.USER_LABEL_IDENTIFIER;
 
 /**
  * An angle value represented between -360 and 360 degrees. Note that an angle of -45 degrees is seen as being less than

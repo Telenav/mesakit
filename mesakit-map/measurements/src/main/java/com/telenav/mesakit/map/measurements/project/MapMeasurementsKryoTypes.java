@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.measurements.project;
 
+import com.telenav.kivakit.serialization.kryo.KryoTypes;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Area;
 import com.telenav.mesakit.map.measurements.geographic.AverageDistance;
@@ -29,7 +30,6 @@ import com.telenav.mesakit.map.measurements.motion.Acceleration;
 import com.telenav.mesakit.map.measurements.motion.Speed;
 import com.telenav.mesakit.map.measurements.motion.speeds.AverageSpeed;
 import com.telenav.mesakit.map.measurements.motion.speeds.WeightedAverageSpeed;
-import com.telenav.kivakit.core.serialization.kryo.KryoTypes;
 
 /**
  * @author jonathanl (shibo)

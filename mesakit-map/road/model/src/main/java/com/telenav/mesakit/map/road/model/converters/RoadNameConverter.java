@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.road.model.converters;
 
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.map.road.model.RoadName;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.language.strings.Strings;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
 
 import java.text.Normalizer;
 import java.util.regex.Pattern;

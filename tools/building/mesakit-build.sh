@@ -7,8 +7,12 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-source library-functions.sh
-source library-build.sh
+source mesakit-library-functions.sh
+source mesakit-library-build.sh
 source mesakit-projects.sh
 
-build $MESAKIT_HOME $@
+for project_home in "${MESAKIT_PROJECT_HOMES[@]}"; do
+
+    build $project_home $@
+
+done

@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.region.project;
 
+import com.telenav.kivakit.serialization.kryo.KryoTypes;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.border.Border;
 import com.telenav.mesakit.map.region.border.BorderSpatialIndex;
@@ -28,7 +29,6 @@ import com.telenav.mesakit.map.region.regions.County;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
 import com.telenav.mesakit.map.region.regions.TimeZone;
-import com.telenav.kivakit.core.serialization.kryo.KryoTypes;
 
 public class MapRegionKryoTypes extends KryoTypes
 {

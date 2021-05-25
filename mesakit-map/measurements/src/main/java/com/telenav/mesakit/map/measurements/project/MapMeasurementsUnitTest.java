@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.measurements.project;
 
-import com.telenav.kivakit.core.serialization.kryo.CoreKernelKryoTypes;
-import com.telenav.kivakit.core.serialization.kryo.KryoTypes;
-import com.telenav.kivakit.core.serialization.kryo.KryoUnitTest;
+import com.telenav.kivakit.serialization.kryo.CoreKernelKryoTypes;
+import com.telenav.kivakit.serialization.kryo.KryoTypes;
+import com.telenav.kivakit.serialization.kryo.KryoUnitTest;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 
 /**

@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.kivakit.core.collections.set.ConcurrentHashSet;
-import com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode;
-import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
-import com.telenav.kivakit.core.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
+import com.telenav.kivakit.collections.set.ConcurrentHashSet;
+import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
+import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -43,7 +43,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 @UmlClassDiagram(diagram = DiagramRegion.class)
 @UmlExcludeSuperTypes(AsString.class)

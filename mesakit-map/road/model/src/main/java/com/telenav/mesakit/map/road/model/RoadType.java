@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.road.model;
 
 import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.kivakit.core.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
 
 /**
  * Road type (as defined in the TXD specification)

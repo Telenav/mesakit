@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.geography.shape.rectangle;
 
-import com.telenav.kivakit.core.kernel.logging.*;
-import com.telenav.kivakit.core.test.UnitTest;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.test.UnitTest;
 import com.telenav.mesakit.map.geography.Location;
 import org.junit.Test;
 

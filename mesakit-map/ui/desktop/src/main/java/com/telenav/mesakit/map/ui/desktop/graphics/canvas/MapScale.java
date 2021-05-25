@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas;
 
-import com.telenav.kivakit.core.kernel.language.primitives.Doubles;
+import com.telenav.kivakit.kernel.language.primitives.Doubles;
 
 /**
  * The map scale, from street level to statewide level

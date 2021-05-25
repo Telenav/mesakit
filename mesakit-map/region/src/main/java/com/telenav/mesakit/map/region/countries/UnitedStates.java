@@ -26,8 +26,8 @@ import com.telenav.mesakit.map.region.countries.states.Washington;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.State;
-import com.telenav.kivakit.core.kernel.language.locales.CountryIsoCode;
-import com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode;
+import com.telenav.kivakit.kernel.language.locales.CountryIsoCode;
+import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
 
 public class UnitedStates extends Country
 {

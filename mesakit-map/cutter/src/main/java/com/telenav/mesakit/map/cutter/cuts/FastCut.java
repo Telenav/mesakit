@@ -18,6 +18,11 @@
 
 package com.telenav.mesakit.map.cutter.cuts;
 
+import com.telenav.kivakit.collections.map.MultiMap;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.cutter.Cut;
 import com.telenav.mesakit.map.cutter.PbfRegionCutter;
 import com.telenav.mesakit.map.cutter.cuts.maps.RegionWays;
@@ -29,11 +34,6 @@ import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor;
 import com.telenav.mesakit.map.region.Region;
-import com.telenav.kivakit.core.collections.map.MultiMap;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.resource.Resource;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 import org.openstreetmap.osmosis.core.domain.v0_6.EntityType;
 
 import java.util.List;

@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.measurements.motion;
 
 import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementMotion;
-import com.telenav.kivakit.core.kernel.language.time.Duration;
+import com.telenav.kivakit.kernel.language.time.Duration;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;

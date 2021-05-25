@@ -18,6 +18,11 @@
 
 package com.telenav.mesakit.map.geography.indexing.polygon;
 
+import com.telenav.kivakit.kernel.language.iteration.Iterables;
+import com.telenav.kivakit.kernel.language.iteration.Next;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.messages.status.Warning;
+import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
@@ -25,11 +30,6 @@ import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.geography.shape.polyline.PolygonBuilder;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.polyline.PolylineBuilder;
-import com.telenav.kivakit.core.kernel.language.iteration.Iterables;
-import com.telenav.kivakit.core.kernel.language.iteration.Next;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
-import com.telenav.kivakit.core.kernel.messaging.messages.status.Warning;
-import com.telenav.kivakit.core.resource.Resource;
 import org.nocrala.tools.gis.data.esri.shapefile.ValidationPreferences;
 import org.nocrala.tools.gis.data.esri.shapefile.exception.InvalidShapeFileException;
 import org.nocrala.tools.gis.data.esri.shapefile.shape.AbstractShape;

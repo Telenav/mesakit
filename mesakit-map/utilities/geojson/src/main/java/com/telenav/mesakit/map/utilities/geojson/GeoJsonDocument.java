@@ -20,11 +20,11 @@ package com.telenav.mesakit.map.utilities.geojson;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.telenav.kivakit.core.kernel.language.collections.map.string.StringToStringMap;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.core.resource.WritableResource;
-import com.telenav.kivakit.core.resource.path.Extension;
+import com.telenav.kivakit.kernel.language.collections.map.string.StringToStringMap;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.resource.WritableResource;
+import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;

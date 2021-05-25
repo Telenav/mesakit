@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.geography.project;
 
+import com.telenav.kivakit.kernel.messaging.listeners.ThrowingListener;
+import com.telenav.kivakit.serialization.kryo.KryoTypes;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.project.MapMeasurementsUnitTest;
-import com.telenav.kivakit.core.kernel.messaging.listeners.ThrowingListener;
-import com.telenav.kivakit.core.serialization.kryo.KryoTypes;
 
 public class MapGeographyUnitTest extends MapMeasurementsUnitTest
 {

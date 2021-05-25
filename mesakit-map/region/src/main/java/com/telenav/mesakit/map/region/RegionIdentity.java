@@ -22,6 +22,16 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
+import com.telenav.kivakit.kernel.language.locales.CountryIsoCode;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
+import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.associations.UmlAggregation;
+import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.region.project.MapRegionProject;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegion;
 import com.telenav.mesakit.map.region.regions.City;
@@ -31,20 +41,10 @@ import com.telenav.mesakit.map.region.regions.County;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
 import com.telenav.mesakit.map.region.regions.TimeZone;
-import com.telenav.kivakit.core.kernel.language.locales.CountryIsoCode;
-import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
-import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.core.kernel.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.associations.UmlAggregation;
-import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import org.junit.Before;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 /**
  * <p>

@@ -23,8 +23,8 @@ import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.LocationSequence;
 import com.telenav.mesakit.map.geography.Longitude;
 import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import org.junit.Test;
 

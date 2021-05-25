@@ -22,7 +22,7 @@ import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Area;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.motion.Speed;
-import com.telenav.kivakit.core.test.random.RandomValueFactory;
+import com.telenav.kivakit.test.random.RandomValueFactory;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 
 /**

@@ -1,9 +1,9 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.entities;
 
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelEntities;
-import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 import org.openstreetmap.osmosis.core.domain.v0_6.CommonEntityData;
 import org.openstreetmap.osmosis.core.domain.v0_6.OsmUser;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;

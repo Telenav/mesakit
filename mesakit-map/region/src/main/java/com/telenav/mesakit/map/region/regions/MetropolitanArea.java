@@ -18,6 +18,13 @@
 
 package com.telenav.mesakit.map.region.regions;
 
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.measurements.geographic.Area;
@@ -29,17 +36,10 @@ import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.border.cache.BorderCache;
 import com.telenav.mesakit.map.region.project.MapRegionLimits;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.core.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.util.Collection;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 /**
  * @author Jonathan Locke

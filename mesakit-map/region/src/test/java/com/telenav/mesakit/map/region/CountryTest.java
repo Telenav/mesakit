@@ -18,25 +18,25 @@
 
 package com.telenav.mesakit.map.region;
 
+import com.telenav.kivakit.kernel.language.locales.CountryIsoCode;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.loggers.ConsoleLogger;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
-import com.telenav.kivakit.core.kernel.language.locales.CountryIsoCode;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.loggers.ConsoleLogger;
 import org.junit.Test;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode.CHINESE_MANDARIN;
-import static com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode.ENGLISH;
-import static com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode.FRENCH;
-import static com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode.GERMAN;
-import static com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode.PORTUGUESE;
-import static com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode.SPANISH;
+import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.CHINESE_MANDARIN;
+import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.ENGLISH;
+import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.FRENCH;
+import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.GERMAN;
+import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.PORTUGUESE;
+import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.SPANISH;
 
 public class CountryTest extends MapRegionUnitTest
 {

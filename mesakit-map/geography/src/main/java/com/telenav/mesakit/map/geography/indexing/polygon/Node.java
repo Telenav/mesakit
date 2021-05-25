@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.geography.indexing.polygon;
 
+import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.polygon.PolygonSpatialIndex.Visitor;
 import com.telenav.mesakit.map.geography.shape.Outline;
@@ -26,7 +27,6 @@ import com.telenav.mesakit.map.geography.shape.segment.Segment;
 import com.telenav.mesakit.map.geography.shape.segment.SegmentPair;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
 
 import static com.telenav.mesakit.map.geography.indexing.polygon.PolygonSpatialIndex.MINIMUM_QUADRANT_SIZE;
 

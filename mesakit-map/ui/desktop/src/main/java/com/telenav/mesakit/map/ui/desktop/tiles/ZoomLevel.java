@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
-import com.telenav.kivakit.core.kernel.language.primitives.Doubles;
-import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.AsString;
+import com.telenav.kivakit.kernel.language.primitives.Doubles;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
@@ -30,8 +30,8 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 /**
  * In OSM, zoom level 0 is zoomed out so that the entire world is one tile and zoom level 17 is zoomed in as far as

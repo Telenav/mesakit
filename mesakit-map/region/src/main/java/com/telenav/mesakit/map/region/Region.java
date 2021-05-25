@@ -18,31 +18,31 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.kivakit.core.commandline.ArgumentParser;
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.filesystem.Folder;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.interfaces.naming.Nameable;
-import com.telenav.kivakit.core.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode;
-import com.telenav.kivakit.core.kernel.language.objects.Objects;
-import com.telenav.kivakit.core.kernel.language.patterns.Pattern;
-import com.telenav.kivakit.core.kernel.language.patterns.SimplifiedPattern;
-import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
-import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.core.kernel.language.strings.Strings;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.core.kernel.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.core.kernel.language.threading.KivaKitThread;
-import com.telenav.kivakit.core.kernel.language.threading.Threads;
-import com.telenav.kivakit.core.kernel.language.time.Duration;
-import com.telenav.kivakit.core.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
-import com.telenav.kivakit.core.resource.path.FileName;
+import com.telenav.kivakit.commandline.ArgumentParser;
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.interfaces.naming.Nameable;
+import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
+import com.telenav.kivakit.kernel.language.objects.Objects;
+import com.telenav.kivakit.kernel.language.patterns.Pattern;
+import com.telenav.kivakit.kernel.language.patterns.SimplifiedPattern;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
+import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.kernel.language.threading.KivaKitThread;
+import com.telenav.kivakit.kernel.language.threading.Threads;
+import com.telenav.kivakit.kernel.language.time.Duration;
+import com.telenav.kivakit.kernel.language.values.count.Bytes;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.resource.path.FileName;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
@@ -81,9 +81,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Executors;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 
 /**
  * @author Jonathan Locke

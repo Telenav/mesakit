@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.region.project;
 
-import com.telenav.kivakit.core.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
 
 /**
  * Limits of ways nodes and relations in a single PBF or graph

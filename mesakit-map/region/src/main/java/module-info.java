@@ -7,7 +7,7 @@ open module mesakit.map.region
     requires transitive mesakit.map.ui.debug;
     requires transitive mesakit.map.utilities.grid;
 
-    requires transitive kivakit.core.network.http;
+    requires transitive kivakit.network.http;
 
     exports com.telenav.mesakit.map.region;
     exports com.telenav.mesakit.map.region.regions;

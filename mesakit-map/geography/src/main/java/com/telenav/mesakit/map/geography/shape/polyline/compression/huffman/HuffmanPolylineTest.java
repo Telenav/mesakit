@@ -23,9 +23,9 @@ import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.polyline.PolylineBuilder;
 import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
-import com.telenav.kivakit.core.kernel.language.io.IO;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.language.io.IO;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import org.junit.Ignore;
 import org.junit.Test;
 

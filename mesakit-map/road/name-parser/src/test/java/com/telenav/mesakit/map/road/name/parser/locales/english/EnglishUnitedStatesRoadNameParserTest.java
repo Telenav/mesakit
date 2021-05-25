@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.road.name.parser.locales.english;
 
+import com.telenav.kivakit.test.UnitTest;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.ParsedRoadName;
 import com.telenav.mesakit.map.road.name.parser.RoadNameParser;
-import com.telenav.kivakit.core.test.UnitTest;
 import org.junit.Ignore;
 import org.junit.Test;
 

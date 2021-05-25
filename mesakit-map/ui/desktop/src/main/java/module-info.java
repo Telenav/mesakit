@@ -3,7 +3,7 @@ open module mesakit.map.ui.desktop
     requires transitive mesakit.core;
     requires transitive mesakit.map.geography;
 
-    requires transitive kivakit.core.network.http;
+    requires transitive kivakit.network.http;
     requires transitive kivakit.ui.desktop;
 
     exports com.telenav.mesakit.map.ui.desktop.graphics.canvas;

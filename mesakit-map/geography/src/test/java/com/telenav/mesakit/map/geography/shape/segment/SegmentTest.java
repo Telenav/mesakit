@@ -27,8 +27,8 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import org.junit.Test;
 
 @SuppressWarnings("ConstantConditions")

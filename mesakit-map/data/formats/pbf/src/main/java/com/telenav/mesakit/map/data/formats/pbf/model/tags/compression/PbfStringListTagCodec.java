@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
-import com.telenav.kivakit.core.resource.resources.other.PropertyMap;
 import com.telenav.kivakit.data.compression.SymbolProducer;
 import com.telenav.kivakit.data.compression.codecs.StringListCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
@@ -26,6 +25,7 @@ import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringC
 import com.telenav.kivakit.primitive.collections.array.bits.io.BitReader;
 import com.telenav.kivakit.primitive.collections.array.bits.io.BitWriter;
 import com.telenav.kivakit.primitive.collections.list.ByteList;
+import com.telenav.kivakit.resource.resources.other.PropertyMap;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.UmlNote;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;

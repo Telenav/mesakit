@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
-import com.telenav.kivakit.core.kernel.language.objects.Hash;
-import com.telenav.kivakit.core.resource.path.FileName;
+import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.resource.path.FileName;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Label;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
@@ -33,7 +33,7 @@ import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.GRID_LABEL;
 
 /**

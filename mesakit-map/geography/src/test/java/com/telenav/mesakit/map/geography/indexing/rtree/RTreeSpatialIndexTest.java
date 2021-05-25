@@ -18,6 +18,8 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
+import com.telenav.kivakit.serialization.kryo.KryoTypes;
+import com.telenav.kivakit.test.annotations.SlowTests;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
@@ -26,8 +28,6 @@ import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.polyline.PolylineBuilder;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.geography.shape.segment.Segment;
-import com.telenav.kivakit.core.serialization.kryo.KryoTypes;
-import com.telenav.kivakit.core.test.annotations.SlowTests;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 

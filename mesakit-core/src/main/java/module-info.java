@@ -1,6 +1,6 @@
 open module mesakit.core
 {
-    requires transitive kivakit.core.resource;
+    requires transitive kivakit.resource;
 
     exports com.telenav.mesakit.core;
 }

@@ -18,6 +18,10 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
+import com.telenav.kivakit.kernel.language.values.level.Level;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.LocationSequence;
@@ -28,10 +32,6 @@ import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
-import com.telenav.kivakit.core.kernel.language.values.level.Level;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**
  * The result of a polyline snap operation.

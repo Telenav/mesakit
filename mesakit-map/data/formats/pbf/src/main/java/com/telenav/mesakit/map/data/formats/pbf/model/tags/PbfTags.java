@@ -1,10 +1,10 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelTags;
+import com.telenav.kivakit.kernel.language.strings.Strip;
+import com.telenav.kivakit.resource.resources.other.PropertyMap;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
-import com.telenav.kivakit.core.kernel.language.strings.Strip;
-import com.telenav.kivakit.core.resource.resources.other.PropertyMap;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelTags;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.ArrayList;

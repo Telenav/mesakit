@@ -18,6 +18,9 @@
 
 package com.telenav.mesakit.map.region.border;
 
+import com.telenav.kivakit.kernel.language.objects.Objects;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
@@ -26,12 +29,9 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramBorder;
-import com.telenav.kivakit.core.kernel.language.objects.Objects;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.associations.UmlAggregation;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 @UmlClassDiagram(diagram = DiagramBorder.class)
 public class Border<T extends Region<T>> implements Bounded, Intersectable

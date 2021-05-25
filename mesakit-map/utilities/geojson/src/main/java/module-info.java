@@ -1,6 +1,6 @@
 open module mesakit.map.utilities.geojson
 {
-    requires transitive kivakit.core.resource;
+    requires transitive kivakit.resource;
 
     requires transitive mesakit.map.geography;
 

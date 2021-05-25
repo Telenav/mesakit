@@ -18,16 +18,16 @@
 
 package com.telenav.mesakit.map.road.name.standardizer;
 
+import com.telenav.kivakit.kernel.language.paths.PackagePath;
+import com.telenav.kivakit.kernel.language.threading.KivaKitThread;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.ParsedRoadName;
-import com.telenav.kivakit.core.kernel.language.paths.PackagePath;
-import com.telenav.kivakit.core.kernel.language.threading.KivaKitThread;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 public interface RoadNameStandardizer
 {

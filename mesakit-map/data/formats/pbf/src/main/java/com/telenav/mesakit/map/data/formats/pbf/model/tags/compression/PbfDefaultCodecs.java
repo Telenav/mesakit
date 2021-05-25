@@ -1,10 +1,10 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
-import com.telenav.kivakit.core.kernel.language.objects.Lazy;
-import com.telenav.kivakit.core.kernel.language.paths.PackagePath;
-import com.telenav.kivakit.core.resource.resources.other.PropertyMap;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
+import com.telenav.kivakit.kernel.language.objects.Lazy;
+import com.telenav.kivakit.kernel.language.paths.PackagePath;
+import com.telenav.kivakit.resource.resources.other.PropertyMap;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelCompression;

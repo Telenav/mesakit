@@ -7,17 +7,13 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-source library-functions.sh
+source mesakit-library-functions.sh
 source mesakit-projects.sh
-
-help="[version]"
 
 version="${1%-SNAPSHOT}-SNAPSHOT"
 
+help="[version]"
+
 require_variable version "$help"
 
-for project_home in "${MESAKIT_PROJECT_HOMES[@]}"; do
-
-    update_version $project_home $version
-
-done
+update_version $MESAKIT_HOME $version

@@ -19,8 +19,8 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.extractors;
 
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
-import com.telenav.kivakit.core.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.messaging.Listener;
 
 /**
  *

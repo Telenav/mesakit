@@ -1,13 +1,13 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
-import com.telenav.kivakit.core.filesystem.File;
-import com.telenav.kivakit.core.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.core.kernel.language.values.count.Minimum;
-import com.telenav.kivakit.core.kernel.language.values.count.MutableCount;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.language.values.count.Minimum;
+import com.telenav.kivakit.kernel.language.values.count.MutableCount;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.CharacterFrequencies;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;

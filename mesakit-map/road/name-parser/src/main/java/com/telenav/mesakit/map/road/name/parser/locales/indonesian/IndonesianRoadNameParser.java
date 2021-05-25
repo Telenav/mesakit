@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.road.name.parser.locales.indonesian;
 
+import com.telenav.kivakit.kernel.language.strings.CaseFormat;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.BaseRoadNameParser;
 import com.telenav.mesakit.map.road.name.parser.ParsedRoadName;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.Token;
-import com.telenav.kivakit.core.kernel.language.strings.CaseFormat;
 
 import java.util.HashMap;
 import java.util.Map;

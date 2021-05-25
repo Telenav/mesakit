@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.road.name.parser;
 
+import com.telenav.kivakit.kernel.language.strings.CaseFormat;
+import com.telenav.kivakit.kernel.language.strings.Join;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.Token;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.TokenList;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.Tokenizer;
-import com.telenav.kivakit.core.kernel.language.strings.CaseFormat;
-import com.telenav.kivakit.core.kernel.language.strings.Join;
 
 public abstract class BaseRoadNameParser implements RoadNameParser
 {

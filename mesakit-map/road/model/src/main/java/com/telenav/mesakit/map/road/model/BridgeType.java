@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.core.kernel.interfaces.model.Identifiable;
+import com.telenav.kivakit.kernel.interfaces.model.Identifiable;
 
 public enum BridgeType implements Identifiable
 {

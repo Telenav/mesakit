@@ -18,6 +18,15 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing.readers;
 
+import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.identifier.Identifier;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
@@ -26,15 +35,6 @@ import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataSource;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataStatistics;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfStopProcessingException;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessing;
-import com.telenav.kivakit.core.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.core.kernel.language.progress.reporters.Progress;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.language.values.identifier.Identifier;
-import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.kivakit.core.resource.Resource;
-import com.telenav.kivakit.core.resource.path.Extension;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.openstreetmap.osmosis.core.domain.v0_6.Bound;
 import org.openstreetmap.osmosis.core.domain.v0_6.Entity;
@@ -45,8 +45,8 @@ import org.openstreetmap.osmosis.core.domain.v0_6.Way;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 /**
  * Base class for PBF readers, handling progress reporting and gathering statistics.

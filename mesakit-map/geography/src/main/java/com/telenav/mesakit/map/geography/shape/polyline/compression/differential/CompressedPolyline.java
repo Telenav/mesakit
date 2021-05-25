@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline.compression.differential;
 
-import com.telenav.kivakit.core.kernel.interfaces.numeric.Sized;
-import com.telenav.kivakit.core.kernel.language.collections.CompressibleCollection;
-import com.telenav.kivakit.core.kernel.language.primitives.Ints;
-import com.telenav.kivakit.core.kernel.language.values.count.BitCount;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
+import com.telenav.kivakit.kernel.interfaces.numeric.Sized;
+import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
+import com.telenav.kivakit.kernel.language.primitives.Ints;
+import com.telenav.kivakit.kernel.language.values.count.BitCount;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.kivakit.primitive.collections.array.bits.BitArray;
 import com.telenav.kivakit.primitive.collections.array.bits.io.BitReader;
 import com.telenav.kivakit.primitive.collections.array.bits.io.BitWriter;

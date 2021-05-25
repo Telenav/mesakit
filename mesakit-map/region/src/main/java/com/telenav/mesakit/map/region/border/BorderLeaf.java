@@ -27,7 +27,7 @@ import com.telenav.mesakit.map.region.Region;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 public class BorderLeaf<T extends Region<T>> extends Leaf<Border<T>>
 {

@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.road.name.parser.tokenizer;
 
-import com.telenav.kivakit.core.kernel.language.strings.CaseFormat;
-import com.telenav.kivakit.core.kernel.language.strings.Join;
+import com.telenav.kivakit.kernel.language.strings.CaseFormat;
+import com.telenav.kivakit.kernel.language.strings.Join;
 
 import java.util.ArrayList;
 import java.util.Iterator;

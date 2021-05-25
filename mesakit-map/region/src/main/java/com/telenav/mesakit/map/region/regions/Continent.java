@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.region.regions;
 
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.core.kernel.data.extraction.Extractor;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.data.extraction.Extractor;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;

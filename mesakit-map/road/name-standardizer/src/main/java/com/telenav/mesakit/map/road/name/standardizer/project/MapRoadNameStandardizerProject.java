@@ -1,7 +1,7 @@
 package com.telenav.mesakit.map.road.name.standardizer.project;
 
-import com.telenav.kivakit.core.kernel.language.objects.Lazy;
-import com.telenav.kivakit.core.kernel.project.Project;
+import com.telenav.kivakit.kernel.language.objects.Lazy;
+import com.telenav.kivakit.kernel.project.Project;
 
 /**
  * @author jonathanl (shibo)

@@ -10,7 +10,7 @@
     <parent>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map</artifactId>
-        <version>0.9.5-alpha-SNAPSHOT</version>
+        <version>0.9.8-alpha-SNAPSHOT</version>
     </parent>
 
     <name>MesaKit Map - Geography</name>
@@ -33,7 +33,7 @@
 
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-core-resource</artifactId>
+            <artifactId>kivakit-resource</artifactId>
             <version>${kivakit.version}</version>
         </dependency>
         <dependency>
@@ -48,17 +48,20 @@
         </dependency>
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-core-collections</artifactId>
+            <artifactId>kivakit-collections</artifactId>
             <version>${kivakit.version}</version>
         </dependency>
 
         <!-- Shapefile -->
 
+        <!-- NOTE: this JAR file is from SourceForge and does not exist in any public Maven repository -->
+
         <dependency>
             <groupId>org.nocrala</groupId>
             <artifactId>shapefilereader</artifactId>
             <version>1.0</version>
-            <scope>test</scope>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libraries/shapefilereader-1.0.jar</systemPath>
         </dependency>
 
     </dependencies>

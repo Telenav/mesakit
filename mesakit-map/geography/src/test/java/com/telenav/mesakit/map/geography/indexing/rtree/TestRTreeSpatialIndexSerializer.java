@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
-import com.telenav.kivakit.core.serialization.kryo.KryoSerializationSession;
 
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public class TestRTreeSpatialIndexSerializer extends RTreeSpatialIndexKryoSerializer<Polyline>

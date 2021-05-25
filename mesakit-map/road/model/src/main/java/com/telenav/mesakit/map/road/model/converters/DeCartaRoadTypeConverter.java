@@ -19,9 +19,9 @@
 package com.telenav.mesakit.map.road.model.converters;
 
 import com.telenav.mesakit.map.road.model.DeCartaRoadType;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.data.conversion.string.primitive.IntegerConverter;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.data.conversion.string.primitive.IntegerConverter;
+import com.telenav.kivakit.kernel.messaging.Listener;
 
 /**
  * @author Jianbo chen

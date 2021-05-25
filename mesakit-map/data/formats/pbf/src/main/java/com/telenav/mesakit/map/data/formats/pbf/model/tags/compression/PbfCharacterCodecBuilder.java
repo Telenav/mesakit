@@ -2,8 +2,8 @@ package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelCompression;
-import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.core.kernel.language.values.count.Minimum;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.language.values.count.Minimum;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.CharacterFrequencies;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.lexakai.annotations.UmlClassDiagram;

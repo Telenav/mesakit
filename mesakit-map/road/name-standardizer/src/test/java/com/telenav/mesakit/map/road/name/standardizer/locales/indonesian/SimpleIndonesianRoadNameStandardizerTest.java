@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.road.name.standardizer.locales.indonesian;
 
+import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.resource.resources.packaged.PackageResource;
+import com.telenav.kivakit.test.UnitTest;
+import com.telenav.kivakit.test.annotations.SlowTests;
 import com.telenav.mesakit.map.road.model.RoadName;
-import com.telenav.kivakit.core.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.core.resource.resources.packaged.PackageResource;
-import com.telenav.kivakit.core.test.UnitTest;
-import com.telenav.kivakit.core.test.annotations.SlowTests;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 

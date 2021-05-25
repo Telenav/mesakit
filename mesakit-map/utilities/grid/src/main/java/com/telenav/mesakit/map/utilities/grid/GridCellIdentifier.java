@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.utilities.grid;
 
-import com.telenav.kivakit.core.kernel.language.objects.Hash;
-import com.telenav.kivakit.core.kernel.language.primitives.Ints;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat;
+import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.primitives.Ints;
+import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
+import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
 
 public class GridCellIdentifier implements AsString
 {

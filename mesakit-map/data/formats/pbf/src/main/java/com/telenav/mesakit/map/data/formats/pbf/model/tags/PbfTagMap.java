@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
-import com.telenav.kivakit.core.kernel.interfaces.collection.Keyed;
-import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.core.kernel.language.objects.Hash;
-import com.telenav.kivakit.core.kernel.language.primitives.Ints;
-import com.telenav.kivakit.core.kernel.language.primitives.Longs;
-import com.telenav.kivakit.core.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.interfaces.collection.Keyed;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.primitives.Ints;
+import com.telenav.kivakit.kernel.language.primitives.Longs;
+import com.telenav.kivakit.kernel.language.strings.Strings;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -35,7 +35,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 /**
  * A map between tag keys and values.

@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.road.name.parser.locales.english;
 
+import com.telenav.kivakit.kernel.language.strings.CaseFormat;
+import com.telenav.kivakit.kernel.language.strings.Strip;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.Token;
-import com.telenav.kivakit.core.kernel.language.strings.CaseFormat;
-import com.telenav.kivakit.core.kernel.language.strings.Strip;
 
 public class EnglishUnitedStatesRoadNameParser extends EnglishRoadNameParser
 {

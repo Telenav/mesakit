@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
 import org.junit.Test;
 
 import java.util.ArrayList;

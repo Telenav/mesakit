@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.map.region.continents;
 
+import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.Country.DrivingSide;
-import com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode;
 
-import static com.telenav.kivakit.core.kernel.language.locales.CountryIsoCode.*;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.*;
 
 public class Oceania extends Continent
 {

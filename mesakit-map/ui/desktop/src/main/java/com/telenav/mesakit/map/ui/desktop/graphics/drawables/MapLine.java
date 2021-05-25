@@ -34,7 +34,7 @@ import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 
 import java.awt.Shape;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 
 /**
  * @author jonathanl (shibo)

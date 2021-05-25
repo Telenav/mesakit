@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
+import com.telenav.kivakit.serialization.kryo.KryoSerializer;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
-import com.telenav.kivakit.core.serialization.kryo.KryoSerializationSession;
-import com.telenav.kivakit.core.serialization.kryo.KryoSerializer;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public abstract class RTreeSpatialIndexKryoSerializer<T extends Bounded & Intersectable> extends KryoSerializer<RTreeSpatialIndex>

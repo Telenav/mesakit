@@ -1,16 +1,16 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.entities;
 
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
+import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagFilter;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelEntities;
-import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import org.jetbrains.annotations.NotNull;
 import org.openstreetmap.osmosis.core.domain.v0_6.Entity;
 import org.openstreetmap.osmosis.core.domain.v0_6.EntityType;
@@ -20,8 +20,8 @@ import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 import java.util.Date;
 import java.util.Iterator;
 
-import static com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat.PROGRAMMATIC_IDENTIFIER;
-import static com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat.USER_LABEL_IDENTIFIER;
+import static com.telenav.kivakit.kernel.language.strings.conversion.StringFormat.PROGRAMMATIC_IDENTIFIER;
+import static com.telenav.kivakit.kernel.language.strings.conversion.StringFormat.USER_LABEL_IDENTIFIER;
 
 /**
  * This wrapper (and {@link PbfNode}, {@link PbfWay} and {@link PbfRelation} subclasses) adds a slight amount of

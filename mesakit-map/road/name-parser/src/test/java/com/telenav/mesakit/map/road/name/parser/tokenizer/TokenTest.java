@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.road.name.parser.tokenizer;
 import com.telenav.mesakit.map.road.name.parser.locales.english.EnglishTokenizer;
 import com.telenav.mesakit.map.road.name.parser.locales.english.EnglishUnitedStatesTokenizer;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.symbols.SymbolList;
-import com.telenav.kivakit.core.test.UnitTest;
+import com.telenav.kivakit.test.UnitTest;
 import org.junit.Ignore;
 import org.junit.Test;
 

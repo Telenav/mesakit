@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.road.name.parser.locales.english;
 
+import com.telenav.kivakit.kernel.language.strings.Paths;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.Token;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.symbols.Symbol;
-import com.telenav.kivakit.core.kernel.language.strings.Paths;
 
 public class EnglishUnitedStatesTokenizer extends EnglishTokenizer
 {

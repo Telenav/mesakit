@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
-import com.telenav.kivakit.core.collections.map.CacheMap;
-import com.telenav.kivakit.core.collections.set.ConcurrentHashSet;
-import com.telenav.kivakit.core.kernel.language.threading.RepeatingKivaKitThread;
-import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
-import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.kivakit.core.network.http.HttpNetworkLocation;
+import com.telenav.kivakit.collections.map.CacheMap;
+import com.telenav.kivakit.collections.set.ConcurrentHashSet;
+import com.telenav.kivakit.kernel.language.threading.RepeatingKivaKitThread;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
 import com.telenav.mesakit.core.MesaKit;
@@ -39,7 +39,7 @@ import java.util.Set;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-import static com.telenav.kivakit.core.network.core.NetworkAccessConstraints.DEFAULT;
+import static com.telenav.kivakit.network.core.NetworkAccessConstraints.DEFAULT;
 import static java.awt.AlphaComposite.SRC_OVER;
 
 /**

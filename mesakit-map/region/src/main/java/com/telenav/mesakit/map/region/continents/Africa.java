@@ -23,7 +23,7 @@ import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
 
-import static com.telenav.kivakit.core.kernel.language.locales.CountryIsoCode.*;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.*;
 
 public class Africa extends Continent
 {

@@ -1,30 +1,22 @@
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
-### Version 0.9.0 (2021.04.12)
+### Version 0.9.8-alpha
 
 Initial version.
 
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
-#### updated
+#### Updated
 
-* None
+* N/A
 
-#### optimized
+#### Fixed
 
-* None
+* N/A
 
-#### changed
+#### Added
 
-* None
-
-#### fixed
-
-* None
-
-#### added
-
-* All
+* N/A
 
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 

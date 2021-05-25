@@ -18,20 +18,20 @@
 
 package com.telenav.mesakit.map.measurements.motion;
 
-import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementMotion;
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.data.conversion.string.primitive.IntegerConverter;
-import com.telenav.kivakit.core.kernel.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.core.kernel.language.time.Duration;
-import com.telenav.kivakit.core.kernel.language.values.level.Level;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.data.conversion.string.primitive.IntegerConverter;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.language.time.Duration;
+import com.telenav.kivakit.kernel.language.values.level.Level;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
+import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementMotion;
 
 import java.util.regex.Pattern;
 

@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.road.name.standardizer.locales.english;
 
+import com.telenav.kivakit.test.annotations.SlowTests;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.name.standardizer.RoadNameStandardizerTest;
-import com.telenav.kivakit.core.test.annotations.SlowTests;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;

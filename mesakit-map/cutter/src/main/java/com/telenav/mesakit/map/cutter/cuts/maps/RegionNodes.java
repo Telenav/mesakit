@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.cutter.cuts.maps;
 
-import com.telenav.kivakit.core.kernel.language.primitives.Longs;
-import com.telenav.kivakit.core.kernel.language.vm.JavaVirtualMachine.KivaKitExcludeFromSizeOf;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
+import com.telenav.kivakit.kernel.language.primitives.Longs;
+import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine.KivaKitExcludeFromSizeOf;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToLongMap;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.region.Region;

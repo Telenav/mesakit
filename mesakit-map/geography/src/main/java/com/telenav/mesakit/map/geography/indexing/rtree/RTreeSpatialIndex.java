@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
-import com.telenav.kivakit.core.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.core.kernel.interfaces.naming.NamedObject;
-import com.telenav.kivakit.core.kernel.language.iteration.Iterables;
-import com.telenav.kivakit.core.kernel.language.iteration.Next;
-import com.telenav.kivakit.core.kernel.language.objects.Objects;
-import com.telenav.kivakit.core.kernel.language.primitives.Booleans;
-import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.messaging.filters.operators.All;
+import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.kernel.language.iteration.Iterables;
+import com.telenav.kivakit.kernel.language.iteration.Next;
+import com.telenav.kivakit.kernel.language.objects.Objects;
+import com.telenav.kivakit.kernel.language.primitives.Booleans;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.messaging.filters.operators.All;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramSpatialIndex;

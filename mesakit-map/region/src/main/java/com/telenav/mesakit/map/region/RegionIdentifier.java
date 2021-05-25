@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegion;
-import com.telenav.kivakit.core.kernel.language.values.identifier.IntegerIdentifier;
+import com.telenav.kivakit.kernel.language.values.identifier.IntegerIdentifier;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
+import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegion;
 
 /**
  * A unique identifier for a region which cannot be persisted or relied on in the long-term.

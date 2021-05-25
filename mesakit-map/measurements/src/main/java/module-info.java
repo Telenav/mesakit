@@ -1,7 +1,7 @@
 open module mesakit.map.measurements
 {
-    requires transitive kivakit.core.commandline;
-    requires transitive kivakit.core.test;
+    requires transitive kivakit.commandline;
+    requires transitive kivakit.test;
     requires transitive kivakit.math;
 
     exports com.telenav.mesakit.map.measurements.geographic;

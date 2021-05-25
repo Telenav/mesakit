@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
-import com.telenav.kivakit.core.kernel.language.objects.Objects;
-import com.telenav.kivakit.core.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.objects.Objects;
+import com.telenav.kivakit.kernel.language.values.count.Bytes;
+import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.polygon.PolygonSpatialIndex;
@@ -37,7 +37,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 @UmlClassDiagram(diagram = DiagramPolyline.class)
 public class Polygon extends Polyline implements Shape

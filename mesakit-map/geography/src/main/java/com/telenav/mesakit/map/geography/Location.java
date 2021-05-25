@@ -18,23 +18,23 @@
 
 package com.telenav.mesakit.map.geography;
 
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.data.validation.Validatable;
-import com.telenav.kivakit.core.kernel.data.validation.Validation;
-import com.telenav.kivakit.core.kernel.data.validation.Validator;
-import com.telenav.kivakit.core.kernel.data.validation.validators.BaseValidator;
-import com.telenav.kivakit.core.kernel.interfaces.model.Identifiable;
-import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.core.kernel.language.primitives.Longs;
-import com.telenav.kivakit.core.kernel.language.reflection.populator.KivaKitPropertyConverter;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat;
-import com.telenav.kivakit.core.kernel.language.strings.formatting.Separators;
-import com.telenav.kivakit.core.kernel.language.values.count.BitCount;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.data.validation.Validatable;
+import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.Validator;
+import com.telenav.kivakit.kernel.data.validation.validators.BaseValidator;
+import com.telenav.kivakit.kernel.interfaces.model.Identifiable;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.primitives.Longs;
+import com.telenav.kivakit.kernel.language.reflection.populator.KivaKitPropertyConverter;
+import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
+import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
+import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
+import com.telenav.kivakit.kernel.language.values.count.BitCount;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.kivakit.math.trigonometry.Trigonometry;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
@@ -57,8 +57,8 @@ import com.telenav.mesakit.map.measurements.geographic.Heading;
 import java.awt.Point;
 import java.io.Serializable;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
-import static com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat.USER_LABEL_IDENTIFIER;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.language.strings.conversion.StringFormat.USER_LABEL_IDENTIFIER;
 import static com.telenav.mesakit.map.geography.Precision.DM7;
 
 /**

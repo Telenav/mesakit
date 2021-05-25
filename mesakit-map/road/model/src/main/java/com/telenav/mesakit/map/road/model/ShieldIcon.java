@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.core.kernel.language.collections.map.BaseMap;
+import com.telenav.kivakit.kernel.language.collections.map.BaseMap;
 
 public class ShieldIcon
 {

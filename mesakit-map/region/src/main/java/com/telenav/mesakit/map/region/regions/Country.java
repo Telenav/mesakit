@@ -18,6 +18,23 @@
 
 package com.telenav.mesakit.map.region.regions;
 
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.data.conversion.string.collection.BaseListConverter;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.data.extraction.Extractor;
+import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.kernel.language.values.identifier.IntegerIdentifier;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
 import com.telenav.mesakit.map.geography.Location;
@@ -34,23 +51,6 @@ import com.telenav.mesakit.map.region.countries.Mexico;
 import com.telenav.mesakit.map.region.countries.UnitedStates;
 import com.telenav.mesakit.map.region.project.MapRegionLimits;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.data.conversion.string.collection.BaseListConverter;
-import com.telenav.kivakit.core.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.core.kernel.data.extraction.Extractor;
-import com.telenav.kivakit.core.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.core.kernel.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode;
-import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.kernel.language.strings.Strings;
-import com.telenav.kivakit.core.kernel.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.core.kernel.language.values.identifier.IntegerIdentifier;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 
 import java.util.ArrayList;
 import java.util.Collection;

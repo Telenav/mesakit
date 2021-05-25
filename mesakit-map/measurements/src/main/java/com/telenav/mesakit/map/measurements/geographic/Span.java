@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.measurements.geographic;
 
 import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
-import com.telenav.kivakit.core.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.objects.Hash;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
