@@ -30,14 +30,16 @@ public class MercatorMapProjectionTest extends BaseCoordinateMapperTest
     @Test
     public void testSmall()
     {
-        // 10x10 degree square
+        // 0, 0 to 10, 10 degree square on a map
         final var width = Width.degrees(10);
         final var height = Height.degrees(10);
         final var size = Size.of(width, height);
+        final var mapArea = size.asRectangle();
+
+        // Drawing area in drawing units (pixels)
+        final var drawingArea = drawingSize(100, 100);
 
         // Map from 100,100:200,200 drawing surface rectangle to 0,0:10,10 geographic rectangle
-        final var mapArea = size.asRectangle();
-        final var drawingArea = drawingSize(100, 100);
         final var projection = new SphericalMercatorMapProjection(mapArea, drawingArea);
 
         // Check the simple cases in the corners (the middle will be distorted by the projection)
@@ -54,7 +56,7 @@ public class MercatorMapProjectionTest extends BaseCoordinateMapperTest
                 drawingSize(100, 100));
 
         // The origin will not be distorted
-        checkMapping(projection, point(150, 150), Location.ORIGIN);
+        checkMapping(projection, point(50, 50), Location.ORIGIN);
 
         // Ensure simple corner cases where there is no distortion
         checkMapping(projection, point(0, 0), SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA.topLeft());

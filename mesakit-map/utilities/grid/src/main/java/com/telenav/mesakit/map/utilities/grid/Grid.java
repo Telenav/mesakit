@@ -40,7 +40,7 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 public class Grid
 {
-    public static final Grid DEFAULT = new Grid(Angle.degrees(2), Latitude.OSM_MAXIMUM);
+    public static final Grid DEFAULT = new Grid(Angle.degrees(2), Latitude.MAXIMUM);
 
     public static Distance DEFAULT_CELL_SIZE = Distance.miles(100);
 

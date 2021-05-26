@@ -110,11 +110,7 @@ public final class Latitude extends Angle
         {
             return MINIMUM_DEGREES;
         }
-        if (degrees > MAXIMUM_DEGREES)
-        {
-            return MAXIMUM_DEGREES;
-        }
-        return degrees;
+        return Math.min(degrees, MAXIMUM_DEGREES);
     }
 
     public static boolean isValid(final double latitude)

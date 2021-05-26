@@ -156,7 +156,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
         boolean add(final Element object)
         {
             // If the object is inside this quadrant
-            if (bounds.contains(object.location()))
+            if (!bounds.containment(object.location()).isOutside())
             {
                 synchronized (this)
                 {
@@ -341,14 +341,18 @@ public class QuadTreeSpatialIndex<Element extends Located>
                 for (final var object : objects)
                 {
                     // Go through quadrants
+                    boolean added = false;
                     for (final var quadrant : children)
                     {
                         // until one adds it
                         if (quadrant.add(object))
                         {
+                            added = true;
                             break;
                         }
                     }
+
+                    assert added : "Unable to add " + object.location();
                 }
 
                 // There are no objects in this quadrant now, only child quadrants

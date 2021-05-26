@@ -33,6 +33,7 @@ import static java.lang.Math.toRadians;
 
 /**
  * @author jonathanl (shibo)
+ * @see <a href="https://www.baeldung.com/java-convert-latitude-longitude">Mercator Projection in Java</a>
  */
 public class SphericalMercatorMetricProjection implements MetricProjection
 {

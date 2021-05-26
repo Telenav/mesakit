@@ -97,7 +97,7 @@ public class SphericalMercatorMapProjection implements MapProjection
 
         // then normalize the projected point to the unit interval (0 to 1)
         final double xUnit = (projected.xInMeters() - mapAreaTopLeftInMeters.xInMeters()) / mapAreaWidthInMeters;
-        final double yUnit = (projected.yInMeters() - mapAreaTopLeftInMeters.yInMeters()) / mapAreaHeightInMeters;
+        final double yUnit = (mapAreaTopLeftInMeters.yInMeters() - projected.yInMeters()) / mapAreaHeightInMeters;
 
         // compute the offset into the drawing area by scaling the width and height by the unit values,
         final var dx = xUnit * drawingSize.widthInUnits();
@@ -132,17 +132,17 @@ public class SphericalMercatorMapProjection implements MapProjection
     @Override
     public Location toMap(final DrawingPoint point)
     {
-        // Normalize the x,y location on the drawing surface to the unit interval (0 to 1)
+        // Normalize the x,y location on the drawing surface to the unit interval (0 to 1) from the top left,
         final double xUnit = point.x() / drawingSize.widthInUnits();
         final double yUnit = point.y() / drawingSize.heightInUnits();
 
-        // then convert the unit interval to meters within the map width
+        // convert the unit interval to meters from the top left,
         final var xMeters = mapAreaWidthInMeters * xUnit;
         final var yMeters = mapAreaHeightInMeters * yUnit;
 
         // offset the relative location to the metric coordinate system
         final var x = mapAreaTopLeftInMeters.xInMeters() + xMeters;
-        final var y = mapAreaTopLeftInMeters.yInMeters() + yMeters;
+        final var y = mapAreaTopLeftInMeters.yInMeters() - yMeters;
 
         // Project the drawing surface point to
         return metricProjection.toLocation(new MetricCoordinate(x, y));

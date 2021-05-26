@@ -103,11 +103,11 @@ public class PrecisionTest extends MapGeographyUnitTest
     @Test
     public void testHasCorrectPlaces()
     {
-        ensure(DM6.hasCorrectLatitudePlaces(89_000_000));
+        ensure(DM6.hasCorrectLatitudePlaces(84_000_000));
         ensure(DM6.hasCorrectLatitudePlaces(8_000_000));
         ensure(DM6.hasCorrectLatitudePlaces(1_000_000));
 
-        ensureFalse(DM6.hasCorrectLatitudePlaces(89_000_000_0));
+        ensureFalse(DM6.hasCorrectLatitudePlaces(84_000_000_0));
         ensureFalse(DM6.hasCorrectLatitudePlaces(8_000_00));
         ensureFalse(DM6.hasCorrectLatitudePlaces(1_000_0));
 

@@ -31,12 +31,13 @@ public abstract class BaseCoordinateMapperTest extends UnitTest
                                 final DrawingPoint point,
                                 final Location location)
     {
-        final var projected = projection.toDrawing(location);
-        ensureEqual(point, projected);
-        final var mappedPoint = projection.toMap(point);
-        if (!location.isClose(mappedPoint, Angle.degrees(0.001)))
+        final var projectedPoint = projection.toDrawing(location);
+        ensure(point.isClose(projectedPoint, 0.01), "");
+
+        final var projectedLocation = projection.toMap(point);
+        if (!location.isClose(projectedLocation, Angle.degrees(0.001)))
         {
-            fail("location " + location + " is not close enough to " + mappedPoint);
+            fail("location " + location + " is not close enough to " + projectedLocation);
         }
     }
 

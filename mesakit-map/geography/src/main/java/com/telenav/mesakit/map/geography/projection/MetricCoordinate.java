@@ -22,7 +22,7 @@ import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIn
 import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
 
 /**
- * An x,y cartesian coordinate in meters from the lower left of the map projection
+ * An x,y cartesian coordinate in meters from the origin
  *
  * @author jonathanl (shibo)
  */

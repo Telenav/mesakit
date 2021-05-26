@@ -105,7 +105,8 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
             new Location(Latitude.degrees(33.20192), Longitude.degrees(-119.11377)),
             new Location(Latitude.degrees(35.37114), Longitude.degrees(-116.36719)));
 
-    public static final Rectangle MAXIMUM = new Rectangle(new Location(Latitude.MINIMUM, Longitude.MINIMUM),
+    public static final Rectangle MAXIMUM = new Rectangle(
+            new Location(Latitude.MINIMUM, Longitude.MINIMUM),
             new Location(Latitude.MAXIMUM, Longitude.MAXIMUM));
 
     public static final Rectangle MINIMUM = new Rectangle(Location.ORIGIN, Location.ORIGIN);
@@ -558,6 +559,16 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
             return Containment.INSIDE;
         }
 
+        // If the point is inside the bottom, left, top and right, exclusive
+        if (latitude > bottomInDm7
+                && latitude < topInDm7
+                && longitude > leftInDm7
+                && longitude < rightInDm7)
+        {
+            // then it's inside
+            return Containment.INSIDE;
+        }
+
         // If the point is exactly at the top or bottom
         if (latitude == bottomInDm7 || latitude == topInDm7)
         {
@@ -578,14 +589,6 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
                 // then it's on the left or right border
                 return Containment.ON_BORDER;
             }
-        }
-
-        // If the point is inside the bottom, left, top and right, exclusive
-        if (latitude > bottomInDm7 && latitude < topInDm7 && longitude > leftInDm7
-                && longitude < rightInDm7)
-        {
-            // then it's inside
-            return Containment.INSIDE;
         }
 
         // The point is outside this rectangle
