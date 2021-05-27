@@ -20,7 +20,7 @@
 
 # mesakit &nbsp;&nbsp; <img src="https://www.mesakit.org/images/kivakit-64.png" srcset="https://www.mesakit.org/images/kivakit-64-2x.png 2x"/>
 
-MesaKit is a modular toolkit for developing map and navigation software.
+MesaKit is a modular toolkit for developing mapping and navigation applications.
 
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
@@ -28,48 +28,43 @@ MesaKit is a modular toolkit for developing map and navigation software.
 
 ### Welcome <a name = "welcome"></a>! &nbsp; <img src="https://www.kivakit.org/images/stars-32.png" srcset="https://www.kivakit.org/images/stars-32-2x.png 2x"/>
 
-> *The mission of MesaKit is to accelerate the development of mapping and navigation software*
+> *The mission of MesaKit is to simplify code and accelerate development*
 
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
 ### Summary <a name = "summary"></a>
 
-MesaKit provides useful APIs and tools for complex back-end map data analysis problems. It may also appropriate for serving map data in some specialized production applications.
+MesaKit provides useful APIs and tools for complex back-end map data analysis and processing problems. It may also be appropriate for serving map data in some specialized production applications. MesaKit provides a simple, object-oriented model for working with map data as a directed road network graph. It is designed to be customizable and provides built-in search functionality.
 
-#### What is it?
-
-MesaKit is a way to rapidly develop mapping and navigation software.
-
-#### Why use it?
-
-MesaKit simplifies access to map data by providing an object-oriented API. This API makes it easy to perform complex data analysis operations with minimal code.
-
-#### What can it do?
+### What can MesaKit do?
 
 MesaKit provides support for:
 
-- [OpenStreetMap (OSM)](https://www.openstreetmap.org/) data processing
-- OSM [Protobuf (PBF)](https://wiki.openstreetmap.org/wiki/PBF_Format) format
-- Road name parsing and standardization
-- [Overpass](https://wiki.openstreetmap.org/wiki/Overpass_API) map data retrieval
-- Directional road network graphs
-- Building graphs from raw data sources
-- Flexible data specifications
-- Metadata schema
-- Custom data sources
-- Flexible attributes
-- Spatial indexing
-- Graph queries
-- Composite graphs
-- Graph analysis tools
-- Administrative regions
-- Reverse Geocoding
-- [Java OpenStreetMap (JOSM)](https://josm.openstreetmap.de) plugin
-- [Dijkstra](https://en.wikipedia.org/wiki/Dijkstra's_algorithm) and bi-Dijkstra heuristic routing
-- Traffic
-- [TMC](https://en.wikipedia.org/wiki/Traffic_message_channel) codes
-- Historical data processing
-- Tomtom and Navteq codes
+- *Map Data Sources*
+	- [OpenStreetMap (OSM)](https://www.openstreetmap.org/) [Protobuf (PBF)](https://wiki.openstreetmap.org/wiki/PBF_Format) format
+	- [Overpass](https://wiki.openstreetmap.org/wiki/Overpass_API) map data retrieval
+	- Custom data sources
+- *Road Network Graphs*
+	- Simple, memory-efficient, object-oriented API
+	- Directional edges
+	- Graph metadata
+	- Flexible data specifications
+	- Flexible attributes
+	- Composite graphs
+	- Road name standardization
+- *Search*
+	- Spatial indexing (quad-tree, r-tree, polygon indexing, geohashing)
+	- Graph query language
+	- Reverse Geocoding
+	- Administrative regions
+- *Tools*
+	- [Java OpenStreetMap (JOSM)](https://josm.openstreetmap.de) graph viewer plugin
+	- [Dijkstra](https://en.wikipedia.org/wiki/Dijkstra's_algorithm) and bi-Dijkstra heuristic routing
+	- Graph analysis tools
+- *Traffic*
+	- [TMC](https://en.wikipedia.org/wiki/Traffic_message_channel) codes
+	- Tomtom and Navteq codes
+	- Historical traffic data processing
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
@@ -78,11 +73,11 @@ MesaKit provides support for:
 | Resource     |     Description                   |
 |--------------|-----------------------------------|
 | Project Name | MesaKit |
-| Summary | A toolkit for developing mapping and navigation software |
+| Summary | A modular toolkit for developing mapping and navigation software |
 | Javadoc Coverage |  <!-- ${project-javadoc-average-coverage-meter} --> <img src="https://www.mesakit.org/images/meter-40-96.png" srcset="https://www.mesakit.org/images/meter-40-96-2x.png 2x"/><!-- end --> |
 | Lead | Jonathan Locke (Luo, Shibo) <br/> [jonathanl@telenav.com](mailto:jonathanl@telenav.com) |
 | Administrator | Jonathan Locke (Luo, Shibo) <br/> [jonathanl@telenav.com](mailto:jonathanl@telenav.com) |
-| Email | [jonathanl@telenav.com](mailto:jonathanl@telenav.com) |
+| Email | [jonathanl@telenav.com](mailto:jonathanl@telenav.com) | 
 | Twitter | [@OpenMesaKit](https://twitter.com/openmesakit) |
 | Issues | [GitHub Issues](https://github.com/Telenav/mesakit/issues) |
 | Code | [GitHub](https://github.com/Telenav/mesakit) |
