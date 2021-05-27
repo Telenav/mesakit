@@ -117,9 +117,9 @@ public class PbfRegionCutter
                     {
                         final var file = (File) resource;
                         file.delete();
-                        if (file.parentBroadcaster().isEmpty())
+                        if (file.parent().isEmpty())
                         {
-                            file.parentBroadcaster().delete();
+                            file.parent().delete();
                         }
                     }
                 }
