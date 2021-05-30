@@ -135,6 +135,8 @@
 
         <module>mesakit-core</module>
         <module>mesakit-map</module>
+        <module>mesakit-graph</module>
+        <module>mesakit-navigation</module>
 
     </modules>
 
