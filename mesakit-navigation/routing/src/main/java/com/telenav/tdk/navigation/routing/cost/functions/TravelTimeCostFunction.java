@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing.cost.functions;
+package com.telenav.tdk.navigation.routing.cost.functions;
 
-import com.telenav.kivakit.graph.Edge;
 import com.telenav.kivakit.kernel.time.Duration;
-import com.telenav.kivakit.map.geography.Located;
-import com.telenav.kivakit.map.measurements.Speed;
 import com.telenav.kivakit.navigation.routing.cost.Cost;
 import com.telenav.kivakit.navigation.routing.cost.CostFunction;
+import com.telenav.mesakit.graph.Edge;
+import com.telenav.mesakit.map.geography.Located;
+import com.telenav.mesakit.map.measurements.Speed;
 
 /**
  * A cost function that uses or avoids toll roads

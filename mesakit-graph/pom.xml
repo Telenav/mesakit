@@ -21,7 +21,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>graph</module>
+        <module>core</module>
+        <module>traffic</module>
+        <module>query</module>
+        <module>world</module>
     </modules>
 
 </project>

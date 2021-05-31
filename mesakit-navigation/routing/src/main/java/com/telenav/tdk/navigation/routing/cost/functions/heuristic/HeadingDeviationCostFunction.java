@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing.cost.functions.heuristic;
+package com.telenav.tdk.navigation.routing.cost.functions.heuristic;
 
-import com.telenav.kivakit.graph.Edge;
-import com.telenav.kivakit.map.geography.Located;
-import com.telenav.kivakit.map.geography.segment.Segment;
-import com.telenav.kivakit.map.measurements.Heading;
+import com.telenav.mesakit.map.geography.Located;
+import com.telenav.mesakit.map.geography.segment.Segment;
+import com.telenav.mesakit.map.measurements.Heading;
 import com.telenav.kivakit.navigation.routing.cost.Cost;
 import com.telenav.kivakit.navigation.routing.cost.CostFunction;
+import com.telenav.mesakit.graph.Edge;
 
 import static com.telenav.kivakit.map.measurements.Angle.Chirality.SMALLEST;
 

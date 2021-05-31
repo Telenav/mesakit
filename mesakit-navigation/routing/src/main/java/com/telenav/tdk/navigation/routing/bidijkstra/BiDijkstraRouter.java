@@ -16,7 +16,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing.bidijkstra;
+package com.telenav.tdk.navigation.routing.bidijkstra;
 
 import com.telenav.kivakit.kernel.debug.Debug;
 import com.telenav.kivakit.kernel.logging.Logger;

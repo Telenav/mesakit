@@ -21,6 +21,7 @@ package com.telenav.mesakit.map.region;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
 import com.telenav.mesakit.map.region.regions.TimeZone;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -28,7 +29,9 @@ import org.junit.Test;
  * Arizona and a case in the middle of the ocean that should not find a timezone.
  *
  * @author roberts
+ * @author jonathanl (shibo)
  */
+@Ignore
 public class TimeZoneTest extends MapRegionUnitTest
 {
     @Test

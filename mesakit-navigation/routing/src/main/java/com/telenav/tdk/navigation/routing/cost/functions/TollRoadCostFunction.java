@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing.cost.functions;
+package com.telenav.tdk.navigation.routing.cost.functions;
 
-import com.telenav.kivakit.graph.Edge;
 import com.telenav.kivakit.navigation.routing.cost.Cost;
 import com.telenav.kivakit.navigation.routing.cost.CostFunction;
+import com.telenav.mesakit.graph.Edge;
 
 /**
  * A cost function that uses or avoids toll roads

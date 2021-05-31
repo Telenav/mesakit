@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing.cost.functions.heuristic;
+package com.telenav.tdk.navigation.routing.cost.functions.heuristic;
 
-import com.telenav.kivakit.graph.Edge;
-import com.telenav.kivakit.map.geography.Located;
-import com.telenav.kivakit.map.geography.Location;
 import com.telenav.kivakit.navigation.routing.cost.Cost;
 import com.telenav.kivakit.navigation.routing.cost.CostFunction;
+import com.telenav.mesakit.graph.Edge;
+import com.telenav.mesakit.map.geography.Located;
+import com.telenav.mesakit.map.geography.Location;
 
 /**
  * Cost of the remaining distance to the goal "as the crow flies"

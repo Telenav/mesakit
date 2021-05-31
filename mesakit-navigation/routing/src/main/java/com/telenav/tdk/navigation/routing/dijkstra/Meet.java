@@ -16,10 +16,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing.dijkstra;
+package com.telenav.tdk.navigation.routing.dijkstra;
 
-import com.telenav.kivakit.graph.Route;
 import com.telenav.kivakit.navigation.routing.cost.Cost;
+import com.telenav.mesakit.graph.Route;
 
 public class Meet
 {

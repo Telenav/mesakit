@@ -16,23 +16,23 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing.debuggers;
+package com.telenav.tdk.navigation.routing.debuggers;
 
-import com.telenav.kivakit.graph.Route;
-import com.telenav.kivakit.graph.Vertex;
-import com.telenav.kivakit.graph.collections.EdgeSet;
-import com.telenav.kivakit.graph.ui.viewer.ViewableEdge;
 import com.telenav.kivakit.kernel.scalars.counts.Estimate;
-import com.telenav.kivakit.kernel.scalars.levels.Percentage;
+import com.telenav.kivakit.kernel.scalars.levels.Percent;
 import com.telenav.kivakit.kernel.time.Duration;
-import com.telenav.kivakit.map.ui.swing.debug.InteractiveView;
-import com.telenav.kivakit.map.ui.swing.debug.ViewableIdentifier;
-import com.telenav.kivakit.map.ui.swing.debug.viewables.ViewableLocation;
-import com.telenav.kivakit.map.ui.swing.debug.viewer.swing.SwingViewer;
+import com.telenav.mesakit.map.ui.swing.debug.InteractiveView;
+import com.telenav.mesakit.map.ui.swing.debug.ViewableIdentifier;
+import com.telenav.mesakit.map.ui.swing.debug.viewables.ViewableLocation;
+import com.telenav.mesakit.map.ui.swing.debug.viewer.swing.SwingViewer;
 import com.telenav.kivakit.navigation.routing.RoutingDebugger;
 import com.telenav.kivakit.navigation.routing.RoutingRequest;
 import com.telenav.kivakit.navigation.routing.RoutingResponse;
 import com.telenav.kivakit.navigation.routing.cost.Cost;
+import com.telenav.mesakit.graph.Route;
+import com.telenav.mesakit.graph.Vertex;
+import com.telenav.mesakit.graph.collections.EdgeSet;
+import com.telenav.mesakit.graph.ui.viewer.ViewableEdge;
 
 import java.awt.Color;
 
@@ -132,7 +132,7 @@ public class SwingRoutingDebugger implements RoutingDebugger
             view = (InteractiveView) new SwingViewer().view(title);
             view.update(startLabel, new ViewableLocation(request.start().location(), START, WHITE, "start"));
             view.update(endLabel, new ViewableLocation(request.end().location(), END, WHITE, "end"));
-            view.zoomToContents(Percentage.of(5));
+            view.zoomToContents(Percent.of(5));
             view.frameComplete();
         }
     }

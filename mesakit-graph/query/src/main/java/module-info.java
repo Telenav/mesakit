@@ -5,5 +5,5 @@ open module mesakit.graph.query
 
     requires org.antlr.antlr4.runtime;
 
-    exports com.telenav.tdk.graph.query;
+    exports com.telenav.mesakit.graph.query;
 }

@@ -56,7 +56,7 @@ public class RoadTypeMileages
         return totalMileages;
     }
 
-    public Percent roadTypMileagePercentage(final RoadType roadType)
+    public Percent roadTypMileagePercent(final RoadType roadType)
     {
         if (totalMileages.equals(Distance.ZERO))
         {

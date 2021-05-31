@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing;
+package com.telenav.tdk.navigation.routing;
 
-import com.telenav.kivakit.graph.Route;
-import com.telenav.kivakit.graph.Vertex;
 import com.telenav.kivakit.kernel.time.Duration;
 import com.telenav.kivakit.kernel.time.Time;
-import com.telenav.kivakit.map.measurements.Distance;
 import com.telenav.kivakit.navigation.routing.cost.Cost;
+import com.telenav.mesakit.graph.Route;
+import com.telenav.mesakit.graph.Vertex;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 /**
  * Request for a route

@@ -16,9 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing.cost;
+package com.telenav.tdk.navigation.routing.cost;
 
-import com.telenav.kivakit.graph.Route;
+import com.telenav.mesakit.graph.Route;
 
 /**
  * Function for determining if a given route is allowed

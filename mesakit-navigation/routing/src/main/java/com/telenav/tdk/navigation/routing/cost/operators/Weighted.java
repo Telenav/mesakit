@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing.cost.operators;
+package com.telenav.tdk.navigation.routing.cost.operators;
 
 import com.telenav.kivakit.kernel.scalars.levels.Weight;
-import com.telenav.kivakit.graph.Edge;
 import com.telenav.kivakit.navigation.routing.cost.Cost;
 import com.telenav.kivakit.navigation.routing.cost.CostFunction;
+import com.telenav.mesakit.graph.Edge;
 
 /**
  * Weights a cost function

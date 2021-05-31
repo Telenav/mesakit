@@ -16,7 +16,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing.cost;
+package com.telenav.tdk.navigation.routing.cost;
 
 import com.telenav.kivakit.kernel.language.primitive.Doubles;
 import com.telenav.kivakit.kernel.scalars.levels.Weight;

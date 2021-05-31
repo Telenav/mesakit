@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing;
+package com.telenav.tdk.navigation.routing;
 
-import com.telenav.kivakit.graph.Route;
-import com.telenav.kivakit.graph.world.WorldVertex;
 import com.telenav.kivakit.kernel.time.Duration;
+import com.telenav.mesakit.graph.Route;
+import com.telenav.mesakit.graph.world.WorldVertex;
 
 import static com.telenav.kivakit.kernel.validation.Validate.fail;
 

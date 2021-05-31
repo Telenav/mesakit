@@ -16,17 +16,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing.dijkstra;
+package com.telenav.tdk.navigation.routing.dijkstra;
 
-import com.telenav.kivakit.graph.Edge;
-import com.telenav.kivakit.graph.Route;
-import com.telenav.kivakit.graph.Vertex;
-import com.telenav.kivakit.graph.collections.EdgeSet;
 import com.telenav.kivakit.navigation.routing.RoutingDebugger;
 import com.telenav.kivakit.navigation.routing.RoutingLimiter;
 import com.telenav.kivakit.navigation.routing.RoutingRequest;
 import com.telenav.kivakit.navigation.routing.RoutingResponse;
 import com.telenav.kivakit.navigation.routing.bidijkstra.BiDijkstraRouter;
+import com.telenav.mesakit.graph.Edge;
+import com.telenav.mesakit.graph.Route;
+import com.telenav.mesakit.graph.Vertex;
+import com.telenav.mesakit.graph.collections.EdgeSet;
 
 import java.util.HashMap;
 import java.util.Map;

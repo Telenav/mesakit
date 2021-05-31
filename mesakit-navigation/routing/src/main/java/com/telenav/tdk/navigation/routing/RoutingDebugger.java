@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing;
+package com.telenav.tdk.navigation.routing;
 
-import com.telenav.kivakit.graph.Route;
-import com.telenav.kivakit.graph.Vertex;
 import com.telenav.kivakit.navigation.routing.cost.Cost;
+import com.telenav.mesakit.graph.Route;
+import com.telenav.mesakit.graph.Vertex;
 
 /**
  * A debug strategy for routing

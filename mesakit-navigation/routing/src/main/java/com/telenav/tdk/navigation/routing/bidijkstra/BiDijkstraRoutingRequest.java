@@ -16,15 +16,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing.bidijkstra;
+package com.telenav.tdk.navigation.routing.bidijkstra;
 
-import com.telenav.kivakit.graph.Vertex;
-import com.telenav.kivakit.kernel.scalars.counts.Count;
-import com.telenav.kivakit.map.measurements.Distance;
+import com.telenav.kivakit.kernel.language.values.Count;
 import com.telenav.kivakit.navigation.routing.RoutingDebugger;
 import com.telenav.kivakit.navigation.routing.RoutingLimiter;
 import com.telenav.kivakit.navigation.routing.RoutingRequest;
 import com.telenav.kivakit.navigation.routing.cost.CostFunction;
+import com.telenav.mesakit.graph.Vertex;
+import com.telenav.mesakit.map.measurements.Distance;
 
 public class BiDijkstraRoutingRequest extends RoutingRequest
 {
@@ -82,15 +82,15 @@ public class BiDijkstraRoutingRequest extends RoutingRequest
             final var distance = distance();
             if (distance.isLessThan(Distance.miles(50)))
             {
-                this.meets = Count.of(200);
+                this.meets = Count.count(200);
             }
             else if (distance.isLessThan(Distance.miles(300)))
             {
-                this.meets = Count.of(500);
+                this.meets = Count.count(500);
             }
             else
             {
-                this.meets = Count.of(1_000);
+                this.meets = Count.count(1_000);
             }
         }
         return this.meets;

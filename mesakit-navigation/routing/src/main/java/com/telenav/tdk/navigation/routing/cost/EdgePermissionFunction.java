@@ -16,9 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing.cost;
+package com.telenav.tdk.navigation.routing.cost;
 
-import com.telenav.kivakit.graph.Edge;
+import com.telenav.mesakit.graph.Edge;
 
 /**
  * Function for determining if the given edge is allowed

@@ -16,22 +16,22 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing;
+package com.telenav.tdk.navigation.routing;
 
-import com.telenav.kivakit.graph.Route;
-import com.telenav.kivakit.graph.Vertex;
-import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
 import com.telenav.kivakit.kernel.debug.Debug;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.scalars.levels.Weight;
-import com.telenav.kivakit.map.measurements.Speed;
+import com.telenav.mesakit.map.measurements.Speed;
 import com.telenav.kivakit.navigation.routing.bidijkstra.BiDijkstraRouter;
 import com.telenav.kivakit.navigation.routing.bidijkstra.BiDijkstraRoutingRequest;
 import com.telenav.kivakit.navigation.routing.cost.CostFunction;
 import com.telenav.kivakit.navigation.routing.cost.functions.TravelTimeCostFunction;
 import com.telenav.kivakit.navigation.routing.cost.functions.heuristic.RemainingDistanceToEndCostFunction;
 import com.telenav.kivakit.navigation.routing.cost.functions.heuristic.RoadTypeCostFunction;
+import com.telenav.mesakit.graph.Route;
+import com.telenav.mesakit.graph.Vertex;
+import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
 import org.junit.Before;
 import org.junit.Test;
 

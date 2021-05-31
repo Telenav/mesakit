@@ -16,9 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing;
+package com.telenav.tdk.navigation.routing;
 
-import com.telenav.kivakit.graph.Vertex;
+import com.telenav.mesakit.graph.Vertex;
 
 /**
  * Base interface for something that routes between two vertices in a graph

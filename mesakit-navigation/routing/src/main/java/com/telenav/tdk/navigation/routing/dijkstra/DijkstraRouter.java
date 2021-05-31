@@ -16,9 +16,8 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing.dijkstra;
+package com.telenav.tdk.navigation.routing.dijkstra;
 
-import com.telenav.kivakit.graph.Edge;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.navigation.routing.BaseRouter;
@@ -30,6 +29,7 @@ import com.telenav.kivakit.navigation.routing.cost.CostFunction;
 import com.telenav.kivakit.navigation.routing.cost.EdgePermissionFunction;
 import com.telenav.kivakit.navigation.routing.cost.EdgePermissionFunction.Permission;
 import com.telenav.kivakit.navigation.routing.cost.RoutePermissionFunction;
+import com.telenav.mesakit.graph.Edge;
 
 /**
  * Implementation of Dijkstra routing.

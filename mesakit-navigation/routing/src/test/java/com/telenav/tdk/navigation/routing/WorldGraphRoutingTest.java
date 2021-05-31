@@ -16,11 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-package com.telenav.kivakit.navigation.routing;
+package com.telenav.tdk.navigation.routing;
 
 import com.telenav.kivakit.kernel.scalars.levels.Weight;
-import com.telenav.kivakit.graph.world.project.KivaKitGraphWorldUnitTest;
 import com.telenav.kivakit.map.geography.Location;
 import com.telenav.kivakit.navigation.routing.cost.functions.heuristic.RemainingDistanceToEndCostFunction;
 import com.telenav.kivakit.navigation.routing.cost.functions.heuristic.SpeedCostFunction;
@@ -29,6 +27,7 @@ import com.telenav.kivakit.navigation.routing.dijkstra.DijkstraRouter;
 import com.telenav.kivakit.navigation.routing.dijkstra.DijkstraRoutingRequest;
 import com.telenav.kivakit.navigation.routing.limiters.CpuTimeRoutingLimiter;
 import com.telenav.kivakit.utilities.time.PreciseDuration;
+import com.telenav.mesakit.graph.world.project.KivaKitGraphWorldUnitTest;
 import org.junit.Ignore;
 import org.junit.Test;
 

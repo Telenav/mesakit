@@ -16,19 +16,19 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.navigation.routing.debuggers;
+package com.telenav.tdk.navigation.routing.debuggers;
 
-import com.telenav.kivakit.graph.Route;
-import com.telenav.kivakit.graph.Vertex;
-import com.telenav.kivakit.graph.world.WorldEdge;
 import com.telenav.kivakit.kernel.language.string.StringList;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.map.region.RegionIdentifier;
+import com.telenav.mesakit.map.region.RegionIdentifier;
 import com.telenav.kivakit.navigation.routing.RoutingDebugger;
 import com.telenav.kivakit.navigation.routing.RoutingRequest;
 import com.telenav.kivakit.navigation.routing.RoutingResponse;
 import com.telenav.kivakit.navigation.routing.cost.Cost;
+import com.telenav.mesakit.graph.Route;
+import com.telenav.mesakit.graph.Vertex;
+import com.telenav.mesakit.graph.world.WorldEdge;
 
 public class ConsoleRoutingDebugger implements RoutingDebugger
 {
