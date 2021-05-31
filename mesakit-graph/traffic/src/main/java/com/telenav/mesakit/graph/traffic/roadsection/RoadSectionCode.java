@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.graph.traffic.roadsection;
 
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.data.conversion.string.collection.BaseListConverter;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.navteq.NavteqRoadSectionCode;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.ngx.NgxRoadSectionCode;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.osm.PbfRoadSectionCode;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.telenav.TelenavTrafficLocationCode;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.tmc.TmcCode;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.tomtom.TomTomRoadSectionCode;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.data.conversion.string.collection.BaseListConverter;
-import com.telenav.kivakit.kernel.messaging.Listener;
 
 import java.util.Objects;
 
@@ -49,10 +49,10 @@ public abstract class RoadSectionCode
         protected RoadSectionCode onConvertToObject(final String value)
         {
             // Validate for a road section coding system
-            final var system = com.telenav.kivakit.graph.traffic.roadsection.RoadSectionCodingSystem.prefix(value);
+            final var system = com.telenav.mesakit.graph.traffic.roadsection.RoadSectionCodingSystem.prefix(value);
             if (system != null)
             {
-                final var code = com.telenav.kivakit.graph.traffic.roadsection.RoadSectionCodingSystem.suffix(value);
+                final var code = com.telenav.mesakit.graph.traffic.roadsection.RoadSectionCodingSystem.suffix(value);
                 switch (system)
                 {
                     case TMC:
@@ -98,17 +98,17 @@ public abstract class RoadSectionCode
         }
     }
 
-    public com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier asIdentifier()
+    public com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier asIdentifier()
     {
         return asIdentifier(true);
     }
 
-    public abstract com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier asIdentifier(
+    public abstract com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier asIdentifier(
             boolean lookupDatabase);
 
     public abstract String code();
 
-    public abstract com.telenav.kivakit.graph.traffic.roadsection.RoadSectionCodingSystem codingSystem();
+    public abstract com.telenav.mesakit.graph.traffic.roadsection.RoadSectionCodingSystem codingSystem();
 
     @Override
     public boolean equals(final Object object)

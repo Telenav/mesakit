@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.world.repository;
 
+import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.filesystem.spi.FileSystemService;
-import com.telenav.kivakit.kernel.commandline.SwitchParser;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
@@ -31,7 +31,7 @@ import com.telenav.mesakit.graph.Metadata;
 
 import java.io.Serializable;
 
-import static com.telenav.kivakit.kernel.validation.Validate.unsupported;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 
 /**
  * A {@link Folder} on some {@link FileSystemService} containing {@link WorldGraphRepositoryFolder}s. Since the {@link
@@ -79,7 +79,7 @@ public class WorldGraphRepository extends Folder implements Serializable
             {
                 return null;
             }
-            return new WorldGraphRepository(new Folder(value));
+            return new WorldGraphRepository(Folder.parse(value));
         }
     }
 

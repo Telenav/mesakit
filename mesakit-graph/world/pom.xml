@@ -15,7 +15,6 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit-graph-world</artifactId>
     <packaging>jar</packaging>
     <name>MesaKit - Graph - World</name>

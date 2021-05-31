@@ -24,14 +24,12 @@ import com.telenav.kivakit.kernel.data.validation.Validation;
 import com.telenav.kivakit.kernel.data.validation.Validator;
 import com.telenav.kivakit.kernel.interfaces.collection.LongKeyed;
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
 import com.telenav.kivakit.kernel.language.primitives.Longs;
 import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
 import com.telenav.kivakit.kernel.language.strings.CaseFormat;
 import com.telenav.kivakit.kernel.language.strings.Strings;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
 import com.telenav.kivakit.kernel.language.time.Duration;
-import com.telenav.kivakit.kernel.language.time.LocalTime;
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.kernel.logging.Logger;
@@ -69,19 +67,6 @@ import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner.EdgeSection;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner.EdgeSectioner;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner.WaySectioningGraphLoader;
-import com.telenav.mesakit.graph.specifications.unidb.UniDbDataSpecification;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.Access;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.AdasCurvature;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.AdasRegionCode;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.AdasZCoordinate;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.CurvatureHeadingSlopeSequence;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.FormOfWay;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.Lane;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.LaneDivider;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.OneWayLane;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.RouteType;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.SpeedLimitSource;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.TurnLane;
 import com.telenav.mesakit.graph.traffic.historical.SpeedPatternIdentifier;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
@@ -103,7 +88,6 @@ import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
-import com.telenav.mesakit.map.measurements.geographic.Slope;
 import com.telenav.mesakit.map.measurements.motion.Speed;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.region.regions.Continent;
@@ -113,8 +97,6 @@ import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
 import com.telenav.mesakit.map.road.model.BridgeType;
 import com.telenav.mesakit.map.road.model.GradeSeparation;
-import com.telenav.mesakit.map.road.model.HighwayType;
-import com.telenav.mesakit.map.road.model.OverpassUnderpassType;
 import com.telenav.mesakit.map.road.model.RoadFunctionalClass;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.model.RoadState;
@@ -170,7 +152,6 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupport
  *     <li><i>Speed and Travel Time</i> - Historical and free-flow travel information</li>
  *     <li><i>Testing and Debugging</i> - Methods helpful in testing and debugging</li>
  *     <li><i>OSM-Specific</i> - Methods that are specific to the {@link OsmDataSpecification} (for convenience)</li>
- *     <li><i>UniDb-Specific</i> - Methods that are specific to the {@link UniDbDataSpecification} (for convenience)</li>
  * </ul>
  * <p>
  * A few methods that have internal uses have been omitted. Some methods also show up under more than one category to
@@ -387,11 +368,7 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupport
  *     <li>{@link #roadType()} - The type of this edge: freeway, highway, local road, etc.</li>
  *     <li>{@link #roadSubType()} - The sub-type of this edge: main road, intersection link, ramp, roundabout, etc.</li>
  *     <li>{@link #roadSurface()} - The surface of this edge: paved, unpaved or poor condition</li>
- *     <li>{@link #uniDbTurnLaneArrows()} - UniDb lane arrows</li>
  *     <li>{@link #laneCount()} - The number of lanes on this edge</li>
- *     <li>{@link #uniDbLaneDividers()} - UniDb lane dividers</li>
- *     <li>{@link #uniDbLaneOneWays()} - UniDb lane one-ways</li>
- *     <li>{@link #uniDbLaneTypes()} - UniDb lane types</li>
  *     <li>{@link #hovLaneCount()} - The number of HOV lanes on this edge</li>
  *     <li>{@link #isShaped()} - True if this edge has a road shape with more than one segment</li>
  *     <li>{@link #bridgeType()} - The type of bridge for this edge: none, tunnel, overpass or underpass</li>
@@ -416,12 +393,9 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupport
  * <b>Speed and Travel Time</b>
  * <ul>
  *     <li>{@link #speedLimit()} - The speed limit on this edge</li>
- *     <li>{@link #uniDbSpeedLimitSource()} - The UniDb {@link SpeedLimitSource}</li>
  *     <li>{@link #speedPatternIdentifier()} - The historical speed pattern for this edge</li>
  *     <li>{@link #freeFlowSpeed()} - The speed of normal traffic flow on this edge</li>
  *     <li>{@link #freeFlowForFunctionalClass()} - Typical speed of traffic on edges of this functional class</li>
- *     <li>{@link #uniDbReferenceSpeed()} - UniDb maximum historical speed limit on the edge</li>
- *     <li>{@link #historicalSpeed(LocalTime)} - The speed on this edge from a historical model for the given local date and time</li>
  *     <li>{@link #travelTime()} - The amount of time required to travel this edge at free flow speed</li>
  *     <li>{@link #travelTime(Speed)} - The time required to travel this edge at the given speed</li>
  *     <li>{@link #travelTimeForFunctionalClass()} - The time required to travel this edge based on the typical speed on this edge's functional class</li>
@@ -441,7 +415,6 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupport
  *     <li>{@link #state()} - The state where this edge exists</li>
  *     <li>{@link #metropolitanArea()} - The most important metropolitan area that owns this edge</li>
  *     <li>{@link #locale()} - The {@link MapLocale} for this edge (which is distinct from java.util.{@link Locale}</li>
- *     <li>{@link #uniDbAdasRegionCode()} - The UniDb ADAS region code for this edge</li>
  * </ul>
  * <p>
  * <b>Testing and Debugging</b>
@@ -457,7 +430,6 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupport
  *     <li>{@link #isOsm()} - True if this is an OSM edge</li>
  *     <li>{@link #osmIsLink()} - True if this edge is an OSM link</li>
  *     <li>{@link #osmIsOneWay()} - True if this edge has been labeled as an OSM one-way</li>
- *     <li>{@link #osmIsProposed()} - True if this edge is proposed in OSM</li>
  *     <li>{@link #osmIsRoundabout()} - True if this edge is on a roundabout based on OSM tags</li>
  *     <li>{@link #osmIsServiceWay()} - True if this edge is an OSM service way</li>
  *     <li>{@link #osmIsExitToTagged()} - True if this edge is tagged with OSM exit-to</li>
@@ -468,35 +440,6 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupport
  *     <li>{@link #fromGradeSeparation()} - The {@link GradeSeparation} for the "from" end of this edge</li>
  *     <li>{@link #toGradeSeparation()} - The {@link GradeSeparation} for the "to" end of this edge </li>
  *     <li>{@link #osmCouldBeDoubleDigitized()} - True if this edge could be detected as OSM double-digitized</li>
- * </ul>
- * <p>
- * <b>UniDb-Specific</b>
- * <ul>
- *     <li>{@link #isUniDb()}</li>
- *     <li>{@link #uniDbIsReverseOneWay()}</li>
- *     <li>{@link #uniDbAccessType()}</li>
- *     <li>{@link #uniDbAdasRegionCode()}</li>
- *     <li>{@link #uniDbAdasZCoordinates()}</li>
- *     <li>{@link #uniDbReverseLaneCount()}</li>
- *     <li>{@link #uniDbIsBuildUpArea()}</li>
- *     <li>{@link #uniDbIsComplexIntersection()}</li>
- *     <li>{@link #uniDbCurvatures()}</li>
- *     <li>{@link #uniDbCurvatureHeadingSlopeSequence()}</li>
- *     <li>{@link #uniDbIsDividedRoad()}</li>
- *     <li>{@link #uniDbFormOfWay()}</li>
- *     <li>{@link #uniDbReferenceSpeed()}</li>
- *     <li>{@link #uniDbHeadings()}</li>
- *     <li>{@link #uniDbForwardLaneCount()}</li>
- *     <li>{@link #uniDbHighwayType()}</li>
- *     <li>{@link #uniDbTurnLaneArrows()}</li>
- *     <li>{@link #uniDbLaneDividers()}</li>
- *     <li>{@link #uniDbLaneOneWays()}</li>
- *     <li>{@link #uniDbLaneTypes()}</li>
- *     <li>{@link #uniDbRouteType()}</li>
- *     <li>{@link #uniDbOverpassUnderpass()}</li>
- *     <li>{@link #uniDbIsLeftSideDriving()}</li>
- *     <li>{@link #uniDbSpeedLimitSource()}</li>
- *     <li>{@link #uniDbSlopes()}</li>
  * </ul>
  *
  * @author jonathanl (shibo)
@@ -1083,14 +1026,6 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     public Heading heading()
     {
         return finalHeading();
-    }
-
-    /**
-     * @return The historical speed for this edge from a historical model at the given local time
-     */
-    public Speed historicalSpeed(final LocalTime time)
-    {
-        return graph().edgeStore().retrieveHistoricalSpeed(speedPatternIdentifier(), uniDbReferenceSpeed(), time);
     }
 
     /**
@@ -1972,14 +1907,6 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     }
 
     /**
-     * @return True if this edge is proposed in OSM.  This is specific to the {@link OsmDataSpecification}.
-     */
-    public boolean osmIsProposed()
-    {
-        return "proposed".equalsIgnoreCase(uniDbHighwayType().name());
-    }
-
-    /**
      * @return True if this edge labeled as a roundabout in OSM. This is specific to the {@link OsmDataSpecification}.
      */
     public boolean osmIsRoundabout()
@@ -2705,200 +2632,6 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     public Type type()
     {
         return Type.NORMAL;
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public Access uniDbAccessType()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public AdasRegionCode uniDbAdasRegionCode()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public ObjectList<AdasZCoordinate> uniDbAdasZCoordinates()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public CurvatureHeadingSlopeSequence uniDbCurvatureHeadingSlopeSequence()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public ObjectList<AdasCurvature> uniDbCurvatures()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public FormOfWay uniDbFormOfWay()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public Count uniDbForwardLaneCount()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public ObjectList<Heading> uniDbHeadings()
-    {
-        return unsupported();
-    }
-
-    /**
-     * @return The highway tag for this graph element. This method is overridden in UniDb graphs because they store
-     * highway tags, but not all tags.
-     */
-    public HighwayType uniDbHighwayType()
-    {
-        final var highway = tagValue("highway");
-        return highway == null ? null : HighwayType.valueOf(highway.toUpperCase());
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public Boolean uniDbIsBuildUpArea()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public Boolean uniDbIsComplexIntersection()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public Boolean uniDbIsDividedRoad()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public Boolean uniDbIsLeftSideDriving()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public Boolean uniDbIsReverseOneWay()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public List<LaneDivider> uniDbLaneDividers()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public List<OneWayLane> uniDbLaneOneWays()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public List<Lane> uniDbLaneTypes()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public OverpassUnderpassType uniDbOverpassUnderpass()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public Speed uniDbReferenceSpeed()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public Count uniDbReverseLaneCount()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public RouteType uniDbRouteType()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public ObjectList<Slope> uniDbSlopes()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public SpeedLimitSource uniDbSpeedLimitSource()
-    {
-        return unsupported();
-    }
-
-    /**
-     * Specific to {@link UniDbDataSpecification}. This method is for convenience to avoid down-casts.
-     */
-    public List<TurnLane> uniDbTurnLaneArrows()
-    {
-        return unsupported();
     }
 
     /**

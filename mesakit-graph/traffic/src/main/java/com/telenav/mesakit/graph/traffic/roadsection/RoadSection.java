@@ -29,6 +29,9 @@ import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
 import com.telenav.kivakit.kernel.language.objects.Hash;
 import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
 import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.mesakit.graph.traffic.project.GraphTrafficLimits;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.LocationSequence;
@@ -39,6 +42,7 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.motion.Speed;
 import com.telenav.mesakit.map.region.regions.City;
+import com.telenav.mesakit.map.region.regions.TimeZone;
 import com.telenav.mesakit.map.road.model.BetweenCrossRoads;
 import com.telenav.mesakit.map.road.model.DeCartaRoadType;
 import com.telenav.mesakit.map.road.model.RoadName;
@@ -50,39 +54,43 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+
 public class RoadSection implements Bounded, Intersectable, LocationSequence, Source<RoadSection>
 {
-    private static final CsvColumn IDENTIFIER_COLUMN = new CsvColumn("roadSectionIdentifier");
+    private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    private static final CsvColumn UPSTREAM_COLUMN = new CsvColumn("upstreamIdentifier");
+    private static final CsvColumn<RoadSectionIdentifier> IDENTIFIER_COLUMN = CsvColumn.of("roadSectionIdentifier");
 
-    private static final CsvColumn DOWNSTREAM_COLUMN = new CsvColumn("downstreamIdentifier");
+    private static final CsvColumn<RoadSectionIdentifier> UPSTREAM_COLUMN = CsvColumn.of("upstreamIdentifier");
 
-    private static final CsvColumn START_LATITUDE_COLUMN = new CsvColumn("startLatitude");
+    private static final CsvColumn<RoadSectionIdentifier> DOWNSTREAM_COLUMN = CsvColumn.of("downstreamIdentifier");
 
-    private static final CsvColumn START_LONGITUDE_COLUMN = new CsvColumn("startLongitude");
+    private static final CsvColumn<Latitude> START_LATITUDE_COLUMN = CsvColumn.of("startLatitude");
 
-    private static final CsvColumn END_LATITUDE_COLUMN = new CsvColumn("endLatitude");
+    private static final CsvColumn<Longitude> START_LONGITUDE_COLUMN = CsvColumn.of("startLongitude");
 
-    private static final CsvColumn END_LONGITUDE_COLUMN = new CsvColumn("endLongitude");
+    private static final CsvColumn<Latitude> END_LATITUDE_COLUMN = CsvColumn.of("endLatitude");
 
-    private static final CsvColumn LENGTH_COLUMN = new CsvColumn("lengthInMeters");
+    private static final CsvColumn<Longitude> END_LONGITUDE_COLUMN = CsvColumn.of("endLongitude");
 
-    private static final CsvColumn FREE_FLOW_COLUMN = new CsvColumn("freeFlowSpeedInMilesPerHour");
+    private static final CsvColumn<Distance> LENGTH_COLUMN = CsvColumn.of("lengthInMeters");
 
-    private static final CsvColumn PARENT_IDENTIFIER = new CsvColumn("parentIdentifier");
+    private static final CsvColumn<Speed> FREE_FLOW_COLUMN = CsvColumn.of("freeFlowSpeedInMilesPerHour");
 
-    private static final CsvColumn CITY_COLUMN = new CsvColumn("cityName");
+    private static final CsvColumn<RoadSectionIdentifier> PARENT_IDENTIFIER = CsvColumn.of("parentIdentifier");
 
-    private static final CsvColumn MAIN_ROAD_COLUMN = new CsvColumn("roadName");
+    private static final CsvColumn<City> CITY_COLUMN = CsvColumn.of("cityName");
 
-    private static final CsvColumn FIRST_CROSS_STREET_COLUMN = new CsvColumn("firstCrossStreet");
+    private static final CsvColumn<RoadName> MAIN_ROAD_COLUMN = CsvColumn.of("roadName");
 
-    private static final CsvColumn SECOND_CROSS_STREET_COLUMN = new CsvColumn("secondCrossStreet");
+    private static final CsvColumn<RoadName> FIRST_CROSS_STREET_COLUMN = CsvColumn.of("firstCrossStreet");
 
-    private static final CsvColumn TIME_ZONE_COLUMN = new CsvColumn("timeZone");
+    private static final CsvColumn<RoadName> SECOND_CROSS_STREET_COLUMN = CsvColumn.of("secondCrossStreet");
 
-    public static final CsvSchema CSV_SCHEMA = new CsvSchema(IDENTIFIER_COLUMN, UPSTREAM_COLUMN, DOWNSTREAM_COLUMN,
+    private static final CsvColumn<TimeZone> TIME_ZONE_COLUMN = CsvColumn.of("timeZone");
+
+    public static final CsvSchema CSV_SCHEMA = CsvSchema.of(IDENTIFIER_COLUMN, UPSTREAM_COLUMN, DOWNSTREAM_COLUMN,
             START_LATITUDE_COLUMN, START_LONGITUDE_COLUMN, END_LATITUDE_COLUMN, END_LONGITUDE_COLUMN, LENGTH_COLUMN,
             FREE_FLOW_COLUMN, PARENT_IDENTIFIER, CITY_COLUMN, MAIN_ROAD_COLUMN, FIRST_CROSS_STREET_COLUMN,
             SECOND_CROSS_STREET_COLUMN, TIME_ZONE_COLUMN);
@@ -157,11 +165,12 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
 
     public RoadSection(final CsvLine line, final com.telenav.kivakit.kernel.messaging.Listener listener)
     {
-        final BaseStringConverter<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier> roadSectionConverter = new com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier.Converter(listener);
-        final BaseListConverter<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier> roadSectionListConverter = new com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier.ListConverter(listener, ":-:");
+        final BaseStringConverter<RoadSectionIdentifier> roadSectionConverter = new RoadSectionIdentifier.Converter(listener);
+        final BaseListConverter<RoadSectionIdentifier> roadSectionListConverter = new RoadSectionIdentifier.ListConverter(listener, ":-:");
         final BaseStringConverter<DeCartaRoadType> roadTypeConverter = new DeCartaRoadTypeConverter(listener);
         final BaseStringConverter<City> cityConverter = new City.Converter<>(listener);
         final BaseStringConverter<RoadName> streetNameConverter = new RoadNameConverter(listener);
+
         roadTypeConverter.allowEmpty(true);
         roadTypeConverter.allowNull(true);
         cityConverter.allowEmpty(true);
@@ -211,12 +220,12 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
         identifierValue = minimal.identifierValue;
     }
 
-    public List<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier> allNext()
+    public List<RoadSectionIdentifier> allNext()
     {
         return buildNeighborListView(next);
     }
 
-    public List<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier> allPrevious()
+    public List<com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier> allPrevious()
     {
         return buildNeighborListView(previous);
     }
@@ -298,12 +307,12 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
     }
 
     @KivaKitIncludeProperty
-    public com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier identifier()
+    public com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier identifier()
     {
-        return com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier.forLongValues(identifierFlags, identifierValue);
+        return com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier.forLongValues(identifierFlags, identifierValue);
     }
 
-    public void identifier(final com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier identifier)
+    public void identifier(final com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier identifier)
     {
         identifierFlags = identifier.flags();
         identifierValue = identifier.value().asLong();
@@ -336,12 +345,12 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
     {
         if (next != null && next.length >= 2)
         {
-            return com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier.forLongValues(next[0], next[1]).roadSection();
+            return com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier.forLongValues(next[0], next[1]).roadSection();
         }
         return null;
     }
 
-    public void next(final List<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier> next)
+    public void next(final List<com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier> next)
     {
         this.next = buildNeighbors(next);
     }
@@ -349,10 +358,10 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
     public RoadSection parent()
     {
         return parentIdentifierFlags == 0 ? null
-                : com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier.forLongValues(parentIdentifierFlags, parentIdentifierValue).roadSection();
+                : com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier.forLongValues(parentIdentifierFlags, parentIdentifierValue).roadSection();
     }
 
-    public void parent(final com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier parent)
+    public void parent(final com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier parent)
     {
         if (parent != null)
         {
@@ -365,12 +374,12 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
     {
         if (previous != null && previous.length >= 2)
         {
-            return com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier.forLongValues(previous[0], previous[1]).roadSection();
+            return com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier.forLongValues(previous[0], previous[1]).roadSection();
         }
         return null;
     }
 
-    public void previous(final List<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier> previous)
+    public void previous(final List<com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier> previous)
     {
         this.previous = buildNeighbors(previous);
     }
@@ -416,8 +425,8 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
         }
         else
         {
-            final var identifiers = new ObjectList<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier>(
-                    KivaKitGraphTrafficLimits.MAXIMUM_UPSTREAM_ROAD_SECTIONS).appendAll(previousIdentifiers);
+            final var identifiers = new ObjectList<RoadSectionIdentifier>(
+                    GraphTrafficLimits.MAXIMUM_UPSTREAM_ROAD_SECTIONS).appendAll(previousIdentifiers);
             line.set(UPSTREAM_COLUMN, identifiers.join(":-:"));
         }
 
@@ -428,8 +437,8 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
         }
         else
         {
-            final BoundedList<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier> identifiers = new ObjectList<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier>(
-                    KivaKitGraphTrafficLimits.MAXIMUM_DOWNSTREAM_ROAD_SECTIONS).appendAll(nextIdentifiers);
+            final var identifiers = new ObjectList<RoadSectionIdentifier>(
+                    GraphTrafficLimits.MAXIMUM_DOWNSTREAM_ROAD_SECTIONS).appendAll(nextIdentifiers);
             line.set(DOWNSTREAM_COLUMN, identifiers.join(":-:"));
         }
 
@@ -455,9 +464,9 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
         writer.write(line);
     }
 
-    com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier safeIdentifier()
+    RoadSectionIdentifier safeIdentifier()
     {
-        return new com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier(identifierFlags, identifierValue);
+        return new RoadSectionIdentifier(identifierFlags, identifierValue);
     }
 
     /**
@@ -465,7 +474,7 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
      * capacity -using 2 long values to store respectively the flag and value of each road section identifier, and
      * generate this list view on the fly to make interacting with the long[] data type easier.
      */
-    private List<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier> buildNeighborListView(
+    private List<RoadSectionIdentifier> buildNeighborListView(
             final long[] neighbors)
     {
         if (neighbors == null)
@@ -479,7 +488,7 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
         return new java.util.AbstractList<>()
         {
             @Override
-            public com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier get(final int listIndex)
+            public RoadSectionIdentifier get(final int listIndex)
             {
                 final var index = listIndex * 2;
                 final var flags = neighbors[index];
@@ -490,12 +499,11 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
                     return null;
                 }
 
-                return com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier.forLongValues(flags, value);
+                return RoadSectionIdentifier.forLongValues(flags, value);
             }
 
             @Override
-            public com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier set(final int arg0,
-                                                                                           final com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier identifier)
+            public RoadSectionIdentifier set(final int arg0, final RoadSectionIdentifier identifier)
             {
                 final var old = get(arg0);
                 final var index = arg0 * 2;
@@ -513,7 +521,7 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
     }
 
     private long[] buildNeighbors(
-            final List<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier> neighbors)
+            final List<RoadSectionIdentifier> neighbors)
     {
         final var neighborArray = new long[neighbors.size() * 2];
         final var view = buildNeighborListView(neighborArray);

@@ -64,15 +64,8 @@ open module mesakit.graph.core
     exports com.telenav.mesakit.graph.specifications.osm.graph.loader;
     exports com.telenav.mesakit.graph.specifications.osm.graph;
     exports com.telenav.mesakit.graph.specifications.osm;
-    exports com.telenav.mesakit.graph.specifications.unidb.graph.converter;
-    exports com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes;
-    exports com.telenav.mesakit.graph.specifications.unidb.graph.edge.model;
-    exports com.telenav.mesakit.graph.specifications.unidb.graph.edge.store;
-    exports com.telenav.mesakit.graph.specifications.unidb.graph.loader;
-    exports com.telenav.mesakit.graph.specifications.unidb.graph.vertex;
-    exports com.telenav.mesakit.graph.specifications.unidb.graph;
-    exports com.telenav.mesakit.graph.specifications.unidb;
     exports com.telenav.mesakit.graph.ui.debuggers.edge.sectioner;
     exports com.telenav.mesakit.graph.ui.viewer;
     exports com.telenav.mesakit.graph;
+    exports com.telenav.mesakit.graph.specifications.common.graph.loader.extractors;
 }

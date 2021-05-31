@@ -18,14 +18,23 @@
 
 package com.telenav.mesakit.graph.traffic.roadsection.codings.tmc;
 
+import com.telenav.kivakit.kernel.data.conversion.BaseConverter;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.data.conversion.string.collection.BaseListConverter;
+import com.telenav.kivakit.kernel.language.collections.map.ConcurrentObjectMap;
+import com.telenav.kivakit.kernel.language.strings.Align;
+import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionCode;
+import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionCodingSystem;
+import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
+
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 public class TmcCode extends RoadSectionCode
 {
     private static final Logger LOGGER = com.telenav.kivakit.kernel.logging.LoggerFactory.newLogger();
 
-    private static final BoundedConcurrentMap<String, TmcCode> codes = new BoundedConcurrentMap<>(
-            KivaKitGraphTrafficLimits.MAXIMUM_TMC_CODES)
+    private static final ConcurrentObjectMap<String, TmcCode> codes = new ConcurrentObjectMap<>()
     {
         @Override
         protected TmcCode onInitialize(final String code)
@@ -34,7 +43,7 @@ public class TmcCode extends RoadSectionCode
         }
     };
 
-    private static final com.telenav.kivakit.graph.traffic.roadsection.codings.tmc.TmcCodeParser parser = new com.telenav.kivakit.graph.traffic.roadsection.codings.tmc.TmcCodeParser();
+    private static final TmcCodeParser parser = new TmcCodeParser();
 
     private static boolean cacheLocked;
 
@@ -72,7 +81,7 @@ public class TmcCode extends RoadSectionCode
         cacheLocked = true;
     }
 
-    public static class Converter extends com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter<TmcCode>
+    public static class Converter extends BaseStringConverter<TmcCode>
     {
         public Converter(final com.telenav.kivakit.kernel.messaging.Listener listener)
         {
@@ -86,7 +95,7 @@ public class TmcCode extends RoadSectionCode
         }
     }
 
-    public static class FromLongConverter extends com.telenav.kivakit.kernel.data.conversion.BaseConverter<Long, TmcCode>
+    public static class FromLongConverter extends BaseConverter<Long, TmcCode>
     {
         public static final int REGION_MASK = 100, DIRECTION_MASK = 10, LOCATION_MASK = 100000;
 
@@ -173,8 +182,8 @@ public class TmcCode extends RoadSectionCode
 
             final var country = countryCharFromInt(countryField(value));
 
-            final var tmc = country + com.telenav.kivakit.kernel.language.strings.Strings.alignRight(String.valueOf(region), 2, '0') + direction
-                    + com.telenav.kivakit.kernel.language.strings.Strings.alignRight(String.valueOf(location), 5, '0');
+            final var tmc = country + Align.right(String.valueOf(region), 2, '0') + direction
+                    + Align.right(String.valueOf(location), 5, '0');
             return forCode(tmc);
         }
 
@@ -193,7 +202,7 @@ public class TmcCode extends RoadSectionCode
         }
     }
 
-    public static class ListConverter extends com.telenav.kivakit.kernel.data.conversion.string.collection.BaseListConverter<TmcCode>
+    public static class ListConverter extends BaseListConverter<TmcCode>
     {
         public ListConverter(final com.telenav.kivakit.kernel.messaging.Listener listener)
         {
@@ -201,9 +210,9 @@ public class TmcCode extends RoadSectionCode
         }
     }
 
-    public static class ToLongConverter extends com.telenav.kivakit.kernel.data.conversion.BaseConverter<TmcCode, Long>
+    public static class ToLongConverter extends BaseConverter<TmcCode, Long>
     {
-        private static final com.telenav.kivakit.graph.traffic.roadsection.codings.tmc.TmcCodeParser parser = new com.telenav.kivakit.graph.traffic.roadsection.codings.tmc.TmcCodeParser();
+        private static final TmcCodeParser parser = new TmcCodeParser();
 
         public ToLongConverter(final com.telenav.kivakit.kernel.messaging.Listener listener)
         {
@@ -237,8 +246,7 @@ public class TmcCode extends RoadSectionCode
     }
 
     @Override
-    public com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier asIdentifier(
-            final boolean lookupDatabase)
+    public RoadSectionIdentifier asIdentifier(final boolean lookupDatabase)
     {
         if (identifier == 0)
         {
@@ -246,7 +254,7 @@ public class TmcCode extends RoadSectionCode
             identifier = converted == null ? -1 : converted;
         }
 
-        return com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier.forCodingSystemAndIdentifier(com.telenav.kivakit.graph.traffic.roadsection.RoadSectionCodingSystem.TMC, identifier,
+        return RoadSectionIdentifier.forCodingSystemAndIdentifier(RoadSectionCodingSystem.TMC, identifier,
                 lookupDatabase);
     }
 
@@ -257,8 +265,8 @@ public class TmcCode extends RoadSectionCode
     }
 
     @Override
-    public final com.telenav.kivakit.graph.traffic.roadsection.RoadSectionCodingSystem codingSystem()
+    public final RoadSectionCodingSystem codingSystem()
     {
-        return com.telenav.kivakit.graph.traffic.roadsection.RoadSectionCodingSystem.TMC;
+        return RoadSectionCodingSystem.TMC;
     }
 }

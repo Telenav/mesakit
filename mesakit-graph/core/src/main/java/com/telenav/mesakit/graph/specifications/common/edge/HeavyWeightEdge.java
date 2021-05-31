@@ -447,7 +447,7 @@ public class HeavyWeightEdge extends Edge
     @Override
     public boolean isClosedToThroughTraffic()
     {
-        return Objects.requireNonNullElse(isClosedToThroughTraffic, false);
+        return Objects.notNullOr(isClosedToThroughTraffic, false);
     }
 
     public void isClosedToThroughTraffic(final Boolean isClosedToThroughTraffic)
@@ -485,13 +485,13 @@ public class HeavyWeightEdge extends Edge
 
     public Boolean isToVertexClipped()
     {
-        return Objects.requireNonNullElse(toVertexClipped, false);
+        return Objects.notNullOr(toVertexClipped, false);
     }
 
     @Override
     public boolean isTollRoad()
     {
-        return Objects.requireNonNullElse(isTollRoad, false);
+        return Objects.notNullOr(isTollRoad, false);
     }
 
     public void isTollRoad(final Boolean isTollRoad)
@@ -508,7 +508,7 @@ public class HeavyWeightEdge extends Edge
     @Override
     public boolean isUnderConstruction()
     {
-        return Objects.requireNonNullElse(isUnderConstruction, false);
+        return Objects.notNullOr(isUnderConstruction, false);
     }
 
     public void isUnderConstruction(final Boolean isUnderConstruction)
@@ -893,7 +893,7 @@ public class HeavyWeightEdge extends Edge
     @Override
     public Iterable<RoadSectionIdentifier> tmcIdentifiers()
     {
-        return Objects.requireNonNullElse(tmcIdentifiers, Collections.emptyList());
+        return Objects.notNullOr(tmcIdentifiers, Collections.emptyList());
     }
 
     public void tmcIdentifiers(final Iterable<RoadSectionIdentifier> tmcIdentifiers)
@@ -999,7 +999,6 @@ public class HeavyWeightEdge extends Edge
     /**
      * @return The reference speed (used for historical speed calculation) in forward direction
      */
-    @Override
     public Speed uniDbReferenceSpeed()
     {
         return referenceSpeed;
@@ -1020,6 +1019,6 @@ public class HeavyWeightEdge extends Edge
 
     protected Iterable<RoadSectionIdentifier> reverseTmcIdentifiers()
     {
-        return Objects.requireNonNullElse(reverseTmcIdentifiers, Collections.emptyList());
+        return Objects.notNullOr(reverseTmcIdentifiers, Collections.emptyList());
     }
 }

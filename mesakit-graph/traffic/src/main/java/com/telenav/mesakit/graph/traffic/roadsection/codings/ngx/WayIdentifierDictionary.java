@@ -18,15 +18,19 @@
 
 package com.telenav.mesakit.graph.traffic.roadsection.codings.ngx;
 
-import com.telenav.kivakit.collections.primitive.array.scalars.LongArray;
-import com.telenav.kivakit.collections.primitive.map.multi.dynamic.LongToLongMultiMap;
-import com.telenav.kivakit.collections.primitive.map.scalars.LongToLongMap;
-import com.telenav.kivakit.data.formats.library.csv.*;
-import com.telenav.kivakit.kernel.conversion.primitive.LongConverter;
+import com.telenav.kivakit.data.formats.csv.CsvColumn;
+import com.telenav.kivakit.data.formats.csv.CsvReader;
+import com.telenav.kivakit.data.formats.csv.CsvSchema;
+import com.telenav.kivakit.kernel.data.conversion.string.primitive.LongConverter;
 import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
+import com.telenav.kivakit.primitive.collections.map.multi.dynamic.LongToLongMultiMap;
+import com.telenav.kivakit.primitive.collections.map.scalars.LongToLongMap;
 import com.telenav.kivakit.resource.Resource;
-import com.telenav.mesakit.graph.traffic.project.KivaKitGraphTrafficLimits;
+import com.telenav.mesakit.graph.traffic.project.GraphTrafficLimits;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionCodingSystem;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.tmc.TmcCode;
@@ -38,15 +42,15 @@ import java.util.Map;
 
 public class WayIdentifierDictionary
 {
-    public static final CsvColumn COLUMN_TMC_ID = new CsvColumn("tmc id");
+    public static final CsvColumn<TmcCode> COLUMN_TMC_ID = CsvColumn.of("tmc id");
 
-    public static final CsvColumn COLUMN_WAY_IDS = new CsvColumn("way ids");
+    public static final CsvColumn<String> COLUMN_WAY_IDS = CsvColumn.of("way ids");
 
-    public static final CsvSchema SCHEMA = new CsvSchema(COLUMN_TMC_ID, COLUMN_WAY_IDS);
+    public static final CsvSchema SCHEMA = CsvSchema.of(COLUMN_TMC_ID, COLUMN_WAY_IDS);
 
     public static class Configuration
     {
-        private List<WayIdentifierDictionary.Loader> loaders = new ArrayList<>();
+        private List<Loader> loaders = new ArrayList<>();
 
         private Boolean enabled;
 
@@ -105,10 +109,10 @@ public class WayIdentifierDictionary
         public LongToLongMap load(final LongToLongMultiMap reverseMap)
         {
             final var dictionary = new LongToLongMap("dictionary");
-            dictionary.initialSize(KivaKitGraphTrafficLimits.ESTIMATED_TRAFFIC_EDGES);
+            dictionary.initialSize(GraphTrafficLimits.ESTIMATED_TRAFFIC_EDGES);
             dictionary.initialize();
 
-            try (final var reader = new CsvReader(dictionaryFile, ProgressReporter.NULL, SCHEMA, ','))
+            try (final var reader = new CsvReader(dictionaryFile, SCHEMA, ',', ProgressReporter.NULL))
             {
                 reader.lineNumber();
                 while (reader.hasNext())
@@ -138,8 +142,7 @@ public class WayIdentifierDictionary
             }
             catch (final Exception e)
             {
-                e.printStackTrace();
-                LOGGER.information(e, "Failed to load road section for way id dictionary.");
+                LOGGER.warning(e, "Failed to load road section for way id dictionary.");
             }
             return dictionary;
         }

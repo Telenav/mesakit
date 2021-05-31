@@ -20,10 +20,12 @@ package com.telenav.mesakit.graph.traffic.roadsection;
 
 import com.telenav.kivakit.configuration.lookup.Lookup;
 import com.telenav.kivakit.data.formats.csv.CsvWriter;
+import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
 import com.telenav.kivakit.kernel.interfaces.value.Source;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.collections.map.ObjectMap;
 import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
 import com.telenav.kivakit.kernel.language.iteration.Iterables;
 import com.telenav.kivakit.kernel.language.iteration.Next;
@@ -34,9 +36,12 @@ import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.kivakit.kernel.messaging.filters.operators.All;
 import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.resource.resources.packaged.PackageResource;
+import com.telenav.mesakit.graph.traffic.project.GraphTrafficLimits;
+import com.telenav.mesakit.graph.traffic.roadsection.loaders.csv.CsvRoadSectionLoader;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSettings;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndex;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.motion.Speed;
 import com.telenav.mesakit.map.ui.desktop.tiles.ZoomLevel;
 
@@ -48,13 +53,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+
 public class RoadSectionDatabase extends BaseRepeater implements NamedObject
 {
     public static void load(final Listener listener, final ProgressReporter reporter, final String name)
     {
         final var configuration = new RoadSectionDatabase.Configuration();
-        final var resource = PackageResource.of(PackagePath.of(com.telenav.kivakit.graph.traffic.roadsection.loaders.csv.CsvRoadSectionLoader.class), name);
-        configuration.addLoader(listener.listenTo(new com.telenav.kivakit.graph.traffic.roadsection.loaders.csv.CsvRoadSectionLoader(resource, reporter)));
+        final var resource = PackageResource.of(PackagePath.packagePath(CsvRoadSectionLoader.class), name);
+        configuration.addLoader(listener.listenTo(new CsvRoadSectionLoader(resource, reporter)));
         final var database = listener.listenTo(new RoadSectionDatabase(configuration));
         database.load();
     }
@@ -71,9 +78,9 @@ public class RoadSectionDatabase extends BaseRepeater implements NamedObject
 
         private Type type = Type.FULL;
 
-        private Set<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionLoader> loaders = new HashSet<>();
+        private Set<RoadSectionLoader> loaders = new HashSet<>();
 
-        public void addLoader(final com.telenav.kivakit.graph.traffic.roadsection.RoadSectionLoader loader)
+        public void addLoader(final RoadSectionLoader loader)
         {
             loaders.add(loader);
         }
@@ -88,12 +95,12 @@ public class RoadSectionDatabase extends BaseRepeater implements NamedObject
             return enabled;
         }
 
-        public Set<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionLoader> loaders()
+        public Set<RoadSectionLoader> loaders()
         {
             return loaders;
         }
 
-        public void loaders(final Set<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionLoader> loaders)
+        public void loaders(final Set<RoadSectionLoader> loaders)
         {
             this.loaders = loaders;
         }
@@ -109,18 +116,18 @@ public class RoadSectionDatabase extends BaseRepeater implements NamedObject
         }
     }
 
-    private static class RoadSectionIdentifierIterator extends BaseIterator<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier>
+    private static class RoadSectionIdentifierIterator extends BaseIterator<RoadSectionIdentifier>
     {
-        private final Iterator<com.telenav.kivakit.graph.traffic.roadsection.RoadSection> sections;
+        private final Iterator<RoadSection> sections;
 
         public RoadSectionIdentifierIterator(
-                final Iterator<com.telenav.kivakit.graph.traffic.roadsection.RoadSection> sections)
+                final Iterator<RoadSection> sections)
         {
             this.sections = sections;
         }
 
         @Override
-        protected com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier onNext()
+        protected RoadSectionIdentifier onNext()
         {
             if (sections.hasNext())
             {
@@ -131,17 +138,17 @@ public class RoadSectionDatabase extends BaseRepeater implements NamedObject
         }
     }
 
-    private final Map<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier, Source<com.telenav.kivakit.graph.traffic.roadsection.RoadSection>> roadSectionForIdentifier = new BoundedMap<>(
-            KivaKitGraphTrafficLimits.MAXIMUM_ROAD_SECTIONS);
+    private final Map<RoadSectionIdentifier, Source<RoadSection>> roadSectionForIdentifier = new ObjectMap<>(
+            GraphTrafficLimits.MAXIMUM_ROAD_SECTIONS);
 
-    private final ObjectList<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier> identifiers = new ObjectList<>(
-            KivaKitGraphTrafficLimits.MAXIMUM_ROAD_SECTIONS);
+    private final ObjectList<RoadSectionIdentifier> identifiers = new ObjectList<>(
+            GraphTrafficLimits.MAXIMUM_ROAD_SECTIONS);
 
     /** Spatial indices by zoom level */
-    private final List<RTreeSpatialIndex<com.telenav.kivakit.graph.traffic.roadsection.RoadSection>> spatialIndexes = new ArrayList<>();
+    private final List<RTreeSpatialIndex<RoadSection>> spatialIndexes = new ArrayList<>();
 
     /** Spatial index for all road sections */
-    private final RTreeSpatialIndex<com.telenav.kivakit.graph.traffic.roadsection.RoadSection> spatialIndex = new RTreeSpatialIndex<>("objectName", new RTreeSettings());
+    private final RTreeSpatialIndex<RoadSection> spatialIndex = new RTreeSpatialIndex<>("objectName", new RTreeSettings());
 
     private final Configuration configuration;
 
@@ -156,23 +163,23 @@ public class RoadSectionDatabase extends BaseRepeater implements NamedObject
         }
     }
 
-    public boolean exists(final com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier identifier)
+    public boolean exists(final com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier identifier)
     {
         return roadSectionForIdentifier.containsKey(identifier);
     }
 
-    public List<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier> identifiers()
+    public List<com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier> identifiers()
     {
         return identifiers;
     }
 
-    public Iterator<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier> identifiersInside(
+    public Iterator<com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier> identifiersInside(
             final Rectangle bounds)
     {
         return new RoadSectionIdentifierIterator(inside(bounds));
     }
 
-    public Iterator<com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier> identifiersInside(
+    public Iterator<com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier> identifiersInside(
             final ZoomLevel level, final Rectangle bounds)
     {
         if (level == null)
@@ -182,13 +189,13 @@ public class RoadSectionDatabase extends BaseRepeater implements NamedObject
         return new RoadSectionIdentifierIterator(inside(level, bounds));
     }
 
-    public Iterator<com.telenav.kivakit.graph.traffic.roadsection.RoadSection> inside(final Rectangle bounds)
+    public Iterator<RoadSection> inside(final Rectangle bounds)
     {
         return spatialIndex.intersecting(bounds).iterator();
     }
 
-    public Iterator<com.telenav.kivakit.graph.traffic.roadsection.RoadSection> inside(final ZoomLevel level,
-                                                                                      final Rectangle bounds)
+    public Iterator<RoadSection> inside(final ZoomLevel level,
+                                        final Rectangle bounds)
     {
         if (level == null)
         {
@@ -204,8 +211,8 @@ public class RoadSectionDatabase extends BaseRepeater implements NamedObject
             return;
         }
 
-        final Map<ZoomLevel, List<com.telenav.kivakit.graph.traffic.roadsection.RoadSection>> roadSectionsForZoomLevel = new HashMap<>();
-        final List<com.telenav.kivakit.graph.traffic.roadsection.RoadSection> all = new ArrayList<>();
+        final Map<ZoomLevel, List<RoadSection>> roadSectionsForZoomLevel = new HashMap<>();
+        final List<RoadSection> all = new ArrayList<>();
         for (final var loader : configuration.loaders())
         {
             listenTo(loader);
@@ -227,14 +234,13 @@ public class RoadSectionDatabase extends BaseRepeater implements NamedObject
         spatialIndex.bulkLoad(all);
 
         // Monitor the road section code caches so no more TMC codes can be added to the cache
-        com.telenav.kivakit.graph.traffic.roadsection.codings.tmc.TmcCode.lockCache();
-        com.telenav.kivakit.graph.traffic.roadsection.codings.telenav.TelenavTrafficLocationCode.lockCache();
+        com.telenav.mesakit.graph.traffic.roadsection.codings.tmc.TmcCode.lockCache();
 
         Lookup.global().register(this);
     }
 
-    public com.telenav.kivakit.graph.traffic.roadsection.RoadSection roadSectionForIdentifier(
-            final com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier identifier)
+    public RoadSection roadSectionForIdentifier(
+            final com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier identifier)
     {
         final var source = roadSectionForIdentifier.get(identifier);
         if (source != null)
@@ -242,7 +248,7 @@ public class RoadSectionDatabase extends BaseRepeater implements NamedObject
             return source.get();
         }
 
-        final var dummy = new com.telenav.kivakit.graph.traffic.roadsection.RoadSection();
+        final var dummy = new RoadSection();
         dummy.identifier(identifier);
         dummy.start(Location.ORIGIN);
         dummy.end(Location.ORIGIN);
@@ -250,21 +256,21 @@ public class RoadSectionDatabase extends BaseRepeater implements NamedObject
         return dummy;
     }
 
-    public Iterable<com.telenav.kivakit.graph.traffic.roadsection.RoadSection> roadSections()
+    public Iterable<RoadSection> roadSections()
     {
         return roadSections(new All<>());
     }
 
-    public Iterable<com.telenav.kivakit.graph.traffic.roadsection.RoadSection> roadSections(
-            final Matcher<com.telenav.kivakit.graph.traffic.roadsection.RoadSection> matcher)
+    public Iterable<RoadSection> roadSections(
+            final Matcher<RoadSection> matcher)
     {
-        return Iterables.of(() -> new Next<>()
+        return Iterables.iterable(() -> new Next<>()
         {
-            private final Iterator<Source<com.telenav.kivakit.graph.traffic.roadsection.RoadSection>> iterator = roadSectionForIdentifier
+            private final Iterator<Source<RoadSection>> iterator = roadSectionForIdentifier
                     .values().iterator();
 
             @Override
-            public com.telenav.kivakit.graph.traffic.roadsection.RoadSection onNext()
+            public RoadSection onNext()
             {
                 while (iterator.hasNext())
                 {
@@ -281,7 +287,7 @@ public class RoadSectionDatabase extends BaseRepeater implements NamedObject
 
     public void saveAsCsv(final File file, final ProgressReporter reporter)
     {
-        final var writer = new CsvWriter(file.printWriter(), reporter, com.telenav.kivakit.graph.traffic.roadsection.RoadSection.CSV_SCHEMA);
+        final var writer = new CsvWriter(file.printWriter(), reporter, RoadSection.CSV_SCHEMA);
         writer.writeComment("Saved at " + Time.now());
         for (final var section : roadSections())
         {
@@ -290,7 +296,7 @@ public class RoadSectionDatabase extends BaseRepeater implements NamedObject
         writer.close();
     }
 
-    protected void add(final com.telenav.kivakit.graph.traffic.roadsection.RoadSection roadSection)
+    protected void add(final RoadSection roadSection)
     {
         // Get the road section identifier
         final var identifier = roadSection.identifier();
@@ -300,7 +306,7 @@ public class RoadSectionDatabase extends BaseRepeater implements NamedObject
         if (configuration.type() == Type.MINIMAL)
         {
             // load the minimal road section
-            roadSectionForIdentifier.put(identifier, new com.telenav.kivakit.graph.traffic.roadsection.RoadSection.Minimal(roadSection));
+            roadSectionForIdentifier.put(identifier, new RoadSection.Minimal(roadSection));
         }
         else if (configuration.type() == Type.FULL)
         {
@@ -313,7 +319,7 @@ public class RoadSectionDatabase extends BaseRepeater implements NamedObject
         }
     }
 
-    private RTreeSpatialIndex<com.telenav.kivakit.graph.traffic.roadsection.RoadSection> spatialIndexForZoomLevel(
+    private RTreeSpatialIndex<RoadSection> spatialIndexForZoomLevel(
             final ZoomLevel level)
     {
         return spatialIndexes.get(level.level());
