@@ -1,6 +1,6 @@
-package com.telenav.tdk.graph.query.program.expressions.terminal.value;
+package com.telenav.kivakit.graph.query.program.expressions.terminal.value;
 
-import com.telenav.tdk.graph.query.program.Node;
+import com.telenav.kivakit.graph.query.program.Node;
 
 /**
  * @author jonathanl (shibo)

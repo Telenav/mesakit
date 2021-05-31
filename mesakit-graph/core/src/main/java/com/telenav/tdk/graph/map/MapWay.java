@@ -16,15 +16,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.map;
+package com.telenav.kivakit.graph.map;
 
-import com.telenav.tdk.data.formats.library.map.identifiers.WayIdentifier;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.Route;
-import com.telenav.tdk.graph.navigation.navigators.WayNavigator;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.measurements.Distance;
+import com.telenav.kivakit.data.formats.library.map.identifiers.WayIdentifier;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.Route;
+import com.telenav.kivakit.graph.navigation.navigators.WayNavigator;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.measurements.Distance;
 
 /**
  * This class represents a way in a map.

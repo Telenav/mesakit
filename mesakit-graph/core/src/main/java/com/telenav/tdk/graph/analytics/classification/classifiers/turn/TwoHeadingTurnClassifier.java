@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.analytics.classification.classifiers.turn;
+package com.telenav.kivakit.graph.analytics.classification.classifiers.turn;
 
-import com.telenav.tdk.map.measurements.Angle;
-import com.telenav.tdk.map.measurements.Angle.Chirality;
-import com.telenav.tdk.map.measurements.Headed;
+import com.telenav.kivakit.map.measurements.Angle;
+import com.telenav.kivakit.map.measurements.Angle.Chirality;
+import com.telenav.kivakit.map.measurements.Headed;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.validation.Validate.fail;
 
 /**
  * Classifies two headings as a turn type

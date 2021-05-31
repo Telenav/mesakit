@@ -16,7 +16,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.analytics.classification.classifiers.turn;
+package com.telenav.kivakit.graph.analytics.classification.classifiers.turn;
 
 public enum TurnType
 {

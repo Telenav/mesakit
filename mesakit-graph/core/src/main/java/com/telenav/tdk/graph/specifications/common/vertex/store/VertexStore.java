@@ -16,48 +16,48 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.vertex.store;
+package com.telenav.kivakit.graph.specifications.common.vertex.store;
 
-import com.telenav.tdk.core.collections.iteration.iterables.DeduplicatingIterable;
-import com.telenav.tdk.core.collections.primitive.array.packed.SplitPackedArray;
-import com.telenav.tdk.core.collections.primitive.array.scalars.IntArray;
-import com.telenav.tdk.core.collections.primitive.map.scalars.IntToByteMap;
-import com.telenav.tdk.core.collections.primitive.set.LongSet;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.interfaces.object.Matcher;
-import com.telenav.tdk.core.kernel.language.iteration.*;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.core.kernel.validation.*;
-import com.telenav.tdk.core.resource.compression.archive.TdkArchivedField;
-import com.telenav.tdk.data.formats.library.map.identifiers.*;
-import com.telenav.tdk.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
-import com.telenav.tdk.data.formats.pbf.model.tags.*;
-import com.telenav.tdk.data.formats.pbf.processing.*;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.collections.*;
-import com.telenav.tdk.graph.identifiers.VertexIdentifier;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.metadata.DataSpecification.GraphElementFactory;
-import com.telenav.tdk.graph.specifications.common.edge.*;
-import com.telenav.tdk.graph.specifications.common.element.GraphElementStore;
-import com.telenav.tdk.graph.specifications.common.node.store.NodeStore;
-import com.telenav.tdk.graph.specifications.common.vertex.*;
-import com.telenav.tdk.graph.specifications.library.attributes.AttributeReference;
-import com.telenav.tdk.graph.specifications.library.store.ArchivedGraphStore;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.rectangle.*;
-import com.telenav.tdk.map.road.model.GradeSeparation;
+import com.telenav.kivakit.collections.iteration.iterables.DeduplicatingIterable;
+import com.telenav.kivakit.collections.primitive.array.packed.SplitPackedArray;
+import com.telenav.kivakit.collections.primitive.array.scalars.IntArray;
+import com.telenav.kivakit.collections.primitive.map.scalars.IntToByteMap;
+import com.telenav.kivakit.collections.primitive.set.LongSet;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.interfaces.object.Matcher;
+import com.telenav.kivakit.kernel.language.iteration.*;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.kernel.validation.*;
+import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.data.formats.library.map.identifiers.*;
+import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.kivakit.data.formats.pbf.model.tags.*;
+import com.telenav.kivakit.data.formats.pbf.processing.*;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.collections.*;
+import com.telenav.kivakit.graph.identifiers.VertexIdentifier;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.metadata.DataSpecification.GraphElementFactory;
+import com.telenav.kivakit.graph.specifications.common.edge.*;
+import com.telenav.kivakit.graph.specifications.common.element.GraphElementStore;
+import com.telenav.kivakit.graph.specifications.common.node.store.NodeStore;
+import com.telenav.kivakit.graph.specifications.common.vertex.*;
+import com.telenav.kivakit.graph.specifications.library.attributes.AttributeReference;
+import com.telenav.kivakit.graph.specifications.library.store.ArchivedGraphStore;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.rectangle.*;
+import com.telenav.kivakit.map.road.model.GradeSeparation;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-import static com.telenav.tdk.core.collections.primitive.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
-import static com.telenav.tdk.core.kernel.validation.Validate.fail;
-import static com.telenav.tdk.data.formats.pbf.processing.PbfDataProcessor.Result.ACCEPTED;
-import static com.telenav.tdk.graph.Metadata.CountType.ALLOW_ESTIMATE;
-import static com.telenav.tdk.graph.project.TdkGraphCoreLimits.Estimated;
+import static com.telenav.kivakit.collections.primitive.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
+import static com.telenav.kivakit.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.data.formats.pbf.processing.PbfDataProcessor.Result.ACCEPTED;
+import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.kivakit.graph.project.KivaKitGraphCoreLimits.Estimated;
 
 /**
  * Store of {@link Vertex} information, including edge connectivity (in and out edges, as stored in the {@link
@@ -79,7 +79,7 @@ public class VertexStore extends NodeStore<Vertex>
     private static final Debug DEBUG = new Debug(LOGGER);
 
     /** Edge and vertex connectivity information */
-    @TdkArchivedField
+    @KivaKitArchivedField
     private ConnectivityStore connectivity;
 
     private final AttributeReference<ConnectivityStore> CONNECTIVITY =
@@ -104,7 +104,7 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * The clip state of each vertex
      */
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray isClipped;
 
     /** Locations where vertexes have been created due to clipping at geographic boundaries */
@@ -119,7 +119,7 @@ public class VertexStore extends NodeStore<Vertex>
                             .nullInt(Integer.MIN_VALUE)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private IntToByteMap gradeSeparation;
 
     private transient boolean vertexesAdded;

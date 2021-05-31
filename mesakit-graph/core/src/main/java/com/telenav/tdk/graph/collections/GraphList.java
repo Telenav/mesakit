@@ -16,18 +16,18 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.collections;
+package com.telenav.kivakit.graph.collections;
 
-import com.telenav.tdk.core.filesystem.FileList;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.operation.progress.ProgressReporter;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.filesystem.FileList;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
 
 import java.util.AbstractList;
 
-import static com.telenav.tdk.core.resource.compression.archive.ZipArchive.Mode.READ;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
 
 public class GraphList extends AbstractList<Graph>
 {

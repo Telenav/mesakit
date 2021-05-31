@@ -16,25 +16,25 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.navigation.routing;
+package com.telenav.kivakit.navigation.routing;
 
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.logging.Logger;
-import com.telenav.tdk.core.kernel.logging.LoggerFactory;
-import com.telenav.tdk.core.kernel.scalars.levels.Weight;
-import com.telenav.tdk.core.kernel.testing.SlowTests;
-import com.telenav.tdk.graph.Route;
-import com.telenav.tdk.graph.Vertex;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
-import com.telenav.tdk.map.measurements.Speed;
-import com.telenav.tdk.navigation.routing.cost.CostFunction;
-import com.telenav.tdk.navigation.routing.cost.functions.TravelTimeCostFunction;
-import com.telenav.tdk.navigation.routing.cost.functions.heuristic.RemainingDistanceToEndCostFunction;
-import com.telenav.tdk.navigation.routing.cost.functions.heuristic.SpeedCostFunction;
-import com.telenav.tdk.navigation.routing.debuggers.SwingRoutingDebugger;
-import com.telenav.tdk.navigation.routing.dijkstra.DijkstraRouter;
-import com.telenav.tdk.navigation.routing.dijkstra.DijkstraRoutingRequest;
-import com.telenav.tdk.navigation.routing.dijkstra.Direction;
+import com.telenav.kivakit.graph.Route;
+import com.telenav.kivakit.graph.Vertex;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.scalars.levels.Weight;
+import com.telenav.kivakit.kernel.testing.SlowTests;
+import com.telenav.kivakit.map.measurements.Speed;
+import com.telenav.kivakit.navigation.routing.cost.CostFunction;
+import com.telenav.kivakit.navigation.routing.cost.functions.TravelTimeCostFunction;
+import com.telenav.kivakit.navigation.routing.cost.functions.heuristic.RemainingDistanceToEndCostFunction;
+import com.telenav.kivakit.navigation.routing.cost.functions.heuristic.SpeedCostFunction;
+import com.telenav.kivakit.navigation.routing.debuggers.SwingRoutingDebugger;
+import com.telenav.kivakit.navigation.routing.dijkstra.DijkstraRouter;
+import com.telenav.kivakit.navigation.routing.dijkstra.DijkstraRoutingRequest;
+import com.telenav.kivakit.navigation.routing.dijkstra.Direction;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -45,7 +45,7 @@ import org.junit.experimental.categories.Category;
  */
 @Ignore
 @Category({ SlowTests.class })
-public class DijkstraRouterTest extends TdkGraphCoreUnitTest
+public class DijkstraRouterTest extends KivaKitGraphCoreUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

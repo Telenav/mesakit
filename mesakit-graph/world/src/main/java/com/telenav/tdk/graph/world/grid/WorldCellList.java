@@ -16,28 +16,27 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.world.grid;
 
-package com.telenav.tdk.graph.world.grid;
-
-import com.telenav.tdk.core.kernel.interfaces.object.Matcher;
-import com.telenav.tdk.core.kernel.language.iteration.Iterables;
-import com.telenav.tdk.core.kernel.language.iteration.Next;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.core.kernel.scalars.counts.MutableCount;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.collections.EdgeSequence;
-import com.telenav.tdk.graph.collections.RelationSet;
-import com.telenav.tdk.graph.collections.RouteList;
-import com.telenav.tdk.graph.collections.VertexSequence;
-import com.telenav.tdk.graph.project.TdkGraphCoreLimits.Limit;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionIdentifier;
-import com.telenav.tdk.graph.world.WorldEdge;
-import com.telenav.tdk.graph.world.WorldRelation;
-import com.telenav.tdk.graph.world.WorldVertex;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.measurements.Distance;
-import com.telenav.tdk.map.road.model.RoadFunctionalClass;
+import com.telenav.kivakit.kernel.interfaces.object.Matcher;
+import com.telenav.kivakit.kernel.language.iteration.Iterables;
+import com.telenav.kivakit.kernel.language.iteration.Next;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.kernel.scalars.counts.MutableCount;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.collections.EdgeSequence;
+import com.telenav.kivakit.graph.collections.RelationSet;
+import com.telenav.kivakit.graph.collections.RouteList;
+import com.telenav.kivakit.graph.collections.VertexSequence;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreLimits.Limit;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier;
+import com.telenav.kivakit.graph.world.WorldEdge;
+import com.telenav.kivakit.graph.world.WorldRelation;
+import com.telenav.kivakit.graph.world.WorldVertex;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.measurements.Distance;
+import com.telenav.kivakit.map.road.model.RoadFunctionalClass;
 
 import java.util.*;
 import java.util.function.Function;
@@ -272,7 +271,8 @@ public class WorldCellList extends ArrayList<WorldCell>
         return vertexes(worldCell -> worldCell.cellGraph().vertexesInside(bounds, matcher));
     }
 
-    public VertexSequence vertexesNearest(final Location location, final Distance maximum, final RoadFunctionalClass functionalClass)
+    public VertexSequence vertexesNearest(final Location location, final Distance maximum,
+                                          final RoadFunctionalClass functionalClass)
     {
         return vertexes(worldCell ->
         {

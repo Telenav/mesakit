@@ -16,15 +16,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.io.load.loaders.region.regions;
+package com.telenav.kivakit.graph.io.load.loaders.region.regions;
 
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.Place;
-import com.telenav.tdk.graph.collections.EdgeSequence;
-import com.telenav.tdk.graph.io.load.loaders.region.RegionalGraphLoader;
-import com.telenav.tdk.map.region.State;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.Place;
+import com.telenav.kivakit.graph.collections.EdgeSequence;
+import com.telenav.kivakit.graph.io.load.loaders.region.RegionalGraphLoader;
+import com.telenav.kivakit.map.region.State;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.validation.Validate.fail;
 
 public class StateLoader extends RegionalGraphLoader
 {

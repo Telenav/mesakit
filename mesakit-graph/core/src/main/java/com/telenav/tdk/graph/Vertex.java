@@ -16,37 +16,37 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph;
+package com.telenav.kivakit.graph;
 
-import com.telenav.tdk.core.collections.set.operations.Intersection;
-import com.telenav.tdk.core.kernel.comparison.Differences;
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.interfaces.object.Matcher;
-import com.telenav.tdk.core.kernel.language.reflection.property.filters.TdkExcludeProperty;
-import com.telenav.tdk.core.kernel.language.string.conversion.AsIndentedString;
-import com.telenav.tdk.core.kernel.language.string.conversion.AsString;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.tdk.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
-import com.telenav.tdk.graph.collections.EdgeSequence;
-import com.telenav.tdk.graph.collections.EdgeSet;
-import com.telenav.tdk.graph.identifiers.VertexIdentifier;
-import com.telenav.tdk.graph.library.matchers.Matchers;
-import com.telenav.tdk.graph.metadata.DataSpecification;
-import com.telenav.tdk.graph.specifications.common.element.GraphElementAttributes;
-import com.telenav.tdk.graph.specifications.common.node.NodeAttributes;
-import com.telenav.tdk.graph.specifications.common.vertex.HeavyWeightVertex;
-import com.telenav.tdk.graph.specifications.common.vertex.VertexAttributes;
-import com.telenav.tdk.graph.specifications.common.vertex.store.VertexStore;
-import com.telenav.tdk.graph.specifications.library.properties.GraphElementPropertySet;
-import com.telenav.tdk.graph.specifications.library.store.GraphStore;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.road.model.GradeSeparation;
-import com.telenav.tdk.map.road.model.RoadFunctionalClass;
+import com.telenav.kivakit.collections.set.operations.Intersection;
+import com.telenav.kivakit.kernel.comparison.Differences;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.interfaces.object.Matcher;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
+import com.telenav.kivakit.kernel.language.string.conversion.AsIndentedString;
+import com.telenav.kivakit.kernel.language.string.conversion.AsString;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
+import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.kivakit.graph.collections.EdgeSequence;
+import com.telenav.kivakit.graph.collections.EdgeSet;
+import com.telenav.kivakit.graph.identifiers.VertexIdentifier;
+import com.telenav.kivakit.graph.library.matchers.Matchers;
+import com.telenav.kivakit.graph.metadata.DataSpecification;
+import com.telenav.kivakit.graph.specifications.common.element.GraphElementAttributes;
+import com.telenav.kivakit.graph.specifications.common.node.NodeAttributes;
+import com.telenav.kivakit.graph.specifications.common.vertex.HeavyWeightVertex;
+import com.telenav.kivakit.graph.specifications.common.vertex.VertexAttributes;
+import com.telenav.kivakit.graph.specifications.common.vertex.store.VertexStore;
+import com.telenav.kivakit.graph.specifications.library.properties.GraphElementPropertySet;
+import com.telenav.kivakit.graph.specifications.library.store.GraphStore;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.road.model.GradeSeparation;
+import com.telenav.kivakit.map.road.model.RoadFunctionalClass;
 
 /**
  * A vertex in a {@link Graph}, representing one end of an {@link Edge} (either the "from" vertex or the "to" vertex),
@@ -294,7 +294,7 @@ public class Vertex extends GraphNode
     /**
      * @return True if this vertex had one or more edges clipped from it due to proximity to the edge of the graph
      */
-    @TdkExcludeProperty
+    @KivaKitExcludeProperty
     public boolean isClipped()
     {
         return store().retrieveIsClipped(this);

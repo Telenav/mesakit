@@ -16,15 +16,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.identifiers;
+package com.telenav.kivakit.graph.identifiers;
 
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
 import org.junit.Test;
 
 /**
  * @author jonathanl (shibo)
  */
-public class EdgeIdentifierTest extends TdkGraphCoreUnitTest
+public class EdgeIdentifierTest extends KivaKitGraphCoreUnitTest
 {
     @Test
     public void testEquals()

@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.library.pbf;
+package com.telenav.kivakit.graph.specifications.library.pbf;
 
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfTagList;
-import com.telenav.tdk.data.formats.pbf.model.tags.compression.PbfTagCodec;
-import com.telenav.tdk.graph.GraphElement;
-import com.telenav.tdk.graph.specifications.common.element.store.TagStore;
-import com.telenav.tdk.graph.specifications.common.vertex.store.GraphNodeIndex;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.kivakit.data.formats.pbf.model.tags.compression.PbfTagCodec;
+import com.telenav.kivakit.graph.GraphElement;
+import com.telenav.kivakit.graph.specifications.common.element.store.TagStore;
+import com.telenav.kivakit.graph.specifications.common.vertex.store.GraphNodeIndex;
 
 public class PbfNodeTagStore
 {

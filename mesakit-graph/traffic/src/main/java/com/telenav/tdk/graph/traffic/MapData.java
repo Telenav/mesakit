@@ -16,17 +16,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic;
+package com.telenav.kivakit.graph.traffic;
 
-import com.telenav.tdk.core.kernel.interfaces.naming.Named;
-import com.telenav.tdk.core.kernel.language.collections.map.NameMap;
-import com.telenav.tdk.core.kernel.scalars.counts.Maximum;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionCodingSystem;
+import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.kernel.language.collections.map.NameMap;
+import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionCodingSystem;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.ensureNotNull;
+import static com.telenav.kivakit.kernel.validation.Validate.ensureNotNull;
 
 public class MapData implements Named
 {

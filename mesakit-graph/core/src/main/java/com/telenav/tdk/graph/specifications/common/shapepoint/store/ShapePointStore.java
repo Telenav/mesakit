@@ -16,23 +16,23 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.shapepoint.store;
+package com.telenav.kivakit.graph.specifications.common.shapepoint.store;
 
-import com.telenav.tdk.core.collections.primitive.map.scalars.LongToIntMap;
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.core.resource.compression.archive.TdkArchivedField;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.ShapePoint;
-import com.telenav.tdk.graph.metadata.DataSpecification.GraphElementFactory;
-import com.telenav.tdk.graph.specifications.common.node.store.NodeStore;
-import com.telenav.tdk.map.geography.Location;
+import com.telenav.kivakit.collections.primitive.map.scalars.LongToIntMap;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.ShapePoint;
+import com.telenav.kivakit.graph.metadata.DataSpecification.GraphElementFactory;
+import com.telenav.kivakit.graph.specifications.common.node.store.NodeStore;
+import com.telenav.kivakit.map.geography.Location;
 
-import static com.telenav.tdk.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 
 public class ShapePointStore extends NodeStore<ShapePoint>
 {
     /** A reverse map from shape point identifier back to shape point index */
-    @TdkArchivedField
+    @KivaKitArchivedField
     @SuppressWarnings({ "FieldCanBeLocal" })
     private LongToIntMap shapePointIdentifierToShapePointIndex;
 

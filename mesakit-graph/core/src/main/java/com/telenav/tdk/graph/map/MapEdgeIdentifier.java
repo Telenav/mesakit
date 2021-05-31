@@ -16,15 +16,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.map;
+package com.telenav.kivakit.graph.map;
 
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.language.object.Hash;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.data.formats.library.map.identifiers.*;
-import com.telenav.tdk.data.formats.pbf.model.identifiers.*;
-import com.telenav.tdk.graph.*;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.language.object.Hash;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.data.formats.library.map.identifiers.*;
+import com.telenav.kivakit.data.formats.pbf.model.identifiers.*;
+import com.telenav.kivakit.graph.*;
 
 /**
  * Represents an map "edge" using the form "[way-identifier]:[from-node-identifier]:[to-node-identifier]"

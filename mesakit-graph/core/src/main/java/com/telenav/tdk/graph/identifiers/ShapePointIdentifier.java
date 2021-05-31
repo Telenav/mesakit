@@ -16,17 +16,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.identifiers;
+package com.telenav.kivakit.graph.identifiers;
 
-import com.telenav.tdk.core.kernel.interfaces.numeric.Quantizable;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.scalars.identifiers.Identifier;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.GraphElement;
-import com.telenav.tdk.graph.ShapePoint;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.scalars.identifiers.Identifier;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.GraphElement;
+import com.telenav.kivakit.graph.ShapePoint;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.unsupported;
+import static com.telenav.kivakit.kernel.validation.Validate.unsupported;
 
 /**
  * Identifier of {@link ShapePoint}s in a {@link Graph}.

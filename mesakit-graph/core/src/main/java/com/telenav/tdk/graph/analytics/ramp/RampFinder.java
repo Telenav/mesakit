@@ -16,16 +16,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.analytics.ramp;
+package com.telenav.kivakit.graph.analytics.ramp;
 
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.tdk.core.kernel.operation.progress.reporters.Progress;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.collections.EdgeSet;
-import com.telenav.tdk.graph.library.matchers.Matchers;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.kernel.operation.progress.reporters.Progress;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.collections.EdgeSet;
+import com.telenav.kivakit.graph.library.matchers.Matchers;
 
 /**
  * Identifies connector links that function as ramps. Also locates ramp links along the way.

@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.project;
+package com.telenav.kivakit.graph.project;
 
-import com.telenav.tdk.core.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.scalars.counts.*;
 
-public class TdkGraphCoreLimits
+public class KivaKitGraphCoreLimits
 {
     public static class Estimated
     {

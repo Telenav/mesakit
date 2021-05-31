@@ -16,9 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.roadsection;
+package com.telenav.kivakit.graph.traffic.roadsection;
 
-import com.telenav.tdk.core.kernel.messaging.*;
+import com.telenav.kivakit.kernel.messaging.*;
 
 /**
  * This interface represents the road section database loading methods.

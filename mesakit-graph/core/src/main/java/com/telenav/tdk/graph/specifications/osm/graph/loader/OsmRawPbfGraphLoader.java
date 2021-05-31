@@ -16,24 +16,23 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.osm.graph.loader;
 
-package com.telenav.tdk.graph.specifications.osm.graph.loader;
+import com.telenav.kivakit.kernel.language.collections.map.BoundedMap;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.data.formats.pbf.model.change.*;
+import com.telenav.kivakit.data.formats.pbf.model.extractors.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.*;
+import com.telenav.kivakit.graph.specifications.common.graph.loader.RawPbfGraphLoader;
+import com.telenav.kivakit.graph.specifications.common.graph.loader.extractors.*;
+import com.telenav.kivakit.graph.specifications.library.pbf.*;
+import com.telenav.kivakit.graph.specifications.library.store.GraphStore;
+import com.telenav.kivakit.graph.specifications.osm.graph.edge.model.OsmHeavyWeightEdge;
+import com.telenav.kivakit.graph.specifications.osm.graph.edge.model.attributes.extractors.LastModifierExtractor;
+import com.telenav.kivakit.map.region.locale.MapLocale;
+import com.telenav.kivakit.map.road.model.RoadName;
 
-import com.telenav.tdk.core.kernel.language.collections.map.BoundedMap;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.data.formats.pbf.model.change.*;
-import com.telenav.tdk.data.formats.pbf.model.extractors.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.*;
-import com.telenav.tdk.graph.specifications.common.graph.loader.RawPbfGraphLoader;
-import com.telenav.tdk.graph.specifications.common.graph.loader.extractors.*;
-import com.telenav.tdk.graph.specifications.library.pbf.*;
-import com.telenav.tdk.graph.specifications.library.store.GraphStore;
-import com.telenav.tdk.graph.specifications.osm.graph.edge.model.OsmHeavyWeightEdge;
-import com.telenav.tdk.graph.specifications.osm.graph.edge.model.attributes.extractors.LastModifierExtractor;
-import com.telenav.tdk.map.region.locale.MapLocale;
-import com.telenav.tdk.map.road.model.RoadName;
-
-import static com.telenav.tdk.map.road.name.standardizer.RoadNameStandardizer.Mode.TDK_STANDARDIZATION;
+import static com.telenav.kivakit.map.road.name.standardizer.RoadNameStandardizer.Mode.TDK_STANDARDIZATION;
 
 /**
  * Subclass of {@link RawPbfGraphLoader} which extracts OSM-specific attributes during raw graph loading.
@@ -91,7 +90,8 @@ public final class OsmRawPbfGraphLoader extends RawPbfGraphLoader
      * @param dataSourceFactory OSM data source to read from
      * @param analysis Information about the data in the source
      */
-    public OsmRawPbfGraphLoader(final PbfDataSourceFactory dataSourceFactory, final PbfDataAnalysis analysis, final PbfTagFilter filter)
+    public OsmRawPbfGraphLoader(final PbfDataSourceFactory dataSourceFactory, final PbfDataAnalysis analysis,
+                                final PbfTagFilter filter)
     {
         super(dataSourceFactory, analysis.metadata(), filter);
 

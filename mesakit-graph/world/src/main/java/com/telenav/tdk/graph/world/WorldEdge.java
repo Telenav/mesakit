@@ -16,20 +16,20 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world;
+package com.telenav.kivakit.graph.world;
 
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.identifiers.EdgeIdentifier;
-import com.telenav.tdk.graph.specifications.unidb.graph.edge.model.attributes.*;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionIdentifier;
-import com.telenav.tdk.graph.world.grid.WorldCell;
-import com.telenav.tdk.graph.world.identifiers.WorldEdgeIdentifier;
-import com.telenav.tdk.map.measurements.*;
-import com.telenav.tdk.map.road.model.*;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.identifiers.EdgeIdentifier;
+import com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.attributes.*;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier;
+import com.telenav.kivakit.graph.world.grid.WorldCell;
+import com.telenav.kivakit.graph.world.identifiers.WorldEdgeIdentifier;
+import com.telenav.kivakit.map.measurements.*;
+import com.telenav.kivakit.map.road.model.*;
 
 import java.util.*;
 

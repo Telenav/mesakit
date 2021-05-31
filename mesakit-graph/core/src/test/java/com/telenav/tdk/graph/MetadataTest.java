@@ -16,21 +16,21 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph;
+package com.telenav.kivakit.graph;
 
-import com.telenav.tdk.data.formats.library.DataFormat;
-import com.telenav.tdk.graph.metadata.DataBuild;
-import com.telenav.tdk.graph.metadata.DataSupplier;
-import com.telenav.tdk.graph.metadata.DataVersion;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
-import com.telenav.tdk.graph.specifications.osm.OsmDataSpecification;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.data.formats.library.DataFormat;
+import com.telenav.kivakit.graph.metadata.DataBuild;
+import com.telenav.kivakit.graph.metadata.DataSupplier;
+import com.telenav.kivakit.graph.metadata.DataVersion;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.kivakit.graph.specifications.osm.OsmDataSpecification;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
 import org.junit.Test;
 
 /**
  * @author jonathanl (shibo)
  */
-public class MetadataTest extends TdkGraphCoreUnitTest
+public class MetadataTest extends KivaKitGraphCoreUnitTest
 {
     @Test
     public void testParse()

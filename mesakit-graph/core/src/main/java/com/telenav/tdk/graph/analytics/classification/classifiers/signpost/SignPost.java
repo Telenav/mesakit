@@ -16,16 +16,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.analytics.classification.classifiers.signpost;
+package com.telenav.kivakit.graph.analytics.classification.classifiers.signpost;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Vertex;
-import com.telenav.tdk.graph.collections.EdgeSet;
-import com.telenav.tdk.graph.library.matchers.Matchers;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.measurements.Angle;
-import com.telenav.tdk.map.measurements.Angle.Chirality;
-import com.telenav.tdk.map.measurements.Distance;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Vertex;
+import com.telenav.kivakit.graph.collections.EdgeSet;
+import com.telenav.kivakit.graph.library.matchers.Matchers;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.measurements.Angle;
+import com.telenav.kivakit.map.measurements.Angle.Chirality;
+import com.telenav.kivakit.map.measurements.Distance;
 
 public class SignPost
 {

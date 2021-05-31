@@ -16,10 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.unidb.graph.edge.model;
 
-package com.telenav.tdk.graph.specifications.unidb.graph.edge.model;
-
-import com.telenav.tdk.core.kernel.comparison.Differences;
+import com.telenav.kivakit.kernel.comparison.Differences;
 
 public class UniDbEdgeDifferences
 {

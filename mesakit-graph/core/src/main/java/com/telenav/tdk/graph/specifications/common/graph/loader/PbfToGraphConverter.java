@@ -16,20 +16,20 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.graph.loader;
+package com.telenav.kivakit.graph.specifications.common.graph.loader;
 
-import com.telenav.tdk.core.filesystem.File;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.tdk.core.kernel.operation.progress.reporters.Progress;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.io.convert.GraphConverter;
-import com.telenav.tdk.graph.specifications.library.pbf.PbfDataSourceFactory;
-import com.telenav.tdk.graph.specifications.osm.graph.converter.OsmPbfToGraphConverter;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.kernel.operation.progress.reporters.Progress;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.io.convert.GraphConverter;
+import com.telenav.kivakit.graph.specifications.library.pbf.PbfDataSourceFactory;
+import com.telenav.kivakit.graph.specifications.osm.graph.converter.OsmPbfToGraphConverter;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 
-import static com.telenav.tdk.graph.specifications.library.pbf.PbfDataSourceFactory.Type.*;
+import static com.telenav.kivakit.graph.specifications.library.pbf.PbfDataSourceFactory.Type.*;
 
 /**
  * @author jonathanl (shibo)

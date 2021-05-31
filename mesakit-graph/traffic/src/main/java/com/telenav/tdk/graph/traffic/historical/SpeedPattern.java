@@ -16,18 +16,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.traffic.historical;
 
-package com.telenav.tdk.graph.traffic.historical;
-
-import com.telenav.tdk.core.collections.primitive.iteration.ByteIterator;
-import com.telenav.tdk.core.kernel.language.object.Hash;
-import com.telenav.tdk.core.kernel.language.string.StringList;
-import com.telenav.tdk.core.kernel.scalars.counts.Maximum;
-import com.telenav.tdk.core.kernel.scalars.levels.Percentage;
-import com.telenav.tdk.core.kernel.time.LocalTime;
-import com.telenav.tdk.map.measurements.Speed;
-import com.telenav.tdk.utilities.time.timebin.LocalTimeBinScheme;
-import com.telenav.tdk.utilities.time.timebin.schemes.UniformTimeBinScheme;
+import com.telenav.kivakit.collections.primitive.iteration.ByteIterator;
+import com.telenav.kivakit.kernel.language.object.Hash;
+import com.telenav.kivakit.kernel.language.string.StringList;
+import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.kernel.scalars.levels.Percentage;
+import com.telenav.kivakit.kernel.time.LocalTime;
+import com.telenav.kivakit.map.measurements.Speed;
+import com.telenav.kivakit.utilities.time.timebin.LocalTimeBinScheme;
+import com.telenav.kivakit.utilities.time.timebin.schemes.UniformTimeBinScheme;
 
 /**
  * Speed pattern represents historical traffic speeds at different times of the day, over the course of a week.

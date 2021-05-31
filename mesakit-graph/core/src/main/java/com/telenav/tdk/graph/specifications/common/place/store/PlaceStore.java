@@ -16,28 +16,28 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.place.store;
+package com.telenav.kivakit.graph.specifications.common.place.store;
 
-import com.telenav.tdk.core.collections.primitive.array.packed.SplitPackedArray;
-import com.telenav.tdk.core.collections.primitive.array.scalars.*;
-import com.telenav.tdk.core.collections.primitive.list.store.PackedStringStore;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.core.kernel.validation.*;
-import com.telenav.tdk.core.resource.compression.archive.TdkArchivedField;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.metadata.DataSpecification.GraphElementFactory;
-import com.telenav.tdk.graph.specifications.common.element.ArchivedGraphElementStore;
-import com.telenav.tdk.graph.specifications.common.place.PlaceAttributes;
-import com.telenav.tdk.graph.specifications.library.attributes.AttributeReference;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.indexing.quadtree.QuadTreeSpatialIndex;
+import com.telenav.kivakit.collections.primitive.array.packed.SplitPackedArray;
+import com.telenav.kivakit.collections.primitive.array.scalars.*;
+import com.telenav.kivakit.collections.primitive.list.store.PackedStringStore;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.validation.*;
+import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.metadata.DataSpecification.GraphElementFactory;
+import com.telenav.kivakit.graph.specifications.common.element.ArchivedGraphElementStore;
+import com.telenav.kivakit.graph.specifications.common.place.PlaceAttributes;
+import com.telenav.kivakit.graph.specifications.library.attributes.AttributeReference;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.indexing.quadtree.QuadTreeSpatialIndex;
 
-import static com.telenav.tdk.core.collections.primitive.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
-import static com.telenav.tdk.core.kernel.validation.Validation.VALIDATE_ALL;
-import static com.telenav.tdk.graph.Metadata.CountType.ALLOW_ESTIMATE;
-import static com.telenav.tdk.map.geography.Precision.DM7;
+import static com.telenav.kivakit.collections.primitive.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
+import static com.telenav.kivakit.kernel.validation.Validation.VALIDATE_ALL;
+import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.kivakit.map.geography.Precision.DM7;
 
 /**
  * Packed place attributes.
@@ -56,14 +56,14 @@ public class PlaceStore extends ArchivedGraphElementStore<Place>
             new AttributeReference<>(this, PlaceAttributes.get().LOCATION, "location",
                     () -> (LongArray) new LongArray("location").initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private LongArray location;
 
     private final AttributeReference<IntArray> POPULATION =
             new AttributeReference<>(this, PlaceAttributes.get().POPULATION, "population",
                     () -> (IntArray) new IntArray("population").initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private IntArray population;
 
     private final AttributeReference<PackedStringStore> NAME =
@@ -71,7 +71,7 @@ public class PlaceStore extends ArchivedGraphElementStore<Place>
                     () -> (PackedStringStore) new PackedStringStore("name")
                             .initialSize(estimatedElements()).initialChildSize(32));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private PackedStringStore name;
 
     private final AttributeReference<SplitPackedArray> TYPE = new AttributeReference<>(this, PlaceAttributes.get().TYPE, "type",
@@ -79,7 +79,7 @@ public class PlaceStore extends ArchivedGraphElementStore<Place>
                     .bits(Bits._4, NO_OVERFLOW)
                     .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray type;
 
     /** A spatial index for the edges in this graph */

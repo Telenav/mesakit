@@ -16,18 +16,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.common.vertex.store;
 
-package com.telenav.tdk.graph.specifications.common.vertex.store;
-
-import com.telenav.tdk.core.collections.primitive.array.scalars.IntArray;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.graph.Metadata;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
+import com.telenav.kivakit.collections.primitive.array.scalars.IntArray;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.graph.Metadata;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
 import org.junit.Test;
 
 import java.util.*;
 
-public class EdgeListStoreTest extends TdkGraphCoreUnitTest
+public class EdgeListStoreTest extends KivaKitGraphCoreUnitTest
 {
     @Test
     public void testAddRetrieve()

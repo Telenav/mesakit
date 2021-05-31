@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.library.osm.change;
+package com.telenav.kivakit.graph.library.osm.change;
 
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfTagList;
-import com.telenav.tdk.graph.Edge;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.kivakit.graph.Edge;
 
 /**
  * Mutable way is the superclass of {@link ModifiableWay} and {@link NewWay} since both modifiable ways in the base may

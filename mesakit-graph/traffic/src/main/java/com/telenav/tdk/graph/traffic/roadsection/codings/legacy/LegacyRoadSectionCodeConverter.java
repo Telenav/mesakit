@@ -16,19 +16,19 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.roadsection.codings.legacy;
+package com.telenav.kivakit.graph.traffic.roadsection.codings.legacy;
 
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.language.string.StringList;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.time.Frequency;
-import com.telenav.tdk.graph.traffic.MapData;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionCode;
-import com.telenav.tdk.graph.traffic.roadsection.codings.osm.PbfRoadSectionCode;
-import com.telenav.tdk.graph.traffic.roadsection.codings.telenav.TelenavTrafficLocationCode;
-import com.telenav.tdk.graph.traffic.roadsection.codings.tmc.TmcCode;
-import com.telenav.tdk.graph.traffic.roadsection.codings.tomtom.TomTomRoadSectionCode;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.language.string.StringList;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.time.Frequency;
+import com.telenav.kivakit.graph.traffic.MapData;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionCode;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.osm.PbfRoadSectionCode;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.telenav.TelenavTrafficLocationCode;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.tmc.TmcCode;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.tomtom.TomTomRoadSectionCode;
 
 import java.util.ArrayList;
 import java.util.List;

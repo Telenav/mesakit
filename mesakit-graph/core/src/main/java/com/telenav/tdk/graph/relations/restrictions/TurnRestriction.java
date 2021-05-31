@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.relations.restrictions;
+package com.telenav.kivakit.graph.relations.restrictions;
 
-import com.telenav.tdk.graph.EdgeRelation;
-import com.telenav.tdk.graph.Route;
-import com.telenav.tdk.graph.analytics.classification.classifiers.turn.TwoHeadingTurnClassifier;
-import com.telenav.tdk.graph.collections.EdgeSet;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.measurements.Heading;
+import com.telenav.kivakit.graph.EdgeRelation;
+import com.telenav.kivakit.graph.Route;
+import com.telenav.kivakit.graph.analytics.classification.classifiers.turn.TwoHeadingTurnClassifier;
+import com.telenav.kivakit.graph.collections.EdgeSet;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.measurements.Heading;
 
 import java.util.List;
 

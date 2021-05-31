@@ -16,9 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.historical;
+package com.telenav.kivakit.graph.traffic.historical;
 
-import com.telenav.tdk.utilities.time.timebin.LocalTimeBinScheme;
+import com.telenav.kivakit.utilities.time.timebin.LocalTimeBinScheme;
 
 public class WeeklyPattern extends SpeedPattern
 {

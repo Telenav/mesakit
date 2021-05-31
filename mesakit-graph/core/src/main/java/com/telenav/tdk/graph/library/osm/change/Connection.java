@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.library.osm.change;
+package com.telenav.kivakit.graph.library.osm.change;
 
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.polyline.Polyline;
-import com.telenav.tdk.map.geography.polyline.PolylineBuilder;
-import com.telenav.tdk.map.measurements.Distance;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.polyline.Polyline;
+import com.telenav.kivakit.map.geography.polyline.PolylineBuilder;
+import com.telenav.kivakit.map.measurements.Distance;
 
 /**
  * Models a connection to a modified way. There are two types of connections, one where a new node is added to connect a

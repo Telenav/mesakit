@@ -16,17 +16,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.project;
+package com.telenav.kivakit.graph.traffic.project;
 
-import com.telenav.tdk.core.kernel.language.io.serialization.kryo.TdkKryoSerializer;
-import com.telenav.tdk.core.kernel.project.TdkKryoIdentifiers;
-import com.telenav.tdk.graph.traffic.roadsection.codings.tmc.TmcTableIdentifier;
+import com.telenav.kivakit.kernel.language.io.serialization.kryo.KivaKitKryoSerializer;
+import com.telenav.kivakit.kernel.project.KivaKitKryoIdentifiers;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.tmc.TmcTableIdentifier;
 
-public class TdkGraphTrafficKryoSerializer extends TdkKryoSerializer
+public class KivaKitGraphTrafficKryoSerializer extends KivaKitKryoSerializer
 {
-    public TdkGraphTrafficKryoSerializer()
+    public KivaKitGraphTrafficKryoSerializer()
     {
-        super(TdkKryoIdentifiers.TDK_GRAPH_TRAFFIC);
+        super(KivaKitKryoIdentifiers.TDK_GRAPH_TRAFFIC);
 
         tdkNextRegistrationGroup("tmc", () -> tdkRegister(TmcTableIdentifier.class));
     }

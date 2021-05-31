@@ -16,10 +16,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.ui.viewer;
+package com.telenav.kivakit.graph.ui.viewer;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.map.ui.swing.debug.viewables.ViewablePolyline;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.map.ui.swing.debug.viewables.ViewablePolyline;
 
 import java.awt.*;
 

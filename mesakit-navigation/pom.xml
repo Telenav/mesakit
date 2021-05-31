@@ -9,13 +9,12 @@
          xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
-        <groupId>com.telenav</groupId>
-        <artifactId>tdk</artifactId>
+        <groupId>com.telenav.mesakit</groupId>
+        <artifactId>mesakit</artifactId>
         <version>0.9.8-alpha-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit-navigation</artifactId>
     <packaging>pom</packaging>
     <name>MesaKit - Navigation</name>

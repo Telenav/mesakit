@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.roadsection.codings.ngx;
+package com.telenav.kivakit.graph.traffic.roadsection.codings.ngx;
 
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionCode;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionCodingSystem;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionIdentifier;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionCode;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionCodingSystem;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier;
 
 public class NgxRoadSectionCode extends RoadSectionCode
 {

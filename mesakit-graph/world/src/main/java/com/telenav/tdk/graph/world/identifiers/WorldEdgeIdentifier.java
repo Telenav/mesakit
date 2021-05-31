@@ -16,18 +16,18 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world.identifiers;
+package com.telenav.kivakit.graph.world.identifiers;
 
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.language.object.Hash;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.graph.identifiers.EdgeIdentifier;
-import com.telenav.tdk.graph.world.WorldEdge;
-import com.telenav.tdk.graph.world.WorldGraph;
-import com.telenav.tdk.graph.world.grid.WorldCell;
-import com.telenav.tdk.graph.world.grid.WorldGrid;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.language.object.Hash;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.graph.identifiers.EdgeIdentifier;
+import com.telenav.kivakit.graph.world.WorldEdge;
+import com.telenav.kivakit.graph.world.WorldGraph;
+import com.telenav.kivakit.graph.world.grid.WorldCell;
+import com.telenav.kivakit.graph.world.grid.WorldGrid;
 
 /**
  * An edge identifier in a {@link WorldGraph}. Scopes an edge identifier with a {@link WorldCell}. The cell for this

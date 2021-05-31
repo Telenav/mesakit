@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.shapepoint;
+package com.telenav.kivakit.graph.specifications.common.shapepoint;
 
-import com.telenav.tdk.core.kernel.language.object.Lazy;
-import com.telenav.tdk.graph.ShapePoint;
-import com.telenav.tdk.graph.specifications.common.CommonDataSpecification;
-import com.telenav.tdk.graph.specifications.common.element.GraphElementProperties;
-import com.telenav.tdk.graph.specifications.library.attributes.Attribute;
+import com.telenav.kivakit.kernel.language.object.Lazy;
+import com.telenav.kivakit.graph.ShapePoint;
+import com.telenav.kivakit.graph.specifications.common.CommonDataSpecification;
+import com.telenav.kivakit.graph.specifications.common.element.GraphElementProperties;
+import com.telenav.kivakit.graph.specifications.library.attributes.Attribute;
 
 public class ShapePointProperties extends GraphElementProperties<ShapePoint>
 {
@@ -33,7 +33,7 @@ public class ShapePointProperties extends GraphElementProperties<ShapePoint>
         return singleton.get();
     }
 
-    public abstract class ShapePointProperty extends com.telenav.tdk.graph.specifications.library.properties.GraphElementProperty<ShapePoint>
+    public abstract class ShapePointProperty extends com.telenav.kivakit.graph.specifications.library.properties.GraphElementProperty<ShapePoint>
     {
         protected ShapePointProperty(final String name, final Attribute<?> attribute)
         {

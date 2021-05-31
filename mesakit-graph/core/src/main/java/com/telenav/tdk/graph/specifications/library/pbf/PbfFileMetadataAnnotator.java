@@ -16,30 +16,29 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.library.pbf;
 
-package com.telenav.tdk.graph.specifications.library.pbf;
-
-import com.telenav.tdk.core.collections.primitive.set.SplitLongSet;
-import com.telenav.tdk.core.filesystem.File;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.tdk.core.kernel.scalars.bytes.Bytes;
-import com.telenav.tdk.core.kernel.scalars.mutable.MutableValue;
-import com.telenav.tdk.core.resource.path.Extension;
-import com.telenav.tdk.data.formats.pbf.model.tags.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.compression.*;
-import com.telenav.tdk.data.formats.pbf.processing.PbfDataProcessor;
-import com.telenav.tdk.data.formats.pbf.processing.filters.*;
-import com.telenav.tdk.data.formats.pbf.processing.readers.SerialPbfReader;
-import com.telenav.tdk.data.formats.pbf.processing.writers.PbfWriter;
-import com.telenav.tdk.graph.Metadata;
-import com.telenav.tdk.graph.metadata.DataBuild;
-import com.telenav.tdk.map.geography.rectangle.BoundingBoxBuilder;
+import com.telenav.kivakit.collections.primitive.set.SplitLongSet;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.kernel.scalars.bytes.Bytes;
+import com.telenav.kivakit.kernel.scalars.mutable.MutableValue;
+import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.kivakit.data.formats.pbf.model.tags.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.compression.*;
+import com.telenav.kivakit.data.formats.pbf.processing.PbfDataProcessor;
+import com.telenav.kivakit.data.formats.pbf.processing.filters.*;
+import com.telenav.kivakit.data.formats.pbf.processing.readers.SerialPbfReader;
+import com.telenav.kivakit.data.formats.pbf.processing.writers.PbfWriter;
+import com.telenav.kivakit.graph.Metadata;
+import com.telenav.kivakit.graph.metadata.DataBuild;
+import com.telenav.kivakit.map.geography.rectangle.BoundingBoxBuilder;
 import org.openstreetmap.osmosis.core.domain.v0_6.*;
 
 import java.util.*;
 
-import static com.telenav.tdk.data.formats.pbf.processing.PbfDataProcessor.Result.*;
+import static com.telenav.kivakit.data.formats.pbf.processing.PbfDataProcessor.Result.*;
 
 /**
  * Reads and writes PBF file metadata. The {@link #read()} method reads the given file to determine as much metadata as
@@ -77,7 +76,8 @@ public class PbfFileMetadataAnnotator extends BaseRepeater<Message>
     /**
      * @param file The file to read from or write to
      */
-    public PbfFileMetadataAnnotator(final File file, final Mode mode, final WayFilter wayFilter, final RelationFilter relationFilter)
+    public PbfFileMetadataAnnotator(final File file, final Mode mode, final WayFilter wayFilter,
+                                    final RelationFilter relationFilter)
     {
         this.file = file;
         this.mode = mode;

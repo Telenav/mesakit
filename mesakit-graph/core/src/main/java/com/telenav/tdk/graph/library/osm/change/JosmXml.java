@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.library.osm.change;
+package com.telenav.kivakit.graph.library.osm.change;
 
-import com.telenav.tdk.core.kernel.language.io.IO;
-import com.telenav.tdk.core.resource.WritableResource;
-import com.telenav.tdk.data.formats.library.map.identifiers.WayIdentifier;
+import com.telenav.kivakit.kernel.language.io.IO;
+import com.telenav.kivakit.resource.WritableResource;
+import com.telenav.kivakit.data.formats.library.map.identifiers.WayIdentifier;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;

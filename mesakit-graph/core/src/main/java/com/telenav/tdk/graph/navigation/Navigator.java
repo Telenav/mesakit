@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.navigation;
+package com.telenav.kivakit.graph.navigation;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.io.load.loaders.decimation.DecimatingGraphLoader;
-import com.telenav.tdk.graph.io.load.loaders.decimation.DecimationNavigator;
-import com.telenav.tdk.graph.navigation.navigators.*;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.io.load.loaders.decimation.DecimatingGraphLoader;
+import com.telenav.kivakit.graph.io.load.loaders.decimation.DecimationNavigator;
+import com.telenav.kivakit.graph.navigation.navigators.*;
 
 /**
  * A navigator is used to explore the road network from a given edge. A {@link Navigator} is used to decide what edge is

@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.roadsection.codings.tmc;
+package com.telenav.kivakit.graph.traffic.roadsection.codings.tmc;
 
-import com.telenav.tdk.core.data.extraction.BaseExtractor;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionCodingSystem;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionIdentifier;
+import com.telenav.kivakit.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionCodingSystem;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier;
 
 public class TmcTableIdentifierExtractor extends BaseExtractor<TmcTableIdentifier, RoadSectionIdentifier>
 {

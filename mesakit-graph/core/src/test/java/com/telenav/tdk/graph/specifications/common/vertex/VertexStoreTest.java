@@ -16,21 +16,21 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.vertex;
+package com.telenav.kivakit.graph.specifications.common.vertex;
 
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.graph.Metadata;
-import com.telenav.tdk.graph.Vertex;
-import com.telenav.tdk.graph.collections.EdgeSet;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
-import com.telenav.tdk.graph.specifications.osm.OsmDataSpecification;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.graph.Metadata;
+import com.telenav.kivakit.graph.Vertex;
+import com.telenav.kivakit.graph.collections.EdgeSet;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.kivakit.graph.specifications.osm.OsmDataSpecification;
 import org.junit.Test;
 
-import static com.telenav.tdk.data.formats.library.DataFormat.PBF;
-import static com.telenav.tdk.graph.metadata.DataSupplier.OSM;
+import static com.telenav.kivakit.data.formats.library.DataFormat.PBF;
+import static com.telenav.kivakit.graph.metadata.DataSupplier.OSM;
 
-public class VertexStoreTest extends TdkGraphCoreUnitTest
+public class VertexStoreTest extends KivaKitGraphCoreUnitTest
 {
     @Test
     public void testAdd()

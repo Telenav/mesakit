@@ -1,7 +1,7 @@
-package com.telenav.tdk.graph.query.program.expressions.terminal;
+package com.telenav.kivakit.graph.query.program.expressions.terminal;
 
-import com.telenav.tdk.graph.query.program.*;
-import com.telenav.tdk.graph.query.program.expressions.terminal.value.ValueExpression;
+import com.telenav.kivakit.graph.query.program.*;
+import com.telenav.kivakit.graph.query.program.expressions.terminal.value.ValueExpression;
 
 /**
  * Comparison expressions, including <b>=</b>, <b>!=</b>, <b>&lt;</b>, <b>&gt;</b>, <b>&lt;=</b> and <b>&gt;=</b>

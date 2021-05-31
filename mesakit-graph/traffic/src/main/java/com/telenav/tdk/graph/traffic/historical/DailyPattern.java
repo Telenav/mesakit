@@ -16,10 +16,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.historical;
+package com.telenav.kivakit.graph.traffic.historical;
 
-import com.telenav.tdk.core.collections.primitive.array.scalars.ByteArray;
-import com.telenav.tdk.utilities.time.timebin.LocalTimeBinScheme;
+import com.telenav.kivakit.collections.primitive.array.scalars.ByteArray;
+import com.telenav.kivakit.utilities.time.timebin.LocalTimeBinScheme;
 
 public class DailyPattern extends SpeedPattern
 {

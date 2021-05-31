@@ -16,24 +16,24 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.library.osm.change;
+package com.telenav.kivakit.graph.library.osm.change;
 
-import com.telenav.tdk.core.kernel.language.object.Objects;
-import com.telenav.tdk.core.kernel.language.string.*;
-import com.telenav.tdk.core.kernel.scalars.counts.Maximum;
-import com.telenav.tdk.data.formats.library.map.identifiers.*;
-import com.telenav.tdk.data.formats.pbf.model.change.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.*;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.map.geography.polyline.*;
-import com.telenav.tdk.map.geography.segment.Segment;
-import com.telenav.tdk.map.measurements.Distance;
-import com.telenav.tdk.map.road.model.RoadName;
+import com.telenav.kivakit.kernel.language.object.Objects;
+import com.telenav.kivakit.kernel.language.string.*;
+import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.data.formats.library.map.identifiers.*;
+import com.telenav.kivakit.data.formats.pbf.model.change.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.*;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.map.geography.polyline.*;
+import com.telenav.kivakit.map.geography.segment.Segment;
+import com.telenav.kivakit.map.measurements.Distance;
+import com.telenav.kivakit.map.road.model.RoadName;
 import org.openstreetmap.osmosis.core.domain.v0_6.*;
 
 import java.util.*;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.validation.Validate.fail;
 
 /**
  * A class that holds an OSM way and models any changes that need to be made to nodes that are caused by adding new

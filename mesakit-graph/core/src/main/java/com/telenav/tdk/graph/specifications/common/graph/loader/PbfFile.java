@@ -16,21 +16,21 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.graph.loader;
+package com.telenav.kivakit.graph.specifications.common.graph.loader;
 
-import com.telenav.tdk.core.filesystem.*;
-import com.telenav.tdk.core.kernel.interfaces.naming.Named;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.tdk.core.kernel.operation.progress.ProgressReporter;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.core.resource.path.Extension;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.filesystem.*;
+import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
-import static com.telenav.tdk.core.resource.compression.archive.ZipArchive.Mode.*;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.*;
 
 /**
  * An OSM PBF resource that can be converted to a graph by calling {@link #graph()}.

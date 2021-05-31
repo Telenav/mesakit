@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.node.store.all.disk;
+package com.telenav.kivakit.graph.specifications.common.node.store.all.disk;
 
-import com.telenav.tdk.core.kernel.language.object.Hash;
-import com.telenav.tdk.map.geography.Located;
-import com.telenav.tdk.map.geography.Location;
+import com.telenav.kivakit.kernel.language.object.Hash;
+import com.telenav.kivakit.map.geography.Located;
+import com.telenav.kivakit.map.geography.Location;
 
 public class AllNodeDiskCell
 {

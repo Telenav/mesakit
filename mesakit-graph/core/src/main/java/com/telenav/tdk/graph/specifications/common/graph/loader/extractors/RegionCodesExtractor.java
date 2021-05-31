@@ -16,15 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.common.graph.loader.extractors;
 
-package com.telenav.tdk.graph.specifications.common.graph.loader.extractors;
-
-import com.telenav.tdk.core.data.extraction.BaseExtractor;
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.core.kernel.scalars.counts.Maximum;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfWay;
-import com.telenav.tdk.graph.specifications.unidb.graph.edge.model.attributes.AdasRegionCode;
+import com.telenav.kivakit.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
+import com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.attributes.AdasRegionCode;
 
 /**
  *

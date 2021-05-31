@@ -15,19 +15,18 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit-graph-query</artifactId>
     <packaging>jar</packaging>
     <name>MesaKit - Graph - Query</name>
 
     <dependencies>
 
-        <!-- MesaKit -->
+        <!-- KivaKit -->
 
         <dependency>
-            <groupId>com.telenav.mesakit</groupId>
-            <artifactId>mesakit-core-kernel</artifactId>
-            <version>${mesakit.version}</version>
+            <groupId>com.telenav.kivakit</groupId>
+            <artifactId>kivakit-application</artifactId>
+            <version>${kivakit.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>commons-logging</groupId>
@@ -35,6 +34,9 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!-- MesaKit -->
+
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-graph-core</artifactId>
@@ -45,11 +47,6 @@
                     <artifactId>*</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.telenav.mesakit</groupId>
-            <artifactId>mesakit-core-application</artifactId>
-            <version>${mesakit.version}</version>
         </dependency>
 
         <dependency>

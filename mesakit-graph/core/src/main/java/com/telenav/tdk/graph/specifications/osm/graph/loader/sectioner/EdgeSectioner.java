@@ -16,23 +16,23 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.osm.graph.loader.sectioner;
+package com.telenav.kivakit.graph.specifications.osm.graph.loader.sectioner;
 
-import com.telenav.tdk.core.collections.map.multi.MultiMap;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.data.formats.library.map.identifiers.WayIdentifier;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.specifications.library.pbf.*;
-import com.telenav.tdk.map.geography.polyline.PolylineSectioner;
-import com.telenav.tdk.map.geography.segment.Segment;
-import com.telenav.tdk.map.measurements.Distance;
+import com.telenav.kivakit.collections.map.multi.MultiMap;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.data.formats.library.map.identifiers.WayIdentifier;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.specifications.library.pbf.*;
+import com.telenav.kivakit.map.geography.polyline.PolylineSectioner;
+import com.telenav.kivakit.map.geography.segment.Segment;
+import com.telenav.kivakit.map.measurements.Distance;
 
 import java.util.*;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
 
 /**
  * Sections a raw way (represented as an edge) into smaller pieces according to the following rules:

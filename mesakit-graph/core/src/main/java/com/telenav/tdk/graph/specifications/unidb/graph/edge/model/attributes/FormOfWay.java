@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.unidb.graph.edge.model.attributes;
+package com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.attributes;
 
-import com.telenav.tdk.core.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
 
 public enum FormOfWay implements Quantizable
 {

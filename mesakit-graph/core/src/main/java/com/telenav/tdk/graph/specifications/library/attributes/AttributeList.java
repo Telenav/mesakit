@@ -16,9 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.library.attributes;
+package com.telenav.kivakit.graph.specifications.library.attributes;
 
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;

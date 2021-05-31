@@ -16,16 +16,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.io.convert;
+package com.telenav.kivakit.graph.io.convert;
 
-import com.telenav.tdk.core.filesystem.File;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.messaging.Repeater;
-import com.telenav.tdk.core.resource.Resource;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.specifications.common.graph.loader.PbfToGraphConverter;
-import com.telenav.tdk.graph.specifications.osm.graph.converter.OsmPbfToGraphConverter;
-import com.telenav.tdk.graph.specifications.unidb.graph.converter.UniDbPbfToGraphConverter;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.messaging.Repeater;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.specifications.common.graph.loader.PbfToGraphConverter;
+import com.telenav.kivakit.graph.specifications.osm.graph.converter.OsmPbfToGraphConverter;
+import com.telenav.kivakit.graph.specifications.unidb.graph.converter.UniDbPbfToGraphConverter;
 
 /**
  * A graph converter converts some kind of input {@link File} to a {@link Graph}.

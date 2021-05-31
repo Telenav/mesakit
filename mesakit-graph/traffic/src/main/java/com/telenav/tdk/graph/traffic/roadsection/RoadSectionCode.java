@@ -16,22 +16,22 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.roadsection;
+package com.telenav.kivakit.graph.traffic.roadsection;
 
-import com.telenav.tdk.core.kernel.conversion.collection.BaseListConverter;
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.graph.traffic.roadsection.codings.navteq.NavteqRoadSectionCode;
-import com.telenav.tdk.graph.traffic.roadsection.codings.ngx.NgxRoadSectionCode;
-import com.telenav.tdk.graph.traffic.roadsection.codings.osm.PbfRoadSectionCode;
-import com.telenav.tdk.graph.traffic.roadsection.codings.telenav.TelenavTrafficLocationCode;
-import com.telenav.tdk.graph.traffic.roadsection.codings.tmc.TmcCode;
-import com.telenav.tdk.graph.traffic.roadsection.codings.tomtom.TomTomRoadSectionCode;
+import com.telenav.kivakit.kernel.conversion.collection.BaseListConverter;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.navteq.NavteqRoadSectionCode;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.ngx.NgxRoadSectionCode;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.osm.PbfRoadSectionCode;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.telenav.TelenavTrafficLocationCode;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.tmc.TmcCode;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.tomtom.TomTomRoadSectionCode;
 
 import java.util.Objects;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.validation.Validate.fail;
 
 /**
  * Abstraction that indicates a section of roadway in some coding system. Subclasses include {@link TmcCode}, {@link

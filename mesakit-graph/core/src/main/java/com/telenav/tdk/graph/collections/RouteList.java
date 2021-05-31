@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.collections;
+package com.telenav.kivakit.graph.collections;
 
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
-import com.telenav.tdk.core.kernel.language.iteration.Iterables;
-import com.telenav.tdk.graph.*;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.iteration.Iterables;
+import com.telenav.kivakit.graph.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;

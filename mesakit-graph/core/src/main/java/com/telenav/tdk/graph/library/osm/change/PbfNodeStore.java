@@ -16,23 +16,23 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.library.osm.change;
+package com.telenav.kivakit.graph.library.osm.change;
 
-import com.telenav.tdk.core.collections.map.ReferenceCountMap;
-import com.telenav.tdk.core.kernel.language.string.StringList;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.operation.progress.reporters.Progress;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.data.formats.library.map.identifiers.*;
-import com.telenav.tdk.data.formats.pbf.model.identifiers.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.*;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.map.geography.Location;
+import com.telenav.kivakit.collections.map.ReferenceCountMap;
+import com.telenav.kivakit.kernel.language.string.StringList;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.operation.progress.reporters.Progress;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.data.formats.library.map.identifiers.*;
+import com.telenav.kivakit.data.formats.pbf.model.identifiers.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.*;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.map.geography.Location;
 import org.openstreetmap.osmosis.core.domain.v0_6.Node;
 
 import java.util.*;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.ensureNotNull;
+import static com.telenav.kivakit.kernel.validation.Validate.ensureNotNull;
 
 /**
  * Holds OSM nodes being referenced by {@link NewWay} and {@link ModifiableWay} objects.

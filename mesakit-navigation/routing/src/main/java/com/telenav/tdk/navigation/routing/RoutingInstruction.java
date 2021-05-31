@@ -16,9 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.navigation.routing;
+package com.telenav.kivakit.navigation.routing;
 
-import com.telenav.tdk.core.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.messaging.Message;
 
 /**
  * @author jonathanl (shibo)

@@ -16,19 +16,19 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.identifiers;
+package com.telenav.kivakit.graph.identifiers;
 
-import com.telenav.tdk.core.kernel.commandline.SwitchParser;
-import com.telenav.tdk.core.kernel.interfaces.numeric.Quantizable;
-import com.telenav.tdk.core.kernel.logging.Logger;
-import com.telenav.tdk.core.kernel.logging.LoggerFactory;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.data.formats.library.map.identifiers.MapIdentifier;
-import com.telenav.tdk.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.GraphElement;
-import com.telenav.tdk.graph.Place;
+import com.telenav.kivakit.kernel.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.data.formats.library.map.identifiers.MapIdentifier;
+import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.GraphElement;
+import com.telenav.kivakit.graph.Place;
 
 /**
  * Identifier of {@link Place}s in a {@link Graph}. The identifier for a place can be retrieved with {@link

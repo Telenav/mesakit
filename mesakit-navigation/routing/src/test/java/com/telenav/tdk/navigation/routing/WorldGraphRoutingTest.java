@@ -17,23 +17,23 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-package com.telenav.tdk.navigation.routing;
+package com.telenav.kivakit.navigation.routing;
 
-import com.telenav.tdk.core.kernel.scalars.levels.Weight;
-import com.telenav.tdk.graph.world.project.TdkGraphWorldUnitTest;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.navigation.routing.cost.functions.heuristic.RemainingDistanceToEndCostFunction;
-import com.telenav.tdk.navigation.routing.cost.functions.heuristic.SpeedCostFunction;
-import com.telenav.tdk.navigation.routing.debuggers.SwingRoutingDebugger;
-import com.telenav.tdk.navigation.routing.dijkstra.DijkstraRouter;
-import com.telenav.tdk.navigation.routing.dijkstra.DijkstraRoutingRequest;
-import com.telenav.tdk.navigation.routing.limiters.CpuTimeRoutingLimiter;
-import com.telenav.tdk.utilities.time.PreciseDuration;
+import com.telenav.kivakit.kernel.scalars.levels.Weight;
+import com.telenav.kivakit.graph.world.project.KivaKitGraphWorldUnitTest;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.navigation.routing.cost.functions.heuristic.RemainingDistanceToEndCostFunction;
+import com.telenav.kivakit.navigation.routing.cost.functions.heuristic.SpeedCostFunction;
+import com.telenav.kivakit.navigation.routing.debuggers.SwingRoutingDebugger;
+import com.telenav.kivakit.navigation.routing.dijkstra.DijkstraRouter;
+import com.telenav.kivakit.navigation.routing.dijkstra.DijkstraRoutingRequest;
+import com.telenav.kivakit.navigation.routing.limiters.CpuTimeRoutingLimiter;
+import com.telenav.kivakit.utilities.time.PreciseDuration;
 import org.junit.Ignore;
 import org.junit.Test;
 
 @Ignore
-public class WorldGraphRoutingTest extends TdkGraphWorldUnitTest
+public class WorldGraphRoutingTest extends KivaKitGraphWorldUnitTest
 {
     private static final boolean SWING_DEBUG = false;
 

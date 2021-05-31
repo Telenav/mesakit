@@ -16,35 +16,35 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.unidb.graph.loader;
+package com.telenav.kivakit.graph.specifications.unidb.graph.loader;
 
-import com.telenav.tdk.core.collections.primitive.map.split.SplitLongToIntMap;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
-import com.telenav.tdk.core.kernel.language.collections.map.BoundedMap;
-import com.telenav.tdk.core.kernel.language.primitive.Booleans;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.scalars.counts.Maximum;
-import com.telenav.tdk.data.formats.pbf.model.tags.*;
-import com.telenav.tdk.graph.Metadata;
-import com.telenav.tdk.graph.specifications.common.graph.loader.RawPbfGraphLoader;
-import com.telenav.tdk.graph.specifications.common.graph.loader.extractors.*;
-import com.telenav.tdk.graph.specifications.common.graph.loader.extractors.RoadStateExtractor.ExtractedRoadState;
-import com.telenav.tdk.graph.specifications.library.pbf.PbfDataSourceFactory;
-import com.telenav.tdk.graph.specifications.library.store.GraphStore;
-import com.telenav.tdk.graph.specifications.unidb.graph.edge.model.UniDbHeavyWeightEdge;
-import com.telenav.tdk.graph.specifications.unidb.graph.edge.model.attributes.*;
-import com.telenav.tdk.graph.specifications.unidb.graph.edge.model.attributes.extractors.*;
-import com.telenav.tdk.graph.specifications.unidb.graph.node.model.attributes.extractor.AdasZCoordinateExtractor;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.region.locale.MapLocale;
-import com.telenav.tdk.map.road.model.*;
+import com.telenav.kivakit.collections.primitive.map.split.SplitLongToIntMap;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.collections.map.BoundedMap;
+import com.telenav.kivakit.kernel.language.primitive.Booleans;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.data.formats.pbf.model.tags.*;
+import com.telenav.kivakit.graph.Metadata;
+import com.telenav.kivakit.graph.specifications.common.graph.loader.RawPbfGraphLoader;
+import com.telenav.kivakit.graph.specifications.common.graph.loader.extractors.*;
+import com.telenav.kivakit.graph.specifications.common.graph.loader.extractors.RoadStateExtractor.ExtractedRoadState;
+import com.telenav.kivakit.graph.specifications.library.pbf.PbfDataSourceFactory;
+import com.telenav.kivakit.graph.specifications.library.store.GraphStore;
+import com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.UniDbHeavyWeightEdge;
+import com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.attributes.*;
+import com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.attributes.extractors.*;
+import com.telenav.kivakit.graph.specifications.unidb.graph.node.model.attributes.extractor.AdasZCoordinateExtractor;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.region.locale.MapLocale;
+import com.telenav.kivakit.map.road.model.*;
 import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
 
 import java.util.Objects;
 
-import static com.telenav.tdk.graph.Metadata.CountType.ALLOW_ESTIMATE;
-import static com.telenav.tdk.map.road.name.standardizer.RoadNameStandardizer.Mode.NO_STANDARDIZATION;
+import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.kivakit.map.road.name.standardizer.RoadNameStandardizer.Mode.NO_STANDARDIZATION;
 
 public class UniDbRawPbfGraphLoader extends RawPbfGraphLoader
 {

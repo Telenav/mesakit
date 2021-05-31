@@ -16,82 +16,81 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph;
 
-package com.telenav.tdk.graph;
-
-import com.telenav.tdk.core.filesystem.File;
-import com.telenav.tdk.core.kernel.comparison.Differences;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.interfaces.naming.Named;
-import com.telenav.tdk.core.kernel.interfaces.object.Matcher;
-import com.telenav.tdk.core.kernel.language.collections.map.BoundedMap;
-import com.telenav.tdk.core.kernel.language.iteration.Streams;
-import com.telenav.tdk.core.kernel.language.iteration.*;
-import com.telenav.tdk.core.kernel.language.matching.All;
-import com.telenav.tdk.core.kernel.language.object.Classes;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.language.string.conversion.*;
-import com.telenav.tdk.core.kernel.language.thread.context.CallStack;
-import com.telenav.tdk.core.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.tdk.core.kernel.operation.progress.ProgressReporter;
-import com.telenav.tdk.core.kernel.operation.progress.reporters.Progress;
-import com.telenav.tdk.core.kernel.scalars.bytes.Bytes;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.core.kernel.scalars.versioning.Version;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.core.resource.Resource;
-import com.telenav.tdk.data.formats.library.DataFormat;
-import com.telenav.tdk.data.formats.library.map.identifiers.*;
-import com.telenav.tdk.graph.collections.*;
-import com.telenav.tdk.graph.identifiers.*;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.io.load.*;
-import com.telenav.tdk.graph.io.load.loaders.BaseGraphLoader;
-import com.telenav.tdk.graph.io.load.loaders.copying.CopyingGraphLoader;
-import com.telenav.tdk.graph.io.load.loaders.decimation.DecimatingGraphLoader;
-import com.telenav.tdk.graph.io.load.loaders.region.regions.*;
-import com.telenav.tdk.graph.map.MapEdgeIdentifier;
-import com.telenav.tdk.graph.matching.snapping.GraphSnapper;
-import com.telenav.tdk.graph.metadata.*;
-import com.telenav.tdk.graph.specifications.common.CommonGraph;
-import com.telenav.tdk.graph.specifications.common.edge.*;
-import com.telenav.tdk.graph.specifications.common.edge.store.EdgeStore;
-import com.telenav.tdk.graph.specifications.common.element.*;
-import com.telenav.tdk.graph.specifications.common.graph.store.CommonGraphStore;
-import com.telenav.tdk.graph.specifications.common.place.*;
-import com.telenav.tdk.graph.specifications.common.place.store.PlaceStore;
-import com.telenav.tdk.graph.specifications.common.relation.*;
-import com.telenav.tdk.graph.specifications.common.relation.store.RelationStore;
-import com.telenav.tdk.graph.specifications.common.shapepoint.store.ShapePointStore;
-import com.telenav.tdk.graph.specifications.common.vertex.*;
-import com.telenav.tdk.graph.specifications.common.vertex.store.VertexStore;
-import com.telenav.tdk.graph.specifications.library.attributes.*;
-import com.telenav.tdk.graph.specifications.library.store.*;
-import com.telenav.tdk.graph.specifications.osm.OsmDataSpecification;
-import com.telenav.tdk.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
-import com.telenav.tdk.graph.specifications.osm.graph.loader.OsmPbfGraphLoader;
-import com.telenav.tdk.graph.specifications.unidb.UniDbDataSpecification;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionIdentifier;
-import com.telenav.tdk.map.geography.*;
-import com.telenav.tdk.map.geography.polyline.Polyline;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.measurements.*;
-import com.telenav.tdk.map.region.*;
-import com.telenav.tdk.map.road.model.RoadFunctionalClass;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.kernel.comparison.Differences;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.kernel.interfaces.object.Matcher;
+import com.telenav.kivakit.kernel.language.collections.map.BoundedMap;
+import com.telenav.kivakit.kernel.language.iteration.Streams;
+import com.telenav.kivakit.kernel.language.iteration.*;
+import com.telenav.kivakit.kernel.language.matching.All;
+import com.telenav.kivakit.kernel.language.object.Classes;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.language.string.conversion.*;
+import com.telenav.kivakit.kernel.language.thread.context.CallStack;
+import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.operation.progress.reporters.Progress;
+import com.telenav.kivakit.kernel.scalars.bytes.Bytes;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.scalars.versioning.Version;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.data.formats.library.DataFormat;
+import com.telenav.kivakit.data.formats.library.map.identifiers.*;
+import com.telenav.kivakit.graph.collections.*;
+import com.telenav.kivakit.graph.identifiers.*;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.io.load.*;
+import com.telenav.kivakit.graph.io.load.loaders.BaseGraphLoader;
+import com.telenav.kivakit.graph.io.load.loaders.copying.CopyingGraphLoader;
+import com.telenav.kivakit.graph.io.load.loaders.decimation.DecimatingGraphLoader;
+import com.telenav.kivakit.graph.io.load.loaders.region.regions.*;
+import com.telenav.kivakit.graph.map.MapEdgeIdentifier;
+import com.telenav.kivakit.graph.matching.snapping.GraphSnapper;
+import com.telenav.kivakit.graph.metadata.*;
+import com.telenav.kivakit.graph.specifications.common.CommonGraph;
+import com.telenav.kivakit.graph.specifications.common.edge.*;
+import com.telenav.kivakit.graph.specifications.common.edge.store.EdgeStore;
+import com.telenav.kivakit.graph.specifications.common.element.*;
+import com.telenav.kivakit.graph.specifications.common.graph.store.CommonGraphStore;
+import com.telenav.kivakit.graph.specifications.common.place.*;
+import com.telenav.kivakit.graph.specifications.common.place.store.PlaceStore;
+import com.telenav.kivakit.graph.specifications.common.relation.*;
+import com.telenav.kivakit.graph.specifications.common.relation.store.RelationStore;
+import com.telenav.kivakit.graph.specifications.common.shapepoint.store.ShapePointStore;
+import com.telenav.kivakit.graph.specifications.common.vertex.*;
+import com.telenav.kivakit.graph.specifications.common.vertex.store.VertexStore;
+import com.telenav.kivakit.graph.specifications.library.attributes.*;
+import com.telenav.kivakit.graph.specifications.library.store.*;
+import com.telenav.kivakit.graph.specifications.osm.OsmDataSpecification;
+import com.telenav.kivakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
+import com.telenav.kivakit.graph.specifications.osm.graph.loader.OsmPbfGraphLoader;
+import com.telenav.kivakit.graph.specifications.unidb.UniDbDataSpecification;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier;
+import com.telenav.kivakit.map.geography.*;
+import com.telenav.kivakit.map.geography.polyline.Polyline;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.measurements.*;
+import com.telenav.kivakit.map.region.*;
+import com.telenav.kivakit.map.road.model.RoadFunctionalClass;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 
 import java.util.*;
 import java.util.stream.*;
 
-import static com.telenav.tdk.core.kernel.language.thread.context.CallStack.Matching.SUBCLASS;
-import static com.telenav.tdk.core.kernel.language.thread.context.CallStack.Proximity.DISTANT;
-import static com.telenav.tdk.core.kernel.validation.Validate.*;
-import static com.telenav.tdk.graph.Metadata.CountType.REQUIRE_EXACT;
-import static com.telenav.tdk.graph.Metadata.VALIDATE_EXCEPT_STATISTICS;
-import static com.telenav.tdk.graph.collections.EdgeSequence.Type.*;
+import static com.telenav.kivakit.kernel.language.thread.context.CallStack.Matching.SUBCLASS;
+import static com.telenav.kivakit.kernel.language.thread.context.CallStack.Proximity.DISTANT;
+import static com.telenav.kivakit.kernel.validation.Validate.*;
+import static com.telenav.kivakit.graph.Metadata.CountType.REQUIRE_EXACT;
+import static com.telenav.kivakit.graph.Metadata.VALIDATE_EXCEPT_STATISTICS;
+import static com.telenav.kivakit.graph.collections.EdgeSequence.Type.*;
 
 /**
  * The base class for directional graphs representing a road network, composed of {@link GraphElement}s. {@link
@@ -634,7 +633,8 @@ public abstract class Graph extends BaseRepeater<Message> implements AsIndentedS
      * @param maximumDeviation The maximum amount of turning the edges can make before being decimated
      * @return This graph, decimated
      */
-    public final Graph createDecimated(final Distance minimumLength, final Angle maximumDeviation, final ProgressReporter reporter)
+    public final Graph createDecimated(final Distance minimumLength, final Angle maximumDeviation,
+                                       final ProgressReporter reporter)
     {
         final var decimated = createCompatible(metadata().withName(name() + "-decimated"));
         decimated.broadcastTo(this);
@@ -859,7 +859,8 @@ public abstract class Graph extends BaseRepeater<Message> implements AsIndentedS
     /**
      * @return The edges whose road shape intersects the given bounding rectangle which also match the given matcher
      */
-    public EdgeSequence edgesIntersecting(final Rectangle bounds, final Matcher<Edge> matcher, final EdgeSequence.Type type)
+    public EdgeSequence edgesIntersecting(final Rectangle bounds, final Matcher<Edge> matcher,
+                                          final EdgeSequence.Type type)
     {
         return unsupported();
     }
@@ -1412,7 +1413,8 @@ public abstract class Graph extends BaseRepeater<Message> implements AsIndentedS
      * distance with the given minimum population
      */
     @SuppressWarnings("SameParameterValue")
-    public List<Place> placesNear(final Location location, final Count minimumPopulation, final Distance minimumDistanceBetweenPlaces,
+    public List<Place> placesNear(final Location location, final Count minimumPopulation,
+                                  final Distance minimumDistanceBetweenPlaces,
                                   final Distance maximumDistance, final Count maximum)
     {
         final List<Place> places = new ArrayList<>();

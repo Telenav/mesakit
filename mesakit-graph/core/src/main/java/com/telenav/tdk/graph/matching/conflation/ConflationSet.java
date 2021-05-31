@@ -16,10 +16,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.matching.conflation;
+package com.telenav.kivakit.graph.matching.conflation;
 
-import com.telenav.tdk.core.kernel.scalars.levels.Percentage;
-import com.telenav.tdk.graph.Edge;
+import com.telenav.kivakit.kernel.scalars.levels.Percentage;
+import com.telenav.kivakit.graph.Edge;
 
 import java.util.HashSet;
 

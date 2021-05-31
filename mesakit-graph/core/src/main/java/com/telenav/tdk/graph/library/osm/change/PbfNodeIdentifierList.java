@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.library.osm.change;
+package com.telenav.kivakit.graph.library.osm.change;
 
-import com.telenav.tdk.core.kernel.language.string.StringList;
-import com.telenav.tdk.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.tdk.map.geography.Location;
+import com.telenav.kivakit.kernel.language.string.StringList;
+import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
+import com.telenav.kivakit.map.geography.Location;
 
 import java.util.ArrayList;
 

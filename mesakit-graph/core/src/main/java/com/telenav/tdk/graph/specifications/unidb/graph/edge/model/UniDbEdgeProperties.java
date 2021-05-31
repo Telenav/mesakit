@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.unidb.graph.edge.model;
+package com.telenav.kivakit.graph.specifications.unidb.graph.edge.model;
 
-import com.telenav.tdk.core.kernel.language.object.Lazy;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.specifications.common.edge.EdgeProperties;
-import com.telenav.tdk.graph.specifications.library.attributes.Attribute;
+import com.telenav.kivakit.kernel.language.object.Lazy;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.specifications.common.edge.EdgeProperties;
+import com.telenav.kivakit.graph.specifications.library.attributes.Attribute;
 
 public class UniDbEdgeProperties extends EdgeProperties
 {

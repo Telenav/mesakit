@@ -16,33 +16,33 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.library.attributes;
+package com.telenav.kivakit.graph.specifications.library.attributes;
 
-import com.telenav.tdk.core.collections.primitive.list.*;
-import com.telenav.tdk.core.collections.primitive.list.store.PackedStringStore;
-import com.telenav.tdk.core.collections.primitive.map.PrimitiveScalarMap;
-import com.telenav.tdk.core.collections.primitive.map.multi.PrimitiveScalarMultiMap;
-import com.telenav.tdk.core.collections.primitive.set.PrimitiveSet;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.interfaces.collection.*;
-import com.telenav.tdk.core.kernel.interfaces.factory.*;
-import com.telenav.tdk.core.kernel.interfaces.naming.NamedObject;
-import com.telenav.tdk.core.kernel.interfaces.numeric.Quantizable;
-import com.telenav.tdk.core.kernel.interfaces.operation.Initializable;
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
-import com.telenav.tdk.core.kernel.language.reflection.Type;
-import com.telenav.tdk.core.kernel.language.reflection.property.Property;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.messages.lifecycle.OperationSucceeded;
-import com.telenav.tdk.core.resource.compression.archive.FieldArchive;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.metadata.DataSpecification;
+import com.telenav.kivakit.collections.primitive.list.*;
+import com.telenav.kivakit.collections.primitive.list.store.PackedStringStore;
+import com.telenav.kivakit.collections.primitive.map.PrimitiveScalarMap;
+import com.telenav.kivakit.collections.primitive.map.multi.PrimitiveScalarMultiMap;
+import com.telenav.kivakit.collections.primitive.set.PrimitiveSet;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.interfaces.collection.*;
+import com.telenav.kivakit.kernel.interfaces.factory.*;
+import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.interfaces.operation.Initializable;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.reflection.Type;
+import com.telenav.kivakit.kernel.language.reflection.property.Property;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.messages.lifecycle.OperationSucceeded;
+import com.telenav.kivakit.resource.compression.archive.FieldArchive;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.metadata.DataSpecification;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 
 import java.util.List;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.*;
+import static com.telenav.kivakit.kernel.validation.Validate.*;
 
 /**
  * Manages a referent (a value that's referred to by a reference) {@link Attribute}s in an {@link AttributeStore}.

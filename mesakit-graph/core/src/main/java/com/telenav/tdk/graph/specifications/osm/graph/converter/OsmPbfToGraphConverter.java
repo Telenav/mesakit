@@ -16,24 +16,23 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.osm.graph.converter;
 
-package com.telenav.tdk.graph.specifications.osm.graph.converter;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.data.formats.pbf.processing.PbfDataSource;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.io.load.GraphConstraints;
+import com.telenav.kivakit.graph.specifications.common.graph.loader.*;
+import com.telenav.kivakit.graph.specifications.library.pbf.*;
+import com.telenav.kivakit.graph.specifications.library.pbf.PbfDataAnalysis.AnalysisType;
+import com.telenav.kivakit.graph.specifications.osm.graph.OsmGraph;
+import com.telenav.kivakit.graph.specifications.osm.graph.loader.*;
+import com.telenav.kivakit.map.geography.Precision;
+import com.telenav.kivakit.map.region.Region;
 
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.data.formats.pbf.processing.PbfDataSource;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.io.load.GraphConstraints;
-import com.telenav.tdk.graph.specifications.common.graph.loader.*;
-import com.telenav.tdk.graph.specifications.library.pbf.*;
-import com.telenav.tdk.graph.specifications.library.pbf.PbfDataAnalysis.AnalysisType;
-import com.telenav.tdk.graph.specifications.osm.graph.OsmGraph;
-import com.telenav.tdk.graph.specifications.osm.graph.loader.*;
-import com.telenav.tdk.map.geography.Precision;
-import com.telenav.tdk.map.region.Region;
-
-import static com.telenav.tdk.graph.Metadata.CountType.REQUIRE_EXACT;
-import static com.telenav.tdk.graph.specifications.library.pbf.PbfDataAnalysis.AnalysisType.FULL_NODE_INFORMATION;
+import static com.telenav.kivakit.graph.Metadata.CountType.REQUIRE_EXACT;
+import static com.telenav.kivakit.graph.specifications.library.pbf.PbfDataAnalysis.AnalysisType.FULL_NODE_INFORMATION;
 
 /**
  * OSM graph conversion takes three passes through the PBF data:

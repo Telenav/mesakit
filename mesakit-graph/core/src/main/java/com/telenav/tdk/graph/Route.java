@@ -16,42 +16,42 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph;
+package com.telenav.kivakit.graph;
 
-import com.telenav.tdk.core.collections.iteration.iterators.SingletonIterator;
-import com.telenav.tdk.core.collections.primitive.array.scalars.LongArray;
-import com.telenav.tdk.core.collections.stack.Stack;
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.interfaces.collection.Compressible;
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
-import com.telenav.tdk.core.kernel.language.iteration.*;
-import com.telenav.tdk.core.kernel.language.object.Objects;
-import com.telenav.tdk.core.kernel.language.object.*;
-import com.telenav.tdk.core.kernel.language.primitive.Ints;
-import com.telenav.tdk.core.kernel.language.string.*;
-import com.telenav.tdk.core.kernel.language.string.conversion.AsString;
-import com.telenav.tdk.core.kernel.language.string.formatting.Separators;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.core.kernel.time.Duration;
-import com.telenav.tdk.data.formats.library.map.identifiers.WayIdentifier;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfWay;
-import com.telenav.tdk.graph.Edge.SignPostSupport;
-import com.telenav.tdk.graph.collections.*;
-import com.telenav.tdk.graph.identifiers.EdgeIdentifier;
-import com.telenav.tdk.graph.map.*;
-import com.telenav.tdk.graph.project.TdkGraphCoreLimits.Limit;
-import com.telenav.tdk.graph.specifications.common.edge.EdgeAttributes;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.polyline.*;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.geography.rectangle.*;
-import com.telenav.tdk.map.measurements.*;
-import com.telenav.tdk.map.measurements.Angle.Chirality;
-import com.telenav.tdk.map.road.model.*;
-import com.telenav.tdk.map.road.name.standardizer.RoadNameStandardizer;
-import com.telenav.tdk.map.ui.swing.debug.*;
+import com.telenav.kivakit.collections.iteration.iterators.SingletonIterator;
+import com.telenav.kivakit.collections.primitive.array.scalars.LongArray;
+import com.telenav.kivakit.collections.stack.Stack;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.interfaces.collection.Compressible;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.iteration.*;
+import com.telenav.kivakit.kernel.language.object.Objects;
+import com.telenav.kivakit.kernel.language.object.*;
+import com.telenav.kivakit.kernel.language.primitive.Ints;
+import com.telenav.kivakit.kernel.language.string.*;
+import com.telenav.kivakit.kernel.language.string.conversion.AsString;
+import com.telenav.kivakit.kernel.language.string.formatting.Separators;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.time.Duration;
+import com.telenav.kivakit.data.formats.library.map.identifiers.WayIdentifier;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
+import com.telenav.kivakit.graph.Edge.SignPostSupport;
+import com.telenav.kivakit.graph.collections.*;
+import com.telenav.kivakit.graph.identifiers.EdgeIdentifier;
+import com.telenav.kivakit.graph.map.*;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreLimits.Limit;
+import com.telenav.kivakit.graph.specifications.common.edge.EdgeAttributes;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.polyline.*;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.geography.rectangle.*;
+import com.telenav.kivakit.map.measurements.*;
+import com.telenav.kivakit.map.measurements.Angle.Chirality;
+import com.telenav.kivakit.map.road.model.*;
+import com.telenav.kivakit.map.road.name.standardizer.RoadNameStandardizer;
+import com.telenav.kivakit.map.ui.swing.debug.*;
 import org.openstreetmap.osmosis.core.domain.v0_6.Way;
 import org.openstreetmap.osmosis.core.domain.v0_6.*;
 
@@ -60,7 +60,7 @@ import java.util.List;
 import java.util.*;
 import java.util.stream.Stream;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.validation.Validate.fail;
 
 /**
  * A list of edges that is organized according to connectivity, forming a continuous route. Attempting to add an {@link

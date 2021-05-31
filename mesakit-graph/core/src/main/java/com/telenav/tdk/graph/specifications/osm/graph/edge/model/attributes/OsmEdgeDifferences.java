@@ -16,11 +16,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.osm.graph.edge.model.attributes;
 
-package com.telenav.tdk.graph.specifications.osm.graph.edge.model.attributes;
-
-import com.telenav.tdk.core.kernel.comparison.Differences;
-import com.telenav.tdk.graph.specifications.osm.graph.edge.model.OsmEdge;
+import com.telenav.kivakit.kernel.comparison.Differences;
+import com.telenav.kivakit.graph.specifications.osm.graph.edge.model.OsmEdge;
 
 public class OsmEdgeDifferences
 {

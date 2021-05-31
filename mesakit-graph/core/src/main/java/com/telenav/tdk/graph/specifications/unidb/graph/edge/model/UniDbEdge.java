@@ -16,17 +16,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.unidb.graph.edge.model;
+package com.telenav.kivakit.graph.specifications.unidb.graph.edge.model;
 
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.core.kernel.validation.*;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.identifiers.EdgeIdentifier;
-import com.telenav.tdk.graph.specifications.unidb.graph.edge.model.attributes.*;
-import com.telenav.tdk.graph.specifications.unidb.graph.edge.store.UniDbEdgeStore;
-import com.telenav.tdk.map.measurements.*;
-import com.telenav.tdk.map.road.model.*;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.kernel.validation.*;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.identifiers.EdgeIdentifier;
+import com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.attributes.*;
+import com.telenav.kivakit.graph.specifications.unidb.graph.edge.store.UniDbEdgeStore;
+import com.telenav.kivakit.map.measurements.*;
+import com.telenav.kivakit.map.road.model.*;
 
 import java.util.List;
 

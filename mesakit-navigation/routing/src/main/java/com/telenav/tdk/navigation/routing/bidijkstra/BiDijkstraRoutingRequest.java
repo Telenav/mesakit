@@ -16,15 +16,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.navigation.routing.bidijkstra;
+package com.telenav.kivakit.navigation.routing.bidijkstra;
 
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.graph.Vertex;
-import com.telenav.tdk.map.measurements.Distance;
-import com.telenav.tdk.navigation.routing.RoutingDebugger;
-import com.telenav.tdk.navigation.routing.RoutingLimiter;
-import com.telenav.tdk.navigation.routing.RoutingRequest;
-import com.telenav.tdk.navigation.routing.cost.CostFunction;
+import com.telenav.kivakit.graph.Vertex;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.map.measurements.Distance;
+import com.telenav.kivakit.navigation.routing.RoutingDebugger;
+import com.telenav.kivakit.navigation.routing.RoutingLimiter;
+import com.telenav.kivakit.navigation.routing.RoutingRequest;
+import com.telenav.kivakit.navigation.routing.cost.CostFunction;
 
 public class BiDijkstraRoutingRequest extends RoutingRequest
 {

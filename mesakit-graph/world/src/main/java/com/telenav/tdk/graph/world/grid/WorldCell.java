@@ -16,35 +16,35 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world.grid;
+package com.telenav.kivakit.graph.world.grid;
 
-import com.telenav.tdk.core.filesystem.*;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.interfaces.persistence.Unloadable;
-import com.telenav.tdk.core.kernel.language.collections.set.Sets;
-import com.telenav.tdk.core.kernel.language.vm.JavaVirtualMachine.TdkExcludeFromSizeOf;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.operation.progress.ProgressReporter;
-import com.telenav.tdk.core.kernel.scalars.bytes.Bytes;
-import com.telenav.tdk.core.resource.path.Extension;
-import com.telenav.tdk.core.utilities.reference.virtual.VirtualReference;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.traffic.historical.SpeedPatternResource;
-import com.telenav.tdk.graph.world.*;
-import com.telenav.tdk.graph.world.repository.WorldGraphRepositoryFolder;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.polyline.Polygon;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.measurements.Distance;
-import com.telenav.tdk.map.region.*;
-import com.telenav.tdk.map.utilities.grid.*;
+import com.telenav.kivakit.filesystem.*;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.interfaces.persistence.Unloadable;
+import com.telenav.kivakit.kernel.language.collections.set.Sets;
+import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine.KivaKitExcludeFromSizeOf;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.scalars.bytes.Bytes;
+import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.kivakit.utilities.reference.virtual.VirtualReference;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.traffic.historical.SpeedPatternResource;
+import com.telenav.kivakit.graph.world.*;
+import com.telenav.kivakit.graph.world.repository.WorldGraphRepositoryFolder;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.polyline.Polygon;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.measurements.Distance;
+import com.telenav.kivakit.map.region.*;
+import com.telenav.kivakit.map.utilities.grid.*;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static com.telenav.tdk.core.resource.compression.archive.ZipArchive.Mode.READ;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
 
 /**
  * A world cell is a square {@link Region} in a {@link WorldGrid}. The actual layout of this cell in a grid is handled
@@ -75,7 +75,7 @@ import static com.telenav.tdk.core.resource.compression.archive.ZipArchive.Mode.
  * @see WorldGraphRepositoryFolder
  * @see GridCell
  */
-@TdkExcludeFromSizeOf
+@KivaKitExcludeFromSizeOf
 public class WorldCell extends Region<WorldCell> implements Unloadable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();

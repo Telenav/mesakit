@@ -16,15 +16,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.edge;
+package com.telenav.kivakit.graph.specifications.common.edge;
 
-import com.telenav.tdk.core.kernel.language.object.*;
-import com.telenav.tdk.core.kernel.language.string.*;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.specifications.common.element.GraphElementProperties;
-import com.telenav.tdk.graph.specifications.library.attributes.Attribute;
-import com.telenav.tdk.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
-import com.telenav.tdk.map.road.model.RoadName;
+import com.telenav.kivakit.kernel.language.object.*;
+import com.telenav.kivakit.kernel.language.string.*;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.specifications.common.element.GraphElementProperties;
+import com.telenav.kivakit.graph.specifications.library.attributes.Attribute;
+import com.telenav.kivakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
+import com.telenav.kivakit.map.road.model.RoadName;
 
 public class EdgeProperties extends GraphElementProperties<Edge>
 {

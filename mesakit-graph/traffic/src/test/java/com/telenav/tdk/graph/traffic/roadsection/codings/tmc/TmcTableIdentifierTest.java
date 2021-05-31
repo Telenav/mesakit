@@ -16,15 +16,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.roadsection.codings.tmc;
+package com.telenav.kivakit.graph.traffic.roadsection.codings.tmc;
 
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.testing.TdkUnitTest;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionCodingSystem;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionIdentifier;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.testing.KivaKitUnitTest;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionCodingSystem;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier;
 import org.junit.Test;
 
-public class TmcTableIdentifierTest extends TdkUnitTest
+public class TmcTableIdentifierTest extends KivaKitUnitTest
 {
     private static final TmcTableIdentifierExtractor extractor = new TmcTableIdentifierExtractor(Listener.NULL);
 

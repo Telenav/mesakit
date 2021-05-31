@@ -16,17 +16,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.common.node.store.all;
 
-package com.telenav.tdk.graph.specifications.common.node.store.all;
-
-import com.telenav.tdk.core.kernel.interfaces.persistence.Unloadable;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.specifications.common.node.store.all.disk.*;
-import com.telenav.tdk.map.geography.Location;
+import com.telenav.kivakit.kernel.interfaces.persistence.Unloadable;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.specifications.common.node.store.all.disk.*;
+import com.telenav.kivakit.map.geography.Location;
 
 import java.util.*;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
 
 public class PbfAllNodeMetadataStore implements Unloadable
 {

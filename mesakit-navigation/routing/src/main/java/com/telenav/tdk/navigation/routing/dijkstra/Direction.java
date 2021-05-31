@@ -16,10 +16,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.navigation.routing.dijkstra;
+package com.telenav.kivakit.navigation.routing.dijkstra;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Route;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Route;
 
 public enum Direction
 {

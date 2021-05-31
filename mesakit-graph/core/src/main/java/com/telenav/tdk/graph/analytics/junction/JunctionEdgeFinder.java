@@ -16,18 +16,18 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.analytics.junction;
+package com.telenav.kivakit.graph.analytics.junction;
 
-import com.telenav.tdk.core.kernel.language.thread.TdkThread;
-import com.telenav.tdk.core.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.collections.*;
-import com.telenav.tdk.map.measurements.*;
-import com.telenav.tdk.map.measurements.Angle.Chirality;
-import com.telenav.tdk.map.road.model.*;
+import com.telenav.kivakit.kernel.language.thread.KivaKitThread;
+import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.collections.*;
+import com.telenav.kivakit.map.measurements.*;
+import com.telenav.kivakit.map.measurements.Angle.Chirality;
+import com.telenav.kivakit.map.road.model.*;
 
 import java.util.*;
 import java.util.concurrent.CountDownLatch;
@@ -64,7 +64,7 @@ public abstract class JunctionEdgeFinder extends BaseRepeater<Message>
         final var outer = this;
         for (var thread = 0; thread < threads.asInt(); thread++)
         {
-            new TdkThread("JunctionFinder-" + thread)
+            new KivaKitThread("JunctionFinder-" + thread)
             {
                 @Override
                 protected void onRun()

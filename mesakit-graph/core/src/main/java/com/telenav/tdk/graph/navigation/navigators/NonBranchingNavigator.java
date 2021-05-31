@@ -16,12 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.navigation.navigators;
 
-package com.telenav.tdk.graph.navigation.navigators;
-
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.navigation.Navigator;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.navigation.Navigator;
 
 /**
  * Returns next and previous edges so long as there are no branches. Note that this includes the u-turn option on any

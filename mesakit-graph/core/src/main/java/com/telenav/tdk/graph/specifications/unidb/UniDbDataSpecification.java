@@ -16,25 +16,25 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.unidb;
+package com.telenav.kivakit.graph.specifications.unidb;
 
-import com.telenav.tdk.core.kernel.comparison.Differences;
-import com.telenav.tdk.data.formats.library.DataFormat;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.io.convert.GraphConverter;
-import com.telenav.tdk.graph.io.load.GraphLoader;
-import com.telenav.tdk.graph.specifications.common.CommonDataSpecification;
-import com.telenav.tdk.graph.specifications.common.edge.HeavyWeightEdge;
-import com.telenav.tdk.graph.specifications.common.element.GraphElementAttributes;
-import com.telenav.tdk.graph.specifications.common.place.store.PlaceStore;
-import com.telenav.tdk.graph.specifications.common.relation.store.RelationStore;
-import com.telenav.tdk.graph.specifications.common.vertex.store.VertexStore;
-import com.telenav.tdk.graph.specifications.unidb.graph.UniDbGraph;
-import com.telenav.tdk.graph.specifications.unidb.graph.converter.UniDbPbfToGraphConverter;
-import com.telenav.tdk.graph.specifications.unidb.graph.edge.model.*;
-import com.telenav.tdk.graph.specifications.unidb.graph.edge.store.UniDbEdgeStore;
-import com.telenav.tdk.graph.specifications.unidb.graph.loader.UniDbPbfGraphLoader;
-import com.telenav.tdk.graph.specifications.unidb.graph.vertex.UniDbVertex;
+import com.telenav.kivakit.kernel.comparison.Differences;
+import com.telenav.kivakit.data.formats.library.DataFormat;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.io.convert.GraphConverter;
+import com.telenav.kivakit.graph.io.load.GraphLoader;
+import com.telenav.kivakit.graph.specifications.common.CommonDataSpecification;
+import com.telenav.kivakit.graph.specifications.common.edge.HeavyWeightEdge;
+import com.telenav.kivakit.graph.specifications.common.element.GraphElementAttributes;
+import com.telenav.kivakit.graph.specifications.common.place.store.PlaceStore;
+import com.telenav.kivakit.graph.specifications.common.relation.store.RelationStore;
+import com.telenav.kivakit.graph.specifications.common.vertex.store.VertexStore;
+import com.telenav.kivakit.graph.specifications.unidb.graph.UniDbGraph;
+import com.telenav.kivakit.graph.specifications.unidb.graph.converter.UniDbPbfToGraphConverter;
+import com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.*;
+import com.telenav.kivakit.graph.specifications.unidb.graph.edge.store.UniDbEdgeStore;
+import com.telenav.kivakit.graph.specifications.unidb.graph.loader.UniDbPbfGraphLoader;
+import com.telenav.kivakit.graph.specifications.unidb.graph.vertex.UniDbVertex;
 
 /**
  * Specification for UniDb data, adding attributes to the common data specification

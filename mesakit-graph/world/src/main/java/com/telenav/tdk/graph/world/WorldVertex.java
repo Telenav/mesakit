@@ -16,21 +16,21 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world;
+package com.telenav.kivakit.graph.world;
 
-import com.telenav.tdk.core.kernel.language.object.Hash;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.collections.*;
-import com.telenav.tdk.graph.identifiers.VertexIdentifier;
-import com.telenav.tdk.graph.project.TdkGraphCoreLimits.Estimated;
-import com.telenav.tdk.graph.specifications.common.node.NodeAttributes;
-import com.telenav.tdk.graph.specifications.osm.graph.OsmGraph;
-import com.telenav.tdk.graph.world.grid.WorldCell;
-import com.telenav.tdk.graph.world.identifiers.WorldVertexIdentifier;
-import com.telenav.tdk.map.measurements.Distance;
-import com.telenav.tdk.map.road.model.GradeSeparation;
+import com.telenav.kivakit.kernel.language.object.Hash;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.collections.*;
+import com.telenav.kivakit.graph.identifiers.VertexIdentifier;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreLimits.Estimated;
+import com.telenav.kivakit.graph.specifications.common.node.NodeAttributes;
+import com.telenav.kivakit.graph.specifications.osm.graph.OsmGraph;
+import com.telenav.kivakit.graph.world.grid.WorldCell;
+import com.telenav.kivakit.graph.world.identifiers.WorldVertexIdentifier;
+import com.telenav.kivakit.map.measurements.Distance;
+import com.telenav.kivakit.map.road.model.GradeSeparation;
 
 import java.util.*;
 

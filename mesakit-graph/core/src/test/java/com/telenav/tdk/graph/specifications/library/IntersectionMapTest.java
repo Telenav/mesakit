@@ -16,19 +16,19 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.library;
+package com.telenav.kivakit.graph.specifications.library;
 
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.core.kernel.testing.RandomValueFactory;
-import com.telenav.tdk.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.tdk.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
-import com.telenav.tdk.graph.specifications.library.pbf.IntersectionMap;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.kernel.testing.RandomValueFactory;
+import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
+import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.kivakit.graph.specifications.library.pbf.IntersectionMap;
 import org.junit.Test;
 
 import java.util.*;
 
-public class IntersectionMapTest extends TdkGraphCoreUnitTest
+public class IntersectionMapTest extends KivaKitGraphCoreUnitTest
 {
     @Test
     public void test()

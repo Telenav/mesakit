@@ -16,17 +16,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world;
+package com.telenav.kivakit.graph.world;
 
-import com.telenav.tdk.data.formats.library.map.identifiers.MapIdentifier;
-import com.telenav.tdk.data.formats.library.map.identifiers.WayIdentifier;
-import com.telenav.tdk.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
-import com.telenav.tdk.graph.EdgeRelationMember;
-import com.telenav.tdk.graph.Route;
-import com.telenav.tdk.graph.Vertex;
-import com.telenav.tdk.graph.world.grid.WorldCell;
+import com.telenav.kivakit.data.formats.library.map.identifiers.MapIdentifier;
+import com.telenav.kivakit.data.formats.library.map.identifiers.WayIdentifier;
+import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.kivakit.graph.EdgeRelationMember;
+import com.telenav.kivakit.graph.Route;
+import com.telenav.kivakit.graph.Vertex;
+import com.telenav.kivakit.graph.world.grid.WorldCell;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
 
 /**
  * A relation member in a {@link WorldGraph}. Overrides {@link #route()} and {@link #vertex()} to provide ways (routes)

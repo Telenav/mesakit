@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.navigation.routing;
+package com.telenav.kivakit.navigation.routing;
 
-import com.telenav.tdk.core.kernel.time.Duration;
-import com.telenav.tdk.graph.Route;
-import com.telenav.tdk.graph.world.WorldVertex;
+import com.telenav.kivakit.graph.Route;
+import com.telenav.kivakit.graph.world.WorldVertex;
+import com.telenav.kivakit.kernel.time.Duration;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.validation.Validate.fail;
 
 /**
  * Router base class that handles trivial cases

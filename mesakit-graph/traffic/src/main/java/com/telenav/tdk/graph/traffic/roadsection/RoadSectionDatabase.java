@@ -16,37 +16,36 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.traffic.roadsection;
 
-package com.telenav.tdk.graph.traffic.roadsection;
-
-import com.telenav.tdk.core.configuration.Lookup;
-import com.telenav.tdk.core.filesystem.File;
-import com.telenav.tdk.core.kernel.interfaces.naming.NamedObject;
-import com.telenav.tdk.core.kernel.interfaces.object.*;
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
-import com.telenav.tdk.core.kernel.language.collections.map.BoundedMap;
-import com.telenav.tdk.core.kernel.language.iteration.*;
-import com.telenav.tdk.core.kernel.language.matching.All;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.tdk.core.kernel.operation.progress.ProgressReporter;
-import com.telenav.tdk.core.kernel.path.PackagePath;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.core.resource.resources.packaged.PackageResource;
-import com.telenav.tdk.data.formats.library.csv.CsvWriter;
-import com.telenav.tdk.graph.traffic.project.TdkGraphTrafficLimits;
-import com.telenav.tdk.graph.traffic.roadsection.codings.telenav.TelenavTrafficLocationCode;
-import com.telenav.tdk.graph.traffic.roadsection.codings.tmc.TmcCode;
-import com.telenav.tdk.graph.traffic.roadsection.loaders.csv.CsvRoadSectionLoader;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.indexing.rtree.*;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.measurements.Speed;
-import com.telenav.tdk.map.ui.swing.map.tiles.ZoomLevel;
+import com.telenav.kivakit.configuration.Lookup;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.kernel.interfaces.object.*;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.collections.map.BoundedMap;
+import com.telenav.kivakit.kernel.language.iteration.*;
+import com.telenav.kivakit.kernel.language.matching.All;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.path.PackagePath;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.resource.resources.packaged.PackageResource;
+import com.telenav.kivakit.data.formats.library.csv.CsvWriter;
+import com.telenav.kivakit.graph.traffic.project.KivaKitGraphTrafficLimits;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.telenav.TelenavTrafficLocationCode;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.tmc.TmcCode;
+import com.telenav.kivakit.graph.traffic.roadsection.loaders.csv.CsvRoadSectionLoader;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.indexing.rtree.*;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.measurements.Speed;
+import com.telenav.kivakit.map.ui.swing.map.tiles.ZoomLevel;
 
 import java.util.*;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.unsupported;
+import static com.telenav.kivakit.kernel.validation.Validate.unsupported;
 
 public class RoadSectionDatabase extends BaseRepeater<Message> implements NamedObject
 {
@@ -131,10 +130,10 @@ public class RoadSectionDatabase extends BaseRepeater<Message> implements NamedO
     }
 
     private final Map<RoadSectionIdentifier, Source<RoadSection>> roadSectionForIdentifier = new BoundedMap<>(
-            TdkGraphTrafficLimits.MAXIMUM_ROAD_SECTIONS);
+            KivaKitGraphTrafficLimits.MAXIMUM_ROAD_SECTIONS);
 
     private final ObjectList<RoadSectionIdentifier> identifiers = new ObjectList<>(
-            TdkGraphTrafficLimits.MAXIMUM_ROAD_SECTIONS);
+            KivaKitGraphTrafficLimits.MAXIMUM_ROAD_SECTIONS);
 
     /** Spatial indices by zoom level */
     private final List<RTreeSpatialIndex<RoadSection>> spatialIndexes = new ArrayList<>();

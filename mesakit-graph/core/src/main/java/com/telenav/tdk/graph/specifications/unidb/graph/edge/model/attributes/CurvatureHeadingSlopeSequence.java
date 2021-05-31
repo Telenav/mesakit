@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.unidb.graph.edge.model.attributes;
+package com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.attributes;
 
 import com.google.common.primitives.*;
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.map.measurements.*;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.map.measurements.*;
 
 public class CurvatureHeadingSlopeSequence
 {

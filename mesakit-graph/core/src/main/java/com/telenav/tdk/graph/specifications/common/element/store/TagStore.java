@@ -16,26 +16,26 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.element.store;
+package com.telenav.kivakit.graph.specifications.common.element.store;
 
 import com.esotericsoftware.kryo.*;
 import com.esotericsoftware.kryo.io.*;
-import com.telenav.tdk.core.collections.map.CacheMap;
-import com.telenav.tdk.core.collections.primitive.array.packed.SplitPackedArray;
-import com.telenav.tdk.core.collections.primitive.array.scalars.*;
-import com.telenav.tdk.core.collections.primitive.list.ByteList;
-import com.telenav.tdk.core.kernel.interfaces.naming.NamedObject;
-import com.telenav.tdk.core.kernel.interfaces.operation.Initializable;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.compression.PbfTagCodec;
-import com.telenav.tdk.graph.GraphElement;
+import com.telenav.kivakit.collections.map.CacheMap;
+import com.telenav.kivakit.collections.primitive.array.packed.SplitPackedArray;
+import com.telenav.kivakit.collections.primitive.array.scalars.*;
+import com.telenav.kivakit.collections.primitive.list.ByteList;
+import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.kernel.interfaces.operation.Initializable;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.compression.PbfTagCodec;
+import com.telenav.kivakit.graph.GraphElement;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
-import static com.telenav.tdk.core.collections.primitive.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
-import static com.telenav.tdk.core.kernel.validation.Validate.ensureNotNull;
+import static com.telenav.kivakit.collections.primitive.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
+import static com.telenav.kivakit.kernel.validation.Validate.ensureNotNull;
 
 /**
  * Stores and retrieves tag lists for graph elements. The store can be constructed with {@link #TagStore(String,

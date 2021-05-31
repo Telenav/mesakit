@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world.identifiers;
+package com.telenav.kivakit.graph.world.identifiers;
 
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.identifiers.VertexIdentifier;
-import com.telenav.tdk.graph.world.WorldGraph;
-import com.telenav.tdk.graph.world.WorldVertex;
-import com.telenav.tdk.graph.world.grid.WorldCell;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.identifiers.VertexIdentifier;
+import com.telenav.kivakit.graph.world.WorldGraph;
+import com.telenav.kivakit.graph.world.WorldVertex;
+import com.telenav.kivakit.graph.world.grid.WorldCell;
 
 /**
  * A vertex identifier in a {@link WorldGraph}. Scopes a vertex identifier with a {@link WorldCell}. The cell for this

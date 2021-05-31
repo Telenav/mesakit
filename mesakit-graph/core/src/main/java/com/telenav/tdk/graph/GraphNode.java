@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph;
+package com.telenav.kivakit.graph;
 
-import com.telenav.tdk.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfNode;
-import com.telenav.tdk.map.geography.*;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfNode;
+import com.telenav.kivakit.map.geography.*;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
 import org.openstreetmap.osmosis.core.domain.v0_6.*;
 
 import java.sql.Timestamp;

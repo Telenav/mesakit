@@ -16,23 +16,23 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.navigation.routing.debuggers;
+package com.telenav.kivakit.navigation.routing.debuggers;
 
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.core.kernel.scalars.levels.Percentage;
-import com.telenav.tdk.core.kernel.time.Duration;
-import com.telenav.tdk.graph.Route;
-import com.telenav.tdk.graph.Vertex;
-import com.telenav.tdk.graph.collections.EdgeSet;
-import com.telenav.tdk.graph.ui.viewer.ViewableEdge;
-import com.telenav.tdk.map.ui.swing.debug.InteractiveView;
-import com.telenav.tdk.map.ui.swing.debug.ViewableIdentifier;
-import com.telenav.tdk.map.ui.swing.debug.viewables.ViewableLocation;
-import com.telenav.tdk.map.ui.swing.debug.viewer.swing.SwingViewer;
-import com.telenav.tdk.navigation.routing.RoutingDebugger;
-import com.telenav.tdk.navigation.routing.RoutingRequest;
-import com.telenav.tdk.navigation.routing.RoutingResponse;
-import com.telenav.tdk.navigation.routing.cost.Cost;
+import com.telenav.kivakit.graph.Route;
+import com.telenav.kivakit.graph.Vertex;
+import com.telenav.kivakit.graph.collections.EdgeSet;
+import com.telenav.kivakit.graph.ui.viewer.ViewableEdge;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.kernel.scalars.levels.Percentage;
+import com.telenav.kivakit.kernel.time.Duration;
+import com.telenav.kivakit.map.ui.swing.debug.InteractiveView;
+import com.telenav.kivakit.map.ui.swing.debug.ViewableIdentifier;
+import com.telenav.kivakit.map.ui.swing.debug.viewables.ViewableLocation;
+import com.telenav.kivakit.map.ui.swing.debug.viewer.swing.SwingViewer;
+import com.telenav.kivakit.navigation.routing.RoutingDebugger;
+import com.telenav.kivakit.navigation.routing.RoutingRequest;
+import com.telenav.kivakit.navigation.routing.RoutingResponse;
+import com.telenav.kivakit.navigation.routing.cost.Cost;
 
 import java.awt.Color;
 

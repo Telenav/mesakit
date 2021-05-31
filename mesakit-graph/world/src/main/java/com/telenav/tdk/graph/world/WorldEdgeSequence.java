@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world;
+package com.telenav.kivakit.graph.world;
 
-import com.telenav.tdk.core.kernel.language.iteration.BaseIterator;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.collections.EdgeSequence;
-import com.telenav.tdk.graph.world.grid.WorldCell;
+import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.collections.EdgeSequence;
+import com.telenav.kivakit.graph.world.grid.WorldCell;
 
 import java.util.Iterator;
 

@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.metadata;
+package com.telenav.kivakit.graph.metadata;
 
-import com.telenav.tdk.core.kernel.testing.TdkUnitTest;
+import com.telenav.kivakit.kernel.testing.KivaKitUnitTest;
 import org.junit.Test;
 
-public class DataSpecificationTest extends TdkUnitTest
+public class DataSpecificationTest extends KivaKitUnitTest
 {
     @Test
     public void test()

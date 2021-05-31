@@ -16,24 +16,24 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.osm;
+package com.telenav.kivakit.graph.specifications.osm;
 
-import com.telenav.tdk.core.kernel.comparison.Differences;
-import com.telenav.tdk.data.formats.library.DataFormat;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.io.convert.GraphConverter;
-import com.telenav.tdk.graph.io.load.GraphLoader;
-import com.telenav.tdk.graph.specifications.common.CommonDataSpecification;
-import com.telenav.tdk.graph.specifications.common.edge.HeavyWeightEdge;
-import com.telenav.tdk.graph.specifications.common.place.store.PlaceStore;
-import com.telenav.tdk.graph.specifications.common.relation.store.RelationStore;
-import com.telenav.tdk.graph.specifications.common.vertex.store.VertexStore;
-import com.telenav.tdk.graph.specifications.osm.graph.OsmGraph;
-import com.telenav.tdk.graph.specifications.osm.graph.converter.OsmPbfToGraphConverter;
-import com.telenav.tdk.graph.specifications.osm.graph.edge.model.*;
-import com.telenav.tdk.graph.specifications.osm.graph.edge.model.attributes.*;
-import com.telenav.tdk.graph.specifications.osm.graph.edge.store.OsmEdgeStore;
-import com.telenav.tdk.graph.specifications.osm.graph.loader.OsmPbfGraphLoader;
+import com.telenav.kivakit.kernel.comparison.Differences;
+import com.telenav.kivakit.data.formats.library.DataFormat;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.io.convert.GraphConverter;
+import com.telenav.kivakit.graph.io.load.GraphLoader;
+import com.telenav.kivakit.graph.specifications.common.CommonDataSpecification;
+import com.telenav.kivakit.graph.specifications.common.edge.HeavyWeightEdge;
+import com.telenav.kivakit.graph.specifications.common.place.store.PlaceStore;
+import com.telenav.kivakit.graph.specifications.common.relation.store.RelationStore;
+import com.telenav.kivakit.graph.specifications.common.vertex.store.VertexStore;
+import com.telenav.kivakit.graph.specifications.osm.graph.OsmGraph;
+import com.telenav.kivakit.graph.specifications.osm.graph.converter.OsmPbfToGraphConverter;
+import com.telenav.kivakit.graph.specifications.osm.graph.edge.model.*;
+import com.telenav.kivakit.graph.specifications.osm.graph.edge.model.attributes.*;
+import com.telenav.kivakit.graph.specifications.osm.graph.edge.store.OsmEdgeStore;
+import com.telenav.kivakit.graph.specifications.osm.graph.loader.OsmPbfGraphLoader;
 
 /**
  * The specification for OpenStreetMap (OSM) data, adding OSM-specific attributes to the common attributes in {@link

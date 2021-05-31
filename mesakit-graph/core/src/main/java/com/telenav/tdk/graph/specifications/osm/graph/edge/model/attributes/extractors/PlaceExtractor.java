@@ -16,18 +16,18 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.osm.graph.edge.model.attributes.extractors;
+package com.telenav.kivakit.graph.specifications.osm.graph.edge.model.attributes.extractors;
 
-import com.telenav.tdk.core.data.extraction.BaseExtractor;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.data.formats.pbf.model.change.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.*;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.specifications.common.graph.loader.extractors.LocationExtractor;
-import com.telenav.tdk.graph.specifications.common.place.HeavyWeightPlace;
+import com.telenav.kivakit.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.data.formats.pbf.model.change.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.*;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.specifications.common.graph.loader.extractors.LocationExtractor;
+import com.telenav.kivakit.graph.specifications.common.place.HeavyWeightPlace;
 
 public class PlaceExtractor extends BaseExtractor<Place, PbfEntity<?>>
 {

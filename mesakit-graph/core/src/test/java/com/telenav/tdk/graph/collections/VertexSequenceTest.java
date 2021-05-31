@@ -16,15 +16,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.collections;
+package com.telenav.kivakit.graph.collections;
 
-import com.telenav.tdk.core.kernel.language.iteration.Iterables;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Route;
-import com.telenav.tdk.graph.Vertex;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.measurements.Distance;
+import com.telenav.kivakit.kernel.language.iteration.Iterables;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Route;
+import com.telenav.kivakit.graph.Vertex;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.measurements.Distance;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ import java.util.List;
  * @author tony
  * @author jonathanl (shibo)
  */
-public class VertexSequenceTest extends TdkGraphCoreUnitTest
+public class VertexSequenceTest extends KivaKitGraphCoreUnitTest
 {
     @Test
     public void test()

@@ -16,16 +16,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.graph.loader;
+package com.telenav.kivakit.graph.specifications.common.graph.loader;
 
 /*
- * package com.telenav.tdk.graph.loaders.osm; import static org.junit.assertNotNull; import static
- * org.junit.assertTrue; import org.junit.Test; import com.telenav.tdk.graph.Graph; import
- * com.telenav.tdk.graph.OsmEdgeIdentifier; import com.telenav.tdk.kernel.framework.filesystem.File;
- * import com.telenav.tdk.kernel.framework.messaging.Listener; import
- * com.telenav.tdk.data.formats.library.DataSupplier; import
- * com.telenav.tdk.data.formats.pbf.processing.RelationFilter; import
- * com.telenav.tdk.data.formats.pbf.WayFilter;
+ * package com.telenav.kivakit.graph.loaders.osm; import static org.junit.assertNotNull; import static
+ * org.junit.assertTrue; import org.junit.Test; import com.telenav.kivakit.graph.Graph; import
+ * com.telenav.kivakit.graph.OsmEdgeIdentifier; import com.telenav.kivakit.kernel.framework.filesystem.File;
+ * import com.telenav.kivakit.kernel.framework.messaging.Listener; import
+ * com.telenav.kivakit.data.formats.library.DataSupplier; import
+ * com.telenav.kivakit.data.formats.pbf.processing.RelationFilter; import
+ * com.telenav.kivakit.data.formats.pbf.WayFilter;
  *//*
  * public class PbfGraphLoaderTest {
  * @Test public void testValidOsmEdgeIdentifier() throws Exception { // A small test pbf file

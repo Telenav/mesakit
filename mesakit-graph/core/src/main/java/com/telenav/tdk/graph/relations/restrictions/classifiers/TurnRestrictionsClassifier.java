@@ -16,10 +16,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.relations.restrictions.classifiers;
+package com.telenav.kivakit.graph.relations.restrictions.classifiers;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.analytics.classification.EdgeClassifier;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.analytics.classification.EdgeClassifier;
 
 /**
  * Created by udayg on 4/15/16.

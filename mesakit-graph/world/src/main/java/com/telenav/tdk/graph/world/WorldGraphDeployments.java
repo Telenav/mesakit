@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world;
+package com.telenav.kivakit.graph.world;
 
-import com.telenav.tdk.core.configuration.*;
-import com.telenav.tdk.core.filesystem.Folder;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.core.kernel.path.PackagePath;
+import com.telenav.kivakit.configuration.*;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.kernel.path.PackagePath;
 
 /**
  * {@link WorldGraphDeployments} is a {@link DeploymentSet} that includes deployment configurations for a few built-in

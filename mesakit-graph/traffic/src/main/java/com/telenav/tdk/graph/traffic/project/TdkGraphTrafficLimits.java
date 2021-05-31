@@ -16,13 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.traffic.project;
 
-package com.telenav.tdk.graph.traffic.project;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.kernel.scalars.counts.Maximum;
 
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.core.kernel.scalars.counts.Maximum;
-
-public class TdkGraphTrafficLimits
+public class KivaKitGraphTrafficLimits
 {
     public static final Maximum MAXIMUM_TRAFFIC_EDGES = Maximum.parse("1,000,000,000");
 

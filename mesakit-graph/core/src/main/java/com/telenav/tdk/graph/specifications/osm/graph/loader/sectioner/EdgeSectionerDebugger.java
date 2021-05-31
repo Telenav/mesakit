@@ -16,7 +16,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.osm.graph.loader.sectioner;
+package com.telenav.kivakit.graph.specifications.osm.graph.loader.sectioner;
 
 /**
  * @author jonathanl (shibo)

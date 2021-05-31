@@ -16,17 +16,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.roadsection.codings.tmc.converters;
+package com.telenav.kivakit.graph.traffic.roadsection.codings.tmc.converters;
 
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.logging.Logger;
-import com.telenav.tdk.core.kernel.logging.LoggerFactory;
-import com.telenav.tdk.graph.traffic.roadsection.codings.tmc.TmcCode;
-import com.telenav.tdk.map.geography.project.TdkMapGeographyUnitTest;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.tmc.TmcCode;
+import com.telenav.kivakit.map.geography.project.KivaKitMapGeographyUnitTest;
 import org.junit.Test;
 
 @SuppressWarnings("ConstantConditions")
-public class TmcConversionTest extends TdkMapGeographyUnitTest
+public class TmcConversionTest extends KivaKitMapGeographyUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

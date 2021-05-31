@@ -1,18 +1,18 @@
-package com.telenav.tdk.graph.query;
+package com.telenav.kivakit.graph.query;
 
-import com.telenav.tdk.core.application.TdkApplication;
-import com.telenav.tdk.core.filesystem.File;
-import com.telenav.tdk.core.kernel.interfaces.code.Callback;
-import com.telenav.tdk.core.kernel.language.collections.set.Sets;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.operation.progress.ProgressReporter;
-import com.telenav.tdk.core.kernel.operation.progress.reporters.Progress;
-import com.telenav.tdk.core.kernel.scalars.counts.Maximum;
-import com.telenav.tdk.graph.Route;
-import com.telenav.tdk.graph.collections.EdgeSequence;
-import com.telenav.tdk.graph.io.load.SmartGraphLoader;
-import com.telenav.tdk.graph.project.TdkGraphCore;
-import com.telenav.tdk.graph.query.compiler.*;
+import com.telenav.kivakit.application.KivaKitApplication;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.kernel.interfaces.code.Callback;
+import com.telenav.kivakit.kernel.language.collections.set.Sets;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.operation.progress.reporters.Progress;
+import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.graph.Route;
+import com.telenav.kivakit.graph.collections.EdgeSequence;
+import com.telenav.kivakit.graph.io.load.SmartGraphLoader;
+import com.telenav.kivakit.graph.project.KivaKitGraphCore;
+import com.telenav.kivakit.graph.query.compiler.*;
 import org.antlr.v4.runtime.*;
 
 import java.util.*;
@@ -22,7 +22,7 @@ import java.util.*;
  *
  * @author jonathanl (shibo)
  */
-public class GraphQuery extends TdkApplication
+public class GraphQuery extends KivaKitApplication
 {
     /**
      * Entrypoint for debugging and testing purposes only (see {@link #onRun()})
@@ -36,7 +36,7 @@ public class GraphQuery extends TdkApplication
 
     public GraphQuery()
     {
-        super(TdkGraphCore.get());
+        super(KivaKitGraphCore.get());
     }
 
     /**
@@ -48,17 +48,18 @@ public class GraphQuery extends TdkApplication
      * @param errorHandler Callback for receiving error messages
      * @return The set of candidate edges matching the query
      */
-    public Set<Route> execute(final ProgressReporter reporter, final EdgeSequence candidates, final String query, final Maximum maximumMatches, final Callback<String> errorHandler)
+    public Set<Route> execute(final ProgressReporter reporter, final EdgeSequence candidates, final String query,
+                              final Maximum maximumMatches, final Callback<String> errorHandler)
     {
         // Start the progress reporter,
         reporter.steps(candidates.count().asMaximum());
         reporter.start();
 
         // create a lexer for query,
-        final var lexer = new com.telenav.tdk.graph.query.GraphQueryLexer(CharStreams.fromString(query));
+        final var lexer = new com.telenav.kivakit.graph.query.GraphQueryLexer(CharStreams.fromString(query));
 
         // parse the lexer's token stream,
-        final var parser = new com.telenav.tdk.graph.query.GraphQueryParser(new CommonTokenStream(lexer));
+        final var parser = new com.telenav.kivakit.graph.query.GraphQueryParser(new CommonTokenStream(lexer));
         final var listener = new GraphQueryErrorListener(errorHandler);
         parser.addErrorListener(listener);
         final var queryParseTree = parser.select();

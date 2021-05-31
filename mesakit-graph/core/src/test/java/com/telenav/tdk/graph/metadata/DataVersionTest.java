@@ -16,16 +16,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.metadata;
+package com.telenav.kivakit.graph.metadata;
 
-import com.telenav.tdk.core.kernel.testing.TdkUnitTest;
-import com.telenav.tdk.core.kernel.time.LocalTime;
+import com.telenav.kivakit.kernel.testing.KivaKitUnitTest;
+import com.telenav.kivakit.kernel.time.LocalTime;
 import org.junit.Test;
 
 import java.util.stream.IntStream;
 
 @SuppressWarnings("ConstantConditions")
-public class DataVersionTest extends TdkUnitTest
+public class DataVersionTest extends KivaKitUnitTest
 {
     @Test
     public void testAdjustQuarterForDataVersion()

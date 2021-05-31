@@ -347,7 +347,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                 {
                     // and save the identities to it
                     final var session = serializationSession();
-                    session.open(RESOURCE, KivaKit.get().version(), out);
+                    session.open(RESOURCE, KivaKit.get().projectVersion(), out);
                     identityCache.save(session, MapRegionProject.get().borderDataVersion(), identities);
                 }
                 catch (final Exception e)
@@ -630,7 +630,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                 {
                     // Read the spatial index
                     final var session = serializationSession();
-                    session.open(RESOURCE, KivaKit.get().version(), in);
+                    session.open(RESOURCE, KivaKit.get().projectVersion(), in);
                     final var loaded = session.read();
                     final var cachedIndex = (BorderSpatialIndex<T>) loaded.get();
                     final var version = loaded.version();
@@ -927,7 +927,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
         try (final var output = borderCacheFile().openForWriting())
         {
             final var session = serializationSession();
-            session.open(RESOURCE, KivaKit.get().version(), output);
+            session.open(RESOURCE, KivaKit.get().projectVersion(), output);
             session.write(new VersionedObject<>(MapRegionProject.get().borderDataVersion(), index()));
             session.close();
         }
@@ -949,7 +949,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
         try (final var in = borderCacheFile().openForReading())
         {
             final var serialization = serializationSession();
-            serialization.open(RESOURCE, KivaKit.get().version(), in);
+            serialization.open(RESOURCE, KivaKit.get().projectVersion(), in);
             final var index = serialization.read();
             ensureEqual(index.version(), MapRegionProject.get().borderDataVersion());
             ensureEqual(index.get(), index());

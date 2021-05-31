@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.metadata;
+package com.telenav.kivakit.graph.metadata;
 
-import com.telenav.tdk.core.kernel.testing.TdkUnitTest;
-import com.telenav.tdk.map.geography.Precision;
+import com.telenav.kivakit.kernel.testing.KivaKitUnitTest;
+import com.telenav.kivakit.map.geography.Precision;
 import org.junit.Test;
 
-public class DataSupplierTest extends TdkUnitTest
+public class DataSupplierTest extends KivaKitUnitTest
 {
     @Test
     public void testConstructDataSupplierMatchesAll()

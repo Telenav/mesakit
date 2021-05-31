@@ -16,7 +16,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.library.attributes;
+package com.telenav.kivakit.graph.specifications.library.attributes;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.shapepoint;
+package com.telenav.kivakit.graph.specifications.common.shapepoint;
 
-import com.telenav.tdk.core.kernel.language.reflection.property.filters.TdkExcludeProperty;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfTagList;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.map.geography.Location;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.map.geography.Location;
 
 public class HeavyWeightShapePoint extends ShapePoint
 {
@@ -37,7 +37,7 @@ public class HeavyWeightShapePoint extends ShapePoint
     }
 
     @Override
-    @TdkExcludeProperty
+    @KivaKitExcludeProperty
     public int index()
     {
         return index;

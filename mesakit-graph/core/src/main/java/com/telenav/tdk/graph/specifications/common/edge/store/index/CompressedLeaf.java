@@ -16,18 +16,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.common.edge.store.index;
 
-package com.telenav.tdk.graph.specifications.common.edge.store.index;
-
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.map.geography.indexing.rtree.InteriorNode;
-import com.telenav.tdk.map.geography.indexing.rtree.Leaf;
-import com.telenav.tdk.map.geography.indexing.rtree.RTreeSpatialIndex;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.map.geography.indexing.rtree.InteriorNode;
+import com.telenav.kivakit.map.geography.indexing.rtree.Leaf;
+import com.telenav.kivakit.map.geography.indexing.rtree.RTreeSpatialIndex;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
 
 import java.util.List;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.unsupported;
+import static com.telenav.kivakit.kernel.validation.Validate.unsupported;
 
 /**
  * Leaf of a compressed edge spatial index

@@ -16,14 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.library.osm.change;
 
-package com.telenav.tdk.graph.specifications.library.osm.change;
-
-import com.telenav.tdk.core.kernel.testing.TdkUnitTest;
-import com.telenav.tdk.graph.library.osm.change.Timestamp;
+import com.telenav.kivakit.kernel.testing.KivaKitUnitTest;
+import com.telenav.kivakit.graph.library.osm.change.Timestamp;
 import org.junit.Test;
 
-public class TimestampTest extends TdkUnitTest
+public class TimestampTest extends KivaKitUnitTest
 {
     @Test
     public void test()

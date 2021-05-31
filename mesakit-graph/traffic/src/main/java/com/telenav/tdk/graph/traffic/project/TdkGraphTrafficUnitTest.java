@@ -16,19 +16,19 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.project;
+package com.telenav.kivakit.graph.traffic.project;
 
-import com.telenav.tdk.core.kernel.operation.progress.ProgressReporter;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionDatabase;
-import com.telenav.tdk.map.geography.project.TdkMapGeographyUnitTest;
+import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionDatabase;
+import com.telenav.kivakit.map.geography.project.KivaKitMapGeographyUnitTest;
 import org.junit.BeforeClass;
 
-public class TdkGraphTrafficUnitTest extends TdkMapGeographyUnitTest
+public class KivaKitGraphTrafficUnitTest extends KivaKitMapGeographyUnitTest
 {
     @BeforeClass
     public static void testSetup()
     {
-        TdkGraphTraffic.get().install();
+        KivaKitGraphTraffic.get().install();
     }
 
     protected void loadBayAreaRoadSectionDatabase()
@@ -57,8 +57,8 @@ public class TdkGraphTrafficUnitTest extends TdkMapGeographyUnitTest
     }
 
     @Override
-    protected TdkGraphTrafficRandomValueFactory randomValueFactory()
+    protected KivaKitGraphTrafficRandomValueFactory randomValueFactory()
     {
-        return newRandomValueFactory(TdkGraphTrafficRandomValueFactory::new);
+        return newRandomValueFactory(KivaKitGraphTrafficRandomValueFactory::new);
     }
 }

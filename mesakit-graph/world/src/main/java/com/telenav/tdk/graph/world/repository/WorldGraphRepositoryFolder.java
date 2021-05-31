@@ -16,18 +16,18 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world.repository;
+package com.telenav.kivakit.graph.world.repository;
 
-import com.telenav.tdk.core.filesystem.*;
-import com.telenav.tdk.core.kernel.commandline.SwitchParser;
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.core.kernel.messaging.messages.status.*;
-import com.telenav.tdk.core.kernel.validation.Validate;
-import com.telenav.tdk.core.resource.path.*;
-import com.telenav.tdk.graph.Metadata;
-import com.telenav.tdk.graph.world.WorldGraphIndex;
+import com.telenav.kivakit.filesystem.*;
+import com.telenav.kivakit.kernel.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.kernel.messaging.messages.status.*;
+import com.telenav.kivakit.kernel.validation.Validate;
+import com.telenav.kivakit.resource.path.*;
+import com.telenav.kivakit.graph.Metadata;
+import com.telenav.kivakit.graph.world.WorldGraphIndex;
 
 import java.io.Serializable;
 

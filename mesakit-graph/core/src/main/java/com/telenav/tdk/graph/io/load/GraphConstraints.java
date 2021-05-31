@@ -16,21 +16,20 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.io.load;
 
-package com.telenav.tdk.graph.io.load;
-
-import com.telenav.tdk.core.collections.iteration.iterables.FilteredIterable;
-import com.telenav.tdk.core.kernel.interfaces.object.Matcher;
-import com.telenav.tdk.core.kernel.language.matching.All;
-import com.telenav.tdk.core.kernel.language.reflection.property.filters.TdkIncludeProperty;
-import com.telenav.tdk.core.kernel.language.string.formatting.ObjectFormatter;
-import com.telenav.tdk.core.kernel.messaging.messages.MessageList;
-import com.telenav.tdk.core.kernel.messaging.messages.status.Problem;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.collections.EdgeSequence;
-import com.telenav.tdk.graph.collections.RelationSequence;
-import com.telenav.tdk.graph.collections.VertexSequence;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.collections.iteration.iterables.FilteredIterable;
+import com.telenav.kivakit.kernel.interfaces.object.Matcher;
+import com.telenav.kivakit.kernel.language.matching.All;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.string.formatting.ObjectFormatter;
+import com.telenav.kivakit.kernel.messaging.messages.MessageList;
+import com.telenav.kivakit.kernel.messaging.messages.status.Problem;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.collections.EdgeSequence;
+import com.telenav.kivakit.graph.collections.RelationSequence;
+import com.telenav.kivakit.graph.collections.VertexSequence;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
 
 /**
  * A set of constraints for matching edges, vertexes and attributes in a graph. Can be used to limit what part of a
@@ -85,7 +84,7 @@ public class GraphConstraints
     /**
      * @return The constraint bounds
      */
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     public Rectangle bounds()
     {
         return bounds;

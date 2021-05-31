@@ -16,15 +16,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.library.attributes;
+package com.telenav.kivakit.graph.specifications.library.attributes;
 
-import com.telenav.tdk.core.kernel.interfaces.naming.NamedObject;
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.specifications.common.edge.store.EdgeStore;
-import com.telenav.tdk.graph.specifications.common.element.GraphElementStore;
-import com.telenav.tdk.graph.specifications.common.vertex.store.VertexStore;
+import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.specifications.common.edge.store.EdgeStore;
+import com.telenav.kivakit.graph.specifications.common.element.GraphElementStore;
+import com.telenav.kivakit.graph.specifications.common.vertex.store.VertexStore;
 
 /**
  * A store of attributes which is loaded with an {@link AttributeLoader}. Examples of attribute stores are all of the

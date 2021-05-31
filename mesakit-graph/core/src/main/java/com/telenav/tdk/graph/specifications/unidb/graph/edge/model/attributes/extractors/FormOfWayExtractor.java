@@ -16,13 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.attributes.extractors;
 
-package com.telenav.tdk.graph.specifications.unidb.graph.edge.model.attributes.extractors;
-
-import com.telenav.tdk.core.data.extraction.BaseExtractor;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfWay;
-import com.telenav.tdk.graph.specifications.unidb.graph.edge.model.attributes.FormOfWay;
+import com.telenav.kivakit.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
+import com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.attributes.FormOfWay;
 
 public class FormOfWayExtractor extends BaseExtractor<FormOfWay, PbfWay>
 {

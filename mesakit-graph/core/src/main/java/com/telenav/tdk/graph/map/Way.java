@@ -16,25 +16,25 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.map;
+package com.telenav.kivakit.graph.map;
 
-import com.telenav.tdk.core.kernel.language.iteration.Streams;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.data.formats.library.map.identifiers.*;
-import com.telenav.tdk.data.formats.pbf.model.identifiers.PbfWayIdentifier;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfTagList;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.navigation.Navigator;
-import com.telenav.tdk.map.geography.polyline.Polyline;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.measurements.Distance;
-import com.telenav.tdk.map.road.model.*;
-import com.telenav.tdk.map.road.model.RoadName.Type;
+import com.telenav.kivakit.kernel.language.iteration.Streams;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.data.formats.library.map.identifiers.*;
+import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfWayIdentifier;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.navigation.Navigator;
+import com.telenav.kivakit.map.geography.polyline.Polyline;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.measurements.Distance;
+import com.telenav.kivakit.map.road.model.*;
+import com.telenav.kivakit.map.road.model.RoadName.Type;
 
 import java.util.*;
 import java.util.stream.Stream;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.*;
+import static com.telenav.kivakit.kernel.validation.Validate.*;
 
 /**
  * This class represents a way, but not necessarily a {@link MapWay}. It might be a shorter or longer stretch of a road

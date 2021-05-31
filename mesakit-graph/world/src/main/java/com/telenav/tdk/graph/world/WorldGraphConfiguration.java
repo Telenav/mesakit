@@ -16,18 +16,18 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world;
+package com.telenav.kivakit.graph.world;
 
-import com.telenav.tdk.core.filesystem.Folder;
-import com.telenav.tdk.core.kernel.language.reflection.populator.TdkPropertyConverter;
-import com.telenav.tdk.core.kernel.language.reflection.property.filters.TdkIncludeProperty;
-import com.telenav.tdk.core.kernel.language.string.formatting.ObjectFormatter;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.operation.progress.reporters.Progress;
-import com.telenav.tdk.core.resource.path.FilePath;
-import com.telenav.tdk.graph.Metadata;
-import com.telenav.tdk.graph.world.repository.*;
-import com.telenav.tdk.map.measurements.Angle;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.kernel.language.reflection.populator.KivaKitPropertyConverter;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.string.formatting.ObjectFormatter;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.operation.progress.reporters.Progress;
+import com.telenav.kivakit.resource.path.FilePath;
+import com.telenav.kivakit.graph.Metadata;
+import com.telenav.kivakit.graph.world.repository.*;
+import com.telenav.kivakit.map.measurements.Angle;
 
 /**
  * The world graph configuration (loaded from the deployment configuration), specifying the cell size and local
@@ -40,13 +40,13 @@ public final class WorldGraphConfiguration
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     private Angle cellSize;
 
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     private WorldGraphRepository localRepository;
 
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     private WorldGraphRepository remoteRepository;
 
     public Angle cellSize()
@@ -54,7 +54,7 @@ public final class WorldGraphConfiguration
         return cellSize;
     }
 
-    @TdkPropertyConverter(Angle.Converter.class)
+    @KivaKitPropertyConverter(Angle.Converter.class)
     public void cellSize(final Angle size)
     {
         cellSize = size;
@@ -65,7 +65,7 @@ public final class WorldGraphConfiguration
         return localRepository;
     }
 
-    @TdkPropertyConverter(Folder.Converter.class)
+    @KivaKitPropertyConverter(Folder.Converter.class)
     public void localRepository(final Folder local)
     {
         localRepository = new WorldGraphRepository(local);
@@ -107,7 +107,7 @@ public final class WorldGraphConfiguration
         return local;
     }
 
-    @TdkPropertyConverter(Folder.Converter.class)
+    @KivaKitPropertyConverter(Folder.Converter.class)
     public void remoteRepository(final Folder remote)
     {
         remoteRepository = new WorldGraphRepository(remote);

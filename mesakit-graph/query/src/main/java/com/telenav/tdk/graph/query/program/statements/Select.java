@@ -1,6 +1,6 @@
-package com.telenav.tdk.graph.query.program.statements;
+package com.telenav.kivakit.graph.query.program.statements;
 
-import com.telenav.tdk.graph.query.program.*;
+import com.telenav.kivakit.graph.query.program.*;
 
 /**
  * A select statement evaluating to a boolean value

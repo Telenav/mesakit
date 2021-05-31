@@ -16,33 +16,33 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph;
+package com.telenav.kivakit.graph;
 
-import com.telenav.tdk.core.kernel.comparison.Differences;
-import com.telenav.tdk.core.kernel.interfaces.naming.Named;
-import com.telenav.tdk.core.kernel.interfaces.numeric.Quantizable;
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
-import com.telenav.tdk.core.kernel.language.string.conversion.AsIndentedString;
-import com.telenav.tdk.core.kernel.language.string.conversion.AsString;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.core.kernel.validation.Validatable;
-import com.telenav.tdk.core.kernel.validation.Validation;
-import com.telenav.tdk.core.kernel.validation.Validator;
-import com.telenav.tdk.data.formats.library.map.identifiers.MapIdentifier;
-import com.telenav.tdk.graph.identifiers.PlaceIdentifier;
-import com.telenav.tdk.graph.metadata.DataSpecification;
-import com.telenav.tdk.graph.specifications.common.element.GraphElementAttributes;
-import com.telenav.tdk.graph.specifications.common.place.HeavyWeightPlace;
-import com.telenav.tdk.graph.specifications.common.place.PlaceAttributes;
-import com.telenav.tdk.graph.specifications.common.place.store.PlaceStore;
-import com.telenav.tdk.graph.specifications.library.properties.GraphElementPropertySet;
-import com.telenav.tdk.map.geography.Located;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.rectangle.Bounded;
-import com.telenav.tdk.map.geography.rectangle.Intersectable;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.measurements.Distance;
-import com.telenav.tdk.map.region.*;
+import com.telenav.kivakit.kernel.comparison.Differences;
+import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.string.conversion.AsIndentedString;
+import com.telenav.kivakit.kernel.language.string.conversion.AsString;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.kernel.validation.Validatable;
+import com.telenav.kivakit.kernel.validation.Validation;
+import com.telenav.kivakit.kernel.validation.Validator;
+import com.telenav.kivakit.data.formats.library.map.identifiers.MapIdentifier;
+import com.telenav.kivakit.graph.identifiers.PlaceIdentifier;
+import com.telenav.kivakit.graph.metadata.DataSpecification;
+import com.telenav.kivakit.graph.specifications.common.element.GraphElementAttributes;
+import com.telenav.kivakit.graph.specifications.common.place.HeavyWeightPlace;
+import com.telenav.kivakit.graph.specifications.common.place.PlaceAttributes;
+import com.telenav.kivakit.graph.specifications.common.place.store.PlaceStore;
+import com.telenav.kivakit.graph.specifications.library.properties.GraphElementPropertySet;
+import com.telenav.kivakit.map.geography.Located;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.rectangle.Bounded;
+import com.telenav.kivakit.map.geography.rectangle.Intersectable;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.measurements.Distance;
+import com.telenav.kivakit.map.region.*;
 
 import java.io.Serializable;
 import java.util.List;

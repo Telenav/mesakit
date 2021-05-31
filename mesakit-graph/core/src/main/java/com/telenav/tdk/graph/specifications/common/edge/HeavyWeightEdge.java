@@ -16,37 +16,36 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.common.edge;
 
-package com.telenav.tdk.graph.specifications.common.edge;
-
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
-import com.telenav.tdk.core.kernel.language.object.Maybe;
-import com.telenav.tdk.core.kernel.language.reflection.property.filters.TdkExcludeProperty;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.core.kernel.time.*;
-import com.telenav.tdk.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.tdk.data.formats.pbf.model.change.*;
-import com.telenav.tdk.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfTagList;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.identifiers.*;
-import com.telenav.tdk.graph.metadata.DataSpecification;
-import com.telenav.tdk.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
-import com.telenav.tdk.graph.traffic.historical.SpeedPatternIdentifier;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionIdentifier;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.polyline.Polyline;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.measurements.*;
-import com.telenav.tdk.map.region.*;
-import com.telenav.tdk.map.road.model.*;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.object.Maybe;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.time.*;
+import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
+import com.telenav.kivakit.data.formats.pbf.model.change.*;
+import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.identifiers.*;
+import com.telenav.kivakit.graph.metadata.DataSpecification;
+import com.telenav.kivakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
+import com.telenav.kivakit.graph.traffic.historical.SpeedPatternIdentifier;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.polyline.Polyline;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.measurements.*;
+import com.telenav.kivakit.map.region.*;
+import com.telenav.kivakit.map.road.model.*;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.*;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
-import static com.telenav.tdk.map.road.model.RoadState.*;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.map.road.model.RoadState.*;
 
 public class HeavyWeightEdge extends Edge
 {
@@ -388,7 +387,7 @@ public class HeavyWeightEdge extends Edge
     }
 
     @Override
-    @TdkExcludeProperty
+    @KivaKitExcludeProperty
     public VertexIdentifier fromVertexIdentifier()
     {
         return from != null ? from.identifier() : null;
@@ -728,7 +727,7 @@ public class HeavyWeightEdge extends Edge
     }
 
     @Override
-    @TdkExcludeProperty
+    @KivaKitExcludeProperty
     public Polyline roadShape()
     {
         if (roadShape == null)
@@ -931,7 +930,7 @@ public class HeavyWeightEdge extends Edge
     }
 
     @Override
-    @TdkExcludeProperty
+    @KivaKitExcludeProperty
     public VertexIdentifier toVertexIdentifier()
     {
         return to != null ? to.identifier() : null;

@@ -16,12 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.library.osm.change;
 
-package com.telenav.tdk.graph.library.osm.change;
+import com.telenav.kivakit.data.formats.library.map.identifiers.WayIdentifier;
 
-import com.telenav.tdk.data.formats.library.map.identifiers.WayIdentifier;
-
-import static com.telenav.tdk.core.kernel.validation.Validate.ensureNotNull;
+import static com.telenav.kivakit.kernel.validation.Validate.ensureNotNull;
 
 /**
  * Represents a way to remove

@@ -16,22 +16,21 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.metadata;
 
-package com.telenav.tdk.graph.metadata;
-
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.language.object.Hash;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.core.kernel.time.*;
-import com.telenav.tdk.core.kernel.time.conversion.converters.LocalDateTimeConverter;
-import com.telenav.tdk.core.resource.path.FileName;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.language.object.Hash;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.kernel.time.*;
+import com.telenav.kivakit.kernel.time.conversion.converters.LocalDateTimeConverter;
+import com.telenav.kivakit.resource.path.FileName;
 
 import java.time.ZoneId;
 import java.time.format.TextStyle;
 import java.util.Locale;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
 
 /**
  * A {@link DataBuild} is of the form: [year.month.day_hour.minute.meridiem_zone], for example "2015.09.23_4.01PM_PST"

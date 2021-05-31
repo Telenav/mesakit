@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.element;
+package com.telenav.kivakit.graph.specifications.common.element;
 
-import com.telenav.tdk.core.kernel.language.object.Lazy;
-import com.telenav.tdk.graph.GraphElement;
-import com.telenav.tdk.graph.specifications.library.attributes.Attribute;
-import com.telenav.tdk.graph.specifications.library.properties.GraphElementPropertySet;
-import com.telenav.tdk.graph.specifications.unidb.UniDbDataSpecification;
+import com.telenav.kivakit.kernel.language.object.Lazy;
+import com.telenav.kivakit.graph.GraphElement;
+import com.telenav.kivakit.graph.specifications.library.attributes.Attribute;
+import com.telenav.kivakit.graph.specifications.library.properties.GraphElementPropertySet;
+import com.telenav.kivakit.graph.specifications.unidb.UniDbDataSpecification;
 
 @SuppressWarnings("rawtypes")
 public class GraphElementProperties<T extends GraphElement> extends GraphElementPropertySet<T>
@@ -34,7 +34,7 @@ public class GraphElementProperties<T extends GraphElement> extends GraphElement
         return singleton.get();
     }
 
-    public abstract class GraphElementProperty extends com.telenav.tdk.graph.specifications.library.properties.GraphElementProperty<T>
+    public abstract class GraphElementProperty extends com.telenav.kivakit.graph.specifications.library.properties.GraphElementProperty<T>
     {
         protected GraphElementProperty(final String name, final Attribute<?> attribute)
         {

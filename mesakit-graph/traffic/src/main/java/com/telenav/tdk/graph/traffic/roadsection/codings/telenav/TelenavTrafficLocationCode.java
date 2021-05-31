@@ -16,25 +16,25 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.roadsection.codings.telenav;
+package com.telenav.kivakit.graph.traffic.roadsection.codings.telenav;
 
-import com.telenav.tdk.core.kernel.conversion.collection.BaseListConverter;
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.language.collections.map.BoundedConcurrentMap;
-import com.telenav.tdk.core.kernel.language.primitive.Longs;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.graph.traffic.project.TdkGraphTrafficLimits;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionCode;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionCodingSystem;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionIdentifier;
+import com.telenav.kivakit.kernel.conversion.collection.BaseListConverter;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.language.collections.map.BoundedConcurrentMap;
+import com.telenav.kivakit.kernel.language.primitive.Longs;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.graph.traffic.project.KivaKitGraphTrafficLimits;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionCode;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionCodingSystem;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
 
 public class TelenavTrafficLocationCode extends RoadSectionCode
 {
     private static final BoundedConcurrentMap<String, TelenavTrafficLocationCode> codes = new BoundedConcurrentMap<>(
-            TdkGraphTrafficLimits.MAXIMUM_TTL_CODES)
+            KivaKitGraphTrafficLimits.MAXIMUM_TTL_CODES)
     {
         @Override
         protected TelenavTrafficLocationCode onInitialize(final String code)

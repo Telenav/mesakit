@@ -16,23 +16,23 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world.repository;
+package com.telenav.kivakit.graph.world.repository;
 
-import com.telenav.tdk.core.filesystem.Folder;
-import com.telenav.tdk.core.filesystem.spi.FileSystemService;
-import com.telenav.tdk.core.kernel.commandline.SwitchParser;
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.logging.Logger;
-import com.telenav.tdk.core.kernel.logging.LoggerFactory;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.resource.path.FileName;
-import com.telenav.tdk.core.resource.path.FilePath;
-import com.telenav.tdk.graph.Metadata;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.filesystem.spi.FileSystemService;
+import com.telenav.kivakit.kernel.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.resource.path.FileName;
+import com.telenav.kivakit.resource.path.FilePath;
+import com.telenav.kivakit.graph.Metadata;
 
 import java.io.Serializable;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.unsupported;
+import static com.telenav.kivakit.kernel.validation.Validate.unsupported;
 
 /**
  * A {@link Folder} on some {@link FileSystemService} containing {@link WorldGraphRepositoryFolder}s. Since the {@link

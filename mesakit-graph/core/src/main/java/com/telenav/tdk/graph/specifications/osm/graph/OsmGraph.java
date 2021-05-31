@@ -16,25 +16,24 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.osm.graph;
 
-package com.telenav.tdk.graph.specifications.osm.graph;
-
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.operation.progress.reporters.Progress;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.core.resource.Resource;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.analytics.junction.*;
-import com.telenav.tdk.graph.analytics.ramp.RampFinder;
-import com.telenav.tdk.graph.collections.EdgeSet;
-import com.telenav.tdk.graph.identifiers.EdgeIdentifier;
-import com.telenav.tdk.graph.specifications.common.CommonGraph;
-import com.telenav.tdk.graph.specifications.common.edge.EdgeAttributes;
-import com.telenav.tdk.graph.specifications.osm.graph.edge.model.OsmEdge;
-import com.telenav.tdk.graph.specifications.osm.graph.edge.store.OsmEdgeStore;
-import com.telenav.tdk.map.measurements.Angle;
-import com.telenav.tdk.map.road.model.RoadSubType;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.operation.progress.reporters.Progress;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.analytics.junction.*;
+import com.telenav.kivakit.graph.analytics.ramp.RampFinder;
+import com.telenav.kivakit.graph.collections.EdgeSet;
+import com.telenav.kivakit.graph.identifiers.EdgeIdentifier;
+import com.telenav.kivakit.graph.specifications.common.CommonGraph;
+import com.telenav.kivakit.graph.specifications.common.edge.EdgeAttributes;
+import com.telenav.kivakit.graph.specifications.osm.graph.edge.model.OsmEdge;
+import com.telenav.kivakit.graph.specifications.osm.graph.edge.store.OsmEdgeStore;
+import com.telenav.kivakit.map.measurements.Angle;
+import com.telenav.kivakit.map.road.model.RoadSubType;
 
 public final class OsmGraph extends CommonGraph
 {

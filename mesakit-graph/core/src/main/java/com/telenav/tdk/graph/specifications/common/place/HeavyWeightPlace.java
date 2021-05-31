@@ -16,16 +16,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.place;
+package com.telenav.kivakit.graph.specifications.common.place;
 
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.data.formats.pbf.model.change.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfTagList;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.identifiers.PlaceIdentifier;
-import com.telenav.tdk.graph.metadata.DataSpecification;
-import com.telenav.tdk.map.geography.Location;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.data.formats.pbf.model.change.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.identifiers.PlaceIdentifier;
+import com.telenav.kivakit.graph.metadata.DataSpecification;
+import com.telenav.kivakit.map.geography.Location;
 
 public class HeavyWeightPlace extends Place
 {

@@ -16,9 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.historical;
+package com.telenav.kivakit.graph.traffic.historical;
 
-import com.telenav.tdk.core.kernel.scalars.identifiers.IntegerIdentifier;
+import com.telenav.kivakit.kernel.scalars.identifiers.IntegerIdentifier;
 
 public class SpeedPatternIdentifier extends IntegerIdentifier
 {

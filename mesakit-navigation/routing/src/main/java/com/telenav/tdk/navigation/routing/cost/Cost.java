@@ -16,10 +16,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.navigation.routing.cost;
+package com.telenav.kivakit.navigation.routing.cost;
 
-import com.telenav.tdk.core.kernel.language.primitive.Doubles;
-import com.telenav.tdk.core.kernel.scalars.levels.Weight;
+import com.telenav.kivakit.kernel.language.primitive.Doubles;
+import com.telenav.kivakit.kernel.scalars.levels.Weight;
 
 /**
  * The cost of an edge or route

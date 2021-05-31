@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.navigation.routing;
+package com.telenav.kivakit.navigation.routing;
 
-import com.telenav.tdk.core.kernel.time.Duration;
-import com.telenav.tdk.graph.Route;
-import com.telenav.tdk.navigation.routing.bidijkstra.BiDijkstraRouter;
-import com.telenav.tdk.navigation.routing.dijkstra.DijkstraRouter;
+import com.telenav.kivakit.kernel.time.Duration;
+import com.telenav.kivakit.graph.Route;
+import com.telenav.kivakit.navigation.routing.bidijkstra.BiDijkstraRouter;
+import com.telenav.kivakit.navigation.routing.dijkstra.DijkstraRouter;
 
 /**
  * OperationLifecycleMessage of a routing engine's run.

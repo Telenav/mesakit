@@ -16,36 +16,36 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.io.archive;
+package com.telenav.kivakit.graph.io.archive;
 
 import com.esotericsoftware.kryo.Kryo;
-import com.telenav.tdk.core.filesystem.*;
-import com.telenav.tdk.core.kernel.commandline.*;
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.interfaces.naming.Named;
-import com.telenav.tdk.core.kernel.language.io.serialization.TdkSerializer;
-import com.telenav.tdk.core.kernel.language.primitive.Doubles;
-import com.telenav.tdk.core.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.core.kernel.operation.progress.ProgressReporter;
-import com.telenav.tdk.core.kernel.scalars.bytes.Bytes;
-import com.telenav.tdk.core.kernel.scalars.versioning.*;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.core.kernel.validation.Validation;
-import com.telenav.tdk.core.resource.Resource;
-import com.telenav.tdk.core.resource.compression.archive.*;
-import com.telenav.tdk.core.resource.path.*;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.collections.GraphList;
-import com.telenav.tdk.graph.io.load.SmartGraphLoader;
-import com.telenav.tdk.graph.metadata.DataSupplier;
-import com.telenav.tdk.graph.specifications.library.store.GraphStore;
+import com.telenav.kivakit.filesystem.*;
+import com.telenav.kivakit.kernel.commandline.*;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.kernel.language.io.serialization.KivaKitSerializer;
+import com.telenav.kivakit.kernel.language.primitive.Doubles;
+import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.scalars.bytes.Bytes;
+import com.telenav.kivakit.kernel.scalars.versioning.*;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.kernel.validation.Validation;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.resource.compression.archive.*;
+import com.telenav.kivakit.resource.path.*;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.collections.GraphList;
+import com.telenav.kivakit.graph.io.load.SmartGraphLoader;
+import com.telenav.kivakit.graph.metadata.DataSupplier;
+import com.telenav.kivakit.graph.specifications.library.store.GraphStore;
 
 import java.util.zip.ZipFile;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.*;
+import static com.telenav.kivakit.kernel.validation.Validate.*;
 
 /**
  * A graph archive is a {@link ZipArchive} which is based on the support in java.util for {@link ZipFile}s. When a
@@ -210,7 +210,7 @@ public class GraphArchive extends FieldArchive implements Named
 
     public Metadata metadata()
     {
-        final VersionedObject<Metadata> metadata = zip().load(TdkSerializer.threadSerializer(LOGGER), "metadata");
+        final VersionedObject<Metadata> metadata = zip().load(KivaKitSerializer.threadSerializer(LOGGER), "metadata");
         return metadata == null ? null : metadata.get();
     }
 
@@ -236,7 +236,7 @@ public class GraphArchive extends FieldArchive implements Named
     public void saveMetadata(final Metadata metadata)
     {
         metadata.assertValid(Validation.VALIDATE_ALL);
-        zip().save(TdkSerializer.threadSerializer(LOGGER), "metadata", new VersionedObject<>(VERSION, metadata));
+        zip().save(KivaKitSerializer.threadSerializer(LOGGER), "metadata", new VersionedObject<>(VERSION, metadata));
     }
 
     @Override

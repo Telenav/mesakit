@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.navigation.routing.cost.operators;
+package com.telenav.kivakit.navigation.routing.cost.operators;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.navigation.routing.cost.Cost;
-import com.telenav.tdk.navigation.routing.cost.CostFunction;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.navigation.routing.cost.Cost;
+import com.telenav.kivakit.navigation.routing.cost.CostFunction;
 
 /**
  * Adds two cost functions together

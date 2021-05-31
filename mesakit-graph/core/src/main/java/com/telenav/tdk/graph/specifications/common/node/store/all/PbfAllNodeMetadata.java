@@ -16,47 +16,47 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.node.store.all;
+package com.telenav.kivakit.graph.specifications.common.node.store.all;
 
-import com.telenav.tdk.core.collections.primitive.array.scalars.*;
-import com.telenav.tdk.core.collections.primitive.list.store.PackedStringStore;
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.core.resource.compression.archive.TdkArchivedField;
-import com.telenav.tdk.data.formats.pbf.model.change.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfTagList;
-import com.telenav.tdk.data.formats.pbf.model.tags.compression.PbfTagCodec;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.specifications.common.element.GraphElementAttributes;
-import com.telenav.tdk.graph.specifications.common.element.store.TagStore;
-import com.telenav.tdk.graph.specifications.library.attributes.*;
+import com.telenav.kivakit.collections.primitive.array.scalars.*;
+import com.telenav.kivakit.collections.primitive.list.store.PackedStringStore;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.data.formats.pbf.model.change.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.kivakit.data.formats.pbf.model.tags.compression.PbfTagCodec;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.specifications.common.element.GraphElementAttributes;
+import com.telenav.kivakit.graph.specifications.common.element.store.TagStore;
+import com.telenav.kivakit.graph.specifications.library.attributes.*;
 
-import static com.telenav.tdk.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 
 @SuppressWarnings("unused")
 public class PbfAllNodeMetadata implements AttributeStore
 {
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitLongArray changeSetIdentifier;
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitLongArray lastModified;
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitCharArray revisionNumber;
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private TagStore tags;
 
     private final AttributeReference<PackedStringStore> USER_NAME =
             new AttributeReference<>(this, GraphElementAttributes.get().PBF_USER_NAME, "userName",
                     () -> new PackedStringStore("userName"));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private PackedStringStore userName;
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitIntArray userIdentifier;
 
     /** Attribute loader for this store */

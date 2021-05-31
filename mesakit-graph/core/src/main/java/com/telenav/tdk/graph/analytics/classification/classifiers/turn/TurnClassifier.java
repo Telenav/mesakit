@@ -16,9 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.analytics.classification.classifiers.turn;
+package com.telenav.kivakit.graph.analytics.classification.classifiers.turn;
 
-import com.telenav.tdk.graph.Route;
+import com.telenav.kivakit.graph.Route;
 
 /**
  * Classifies a complex route into a turn type

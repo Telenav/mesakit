@@ -1,9 +1,9 @@
-package com.telenav.tdk.graph.query.program.expressions.relational;
+package com.telenav.kivakit.graph.query.program.expressions.relational;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.query.program.*;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.query.program.*;
 
-import static com.telenav.tdk.graph.query.program.EdgeStack.Result.PUSHED;
+import static com.telenav.kivakit.graph.query.program.EdgeStack.Result.PUSHED;
 
 /**
  * Evaluates [query] <b>THEN</b> [query] against the edge on top of the stack. The expression is true if the left side

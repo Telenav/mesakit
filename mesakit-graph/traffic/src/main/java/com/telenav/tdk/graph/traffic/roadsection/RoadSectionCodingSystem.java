@@ -16,17 +16,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.traffic.roadsection;
 
-package com.telenav.tdk.graph.traffic.roadsection;
+import com.telenav.kivakit.kernel.conversion.string.StringConverter;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.telenav.TelenavTrafficLocationCode;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.tmc.TmcCode;
 
-import com.telenav.tdk.core.kernel.conversion.string.StringConverter;
-import com.telenav.tdk.core.kernel.logging.Logger;
-import com.telenav.tdk.core.kernel.logging.LoggerFactory;
-import com.telenav.tdk.graph.traffic.roadsection.codings.telenav.TelenavTrafficLocationCode;
-import com.telenav.tdk.graph.traffic.roadsection.codings.tmc.TmcCode;
-
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
-import static com.telenav.tdk.core.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.validation.Validate.fail;
 
 public enum RoadSectionCodingSystem
 {

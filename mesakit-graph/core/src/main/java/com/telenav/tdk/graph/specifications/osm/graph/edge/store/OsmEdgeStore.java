@@ -16,27 +16,26 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.osm.graph.edge.store;
 
-package com.telenav.tdk.graph.specifications.osm.graph.edge.store;
+import com.telenav.kivakit.collections.primitive.array.packed.SplitPackedArray;
+import com.telenav.kivakit.collections.primitive.array.scalars.*;
+import com.telenav.kivakit.collections.primitive.map.scalars.LongToLongMap;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.identifiers.EdgeIdentifier;
+import com.telenav.kivakit.graph.specifications.common.edge.EdgeAttributes;
+import com.telenav.kivakit.graph.specifications.common.edge.store.EdgeStore;
+import com.telenav.kivakit.graph.specifications.common.element.ArchivedGraphElementStore;
+import com.telenav.kivakit.graph.specifications.library.attributes.AttributeReference;
+import com.telenav.kivakit.graph.specifications.osm.OsmDataSpecification;
+import com.telenav.kivakit.graph.specifications.osm.graph.OsmGraph;
+import com.telenav.kivakit.graph.specifications.osm.graph.edge.model.OsmHeavyWeightEdge;
+import com.telenav.kivakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
+import com.telenav.kivakit.graph.traffic.roadsection.*;
 
-import com.telenav.tdk.core.collections.primitive.array.packed.SplitPackedArray;
-import com.telenav.tdk.core.collections.primitive.array.scalars.*;
-import com.telenav.tdk.core.collections.primitive.map.scalars.LongToLongMap;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.core.resource.compression.archive.TdkArchivedField;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.identifiers.EdgeIdentifier;
-import com.telenav.tdk.graph.specifications.common.edge.EdgeAttributes;
-import com.telenav.tdk.graph.specifications.common.edge.store.EdgeStore;
-import com.telenav.tdk.graph.specifications.common.element.ArchivedGraphElementStore;
-import com.telenav.tdk.graph.specifications.library.attributes.AttributeReference;
-import com.telenav.tdk.graph.specifications.osm.OsmDataSpecification;
-import com.telenav.tdk.graph.specifications.osm.graph.OsmGraph;
-import com.telenav.tdk.graph.specifications.osm.graph.edge.model.OsmHeavyWeightEdge;
-import com.telenav.tdk.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
-import com.telenav.tdk.graph.traffic.roadsection.*;
-
-import static com.telenav.tdk.core.collections.primitive.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
+import static com.telenav.kivakit.collections.primitive.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
 
 /**
  * Store of edge attributes that are specific to the {@link OsmDataSpecification}.
@@ -54,7 +53,7 @@ public final class OsmEdgeStore extends EdgeStore
                     () -> (LongToLongMap) new LongToLongMap("forwardTelenavTrafficLocationIdentifier")
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private LongToLongMap forwardTelenavTrafficLocationIdentifier;
 
     private final AttributeReference<SplitIntArray> FORWARD_TRACE_COUNT =
@@ -63,10 +62,10 @@ public final class OsmEdgeStore extends EdgeStore
                             .nullInt(Integer.MIN_VALUE)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitIntArray forwardTraceCount;
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray isDoubleDigitized;
 
     private final AttributeReference<SplitPackedArray> IS_DOUBLE_DIGITIZED =
@@ -95,7 +94,7 @@ public final class OsmEdgeStore extends EdgeStore
                     () -> (SplitLongArray) new SplitLongArray("rawIdentifier")
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitLongArray rawIdentifier;
 
     private final AttributeReference<LongToLongMap> REVERSE_TELENAV_TRAFFIC_LOCATION_IDENTIFIER =
@@ -103,7 +102,7 @@ public final class OsmEdgeStore extends EdgeStore
                     () -> (LongToLongMap) new LongToLongMap("reverseTelenavTrafficLocationIdentifier")
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private LongToLongMap reverseTelenavTrafficLocationIdentifier;
 
     private final AttributeReference<SplitIntArray> REVERSE_TRACE_COUNT =
@@ -112,7 +111,7 @@ public final class OsmEdgeStore extends EdgeStore
                             .nullInt(Integer.MIN_VALUE)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitIntArray reverseTraceCount;
 
     public OsmEdgeStore(final Graph graph)

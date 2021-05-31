@@ -16,18 +16,18 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.collections;
+package com.telenav.kivakit.graph.collections;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Route;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Route;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
  * @author jonathanl (shibo)
  */
-public class RouteListTest extends TdkGraphCoreUnitTest
+public class RouteListTest extends KivaKitGraphCoreUnitTest
 {
     // Four sequentially connected edges (edge1 => edge2 => edge3 => edge4) and one unconnected edge
     private Edge edge1, edge2, edge3, edge4, unconnectedEdge;

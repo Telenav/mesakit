@@ -16,22 +16,22 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.element;
+package com.telenav.kivakit.graph.specifications.common.element;
 
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.interfaces.persistence.Unloadable;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.resource.Resource;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.specifications.common.edge.store.EdgeStore;
-import com.telenav.tdk.graph.specifications.common.relation.store.RelationStore;
-import com.telenav.tdk.graph.specifications.common.vertex.store.VertexStore;
-import com.telenav.tdk.graph.specifications.library.attributes.*;
-import com.telenav.tdk.map.geography.Precision;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.interfaces.persistence.Unloadable;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.specifications.common.edge.store.EdgeStore;
+import com.telenav.kivakit.graph.specifications.common.relation.store.RelationStore;
+import com.telenav.kivakit.graph.specifications.common.vertex.store.VertexStore;
+import com.telenav.kivakit.graph.specifications.library.attributes.*;
+import com.telenav.kivakit.map.geography.Precision;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.ensureNotNull;
+import static com.telenav.kivakit.kernel.validation.Validate.ensureNotNull;
 
 /**
  * Base class for various kinds of attribute stores that are stored in {@link GraphArchive}s. Archived stores are

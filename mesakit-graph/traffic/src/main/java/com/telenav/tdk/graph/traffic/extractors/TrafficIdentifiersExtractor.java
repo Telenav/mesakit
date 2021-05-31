@@ -16,16 +16,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.extractors;
+package com.telenav.kivakit.graph.traffic.extractors;
 
-import com.telenav.tdk.core.data.extraction.BaseExtractor;
-import com.telenav.tdk.core.kernel.language.iteration.Iterables;
-import com.telenav.tdk.core.kernel.language.string.StringList;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfWay;
-import com.telenav.tdk.graph.traffic.extractors.TrafficIdentifiersExtractor.RoadSectionIdentifierExtract;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionIdentifier;
-import com.telenav.tdk.graph.traffic.roadsection.codings.tmc.TmcCode;
+import com.telenav.kivakit.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.language.iteration.Iterables;
+import com.telenav.kivakit.kernel.language.string.StringList;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
+import com.telenav.kivakit.graph.traffic.extractors.TrafficIdentifiersExtractor.RoadSectionIdentifierExtract;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.tmc.TmcCode;
 import org.openstreetmap.osmosis.core.domain.v0_6.Way;
 
 import java.util.*;

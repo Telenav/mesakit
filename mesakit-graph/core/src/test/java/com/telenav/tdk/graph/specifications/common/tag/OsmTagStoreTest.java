@@ -16,22 +16,22 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.tag;
+package com.telenav.kivakit.graph.specifications.common.tag;
 
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfTagList;
-import com.telenav.tdk.data.formats.pbf.model.tags.compression.PbfStringListTagCodec;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
-import com.telenav.tdk.graph.specifications.common.element.store.TagStore;
-import com.telenav.tdk.utilities.compression.codecs.huffman.character.*;
-import com.telenav.tdk.utilities.compression.codecs.huffman.list.HuffmanStringListCodec;
-import com.telenav.tdk.utilities.compression.codecs.huffman.string.*;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.kivakit.data.formats.pbf.model.tags.compression.PbfStringListTagCodec;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.kivakit.graph.specifications.common.element.store.TagStore;
+import com.telenav.kivakit.utilities.compression.codecs.huffman.character.*;
+import com.telenav.kivakit.utilities.compression.codecs.huffman.list.HuffmanStringListCodec;
+import com.telenav.kivakit.utilities.compression.codecs.huffman.string.*;
 import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
-public class OsmTagStoreTest extends TdkGraphCoreUnitTest
+public class OsmTagStoreTest extends KivaKitGraphCoreUnitTest
 {
     @Test
     public void test()

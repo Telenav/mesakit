@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.navigation.navigators;
+package com.telenav.kivakit.graph.navigation.navigators;
 
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.collections.EdgeSequence;
-import com.telenav.tdk.graph.collections.EdgeSet;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.collections.EdgeSequence;
+import com.telenav.kivakit.graph.collections.EdgeSet;
 
 public class NonBranchingNoUTurnNoLoopNavigator extends NonBranchingNoUTurnNavigator
 {

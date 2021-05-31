@@ -16,15 +16,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.unidb.graph.edge.model.attributes.extractors;
+package com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.attributes.extractors;
 
-import com.telenav.tdk.core.data.extraction.BaseExtractor;
-import com.telenav.tdk.core.kernel.language.primitive.Ints;
-import com.telenav.tdk.core.kernel.language.string.StringList;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfWay;
-import com.telenav.tdk.graph.specifications.unidb.graph.edge.model.attributes.*;
-import com.telenav.tdk.map.measurements.Heading;
+import com.telenav.kivakit.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.language.primitive.Ints;
+import com.telenav.kivakit.kernel.language.string.StringList;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
+import com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.attributes.*;
+import com.telenav.kivakit.map.measurements.Heading;
 
 public class AdasCurvatureHeadingSlopeExtractor extends BaseExtractor<CurvatureHeadingSlopeSequence, PbfWay>
 {

@@ -16,10 +16,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.matching.snapping;
+package com.telenav.kivakit.graph.matching.snapping;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.map.geography.polyline.PolylineSnap;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.map.geography.polyline.PolylineSnap;
 
 public class IndexedEdgeSnap extends EdgeSnap
 {

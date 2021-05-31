@@ -16,16 +16,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.matching.snapping;
+package com.telenav.kivakit.graph.matching.snapping;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.polyline.PolylineSnap;
-import com.telenav.tdk.map.geography.polyline.PolylineSnapper;
-import com.telenav.tdk.map.measurements.Angle.Chirality;
-import com.telenav.tdk.map.measurements.Distance;
-import com.telenav.tdk.map.measurements.Heading;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.polyline.PolylineSnap;
+import com.telenav.kivakit.map.geography.polyline.PolylineSnapper;
+import com.telenav.kivakit.map.measurements.Angle.Chirality;
+import com.telenav.kivakit.map.measurements.Distance;
+import com.telenav.kivakit.map.measurements.Heading;
 
 import java.util.HashMap;
 import java.util.Map;

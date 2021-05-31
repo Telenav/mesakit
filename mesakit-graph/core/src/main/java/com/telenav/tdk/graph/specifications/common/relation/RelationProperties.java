@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.relation;
+package com.telenav.kivakit.graph.specifications.common.relation;
 
-import com.telenav.tdk.core.kernel.language.object.Lazy;
-import com.telenav.tdk.graph.EdgeRelation;
-import com.telenav.tdk.graph.specifications.common.CommonDataSpecification;
-import com.telenav.tdk.graph.specifications.library.attributes.Attribute;
-import com.telenav.tdk.graph.specifications.library.properties.GraphElementProperty;
-import com.telenav.tdk.graph.specifications.library.properties.GraphElementPropertySet;
+import com.telenav.kivakit.kernel.language.object.Lazy;
+import com.telenav.kivakit.graph.EdgeRelation;
+import com.telenav.kivakit.graph.specifications.common.CommonDataSpecification;
+import com.telenav.kivakit.graph.specifications.library.attributes.Attribute;
+import com.telenav.kivakit.graph.specifications.library.properties.GraphElementProperty;
+import com.telenav.kivakit.graph.specifications.library.properties.GraphElementPropertySet;
 
 public class RelationProperties extends GraphElementPropertySet<EdgeRelation>
 {

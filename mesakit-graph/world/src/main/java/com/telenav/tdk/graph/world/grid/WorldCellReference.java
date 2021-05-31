@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world.grid;
+package com.telenav.kivakit.graph.world.grid;
 
-import com.telenav.tdk.graph.world.WorldGraph;
-import com.telenav.tdk.graph.world.repository.WorldGraphReference;
-import com.telenav.tdk.map.utilities.grid.GridCell;
+import com.telenav.kivakit.graph.world.WorldGraph;
+import com.telenav.kivakit.graph.world.repository.WorldGraphReference;
+import com.telenav.kivakit.map.utilities.grid.GridCell;
 
 /**
  * A source of a {@link WorldCell} given a {@link WorldGraphReference} and a {@link GridCell}. This is essentially a

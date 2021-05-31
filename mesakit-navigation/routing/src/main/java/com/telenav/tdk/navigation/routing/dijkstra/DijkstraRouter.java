@@ -16,20 +16,20 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.navigation.routing.dijkstra;
+package com.telenav.kivakit.navigation.routing.dijkstra;
 
-import com.telenav.tdk.core.kernel.logging.Logger;
-import com.telenav.tdk.core.kernel.logging.LoggerFactory;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.navigation.routing.BaseRouter;
-import com.telenav.tdk.navigation.routing.LevelPromoter;
-import com.telenav.tdk.navigation.routing.RoutingRequest;
-import com.telenav.tdk.navigation.routing.RoutingResponse;
-import com.telenav.tdk.navigation.routing.cost.Cost;
-import com.telenav.tdk.navigation.routing.cost.CostFunction;
-import com.telenav.tdk.navigation.routing.cost.EdgePermissionFunction;
-import com.telenav.tdk.navigation.routing.cost.EdgePermissionFunction.Permission;
-import com.telenav.tdk.navigation.routing.cost.RoutePermissionFunction;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.navigation.routing.BaseRouter;
+import com.telenav.kivakit.navigation.routing.LevelPromoter;
+import com.telenav.kivakit.navigation.routing.RoutingRequest;
+import com.telenav.kivakit.navigation.routing.RoutingResponse;
+import com.telenav.kivakit.navigation.routing.cost.Cost;
+import com.telenav.kivakit.navigation.routing.cost.CostFunction;
+import com.telenav.kivakit.navigation.routing.cost.EdgePermissionFunction;
+import com.telenav.kivakit.navigation.routing.cost.EdgePermissionFunction.Permission;
+import com.telenav.kivakit.navigation.routing.cost.RoutePermissionFunction;
 
 /**
  * Implementation of Dijkstra routing.

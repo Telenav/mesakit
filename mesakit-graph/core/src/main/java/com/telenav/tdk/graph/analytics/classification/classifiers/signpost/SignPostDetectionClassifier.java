@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.analytics.classification.classifiers.signpost;
+package com.telenav.kivakit.graph.analytics.classification.classifiers.signpost;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Vertex;
-import com.telenav.tdk.graph.analytics.classification.EdgeClassifier;
-import com.telenav.tdk.map.road.model.RoadType;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Vertex;
+import com.telenav.kivakit.graph.analytics.classification.EdgeClassifier;
+import com.telenav.kivakit.map.road.model.RoadType;
 
 /**
  * Created by udayg on 2/10/16.

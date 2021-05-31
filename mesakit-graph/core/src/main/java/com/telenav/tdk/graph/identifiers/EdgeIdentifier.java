@@ -16,23 +16,23 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.identifiers;
+package com.telenav.kivakit.graph.identifiers;
 
-import com.telenav.tdk.core.kernel.commandline.SwitchParser;
-import com.telenav.tdk.core.kernel.conversion.BaseConverter;
-import com.telenav.tdk.core.kernel.interfaces.numeric.Quantizable;
-import com.telenav.tdk.core.kernel.language.reflection.property.filters.TdkExcludeProperty;
-import com.telenav.tdk.core.kernel.logging.Logger;
-import com.telenav.tdk.core.kernel.logging.LoggerFactory;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.scalars.identifiers.Identifier;
-import com.telenav.tdk.data.formats.library.map.identifiers.MapIdentifier;
-import com.telenav.tdk.data.formats.library.map.identifiers.WayIdentifier;
-import com.telenav.tdk.data.formats.pbf.model.identifiers.PbfWayIdentifier;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.GraphElement;
+import com.telenav.kivakit.kernel.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.conversion.BaseConverter;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.scalars.identifiers.Identifier;
+import com.telenav.kivakit.data.formats.library.map.identifiers.MapIdentifier;
+import com.telenav.kivakit.data.formats.library.map.identifiers.WayIdentifier;
+import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfWayIdentifier;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.GraphElement;
 
 /**
  * An identifier of {@link Edge}s in a {@link Graph} that can be used to retrieve the identified edge with {@link
@@ -240,7 +240,7 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
     /**
      * @return True if this edge identifier is for a forward edge
      */
-    @TdkExcludeProperty
+    @KivaKitExcludeProperty
     public boolean isForward()
     {
         return !isReverse();
@@ -249,7 +249,7 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
     /**
      * @return True if this edge identifier is for a reversed edge (a negative identifier)
      */
-    @TdkExcludeProperty
+    @KivaKitExcludeProperty
     public boolean isReverse()
     {
         return asLong() < 0;

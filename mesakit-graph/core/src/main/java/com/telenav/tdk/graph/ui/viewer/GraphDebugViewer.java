@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.ui.viewer;
+package com.telenav.kivakit.graph.ui.viewer;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Route;
-import com.telenav.tdk.map.ui.swing.debug.Viewable;
-import com.telenav.tdk.map.ui.swing.debug.ViewableIdentifier;
-import com.telenav.tdk.map.ui.swing.debug.viewer.swing.DebugViewer;
-import com.telenav.tdk.map.ui.swing.debug.viewer.swing.SwingViewer;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Route;
+import com.telenav.kivakit.map.ui.swing.debug.Viewable;
+import com.telenav.kivakit.map.ui.swing.debug.ViewableIdentifier;
+import com.telenav.kivakit.map.ui.swing.debug.viewer.swing.DebugViewer;
+import com.telenav.kivakit.map.ui.swing.debug.viewer.swing.SwingViewer;
 
 import java.awt.*;
 

@@ -16,22 +16,22 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.osm.graph.edge.model.attributes.extractors;
+package com.telenav.kivakit.graph.specifications.osm.graph.edge.model.attributes.extractors;
 
-import com.telenav.tdk.core.kernel.language.string.StringList;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfWay;
-import com.telenav.tdk.graph.specifications.common.graph.loader.extractors.ExitRoadNameExtractor;
-import com.telenav.tdk.map.region.locale.MapLocale;
-import com.telenav.tdk.map.region.project.TdkMapRegionUnitTest;
+import com.telenav.kivakit.kernel.language.string.StringList;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
+import com.telenav.kivakit.graph.specifications.common.graph.loader.extractors.ExitRoadNameExtractor;
+import com.telenav.kivakit.map.region.locale.MapLocale;
+import com.telenav.kivakit.map.region.project.KivaKitMapRegionUnitTest;
 import org.junit.Test;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.*;
 
-import static com.telenav.tdk.map.road.name.standardizer.RoadNameStandardizer.Mode;
+import static com.telenav.kivakit.map.road.name.standardizer.RoadNameStandardizer.Mode;
 
-public class ExitRoadNameExtractorTest extends TdkMapRegionUnitTest
+public class ExitRoadNameExtractorTest extends KivaKitMapRegionUnitTest
 {
     @Test
     public void test()

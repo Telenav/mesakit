@@ -1,8 +1,8 @@
-package com.telenav.tdk.graph.query.program.expressions.terminal;
+package com.telenav.kivakit.graph.query.program.expressions.terminal;
 
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.graph.query.program.*;
-import com.telenav.tdk.graph.query.program.expressions.terminal.value.ValueExpression;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.graph.query.program.*;
+import com.telenav.kivakit.graph.query.program.expressions.terminal.value.ValueExpression;
 
 /**
  * @author jonathanl (shibo)

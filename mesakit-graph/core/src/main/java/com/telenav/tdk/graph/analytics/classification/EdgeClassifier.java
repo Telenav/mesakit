@@ -16,9 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.analytics.classification;
+package com.telenav.kivakit.graph.analytics.classification;
 
-import com.telenav.tdk.graph.Edge;
+import com.telenav.kivakit.graph.Edge;
 
 /**
  * Accepts or rejects an edge as part of some classification scheme. There are other interfaces that could be used, but

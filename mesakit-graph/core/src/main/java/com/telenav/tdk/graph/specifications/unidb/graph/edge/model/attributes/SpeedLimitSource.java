@@ -16,11 +16,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.attributes;
 
-package com.telenav.tdk.graph.specifications.unidb.graph.edge.model.attributes;
-
-import com.telenav.tdk.core.kernel.interfaces.numeric.Quantizable;
-import com.telenav.tdk.core.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.language.string.Strings;
 
 public class SpeedLimitSource implements Quantizable
 {

@@ -185,11 +185,11 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
                 switch (e.getKeyChar())
                 {
                     case 'p':
-                        state.transition(PAUSED);
+                        state.transitionTo(PAUSED);
                         break;
 
                     case 'r':
-                        state.transition(RUNNING);
+                        state.transitionTo(RUNNING);
                         break;
 
                     case 'n':
@@ -590,7 +590,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
 
     void nextFrame()
     {
-        state.transition(STEPPING);
+        state.transitionTo(STEPPING);
     }
 
     @SuppressWarnings("UnusedReturnValue")

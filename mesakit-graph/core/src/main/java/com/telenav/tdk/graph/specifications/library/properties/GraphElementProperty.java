@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.library.properties;
+package com.telenav.kivakit.graph.specifications.library.properties;
 
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.graph.GraphElement;
-import com.telenav.tdk.graph.metadata.DataSpecification;
-import com.telenav.tdk.graph.specifications.library.attributes.Attribute;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.graph.GraphElement;
+import com.telenav.kivakit.graph.metadata.DataSpecification;
+import com.telenav.kivakit.graph.specifications.library.attributes.Attribute;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
 
 public abstract class GraphElementProperty<T extends GraphElement> implements Comparable<GraphElementProperty<T>>
 {

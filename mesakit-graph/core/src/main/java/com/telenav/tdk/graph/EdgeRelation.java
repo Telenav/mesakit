@@ -16,38 +16,37 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph;
 
-package com.telenav.tdk.graph;
-
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
-import com.telenav.tdk.core.kernel.language.reflection.property.filters.TdkIncludeProperty;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.language.string.conversion.*;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.core.kernel.scalars.counts.Maximum;
-import com.telenav.tdk.data.formats.library.map.identifiers.*;
-import com.telenav.tdk.data.formats.pbf.model.identifiers.PbfIdentifierType;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfRelation;
-import com.telenav.tdk.graph.collections.*;
-import com.telenav.tdk.graph.identifiers.RelationIdentifier;
-import com.telenav.tdk.graph.metadata.DataSpecification;
-import com.telenav.tdk.graph.relations.restrictions.TurnRestriction;
-import com.telenav.tdk.graph.specifications.common.element.GraphElementAttributes;
-import com.telenav.tdk.graph.specifications.common.relation.*;
-import com.telenav.tdk.graph.specifications.common.relation.store.RelationStore;
-import com.telenav.tdk.graph.specifications.library.properties.GraphElementPropertySet;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.rectangle.*;
-import com.telenav.tdk.map.measurements.Distance;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.language.string.conversion.*;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.data.formats.library.map.identifiers.*;
+import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfIdentifierType;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfRelation;
+import com.telenav.kivakit.graph.collections.*;
+import com.telenav.kivakit.graph.identifiers.RelationIdentifier;
+import com.telenav.kivakit.graph.metadata.DataSpecification;
+import com.telenav.kivakit.graph.relations.restrictions.TurnRestriction;
+import com.telenav.kivakit.graph.specifications.common.element.GraphElementAttributes;
+import com.telenav.kivakit.graph.specifications.common.relation.*;
+import com.telenav.kivakit.graph.specifications.common.relation.store.RelationStore;
+import com.telenav.kivakit.graph.specifications.library.properties.GraphElementPropertySet;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.rectangle.*;
+import com.telenav.kivakit.map.measurements.Distance;
 import org.openstreetmap.osmosis.core.domain.v0_6.*;
 
 import java.sql.Timestamp;
 import java.util.*;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.unsupported;
+import static com.telenav.kivakit.kernel.validation.Validate.unsupported;
 
 public class EdgeRelation extends GraphElement implements Bounded
 {
@@ -586,7 +585,7 @@ public class EdgeRelation extends GraphElement implements Bounded
         return null;
     }
 
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     public List<EdgeRelationMember> members()
     {
         return store().retrieveMembers(this);

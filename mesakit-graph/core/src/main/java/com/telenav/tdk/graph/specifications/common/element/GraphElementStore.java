@@ -16,48 +16,48 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.element;
+package com.telenav.kivakit.graph.specifications.common.element;
 
-import com.telenav.tdk.core.collections.batcher.Batcher;
-import com.telenav.tdk.core.collections.primitive.array.scalars.*;
-import com.telenav.tdk.core.collections.primitive.list.PrimitiveList;
-import com.telenav.tdk.core.collections.primitive.list.store.PackedStringStore;
-import com.telenav.tdk.core.collections.primitive.map.split.SplitLongToIntMap;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.interfaces.collection.*;
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
-import com.telenav.tdk.core.kernel.language.iteration.BaseIterator;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.tdk.core.kernel.scalars.bytes.Bytes;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.core.kernel.validation.*;
-import com.telenav.tdk.core.kernel.validation.validators.BaseValidator;
-import com.telenav.tdk.core.resource.compression.archive.TdkArchivedField;
-import com.telenav.tdk.data.formats.pbf.model.change.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.compression.PbfTagCodec;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.identifiers.GraphElementIdentifier;
-import com.telenav.tdk.graph.metadata.DataSpecification;
-import com.telenav.tdk.graph.metadata.DataSpecification.GraphElementFactory;
-import com.telenav.tdk.graph.specifications.common.edge.store.EdgeStore;
-import com.telenav.tdk.graph.specifications.common.element.store.TagStore;
-import com.telenav.tdk.graph.specifications.common.place.store.PlaceStore;
-import com.telenav.tdk.graph.specifications.common.relation.store.RelationStore;
-import com.telenav.tdk.graph.specifications.common.shapepoint.store.ShapePointStore;
-import com.telenav.tdk.graph.specifications.common.vertex.store.VertexStore;
-import com.telenav.tdk.graph.specifications.library.attributes.*;
+import com.telenav.kivakit.collections.batcher.Batcher;
+import com.telenav.kivakit.collections.primitive.array.scalars.*;
+import com.telenav.kivakit.collections.primitive.list.PrimitiveList;
+import com.telenav.kivakit.collections.primitive.list.store.PackedStringStore;
+import com.telenav.kivakit.collections.primitive.map.split.SplitLongToIntMap;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.interfaces.collection.*;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.kernel.scalars.bytes.Bytes;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.kernel.validation.*;
+import com.telenav.kivakit.kernel.validation.validators.BaseValidator;
+import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.data.formats.pbf.model.change.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.compression.PbfTagCodec;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.identifiers.GraphElementIdentifier;
+import com.telenav.kivakit.graph.metadata.DataSpecification;
+import com.telenav.kivakit.graph.metadata.DataSpecification.GraphElementFactory;
+import com.telenav.kivakit.graph.specifications.common.edge.store.EdgeStore;
+import com.telenav.kivakit.graph.specifications.common.element.store.TagStore;
+import com.telenav.kivakit.graph.specifications.common.place.store.PlaceStore;
+import com.telenav.kivakit.graph.specifications.common.relation.store.RelationStore;
+import com.telenav.kivakit.graph.specifications.common.shapepoint.store.ShapePointStore;
+import com.telenav.kivakit.graph.specifications.common.vertex.store.VertexStore;
+import com.telenav.kivakit.graph.specifications.library.attributes.*;
 import org.jetbrains.annotations.*;
 
 import java.util.*;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
-import static com.telenav.tdk.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 
 /**
  * Packed meta data attributes for {@link GraphElement}s.
@@ -145,42 +145,42 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         }
     }
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitLongArray identifier;
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitLongToIntMap identifierToIndex;
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitLongArray lastModified;
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitLongArray pbfChangeSetIdentifier;
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitCharArray pbfRevisionNumber;
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private PackedStringStore pbfUserName;
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitIntArray pbfUserIdentifier;
 
     /**
      * Tags for this attribute
      */
-    @TdkArchivedField
+    @KivaKitArchivedField
     private TagStore tags;
 
     /**
      * The next index for an element in this store. Note that we start index values at 1 rather than 0 because we want
      * to catch bugs that involve uninitialized index values (the default value for an int in Java is zero).
      */
-    @TdkArchivedField
+    @KivaKitArchivedField
     private int nextIndex = 1;
 
     /** The number of elements in this store (distinct from the count(), which takes into account reversible edges) */
-    @TdkArchivedField
+    @KivaKitArchivedField
     private int size;
 
     /** The graph for which this is a graph */

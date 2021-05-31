@@ -16,17 +16,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph;
+package com.telenav.kivakit.graph;
 
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
-import com.telenav.tdk.map.geography.Location;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.kivakit.map.geography.Location;
 import org.junit.Test;
 
 /**
  * @author jonathanl (shibo)
  */
-public class VertexTest extends TdkGraphCoreUnitTest
+public class VertexTest extends KivaKitGraphCoreUnitTest
 {
     @Test
     public void testInEdges()

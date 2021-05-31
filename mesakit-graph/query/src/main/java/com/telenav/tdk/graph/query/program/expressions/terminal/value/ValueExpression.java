@@ -1,6 +1,6 @@
-package com.telenav.tdk.graph.query.program.expressions.terminal.value;
+package com.telenav.kivakit.graph.query.program.expressions.terminal.value;
 
-import com.telenav.tdk.graph.query.program.Expression;
+import com.telenav.kivakit.graph.query.program.Expression;
 
 /**
  * An expression that evaluates to a {@link Value}

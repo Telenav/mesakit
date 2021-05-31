@@ -16,10 +16,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.navigation;
+package com.telenav.kivakit.graph.navigation;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Route;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Route;
 
 /**
  * Defines a general way to limit routes that are being created through some assembly process. An implementation might

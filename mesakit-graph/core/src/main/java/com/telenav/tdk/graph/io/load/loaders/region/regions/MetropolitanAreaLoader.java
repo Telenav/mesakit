@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.io.load.loaders.region.regions;
+package com.telenav.kivakit.graph.io.load.loaders.region.regions;
 
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.Place;
-import com.telenav.tdk.graph.collections.EdgeSequence;
-import com.telenav.tdk.graph.io.load.loaders.region.RegionalGraphLoader;
-import com.telenav.tdk.map.region.MetropolitanArea;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.Place;
+import com.telenav.kivakit.graph.collections.EdgeSequence;
+import com.telenav.kivakit.graph.io.load.loaders.region.RegionalGraphLoader;
+import com.telenav.kivakit.map.region.MetropolitanArea;
 
 public class MetropolitanAreaLoader extends RegionalGraphLoader
 {

@@ -16,22 +16,22 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.edge.store.stores.polyline;
+package com.telenav.kivakit.graph.specifications.common.edge.store.stores.polyline;
 
 import com.esotericsoftware.kryo.*;
 import com.esotericsoftware.kryo.io.*;
-import com.telenav.tdk.core.collections.primitive.array.scalars.IntArray;
-import com.telenav.tdk.core.kernel.interfaces.collection.*;
-import com.telenav.tdk.core.kernel.interfaces.naming.NamedObject;
-import com.telenav.tdk.core.kernel.interfaces.operation.Initializable;
-import com.telenav.tdk.core.kernel.language.object.*;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.map.geography.polyline.Polyline;
-import com.telenav.tdk.map.geography.polyline.compression.differential.CompressedPolyline;
+import com.telenav.kivakit.collections.primitive.array.scalars.IntArray;
+import com.telenav.kivakit.kernel.interfaces.collection.*;
+import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.kernel.interfaces.operation.Initializable;
+import com.telenav.kivakit.kernel.language.object.*;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.map.geography.polyline.Polyline;
+import com.telenav.kivakit.map.geography.polyline.compression.differential.CompressedPolyline;
 
 import java.util.ArrayList;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.*;
+import static com.telenav.kivakit.kernel.validation.Validate.*;
 
 public class SplitPolylineStore implements KryoSerializable, NamedObject, Initializable<SplitPolylineStore>, Compressible
 {

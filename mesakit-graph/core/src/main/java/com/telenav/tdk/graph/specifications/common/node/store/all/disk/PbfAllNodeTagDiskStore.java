@@ -16,15 +16,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.node.store.all.disk;
+package com.telenav.kivakit.graph.specifications.common.node.store.all.disk;
 
-import com.telenav.tdk.core.filesystem.Folder;
-import com.telenav.tdk.data.formats.pbf.model.tags.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.compression.PbfTagCodec;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.specifications.library.pbf.PbfNodeTagStore;
-import com.telenav.tdk.map.geography.Location;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.data.formats.pbf.model.tags.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.compression.PbfTagCodec;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.specifications.library.pbf.PbfNodeTagStore;
+import com.telenav.kivakit.map.geography.Location;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.io.*;

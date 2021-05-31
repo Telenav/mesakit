@@ -87,8 +87,8 @@
                         <phase>package</phase>
                         <configuration>
                             <target name = "Install world graph deployments">
-                                <echo>Installing world graph deployments in ${user.home}/.tdk/${mesakit.version}/configuration/world-graph/deployments</echo>
-                                <copy todir = "${user.home}/.tdk/${mesakit.version}/configuration/world-graph/deployments">
+                                <echo>Installing world graph deployments in ${user.home}/.mesakit/${mesakit.version}/configuration/world-graph/deployments</echo>
+                                <copy todir = "${user.home}/.mesakit/${mesakit.version}/configuration/world-graph/deployments">
                                     <fileset dir = "${env.MesaKit_HOME}/mesakit-graph/world/src/main/java/com.telenav.mesakit/graph/world/configuration">
                                         <include name = "**/*"/>
                                     </fileset>

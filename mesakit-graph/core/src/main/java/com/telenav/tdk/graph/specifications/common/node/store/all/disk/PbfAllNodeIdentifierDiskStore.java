@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.node.store.all.disk;
+package com.telenav.kivakit.graph.specifications.common.node.store.all.disk;
 
-import com.telenav.tdk.core.collections.primitive.array.scalars.LongArray;
-import com.telenav.tdk.core.filesystem.Folder;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfNode;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.region.project.TdkMapRegionLimits;
+import com.telenav.kivakit.collections.primitive.array.scalars.LongArray;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfNode;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.region.project.KivaKitMapRegionLimits;
 
 import java.io.*;
 
@@ -62,7 +62,7 @@ public class PbfAllNodeIdentifierDiskStore extends AllNodeDiskStore
     public LongArray load(final AllNodeDiskCell cell)
     {
         final var identifiers = new LongArray(name() + ".identifiers");
-        identifiers.initialSize(TdkMapRegionLimits.ESTIMATED_NODES);
+        identifiers.initialSize(KivaKitMapRegionLimits.ESTIMATED_NODES);
         identifiers.initialize();
 
         try (final var in = new DataInputStream(entry(cell).openForReading()))

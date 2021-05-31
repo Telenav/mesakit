@@ -16,35 +16,35 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.vertex.store;
+package com.telenav.kivakit.graph.specifications.common.vertex.store;
 
 import com.esotericsoftware.kryo.*;
 import com.esotericsoftware.kryo.io.*;
-import com.telenav.tdk.core.collections.primitive.array.scalars.SplitIntArray;
-import com.telenav.tdk.core.collections.primitive.iteration.IntIterator;
-import com.telenav.tdk.core.collections.primitive.list.store.IntLinkedListStore;
-import com.telenav.tdk.core.collections.set.operations.Intersection;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.interfaces.collection.Compressible;
-import com.telenav.tdk.core.kernel.interfaces.naming.NamedObject;
-import com.telenav.tdk.core.kernel.interfaces.operation.Initializable;
-import com.telenav.tdk.core.kernel.language.iteration.*;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.core.kernel.validation.*;
-import com.telenav.tdk.core.kernel.validation.validators.BaseValidator;
-import com.telenav.tdk.core.resource.compression.archive.TdkArchivedField;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.collections.*;
-import com.telenav.tdk.graph.specifications.common.edge.store.EdgeStore;
-import com.telenav.tdk.map.geography.Location;
+import com.telenav.kivakit.collections.primitive.array.scalars.SplitIntArray;
+import com.telenav.kivakit.collections.primitive.iteration.IntIterator;
+import com.telenav.kivakit.collections.primitive.list.store.IntLinkedListStore;
+import com.telenav.kivakit.collections.set.operations.Intersection;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.interfaces.collection.Compressible;
+import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.kernel.interfaces.operation.Initializable;
+import com.telenav.kivakit.kernel.language.iteration.*;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.kernel.validation.*;
+import com.telenav.kivakit.kernel.validation.validators.BaseValidator;
+import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.collections.*;
+import com.telenav.kivakit.graph.specifications.common.edge.store.EdgeStore;
+import com.telenav.kivakit.map.geography.Location;
 
 import java.util.*;
 
-import static com.telenav.tdk.core.collections.primitive.iteration.IntIterator.NULL;
-import static com.telenav.tdk.core.kernel.validation.Validate.ensureNotNull;
-import static com.telenav.tdk.graph.Metadata.CountType.ALLOW_ESTIMATE;
-import static com.telenav.tdk.graph.specifications.common.vertex.store.ConnectivityStore.Sequence.*;
+import static com.telenav.kivakit.collections.primitive.iteration.IntIterator.NULL;
+import static com.telenav.kivakit.kernel.validation.Validate.ensureNotNull;
+import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.kivakit.graph.specifications.common.vertex.store.ConnectivityStore.Sequence.*;
 
 /**
  * Stores lists of "in", "out" and two-way edges are added during loading with temporary* methods and then stored by
@@ -95,15 +95,15 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     private transient volatile Graph graph;
 
     /** Indexes of edge sets stored in the store */
-    @TdkArchivedField
+    @KivaKitArchivedField
     private EdgeArrayStore inEdges;
 
     /** Indexes of edge sets stored in the store */
-    @TdkArchivedField
+    @KivaKitArchivedField
     private EdgeArrayStore outEdges;
 
     /** Indexes of edge sets stored in the store */
-    @TdkArchivedField
+    @KivaKitArchivedField
     private EdgeArrayStore twoWayEdges;
 
     /** Temporary "in" edge lists in the temporaryVertexEdgeStore while loading a graph */

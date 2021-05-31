@@ -16,10 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.unidb.graph.vertex;
 
-package com.telenav.tdk.graph.specifications.unidb.graph.vertex;
-
-import com.telenav.tdk.graph.*;
+import com.telenav.kivakit.graph.*;
 
 public class UniDbVertex extends Vertex
 {

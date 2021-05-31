@@ -17,15 +17,15 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-package com.telenav.tdk.graph;
+package com.telenav.kivakit.graph;
 
-import com.telenav.tdk.core.kernel.language.object.Hash;
-import com.telenav.tdk.core.kernel.language.string.conversion.*;
-import com.telenav.tdk.data.formats.library.map.identifiers.*;
-import com.telenav.tdk.data.formats.library.map.identifiers.MapIdentifier.Type;
-import com.telenav.tdk.map.geography.Location;
+import com.telenav.kivakit.kernel.language.object.Hash;
+import com.telenav.kivakit.kernel.language.string.conversion.*;
+import com.telenav.kivakit.data.formats.library.map.identifiers.*;
+import com.telenav.kivakit.data.formats.library.map.identifiers.MapIdentifier.Type;
+import com.telenav.kivakit.map.geography.Location;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
 
 public class EdgeRelationMember implements AsIndentedString
 {

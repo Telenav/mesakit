@@ -16,10 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.traffic.roadsection.codings.tmc;
 
-package com.telenav.tdk.graph.traffic.roadsection.codings.tmc;
-
-import com.telenav.tdk.graph.traffic.roadsection.codings.tmc.TmcCode.FromLongConverter.TmcDirection;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.tmc.TmcCode.FromLongConverter.TmcDirection;
 
 public class TmcCodeParser
 {

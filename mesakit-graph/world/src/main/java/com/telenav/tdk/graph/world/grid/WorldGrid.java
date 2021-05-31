@@ -16,45 +16,44 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.world.grid;
 
-package com.telenav.tdk.graph.world.grid;
-
-import com.telenav.tdk.core.collections.set.BoundedSet;
-import com.telenav.tdk.core.configuration.ConfigurationStore;
-import com.telenav.tdk.core.filesystem.*;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.interfaces.object.Source;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.operation.progress.ProgressReporter;
-import com.telenav.tdk.core.kernel.scalars.bytes.Bytes;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.core.resource.ResourceList;
-import com.telenav.tdk.core.resource.path.Extension;
-import com.telenav.tdk.core.utilities.reference.virtual.*;
-import com.telenav.tdk.data.formats.pbf.processing.PbfDataSource;
-import com.telenav.tdk.data.formats.pbf.processing.filters.osm.OsmNavigableWayFilter;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.project.TdkGraphCore;
-import com.telenav.tdk.graph.traffic.historical.SpeedPatternResource;
-import com.telenav.tdk.graph.world.*;
-import com.telenav.tdk.graph.world.WorldGraph.AccessMode;
-import com.telenav.tdk.graph.world.grid.WorldCell.DataType;
-import com.telenav.tdk.graph.world.repository.*;
-import com.telenav.tdk.graph.world.repository.WorldGraphRepositoryFolder.Check;
-import com.telenav.tdk.map.cutter.PbfRegionCutter;
-import com.telenav.tdk.map.geography.*;
-import com.telenav.tdk.map.geography.polyline.Polygon;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.measurements.Distance;
-import com.telenav.tdk.map.region.*;
-import com.telenav.tdk.map.utilities.geojson.*;
-import com.telenav.tdk.map.utilities.grid.*;
+import com.telenav.kivakit.collections.set.BoundedSet;
+import com.telenav.kivakit.configuration.ConfigurationStore;
+import com.telenav.kivakit.filesystem.*;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.interfaces.object.Source;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.scalars.bytes.Bytes;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.resource.ResourceList;
+import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.kivakit.utilities.reference.virtual.*;
+import com.telenav.kivakit.data.formats.pbf.processing.PbfDataSource;
+import com.telenav.kivakit.data.formats.pbf.processing.filters.osm.OsmNavigableWayFilter;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.project.KivaKitGraphCore;
+import com.telenav.kivakit.graph.traffic.historical.SpeedPatternResource;
+import com.telenav.kivakit.graph.world.*;
+import com.telenav.kivakit.graph.world.WorldGraph.AccessMode;
+import com.telenav.kivakit.graph.world.grid.WorldCell.DataType;
+import com.telenav.kivakit.graph.world.repository.*;
+import com.telenav.kivakit.graph.world.repository.WorldGraphRepositoryFolder.Check;
+import com.telenav.kivakit.map.cutter.PbfRegionCutter;
+import com.telenav.kivakit.map.geography.*;
+import com.telenav.kivakit.map.geography.polyline.Polygon;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.measurements.Distance;
+import com.telenav.kivakit.map.region.*;
+import com.telenav.kivakit.map.utilities.geojson.*;
+import com.telenav.kivakit.map.utilities.grid.*;
 
 import java.util.*;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.*;
+import static com.telenav.kivakit.kernel.validation.Validate.*;
 
 /**
  * A grid of {@link WorldCell}s, each containing its own cell-{@link Graph}. The grid is stored in a {@link
@@ -188,7 +187,8 @@ public class WorldGrid
     /**
      * @return List of world cells intersecting the given bounds in the given grid folder with the given data
      */
-    public WorldCellList cells(final WorldGraphRepositoryFolder repositoryFolder, final DataType data, final Rectangle bounds)
+    public WorldCellList cells(final WorldGraphRepositoryFolder repositoryFolder, final DataType data,
+                               final Rectangle bounds)
     {
         final var cells = new WorldCellList();
         for (final var gridCell : grid.cellsIntersecting(bounds))
@@ -209,7 +209,8 @@ public class WorldGrid
      * @param repositoryFolder The folder to extract to
      * @return The number of cells for which graph data was successfully extracted
      */
-    public Count extract(final WorldGraphRepositoryFolder repositoryFolder, final Source<PbfDataSource> data, final File speedPattern)
+    public Count extract(final WorldGraphRepositoryFolder repositoryFolder, final Source<PbfDataSource> data,
+                         final File speedPattern)
     {
         // Start time
         final var start = Time.now();
@@ -431,7 +432,8 @@ public class WorldGrid
         included = findIncludedCells();
     }
 
-    private void duplicateSpeedPattern(final ResourceList cells, final File speedPattern, final WorldGraphRepositoryFolder repositoryFolder)
+    private void duplicateSpeedPattern(final ResourceList cells, final File speedPattern,
+                                       final WorldGraphRepositoryFolder repositoryFolder)
     {
         ensure(speedPattern.exists());
 
@@ -448,7 +450,8 @@ public class WorldGrid
     /**
      * @return The PBF files extracted from the given pbf file into the given world grid folder
      */
-    private ResourceList extractCells(final Source<PbfDataSource> data, final WorldGraphRepositoryFolder repositoryFolder)
+    private ResourceList extractCells(final Source<PbfDataSource> data,
+                                      final WorldGraphRepositoryFolder repositoryFolder)
     {
         // Extract grid cells into the grid folder
         final var cutter = new PbfRegionCutter(data, repositoryFolder, new OsmNavigableWayFilter())
@@ -615,7 +618,7 @@ public class WorldGrid
 
     private Folder regionCache()
     {
-        return TdkGraphCore.get().graphFolder().folder("world-graph/regions").mkdirs();
+        return KivaKitGraphCore.get().graphFolder().folder("world-graph/regions").mkdirs();
     }
 
     private String toString(final List<WorldCell> cells)

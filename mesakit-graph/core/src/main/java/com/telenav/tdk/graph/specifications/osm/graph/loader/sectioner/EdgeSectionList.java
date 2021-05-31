@@ -16,9 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.osm.graph.loader.sectioner;
+package com.telenav.kivakit.graph.specifications.osm.graph.loader.sectioner;
 
-import com.telenav.tdk.graph.Edge;
+import com.telenav.kivakit.graph.Edge;
 
 import java.util.ArrayList;
 import java.util.List;

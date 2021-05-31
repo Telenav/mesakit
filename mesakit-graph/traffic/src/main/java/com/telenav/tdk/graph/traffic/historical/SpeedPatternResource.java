@@ -16,24 +16,24 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.historical;
+package com.telenav.kivakit.graph.traffic.historical;
 
-import com.telenav.tdk.core.collections.primitive.array.scalars.ByteArray;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.logging.Logger;
-import com.telenav.tdk.core.kernel.logging.LoggerFactory;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.core.resource.Resource;
-import com.telenav.tdk.core.resource.path.Extension;
-import com.telenav.tdk.core.resource.store.BinaryObjectStore;
-import com.telenav.tdk.utilities.time.timebin.schemes.FifteenMinutesTimeBinScheme;
-import com.telenav.tdk.utilities.time.timebin.schemes.FiveMinutesTimeBinScheme;
-import com.telenav.tdk.utilities.time.timebin.schemes.UniformTimeBinScheme;
+import com.telenav.kivakit.collections.primitive.array.scalars.ByteArray;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.kivakit.resource.store.BinaryObjectStore;
+import com.telenav.kivakit.utilities.time.timebin.schemes.FifteenMinutesTimeBinScheme;
+import com.telenav.kivakit.utilities.time.timebin.schemes.FiveMinutesTimeBinScheme;
+import com.telenav.kivakit.utilities.time.timebin.schemes.UniformTimeBinScheme;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
-import static com.telenav.tdk.core.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.validation.Validate.fail;
 
 /**
  * Read or write speed pattern data from/to a resource. The format of speed pattern data please refer:

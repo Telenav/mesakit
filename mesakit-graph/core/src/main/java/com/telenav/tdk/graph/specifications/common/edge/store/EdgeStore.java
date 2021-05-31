@@ -16,61 +16,60 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.common.edge.store;
 
-package com.telenav.tdk.graph.specifications.common.edge.store;
-
-import com.telenav.tdk.core.collections.primitive.array.packed.SplitPackedArray;
-import com.telenav.tdk.core.collections.primitive.array.scalars.*;
-import com.telenav.tdk.core.collections.primitive.list.store.LongLinkedListStore;
-import com.telenav.tdk.core.collections.primitive.map.multi.dynamic.LongToIntMultiMap;
-import com.telenav.tdk.core.collections.primitive.map.multi.fixed.*;
-import com.telenav.tdk.core.collections.primitive.map.scalars.*;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.language.io.serialization.TdkSerializer;
-import com.telenav.tdk.core.kernel.language.io.serialization.kryo.TdkKryoSerializer;
-import com.telenav.tdk.core.kernel.language.iteration.*;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.core.kernel.time.*;
-import com.telenav.tdk.core.kernel.validation.*;
-import com.telenav.tdk.core.resource.compression.archive.TdkArchivedField;
-import com.telenav.tdk.data.formats.library.map.identifiers.*;
-import com.telenav.tdk.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfTagList;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.collections.*;
-import com.telenav.tdk.graph.identifiers.*;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.io.load.GraphConstraints;
-import com.telenav.tdk.graph.metadata.DataSpecification;
-import com.telenav.tdk.graph.project.TdkGraphCoreLimits;
-import com.telenav.tdk.graph.project.TdkGraphCoreLimits.Limit;
-import com.telenav.tdk.graph.specifications.common.edge.*;
-import com.telenav.tdk.graph.specifications.common.edge.store.index.*;
-import com.telenav.tdk.graph.specifications.common.edge.store.stores.polyline.SplitPolylineStore;
-import com.telenav.tdk.graph.specifications.common.edge.store.stores.roadname.RoadNameStore;
-import com.telenav.tdk.graph.specifications.common.element.*;
-import com.telenav.tdk.graph.specifications.common.relation.HeavyWeightRelation;
-import com.telenav.tdk.graph.specifications.common.vertex.store.VertexStore;
-import com.telenav.tdk.graph.specifications.library.attributes.AttributeReference;
-import com.telenav.tdk.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
-import com.telenav.tdk.graph.traffic.historical.*;
-import com.telenav.tdk.graph.traffic.roadsection.*;
-import com.telenav.tdk.map.geography.*;
-import com.telenav.tdk.map.geography.indexing.rtree.RTreeSpatialIndex;
-import com.telenav.tdk.map.geography.polyline.Polyline;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.measurements.*;
-import com.telenav.tdk.map.region.*;
-import com.telenav.tdk.map.road.model.*;
+import com.telenav.kivakit.collections.primitive.array.packed.SplitPackedArray;
+import com.telenav.kivakit.collections.primitive.array.scalars.*;
+import com.telenav.kivakit.collections.primitive.list.store.LongLinkedListStore;
+import com.telenav.kivakit.collections.primitive.map.multi.dynamic.LongToIntMultiMap;
+import com.telenav.kivakit.collections.primitive.map.multi.fixed.*;
+import com.telenav.kivakit.collections.primitive.map.scalars.*;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.language.io.serialization.KivaKitSerializer;
+import com.telenav.kivakit.kernel.language.io.serialization.kryo.KivaKitKryoSerializer;
+import com.telenav.kivakit.kernel.language.iteration.*;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.time.*;
+import com.telenav.kivakit.kernel.validation.*;
+import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.data.formats.library.map.identifiers.*;
+import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.collections.*;
+import com.telenav.kivakit.graph.identifiers.*;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.io.load.GraphConstraints;
+import com.telenav.kivakit.graph.metadata.DataSpecification;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreLimits;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreLimits.Limit;
+import com.telenav.kivakit.graph.specifications.common.edge.*;
+import com.telenav.kivakit.graph.specifications.common.edge.store.index.*;
+import com.telenav.kivakit.graph.specifications.common.edge.store.stores.polyline.SplitPolylineStore;
+import com.telenav.kivakit.graph.specifications.common.edge.store.stores.roadname.RoadNameStore;
+import com.telenav.kivakit.graph.specifications.common.element.*;
+import com.telenav.kivakit.graph.specifications.common.relation.HeavyWeightRelation;
+import com.telenav.kivakit.graph.specifications.common.vertex.store.VertexStore;
+import com.telenav.kivakit.graph.specifications.library.attributes.AttributeReference;
+import com.telenav.kivakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
+import com.telenav.kivakit.graph.traffic.historical.*;
+import com.telenav.kivakit.graph.traffic.roadsection.*;
+import com.telenav.kivakit.map.geography.*;
+import com.telenav.kivakit.map.geography.indexing.rtree.RTreeSpatialIndex;
+import com.telenav.kivakit.map.geography.polyline.Polyline;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.measurements.*;
+import com.telenav.kivakit.map.region.*;
+import com.telenav.kivakit.map.road.model.*;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.*;
 
-import static com.telenav.tdk.core.collections.primitive.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
-import static com.telenav.tdk.graph.GraphElement.*;
-import static com.telenav.tdk.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.kivakit.collections.primitive.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
+import static com.telenav.kivakit.graph.GraphElement.*;
+import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 
 /**
  * An efficient store of edge information used by the flyweight {@link Edge} object to retrieve attributes. A sequence
@@ -125,7 +124,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     .hasNullLong(false)
                     .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitLongArray boundsBottomLeft;
 
     /** ============ The top right location of the bounds around each edge in this store */
@@ -134,7 +133,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     .hasNullLong(false)
                     .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitLongArray boundsTopRight;
 
     /** ============ The bridge type for each edge in this store */
@@ -144,7 +143,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     .nullLong(7)
                     .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray bridgeType;
 
     /** ============ The country for each edge in this store */
@@ -154,16 +153,16 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     .nullLong(255)
                     .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray country;
 
     /** ============ The relation identifiers of ways */
     private final AttributeReference<LongToLongFixedMultiMap> WAY_IDENTIFIER_TO_RELATIONS = new AttributeReference<>(this, EdgeAttributes.get().RELATIONS, "wayIdentifierToRelationIdentifiers",
             () -> (LongToLongFixedMultiMap) new LongToLongFixedMultiMap("wayIdentifierToRelationIdentifiers")
-                    .initialChildSize(TdkGraphCoreLimits.Estimated.RELATIONS_PER_EDGE)
+                    .initialChildSize(KivaKitGraphCoreLimits.Estimated.RELATIONS_PER_EDGE)
                     .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private LongToLongFixedMultiMap wayIdentifierToRelationIdentifiers;
 
     /** ============ The free flow speed category for each edge in this store */
@@ -172,7 +171,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     .bits(Bits._5, NO_OVERFLOW)
                     .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray freeFlowSpeedCategory;
 
     /** ============ The from vertex identifier for each edge in this store */
@@ -180,14 +179,14 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
             () -> (SplitIntArray) new SplitIntArray("fromVertexIdentifier")
                     .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitIntArray fromVertexIdentifier;
 
     /** ============ The "from" node identifier for each edge in the store, if any */
     private final AttributeReference<SplitLongArray> FROM_NODE_IDENTIFIER = new AttributeReference<>(this, EdgeAttributes.get().FROM_NODE_IDENTIFIER, "fromNodeIdentifier",
             () -> (SplitLongArray) new SplitLongArray("fromNodeIdentifier").initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitLongArray fromNodeIdentifier;
 
     /** ============ The number of HOV lanes for each edge in this store */
@@ -197,7 +196,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     .nullLong(3)
                     .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray hovLaneCount;
 
     /** ============ The closed to through traffic state for each edge in this store */
@@ -205,7 +204,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
             () -> (IntToByteMap) new IntToByteMap("isClosedToThroughTraffic")
                     .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private IntToByteMap isClosedToThroughTraffic;
 
     /** ============ The toll road state for each edge in this store */
@@ -214,7 +213,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     () -> (IntToByteMap) new IntToByteMap("isTollRoad")
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private IntToByteMap isTollRoad;
 
     /** ============ The under construction state for each edge in this store */
@@ -222,7 +221,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
             () -> (IntToByteMap) new IntToByteMap("isUnderConstruction")
                     .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private IntToByteMap isUnderConstruction;
 
     /** ============ The lane count for each edge in this store */
@@ -232,7 +231,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     .nullLong(0)
                     .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray laneCount;
 
     /** ============ The length of each edge in this store in millimeters (2^32mm ~= 4,295km) */
@@ -241,7 +240,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     .nullInt(Integer.MIN_VALUE)
                     .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitIntArray lengthInMillimeters;
 
     /** ============ The function class for edges in this store */
@@ -252,7 +251,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                             .nullLong(7)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray roadFunctionalClass;
 
     /** ============ The names for edges in this store */
@@ -269,10 +268,10 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                 }
             };
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private RoadNameStore roadName;
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPolylineStore roadShape;
 
     /** ============ The polyline stores for the shapes of edges in this store */
@@ -288,7 +287,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     () -> (ByteArray) new ByteArray("roadState")
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private ByteArray roadState;
 
     /** ============ The road sub-type for edges in this store */
@@ -299,7 +298,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                             .nullLong(15)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray roadSubType;
 
     /** ============ The road surface types of edges in this store */
@@ -310,7 +309,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                             .nullLong(7)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray roadSurface;
 
     /** ============ The road type for edges in this store */
@@ -321,7 +320,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                             .nullLong(31)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray roadType;
 
     /** ============ The speed limit on edges in this store as a multiple of 5kph */
@@ -331,7 +330,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                             .nullByte((byte) 0)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitByteArray speedLimit;
 
     /** ============ The speed limit on edges in this store */
@@ -339,7 +338,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
             new AttributeReference<>(this, EdgeAttributes.get().SPEED_PATTERN_IDENTIFIER, "speedPatternIdentifier",
                     () -> (SplitIntArray) new SplitIntArray("speedPatternIdentifier").initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitIntArray speedPatternIdentifier;
 
     /** ============ The "to" node identifier for each edge in the store, if any */
@@ -347,7 +346,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
             new AttributeReference<>(this, EdgeAttributes.get().TO_NODE_IDENTIFIER, "toNodeIdentifier",
                     () -> (SplitLongArray) new SplitLongArray("toNodeIdentifier").initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitLongArray toNodeIdentifier;
 
     /** ============ The "to" vertex identifiers for edges in this store */
@@ -355,7 +354,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
             new AttributeReference<>(this, EdgeAttributes.get().TO_VERTEX_IDENTIFIER, "toVertexIdentifier",
                     () -> (SplitIntArray) new SplitIntArray("toVertexIdentifier").initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitIntArray toVertexIdentifier;
 
     /** ============ A reverse map from way identifier back to edge identifiers */
@@ -364,18 +363,18 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     () -> (LongToIntMultiMap) new LongToIntMultiMap("wayIdentifierToEdgeIndex")
                             .initialSize(metadata().wayCount(ALLOW_ESTIMATE).asEstimate()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private LongToIntMultiMap wayIdentifierToEdgeIndex;
 
     /**
      * The number of edges in this graph (this is different from edgeIndex because edge count reflects two way edges,
      * while edge index does not)
      */
-    @TdkArchivedField
+    @KivaKitArchivedField
     private int count;
 
     /** A spatial index for the edges in this graph */
-    @TdkArchivedField(lazy = true)
+    @KivaKitArchivedField(lazy = true)
     private CompressedEdgeSpatialIndex spatialIndex;
 
     /** Edges that are clean cut by location */
@@ -402,7 +401,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     () -> (IntToLongFixedMultiMap) new IntToLongFixedMultiMap("forwardTmcIdentifiers")
                             .initialSize(estimatedElements()).initialChildSize(8));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private IntToLongFixedMultiMap forwardTmcIdentifiers;
 
     private final AttributeReference<IntToLongFixedMultiMap> REVERSE_TMC_IDENTIFIERS =
@@ -410,7 +409,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     () -> (IntToLongFixedMultiMap) new IntToLongFixedMultiMap("reverseTmcIdentifiers")
                             .initialSize(estimatedElements()).initialChildSize(8));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private IntToLongFixedMultiMap reverseTmcIdentifiers;
 
     protected EdgeStore(final Graph graph)
@@ -1636,7 +1635,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         if (forwardIdentifiers != null && forwardIdentifiers.iterator().hasNext())
         {
             FORWARD_TMC_IDENTIFIERS.allocate();
-            forwardTmcIdentifiers.putAll(edge.index(), toLongArray(TdkGraphCoreLimits.Estimated.TMCS_PER_EDGE, forwardIdentifiers));
+            forwardTmcIdentifiers.putAll(edge.index(), toLongArray(KivaKitGraphCoreLimits.Estimated.TMCS_PER_EDGE, forwardIdentifiers));
         }
         if (edge.isTwoWay())
         {
@@ -1645,14 +1644,14 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
             if (reverseIdentifiers != null && reverseIdentifiers.iterator().hasNext())
             {
                 REVERSE_TMC_IDENTIFIERS.allocate();
-                reverseTmcIdentifiers.putAll(edge.index(), toLongArray(TdkGraphCoreLimits.Estimated.TMCS_PER_EDGE, reverseIdentifiers));
+                reverseTmcIdentifiers.putAll(edge.index(), toLongArray(KivaKitGraphCoreLimits.Estimated.TMCS_PER_EDGE, reverseIdentifiers));
             }
         }
     }
 
     private void configureSerializer()
     {
-        final var kryo = (TdkKryoSerializer) TdkSerializer.threadSerializer(this);
+        final var kryo = (KivaKitKryoSerializer) KivaKitSerializer.threadSerializer(this);
         kryo.register(CompressedEdgeSpatialIndex.class, new CompressedEdgeSpatialIndexKryoSerializer(graph()));
     }
 

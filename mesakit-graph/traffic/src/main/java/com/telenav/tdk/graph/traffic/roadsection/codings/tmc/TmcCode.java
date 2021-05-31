@@ -16,30 +16,30 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.roadsection.codings.tmc;
+package com.telenav.kivakit.graph.traffic.roadsection.codings.tmc;
 
-import com.telenav.tdk.core.kernel.conversion.BaseConverter;
-import com.telenav.tdk.core.kernel.conversion.collection.BaseListConverter;
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.language.collections.map.BoundedConcurrentMap;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.logging.Logger;
-import com.telenav.tdk.core.kernel.logging.LoggerFactory;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.graph.traffic.project.TdkGraphTrafficLimits;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionCode;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionCodingSystem;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionIdentifier;
+import com.telenav.kivakit.kernel.conversion.BaseConverter;
+import com.telenav.kivakit.kernel.conversion.collection.BaseListConverter;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.language.collections.map.BoundedConcurrentMap;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.graph.traffic.project.KivaKitGraphTrafficLimits;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionCode;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionCodingSystem;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.validation.Validate.fail;
 
 public class TmcCode extends RoadSectionCode
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
     private static final BoundedConcurrentMap<String, TmcCode> codes = new BoundedConcurrentMap<>(
-            TdkGraphTrafficLimits.MAXIMUM_TMC_CODES)
+            KivaKitGraphTrafficLimits.MAXIMUM_TMC_CODES)
     {
         @Override
         protected TmcCode onInitialize(final String code)

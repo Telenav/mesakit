@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.shapepoint;
+package com.telenav.kivakit.graph.specifications.common.shapepoint;
 
-import com.telenav.tdk.core.kernel.language.object.Lazy;
-import com.telenav.tdk.graph.metadata.DataSpecification;
-import com.telenav.tdk.graph.specifications.common.CommonDataSpecification;
-import com.telenav.tdk.graph.specifications.common.node.NodeAttributes;
+import com.telenav.kivakit.kernel.language.object.Lazy;
+import com.telenav.kivakit.graph.metadata.DataSpecification;
+import com.telenav.kivakit.graph.specifications.common.CommonDataSpecification;
+import com.telenav.kivakit.graph.specifications.common.node.NodeAttributes;
 
 public class ShapePointAttributes extends NodeAttributes
 {

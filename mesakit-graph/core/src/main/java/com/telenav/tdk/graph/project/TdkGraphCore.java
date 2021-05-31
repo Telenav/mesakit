@@ -16,29 +16,29 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.project;
+package com.telenav.kivakit.graph.project;
 
-import com.telenav.tdk.core.filesystem.Folder;
-import com.telenav.tdk.core.kernel.language.collections.set.Sets;
-import com.telenav.tdk.core.kernel.language.io.serialization.TdkSerializer;
-import com.telenav.tdk.core.kernel.language.object.Lazy;
-import com.telenav.tdk.core.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.tdk.core.kernel.project.TdkProject;
-import com.telenav.tdk.data.formats.pbf.processing.filters.PbfFilters;
-import com.telenav.tdk.data.formats.pbf.project.TdkDataFormatsPbf;
-import com.telenav.tdk.graph.traffic.project.TdkGraphTraffic;
-import com.telenav.tdk.map.region.project.TdkMapRegion;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.kernel.language.collections.set.Sets;
+import com.telenav.kivakit.kernel.language.io.serialization.KivaKitSerializer;
+import com.telenav.kivakit.kernel.language.object.Lazy;
+import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.kernel.project.KivaKitProject;
+import com.telenav.kivakit.data.formats.pbf.processing.filters.PbfFilters;
+import com.telenav.kivakit.data.formats.pbf.project.KivaKitDataFormatsPbf;
+import com.telenav.kivakit.graph.traffic.project.KivaKitGraphTraffic;
+import com.telenav.kivakit.map.region.project.KivaKitMapRegion;
 
 import java.util.Set;
 
 /**
  * @author jonathanl (shibo)
  */
-public class TdkGraphCore extends TdkProject
+public class KivaKitGraphCore extends KivaKitProject
 {
-    private static final Lazy<TdkGraphCore> singleton = new Lazy<>(TdkGraphCore::new);
+    private static final Lazy<KivaKitGraphCore> singleton = new Lazy<>(KivaKitGraphCore::new);
 
-    public static TdkGraphCore get()
+    public static KivaKitGraphCore get()
     {
         return singleton.get();
     }
@@ -48,16 +48,16 @@ public class TdkGraphCore extends TdkProject
         get().showDependencies();
     }
 
-    protected TdkGraphCore()
+    protected KivaKitGraphCore()
     {
         System.setProperty("tdk.graph.folder", graphFolder().toString());
         JavaVirtualMachine.local().invalidateProperties();
     }
 
     @Override
-    public Set<TdkProject> dependencies()
+    public Set<KivaKitProject> dependencies()
     {
-        return Sets.of(TdkMapRegion.get(), TdkGraphTraffic.get(), TdkDataFormatsPbf.get());
+        return Sets.of(KivaKitMapRegion.get(), KivaKitGraphTraffic.get(), KivaKitDataFormatsPbf.get());
     }
 
     /**
@@ -71,9 +71,9 @@ public class TdkGraphCore extends TdkProject
     }
 
     @Override
-    public TdkSerializer newSerializer()
+    public KivaKitSerializer newSerializer()
     {
-        return new TdkGraphCoreKryoSerializer();
+        return new KivaKitGraphCoreKryoSerializer();
     }
 
     @Override

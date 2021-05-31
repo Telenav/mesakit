@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.navigation.routing.promoters;
+package com.telenav.kivakit.navigation.routing.promoters;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.map.road.model.RoadFunctionalClass;
-import com.telenav.tdk.navigation.routing.LevelPromoter;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.map.road.model.RoadFunctionalClass;
+import com.telenav.kivakit.navigation.routing.LevelPromoter;
 
 public class FunctionalClassCounterLevelPromoter implements LevelPromoter
 {

@@ -16,9 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.collections;
+package com.telenav.kivakit.graph.collections;
 
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -26,7 +26,7 @@ import org.junit.Test;
  * @author jonathanl (shibo)
  */
 @Ignore
-public class EdgesForRoadSectionIdentifierTest extends TdkGraphCoreUnitTest
+public class EdgesForRoadSectionIdentifierTest extends KivaKitGraphCoreUnitTest
 {
     @Test
     public void testQuery()

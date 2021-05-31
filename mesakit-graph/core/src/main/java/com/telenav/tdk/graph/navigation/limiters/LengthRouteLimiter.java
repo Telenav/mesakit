@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.navigation.limiters;
+package com.telenav.kivakit.graph.navigation.limiters;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Route;
-import com.telenav.tdk.graph.navigation.RouteLimiter;
-import com.telenav.tdk.map.measurements.Distance;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Route;
+import com.telenav.kivakit.graph.navigation.RouteLimiter;
+import com.telenav.kivakit.map.measurements.Distance;
 
 /**
  * Limiter to ensure a route doesn't exceed a maximum total length

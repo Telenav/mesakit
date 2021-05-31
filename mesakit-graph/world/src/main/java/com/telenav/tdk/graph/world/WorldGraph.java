@@ -16,45 +16,45 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world;
+package com.telenav.kivakit.graph.world;
 
-import com.telenav.tdk.core.configuration.Deployment;
-import com.telenav.tdk.core.kernel.commandline.SwitchParser;
-import com.telenav.tdk.core.kernel.interfaces.code.Callback;
-import com.telenav.tdk.core.kernel.interfaces.object.Matcher;
-import com.telenav.tdk.core.kernel.language.matching.All;
-import com.telenav.tdk.core.kernel.language.thread.Threads;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.operation.progress.reporters.Progress;
-import com.telenav.tdk.core.kernel.scalars.bytes.Bytes;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.core.kernel.scalars.versioning.Version;
-import com.telenav.tdk.core.kernel.time.Duration;
-import com.telenav.tdk.core.resource.Resource;
-import com.telenav.tdk.data.formats.library.map.identifiers.WayIdentifier;
-import com.telenav.tdk.data.formats.pbf.model.identifiers.PbfWayIdentifier;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.collections.*;
-import com.telenav.tdk.graph.identifiers.*;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.navigation.navigators.WayNavigator;
-import com.telenav.tdk.graph.specifications.library.attributes.*;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionIdentifier;
-import com.telenav.tdk.graph.traffic.roadsection.codings.tmc.TmcTableIdentifier;
-import com.telenav.tdk.graph.world.grid.*;
-import com.telenav.tdk.graph.world.grid.WorldCell.DataType;
-import com.telenav.tdk.graph.world.identifiers.*;
-import com.telenav.tdk.graph.world.repository.WorldGraphRepositoryFolder;
-import com.telenav.tdk.map.geography.*;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.measurements.Distance;
-import com.telenav.tdk.map.region.Region;
-import com.telenav.tdk.map.road.model.RoadFunctionalClass;
+import com.telenav.kivakit.configuration.Deployment;
+import com.telenav.kivakit.kernel.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.interfaces.code.Callback;
+import com.telenav.kivakit.kernel.interfaces.object.Matcher;
+import com.telenav.kivakit.kernel.language.matching.All;
+import com.telenav.kivakit.kernel.language.thread.Threads;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.operation.progress.reporters.Progress;
+import com.telenav.kivakit.kernel.scalars.bytes.Bytes;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.scalars.versioning.Version;
+import com.telenav.kivakit.kernel.time.Duration;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.data.formats.library.map.identifiers.WayIdentifier;
+import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfWayIdentifier;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.collections.*;
+import com.telenav.kivakit.graph.identifiers.*;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.navigation.navigators.WayNavigator;
+import com.telenav.kivakit.graph.specifications.library.attributes.*;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.tmc.TmcTableIdentifier;
+import com.telenav.kivakit.graph.world.grid.*;
+import com.telenav.kivakit.graph.world.grid.WorldCell.DataType;
+import com.telenav.kivakit.graph.world.identifiers.*;
+import com.telenav.kivakit.graph.world.repository.WorldGraphRepositoryFolder;
+import com.telenav.kivakit.map.geography.*;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.measurements.Distance;
+import com.telenav.kivakit.map.region.Region;
+import com.telenav.kivakit.map.road.model.RoadFunctionalClass;
 
 import java.util.Set;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.*;
-import static com.telenav.tdk.graph.Metadata.CountType.REQUIRE_EXACT;
+import static com.telenav.kivakit.kernel.validation.Validate.*;
+import static com.telenav.kivakit.graph.Metadata.CountType.REQUIRE_EXACT;
 
 /**
  * A virtual graph composed of many smaller sub-graphs arranged in {@link WorldCell}s of a {@link WorldGrid}. The
@@ -66,7 +66,7 @@ import static com.telenav.tdk.graph.Metadata.CountType.REQUIRE_EXACT;
  * #
  * # Configuration of WorldGraph for EU OSM Team
  * #
- * configuration-class=com.telenav.tdk.graph.world.WorldGraphConfiguration
+ * configuration-class=com.telenav.kivakit.graph.world.WorldGraphConfiguration
  * cell-size=2 degrees
  * local-repository=${tdk.graph.folder}/world-graph/repositories/osmteam
  * remote-repository=hdfs://osmteam/tdk/world-graph/repositories/osmteam

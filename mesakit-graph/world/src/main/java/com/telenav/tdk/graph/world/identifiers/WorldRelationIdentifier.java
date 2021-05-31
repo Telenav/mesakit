@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world.identifiers;
+package com.telenav.kivakit.graph.world.identifiers;
 
-import com.telenav.tdk.core.kernel.language.object.Hash;
-import com.telenav.tdk.graph.identifiers.RelationIdentifier;
-import com.telenav.tdk.graph.world.WorldGraph;
-import com.telenav.tdk.graph.world.WorldRelation;
-import com.telenav.tdk.graph.world.grid.WorldCell;
+import com.telenav.kivakit.kernel.language.object.Hash;
+import com.telenav.kivakit.graph.identifiers.RelationIdentifier;
+import com.telenav.kivakit.graph.world.WorldGraph;
+import com.telenav.kivakit.graph.world.WorldRelation;
+import com.telenav.kivakit.graph.world.grid.WorldCell;
 
 /**
  * A relation identifier in a {@link WorldGraph}. Scopes a relation identifier with a {@link WorldCell}. The cell for

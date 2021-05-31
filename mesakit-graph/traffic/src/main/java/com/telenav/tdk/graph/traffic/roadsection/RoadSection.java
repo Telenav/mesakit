@@ -16,47 +16,46 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.traffic.roadsection;
 
-package com.telenav.tdk.graph.traffic.roadsection;
-
-import com.telenav.tdk.core.kernel.conversion.collection.BaseListConverter;
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.interfaces.object.Source;
-import com.telenav.tdk.core.kernel.language.collections.list.BoundedList;
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
-import com.telenav.tdk.core.kernel.language.object.Hash;
-import com.telenav.tdk.core.kernel.language.reflection.property.filters.TdkIncludeProperty;
-import com.telenav.tdk.core.kernel.language.string.formatting.ObjectFormatter;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.data.formats.library.csv.CsvColumn;
-import com.telenav.tdk.data.formats.library.csv.CsvLine;
-import com.telenav.tdk.data.formats.library.csv.CsvSchema;
-import com.telenav.tdk.data.formats.library.csv.CsvWriter;
-import com.telenav.tdk.graph.traffic.project.TdkGraphTrafficLimits;
-import com.telenav.tdk.map.geography.Latitude;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.LocationSequence;
-import com.telenav.tdk.map.geography.Longitude;
-import com.telenav.tdk.map.geography.rectangle.Bounded;
-import com.telenav.tdk.map.geography.rectangle.Intersectable;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.measurements.Distance;
-import com.telenav.tdk.map.measurements.Speed;
-import com.telenav.tdk.map.region.City;
-import com.telenav.tdk.map.road.model.BetweenCrossRoads;
-import com.telenav.tdk.map.road.model.DeCartaRoadType;
-import com.telenav.tdk.map.road.model.RoadName;
-import com.telenav.tdk.map.road.model.converters.DeCartaRoadTypeConverter;
-import com.telenav.tdk.map.road.model.converters.RoadNameConverter;
-import com.telenav.tdk.utilities.time.ZoneIdConverter;
+import com.telenav.kivakit.kernel.conversion.collection.BaseListConverter;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.interfaces.object.Source;
+import com.telenav.kivakit.kernel.language.collections.list.BoundedList;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.object.Hash;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.string.formatting.ObjectFormatter;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.data.formats.library.csv.CsvColumn;
+import com.telenav.kivakit.data.formats.library.csv.CsvLine;
+import com.telenav.kivakit.data.formats.library.csv.CsvSchema;
+import com.telenav.kivakit.data.formats.library.csv.CsvWriter;
+import com.telenav.kivakit.graph.traffic.project.KivaKitGraphTrafficLimits;
+import com.telenav.kivakit.map.geography.Latitude;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.LocationSequence;
+import com.telenav.kivakit.map.geography.Longitude;
+import com.telenav.kivakit.map.geography.rectangle.Bounded;
+import com.telenav.kivakit.map.geography.rectangle.Intersectable;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.measurements.Distance;
+import com.telenav.kivakit.map.measurements.Speed;
+import com.telenav.kivakit.map.region.City;
+import com.telenav.kivakit.map.road.model.BetweenCrossRoads;
+import com.telenav.kivakit.map.road.model.DeCartaRoadType;
+import com.telenav.kivakit.map.road.model.RoadName;
+import com.telenav.kivakit.map.road.model.converters.DeCartaRoadTypeConverter;
+import com.telenav.kivakit.map.road.model.converters.RoadNameConverter;
+import com.telenav.kivakit.utilities.time.ZoneIdConverter;
 
 import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.validation.Validate.fail;
 
 public class RoadSection implements Bounded, Intersectable, LocationSequence, Source<RoadSection>
 {
@@ -255,7 +254,7 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
         this.city = city;
     }
 
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     public Location end()
     {
         return Location.dm7(end);
@@ -277,7 +276,7 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
         return false;
     }
 
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     public Speed freeFlowSpeed()
     {
         return Speed.hundredthsOfAMilePerHour(freeFlowSpeedInHundredthsOfAMilePerHour);
@@ -305,7 +304,7 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
         return Hash.many(identifierFlags, identifierValue);
     }
 
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     public RoadSectionIdentifier identifier()
     {
         return RoadSectionIdentifier.forLongValues(identifierFlags, identifierValue);
@@ -328,7 +327,7 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
         lengthInMeters = (int) length.asMeters();
     }
 
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     public Distance length()
     {
         return Distance.meters(lengthInMeters);
@@ -383,7 +382,7 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
         this.previous = buildNeighbors(previous);
     }
 
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     public Location start()
     {
         return Location.dm7(start);
@@ -394,7 +393,7 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
         this.start = start.asLong();
     }
 
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     public ZoneId timeZone()
     {
         return timeZone;
@@ -425,7 +424,7 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
         else
         {
             final var identifiers = new ObjectList<RoadSectionIdentifier>(
-                    TdkGraphTrafficLimits.MAXIMUM_UPSTREAM_ROAD_SECTIONS).appendAll(previousIdentifiers);
+                    KivaKitGraphTrafficLimits.MAXIMUM_UPSTREAM_ROAD_SECTIONS).appendAll(previousIdentifiers);
             line.set(UPSTREAM_COLUMN, identifiers.join(":-:"));
         }
 
@@ -437,7 +436,7 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
         else
         {
             final BoundedList<RoadSectionIdentifier> identifiers = new ObjectList<RoadSectionIdentifier>(
-                    TdkGraphTrafficLimits.MAXIMUM_DOWNSTREAM_ROAD_SECTIONS).appendAll(nextIdentifiers);
+                    KivaKitGraphTrafficLimits.MAXIMUM_DOWNSTREAM_ROAD_SECTIONS).appendAll(nextIdentifiers);
             line.set(DOWNSTREAM_COLUMN, identifiers.join(":-:"));
         }
 

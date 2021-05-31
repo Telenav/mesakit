@@ -16,28 +16,27 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.osm.graph.loader;
 
-package com.telenav.tdk.graph.specifications.osm.graph.loader;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.resource.compression.archive.ZipArchive;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagFilter;
+import com.telenav.kivakit.graph.Metadata;
+import com.telenav.kivakit.graph.identifiers.collections.WayIdentifierList;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.io.load.*;
+import com.telenav.kivakit.graph.project.KivaKitGraphCore;
+import com.telenav.kivakit.graph.specifications.common.graph.loader.*;
+import com.telenav.kivakit.graph.specifications.library.pbf.PbfDataAnalysis;
+import com.telenav.kivakit.graph.specifications.library.store.GraphStore;
+import com.telenav.kivakit.graph.specifications.osm.graph.loader.sectioner.*;
+import com.telenav.kivakit.graph.ui.debuggers.edge.sectioner.VisualEdgeSectionDebugger;
+import com.telenav.kivakit.map.measurements.Distance;
 
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.tdk.core.kernel.operation.progress.ProgressReporter;
-import com.telenav.tdk.core.resource.compression.archive.ZipArchive;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfTagFilter;
-import com.telenav.tdk.graph.Metadata;
-import com.telenav.tdk.graph.identifiers.collections.WayIdentifierList;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.io.load.*;
-import com.telenav.tdk.graph.project.TdkGraphCore;
-import com.telenav.tdk.graph.specifications.common.graph.loader.*;
-import com.telenav.tdk.graph.specifications.library.pbf.PbfDataAnalysis;
-import com.telenav.tdk.graph.specifications.library.store.GraphStore;
-import com.telenav.tdk.graph.specifications.osm.graph.loader.sectioner.*;
-import com.telenav.tdk.graph.ui.debuggers.edge.sectioner.VisualEdgeSectionDebugger;
-import com.telenav.tdk.map.measurements.Distance;
-
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
-import static com.telenav.tdk.graph.Metadata.VALIDATE_EXCEPT_STATISTICS;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.graph.Metadata.VALIDATE_EXCEPT_STATISTICS;
 
 /**
  * Loads OSM data from PBF format into a {@link GraphStore}. During this process, ways are broken up into edges in a
@@ -119,7 +118,7 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
 
             if (JavaVirtualMachine.isPropertyTrue("TDK_DEBUG_SAVE_RAW_GRAPH"))
             {
-                raw.save(new GraphArchive(TdkGraphCore.get().userGraphFolder().file("raw.graph"), ProgressReporter.NULL, ZipArchive.Mode.WRITE));
+                raw.save(new GraphArchive(KivaKitGraphCore.get().userGraphFolder().file("raw.graph"), ProgressReporter.NULL, ZipArchive.Mode.WRITE));
             }
 
             // and then section the raw graph by loading it into the destination graph

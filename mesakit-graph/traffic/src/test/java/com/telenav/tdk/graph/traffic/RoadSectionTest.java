@@ -16,20 +16,19 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.traffic;
 
-package com.telenav.tdk.graph.traffic;
-
-import com.telenav.tdk.core.kernel.testing.SlowTests;
-import com.telenav.tdk.graph.traffic.project.TdkGraphTrafficUnitTest;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSection;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.measurements.Distance;
-import com.telenav.tdk.map.measurements.Speed;
+import com.telenav.kivakit.kernel.testing.SlowTests;
+import com.telenav.kivakit.graph.traffic.project.KivaKitGraphTrafficUnitTest;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSection;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.measurements.Distance;
+import com.telenav.kivakit.map.measurements.Speed;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 @Category({ SlowTests.class })
-public class RoadSectionTest extends TdkGraphTrafficUnitTest
+public class RoadSectionTest extends KivaKitGraphTrafficUnitTest
 {
     public RoadSectionTest()
     {

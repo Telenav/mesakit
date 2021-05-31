@@ -17,13 +17,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-package com.telenav.tdk.graph.relations.restrictions.classifiers;
+package com.telenav.kivakit.graph.relations.restrictions.classifiers;
 
-import com.telenav.tdk.graph.Route;
-import com.telenav.tdk.graph.analytics.classification.classifiers.turn.TurnClassifier;
-import com.telenav.tdk.graph.analytics.classification.classifiers.turn.TurnType;
-import com.telenav.tdk.map.measurements.Angle;
-import com.telenav.tdk.map.measurements.Angle.Chirality;
+import com.telenav.kivakit.graph.Route;
+import com.telenav.kivakit.graph.analytics.classification.classifiers.turn.TurnClassifier;
+import com.telenav.kivakit.graph.analytics.classification.classifiers.turn.TurnType;
+import com.telenav.kivakit.map.measurements.Angle;
+import com.telenav.kivakit.map.measurements.Angle.Chirality;
 
 /**
  * A legacy turn classifier used in the OSM++ new probe processor project for classifying turn restrictions.

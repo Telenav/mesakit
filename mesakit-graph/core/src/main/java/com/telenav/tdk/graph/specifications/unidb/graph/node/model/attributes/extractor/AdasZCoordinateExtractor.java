@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.unidb.graph.node.model.attributes.extractor;
+package com.telenav.kivakit.graph.specifications.unidb.graph.node.model.attributes.extractor;
 
-import com.telenav.tdk.core.data.extraction.BaseExtractor;
-import com.telenav.tdk.core.kernel.language.primitive.Doubles;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfNode;
-import com.telenav.tdk.graph.specifications.unidb.graph.edge.model.attributes.AdasZCoordinate;
+import com.telenav.kivakit.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.language.primitive.Doubles;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfNode;
+import com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.attributes.AdasZCoordinate;
 
 public class AdasZCoordinateExtractor extends BaseExtractor<AdasZCoordinate, PbfNode>
 {

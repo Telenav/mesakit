@@ -16,33 +16,32 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.traffic.roadsection;
 
-package com.telenav.tdk.graph.traffic.roadsection;
-
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.language.iteration.Iterables;
-import com.telenav.tdk.core.kernel.language.iteration.Next;
-import com.telenav.tdk.core.kernel.language.reflection.property.filters.TdkExcludeProperty;
-import com.telenav.tdk.core.kernel.language.reflection.property.filters.TdkIncludeProperty;
-import com.telenav.tdk.core.kernel.language.string.StringList;
-import com.telenav.tdk.core.kernel.language.string.formatting.ObjectFormatter;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.graph.traffic.project.TdkGraphTrafficLimits;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.LocationSequence;
-import com.telenav.tdk.map.geography.rectangle.Bounded;
-import com.telenav.tdk.map.geography.rectangle.BoundingBoxBuilder;
-import com.telenav.tdk.map.geography.rectangle.Intersectable;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.measurements.Distance;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.language.iteration.Iterables;
+import com.telenav.kivakit.kernel.language.iteration.Next;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.string.StringList;
+import com.telenav.kivakit.kernel.language.string.formatting.ObjectFormatter;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.graph.traffic.project.KivaKitGraphTrafficLimits;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.LocationSequence;
+import com.telenav.kivakit.map.geography.rectangle.Bounded;
+import com.telenav.kivakit.map.geography.rectangle.BoundingBoxBuilder;
+import com.telenav.kivakit.map.geography.rectangle.Intersectable;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.measurements.Distance;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.validation.Validate.fail;
 
 /**
  * An arbitrary list of {@link RoadSectionIdentifier}s with a bounding rectangle. Note that the {@link RoadSection}s
@@ -79,7 +78,7 @@ public class RoadSectionRoute implements Bounded, Intersectable, LocationSequenc
         @Override
         protected String onConvertToString(final RoadSectionRoute route)
         {
-            final var list = new StringList(TdkGraphTrafficLimits.MAXIMUM_ROAD_SECTIONS_PER_ROUTE);
+            final var list = new StringList(KivaKitGraphTrafficLimits.MAXIMUM_ROAD_SECTIONS_PER_ROUTE);
             final var converter = new RoadSectionCode.Converter(this);
             for (final var identifier : route.roadSectionIdentifiers())
             {
@@ -209,7 +208,7 @@ public class RoadSectionRoute implements Bounded, Intersectable, LocationSequenc
      * @return The minimum bounding rectangle of all road sections in this route
      */
     @Override
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     public Rectangle bounds()
     {
         if (bounds == null)
@@ -293,7 +292,7 @@ public class RoadSectionRoute implements Bounded, Intersectable, LocationSequenc
     /**
      * @return Total length of this route
      */
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     public Distance length()
     {
         var length = Distance.ZERO;
@@ -423,7 +422,7 @@ public class RoadSectionRoute implements Bounded, Intersectable, LocationSequenc
     /**
      * @return Iterates through non-null road sections
      */
-    @TdkExcludeProperty
+    @KivaKitExcludeProperty
     public Iterable<RoadSection> roadSections()
     {
         final var outer = this;
@@ -451,7 +450,7 @@ public class RoadSectionRoute implements Bounded, Intersectable, LocationSequenc
     /**
      * @return The number of road sections in this route
      */
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     public int size()
     {
         return roadSectionIdentifiers.size();

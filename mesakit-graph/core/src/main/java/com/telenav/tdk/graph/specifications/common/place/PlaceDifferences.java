@@ -16,11 +16,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.common.place;
 
-package com.telenav.tdk.graph.specifications.common.place;
-
-import com.telenav.tdk.core.kernel.comparison.Differences;
-import com.telenav.tdk.graph.Place;
+import com.telenav.kivakit.kernel.comparison.Differences;
+import com.telenav.kivakit.graph.Place;
 
 public class PlaceDifferences extends Differences
 {

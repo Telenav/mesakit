@@ -17,18 +17,18 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-package com.telenav.tdk.graph.specifications.common;
+package com.telenav.kivakit.graph.specifications.common;
 
-import com.telenav.tdk.core.kernel.language.object.Lazy;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.Metadata;
-import com.telenav.tdk.graph.metadata.DataSpecification;
-import com.telenav.tdk.graph.specifications.common.graph.store.CommonGraphStore;
-import com.telenav.tdk.graph.specifications.common.place.store.PlaceStore;
-import com.telenav.tdk.graph.specifications.common.relation.store.RelationStore;
-import com.telenav.tdk.graph.specifications.common.shapepoint.store.ShapePointStore;
-import com.telenav.tdk.graph.specifications.common.vertex.store.VertexStore;
-import com.telenav.tdk.graph.specifications.library.store.GraphStore;
+import com.telenav.kivakit.kernel.language.object.Lazy;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.Metadata;
+import com.telenav.kivakit.graph.metadata.DataSpecification;
+import com.telenav.kivakit.graph.specifications.common.graph.store.CommonGraphStore;
+import com.telenav.kivakit.graph.specifications.common.place.store.PlaceStore;
+import com.telenav.kivakit.graph.specifications.common.relation.store.RelationStore;
+import com.telenav.kivakit.graph.specifications.common.shapepoint.store.ShapePointStore;
+import com.telenav.kivakit.graph.specifications.common.vertex.store.VertexStore;
+import com.telenav.kivakit.graph.specifications.library.store.GraphStore;
 
 /**
  * Data specification common to all data. Note that common factories, properties and attributes are inherited from

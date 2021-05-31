@@ -17,12 +17,12 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-package com.telenav.tdk.navigation.routing.cost.functions;
+package com.telenav.kivakit.navigation.routing.cost.functions;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Route;
-import com.telenav.tdk.navigation.routing.cost.EdgePermissionFunction;
-import com.telenav.tdk.navigation.routing.cost.RoutePermissionFunction;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Route;
+import com.telenav.kivakit.navigation.routing.cost.EdgePermissionFunction;
+import com.telenav.kivakit.navigation.routing.cost.RoutePermissionFunction;
 
 /**
  * Determines if turns are allowed or not

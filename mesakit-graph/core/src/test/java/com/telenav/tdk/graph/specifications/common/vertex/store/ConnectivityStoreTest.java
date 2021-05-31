@@ -16,18 +16,18 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.vertex.store;
+package com.telenav.kivakit.graph.specifications.common.vertex.store;
 
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.measurements.Distance;
-import com.telenav.tdk.map.measurements.Heading;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.measurements.Distance;
+import com.telenav.kivakit.map.measurements.Heading;
 import org.junit.Test;
 
 /**
  * @author jonathanl (shibo)
  */
-public class ConnectivityStoreTest extends TdkGraphCoreUnitTest
+public class ConnectivityStoreTest extends KivaKitGraphCoreUnitTest
 {
     @Test
     public void test()

@@ -18,7 +18,7 @@ public class MesaKit extends Project
 
     public Folder cacheFolder()
     {
-        return mesakitFolder().folder(version().toString()).mkdirs();
+        return mesakitFolder().folder(projectVersion().toString()).mkdirs();
     }
 
     public Folder mesakitAllVersionsFolder()

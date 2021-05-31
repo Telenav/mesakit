@@ -16,10 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph;
 
-package com.telenav.tdk.graph;
-
-import com.telenav.tdk.map.measurements.Distance;
+import com.telenav.kivakit.map.measurements.Distance;
 
 /**
  * Builds a route by adding edges to the ends before calling {@link #route()} to build the {@link Route}.

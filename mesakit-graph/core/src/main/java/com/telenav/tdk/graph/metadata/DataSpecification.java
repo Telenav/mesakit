@@ -16,43 +16,43 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.metadata;
+package com.telenav.kivakit.graph.metadata;
 
-import com.telenav.tdk.core.collections.map.multi.MultiMap;
-import com.telenav.tdk.core.collections.primitive.array.scalars.IntArray;
-import com.telenav.tdk.core.kernel.commandline.SwitchParser;
-import com.telenav.tdk.core.kernel.comparison.Differences;
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.interfaces.naming.NamedObject;
-import com.telenav.tdk.core.kernel.interfaces.object.Matcher;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.core.kernel.validation.Validation;
-import com.telenav.tdk.data.formats.library.DataFormat;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.io.convert.GraphConverter;
-import com.telenav.tdk.graph.io.load.GraphLoader;
-import com.telenav.tdk.graph.specifications.common.*;
-import com.telenav.tdk.graph.specifications.common.edge.*;
-import com.telenav.tdk.graph.specifications.common.edge.store.EdgeStore;
-import com.telenav.tdk.graph.specifications.common.place.*;
-import com.telenav.tdk.graph.specifications.common.place.store.PlaceStore;
-import com.telenav.tdk.graph.specifications.common.relation.*;
-import com.telenav.tdk.graph.specifications.common.relation.store.RelationStore;
-import com.telenav.tdk.graph.specifications.common.shapepoint.ShapePointProperties;
-import com.telenav.tdk.graph.specifications.common.shapepoint.store.ShapePointStore;
-import com.telenav.tdk.graph.specifications.common.vertex.*;
-import com.telenav.tdk.graph.specifications.common.vertex.store.VertexStore;
-import com.telenav.tdk.graph.specifications.library.attributes.*;
-import com.telenav.tdk.graph.specifications.library.properties.GraphElementPropertySet;
-import com.telenav.tdk.graph.specifications.library.store.GraphStore;
-import com.telenav.tdk.graph.specifications.osm.OsmDataSpecification;
-import com.telenav.tdk.graph.specifications.unidb.UniDbDataSpecification;
+import com.telenav.kivakit.collections.map.multi.MultiMap;
+import com.telenav.kivakit.collections.primitive.array.scalars.IntArray;
+import com.telenav.kivakit.kernel.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.comparison.Differences;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.kernel.interfaces.object.Matcher;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.kernel.validation.Validation;
+import com.telenav.kivakit.data.formats.library.DataFormat;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.io.convert.GraphConverter;
+import com.telenav.kivakit.graph.io.load.GraphLoader;
+import com.telenav.kivakit.graph.specifications.common.*;
+import com.telenav.kivakit.graph.specifications.common.edge.*;
+import com.telenav.kivakit.graph.specifications.common.edge.store.EdgeStore;
+import com.telenav.kivakit.graph.specifications.common.place.*;
+import com.telenav.kivakit.graph.specifications.common.place.store.PlaceStore;
+import com.telenav.kivakit.graph.specifications.common.relation.*;
+import com.telenav.kivakit.graph.specifications.common.relation.store.RelationStore;
+import com.telenav.kivakit.graph.specifications.common.shapepoint.ShapePointProperties;
+import com.telenav.kivakit.graph.specifications.common.shapepoint.store.ShapePointStore;
+import com.telenav.kivakit.graph.specifications.common.vertex.*;
+import com.telenav.kivakit.graph.specifications.common.vertex.store.VertexStore;
+import com.telenav.kivakit.graph.specifications.library.attributes.*;
+import com.telenav.kivakit.graph.specifications.library.properties.GraphElementPropertySet;
+import com.telenav.kivakit.graph.specifications.library.store.GraphStore;
+import com.telenav.kivakit.graph.specifications.osm.OsmDataSpecification;
+import com.telenav.kivakit.graph.specifications.unidb.UniDbDataSpecification;
 
 import java.util.*;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.*;
+import static com.telenav.kivakit.kernel.validation.Validate.*;
 
 /**
  * A specification of {@link Graph} data and its storage, independent of format or supplier. For example, data of UniDB
@@ -110,7 +110,7 @@ public abstract class DataSpecification implements NamedObject
                     fail("Unrecognized data specification '$'", name);
             }
 
-            final var className = "com.telenav.tdk.graph.specifications." + name.toLowerCase() + "." + name + "DataSpecification";
+            final var className = "com.telenav.kivakit.graph.specifications." + name.toLowerCase() + "." + name + "DataSpecification";
             final var type = Class.forName(className);
             final var getter = type.getMethod("get");
             return (DataSpecification) getter.invoke(null);

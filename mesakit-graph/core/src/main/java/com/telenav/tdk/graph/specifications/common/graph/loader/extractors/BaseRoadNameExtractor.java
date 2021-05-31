@@ -16,19 +16,19 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.graph.loader.extractors;
+package com.telenav.kivakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.tdk.core.data.extraction.BaseExtractor;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.core.utilities.locale.Language;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfWay;
-import com.telenav.tdk.map.region.Country;
-import com.telenav.tdk.map.region.locale.MapLocale;
-import com.telenav.tdk.map.road.model.RoadName;
-import com.telenav.tdk.map.road.name.standardizer.RoadNameStandardizer;
+import com.telenav.kivakit.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.utilities.locale.Language;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
+import com.telenav.kivakit.map.region.Country;
+import com.telenav.kivakit.map.region.locale.MapLocale;
+import com.telenav.kivakit.map.road.model.RoadName;
+import com.telenav.kivakit.map.road.name.standardizer.RoadNameStandardizer;
 
 import java.util.List;
 

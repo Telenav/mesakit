@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.project;
+package com.telenav.kivakit.graph.project;
 
-import com.telenav.tdk.core.kernel.time.Duration;
-import com.telenav.tdk.map.geography.project.TdkMapGeographyRandomValueFactory;
-import com.telenav.tdk.map.road.model.BetweenCrossRoads;
-import com.telenav.tdk.map.road.model.Intersection;
-import com.telenav.tdk.map.road.model.RoadName;
-import com.telenav.tdk.utilities.time.HistoricalTimeOfWeek;
+import com.telenav.kivakit.kernel.time.Duration;
+import com.telenav.kivakit.map.geography.project.KivaKitMapGeographyRandomValueFactory;
+import com.telenav.kivakit.map.road.model.BetweenCrossRoads;
+import com.telenav.kivakit.map.road.model.Intersection;
+import com.telenav.kivakit.map.road.model.RoadName;
+import com.telenav.kivakit.utilities.time.HistoricalTimeOfWeek;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ import java.util.List;
  *
  * @author jonathanl (shibo)
  */
-public class TdkGraphCoreRandomValueFactory extends TdkMapGeographyRandomValueFactory
+public class KivaKitGraphCoreRandomValueFactory extends KivaKitMapGeographyRandomValueFactory
 {
     protected abstract class RandomListBuilder<T>
     {
@@ -55,11 +55,11 @@ public class TdkGraphCoreRandomValueFactory extends TdkMapGeographyRandomValueFa
         protected abstract T newElement();
     }
 
-    public TdkGraphCoreRandomValueFactory()
+    public KivaKitGraphCoreRandomValueFactory()
     {
     }
 
-    public TdkGraphCoreRandomValueFactory(final long seed)
+    public KivaKitGraphCoreRandomValueFactory(final long seed)
     {
         super(seed);
     }

@@ -16,14 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.navigation.routing.limiters;
 
-package com.telenav.tdk.navigation.routing.limiters;
-
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.navigation.routing.RoutingInstruction;
-import com.telenav.tdk.navigation.routing.RoutingLimiter;
-import com.telenav.tdk.navigation.routing.StopRoutingInstruction;
-import com.telenav.tdk.utilities.time.PreciseDuration;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.navigation.routing.RoutingInstruction;
+import com.telenav.kivakit.navigation.routing.RoutingLimiter;
+import com.telenav.kivakit.navigation.routing.StopRoutingInstruction;
+import com.telenav.kivakit.utilities.time.PreciseDuration;
 
 public class CpuTimeRoutingLimiter implements RoutingLimiter
 {

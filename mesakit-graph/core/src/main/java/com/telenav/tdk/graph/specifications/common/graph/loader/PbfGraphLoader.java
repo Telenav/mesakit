@@ -16,21 +16,21 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.graph.loader;
+package com.telenav.kivakit.graph.specifications.common.graph.loader;
 
-import com.telenav.tdk.core.kernel.operation.progress.ProgressReporter;
-import com.telenav.tdk.core.resource.Resource;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfTagFilter;
-import com.telenav.tdk.data.formats.pbf.processing.PbfDataSource;
-import com.telenav.tdk.data.formats.pbf.processing.filters.*;
-import com.telenav.tdk.data.formats.pbf.processing.filters.all.*;
-import com.telenav.tdk.data.formats.pbf.processing.readers.SerialPbfReader;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.io.load.*;
-import com.telenav.tdk.graph.io.load.loaders.BaseGraphLoader;
-import com.telenav.tdk.graph.specifications.library.pbf.PbfDataSourceFactory;
-import com.telenav.tdk.graph.specifications.library.store.GraphStore;
-import com.telenav.tdk.map.region.Region;
+import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagFilter;
+import com.telenav.kivakit.data.formats.pbf.processing.PbfDataSource;
+import com.telenav.kivakit.data.formats.pbf.processing.filters.*;
+import com.telenav.kivakit.data.formats.pbf.processing.filters.all.*;
+import com.telenav.kivakit.data.formats.pbf.processing.readers.SerialPbfReader;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.io.load.*;
+import com.telenav.kivakit.graph.io.load.loaders.BaseGraphLoader;
+import com.telenav.kivakit.graph.specifications.library.pbf.PbfDataSourceFactory;
+import com.telenav.kivakit.graph.specifications.library.store.GraphStore;
+import com.telenav.kivakit.map.region.Region;
 
 /**
  * A {@link PbfGraphLoader} loads data from PBF format into a {@link GraphStore} when {@link Graph#load(GraphLoader,

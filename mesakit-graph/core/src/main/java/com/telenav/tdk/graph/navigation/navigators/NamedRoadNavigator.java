@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.navigation.navigators;
+package com.telenav.kivakit.graph.navigation.navigators;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.collections.EdgeSet;
-import com.telenav.tdk.graph.navigation.Navigator;
-import com.telenav.tdk.map.road.model.RoadFunctionalClass;
-import com.telenav.tdk.map.road.model.RoadName;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.collections.EdgeSet;
+import com.telenav.kivakit.graph.navigation.Navigator;
+import com.telenav.kivakit.map.road.model.RoadFunctionalClass;
+import com.telenav.kivakit.map.road.model.RoadName;
 
 /**
  * Navigates a section of road with the same name, no branches, no u-turns and no loops.

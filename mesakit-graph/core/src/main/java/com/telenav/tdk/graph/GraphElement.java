@@ -16,42 +16,42 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph;
+package com.telenav.kivakit.graph;
 
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.interfaces.collection.Indexed;
-import com.telenav.tdk.core.kernel.interfaces.naming.Named;
-import com.telenav.tdk.core.kernel.interfaces.numeric.Quantizable;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.language.string.conversion.*;
-import com.telenav.tdk.core.kernel.language.thread.context.CallStack;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.scalars.counts.Maximum;
-import com.telenav.tdk.core.kernel.scalars.identifiers.LongKeyed;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.core.kernel.validation.*;
-import com.telenav.tdk.core.kernel.validation.validators.BaseValidator;
-import com.telenav.tdk.data.formats.library.map.identifiers.*;
-import com.telenav.tdk.data.formats.pbf.model.change.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.*;
-import com.telenav.tdk.graph.identifiers.*;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.io.load.GraphLoader;
-import com.telenav.tdk.graph.metadata.*;
-import com.telenav.tdk.graph.specifications.common.edge.HeavyWeightEdge;
-import com.telenav.tdk.graph.specifications.common.element.*;
-import com.telenav.tdk.graph.specifications.common.place.HeavyWeightPlace;
-import com.telenav.tdk.graph.specifications.common.relation.HeavyWeightRelation;
-import com.telenav.tdk.graph.specifications.common.vertex.HeavyWeightVertex;
-import com.telenav.tdk.graph.specifications.library.attributes.Attribute;
-import com.telenav.tdk.graph.specifications.library.properties.GraphElementPropertySet;
-import com.telenav.tdk.graph.specifications.library.store.GraphStore;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.interfaces.collection.Indexed;
+import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.language.string.conversion.*;
+import com.telenav.kivakit.kernel.language.thread.context.CallStack;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.kernel.scalars.identifiers.LongKeyed;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.kernel.validation.*;
+import com.telenav.kivakit.kernel.validation.validators.BaseValidator;
+import com.telenav.kivakit.data.formats.library.map.identifiers.*;
+import com.telenav.kivakit.data.formats.pbf.model.change.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.*;
+import com.telenav.kivakit.graph.identifiers.*;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.io.load.GraphLoader;
+import com.telenav.kivakit.graph.metadata.*;
+import com.telenav.kivakit.graph.specifications.common.edge.HeavyWeightEdge;
+import com.telenav.kivakit.graph.specifications.common.element.*;
+import com.telenav.kivakit.graph.specifications.common.place.HeavyWeightPlace;
+import com.telenav.kivakit.graph.specifications.common.relation.HeavyWeightRelation;
+import com.telenav.kivakit.graph.specifications.common.vertex.HeavyWeightVertex;
+import com.telenav.kivakit.graph.specifications.library.attributes.Attribute;
+import com.telenav.kivakit.graph.specifications.library.properties.GraphElementPropertySet;
+import com.telenav.kivakit.graph.specifications.library.store.GraphStore;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
-import static com.telenav.tdk.core.kernel.language.thread.context.CallStack.Matching.SUBCLASS;
-import static com.telenav.tdk.core.kernel.language.thread.context.CallStack.Proximity.DISTANT;
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.language.thread.context.CallStack.Matching.SUBCLASS;
+import static com.telenav.kivakit.kernel.language.thread.context.CallStack.Proximity.DISTANT;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
 
 /**
  * Base class for {@link Edge}, {@link EdgeRelation}, {@link Vertex}, {@link ShapePoint} and {@link Place} elements in a

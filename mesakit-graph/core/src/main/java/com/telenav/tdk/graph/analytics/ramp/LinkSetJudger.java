@@ -16,14 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.analytics.ramp;
 
-package com.telenav.tdk.graph.analytics.ramp;
-
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Route;
-import com.telenav.tdk.graph.collections.EdgeSet;
-import com.telenav.tdk.graph.library.matchers.Matchers;
-import com.telenav.tdk.map.measurements.Distance;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Route;
+import com.telenav.kivakit.graph.collections.EdgeSet;
+import com.telenav.kivakit.graph.library.matchers.Matchers;
+import com.telenav.kivakit.map.measurements.Distance;
 
 import java.util.HashSet;
 

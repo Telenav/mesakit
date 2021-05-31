@@ -16,29 +16,29 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.unidb.graph.edge.store;
+package com.telenav.kivakit.graph.specifications.unidb.graph.edge.store;
 
-import com.telenav.tdk.core.collections.primitive.array.packed.SplitPackedArray;
-import com.telenav.tdk.core.collections.primitive.array.scalars.SplitByteArray;
-import com.telenav.tdk.core.collections.primitive.map.multi.fixed.*;
-import com.telenav.tdk.core.collections.primitive.set.SplitLongSet;
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.core.resource.compression.archive.TdkArchivedField;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.specifications.common.edge.EdgeAttributes;
-import com.telenav.tdk.graph.specifications.common.edge.store.EdgeStore;
-import com.telenav.tdk.graph.specifications.common.element.ArchivedGraphElementStore;
-import com.telenav.tdk.graph.specifications.library.attributes.AttributeReference;
-import com.telenav.tdk.graph.specifications.unidb.UniDbDataSpecification;
-import com.telenav.tdk.graph.specifications.unidb.graph.edge.model.*;
-import com.telenav.tdk.graph.specifications.unidb.graph.edge.model.attributes.*;
-import com.telenav.tdk.map.measurements.*;
-import com.telenav.tdk.map.road.model.*;
+import com.telenav.kivakit.collections.primitive.array.packed.SplitPackedArray;
+import com.telenav.kivakit.collections.primitive.array.scalars.SplitByteArray;
+import com.telenav.kivakit.collections.primitive.map.multi.fixed.*;
+import com.telenav.kivakit.collections.primitive.set.SplitLongSet;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.specifications.common.edge.EdgeAttributes;
+import com.telenav.kivakit.graph.specifications.common.edge.store.EdgeStore;
+import com.telenav.kivakit.graph.specifications.common.element.ArchivedGraphElementStore;
+import com.telenav.kivakit.graph.specifications.library.attributes.AttributeReference;
+import com.telenav.kivakit.graph.specifications.unidb.UniDbDataSpecification;
+import com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.*;
+import com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.attributes.*;
+import com.telenav.kivakit.map.measurements.*;
+import com.telenav.kivakit.map.road.model.*;
 
 import java.util.List;
 
-import static com.telenav.tdk.core.collections.primitive.array.packed.PackedPrimitiveArray.OverflowHandling.*;
+import static com.telenav.kivakit.collections.primitive.array.packed.PackedPrimitiveArray.OverflowHandling.*;
 
 /**
  * Store of edge attributes that are specific to the {@link UniDbDataSpecification}.
@@ -58,7 +58,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .hasNullLong(false)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray accessType;
 
     private final AttributeReference<IntToPackedArrayFixedMultiMap> ADAS_Z_COORDINATES =
@@ -68,7 +68,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .listTerminator(-500_00) // The lowest road in the world is higher than 500 meters
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private IntToPackedArrayFixedMultiMap adasZCoordinates;
 
     private final AttributeReference<SplitPackedArray> REVERSE_LANE_COUNT =
@@ -78,7 +78,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .hasNullLong(false)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray reverseLaneCount;
 
     private final AttributeReference<IntToPackedArrayFixedMultiMap> CURVATURES =
@@ -88,7 +88,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .listTerminator(AdasCurvature.NULL)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private IntToPackedArrayFixedMultiMap curvatures;
 
     private final AttributeReference<SplitPackedArray> FORM_OF_WAY =
@@ -98,7 +98,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .hasNullLong(false)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray formOfWay;
 
     private final AttributeReference<SplitPackedArray> FORWARD_LANE_COUNT =
@@ -108,7 +108,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .hasNullLong(false)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray forwardLaneCount;
 
     private final AttributeReference<SplitByteArray> FORWARD_REFERENCE_SPEED_IN_KILOMETERS_PER_HOUR =
@@ -117,7 +117,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .nullByte(Byte.MIN_VALUE)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitByteArray forwardReferenceSpeedInKilometersPerHour;
 
     private final AttributeReference<SplitPackedArray> FORWARD_REGION_CODE =
@@ -126,7 +126,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .bits(Bits._16, ALLOW_OVERFLOW)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray forwardRegionCode;
 
     private final AttributeReference<IntToPackedArrayFixedMultiMap> HEADINGS =
@@ -136,7 +136,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .listTerminator(Heading.NULL)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private IntToPackedArrayFixedMultiMap headings;
 
     private final AttributeReference<SplitByteArray> HIGHWAY_TYPE =
@@ -145,7 +145,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .nullByte(Byte.MIN_VALUE)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitByteArray highwayType;
 
     private final AttributeReference<SplitPackedArray> IS_BUILD_UP_AREA =
@@ -155,14 +155,14 @@ public final class UniDbEdgeStore extends EdgeStore
                             .hasNullLong(false)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray isBuildUpArea;
 
     private final AttributeReference<SplitLongSet> IS_COMPLEX_INTERSECTION =
             new AttributeReference<>(this, UniDbEdgeAttributes.get().IS_COMPLEX_INTERSECTION, "isComplexIntersection",
                     () -> new SplitLongSet("isComplexIntersection"));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitLongSet isComplexIntersection;
 
     private final AttributeReference<SplitPackedArray> IS_DIVIDED_ROAD =
@@ -172,14 +172,14 @@ public final class UniDbEdgeStore extends EdgeStore
                             .hasNullLong(false)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray isDividedRoad;
 
     private final AttributeReference<SplitLongSet> IS_REVERSE_ONE_WAY =
             new AttributeReference<>(this, EdgeAttributes.get().IS_REVERSE_ONE_WAY, "isReverseOneWay",
                     () -> new SplitLongSet("isReverseOneWay"));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitLongSet isReverseOneWay;
 
     private final AttributeReference<SplitPackedArray> IS_LEFT_SIDE_DRIVING =
@@ -189,7 +189,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .hasNullLong(false)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray isLeftSideDriving;
 
     private final AttributeReference<SplitPackedArray> SPEED_LIMIT_SOURCE =
@@ -199,7 +199,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .hasNullLong(false)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray speedLimitSource;
 
     private final AttributeReference<IntToPackedArrayFixedMultiMap> TURN_LANE_ARROWS =
@@ -209,7 +209,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .listTerminator(TurnLane.NULL)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private IntToPackedArrayFixedMultiMap turnLaneArrows;
 
     private final AttributeReference<IntToPackedArrayFixedMultiMap> LANE_ONE_WAYS =
@@ -219,7 +219,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .listTerminator(OneWayLane.NULL)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private IntToPackedArrayFixedMultiMap laneOneWays;
 
     private final AttributeReference<IntToPackedArrayFixedMultiMap> LANE_TYPES =
@@ -229,7 +229,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .listTerminator(Lane.NULL)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private IntToPackedArrayFixedMultiMap laneTypes;
 
     private final AttributeReference<IntToPackedArrayFixedMultiMap> LANE_DIVIDERS =
@@ -239,7 +239,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .listTerminator(LaneDivider.NULL)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private IntToPackedArrayFixedMultiMap laneDividers;
 
     private final AttributeReference<SplitPackedArray> OVERPASS_UNDERPASS =
@@ -249,7 +249,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .hasNullLong(false)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray overpassUnderpass;
 
     private final AttributeReference<SplitByteArray> REVERSE_REFERENCE_SPEED_IN_KILOMETERS_PER_HOUR =
@@ -258,7 +258,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .nullByte(Byte.MIN_VALUE)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitByteArray reverseReferenceSpeedInKilometersPerHour;
 
     private final AttributeReference<SplitPackedArray> REVERSE_REGION_CODE =
@@ -267,7 +267,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .bits(Bits._16, ALLOW_OVERFLOW)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray reverseRegionCode;
 
     private final AttributeReference<SplitPackedArray> ROUTE_TYPE =
@@ -277,7 +277,7 @@ public final class UniDbEdgeStore extends EdgeStore
                             .nullLong(RouteType.NULL)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray routeType;
 
     private final AttributeReference<IntToByteFixedMultiMap> SLOPES =
@@ -285,7 +285,7 @@ public final class UniDbEdgeStore extends EdgeStore
                     () -> (IntToByteFixedMultiMap) new IntToByteFixedMultiMap("slopes")
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private IntToByteFixedMultiMap slopes;
 
     public UniDbEdgeStore(final Graph graph)

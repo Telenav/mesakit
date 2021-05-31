@@ -16,18 +16,18 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.ui.debuggers.edge.sectioner;
+package com.telenav.kivakit.graph.ui.debuggers.edge.sectioner;
 
-import com.telenav.tdk.core.kernel.scalars.levels.Percentage;
-import com.telenav.tdk.core.kernel.time.Duration;
-import com.telenav.tdk.graph.specifications.osm.graph.loader.sectioner.EdgeSection;
-import com.telenav.tdk.graph.specifications.osm.graph.loader.sectioner.EdgeSectionerDebugger;
-import com.telenav.tdk.map.ui.swing.debug.InteractiveView;
-import com.telenav.tdk.map.ui.swing.debug.ViewableIdentifier;
-import com.telenav.tdk.map.ui.swing.debug.viewables.ViewablePolyline;
-import com.telenav.tdk.map.ui.swing.debug.viewer.ColorSequence;
-import com.telenav.tdk.map.ui.swing.debug.viewer.empty.NullInteractiveView;
-import com.telenav.tdk.map.ui.swing.debug.viewer.swing.SwingViewer;
+import com.telenav.kivakit.kernel.scalars.levels.Percentage;
+import com.telenav.kivakit.kernel.time.Duration;
+import com.telenav.kivakit.graph.specifications.osm.graph.loader.sectioner.EdgeSection;
+import com.telenav.kivakit.graph.specifications.osm.graph.loader.sectioner.EdgeSectionerDebugger;
+import com.telenav.kivakit.map.ui.swing.debug.InteractiveView;
+import com.telenav.kivakit.map.ui.swing.debug.ViewableIdentifier;
+import com.telenav.kivakit.map.ui.swing.debug.viewables.ViewablePolyline;
+import com.telenav.kivakit.map.ui.swing.debug.viewer.ColorSequence;
+import com.telenav.kivakit.map.ui.swing.debug.viewer.empty.NullInteractiveView;
+import com.telenav.kivakit.map.ui.swing.debug.viewer.swing.SwingViewer;
 
 import java.awt.*;
 

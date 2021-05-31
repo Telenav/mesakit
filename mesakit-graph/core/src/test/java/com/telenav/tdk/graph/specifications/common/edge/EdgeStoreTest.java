@@ -16,22 +16,22 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.edge;
+package com.telenav.kivakit.graph.specifications.common.edge;
 
-import com.telenav.tdk.core.kernel.logging.Logger;
-import com.telenav.tdk.core.kernel.logging.LoggerFactory;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Metadata;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
-import com.telenav.tdk.graph.specifications.osm.OsmDataSpecification;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Metadata;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.kivakit.graph.specifications.osm.OsmDataSpecification;
 import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static com.telenav.tdk.data.formats.library.DataFormat.PBF;
-import static com.telenav.tdk.graph.metadata.DataSupplier.OSM;
+import static com.telenav.kivakit.data.formats.library.DataFormat.PBF;
+import static com.telenav.kivakit.graph.metadata.DataSupplier.OSM;
 
-public class EdgeStoreTest extends TdkGraphCoreUnitTest
+public class EdgeStoreTest extends KivaKitGraphCoreUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

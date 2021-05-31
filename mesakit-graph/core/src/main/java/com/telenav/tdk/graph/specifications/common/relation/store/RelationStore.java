@@ -16,37 +16,37 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.relation.store;
+package com.telenav.kivakit.graph.specifications.common.relation.store;
 
-import com.telenav.tdk.core.collections.primitive.array.packed.SplitPackedArray;
-import com.telenav.tdk.core.collections.primitive.array.scalars.*;
-import com.telenav.tdk.core.collections.primitive.map.multi.fixed.*;
-import com.telenav.tdk.core.collections.primitive.map.scalars.LongToIntMap;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.language.primitive.Ints;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.core.kernel.validation.*;
-import com.telenav.tdk.core.resource.compression.archive.TdkArchivedField;
-import com.telenav.tdk.data.formats.library.map.identifiers.*;
-import com.telenav.tdk.data.formats.pbf.model.identifiers.PbfIdentifierType;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.collections.EdgeSet;
-import com.telenav.tdk.graph.identifiers.RelationIdentifier;
-import com.telenav.tdk.graph.io.load.GraphConstraints;
-import com.telenav.tdk.graph.metadata.DataSpecification.GraphElementFactory;
-import com.telenav.tdk.graph.project.TdkGraphCoreLimits.Estimated;
-import com.telenav.tdk.graph.specifications.common.element.ArchivedGraphElementStore;
-import com.telenav.tdk.graph.specifications.common.relation.RelationAttributes;
-import com.telenav.tdk.graph.specifications.library.attributes.AttributeReference;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.road.model.GradeSeparation;
+import com.telenav.kivakit.collections.primitive.array.packed.SplitPackedArray;
+import com.telenav.kivakit.collections.primitive.array.scalars.*;
+import com.telenav.kivakit.collections.primitive.map.multi.fixed.*;
+import com.telenav.kivakit.collections.primitive.map.scalars.LongToIntMap;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.language.primitive.Ints;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.validation.*;
+import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.data.formats.library.map.identifiers.*;
+import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfIdentifierType;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.collections.EdgeSet;
+import com.telenav.kivakit.graph.identifiers.RelationIdentifier;
+import com.telenav.kivakit.graph.io.load.GraphConstraints;
+import com.telenav.kivakit.graph.metadata.DataSpecification.GraphElementFactory;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreLimits.Estimated;
+import com.telenav.kivakit.graph.specifications.common.element.ArchivedGraphElementStore;
+import com.telenav.kivakit.graph.specifications.common.relation.RelationAttributes;
+import com.telenav.kivakit.graph.specifications.library.attributes.AttributeReference;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.road.model.GradeSeparation;
 
 import java.util.*;
 
-import static com.telenav.tdk.core.collections.primitive.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
-import static com.telenav.tdk.core.kernel.validation.Validation.VALIDATE_ALL;
-import static com.telenav.tdk.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.kivakit.collections.primitive.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
+import static com.telenav.kivakit.kernel.validation.Validation.VALIDATE_ALL;
+import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 
 /**
  * Packed relation attributes.
@@ -69,7 +69,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
                             .nullByte((byte) EdgeRelation.Type.UNKNOWN.identifier())
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitPackedArray type;
 
     private final AttributeReference<LongToIntMap> MAP_IDENTIFIER =
@@ -77,7 +77,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
                     () -> (LongToIntMap) new LongToIntMap("mapIdentifierToIdentifier")
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private LongToIntMap mapIdentifierToIdentifier;
 
     private final AttributeReference<IntToLongFixedMultiMap> MEMBER_IDENTIFIERS =
@@ -86,7 +86,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
                             .initialChildSize(Estimated.EDGES_PER_RELATION)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private IntToLongFixedMultiMap memberIdentifiers;
 
     private final AttributeReference<IntToPackedArrayFixedMultiMap> MEMBER_ROLES =
@@ -97,7 +97,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
                             .initialChildSize(Estimated.EDGES_PER_RELATION)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private IntToPackedArrayFixedMultiMap memberRoles;
 
     private final AttributeReference<SplitLongArray> VIA_NODE_LOCATION =
@@ -105,7 +105,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
                     () -> (SplitLongArray) new SplitLongArray("viaNodeLocation")
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitLongArray viaNodeLocation;
 
     public RelationStore(final Graph graph)

@@ -16,29 +16,29 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.library.pbf;
+package com.telenav.kivakit.graph.specifications.library.pbf;
 
-import com.telenav.tdk.core.collections.primitive.set.SplitLongSet;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.language.string.conversion.AsStringIndenter;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.tdk.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.tdk.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
-import com.telenav.tdk.data.formats.pbf.model.tags.*;
-import com.telenav.tdk.data.formats.pbf.processing.*;
-import com.telenav.tdk.data.formats.pbf.processing.filters.WayFilter;
-import com.telenav.tdk.graph.Metadata;
-import com.telenav.tdk.graph.specifications.common.node.store.all.disk.PbfAllNodeDiskStores;
-import com.telenav.tdk.map.geography.rectangle.*;
+import com.telenav.kivakit.collections.primitive.set.SplitLongSet;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.language.string.conversion.AsStringIndenter;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
+import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.kivakit.data.formats.pbf.model.tags.*;
+import com.telenav.kivakit.data.formats.pbf.processing.*;
+import com.telenav.kivakit.data.formats.pbf.processing.filters.WayFilter;
+import com.telenav.kivakit.graph.Metadata;
+import com.telenav.kivakit.graph.specifications.common.node.store.all.disk.PbfAllNodeDiskStores;
+import com.telenav.kivakit.map.geography.rectangle.*;
 import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
 
 import java.util.Collection;
 
-import static com.telenav.tdk.core.kernel.language.string.conversion.StringFormat.USER_DETAILS;
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
-import static com.telenav.tdk.data.formats.pbf.processing.PbfDataProcessor.Result.ACCEPTED;
-import static com.telenav.tdk.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.kivakit.kernel.language.string.conversion.StringFormat.USER_DETAILS;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.data.formats.pbf.processing.PbfDataProcessor.Result.ACCEPTED;
+import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 
 /**
  * Holds information obtained by analyzing an PBF resource, including basic information:

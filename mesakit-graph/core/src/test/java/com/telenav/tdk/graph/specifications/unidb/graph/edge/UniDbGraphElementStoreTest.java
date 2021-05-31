@@ -16,30 +16,30 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.unidb.graph.edge;
+package com.telenav.kivakit.graph.specifications.unidb.graph.edge;
 
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Place.Type;
-import com.telenav.tdk.graph.identifiers.*;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
-import com.telenav.tdk.graph.specifications.common.place.HeavyWeightPlace;
-import com.telenav.tdk.graph.specifications.osm.OsmDataSpecification;
-import com.telenav.tdk.graph.specifications.unidb.graph.UniDbGraph;
-import com.telenav.tdk.graph.specifications.unidb.graph.edge.model.UniDbHeavyWeightEdge;
-import com.telenav.tdk.graph.specifications.unidb.graph.edge.model.attributes.*;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.polyline.*;
-import com.telenav.tdk.map.measurements.*;
-import com.telenav.tdk.map.road.model.*;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Place.Type;
+import com.telenav.kivakit.graph.identifiers.*;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.kivakit.graph.specifications.common.place.HeavyWeightPlace;
+import com.telenav.kivakit.graph.specifications.osm.OsmDataSpecification;
+import com.telenav.kivakit.graph.specifications.unidb.graph.UniDbGraph;
+import com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.UniDbHeavyWeightEdge;
+import com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.attributes.*;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.polyline.*;
+import com.telenav.kivakit.map.measurements.*;
+import com.telenav.kivakit.map.road.model.*;
 import org.junit.Test;
 
 import java.util.*;
 
-public class UniDbGraphElementStoreTest extends TdkGraphCoreUnitTest
+public class UniDbGraphElementStoreTest extends KivaKitGraphCoreUnitTest
 {
     private static final long EDGE_IDENTIFIER = 666_000_000;
 

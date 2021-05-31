@@ -16,18 +16,18 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.element.store.index;
+package com.telenav.kivakit.graph.specifications.common.element.store.index;
 
-import com.telenav.tdk.core.kernel.interfaces.object.Matcher;
-import com.telenav.tdk.core.kernel.language.matching.All;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.GraphElement;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.kernel.interfaces.object.Matcher;
+import com.telenav.kivakit.kernel.language.matching.All;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.GraphElement;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
 
 import java.io.PrintStream;
 import java.util.Iterator;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.validation.Validate.fail;
 
 /**
  * A space-efficient read-only spatial index of graph elements (edges or nodes).

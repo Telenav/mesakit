@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.osm.graph.edge.model.attributes;
+package com.telenav.kivakit.graph.specifications.osm.graph.edge.model.attributes;
 
-import com.telenav.tdk.core.kernel.language.object.Lazy;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.specifications.common.edge.*;
-import com.telenav.tdk.graph.specifications.library.attributes.Attribute;
+import com.telenav.kivakit.kernel.language.object.Lazy;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.specifications.common.edge.*;
+import com.telenav.kivakit.graph.specifications.library.attributes.Attribute;
 
 public class OsmEdgeProperties extends EdgeProperties
 {

@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.roadsection.codings.tmc;
+package com.telenav.kivakit.graph.traffic.roadsection.codings.tmc;
 
-import com.telenav.tdk.map.geography.project.TdkMapGeographyUnitTest;
+import com.telenav.kivakit.map.geography.project.KivaKitMapGeographyUnitTest;
 import org.junit.Test;
 
-public class TmcCodeTest extends TdkMapGeographyUnitTest
+public class TmcCodeTest extends KivaKitMapGeographyUnitTest
 {
     @Test
     public void testIsTmcCode()

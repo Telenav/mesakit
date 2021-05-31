@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.historical;
+package com.telenav.kivakit.graph.traffic.historical;
 
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.time.LocalTime;
-import com.telenav.tdk.core.resource.Resource;
-import com.telenav.tdk.core.resource.compression.archive.ZipArchive;
-import com.telenav.tdk.core.resource.resources.streamed.OutputResource;
-import com.telenav.tdk.map.measurements.Speed;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.time.LocalTime;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.resource.compression.archive.ZipArchive;
+import com.telenav.kivakit.resource.resources.streamed.OutputResource;
+import com.telenav.kivakit.map.measurements.Speed;
 
 import java.io.*;
 

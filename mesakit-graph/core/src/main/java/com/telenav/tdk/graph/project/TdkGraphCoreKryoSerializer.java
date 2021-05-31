@@ -16,43 +16,42 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.project;
 
-package com.telenav.tdk.graph.project;
-
-import com.telenav.tdk.core.kernel.language.io.serialization.kryo.TdkKryoSerializer;
-import com.telenav.tdk.core.kernel.project.TdkKryoIdentifiers;
-import com.telenav.tdk.data.formats.library.DataFormat;
-import com.telenav.tdk.data.formats.pbf.model.tags.compression.PbfStringListTagCodec;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.metadata.*;
-import com.telenav.tdk.graph.specifications.common.edge.store.index.*;
-import com.telenav.tdk.graph.specifications.common.edge.store.stores.polyline.*;
-import com.telenav.tdk.graph.specifications.common.edge.store.stores.roadname.RoadNameStore;
-import com.telenav.tdk.graph.specifications.common.element.store.TagStore;
-import com.telenav.tdk.graph.specifications.common.vertex.store.*;
-import com.telenav.tdk.graph.specifications.osm.OsmDataSpecification;
-import com.telenav.tdk.graph.specifications.unidb.UniDbDataSpecification;
-import com.telenav.tdk.map.region.project.TdkMapRegion;
-import com.telenav.tdk.utilities.compression.project.TdkUtilitiesCompression;
+import com.telenav.kivakit.kernel.language.io.serialization.kryo.KivaKitKryoSerializer;
+import com.telenav.kivakit.kernel.project.KivaKitKryoIdentifiers;
+import com.telenav.kivakit.data.formats.library.DataFormat;
+import com.telenav.kivakit.data.formats.pbf.model.tags.compression.PbfStringListTagCodec;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.metadata.*;
+import com.telenav.kivakit.graph.specifications.common.edge.store.index.*;
+import com.telenav.kivakit.graph.specifications.common.edge.store.stores.polyline.*;
+import com.telenav.kivakit.graph.specifications.common.edge.store.stores.roadname.RoadNameStore;
+import com.telenav.kivakit.graph.specifications.common.element.store.TagStore;
+import com.telenav.kivakit.graph.specifications.common.vertex.store.*;
+import com.telenav.kivakit.graph.specifications.osm.OsmDataSpecification;
+import com.telenav.kivakit.graph.specifications.unidb.UniDbDataSpecification;
+import com.telenav.kivakit.map.region.project.KivaKitMapRegion;
+import com.telenav.kivakit.utilities.compression.project.KivaKitUtilitiesCompression;
 
 /**
  * @author jonathanl (shibo)
  */
-public class TdkGraphCoreKryoSerializer extends TdkKryoSerializer
+public class KivaKitGraphCoreKryoSerializer extends KivaKitKryoSerializer
 {
-    public TdkGraphCoreKryoSerializer()
+    public KivaKitGraphCoreKryoSerializer()
     {
-        super(TdkKryoIdentifiers.TDK_GRAPH_CORE);
+        super(KivaKitKryoIdentifiers.TDK_GRAPH_CORE);
 
         //----------------------------------------------------------------------------------------------
-        // NOTE: To maintain backward compatibility, classes are assigned identifiers by TdkKryoSerializer.
+        // NOTE: To maintain backward compatibility, classes are assigned identifiers by KivaKitKryoSerializer.
         // If classes are appended to groups and no classes are removed, older data can always be read.
         //----------------------------------------------------------------------------------------------
 
         setReferences(true);
 
-        tdkRegisterAllFrom(TdkMapRegion.get());
-        tdkRegisterAllFrom(TdkUtilitiesCompression.get());
+        tdkRegisterAllFrom(KivaKitMapRegion.get());
+        tdkRegisterAllFrom(KivaKitUtilitiesCompression.get());
 
         tdkNextRegistrationGroup("graph", () ->
         {

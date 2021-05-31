@@ -16,23 +16,23 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.vertex.store;
+package com.telenav.kivakit.graph.specifications.common.vertex.store;
 
-import com.telenav.tdk.core.collections.primitive.array.scalars.*;
-import com.telenav.tdk.core.collections.primitive.iteration.IntIterator;
-import com.telenav.tdk.core.collections.primitive.list.IntList;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.interfaces.collection.Compressible;
-import com.telenav.tdk.core.kernel.interfaces.naming.NamedObject;
-import com.telenav.tdk.core.kernel.language.iteration.*;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.collections.EdgeSequence;
-import com.telenav.tdk.graph.specifications.common.edge.store.EdgeStore;
+import com.telenav.kivakit.collections.primitive.array.scalars.*;
+import com.telenav.kivakit.collections.primitive.iteration.IntIterator;
+import com.telenav.kivakit.collections.primitive.list.IntList;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.interfaces.collection.Compressible;
+import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.kernel.language.iteration.*;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.collections.EdgeSequence;
+import com.telenav.kivakit.graph.specifications.common.edge.store.EdgeStore;
 
 import java.util.List;
 
-import static com.telenav.tdk.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 
 /**
  * Stores lists of edge indexes. A new list can be added under a given index with {@link #list(int, IntIterator)}, the

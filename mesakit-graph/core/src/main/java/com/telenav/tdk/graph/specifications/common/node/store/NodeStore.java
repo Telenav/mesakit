@@ -16,28 +16,28 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.node.store;
+package com.telenav.kivakit.graph.specifications.common.node.store;
 
-import com.telenav.tdk.core.collections.primitive.array.scalars.SplitLongArray;
-import com.telenav.tdk.core.collections.primitive.map.split.*;
-import com.telenav.tdk.core.kernel.validation.*;
-import com.telenav.tdk.core.resource.compression.archive.TdkArchivedField;
-import com.telenav.tdk.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.tdk.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.specifications.common.element.ArchivedGraphElementStore;
-import com.telenav.tdk.graph.specifications.common.node.NodeAttributes;
-import com.telenav.tdk.graph.specifications.common.node.store.all.*;
-import com.telenav.tdk.graph.specifications.common.node.store.all.disk.PbfAllNodeDiskStores;
-import com.telenav.tdk.graph.specifications.common.shapepoint.store.ShapePointStore;
-import com.telenav.tdk.graph.specifications.common.vertex.store.VertexStore;
-import com.telenav.tdk.graph.specifications.library.attributes.AttributeReference;
-import com.telenav.tdk.map.geography.Location;
+import com.telenav.kivakit.collections.primitive.array.scalars.SplitLongArray;
+import com.telenav.kivakit.collections.primitive.map.split.*;
+import com.telenav.kivakit.kernel.validation.*;
+import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
+import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.specifications.common.element.ArchivedGraphElementStore;
+import com.telenav.kivakit.graph.specifications.common.node.NodeAttributes;
+import com.telenav.kivakit.graph.specifications.common.node.store.all.*;
+import com.telenav.kivakit.graph.specifications.common.node.store.all.disk.PbfAllNodeDiskStores;
+import com.telenav.kivakit.graph.specifications.common.shapepoint.store.ShapePointStore;
+import com.telenav.kivakit.graph.specifications.common.vertex.store.VertexStore;
+import com.telenav.kivakit.graph.specifications.library.attributes.AttributeReference;
+import com.telenav.kivakit.map.geography.Location;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
-import static com.telenav.tdk.graph.Metadata.CountType.ALLOW_ESTIMATE;
-import static com.telenav.tdk.map.geography.Precision.DM7;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.kivakit.map.geography.Precision.DM7;
 
 /**
  * Store of node information for subclasses of {@link GraphNode}, including {@link Vertex} and {@link ShapePoint}. This
@@ -70,7 +70,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
                     () -> (SplitLongArray) new SplitLongArray("nodeIdentifier")
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitLongArray nodeIdentifier;
 
     private final AttributeReference<SplitLongArray> NODE_LOCATION =
@@ -79,7 +79,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
                             .nullLong(Long.MIN_VALUE)
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitLongArray nodeLocation;
 
     private final AttributeReference<SplitLongToIntMap> NODE_IDENTIFIER_TO_INDEX =
@@ -87,7 +87,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
                     () -> (SplitLongToIntMap) new SplitLongToIntMap("nodeIdentifierToIndex")
                             .initialSize(estimatedElements()));
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private SplitLongToIntMap nodeIdentifierToIndex;
 
     /** Disk stores for storing all node information when handling OSM data to be contributed back to the community */

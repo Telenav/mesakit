@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world;
+package com.telenav.kivakit.graph.world;
 
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.collections.EdgeSet;
-import com.telenav.tdk.graph.world.grid.WorldCell;
-import com.telenav.tdk.graph.world.identifiers.WorldEdgeIdentifier;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.collections.EdgeSet;
+import com.telenav.kivakit.graph.world.grid.WorldCell;
+import com.telenav.kivakit.graph.world.identifiers.WorldEdgeIdentifier;
 
 /**
  * A set of edges within a world cell.

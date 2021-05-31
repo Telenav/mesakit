@@ -16,17 +16,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.edge.store.index;
+package com.telenav.kivakit.graph.specifications.common.edge.store.index;
 
-import com.telenav.tdk.core.collections.primitive.array.scalars.LongArray;
-import com.telenav.tdk.core.kernel.interfaces.naming.NamedObject;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.indexing.rtree.*;
+import com.telenav.kivakit.collections.primitive.array.scalars.LongArray;
+import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.indexing.rtree.*;
 
 import java.util.*;
 

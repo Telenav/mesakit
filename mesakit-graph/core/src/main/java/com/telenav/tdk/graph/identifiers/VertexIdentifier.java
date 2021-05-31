@@ -16,20 +16,20 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.identifiers;
+package com.telenav.kivakit.graph.identifiers;
 
-import com.telenav.tdk.core.kernel.commandline.SwitchParser;
-import com.telenav.tdk.core.kernel.interfaces.numeric.Quantizable;
-import com.telenav.tdk.core.kernel.logging.Logger;
-import com.telenav.tdk.core.kernel.logging.LoggerFactory;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.scalars.counts.Bits;
-import com.telenav.tdk.core.kernel.scalars.identifiers.IntegerIdentifier;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.GraphElement;
-import com.telenav.tdk.graph.Vertex;
+import com.telenav.kivakit.kernel.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.scalars.counts.Bits;
+import com.telenav.kivakit.kernel.scalars.identifiers.IntegerIdentifier;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.GraphElement;
+import com.telenav.kivakit.graph.Vertex;
 
 /**
  * Identifier of {@link Vertex}es in a {@link Graph}. The valid range for a vertex identifier is from 1 to {@link

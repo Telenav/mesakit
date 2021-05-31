@@ -16,16 +16,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph;
+package com.telenav.kivakit.graph;
 
-import com.telenav.tdk.core.kernel.language.iteration.Iterables;
-import com.telenav.tdk.core.kernel.language.string.conversion.StringFormat;
-import com.telenav.tdk.graph.identifiers.EdgeIdentifier;
-import com.telenav.tdk.graph.navigation.*;
-import com.telenav.tdk.graph.navigation.limiters.LengthRouteLimiter;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
-import com.telenav.tdk.map.measurements.Distance;
-import com.telenav.tdk.map.road.model.*;
+import com.telenav.kivakit.kernel.language.iteration.Iterables;
+import com.telenav.kivakit.kernel.language.string.conversion.StringFormat;
+import com.telenav.kivakit.graph.identifiers.EdgeIdentifier;
+import com.telenav.kivakit.graph.navigation.*;
+import com.telenav.kivakit.graph.navigation.limiters.LengthRouteLimiter;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.kivakit.map.measurements.Distance;
+import com.telenav.kivakit.map.road.model.*;
 import org.junit.Test;
 
 import java.util.Objects;
@@ -33,7 +33,7 @@ import java.util.Objects;
 /**
  * @author jonathanl (shibo)
  */
-public class EdgeTest extends TdkGraphCoreUnitTest
+public class EdgeTest extends KivaKitGraphCoreUnitTest
 {
     @Test
     public void test()

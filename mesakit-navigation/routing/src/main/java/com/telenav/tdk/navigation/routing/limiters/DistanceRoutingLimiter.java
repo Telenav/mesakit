@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.navigation.routing.limiters;
+package com.telenav.kivakit.navigation.routing.limiters;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.measurements.Distance;
-import com.telenav.tdk.navigation.routing.RoutingInstruction;
-import com.telenav.tdk.navigation.routing.RoutingLimiter;
-import com.telenav.tdk.navigation.routing.RoutingRequest;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.measurements.Distance;
+import com.telenav.kivakit.navigation.routing.RoutingInstruction;
+import com.telenav.kivakit.navigation.routing.RoutingLimiter;
+import com.telenav.kivakit.navigation.routing.RoutingRequest;
 
 public class DistanceRoutingLimiter implements RoutingLimiter
 {

@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.unidb.graph.edge.model.attributes;
+package com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.attributes;
 
-import com.telenav.tdk.core.kernel.language.object.Hash;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.specifications.unidb.graph.edge.model.attributes.AdasCurvature.Direction;
-import com.telenav.tdk.map.measurements.*;
+import com.telenav.kivakit.kernel.language.object.Hash;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.attributes.AdasCurvature.Direction;
+import com.telenav.kivakit.map.measurements.*;
 
 import java.util.*;
 

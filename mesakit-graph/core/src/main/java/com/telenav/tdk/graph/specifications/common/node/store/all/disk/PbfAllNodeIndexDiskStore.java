@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.node.store.all.disk;
+package com.telenav.kivakit.graph.specifications.common.node.store.all.disk;
 
-import com.telenav.tdk.core.collections.primitive.map.scalars.LongToIntMap;
-import com.telenav.tdk.core.filesystem.Folder;
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfNode;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.map.geography.Location;
+import com.telenav.kivakit.collections.primitive.map.scalars.LongToIntMap;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfNode;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.map.geography.Location;
 
 import java.io.*;
 

@@ -16,19 +16,19 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.osm.graph.loader.sectioner;
+package com.telenav.kivakit.graph.specifications.osm.graph.loader.sectioner;
 
-import com.telenav.tdk.core.kernel.language.thread.Threads;
-import com.telenav.tdk.core.kernel.operation.progress.reporters.ConcurrentProgress;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.core.kernel.validation.Validation;
-import com.telenav.tdk.core.resource.Resource;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.io.load.*;
-import com.telenav.tdk.graph.io.load.loaders.BaseGraphLoader;
-import com.telenav.tdk.graph.specifications.common.relation.store.RelationStore;
-import com.telenav.tdk.graph.specifications.library.store.GraphStore;
+import com.telenav.kivakit.kernel.language.thread.Threads;
+import com.telenav.kivakit.kernel.operation.progress.reporters.ConcurrentProgress;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.kernel.validation.Validation;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.io.load.*;
+import com.telenav.kivakit.graph.io.load.loaders.BaseGraphLoader;
+import com.telenav.kivakit.graph.specifications.common.relation.store.RelationStore;
+import com.telenav.kivakit.graph.specifications.library.store.GraphStore;
 
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;

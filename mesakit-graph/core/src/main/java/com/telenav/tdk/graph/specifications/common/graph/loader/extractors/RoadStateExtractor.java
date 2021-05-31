@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.graph.loader.extractors;
+package com.telenav.kivakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.tdk.core.data.extraction.BaseExtractor;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfWay;
-import com.telenav.tdk.graph.specifications.common.graph.loader.extractors.RoadStateExtractor.ExtractedRoadState;
-import com.telenav.tdk.map.road.model.RoadState;
+import com.telenav.kivakit.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
+import com.telenav.kivakit.graph.specifications.common.graph.loader.extractors.RoadStateExtractor.ExtractedRoadState;
+import com.telenav.kivakit.map.road.model.RoadState;
 
 public class RoadStateExtractor extends BaseExtractor<ExtractedRoadState, PbfWay>
 {

@@ -78,7 +78,7 @@ public class RegionIdentityCache<T extends Region<T>> extends BaseRepeater
         final var start = Time.now();
 
         // Read the KivaKit version that wrote the data
-        final var kivakitVersion = session.open(RESOURCE, KivaKit.get().version(), input);
+        final var kivakitVersion = session.open(RESOURCE, KivaKit.get().projectVersion(), input);
 
         // read the set of identities
         final VersionedObject<Set<RegionIdentity>> identities = session.read();
@@ -87,7 +87,7 @@ public class RegionIdentityCache<T extends Region<T>> extends BaseRepeater
             trace("Region identities cache file is version $, written by KivaKit version $", identities.version(), kivakitVersion);
 
             // ensure that this MesaKit version can read the data (data is backwards compatible but not forward),
-            if (MesaKit.get().version().isNewerThanOrEqualTo(MapRegionProject.get().borderDataVersion()))
+            if (MesaKit.get().projectVersion().isNewerThanOrEqualTo(MapRegionProject.get().borderDataVersion()))
             {
                 // and loop through them
                 for (final var identity : identities.get())

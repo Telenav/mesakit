@@ -16,9 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.library.properties;
+package com.telenav.kivakit.graph.specifications.library.properties;
 
-import com.telenav.tdk.graph.GraphElement;
+import com.telenav.kivakit.graph.GraphElement;
 
 import java.util.*;
 

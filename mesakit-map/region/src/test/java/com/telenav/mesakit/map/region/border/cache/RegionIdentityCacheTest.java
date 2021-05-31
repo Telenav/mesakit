@@ -52,7 +52,7 @@ public class RegionIdentityCacheTest extends MapRegionUnitTest
 
         // Save the identities
         final var version = MapRegionProject.get().borderDataVersion();
-        session.open(RESOURCE, KivaKit.get().version(), output);
+        session.open(RESOURCE, KivaKit.get().projectVersion(), output);
         session.write(new VersionedObject<>(version, identities()));
         session.close();
         output.close();

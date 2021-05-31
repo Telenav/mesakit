@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.analytics.ramp;
+package com.telenav.kivakit.graph.analytics.ramp;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.map.measurements.Angle;
-import com.telenav.tdk.map.measurements.Angle.Chirality;
-import com.telenav.tdk.map.measurements.Heading;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.map.measurements.Angle;
+import com.telenav.kivakit.map.measurements.Angle.Chirality;
+import com.telenav.kivakit.map.measurements.Heading;
 
 /**
  * This class accumulates angles without bounds. The angles within 180 degrees counterclockwise are all minus, while the

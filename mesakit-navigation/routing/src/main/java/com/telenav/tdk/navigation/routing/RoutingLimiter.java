@@ -16,9 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.navigation.routing;
+package com.telenav.kivakit.navigation.routing;
 
-import com.telenav.tdk.graph.Edge;
+import com.telenav.kivakit.graph.Edge;
 
 /**
  * Limits a routing effort by determining if a vertex should be explored

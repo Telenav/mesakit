@@ -16,16 +16,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.navigation.routing.cost.functions.heuristic;
+package com.telenav.kivakit.navigation.routing.cost.functions.heuristic;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.map.geography.Located;
-import com.telenav.tdk.map.geography.segment.Segment;
-import com.telenav.tdk.map.measurements.Heading;
-import com.telenav.tdk.navigation.routing.cost.Cost;
-import com.telenav.tdk.navigation.routing.cost.CostFunction;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.map.geography.Located;
+import com.telenav.kivakit.map.geography.segment.Segment;
+import com.telenav.kivakit.map.measurements.Heading;
+import com.telenav.kivakit.navigation.routing.cost.Cost;
+import com.telenav.kivakit.navigation.routing.cost.CostFunction;
 
-import static com.telenav.tdk.map.measurements.Angle.Chirality.SMALLEST;
+import static com.telenav.kivakit.map.measurements.Angle.Chirality.SMALLEST;
 
 /**
  * A routing cost function which is based on travel time

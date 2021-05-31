@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.node.store.all.disk;
+package com.telenav.kivakit.graph.specifications.common.node.store.all.disk;
 
-import com.telenav.tdk.core.filesystem.Folder;
-import com.telenav.tdk.core.resource.path.FileName;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfNode;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.resource.path.FileName;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfNode;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
 
 public class PbfAllNodeDiskStores
 {

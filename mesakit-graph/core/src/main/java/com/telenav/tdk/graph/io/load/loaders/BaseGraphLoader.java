@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.io.load.loaders;
+package com.telenav.kivakit.graph.io.load.loaders;
 
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.tdk.graph.io.load.GraphLoader;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.graph.io.load.GraphLoader;
 
 /**
  * A base class for graph loaders that provides useful methods fro adding graph elements.

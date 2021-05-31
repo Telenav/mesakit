@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.matching.conflation;
+package com.telenav.kivakit.graph.matching.conflation;
 
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.scalars.levels.Percentage;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.ui.viewer.GraphDebugViewer;
-import com.telenav.tdk.map.measurements.*;
-import com.telenav.tdk.map.road.model.RoadFunctionalClass;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.scalars.levels.Percentage;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.ui.viewer.GraphDebugViewer;
+import com.telenav.kivakit.map.measurements.*;
+import com.telenav.kivakit.map.road.model.RoadFunctionalClass;
 
 public class EdgeConflater
 {

@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.edge.store.index;
+package com.telenav.kivakit.graph.specifications.common.edge.store.index;
 
-import com.telenav.tdk.core.kernel.interfaces.collection.Compressible;
-import com.telenav.tdk.core.kernel.interfaces.naming.NamedObject;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.specifications.common.vertex.store.EdgeArrayStore;
+import com.telenav.kivakit.kernel.interfaces.collection.Compressible;
+import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.specifications.common.vertex.store.EdgeArrayStore;
 
 import java.util.*;
 

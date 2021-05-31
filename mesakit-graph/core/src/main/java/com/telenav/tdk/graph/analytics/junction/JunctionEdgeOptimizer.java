@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.analytics.junction;
+package com.telenav.kivakit.graph.analytics.junction;
 
-import com.telenav.tdk.core.kernel.logging.Logger;
-import com.telenav.tdk.core.kernel.logging.LoggerFactory;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Vertex;
-import com.telenav.tdk.graph.collections.EdgeSet;
-import com.telenav.tdk.map.measurements.Distance;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Vertex;
+import com.telenav.kivakit.graph.collections.EdgeSet;
+import com.telenav.kivakit.map.measurements.Distance;
 
 /**
  * This {@link JunctionEdgeOptimizer} class adds more junction edges to junction edge store by trying to find out

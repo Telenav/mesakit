@@ -16,27 +16,27 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.edge.store.stores.roadname;
+package com.telenav.kivakit.graph.specifications.common.edge.store.stores.roadname;
 
-import com.telenav.tdk.core.collections.map.CacheMap;
-import com.telenav.tdk.core.collections.primitive.array.scalars.SplitByteArray;
-import com.telenav.tdk.core.collections.primitive.map.scalars.LongToIntMap;
-import com.telenav.tdk.core.kernel.interfaces.naming.NamedObject;
-import com.telenav.tdk.core.kernel.interfaces.operation.Initializable;
-import com.telenav.tdk.core.kernel.language.bits.BitDiagram;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.core.kernel.scalars.mutable.MutableValue;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.map.road.model.RoadName;
-import com.telenav.tdk.map.road.model.RoadName.Type;
-import com.telenav.tdk.utilities.compression.Encodable;
-import com.telenav.tdk.utilities.compression.codecs.CharacterCodec;
-import com.telenav.tdk.utilities.compression.codecs.huffman.character.HuffmanCharacterCodec;
+import com.telenav.kivakit.collections.map.CacheMap;
+import com.telenav.kivakit.collections.primitive.array.scalars.SplitByteArray;
+import com.telenav.kivakit.collections.primitive.map.scalars.LongToIntMap;
+import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.kernel.interfaces.operation.Initializable;
+import com.telenav.kivakit.kernel.language.bits.BitDiagram;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.scalars.mutable.MutableValue;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.map.road.model.RoadName;
+import com.telenav.kivakit.map.road.model.RoadName.Type;
+import com.telenav.kivakit.utilities.compression.Encodable;
+import com.telenav.kivakit.utilities.compression.codecs.CharacterCodec;
+import com.telenav.kivakit.utilities.compression.codecs.huffman.character.HuffmanCharacterCodec;
 
 import java.util.WeakHashMap;
 
-import static com.telenav.tdk.core.kernel.language.bits.BitDiagram.BitField;
-import static com.telenav.tdk.utilities.compression.Decoded.Directive.STOP;
+import static com.telenav.kivakit.kernel.language.bits.BitDiagram.BitField;
+import static com.telenav.kivakit.utilities.compression.Decoded.Directive.STOP;
 
 public class RoadNameStore implements NamedObject, Initializable<RoadNameStore>
 {

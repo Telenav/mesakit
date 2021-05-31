@@ -16,17 +16,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.library.pbf;
+package com.telenav.kivakit.graph.specifications.library.pbf;
 
-import com.telenav.tdk.core.collections.primitive.map.split.SplitLongToByteMap;
-import com.telenav.tdk.core.collections.primitive.set.SplitLongSet;
-import com.telenav.tdk.core.kernel.interfaces.naming.Named;
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.map.region.project.TdkMapRegionLimits;
+import com.telenav.kivakit.collections.primitive.map.split.SplitLongToByteMap;
+import com.telenav.kivakit.collections.primitive.set.SplitLongSet;
+import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.map.region.project.KivaKitMapRegionLimits;
 import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
 
-import static com.telenav.tdk.core.kernel.interfaces.collection.Compressible.Method;
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.interfaces.collection.Compressible.Method;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
 
 /**
  * Determines which nodes are intersections by counting the number of times that {@link WayNode}s are referenced by
@@ -57,7 +57,7 @@ public class IntersectionMap implements Named
         this.name = name;
 
         countMap = new SplitLongToByteMap(name() + ".count.map");
-        countMap.initialSize(TdkMapRegionLimits.ESTIMATED_WAYS);
+        countMap.initialSize(KivaKitMapRegionLimits.ESTIMATED_WAYS);
         countMap.initialize();
     }
 

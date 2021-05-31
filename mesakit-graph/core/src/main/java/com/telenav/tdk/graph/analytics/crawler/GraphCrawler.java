@@ -16,14 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.analytics.crawler;
 
-package com.telenav.tdk.graph.analytics.crawler;
-
-import com.telenav.tdk.core.kernel.operation.progress.reporters.Progress;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.collections.EdgeSet;
-import com.telenav.tdk.map.measurements.Distance;
+import com.telenav.kivakit.kernel.operation.progress.reporters.Progress;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.collections.EdgeSet;
+import com.telenav.kivakit.map.measurements.Distance;
 
 import java.util.*;
 

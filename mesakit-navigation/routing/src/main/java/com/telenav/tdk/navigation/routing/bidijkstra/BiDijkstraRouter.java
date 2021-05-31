@@ -16,23 +16,23 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.navigation.routing.bidijkstra;
+package com.telenav.kivakit.navigation.routing.bidijkstra;
 
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.logging.Logger;
-import com.telenav.tdk.core.kernel.logging.LoggerFactory;
-import com.telenav.tdk.core.kernel.scalars.counts.MutableCount;
-import com.telenav.tdk.navigation.routing.BaseRouter;
-import com.telenav.tdk.navigation.routing.LevelPromoter;
-import com.telenav.tdk.navigation.routing.RoutingRequest;
-import com.telenav.tdk.navigation.routing.RoutingResponse;
-import com.telenav.tdk.navigation.routing.cost.CostFunction;
-import com.telenav.tdk.navigation.routing.cost.EdgePermissionFunction;
-import com.telenav.tdk.navigation.routing.cost.RoutePermissionFunction;
-import com.telenav.tdk.navigation.routing.dijkstra.DijkstraRouter;
-import com.telenav.tdk.navigation.routing.dijkstra.DijkstraRoutingRequest;
-import com.telenav.tdk.navigation.routing.dijkstra.Direction;
-import com.telenav.tdk.navigation.routing.dijkstra.Meet;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.scalars.counts.MutableCount;
+import com.telenav.kivakit.navigation.routing.BaseRouter;
+import com.telenav.kivakit.navigation.routing.LevelPromoter;
+import com.telenav.kivakit.navigation.routing.RoutingRequest;
+import com.telenav.kivakit.navigation.routing.RoutingResponse;
+import com.telenav.kivakit.navigation.routing.cost.CostFunction;
+import com.telenav.kivakit.navigation.routing.cost.EdgePermissionFunction;
+import com.telenav.kivakit.navigation.routing.cost.RoutePermissionFunction;
+import com.telenav.kivakit.navigation.routing.dijkstra.DijkstraRouter;
+import com.telenav.kivakit.navigation.routing.dijkstra.DijkstraRoutingRequest;
+import com.telenav.kivakit.navigation.routing.dijkstra.Direction;
+import com.telenav.kivakit.navigation.routing.dijkstra.Meet;
 
 public class BiDijkstraRouter extends BaseRouter
 {

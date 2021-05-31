@@ -16,19 +16,19 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.io.load.loaders.copying;
+package com.telenav.kivakit.graph.io.load.loaders.copying;
 
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.core.resource.Resource;
-import com.telenav.tdk.core.resource.path.FileName;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.io.load.*;
-import com.telenav.tdk.graph.io.load.loaders.BaseGraphLoader;
-import com.telenav.tdk.graph.specifications.common.node.store.all.disk.PbfAllNodeDiskStores;
-import com.telenav.tdk.graph.specifications.library.store.GraphStore;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.resource.path.FileName;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.io.load.*;
+import com.telenav.kivakit.graph.io.load.loaders.BaseGraphLoader;
+import com.telenav.kivakit.graph.specifications.common.node.store.all.disk.PbfAllNodeDiskStores;
+import com.telenav.kivakit.graph.specifications.library.store.GraphStore;
 
 /**
  * A {@link GraphLoader} that copies graph elements from a source graph. As with all graph loaders, constraints can be

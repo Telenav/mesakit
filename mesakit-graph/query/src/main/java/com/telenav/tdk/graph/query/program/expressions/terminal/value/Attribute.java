@@ -1,9 +1,9 @@
-package com.telenav.tdk.graph.query.program.expressions.terminal.value;
+package com.telenav.kivakit.graph.query.program.expressions.terminal.value;
 
-import com.telenav.tdk.core.kernel.language.reflection.Type;
-import com.telenav.tdk.core.kernel.language.reflection.property.Property;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.query.program.Node;
+import com.telenav.kivakit.kernel.language.reflection.Type;
+import com.telenav.kivakit.kernel.language.reflection.property.Property;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.query.program.Node;
 
 /**
  * Extracts a value from the edge on top of the stack using the given attribute name. The attribute name must be the

@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph;
+package com.telenav.kivakit.graph;
 
-import com.telenav.tdk.graph.analytics.classification.classifiers.turn.ComplexTurnClassifier;
-import com.telenav.tdk.graph.analytics.classification.classifiers.turn.TurnType;
-import com.telenav.tdk.graph.identifiers.EdgeIdentifier;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
-import com.telenav.tdk.graph.relations.restrictions.classifiers.TurnRestrictionsTurnClassifier;
-import com.telenav.tdk.map.measurements.Distance;
+import com.telenav.kivakit.graph.analytics.classification.classifiers.turn.ComplexTurnClassifier;
+import com.telenav.kivakit.graph.analytics.classification.classifiers.turn.TurnType;
+import com.telenav.kivakit.graph.identifiers.EdgeIdentifier;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.kivakit.graph.relations.restrictions.classifiers.TurnRestrictionsTurnClassifier;
+import com.telenav.kivakit.map.measurements.Distance;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,7 +34,7 @@ import java.util.List;
  * @author tony
  * @author jonathanl (shibo)
  */
-public class RouteTest extends TdkGraphCoreUnitTest
+public class RouteTest extends KivaKitGraphCoreUnitTest
 {
     // Four sequentially connected edges (edge1 => edge2 => edge3 => edge4) and one unconnected edge
     private Edge edge1, edge2, edge3, edge4, unconnectedEdge;

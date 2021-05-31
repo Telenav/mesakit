@@ -1,27 +1,27 @@
-package com.telenav.tdk.graph.query.compiler;
+package com.telenav.kivakit.graph.query.compiler;
 
-import com.telenav.tdk.core.kernel.scalars.counts.Maximum;
-import com.telenav.tdk.graph.query.program.*;
-import com.telenav.tdk.graph.query.program.expressions.closure.OneOrMore;
-import com.telenav.tdk.graph.query.program.expressions.logical.*;
-import com.telenav.tdk.graph.query.program.expressions.relational.Then;
-import com.telenav.tdk.graph.query.program.expressions.terminal.Compare;
-import com.telenav.tdk.graph.query.program.expressions.terminal.Compare.Type;
-import com.telenav.tdk.graph.query.program.expressions.terminal.value.*;
-import com.telenav.tdk.graph.query.program.statements.Select;
-import com.telenav.tdk.map.measurements.*;
+import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.graph.query.program.*;
+import com.telenav.kivakit.graph.query.program.expressions.closure.OneOrMore;
+import com.telenav.kivakit.graph.query.program.expressions.logical.*;
+import com.telenav.kivakit.graph.query.program.expressions.relational.Then;
+import com.telenav.kivakit.graph.query.program.expressions.terminal.Compare;
+import com.telenav.kivakit.graph.query.program.expressions.terminal.Compare.Type;
+import com.telenav.kivakit.graph.query.program.expressions.terminal.value.*;
+import com.telenav.kivakit.graph.query.program.statements.Select;
+import com.telenav.kivakit.map.measurements.*;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.*;
-import static com.telenav.tdk.graph.query.GraphQueryParser.*;
+import static com.telenav.kivakit.kernel.validation.Validate.*;
+import static com.telenav.kivakit.graph.query.GraphQueryParser.*;
 
 /**
  * Compiles a {@link BooleanExpression} tree that can be evaluated against an edge.
  *
  * @author jonathanl (shibo)
  */
-public class GraphQueryCompiler extends com.telenav.tdk.graph.query.GraphQueryBaseVisitor<Node>
+public class GraphQueryCompiler extends com.telenav.kivakit.graph.query.GraphQueryBaseVisitor<Node>
 {
     /**
      * Builds an abstract syntax tree from the parse tree

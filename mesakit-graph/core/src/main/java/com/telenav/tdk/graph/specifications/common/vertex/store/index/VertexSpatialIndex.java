@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.vertex.store.index;
+package com.telenav.kivakit.graph.specifications.common.vertex.store.index;
 
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.Vertex;
-import com.telenav.tdk.graph.identifiers.VertexIdentifier;
-import com.telenav.tdk.graph.specifications.common.element.store.index.GraphElementSpatialIndex;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.Vertex;
+import com.telenav.kivakit.graph.identifiers.VertexIdentifier;
+import com.telenav.kivakit.graph.specifications.common.element.store.index.GraphElementSpatialIndex;
 
 public class VertexSpatialIndex extends GraphElementSpatialIndex<Vertex>
 {

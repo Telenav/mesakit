@@ -16,65 +16,65 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph;
+package com.telenav.kivakit.graph;
 
-import com.telenav.tdk.core.collections.primitive.map.PrimitiveMap;
-import com.telenav.tdk.core.kernel.comparison.Differences;
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.interfaces.object.Matcher;
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
-import com.telenav.tdk.core.kernel.language.primitive.Longs;
-import com.telenav.tdk.core.kernel.language.reflection.property.filters.TdkExcludeProperty;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.language.string.conversion.AsString;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.core.kernel.scalars.identifiers.LongKeyed;
-import com.telenav.tdk.core.kernel.time.*;
-import com.telenav.tdk.core.kernel.validation.*;
-import com.telenav.tdk.data.formats.library.map.identifiers.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.*;
-import com.telenav.tdk.graph.analytics.classification.classifiers.turn.*;
-import com.telenav.tdk.graph.collections.*;
-import com.telenav.tdk.graph.identifiers.*;
-import com.telenav.tdk.graph.io.load.GraphLoader;
-import com.telenav.tdk.graph.map.*;
-import com.telenav.tdk.graph.matching.conflation.EdgeConflater;
-import com.telenav.tdk.graph.matching.snapping.EdgeSnapper;
-import com.telenav.tdk.graph.metadata.DataSpecification;
-import com.telenav.tdk.graph.navigation.*;
-import com.telenav.tdk.graph.navigation.limiters.*;
-import com.telenav.tdk.graph.navigation.navigators.WayNavigator;
-import com.telenav.tdk.graph.specifications.common.edge.*;
-import com.telenav.tdk.graph.specifications.common.edge.store.EdgeStore;
-import com.telenav.tdk.graph.specifications.common.element.GraphElementAttributes;
-import com.telenav.tdk.graph.specifications.library.attributes.Attribute;
-import com.telenav.tdk.graph.specifications.library.properties.*;
-import com.telenav.tdk.graph.specifications.osm.OsmDataSpecification;
-import com.telenav.tdk.graph.specifications.osm.graph.loader.sectioner.*;
-import com.telenav.tdk.graph.specifications.unidb.UniDbDataSpecification;
-import com.telenav.tdk.graph.specifications.unidb.graph.edge.model.attributes.*;
-import com.telenav.tdk.graph.traffic.historical.SpeedPatternIdentifier;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionIdentifier;
-import com.telenav.tdk.map.geography.*;
-import com.telenav.tdk.map.geography.polyline.*;
-import com.telenav.tdk.map.geography.rectangle.*;
-import com.telenav.tdk.map.geography.segment.Segment;
-import com.telenav.tdk.map.measurements.*;
-import com.telenav.tdk.map.measurements.Angle.Chirality;
-import com.telenav.tdk.map.region.*;
-import com.telenav.tdk.map.region.locale.MapLocale;
-import com.telenav.tdk.map.road.model.*;
-import com.telenav.tdk.map.road.name.standardizer.RoadNameStandardizer;
-import com.telenav.tdk.map.road.name.standardizer.RoadNameStandardizer.Mode;
+import com.telenav.kivakit.collections.primitive.map.PrimitiveMap;
+import com.telenav.kivakit.kernel.comparison.Differences;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.interfaces.object.Matcher;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.primitive.Longs;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.language.string.conversion.AsString;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.scalars.identifiers.LongKeyed;
+import com.telenav.kivakit.kernel.time.*;
+import com.telenav.kivakit.kernel.validation.*;
+import com.telenav.kivakit.data.formats.library.map.identifiers.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.*;
+import com.telenav.kivakit.graph.analytics.classification.classifiers.turn.*;
+import com.telenav.kivakit.graph.collections.*;
+import com.telenav.kivakit.graph.identifiers.*;
+import com.telenav.kivakit.graph.io.load.GraphLoader;
+import com.telenav.kivakit.graph.map.*;
+import com.telenav.kivakit.graph.matching.conflation.EdgeConflater;
+import com.telenav.kivakit.graph.matching.snapping.EdgeSnapper;
+import com.telenav.kivakit.graph.metadata.DataSpecification;
+import com.telenav.kivakit.graph.navigation.*;
+import com.telenav.kivakit.graph.navigation.limiters.*;
+import com.telenav.kivakit.graph.navigation.navigators.WayNavigator;
+import com.telenav.kivakit.graph.specifications.common.edge.*;
+import com.telenav.kivakit.graph.specifications.common.edge.store.EdgeStore;
+import com.telenav.kivakit.graph.specifications.common.element.GraphElementAttributes;
+import com.telenav.kivakit.graph.specifications.library.attributes.Attribute;
+import com.telenav.kivakit.graph.specifications.library.properties.*;
+import com.telenav.kivakit.graph.specifications.osm.OsmDataSpecification;
+import com.telenav.kivakit.graph.specifications.osm.graph.loader.sectioner.*;
+import com.telenav.kivakit.graph.specifications.unidb.UniDbDataSpecification;
+import com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.attributes.*;
+import com.telenav.kivakit.graph.traffic.historical.SpeedPatternIdentifier;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier;
+import com.telenav.kivakit.map.geography.*;
+import com.telenav.kivakit.map.geography.polyline.*;
+import com.telenav.kivakit.map.geography.rectangle.*;
+import com.telenav.kivakit.map.geography.segment.Segment;
+import com.telenav.kivakit.map.measurements.*;
+import com.telenav.kivakit.map.measurements.Angle.Chirality;
+import com.telenav.kivakit.map.region.*;
+import com.telenav.kivakit.map.region.locale.MapLocale;
+import com.telenav.kivakit.map.road.model.*;
+import com.telenav.kivakit.map.road.name.standardizer.RoadNameStandardizer;
+import com.telenav.kivakit.map.road.name.standardizer.RoadNameStandardizer.Mode;
 import org.openstreetmap.osmosis.core.domain.v0_6.*;
 
 import java.sql.Timestamp;
 import java.util.*;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.unsupported;
+import static com.telenav.kivakit.kernel.validation.Validate.unsupported;
 
 /**
  * An edge in a {@link Graph} connecting two {@link Vertex}es. In the case of PBF graphs, edges are sections of ways
@@ -925,7 +925,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return The identifier of the from vertex
      */
-    @TdkExcludeProperty
+    @KivaKitExcludeProperty
     public VertexIdentifier fromVertexIdentifier()
     {
         return new VertexIdentifier(store().retrieveFromVertexIdentifier(this));
@@ -1376,7 +1376,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @return True if this edge is a {@link Type#NORMAL} edge. This is true unless the edge is a "routing shortcut"
      * used to enhance the performance of navigation.
      */
-    @TdkExcludeProperty
+    @KivaKitExcludeProperty
     public boolean isNormal()
     {
         return type() == Type.NORMAL;
@@ -1476,7 +1476,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return True if this edge is a {@link Type#ROUTING_SHORTCUT} edge
      */
-    @TdkExcludeProperty
+    @KivaKitExcludeProperty
     public boolean isRoutingShortCut()
     {
         return type() == Type.ROUTING_SHORTCUT;
@@ -2176,7 +2176,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @return The shape of this directed edge on the map as a {@link Polyline}
      */
     @Override
-    @TdkExcludeProperty
+    @KivaKitExcludeProperty
     public Polyline roadShape()
     {
         final var polyline = store().retrieveRoadShape(this);
@@ -2524,7 +2524,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return The identifier of the "to" vertex
      */
-    @TdkExcludeProperty
+    @KivaKitExcludeProperty
     public VertexIdentifier toVertexIdentifier()
     {
         return new VertexIdentifier(store().retrieveToVertexIdentifier(this));

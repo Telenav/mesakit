@@ -16,9 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.navigation.routing;
+package com.telenav.kivakit.navigation.routing;
 
-import com.telenav.tdk.graph.Edge;
+import com.telenav.kivakit.graph.Edge;
 
 /**
  * Level promotion strategy to be used for determining what edges should be explored when routing

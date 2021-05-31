@@ -16,25 +16,25 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world.repository;
+package com.telenav.kivakit.graph.world.repository;
 
-import com.telenav.tdk.core.configuration.Deployment;
-import com.telenav.tdk.core.filesystem.Folder;
-import com.telenav.tdk.core.kernel.interfaces.object.Source;
-import com.telenav.tdk.core.kernel.language.collections.map.CountMap;
-import com.telenav.tdk.core.kernel.language.object.Objects;
-import com.telenav.tdk.core.kernel.language.object.*;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.resource.path.FilePath;
-import com.telenav.tdk.graph.world.*;
-import com.telenav.tdk.graph.world.grid.WorldCellReference;
-import com.telenav.tdk.map.utilities.grid.GridCell;
+import com.telenav.kivakit.configuration.Deployment;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.kernel.interfaces.object.Source;
+import com.telenav.kivakit.kernel.language.collections.map.CountMap;
+import com.telenav.kivakit.kernel.language.object.Objects;
+import com.telenav.kivakit.kernel.language.object.*;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.resource.path.FilePath;
+import com.telenav.kivakit.graph.world.*;
+import com.telenav.kivakit.graph.world.grid.WorldCellReference;
+import com.telenav.kivakit.map.utilities.grid.GridCell;
 
 import java.io.Serializable;
 import java.util.*;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
 
 /**
  * A logical reference that lazy loads a {@link WorldGraph} using descriptors passed to the constructor when {@link

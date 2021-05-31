@@ -16,26 +16,26 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.collections;
+package com.telenav.kivakit.graph.collections;
 
-import com.telenav.tdk.core.kernel.interfaces.code.Callback;
-import com.telenav.tdk.core.kernel.interfaces.object.Matcher;
-import com.telenav.tdk.core.kernel.language.iteration.Iterables;
-import com.telenav.tdk.core.kernel.language.iteration.Next;
-import com.telenav.tdk.core.kernel.language.iteration.Streams;
-import com.telenav.tdk.core.kernel.language.iteration.Streams.Processing;
-import com.telenav.tdk.core.kernel.language.matching.Matching;
-import com.telenav.tdk.core.kernel.language.string.StringList;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.messaging.messages.status.Problem;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Route;
-import com.telenav.tdk.graph.io.load.GraphConstraints;
-import com.telenav.tdk.map.geography.rectangle.Bounded;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.kernel.interfaces.code.Callback;
+import com.telenav.kivakit.kernel.interfaces.object.Matcher;
+import com.telenav.kivakit.kernel.language.iteration.Iterables;
+import com.telenav.kivakit.kernel.language.iteration.Next;
+import com.telenav.kivakit.kernel.language.iteration.Streams;
+import com.telenav.kivakit.kernel.language.iteration.Streams.Processing;
+import com.telenav.kivakit.kernel.language.matching.Matching;
+import com.telenav.kivakit.kernel.language.string.StringList;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.messaging.messages.status.Problem;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Route;
+import com.telenav.kivakit.graph.io.load.GraphConstraints;
+import com.telenav.kivakit.map.geography.rectangle.Bounded;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
 
 import java.util.ArrayList;
 import java.util.Iterator;

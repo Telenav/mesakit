@@ -16,21 +16,20 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.traffic.roadsection.codings.ngx;
 
-package com.telenav.tdk.graph.traffic.roadsection.codings.ngx;
-
-import com.telenav.tdk.core.collections.primitive.array.scalars.LongArray;
-import com.telenav.tdk.core.collections.primitive.map.multi.dynamic.LongToLongMultiMap;
-import com.telenav.tdk.core.collections.primitive.map.scalars.LongToLongMap;
-import com.telenav.tdk.core.kernel.conversion.primitive.LongConverter;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.operation.progress.ProgressReporter;
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.core.resource.Resource;
-import com.telenav.tdk.data.formats.library.csv.*;
-import com.telenav.tdk.graph.traffic.project.TdkGraphTrafficLimits;
-import com.telenav.tdk.graph.traffic.roadsection.*;
-import com.telenav.tdk.graph.traffic.roadsection.codings.tmc.TmcCode;
+import com.telenav.kivakit.collections.primitive.array.scalars.LongArray;
+import com.telenav.kivakit.collections.primitive.map.multi.dynamic.LongToLongMultiMap;
+import com.telenav.kivakit.collections.primitive.map.scalars.LongToLongMap;
+import com.telenav.kivakit.kernel.conversion.primitive.LongConverter;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.data.formats.library.csv.*;
+import com.telenav.kivakit.graph.traffic.project.KivaKitGraphTrafficLimits;
+import com.telenav.kivakit.graph.traffic.roadsection.*;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.tmc.TmcCode;
 
 import java.util.*;
 
@@ -103,7 +102,7 @@ public class WayIdentifierDictionary
         public LongToLongMap load(final LongToLongMultiMap reverseMap)
         {
             final var dictionary = new LongToLongMap("dictionary");
-            dictionary.initialSize(TdkGraphTrafficLimits.ESTIMATED_TRAFFIC_EDGES);
+            dictionary.initialSize(KivaKitGraphTrafficLimits.ESTIMATED_TRAFFIC_EDGES);
             dictionary.initialize();
 
             try (final var reader = new CsvReader(dictionaryFile, ProgressReporter.NULL, SCHEMA, ','))

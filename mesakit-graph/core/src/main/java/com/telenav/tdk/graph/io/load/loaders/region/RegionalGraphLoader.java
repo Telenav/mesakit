@@ -16,19 +16,19 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.io.load.loaders.region;
+package com.telenav.kivakit.graph.io.load.loaders.region;
 
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.core.resource.Resource;
-import com.telenav.tdk.graph.EdgeRelation;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.Metadata;
-import com.telenav.tdk.graph.Place;
-import com.telenav.tdk.graph.collections.EdgeSequence;
-import com.telenav.tdk.graph.io.load.GraphConstraints;
-import com.telenav.tdk.graph.io.load.loaders.BaseGraphLoader;
-import com.telenav.tdk.graph.specifications.common.place.store.PlaceStore;
-import com.telenav.tdk.graph.specifications.library.store.GraphStore;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.graph.EdgeRelation;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.Metadata;
+import com.telenav.kivakit.graph.Place;
+import com.telenav.kivakit.graph.collections.EdgeSequence;
+import com.telenav.kivakit.graph.io.load.GraphConstraints;
+import com.telenav.kivakit.graph.io.load.loaders.BaseGraphLoader;
+import com.telenav.kivakit.graph.specifications.common.place.store.PlaceStore;
+import com.telenav.kivakit.graph.specifications.library.store.GraphStore;
 
 import java.util.HashSet;
 import java.util.Set;

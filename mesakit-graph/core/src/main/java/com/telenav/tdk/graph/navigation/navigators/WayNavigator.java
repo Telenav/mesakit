@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.navigation.navigators;
+package com.telenav.kivakit.graph.navigation.navigators;
 
-import com.telenav.tdk.data.formats.library.map.identifiers.WayIdentifier;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.navigation.Navigator;
+import com.telenav.kivakit.data.formats.library.map.identifiers.WayIdentifier;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.navigation.Navigator;
 
 import java.util.HashSet;
 import java.util.Set;

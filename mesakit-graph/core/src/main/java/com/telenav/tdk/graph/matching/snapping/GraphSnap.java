@@ -16,15 +16,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.matching.snapping;
+package com.telenav.kivakit.graph.matching.snapping;
 
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.core.kernel.scalars.counts.Maximum;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.collections.EdgeSet;
-import com.telenav.tdk.graph.navigation.Navigator;
-import com.telenav.tdk.map.geography.polyline.PolylineSnap;
-import com.telenav.tdk.map.measurements.Distance;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.collections.EdgeSet;
+import com.telenav.kivakit.graph.navigation.Navigator;
+import com.telenav.kivakit.map.geography.polyline.PolylineSnap;
+import com.telenav.kivakit.map.measurements.Distance;
 
 import java.util.Map;
 

@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.navigation.routing.cost.functions.heuristic;
+package com.telenav.kivakit.navigation.routing.cost.functions.heuristic;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.map.road.model.RoadFunctionalClass;
-import com.telenav.tdk.navigation.routing.cost.Cost;
-import com.telenav.tdk.navigation.routing.cost.CostFunction;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.map.road.model.RoadFunctionalClass;
+import com.telenav.kivakit.navigation.routing.cost.Cost;
+import com.telenav.kivakit.navigation.routing.cost.CostFunction;
 
 /**
  * A routing cost function which is based on functional class

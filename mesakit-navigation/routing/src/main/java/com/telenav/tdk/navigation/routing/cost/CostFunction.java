@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.navigation.routing.cost;
+package com.telenav.kivakit.navigation.routing.cost;
 
-import com.telenav.tdk.core.kernel.scalars.levels.Weight;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.navigation.routing.cost.operators.MaximumCost;
-import com.telenav.tdk.navigation.routing.cost.operators.Minimum;
-import com.telenav.tdk.navigation.routing.cost.operators.Plus;
-import com.telenav.tdk.navigation.routing.cost.operators.Weighted;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.kernel.scalars.levels.Weight;
+import com.telenav.kivakit.navigation.routing.cost.operators.MaximumCost;
+import com.telenav.kivakit.navigation.routing.cost.operators.Minimum;
+import com.telenav.kivakit.navigation.routing.cost.operators.Plus;
+import com.telenav.kivakit.navigation.routing.cost.operators.Weighted;
 
 /**
  * Cost function for determining the expense of traversing an edge.

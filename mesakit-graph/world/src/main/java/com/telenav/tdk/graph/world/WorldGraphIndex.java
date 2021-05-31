@@ -16,42 +16,42 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world;
+package com.telenav.kivakit.graph.world;
 
-import com.telenav.tdk.core.collections.primitive.map.split.SplitLongToIntMap;
-import com.telenav.tdk.core.filesystem.File;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.interfaces.naming.*;
-import com.telenav.tdk.core.kernel.interfaces.object.Source;
-import com.telenav.tdk.core.kernel.language.io.serialization.TdkSerializer;
-import com.telenav.tdk.core.kernel.language.iteration.*;
-import com.telenav.tdk.core.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.operation.progress.ProgressReporter;
-import com.telenav.tdk.core.kernel.scalars.bytes.Bytes;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.core.kernel.scalars.versioning.*;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.core.resource.compression.archive.*;
-import com.telenav.tdk.data.formats.library.map.identifiers.WayIdentifier;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
-import com.telenav.tdk.graph.traffic.roadsection.codings.tmc.TmcTableIdentifier;
-import com.telenav.tdk.graph.world.grid.*;
-import com.telenav.tdk.graph.world.repository.*;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.indexing.quadtree.QuadTreeSpatialIndex;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.measurements.Distance;
-import com.telenav.tdk.map.region.project.TdkMapRegionLimits;
-import com.telenav.tdk.map.utilities.grid.*;
+import com.telenav.kivakit.collections.primitive.map.split.SplitLongToIntMap;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.interfaces.naming.*;
+import com.telenav.kivakit.kernel.interfaces.object.Source;
+import com.telenav.kivakit.kernel.language.io.serialization.KivaKitSerializer;
+import com.telenav.kivakit.kernel.language.iteration.*;
+import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.scalars.bytes.Bytes;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.kernel.scalars.versioning.*;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.resource.compression.archive.*;
+import com.telenav.kivakit.data.formats.library.map.identifiers.WayIdentifier;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.tmc.TmcTableIdentifier;
+import com.telenav.kivakit.graph.world.grid.*;
+import com.telenav.kivakit.graph.world.repository.*;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.indexing.quadtree.QuadTreeSpatialIndex;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.measurements.Distance;
+import com.telenav.kivakit.map.region.project.KivaKitMapRegionLimits;
+import com.telenav.kivakit.map.utilities.grid.*;
 
 import java.io.Serializable;
 import java.util.*;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.fail;
-import static com.telenav.tdk.core.resource.compression.archive.ZipArchive.Mode.*;
+import static com.telenav.kivakit.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.*;
 
 /**
  * The world graph index stores metadata and provides spatial indexing services for a {@link WorldGraph} which can't
@@ -154,20 +154,20 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
         }
     }
 
-    @TdkArchivedField(lazy = true)
+    @KivaKitArchivedField(lazy = true)
     private List<WorldPlace> places;
 
-    @TdkArchivedField
+    @KivaKitArchivedField
     private final Map<GridCell, Bytes> memorySize = new HashMap<>();
 
-    @TdkArchivedField(lazy = true)
+    @KivaKitArchivedField(lazy = true)
     private Map<TmcTableIdentifier, Set<GridCellIdentifier>> cellIdsForTmcTable;
 
     /** Spatial index of places */
     private transient QuadTreeSpatialIndex<WorldPlace> placeSpatialIndex;
 
     /** Edge identifier to cell map */
-    @TdkArchivedField(lazy = true)
+    @KivaKitArchivedField(lazy = true)
     private SplitLongToIntMap cellForWayIdentifier;
 
     /** The archive where this is stored */
@@ -181,7 +181,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
     private WorldGraphIndex()
     {
         cellForWayIdentifier = new SplitLongToIntMap("WorldGraphIndex.cellForPbfWayIdentifier");
-        cellForWayIdentifier.initialSize(TdkMapRegionLimits.ESTIMATED_WAYS);
+        cellForWayIdentifier.initialSize(KivaKitMapRegionLimits.ESTIMATED_WAYS);
         cellForWayIdentifier.initialize();
     }
 
@@ -252,7 +252,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
             {
                 // Load archived fields
                 final var version = archive.version();
-                final VersionedObject<Metadata> metadata = archive.zip().load(TdkSerializer.threadSerializer(LOGGER), "metadata");
+                final VersionedObject<Metadata> metadata = archive.zip().load(KivaKitSerializer.threadSerializer(LOGGER), "metadata");
                 if (metadata != null)
                 {
                     this.metadata = metadata.get();

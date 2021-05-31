@@ -16,16 +16,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world.project;
+package com.telenav.kivakit.graph.world.project;
 
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
 import org.junit.BeforeClass;
 
-public class TdkGraphWorldUnitTest extends TdkGraphCoreUnitTest
+public class KivaKitGraphWorldUnitTest extends KivaKitGraphCoreUnitTest
 {
     @BeforeClass
     public static void testSetup()
     {
-        TdkGraphWorld.get().install();
+        KivaKitGraphWorld.get().install();
     }
 }

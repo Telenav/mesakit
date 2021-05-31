@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.io.load.loaders.decimation;
+package com.telenav.kivakit.graph.io.load.loaders.decimation;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.collections.EdgeSet;
-import com.telenav.tdk.graph.navigation.Navigator;
-import com.telenav.tdk.map.measurements.Angle;
-import com.telenav.tdk.map.measurements.Angle.Chirality;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.collections.EdgeSet;
+import com.telenav.kivakit.graph.navigation.Navigator;
+import com.telenav.kivakit.map.measurements.Angle;
+import com.telenav.kivakit.map.measurements.Angle.Chirality;
 
 public class DecimationNavigator extends Navigator
 {

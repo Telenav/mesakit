@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.unidb.graph.edge.model.attributes;
+package com.telenav.kivakit.graph.specifications.unidb.graph.edge.model.attributes;
 
-import com.telenav.tdk.core.kernel.interfaces.numeric.Quantizable;
-import com.telenav.tdk.core.kernel.language.reflection.property.filters.TdkIncludeProperty;
-import com.telenav.tdk.core.kernel.language.string.formatting.ObjectFormatter;
-import com.telenav.tdk.core.kernel.language.string.formatting.ObjectFormatter.Format;
-import com.telenav.tdk.map.measurements.Distance;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.string.formatting.ObjectFormatter;
+import com.telenav.kivakit.kernel.language.string.formatting.ObjectFormatter.Format;
+import com.telenav.kivakit.map.measurements.Distance;
 
 public class AdasCurvature implements Quantizable
 {
@@ -41,13 +41,13 @@ public class AdasCurvature implements Quantizable
         }
     }
 
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     private Distance radius;
 
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     private Direction sign;
 
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     private Integer curvature;
 
     public AdasCurvature(final Distance radius, final Direction sign)

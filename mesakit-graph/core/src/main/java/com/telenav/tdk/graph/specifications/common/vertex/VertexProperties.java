@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.vertex;
+package com.telenav.kivakit.graph.specifications.common.vertex;
 
-import com.telenav.tdk.core.kernel.language.object.Lazy;
-import com.telenav.tdk.graph.Vertex;
-import com.telenav.tdk.graph.specifications.common.CommonDataSpecification;
-import com.telenav.tdk.graph.specifications.common.element.GraphElementProperties;
-import com.telenav.tdk.graph.specifications.library.attributes.Attribute;
+import com.telenav.kivakit.kernel.language.object.Lazy;
+import com.telenav.kivakit.graph.Vertex;
+import com.telenav.kivakit.graph.specifications.common.CommonDataSpecification;
+import com.telenav.kivakit.graph.specifications.common.element.GraphElementProperties;
+import com.telenav.kivakit.graph.specifications.library.attributes.Attribute;
 
 public class VertexProperties extends GraphElementProperties<Vertex>
 {
@@ -33,7 +33,7 @@ public class VertexProperties extends GraphElementProperties<Vertex>
         return singleton.get();
     }
 
-    public abstract class VertexProperty extends com.telenav.tdk.graph.specifications.library.properties.GraphElementProperty<Vertex>
+    public abstract class VertexProperty extends com.telenav.kivakit.graph.specifications.library.properties.GraphElementProperty<Vertex>
     {
         protected VertexProperty(final String name, final Attribute<?> attribute)
         {

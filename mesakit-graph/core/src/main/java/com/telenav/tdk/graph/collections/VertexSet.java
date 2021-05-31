@@ -16,26 +16,25 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.collections;
 
-package com.telenav.tdk.graph.collections;
-
-import com.telenav.tdk.core.collections.set.BoundedSet;
-import com.telenav.tdk.core.collections.set.WrappedSet;
-import com.telenav.tdk.core.collections.set.operations.Intersection;
-import com.telenav.tdk.core.collections.set.operations.Subset;
-import com.telenav.tdk.core.collections.set.operations.Union;
-import com.telenav.tdk.core.collections.set.operations.Without;
-import com.telenav.tdk.core.kernel.conversion.BaseConverter;
-import com.telenav.tdk.core.kernel.conversion.collection.BaseSetConverter;
-import com.telenav.tdk.core.kernel.interfaces.object.Matcher;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.messaging.listeners.FailureThrower;
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.Vertex;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.collections.set.BoundedSet;
+import com.telenav.kivakit.collections.set.WrappedSet;
+import com.telenav.kivakit.collections.set.operations.Intersection;
+import com.telenav.kivakit.collections.set.operations.Subset;
+import com.telenav.kivakit.collections.set.operations.Union;
+import com.telenav.kivakit.collections.set.operations.Without;
+import com.telenav.kivakit.kernel.conversion.BaseConverter;
+import com.telenav.kivakit.kernel.conversion.collection.BaseSetConverter;
+import com.telenav.kivakit.kernel.interfaces.object.Matcher;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.messaging.listeners.FailureThrower;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.Vertex;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
 
 import java.util.Collection;
 import java.util.Collections;

@@ -16,51 +16,50 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.project;
 
-package com.telenav.tdk.graph.project;
-
-import com.telenav.tdk.core.configuration.ConfigurationStore;
-import com.telenav.tdk.core.filesystem.*;
-import com.telenav.tdk.core.kernel.language.object.Lazy;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.operation.progress.ProgressReporter;
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.core.resource.compression.archive.ZipArchive;
-import com.telenav.tdk.core.resource.path.Extension;
-import com.telenav.tdk.data.formats.pbf.processing.filters.osm.*;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.collections.EdgeSet;
-import com.telenav.tdk.graph.identifiers.*;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.metadata.DataSpecification;
-import com.telenav.tdk.graph.specifications.common.edge.HeavyWeightEdge;
-import com.telenav.tdk.graph.specifications.common.relation.HeavyWeightRelation;
-import com.telenav.tdk.graph.specifications.common.vertex.HeavyWeightVertex;
-import com.telenav.tdk.graph.specifications.library.pbf.PbfFileMetadataAnnotator;
-import com.telenav.tdk.graph.specifications.osm.OsmDataSpecification;
-import com.telenav.tdk.graph.specifications.osm.graph.OsmGraph;
-import com.telenav.tdk.graph.specifications.unidb.UniDbDataSpecification;
-import com.telenav.tdk.graph.specifications.unidb.graph.UniDbGraph;
-import com.telenav.tdk.map.geography.*;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.measurements.Distance;
-import com.telenav.tdk.map.overpass.OverpassDataDownloader;
-import com.telenav.tdk.map.region.Country;
-import com.telenav.tdk.map.region.project.TdkMapRegionUnitTest;
+import com.telenav.kivakit.configuration.ConfigurationStore;
+import com.telenav.kivakit.filesystem.*;
+import com.telenav.kivakit.kernel.language.object.Lazy;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.resource.compression.archive.ZipArchive;
+import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.kivakit.data.formats.pbf.processing.filters.osm.*;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.collections.EdgeSet;
+import com.telenav.kivakit.graph.identifiers.*;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.metadata.DataSpecification;
+import com.telenav.kivakit.graph.specifications.common.edge.HeavyWeightEdge;
+import com.telenav.kivakit.graph.specifications.common.relation.HeavyWeightRelation;
+import com.telenav.kivakit.graph.specifications.common.vertex.HeavyWeightVertex;
+import com.telenav.kivakit.graph.specifications.library.pbf.PbfFileMetadataAnnotator;
+import com.telenav.kivakit.graph.specifications.osm.OsmDataSpecification;
+import com.telenav.kivakit.graph.specifications.osm.graph.OsmGraph;
+import com.telenav.kivakit.graph.specifications.unidb.UniDbDataSpecification;
+import com.telenav.kivakit.graph.specifications.unidb.graph.UniDbGraph;
+import com.telenav.kivakit.map.geography.*;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.measurements.Distance;
+import com.telenav.kivakit.map.overpass.OverpassDataDownloader;
+import com.telenav.kivakit.map.region.Country;
+import com.telenav.kivakit.map.region.project.KivaKitMapRegionUnitTest;
 import org.junit.BeforeClass;
 
-import static com.telenav.tdk.core.resource.compression.archive.ZipArchive.Mode.READ;
-import static com.telenav.tdk.data.formats.library.DataFormat.PBF;
-import static com.telenav.tdk.graph.metadata.DataSupplier.*;
-import static com.telenav.tdk.graph.specifications.library.pbf.PbfFileMetadataAnnotator.Mode.STRIP_UNREFERENCED_NODES;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
+import static com.telenav.kivakit.data.formats.library.DataFormat.PBF;
+import static com.telenav.kivakit.graph.metadata.DataSupplier.*;
+import static com.telenav.kivakit.graph.specifications.library.pbf.PbfFileMetadataAnnotator.Mode.STRIP_UNREFERENCED_NODES;
 
 /**
  * Base class for graph unit tests.
  *
  * @author jonathanl (shibo)
  */
-public abstract class TdkGraphCoreUnitTest extends TdkMapRegionUnitTest
+public abstract class KivaKitGraphCoreUnitTest extends KivaKitMapRegionUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -130,7 +129,7 @@ public abstract class TdkGraphCoreUnitTest extends TdkMapRegionUnitTest
     @BeforeClass
     public static void testSetup()
     {
-        TdkGraphCore.get().install();
+        KivaKitGraphCore.get().install();
     }
 
     public static Graph uniDbDowntownSanFrancisco()
@@ -147,7 +146,7 @@ public abstract class TdkGraphCoreUnitTest extends TdkMapRegionUnitTest
 
     private int nextOsmEdgeIdentifier = 1;
 
-    protected TdkGraphCoreUnitTest()
+    protected KivaKitGraphCoreUnitTest()
     {
         final var store = ConfigurationStore.global();
         LOGGER.listenTo(store);
@@ -260,7 +259,8 @@ public abstract class TdkGraphCoreUnitTest extends TdkMapRegionUnitTest
         return relation;
     }
 
-    protected HeavyWeightVertex osmVertex(final Graph graph, final int index, final int identifier, final Location location)
+    protected HeavyWeightVertex osmVertex(final Graph graph, final int index, final int identifier,
+                                          final Location location)
     {
         final var vertex = graph.newHeavyWeightVertex(new VertexIdentifier(identifier));
         vertex.graph(graph);
@@ -271,9 +271,9 @@ public abstract class TdkGraphCoreUnitTest extends TdkMapRegionUnitTest
     }
 
     @Override
-    protected TdkGraphCoreRandomValueFactory randomValueFactory()
+    protected KivaKitGraphCoreRandomValueFactory randomValueFactory()
     {
-        return newRandomValueFactory(TdkGraphCoreRandomValueFactory::new);
+        return newRandomValueFactory(KivaKitGraphCoreRandomValueFactory::new);
     }
 
     protected Route route(final Edge... edges)
@@ -318,7 +318,7 @@ public abstract class TdkGraphCoreUnitTest extends TdkMapRegionUnitTest
 
     private static Folder cacheFolder()
     {
-        return TdkGraphCore.get().overpassFolder();
+        return KivaKitGraphCore.get().overpassFolder();
     }
 
     private static void downloadFromOverpass(final String dataDescriptor, final Rectangle bounds)
@@ -358,7 +358,7 @@ public abstract class TdkGraphCoreUnitTest extends TdkMapRegionUnitTest
             if (!pbfFile.exists())
             {
                 // then try to copy it from the test data folder
-                final var destination = TdkGraphCore.get().graphFolder().folder("overpass");
+                final var destination = KivaKitGraphCore.get().graphFolder().folder("overpass");
                 final var source = Folder.tdkHome().folder("tdk-graph/core/data");
                 source.copyTo(destination, Extension.OSM_PBF.fileMatcher(), ProgressReporter.NULL);
             }

@@ -16,19 +16,19 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.osm.graph.loader.sectioner;
+package com.telenav.kivakit.graph.specifications.osm.graph.loader.sectioner;
 
-import com.telenav.tdk.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.tdk.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.identifiers.EdgeIdentifier;
-import com.telenav.tdk.graph.specifications.common.edge.HeavyWeightEdge;
-import com.telenav.tdk.map.geography.polyline.Polyline;
-import com.telenav.tdk.map.geography.polyline.PolylineBuilder;
-import com.telenav.tdk.map.geography.polyline.PolylineSection;
-import com.telenav.tdk.map.geography.polyline.PolylineSectioner;
-import com.telenav.tdk.map.geography.segment.Segment;
-import com.telenav.tdk.map.measurements.Distance;
+import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
+import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.identifiers.EdgeIdentifier;
+import com.telenav.kivakit.graph.specifications.common.edge.HeavyWeightEdge;
+import com.telenav.kivakit.map.geography.polyline.Polyline;
+import com.telenav.kivakit.map.geography.polyline.PolylineBuilder;
+import com.telenav.kivakit.map.geography.polyline.PolylineSection;
+import com.telenav.kivakit.map.geography.polyline.PolylineSectioner;
+import com.telenav.kivakit.map.geography.segment.Segment;
+import com.telenav.kivakit.map.measurements.Distance;
 
 import java.util.ArrayList;
 import java.util.List;

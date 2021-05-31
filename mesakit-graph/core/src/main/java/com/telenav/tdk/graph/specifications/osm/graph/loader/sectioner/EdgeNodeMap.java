@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.osm.graph.loader.sectioner;
+package com.telenav.kivakit.graph.specifications.osm.graph.loader.sectioner;
 
-import com.telenav.tdk.core.collections.primitive.array.scalars.SplitLongArray;
-import com.telenav.tdk.core.collections.primitive.map.split.SplitLongToIntMap;
-import com.telenav.tdk.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.tdk.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
-import com.telenav.tdk.graph.identifiers.EdgeIdentifier;
-import com.telenav.tdk.graph.specifications.library.pbf.IntersectionMap;
+import com.telenav.kivakit.collections.primitive.array.scalars.SplitLongArray;
+import com.telenav.kivakit.collections.primitive.map.split.SplitLongToIntMap;
+import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
+import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.kivakit.graph.identifiers.EdgeIdentifier;
+import com.telenav.kivakit.graph.specifications.library.pbf.IntersectionMap;
 
 import java.util.ArrayList;
 import java.util.Collections;

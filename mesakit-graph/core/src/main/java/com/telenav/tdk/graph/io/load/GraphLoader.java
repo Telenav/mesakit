@@ -16,19 +16,19 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.io.load;
+package com.telenav.kivakit.graph.io.load;
 
-import com.telenav.tdk.core.kernel.messaging.Listener;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.messaging.Repeater;
-import com.telenav.tdk.core.kernel.validation.Validation;
-import com.telenav.tdk.core.resource.Resource;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.Metadata;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.specifications.common.graph.loader.RawPbfGraphLoader;
-import com.telenav.tdk.graph.specifications.library.store.GraphStore;
-import com.telenav.tdk.graph.specifications.osm.graph.loader.sectioner.WaySectioningGraphLoader;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.messaging.Repeater;
+import com.telenav.kivakit.kernel.validation.Validation;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.Metadata;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.specifications.common.graph.loader.RawPbfGraphLoader;
+import com.telenav.kivakit.graph.specifications.library.store.GraphStore;
+import com.telenav.kivakit.graph.specifications.osm.graph.loader.sectioner.WaySectioningGraphLoader;
 
 /**
  * A graph loader takes data from some data source and loads it into a {@link GraphStore}, applying a set of constraints

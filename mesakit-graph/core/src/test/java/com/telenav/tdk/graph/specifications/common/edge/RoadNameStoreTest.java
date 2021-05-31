@@ -16,17 +16,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.edge;
+package com.telenav.kivakit.graph.specifications.common.edge;
 
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
-import com.telenav.tdk.graph.specifications.common.edge.store.stores.roadname.RoadNameStore;
-import com.telenav.tdk.map.road.model.RoadName;
-import com.telenav.tdk.map.road.model.RoadName.Type;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.kivakit.graph.specifications.common.edge.store.stores.roadname.RoadNameStore;
+import com.telenav.kivakit.map.road.model.RoadName;
+import com.telenav.kivakit.map.road.model.RoadName.Type;
 import org.junit.Test;
 
-public class RoadNameStoreTest extends TdkGraphCoreUnitTest
+public class RoadNameStoreTest extends KivaKitGraphCoreUnitTest
 {
     @Test
     public void test()

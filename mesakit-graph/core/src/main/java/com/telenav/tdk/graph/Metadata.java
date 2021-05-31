@@ -16,58 +16,58 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph;
+package com.telenav.kivakit.graph;
 
 import com.esotericsoftware.kryo.*;
 import com.esotericsoftware.kryo.io.*;
-import com.telenav.tdk.core.collections.primitive.array.scalars.IntArray;
-import com.telenav.tdk.core.filesystem.*;
-import com.telenav.tdk.core.kernel.commandline.SwitchParser;
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.interfaces.naming.Named;
-import com.telenav.tdk.core.kernel.language.reflection.property.filters.TdkIncludeProperty;
-import com.telenav.tdk.core.kernel.language.string.*;
-import com.telenav.tdk.core.kernel.language.string.conversion.*;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.core.kernel.operation.progress.ProgressReporter;
-import com.telenav.tdk.core.kernel.operation.progress.reporters.Progress;
-import com.telenav.tdk.core.kernel.scalars.bytes.Bytes;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.core.kernel.scalars.levels.Percentage;
-import com.telenav.tdk.core.kernel.scalars.mutable.MutableValue;
-import com.telenav.tdk.core.kernel.scalars.versioning.Version;
-import com.telenav.tdk.core.kernel.validation.*;
-import com.telenav.tdk.core.kernel.validation.validators.BaseValidator;
-import com.telenav.tdk.core.resource.Resource;
-import com.telenav.tdk.core.resource.compression.archive.ZipArchive;
-import com.telenav.tdk.core.resource.path.FileName;
-import com.telenav.tdk.core.resource.resources.other.PropertyMap;
-import com.telenav.tdk.data.formats.library.DataFormat;
-import com.telenav.tdk.data.formats.pbf.model.tags.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.compression.*;
-import com.telenav.tdk.data.formats.pbf.processing.*;
-import com.telenav.tdk.data.formats.pbf.processing.readers.SerialPbfReader;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.metadata.*;
-import com.telenav.tdk.graph.project.TdkGraphCoreLimits;
-import com.telenav.tdk.graph.specifications.osm.OsmDataSpecification;
-import com.telenav.tdk.graph.specifications.unidb.UniDbDataSpecification;
-import com.telenav.tdk.map.geography.Precision;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.utilities.compression.codecs.huffman.character.HuffmanCharacterCodec;
-import com.telenav.tdk.utilities.compression.codecs.huffman.list.HuffmanStringListCodec;
+import com.telenav.kivakit.collections.primitive.array.scalars.IntArray;
+import com.telenav.kivakit.filesystem.*;
+import com.telenav.kivakit.kernel.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.string.*;
+import com.telenav.kivakit.kernel.language.string.conversion.*;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.operation.progress.reporters.Progress;
+import com.telenav.kivakit.kernel.scalars.bytes.Bytes;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.kernel.scalars.levels.Percentage;
+import com.telenav.kivakit.kernel.scalars.mutable.MutableValue;
+import com.telenav.kivakit.kernel.scalars.versioning.Version;
+import com.telenav.kivakit.kernel.validation.*;
+import com.telenav.kivakit.kernel.validation.validators.BaseValidator;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.resource.compression.archive.ZipArchive;
+import com.telenav.kivakit.resource.path.FileName;
+import com.telenav.kivakit.resource.resources.other.PropertyMap;
+import com.telenav.kivakit.data.formats.library.DataFormat;
+import com.telenav.kivakit.data.formats.pbf.model.tags.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.compression.*;
+import com.telenav.kivakit.data.formats.pbf.processing.*;
+import com.telenav.kivakit.data.formats.pbf.processing.readers.SerialPbfReader;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.metadata.*;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreLimits;
+import com.telenav.kivakit.graph.specifications.osm.OsmDataSpecification;
+import com.telenav.kivakit.graph.specifications.unidb.UniDbDataSpecification;
+import com.telenav.kivakit.map.geography.Precision;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.utilities.compression.codecs.huffman.character.HuffmanCharacterCodec;
+import com.telenav.kivakit.utilities.compression.codecs.huffman.list.HuffmanStringListCodec;
 import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
 
 import java.util.*;
 import java.util.regex.Pattern;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.*;
-import static com.telenav.tdk.data.formats.library.DataFormat.valueOf;
-import static com.telenav.tdk.data.formats.library.DataFormat.*;
-import static com.telenav.tdk.graph.Metadata.CountType.*;
-import static com.telenav.tdk.graph.metadata.DataSupplier.OSM;
-import static com.telenav.tdk.utilities.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
+import static com.telenav.kivakit.kernel.validation.Validate.*;
+import static com.telenav.kivakit.data.formats.library.DataFormat.valueOf;
+import static com.telenav.kivakit.data.formats.library.DataFormat.*;
+import static com.telenav.kivakit.graph.Metadata.CountType.*;
+import static com.telenav.kivakit.graph.metadata.DataSupplier.OSM;
+import static com.telenav.kivakit.utilities.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
 
 /**
  * Information about map data in a resource like a file.
@@ -600,7 +600,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * @return Bounds encompassing all data entities
      */
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     public Rectangle dataBounds()
     {
         return dataBounds;
@@ -609,7 +609,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * @return The version of the data in time
      */
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     public DataBuild dataBuild()
     {
         return dataBuild;
@@ -618,13 +618,13 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * @return The {@link DataFormat} that the data comes from
      */
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     public DataFormat dataFormat()
     {
         return dataFormat;
     }
 
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     public Precision dataPrecision()
     {
         return dataPrecision;
@@ -633,7 +633,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * @return The size of this data
      */
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     public Bytes dataSize()
     {
         return dataSize;
@@ -642,8 +642,8 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * @return The data's specification
      */
-    @TdkIncludeProperty
-    @TdkFormatProperty(format = "toString")
+    @KivaKitIncludeProperty
+    @KivaKitFormatProperty(format = "toString")
     public DataSpecification dataSpecification()
     {
         return dataSpecification;
@@ -652,7 +652,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * @return The supplier of the data like HERE or OSM
      */
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     public DataSupplier dataSupplier()
     {
         return dataSupplier;
@@ -673,7 +673,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      * <p>
      * HERE-UniDb-PBF-North_America-2020Q1
      */
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     public String descriptor()
     {
         return dataSupplier
@@ -727,7 +727,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     {
         if (type == ALLOW_ESTIMATE && forwardEdges == null)
         {
-            return wayCount(ALLOW_ESTIMATE).times(TdkGraphCoreLimits.Estimated.EDGES_PER_WAY).asEstimate().ceiling(3);
+            return wayCount(ALLOW_ESTIMATE).times(KivaKitGraphCoreLimits.Estimated.EDGES_PER_WAY).asEstimate().ceiling(3);
         }
         return forwardEdges;
     }
@@ -765,7 +765,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      * The common name of this data
      */
     @Override
-    @TdkIncludeProperty
+    @KivaKitIncludeProperty
     public String name()
     {
         return name;

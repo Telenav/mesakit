@@ -16,25 +16,24 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.library.store;
 
-package com.telenav.tdk.graph.specifications.library.store;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.interfaces.persistence.Unloadable;
+import com.telenav.kivakit.kernel.language.reflection.Type;
+import com.telenav.kivakit.kernel.language.string.*;
+import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.scalars.bytes.Bytes;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.specifications.common.element.ArchivedGraphElementStore;
+import com.telenav.kivakit.graph.specifications.library.attributes.AttributeSet;
 
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.interfaces.persistence.Unloadable;
-import com.telenav.tdk.core.kernel.language.reflection.Type;
-import com.telenav.tdk.core.kernel.language.string.*;
-import com.telenav.tdk.core.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.scalars.bytes.Bytes;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.core.resource.Resource;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.specifications.common.element.ArchivedGraphElementStore;
-import com.telenav.tdk.graph.specifications.library.attributes.AttributeSet;
-
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
 
 public abstract class ArchivedGraphStore extends GraphStore
 {
@@ -105,7 +104,7 @@ public abstract class ArchivedGraphStore extends GraphStore
         unload();
 
         // Attach the graph archive and the field archive based on it
-        // We can't register the spatial index serializer in TdkGraphCore because
+        // We can't register the spatial index serializer in KivaKitGraphCore because
         // it needs the graph in order to function, so we do it here.
 
         // Load metadata
@@ -207,7 +206,7 @@ public abstract class ArchivedGraphStore extends GraphStore
         try
         {
             // Create archive and save all non-null archived fields
-            // We can't register the spatial index serializer in TdkGraphCore because
+            // We can't register the spatial index serializer in KivaKitGraphCore because
             // it needs the graph in order to function, so we do it here.
 
             // Attach archive

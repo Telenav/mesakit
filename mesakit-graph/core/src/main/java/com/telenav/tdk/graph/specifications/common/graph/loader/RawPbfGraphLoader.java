@@ -16,57 +16,57 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.graph.loader;
+package com.telenav.kivakit.graph.specifications.common.graph.loader;
 
-import com.telenav.tdk.core.collections.primitive.map.split.SplitLongToLongMap;
-import com.telenav.tdk.core.data.extraction.*;
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.interfaces.collection.Addable;
-import com.telenav.tdk.core.kernel.interfaces.collection.Compressible.Method;
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.core.kernel.validation.Validation;
-import com.telenav.tdk.data.formats.library.map.identifiers.*;
-import com.telenav.tdk.data.formats.pbf.model.identifiers.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.*;
-import com.telenav.tdk.data.formats.pbf.processing.PbfDataProcessor;
-import com.telenav.tdk.data.formats.pbf.processing.PbfDataProcessor.Result;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.identifiers.EdgeIdentifier;
-import com.telenav.tdk.graph.io.load.GraphConstraints;
-import com.telenav.tdk.graph.metadata.DataSpecification;
-import com.telenav.tdk.graph.specifications.common.edge.*;
-import com.telenav.tdk.graph.specifications.common.element.GraphElementAttributes;
-import com.telenav.tdk.graph.specifications.common.graph.loader.extractors.*;
-import com.telenav.tdk.graph.specifications.common.graph.loader.extractors.RoadStateExtractor.ExtractedRoadState;
-import com.telenav.tdk.graph.specifications.common.relation.HeavyWeightRelation;
-import com.telenav.tdk.graph.specifications.common.relation.store.RelationStore;
-import com.telenav.tdk.graph.specifications.common.vertex.store.VertexStore;
-import com.telenav.tdk.graph.specifications.library.pbf.*;
-import com.telenav.tdk.graph.specifications.library.store.GraphStore;
-import com.telenav.tdk.graph.specifications.osm.graph.edge.model.attributes.extractors.PlaceExtractor;
-import com.telenav.tdk.graph.specifications.osm.graph.loader.sectioner.EdgeNodeMap;
-import com.telenav.tdk.graph.traffic.extractors.*;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.polyline.*;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.geography.segment.Segment;
-import com.telenav.tdk.map.geography.shape.Outline;
-import com.telenav.tdk.map.geography.shape.Outline.Containment;
-import com.telenav.tdk.map.measurements.*;
-import com.telenav.tdk.map.region.Country;
-import com.telenav.tdk.map.road.model.*;
+import com.telenav.kivakit.collections.primitive.map.split.SplitLongToLongMap;
+import com.telenav.kivakit.data.extraction.*;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.interfaces.collection.Addable;
+import com.telenav.kivakit.kernel.interfaces.collection.Compressible.Method;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.validation.Validation;
+import com.telenav.kivakit.data.formats.library.map.identifiers.*;
+import com.telenav.kivakit.data.formats.pbf.model.identifiers.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.*;
+import com.telenav.kivakit.data.formats.pbf.processing.PbfDataProcessor;
+import com.telenav.kivakit.data.formats.pbf.processing.PbfDataProcessor.Result;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.identifiers.EdgeIdentifier;
+import com.telenav.kivakit.graph.io.load.GraphConstraints;
+import com.telenav.kivakit.graph.metadata.DataSpecification;
+import com.telenav.kivakit.graph.specifications.common.edge.*;
+import com.telenav.kivakit.graph.specifications.common.element.GraphElementAttributes;
+import com.telenav.kivakit.graph.specifications.common.graph.loader.extractors.*;
+import com.telenav.kivakit.graph.specifications.common.graph.loader.extractors.RoadStateExtractor.ExtractedRoadState;
+import com.telenav.kivakit.graph.specifications.common.relation.HeavyWeightRelation;
+import com.telenav.kivakit.graph.specifications.common.relation.store.RelationStore;
+import com.telenav.kivakit.graph.specifications.common.vertex.store.VertexStore;
+import com.telenav.kivakit.graph.specifications.library.pbf.*;
+import com.telenav.kivakit.graph.specifications.library.store.GraphStore;
+import com.telenav.kivakit.graph.specifications.osm.graph.edge.model.attributes.extractors.PlaceExtractor;
+import com.telenav.kivakit.graph.specifications.osm.graph.loader.sectioner.EdgeNodeMap;
+import com.telenav.kivakit.graph.traffic.extractors.*;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.polyline.*;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.geography.segment.Segment;
+import com.telenav.kivakit.map.geography.shape.Outline;
+import com.telenav.kivakit.map.geography.shape.Outline.Containment;
+import com.telenav.kivakit.map.measurements.*;
+import com.telenav.kivakit.map.region.Country;
+import com.telenav.kivakit.map.road.model.*;
 import org.openstreetmap.osmosis.core.domain.v0_6.*;
 
 import java.util.*;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.ensure;
-import static com.telenav.tdk.data.formats.pbf.processing.PbfDataProcessor.Result.*;
-import static com.telenav.tdk.graph.GraphElement.VALIDATE_RAW;
-import static com.telenav.tdk.graph.Metadata.CountType.ALLOW_ESTIMATE;
-import static com.telenav.tdk.map.geography.Precision.DM7;
+import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.data.formats.pbf.processing.PbfDataProcessor.Result.*;
+import static com.telenav.kivakit.graph.GraphElement.VALIDATE_RAW;
+import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.kivakit.map.geography.Precision.DM7;
 
 /**
  * Base class for loading raw graphs from PBF files. In the OSM data specification, a raw graph contains data that has

@@ -16,19 +16,19 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.collections;
+package com.telenav.kivakit.graph.collections;
 
-import com.telenav.tdk.core.kernel.interfaces.object.Matcher;
-import com.telenav.tdk.core.kernel.language.iteration.Streams;
-import com.telenav.tdk.core.kernel.language.iteration.Streams.Processing;
-import com.telenav.tdk.core.kernel.language.matching.Matching;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.graph.Route;
-import com.telenav.tdk.graph.RouteBuilder;
-import com.telenav.tdk.graph.Vertex;
-import com.telenav.tdk.graph.project.TdkGraphCoreLimits.Limit;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.kernel.interfaces.object.Matcher;
+import com.telenav.kivakit.kernel.language.iteration.Streams;
+import com.telenav.kivakit.kernel.language.iteration.Streams.Processing;
+import com.telenav.kivakit.kernel.language.matching.Matching;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.graph.Route;
+import com.telenav.kivakit.graph.RouteBuilder;
+import com.telenav.kivakit.graph.Vertex;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreLimits.Limit;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
 
 import java.util.Iterator;
 import java.util.stream.Stream;

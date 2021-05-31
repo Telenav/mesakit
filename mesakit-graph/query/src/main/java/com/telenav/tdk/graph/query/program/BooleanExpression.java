@@ -1,6 +1,6 @@
-package com.telenav.tdk.graph.query.program;
+package com.telenav.kivakit.graph.query.program;
 
-import com.telenav.tdk.graph.query.program.expressions.closure.OneOrMore;
+import com.telenav.kivakit.graph.query.program.expressions.closure.OneOrMore;
 
 /**
  * A boolean expression that can be evaluated with {@link #evaluate()} and may be evaluated more times so long as {@link

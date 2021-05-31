@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.graph.store;
+package com.telenav.kivakit.graph.specifications.common.graph.store;
 
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.specifications.library.store.ArchivedGraphStore;
-import com.telenav.tdk.graph.specifications.library.store.GraphStore;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.specifications.library.store.ArchivedGraphStore;
+import com.telenav.kivakit.graph.specifications.library.store.GraphStore;
 
 /**
  * A compressed store of graph data. This class mainly contains the core connectivity information while things like edge

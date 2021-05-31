@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.element.store.index;
+package com.telenav.kivakit.graph.specifications.common.element.store.index;
 
-import com.telenav.tdk.core.kernel.interfaces.object.Matcher;
-import com.telenav.tdk.core.kernel.language.iteration.BaseIterator;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.graph.GraphElement;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.kernel.interfaces.object.Matcher;
+import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.graph.GraphElement;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
 
 import java.io.PrintStream;
 import java.util.Iterator;

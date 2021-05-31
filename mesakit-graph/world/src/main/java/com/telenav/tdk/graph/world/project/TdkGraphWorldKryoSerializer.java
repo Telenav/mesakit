@@ -16,32 +16,32 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world.project;
+package com.telenav.kivakit.graph.world.project;
 
-import com.telenav.tdk.core.kernel.language.io.serialization.kryo.TdkKryoSerializer;
-import com.telenav.tdk.core.kernel.project.TdkKryoIdentifiers;
-import com.telenav.tdk.graph.project.TdkGraphCore;
-import com.telenav.tdk.graph.traffic.project.TdkGraphTraffic;
-import com.telenav.tdk.graph.world.WorldGraphIndex;
-import com.telenav.tdk.graph.world.WorldPlace;
-import com.telenav.tdk.graph.world.grid.WorldCell;
-import com.telenav.tdk.graph.world.grid.WorldGrid;
-import com.telenav.tdk.map.utilities.grid.project.TdkMapUtilitiesGrid;
+import com.telenav.kivakit.kernel.language.io.serialization.kryo.KivaKitKryoSerializer;
+import com.telenav.kivakit.kernel.project.KivaKitKryoIdentifiers;
+import com.telenav.kivakit.graph.project.KivaKitGraphCore;
+import com.telenav.kivakit.graph.traffic.project.KivaKitGraphTraffic;
+import com.telenav.kivakit.graph.world.WorldGraphIndex;
+import com.telenav.kivakit.graph.world.WorldPlace;
+import com.telenav.kivakit.graph.world.grid.WorldCell;
+import com.telenav.kivakit.graph.world.grid.WorldGrid;
+import com.telenav.kivakit.map.utilities.grid.project.KivaKitMapUtilitiesGrid;
 
-public class TdkGraphWorldKryoSerializer extends TdkKryoSerializer
+public class KivaKitGraphWorldKryoSerializer extends KivaKitKryoSerializer
 {
-    public TdkGraphWorldKryoSerializer()
+    public KivaKitGraphWorldKryoSerializer()
     {
-        super(TdkKryoIdentifiers.TDK_GRAPH_WORLD);
+        super(KivaKitKryoIdentifiers.TDK_GRAPH_WORLD);
 
         //----------------------------------------------------------------------------------------------
-        // NOTE: To maintain backward compatibility, classes are assigned identifiers by TdkKryoSerializer.
+        // NOTE: To maintain backward compatibility, classes are assigned identifiers by KivaKitKryoSerializer.
         // If classes are appended to groups and no classes are removed, older data can always be read.
         //----------------------------------------------------------------------------------------------
 
-        tdkRegisterAllFrom(TdkGraphCore.get());
-        tdkRegisterAllFrom(TdkGraphTraffic.get());
-        tdkRegisterAllFrom(TdkMapUtilitiesGrid.get());
+        tdkRegisterAllFrom(KivaKitGraphCore.get());
+        tdkRegisterAllFrom(KivaKitGraphTraffic.get());
+        tdkRegisterAllFrom(KivaKitMapUtilitiesGrid.get());
 
         tdkNextRegistrationGroup("world-graph-index", () -> tdkRegister(WorldGraphIndex.class));
 

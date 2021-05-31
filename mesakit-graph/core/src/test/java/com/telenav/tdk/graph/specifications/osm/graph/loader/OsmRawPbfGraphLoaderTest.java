@@ -16,8 +16,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-package com.telenav.tdk.graph.specifications.osm.graph.loader;
+package com.telenav.kivakit.graph.specifications.osm.graph.loader;
 
 import org.junit.Test;
 

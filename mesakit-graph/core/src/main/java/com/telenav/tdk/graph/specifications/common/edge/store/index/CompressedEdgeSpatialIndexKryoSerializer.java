@@ -16,15 +16,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.edge.store.index;
+package com.telenav.kivakit.graph.specifications.common.edge.store.index;
 
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.tdk.core.kernel.interfaces.naming.NamedObject;
-import com.telenav.tdk.core.kernel.language.io.serialization.kryo.TdkKryoSerializer;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.map.geography.indexing.rtree.*;
+import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.kernel.language.io.serialization.kryo.KivaKitKryoSerializer;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.map.geography.indexing.rtree.*;
 
 /**
  * Kryo serializer for compressed edge spatial index
@@ -42,7 +42,7 @@ public class CompressedEdgeSpatialIndexKryoSerializer extends RTreeSpatialIndexK
     }
 
     @Override
-    public RTreeSpatialIndex<Edge> onRead(final TdkKryoSerializer kryo, final Input input)
+    public RTreeSpatialIndex<Edge> onRead(final KivaKitKryoSerializer kryo, final Input input)
     {
         final var index = (CompressedEdgeSpatialIndex) super.onRead(kryo, input);
         index.edges = kryo.readObject(input, CompressedEdgeListStore.class);
@@ -51,7 +51,7 @@ public class CompressedEdgeSpatialIndexKryoSerializer extends RTreeSpatialIndexK
 
     @SuppressWarnings({ "rawtypes" })
     @Override
-    public void onWrite(final TdkKryoSerializer kryo, final Output output, final RTreeSpatialIndex index)
+    public void onWrite(final KivaKitKryoSerializer kryo, final Output output, final RTreeSpatialIndex index)
     {
         super.onWrite(kryo, output, index);
         final var edgeSpatialIndex = (CompressedEdgeSpatialIndex) index;
@@ -67,7 +67,7 @@ public class CompressedEdgeSpatialIndexKryoSerializer extends RTreeSpatialIndexK
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
-    protected Leaf readLeaf(final TdkKryoSerializer kryo, final Input input, final RTreeSpatialIndex index,
+    protected Leaf readLeaf(final KivaKitKryoSerializer kryo, final Input input, final RTreeSpatialIndex index,
                             final InteriorNode parent)
     {
         final var leaf = new CompressedLeaf(index, parent);
@@ -76,7 +76,7 @@ public class CompressedEdgeSpatialIndexKryoSerializer extends RTreeSpatialIndexK
     }
 
     @Override
-    protected void writeLeaf(final TdkKryoSerializer kryo, final Output output, final Leaf<Edge> leaf)
+    protected void writeLeaf(final KivaKitKryoSerializer kryo, final Output output, final Leaf<Edge> leaf)
     {
         final var kryoLeaf = (CompressedLeaf) leaf;
         kryo.writeObject(kryoLeaf.list);

@@ -16,19 +16,19 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.project;
+package com.telenav.kivakit.graph.traffic.project;
 
-import com.telenav.tdk.core.configuration.Lookup;
-import com.telenav.tdk.core.kernel.logging.Logger;
-import com.telenav.tdk.core.kernel.logging.LoggerFactory;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSection;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionDatabase;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionIdentifier;
-import com.telenav.tdk.map.geography.project.TdkMapGeographyRandomValueFactory;
+import com.telenav.kivakit.configuration.Lookup;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSection;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionDatabase;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier;
+import com.telenav.kivakit.map.geography.project.KivaKitMapGeographyRandomValueFactory;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.unsupported;
+import static com.telenav.kivakit.kernel.validation.Validate.unsupported;
 
-public class TdkGraphTrafficRandomValueFactory extends TdkMapGeographyRandomValueFactory
+public class KivaKitGraphTrafficRandomValueFactory extends KivaKitMapGeographyRandomValueFactory
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

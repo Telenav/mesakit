@@ -16,10 +16,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.unidb.graph;
+package com.telenav.kivakit.graph.specifications.unidb.graph;
 
-import com.telenav.tdk.graph.Metadata;
-import com.telenav.tdk.graph.specifications.common.CommonGraph;
+import com.telenav.kivakit.graph.Metadata;
+import com.telenav.kivakit.graph.specifications.common.CommonGraph;
 
 public class UniDbGraph extends CommonGraph
 {

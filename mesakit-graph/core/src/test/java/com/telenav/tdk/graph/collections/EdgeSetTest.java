@@ -16,13 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.collections;
 
-package com.telenav.tdk.graph.collections;
-
-import com.telenav.tdk.core.kernel.scalars.counts.Maximum;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
-import com.telenav.tdk.map.geography.Location;
+import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.kivakit.map.geography.Location;
 import org.junit.*;
 
 import java.util.*;
@@ -30,7 +29,7 @@ import java.util.*;
 /**
  * @author jonathanl (shibo)
  */
-public class EdgeSetTest extends TdkGraphCoreUnitTest
+public class EdgeSetTest extends KivaKitGraphCoreUnitTest
 {
     // Four sequentially connected edges (edge1 => edge2 => edge3 => edge4) and one unconnected edge
     private Edge edge1, edge2, edge3, parallelEdge, nonparallelEdge;

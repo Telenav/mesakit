@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.relation;
+package com.telenav.kivakit.graph.specifications.common.relation;
 
-import com.telenav.tdk.graph.EdgeRelationMemberRole;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
+import com.telenav.kivakit.graph.EdgeRelationMemberRole;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
 import org.junit.Test;
 
-public class RelationRoleTest extends TdkGraphCoreUnitTest
+public class RelationRoleTest extends KivaKitGraphCoreUnitTest
 {
     @Test
     public void test()

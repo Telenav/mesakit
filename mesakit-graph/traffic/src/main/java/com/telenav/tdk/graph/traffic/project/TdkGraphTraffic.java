@@ -16,38 +16,38 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.project;
+package com.telenav.kivakit.graph.traffic.project;
 
-import com.telenav.tdk.core.kernel.language.collections.set.Sets;
-import com.telenav.tdk.core.kernel.language.io.serialization.TdkSerializer;
-import com.telenav.tdk.core.kernel.language.object.Lazy;
-import com.telenav.tdk.core.kernel.project.TdkProject;
-import com.telenav.tdk.map.geography.project.TdkMapGeography;
+import com.telenav.kivakit.kernel.language.collections.set.Sets;
+import com.telenav.kivakit.kernel.language.io.serialization.KivaKitSerializer;
+import com.telenav.kivakit.kernel.language.object.Lazy;
+import com.telenav.kivakit.kernel.project.KivaKitProject;
+import com.telenav.kivakit.map.geography.project.KivaKitMapGeography;
 
 import java.util.Set;
 
-public class TdkGraphTraffic extends TdkProject
+public class KivaKitGraphTraffic extends KivaKitProject
 {
-    private static final Lazy<TdkGraphTraffic> singleton = new Lazy<>(TdkGraphTraffic::new);
+    private static final Lazy<KivaKitGraphTraffic> singleton = new Lazy<>(KivaKitGraphTraffic::new);
 
-    public static TdkGraphTraffic get()
+    public static KivaKitGraphTraffic get()
     {
         return singleton.get();
     }
 
-    protected TdkGraphTraffic()
+    protected KivaKitGraphTraffic()
     {
     }
 
     @Override
-    public Set<TdkProject> dependencies()
+    public Set<KivaKitProject> dependencies()
     {
-        return Sets.of(TdkMapGeography.get());
+        return Sets.of(KivaKitMapGeography.get());
     }
 
     @Override
-    public TdkSerializer newSerializer()
+    public KivaKitSerializer newSerializer()
     {
-        return new TdkGraphTrafficKryoSerializer();
+        return new KivaKitGraphTrafficKryoSerializer();
     }
 }

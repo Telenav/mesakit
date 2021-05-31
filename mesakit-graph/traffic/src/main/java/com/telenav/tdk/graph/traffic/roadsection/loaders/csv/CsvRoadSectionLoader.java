@@ -16,23 +16,23 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.roadsection.loaders.csv;
+package com.telenav.kivakit.graph.traffic.roadsection.loaders.csv;
 
-import com.telenav.tdk.core.kernel.language.iteration.BaseIterator;
-import com.telenav.tdk.core.kernel.language.matching.All;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.messaging.messages.MessageList;
-import com.telenav.tdk.core.kernel.messaging.messages.status.Problem;
-import com.telenav.tdk.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.tdk.core.kernel.operation.progress.ProgressReporter;
-import com.telenav.tdk.core.resource.Resource;
-import com.telenav.tdk.data.formats.library.csv.CsvReader;
-import com.telenav.tdk.graph.traffic.roadsection.*;
+import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
+import com.telenav.kivakit.kernel.language.matching.All;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.messaging.messages.MessageList;
+import com.telenav.kivakit.kernel.messaging.messages.status.Problem;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.data.formats.library.csv.CsvReader;
+import com.telenav.kivakit.graph.traffic.roadsection.*;
 
 import java.util.Iterator;
 
-import static com.telenav.tdk.core.kernel.messaging.Message.Status.COMPLETED;
+import static com.telenav.kivakit.kernel.messaging.Message.Status.COMPLETED;
 
 /**
  * Loader for a CSV road section database

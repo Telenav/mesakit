@@ -16,25 +16,25 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.io.load;
+package com.telenav.kivakit.graph.io.load;
 
-import com.telenav.tdk.core.filesystem.File;
-import com.telenav.tdk.core.kernel.commandline.*;
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.interfaces.naming.Named;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.tdk.core.kernel.operation.progress.ProgressReporter;
-import com.telenav.tdk.core.kernel.operation.progress.reporters.Progress;
-import com.telenav.tdk.core.kernel.time.Time;
-import com.telenav.tdk.core.resource.path.FileName;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.io.archive.GraphArchive;
-import com.telenav.tdk.graph.specifications.common.graph.loader.PbfToGraphConverter;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.kernel.commandline.*;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.operation.progress.reporters.Progress;
+import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.resource.path.FileName;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.io.archive.GraphArchive;
+import com.telenav.kivakit.graph.specifications.common.graph.loader.PbfToGraphConverter;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.*;
-import static com.telenav.tdk.core.resource.compression.archive.ZipArchive.Mode.READ;
+import static com.telenav.kivakit.kernel.validation.Validate.*;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
 
 /**
  * Loads any kind of resource to produce a graph, including:

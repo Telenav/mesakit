@@ -1,9 +1,9 @@
-package com.telenav.tdk.graph.query.program;
+package com.telenav.kivakit.graph.query.program;
 
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.validation.Validate;
-import com.telenav.tdk.graph.Route;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.validation.Validate;
+import com.telenav.kivakit.graph.Route;
 
 /**
  * An node in the abstract syntax tree (AST) that forms the {@link Program}.

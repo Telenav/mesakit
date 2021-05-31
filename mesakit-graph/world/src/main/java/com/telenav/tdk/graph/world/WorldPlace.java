@@ -16,18 +16,18 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world;
+package com.telenav.kivakit.graph.world;
 
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.GraphElement;
-import com.telenav.tdk.graph.Place;
-import com.telenav.tdk.graph.identifiers.PlaceIdentifier;
-import com.telenav.tdk.graph.world.grid.WorldCell;
-import com.telenav.tdk.graph.world.identifiers.WorldPlaceIdentifier;
-import com.telenav.tdk.map.geography.Location;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.GraphElement;
+import com.telenav.kivakit.graph.Place;
+import com.telenav.kivakit.graph.identifiers.PlaceIdentifier;
+import com.telenav.kivakit.graph.world.grid.WorldCell;
+import com.telenav.kivakit.graph.world.identifiers.WorldPlaceIdentifier;
+import com.telenav.kivakit.map.geography.Location;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.ensureNotNull;
+import static com.telenav.kivakit.kernel.validation.Validate.ensureNotNull;
 
 /**
  * An place in a {@link WorldGraph}, scoped by a {@link WorldCell} and having a {@link WorldPlaceIdentifier}. The cell

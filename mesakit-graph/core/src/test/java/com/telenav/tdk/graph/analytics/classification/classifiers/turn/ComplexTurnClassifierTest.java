@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.analytics.classification.classifiers.turn;
+package com.telenav.kivakit.graph.analytics.classification.classifiers.turn;
 
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.Route;
-import com.telenav.tdk.graph.RouteBuilder;
-import com.telenav.tdk.graph.identifiers.EdgeIdentifier;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.Route;
+import com.telenav.kivakit.graph.RouteBuilder;
+import com.telenav.kivakit.graph.identifiers.EdgeIdentifier;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
 import org.junit.Before;
 import org.junit.Ignore;
 
@@ -30,7 +30,7 @@ import org.junit.Ignore;
  * @author jonathanl (shibo)
  */
 @Ignore
-public class ComplexTurnClassifierTest extends TdkGraphCoreUnitTest
+public class ComplexTurnClassifierTest extends KivaKitGraphCoreUnitTest
 {
     private static Graph huronCharterGraph;
 

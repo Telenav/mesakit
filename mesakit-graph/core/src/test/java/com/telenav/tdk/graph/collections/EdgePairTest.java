@@ -16,20 +16,20 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.collections;
+package com.telenav.kivakit.graph.collections;
 
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.identifiers.EdgeIdentifier;
-import com.telenav.tdk.graph.navigation.Navigator;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
-import com.telenav.tdk.map.measurements.Distance;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.identifiers.EdgeIdentifier;
+import com.telenav.kivakit.graph.navigation.Navigator;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.kivakit.map.measurements.Distance;
 import org.junit.*;
 
 /**
  * @author tony
  * @author jonathanl (shibo)
  */
-public class EdgePairTest extends TdkGraphCoreUnitTest
+public class EdgePairTest extends KivaKitGraphCoreUnitTest
 {
     private EdgePair connectedEdgePair1, connectedEdgePair2, unconnectedEdgePair, nonBranchingUnconnectedEdgePair;
 

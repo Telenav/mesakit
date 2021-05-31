@@ -1,13 +1,13 @@
-package com.telenav.tdk.graph.query.program.expressions.terminal.value;
+package com.telenav.kivakit.graph.query.program.expressions.terminal.value;
 
-import com.telenav.tdk.core.kernel.interfaces.naming.Named;
-import com.telenav.tdk.core.kernel.interfaces.numeric.Quantizable;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.analytics.classification.classifiers.turn.TurnType;
-import com.telenav.tdk.map.road.model.*;
+import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.analytics.classification.classifiers.turn.TurnType;
+import com.telenav.kivakit.map.road.model.*;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.validation.Validate.fail;
 
 /**
  * A scalar value used in edge attribute comparisons. One of:

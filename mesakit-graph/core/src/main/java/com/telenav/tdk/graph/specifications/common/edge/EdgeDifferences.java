@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.edge;
+package com.telenav.kivakit.graph.specifications.common.edge;
 
-import com.telenav.tdk.core.kernel.comparison.Differences;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.map.road.model.RoadName;
+import com.telenav.kivakit.kernel.comparison.Differences;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.map.road.model.RoadName;
 
 public class EdgeDifferences extends Differences
 {

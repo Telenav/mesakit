@@ -16,22 +16,22 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.edge;
+package com.telenav.kivakit.graph.specifications.common.edge;
 
-import com.telenav.tdk.core.kernel.language.string.formatting.Separators;
-import com.telenav.tdk.core.kernel.logging.Logger;
-import com.telenav.tdk.core.kernel.logging.LoggerFactory;
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.core.kernel.scalars.counts.Maximum;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
-import com.telenav.tdk.graph.specifications.common.edge.store.stores.polyline.SplitPolylineStore;
-import com.telenav.tdk.map.geography.polyline.Polyline;
-import com.telenav.tdk.map.geography.polyline.compression.differential.CompressedPolyline;
+import com.telenav.kivakit.kernel.language.string.formatting.Separators;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.kivakit.graph.specifications.common.edge.store.stores.polyline.SplitPolylineStore;
+import com.telenav.kivakit.map.geography.polyline.Polyline;
+import com.telenav.kivakit.map.geography.polyline.compression.differential.CompressedPolyline;
 import org.junit.Test;
 
 @SuppressWarnings("ConstantConditions")
-public class SplitPolylineStoreTest extends TdkGraphCoreUnitTest
+public class SplitPolylineStoreTest extends KivaKitGraphCoreUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

@@ -1,11 +1,11 @@
-package com.telenav.tdk.graph.query.program.expressions.closure;
+package com.telenav.kivakit.graph.query.program.expressions.closure;
 
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.query.program.*;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.query.program.*;
 
 import java.util.*;
 
-import static com.telenav.tdk.graph.query.program.EdgeStack.Result.PUSHED;
+import static com.telenav.kivakit.graph.query.program.EdgeStack.Result.PUSHED;
 
 /**
  * Evaluates a positive closure, [boolean-expression]+

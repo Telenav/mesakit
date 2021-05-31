@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.edge.store.index;
+package com.telenav.kivakit.graph.specifications.common.edge.store.index;
 
-import com.telenav.tdk.core.kernel.interfaces.collection.Compressible;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.map.geography.indexing.rtree.*;
+import com.telenav.kivakit.kernel.interfaces.collection.Compressible;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.map.geography.indexing.rtree.*;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.unsupported;
+import static com.telenav.kivakit.kernel.validation.Validate.unsupported;
 
 /**
  * Compressed spatial index for edges.

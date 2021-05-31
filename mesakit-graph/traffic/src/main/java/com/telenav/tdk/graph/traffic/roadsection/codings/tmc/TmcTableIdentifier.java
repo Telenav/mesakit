@@ -16,12 +16,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.roadsection.codings.tmc;
+package com.telenav.kivakit.graph.traffic.roadsection.codings.tmc;
 
-import com.telenav.tdk.core.kernel.logging.Logger;
-import com.telenav.tdk.core.kernel.logging.LoggerFactory;
-import com.telenav.tdk.core.kernel.scalars.identifiers.IntegerIdentifier;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionIdentifier;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.scalars.identifiers.IntegerIdentifier;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier;
 
 public class TmcTableIdentifier extends IntegerIdentifier
 {

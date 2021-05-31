@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.analytics.classification.classifiers.turn;
+package com.telenav.kivakit.graph.analytics.classification.classifiers.turn;
 
-import com.telenav.tdk.graph.Route;
-import com.telenav.tdk.map.measurements.Angle;
-import com.telenav.tdk.map.measurements.Distance;
+import com.telenav.kivakit.graph.Route;
+import com.telenav.kivakit.map.measurements.Angle;
+import com.telenav.kivakit.map.measurements.Distance;
 
 /**
  * Classifies complex turns

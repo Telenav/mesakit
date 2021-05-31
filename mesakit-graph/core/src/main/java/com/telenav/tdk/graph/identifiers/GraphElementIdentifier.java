@@ -16,10 +16,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.identifiers;
+package com.telenav.kivakit.graph.identifiers;
 
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.GraphElement;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.GraphElement;
 
 /**
  * An abstraction for identifiers used in a graph. Implementers of this interface include {@link EdgeIdentifier}, {@link

@@ -16,41 +16,41 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.world.project;
+package com.telenav.kivakit.graph.world.project;
 
-import com.telenav.tdk.core.kernel.language.collections.set.Sets;
-import com.telenav.tdk.core.kernel.language.io.serialization.TdkSerializer;
-import com.telenav.tdk.core.kernel.language.object.Lazy;
-import com.telenav.tdk.core.kernel.project.Tdk;
-import com.telenav.tdk.core.kernel.project.TdkProject;
-import com.telenav.tdk.core.kernel.scalars.versioning.Version;
-import com.telenav.tdk.graph.project.TdkGraphCore;
+import com.telenav.kivakit.kernel.language.collections.set.Sets;
+import com.telenav.kivakit.kernel.language.io.serialization.KivaKitSerializer;
+import com.telenav.kivakit.kernel.language.object.Lazy;
+import com.telenav.kivakit.kernel.project.KivaKit;
+import com.telenav.kivakit.kernel.project.KivaKitProject;
+import com.telenav.kivakit.kernel.scalars.versioning.Version;
+import com.telenav.kivakit.graph.project.KivaKitGraphCore;
 
 import java.util.Set;
 
-public class TdkGraphWorld extends TdkProject
+public class KivaKitGraphWorld extends KivaKitProject
 {
-    private static final Lazy<TdkGraphWorld> singleton = new Lazy<>(TdkGraphWorld::new);
+    private static final Lazy<KivaKitGraphWorld> singleton = new Lazy<>(KivaKitGraphWorld::new);
 
-    public static TdkGraphWorld get()
+    public static KivaKitGraphWorld get()
     {
         return singleton.get();
     }
 
-    protected TdkGraphWorld()
+    protected KivaKitGraphWorld()
     {
     }
 
     @Override
-    public Set<TdkProject> dependencies()
+    public Set<KivaKitProject> dependencies()
     {
-        return Sets.of(TdkGraphCore.get());
+        return Sets.of(KivaKitGraphCore.get());
     }
 
     @Override
-    public TdkSerializer newSerializer()
+    public KivaKitSerializer newSerializer()
     {
-        return new TdkGraphWorldKryoSerializer();
+        return new KivaKitGraphWorldKryoSerializer();
     }
 
     /**
@@ -60,6 +60,6 @@ public class TdkGraphWorld extends TdkProject
      */
     public Version worldGraphVersion()
     {
-        return Tdk.version();
+        return KivaKit.version();
     }
 }

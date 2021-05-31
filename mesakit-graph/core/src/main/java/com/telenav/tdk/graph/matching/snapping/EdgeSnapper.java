@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.matching.snapping;
+package com.telenav.kivakit.graph.matching.snapping;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.polyline.PolylineSnap;
-import com.telenav.tdk.map.geography.polyline.PolylineSnapper;
-import com.telenav.tdk.map.measurements.Headed;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.polyline.PolylineSnap;
+import com.telenav.kivakit.map.geography.polyline.PolylineSnapper;
+import com.telenav.kivakit.map.measurements.Headed;
 
 public class EdgeSnapper
 {

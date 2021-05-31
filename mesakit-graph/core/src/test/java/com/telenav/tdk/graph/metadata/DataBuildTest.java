@@ -16,17 +16,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.metadata;
 
-package com.telenav.tdk.graph.metadata;
-
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.testing.TdkUnitTest;
-import com.telenav.tdk.core.kernel.time.LocalTime;
-import com.telenav.tdk.core.kernel.time.TimeZones;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.testing.KivaKitUnitTest;
+import com.telenav.kivakit.kernel.time.LocalTime;
+import com.telenav.kivakit.kernel.time.TimeZones;
 import org.junit.Test;
 
 @SuppressWarnings("ConstantConditions")
-public class DataBuildTest extends TdkUnitTest
+public class DataBuildTest extends KivaKitUnitTest
 {
     @Test
     public void testConstructDataBuildFromTimeString()

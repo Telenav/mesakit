@@ -16,14 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.osm.graph.edge.model.attributes.extractors;
 
-package com.telenav.tdk.graph.specifications.osm.graph.edge.model.attributes.extractors;
-
-import com.telenav.tdk.core.data.extraction.BaseExtractor;
-import com.telenav.tdk.core.kernel.language.string.Strings;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.PbfTagMap;
-import com.telenav.tdk.map.measurements.Speed;
+import com.telenav.kivakit.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagMap;
+import com.telenav.kivakit.map.measurements.Speed;
 
 public class SpeedLimitExtractor extends BaseExtractor<Speed, PbfTagMap>
 {

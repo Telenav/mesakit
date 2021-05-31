@@ -16,10 +16,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.analytics.classification.classifiers.road;
+package com.telenav.kivakit.graph.analytics.classification.classifiers.road;
 
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.analytics.classification.EdgeClassifier;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.analytics.classification.EdgeClassifier;
 
 public class RoadSpeedLimitClassifier implements EdgeClassifier
 {

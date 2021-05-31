@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic;
+package com.telenav.kivakit.graph.traffic;
 
-import com.telenav.tdk.core.configuration.Lookup;
-import com.telenav.tdk.core.kernel.testing.SlowTests;
-import com.telenav.tdk.graph.traffic.project.TdkGraphTrafficUnitTest;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSection;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionDatabase;
-import com.telenav.tdk.graph.traffic.roadsection.codings.tmc.TmcCode;
+import com.telenav.kivakit.configuration.Lookup;
+import com.telenav.kivakit.kernel.testing.SlowTests;
+import com.telenav.kivakit.graph.traffic.project.KivaKitGraphTrafficUnitTest;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSection;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionDatabase;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.tmc.TmcCode;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -31,7 +31,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Category({ SlowTests.class })
-public class RoadSectionDatabaseTest extends TdkGraphTrafficUnitTest
+public class RoadSectionDatabaseTest extends KivaKitGraphTrafficUnitTest
 {
     public RoadSectionDatabaseTest()
     {

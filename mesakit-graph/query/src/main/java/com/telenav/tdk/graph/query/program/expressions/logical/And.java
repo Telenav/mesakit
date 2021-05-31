@@ -1,6 +1,6 @@
-package com.telenav.tdk.graph.query.program.expressions.logical;
+package com.telenav.kivakit.graph.query.program.expressions.logical;
 
-import com.telenav.tdk.graph.query.program.*;
+import com.telenav.kivakit.graph.query.program.*;
 
 /**
  * Evaluates [query] <b>AND</b> [query]

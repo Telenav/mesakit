@@ -16,17 +16,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.osm.graph.edge.model;
+package com.telenav.kivakit.graph.specifications.osm.graph.edge.model;
 
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.core.kernel.validation.*;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.identifiers.EdgeIdentifier;
-import com.telenav.tdk.graph.specifications.osm.graph.edge.store.OsmEdgeStore;
-import com.telenav.tdk.graph.traffic.roadsection.RoadSectionIdentifier;
-import com.telenav.tdk.map.geography.polyline.PolylineSnapper;
-import com.telenav.tdk.map.measurements.*;
-import com.telenav.tdk.map.region.Country;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.kernel.validation.*;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.identifiers.EdgeIdentifier;
+import com.telenav.kivakit.graph.specifications.osm.graph.edge.store.OsmEdgeStore;
+import com.telenav.kivakit.graph.traffic.roadsection.RoadSectionIdentifier;
+import com.telenav.kivakit.map.geography.polyline.PolylineSnapper;
+import com.telenav.kivakit.map.measurements.*;
+import com.telenav.kivakit.map.region.Country;
 
 public class OsmEdge extends Edge
 {

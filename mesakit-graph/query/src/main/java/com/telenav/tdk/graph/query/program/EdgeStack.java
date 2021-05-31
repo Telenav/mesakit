@@ -1,15 +1,15 @@
-package com.telenav.tdk.graph.query.program;
+package com.telenav.kivakit.graph.query.program;
 
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.language.collections.list.ObjectList;
-import com.telenav.tdk.core.kernel.language.string.conversion.StringFormat;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.collections.EdgeSet;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.string.conversion.StringFormat;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.collections.EdgeSet;
 
 import java.util.*;
 
-import static com.telenav.tdk.graph.query.program.EdgeStack.Result.*;
+import static com.telenav.kivakit.graph.query.program.EdgeStack.Result.*;
 
 /**
  * A stack of edges used when evaluating graph query expressions

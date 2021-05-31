@@ -16,21 +16,20 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.library.pbf;
 
-package com.telenav.tdk.graph.specifications.library.pbf;
+import com.telenav.kivakit.kernel.interfaces.factory.MapFactory;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.data.formats.pbf.processing.PbfDataSource;
+import com.telenav.kivakit.data.formats.pbf.processing.readers.ParallelPbfReader;
+import com.telenav.kivakit.data.formats.pbf.processing.readers.SerialPbfReader;
+import com.telenav.kivakit.graph.Metadata;
 
-import com.telenav.tdk.core.kernel.interfaces.factory.MapFactory;
-import com.telenav.tdk.core.kernel.messaging.Message;
-import com.telenav.tdk.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.core.resource.Resource;
-import com.telenav.tdk.data.formats.pbf.processing.PbfDataSource;
-import com.telenav.tdk.data.formats.pbf.processing.readers.ParallelPbfReader;
-import com.telenav.tdk.data.formats.pbf.processing.readers.SerialPbfReader;
-import com.telenav.tdk.graph.Metadata;
-
-import static com.telenav.tdk.core.kernel.validation.Validate.ensureNotNull;
-import static com.telenav.tdk.core.kernel.validation.Validate.unsupported;
+import static com.telenav.kivakit.kernel.validation.Validate.ensureNotNull;
+import static com.telenav.kivakit.kernel.validation.Validate.unsupported;
 
 /**
  * Creates data sources of a given type to read a resource. The method {@link #newInstance(Metadata)} creates a data

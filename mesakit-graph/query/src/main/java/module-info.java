@@ -1,7 +1,7 @@
-open module tdk.graph.query
+open module mesakit.graph.query
 {
-    requires tdk.core.application;
-    requires transitive tdk.graph.core;
+    requires kivakit.application;
+    requires transitive mesakit.graph.core;
 
     requires org.antlr.antlr4.runtime;
 

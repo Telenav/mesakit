@@ -16,16 +16,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.world;
 
-package com.telenav.tdk.graph.world;
-
-import com.telenav.tdk.core.kernel.language.object.Hash;
-import com.telenav.tdk.graph.EdgeRelation;
-import com.telenav.tdk.graph.EdgeRelationMember;
-import com.telenav.tdk.graph.GraphElement;
-import com.telenav.tdk.graph.identifiers.RelationIdentifier;
-import com.telenav.tdk.graph.world.grid.WorldCell;
-import com.telenav.tdk.graph.world.identifiers.WorldRelationIdentifier;
+import com.telenav.kivakit.kernel.language.object.Hash;
+import com.telenav.kivakit.graph.EdgeRelation;
+import com.telenav.kivakit.graph.EdgeRelationMember;
+import com.telenav.kivakit.graph.GraphElement;
+import com.telenav.kivakit.graph.identifiers.RelationIdentifier;
+import com.telenav.kivakit.graph.world.grid.WorldCell;
+import com.telenav.kivakit.graph.world.identifiers.WorldRelationIdentifier;
 
 import java.util.ArrayList;
 import java.util.List;

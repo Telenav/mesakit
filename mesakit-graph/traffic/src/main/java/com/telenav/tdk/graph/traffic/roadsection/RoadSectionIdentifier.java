@@ -16,30 +16,30 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.traffic.roadsection;
+package com.telenav.kivakit.graph.traffic.roadsection;
 
-import com.telenav.tdk.core.configuration.Lookup;
-import com.telenav.tdk.core.kernel.conversion.collection.BaseListConverter;
-import com.telenav.tdk.core.kernel.conversion.primitive.*;
-import com.telenav.tdk.core.kernel.conversion.string.BaseStringConverter;
-import com.telenav.tdk.core.kernel.language.bits.BitDiagram;
-import com.telenav.tdk.core.kernel.language.bits.BitDiagram.BitField;
-import com.telenav.tdk.core.kernel.language.object.Hash;
-import com.telenav.tdk.core.kernel.language.string.*;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.core.kernel.scalars.counts.*;
-import com.telenav.tdk.core.kernel.scalars.identifiers.Identifier;
-import com.telenav.tdk.graph.traffic.roadsection.codings.navteq.NavteqRoadSectionCode;
-import com.telenav.tdk.graph.traffic.roadsection.codings.ngx.NgxRoadSectionCode;
-import com.telenav.tdk.graph.traffic.roadsection.codings.osm.PbfRoadSectionCode;
-import com.telenav.tdk.graph.traffic.roadsection.codings.telenav.TelenavTrafficLocationCode;
-import com.telenav.tdk.graph.traffic.roadsection.codings.tmc.TmcCode;
-import com.telenav.tdk.graph.traffic.roadsection.codings.tomtom.TomTomRoadSectionCode;
-import com.telenav.tdk.map.road.model.*;
-import com.telenav.tdk.map.ui.swing.map.tiles.ZoomLevel;
+import com.telenav.kivakit.configuration.Lookup;
+import com.telenav.kivakit.kernel.conversion.collection.BaseListConverter;
+import com.telenav.kivakit.kernel.conversion.primitive.*;
+import com.telenav.kivakit.kernel.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.language.bits.BitDiagram;
+import com.telenav.kivakit.kernel.language.bits.BitDiagram.BitField;
+import com.telenav.kivakit.kernel.language.object.Hash;
+import com.telenav.kivakit.kernel.language.string.*;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.scalars.identifiers.Identifier;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.navteq.NavteqRoadSectionCode;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.ngx.NgxRoadSectionCode;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.osm.PbfRoadSectionCode;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.telenav.TelenavTrafficLocationCode;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.tmc.TmcCode;
+import com.telenav.kivakit.graph.traffic.roadsection.codings.tomtom.TomTomRoadSectionCode;
+import com.telenav.kivakit.map.road.model.*;
+import com.telenav.kivakit.map.ui.swing.map.tiles.ZoomLevel;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.unsupported;
+import static com.telenav.kivakit.kernel.validation.Validate.unsupported;
 
 /**
  * Identifiers should have the following format and be stored in two 64 bit long values:

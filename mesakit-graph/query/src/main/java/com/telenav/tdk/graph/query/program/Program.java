@@ -1,10 +1,10 @@
-package com.telenav.tdk.graph.query.program;
+package com.telenav.kivakit.graph.query.program;
 
-import com.telenav.tdk.core.kernel.debug.Debug;
-import com.telenav.tdk.core.kernel.logging.*;
-import com.telenav.tdk.core.kernel.scalars.counts.Maximum;
-import com.telenav.tdk.graph.*;
-import com.telenav.tdk.graph.query.program.statements.Select;
+import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.logging.*;
+import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.graph.*;
+import com.telenav.kivakit.graph.query.program.statements.Select;
 
 /**
  * A program is a statement, in the form of an abstract syntax tree (AST) which can be evaluated to return a {@link

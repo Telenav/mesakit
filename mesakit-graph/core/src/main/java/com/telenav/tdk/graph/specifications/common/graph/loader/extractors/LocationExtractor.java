@@ -16,13 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.specifications.common.graph.loader.extractors;
+package com.telenav.kivakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.tdk.core.data.extraction.*;
-import com.telenav.tdk.core.kernel.messaging.*;
-import com.telenav.tdk.data.formats.pbf.model.tags.*;
-import com.telenav.tdk.map.geography.*;
-import com.telenav.tdk.map.geography.rectangle.BoundingBoxBuilder;
+import com.telenav.kivakit.data.extraction.*;
+import com.telenav.kivakit.kernel.messaging.*;
+import com.telenav.kivakit.data.formats.pbf.model.tags.*;
+import com.telenav.kivakit.map.geography.*;
+import com.telenav.kivakit.map.geography.rectangle.BoundingBoxBuilder;
 import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
 
 public class LocationExtractor extends BaseExtractor<Location, PbfEntity<?>>

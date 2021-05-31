@@ -16,10 +16,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.tdk.graph.library.osm.change;
+package com.telenav.kivakit.graph.library.osm.change;
 
-import com.telenav.tdk.core.collections.map.multi.MultiMap;
-import com.telenav.tdk.core.kernel.language.string.Strings;
+import com.telenav.kivakit.collections.map.multi.MultiMap;
+import com.telenav.kivakit.kernel.language.string.Strings;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -16,24 +16,23 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.specifications.common.edge.store.index;
 
-package com.telenav.tdk.graph.specifications.common.edge.store.index;
-
-import com.telenav.tdk.core.kernel.scalars.counts.Count;
-import com.telenav.tdk.graph.Graph;
-import com.telenav.tdk.graph.project.TdkGraphCoreUnitTest;
-import com.telenav.tdk.map.geography.Latitude;
-import com.telenav.tdk.map.geography.Location;
-import com.telenav.tdk.map.geography.Longitude;
-import com.telenav.tdk.map.geography.indexing.rtree.RTreeSettings;
-import com.telenav.tdk.map.geography.rectangle.Rectangle;
-import com.telenav.tdk.map.measurements.Distance;
+import com.telenav.kivakit.kernel.scalars.counts.Count;
+import com.telenav.kivakit.graph.Graph;
+import com.telenav.kivakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.kivakit.map.geography.Latitude;
+import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.map.geography.Longitude;
+import com.telenav.kivakit.map.geography.indexing.rtree.RTreeSettings;
+import com.telenav.kivakit.map.geography.rectangle.Rectangle;
+import com.telenav.kivakit.map.measurements.Distance;
 import org.junit.Test;
 
 /**
  * @author jonathanl (shibo)
  */
-public class CompressedEdgeSpatialIndexTest extends TdkGraphCoreUnitTest
+public class CompressedEdgeSpatialIndexTest extends KivaKitGraphCoreUnitTest
 {
     @Test
     public void test()

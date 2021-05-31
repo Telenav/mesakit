@@ -16,21 +16,20 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+package com.telenav.kivakit.graph.analytics.ramp;
 
-package com.telenav.tdk.graph.analytics.ramp;
-
-import com.telenav.tdk.core.kernel.scalars.counts.Estimate;
-import com.telenav.tdk.core.kernel.scalars.counts.Maximum;
-import com.telenav.tdk.graph.Edge;
-import com.telenav.tdk.graph.Vertex;
-import com.telenav.tdk.graph.collections.EdgeSet;
-import com.telenav.tdk.graph.library.matchers.Matchers;
-import com.telenav.tdk.graph.navigation.Navigator.Direction;
+import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.graph.Edge;
+import com.telenav.kivakit.graph.Vertex;
+import com.telenav.kivakit.graph.collections.EdgeSet;
+import com.telenav.kivakit.graph.library.matchers.Matchers;
+import com.telenav.kivakit.graph.navigation.Navigator.Direction;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-import static com.telenav.tdk.core.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.validation.Validate.fail;
 
 /**
  * Crawls out all links (connectors and ramps) beginning from an initial link.
