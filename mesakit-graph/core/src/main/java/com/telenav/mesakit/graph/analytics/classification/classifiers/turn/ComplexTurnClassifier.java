@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.analytics.classification.classifiers.turn;
 
 import com.telenav.mesakit.graph.Route;
-import com.telenav.mesakit.map.measurements.Angle;
+import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 /**

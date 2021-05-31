@@ -22,7 +22,7 @@ import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.navigation.Navigator;
-import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,7 +31,7 @@ import org.junit.Test;
  * @author tony
  * @author jonathanl (shibo)
  */
-public class EdgePairTest extends KivaKitGraphCoreUnitTest
+public class EdgePairTest extends GraphCoreUnitTest
 {
     private EdgePair connectedEdgePair1, connectedEdgePair2, unconnectedEdgePair, nonBranchingUnconnectedEdgePair;
 

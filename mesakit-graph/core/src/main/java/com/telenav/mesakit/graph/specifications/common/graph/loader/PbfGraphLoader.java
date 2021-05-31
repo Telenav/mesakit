@@ -18,12 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader;
 
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagFilter;
-import com.telenav.kivakit.data.formats.pbf.processing.PbfDataSource;
-import com.telenav.kivakit.data.formats.pbf.processing.filters.*;
-import com.telenav.kivakit.data.formats.pbf.processing.filters.all.*;
-import com.telenav.kivakit.data.formats.pbf.processing.readers.SerialPbfReader;
-import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
@@ -32,6 +27,13 @@ import com.telenav.mesakit.graph.io.load.GraphLoader;
 import com.telenav.mesakit.graph.io.load.loaders.BaseGraphLoader;
 import com.telenav.mesakit.graph.specifications.library.pbf.PbfDataSourceFactory;
 import com.telenav.mesakit.graph.specifications.library.store.GraphStore;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagFilter;
+import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataSource;
+import com.telenav.mesakit.map.data.formats.pbf.processing.filters.RelationFilter;
+import com.telenav.mesakit.map.data.formats.pbf.processing.filters.WayFilter;
+import com.telenav.mesakit.map.data.formats.pbf.processing.filters.all.AllRelationsFilter;
+import com.telenav.mesakit.map.data.formats.pbf.processing.filters.all.AllWaysFilter;
+import com.telenav.mesakit.map.data.formats.pbf.processing.readers.SerialPbfReader;
 import com.telenav.mesakit.map.region.Region;
 
 /**

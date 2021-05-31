@@ -18,11 +18,12 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph;
 
-import com.telenav.kivakit.kernel.language.string.Strings;
-import com.telenav.kivakit.kernel.operation.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
+import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.time.Time;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.count.MutableCount;
 import com.telenav.kivakit.resource.Resource;
-import com.telenav.kivakit.time.Time;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.analytics.junction.JunctionEdgeFinder;
@@ -34,7 +35,7 @@ import com.telenav.mesakit.graph.specifications.common.CommonGraph;
 import com.telenav.mesakit.graph.specifications.common.edge.EdgeAttributes;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.OsmEdge;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.store.OsmEdgeStore;
-import com.telenav.mesakit.map.measurements.Angle;
+import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.road.model.RoadSubType;
 
 public final class OsmGraph extends CommonGraph
@@ -81,7 +82,7 @@ public final class OsmGraph extends CommonGraph
     {
         if (supports(EdgeAttributes.get().ROAD_NAMES))
         {
-            information(Strings.topLine(20, "Marking double-digitized edges"));
+            information(AsciiArt.topLine(20, "Marking double-digitized edges"));
             final var start = Time.now();
             final var count = new MutableCount();
             final var progress = isDeaf() ? Progress.NULL : Progress.create(this, "edges");
@@ -96,7 +97,7 @@ public final class OsmGraph extends CommonGraph
                 progress.next();
             }
             progress.end();
-            information(Strings.bottomLine(20, "Marked $ double-digitized edges in ${debug}.", count, start.elapsedSince()));
+            information(AsciiArt.bottomLine(20, "Marked $ double-digitized edges in ${debug}.", count, start.elapsedSince()));
         }
     }
 
@@ -112,16 +113,16 @@ public final class OsmGraph extends CommonGraph
 
     public void markJunctionEdges()
     {
-        information(Strings.topLine(20, "Marking junction edges"));
+        information(AsciiArt.topLine(20, "Marking junction edges"));
         final var junctionEdges = optimizeJunctionEdges(findJunctionEdges());
         storeJunctionEdges(junctionEdges);
-        information(Strings.bottomLine(20, "Marked $ junction edges", junctionEdges.size()));
+        information(AsciiArt.bottomLine(20, "Marked $ junction edges", junctionEdges.size()));
     }
 
     public void markRampsAndConnectors()
     {
         final var ramps = new MutableCount();
-        information(Strings.topLine(20, "Marking ramps and connectors"));
+        information(AsciiArt.topLine(20, "Marking ramps and connectors"));
         final var finder = listenTo(new RampFinder(this)
         {
             @Override
@@ -139,7 +140,7 @@ public final class OsmGraph extends CommonGraph
             }
         });
         finder.find();
-        information(Strings.bottomLine(20, "Marked $ ramps", ramps));
+        information(AsciiArt.bottomLine(20, "Marked $ ramps", ramps));
     }
 
     private EdgeSet findJunctionEdges()
@@ -162,7 +163,7 @@ public final class OsmGraph extends CommonGraph
                 junctions.add(edge);
             }
         };
-        finder.broadcastTo(this);
+        finder.addListener(this);
         finder.find();
         information("Marked $ junction edges and $ connectors in $", junctions.size(), connectors, start.elapsedSince());
         return junctions;

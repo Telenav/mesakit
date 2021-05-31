@@ -19,10 +19,10 @@
 package com.telenav.mesakit.graph.specifications.common.relation;
 
 import com.telenav.mesakit.graph.EdgeRelationMemberRole;
-import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import org.junit.Test;
 
-public class RelationRoleTest extends KivaKitGraphCoreUnitTest
+public class RelationRoleTest extends GraphCoreUnitTest
 {
     @Test
     public void test()

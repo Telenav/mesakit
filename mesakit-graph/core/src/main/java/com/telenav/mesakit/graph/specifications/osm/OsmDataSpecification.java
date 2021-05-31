@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.graph.specifications.osm;
 
-import com.telenav.kivakit.data.formats.library.DataFormat;
 import com.telenav.kivakit.kernel.data.comparison.Differences;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
@@ -39,6 +38,7 @@ import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeProperties;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.store.OsmEdgeStore;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.OsmPbfGraphLoader;
+import com.telenav.mesakit.map.data.formats.library.DataFormat;
 
 /**
  * The specification for OpenStreetMap (OSM) data, adding OSM-specific attributes to the common attributes in {@link

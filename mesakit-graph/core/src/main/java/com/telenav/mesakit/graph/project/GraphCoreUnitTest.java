@@ -19,6 +19,7 @@
 package com.telenav.mesakit.graph.project;
 
 import com.telenav.kivakit.configuration.ConfigurationSet;
+import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.language.objects.Lazy;
 import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
@@ -26,6 +27,7 @@ import com.telenav.kivakit.kernel.language.values.count.Estimate;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.resource.CopyMode;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.mesakit.graph.Edge;
@@ -69,7 +71,7 @@ import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
  *
  * @author jonathanl (shibo)
  */
-public abstract class KivaKitGraphCoreUnitTest extends MapRegionUnitTest
+public abstract class GraphCoreUnitTest extends MapRegionUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -156,11 +158,11 @@ public abstract class KivaKitGraphCoreUnitTest extends MapRegionUnitTest
 
     private int nextOsmEdgeIdentifier = 1;
 
-    protected KivaKitGraphCoreUnitTest()
+    protected GraphCoreUnitTest()
     {
         final var store = ConfigurationSet.global();
         LOGGER.listenTo(store);
-        store.loadAll(new Folder("configuration"));
+        store.addFolder(Folder.parse("configuration"));
     }
 
     protected Edge edge(final Graph graph, final double fromLatitude, final double fromLongitude,
@@ -281,9 +283,9 @@ public abstract class KivaKitGraphCoreUnitTest extends MapRegionUnitTest
     }
 
     @Override
-    protected KivaKitGraphCoreRandomValueFactory randomValueFactory()
+    protected GraphCoreRandomValueFactory randomValueFactory()
     {
-        return newRandomValueFactory(KivaKitGraphCoreRandomValueFactory::new);
+        return newRandomValueFactory(GraphCoreRandomValueFactory::new);
     }
 
     protected Route route(final Edge... edges)
@@ -294,12 +296,6 @@ public abstract class KivaKitGraphCoreUnitTest extends MapRegionUnitTest
             builder.append(edge);
         }
         return builder.route();
-    }
-
-    @Override
-    protected void serializationTest(final Object object)
-    {
-        serializationTest(serializer(), object);
     }
 
     protected HeavyWeightEdge testEdge(final long identifier)
@@ -369,8 +365,8 @@ public abstract class KivaKitGraphCoreUnitTest extends MapRegionUnitTest
             {
                 // then try to copy it from the test data folder
                 final var destination = GraphCore.get().graphFolder().folder("overpass");
-                final var source = Folder.tdkHome().folder("tdk-graph/core/data");
-                source.copyTo(destination, Extension.OSM_PBF.fileMatcher(), ProgressReporter.NULL);
+                final var source = Folder.kivakitHome().folder("tdk-graph/core/data");
+                source.copyTo(destination, CopyMode.OVERWRITE, Extension.OSM_PBF.fileMatcher(), ProgressReporter.NULL);
             }
 
             // and if we can't find it there and it's an OSM graph being requested,
@@ -411,7 +407,7 @@ public abstract class KivaKitGraphCoreUnitTest extends MapRegionUnitTest
         }
         else
         {
-            return new GraphArchive(graphFile, ProgressReporter.NULL, READ).load(Listener.NULL);
+            return new GraphArchive(graphFile, ProgressReporter.NULL, READ).load(Listener.none());
         }
         return null;
     }

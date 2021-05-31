@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.graph.specifications.library.pbf;
 
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
-import com.telenav.kivakit.data.formats.pbf.model.tags.compression.PbfTagCodec;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.specifications.common.element.store.TagStore;
 import com.telenav.mesakit.graph.specifications.common.vertex.store.GraphNodeIndex;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.compression.PbfTagCodec;
 
 public class PbfNodeTagStore
 {

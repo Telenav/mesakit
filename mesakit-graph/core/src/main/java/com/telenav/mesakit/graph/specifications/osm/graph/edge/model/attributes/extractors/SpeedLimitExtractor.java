@@ -18,10 +18,12 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.extractors;
 
-import com.telenav.kivakit.data.extraction.BaseExtractor;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagMap;
-import com.telenav.kivakit.kernel.language.string.Strings;
-import com.telenav.mesakit.map.measurements.Speed;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.language.strings.Strip;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
+import com.telenav.mesakit.map.measurements.motion.Speed;
 
 public class SpeedLimitExtractor extends BaseExtractor<Speed, PbfTagMap>
 {
@@ -40,7 +42,7 @@ public class SpeedLimitExtractor extends BaseExtractor<Speed, PbfTagMap>
         {
             if (maxspeed.endsWith("mph"))
             {
-                var value = Strings.stripTrailing(maxspeed, "mph").trim();
+                var value = Strip.trailing(maxspeed, "mph").trim();
                 final var semicolon = value.lastIndexOf(';');
                 if (semicolon > 0)
                 {

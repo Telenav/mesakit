@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.library.osm.change;
 
-import com.telenav.kivakit.data.formats.library.map.identifiers.PbfWayIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 
-import static com.telenav.kivakit.kernel.validation.Validate.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 /**
  * Represents a way to remove

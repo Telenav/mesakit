@@ -194,7 +194,7 @@ public class GraphArchive extends FieldArchive implements Named
 
         DEBUG.trace("Loading $ from $", metadata, resource());
         final var graph = metadata.dataSpecification().newGraph(metadata.withName(resource().fileName().name()));
-        graph.broadcastTo(listener);
+        graph.addListener(listener);
         graph.load(this);
 
         if (DEBUG.isDebugOn() && JavaVirtualMachine.local().instrument())
@@ -202,9 +202,9 @@ public class GraphArchive extends FieldArchive implements Named
             graph.loadAll();
             final var memory = JavaVirtualMachine.local().sizeOfObjectGraph(graph, "GraphResource.load.graph",
                     Bytes.megabytes(1));
-            final var disk = resource().size();
+            final var disk = resource().bytes();
             DEBUG.trace("Graph memory = $, disk = $, memory/disk = $%", memory, disk,
-                    Doubles.toString((double) memory.asBytes() / (double) disk.asBytes() * 100.0, 1));
+                    Doubles.format((double) memory.asBytes() / (double) disk.asBytes() * 100.0, 1));
         }
         return graph;
     }

@@ -22,11 +22,11 @@ import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.map.geography.indexing.rtree.InteriorNode;
 import com.telenav.mesakit.map.geography.indexing.rtree.Leaf;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndex;
-import com.telenav.mesakit.map.geography.rectangle.Rectangle;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
 import java.util.List;
 
-import static com.telenav.kivakit.kernel.validation.Validate.unsupported;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 
 /**
  * Leaf of a compressed edge spatial index

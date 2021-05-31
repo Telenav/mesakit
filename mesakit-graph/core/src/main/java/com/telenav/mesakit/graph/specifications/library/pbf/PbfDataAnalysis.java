@@ -18,27 +18,30 @@
 
 package com.telenav.mesakit.graph.specifications.library.pbf;
 
-import com.telenav.kivakit.collections.primitive.set.SplitLongSet;
-import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
-import com.telenav.kivakit.data.formats.pbf.model.tags.*;
-import com.telenav.kivakit.data.formats.pbf.processing.*;
-import com.telenav.kivakit.data.formats.pbf.processing.filters.WayFilter;
-import com.telenav.kivakit.kernel.language.string.Strings;
-import com.telenav.kivakit.kernel.language.string.conversion.AsStringIndenter;
+import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.strings.conversion.AsStringIndenter;
+import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
 import com.telenav.kivakit.kernel.messaging.Message;
 import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.primitive.collections.set.SplitLongSet;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.specifications.common.node.store.all.disk.PbfAllNodeDiskStores;
-import com.telenav.mesakit.map.geography.rectangle.*;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor;
+import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataSource;
+import com.telenav.mesakit.map.data.formats.pbf.processing.filters.WayFilter;
+import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
 
 import java.util.Collection;
 
-import static com.telenav.kivakit.data.formats.pbf.processing.PbfDataProcessor.Result.ACCEPTED;
-import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
-import static com.telenav.kivakit.kernel.language.string.conversion.StringFormat.USER_DETAILS;
-import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
 
 /**
  * Holds information obtained by analyzing an PBF resource, including basic information:
@@ -135,7 +138,7 @@ public class PbfDataAnalysis extends BaseRepeater
         }
 
         // Process input data
-        final var statistics = input.process("Analyzing", new PbfDataProcessor()
+        final var statistics = input.process(new PbfDataProcessor()
         {
             @Override
             public void onEndWays()
@@ -144,7 +147,7 @@ public class PbfDataAnalysis extends BaseRepeater
             }
 
             @Override
-            public Result onNode(final PbfNode node)
+            public Action onNode(final PbfNode node)
             {
                 processNode(node, builder);
                 return ACCEPTED;
@@ -160,7 +163,7 @@ public class PbfDataAnalysis extends BaseRepeater
             }
 
             @Override
-            public Result onWay(final PbfWay way)
+            public Action onWay(final PbfWay way)
             {
                 processWay(way);
                 return ACCEPTED;
@@ -184,9 +187,9 @@ public class PbfDataAnalysis extends BaseRepeater
                 .withWayCount(statistics.ways())
                 .withRelationCount(statistics.relations());
 
-        final var indenter = new AsStringIndenter(USER_DETAILS);
-        indenter.indented("metadata", () -> metadata().asString(USER_DETAILS, indenter));
-        information(Strings.textBox(Message.format("PBF Data Analysis of $", fileName), indenter.toString()));
+        final var indenter = new AsStringIndenter(StringFormat.USER_MULTILINE);
+        indenter.indented("metadata", () -> metadata().asString(StringFormat.USER_MULTILINE, indenter));
+        information(AsciiArt.textBox(Message.format("PBF Data Analysis of $", fileName), indenter.toString()));
     }
 
     public void freeIntersectionMap()
@@ -209,7 +212,7 @@ public class PbfDataAnalysis extends BaseRepeater
         return hasWayNodeLocations;
     }
 
-    public NodeIdentifier highestNodeIdentifier()
+    public MapNodeIdentifier highestNodeIdentifier()
     {
         return new PbfNodeIdentifier(highestNodeIdentifier);
     }

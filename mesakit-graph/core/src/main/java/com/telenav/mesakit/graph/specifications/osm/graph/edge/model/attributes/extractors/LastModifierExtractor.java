@@ -18,8 +18,9 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.extractors;
 
-import com.telenav.kivakit.data.extraction.BaseExtractor;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import org.openstreetmap.osmosis.core.domain.v0_6.OsmUser;
 
 public class LastModifierExtractor extends BaseExtractor<OsmUser, PbfWay>

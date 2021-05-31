@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapWayIdentifier;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.road.model.RoadFunctionalClass;
@@ -63,5 +63,5 @@ public interface Road
 
     Vertex to();
 
-    PbfWayIdentifier wayIdentifier();
+    MapWayIdentifier wayIdentifier();
 }

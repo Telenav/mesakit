@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.metadata;
 
-import com.telenav.kivakit.kernel.commandline.SwitchParser;
+import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
 import com.telenav.mesakit.map.geography.Precision;
 

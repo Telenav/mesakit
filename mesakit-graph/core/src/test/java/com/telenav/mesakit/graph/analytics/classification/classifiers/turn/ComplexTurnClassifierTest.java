@@ -22,7 +22,7 @@ import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.RouteBuilder;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
-import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import org.junit.Before;
 import org.junit.Ignore;
 
@@ -30,7 +30,7 @@ import org.junit.Ignore;
  * @author jonathanl (shibo)
  */
 @Ignore
-public class ComplexTurnClassifierTest extends KivaKitGraphCoreUnitTest
+public class ComplexTurnClassifierTest extends GraphCoreUnitTest
 {
     private static Graph huronCharterGraph;
 

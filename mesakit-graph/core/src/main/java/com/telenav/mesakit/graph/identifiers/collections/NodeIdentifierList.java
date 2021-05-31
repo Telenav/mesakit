@@ -18,18 +18,18 @@
 
 package com.telenav.mesakit.graph.identifiers.collections;
 
-import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.string.StringList;
-import com.telenav.kivakit.kernel.language.string.formatting.Separators;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 
 import java.util.List;
 
-public class NodeIdentifierList extends ObjectList<NodeIdentifier>
+public class NodeIdentifierList extends ObjectList<MapNodeIdentifier>
 {
     public static class Converter extends BaseStringConverter<NodeIdentifierList>
     {
@@ -45,7 +45,7 @@ public class NodeIdentifierList extends ObjectList<NodeIdentifier>
         protected NodeIdentifierList onConvertToObject(final String value)
         {
             final var split = StringList.split(value, separators.current());
-            final var identifiers = new ObjectList<NodeIdentifier>();
+            final var identifiers = new ObjectList<MapNodeIdentifier>();
             final var converter = new PbfNodeIdentifier.Converter(this);
             for (final var at : split)
             {
@@ -61,7 +61,7 @@ public class NodeIdentifierList extends ObjectList<NodeIdentifier>
         }
     }
 
-    public NodeIdentifierList(final List<NodeIdentifier> identifiers)
+    public NodeIdentifierList(final List<MapNodeIdentifier> identifiers)
     {
         super(Maximum.maximum(identifiers.size()));
         appendAll(identifiers);

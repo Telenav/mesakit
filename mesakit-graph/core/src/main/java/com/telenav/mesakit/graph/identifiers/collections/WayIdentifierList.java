@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.graph.identifiers.collections;
 
-import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.string.StringList;
-import com.telenav.kivakit.kernel.language.string.formatting.Separators;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.scalars.counts.Maximum;
 import com.telenav.mesakit.graph.Edge;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 
 import java.util.HashSet;
 import java.util.List;
@@ -48,7 +48,7 @@ public class WayIdentifierList extends ObjectList<PbfWayIdentifier>
 
     public static WayIdentifierList parse(final String string)
     {
-        return new Converter(Listener.NULL, new Separators(",")).convert(string);
+        return new Converter(Listener.none(), new Separators(",")).convert(string);
     }
 
     public static class Converter extends BaseStringConverter<WayIdentifierList>
@@ -95,7 +95,7 @@ public class WayIdentifierList extends ObjectList<PbfWayIdentifier>
     @Override
     public WayIdentifierList uniqued()
     {
-        final var uniqued = new WayIdentifierList(Maximum.maximum(count()));
+        final var uniqued = new WayIdentifierList(count().asMaximum());
         final Set<PbfWayIdentifier> identifiers = new HashSet<>();
         for (final var identifier : this)
         {

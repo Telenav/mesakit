@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.kernel.language.values.Count
+import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.Place;

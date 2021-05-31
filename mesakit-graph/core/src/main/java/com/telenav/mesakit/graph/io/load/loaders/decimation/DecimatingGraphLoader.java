@@ -18,8 +18,10 @@
 
 package com.telenav.mesakit.graph.io.load.loaders.decimation;
 
-import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
 import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
@@ -29,7 +31,9 @@ import com.telenav.mesakit.graph.io.load.GraphConstraints;
 import com.telenav.mesakit.graph.io.load.loaders.BaseGraphLoader;
 import com.telenav.mesakit.graph.navigation.Navigator;
 import com.telenav.mesakit.graph.specifications.library.store.GraphStore;
-import com.telenav.mesakit.map.geography.polyline.Polyline;
+import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
+import com.telenav.mesakit.map.measurements.geographic.Angle;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 /**
  * A graph loader that loads edges, simplifying them in the process for efficient display at a low zoom level. Relations

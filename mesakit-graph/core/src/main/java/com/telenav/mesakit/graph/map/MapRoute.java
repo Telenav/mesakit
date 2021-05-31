@@ -19,12 +19,13 @@
 package com.telenav.mesakit.graph.map;
 
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.kernel.language.iteration.Streams;
-import com.telenav.kivakit.kernel.language.string.StringList;
-import com.telenav.kivakit.kernel.language.string.Strings;
-import com.telenav.kivakit.kernel.language.string.formatting.Separators;
+import com.telenav.kivakit.kernel.language.strings.Join;
+import com.telenav.kivakit.kernel.language.strings.Split;
+import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.scalars.counts.Maximum;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.RouteBuilder;
@@ -66,7 +67,7 @@ public class MapRoute implements Iterable<MapEdgeIdentifier>
             if (this.graph == null)
             {
                 final List<MapEdgeIdentifier> identifiers = new ArrayList<>();
-                for (final var identifier : Strings.split(value, this.separators.current()))
+                for (final var identifier : Split.split(value, this.separators.current()))
                 {
                     identifiers.add(this.edgeIdentifierConverter.convert(identifier));
                 }
@@ -77,7 +78,7 @@ public class MapRoute implements Iterable<MapEdgeIdentifier>
                 final var builder = new RouteBuilder();
                 try
                 {
-                    for (final var identifier : Strings.split(value, this.separators.current()))
+                    for (final var identifier : Split.split(value, this.separators.current()))
                     {
                         final var next = this.edgeConverter.convert(identifier);
                         if (next == null)
@@ -90,8 +91,8 @@ public class MapRoute implements Iterable<MapEdgeIdentifier>
                 }
                 catch (final Exception e)
                 {
-                    problem(e, "${class}: Problem converting ${debug} with graph ${debug}", subclass(),
-                            value, this.graph.name()).maximumFrequency(problemBroadcastFrequency());
+                    problem(problemBroadcastFrequency(), e, "${class}: Problem converting ${debug} with graph ${debug}", subclass(),
+                            value, this.graph.name());
                 }
                 return builder.route().asMapRoute();
             }
@@ -135,7 +136,7 @@ public class MapRoute implements Iterable<MapEdgeIdentifier>
 
     public String join(final String separator)
     {
-        return Strings.join(this.identifiers, separator);
+        return Join.join(this.identifiers, separator);
     }
 
     public Stream<MapEdgeIdentifier> parallelStream()

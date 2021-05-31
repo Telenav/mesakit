@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.element;
 
-import com.telenav.kivakit.kernel.language.object.Lazy;
+import com.telenav.kivakit.kernel.language.objects.Lazy;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.specifications.library.attributes.Attribute;
 import com.telenav.mesakit.graph.specifications.library.properties.GraphElementPropertySet;
@@ -34,7 +34,7 @@ public class GraphElementProperties<T extends GraphElement> extends GraphElement
         return singleton.get();
     }
 
-    public abstract class GraphElementProperty extends com.telenav.kivakit.graph.specifications.library.properties.GraphElementProperty<T>
+    public abstract class GraphElementProperty extends com.telenav.mesakit.graph.specifications.library.properties.GraphElementProperty<T>
     {
         protected GraphElementProperty(final String name, final Attribute<?> attribute)
         {

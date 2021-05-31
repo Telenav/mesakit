@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.graph.specifications.common.node.store.all.disk;
 
-import com.telenav.kivakit.collections.primitive.array.scalars.LongArray;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfNode;
 import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.region.project.KivaKitMapRegionLimits;
+import com.telenav.mesakit.map.region.project.MapRegionLimits;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -63,7 +63,7 @@ public class PbfAllNodeIdentifierDiskStore extends AllNodeDiskStore
     public LongArray load(final AllNodeDiskCell cell)
     {
         final var identifiers = new LongArray(name() + ".identifiers");
-        identifiers.initialSize(KivaKitMapRegionLimits.ESTIMATED_NODES);
+        identifiers.initialSize(MapRegionLimits.ESTIMATED_NODES);
         identifiers.initialize();
 
         try (final var in = new DataInputStream(entry(cell).openForReading()))

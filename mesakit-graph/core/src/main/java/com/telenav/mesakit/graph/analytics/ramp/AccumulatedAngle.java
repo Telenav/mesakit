@@ -19,9 +19,14 @@
 package com.telenav.mesakit.graph.analytics.ramp;
 
 import com.telenav.mesakit.graph.Edge;
-import com.telenav.mesakit.map.measurements.Angle;
-import com.telenav.mesakit.map.measurements.Angle.Chirality;
-import com.telenav.mesakit.map.measurements.Heading;
+import com.telenav.mesakit.map.measurements.geographic.Angle;
+import com.telenav.mesakit.map.measurements.geographic.Heading;
+
+import static com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
+import static com.telenav.mesakit.map.measurements.geographic.Angle.MAXIMUM;
+import static com.telenav.mesakit.map.measurements.geographic.Angle._0_DEGREES;
+import static com.telenav.mesakit.map.measurements.geographic.Angle._180_DEGREES;
+import static com.telenav.mesakit.map.measurements.geographic.Angle._MINUS_180_DEGREES;
 
 /**
  * This class accumulates angles without bounds. The angles within 180 degrees counterclockwise are all minus, while the
@@ -82,26 +87,26 @@ class AccumulatedAngle
     @SuppressWarnings("UnusedReturnValue")
     AccumulatedAngle accumulate(final Angle angle)
     {
-        if (angle.isGreaterThan(Angle._0_DEGREES))
+        if (angle.isGreaterThan(_0_DEGREES))
         {
-            if (angle.isLessThan(Angle._180_DEGREES))
+            if (angle.isLessThan(_180_DEGREES))
             {
                 this.degrees += angle.asDegrees();
             }
             else
             {
-                this.degrees -= Angle.MAXIMUM.subtract(angle).asDegrees();
+                this.degrees -= MAXIMUM.minus(angle).asDegrees();
             }
         }
         else
         {
-            if (angle.isGreaterThan(Angle._MINUS_180_DEGREES))
+            if (angle.isGreaterThan(_MINUS_180_DEGREES))
             {
                 this.degrees += angle.asDegrees();
             }
             else
             {
-                this.degrees += Angle.MAXIMUM.add(angle).asDegrees();
+                this.degrees += MAXIMUM.plus(angle).asDegrees();
             }
         }
         return this;

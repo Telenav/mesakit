@@ -18,12 +18,8 @@
 
 package com.telenav.mesakit.graph.specifications.common.relation;
 
-import com.telenav.kivakit.data.formats.library.map.identifiers.PbfWayIdentifier;
-import com.telenav.kivakit.data.formats.pbf.model.change.*;
-import com.telenav.kivakit.data.formats.pbf.model.identifiers.*;
-import com.telenav.kivakit.data.formats.pbf.model.tags.*;
-import com.telenav.kivakit.kernel.language.string.Strings;
-import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.language.time.Time;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.EdgeRelationMember;
@@ -31,8 +27,17 @@ import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.identifiers.RelationIdentifier;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfChangeSetIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfRevisionNumber;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserName;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.rectangle.*;
+import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import org.openstreetmap.osmosis.core.domain.v0_6.EntityType;
 
 import java.util.ArrayList;

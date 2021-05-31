@@ -18,14 +18,13 @@
 
 package com.telenav.mesakit.graph.traffic.extractors;
 
-import com.telenav.kivakit.data.extraction.BaseExtractor;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.kernel.language.iteration.Iterables;
-import com.telenav.kivakit.kernel.language.string.StringList;
 import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.mesakit.graph.traffic.extractors.TrafficIdentifiersExtractor.RoadSectionIdentifierExtract;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.tmc.TmcCode;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import org.openstreetmap.osmosis.core.domain.v0_6.Way;
 
 import java.util.ArrayList;
@@ -36,7 +35,7 @@ import java.util.List;
  *
  * @author matthieun
  */
-public class TrafficIdentifiersExtractor extends BaseExtractor<RoadSectionIdentifierExtract, PbfWay>
+public class TrafficIdentifiersExtractor extends BaseExtractor<TrafficIdentifiersExtractor.RoadSectionIdentifierExtract, PbfWay>
 {
     /**
      * @author matthieun

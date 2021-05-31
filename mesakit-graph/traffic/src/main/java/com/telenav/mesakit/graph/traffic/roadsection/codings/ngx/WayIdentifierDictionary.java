@@ -23,7 +23,7 @@ import com.telenav.kivakit.collections.primitive.map.multi.dynamic.LongToLongMul
 import com.telenav.kivakit.collections.primitive.map.scalars.LongToLongMap;
 import com.telenav.kivakit.data.formats.library.csv.*;
 import com.telenav.kivakit.kernel.conversion.primitive.LongConverter;
-import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
 import com.telenav.kivakit.kernel.scalars.counts.Estimate;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.graph.traffic.project.KivaKitGraphTrafficLimits;

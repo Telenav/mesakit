@@ -43,7 +43,10 @@ public class PlaceIdentifier extends MapNodeIdentifier implements GraphElementId
 
     public static SwitchParser.Builder<PlaceIdentifier> switchParser(final String name, final String description)
     {
-        return new Converter(LOGGER).switchParser(PlaceIdentifier.class, name, description);
+        return SwitchParser.builder(PlaceIdentifier.class)
+                .name(name)
+                .description(description)
+                .converter(new Converter(LOGGER));
     }
 
     public static class Converter extends Quantizable.Converter<PlaceIdentifier>

@@ -29,7 +29,7 @@ import com.telenav.kivakit.kernel.language.iteration.Next;
 import com.telenav.kivakit.kernel.language.iteration.Streams;
 import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
 import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.language.strings.AsciiArt;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsStringIndenter;
 import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
@@ -40,6 +40,8 @@ import com.telenav.kivakit.kernel.language.values.count.Bytes;
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.kernel.language.values.count.Estimate;
 import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.language.values.name.Name;
+import com.telenav.kivakit.kernel.language.values.version.Version;
 import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
@@ -98,7 +100,6 @@ import com.telenav.mesakit.graph.specifications.library.store.GraphStore;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.OsmPbfGraphLoader;
-import com.telenav.mesakit.graph.specifications.unidb.UniDbDataSpecification;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
@@ -137,7 +138,9 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupport
 import static com.telenav.kivakit.kernel.language.threading.context.CallStack.Matching.SUBCLASS;
 import static com.telenav.kivakit.kernel.language.threading.context.CallStack.Proximity.DISTANT;
 import static com.telenav.mesakit.graph.Metadata.CountType.REQUIRE_EXACT;
+import static com.telenav.mesakit.graph.Metadata.VALIDATE_EXCEPT_STATISTICS;
 import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.EDGES;
+import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_EDGES;
 
 /**
  * The base class for directional graphs representing a road network, composed of {@link GraphElement}s. {@link
@@ -182,7 +185,6 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.EDGES;
  *     <li>{@link #supportsFullPbfNodeInformation()} - True if the graph contains information for map enhancement</li>
  *     <li>{@link #isEmpty()} - True if the graph has no graph elements</li>
  *     <li>{@link #isOsm()} - True if the graph meets the {@link OsmDataSpecification}</li>
- *     <li>{@link #isUniDb()} - True if the graph meets the {@link UniDbDataSpecification}</li>
  * </ul>
  * <p>
  * Graphs can be loaded and saved to {@link GraphArchive}s with {@link #load(GraphArchive)} and {@link #save(GraphArchive)}.
@@ -238,7 +240,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.EDGES;
  *     <li>{@link #createCompatible(File)} - Creates a graph using the metadata in the given file</li>
  *     <li>{@link #createConstrained(Matcher)} - Creates a graph constrained to data that matches the given matcher</li>
  *     <li>{@link #createConstrained(GraphConstraints)} - Creates a graph matching the given {@link GraphConstraints}</li>
- *     <li>{@link #createDecimated(Distance, Angle)} - Creates a graph that has been simplified</li>
+ *     <li>{@link #createDecimated(Distance, Angle, ProgressReporter)} - Creates a graph that has been simplified</li>
  * </ul>
  * <p>
  * <b>Edges</b>
@@ -575,7 +577,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return True if the given node identifier is in this graph
      */
-    public final boolean contains(final PbfNodeIdentifier identifier)
+    public final boolean contains(final MapNodeIdentifier identifier)
     {
         return vertexStore.contains(identifier);
     }
@@ -583,7 +585,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return True if the given relation identifier is in this graph
      */
-    public final boolean contains(final PbfRelationIdentifier identifier)
+    public final boolean contains(final MapRelationIdentifier identifier)
     {
         return relationStore.contains(identifier);
     }
@@ -680,7 +682,8 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @param maximumDeviation The maximum amount of turning the edges can make before being decimated
      * @return This graph, decimated
      */
-    public final Graph createDecimated(final Distance minimumLength, final Angle maximumDeviation,
+    public final Graph createDecimated(final Distance minimumLength,
+                                       final Angle maximumDeviation,
                                        final ProgressReporter reporter)
     {
         final var decimated = createCompatible(metadata().withName(name() + "-decimated"));
@@ -1075,14 +1078,6 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     }
 
     /**
-     * @return True if this is graph meets the {@link UniDbDataSpecification}
-     */
-    public final boolean isUniDb()
-    {
-        return dataSpecification.isUniDb();
-    }
-
-    /**
      * @return True if the graph store for this graph is not loaded
      */
     public boolean isUnloaded()
@@ -1119,7 +1114,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
             // Load the graph
             final var metadata = loader.onLoad(graphStore, constraints);
             if (metadata != null && metadata.edgeCount(Metadata.CountType.ALLOW_ESTIMATE).isNonZero()
-                    && metadata.validator(loader.validation()).isValid(this))
+                    && metadata.validator(loader.validation()).validate(this))
             {
                 // flush any queued changes to the graph store,
                 graphStore.flush();
@@ -1145,10 +1140,10 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
                             .withForwardEdgeCount(graphStore.edgeStore().retrieveForwardEdgeCount()));
 
                     // and if the graph store is valid,
-                    if (graphStore.validator(loader.validation()).isValid(this))
+                    if (graphStore.validator(loader.validation()).validate(this))
                     {
                         // we have succeeded in loading the graph,
-                        information(Strings.textBox(Message.format("${class} loaded $ in $", loader.getClass(),
+                        information(AsciiArt.textBox(Message.format("${class} loaded $ in $", loader.getClass(),
                                 metadata().descriptor(), start.elapsedSince()), asString()));
 
                         // so return its metadata.
@@ -1265,7 +1260,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     public String name()
     {
         final var metadata = metadata();
-        return metadata == null ? Strings.syntheticObjectName(this) : metadata.name();
+        return metadata == null ? Name.synthetic(this) : metadata.name();
     }
 
     /**
@@ -1425,7 +1420,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      */
     public final Iterable<Place> placesInside(final Region<?> region)
     {
-        return Iterables.of(() -> new Next<>()
+        return Iterables.iterable(() -> new Next<>()
         {
             final Iterator<Place> places = placesInside(region.bounds()).iterator();
 
@@ -1516,7 +1511,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The relation for the given identifier
      */
-    public EdgeRelation relationForIdentifier(final PbfRelationIdentifier identifier)
+    public EdgeRelation relationForIdentifier(final RelationIdentifier identifier)
     {
         if (relationStore.contains(identifier))
         {
@@ -1629,7 +1624,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     }
 
     /**
-     * @return A route for the given traffic roadsection
+     * @return A route for the given traffic road section
      */
     public synchronized Route routeFor(final RoadSectionIdentifier identifier)
     {

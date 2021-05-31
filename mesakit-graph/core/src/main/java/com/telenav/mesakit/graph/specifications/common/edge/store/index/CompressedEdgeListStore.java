@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge.store.index;
 
-import com.telenav.kivakit.kernel.interfaces.collection.Compressible;
 import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.specifications.common.vertex.store.EdgeArrayStore;
@@ -33,7 +33,7 @@ import java.util.List;
  *
  * @author jonathanl (shibo)
  */
-public class CompressedEdgeListStore implements Compressible, NamedObject
+public class CompressedEdgeListStore implements CompressibleCollection, NamedObject
 {
     /** Store of edges */
     private EdgeArrayStore store;

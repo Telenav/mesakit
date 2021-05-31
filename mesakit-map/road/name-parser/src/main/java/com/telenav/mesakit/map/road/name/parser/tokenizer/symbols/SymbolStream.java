@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.name.parser.tokenizer.symbols;
 
-import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.strings.Strings;
 
 public class SymbolStream
 {
@@ -94,7 +94,7 @@ public class SymbolStream
 
     public boolean lookingAtDigit()
     {
-        return AsciiArt.isNaturalNumber(currentText());
+        return Strings.isNaturalNumber(currentText());
     }
 
     public boolean lookingAtWhiteSpace()

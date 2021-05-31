@@ -23,8 +23,11 @@ import com.telenav.kivakit.kernel.language.collections.set.Sets;
 import com.telenav.kivakit.kernel.language.objects.Lazy;
 import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
 import com.telenav.kivakit.kernel.project.Project;
-import com.telenav.kivakit.serialization.core.SerializationSession;
+import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
+import com.telenav.mesakit.graph.traffic.project.GraphTrafficProject;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.PbfFilters;
+import com.telenav.mesakit.map.data.formats.pbf.project.DataFormatsPbfProject;
+import com.telenav.mesakit.map.region.project.MapRegionProject;
 
 import java.util.Set;
 
@@ -40,11 +43,6 @@ public class GraphCore extends Project
         return singleton.get();
     }
 
-    public static void main(final String[] args)
-    {
-        get().showDependencies();
-    }
-
     protected GraphCore()
     {
         System.setProperty("tdk.graph.folder", graphFolder().toString());
@@ -54,7 +52,7 @@ public class GraphCore extends Project
     @Override
     public Set<Project> dependencies()
     {
-        return Sets.of(KivaKitMapRegion.get(), KivaKitGraphTraffic.get(), KivaKitDataFormatsPbf.get());
+        return Sets.of(MapRegionProject.get(), GraphTrafficProject.get(), DataFormatsPbfProject.get());
     }
 
     /**
@@ -62,15 +60,14 @@ public class GraphCore extends Project
      */
     public Folder graphFolder()
     {
-        return Folder.tdkCacheFolder()
+        return Folder.kivakitCache()
                 .folder("graph")
                 .mkdirs();
     }
 
-    @Override
-    public SerializationSession newSerializer()
+    public SerializationSessionFactory serializationFactory()
     {
-        return new KivaKitGraphCoreKryoSerializer();
+        return new GraphCoreKryoTypes().sessionFactory();
     }
 
     @Override
@@ -89,6 +86,6 @@ public class GraphCore extends Project
     public Folder userGraphFolder()
     {
         final var graphFolder = JavaVirtualMachine.property("TDK_USER_GRAPH_FOLDER");
-        return graphFolder == null ? Folder.desktop() : new Folder(graphFolder);
+        return graphFolder == null ? Folder.desktop() : Folder.parse(graphFolder);
     }
 }

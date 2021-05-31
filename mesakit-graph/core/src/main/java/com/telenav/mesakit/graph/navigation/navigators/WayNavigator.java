@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.navigation.navigators;
 
-import com.telenav.kivakit.data.formats.library.map.identifiers.PbfWayIdentifier;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.navigation.Navigator;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 
 import java.util.HashSet;
 import java.util.Set;

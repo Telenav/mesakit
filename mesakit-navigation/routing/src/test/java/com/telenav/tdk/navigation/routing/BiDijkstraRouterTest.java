@@ -22,7 +22,6 @@ import com.telenav.kivakit.kernel.debug.Debug;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.scalars.levels.Weight;
-import com.telenav.mesakit.map.measurements.Speed;
 import com.telenav.kivakit.navigation.routing.bidijkstra.BiDijkstraRouter;
 import com.telenav.kivakit.navigation.routing.bidijkstra.BiDijkstraRoutingRequest;
 import com.telenav.kivakit.navigation.routing.cost.CostFunction;
@@ -31,11 +30,12 @@ import com.telenav.kivakit.navigation.routing.cost.functions.heuristic.Remaining
 import com.telenav.kivakit.navigation.routing.cost.functions.heuristic.RoadTypeCostFunction;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
-import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
+import com.telenav.mesakit.map.measurements.Speed;
 import org.junit.Before;
 import org.junit.Test;
 
-public class BiDijkstraRouterTest extends KivaKitGraphCoreUnitTest
+public class BiDijkstraRouterTest extends GraphCoreUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

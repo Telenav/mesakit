@@ -18,11 +18,12 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge.store.index;
 
-import com.telenav.kivakit.collections.primitive.array.scalars.LongArray;
 import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
 import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.map.geography.Location;
@@ -44,7 +45,7 @@ public class CompressedEdgeBulkSpatialIndexer extends BaseRepeater implements Na
 
     public CompressedEdgeBulkSpatialIndexer(final Listener listener)
     {
-        broadcastTo(listener);
+        addListener(listener);
     }
 
     /**
@@ -53,9 +54,9 @@ public class CompressedEdgeBulkSpatialIndexer extends BaseRepeater implements Na
      */
     public final int compareHorizontal(final Edge a, final Edge b)
     {
-        final var acenter = Location.longitude(edgeCenter.get(a.index()));
-        final var bcenter = Location.longitude(edgeCenter.get(b.index()));
-        return Integer.compare(acenter, bcenter);
+        final var aCenter = Location.longitude(edgeCenter.get(a.index()));
+        final var bCenter = Location.longitude(edgeCenter.get(b.index()));
+        return Integer.compare(aCenter, bCenter);
     }
 
     /**
@@ -64,9 +65,9 @@ public class CompressedEdgeBulkSpatialIndexer extends BaseRepeater implements Na
      */
     public final int compareVertical(final Edge a, final Edge b)
     {
-        final var acenter = Location.latitude(edgeCenter.get(a.index()));
-        final var bcenter = Location.latitude(edgeCenter.get(b.index()));
-        return Integer.compare(acenter, bcenter);
+        final var aCenter = Location.latitude(edgeCenter.get(a.index()));
+        final var bCenter = Location.latitude(edgeCenter.get(b.index()));
+        return Integer.compare(aCenter, bCenter);
     }
 
     /**

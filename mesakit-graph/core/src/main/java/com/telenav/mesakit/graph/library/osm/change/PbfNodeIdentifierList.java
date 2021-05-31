@@ -18,18 +18,18 @@
 
 package com.telenav.mesakit.graph.library.osm.change;
 
-import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.kivakit.kernel.language.string.StringList;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 import com.telenav.mesakit.map.geography.Location;
 
 import java.util.ArrayList;
 
 /**
- * A list of {@link NodeIdentifier}s.
+ * A list of {@link PbfNodeIdentifier}s.
  *
  * @author jonathanl (shibo)
  */
-public class PbfNodeIdentifierList extends ArrayList<NodeIdentifier>
+public class PbfNodeIdentifierList extends ArrayList<PbfNodeIdentifier>
 {
     private static final long serialVersionUID = -5736095881373152168L;
 

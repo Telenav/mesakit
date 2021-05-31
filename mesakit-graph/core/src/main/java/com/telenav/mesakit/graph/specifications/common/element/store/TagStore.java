@@ -23,21 +23,24 @@ import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.telenav.kivakit.collections.map.CacheMap;
-import com.telenav.kivakit.collections.primitive.array.packed.SplitPackedArray;
-import com.telenav.kivakit.collections.primitive.array.scalars.*;
-import com.telenav.kivakit.collections.primitive.list.ByteList;
-import com.telenav.kivakit.data.formats.pbf.model.tags.*;
-import com.telenav.kivakit.data.formats.pbf.model.tags.compression.PbfTagCodec;
+import com.telenav.kivakit.kernel.interfaces.lifecycle.Initializable;
 import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
-import com.telenav.kivakit.kernel.interfaces.operation.Initializable;
-import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.language.values.count.BitCount;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.primitive.collections.array.packed.SplitPackedArray;
+import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
+import com.telenav.kivakit.primitive.collections.array.scalars.SplitByteArray;
+import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
+import com.telenav.kivakit.primitive.collections.list.ByteList;
 import com.telenav.mesakit.graph.GraphElement;
-import org.jetbrains.annotations.NotNull;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.compression.PbfTagCodec;
 
 import java.util.Map;
 
-import static com.telenav.kivakit.collections.primitive.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
-import static com.telenav.kivakit.kernel.validation.Validate.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
 
 /**
  * Stores and retrieves tag lists for graph elements. The store can be constructed with {@link #TagStore(String,
@@ -258,7 +261,6 @@ public class TagStore implements KryoSerializable, NamedObject, Initializable<Ta
         kryo.writeClassAndObject(output, codec);
     }
 
-    @NotNull
     private ByteArray unsplit()
     {
         final var bytes = new ByteArray("bytes");

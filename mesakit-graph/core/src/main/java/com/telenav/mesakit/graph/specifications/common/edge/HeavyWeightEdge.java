@@ -18,21 +18,14 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge;
 
-import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.kivakit.data.formats.pbf.model.change.*;
-import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.object.Maybe;
+import com.telenav.kivakit.kernel.language.functions.Functions;
+import com.telenav.kivakit.kernel.language.objects.Objects;
 import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
-import com.telenav.kivakit.kernel.scalars.counts.*;
-import com.telenav.kivakit.kernel.time.*;
-import com.telenav.kivakit.map.geography.Location;
-import com.telenav.kivakit.map.geography.polyline.Polyline;
-import com.telenav.kivakit.map.geography.rectangle.Rectangle;
-import com.telenav.kivakit.map.measurements.*;
-import com.telenav.kivakit.map.region.*;
-import com.telenav.kivakit.map.road.model.*;
+import com.telenav.kivakit.kernel.language.time.Duration;
+import com.telenav.kivakit.kernel.language.time.Time;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
@@ -43,6 +36,32 @@ import com.telenav.mesakit.graph.metadata.DataSpecification;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
 import com.telenav.mesakit.graph.traffic.historical.SpeedPatternIdentifier;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfChangeSetIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfRevisionNumber;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserName;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
+import com.telenav.mesakit.map.measurements.geographic.Heading;
+import com.telenav.mesakit.map.measurements.motion.Speed;
+import com.telenav.mesakit.map.region.regions.Country;
+import com.telenav.mesakit.map.region.regions.County;
+import com.telenav.mesakit.map.region.regions.MetropolitanArea;
+import com.telenav.mesakit.map.region.regions.State;
+import com.telenav.mesakit.map.road.model.BridgeType;
+import com.telenav.mesakit.map.road.model.GradeSeparation;
+import com.telenav.mesakit.map.road.model.RoadFunctionalClass;
+import com.telenav.mesakit.map.road.model.RoadName;
+import com.telenav.mesakit.map.road.model.RoadState;
+import com.telenav.mesakit.map.road.model.RoadSubType;
+import com.telenav.mesakit.map.road.model.RoadSurface;
+import com.telenav.mesakit.map.road.model.RoadType;
+import com.telenav.mesakit.map.road.model.SpeedCategory;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
@@ -51,10 +70,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
-import static com.telenav.kivakit.kernel.validation.Validate.ensure;
-import static com.telenav.kivakit.map.road.model.RoadState.*;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.mesakit.map.road.model.RoadState.ONE_WAY;
+import static com.telenav.mesakit.map.road.model.RoadState.TWO_WAY;
 
 public class HeavyWeightEdge extends Edge
 {
@@ -94,9 +113,9 @@ public class HeavyWeightEdge extends Edge
 
     private MetropolitanArea metropolitanArea;
 
-    private NodeIdentifier fromNodeIdentifier;
+    private MapNodeIdentifier fromNodeIdentifier;
 
-    private NodeIdentifier toNodeIdentifier;
+    private MapNodeIdentifier toNodeIdentifier;
 
     private Polyline roadShape;
 
@@ -380,12 +399,12 @@ public class HeavyWeightEdge extends Edge
     }
 
     @Override
-    public NodeIdentifier fromNodeIdentifier()
+    public MapNodeIdentifier fromNodeIdentifier()
     {
         return fromNodeIdentifier;
     }
 
-    public void fromNodeIdentifier(final NodeIdentifier identifier)
+    public void fromNodeIdentifier(final MapNodeIdentifier identifier)
     {
         fromNodeIdentifier = identifier;
     }
@@ -628,7 +647,7 @@ public class HeavyWeightEdge extends Edge
         uniDbReverseReferenceSpeed(Speed.FIFTY_MILES_PER_HOUR);
         reverseSpeedPatternIdentifier(new SpeedPatternIdentifier(19));
         roadFunctionalClass(RoadFunctionalClass.FIRST_CLASS);
-        roadNames(RoadName.Type.OFFICIAL, ObjectList.of(Maximum._8, RoadName.forName("Shibo Boulevard")));
+        roadNames(RoadName.Type.OFFICIAL, ObjectList.objectList(Maximum._8, RoadName.forName("Shibo Boulevard")));
         roadShapeAndLength(testPolyline(), testPolyline().start(), testPolyline().end());
         roadState(TWO_WAY);
         roadSubType(RoadSubType.MAIN_ROAD);
@@ -819,7 +838,7 @@ public class HeavyWeightEdge extends Edge
 
     public void speedLimit(final Speed speedLimit)
     {
-        this.speedLimit = Maybe.apply(speedLimit, speed -> speed.minimum(Speed.kilometersPerHour(160)));
+        this.speedLimit = Functions.apply(speedLimit, speed -> speed.minimum(Speed.kilometersPerHour(160)));
     }
 
     /**
@@ -923,12 +942,12 @@ public class HeavyWeightEdge extends Edge
     }
 
     @Override
-    public NodeIdentifier toNodeIdentifier()
+    public MapNodeIdentifier toNodeIdentifier()
     {
         return toNodeIdentifier;
     }
 
-    public void toNodeIdentifier(final NodeIdentifier identifier)
+    public void toNodeIdentifier(final MapNodeIdentifier identifier)
     {
         toNodeIdentifier = identifier;
     }

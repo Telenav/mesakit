@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.graph.specifications.common.element;
 
+import com.telenav.kivakit.kernel.language.objects.Lazy;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
 import com.telenav.mesakit.graph.specifications.common.CommonDataSpecification;
 import com.telenav.mesakit.graph.specifications.library.attributes.Attribute;
 import com.telenav.mesakit.graph.specifications.library.attributes.AttributeList;
-import com.telenav.kivakit.kernel.language.object.Lazy;
 
 /**
  * Attributes that are common to all {@link GraphElement}s. Note that there is not yet any abstraction for the revision

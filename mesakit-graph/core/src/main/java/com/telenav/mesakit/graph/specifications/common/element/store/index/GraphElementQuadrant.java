@@ -20,10 +20,10 @@ package com.telenav.mesakit.graph.specifications.common.element.store.index;
 
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
-import com.telenav.kivakit.kernel.language.string.Strings;
-import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.values.count.Estimate;
 import com.telenav.mesakit.graph.GraphElement;
-import com.telenav.mesakit.map.geography.rectangle.Rectangle;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
 import java.io.PrintStream;
 import java.util.Iterator;
@@ -187,7 +187,7 @@ final class GraphElementQuadrant<T extends GraphElement>
 
     void dump(final PrintStream out, final int level)
     {
-        out.println(Strings.repeat(level, " ") + this);
+        out.println(AsciiArt.repeat(level, " ") + this);
         if (!isLeaf())
         {
             for (final var child : children)

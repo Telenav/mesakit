@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.matching.conflation;
 
-import com.telenav.kivakit.kernel.scalars.levels.Percent;
+import com.telenav.kivakit.kernel.language.values.level.Percent;
 import com.telenav.mesakit.graph.Edge;
 
 import java.util.HashSet;

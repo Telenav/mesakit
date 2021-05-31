@@ -18,19 +18,21 @@
 
 package com.telenav.mesakit.graph.traffic.roadsection;
 
-import com.telenav.kivakit.configuration.Lookup;
-import com.telenav.kivakit.kernel.conversion.collection.BaseListConverter;
-import com.telenav.kivakit.kernel.conversion.primitive.*;
+import com.telenav.kivakit.configuration.lookup.Lookup;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.data.conversion.string.collection.BaseListConverter;
+import com.telenav.kivakit.kernel.data.conversion.string.primitive.HexadecimalLongConverter;
+import com.telenav.kivakit.kernel.data.conversion.string.primitive.LongConverter;
 import com.telenav.kivakit.kernel.language.bits.BitDiagram;
-import com.telenav.kivakit.kernel.language.bits.BitDiagram.BitField;
-import com.telenav.kivakit.kernel.language.object.Hash;
-import com.telenav.kivakit.kernel.language.string.*;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.language.values.identifier.Identifier;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.scalars.counts.*;
-import com.telenav.kivakit.kernel.scalars.identifiers.Identifier;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.navteq.NavteqRoadSectionCode;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.ngx.NgxRoadSectionCode;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.osm.PbfRoadSectionCode;
@@ -39,9 +41,10 @@ import com.telenav.mesakit.graph.traffic.roadsection.codings.tmc.TmcCode;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.tomtom.TomTomRoadSectionCode;
 import com.telenav.mesakit.map.road.model.DeCartaRoadType;
 import com.telenav.mesakit.map.road.model.DirectionOfTrafficFlow;
-import com.telenav.mesakit.map.ui.swing.map.tiles.ZoomLevel;
+import com.telenav.mesakit.map.ui.desktop.tiles.ZoomLevel;
 
-import static com.telenav.kivakit.kernel.validation.Validate.unsupported;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.kernel.language.bits.BitDiagram.BitField;
 
 /**
  * Identifiers should have the following format and be stored in two 64 bit long values:

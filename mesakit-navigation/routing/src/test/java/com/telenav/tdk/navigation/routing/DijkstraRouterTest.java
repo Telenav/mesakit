@@ -33,7 +33,7 @@ import com.telenav.kivakit.navigation.routing.dijkstra.DijkstraRoutingRequest;
 import com.telenav.kivakit.navigation.routing.dijkstra.Direction;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
-import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import com.telenav.mesakit.map.measurements.Speed;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -45,7 +45,7 @@ import org.junit.experimental.categories.Category;
  */
 @Ignore
 @Category({ SlowTests.class })
-public class DijkstraRouterTest extends KivaKitGraphCoreUnitTest
+public class DijkstraRouterTest extends GraphCoreUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

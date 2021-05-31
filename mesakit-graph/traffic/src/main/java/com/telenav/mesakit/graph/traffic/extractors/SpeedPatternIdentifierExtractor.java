@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.graph.traffic.extractors;
 
-import com.telenav.kivakit.data.extraction.BaseExtractor;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
-import com.telenav.kivakit.kernel.language.object.Pair;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.language.objects.Pair;
 import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.graph.traffic.historical.SpeedPatternIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 
 public class SpeedPatternIdentifierExtractor extends BaseExtractor<Pair<SpeedPatternIdentifier>, PbfWay>
 {
@@ -44,6 +44,6 @@ public class SpeedPatternIdentifierExtractor extends BaseExtractor<Pair<SpeedPat
     private SpeedPatternIdentifier extractSpeedPatternIdentifier(final PbfWay way, final String key)
     {
         final var identifier = way.tagValueAsNaturalNumber(key);
-        return identifier < 0 ? null : new SpeedPatternIdentifier((int) identifier);
+        return identifier < 0 ? null : new SpeedPatternIdentifier(identifier);
     }
 }

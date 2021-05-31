@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.graph.specifications.library.pbf;
 
-import com.telenav.kivakit.collections.primitive.map.split.SplitLongToByteMap;
-import com.telenav.kivakit.collections.primitive.set.SplitLongSet;
 import com.telenav.kivakit.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.kernel.scalars.counts.Estimate;
-import com.telenav.mesakit.map.region.project.KivaKitMapRegionLimits;
+import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
+import com.telenav.kivakit.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.primitive.collections.map.split.SplitLongToByteMap;
+import com.telenav.kivakit.primitive.collections.set.SplitLongSet;
+import com.telenav.mesakit.map.region.project.MapRegionLimits;
 import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
 
-import static com.telenav.kivakit.kernel.interfaces.collection.Compressible.Method;
-import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 /**
  * Determines which nodes are intersections by counting the number of times that {@link WayNode}s are referenced by
@@ -57,7 +57,7 @@ public class IntersectionMap implements Named
         this.name = name;
 
         countMap = new SplitLongToByteMap(name() + ".count.map");
-        countMap.initialSize(KivaKitMapRegionLimits.ESTIMATED_WAYS);
+        countMap.initialSize(MapRegionLimits.ESTIMATED_WAYS);
         countMap.initialize();
     }
 
@@ -111,7 +111,7 @@ public class IntersectionMap implements Named
         countMap = null;
 
         // and reduce the storage of the intersections set.
-        intersections.compress(Method.FREEZE);
+        intersections.compress(CompressibleCollection.Method.FREEZE);
     }
 
     /**

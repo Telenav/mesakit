@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.library.osm.change;
 
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
-import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.language.strings.Strings;
 import com.telenav.mesakit.graph.Edge;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 
 /**
  * Mutable way is the superclass of {@link ModifiableWay} and {@link NewWay} since both modifiable ways in the base may

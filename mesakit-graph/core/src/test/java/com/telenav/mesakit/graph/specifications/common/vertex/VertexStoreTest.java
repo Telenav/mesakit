@@ -18,19 +18,19 @@
 
 package com.telenav.mesakit.graph.specifications.common.vertex;
 
-import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSet;
-import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 import org.junit.Test;
 
 import static com.telenav.kivakit.data.formats.library.DataFormat.PBF;
 import static com.telenav.kivakit.graph.metadata.DataSupplier.OSM;
 
-public class VertexStoreTest extends KivaKitGraphCoreUnitTest
+public class VertexStoreTest extends GraphCoreUnitTest
 {
     @Test
     public void testAdd()
@@ -38,7 +38,7 @@ public class VertexStoreTest extends KivaKitGraphCoreUnitTest
         // Create graph
         final var specification = OsmDataSpecification.get();
         final var graph = specification.newGraph(Metadata.osm(OSM, PBF));
-        graph.broadcastTo(Listener.NULL);
+        graph.addListener(Listener.NULL);
 
         // and get vertex vertexStore
         final var edgeStore = graph.edgeStore();

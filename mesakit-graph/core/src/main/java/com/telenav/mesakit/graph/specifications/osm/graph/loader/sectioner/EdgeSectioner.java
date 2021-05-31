@@ -18,23 +18,26 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner;
 
-import com.telenav.kivakit.collections.map.multi.MultiMap;
-import com.telenav.kivakit.kernel.language.values.Count;
+import com.telenav.kivakit.collections.map.MultiMap;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.specifications.library.pbf.IntersectionMap;
 import com.telenav.mesakit.graph.specifications.library.pbf.PbfDataAnalysis;
-import com.telenav.mesakit.map.geography.polyline.PolylineSectioner;
-import com.telenav.mesakit.map.geography.segment.Segment;
-import com.telenav.mesakit.map.measurements.Distance;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
+import com.telenav.mesakit.map.geography.shape.polyline.PolylineSectioner;
+import com.telenav.mesakit.map.geography.shape.segment.Segment;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 /**
  * Sections a raw way (represented as an edge) into smaller pieces according to the following rules:

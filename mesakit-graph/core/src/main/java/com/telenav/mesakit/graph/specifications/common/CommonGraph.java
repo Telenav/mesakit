@@ -19,9 +19,11 @@
 package com.telenav.mesakit.graph.specifications.common;
 
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.matching.All;
-import com.telenav.kivakit.kernel.language.string.formatting.Separators;
+import com.telenav.kivakit.kernel.language.iteration.Iterables;
+import com.telenav.kivakit.kernel.language.iteration.Next;
+import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
 import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.messaging.filters.operators.All;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.mesakit.graph.Edge;
@@ -38,12 +40,12 @@ import com.telenav.mesakit.graph.map.MapEdgeIdentifier;
 import com.telenav.mesakit.graph.specifications.library.attributes.AttributeSet;
 import com.telenav.mesakit.graph.traffic.historical.SpeedPatternStore;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.measurements.Speed;
+import com.telenav.mesakit.map.measurements.motion.Speed;
 
 import java.util.Collections;
 import java.util.Iterator;
 
-import static com.telenav.kivakit.kernel.validation.Validate.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 /**
  * An efficient in-memory {@link Graph} implementation.
@@ -185,7 +187,7 @@ public class CommonGraph extends Graph
     public Iterable<Place> placesInside(final Rectangle bounds)
     {
         ensureNotNull(bounds);
-        return Iterables.of(() -> new Next<>()
+        return Iterables.iterable(() -> new Next<>()
         {
             final Iterator<Place> iterator = placeStore().spatialIndex().inside(bounds);
 

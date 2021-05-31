@@ -18,21 +18,21 @@
 
 package com.telenav.mesakit.graph.specifications.common.node.store.all;
 
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
-import com.telenav.kivakit.data.formats.pbf.model.tags.compression.PbfTagCodec;
-import com.telenav.kivakit.kernel.interfaces.persistence.Unloadable;
+import com.telenav.kivakit.kernel.interfaces.loading.Unloadable;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.specifications.common.node.store.all.disk.AllNodeDiskCell;
 import com.telenav.mesakit.graph.specifications.common.node.store.all.disk.PbfAllNodeTagDiskStore;
 import com.telenav.mesakit.graph.specifications.library.pbf.PbfNodeTagStore;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.compression.PbfTagCodec;
 import com.telenav.mesakit.map.geography.Location;
 
 import java.util.Map;
 import java.util.WeakHashMap;
 
-import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 public class PbfAllGraphElementTagStore implements Unloadable
 {

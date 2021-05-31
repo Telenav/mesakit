@@ -19,17 +19,17 @@
 package com.telenav.mesakit.graph.collections;
 
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.iteration.Matching;
 import com.telenav.kivakit.kernel.language.iteration.Streams;
-import com.telenav.kivakit.kernel.language.matching.Matching;
-import com.telenav.kivakit.kernel.language.string.StringList;
 import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.io.load.GraphConstraints;
 import com.telenav.mesakit.graph.project.GraphCoreLimits.Estimated;
 import com.telenav.mesakit.graph.project.GraphCoreLimits.Limit;
-import com.telenav.mesakit.map.geography.rectangle.Bounded;
+import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
 import java.util.ArrayList;

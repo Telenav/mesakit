@@ -18,19 +18,22 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge.store.index;
 
-import com.telenav.kivakit.kernel.interfaces.collection.Compressible;
-import com.telenav.kivakit.map.geography.indexing.rtree.*;
+import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
+import com.telenav.mesakit.map.geography.indexing.rtree.InteriorNode;
+import com.telenav.mesakit.map.geography.indexing.rtree.Leaf;
+import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSettings;
+import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndex;
 
-import static com.telenav.kivakit.kernel.validation.Validate.unsupported;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 
 /**
  * Compressed spatial index for edges.
  *
  * @author jonathanl (shibo)
  */
-public class CompressedEdgeSpatialIndex extends RTreeSpatialIndex<Edge> implements Compressible
+public class CompressedEdgeSpatialIndex extends RTreeSpatialIndex<Edge> implements CompressibleCollection
 {
     CompressedEdgeListStore edges;
 

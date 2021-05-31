@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.graph.identifiers;
 
-import com.telenav.kivakit.kernel.commandline.SwitchParser;
+import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.language.values.count.BitCount;
+import com.telenav.kivakit.kernel.language.values.identifier.IntegerIdentifier;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.scalars.counts.Bits;
-import com.telenav.kivakit.kernel.scalars.identifiers.IntegerIdentifier;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
@@ -49,13 +49,16 @@ public class VertexIdentifier extends IntegerIdentifier implements GraphElementI
      * <p>
      * NOTE: The primitive value is present due to limitations in Java annotations (which reference this constant).
      */
-    public static final Bits SIZE = BitCount._32;
+    public static final BitCount SIZE = BitCount._32;
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
     public static SwitchParser.Builder<VertexIdentifier> switchParser(final String name, final String description)
     {
-        return new Converter(LOGGER).switchParser(VertexIdentifier.class, name, description);
+        return SwitchParser.builder(VertexIdentifier.class)
+                .name(name)
+                .description(description)
+                .converter(new Converter(LOGGER));
     }
 
     public static class Converter extends Quantizable.Converter<VertexIdentifier>

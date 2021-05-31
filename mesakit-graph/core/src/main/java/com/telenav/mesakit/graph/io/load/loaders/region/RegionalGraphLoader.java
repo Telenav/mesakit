@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.io.load.loaders.region;
 
-import com.telenav.kivakit.kernel.language.values.Count
+import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;

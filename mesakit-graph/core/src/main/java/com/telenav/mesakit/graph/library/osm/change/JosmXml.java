@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph.library.osm.change;
 
 import com.telenav.kivakit.kernel.language.io.IO;
 import com.telenav.kivakit.resource.WritableResource;
-import com.telenav.kivakit.data.formats.library.map.identifiers.PbfWayIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;

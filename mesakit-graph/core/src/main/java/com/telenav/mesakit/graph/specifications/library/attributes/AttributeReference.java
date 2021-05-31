@@ -87,7 +87,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     private final AttributeStore store;
 
     /** The attached field archive to load from */
-    private GraphArchive archive;
+    private FieldArchive archive;
 
     /** The attribute in the store */
     private final Attribute<?> attribute;
@@ -177,7 +177,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
      * Attaches this reference to the given field archive so that referenced attributes can be loaded with {@link
      * #load()}
      */
-    public void attach(final GraphArchive archive)
+    public void attach(final FieldArchive archive)
     {
         this.archive = archive;
         trace("attached '$'", archive.zip().resource());
@@ -582,7 +582,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     {
     }
 
-    private GraphArchive archive()
+    private FieldArchive archive()
     {
         if (archive == null)
         {

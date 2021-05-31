@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.vertex;
 
-import com.telenav.kivakit.kernel.language.object.Lazy;
+import com.telenav.kivakit.kernel.language.objects.Lazy;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.specifications.common.CommonDataSpecification;
 import com.telenav.mesakit.graph.specifications.common.element.GraphElementProperties;
@@ -33,7 +33,7 @@ public class VertexProperties extends GraphElementProperties<Vertex>
         return singleton.get();
     }
 
-    public abstract class VertexProperty extends com.telenav.kivakit.graph.specifications.library.properties.GraphElementProperty<Vertex>
+    public abstract class VertexProperty extends com.telenav.mesakit.graph.specifications.library.properties.GraphElementProperty<Vertex>
     {
         protected VertexProperty(final String name, final Attribute<?> attribute)
         {

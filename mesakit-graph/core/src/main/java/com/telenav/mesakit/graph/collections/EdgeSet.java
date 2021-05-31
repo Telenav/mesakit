@@ -29,6 +29,7 @@ import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.kernel.language.iteration.Streams;
+import com.telenav.kivakit.kernel.language.strings.Join;
 import com.telenav.kivakit.kernel.language.strings.Strings;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
 import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
@@ -40,6 +41,7 @@ import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.listeners.ThrowingListener;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.kivakit.primitive.collections.iteration.IntIterator;
 import com.telenav.mesakit.graph.Edge;
@@ -48,6 +50,7 @@ import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
@@ -63,6 +66,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
+
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.mesakit.graph.project.GraphCoreLimits.Limit;
 
 /**
  * A set of edges. Supports {@link #union(EdgeSet)} and {@link #without(Set)} operations, that logically combine this
@@ -231,8 +237,7 @@ public class EdgeSet implements Set<Edge>, AsString
     {
         if (edges.size() == maximumSize.asInt())
         {
-            LOGGER.warning("EdgeSet maximum size of $ elements would be exceeded. Ignoring edge.", maximumSize)
-                    .maximumFrequency(Frequency.EVERY_MINUTE);
+            LOGGER.warning(Frequency.EVERY_MINUTE, "EdgeSet maximum size of $ elements would be exceeded. Ignoring edge.", maximumSize);
             return false;
         }
         return edges.add(edge);
@@ -640,7 +645,6 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("NullableProblems")
     @Override
     public Iterator<Edge> iterator()
     {
@@ -653,7 +657,7 @@ public class EdgeSet implements Set<Edge>, AsString
      */
     public String joinedIdentifiers(final String separator)
     {
-        return Strings.join(this, separator, new BaseConverter<>(new FailureThrower<>())
+        return Join.join(this, separator, new BaseConverter<>(new ThrowingListener())
         {
             @Override
             protected String onConvert(final Edge value)
@@ -924,7 +928,7 @@ public class EdgeSet implements Set<Edge>, AsString
      */
     public VertexSet vertexes()
     {
-        final var vertexes = new VertexSet(Estimate.estimate(size() * 2L));
+        final var vertexes = new VertexSet(Maximum.maximum(size() * 2L));
         for (final var edge : this)
         {
             vertexes.add(edge.from());

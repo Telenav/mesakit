@@ -18,15 +18,13 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.kivakit.data.extraction.BaseExtractor;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.AdasRegionCode;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 
-/**
- *
- */
 public class RegionCodesExtractor extends BaseExtractor<ObjectList<AdasRegionCode>, PbfWay>
 {
     public RegionCodesExtractor(final Listener listener)

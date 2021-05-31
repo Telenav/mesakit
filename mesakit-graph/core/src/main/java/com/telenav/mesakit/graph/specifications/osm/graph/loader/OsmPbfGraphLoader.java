@@ -18,10 +18,9 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.loader;
 
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagFilter;
-import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.language.strings.AsciiArt;
 import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.identifiers.collections.WayIdentifierList;
@@ -36,10 +35,11 @@ import com.telenav.mesakit.graph.specifications.library.store.GraphStore;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner.EdgeSectioner;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner.WaySectioningGraphLoader;
 import com.telenav.mesakit.graph.ui.debuggers.edge.sectioner.VisualEdgeSectionDebugger;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagFilter;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
-import static com.telenav.kivakit.graph.Metadata.VALIDATE_EXCEPT_STATISTICS;
-import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.mesakit.graph.Metadata.VALIDATE_EXCEPT_STATISTICS;
 
 /**
  * Loads OSM data from PBF format into a {@link GraphStore}. During this process, ways are broken up into edges in a
@@ -99,7 +99,7 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
         final var loader = listenTo(new OsmRawPbfGraphLoader(dataSourceFactory(), analysis, tagFilter));
         loader.configure(configuration());
         var raw = destination.createCompatible();
-        raw.broadcastTo(this);
+        raw.addListener(this);
         var metadata = raw.load(loader, constraints);
         raw.name("Raw_" + graphName);
 
@@ -110,7 +110,7 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
             metadata.assertValid(VALIDATE_EXCEPT_STATISTICS);
 
             // Next, estimate how many sectioned edges there will be
-            information(Strings.topLine(30, "Sectioning Ways"));
+            information(AsciiArt.topLine(30, "Sectioning Ways"));
             final var estimatedSectionedEdges = raw.forwardEdgeCount().times(6);
             information("Estimating there will be $ sectioned edges", estimatedSectionedEdges);
 
@@ -137,9 +137,9 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
                     edgeSectioner.debugger(new VisualEdgeSectionDebugger(), wayIdentifiers);
                 }
             }
-            waySectioner.broadcastTo(this);
+            waySectioner.addListener(this);
             metadata = destination.load(waySectioner, constraints);
-            information(Strings.bottomLine(30, "Sectioning Ways"));
+            information(AsciiArt.bottomLine(30, "Sectioning Ways"));
             if (metadata != null)
             {
                 // free the raw graph and the intersection map,

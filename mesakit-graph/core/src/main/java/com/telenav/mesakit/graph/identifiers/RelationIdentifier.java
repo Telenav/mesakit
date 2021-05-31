@@ -39,7 +39,10 @@ public class RelationIdentifier extends MapRelationIdentifier implements GraphEl
 
     public static SwitchParser.Builder<RelationIdentifier> switchParser(final String name, final String description)
     {
-        return new Converter(LOGGER).switchParser(RelationIdentifier.class, name, description);
+        return SwitchParser.builder(RelationIdentifier.class)
+                .name(name)
+                .description(description)
+                .converter(new Converter(LOGGER));
     }
 
     public static class Converter extends Quantizable.Converter<RelationIdentifier>

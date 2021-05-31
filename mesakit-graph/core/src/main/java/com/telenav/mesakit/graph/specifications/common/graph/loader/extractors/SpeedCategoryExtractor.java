@@ -18,10 +18,11 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.kivakit.data.extraction.BaseExtractor;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
-import com.telenav.kivakit.kernel.language.primitive.Ints;
-import com.telenav.mesakit.map.measurements.Speed;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.language.primitives.Ints;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
+import com.telenav.mesakit.map.measurements.motion.Speed;
 import com.telenav.mesakit.map.road.model.SpeedCategory;
 
 import java.util.HashMap;

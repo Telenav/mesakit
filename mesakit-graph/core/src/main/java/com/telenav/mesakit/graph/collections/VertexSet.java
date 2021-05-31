@@ -27,7 +27,6 @@ import com.telenav.kivakit.kernel.data.conversion.string.collection.BaseSetConve
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.language.collections.set.ObjectSet;
 import com.telenav.kivakit.kernel.language.strings.Join;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
 import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.kivakit.kernel.messaging.listeners.ThrowingListener;
@@ -50,7 +49,7 @@ public class VertexSet extends ObjectSet<Vertex>
     /**
      * @return A set of vertexes for the given vertex collection
      */
-    public static VertexSet forCollection(final Estimate estimate, final Collection<? extends Vertex> collection)
+    public static VertexSet forCollection(final Maximum maximum, final Collection<? extends Vertex> collection)
     {
         if (collection instanceof VertexSet)
         {
@@ -58,7 +57,7 @@ public class VertexSet extends ObjectSet<Vertex>
         }
         else
         {
-            final var set = new VertexSet(estimate);
+            final var set = new VertexSet(maximum);
             set.addAll(collection);
             return set;
         }
@@ -67,9 +66,9 @@ public class VertexSet extends ObjectSet<Vertex>
     /**
      * A set of vertexes for a sequence of vertexes
      */
-    public static VertexSet forIterable(final Estimate estimate, final Iterable<? extends Vertex> collection)
+    public static VertexSet forIterable(final Maximum maximum, final Iterable<? extends Vertex> collection)
     {
-        final var set = new VertexSet(estimate);
+        final var set = new VertexSet(maximum);
         set.addAll(collection);
         return set;
     }
@@ -79,7 +78,7 @@ public class VertexSet extends ObjectSet<Vertex>
      */
     public static VertexSet singleton(final Vertex vertex)
     {
-        final var set = new VertexSet(Estimate._1);
+        final var set = new VertexSet(Maximum._1);
         set.add(vertex);
         return set;
     }

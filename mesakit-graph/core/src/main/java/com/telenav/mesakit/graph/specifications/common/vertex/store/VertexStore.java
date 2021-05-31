@@ -19,20 +19,23 @@
 package com.telenav.mesakit.graph.specifications.common.vertex.store;
 
 import com.telenav.kivakit.collections.iteration.iterables.DeduplicatingIterable;
-import com.telenav.kivakit.collections.primitive.array.packed.SplitPackedArray;
-import com.telenav.kivakit.collections.primitive.array.scalars.IntArray;
-import com.telenav.kivakit.collections.primitive.map.scalars.IntToByteMap;
-import com.telenav.kivakit.collections.primitive.set.LongSet;
-import com.telenav.kivakit.data.formats.library.map.identifiers.*;
-import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
-import com.telenav.kivakit.data.formats.pbf.model.tags.*;
-import com.telenav.kivakit.data.formats.pbf.processing.*;
-import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.Validator;
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
+import com.telenav.kivakit.kernel.language.iteration.Iterables;
+import com.telenav.kivakit.kernel.language.iteration.Next;
+import com.telenav.kivakit.kernel.language.time.Time;
+import com.telenav.kivakit.kernel.language.values.count.BitCount;
 import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.scalars.counts.*;
-import com.telenav.kivakit.kernel.time.Time;
-import com.telenav.kivakit.kernel.validation.*;
+import com.telenav.kivakit.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.primitive.collections.array.packed.SplitPackedArray;
+import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
+import com.telenav.kivakit.primitive.collections.map.scalars.IntToByteMap;
+import com.telenav.kivakit.primitive.collections.set.LongSet;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
@@ -43,7 +46,8 @@ import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.collections.VertexSequence;
 import com.telenav.mesakit.graph.identifiers.VertexIdentifier;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
-import com.telenav.mesakit.graph.metadata.DataSpecification.GraphElementFactory;
+import com.telenav.mesakit.graph.metadata.DataSpecification;
+import com.telenav.mesakit.graph.project.GraphCoreLimits;
 import com.telenav.mesakit.graph.specifications.common.edge.EdgeAttributes;
 import com.telenav.mesakit.graph.specifications.common.edge.HeavyWeightEdge;
 import com.telenav.mesakit.graph.specifications.common.element.GraphElementStore;
@@ -52,19 +56,28 @@ import com.telenav.mesakit.graph.specifications.common.vertex.HeavyWeightVertex;
 import com.telenav.mesakit.graph.specifications.common.vertex.VertexAttributes;
 import com.telenav.mesakit.graph.specifications.library.attributes.AttributeReference;
 import com.telenav.mesakit.graph.specifications.library.store.ArchivedGraphStore;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagFilter;
+import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor;
+import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataSource;
+import com.telenav.mesakit.map.data.formats.pbf.processing.PbfStopProcessingException;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.rectangle.*;
+import com.telenav.mesakit.map.geography.shape.rectangle.Height;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.geography.shape.rectangle.Size;
+import com.telenav.mesakit.map.geography.shape.rectangle.Width;
 import com.telenav.mesakit.map.road.model.GradeSeparation;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.Iterator;
 
-import static com.telenav.kivakit.collections.primitive.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
-import static com.telenav.kivakit.data.formats.pbf.processing.PbfDataProcessor.Result.ACCEPTED;
-import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
-import static com.telenav.kivakit.graph.project.KivaKitGraphCoreLimits.Estimated;
-import static com.telenav.kivakit.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
+import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
 
 /**
  * Store of {@link Vertex} information, including edge connectivity (in and out edges, as stored in the {@link
@@ -280,7 +293,7 @@ public class VertexStore extends NodeStore<Vertex>
 
         // then copy the two-way edge indexes into an int array
         final var twoWayIndexes = new IntArray(objectName() + ".twoWayIndexes");
-        twoWayIndexes.initialSize(Estimated.EDGES_PER_VERTEX);
+        twoWayIndexes.initialSize(GraphCoreLimits.Estimated.EDGES_PER_VERTEX);
         twoWayIndexes.initialize();
         final var both = connectivity().retrieveTwoWayEdgeSequence(originalVertex.index());
         for (var edge : both)
@@ -315,7 +328,7 @@ public class VertexStore extends NodeStore<Vertex>
         // give the new vertex a unique, perturbed vertex location so it doesn't overlap the existing vertexes
         final var microdegrees = grade.level() + 5;
         final var offset = new Size(Width.microdegrees(microdegrees), Height.ZERO);
-        final var perturbedLocation = originalVertex.location().offset(offset);
+        final var perturbedLocation = originalVertex.location().offsetBy(offset);
         storeNodeLocation(vertex.index(), perturbedLocation.asLong());
 
         // correct road shape end-points so they are perturbed as well
@@ -376,7 +389,7 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * @return True if the two nodes are connected
      */
-    public boolean internalIsConnected(final NodeIdentifier from, final NodeIdentifier to)
+    public boolean internalIsConnected(final MapNodeIdentifier from, final MapNodeIdentifier to)
     {
         // Get existing indexes for the "from" and "to" node identifiers
         final var fromVertexIndex = nodeIdentifierToIndex(from.identifier());
@@ -387,7 +400,6 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     @Override
-    @NotNull
     public Iterator<Vertex> iterator()
     {
         return new BaseIterator<>()
@@ -414,10 +426,10 @@ public class VertexStore extends NodeStore<Vertex>
     public void loadVertexTags(final PbfDataSource data, final PbfTagFilter filter)
     {
         metadata().configure(data);
-        data.process("Loading Vertex Tags", new PbfDataProcessor()
+        data.process(new PbfDataProcessor()
         {
             @Override
-            public Result onNode(final PbfNode node)
+            public Action onNode(final PbfNode node)
             {
                 final var vertex = vertexForNodeIdentifier(node.identifierAsLong());
                 if (vertex != null)
@@ -743,7 +755,7 @@ public class VertexStore extends NodeStore<Vertex>
                 return fail("Unable to load spatial index");
             }
             final var intersecting = index.intersecting(bounds);
-            return new VertexSequence(new DeduplicatingIterable<>(Iterables.of(() -> new Next<>()
+            return new VertexSequence(new DeduplicatingIterable<>(Iterables.iterable(() -> new Next<>()
             {
                 final Iterator<Edge> edges = intersecting.iterator();
 
@@ -796,7 +808,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     @Override
-    protected GraphElementFactory<Vertex> elementFactory()
+    protected DataSpecification.GraphElementFactory<Vertex> elementFactory()
     {
         return dataSpecification()::newVertex;
     }
@@ -837,7 +849,7 @@ public class VertexStore extends NodeStore<Vertex>
         if (DEBUG.isDebugOn())
         {
             final var retrieved = dataSpecification().newVertex(graph(), vertexIndex);
-            assert retrieved.validator().isValid(LOGGER);
+            assert retrieved.validator().validate(LOGGER);
         }
     }
 

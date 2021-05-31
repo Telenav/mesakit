@@ -18,24 +18,26 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.converter;
 
-import com.telenav.kivakit.data.formats.pbf.processing.PbfDataSource;
-import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.io.load.GraphConstraints;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.PbfGraphLoader;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.PbfToGraphConverter;
 import com.telenav.mesakit.graph.specifications.library.pbf.PbfDataAnalysis;
-import com.telenav.mesakit.graph.specifications.library.pbf.PbfDataAnalysis.AnalysisType;
 import com.telenav.mesakit.graph.specifications.library.pbf.PbfDataSourceFactory;
 import com.telenav.mesakit.graph.specifications.osm.graph.OsmGraph;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.OsmPbfGraphLoader;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.OsmRawPbfGraphLoader;
+import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataSource;
 import com.telenav.mesakit.map.geography.Precision;
 import com.telenav.mesakit.map.region.Region;
 
-import static com.telenav.kivakit.graph.Metadata.CountType.REQUIRE_EXACT;
-import static com.telenav.kivakit.graph.specifications.library.pbf.PbfDataAnalysis.AnalysisType.FULL_NODE_INFORMATION;
+import static com.telenav.mesakit.graph.Metadata.CountType.REQUIRE_EXACT;
+import static com.telenav.mesakit.graph.specifications.library.pbf.PbfDataAnalysis.AnalysisType;
+import static com.telenav.mesakit.graph.specifications.library.pbf.PbfDataAnalysis.AnalysisType.FULL_NODE_INFORMATION;
 
 /**
  * OSM graph conversion takes three passes through the PBF data:

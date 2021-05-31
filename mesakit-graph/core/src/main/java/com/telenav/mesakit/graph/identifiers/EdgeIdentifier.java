@@ -120,7 +120,10 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
 
     public static SwitchParser.Builder<EdgeIdentifier> switchParser(final String name, final String description)
     {
-        return new Converter(LOGGER).switchParser(EdgeIdentifier.class, name, description);
+        return SwitchParser.builder(EdgeIdentifier.class)
+                .name(name)
+                .description(description)
+                .converter(new Converter(LOGGER));
     }
 
     /**

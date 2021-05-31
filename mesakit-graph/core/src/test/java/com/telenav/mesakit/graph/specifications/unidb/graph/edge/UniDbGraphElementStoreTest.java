@@ -20,13 +20,13 @@ package com.telenav.mesakit.graph.specifications.unidb.graph.edge;
 
 import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.scalars.counts.*;
 import com.telenav.kivakit.kernel.language.time.Time;
+import com.telenav.kivakit.kernel.scalars.counts.*;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Place.Type;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.identifiers.PlaceIdentifier;
-import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import com.telenav.mesakit.graph.specifications.common.place.HeavyWeightPlace;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 import com.telenav.mesakit.graph.specifications.unidb.graph.UniDbGraph;
@@ -57,7 +57,7 @@ import org.junit.Test;
 import java.util.Collections;
 import java.util.List;
 
-public class UniDbGraphElementStoreTest extends KivaKitGraphCoreUnitTest
+public class UniDbGraphElementStoreTest extends GraphCoreUnitTest
 {
     private static final long EDGE_IDENTIFIER = 666_000_000;
 

@@ -18,11 +18,14 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.kivakit.data.extraction.BaseExtractor;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.road.model.BridgeType;
 
-import static com.telenav.kivakit.map.road.model.BridgeType.*;
+import static com.telenav.mesakit.map.road.model.BridgeType.BRIDGE;
+import static com.telenav.mesakit.map.road.model.BridgeType.NONE;
+import static com.telenav.mesakit.map.road.model.BridgeType.TUNNEL;
 
 public class BridgeTypeExtractor extends BaseExtractor<BridgeType, PbfWay>
 {

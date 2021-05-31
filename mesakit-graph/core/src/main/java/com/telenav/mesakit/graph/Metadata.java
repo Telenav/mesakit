@@ -62,7 +62,6 @@ import com.telenav.mesakit.graph.metadata.DataSupplier;
 import com.telenav.mesakit.graph.metadata.DataVersion;
 import com.telenav.mesakit.graph.project.GraphCoreLimits;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
-import com.telenav.mesakit.graph.specifications.unidb.UniDbDataSpecification;
 import com.telenav.mesakit.map.data.formats.library.DataFormat;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
@@ -365,11 +364,6 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
                 .name(name)
                 .converter(new Converter(LOGGER))
                 .description(description);
-    }
-
-    public static Metadata unidb(final DataSupplier supplier, final DataFormat format)
-    {
-        return of(UniDbDataSpecification.get(), supplier, format);
     }
 
     public enum CountType

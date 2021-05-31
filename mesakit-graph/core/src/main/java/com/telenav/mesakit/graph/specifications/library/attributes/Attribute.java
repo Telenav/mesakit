@@ -22,7 +22,7 @@ import com.telenav.kivakit.collections.map.TwoWayMap;
 
 import java.util.Objects;
 
-import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 /**
  * An attribute of an {@link AttributeStore}, having a name and an automatically assigned identifier.

@@ -24,7 +24,7 @@ import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.navigation.Navigator;
 import com.telenav.mesakit.graph.navigation.RouteLimiter;
 import com.telenav.mesakit.graph.navigation.limiters.LengthRouteLimiter;
-import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import com.telenav.mesakit.map.measurements.Distance;
 import com.telenav.mesakit.map.road.model.BridgeType;
 import com.telenav.mesakit.map.road.model.RoadName;
@@ -35,7 +35,7 @@ import java.util.Objects;
 /**
  * @author jonathanl (shibo)
  */
-public class EdgeTest extends KivaKitGraphCoreUnitTest
+public class EdgeTest extends GraphCoreUnitTest
 {
     @Test
     public void test()

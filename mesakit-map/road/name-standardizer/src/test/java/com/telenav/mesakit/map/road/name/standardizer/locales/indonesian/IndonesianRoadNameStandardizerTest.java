@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.name.standardizer.locales.indonesian;
 
-import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.strings.Strings;
 import com.telenav.kivakit.resource.resources.packaged.PackageResource;
 import com.telenav.kivakit.test.annotations.SlowTests;
 import com.telenav.mesakit.map.region.locale.MapLocale;
@@ -49,7 +49,7 @@ public class IndonesianRoadNameStandardizerTest extends RoadNameStandardizerTest
             final var columns = line.split(",");
             if (columns.length == 2)
             {
-                if (AsciiArt.isNaturalNumber(columns[0]))
+                if (Strings.isNaturalNumber(columns[0]))
                 {
                     lines.add(line);
                 }

@@ -20,6 +20,7 @@ package com.telenav.mesakit.graph.specifications.library.store;
 
 import com.telenav.kivakit.kernel.data.validation.Validatable;
 import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.Validator;
 import com.telenav.kivakit.kernel.data.validation.validators.BaseValidator;
 import com.telenav.kivakit.kernel.interfaces.loading.Unloadable;
 import com.telenav.kivakit.kernel.language.time.Time;

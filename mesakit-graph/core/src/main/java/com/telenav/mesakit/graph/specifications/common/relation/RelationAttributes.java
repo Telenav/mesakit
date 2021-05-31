@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.relation;
 
-import com.telenav.kivakit.kernel.language.object.Lazy;
+import com.telenav.kivakit.kernel.language.objects.Lazy;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
 import com.telenav.mesakit.graph.specifications.common.CommonDataSpecification;

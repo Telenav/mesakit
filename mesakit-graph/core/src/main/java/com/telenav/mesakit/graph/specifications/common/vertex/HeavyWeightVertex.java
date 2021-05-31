@@ -18,13 +18,10 @@
 
 package com.telenav.mesakit.graph.specifications.common.vertex;
 
-import com.telenav.kivakit.collections.set.operations.Union;
-import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.kivakit.data.formats.pbf.model.change.*;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.kivakit.collections.set.logical.operations.Union;
 import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
-import com.telenav.kivakit.kernel.language.values.Count;
-import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.kernel.language.time.Time;
+import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
@@ -32,12 +29,18 @@ import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.identifiers.VertexIdentifier;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
-import com.telenav.mesakit.graph.project.GraphCoreLimits.Estimated;
-import com.telenav.mesakit.graph.project.GraphCoreLimits.Limit;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfChangeSetIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfRevisionNumber;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserName;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.road.model.GradeSeparation;
 
-import static com.telenav.kivakit.kernel.validation.Validate.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.mesakit.graph.project.GraphCoreLimits.Estimated;
+import static com.telenav.mesakit.graph.project.GraphCoreLimits.Limit;
 
 public class HeavyWeightVertex extends Vertex
 {
@@ -47,7 +50,7 @@ public class HeavyWeightVertex extends Vertex
 
     private EdgeSet outEdges = new EdgeSet(Limit.EDGES_PER_VERTEX, Estimated.EDGES_PER_VERTEX);
 
-    private NodeIdentifier nodeIdentifier;
+    private MapNodeIdentifier nodeIdentifier;
 
     private PbfChangeSetIdentifier pbfChangeSetIdentifier;
 
@@ -189,12 +192,12 @@ public class HeavyWeightVertex extends Vertex
     }
 
     @Override
-    public NodeIdentifier nodeIdentifier()
+    public MapNodeIdentifier nodeIdentifier()
     {
         return nodeIdentifier;
     }
 
-    public void nodeIdentifier(final NodeIdentifier nodeIdentifier)
+    public void nodeIdentifier(final MapNodeIdentifier nodeIdentifier)
     {
         this.nodeIdentifier = nodeIdentifier;
     }

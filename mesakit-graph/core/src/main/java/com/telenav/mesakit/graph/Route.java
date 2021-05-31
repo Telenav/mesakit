@@ -207,8 +207,8 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
             }
             catch (final Exception e)
             {
-                problem(e, "${class}: Problem converting ${debug} with graph ${debug}", subclass(), value,
-                        graph.name()).maximumFrequency(problemBroadcastFrequency());
+                problem(problemBroadcastFrequency(), e, "${class}: Problem converting ${debug} with graph ${debug}",
+                        subclass(), value, graph.name());
             }
             return null;
         }
@@ -836,7 +836,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      */
     public VertexSet asVertexSet()
     {
-        return VertexSet.forIterable(Estimate.estimate(size() + 1), vertexes());
+        return VertexSet.forIterable(Maximum.maximum(size() + 1), vertexes());
     }
 
     /**

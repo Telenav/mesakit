@@ -18,16 +18,16 @@
 
 package com.telenav.mesakit.graph.specifications.common.node.store.all;
 
-import com.telenav.kivakit.kernel.interfaces.persistence.Unloadable;
-import com.telenav.mesakit.map.geography.Location;
+import com.telenav.kivakit.kernel.interfaces.loading.Unloadable;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.specifications.common.node.store.all.disk.AllNodeDiskCell;
 import com.telenav.mesakit.graph.specifications.common.node.store.all.disk.PbfAllNodeMetadataDiskStore;
+import com.telenav.mesakit.map.geography.Location;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 public class PbfAllNodeMetadataStore implements Unloadable
 {

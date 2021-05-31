@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.kivakit.data.extraction.BaseExtractor;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
-import com.telenav.mesakit.graph.specifications.common.graph.loader.extractors.RoadStateExtractor.ExtractedRoadState;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.road.model.RoadState;
 
-public class RoadStateExtractor extends BaseExtractor<ExtractedRoadState, PbfWay>
+public class RoadStateExtractor extends BaseExtractor<RoadStateExtractor.ExtractedRoadState, PbfWay>
 {
     public static class ExtractedRoadState
     {

@@ -24,14 +24,14 @@ import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.scalars.counts.Estimate;
 import com.telenav.kivakit.kernel.scalars.counts.Maximum;
 import com.telenav.mesakit.graph.Edge;
-import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import com.telenav.mesakit.graph.specifications.common.edge.store.stores.polyline.SplitPolylineStore;
-import com.telenav.mesakit.map.geography.polyline.Polyline;
 import com.telenav.mesakit.map.geography.polyline.compression.differential.CompressedPolyline;
+import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import org.junit.Test;
 
 @SuppressWarnings("ConstantConditions")
-public class SplitPolylineStoreTest extends KivaKitGraphCoreUnitTest
+public class SplitPolylineStoreTest extends GraphCoreUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

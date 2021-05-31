@@ -21,8 +21,10 @@ package com.telenav.mesakit.graph.relations.restrictions.classifiers;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.analytics.classification.classifiers.turn.TurnClassifier;
 import com.telenav.mesakit.graph.analytics.classification.classifiers.turn.TurnType;
-import com.telenav.mesakit.map.measurements.Angle;
-import com.telenav.mesakit.map.measurements.Angle.Chirality;
+import com.telenav.mesakit.map.measurements.geographic.Angle;
+
+import static com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
+import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
 
 /**
  * A legacy turn classifier used in the OSM++ new probe processor project for classifying turn restrictions.
@@ -34,7 +36,7 @@ import com.telenav.mesakit.map.measurements.Angle.Chirality;
  */
 public class TurnRestrictionsTurnClassifier implements TurnClassifier
 {
-    public static final Angle MINIMUM_UTURN_ANGLE = Angle.degrees(170);
+    public static final Angle MINIMUM_UTURN_ANGLE = degrees(170);
 
     @Override
     public TurnType type(final Route route)
@@ -59,13 +61,13 @@ public class TurnRestrictionsTurnClassifier implements TurnClassifier
         final var right = initialHeading.difference(finalHeading, Chirality.CLOCKWISE);
 
         // If we're bearing right between 0 and 40 degrees we will consider that straight-on
-        if (right.isGreaterThanOrEqualTo(Angle.degrees(0)) && right.isLessThanOrEqualTo(Angle.degrees(40)))
+        if (right.isGreaterThanOrEqualTo(degrees(0)) && right.isLessThanOrEqualTo(degrees(40)))
         {
             return TurnType.RIGHT_SIDE_STRAIGHT_ON;
         }
 
         // If we're turning right between 40 and 135 degrees, it's a right turn
-        if (right.isGreaterThanOrEqualTo(Angle.degrees(40)) && right.isLessThanOrEqualTo(Angle.degrees(135)))
+        if (right.isGreaterThanOrEqualTo(degrees(40)) && right.isLessThanOrEqualTo(degrees(135)))
         {
             return TurnType.RIGHT;
         }
@@ -74,13 +76,13 @@ public class TurnRestrictionsTurnClassifier implements TurnClassifier
         final var left = initialHeading.difference(finalHeading, Chirality.COUNTERCLOCKWISE);
 
         // If we're bearing left between 0 and 40 degrees we will consider that straight-on
-        if (left.isGreaterThanOrEqualTo(Angle.degrees(0)) && left.isLessThanOrEqualTo(Angle.degrees(40)))
+        if (left.isGreaterThanOrEqualTo(degrees(0)) && left.isLessThanOrEqualTo(degrees(40)))
         {
             return TurnType.LEFT_SIDE_STRAIGHT_ON;
         }
 
         // If we're turning left between 40 and 135 degrees, it's a right turn
-        if (left.isGreaterThanOrEqualTo(Angle.degrees(40)) && left.isLessThanOrEqualTo(Angle.degrees(135)))
+        if (left.isGreaterThanOrEqualTo(degrees(40)) && left.isLessThanOrEqualTo(degrees(135)))
         {
             return TurnType.LEFT;
         }

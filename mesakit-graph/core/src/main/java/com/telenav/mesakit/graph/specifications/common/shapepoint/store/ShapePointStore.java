@@ -18,16 +18,16 @@
 
 package com.telenav.mesakit.graph.specifications.common.shapepoint.store;
 
-import com.telenav.kivakit.collections.primitive.map.scalars.LongToIntMap;
-import com.telenav.kivakit.kernel.scalars.counts.Estimate;
-import com.telenav.mesakit.map.geography.Location;
+import com.telenav.kivakit.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.primitive.collections.map.scalars.LongToIntMap;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.ShapePoint;
-import com.telenav.mesakit.graph.metadata.DataSpecification.GraphElementFactory;
+import com.telenav.mesakit.graph.metadata.DataSpecification;
 import com.telenav.mesakit.graph.specifications.common.node.store.NodeStore;
+import com.telenav.mesakit.map.geography.Location;
 
-import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 
 public class ShapePointStore extends NodeStore<ShapePoint>
 {
@@ -81,7 +81,7 @@ public class ShapePointStore extends NodeStore<ShapePoint>
     }
 
     @Override
-    protected GraphElementFactory<ShapePoint> elementFactory()
+    protected DataSpecification.GraphElementFactory<ShapePoint> elementFactory()
     {
         return graph().dataSpecification()::newShapePoint;
     }

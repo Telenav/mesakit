@@ -18,25 +18,29 @@
 
 package com.telenav.mesakit.graph.library.osm.change;
 
-import com.telenav.kivakit.data.formats.library.map.identifiers.*;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
-import com.telenav.kivakit.kernel.language.string.StringList;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.polyline.Polyline;
-import com.telenav.mesakit.map.measurements.Angle;
-import com.telenav.mesakit.map.measurements.Angle.Chirality;
+import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
+import com.telenav.mesakit.map.measurements.geographic.Angle;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.validation.Validate.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
 
 /**
  * Represents a new way being added to the base graph
  *
  * @author jonathanl (shibo)
  */
+
 public class NewWay extends MutableWay
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
@@ -220,9 +224,9 @@ public class NewWay extends MutableWay
         }
     }
 
-    public Set<NodeIdentifier> referencedNodes()
+    public Set<MapNodeIdentifier> referencedNodes()
     {
-        final Set<NodeIdentifier> referenced = new HashSet<>();
+        final Set<MapNodeIdentifier> referenced = new HashSet<>();
         for (final var location : shape.locationSequence())
         {
             final var identifier = nodes.identifier(location);

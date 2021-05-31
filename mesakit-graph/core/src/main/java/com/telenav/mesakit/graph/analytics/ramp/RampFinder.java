@@ -18,9 +18,12 @@
 
 package com.telenav.mesakit.graph.analytics.ramp;
 
+import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.language.values.count.MutableCount;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.kivakit.kernel.operation.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.scalars.counts.*;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.collections.EdgeSet;

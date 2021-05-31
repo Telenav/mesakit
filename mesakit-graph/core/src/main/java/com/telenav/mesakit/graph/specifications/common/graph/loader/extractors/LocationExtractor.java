@@ -18,12 +18,16 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.kivakit.data.extraction.*;
-import com.telenav.kivakit.data.formats.pbf.model.tags.*;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.data.extraction.Extractor;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.rectangle.BoundingBoxBuilder;
+import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
 import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
 
 public class LocationExtractor extends BaseExtractor<Location, PbfEntity<?>>

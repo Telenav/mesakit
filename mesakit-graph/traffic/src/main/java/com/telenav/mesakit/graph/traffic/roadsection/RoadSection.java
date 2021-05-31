@@ -406,7 +406,7 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
     public void write(final CsvWriter writer)
     {
         final var line = new CsvLine(writer.schema(), ',');
-        line.broadcastTo(writer);
+        line.addListener(writer);
         line.set(IDENTIFIER_COLUMN, identifier().toString());
 
         final var previousIdentifiers = allPrevious();

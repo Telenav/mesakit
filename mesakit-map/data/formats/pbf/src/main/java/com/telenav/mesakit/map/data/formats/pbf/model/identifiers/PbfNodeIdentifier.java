@@ -39,7 +39,7 @@ public class PbfNodeIdentifier extends MapNodeIdentifier implements PbfIdentifie
     /**
      * First of 48 bit synthetic identifiers (within one graph)
      */
-    private static final MapNodeIdentifier SYNTHETIC_IDENTIFIER_FIRST = new PbfNodeIdentifier(
+    private static final PbfNodeIdentifier SYNTHETIC_IDENTIFIER_FIRST = new PbfNodeIdentifier(
             99_999_999L * SEQUENCE_NUMBER_BASE);
 
     public static PbfNodeIdentifier forLong(final long identifier)
@@ -56,7 +56,7 @@ public class PbfNodeIdentifier extends MapNodeIdentifier implements PbfIdentifie
         return SYNTHETIC_IDENTIFIER_FIRST.asLong() == (identifier / SEQUENCE_NUMBER_BASE * SEQUENCE_NUMBER_BASE);
     }
 
-    public static MapNodeIdentifier nextSyntheticNodeIdentifier()
+    public static PbfNodeIdentifier nextSyntheticNodeIdentifier()
     {
         if (nodeIdentifierFactory == null)
         {
@@ -89,15 +89,15 @@ public class PbfNodeIdentifier extends MapNodeIdentifier implements PbfIdentifie
         }
     }
 
-    private static class Factory implements com.telenav.kivakit.kernel.interfaces.factory.Factory<MapNodeIdentifier>
+    private static class Factory implements com.telenav.kivakit.kernel.interfaces.factory.Factory<PbfNodeIdentifier>
     {
-        private MapNodeIdentifier next = SYNTHETIC_IDENTIFIER_FIRST;
+        private PbfNodeIdentifier next = SYNTHETIC_IDENTIFIER_FIRST;
 
         @Override
-        public synchronized MapNodeIdentifier newInstance()
+        public synchronized PbfNodeIdentifier newInstance()
         {
             final var next = this.next;
-            this.next = (MapNodeIdentifier) next.next();
+            this.next = (PbfNodeIdentifier) next.next();
             return next;
         }
     }

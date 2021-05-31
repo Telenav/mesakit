@@ -35,6 +35,7 @@ import java.util.HashSet;
  * </ul>
  *
  * @author ranl
+ * @author jonathanl (shibo)
  */
 class LinkSetJudger
 {

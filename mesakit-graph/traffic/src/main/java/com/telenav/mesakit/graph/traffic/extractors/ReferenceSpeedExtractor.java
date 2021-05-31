@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.graph.traffic.extractors;
 
-import com.telenav.kivakit.data.extraction.BaseExtractor;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
-import com.telenav.kivakit.kernel.language.object.Pair;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.language.objects.Pair;
 import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.mesakit.map.measurements.Speed;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
+import com.telenav.mesakit.map.measurements.motion.Speed;
 
 public class ReferenceSpeedExtractor extends BaseExtractor<Pair<Speed>, PbfWay>
 {

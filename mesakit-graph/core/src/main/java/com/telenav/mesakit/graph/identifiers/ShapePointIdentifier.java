@@ -19,13 +19,13 @@
 package com.telenav.mesakit.graph.identifiers;
 
 import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.language.values.identifier.Identifier;
 import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.scalars.identifiers.Identifier;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.ShapePoint;
 
-import static com.telenav.kivakit.kernel.validation.Validate.unsupported;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 
 /**
  * Identifier of {@link ShapePoint}s in a {@link Graph}.

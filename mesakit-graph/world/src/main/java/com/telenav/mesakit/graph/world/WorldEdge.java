@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph.world;
 
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
 import com.telenav.kivakit.kernel.language.string.Strings;
-import com.telenav.kivakit.kernel.language.values.Count
+import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;

@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.graph.matching.snapping;
 
-import com.telenav.kivakit.kernel.scalars.counts.Estimate;
-import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.navigation.Navigator;
-import com.telenav.mesakit.map.geography.polyline.PolylineSnap;
+import com.telenav.mesakit.map.geography.shape.polyline.PolylineSnap;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 import java.util.Map;

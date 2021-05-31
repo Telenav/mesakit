@@ -18,9 +18,6 @@
 
 package com.telenav.mesakit.graph.map;
 
-import com.telenav.kivakit.data.formats.library.map.identifiers.*;
-import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfWayIdentifier;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.kivakit.kernel.language.iteration.Streams;
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.mesakit.graph.Edge;
@@ -28,7 +25,11 @@ import com.telenav.mesakit.graph.Road;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.navigation.Navigator;
-import com.telenav.mesakit.map.geography.polyline.Polyline;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapWayIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.road.model.HighwayType;
@@ -44,7 +45,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static com.telenav.kivakit.kernel.validation.Validate.*;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 /**
  * This class represents a way, but not necessarily a {@link MapWay}. It might be a shorter or longer stretch of a road
@@ -174,9 +176,9 @@ public class Way implements Road, Iterable<Edge>
         return route.length();
     }
 
-    public List<NodeIdentifier> pbfNodeIdentifiers()
+    public List<MapNodeIdentifier> mapNodeIdentifiers()
     {
-        final List<NodeIdentifier> identifiers = new ArrayList<>();
+        final List<MapNodeIdentifier> identifiers = new ArrayList<>();
         for (final var point : route.graph().shapePoints(roadShape()))
         {
             identifiers.add(point.mapIdentifier());
@@ -275,7 +277,7 @@ public class Way implements Road, Iterable<Edge>
     }
 
     @Override
-    public PbfWayIdentifier wayIdentifier()
+    public MapWayIdentifier wayIdentifier()
     {
         if (identifier == null)
         {

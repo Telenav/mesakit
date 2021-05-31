@@ -18,9 +18,6 @@
 
 package com.telenav.mesakit.graph.specifications.common.vertex.store;
 
-import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.kivakit.data.formats.pbf.model.change.*;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.kivakit.kernel.language.time.Time;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
@@ -30,10 +27,16 @@ import com.telenav.mesakit.graph.metadata.DataSpecification;
 import com.telenav.mesakit.graph.specifications.common.element.GraphElementAttributes;
 import com.telenav.mesakit.graph.specifications.common.element.GraphElementStore;
 import com.telenav.mesakit.graph.specifications.library.properties.GraphElementPropertySet;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfChangeSetIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfRevisionNumber;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserName;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
-import static com.telenav.kivakit.kernel.validation.Validate.unsupported;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 
 public class GraphNodeIndex extends GraphNode
 {
@@ -97,7 +100,7 @@ public class GraphNodeIndex extends GraphNode
     }
 
     @Override
-    public NodeIdentifier mapIdentifier()
+    public MapNodeIdentifier mapIdentifier()
     {
         return unsupported();
     }

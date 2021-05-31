@@ -19,15 +19,15 @@
 package com.telenav.mesakit.graph.specifications.common.vertex.store;
 
 import com.telenav.kivakit.collections.primitive.array.scalars.IntArray;
-import com.telenav.kivakit.kernel.language.values.Count
+import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.mesakit.graph.Metadata;
-import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class EdgeListStoreTest extends KivaKitGraphCoreUnitTest
+public class EdgeListStoreTest extends GraphCoreUnitTest
 {
     @Test
     public void testAddRetrieve()

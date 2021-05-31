@@ -112,6 +112,9 @@ import java.util.Map;
 import java.util.Set;
 
 import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
+import static com.telenav.mesakit.graph.GraphElement.NULL_IDENTIFIER;
+import static com.telenav.mesakit.graph.GraphElement.VALIDATE_RAW;
+import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 
 /**
  * An efficient store of edge information used by the flyweight {@link Edge} object to retrieve attributes. A sequence
@@ -870,7 +873,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
             final var identifiers = reverseTmcIdentifiers.get(edge.index());
             if (identifiers != null && !identifiers.isEmpty())
             {
-                return Iterables.of(() -> new Next<>()
+                return Iterables.iterable(() -> new Next<>()
                 {
                     private int index = 0;
 
@@ -1048,7 +1051,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
             final var identifiers = forwardTmcIdentifiers.get(edge.index());
             if (identifiers != null && !identifiers.isEmpty())
             {
-                return Iterables.of(() -> new Next<>()
+                return Iterables.iterable(() -> new Next<>()
                 {
                     private int index = 0;
 
@@ -1536,7 +1539,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         if (DEBUG.isDebugOn())
         {
             final var retrieved = dataSpecification().newEdge(graph(), identifier);
-            assert retrieved.validator(VALIDATE_RAW).isValid(this);
+            assert retrieved.validator(VALIDATE_RAW).validate(this);
         }
     }
 

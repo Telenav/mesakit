@@ -19,25 +19,26 @@
 package com.telenav.mesakit.graph.specifications.common.edge.store.stores.roadname;
 
 import com.telenav.kivakit.collections.map.CacheMap;
-import com.telenav.kivakit.collections.primitive.array.scalars.SplitByteArray;
-import com.telenav.kivakit.collections.primitive.map.scalars.LongToIntMap;
+import com.telenav.kivakit.data.compression.SymbolProducer;
+import com.telenav.kivakit.data.compression.codecs.CharacterCodec;
+import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
+import com.telenav.kivakit.kernel.interfaces.lifecycle.Initializable;
 import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
-import com.telenav.kivakit.kernel.interfaces.operation.Initializable;
 import com.telenav.kivakit.kernel.language.bits.BitDiagram;
-import com.telenav.kivakit.kernel.scalars.counts.*;
-import com.telenav.kivakit.kernel.scalars.mutable.MutableValue;
-import com.telenav.mesakit.map.road.model.RoadName;
-import com.telenav.mesakit.map.road.model.RoadName.Type;
-import com.telenav.kivakit.utilities.compression.Encodable;
-import com.telenav.kivakit.utilities.compression.codecs.CharacterCodec;
-import com.telenav.kivakit.utilities.compression.codecs.huffman.character.HuffmanCharacterCodec;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.language.values.mutable.MutableValue;
+import com.telenav.kivakit.primitive.collections.array.scalars.SplitByteArray;
+import com.telenav.kivakit.primitive.collections.map.scalars.LongToIntMap;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Metadata;
+import com.telenav.mesakit.map.road.model.RoadName;
 
 import java.util.WeakHashMap;
 
+import static com.telenav.kivakit.data.compression.SymbolConsumer.Directive.STOP;
 import static com.telenav.kivakit.kernel.language.bits.BitDiagram.BitField;
-import static com.telenav.kivakit.utilities.compression.Decoded.Directive.STOP;
 
 public class RoadNameStore implements NamedObject, Initializable<RoadNameStore>
 {
@@ -164,7 +165,7 @@ public class RoadNameStore implements NamedObject, Initializable<RoadNameStore>
                 else
                 {
                     final var index = names.cursor();
-                    codec.encode(names, Encodable.singleton(name));
+                    codec.encode(names, SymbolProducer.singleton(name));
                     keyToNameIndex.put(key, index);
                     pool.put(name, index);
                 }
@@ -199,7 +200,7 @@ public class RoadNameStore implements NamedObject, Initializable<RoadNameStore>
     /**
      * @return A pseudo-index for a given edgeIndex, type and road-name ordinal
      */
-    private long keyFor(final int edgeIndex, final Type type, final int roadNameOrdinal)
+    private long keyFor(final int edgeIndex, final RoadName.Type type, final int roadNameOrdinal)
     {
         assert type.ordinal() < 16;
         assert roadNameOrdinal < 256;

@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.graph.specifications.common.shapepoint;
 
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
-import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.ShapePoint;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.mesakit.map.geography.Location;
 
 public class HeavyWeightShapePoint extends ShapePoint
 {

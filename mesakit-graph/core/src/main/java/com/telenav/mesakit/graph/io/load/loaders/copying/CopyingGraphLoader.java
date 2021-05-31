@@ -18,10 +18,12 @@
 
 package com.telenav.mesakit.graph.io.load.loaders.copying;
 
-import com.telenav.kivakit.kernel.language.values.Count
+import com.telenav.kivakit.kernel.language.time.Time;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.path.FileName;
-import com.telenav.kivakit.time.Time;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
@@ -64,7 +66,7 @@ public class CopyingGraphLoader extends BaseGraphLoader
     {
         this.source = source;
         pbfNodeDiskStores = new PbfAllNodeDiskStores(PbfAllNodeDiskStores.temporary(),
-                new FileName(source.name() + "-" + Time.now().asMilliseconds()));
+                FileName.parse(source.name() + "-" + Time.now().asMilliseconds()));
     }
 
     /**

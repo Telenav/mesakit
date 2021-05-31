@@ -18,14 +18,10 @@
 
 package com.telenav.mesakit.graph.ui.viewer;
 
+import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Color;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Route;
-import com.telenav.mesakit.map.ui.swing.debug.Viewable;
-import com.telenav.mesakit.map.ui.swing.debug.ViewableIdentifier;
-import com.telenav.mesakit.map.ui.swing.debug.viewer.swing.DebugViewer;
-import com.telenav.mesakit.map.ui.swing.debug.viewer.swing.SwingViewer;
-
-import java.awt.Color;
+import com.telenav.mesakit.map.ui.debug.DebugViewer;
 
 /**
  * A {@link SwingViewer} with convenience methods to update typical {@link Viewable}s.

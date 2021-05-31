@@ -19,15 +19,15 @@
 package com.telenav.mesakit.graph.specifications.common.edge;
 
 import com.telenav.kivakit.kernel.scalars.counts.Estimate;
-import com.telenav.mesakit.map.road.model.RoadName;
-import com.telenav.mesakit.map.road.model.RoadName.Type;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Metadata;
-import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import com.telenav.mesakit.graph.specifications.common.edge.store.stores.roadname.RoadNameStore;
+import com.telenav.mesakit.map.road.model.RoadName;
+import com.telenav.mesakit.map.road.model.RoadName.Type;
 import org.junit.Test;
 
-public class RoadNameStoreTest extends KivaKitGraphCoreUnitTest
+public class RoadNameStoreTest extends GraphCoreUnitTest
 {
     @Test
     public void test()

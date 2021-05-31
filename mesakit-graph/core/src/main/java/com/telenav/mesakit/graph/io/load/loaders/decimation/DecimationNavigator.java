@@ -21,8 +21,9 @@ package com.telenav.mesakit.graph.io.load.loaders.decimation;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.navigation.Navigator;
-import com.telenav.mesakit.map.measurements.Angle;
-import com.telenav.mesakit.map.measurements.Angle.Chirality;
+import com.telenav.mesakit.map.measurements.geographic.Angle;
+
+import static com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
 
 public class DecimationNavigator extends Navigator
 {

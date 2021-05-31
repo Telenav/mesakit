@@ -18,12 +18,15 @@
 
 package com.telenav.mesakit.graph.io.save;
 
-import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.kivakit.data.formats.pbf.processing.writers.PbfWriter;
-import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.count.MutableCount;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.resource.WritableResource;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.ShapePoint;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.processing.writers.PbfWriter;
 import org.openstreetmap.osmosis.core.domain.v0_6.Bound;
 
 import java.util.Map;
@@ -66,7 +69,7 @@ public class PbfGraphSaver
 
     private Count writeNodes(final Graph graph, final PbfWriter writer)
     {
-        final Map<NodeIdentifier, ShapePoint> toWrite = new TreeMap<>();
+        final Map<MapNodeIdentifier, ShapePoint> toWrite = new TreeMap<>();
         for (final var edge : graph.forwardEdges())
         {
             for (final var point : edge.shapePoints())

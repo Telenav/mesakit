@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.graph.matching.snapping;
 
-import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.polyline.PolylineSnap;
-import com.telenav.mesakit.map.geography.polyline.PolylineSnapper;
-import com.telenav.mesakit.map.measurements.Headed;
 import com.telenav.mesakit.graph.Edge;
+import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.shape.polyline.PolylineSnap;
+import com.telenav.mesakit.map.geography.shape.polyline.PolylineSnapper;
+import com.telenav.mesakit.map.measurements.geographic.Headed;
 
 public class EdgeSnapper
 {

@@ -18,22 +18,23 @@
 
 package com.telenav.mesakit.graph.specifications.library.attributes;
 
-import com.telenav.kivakit.collections.primitive.array.scalars.IntArray;
-import com.telenav.mesakit.graph.io.archive.GraphArchive;
-import com.telenav.kivakit.kernel.debug.Debug;
-import com.telenav.kivakit.kernel.interfaces.collection.Compressible;
+import com.telenav.kivakit.kernel.interfaces.loading.Unloadable;
 import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
-import com.telenav.kivakit.kernel.interfaces.persistence.Unloadable;
+import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.kivakit.resource.compression.archive.FieldArchive;
+import com.telenav.mesakit.graph.io.archive.GraphArchive;
 
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
 
-import static com.telenav.kivakit.kernel.interfaces.collection.Compressible.Method.FREEZE;
-import static com.telenav.kivakit.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 /**
  * Loads attributes from a {@link FieldArchive} (note that {@link GraphArchive} is a field archive) and populates the
@@ -115,9 +116,9 @@ public class AttributeLoader implements Unloadable, NamedObject
         for (final var reference : references())
         {
             final var referent = reference.allocate();
-            if (referent instanceof Compressible)
+            if (referent instanceof CompressibleCollection)
             {
-                ((Compressible) referent).compress(FREEZE);
+                ((CompressibleCollection) referent).compress(CompressibleCollection.Method.FREEZE);
             }
         }
     }
@@ -137,7 +138,7 @@ public class AttributeLoader implements Unloadable, NamedObject
      */
     public ObjectList<Attribute<?>> attributes()
     {
-        return ObjectList.from(referenceForAttribute.keySet()).sorted();
+        return ObjectList.objectList(referenceForAttribute.keySet()).sorted();
     }
 
     /**

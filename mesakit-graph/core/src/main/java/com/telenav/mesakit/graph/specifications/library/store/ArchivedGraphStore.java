@@ -18,21 +18,25 @@
 
 package com.telenav.mesakit.graph.specifications.library.store;
 
-import com.telenav.kivakit.kernel.debug.Debug;
-import com.telenav.kivakit.kernel.interfaces.persistence.Unloadable;
+import com.telenav.kivakit.kernel.interfaces.loading.Unloadable;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.kernel.language.reflection.Type;
-import com.telenav.kivakit.kernel.language.string.*;
+import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.time.Time;
+import com.telenav.kivakit.kernel.language.values.count.Bytes;
 import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.kivakit.kernel.messaging.Message;
-import com.telenav.kivakit.kernel.scalars.bytes.Bytes;
 import com.telenav.kivakit.resource.Resource;
-import com.telenav.kivakit.time.Time;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.specifications.common.element.ArchivedGraphElementStore;
 import com.telenav.mesakit.graph.specifications.library.attributes.AttributeSet;
 
-import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.illegalState;
 
 public abstract class ArchivedGraphStore extends GraphStore
 {
@@ -114,7 +118,7 @@ public abstract class ArchivedGraphStore extends GraphStore
         loaded(archive);
 
         // Done!
-        graph().information(Strings.textBox(Message.format("Loaded from $ in $",
+        graph().information(AsciiArt.textBox(Message.format("Loaded from $ in $",
                 graph().metadata().descriptor(), start.elapsedSince()), graph().asString()));
     }
 
@@ -196,7 +200,7 @@ public abstract class ArchivedGraphStore extends GraphStore
         if (!isValid())
         {
             // we cannot save
-            problem("Cannot save invalid graph to $", archive.zip().resource()).throwAsIllegalStateException();
+            illegalState("Cannot save invalid graph to $", archive.zip().resource());
         }
 
         // Record start time
@@ -237,8 +241,7 @@ public abstract class ArchivedGraphStore extends GraphStore
         report.add("output: " + archive);
         report.add("elapsed: " + start.elapsedSince());
         report.add(graph().asString());
-        information(Strings.textBox(Message.format("Saved $",
-                metadata().descriptor()), report.join("\n")));
+        information(AsciiArt.textBox(Message.format("Saved $", metadata().descriptor()), report.join("\n")));
     }
 
     /**

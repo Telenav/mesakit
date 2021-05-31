@@ -22,9 +22,9 @@ import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Place;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.io.load.loaders.region.RegionalGraphLoader;
-import com.telenav.mesakit.map.region.State;
+import com.telenav.mesakit.map.region.regions.State;
 
-import static com.telenav.kivakit.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 public class StateLoader extends RegionalGraphLoader
 {

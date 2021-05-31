@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.library.osm.change;
 
-import com.telenav.kivakit.collections.map.multi.MultiMap;
-import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.collections.map.MultiMap;
+import com.telenav.kivakit.kernel.language.strings.Strings;
 
 import java.util.ArrayList;
 import java.util.Collection;

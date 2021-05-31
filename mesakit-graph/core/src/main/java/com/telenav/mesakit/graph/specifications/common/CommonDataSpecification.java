@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common;
 
+import com.telenav.kivakit.kernel.language.objects.Lazy;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
@@ -27,7 +28,6 @@ import com.telenav.mesakit.graph.specifications.common.relation.store.RelationSt
 import com.telenav.mesakit.graph.specifications.common.shapepoint.store.ShapePointStore;
 import com.telenav.mesakit.graph.specifications.common.vertex.store.VertexStore;
 import com.telenav.mesakit.graph.specifications.library.store.GraphStore;
-import com.telenav.kivakit.kernel.language.object.Lazy;
 
 /**
  * Data specification common to all data. Note that common factories, properties and attributes are inherited from

@@ -18,15 +18,22 @@
 
 package com.telenav.mesakit.graph.library.osm.change;
 
-import com.telenav.kivakit.data.formats.library.map.identifiers.*;
-import com.telenav.kivakit.data.formats.pbf.model.change.*;
-import com.telenav.kivakit.data.formats.pbf.model.tags.*;
-import com.telenav.kivakit.kernel.language.string.*;
-import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.objects.Objects;
+import com.telenav.kivakit.kernel.language.strings.Escape;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.mesakit.graph.Edge;
-import com.telenav.mesakit.map.geography.polyline.*;
-import com.telenav.mesakit.map.geography.segment.Segment;
-import com.telenav.mesakit.map.measurements.Distance;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfChangeSetIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserName;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
+import com.telenav.mesakit.map.geography.shape.polyline.PolylineBuilder;
+import com.telenav.mesakit.map.geography.shape.segment.Segment;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.road.model.RoadName;
 import org.openstreetmap.osmosis.core.domain.v0_6.CommonEntityData;
 import org.openstreetmap.osmosis.core.domain.v0_6.OsmUser;
@@ -37,10 +44,9 @@ import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 /**
  * A class that holds an OSM way and models any changes that need to be made to nodes that are caused by adding new
@@ -248,9 +254,9 @@ public class ModifiableWay extends MutableWay
         }
     }
 
-    public Set<NodeIdentifier> referencedNodes()
+    public Set<PbfNodeIdentifier> referencedNodes()
     {
-        final Set<NodeIdentifier> referenced = new HashSet<>();
+        final Set<PbfNodeIdentifier> referenced = new HashSet<>();
         for (final var location : shape.locationSequence())
         {
             referenced.add(nodes.identifier(location));
@@ -292,7 +298,7 @@ public class ModifiableWay extends MutableWay
         // Add way open tag
         lines.add("  <way id=\"" + identifier + "\" action=\"modify\" visible=\"true\" version=\"" + version
                 + "\" timestamp=\"" + new Timestamp() + "\" uid=\"" + userIdentifier + "\" user=\""
-                + Strings.escapeXml(userName.name()) + "\">");
+                + (userName.name()) + "\">");
 
         // Add references to nodes
         final var identifiers = new PbfNodeIdentifierList(nodes, shape().locationSequence());
@@ -311,7 +317,7 @@ public class ModifiableWay extends MutableWay
         {
             if (name == null || !"name".equals(tag.getKey()))
             {
-                lines.add("    <tag k=\"" + tag.getKey() + "\" v=\"" + Strings.escapeXml(tag.getValue()) + "\"/>");
+                lines.add("    <tag k=\"" + tag.getKey() + "\" v=\"" + Escape.xml(tag.getValue()) + "\"/>");
             }
         }
 
@@ -319,7 +325,7 @@ public class ModifiableWay extends MutableWay
         if (name != null)
         {
             // add a name tag
-            lines.add("    <tag k=\"name\" v=\"" + Strings.escapeXml(name.name()) + "\"/>");
+            lines.add("    <tag k=\"name\" v=\"" + Escape.xml(name.name()) + "\"/>");
         }
 
         // Close way tag

@@ -19,13 +19,16 @@
 package com.telenav.mesakit.graph.library.osm.change;
 
 import com.telenav.kivakit.collections.map.ReferenceCountMap;
-import com.telenav.kivakit.data.formats.library.map.identifiers.*;
-import com.telenav.kivakit.data.formats.pbf.model.identifiers.*;
-import com.telenav.kivakit.data.formats.pbf.model.tags.*;
-import com.telenav.kivakit.kernel.language.string.StringList;
-import com.telenav.kivakit.kernel.operation.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.language.values.Count
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.mesakit.graph.Graph;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.geography.Location;
 import org.openstreetmap.osmosis.core.domain.v0_6.Node;
 
@@ -36,7 +39,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-import static com.telenav.kivakit.kernel.validation.Validate.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 /**
  * Holds OSM nodes being referenced by {@link NewWay} and {@link ModifiableWay} objects.
@@ -56,9 +59,9 @@ public class PbfNodeStore
     private long nextIdentifier = -1L;
 
     // Map from location to synthetic OSM node identifier and vice versa
-    private final Map<Location, NodeIdentifier> identifierForLocation = new HashMap<>();
+    private final Map<Location, PbfNodeIdentifier> identifierForLocation = new HashMap<>();
 
-    private final TreeMap<NodeIdentifier, Location> locationForIdentifier = new TreeMap<>();
+    private final TreeMap<PbfNodeIdentifier, Location> locationForIdentifier = new TreeMap<>();
 
     // Reference count for each location
     private final ReferenceCountMap<Location> referenceCount = new ReferenceCountMap<>();
@@ -124,15 +127,15 @@ public class PbfNodeStore
     /**
      * @return The OSM node identifier for the given location
      */
-    public NodeIdentifier identifier(final Location location)
+    public PbfNodeIdentifier identifier(final Location location)
     {
         return identifierForLocation.get(location);
     }
 
     /**
-     * @return The {@link NodeIdentifier}s in this store in sorted order.
+     * @return The {@link PbfNodeIdentifier}s in this store in sorted order.
      */
-    public Iterable<NodeIdentifier> identifiers()
+    public Iterable<PbfNodeIdentifier> identifiers()
     {
         return locationForIdentifier.descendingKeySet();
     }
@@ -140,7 +143,7 @@ public class PbfNodeStore
     /**
      * @return The location for the given identifier if it exists in this store
      */
-    public Location location(final NodeIdentifier identifier)
+    public Location location(final PbfNodeIdentifier identifier)
     {
         return locationForIdentifier.get(identifier);
     }
@@ -156,7 +159,7 @@ public class PbfNodeStore
     /**
      * @return The next available synthetic node identifier
      */
-    public NodeIdentifier nextNodeIdentifier()
+    public PbfNodeIdentifier nextNodeIdentifier()
     {
         return new PbfNodeIdentifier(nextIdentifier--);
     }
@@ -186,11 +189,11 @@ public class PbfNodeStore
         if (!contains(location))
         {
             // Get any existing identifier for the location
-            NodeIdentifier identifier = null;
+            PbfNodeIdentifier identifier = null;
             final var point = base.shapePointForLocation(location);
             if (point != null)
             {
-                identifier = point.mapIdentifier();
+                identifier = (PbfNodeIdentifier) point.mapIdentifier();
             }
 
             // And if there is no identifier
@@ -212,7 +215,7 @@ public class PbfNodeStore
         return Count.count(locationForIdentifier.size());
     }
 
-    public PbfNodeStore subset(final Set<NodeIdentifier> include)
+    public PbfNodeStore subset(final Set<PbfNodeIdentifier> include)
     {
         // Create subset
         final var subset = new PbfNodeStore(base);

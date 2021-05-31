@@ -22,19 +22,24 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.collections.primitive.array.scalars.IntArray;
+import com.telenav.kivakit.kernel.interfaces.collection.Indexed;
+import com.telenav.kivakit.kernel.interfaces.lifecycle.Initializable;
 import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
-import com.telenav.kivakit.kernel.interfaces.operation.Initializable;
-import com.telenav.kivakit.kernel.language.object.*;
-import com.telenav.kivakit.kernel.scalars.counts.*;
-import com.telenav.mesakit.map.geography.polyline.Polyline;
-import com.telenav.mesakit.map.geography.polyline.compression.differential.CompressedPolyline;
+import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
+import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.objects.Objects;
+import com.telenav.kivakit.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
+import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
+import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
 
 import java.util.ArrayList;
 
-import static com.telenav.kivakit.kernel.validation.Validate.*;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 
-public class SplitPolylineStore implements KryoSerializable, NamedObject, Initializable<SplitPolylineStore>, Compressible
+public class SplitPolylineStore implements KryoSerializable, NamedObject, Initializable<SplitPolylineStore>, CompressibleCollection
 {
     /** The underlying polyline stores */
     private ArrayList<PolylineStore> stores;

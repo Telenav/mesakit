@@ -20,10 +20,10 @@ package com.telenav.mesakit.graph.identifiers.collections;
 
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.string.StringList;
-import com.telenav.kivakit.kernel.language.string.formatting.Separators;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.scalars.counts.Maximum;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 
 import java.util.List;
@@ -44,7 +44,7 @@ public class EdgeIdentifierList extends ObjectList<EdgeIdentifier>
         protected EdgeIdentifierList onConvertToObject(final String value)
         {
             return new EdgeIdentifierList(StringList.split(value, separators.current())
-                    .asObjectList(Maximum.MAXIMUM, new EdgeIdentifier.Converter(this)));
+                    .asObjectList(new EdgeIdentifier.Converter(this)));
         }
 
         @Override

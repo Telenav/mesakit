@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.graph.specifications.common.node.store.all.disk;
 
-import com.telenav.kivakit.collections.primitive.map.scalars.LongToIntMap;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfNode;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.primitive.collections.map.scalars.LongToIntMap;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
 import com.telenav.mesakit.map.geography.Location;
 
 import java.io.DataInputStream;

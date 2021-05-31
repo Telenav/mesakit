@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.specifications.common.vertex;
 
+import com.telenav.kivakit.kernel.language.objects.Lazy;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
 import com.telenav.mesakit.graph.specifications.common.CommonDataSpecification;
 import com.telenav.mesakit.graph.specifications.common.node.NodeAttributes;
-import com.telenav.kivakit.kernel.language.object.Lazy;
 
 public class VertexAttributes extends NodeAttributes
 {

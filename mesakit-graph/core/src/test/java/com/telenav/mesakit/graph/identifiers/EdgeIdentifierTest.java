@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.graph.identifiers;
 
-import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import org.junit.Test;
 
 /**
  * @author jonathanl (shibo)
  */
-public class EdgeIdentifierTest extends KivaKitGraphCoreUnitTest
+public class EdgeIdentifierTest extends GraphCoreUnitTest
 {
     @Test
     public void testEquals()

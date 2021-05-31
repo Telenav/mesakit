@@ -20,4 +20,6 @@ open module mesakit.graph.traffic
     exports com.telenav.kivakit.graph.traffic.extractors;
     exports com.telenav.mesakit.graph.traffic.roadsection;
     exports com.telenav.mesakit.graph.traffic.historical;
+    exports com.telenav.mesakit.graph.traffic.project;
+    exports com.telenav.mesakit.graph.traffic.extractors;
 }

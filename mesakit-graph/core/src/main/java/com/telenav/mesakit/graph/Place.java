@@ -120,7 +120,8 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
             {
                 return SUBURB;
             }
-            if ("neighborhood".equalsIgnoreCase(type) || "neighbourhood".equalsIgnoreCase(type)
+            if ("neighborhood".equalsIgnoreCase(type)
+                    || "neighbourhood".equalsIgnoreCase(type)
                     || "neigbourhood".equalsIgnoreCase(type))
             {
                 return NEIGHBORHOOD;

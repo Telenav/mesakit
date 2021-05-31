@@ -27,7 +27,7 @@ import com.telenav.kivakit.kernel.language.io.serialization.SerializationSession
 import com.telenav.kivakit.kernel.language.time.Time;
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
 import com.telenav.kivakit.kernel.scalars.bytes.Bytes;
 import com.telenav.kivakit.kernel.scalars.versioning.*;
 import com.telenav.mesakit.graph.Graph;

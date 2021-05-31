@@ -69,11 +69,14 @@ import com.telenav.mesakit.graph.specifications.library.properties.GraphElementP
 import com.telenav.mesakit.graph.specifications.library.store.GraphStore;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 import com.telenav.mesakit.graph.specifications.unidb.UniDbDataSpecification;
+import com.telenav.mesakit.map.data.formats.library.DataFormat;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.illegalArgument;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 
 /**
  * A specification of {@link Graph} data and its storage, independent of format or supplier. For example, data of UniDB
@@ -138,7 +141,7 @@ public abstract class DataSpecification implements NamedObject
         }
         catch (final Exception e)
         {
-            LOGGER.problem(e, "Unable to find DataSpecification class '$'", name).throwAsIllegalArgumentException();
+            illegalArgument("Unable to find DataSpecification class '$'", name);
         }
         return null;
     }

@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.graph.relations.restrictions;
 
-import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.measurements.Heading;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.analytics.classification.classifiers.turn.TwoHeadingTurnClassifier;
 import com.telenav.mesakit.graph.collections.EdgeSet;
+import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.measurements.geographic.Heading;
 
 import java.util.List;
 

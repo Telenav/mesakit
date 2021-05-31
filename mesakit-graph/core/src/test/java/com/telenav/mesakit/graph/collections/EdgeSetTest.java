@@ -23,7 +23,7 @@ import com.telenav.kivakit.map.geography.Location;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Vertex;
-import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,7 +34,7 @@ import java.util.List;
 /**
  * @author jonathanl (shibo)
  */
-public class EdgeSetTest extends KivaKitGraphCoreUnitTest
+public class EdgeSetTest extends GraphCoreUnitTest
 {
     // Four sequentially connected edges (edge1 => edge2 => edge3 => edge4) and one unconnected edge
     private Edge edge1, edge2, edge3, parallelEdge, nonparallelEdge;

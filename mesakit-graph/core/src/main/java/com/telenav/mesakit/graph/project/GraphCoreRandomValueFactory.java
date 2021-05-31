@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.graph.project;
 
-import com.telenav.kivakit.kernel.language.time.Duration;
 import com.telenav.mesakit.map.geography.project.MapGeographyRandomValueFactory;
 import com.telenav.mesakit.map.road.model.BetweenCrossRoads;
 import com.telenav.mesakit.map.road.model.Intersection;
@@ -32,7 +31,7 @@ import java.util.List;
  *
  * @author jonathanl (shibo)
  */
-public class KivaKitGraphCoreRandomValueFactory extends MapGeographyRandomValueFactory
+public class GraphCoreRandomValueFactory extends MapGeographyRandomValueFactory
 {
     protected abstract class RandomListBuilder<T>
     {
@@ -54,11 +53,11 @@ public class KivaKitGraphCoreRandomValueFactory extends MapGeographyRandomValueF
         protected abstract T newElement();
     }
 
-    public KivaKitGraphCoreRandomValueFactory()
+    public GraphCoreRandomValueFactory()
     {
     }
 
-    public KivaKitGraphCoreRandomValueFactory(final long seed)
+    public GraphCoreRandomValueFactory(final long seed)
     {
         super(seed);
     }
@@ -66,11 +65,6 @@ public class KivaKitGraphCoreRandomValueFactory extends MapGeographyRandomValueF
     public BetweenCrossRoads newBetweenCrossStreets()
     {
         return BetweenCrossRoads.newInstance(newStreetName(), newStreetName(), newStreetName());
-    }
-
-    public HistoricalTimeOfWeek newHistoricalTimeOfWeek()
-    {
-        return HistoricalTimeOfWeek.historicalSecondOfWeek(newInt(0, (int) Duration.ONE_WEEK.asSeconds()));
     }
 
     public Intersection newIntersection()

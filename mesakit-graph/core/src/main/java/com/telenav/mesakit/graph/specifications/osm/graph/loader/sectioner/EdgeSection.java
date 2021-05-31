@@ -18,16 +18,16 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner;
 
-import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.specifications.common.edge.HeavyWeightEdge;
-import com.telenav.mesakit.map.geography.polyline.Polyline;
-import com.telenav.mesakit.map.geography.polyline.PolylineBuilder;
-import com.telenav.mesakit.map.geography.polyline.PolylineSection;
-import com.telenav.mesakit.map.geography.polyline.PolylineSectioner;
-import com.telenav.mesakit.map.geography.segment.Segment;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
+import com.telenav.mesakit.map.geography.shape.polyline.PolylineBuilder;
+import com.telenav.mesakit.map.geography.shape.polyline.PolylineSection;
+import com.telenav.mesakit.map.geography.shape.polyline.PolylineSectioner;
+import com.telenav.mesakit.map.geography.shape.segment.Segment;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 import java.util.ArrayList;
@@ -44,7 +44,7 @@ public class EdgeSection
     private final Edge edge;
 
     /** List of node identifiers in this section */
-    private final List<NodeIdentifier> nodes;
+    private final List<MapNodeIdentifier> nodes;
 
     /** The shape of this section */
     private final Polyline shape;
@@ -54,7 +54,7 @@ public class EdgeSection
      * @param nodes List of nodes for this edge section
      * @param shape The {@link Polyline} for this edge section
      */
-    public EdgeSection(final Edge edge, final List<NodeIdentifier> nodes, final Polyline shape)
+    public EdgeSection(final Edge edge, final List<MapNodeIdentifier> nodes, final Polyline shape)
     {
         assert edge != null;
         assert nodes != null;
@@ -93,7 +93,7 @@ public class EdgeSection
             final var syntheticIdentifier = PbfNodeIdentifier.nextSyntheticNodeIdentifier();
 
             // add first segment to the bisection point
-            final List<NodeIdentifier> firstNodes = new ArrayList<>();
+            final List<MapNodeIdentifier> firstNodes = new ArrayList<>();
             firstNodes.add(nodes.get(0));
             firstNodes.add(syntheticIdentifier);
 
@@ -104,7 +104,7 @@ public class EdgeSection
             sections.add(new EdgeSection(edge(), firstNodes, firstShape.build()));
 
             // add second segment from the bisection point
-            final List<NodeIdentifier> secondNodes = new ArrayList<>();
+            final List<MapNodeIdentifier> secondNodes = new ArrayList<>();
             secondNodes.add(syntheticIdentifier);
             secondNodes.add(nodes.get(1));
 
@@ -176,7 +176,7 @@ public class EdgeSection
         return false;
     }
 
-    public NodeIdentifier from()
+    public MapNodeIdentifier from()
     {
         return nodes().get(0);
     }
@@ -193,7 +193,7 @@ public class EdgeSection
         return shape.length();
     }
 
-    public List<NodeIdentifier> nodes()
+    public List<MapNodeIdentifier> nodes()
     {
         return nodes;
     }
@@ -229,7 +229,7 @@ public class EdgeSection
         return nodes.size();
     }
 
-    public NodeIdentifier to()
+    public MapNodeIdentifier to()
     {
         return nodes().get(size() - 1);
     }

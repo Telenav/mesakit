@@ -18,11 +18,12 @@
 
 package com.telenav.mesakit.graph.map;
 
-import com.telenav.kivakit.data.formats.library.map.identifiers.PbfWayIdentifier;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.navigation.navigators.WayNavigator;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapWayIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
@@ -62,7 +63,7 @@ public class MapWay extends Way
     }
 
     @Override
-    public PbfWayIdentifier wayIdentifier()
+    public MapWayIdentifier wayIdentifier()
     {
         return asRoute().first().wayIdentifier();
     }

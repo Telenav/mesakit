@@ -18,13 +18,14 @@
 
 package com.telenav.mesakit.graph.specifications.common.node.store.all.disk;
 
-import com.telenav.kivakit.data.formats.pbf.model.tags.*;
-import com.telenav.kivakit.data.formats.pbf.model.tags.compression.PbfTagCodec;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.specifications.library.pbf.PbfNodeTagStore;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.compression.PbfTagCodec;
+import com.telenav.mesakit.map.geography.Location;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.io.DataInputStream;

@@ -18,8 +18,6 @@
 
 package com.telenav.mesakit.graph.specifications.common.place;
 
-import com.telenav.kivakit.data.formats.pbf.model.change.*;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.kivakit.kernel.language.time.Time;
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.mesakit.graph.Graph;
@@ -27,6 +25,11 @@ import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.Place;
 import com.telenav.mesakit.graph.identifiers.PlaceIdentifier;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfChangeSetIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfRevisionNumber;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserName;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.geography.Location;
 
 public class HeavyWeightPlace extends Place

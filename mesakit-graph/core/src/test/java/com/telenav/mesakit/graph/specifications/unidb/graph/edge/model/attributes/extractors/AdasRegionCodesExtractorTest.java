@@ -20,13 +20,13 @@ package com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attribut
 
 import com.telenav.kivakit.data.formats.pbf.model.tags.*;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.AdasRegionCode;
 import org.junit.Test;
 
 import java.util.List;
 
-public class AdasRegionCodesExtractorTest extends KivaKitGraphCoreUnitTest
+public class AdasRegionCodesExtractorTest extends GraphCoreUnitTest
 {
     @Test
     public void test()

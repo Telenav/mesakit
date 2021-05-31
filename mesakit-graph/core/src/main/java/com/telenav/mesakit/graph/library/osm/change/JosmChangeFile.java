@@ -18,13 +18,14 @@
 
 package com.telenav.mesakit.graph.library.osm.change;
 
-import com.telenav.kivakit.data.formats.library.map.identifiers.PbfWayIdentifier;
-import com.telenav.kivakit.data.formats.pbf.model.change.*;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.kivakit.filesystem.File;
-import com.telenav.mesakit.map.geography.polyline.Polyline;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserName;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 
 public class JosmChangeFile
 {
@@ -55,7 +56,8 @@ public class JosmChangeFile
     }
 
     public ModifiableWay modifiableWay(final Graph graph, final PbfUserIdentifier userIdentifier,
-                                       final PbfUserName userName, final PbfWayIdentifier identifier, final Polyline shape,
+                                       final PbfUserName userName, final PbfWayIdentifier identifier,
+                                       final Polyline shape,
                                        final PbfTagList tags,
                                        final int version)
     {

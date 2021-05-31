@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.world.project;
 
-import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import org.junit.BeforeClass;
 
-public class KivaKitGraphWorldUnitTest extends KivaKitGraphCoreUnitTest
+public class KivaKitGraphWorldUnitTest extends GraphCoreUnitTest
 {
     @BeforeClass
     public static void testSetup()

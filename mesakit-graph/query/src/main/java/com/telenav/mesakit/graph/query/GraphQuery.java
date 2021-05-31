@@ -5,7 +5,7 @@ import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.kernel.interfaces.code.Callback;
 import com.telenav.kivakit.kernel.language.collections.set.Sets;
 import com.telenav.kivakit.kernel.messaging.Message;
-import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
 import com.telenav.kivakit.kernel.operation.progress.reporters.Progress;
 import com.telenav.kivakit.kernel.scalars.counts.Maximum;
 import com.telenav.mesakit.graph.Route;

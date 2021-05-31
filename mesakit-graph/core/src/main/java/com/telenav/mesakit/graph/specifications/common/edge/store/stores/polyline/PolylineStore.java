@@ -18,25 +18,29 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge.store.stores.polyline;
 
-import com.telenav.kivakit.collections.primitive.array.bits.BitArray;
-import com.telenav.kivakit.collections.primitive.array.scalars.*;
-import com.telenav.kivakit.kernel.debug.Debug;
-import com.telenav.kivakit.kernel.interfaces.collection.Compressible;
 import com.telenav.kivakit.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.kernel.language.object.*;
-import com.telenav.kivakit.kernel.scalars.bytes.Bytes;
-import com.telenav.kivakit.kernel.scalars.counts.Estimate;
-import com.telenav.mesakit.map.geography.polyline.Polyline;
-import com.telenav.mesakit.map.geography.polyline.compression.differential.CompressedPolyline;
+import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
+import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.objects.Objects;
+import com.telenav.kivakit.kernel.language.values.count.Bytes;
+import com.telenav.kivakit.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.primitive.collections.array.bits.BitArray;
+import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
+import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
+import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
+import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
 
-import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 /**
  * A compressed store of polyline data
  *
  * @author jonathanl (shibo)
  */
-public class PolylineStore implements Named, Compressible
+public class PolylineStore implements Named, CompressibleCollection
 {
     /** An invalid polyline index */
     public static final int INVALID_INDEX = -1;

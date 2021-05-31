@@ -18,11 +18,8 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.loader;
 
-import com.telenav.kivakit.data.formats.pbf.model.change.*;
-import com.telenav.kivakit.data.formats.pbf.model.extractors.*;
-import com.telenav.kivakit.data.formats.pbf.model.tags.*;
-import com.telenav.kivakit.kernel.language.collections.map.BoundedMap;
-import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.language.collections.map.ObjectMap;
+import com.telenav.kivakit.kernel.language.strings.Strings;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.RawPbfGraphLoader;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.extractors.AlternateRoadNameExtractor;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.extractors.ExitRoadNameExtractor;
@@ -34,10 +31,19 @@ import com.telenav.mesakit.graph.specifications.library.pbf.PbfDataSourceFactory
 import com.telenav.mesakit.graph.specifications.library.store.GraphStore;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.OsmHeavyWeightEdge;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.extractors.LastModifierExtractor;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
+import com.telenav.mesakit.map.data.formats.pbf.model.extractors.RevisionNumberExtractor;
+import com.telenav.mesakit.map.data.formats.pbf.model.extractors.TimestampExtractor;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfChangeSetIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserName;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagFilter;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.model.RoadName;
 
-import static com.telenav.kivakit.map.road.name.standardizer.RoadNameStandardizer.Mode.TDK_STANDARDIZATION;
+import static com.telenav.mesakit.map.road.name.standardizer.RoadNameStandardizer.Mode.MESAKIT_STANDARDIZATION;
 
 /**
  * Subclass of {@link RawPbfGraphLoader} which extracts OSM-specific attributes during raw graph loading.
@@ -48,43 +54,43 @@ public final class OsmRawPbfGraphLoader extends RawPbfGraphLoader
 
     private final LastModifierExtractor lastModifierExtractor;
 
-    private final RevisionExtractor revisionExtractor;
+    private final RevisionNumberExtractor revisionExtractor;
 
     private final TimestampExtractor timestampExtractor;
 
-    private final BoundedMap<MapLocale, OfficialRoadNameExtractor> officialRoadNameExtractorForLocale = new BoundedMap<>()
+    private final ObjectMap<MapLocale, OfficialRoadNameExtractor> officialRoadNameExtractorForLocale = new ObjectMap<>()
     {
         @Override
         protected OfficialRoadNameExtractor onInitialize(final MapLocale locale)
         {
-            return new OfficialRoadNameExtractor(locale, TDK_STANDARDIZATION, OsmRawPbfGraphLoader.this);
+            return new OfficialRoadNameExtractor(locale, MESAKIT_STANDARDIZATION, OsmRawPbfGraphLoader.this);
         }
     };
 
-    private final BoundedMap<MapLocale, ExitRoadNameExtractor> exitRoadNameExtractorForLocale = new BoundedMap<>()
+    private final ObjectMap<MapLocale, ExitRoadNameExtractor> exitRoadNameExtractorForLocale = new ObjectMap<>()
     {
         @Override
         protected ExitRoadNameExtractor onInitialize(final MapLocale locale)
         {
-            return new ExitRoadNameExtractor(locale, TDK_STANDARDIZATION, OsmRawPbfGraphLoader.this);
+            return new ExitRoadNameExtractor(locale, MESAKIT_STANDARDIZATION, OsmRawPbfGraphLoader.this);
         }
     };
 
-    private final BoundedMap<MapLocale, AlternateRoadNameExtractor> alternateRoadNameExtractorForLocale = new BoundedMap<>()
+    private final ObjectMap<MapLocale, AlternateRoadNameExtractor> alternateRoadNameExtractorForLocale = new ObjectMap<>()
     {
         @Override
         protected AlternateRoadNameExtractor onInitialize(final MapLocale locale)
         {
-            return new AlternateRoadNameExtractor(locale, TDK_STANDARDIZATION, OsmRawPbfGraphLoader.this);
+            return new AlternateRoadNameExtractor(locale, MESAKIT_STANDARDIZATION, OsmRawPbfGraphLoader.this);
         }
     };
 
-    private final BoundedMap<MapLocale, RouteRoadNameExtractor> routeRoadNameExtractorForLocale = new BoundedMap<>()
+    private final ObjectMap<MapLocale, RouteRoadNameExtractor> routeRoadNameExtractorForLocale = new ObjectMap<>()
     {
         @Override
         protected RouteRoadNameExtractor onInitialize(final MapLocale locale)
         {
-            return new RouteRoadNameExtractor(locale, TDK_STANDARDIZATION, OsmRawPbfGraphLoader.this);
+            return new RouteRoadNameExtractor(locale, MESAKIT_STANDARDIZATION, OsmRawPbfGraphLoader.this);
         }
     };
 
@@ -103,7 +109,7 @@ public final class OsmRawPbfGraphLoader extends RawPbfGraphLoader
         this.analysis = analysis;
 
         // Create extractors
-        revisionExtractor = new RevisionExtractor(this);
+        revisionExtractor = new RevisionNumberExtractor(this);
         timestampExtractor = new TimestampExtractor(this);
         laneCountExtractor = new LaneCountExtractor(this);
         lastModifierExtractor = new LastModifierExtractor(this);
@@ -133,7 +139,7 @@ public final class OsmRawPbfGraphLoader extends RawPbfGraphLoader
         edge.roadNames(RoadName.Type.ROUTE, routeRoadNameExtractorForLocale.getOrCreate(locale).extract(way));
 
         // Extract OSM metadata
-        edge.pbfRevisionNumber(new PbfRevisionNumber(revisionExtractor.extract(way)));
+        edge.pbfRevisionNumber(revisionExtractor.extract(way));
         edge.pbfChangeSetIdentifier(new PbfChangeSetIdentifier(way.changeSetIdentifier()));
         edge.lastModificationTime(timestampExtractor.extract(way));
         final var user = lastModifierExtractor.extract(way);

@@ -18,20 +18,20 @@
 
 package com.telenav.mesakit.graph.specifications.common.node.store.all;
 
-import com.telenav.kivakit.collections.primitive.array.scalars.LongArray;
-import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
-import com.telenav.kivakit.kernel.interfaces.persistence.Unloadable;
+import com.telenav.kivakit.kernel.interfaces.loading.Unloadable;
+import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.specifications.common.node.store.all.disk.AllNodeDiskCell;
 import com.telenav.mesakit.graph.specifications.common.node.store.all.disk.PbfAllNodeIdentifierDiskStore;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 import com.telenav.mesakit.map.geography.Location;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 public class PbfAllNodeIdentifierStore implements Unloadable
 {
@@ -45,7 +45,7 @@ public class PbfAllNodeIdentifierStore implements Unloadable
         store = new PbfAllNodeIdentifierDiskStore(archive);
     }
 
-    public NodeIdentifier identifier(final GraphElement element, final Location location)
+    public MapNodeIdentifier identifier(final GraphElement element, final Location location)
     {
         final var index = element.index();
 

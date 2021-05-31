@@ -18,7 +18,7 @@
 
 package com.telenav.tdk.navigation.routing.bidijkstra;
 
-import com.telenav.kivakit.kernel.language.values.Count;
+import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.navigation.routing.RoutingDebugger;
 import com.telenav.kivakit.navigation.routing.RoutingLimiter;
 import com.telenav.kivakit.navigation.routing.RoutingRequest;

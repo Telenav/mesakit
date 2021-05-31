@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner;
 
-import com.telenav.kivakit.kernel.language.thread.Threads;
-import com.telenav.kivakit.kernel.operation.progress.reporters.ConcurrentProgress;
-import com.telenav.kivakit.kernel.language.values.Count
-import com.telenav.kivakit.kernel.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.language.progress.reporters.ConcurrentProgress;
+import com.telenav.kivakit.kernel.language.threading.Threads;
+import com.telenav.kivakit.kernel.language.time.Time;
+import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.resource.Resource;
-import com.telenav.kivakit.time.Time;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
@@ -193,6 +193,6 @@ public class WaySectioningGraphLoader extends BaseGraphLoader
     @Override
     public Validation validation()
     {
-        return new Validation("VALIDATE_WAY_SECTIONING").skip(RelationStore.class);
+        return new Validation("VALIDATE_WAY_SECTIONING").exclude(RelationStore.class);
     }
 }

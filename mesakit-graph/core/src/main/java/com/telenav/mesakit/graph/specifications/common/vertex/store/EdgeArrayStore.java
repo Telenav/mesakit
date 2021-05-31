@@ -18,12 +18,17 @@
 
 package com.telenav.mesakit.graph.specifications.common.vertex.store;
 
-import com.telenav.kivakit.collections.primitive.array.scalars.*;
-import com.telenav.kivakit.collections.primitive.iteration.IntIterator;
-import com.telenav.kivakit.collections.primitive.list.IntList;
-import com.telenav.kivakit.kernel.debug.Debug;
-import com.telenav.kivakit.kernel.interfaces.collection.Compressible;
 import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
+import com.telenav.kivakit.kernel.language.iteration.Iterables;
+import com.telenav.kivakit.kernel.language.iteration.Next;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.primitive.collections.array.scalars.SplitByteArray;
+import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
+import com.telenav.kivakit.primitive.collections.iteration.IntIterator;
+import com.telenav.kivakit.primitive.collections.list.IntList;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
@@ -31,7 +36,7 @@ import com.telenav.mesakit.graph.specifications.common.edge.store.EdgeStore;
 
 import java.util.List;
 
-import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 
 /**
  * Stores lists of edge indexes. A new list can be added under a given index with {@link #list(int, IntIterator)}, the
@@ -41,7 +46,7 @@ import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
  *
  * @author jonathanl (shibo)
  */
-public class EdgeArrayStore implements Compressible, NamedObject
+public class EdgeArrayStore implements CompressibleCollection, NamedObject
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -114,7 +119,7 @@ public class EdgeArrayStore implements Compressible, NamedObject
      */
     public EdgeSequence edgeSequence(final EdgeStore store, final int index)
     {
-        return new EdgeSequence(Iterables.of(() -> new Next<>()
+        return new EdgeSequence(Iterables.iterable(() -> new Next<>()
         {
             final IntList edges = list(index);
 
@@ -188,7 +193,7 @@ public class EdgeArrayStore implements Compressible, NamedObject
         final var offset = offsets.get(index);
         final int length = lengths.get(index);
         final var outer = this;
-        return new IntList.Adapter()
+        return new IntList()
         {
             @Override
             public int get(final int index)

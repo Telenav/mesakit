@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.graph.specifications.common.node.store;
 
-import com.telenav.kivakit.collections.primitive.array.scalars.SplitLongArray;
-import com.telenav.kivakit.collections.primitive.map.split.*;
-import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
-import com.telenav.kivakit.kernel.validation.*;
+import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.Validator;
+import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
+import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
+import com.telenav.kivakit.primitive.collections.map.split.SplitLongToLongMap;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
@@ -40,11 +40,12 @@ import com.telenav.mesakit.graph.specifications.common.shapepoint.store.ShapePoi
 import com.telenav.mesakit.graph.specifications.common.vertex.store.VertexStore;
 import com.telenav.mesakit.graph.specifications.library.attributes.AttributeReference;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 import com.telenav.mesakit.map.geography.Location;
 
-import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
-import static com.telenav.kivakit.kernel.validation.Validate.ensure;
-import static com.telenav.kivakit.map.geography.Precision.DM7;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.mesakit.map.geography.Precision.DM7;
 
 /**
  * Store of node information for subclasses of {@link GraphNode}, including {@link Vertex} and {@link ShapePoint}. This
@@ -129,7 +130,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     /**
      * @return True if this node store contains the given identifier
      */
-    public boolean contains(final NodeIdentifier identifier)
+    public boolean contains(final MapNodeIdentifier identifier)
     {
         NODE_IDENTIFIER_TO_INDEX.load();
         return nodeIdentifierToIndex.containsKey(identifier.asLong());
@@ -225,7 +226,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
 
         // and store the node identifier
         final var identifier = element.mapIdentifier();
-        ensure(identifier instanceof NodeIdentifier);
+        ensure(identifier instanceof MapNodeIdentifier);
         NODE_IDENTIFIER.storeObject(element, identifier);
     }
 

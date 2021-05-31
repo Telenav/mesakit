@@ -42,57 +42,52 @@ import com.telenav.mesakit.map.data.formats.pbf.model.tags.compression.PbfString
 /**
  * @author jonathanl (shibo)
  */
-public class KivaKitGraphCoreKryoSerializer extends KryoTypes
+public class GraphCoreKryoTypes extends KryoTypes
 {
-    public KivaKitGraphCoreKryoSerializer()
+    public GraphCoreKryoTypes()
     {
         //----------------------------------------------------------------------------------------------
         // NOTE: To maintain backward compatibility, classes are assigned identifiers by KivaKitKryoSerializer.
         // If classes are appended to groups and no classes are removed, older data can always be read.
         //----------------------------------------------------------------------------------------------
 
-        setReferences(true);
-
-        tdkRegisterAllFrom(KivaKitMapRegion.get());
-        tdkRegisterAllFrom(KivaKitUtilitiesCompression.get());
-
-        tdkNextRegistrationGroup("graph", () ->
+        group("graph", () ->
         {
-            tdkRegister(Metadata.class);
-            tdkRegister(DataFormat.class);
-            tdkRegister(DataSpecification.class);
-            tdkRegister(DataSupplier.class);
-            tdkRegister(DataBuild.class);
-            tdkRegister(OsmDataSpecification.class);
-            tdkRegister(UniDbDataSpecification.class);
-            tdkRegister(DataVersion.class);
+            register(Metadata.class);
+            register(DataFormat.class);
+            register(DataSpecification.class);
+            register(DataSupplier.class);
+            register(DataBuild.class);
+            register(OsmDataSpecification.class);
+            register(UniDbDataSpecification.class);
+            register(DataVersion.class);
         });
 
-        tdkNextRegistrationGroup("entities", () ->
+        group("entities", () ->
         {
-            tdkRegister(Place.Type.class);
-            tdkRegister(CompressedEdgeListStore.class);
-            tdkRegister(ConnectivityStore.class);
-            tdkRegister(EdgeArrayStore.class);
+            register(Place.Type.class);
+            register(CompressedEdgeListStore.class);
+            register(ConnectivityStore.class);
+            register(EdgeArrayStore.class);
         });
 
-        tdkNextRegistrationGroup("tags", () ->
+        group("tags", () ->
         {
-            tdkRegister(TagStore.class);
-            tdkRegister(PbfStringListTagCodec.class);
+            register(TagStore.class);
+            register(PbfStringListTagCodec.class);
         });
 
-        tdkNextRegistrationGroup("spatial-index", () ->
+        group("spatial-index", () ->
         {
-            tdkRegister(CompressedLeaf.class);
-            tdkRegister(CompressedEdgeSpatialIndex.class);
+            register(CompressedLeaf.class);
+            register(CompressedEdgeSpatialIndex.class);
         });
 
-        tdkNextRegistrationGroup("stores", () ->
+        group("stores", () ->
         {
-            tdkRegister(RoadNameStore.class);
-            tdkRegister(PolylineStore.class);
-            tdkRegister(SplitPolylineStore.class);
+            register(RoadNameStore.class);
+            register(PolylineStore.class);
+            register(SplitPolylineStore.class);
         });
     }
 }

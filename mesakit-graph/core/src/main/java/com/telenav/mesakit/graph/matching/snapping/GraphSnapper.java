@@ -21,14 +21,15 @@ package com.telenav.mesakit.graph.matching.snapping;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.polyline.PolylineSnap;
-import com.telenav.mesakit.map.geography.polyline.PolylineSnapper;
-import com.telenav.mesakit.map.measurements.Angle.Chirality;
-import com.telenav.mesakit.map.measurements.Distance;
-import com.telenav.mesakit.map.measurements.Heading;
+import com.telenav.mesakit.map.geography.shape.polyline.PolylineSnap;
+import com.telenav.mesakit.map.geography.shape.polyline.PolylineSnapper;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
+import com.telenav.mesakit.map.measurements.geographic.Heading;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
 
 /**
  * Takes a location and a heading and snaps it to the nearest edge in the given graph with an appropriate heading.

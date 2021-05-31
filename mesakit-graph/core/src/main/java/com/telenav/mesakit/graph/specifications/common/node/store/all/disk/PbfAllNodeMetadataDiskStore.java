@@ -18,13 +18,16 @@
 
 package com.telenav.mesakit.graph.specifications.common.node.store.all.disk;
 
-import com.telenav.kivakit.data.formats.pbf.model.change.*;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfNode;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.language.time.Time;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.specifications.common.node.store.all.PbfAllNodeMetadataStore;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfChangeSetIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfRevisionNumber;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserName;
 import com.telenav.mesakit.map.geography.Location;
 
 import java.io.DataInputStream;
@@ -33,7 +36,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Stores the version, changeset id, timestamp and user of a large number of PBF nodes in a disk folder that is
+ * Stores the version, change set id, timestamp and user of a large number of PBF nodes in a disk folder that is
  * segmented into cells addressed by latitude and longitude as integer values.
  *
  * @author jonathanl (shibo)

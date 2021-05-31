@@ -25,13 +25,13 @@ import com.telenav.kivakit.utilities.compression.codecs.huffman.character.*;
 import com.telenav.kivakit.utilities.compression.codecs.huffman.list.HuffmanStringListCodec;
 import com.telenav.kivakit.utilities.compression.codecs.huffman.string.*;
 import com.telenav.mesakit.graph.Edge;
-import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import com.telenav.mesakit.graph.specifications.common.element.store.TagStore;
 import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
-public class UniDbTagStoreTest extends KivaKitGraphCoreUnitTest
+public class UniDbTagStoreTest extends GraphCoreUnitTest
 {
     @Test
     public void testOsm()

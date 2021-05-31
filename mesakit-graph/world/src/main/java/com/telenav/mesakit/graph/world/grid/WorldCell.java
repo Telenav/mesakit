@@ -23,7 +23,7 @@ import com.telenav.kivakit.kernel.interfaces.persistence.Unloadable;
 import com.telenav.kivakit.kernel.language.collections.set.Sets;
 import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine.KivaKitExcludeFromSizeOf;
 import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
 import com.telenav.kivakit.kernel.scalars.bytes.Bytes;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.kivakit.utilities.reference.virtual.VirtualReference;

@@ -18,21 +18,26 @@
 
 package com.telenav.mesakit.graph.io.load;
 
+import com.telenav.kivakit.commandline.ArgumentParser;
+import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.kernel.commandline.*;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
+import com.telenav.kivakit.kernel.language.time.Time;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.kivakit.kernel.operation.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.operation.progress.reporters.Progress;
 import com.telenav.kivakit.resource.path.FileName;
-import com.telenav.kivakit.time.Time;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.PbfToGraphConverter;
 
-import static com.telenav.kivakit.kernel.validation.Validate.*;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.illegalState;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
 
 /**
@@ -114,7 +119,7 @@ public class SmartGraphLoader extends BaseRepeater implements Named
         @Override
         protected SmartGraphLoader onConvertToObject(final String specifier)
         {
-            return new SmartGraphLoader(new File(specifier), configuration);
+            return new SmartGraphLoader(File.parse(specifier), configuration);
         }
 
         @Override
@@ -175,7 +180,7 @@ public class SmartGraphLoader extends BaseRepeater implements Named
                     if (metadata != null)
                     {
                         final var converter = (PbfToGraphConverter) metadata.dataSpecification().newGraphConverter(metadata);
-                        converter.broadcastTo(this);
+                        converter.addListener(this);
                         converter.configure(configuration);
                         return converter.convert(file);
                     }

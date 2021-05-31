@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.matching.snapping;
 
 import com.telenav.mesakit.graph.Edge;
-import com.telenav.mesakit.map.geography.polyline.PolylineSnap;
+import com.telenav.mesakit.map.geography.shape.polyline.PolylineSnap;
 
 public class EdgeSnap extends PolylineSnap
 {

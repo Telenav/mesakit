@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.specifications.common.element.store.index;
 
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.matching.All;
+import com.telenav.kivakit.kernel.messaging.filters.operators.All;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
@@ -27,7 +27,7 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import java.io.PrintStream;
 import java.util.Iterator;
 
-import static com.telenav.kivakit.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 /**
  * A space-efficient read-only spatial index of graph elements (edges or nodes).
@@ -125,14 +125,14 @@ public abstract class GraphElementSpatialIndex<T extends GraphElement>
             {
                 /* For debugging purposes */
                 var count = 0;
-                final var sb = new StringBuilder();
+                final var builder = new StringBuilder();
                 for (final var element : this)
                 {
                     count++;
-                    sb.append(element);
-                    sb.append(", ");
+                    builder.append(element);
+                    builder.append(", ");
                 }
-                return "Iterable<T> [ size=" + count + ", items=[" + sb.toString() + "]]";
+                return "Iterable<T> [ size=" + count + ", items=[" + builder + "]]";
             }
         };
     }

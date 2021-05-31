@@ -18,15 +18,17 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.kivakit.data.extraction.BaseExtractor;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
-import com.telenav.kivakit.kernel.language.primitive.Ints;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.language.primitives.Ints;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.road.model.RoadFunctionalClass;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.map.road.model.RoadFunctionalClass.*;
+import static com.telenav.mesakit.map.road.model.RoadFunctionalClass.FOURTH_CLASS;
+import static com.telenav.mesakit.map.road.model.RoadFunctionalClass.UNKNOWN;
 
 public class RoadFunctionalClassExtractor extends BaseExtractor<RoadFunctionalClass, PbfWay>
 {

@@ -22,36 +22,40 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.collections.primitive.array.scalars.SplitIntArray;
-import com.telenav.kivakit.collections.primitive.iteration.IntIterator;
-import com.telenav.kivakit.collections.primitive.list.store.IntLinkedListStore;
-import com.telenav.kivakit.collections.set.operations.Intersection;
-import com.telenav.kivakit.kernel.debug.Debug;
-import com.telenav.kivakit.kernel.interfaces.collection.Compressible;
+import com.telenav.kivakit.collections.set.logical.operations.Intersection;
+import com.telenav.kivakit.kernel.data.validation.Validatable;
+import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.Validator;
+import com.telenav.kivakit.kernel.data.validation.validators.BaseValidator;
+import com.telenav.kivakit.kernel.interfaces.lifecycle.Initializable;
 import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
-import com.telenav.kivakit.kernel.interfaces.operation.Initializable;
+import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
 import com.telenav.kivakit.kernel.language.iteration.Iterables;
 import com.telenav.kivakit.kernel.language.iteration.Next;
+import com.telenav.kivakit.kernel.language.values.count.Estimate;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.scalars.counts.Estimate;
-import com.telenav.kivakit.kernel.validation.*;
-import com.telenav.kivakit.kernel.validation.validators.BaseValidator;
-import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
+import com.telenav.kivakit.primitive.collections.iteration.IntIterator;
+import com.telenav.kivakit.primitive.collections.list.store.IntLinkedListStore;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.specifications.common.edge.store.EdgeStore;
+import com.telenav.mesakit.map.geography.Location;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.telenav.kivakit.collections.primitive.iteration.IntIterator.NULL;
-import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
-import static com.telenav.kivakit.graph.specifications.common.vertex.store.ConnectivityStore.Sequence.*;
-import static com.telenav.kivakit.kernel.validation.Validate.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.mesakit.graph.specifications.common.vertex.store.ConnectivityStore.Sequence.ALL;
+import static com.telenav.mesakit.graph.specifications.common.vertex.store.ConnectivityStore.Sequence.IN;
+import static com.telenav.mesakit.graph.specifications.common.vertex.store.ConnectivityStore.Sequence.OUT;
+import static com.telenav.mesakit.graph.specifications.common.vertex.store.ConnectivityStore.Sequence.TWO_WAY;
 
 /**
  * Stores lists of "in", "out" and two-way edges are added during loading with temporary* methods and then stored by
@@ -84,7 +88,7 @@ import static com.telenav.kivakit.kernel.validation.Validate.ensureNotNull;
  *
  * @author jonathanl (shibo)
  */
-public class ConnectivityStore implements Validatable, NamedObject, KryoSerializable, Compressible, Initializable<ConnectivityStore>
+public class ConnectivityStore implements Validatable, NamedObject, KryoSerializable, CompressibleCollection, Initializable<ConnectivityStore>
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -460,11 +464,11 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     {
         assert vertexIndex > 0;
         final var outer = this;
-        return new EdgeSequence(Iterables.of(() -> new Next<>()
+        return new EdgeSequence(Iterables.iterable(() -> new Next<>()
         {
-            final IntIterator in = sequence == ALL || sequence == IN ? outer.inEdges.list(vertexIndex).iterator() : NULL;
+            final IntIterator in = sequence == ALL || sequence == IN ? outer.inEdges.list(vertexIndex).iterator() : IntIterator.NULL;
 
-            final IntIterator out = sequence == ALL || sequence == OUT ? outer.outEdges.list(vertexIndex).iterator() : NULL;
+            final IntIterator out = sequence == ALL || sequence == OUT ? outer.outEdges.list(vertexIndex).iterator() : IntIterator.NULL;
 
             final IntIterator twoWayEdges = outer.twoWayEdges.list(vertexIndex).iterator();
 

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.vertex.store.index;
 
-import com.telenav.kivakit.kernel.language.values.Count
+import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.identifiers.VertexIdentifier;

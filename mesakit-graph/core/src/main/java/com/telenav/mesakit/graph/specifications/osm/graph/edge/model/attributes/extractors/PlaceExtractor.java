@@ -18,16 +18,20 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.extractors;
 
-import com.telenav.kivakit.data.extraction.BaseExtractor;
-import com.telenav.kivakit.data.formats.pbf.model.change.*;
-import com.telenav.kivakit.data.formats.pbf.model.tags.*;
-import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.language.strings.Strings;
 import com.telenav.kivakit.kernel.language.time.Time;
 import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.Place;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.extractors.LocationExtractor;
 import com.telenav.mesakit.graph.specifications.common.place.HeavyWeightPlace;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfRevisionNumber;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserName;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
 
 public class PlaceExtractor extends BaseExtractor<Place, PbfEntity<?>>
 {
@@ -113,7 +117,7 @@ public class PlaceExtractor extends BaseExtractor<Place, PbfEntity<?>>
                 while (keys.hasNext())
                 {
                     final var key = keys.next();
-                    if (key.startsWith("name:") && Strings.count(key, ':') == 1)
+                    if (key.startsWith("name:") && Strings.occurrences(key, ':') == 1)
                     {
                         name = tags.get(key);
                         break;

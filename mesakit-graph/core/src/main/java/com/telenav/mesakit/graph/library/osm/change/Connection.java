@@ -19,8 +19,8 @@
 package com.telenav.mesakit.graph.library.osm.change;
 
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.polyline.Polyline;
-import com.telenav.mesakit.map.geography.polyline.PolylineBuilder;
+import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
+import com.telenav.mesakit.map.geography.shape.polyline.PolylineBuilder;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 /**

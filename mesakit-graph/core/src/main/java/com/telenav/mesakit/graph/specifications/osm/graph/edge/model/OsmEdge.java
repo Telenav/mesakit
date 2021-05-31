@@ -18,16 +18,19 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.edge.model;
 
-import com.telenav.kivakit.kernel.language.values.Count
-import com.telenav.kivakit.kernel.validation.*;
+import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.Validator;
+import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.store.OsmEdgeStore;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
-import com.telenav.mesakit.map.geography.polyline.PolylineSnapper;
-import com.telenav.mesakit.map.region.Country;
+import com.telenav.mesakit.map.geography.shape.polyline.PolylineSnapper;
+import com.telenav.mesakit.map.measurements.geographic.Angle;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
+import com.telenav.mesakit.map.region.regions.Country;
 
 public class OsmEdge extends Edge
 {

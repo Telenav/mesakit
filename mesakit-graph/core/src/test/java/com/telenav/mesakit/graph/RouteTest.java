@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph;
 import com.telenav.mesakit.graph.analytics.classification.classifiers.turn.ComplexTurnClassifier;
 import com.telenav.mesakit.graph.analytics.classification.classifiers.turn.TurnType;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
-import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import com.telenav.mesakit.graph.relations.restrictions.classifiers.TurnRestrictionsTurnClassifier;
 import com.telenav.mesakit.map.measurements.Distance;
 import org.junit.Before;
@@ -34,7 +34,7 @@ import java.util.List;
  * @author tony
  * @author jonathanl (shibo)
  */
-public class RouteTest extends KivaKitGraphCoreUnitTest
+public class RouteTest extends GraphCoreUnitTest
 {
     // Four sequentially connected edges (edge1 => edge2 => edge3 => edge4) and one unconnected edge
     private Edge edge1, edge2, edge3, edge4, unconnectedEdge;

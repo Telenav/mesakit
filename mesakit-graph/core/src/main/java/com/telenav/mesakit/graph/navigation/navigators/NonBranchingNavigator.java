@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.navigation.navigators;
 
+import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.navigation.Navigator;
-import com.telenav.kivakit.kernel.language.values.Count
 
 /**
  * Returns next and previous edges so long as there are no branches. Note that this includes the u-turn option on any

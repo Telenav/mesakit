@@ -18,15 +18,19 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.kivakit.data.extraction.BaseExtractor;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
-import com.telenav.kivakit.kernel.debug.Debug;
-import com.telenav.kivakit.kernel.language.string.Strings;
-import com.telenav.mesakit.map.region.Country;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
+import com.telenav.kivakit.kernel.language.strings.Split;
+import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.region.locale.MapLocale;
+import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.standardizer.RoadNameStandardizer;
-import com.telenav.kivakit.utilities.locale.Language;
 
 import java.util.List;
 
@@ -58,7 +62,7 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
         {
             if (name.contains(";"))
             {
-                for (final var subName : Strings.split(name, ';'))
+                for (final var subName : Split.split(name, ';'))
                 {
                     addRoadName(names, subName);
                 }
@@ -92,15 +96,15 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
 
     protected void addRoadNameTranslation(final List<RoadName> names, final PbfWay way, final String key)
     {
-        final var languages = languages(way);
+        final var languages = languageCodes(way);
         for (final var language : languages)
         {
-            addRoadName(names, way.tagValue(key + ":" + language.getIso3Code()));
+            addRoadName(names, way.tagValue(key + ":" + language.iso3Code()));
             for (final var translation : languages)
             {
                 if (translation != language)
                 {
-                    addRoadName(names, way.tagValue(key + ":" + language.getIso3Code() + ":trans:" + translation.getIso3Code()));
+                    addRoadName(names, way.tagValue(key + ":" + language.iso3Code() + ":trans:" + translation.iso3Code()));
                 }
             }
         }
@@ -114,7 +118,7 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
         }
     }
 
-    protected List<Language> languages(final PbfWay way)
+    protected List<LanguageIsoCode> languageCodes(final PbfWay way)
     {
         // Get any ISO code from the way
         final var iso = way.tagValue("iso");

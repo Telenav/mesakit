@@ -39,17 +39,17 @@ public class KivaKitGraphWorldKryoSerializer extends KivaKitKryoSerializer
         // If classes are appended to groups and no classes are removed, older data can always be read.
         //----------------------------------------------------------------------------------------------
 
-        tdkRegisterAllFrom(GraphCore.get());
-        tdkRegisterAllFrom(KivaKitGraphTraffic.get());
-        tdkRegisterAllFrom(KivaKitMapUtilitiesGrid.get());
+        registerAllFrom(GraphCore.get());
+        registerAllFrom(KivaKitGraphTraffic.get());
+        registerAllFrom(KivaKitMapUtilitiesGrid.get());
 
-        tdkNextRegistrationGroup("world-graph-index", () -> tdkRegister(WorldGraphIndex.class));
+        group("world-graph-index", () -> register(WorldGraphIndex.class));
 
-        tdkNextRegistrationGroup("world-graph", () ->
+        group("world-graph", () ->
         {
-            tdkRegister(WorldPlace.class);
-            tdkRegister(WorldCell.class);
-            tdkRegister(WorldGrid.class);
+            register(WorldPlace.class);
+            register(WorldCell.class);
+            register(WorldGrid.class);
         });
     }
 }

@@ -19,9 +19,6 @@
 package com.telenav.mesakit.graph.ui.viewer;
 
 import com.telenav.mesakit.graph.Edge;
-import com.telenav.mesakit.map.ui.swing.debug.viewables.ViewablePolyline;
-
-import java.awt.Color;
 
 /**
  * @author jonathanl (shibo)

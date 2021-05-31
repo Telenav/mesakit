@@ -18,11 +18,13 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.kivakit.data.extraction.BaseExtractor;
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
-import com.telenav.kivakit.kernel.language.primitive.Ints;
-import com.telenav.kivakit.kernel.language.string.Strings;
-import com.telenav.mesakit.map.measurements.Speed;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.language.primitives.Ints;
+import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.language.strings.Strip;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
+import com.telenav.mesakit.map.measurements.motion.Speed;
 
 public class SpeedLimitExtractor extends BaseExtractor<Speed, PbfWay>
 {
@@ -41,7 +43,7 @@ public class SpeedLimitExtractor extends BaseExtractor<Speed, PbfWay>
         {
             if (maxspeed.endsWith("mph"))
             {
-                var value = Strings.stripTrailing(maxspeed, "mph").trim();
+                var value = Strip.trailing(maxspeed, "mph").trim();
                 final var semicolon = value.lastIndexOf(';');
                 if (semicolon > 0)
                 {

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.place;
 
-import com.telenav.kivakit.kernel.language.object.Lazy;
+import com.telenav.kivakit.kernel.language.objects.Lazy;
 import com.telenav.mesakit.graph.Place;
 import com.telenav.mesakit.graph.specifications.common.CommonDataSpecification;
 import com.telenav.mesakit.graph.specifications.library.attributes.Attribute;

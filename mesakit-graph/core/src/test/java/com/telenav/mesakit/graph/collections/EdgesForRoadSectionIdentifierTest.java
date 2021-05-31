@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.collections;
 
-import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -26,7 +26,7 @@ import org.junit.Test;
  * @author jonathanl (shibo)
  */
 @Ignore
-public class EdgesForRoadSectionIdentifierTest extends KivaKitGraphCoreUnitTest
+public class EdgesForRoadSectionIdentifierTest extends GraphCoreUnitTest
 {
     @Test
     public void testQuery()

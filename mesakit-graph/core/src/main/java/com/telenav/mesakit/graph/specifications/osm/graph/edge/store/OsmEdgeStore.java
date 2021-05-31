@@ -18,10 +18,12 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.edge.store;
 
-import com.telenav.kivakit.collections.primitive.array.packed.SplitPackedArray;
-import com.telenav.kivakit.collections.primitive.array.scalars.*;
-import com.telenav.kivakit.collections.primitive.map.scalars.LongToLongMap;
-import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.language.values.count.BitCount;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.primitive.collections.array.packed.SplitPackedArray;
+import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
+import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
+import com.telenav.kivakit.primitive.collections.map.scalars.LongToLongMap;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
@@ -37,7 +39,7 @@ import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionCodingSystem;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 
-import static com.telenav.kivakit.collections.primitive.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
+import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
 
 /**
  * Store of edge attributes that are specific to the {@link OsmDataSpecification}.

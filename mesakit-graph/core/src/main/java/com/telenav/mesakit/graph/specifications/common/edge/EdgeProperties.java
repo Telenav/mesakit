@@ -18,13 +18,15 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge;
 
-import com.telenav.kivakit.kernel.language.object.*;
-import com.telenav.kivakit.kernel.language.string.*;
-import com.telenav.kivakit.map.road.model.RoadName;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.functions.Functions;
+import com.telenav.kivakit.kernel.language.objects.Lazy;
+import com.telenav.kivakit.kernel.language.strings.StringTo;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.specifications.common.element.GraphElementProperties;
 import com.telenav.mesakit.graph.specifications.library.attributes.Attribute;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
+import com.telenav.mesakit.map.road.model.RoadName;
 
 public class EdgeProperties extends GraphElementProperties<Edge>
 {
@@ -70,7 +72,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
             final var country = edge.country();
             if (country != null)
             {
-                return country.identity().tdk().first();
+                return country.identity().mesakit().first();
             }
             return null;
         }
@@ -198,7 +200,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
         @Override
         public Object value(final Edge edge)
         {
-            return Maybe.apply(edge.metropolitanArea(), metro -> metro.identity().tdk().third());
+            return Functions.apply(edge.metropolitanArea(), metro -> metro.identity().mesakit().third());
         }
     };
 
@@ -248,7 +250,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
         public Object value(final Edge edge)
         {
             final var relations = new StringList();
-            edge.relations().forEach(relation -> relations.add(Strings.toString(relation.identifier())));
+            edge.relations().forEach(relation -> relations.add(StringTo.string(relation.identifier())));
             return relations.join(", ");
         }
     };

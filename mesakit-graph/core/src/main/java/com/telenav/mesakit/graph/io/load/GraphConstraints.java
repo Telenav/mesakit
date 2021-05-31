@@ -20,10 +20,10 @@ package com.telenav.mesakit.graph.io.load;
 
 import com.telenav.kivakit.collections.iteration.iterables.FilteredIterable;
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.matching.All;
 import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
-import com.telenav.kivakit.kernel.language.string.formatting.ObjectFormatter;
-import com.telenav.kivakit.kernel.messaging.messages.MessageList;
+import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.kernel.messaging.filters.operators.All;
+import com.telenav.kivakit.kernel.messaging.listeners.MessageList;
 import com.telenav.kivakit.kernel.messaging.messages.status.Problem;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
@@ -163,9 +163,9 @@ public class GraphConstraints
      * addition the bounding rectangles of the two constraint objects must intersect (or there can be no matched graph
      * data).
      */
-    public MessageList<Problem> satisfies(final GraphConstraints required)
+    public MessageList satisfies(final GraphConstraints required)
     {
-        final var messages = new MessageList<Problem>(new All<>());
+        final var messages = new MessageList(new All<>());
         if (!required.bounds.intersects(bounds))
         {
             messages.add(new Problem("Bounds $ doesn't intersect with $", bounds, required.bounds));

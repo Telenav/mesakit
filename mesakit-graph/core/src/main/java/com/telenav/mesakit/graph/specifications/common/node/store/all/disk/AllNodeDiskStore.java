@@ -18,13 +18,16 @@
 
 package com.telenav.mesakit.graph.specifications.common.node.store.all.disk;
 
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.language.io.IO;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.resource.compression.archive.ZipEntry;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.File;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,7 +50,7 @@ public abstract class AllNodeDiskStore
         this.folder = folder;
         archive = null;
         folder.mkdirs();
-        folder.clear();
+        folder.clearAll();
     }
 
     protected AllNodeDiskStore(final GraphArchive archive)

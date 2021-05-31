@@ -18,10 +18,14 @@
 
 package com.telenav.mesakit.graph.matching.conflation;
 
-import com.telenav.kivakit.kernel.scalars.levels.Percent;
+import com.telenav.kivakit.kernel.language.values.level.Percent;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.ui.viewer.GraphDebugViewer;
+import com.telenav.mesakit.map.measurements.geographic.Angle;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.road.model.RoadFunctionalClass;
 
 public class EdgeConflater
@@ -83,7 +87,7 @@ public class EdgeConflater
     /**
      * The minimum closeness for an edge to conflate
      */
-    private Percent minimumCloseness = new Percent(15);
+    private Percent minimumCloseness = Percent.of(15);
 
     /**
      * Construct
@@ -155,12 +159,12 @@ public class EdgeConflater
             if (augmented.length().isLessThan(augmentedCandidate.length()))
             {
                 closeness = augmented.closeness(augmentedCandidate, maximumSnapDistance, maximumHeadingDeviation);
-                overlap = augmented.length().scaledBy(closeness);
+                overlap = augmented.length().times(closeness);
             }
             else
             {
                 closeness = augmentedCandidate.closeness(augmented, maximumSnapDistance, maximumHeadingDeviation);
-                overlap = augmentedCandidate.length().scaledBy(closeness);
+                overlap = augmentedCandidate.length().times(closeness);
             }
 
             // Show candidate edge in viewer

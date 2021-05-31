@@ -18,18 +18,19 @@
 
 package com.telenav.mesakit.graph.analytics.junction;
 
-import com.telenav.kivakit.kernel.language.thread.KivaKitThread;
+import com.telenav.kivakit.kernel.language.threading.KivaKitThread;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.language.values.count.MutableCount;
 import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
 import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.kivakit.kernel.scalars.counts.*;
-import com.telenav.kivakit.map.measurements.*;
-import com.telenav.kivakit.map.measurements.Angle.Chirality;
-import com.telenav.kivakit.map.road.model.*;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.collections.EdgeSet;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
+import com.telenav.mesakit.map.road.model.RoadName;
+import com.telenav.mesakit.map.road.model.RoadType;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -37,6 +38,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CountDownLatch;
+
+import static com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
+import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
 
 /**
  * Finds junction edges in the given edge sequence.
@@ -104,7 +108,7 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
                 }
 
                 {
-                    broadcastTo(outer);
+                    addListener(outer);
                 }
             }.start();
         }
@@ -189,7 +193,7 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
                 : secondEdge.roadShape().reversed().initialHeading();
 
         final var difference = first.difference(second, Chirality.SMALLEST);
-        return difference.isGreaterThan(Angle.degrees(135));
+        return difference.isGreaterThan(degrees(135));
     }
 
     private boolean isTooComplex(final Route route)

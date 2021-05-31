@@ -20,14 +20,14 @@ package com.telenav.mesakit.graph.collections;
 
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Route;
-import com.telenav.mesakit.graph.project.KivaKitGraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
  * @author jonathanl (shibo)
  */
-public class RouteListTest extends KivaKitGraphCoreUnitTest
+public class RouteListTest extends GraphCoreUnitTest
 {
     // Four sequentially connected edges (edge1 => edge2 => edge3 => edge4) and one unconnected edge
     private Edge edge1, edge2, edge3, edge4, unconnectedEdge;

@@ -18,20 +18,20 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader;
 
-import com.telenav.kivakit.collections.primitive.map.split.SplitLongToLongMap;
-import com.telenav.kivakit.data.extraction.*;
-import com.telenav.kivakit.data.formats.library.map.identifiers.*;
-import com.telenav.kivakit.data.formats.pbf.model.identifiers.*;
-import com.telenav.kivakit.data.formats.pbf.model.tags.*;
-import com.telenav.kivakit.data.formats.pbf.processing.PbfDataProcessor;
-import com.telenav.kivakit.data.formats.pbf.processing.PbfDataProcessor.Result;
-import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.data.extraction.Extractor;
+import com.telenav.kivakit.kernel.data.validation.Validation;
 import com.telenav.kivakit.kernel.interfaces.collection.Addable;
-import com.telenav.kivakit.kernel.interfaces.collection.Compressible.Method;
+import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.string.Strings;
-import com.telenav.kivakit.kernel.scalars.counts.*;
-import com.telenav.kivakit.kernel.validation.Validation;
+import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.count.MutableCount;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.primitive.collections.map.split.SplitLongToLongMap;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;
@@ -50,7 +50,6 @@ import com.telenav.mesakit.graph.specifications.common.graph.loader.extractors.H
 import com.telenav.mesakit.graph.specifications.common.graph.loader.extractors.LocationExtractor;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.extractors.RoadFunctionalClassExtractor;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.extractors.RoadStateExtractor;
-import com.telenav.mesakit.graph.specifications.common.graph.loader.extractors.RoadStateExtractor.ExtractedRoadState;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.extractors.RoadSubTypeExtractor;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.extractors.RoadTypeExtractor;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.extractors.SpeedCategoryExtractor;
@@ -69,13 +68,23 @@ import com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner.EdgeN
 import com.telenav.mesakit.graph.traffic.extractors.ReferenceSpeedExtractor;
 import com.telenav.mesakit.graph.traffic.extractors.SpeedPatternIdentifierExtractor;
 import com.telenav.mesakit.graph.traffic.extractors.TrafficIdentifiersExtractor;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapWayIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagFilter;
+import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.polyline.*;
+import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
+import com.telenav.mesakit.map.geography.shape.polyline.PolylineBuilder;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.geography.segment.Segment;
-import com.telenav.mesakit.map.geography.shape.Outline;
-import com.telenav.mesakit.map.geography.shape.Outline.Containment;
-import com.telenav.mesakit.map.region.Country;
+import com.telenav.mesakit.map.geography.shape.segment.Segment;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
+import com.telenav.mesakit.map.measurements.motion.Speed;
+import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.road.model.GradeSeparation;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.model.RoadState;
@@ -90,11 +99,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.telenav.kivakit.data.formats.pbf.processing.PbfDataProcessor.Result.*;
-import static com.telenav.kivakit.graph.GraphElement.VALIDATE_RAW;
-import static com.telenav.kivakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
-import static com.telenav.kivakit.kernel.validation.Validate.ensure;
-import static com.telenav.kivakit.map.geography.Precision.DM7;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.mesakit.graph.GraphElement.VALIDATE_RAW;
+import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
+import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action;
+import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
+import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.DISCARDED;
+import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.FILTERED_OUT;
+import static com.telenav.mesakit.map.geography.Precision.DM7;
+import static com.telenav.mesakit.map.geography.shape.Outline.Containment;
 
 /**
  * Base class for loading raw graphs from PBF files. In the OSM data specification, a raw graph contains data that has
@@ -140,10 +153,11 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
 
         private final PbfWay way;
 
-        private final ExtractedRoadState state;
+        private final RoadStateExtractor.ExtractedRoadState state;
 
         @SuppressWarnings("ClassEscapesDefinedScope")
-        public ExtractedEdges(final List<? extends Edge> edges, final PbfWay way, final ExtractedRoadState state)
+        public ExtractedEdges(final List<? extends Edge> edges, final PbfWay way,
+                              final RoadStateExtractor.ExtractedRoadState state)
         {
             this.edges = edges;
             this.way = way;
@@ -161,7 +175,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         }
 
         @SuppressWarnings("ClassEscapesDefinedScope")
-        public ExtractedRoadState state()
+        public RoadStateExtractor.ExtractedRoadState state()
         {
             return state;
         }
@@ -174,11 +188,11 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
 
     private static class WayChunk
     {
-        private final PbfWayIdentifier identifier;
+        private final MapWayIdentifier identifier;
 
         private final Polyline shape;
 
-        private final ObjectList<NodeIdentifier> nodes;
+        private final ObjectList<MapNodeIdentifier> nodes;
 
         private final boolean fromOnBorder;
 
@@ -188,8 +202,13 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
 
         private final Location to;
 
-        WayChunk(final PbfWayIdentifier identifier, final Location from, final Location to, final Polyline shape,
-                 final ObjectList<NodeIdentifier> nodes, final boolean fromOnBorder, final boolean toOnBorder)
+        WayChunk(final MapWayIdentifier identifier,
+                 final Location from,
+                 final Location to,
+                 final Polyline shape,
+                 final ObjectList<MapNodeIdentifier> nodes,
+                 final boolean fromOnBorder,
+                 final boolean toOnBorder)
         {
             assert identifier != null;
             assert shape == null || shape.size() == nodes.size();
@@ -219,7 +238,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
             return from;
         }
 
-        NodeIdentifier fromNode()
+        MapNodeIdentifier fromNode()
         {
             return nodes.first();
         }
@@ -234,7 +253,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
             return toOnBorder;
         }
 
-        ObjectList<NodeIdentifier> nodes()
+        ObjectList<MapNodeIdentifier> nodes()
         {
             return nodes;
         }
@@ -256,7 +275,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
             return to;
         }
 
-        NodeIdentifier toNode()
+        MapNodeIdentifier toNode()
         {
             return nodes.last();
         }
@@ -332,7 +351,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     {
         ensure(data != null);
         ensure(metadata != null);
-        ensure(metadata.validator(Metadata.VALIDATE_EXCEPT_STATISTICS).isValid(), "Metadata is invalid");
+        ensure(metadata.validator(Metadata.VALIDATE_EXCEPT_STATISTICS).validate(), "Metadata is invalid");
         ensure(tagFilter != null);
 
         dataSourceFactory(data, metadata);
@@ -413,13 +432,13 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
 
         final var dataSource = dataSourceFactory().newInstance(metadata);
         metadata.configure(dataSource);
-        dataSource.process("Loading Raw Data", new PbfDataProcessor()
+        dataSource.process(new PbfDataProcessor()
         {
             @Override
             public void onEndNodes()
             {
                 // This map is now populated so we can freeze it
-                outer.nodeIdentifierToLocation.compress(Method.FREEZE);
+                outer.nodeIdentifierToLocation.compress(CompressibleCollection.Method.FREEZE);
 
                 // Allow subclass to free data structures
                 outer.onEndNodes();
@@ -438,10 +457,10 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
             }
 
             @Override
-            public Result onNode(final PbfNode node)
+            public Action onNode(final PbfNode node)
             {
-                final Result result = processNode(store, node);
-                switch (result)
+                final var action = processNode(store, node);
+                switch (action)
                 {
                     case ACCEPTED:
                         acceptedNodes.increment();
@@ -455,7 +474,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                         filteredNodes.increment();
                         break;
                 }
-                return result;
+                return action;
             }
 
             @Override
@@ -468,11 +487,11 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
             }
 
             @Override
-            public Result onRelation(final PbfRelation relation)
+            public Action onRelation(final PbfRelation relation)
             {
                 assert relation != null;
-                final var result = processRelation(store, relation);
-                switch (result)
+                final var action = processRelation(store, relation);
+                switch (action)
                 {
                     case ACCEPTED:
                         acceptedRelations.increment();
@@ -486,14 +505,14 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                         filteredRelations.increment();
                         break;
                 }
-                return result;
+                return action;
             }
 
             @Override
-            public Result onWay(final PbfWay way)
+            public Action onWay(final PbfWay way)
             {
-                final var result = processWay(store, way);
-                switch (result)
+                final var action = processWay(store, way);
+                switch (action)
                 {
                     case ACCEPTED:
                         acceptedWays.increment();
@@ -507,7 +526,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                         filteredWays.increment();
                         break;
                 }
-                return result;
+                return action;
             }
 
             @Override
@@ -530,7 +549,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         final var relationCount = relationStore.retrieveCount();
         final var placeCount = placeStore.retrieveCount();
 
-        information(Strings.topLine("Raw Data Statistics for '$'", name));
+        information(AsciiArt.topLine("Raw Data Statistics for '$'", name));
         information("");
         information("           Nodes:     accepted ${left} discarded ${left} filtered ${left}", acceptedNodes, discardedNodes, filteredNodes);
         information("            Ways:     accepted ${left} discarded ${left} filtered ${left}", acceptedWays, discardedWays, filteredWays);
@@ -540,7 +559,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         information("          Places:        added ${left} discarded ${left}", placeCount, placeStore.discarded());
         information("");
         information("  To find out why any data was discarded, define TDK_DEBUG=GraphElementStore,RawPbfGraphLoader");
-        information(Strings.bottomLine());
+        information(AsciiArt.bottomLine());
 
         return store.metadata()
                 .withNodeCount(acceptedNodes.asCount())
@@ -552,8 +571,8 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     public Validation validation()
     {
         return new Validation("VALIDATE_RAW_GRAPH_STORE")
-                .skip(RelationStore.class)
-                .skip(VertexStore.class);
+                .exclude(RelationStore.class)
+                .exclude(VertexStore.class);
     }
 
     protected Location nodeToLocation(final WayNode node)
@@ -691,7 +710,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     {
         Polyline shape = null;
         final var wayNodes = way.nodes();
-        final var nodes = new ObjectList<NodeIdentifier>();
+        final var nodes = new ObjectList<MapNodeIdentifier>();
         final Location from;
         final Location to;
         if (wayNodes.size() == 2)
@@ -770,11 +789,11 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         var builder = new PolylineBuilder();
 
         // List of nodes
-        var nodes = new ObjectList<NodeIdentifier>();
+        var nodes = new ObjectList<MapNodeIdentifier>();
 
         // Crossing and border states
-        Outline.Containment were = null;
-        Outline.Containment now;
+        Containment were = null;
+        Containment now;
         var crossedBorder = false;
         var fromOnBorder = false;
         var toOnBorder = false;
@@ -854,12 +873,12 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                     if (nodes.isEmpty())
                     {
                         // then this is the "from"
-                        fromOnBorder = (now == Outline.Containment.ON_BORDER);
+                        fromOnBorder = (now == Containment.ON_BORDER);
                     }
                     else
                     {
                         // otherwise this is the "to"
-                        toOnBorder = (now == Outline.Containment.ON_BORDER);
+                        toOnBorder = (now == Containment.ON_BORDER);
                     }
 
                     // then just add the node
@@ -1056,7 +1075,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                 edge.uniDbReverseReferenceSpeed(referenceSpeeds.b());
             }
 
-            if (edge.validator(VALIDATE_RAW).isValid(RawPbfGraphLoader.LOGGER))
+            if (edge.validator(VALIDATE_RAW).validate(RawPbfGraphLoader.LOGGER))
             {
                 edges.add(edge);
             }
@@ -1118,7 +1137,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         return null;
     }
 
-    private Result processNode(final GraphStore store, final PbfNode node)
+    private Action processNode(final GraphStore store, final PbfNode node)
     {
         // HOTSPOT: This method has been determined to be a hotspot by YourKit profiling
 
@@ -1155,7 +1174,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         return FILTERED_OUT;
     }
 
-    private Result processRelation(final GraphStore store, final PbfRelation relation)
+    private Action processRelation(final GraphStore store, final PbfRelation relation)
     {
         final var tags = relation.tagMap();
 
@@ -1209,7 +1228,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         }
     }
 
-    private Result processWay(final GraphStore store, final PbfWay way)
+    private Action processWay(final GraphStore store, final PbfWay way)
     {
         // If the way is accepted by the way filter, it should be processed
         if (configuration().wayFilter().accepts(way) && onProcessingWay(store, way) == ProcessingDirective.ACCEPT)

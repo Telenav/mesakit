@@ -47,6 +47,7 @@ import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
+import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.identifiers.GraphElementIdentifier;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
 import com.telenav.mesakit.graph.specifications.common.edge.store.EdgeStore;
@@ -72,6 +73,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 
 /**
@@ -440,7 +442,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         {
             if (!flushed)
             {
-                batcher().close();
+                batcher().stop();
                 flushed = true;
             }
         }
@@ -1011,7 +1013,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         }
 
         // If the element is valid
-        if (element.validator(GraphElement.VALIDATE_RAW).isValid(DEBUG.listener()))
+        if (element.validator(GraphElement.VALIDATE_RAW).validate(DEBUG.listener()))
         {
             // NOTE: An element MUST be heavyweight to be added to a store. This is because a flyweight element cannot
             // belong to two graphs at once. The flyweight element will have its own graph and index, but those fields
@@ -1044,7 +1046,6 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         return false;
     }
 
-    @NotNull
     private String qualifiedName()
     {
         return graph().name() + "-" + elementType().getSimpleName();

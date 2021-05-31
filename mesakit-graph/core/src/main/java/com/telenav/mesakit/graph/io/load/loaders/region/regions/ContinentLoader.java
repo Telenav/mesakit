@@ -22,7 +22,7 @@ import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Place;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.io.load.loaders.region.RegionalGraphLoader;
-import com.telenav.mesakit.map.region.Continent;
+import com.telenav.mesakit.map.region.regions.Continent;
 
 public class ContinentLoader extends RegionalGraphLoader
 {

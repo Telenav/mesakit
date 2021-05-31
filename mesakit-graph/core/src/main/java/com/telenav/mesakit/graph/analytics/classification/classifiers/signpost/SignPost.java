@@ -22,8 +22,12 @@ import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.library.matchers.Matchers;
-import com.telenav.mesakit.map.measurements.geographic.Angle;
+import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
+
+import static com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
+import static com.telenav.mesakit.map.measurements.geographic.Angle._180_DEGREES;
+import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
 
 public class SignPost
 {
@@ -76,17 +80,17 @@ public class SignPost
     {
         final var iterator = outEdges.iterator();
 
-        final var outEdgeShapepoints1 = iterator.next().roadShape();
-        final var outEdgeHeading1 = outEdgeShapepoints1.firstSegment().length().isGreaterThan(Distance.meters(20))
-                ? outEdgeShapepoints1.initialHeading()
-                : outEdgeShapepoints1.start().headingTo(outEdgeShapepoints1.end());
+        final var outEdgeShapePoints1 = iterator.next().roadShape();
+        final var outEdgeHeading1 = outEdgeShapePoints1.firstSegment().length().isGreaterThan(Distance.meters(20))
+                ? outEdgeShapePoints1.initialHeading()
+                : outEdgeShapePoints1.start().headingTo(outEdgeShapePoints1.end());
 
-        final var outEdgeShapepoints2 = iterator.next().roadShape();
-        final var outEdgeHeading2 = outEdgeShapepoints2.firstSegment().length().isGreaterThan(Distance.meters(20))
-                ? outEdgeShapepoints2.initialHeading()
-                : outEdgeShapepoints2.start().headingTo(outEdgeShapepoints2.end());
+        final var outEdgeShapePoints2 = iterator.next().roadShape();
+        final var outEdgeHeading2 = outEdgeShapePoints2.firstSegment().length().isGreaterThan(Distance.meters(20))
+                ? outEdgeShapePoints2.initialHeading()
+                : outEdgeShapePoints2.start().headingTo(outEdgeShapePoints2.end());
 
-        return outEdgeHeading1.difference(outEdgeHeading2, Chirality.SMALLEST).isLessThan(Angle.degrees(45));
+        return outEdgeHeading1.difference(outEdgeHeading2, Chirality.SMALLEST).isLessThan(degrees(45));
     }
 
     public boolean isExit()
@@ -165,6 +169,6 @@ public class SignPost
     private boolean isLeftBranchFirst(final Edge first, final Edge second)
     {
         return first.initialHeading().difference(second.initialHeading(), Chirality.CLOCKWISE)
-                .isLessThan(Angle._180_DEGREES);
+                .isLessThan(_180_DEGREES);
     }
 }

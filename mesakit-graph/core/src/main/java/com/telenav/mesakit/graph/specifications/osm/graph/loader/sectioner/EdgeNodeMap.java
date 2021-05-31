@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner;
 
-import com.telenav.kivakit.collections.primitive.array.scalars.SplitLongArray;
-import com.telenav.kivakit.collections.primitive.map.split.SplitLongToIntMap;
-import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
+import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.specifications.library.pbf.IntersectionMap;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -62,7 +62,7 @@ public class EdgeNodeMap
     /**
      * @return The list of node identifiers (in order) for the given edge identifier
      */
-    public List<NodeIdentifier> get(final EdgeIdentifier identifier)
+    public List<MapNodeIdentifier> get(final EdgeIdentifier identifier)
     {
         // Get the node count for the edge
         final var nodeCount = nodeCountForEdge.get(identifier.asLong());
@@ -74,7 +74,7 @@ public class EdgeNodeMap
             final var index = indexForEdge.get(identifier.asLong());
 
             // and add each node identifier starting at that index to the list
-            final List<NodeIdentifier> identifiers = new ArrayList<>();
+            final List<MapNodeIdentifier> identifiers = new ArrayList<>();
             for (var offset = 0; offset < nodeCount; offset++)
             {
                 identifiers.add(new PbfNodeIdentifier(nodeIdentifiers.get(index + offset)));
@@ -88,7 +88,7 @@ public class EdgeNodeMap
     /**
      * Store node identifiers (in order) for the given edge for later retrieval via {@link #get(EdgeIdentifier)}
      */
-    public void put(final EdgeIdentifier identifier, final List<NodeIdentifier> nodes)
+    public void put(final EdgeIdentifier identifier, final List<MapNodeIdentifier> nodes)
     {
         // Add nodes at next available index
         var index = nodeIdentifiers.size();
