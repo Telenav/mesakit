@@ -47,8 +47,6 @@ import com.telenav.mesakit.graph.specifications.common.vertex.HeavyWeightVertex;
 import com.telenav.mesakit.graph.specifications.library.pbf.PbfFileMetadataAnnotator;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 import com.telenav.mesakit.graph.specifications.osm.graph.OsmGraph;
-import com.telenav.mesakit.graph.specifications.unidb.UniDbDataSpecification;
-import com.telenav.mesakit.graph.specifications.unidb.graph.UniDbGraph;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.osm.OsmNavigableWayFilter;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.osm.OsmRelationsFilter;
 import com.telenav.mesakit.map.geography.Location;
@@ -61,7 +59,6 @@ import com.telenav.mesakit.map.region.regions.Country;
 import org.junit.BeforeClass;
 
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
-import static com.telenav.mesakit.graph.metadata.DataSupplier.HERE;
 import static com.telenav.mesakit.graph.metadata.DataSupplier.OSM;
 import static com.telenav.mesakit.graph.specifications.library.pbf.PbfFileMetadataAnnotator.Mode.STRIP_UNREFERENCED_NODES;
 import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
@@ -99,9 +96,6 @@ public abstract class GraphCoreUnitTest extends MapRegionUnitTest
     private static final Lazy<Graph> osmHuronCharter = Lazy.of(
             () -> graph(OsmDataSpecification.get(), "Huron_Charter", Rectangle.fromLocations(Location.degrees(42.179459, -83.423221),
                     Location.degrees(42.094242, -83.303885))));
-
-    private static final Lazy<Graph> uniDbDowntownSanFrancisco = Lazy.of(
-            () -> graph(UniDbDataSpecification.get(), "Downtown_San_Francisco", Rectangle.parse("37.77205,-122.42746:37.79907,-122.39553")));
 
     public static Graph osmBellevueWashington()
     {
@@ -144,17 +138,12 @@ public abstract class GraphCoreUnitTest extends MapRegionUnitTest
         GraphCore.get().initialize();
     }
 
-    public static Graph uniDbDowntownSanFrancisco()
-    {
-        return uniDbDowntownSanFrancisco.get();
-    }
-
     private final Location.DegreesConverter locationInDegreesConverter = new Location.DegreesConverter(LOGGER);
 
     private final Location.DegreesMinutesAndSecondsConverter locationInDegreesMinutesAndSecondsConverter =
             new Location.DegreesMinutesAndSecondsConverter(LOGGER);
 
-    private int nextUniDbEdgeIdentifier = 1;
+    private final int nextUniDbEdgeIdentifier = 1;
 
     private int nextOsmEdgeIdentifier = 1;
 
@@ -211,13 +200,6 @@ public abstract class GraphCoreUnitTest extends MapRegionUnitTest
         final var relation = osmRelation(nextOsmRelationIdentifier, nextOsmRelationIdentifier);
         nextOsmRelationIdentifier++;
         return relation;
-    }
-
-    protected HeavyWeightEdge nextUniDbEdge()
-    {
-        final var edge = uniDbEdge(nextUniDbEdgeIdentifier, nextUniDbEdgeIdentifier);
-        nextUniDbEdgeIdentifier++;
-        return edge;
     }
 
     protected Edge osmDowntownSeattleTestEdge(final long identifier)
@@ -305,18 +287,6 @@ public abstract class GraphCoreUnitTest extends MapRegionUnitTest
         return edge;
     }
 
-    protected HeavyWeightEdge uniDbEdge(final int index, final int identifier)
-    {
-        final var edge = UniDbDataSpecification.get().newHeavyWeightEdge(uniDbGraph(), identifier);
-        edge.index(index);
-        return edge;
-    }
-
-    protected UniDbGraph uniDbGraph()
-    {
-        return (UniDbGraph) UniDbDataSpecification.get().newGraph(Metadata.unidb(HERE, PBF));
-    }
-
     protected Vertex vertex(final Graph graph, final double latitude, final double longitude)
     {
         return graph.vertexNearest(Location.degrees(latitude, longitude), Distance.meters(50));
@@ -389,7 +359,7 @@ public abstract class GraphCoreUnitTest extends MapRegionUnitTest
                     if (graph != null)
                     {
                         // and if we succeeded, then save the graph file and return the graph
-                        graph.save(new GraphArchive(graphFile, ProgressReporter.NULL, ZipArchive.Mode.WRITE));
+                        graph.save(new GraphArchive(graphFile, ZipArchive.Mode.WRITE, ProgressReporter.NULL));
                         return graph;
                     }
 
@@ -397,7 +367,7 @@ public abstract class GraphCoreUnitTest extends MapRegionUnitTest
                 }
                 else
                 {
-                    LOGGER.problem("No metdata found in $", pbfFile);
+                    LOGGER.problem("No metadata found in $", pbfFile);
                 }
             }
             else
@@ -407,7 +377,7 @@ public abstract class GraphCoreUnitTest extends MapRegionUnitTest
         }
         else
         {
-            return new GraphArchive(graphFile, ProgressReporter.NULL, READ).load(Listener.none());
+            return new GraphArchive(graphFile, READ, ProgressReporter.NULL).load(Listener.none());
         }
         return null;
     }

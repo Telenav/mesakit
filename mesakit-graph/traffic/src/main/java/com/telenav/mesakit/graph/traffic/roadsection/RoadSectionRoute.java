@@ -19,20 +19,20 @@
 package com.telenav.mesakit.graph.traffic.roadsection;
 
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.kernel.language.iteration.Iterables;
 import com.telenav.kivakit.kernel.language.iteration.Next;
 import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
 import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
-import com.telenav.kivakit.kernel.language.string.StringList;
-import com.telenav.kivakit.kernel.language.string.formatting.ObjectFormatter;
+import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
 import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.mesakit.graph.traffic.project.KivaKitGraphTrafficLimits;
+import com.telenav.mesakit.graph.traffic.project.GraphTrafficLimits;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.LocationSequence;
-import com.telenav.mesakit.map.geography.rectangle.Bounded;
-import com.telenav.mesakit.map.geography.rectangle.BoundingBoxBuilder;
-import com.telenav.mesakit.map.geography.rectangle.Intersectable;
-import com.telenav.mesakit.map.geography.rectangle.Rectangle;
+import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
+import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
+import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.telenav.kivakit.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 /**
  * An arbitrary list of {@link RoadSectionIdentifier}s with a bounding rectangle. Note that the {@link RoadSection}s
@@ -77,7 +77,7 @@ public class RoadSectionRoute implements Bounded, Intersectable, LocationSequenc
         @Override
         protected String onConvertToString(final RoadSectionRoute route)
         {
-            final var list = new StringList(KivaKitGraphTrafficLimits.MAXIMUM_ROAD_SECTIONS_PER_ROUTE);
+            final var list = new StringList(GraphTrafficLimits.MAXIMUM_ROAD_SECTIONS_PER_ROUTE);
             final var converter = new RoadSectionCode.Converter(this);
             for (final var identifier : route.roadSectionIdentifiers())
             {
@@ -305,7 +305,7 @@ public class RoadSectionRoute implements Bounded, Intersectable, LocationSequenc
     @Override
     public Iterable<Location> locationSequence()
     {
-        return Iterables.of(() -> new Next<>()
+        return Iterables.iterable(() -> new Next<>()
         {
             final Iterator<RoadSection> sections = roadSections().iterator();
 
@@ -348,7 +348,7 @@ public class RoadSectionRoute implements Bounded, Intersectable, LocationSequenc
     public RoadSection midpoint()
     {
         // Compute half the length of this route
-        final var halfLength = length().scaledBy(0.5);
+        final var halfLength = length().times(0.5);
 
         // Loop through road sections
         var length = Distance.millimeters(0);
@@ -425,7 +425,7 @@ public class RoadSectionRoute implements Bounded, Intersectable, LocationSequenc
     public Iterable<RoadSection> roadSections()
     {
         final var outer = this;
-        return Iterables.of(() -> new Next<>()
+        return Iterables.iterable(() -> new Next<>()
         {
             private int index;
 

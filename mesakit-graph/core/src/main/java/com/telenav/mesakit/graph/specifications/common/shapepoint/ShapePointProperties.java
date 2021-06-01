@@ -33,7 +33,7 @@ public class ShapePointProperties extends GraphElementProperties<ShapePoint>
         return singleton.get();
     }
 
-    public abstract class ShapePointProperty extends com.telenav.kivakit.graph.specifications.library.properties.GraphElementProperty<ShapePoint>
+    public abstract class ShapePointProperty extends com.telenav.mesakit.graph.specifications.library.properties.GraphElementProperty<ShapePoint>
     {
         protected ShapePointProperty(final String name, final Attribute<?> attribute)
         {

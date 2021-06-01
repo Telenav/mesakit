@@ -118,7 +118,7 @@ public class WayIdentifierDictionary
                 while (reader.hasNext())
                 {
                     final var line = reader.next();
-                    final var tmcId = line.as(COLUMN_TMC_ID, tmcConverter).asIdentifier(false).value()
+                    final var tmcId = line.get(COLUMN_TMC_ID, tmcConverter).asIdentifier(false).value()
                             .asLong();
 
                     final var wayIds = line.get(COLUMN_WAY_IDS).split("\\|");

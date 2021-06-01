@@ -40,9 +40,11 @@ import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.compression.archive.FieldArchive;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
+import com.telenav.kivakit.resource.compression.archive.ZipEntry;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.kivakit.resource.path.FileName;
 import com.telenav.kivakit.serialization.core.SerializationSession;
+import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.collections.GraphList;
@@ -139,7 +141,7 @@ public class GraphArchive extends FieldArchive implements Named
             final var file = new File.Converter(this).convert(path);
             if (file != null)
             {
-                return new GraphArchive(file, reporter, ZipArchive.Mode.READ).load(this);
+                return new GraphArchive(file, ZipArchive.Mode.READ, reporter).load(this);
             }
             LOGGER.warning("Unable to load graph archive '$'", path);
             return null;
@@ -178,9 +180,9 @@ public class GraphArchive extends FieldArchive implements Named
         }
     }
 
-    public GraphArchive(final File file, final ProgressReporter reporter, final ZipArchive.Mode mode)
+    public GraphArchive(final File file, final ZipArchive.Mode mode, final ProgressReporter reporter)
     {
-        super(file, reporter, mode);
+        super(file, SerializationSessionFactory.threadLocal(), reporter, mode);
     }
 
     public Time lastModified()
@@ -218,7 +220,7 @@ public class GraphArchive extends FieldArchive implements Named
 
     public Metadata metadata()
     {
-        final VersionedObject<Metadata> metadata = zip().load(SerializationSession.threadSerializer(LOGGER), "metadata");
+        final VersionedObject<Metadata> metadata = zip().load(SerializationSession.threadLocal(LOGGER), "metadata");
         return metadata == null ? null : metadata.get();
     }
 
@@ -244,7 +246,7 @@ public class GraphArchive extends FieldArchive implements Named
     public void saveMetadata(final Metadata metadata)
     {
         metadata.assertValid(Validation.VALIDATE_ALL);
-        zip().save(SerializationSession.threadSerializer(LOGGER), "metadata", new VersionedObject<>(VERSION, metadata));
+        zip().save(SerializationSession.threadLocal(LOGGER), "metadata", new VersionedObject<>(VERSION, metadata));
     }
 
     @Override

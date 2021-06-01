@@ -230,7 +230,7 @@ public class VertexStore extends NodeStore<Vertex>
     public boolean contains(final VertexIdentifier identifier)
     {
         // The +1 is because there is no identifier 0
-        return identifier.asInteger() < size() + 1;
+        return identifier.asInt() < size() + 1;
     }
 
     public void freeTemporaryData()

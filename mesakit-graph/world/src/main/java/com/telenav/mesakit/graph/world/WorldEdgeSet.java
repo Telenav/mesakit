@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.graph.world;
 
+import com.telenav.kivakit.kernel.language.values.count.Estimate;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.world.grid.WorldCell;
 import com.telenav.mesakit.graph.world.identifiers.WorldEdgeIdentifier;
-import com.telenav.kivakit.kernel.scalars.counts.Estimate;
 
 /**
  * A set of edges within a world cell.

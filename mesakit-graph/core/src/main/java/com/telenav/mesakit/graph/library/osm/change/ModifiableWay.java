@@ -99,7 +99,7 @@ public class ModifiableWay extends MutableWay
         identifier = edge.wayIdentifier();
         shape = edge.wayAsRoute().polyline();
         tags = edge.tagList();
-        version = edge.pbfRevisionNumber().asInteger();
+        version = edge.pbfRevisionNumber().asInt();
         userIdentifier = edge.pbfUserIdentifier();
         userName = edge.pbfUserName();
         changeSetIdentifier = edge.pbfChangeSetIdentifier();
@@ -384,6 +384,6 @@ public class ModifiableWay extends MutableWay
 
     private OsmUser user()
     {
-        return new OsmUser(userIdentifier.asInteger(), userName.name());
+        return new OsmUser(userIdentifier.asInt(), userName.name());
     }
 }

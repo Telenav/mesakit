@@ -22,7 +22,7 @@ import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.language.iteration.Iterables;
 import com.telenav.kivakit.kernel.language.iteration.Next;
 import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.scalars.counts.MutableCount;
+import com.telenav.kivakit.kernel.language.values.count.MutableCount;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;
@@ -32,19 +32,17 @@ import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.collections.RelationSet;
 import com.telenav.mesakit.graph.collections.RouteList;
 import com.telenav.mesakit.graph.collections.VertexSequence;
-import com.telenav.mesakit.graph.project.GraphCoreLimits.Limit;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 import com.telenav.mesakit.graph.world.WorldEdge;
 import com.telenav.mesakit.graph.world.WorldRelation;
 import com.telenav.mesakit.graph.world.WorldVertex;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.rectangle.Rectangle;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.road.model.RoadFunctionalClass;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -107,7 +105,7 @@ public class WorldCellList extends ArrayList<WorldCell>
         WorldCell biggest = null;
         for (final var worldCell : this)
         {
-            if (biggest == null || worldCell.fileSize().isGreaterThan(biggest.fileSize()))
+            if (biggest == null || worldCell.fileSize().isLargerThan(biggest.fileSize()))
             {
                 biggest = worldCell;
             }

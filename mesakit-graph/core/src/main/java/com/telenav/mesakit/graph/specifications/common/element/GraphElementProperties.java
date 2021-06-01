@@ -20,9 +20,9 @@ package com.telenav.mesakit.graph.specifications.common.element;
 
 import com.telenav.kivakit.kernel.language.objects.Lazy;
 import com.telenav.mesakit.graph.GraphElement;
+import com.telenav.mesakit.graph.specifications.common.CommonDataSpecification;
 import com.telenav.mesakit.graph.specifications.library.attributes.Attribute;
 import com.telenav.mesakit.graph.specifications.library.properties.GraphElementPropertySet;
-import com.telenav.mesakit.graph.specifications.unidb.UniDbDataSpecification;
 
 @SuppressWarnings("rawtypes")
 public class GraphElementProperties<T extends GraphElement> extends GraphElementPropertySet<T>
@@ -38,7 +38,7 @@ public class GraphElementProperties<T extends GraphElement> extends GraphElement
     {
         protected GraphElementProperty(final String name, final Attribute<?> attribute)
         {
-            super(name, attribute, UniDbDataSpecification.get());
+            super(name, attribute, CommonDataSpecification.get());
             add(this);
         }
     }

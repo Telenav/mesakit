@@ -19,14 +19,14 @@
 package com.telenav.mesakit.graph.traffic.roadsection.codings.tmc;
 
 import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.testing.KivaKitUnitTest;
+import com.telenav.kivakit.test.UnitTest;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionCodingSystem;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 import org.junit.Test;
 
-public class TmcTableIdentifierTest extends KivaKitUnitTest
+public class TmcTableIdentifierTest extends UnitTest
 {
-    private static final TmcTableIdentifierExtractor extractor = new TmcTableIdentifierExtractor(Listener.NULL);
+    private static final TmcTableIdentifierExtractor extractor = new TmcTableIdentifierExtractor(Listener.none());
 
     @Test
     public void testCountryCode()
@@ -53,8 +53,6 @@ public class TmcTableIdentifierTest extends KivaKitUnitTest
         testFromTmcIdentifier(1426, "E26N43345");
 
         ensureNull(extractor.extract(RoadSectionIdentifier
-                .forCodingSystemAndIdentifier(RoadSectionCodingSystem.TELENAV_TRAFFIC_LOCATION, 45678, false)));
-        ensureNull(extractor.extract(RoadSectionIdentifier
                 .forCodingSystemAndIdentifier(RoadSectionCodingSystem.OSM_EDGE_IDENTIFIER, 45678, false)));
     }
 
@@ -78,6 +76,6 @@ public class TmcTableIdentifierTest extends KivaKitUnitTest
     {
         final TmcCode tmcCode = TmcCode.forCode(tmc);
         final RoadSectionIdentifier tmcIdentifier = tmcCode.asIdentifier(false);
-        ensureEqual(table, extractor.extract(tmcIdentifier).asInteger());
+        ensureEqual(table, extractor.extract(tmcIdentifier).asInt());
     }
 }

@@ -19,14 +19,14 @@
 package com.telenav.mesakit.graph.traffic;
 
 import com.telenav.kivakit.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.kernel.language.collections.map.NameMap;
-import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.kernel.language.collections.map.string.NameMap;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionCodingSystem;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.validation.Validate.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 public class MapData implements Named
 {
@@ -57,7 +57,6 @@ public class MapData implements Named
 
     static
     {
-        OSM.add(RoadSectionCodingSystem.TELENAV_TRAFFIC_LOCATION);
         OSM.add(RoadSectionCodingSystem.OSM_EDGE_IDENTIFIER);
     }
 

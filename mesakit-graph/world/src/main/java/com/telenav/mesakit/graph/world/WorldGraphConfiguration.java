@@ -19,15 +19,18 @@
 package com.telenav.mesakit.graph.world;
 
 import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
 import com.telenav.kivakit.kernel.language.reflection.populator.KivaKitPropertyConverter;
 import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
-import com.telenav.kivakit.kernel.language.string.formatting.ObjectFormatter;
-import com.telenav.kivakit.kernel.operation.progress.reporters.Progress;
-import com.telenav.mesakit.map.measurements.Angle;
+import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.resource.CopyMode;
 import com.telenav.kivakit.resource.path.FilePath;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.world.repository.WorldGraphRepository;
 import com.telenav.mesakit.graph.world.repository.WorldGraphRepositoryFolder;
+import com.telenav.mesakit.map.measurements.geographic.Angle;
 
 /**
  * The world graph configuration (loaded from the deployment configuration), specifying the cell size and local
@@ -84,10 +87,10 @@ public final class WorldGraphConfiguration
             final var progress = Progress.create(LOGGER, "bytes");
             final var remoteGraph = remoteRepository.folder(metadata);
             final var localGraph = localRepository.folder(metadata);
-            remoteGraph.copyTo(localGraph, progress);
+            remoteGraph.copyTo(localGraph, CopyMode.UPDATE, progress);
         }
 
-        return local.folder(FilePath.parse("/"), metadata);
+        return local.folder(FilePath.parseFilePath("/"), metadata);
     }
 
     public WorldGraphRepository materializedRepository()
@@ -101,7 +104,7 @@ public final class WorldGraphConfiguration
         {
             // copy any out-of-date files to the local repository
             final var progress = Progress.create(LOGGER, "bytes");
-            remote.copyTo(local, progress);
+            remote.copyTo(local, CopyMode.UPDATE, progress);
         }
 
         return local;

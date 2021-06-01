@@ -121,7 +121,7 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
 
             if (JavaVirtualMachine.isPropertyTrue("TDK_DEBUG_SAVE_RAW_GRAPH"))
             {
-                raw.save(new GraphArchive(GraphCore.get().userGraphFolder().file("raw.graph"), ProgressReporter.NULL, ZipArchive.Mode.WRITE));
+                raw.save(new GraphArchive(GraphCore.get().userGraphFolder().file("raw.graph"), ZipArchive.Mode.WRITE, ProgressReporter.NULL));
             }
 
             // and then section the raw graph by loading it into the destination graph

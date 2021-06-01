@@ -41,10 +41,10 @@ import com.telenav.kivakit.kernel.messaging.listeners.ThrowingListener;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;
+import com.telenav.mesakit.graph.identifiers.RelationIdentifier;
 import com.telenav.mesakit.graph.project.GraphCoreLimits.Limit;
 import com.telenav.mesakit.graph.specifications.common.relation.HeavyWeightRelation;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapRelationIdentifier;
-import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfRelationIdentifier;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
@@ -95,7 +95,7 @@ public class RelationSet implements Set<EdgeRelation>
         while (iterator.hasNext())
         {
             final var identifier = iterator.next();
-            relations.add(graph.relationForIdentifier(new PbfRelationIdentifier(identifier)));
+            relations.add(graph.relationForIdentifier(new RelationIdentifier(identifier)));
         }
         return relations;
     }

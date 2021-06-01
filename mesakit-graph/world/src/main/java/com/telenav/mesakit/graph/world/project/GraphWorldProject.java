@@ -18,39 +18,34 @@
 
 package com.telenav.mesakit.graph.world.project;
 
+import com.telenav.kivakit.kernel.KivaKit;
 import com.telenav.kivakit.kernel.language.collections.set.Sets;
-import com.telenav.kivakit.kernel.language.io.serialization.SerializationSession;
-import com.telenav.kivakit.kernel.language.object.Lazy;
-import com.telenav.kivakit.kernel.project.KivaKit;
-import com.telenav.kivakit.kernel.project.KivaKitProject;
-import com.telenav.kivakit.kernel.scalars.versioning.Version;
+import com.telenav.kivakit.kernel.language.objects.Lazy;
+import com.telenav.kivakit.kernel.language.values.version.Version;
+import com.telenav.kivakit.kernel.project.Project;
+import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.mesakit.graph.project.GraphCore;
 
 import java.util.Set;
 
-public class KivaKitGraphWorld extends KivaKitProject
+public class GraphWorldProject extends Project
 {
-    private static final Lazy<KivaKitGraphWorld> singleton = Lazy.of(KivaKitGraphWorld::new);
+    private static final Lazy<GraphWorldProject> singleton = Lazy.of(GraphWorldProject::new);
 
-    public static KivaKitGraphWorld get()
+    public static GraphWorldProject get()
     {
         return singleton.get();
     }
 
-    protected KivaKitGraphWorld()
+    protected GraphWorldProject()
     {
+        SerializationSessionFactory.threadLocal(new GraphWorldKryoTypes().sessionFactory());
     }
 
     @Override
-    public Set<KivaKitProject> dependencies()
+    public Set<Project> dependencies()
     {
         return Sets.of(GraphCore.get());
-    }
-
-    @Override
-    public SerializationSession newSerializer()
-    {
-        return new KivaKitGraphWorldKryoSerializer();
     }
 
     /**
@@ -60,6 +55,6 @@ public class KivaKitGraphWorld extends KivaKitProject
      */
     public Version worldGraphVersion()
     {
-        return KivaKit.version();
+        return KivaKit.get().kivakitVersion();
     }
 }

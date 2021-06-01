@@ -36,7 +36,6 @@ import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.navteq.NavteqRoadSectionCode;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.ngx.NgxRoadSectionCode;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.osm.PbfRoadSectionCode;
-import com.telenav.mesakit.graph.traffic.roadsection.codings.telenav.TelenavTrafficLocationCode;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.tmc.TmcCode;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.tomtom.TomTomRoadSectionCode;
 import com.telenav.mesakit.map.road.model.DeCartaRoadType;
@@ -308,9 +307,6 @@ public final class RoadSectionIdentifier
 
             case OSM_EDGE_IDENTIFIER:
                 return new PbfRoadSectionCode(value);
-
-            case TELENAV_TRAFFIC_LOCATION:
-                return new TelenavTrafficLocationCode(value);
 
             case NGX_WAY_IDENTIFIER:
                 return new NgxRoadSectionCode(value);

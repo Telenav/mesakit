@@ -144,12 +144,6 @@ public class RegionIdentity implements AsString, KryoSerializable
         name(name);
     }
 
-    @KivaKitIncludeProperty
-    public RegionCode mesakit()
-    {
-        return mesakit;
-    }
-
     @Override
     public String asString()
     {
@@ -286,11 +280,6 @@ public class RegionIdentity implements AsString, KryoSerializable
         return copy;
     }
 
-    public boolean hasMesaKitCode()
-    {
-        return mesakit() != null;
-    }
-
     public boolean hasIdentifier()
     {
         return identifier() != null;
@@ -299,6 +288,11 @@ public class RegionIdentity implements AsString, KryoSerializable
     public boolean hasIsoCode()
     {
         return iso() != null;
+    }
+
+    public boolean hasMesaKitCode()
+    {
+        return mesakit() != null;
     }
 
     @Override
@@ -401,6 +395,12 @@ public class RegionIdentity implements AsString, KryoSerializable
         return copy;
     }
 
+    @KivaKitIncludeProperty
+    public RegionCode mesakit()
+    {
+        return mesakit;
+    }
+
     public MetropolitanArea metropolitanArea()
     {
         return MetropolitanArea.forIdentity(this);
@@ -461,18 +461,6 @@ public class RegionIdentity implements AsString, KryoSerializable
         return identity;
     }
 
-    public RegionIdentity withMesaKitCode(final RegionCode code)
-    {
-        final var copy = new RegionIdentity(this);
-        copy.mesakit = code;
-        return copy;
-    }
-
-    public RegionIdentity withMesaKitCode(final String code)
-    {
-        return new RegionIdentity(this).mesakit(code);
-    }
-
     public RegionIdentity withCountryIsoCode(final CountryIsoCode code)
     {
         final var copy = new RegionIdentity(this);
@@ -514,6 +502,18 @@ public class RegionIdentity implements AsString, KryoSerializable
     public RegionIdentity withIsoCode(final String code)
     {
         return new RegionIdentity(this).iso(code);
+    }
+
+    public RegionIdentity withMesaKitCode(final RegionCode code)
+    {
+        final var copy = new RegionIdentity(this);
+        copy.mesakit = code;
+        return copy;
+    }
+
+    public RegionIdentity withMesaKitCode(final String code)
+    {
+        return new RegionIdentity(this).mesakit(code);
     }
 
     public RegionIdentity withName(final String name)
@@ -574,11 +574,11 @@ public class RegionIdentity implements AsString, KryoSerializable
     public void write(final Kryo kryo, final Output output)
     {
         kryo.writeObject(output, name());
-        kryo.writeObject(output, identifier().asInteger());
+        kryo.writeObject(output, identifier().asInt());
         kryo.writeObject(output, iso().code());
         kryo.writeObject(output, mesakit().code());
         kryo.writeObject(output, countryOrdinal());
-        kryo.writeObjectOrNull(output, countryTmcCode() == null ? null : countryTmcCode().asInteger(), Integer.class);
+        kryo.writeObjectOrNull(output, countryTmcCode() == null ? null : countryTmcCode().asInt(), Integer.class);
         kryo.writeObjectOrNull(output, countryIsoCode() == null ? null : countryIsoCode().alpha2Code(), String.class);
         kryo.writeObjectOrNull(output, countryIsoCode() == null ? null : countryIsoCode().alpha3Code(), String.class);
         kryo.writeObjectOrNull(output, countryIsoCode() == null ? null : countryIsoCode().numericCountryCode(), Integer.class);
@@ -594,17 +594,6 @@ public class RegionIdentity implements AsString, KryoSerializable
         if (!hasIsoCode())
         {
             iso(name);
-        }
-        return this;
-    }
-
-    private RegionIdentity mesakit(final String string)
-    {
-        assertNonNullAndNonEmpty(string);
-        final var code = RegionCode.parse(string);
-        if (code != null)
-        {
-            mesakit = code.aonized();
         }
         return this;
     }
@@ -633,6 +622,17 @@ public class RegionIdentity implements AsString, KryoSerializable
         if (code != null)
         {
             iso = code.isoized();
+        }
+        return this;
+    }
+
+    private RegionIdentity mesakit(final String string)
+    {
+        assertNonNullAndNonEmpty(string);
+        final var code = RegionCode.parse(string);
+        if (code != null)
+        {
+            mesakit = code.aonized();
         }
         return this;
     }

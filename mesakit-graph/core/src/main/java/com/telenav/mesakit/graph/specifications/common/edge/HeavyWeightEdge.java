@@ -34,7 +34,6 @@ import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.identifiers.VertexIdentifier;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
-import com.telenav.mesakit.graph.traffic.historical.SpeedPatternIdentifier;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
@@ -140,10 +139,6 @@ public class HeavyWeightEdge extends Edge
     private Speed speedLimit;
 
     private SpeedCategory freeFlow;
-
-    private SpeedPatternIdentifier reverseSpeedPatternIdentifier;
-
-    private SpeedPatternIdentifier speedPatternIdentifier;
 
     private State state;
 
@@ -276,12 +271,7 @@ public class HeavyWeightEdge extends Edge
         country(that.country());
         fromNodeIdentifier(that.fromNodeIdentifier());
         hovLaneCount(that.hovLaneCount());
-        if (that.isTwoWay())
-        {
-            reverseSpeedPatternIdentifier(that.reversed().speedPatternIdentifier());
-        }
         speedLimit(that.speedLimit());
-        speedPatternIdentifier(that.speedPatternIdentifier());
         surface(that.roadSurface());
         tollRoad(that.isTollRoad());
         toNodeIdentifier(that.toNodeIdentifier());
@@ -645,7 +635,6 @@ public class HeavyWeightEdge extends Edge
         rawIdentifier(new EdgeIdentifier(100));
         referenceSpeed(Speed.FIFTY_MILES_PER_HOUR);
         uniDbReverseReferenceSpeed(Speed.FIFTY_MILES_PER_HOUR);
-        reverseSpeedPatternIdentifier(new SpeedPatternIdentifier(19));
         roadFunctionalClass(RoadFunctionalClass.FIRST_CLASS);
         roadNames(RoadName.Type.OFFICIAL, ObjectList.objectList(Maximum._8, RoadName.forName("Shibo Boulevard")));
         roadShapeAndLength(testPolyline(), testPolyline().start(), testPolyline().end());
@@ -653,7 +642,6 @@ public class HeavyWeightEdge extends Edge
         roadSubType(RoadSubType.MAIN_ROAD);
         roadType(RoadType.HIGHWAY);
         speedLimit(Speed.HIGHWAY_SPEED);
-        speedPatternIdentifier(new SpeedPatternIdentifier(5));
         state(Country.UNITED_STATES.CALIFORNIA);
         surface(RoadSurface.PAVED);
         to(graph().newHeavyWeightVertex(new VertexIdentifier(5)));
@@ -683,19 +671,6 @@ public class HeavyWeightEdge extends Edge
         this.referenceSpeed = referenceSpeed;
     }
 
-    /**
-     * @return The speed pattern identifier in backward direction
-     */
-    public SpeedPatternIdentifier reverseSpeedPatternIdentifier()
-    {
-        return reverseSpeedPatternIdentifier;
-    }
-
-    public void reverseSpeedPatternIdentifier(final SpeedPatternIdentifier reversedSpeedPatternIdentifier)
-    {
-        reverseSpeedPatternIdentifier = reversedSpeedPatternIdentifier;
-    }
-
     public void reverseTmcIdentifiers(final Iterable<RoadSectionIdentifier> reverseTmcIdentifiers)
     {
         this.reverseTmcIdentifiers = reverseTmcIdentifiers;
@@ -714,8 +689,6 @@ public class HeavyWeightEdge extends Edge
         reversed.fromVertexClipped(isToVertexClipped());
         reversed.referenceSpeed(reverseReferenceSpeed);
         reversed.uniDbReverseReferenceSpeed(referenceSpeed);
-        reversed.speedPatternIdentifier(reverseSpeedPatternIdentifier);
-        reversed.reverseSpeedPatternIdentifier(speedPatternIdentifier);
         reversed.roadShape(roadShape().reversed());
         reversed.tmcIdentifiers(reverseTmcIdentifiers());
         reversed.reverseTmcIdentifiers(tmcIdentifiers());
@@ -839,20 +812,6 @@ public class HeavyWeightEdge extends Edge
     public void speedLimit(final Speed speedLimit)
     {
         this.speedLimit = Functions.apply(speedLimit, speed -> speed.minimum(Speed.kilometersPerHour(160)));
-    }
-
-    /**
-     * @return The speed pattern identifier in forward direction
-     */
-    @Override
-    public SpeedPatternIdentifier speedPatternIdentifier()
-    {
-        return speedPatternIdentifier;
-    }
-
-    public void speedPatternIdentifier(final SpeedPatternIdentifier speedPatternIdentifier)
-    {
-        this.speedPatternIdentifier = speedPatternIdentifier;
     }
 
     @Override

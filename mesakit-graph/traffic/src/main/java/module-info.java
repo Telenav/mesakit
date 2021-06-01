@@ -15,6 +15,5 @@ open module mesakit.graph.traffic
     exports com.telenav.mesakit.graph.traffic.roadsection.codings.tmc;
     exports com.telenav.mesakit.graph.traffic.roadsection.loaders.csv;
     exports com.telenav.mesakit.graph.traffic.project;
-    exports com.telenav.mesakit.graph.traffic.historical;
     exports com.telenav.mesakit.graph.traffic.extractors;
 }

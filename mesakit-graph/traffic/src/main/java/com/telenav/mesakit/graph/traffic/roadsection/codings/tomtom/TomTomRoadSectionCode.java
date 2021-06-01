@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.traffic.roadsection.codings.tomtom;
 
-import com.telenav.kivakit.kernel.conversion.collection.BaseListConverter;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.data.conversion.string.collection.BaseListConverter;
 import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionCode;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionCodingSystem;

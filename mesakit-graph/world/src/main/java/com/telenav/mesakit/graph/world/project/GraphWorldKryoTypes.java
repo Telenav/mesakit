@@ -18,30 +18,20 @@
 
 package com.telenav.mesakit.graph.world.project;
 
-import com.telenav.kivakit.kernel.language.io.serialization.kryo.KivaKitKryoSerializer;
-import com.telenav.kivakit.kernel.project.KivaKitKryoIdentifiers;
-import com.telenav.mesakit.graph.project.GraphCore;
-import com.telenav.mesakit.graph.traffic.project.KivaKitGraphTraffic;
+import com.telenav.kivakit.serialization.kryo.KryoTypes;
 import com.telenav.mesakit.graph.world.WorldGraphIndex;
 import com.telenav.mesakit.graph.world.WorldPlace;
 import com.telenav.mesakit.graph.world.grid.WorldCell;
 import com.telenav.mesakit.graph.world.grid.WorldGrid;
-import com.telenav.mesakit.map.utilities.grid.project.KivaKitMapUtilitiesGrid;
 
-public class KivaKitGraphWorldKryoSerializer extends KivaKitKryoSerializer
+public class GraphWorldKryoTypes extends KryoTypes
 {
-    public KivaKitGraphWorldKryoSerializer()
+    public GraphWorldKryoTypes()
     {
-        super(KivaKitKryoIdentifiers.TDK_GRAPH_WORLD);
-
         //----------------------------------------------------------------------------------------------
         // NOTE: To maintain backward compatibility, classes are assigned identifiers by KivaKitKryoSerializer.
         // If classes are appended to groups and no classes are removed, older data can always be read.
         //----------------------------------------------------------------------------------------------
-
-        registerAllFrom(GraphCore.get());
-        registerAllFrom(KivaKitGraphTraffic.get());
-        registerAllFrom(KivaKitMapUtilitiesGrid.get());
 
         group("world-graph-index", () -> register(WorldGraphIndex.class));
 

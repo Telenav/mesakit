@@ -68,7 +68,6 @@ import com.telenav.mesakit.graph.specifications.library.attributes.AttributeStor
 import com.telenav.mesakit.graph.specifications.library.properties.GraphElementPropertySet;
 import com.telenav.mesakit.graph.specifications.library.store.GraphStore;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
-import com.telenav.mesakit.graph.specifications.unidb.UniDbDataSpecification;
 import com.telenav.mesakit.map.data.formats.library.DataFormat;
 
 import java.util.HashSet;
@@ -96,12 +95,11 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupport
  * <p>
  * The abstract {@link CommonDataSpecification} specifies default graph, graph store and graph element implementations
  * which implement attributes that are common to both OSM and UniDb. Additional attributes and functionality are added
- * by the {@link OsmDataSpecification} and the {@link UniDbDataSpecification}.
+ * by the {@link OsmDataSpecification}.
  *
  * @author jonathanl (shibo)
  * @see CommonDataSpecification
  * @see OsmDataSpecification
- * @see UniDbDataSpecification
  * @see Metadata
  * @see DataSupplier
  * @see DataFormat

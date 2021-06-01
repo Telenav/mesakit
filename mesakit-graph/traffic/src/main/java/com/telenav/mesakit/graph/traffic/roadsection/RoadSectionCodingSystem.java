@@ -18,22 +18,19 @@
 
 package com.telenav.mesakit.graph.traffic.roadsection;
 
-import com.telenav.mesakit.graph.traffic.roadsection.codings.telenav.TelenavTrafficLocationCode;
-import com.telenav.mesakit.graph.traffic.roadsection.codings.tmc.TmcCode;
-import com.telenav.kivakit.kernel.conversion.string.StringConverter;
+import com.telenav.kivakit.kernel.data.conversion.string.StringConverter;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.mesakit.graph.traffic.roadsection.codings.tmc.TmcCode;
 
-import static com.telenav.kivakit.kernel.validation.Validate.ensure;
-import static com.telenav.kivakit.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 public enum RoadSectionCodingSystem
 {
     TMC("T:", 1),
-    TELENAV_TRAFFIC_LOCATION("L:", 2),
     TOMTOM_EDGE_IDENTIFIER("E:", 3),
-    OSM_EDGE_IDENTIFIER("O:",
-            4),
+    OSM_EDGE_IDENTIFIER("O:", 4),
     NAVTEQ_EDGE_IDENTIFIER("N:", 5),
     NGX_WAY_IDENTIFIER("X", 6);
 
@@ -65,9 +62,6 @@ public enum RoadSectionCodingSystem
 
                 case 'O':
                     return OSM_EDGE_IDENTIFIER;
-
-                case 'L':
-                    return TELENAV_TRAFFIC_LOCATION;
 
                 case 'N':
                     return NAVTEQ_EDGE_IDENTIFIER;
@@ -129,9 +123,6 @@ public enum RoadSectionCodingSystem
         {
             case TMC:
                 return new TmcCode.Converter(LOGGER);
-
-            case TELENAV_TRAFFIC_LOCATION:
-                return new TelenavTrafficLocationCode.Converter(LOGGER);
 
             default:
                 return fail("No converter for " + this);

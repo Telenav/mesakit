@@ -21,11 +21,11 @@ package com.telenav.mesakit.graph.world.project;
 import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import org.junit.BeforeClass;
 
-public class KivaKitGraphWorldUnitTest extends GraphCoreUnitTest
+public class GraphWorldUnitTest extends GraphCoreUnitTest
 {
     @BeforeClass
     public static void testSetup()
     {
-        KivaKitGraphWorld.get().install();
+        GraphWorldProject.get().initialize();
     }
 }

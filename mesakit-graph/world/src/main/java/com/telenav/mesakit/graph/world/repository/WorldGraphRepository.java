@@ -75,11 +75,12 @@ public class WorldGraphRepository extends Folder implements Serializable
         @Override
         protected WorldGraphRepository onConvertToObject(final String value)
         {
-            if ("none".equals(value))
+            if (value == null || "none".equals(value))
             {
                 return null;
             }
-            return new WorldGraphRepository(Folder.parse(value));
+            final var folder = Folder.parse(value);
+            return folder == null ? null : new WorldGraphRepository(folder);
         }
     }
 
@@ -155,7 +156,7 @@ public class WorldGraphRepository extends Folder implements Serializable
         }
         else
         {
-            return new WorldGraphRepositoryFolder(this, FilePath.of(name));
+            return new WorldGraphRepositoryFolder(this, FilePath.filePath(name));
         }
     }
 }

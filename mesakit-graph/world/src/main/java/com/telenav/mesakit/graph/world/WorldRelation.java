@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.graph.world;
 
+import com.telenav.kivakit.kernel.language.objects.Hash;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.EdgeRelationMember;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.identifiers.RelationIdentifier;
 import com.telenav.mesakit.graph.world.grid.WorldCell;
 import com.telenav.mesakit.graph.world.identifiers.WorldRelationIdentifier;
-import com.telenav.kivakit.kernel.language.object.Hash;
 
 import java.util.ArrayList;
 import java.util.List;

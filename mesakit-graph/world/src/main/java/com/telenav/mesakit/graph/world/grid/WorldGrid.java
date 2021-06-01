@@ -18,41 +18,44 @@
 
 package com.telenav.mesakit.graph.world.grid;
 
-import com.telenav.kivakit.collections.set.BoundedSet;
-import com.telenav.kivakit.configuration.ConfigurationStore;
-import com.telenav.kivakit.data.formats.pbf.processing.PbfDataSource;
-import com.telenav.kivakit.data.formats.pbf.processing.filters.osm.OsmNavigableWayFilter;
-import com.telenav.kivakit.kernel.debug.Debug;
-import com.telenav.kivakit.kernel.interfaces.object.Source;
-import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.language.string.Strings;
-import com.telenav.kivakit.kernel.language.values.Count;
-import com.telenav.kivakit.kernel.scalars.bytes.Bytes;
-import com.telenav.kivakit.kernel.time.Time;
+import com.telenav.kivakit.configuration.ConfigurationSet;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.kernel.interfaces.value.Source;
+import com.telenav.kivakit.kernel.language.collections.set.ObjectSet;
+import com.telenav.kivakit.kernel.language.objects.reference.virtual.VirtualReferenceTracker;
+import com.telenav.kivakit.kernel.language.objects.reference.virtual.VirtualReferenceType;
+import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.language.time.Time;
+import com.telenav.kivakit.kernel.language.values.count.Bytes;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.kivakit.resource.ResourceList;
 import com.telenav.kivakit.resource.path.Extension;
-import com.telenav.kivakit.utilities.reference.virtual.*;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.project.GraphCore;
-import com.telenav.mesakit.graph.traffic.historical.SpeedPatternResource;
 import com.telenav.mesakit.graph.world.WorldGraph;
-import com.telenav.mesakit.graph.world.WorldGraph.AccessMode;
 import com.telenav.mesakit.graph.world.WorldGraphConfiguration;
 import com.telenav.mesakit.graph.world.WorldGraphIndex;
-import com.telenav.mesakit.graph.world.grid.WorldCell.DataType;
 import com.telenav.mesakit.graph.world.repository.WorldGraphRepository;
 import com.telenav.mesakit.graph.world.repository.WorldGraphRepositoryFolder;
-import com.telenav.mesakit.graph.world.repository.WorldGraphRepositoryFolder.Check;
 import com.telenav.mesakit.map.cutter.PbfRegionCutter;
+import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataSource;
+import com.telenav.mesakit.map.data.formats.pbf.processing.filters.osm.OsmNavigableWayFilter;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.polyline.Polygon;
-import com.telenav.mesakit.map.geography.rectangle.Rectangle;
+import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionSet;
 import com.telenav.mesakit.map.region.RegionType;
+import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.utilities.geojson.GeoJsonDocument;
 import com.telenav.mesakit.map.utilities.geojson.GeoJsonFeature;
 import com.telenav.mesakit.map.utilities.geojson.GeoJsonPolyline;
@@ -65,7 +68,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import static com.telenav.kivakit.kernel.validation.Validate.*;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 /**
  * A grid of {@link WorldCell}s, each containing its own cell-{@link Graph}. The grid is stored in a {@link
@@ -77,7 +81,7 @@ import static com.telenav.kivakit.kernel.validation.Validate.*;
  * <ul>
  *     <li>{@link #worldGraph()} - The world graph that owns this grid</li>
  *     <li>{@link #name()} - The name of this grid from the repository folder</li>
- *     <li>{@link #mode()} - The {@link AccessMode} for this grid</li>
+ *     <li>{@link #mode()} - The {@link WorldGraph.AccessMode} for this grid</li>
  *     <li>{@link #metadata()} - Metadata describing the entire grid</li>
  *     <li>{@link #grid()} - The grid layout for this grid</li>
  * </ul>
@@ -143,13 +147,13 @@ public class WorldGrid
     private WorldCell[][] cells;
 
     /** The set of all world cells included */
-    private BoundedSet<WorldCell> included;
+    private ObjectSet<WorldCell> included;
 
     /** The world graph */
     private WorldGraph worldGraph;
 
     /** The grid mode */
-    private AccessMode mode;
+    private WorldGraph.AccessMode mode;
 
     /** Graph reference tracker for cells belonging to the grid */
     private VirtualReferenceTracker<Graph> tracker;
@@ -163,7 +167,8 @@ public class WorldGrid
     /** The index for this graph */
     private WorldGraphIndex index;
 
-    public WorldGrid(final WorldGraph worldGraph, final AccessMode mode, final WorldGraphRepositoryFolder folder)
+    public WorldGrid(final WorldGraph worldGraph, final WorldGraph.AccessMode mode,
+                     final WorldGraphRepositoryFolder folder)
     {
         assert mode != null;
         assert worldGraph != null;
@@ -191,7 +196,7 @@ public class WorldGrid
     /**
      * @return List of world cells in the given grid folder with the given data
      */
-    public WorldCellList cells(final WorldGraphRepositoryFolder repositoryFolder, final DataType data)
+    public WorldCellList cells(final WorldGraphRepositoryFolder repositoryFolder, final WorldCell.DataType data)
     {
         return cells(repositoryFolder, data, Rectangle.MAXIMUM);
     }
@@ -199,7 +204,7 @@ public class WorldGrid
     /**
      * @return List of world cells intersecting the given bounds in the given grid folder with the given data
      */
-    public WorldCellList cells(final WorldGraphRepositoryFolder repositoryFolder, final DataType data,
+    public WorldCellList cells(final WorldGraphRepositoryFolder repositoryFolder, final WorldCell.DataType data,
                                final Rectangle bounds)
     {
         final var cells = new WorldCellList();
@@ -221,27 +226,21 @@ public class WorldGrid
      * @param repositoryFolder The folder to extract to
      * @return The number of cells for which graph data was successfully extracted
      */
-    public Count extract(final WorldGraphRepositoryFolder repositoryFolder, final Source<PbfDataSource> data,
-                         final File speedPattern)
+    public Count extract(final WorldGraphRepositoryFolder repositoryFolder, final Source<PbfDataSource> data)
     {
         // Start time
         final var start = Time.now();
 
         // Clear our data folder before writing to it
-        LOGGER.information(Strings.textBox("Extracting", "input: $\noutput: $", data.get().resource(), repositoryFolder));
-        repositoryFolder.clear();
+        LOGGER.information(AsciiArt.textBox("Extracting", "input: $\noutput: $", data.get().resource(), repositoryFolder));
+        repositoryFolder.clearAll();
 
         // Extract regions from PBF file
         final var extracted = extractCells(data, repositoryFolder);
         if (extracted != null)
         {
-            if (speedPattern != null)
-            {
-                duplicateSpeedPattern(extracted, speedPattern, repositoryFolder);
-            }
-
             refreshCellData(repositoryFolder);
-            LOGGER.information(Strings.box("Extracted $ cells to $ in $", extracted.count(), repositoryFolder, start.elapsedSince()));
+            LOGGER.information(AsciiArt.box("Extracted $ cells to $ in $", extracted.count(), repositoryFolder, start.elapsedSince()));
             return extracted.count();
         }
         return Count._0;
@@ -255,7 +254,7 @@ public class WorldGrid
     /**
      * @return The world cells included in the current set of regions
      */
-    public BoundedSet<WorldCell> included()
+    public ObjectSet<WorldCell> included()
     {
         return included;
     }
@@ -299,7 +298,7 @@ public class WorldGrid
         return metadata;
     }
 
-    public AccessMode mode()
+    public WorldGraph.AccessMode mode()
     {
         return mode;
     }
@@ -326,11 +325,11 @@ public class WorldGrid
         for (final var worldCell : included())
         {
             final var feature = new GeoJsonFeature(worldCell.toString());
-            feature.title(worldCell.identity().tdk().code());
+            feature.title(worldCell.identity().mesakit().code());
             feature.add(new GeoJsonPolyline(worldCell.bounds().asPolyline()));
             output.add(feature);
         }
-        output.save(new File("data/world-graph-2-degree-cells.geojson"));
+        output.save(File.parse("data/world-graph-2-degree-cells.geojson"));
     }
 
     /**
@@ -422,18 +421,18 @@ public class WorldGrid
      */
     private WorldCellList cellsNear(final WorldGraphRepositoryFolder repositoryFolder, final Location location)
     {
-        return cells(repositoryFolder, DataType.GRAPH, location.bounds().expanded(Distance.meters(1)));
+        return cells(repositoryFolder, WorldCell.DataType.GRAPH, location.bounds().expanded(Distance.meters(1)));
     }
 
     private WorldGraphConfiguration configuration()
     {
-        return ConfigurationStore.global().require(WorldGraphConfiguration.class);
+        return ConfigurationSet.global().require(WorldGraphConfiguration.class);
     }
 
     private void createGrid()
     {
         // Create grid object
-        grid = new Grid(configuration().cellSize(), Latitude.OSM_MAXIMUM);
+        grid = new Grid(configuration().cellSize(), Latitude.MAXIMUM);
 
         // Create 2D array of cells
         final var latitudeCells = grid.latitudeCellCount().asInt();
@@ -442,21 +441,6 @@ public class WorldGrid
 
         // Get set of cells that are geographically included
         included = findIncludedCells();
-    }
-
-    private void duplicateSpeedPattern(final ResourceList cells, final File speedPattern,
-                                       final WorldGraphRepositoryFolder repositoryFolder)
-    {
-        ensure(speedPattern.exists());
-
-        for (final var resource : cells)
-        {
-            if (resource.fileName().endsWith(Extension.OSM_PBF))
-            {
-                speedPattern.copyTo(repositoryFolder.file(resource.baseName().withExtension(SpeedPatternResource.EXTENSION)),
-                        ProgressReporter.NULL);
-            }
-        }
     }
 
     /**
@@ -478,21 +462,21 @@ public class WorldGrid
 
         // Configure extractor and extract
         cutter.regionsToExtract(new RegionSet(included()));
-        return cutter.extract();
+        return cutter.cut();
     }
 
     /**
      * @return A set of cells that are included by the {@link #includedRegions()}
      */
-    private BoundedSet<WorldCell> findIncludedCells()
+    private ObjectSet<WorldCell> findIncludedCells()
     {
         // Go through cells in included regions
-        final var included = new BoundedSet<WorldCell>(Count._10_000);
+        final var included = new ObjectSet<WorldCell>(Maximum._10_000);
         for (final var region : includedRegions())
         {
             final var cached = regionCache().file(region.fileName()
                     .withSuffix("-" + Math.round(grid.approximateCellSize().asDegrees()) + "-degree-grid")
-                    .withExtension(new Extension(".cells")));
+                    .withExtension(Extension.parse(".cells")));
             if (cached.exists())
             {
                 final var cellNames = cached.reader().string();
@@ -557,7 +541,7 @@ public class WorldGrid
         return regions;
     }
 
-    private void initialize(final AccessMode mode, final WorldGraphRepositoryFolder folder)
+    private void initialize(final WorldGraph.AccessMode mode, final WorldGraphRepositoryFolder folder)
     {
         // Save the grid mode
         this.mode = mode;
@@ -567,7 +551,7 @@ public class WorldGrid
             case READ:
             {
                 ensureNotNull(folder, "Required repository folder is missing");
-                folder.ensure(Check.EXISTS);
+                folder.ensure(WorldGraphRepositoryFolder.Check.EXISTS);
 
                 repositoryFolder = folder;
                 metadata = index().metadata();
@@ -592,11 +576,11 @@ public class WorldGrid
         repositoryFolder().mkdirs();
 
         // If we're reading data,
-        if (this.mode == AccessMode.READ)
+        if (this.mode == WorldGraph.AccessMode.READ)
         {
             // refresh cell data
             refreshCellData(repositoryFolder());
-            DEBUG.trace("Cells with graphs: $", cells(repositoryFolder(), DataType.GRAPH));
+            DEBUG.trace("Cells with graphs: $", cells(repositoryFolder(), WorldCell.DataType.GRAPH));
         }
     }
 
@@ -606,14 +590,14 @@ public class WorldGrid
     private void refreshCellData(final WorldGraphRepositoryFolder repositoryFolder)
     {
         // Update status of PBF files
-        final var pbfs = repositoryFolder.files(Extension.OSM_PBF).asSet();
+        final var pbfs = repositoryFolder.files(Extension.OSM_PBF.fileMatcher()).asSet();
         for (final var worldCell : included)
         {
             worldCell.hasPbf(repositoryFolder, pbfs.contains(worldCell.pbfFile(repositoryFolder)));
         }
 
         // Update status and size of graph files
-        final var graphs = repositoryFolder.files(Extension.GRAPH).asSet();
+        final var graphs = repositoryFolder.files(Extension.GRAPH.fileMatcher()).asSet();
         for (final var worldCell : included)
         {
             final var graphFile = worldCell.cellGraphFile(repositoryFolder);
@@ -622,7 +606,7 @@ public class WorldGrid
             {
                 if (file.equals(graphFile))
                 {
-                    worldCell.fileSize(file.size());
+                    worldCell.fileSize(file.bytes());
                 }
             }
         }

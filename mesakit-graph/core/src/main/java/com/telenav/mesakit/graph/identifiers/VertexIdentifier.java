@@ -98,6 +98,6 @@ public class VertexIdentifier extends IntegerIdentifier implements GraphElementI
      */
     public VertexIdentifier next()
     {
-        return new VertexIdentifier(asInteger() + 1);
+        return new VertexIdentifier(asInt() + 1);
     }
 }

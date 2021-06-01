@@ -204,7 +204,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         switch (format)
         {
             case Graph:
-                try (final var archive = new GraphArchive(input, ProgressReporter.NULL, ZipArchive.Mode.READ))
+                try (final var archive = new GraphArchive(input, ZipArchive.Mode.READ, ProgressReporter.NULL))
                 {
                     return archive.metadata();
                 }

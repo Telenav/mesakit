@@ -27,12 +27,12 @@ import com.telenav.kivakit.navigation.routing.dijkstra.DijkstraRouter;
 import com.telenav.kivakit.navigation.routing.dijkstra.DijkstraRoutingRequest;
 import com.telenav.kivakit.navigation.routing.limiters.CpuTimeRoutingLimiter;
 import com.telenav.kivakit.utilities.time.PreciseDuration;
-import com.telenav.mesakit.graph.world.project.KivaKitGraphWorldUnitTest;
+import com.telenav.mesakit.graph.world.project.GraphWorldUnitTest;
 import org.junit.Ignore;
 import org.junit.Test;
 
 @Ignore
-public class WorldGraphRoutingTest extends KivaKitGraphWorldUnitTest
+public class WorldGraphRoutingTest extends GraphWorldUnitTest
 {
     private static final boolean SWING_DEBUG = false;
 

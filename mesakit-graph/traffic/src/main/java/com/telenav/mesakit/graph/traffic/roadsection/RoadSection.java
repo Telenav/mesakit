@@ -29,6 +29,7 @@ import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
 import com.telenav.kivakit.kernel.language.objects.Hash;
 import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
 import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.kernel.language.time.conversion.converters.ZoneIdConverter;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.mesakit.graph.traffic.project.GraphTrafficLimits;
@@ -42,7 +43,6 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.motion.Speed;
 import com.telenav.mesakit.map.region.regions.City;
-import com.telenav.mesakit.map.region.regions.TimeZone;
 import com.telenav.mesakit.map.road.model.BetweenCrossRoads;
 import com.telenav.mesakit.map.road.model.DeCartaRoadType;
 import com.telenav.mesakit.map.road.model.RoadName;
@@ -88,12 +88,26 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
 
     private static final CsvColumn<RoadName> SECOND_CROSS_STREET_COLUMN = CsvColumn.of("secondCrossStreet");
 
-    private static final CsvColumn<TimeZone> TIME_ZONE_COLUMN = CsvColumn.of("timeZone");
+    private static final CsvColumn<ZoneId> TIME_ZONE_COLUMN = CsvColumn.of("timeZone");
 
-    public static final CsvSchema CSV_SCHEMA = CsvSchema.of(IDENTIFIER_COLUMN, UPSTREAM_COLUMN, DOWNSTREAM_COLUMN,
-            START_LATITUDE_COLUMN, START_LONGITUDE_COLUMN, END_LATITUDE_COLUMN, END_LONGITUDE_COLUMN, LENGTH_COLUMN,
-            FREE_FLOW_COLUMN, PARENT_IDENTIFIER, CITY_COLUMN, MAIN_ROAD_COLUMN, FIRST_CROSS_STREET_COLUMN,
-            SECOND_CROSS_STREET_COLUMN, TIME_ZONE_COLUMN);
+    public static final CsvSchema CSV_SCHEMA = CsvSchema.of
+            (
+                    IDENTIFIER_COLUMN,
+                    UPSTREAM_COLUMN,
+                    DOWNSTREAM_COLUMN,
+                    START_LATITUDE_COLUMN,
+                    START_LONGITUDE_COLUMN,
+                    END_LATITUDE_COLUMN,
+                    END_LONGITUDE_COLUMN,
+                    LENGTH_COLUMN,
+                    FREE_FLOW_COLUMN,
+                    PARENT_IDENTIFIER,
+                    CITY_COLUMN,
+                    MAIN_ROAD_COLUMN,
+                    FIRST_CROSS_STREET_COLUMN,
+                    SECOND_CROSS_STREET_COLUMN,
+                    TIME_ZONE_COLUMN
+            );
 
     public static class Minimal implements Source<RoadSection>
     {
@@ -178,25 +192,25 @@ public class RoadSection implements Bounded, Intersectable, LocationSequence, So
         streetNameConverter.allowEmpty(true);
         streetNameConverter.allowNull(true);
 
-        final var identifier = line.as(IDENTIFIER_COLUMN, roadSectionConverter);
-        final var previous = line.as(UPSTREAM_COLUMN, roadSectionListConverter);
-        final var next = line.as(DOWNSTREAM_COLUMN, roadSectionListConverter);
-        final var startLatitude = line.as(START_LATITUDE_COLUMN, new Latitude.DegreesConverter(listener));
-        final var startLongitude = line.as(START_LONGITUDE_COLUMN, new Longitude.DegreesConverter(listener));
-        final var endLatitude = line.as(END_LATITUDE_COLUMN, new Latitude.DegreesConverter(listener));
-        final var endLongitude = line.as(END_LONGITUDE_COLUMN, new Longitude.DegreesConverter(listener));
-        final var length = line.as(LENGTH_COLUMN, new Distance.MetersConverter(listener));
-        final var freeFlow = line.as(FREE_FLOW_COLUMN, new Speed.MilesPerHourConverter(listener));
-        final var parent = line.as(PARENT_IDENTIFIER, roadSectionConverter);
-        final var city = line.as(CITY_COLUMN, cityConverter);
-        final var mainRoad = line.as(MAIN_ROAD_COLUMN, streetNameConverter);
-        final var firstCrossStreet = line.as(FIRST_CROSS_STREET_COLUMN, streetNameConverter);
-        final var secondCrossStreet = line.as(SECOND_CROSS_STREET_COLUMN, streetNameConverter);
+        final var identifier = line.get(IDENTIFIER_COLUMN, roadSectionConverter);
+        final var previous = line.get(UPSTREAM_COLUMN, roadSectionListConverter);
+        final var next = line.get(DOWNSTREAM_COLUMN, roadSectionListConverter);
+        final var startLatitude = line.get(START_LATITUDE_COLUMN, new Latitude.DegreesConverter(listener));
+        final var startLongitude = line.get(START_LONGITUDE_COLUMN, new Longitude.DegreesConverter(listener));
+        final var endLatitude = line.get(END_LATITUDE_COLUMN, new Latitude.DegreesConverter(listener));
+        final var endLongitude = line.get(END_LONGITUDE_COLUMN, new Longitude.DegreesConverter(listener));
+        final var length = line.get(LENGTH_COLUMN, new Distance.MetersConverter(listener));
+        final var freeFlow = line.get(FREE_FLOW_COLUMN, new Speed.MilesPerHourConverter(listener));
+        final var parent = line.get(PARENT_IDENTIFIER, roadSectionConverter);
+        final var city = line.get(CITY_COLUMN, cityConverter);
+        final var mainRoad = line.get(MAIN_ROAD_COLUMN, streetNameConverter);
+        final var firstCrossStreet = line.get(FIRST_CROSS_STREET_COLUMN, streetNameConverter);
+        final var secondCrossStreet = line.get(SECOND_CROSS_STREET_COLUMN, streetNameConverter);
         // Timezone is an optional column for now to support older CSV files
         timeZone = null;
         if (line.get(TIME_ZONE_COLUMN) != null)
         {
-            timeZone = line.as(TIME_ZONE_COLUMN, new ZoneIdConverter(listener));
+            timeZone = line.get(TIME_ZONE_COLUMN, new ZoneIdConverter(listener));
         }
 
         identifier(identifier);

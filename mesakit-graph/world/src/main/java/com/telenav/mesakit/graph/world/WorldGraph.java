@@ -18,23 +18,21 @@
 
 package com.telenav.mesakit.graph.world;
 
+import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.configuration.Deployment;
-import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfWayIdentifier;
-import com.telenav.kivakit.kernel.commandline.SwitchParser;
 import com.telenav.kivakit.kernel.interfaces.code.Callback;
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.matching.All;
-import com.telenav.kivakit.kernel.language.thread.Threads;
-import com.telenav.kivakit.kernel.operation.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.scalars.bytes.Bytes;
-import com.telenav.kivakit.kernel.scalars.counts.*;
-import com.telenav.kivakit.kernel.scalars.versioning.Version;
-import com.telenav.kivakit.kernel.time.Duration;
-import com.telenav.kivakit.map.geography.*;
-import com.telenav.kivakit.map.geography.rectangle.Rectangle;
-import com.telenav.kivakit.map.measurements.Distance;
-import com.telenav.kivakit.map.region.Region;
-import com.telenav.kivakit.map.road.model.RoadFunctionalClass;
+import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
+import com.telenav.kivakit.kernel.language.threading.Threads;
+import com.telenav.kivakit.kernel.language.time.Duration;
+import com.telenav.kivakit.kernel.language.values.count.Bytes;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.language.values.version.Version;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.filters.operators.All;
+import com.telenav.kivakit.resource.CopyMode;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
@@ -57,7 +55,6 @@ import com.telenav.mesakit.graph.specifications.library.attributes.AttributeSet;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.tmc.TmcTableIdentifier;
 import com.telenav.mesakit.graph.world.grid.WorldCell;
-import com.telenav.mesakit.graph.world.grid.WorldCell.DataType;
 import com.telenav.mesakit.graph.world.grid.WorldCellList;
 import com.telenav.mesakit.graph.world.grid.WorldGrid;
 import com.telenav.mesakit.graph.world.identifiers.WorldEdgeIdentifier;
@@ -65,11 +62,18 @@ import com.telenav.mesakit.graph.world.identifiers.WorldPlaceIdentifier;
 import com.telenav.mesakit.graph.world.identifiers.WorldRelationIdentifier;
 import com.telenav.mesakit.graph.world.identifiers.WorldVertexIdentifier;
 import com.telenav.mesakit.graph.world.repository.WorldGraphRepositoryFolder;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
+import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.Precision;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
+import com.telenav.mesakit.map.region.Region;
+import com.telenav.mesakit.map.road.model.RoadFunctionalClass;
 
 import java.util.Set;
 
-import static com.telenav.kivakit.graph.Metadata.CountType.REQUIRE_EXACT;
-import static com.telenav.kivakit.kernel.validation.Validate.*;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.mesakit.graph.Metadata.CountType.REQUIRE_EXACT;
 
 /**
  * A virtual graph composed of many smaller sub-graphs arranged in {@link WorldCell}s of a {@link WorldGrid}. The
@@ -134,7 +138,7 @@ public class WorldGraph extends Graph
         if (remote != null)
         {
             final var progress = Progress.create(LOGGER, "bytes");
-            remote.copyTo(local, progress);
+            remote.copyTo(local, CopyMode.OVERWRITE, progress);
         }
 
         final var index = WorldGraphIndex.load(local.indexFile());

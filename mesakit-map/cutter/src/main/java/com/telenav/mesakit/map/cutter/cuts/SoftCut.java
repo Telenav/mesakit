@@ -18,6 +18,15 @@
 
 package com.telenav.mesakit.map.cutter.cuts;
 
+import com.telenav.kivakit.collections.map.MultiMap;
+import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.values.count.Bytes;
+import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.cutter.Cut;
 import com.telenav.mesakit.map.cutter.PbfRegionCutter;
 import com.telenav.mesakit.map.cutter.cuts.maps.RegionNodes;
@@ -28,15 +37,6 @@ import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor;
 import com.telenav.mesakit.map.region.Region;
-import com.telenav.kivakit.collections.map.MultiMap;
-import com.telenav.kivakit.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.resource.Resource;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 import org.openstreetmap.osmosis.core.domain.v0_6.EntityType;
 
 import java.util.Collection;
@@ -249,7 +249,7 @@ public class SoftCut extends Cut
                         // go through each region that the way belongs to
                         for (final var region : waysBelongingToRegion().regions(member.getMemberId()))
                         {
-                            final var key = region.identifier().asInteger() + "-" + relation.identifierAsLong();
+                            final var key = region.identifier().asInt() + "-" + relation.identifierAsLong();
                             if (!written.contains(key))
                             {
                                 written.add(key);

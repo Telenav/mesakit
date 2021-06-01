@@ -18,17 +18,17 @@
 
 package com.telenav.mesakit.graph.traffic;
 
-import com.telenav.kivakit.kernel.testing.SlowTests;
-import com.telenav.mesakit.graph.traffic.project.KivaKitGraphTrafficUnitTest;
+import com.telenav.kivakit.test.annotations.SlowTests;
+import com.telenav.mesakit.graph.traffic.project.GraphTrafficUnitTest;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSection;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.mesakit.map.measurements.Speed;
+import com.telenav.mesakit.map.measurements.motion.Speed;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 @Category({ SlowTests.class })
-public class RoadSectionTest extends KivaKitGraphTrafficUnitTest
+public class RoadSectionTest extends GraphTrafficUnitTest
 {
     public RoadSectionTest()
     {
@@ -76,12 +76,12 @@ public class RoadSectionTest extends KivaKitGraphTrafficUnitTest
 
         // Create a rectangle the contains the start, but not the end.
         var rectangle = Rectangle.fromLocations(roadSection.start(), roadSection.start())
-                .expanded(roadSection.start().distanceTo(roadSection.end()).scaledBy(.5));
+                .expanded(roadSection.start().distanceTo(roadSection.end()).times(.5));
         ensure(roadSection.intersects(rectangle));
 
         // Create a rectangle the contains the end, but not the start.
         rectangle = Rectangle.fromLocations(roadSection.end(), roadSection.end())
-                .expanded(roadSection.start().distanceTo(roadSection.end()).scaledBy(.5));
+                .expanded(roadSection.start().distanceTo(roadSection.end()).times(.5));
         ensure(roadSection.intersects(rectangle));
     }
 }

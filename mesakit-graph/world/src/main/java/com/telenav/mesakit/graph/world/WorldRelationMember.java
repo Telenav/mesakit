@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.data.formats.library.map.identifiers.MapIdentifier;
-import com.telenav.kivakit.data.formats.library.map.identifiers.PbfWayIdentifier;
-import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 import com.telenav.mesakit.graph.EdgeRelationMember;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.world.grid.WorldCell;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 
-import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 /**
  * A relation member in a {@link WorldGraph}. Overrides {@link #route()} and {@link #vertex()} to provide ways (routes)

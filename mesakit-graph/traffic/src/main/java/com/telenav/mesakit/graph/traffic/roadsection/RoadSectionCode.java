@@ -24,15 +24,16 @@ import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.navteq.NavteqRoadSectionCode;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.ngx.NgxRoadSectionCode;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.osm.PbfRoadSectionCode;
-import com.telenav.mesakit.graph.traffic.roadsection.codings.telenav.TelenavTrafficLocationCode;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.tmc.TmcCode;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.tomtom.TomTomRoadSectionCode;
 
 import java.util.Objects;
 
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+
 /**
- * Abstraction that indicates a section of roadway in some coding system. Subclasses include {@link TmcCode}, {@link
- * TelenavTrafficLocationCode}, {@link TomTomRoadSectionCode}, and {@link PbfRoadSectionCode}
+ * Abstraction that indicates a section of roadway in some coding system. Subclasses include {@link TmcCode},  {@link
+ * TomTomRoadSectionCode}, and {@link PbfRoadSectionCode}
  *
  * @author jonathanl (shibo)
  */
@@ -66,9 +67,6 @@ public abstract class RoadSectionCode
 
                     case NAVTEQ_EDGE_IDENTIFIER:
                         return new NavteqRoadSectionCode(Long.parseLong(code));
-
-                    case TELENAV_TRAFFIC_LOCATION:
-                        return new TelenavTrafficLocationCode(Long.parseLong(code));
 
                     case NGX_WAY_IDENTIFIER:
                         return new NgxRoadSectionCode(Long.parseLong(code));

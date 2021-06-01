@@ -37,6 +37,6 @@ public class RegionIdentifier extends IntegerIdentifier
 
     public RegionIdentifier next()
     {
-        return new RegionIdentifier(asInteger() + 1);
+        return new RegionIdentifier(asInt() + 1);
     }
 }

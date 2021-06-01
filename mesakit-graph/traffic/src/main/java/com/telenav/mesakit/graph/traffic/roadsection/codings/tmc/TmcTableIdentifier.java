@@ -18,10 +18,11 @@
 
 package com.telenav.mesakit.graph.traffic.roadsection.codings.tmc;
 
+import com.telenav.kivakit.kernel.language.values.identifier.IntegerIdentifier;
+import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
-import org.intellij.lang.annotations.Identifier;
 
-public class TmcTableIdentifier extends Identifier
+public class TmcTableIdentifier extends IntegerIdentifier
 {
     private static final Logger LOGGER = com.telenav.kivakit.kernel.logging.LoggerFactory.newLogger();
 
@@ -45,11 +46,11 @@ public class TmcTableIdentifier extends Identifier
 
     public int countryCode()
     {
-        return asInteger() / TABLE_MASK;
+        return asInt() / TABLE_MASK;
     }
 
     public int tableNumber()
     {
-        return asInteger() % TABLE_MASK;
+        return asInt() % TABLE_MASK;
     }
 }

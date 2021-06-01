@@ -94,7 +94,7 @@ public class PbfFile extends BaseRepeater implements Named
             {
                 // save to disk,
                 reporter.phase("Writing");
-                try (final var archive = new GraphArchive(output, reporter, WRITE))
+                try (final var archive = new GraphArchive(output, WRITE, reporter))
                 {
                     graph.save(archive);
                 }
@@ -102,7 +102,7 @@ public class PbfFile extends BaseRepeater implements Named
 
                 // then reload it
                 reporter.phase("Loading");
-                @SuppressWarnings("resource") final var archive = new GraphArchive(output, reporter, READ);
+                @SuppressWarnings("resource") final var archive = new GraphArchive(output, READ, reporter);
                 return archive.load(this);
             }
             else

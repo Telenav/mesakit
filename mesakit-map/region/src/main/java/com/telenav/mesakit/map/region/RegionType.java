@@ -111,7 +111,7 @@ public class RegionType<T extends Region<T>>
         final var region = (T) uncheckedRegion;
 
         // Assign the next identifier to the region
-        if (nextIdentifier.asInteger() < size() && forRegionIdentifier.get(nextIdentifier) != null)
+        if (nextIdentifier.asInt() < size() && forRegionIdentifier.get(nextIdentifier) != null)
         {
             throw new IllegalArgumentException("Identifier " + nextIdentifier + " has already been used by "
                     + forRegionIdentifier.get(nextIdentifier));
@@ -275,7 +275,7 @@ public class RegionType<T extends Region<T>>
     public RegionType<T> withMinimumIdentifier(final RegionIdentifier minimumIdentifier)
     {
         // Set next identifier to the minimum
-        nextIdentifier = new RegionIdentifier(minimumIdentifier.asInteger());
+        nextIdentifier = new RegionIdentifier(minimumIdentifier.asInt());
 
         final var copy = new RegionType<>(this);
         copy.minimumIdentifier = minimumIdentifier;

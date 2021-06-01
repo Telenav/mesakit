@@ -56,7 +56,6 @@ public class EdgeDifferences extends Differences
         differences.compare("roadShape", a.roadShape(), b.roadShape());
         differences.compare("roadSubType", a.roadSubType(), b.roadSubType());
         differences.compare("roadType", a.roadType(), b.roadType());
-        differences.compare("routeType", a.uniDbRouteType(), b.uniDbRouteType());
         differences.compare("to", a.to().location(), b.to().location());
         differences.compare("type", a.type(), b.type());
         differences.compare("tmcIdentifiers", a.tmcIdentifiers(), b.tmcIdentifiers());

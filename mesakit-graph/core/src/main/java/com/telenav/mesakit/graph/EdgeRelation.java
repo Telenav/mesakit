@@ -40,10 +40,8 @@ import com.telenav.mesakit.graph.specifications.common.relation.RelationAttribut
 import com.telenav.mesakit.graph.specifications.common.relation.store.RelationStore;
 import com.telenav.mesakit.graph.specifications.library.properties.GraphElementPropertySet;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
-import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapRelationIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfIdentifierType;
-import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfRelationIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
@@ -300,7 +298,7 @@ public class EdgeRelation extends GraphElement implements Bounded
         @Override
         protected EdgeRelation onConvertToObject(final String value)
         {
-            final var identifier = new PbfRelationIdentifier(Long.parseLong(value));
+            final var identifier = new RelationIdentifier(Long.parseLong(value));
             if (graph.contains(identifier))
             {
                 return graph.relationForIdentifier(identifier);
@@ -415,12 +413,6 @@ public class EdgeRelation extends GraphElement implements Bounded
         if (graph().isOsm())
         {
             return isTurnRestriction(allTurnRestrictions) ? Type.TURN_RESTRICTION : Type.ROUTE;
-        }
-        if (graph().isUniDb())
-        {
-            final var type = EdgeRelation.Type.forName(tagValue("type"));
-            tagList().removeKey("type");
-            return type;
         }
         return unsupported();
     }
@@ -585,7 +577,7 @@ public class EdgeRelation extends GraphElement implements Bounded
     @Override
     public MapIdentifier mapIdentifier()
     {
-        return new MapRelationIdentifier(identifier().asLong());
+        return new RelationIdentifier(identifier().asLong());
     }
 
     public EdgeRelationMember memberInRole(final String role)
@@ -699,9 +691,9 @@ public class EdgeRelation extends GraphElement implements Bounded
     private CommonEntityData commonEntityData()
     {
         return new CommonEntityData(identifierAsLong(),
-                pbfRevisionNumber().asInteger(),
+                pbfRevisionNumber().asInt(),
                 new Timestamp(lastModificationTime().asMilliseconds()),
-                new OsmUser(pbfUserIdentifier().asInteger(), pbfUserName().name()),
+                new OsmUser(pbfUserIdentifier().asInt(), pbfUserName().name()),
                 pbfChangeSetIdentifier().asLong(),
                 tagList().asList());
     }

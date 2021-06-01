@@ -104,6 +104,7 @@ import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapRelationIdentifier;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapWayIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfRelationIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
@@ -1676,7 +1677,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The sequence of edges that covers the given way
      */
-    public Route routeForWayIdentifier(final PbfWayIdentifier wayIdentifier)
+    public Route routeForWayIdentifier(final MapWayIdentifier wayIdentifier)
     {
         return edgeStore.retrieveRouteForWayIdentifier(wayIdentifier);
     }

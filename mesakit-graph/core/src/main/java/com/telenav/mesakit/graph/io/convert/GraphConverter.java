@@ -20,25 +20,20 @@ package com.telenav.mesakit.graph.io.convert;
 
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.kernel.messaging.Repeater;
-import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.PbfToGraphConverter;
 import com.telenav.mesakit.graph.specifications.osm.graph.converter.OsmPbfToGraphConverter;
-import com.telenav.mesakit.graph.specifications.unidb.graph.converter.UniDbPbfToGraphConverter;
 
 /**
  * A graph converter converts some kind of input {@link File} to a {@link Graph}.
  * <p>
  * The subclass {@link PbfToGraphConverter} implements conversion of PBF graph resources to Graph form and the {@link
- * OsmPbfToGraphConverter} and {@link UniDbPbfToGraphConverter} subclasses of that class convert PBF data from the OSM
- * and UniDb specifications, respectively.
+ * OsmPbfToGraphConverter} subclass of that class convert PBF data from the OSM specification.
  *
  * @author jonathanl (shibo)
- * @see Resource
  * @see Graph
  * @see PbfToGraphConverter
  * @see OsmPbfToGraphConverter
- * @see UniDbPbfToGraphConverter
  */
 public interface GraphConverter extends Repeater
 {

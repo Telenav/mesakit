@@ -18,18 +18,27 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.collections.primitive.map.split.SplitLongToIntMap;
-import com.telenav.kivakit.data.formats.library.map.identifiers.PbfWayIdentifier;
 import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.kernel.debug.Debug;
-import com.telenav.kivakit.kernel.interfaces.object.Source;
-import com.telenav.kivakit.kernel.language.io.serialization.SerializationSession;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.kernel.interfaces.value.Source;
+import com.telenav.kivakit.kernel.language.iteration.BaseIterable;
+import com.telenav.kivakit.kernel.language.iteration.Next;
 import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.scalars.bytes.Bytes;
-import com.telenav.kivakit.kernel.scalars.versioning.*;
+import com.telenav.kivakit.kernel.language.time.Time;
+import com.telenav.kivakit.kernel.language.values.count.Bytes;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.version.Version;
+import com.telenav.kivakit.kernel.language.values.version.VersionedObject;
+import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
+import com.telenav.kivakit.resource.compression.archive.FieldArchive;
+import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.resource.compression.archive.ZipArchive;
+import com.telenav.kivakit.serialization.core.SerializationSession;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.Place;
@@ -41,11 +50,12 @@ import com.telenav.mesakit.graph.world.grid.WorldCellList;
 import com.telenav.mesakit.graph.world.grid.WorldGrid;
 import com.telenav.mesakit.graph.world.repository.WorldGraphRepository;
 import com.telenav.mesakit.graph.world.repository.WorldGraphRepositoryFolder;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.quadtree.QuadTreeSpatialIndex;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.measurements.Distance;
-import com.telenav.mesakit.map.region.project.KivaKitMapRegionLimits;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
+import com.telenav.mesakit.map.region.project.MapRegionLimits;
 import com.telenav.mesakit.map.utilities.grid.GridCell;
 import com.telenav.mesakit.map.utilities.grid.GridCellIdentifier;
 
@@ -58,9 +68,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.validation.Validate.fail;
-import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
-import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.WRITE;
+import static com.telenav.mesakit.graph.world.WorldGraph.AccessMode.READ;
 
 /**
  * The world graph index stores metadata and provides spatial indexing services for a {@link WorldGraph} which can't
@@ -190,7 +198,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
     private WorldGraphIndex()
     {
         cellForWayIdentifier = new SplitLongToIntMap("WorldGraphIndex.cellForPbfWayIdentifier");
-        cellForWayIdentifier.initialSize(KivaKitMapRegionLimits.ESTIMATED_WAYS);
+        cellForWayIdentifier.initialSize(MapRegionLimits.ESTIMATED_WAYS);
         cellForWayIdentifier.initialize();
     }
 
@@ -243,7 +251,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
     {
         // Validate that the resource is a zip archive. If it's not then the file is some earlier
         // placeholder index file that we can ignore.
-        if (FieldArchive.is(file))
+        if (ZipArchive.is(file))
         {
             // Record start time
             final var start = Time.now();

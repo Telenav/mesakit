@@ -67,7 +67,6 @@ import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner.EdgeSection;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner.EdgeSectioner;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner.WaySectioningGraphLoader;
-import com.telenav.mesakit.graph.traffic.historical.SpeedPatternIdentifier;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
@@ -393,7 +392,6 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupport
  * <b>Speed and Travel Time</b>
  * <ul>
  *     <li>{@link #speedLimit()} - The speed limit on this edge</li>
- *     <li>{@link #speedPatternIdentifier()} - The historical speed pattern for this edge</li>
  *     <li>{@link #freeFlowSpeed()} - The speed of normal traffic flow on this edge</li>
  *     <li>{@link #freeFlowForFunctionalClass()} - Typical speed of traffic on edges of this functional class</li>
  *     <li>{@link #travelTime()} - The amount of time required to travel this edge at free flow speed</li>
@@ -1906,6 +1904,11 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
         return ("yes".equals(value) || "1".equals(value) || "-1".equals(value));
     }
 
+    public boolean osmIsProposed()
+    {
+        return "proposed".equalsIgnoreCase(tagValue("highway"));
+    }
+
     /**
      * @return True if this edge labeled as a roundabout in OSM. This is specific to the {@link OsmDataSpecification}.
      */
@@ -2389,14 +2392,6 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     }
 
     /**
-     * @return The speed pattern/profile identifier associated with this edge
-     */
-    public SpeedPatternIdentifier speedPatternIdentifier()
-    {
-        return store().retrieveSpeedPatternIdentifier(this);
-    }
-
-    /**
      * @return The {@link State} where this edge exists
      */
     public State state()
@@ -2742,9 +2737,9 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     {
         return new CommonEntityData(
                 wayIdentifier().asLong(),
-                pbfRevisionNumber().asInteger(),
+                pbfRevisionNumber().asInt(),
                 new Timestamp(lastModificationTime().asMilliseconds()),
-                new OsmUser(pbfUserIdentifier().asInteger(), pbfUserName().name()),
+                new OsmUser(pbfUserIdentifier().asInt(), pbfUserName().name()),
                 pbfChangeSetIdentifier().asLong(),
                 tagList().asList());
     }

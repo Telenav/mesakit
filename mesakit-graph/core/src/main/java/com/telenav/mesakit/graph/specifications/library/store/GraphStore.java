@@ -68,10 +68,10 @@ public abstract class GraphStore extends BaseRepeater implements Unloadable, Val
         public GraphStoreValidation()
         {
             super("VALIDATE_GRAPH_STORE");
-            validate(EdgeStore.class);
-            validate(VertexStore.class);
-            validate(PlaceStore.class);
-            validate(RelationStore.class);
+            include(EdgeStore.class);
+            include(VertexStore.class);
+            include(PlaceStore.class);
+            include(RelationStore.class);
         }
     }
 

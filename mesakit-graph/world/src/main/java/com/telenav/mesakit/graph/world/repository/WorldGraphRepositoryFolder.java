@@ -18,10 +18,20 @@
 
 package com.telenav.mesakit.graph.world.repository;
 
-import com.telenav.kivakit.kernel.commandline.SwitchParser;
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.data.validation.ensure.Ensure;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.kernel.messaging.messages.status.Problem;
 import com.telenav.kivakit.kernel.messaging.messages.status.Success;
-import com.telenav.kivakit.kernel.validation.Validate;
+import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.kivakit.resource.path.FileName;
+import com.telenav.kivakit.resource.path.FilePath;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.world.WorldGraphIndex;
 
@@ -47,7 +57,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
     /**
      * The name of the temporary extraction folder
      */
-    public static final FileName TEMPORARY_FOLDER_NAME = new FileName("temporary");
+    public static final FileName TEMPORARY_FOLDER_NAME = FileName.parse("temporary");
 
     /** A switch parser to select an existing world graph folder */
     public static SwitchParser.Builder<WorldGraphRepositoryFolder> SWITCH_PARSER_EXISTING =
@@ -64,7 +74,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
                     .description("Full path to world graph data folder");
 
     /** The extension for world graph folders */
-    public static final Extension WORLD = new Extension(".world");
+    public static final Extension WORLD = Extension.parse(".world");
 
     /**
      * @return A {@link Problem} message detailing the problem if the given folder doesn't exist or is not of the
@@ -72,7 +82,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
      */
     public static Message check(final Folder folder, final Check check)
     {
-        if (!folder.fileName().startsWith("temporary"))
+        if (!folder.name().startsWith("temporary"))
         {
             if (check == Check.EXISTS)
             {
@@ -119,15 +129,19 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
         @Override
         protected WorldGraphRepositoryFolder onConvertToObject(final String value)
         {
-            final var folder = new Folder(value);
-            final var message = check(folder, existence);
-            if (message.status().failed())
+            final var folder = Folder.parse(value);
+            if (folder != null)
             {
-                broadcast(message);
-                return null;
+                final var message = check(folder, existence);
+                if (message.status().failed())
+                {
+                    transmit(message);
+                    return null;
+                }
+                final var repository = new WorldGraphRepository(folder.parent());
+                return repository.folder(folder.name());
             }
-            final var repository = new WorldGraphRepository(folder.parent());
-            return repository.folder(folder.fileName());
+            return null;
         }
     }
 
@@ -142,7 +156,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
      */
     WorldGraphRepositoryFolder(final WorldGraphRepository repository, final FilePath path, final Metadata metadata)
     {
-        this(repository, path == null ? FilePath.of(metadata.asFileName()) : path.withChild(metadata.asFileName().toString()));
+        this(repository, path == null ? FilePath.filePath(metadata.asFileName()) : path.withChild(metadata.asFileName().toString()));
     }
 
     WorldGraphRepositoryFolder(final WorldGraphRepository repository, final FilePath path)
@@ -163,7 +177,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
      */
     public void ensure(final Check check)
     {
-        Validate.ensure(!check(this, check).status().failed(), "No valid local data in $", this);
+        Ensure.ensure(!check(this, check).status().failed(), "No valid local data in $", this);
     }
 
     /**
@@ -179,7 +193,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
      */
     public boolean isTemporary()
     {
-        return fileName().startsWith(TEMPORARY_FOLDER_NAME.name());
+        return name().startsWith(TEMPORARY_FOLDER_NAME.name());
     }
 
     @Override

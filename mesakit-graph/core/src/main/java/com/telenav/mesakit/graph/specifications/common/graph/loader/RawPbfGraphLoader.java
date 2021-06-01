@@ -66,7 +66,6 @@ import com.telenav.mesakit.graph.specifications.library.store.GraphStore;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.extractors.PlaceExtractor;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner.EdgeNodeMap;
 import com.telenav.mesakit.graph.traffic.extractors.ReferenceSpeedExtractor;
-import com.telenav.mesakit.graph.traffic.extractors.SpeedPatternIdentifierExtractor;
 import com.telenav.mesakit.graph.traffic.extractors.TrafficIdentifiersExtractor;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapWayIdentifier;
@@ -302,8 +301,6 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
 
     private final SpeedLimitExtractor speedLimitExtractor;
 
-    private final SpeedPatternIdentifierExtractor speedPatternIdentifierExtractor;
-
     private final SurfaceExtractor surfaceExtractor;
 
     private final TollRoadExtractor tollRoadExtractor;
@@ -372,7 +369,6 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         tollRoadExtractor = new TollRoadExtractor(this);
         underConstructionExtractor = new UnderConstructionExtractor(this);
         referenceSpeedExtractor = new ReferenceSpeedExtractor(this);
-        speedPatternIdentifierExtractor = new SpeedPatternIdentifierExtractor(this);
         gradeSeparationFromExtractor = new GradeSeparationExtractor(this, GradeSeparationExtractor.Type.FROM);
         gradeSeparationToExtractor = new GradeSeparationExtractor(this, GradeSeparationExtractor.Type.TO);
 
@@ -1058,14 +1054,6 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
             {
                 final var pbfTags = way.tagList(tagFilter);
                 edge.tags(pbfTags);
-            }
-
-            // speed pattern
-            final var speedPatternIdentifiers = speedPatternIdentifierExtractor.extract(way);
-            if (speedPatternIdentifiers != null)
-            {
-                edge.speedPatternIdentifier(speedPatternIdentifiers.a());
-                edge.reverseSpeedPatternIdentifier(speedPatternIdentifiers.b());
             }
 
             final var referenceSpeeds = referenceSpeedExtractor.extract(way);

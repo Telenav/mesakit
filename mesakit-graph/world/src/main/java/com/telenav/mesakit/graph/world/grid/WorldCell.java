@@ -18,24 +18,27 @@
 
 package com.telenav.mesakit.graph.world.grid;
 
-import com.telenav.kivakit.kernel.debug.Debug;
-import com.telenav.kivakit.kernel.interfaces.persistence.Unloadable;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.kernel.interfaces.loading.Unloadable;
 import com.telenav.kivakit.kernel.language.collections.set.Sets;
-import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine.KivaKitExcludeFromSizeOf;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.language.objects.reference.virtual.VirtualReference;
 import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.scalars.bytes.Bytes;
+import com.telenav.kivakit.kernel.language.values.count.Bytes;
+import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.kivakit.resource.path.Extension;
-import com.telenav.kivakit.utilities.reference.virtual.VirtualReference;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
-import com.telenav.mesakit.graph.traffic.historical.SpeedPatternResource;
 import com.telenav.mesakit.graph.world.WorldEdge;
 import com.telenav.mesakit.graph.world.WorldGraph;
 import com.telenav.mesakit.graph.world.repository.WorldGraphRepositoryFolder;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.polyline.Polygon;
+import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.region.Region;
@@ -82,7 +85,7 @@ import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.R
  * @see WorldGraphRepositoryFolder
  * @see GridCell
  */
-@KivaKitExcludeFromSizeOf
+@JavaVirtualMachine.KivaKitExcludeFromSizeOf
 public class WorldCell extends Region<WorldCell> implements Unloadable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
@@ -251,7 +254,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     {
         if (fileSize == null)
         {
-            fileSize = cellGraphFile().size();
+            fileSize = cellGraphFile().bytes();
         }
         return fileSize;
     }
@@ -382,11 +385,6 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
         return repositoryFolder.file(fileName().withExtension(Extension.OSM_PBF));
     }
 
-    public File speedPatternFile(final WorldGraphRepositoryFolder repositoryFolder)
-    {
-        return repositoryFolder.file(fileName().withExtension(SpeedPatternResource.EXTENSION));
-    }
-
     @Override
     public Class<?> subclass()
     {
@@ -454,8 +452,8 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
                 // Load the graph file
                 DEBUG.trace("Loading graph for $", name());
                 @SuppressWarnings(
-                        "resource") final var archive = new GraphArchive(cellGraphFile(), ProgressReporter.NULL, READ);
-                final var graph = archive.load(DEBUG.isDebugOn() ? DEBUG.listener() : Listener.NULL);
+                        "resource") final var archive = new GraphArchive(cellGraphFile(), READ, ProgressReporter.NULL);
+                final var graph = archive.load(DEBUG.isDebugOn() ? DEBUG.listener() : Listener.none());
                 if (graph == null)
                 {
                     LOGGER.warning("Unable to load graph for $", name());

@@ -29,6 +29,7 @@ import com.telenav.kivakit.primitive.collections.array.scalars.SplitByteArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
 import com.telenav.kivakit.primitive.collections.iteration.IntIterator;
 import com.telenav.kivakit.primitive.collections.list.IntList;
+import com.telenav.kivakit.primitive.collections.list.adapters.IntListAdapter;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
@@ -193,7 +194,7 @@ public class EdgeArrayStore implements CompressibleCollection, NamedObject
         final var offset = offsets.get(index);
         final int length = lengths.get(index);
         final var outer = this;
-        return new IntList()
+        return new IntListAdapter()
         {
             @Override
             public int get(final int index)

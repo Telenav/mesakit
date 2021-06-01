@@ -57,7 +57,7 @@ public class WorldPlaceIdentifier extends PlaceIdentifier
     @Override
     public String toString()
     {
-        return worldCell.identity().tdk().code() + "-" + super.toString();
+        return worldCell.identity().mesakit().code() + "-" + super.toString();
     }
 
     public WorldCell worldCell()

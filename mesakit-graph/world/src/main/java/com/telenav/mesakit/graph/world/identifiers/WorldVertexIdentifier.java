@@ -40,7 +40,7 @@ public class WorldVertexIdentifier extends VertexIdentifier
 
     public WorldVertexIdentifier(final WorldCell worldCell, final VertexIdentifier identifier)
     {
-        super(identifier.asInteger());
+        super(identifier.asInt());
         this.worldCell = worldCell;
     }
 

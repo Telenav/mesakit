@@ -23,7 +23,6 @@ import com.telenav.kivakit.kernel.data.validation.Validation;
 import com.telenav.kivakit.kernel.data.validation.Validator;
 import com.telenav.kivakit.kernel.language.iteration.Iterables;
 import com.telenav.kivakit.kernel.language.iteration.Next;
-import com.telenav.kivakit.kernel.language.time.LocalTime;
 import com.telenav.kivakit.kernel.language.time.Time;
 import com.telenav.kivakit.kernel.language.values.count.BitCount;
 import com.telenav.kivakit.kernel.language.values.count.Count;
@@ -46,6 +45,7 @@ import com.telenav.kivakit.primitive.collections.map.scalars.IntToByteMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.LongToIntMap;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
 import com.telenav.kivakit.serialization.core.SerializationSession;
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;
@@ -75,11 +75,10 @@ import com.telenav.mesakit.graph.specifications.common.relation.HeavyWeightRelat
 import com.telenav.mesakit.graph.specifications.common.vertex.store.VertexStore;
 import com.telenav.mesakit.graph.specifications.library.attributes.AttributeReference;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
-import com.telenav.mesakit.graph.traffic.historical.SpeedPatternIdentifier;
-import com.telenav.mesakit.graph.traffic.historical.SpeedPatternStore;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionCodingSystem;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapWayIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
@@ -100,7 +99,6 @@ import com.telenav.mesakit.map.road.model.RoadSubType;
 import com.telenav.mesakit.map.road.model.RoadSurface;
 import com.telenav.mesakit.map.road.model.RoadType;
 import com.telenav.mesakit.map.road.model.SpeedCategory;
-import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.ArrayList;
@@ -433,9 +431,6 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /** Used by tests */
     private boolean commitSpatialIndex = true;
 
-    /** Speed patterns */
-    private SpeedPatternStore speedPatternStore;
-
     private LongLinkedListStore temporaryRelations;
 
     private LongToIntMap temporaryWayIdentifierToRelationIndex;
@@ -759,30 +754,6 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     }
 
     /**
-     * The historical speed the given local time from the {@link SpeedPatternStore}. Historical speed data provides
-     * predictive capability by giving a speed for a given local time. The day of week and hour of day are generally
-     * involved in retrieving this value.
-     *
-     * @param identifier The identifier for the weekly speed pattern to use
-     * @param reference A reference speed to scale at the given time
-     * @param time The local time to use to find the historical speed
-     * @see SpeedPatternStore
-     * @see SpeedPatternIdentifier
-     * @see LocalTime
-     * @see Speed
-     */
-    public Speed retrieveHistoricalSpeed(final SpeedPatternIdentifier identifier,
-                                         final Speed reference,
-                                         final LocalTime time)
-    {
-        if (speedPatternStore != null)
-        {
-            return speedPatternStore.speed(identifier, reference, time);
-        }
-        return null;
-    }
-
-    /**
      * @return The number of HOV lanes for the given edge
      */
     public final Count retrieveHovLaneCount(final Edge edge)
@@ -823,7 +794,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     }
 
     /**
-     * @return The length of the given edge as a unitless {@link Distance} value
+     * @return The length of the given edge as a unit-less {@link Distance} value
      */
     public final long retrieveLengthInMillimeters(final Edge edge)
     {
@@ -987,7 +958,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      * @return The sequence of edges that correspond to the given way identifier
      */
     @SuppressWarnings("StatementWithEmptyBody")
-    public Route retrieveRouteForWayIdentifier(final PbfWayIdentifier wayIdentifier)
+    public Route retrieveRouteForWayIdentifier(final MapWayIdentifier wayIdentifier)
     {
         assert wayIdentifier != null;
 
@@ -1032,15 +1003,6 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
             }
             return null;
         });
-    }
-
-    /**
-     * @return The speed pattern identifier for the given edge to retrieve historical speeds with {@link
-     * #retrieveHistoricalSpeed(SpeedPatternIdentifier, Speed, LocalTime)}
-     */
-    public final SpeedPatternIdentifier retrieveSpeedPatternIdentifier(final Edge edge)
-    {
-        return SPEED_PATTERN_IDENTIFIER.retrieveObject(edge, value -> new SpeedPatternIdentifier((int) value));
     }
 
     public final Iterable<RoadSectionIdentifier> retrieveTmcIdentifiers(final Edge edge)
@@ -1141,14 +1103,6 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     }
 
     /**
-     * Associates a speed pattern store with this edge store
-     */
-    public void speedPatternStore(final SpeedPatternStore store)
-    {
-        speedPatternStore = store;
-    }
-
-    /**
      * Stores all of the simple attributes of the given edge using the given edge index
      *
      * @see GraphElementStore#retrieveIndex(GraphElement)
@@ -1196,10 +1150,6 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
             final var kph = edge.speedLimit().asKilometersPerHour();
             final var nearestMultipleOf5Kph = (kph + 2.5) / 5.0;
             SPEED_LIMIT.storeObject(edge, (byte) nearestMultipleOf5Kph);
-        }
-        if (edge.speedPatternIdentifier() != null)
-        {
-            SPEED_PATTERN_IDENTIFIER.storeObject(edge, edge.speedPatternIdentifier());
         }
 
         storeRoadSubType(edge, edge.roadSubType());
@@ -1640,26 +1590,12 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
 
         super.onSaving(archive);
 
-        if (speedPatternStore != null)
-        {
-            speedPatternStore.saveTo(archive.zip());
-        }
-
         // If there's no spatial index,
         if (spatialIndex == null)
         {
             // create it so that it will be saved
             spatialIndex = new CompressedEdgeBulkSpatialIndexer(this).index(graph());
         }
-    }
-
-    /**
-     * Loads speed patterns from archive
-     */
-    @MustBeInvokedByOverriders
-    protected void onStartLoading(final GraphArchive archive)
-    {
-        loadSpeedPatterns(archive);
     }
 
     protected void storeTmcIdentifiers(final Edge edge)
@@ -1696,8 +1632,8 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
 
     private void configureSerializer()
     {
-        final var kryo = (KivaKitKryoSerializer) SerializationSession.threadSerializer(this);
-        kryo.register(CompressedEdgeSpatialIndex.class, new CompressedEdgeSpatialIndexKryoSerializer(graph()));
+        final var kryo = (KryoSerializationSession) SerializationSession.threadLocal(this);
+        kryo.kryoTypes().register(CompressedEdgeSpatialIndex.class, new CompressedEdgeSpatialIndexKryoSerializer(graph()));
     }
 
     /**
@@ -1796,14 +1732,6 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
             ROAD_STATE.load();
         }
         return roadState.get(index) == RoadState.TWO_WAY.quantum();
-    }
-
-    /**
-     * Loads the speed pattern from the given graph archive
-     */
-    private void loadSpeedPatterns(final GraphArchive archive)
-    {
-        speedPatternStore = SpeedPatternStore.load(archive.zip());
     }
 
     /**

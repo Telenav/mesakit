@@ -20,21 +20,24 @@ package com.telenav.mesakit.graph.world.repository;
 
 import com.telenav.kivakit.configuration.Deployment;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.mesakit.graph.world.*;
-import com.telenav.mesakit.graph.world.grid.WorldCellReference;
-import com.telenav.kivakit.kernel.interfaces.object.Source;
-import com.telenav.kivakit.kernel.language.collections.map.CountMap;
-import com.telenav.kivakit.kernel.language.object.*;
-import com.telenav.kivakit.kernel.language.string.Strings;
-import com.telenav.mesakit.map.utilities.grid.GridCell;
+import com.telenav.kivakit.kernel.interfaces.value.Source;
+import com.telenav.kivakit.kernel.language.collections.map.count.CountMap;
+import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.objects.Objects;
+import com.telenav.kivakit.kernel.language.strings.Strip;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.resource.path.FilePath;
+import com.telenav.mesakit.graph.world.WorldGraph;
+import com.telenav.mesakit.graph.world.WorldGraphDeployments;
+import com.telenav.mesakit.graph.world.grid.WorldCellReference;
+import com.telenav.mesakit.map.utilities.grid.GridCell;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
-import static com.telenav.kivakit.kernel.validation.Validate.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 /**
  * A logical reference that lazy loads a {@link WorldGraph} using descriptors passed to the constructor when {@link
@@ -89,7 +92,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
 
         serializedWorldGraphRepository = folder.repository().path().toString();
         serializedPath = folder.path().toString().substring(serializedWorldGraphRepository.length());
-        serializedPath = Strings.stripEnding(serializedPath, ".world");
+        serializedPath = Strip.ending(serializedPath, ".world");
 
         ensure(folder.isLocal());
 
@@ -136,7 +139,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
                 if (graph == null)
                 {
                     // install the deployment in case it wasn't installed yet,
-                    new WorldGraphDeployments(LOGGER).forName(deployment.name()).install();
+                    new WorldGraphDeployments(LOGGER).deployment(deployment.name()).install();
 
                     // create the world graph,
                     graph = LOGGER.listenTo(WorldGraph.load(folder()));
@@ -193,8 +196,12 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
     {
         if (folder == null)
         {
-            final var repository = new WorldGraphRepository(new Folder(serializedWorldGraphRepository));
-            folder = new WorldGraphRepositoryFolder(repository, FilePath.parse(serializedPath));
+            final var folder = Folder.parse(serializedWorldGraphRepository);
+            if (folder != null)
+            {
+                final var repository = new WorldGraphRepository(folder);
+                this.folder = new WorldGraphRepositoryFolder(repository, FilePath.parseFilePath(serializedPath));
+            }
         }
         return folder;
     }

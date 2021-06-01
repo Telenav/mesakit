@@ -18,36 +18,23 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.language.strings.Strings;
 import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.Access;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.AdasCurvature;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.AdasRegionCode;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.AdasZCoordinate;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.CurvatureHeadingSlopeSequence;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.FormOfWay;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.Lane;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.LaneDivider;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.OneWayLane;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.RouteType;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.SpeedLimitSource;
-import com.telenav.mesakit.graph.specifications.unidb.graph.edge.model.attributes.TurnLane;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 import com.telenav.mesakit.graph.world.grid.WorldCell;
 import com.telenav.mesakit.graph.world.identifiers.WorldEdgeIdentifier;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
+import com.telenav.mesakit.map.measurements.motion.Speed;
 import com.telenav.mesakit.map.road.model.GradeSeparation;
-import com.telenav.mesakit.map.road.model.HighwayType;
-import com.telenav.mesakit.map.road.model.OverpassUnderpassType;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -247,144 +234,6 @@ public class WorldEdge extends Edge
     public String toString()
     {
         return identifier().toString();
-    }
-
-    @Override
-    public Access uniDbAccessType()
-    {
-        return cellEdge().uniDbAccessType();
-    }
-
-    @Override
-    public AdasRegionCode uniDbAdasRegionCode()
-    {
-        return cellEdge().uniDbAdasRegionCode();
-    }
-
-    @Override
-    public ObjectList<AdasZCoordinate> uniDbAdasZCoordinates()
-    {
-        return cellEdge().uniDbAdasZCoordinates();
-    }
-
-    @Override
-    public CurvatureHeadingSlopeSequence uniDbCurvatureHeadingSlopeSequence()
-    {
-        return cellEdge().uniDbCurvatureHeadingSlopeSequence();
-    }
-
-    @Override
-    public ObjectList<AdasCurvature> uniDbCurvatures()
-    {
-        return cellEdge().uniDbCurvatures();
-    }
-
-    @Override
-    public FormOfWay uniDbFormOfWay()
-    {
-        return cellEdge().uniDbFormOfWay();
-    }
-
-    @Override
-    public Count uniDbForwardLaneCount()
-    {
-        return cellEdge().uniDbForwardLaneCount();
-    }
-
-    @Override
-    public ObjectList<Heading> uniDbHeadings()
-    {
-        return cellEdge().uniDbHeadings();
-    }
-
-    @Override
-    public HighwayType uniDbHighwayType()
-    {
-        return cellEdge().uniDbHighwayType();
-    }
-
-    @Override
-    public Boolean uniDbIsBuildUpArea()
-    {
-        return cellEdge().uniDbIsBuildUpArea();
-    }
-
-    @Override
-    public Boolean uniDbIsComplexIntersection()
-    {
-        return cellEdge().uniDbIsComplexIntersection();
-    }
-
-    @Override
-    public Boolean uniDbIsDividedRoad()
-    {
-        return cellEdge().uniDbIsDividedRoad();
-    }
-
-    @Override
-    public Boolean uniDbIsLeftSideDriving()
-    {
-        return cellEdge().uniDbIsLeftSideDriving();
-    }
-
-    @Override
-    public List<LaneDivider> uniDbLaneDividers()
-    {
-        return cellEdge().uniDbLaneDividers();
-    }
-
-    @Override
-    public List<OneWayLane> uniDbLaneOneWays()
-    {
-        return cellEdge().uniDbLaneOneWays();
-    }
-
-    @Override
-    public List<Lane> uniDbLaneTypes()
-    {
-        return cellEdge().uniDbLaneTypes();
-    }
-
-    @Override
-    public OverpassUnderpassType uniDbOverpassUnderpass()
-    {
-        return cellEdge().uniDbOverpassUnderpass();
-    }
-
-    @Override
-    public Speed uniDbReferenceSpeed()
-    {
-        return cellEdge().uniDbReferenceSpeed();
-    }
-
-    @Override
-    public Count uniDbReverseLaneCount()
-    {
-        return cellEdge().uniDbReverseLaneCount();
-    }
-
-    @Override
-    public RouteType uniDbRouteType()
-    {
-        return cellEdge().uniDbRouteType();
-    }
-
-    @Override
-    public ObjectList<Slope> uniDbSlopes()
-    {
-        return cellEdge().uniDbSlopes();
-    }
-
-    @Override
-    public SpeedLimitSource uniDbSpeedLimitSource()
-    {
-        return cellEdge().uniDbSpeedLimitSource();
-    }
-
-    @Override
-    public List<TurnLane> uniDbTurnLaneArrows()
-    {
-        return cellEdge().uniDbTurnLaneArrows();
     }
 
     public WorldCell worldCell()

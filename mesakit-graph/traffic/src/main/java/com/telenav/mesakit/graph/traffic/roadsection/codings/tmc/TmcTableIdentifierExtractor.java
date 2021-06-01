@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.traffic.roadsection.codings.tmc;
 
-import com.telenav.kivakit.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionCodingSystem;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
-import com.telenav.kivakit.kernel.messaging.Listener;
 
 public class TmcTableIdentifierExtractor extends BaseExtractor<TmcTableIdentifier, RoadSectionIdentifier>
 {

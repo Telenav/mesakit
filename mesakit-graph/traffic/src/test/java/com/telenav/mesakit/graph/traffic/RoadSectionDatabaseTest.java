@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.traffic;
 
-import com.telenav.kivakit.configuration.Lookup;
-import com.telenav.kivakit.kernel.testing.SlowTests;
-import com.telenav.mesakit.graph.traffic.project.KivaKitGraphTrafficUnitTest;
+import com.telenav.kivakit.configuration.lookup.Lookup;
+import com.telenav.kivakit.test.annotations.SlowTests;
+import com.telenav.mesakit.graph.traffic.project.GraphTrafficUnitTest;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSection;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionDatabase;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.tmc.TmcCode;
@@ -31,7 +31,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Category({ SlowTests.class })
-public class RoadSectionDatabaseTest extends KivaKitGraphTrafficUnitTest
+public class RoadSectionDatabaseTest extends GraphTrafficUnitTest
 {
     public RoadSectionDatabaseTest()
     {

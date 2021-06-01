@@ -137,7 +137,7 @@ public class Way implements Road, Iterable<Edge>
 
     public HighwayType highwayType()
     {
-        return first().uniDbHighwayType();
+        return first().mapWay().highwayType();
     }
 
     public boolean isReversed()

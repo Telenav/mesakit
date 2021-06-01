@@ -36,8 +36,6 @@ import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 import com.telenav.mesakit.graph.specifications.osm.graph.OsmGraph;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.OsmHeavyWeightEdge;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
-import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionCodingSystem;
-import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 
 import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
 
@@ -123,20 +121,6 @@ public final class OsmEdgeStore extends EdgeStore
         super(graph);
     }
 
-    public final RoadSectionIdentifier retrieveForwardTelenavTrafficLocationIdentifier(final Edge edge)
-    {
-        FORWARD_TELENAV_TRAFFIC_LOCATION_IDENTIFIER.load();
-        if (forwardTelenavTrafficLocationIdentifier != null)
-        {
-            final var ttl = forwardTelenavTrafficLocationIdentifier.get(edge.identifierAsLong());
-            if (!forwardTelenavTrafficLocationIdentifier.isNull(ttl))
-            {
-                return RoadSectionIdentifier.forCodingSystemAndIdentifier(RoadSectionCodingSystem.TELENAV_TRAFFIC_LOCATION, ttl, false);
-            }
-        }
-        return null;
-    }
-
     public final boolean retrieveIsDoubleDigitized(final Edge edge)
     {
         return IS_DOUBLE_DIGITIZED.retrieveBoolean(edge);
@@ -145,20 +129,6 @@ public final class OsmEdgeStore extends EdgeStore
     public final EdgeIdentifier retrieveRawIdentifier(final Edge edge)
     {
         return RAW_IDENTIFIER.retrieveObject(edge, EdgeIdentifier::new);
-    }
-
-    public final RoadSectionIdentifier retrieveReverseTelenavTrafficLocationIdentifier(final Edge edge)
-    {
-        REVERSE_TELENAV_TRAFFIC_LOCATION_IDENTIFIER.load();
-        if (reverseTelenavTrafficLocationIdentifier != null)
-        {
-            final var ttl = reverseTelenavTrafficLocationIdentifier.get(edge.identifierAsLong());
-            if (!reverseTelenavTrafficLocationIdentifier.isNull(ttl))
-            {
-                return RoadSectionIdentifier.forCodingSystemAndIdentifier(RoadSectionCodingSystem.TELENAV_TRAFFIC_LOCATION, ttl, false);
-            }
-        }
-        return null;
     }
 
     public Count retrieveTraceCount(final Edge edge)

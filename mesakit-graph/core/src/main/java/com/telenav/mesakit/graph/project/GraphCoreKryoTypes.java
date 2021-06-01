@@ -36,7 +36,6 @@ import com.telenav.mesakit.graph.specifications.common.element.store.TagStore;
 import com.telenav.mesakit.graph.specifications.common.vertex.store.ConnectivityStore;
 import com.telenav.mesakit.graph.specifications.common.vertex.store.EdgeArrayStore;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
-import com.telenav.mesakit.graph.specifications.unidb.UniDbDataSpecification;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.compression.PbfStringListTagCodec;
 
 /**
@@ -59,7 +58,6 @@ public class GraphCoreKryoTypes extends KryoTypes
             register(DataSupplier.class);
             register(DataBuild.class);
             register(OsmDataSpecification.class);
-            register(UniDbDataSpecification.class);
             register(DataVersion.class);
         });
 

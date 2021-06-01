@@ -27,7 +27,7 @@ import com.telenav.mesakit.graph.world.grid.WorldCell;
 import com.telenav.mesakit.graph.world.identifiers.WorldPlaceIdentifier;
 import com.telenav.mesakit.map.geography.Location;
 
-import static com.telenav.kivakit.kernel.validation.Validate.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 /**
  * An place in a {@link WorldGraph}, scoped by a {@link WorldCell} and having a {@link WorldPlaceIdentifier}. The cell

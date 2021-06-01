@@ -8,6 +8,8 @@ source $MESAKIT_WORKSPACE/mesakit/tools/library/mesakit-library-functions.sh
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 system_variable MESAKIT_HOME "$MESAKIT_WORKSPACE/mesakit"
+system_variable MESAKIT_EXTENSIONS_HOME "$MESAKIT_WORKSPACE/mesakit-extensions"
+system_variable MESAKIT_EXAMPLES_HOME "$MESAKIT_WORKSPACE/mesakit-examples"
 system_variable MESAKIT_VERSION "$(project_version $MESAKIT_HOME)"
 system_variable MESAKIT_BUILD "$(project_build $MESAKIT_HOME)"
 system_variable MESAKIT_TOOLS "$MESAKIT_HOME/tools"
@@ -22,6 +24,7 @@ append_path "$MESAKIT_TOOLS/library"
 append_path "$MESAKIT_TOOLS/releasing"
 
 system_variable MESAKIT_ASSETS_HOME "$MESAKIT_WORKSPACE/mesakit-assets"
+system_variable MESAKIT_CACHE_HOME "$HOME/.mesakit/$KIVAKIT_VERSION"
 
 source $MESAKIT_TOOLS/library/mesakit-projects.sh
 

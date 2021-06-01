@@ -38,7 +38,6 @@ import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.map.MapEdgeIdentifier;
 import com.telenav.mesakit.graph.specifications.library.attributes.AttributeSet;
-import com.telenav.mesakit.graph.traffic.historical.SpeedPatternStore;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.motion.Speed;
 
@@ -152,13 +151,6 @@ public class CommonGraph extends Graph
         }
     }
 
-    @Override
-    public final void loadSpeedPattern(final Resource side)
-    {
-        final var speedPattern = SpeedPatternStore.load(side);
-        edgeStore().speedPatternStore(speedPattern);
-    }
-
     /**
      * Loads turn restriction data from the given side-resource
      *
@@ -221,7 +213,7 @@ public class CommonGraph extends Graph
         // then save to that file with a ".tmp" extension"
         final var temporaryFile = file.withExtension(Extension.TMP);
         temporaryFile.delete();
-        final var temporary = new GraphArchive(temporaryFile, archive.reporter(), archive.mode());
+        final var temporary = new GraphArchive(temporaryFile, archive.mode(), archive.reporter());
         super.save(temporary);
         graphStore().save(temporary);
         temporary.close();

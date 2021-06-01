@@ -69,13 +69,13 @@
 
         <!-- Road Section Databases -->
 
-        <dependency>
-            <groupId>com.telenav.traffic.roadsection</groupId>
-            <artifactId>RoadSectionDatabase-TT-Bay-Area</artifactId>
-            <version>12M6</version>
-            <scope>test</scope>
-        </dependency>
-
+        <!--        <dependency>
+                    <groupId>com.telenav.traffic.roadsection</groupId>
+                    <artifactId>RoadSectionDatabase-TT-Bay-Area</artifactId>
+                    <version>12M6</version>
+                    <scope>test</scope>
+                </dependency>
+        -->
     </dependencies>
 
 </project>

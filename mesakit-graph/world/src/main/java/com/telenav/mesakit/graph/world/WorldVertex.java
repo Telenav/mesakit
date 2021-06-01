@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.kivakit.kernel.language.object.Hash;
-import com.telenav.kivakit.kernel.scalars.counts.*;
+import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.count.MutableCount;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
@@ -28,11 +28,12 @@ import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.identifiers.VertexIdentifier;
-import com.telenav.mesakit.graph.project.GraphCoreLimits.Estimated;
+import com.telenav.mesakit.graph.project.GraphCoreLimits;
 import com.telenav.mesakit.graph.specifications.common.node.NodeAttributes;
 import com.telenav.mesakit.graph.specifications.osm.graph.OsmGraph;
 import com.telenav.mesakit.graph.world.grid.WorldCell;
 import com.telenav.mesakit.graph.world.identifiers.WorldVertexIdentifier;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.road.model.GradeSeparation;
 
@@ -91,7 +92,7 @@ public class WorldVertex extends Vertex
     {
         if (isClipped())
         {
-            return inEdgeCount().add(outEdgeCount());
+            return inEdgeCount().plus(outEdgeCount());
         }
         else
         {
@@ -177,7 +178,7 @@ public class WorldVertex extends Vertex
             final var count = new MutableCount();
             for (final var vertex : equivalentNeighboringVertexes())
             {
-                count.add(vertex.superInEdgeCount());
+                count.plus(vertex.superInEdgeCount());
             }
             return count.asCount();
         }
@@ -205,7 +206,7 @@ public class WorldVertex extends Vertex
     {
         if (isClipped())
         {
-            final var edges = new WorldEdgeSet(Estimated.EDGES_PER_VERTEX);
+            final var edges = new WorldEdgeSet(GraphCoreLimits.Estimated.EDGES_PER_VERTEX);
             for (final var vertex : equivalentNeighboringVertexes())
             {
                 edges.addAll(vertex.worldCell(), vertex.superInEdges());
@@ -227,7 +228,7 @@ public class WorldVertex extends Vertex
      * call {@link #superInEdges()} and {@link #superOutEdges()} instead.
      */
     @Override
-    public NodeIdentifier mapIdentifier()
+    public MapNodeIdentifier mapIdentifier()
     {
         if (supports(NodeAttributes.get().NODE_IDENTIFIER))
         {
@@ -254,7 +255,7 @@ public class WorldVertex extends Vertex
             final var count = new MutableCount();
             for (final var vertex : equivalentNeighboringVertexes())
             {
-                count.add(vertex.superOutEdgeCount());
+                count.plus(vertex.superOutEdgeCount());
             }
             return count.asCount();
         }
@@ -282,7 +283,7 @@ public class WorldVertex extends Vertex
     {
         if (isClipped())
         {
-            final var edges = new WorldEdgeSet(Estimated.EDGES_PER_VERTEX);
+            final var edges = new WorldEdgeSet(GraphCoreLimits.Estimated.EDGES_PER_VERTEX);
             for (final var vertex : equivalentNeighboringVertexes())
             {
                 edges.addAll(vertex.worldCell(), vertex.superOutEdges());
@@ -360,7 +361,7 @@ public class WorldVertex extends Vertex
 
     private WorldEdgeSet superInEdges()
     {
-        return new WorldEdgeSet(Estimated.EDGES_PER_VERTEX, worldCell, super.inEdges());
+        return new WorldEdgeSet(GraphCoreLimits.Estimated.EDGES_PER_VERTEX, worldCell, super.inEdges());
     }
 
     private Count superOutEdgeCount()
@@ -375,6 +376,6 @@ public class WorldVertex extends Vertex
 
     private WorldEdgeSet superOutEdges()
     {
-        return new WorldEdgeSet(Estimated.EDGES_PER_VERTEX, worldCell, super.outEdges());
+        return new WorldEdgeSet(GraphCoreLimits.Estimated.EDGES_PER_VERTEX, worldCell, super.outEdges());
     }
 }

@@ -23,10 +23,10 @@ import com.telenav.kivakit.kernel.language.collections.set.Sets;
 import com.telenav.kivakit.kernel.language.objects.Lazy;
 import com.telenav.kivakit.kernel.language.values.version.Version;
 import com.telenav.kivakit.kernel.project.Project;
+import com.telenav.kivakit.primitive.collections.project.PrimitiveCollectionsKryoTypes;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.kivakit.serialization.kryo.CoreKernelKryoTypes;
 import com.telenav.kivakit.serialization.kryo.KryoTypes;
-import com.telenav.kivakit.primitive.collections.project.PrimitiveCollectionsKryoTypes;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.map.geography.project.MapGeographyKryoTypes;
 import com.telenav.mesakit.map.measurements.project.MapMeasurementsKryoTypes;
@@ -36,13 +36,13 @@ import java.util.Set;
 
 public class MapRegionProject extends Project
 {
-    private static final Lazy<MapRegionProject> project = Lazy.of(MapRegionProject::new);
-
     private static final KryoTypes KRYO_TYPES = new MapRegionKryoTypes()
             .mergedWith(new MapGeographyKryoTypes())
             .mergedWith(new MapMeasurementsKryoTypes())
             .mergedWith(new PrimitiveCollectionsKryoTypes())
             .mergedWith(new CoreKernelKryoTypes());
+
+    private static final Lazy<MapRegionProject> project = Lazy.of(MapRegionProject::new);
 
     public static MapRegionProject get()
     {
@@ -51,6 +51,7 @@ public class MapRegionProject extends Project
 
     protected MapRegionProject()
     {
+        SerializationSessionFactory.threadLocal(KRYO_TYPES.sessionFactory());
     }
 
     /**
@@ -83,10 +84,5 @@ public class MapRegionProject extends Project
         super.onInitialize();
 
         Region.bootstrap();
-    }
-
-    public SerializationSessionFactory sessionFactory()
-    {
-        return KRYO_TYPES.sessionFactory();
     }
 }

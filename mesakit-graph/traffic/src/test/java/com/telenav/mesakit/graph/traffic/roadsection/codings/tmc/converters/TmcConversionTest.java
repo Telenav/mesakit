@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.graph.traffic.roadsection.codings.tmc.converters;
 
-import com.telenav.mesakit.graph.traffic.roadsection.codings.tmc.TmcCode;
-import com.telenav.kivakit.kernel.debug.Debug;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.mesakit.map.geography.project.KivaKitMapGeographyUnitTest;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.mesakit.graph.traffic.roadsection.codings.tmc.TmcCode;
+import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
 import org.junit.Test;
 
 @SuppressWarnings("ConstantConditions")
-public class TmcConversionTest extends KivaKitMapGeographyUnitTest
+public class TmcConversionTest extends MapGeographyUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

@@ -49,7 +49,6 @@ import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.path.FileName;
 import com.telenav.kivakit.serialization.core.SerializationSession;
-import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
@@ -257,9 +256,6 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
         }
     }
 
-    /** Session factory for serialization */
-    private final SerializationSessionFactory sessionFactory;
-
     /**
      * RTree spatial index of polygons so we can test only the minimum number of polygon outlines when locating an
      * object for a location
@@ -285,7 +281,6 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
     protected BorderCache(final Settings<T> settings)
     {
         ensure(settings.isValid());
-        sessionFactory = MapRegionProject.get().sessionFactory();
         this.settings = settings;
         identityCache = listenTo(new RegionIdentityCache<>(settings.type()));
         polygonsForRegion = new MultiMap<>(settings.maximumObjects, settings.maximumPolygonsPerObject);
@@ -968,7 +963,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
     private SerializationSession serializationSession()
     {
         // Get a serialization session for this thread,
-        final var session = sessionFactory.session(debug().listener());
+        final var session = SerializationSession.threadLocal(debug().listener());
 
         // and if it's a kryo session,
         if (session instanceof KryoSerializationSession)

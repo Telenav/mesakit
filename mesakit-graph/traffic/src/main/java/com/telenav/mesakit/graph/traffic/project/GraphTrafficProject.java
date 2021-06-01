@@ -37,16 +37,12 @@ public class GraphTrafficProject extends Project
 
     protected GraphTrafficProject()
     {
+        SerializationSessionFactory.threadLocal(new GraphTrafficKryoTypes().sessionFactory());
     }
 
     @Override
     public Set<Project> dependencies()
     {
         return Sets.of(MapGeographyProject.get());
-    }
-
-    public SerializationSessionFactory sessionFactory()
-    {
-        return new GraphTrafficKryoTypes().sessionFactory();
     }
 }

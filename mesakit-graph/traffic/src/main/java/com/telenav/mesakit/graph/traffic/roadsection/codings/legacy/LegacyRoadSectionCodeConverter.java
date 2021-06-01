@@ -19,13 +19,12 @@
 package com.telenav.mesakit.graph.traffic.roadsection.codings.legacy;
 
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.language.string.StringList;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.time.Frequency;
 import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.time.Frequency;
 import com.telenav.mesakit.graph.traffic.MapData;
 import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionCode;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.osm.PbfRoadSectionCode;
-import com.telenav.mesakit.graph.traffic.roadsection.codings.telenav.TelenavTrafficLocationCode;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.tmc.TmcCode;
 import com.telenav.mesakit.graph.traffic.roadsection.codings.tomtom.TomTomRoadSectionCode;
 
@@ -49,8 +48,7 @@ import java.util.List;
  */
 public class LegacyRoadSectionCodeConverter extends BaseStringConverter<List<RoadSectionCode>>
 {
-    private final TomTomRoadSectionCode.Converter tomtomEdgeIdentifierConverter = new TomTomRoadSectionCode.Converter(
-            this)
+    private final TomTomRoadSectionCode.Converter tomtomEdgeIdentifierConverter = new TomTomRoadSectionCode.Converter(this)
     {
         @Override
         protected Frequency problemBroadcastFrequency()
@@ -77,16 +75,6 @@ public class LegacyRoadSectionCodeConverter extends BaseStringConverter<List<Roa
         }
     };
 
-    private final TelenavTrafficLocationCode.Converter telenavTrafficLocationCodeConverter = new TelenavTrafficLocationCode.Converter(
-            this)
-    {
-        @Override
-        protected Frequency problemBroadcastFrequency()
-        {
-            return Frequency.EVERY_MINUTE;
-        }
-    };
-
     private final MapData mapData;
 
     public LegacyRoadSectionCodeConverter(final Listener listener, final MapData mapData)
@@ -99,22 +87,11 @@ public class LegacyRoadSectionCodeConverter extends BaseStringConverter<List<Roa
         this.osmEdgeIdentifierConverter.allowNull(true);
         this.tmcCodeConverter.allowEmpty(true);
         this.tmcCodeConverter.allowNull(true);
-        this.telenavTrafficLocationCodeConverter.allowEmpty(true);
-        this.telenavTrafficLocationCodeConverter.allowNull(true);
     }
 
     protected void addOsmEdgeIdentifier(final String edge, final List<RoadSectionCode> codes)
     {
         final var identifier = this.osmEdgeIdentifierConverter.convert(edge.trim());
-        if (identifier != null)
-        {
-            codes.add(identifier);
-        }
-    }
-
-    protected void addTelenavTrafficLocationCode(final String code, final List<RoadSectionCode> codes)
-    {
-        final var identifier = this.telenavTrafficLocationCodeConverter.convert(code.trim());
         if (identifier != null)
         {
             codes.add(identifier);
@@ -162,7 +139,6 @@ public class LegacyRoadSectionCodeConverter extends BaseStringConverter<List<Roa
         // if it is a mfid (chunks size > 1) or a single tmc, the first chunk must be tmc code
         if (this.mapData.equals(MapData.OSM))
         {
-            addTelenavTrafficLocationCode(firstChunk, codes);
             if (chunks.size() > 2)
             {
                 // extract each edge id from the third chunk

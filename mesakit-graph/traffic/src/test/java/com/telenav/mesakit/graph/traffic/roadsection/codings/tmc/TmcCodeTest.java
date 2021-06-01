@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.traffic.roadsection.codings.tmc;
 
-import com.telenav.mesakit.map.geography.project.KivaKitMapGeographyUnitTest;
+import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
 import org.junit.Test;
 
-public class TmcCodeTest extends KivaKitMapGeographyUnitTest
+public class TmcCodeTest extends MapGeographyUnitTest
 {
     @Test
     public void testIsTmcCode()

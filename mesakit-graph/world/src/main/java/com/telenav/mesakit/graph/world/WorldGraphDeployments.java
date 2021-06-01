@@ -18,8 +18,12 @@
 
 package com.telenav.mesakit.graph.world;
 
+import com.telenav.kivakit.configuration.Deployment;
+import com.telenav.kivakit.configuration.DeploymentSet;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.path.PackagePath;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
 
 /**
  * {@link WorldGraphDeployments} is a {@link DeploymentSet} that includes deployment configurations for a few built-in
@@ -41,27 +45,7 @@ public class WorldGraphDeployments extends DeploymentSet
     public static Deployment localDeployment()
     {
         return LOGGER.listenTo(new Deployment("local", "developer laptop"))
-                .loadAll(PackagePath.parse(WorldGraph.class, "configuration/local"));
-    }
-
-    /**
-     * @return A deployment of the world graph for the navteam, with a local repository at
-     * ~/tdk/graph/world-graph/repositories/local and a remote repository at hdfs://navteam/tdk/world-graph/repositories/navteam
-     */
-    public static Deployment navteamDeployment()
-    {
-        return LOGGER.listenTo(new Deployment("navteam", "nav team data"))
-                .loadAll(PackagePath.parse(WorldGraph.class, "configuration/navteam"));
-    }
-
-    /**
-     * @return A deployment of the world graph for the osmteam, with a local repository at
-     * ~/tdk/graph/world-graph/repositories/local and a remote repository at hdfs://osmteam/tdk/world-graph/repositories/osmteam
-     */
-    public static Deployment osmteamDeployment()
-    {
-        return LOGGER.listenTo(new Deployment("osmteam", "osm team data"))
-                .loadAll(PackagePath.parse(WorldGraph.class, "configuration/osmteam"));
+                .addPackage(WorldGraph.class, "configuration/local");
     }
 
     /**
@@ -73,12 +57,10 @@ public class WorldGraphDeployments extends DeploymentSet
         listener.listenTo(this);
         addDeployments(tdkWorldGraphDeploymentsFolder());
         add(localDeployment());
-        add(osmteamDeployment());
-        add(navteamDeployment());
     }
 
     private Folder tdkWorldGraphDeploymentsFolder()
     {
-        return Folder.tdkConfigurationFolder().folder("world-graph/deployments");
+        return Folder.kivakitCache().folder("world-graph/deployments");
     }
 }
