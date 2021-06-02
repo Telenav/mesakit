@@ -9,7 +9,6 @@ open module mesakit.graph.core
     requires transitive mesakit.map.road.name.standardizer;
     requires transitive mesakit.map.ui.debug;
     requires transitive mesakit.map.geography;
-    requires transitive mesakit.graph.traffic;
 
     exports com.telenav.mesakit.graph.analytics.classification.classifiers.road;
     exports com.telenav.mesakit.graph.analytics.classification.classifiers.signpost;
