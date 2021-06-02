@@ -189,9 +189,9 @@ public class MapLine extends LabeledMapShape
     }
 
     @Override
-    public MapLine withLabel(final String label)
+    public MapLine withLabelText(final String label)
     {
-        return (MapLine) super.withLabel(label);
+        return (MapLine) super.withLabelText(label);
     }
 
     @Override

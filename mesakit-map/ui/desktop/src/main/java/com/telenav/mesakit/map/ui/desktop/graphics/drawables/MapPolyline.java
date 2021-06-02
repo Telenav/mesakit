@@ -184,9 +184,9 @@ public class MapPolyline extends LabeledMapShape
     }
 
     @Override
-    public MapPolyline withLabel(final String label)
+    public MapPolyline withLabelText(final String label)
     {
-        return (MapPolyline) super.withLabel(label);
+        return (MapPolyline) super.withLabelText(label);
     }
 
     @Override

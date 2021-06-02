@@ -172,16 +172,16 @@ public class MapBox extends LabeledMapShape
     }
 
     @Override
-    public MapBox withLabel(final String label)
-    {
-        return (MapBox) super.withLabel(label);
-    }
-
-    @Override
     public MapBox withLabelStyle(final Style style)
     {
         ensureNotNull(style);
         return (MapBox) super.withLabelStyle(style);
+    }
+
+    @Override
+    public MapBox withLabelText(final String label)
+    {
+        return (MapBox) super.withLabelText(label);
     }
 
     @Override

@@ -135,7 +135,7 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
                 .withLabelStyle(ACTIVE_LABEL)
                 .withRoundedLabelCorners(pixels(10))
                 .withRectangle(node.bounds())
-                .withLabel(label);
+                .withLabelText(label);
     }
 
     private void frameComplete()

@@ -43,8 +43,10 @@ import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapLine;
 
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.Shape;
 import java.awt.geom.Path2D;
+import java.awt.geom.Point2D;
 
 /**
  * A {@link DrawingSurface} with a {@link #mapArea()} and a {@link #drawingSize()} and a {@link #projection()} that maps
@@ -250,6 +252,16 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
     {
         final var mapPoint = point.minus(origin());
         return projection().toMap(mapPoint);
+    }
+
+    public Location toMap(final Point2D point)
+    {
+        return toMap(DrawingPoint.point(point));
+    }
+
+    public Location toMap(final Point point)
+    {
+        return toMap(DrawingPoint.point(point));
     }
 
     private Path2D path(final Polyline line)

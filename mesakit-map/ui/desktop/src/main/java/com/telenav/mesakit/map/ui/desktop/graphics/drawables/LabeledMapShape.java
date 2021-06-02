@@ -92,17 +92,17 @@ public abstract class LabeledMapShape extends BaseMapDrawable
         return null;
     }
 
-    public LabeledMapShape withLabel(final String label)
-    {
-        final var copy = copy();
-        copy.label = label;
-        return copy;
-    }
-
     public LabeledMapShape withLabelStyle(final Style style)
     {
         final var copy = copy();
         copy.labelStyle = style;
+        return copy;
+    }
+
+    public LabeledMapShape withLabelText(final String label)
+    {
+        final var copy = copy();
+        copy.label = label;
         return copy;
     }
 

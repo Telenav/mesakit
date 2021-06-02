@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
+import com.telenav.kivakit.kernel.language.values.level.Percent;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Dot;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingHeight;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
@@ -32,8 +33,6 @@ import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 
 import java.awt.Shape;
-
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 
 /**
  * @author jonathanl (shibo)
@@ -113,9 +112,15 @@ public class MapDot extends LabeledMapShape
     }
 
     @Override
+    public MapDot scaledBy(final Percent scaleFactor)
+    {
+        return copy().withRadius(radius.times(scaleFactor));
+    }
+
+    @Override
     public MapDot scaledBy(final double scaleFactor)
     {
-        return unsupported();
+        return copy().withRadius(radius.times(scaleFactor));
     }
 
     @Override
@@ -161,9 +166,9 @@ public class MapDot extends LabeledMapShape
     }
 
     @Override
-    public MapDot withLabel(final String label)
+    public MapDot withLabelText(final String label)
     {
-        return (MapDot) super.withLabel(label);
+        return (MapDot) super.withLabelText(label);
     }
 
     @Override

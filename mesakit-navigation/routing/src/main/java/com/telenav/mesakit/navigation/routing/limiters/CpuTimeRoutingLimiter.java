@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.navigation.routing.limiters;
 
-import com.telenav.kivakit.kernel.language.time.Duration;
 import com.telenav.kivakit.kernel.language.time.PreciseDuration;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.navigation.routing.RoutingInstruction;
@@ -33,9 +32,9 @@ public class CpuTimeRoutingLimiter implements RoutingLimiter
 
     private final PreciseDuration start = PreciseDuration.cpuTime();
 
-    public CpuTimeRoutingLimiter(final Duration maximum)
+    public CpuTimeRoutingLimiter(final PreciseDuration maximum)
     {
-        this.maximum = PreciseDuration.milliseconds(maximum.asMilliseconds());
+        this.maximum = maximum;
     }
 
     @Override
