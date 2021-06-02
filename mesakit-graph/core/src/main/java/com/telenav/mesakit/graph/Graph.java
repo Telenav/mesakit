@@ -23,7 +23,6 @@ import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.kernel.data.comparison.Differences;
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.kernel.language.collections.map.ObjectMap;
 import com.telenav.kivakit.kernel.language.iteration.Iterables;
 import com.telenav.kivakit.kernel.language.iteration.Next;
 import com.telenav.kivakit.kernel.language.iteration.Streams;
@@ -98,9 +97,7 @@ import com.telenav.mesakit.graph.specifications.library.attributes.AttributeSet;
 import com.telenav.mesakit.graph.specifications.library.store.ArchivedGraphStore;
 import com.telenav.mesakit.graph.specifications.library.store.GraphStore;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
-import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.OsmPbfGraphLoader;
-import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapRelationIdentifier;
@@ -128,7 +125,6 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -204,7 +200,6 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
  *     <li>{@link #load(GraphArchive)} - Loads from a .graph file. A better way is to use {@link SmartGraphLoader}</li>
  *     <li>{@link #loadFreeFlow(Resource)} - Loads free flow information from the given side-file</li>
  *     <li>{@link #loadSpeedPattern(Resource)} - Loads speed pattern information from the given side-file</li>
- *     <li>{@link #loadTraceCounts(Resource)} - Loads trace counts from the given side-file</li>
  *     <li>{@link #loadTurnRestrictions(Resource)} - Loads turn restrictions from the given side-file</li>
  *     <li>{@link #loadAll()} - Forces all graph attributes to load into memory</li>
  *     <li>{@link #loadAll(AttributeSet attributes)} - Loads the specified attributes into memory</li>
@@ -319,24 +314,14 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
  * <p>
  * <b>Routes</b>
  * <ul>
- *     <li>{@link #route(Edge, RoadSectionIdentifier)}</li>
- *     <li>{@link #routeFor(RoadSectionIdentifier)}</li>
- *     <li>{@link #routeForWayIdentifier(PbfWayIdentifier)}</li>
- *     <li>#route</li>
+ *     <li>{@link #routeForWayIdentifier(MapWayIdentifier)}</li>
  * </ul>
  * <p>
  * <b>Ways</b>
  * <ul>
  *     <li>{@link #wayCount()}</li>
  *     <li>{@link #wayIdentifiers()}</li>
- *     <li>{@link #routeForWayIdentifier(PbfWayIdentifier)}</li>
- * </ul>
- * <p>
- * <b>Traffic</b>
- * <ul>
- *     <li>{@link #route(Edge, RoadSectionIdentifier)}</li>
- *     <li>{@link #routeFor(RoadSectionIdentifier)}</li>
- *     <li>{@link #roadSectionIdentifiersIntersecting(Rectangle)}</li>
+ *     <li>{@link #routeForWayIdentifier(MapWayIdentifier)}</li>
  * </ul>
  * <p>
  * <b>Testing</b>
@@ -389,11 +374,6 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
         final var metadata = Metadata.from(input);
         return metadata == null ? null : metadata.newGraph();
     }
-
-    /**
-     * Map from road section identifier to route
-     */
-    private final Map<RoadSectionIdentifier, Route> routeForRoadSectionIdentifier = new ObjectMap<>();
 
     /**
      * The store where graph data for this graph is located. The {@link GraphStore} has sub-stores that are subclasses
@@ -1221,10 +1201,6 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     {
     }
 
-    public void loadTraceCounts(final Resource resource)
-    {
-    }
-
     public void loadTurnRestrictions(final Resource resource)
     {
     }
@@ -1601,80 +1577,6 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     }
 
     /**
-     * @return Traffic road sections that intersect the given bounds
-     */
-    public Set<RoadSectionIdentifier> roadSectionIdentifiersIntersecting(final Rectangle bounds)
-    {
-        final Set<RoadSectionIdentifier> sections = new HashSet<>();
-        for (final var edge : edgesIntersecting(bounds))
-        {
-            if (edge.supports(OsmEdgeAttributes.get().FORWARD_TMC_IDENTIFIERS))
-            {
-                Iterables.addAll(edge.tmcIdentifiers(), sections);
-            }
-            if (edge.supports(OsmEdgeAttributes.get().FORWARD_TELENAV_TRAFFIC_LOCATION_IDENTIFIER))
-            {
-                final var ttl = edge.osmTelenavTrafficLocationIdentifier();
-                if (ttl != null)
-                {
-                    sections.add(ttl);
-                }
-            }
-        }
-        return sections;
-    }
-
-    /**
-     * @return A route for the given traffic road section
-     */
-    public synchronized Route routeFor(final RoadSectionIdentifier identifier)
-    {
-        if (routeForRoadSectionIdentifier.isEmpty())
-        {
-            var counter = 0L;
-            for (final var edge : edges())
-            {
-                if (edge.supports(OsmEdgeAttributes.get().FORWARD_TELENAV_TRAFFIC_LOCATION_IDENTIFIER))
-                {
-                    final var ttl = edge.osmTelenavTrafficLocationIdentifier();
-                    if (ttl != null)
-                    {
-                        try
-                        {
-                            routeForRoadSectionIdentifier.put(ttl, route(edge, ttl));
-                        }
-                        catch (final Exception e)
-                        {
-                            problem(e, "Can't find route for ${debug}", ttl);
-                        }
-                    }
-                }
-                if (edge.supports(OsmEdgeAttributes.get().FORWARD_TMC_IDENTIFIERS))
-                {
-                    for (final var tmc : edge.tmcIdentifiers())
-                    {
-                        try
-                        {
-                            routeForRoadSectionIdentifier.put(tmc, route(edge, tmc));
-                        }
-                        catch (final Exception e)
-                        {
-                            problem(e, "Can't find route for ${debug}", tmc);
-                        }
-                    }
-                }
-                counter++;
-                if (counter % 1000000 == 0)
-                {
-                    information("RoadSectionCode Index: Loaded ${debug} million edges over ${debug}", counter / 1000000, edgeCount());
-                }
-            }
-            information("RoadSectionCode Index: Loaded ${debug} edges.", counter);
-        }
-        return routeForRoadSectionIdentifier.get(identifier);
-    }
-
-    /**
      * @return The sequence of edges that covers the given way
      */
     public Route routeForWayIdentifier(final MapWayIdentifier wayIdentifier)
@@ -2042,15 +1944,5 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
             }
         }
         return matches;
-    }
-
-    /**
-     * @return The route for the given traffic road section identifier, starting at the given edge
-     */
-    private Route route(final Edge edge, final RoadSectionIdentifier identifier)
-    {
-        return edge.route(at ->
-                (at.supports(OsmEdgeAttributes.get().FORWARD_TELENAV_TRAFFIC_LOCATION_IDENTIFIER) && identifier.equals(at.osmTelenavTrafficLocationIdentifier()))
-                        || (at.supports(OsmEdgeAttributes.get().FORWARD_TMC_IDENTIFIERS) && Iterables.contains(at.tmcIdentifiers(), identifier)));
     }
 }

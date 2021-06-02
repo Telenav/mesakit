@@ -1,13 +1,13 @@
 package com.telenav.mesakit.graph.query;
 
-import com.telenav.kivakit.application.KivaKitApplication;
+import com.telenav.kivakit.application.Application;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.kernel.interfaces.code.Callback;
 import com.telenav.kivakit.kernel.language.collections.set.Sets;
-import com.telenav.kivakit.kernel.messaging.Message;
 import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.operation.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.messaging.Message;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.io.load.SmartGraphLoader;
@@ -25,7 +25,7 @@ import java.util.Set;
  *
  * @author jonathanl (shibo)
  */
-public class GraphQuery extends KivaKitApplication
+public class GraphQuery extends Application
 {
     /**
      * Entrypoint for debugging and testing purposes only (see {@link #onRun()})
@@ -59,10 +59,10 @@ public class GraphQuery extends KivaKitApplication
         reporter.start();
 
         // create a lexer for query,
-        final var lexer = new com.telenav.kivakit.graph.query.GraphQueryLexer(CharStreams.fromString(query));
+        final var lexer = new GraphQueryLexer(CharStreams.fromString(query));
 
         // parse the lexer's token stream,
-        final var parser = new com.telenav.kivakit.graph.query.GraphQueryParser(new CommonTokenStream(lexer));
+        final var parser = new GraphQueryParser(new CommonTokenStream(lexer));
         final var listener = new GraphQueryErrorListener(errorHandler);
         parser.addErrorListener(listener);
         final var queryParseTree = parser.select();
@@ -136,7 +136,7 @@ public class GraphQuery extends KivaKitApplication
     protected void onRun()
     {
         final var query = "select (roadType = 'freeway' and !isRamp) then isRamp+ then (roadType = 'freeway' and !isRamp)";
-        final var graphFile = new File("/Users/Shared/tdk-8-data/OSM/new-mexico/new-mexico-latest.graph");
+        final var graphFile = File.parse("/Users/Shared/tdk-8-data/OSM/new-mexico/new-mexico-latest.graph");
         final var graph = new SmartGraphLoader(graphFile).load();
         final var candidates = graph.edges();
         // candidates = new EdgeSequence(List.of(graph.newEdge(new EdgeIdentifier(319565312000000L))));

@@ -21,8 +21,6 @@ package com.telenav.mesakit.graph.specifications.common.edge.store;
 import com.telenav.kivakit.kernel.data.validation.Validatable;
 import com.telenav.kivakit.kernel.data.validation.Validation;
 import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.language.iteration.Iterables;
-import com.telenav.kivakit.kernel.language.iteration.Next;
 import com.telenav.kivakit.kernel.language.time.Time;
 import com.telenav.kivakit.kernel.language.values.count.BitCount;
 import com.telenav.kivakit.kernel.language.values.count.Count;
@@ -39,7 +37,6 @@ import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
 import com.telenav.kivakit.primitive.collections.list.store.LongLinkedListStore;
 import com.telenav.kivakit.primitive.collections.map.multi.dynamic.LongToIntMultiMap;
-import com.telenav.kivakit.primitive.collections.map.multi.fixed.IntToLongFixedMultiMap;
 import com.telenav.kivakit.primitive.collections.map.multi.fixed.LongToLongFixedMultiMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.IntToByteMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.LongToIntMap;
@@ -74,9 +71,6 @@ import com.telenav.mesakit.graph.specifications.common.element.GraphElementStore
 import com.telenav.mesakit.graph.specifications.common.relation.HeavyWeightRelation;
 import com.telenav.mesakit.graph.specifications.common.vertex.store.VertexStore;
 import com.telenav.mesakit.graph.specifications.library.attributes.AttributeReference;
-import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
-import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionCodingSystem;
-import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapWayIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
@@ -434,22 +428,6 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     private LongLinkedListStore temporaryRelations;
 
     private LongToIntMap temporaryWayIdentifierToRelationIndex;
-
-    private final AttributeReference<IntToLongFixedMultiMap> FORWARD_TMC_IDENTIFIERS =
-            new AttributeReference<>(this, OsmEdgeAttributes.get().FORWARD_TMC_IDENTIFIERS, "forwardTmcIdentifiers",
-                    () -> (IntToLongFixedMultiMap) new IntToLongFixedMultiMap("forwardTmcIdentifiers")
-                            .initialSize(estimatedElements()).initialChildSize(8));
-
-    @KivaKitArchivedField
-    private IntToLongFixedMultiMap forwardTmcIdentifiers;
-
-    private final AttributeReference<IntToLongFixedMultiMap> REVERSE_TMC_IDENTIFIERS =
-            new AttributeReference<>(this, OsmEdgeAttributes.get().REVERSE_TMC_IDENTIFIERS, "reverseTmcIdentifiers",
-                    () -> (IntToLongFixedMultiMap) new IntToLongFixedMultiMap("reverseTmcIdentifiers")
-                            .initialSize(estimatedElements()).initialChildSize(8));
-
-    @KivaKitArchivedField
-    private IntToLongFixedMultiMap reverseTmcIdentifiers;
 
     protected EdgeStore(final Graph graph)
     {
@@ -836,34 +814,6 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         return Collections.emptySet();
     }
 
-    public final Iterable<RoadSectionIdentifier> retrieveReverseTmcIdentifiers(final Edge edge)
-    {
-        REVERSE_TMC_IDENTIFIERS.load();
-        if (reverseTmcIdentifiers != null)
-        {
-            final var identifiers = reverseTmcIdentifiers.get(edge.index());
-            if (identifiers != null && !identifiers.isEmpty())
-            {
-                return Iterables.iterable(() -> new Next<>()
-                {
-                    private int index = 0;
-
-                    @Override
-                    public RoadSectionIdentifier onNext()
-                    {
-                        if (index < identifiers.size())
-                        {
-                            return RoadSectionIdentifier.forCodingSystemAndIdentifier(
-                                    RoadSectionCodingSystem.TMC, identifiers.get(index++), false);
-                        }
-                        return null;
-                    }
-                });
-            }
-        }
-        return Collections.emptyList();
-    }
-
     /**
      * @return The functional class of the given edge
      * @see RoadFunctionalClass
@@ -1005,34 +955,6 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         });
     }
 
-    public final Iterable<RoadSectionIdentifier> retrieveTmcIdentifiers(final Edge edge)
-    {
-        FORWARD_TMC_IDENTIFIERS.load();
-        if (forwardTmcIdentifiers != null)
-        {
-            final var identifiers = forwardTmcIdentifiers.get(edge.index());
-            if (identifiers != null && !identifiers.isEmpty())
-            {
-                return Iterables.iterable(() -> new Next<>()
-                {
-                    private int index = 0;
-
-                    @Override
-                    public RoadSectionIdentifier onNext()
-                    {
-                        if (index < identifiers.size())
-                        {
-                            return RoadSectionIdentifier.forCodingSystemAndIdentifier(
-                                    RoadSectionCodingSystem.TMC, identifiers.get(index++), false);
-                        }
-                        return null;
-                    }
-                });
-            }
-        }
-        return Collections.emptyList();
-    }
-
     /**
      * @return The node identifier of the "to" vertex of the edge
      */
@@ -1112,8 +1034,6 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         assert edge != null;
 
         super.storeAttributes(edge);
-
-        storeTmcIdentifiers(edge);
 
         BRIDGE_TYPE.storeObject(edge, edge.bridgeType());
         COUNTRY.storeObject(edge, edge.country());
@@ -1598,38 +1518,6 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         }
     }
 
-    protected void storeTmcIdentifiers(final Edge edge)
-    {
-        var forwardIdentifiers = edge.tmcIdentifiers();
-
-        // If there's no forward TMC but the edge is one-way
-        if ((forwardIdentifiers == null || !forwardIdentifiers.iterator().hasNext()) && edge.isOneWay())
-        {
-            // then get the reverse TMC in case the edge is backwards
-            final var reversed = edge.reversed();
-            if (reversed != null)
-            {
-                forwardIdentifiers = reversed.tmcIdentifiers();
-            }
-        }
-
-        if (forwardIdentifiers != null && forwardIdentifiers.iterator().hasNext())
-        {
-            FORWARD_TMC_IDENTIFIERS.allocate();
-            forwardTmcIdentifiers.putAll(edge.index(), toLongArray(GraphCoreLimits.Estimated.TMCS_PER_EDGE, forwardIdentifiers));
-        }
-        if (edge.isTwoWay())
-        {
-            final var reversed = edge.reversed();
-            final var reverseIdentifiers = reversed.tmcIdentifiers();
-            if (reverseIdentifiers != null && reverseIdentifiers.iterator().hasNext())
-            {
-                REVERSE_TMC_IDENTIFIERS.allocate();
-                reverseTmcIdentifiers.putAll(edge.index(), toLongArray(GraphCoreLimits.Estimated.TMCS_PER_EDGE, reverseIdentifiers));
-            }
-        }
-    }
-
     private void configureSerializer()
     {
         final var kryo = (KryoSerializationSession) SerializationSession.threadLocal(this);
@@ -1743,19 +1631,5 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         edge.index(index);
         vertexStore().temporaryRemove(edge);
         super.remove(edge);
-    }
-
-    @SuppressWarnings("SameParameterValue")
-    private LongArray toLongArray(final Estimate initialSize, final Iterable<RoadSectionIdentifier> identifiers)
-    {
-        final var array = new LongArray("temporary");
-        array.initialSize(initialSize);
-        array.initialize();
-
-        for (final var identifier : identifiers)
-        {
-            array.add(identifier.value().asLong());
-        }
-        return array;
     }
 }

@@ -56,13 +56,14 @@ public class RelationFilter implements Filter<PbfRelation>, Named
         return fail("Unrecognized relation filter '" + name + "'");
     }
 
-    public static SwitchParser.Builder<RelationFilter> relationFilter()
+    public static SwitchParser.Builder<RelationFilter> relationFilterSwitchParser()
     {
         PbfFilters.loadAll();
-        return switchParser("relation-filter", "The name of a relation filter:\n\n" + help() + "\n");
+        return relationFilterSwitchParser("relation-filter", "The name of a relation filter:\n\n" + help() + "\n");
     }
 
-    public static SwitchParser.Builder<RelationFilter> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<RelationFilter> relationFilterSwitchParser(final String name,
+                                                                                  final String description)
     {
         return SwitchParser.builder(RelationFilter.class).name(name).description(description)
                 .converter(new Converter(LOGGER));

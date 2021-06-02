@@ -20,13 +20,11 @@ package com.telenav.mesakit.graph.specifications.osm.graph.edge.model;
 
 import com.telenav.kivakit.kernel.data.validation.Validation;
 import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.store.OsmEdgeStore;
-import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 import com.telenav.mesakit.map.geography.shape.polyline.PolylineSnapper;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
@@ -168,28 +166,6 @@ public class OsmEdge extends Edge
             default:
                 return Distance.meters(25);
         }
-    }
-
-    /**
-     * @return The Telenav Traffic Location identifier or "TTL" for this edge
-     */
-    @Override
-    public RoadSectionIdentifier osmTelenavTrafficLocationIdentifier()
-    {
-        if (isForward())
-        {
-            return store().retrieveForwardTelenavTrafficLocationIdentifier(this);
-        }
-        else
-        {
-            return store().retrieveReverseTelenavTrafficLocationIdentifier(this);
-        }
-    }
-
-    @Override
-    public Count osmTraceCount()
-    {
-        return store().retrieveTraceCount(this);
     }
 
     @Override

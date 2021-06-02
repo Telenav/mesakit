@@ -21,26 +21,29 @@
 
     <dependencies>
 
+        <!-- KivaKit -->
+
+        <dependency>
+            <groupId>com.telenav.kivakit</groupId>
+            <artifactId>kivakit-logs-server</artifactId>
+            <version>${kivakit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.telenav.kivakit</groupId>
+            <artifactId>kivakit-network-http</artifactId>
+            <version>${kivakit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.telenav.kivakit</groupId>
+            <artifactId>kivakit-filesystems-hdfs</artifactId>
+            <version>${kivakit.version}</version>
+        </dependency>
+
         <!-- MesaKit -->
 
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
-            <artifactId>mesakit-logs-server</artifactId>
-            <version>${mesakit.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-graph-core</artifactId>
-            <version>${mesakit.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.telenav.mesakit</groupId>
-            <artifactId>mesakit-filesystems-hdfs</artifactId>
-            <version>${mesakit.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.telenav.mesakit</groupId>
-            <artifactId>mesakit-core-network-http</artifactId>
             <version>${mesakit.version}</version>
         </dependency>
         <dependency>
@@ -88,7 +91,7 @@
                             <target name = "Install world graph deployments">
                                 <echo>Installing world graph deployments in ${user.home}/.mesakit/${mesakit.version}/configuration/world-graph/deployments</echo>
                                 <copy todir = "${user.home}/.mesakit/${mesakit.version}/configuration/world-graph/deployments">
-                                    <fileset dir = "${env.MesaKit_HOME}/mesakit-graph/world/src/main/java/com.telenav.mesakit/graph/world/configuration">
+                                    <fileset dir = "${env.MESAKIT_HOME}/mesakit-graph/world/src/main/java/com/telenav/mesakit/graph/world/configuration">
                                         <include name = "**/*"/>
                                     </fileset>
                                 </copy>

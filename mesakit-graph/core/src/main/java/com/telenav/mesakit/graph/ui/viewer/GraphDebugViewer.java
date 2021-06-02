@@ -18,43 +18,36 @@
 
 package com.telenav.mesakit.graph.ui.viewer;
 
-import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Color;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.Drawable;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Route;
+import com.telenav.mesakit.graph.ui.viewer.theme.GraphDebugViewerTheme;
 import com.telenav.mesakit.map.ui.debug.DebugViewer;
+import com.telenav.mesakit.map.ui.desktop.viewer.DrawableIdentifier;
 
 /**
- * A {@link SwingViewer} with convenience methods to update typical {@link Viewable}s.
+ * A {@link DebugViewer} with convenience methods to update typical {@link Drawable}s.
  *
  * @author jonathanl (shibo)
  */
 public class GraphDebugViewer extends DebugViewer
 {
-    private static final ViewableIdentifier CURRENT_EDGE = new ViewableIdentifier("currentEdge");
+    private static final DrawableIdentifier CURRENT_EDGE = new DrawableIdentifier("currentEdge");
 
-    private static final ViewableIdentifier CANDIDATE_EDGE = new ViewableIdentifier("candidateEdge");
+    private static final DrawableIdentifier CANDIDATE_EDGE = new DrawableIdentifier("candidateEdge");
 
-    private static final ViewableIdentifier HIGHLIGHT_EDGE = new ViewableIdentifier("highlightEdge");
+    private static final DrawableIdentifier HIGHLIGHT_EDGE = new DrawableIdentifier("highlightEdge");
 
-    private static final ViewableIdentifier CURRENT_ROUTE = new ViewableIdentifier("currentRoute");
+    private static final DrawableIdentifier CURRENT_ROUTE = new DrawableIdentifier("currentRoute");
 
-    private static final ViewableIdentifier CANDIDATE_ROUTE = new ViewableIdentifier("candidateRoute");
+    private static final DrawableIdentifier CANDIDATE_ROUTE = new DrawableIdentifier("candidateRoute");
 
-    private static final ViewableIdentifier HIGHLIGHT_ROUTE = new ViewableIdentifier("highlightRoute");
+    private static final DrawableIdentifier HIGHLIGHT_ROUTE = new DrawableIdentifier("highlightRoute");
 
-    private Color highlightColor = Color.RED;
+    private final GraphDebugViewerTheme theme = new GraphDebugViewerTheme();
 
-    private Color currentColor = Color.BLUE;
-
-    private Color candidateColor = Color.GREEN;
-
-    private Color edgeColor = Color.GREEN;
-
-    private Color routeColor = Color.GREEN;
-
-    public GraphDebugViewer(final boolean debug)
+    public GraphDebugViewer()
     {
-        super(debug);
     }
 
     public void candidate(final Edge edge)
@@ -64,7 +57,7 @@ public class GraphDebugViewer extends DebugViewer
 
     public void candidate(final Edge edge, final String label)
     {
-        view().update(CANDIDATE_EDGE, new ViewableEdge(edge, Color.LIGHT_GRAY, candidateColor, label));
+        view().update(CANDIDATE_EDGE, new DrawableEdge(edge, theme.styleCandidate(), label));
     }
 
     public void candidate(final Route route)
@@ -74,12 +67,8 @@ public class GraphDebugViewer extends DebugViewer
 
     public void candidate(final Route route, final String label)
     {
-        view().update(CANDIDATE_EDGE, route.asViewable(Color.LIGHT_GRAY, candidateColor, label));
-    }
 
-    public void candidateColor(final Color candidateColor)
-    {
-        this.candidateColor = candidateColor;
+        view().update(CANDIDATE_EDGE, new DrawableRoute(route, theme.styleCandidate(), label));
     }
 
     public void clearCandidateEdge()
@@ -119,7 +108,7 @@ public class GraphDebugViewer extends DebugViewer
 
     public void current(final Edge edge, final String label)
     {
-        view().update(CURRENT_EDGE, new ViewableEdge(edge, Color.LIGHT_GRAY, currentColor, label));
+        view().update(CURRENT_EDGE, new DrawableEdge(edge, theme.styleCurrent(), label));
     }
 
     public void current(final Route route)
@@ -129,46 +118,26 @@ public class GraphDebugViewer extends DebugViewer
 
     public void current(final Route route, final String label)
     {
-        view().update(CURRENT_ROUTE, route.asViewable(Color.LIGHT_GRAY, currentColor, label));
-    }
-
-    public void currentColor(final Color currentColor)
-    {
-        this.currentColor = currentColor;
+        view().update(CURRENT_ROUTE, new DrawableRoute(route, theme.styleCurrent(), label));
     }
 
     public void edge(final Edge edge, final String label)
     {
-        view().add(new ViewableEdge(edge, Color.LIGHT_GRAY, edgeColor, label));
-    }
-
-    public void edgeColor(final Color edgeColor)
-    {
-        this.edgeColor = edgeColor;
+        view().add(new DrawableEdge(edge, theme.styleEdge(), label));
     }
 
     public void highlight(final Edge edge, final String label)
     {
-        view().update(HIGHLIGHT_EDGE, new ViewableEdge(edge, Color.LIGHT_GRAY, highlightColor, label));
+        view().update(HIGHLIGHT_EDGE, new DrawableEdge(edge, theme.styleHighlight(), label));
     }
 
-    public void highlight(final Route edge, final String label)
+    public void highlight(final Route route, final String label)
     {
-        view().update(HIGHLIGHT_ROUTE, edge.asViewable(Color.LIGHT_GRAY, highlightColor, label));
-    }
-
-    public void highlightColor(final Color highlightColor)
-    {
-        this.highlightColor = highlightColor;
+        view().update(HIGHLIGHT_ROUTE, new DrawableRoute(route, theme.styleRoute(), label));
     }
 
     public void route(final Route route, final String label)
     {
-        view().add(route.asViewable(Color.LIGHT_GRAY, routeColor, label));
-    }
-
-    public void routeColor(final Color routeColor)
-    {
-        this.routeColor = routeColor;
+        view().add(new DrawableRoute(route, theme.styleRoute(), label));
     }
 }

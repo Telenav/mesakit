@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.graph.matching.conflation;
 
+import com.telenav.kivakit.kernel.language.primitives.Booleans;
 import com.telenav.kivakit.kernel.language.values.level.Percent;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
@@ -47,7 +48,15 @@ public class EdgeConflater
     /**
      * True to enable visual debugger
      */
-    private static final boolean DEBUG = false;
+    private static final boolean DEBUG_VIEWER = false;
+
+    /**
+     * @return True if visual debugging is enabled
+     */
+    public static boolean visualDebug()
+    {
+        return Booleans.isTrue(System.getProperty("MESAKIT_EDGE_CONFLATER_VISUAL_DEBUG"));
+    }
 
     /**
      * The base graph being conflated with
@@ -97,7 +106,7 @@ public class EdgeConflater
     public EdgeConflater(final Graph base)
     {
         this.base = base;
-        viewer = new GraphDebugViewer(DEBUG);
+        viewer = visualDebug() ? new GraphDebugViewer() : null;
     }
 
     public void augmentationSpacing(final Distance spacing)
@@ -111,8 +120,11 @@ public class EdgeConflater
     public ConflationSet conflate(final Edge enhancing)
     {
         // Show current edge in viewer
-        viewer.clear();
-        viewer.current(enhancing, "enhancing " + enhancing.identifierAsLong());
+        if (viewer != null)
+        {
+            viewer.clear();
+            viewer.current(enhancing, "enhancing " + enhancing.identifierAsLong());
+        }
 
         // Set of conflations
         final var conflations = new ConflationSet();
@@ -168,8 +180,11 @@ public class EdgeConflater
             }
 
             // Show candidate edge in viewer
-            viewer.candidate(base, "candidate (" + closeness + ")");
-            viewer.frameComplete();
+            if (viewer != null)
+            {
+                viewer.candidate(base, "candidate (" + closeness + ")");
+                viewer.frameComplete();
+            }
 
             // If the candidate edge is close enough
             if (closeness.isGreaterThan(minimumCloseness))
@@ -183,9 +198,12 @@ public class EdgeConflater
         if (!conflations.isEmpty())
         {
             // show the best result in the viewer
-            viewer.clearCandidateEdge();
-            viewer.highlight(conflations.closest().base(), "closest (" + conflations.closest().closeness() + ")");
-            viewer.frameComplete();
+            if (viewer != null)
+            {
+                viewer.clearCandidateEdge();
+                viewer.highlight(conflations.closest().base(), "closest (" + conflations.closest().closeness() + ")");
+                viewer.frameComplete();
+            }
         }
 
         // Return any conflations we found

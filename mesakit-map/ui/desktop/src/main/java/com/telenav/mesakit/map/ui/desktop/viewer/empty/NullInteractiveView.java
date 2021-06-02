@@ -45,7 +45,7 @@ public class NullInteractiveView implements InteractiveView
     }
 
     @Override
-    public void frameDelay(final Duration delay)
+    public void frameSpeed(final Duration delay)
     {
     }
 

@@ -67,7 +67,6 @@ import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner.EdgeSection;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner.EdgeSectioner;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner.WaySectioningGraphLoader;
-import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapWayIdentifier;
@@ -400,12 +399,6 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupport
  *     <li>{@link #travelTimeInMilliseconds()} - The travel time for this edge at free flow speed in milliseconds</li>
  * </ul>
  * <p>
- * <b>Traffic Information</b>
- * <ul>
- *     <li>{@link #osmTelenavTrafficLocationIdentifier()} - The TTL for this edge</li>
- *     <li>{@link #tmcIdentifiers()} - The TMC identifiers associated with this edge</li>
- *     <li>{@link #osmTraceCount()} - The number of GPS traces available for this edge (when loaded from a "side-file")</li>
- * </ul>
  * <b>Region and Locale</b>
  * <ul>
  *     <li>{@link #continent()} - The continent where this edge exists</li>
@@ -1941,22 +1934,6 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     }
 
     /**
-     * @return The Telenav Traffic Location identifier or "TTL" for this edge
-     */
-    public RoadSectionIdentifier osmTelenavTrafficLocationIdentifier()
-    {
-        return unsupported();
-    }
-
-    /**
-     * @return Total probe trace count for this edge for all time
-     */
-    public Count osmTraceCount()
-    {
-        return unsupported();
-    }
-
-    /**
      * @return All the edges other than this one that are connected to this edge at the given vertex
      */
     public EdgeSet otherEdges(final Vertex vertex)
@@ -2413,21 +2390,6 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     public boolean supportsNodeIdentifiers()
     {
         return supports(EdgeAttributes.get().FROM_NODE_IDENTIFIER);
-    }
-
-    /**
-     * @return The TMC identifiers for this edge
-     */
-    public Iterable<RoadSectionIdentifier> tmcIdentifiers()
-    {
-        if (isForward())
-        {
-            return store().retrieveTmcIdentifiers(this);
-        }
-        else
-        {
-            return store().retrieveReverseTmcIdentifiers(this);
-        }
     }
 
     /**

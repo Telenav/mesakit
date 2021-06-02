@@ -1,8 +1,10 @@
 package com.telenav.mesakit.graph.query.program;
 
-import com.telenav.kivakit.kernel.debug.Debug;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.string.conversion.StringFormat;
+import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.collections.EdgeSet;
@@ -10,7 +12,8 @@ import com.telenav.mesakit.graph.collections.EdgeSet;
 import java.util.HashSet;
 import java.util.LinkedList;
 
-import static com.telenav.kivakit.graph.query.program.EdgeStack.Result.*;
+import static com.telenav.mesakit.graph.query.program.EdgeStack.Result.ALREADY_ON_STACK;
+import static com.telenav.mesakit.graph.query.program.EdgeStack.Result.PUSHED;
 
 /**
  * A stack of edges used when evaluating graph query expressions
@@ -141,7 +144,7 @@ public class EdgeStack
         {
             return "[empty]";
         }
-        return ObjectList.from(stack).reversed().mapped(edge -> edge.asString(StringFormat.PROGRAMMATIC)).join(":") + " [top]";
+        return ObjectList.objectList(stack).reversed().mapped(edge -> edge.asString(StringFormat.PROGRAMMATIC)).join(":") + " [top]";
     }
 
     /**

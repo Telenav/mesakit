@@ -39,36 +39,33 @@ import com.telenav.kivakit.resource.compression.archive.FieldArchive;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.serialization.core.SerializationSession;
+import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.Place;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
-import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
-import com.telenav.mesakit.graph.traffic.roadsection.codings.tmc.TmcTableIdentifier;
 import com.telenav.mesakit.graph.world.grid.WorldCell;
-import com.telenav.mesakit.graph.world.grid.WorldCellList;
 import com.telenav.mesakit.graph.world.grid.WorldGrid;
 import com.telenav.mesakit.graph.world.repository.WorldGraphRepository;
 import com.telenav.mesakit.graph.world.repository.WorldGraphRepositoryFolder;
-import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapWayIdentifier;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.quadtree.QuadTreeSpatialIndex;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.region.project.MapRegionLimits;
 import com.telenav.mesakit.map.utilities.grid.GridCell;
-import com.telenav.mesakit.map.utilities.grid.GridCellIdentifier;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
-import static com.telenav.mesakit.graph.world.WorldGraph.AccessMode.READ;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.WRITE;
 
 /**
  * The world graph index stores metadata and provides spatial indexing services for a {@link WorldGraph} which can't
@@ -103,7 +100,7 @@ import static com.telenav.mesakit.graph.world.WorldGraph.AccessMode.READ;
  * <b>Ways</b>
  * <p>
  * It would be time consuming to search all cells in the world graph for a way identifier, so this index provides
- * the {@link #worldCellForWayIdentifier(WorldGrid, PbfWayIdentifier)} method to find one arbitrary cell containing a given way identifier.
+ * the {@link #worldCellForWayIdentifier(WorldGrid, MapWayIdentifier)} method to find one arbitrary cell containing a given way identifier.
  * Any other cells that contain the way identifier can be found by navigating the way starting within the given cell.
  *
  * @author jonathanl (shibo)
@@ -177,9 +174,6 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
     @KivaKitArchivedField
     private final Map<GridCell, Bytes> memorySize = new HashMap<>();
 
-    @KivaKitArchivedField(lazy = true)
-    private Map<TmcTableIdentifier, Set<GridCellIdentifier>> cellIdsForTmcTable;
-
     /** Spatial index of places */
     private transient QuadTreeSpatialIndex<WorldPlace> placeSpatialIndex;
 
@@ -200,20 +194,6 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
         cellForWayIdentifier = new SplitLongToIntMap("WorldGraphIndex.cellForPbfWayIdentifier");
         cellForWayIdentifier.initialSize(MapRegionLimits.ESTIMATED_WAYS);
         cellForWayIdentifier.initialize();
-    }
-
-    public WorldCellList cellsForTmcTable(final TmcTableIdentifier tableIdentifier, final WorldGrid grid)
-    {
-        final var cells = new WorldCellList();
-        if (cellIdsForTmcTable().containsKey(tableIdentifier))
-        {
-            for (final var cellIdentifier : cellIdsForTmcTable().get(tableIdentifier))
-            {
-                final var gridCell = grid.grid().cellForIdentifier(cellIdentifier);
-                cells.add(grid.worldCell(gridCell));
-            }
-        }
-        return cells;
     }
 
     public synchronized void index(final WorldCell worldCell, final Graph cellGraph)
@@ -239,9 +219,6 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
         {
             cellForWayIdentifier.put(edge.wayIdentifier().asLong(), worldCell.gridCell().identifier().identifier());
         }
-
-        // search tmc tables in this cell and store them into index
-        indexTmcTables(worldCell, cellGraph);
     }
 
     /**
@@ -260,7 +237,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
             file = file.materialized(ProgressReporter.NULL);
 
             // Attach the zip archive and the field archive based on it
-            archive = new FieldArchive(file, ProgressReporter.NULL, READ);
+            archive = new FieldArchive(file, SerializationSessionFactory.threadLocal(), ProgressReporter.NULL, READ);
 
             // Clear out fields we will load from archive
             clearLazyLoadedFields();
@@ -269,7 +246,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
             {
                 // Load archived fields
                 final var version = archive.version();
-                final VersionedObject<Metadata> metadata = archive.zip().load(SerializationSession.threadSerializer(LOGGER), "metadata");
+                final VersionedObject<Metadata> metadata = archive.zip().load(SerializationSession.threadLocal(LOGGER), "metadata");
                 if (metadata != null)
                 {
                     this.metadata = metadata.get();
@@ -358,7 +335,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
         try
         {
             // Create archive and save all non-null archived fields
-            final var archive = new FieldArchive(file, ProgressReporter.NULL, WRITE);
+            final var archive = new FieldArchive(file, SerializationSessionFactory.threadLocal(), ProgressReporter.NULL, WRITE);
             final var version = GraphArchive.VERSION;
             archive.version(version);
             archive.save("metadata", new VersionedObject<>(version, metadata));
@@ -384,7 +361,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
     }
 
     @SuppressWarnings({ "exports" })
-    public WorldCell worldCellForWayIdentifier(final WorldGrid grid, final PbfWayIdentifier wayIdentifier)
+    public WorldCell worldCellForWayIdentifier(final WorldGrid grid, final MapWayIdentifier wayIdentifier)
     {
         if (cellForWayIdentifier == null)
         {
@@ -403,43 +380,11 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
         this.worldGraph = worldGraph;
     }
 
-    private Map<TmcTableIdentifier, Set<GridCellIdentifier>> cellIdsForTmcTable()
-    {
-        if (cellIdsForTmcTable == null)
-        {
-            archive.loadFieldOf(this, "cellIdsForTmcTable");
-        }
-        return cellIdsForTmcTable;
-    }
-
     private void clearLazyLoadedFields()
     {
         // These will be lazy loaded from the archive, as needed
         places = null;
         cellForWayIdentifier = null;
-    }
-
-    private void indexTmcTables(final WorldCell worldCell, final Graph graph)
-    {
-        for (final var edge : graph.edges())
-        {
-            if (!edge.supports(OsmEdgeAttributes.get().FORWARD_TMC_IDENTIFIERS))
-            {
-                continue;
-            }
-
-            if (cellIdsForTmcTable == null)
-            {
-                cellIdsForTmcTable = new HashMap<>();
-            }
-
-            for (final var tmc : edge.tmcIdentifiers())
-            {
-                final var table = TmcTableIdentifier.fromTmcIdentifier(tmc);
-                final var cellIds = cellIdsForTmcTable.computeIfAbsent(table, k -> new HashSet<>());
-                cellIds.add(worldCell.gridCell().identifier());
-            }
-        }
     }
 
     private synchronized QuadTreeSpatialIndex<WorldPlace> placeSpatialIndex()

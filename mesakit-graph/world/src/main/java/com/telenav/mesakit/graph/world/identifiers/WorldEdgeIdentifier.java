@@ -19,8 +19,8 @@
 package com.telenav.mesakit.graph.world.identifiers;
 
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.language.object.Hash;
-import com.telenav.kivakit.kernel.language.string.Strings;
+import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.strings.Paths;
 import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.world.WorldEdge;
@@ -52,8 +52,8 @@ public class WorldEdgeIdentifier extends EdgeIdentifier
         @Override
         protected WorldEdgeIdentifier onConvertToObject(final String value)
         {
-            final var cellName = Strings.pathWithoutSuffix(value, '-');
-            final var identifier = Long.parseLong(Strings.pathOptionalSuffix(value, '-'));
+            final var cellName = Paths.withoutSuffix(value, '-');
+            final var identifier = Long.parseLong(Paths.optionalSuffix(value, '-'));
             return new WorldEdgeIdentifier(grid.worldCell(cellName), new EdgeIdentifier(identifier));
         }
     }
@@ -98,7 +98,7 @@ public class WorldEdgeIdentifier extends EdgeIdentifier
     @Override
     public String toString()
     {
-        return worldCell.identity().tdk().code() + "-" + super.toString();
+        return worldCell.identity().mesakit().code() + "-" + super.toString();
     }
 
     public WorldCell worldCell()

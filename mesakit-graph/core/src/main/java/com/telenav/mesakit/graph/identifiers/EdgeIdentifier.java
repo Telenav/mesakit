@@ -109,6 +109,15 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
 
     private static final long CHUNK_NUMBER_INCREMENT = MAXIMUM_CHUNK_NUMBER + 1;
 
+    public static SwitchParser.Builder<EdgeIdentifier> edgeIdentifierSwitchParser(final String name,
+                                                                                  final String description)
+    {
+        return SwitchParser.builder(EdgeIdentifier.class)
+                .name(name)
+                .description(description)
+                .converter(new Converter(LOGGER));
+    }
+
     /**
      * @return The way identifier for the given element identifier. This is obtained by shifting the element identifier
      * six decimal places to the right, removing the sequence number that was added to the way identifier.
@@ -116,14 +125,6 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
     public static long identifierToWayIdentifier(final long elementIdentifier)
     {
         return Math.abs(elementIdentifier) / SEQUENCE_NUMBER_SHIFT;
-    }
-
-    public static SwitchParser.Builder<EdgeIdentifier> switchParser(final String name, final String description)
-    {
-        return SwitchParser.builder(EdgeIdentifier.class)
-                .name(name)
-                .description(description)
-                .converter(new Converter(LOGGER));
     }
 
     /**

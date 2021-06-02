@@ -37,8 +37,6 @@ public class OsmEdgeDifferences
     {
         final var differences = new Differences();
 
-        differences.compare("telenavTrafficLocationIdentifier", a.osmTelenavTrafficLocationIdentifier(),
-                b.osmTelenavTrafficLocationIdentifier());
         differences.compare("pbfFromNodeIdentifier", a.fromNodeIdentifier(), b.fromNodeIdentifier());
         differences.compare("pbfToNodeIdentifier", a.toNodeIdentifier(), b.toNodeIdentifier());
 

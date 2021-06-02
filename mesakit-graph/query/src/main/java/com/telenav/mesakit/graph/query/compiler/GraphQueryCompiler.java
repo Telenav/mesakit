@@ -1,35 +1,32 @@
 package com.telenav.mesakit.graph.query.compiler;
 
-import com.telenav.kivakit.kernel.scalars.counts.Maximum;
-import com.telenav.mesakit.map.measurements.*;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.mesakit.graph.query.GraphQueryBaseVisitor;
 import com.telenav.mesakit.graph.query.program.BooleanExpression;
 import com.telenav.mesakit.graph.query.program.Node;
 import com.telenav.mesakit.graph.query.program.Program;
 import com.telenav.mesakit.graph.query.program.expressions.closure.OneOrMore;
 import com.telenav.mesakit.graph.query.program.expressions.logical.And;
-import com.telenav.mesakit.graph.query.program.expressions.logical.Not;
 import com.telenav.mesakit.graph.query.program.expressions.logical.Or;
 import com.telenav.mesakit.graph.query.program.expressions.relational.Then;
 import com.telenav.mesakit.graph.query.program.expressions.terminal.Compare;
-import com.telenav.mesakit.graph.query.program.expressions.terminal.Compare.Type;
-import com.telenav.mesakit.graph.query.program.expressions.terminal.value.Attribute;
 import com.telenav.mesakit.graph.query.program.expressions.terminal.value.BooleanAttribute;
 import com.telenav.mesakit.graph.query.program.expressions.terminal.value.Constant;
 import com.telenav.mesakit.graph.query.program.expressions.terminal.value.Value;
 import com.telenav.mesakit.graph.query.program.expressions.terminal.value.ValueExpression;
 import com.telenav.mesakit.graph.query.program.statements.Select;
-import org.antlr.v4.runtime.Token;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
+import com.telenav.mesakit.map.measurements.motion.Speed;
 import org.antlr.v4.runtime.tree.ParseTree;
 
-import static com.telenav.kivakit.graph.query.GraphQueryParser.*;
-import static com.telenav.kivakit.kernel.validation.Validate.*;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 /**
  * Compiles a {@link BooleanExpression} tree that can be evaluated against an edge.
  *
  * @author jonathanl (shibo)
  */
-public class GraphQueryCompiler extends com.telenav.kivakit.graph.query.GraphQueryBaseVisitor<Node>
+public class GraphQueryCompiler extends GraphQueryBaseVisitor<Node>
 {
     /**
      * Builds an abstract syntax tree from the parse tree

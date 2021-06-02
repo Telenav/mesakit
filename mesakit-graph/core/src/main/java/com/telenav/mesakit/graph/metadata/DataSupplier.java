@@ -38,7 +38,7 @@ public enum DataSupplier implements Matcher<DataSupplier>
     public static SwitchParser.Builder<DataSupplier> switchParser()
     {
         return SwitchParser
-                .enumSwitch("data-supplier", "The name of the data supplier", DataSupplier.class)
+                .enumSwitchParser("data-supplier", "The name of the data supplier", DataSupplier.class)
                 .defaultValue(HERE);
     }
 

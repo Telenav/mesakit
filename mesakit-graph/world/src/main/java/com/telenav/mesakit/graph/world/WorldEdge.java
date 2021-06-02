@@ -19,7 +19,6 @@
 package com.telenav.mesakit.graph.world;
 
 import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
@@ -27,7 +26,6 @@ import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
-import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 import com.telenav.mesakit.graph.world.grid.WorldCell;
 import com.telenav.mesakit.graph.world.identifiers.WorldEdgeIdentifier;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
@@ -177,18 +175,6 @@ public class WorldEdge extends Edge
     public Distance osmMaximumDoubleDigitizationSeparation()
     {
         return cellEdge().osmMaximumDoubleDigitizationSeparation();
-    }
-
-    @Override
-    public RoadSectionIdentifier osmTelenavTrafficLocationIdentifier()
-    {
-        return cellEdge().osmTelenavTrafficLocationIdentifier();
-    }
-
-    @Override
-    public Count osmTraceCount()
-    {
-        return cellEdge().osmTraceCount();
     }
 
     @Override

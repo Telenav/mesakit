@@ -25,7 +25,6 @@ import com.telenav.kivakit.kernel.language.strings.StringTo;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.specifications.common.element.GraphElementProperties;
 import com.telenav.mesakit.graph.specifications.library.attributes.Attribute;
-import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
 import com.telenav.mesakit.map.road.model.RoadName;
 
 public class EdgeProperties extends GraphElementProperties<Edge>
@@ -369,24 +368,6 @@ public class EdgeProperties extends GraphElementProperties<Edge>
         public Object value(final Edge edge)
         {
             return edge.toVertexIdentifier();
-        }
-    };
-
-    public final EdgeProperty TMC_IDENTIFIERS = new EdgeProperty("tmcs", EdgeAttributes.get().FORWARD_TMC_IDENTIFIERS)
-    {
-        @Override
-        public Object value(final Edge edge)
-        {
-            if (edge.supports(OsmEdgeAttributes.get().FORWARD_TMC_IDENTIFIERS))
-            {
-                final var identifiers = new StringList();
-                for (final var identifier : edge.tmcIdentifiers())
-                {
-                    identifiers.add("$ ($)", identifier, identifier.asCode());
-                }
-                return identifiers;
-            }
-            return null;
         }
     };
 

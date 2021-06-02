@@ -40,7 +40,6 @@ import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
-import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
 import com.telenav.mesakit.graph.Edge.SignPostSupport;
 import com.telenav.mesakit.graph.collections.EdgePair;
 import com.telenav.mesakit.graph.collections.EdgeSet;
@@ -67,7 +66,6 @@ import com.telenav.mesakit.map.road.name.standardizer.RoadNameStandardizer;
 import org.openstreetmap.osmosis.core.domain.v0_6.Way;
 import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -837,27 +835,6 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     public VertexSet asVertexSet()
     {
         return VertexSet.forIterable(Maximum.maximum(size() + 1), vertexes());
-    }
-
-    /**
-     * @return This route as a viewable object in the given color with the given label;
-     */
-    public Viewable asViewable(final Color background, final Color foreground, final String label)
-    {
-        return new Viewable()
-        {
-            @Override
-            public Rectangle bounds()
-            {
-                return Route.this.bounds();
-            }
-
-            @Override
-            public void draw(final DrawingSurface surface)
-            {
-                surface.draw(polyline(), background, foreground, label);
-            }
-        };
     }
 
     public PbfWay asWay()

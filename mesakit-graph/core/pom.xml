@@ -33,6 +33,16 @@
 
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
+            <artifactId>mesakit-graph-traffic</artifactId>
+            <version>${mesakit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.telenav.mesakit</groupId>
+            <artifactId>mesakit-map-ui-debug</artifactId>
+            <version>${mesakit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-map-overpass</artifactId>
             <version>${mesakit.version}</version>
         </dependency>
@@ -54,11 +64,6 @@
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-map-utilities-grid</artifactId>
-            <version>${mesakit.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.telenav.mesakit</groupId>
-            <artifactId>mesakit-graph-traffic</artifactId>
             <version>${mesakit.version}</version>
         </dependency>
         <dependency>

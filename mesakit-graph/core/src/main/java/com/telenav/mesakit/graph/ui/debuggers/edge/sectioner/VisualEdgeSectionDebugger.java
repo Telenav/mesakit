@@ -23,17 +23,18 @@ import com.telenav.kivakit.kernel.language.values.level.Percent;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Rainbow;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner.EdgeSection;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner.EdgeSectionerDebugger;
+import com.telenav.mesakit.graph.ui.viewer.DrawablePolyline;
+import com.telenav.mesakit.map.ui.debug.DebugViewer;
+import com.telenav.mesakit.map.ui.desktop.viewer.DrawableIdentifier;
 import com.telenav.mesakit.map.ui.desktop.viewer.InteractiveView;
 import com.telenav.mesakit.map.ui.desktop.viewer.empty.NullInteractiveView;
-
-import java.awt.Color;
 
 /**
  * @author jonathanl (shibo)
  */
 public class VisualEdgeSectionDebugger implements EdgeSectionerDebugger
 {
-    private static final Rainbow DEBUG_COLORS = new Rainbow();
+    private final Rainbow rainbow = new Rainbow();
 
     /** Debugger */
     private InteractiveView debugView = new NullInteractiveView();
@@ -50,7 +51,7 @@ public class VisualEdgeSectionDebugger implements EdgeSectionerDebugger
         if (!debugging)
         {
             debugging = true;
-            final var viewer = new SwingViewer();
+            final var viewer = new DebugViewer();
             debugView = (InteractiveView) viewer.view("debug");
             debugView.frameSpeed(Duration.ONE_SECOND);
         }
@@ -71,9 +72,9 @@ public class VisualEdgeSectionDebugger implements EdgeSectionerDebugger
         if (viewing)
         {
             final var identifier = section.edge().identifier();
-            debugView.update(new ViewableIdentifier(identifier), new ViewablePolyline(section.shape(),
-                    Color.LIGHT_GRAY, DEBUG_COLORS.next(), "Edge " + identifier));
-            debugView.zoomToContents(new Percent(10));
+            debugView.update(new DrawableIdentifier(identifier),
+                    new DrawablePolyline(section.shape(), rainbow.next(), "Edge " + identifier));
+            debugView.zoomToContents(Percent.of(10));
             debugView.frameComplete();
         }
     }

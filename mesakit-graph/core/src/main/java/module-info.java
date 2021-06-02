@@ -7,6 +7,7 @@ open module mesakit.graph.core
     requires transitive mesakit.map.region;
     requires transitive mesakit.map.overpass;
     requires transitive mesakit.map.road.name.standardizer;
+    requires transitive mesakit.map.ui.debug;
     requires transitive mesakit.map.geography;
     requires transitive mesakit.graph.traffic;
 
@@ -61,6 +62,7 @@ open module mesakit.graph.core
     exports com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes;
     exports com.telenav.mesakit.graph.specifications.osm.graph.edge.model;
     exports com.telenav.mesakit.graph.specifications.osm.graph.edge.store;
+    exports com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner;
     exports com.telenav.mesakit.graph.specifications.osm.graph.loader;
     exports com.telenav.mesakit.graph.specifications.osm.graph;
     exports com.telenav.mesakit.graph.specifications.osm;

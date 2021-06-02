@@ -26,13 +26,11 @@ import com.telenav.kivakit.kernel.language.values.count.MutableCount;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;
-import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.collections.RelationSet;
-import com.telenav.mesakit.graph.collections.RouteList;
 import com.telenav.mesakit.graph.collections.VertexSequence;
-import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
+import com.telenav.mesakit.graph.project.GraphCoreLimits;
 import com.telenav.mesakit.graph.world.WorldEdge;
 import com.telenav.mesakit.graph.world.WorldRelation;
 import com.telenav.mesakit.graph.world.WorldVertex;
@@ -43,10 +41,9 @@ import com.telenav.mesakit.map.road.model.RoadFunctionalClass;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -213,30 +210,6 @@ public class WorldCellList extends ArrayList<WorldCell>
         return relations(worldCell -> worldCell.cellGraph().relationsIntersecting(bounds));
     }
 
-    public Set<RoadSectionIdentifier> roadSectionIdentifiersIntersecting(final Rectangle bounds)
-    {
-        final Set<RoadSectionIdentifier> identifiers = new HashSet<>();
-        for (final var worldCell : this)
-        {
-            identifiers.addAll(worldCell.cellGraph().roadSectionIdentifiersIntersecting(bounds));
-        }
-        return identifiers;
-    }
-
-    public Route routeFor(final RoadSectionIdentifier identifier)
-    {
-        final var routes = new RouteList();
-        for (final var worldCell : this)
-        {
-            final var route = worldCell.cellGraph().routeFor(identifier);
-            if (route != null)
-            {
-                routes.add(Route.forEdges(worldCell.asWorldEdges(route)));
-            }
-        }
-        return routes.asRoute();
-    }
-
     public WorldCell smallest()
     {
         WorldCell smallest = null;
@@ -254,7 +227,7 @@ public class WorldCellList extends ArrayList<WorldCell>
     {
         final var list = new WorldCellList();
         list.addAll(this);
-        list.sort(Comparator.comparing(cell -> cell.pbfFile().size()));
+        list.sort(Comparator.comparing(cell -> cell.pbfFile().bytes()));
         Collections.reverse(list);
         return list;
     }
@@ -302,7 +275,7 @@ public class WorldCellList extends ArrayList<WorldCell>
         final var count = new MutableCount();
         for (final var graph : cellGraphs())
         {
-            count.add(function.apply(graph));
+            count.plus(function.apply(graph));
         }
         return count.asCount();
     }
@@ -310,7 +283,7 @@ public class WorldCellList extends ArrayList<WorldCell>
     @SuppressWarnings("Convert2Diamond")
     private EdgeSequence edges(final Function<WorldCell, EdgeSequence> sequence)
     {
-        return new EdgeSequence(Iterables.of(() -> new Next<Edge>()
+        return new EdgeSequence(Iterables.iterable(() -> new Next<Edge>()
         {
             final Iterator<WorldCell> worldCellIterator = iterator();
 
@@ -340,7 +313,7 @@ public class WorldCellList extends ArrayList<WorldCell>
 
     private RelationSet relations(final Function<WorldCell, Iterable<EdgeRelation>> sequence)
     {
-        return RelationSet.forIterable(Limit.RELATIONS, Iterables.of(() -> new Next<>()
+        return RelationSet.forIterable(GraphCoreLimits.Limit.RELATIONS, Iterables.iterable(() -> new Next<>()
         {
             final Iterator<WorldCell> cellIterator = iterator();
 
@@ -388,7 +361,7 @@ public class WorldCellList extends ArrayList<WorldCell>
 
     private VertexSequence vertexes(final Function<WorldCell, VertexSequence> sequenceForCell)
     {
-        return new VertexSequence(Iterables.of(() -> new Next<>()
+        return new VertexSequence(Iterables.iterable(() -> new Next<>()
         {
             WorldCell worldCell;
 

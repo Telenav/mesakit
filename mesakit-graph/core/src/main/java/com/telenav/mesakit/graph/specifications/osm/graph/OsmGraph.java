@@ -21,20 +21,16 @@ package com.telenav.mesakit.graph.specifications.osm.graph;
 import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
 import com.telenav.kivakit.kernel.language.strings.AsciiArt;
 import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.kernel.language.values.count.MutableCount;
-import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.analytics.junction.JunctionEdgeFinder;
 import com.telenav.mesakit.graph.analytics.junction.JunctionEdgeOptimizer;
 import com.telenav.mesakit.graph.analytics.ramp.RampFinder;
 import com.telenav.mesakit.graph.collections.EdgeSet;
-import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.specifications.common.CommonGraph;
 import com.telenav.mesakit.graph.specifications.common.edge.EdgeAttributes;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.OsmEdge;
-import com.telenav.mesakit.graph.specifications.osm.graph.edge.store.OsmEdgeStore;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.road.model.RoadSubType;
 
@@ -43,36 +39,6 @@ public final class OsmGraph extends CommonGraph
     public OsmGraph(final Metadata metadata)
     {
         super(metadata);
-    }
-
-    /**
-     * Loads trace counts from the given side-resource
-     *
-     * @param side The resource to load
-     */
-    @Override
-    public final void loadTraceCounts(final Resource side)
-    {
-        final var edgeIdentifierConverter = new EdgeIdentifier.Converter(this);
-        final var countConverter = new Count.Converter(this);
-        for (final var line : side.reader().lines())
-        {
-            final var columns = line.split(";");
-            if (columns.length < 2)
-            {
-                warning("Lines in " + side + " must contain two or more columns separated by ';'");
-            }
-            final var identifier = edgeIdentifierConverter.convert(columns[0]);
-            if (contains(identifier))
-            {
-                final var edge = edgeForIdentifier(identifier);
-                final var count = countConverter.convert(columns[1]);
-                if (edge != null && count != null)
-                {
-                    ((OsmEdgeStore) edgeStore()).storeTraceCount(edge, count);
-                }
-            }
-        }
     }
 
     /**

@@ -59,7 +59,7 @@ public class WorldGraphRepository extends Folder implements Serializable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static SwitchParser.Builder<WorldGraphRepository> switchParser(final String description)
+    public static SwitchParser.Builder<WorldGraphRepository> worldGraphRepositorySwitchParser(final String description)
     {
         return SwitchParser.builder(WorldGraphRepository.class).name("world-graph-repository")
                 .converter(new Converter(LOGGER)).description(description);
@@ -127,7 +127,7 @@ public class WorldGraphRepository extends Folder implements Serializable
 
     public WorldGraphRepositoryFolder temporaryFolder()
     {
-        return temporaryFolder((FilePath) null);
+        return temporaryFolder(null);
     }
 
     /**

@@ -58,31 +58,26 @@ public class SmartGraphLoader extends BaseRepeater implements Named
         return name.endsWith(GraphArchive.EXTENSION);
     }
 
-    public static ArgumentParser.Builder<SmartGraphLoader> argumentParser(final String description)
+    public static ArgumentParser.Builder<SmartGraphLoader> graphArgumentParser(final String description)
     {
-        return argumentParser(description, PbfToGraphConverter.defaultConfiguration());
+        return graphArgumentParser(description, PbfToGraphConverter.defaultConfiguration());
     }
 
-    public static ArgumentParser.Builder<SmartGraphLoader> argumentParser(final String description,
-                                                                          final PbfToGraphConverter.Configuration configuration)
+    public static ArgumentParser.Builder<SmartGraphLoader> graphArgumentParser(final String description,
+                                                                               final PbfToGraphConverter.Configuration configuration)
     {
         return ArgumentParser.builder(SmartGraphLoader.class)
                 .description(description)
                 .converter(new Converter(LOGGER, configuration));
     }
 
-    public static SmartGraphLoader of(final String specifier)
+    public static SwitchParser.Builder<SmartGraphLoader> graphSwitchParser(final String name, final String description)
     {
-        return new Converter(LOGGER, PbfToGraphConverter.defaultConfiguration()).convert(specifier);
+        return graphSwitchParser(name, description, PbfToGraphConverter.defaultConfiguration());
     }
 
-    public static SwitchParser.Builder<SmartGraphLoader> switchParser(final String name, final String description)
-    {
-        return switchParser(name, description, PbfToGraphConverter.defaultConfiguration());
-    }
-
-    public static SwitchParser.Builder<SmartGraphLoader> switchParser(final String name, final String description,
-                                                                      final PbfToGraphConverter.Configuration configuration)
+    public static SwitchParser.Builder<SmartGraphLoader> graphSwitchParser(final String name, final String description,
+                                                                           final PbfToGraphConverter.Configuration configuration)
     {
         return SwitchParser.builder(SmartGraphLoader.class)
                 .name(name)
@@ -90,15 +85,20 @@ public class SmartGraphLoader extends BaseRepeater implements Named
                 .converter(new Converter(LOGGER, configuration));
     }
 
-    public static SwitchParser.Builder<SmartGraphLoader> switchParser(
+    public static SwitchParser.Builder<SmartGraphLoader> graphSwitchParser(
             final PbfToGraphConverter.Configuration configuration)
     {
-        return switchParser("graph", "Graph file resource", configuration);
+        return graphSwitchParser("graph", "Graph file resource", configuration);
     }
 
-    public static SwitchParser.Builder<SmartGraphLoader> switchParser()
+    public static SwitchParser.Builder<SmartGraphLoader> graphSwitchParser()
     {
-        return switchParser("graph", "Graph file resource", PbfToGraphConverter.defaultConfiguration());
+        return graphSwitchParser("graph", "Graph file resource", PbfToGraphConverter.defaultConfiguration());
+    }
+
+    public static SmartGraphLoader of(final String specifier)
+    {
+        return new Converter(LOGGER, PbfToGraphConverter.defaultConfiguration()).convert(specifier);
     }
 
     /**

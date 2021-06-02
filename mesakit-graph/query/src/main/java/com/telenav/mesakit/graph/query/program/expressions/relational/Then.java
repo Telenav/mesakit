@@ -1,9 +1,11 @@
 package com.telenav.mesakit.graph.query.program.expressions.relational;
 
 import com.telenav.mesakit.graph.Edge;
-import com.telenav.mesakit.graph.query.program.*;
+import com.telenav.mesakit.graph.query.program.BooleanExpression;
+import com.telenav.mesakit.graph.query.program.Node;
+import com.telenav.mesakit.graph.query.program.Visitor;
 
-import static com.telenav.kivakit.graph.query.program.EdgeStack.Result.PUSHED;
+import static com.telenav.mesakit.graph.query.program.EdgeStack.Result.PUSHED;
 
 /**
  * Evaluates [query] <b>THEN</b> [query] against the edge on top of the stack. The expression is true if the left side

@@ -60,32 +60,6 @@ public class OsmEdgeProperties extends EdgeProperties
         }
     };
 
-    public final OsmEdgeProperty FORWARD_TELENAV_TRAFFIC_LOCATION_IDENTIFIER = new OsmEdgeProperty("ttl", OsmEdgeAttributes.get().FORWARD_TELENAV_TRAFFIC_LOCATION_IDENTIFIER)
-    {
-        @Override
-        public Object value(final Edge edge)
-        {
-            if (edge.supports(OsmEdgeAttributes.get().FORWARD_TELENAV_TRAFFIC_LOCATION_IDENTIFIER))
-            {
-                return edge.osmTelenavTrafficLocationIdentifier();
-            }
-            return null;
-        }
-    };
-
-    public final OsmEdgeProperty TRACE_COUNT = new OsmEdgeProperty("traces", OsmEdgeAttributes.get().FORWARD_TRACE_COUNT)
-    {
-        @Override
-        public Object value(final Edge edge)
-        {
-            if (edge.supports(OsmEdgeAttributes.get().FORWARD_TRACE_COUNT))
-            {
-                return edge.osmTraceCount();
-            }
-            return null;
-        }
-    };
-
     protected OsmEdgeProperties()
     {
     }

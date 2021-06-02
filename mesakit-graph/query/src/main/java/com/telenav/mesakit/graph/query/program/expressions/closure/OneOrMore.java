@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.telenav.kivakit.graph.query.program.EdgeStack.Result.PUSHED;
+import static com.telenav.mesakit.graph.query.program.EdgeStack.Result.PUSHED;
 
 /**
  * Evaluates a positive closure, [boolean-expression]+

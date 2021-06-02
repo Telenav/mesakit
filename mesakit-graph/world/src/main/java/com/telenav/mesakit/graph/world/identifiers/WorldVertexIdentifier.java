@@ -52,7 +52,7 @@ public class WorldVertexIdentifier extends VertexIdentifier
     @Override
     public String toString()
     {
-        return worldCell.identity().tdk().code() + "-" + super.toString();
+        return worldCell.identity().mesakit().code() + "-" + super.toString();
     }
 
     public WorldVertex vertex()

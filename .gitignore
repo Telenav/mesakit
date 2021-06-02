@@ -11,6 +11,7 @@
 **/.includepath
 **/*.log
 **/*.ids
+**/src/main/generated/
 **/.DS_Store
 **/*.class
 **/*.hprof

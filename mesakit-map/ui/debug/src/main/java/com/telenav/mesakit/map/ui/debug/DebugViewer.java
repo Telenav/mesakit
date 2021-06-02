@@ -61,7 +61,7 @@ public class DebugViewer extends DesktopViewer
 
     public void frameSpeed(final Duration delay)
     {
-        view.frameDelay(delay);
+        view.frameSpeed(delay);
     }
 
     public void start(final Location start)

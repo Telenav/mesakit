@@ -95,7 +95,7 @@ public class WayFilter implements Filter<PbfWay>, Named
                 .converter(new Converter(LOGGER));
     }
 
-    public static SwitchParser.Builder<WayFilter> wayFilter()
+    public static SwitchParser.Builder<WayFilter> wayFilterSwitchParser()
     {
         PbfFilters.loadAll();
         return switchParser("way-filter", "The name of a way filter:\n\n" + help());

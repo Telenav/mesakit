@@ -37,7 +37,8 @@ public class RelationIdentifier extends MapRelationIdentifier implements GraphEl
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static SwitchParser.Builder<RelationIdentifier> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<RelationIdentifier> relationIdentifierSwitchParser(final String name,
+                                                                                          final String description)
     {
         return SwitchParser.builder(RelationIdentifier.class)
                 .name(name)

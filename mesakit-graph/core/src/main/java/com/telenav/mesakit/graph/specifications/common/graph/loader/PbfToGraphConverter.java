@@ -70,18 +70,12 @@ public abstract class PbfToGraphConverter extends BaseRepeater implements GraphC
 
         private File speedPatternFile;
 
-        private File traceCountsSideFile;
-
         private File turnRestrictionsSideFile;
 
         private boolean verify;
 
         public Configuration addSideFilesTo(final Graph graph)
         {
-            if (traceCountsSideFile != null)
-            {
-                graph.loadTraceCounts(traceCountsSideFile);
-            }
             if (freeFlowSideFile != null)
             {
                 graph.loadFreeFlow(freeFlowSideFile);
@@ -134,12 +128,6 @@ public abstract class PbfToGraphConverter extends BaseRepeater implements GraphC
         public void threads(final Count threads)
         {
             this.threads = threads;
-        }
-
-        public Configuration traceCountsSideFile(final File traceCountsSideFile)
-        {
-            this.traceCountsSideFile = traceCountsSideFile;
-            return this;
         }
 
         public Configuration turnRestrictionsSideFile(final File turnRestrictionsSideFile)

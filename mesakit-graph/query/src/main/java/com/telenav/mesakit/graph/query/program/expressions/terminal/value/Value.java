@@ -2,12 +2,17 @@ package com.telenav.mesakit.graph.query.program.expressions.terminal.value;
 
 import com.telenav.kivakit.kernel.interfaces.naming.Named;
 import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.kernel.language.string.Strings;
-import com.telenav.mesakit.map.road.model.*;
+import com.telenav.kivakit.kernel.language.strings.Strip;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.analytics.classification.classifiers.turn.TurnType;
+import com.telenav.mesakit.map.road.model.BridgeType;
+import com.telenav.mesakit.map.road.model.RoadFunctionalClass;
+import com.telenav.mesakit.map.road.model.RoadState;
+import com.telenav.mesakit.map.road.model.RoadSubType;
+import com.telenav.mesakit.map.road.model.RoadSurface;
+import com.telenav.mesakit.map.road.model.RoadType;
 
-import static com.telenav.kivakit.kernel.validation.Validate.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 /**
  * A scalar value used in edge attribute comparisons. One of:
@@ -95,7 +100,7 @@ public class Value
         {
             string = ((Named) value).name();
         }
-        return string == null ? null : Strings.stripQuotes(string);
+        return string == null ? null : Strip.quotes(string);
     }
 
     public Object asValue()

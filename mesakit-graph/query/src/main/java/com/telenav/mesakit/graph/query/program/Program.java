@@ -1,7 +1,9 @@
 package com.telenav.mesakit.graph.query.program;
 
-import com.telenav.kivakit.kernel.debug.Debug;
-import com.telenav.kivakit.kernel.scalars.counts.Maximum;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.query.program.statements.Select;
@@ -61,13 +63,13 @@ public class Program
             if (start.identifierAsLong() == 256586832000005L)
             {
                 // then turn on debugging output
-                Node.DEBUG.enable();
+                Node.DEBUG.debugOn();
             }
             else
             {
                 // until the edge has been processed
-                EdgeStack.DEBUG.disable();
-                Node.DEBUG.disable();
+                EdgeStack.DEBUG.debugOff();
+                Node.DEBUG.debugOff();
             }
         }
 

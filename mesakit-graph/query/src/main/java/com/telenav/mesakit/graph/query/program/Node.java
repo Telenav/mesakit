@@ -1,8 +1,10 @@
 package com.telenav.mesakit.graph.query.program;
 
+import com.telenav.kivakit.kernel.data.validation.ensure.Ensure;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.mesakit.graph.Route;
-import com.telenav.kivakit.kernel.debug.Debug;
-import com.telenav.kivakit.kernel.validation.Validate;
 
 /**
  * An node in the abstract syntax tree (AST) that forms the {@link Program}.
@@ -65,7 +67,7 @@ public class Node implements Expression
 
     protected <T> T fail(final String message, final Object... arguments)
     {
-        return Validate.fail("Error evaluating '" + code + "': " + message, arguments);
+        return Ensure.fail("Error evaluating '" + code + "': " + message, arguments);
     }
 
     protected void trace(final String message, final Object... arguments)
@@ -75,6 +77,6 @@ public class Node implements Expression
 
     protected <T> T unsupported(final String message, final Object... arguments)
     {
-        return Validate.unsupported("Error evaluating '" + code + "': " + message, arguments);
+        return Ensure.unsupported("Error evaluating '" + code + "': " + message, arguments);
     }
 }

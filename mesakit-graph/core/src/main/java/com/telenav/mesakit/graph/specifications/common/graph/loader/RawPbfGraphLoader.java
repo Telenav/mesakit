@@ -65,8 +65,6 @@ import com.telenav.mesakit.graph.specifications.library.pbf.PbfDataSourceFactory
 import com.telenav.mesakit.graph.specifications.library.store.GraphStore;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.extractors.PlaceExtractor;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner.EdgeNodeMap;
-import com.telenav.mesakit.graph.traffic.extractors.ReferenceSpeedExtractor;
-import com.telenav.mesakit.graph.traffic.extractors.TrafficIdentifiersExtractor;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapWayIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
@@ -154,7 +152,6 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
 
         private final RoadStateExtractor.ExtractedRoadState state;
 
-        @SuppressWarnings("ClassEscapesDefinedScope")
         public ExtractedEdges(final List<? extends Edge> edges, final PbfWay way,
                               final RoadStateExtractor.ExtractedRoadState state)
         {
@@ -173,7 +170,6 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
             return edges;
         }
 
-        @SuppressWarnings("ClassEscapesDefinedScope")
         public RoadStateExtractor.ExtractedRoadState state()
         {
             return state;
@@ -287,8 +283,6 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
 
     private final HovLaneCountExtractor hovLaneCountExtractor;
 
-    private final ReferenceSpeedExtractor referenceSpeedExtractor;
-
     private final RoadFunctionalClassExtractor roadFunctionalClassExtractor;
 
     private final RoadStateExtractor roadStateExtractor;
@@ -331,8 +325,6 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
 
     private ThreadLocal<Addable<EdgeRelation>> relationAdder;
 
-    private final TrafficIdentifiersExtractor trafficIdentifiersExtractor;
-
     // Temporary variables scoped between onExtractEdge and onDoneExtractingEdges
     private final ThreadLocal<GradeSeparation> fromGradeSeparation = new ThreadLocal<>();
 
@@ -368,7 +360,6 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         surfaceExtractor = new SurfaceExtractor(this);
         tollRoadExtractor = new TollRoadExtractor(this);
         underConstructionExtractor = new UnderConstructionExtractor(this);
-        referenceSpeedExtractor = new ReferenceSpeedExtractor(this);
         gradeSeparationFromExtractor = new GradeSeparationExtractor(this, GradeSeparationExtractor.Type.FROM);
         gradeSeparationToExtractor = new GradeSeparationExtractor(this, GradeSeparationExtractor.Type.TO);
 
@@ -387,7 +378,6 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         nodeIdentifierToLocation.nullLong(Long.MIN_VALUE);
         nodeIdentifierToLocation.initialSize(metadata.nodeCount(ALLOW_ESTIMATE).asEstimate());
         nodeIdentifierToLocation.initialize();
-        trafficIdentifiersExtractor = new TrafficIdentifiersExtractor(this);
     }
 
     public EdgeNodeMap edgeNodes()
@@ -1035,32 +1025,10 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
             edge.fromVertexClipped(chunk.isFromOnBorder());
             edge.toVertexClipped(chunk.isToOnBorder());
 
-            // Traffic identifiers
-            final var extract = trafficIdentifiersExtractor.extract(way);
-            if (extract != null)
-            {
-                // TMC only for now
-                if (extract.hasForward())
-                {
-                    edge.tmcIdentifiers(extract.forward());
-                }
-                if (extract.hasReverse())
-                {
-                    edge.reverseTmcIdentifiers(extract.reverse());
-                }
-            }
-
             if (includeTags(graph))
             {
                 final var pbfTags = way.tagList(tagFilter);
                 edge.tags(pbfTags);
-            }
-
-            final var referenceSpeeds = referenceSpeedExtractor.extract(way);
-            if (referenceSpeeds != null)
-            {
-                edge.referenceSpeed(referenceSpeeds.a());
-                edge.uniDbReverseReferenceSpeed(referenceSpeeds.b());
             }
 
             if (edge.validator(VALIDATE_RAW).validate(RawPbfGraphLoader.LOGGER))

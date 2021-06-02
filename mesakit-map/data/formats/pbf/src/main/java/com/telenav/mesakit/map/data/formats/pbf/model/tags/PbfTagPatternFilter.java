@@ -39,9 +39,6 @@ public class PbfTagPatternFilter implements PbfTagFilter
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static final SwitchParser.Builder<PbfTagPatternFilter> TAG_FILTER =
-            switchParser("tag-filter", "The regular expression used to filter tags by key");
-
     private static final Debug DEBUG = new Debug(LOGGER);
 
     public static PbfTagPatternFilter forPattern(final String pattern)
@@ -55,6 +52,11 @@ public class PbfTagPatternFilter implements PbfTagFilter
                 .name(name)
                 .description(description)
                 .converter(new Converter(LOGGER));
+    }
+
+    public static SwitchParser.Builder<PbfTagPatternFilter> tagFilterSwitchParser()
+    {
+        return switchParser("tag-filter", "The regular expression used to filter tags by key");
     }
 
     public static class Converter extends BaseStringConverter<PbfTagPatternFilter>

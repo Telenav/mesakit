@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.road.model;
 
 import com.telenav.kivakit.kernel.data.extraction.Extractor;
 import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.language.strings.Comparison;
+import com.telenav.kivakit.kernel.language.strings.StringComparison;
 import com.telenav.kivakit.kernel.language.strings.Strings;
 import com.telenav.kivakit.kernel.language.values.level.Confidence;
 import com.telenav.kivakit.kernel.language.values.name.Name;
@@ -179,7 +179,7 @@ public class RoadName extends Name
         }
 
         // Compute the difference between strings.
-        final var levenshteinDistance = Comparison.levenshteinDistance(thatStreetName, thisName);
+        final var levenshteinDistance = StringComparison.levenshteinDistance(thatStreetName, thisName);
 
         // Compute error ratio from levenschtein distance
         final var maximumLength = Math.max(thatStreetName.length(), thisName.length());

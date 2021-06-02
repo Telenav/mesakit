@@ -52,8 +52,6 @@ import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.navigation.navigators.WayNavigator;
 import com.telenav.mesakit.graph.specifications.library.attributes.Attribute;
 import com.telenav.mesakit.graph.specifications.library.attributes.AttributeSet;
-import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
-import com.telenav.mesakit.graph.traffic.roadsection.codings.tmc.TmcTableIdentifier;
 import com.telenav.mesakit.graph.world.grid.WorldCell;
 import com.telenav.mesakit.graph.world.grid.WorldCellList;
 import com.telenav.mesakit.graph.world.grid.WorldGrid;
@@ -62,6 +60,7 @@ import com.telenav.mesakit.graph.world.identifiers.WorldPlaceIdentifier;
 import com.telenav.mesakit.graph.world.identifiers.WorldRelationIdentifier;
 import com.telenav.mesakit.graph.world.identifiers.WorldVertexIdentifier;
 import com.telenav.mesakit.graph.world.repository.WorldGraphRepositoryFolder;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapWayIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Precision;
@@ -70,9 +69,9 @@ import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.road.model.RoadFunctionalClass;
 
-import java.util.Set;
-
+import static com.telenav.kivakit.commandline.SwitchParser.enumSwitchParser;
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 import static com.telenav.mesakit.graph.Metadata.CountType.REQUIRE_EXACT;
 
 /**
@@ -168,7 +167,7 @@ public class WorldGraph extends Graph
 
         public static SwitchParser.Builder<AccessMode> switchParser()
         {
-            return SwitchParser.enumSwitch("world-graph-mode", "The world graph access mode", AccessMode.class);
+            return enumSwitchParser("world-graph-mode", "The world graph access mode", AccessMode.class);
         }
     }
 
@@ -515,20 +514,7 @@ public class WorldGraph extends Graph
     }
 
     @Override
-    public Set<RoadSectionIdentifier> roadSectionIdentifiersIntersecting(final Rectangle bounds)
-    {
-        return worldCellsWithin(bounds).roadSectionIdentifiersIntersecting(bounds);
-    }
-
-    @Override
-    public synchronized Route routeFor(final RoadSectionIdentifier identifier)
-    {
-        return worldGrid().index().cellsForTmcTable(TmcTableIdentifier.fromTmcIdentifier(identifier),
-                worldGrid).routeFor(identifier);
-    }
-
-    @Override
-    public Route routeForWayIdentifier(final PbfWayIdentifier wayIdentifier)
+    public Route routeForWayIdentifier(final MapWayIdentifier wayIdentifier)
     {
         final var worldCell = worldGrid().index().worldCellForWayIdentifier(worldGrid, wayIdentifier);
         if (worldCell != null)
@@ -689,11 +675,11 @@ public class WorldGraph extends Graph
      */
     private WorldCellList worldCells()
     {
-        return worldGrid().cells(worldGrid.repositoryFolder(), DataType.GRAPH);
+        return worldGrid().cells(worldGrid.repositoryFolder(), WorldCell.DataType.GRAPH);
     }
 
     private WorldCellList worldCellsWithin(final Rectangle bounds)
     {
-        return worldGrid().cells(worldGrid.repositoryFolder(), DataType.GRAPH, bounds);
+        return worldGrid().cells(worldGrid.repositoryFolder(), WorldCell.DataType.GRAPH, bounds);
     }
 }

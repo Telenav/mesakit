@@ -18,26 +18,16 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.edge.model;
 
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
 import com.telenav.mesakit.graph.specifications.common.edge.HeavyWeightEdge;
-import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
-import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 
 import java.util.Objects;
 
 public class OsmHeavyWeightEdge extends HeavyWeightEdge
 {
-    private RoadSectionIdentifier telenavTrafficLocationIdentifier;
-
-    private RoadSectionIdentifier reverseTelenavTrafficLocationIdentifier;
-
     private Boolean isKnownDoubleDigitized;
-
-    private Count traceCount;
 
     /**
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
@@ -58,23 +48,6 @@ public class OsmHeavyWeightEdge extends HeavyWeightEdge
         copy(that);
     }
 
-    @Override
-    public void copy(final Edge that)
-    {
-        super.copy(that);
-
-        traceCount(that.osmTraceCount());
-
-        if (that.supports(OsmEdgeAttributes.get().FORWARD_TELENAV_TRAFFIC_LOCATION_IDENTIFIER))
-        {
-            osmTelenavTrafficLocationIdentifier(that.osmTelenavTrafficLocationIdentifier());
-            if (that.isTwoWay())
-            {
-                osmReverseTelenavTrafficLocationIdentifier(that.reversed().osmTelenavTrafficLocationIdentifier());
-            }
-        }
-    }
-
     public Boolean isKnownDoubleDigitized()
     {
         return Objects.requireNonNullElse(isKnownDoubleDigitized, false);
@@ -83,36 +56,6 @@ public class OsmHeavyWeightEdge extends HeavyWeightEdge
     public void knownDoubleDigitized(final Boolean isDoubleDigitized)
     {
         isKnownDoubleDigitized = isDoubleDigitized;
-    }
-
-    public void osmReverseTelenavTrafficLocationIdentifier(
-            final RoadSectionIdentifier reverseTelenavTrafficLocationIdentifier)
-    {
-        this.reverseTelenavTrafficLocationIdentifier = reverseTelenavTrafficLocationIdentifier;
-    }
-
-    @Override
-    public RoadSectionIdentifier osmTelenavTrafficLocationIdentifier()
-    {
-        if (isForward())
-        {
-            return telenavTrafficLocationIdentifier;
-        }
-        else
-        {
-            return reverseTelenavTrafficLocationIdentifier;
-        }
-    }
-
-    public void osmTelenavTrafficLocationIdentifier(final RoadSectionIdentifier telenavTrafficLocationIdentifier)
-    {
-        this.telenavTrafficLocationIdentifier = telenavTrafficLocationIdentifier;
-    }
-
-    @Override
-    public Count osmTraceCount()
-    {
-        return traceCount;
     }
 
     /**
@@ -128,20 +71,6 @@ public class OsmHeavyWeightEdge extends HeavyWeightEdge
     @Override
     public OsmHeavyWeightEdge reversed()
     {
-        final var reversed = (OsmHeavyWeightEdge) super.reversed();
-        reversed.osmTelenavTrafficLocationIdentifier(osmReverseTelenavTrafficLocationIdentifier());
-        reversed.osmReverseTelenavTrafficLocationIdentifier(osmTelenavTrafficLocationIdentifier());
-        return reversed;
-    }
-
-    @Override
-    public void traceCount(final Count traceCount)
-    {
-        this.traceCount = traceCount;
-    }
-
-    private RoadSectionIdentifier osmReverseTelenavTrafficLocationIdentifier()
-    {
-        return reverseTelenavTrafficLocationIdentifier;
+        return (OsmHeavyWeightEdge) super.reversed();
     }
 }

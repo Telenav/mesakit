@@ -108,10 +108,6 @@ public class EdgeAttributes extends GraphElementAttributes<Edge>
 
     public final EdgeAttribute TO_VERTEX_IDENTIFIER = new EdgeAttribute("TO_VERTEX_IDENTIFIER");
 
-    public final EdgeAttribute FORWARD_TMC_IDENTIFIERS = new EdgeAttribute("FORWARD_TMC_IDENTIFIERS");
-
-    public final EdgeAttribute REVERSE_TMC_IDENTIFIERS = new EdgeAttribute("REVERSE_TMC_IDENTIFIERS");
-
     protected EdgeAttributes()
     {
     }

@@ -27,9 +27,7 @@ import com.telenav.kivakit.kernel.messaging.Listener;
 
 /**
  * {@link WorldGraphDeployments} is a {@link DeploymentSet} that includes deployment configurations for a few built-in
- * world graph deployments (local, osmteam and navteam). A deployment from this set of configurations can be selected
- * with {@link #switchParser()} or {@link #switchParser(String)}. The PbfWorldGraphExtractorApplication provides a good
- * example of this.
+ * world graph deployments (local, osmteam and navteam).
  *
  * @author jonathanl (shibo)
  * @see Deployment

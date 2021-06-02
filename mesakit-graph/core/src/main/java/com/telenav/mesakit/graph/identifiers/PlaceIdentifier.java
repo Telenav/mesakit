@@ -41,7 +41,8 @@ public class PlaceIdentifier extends MapNodeIdentifier implements GraphElementId
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static SwitchParser.Builder<PlaceIdentifier> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<PlaceIdentifier> placeIdentifierSwitchParser(final String name,
+                                                                                    final String description)
     {
         return SwitchParser.builder(PlaceIdentifier.class)
                 .name(name)

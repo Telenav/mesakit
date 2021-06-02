@@ -53,7 +53,8 @@ public class VertexIdentifier extends IntegerIdentifier implements GraphElementI
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static SwitchParser.Builder<VertexIdentifier> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<VertexIdentifier> vertexIdentifierSwitchParser(final String name,
+                                                                                      final String description)
     {
         return SwitchParser.builder(VertexIdentifier.class)
                 .name(name)

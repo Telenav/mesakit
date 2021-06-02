@@ -3,6 +3,8 @@ open module mesakit.graph.world
     requires transitive mesakit.map.utilities.geojson;
     requires transitive mesakit.map.cutter;
     requires transitive mesakit.graph.core;
+    requires transitive kivakit.kernel;
+    requires kivakit.configuration;
 
     exports com.telenav.mesakit.graph.world;
     exports com.telenav.mesakit.graph.world.grid;

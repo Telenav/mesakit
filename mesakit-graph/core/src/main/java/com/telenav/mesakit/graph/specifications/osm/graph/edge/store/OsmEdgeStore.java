@@ -19,11 +19,8 @@
 package com.telenav.mesakit.graph.specifications.osm.graph.edge.store;
 
 import com.telenav.kivakit.kernel.language.values.count.BitCount;
-import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.primitive.collections.array.packed.SplitPackedArray;
-import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
-import com.telenav.kivakit.primitive.collections.map.scalars.LongToLongMap;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
@@ -50,23 +47,6 @@ import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimi
 @SuppressWarnings({ "unused" })
 public final class OsmEdgeStore extends EdgeStore
 {
-    private final AttributeReference<LongToLongMap> FORWARD_TELENAV_TRAFFIC_LOCATION_IDENTIFIER =
-            new AttributeReference<>(this, OsmEdgeAttributes.get().FORWARD_TELENAV_TRAFFIC_LOCATION_IDENTIFIER, "forwardTelenavTrafficLocationIdentifier",
-                    () -> (LongToLongMap) new LongToLongMap("forwardTelenavTrafficLocationIdentifier")
-                            .initialSize(estimatedElements()));
-
-    @KivaKitArchivedField
-    private LongToLongMap forwardTelenavTrafficLocationIdentifier;
-
-    private final AttributeReference<SplitIntArray> FORWARD_TRACE_COUNT =
-            new AttributeReference<>(this, OsmEdgeAttributes.get().FORWARD_TRACE_COUNT, "forwardTraceCount",
-                    () -> (SplitIntArray) new SplitIntArray("forwardTraceCount")
-                            .nullInt(Integer.MIN_VALUE)
-                            .initialSize(estimatedElements()));
-
-    @KivaKitArchivedField
-    private SplitIntArray forwardTraceCount;
-
     @KivaKitArchivedField
     private SplitPackedArray isDoubleDigitized;
 
@@ -99,23 +79,6 @@ public final class OsmEdgeStore extends EdgeStore
     @KivaKitArchivedField
     private SplitLongArray rawIdentifier;
 
-    private final AttributeReference<LongToLongMap> REVERSE_TELENAV_TRAFFIC_LOCATION_IDENTIFIER =
-            new AttributeReference<>(this, OsmEdgeAttributes.get().REVERSE_TELENAV_TRAFFIC_LOCATION_IDENTIFIER, "reverseTelenavTrafficLocationIdentifier",
-                    () -> (LongToLongMap) new LongToLongMap("reverseTelenavTrafficLocationIdentifier")
-                            .initialSize(estimatedElements()));
-
-    @KivaKitArchivedField
-    private LongToLongMap reverseTelenavTrafficLocationIdentifier;
-
-    private final AttributeReference<SplitIntArray> REVERSE_TRACE_COUNT =
-            new AttributeReference<>(this, OsmEdgeAttributes.get().FORWARD_TRACE_COUNT, "reverseTraceCount",
-                    () -> (SplitIntArray) new SplitIntArray("reverseTraceCount")
-                            .nullInt(Integer.MIN_VALUE)
-                            .initialSize(estimatedElements()));
-
-    @KivaKitArchivedField
-    private SplitIntArray reverseTraceCount;
-
     public OsmEdgeStore(final Graph graph)
     {
         super(graph);
@@ -131,35 +94,6 @@ public final class OsmEdgeStore extends EdgeStore
         return RAW_IDENTIFIER.retrieveObject(edge, EdgeIdentifier::new);
     }
 
-    public Count retrieveTraceCount(final Edge edge)
-    {
-        FORWARD_TRACE_COUNT.load();
-        REVERSE_TRACE_COUNT.load();
-        if (edge.isReverse())
-        {
-            if (reverseTraceCount != null)
-            {
-                final var count = reverseTraceCount.safeGet(edge.index());
-                if (!reverseTraceCount.isNull(count))
-                {
-                    return Count.count(count);
-                }
-            }
-        }
-        else
-        {
-            if (forwardTraceCount != null)
-            {
-                final var count = forwardTraceCount.get(edge.index());
-                if (!forwardTraceCount.isNull(count))
-                {
-                    return Count.count(count);
-                }
-            }
-        }
-        return null;
-    }
-
     /**
      * Stores all of the simple attributes of the given edge at the given edge index
      */
@@ -173,11 +107,6 @@ public final class OsmEdgeStore extends EdgeStore
 
         // Store attributes
         RAW_IDENTIFIER.storeObject(edge, edge.rawIdentifier());
-        storeTelenavTrafficLocationIdentifiers(edge);
-        if (edge.osmTraceCount() != null)
-        {
-            storeTraceCount(edge, edge.osmTraceCount());
-        }
         if (edge.osmIsDoubleDigitized() != null)
         {
             storeIsDoubleDigitized(edge, edge.osmIsDoubleDigitized());
@@ -197,69 +126,8 @@ public final class OsmEdgeStore extends EdgeStore
         IS_DOUBLE_DIGITIZED.storeBoolean(edge, isDoubleDigitized);
     }
 
-    public final void storeTraceCount(final Edge edge, final Count count)
-    {
-        if (count != null)
-        {
-            if (forwardTraceCount == null)
-            {
-                FORWARD_TRACE_COUNT.allocate();
-                REVERSE_TRACE_COUNT.allocate();
-            }
-            if (edge.isReverse())
-            {
-                reverseTraceCount.set(edge.index(), count.asInt());
-            }
-            else
-            {
-                forwardTraceCount.set(edge.index(), count.asInt());
-            }
-        }
-    }
-
     private OsmEdgeStore outer()
     {
         return this;
-    }
-
-    private void storeTelenavTrafficLocationIdentifiers(final Edge edge)
-    {
-        // Get normal forward TTL
-        var forward = edge.osmTelenavTrafficLocationIdentifier();
-
-        // If there's no forward TTL but the edge is one-way
-        if (forward == null && edge.isOneWay())
-        {
-            // then get the reverse TTL in case the edge is backwards
-            final var reversed = edge.reversed();
-            if (reversed != null)
-            {
-                forward = reversed.osmTelenavTrafficLocationIdentifier();
-            }
-        }
-
-        // If we have a forward TTL
-        if (forward != null)
-        {
-            // store it under the forward identifier
-            FORWARD_TELENAV_TRAFFIC_LOCATION_IDENTIFIER.allocate();
-            forwardTelenavTrafficLocationIdentifier.put(edge.identifierAsLong(), forward.value().asLong());
-        }
-
-        // If the edge is two way
-        if (edge.isTwoWay())
-        {
-            // reverse the edge
-            final var reversed = edge.reversed();
-
-            // to get the reverse TTL
-            final var reverseIdentifier = reversed.osmTelenavTrafficLocationIdentifier();
-            if (reverseIdentifier != null)
-            {
-                // and store it under the reverse identifier
-                REVERSE_TELENAV_TRAFFIC_LOCATION_IDENTIFIER.allocate();
-                reverseTelenavTrafficLocationIdentifier.put(reversed.identifierAsLong(), reverseIdentifier.value().asLong());
-            }
-        }
     }
 }

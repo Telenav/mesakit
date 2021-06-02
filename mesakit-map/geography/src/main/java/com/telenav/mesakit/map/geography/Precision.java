@@ -112,12 +112,12 @@ public enum Precision
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static SwitchParser.Builder<Precision> switchParser()
+    public static SwitchParser.Builder<Precision> precisionSwitchParser()
     {
-        return switchParser("data-precision", "The data precision (DM5, DM6 or DM7)");
+        return precisionSwitchParser("data-precision", "The data precision (DM5, DM6 or DM7)");
     }
 
-    public static SwitchParser.Builder<Precision> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<Precision> precisionSwitchParser(final String name, final String description)
     {
         return SwitchParser.builder(Precision.class)
                 .name(name)

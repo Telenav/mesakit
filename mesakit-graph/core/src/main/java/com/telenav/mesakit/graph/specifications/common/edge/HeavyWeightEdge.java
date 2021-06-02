@@ -33,8 +33,6 @@ import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.identifiers.VertexIdentifier;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
-import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
-import com.telenav.mesakit.graph.traffic.roadsection.RoadSectionIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfChangeSetIdentifier;
@@ -95,8 +93,6 @@ public class HeavyWeightEdge extends Edge
     private Count hovLaneCount;
 
     private Count laneCount;
-
-    private Count traceCount;
 
     private Country country;
 
@@ -159,10 +155,6 @@ public class HeavyWeightEdge extends Edge
     private Time lastModificationTime;
 
     private PbfTagList tags = PbfTagList.EMPTY;
-
-    private Iterable<RoadSectionIdentifier> tmcIdentifiers;
-
-    private Iterable<RoadSectionIdentifier> reverseTmcIdentifiers;
 
     private GradeSeparation fromGradeSeparation;
 
@@ -276,15 +268,6 @@ public class HeavyWeightEdge extends Edge
         tollRoad(that.isTollRoad());
         toNodeIdentifier(that.toNodeIdentifier());
         underConstruction(that.isUnderConstruction());
-
-        if (that.supports(OsmEdgeAttributes.get().FORWARD_TMC_IDENTIFIERS))
-        {
-            tmcIdentifiers(that.tmcIdentifiers());
-            if (that.isTwoWay())
-            {
-                reverseTmcIdentifiers(that.reversed().tmcIdentifiers());
-            }
-        }
 
         if (thatFrom != null)
         {
@@ -557,12 +540,6 @@ public class HeavyWeightEdge extends Edge
     }
 
     @Override
-    public Count osmTraceCount()
-    {
-        return traceCount;
-    }
-
-    @Override
     public PbfChangeSetIdentifier pbfChangeSetIdentifier()
     {
         return pbfChangeSetIdentifier;
@@ -648,7 +625,6 @@ public class HeavyWeightEdge extends Edge
         tollRoad(false);
         toVertexClipped(false);
         toLocation(Location.TELENAV_HEADQUARTERS.moved(Heading.EAST, Distance.meters(5)));
-        traceCount(Count._8);
         type(Type.NORMAL);
         underConstruction(false);
         fromGradeSeparation(GradeSeparation.GROUND);
@@ -671,11 +647,6 @@ public class HeavyWeightEdge extends Edge
         this.referenceSpeed = referenceSpeed;
     }
 
-    public void reverseTmcIdentifiers(final Iterable<RoadSectionIdentifier> reverseTmcIdentifiers)
-    {
-        this.reverseTmcIdentifiers = reverseTmcIdentifiers;
-    }
-
     @Override
     public HeavyWeightEdge reversed()
     {
@@ -690,8 +661,6 @@ public class HeavyWeightEdge extends Edge
         reversed.referenceSpeed(reverseReferenceSpeed);
         reversed.uniDbReverseReferenceSpeed(referenceSpeed);
         reversed.roadShape(roadShape().reversed());
-        reversed.tmcIdentifiers(reverseTmcIdentifiers());
-        reversed.reverseTmcIdentifiers(tmcIdentifiers());
         reversed.toGradeSeparation(fromGradeSeparation());
         reversed.fromGradeSeparation(toGradeSeparation());
         return reversed;
@@ -850,17 +819,6 @@ public class HeavyWeightEdge extends Edge
     }
 
     @Override
-    public Iterable<RoadSectionIdentifier> tmcIdentifiers()
-    {
-        return Objects.notNullOr(tmcIdentifiers, Collections.emptyList());
-    }
-
-    public void tmcIdentifiers(final Iterable<RoadSectionIdentifier> tmcIdentifiers)
-    {
-        this.tmcIdentifiers = tmcIdentifiers;
-    }
-
-    @Override
     public Vertex to()
     {
         return to;
@@ -928,11 +886,6 @@ public class HeavyWeightEdge extends Edge
         this.isTollRoad = isTollRoad;
     }
 
-    public void traceCount(final Count traceCount)
-    {
-        this.traceCount = traceCount;
-    }
-
     @Override
     public Duration travelTime()
     {
@@ -974,10 +927,5 @@ public class HeavyWeightEdge extends Edge
     public void uniDbReverseReferenceSpeed(final Speed reversedReferenceSpeed)
     {
         reverseReferenceSpeed = reversedReferenceSpeed;
-    }
-
-    protected Iterable<RoadSectionIdentifier> reverseTmcIdentifiers()
-    {
-        return Objects.notNullOr(reverseTmcIdentifiers, Collections.emptyList());
     }
 }

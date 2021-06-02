@@ -18,10 +18,6 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.identifiers;
 
-import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
-import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapWayIdentifier;
-import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelIdentifiers;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.kernel.language.primitives.Longs;
@@ -30,6 +26,10 @@ import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapWayIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelIdentifiers;
 import org.openstreetmap.osmosis.core.domain.v0_6.EntityType;
 import org.openstreetmap.osmosis.core.domain.v0_6.Way;
 
@@ -62,7 +62,8 @@ public class PbfWayIdentifier extends MapWayIdentifier implements PbfIdentifierT
         return null;
     }
 
-    public static SwitchParser.Builder<PbfWayIdentifier> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<PbfWayIdentifier> pbfWayIdentifierSwitchParser(final String name,
+                                                                                      final String description)
     {
         return SwitchParser.builder(PbfWayIdentifier.class)
                 .name(name)

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.world.identifiers;
 
-import com.telenav.kivakit.kernel.language.object.Hash;
+import com.telenav.kivakit.kernel.language.objects.Hash;
 import com.telenav.mesakit.graph.identifiers.RelationIdentifier;
 import com.telenav.mesakit.graph.world.WorldGraph;
 import com.telenav.mesakit.graph.world.WorldRelation;
@@ -70,7 +70,7 @@ public class WorldRelationIdentifier extends RelationIdentifier
     @Override
     public String toString()
     {
-        return worldCell.identity().tdk().code() + "-" + super.toString();
+        return worldCell.identity().mesakit().code() + "-" + super.toString();
     }
 
     public WorldCell worldCell()
