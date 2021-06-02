@@ -22,7 +22,7 @@
 
     <modules>
         <module>core</module>
-        <!--        <module>query</module> -->
+        <module>query</module>
         <module>world</module>
     </modules>
 

@@ -11,7 +11,9 @@ import com.telenav.kivakit.kernel.messaging.Message;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.io.load.SmartGraphLoader;
-import com.telenav.mesakit.graph.project.GraphCore;
+import com.telenav.mesakit.graph.project.GraphCoreProject;
+import com.telenav.mesakit.graph.query.antlr.GraphQueryLexer;
+import com.telenav.mesakit.graph.query.antlr.GraphQueryParser;
 import com.telenav.mesakit.graph.query.compiler.GraphQueryCompiler;
 import com.telenav.mesakit.graph.query.compiler.GraphQueryErrorListener;
 import org.antlr.v4.runtime.CharStreams;
@@ -39,7 +41,7 @@ public class GraphQuery extends Application
 
     public GraphQuery()
     {
-        super(GraphCore.get());
+        super(GraphCoreProject.get());
     }
 
     /**

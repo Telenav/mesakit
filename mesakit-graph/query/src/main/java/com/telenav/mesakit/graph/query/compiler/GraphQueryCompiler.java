@@ -1,15 +1,18 @@
 package com.telenav.mesakit.graph.query.compiler;
 
 import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.mesakit.graph.query.GraphQueryBaseVisitor;
+import com.telenav.mesakit.graph.query.antlr.GraphQueryBaseVisitor;
+import com.telenav.mesakit.graph.query.antlr.GraphQueryParser;
 import com.telenav.mesakit.graph.query.program.BooleanExpression;
 import com.telenav.mesakit.graph.query.program.Node;
 import com.telenav.mesakit.graph.query.program.Program;
 import com.telenav.mesakit.graph.query.program.expressions.closure.OneOrMore;
 import com.telenav.mesakit.graph.query.program.expressions.logical.And;
+import com.telenav.mesakit.graph.query.program.expressions.logical.Not;
 import com.telenav.mesakit.graph.query.program.expressions.logical.Or;
 import com.telenav.mesakit.graph.query.program.expressions.relational.Then;
 import com.telenav.mesakit.graph.query.program.expressions.terminal.Compare;
+import com.telenav.mesakit.graph.query.program.expressions.terminal.value.Attribute;
 import com.telenav.mesakit.graph.query.program.expressions.terminal.value.BooleanAttribute;
 import com.telenav.mesakit.graph.query.program.expressions.terminal.value.Constant;
 import com.telenav.mesakit.graph.query.program.expressions.terminal.value.Value;
@@ -17,9 +20,19 @@ import com.telenav.mesakit.graph.query.program.expressions.terminal.value.ValueE
 import com.telenav.mesakit.graph.query.program.statements.Select;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.motion.Speed;
+import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.mesakit.graph.query.antlr.GraphQueryParser.AND;
+import static com.telenav.mesakit.graph.query.antlr.GraphQueryParser.EQUAL;
+import static com.telenav.mesakit.graph.query.antlr.GraphQueryParser.GREATER_THAN;
+import static com.telenav.mesakit.graph.query.antlr.GraphQueryParser.GREATER_THAN_OR_EQUAL;
+import static com.telenav.mesakit.graph.query.antlr.GraphQueryParser.LESS_THAN;
+import static com.telenav.mesakit.graph.query.antlr.GraphQueryParser.LESS_THAN_OR_EQUAL;
+import static com.telenav.mesakit.graph.query.antlr.GraphQueryParser.NOT_EQUAL;
+import static com.telenav.mesakit.graph.query.antlr.GraphQueryParser.OR;
 
 /**
  * Compiles a {@link BooleanExpression} tree that can be evaluated against an edge.
@@ -51,7 +64,7 @@ public class GraphQueryCompiler extends GraphQueryBaseVisitor<Node>
      * @return The extracted attribute
      */
     @Override
-    public Node visitAttribute(final AttributeContext attribute)
+    public Node visitAttribute(final GraphQueryParser.AttributeContext attribute)
     {
         final var code = attribute.getText();
         return new Attribute(code).code(code);
@@ -63,7 +76,7 @@ public class GraphQueryCompiler extends GraphQueryBaseVisitor<Node>
      * @return The value
      */
     @Override
-    public Node visitConstantValue(final ConstantValueContext constant)
+    public Node visitConstantValue(final GraphQueryParser.ConstantValueContext constant)
     {
         final var code = constant.getText();
         if (constant.unit != null)
@@ -88,7 +101,7 @@ public class GraphQueryCompiler extends GraphQueryBaseVisitor<Node>
      * @return True if the query matched and false if it didn't
      */
     @Override
-    public Node visitQuery(final QueryContext query)
+    public Node visitQuery(final GraphQueryParser.QueryContext query)
     {
         final var code = query.getText();
 
@@ -174,7 +187,7 @@ public class GraphQueryCompiler extends GraphQueryBaseVisitor<Node>
         }
 
         // ( [query] )
-        if (query.getStart().getType() == OPEN_PARENTHESIS)
+        if (query.getStart().getType() == GraphQueryParser.OPEN_PARENTHESIS)
         {
             return visit(query.parenthesizedQuery);
         }
@@ -183,7 +196,7 @@ public class GraphQueryCompiler extends GraphQueryBaseVisitor<Node>
     }
 
     @Override
-    public Node visitSelect(final SelectContext select)
+    public Node visitSelect(final GraphQueryParser.SelectContext select)
     {
         final var query = visit(select.query());
         if (query instanceof BooleanExpression)
@@ -193,27 +206,27 @@ public class GraphQueryCompiler extends GraphQueryBaseVisitor<Node>
         return fail("Select expression must be boolean");
     }
 
-    private Type typeOf(final Token comparisonOperator)
+    private Compare.Type typeOf(final Token comparisonOperator)
     {
         switch (comparisonOperator.getType())
         {
             case EQUAL:
-                return Type.EQUAL;
+                return Compare.Type.EQUAL;
 
             case NOT_EQUAL:
-                return Type.NOT_EQUAL;
+                return Compare.Type.NOT_EQUAL;
 
             case GREATER_THAN:
-                return Type.GREATER_THAN;
+                return Compare.Type.GREATER_THAN;
 
             case LESS_THAN:
-                return Type.LESS_THAN;
+                return Compare.Type.LESS_THAN;
 
             case GREATER_THAN_OR_EQUAL:
-                return Type.GREATER_THAN_OR_EQUAL;
+                return Compare.Type.GREATER_THAN_OR_EQUAL;
 
             case LESS_THAN_OR_EQUAL:
-                return Type.LESS_THAN_OR_EQUAL;
+                return Compare.Type.LESS_THAN_OR_EQUAL;
 
             default:
                 unsupported("Unsupported comparison '$'", comparisonOperator.getText());

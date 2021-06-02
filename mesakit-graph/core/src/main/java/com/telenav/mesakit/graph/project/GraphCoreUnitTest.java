@@ -135,7 +135,7 @@ public abstract class GraphCoreUnitTest extends MapRegionUnitTest
     @BeforeClass
     public static void testSetup()
     {
-        GraphCore.get().initialize();
+        GraphCoreProject.get().initialize();
     }
 
     private final Location.DegreesConverter locationInDegreesConverter = new Location.DegreesConverter(LOGGER);
@@ -294,7 +294,7 @@ public abstract class GraphCoreUnitTest extends MapRegionUnitTest
 
     private static Folder cacheFolder()
     {
-        return GraphCore.get().overpassFolder();
+        return GraphCoreProject.get().overpassFolder();
     }
 
     private static void downloadFromOverpass(final String dataDescriptor, final Rectangle bounds)
@@ -334,7 +334,7 @@ public abstract class GraphCoreUnitTest extends MapRegionUnitTest
             if (!pbfFile.exists())
             {
                 // then try to copy it from the test data folder
-                final var destination = GraphCore.get().graphFolder().folder("overpass");
+                final var destination = GraphCoreProject.get().graphFolder().folder("overpass");
                 final var source = Folder.kivakitHome().folder("tdk-graph/core/data");
                 source.copyTo(destination, CopyMode.OVERWRITE, Extension.OSM_PBF.fileMatcher(), ProgressReporter.NULL);
             }

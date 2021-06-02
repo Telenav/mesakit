@@ -24,7 +24,7 @@ import com.telenav.kivakit.kernel.language.objects.Lazy;
 import com.telenav.kivakit.kernel.language.values.version.Version;
 import com.telenav.kivakit.kernel.project.Project;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
-import com.telenav.mesakit.graph.project.GraphCore;
+import com.telenav.mesakit.graph.project.GraphCoreProject;
 
 import java.util.Set;
 
@@ -45,7 +45,7 @@ public class GraphWorldProject extends Project
     @Override
     public Set<Project> dependencies()
     {
-        return Sets.of(GraphCore.get());
+        return Sets.of(GraphCoreProject.get());
     }
 
     /**

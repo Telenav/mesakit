@@ -219,6 +219,11 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
         return projection;
     }
 
+    public MapScale scale()
+    {
+        return scale;
+    }
+
     /**
      * @return The given location in projected coordinates
      */

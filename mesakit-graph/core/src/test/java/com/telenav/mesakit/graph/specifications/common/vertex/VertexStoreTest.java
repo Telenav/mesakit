@@ -38,7 +38,7 @@ public class VertexStoreTest extends GraphCoreUnitTest
         // Create graph
         final var specification = OsmDataSpecification.get();
         final var graph = specification.newGraph(Metadata.osm(OSM, PBF));
-        graph.addListener(Listener.NULL);
+        graph.addListener(Listener.none());
 
         // and get vertex vertexStore
         final var edgeStore = graph.edgeStore();

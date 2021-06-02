@@ -24,7 +24,6 @@ import com.telenav.kivakit.kernel.language.objects.Lazy;
 import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
 import com.telenav.kivakit.kernel.project.Project;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
-import com.telenav.mesakit.graph.traffic.project.GraphTrafficProject;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.PbfFilters;
 import com.telenav.mesakit.map.data.formats.pbf.project.DataFormatsPbfProject;
 import com.telenav.mesakit.map.region.project.MapRegionProject;
@@ -34,16 +33,16 @@ import java.util.Set;
 /**
  * @author jonathanl (shibo)
  */
-public class GraphCore extends Project
+public class GraphCoreProject extends Project
 {
-    private static final Lazy<GraphCore> singleton = Lazy.of(GraphCore::new);
+    private static final Lazy<GraphCoreProject> singleton = Lazy.of(GraphCoreProject::new);
 
-    public static GraphCore get()
+    public static GraphCoreProject get()
     {
         return singleton.get();
     }
 
-    protected GraphCore()
+    protected GraphCoreProject()
     {
         System.setProperty("tdk.graph.folder", graphFolder().toString());
         JavaVirtualMachine.local().invalidateProperties();
@@ -52,7 +51,7 @@ public class GraphCore extends Project
     @Override
     public Set<Project> dependencies()
     {
-        return Sets.of(MapRegionProject.get(), GraphTrafficProject.get(), DataFormatsPbfProject.get());
+        return Sets.of(MapRegionProject.get(), DataFormatsPbfProject.get());
     }
 
     /**
@@ -63,11 +62,6 @@ public class GraphCore extends Project
         return Folder.kivakitCache()
                 .folder("graph")
                 .mkdirs();
-    }
-
-    public SerializationSessionFactory serializationFactory()
-    {
-        return new GraphCoreKryoTypes().sessionFactory();
     }
 
     @Override
@@ -81,6 +75,11 @@ public class GraphCore extends Project
     public Folder overpassFolder()
     {
         return graphFolder().folder("overpass").mkdirs();
+    }
+
+    public SerializationSessionFactory serializationFactory()
+    {
+        return new GraphCoreKryoTypes().sessionFactory();
     }
 
     public Folder userGraphFolder()

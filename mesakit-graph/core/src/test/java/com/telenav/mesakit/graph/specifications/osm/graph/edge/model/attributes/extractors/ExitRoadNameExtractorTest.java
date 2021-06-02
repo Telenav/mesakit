@@ -44,7 +44,7 @@ public class ExitRoadNameExtractorTest extends KivaKitMapRegionUnitTest
 
     private Set<String> extract(final PbfWay way)
     {
-        final var extractor = new ExitRoadNameExtractor(MapLocale.ENGLISH_UNITED_STATES.get(), Mode.TDK_STANDARDIZATION, Listener.NULL);
+        final var extractor = new ExitRoadNameExtractor(MapLocale.ENGLISH_UNITED_STATES.get(), Mode.TDK_STANDARDIZATION, Listener.none());
         final var roadNames = extractor.extract(way);
         return new StringList(roadNames).asSet();
     }

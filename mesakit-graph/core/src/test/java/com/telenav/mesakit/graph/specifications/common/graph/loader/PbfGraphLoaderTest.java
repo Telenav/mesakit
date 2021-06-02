@@ -31,7 +31,7 @@ package com.telenav.mesakit.graph.specifications.common.graph.loader;
  * @Test public void testValidOsmEdgeIdentifier() throws Exception { // A small test pbf file
  * final File pbf = new File(PbfFile.class.resource("pergola_cluj.osm.pbf").getPath());
  * // Load the PBF as a graph final Graph graph = new PbfFile(pbf, DataSupplier.OSM,
- * WayFilter.NAVIGABLE_WAYS, RelationFilter.ALL_RELATIONS) .load(Listener.NULL); // Validate the
+ * WayFilter.NAVIGABLE_WAYS, RelationFilter.ALL_RELATIONS) .load(Listener.none()); // Validate the
  * graph loaded assertNotNull(graph); // Go through edges graph.edges().forEach(edge -> {
  * Get from and to node identifiers final long fromNode =
  * edge.osmFromNodeIdentifier().asLong(); final long toNode =
