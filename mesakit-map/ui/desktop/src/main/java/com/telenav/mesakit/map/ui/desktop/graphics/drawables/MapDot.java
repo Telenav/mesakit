@@ -71,12 +71,6 @@ public class MapDot extends LabeledMapShape
         coordinateRadius = that.coordinateRadius;
     }
 
-    @Override
-    public MapDot at(final DrawingPoint at)
-    {
-        return (MapDot) super.at(at);
-    }
-
     /**
      * Note that this method cannot be called until this drawable has been drawn
      *
@@ -103,7 +97,7 @@ public class MapDot extends LabeledMapShape
 
         final var dot = Dot.dot()
                 .withRadius(radius)
-                .at(at())
+                .withLocation(withLocation())
                 .draw(canvas);
 
         final var label = super.onDraw(canvas);
@@ -169,6 +163,12 @@ public class MapDot extends LabeledMapShape
     public MapDot withLabelText(final String label)
     {
         return (MapDot) super.withLabelText(label);
+    }
+
+    @Override
+    public MapDot withLocation(final DrawingPoint at)
+    {
+        return (MapDot) super.withLocation(at);
     }
 
     @Override

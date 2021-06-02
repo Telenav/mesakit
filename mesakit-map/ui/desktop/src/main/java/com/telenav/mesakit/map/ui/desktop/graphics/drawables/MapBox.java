@@ -75,12 +75,6 @@ public class MapBox extends LabeledMapShape
     }
 
     @Override
-    public MapBox at(final DrawingPoint at)
-    {
-        return (MapBox) super.at(at);
-    }
-
-    @Override
     public Rectangle bounds()
     {
         return location().rectangle(size);
@@ -96,7 +90,7 @@ public class MapBox extends LabeledMapShape
     public Shape onDraw(final MapCanvas canvas)
     {
         final var box = Box.box()
-                .at(canvas.toDrawing(location()))
+                .withLocation(canvas.toDrawing(location()))
                 .withStyle(style())
                 .withSize(canvas.toDrawing(size))
                 .draw(canvas);
@@ -182,6 +176,12 @@ public class MapBox extends LabeledMapShape
     public MapBox withLabelText(final String label)
     {
         return (MapBox) super.withLabelText(label);
+    }
+
+    @Override
+    public MapBox withLocation(final DrawingPoint at)
+    {
+        return (MapBox) super.withLocation(at);
     }
 
     @Override

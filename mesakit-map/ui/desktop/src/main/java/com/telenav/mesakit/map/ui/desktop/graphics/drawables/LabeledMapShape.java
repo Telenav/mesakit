@@ -70,7 +70,7 @@ public abstract class LabeledMapShape extends BaseMapDrawable
         if (label != null)
         {
             return label(label)
-                    .at(coordinate)
+                    .withLocation(coordinate)
                     .withStyle(labelStyle)
                     .withRoundedCorners(labelCornerWidth, labelCornerHeight)
                     .withMargin(margin)

@@ -66,12 +66,6 @@ public class MapLabel extends LabeledMapShape
     }
 
     @Override
-    public MapLabel at(final DrawingPoint at)
-    {
-        return (MapLabel) super.at(at);
-    }
-
-    @Override
     public Rectangle bounds()
     {
         return unsupported();
@@ -147,6 +141,12 @@ public class MapLabel extends LabeledMapShape
     public MapLabel withLabelText(final String label)
     {
         return (MapLabel) super.withLabelText(label);
+    }
+
+    @Override
+    public MapLabel withLocation(final DrawingPoint at)
+    {
+        return (MapLabel) super.withLocation(at);
     }
 
     @Override

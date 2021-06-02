@@ -149,7 +149,7 @@ public abstract class BaseMapDrawable extends BaseDrawable implements MapDrawabl
 
     protected DrawingPoint at(final MapCanvas surface)
     {
-        var at = at();
+        var at = withLocation();
         if (at == null)
         {
             at = surface.toDrawing(location());

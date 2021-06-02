@@ -19,6 +19,8 @@
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.values.level.Percent;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.Drawable;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingHeight;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingWidth;
@@ -63,6 +65,10 @@ public class MapPolyline extends LabeledMapShape
 
     private String centerLabel;
 
+    private Drawable fromArrowHead;
+
+    private Drawable toArrowHead;
+
     protected MapPolyline(final Style style, final Polyline polyline)
     {
         super(style, null, null);
@@ -76,12 +82,8 @@ public class MapPolyline extends LabeledMapShape
         centerLabel = that.centerLabel;
         endLabel = that.endLabel;
         polyline = that.polyline;
-    }
-
-    @Override
-    public MapPolyline at(final DrawingPoint at)
-    {
-        return (MapPolyline) super.at(at);
+        fromArrowHead = that.fromArrowHead;
+        toArrowHead = that.toArrowHead;
     }
 
     @Override
@@ -94,6 +96,12 @@ public class MapPolyline extends LabeledMapShape
     public MapPolyline copy()
     {
         return new MapPolyline(this);
+    }
+
+    @Override
+    public MapPolyline fattened(final Percent percent)
+    {
+        return (MapPolyline) super.fattened(percent);
     }
 
     @Override
@@ -183,10 +191,23 @@ public class MapPolyline extends LabeledMapShape
         return (MapPolyline) super.withFillStrokeWidth(width);
     }
 
+    public MapPolyline withFromArrowHead(final Drawable arrowHead)
+    {
+        final var copy = copy();
+        copy.fromArrowHead = arrowHead;
+        return copy;
+    }
+
     @Override
     public MapPolyline withLabelText(final String label)
     {
         return (MapPolyline) super.withLabelText(label);
+    }
+
+    @Override
+    public MapPolyline withLocation(final DrawingPoint at)
+    {
+        return (MapPolyline) super.withLocation(at);
     }
 
     @Override
@@ -238,5 +259,12 @@ public class MapPolyline extends LabeledMapShape
     public MapPolyline withTextColor(final Color color)
     {
         return (MapPolyline) super.withTextColor(color);
+    }
+
+    public MapPolyline withToArrowHead(final Drawable arrowHead)
+    {
+        final var copy = copy();
+        copy.toArrowHead = arrowHead;
+        return copy;
     }
 }

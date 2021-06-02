@@ -130,7 +130,7 @@ public class SlippyTile
         if (visible)
         {
             Label.label()
-                    .at(at)
+                    .withLocation(at)
                     .withStyle(GRID_LABEL)
                     .withMargin(4)
                     .withText(toString())

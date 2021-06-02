@@ -134,7 +134,7 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
     public Shape drawBox(final Style style, final Rectangle rectangle)
     {
         return Box.box(style)
-                .at(toDrawing(rectangle.topLeft()))
+                .withLocation(toDrawing(rectangle.topLeft()))
                 .withSize(toDrawing(rectangle).size())
                 .draw(this);
     }
@@ -144,7 +144,7 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
                          final Distance radius)
     {
         return Dot.dot(style)
-                .at(toDrawing(at))
+                .withLocation(toDrawing(at))
                 .withRadius(toDrawing(radius))
                 .draw(this);
     }
@@ -152,7 +152,7 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
     public Shape drawLabel(final Style style, final Location location, final String text)
     {
         return Label.label(style, text)
-                .at(toDrawing(location))
+                .withLocation(toDrawing(location))
                 .draw(this);
     }
 
@@ -173,7 +173,7 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
     public Shape drawText(final Style style, final Location at, final String text)
     {
         return Text.text(style, text)
-                .at(toDrawing(at))
+                .withLocation(toDrawing(at))
                 .draw(this);
     }
 

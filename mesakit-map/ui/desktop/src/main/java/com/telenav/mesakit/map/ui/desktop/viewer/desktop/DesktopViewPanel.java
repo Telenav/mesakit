@@ -517,7 +517,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
                         + cursorText;
                 final var textSize = mapCanvas.textSize(style, text);
                 Label.label()
-                        .at(drawingSurface.point(
+                        .withLocation(drawingSurface.point(
                                 getWidth() - textSize.widthInUnits() - margin * 3,
                                 getHeight() - textSize.heightInUnits() - margin * 3))
                         .withStyle(style)
@@ -529,7 +529,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
 
             // Show help message
             Label.label()
-                    .at(drawingSurface.point(margin, margin))
+                    .withLocation(drawingSurface.point(margin, margin))
                     .withStyle(CAPTION)
                     .withMargin(margin)
                     .withRoundedCorners(DrawingLength.pixels(10))

@@ -83,12 +83,6 @@ public class MapLine extends LabeledMapShape
     }
 
     @Override
-    public MapLine at(final DrawingPoint at)
-    {
-        return (MapLine) super.at(at);
-    }
-
-    @Override
     public Rectangle bounds()
     {
         return Rectangle.fromLocations(from(), to());
@@ -111,7 +105,7 @@ public class MapLine extends LabeledMapShape
         final var line = line(style(), from(), to, label)
                 .withFromArrowHead(fromArrowHead)
                 .withToArrowHead(toArrowHead)
-                .at(canvas.toDrawing(location()))
+                .withLocation(canvas.toDrawing(location()))
                 .draw(canvas);
 
         return Java2dShapes.combine(line, super.onDraw(canvas));
@@ -192,6 +186,12 @@ public class MapLine extends LabeledMapShape
     public MapLine withLabelText(final String label)
     {
         return (MapLine) super.withLabelText(label);
+    }
+
+    @Override
+    public MapLine withLocation(final DrawingPoint at)
+    {
+        return (MapLine) super.withLocation(at);
     }
 
     @Override
