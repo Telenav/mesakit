@@ -24,6 +24,7 @@ import com.telenav.kivakit.kernel.language.objects.Lazy;
 import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
 import com.telenav.kivakit.kernel.project.Project;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
+import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.PbfFilters;
 import com.telenav.mesakit.map.data.formats.pbf.project.DataFormatsPbfProject;
 import com.telenav.mesakit.map.region.project.MapRegionProject;
@@ -59,7 +60,7 @@ public class GraphCoreProject extends Project
      */
     public Folder graphFolder()
     {
-        return Folder.kivakitCache()
+        return MesaKit.get().mesakitCacheFolder()
                 .folder("graph")
                 .mkdirs();
     }

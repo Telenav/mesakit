@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge;
 
-import com.telenav.kivakit.kernel.language.string.formatting.Separators;
+import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
+import com.telenav.kivakit.kernel.language.values.count.Estimate;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.scalars.counts.Estimate;
 import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import com.telenav.mesakit.graph.specifications.common.edge.store.stores.polyline.PolylineStore;
-import com.telenav.mesakit.map.geography.polyline.compression.differential.CompressedPolyline;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
+import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
 import org.junit.Test;
 
 @SuppressWarnings("ConstantConditions")
@@ -89,13 +89,13 @@ public class PolylineStoreTest extends GraphCoreUnitTest
     private CompressedPolyline b()
     {
         return CompressedPolyline.fromLocationSequence(
-                polylineConverter.convert("-72.226838,-17.942127:4.637036,0.057873:4.637036,0.05789:90.0,-21.879387:90.0,-21.879386"));
+                polylineConverter.convert("-72.226838,-17.942127:4.637036,0.057873:4.637036,0.05789:80.0,-21.879387:80.0,-21.879386"));
     }
 
     private CompressedPolyline c()
     {
         return CompressedPolyline.fromLocationSequence(
-                polylineConverter.convert("24.297167,140.272313:24.297203,140.272313:24.136624,166.928427:90.0,180.0:90.0,180.0:0.0,180.0:90.0,180.0"));
+                polylineConverter.convert("24.297167,140.272313:24.297203,140.272313:24.136624,166.928427:80.0,180.0:80.0,180.0:0.0,180.0:80.0,180.0"));
     }
 
     private CompressedPolyline d()

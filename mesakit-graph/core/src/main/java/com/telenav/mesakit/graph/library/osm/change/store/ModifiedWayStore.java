@@ -16,12 +16,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.graph.library.osm.change;
+package com.telenav.mesakit.graph.library.osm.change.store;
 
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.mesakit.graph.Edge;
+import com.telenav.mesakit.graph.library.osm.change.MutableWay;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserIdentifier;
@@ -37,7 +38,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * A store of {@link ModifiableWay}s that can be retrieved by Edge.
+ * A store of {@link MutableWay}s that can be retrieved by Edge.
  *
  * @author jonathanl (shibo)
  */
@@ -49,7 +50,7 @@ public class ModifiedWayStore
     private final PbfNodeStore nodes;
 
     // Modified ways stored by OSM way identifier
-    private final Map<PbfWayIdentifier, ModifiableWay> modifiedWayForWayIdentifier = new HashMap<>();
+    private final Map<PbfWayIdentifier, MutableWay> modifiedWayForWayIdentifier = new HashMap<>();
 
     /**
      * @param nodes The node store to work with
@@ -75,9 +76,9 @@ public class ModifiedWayStore
     }
 
     /**
-     * @return The {@link ModifiableWay} for the given edge
+     * @return The {@link MutableWay} for the given edge
      */
-    public ModifiableWay modifiableWay(final Edge edge)
+    public MutableWay modifiableWay(final Edge edge)
     {
         // Get any existing modified way
         var way = modifiedWayForWayIdentifier.get(edge.wayIdentifier());
@@ -86,7 +87,7 @@ public class ModifiedWayStore
         if (way == null)
         {
             // create one and store it in the map
-            way = new ModifiableWay(nodes, edge);
+            way = new MutableWay(nodes, edge);
             modifiedWayForWayIdentifier.put(edge.wayIdentifier(), way);
         }
 
@@ -94,11 +95,11 @@ public class ModifiedWayStore
     }
 
     /**
-     * @return The {@link ModifiableWay} for the given edge
+     * @return The {@link MutableWay} for the given edge
      */
-    public ModifiableWay modifiableWay(final PbfUserIdentifier userIdentifier, final PbfUserName userName,
-                                       final PbfWayIdentifier identifier, final Polyline shape, final PbfTagList tags,
-                                       final int version)
+    public MutableWay modifiableWay(final PbfUserIdentifier userIdentifier, final PbfUserName userName,
+                                    final PbfWayIdentifier identifier, final Polyline shape, final PbfTagList tags,
+                                    final int version)
     {
         // Get any existing modified way
         var way = modifiedWayForWayIdentifier.get(identifier);
@@ -107,7 +108,7 @@ public class ModifiedWayStore
         if (way == null)
         {
             // create one and store it in the map
-            way = new ModifiableWay(nodes, userIdentifier, userName, identifier, shape, tags, version);
+            way = new MutableWay(nodes, userIdentifier, userName, identifier, shape, tags, version);
             modifiedWayForWayIdentifier.put(identifier, way);
         }
 
@@ -115,11 +116,11 @@ public class ModifiedWayStore
     }
 
     /**
-     * @return Any modified {@link ModifiableWay}s in this store
+     * @return Any modified {@link MutableWay}s in this store
      */
-    public Collection<ModifiableWay> modifiedWays()
+    public Collection<MutableWay> modifiedWays()
     {
-        final List<ModifiableWay> modified = new ArrayList<>();
+        final List<MutableWay> modified = new ArrayList<>();
         for (final var way : modifiedWayForWayIdentifier.values())
         {
             if (way.isModified())

@@ -16,7 +16,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.graph.library.osm.change;
+package com.telenav.mesakit.graph.library.osm.change.store;
 
 import com.telenav.kivakit.collections.map.ReferenceCountMap;
 import com.telenav.kivakit.kernel.language.collections.list.StringList;
@@ -25,6 +25,9 @@ import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.mesakit.graph.Graph;
+import com.telenav.mesakit.graph.library.osm.change.MutableWay;
+import com.telenav.mesakit.graph.library.osm.change.NewWay;
+import com.telenav.mesakit.graph.library.osm.change.PbfTimestamp;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
@@ -42,7 +45,7 @@ import java.util.TreeMap;
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 /**
- * Holds OSM nodes being referenced by {@link NewWay} and {@link ModifiableWay} objects.
+ * Holds OSM nodes being referenced by {@link NewWay} and {@link MutableWay} objects.
  *
  * @author jonathanl (shibo)
  */
@@ -262,7 +265,7 @@ public class PbfNodeStore
 
             // Add open node tag
             lines.add("  <node id=\"" + identifier + "\" lat=\"" + location.latitude().asDegrees() + "\" lon=\""
-                    + location.longitude().asDegrees() + "\" timestamp=\"" + new Timestamp()
+                    + location.longitude().asDegrees() + "\" timestamp=\"" + new PbfTimestamp()
                     + "\" uid=\"2100001\" user=\"scout_osm\" version=\"1\"" + (tags.isEmpty() ? "/>" : ">"));
 
             // Add OSM tags

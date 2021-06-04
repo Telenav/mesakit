@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.metadata;
 
-import com.telenav.kivakit.kernel.testing.KivaKitUnitTest;
+import com.telenav.kivakit.test.UnitTest;
 import org.junit.Test;
 
-public class DataSpecificationTest extends KivaKitUnitTest
+public class DataSpecificationTest extends UnitTest
 {
     @Test
     public void test()

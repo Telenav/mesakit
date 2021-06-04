@@ -28,8 +28,8 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static com.telenav.kivakit.data.formats.library.DataFormat.PBF;
-import static com.telenav.kivakit.graph.metadata.DataSupplier.OSM;
+import static com.telenav.mesakit.graph.metadata.DataSupplier.OSM;
+import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
 
 public class EdgeStoreTest extends GraphCoreUnitTest
 {

@@ -30,6 +30,7 @@ import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.kivakit.resource.CopyMode;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
@@ -325,7 +326,7 @@ public abstract class GraphCoreUnitTest extends MapRegionUnitTest
     private static Graph graph(final DataSpecification specification, final String name, final Rectangle bounds)
     {
         // If we can't find the graph file
-        final var dataDescriptor = (specification.isOsm() ? "OSM-OSM-PBF-" : "HERE-UniDb-PBF-") + name;
+        final var dataDescriptor = "OSM-OSM-PBF-" + name;
         final var graphFile = file(dataDescriptor, bounds).withExtension(Extension.GRAPH);
         if (!graphFile.exists())
         {
@@ -335,7 +336,7 @@ public abstract class GraphCoreUnitTest extends MapRegionUnitTest
             {
                 // then try to copy it from the test data folder
                 final var destination = GraphCoreProject.get().graphFolder().folder("overpass");
-                final var source = Folder.kivakitHome().folder("tdk-graph/core/data");
+                final var source = MesaKit.get().mesakitHome().folder("mesakit-graph/core/data");
                 source.copyTo(destination, CopyMode.OVERWRITE, Extension.OSM_PBF.fileMatcher(), ProgressReporter.NULL);
             }
 

@@ -18,16 +18,16 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge;
 
-import com.telenav.kivakit.kernel.language.string.formatting.Separators;
+import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
+import com.telenav.kivakit.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.scalars.counts.Estimate;
-import com.telenav.kivakit.kernel.scalars.counts.Maximum;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import com.telenav.mesakit.graph.specifications.common.edge.store.stores.polyline.SplitPolylineStore;
-import com.telenav.mesakit.map.geography.polyline.compression.differential.CompressedPolyline;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
+import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
 import org.junit.Test;
 
 @SuppressWarnings("ConstantConditions")
@@ -43,12 +43,10 @@ public class SplitPolylineStoreTest extends GraphCoreUnitTest
         final var a = a();
         final var b = b();
         final var c = c();
-        final var d = d();
 
         ensureEqual(a, a);
         ensureEqual(b, b);
         ensureEqual(c, c);
-        ensureEqual(d, d);
 
         final var graph = osmGraph();
         final var store = new SplitPolylineStore("test",
@@ -62,8 +60,7 @@ public class SplitPolylineStoreTest extends GraphCoreUnitTest
 
         store.set(edge3, a);
         store.set(edge777, b);
-        store.set(edge55, c);
-        store.set(edge333, d);
+        store.set(edge333, c);
 
         final Polyline a2 = store.get(edge3);
         final Polyline b2 = store.get(edge777);
@@ -74,8 +71,7 @@ public class SplitPolylineStoreTest extends GraphCoreUnitTest
 
         ensureEqual(a.decompress(), a2);
         ensureEqual(b.decompress(), b2);
-        ensureEqual(c.decompress(), c2);
-        ensureEqual(d.decompress(), d2);
+        ensureEqual(c.decompress(), d2);
     }
 
     private CompressedPolyline a()
@@ -91,12 +87,6 @@ public class SplitPolylineStoreTest extends GraphCoreUnitTest
     }
 
     private CompressedPolyline c()
-    {
-        return CompressedPolyline.fromLocationSequence(
-                polylineConverter.convert("24.297167,140.272313:24.297203,140.272313:24.136624,166.928427:90.0,180.0:90.0,180.0:0.0,180.0:90.0,180.0"));
-    }
-
-    private CompressedPolyline d()
     {
         return CompressedPolyline.fromLocationSequence(
                 polylineConverter.convert("37.38686,-121.99797:37.387,-121.99794:37.38773,-121.99851"));

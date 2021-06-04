@@ -132,7 +132,7 @@ public abstract class DataSpecification implements NamedObject
                     fail("Unrecognized data specification '$'", name);
             }
 
-            final var className = "com.telenav.kivakit.graph.specifications." + name.toLowerCase() + "." + name + "DataSpecification";
+            final var className = "com.telenav.mesakit.graph.specifications." + name.toLowerCase() + "." + name + "DataSpecification";
             final var type = Class.forName(className);
             final var getter = type.getMethod("get");
             return (DataSpecification) getter.invoke(null);

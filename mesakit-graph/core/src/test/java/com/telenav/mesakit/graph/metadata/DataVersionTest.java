@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.graph.metadata;
 
-import com.telenav.kivakit.kernel.testing.KivaKitUnitTest;
-import com.telenav.kivakit.kernel.time.LocalTime;
+import com.telenav.kivakit.kernel.language.time.LocalTime;
+import com.telenav.kivakit.test.UnitTest;
 import org.junit.Test;
 
 import java.util.stream.IntStream;
 
 @SuppressWarnings("ConstantConditions")
-public class DataVersionTest extends KivaKitUnitTest
+public class DataVersionTest extends UnitTest
 {
     @Test
     public void testAdjustQuarterForDataVersion()

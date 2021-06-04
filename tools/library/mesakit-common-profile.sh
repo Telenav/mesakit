@@ -22,6 +22,7 @@ append_path "$MESAKIT_TOOLS/building"
 append_path "$MESAKIT_TOOLS/developing"
 append_path "$MESAKIT_TOOLS/library"
 append_path "$MESAKIT_TOOLS/releasing"
+append_path "$MESAKIT_EXTENSIONS_HOME/tools/applications"
 
 system_variable MESAKIT_ASSETS_HOME "$MESAKIT_WORKSPACE/mesakit-assets"
 system_variable MESAKIT_CACHE_HOME "$HOME/.mesakit/$KIVAKIT_VERSION"

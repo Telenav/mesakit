@@ -75,17 +75,17 @@ public class GraphCoreKryoTypes extends KryoTypes
             register(PbfStringListTagCodec.class);
         });
 
-        group("spatial-index", () ->
-        {
-            register(CompressedLeaf.class);
-            register(CompressedEdgeSpatialIndex.class);
-        });
-
         group("stores", () ->
         {
             register(RoadNameStore.class);
             register(PolylineStore.class);
             register(SplitPolylineStore.class);
+        });
+
+        group("spatial-index", () ->
+        {
+            register(CompressedLeaf.class);
+            register(CompressedEdgeSpatialIndex.class);
         });
     }
 }

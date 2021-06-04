@@ -16,11 +16,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.graph.library.osm.change;
+package com.telenav.mesakit.graph.library.osm.change.io;
 
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
+import com.telenav.mesakit.graph.library.osm.change.ConnectionPoint;
+import com.telenav.mesakit.graph.library.osm.change.MutableWay;
+import com.telenav.mesakit.graph.library.osm.change.NewWay;
+import com.telenav.mesakit.graph.library.osm.change.store.ModifiedWayStore;
+import com.telenav.mesakit.graph.library.osm.change.store.NewWayStore;
+import com.telenav.mesakit.graph.library.osm.change.store.PbfNodeStore;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserName;
@@ -40,26 +46,26 @@ public class JosmChangeFile
         newWays.add(way);
     }
 
-    public void connectFromEnd(final Connection connection, final ModifiableWay way)
+    public void connectFromEnd(final ConnectionPoint connection, final MutableWay way)
     {
         way.shape(connection.withFromEndConnected(way.shape()));
     }
 
-    public void connectToEnd(final Connection connection, final ModifiableWay way)
+    public void connectToEnd(final ConnectionPoint connection, final MutableWay way)
     {
         way.shape(connection.withToEndConnected(way.shape()));
     }
 
-    public ModifiableWay modifiableWay(final Edge edge)
+    public MutableWay modifiableWay(final Edge edge)
     {
         return ways(edge.graph()).modifiableWay(edge);
     }
 
-    public ModifiableWay modifiableWay(final Graph graph, final PbfUserIdentifier userIdentifier,
-                                       final PbfUserName userName, final PbfWayIdentifier identifier,
-                                       final Polyline shape,
-                                       final PbfTagList tags,
-                                       final int version)
+    public MutableWay modifiableWay(final Graph graph, final PbfUserIdentifier userIdentifier,
+                                    final PbfUserName userName, final PbfWayIdentifier identifier,
+                                    final Polyline shape,
+                                    final PbfTagList tags,
+                                    final int version)
     {
         return ways(graph).modifiableWay(userIdentifier, userName, identifier, shape, tags, version);
     }

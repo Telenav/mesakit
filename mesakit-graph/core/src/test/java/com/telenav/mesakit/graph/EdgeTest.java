@@ -18,19 +18,16 @@
 
 package com.telenav.mesakit.graph;
 
-import com.telenav.kivakit.kernel.language.iteration.Iterables;
-import com.telenav.kivakit.kernel.language.string.conversion.StringFormat;
+import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.navigation.Navigator;
 import com.telenav.mesakit.graph.navigation.RouteLimiter;
 import com.telenav.mesakit.graph.navigation.limiters.LengthRouteLimiter;
 import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
-import com.telenav.mesakit.map.measurements.Distance;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.road.model.BridgeType;
 import com.telenav.mesakit.map.road.model.RoadName;
 import org.junit.Test;
-
-import java.util.Objects;
 
 /**
  * @author jonathanl (shibo)
@@ -130,14 +127,5 @@ public class EdgeTest extends GraphCoreUnitTest
     {
         ensure(osmGreenLakeSeattleEdge(241540085000006L).isShaped());
         ensure(!osmGreenLakeSeattleEdge(395675862000000L).isShaped());
-    }
-
-    @Test
-    public void testTmcs()
-    {
-        final var edge = uniDbDowntownSanFrancisco().edgeForIdentifier(23604893100000000L);
-        final var tmcs = edge.tmcIdentifiers();
-        ensure(Iterables.size(tmcs) == 1);
-        ensureEqual(Objects.requireNonNull(tmcs.iterator().next().asCode()).code(), "105-06019");
     }
 }

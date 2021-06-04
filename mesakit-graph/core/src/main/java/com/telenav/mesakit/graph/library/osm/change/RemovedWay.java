@@ -66,7 +66,7 @@ public class RemovedWay
     @Override
     public String toString()
     {
-        return "  <way id=\"" + identifier + "\" action=\"delete\" timestamp=\"" + new Timestamp()
+        return "  <way id=\"" + identifier + "\" action=\"delete\" timestamp=\"" + new PbfTimestamp()
                 + "\" uid=\"2100001\" user=\"scout_osm\"/>";
     }
 }

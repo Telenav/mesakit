@@ -18,21 +18,21 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.extractors;
 
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfWay;
-import com.telenav.kivakit.kernel.language.string.StringList;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.mesakit.map.region.locale.MapLocale;
-import com.telenav.mesakit.map.region.project.KivaKitMapRegionUnitTest;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.extractors.ExitRoadNameExtractor;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
+import com.telenav.mesakit.map.region.locale.MapLocale;
+import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
 import org.junit.Test;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.ArrayList;
 import java.util.Set;
 
-import static com.telenav.kivakit.map.road.name.standardizer.RoadNameStandardizer.Mode;
+import static com.telenav.mesakit.map.road.name.standardizer.RoadNameStandardizer.Mode.MESAKIT_STANDARDIZATION;
 
-public class ExitRoadNameExtractorTest extends KivaKitMapRegionUnitTest
+public class ExitRoadNameExtractorTest extends MapRegionUnitTest
 {
     @Test
     public void test()
@@ -44,9 +44,9 @@ public class ExitRoadNameExtractorTest extends KivaKitMapRegionUnitTest
 
     private Set<String> extract(final PbfWay way)
     {
-        final var extractor = new ExitRoadNameExtractor(MapLocale.ENGLISH_UNITED_STATES.get(), Mode.TDK_STANDARDIZATION, Listener.none());
+        final var extractor = new ExitRoadNameExtractor(MapLocale.ENGLISH_UNITED_STATES.get(), MESAKIT_STANDARDIZATION, Listener.none());
         final var roadNames = extractor.extract(way);
-        return new StringList(roadNames).asSet();
+        return StringList.stringList(roadNames).asSet();
     }
 
     private PbfWay way(final String... values)

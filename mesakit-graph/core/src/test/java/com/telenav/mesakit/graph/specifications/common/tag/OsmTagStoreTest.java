@@ -18,17 +18,19 @@
 
 package com.telenav.mesakit.graph.specifications.common.tag;
 
-import com.telenav.kivakit.data.formats.pbf.model.tags.PbfTagList;
-import com.telenav.kivakit.data.formats.pbf.model.tags.compression.PbfStringListTagCodec;
-import com.telenav.kivakit.kernel.scalars.counts.*;
-import com.telenav.kivakit.utilities.compression.codecs.huffman.character.*;
-import com.telenav.kivakit.utilities.compression.codecs.huffman.list.HuffmanStringListCodec;
-import com.telenav.kivakit.utilities.compression.codecs.huffman.string.*;
+import com.telenav.kivakit.data.compression.codecs.huffman.character.CharacterFrequencies;
+import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
+import com.telenav.kivakit.data.compression.codecs.huffman.list.HuffmanStringListCodec;
+import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
+import com.telenav.kivakit.data.compression.codecs.huffman.string.StringFrequencies;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import com.telenav.mesakit.graph.specifications.common.element.store.TagStore;
-import org.jetbrains.annotations.NotNull;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.compression.PbfStringListTagCodec;
 import org.junit.Test;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
@@ -116,7 +118,6 @@ public class OsmTagStoreTest extends GraphCoreUnitTest
         ensureEqual("b", tags.get(0).getValue());
     }
 
-    @NotNull
     private PbfStringListTagCodec codec()
     {
         final var characterFrequencies = new CharacterFrequencies().add("abc").add("def");

@@ -355,7 +355,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
 
     public static SwitchParser.Builder<Metadata> switchParser()
     {
-        return switchParser("metadata", "The graph meta data to use such as HERE-UniDb-PBF-North_America-2007Q4-2020.04.01_04.01PM_PT");
+        return switchParser("metadata", "The graph meta data to use such as OSM-OSM-PBF-North_America-2007Q4-2020.04.01_04.01PM_PT");
     }
 
     public static SwitchParser.Builder<Metadata> switchParser(final String name, final String description)
@@ -1314,7 +1314,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
                 }
                 else
                 {
-                    LOGGER.warning("Input file metadata has an invalid data descriptor. Re-process the file with the pbf metadata application.");
+                    LOGGER.warning("Input file metadata has an invalid data metadata descriptor. Re-process the file with the pbf metadata application.");
                 }
             }
             else

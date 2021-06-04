@@ -18,14 +18,15 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge;
 
-import com.telenav.kivakit.kernel.scalars.counts.Estimate;
+import com.telenav.kivakit.kernel.language.values.count.Estimate;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import com.telenav.mesakit.graph.specifications.common.edge.store.stores.roadname.RoadNameStore;
-import com.telenav.mesakit.map.road.model.RoadName;
-import com.telenav.mesakit.map.road.model.RoadName.Type;
 import org.junit.Test;
+
+import static com.telenav.mesakit.map.road.model.RoadName.Type;
+import static com.telenav.mesakit.map.road.model.RoadName.forName;
 
 public class RoadNameStoreTest extends GraphCoreUnitTest
 {
@@ -40,10 +41,10 @@ public class RoadNameStoreTest extends GraphCoreUnitTest
             if (i % 3 != 0)
             {
                 final Edge edge = osmEdge(graph, i, i);
-                store.set(edge, Type.OFFICIAL, 0, RoadName.forName("official" + i));
-                store.set(edge, Type.ALTERNATE, 0, RoadName.forName("alternate" + i));
-                store.set(edge, Type.ROUTE, 0, RoadName.forName("route" + i));
-                store.set(edge, Type.EXIT, 0, RoadName.forName("exit" + i));
+                store.set(edge, Type.OFFICIAL, 0, forName("official" + i));
+                store.set(edge, Type.ALTERNATE, 0, forName("alternate" + i));
+                store.set(edge, Type.ROUTE, 0, forName("route" + i));
+                store.set(edge, Type.EXIT, 0, forName("exit" + i));
             }
         }
         for (var i = 0; i < iterations; i++)
@@ -51,10 +52,10 @@ public class RoadNameStoreTest extends GraphCoreUnitTest
             if (i % 3 != 0)
             {
                 final Edge edge = osmEdge(graph, i, i);
-                ensureEqual(RoadName.forName("official" + i), store.get(edge, Type.OFFICIAL, 0));
-                ensureEqual(RoadName.forName("alternate" + i), store.get(edge, Type.ALTERNATE, 0));
-                ensureEqual(RoadName.forName("route" + i), store.get(edge, Type.ROUTE, 0));
-                ensureEqual(RoadName.forName("exit" + i), store.get(edge, Type.EXIT, 0));
+                ensureEqual(forName("official" + i), store.get(edge, Type.OFFICIAL, 0));
+                ensureEqual(forName("alternate" + i), store.get(edge, Type.ALTERNATE, 0));
+                ensureEqual(forName("route" + i), store.get(edge, Type.ROUTE, 0));
+                ensureEqual(forName("exit" + i), store.get(edge, Type.EXIT, 0));
             }
         }
     }

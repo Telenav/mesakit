@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.graph;
 
-import com.telenav.kivakit.data.formats.library.DataFormat;
 import com.telenav.mesakit.graph.metadata.DataBuild;
 import com.telenav.mesakit.graph.metadata.DataSupplier;
 import com.telenav.mesakit.graph.metadata.DataVersion;
 import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
+import com.telenav.mesakit.map.data.formats.library.DataFormat;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import org.junit.Test;
 
@@ -71,5 +71,14 @@ public class MetadataTest extends GraphCoreUnitTest
                 .withDataBounds(Rectangle.parse("-47.5840818,-122.2169381:47.6419581,-122.1590618"))
                 .withDataVersion(DataVersion.parse("2020Q2"))
                 .withDataBuild(DataBuild.parse("2020.04.01_04.01PM_PT")));
+    }
+
+    @Test
+    public void testParseDescriptor()
+    {
+        ensureEqual(Metadata.parseDescriptor("OSM-OSM-PBF-Downtown_Seattle").dataFormat(), DataFormat.PBF);
+        ensureEqual(Metadata.parseDescriptor("OSM-OSM-PBF-Downtown_Seattle").dataSupplier(), DataSupplier.OSM);
+        ensureEqual(Metadata.parseDescriptor("OSM-OSM-PBF-Downtown_Seattle").dataSpecification(), OsmDataSpecification.get());
+        ensureEqual(Metadata.parseDescriptor("OSM-OSM-PBF-Downtown_Seattle").name(), "Downtown_Seattle");
     }
 }

@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.graph.metadata;
 
-import com.telenav.kivakit.kernel.testing.KivaKitUnitTest;
+import com.telenav.kivakit.test.UnitTest;
 import com.telenav.mesakit.map.geography.Precision;
 import org.junit.Test;
 
-public class DataSupplierTest extends KivaKitUnitTest
+public class DataSupplierTest extends UnitTest
 {
     @Test
     public void testConstructDataSupplierMatchesAll()

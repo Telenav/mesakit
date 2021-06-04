@@ -99,12 +99,20 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
         final var languages = languageCodes(way);
         for (final var language : languages)
         {
-            addRoadName(names, way.tagValue(key + ":" + language.iso3Code()));
+            final var name = way.tagValue(key + ":" + language.iso3Code());
+            if (name != null)
+            {
+                addRoadName(names, name);
+            }
             for (final var translation : languages)
             {
                 if (translation != language)
                 {
-                    addRoadName(names, way.tagValue(key + ":" + language.iso3Code() + ":trans:" + translation.iso3Code()));
+                    final var translated = way.tagValue(key + ":" + language.iso3Code() + ":trans:" + translation.iso3Code());
+                    if (translated != null)
+                    {
+                        addRoadName(names, translated);
+                    }
                 }
             }
         }

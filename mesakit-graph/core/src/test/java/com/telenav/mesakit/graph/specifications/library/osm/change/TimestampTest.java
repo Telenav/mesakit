@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.graph.specifications.library.osm.change;
 
-import com.telenav.mesakit.graph.library.osm.change.Timestamp;
-import com.telenav.kivakit.kernel.testing.KivaKitUnitTest;
+import com.telenav.kivakit.test.UnitTest;
+import com.telenav.mesakit.graph.library.osm.change.PbfTimestamp;
 import org.junit.Test;
 
-public class TimestampTest extends KivaKitUnitTest
+public class TimestampTest extends UnitTest
 {
     @Test
     public void test()
     {
-        ensureNotNull(new Timestamp());
+        ensureNotNull(new PbfTimestamp());
     }
 }

@@ -16,10 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.graph.library.osm.change;
+package com.telenav.mesakit.graph.library.osm.change.io;
 
 import com.telenav.kivakit.kernel.language.io.IO;
 import com.telenav.kivakit.resource.WritableResource;
+import com.telenav.mesakit.graph.library.osm.change.MutableWay;
+import com.telenav.mesakit.graph.library.osm.change.NewWay;
+import com.telenav.mesakit.graph.library.osm.change.RemovedWay;
+import com.telenav.mesakit.graph.library.osm.change.store.PbfNodeStore;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 
 import java.nio.charset.StandardCharsets;
@@ -48,7 +52,7 @@ public class JosmXml
     private final List<RemovedWay> removedWays = new ArrayList<>();
 
     // The modified ways in this file
-    private final List<ModifiableWay> modifiedWays = new ArrayList<>();
+    private final List<MutableWay> modifiedWays = new ArrayList<>();
 
     private boolean addNewTags;
 
@@ -70,7 +74,7 @@ public class JosmXml
     /**
      * Adds modified ways
      */
-    public void addModifiedWays(final Collection<ModifiableWay> ways)
+    public void addModifiedWays(final Collection<MutableWay> ways)
     {
         modifiedWays.addAll(ways);
     }

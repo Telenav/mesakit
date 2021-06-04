@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.graph.specifications.library;
 
-import com.telenav.kivakit.data.formats.library.map.identifiers.NodeIdentifier;
-import com.telenav.kivakit.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
-import com.telenav.kivakit.kernel.language.values.Count;
-import com.telenav.kivakit.kernel.testing.RandomValueFactory;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.test.random.RandomValueFactory;
 import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import com.telenav.mesakit.graph.specifications.library.pbf.IntersectionMap;
+import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
+import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -81,7 +81,7 @@ public class IntersectionMapTest extends GraphCoreUnitTest
         final var map = new IntersectionMap("test");
 
         // Map from identifier to count
-        final Map<NodeIdentifier, Count> expected = new HashMap<>();
+        final Map<MapNodeIdentifier, Count> expected = new HashMap<>();
 
         // Loop through identifiers,
         for (final long identifier : identifiers)
@@ -98,7 +98,7 @@ public class IntersectionMapTest extends GraphCoreUnitTest
         map.doneAdding();
 
         // For each identifier
-        for (final NodeIdentifier identifier : expected.keySet())
+        for (final MapNodeIdentifier identifier : expected.keySet())
         {
             // check that the count we tracked in the test matches the intersection method result
             final var expectedIntersection = expected.get(identifier).isGreaterThan(Count._2);

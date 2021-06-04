@@ -23,7 +23,7 @@ import com.telenav.mesakit.graph.analytics.classification.classifiers.turn.TurnT
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import com.telenav.mesakit.graph.relations.restrictions.classifiers.TurnRestrictionsTurnClassifier;
-import com.telenav.mesakit.map.measurements.Distance;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
 import org.junit.Before;
 import org.junit.Test;
 

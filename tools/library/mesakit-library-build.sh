@@ -133,7 +133,7 @@ build() {
     *)
         BUILD_TYPE="default"
         BUILD_ARGUMENTS="clean install"
-        BUILD_MODIFIERS=(multi-threaded quick-tests shade no-javadoc ${@:2})
+        BUILD_MODIFIERS=(multi-threaded quick-tests shade tools no-javadoc ${@:2})
         ;;
 
     esac

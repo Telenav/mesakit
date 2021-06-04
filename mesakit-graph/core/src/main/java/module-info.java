@@ -30,6 +30,8 @@ open module mesakit.graph.core
     exports com.telenav.mesakit.graph.io.load;
     exports com.telenav.mesakit.graph.io.save;
     exports com.telenav.mesakit.graph.library.osm.change;
+    exports com.telenav.mesakit.graph.library.osm.change.io;
+    exports com.telenav.mesakit.graph.library.osm.change.store;
     exports com.telenav.mesakit.graph.map;
     exports com.telenav.mesakit.graph.matching.conflation;
     exports com.telenav.mesakit.graph.matching.snapping;

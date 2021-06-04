@@ -77,6 +77,12 @@ public class MapStroke extends Stroke
     }
 
     @Override
+    public DrawingWidth width()
+    {
+        return drawingWidth;
+    }
+
+    @Override
     public MapStroke withCap(final int cap)
     {
         return (MapStroke) super.withCap(cap);
@@ -117,11 +123,5 @@ public class MapStroke extends Stroke
         final var copy = copy();
         copy.width = width;
         return copy;
-    }
-
-    @Override
-    protected DrawingWidth width()
-    {
-        return drawingWidth;
     }
 }

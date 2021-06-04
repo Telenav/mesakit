@@ -32,23 +32,23 @@ import java.util.Date;
  * @author jonathanl (shibo)
  */
 @SuppressWarnings("UseOfObsoleteDateTimeApi")
-public class Timestamp implements TimestampContainer
+public class PbfTimestamp implements TimestampContainer
 {
     private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_INSTANT.withZone(ZoneId.of("UTC"));
 
     private final Date date;
 
-    public Timestamp()
+    public PbfTimestamp()
     {
         this(new Date());
     }
 
-    public Timestamp(final Date date)
+    public PbfTimestamp(final Date date)
     {
         this.date = date;
     }
 
-    public Timestamp(final long time)
+    public PbfTimestamp(final long time)
     {
         this(new Date(time));
     }

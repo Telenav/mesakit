@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.graph.collections;
 
-import com.telenav.kivakit.kernel.scalars.counts.Maximum;
-import com.telenav.kivakit.map.geography.Location;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
+import com.telenav.mesakit.map.geography.Location;
 import org.junit.Before;
 import org.junit.Test;
 

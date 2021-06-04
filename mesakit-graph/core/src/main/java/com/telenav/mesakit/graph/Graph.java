@@ -448,7 +448,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     @Override
     public AsStringIndenter asString(final StringFormat format, final AsStringIndenter indenter)
     {
-        indenter.labeled("resource", resource());
+        indenter.labeled("resource", resource().path().asContractedString(120));
         indenter.indented("metadata", () -> metadata().asString(format, indenter));
         return indenter;
     }

@@ -73,7 +73,7 @@ public class MapRegionProject extends Project
      */
     public Folder mesakitMapFolder()
     {
-        return MesaKit.get().cacheFolder()
+        return MesaKit.get().mesakitCacheFolder()
                 .folder("map")
                 .mkdirs();
     }

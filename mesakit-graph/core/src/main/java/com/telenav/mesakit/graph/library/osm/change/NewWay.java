@@ -21,6 +21,7 @@ package com.telenav.mesakit.graph.library.osm.change;
 import com.telenav.kivakit.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.mesakit.graph.library.osm.change.store.PbfNodeStore;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
@@ -41,7 +42,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
  * @author jonathanl (shibo)
  */
 
-public class NewWay extends MutableWay
+public class NewWay extends BaseMutableWay
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -267,7 +268,7 @@ public class NewWay extends MutableWay
         final var lines = new StringList();
 
         // Add open way tag
-        lines.add("  <way id=\"" + identifier + "\" visible=\"true\" version=\"1\" timestamp=\"" + new Timestamp()
+        lines.add("  <way id=\"" + identifier + "\" visible=\"true\" version=\"1\" timestamp=\"" + new PbfTimestamp()
                 + "\" uid=\"2100001\" user=\"scout_osm\">");
 
         // If there's a way shape

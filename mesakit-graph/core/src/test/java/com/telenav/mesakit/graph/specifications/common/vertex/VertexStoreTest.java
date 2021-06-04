@@ -27,8 +27,8 @@ import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 import org.junit.Test;
 
-import static com.telenav.kivakit.data.formats.library.DataFormat.PBF;
-import static com.telenav.kivakit.graph.metadata.DataSupplier.OSM;
+import static com.telenav.mesakit.graph.metadata.DataSupplier.OSM;
+import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
 
 public class VertexStoreTest extends GraphCoreUnitTest
 {

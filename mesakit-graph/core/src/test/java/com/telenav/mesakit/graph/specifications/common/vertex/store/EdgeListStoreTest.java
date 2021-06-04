@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.specifications.common.vertex.store;
 
-import com.telenav.kivakit.collections.primitive.array.scalars.IntArray;
 import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import org.junit.Test;

@@ -76,7 +76,7 @@ public abstract class SlippyTileImageCache extends BaseRepeater
     {
         listener.listenTo(this);
 
-        cache = listenTo(new SlippyTileCache(MesaKit.get().mesakitAllVersionsFolder().folder("tile-cache")));
+        cache = listenTo(new SlippyTileCache(MesaKit.get().mesakitAllVersionsCacheFolder().folder("tile-cache")));
 
         imageForTile = Collections.synchronizedMap(new CacheMap<>(maximumTiles));
         requested = new ArrayBlockingQueue<>(maximumTiles.asInt());

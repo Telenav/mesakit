@@ -24,13 +24,13 @@ import com.telenav.mesakit.map.geography.shape.polyline.PolylineBuilder;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 /**
- * Models a connection to a modified way. There are two types of connections, one where a new node is added to connect a
- * given polyline segment (an "under-shoot") and one where the last node of the polyline segment is instead moved to
- * connect to the modified way (an "overshoot").
+ * Models a connection to a modified way at a particular location. There are two types of connections, one where a new
+ * node is added to connect a given polyline segment (an "undershoot") and one where the last node of the polyline
+ * segment is instead moved to connect to the modified way (an "overshoot").
  *
  * @author jonathanl (shibo)
  */
-public class Connection
+public class ConnectionPoint
 {
     public enum End
     {
@@ -58,9 +58,9 @@ public class Connection
 
     private final Location location;
 
-    private final Connection.Type type;
+    private final ConnectionPoint.Type type;
 
-    Connection(final Location location, final Connection.Type type)
+    ConnectionPoint(final Location location, final ConnectionPoint.Type type)
     {
         this.location = location;
         this.type = type;
@@ -71,7 +71,7 @@ public class Connection
         return location;
     }
 
-    public Connection.Type type()
+    public ConnectionPoint.Type type()
     {
         return type;
     }
