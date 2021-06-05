@@ -213,7 +213,7 @@ public class CommonGraph extends Graph
         // then save to that file with a ".tmp" extension"
         final var temporaryFile = file.withExtension(Extension.TMP);
         temporaryFile.delete();
-        final var temporary = new GraphArchive(temporaryFile, archive.mode(), archive.reporter());
+        final var temporary = new GraphArchive(this, temporaryFile, archive.mode(), archive.reporter());
         super.save(temporary);
         graphStore().save(temporary);
         temporary.close();

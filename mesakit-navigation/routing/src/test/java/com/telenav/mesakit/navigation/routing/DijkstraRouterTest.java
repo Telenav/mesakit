@@ -18,23 +18,23 @@
 
 package com.telenav.mesakit.navigation.routing;
 
-import com.telenav.kivakit.kernel.debug.Debug;
+import com.telenav.kivakit.kernel.language.values.level.Weight;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.scalars.levels.Weight;
-import com.telenav.kivakit.kernel.testing.SlowTests;
-import com.telenav.kivakit.navigation.routing.cost.CostFunction;
-import com.telenav.kivakit.navigation.routing.cost.functions.TravelTimeCostFunction;
-import com.telenav.kivakit.navigation.routing.cost.functions.heuristic.RemainingDistanceToEndCostFunction;
-import com.telenav.kivakit.navigation.routing.cost.functions.heuristic.SpeedCostFunction;
-import com.telenav.kivakit.navigation.routing.debuggers.SwingRoutingDebugger;
-import com.telenav.kivakit.navigation.routing.dijkstra.DijkstraRouter;
-import com.telenav.kivakit.navigation.routing.dijkstra.DijkstraRoutingRequest;
-import com.telenav.kivakit.navigation.routing.dijkstra.Direction;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.test.annotations.SlowTests;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
-import com.telenav.mesakit.map.measurements.Speed;
+import com.telenav.mesakit.map.measurements.motion.Speed;
+import com.telenav.mesakit.navigation.routing.cost.CostFunction;
+import com.telenav.mesakit.navigation.routing.cost.functions.TravelTimeCostFunction;
+import com.telenav.mesakit.navigation.routing.cost.functions.heuristic.RemainingDistanceToEndCostFunction;
+import com.telenav.mesakit.navigation.routing.cost.functions.heuristic.SpeedCostFunction;
+import com.telenav.mesakit.navigation.routing.debuggers.SwingRoutingDebugger;
+import com.telenav.mesakit.navigation.routing.dijkstra.DijkstraRouter;
+import com.telenav.mesakit.navigation.routing.dijkstra.DijkstraRoutingRequest;
+import com.telenav.mesakit.navigation.routing.dijkstra.Direction;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -76,7 +76,7 @@ public class DijkstraRouterTest extends GraphCoreUnitTest
         {
             final var start = osmDowntownSeattleTestEdge(6348968000003L);
             final var end = osmDowntownSeattleTestEdge(6415868000005L);
-            final var weight = Weight.of(i / 3.0);
+            final var weight = Weight.weight(i / 3.0);
             final var route = weightedRoute(weight, start.to(), end.to(), Direction.FORWARD);
             ensureEqual(routes[i], route.toString());
         }
@@ -115,7 +115,7 @@ public class DijkstraRouterTest extends GraphCoreUnitTest
     {
         final var start = osmGreenLakeSeattleEdge(6366507000001L);
         final var end = osmGreenLakeSeattleEdge(4794181000017L);
-        final var weight = Weight.of(99 / 100.0);
+        final var weight = Weight.weight(99 / 100.0);
         final var route = weightedRoute(weight, start.to(), end.from(), Direction.FORWARD);
         final var expected = "-6366507000001:6426970000003:6426970000004:6426970000005:263563169000000:263563169000001:263563169000002:263563169000003:263563169000004:263563169000005:263563169000006:263563169000007:263563169000008:263563169000009:263563169000010:263563169000011:263563169000012:-457542644000001:-457542644000000:6426947000000:6426947000001:263563232000000:263563232000001:457542643000000:457542643000001:457542643000002:457542643000003:457542643000004:457542642000000:457542642000001:428221343000000:428221343000001:428221344000000:428221344000001:6410233000000:6410233000001:6410233000002:6410233000003:6410233000004:6410233000005:6410233000006:6410233000007:6410233000008:6410233000009:6410233000010:6410233000011:6410233000012:6410233000013:6410233000014:6410233000015:6410233000016:6410233000017:6410233000018:6410233000019:6410233000020:428091416000000:428091416000001:31939714000000:31939714000001:351967840000000:351967840000001:351967839000000:351967839000001:428341321000000:428341321000001:274475670000000:274475670000001:274475670000002:428341319000000:428341319000001:289314033000000:289314033000001:428341320000000:428341320000001:332752098000000:332752098000001:332752098000002:332752098000003:332752098000004:332752098000005:428083349000000:428083349000001:332752097000000:332752097000001:336155509000000:336155509000001:336155509000002:336155509000003:428082940000000:428082940000001:-428083351000001:-428083351000000:-635971819000001:-635971819000000:-428083352000001:-428083352000000:-4794181000017";
         ensureEqual(route.toString(), expected);

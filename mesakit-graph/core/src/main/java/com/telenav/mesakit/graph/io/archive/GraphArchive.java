@@ -76,7 +76,7 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupport
 public class GraphArchive extends FieldArchive implements Named
 {
     /** The current graph archive version */
-    public static final Version VERSION = Version.parse("8.0.0");
+    public static final Version VERSION = Version.parse("0.9.8");
 
     /** The extension for a graph archive */
     public static final Extension EXTENSION = Extension.GRAPH;
@@ -141,7 +141,7 @@ public class GraphArchive extends FieldArchive implements Named
             final var file = new File.Converter(this).convert(path);
             if (file != null)
             {
-                return new GraphArchive(file, ZipArchive.Mode.READ, reporter).load(this);
+                return new GraphArchive(this, file, ZipArchive.Mode.READ, reporter).load(this);
             }
             LOGGER.warning("Unable to load graph archive '$'", path);
             return null;
@@ -180,9 +180,11 @@ public class GraphArchive extends FieldArchive implements Named
         }
     }
 
-    public GraphArchive(final File file, final ZipArchive.Mode mode, final ProgressReporter reporter)
+    public GraphArchive(final Listener listener, final File file, final ZipArchive.Mode mode,
+                        final ProgressReporter reporter)
     {
         super(file, SerializationSessionFactory.threadLocal(), reporter, mode);
+        listener.listenTo(this);
     }
 
     public Time lastModified()

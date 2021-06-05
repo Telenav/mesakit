@@ -98,43 +98,43 @@ public abstract class GraphCoreUnitTest extends MapRegionUnitTest
             () -> graph(OsmDataSpecification.get(), "Huron_Charter", Rectangle.fromLocations(Location.degrees(42.179459, -83.423221),
                     Location.degrees(42.094242, -83.303885))));
 
-    public static Graph osmBellevueWashington()
+    public static synchronized Graph osmBellevueWashington()
     {
         return osmBellevueWashington.get();
     }
 
-    public static Graph osmBuffalo()
+    public static synchronized Graph osmBuffalo()
     {
         return osmBuffalo.get();
     }
 
-    public static Graph osmDowntownSeattle()
+    public static synchronized Graph osmDowntownSeattle()
     {
         return osmDowntownSeattle.get();
     }
 
-    public static Graph osmDowntownSeattleTest()
+    public static synchronized Graph osmDowntownSeattleTest()
     {
         return osmDowntownSeattleTest.get();
     }
 
-    public static Graph osmGreenLakeSeattle()
+    public static synchronized Graph osmGreenLakeSeattle()
     {
         return osmGreenLakeSeattle.get();
     }
 
-    public static Graph osmGreenLakeSeattleLarge()
+    public static synchronized Graph osmGreenLakeSeattleLarge()
     {
         return osmGreenLakeSeattleLarge.get();
     }
 
-    public static Graph osmHuronCharter()
+    public static synchronized Graph osmHuronCharter()
     {
         return osmHuronCharter.get();
     }
 
     @BeforeClass
-    public static void testSetup()
+    public static synchronized void testSetup()
     {
         GraphCoreProject.get().initialize();
     }
@@ -323,7 +323,9 @@ public abstract class GraphCoreUnitTest extends MapRegionUnitTest
     }
 
     @SuppressWarnings("resource")
-    private static Graph graph(final DataSpecification specification, final String name, final Rectangle bounds)
+    private static Graph graph(final DataSpecification specification,
+                               final String name,
+                               final Rectangle bounds)
     {
         // If we can't find the graph file
         final var dataDescriptor = "OSM-OSM-PBF-" + name;
@@ -360,8 +362,8 @@ public abstract class GraphCoreUnitTest extends MapRegionUnitTest
                     if (graph != null)
                     {
                         // and if we succeeded, then save the graph file and return the graph
-                        graph.save(new GraphArchive(graphFile, ZipArchive.Mode.WRITE, ProgressReporter.NULL));
-                        return graph;
+                        graph.save(new GraphArchive(LOGGER, graphFile, ZipArchive.Mode.WRITE, ProgressReporter.NULL));
+                        return LOGGER.listenTo(graph);
                     }
 
                     LOGGER.problem("Unable to extract graph from $", pbfFile);
@@ -378,7 +380,7 @@ public abstract class GraphCoreUnitTest extends MapRegionUnitTest
         }
         else
         {
-            return new GraphArchive(graphFile, READ, ProgressReporter.NULL).load(Listener.none());
+            return new GraphArchive(LOGGER, graphFile, READ, ProgressReporter.NULL).load(Listener.none());
         }
         return null;
     }

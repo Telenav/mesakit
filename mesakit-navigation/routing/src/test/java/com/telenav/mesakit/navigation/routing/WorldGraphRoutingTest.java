@@ -18,16 +18,16 @@
 
 package com.telenav.mesakit.navigation.routing;
 
-import com.telenav.kivakit.kernel.scalars.levels.Weight;
-import com.telenav.kivakit.map.geography.Location;
-import com.telenav.kivakit.navigation.routing.cost.functions.heuristic.RemainingDistanceToEndCostFunction;
-import com.telenav.kivakit.navigation.routing.cost.functions.heuristic.SpeedCostFunction;
-import com.telenav.kivakit.navigation.routing.debuggers.SwingRoutingDebugger;
-import com.telenav.kivakit.navigation.routing.dijkstra.DijkstraRouter;
-import com.telenav.kivakit.navigation.routing.dijkstra.DijkstraRoutingRequest;
-import com.telenav.kivakit.navigation.routing.limiters.CpuTimeRoutingLimiter;
-import com.telenav.kivakit.utilities.time.PreciseDuration;
+import com.telenav.kivakit.kernel.language.time.PreciseDuration;
+import com.telenav.kivakit.kernel.language.values.level.Weight;
 import com.telenav.mesakit.graph.world.project.GraphWorldUnitTest;
+import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.navigation.routing.cost.functions.heuristic.RemainingDistanceToEndCostFunction;
+import com.telenav.mesakit.navigation.routing.cost.functions.heuristic.SpeedCostFunction;
+import com.telenav.mesakit.navigation.routing.debuggers.SwingRoutingDebugger;
+import com.telenav.mesakit.navigation.routing.dijkstra.DijkstraRouter;
+import com.telenav.mesakit.navigation.routing.dijkstra.DijkstraRoutingRequest;
+import com.telenav.mesakit.navigation.routing.limiters.CpuTimeRoutingLimiter;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -42,7 +42,7 @@ public class WorldGraphRoutingTest extends GraphWorldUnitTest
         final var from = osmGraph().vertexNearest(Location.degrees(34.9559601, -79.9980919));
         final var to = osmGraph().vertexNearest(Location.degrees(34.9453363, -80.0146624));
         final var router = new DijkstraRouter(new RemainingDistanceToEndCostFunction(from.location(), to.location())
-                .weightedSum(Weight.of(0.75), new SpeedCostFunction()));
+                .weightedSum(Weight.weight(0.75), new SpeedCostFunction()));
         final RoutingRequest request = new DijkstraRoutingRequest(from, to)
                 .withLimiter(new CpuTimeRoutingLimiter(PreciseDuration.seconds(3)))
                 .withDebugger(SWING_DEBUG ? new SwingRoutingDebugger("test routing") : RoutingDebugger.NULL);

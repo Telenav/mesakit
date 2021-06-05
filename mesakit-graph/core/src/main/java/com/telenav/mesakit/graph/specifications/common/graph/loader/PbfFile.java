@@ -36,7 +36,7 @@ import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.R
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.WRITE;
 
 /**
- * An OSM PBF resource that can be converted to a graph by calling {@link #graph()}.
+ * An OSM PBF resource that can be converted to a graph by calling {@link #graph(ProgressReporter)}.
  *
  * @author jonathanl (shibo)
  */
@@ -94,7 +94,7 @@ public class PbfFile extends BaseRepeater implements Named
             {
                 // save to disk,
                 reporter.phase("Writing");
-                try (final var archive = new GraphArchive(output, WRITE, reporter))
+                try (final var archive = new GraphArchive(LOGGER, output, WRITE, reporter))
                 {
                     graph.save(archive);
                 }
@@ -102,7 +102,7 @@ public class PbfFile extends BaseRepeater implements Named
 
                 // then reload it
                 reporter.phase("Loading");
-                @SuppressWarnings("resource") final var archive = new GraphArchive(output, READ, reporter);
+                @SuppressWarnings("resource") final var archive = new GraphArchive(LOGGER, output, READ, reporter);
                 return archive.load(this);
             }
             else

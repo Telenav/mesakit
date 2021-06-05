@@ -172,7 +172,7 @@ public class SmartGraphLoader extends BaseRepeater implements Named
             switch (extension.toString())
             {
                 case ".graph":
-                    return new GraphArchive(file, READ, reporter).loadAll(listener);
+                    return new GraphArchive(listener, file, READ, reporter).loadAll(listener);
 
                 case ".pbf":
                 {
