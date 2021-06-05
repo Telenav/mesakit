@@ -1522,10 +1522,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     {
         final var kryo = (KryoSerializationSession) SerializationSession.threadLocal(this);
         final var types = kryo.kryoTypes();
-        types.group("spatial-index-serializer", () ->
-        {
-            types.register(CompressedEdgeSpatialIndex.class, new CompressedEdgeSpatialIndexKryoSerializer(graph()));
-        });
+        types.registerDynamic(CompressedEdgeSpatialIndex.class, new CompressedEdgeSpatialIndexKryoSerializer(graph()));
     }
 
     /**
