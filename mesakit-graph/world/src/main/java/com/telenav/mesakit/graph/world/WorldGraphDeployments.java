@@ -24,6 +24,7 @@ import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.mesakit.core.MesaKit;
 
 /**
  * {@link WorldGraphDeployments} is a {@link DeploymentSet} that includes deployment configurations for a few built-in
@@ -38,7 +39,7 @@ public class WorldGraphDeployments extends DeploymentSet
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
     /**
-     * @return A deployment of the world graph with a local repository at ~/tdk/graph/world-graph/repositories/local
+     * @return A deployment of the world graph with a local repository in ~/.mesakit
      */
     public static Deployment localDeployment()
     {
@@ -47,18 +48,17 @@ public class WorldGraphDeployments extends DeploymentSet
     }
 
     /**
-     * A set of 4 built-in deployments loaded from packages: local, osmteam and navteam. In addition, any deployments
-     * found in the folder ~/tdk/graph/world-graph/deployments are included.
+     * A set of built-in deployments
      */
     public WorldGraphDeployments(final Listener listener)
     {
         listener.listenTo(this);
-        addDeployments(tdkWorldGraphDeploymentsFolder());
+        addDeployments(mesakitWorldGraphDeploymentsFolder());
         add(localDeployment());
     }
 
-    private Folder tdkWorldGraphDeploymentsFolder()
+    private Folder mesakitWorldGraphDeploymentsFolder()
     {
-        return Folder.kivakitCache().folder("world-graph/deployments");
+        return MesaKit.get().mesakitCacheFolder().folder("world-graph/deployments");
     }
 }

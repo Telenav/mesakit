@@ -82,12 +82,12 @@ import static com.telenav.mesakit.graph.Metadata.CountType.REQUIRE_EXACT;
  * World graphs have {@link Deployment} configurations that look like this:
  * <pre>
  * #
- * # Configuration of WorldGraph for EU OSM Team
+ * # Configuration of WorldGraph for myteam
  * #
  * configuration-class=com.telenav.kivakit.graph.world.WorldGraphConfiguration
  * cell-size=2 degrees
- * local-repository=${tdk.graph.folder}/world-graph/repositories/osmteam
- * remote-repository=hdfs://osmteam/tdk/world-graph/repositories/osmteam
+ * local-repository=${mesakit.graph.folder}/world-graph/repositories/myteam
+ * remote-repository=hdfs://myteam/world-graph/repositories/myteam
  * </pre>
  * The cell-size specifies how large the cells are in the {@link WorldGrid}. The local-repository is the location of the
  * world graph data on the local machine. If there is a remote location where data is being transferred from,
@@ -98,8 +98,8 @@ import static com.telenav.mesakit.graph.Metadata.CountType.REQUIRE_EXACT;
  * The factory method {@link #create(WorldGraphRepositoryFolder, Metadata)} is used to create a new world graph. If the
  * world graph already exists locally, it can be loaded with {@link #load(WorldGraphRepositoryFolder)}. If it exists
  * remotely, it can be loaded with {@link #loadRemote(WorldGraphRepositoryFolder, WorldGraphRepositoryFolder)}. Remote
- * world graphs are copied to the local repository in ~/.tdk/graph/world-graph/repositories/local so that data can be
- * read by the graph API (graph files are zip files which must be local files to be accessed in Java).
+ * world graphs are copied to the local repository in ~/.mesakit so that data can be read by the graph API (graph files
+ * are zip files which must be local files to be accessed in Java).
  * <p>
  * Methods in {@link Graph} are overridden to provide scoping of virtual graph elements ({@link WorldEdge}, {@link
  * WorldVertex}, {@link WorldRelation} and {@link WorldPlace} by the sub-graph (cell) containing their data. This gives

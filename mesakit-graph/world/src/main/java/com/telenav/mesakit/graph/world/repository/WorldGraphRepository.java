@@ -37,10 +37,10 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupport
  * A {@link Folder} on some {@link FileSystemService} containing {@link WorldGraphRepositoryFolder}s. Since the {@link
  * Folder} base class {@link Folder} is virtualized and supports pluggable filesystems, a world graph folder may be
  * local, or remote on an HDFS or S3 filesystem. A {@link SwitchParser} is available to choose a world graph repository
- * from the command line. For an example, see the PbfWorldGraphExtractorApplication in tdk-tools/applications.
+ * from the command line. For an example, see the PbfWorldGraphExtractorApplication in mesakit-tools/applications.
  * <p>
- * There is a local repository at ~/.tdk/graph/world-graph/repositories/local which is used to store local world graphs
- * and also to cache remote graphs on the local machine so they will load faster.
+ * There is a local repository in ~/.mesakit which is used to store local world graphs and also to cache remote graphs
+ * on the local machine so they will load faster.
  * <p>
  * The method {@link #folder(FilePath, Metadata)} returns a folder at the given path within the repository having the
  * name derived from the given metadata. To specify a folder at the root of the repository, a file path of "/" may be

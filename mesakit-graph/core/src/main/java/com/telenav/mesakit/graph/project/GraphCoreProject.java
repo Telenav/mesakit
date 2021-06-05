@@ -45,7 +45,7 @@ public class GraphCoreProject extends Project
 
     protected GraphCoreProject()
     {
-        System.setProperty("tdk.graph.folder", graphFolder().toString());
+        System.setProperty("mesakit.graph.folder", graphFolder().toString());
         JavaVirtualMachine.local().invalidateProperties();
     }
 
@@ -85,7 +85,7 @@ public class GraphCoreProject extends Project
 
     public Folder userGraphFolder()
     {
-        final var graphFolder = JavaVirtualMachine.property("TDK_USER_GRAPH_FOLDER");
+        final var graphFolder = JavaVirtualMachine.property("MESAKIT_USER_GRAPH_FOLDER");
         return graphFolder == null ? Folder.desktop() : Folder.parse(graphFolder);
     }
 }

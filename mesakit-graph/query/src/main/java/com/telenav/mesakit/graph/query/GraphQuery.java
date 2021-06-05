@@ -1,17 +1,11 @@
 package com.telenav.mesakit.graph.query;
 
-import com.telenav.kivakit.application.Application;
-import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.kernel.interfaces.code.Callback;
 import com.telenav.kivakit.kernel.language.collections.set.Sets;
 import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
 import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.messaging.Message;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
-import com.telenav.mesakit.graph.io.load.SmartGraphLoader;
-import com.telenav.mesakit.graph.project.GraphCoreProject;
 import com.telenav.mesakit.graph.query.antlr.GraphQueryLexer;
 import com.telenav.mesakit.graph.query.antlr.GraphQueryParser;
 import com.telenav.mesakit.graph.query.compiler.GraphQueryCompiler;
@@ -27,22 +21,9 @@ import java.util.Set;
  *
  * @author jonathanl (shibo)
  */
-public class GraphQuery extends Application
+public class GraphQuery
 {
-    /**
-     * Entrypoint for debugging and testing purposes only (see {@link #onRun()})
-     */
-    public static void main(final String[] arguments)
-    {
-        new GraphQuery().run(arguments);
-    }
-
     private volatile boolean stop;
-
-    public GraphQuery()
-    {
-        super(GraphCoreProject.get());
-    }
 
     /**
      * Selects from a sequence of edges those that match the query.
@@ -53,8 +34,11 @@ public class GraphQuery extends Application
      * @param errorHandler Callback for receiving error messages
      * @return The set of candidate edges matching the query
      */
-    public Set<Route> execute(final ProgressReporter reporter, final EdgeSequence candidates, final String query,
-                              final Maximum maximumMatches, final Callback<String> errorHandler)
+    public Set<Route> execute(final ProgressReporter reporter,
+                              final EdgeSequence candidates,
+                              final String query,
+                              final Maximum maximumMatches,
+                              final Callback<String> errorHandler)
     {
         // Start the progress reporter,
         reporter.steps(candidates.count().asMaximum());
@@ -131,20 +115,5 @@ public class GraphQuery extends Application
     public void stop()
     {
         stop = true;
-    }
-
-    @SuppressWarnings("UseOfSystemOutOrSystemErr")
-    @Override
-    protected void onRun()
-    {
-        final var query = "select (roadType = 'freeway' and !isRamp) then isRamp+ then (roadType = 'freeway' and !isRamp)";
-        final var graphFile = File.parse("/Users/Shared/tdk-8-data/OSM/new-mexico/new-mexico-latest.graph");
-        final var graph = new SmartGraphLoader(graphFile).load();
-        final var candidates = graph.edges();
-        // candidates = new EdgeSequence(List.of(graph.newEdge(new EdgeIdentifier(319565312000000L))));
-        for (final var route : execute(Progress.create(this), candidates, query, Maximum._1_000, System.out::println))
-        {
-            Message.println("route: $", route);
-        }
     }
 }

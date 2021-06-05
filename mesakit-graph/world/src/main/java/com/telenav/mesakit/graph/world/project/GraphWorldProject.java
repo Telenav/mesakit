@@ -49,7 +49,7 @@ public class GraphWorldProject extends Project
     }
 
     /**
-     * NOTE: This version may sometimes be older or newer than the TDK version
+     * NOTE: This version may sometimes be older or newer than the framework version
      *
      * @return The current world graph version.
      */

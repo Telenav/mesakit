@@ -59,7 +59,7 @@ import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.R
 /**
  * A world cell is a square {@link Region} in a {@link WorldGrid}. The actual layout of this cell in a grid is handled
  * by {@link GridCell} which is a rectangle in a {@link Grid}. These classes are found in a separate utility package in
- * the tdk-map project.
+ * the mesakit-map project.
  * <p>
  * <b>Identifiers</b>
  * <p>

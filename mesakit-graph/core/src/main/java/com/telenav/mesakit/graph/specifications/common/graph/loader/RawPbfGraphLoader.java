@@ -544,7 +544,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         information("  Edge Relations:        added ${left} discarded ${left}", relationCount, relationStore.discarded());
         information("          Places:        added ${left} discarded ${left}", placeCount, placeStore.discarded());
         information("");
-        information("  To find out why any data was discarded, define TDK_DEBUG=GraphElementStore,RawPbfGraphLoader");
+        information("  To find out why any data was discarded, define KIVAKIT_DEBUG=GraphElementStore,RawPbfGraphLoader");
         information(AsciiArt.bottomLine());
 
         return store.metadata()

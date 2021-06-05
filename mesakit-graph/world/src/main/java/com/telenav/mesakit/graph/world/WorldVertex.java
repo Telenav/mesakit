@@ -54,7 +54,7 @@ import java.util.List;
  * World graph vertexes have special logic to handle the case where a vertex has been created at a "clean cut" node at
  * the exact edge of the cell during graph extraction with the PbfWorldGraphExtractorApplication. In this case, a vertex
  * will return true from {@link #isClipped()} (and possibly {@link #isSynthetic()} if the node didn't already exist and
- * had to be created by the TDK). For clipped edges, methods like {@link #inEdgeCount()} and {@link #inEdges()} will
+ * had to be created by MesaKit). For clipped edges, methods like {@link #inEdgeCount()} and {@link #inEdges()} will
  * look for an equivalent vertex in any neighboring cells (using the private method {@link
  * #equivalentNeighboringVertexes()}) to produce the illusion that the vertex has one set of in edges, even if these
  * edges might come from two or more cell graphs.

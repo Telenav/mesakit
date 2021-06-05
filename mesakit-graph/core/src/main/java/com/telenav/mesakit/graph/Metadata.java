@@ -93,15 +93,10 @@ import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
 /**
  * Information about map data in a resource like a file.
  * <p>
- * <i>Detailed information is available at:</i>
- * <ul>
- * https://spaces.telenav.com:8443/display/TT/TDK+-+Graph+-+Data+Specifications.
- * </ul>
- * <p>
  * Metadata in a {@link Resource} containing map data, can be extracted with {@link #from(File)}. The structure of
  * metadata in a PBF resource is described in the link above. Partial metadata can be obtained from a metadata
- * descriptor with {@link #parseDescriptor(String)} and the descriptor for a {@link Metadata} object can be retrieved with
- * {@link #descriptor()}.
+ * descriptor with {@link #parseDescriptor(String)} and the descriptor for a {@link Metadata} object can be retrieved
+ * with {@link #descriptor()}.
  * <p>
  * Three categories of metadata are available:
  * <p>
@@ -719,7 +714,6 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         if (type == ALLOW_ESTIMATE && edgeRelations == null && dataSize() != null)
         {
             // Empirical value from OSM data analysis
-            // See https://spaces.telenav.com:8443/display/TT/TDK+-+Graph+-+Data+Specifications
             return dataSize().percent(Percent.of(0.25)).asEstimate().ceiling(3);
         }
         return edgeRelations;
@@ -803,7 +797,6 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         if (type == ALLOW_ESTIMATE && nodes == null && dataSize() != null)
         {
             // Empirical value from OSM data analysis
-            // See https://spaces.telenav.com:8443/display/TT/TDK+-+Graph+-+Data+Specifications
             return dataSize().percent(Percent.of(12.5)).asEstimate().ceiling(3);
         }
         return nodes;
@@ -880,7 +873,6 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         if (type == ALLOW_ESTIMATE && relations == null && dataSize() != null)
         {
             // Empirical value from OSM data analysis
-            // See https://spaces.telenav.com:8443/display/TT/TDK+-+Graph+-+Data+Specifications
             return dataSize().percent(Percent.of(0.25)).asEstimate().ceiling(3);
         }
         return relations;
@@ -978,7 +970,6 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         if (type == ALLOW_ESTIMATE && ways == null && dataSize() != null)
         {
             // Empirical value for navigable ways from OSM data analysis
-            // See https://spaces.telenav.com:8443/display/TT/TDK+-+Graph+-+Data+Specifications
             return dataSize().percent(Percent.of(0.5)).asEstimate().ceiling(3);
         }
         return ways;

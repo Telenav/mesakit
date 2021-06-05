@@ -119,7 +119,7 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
                     .withEdgeCount(estimatedSectionedEdges)
                     .withName(graphName));
 
-            if (JavaVirtualMachine.isPropertyTrue("TDK_DEBUG_SAVE_RAW_GRAPH"))
+            if (JavaVirtualMachine.isPropertyTrue("MESAKIT_DEBUG_SAVE_RAW_GRAPH"))
             {
                 raw.save(new GraphArchive(GraphCoreProject.get().userGraphFolder().file("raw.graph"), ZipArchive.Mode.WRITE, ProgressReporter.NULL));
             }
@@ -128,7 +128,7 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
             final var edgeSectioner = listenTo(new EdgeSectioner(
                     destination, analysis, loader.edgeNodes(), Distance.MAXIMUM));
             var waySectioner = new WaySectioningGraphLoader(raw, edgeSectioner, JavaVirtualMachine.local().processors());
-            final var ways = JavaVirtualMachine.property("TDK_DEBUG_WAY_SECTIONS");
+            final var ways = JavaVirtualMachine.property("MESAKIT_DEBUG_WAY_SECTIONS");
             if (ways != null)
             {
                 final var wayIdentifiers = WayIdentifierList.parse(ways).asSet();
