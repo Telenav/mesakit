@@ -276,7 +276,12 @@ public class Node extends Quadrant
                 }
 
                 // otherwise we need to break things down further
-                return spatialIndex.store().add(new Node(spatialIndex, bounds));
+                if (bounds.widthAtBase().isGreaterThan(MINIMUM_QUADRANT_SIZE)
+                        && bounds.heightAsDistance().isGreaterThan(MINIMUM_QUADRANT_SIZE))
+                {
+                    return spatialIndex.store().add(new Node(spatialIndex, bounds));
+                }
+                return 0;
             }
 
             case 3:
