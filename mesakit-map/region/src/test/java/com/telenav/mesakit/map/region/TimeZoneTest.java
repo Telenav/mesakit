@@ -21,7 +21,6 @@ package com.telenav.mesakit.map.region;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
 import com.telenav.mesakit.map.region.regions.TimeZone;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -31,22 +30,8 @@ import org.junit.Test;
  * @author roberts
  * @author jonathanl (shibo)
  */
-@Ignore
 public class TimeZoneTest extends MapRegionUnitTest
 {
-    @Test
-    public void testDenver()
-    {
-        // DEN
-        check("America/Denver", 39.849, -104.674);
-
-        // Northeast Arizona: Mountain time zone
-        check("America/Denver", 35.352, -110.985);
-
-        // Northeast Arizona: boundary within boundary for Mountain time zone
-        check("America/Denver", 35.745, -110.146);
-    }
-
     @Test
     public void testLosAngeles()
     {
@@ -73,6 +58,25 @@ public class TimeZoneTest extends MapRegionUnitTest
     }
 
     @Test
+    public void testMountain()
+    {
+        // Denver airport (MST or MDT)
+        check("America/Denver", 39.849, -104.674);
+
+        // Flagstaff, inside Arizona (AZ / MST)
+        check("America/Phoenix", 35.1997205920378, -111.64855728338603);
+
+        // Navajo reservation, inside Mountain time (MST or MDT)
+        //check("Navajo", 35.352, -110.985);
+
+        // Walpi on Hopi Reservation, inside Navajo reservation, inside Mountain time (AZ / MST)
+        //check("Hopi", 35.832910, -110.397973);
+
+        // Jeddito, inside Hopi reservation, inside Navajo reservation, inside Mountain time (MST or MDT)
+        //check("Jeddito", 35.775685560512564, -110.13667148083405);
+    }
+
+    @Test
     public void testNorthDakota()
     {
         // North Dakota: New Salem
@@ -92,7 +96,7 @@ public class TimeZoneTest extends MapRegionUnitTest
         check("America/Phoenix", 33.436, -112.000);
 
         // Northeast Arizona: boundary for Phoenix time zone
-        check("America/Phoenix", 35.754, -110.688);
+        check("America/Denver", 35.754, -110.688);
     }
 
     @Test
@@ -122,7 +126,10 @@ public class TimeZoneTest extends MapRegionUnitTest
         final var timeZone = TimeZone.forLocation(location);
         if (timeZone == null)
         {
-            fail("No time zone found at " + location);
+            if (expectedTimeZone != null)
+            {
+                fail("Time zone $ was expected at $ but no time zone found", expectedTimeZone, location);
+            }
         }
         else
         {

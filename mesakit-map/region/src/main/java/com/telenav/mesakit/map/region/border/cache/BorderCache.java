@@ -102,6 +102,7 @@ import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
 import static com.telenav.kivakit.serialization.core.SerializationSession.Type.RESOURCE;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
+import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.DISCARDED;
 
 /**
  * There should be no need for end-users of MesaKit to use {@link BorderCache} objects since they are an implementation
@@ -735,12 +736,19 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                 public Action onNode(final PbfNode node)
                 {
                     final var identifier = node.identifierAsLong();
-                    final var latitude = Latitude.degrees(node.latitude());
-                    final var longitude = Longitude.degrees(node.longitude());
-                    final var location = new Location(latitude, longitude);
-                    locationForIdentifier.put(identifier, location);
-                    totalLocations.increment();
-                    return ACCEPTED;
+                    if (node.latitude() > 85 || node.latitude() < -85)
+                    {
+                        return DISCARDED;
+                    }
+                    else
+                    {
+                        final var latitude = Latitude.degrees(node.latitude());
+                        final var longitude = Longitude.degrees(node.longitude());
+                        final var location = new Location(latitude, longitude);
+                        locationForIdentifier.put(identifier, location);
+                        totalLocations.increment();
+                        return ACCEPTED;
+                    }
                 }
 
                 @Override
@@ -856,10 +864,14 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                                 borderForWayIdentifier.put(way.identifierAsLong(), newBorder);
                             }
                         }
+                        else
+                        {
+                            warning("The region $ (way $) is not closed", region.identity(), way.identifier());
+                        }
                     }
                     else
                     {
-                        trace("Unable to extract a valid " + type().getSimpleName() + " from " + way);
+                        information("Unable to extract a valid " + type().getSimpleName() + " from " + way);
                     }
                     return ACCEPTED;
                 }
