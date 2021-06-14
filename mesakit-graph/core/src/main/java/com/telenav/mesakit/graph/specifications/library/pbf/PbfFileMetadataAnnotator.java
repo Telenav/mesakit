@@ -173,7 +173,7 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
 
         return new Metadata()
                 .withDataBuild(DataBuild.at(file.lastModified().localTime()))
-                .withDataSize(file.bytes())
+                .withDataSize(file.sizeInBytes())
                 .withDataBounds(bounds.build())
                 .withWayCount(statistics.ways())
                 .withNodeCount(mode == Mode.RETAIN_ALL ? statistics.nodes() : retain.count())
@@ -315,7 +315,7 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
     private SerialPbfReader reader()
     {
         final var reader = new SerialPbfReader(file);
-        if (file.bytes().isGreaterThan(Bytes.megabytes(20)))
+        if (file.sizeInBytes().isGreaterThan(Bytes.megabytes(20)))
         {
             listenTo(reader);
         }

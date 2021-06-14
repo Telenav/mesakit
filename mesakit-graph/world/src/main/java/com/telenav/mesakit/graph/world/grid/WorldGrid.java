@@ -606,7 +606,7 @@ public class WorldGrid
             {
                 if (file.equals(graphFile))
                 {
-                    worldCell.fileSize(file.bytes());
+                    worldCell.fileSize(file.sizeInBytes());
                 }
             }
         }

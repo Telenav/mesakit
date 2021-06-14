@@ -18,10 +18,6 @@
 
 package com.telenav.mesakit.map.overpass;
 
-import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.mesakit.map.overpass.pbf.OsmToPbfConverter;
-import com.telenav.mesakit.map.overpass.project.lexakai.diagrams.DiagramOverpass;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.messaging.Debug;
@@ -31,6 +27,10 @@ import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
+import com.telenav.mesakit.map.overpass.pbf.OsmToPbfConverter;
+import com.telenav.mesakit.map.overpass.project.lexakai.diagrams.DiagramOverpass;
 
 /**
  * @author jonathanl (shibo)
@@ -68,7 +68,7 @@ public class OverpassDataDownloader extends BaseRepeater
             {
                 trace("Downloading overpass data for $ to $", bounds, osm);
                 listenTo(new OverpassOsmResource(bounds)).safeCopyTo(osm);
-                trace("Downloaded $ bytes to $", osm.bytes(), osm);
+                trace("Downloaded $ bytes to $", osm.sizeInBytes(), osm);
                 return osm;
             }
             catch (final Exception e)

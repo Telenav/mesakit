@@ -42,7 +42,7 @@ public final class PbfDataStatistics
 
     public PbfDataStatistics(final Resource resource)
     {
-        dataSize = resource.bytes();
+        dataSize = resource.sizeInBytes();
     }
 
     public Bytes dataSize()

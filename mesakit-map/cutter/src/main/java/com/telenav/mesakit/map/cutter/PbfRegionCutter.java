@@ -111,7 +111,7 @@ public class PbfRegionCutter
         {
             if (resource.exists())
             {
-                if (resource.bytes().isZero())
+                if (resource.sizeInBytes().isZero())
                 {
                     if (resource instanceof File)
                     {

@@ -206,7 +206,7 @@ public class GraphArchive extends FieldArchive implements Named
             graph.loadAll();
             final var memory = JavaVirtualMachine.local().sizeOfObjectGraph(graph, "GraphResource.load.graph",
                     Bytes.megabytes(1));
-            final var disk = resource().bytes();
+            final var disk = resource().sizeInBytes();
             DEBUG.trace("Graph memory = $, disk = $, memory/disk = $%", memory, disk,
                     Doubles.format((double) memory.asBytes() / (double) disk.asBytes() * 100.0, 1));
         }

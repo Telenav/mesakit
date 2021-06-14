@@ -227,7 +227,7 @@ public class WorldCellList extends ArrayList<WorldCell>
     {
         final var list = new WorldCellList();
         list.addAll(this);
-        list.sort(Comparator.comparing(cell -> cell.pbfFile().bytes()));
+        list.sort(Comparator.comparing(cell -> cell.pbfFile().sizeInBytes()));
         Collections.reverse(list);
         return list;
     }

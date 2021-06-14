@@ -254,7 +254,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     {
         if (fileSize == null)
         {
-            fileSize = cellGraphFile().bytes();
+            fileSize = cellGraphFile().sizeInBytes();
         }
         return fileSize;
     }

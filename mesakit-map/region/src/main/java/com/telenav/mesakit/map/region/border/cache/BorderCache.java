@@ -548,7 +548,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                     {
                         // and if a decent sized PBF doesn't already exist
                         final var extracted = pbfFile(type);
-                        if (!extracted.exists() || extracted.bytes().isLessThan(Bytes.kilobytes(50)))
+                        if (!extracted.exists() || extracted.sizeInBytes().isLessThan(Bytes.kilobytes(50)))
                         {
                             // then get the entry name
                             final var zipEntryName = baseName(type) + ".osm.pbf";
