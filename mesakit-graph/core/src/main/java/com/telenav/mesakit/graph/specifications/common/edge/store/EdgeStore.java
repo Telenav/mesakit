@@ -1495,8 +1495,8 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     @Override
     protected void onLoading(final GraphArchive archive)
     {
-        super.onLoading(archive);
         configureSerializer();
+        super.onLoading(archive);
         count = metadata().edgeCount(Metadata.CountType.REQUIRE_EXACT).asInt();
     }
 
@@ -1507,7 +1507,6 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     protected void onSaving(final GraphArchive archive)
     {
         configureSerializer();
-
         super.onSaving(archive);
 
         // If there's no spatial index,
@@ -1522,7 +1521,8 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     {
         final var kryo = (KryoSerializationSession) SerializationSession.threadLocal(this);
         final var types = kryo.kryoTypes();
-        types.registerDynamic(CompressedEdgeSpatialIndex.class, new CompressedEdgeSpatialIndexKryoSerializer(graph()));
+        types.registerDynamic(CompressedEdgeSpatialIndex.class, new CompressedEdgeSpatialIndexKryoSerializer(graph()),
+                CompressedEdgeSpatialIndexKryoSerializer.IDENTIFIER);
     }
 
     /**

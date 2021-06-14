@@ -35,6 +35,8 @@ import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndexKryoSer
  */
 public class CompressedEdgeSpatialIndexKryoSerializer extends RTreeSpatialIndexKryoSerializer<Edge> implements NamedObject
 {
+    public static int IDENTIFIER = 333;
+
     private final Graph graph;
 
     public CompressedEdgeSpatialIndexKryoSerializer(final Graph graph)
