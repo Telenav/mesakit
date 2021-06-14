@@ -67,13 +67,13 @@ public class TimeZoneTest extends MapRegionUnitTest
         check("America/Phoenix", 35.1997205920378, -111.64855728338603);
 
         // Navajo reservation, inside Mountain time (MST or MDT)
-        //check("Navajo", 35.352, -110.985);
+        //check("America/Denver", 35.352, -110.985);
 
         // Walpi on Hopi Reservation, inside Navajo reservation, inside Mountain time (AZ / MST)
-        //check("Hopi", 35.832910, -110.397973);
+        //check("America/Phoenix", 35.832910, -110.397973);
 
         // Jeddito, inside Hopi reservation, inside Navajo reservation, inside Mountain time (MST or MDT)
-        //check("Jeddito", 35.775685560512564, -110.13667148083405);
+        //check("America/Denver", 35.775685560512564, -110.13667148083405);
     }
 
     @Test

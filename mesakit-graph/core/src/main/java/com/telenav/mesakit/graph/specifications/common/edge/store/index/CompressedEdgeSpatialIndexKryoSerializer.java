@@ -45,9 +45,9 @@ public class CompressedEdgeSpatialIndexKryoSerializer extends RTreeSpatialIndexK
     @Override
     public RTreeSpatialIndex<Edge> onRead(final KryoSerializationSession kryo)
     {
-        final var index = (CompressedEdgeSpatialIndex) super.onRead(kryo);
-        index.edges = kryo.readObject(CompressedEdgeListStore.class);
-        return index;
+        final var edgeSpatialIndex = (CompressedEdgeSpatialIndex) super.onRead(kryo);
+        edgeSpatialIndex.edges = kryo.readObject(CompressedEdgeListStore.class);
+        return edgeSpatialIndex;
     }
 
     @SuppressWarnings({ "rawtypes" })

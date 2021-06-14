@@ -98,6 +98,7 @@ import java.util.Set;
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureEqual;
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.illegalState;
 import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
 import static com.telenav.kivakit.serialization.core.SerializationSession.Type.RESOURCE;
@@ -475,9 +476,6 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
             // Ensure the data folder exists
             cacheFolder().mkdirs();
 
-            // then get the jar location on S3
-            final var source = new SecureHttpNetworkLocation(NETWORK_PATH);
-
             // and the zip file target we're going to download to and unzip.
             final var jar = localJar(NETWORK_PATH.fileName());
             trace("Trying to open $", jar);
@@ -487,16 +485,18 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                 // If archive isn't valid,
                 if (archive == null)
                 {
-                    trace("$ is not a valid zip archive", jar);
+                    information("$ is not a valid zip archive", jar);
 
                     // but it exists,
                     if (jar.exists())
                     {
                         // then remove it
-                        trace("Removing bad zip archive $", jar);
+                        information("Removing bad zip archive $", jar);
                         jar.delete();
                     }
 
+                    // then get the jar location on S3
+                    final var source = new SecureHttpNetworkLocation(NETWORK_PATH);
                     try
                     {
                         // then try to download the data into the cache
@@ -504,7 +504,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                                 NETWORK_PATH.asContractedString(80), jar.path().asContractedString(80)) + "\n ");
                         final var downloadProgress = Progress.create(this, "bytes");
                         downloadProgress.start("Downloading");
-                        trace("Downloading $ from $", jar, source);
+                        information("Downloading $ from $", jar, source);
                         cache().add(source.get(), OVERWRITE, downloadProgress);
                         downloadProgress.end("Downloaded");
 
@@ -558,6 +558,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                                 final var entry = archive.entry(zipEntryName);
                                 if (entry != null)
                                 {
+                                    information("Extracting $ to $", zipEntryName, extracted);
                                     entry.safeCopyTo(extracted, OVERWRITE);
                                 }
                             }
@@ -575,7 +576,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                 {
                     // We were unable to install for some other reason
                     cacheFolder().clearAllAndDelete();
-                    throw new IllegalStateException("Unable to install border data", e);
+                    illegalState(e, "Unable to install border data");
                 }
             }
             finally
@@ -871,7 +872,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                     }
                     else
                     {
-                        information("Unable to extract a valid " + type().getSimpleName() + " from " + way);
+                        trace("Unable to extract a valid " + type().getSimpleName() + " from " + way);
                     }
                     return ACCEPTED;
                 }
