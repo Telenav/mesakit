@@ -39,8 +39,12 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo " "
 
 cd $MESAKIT_WORKSPACE
+
 git clone https://github.com/Telenav/mesakit.git
+git config pull.ff only
+
 git clone https://github.com/Telenav/mesakit-assets.git
+git config pull.ff only
 
 #
 # Initialize git flow for each project
