@@ -41,30 +41,30 @@ MesaKit provides useful APIs and tools for complex back-end map data analysis an
 MesaKit provides support for:
 
 - *Map Data Sources*
-	- [OpenStreetMap (OSM)](https://www.openstreetmap.org/) [Protobuf (PBF)](https://wiki.openstreetmap.org/wiki/PBF_Format) format
-	- [Overpass](https://wiki.openstreetmap.org/wiki/Overpass_API) map data retrieval
-	- Custom data sources
+    - [OpenStreetMap (OSM)](https://www.openstreetmap.org/) [Protobuf (PBF)](https://wiki.openstreetmap.org/wiki/PBF_Format) format
+    - [Overpass](https://wiki.openstreetmap.org/wiki/Overpass_API) map data retrieval
+    - Custom data sources
 - *Road Network Graphs*
-	- Simple, memory-efficient, object-oriented API
-	- Directional edges
-	- Graph metadata
-	- Flexible data specifications
-	- Flexible attributes
-	- Composite graphs
-	- Road name standardization
+    - Simple, memory-efficient, object-oriented API
+    - Directional edges
+    - Graph metadata
+    - Flexible data specifications
+    - Flexible attributes
+    - Composite graphs
+    - Road name standardization
 - *Search*
-	- Spatial indexing (quad-tree, r-tree, polygon indexing, geohashing)
-	- Graph query language
-	- Reverse Geocoding
-	- Administrative regions
+    - Spatial indexing (quad-tree, r-tree, polygon indexing, geohashing)
+    - Graph query language
+    - Reverse Geocoding
+    - Administrative regions
 - *Tools*
-	- [Java OpenStreetMap (JOSM)](https://josm.openstreetmap.de) graph viewer plugin
-	- [Dijkstra](https://en.wikipedia.org/wiki/Dijkstra's_algorithm) and bi-Dijkstra heuristic routing
-	- Graph analysis tools
+    - [Java OpenStreetMap (JOSM)](https://josm.openstreetmap.de) graph viewer plugin
+    - [Dijkstra](https://en.wikipedia.org/wiki/Dijkstra's_algorithm) and bi-Dijkstra heuristic routing
+    - Graph analysis tools
 - *Traffic*
-	- [TMC](https://en.wikipedia.org/wiki/Traffic_message_channel) codes
-	- Tomtom and Navteq codes
-	- Historical traffic data processing
+    - [TMC](https://en.wikipedia.org/wiki/Traffic_message_channel) codes
+    - Tomtom and Navteq codes
+    - Historical traffic data processing
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
@@ -81,7 +81,7 @@ MesaKit provides support for:
 | Twitter | [@OpenMesaKit](https://twitter.com/openmesakit) |
 | Issues | [GitHub Issues](https://github.com/Telenav/mesakit/issues) |
 | Code | [GitHub](https://github.com/Telenav/mesakit) |
-| Checkout | `git clone git@github.com:Telenav/mesakit.git` |
+| Checkout | `git clone https://github.com/Telenav/mesakit.git` |
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 

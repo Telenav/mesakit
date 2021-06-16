@@ -1,4 +1,3 @@
-
 <a href="https://github.com/Telenav/mesakit">
 <img src="https://www.kivakit.org/images/github-32.png" srcset="https://www.kivakit.org/images/github-32-2x.png 2x"/>
 </a>
@@ -28,10 +27,12 @@ Whether you plan to use MesaKit or help to develop it, this page will help you g
 ### 1. Checking Out the Project  <img src="https://www.kivakit.org/images/down-arrow-32.png" srcset="https://www.kivakit.org/images/down-arrow-32-2x.png 2x"></img>
 
 The MesaKit project will look roughly like this when we're done with the setup process:
- 
+
 > * Workspace
->   * mesakit
->     * mesakit-map
+    >
+* mesakit
+  >
+* mesakit-map
 >     * mesakit-graph
 >     * [...]
 
@@ -52,7 +53,7 @@ To check out the *mesakit* project:
 3. Clone the *mesakit* git repository into your workspace
 
        cd Workspace 
-       git clone git@github.com:Telenav/mesakit.git
+       git clone https://github.com/Telenav/mesakit.git
 
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"></img>
 
@@ -62,16 +63,15 @@ To configure your environment, you will need several environment variables set.
 
 > Without the correct environment variables set, the setup script in Step 3 won't work.
 
-1. Copy the provided mesakit-profile to your root folder 
+1. Copy the provided mesakit-profile to your root folder
 
         cp mesakit/setup/mesakit-profile ~/.mesakit-profile
 
-2.  *If you have checked MesaKit out in a different workspace* from KivaKit, you will need to
-    change the **MESAKIT_WORKSPACE** variable to the workspace where you checked it out.
+2. *If you have checked MesaKit out in a different workspace* from KivaKit, you will need to change the **MESAKIT_WORKSPACE** variable to the workspace where you checked it out.
 
-        export MESAKIT_WORKSPACE=$HOME/Workspace
+       export MESAKIT_WORKSPACE=$HOME/Workspace
 
-   > **MESAKIT_WORKSPACE** must point to your *workspace* **NOT** the *mesakit* project in the workspace
+> **MESAKIT_WORKSPACE** must point to your *workspace* **NOT** the *mesakit* project in the workspace
 
 3. Start a new shell window
 
@@ -79,8 +79,7 @@ To configure your environment, you will need several environment variables set.
 
 ### 3. Finishing the Job  <img src="https://www.kivakit.org/images/stars-32.png" srcset="https://www.kivakit.org/images/stars-32-2x.png 2x"></img>
 
-Once you have cloned the project into your workspace and set up your environment,
-you can complete your set up with one final command:
+Once you have cloned the project into your workspace and set up your environment, you can complete your set up with one final command:
 
     $MESAKIT_HOME/setup/setup.sh
 
