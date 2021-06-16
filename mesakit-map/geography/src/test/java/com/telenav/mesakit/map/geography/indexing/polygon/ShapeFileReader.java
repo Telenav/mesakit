@@ -20,6 +20,7 @@ package com.telenav.mesakit.map.geography.indexing.polygon;
 
 import com.telenav.kivakit.kernel.language.iteration.Iterables;
 import com.telenav.kivakit.kernel.language.iteration.Next;
+import com.telenav.kivakit.kernel.language.primitives.Doubles;
 import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.kivakit.kernel.messaging.messages.status.Warning;
 import com.telenav.kivakit.resource.Resource;
@@ -86,8 +87,11 @@ public class ShapeFileReader
                         final var builder = new PolygonBuilder();
                         for (final PointData point : shape.getPointsOfPart(part))
                         {
-                            builder.add(new Location(Latitude.degrees(point.getY()),
-                                    Longitude.degrees(point.getX())));
+                            if (Doubles.isBetween(point.getY(), -85, 85))
+                            {
+                                builder.add(new Location(Latitude.degrees(point.getY()),
+                                        Longitude.degrees(point.getX())));
+                            }
                         }
                         if (++part == shape.getNumberOfParts())
                         {
