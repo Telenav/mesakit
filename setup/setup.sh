@@ -43,6 +43,9 @@ cd $MESAKIT_WORKSPACE
 git clone https://github.com/Telenav/mesakit.git
 git config pull.ff only
 
+git clone https://github.com/Telenav/mesakit-extensions.git
+git config pull.ff only
+
 git clone https://github.com/Telenav/mesakit-assets.git
 git config pull.ff only
 
@@ -55,6 +58,9 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo " "
 
 cd $MESAKIT_WORKSPACE/mesakit
+git flow init -d /dev/null 2>&1
+
+cd $MESAKIT_WORKSPACE/mesakit-extensions
 git flow init -d /dev/null 2>&1
 
 if [ $(git flow config >/dev/null 2>&1) ]; then

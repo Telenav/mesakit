@@ -28,14 +28,14 @@
             <artifactId>kivakit-primitive-collections</artifactId>
             <version>${kivakit.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.telenav.kivakit</groupId>
+            <artifactId>kivakit-configuration</artifactId>
+            <version>${kivakit.version}</version>
+        </dependency>
 
         <!-- MesaKit -->
 
-        <dependency>
-            <groupId>com.telenav.mesakit</groupId>
-            <artifactId>mesakit-graph-traffic</artifactId>
-            <version>${mesakit.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-map-ui-debug</artifactId>
