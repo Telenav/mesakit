@@ -60,6 +60,10 @@
             <version>${osmosis.version}</version>
             <exclusions>
                 <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-jdbc</artifactId>
+                </exclusion>
+                <exclusion>
                     <groupId>commons-logging</groupId>
                     <artifactId>*</artifactId>
                 </exclusion>
