@@ -397,7 +397,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     {
         bottomInDm7 = Location.latitude(bottomLeftInDm7);
         leftInDm7 = Location.longitude(bottomLeftInDm7);
-        topInDm7 = Location.latitude(bottomLeftInDm7);
+        topInDm7 = Location.latitude(topRightInDm7);
         rightInDm7 = Location.longitude(topRightInDm7);
     }
 

@@ -442,7 +442,9 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
 
     private File borderCacheFile()
     {
-        return cacheFolder().file(FileName.parse(baseName(type()) + ".kryo"));
+        return cacheFolder()
+                .mkdirs()
+                .file(FileName.parse(baseName(type()) + ".kryo"));
     }
 
     private FileCache cache()
@@ -453,7 +455,11 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
 
     private Folder cacheFolder()
     {
-        return MapRegionProject.get().mesakitMapFolder().folder("region/borders");
+        return MapRegionProject.get()
+                .mesakitMapFolder()
+                .folder("region/borders")
+                .folder(MapRegionProject.get().borderDataVersion().toString())
+                .mkdirs();
     }
 
     private void grantAccess()
