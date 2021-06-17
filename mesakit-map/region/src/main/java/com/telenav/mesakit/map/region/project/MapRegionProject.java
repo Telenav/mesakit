@@ -59,7 +59,7 @@ public class MapRegionProject extends Project
      */
     public Version borderDataVersion()
     {
-        return Version.parse("0.9.0");
+        return Version.parse("0.9.1");
     }
 
     @Override
