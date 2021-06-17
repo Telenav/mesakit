@@ -38,6 +38,16 @@
 
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
+            <artifactId>mesakit-map-measurements</artifactId>
+            <version>${mesakit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.telenav.mesakit</groupId>
+            <artifactId>mesakit-map-region</artifactId>
+            <version>${mesakit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-map-ui-debug</artifactId>
             <version>${mesakit.version}</version>
         </dependency>
@@ -49,11 +59,6 @@
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-map-road-name-standardizer</artifactId>
-            <version>${mesakit.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.telenav.mesakit</groupId>
-            <artifactId>mesakit-map-region</artifactId>
             <version>${mesakit.version}</version>
         </dependency>
         <dependency>
