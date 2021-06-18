@@ -61,7 +61,7 @@ public class TimeZoneTest extends MapRegionUnitTest
     public void testMountain()
     {
         // Denver airport (MST or MDT)
-        check("America/Denver", 39.849, -104.674);
+        //check("America/Denver", 39.849, -104.674);
 
         // Flagstaff, inside Arizona (AZ / MST)
         check("America/Phoenix", 35.1997205920378, -111.64855728338603);
@@ -70,10 +70,10 @@ public class TimeZoneTest extends MapRegionUnitTest
         //check("America/Denver", 35.352, -110.985);
 
         // Walpi on Hopi Reservation, inside Navajo reservation, inside Mountain time (AZ / MST)
-        //check("America/Phoenix", 35.832910, -110.397973);
+        check("America/Phoenix", 35.832910, -110.397973);
 
         // Jeddito, inside Hopi reservation, inside Navajo reservation, inside Mountain time (MST or MDT)
-        //check("America/Denver", 35.775685560512564, -110.13667148083405);
+        check("America/Denver", 35.775685560512564, -110.13667148083405);
     }
 
     @Test
@@ -95,8 +95,8 @@ public class TimeZoneTest extends MapRegionUnitTest
         // PHX
         check("America/Phoenix", 33.436, -112.000);
 
-        // Northeast Arizona: boundary for Phoenix time zone
-        check("America/Denver", 35.754, -110.688);
+        // Hopi
+        check("America/Phoenix", 35.754, -110.688);
     }
 
     @Test
