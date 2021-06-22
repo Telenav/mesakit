@@ -971,17 +971,11 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     {
         if (batcher == null)
         {
-            batcher = new Batcher<>(qualifiedName(), QUEUE_SIZE, BATCH_SIZE)
-            {
-                @Override
-                protected void onBatch(final Batch batch)
-                {
-                    for (final var element : batch)
-                    {
-                        internalAdd(element);
-                    }
-                }
-            };
+            batcher = Batcher.<T>create()
+                    .withName(qualifiedName())
+                    .withQueueSize(QUEUE_SIZE)
+                    .withBatchSize(BATCH_SIZE)
+                    .withConsumer(batch -> batch.forEach(this::internalAdd));
         }
         return batcher;
     }

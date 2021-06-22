@@ -46,32 +46,23 @@ public class ParallelPbfReader extends BaseRepeater implements PbfDataSource
 
     private PbfDataProcessor processor;
 
-    private final Batcher<PbfNode> nodeBatcher = new Batcher<>("Node", QUEUE_SIZE, BATCH_SIZE)
-    {
-        @Override
-        protected void onBatch(final Batch batch)
-        {
-            outer().processor.onNodes(batch);
-        }
-    };
+    private final Batcher<PbfNode> nodeBatcher = Batcher.<PbfNode>create()
+            .withName("Node")
+            .withQueueSize(QUEUE_SIZE)
+            .withBatchSize(BATCH_SIZE)
+            .withConsumer(batch -> outer().processor.onNodes(batch));
 
-    private final Batcher<PbfWay> wayBatcher = new Batcher<>("Way", QUEUE_SIZE, BATCH_SIZE)
-    {
-        @Override
-        protected void onBatch(final Batch batch)
-        {
-            outer().processor.onWays(batch);
-        }
-    };
+    private final Batcher<PbfWay> wayBatcher = Batcher.<PbfWay>create()
+            .withName("Way")
+            .withQueueSize(QUEUE_SIZE)
+            .withBatchSize(BATCH_SIZE)
+            .withConsumer(batch -> outer().processor.onWays(batch));
 
-    private final Batcher<PbfRelation> relationBatcher = new Batcher<>("Relation", QUEUE_SIZE, BATCH_SIZE)
-    {
-        @Override
-        protected void onBatch(final Batch batch)
-        {
-            outer().processor.onRelations(batch);
-        }
-    };
+    private final Batcher<PbfRelation> relationBatcher = Batcher.<PbfRelation>create()
+            .withName("Relation")
+            .withQueueSize(QUEUE_SIZE)
+            .withBatchSize(BATCH_SIZE)
+            .withConsumer(batch -> outer().processor.onRelations(batch));
 
     private final Resource resource;
 
