@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.configuration.Deployment;
-import com.telenav.kivakit.configuration.DeploymentSet;
+import com.telenav.kivakit.configuration.deployment.Deployment;
+import com.telenav.kivakit.configuration.deployment.DeploymentSet;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;

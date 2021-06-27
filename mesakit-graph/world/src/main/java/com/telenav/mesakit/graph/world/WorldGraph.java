@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.world;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.configuration.Deployment;
+import com.telenav.kivakit.configuration.deployment.Deployment;
 import com.telenav.kivakit.kernel.interfaces.code.Callback;
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
