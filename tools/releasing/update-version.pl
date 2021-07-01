@@ -53,6 +53,22 @@ sub update_markdown {
 }
 
 #
+# Update properties files that contain the old version
+#
+sub update_properties {
+    my $path = shift @_;
+    my $text = read_file($path);
+    my $updated = $text;
+    $updated =~ s/\b${old_version}\b/${new_version}/g;
+
+    if ($text ne $updated) {
+        print "Updating $path\n";
+        write_file($path, $updated);
+        print "Updated $path\n";
+    }
+}
+
+#
 # Update the pom file version
 #
 sub update_pom {
@@ -72,6 +88,7 @@ sub update_pom {
     if ($text ne $updated) {
         print "Updating $path\n";
         write_file($path, $updated);
+        print "Updated $path\n";
     }
 }
 
@@ -83,6 +100,10 @@ sub process_file {
 
     if ($path =~ /pom.xml/g) {
         update_pom($path);
+    }
+
+    if ($path =~ /project.properties/g) {
+        update_properties($path);
     }
 
     if ($path =~ /.*\.md$/) {

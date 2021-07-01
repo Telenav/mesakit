@@ -35,7 +35,7 @@ This module contains units of measure for mapping applications.
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-measurements</artifactId>
-        <version>0.9.8-alpha-SNAPSHOT</version>
+        <version>0.9.9-SNAPSHOT</version>
     </dependency>
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>

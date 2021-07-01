@@ -1,6 +1,6 @@
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
-### Version 0.9.8-alpha
+### Version 0.9.9-SNAPSHOT
 
 Initial version.
 

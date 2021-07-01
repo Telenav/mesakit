@@ -12,7 +12,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit</artifactId>
-    <version>0.9.8-alpha-SNAPSHOT</version>
+    <version>0.9.9-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <!-- Project -->
@@ -146,11 +146,11 @@
 
         <!-- MesaKit Version -->
 
-        <mesakit.version>0.9.8-alpha-SNAPSHOT</mesakit.version>
+        <mesakit.version>0.9.9-SNAPSHOT</mesakit.version>
 
         <!-- KivaKit Version -->
 
-        <kivakit.version>0.9.8-beta</kivakit.version>
+        <kivakit.version>0.9.9-SNAPSHOT</kivakit.version>
 
         <!-- Mapping -->
 
@@ -167,7 +167,7 @@
 
         <!-- Lexakai Documentation -->
 
-        <lexakai.version>0.9.8-alpha-SNAPSHOT</lexakai.version>
+        <lexakai.version>0.9.8-beta</lexakai.version>
 
         <!-- Java -->
 

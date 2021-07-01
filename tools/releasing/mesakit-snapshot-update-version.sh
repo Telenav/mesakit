@@ -10,10 +10,12 @@
 source mesakit-library-functions.sh
 source mesakit-projects.sh
 
-version="${1%-SNAPSHOT}-SNAPSHOT"
+version="$1"
 
-help="[version]"
+require_variable version "[version]"
 
-require_variable version "$help"
+snapshot_version="${1%-SNAPSHOT}-SNAPSHOT"
 
-update_version $MESAKIT_HOME $version
+update_version $MESAKIT_HOME $snapshot_version
+update_version $MESAKIT_EXAMPLES_HOME $snapshot_version
+update_version $MESAKIT_EXTENSIONS_HOME $snapshot_version
