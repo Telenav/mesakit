@@ -20,7 +20,6 @@ package com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner;
 
 import com.telenav.kivakit.kernel.data.validation.Validation;
 import com.telenav.kivakit.kernel.language.progress.reporters.ConcurrentProgress;
-import com.telenav.kivakit.kernel.language.threading.Threads;
 import com.telenav.kivakit.kernel.language.time.Time;
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.resource.Resource;
@@ -90,77 +89,72 @@ public class WaySectioningGraphLoader extends BaseGraphLoader
         final var batches = raw.batches(Count._16384);
 
         // then we start a thread pool
-        final var executor = Threads.threadPool("Sectioner", workers);
         final var lock = new ReentrantLock(true);
-        workers.loop(() -> executor.submit(() ->
+
+        // and get adders for each store
+        final var edgeStoreAdder = edgeStore.adder();
+        final var relationStoreAdder = relationStore.adder();
+
+        // then we loop
+        while (true)
         {
-            // and get adders for each store
-            final var edgeStoreAdder = edgeStore.adder();
-            final var relationStoreAdder = relationStore.adder();
-
-            // then we loop
-            while (true)
+            // so long as there is another batch
+            List<Edge> batch = null;
+            lock.lock();
+            try
             {
-                // so long as there is another batch
-                List<Edge> batch = null;
-                lock.lock();
-                try
+                if (batches.hasNext())
                 {
-                    if (batches.hasNext())
-                    {
-                        batch = batches.next();
-                    }
-                    if (batch == null)
-                    {
-                        break;
-                    }
+                    batch = batches.next();
                 }
-                finally
+                if (batch == null)
                 {
-                    lock.unlock();
+                    break;
                 }
-
-                // and process each way/edge in the batch
-                for (final var way : batch)
-                {
-                    // breaking the way into smaller sections
-                    final var sections = edgeSectioner.section(way);
-                    for (final var section : sections)
-                    {
-                        // and if a section is included,
-                        if (constraints.includes(section))
-                        {
-                            // we add it to the edge store.
-                            final var heavyweight = section.asHeavyWeight();
-                            heavyweight.copyRoadNames(way);
-                            edgeStoreAdder.add(heavyweight);
-                        }
-                    }
-
-                    // Then for each of the way's relations,
-                    for (final var relation : way.relations())
-                    {
-                        // if it hasn't already been added,
-                        if (!relationStore.containsIdentifier(relation.identifierAsLong()))
-                        {
-                            // add it.
-                            relationStoreAdder.add(relation.asHeavyWeight());
-                        }
-
-                        // and go through the way's sections
-                        for (final var edge : sections)
-                        {
-                            // adding the relation to the edge
-                            store.edgeStore().storeRelation(edge, relation);
-                        }
-                    }
-                }
-
-                progress.next(batch.size());
             }
-        }));
+            finally
+            {
+                lock.unlock();
+            }
 
-        Threads.shutdownAndAwait(executor);
+            // and process each way/edge in the batch
+            for (final var way : batch)
+            {
+                // breaking the way into smaller sections
+                final var sections = edgeSectioner.section(way);
+                for (final var section : sections)
+                {
+                    // and if a section is included,
+                    if (constraints.includes(section))
+                    {
+                        // we add it to the edge store.
+                        final var heavyweight = section.asHeavyWeight();
+                        heavyweight.copyRoadNames(way);
+                        edgeStoreAdder.add(heavyweight);
+                    }
+                }
+
+                // Then for each of the way's relations,
+                for (final var relation : way.relations())
+                {
+                    // if it hasn't already been added,
+                    if (!relationStore.containsIdentifier(relation.identifierAsLong()))
+                    {
+                        // add it.
+                        relationStoreAdder.add(relation.asHeavyWeight());
+                    }
+
+                    // and go through the way's sections
+                    for (final var edge : sections)
+                    {
+                        // adding the relation to the edge
+                        store.edgeStore().storeRelation(edge, relation);
+                    }
+                }
+            }
+
+            progress.next(batch.size());
+        }
 
         progress.end();
 

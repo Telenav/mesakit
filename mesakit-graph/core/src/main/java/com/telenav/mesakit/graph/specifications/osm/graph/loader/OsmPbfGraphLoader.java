@@ -20,6 +20,7 @@ package com.telenav.mesakit.graph.specifications.osm.graph.loader;
 
 import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
 import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.mesakit.graph.Metadata;
@@ -127,7 +128,8 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
             // and then section the raw graph by loading it into the destination graph
             final var edgeSectioner = listenTo(new EdgeSectioner(
                     destination, analysis, loader.edgeNodes(), Distance.MAXIMUM));
-            var waySectioner = new WaySectioningGraphLoader(raw, edgeSectioner, JavaVirtualMachine.local().processors());
+            // TODO shibo - Figure concurrency bug
+            var waySectioner = new WaySectioningGraphLoader(raw, edgeSectioner, Count._1); // JavaVirtualMachine.local().processors());
             final var ways = JavaVirtualMachine.property("MESAKIT_DEBUG_WAY_SECTIONS");
             if (ways != null)
             {

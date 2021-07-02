@@ -245,7 +245,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
             };
 
     /** True if this graph store has been committed */
-    private transient boolean committed;
+    private transient volatile boolean committed;
 
     /** Cached element factory for efficiency */
     private final DataSpecification.GraphElementFactory<T> elementFactory;
@@ -1002,7 +1002,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         if (committed)
         {
             // then we cannot add any more data
-            LOGGER.problem("Attempt to add $ to committed graph store '$'", elementType().getSimpleName(), objectName());
+            LOGGER.problem("Attempt to add $ to committed graph element store '$'", elementType().getSimpleName(), objectName());
             return false;
         }
 
