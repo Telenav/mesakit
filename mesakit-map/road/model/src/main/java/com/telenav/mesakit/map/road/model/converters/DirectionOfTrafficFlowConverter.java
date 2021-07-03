@@ -30,7 +30,7 @@ public class DirectionOfTrafficFlowConverter extends BaseStringConverter<Directi
     }
 
     @Override
-    protected DirectionOfTrafficFlow onConvertToObject(final String value)
+    protected DirectionOfTrafficFlow onToValue(final String value)
     {
         String direction = null;
         if (value != null)

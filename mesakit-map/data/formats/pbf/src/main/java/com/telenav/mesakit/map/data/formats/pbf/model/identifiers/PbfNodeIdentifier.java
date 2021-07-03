@@ -83,7 +83,7 @@ public class PbfNodeIdentifier extends MapNodeIdentifier implements PbfIdentifie
         }
 
         @Override
-        protected PbfNodeIdentifier onConvertToObject(final String value)
+        protected PbfNodeIdentifier onToValue(final String value)
         {
             return new PbfNodeIdentifier(Long.parseLong(value));
         }

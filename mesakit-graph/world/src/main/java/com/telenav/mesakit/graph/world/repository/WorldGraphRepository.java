@@ -73,7 +73,7 @@ public class WorldGraphRepository extends Folder implements Serializable
         }
 
         @Override
-        protected WorldGraphRepository onConvertToObject(final String value)
+        protected WorldGraphRepository onToValue(final String value)
         {
             if (value == null || "none".equals(value))
             {

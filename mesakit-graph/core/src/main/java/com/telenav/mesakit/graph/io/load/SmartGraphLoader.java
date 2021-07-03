@@ -117,13 +117,13 @@ public class SmartGraphLoader extends BaseRepeater implements Named
         }
 
         @Override
-        protected SmartGraphLoader onConvertToObject(final String specifier)
+        protected SmartGraphLoader onToValue(final String specifier)
         {
             return new SmartGraphLoader(File.parse(specifier), configuration);
         }
 
         @Override
-        protected String onConvertToString(final SmartGraphLoader graph)
+        protected String onToString(final SmartGraphLoader graph)
         {
             return unsupported();
         }

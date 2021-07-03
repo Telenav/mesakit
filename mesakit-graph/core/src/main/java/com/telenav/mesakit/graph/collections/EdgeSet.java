@@ -167,7 +167,7 @@ public class EdgeSet implements Set<Edge>, AsString
         }
 
         @Override
-        protected EdgeSet onConvertToObject(final String value)
+        protected EdgeSet onToValue(final String value)
         {
             final var edges = new EdgeSet(Limit.EDGES, Estimate._16);
             if (!Strings.isEmpty(value))
@@ -181,7 +181,7 @@ public class EdgeSet implements Set<Edge>, AsString
         }
 
         @Override
-        protected String onConvertToString(final EdgeSet value)
+        protected String onToString(final EdgeSet value)
         {
             return value.joinedIdentifiers(separators.current());
         }

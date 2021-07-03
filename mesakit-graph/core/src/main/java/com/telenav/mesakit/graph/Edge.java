@@ -531,7 +531,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
         }
 
         @Override
-        protected Edge onConvertToObject(final String value)
+        protected Edge onToValue(final String value)
         {
             switch (EdgeIdentifier.Type.forString(value))
             {
@@ -547,7 +547,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
         }
 
         @Override
-        protected String onConvertToString(final Edge edge)
+        protected String onToString(final Edge edge)
         {
             return Long.toString(edge.identifierAsLong());
         }

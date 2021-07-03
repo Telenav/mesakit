@@ -232,7 +232,7 @@ public class Angle implements
          * {@inheritDoc}
          */
         @Override
-        protected Angle onConvertToObject(final String value)
+        protected Angle onToValue(final String value)
         {
             final var matcher = PATTERN.matcher(value);
             if (matcher.matches())
@@ -257,7 +257,7 @@ public class Angle implements
         }
 
         @Override
-        protected String onConvertToString(final Angle value)
+        protected String onToString(final Angle value)
         {
             return value.asDegrees() + " degrees";
         }
@@ -271,7 +271,7 @@ public class Angle implements
         }
 
         @Override
-        protected Angle onConvertToObject(final String value)
+        protected Angle onToValue(final String value)
         {
             return degrees(Double.parseDouble(value));
         }

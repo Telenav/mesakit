@@ -378,7 +378,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         }
 
         @Override
-        protected Metadata onConvertToObject(final String value)
+        protected Metadata onToValue(final String value)
         {
             return parse(value);
         }

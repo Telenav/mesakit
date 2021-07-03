@@ -230,7 +230,7 @@ public final class Distance implements Quantizable, Comparable<Distance>
          * {@inheritDoc}
          */
         @Override
-        protected Distance onConvertToObject(final String value)
+        protected Distance onToValue(final String value)
         {
             final var matcher = PATTERN.matcher(value);
             if (matcher.matches())
@@ -267,7 +267,7 @@ public final class Distance implements Quantizable, Comparable<Distance>
         }
 
         @Override
-        protected String onConvertToString(final Distance value)
+        protected String onToString(final Distance value)
         {
             if (value.isLessThan(meters(500)))
             {
@@ -285,7 +285,7 @@ public final class Distance implements Quantizable, Comparable<Distance>
         }
 
         @Override
-        protected Distance onConvertToObject(final String value)
+        protected Distance onToValue(final String value)
         {
             return kilometers(Double.parseDouble(value));
         }
@@ -299,7 +299,7 @@ public final class Distance implements Quantizable, Comparable<Distance>
         }
 
         @Override
-        protected Distance onConvertToObject(final String value)
+        protected Distance onToValue(final String value)
         {
             return meters(Double.parseDouble(value));
         }
@@ -313,7 +313,7 @@ public final class Distance implements Quantizable, Comparable<Distance>
         }
 
         @Override
-        protected Distance onConvertToObject(final String value)
+        protected Distance onToValue(final String value)
         {
             return miles(Double.parseDouble(value));
         }
@@ -327,7 +327,7 @@ public final class Distance implements Quantizable, Comparable<Distance>
         }
 
         @Override
-        protected Distance onConvertToObject(final String value)
+        protected Distance onToValue(final String value)
         {
             return millimeters(Long.parseLong(value));
         }

@@ -36,7 +36,7 @@ public class RoadNameConverter extends BaseStringConverter<RoadName>
     }
 
     @Override
-    protected RoadName onConvertToObject(final String value)
+    protected RoadName onToValue(final String value)
     {
         if ("null".equalsIgnoreCase(value))
         {

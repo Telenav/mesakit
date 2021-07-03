@@ -138,7 +138,7 @@ public final class Longitude extends Angle
         }
 
         @Override
-        protected Longitude onConvertToObject(final String value)
+        protected Longitude onToValue(final String value)
         {
             return degrees(Double.parseDouble(value));
         }
@@ -155,7 +155,7 @@ public final class Longitude extends Angle
         }
 
         @Override
-        protected Longitude onConvertToObject(final String string)
+        protected Longitude onToValue(final String string)
         {
             final var matcher = pattern.matcher(string);
             if (matcher.matches())

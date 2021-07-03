@@ -44,7 +44,7 @@ public class MapEdgeIdentifier
         }
 
         @Override
-        protected MapEdgeIdentifier onConvertToObject(final String value)
+        protected MapEdgeIdentifier onToValue(final String value)
         {
             final var values = Split.split(value, ':').iterator();
             final var way = PbfWayIdentifier.parse(values.next());
@@ -72,13 +72,13 @@ public class MapEdgeIdentifier
         }
 
         @Override
-        protected Edge onConvertToObject(final String value)
+        protected Edge onToValue(final String value)
         {
             return graph.edgeForIdentifier(identifierConverter.convert(value));
         }
 
         @Override
-        protected String onConvertToString(final Edge edge)
+        protected String onToString(final Edge edge)
         {
             return edge.mapEdgeIdentifier().toString();
         }

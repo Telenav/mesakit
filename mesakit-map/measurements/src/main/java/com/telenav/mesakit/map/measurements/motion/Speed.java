@@ -171,7 +171,7 @@ public class Speed implements Comparable<Speed>, Quantizable
          * {@inheritDoc}
          */
         @Override
-        protected Speed onConvertToObject(final String value)
+        protected Speed onToValue(final String value)
         {
             final var matcher = PATTERN.matcher(value);
             if (matcher.matches())
@@ -212,7 +212,7 @@ public class Speed implements Comparable<Speed>, Quantizable
         }
 
         @Override
-        protected Speed onConvertToObject(final String value)
+        protected Speed onToValue(final String value)
         {
             return kilometersPerHour(Double.parseDouble(value));
         }
@@ -229,7 +229,7 @@ public class Speed implements Comparable<Speed>, Quantizable
         }
 
         @Override
-        protected Speed onConvertToObject(final String value)
+        protected Speed onToValue(final String value)
         {
             final var kilometersPerHour = integerConverter.convert(value);
             if (kilometersPerHour == null)
@@ -248,7 +248,7 @@ public class Speed implements Comparable<Speed>, Quantizable
         }
 
         @Override
-        protected Speed onConvertToObject(final String value)
+        protected Speed onToValue(final String value)
         {
             return milesPerHour(Double.parseDouble(value));
         }

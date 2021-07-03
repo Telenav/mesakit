@@ -109,7 +109,7 @@ public class WayFilter implements Filter<PbfWay>, Named
         }
 
         @Override
-        protected WayFilter onConvertToObject(final String value)
+        protected WayFilter onToValue(final String value)
         {
             return forName(value);
         }

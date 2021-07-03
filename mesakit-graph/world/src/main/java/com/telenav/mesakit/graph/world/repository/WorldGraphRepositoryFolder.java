@@ -127,7 +127,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
         }
 
         @Override
-        protected WorldGraphRepositoryFolder onConvertToObject(final String value)
+        protected WorldGraphRepositoryFolder onToValue(final String value)
         {
             final var folder = Folder.parse(value);
             if (folder != null)

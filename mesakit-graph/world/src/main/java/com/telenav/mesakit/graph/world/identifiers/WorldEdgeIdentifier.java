@@ -50,7 +50,7 @@ public class WorldEdgeIdentifier extends EdgeIdentifier
         }
 
         @Override
-        protected WorldEdgeIdentifier onConvertToObject(final String value)
+        protected WorldEdgeIdentifier onToValue(final String value)
         {
             final var cellName = Paths.withoutSuffix(value, '-');
             final var identifier = Long.parseLong(Paths.optionalSuffix(value, '-'));

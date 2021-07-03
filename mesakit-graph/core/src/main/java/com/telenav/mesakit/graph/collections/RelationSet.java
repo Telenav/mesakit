@@ -140,7 +140,7 @@ public class RelationSet implements Set<EdgeRelation>
         }
 
         @Override
-        protected RelationSet onConvertToObject(final String value)
+        protected RelationSet onToValue(final String value)
         {
             final var relations = new RelationSet(Limit.RELATIONS, Estimate._16);
             if (!Strings.isEmpty(value))
@@ -154,7 +154,7 @@ public class RelationSet implements Set<EdgeRelation>
         }
 
         @Override
-        protected String onConvertToString(final RelationSet value)
+        protected String onToString(final RelationSet value)
         {
             return value.joinedIdentifiers(separators.current());
         }

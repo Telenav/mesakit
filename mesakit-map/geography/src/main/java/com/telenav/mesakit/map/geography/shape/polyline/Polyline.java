@@ -212,13 +212,24 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         }
 
         @Override
-        protected String onConvertNullToString()
+        protected String nullString()
         {
             return "";
         }
 
         @Override
-        protected Polyline onConvertToObject(final String value)
+        protected String onToString(final Polyline value)
+        {
+            final var locations = new StringList(MapGeographyLimits.LOCATIONS_PER_POLYLINE);
+            for (final var location : value.locationSequence())
+            {
+                locations.add(locationConverter.unconvert(location));
+            }
+            return locations.join(separators.current());
+        }
+
+        @Override
+        protected Polyline onToValue(final String value)
         {
             if (!Strings.isEmpty(value))
             {
@@ -230,17 +241,6 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
                 return builder.build();
             }
             return null;
-        }
-
-        @Override
-        protected String onConvertToString(final Polyline value)
-        {
-            final var locations = new StringList(MapGeographyLimits.LOCATIONS_PER_POLYLINE);
-            for (final var location : value.locationSequence())
-            {
-                locations.add(locationConverter.toString(location));
-            }
-            return locations.join(separators.current());
         }
     }
 
@@ -257,15 +257,15 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         }
 
         @Override
-        protected Polyline onConvertToObject(final String value)
+        protected String onToString(final Polyline value)
         {
-            return decodePolyline(value);
+            return createPolyline(value);
         }
 
         @Override
-        protected String onConvertToString(final Polyline value)
+        protected Polyline onToValue(final String value)
         {
-            return createPolyline(value);
+            return decodePolyline(value);
         }
 
         /**
@@ -456,13 +456,23 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         }
 
         @Override
-        protected String onConvertNullToString()
+        protected String nullString()
         {
             return "";
         }
 
         @Override
-        protected Polyline onConvertToObject(final String value)
+        protected String onToString(final Polyline value)
+        {
+            if (!value.isEmpty())
+            {
+                return longArrayConverter.unconvert(value.asLongArray());
+            }
+            return "";
+        }
+
+        @Override
+        protected Polyline onToValue(final String value)
         {
             if (!Strings.isEmpty(value))
             {
@@ -470,16 +480,6 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
                 return converted == null ? null : fromLongArray(converted);
             }
             return null;
-        }
-
-        @Override
-        protected String onConvertToString(final Polyline value)
-        {
-            if (!value.isEmpty())
-            {
-                return longArrayConverter.toString(value.asLongArray());
-            }
-            return "";
         }
     }
 

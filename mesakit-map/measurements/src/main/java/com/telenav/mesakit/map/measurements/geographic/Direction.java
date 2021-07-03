@@ -94,7 +94,7 @@ public enum Direction implements Named
         }
 
         @Override
-        protected Direction onConvertToObject(final String value)
+        protected Direction onToValue(final String value)
         {
             return parse(value);
         }

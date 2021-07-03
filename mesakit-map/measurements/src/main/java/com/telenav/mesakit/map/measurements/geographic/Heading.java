@@ -111,7 +111,7 @@ public class Heading extends Angle implements Headed
          * {@inheritDoc}
          */
         @Override
-        protected Heading onConvertToObject(final String value)
+        protected Heading onToValue(final String value)
         {
             final var matcher = PATTERN.matcher(value);
             if (matcher.matches())
@@ -136,7 +136,7 @@ public class Heading extends Angle implements Headed
         }
 
         @Override
-        protected String onConvertToString(final Heading value)
+        protected String onToString(final Heading value)
         {
             return value.asDegrees() + " degrees";
         }
@@ -156,7 +156,7 @@ public class Heading extends Angle implements Headed
         }
 
         @Override
-        protected Heading onConvertToObject(final String value)
+        protected Heading onToValue(final String value)
         {
             return degrees(Double.parseDouble(value));
         }

@@ -788,7 +788,7 @@ public abstract class Country extends Region<Country> implements Quantizable
         }
 
         @Override
-        protected Country onConvertToObject(final String country)
+        protected Country onToValue(final String country)
         {
             if (!Strings.isEmpty(country) && !"NULL".equalsIgnoreCase(country))
             {
@@ -816,7 +816,7 @@ public abstract class Country extends Region<Country> implements Quantizable
         }
 
         @Override
-        protected String onConvertToString(final Country country)
+        protected String onToString(final Country country)
         {
             return country.identity().mesakit().code();
         }

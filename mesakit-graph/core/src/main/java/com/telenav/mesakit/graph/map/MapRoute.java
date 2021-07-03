@@ -62,7 +62,7 @@ public class MapRoute implements Iterable<MapEdgeIdentifier>
         }
 
         @Override
-        protected MapRoute onConvertToObject(final String value)
+        protected MapRoute onToValue(final String value)
         {
             if (this.graph == null)
             {
@@ -99,7 +99,7 @@ public class MapRoute implements Iterable<MapEdgeIdentifier>
         }
 
         @Override
-        protected String onConvertToString(final MapRoute route)
+        protected String onToString(final MapRoute route)
         {
             final var identifiers = route.pbfEdgeIdentifiers();
             final var edges = new StringList(Maximum.maximum(identifiers.size()));

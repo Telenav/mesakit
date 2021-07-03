@@ -192,7 +192,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
 
         @Override
-        protected Route onConvertToObject(final String value)
+        protected Route onToValue(final String value)
         {
             try
             {
@@ -212,12 +212,12 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
 
         @Override
-        protected String onConvertToString(final Route route)
+        protected String onToString(final Route route)
         {
             final var edges = new StringList(Maximum.maximum(route.size()));
             for (final var edge : route)
             {
-                edges.add(edgeConverter.toString(edge));
+                edges.add(edgeConverter.unconvert(edge));
             }
             return edges.join(separators.current());
         }
@@ -247,7 +247,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
 
         @Override
-        protected Route onConvertToObject(final String value)
+        protected Route onToValue(final String value)
         {
             final var builder = new RouteBuilder();
             try
@@ -272,12 +272,12 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
 
         @Override
-        protected String onConvertToString(final Route route)
+        protected String onToString(final Route route)
         {
             final var edges = new StringList(Maximum.maximum(route.size()));
             for (final var edge : route)
             {
-                edges.add(edgeConverter.toString(edge));
+                edges.add(edgeConverter.unconvert(edge));
             }
             return edges.join(separators.current());
         }

@@ -81,13 +81,13 @@ public class Vertex extends GraphNode
         }
 
         @Override
-        protected Vertex onConvertToObject(final String value)
+        protected Vertex onToValue(final String value)
         {
             return graph.vertexForIdentifier(new VertexIdentifier(Integer.parseInt(value)));
         }
 
         @Override
-        protected String onConvertToString(final Vertex vertex)
+        protected String onToString(final Vertex vertex)
         {
             return Integer.toString((int) vertex.identifierAsLong());
         }

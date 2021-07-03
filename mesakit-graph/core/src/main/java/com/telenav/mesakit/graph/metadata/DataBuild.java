@@ -67,7 +67,7 @@ public class DataBuild
         }
 
         @Override
-        protected DataBuild onConvertToObject(final String date)
+        protected DataBuild onToValue(final String date)
         {
             return parse(date);
         }

@@ -63,7 +63,7 @@ public class PbfRelationIdentifier extends MapRelationIdentifier implements PbfI
         }
 
         @Override
-        protected PbfRelationIdentifier onConvertToObject(final String value)
+        protected PbfRelationIdentifier onToValue(final String value)
         {
             return new PbfRelationIdentifier(Long.parseLong(value));
         }

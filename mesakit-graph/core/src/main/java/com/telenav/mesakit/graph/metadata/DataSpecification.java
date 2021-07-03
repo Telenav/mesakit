@@ -193,7 +193,7 @@ public abstract class DataSpecification implements NamedObject
         }
 
         @Override
-        protected DataSpecification onConvertToObject(final String value)
+        protected DataSpecification onToValue(final String value)
         {
             return parse(value);
         }

@@ -64,7 +64,7 @@ public class WorldEdge extends Edge
         }
 
         @Override
-        protected Edge onConvertToObject(final String value)
+        protected Edge onToValue(final String value)
         {
             // Try to find the third '-' in the string value (for example, "cell-60-36-")
             final var end = Strings.nth(value, 3, '-');
@@ -97,7 +97,7 @@ public class WorldEdge extends Edge
         }
 
         @Override
-        protected String onConvertToString(final Edge edge)
+        protected String onToString(final Edge edge)
         {
             return edge.toString();
         }

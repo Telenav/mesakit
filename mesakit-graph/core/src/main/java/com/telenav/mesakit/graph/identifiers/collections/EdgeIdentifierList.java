@@ -41,14 +41,14 @@ public class EdgeIdentifierList extends ObjectList<EdgeIdentifier>
         }
 
         @Override
-        protected EdgeIdentifierList onConvertToObject(final String value)
+        protected EdgeIdentifierList onToValue(final String value)
         {
             return new EdgeIdentifierList(StringList.split(value, separators.current())
                     .asObjectList(new EdgeIdentifier.Converter(this)));
         }
 
         @Override
-        protected String onConvertToString(final EdgeIdentifierList value)
+        protected String onToString(final EdgeIdentifierList value)
         {
             return value.join(separators.current());
         }

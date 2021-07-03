@@ -50,7 +50,7 @@ public class EncodedPolylineConverterTest extends MapGeographyUnitTest
         builder.add(new Location(Latitude.degrees(37.38648), Longitude.degrees(-122.00430)));
 
         final var newDecoded = converter.convert(encoded);
-        final var newEncoded = converter.toStringConverter().convert(builder.build());
+        final var newEncoded = converter.unconvert(builder.build());
 
         ensureEqual(encoded, newEncoded);
         ensureEqual(builder.build(), newDecoded);

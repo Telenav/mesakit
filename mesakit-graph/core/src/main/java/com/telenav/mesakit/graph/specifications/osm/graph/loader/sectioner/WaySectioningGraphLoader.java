@@ -51,9 +51,6 @@ public class WaySectioningGraphLoader extends BaseGraphLoader
     /** The source of data in the raw graph */
     private final Resource dataSource;
 
-    /** The number of worker threads to use */
-    private final Count workers;
-
     /** Sections an individual edge */
     private final EdgeSectioner edgeSectioner;
 
@@ -61,12 +58,11 @@ public class WaySectioningGraphLoader extends BaseGraphLoader
      * @param raw The raw graph to section
      * @param edgeSectioner The configured edge sectioner to do the job
      */
-    public WaySectioningGraphLoader(final Graph raw, final EdgeSectioner edgeSectioner, final Count workers)
+    public WaySectioningGraphLoader(final Graph raw, final EdgeSectioner edgeSectioner)
     {
         this.raw = raw;
         this.edgeSectioner = edgeSectioner;
         dataSource = raw.resource();
-        this.workers = workers;
     }
 
     /**

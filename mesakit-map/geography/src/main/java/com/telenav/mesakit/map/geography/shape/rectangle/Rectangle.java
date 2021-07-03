@@ -281,7 +281,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         }
 
         @Override
-        protected Rectangle onConvertToObject(final String value)
+        protected Rectangle onToValue(final String value)
         {
             return parse(value);
         }
@@ -328,7 +328,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         }
 
         @Override
-        protected Rectangle onConvertToObject(final String value)
+        protected Rectangle onToValue(final String value)
         {
             if (value.equals(NO_BOUNDS))
             {
@@ -345,7 +345,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         }
 
         @Override
-        protected String onConvertToString(final Rectangle value)
+        protected String onToString(final Rectangle value)
         {
             return value.toFileString();
         }

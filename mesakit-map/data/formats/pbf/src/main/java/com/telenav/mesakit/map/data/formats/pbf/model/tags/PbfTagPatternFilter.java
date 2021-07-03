@@ -67,7 +67,7 @@ public class PbfTagPatternFilter implements PbfTagFilter
         }
 
         @Override
-        protected PbfTagPatternFilter onConvertToObject(final String value)
+        protected PbfTagPatternFilter onToValue(final String value)
         {
             return forPattern(value);
         }

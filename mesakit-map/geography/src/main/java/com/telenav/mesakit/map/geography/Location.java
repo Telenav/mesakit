@@ -355,7 +355,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         }
 
         @Override
-        protected Location onConvertToObject(final String value)
+        protected Location onToValue(final String value)
         {
             final Latitude latitude;
             final Longitude longitude;
@@ -409,7 +409,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
          * {@inheritDoc}
          */
         @Override
-        protected Location onConvertToObject(final String value)
+        protected Location onToValue(final String value)
         {
             final var values = StringList.split(value, separators.current());
             if (values.size() == 2)
@@ -432,7 +432,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         }
 
         @Override
-        protected String onConvertToString(final Location value)
+        protected String onToString(final Location value)
         {
             return value.latitude() + separators.current() + value.longitude();
         }
@@ -464,7 +464,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
          * {@inheritDoc}
          */
         @Override
-        protected Location onConvertToObject(final String value)
+        protected Location onToValue(final String value)
         {
             final var values = StringList.split(value, separators.current());
             if (values.size() == 2)
@@ -487,7 +487,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         }
 
         @Override
-        protected String onConvertToString(final Location value)
+        protected String onToString(final Location value)
         {
             return value.latitude() + separators.current() + value.longitude();
         }
@@ -518,7 +518,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
          * {@inheritDoc}
          */
         @Override
-        protected Location onConvertToObject(final String value)
+        protected Location onToValue(final String value)
         {
             final var values = StringList.split(value, separators.current());
             if (values.size() == 2)
@@ -541,10 +541,10 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         }
 
         @Override
-        protected String onConvertToString(final Location value)
+        protected String onToString(final Location value)
         {
-            return latitudeConverter.toString(value.latitude()) + separators.current()
-                    + longitudeConverter.toString(value.longitude());
+            return latitudeConverter.unconvert(value.latitude()) + separators.current()
+                    + longitudeConverter.unconvert(value.longitude());
         }
     }
 

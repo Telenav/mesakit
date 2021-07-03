@@ -346,7 +346,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
 
         @Override
         @SuppressWarnings("unchecked")
-        protected R onConvertToObject(final String value)
+        protected R onToValue(final String value)
         {
             if (!Strings.isEmpty(value) && !"NULL".equalsIgnoreCase(value))
             {
@@ -362,7 +362,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         }
 
         @Override
-        protected String onConvertToString(final R value)
+        protected String onToString(final R value)
         {
             return value.identity().mesakit().code();
         }
@@ -376,7 +376,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         }
 
         @Override
-        protected RegionSet onConvertToObject(final String value)
+        protected RegionSet onToValue(final String value)
         {
             final var regions = new RegionSet();
             for (final var pattern : value.split(","))
@@ -395,7 +395,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         }
 
         @Override
-        protected String onConvertToString(final RegionSet regions)
+        protected String onToString(final RegionSet regions)
         {
             return unsupported();
         }

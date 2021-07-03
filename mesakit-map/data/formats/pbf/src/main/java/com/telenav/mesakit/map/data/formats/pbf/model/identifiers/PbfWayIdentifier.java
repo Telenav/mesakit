@@ -79,7 +79,7 @@ public class PbfWayIdentifier extends MapWayIdentifier implements PbfIdentifierT
         }
 
         @Override
-        protected PbfWayIdentifier onConvertToObject(final String value)
+        protected PbfWayIdentifier onToValue(final String value)
         {
             return new PbfWayIdentifier(Long.parseLong(value));
         }

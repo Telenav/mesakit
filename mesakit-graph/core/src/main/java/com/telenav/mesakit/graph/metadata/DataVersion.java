@@ -76,7 +76,7 @@ public class DataVersion
         }
 
         @Override
-        protected DataVersion onConvertToObject(final String date)
+        protected DataVersion onToValue(final String date)
         {
             final var version = parse(date);
             if (version == null)

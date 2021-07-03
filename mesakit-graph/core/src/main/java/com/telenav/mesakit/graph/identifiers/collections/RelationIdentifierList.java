@@ -42,7 +42,7 @@ public class RelationIdentifierList extends ObjectList<MapRelationIdentifier>
         }
 
         @Override
-        protected RelationIdentifierList onConvertToObject(final String value)
+        protected RelationIdentifierList onToValue(final String value)
         {
             final var split = StringList.split(value, separators.current());
             final var identifiers = new ObjectList<MapRelationIdentifier>();
@@ -55,7 +55,7 @@ public class RelationIdentifierList extends ObjectList<MapRelationIdentifier>
         }
 
         @Override
-        protected String onConvertToString(final RelationIdentifierList value)
+        protected String onToString(final RelationIdentifierList value)
         {
             return value.join(separators.current());
         }

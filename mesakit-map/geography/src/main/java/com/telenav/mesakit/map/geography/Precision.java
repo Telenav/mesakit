@@ -133,7 +133,7 @@ public enum Precision
         }
 
         @Override
-        protected Latitude onConvertToObject(final String value)
+        protected Latitude onToValue(final String value)
         {
             return DM5.toLatitude(Integer.parseInt(value));
         }
@@ -147,7 +147,7 @@ public enum Precision
         }
 
         @Override
-        protected Longitude onConvertToObject(final String value)
+        protected Longitude onToValue(final String value)
         {
             return DM5.toLongitude(Integer.parseInt(value));
         }
@@ -161,7 +161,7 @@ public enum Precision
         }
 
         @Override
-        protected Latitude onConvertToObject(final String value)
+        protected Latitude onToValue(final String value)
         {
             return DM6.toLatitude(Integer.parseInt(value));
         }
@@ -175,7 +175,7 @@ public enum Precision
         }
 
         @Override
-        protected Longitude onConvertToObject(final String value)
+        protected Longitude onToValue(final String value)
         {
             return DM6.toLongitude(Integer.parseInt(value));
         }
@@ -189,7 +189,7 @@ public enum Precision
         }
 
         @Override
-        protected Latitude onConvertToObject(final String value)
+        protected Latitude onToValue(final String value)
         {
             return DM7.toLatitude(Integer.parseInt(value));
         }
@@ -203,7 +203,7 @@ public enum Precision
         }
 
         @Override
-        protected Longitude onConvertToObject(final String value)
+        protected Longitude onToValue(final String value)
         {
             return DM7.toLongitude(Integer.parseInt(value));
         }

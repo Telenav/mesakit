@@ -136,7 +136,7 @@ public class GraphArchive extends FieldArchive implements Named
 
         @SuppressWarnings("resource")
         @Override
-        protected Graph onConvertToObject(final String path)
+        protected Graph onToValue(final String path)
         {
             final var file = new File.Converter(this).convert(path);
             if (file != null)
@@ -148,7 +148,7 @@ public class GraphArchive extends FieldArchive implements Named
         }
 
         @Override
-        protected String onConvertToString(final Graph graph)
+        protected String onToString(final Graph graph)
         {
             return unsupported();
         }
@@ -162,7 +162,7 @@ public class GraphArchive extends FieldArchive implements Named
         }
 
         @Override
-        protected GraphList onConvertToObject(final String value)
+        protected GraphList onToValue(final String value)
         {
             final var files = new FileList.Converter(this, Extension.GRAPH).convert(value);
             if (files != null)
@@ -174,7 +174,7 @@ public class GraphArchive extends FieldArchive implements Named
         }
 
         @Override
-        protected String onConvertToString(final GraphList graph)
+        protected String onToString(final GraphList graph)
         {
             return unsupported();
         }

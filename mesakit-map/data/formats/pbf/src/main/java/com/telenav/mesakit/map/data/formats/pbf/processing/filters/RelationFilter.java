@@ -77,7 +77,7 @@ public class RelationFilter implements Filter<PbfRelation>, Named
         }
 
         @Override
-        protected RelationFilter onConvertToObject(final String value)
+        protected RelationFilter onToValue(final String value)
         {
             return forName(value);
         }

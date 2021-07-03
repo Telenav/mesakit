@@ -42,7 +42,7 @@ public class NodeIdentifierList extends ObjectList<MapNodeIdentifier>
         }
 
         @Override
-        protected NodeIdentifierList onConvertToObject(final String value)
+        protected NodeIdentifierList onToValue(final String value)
         {
             final var split = StringList.split(value, separators.current());
             final var identifiers = new ObjectList<MapNodeIdentifier>();
@@ -55,7 +55,7 @@ public class NodeIdentifierList extends ObjectList<MapNodeIdentifier>
         }
 
         @Override
-        protected String onConvertToString(final NodeIdentifierList value)
+        protected String onToString(final NodeIdentifierList value)
         {
             return value.join();
         }

@@ -296,7 +296,7 @@ public class EdgeRelation extends GraphElement implements Bounded
         }
 
         @Override
-        protected EdgeRelation onConvertToObject(final String value)
+        protected EdgeRelation onToValue(final String value)
         {
             final var identifier = new RelationIdentifier(Long.parseLong(value));
             if (graph.contains(identifier))
@@ -307,7 +307,7 @@ public class EdgeRelation extends GraphElement implements Bounded
         }
 
         @Override
-        protected String onConvertToString(final EdgeRelation relation)
+        protected String onToString(final EdgeRelation relation)
         {
             return Long.toString(relation.identifierAsLong());
         }

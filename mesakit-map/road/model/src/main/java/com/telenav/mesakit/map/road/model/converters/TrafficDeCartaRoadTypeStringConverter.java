@@ -177,7 +177,7 @@ public class TrafficDeCartaRoadTypeStringConverter extends BaseStringConverter<D
     }
 
     @Override
-    protected DeCartaRoadType onConvertToObject(final String value)
+    protected DeCartaRoadType onToValue(final String value)
     {
         var indexOfFirstSeparator = 0;
         var indexOfLastSeparator = 0;

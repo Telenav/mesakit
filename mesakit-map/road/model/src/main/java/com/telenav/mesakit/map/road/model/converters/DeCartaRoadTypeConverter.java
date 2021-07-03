@@ -37,7 +37,7 @@ public class DeCartaRoadTypeConverter extends BaseStringConverter<DeCartaRoadTyp
     }
 
     @Override
-    protected DeCartaRoadType onConvertToObject(final String value)
+    protected DeCartaRoadType onToValue(final String value)
     {
         if ("null".equalsIgnoreCase(value))
         {

@@ -88,7 +88,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
          * {@inheritDoc}
          */
         @Override
-        protected Segment onConvertToObject(final String value)
+        protected Segment onToValue(final String value)
         {
             final var values = StringList.split(value, separators.current());
             if (values.size() == 2)
@@ -110,7 +110,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
         }
 
         @Override
-        protected String onConvertToString(final Segment value)
+        protected String onToString(final Segment value)
         {
             return value.start() + ":" + value.end();
         }

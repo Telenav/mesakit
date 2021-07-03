@@ -62,7 +62,7 @@ public class WayIdentifierList extends ObjectList<PbfWayIdentifier>
         }
 
         @Override
-        protected WayIdentifierList onConvertToObject(final String value)
+        protected WayIdentifierList onToValue(final String value)
         {
             final var split = StringList.split(value, separators.current());
             final var identifiers = new ObjectList<PbfWayIdentifier>();
@@ -75,7 +75,7 @@ public class WayIdentifierList extends ObjectList<PbfWayIdentifier>
         }
 
         @Override
-        protected String onConvertToString(final WayIdentifierList value)
+        protected String onToString(final WayIdentifierList value)
         {
             return value.join(separators.current());
         }

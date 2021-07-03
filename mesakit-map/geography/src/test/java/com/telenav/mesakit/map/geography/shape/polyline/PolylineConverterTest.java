@@ -46,7 +46,7 @@ public class PolylineConverterTest extends UnitTest
         builder.add(new Location(Latitude.degrees(37.38648), Longitude.degrees(-122.00430)));
 
         final var polyline = builder.build();
-        final var stringConversion = polylineConverter.toStringConverter().convert(polyline);
+        final var stringConversion = polylineConverter.unconvert(polyline);
         ensureEqual(polyline, polylineConverter.onConvert(stringConversion));
     }
 }
