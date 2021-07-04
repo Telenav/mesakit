@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.node.store;
 
-import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
@@ -231,7 +231,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     }
 
     @Override
-    public Validator validator(final Validation validation)
+    public Validator validator(final ValidationType validation)
     {
         final var outer = this;
         return new StoreValidator()

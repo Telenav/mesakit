@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.specifications.common.vertex.store;
 
 import com.telenav.kivakit.collections.iteration.iterables.DeduplicatingIterable;
-import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
@@ -687,7 +687,7 @@ public class VertexStore extends NodeStore<Vertex>
      * {@inheritDoc}
      */
     @Override
-    public Validator validator(final Validation validation)
+    public Validator validator(final ValidationType validation)
     {
         return !validation.shouldValidate(getClass()) ? Validator.NULL : new StoreValidator()
         {

@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.specifications.common.edge.store;
 
 import com.telenav.kivakit.kernel.data.validation.Validatable;
-import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
 import com.telenav.kivakit.kernel.language.time.Time;
 import com.telenav.kivakit.kernel.language.values.count.BitCount;
@@ -137,7 +137,8 @@ import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
  * EdgeRelation}s by finding the relevant edges and then returning the set of all relations that those edges reference.
  * <p>
  * This store {@link Validatable} so that it can be validated before saving to a {@link GraphArchive} with a call to
- * {@link #validator(Validation)}. See {@link Validatable} and {@link Validator} for details of how validation works.
+ * {@link #validator(ValidationType)}. See {@link Validatable} and {@link Validator} for details of how validation
+ * works.
  *
  * @author jonathanl (shibo)
  * @see GraphElementStore
@@ -1283,7 +1284,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      * {@inheritDoc}
      */
     @Override
-    public Validator validator(final Validation validation)
+    public Validator validator(final ValidationType validation)
     {
         final var outer = this;
         return !validation.shouldValidate(getClass()) ? Validator.NULL : new StoreValidator()

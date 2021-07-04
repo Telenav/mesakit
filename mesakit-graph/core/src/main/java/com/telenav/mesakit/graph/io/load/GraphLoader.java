@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.io.load;
 
-import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.kivakit.kernel.messaging.Repeater;
 import com.telenav.kivakit.resource.Resource;
@@ -77,13 +77,13 @@ public interface GraphLoader extends Repeater
 
     /**
      * @return The kind of validation that should be performed on the data loaded by this graph loader. Many graph
-     * loaders validate all data with {@link Validation#VALIDATE_ALL} but some don't load complete data. An example of
-     * an incomplete graph loader is {@link RawPbfGraphLoader}, which does not load vertexes or relations. Another is
+     * loaders validate all data with {@link ValidationType#VALIDATE_ALL} but some don't load complete data. An example
+     * of an incomplete graph loader is {@link RawPbfGraphLoader}, which does not load vertexes or relations. Another is
      * {@link WaySectioningGraphLoader}, is incomplete because it does not load relations. These graph loaders may
      * specify another kind of validation.
      */
-    default Validation validation()
+    default ValidationType validation()
     {
-        return Validation.VALIDATE_ALL;
+        return ValidationType.VALIDATE_ALL;
     }
 }

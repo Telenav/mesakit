@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.edge.model;
 
-import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
@@ -175,7 +175,7 @@ public class OsmEdge extends Edge
     }
 
     @Override
-    public Validator validator(final Validation type)
+    public Validator validator(final ValidationType type)
     {
         return new ElementValidator()
         {

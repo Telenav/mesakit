@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.relation.store;
 
-import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
 import com.telenav.kivakit.kernel.language.primitives.Ints;
 import com.telenav.kivakit.kernel.language.values.count.BitCount;
@@ -58,7 +58,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.telenav.kivakit.kernel.data.validation.Validation.VALIDATE_ALL;
+import static com.telenav.kivakit.kernel.data.validation.ValidationType.VALIDATE_ALL;
 import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 
@@ -267,7 +267,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
     }
 
     @Override
-    public Validator validator(final Validation validation)
+    public Validator validator(final ValidationType validation)
     {
         final var outer = this;
 

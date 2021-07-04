@@ -22,7 +22,7 @@ import com.telenav.kivakit.collections.map.MultiMap;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.kernel.data.comparison.Differences;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
 import com.telenav.kivakit.kernel.logging.Logger;
@@ -474,7 +474,7 @@ public abstract class DataSpecification implements NamedObject
 
     protected Graph onNewGraph(final Metadata metadata)
     {
-        metadata.assertValid(Validation.VALIDATE_ALL);
+        metadata.assertValid(ValidationType.VALIDATE_ALL);
         return new CommonGraph(metadata);
     }
 

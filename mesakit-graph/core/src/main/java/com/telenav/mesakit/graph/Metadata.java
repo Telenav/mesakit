@@ -28,10 +28,10 @@ import com.telenav.kivakit.data.compression.codecs.huffman.list.HuffmanStringLis
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.data.validation.BaseValidator;
 import com.telenav.kivakit.kernel.data.validation.Validatable;
-import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.data.validation.validators.BaseValidator;
 import com.telenav.kivakit.kernel.interfaces.naming.Named;
 import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
 import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
@@ -133,8 +133,8 @@ import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
  * </ul>
  * <p>
  * {@link Metadata} objects are {@link KryoSerializable} and implement {@link AsString}. They are also
- * {@link Validatable} and can be validated with the {@link Validator} returned by {@link #validator(Validation)}.
- * If no validation of statistics is desired the {@link Validation} VALIDATE_EXCEPT_STATISTICS can be passed as the
+ * {@link Validatable} and can be validated with the {@link Validator} returned by {@link #validator(ValidationType)}.
+ * If no validation of statistics is desired the {@link ValidationType} VALIDATE_EXCEPT_STATISTICS can be passed as the
  * validation type. For convenience, full validation can be performed with {@link #isValid(Listener)}.
  *
  * @author jonathanl (shibo)
@@ -155,7 +155,7 @@ import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
 @SuppressWarnings("DuplicateBranchesInSwitch")
 public class Metadata implements Named, AsIndentedString, KryoSerializable, Validatable
 {
-    public static final Validation VALIDATE_EXCEPT_STATISTICS = new Validation("VALIDATE_EXCEPT_STATISTICS");
+    public static final ValidationType VALIDATE_EXCEPT_STATISTICS = new ValidationType("VALIDATE_EXCEPT_STATISTICS");
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -573,7 +573,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         return indenter;
     }
 
-    public Metadata assertValid(final Validation type)
+    public Metadata assertValid(final ValidationType type)
     {
         ensure(validator(type).validate(LOGGER));
         return this;
@@ -918,7 +918,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     @Override
-    public Validator validator(final Validation type)
+    public Validator validator(final ValidationType type)
     {
         return new BaseValidator()
         {
@@ -932,7 +932,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
                 problemIf(dataFormat() == null, "Data format is missing");
                 problemIf(dataSupplier() == null, "Data supplier is missing");
 
-                if (type == Validation.VALIDATE_ALL)
+                if (type == ValidationType.VALIDATE_ALL)
                 {
                     problemIf(dataBounds() == null, "Data bounds is missing");
                     problemIf(isZero(nodeCount(REQUIRE_EXACT)), "No nodes");

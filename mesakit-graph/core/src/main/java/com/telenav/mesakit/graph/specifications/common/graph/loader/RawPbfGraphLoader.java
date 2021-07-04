@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph.specifications.common.graph.loader;
 
 import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
 import com.telenav.kivakit.kernel.data.extraction.Extractor;
-import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.interfaces.collection.Addable;
 import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
@@ -554,9 +554,9 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     }
 
     @Override
-    public Validation validation()
+    public ValidationType validation()
     {
-        return new Validation("VALIDATE_RAW_GRAPH_STORE")
+        return new ValidationType("VALIDATE_RAW_GRAPH_STORE")
                 .exclude(RelationStore.class)
                 .exclude(VertexStore.class);
     }

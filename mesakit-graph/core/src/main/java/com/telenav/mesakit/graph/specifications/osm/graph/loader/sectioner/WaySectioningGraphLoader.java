@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner;
 
-import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.language.progress.reporters.ConcurrentProgress;
 import com.telenav.kivakit.kernel.language.time.Time;
 import com.telenav.kivakit.kernel.language.values.count.Count;
@@ -181,8 +181,8 @@ public class WaySectioningGraphLoader extends BaseGraphLoader
     }
 
     @Override
-    public Validation validation()
+    public ValidationType validation()
     {
-        return new Validation("VALIDATE_WAY_SECTIONING").exclude(RelationStore.class);
+        return new ValidationType("VALIDATE_WAY_SECTIONING").exclude(RelationStore.class);
     }
 }

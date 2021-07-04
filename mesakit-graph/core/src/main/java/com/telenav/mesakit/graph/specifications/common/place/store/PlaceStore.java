@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.place.store;
 
-import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
 import com.telenav.kivakit.kernel.language.values.count.BitCount;
 import com.telenav.kivakit.kernel.language.values.count.Count;
@@ -40,7 +40,7 @@ import com.telenav.mesakit.graph.specifications.library.attributes.AttributeRefe
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.quadtree.QuadTreeSpatialIndex;
 
-import static com.telenav.kivakit.kernel.data.validation.Validation.VALIDATE_ALL;
+import static com.telenav.kivakit.kernel.data.validation.ValidationType.VALIDATE_ALL;
 import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 import static com.telenav.mesakit.map.geography.Precision.DM7;
@@ -145,7 +145,7 @@ public class PlaceStore extends ArchivedGraphElementStore<Place>
     }
 
     @Override
-    public Validator validator(final Validation validation)
+    public Validator validator(final ValidationType validation)
     {
         final var outer = this;
 

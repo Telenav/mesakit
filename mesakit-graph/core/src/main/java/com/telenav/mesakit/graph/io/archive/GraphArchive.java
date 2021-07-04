@@ -24,7 +24,7 @@ import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.FileList;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.interfaces.naming.Named;
 import com.telenav.kivakit.kernel.language.primitives.Doubles;
 import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
@@ -134,6 +134,12 @@ public class GraphArchive extends FieldArchive implements Named
             this.reporter = reporter;
         }
 
+        @Override
+        protected String onToString(final Graph graph)
+        {
+            return unsupported();
+        }
+
         @SuppressWarnings("resource")
         @Override
         protected Graph onToValue(final String path)
@@ -146,12 +152,6 @@ public class GraphArchive extends FieldArchive implements Named
             LOGGER.warning("Unable to load graph archive '$'", path);
             return null;
         }
-
-        @Override
-        protected String onToString(final Graph graph)
-        {
-            return unsupported();
-        }
     }
 
     public static class ListConverter extends BaseStringConverter<GraphList>
@@ -159,6 +159,12 @@ public class GraphArchive extends FieldArchive implements Named
         public ListConverter(final Listener listener)
         {
             super(listener);
+        }
+
+        @Override
+        protected String onToString(final GraphList graph)
+        {
+            return unsupported();
         }
 
         @Override
@@ -171,12 +177,6 @@ public class GraphArchive extends FieldArchive implements Named
             }
             LOGGER.warning("Unable to load graph file(s) '$'", value);
             return null;
-        }
-
-        @Override
-        protected String onToString(final GraphList graph)
-        {
-            return unsupported();
         }
     }
 
@@ -247,7 +247,7 @@ public class GraphArchive extends FieldArchive implements Named
 
     public void saveMetadata(final Metadata metadata)
     {
-        metadata.assertValid(Validation.VALIDATE_ALL);
+        metadata.assertValid(ValidationType.VALIDATE_ALL);
         zip().save(SerializationSession.threadLocal(LOGGER), "metadata", new VersionedObject<>(VERSION, metadata));
     }
 

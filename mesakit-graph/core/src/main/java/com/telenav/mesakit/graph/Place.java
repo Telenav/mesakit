@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.kernel.data.comparison.Differences;
 import com.telenav.kivakit.kernel.data.validation.Validatable;
-import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
 import com.telenav.kivakit.kernel.interfaces.naming.Named;
 import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
@@ -513,7 +513,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
      * {@inheritDoc}
      */
     @Override
-    public Validator validator(final Validation type)
+    public Validator validator(final ValidationType type)
     {
         return new ElementValidator()
         {

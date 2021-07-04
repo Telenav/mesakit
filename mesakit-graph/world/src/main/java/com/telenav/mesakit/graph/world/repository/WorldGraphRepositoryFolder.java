@@ -28,7 +28,7 @@ import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.kivakit.kernel.messaging.Message;
 import com.telenav.kivakit.kernel.messaging.messages.status.Problem;
-import com.telenav.kivakit.kernel.messaging.messages.status.Success;
+import com.telenav.kivakit.kernel.messaging.messages.status.StepSuccess;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.kivakit.resource.path.FileName;
 import com.telenav.kivakit.resource.path.FilePath;
@@ -78,7 +78,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
 
     /**
      * @return A {@link Problem} message detailing the problem if the given folder doesn't exist or is not of the
-     * correct form, otherwise {@link Success}.
+     * correct form, otherwise {@link StepSuccess}.
      */
     public static Message check(final Folder folder, final Check check)
     {
@@ -100,7 +100,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
                 return new Problem("World graph $ does not end in .world", folder);
             }
         }
-        return Success.INSTANCE;
+        return StepSuccess.INSTANCE;
     }
 
     /**

@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.specifications.library.store;
 
+import com.telenav.kivakit.kernel.data.validation.BaseValidator;
 import com.telenav.kivakit.kernel.data.validation.Validatable;
-import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.data.validation.validators.BaseValidator;
 import com.telenav.kivakit.kernel.interfaces.loading.Unloadable;
 import com.telenav.kivakit.kernel.language.time.Time;
 import com.telenav.kivakit.kernel.logging.Logger;
@@ -63,7 +63,7 @@ public abstract class GraphStore extends BaseRepeater implements Unloadable, Val
 
     private static final Debug DEBUG = new Debug(LOGGER);
 
-    public static class GraphStoreValidation extends Validation
+    public static class GraphStoreValidation extends ValidationType
     {
         public GraphStoreValidation()
         {
@@ -268,7 +268,7 @@ public abstract class GraphStore extends BaseRepeater implements Unloadable, Val
      * @return True if this graph store and all graph element sub-stores are in a consistent, valid state.
      */
     @Override
-    public final Validator validator(final Validation type)
+    public final Validator validator(final ValidationType type)
     {
         return new BaseValidator()
         {

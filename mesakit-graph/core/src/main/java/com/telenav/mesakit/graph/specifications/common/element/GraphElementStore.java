@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.specifications.common.element;
 
+import com.telenav.kivakit.kernel.data.validation.BaseValidator;
 import com.telenav.kivakit.kernel.data.validation.Validatable;
-import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.data.validation.validators.BaseValidator;
 import com.telenav.kivakit.kernel.interfaces.collection.Addable;
 import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
@@ -37,6 +37,9 @@ import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.kernel.messaging.messages.status.Problem;
+import com.telenav.kivakit.kernel.messaging.messages.status.Quibble;
+import com.telenav.kivakit.kernel.messaging.messages.status.Warning;
 import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitCharArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
@@ -110,28 +113,28 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         }
 
         @Override
-        protected void problem(final String message, final Object... parameters)
+        protected Problem problem(final String message, final Object... parameters)
         {
             if (DEBUG.isDebugOn())
             {
-                super.problem(storeName() + " is invalid because " + message, parameters);
+                return super.problem(storeName() + " is invalid because " + message, parameters);
             }
             else
             {
-                problem();
+                return addProblem(message, parameters);
             }
         }
 
         @Override
-        protected void quibble(final String message, final Object... parameters)
+        protected Quibble quibble(final String message, final Object... parameters)
         {
             if (DEBUG.isDebugOn())
             {
-                super.quibble(storeName() + " is invalid because " + message, parameters);
+                return super.quibble(storeName() + " is invalid because " + message, parameters);
             }
             else
             {
-                quibble();
+                return addQuibble(message, parameters);
             }
         }
 
@@ -148,11 +151,15 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         }
 
         @Override
-        protected void warning(final String message, final Object... parameters)
+        protected Warning warning(final String message, final Object... parameters)
         {
             if (DEBUG.isDebugOn())
             {
-                super.warning(storeName() + " is imperfect because " + message, parameters);
+                return super.warning(storeName() + " is imperfect because " + message, parameters);
+            }
+            else
+            {
+                return addWarning(message, parameters);
             }
         }
 
@@ -707,7 +714,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
      * {@inheritDoc}
      */
     @Override
-    public Validator validator(final Validation validation)
+    public Validator validator(final ValidationType validation)
     {
         final var outer = this;
         return new StoreValidator()

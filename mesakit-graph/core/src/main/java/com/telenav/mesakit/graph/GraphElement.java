@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph;
 
+import com.telenav.kivakit.kernel.data.validation.BaseValidator;
 import com.telenav.kivakit.kernel.data.validation.Validatable;
-import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.data.validation.validators.BaseValidator;
 import com.telenav.kivakit.kernel.interfaces.collection.Indexed;
 import com.telenav.kivakit.kernel.interfaces.collection.LongKeyed;
 import com.telenav.kivakit.kernel.interfaces.naming.Named;
@@ -37,6 +37,9 @@ import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.kernel.messaging.messages.status.Problem;
+import com.telenav.kivakit.kernel.messaging.messages.status.Quibble;
+import com.telenav.kivakit.kernel.messaging.messages.status.Warning;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.identifiers.GraphElementIdentifier;
 import com.telenav.mesakit.graph.identifiers.VertexIdentifier;
@@ -139,7 +142,7 @@ import static com.telenav.kivakit.kernel.language.threading.context.CallStack.Pr
  * and are used only temporarily during graph loading as well as in testing.
  * <p>
  * Graph elements support the {@link #hashCode()} / {@link #equals(Object)} contract and are {@link Validatable}.
- * Subclasses override the {@link Validatable#validator(Validation)} method to provide validation before elements
+ * Subclasses override the {@link Validatable#validator(ValidationType)} method to provide validation before elements
  * are saved to a {@link GraphArchive} and before a {@link GraphLoader} adds them to a {@link GraphElementStore}.
  * To allow elements to be treated the same as many other objects that are {@link Quantizable} to a long value (in
  * this case the identifier), {@link GraphElement} implements {@link #quantum()}.
@@ -165,7 +168,7 @@ import static com.telenav.kivakit.kernel.language.threading.context.CallStack.Pr
 public abstract class GraphElement implements Named, Indexed, LongKeyed, Validatable, AsIndentedString
 {
     /** Validation when adding elements */
-    public static final Validation VALIDATE_RAW = new Validation("VALIDATE_FOR_ADDING");
+    public static final ValidationType VALIDATE_RAW = new ValidationType("VALIDATE_FOR_ADDING");
 
     /** Null index */
     public static final int NULL_INDEX = 0;
@@ -180,37 +183,41 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
     protected abstract class ElementValidator extends BaseValidator
     {
         @Override
-        protected void problem(final String message, final Object... parameters)
+        protected Problem problem(final String message, final Object... parameters)
         {
             if (DEBUG.isDebugOn())
             {
-                super.problem(name() + " identifier " + identifier + " is invalid because " + message, parameters);
+                return super.problem(name() + " identifier " + identifier + " is invalid because " + message, parameters);
             }
             else
             {
-                problem();
+                return addProblem(message, parameters);
             }
         }
 
         @Override
-        protected void quibble(final String message, final Object... parameters)
+        protected Quibble quibble(final String message, final Object... parameters)
         {
             if (DEBUG.isDebugOn())
             {
-                super.quibble(name() + " identifier " + identifier + " is invalid because " + message, parameters);
+                return super.quibble(name() + " identifier " + identifier + " is invalid because " + message, parameters);
             }
             else
             {
-                quibble();
+                return addQuibble(message, parameters);
             }
         }
 
         @Override
-        protected void warning(final String message, final Object... parameters)
+        protected Warning warning(final String message, final Object... parameters)
         {
             if (DEBUG.isDebugOn())
             {
-                super.warning(name() + " identifier " + identifier + " is invalid because " + message, parameters);
+                return super.warning(name() + " identifier " + identifier + " is invalid because " + message, parameters);
+            }
+            else
+            {
+                return addWarning(message, parameters);
             }
         }
     }
@@ -611,7 +618,7 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
     }
 
     @Override
-    public Validator validator(final Validation type)
+    public Validator validator(final ValidationType type)
     {
         return new ElementValidator()
         {

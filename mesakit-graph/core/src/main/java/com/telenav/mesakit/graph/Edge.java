@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.kernel.data.comparison.Differences;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
 import com.telenav.kivakit.kernel.interfaces.collection.LongKeyed;
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
@@ -531,6 +531,12 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
         }
 
         @Override
+        protected String onToString(final Edge edge)
+        {
+            return Long.toString(edge.identifierAsLong());
+        }
+
+        @Override
         protected Edge onToValue(final String value)
         {
             switch (EdgeIdentifier.Type.forString(value))
@@ -544,12 +550,6 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
                 default:
                     return unsupported();
             }
-        }
-
-        @Override
-        protected String onToString(final Edge edge)
-        {
-            return Long.toString(edge.identifierAsLong());
         }
 
         private Edge edgeForLongIdentifier(final String value)
@@ -2595,7 +2595,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * {@inheritDoc}
      */
     @Override
-    public Validator validator(final Validation type)
+    public Validator validator(final ValidationType type)
     {
         return new ElementValidator()
         {

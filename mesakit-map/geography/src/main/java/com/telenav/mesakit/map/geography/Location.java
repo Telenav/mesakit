@@ -20,10 +20,10 @@ package com.telenav.mesakit.map.geography;
 
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.data.validation.BaseValidator;
 import com.telenav.kivakit.kernel.data.validation.Validatable;
-import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.data.validation.validators.BaseValidator;
 import com.telenav.kivakit.kernel.interfaces.model.Identifiable;
 import com.telenav.kivakit.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.kernel.language.primitives.Longs;
@@ -405,6 +405,12 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
             longitudeConverter = new Longitude.DegreesConverter(listener);
         }
 
+        @Override
+        protected String onToString(final Location value)
+        {
+            return value.latitude() + separators.current() + value.longitude();
+        }
+
         /**
          * {@inheritDoc}
          */
@@ -429,12 +435,6 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
                 // problem("Unable to parse: ${debug}", value);
                 return null;
             }
-        }
-
-        @Override
-        protected String onToString(final Location value)
-        {
-            return value.latitude() + separators.current() + value.longitude();
         }
     }
 
@@ -460,6 +460,12 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
             longitudeConverter = new Longitude.DegreesMinutesAndSecondsConverter(listener);
         }
 
+        @Override
+        protected String onToString(final Location value)
+        {
+            return value.latitude() + separators.current() + value.longitude();
+        }
+
         /**
          * {@inheritDoc}
          */
@@ -485,12 +491,6 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
                 return null;
             }
         }
-
-        @Override
-        protected String onToString(final Location value)
-        {
-            return value.latitude() + separators.current() + value.longitude();
-        }
     }
 
     public static class Dm5Converter extends BaseStringConverter<Location>
@@ -512,6 +512,13 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
             this.separators = separators;
             latitudeConverter = new Precision.Dm5LatitudeConverter(listener);
             longitudeConverter = new Precision.Dm5LongitudeConverter(listener);
+        }
+
+        @Override
+        protected String onToString(final Location value)
+        {
+            return latitudeConverter.unconvert(value.latitude()) + separators.current()
+                    + longitudeConverter.unconvert(value.longitude());
         }
 
         /**
@@ -538,13 +545,6 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
                 problem("Unable to parse: ${debug}", value);
                 return null;
             }
-        }
-
-        @Override
-        protected String onToString(final Location value)
-        {
-            return latitudeConverter.unconvert(value.latitude()) + separators.current()
-                    + longitudeConverter.unconvert(value.longitude());
         }
     }
 
@@ -1061,7 +1061,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
     }
 
     @Override
-    public Validator validator(final Validation type)
+    public Validator validator(final ValidationType type)
     {
         return new BaseValidator()
         {

@@ -20,10 +20,10 @@ package com.telenav.mesakit.map.measurements.geographic;
 
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.data.validation.BaseValidator;
 import com.telenav.kivakit.kernel.data.validation.Validatable;
-import com.telenav.kivakit.kernel.data.validation.Validation;
+import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.data.validation.validators.BaseValidator;
 import com.telenav.kivakit.kernel.interfaces.numeric.Maximizable;
 import com.telenav.kivakit.kernel.interfaces.numeric.Minimizable;
 import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
@@ -228,6 +228,12 @@ public class Angle implements
             super(listener);
         }
 
+        @Override
+        protected String onToString(final Angle value)
+        {
+            return value.asDegrees() + " degrees";
+        }
+
         /**
          * {@inheritDoc}
          */
@@ -254,12 +260,6 @@ public class Angle implements
                 problem("Unable to parse heading: ${debug}", value);
                 return null;
             }
-        }
-
-        @Override
-        protected String onToString(final Angle value)
-        {
-            return value.asDegrees() + " degrees";
         }
     }
 
@@ -606,7 +606,7 @@ public class Angle implements
     }
 
     @Override
-    public Validator validator(final Validation type)
+    public Validator validator(final ValidationType type)
     {
         return new BaseValidator()
         {
