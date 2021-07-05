@@ -42,11 +42,11 @@ public interface PbfIdentifierType
      */
     static MapIdentifier forIdentifierAndType(final long identifierAndType)
     {
-        final var type = MapIdentifier.Type.forOrdinal(TYPE.extractInt(identifierAndType));
+        final var type = MapIdentifier.Type.forOrdinal(TYPE.getInt(identifierAndType));
         if (type != null)
         {
-            var identifier = IDENTIFIER.extractLong(identifierAndType);
-            if (REVERSE.extractBoolean(identifierAndType))
+            var identifier = IDENTIFIER.getLong(identifierAndType);
+            if (REVERSE.getBoolean(identifierAndType))
             {
                 identifier *= -1;
             }
@@ -110,8 +110,8 @@ public interface PbfIdentifierType
      */
     default MapIdentifier withoutType()
     {
-        var identifier = IDENTIFIER.extractLong(asLong());
-        if (REVERSE.extractBoolean(asLong()))
+        var identifier = IDENTIFIER.getLong(asLong());
+        if (REVERSE.getBoolean(asLong()))
         {
             identifier = identifier * -1;
         }
