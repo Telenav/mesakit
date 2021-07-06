@@ -77,6 +77,7 @@ public class RegionNodesTest extends MapRegionUnitTest
         var nodeIdentifier = 1;
         for (final State state : Country.UNITED_STATES.states())
         {
+            regionIndexMap.add(state);
             nodes.add(nodeIdentifier++, regionIndexMap.indexForRegion(state));
         }
 
