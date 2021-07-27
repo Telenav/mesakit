@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.configuration.deployment.Deployment;
-import com.telenav.kivakit.configuration.deployment.DeploymentSet;
+import com.telenav.kivakit.configuration.settings.deployment.Deployment;
+import com.telenav.kivakit.configuration.settings.deployment.DeploymentSet;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
@@ -44,7 +44,7 @@ public class WorldGraphDeployments extends DeploymentSet
     public static Deployment localDeployment()
     {
         return LOGGER.listenTo(new Deployment("local", "developer laptop"))
-                .addPackage(WorldGraph.class, "configuration/local");
+                .addAllFrom(WorldGraph.class, "configuration/local");
     }
 
     /**

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.project;
 
-import com.telenav.kivakit.configuration.ConfigurationSet;
+import com.telenav.kivakit.configuration.settings.Settings;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.language.objects.Lazy;
@@ -150,9 +150,9 @@ public abstract class GraphCoreUnitTest extends MapRegionUnitTest
 
     protected GraphCoreUnitTest()
     {
-        final var store = ConfigurationSet.global();
+        final var store = Settings.global();
         LOGGER.listenTo(store);
-        store.addFolder(Folder.parse("configuration"));
+        store.addAllFrom(Folder.parse("configuration"));
     }
 
     protected Edge edge(final Graph graph, final double fromLatitude, final double fromLongitude,

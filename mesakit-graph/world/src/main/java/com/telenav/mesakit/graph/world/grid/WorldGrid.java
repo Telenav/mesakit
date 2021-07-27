@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.world.grid;
 
-import com.telenav.kivakit.configuration.ConfigurationSet;
+import com.telenav.kivakit.configuration.settings.Settings;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.interfaces.value.Source;
@@ -426,7 +426,7 @@ public class WorldGrid
 
     private WorldGraphConfiguration configuration()
     {
-        return ConfigurationSet.global().require(WorldGraphConfiguration.class);
+        return Settings.global().require(WorldGraphConfiguration.class);
     }
 
     private void createGrid()

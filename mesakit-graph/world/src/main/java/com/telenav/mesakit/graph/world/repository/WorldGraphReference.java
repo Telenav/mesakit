@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.world.repository;
 
-import com.telenav.kivakit.configuration.deployment.Deployment;
+import com.telenav.kivakit.configuration.settings.deployment.Deployment;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.interfaces.value.Source;
 import com.telenav.kivakit.kernel.language.collections.map.count.CountMap;
