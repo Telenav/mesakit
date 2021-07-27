@@ -44,7 +44,7 @@ public class WorldGraphDeployments extends DeploymentSet
     public static Deployment localDeployment()
     {
         return LOGGER.listenTo(new Deployment("local", "developer laptop"))
-                .addAllFrom(WorldGraph.class, "configuration/local");
+                .registerAllIn(WorldGraph.class, "configuration/local");
     }
 
     /**

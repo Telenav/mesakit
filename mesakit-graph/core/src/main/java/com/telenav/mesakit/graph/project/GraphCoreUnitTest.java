@@ -144,15 +144,13 @@ public abstract class GraphCoreUnitTest extends MapRegionUnitTest
     private final Location.DegreesMinutesAndSecondsConverter locationInDegreesMinutesAndSecondsConverter =
             new Location.DegreesMinutesAndSecondsConverter(LOGGER);
 
-    private final int nextUniDbEdgeIdentifier = 1;
-
     private int nextOsmEdgeIdentifier = 1;
 
     protected GraphCoreUnitTest()
     {
-        final var store = Settings.global();
+        final var store = Settings.of(this);
         LOGGER.listenTo(store);
-        store.addAllFrom(Folder.parse("configuration"));
+        store.registerAllIn(Folder.parse("configuration"));
     }
 
     protected Edge edge(final Graph graph, final double fromLatitude, final double fromLongitude,

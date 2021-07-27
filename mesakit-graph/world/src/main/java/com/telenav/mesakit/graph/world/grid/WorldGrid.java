@@ -426,7 +426,7 @@ public class WorldGrid
 
     private WorldGraphConfiguration configuration()
     {
-        return Settings.global().require(WorldGraphConfiguration.class);
+        return Settings.of(this).require(WorldGraphConfiguration.class);
     }
 
     private void createGrid()
