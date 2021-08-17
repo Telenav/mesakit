@@ -51,7 +51,7 @@ import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimi
  * @author jonathanl (shibo)
  */
 @SuppressWarnings("unused")
-public class TagStore implements KryoSerializable, NamedObject, Initializable<TagStore>
+public class TagStore implements KryoSerializable, NamedObject, Initializable
 {
     private static class Entry
     {
@@ -106,7 +106,7 @@ public class TagStore implements KryoSerializable, NamedObject, Initializable<Ta
     }
 
     @Override
-    public TagStore initialize()
+    public void initialize()
     {
         offset = new SplitIntArray(objectName() + ".offset");
         offset.nullInt(Integer.MIN_VALUE);
@@ -121,8 +121,6 @@ public class TagStore implements KryoSerializable, NamedObject, Initializable<Ta
         tags.hasNullByte(false);
         tags.initialize();
         this.tags = tags;
-
-        return this;
     }
 
     public boolean isEmpty()

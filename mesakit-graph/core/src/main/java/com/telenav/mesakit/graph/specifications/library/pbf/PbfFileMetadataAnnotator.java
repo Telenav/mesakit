@@ -76,9 +76,7 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
 
     private final RelationFilter relationFilter;
 
-    private final SplitLongSet retain = (SplitLongSet) new SplitLongSet("keep")
-            .initialSize(1_000_000)
-            .initialize();
+    private final SplitLongSet retain;
 
     private PbfTagCodecBuilder codecBuilder;
 
@@ -94,6 +92,9 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
         this.mode = mode;
         this.wayFilter = wayFilter;
         this.relationFilter = relationFilter;
+        
+        retain = (SplitLongSet) new SplitLongSet("keep").initialSize(1_000_000);
+        retain.initialize();
     }
 
     /**

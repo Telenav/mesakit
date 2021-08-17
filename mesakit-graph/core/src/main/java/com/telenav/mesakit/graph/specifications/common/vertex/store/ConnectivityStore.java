@@ -88,7 +88,7 @@ import static com.telenav.mesakit.graph.specifications.common.vertex.store.Conne
  *
  * @author jonathanl (shibo)
  */
-public class ConnectivityStore implements Validatable, NamedObject, KryoSerializable, CompressibleCollection, Initializable<ConnectivityStore>
+public class ConnectivityStore implements Validatable, NamedObject, KryoSerializable, CompressibleCollection, Initializable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -179,7 +179,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     }
 
     @Override
-    public ConnectivityStore initialize()
+    public void initialize()
     {
         final var vertexCount = graph.metadata().vertexCount(ALLOW_ESTIMATE).asEstimate();
 
@@ -204,8 +204,6 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
         temporaryVertexEdgeListStore = new IntLinkedListStore(objectName() + ".temporaryVertexEdgeListStore");
         temporaryVertexEdgeListStore.initialSize(vertexCount);
         temporaryVertexEdgeListStore.initialize();
-
-        return this;
     }
 
     @Override

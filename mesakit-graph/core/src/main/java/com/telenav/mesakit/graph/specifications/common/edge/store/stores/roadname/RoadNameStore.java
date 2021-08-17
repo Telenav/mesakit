@@ -40,7 +40,7 @@ import java.util.WeakHashMap;
 import static com.telenav.kivakit.data.compression.SymbolConsumer.Directive.STOP;
 import static com.telenav.kivakit.kernel.language.bits.BitDiagram.BitField;
 
-public class RoadNameStore implements NamedObject, Initializable<RoadNameStore>
+public class RoadNameStore implements NamedObject, Initializable
 {
     @SuppressWarnings("SpellCheckingInspection")
     private static final BitDiagram KEY = new BitDiagram("IIIIIIII IIIIIIII IIIIIIII IIIIIIII IIIIIIII IIIIIIII IIIITTTT OOOOOOOO");
@@ -120,7 +120,7 @@ public class RoadNameStore implements NamedObject, Initializable<RoadNameStore>
     }
 
     @Override
-    public RoadNameStore initialize()
+    public void initialize()
     {
         names = new SplitByteArray(objectName() + ".names");
         names.initialSize(initialSize.times(Count._4));
@@ -130,8 +130,6 @@ public class RoadNameStore implements NamedObject, Initializable<RoadNameStore>
         keyToNameIndex = new LongToIntMap(objectName() + ".keyToNameIndex");
         keyToNameIndex.initialSize(initialSize);
         keyToNameIndex.initialize();
-
-        return this;
     }
 
     @Override

@@ -39,7 +39,7 @@ import java.util.ArrayList;
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 
-public class SplitPolylineStore implements KryoSerializable, NamedObject, Initializable<SplitPolylineStore>, CompressibleCollection
+public class SplitPolylineStore implements KryoSerializable, NamedObject, Initializable, CompressibleCollection
 {
     /** The underlying polyline stores */
     private ArrayList<PolylineStore> stores;
@@ -168,9 +168,8 @@ public class SplitPolylineStore implements KryoSerializable, NamedObject, Initia
     }
 
     @Override
-    public SplitPolylineStore initialize()
+    public void initialize()
     {
-        return this;
     }
 
     @Override
