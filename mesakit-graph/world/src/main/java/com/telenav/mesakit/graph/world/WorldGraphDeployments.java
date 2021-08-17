@@ -53,7 +53,7 @@ public class WorldGraphDeployments extends DeploymentSet
     public WorldGraphDeployments(final Listener listener)
     {
         listener.listenTo(this);
-        addDeployments(mesakitWorldGraphDeploymentsFolder());
+        addDeploymentsIn(mesakitWorldGraphDeploymentsFolder());
         add(localDeployment());
     }
 
