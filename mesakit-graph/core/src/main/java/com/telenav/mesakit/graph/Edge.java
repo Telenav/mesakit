@@ -25,7 +25,7 @@ import com.telenav.kivakit.kernel.data.validation.Validator;
 import com.telenav.kivakit.kernel.interfaces.collection.LongKeyed;
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.language.primitives.Longs;
-import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludeProperty;
 import com.telenav.kivakit.kernel.language.strings.CaseFormat;
 import com.telenav.kivakit.kernel.language.strings.Strings;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsString;

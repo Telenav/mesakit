@@ -26,7 +26,7 @@ import com.telenav.kivakit.kernel.data.extraction.Extractor;
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
 import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
-import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.kernel.language.strings.Strings;
 import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
 import com.telenav.kivakit.kernel.language.values.identifier.IntegerIdentifier;

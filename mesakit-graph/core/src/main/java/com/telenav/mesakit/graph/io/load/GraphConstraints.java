@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph.io.load;
 
 import com.telenav.kivakit.collections.iteration.iterables.FilteredIterable;
 import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
 import com.telenav.kivakit.kernel.messaging.filters.operators.All;
 import com.telenav.kivakit.kernel.messaging.listeners.MessageList;

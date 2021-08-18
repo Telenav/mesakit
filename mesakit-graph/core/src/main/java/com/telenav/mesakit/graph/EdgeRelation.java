@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.kernel.language.strings.Strings;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsString;

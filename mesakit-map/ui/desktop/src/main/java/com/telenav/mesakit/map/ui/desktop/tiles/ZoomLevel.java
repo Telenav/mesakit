@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
 import com.telenav.kivakit.kernel.language.primitives.Doubles;
-import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;

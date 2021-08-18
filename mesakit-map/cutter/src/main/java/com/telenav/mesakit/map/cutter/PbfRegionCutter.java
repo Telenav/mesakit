@@ -22,7 +22,7 @@ import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.interfaces.value.Source;
 import com.telenav.kivakit.kernel.language.primitives.Booleans;
-import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.kernel.language.strings.AsciiArt;
 import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
 import com.telenav.kivakit.kernel.logging.Logger;

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
-import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
 
 public class Statistics

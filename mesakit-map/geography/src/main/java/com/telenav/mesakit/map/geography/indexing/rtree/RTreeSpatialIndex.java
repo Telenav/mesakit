@@ -24,7 +24,7 @@ import com.telenav.kivakit.kernel.language.iteration.Iterables;
 import com.telenav.kivakit.kernel.language.iteration.Next;
 import com.telenav.kivakit.kernel.language.objects.Objects;
 import com.telenav.kivakit.kernel.language.primitives.Booleans;
-import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.kernel.messaging.filters.operators.All;
 import com.telenav.lexakai.annotations.UmlClassDiagram;

@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.utilities.grid;
 
 import com.telenav.kivakit.kernel.language.primitives.Ints;
-import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.mesakit.map.geography.Latitude;

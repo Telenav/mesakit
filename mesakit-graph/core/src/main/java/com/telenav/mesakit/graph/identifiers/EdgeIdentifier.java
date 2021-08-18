@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.identifiers;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.kernel.data.conversion.BaseConverter;
 import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludeProperty;
 import com.telenav.kivakit.kernel.language.values.identifier.Identifier;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;

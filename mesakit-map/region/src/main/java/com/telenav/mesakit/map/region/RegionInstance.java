@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.region;
 
 import com.telenav.kivakit.collections.set.ConcurrentHashSet;
 import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
-import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludeProperty;
 import com.telenav.kivakit.kernel.language.strings.AsciiArt;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
 import com.telenav.kivakit.kernel.language.values.count.Count;

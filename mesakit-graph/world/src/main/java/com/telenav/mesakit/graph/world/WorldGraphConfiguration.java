@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.world;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
 import com.telenav.kivakit.kernel.language.reflection.populator.KivaKitPropertyConverter;
-import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;

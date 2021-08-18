@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.specifications.common.vertex;
 
 import com.telenav.kivakit.collections.set.logical.operations.Union;
-import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.kernel.language.time.Time;
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.mesakit.graph.Edge;

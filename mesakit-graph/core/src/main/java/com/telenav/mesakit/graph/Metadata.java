@@ -35,7 +35,7 @@ import com.telenav.kivakit.kernel.data.validation.Validator;
 import com.telenav.kivakit.kernel.interfaces.naming.Named;
 import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
 import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.kernel.language.strings.Strip;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsString;

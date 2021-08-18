@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.specifications.common.edge;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
 import com.telenav.kivakit.kernel.language.functions.Functions;
 import com.telenav.kivakit.kernel.language.objects.Objects;
-import com.telenav.kivakit.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludeProperty;
 import com.telenav.kivakit.kernel.language.time.Duration;
 import com.telenav.kivakit.kernel.language.time.Time;
 import com.telenav.kivakit.kernel.language.values.count.Count;
