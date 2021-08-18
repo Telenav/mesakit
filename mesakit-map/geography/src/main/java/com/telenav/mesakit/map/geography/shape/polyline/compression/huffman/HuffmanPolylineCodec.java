@@ -18,15 +18,16 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline.compression.huffman;
 
+import com.telenav.kivakit.component.BaseComponent;
+import com.telenav.kivakit.data.compression.codecs.huffman.HuffmanCodec;
+import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
 import com.telenav.kivakit.kernel.data.conversion.string.primitive.IntegerConverter;
 import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.resource.resources.other.PropertyMap;
-import com.telenav.kivakit.data.compression.codecs.huffman.HuffmanCodec;
-import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
 import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
 import com.telenav.kivakit.primitive.collections.list.ByteList;
+import com.telenav.kivakit.resource.resources.other.PropertyMap;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 
@@ -41,7 +42,7 @@ import static com.telenav.kivakit.data.compression.SymbolConsumer.Directive.STOP
  *
  * @author jonathanl (shibo)
  */
-public class HuffmanPolylineCodec
+public class HuffmanPolylineCodec extends BaseComponent
 {
     public static final int END_OF_OFFSETS = 0;
 
@@ -59,7 +60,7 @@ public class HuffmanPolylineCodec
 
     public HuffmanPolylineCodec()
     {
-        final var symbols = Symbols.load(PropertyMap.load(getClass(), "polyline.codec"),
+        final var symbols = Symbols.load(PropertyMap.load(this, getClass(), "polyline.codec"),
                 new IntegerConverter(LOGGER));
 
         codec = HuffmanCodec.from(symbols, Maximum._32);

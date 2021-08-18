@@ -3,6 +3,7 @@ open module mesakit.map.geography
     requires transitive java.desktop;
 
     requires transitive kivakit.data.compression;
+    requires transitive kivakit.component;
     requires transitive kivakit.resource;
     requires transitive kivakit.math;
 

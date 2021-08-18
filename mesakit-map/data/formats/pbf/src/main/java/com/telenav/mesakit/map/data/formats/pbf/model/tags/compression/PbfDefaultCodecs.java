@@ -4,6 +4,8 @@ import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanChar
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
 import com.telenav.kivakit.kernel.language.objects.Lazy;
 import com.telenav.kivakit.kernel.language.paths.PackagePath;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.resource.resources.other.PropertyMap;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
@@ -19,6 +21,8 @@ import static com.telenav.kivakit.data.compression.codecs.huffman.character.Huff
 public class PbfDefaultCodecs
 {
     private static final Lazy<PbfDefaultCodecs> defaultCodecs = Lazy.of(PbfDefaultCodecs::new);
+
+    private static final Logger LOGGER = LoggerFactory.newLogger();
 
     public static PbfDefaultCodecs get()
     {
@@ -92,6 +96,6 @@ public class PbfDefaultCodecs
 
     private PropertyMap load(final String codec)
     {
-        return PropertyMap.load(PackagePath.packagePath(PbfDefaultCodecs.class), codec);
+        return PropertyMap.load(LOGGER, PackagePath.packagePath(PbfDefaultCodecs.class), codec);
     }
 }

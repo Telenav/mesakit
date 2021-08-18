@@ -77,7 +77,7 @@ public class StringListTagCodecTest extends UnitTest
     private PropertyMap frequencies(final String name)
     {
         final var path = PackagePath.packagePath(getClass());
-        return PropertyMap.load(path, "codecs/" + name);
+        return PropertyMap.load(this, path, "codecs/" + name);
     }
 
     private PbfTagList randomTags()
