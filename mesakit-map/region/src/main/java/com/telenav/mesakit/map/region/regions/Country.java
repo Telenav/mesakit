@@ -632,6 +632,11 @@ public abstract class Country extends Region<Country> implements Quantizable
         return borderCache;
     }
 
+    public static SwitchParser.Builder<Country> countrySwitchParser(final String name, final String description)
+    {
+        return SwitchParser.builder(Country.class).name(name).description(description).converter(new Converter(LOGGER()));
+    }
+
     public static Country forIdentifier(final RegionIdentifier identifier)
     {
         return type(Country.class).forIdentifier(identifier);
@@ -739,11 +744,6 @@ public abstract class Country extends Region<Country> implements Quantizable
         return all;
     }
 
-    public static SwitchParser.Builder<Country> switchParser(final String name, final String description)
-    {
-        return SwitchParser.builder(Country.class).name(name).description(description).converter(new Converter(LOGGER()));
-    }
-
     public enum AutomotiveSupportLevel
     {
         SUPPORTED,
@@ -788,6 +788,12 @@ public abstract class Country extends Region<Country> implements Quantizable
         }
 
         @Override
+        protected String onToString(final Country country)
+        {
+            return country.identity().mesakit().code();
+        }
+
+        @Override
         protected Country onToValue(final String country)
         {
             if (!Strings.isEmpty(country) && !"NULL".equalsIgnoreCase(country))
@@ -813,12 +819,6 @@ public abstract class Country extends Region<Country> implements Quantizable
                 return null;
             }
             return null;
-        }
-
-        @Override
-        protected String onToString(final Country country)
-        {
-            return country.identity().mesakit().code();
         }
     }
 

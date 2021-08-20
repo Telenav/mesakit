@@ -39,6 +39,19 @@ public class DataVersion
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
+    public static SwitchParser.Builder<DataVersion> dataVersionSwitchParser()
+    {
+        return dataVersionSwitchParser("data-version", "The data version such as 2020Q4");
+    }
+
+    public static SwitchParser.Builder<DataVersion> dataVersionSwitchParser(final String name, final String description)
+    {
+        return SwitchParser.builder(DataVersion.class)
+                .name(name)
+                .converter(new Converter(LOGGER))
+                .description(description);
+    }
+
     public static DataVersion parse(final String string)
     {
         // Parse strings like 2020Q4
@@ -53,19 +66,6 @@ public class DataVersion
         }
 
         return null;
-    }
-
-    public static SwitchParser.Builder<DataVersion> switchParser()
-    {
-        return switchParser("data-version", "The data version such as 2020Q4");
-    }
-
-    public static SwitchParser.Builder<DataVersion> switchParser(final String name, final String description)
-    {
-        return SwitchParser.builder(DataVersion.class)
-                .name(name)
-                .converter(new Converter(LOGGER))
-                .description(description);
     }
 
     public static class Converter extends BaseStringConverter<DataVersion>

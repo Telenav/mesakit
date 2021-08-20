@@ -143,9 +143,11 @@ public class Speed implements Comparable<Speed>, Quantizable
         return new Converter(LOGGER).convert(text);
     }
 
-    public static SwitchParser.Builder<Speed> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<Speed> speedSwitchParser(final String name, final String description)
     {
-        return SwitchParser.builder(Speed.class).name(name).converter(new Speed.Converter(LOGGER))
+        return SwitchParser.builder(Speed.class)
+                .name(name)
+                .converter(new Speed.Converter(LOGGER))
                 .description(description);
     }
 

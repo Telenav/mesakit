@@ -46,7 +46,8 @@ public class PbfTagPatternFilter implements PbfTagFilter
         return new PbfTagPatternFilter(pattern);
     }
 
-    public static SwitchParser.Builder<PbfTagPatternFilter> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<PbfTagPatternFilter> tagFilterSwitchParser(final String name,
+                                                                                  final String description)
     {
         return SwitchParser.builder(PbfTagPatternFilter.class)
                 .name(name)
@@ -56,7 +57,7 @@ public class PbfTagPatternFilter implements PbfTagFilter
 
     public static SwitchParser.Builder<PbfTagPatternFilter> tagFilterSwitchParser()
     {
-        return switchParser("tag-filter", "The regular expression used to filter tags by key");
+        return tagFilterSwitchParser("tag-filter", "The regular expression used to filter tags by key");
     }
 
     public static class Converter extends BaseStringConverter<PbfTagPatternFilter>

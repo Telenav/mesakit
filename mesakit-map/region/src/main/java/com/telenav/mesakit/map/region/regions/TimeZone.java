@@ -18,6 +18,12 @@
 
 package com.telenav.mesakit.map.region.regions;
 
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.language.strings.Paths;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
 import com.telenav.mesakit.map.geography.Location;
@@ -31,12 +37,6 @@ import com.telenav.mesakit.map.region.border.Border;
 import com.telenav.mesakit.map.region.border.cache.BorderCache;
 import com.telenav.mesakit.map.region.project.MapRegionLimits;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
-import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.kernel.language.strings.Paths;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.time.ZoneId;
 import java.util.Collection;
@@ -110,9 +110,11 @@ public class TimeZone extends Region<TimeZone>
         return type(TimeZone.class).forRegionCode(code);
     }
 
-    public static SwitchParser.Builder<TimeZone> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<TimeZone> timeZoneSwitchParser(final String name, final String description)
     {
-        return SwitchParser.builder(TimeZone.class).name(name).converter(new Converter<>(LOGGER()))
+        return SwitchParser.builder(TimeZone.class)
+                .name(name)
+                .converter(new Converter<>(LOGGER()))
                 .description(description);
     }
 

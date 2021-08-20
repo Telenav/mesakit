@@ -299,6 +299,12 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         return Longs.high(latitudeAndLongitude);
     }
 
+    public static SwitchParser.Builder<Location> locationSwitchParser(final String name, final String description)
+    {
+        return SwitchParser.builder(Location.class).name(name).converter(new DegreesConverter(LOGGER))
+                .description(description);
+    }
+
     public static int longitude(final long latitudeAndLongitude)
     {
         return Longs.low(latitudeAndLongitude);
@@ -317,12 +323,6 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
                 System.out.println();
             }
         }
-    }
-
-    public static SwitchParser.Builder<Location> switchParser(final String name, final String description)
-    {
-        return SwitchParser.builder(Location.class).name(name).converter(new DegreesConverter(LOGGER))
-                .description(description);
     }
 
     /**

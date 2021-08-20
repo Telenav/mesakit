@@ -111,6 +111,14 @@ public abstract class Continent extends Region<Continent> implements Iterable<Co
         return borderCache;
     }
 
+    public static SwitchParser.Builder<Continent> continentSwitchParser(final String name, final String description)
+    {
+        return SwitchParser.builder(Continent.class)
+                .name(name)
+                .converter(new Converter<>(LOGGER()))
+                .description(description);
+    }
+
     public static void create()
     {
         ANTARCTICA = new Antarctica();
@@ -143,12 +151,6 @@ public abstract class Continent extends Region<Continent> implements Iterable<Co
     public static Continent forLocation(final Location location)
     {
         return type(Continent.class).forLocation(location);
-    }
-
-    public static SwitchParser.Builder<Continent> switchParser(final String name, final String description)
-    {
-        return SwitchParser.builder(Continent.class).name(name).converter(new Converter<>(LOGGER()))
-                .description(description);
     }
 
     protected Continent(final RegionInstance<Continent> instance)

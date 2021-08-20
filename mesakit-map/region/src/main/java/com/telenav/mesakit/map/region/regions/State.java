@@ -101,7 +101,7 @@ public class State extends Region<State>
         return type(State.class).forRegionCode(code);
     }
 
-    public static SwitchParser.Builder<State> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<State> stateSwitchParser(final String name, final String description)
     {
         return SwitchParser.builder(State.class).name(name).converter(new Converter<>(LOGGER()))
                 .description(description);

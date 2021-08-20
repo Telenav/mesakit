@@ -219,6 +219,19 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         }
     }
 
+    public static SwitchParser.Builder<Metadata> metadataSwitchParser()
+    {
+        return metadataSwitchParser("metadata", "The graph meta data to use such as OSM-OSM-PBF-North_America-2007Q4-2020.04.01_04.01PM_PT");
+    }
+
+    public static SwitchParser.Builder<Metadata> metadataSwitchParser(final String name, final String description)
+    {
+        return SwitchParser.builder(Metadata.class)
+                .name(name)
+                .converter(new Converter(LOGGER))
+                .description(description);
+    }
+
     public static Metadata of(final DataSpecification specification, final DataSupplier supplier,
                               final DataFormat format)
     {
@@ -346,19 +359,6 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
             }
         }
         return null;
-    }
-
-    public static SwitchParser.Builder<Metadata> switchParser()
-    {
-        return switchParser("metadata", "The graph meta data to use such as OSM-OSM-PBF-North_America-2007Q4-2020.04.01_04.01PM_PT");
-    }
-
-    public static SwitchParser.Builder<Metadata> switchParser(final String name, final String description)
-    {
-        return SwitchParser.builder(Metadata.class)
-                .name(name)
-                .converter(new Converter(LOGGER))
-                .description(description);
     }
 
     public enum CountType

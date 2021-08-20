@@ -100,7 +100,8 @@ public class MetropolitanArea extends Region<MetropolitanArea>
         return type(MetropolitanArea.class).matching(matcher);
     }
 
-    public static SwitchParser.Builder<MetropolitanArea> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<MetropolitanArea> metropolitanAreaSwitchParser(final String name,
+                                                                                      final String description)
     {
         return SwitchParser.builder(MetropolitanArea.class).name(name)
                 .converter(new Converter<>(LOGGER())).description(description);

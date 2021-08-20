@@ -110,6 +110,19 @@ public abstract class DataSpecification implements NamedObject
 
     private static final Debug DEBUG = new Debug(LOGGER);
 
+    public static SwitchParser.Builder<DataSpecification> dataSpecificationSwitchParser(final String name,
+                                                                                        final String description)
+    {
+        return SwitchParser.builder(DataSpecification.class).name(name).converter(new Converter(LOGGER))
+                .description(description);
+    }
+
+    public static SwitchParser.Builder<DataSpecification> dataSpecificationSwitchParser()
+    {
+        return SwitchParser.builder(DataSpecification.class).name("data-specification").converter(new Converter(LOGGER))
+                .description("The data specification to use, either OSM or UniDb");
+    }
+
     /**
      * @param name The data specification name like "OSM" or "UniDb"
      * @return The data specification
@@ -142,18 +155,6 @@ public abstract class DataSpecification implements NamedObject
             illegalArgument("Unable to find DataSpecification class '$'", name);
         }
         return null;
-    }
-
-    public static SwitchParser.Builder<DataSpecification> switchParser(final String name, final String description)
-    {
-        return SwitchParser.builder(DataSpecification.class).name(name).converter(new Converter(LOGGER))
-                .description(description);
-    }
-
-    public static SwitchParser.Builder<DataSpecification> switchParser()
-    {
-        return SwitchParser.builder(DataSpecification.class).name("data-specification").converter(new Converter(LOGGER))
-                .description("The data specification to use, either OSM or UniDb");
     }
 
     /**

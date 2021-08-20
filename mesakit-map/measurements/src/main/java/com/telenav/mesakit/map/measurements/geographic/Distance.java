@@ -61,8 +61,6 @@ public final class Distance implements Quantizable, Comparable<Distance>
 
     public static final Distance EARTH_RADIUS_MINOR = meters(6_372_797);
 
-    public static final Distance EARTH_RADIUS_MAJOR = meters(6_378_137);
-
     private static final double DM5_PER_DEGREE = 100_000;
 
     private static final double DM7_PER_DEGREE = 10_000_000;
@@ -73,6 +71,8 @@ public final class Distance implements Quantizable, Comparable<Distance>
 
     private static final double KILOMETERS_PER_DM7 = 1 / DM7_PER_KILOMETER;
 
+    public static final Distance EARTH_RADIUS_MAJOR = meters(6_378_137);
+    
     /**
      * Distance around the earth
      */
@@ -133,6 +133,12 @@ public final class Distance implements Quantizable, Comparable<Distance>
         return Distance.meters(degrees * DM7_PER_DEGREE * KILOMETERS_PER_DM7);
     }
 
+    public static SwitchParser.Builder<Distance> distanceSwitchParser(final String name, final String description)
+    {
+        return SwitchParser.builder(Distance.class).name(name).converter(new Converter(LOGGER))
+                .description(description);
+    }
+
     public static Distance feet(final double feet)
     {
         return meters(feet * METERS_PER_FOOT);
@@ -190,12 +196,6 @@ public final class Distance implements Quantizable, Comparable<Distance>
         return new Converter(LOGGER).convert(value);
     }
 
-    public static SwitchParser.Builder<Distance> switchParser(final String name, final String description)
-    {
-        return SwitchParser.builder(Distance.class).name(name).converter(new Converter(LOGGER))
-                .description(description);
-    }
-
     /** Units that can be converted to */
     public enum Unit
     {
@@ -224,6 +224,16 @@ public final class Distance implements Quantizable, Comparable<Distance>
         public Converter(final Listener listener)
         {
             super(listener);
+        }
+
+        @Override
+        protected String onToString(final Distance value)
+        {
+            if (value.isLessThan(meters(500)))
+            {
+                return value.asMeters() + " meters";
+            }
+            return value.asKilometers() + " km";
         }
 
         /**
@@ -264,16 +274,6 @@ public final class Distance implements Quantizable, Comparable<Distance>
                 problem("Unable to parse distance: ${debug}", value);
                 return null;
             }
-        }
-
-        @Override
-        protected String onToString(final Distance value)
-        {
-            if (value.isLessThan(meters(500)))
-            {
-                return value.asMeters() + " meters";
-            }
-            return value.asKilometers() + " km";
         }
     }
 

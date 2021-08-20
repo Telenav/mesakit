@@ -98,6 +98,14 @@ public class County extends Region<County>
         return borderCache;
     }
 
+    public static SwitchParser.Builder<County> countySwitchParser(final String name, final String description)
+    {
+        return SwitchParser.builder(County.class)
+                .name(name)
+                .converter(new Converter<>(LOGGER()))
+                .description(description);
+    }
+
     public static County forIdentifier(final RegionIdentifier identifier)
     {
         return type(County.class).forIdentifier(identifier);
@@ -116,12 +124,6 @@ public class County extends Region<County>
     public static County forRegionCode(final RegionCode code)
     {
         return type(County.class).forRegionCode(code);
-    }
-
-    public static SwitchParser.Builder<County> switchParser(final String name, final String description)
-    {
-        return SwitchParser.builder(County.class).name(name).converter(new Converter<>(LOGGER()))
-                .description(description);
     }
 
     public County(final State state, final RegionInstance<County> instance)

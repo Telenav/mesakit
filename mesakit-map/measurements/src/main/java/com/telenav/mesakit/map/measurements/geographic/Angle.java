@@ -166,6 +166,12 @@ public class Angle implements
 
     private static final long NANODEGREES_PER_DM7 = 100;
 
+    public static SwitchParser.Builder<Angle> angleSwitchParser(final String name, final String description)
+    {
+        return SwitchParser.builder(Angle.class).name(name).converter(new DegreesConverter(LOGGER))
+                .description(description);
+    }
+
     public static Angle degrees(final double degrees)
     {
         return nanodegrees((long) (degrees * NANODEGREES_PER_DEGREE));
@@ -189,12 +195,6 @@ public class Angle implements
     public static Angle radians(final double radians)
     {
         return nanodegrees((long) (radians * NANODEGREES_PER_RADIAN));
-    }
-
-    public static SwitchParser.Builder<Angle> switchParser(final String name, final String description)
-    {
-        return SwitchParser.builder(Angle.class).name(name).converter(new DegreesConverter(LOGGER))
-                .description(description);
     }
 
     /**

@@ -83,9 +83,9 @@ public class GraphArchive extends FieldArchive implements Named
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static SwitchParser.Builder<Graph> GRAPH = switchParser("graph", "Input graph file");
+    public static SwitchParser.Builder<Graph> GRAPH = graphArchiveSwitchParser("graph", "Input graph file");
 
-    public static SwitchParser.Builder<GraphList> GRAPH_LIST = listSwitchParser("graphs",
+    public static SwitchParser.Builder<GraphList> GRAPH_LIST = graphListSwitchParser("graphs",
             "A comma separated list of graph files and/or folders");
 
     private static final Debug DEBUG = new Debug(LOGGER);
@@ -113,15 +113,15 @@ public class GraphArchive extends FieldArchive implements Named
         return Resource.resolve(specifier);
     }
 
-    public static SwitchParser.Builder<GraphList> listSwitchParser(final String name, final String description)
+    public static SwitchParser.Builder<Graph> graphArchiveSwitchParser(final String name, final String description)
+    {
+        return SwitchParser.builder(Graph.class).name(name).description(description).converter(new Converter(LOGGER, ProgressReporter.NULL));
+    }
+
+    public static SwitchParser.Builder<GraphList> graphListSwitchParser(final String name, final String description)
     {
         return SwitchParser.builder(GraphList.class).name(name).description(description)
                 .converter(new GraphArchive.ListConverter(LOGGER));
-    }
-
-    public static SwitchParser.Builder<Graph> switchParser(final String name, final String description)
-    {
-        return SwitchParser.builder(Graph.class).name(name).description(description).converter(new Converter(LOGGER, ProgressReporter.NULL));
     }
 
     public static class Converter extends BaseStringConverter<Graph>

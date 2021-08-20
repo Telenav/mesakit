@@ -87,7 +87,7 @@ public class WayFilter implements Filter<PbfWay>, Named
         return filter;
     }
 
-    public static SwitchParser.Builder<WayFilter> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<WayFilter> wayFilterSwitchParser(final String name, final String description)
     {
         return SwitchParser.builder(WayFilter.class)
                 .name(name)
@@ -98,7 +98,7 @@ public class WayFilter implements Filter<PbfWay>, Named
     public static SwitchParser.Builder<WayFilter> wayFilterSwitchParser()
     {
         PbfFilters.loadAll();
-        return switchParser("way-filter", "The name of a way filter:\n\n" + help());
+        return wayFilterSwitchParser("way-filter", "The name of a way filter:\n\n" + help());
     }
 
     public static class Converter extends BaseStringConverter<WayFilter>
