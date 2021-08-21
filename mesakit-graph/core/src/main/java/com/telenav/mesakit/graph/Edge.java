@@ -2613,19 +2613,19 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
                     problemIf(toLocation() == null, "toLocation is missing");
                     problemIf(fromLocation() != null && fromLocationAsLong() == 0, "fromLocation is zero");
                     problemIf(toLocation() != null && toLocationAsLong() == 0, "toLocation is zero");
-                    quibbleIf(roadShape() == null, "roadShape is missing");
-                    quibbleIf(heading() == null, "heading is missing");
-                    quibbleIf(length() == null, "length is missing");
-                    quibbleIf(roadShape() == null, "roadShape is missing");
-                    quibbleIf(roadShape().length().isZero(), "roadShape is zero length");
-                    quibbleIf(roadShape().size() <= 1, "roadShape has only $ locations", roadShape().size());
+                    glitchIf(roadShape() == null, "roadShape is missing");
+                    glitchIf(heading() == null, "heading is missing");
+                    glitchIf(length() == null, "length is missing");
+                    glitchIf(roadShape() == null, "roadShape is missing");
+                    glitchIf(roadShape().length().isZero(), "roadShape is zero length");
+                    glitchIf(roadShape().size() <= 1, "roadShape has only $ locations", roadShape().size());
                 }
 
                 problemIf(type() == null, "type is missing");
-                quibbleIf(roadState() == null, "roadState is missing");
-                quibbleIf(roadType() == null, "roadType is missing");
-                quibbleIf(roadSubType() == null, "roadSubType is missing");
-                quibbleIf(roadFunctionalClass() == null, "roadFunctionalClass is missing");
+                glitchIf(roadState() == null, "roadState is missing");
+                glitchIf(roadType() == null, "roadType is missing");
+                glitchIf(roadSubType() == null, "roadSubType is missing");
+                glitchIf(roadFunctionalClass() == null, "roadFunctionalClass is missing");
                 warningIf(freeFlowSpeed() == null, "freeFlow is missing");
             }
         };

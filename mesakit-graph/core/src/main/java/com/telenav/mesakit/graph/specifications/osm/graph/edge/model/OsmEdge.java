@@ -183,7 +183,7 @@ public class OsmEdge extends Edge
             protected void onValidate()
             {
                 validate(OsmEdge.super.validator(type));
-                quibbleIf(laneCount() == null, "laneCount");
+                glitchIf(laneCount() == null, "laneCount");
             }
         };
     }

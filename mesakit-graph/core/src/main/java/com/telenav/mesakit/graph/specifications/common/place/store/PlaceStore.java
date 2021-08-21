@@ -172,10 +172,10 @@ public class PlaceStore extends ArchivedGraphElementStore<Place>
                     // Go through place indexes
                     for (var index = 1; index < size() && !isInvalid(); index++)
                     {
-                        quibbleIf(isEmpty(outer.name.get(index)), "the name is empty or missing");
-                        quibbleIf(outer.type.get(index) == 0, "the type is empty or missing");
-                        quibbleIf(outer.location.get(index) == 0, "the location is missing");
-                        quibbleIf(outer.population.get(index) == 0, "the population is zero or missing");
+                        glitchIf(isEmpty(outer.name.get(index)), "the name is empty or missing");
+                        glitchIf(outer.type.get(index) == 0, "the type is empty or missing");
+                        glitchIf(outer.location.get(index) == 0, "the location is missing");
+                        glitchIf(outer.population.get(index) == 0, "the population is zero or missing");
 
                         if (isInvalid())
                         {

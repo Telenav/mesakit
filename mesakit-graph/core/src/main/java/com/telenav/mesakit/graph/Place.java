@@ -524,10 +524,10 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
                 validate(Place.super.validator(type));
 
                 // then check for other problems
-                quibbleIf(location() == null, "its location is missing");
-                quibbleIf(isEmpty(name()), "its name is empty");
-                quibbleIf(type() == null, "it has no type");
-                quibbleIf(isZero(population()), "it has no population");
+                glitchIf(location() == null, "its location is missing");
+                glitchIf(isEmpty(name()), "its name is empty");
+                glitchIf(type() == null, "it has no type");
+                glitchIf(isZero(population()), "it has no population");
             }
         };
     }

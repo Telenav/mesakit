@@ -37,8 +37,8 @@ import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.kernel.messaging.messages.status.Glitch;
 import com.telenav.kivakit.kernel.messaging.messages.status.Problem;
-import com.telenav.kivakit.kernel.messaging.messages.status.Quibble;
 import com.telenav.kivakit.kernel.messaging.messages.status.Warning;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.identifiers.GraphElementIdentifier;
@@ -183,6 +183,19 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
     protected abstract class ElementValidator extends BaseValidator
     {
         @Override
+        protected Glitch glitch(final String message, final Object... parameters)
+        {
+            if (DEBUG.isDebugOn())
+            {
+                return super.glitch(name() + " identifier " + identifier + " is invalid because " + message, parameters);
+            }
+            else
+            {
+                return addGlitch(message, parameters);
+            }
+        }
+
+        @Override
         protected Problem problem(final String message, final Object... parameters)
         {
             if (DEBUG.isDebugOn())
@@ -192,19 +205,6 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
             else
             {
                 return addProblem(message, parameters);
-            }
-        }
-
-        @Override
-        protected Quibble quibble(final String message, final Object... parameters)
-        {
-            if (DEBUG.isDebugOn())
-            {
-                return super.quibble(name() + " identifier " + identifier + " is invalid because " + message, parameters);
-            }
-            else
-            {
-                return addQuibble(message, parameters);
             }
         }
 

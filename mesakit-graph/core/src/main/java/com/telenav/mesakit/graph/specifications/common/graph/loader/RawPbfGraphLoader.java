@@ -944,7 +944,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         final var state = roadStateExtractor.extract(way);
         if (state.state() == RoadState.NULL)
         {
-            quibble("Way $ has invalid road state (oneway = $, highway = $), assuming TWO_WAY",
+            glitch("Way $ has invalid road state (oneway = $, highway = $), assuming TWO_WAY",
                     way, tags.get("oneway"), tags.get("highway"));
             state.state(RoadState.TWO_WAY);
         }
@@ -1169,7 +1169,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                     {
                         // In many PBF input files, relations do reference non-existent ways, so this is a debug
                         // statement rather than a warning
-                        RawPbfGraphLoader.DEBUG.quibble("Relation $ references missing way identifier $", relation.identifierAsLong(), wayIdentifier);
+                        RawPbfGraphLoader.DEBUG.glitch("Relation $ references missing way identifier $", relation.identifierAsLong(), wayIdentifier);
                     }
                 }
             }

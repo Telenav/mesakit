@@ -159,7 +159,7 @@ public class TimeZone extends Region<TimeZone>
                 final var code = code(way, "code");
                 if (code == null)
                 {
-                    LOGGER.quibble("No code found for $", way);
+                    LOGGER.glitch("No code found for $", way);
                     return null;
                 }
 

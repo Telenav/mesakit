@@ -98,7 +98,7 @@ public class CountryTest extends MapRegionUnitTest
             final var country = Country.forNumericCountryCode(value);
             if (country == null)
             {
-                LOGGER.quibble("No country for numeric country code $", value);
+                LOGGER.glitch("No country for numeric country code $", value);
             }
             ensure(country != null);
             final CountryIsoCode iso = ensureNotNull(country).identity().countryIsoCode();

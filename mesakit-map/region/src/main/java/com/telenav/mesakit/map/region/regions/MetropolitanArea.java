@@ -154,20 +154,20 @@ public class MetropolitanArea extends Region<MetropolitanArea>
 
                 if (name == null)
                 {
-                    DEBUG().quibble("Way $ has no name tag", way);
+                    DEBUG().glitch("Way $ has no name tag", way);
                     return null;
                 }
 
                 if (code == null || code.size() < 3)
                 {
-                    DEBUG().quibble("Way $ doesn't have a metro ISO tag", way);
+                    DEBUG().glitch("Way $ doesn't have a metro ISO tag", way);
                     return null;
                 }
 
                 final var state = State.forRegionCode(code.first(2));
                 if (state == null)
                 {
-                    DEBUG().quibble("Can't find or construct state '$' for $", code.first(2), way);
+                    DEBUG().glitch("Can't find or construct state '$' for $", code.first(2), way);
                     return null;
                 }
 

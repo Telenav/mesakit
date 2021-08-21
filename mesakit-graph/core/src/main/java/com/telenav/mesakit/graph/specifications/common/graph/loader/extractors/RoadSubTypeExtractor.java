@@ -133,7 +133,7 @@ public class RoadSubTypeExtractor extends BaseExtractor<RoadSubType, PbfWay>
             final var subtype = roadSubTypeForHighway.get(highway);
             if (subtype == null)
             {
-                quibble("No road subtype inferred for highway tag '$'", highway);
+                glitch("No road subtype inferred for highway tag '$'", highway);
             }
             else
             {
@@ -152,7 +152,7 @@ public class RoadSubTypeExtractor extends BaseExtractor<RoadSubType, PbfWay>
             final var priority = priorityForRoadSubType.get(subtype);
             if (priority == null)
             {
-                quibble("No priority for $", subtype);
+                glitch("No priority for $", subtype);
             }
             else if (priority < minimumPriority)
             {

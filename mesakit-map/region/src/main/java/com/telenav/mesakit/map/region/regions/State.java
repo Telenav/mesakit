@@ -227,7 +227,7 @@ public class State extends Region<State>
                 var iso = isoCode(way);
                 if (iso == null)
                 {
-                    DEBUG().quibble("Way $ doesn't have any ISO code", way);
+                    DEBUG().glitch("Way $ doesn't have any ISO code", way);
                     return null;
                 }
 
@@ -240,20 +240,20 @@ public class State extends Region<State>
 
                 if (!iso.isState())
                 {
-                    DEBUG().quibble("Way $ doesn't have a state ISO code", way);
+                    DEBUG().glitch("Way $ doesn't have a state ISO code", way);
                     return null;
                 }
 
                 final var country = Country.forRegionCode(iso.first());
                 if (country == null)
                 {
-                    DEBUG().quibble("Can't find country for ISO code $", iso);
+                    DEBUG().glitch("Can't find country for ISO code $", iso);
                     return null;
                 }
 
                 if (iso.size() != 2)
                 {
-                    DEBUG().quibble("Invalid state ISO code $", iso);
+                    DEBUG().glitch("Invalid state ISO code $", iso);
                     return null;
                 }
 
@@ -264,7 +264,7 @@ public class State extends Region<State>
 
                 if (!identity.isValid())
                 {
-                    DEBUG().quibble("Can't construct a valid region identity from $", way);
+                    DEBUG().glitch("Can't construct a valid region identity from $", way);
                     return null;
                 }
                 else

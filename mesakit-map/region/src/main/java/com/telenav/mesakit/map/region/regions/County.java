@@ -172,7 +172,7 @@ public class County extends Region<County>
 
                 if (code == null)
                 {
-                    DEBUG().quibble("Way $ has no code tag", way);
+                    DEBUG().glitch("Way $ has no code tag", way);
                     return null;
                 }
 
@@ -180,20 +180,20 @@ public class County extends Region<County>
 
                 if (name == null)
                 {
-                    DEBUG().quibble("Way $ has no name tag", way);
+                    DEBUG().glitch("Way $ has no name tag", way);
                     return null;
                 }
 
                 if (iso == null || iso.size() != 3)
                 {
-                    DEBUG().quibble("Way $ doesn't have a county ISO code", way);
+                    DEBUG().glitch("Way $ doesn't have a county ISO code", way);
                     return null;
                 }
 
                 final var state = State.forRegionCode(iso.first(2));
                 if (state == null)
                 {
-                    DEBUG().quibble("Can't locate parent state $ for $", iso.first(2), way);
+                    DEBUG().glitch("Can't locate parent state $ for $", iso.first(2), way);
                     return null;
                 }
 
