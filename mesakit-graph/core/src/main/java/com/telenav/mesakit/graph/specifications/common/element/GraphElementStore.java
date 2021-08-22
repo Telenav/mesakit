@@ -39,6 +39,7 @@ import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.kivakit.kernel.messaging.messages.status.Glitch;
 import com.telenav.kivakit.kernel.messaging.messages.status.Problem;
+import com.telenav.kivakit.kernel.messaging.messages.status.Quibble;
 import com.telenav.kivakit.kernel.messaging.messages.status.Warning;
 import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitCharArray;
@@ -135,6 +136,19 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
             else
             {
                 return addProblem(message, parameters);
+            }
+        }
+
+        @Override
+        protected Quibble quibble(final String message, final Object... parameters)
+        {
+            if (DEBUG.isDebugOn())
+            {
+                return super.quibble(storeName() + " is imperfect because " + message, parameters);
+            }
+            else
+            {
+                return addQuibble(message, parameters);
             }
         }
 
