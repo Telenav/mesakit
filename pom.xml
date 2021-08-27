@@ -150,7 +150,7 @@
 
         <!-- KivaKit Version -->
 
-        <kivakit.version>0.9.9-SNAPSHOT</kivakit.version>
+        <kivakit.version>1.0.0</kivakit.version>
 
         <!-- Mapping -->
 
@@ -159,15 +159,15 @@
 
         <!-- Cactus Build -->
 
-        <cactus.version>0.9.8-beta</cactus.version>
-        <cactus.download.version>0.9.8-beta</cactus.download.version>
+        <cactus.version>1.0.0</cactus.version>
+        <cactus.download.version>1.0.0</cactus.download.version>
         <cactus.downloads.folder>${user.home}/.cactus-build/downloads</cactus.downloads.folder>
         <cactus.url>https://repo1.maven.org/maven2/com/telenav/cactus/cactus-build-metadata/${cactus.download.version}/cactus-build-metadata-${cactus.download.version}.jar</cactus.url>
         <cactus.jar>${cactus.downloads.folder}/cactus-build-metadata-${cactus.download.version}.jar</cactus.jar>
 
         <!-- Lexakai Documentation -->
 
-        <lexakai.version>0.9.9-SNAPSHOT</lexakai.version>
+        <lexakai.version>1.0.0</lexakai.version>
 
         <!-- Java -->
 
@@ -449,8 +449,6 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin.version}</version>
                     <configuration>
-                        <source>${java.version}</source>
-                        <target>${java.version}</target>
                         <release>${java.version}</release>
                         <compilerArgs>
                             <compilerArgument>-Xlint:unchecked</compilerArgument>
