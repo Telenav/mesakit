@@ -19,7 +19,6 @@
 package com.telenav.mesakit.map.region.project;
 
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.language.collections.set.Sets;
 import com.telenav.kivakit.kernel.language.objects.Lazy;
 import com.telenav.kivakit.kernel.language.values.version.Version;
 import com.telenav.kivakit.kernel.project.Project;
@@ -31,8 +30,6 @@ import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.map.geography.project.MapGeographyKryoTypes;
 import com.telenav.mesakit.map.measurements.project.MapMeasurementsKryoTypes;
 import com.telenav.mesakit.map.region.Region;
-
-import java.util.Set;
 
 public class MapRegionProject extends Project
 {
@@ -60,12 +57,6 @@ public class MapRegionProject extends Project
     public Version borderDataVersion()
     {
         return Version.parse("0.9.1");
-    }
-
-    @Override
-    public Set<Project> dependencies()
-    {
-        return Sets.of();
     }
 
     /**

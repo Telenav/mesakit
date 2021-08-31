@@ -19,14 +19,12 @@
 package com.telenav.mesakit.graph.world.project;
 
 import com.telenav.kivakit.kernel.KivaKit;
-import com.telenav.kivakit.kernel.language.collections.set.Sets;
+import com.telenav.kivakit.kernel.language.collections.set.ObjectSet;
 import com.telenav.kivakit.kernel.language.objects.Lazy;
 import com.telenav.kivakit.kernel.language.values.version.Version;
 import com.telenav.kivakit.kernel.project.Project;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.mesakit.graph.project.GraphCoreProject;
-
-import java.util.Set;
 
 public class GraphWorldProject extends Project
 {
@@ -43,9 +41,9 @@ public class GraphWorldProject extends Project
     }
 
     @Override
-    public Set<Project> dependencies()
+    public ObjectSet<Project> dependencies()
     {
-        return Sets.of(GraphCoreProject.get());
+        return ObjectSet.of(GraphCoreProject.get());
     }
 
     /**

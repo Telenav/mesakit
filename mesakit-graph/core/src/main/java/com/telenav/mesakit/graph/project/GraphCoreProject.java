@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.project;
 
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.language.collections.set.Sets;
+import com.telenav.kivakit.kernel.language.collections.set.ObjectSet;
 import com.telenav.kivakit.kernel.language.objects.Lazy;
 import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
 import com.telenav.kivakit.kernel.project.Project;
@@ -28,8 +28,6 @@ import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.PbfFilters;
 import com.telenav.mesakit.map.data.formats.pbf.project.DataFormatsPbfProject;
 import com.telenav.mesakit.map.region.project.MapRegionProject;
-
-import java.util.Set;
 
 /**
  * @author jonathanl (shibo)
@@ -50,9 +48,9 @@ public class GraphCoreProject extends Project
     }
 
     @Override
-    public Set<Project> dependencies()
+    public ObjectSet<Project> dependencies()
     {
-        return Sets.of(MapRegionProject.get(), DataFormatsPbfProject.get());
+        return ObjectSet.of(MapRegionProject.get(), DataFormatsPbfProject.get());
     }
 
     /**
