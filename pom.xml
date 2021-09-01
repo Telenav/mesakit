@@ -398,8 +398,7 @@
                                     <equals arg1 = "${source.exists}" arg2 = "true"/>
                                     <then>
                                         <echo file = "src/main/java/project.properties">
-                                            project-name = ${project.name}${line.separator}project-version = ${project.version}${line.separator}project-group-id =
-                                            ${project.groupId}${line.separator}project-artifact-id = ${project.artifactId}
+                                            project-name = ${project.name}${line.separator}project-version = ${project.version}${line.separator}project-group-id = ${project.groupId}${line.separator}project-artifact-id = ${project.artifactId}
                                         </echo>
                                         <java jar = "${cactus.jar}" failonerror = "true" fork = "true">
                                             <arg value = "src/main/java"/>
@@ -407,8 +406,7 @@
                                     </then>
                                     <else>
                                         <echo file = "${project.basedir}/project.properties">
-                                            project-name = ${project.name}${line.separator}project-version = ${project.version}${line.separator}project-group-id =
-                                            ${project.groupId}${line.separator}project-artifact-id = ${project.artifactId}
+                                            project-name = ${project.name}${line.separator}project-version = ${project.version}${line.separator}project-group-id = ${project.groupId}${line.separator}project-artifact-id = ${project.artifactId}
                                         </echo>
                                         <java jar = "${cactus.jar}" failonerror = "true" fork = "true">
                                             <arg value = "${project.basedir}"/>
