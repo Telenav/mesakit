@@ -13,9 +13,14 @@
 
 ROOT="$(pwd)"
 BRANCH="${GITHUB_REF//refs\/heads\//}"
-SUPERPOM_BUILD="mvn --batch-mode --no-transfer-progress clean install"
+SUPERPOM_INSTALL="mvn --batch-mode --no-transfer-progress clean install"
 BUILD="mvn -Dmaven.javadoc.skip=true -DKIVAKIT_DEBUG="!Debug" -P shade -P tools --no-transfer-progress --batch-mode clean install"
 CLONE="git clone --branch "$BRANCH" --quiet"
+DEPLOY="mvn -P attach-jars -P sign-artifacts -P shade -P tools --no-transfer-progress --batch-mode -Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }} clean deploy"
+
+if [[ "$1" == "deploy" ]]; then
+    BUILD=$DEPLOY
+fi
 
 export MESAKIT_HOME="$ROOT/mesakit"
 
@@ -29,7 +34,7 @@ $CLONE https://github.com/Telenav/kivakit.git
 
 echo "Installing kivakit super POM"
 cd "$ROOT"/kivakit/superpom
-$SUPERPOM_BUILD
+$SUPERPOM_INSTALL
 
 echo "Building kivakit"
 cd "$ROOT"/kivakit
@@ -57,7 +62,7 @@ $CLONE https://github.com/Telenav/mesakit.git
 
 echo "Installing mesakit super POM"
 cd "$ROOT"/mesakit/superpom
-$SUPERPOM_BUILD
+$SUPERPOM_INSTALL
 
 echo "Installing shape file reader"
 mvn install:install-file -Dfile="$ROOT/mesakit/mesakit-map/geography/libraries/shapefilereader-1.0.jar" -DgroupId=org.nocrala -DartifactId=shapefilereader -Dversion=1.0 -Dpackaging=jar
