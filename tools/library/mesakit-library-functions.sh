@@ -91,14 +91,16 @@ clean_maven_repository() {
 
 remove_maven_repository() {
 
-    if [ -d "$HOME/.m2/repository" ]; then
+    if [[ "$ALLOW_CLEANING" == "true" ]]; then
 
-        if yes_no "Remove ALL artifacts in ~/.m2/repository"; then
+        if [ -d "$HOME/.m2/repository" ]; then
 
-            rm -rf ~/.m2/repository
+            if yes_no "Remove ALL artifacts in $HOME/.m2/repository"; then
 
+                rm -rf "$HOME/.m2/repository"
+
+            fi
         fi
-
     fi
 }
 
@@ -106,10 +108,13 @@ clean_temporary_files() {
 
     project_home=$1
 
-    if yes_no "Remove temporary files (.DS_Store, .metadata, .classpath, .project, *.hprof, *~) from $project_home tree"; then
+    if [[ "$ALLOW_CLEANING" == "true" ]]; then
 
-        find "$project_home" \( -name \.DS_Store -o -name \.metadata -o -name \.classpath -o -name \.project -o -name \*\.hprof -o -name \*~ \) | xargs rm
+        if yes_no "Remove temporary files (.DS_Store, .metadata, .classpath, .project, *.hprof, *~) from $project_home tree"; then
 
+            find "$project_home" \( -name \.DS_Store -o -name \.metadata -o -name \.classpath -o -name \.project -o -name \*\.hprof -o -name \*~ \) | xargs rm
+
+        fi
     fi
 }
 

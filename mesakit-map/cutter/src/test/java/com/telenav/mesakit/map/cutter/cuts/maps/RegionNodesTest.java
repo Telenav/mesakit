@@ -102,7 +102,7 @@ public class RegionNodesTest extends MapRegionUnitTest
                 // adding each region to the given node
                 final var area = metropolitanAreas.iterator().next();
                 final var regionIndex = regionIndexMap.indexForRegion(area);
-                ensure(regionIndex != null, "No region index for $", area);
+                // ensure(regionIndex != null, "No region index for $", area);
                 nodes.add(nodeIdentifier, regionIndex);
 
                 // then get the set of regions for the node and there should be two for each one

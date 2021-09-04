@@ -28,12 +28,10 @@
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-map-road-name-parser</artifactId>
-            <version>${mesakit.version}</version>
         </dependency>
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-map-data-formats-pbf</artifactId>
-            <version>${mesakit.version}</version>
         </dependency>
 
     </dependencies>

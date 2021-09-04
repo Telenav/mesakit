@@ -26,12 +26,10 @@
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-network-http</artifactId>
-            <version>${kivakit.version}</version>
         </dependency>
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-filesystems-hdfs</artifactId>
-            <version>${kivakit.version}</version>
         </dependency>
 
         <!-- MesaKit -->
@@ -39,17 +37,14 @@
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-graph-core</artifactId>
-            <version>${mesakit.version}</version>
         </dependency>
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-map-utilities-geojson</artifactId>
-            <version>${mesakit.version}</version>
         </dependency>
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-map-cutter</artifactId>
-            <version>${mesakit.version}</version>
         </dependency>
 
         <!-- HTTP -->
@@ -57,17 +52,6 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>javax.ws.rs</groupId>
-                    <artifactId>jsr311-api</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
     </dependencies>

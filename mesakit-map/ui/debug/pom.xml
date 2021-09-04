@@ -27,7 +27,6 @@
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-map-ui-desktop</artifactId>
-            <version>${mesakit.version}</version>
         </dependency>
 
     </dependencies>

@@ -14,7 +14,7 @@ source mesakit-projects.sh
 
 for project_home in "${MESAKIT_PROJECT_HOMES[@]}"; do
 
-    clean_maven_repository $project_home
+    clean_maven_repository "$project_home"
 
 done
 
