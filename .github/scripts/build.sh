@@ -17,6 +17,8 @@ SUPERPOM_BUILD="mvn --batch-mode --no-transfer-progress clean install"
 BUILD="mvn -Dmaven.javadoc.skip=true -DKIVAKIT_DEBUG="!Debug" -P shade -P tools --no-transfer-progress --batch-mode clean install"
 CLONE="git clone --branch "$BRANCH" --quiet"
 
+export MESAKIT_HOME="$ROOT/mesakit"
+
 #
 # Build kivakit
 #
