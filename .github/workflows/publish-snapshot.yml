@@ -16,8 +16,6 @@ on:
   workflow_dispatch:
   push:
     branches: [ develop ]
-  pull_request:
-    branches: [ develop ]
 
 jobs:
   build:
@@ -45,7 +43,7 @@ jobs:
 
       - name: Publish Snapshot to OSSRH
         run: |
-          ./.github/scripts/build.sh deploy
+          ./.github/scripts/build.sh publish
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
