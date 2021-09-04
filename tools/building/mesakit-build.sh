@@ -14,6 +14,8 @@ source mesakit-projects.sh
 cd "$MESAKIT_HOME"/superpom
 mvn clean install
 
+mvn install:install-file -Dfile="$ROOT/mesakit/mesakit-map/geography/libraries/shapefilereader-1.0.jar" -DgroupId=org.nocrala -DartifactId=shapefilereader -Dversion=1.0 -Dpackaging=jar
+
 export ALLOW_CLEANING=true
 
 for project_home in "${MESAKIT_PROJECT_HOMES[@]}"; do
