@@ -7,14 +7,31 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-source build-include.sh
+#
+# Include build script from cactus-build
+#
+
+git clone --branch "develop" --quiet "https://github.com/Telenav/cactus-build.git"
+source cactus-build/.github/scripts/build-include.sh
+
+#
+# Get build type argument
+#
 
 build_type=$(check_build_type "$1")
+
+#
+# Clone repositories
+#
 
 clone_this
 clone kivakit
 clone kivakit-extensions
 clone kivakit-examples
+
+#
+# Build repositories
+#
 
 build_kivakit "$build_type"
 build_kivakit_extensions "$build_type"
