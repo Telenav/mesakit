@@ -43,7 +43,7 @@ jobs:
 
       - name: Publish Snapshot to OSSRH
         run: |
-          ./.github/scripts/build.sh publish
+          perl ./.github/scripts/build.pl publish $GITHUB_REF
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
