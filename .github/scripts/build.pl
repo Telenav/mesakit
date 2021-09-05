@@ -7,6 +7,9 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+use strict;
+use warnings FATAL => 'all';
+
 #
 # Include build script from cactus-build
 #
@@ -19,19 +22,23 @@ require "./cactus-build/.github/scripts/build-include.pl";
 # Get build type and branch
 #
 
-my ($build_type, $branch) = @ARGV;
+my ($build_type, $reference) = @ARGV;
+my $branch = reference_to_branch($reference);
+
 check_build_type($build_type);
 check_branch($branch);
+
+say("Building $branch");
 
 #
 # Clone repositories
 #
 
-$github = "https://github.com/Telenav";
+my $github = "https://github.com/Telenav";
 
 clone("$github/kivakit", $branch);
 clone("$github/kivakit-extensions", $branch);
-clone_this("$github/mesakit", $branch);
+clone("$github/mesakit", $branch);
 
 #
 # Build repositories
