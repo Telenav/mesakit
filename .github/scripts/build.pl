@@ -28,7 +28,7 @@ my $branch = reference_to_branch($reference);
 check_build_type($build_type);
 check_branch($branch);
 
-say("Building $branch");
+say("Building $branch ($build_type)");
 
 #
 # Clone repositories
