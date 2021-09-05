@@ -14,37 +14,27 @@ use warnings FATAL => 'all';
 # Include build script from cactus-build
 #
 
-system("git clone --branch develop --quiet https://github.com/Telenav/cactus-build.git");
+if (!-d "cactus-build")
+{
+    system("git clone --branch develop --quiet https://github.com/Telenav/cactus-build.git");
+}
 
 require "./cactus-build/.github/scripts/build-include.pl";
+#require "$ENV{'KIVAKIT_WORKSPACE'}/cactus-build/.github/scripts/build-include.pl";
 
 #
-# Get build type and branch
+# Clone repositories and build
 #
 
-my ($build_type, $reference) = @ARGV;
-my $branch = reference_to_branch($reference);
-
-check_build_type($build_type);
-check_branch($branch);
-
-say("Building $branch ($build_type)");
-
-#
-# Clone repositories
-#
-
+my ($build_type) = @ARGV;
 my $github = "https://github.com/Telenav";
 
-clone("$github/kivakit", $branch);
-clone("$github/kivakit-extensions", $branch);
-clone("$github/mesakit", $branch);
-
-#
-# Build repositories
-#
+clone("$github/kivakit", "dependency");
+clone("$github/kivakit-extensions", "dependency");
+clone("$github/mesakit", "build");
 
 build_kivakit($build_type);
 build_kivakit_extensions($build_type);
 build_mesakit($build_type);
+
 
