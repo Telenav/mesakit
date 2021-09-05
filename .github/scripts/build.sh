@@ -24,9 +24,9 @@ build_type=$(check_build_type "$1")
 # Clone repositories
 #
 
-clone_this
-clone kivakit
-clone kivakit-extensions
+try clone_this
+try clone kivakit
+try clone kivakit-extensions
 clone kivakit-examples
 
 #
