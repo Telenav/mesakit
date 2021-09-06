@@ -35,3 +35,5 @@ jobs:
         run: |
           perl ./.github/scripts/build.pl package
         shell: bash
+        env:
+          MESAKIT_HOME: "$GITHUB_WORKSPACE/mesakit"
