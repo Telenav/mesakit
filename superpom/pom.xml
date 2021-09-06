@@ -1,0 +1,237 @@
+<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--                                                                                                                 -->
+<!--  © 2011-2021 Telenav, Inc.                                                                                      -->
+<!--  Licensed under Apache License, Version 2.0                                                                     -->
+<!--                                                                                                                 -->
+<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+<project xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>com.telenav.kivakit</groupId>
+        <artifactId>superpom</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../kivakit/superpom</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.telenav.mesakit</groupId>
+    <artifactId>superpom</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <!-- Project -->
+
+    <name>MesaKit Super POM</name>
+    <description>The MesaKit super POM depends on the KivaKit super POM and defines dependency versions to help ensure consistent builds.</description>
+    <url>https://www.telenav.com/</url>
+    <inceptionYear>2011</inceptionYear>
+    <organization>
+        <name>Telenav</name>
+        <url>https://www.telenav.com</url>
+    </organization>
+
+    <!-- Licensing -->
+
+    <licenses>
+
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSfE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+
+    </licenses>
+
+    <!-- Properties -->
+
+    <properties>
+
+        <!-- MesaKit Version -->
+
+        <mesakit.version>0.9.9-SNAPSHOT</mesakit.version>
+
+        <!-- Mapping -->
+
+        <osmosis.version>0.48.1</osmosis.version>
+        <josm.version>17428</josm.version>
+
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>josm</id>
+            <name>openstreetmap josm</name>
+            <url>https://josm.openstreetmap.de/nexus/content/repositories/releases/</url>
+        </repository>
+    </repositories>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- MesaKit -->
+
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-core</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-map-geography</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-graph-core</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-graph-query</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-graph-world</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-map-cutter</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-map-data-library</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-map-data-formats-pbf</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-map-measurements</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-navigation-routing</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-map-overpass</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-plugins-josm-library</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-map-region</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-map-road-model</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-map-road-name-parser</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-map-road-name-standardizer</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-map-ui-debug</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-map-ui-desktop</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-map-utilities-geohash</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-map-utilities-geojson</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-map-utilities-grid</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-serialization-json</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+
+            <!-- JOSM -->
+
+            <dependency>
+                <groupId>org.openstreetmap.josm</groupId>
+                <artifactId>josm</artifactId>
+                <version>${josm.version}</version>
+            </dependency>
+
+            <!-- OSM -->
+
+            <dependency>
+                <groupId>org.openstreetmap.osmosis</groupId>
+                <artifactId>osmosis-core</artifactId>
+                <version>${osmosis.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>xml-apis</groupId>
+                        <artifactId>xml-apis</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.openstreetmap.osmosis</groupId>
+                <artifactId>osmosis-osm-binary</artifactId>
+                <version>${osmosis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openstreetmap.osmosis</groupId>
+                <artifactId>osmosis-xml</artifactId>
+                <version>${osmosis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openstreetmap.osmosis</groupId>
+                <artifactId>osmosis-pbf</artifactId>
+                <version>${osmosis.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>javax.ws.rs</groupId>
+                        <artifactId>jsr311-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+</project>
+

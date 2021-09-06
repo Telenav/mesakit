@@ -22,30 +22,26 @@
 
     <dependencies>
 
-        <!-- MesaKit -->
-
-        <dependency>
-            <groupId>com.telenav.mesakit</groupId>
-            <artifactId>mesakit-core</artifactId>
-            <version>${mesakit.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.telenav.mesakit</groupId>
-            <artifactId>mesakit-map-geography</artifactId>
-            <version>${mesakit.version}</version>
-        </dependency>
-
         <!-- KivaKit -->
 
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-network-http</artifactId>
-            <version>${kivakit.version}</version>
         </dependency>
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-ui-desktop</artifactId>
-            <version>${kivakit.version}</version>
+        </dependency>
+
+        <!-- MesaKit -->
+
+        <dependency>
+            <groupId>com.telenav.mesakit</groupId>
+            <artifactId>mesakit-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.telenav.mesakit</groupId>
+            <artifactId>mesakit-map-geography</artifactId>
         </dependency>
 
     </dependencies>

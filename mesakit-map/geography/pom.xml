@@ -22,40 +22,34 @@
 
     <dependencies>
 
-        <!-- MesaKit -->
-
-        <dependency>
-            <groupId>com.telenav.mesakit</groupId>
-            <artifactId>mesakit-map-measurements</artifactId>
-            <version>${mesakit.version}</version>
-        </dependency>
-
         <!-- KivaKit -->
 
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-component</artifactId>
-            <version>${kivakit.version}</version>
         </dependency>
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-resource</artifactId>
-            <version>${kivakit.version}</version>
         </dependency>
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-math</artifactId>
-            <version>${kivakit.version}</version>
         </dependency>
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-data-compression</artifactId>
-            <version>${kivakit.version}</version>
         </dependency>
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-collections</artifactId>
-            <version>${kivakit.version}</version>
+        </dependency>
+
+        <!-- MesaKit -->
+
+        <dependency>
+            <groupId>com.telenav.mesakit</groupId>
+            <artifactId>mesakit-map-measurements</artifactId>
         </dependency>
 
         <!-- Shapefile -->
@@ -66,8 +60,6 @@
             <groupId>org.nocrala</groupId>
             <artifactId>shapefilereader</artifactId>
             <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libraries/shapefilereader-1.0.jar</systemPath>
         </dependency>
 
     </dependencies>

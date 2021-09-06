@@ -27,12 +27,10 @@
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-map-geography</artifactId>
-            <version>${mesakit.version}</version>
         </dependency>
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-map-data-library</artifactId>
-            <version>${mesakit.version}</version>
         </dependency>
 
         <!-- KivaKit -->
@@ -40,17 +38,14 @@
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-data-formats-library</artifactId>
-            <version>${kivakit.version}</version>
         </dependency>
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-data-compression</artifactId>
-            <version>${kivakit.version}</version>
         </dependency>
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-math</artifactId>
-            <version>${kivakit.version}</version>
         </dependency>
 
         <!-- OSM -->
@@ -58,37 +53,14 @@
         <dependency>
             <groupId>org.openstreetmap.osmosis</groupId>
             <artifactId>osmosis-core</artifactId>
-            <version>${osmosis.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-jdbc</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>xml-apis</groupId>
-                    <artifactId>xml-apis</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.openstreetmap.osmosis</groupId>
             <artifactId>osmosis-osm-binary</artifactId>
-            <version>${osmosis.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openstreetmap.osmosis</groupId>
             <artifactId>osmosis-pbf</artifactId>
-            <version>${osmosis.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>javax.ws.rs</groupId>
-                    <artifactId>jsr311-api</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
     </dependencies>

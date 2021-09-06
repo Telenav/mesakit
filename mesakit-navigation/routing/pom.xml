@@ -26,7 +26,6 @@
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-graph-world</artifactId>
-            <version>${mesakit.version}</version>
         </dependency>
 
         <!-- Utility -->
@@ -34,7 +33,6 @@
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
-            <version>${commons.collections.version}</version>
         </dependency>
 
     </dependencies>

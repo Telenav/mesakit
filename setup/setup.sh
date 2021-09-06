@@ -72,6 +72,12 @@ if [ $(git flow config >/dev/null 2>&1) ]; then
 fi
 
 #
+# Install Maven super POM
+#
+
+mesakit-maven-setup.sh
+
+#
 # Build
 #
 
