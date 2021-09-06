@@ -25,12 +25,14 @@ import com.telenav.mesakit.graph.navigation.Navigator;
 import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
  * @author tony
  * @author jonathanl (shibo)
  */
+@Ignore
 public class EdgePairTest extends GraphCoreUnitTest
 {
     private EdgePair connectedEdgePair1, connectedEdgePair2, unconnectedEdgePair, nonBranchingUnconnectedEdgePair;
