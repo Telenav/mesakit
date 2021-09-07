@@ -21,10 +21,10 @@ package com.telenav.mesakit.map.measurements;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Direction;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
-import com.telenav.mesakit.map.measurements.project.MapMeasurementsUnitTest;
+import com.telenav.mesakit.map.measurements.project.MeasurementsUnitTest;
 import org.junit.Test;
 
-public class HeadingTest extends MapMeasurementsUnitTest
+public class HeadingTest extends MeasurementsUnitTest
 {
     @Test
     public void testDirections()

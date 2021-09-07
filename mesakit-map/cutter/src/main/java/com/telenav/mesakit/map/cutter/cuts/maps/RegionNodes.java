@@ -27,7 +27,7 @@ import com.telenav.kivakit.primitive.collections.map.split.SplitLongToLongMap;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionSet;
-import com.telenav.mesakit.map.region.project.MapRegionLimits;
+import com.telenav.mesakit.map.region.project.RegionLimits;
 import org.openstreetmap.osmosis.core.domain.v0_6.Node;
 
 import java.util.ArrayList;
@@ -58,7 +58,7 @@ public class RegionNodes
         this.regionIndexMap = regionIndexMap;
 
         regionsForNode = new SplitLongToLongMap(name + ".regionsForNode");
-        regionsForNode.initialSize(MapRegionLimits.ESTIMATED_NODES);
+        regionsForNode.initialSize(RegionLimits.ESTIMATED_NODES);
         regionsForNode.initialize();
     }
 

@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
+import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import org.junit.Test;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class RegionIdentityTest extends MapRegionUnitTest
+public class RegionIdentityTest extends RegionUnitTest
 {
     @Test
     public void testContinent()

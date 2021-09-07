@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph.specifications.library;
 
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.test.random.RandomValueFactory;
-import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.graph.specifications.library.pbf.IntersectionMap;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
@@ -32,7 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class IntersectionMapTest extends GraphCoreUnitTest
+public class IntersectionMapTest extends GraphUnitTest
 {
     @Test
     public void test()

@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.road.name.parser.locales.english;
 
 import com.telenav.mesakit.map.region.locale.MapLocale;
-import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
+import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.ParsedRoadName;
 import com.telenav.mesakit.map.road.name.parser.RoadNameParser;
@@ -30,7 +30,7 @@ import org.junit.Test;
  * @author jonathanl (shibo)
  */
 @Ignore
-public class EnglishCanadaRoadNameParserTest extends MapRegionUnitTest
+public class EnglishCanadaRoadNameParserTest extends RegionUnitTest
 {
     @Test
     public void testAmbiguities()

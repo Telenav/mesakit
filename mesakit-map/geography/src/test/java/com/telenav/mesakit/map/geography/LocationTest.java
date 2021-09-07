@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.geography;
 import com.telenav.kivakit.kernel.language.values.level.Percent;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
+import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.geography.shape.rectangle.Size;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
@@ -30,7 +30,7 @@ import com.telenav.mesakit.map.measurements.geographic.Heading;
 import org.junit.Test;
 
 @SuppressWarnings("ConstantConditions")
-public class LocationTest extends MapGeographyUnitTest
+public class LocationTest extends GeographyUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

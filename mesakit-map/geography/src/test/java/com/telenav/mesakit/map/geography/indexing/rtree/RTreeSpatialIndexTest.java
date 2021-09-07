@@ -23,7 +23,7 @@ import com.telenav.kivakit.test.annotations.SlowTests;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
+import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.polyline.PolylineBuilder;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
@@ -37,7 +37,7 @@ import java.util.List;
 import java.util.Set;
 
 @Category({ SlowTests.class })
-public class RTreeSpatialIndexTest extends MapGeographyUnitTest
+public class RTreeSpatialIndexTest extends GeographyUnitTest
 {
     private static class TestKryoTypes extends KryoTypes
     {

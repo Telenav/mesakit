@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.measurements;
 
 import com.telenav.mesakit.map.measurements.geographic.Area;
-import com.telenav.mesakit.map.measurements.project.MapMeasurementsUnitTest;
+import com.telenav.mesakit.map.measurements.project.MeasurementsUnitTest;
 import org.junit.Test;
 
 /**
@@ -27,7 +27,7 @@ import org.junit.Test;
  *
  * @author matthieun
  */
-public class AreaTest extends MapMeasurementsUnitTest
+public class AreaTest extends MeasurementsUnitTest
 {
     @Test
     public void testConversion()

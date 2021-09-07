@@ -20,10 +20,10 @@ package com.telenav.mesakit.map.measurements;
 
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.motion.Speed;
-import com.telenav.mesakit.map.measurements.project.MapMeasurementsUnitTest;
+import com.telenav.mesakit.map.measurements.project.MeasurementsUnitTest;
 import org.junit.Test;
 
-public class SpeedTest extends MapMeasurementsUnitTest
+public class SpeedTest extends MeasurementsUnitTest
 {
     @Test
     public void test()

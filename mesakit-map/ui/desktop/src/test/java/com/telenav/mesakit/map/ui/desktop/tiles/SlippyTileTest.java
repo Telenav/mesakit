@@ -19,11 +19,11 @@
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
+import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import org.junit.Test;
 
-public class SlippyTileTest extends MapGeographyUnitTest
+public class SlippyTileTest extends GeographyUnitTest
 {
     @Test
     public void test2()

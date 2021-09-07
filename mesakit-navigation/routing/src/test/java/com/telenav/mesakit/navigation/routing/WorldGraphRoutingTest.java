@@ -20,7 +20,7 @@ package com.telenav.mesakit.navigation.routing;
 
 import com.telenav.kivakit.kernel.language.time.PreciseDuration;
 import com.telenav.kivakit.kernel.language.values.level.Weight;
-import com.telenav.mesakit.graph.world.project.GraphWorldUnitTest;
+import com.telenav.mesakit.graph.world.project.WorldGraphUnitTest;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.navigation.routing.cost.functions.heuristic.RemainingDistanceToEndCostFunction;
 import com.telenav.mesakit.navigation.routing.cost.functions.heuristic.SpeedCostFunction;
@@ -32,7 +32,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 @Ignore
-public class WorldGraphRoutingTest extends GraphWorldUnitTest
+public class WorldGraphRoutingTest extends WorldGraphUnitTest
 {
     private static final boolean SWING_DEBUG = false;
 

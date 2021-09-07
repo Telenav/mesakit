@@ -60,7 +60,7 @@ import com.telenav.mesakit.graph.metadata.DataBuild;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
 import com.telenav.mesakit.graph.metadata.DataSupplier;
 import com.telenav.mesakit.graph.metadata.DataVersion;
-import com.telenav.mesakit.graph.project.GraphCoreLimits;
+import com.telenav.mesakit.graph.project.GraphLimits;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 import com.telenav.mesakit.map.data.formats.library.DataFormat;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
@@ -737,7 +737,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     {
         if (type == ALLOW_ESTIMATE && forwardEdges == null)
         {
-            return wayCount(ALLOW_ESTIMATE).times(GraphCoreLimits.Estimated.EDGES_PER_WAY).asEstimate().ceiling(3);
+            return wayCount(ALLOW_ESTIMATE).times(GraphLimits.Estimated.EDGES_PER_WAY).asEstimate().ceiling(3);
         }
         return forwardEdges;
     }

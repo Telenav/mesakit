@@ -19,14 +19,14 @@
 package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.map.geography.Location;
 import org.junit.Test;
 
 /**
  * @author jonathanl (shibo)
  */
-public class VertexTest extends GraphCoreUnitTest
+public class VertexTest extends GraphUnitTest
 {
     @Test
     public void testInEdges()

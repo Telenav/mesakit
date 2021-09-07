@@ -23,14 +23,14 @@ import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSet;
-import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 import org.junit.Test;
 
 import static com.telenav.mesakit.graph.metadata.DataSupplier.OSM;
 import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
 
-public class VertexStoreTest extends GraphCoreUnitTest
+public class VertexStoreTest extends GraphUnitTest
 {
     @Test
     public void testAdd()

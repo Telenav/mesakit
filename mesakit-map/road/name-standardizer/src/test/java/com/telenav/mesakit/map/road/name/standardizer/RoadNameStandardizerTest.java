@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.road.name.standardizer;
 
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.map.region.locale.MapLocale;
-import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
+import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.ParsedRoadName;
 import org.junit.Ignore;
@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Ignore
-public abstract class RoadNameStandardizerTest extends MapRegionUnitTest
+public abstract class RoadNameStandardizerTest extends RegionUnitTest
 {
     private final RoadNameStandardizer standardizer;
 

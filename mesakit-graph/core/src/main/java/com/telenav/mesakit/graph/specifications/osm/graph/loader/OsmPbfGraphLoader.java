@@ -27,7 +27,7 @@ import com.telenav.mesakit.graph.identifiers.collections.WayIdentifierList;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.io.load.GraphConstraints;
 import com.telenav.mesakit.graph.io.load.GraphLoader;
-import com.telenav.mesakit.graph.project.GraphCoreProject;
+import com.telenav.mesakit.graph.GraphProject;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.PbfGraphLoader;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.PbfToGraphConverter;
 import com.telenav.mesakit.graph.specifications.library.pbf.PbfDataAnalysis;
@@ -121,7 +121,7 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
 
             if (JavaVirtualMachine.isPropertyTrue("MESAKIT_DEBUG_SAVE_RAW_GRAPH"))
             {
-                raw.save(new GraphArchive(this, GraphCoreProject.get().userGraphFolder().file("raw.graph"), ZipArchive.Mode.WRITE, ProgressReporter.NULL));
+                raw.save(new GraphArchive(this, GraphProject.get().userGraphFolder().file("raw.graph"), ZipArchive.Mode.WRITE, ProgressReporter.NULL));
             }
 
             // and then section the raw graph by loading it into the destination graph

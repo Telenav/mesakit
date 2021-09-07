@@ -49,7 +49,7 @@ import com.telenav.mesakit.map.region.border.cache.BorderCache;
 import com.telenav.mesakit.map.region.countries.Canada;
 import com.telenav.mesakit.map.region.countries.Mexico;
 import com.telenav.mesakit.map.region.countries.UnitedStates;
-import com.telenav.mesakit.map.region.project.MapRegionLimits;
+import com.telenav.mesakit.map.region.project.RegionLimits;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
 
 import java.util.ArrayList;
@@ -606,8 +606,8 @@ public abstract class Country extends Region<Country> implements Quantizable
         {
             final var settings = new BorderCache.Settings<Country>()
                     .withType(Country.class)
-                    .withMaximumObjects(MapRegionLimits.COUNTRIES)
-                    .withMaximumPolygonsPerObject(MapRegionLimits.POLYGONS_PER_COUNTRY)
+                    .withMaximumObjects(RegionLimits.COUNTRIES)
+                    .withMaximumPolygonsPerObject(RegionLimits.POLYGONS_PER_COUNTRY)
                     .withMinimumBorderArea(Area.squareMiles(5))
                     .withRegionExtractor(newExtractor())
                     .withRegionFactory((identity) -> identity.findOrCreateRegion(Country.class));

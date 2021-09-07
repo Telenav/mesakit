@@ -42,7 +42,7 @@ import com.telenav.mesakit.map.geography.LocatedHeading;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.LocationSequence;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.MapGeographyLimits;
+import com.telenav.mesakit.map.geography.project.GeographyLimits;
 import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
 import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
@@ -220,7 +220,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         @Override
         protected String onToString(final Polyline value)
         {
-            final var locations = new StringList(MapGeographyLimits.LOCATIONS_PER_POLYLINE);
+            final var locations = new StringList(GeographyLimits.LOCATIONS_PER_POLYLINE);
             for (final var location : value.locationSequence())
             {
                 locations.add(locationConverter.unconvert(location));
@@ -1646,7 +1646,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     @Override
     public String toString()
     {
-        return new ObjectList<>(MapGeographyLimits.LOCATIONS_PER_POLYLINE).appendAll(locationSequence()).join(":");
+        return new ObjectList<>(GeographyLimits.LOCATIONS_PER_POLYLINE).appendAll(locationSequence()).join(":");
     }
 
     public List<PolylineSection> trisect()

@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
+import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import com.telenav.mesakit.map.measurements.geographic.Direction;
 import org.junit.Test;
 
 @SuppressWarnings("ConstantConditions")
-public class RoadNameTest extends MapGeographyUnitTest
+public class RoadNameTest extends GeographyUnitTest
 {
     @Test
     public void testExtractDirection()

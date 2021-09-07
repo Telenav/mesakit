@@ -27,7 +27,7 @@ import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
+import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import org.junit.Test;
@@ -37,7 +37,7 @@ import java.util.Collections;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class QuadTreeSpatialIndexTest extends MapGeographyUnitTest
+public class QuadTreeSpatialIndexTest extends GeographyUnitTest
 {
     public static final boolean PROFILE = false;
 

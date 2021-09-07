@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.cutter.cuts.maps;
 
 import com.telenav.kivakit.kernel.language.collections.set.Sets;
-import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
+import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class RegionWaysTest extends MapRegionUnitTest
+public class RegionWaysTest extends RegionUnitTest
 {
     @Test
     public void test()

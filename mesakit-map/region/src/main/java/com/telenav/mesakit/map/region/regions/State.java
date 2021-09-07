@@ -36,7 +36,7 @@ import com.telenav.mesakit.map.region.RegionIdentifier;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.border.cache.BorderCache;
-import com.telenav.mesakit.map.region.project.MapRegionLimits;
+import com.telenav.mesakit.map.region.project.RegionLimits;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
 
 import java.util.Collection;
@@ -70,8 +70,8 @@ public class State extends Region<State>
         {
             final var settings = new BorderCache.Settings<State>()
                     .withType(State.class)
-                    .withMaximumObjects(MapRegionLimits.STATES)
-                    .withMaximumPolygonsPerObject(MapRegionLimits.POLYGONS_PER_STATE)
+                    .withMaximumObjects(RegionLimits.STATES)
+                    .withMaximumPolygonsPerObject(RegionLimits.POLYGONS_PER_STATE)
                     .withMinimumBorderArea(Area.squareMiles(5))
                     .withRegionExtractor(newExtractor())
                     .withRegionFactory((identity) -> identity.findOrCreateRegion(State.class));

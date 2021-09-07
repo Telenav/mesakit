@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.geography;
 
-import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
+import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import org.junit.Test;
 
@@ -26,7 +26,7 @@ import static com.telenav.mesakit.map.geography.Precision.DM5;
 import static com.telenav.mesakit.map.geography.Precision.DM6;
 import static com.telenav.mesakit.map.geography.Precision.DM7;
 
-public class PrecisionTest extends MapGeographyUnitTest
+public class PrecisionTest extends GeographyUnitTest
 {
     @Test
     public void testAngleToDecimal()

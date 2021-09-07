@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.cutter.cuts.maps;
 
 import com.telenav.kivakit.kernel.language.collections.set.Sets;
 import com.telenav.mesakit.map.region.RegionSet;
-import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
+import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
@@ -28,7 +28,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 @Ignore
-public class RegionNodesTest extends MapRegionUnitTest
+public class RegionNodesTest extends RegionUnitTest
 {
     @Test
     public void testHere()

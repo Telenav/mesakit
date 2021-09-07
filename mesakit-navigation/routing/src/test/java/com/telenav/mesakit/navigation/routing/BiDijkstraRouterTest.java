@@ -24,7 +24,7 @@ import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
-import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.map.measurements.motion.Speed;
 import com.telenav.mesakit.navigation.routing.bidijkstra.BiDijkstraRouter;
 import com.telenav.mesakit.navigation.routing.bidijkstra.BiDijkstraRoutingRequest;
@@ -35,7 +35,7 @@ import com.telenav.mesakit.navigation.routing.cost.functions.heuristic.RoadTypeC
 import org.junit.Before;
 import org.junit.Test;
 
-public class BiDijkstraRouterTest extends GraphCoreUnitTest
+public class BiDijkstraRouterTest extends GraphUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

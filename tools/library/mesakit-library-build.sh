@@ -32,7 +32,7 @@ usage() {
     echo " "
     echo "  Build modifiers:"
     echo " "
-    echo "       all-clean - prompt to remove cached and temporary files and mesakit artifacts from ~/.m2"
+    echo "       clean-all - prompt to remove cached and temporary files and mesakit artifacts from ~/.m2"
     echo " "
     echo "     attach-jars - attach source and javadoc jars to maven artifacts"
     echo " "
@@ -145,7 +145,7 @@ build() {
     BUILD_MODIFIERS_STRING=""
     DELIMITER=""
 
-    for MODIFIER in ${BUILD_MODIFIERS[@]}; do
+    for MODIFIER in "${BUILD_MODIFIERS[@]}"; do
 
         BUILD_MODIFIERS_STRING="$BUILD_MODIFIERS_STRING$DELIMITER$MODIFIER"
         DELIMITER=" "

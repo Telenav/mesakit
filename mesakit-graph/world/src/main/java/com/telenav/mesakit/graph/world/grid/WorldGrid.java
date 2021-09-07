@@ -38,7 +38,7 @@ import com.telenav.kivakit.resource.ResourceList;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
-import com.telenav.mesakit.graph.project.GraphCoreProject;
+import com.telenav.mesakit.graph.GraphProject;
 import com.telenav.mesakit.graph.world.WorldGraph;
 import com.telenav.mesakit.graph.world.WorldGraphConfiguration;
 import com.telenav.mesakit.graph.world.WorldGraphIndex;
@@ -614,7 +614,7 @@ public class WorldGrid
 
     private Folder regionCache()
     {
-        return GraphCoreProject.get().graphFolder().folder("world-graph/regions").mkdirs();
+        return GraphProject.get().graphFolder().folder("world-graph/regions").mkdirs();
     }
 
     private String toString(final List<WorldCell> cells)

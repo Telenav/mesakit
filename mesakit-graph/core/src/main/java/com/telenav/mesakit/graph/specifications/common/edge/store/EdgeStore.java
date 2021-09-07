@@ -57,8 +57,8 @@ import com.telenav.mesakit.graph.identifiers.RelationIdentifier;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.io.load.GraphConstraints;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
-import com.telenav.mesakit.graph.project.GraphCoreLimits;
-import com.telenav.mesakit.graph.project.GraphCoreLimits.Limit;
+import com.telenav.mesakit.graph.project.GraphLimits;
+import com.telenav.mesakit.graph.project.GraphLimits.Limit;
 import com.telenav.mesakit.graph.specifications.common.edge.EdgeAttributes;
 import com.telenav.mesakit.graph.specifications.common.edge.HeavyWeightEdge;
 import com.telenav.mesakit.graph.specifications.common.edge.store.index.CompressedEdgeBulkSpatialIndexer;
@@ -197,7 +197,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /** ============ The relation identifiers of ways */
     private final AttributeReference<LongToLongFixedMultiMap> WAY_IDENTIFIER_TO_RELATIONS = new AttributeReference<>(this, EdgeAttributes.get().RELATIONS, "wayIdentifierToRelationIdentifiers",
             () -> (LongToLongFixedMultiMap) new LongToLongFixedMultiMap("wayIdentifierToRelationIdentifiers")
-                    .initialChildSize(GraphCoreLimits.Estimated.RELATIONS_PER_EDGE)
+                    .initialChildSize(GraphLimits.Estimated.RELATIONS_PER_EDGE)
                     .initialSize(estimatedElements()));
 
     @KivaKitArchivedField

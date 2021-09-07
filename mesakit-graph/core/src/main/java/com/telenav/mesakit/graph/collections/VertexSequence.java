@@ -27,7 +27,7 @@ import com.telenav.kivakit.kernel.language.values.count.Estimate;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.RouteBuilder;
 import com.telenav.mesakit.graph.Vertex;
-import com.telenav.mesakit.graph.project.GraphCoreLimits.Limit;
+import com.telenav.mesakit.graph.project.GraphLimits.Limit;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
 import java.util.Iterator;

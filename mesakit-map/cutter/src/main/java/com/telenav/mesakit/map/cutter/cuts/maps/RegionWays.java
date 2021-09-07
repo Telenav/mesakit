@@ -24,7 +24,7 @@ import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionSet;
-import com.telenav.mesakit.map.region.project.MapRegionLimits;
+import com.telenav.mesakit.map.region.project.RegionLimits;
 import org.openstreetmap.osmosis.core.domain.v0_6.Way;
 
 import java.util.ArrayList;
@@ -56,7 +56,7 @@ public class RegionWays
         this.regionIndexMap = regionIndexMap;
 
         regionForWay = new SplitLongToIntMap(name + ".regionForWay");
-        regionForWay.initialSize(MapRegionLimits.ESTIMATED_WAYS);
+        regionForWay.initialSize(RegionLimits.ESTIMATED_WAYS);
         regionForWay.initialize();
     }
 

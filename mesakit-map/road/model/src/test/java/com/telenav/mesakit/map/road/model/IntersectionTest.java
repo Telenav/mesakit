@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
+import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import org.junit.Test;
 
-public class IntersectionTest extends MapGeographyUnitTest
+public class IntersectionTest extends GeographyUnitTest
 {
     @SuppressWarnings({ "ConstantConditions", "EqualsWithItself" })
     @Test

@@ -23,7 +23,7 @@ import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.navigation.Navigator;
 import com.telenav.mesakit.graph.navigation.RouteLimiter;
 import com.telenav.mesakit.graph.navigation.limiters.LengthRouteLimiter;
-import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.road.model.BridgeType;
 import com.telenav.mesakit.map.road.model.RoadName;
@@ -32,7 +32,7 @@ import org.junit.Test;
 /**
  * @author jonathanl (shibo)
  */
-public class EdgeTest extends GraphCoreUnitTest
+public class EdgeTest extends GraphUnitTest
 {
     @Test
     public void test()

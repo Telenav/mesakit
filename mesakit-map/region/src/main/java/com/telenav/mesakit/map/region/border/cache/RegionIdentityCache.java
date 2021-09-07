@@ -29,7 +29,7 @@ import com.telenav.kivakit.serialization.core.SerializationSession;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionIdentity;
-import com.telenav.mesakit.map.region.project.MapRegionProject;
+import com.telenav.mesakit.map.region.RegionProject;
 
 import java.io.InputStream;
 import java.util.Set;
@@ -87,7 +87,7 @@ public class RegionIdentityCache<T extends Region<T>> extends BaseRepeater
             trace("Region identities cache file is version $, written by KivaKit version $", identities.version(), kivakitVersion);
 
             // ensure that this MesaKit version can read the data (data is backwards compatible but not forward),
-            if (MesaKit.get().projectVersion().isNewerThanOrEqualTo(MapRegionProject.get().borderDataVersion()))
+            if (MesaKit.get().projectVersion().isNewerThanOrEqualTo(RegionProject.get().borderDataVersion()))
             {
                 // and loop through them
                 for (final var identity : identities.get())

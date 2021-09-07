@@ -75,7 +75,7 @@ import com.telenav.mesakit.map.region.RegionType;
 import com.telenav.mesakit.map.region.RegionType.RegionFactory;
 import com.telenav.mesakit.map.region.border.Border;
 import com.telenav.mesakit.map.region.border.BorderSpatialIndex;
-import com.telenav.mesakit.map.region.project.MapRegionProject;
+import com.telenav.mesakit.map.region.RegionProject;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramBorder;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
@@ -134,8 +134,8 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
     private static final NetworkPath NETWORK_PATH = Host.parse("www.mesakit.org")
             .https()
             .path(Message.format("/data/$/administrative-borders-$.jar",
-                    MapRegionProject.get().borderDataVersion(),
-                    MapRegionProject.get().borderDataVersion()));
+                    RegionProject.get().borderDataVersion(),
+                    RegionProject.get().borderDataVersion()));
 
     /**
      * Set to true to show approximate sizes of polygon objects
@@ -345,7 +345,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                     // and save the identities to it
                     final var session = serializationSession();
                     session.open(RESOURCE, KivaKit.get().projectVersion(), out);
-                    identityCache.save(session, MapRegionProject.get().borderDataVersion(), identities);
+                    identityCache.save(session, RegionProject.get().borderDataVersion(), identities);
                 }
                 catch (final Exception e)
                 {
@@ -455,10 +455,10 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
 
     private Folder cacheFolder()
     {
-        return MapRegionProject.get()
+        return RegionProject.get()
                 .mesakitMapFolder()
                 .folder("region/borders")
-                .folder(MapRegionProject.get().borderDataVersion().toString())
+                .folder(RegionProject.get().borderDataVersion().toString())
                 .mkdirs();
     }
 
@@ -640,7 +640,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                     trace("Cached border index is version $", version);
 
                     // and if it is the current version
-                    if (version.equals(MapRegionProject.get().borderDataVersion()))
+                    if (version.equals(RegionProject.get().borderDataVersion()))
                     {
                         var invalid = false;
                         var borders = 0;
@@ -679,7 +679,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                     else
                     {
                         information("Ignoring version $ cache file '$' since current cache version is $",
-                                version, borderCacheFile().fileName(), MapRegionProject.get().borderDataVersion());
+                                version, borderCacheFile().fileName(), RegionProject.get().borderDataVersion());
                     }
                 }
                 finally
@@ -942,7 +942,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
         {
             final var session = serializationSession();
             session.open(RESOURCE, KivaKit.get().projectVersion(), output);
-            session.write(new VersionedObject<>(MapRegionProject.get().borderDataVersion(), index()));
+            session.write(new VersionedObject<>(RegionProject.get().borderDataVersion(), index()));
             session.close();
         }
         catch (final Exception e)
@@ -965,7 +965,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
             final var serialization = serializationSession();
             serialization.open(RESOURCE, KivaKit.get().projectVersion(), in);
             final var index = serialization.read();
-            ensureEqual(index.version(), MapRegionProject.get().borderDataVersion());
+            ensureEqual(index.version(), RegionProject.get().borderDataVersion());
             ensureEqual(index.get(), index());
         }
         catch (final IOException e)

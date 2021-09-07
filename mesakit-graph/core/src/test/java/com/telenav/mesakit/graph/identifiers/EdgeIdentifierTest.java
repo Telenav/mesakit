@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.graph.identifiers;
 
-import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphUnitTest;
 import org.junit.Test;
 
 /**
  * @author jonathanl (shibo)
  */
-public class EdgeIdentifierTest extends GraphCoreUnitTest
+public class EdgeIdentifierTest extends GraphUnitTest
 {
     @Test
     public void testEquals()
