@@ -47,7 +47,7 @@ import com.telenav.mesakit.graph.collections.VertexSequence;
 import com.telenav.mesakit.graph.identifiers.VertexIdentifier;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
-import com.telenav.mesakit.graph.project.GraphCoreLimits;
+import com.telenav.mesakit.graph.project.GraphLimits;
 import com.telenav.mesakit.graph.specifications.common.edge.EdgeAttributes;
 import com.telenav.mesakit.graph.specifications.common.edge.HeavyWeightEdge;
 import com.telenav.mesakit.graph.specifications.common.element.GraphElementStore;
@@ -293,7 +293,7 @@ public class VertexStore extends NodeStore<Vertex>
 
         // then copy the two-way edge indexes into an int array
         final var twoWayIndexes = new IntArray(objectName() + ".twoWayIndexes");
-        twoWayIndexes.initialSize(GraphCoreLimits.Estimated.EDGES_PER_VERTEX);
+        twoWayIndexes.initialSize(GraphLimits.Estimated.EDGES_PER_VERTEX);
         twoWayIndexes.initialize();
         final var both = connectivity().retrieveTwoWayEdgeSequence(originalVertex.index());
         for (var edge : both)

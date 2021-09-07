@@ -21,13 +21,13 @@ package com.telenav.mesakit.graph.specifications.common.vertex.store;
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.mesakit.graph.Metadata;
-import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphUnitTest;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class EdgeListStoreTest extends GraphCoreUnitTest
+public class EdgeListStoreTest extends GraphUnitTest
 {
     @Test
     public void testAddRetrieve()

@@ -22,14 +22,14 @@ import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
 import com.telenav.kivakit.kernel.language.values.count.Estimate;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.graph.specifications.common.edge.store.stores.polyline.PolylineStore;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
 import org.junit.Test;
 
 @SuppressWarnings("ConstantConditions")
-public class PolylineStoreTest extends GraphCoreUnitTest
+public class PolylineStoreTest extends GraphUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

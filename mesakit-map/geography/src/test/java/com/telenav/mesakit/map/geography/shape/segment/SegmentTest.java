@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.geography.shape.segment;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
+import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.polyline.PolylineSnapper;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
@@ -32,7 +32,7 @@ import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import org.junit.Test;
 
 @SuppressWarnings("ConstantConditions")
-public class SegmentTest extends MapGeographyUnitTest
+public class SegmentTest extends GeographyUnitTest
 {
     private static final Angle tolerance = Angle.degrees(0.05);
 

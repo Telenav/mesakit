@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.geography;
 
-import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
+import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import org.junit.Test;
 
-public class LongitudeTest extends MapGeographyUnitTest
+public class LongitudeTest extends GeographyUnitTest
 {
     @Test
     public void testAdd()

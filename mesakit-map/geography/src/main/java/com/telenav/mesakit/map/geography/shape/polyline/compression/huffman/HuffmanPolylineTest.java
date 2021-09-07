@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.geography.shape.polyline.compression.huffman;
 
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
+import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.polyline.PolylineBuilder;
 import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
@@ -35,7 +35,7 @@ import java.util.List;
 /**
  * <b>Work in Progress</b>
  */
-public class HuffmanPolylineTest extends MapGeographyUnitTest
+public class HuffmanPolylineTest extends GeographyUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

@@ -27,14 +27,14 @@ import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Metadata;
-import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.graph.specifications.common.element.store.TagStore;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.compression.PbfStringListTagCodec;
 import org.junit.Test;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
-public class OsmTagStoreTest extends GraphCoreUnitTest
+public class OsmTagStoreTest extends GraphUnitTest
 {
     @Test
     public void test()

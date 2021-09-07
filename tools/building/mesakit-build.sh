@@ -20,7 +20,7 @@ export ALLOW_CLEANING=true
 
 for project_home in "${MESAKIT_PROJECT_HOMES[@]}"; do
 
-    build "$project_home" $@
+    build "$project_home" "$*"
 
     export ALLOW_CLEANING=false
 

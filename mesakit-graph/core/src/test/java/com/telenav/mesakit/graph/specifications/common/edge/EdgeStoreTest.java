@@ -22,7 +22,7 @@ import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Metadata;
-import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 import org.junit.Test;
 
@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import static com.telenav.mesakit.graph.metadata.DataSupplier.OSM;
 import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
 
-public class EdgeStoreTest extends GraphCoreUnitTest
+public class EdgeStoreTest extends GraphUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

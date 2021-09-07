@@ -25,7 +25,7 @@ import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.kivakit.test.annotations.SlowTests;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
-import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.map.measurements.motion.Speed;
 import com.telenav.mesakit.navigation.routing.cost.CostFunction;
 import com.telenav.mesakit.navigation.routing.cost.functions.TravelTimeCostFunction;
@@ -45,7 +45,7 @@ import org.junit.experimental.categories.Category;
  */
 @Ignore
 @Category({ SlowTests.class })
-public class DijkstraRouterTest extends GraphCoreUnitTest
+public class DijkstraRouterTest extends GraphUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

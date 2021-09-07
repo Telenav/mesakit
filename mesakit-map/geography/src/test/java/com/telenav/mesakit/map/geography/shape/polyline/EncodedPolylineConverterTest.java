@@ -23,7 +23,7 @@ import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
+import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import org.junit.Test;
 
 /**
@@ -32,7 +32,7 @@ import org.junit.Test;
  *
  * @author matthieun
  */
-public class EncodedPolylineConverterTest extends MapGeographyUnitTest
+public class EncodedPolylineConverterTest extends GeographyUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

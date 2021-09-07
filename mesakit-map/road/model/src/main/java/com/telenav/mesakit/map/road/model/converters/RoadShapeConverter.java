@@ -25,7 +25,7 @@ import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.MapGeographyLimits;
+import com.telenav.mesakit.map.geography.project.GeographyLimits;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 
 import java.util.List;
@@ -59,7 +59,7 @@ public class RoadShapeConverter extends BaseStringConverter<Polyline>
     @Override
     protected Polyline onToValue(final String value)
     {
-        final List<Location> locations = new ObjectList<>(MapGeographyLimits.LOCATIONS_PER_POLYLINE);
+        final List<Location> locations = new ObjectList<>(GeographyLimits.LOCATIONS_PER_POLYLINE);
         var i = 0;
         Latitude latitude = null;
         Longitude longitude;

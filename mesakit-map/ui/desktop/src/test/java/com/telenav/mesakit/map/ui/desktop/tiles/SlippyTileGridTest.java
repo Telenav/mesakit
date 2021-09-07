@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
-import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
+import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import org.junit.Test;
 
 import static com.telenav.mesakit.map.ui.desktop.tiles.SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA;
 
-public class SlippyTileGridTest extends MapGeographyUnitTest
+public class SlippyTileGridTest extends GeographyUnitTest
 {
     @Test
     public void testZoomLevel0()

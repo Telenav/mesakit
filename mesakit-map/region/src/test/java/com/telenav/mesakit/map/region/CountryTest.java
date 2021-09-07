@@ -22,7 +22,7 @@ import com.telenav.kivakit.kernel.language.locales.CountryIsoCode;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.loggers.ConsoleLogger;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
+import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
@@ -38,7 +38,7 @@ import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.GERMAN
 import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.PORTUGUESE;
 import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.SPANISH;
 
-public class CountryTest extends MapRegionUnitTest
+public class CountryTest extends RegionUnitTest
 {
     private static final Logger LOGGER = new ConsoleLogger();
 

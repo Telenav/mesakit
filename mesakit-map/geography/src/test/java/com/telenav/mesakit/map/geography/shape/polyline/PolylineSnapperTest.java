@@ -22,7 +22,7 @@ import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.LocationSequence;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
+import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
@@ -31,7 +31,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PolylineSnapperTest extends MapGeographyUnitTest
+public class PolylineSnapperTest extends GeographyUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

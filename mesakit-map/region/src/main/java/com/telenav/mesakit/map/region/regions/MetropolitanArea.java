@@ -34,7 +34,7 @@ import com.telenav.mesakit.map.region.RegionIdentifier;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.border.cache.BorderCache;
-import com.telenav.mesakit.map.region.project.MapRegionLimits;
+import com.telenav.mesakit.map.region.project.RegionLimits;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
 
 import java.util.Collection;
@@ -64,8 +64,8 @@ public class MetropolitanArea extends Region<MetropolitanArea>
         {
             final var settings = new BorderCache.Settings<MetropolitanArea>()
                     .withType(MetropolitanArea.class)
-                    .withMaximumObjects(MapRegionLimits.METROPOLITAN_AREAS)
-                    .withMaximumPolygonsPerObject(MapRegionLimits.POLYGONS_PER_METROPOLITAN_AREA)
+                    .withMaximumObjects(RegionLimits.METROPOLITAN_AREAS)
+                    .withMaximumPolygonsPerObject(RegionLimits.POLYGONS_PER_METROPOLITAN_AREA)
                     .withMinimumBorderArea(Area.squareMiles(5))
                     .withRegionExtractor(newExtractor())
                     .withRegionFactory((identity) -> identity.findOrCreateRegion(MetropolitanArea.class));

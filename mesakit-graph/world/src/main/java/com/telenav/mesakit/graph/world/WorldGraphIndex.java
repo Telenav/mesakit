@@ -53,7 +53,7 @@ import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.quadtree.QuadTreeSpatialIndex;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.mesakit.map.region.project.MapRegionLimits;
+import com.telenav.mesakit.map.region.project.RegionLimits;
 import com.telenav.mesakit.map.utilities.grid.GridCell;
 
 import java.io.Serializable;
@@ -192,7 +192,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
     private WorldGraphIndex()
     {
         cellForWayIdentifier = new SplitLongToIntMap("WorldGraphIndex.cellForPbfWayIdentifier");
-        cellForWayIdentifier.initialSize(MapRegionLimits.ESTIMATED_WAYS);
+        cellForWayIdentifier.initialSize(RegionLimits.ESTIMATED_WAYS);
         cellForWayIdentifier.initialize();
     }
 

@@ -23,7 +23,7 @@ import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
 import com.telenav.kivakit.kernel.language.values.count.Estimate;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToByteMap;
 import com.telenav.kivakit.primitive.collections.set.SplitLongSet;
-import com.telenav.mesakit.map.region.project.MapRegionLimits;
+import com.telenav.mesakit.map.region.project.RegionLimits;
 import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
 
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
@@ -57,7 +57,7 @@ public class IntersectionMap implements Named
         this.name = name;
 
         countMap = new SplitLongToByteMap(name() + ".count.map");
-        countMap.initialSize(MapRegionLimits.ESTIMATED_WAYS);
+        countMap.initialSize(RegionLimits.ESTIMATED_WAYS);
         countMap.initialize();
     }
 

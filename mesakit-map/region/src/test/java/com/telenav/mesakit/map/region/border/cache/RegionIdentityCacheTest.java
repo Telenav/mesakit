@@ -25,8 +25,8 @@ import com.telenav.kivakit.kernel.language.values.version.VersionedObject;
 import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.map.region.RegionIdentifier;
 import com.telenav.mesakit.map.region.RegionIdentity;
-import com.telenav.mesakit.map.region.project.MapRegionProject;
-import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
+import com.telenav.mesakit.map.region.RegionProject;
+import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.State;
 import org.junit.Test;
 
@@ -37,7 +37,7 @@ import java.util.Set;
 
 import static com.telenav.kivakit.serialization.core.SerializationSession.Type.RESOURCE;
 
-public class RegionIdentityCacheTest extends MapRegionUnitTest
+public class RegionIdentityCacheTest extends RegionUnitTest
 {
     @Test
     public void test()
@@ -51,7 +51,7 @@ public class RegionIdentityCacheTest extends MapRegionUnitTest
         final var output = new Output(data);
 
         // Save the identities
-        final var version = MapRegionProject.get().borderDataVersion();
+        final var version = RegionProject.get().borderDataVersion();
         session.open(RESOURCE, KivaKit.get().projectVersion(), output);
         session.write(new VersionedObject<>(version, identities()));
         session.close();

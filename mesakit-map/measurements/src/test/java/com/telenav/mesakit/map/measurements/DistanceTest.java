@@ -20,10 +20,10 @@ package com.telenav.mesakit.map.measurements;
 
 import com.telenav.kivakit.kernel.language.values.level.Percent;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.mesakit.map.measurements.project.MapMeasurementsUnitTest;
+import com.telenav.mesakit.map.measurements.project.MeasurementsUnitTest;
 import org.junit.Test;
 
-public class DistanceTest extends MapMeasurementsUnitTest
+public class DistanceTest extends MeasurementsUnitTest
 {
     @Test
     public void testAdd()

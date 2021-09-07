@@ -30,7 +30,7 @@ import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.collections.RelationSet;
 import com.telenav.mesakit.graph.collections.VertexSequence;
-import com.telenav.mesakit.graph.project.GraphCoreLimits;
+import com.telenav.mesakit.graph.project.GraphLimits;
 import com.telenav.mesakit.graph.world.WorldEdge;
 import com.telenav.mesakit.graph.world.WorldRelation;
 import com.telenav.mesakit.graph.world.WorldVertex;
@@ -313,7 +313,7 @@ public class WorldCellList extends ArrayList<WorldCell>
 
     private RelationSet relations(final Function<WorldCell, Iterable<EdgeRelation>> sequence)
     {
-        return RelationSet.forIterable(GraphCoreLimits.Limit.RELATIONS, Iterables.iterable(() -> new Next<>()
+        return RelationSet.forIterable(GraphLimits.Limit.RELATIONS, Iterables.iterable(() -> new Next<>()
         {
             final Iterator<WorldCell> cellIterator = iterator();
 

@@ -21,14 +21,14 @@ package com.telenav.mesakit.map.geography.shape.polyline;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
+import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompressedPolylineTest extends MapGeographyUnitTest
+public class CompressedPolylineTest extends GeographyUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

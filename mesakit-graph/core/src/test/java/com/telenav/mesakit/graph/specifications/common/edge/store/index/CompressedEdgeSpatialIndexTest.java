@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph.specifications.common.edge.store.index;
 
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.mesakit.graph.Graph;
-import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
@@ -32,7 +32,7 @@ import org.junit.Test;
 /**
  * @author jonathanl (shibo)
  */
-public class CompressedEdgeSpatialIndexTest extends GraphCoreUnitTest
+public class CompressedEdgeSpatialIndexTest extends GraphUnitTest
 {
     @Test
     public void test()

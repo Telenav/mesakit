@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.collections;
 
-import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphUnitTest;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -26,7 +26,7 @@ import org.junit.Test;
  * @author jonathanl (shibo)
  */
 @Ignore
-public class EdgesForRoadSectionIdentifierTest extends GraphCoreUnitTest
+public class EdgesForRoadSectionIdentifierTest extends GraphUnitTest
 {
     @Test
     public void testQuery()

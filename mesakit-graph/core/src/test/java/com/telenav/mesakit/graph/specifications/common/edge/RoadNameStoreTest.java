@@ -21,14 +21,14 @@ package com.telenav.mesakit.graph.specifications.common.edge;
 import com.telenav.kivakit.kernel.language.values.count.Estimate;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Metadata;
-import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.graph.specifications.common.edge.store.stores.roadname.RoadNameStore;
 import org.junit.Test;
 
 import static com.telenav.mesakit.map.road.model.RoadName.Type;
 import static com.telenav.mesakit.map.road.model.RoadName.forName;
 
-public class RoadNameStoreTest extends GraphCoreUnitTest
+public class RoadNameStoreTest extends GraphUnitTest
 {
     @Test
     public void test()

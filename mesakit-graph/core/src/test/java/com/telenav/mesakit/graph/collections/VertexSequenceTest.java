@@ -22,7 +22,7 @@ import com.telenav.kivakit.kernel.language.iteration.Iterables;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
-import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import org.junit.Test;
@@ -34,7 +34,7 @@ import java.util.List;
  * @author tony
  * @author jonathanl (shibo)
  */
-public class VertexSequenceTest extends GraphCoreUnitTest
+public class VertexSequenceTest extends GraphUnitTest
 {
     @Test
     public void test()

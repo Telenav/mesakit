@@ -27,8 +27,8 @@ import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.io.load.GraphConstraints;
-import com.telenav.mesakit.graph.project.GraphCoreLimits.Estimated;
-import com.telenav.mesakit.graph.project.GraphCoreLimits.Limit;
+import com.telenav.mesakit.graph.project.GraphLimits.Estimated;
+import com.telenav.mesakit.graph.project.GraphLimits.Limit;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 

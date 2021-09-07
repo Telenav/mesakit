@@ -68,7 +68,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
-import static com.telenav.mesakit.graph.project.GraphCoreLimits.Limit;
+import static com.telenav.mesakit.graph.project.GraphLimits.Limit;
 
 /**
  * A set of edges. Supports {@link #union(EdgeSet)} and {@link #without(Set)} operations, that logically combine this

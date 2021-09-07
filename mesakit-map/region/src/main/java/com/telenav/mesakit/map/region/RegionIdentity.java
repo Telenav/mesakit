@@ -32,7 +32,6 @@ import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
-import com.telenav.mesakit.map.region.project.MapRegionProject;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegion;
 import com.telenav.mesakit.map.region.regions.City;
 import com.telenav.mesakit.map.region.regions.Continent;
@@ -439,7 +438,7 @@ public class RegionIdentity implements AsString, KryoSerializable
     @Before
     public void testSetup()
     {
-        MapRegionProject.get().initialize();
+        RegionProject.get().initialize();
     }
 
     public TimeZone timeZone()

@@ -23,14 +23,14 @@ import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.region.border.Border;
-import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
+import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Continent;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BorderTest extends MapRegionUnitTest
+public class BorderTest extends RegionUnitTest
 {
     @Test
     public void testSerialization()

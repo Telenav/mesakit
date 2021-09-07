@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
+import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
 import org.junit.Test;
 
-public class RegionSetTest extends MapRegionUnitTest
+public class RegionSetTest extends RegionUnitTest
 {
     @Test
     public void test()

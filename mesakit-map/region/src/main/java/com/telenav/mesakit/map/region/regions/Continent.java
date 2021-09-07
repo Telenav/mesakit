@@ -43,7 +43,7 @@ import com.telenav.mesakit.map.region.continents.Europe;
 import com.telenav.mesakit.map.region.continents.NorthAmerica;
 import com.telenav.mesakit.map.region.continents.Oceania;
 import com.telenav.mesakit.map.region.continents.SouthAmerica;
-import com.telenav.mesakit.map.region.project.MapRegionLimits;
+import com.telenav.mesakit.map.region.project.RegionLimits;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
 
 import java.util.ArrayList;
@@ -85,8 +85,8 @@ public abstract class Continent extends Region<Continent> implements Iterable<Co
         {
             final var settings = new BorderCache.Settings<Continent>()
                     .withType(Continent.class)
-                    .withMaximumObjects(MapRegionLimits.CONTINENTS)
-                    .withMaximumPolygonsPerObject(MapRegionLimits.POLYGONS_PER_CONTINENT)
+                    .withMaximumObjects(RegionLimits.CONTINENTS)
+                    .withMaximumPolygonsPerObject(RegionLimits.POLYGONS_PER_CONTINENT)
                     .withMinimumBorderArea(Area.squareMiles(1_000))
                     .withRegionExtractor(newExtractor())
                     .withRegionFactory((identity) -> identity.findOrCreateRegion(Continent.class));

@@ -23,7 +23,7 @@ import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.extractors.ExitRoadNameExtractor;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.region.locale.MapLocale;
-import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
+import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import org.junit.Test;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
@@ -32,7 +32,7 @@ import java.util.Set;
 
 import static com.telenav.mesakit.map.road.name.standardizer.RoadNameStandardizer.Mode.MESAKIT_STANDARDIZATION;
 
-public class ExitRoadNameExtractorTest extends MapRegionUnitTest
+public class ExitRoadNameExtractorTest extends RegionUnitTest
 {
     @Test
     public void test()

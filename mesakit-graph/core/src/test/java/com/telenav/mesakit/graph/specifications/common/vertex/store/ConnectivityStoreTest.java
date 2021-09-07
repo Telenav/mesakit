@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.vertex.store;
 
-import com.telenav.mesakit.graph.project.GraphCoreUnitTest;
+import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
@@ -27,7 +27,7 @@ import org.junit.Test;
 /**
  * @author jonathanl (shibo)
  */
-public class ConnectivityStoreTest extends GraphCoreUnitTest
+public class ConnectivityStoreTest extends GraphUnitTest
 {
     @Test
     public void test()

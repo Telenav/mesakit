@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.region;
 
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
+import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.TimeZone;
 import org.junit.Test;
 
@@ -30,7 +30,7 @@ import org.junit.Test;
  * @author roberts
  * @author jonathanl (shibo)
  */
-public class TimeZoneTest extends MapRegionUnitTest
+public class TimeZoneTest extends RegionUnitTest
 {
     @Test
     public void testLosAngeles()

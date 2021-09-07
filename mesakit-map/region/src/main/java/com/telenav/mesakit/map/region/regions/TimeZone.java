@@ -35,7 +35,7 @@ import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.RegionType;
 import com.telenav.mesakit.map.region.border.Border;
 import com.telenav.mesakit.map.region.border.cache.BorderCache;
-import com.telenav.mesakit.map.region.project.MapRegionLimits;
+import com.telenav.mesakit.map.region.project.RegionLimits;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
 
 import java.time.ZoneId;
@@ -69,8 +69,8 @@ public class TimeZone extends Region<TimeZone>
         {
             final var settings = new BorderCache.Settings<TimeZone>()
                     .withType(TimeZone.class)
-                    .withMaximumObjects(MapRegionLimits.TIME_ZONES)
-                    .withMaximumPolygonsPerObject(MapRegionLimits.POLYGONS_PER_TIME_ZONE)
+                    .withMaximumObjects(RegionLimits.TIME_ZONES)
+                    .withMaximumPolygonsPerObject(RegionLimits.POLYGONS_PER_TIME_ZONE)
                     .withMinimumBorderArea(Area.squareMiles(5))
                     .withRegionExtractor(newExtractor())
                     .withRegionFactory((identity) -> identity.findOrCreateRegion(TimeZone.class));
