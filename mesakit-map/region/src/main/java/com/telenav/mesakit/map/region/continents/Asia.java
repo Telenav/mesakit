@@ -36,7 +36,7 @@ public class Asia extends Continent
     }
 
     @Override
-    protected void onInitialize()
+    public void onInitialize()
     {
         Country.AFGHANISTAN = new Country(this, Country.baseInstance()
                 .withIdentity(Country.baseRegionCode()

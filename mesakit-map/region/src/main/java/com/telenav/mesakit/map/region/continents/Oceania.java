@@ -37,7 +37,7 @@ public class Oceania extends Continent
     }
 
     @Override
-    protected void onInitialize()
+    public void onInitialize()
     {
         Country.AMERICAN_SAMOA = new Country(this, Country.baseInstance()
                 .withIdentity(Country.baseRegionCode()

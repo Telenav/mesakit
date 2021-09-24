@@ -105,24 +105,6 @@ public class TagStore implements KryoSerializable, NamedObject, Initializable
         this.codec = ensureNotNull(codec);
     }
 
-    @Override
-    public void initialize()
-    {
-        offset = new SplitIntArray(objectName() + ".offset");
-        offset.nullInt(Integer.MIN_VALUE);
-        offset.initialize();
-
-        length = new SplitPackedArray(objectName() + ".length");
-        length.bits(BitCount._16, NO_OVERFLOW);
-        length.nullLong(65_535);
-        length.initialize();
-
-        final var tags = new SplitByteArray(objectName() + ".tags");
-        tags.hasNullByte(false);
-        tags.initialize();
-        this.tags = tags;
-    }
-
     public boolean isEmpty()
     {
         return size() == 0;
@@ -138,6 +120,24 @@ public class TagStore implements KryoSerializable, NamedObject, Initializable
     public void objectName(final String objectName)
     {
         this.objectName = objectName;
+    }
+
+    @Override
+    public void onInitialize()
+    {
+        offset = new SplitIntArray(objectName() + ".offset");
+        offset.nullInt(Integer.MIN_VALUE);
+        offset.initialize();
+
+        length = new SplitPackedArray(objectName() + ".length");
+        length.bits(BitCount._16, NO_OVERFLOW);
+        length.nullLong(65_535);
+        length.initialize();
+
+        final var tags = new SplitByteArray(objectName() + ".tags");
+        tags.hasNullByte(false);
+        tags.initialize();
+        this.tags = tags;
     }
 
     @Override

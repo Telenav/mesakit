@@ -149,7 +149,7 @@ public class UnitedStates extends Country
     }
 
     @Override
-    protected void onInitialize()
+    public void onInitialize()
     {
         final var BASE = new RegionInstance<>(State.class);
 

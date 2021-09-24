@@ -168,11 +168,6 @@ public class SplitPolylineStore implements KryoSerializable, NamedObject, Initia
     }
 
     @Override
-    public void initialize()
-    {
-    }
-
-    @Override
     public void objectName(final String objectName)
     {
         this.objectName = objectName;
@@ -182,6 +177,11 @@ public class SplitPolylineStore implements KryoSerializable, NamedObject, Initia
     public String objectName()
     {
         return objectName;
+    }
+
+    @Override
+    public void onInitialize()
+    {
     }
 
     @Override

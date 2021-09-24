@@ -42,7 +42,7 @@ public class Seattle extends City
     }
 
     @Override
-    protected void onInitialize()
+    public void onInitialize()
     {
         GREEN_LAKE = new District(this, new RegionInstance<>(District.class)
                 .withIdentity(new RegionIdentity("Green Lake"))

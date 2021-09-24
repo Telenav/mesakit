@@ -38,7 +38,7 @@ public class SouthAmerica extends Continent
     }
 
     @Override
-    protected void onInitialize()
+    public void onInitialize()
     {
         Country.ANTIGUA_AND_BARBUDA = new Country(this, Country.baseInstance()
                 .withIdentity(Country.baseRegionCode()

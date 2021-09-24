@@ -26,8 +26,8 @@ import com.telenav.kivakit.kernel.project.Project;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.graph.project.GraphKryoTypes;
-import com.telenav.mesakit.map.data.formats.pbf.processing.filters.PbfFilters;
 import com.telenav.mesakit.map.data.formats.pbf.PbfProject;
+import com.telenav.mesakit.map.data.formats.pbf.processing.filters.PbfFilters;
 import com.telenav.mesakit.map.region.RegionProject;
 
 /**

@@ -120,19 +120,6 @@ public class RoadNameStore implements NamedObject, Initializable
     }
 
     @Override
-    public void initialize()
-    {
-        names = new SplitByteArray(objectName() + ".names");
-        names.initialSize(initialSize.times(Count._4));
-        names.initialize();
-        names.write(Byte.MIN_VALUE);
-
-        keyToNameIndex = new LongToIntMap(objectName() + ".keyToNameIndex");
-        keyToNameIndex.initialSize(initialSize);
-        keyToNameIndex.initialize();
-    }
-
-    @Override
     public void objectName(final String objectName)
     {
         this.objectName = objectName;
@@ -142,6 +129,19 @@ public class RoadNameStore implements NamedObject, Initializable
     public String objectName()
     {
         return objectName;
+    }
+
+    @Override
+    public void onInitialize()
+    {
+        names = new SplitByteArray(objectName() + ".names");
+        names.initialSize(initialSize.times(Count._4));
+        names.initialize();
+        names.write(Byte.MIN_VALUE);
+
+        keyToNameIndex = new LongToIntMap(objectName() + ".keyToNameIndex");
+        keyToNameIndex.initialSize(initialSize);
+        keyToNameIndex.initialize();
     }
 
     public void set(final Edge edge, final RoadName.Type type, final int roadNameOrdinal, final RoadName roadName)

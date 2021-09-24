@@ -42,7 +42,7 @@ public class NewYork extends State
     }
 
     @Override
-    protected void onInitialize()
+    public void onInitialize()
     {
         BUFFALO = new City(this, new RegionInstance<>(City.class)
                 .withIdentity(new RegionIdentity("Buffalo"))

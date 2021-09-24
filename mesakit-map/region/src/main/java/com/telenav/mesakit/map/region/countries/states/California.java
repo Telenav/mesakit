@@ -52,7 +52,7 @@ public class California extends State
     }
 
     @Override
-    protected void onInitialize()
+    public void onInitialize()
     {
         SAN_FRANCISCO_OAKLAND = new MetropolitanArea(this,
                 new RegionInstance<>(MetropolitanArea.class)

@@ -179,7 +179,19 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     }
 
     @Override
-    public void initialize()
+    public String objectName()
+    {
+        return objectName;
+    }
+
+    @Override
+    public void objectName(final String objectName)
+    {
+        this.objectName = objectName;
+    }
+
+    @Override
+    public void onInitialize()
     {
         final var vertexCount = graph.metadata().vertexCount(ALLOW_ESTIMATE).asEstimate();
 
@@ -204,18 +216,6 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
         temporaryVertexEdgeListStore = new IntLinkedListStore(objectName() + ".temporaryVertexEdgeListStore");
         temporaryVertexEdgeListStore.initialSize(vertexCount);
         temporaryVertexEdgeListStore.initialize();
-    }
-
-    @Override
-    public String objectName()
-    {
-        return objectName;
-    }
-
-    @Override
-    public void objectName(final String objectName)
-    {
-        this.objectName = objectName;
     }
 
     @Override
