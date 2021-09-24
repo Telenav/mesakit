@@ -37,8 +37,8 @@ import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.kivakit.resource.ResourceList;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.mesakit.graph.Graph;
-import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.GraphProject;
+import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.world.WorldGraph;
 import com.telenav.mesakit.graph.world.WorldGraphConfiguration;
 import com.telenav.mesakit.graph.world.WorldGraphIndex;
@@ -426,7 +426,7 @@ public class WorldGrid
 
     private WorldGraphConfiguration configuration()
     {
-        return Settings.of(this).require(WorldGraphConfiguration.class);
+        return Settings.of(this).requireSettings(WorldGraphConfiguration.class);
     }
 
     private void createGrid()
