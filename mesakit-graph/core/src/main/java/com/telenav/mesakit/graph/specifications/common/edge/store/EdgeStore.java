@@ -1462,7 +1462,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      * Initializes this edge store by resetting the count and the next index.
      */
     @Override
-    protected void onInitialize()
+    public void onInitialize()
     {
         super.onInitialize();
 

@@ -39,7 +39,7 @@ public class NorthAmerica extends Continent
     }
 
     @Override
-    protected void onInitialize()
+    public void onInitialize()
     {
         Country.UNITED_STATES = new UnitedStates();
         Country.UNITED_STATES.initialize();

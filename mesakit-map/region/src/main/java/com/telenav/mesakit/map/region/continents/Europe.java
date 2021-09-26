@@ -38,7 +38,7 @@ public class Europe extends Continent
     }
 
     @Override
-    protected void onInitialize()
+    public void onInitialize()
     {
         Country.ANDORRA = new Country(this, Country.baseInstance()
                 .withIdentity(Country.baseRegionCode()

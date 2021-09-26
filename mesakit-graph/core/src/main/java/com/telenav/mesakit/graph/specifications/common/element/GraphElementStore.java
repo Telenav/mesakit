@@ -912,7 +912,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
      * Called to initialize this store
      */
     @MustBeInvokedByOverriders
-    protected void onInitialize()
+    public void onInitialize()
     {
         resetNextIndex();
     }

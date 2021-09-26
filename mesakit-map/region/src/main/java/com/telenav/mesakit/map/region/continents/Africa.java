@@ -35,7 +35,7 @@ public class Africa extends Continent
     }
 
     @Override
-    protected void onInitialize()
+    public void onInitialize()
     {
         Country.ANGOLA = new Country(this, Country.baseInstance()
                 .withIdentity(Country.baseRegionCode()

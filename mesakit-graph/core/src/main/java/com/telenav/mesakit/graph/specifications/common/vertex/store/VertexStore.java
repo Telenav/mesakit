@@ -864,7 +864,7 @@ public class VertexStore extends NodeStore<Vertex>
      * Allocate temporary data structures
      */
     @Override
-    protected void onInitialize()
+    public void onInitialize()
     {
         super.onInitialize();
 

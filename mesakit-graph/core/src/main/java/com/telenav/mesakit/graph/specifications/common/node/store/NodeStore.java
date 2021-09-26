@@ -403,7 +403,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
      * Allocate temporary map from node identifier -> location
      */
     @Override
-    protected void onInitialize()
+    public void onInitialize()
     {
         super.onInitialize();
 

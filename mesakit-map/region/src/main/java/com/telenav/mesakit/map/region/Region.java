@@ -847,7 +847,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         return typeForClass.get(subclass());
     }
 
-    protected void onInitialize()
+    public void onInitialize()
     {
     }
 

@@ -36,7 +36,7 @@ public class Washington extends State
     }
 
     @Override
-    protected void onInitialize()
+    public void onInitialize()
     {
         SEATTLE = new Seattle();
         SEATTLE.initialize();

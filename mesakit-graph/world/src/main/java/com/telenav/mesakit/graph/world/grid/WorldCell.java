@@ -425,7 +425,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     }
 
     @Override
-    protected void onInitialize()
+    public void onInitialize()
     {
         // Create a variable strength reference that installs and loads this cell's graph when
         // needed. When the reference is hard (vs soft or weak or null) is determined by the
