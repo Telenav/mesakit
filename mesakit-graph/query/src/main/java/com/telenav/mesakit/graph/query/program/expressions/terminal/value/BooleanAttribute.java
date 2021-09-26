@@ -16,8 +16,8 @@ public class BooleanAttribute extends Node implements BooleanExpression
 {
     public static BooleanAttribute parse(final String attributeName)
     {
-        final var method = Type.forClass(Edge.class).method(attributeName);
-        if (method == null || (method.type() != Boolean.class && method.type() != Boolean.TYPE))
+        final var method = Type.forClass(Edge.class).property(attributeName);
+        if (method == null || (method.type().type() != Boolean.class && method.type().type() != Boolean.TYPE))
         {
             return null;
         }
