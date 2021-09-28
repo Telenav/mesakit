@@ -63,6 +63,8 @@ initialize() {
     echo " "
     git checkout "$branch"
     git config pull.ff only
+    git fetch --all
+    git pull --all
 
     if [[ $branch == "develop" ]]; then
 
