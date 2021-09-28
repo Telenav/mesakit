@@ -59,7 +59,9 @@ initialize() {
     branch=$2
 
     cd "$project_home"
-    echo "Initializing $(pwd)"
+    echo " "
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━┫ Initializing $(pwd)"
+    echo " "
     git checkout "$branch"
     git config pull.ff only
 
@@ -78,10 +80,10 @@ initialize() {
     fi
 }
 
-initialize "$KIVAKIT_WORKSPACE"/mesakit develop
-initialize "$KIVAKIT_WORKSPACE"/mesakit-extensions develop
-initialize "$KIVAKIT_WORKSPACE"/mesakit-examples develop
-initialize "$KIVAKIT_WORKSPACE"/mesakit-assets publish
+initialize "$MESAKIT_WORKSPACE"/mesakit develop
+initialize "$MESAKIT_WORKSPACE"/mesakit-extensions develop
+initialize "$MESAKIT_WORKSPACE"/mesakit-examples develop
+initialize "$MESAKIT_WORKSPACE"/mesakit-assets publish
 
 #
 # Install Maven super POM
