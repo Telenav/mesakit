@@ -40,7 +40,6 @@ echo " "
 
 cd "$MESAKIT_WORKSPACE"
 
-git clone https://github.com/Telenav/mesakit.git
 git clone https://github.com/Telenav/mesakit-extensions.git
 git clone https://github.com/Telenav/mesakit-examples.git
 git clone https://github.com/Telenav/mesakit-assets.git
