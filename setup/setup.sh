@@ -19,7 +19,7 @@ if [ -z "$MESAKIT_WORKSPACE" ]; then
     exit 1
 fi
 
-cd $MESAKIT_WORKSPACE/mesakit
+cd "$MESAKIT_WORKSPACE"/mesakit
 git checkout -q develop
 
 if [ ! -e "$MESAKIT_WORKSPACE/mesakit/setup.properties" ]; then
@@ -38,12 +38,15 @@ echo " "
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ Cloning Repositories"
 echo " "
 
-cd $MESAKIT_WORKSPACE
+cd "$MESAKIT_WORKSPACE"
 
 git clone https://github.com/Telenav/mesakit.git
 git config pull.ff only
 
 git clone https://github.com/Telenav/mesakit-extensions.git
+git config pull.ff only
+
+git clone https://github.com/Telenav/mesakit-examples.git
 git config pull.ff only
 
 git clone https://github.com/Telenav/mesakit-assets.git
@@ -57,10 +60,13 @@ echo " "
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ Initializing Git Flow"
 echo " "
 
-cd $MESAKIT_WORKSPACE/mesakit
+cd "$MESAKIT_WORKSPACE"/mesakit
 git flow init -d /dev/null 2>&1
 
-cd $MESAKIT_WORKSPACE/mesakit-extensions
+cd "$MESAKIT_WORKSPACE"/mesakit-extensions
+git flow init -d /dev/null 2>&1
+
+cd "$MESAKIT_WORKSPACE"/mesakit-examples
 git flow init -d /dev/null 2>&1
 
 if [ $(git flow config >/dev/null 2>&1) ]; then
@@ -85,7 +91,7 @@ echo " "
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ Building Projects"
 echo " "
 
-cd $MESAKIT_HOME
+cd "$MESAKIT_HOME"
 mesakit-build.sh setup
 
 echo " "
