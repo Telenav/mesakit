@@ -63,11 +63,11 @@ initialize() {
     echo " "
     git checkout "$branch"
     git config pull.ff only
-    git fetch --all
-    git pull --all
 
     if [[ $branch == "develop" ]]; then
 
+        git checkout master
+        git checkout develop
         git flow init -d /dev/null 2>&1
 
         if [ "$(git flow config >/dev/null 2>&1)" ]; then
