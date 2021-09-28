@@ -41,16 +41,9 @@ echo " "
 cd "$MESAKIT_WORKSPACE"
 
 git clone https://github.com/Telenav/mesakit.git
-git config pull.ff only
-
 git clone https://github.com/Telenav/mesakit-extensions.git
-git config pull.ff only
-
 git clone https://github.com/Telenav/mesakit-examples.git
-git config pull.ff only
-
 git clone https://github.com/Telenav/mesakit-assets.git
-git config pull.ff only
 
 #
 # Initialize git flow for each project
@@ -60,22 +53,35 @@ echo " "
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ Initializing Git Flow"
 echo " "
 
-cd "$MESAKIT_WORKSPACE"/mesakit
-git flow init -d /dev/null 2>&1
+initialize() {
 
-cd "$MESAKIT_WORKSPACE"/mesakit-extensions
-git flow init -d /dev/null 2>&1
+    project_home=$1
+    branch=$2
 
-cd "$MESAKIT_WORKSPACE"/mesakit-examples
-git flow init -d /dev/null 2>&1
+    cd "$project_home"
+    echo "Initializing $(pwd)"
+    git checkout "$branch"
+    git config pull.ff only
 
-if [ $(git flow config >/dev/null 2>&1) ]; then
-    echo " "
-    echo "Please install git flow before continuing MesaKit setup."
-    echo "See https://mesakit.org for details."
-    echo " "
-    exit 1
-fi
+    if [[ $branch == "develop" ]]; then
+
+        git flow init -d /dev/null 2>&1
+
+        if [ "$(git flow config >/dev/null 2>&1)" ]; then
+            echo " "
+            echo "Please install git flow before continuing MesaKit setup."
+            echo "See https://mesakit.org for details."
+            echo " "
+            exit 1
+        fi
+
+    fi
+}
+
+initialize "$KIVAKIT_WORKSPACE"/mesakit develop
+initialize "$KIVAKIT_WORKSPACE"/mesakit-extensions develop
+initialize "$KIVAKIT_WORKSPACE"/mesakit-examples develop
+initialize "$KIVAKIT_WORKSPACE"/mesakit-assets publish
 
 #
 # Install Maven super POM
