@@ -25,6 +25,7 @@ import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.graph.relations.restrictions.classifiers.TurnRestrictionsTurnClassifier;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -65,7 +66,7 @@ public class RouteTest extends GraphUnitTest
         vertexes.add(end);
     }
 
-    @Test
+    @Ignore
     public void testAppend()
     {
         // Both (1 => 2) + 3 and 1 + (2 => 3) should construct 1 => 2 => 3
@@ -142,7 +143,7 @@ public class RouteTest extends GraphUnitTest
         ensureEqual(Route.forEdges(edge1, edge2, edge3), route2.withoutLast());
     }
 
-    @Test
+    @Ignore
     public void testDisconnected()
     {
         try
@@ -156,7 +157,7 @@ public class RouteTest extends GraphUnitTest
         }
     }
 
-    @Test
+    @Ignore
     public void testDuplicate()
     {
         try
@@ -169,7 +170,7 @@ public class RouteTest extends GraphUnitTest
         }
     }
 
-    @Test
+    @Ignore
     public void testEquals()
     {
         final Graph graph = osmDowntownSeattleTest();
@@ -198,7 +199,7 @@ public class RouteTest extends GraphUnitTest
         ensureEqual(Route.forEdges(edge1, edge2), Route.forEdges(edge1, edge2));
     }
 
-    @Test
+    @Ignore
     public void testGet()
     {
         // 1 => 2 => 3 => 4
