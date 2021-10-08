@@ -228,7 +228,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
     {
         // Validate that the resource is a zip archive. If it's not then the file is some earlier
         // placeholder index file that we can ignore.
-        if (ZipArchive.is(file))
+        if (ZipArchive.is(LOGGER, file))
         {
             // Record start time
             final var start = Time.now();

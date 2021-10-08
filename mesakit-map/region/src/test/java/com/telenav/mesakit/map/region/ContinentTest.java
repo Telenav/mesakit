@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.region;
 
+import com.telenav.kivakit.test.annotations.SlowTests;
 import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
-import com.telenav.kivakit.test.annotations.SlowTests;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -32,7 +32,7 @@ public class ContinentTest extends RegionUnitTest
     public void test()
     {
         var count = 0;
-        for (final Continent continent : Continent.all())
+        for (final var ignored : Continent.all())
         {
             count++;
         }

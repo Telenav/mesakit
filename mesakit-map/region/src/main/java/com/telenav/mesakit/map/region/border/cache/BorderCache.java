@@ -71,11 +71,11 @@ import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
+import com.telenav.mesakit.map.region.RegionProject;
 import com.telenav.mesakit.map.region.RegionType;
 import com.telenav.mesakit.map.region.RegionType.RegionFactory;
 import com.telenav.mesakit.map.region.border.Border;
 import com.telenav.mesakit.map.region.border.BorderSpatialIndex;
-import com.telenav.mesakit.map.region.RegionProject;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramBorder;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
@@ -98,7 +98,6 @@ import java.util.Set;
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureEqual;
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.illegalState;
 import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
 import static com.telenav.kivakit.serialization.core.SerializationSession.Type.RESOURCE;
@@ -485,7 +484,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
             // and the zip file target we're going to download to and unzip.
             final var jar = localJar(NETWORK_PATH.fileName());
             trace("Trying to open $", jar);
-            var archive = ZipArchive.open(jar, ProgressReporter.NULL, READ);
+            var archive = ZipArchive.open(this, jar, ProgressReporter.NULL, READ);
             try
             {
                 // If archive isn't valid,
@@ -507,7 +506,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                     {
                         // then try to download the data into the cache
                         information(AsciiArt.textBox("Downloading", "from: $\nto: $",
-                                NETWORK_PATH.asContractedString(80), jar.path().asContractedString(80)) + "\n ");
+                                NETWORK_PATH.asContraction(80), jar.path().asContraction(80)) + "\n ");
                         final var downloadProgress = Progress.create(this, "bytes");
                         downloadProgress.start("Downloading");
                         information("Downloading $ from $", jar, source);
@@ -516,7 +515,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
 
                         // and try to open the archive again
                         trace("Trying to open $", jar);
-                        archive = ZipArchive.open(jar, ProgressReporter.NULL, READ);
+                        archive = ZipArchive.open(this, jar, ProgressReporter.NULL, READ);
                     }
                     catch (final Throwable e)
                     {
