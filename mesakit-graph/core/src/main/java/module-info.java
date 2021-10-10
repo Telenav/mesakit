@@ -12,6 +12,11 @@ open module mesakit.graph.core
     requires transitive mesakit.map.ui.debug;
     requires transitive mesakit.map.geography;
 
+    requires org.jetbrains.annotations;
+    requires osmosis.core;
+    requires kryo;
+    requires junit;
+
     exports com.telenav.mesakit.graph.analytics.classification.classifiers.road;
     exports com.telenav.mesakit.graph.analytics.classification.classifiers.signpost;
     exports com.telenav.mesakit.graph.analytics.classification.classifiers.turn;

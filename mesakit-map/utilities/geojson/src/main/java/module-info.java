@@ -4,7 +4,7 @@ open module mesakit.map.utilities.geojson
 
     requires transitive mesakit.map.geography;
 
-    requires transitive gson;
+    requires gson;
 
     exports com.telenav.mesakit.map.utilities.geojson;
 }

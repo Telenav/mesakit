@@ -5,9 +5,9 @@ open module mesakit.data.formats.pbf
     requires transitive kivakit.data.formats.library;
     requires transitive kivakit.data.compression;
 
-    requires transitive osmosis.core;
-    requires transitive osmosis.osm.binary;
-    requires transitive osmosis.pbf;
+    requires osmosis.core;
+    requires osmosis.osm.binary;
+    requires osmosis.pbf;
 
     exports com.telenav.mesakit.map.data.formats.pbf.model.entities;
     exports com.telenav.mesakit.map.data.formats.pbf.model.extractors;

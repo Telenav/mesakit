@@ -7,6 +7,9 @@ open module mesakit.map.geography
     requires transitive kivakit.resource;
     requires transitive kivakit.math;
 
+    requires org.jetbrains.annotations;
+    requires junit;
+
     requires transitive mesakit.map.measurements;
 
     exports com.telenav.mesakit.map.geography.indexing.polygon;
