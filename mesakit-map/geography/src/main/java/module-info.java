@@ -1,16 +1,17 @@
 open module mesakit.map.geography
 {
-    requires transitive java.desktop;
-
-    requires transitive kivakit.data.compression;
-    requires transitive kivakit.component;
-    requires transitive kivakit.resource;
-    requires transitive kivakit.math;
-
-    requires org.jetbrains.annotations;
-    requires junit;
-
+    // MesaKit
     requires transitive mesakit.map.measurements;
+
+    // KivaKit
+    requires transitive kivakit.component;
+    requires transitive kivakit.data.compression;
+    requires transitive kivakit.math;
+    requires kivakit.primitive.collections;
+    requires kivakit.test;
+
+    // Java
+    requires transitive java.desktop;
 
     exports com.telenav.mesakit.map.geography.indexing.polygon;
     exports com.telenav.mesakit.map.geography.indexing.quadtree;
