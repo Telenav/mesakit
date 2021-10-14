@@ -1,10 +1,14 @@
 open module mesakit.map.utilities.geojson
 {
-    requires transitive kivakit.resource;
-
+    // MesaKit
     requires transitive mesakit.map.geography;
 
-    requires transitive gson;
+    // KivaKit
+    requires transitive kivakit.resource;
 
+    // JSON
+    requires gson;
+
+    // Exports
     exports com.telenav.mesakit.map.utilities.geojson;
 }
