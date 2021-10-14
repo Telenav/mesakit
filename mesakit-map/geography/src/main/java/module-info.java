@@ -10,6 +10,9 @@ open module mesakit.map.geography
     requires kivakit.primitive.collections;
     requires kivakit.test;
 
+    requires org.jetbrains.annotations;
+    requires junit;
+
     // Java
     requires transitive java.desktop;
 
