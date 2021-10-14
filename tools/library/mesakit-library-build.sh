@@ -275,7 +275,7 @@ build() {
             cd "$BUILD_FOLDER"
 
             # shellcheck disable=SC2086
-            "$M2_HOME"/bin/mvn -DMESAKIT_DEBUG="$MESAKIT_DEBUG" $SWITCHES $BUILD_ARGUMENTS 2>&1 | $FILTER_OUT "illegal reflective access\|denied in a future release\|please consider reporting"
+            "$M2_HOME"/bin/mvn --no-transfer-progress -DMESAKIT_DEBUG="$MESAKIT_DEBUG" $SWITCHES $BUILD_ARGUMENTS 2>&1 | $FILTER_OUT "illegal reflective access\|denied in a future release\|please consider reporting"
 
             if [ "${PIPESTATUS[0]}" -ne "0" ]; then
 
