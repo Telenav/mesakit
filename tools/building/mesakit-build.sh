@@ -12,9 +12,9 @@ source mesakit-library-build.sh
 source mesakit-projects.sh
 
 cd "$MESAKIT_HOME"/superpom
-mvn clean install
+mvn --batch-mode --no-transfer-progress clean install
 
-mvn install:install-file -Dfile="$MESAKIT_HOME/mesakit-map/geography/libraries/shapefilereader-1.0.jar" -DgroupId=org.nocrala -DartifactId=shapefilereader -Dversion=1.0 -Dpackaging=jar
+mvn --batch-mode --no-transfer-progress install:install-file -Dfile="$MESAKIT_HOME/mesakit-map/geography/libraries/shapefilereader-1.0.jar" -DgroupId=org.nocrala -DartifactId=shapefilereader -Dversion=1.0 -Dpackaging=jar
 
 export ALLOW_CLEANING=true
 
