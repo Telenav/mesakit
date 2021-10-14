@@ -3,6 +3,8 @@ open module mesakit.map.road.name.parser
     requires transitive mesakit.map.road.model;
     requires transitive mesakit.map.region;
 
+    requires kivakit.test;
+
     exports com.telenav.mesakit.map.road.name.parser;
     exports com.telenav.mesakit.map.road.name.parser.locales.english;
     exports com.telenav.mesakit.map.road.name.parser.locales.indonesian;

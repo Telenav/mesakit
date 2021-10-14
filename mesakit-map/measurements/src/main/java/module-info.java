@@ -1,8 +1,8 @@
 open module mesakit.map.measurements
 {
-    requires kivakit.test;
     requires transitive kivakit.commandline;
     requires transitive kivakit.serialization.kryo;
+    requires kivakit.test;
     requires kivakit.math;
     requires kivakit.collections;
 

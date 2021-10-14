@@ -1,9 +1,5 @@
 open module mesakit.graph.core
 {
-    requires transitive java.sql;
-
-    requires transitive kivakit.configuration;
-    requires transitive kivakit.primitive.collections;
     requires transitive mesakit.data.formats.pbf;
     requires transitive mesakit.map.measurements;
     requires transitive mesakit.map.region;
@@ -12,6 +8,10 @@ open module mesakit.graph.core
     requires transitive mesakit.map.ui.debug;
     requires transitive mesakit.map.geography;
 
+    requires transitive kivakit.configuration;
+    requires kivakit.test;
+
+    requires transitive java.sql;
     requires org.jetbrains.annotations;
     requires osmosis.core;
     requires kryo;

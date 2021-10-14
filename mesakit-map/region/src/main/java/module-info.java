@@ -8,6 +8,7 @@ open module mesakit.map.region
     requires transitive mesakit.map.utilities.grid;
 
     requires transitive kivakit.network.http;
+    requires kivakit.test;
 
     requires kryo;
     requires junit;

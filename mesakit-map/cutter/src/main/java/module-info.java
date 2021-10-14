@@ -5,6 +5,7 @@ open module mesakit.map.cutter
 
     // KivaKit
     requires kivakit.primitive.collections;
+    requires kivakit.test;
 
     // OSM
     requires osmosis.core;

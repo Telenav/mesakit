@@ -5,7 +5,6 @@ open module mesakit.map.utilities.geojson
 
     // KivaKit
     requires transitive kivakit.resource;
-    requires kivakit.test;
 
     // JSON
     requires gson;
