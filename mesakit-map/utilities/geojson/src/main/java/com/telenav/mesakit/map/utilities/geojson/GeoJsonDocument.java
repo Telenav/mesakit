@@ -39,7 +39,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 public class GeoJsonDocument implements Iterable<GeoJsonFeature>
 {
