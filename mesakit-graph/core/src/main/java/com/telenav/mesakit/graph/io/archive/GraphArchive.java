@@ -107,10 +107,10 @@ public class GraphArchive extends FieldArchive implements Named
             final var prefix = current + ":";
             if (specifier.toUpperCase().startsWith(prefix))
             {
-                return Resource.resolve(specifier.substring(prefix.length()));
+                return Resource.resolve(Listener.console(), specifier.substring(prefix.length()));
             }
         }
-        return Resource.resolve(specifier);
+        return Resource.resolve(Listener.console(), specifier);
     }
 
     public static SwitchParser.Builder<Graph> graphArchiveSwitchParser(final String name, final String description)
