@@ -107,20 +107,25 @@ public class GraphArchive extends FieldArchive implements Named
             final var prefix = current + ":";
             if (specifier.toUpperCase().startsWith(prefix))
             {
-                return Resource.resolve(Listener.console(), specifier.substring(prefix.length()));
+                return Resource.resolve(specifier.substring(prefix.length()));
             }
         }
-        return Resource.resolve(Listener.console(), specifier);
+        return Resource.resolve(specifier);
     }
 
     public static SwitchParser.Builder<Graph> graphArchiveSwitchParser(final String name, final String description)
     {
-        return SwitchParser.builder(Graph.class).name(name).description(description).converter(new Converter(LOGGER, ProgressReporter.NULL));
+        return SwitchParser.builder(Graph.class)
+                .name(name)
+                .description(description)
+                .converter(new Converter(LOGGER, ProgressReporter.NULL));
     }
 
     public static SwitchParser.Builder<GraphList> graphListSwitchParser(final String name, final String description)
     {
-        return SwitchParser.builder(GraphList.class).name(name).description(description)
+        return SwitchParser.builder(GraphList.class)
+                .name(name)
+                .description(description)
                 .converter(new GraphArchive.ListConverter(LOGGER));
     }
 
