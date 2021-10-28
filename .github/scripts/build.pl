@@ -20,13 +20,13 @@ if (!-d "cactus-build")
 }
 
 require "./cactus-build/.github/scripts/build-include.pl";
-#require "$ENV{'KIVAKIT_WORKSPACE'}/cactus-build/.github/scripts/build-include.pl";
 
 #
 # Clone repositories and build
 #
 
 my ($build_type) = @ARGV;
+check_build_type($build_type);
 my $github = "https://github.com/Telenav";
 
 clone("$github/kivakit", "dependency");
