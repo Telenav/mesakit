@@ -27,8 +27,8 @@ public class LatitudeTest extends GeographyUnitTest
     @Test
     public void testAdd()
     {
-        final var latitude1 = randomValueFactory().newLatitude();
-        final var latitude2 = randomValueFactory().newLatitude();
+        var latitude1 = randomValueFactory().newLatitude();
+        var latitude2 = randomValueFactory().newLatitude();
 
         // Calculate the expected value capping the poles.
         var expected = latitude1.asMicrodegrees() + latitude2.asMicrodegrees();
@@ -47,8 +47,8 @@ public class LatitudeTest extends GeographyUnitTest
     @Test
     public void testMaximum()
     {
-        final var smallLatitude = randomValueFactory().newLatitude(Latitude.degrees(Latitude.MINIMUM_DEGREES), Latitude.degrees(0));
-        final var bigLatitude = randomValueFactory().newLatitude(Latitude.degrees(0), Latitude.degrees(Latitude.MAXIMUM_DEGREES));
+        var smallLatitude = randomValueFactory().newLatitude(Latitude.degrees(Latitude.MINIMUM_DEGREES), Latitude.degrees(0));
+        var bigLatitude = randomValueFactory().newLatitude(Latitude.degrees(0), Latitude.degrees(Latitude.MAXIMUM_DEGREES));
 
         ensureEqual(bigLatitude, smallLatitude.maximum(bigLatitude));
         ensureEqual(bigLatitude, bigLatitude.maximum(smallLatitude));
@@ -58,8 +58,8 @@ public class LatitudeTest extends GeographyUnitTest
     @Test
     public void testMinimum()
     {
-        final var smallLatitude = randomValueFactory().newLatitude(Latitude.degrees(Latitude.MINIMUM_DEGREES), Latitude.degrees(0));
-        final var bigLatitude = randomValueFactory().newLatitude(Latitude.degrees(0), Latitude.degrees(Latitude.MAXIMUM_DEGREES));
+        var smallLatitude = randomValueFactory().newLatitude(Latitude.degrees(Latitude.MINIMUM_DEGREES), Latitude.degrees(0));
+        var bigLatitude = randomValueFactory().newLatitude(Latitude.degrees(0), Latitude.degrees(Latitude.MAXIMUM_DEGREES));
 
         ensureEqual(smallLatitude, smallLatitude.minimum(bigLatitude));
         ensureEqual(smallLatitude, bigLatitude.minimum(smallLatitude));
@@ -76,8 +76,8 @@ public class LatitudeTest extends GeographyUnitTest
     @Test
     public void testScaleBy()
     {
-        final var latitude = randomValueFactory().newLatitude();
-        final var multiplier = randomValueFactory().newDouble(-10000, 10000);
+        var latitude = randomValueFactory().newLatitude();
+        var multiplier = randomValueFactory().newDouble(-10000, 10000);
 
         // Calculate the expected value capping the poles.
         var expected = latitude.asMicrodegrees() * multiplier;
@@ -95,8 +95,8 @@ public class LatitudeTest extends GeographyUnitTest
     @Test
     public void testSubtract()
     {
-        final var latitude1 = randomValueFactory().newLatitude();
-        final var latitude2 = randomValueFactory().newLatitude();
+        var latitude1 = randomValueFactory().newLatitude();
+        var latitude2 = randomValueFactory().newLatitude();
 
         // Calculate the expected value capping the poles.
         var expected = latitude1.asMicrodegrees() - latitude2.asMicrodegrees();

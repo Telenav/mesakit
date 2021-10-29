@@ -24,7 +24,6 @@ import com.telenav.kivakit.kernel.language.time.TimeZones;
 import com.telenav.kivakit.test.UnitTest;
 import org.junit.Test;
 
-@SuppressWarnings("ConstantConditions")
 public class DataBuildTest extends UnitTest
 {
     @Test
@@ -33,7 +32,7 @@ public class DataBuildTest extends UnitTest
         final String given = "2020.08.06_09.59AM_PT";
         final String expected = "2020.08.06_09.59AM_PT";
 
-        final var build = DataBuild.parse(given);
+        var build = DataBuild.parse(given);
 
         ensureEqual(expected, build.toString());
     }
@@ -41,8 +40,8 @@ public class DataBuildTest extends UnitTest
     @Test
     public void testConstructDataBuildObjectFromLocalTime()
     {
-        final var time = LocalTime.now();
-        final var build = DataBuild.parse(time.toString());
+        var time = LocalTime.now();
+        var build = DataBuild.parse(time.toString());
 
         ensureEqual(Paths.withoutSuffix(time.toString(), '_'), Paths.withoutSuffix(build.toString(), '_'));
         ensureEqual(TimeZones.displayName(time.timeZone()), Paths.optionalSuffix(build.toString(), '_'));
@@ -51,7 +50,7 @@ public class DataBuildTest extends UnitTest
     @Test
     public void testLocalTime()
     {
-        final var time = DataBuild.parse("2015.09.23_4.01PM_PT");
+        var time = DataBuild.parse("2015.09.23_4.01PM_PT");
         ensureEqual(time.localTime().toString(), "2015.09.23_04.01PM_PT");
         ensureEqual(time.utcTime().toString(), "2015.09.23_11.01PM_UTC");
     }

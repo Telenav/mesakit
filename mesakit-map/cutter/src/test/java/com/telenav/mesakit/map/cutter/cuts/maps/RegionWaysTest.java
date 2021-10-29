@@ -57,7 +57,7 @@ public class RegionWaysTest extends RegionUnitTest
 
     private void test(RegionIndexMap regionIndexMap, RegionWays ways)
     {
-        final var waysPerList = 5;
+        var waysPerList = 5;
 
         var wayIdentifier = 1;
         for (State state : Country.UNITED_STATES.states())
@@ -80,7 +80,6 @@ public class RegionWaysTest extends RegionUnitTest
         }
     }
 
-    @SuppressWarnings("SameParameterValue")
     private List<Way> ways(long wayIdentifier, int count)
     {
         List<Way> ways = new ArrayList<>();

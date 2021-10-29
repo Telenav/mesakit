@@ -47,18 +47,18 @@ public class ShapeFileReader
 
     private final Listener listener;
 
-    public ShapeFileReader( Listener listener, final Resource resource)
+    public ShapeFileReader(Listener listener, Resource resource)
     {
         this.listener = listener;
         try
         {
-            final var in = resource.openForReading();
-            final ValidationPreferences preferences = new ValidationPreferences();
+            var in = resource.openForReading();
+            ValidationPreferences preferences = new ValidationPreferences();
             preferences.setMaxNumberOfPointsPerShape(100000);
             reader = new org.nocrala.tools.gis.data.esri.shapefile.ShapeFileReader(in, preferences);
             reader.getHeader();
         }
-        catch ( Exception e)
+        catch (Exception e)
         {
             throw new IllegalStateException("Unable to read shape file " + resource, e);
         }
@@ -84,8 +84,8 @@ public class ShapeFileReader
                     }
                     if (shape != null)
                     {
-                        final var builder = new PolygonBuilder();
-                        for ( PointData point : shape.getPointsOfPart(part))
+                        var builder = new PolygonBuilder();
+                        for (PointData point : shape.getPointsOfPart(part))
                         {
                             if (Doubles.isBetween(point.getY(), -85, 85))
                             {
@@ -108,7 +108,7 @@ public class ShapeFileReader
                         }
                     }
                 }
-                catch ( Exception e)
+                catch (Exception e)
                 {
                     e.printStackTrace();
                 }
@@ -155,8 +155,8 @@ public class ShapeFileReader
                     }
                     if (shape != null)
                     {
-                        final var builder = new PolylineBuilder();
-                        for ( PointData point : shape.getPointsOfPart(part))
+                        var builder = new PolylineBuilder();
+                        for (PointData point : shape.getPointsOfPart(part))
                         {
                             builder.add(
                                     new Location(Latitude.degrees(point.getY()), Longitude.degrees(point.getX())));
@@ -168,7 +168,7 @@ public class ShapeFileReader
                         return builder.build();
                     }
                 }
-                catch ( Exception e)
+                catch (Exception e)
                 {
                     e.printStackTrace();
                 }

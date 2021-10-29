@@ -300,7 +300,7 @@ public class RectangleTest extends GeographyUnitTest
     public void testStripsByCount()
     {
         var i = 0;
-        final var stripCount = 10;
+        var stripCount = 10;
         var overlap = Width.ZERO;
         for (Rectangle strip : Rectangle.MAXIMUM.verticalStrips(stripCount, overlap))
         {
@@ -315,7 +315,7 @@ public class RectangleTest extends GeographyUnitTest
     public void testStripsByCountWithOverlap()
     {
         var i = 0;
-        final var stripCount = 10;
+        var stripCount = 10;
         var overlap = Width.angle(Distance.miles(200).asAngle());
         for (Rectangle strip : Rectangle.MAXIMUM.verticalStrips(stripCount, overlap))
         {

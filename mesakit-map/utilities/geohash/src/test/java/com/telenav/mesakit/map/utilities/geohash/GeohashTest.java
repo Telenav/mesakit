@@ -112,7 +112,7 @@ public class GeohashTest extends UnitTest
     @Test
     public void testEquals()
     {
-        final var code = "b";
+        var code = "b";
         var location = Location.degrees(65.6, -151);
         var forCode = new Geohash(new Code(code));
         var forNonDefaultCode = new Geohash(new Code(nonDefaultAlphabet, code));

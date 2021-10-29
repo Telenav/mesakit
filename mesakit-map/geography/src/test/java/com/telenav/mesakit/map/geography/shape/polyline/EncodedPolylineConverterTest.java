@@ -42,15 +42,15 @@ public class EncodedPolylineConverterTest extends GeographyUnitTest
     public void testEncodingDecoding()
     {
         // Line wrapping Telenav's buildings
-        @SuppressWarnings("SpellCheckingInspection") final var encoded = "_}dcFrhtgVlA?G_JuDF";
-        final var builder = new PolylineBuilder();
+        var encoded = "_}dcFrhtgVlA?G_JuDF";
+        var builder = new PolylineBuilder();
         builder.add(new Location(Latitude.degrees(37.38592), Longitude.degrees(-122.00602)));
         builder.add(new Location(Latitude.degrees(37.38553), Longitude.degrees(-122.00602)));
         builder.add(new Location(Latitude.degrees(37.38557), Longitude.degrees(-122.00426)));
         builder.add(new Location(Latitude.degrees(37.38648), Longitude.degrees(-122.00430)));
 
-        final var newDecoded = converter.convert(encoded);
-        final var newEncoded = converter.unconvert(builder.build());
+        var newDecoded = converter.convert(encoded);
+        var newEncoded = converter.unconvert(builder.build());
 
         ensureEqual(encoded, newEncoded);
         ensureEqual(builder.build(), newDecoded);

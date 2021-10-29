@@ -31,19 +31,19 @@ public class TokenTest extends UnitTest
     @Test
     public void test()
     {
-        final EnglishTokenizer english = new EnglishUnitedStatesTokenizer();
+        EnglishTokenizer english = new EnglishUnitedStatesTokenizer();
 
-        final var list = SymbolList.of("123");
+        var list = SymbolList.of("123");
 
-        final var first = english.next(list.asStream());
+        var first = english.next(list.asStream());
         ensureEqual(english.DIGIT, first);
         ensureEqual("1", first.text());
 
-        final var second = english.next(list.subList(1).asStream());
+        var second = english.next(list.subList(1).asStream());
         ensureEqual(english.DIGIT, second);
         ensureEqual("2", second.text());
 
-        final var third = english.next(list.subList(2).asStream());
+        var third = english.next(list.subList(2).asStream());
         ensureEqual(english.DIGIT, third);
         ensureEqual("3", third.text());
     }
@@ -51,11 +51,11 @@ public class TokenTest extends UnitTest
     @Test
     public void testRoadTypes()
     {
-        final EnglishTokenizer english = new EnglishUnitedStatesTokenizer();
+        EnglishTokenizer english = new EnglishUnitedStatesTokenizer();
 
-        final var list = SymbolList.of("ave");
+        var list = SymbolList.of("ave");
 
-        final var first = english.next(list.asStream());
+        var first = english.next(list.asStream());
         ensureEqual(english.AVENUE, first);
     }
 }

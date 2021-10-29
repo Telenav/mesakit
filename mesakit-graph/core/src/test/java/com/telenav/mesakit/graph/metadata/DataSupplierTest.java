@@ -27,7 +27,7 @@ public class DataSupplierTest extends UnitTest
     @Test
     public void testConstructDataSupplierMatchesAll()
     {
-        final var dataSupplier = DataSupplier.ALL;
+        var dataSupplier = DataSupplier.ALL;
 
         ensureFalse(dataSupplier.isHere());
         ensureFalse(dataSupplier.isOsm());
@@ -39,7 +39,7 @@ public class DataSupplierTest extends UnitTest
     @Test
     public void testConstructOSMDataSupplier()
     {
-        final var dataSupplier = DataSupplier.OSM;
+        var dataSupplier = DataSupplier.OSM;
 
         ensure(dataSupplier.isOsm());
         ensureEqual(dataSupplier.precision(), Precision.DM6);

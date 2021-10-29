@@ -38,17 +38,17 @@ public class EdgeStoreTest extends GraphUnitTest
     @Test
     public void test()
     {
-        final var graph = OsmDataSpecification.get().newGraph(Metadata.osm(OSM, PBF));
+        var graph = OsmDataSpecification.get().newGraph(Metadata.osm(OSM, PBF));
         graph.addListener(LOGGER);
-        final var store = graph.edgeStore();
+        var store = graph.edgeStore();
 
         final int iterations = 1_000;
 
-        final var edges = new ArrayList<Edge>();
-        final var adder = store.adder();
+        var edges = new ArrayList<Edge>();
+        var adder = store.adder();
         for (var index = 1; index < iterations + 1; index++)
         {
-            final Edge edge = osmEdge(graph, index, index * 1_000_000);
+            Edge edge = osmEdge(graph, index, index * 1_000_000);
             adder.add(edge);
             edges.add(edge);
         }
@@ -56,7 +56,7 @@ public class EdgeStoreTest extends GraphUnitTest
 
         for (var index = 1; index < iterations + 1; index++)
         {
-            final var edge = graph.edgeForIdentifier(index * 1_000_000);
+            var edge = graph.edgeForIdentifier(index * 1_000_000);
             ensure(edges.get(index - 1).equals(edge));
         }
     }

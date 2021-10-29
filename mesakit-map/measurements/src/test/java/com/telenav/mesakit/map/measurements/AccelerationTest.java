@@ -27,7 +27,7 @@ public class AccelerationTest extends UnitTest
     @Test
     public void testNegative()
     {
-        final var negative = Acceleration.milesPerHourSquared(Byte.MIN_VALUE);
+        var negative = Acceleration.milesPerHourSquared(Byte.MIN_VALUE);
         ensure(negative.asMetersPerSecondSquared() < 0);
     }
 }

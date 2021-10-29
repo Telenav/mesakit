@@ -33,14 +33,14 @@ public class RoadNameStoreTest extends GraphUnitTest
     @Test
     public void test()
     {
-        final var graph = osmGraph();
-        final var store = new RoadNameStore("test", Estimate._64, Metadata.defaultMetadata());
-        final var iterations = 1_000;
+        var graph = osmGraph();
+        var store = new RoadNameStore("test", Estimate._64, Metadata.defaultMetadata());
+        var iterations = 1_000;
         for (var i = 0; i < iterations; i++)
         {
             if (i % 3 != 0)
             {
-                final Edge edge = osmEdge(graph, i, i);
+                Edge edge = osmEdge(graph, i, i);
                 store.set(edge, Type.OFFICIAL, 0, forName("official" + i));
                 store.set(edge, Type.ALTERNATE, 0, forName("alternate" + i));
                 store.set(edge, Type.ROUTE, 0, forName("route" + i));
@@ -51,7 +51,7 @@ public class RoadNameStoreTest extends GraphUnitTest
         {
             if (i % 3 != 0)
             {
-                final Edge edge = osmEdge(graph, i, i);
+                Edge edge = osmEdge(graph, i, i);
                 ensureEqual(forName("official" + i), store.get(edge, Type.OFFICIAL, 0));
                 ensureEqual(forName("alternate" + i), store.get(edge, Type.ALTERNATE, 0));
                 ensureEqual(forName("route" + i), store.get(edge, Type.ROUTE, 0));

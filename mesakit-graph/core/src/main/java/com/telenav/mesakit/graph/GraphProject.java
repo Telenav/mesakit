@@ -84,7 +84,7 @@ public class GraphProject extends Project
 
     public Folder userGraphFolder()
     {
-        final var graphFolder = JavaVirtualMachine.property("MESAKIT_USER_GRAPH_FOLDER");
+        var graphFolder = JavaVirtualMachine.property("MESAKIT_USER_GRAPH_FOLDER");
         return graphFolder == null ? Folder.desktop() : Folder.parse(graphFolder);
     }
 }

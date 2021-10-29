@@ -32,18 +32,18 @@ public class MetropolitanAreaTest extends RegionUnitTest
     @Test
     public void testAll()
     {
-        final var metropolitanAreas = MetropolitanArea.all()
+        var metropolitanAreas = MetropolitanArea.all()
                 .stream()
                 .filter(state -> state.identity().iso().code().startsWith("MX"))
                 .collect(Collectors.toList());
 
         ensureEqual(25, metropolitanAreas.size());
 
-        final var mexicoAG = metropolitanAreas
+        var mexicoAG = metropolitanAreas
                 .stream()
                 .filter(metro ->
                 {
-                    final String code = metro.identity().iso().code();
+                    String code = metro.identity().iso().code();
                     return "MX-AG-METROZONAMETROPOLITANADEAGUASCALIENTES".equals(code);
                 })
                 .collect(Collectors.toList());
@@ -55,7 +55,7 @@ public class MetropolitanAreaTest extends RegionUnitTest
     @Test
     public void testArizona()
     {
-        final var areas = Country.UNITED_STATES.ARIZONA.metropolitanAreas();
+        var areas = Country.UNITED_STATES.ARIZONA.metropolitanAreas();
         ensureEqual(1, areas.size());
     }
 
@@ -83,7 +83,7 @@ public class MetropolitanAreaTest extends RegionUnitTest
     @Test
     public void testMexicoAG()
     {
-        final var metro = MetropolitanArea.forLocation(Location.degrees(21.896758, -102.283537));
+        var metro = MetropolitanArea.forLocation(Location.degrees(21.896758, -102.283537));
         ensureEqual("MX-AG", metro.state().identity().iso().code());
         ensureEqual("MX-AG-METROZONAMETROPOLITANADEAGUASCALIENTES", metro.identity().iso().code());
         ensureEqual("Mexico-Aguascalientes-Metro_Zona_metropolitana_de_Aguascalientes", metro.identity().mesakit().code());
@@ -93,8 +93,8 @@ public class MetropolitanAreaTest extends RegionUnitTest
     @Test
     public void testSpecialChars()
     {
-        final var location = Location.degrees(47.436471, -52.7749647);
-        final var county = MetropolitanArea.forLocation(location);
+        var location = Location.degrees(47.436471, -52.7749647);
+        var county = MetropolitanArea.forLocation(location);
         ensureEqual("CA-NL-METROSTJOHNS", county.identity().iso().code());
         ensureEqual("Canada-Newfoundland_and_Labrador-Metro_St._John_s", county.identity().mesakit().code());
         ensureEqual("St. John's", county.name());

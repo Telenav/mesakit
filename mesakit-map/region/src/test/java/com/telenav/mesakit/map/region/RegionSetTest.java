@@ -28,7 +28,7 @@ public class RegionSetTest extends RegionUnitTest
     @Test
     public void test()
     {
-        final var regions = new RegionSet();
+        var regions = new RegionSet();
         regions.addAll(Continent.NORTH_AMERICA.children());
         regions.addAll(Continent.EUROPE.children());
         ensure(regions.contains(Country.RUSSIA));

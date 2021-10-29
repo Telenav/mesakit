@@ -28,7 +28,6 @@ import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
 import org.junit.Test;
 
-@SuppressWarnings("ConstantConditions")
 public class PolylineStoreTest extends GraphUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
@@ -38,10 +37,10 @@ public class PolylineStoreTest extends GraphUnitTest
     @Test
     public void test()
     {
-        final var a = a();
-        final var b = b();
-        final var c = c();
-        final var d = d();
+        var a = a();
+        var b = b();
+        var c = c();
+        var d = d();
 
         ensureEqual(a(), a.decompress());
         ensureEqual(b(), b.decompress());
@@ -58,7 +57,7 @@ public class PolylineStoreTest extends GraphUnitTest
         ensureNotEqual(c, d);
         ensureNotEqual(d, a);
 
-        final var store = new PolylineStore("test", Estimate._4);
+        var store = new PolylineStore("test", Estimate._4);
         ensure(store.add(a) == 1);
         ensure(store.add(b) == 2);
         ensure(store.add(c) == 3);
@@ -67,10 +66,10 @@ public class PolylineStoreTest extends GraphUnitTest
 
         ensureEqual(4, store.size());
 
-        final var a2 = store.get(1);
-        final var b2 = store.get(2);
-        final var c2 = store.get(3);
-        final var d2 = store.get(4);
+        var a2 = store.get(1);
+        var b2 = store.get(2);
+        var c2 = store.get(3);
+        var d2 = store.get(4);
 
         ensureEqual(a.decompress(), a2);
         ensureEqual(b.decompress(), b2);

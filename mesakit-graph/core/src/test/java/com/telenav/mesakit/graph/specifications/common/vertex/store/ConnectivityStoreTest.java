@@ -32,15 +32,15 @@ public class ConnectivityStoreTest extends GraphUnitTest
     @Test
     public void test()
     {
-        final var graph = osmGraph();
-        final var store = new ConnectivityStore("text", graph);
+        var graph = osmGraph();
+        var store = new ConnectivityStore("text", graph);
 
-        final var edge1 = osmEdge(graph, 1, 1_000_000);
-        final var edge2 = osmEdge(graph, 2, 2_000_000);
+        var edge1 = osmEdge(graph, 1, 1_000_000);
+        var edge2 = osmEdge(graph, 2, 2_000_000);
 
-        final var vertex1 = osmVertex(graph, 1, 1, Location.TELENAV_HEADQUARTERS);
-        final var vertex2 = osmVertex(graph, 2, 2, Location.TELENAV_HEADQUARTERS.moved(Heading.WEST, Distance._100_METERS));
-        final var vertex3 = osmVertex(graph, 3, 3, Location.TELENAV_HEADQUARTERS.moved(Heading.SOUTHWEST, Distance._100_METERS));
+        var vertex1 = osmVertex(graph, 1, 1, Location.TELENAV_HEADQUARTERS);
+        var vertex2 = osmVertex(graph, 2, 2, Location.TELENAV_HEADQUARTERS.moved(Heading.WEST, Distance._100_METERS));
+        var vertex3 = osmVertex(graph, 3, 3, Location.TELENAV_HEADQUARTERS.moved(Heading.SOUTHWEST, Distance._100_METERS));
 
         edge1.from(vertex1);
         edge1.to(vertex2);

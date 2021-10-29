@@ -39,7 +39,6 @@ import static com.telenav.mesakit.map.measurements.geographic.Distance.meters;
 import static com.telenav.mesakit.map.measurements.geographic.Heading.EAST;
 import static java.util.Arrays.asList;
 
-@SuppressWarnings("ConstantConditions")
 public class PolylineTest extends UnitTest
 {
     @Test
@@ -96,7 +95,7 @@ public class PolylineTest extends UnitTest
     @Test
     public void testParallel()
     {
-        final var value = "37.82088,-122.29884 37.82185,-122.30077 37.82139,-122.30125 37.82138,-122.30128 37.82137,-122.30131 37.82139,-122.30146 37.8215,-122.30165";
+        var value = "37.82088,-122.29884 37.82185,-122.30077 37.82139,-122.30125 37.82138,-122.30128 37.82137,-122.30131 37.82139,-122.30146 37.8215,-122.30165";
         List<Location> locations = new ArrayList<>();
 
         for (String item : StringList.split(value, " "))

@@ -28,7 +28,7 @@ public class SlippyTileGridTest extends GeographyUnitTest
     @Test
     public void testZoomLevel0()
     {
-        final var grid = new SlippyTileGrid(this, SLIPPY_TILE_MAP_AREA, ZoomLevel.FURTHEST);
+        var grid = new SlippyTileGrid(this, SLIPPY_TILE_MAP_AREA, ZoomLevel.FURTHEST);
         ensure(grid.contains(new SlippyTile(ZoomLevel.FURTHEST, 0, 0)));
     }
 
@@ -37,7 +37,7 @@ public class SlippyTileGridTest extends GeographyUnitTest
     {
         for (var zoom = ZoomLevel.FURTHEST; zoom.level() < 4; zoom = zoom.zoomIn())
         {
-            final var grid = new SlippyTileGrid(this, SLIPPY_TILE_MAP_AREA, zoom);
+            var grid = new SlippyTileGrid(this, SLIPPY_TILE_MAP_AREA, zoom);
             ensureEqual((int) zoom.totalTiles(), grid.size());
         }
     }

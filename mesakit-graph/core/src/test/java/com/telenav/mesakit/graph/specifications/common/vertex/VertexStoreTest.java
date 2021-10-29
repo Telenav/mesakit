@@ -36,16 +36,16 @@ public class VertexStoreTest extends GraphUnitTest
     public void testAdd()
     {
         // Create graph
-        final var specification = OsmDataSpecification.get();
-        final var graph = specification.newGraph(Metadata.osm(OSM, PBF));
+        var specification = OsmDataSpecification.get();
+        var graph = specification.newGraph(Metadata.osm(OSM, PBF));
         graph.addListener(Listener.none());
 
         // and get vertex vertexStore
-        final var edgeStore = graph.edgeStore();
-        final var vertexStore = graph.vertexStore();
+        var edgeStore = graph.edgeStore();
+        var vertexStore = graph.vertexStore();
 
         // then create a heavyweight edge
-        final var edge = specification.newHeavyWeightEdge(graph, 1_000_000);
+        var edge = specification.newHeavyWeightEdge(graph, 1_000_000);
 
         // populate it with test values
         edge.populateWithTestValues();
@@ -57,8 +57,8 @@ public class VertexStoreTest extends GraphUnitTest
         edgeStore.commitSpatialIndex(false);
         graph.graphStore().commit();
 
-        final Vertex from = vertexStore.vertexForNodeIdentifier(edge.fromNodeIdentifier().asLong());
-        final Vertex to = vertexStore.vertexForNodeIdentifier(edge.toNodeIdentifier().asLong());
+        Vertex from = vertexStore.vertexForNodeIdentifier(edge.fromNodeIdentifier().asLong());
+        Vertex to = vertexStore.vertexForNodeIdentifier(edge.toNodeIdentifier().asLong());
 
         ensureNotNull(from);
         ensureNotNull(to);

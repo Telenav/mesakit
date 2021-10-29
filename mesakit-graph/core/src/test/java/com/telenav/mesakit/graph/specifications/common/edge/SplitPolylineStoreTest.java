@@ -30,7 +30,6 @@ import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
 import org.junit.Test;
 
-@SuppressWarnings("ConstantConditions")
 public class SplitPolylineStoreTest extends GraphUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
@@ -40,32 +39,32 @@ public class SplitPolylineStoreTest extends GraphUnitTest
     @Test
     public void test()
     {
-        final var a = a();
-        final var b = b();
-        final var c = c();
+        var a = a();
+        var b = b();
+        var c = c();
 
         ensureEqual(a, a);
         ensureEqual(b, b);
         ensureEqual(c, c);
 
-        final var graph = osmGraph();
-        final var store = new SplitPolylineStore("test",
+        var graph = osmGraph();
+        var store = new SplitPolylineStore("test",
                 Maximum._1024, Maximum._1024, Estimate._16, Estimate._16);
 
-        final Edge edge3 = osmEdge(graph, 3, 3);
-        final Edge edge777 = osmEdge(graph, 777, 777);
-        final Edge edge55 = osmEdge(graph, 55, 55);
-        final Edge edge333 = osmEdge(graph, 333, 333);
-        final Edge edge666 = osmEdge(graph, 666, 666);
+        Edge edge3 = osmEdge(graph, 3, 3);
+        Edge edge777 = osmEdge(graph, 777, 777);
+        Edge edge55 = osmEdge(graph, 55, 55);
+        Edge edge333 = osmEdge(graph, 333, 333);
+        Edge edge666 = osmEdge(graph, 666, 666);
 
         store.set(edge3, a);
         store.set(edge777, b);
         store.set(edge333, c);
 
-        final Polyline a2 = store.get(edge3);
-        final Polyline b2 = store.get(edge777);
-        final Polyline c2 = store.get(edge55);
-        final Polyline d2 = store.get(edge333);
+        Polyline a2 = store.get(edge3);
+        Polyline b2 = store.get(edge777);
+        Polyline c2 = store.get(edge55);
+        Polyline d2 = store.get(edge333);
 
         ensureEqual(null, store.get(edge666));
 

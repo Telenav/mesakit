@@ -187,7 +187,6 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
      * @param metadata The metadata to add to the file or which should replace any existing metadata
      * @return True if the given metadata was successfully added or if it successfully replaced existing metadata
      */
-    @SuppressWarnings("UseOfObsoleteDateTimeApi")
     public boolean write(Metadata metadata)
     {
         var reader = reader();
@@ -197,7 +196,7 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
         var processedFirstNode = new MutableValue<>(false);
         var wroteCompleteFile = new MutableValue<>(false);
 
-        final var metadataNodeIdentifier = 99_999_999_999L;
+        var metadataNodeIdentifier = 99_999_999_999L;
 
         var statistics = reader.process(new PbfDataProcessor()
         {

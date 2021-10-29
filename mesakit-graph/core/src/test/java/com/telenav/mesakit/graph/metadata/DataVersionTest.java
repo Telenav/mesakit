@@ -24,18 +24,17 @@ import org.junit.Test;
 
 import java.util.stream.IntStream;
 
-@SuppressWarnings("ConstantConditions")
 public class DataVersionTest extends UnitTest
 {
     @Test
     public void testAdjustQuarterForDataVersion()
     {
         final String version = "2020Q1";
-        final var dataVersion = DataVersion.parse(version);
+        var dataVersion = DataVersion.parse(version);
 
         IntStream.range(1, 4).forEachOrdered(n ->
         {
-            final var adjustedDataVersion = dataVersion.withQuarter(n);
+            var adjustedDataVersion = dataVersion.withQuarter(n);
 
             ensureEqual("2020Q" + n,
                     adjustedDataVersion.toString());
@@ -46,9 +45,9 @@ public class DataVersionTest extends UnitTest
     public void testAdjustYearForDataVersion()
     {
         final String version = "2020Q1";
-        final var dataVersion = DataVersion.parse(version);
+        var dataVersion = DataVersion.parse(version);
 
-        final var adjustedDataVersion = dataVersion.withYear(2021);
+        var adjustedDataVersion = dataVersion.withYear(2021);
 
         ensureEqual("2021Q1", adjustedDataVersion.toString());
     }
@@ -56,10 +55,10 @@ public class DataVersionTest extends UnitTest
     @Test
     public void testConstructDataVersionFromLocalTime()
     {
-        final var time = LocalTime.now();
-        final var expectedVersion = time.year() + "Q" + time.quarter();
+        var time = LocalTime.now();
+        var expectedVersion = time.year() + "Q" + time.quarter();
 
-        final var dataVersion = new DataVersion(time);
+        var dataVersion = new DataVersion(time);
 
         ensureEqual(expectedVersion, dataVersion.toString());
     }
@@ -69,7 +68,7 @@ public class DataVersionTest extends UnitTest
     {
         final String version = "2020Q1";
 
-        final var dataVersion = DataVersion.parse(version);
+        var dataVersion = DataVersion.parse(version);
 
         ensureEqual(version, dataVersion.toString());
     }

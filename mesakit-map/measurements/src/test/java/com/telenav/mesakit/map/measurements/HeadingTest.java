@@ -31,18 +31,18 @@ public class HeadingTest extends MeasurementsUnitTest
     {
         // Verify that headings outside the standard range of 0 to 360 degrees are converted to
         // direction correctly
-        final var headingNorth = Heading.degrees(0);
-        final var headingEast = Heading.degrees(90);
-        final var headingSouth = Heading.degrees(180);
-        final var headingWest = Heading.degrees(270);
-        final var headingNorth2 = Heading.degrees(360);
-        final var headingEast2 = Heading.degrees(450);
-        final var headingSouth2 = Heading.degrees(540);
-        final var headingWest2 = Heading.degrees(630);
-        final var headingNorth3 = Heading.degrees(-360);
-        final var headingEast3 = Heading.degrees(-270);
-        final var headingSouth3 = Heading.degrees(-180);
-        final var headingWest3 = Heading.degrees(-90);
+        var headingNorth = Heading.degrees(0);
+        var headingEast = Heading.degrees(90);
+        var headingSouth = Heading.degrees(180);
+        var headingWest = Heading.degrees(270);
+        var headingNorth2 = Heading.degrees(360);
+        var headingEast2 = Heading.degrees(450);
+        var headingSouth2 = Heading.degrees(540);
+        var headingWest2 = Heading.degrees(630);
+        var headingNorth3 = Heading.degrees(-360);
+        var headingEast3 = Heading.degrees(-270);
+        var headingSouth3 = Heading.degrees(-180);
+        var headingWest3 = Heading.degrees(-90);
 
         ensureEqual(headingNorth.asApproximateDirection(), Direction.NORTH);
         ensureEqual(headingEast.asApproximateDirection(), Direction.EAST);

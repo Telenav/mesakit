@@ -29,23 +29,23 @@ public class RegionCodeTest extends RegionUnitTest
     @Test
     public void testAppend()
     {
-        final var washington = code("US-WA");
-        final var seattle = code("SEATTLE");
+        var washington = code("US-WA");
+        var seattle = code("SEATTLE");
         ensureEqual("US-WA-SEATTLE", washington.append(seattle).code());
     }
 
     @Test
     public void testCode()
     {
-        final var code = code("US-WA");
+        var code = code("US-WA");
         ensureEqual("US-WA", code.code());
     }
 
     @Test
     public void testHashAndEquals()
     {
-        final Set<RegionCode> codes = new HashSet<>();
-        final var code = code("US-CA-COUNTY_ALAMEDA");
+        Set<RegionCode> codes = new HashSet<>();
+        var code = code("US-CA-COUNTY_ALAMEDA");
         codes.add(code);
         codes.add(code);
         ensureEqual(1, codes.size());
@@ -54,7 +54,7 @@ public class RegionCodeTest extends RegionUnitTest
     @Test
     public void testIsoCity()
     {
-        final var code = code("US-WA-CITY_SAN_JOSE");
+        var code = code("US-WA-CITY_SAN_JOSE");
         ensureEqual(3, code.size());
         ensureEqual("US", code.first().code());
         ensureEqual("WA", code.second().code());
@@ -73,7 +73,7 @@ public class RegionCodeTest extends RegionUnitTest
     @Test
     public void testIsoContinent()
     {
-        final var code = code("NA");
+        var code = code("NA");
         ensureEqual(1, code.size());
         ensureEqual("NA", code.first().code());
         ensure(code.isIso());
@@ -84,7 +84,7 @@ public class RegionCodeTest extends RegionUnitTest
     @Test
     public void testIsoCountry()
     {
-        final var code = code("US");
+        var code = code("US");
         ensureEqual(1, code.size());
         ensureEqual("US", code.first().code());
         ensure(code.isIso());
@@ -95,7 +95,7 @@ public class RegionCodeTest extends RegionUnitTest
     @Test
     public void testIsoCounty()
     {
-        final var code = code("US-WA-COUNTY_KING");
+        var code = code("US-WA-COUNTY_KING");
         ensureEqual(3, code.size());
         ensureEqual("US", code.first().code());
         ensureEqual("WA", code.second().code());
@@ -115,7 +115,7 @@ public class RegionCodeTest extends RegionUnitTest
     @Test
     public void testIsoDistrict()
     {
-        final var code = code("US-WA-CITY_SAN_JOSE-DISTRICT_TELENAV");
+        var code = code("US-WA-CITY_SAN_JOSE-DISTRICT_TELENAV");
         ensureEqual(4, code.size());
         ensureEqual("US", code.first().code());
         ensureEqual("WA", code.second().code());
@@ -137,7 +137,7 @@ public class RegionCodeTest extends RegionUnitTest
     @Test
     public void testIsoMetro()
     {
-        final var code = code("US-WA-METRO_SAN_JOSE");
+        var code = code("US-WA-METRO_SAN_JOSE");
         ensureEqual(3, code.size());
         ensureEqual("US", code.first().code());
         ensureEqual("WA", code.second().code());
@@ -156,7 +156,7 @@ public class RegionCodeTest extends RegionUnitTest
     @Test
     public void testIsoState()
     {
-        final var code = code("US-WA");
+        var code = code("US-WA");
         ensureEqual(2, code.size());
         ensureEqual("US-WA", code.first(2).code());
         ensure(code.isIso());
@@ -167,7 +167,7 @@ public class RegionCodeTest extends RegionUnitTest
     @Test
     public void testIsoWorld()
     {
-        final var code = code("EARTH");
+        var code = code("EARTH");
         ensureEqual(1, code.size());
         ensureEqual("EARTH", code.first().code());
         ensure(code.isIso());
@@ -178,7 +178,7 @@ public class RegionCodeTest extends RegionUnitTest
     @Test
     public void testMesaKitCity()
     {
-        final var code = code("United_States-Washington-City_San_Jose");
+        var code = code("United_States-Washington-City_San_Jose");
         ensureEqual(3, code.size());
         ensureEqual("United_States", code.first().code());
         ensureEqual("Washington", code.second().code());
@@ -197,7 +197,7 @@ public class RegionCodeTest extends RegionUnitTest
     @Test
     public void testMesaKitContinent()
     {
-        final var code = code("North_America");
+        var code = code("North_America");
         ensureEqual(1, code.size());
         ensureEqual("North_America", code.first().code());
         ensure(code.isMesaKitn());
@@ -208,7 +208,7 @@ public class RegionCodeTest extends RegionUnitTest
     @Test
     public void testMesaKitCountry()
     {
-        final var code = code("United_States");
+        var code = code("United_States");
         ensureEqual(1, code.size());
         ensureEqual("United_States", code.first().code());
         ensure(code.isMesaKitn());
@@ -219,7 +219,7 @@ public class RegionCodeTest extends RegionUnitTest
     @Test
     public void testMesaKitCounty()
     {
-        final var code = code("United_States-Washington-County_King");
+        var code = code("United_States-Washington-County_King");
         ensureEqual(3, code.size());
         ensureEqual("United_States", code.first().code());
         ensureEqual("Washington", code.second().code());
@@ -239,7 +239,7 @@ public class RegionCodeTest extends RegionUnitTest
     @Test
     public void testMesaKitDistrict()
     {
-        final var code = code("United_States-Washington-City_San_Jose-District_Telenav");
+        var code = code("United_States-Washington-City_San_Jose-District_Telenav");
         ensureEqual(4, code.size());
         ensureEqual("United_States", code.first().code());
         ensureEqual("Washington", code.second().code());
@@ -261,7 +261,7 @@ public class RegionCodeTest extends RegionUnitTest
     @Test
     public void testMesaKitMetro()
     {
-        final var code = code("United_States-Washington-Metro_San_Jose");
+        var code = code("United_States-Washington-Metro_San_Jose");
         ensureEqual(3, code.size());
         ensureEqual("United_States", code.first().code());
         ensureEqual("Washington", code.second().code());
@@ -280,7 +280,7 @@ public class RegionCodeTest extends RegionUnitTest
     @Test
     public void testMesaKitState()
     {
-        final var code = code("United_States-Washington");
+        var code = code("United_States-Washington");
         ensureEqual(2, code.size());
         ensureEqual("United_States-Washington", code.first(2).code());
         ensure(code.isMesaKitn());
@@ -291,7 +291,7 @@ public class RegionCodeTest extends RegionUnitTest
     @Test
     public void testMesaKitWorld()
     {
-        final var code = code("Earth");
+        var code = code("Earth");
         ensureEqual(1, code.size());
         ensureEqual("Earth", code.first().code());
         ensure(code.isMesaKitn());
@@ -303,15 +303,15 @@ public class RegionCodeTest extends RegionUnitTest
     public void testTransmogrifications()
     {
         {
-            final var code = code("US-WA-County_Thurston--Olympia");
+            var code = code("US-WA-County_Thurston--Olympia");
             ensureEqual("County_Thurston\u2014Olympia", code.last().nameized().code());
         }
         {
-            final var code = code("US-WA-County_Thurston--Olympia");
+            var code = code("US-WA-County_Thurston--Olympia");
             ensureEqual("US-WA-COUNTYTHURSTONOLYMPIA", code.isoized().code());
         }
         {
-            final var code = code("United States");
+            var code = code("United States");
             ensureEqual("United_States", code.aonized().code());
         }
     }
