@@ -28,43 +28,43 @@ public class SlippyTileTest extends GeographyUnitTest
     @Test
     public void test2()
     {
-        final int width = ZoomLevel.CLOSEST.widthInTiles();
+        int width = ZoomLevel.CLOSEST.widthInTiles();
         ensureEqual(131072, width);
-        final int height = ZoomLevel.CLOSEST.heightInTiles();
+        int height = ZoomLevel.CLOSEST.heightInTiles();
         ensureEqual(131072, height);
-        final long tiles = ZoomLevel.CLOSEST.totalTiles();
+        long tiles = ZoomLevel.CLOSEST.totalTiles();
         ensureEqual(131072L * 131072L, tiles);
-        final var widthInPixels = width * 256;
+        var widthInPixels = width * 256;
         ensureEqual(33554432, widthInPixels);
     }
 
     @Test
     public void testCoordinates()
     {
-        final SlippyTile tile_0_0_0 = ZoomLevel.FURTHEST.tileAt(Location.ORIGIN);
+        SlippyTile tile_0_0_0 = ZoomLevel.FURTHEST.tileAt(Location.ORIGIN);
         ensure(tile_0_0_0.x() == 0);
         ensure(tile_0_0_0.y() == 0);
         ensure(tile_0_0_0.getZoomLevel().level() == 0);
 
-        final SlippyTile tile_0_0_1 = ZoomLevel.FURTHEST.zoomIn()
+        SlippyTile tile_0_0_1 = ZoomLevel.FURTHEST.zoomIn()
                 .tileAt(Rectangle.MAXIMUM.northWestQuadrant().center());
         ensure(tile_0_0_1.x() == 0);
         ensure(tile_0_0_1.y() == 0);
         ensure(tile_0_0_1.getZoomLevel().level() == 1);
 
-        final SlippyTile tile_1_0_1 = ZoomLevel.FURTHEST.zoomIn()
+        SlippyTile tile_1_0_1 = ZoomLevel.FURTHEST.zoomIn()
                 .tileAt(Rectangle.MAXIMUM.northEastQuadrant().center());
         ensure(tile_1_0_1.x() == 1);
         ensure(tile_1_0_1.y() == 0);
         ensure(tile_1_0_1.getZoomLevel().level() == 1);
 
-        final SlippyTile tile_0_1_1 = ZoomLevel.FURTHEST.zoomIn()
+        SlippyTile tile_0_1_1 = ZoomLevel.FURTHEST.zoomIn()
                 .tileAt(Rectangle.MAXIMUM.southWestQuadrant().center());
         ensure(tile_0_1_1.x() == 0);
         ensure(tile_0_1_1.y() == 1);
         ensure(tile_0_1_1.getZoomLevel().level() == 1);
 
-        final SlippyTile tile_1_1_1 = ZoomLevel.FURTHEST.zoomIn()
+        SlippyTile tile_1_1_1 = ZoomLevel.FURTHEST.zoomIn()
                 .tileAt(Rectangle.MAXIMUM.southEastQuadrant().center());
         ensure(tile_1_1_1.x() == 1);
         ensure(tile_1_1_1.y() == 1);

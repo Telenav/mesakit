@@ -197,7 +197,7 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
         var processedFirstNode = new MutableValue<>(false);
         var wroteCompleteFile = new MutableValue<>(false);
 
-        final var metadataNodeIdentifier = 99_999_999_999L;
+        var metadataNodeIdentifier = 99_999_999_999L;
 
         var statistics = reader.process(new PbfDataProcessor()
         {

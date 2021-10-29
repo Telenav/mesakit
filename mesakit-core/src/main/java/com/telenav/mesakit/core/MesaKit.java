@@ -36,7 +36,7 @@ public class MesaKit extends Project
 
     public Folder mesakitHome()
     {
-        final var home = JavaVirtualMachine.property("MESAKIT_HOME");
+        var home = JavaVirtualMachine.property("MESAKIT_HOME");
         if (home != null)
         {
             return Folder.parse(home);

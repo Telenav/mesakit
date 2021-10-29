@@ -217,7 +217,7 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
 
     private void testRandom(boolean bulkLoad)
     {
-        final var iterations = 25;
+        var iterations = 25;
         for (var iteration = 1; iteration <= iterations; iteration++)
         {
             // Create a random rectangle

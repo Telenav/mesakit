@@ -28,10 +28,10 @@ public class SpeedTest extends MeasurementsUnitTest
     @Test
     public void test()
     {
-        final var miles = Distance.miles(5);
+        var miles = Distance.miles(5);
         ensureWithin(5, miles.asMiles(), 0.001);
 
-        final var speed = Speed.milesPerHour(5);
+        var speed = Speed.milesPerHour(5);
         ensureWithin(5, speed.asMilesPerHour(), 0.001);
     }
 }

@@ -39,14 +39,14 @@ public class PolylineConverterTest extends UnitTest
     @Test
     public void testOnConvertToString()
     {
-        final var builder = new PolylineBuilder();
+        var builder = new PolylineBuilder();
         builder.add(new Location(Latitude.degrees(37.38592), Longitude.degrees(-122.00602)));
         builder.add(new Location(Latitude.degrees(37.38553), Longitude.degrees(-122.00602)));
         builder.add(new Location(Latitude.degrees(37.38557), Longitude.degrees(-122.00426)));
         builder.add(new Location(Latitude.degrees(37.38648), Longitude.degrees(-122.00430)));
 
-        final var polyline = builder.build();
-        final var stringConversion = polylineConverter.unconvert(polyline);
+        var polyline = builder.build();
+        var stringConversion = polylineConverter.unconvert(polyline);
         ensureEqual(polyline, polylineConverter.onConvert(stringConversion));
     }
 }

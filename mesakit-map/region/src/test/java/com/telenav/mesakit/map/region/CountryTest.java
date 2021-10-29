@@ -60,8 +60,8 @@ public class CountryTest extends RegionUnitTest
     @Test
     public void testForLocation()
     {
-        final var location = Location.degrees(39.747203, -104.987507);
-        final var denverByLocation = MetropolitanArea.forLocation(location);
+        var location = Location.degrees(39.747203, -104.987507);
+        var denverByLocation = MetropolitanArea.forLocation(location);
         ensureEqual(Country.UNITED_STATES, Country.forLocation(location));
         ensureEqual(Country.UNITED_STATES.COLORADO.metropolitanArea(new RegionIdentity("Denver Aurora")
                 .withMesaKitCode(code("United_States-Colorado-Metro_Denver_Aurora"))
@@ -92,10 +92,10 @@ public class CountryTest extends RegionUnitTest
     @Test
     public void testNumeric()
     {
-        final var map = alpha3ToNumericMap();
+        var map = alpha3ToNumericMap();
         map.forEach((key, value) ->
         {
-            final var country = Country.forNumericCountryCode(value);
+            var country = Country.forNumericCountryCode(value);
             if (country == null)
             {
                 LOGGER.glitch("No country for numeric country code $", value);

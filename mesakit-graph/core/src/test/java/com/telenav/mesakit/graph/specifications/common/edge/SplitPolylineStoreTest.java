@@ -40,16 +40,16 @@ public class SplitPolylineStoreTest extends GraphUnitTest
     @Test
     public void test()
     {
-        final var a = a();
-        final var b = b();
-        final var c = c();
+        var a = a();
+        var b = b();
+        var c = c();
 
         ensureEqual(a, a);
         ensureEqual(b, b);
         ensureEqual(c, c);
 
-        final var graph = osmGraph();
-        final var store = new SplitPolylineStore("test",
+        var graph = osmGraph();
+        var store = new SplitPolylineStore("test",
                 Maximum._1024, Maximum._1024, Estimate._16, Estimate._16);
 
         final Edge edge3 = osmEdge(graph, 3, 3);

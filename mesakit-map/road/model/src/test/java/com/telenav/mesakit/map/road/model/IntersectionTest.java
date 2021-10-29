@@ -29,12 +29,12 @@ public class IntersectionTest extends GeographyUnitTest
     {
         // Test identical street names, transposed names, 1 of 2 matching names, and
         // 2 different names
-        final var intersection1a = Intersection.forStreets(RoadName.forName("1st St"), RoadName.forName("1st Av"));
-        final var intersection1b = Intersection.forStreets(RoadName.forName("1st St"), RoadName.forName("1st Av"));
-        final var intersection2 = Intersection.forStreets(RoadName.forName("1st Av"), RoadName.forName("1st St"));
-        final var intersection3 = Intersection.forStreets(RoadName.forName("1st St"), RoadName.forName("3rd Av"));
-        final var intersection4 = Intersection.forStreets(RoadName.forName("2nd St"), RoadName.forName("1st Av"));
-        final var intersection5 = Intersection.forStreets(RoadName.forName("4th St"), RoadName.forName("4th Av"));
+        var intersection1a = Intersection.forStreets(RoadName.forName("1st St"), RoadName.forName("1st Av"));
+        var intersection1b = Intersection.forStreets(RoadName.forName("1st St"), RoadName.forName("1st Av"));
+        var intersection2 = Intersection.forStreets(RoadName.forName("1st Av"), RoadName.forName("1st St"));
+        var intersection3 = Intersection.forStreets(RoadName.forName("1st St"), RoadName.forName("3rd Av"));
+        var intersection4 = Intersection.forStreets(RoadName.forName("2nd St"), RoadName.forName("1st Av"));
+        var intersection5 = Intersection.forStreets(RoadName.forName("4th St"), RoadName.forName("4th Av"));
 
         ensure(intersection1a.equals(intersection1a));
         ensure(intersection1a.equals(intersection1b));

@@ -37,10 +37,10 @@ public class PolylineSnapperTest extends GeographyUnitTest
 
     public LocationSequence locations()
     {
-        final var start = new Location(Latitude.degrees(37.385576), Longitude.degrees(-122.005974));
-        final var shape1 = new Location(Latitude.degrees(37.386482), Longitude.degrees(-122.004362));
-        final var shape2 = new Location(Latitude.degrees(37.386618), Longitude.degrees(-122.003158));
-        final var end = new Location(Latitude.degrees(37.38553), Longitude.degrees(-122.002442));
+        var start = new Location(Latitude.degrees(37.385576), Longitude.degrees(-122.005974));
+        var shape1 = new Location(Latitude.degrees(37.386482), Longitude.degrees(-122.004362));
+        var shape2 = new Location(Latitude.degrees(37.386618), Longitude.degrees(-122.003158));
+        var end = new Location(Latitude.degrees(37.38553), Longitude.degrees(-122.002442));
         final List<Location> locations = new ArrayList<>();
         locations.add(start);
         locations.add(shape1);
@@ -52,15 +52,15 @@ public class PolylineSnapperTest extends GeographyUnitTest
     @Test
     public void testSnapping()
     {
-        final var locations = locations();
-        final var snapper = new PolylineSnapper();
+        var locations = locations();
+        var snapper = new PolylineSnapper();
 
-        final var point = new Location(Latitude.degrees(37.386458), Longitude.degrees(-122.006001));
+        var point = new Location(Latitude.degrees(37.386458), Longitude.degrees(-122.006001));
 
-        final var snapped = snapper.snap(locations, point);
+        var snapped = snapper.snap(locations, point);
         trace("Snapped ${debug} to ${debug}", point, snapped);
 
-        final var toCompare = new Location(Latitude.degrees(37.385860019), Longitude.degrees(-122.00546866));
+        var toCompare = new Location(Latitude.degrees(37.385860019), Longitude.degrees(-122.00546866));
         ensure(toCompare.isClose(snapped, Angle.degrees(0.000001)));
 
         trace("Offset on snap's Segment = ${debug}", snapped.offsetOnSegment());

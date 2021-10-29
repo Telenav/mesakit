@@ -506,7 +506,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
             }
 
             // If we're just moving around and we know where the cursor is,
-            final var margin = 10;
+            var margin = 10;
             if (!isDragging())
             {
                 // draw the cursor's latitude and longitude in the lower right

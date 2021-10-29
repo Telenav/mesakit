@@ -151,7 +151,7 @@ public class UnitedStates extends Country
     @Override
     public void onInitialize()
     {
-        final var BASE = new RegionInstance<>(State.class);
+        var BASE = new RegionInstance<>(State.class);
 
         CALIFORNIA = new California();
         CALIFORNIA.initialize();

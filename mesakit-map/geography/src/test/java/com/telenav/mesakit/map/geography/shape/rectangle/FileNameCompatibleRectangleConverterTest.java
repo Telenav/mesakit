@@ -31,8 +31,8 @@ public class FileNameCompatibleRectangleConverterTest extends UnitTest
     @Test
     public void extraction()
     {
-        final var group = Rectangle.FileNameConverter.group(LOGGER);
-        final var matcher = group.matcher("-45.0_-45.0_-45.0_-45.0");
+        var group = Rectangle.FileNameConverter.group(LOGGER);
+        var matcher = group.matcher("-45.0_-45.0_-45.0_-45.0");
         ensure(matcher.matches());
         ensureEqual(Rectangle.fromLocations(Location.degrees(-45, -45), Location.degrees(-45, -45)),
                 group.get(matcher));
@@ -41,14 +41,14 @@ public class FileNameCompatibleRectangleConverterTest extends UnitTest
     @Test
     public void matches()
     {
-        final var group = Rectangle.FileNameConverter.group(LOGGER);
+        var group = Rectangle.FileNameConverter.group(LOGGER);
         ensure(group.matches("-45.0_-45.0_-45.0_-45.0"));
     }
 
     @Test
     public void mismatches()
     {
-        final var group = Rectangle.FileNameConverter.group(LOGGER);
+        var group = Rectangle.FileNameConverter.group(LOGGER);
         ensureFalse(group.matches("xyz"));
         ensureFalse(group.matches("-45.0,-45.0:-45.0,-45.0"));
         ensureFalse(group.matches("-45.0,-45.0,-45.0,-45.0"));

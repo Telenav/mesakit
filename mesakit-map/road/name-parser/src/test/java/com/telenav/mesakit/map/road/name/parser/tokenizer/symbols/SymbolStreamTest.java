@@ -28,7 +28,7 @@ public class SymbolStreamTest extends UnitTest
     @Test
     public void test()
     {
-        final var in = new SymbolStream(SymbolList.of(" North   125th  Street "));
+        var in = new SymbolStream(SymbolList.of(" North   125th  Street "));
         in.skipAnyWhiteSpace();
         ensure(in.matches("North"));
         ensure(in.matches(Symbol.WHITESPACE));

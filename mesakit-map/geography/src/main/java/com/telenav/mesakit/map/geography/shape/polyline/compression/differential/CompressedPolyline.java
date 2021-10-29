@@ -127,7 +127,7 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
 
         public long read(BitReader reader, long last)
         {
-            final var precision = Precision.DM7;
+            var precision = Precision.DM7;
 
             var lastLatitude = Location.latitude(last);
             var lastLongitude = Location.longitude(last);
@@ -156,7 +156,7 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
         public boolean write(BitWriter writer, int atLatitude,
                              int atLongitude, int lastLatitude, int lastLongitude)
         {
-            final var precision = Precision.DM7;
+            var precision = Precision.DM7;
 
             // Ensure parameters
             assert precision.isValidLatitude(atLatitude);

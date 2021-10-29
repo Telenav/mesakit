@@ -28,9 +28,9 @@ public class SymbolTest extends UnitTest
     @Test
     public void testEquals()
     {
-        final var a = Symbol.of("a");
-        final var a2 = Symbol.of("a");
-        final var b = Symbol.of("b");
+        var a = Symbol.of("a");
+        var a2 = Symbol.of("a");
+        var b = Symbol.of("b");
         ensureEqual(a, a2);
         ensureNotEqual(a, b);
         ensureEqual(a.hashCode(), a2.hashCode());

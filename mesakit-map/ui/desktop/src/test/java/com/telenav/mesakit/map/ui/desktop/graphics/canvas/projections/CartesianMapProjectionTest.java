@@ -31,7 +31,7 @@ public class CartesianMapProjectionTest extends BaseCoordinateMapperTest
     @Test
     public void testLocationForPoint1()
     {
-        final CartesianMapProjection projection = new CartesianMapProjection(Rectangle.MAXIMUM,
+        CartesianMapProjection projection = new CartesianMapProjection(Rectangle.MAXIMUM,
                 drawingSize(100, 100));
 
         ensureEqual(Rectangle.MAXIMUM.topLeft(), projection.toMap(point(0, 0)));
@@ -45,7 +45,7 @@ public class CartesianMapProjectionTest extends BaseCoordinateMapperTest
     @Test
     public void testLocationForPoint2()
     {
-        final CartesianMapProjection projection = new CartesianMapProjection(Rectangle.MAXIMUM,
+        CartesianMapProjection projection = new CartesianMapProjection(Rectangle.MAXIMUM,
                 drawingSize(100, 100));
 
         ensureEqual(Rectangle.MAXIMUM.topLeft(), projection.toMap(point(0, 0)));
@@ -59,7 +59,7 @@ public class CartesianMapProjectionTest extends BaseCoordinateMapperTest
     @Test
     public void testPointForLocation1()
     {
-        final CartesianMapProjection projection = new CartesianMapProjection(Rectangle.MAXIMUM,
+        CartesianMapProjection projection = new CartesianMapProjection(Rectangle.MAXIMUM,
                 drawingSize(100, 100));
 
         ensureEqual(point(0, 0), projection.toDrawing(Rectangle.MAXIMUM.topLeft()));
@@ -73,7 +73,7 @@ public class CartesianMapProjectionTest extends BaseCoordinateMapperTest
     @Test
     public void testPointForLocation2()
     {
-        final CartesianMapProjection projection = new CartesianMapProjection(Rectangle.MAXIMUM,
+        CartesianMapProjection projection = new CartesianMapProjection(Rectangle.MAXIMUM,
                 drawingSize(100, 100));
 
         ensureEqual(point(0, 0), projection.toDrawing(Rectangle.MAXIMUM.topLeft()));
@@ -88,12 +88,12 @@ public class CartesianMapProjectionTest extends BaseCoordinateMapperTest
     public void testSmall()
     {
         // 10x10 degree square
-        final var width = Width.degrees(10);
-        final var height = Height.degrees(10);
-        final var size = new Size(width, height);
+        var width = Width.degrees(10);
+        var height = Height.degrees(10);
+        var size = new Size(width, height);
 
         // Map from 100,100:200,200 swing rectangle to 0,0:10,10 geographic rectangle
-        final CartesianMapProjection projection = new CartesianMapProjection(
+        CartesianMapProjection projection = new CartesianMapProjection(
                 Location.ORIGIN.rectangle(size), drawingSize(100, 100));
 
         // Ensure simple cases in the corners (the middle will be distorted by the projection)
@@ -106,7 +106,7 @@ public class CartesianMapProjectionTest extends BaseCoordinateMapperTest
     @Test
     public void testWorld()
     {
-        final CartesianMapProjection projection = new CartesianMapProjection(
+        CartesianMapProjection projection = new CartesianMapProjection(
                 SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA, drawingSize(100, 100));
 
         // The origin will not be distorted
@@ -123,14 +123,14 @@ public class CartesianMapProjectionTest extends BaseCoordinateMapperTest
     public void testZoomedIn()
     {
         // 1x1 degree square
-        final var width = Width.degrees(1);
-        final var height = Height.degrees(1);
-        final var size = new Size(width, height);
-        final var seattle = Location.degrees(47.601765, -122.332335).rectangle(size);
+        var width = Width.degrees(1);
+        var height = Height.degrees(1);
+        var size = new Size(width, height);
+        var seattle = Location.degrees(47.601765, -122.332335).rectangle(size);
 
         // Map from 100,100:200,200 swing rectangle to 47.601765,-122.332335:48.601765,-121.332335
         // geographic rectangle around downtown Seattle
-        final CartesianMapProjection projection = new CartesianMapProjection(seattle,
+        CartesianMapProjection projection = new CartesianMapProjection(seattle,
                 drawingSize(100, 100));
 
         // Ensure simple cases in the corners (the middle will be distorted by the projection)

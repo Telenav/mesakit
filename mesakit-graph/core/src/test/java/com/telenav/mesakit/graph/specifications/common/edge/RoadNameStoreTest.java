@@ -33,9 +33,9 @@ public class RoadNameStoreTest extends GraphUnitTest
     @Test
     public void test()
     {
-        final var graph = osmGraph();
-        final var store = new RoadNameStore("test", Estimate._64, Metadata.defaultMetadata());
-        final var iterations = 1_000;
+        var graph = osmGraph();
+        var store = new RoadNameStore("test", Estimate._64, Metadata.defaultMetadata());
+        var iterations = 1_000;
         for (var i = 0; i < iterations; i++)
         {
             if (i % 3 != 0)
