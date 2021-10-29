@@ -47,7 +47,7 @@ public class ShapeFileReader
 
     private final Listener listener;
 
-    public ShapeFileReader(final Listener listener, final Resource resource)
+    public ShapeFileReader( Listener listener, final Resource resource)
     {
         this.listener = listener;
         try
@@ -58,7 +58,7 @@ public class ShapeFileReader
             reader = new org.nocrala.tools.gis.data.esri.shapefile.ShapeFileReader(in, preferences);
             reader.getHeader();
         }
-        catch (final Exception e)
+        catch ( Exception e)
         {
             throw new IllegalStateException("Unable to read shape file " + resource, e);
         }
@@ -85,7 +85,7 @@ public class ShapeFileReader
                     if (shape != null)
                     {
                         final var builder = new PolygonBuilder();
-                        for (final PointData point : shape.getPointsOfPart(part))
+                        for ( PointData point : shape.getPointsOfPart(part))
                         {
                             if (Doubles.isBetween(point.getY(), -85, 85))
                             {
@@ -108,7 +108,7 @@ public class ShapeFileReader
                         }
                     }
                 }
-                catch (final Exception e)
+                catch ( Exception e)
                 {
                     e.printStackTrace();
                 }
@@ -156,7 +156,7 @@ public class ShapeFileReader
                     if (shape != null)
                     {
                         final var builder = new PolylineBuilder();
-                        for (final PointData point : shape.getPointsOfPart(part))
+                        for ( PointData point : shape.getPointsOfPart(part))
                         {
                             builder.add(
                                     new Location(Latitude.degrees(point.getY()), Longitude.degrees(point.getX())));
@@ -168,7 +168,7 @@ public class ShapeFileReader
                         return builder.build();
                     }
                 }
-                catch (final Exception e)
+                catch ( Exception e)
                 {
                     e.printStackTrace();
                 }

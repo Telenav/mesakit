@@ -61,17 +61,17 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
 
     private final MutableCount connectors = new MutableCount();
 
-    protected JunctionEdgeFinder(final EdgeSequence edges)
+    protected JunctionEdgeFinder(EdgeSequence edges)
     {
         this.edges = edges;
     }
 
     public void find()
     {
-        final var threads = JavaVirtualMachine.local().processors();
-        final var completion = new CountDownLatch(threads.asInt());
+        var threads = JavaVirtualMachine.local().processors();
+        var completion = new CountDownLatch(threads.asInt());
         edgeIterator = edges.iterator();
-        final var outer = this;
+        var outer = this;
         for (var thread = 0; thread < threads.asInt(); thread++)
         {
             new KivaKitThread("JunctionFinder-" + thread)
@@ -83,18 +83,18 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
                     {
                         while (true)
                         {
-                            final var next = nextEdges(10_000);
+                            var next = nextEdges(10_000);
                             if (next.isEmpty())
                             {
                                 break;
                             }
-                            for (final var edge : next)
+                            for (var edge : next)
                             {
                                 try
                                 {
                                     processEdge(edge);
                                 }
-                                catch (final Exception e)
+                                catch (Exception e)
                                 {
                                     outer.warning(e, "Edge processing threw exception");
                                 }
@@ -116,7 +116,7 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
         {
             completion.await();
         }
-        catch (final InterruptedException ignored)
+        catch (InterruptedException ignored)
         {
         }
     }
@@ -139,10 +139,10 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
      * @return true if any end of the route is connecting to more than two edges besides the reversed edge, or all the
      * connected roads have more than one road name
      */
-    private boolean atIntersection(final Route route)
+    private boolean atIntersection(Route route)
     {
-        final var inEdges = route.first().fromEdgesWithoutThisEdge();
-        final var outEdges = route.last().toEdgesWithoutThisEdge();
+        var inEdges = route.first().fromEdgesWithoutThisEdge();
+        var outEdges = route.last().toEdgesWithoutThisEdge();
 
         // check connected roads number, if any end of the route is connecting to more than two
         // edges, then the route is at intersection
@@ -152,12 +152,12 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
         }
 
         // check road name
-        final Set<RoadName> roadNames = new HashSet<>();
-        for (final var edge : inEdges)
+        Set<RoadName> roadNames = new HashSet<>();
+        for (var edge : inEdges)
         {
             roadNames.add(edge.roadName());
         }
-        for (final var edge : outEdges)
+        for (var edge : outEdges)
         {
             roadNames.add(edge.roadName());
         }
@@ -169,10 +169,10 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
     /**
      * @return true if both ends of the route only connect to two parallel edges
      */
-    private boolean isConnectingRoute(final Route route)
+    private boolean isConnectingRoute(Route route)
     {
-        final var inEdges = route.first().fromEdgesWithoutThisEdge();
-        final var outEdges = route.last().toEdgesWithoutThisEdge();
+        var inEdges = route.first().fromEdgesWithoutThisEdge();
+        var outEdges = route.last().toEdgesWithoutThisEdge();
 
         if (inEdges.size() == 2 && outEdges.size() == 2)
         {
@@ -181,25 +181,25 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
         return false;
     }
 
-    private boolean isParallel(final EdgeSet twoEdges, final Vertex shared)
+    private boolean isParallel(EdgeSet twoEdges, Vertex shared)
     {
-        final var iterator = twoEdges.iterator();
-        final var firstEdge = iterator.next();
-        final var secondEdge = iterator.next();
+        var iterator = twoEdges.iterator();
+        var firstEdge = iterator.next();
+        var secondEdge = iterator.next();
 
-        final var first = firstEdge.from().equals(shared) ? firstEdge.heading()
+        var first = firstEdge.from().equals(shared) ? firstEdge.heading()
                 : firstEdge.roadShape().reversed().initialHeading();
-        final var second = secondEdge.from().equals(shared) ? secondEdge.heading()
+        var second = secondEdge.from().equals(shared) ? secondEdge.heading()
                 : secondEdge.roadShape().reversed().initialHeading();
 
-        final var difference = first.difference(second, Chirality.SMALLEST);
+        var difference = first.difference(second, Chirality.SMALLEST);
         return difference.isGreaterThan(degrees(135));
     }
 
-    private boolean isTooComplex(final Route route)
+    private boolean isTooComplex(Route route)
     {
-        final var fromEdges = new EdgeSet();
-        for (final var edge : route.first().fromEdgesWithoutThisEdge())
+        var fromEdges = new EdgeSet();
+        for (var edge : route.first().fromEdgesWithoutThisEdge())
         {
             if (!fromEdges.contains(edge.reversed()))
             {
@@ -210,8 +210,8 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
                 }
             }
         }
-        final var toEdges = new EdgeSet();
-        for (final var edge : route.last().toEdgesWithoutThisEdge())
+        var toEdges = new EdgeSet();
+        for (var edge : route.last().toEdgesWithoutThisEdge())
         {
             if (!toEdges.contains(edge.reversed()))
             {
@@ -229,7 +229,7 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
      * Some filters for junction edge, including road type, road sub type and if the edge is bent, if the edge is ramp,
      * then the edge can be bent
      */
-    private boolean isValidCandidate(final Edge edge)
+    private boolean isValidCandidate(Edge edge)
     {
         return edge.roadType().isEqualOrMoreImportantThan(RoadType.LOW_SPEED_ROAD) && !edge.isRoundabout()
                 && !edge.isConnector() && edge.length().isLessThan(MAXIMUM_JUNCTION_EDGE_LENGTH);
@@ -238,7 +238,7 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
     /**
      * @return true if the route has appropriate length
      */
-    private boolean isValidConnectionOrBentJunction(final Route route)
+    private boolean isValidConnectionOrBentJunction(Route route)
     {
         return route.length().isLessThanOrEqualTo(Distance.meters(150));
     }
@@ -246,7 +246,7 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
     /**
      * @return true if the route has appropriate length
      */
-    private boolean isValidStraightJunction(final Route route)
+    private boolean isValidStraightJunction(Route route)
     {
         // If the route has only one edge,
         if (route.size() == 1)
@@ -264,7 +264,7 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
     @SuppressWarnings("SameParameterValue")
     private synchronized List<Edge> nextEdges(int count)
     {
-        final List<Edge> edges = new ArrayList<>();
+        List<Edge> edges = new ArrayList<>();
         while (edgeIterator.hasNext() && count-- > 0)
         {
             edges.add(edgeIterator.next());
@@ -272,25 +272,25 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
         return edges;
     }
 
-    private synchronized void notifyConnectorRoute(final Route route)
+    private synchronized void notifyConnectorRoute(Route route)
     {
-        for (final var connector : route)
+        for (var connector : route)
         {
             connectors.increment();
             onConnector(connector);
         }
     }
 
-    private synchronized void notifyJunctionRoute(final Route route)
+    private synchronized void notifyJunctionRoute(Route route)
     {
-        for (final var edge : route)
+        for (var edge : route)
         {
             junctionEdges.increment();
             onJunction(edge);
         }
     }
 
-    private void processEdge(final Edge edge)
+    private void processEdge(Edge edge)
     {
         // check road type, road sub type
         if (!isValidCandidate(edge))
@@ -299,7 +299,7 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
         }
 
         // the junction edge should have less than or equal to five edges
-        final var route = edge.nonBranchingRoute(Maximum._5);
+        var route = edge.nonBranchingRoute(Maximum._5);
         if (route == null)
         {
             return;

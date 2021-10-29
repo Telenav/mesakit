@@ -32,18 +32,18 @@ public class CpuTimeRoutingLimiter implements RoutingLimiter
 
     private final PreciseDuration start = PreciseDuration.cpuTime();
 
-    public CpuTimeRoutingLimiter(final PreciseDuration maximum)
+    public CpuTimeRoutingLimiter(PreciseDuration maximum)
     {
         this.maximum = maximum;
     }
 
     @Override
-    public RoutingInstruction instruction(final Edge edge)
+    public RoutingInstruction instruction(Edge edge)
     {
-        if (++this.iteration % 100 == 0)
+        if (++iteration % 100 == 0)
         {
-            final var duration = PreciseDuration.cpuTime().minus(this.start);
-            if (duration.isGreaterThan(this.maximum))
+            var duration = PreciseDuration.cpuTime().minus(start);
+            if (duration.isGreaterThan(maximum))
             {
                 return new StopRoutingInstruction("Exceeded $ CPU time", duration);
             }

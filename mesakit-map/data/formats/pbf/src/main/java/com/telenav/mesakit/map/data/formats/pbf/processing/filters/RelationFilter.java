@@ -46,9 +46,9 @@ public class RelationFilter implements Filter<PbfRelation>, Named
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static RelationFilter forName(final String name)
+    public static RelationFilter forName(String name)
     {
-        final var filter = relationFilterForName.get(name);
+        var filter = relationFilterForName.get(name);
         if (filter != null)
         {
             return filter;
@@ -62,8 +62,8 @@ public class RelationFilter implements Filter<PbfRelation>, Named
         return relationFilterSwitchParser("relation-filter", "The name of a relation filter:\n\n" + help() + "\n");
     }
 
-    public static SwitchParser.Builder<RelationFilter> relationFilterSwitchParser(final String name,
-                                                                                  final String description)
+    public static SwitchParser.Builder<RelationFilter> relationFilterSwitchParser(String name,
+                                                                                  String description)
     {
         return SwitchParser.builder(RelationFilter.class).name(name).description(description)
                 .converter(new Converter(LOGGER));
@@ -71,13 +71,13 @@ public class RelationFilter implements Filter<PbfRelation>, Named
 
     public static class Converter extends BaseStringConverter<RelationFilter>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected RelationFilter onToValue(final String value)
+        protected RelationFilter onToValue(String value)
         {
             return forName(value);
         }
@@ -91,7 +91,7 @@ public class RelationFilter implements Filter<PbfRelation>, Named
 
     private final Set<String> included = new HashSet<>();
 
-    public RelationFilter(final String name, final String description)
+    public RelationFilter(String name, String description)
     {
         this.name = name;
         this.description = description;
@@ -99,11 +99,11 @@ public class RelationFilter implements Filter<PbfRelation>, Named
     }
 
     @Override
-    public boolean accepts(final PbfRelation relation)
+    public boolean accepts(PbfRelation relation)
     {
         // Ensure if we're including or excluding
-        final var include = !included.isEmpty();
-        final var exclude = !excluded.isEmpty();
+        var include = !included.isEmpty();
+        var exclude = !excluded.isEmpty();
 
         // Don't allow both options
         if (exclude && include)
@@ -135,12 +135,12 @@ public class RelationFilter implements Filter<PbfRelation>, Named
         return description;
     }
 
-    public void exclude(final String type)
+    public void exclude(String type)
     {
         excluded.add(type);
     }
 
-    public void include(final String type)
+    public void include(String type)
     {
         included.add(type);
     }
@@ -157,21 +157,21 @@ public class RelationFilter implements Filter<PbfRelation>, Named
         return name();
     }
 
-    protected boolean isExcluded(final PbfRelation relation)
+    protected boolean isExcluded(PbfRelation relation)
     {
         if (relation.hasKey("type"))
         {
-            final var type = relation.tagValue("type");
+            var type = relation.tagValue("type");
             return excluded.contains(type);
         }
         return false;
     }
 
-    protected boolean isIncluded(final PbfRelation relation)
+    protected boolean isIncluded(PbfRelation relation)
     {
         if (relation.hasKey("type"))
         {
-            final var type = relation.tagValue("type");
+            var type = relation.tagValue("type");
             return included.contains(type);
         }
         return false;
@@ -179,10 +179,10 @@ public class RelationFilter implements Filter<PbfRelation>, Named
 
     private static String help()
     {
-        final var help = new StringList();
-        for (final var name : relationFilterForName.keySet())
+        var help = new StringList();
+        for (var name : relationFilterForName.keySet())
         {
-            final var filter = relationFilterForName.get(name);
+            var filter = relationFilterForName.get(name);
             help.add(name + " - " + filter.description());
         }
         help.sort(Comparator.naturalOrder());

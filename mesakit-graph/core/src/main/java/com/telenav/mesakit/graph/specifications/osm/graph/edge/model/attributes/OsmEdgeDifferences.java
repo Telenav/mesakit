@@ -27,7 +27,7 @@ public class OsmEdgeDifferences
 
     private final OsmEdge b;
 
-    public OsmEdgeDifferences(final OsmEdge a, final OsmEdge b)
+    public OsmEdgeDifferences(OsmEdge a, OsmEdge b)
     {
         this.a = a;
         this.b = b;
@@ -35,7 +35,7 @@ public class OsmEdgeDifferences
 
     public Differences compare()
     {
-        final var differences = new Differences();
+        var differences = new Differences();
 
         differences.compare("pbfFromNodeIdentifier", a.fromNodeIdentifier(), b.fromNodeIdentifier());
         differences.compare("pbfToNodeIdentifier", a.toNodeIdentifier(), b.toNodeIdentifier());

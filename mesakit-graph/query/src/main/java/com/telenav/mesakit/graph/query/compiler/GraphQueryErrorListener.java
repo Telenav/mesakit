@@ -20,7 +20,7 @@ public class GraphQueryErrorListener implements ANTLRErrorListener
 
     private boolean error;
 
-    public GraphQueryErrorListener(final Callback<String> errorHandler)
+    public GraphQueryErrorListener(Callback<String> errorHandler)
     {
         this.errorHandler = errorHandler;
     }
@@ -31,26 +31,26 @@ public class GraphQueryErrorListener implements ANTLRErrorListener
     }
 
     @Override
-    public void reportAmbiguity(final Parser parser, final DFA dfa, final int i, final int i1, final boolean b,
-                                final BitSet bitSet, final ATNConfigSet atnConfigSet)
+    public void reportAmbiguity(Parser parser, DFA dfa, int i, int i1, boolean b,
+                                BitSet bitSet, ATNConfigSet atnConfigSet)
     {
     }
 
     @Override
-    public void reportAttemptingFullContext(final Parser parser, final DFA dfa, final int i, final int i1,
-                                            final BitSet bitSet, final ATNConfigSet atnConfigSet)
+    public void reportAttemptingFullContext(Parser parser, DFA dfa, int i, int i1,
+                                            BitSet bitSet, ATNConfigSet atnConfigSet)
     {
     }
 
     @Override
-    public void reportContextSensitivity(final Parser parser, final DFA dfa, final int i, final int i1, final int i2,
-                                         final ATNConfigSet atnConfigSet)
+    public void reportContextSensitivity(Parser parser, DFA dfa, int i, int i1, int i2,
+                                         ATNConfigSet atnConfigSet)
     {
     }
 
     @Override
-    public void syntaxError(final Recognizer<?, ?> recognizer, final Object offendingToken, final int line,
-                            final int character, final String message, final RecognitionException e)
+    public void syntaxError(Recognizer<?, ?> recognizer, Object offendingToken, int line,
+                            int character, String message, RecognitionException e)
     {
         error = true;
         errorHandler.callback(Message.format("Syntax error at $: $", character, message));

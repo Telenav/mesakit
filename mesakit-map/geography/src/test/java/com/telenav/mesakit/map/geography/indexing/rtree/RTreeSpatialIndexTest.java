@@ -50,14 +50,14 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
     @Test
     public void testClippingBug()
     {
-        final var bounds = Rectangle.parse("35.1955277,-106.5401421:35.1962294,-106.5388557");
-        final var index = new RTreeSpatialIndex<Polyline>("test", new RTreeSettings());
-        final var top = Polyline.parse("35.196277,-106.539661:35.196193,-106.539646:35.195664,-106.539666");
+        var bounds = Rectangle.parse("35.1955277,-106.5401421:35.1962294,-106.5388557");
+        var index = new RTreeSpatialIndex<Polyline>("test", new RTreeSettings());
+        var top = Polyline.parse("35.196277,-106.539661:35.196193,-106.539646:35.195664,-106.539666");
         index.add(top);
-        final var bottom = Polyline.parse("35.195664,-106.539666:35.195004,-106.539679");
+        var bottom = Polyline.parse("35.195664,-106.539666:35.195004,-106.539679");
         index.add(bottom);
         int count = 0;
-        for (final var ignored : index.intersecting(bounds))
+        for (var ignored : index.intersecting(bounds))
         {
             count++;
         }
@@ -67,17 +67,17 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
     @Test
     public void testIntersection()
     {
-        final var unit = Rectangle.fromLocations(Location.ORIGIN,
+        var unit = Rectangle.fromLocations(Location.ORIGIN,
                 new Location(Latitude.degrees(1), Longitude.degrees(1)));
 
-        final var fullyInside = polyline(0.5, 0.5, 0.75, 0.75, 0.85, 0.85);
-        final var outsideLowerLeft = polyline(-1, -1, -0.5, -0.5, -0.85, -0.85);
-        final var outsideRight = polyline(0.5, 1.5, 0.75, 1.2, 0.85, 1.4);
-        final var crossingDiagonally = polyline(-0.5, -0.5, 1.5, 1.5, 2.0, 1.5);
-        final var crossingUpperLeftCorner = polyline(0.5, -.5, 1.5, 0.5);
-        final var outsideBelow = polyline(-0.5, -0.5, -0.5, 1.5);
+        var fullyInside = polyline(0.5, 0.5, 0.75, 0.75, 0.85, 0.85);
+        var outsideLowerLeft = polyline(-1, -1, -0.5, -0.5, -0.85, -0.85);
+        var outsideRight = polyline(0.5, 1.5, 0.75, 1.2, 0.85, 1.4);
+        var crossingDiagonally = polyline(-0.5, -0.5, 1.5, 1.5, 2.0, 1.5);
+        var crossingUpperLeftCorner = polyline(0.5, -.5, 1.5, 0.5);
+        var outsideBelow = polyline(-0.5, -0.5, -0.5, 1.5);
 
-        final var index = new RTreeSpatialIndex<Polyline>("test", new RTreeSettings());
+        var index = new RTreeSpatialIndex<Polyline>("test", new RTreeSettings());
         // index.setViewer(new SwingViewer());
         index.add(fullyInside);
         // index.dump(System.out);
@@ -92,8 +92,8 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
         index.add(outsideBelow);
         // index.dump(System.out);
 
-        final Set<Polyline> intersections = new HashSet<>();
-        for (final Polyline line : index.intersecting(unit))
+        Set<Polyline> intersections = new HashSet<>();
+        for (Polyline line : index.intersecting(unit))
         {
             intersections.add(line);
         }
@@ -122,7 +122,7 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
     {
         randomValueFactory().seed(900178094L);
 
-        final var index = randomSpatialIndex(500);
+        var index = randomSpatialIndex(500);
         serializationTest(index);
     }
 
@@ -132,9 +132,9 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
         return super.kryoTypes().mergedWith(new TestKryoTypes());
     }
 
-    private Polyline polyline(final double... values)
+    private Polyline polyline(double... values)
     {
-        final List<Location> locations = new ArrayList<>();
+        List<Location> locations = new ArrayList<>();
         for (var i = 0; i < values.length; i += 2)
         {
             locations.add(new Location(Latitude.degrees(values[i]), Longitude.degrees(values[i + 1])));
@@ -142,17 +142,17 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
         return Polyline.fromLocations(locations);
     }
 
-    private Location randomLocationNear(final Rectangle bounds)
+    private Location randomLocationNear(Rectangle bounds)
     {
-        final var expanded = bounds.expanded(bounds.widthAtBase().maximum(bounds.heightAsDistance()));
+        var expanded = bounds.expanded(bounds.widthAtBase().maximum(bounds.heightAsDistance()));
         return randomValueFactory().newLocation(expanded);
     }
 
-    private Location randomLocationOutside(final Rectangle bounds)
+    private Location randomLocationOutside(Rectangle bounds)
     {
         while (true)
         {
-            final var location = randomLocationNear(bounds);
+            var location = randomLocationNear(bounds);
             if (!bounds.contains(location))
             {
                 return location;
@@ -160,26 +160,26 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
         }
     }
 
-    private Polyline randomPolyline(final Rectangle bounds, final boolean intersects)
+    private Polyline randomPolyline(Rectangle bounds, boolean intersects)
     {
         // Create polyline
-        final var builder = new PolylineBuilder();
+        var builder = new PolylineBuilder();
 
         // Add a first point somewhere near or inside the rectangle
         var last = intersects ? randomLocationNear(bounds) : randomLocationOutside(bounds);
         builder.add(last);
 
         // For some number of segments
-        final var segments = randomInt(5, 10);
+        var segments = randomInt(5, 10);
         for (var i = 0; i < segments; i++)
         {
             for (var j = 0; j < 1000; j++)
             {
                 // Get a point that's near the rectangle
-                final var next = randomLocationNear(bounds);
+                var next = randomLocationNear(bounds);
 
                 // and if the segment created by the point intersects (or doesn't intersect) the bounds,
-                final var segment = new Segment(last, next);
+                var segment = new Segment(last, next);
                 if (segment.intersects(bounds) == intersects)
                 {
                     // we add the point and continue
@@ -192,12 +192,12 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
         return builder.isValid() ? builder.build() : randomPolyline(bounds, intersects);
     }
 
-    private List<Polyline> randomPolylines(final int count)
+    private List<Polyline> randomPolylines(int count)
     {
-        final List<Polyline> polylines = new ArrayList<>();
+        List<Polyline> polylines = new ArrayList<>();
         for (var i = 0; i < count; i++)
         {
-            final var bounds = randomValueFactory().newRectangle();
+            var bounds = randomValueFactory().newRectangle();
             if (bounds.area().asSquareMeters() > 1000)
             {
                 polylines.add(randomPolyline(bounds, false));
@@ -207,51 +207,51 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
     }
 
     @SuppressWarnings("SameParameterValue")
-    private RTreeSpatialIndex<Polyline> randomSpatialIndex(final int polylines)
+    private RTreeSpatialIndex<Polyline> randomSpatialIndex(int polylines)
     {
-        final var index = new TestSpatialIndex(new RTreeSettings());
-        final var loader = new RTreeBulkLoader<>(index);
+        var index = new TestSpatialIndex(new RTreeSettings());
+        var loader = new RTreeBulkLoader<>(index);
         loader.load(randomPolylines(polylines));
         return index;
     }
 
-    private void testRandom(final boolean bulkLoad)
+    private void testRandom(boolean bulkLoad)
     {
         final var iterations = 25;
         for (var iteration = 1; iteration <= iterations; iteration++)
         {
             // Create a random rectangle
-            final var bounds = randomValueFactory().newRectangle();
+            var bounds = randomValueFactory().newRectangle();
 
             // and if it's at least 1000 square meters
             if (bounds.area().asSquareMeters() > 1000)
             {
                 // Create spatial index
-                final var index = new RTreeSpatialIndex<Polyline>("test", new RTreeSettings());
+                var index = new RTreeSpatialIndex<Polyline>("test", new RTreeSettings());
 
                 // Create a set of intersecting lines
-                final Set<Polyline> intersecting = new HashSet<>();
+                Set<Polyline> intersecting = new HashSet<>();
                 {
-                    final var count = randomInt(1, 1000);
+                    var count = randomInt(1, 1000);
                     for (var i = 0; i < count; i++)
                     {
-                        final var polyline = randomPolyline(bounds, true);
+                        var polyline = randomPolyline(bounds, true);
                         intersecting.add(polyline);
                     }
                 }
 
                 // and a set of disjoint lines
-                final Set<Polyline> disjoint = new HashSet<>();
+                Set<Polyline> disjoint = new HashSet<>();
                 {
-                    final var count = randomInt(1, 1000);
+                    var count = randomInt(1, 1000);
                     for (var i = 0; i < count; i++)
                     {
-                        final var polyline = randomPolyline(bounds, false);
+                        var polyline = randomPolyline(bounds, false);
                         disjoint.add(polyline);
                     }
                 }
 
-                final List<Polyline> all = new ArrayList<>();
+                List<Polyline> all = new ArrayList<>();
                 all.addAll(intersecting);
                 all.addAll(disjoint);
                 if (bulkLoad)
@@ -260,7 +260,7 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
                 }
                 else
                 {
-                    for (final Polyline line : all)
+                    for (Polyline line : all)
                     {
                         index.add(line);
                     }
@@ -269,12 +269,12 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
                 // index.dump(System.out, DumpDetailLevel.SUMMARY_ONLY);
 
                 // Then check that the index can find only the intersecting lines
-                final var found = index.intersecting(bounds);
-                for (final Polyline line : found)
+                var found = index.intersecting(bounds);
+                for (Polyline line : found)
                 {
                     ensure(intersecting.contains(line));
                 }
-                for (final Polyline line : disjoint)
+                for (Polyline line : disjoint)
                 {
                     ensureFalse(intersecting.contains(line));
                 }

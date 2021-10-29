@@ -134,7 +134,7 @@ public class EdgeRelation extends GraphElement implements Bounded
 
         static
         {
-            for (final var value : values())
+            for (var value : values())
             {
                 if (value.name().contains("RESTRICTION"))
                 {
@@ -143,7 +143,7 @@ public class EdgeRelation extends GraphElement implements Bounded
             }
         }
 
-        public static Type forIdentifier(final int identifier)
+        public static Type forIdentifier(int identifier)
         {
             switch (identifier)
             {
@@ -213,7 +213,7 @@ public class EdgeRelation extends GraphElement implements Bounded
             }
         }
 
-        public static Type forName(final String type)
+        public static Type forName(String type)
         {
             // Not using CheckType.valueOf because it might throw exceptions
             // if a new HERE relation type is added in the future. This
@@ -274,7 +274,7 @@ public class EdgeRelation extends GraphElement implements Bounded
 
         private final int identifier;
 
-        Type(final int identifier)
+        Type(int identifier)
         {
             this.identifier = identifier;
         }
@@ -289,27 +289,27 @@ public class EdgeRelation extends GraphElement implements Bounded
     {
         private final Graph graph;
 
-        public Converter(final Graph graph, final Listener listener)
+        public Converter(Graph graph, Listener listener)
         {
             super(listener);
             this.graph = graph;
         }
 
         @Override
-        protected EdgeRelation onToValue(final String value)
+        protected String onToString(EdgeRelation relation)
         {
-            final var identifier = new RelationIdentifier(Long.parseLong(value));
+            return Long.toString(relation.identifierAsLong());
+        }
+
+        @Override
+        protected EdgeRelation onToValue(String value)
+        {
+            var identifier = new RelationIdentifier(Long.parseLong(value));
             if (graph.contains(identifier))
             {
                 return graph.relationForIdentifier(identifier);
             }
             return null;
-        }
-
-        @Override
-        protected String onToString(final EdgeRelation relation)
-        {
-            return Long.toString(relation.identifierAsLong());
         }
     }
 
@@ -317,7 +317,7 @@ public class EdgeRelation extends GraphElement implements Bounded
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public EdgeRelation(final Graph graph, final long identifier, final int index)
+    public EdgeRelation(Graph graph, long identifier, int index)
     {
         this(graph, identifier);
         index(index);
@@ -327,7 +327,7 @@ public class EdgeRelation extends GraphElement implements Bounded
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public EdgeRelation(final Graph graph, final RelationIdentifier identifier)
+    public EdgeRelation(Graph graph, RelationIdentifier identifier)
     {
         this(graph, identifier.asLong());
     }
@@ -336,13 +336,13 @@ public class EdgeRelation extends GraphElement implements Bounded
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public EdgeRelation(final Graph graph, final long identifier)
+    public EdgeRelation(Graph graph, long identifier)
     {
         graph(graph);
         identifier(identifier);
     }
 
-    protected EdgeRelation(final EdgeRelation that)
+    protected EdgeRelation(EdgeRelation that)
     {
         this(that.graph(), that.identifierAsLong());
     }
@@ -357,17 +357,17 @@ public class EdgeRelation extends GraphElement implements Bounded
         {
             return (HeavyWeightRelation) this;
         }
-        final var copy = graph().newHeavyWeightRelation(identifier());
+        var copy = graph().newHeavyWeightRelation(identifier());
         copy.copy(this);
         return copy;
     }
 
     public PbfRelation asPbfRelation()
     {
-        final List<RelationMember> members = new ArrayList<>();
-        for (final var member : members())
+        List<RelationMember> members = new ArrayList<>();
+        for (var member : members())
         {
-            final var identifier = member.identifier();
+            var identifier = member.identifier();
             members.add(new RelationMember(identifier.asLong(), ((PbfIdentifierType) identifier).entityType(), member.role()));
         }
         return new PbfRelation(new Relation(commonEntityData(), members));
@@ -380,8 +380,8 @@ public class EdgeRelation extends GraphElement implements Bounded
 
     public RouteList asRoutes()
     {
-        final var routes = new RouteList();
-        for (final var member : members())
+        var routes = new RouteList();
+        for (var member : members())
         {
             if (member.type() == MapIdentifier.Type.WAY)
             {
@@ -400,8 +400,8 @@ public class EdgeRelation extends GraphElement implements Bounded
     @Override
     public Rectangle bounds()
     {
-        final var builder = new BoundingBoxBuilder();
-        for (final var element : elements())
+        var builder = new BoundingBoxBuilder();
+        for (var element : elements())
         {
             builder.add(element.bounds());
         }
@@ -424,8 +424,8 @@ public class EdgeRelation extends GraphElement implements Bounded
 
     public ObjectList<Edge> edges()
     {
-        final var edges = new ObjectList<Edge>();
-        for (final var route : asRoutes())
+        var edges = new ObjectList<Edge>();
+        for (var route : asRoutes())
         {
             edges.addAll(route.asList());
         }
@@ -434,15 +434,15 @@ public class EdgeRelation extends GraphElement implements Bounded
 
     public List<GraphElement> elements()
     {
-        final List<GraphElement> elements = new ArrayList<>();
-        for (final var member : members())
+        List<GraphElement> elements = new ArrayList<>();
+        for (var member : members())
         {
             if (member.isWay())
             {
-                final var route = member.route();
+                var route = member.route();
                 if (route != null)
                 {
-                    for (final var edge : route)
+                    for (var edge : route)
                     {
                         elements.add(edge);
                     }
@@ -450,7 +450,7 @@ public class EdgeRelation extends GraphElement implements Bounded
             }
             else
             {
-                final var element = member.element();
+                var element = member.element();
                 if (element != null)
                 {
                     elements.add(element);
@@ -462,7 +462,7 @@ public class EdgeRelation extends GraphElement implements Bounded
 
     public Edge firstEdge()
     {
-        final var iterator = edges().iterator();
+        var iterator = edges().iterator();
         if (iterator.hasNext())
         {
             return iterator.next();
@@ -481,7 +481,7 @@ public class EdgeRelation extends GraphElement implements Bounded
         return new RelationIdentifier(identifierAsLong());
     }
 
-    public boolean is(final Type type)
+    public boolean is(Type type)
     {
         return type() == type;
     }
@@ -492,12 +492,12 @@ public class EdgeRelation extends GraphElement implements Bounded
     }
 
     @Override
-    public boolean isInside(final Rectangle bounds)
+    public boolean isInside(Rectangle bounds)
     {
         return bounds.contains(bounds());
     }
 
-    public boolean isMoreImportantThan(final EdgeRelation that)
+    public boolean isMoreImportantThan(EdgeRelation that)
     {
         return edgeSet().mostImportant().isMoreImportantThan(that.edgeSet().mostImportant());
     }
@@ -540,7 +540,7 @@ public class EdgeRelation extends GraphElement implements Bounded
     {
         // Go through all edges in the restriction
         Edge previous = null;
-        for (final var edge : edges())
+        for (var edge : edges())
         {
             // If the edge is not connected to the previous edge in any way,
             if (previous != null && !previous.isConnectedTo(edge))
@@ -566,7 +566,7 @@ public class EdgeRelation extends GraphElement implements Bounded
 
     public Location location()
     {
-        final var first = firstEdge();
+        var first = firstEdge();
         if (first != null)
         {
             return first.toLocation();
@@ -580,9 +580,9 @@ public class EdgeRelation extends GraphElement implements Bounded
         return new RelationIdentifier(identifier().asLong());
     }
 
-    public EdgeRelationMember memberInRole(final String role)
+    public EdgeRelationMember memberInRole(String role)
     {
-        for (final var member : members())
+        for (var member : members())
         {
             if (role.equalsIgnoreCase(member.role()))
             {
@@ -600,8 +600,8 @@ public class EdgeRelation extends GraphElement implements Bounded
 
     public List<PbfWayIdentifier> pbfWayIdentifiers()
     {
-        final List<PbfWayIdentifier> identifiers = new ArrayList<>();
-        for (final var member : members())
+        List<PbfWayIdentifier> identifiers = new ArrayList<>();
+        for (var member : members())
         {
             if (member.isWay())
             {
@@ -636,12 +636,12 @@ public class EdgeRelation extends GraphElement implements Bounded
     public TurnRestriction turnRestriction()
     {
         // Get from, to and via members
-        final var fromMember = memberInRole("from");
-        final var toMember = memberInRole("to");
-        final var viaMember = memberInRole("via");
+        var fromMember = memberInRole("from");
+        var toMember = memberInRole("to");
+        var viaMember = memberInRole("via");
 
-        final var from = fromMember != null ? fromMember.route() : null;
-        final var to = toMember != null ? toMember.route() : null;
+        var from = fromMember != null ? fromMember.route() : null;
+        var to = toMember != null ? toMember.route() : null;
 
         // If we have all three members
         if (from != null && to != null && viaMember != null)
@@ -698,14 +698,14 @@ public class EdgeRelation extends GraphElement implements Bounded
                 tagList().asList());
     }
 
-    private boolean isTurnRestriction(final String[] restrictionTypes)
+    private boolean isTurnRestriction(String[] restrictionTypes)
     {
         if ("restriction".equalsIgnoreCase(tagValue("type")))
         {
-            final var restriction = tagValue("restriction");
+            var restriction = tagValue("restriction");
             if (restriction != null)
             {
-                for (final var restrictionType : restrictionTypes)
+                for (var restrictionType : restrictionTypes)
                 {
                     if (restrictionType.equalsIgnoreCase(restriction))
                     {
@@ -713,13 +713,13 @@ public class EdgeRelation extends GraphElement implements Bounded
                     }
                 }
             }
-            final var conditionalRestriction = tagValue("restriction:conditional");
+            var conditionalRestriction = tagValue("restriction:conditional");
             return conditionalRestriction != null;
         }
         return false;
     }
 
-    private TurnRestriction turnRestrictionRouteViaNode(Route from, final Vertex via, Route to)
+    private TurnRestriction turnRestrictionRouteViaNode(Route from, Vertex via, Route to)
     {
         // If the "from" route's start is the via vertex, then it's backwards
         from = from.start().equals(via) ? from.reversed() : from;
@@ -736,7 +736,7 @@ public class EdgeRelation extends GraphElement implements Bounded
             // "from" and/or "to" route to be joined at a vertex in the middle of either or both
             // routes.
 
-            for (final var edge : from)
+            for (var edge : from)
             {
                 if (edge.to().equals(via))
                 {
@@ -745,7 +745,7 @@ public class EdgeRelation extends GraphElement implements Bounded
                 }
             }
 
-            for (final var edge : to)
+            for (var edge : to)
             {
                 if (edge.from().equals(via))
                 {

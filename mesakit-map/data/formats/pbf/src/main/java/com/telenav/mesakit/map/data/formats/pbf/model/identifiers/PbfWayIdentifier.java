@@ -38,7 +38,7 @@ public class PbfWayIdentifier extends MapWayIdentifier implements PbfIdentifierT
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static MapWayIdentifier forLong(final long identifier)
+    public static MapWayIdentifier forLong(long identifier)
     {
         if (identifier == 0)
         {
@@ -47,14 +47,14 @@ public class PbfWayIdentifier extends MapWayIdentifier implements PbfIdentifierT
         return new PbfWayIdentifier(identifier);
     }
 
-    public static PbfWayIdentifier forWay(final Way way)
+    public static PbfWayIdentifier forWay(Way way)
     {
         return new PbfWayIdentifier(way.getId());
     }
 
-    public static PbfWayIdentifier parse(final String string)
+    public static PbfWayIdentifier parse(String string)
     {
-        final var identifier = Longs.parse(Strip.trailing(string, "L"));
+        var identifier = Longs.parse(Strip.trailing(string, "L"));
         if (identifier != Longs.INVALID)
         {
             return new PbfWayIdentifier(identifier);
@@ -62,8 +62,8 @@ public class PbfWayIdentifier extends MapWayIdentifier implements PbfIdentifierT
         return null;
     }
 
-    public static SwitchParser.Builder<PbfWayIdentifier> pbfWayIdentifierSwitchParser(final String name,
-                                                                                      final String description)
+    public static SwitchParser.Builder<PbfWayIdentifier> pbfWayIdentifierSwitchParser(String name,
+                                                                                      String description)
     {
         return SwitchParser.builder(PbfWayIdentifier.class)
                 .name(name)
@@ -73,13 +73,13 @@ public class PbfWayIdentifier extends MapWayIdentifier implements PbfIdentifierT
 
     public static class Converter extends BaseStringConverter<PbfWayIdentifier>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected PbfWayIdentifier onToValue(final String value)
+        protected PbfWayIdentifier onToValue(String value)
         {
             return new PbfWayIdentifier(Long.parseLong(value));
         }
@@ -88,12 +88,12 @@ public class PbfWayIdentifier extends MapWayIdentifier implements PbfIdentifierT
     /**
      * Construct from identifier
      */
-    public PbfWayIdentifier(final long identifier)
+    public PbfWayIdentifier(long identifier)
     {
         super(identifier);
     }
 
-    public PbfWayIdentifier(final PbfWay way)
+    public PbfWayIdentifier(PbfWay way)
     {
         this(way.identifierAsLong());
     }
@@ -105,7 +105,7 @@ public class PbfWayIdentifier extends MapWayIdentifier implements PbfIdentifierT
     }
 
     @Override
-    public MapIdentifier newIdentifier(final long identifier)
+    public MapIdentifier newIdentifier(long identifier)
     {
         return new PbfWayIdentifier(identifier);
     }

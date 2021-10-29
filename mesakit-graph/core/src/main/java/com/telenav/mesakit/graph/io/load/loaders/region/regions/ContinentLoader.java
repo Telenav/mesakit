@@ -30,7 +30,7 @@ public class ContinentLoader extends RegionalGraphLoader
 
     private final Continent continent;
 
-    public ContinentLoader(final Graph source, final Continent continent)
+    public ContinentLoader(Graph source, Continent continent)
     {
         this.source = source;
         this.continent = continent;
@@ -39,19 +39,19 @@ public class ContinentLoader extends RegionalGraphLoader
     @Override
     protected EdgeSequence forwardEdges()
     {
-        return this.source.edgesIntersecting(this.continent.bounds(),
-                edge -> !edge.isReverse() && ContinentLoader.this.continent.equals(edge.continent()));
+        return source.edgesIntersecting(continent.bounds(),
+                edge -> !edge.isReverse() && continent.equals(edge.continent()));
     }
 
     @Override
     protected Iterable<Place> places()
     {
-        return this.source.placesInside(this.continent);
+        return source.placesInside(continent);
     }
 
     @Override
     protected Graph sourceGraph()
     {
-        return this.source;
+        return source;
     }
 }

@@ -33,8 +33,8 @@ public abstract class GraphElementProperty<T extends GraphElement> implements Co
 
     private final Attribute<?> attribute;
 
-    protected GraphElementProperty(final String name, final Attribute<?> attribute,
-                                   final DataSpecification specification)
+    protected GraphElementProperty(String name, Attribute<?> attribute,
+                                   DataSpecification specification)
     {
         ensure(name != null);
         ensure(specification != null);
@@ -46,41 +46,41 @@ public abstract class GraphElementProperty<T extends GraphElement> implements Co
 
     public Attribute<?> attribute()
     {
-        return this.attribute;
+        return attribute;
     }
 
     @Override
-    public int compareTo(final GraphElementProperty<T> that)
+    public int compareTo(GraphElementProperty<T> that)
     {
-        return this.name.compareTo(that.name);
+        return name.compareTo(that.name);
     }
 
-    public boolean matches(final DataSpecification specification)
+    public boolean matches(DataSpecification specification)
     {
         return this.specification.type().matches(specification.type());
     }
 
     public String name()
     {
-        return CaseFormat.camelCaseToHyphenated(this.name);
+        return CaseFormat.camelCaseToHyphenated(name);
     }
 
     @SuppressWarnings("unchecked")
-    public String string(final Object element)
+    public String string(Object element)
     {
         if (element != null)
         {
-            final var value = value((T) element);
+            var value = value((T) element);
             if (value != null)
             {
-                return this.name + ": " + value;
+                return name + ": " + value;
             }
         }
-        return this.name + ": null";
+        return name + ": null";
     }
 
     @SuppressWarnings("unchecked")
-    public Object valueFromObject(final Object element)
+    public Object valueFromObject(Object element)
     {
         return value((T) element);
     }

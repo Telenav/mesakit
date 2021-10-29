@@ -29,9 +29,9 @@ public class HascCode
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static HascCode parse(final String code)
+    public static HascCode parse(String code)
     {
-        final var parts = StringList.split(code, '-');
+        var parts = StringList.split(code, '-');
         if (parts.size() != 2)
         {
             LOGGER.warning("HASC code '" + code + "' not supported");
@@ -39,7 +39,7 @@ public class HascCode
         }
 
         Country country = null;
-        final var countryCode = RegionCode.parse(parts.get(0));
+        var countryCode = RegionCode.parse(parts.get(0));
         if (countryCode != null)
         {
             country = Country.forRegionCode(countryCode);
@@ -50,7 +50,7 @@ public class HascCode
         }
 
         State state = null;
-        final var stateCode = RegionCode.parse(parts.get(1));
+        var stateCode = RegionCode.parse(parts.get(1));
         if (stateCode != null)
         {
             state = State.forRegionCode(stateCode);
@@ -69,7 +69,7 @@ public class HascCode
 
     private final State state;
 
-    private HascCode(final String code, final Country country, final State state)
+    private HascCode(String code, Country country, State state)
     {
         this.code = code;
         this.country = country;

@@ -34,10 +34,10 @@ public class NonBranchingNoUTurnNavigator extends Navigator
      * @return The in edge to navigate (backwards) to from the given edge, or null if there is no such edge.
      */
     @Override
-    public Edge in(final Edge edge)
+    public Edge in(Edge edge)
     {
         // Return the next using the in edges that lead to this edge's "from" vertex
-        final var from = edge.from();
+        var from = edge.from();
         return next(edge, from.inEdgeCount(), from.inEdgeSequence());
     }
 
@@ -45,26 +45,26 @@ public class NonBranchingNoUTurnNavigator extends Navigator
      * @return The out edge to navigate to from the given edge, or null if there is no such edge.
      */
     @Override
-    public Edge out(final Edge edge)
+    public Edge out(Edge edge)
     {
         // Return next using the out edges that lead away from this edge's "to" vertex
-        final var to = edge.to();
+        var to = edge.to();
         return next(edge, to.outEdgeCount(), to.outEdgeSequence());
     }
 
     /**
      * @return The next edge from the set of next edges that doesn't branch or u-turn
      */
-    protected Edge next(final Edge edge, final Count size, final EdgeSequence nextEdges)
+    protected Edge next(Edge edge, Count size, EdgeSequence nextEdges)
     {
         // The u-turn edge is the reversed edge
-        final var uturn = edge.reversed();
+        var uturn = edge.reversed();
 
         // If we have only one choice,
         if (size.equals(Count._1))
         {
             // get the first edge
-            final var first = nextEdges.iterator().next();
+            var first = nextEdges.iterator().next();
 
             // and so long as it's not the u-turn edge (which would be a dead-end)
             if (!first.equals(uturn))
@@ -81,9 +81,9 @@ public class NonBranchingNoUTurnNavigator extends Navigator
             if (edge.isTwoWay())
             {
                 // get the two edges
-                final var edges = nextEdges.iterator();
-                final var first = edges.next();
-                final var second = edges.next();
+                var edges = nextEdges.iterator();
+                var first = edges.next();
+                var second = edges.next();
 
                 // and if the first is the u-turn edge,
                 if (first.equals(uturn))

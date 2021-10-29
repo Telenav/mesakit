@@ -71,7 +71,7 @@ public class PolygonSpatialIndex implements Intersectable, Bounded, Outline
     /**
      * @param polygon The polygon to index
      */
-    public PolygonSpatialIndex(final Polygon polygon)
+    public PolygonSpatialIndex(Polygon polygon)
     {
         // Create quadrant store
         store = new QuadrantStore(this);
@@ -101,7 +101,7 @@ public class PolygonSpatialIndex implements Intersectable, Bounded, Outline
      * @return True if this spatially indexed polygon contains the given location.
      */
     @Override
-    public Containment containment(final Location location)
+    public Containment containment(Location location)
     {
         if (bounds.contains(location))
         {
@@ -110,17 +110,17 @@ public class PolygonSpatialIndex implements Intersectable, Bounded, Outline
         return Containment.OUTSIDE;
     }
 
-    public void debug(final PolygonSpatialIndexDebugger debugger)
+    public void debug(PolygonSpatialIndexDebugger debugger)
     {
         rootQuadrant().debug(debugger, bounds);
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof PolygonSpatialIndex)
         {
-            final var that = (PolygonSpatialIndex) object;
+            var that = (PolygonSpatialIndex) object;
             return bounds.equals(that.bounds);
         }
         return false;
@@ -133,7 +133,7 @@ public class PolygonSpatialIndex implements Intersectable, Bounded, Outline
     }
 
     @Override
-    public boolean intersects(final Rectangle bounds)
+    public boolean intersects(Rectangle bounds)
     {
         return this.bounds.intersects(bounds);
     }
@@ -141,7 +141,7 @@ public class PolygonSpatialIndex implements Intersectable, Bounded, Outline
     /**
      * @param visitor The visitor callback that should be used in traversing this spatial index
      */
-    public void visit(final Visitor visitor)
+    public void visit(Visitor visitor)
     {
         rootQuadrant().visit(visitor, bounds);
     }

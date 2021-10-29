@@ -52,7 +52,7 @@ public class IntersectionMap implements Named
     /**
      * @param name A name for debugging purposes
      */
-    public IntersectionMap(final String name)
+    public IntersectionMap(String name)
     {
         this.name = name;
 
@@ -64,7 +64,7 @@ public class IntersectionMap implements Named
     /**
      * Increment the reference count for the given node identifier
      */
-    public int addReference(final long nodeIdentifier)
+    public int addReference(long nodeIdentifier)
     {
         // Increment the counter in the map
         var count = countMap.get(nodeIdentifier);
@@ -94,12 +94,12 @@ public class IntersectionMap implements Named
         intersections.initialize();
 
         // then iterate through the count map keys,
-        final var map = countMap;
-        final var iterator = map.keys();
+        var map = countMap;
+        var iterator = map.keys();
         while (iterator.hasNext())
         {
             // and if the count for a identifier is greater than two
-            final var identifier = iterator.next();
+            var identifier = iterator.next();
             if (map.get(identifier) > 2)
             {
                 // then add the identifier to the set of intersections
@@ -118,7 +118,7 @@ public class IntersectionMap implements Named
      * @return True if the given node identifier is an intersection (has more than TWO references, one for an incoming
      * way and one for an outgoing way)
      */
-    public boolean isIntersection(final long nodeIdentifier)
+    public boolean isIntersection(long nodeIdentifier)
     {
         ensure(intersections != null);
         return intersections.contains(nodeIdentifier);

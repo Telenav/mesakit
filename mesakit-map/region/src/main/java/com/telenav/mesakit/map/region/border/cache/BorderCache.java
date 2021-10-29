@@ -168,7 +168,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
         {
         }
 
-        public Settings(final Settings<R> that)
+        public Settings(Settings<R> that)
         {
             type = that.type;
             regionFactory = that.regionFactory;
@@ -214,44 +214,44 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
             return type;
         }
 
-        public Settings<R> withMaximumObjects(final Maximum maximumObjects)
+        public Settings<R> withMaximumObjects(Maximum maximumObjects)
         {
-            final var copy = new Settings<>(this);
+            var copy = new Settings<>(this);
             copy.maximumObjects = maximumObjects;
             return copy;
         }
 
-        public Settings<R> withMaximumPolygonsPerObject(final Maximum maximumPolygonsPerObject)
+        public Settings<R> withMaximumPolygonsPerObject(Maximum maximumPolygonsPerObject)
         {
-            final var copy = new Settings<>(this);
+            var copy = new Settings<>(this);
             copy.maximumPolygonsPerObject = maximumPolygonsPerObject;
             return copy;
         }
 
-        public Settings<R> withMinimumBorderArea(final Area minimumBorderArea)
+        public Settings<R> withMinimumBorderArea(Area minimumBorderArea)
         {
-            final var copy = new Settings<>(this);
+            var copy = new Settings<>(this);
             copy.minimumBorderArea = minimumBorderArea;
             return copy;
         }
 
-        public Settings<R> withRegionExtractor(final Extractor<R, PbfWay> extractor)
+        public Settings<R> withRegionExtractor(Extractor<R, PbfWay> extractor)
         {
-            final var copy = new Settings<>(this);
+            var copy = new Settings<>(this);
             copy.regionExtractor = extractor;
             return copy;
         }
 
-        public Settings<R> withRegionFactory(final RegionFactory<R> factory)
+        public Settings<R> withRegionFactory(RegionFactory<R> factory)
         {
-            final var copy = new Settings<>(this);
+            var copy = new Settings<>(this);
             copy.regionFactory = factory;
             return copy;
         }
 
-        public Settings<R> withType(final Class<R> type)
+        public Settings<R> withType(Class<R> type)
         {
-            final var copy = new Settings<>(this);
+            var copy = new Settings<>(this);
             copy.type = type;
             return copy;
         }
@@ -279,7 +279,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
      */
     private final Settings<T> settings;
 
-    protected BorderCache(final Settings<T> settings)
+    protected BorderCache(Settings<T> settings)
     {
         ensure(settings.isValid());
         this.settings = settings;
@@ -287,7 +287,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
         polygonsForRegion = new MultiMap<>(settings.maximumObjects, settings.maximumPolygonsPerObject);
     }
 
-    public Collection<Polygon> borders(final T object)
+    public Collection<Polygon> borders(T object)
     {
         loadBorders();
         return polygonsForRegion.containsKey(object) ? polygonsForRegion.get(object) : Polygon.EMPTY_SET;
@@ -304,7 +304,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
             // Load borders
             if (loadBorders(pbfFile()))
             {
-                for (final var border : index().all())
+                for (var border : index().all())
                 {
                     polygonsForRegion.add(border.region(), border.polygon());
                 }
@@ -327,7 +327,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
     public synchronized BorderCache<T> loadIdentities()
     {
         // If the cache file doesn't exist or we can't load it
-        final var cacheFile = identitiesFile();
+        var cacheFile = identitiesFile();
         if (!cacheFile.exists() || !identityCache.load(cacheFile, serializationSession()))
         {
             // then load the borders (forcing identities to be created in the process)
@@ -335,18 +335,18 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
             if (loadBorders())
             {
                 // and if we loaded okay, extract all the identities from the index
-                final Set<RegionIdentity> identities = new HashSet<>();
+                Set<RegionIdentity> identities = new HashSet<>();
                 index().all().forEach((border) -> identities.add(border.identity()));
 
                 // open identities cache file
-                try (final var out = cacheFile.openForWriting())
+                try (var out = cacheFile.openForWriting())
                 {
                     // and save the identities to it
-                    final var session = serializationSession();
+                    var session = serializationSession();
                     session.open(RESOURCE, KivaKit.get().projectVersion(), out);
                     identityCache.save(session, RegionProject.get().borderDataVersion(), identities);
                 }
-                catch (final Exception e)
+                catch (Exception e)
                 {
                     problem(e, "Unable to write identities");
                 }
@@ -371,13 +371,13 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
      * @return The object that the given location is in, or null if the location is not in any object
      */
     @SuppressWarnings("ConstantConditions")
-    public T object(final Location location)
+    public T object(Location location)
     {
         ensure(location != null);
 
         if (loadBorders())
         {
-            for (final var border : index().intersecting(location.bounds().expanded(Distance.ONE_METER)))
+            for (var border : index().intersecting(location.bounds().expanded(Distance.ONE_METER)))
             {
                 if (border.contains(location))
                 {
@@ -392,7 +392,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
      * @param relationTags The tags on the multi-polygon relation
      * @param objects The objects that need an identity assigned based on the relation tags
      */
-    protected void assignMultiPolygonIdentity(final PbfTagMap relationTags, final Collection<Border<T>> objects)
+    protected void assignMultiPolygonIdentity(PbfTagMap relationTags, Collection<Border<T>> objects)
     {
     }
 
@@ -410,7 +410,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
         return settings;
     }
 
-    private String baseName(final Class<?> type)
+    private String baseName(Class<?> type)
     {
         if (type.equals(Continent.class))
         {
@@ -482,7 +482,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
             cacheFolder().mkdirs();
 
             // and the zip file target we're going to download to and unzip.
-            final var jar = localJar(NETWORK_PATH.fileName());
+            var jar = localJar(NETWORK_PATH.fileName());
             trace("Trying to open $", jar);
             var archive = ZipArchive.open(this, jar, ProgressReporter.NULL, READ);
             try
@@ -501,13 +501,13 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                     }
 
                     // then get the jar location on S3
-                    final var source = new SecureHttpNetworkLocation(NETWORK_PATH);
+                    var source = new SecureHttpNetworkLocation(NETWORK_PATH);
                     try
                     {
                         // then try to download the data into the cache
                         information(AsciiArt.textBox("Downloading", "from: $\nto: $",
                                 NETWORK_PATH.asContraction(80), jar.path().asContraction(80)) + "\n ");
-                        final var downloadProgress = Progress.create(this, "bytes");
+                        var downloadProgress = Progress.create(this, "bytes");
                         downloadProgress.start("Downloading");
                         information("Downloading $ from $", jar, source);
                         cache().add(source.get(), OVERWRITE, downloadProgress);
@@ -517,7 +517,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                         trace("Trying to open $", jar);
                         archive = ZipArchive.open(this, jar, ProgressReporter.NULL, READ);
                     }
-                    catch (final Throwable e)
+                    catch (Throwable e)
                     {
                         problem(e, "Unable to download and open $", source);
 
@@ -541,7 +541,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                 try
                 {
                     // Go through each border type
-                    for (final var type : new Class<?>[]
+                    for (var type : new Class<?>[]
                             {
                                     Continent.class,
                                     Country.class,
@@ -552,22 +552,22 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                             })
                     {
                         // and if a decent sized PBF doesn't already exist
-                        final var extracted = pbfFile(type);
+                        var extracted = pbfFile(type);
                         if (!extracted.exists() || extracted.sizeInBytes().isLessThan(Bytes.kilobytes(50)))
                         {
                             // then get the entry name
-                            final var zipEntryName = baseName(type) + ".osm.pbf";
+                            var zipEntryName = baseName(type) + ".osm.pbf";
                             try
                             {
                                 // and extract the PBF file from the archive
-                                final var entry = archive.entry(zipEntryName);
+                                var entry = archive.entry(zipEntryName);
                                 if (entry != null)
                                 {
                                     information("Extracting $ to $", zipEntryName, extracted);
                                     entry.safeCopyTo(extracted, OVERWRITE);
                                 }
                             }
-                            catch (final Exception e)
+                            catch (Exception e)
                             {
                                 // If we can't extract the file, clear the whole folder and give up
                                 problem(e, "Unable to unzip $", zipEntryName);
@@ -577,7 +577,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                         }
                     }
                 }
-                catch (final Exception e)
+                catch (Exception e)
                 {
                     // We were unable to install for some other reason
                     cacheFolder().clearAllAndDelete();
@@ -598,7 +598,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
      * Loads borders from the CACHED_SPATIAL_INDEX file or from the given PBF resource if the cache is missing,
      * corrupted or out of date.
      */
-    private boolean loadBorders(final Resource borders)
+    private boolean loadBorders(Resource borders)
     {
         // If we can load the borders from serialized index file
         if (loadBordersFromCache())
@@ -617,7 +617,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
     @SuppressWarnings("unchecked")
     private boolean loadBordersFromCache()
     {
-        final var start = Time.now();
+        var start = Time.now();
         if (!borderCacheFile().exists())
         {
             information("Border cache '$' does not exist, will generate it", borderCacheFile().fileName());
@@ -627,15 +627,15 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
             try
             {
                 trace("Loading cached borders from '$'", borderCacheFile().fileName());
-                final var in = borderCacheFile().openForReading();
+                var in = borderCacheFile().openForReading();
                 try
                 {
                     // Read the spatial index
-                    final var session = serializationSession();
+                    var session = serializationSession();
                     session.open(RESOURCE, KivaKit.get().projectVersion(), in);
-                    final var loaded = session.read();
-                    final var cachedIndex = (BorderSpatialIndex<T>) loaded.get();
-                    final var version = loaded.version();
+                    var loaded = session.read();
+                    var cachedIndex = (BorderSpatialIndex<T>) loaded.get();
+                    var version = loaded.version();
                     trace("Cached border index is version $", version);
 
                     // and if it is the current version
@@ -643,7 +643,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                     {
                         var invalid = false;
                         var borders = 0;
-                        for (final var border : cachedIndex.all())
+                        for (var border : cachedIndex.all())
                         {
                             if (!border.isValid())
                             {
@@ -661,9 +661,9 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                             index = cachedIndex;
 
                             // Convert persistent string identifiers back to bounded objects
-                            for (final var border : index().all())
+                            for (var border : index().all())
                             {
-                                final var region = regionForIdentity(border.identity());
+                                var region = regionForIdentity(border.identity());
                                 if (region == null)
                                 {
                                     warning("regionForIdentity returned null for $", border.identity());
@@ -686,7 +686,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                     IO.close(in);
                 }
             }
-            catch (final Exception e)
+            catch (Exception e)
             {
                 information("Unable to load border cache file '$'", borderCacheFile().fileName());
             }
@@ -702,19 +702,19 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
      * @param resource The PBF resource to read
      */
     @SuppressWarnings("UseOfSystemOutOrSystemErr")
-    private boolean loadBordersFromPbf(final Resource resource)
+    private boolean loadBordersFromPbf(Resource resource)
     {
         information(AsciiArt.textBox("Building " + type().getSimpleName() + " Borders",
                 "Building borders from $\nThis may take a little while...", resource.fileName()));
 
-        final var start = Time.now();
-        final Map<Long, Location> locationForIdentifier = new HashMap<>();
-        final var totalSize = new MutableCount();
-        final var totalLocations = new MutableCount();
-        final var total = new MutableCount();
-        final Map<Long, Border<T>> borderForWayIdentifier = new HashMap<>();
-        final List<Border<T>> borders = new ArrayList<>();
-        final var settings = new RTreeSettings()
+        var start = Time.now();
+        Map<Long, Location> locationForIdentifier = new HashMap<>();
+        var totalSize = new MutableCount();
+        var totalLocations = new MutableCount();
+        var total = new MutableCount();
+        Map<Long, Border<T>> borderForWayIdentifier = new HashMap<>();
+        List<Border<T>> borders = new ArrayList<>();
+        var settings = new RTreeSettings()
                 .withMaximumChildrenPerInteriorNode(Maximum._8)
                 .withMaximumChildrenPerLeaf(Maximum._32)
                 .withEstimatedChildrenPerInteriorNode(Estimate._8)
@@ -725,32 +725,32 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
 
         if (RTreeSpatialIndex.visualDebug())
         {
-            final var title = "RTree Debugger (" + name() + ")";
+            var title = "RTree Debugger (" + name() + ")";
             index().debugger(new RTreeSpatialIndexVisualDebugger<>(this, title));
         }
 
         try
         {
-            final var reader = listenTo(new SerialPbfReader(resource));
-            final var outer = this;
+            var reader = listenTo(new SerialPbfReader(resource));
+            var outer = this;
             reader.phase("Loading");
             reader.process(new PbfDataProcessor()
             {
                 private int identifier = 1;
 
                 @Override
-                public Action onNode(final PbfNode node)
+                public Action onNode(PbfNode node)
                 {
-                    final var identifier = node.identifierAsLong();
+                    var identifier = node.identifierAsLong();
                     if (node.latitude() > 85 || node.latitude() < -85)
                     {
                         return DISCARDED;
                     }
                     else
                     {
-                        final var latitude = Latitude.degrees(node.latitude());
-                        final var longitude = Longitude.degrees(node.longitude());
-                        final var location = new Location(latitude, longitude);
+                        var latitude = Latitude.degrees(node.latitude());
+                        var longitude = Longitude.degrees(node.longitude());
+                        var location = new Location(latitude, longitude);
                         locationForIdentifier.put(identifier, location);
                         totalLocations.increment();
                         return ACCEPTED;
@@ -758,20 +758,20 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                 }
 
                 @Override
-                public Action onRelation(final PbfRelation relation)
+                public Action onRelation(PbfRelation relation)
                 {
-                    final var tags = relation.tagMap();
+                    var tags = relation.tagMap();
                     if ("multipolygon".equals(tags.get("type")))
                     {
-                        final List<Border<T>> unnamed = new ArrayList<>();
-                        final List<Border<T>> inners = new ArrayList<>();
-                        final List<Border<T>> outers = new ArrayList<>();
-                        for (final var member : relation.members())
+                        List<Border<T>> unnamed = new ArrayList<>();
+                        List<Border<T>> inners = new ArrayList<>();
+                        List<Border<T>> outers = new ArrayList<>();
+                        for (var member : relation.members())
                         {
-                            final var border = borderForWayIdentifier.get(member.getMemberId());
+                            var border = borderForWayIdentifier.get(member.getMemberId());
                             if (border != null)
                             {
-                                final var object = border.region();
+                                var object = border.region();
                                 if (object.name() == null)
                                 {
                                     unnamed.add(border);
@@ -790,16 +790,16 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                                 trace("Multi-polygon relation $: member $ was not found", relation.identifierAsLong(), member.getMemberId());
                             }
                         }
-                        for (final var outer : outers)
+                        for (var outer : outers)
                         {
-                            for (final var inner : inners)
+                            for (var inner : inners)
                             {
                                 outer.polygon().addHole(inner.polygon());
                                 borders.remove(inner);
                             }
                         }
                         assignMultiPolygonIdentity(tags, unnamed);
-                        for (final var border : unnamed)
+                        for (var border : unnamed)
                         {
                             trace("Named inner polygon $ ($ segments)", border.region(),
                                     border.polygon().segmentCount());
@@ -810,19 +810,19 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
 
                 @SuppressWarnings("ConstantConditions")
                 @Override
-                public Action onWay(final PbfWay way)
+                public Action onWay(PbfWay way)
                 {
-                    final var region = settings().regionExtractor().extract(way);
+                    var region = settings().regionExtractor().extract(way);
                     if (region != null && region.identity().isValid())
                     {
                         // Start profiling time to load
-                        final var start = Time.now();
+                        var start = Time.now();
 
                         // Read polygon nodes
-                        final var builder = new PolygonBuilder();
-                        for (final var node : way.nodes())
+                        var builder = new PolygonBuilder();
+                        for (var node : way.nodes())
                         {
-                            final var location = locationForIdentifier.get(node.getNodeId());
+                            var location = locationForIdentifier.get(node.getNodeId());
                             if (location != null)
                             {
                                 builder.add(location);
@@ -833,7 +833,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                         if (builder.isValid())
                         {
                             // build the polygon and set an identifier so it can be efficiently stored in a map
-                            final var border = builder.build();
+                            var border = builder.build();
                             if (border.bounds().area().isGreaterThan(settings().minimumBorderArea()))
                             {
                                 border.hashCode(identifier++);
@@ -846,7 +846,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                                 total.increment();
 
                                 // Get time elapsed to build polygon
-                                final var elapsed = start.elapsedSince();
+                                var elapsed = start.elapsedSince();
 
                                 // Get the approximate size of the polygon
                                 Bytes size = null;
@@ -865,7 +865,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                                 }
 
                                 // Add polygon to spatial index
-                                final var newBorder = new Border<>(region, border);
+                                var newBorder = new Border<>(region, border);
                                 borders.add(newBorder);
                                 borderForWayIdentifier.put(way.identifierAsLong(), newBorder);
                             }
@@ -903,14 +903,14 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
             // We succeeded
             return true;
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             warning(e, "Unable to load borders from pbf file '$'", resource);
             return false;
         }
     }
 
-    private File localJar(final FileName name)
+    private File localJar(FileName name)
     {
         return cacheFolder().file(name);
     }
@@ -920,7 +920,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
         return pbfFile(settings().type());
     }
 
-    private File pbfFile(final Class<?> type)
+    private File pbfFile(Class<?> type)
     {
         return cacheFolder().file(FileName.parse(baseName(type) + ".osm.pbf"));
     }
@@ -937,14 +937,14 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
 
         // Save spatial index in cache file
         trace("Saving border spatial index to $", borderCacheFile().fileName());
-        try (final var output = borderCacheFile().openForWriting())
+        try (var output = borderCacheFile().openForWriting())
         {
-            final var session = serializationSession();
+            var session = serializationSession();
             session.open(RESOURCE, KivaKit.get().projectVersion(), output);
             session.write(new VersionedObject<>(RegionProject.get().borderDataVersion(), index()));
             session.close();
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             throw new Problem(e, "Unable to save border spatial index to ${debug}", borderCacheFile().fileName()).asException();
         }
@@ -959,15 +959,15 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
 
         // Read the index back in to verify it
         trace("Verifying border spatial index $", borderCacheFile().fileName());
-        try (final var in = borderCacheFile().openForReading())
+        try (var in = borderCacheFile().openForReading())
         {
-            final var serialization = serializationSession();
+            var serialization = serializationSession();
             serialization.open(RESOURCE, KivaKit.get().projectVersion(), in);
-            final var index = serialization.read();
+            var index = serialization.read();
             ensureEqual(index.version(), RegionProject.get().borderDataVersion());
             ensureEqual(index.get(), index());
         }
-        catch (final IOException e)
+        catch (IOException e)
         {
             problem(e, "Unable to verify spatial index");
         }
@@ -981,14 +981,14 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
     private SerializationSession serializationSession()
     {
         // Get a serialization session for this thread,
-        final var session = SerializationSession.threadLocal(debug().listener());
+        var session = SerializationSession.threadLocal(debug().listener());
 
         // and if it's a kryo session,
         if (session instanceof KryoSerializationSession)
         {
             // get the kryo serializer as a BorderSpatialIndexKryoSerializer
-            final var kryoSession = (KryoSerializationSession) session;
-            final var serializer = (Configured<Settings<T>>) kryoSession.serializer(BorderSpatialIndex.class);
+            var kryoSession = (KryoSerializationSession) session;
+            var serializer = (Configured<Settings<T>>) kryoSession.serializer(BorderSpatialIndex.class);
 
             // and update its settings for this particular border cache.
             serializer.configure(settings);

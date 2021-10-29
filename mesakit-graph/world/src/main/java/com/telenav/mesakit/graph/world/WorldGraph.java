@@ -122,28 +122,28 @@ public class WorldGraph extends Graph
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static WorldGraph create(final WorldGraphRepositoryFolder folder, final Metadata metadata)
+    public static WorldGraph create(WorldGraphRepositoryFolder folder, Metadata metadata)
     {
         return new WorldGraph(AccessMode.CREATE, metadata, folder);
     }
 
-    public static WorldGraph load(final WorldGraphRepositoryFolder local)
+    public static WorldGraph load(WorldGraphRepositoryFolder local)
     {
         return loadRemote(local, null);
     }
 
-    public static WorldGraph loadRemote(final WorldGraphRepositoryFolder local, final WorldGraphRepositoryFolder remote)
+    public static WorldGraph loadRemote(WorldGraphRepositoryFolder local, WorldGraphRepositoryFolder remote)
     {
         if (remote != null)
         {
-            final var progress = Progress.create(LOGGER, "bytes");
+            var progress = Progress.create(LOGGER, "bytes");
             remote.copyTo(local, CopyMode.OVERWRITE, progress);
         }
 
-        final var index = WorldGraphIndex.load(local.indexFile());
+        var index = WorldGraphIndex.load(local.indexFile());
         if (index != null)
         {
-            final var metadata = index.metadata();
+            var metadata = index.metadata();
             return new WorldGraph(AccessMode.READ, metadata, local);
         }
 
@@ -184,7 +184,7 @@ public class WorldGraph extends Graph
      * @param metadata Metadata for the graph
      * @param folder The local data folder to read from
      */
-    private WorldGraph(final AccessMode mode, final Metadata metadata, final WorldGraphRepositoryFolder folder)
+    private WorldGraph(AccessMode mode, Metadata metadata, WorldGraphRepositoryFolder folder)
     {
         super(metadata);
         worldGrid = new WorldGrid(this, mode, folder);
@@ -197,21 +197,21 @@ public class WorldGraph extends Graph
     }
 
     @Override
-    public boolean contains(final Edge edge)
+    public boolean contains(Edge edge)
     {
         return worldCellsWithin(edge.bounds()).contains(edge);
     }
 
     @Override
-    public boolean contains(final EdgeRelation relation)
+    public boolean contains(EdgeRelation relation)
     {
         return worldCellsWithin(relation.bounds()).contains(relation);
     }
 
     @Override
-    public boolean contains(final Vertex vertex)
+    public boolean contains(Vertex vertex)
     {
-        final var worldCell = worldGrid().worldCell(vertex.location());
+        var worldCell = worldGrid().worldCell(vertex.location());
         if (worldCell.hasGraphFile(worldGrid.repositoryFolder()))
         {
             return worldCell.cellGraph().contains(vertex);
@@ -226,23 +226,23 @@ public class WorldGraph extends Graph
     }
 
     @Override
-    public Edge edgeForIdentifier(final EdgeIdentifier identifier)
+    public Edge edgeForIdentifier(EdgeIdentifier identifier)
     {
         // If we have a fully-qualified world edge identifier
         if (identifier instanceof WorldEdgeIdentifier)
         {
             // then return the world graph edge
-            final var worldIdentifier = (WorldEdgeIdentifier) identifier;
+            var worldIdentifier = (WorldEdgeIdentifier) identifier;
             return worldIdentifier.edge();
         }
 
         // Look up the cell for the way identifier
-        final var worldCell = worldGrid().index().worldCellForWayIdentifier(worldGrid,
+        var worldCell = worldGrid().index().worldCellForWayIdentifier(worldGrid,
                 isOsm() ? identifier.asWayIdentifier() : new PbfWayIdentifier(identifier.asLong()));
         if (worldCell != null)
         {
             // and look in the graph
-            final var cellGraph = worldCell.cellGraph();
+            var cellGraph = worldCell.cellGraph();
             if (cellGraph != null)
             {
                 // for the edge
@@ -259,20 +259,20 @@ public class WorldGraph extends Graph
         return allWorldCells().edges();
     }
 
-    public EdgeSequence edgesInside(final Region region)
+    public EdgeSequence edgesInside(Region region)
     {
         return edgesIntersecting(region.bounds()).matching(edge -> region.intersectsOrContains(edge.roadShape()));
     }
 
     @Override
-    public EdgeSequence edgesIntersecting(final Rectangle bounds, final Matcher<Edge> matcher)
+    public EdgeSequence edgesIntersecting(Rectangle bounds, Matcher<Edge> matcher)
     {
         return worldCellsWithin(bounds).edgesIntersecting(bounds, matcher);
     }
 
-    public Bytes estimatedMemorySize(final WorldCell worldCell)
+    public Bytes estimatedMemorySize(WorldCell worldCell)
     {
-        final var size = worldGrid().index().memorySize(worldCell);
+        var size = worldGrid().index().memorySize(worldCell);
         if (size != null)
         {
             return size;
@@ -288,9 +288,9 @@ public class WorldGraph extends Graph
     public Bytes estimatedMemorySize()
     {
         var total = Bytes._0;
-        for (final var graph : worldCells().cellGraphs())
+        for (var graph : worldCells().cellGraphs())
         {
-            final var size = graph.estimatedMemorySize();
+            var size = graph.estimatedMemorySize();
             LOGGER.information("$ => $", graph.name(), size);
             total = total.add(size);
         }
@@ -314,14 +314,14 @@ public class WorldGraph extends Graph
         return allWorldCells().forwardEdges();
     }
 
-    public EdgeSequence forwardEdgesInside(final Region region)
+    public EdgeSequence forwardEdgesInside(Region region)
     {
         return forwardEdgesIntersecting(region.bounds())
                 .matching(edge -> region.contains(edge.fromLocation()) || region.contains(edge.toLocation()));
     }
 
     @Override
-    public EdgeSequence forwardEdgesIntersecting(final Rectangle bounds, final Matcher<Edge> matcher)
+    public EdgeSequence forwardEdgesIntersecting(Rectangle bounds, Matcher<Edge> matcher)
     {
         return worldCellsWithin(bounds).forwardEdgesIntersecting(bounds, matcher);
     }
@@ -340,13 +340,13 @@ public class WorldGraph extends Graph
 
     @Override
     @SuppressWarnings("MethodDoesntCallSuperMethod")
-    public final void load(final GraphArchive archive)
+    public final void load(GraphArchive archive)
     {
         unsupported();
     }
 
     @Override
-    public Graph loadAll(final AttributeSet attributes)
+    public Graph loadAll(AttributeSet attributes)
     {
         LOGGER.information("Loading $", attributes);
         forEachWorldCell(worldCell ->
@@ -376,7 +376,7 @@ public class WorldGraph extends Graph
     }
 
     @Override
-    public Graph loadAllExcept(final AttributeSet attributes)
+    public Graph loadAllExcept(AttributeSet attributes)
     {
         LOGGER.information("Loading all attributes except $", attributes);
         forEachWorldCell(worldCell ->
@@ -412,28 +412,28 @@ public class WorldGraph extends Graph
 
     @SuppressWarnings("unchecked")
     @Override
-    public WorldEdge newEdge(final EdgeIdentifier identifier)
+    public WorldEdge newEdge(EdgeIdentifier identifier)
     {
         return ((WorldEdgeIdentifier) identifier).edge();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public WorldPlace newPlace(final PlaceIdentifier identifier)
+    public WorldPlace newPlace(PlaceIdentifier identifier)
     {
         return ((WorldPlaceIdentifier) identifier).place();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public WorldRelation newRelation(final RelationIdentifier identifier)
+    public WorldRelation newRelation(RelationIdentifier identifier)
     {
         return ((WorldRelationIdentifier) identifier).relation();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public WorldVertex newVertex(final VertexIdentifier identifier)
+    public WorldVertex newVertex(VertexIdentifier identifier)
     {
         return ((WorldVertexIdentifier) identifier).vertex();
     }
@@ -445,7 +445,7 @@ public class WorldGraph extends Graph
     }
 
     @Override
-    public Place placeNear(final Location location)
+    public Place placeNear(Location location)
     {
         return worldGrid().index().placeForLocation(location);
     }
@@ -457,7 +457,7 @@ public class WorldGraph extends Graph
     }
 
     @Override
-    public Iterable<Place> placesInside(final Rectangle bounds)
+    public Iterable<Place> placesInside(Rectangle bounds)
     {
         return worldGrid().index().placesInside(bounds);
     }
@@ -475,7 +475,7 @@ public class WorldGraph extends Graph
     }
 
     @Override
-    public EdgeRelation relationForIdentifier(final RelationIdentifier identifier)
+    public EdgeRelation relationForIdentifier(RelationIdentifier identifier)
     {
         return unsupported();
     }
@@ -486,11 +486,11 @@ public class WorldGraph extends Graph
         return allWorldCells().relations();
     }
 
-    public RelationSet relationsInside(final Region region)
+    public RelationSet relationsInside(Region region)
     {
         return relationsIntersecting(region.bounds(), new All<>()).matching(relation ->
         {
-            for (final var edge : relation.edgeSet())
+            for (var edge : relation.edgeSet())
             {
                 if (region.intersectsOrContains(edge.roadShape()))
                 {
@@ -502,7 +502,7 @@ public class WorldGraph extends Graph
     }
 
     @Override
-    public RelationSet relationsIntersecting(final Rectangle bounds, final Matcher<EdgeRelation> matcher)
+    public RelationSet relationsIntersecting(Rectangle bounds, Matcher<EdgeRelation> matcher)
     {
         return worldCellsWithin(bounds).relationsIntersecting(bounds, matcher);
     }
@@ -514,18 +514,18 @@ public class WorldGraph extends Graph
     }
 
     @Override
-    public Route routeForWayIdentifier(final MapWayIdentifier wayIdentifier)
+    public Route routeForWayIdentifier(MapWayIdentifier wayIdentifier)
     {
-        final var worldCell = worldGrid().index().worldCellForWayIdentifier(worldGrid, wayIdentifier);
+        var worldCell = worldGrid().index().worldCellForWayIdentifier(worldGrid, wayIdentifier);
         if (worldCell != null)
         {
-            final var graph = worldCell.cellGraph();
+            var graph = worldCell.cellGraph();
             if (graph != null)
             {
-                final var route = graph.routeForWayIdentifier(wayIdentifier);
+                var route = graph.routeForWayIdentifier(wayIdentifier);
                 if (route != null)
                 {
-                    final var edge = new WorldEdge(worldCell, route.first());
+                    var edge = new WorldEdge(worldCell, route.first());
                     return edge.route(new WayNavigator(edge), Maximum.MAXIMUM);
                 }
             }
@@ -535,13 +535,13 @@ public class WorldGraph extends Graph
 
     @Override
     @SuppressWarnings("MethodDoesntCallSuperMethod")
-    public final void save(final GraphArchive archive)
+    public final void save(GraphArchive archive)
     {
         unsupported();
     }
 
     @Override
-    public boolean supports(final Attribute attribute)
+    public boolean supports(Attribute attribute)
     {
         return smallestGraph().supports(attribute);
     }
@@ -574,20 +574,20 @@ public class WorldGraph extends Graph
     }
 
     @Override
-    public Vertex vertexForIdentifier(final VertexIdentifier identifier)
+    public Vertex vertexForIdentifier(VertexIdentifier identifier)
     {
         return unsupported();
     }
 
     @Override
-    public Vertex vertexNearest(final Location location, final Distance maximum,
-                                final RoadFunctionalClass functionalClass)
+    public Vertex vertexNearest(Location location, Distance maximum,
+                                RoadFunctionalClass functionalClass)
     {
         Vertex nearest = null;
         var nearestDistance = Distance.MAXIMUM;
-        for (final var vertex : worldCellsWithin(location.within(maximum)).vertexesNearest(location, maximum, functionalClass))
+        for (var vertex : worldCellsWithin(location.within(maximum)).vertexesNearest(location, maximum, functionalClass))
         {
-            final var distance = vertex.location().distanceTo(location);
+            var distance = vertex.location().distanceTo(location);
             if (nearest == null || distance.isLessThan(nearestDistance))
             {
                 nearest = vertex;
@@ -604,18 +604,18 @@ public class WorldGraph extends Graph
     }
 
     @Override
-    public VertexSequence vertexesInside(final Rectangle bounds)
+    public VertexSequence vertexesInside(Rectangle bounds)
     {
         return worldCellsWithin(bounds).vertexesInside(bounds);
     }
 
     @Override
-    public VertexSequence vertexesInside(final Rectangle bounds, final Matcher<Vertex> matcher)
+    public VertexSequence vertexesInside(Rectangle bounds, Matcher<Vertex> matcher)
     {
         return worldCellsWithin(bounds).vertexesInside(bounds, matcher);
     }
 
-    public VertexSequence vertexesInside(final Region region)
+    public VertexSequence vertexesInside(Region region)
     {
         return vertexesInside(region.bounds()).matching(region::contains);
     }
@@ -646,9 +646,9 @@ public class WorldGraph extends Graph
      *
      * @param code The code to execute for each world cell
      */
-    private void forEachWorldCell(final Callback<WorldCell> code)
+    private void forEachWorldCell(Callback<WorldCell> code)
     {
-        final var executor = Threads.threadPool("WorldCell");
+        var executor = Threads.threadPool("WorldCell");
         allWorldCells().forEach(worldCell -> executor.submit(() -> code.onCallback(worldCell)));
         Threads.shutdownAndAwait(executor);
     }
@@ -657,7 +657,7 @@ public class WorldGraph extends Graph
     {
         if (smallest == null)
         {
-            final var smallestCell = worldCells().smallest();
+            var smallestCell = worldCells().smallest();
             if (smallestCell != null)
             {
                 smallest = smallestCell.cellGraph();
@@ -678,7 +678,7 @@ public class WorldGraph extends Graph
         return worldGrid().cells(worldGrid.repositoryFolder(), WorldCell.DataType.GRAPH);
     }
 
-    private WorldCellList worldCellsWithin(final Rectangle bounds)
+    private WorldCellList worldCellsWithin(Rectangle bounds)
     {
         return worldGrid().cells(worldGrid.repositoryFolder(), WorldCell.DataType.GRAPH, bounds);
     }

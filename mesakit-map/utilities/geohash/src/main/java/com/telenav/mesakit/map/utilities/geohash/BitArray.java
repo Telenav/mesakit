@@ -37,7 +37,7 @@ final class BitArray
         private final List<Boolean> bits = new LinkedList<>();
 
         @SuppressWarnings("UnusedReturnValue")
-        Builder appendBit(final boolean bit)
+        Builder appendBit(boolean bit)
         {
             bits.add(bit);
             return this;
@@ -49,14 +49,14 @@ final class BitArray
          * @return this builder
          */
         @SuppressWarnings("UnusedReturnValue")
-        Builder appendBits(final int value, final int bitCount)
+        Builder appendBits(int value, int bitCount)
         {
             return appendBits(Align.right(Integer.toString(value, 2), bitCount, '0'));
         }
 
-        Builder appendBits(final String bitsAsString)
+        Builder appendBits(String bitsAsString)
         {
-            for (final var c : bitsAsString.toCharArray())
+            for (var c : bitsAsString.toCharArray())
             {
                 switch (c)
                 {
@@ -84,7 +84,7 @@ final class BitArray
 
     private transient String stringRepresentation;
 
-    private BitArray(final List<Boolean> bits)
+    private BitArray(List<Boolean> bits)
     {
         this.bits = new ArrayList<>(bits);
     }
@@ -94,7 +94,7 @@ final class BitArray
         return new ArrayList<>(bits);
     }
 
-    public boolean isSet(final int index)
+    public boolean isSet(int index)
     {
         if (index < 0 || index >= bits.size())
         {
@@ -113,8 +113,8 @@ final class BitArray
     {
         if (stringRepresentation == null)
         {
-            final var builder = new StringBuilder();
-            for (final boolean bit : bits)
+            var builder = new StringBuilder();
+            for (boolean bit : bits)
             {
                 builder.append(bit ? "1" : "0");
             }

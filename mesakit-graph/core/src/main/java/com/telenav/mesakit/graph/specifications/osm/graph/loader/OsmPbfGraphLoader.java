@@ -22,12 +22,12 @@ import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
 import com.telenav.kivakit.kernel.language.strings.AsciiArt;
 import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
+import com.telenav.mesakit.graph.GraphProject;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.identifiers.collections.WayIdentifierList;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.io.load.GraphConstraints;
 import com.telenav.mesakit.graph.io.load.GraphLoader;
-import com.telenav.mesakit.graph.GraphProject;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.PbfGraphLoader;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.PbfToGraphConverter;
 import com.telenav.mesakit.graph.specifications.library.pbf.PbfDataAnalysis;
@@ -66,7 +66,7 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
      * @param analysis Resource analysis from the first pass through the PBF data. This data helps to make loading more
      * efficient and provides information about way intersections for the way sectioning process.
      */
-    public OsmPbfGraphLoader analysis(final PbfDataAnalysis analysis, final PbfTagFilter tagFilter)
+    public OsmPbfGraphLoader analysis(PbfDataAnalysis analysis, PbfTagFilter tagFilter)
     {
         this.analysis = analysis;
         this.tagFilter = tagFilter;
@@ -78,7 +78,7 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
      * {@inheritDoc}
      */
     @Override
-    public void onCommit(final GraphStore store)
+    public void onCommit(GraphStore store)
     {
         // Store OSM node information
         store.vertexStore().allPbfNodeDiskStores(analysis.pbfNodeDiskStores());
@@ -89,14 +89,14 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
      */
     @SuppressWarnings("UnusedAssignment")
     @Override
-    public Metadata onLoad(final GraphStore store, final GraphConstraints constraints)
+    public Metadata onLoad(GraphStore store, GraphConstraints constraints)
     {
         // Get the destination graph that we're loading with data from its graph store
-        final var destination = store.graph();
-        final var graphName = destination.metadata().name();
+        var destination = store.graph();
+        var graphName = destination.metadata().name();
 
         // Load the raw, un-sectioned data into a graph,
-        final var loader = listenTo(new OsmRawPbfGraphLoader(dataSourceFactory(), analysis, tagFilter));
+        var loader = listenTo(new OsmRawPbfGraphLoader(dataSourceFactory(), analysis, tagFilter));
         loader.configure(configuration());
         var raw = destination.createCompatible();
         raw.addListener(this);
@@ -111,7 +111,7 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
 
             // Next, estimate how many sectioned edges there will be
             information(AsciiArt.topLine(30, "Sectioning Ways"));
-            final var estimatedSectionedEdges = raw.forwardEdgeCount().times(6);
+            var estimatedSectionedEdges = raw.forwardEdgeCount().times(6);
             information("Estimating there will be $ sectioned edges", estimatedSectionedEdges);
 
             // put the estimate into the graph so its graph store will allocate data structures accordingly,
@@ -125,13 +125,13 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
             }
 
             // and then section the raw graph by loading it into the destination graph
-            final var edgeSectioner = listenTo(new EdgeSectioner(
+            var edgeSectioner = listenTo(new EdgeSectioner(
                     destination, analysis, loader.edgeNodes(), Distance.MAXIMUM));
             var waySectioner = new WaySectioningGraphLoader(raw, edgeSectioner);
-            final var ways = JavaVirtualMachine.property("MESAKIT_DEBUG_WAY_SECTIONS");
+            var ways = JavaVirtualMachine.property("MESAKIT_DEBUG_WAY_SECTIONS");
             if (ways != null)
             {
-                final var wayIdentifiers = WayIdentifierList.parse(ways).asSet();
+                var wayIdentifiers = WayIdentifierList.parse(ways).asSet();
                 if (wayIdentifiers != null)
                 {
                     edgeSectioner.debugger(new VisualEdgeSectionDebugger(), wayIdentifiers);
@@ -148,7 +148,7 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
                 analysis.freeIntersectionMap();
 
                 // load vertex tags while we still have the location -> vertex map available,
-                final var vertexStore = store.vertexStore();
+                var vertexStore = store.vertexStore();
                 vertexStore.postCommit(() -> vertexStore.loadVertexTags(dataSourceFactory().newInstance(destination.metadata()), tagFilter));
 
                 // and return information about what we loaded.

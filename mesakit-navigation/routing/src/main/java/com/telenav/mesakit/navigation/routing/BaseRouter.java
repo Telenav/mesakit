@@ -32,10 +32,10 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 public abstract class BaseRouter implements Router
 {
     @Override
-    public final RoutingResponse findRoute(final RoutingRequest request)
+    public final RoutingResponse findRoute(RoutingRequest request)
     {
         // Handle trivial case if the edges are the same, or if they are directly connected
-        final var result = trivialRoute(request);
+        var result = trivialRoute(request);
         if (result != null)
         {
             return result;
@@ -53,11 +53,11 @@ public abstract class BaseRouter implements Router
     /**
      * @return A routing result if trivial routing is possible, Null otherwise.
      */
-    private RoutingResponse trivialRoute(final RoutingRequest request)
+    private RoutingResponse trivialRoute(RoutingRequest request)
     {
         // Get start and end
-        final var start = request.start();
-        final var end = request.end();
+        var start = request.start();
+        var end = request.end();
 
         // Make sure two edges are in the same Graph (unless they are both in a world graph)
         if (!(start instanceof WorldVertex && end instanceof WorldVertex))

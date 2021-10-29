@@ -44,7 +44,7 @@ public class ComplexTurnClassifier implements TurnClassifier
         {
         }
 
-        public Configuration(final TwoHeadingTurnClassifier twoHeadingClassifier, final Angle straight)
+        public Configuration(TwoHeadingTurnClassifier twoHeadingClassifier, Angle straight)
         {
             this.twoHeadingClassifier = twoHeadingClassifier;
             this.straight = straight;
@@ -55,7 +55,7 @@ public class ComplexTurnClassifier implements TurnClassifier
             return straight;
         }
 
-        public void straight(final Angle straight)
+        public void straight(Angle straight)
         {
             this.straight = straight;
         }
@@ -65,7 +65,7 @@ public class ComplexTurnClassifier implements TurnClassifier
             return twoHeadingClassifier;
         }
 
-        public void twoHeadingClassifier(final TwoHeadingTurnClassifier twoHeadingClassifier)
+        public void twoHeadingClassifier(TwoHeadingTurnClassifier twoHeadingClassifier)
         {
             this.twoHeadingClassifier = twoHeadingClassifier;
         }
@@ -73,13 +73,13 @@ public class ComplexTurnClassifier implements TurnClassifier
 
     private final Configuration configuration;
 
-    public ComplexTurnClassifier(final Configuration configuration)
+    public ComplexTurnClassifier(Configuration configuration)
     {
         this.configuration = configuration;
     }
 
     @Override
-    public TurnType type(final Route route)
+    public TurnType type(Route route)
     {
         // If the route forms a loop,
         if (route.isLoop())
@@ -89,8 +89,8 @@ public class ComplexTurnClassifier implements TurnClassifier
         }
 
         // Get the first and last edge
-        final var first = route.first();
-        final var last = route.last();
+        var first = route.first();
+        var last = route.last();
 
         // If there are only two edges and the first is the last edge reversed,
         if (route.size() == 2 && first.equals(last.reversed()))
@@ -100,14 +100,14 @@ public class ComplexTurnClassifier implements TurnClassifier
         }
 
         // Get two heading classifier to determine turn type
-        final var twoHeadingClassifier = configuration.twoHeadingClassifier();
+        var twoHeadingClassifier = configuration.twoHeadingClassifier();
 
         // If we have a two-edge route
         if (route.size() == 2)
         {
             // and if both edges are roughly straight,
-            final var firstRoadShape = first.roadShape();
-            final var lastRoadShape = last.roadShape();
+            var firstRoadShape = first.roadShape();
+            var lastRoadShape = last.roadShape();
             if (firstRoadShape.isStraight(Distance.MAXIMUM, configuration.straight())
                     && lastRoadShape.isStraight(Distance.MAXIMUM, configuration.straight()))
             {
@@ -125,7 +125,7 @@ public class ComplexTurnClassifier implements TurnClassifier
         {
             // For route with more than two edges, just classify the turn using the last segment of
             // the first edge and the first segment of the last edge
-            final var type = twoHeadingClassifier.type(first.lastSegment(), last.firstSegment());
+            var type = twoHeadingClassifier.type(first.lastSegment(), last.firstSegment());
 
             // If we got back a u-turn, it may not be classified right because it's not a two-edge
             // turn.

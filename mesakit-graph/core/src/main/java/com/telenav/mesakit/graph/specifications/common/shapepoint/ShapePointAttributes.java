@@ -34,7 +34,7 @@ public class ShapePointAttributes extends NodeAttributes
 
     public class ShapePointAttribute extends GraphElementAttribute
     {
-        public ShapePointAttribute(final String name)
+        public ShapePointAttribute(String name)
         {
             super(name);
         }

@@ -47,12 +47,12 @@ public class GraphQueryCompiler extends GraphQueryBaseVisitor<Node>
      * @param tree The parse tree
      * @return The abstract syntax tree
      */
-    public Program compile(final ParseTree tree, final Maximum maximumClosureLength)
+    public Program compile(ParseTree tree, Maximum maximumClosureLength)
     {
-        final var node = visit(tree);
+        var node = visit(tree);
         if (node instanceof Select)
         {
-            final var select = (Select) node;
+            var select = (Select) node;
             return new Program(select, maximumClosureLength);
         }
         return fail("Compiled query must be a select expression with a boolean query");
@@ -64,9 +64,9 @@ public class GraphQueryCompiler extends GraphQueryBaseVisitor<Node>
      * @return The extracted attribute
      */
     @Override
-    public Node visitAttribute(final GraphQueryParser.AttributeContext attribute)
+    public Node visitAttribute(GraphQueryParser.AttributeContext attribute)
     {
-        final var code = attribute.getText();
+        var code = attribute.getText();
         return new Attribute(code).code(code);
     }
 
@@ -76,9 +76,9 @@ public class GraphQueryCompiler extends GraphQueryBaseVisitor<Node>
      * @return The value
      */
     @Override
-    public Node visitConstantValue(final GraphQueryParser.ConstantValueContext constant)
+    public Node visitConstantValue(GraphQueryParser.ConstantValueContext constant)
     {
-        final var code = constant.getText();
+        var code = constant.getText();
         if (constant.unit != null)
         {
             switch (constant.unit.getText())
@@ -101,14 +101,14 @@ public class GraphQueryCompiler extends GraphQueryBaseVisitor<Node>
      * @return True if the query matched and false if it didn't
      */
     @Override
-    public Node visitQuery(final GraphQueryParser.QueryContext query)
+    public Node visitQuery(GraphQueryParser.QueryContext query)
     {
-        final var code = query.getText();
+        var code = query.getText();
 
         // not [query]
         if (query.notOperator != null)
         {
-            final var expression = visit(query.notQuery);
+            var expression = visit(query.notQuery);
             if (expression instanceof BooleanExpression)
             {
                 return new Not((BooleanExpression) expression).code(code);
@@ -119,7 +119,7 @@ public class GraphQueryCompiler extends GraphQueryBaseVisitor<Node>
         // [query]+
         if (query.closure != null)
         {
-            final var expression = visit(query.closureQuery);
+            var expression = visit(query.closureQuery);
             if (expression instanceof BooleanExpression)
             {
                 return new OneOrMore((BooleanExpression) expression).code(code);
@@ -130,8 +130,8 @@ public class GraphQueryCompiler extends GraphQueryBaseVisitor<Node>
         // [query] THEN [query]
         if (query.thenOperator != null)
         {
-            final var left = visit(query.thenLeftQuery);
-            final var right = visit(query.thenRightQuery);
+            var left = visit(query.thenLeftQuery);
+            var right = visit(query.thenRightQuery);
             if (left instanceof BooleanExpression && right instanceof BooleanExpression)
             {
                 return new Then((BooleanExpression) left, (BooleanExpression) right).code(code);
@@ -142,8 +142,8 @@ public class GraphQueryCompiler extends GraphQueryBaseVisitor<Node>
         // [attribute] [comparison-operator] [value]
         if (query.comparisonOperator != null)
         {
-            final var left = visit(query.comparisonAttribute);
-            final var right = visit(query.comparisonValue);
+            var left = visit(query.comparisonAttribute);
+            var right = visit(query.comparisonValue);
             if (left instanceof ValueExpression && right instanceof ValueExpression)
             {
                 return new Compare(typeOf(query.comparisonOperator), (ValueExpression) left, (ValueExpression) right).code(code);
@@ -154,8 +154,8 @@ public class GraphQueryCompiler extends GraphQueryBaseVisitor<Node>
         // [attribute]
         if (query.booleanAttribute != null)
         {
-            final var text = query.booleanAttribute.getText();
-            final var attribute = BooleanAttribute.parse(text);
+            var text = query.booleanAttribute.getText();
+            var attribute = BooleanAttribute.parse(text);
             if (attribute != null)
             {
                 return attribute.code(code);
@@ -167,8 +167,8 @@ public class GraphQueryCompiler extends GraphQueryBaseVisitor<Node>
         // [query] AND [query]
         if (query.logicalOperator != null)
         {
-            final var left = visit(query.logicalLeftQuery);
-            final var right = visit(query.logicalRightQuery);
+            var left = visit(query.logicalLeftQuery);
+            var right = visit(query.logicalRightQuery);
             if (left instanceof BooleanExpression && right instanceof BooleanExpression)
             {
                 switch (query.logicalOperator.getType())
@@ -196,9 +196,9 @@ public class GraphQueryCompiler extends GraphQueryBaseVisitor<Node>
     }
 
     @Override
-    public Node visitSelect(final GraphQueryParser.SelectContext select)
+    public Node visitSelect(GraphQueryParser.SelectContext select)
     {
-        final var query = visit(select.query());
+        var query = visit(select.query());
         if (query instanceof BooleanExpression)
         {
             return new Select((BooleanExpression) query);
@@ -206,7 +206,7 @@ public class GraphQueryCompiler extends GraphQueryBaseVisitor<Node>
         return fail("Select expression must be boolean");
     }
 
-    private Compare.Type typeOf(final Token comparisonOperator)
+    private Compare.Type typeOf(Token comparisonOperator)
     {
         switch (comparisonOperator.getType())
         {

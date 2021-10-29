@@ -39,24 +39,24 @@ public class PbfAllNodeIdentifierStore implements Unloadable
 
     private final Map<AllNodeDiskCell, LongArray> identifiersForCell = new HashMap<>();
 
-    public PbfAllNodeIdentifierStore(final GraphArchive archive)
+    public PbfAllNodeIdentifierStore(GraphArchive archive)
     {
         ensure(archive != null);
         store = new PbfAllNodeIdentifierDiskStore(archive);
     }
 
-    public MapNodeIdentifier identifier(final GraphElement element, final Location location)
+    public MapNodeIdentifier identifier(GraphElement element, Location location)
     {
-        final var index = element.index();
+        var index = element.index();
 
-        final var cell = new AllNodeDiskCell(location);
+        var cell = new AllNodeDiskCell(location);
         var identifiers = identifiersForCell.get(cell);
         if (identifiers == null)
         {
             identifiers = store.load(cell);
             identifiersForCell.put(cell, identifiers);
         }
-        final var identifier = identifiers.get(index);
+        var identifier = identifiers.get(index);
         if (identifiers.isNull(identifier))
         {
             return null;

@@ -43,17 +43,17 @@ public class WorldEdgeIdentifier extends EdgeIdentifier
     {
         private final WorldGrid grid;
 
-        public Converter(final WorldGrid grid, final Listener listener)
+        public Converter(WorldGrid grid, Listener listener)
         {
             super(listener);
             this.grid = grid;
         }
 
         @Override
-        protected WorldEdgeIdentifier onToValue(final String value)
+        protected WorldEdgeIdentifier onToValue(String value)
         {
-            final var cellName = Paths.withoutSuffix(value, '-');
-            final var identifier = Long.parseLong(Paths.optionalSuffix(value, '-'));
+            var cellName = Paths.withoutSuffix(value, '-');
+            var identifier = Long.parseLong(Paths.optionalSuffix(value, '-'));
             return new WorldEdgeIdentifier(grid.worldCell(cellName), new EdgeIdentifier(identifier));
         }
     }
@@ -61,7 +61,7 @@ public class WorldEdgeIdentifier extends EdgeIdentifier
     /** The cell where this identifier resides */
     private final WorldCell worldCell;
 
-    public WorldEdgeIdentifier(final WorldCell worldCell, final EdgeIdentifier identifier)
+    public WorldEdgeIdentifier(WorldCell worldCell, EdgeIdentifier identifier)
     {
         super(identifier.asLong());
         this.worldCell = worldCell;
@@ -79,11 +79,11 @@ public class WorldEdgeIdentifier extends EdgeIdentifier
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof WorldEdgeIdentifier)
         {
-            final var that = (WorldEdgeIdentifier) object;
+            var that = (WorldEdgeIdentifier) object;
             return worldCell.equals(that.worldCell) && super.equals(that);
         }
         return false;

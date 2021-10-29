@@ -42,7 +42,7 @@ public class NewWayStore implements Iterable<NewWay>
     /**
      * Adds the given new way to this store
      */
-    public void add(final NewWay way)
+    public void add(NewWay way)
     {
         // Store way by its name
         wayForName.add(way.name(), way);
@@ -53,7 +53,6 @@ public class NewWayStore implements Iterable<NewWay>
         return ways().isEmpty();
     }
 
-    @SuppressWarnings("NullableProblems")
     @Override
     public Iterator<NewWay> iterator()
     {
@@ -62,7 +61,7 @@ public class NewWayStore implements Iterable<NewWay>
 
     public void referenceNodes()
     {
-        for (final var way : ways())
+        for (var way : ways())
         {
             way.referenceNodes();
         }
@@ -74,10 +73,10 @@ public class NewWayStore implements Iterable<NewWay>
     public Collection<NewWay> ways()
     {
         // List of ways
-        final List<NewWay> ways = new ArrayList<>();
+        List<NewWay> ways = new ArrayList<>();
 
         // Go through each way name
-        for (final var name : wayForName.keySet())
+        for (var name : wayForName.keySet())
         {
             // Get the list of ways by the given name
             List<NewWay> list = wayForName.get(name);
@@ -104,10 +103,10 @@ public class NewWayStore implements Iterable<NewWay>
      *
      * @param ways The list to compact
      */
-    private List<NewWay> compact(final List<NewWay> ways)
+    private List<NewWay> compact(List<NewWay> ways)
     {
         // Make a copy of the input list that we can modify
-        final List<NewWay> compacted = new ArrayList<>(ways);
+        List<NewWay> compacted = new ArrayList<>(ways);
 
         NewWay a;
         NewWay b;
@@ -120,10 +119,10 @@ public class NewWayStore implements Iterable<NewWay>
 
             // Loop through ways in the list
             OUTER:
-            for (final var way : compacted)
+            for (var way : compacted)
             {
                 // Loop through every possible way to connect to
-                for (final var connectTo : compacted)
+                for (var connectTo : compacted)
                 {
                     // If the two ways are connected
                     if (!way.equals(connectTo) && way.isConnected(connectTo))

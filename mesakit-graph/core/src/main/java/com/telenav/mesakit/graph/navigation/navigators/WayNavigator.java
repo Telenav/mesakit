@@ -36,25 +36,25 @@ public class WayNavigator extends Navigator
 
     private final Set<Edge> visited = new HashSet<>();
 
-    public WayNavigator(final Edge edge)
+    public WayNavigator(Edge edge)
     {
-        this.identifier = edge.wayIdentifier();
-        this.visited.add(edge);
+        identifier = edge.wayIdentifier();
+        visited.add(edge);
     }
 
     @Override
-    public Edge in(final Edge edge)
+    public Edge in(Edge edge)
     {
-        final var reversed = edge.reversed();
-        for (final var in : edge.inEdges())
+        var reversed = edge.reversed();
+        for (var in : edge.inEdges())
         {
             if (!in.equals(reversed))
             {
-                if (in.wayIdentifier().equals(this.identifier))
+                if (in.wayIdentifier().equals(identifier))
                 {
-                    if (!this.visited.contains(in) && !this.visited.contains(in.reversed()))
+                    if (!visited.contains(in) && !visited.contains(in.reversed()))
                     {
-                        this.visited.add(in);
+                        visited.add(in);
                         return in;
                     }
                 }
@@ -64,18 +64,18 @@ public class WayNavigator extends Navigator
     }
 
     @Override
-    public Edge out(final Edge edge)
+    public Edge out(Edge edge)
     {
-        final var reversed = edge.reversed();
-        for (final var out : edge.outEdges())
+        var reversed = edge.reversed();
+        for (var out : edge.outEdges())
         {
             if (!out.equals(reversed))
             {
-                if (out.wayIdentifier().equals(this.identifier))
+                if (out.wayIdentifier().equals(identifier))
                 {
-                    if (!this.visited.contains(out) && !this.visited.contains(out.reversed()))
+                    if (!visited.contains(out) && !visited.contains(out.reversed()))
                     {
-                        this.visited.add(out);
+                        visited.add(out);
                         return out;
                     }
                 }

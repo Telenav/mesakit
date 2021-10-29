@@ -47,13 +47,13 @@ public class IndonesianIndonesiaRoadNameStandardizer extends BaseRoadNameStandar
     private Mode mode;
 
     @Override
-    public void mode(final Mode mode)
+    public void mode(Mode mode)
     {
         this.mode = mode;
     }
 
     @Override
-    public ParsedRoadName standardize(final RoadName name)
+    public ParsedRoadName standardize(RoadName name)
     {
         if (mode == null)
         {
@@ -61,29 +61,29 @@ public class IndonesianIndonesiaRoadNameStandardizer extends BaseRoadNameStandar
         }
         try
         {
-            final var parsed = parser.get().parse(name);
+            var parsed = parser.get().parse(name);
             if (parsed != null)
             {
                 return standardize(parsed);
             }
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             DEBUG.warning(e, "Unable to standardize '$'", name);
         }
         return null;
     }
 
-    private ParsedRoadName standardize(final ParsedRoadName name)
+    private ParsedRoadName standardize(ParsedRoadName name)
     {
-        final var builder = new ParsedRoadName.Builder(name);
+        var builder = new ParsedRoadName.Builder(name);
         builder.type(name.type(), name.rawType());
         builder.baseName(standardizedBaseName(name), name.rawBaseName());
         builder.position(FIRST);
         return builder.build();
     }
 
-    private String standardizedBaseName(final ParsedRoadName name)
+    private String standardizedBaseName(ParsedRoadName name)
     {
         return name.baseName();
     }

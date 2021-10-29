@@ -46,7 +46,7 @@ public enum RoadSubType implements Identifiable
      * @param identifier A road sub-type identifier
      * @return The RoadSubType object for the given identifier or NULL if none exists
      */
-    public static RoadSubType forIdentifier(final int identifier)
+    public static RoadSubType forIdentifier(int identifier)
     {
         switch (identifier)
         {
@@ -97,7 +97,7 @@ public enum RoadSubType implements Identifiable
     /**
      * @return The identifier for the given road sub-type or NULL.identifier if the sub-type is null
      */
-    public static int identifierFor(final RoadSubType subType)
+    public static int identifierFor(RoadSubType subType)
     {
         if (subType == null)
         {
@@ -108,7 +108,7 @@ public enum RoadSubType implements Identifiable
 
     private final int identifier;
 
-    RoadSubType(final int identifier)
+    RoadSubType(int identifier)
     {
         this.identifier = identifier;
     }

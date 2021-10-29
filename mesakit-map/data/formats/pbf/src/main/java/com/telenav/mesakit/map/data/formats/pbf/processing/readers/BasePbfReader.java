@@ -105,7 +105,7 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
 
     private Count relations;
 
-    protected BasePbfReader(final Resource resource)
+    protected BasePbfReader(Resource resource)
     {
         if (!resource.hasExtension(Extension.PBF) && !resource.hasExtension(Extension.OSM_PBF))
         {
@@ -140,21 +140,21 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
     }
 
     @Override
-    public void expectedNodes(final Count nodes)
+    public void expectedNodes(Count nodes)
     {
         this.nodes = nodes;
         nodeProgress.steps(nodes.asMaximum());
     }
 
     @Override
-    public void expectedRelations(final Count relations)
+    public void expectedRelations(Count relations)
     {
         this.relations = relations;
         relationProgress.steps(relations.asMaximum());
     }
 
     @Override
-    public void expectedWays(final Count ways)
+    public void expectedWays(Count ways)
     {
         this.ways = ways;
         wayProgress.steps(ways.asMaximum());
@@ -219,7 +219,7 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
     }
 
     @Override
-    public void phase(final String phase)
+    public void phase(String phase)
     {
         nodeProgress.phase("  [" + phase + "] ");
         wayProgress.phase("  [" + phase + "] ");
@@ -229,9 +229,9 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
     /**
      * Called when the subclass has an entity to process
      */
-    public void process(final Entity entity)
+    public void process(Entity entity)
     {
-        final var type = entity.getType();
+        var type = entity.getType();
 
         switch (type)
         {
@@ -245,7 +245,7 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
                 startProcessingNodes();
 
                 // Process the node
-                final var node = new PbfNode((Node) entity);
+                var node = new PbfNode((Node) entity);
                 processor.onEntity(node);
                 processNode(node);
                 break;
@@ -260,7 +260,7 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
                 doneProcessingWays();
 
                 // Process the relation
-                final var relation = new PbfRelation((Relation) entity);
+                var relation = new PbfRelation((Relation) entity);
                 processor.onEntity(relation);
                 processRelation(relation);
                 break;
@@ -275,14 +275,14 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
                 startProcessingWays();
 
                 // Process the way
-                final var way = new PbfWay((Way) entity);
+                var way = new PbfWay((Way) entity);
                 processor.onEntity(way);
                 processWay(way);
                 break;
         }
     }
 
-    public void processBounds(final Bound bound)
+    public void processBounds(Bound bound)
     {
         processor.onBounds(bound);
     }
@@ -290,10 +290,10 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
     /**
      * Called when the subclass encounters PBF metadata
      */
-    public void processMetadata(final Map<String, Object> metadata)
+    public void processMetadata(Map<String, Object> metadata)
     {
-        final Map<String, String> properties = new HashMap<>();
-        for (final var key : metadata.keySet())
+        Map<String, String> properties = new HashMap<>();
+        for (var key : metadata.keySet())
         {
             properties.put(key, metadata.get(key).toString());
         }
@@ -315,7 +315,7 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
         return resource;
     }
 
-    public void start(final PbfDataProcessor processor)
+    public void start(PbfDataProcessor processor)
     {
         trace("Processing data");
         this.processor = processor;
@@ -365,58 +365,58 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
         }
     }
 
-    private void processNode(final PbfNode node)
+    private void processNode(PbfNode node)
     {
         try
         {
             // and process it
             processedNode(node, processor.onNode(node));
         }
-        catch (final PbfStopProcessingException e)
+        catch (PbfStopProcessingException e)
         {
             throw e;
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             problem(e, "Exception thrown by onNode($)", node.identifierAsLong());
         }
     }
 
-    private void processRelation(final PbfRelation relation)
+    private void processRelation(PbfRelation relation)
     {
         try
         {
             // and process it
             processedRelation(relation, processor.onRelation(relation));
         }
-        catch (final PbfStopProcessingException e)
+        catch (PbfStopProcessingException e)
         {
             throw e;
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             problem(e, "Exception thrown by onRelation($)", relation.identifierAsLong());
         }
     }
 
-    private void processWay(final PbfWay way)
+    private void processWay(PbfWay way)
     {
         try
         {
             // and process it
             processedWay(way, processor.onWay(way));
         }
-        catch (final PbfStopProcessingException e)
+        catch (PbfStopProcessingException e)
         {
             throw e;
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             problem(e, "Exception thrown by onWay($)", way.identifierAsLong());
         }
     }
 
-    private void processedNode(final PbfNode node, final PbfDataProcessor.Action result)
+    private void processedNode(PbfNode node, PbfDataProcessor.Action result)
     {
         if (result == PbfDataProcessor.Action.ACCEPTED)
         {
@@ -426,7 +426,7 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
         nodeProgress.next();
     }
 
-    private void processedRelation(final PbfRelation relation, final PbfDataProcessor.Action result)
+    private void processedRelation(PbfRelation relation, PbfDataProcessor.Action result)
     {
         if (result == PbfDataProcessor.Action.ACCEPTED)
         {
@@ -436,7 +436,7 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
         relationProgress.next();
     }
 
-    private void processedWay(final PbfWay way, final PbfDataProcessor.Action result)
+    private void processedWay(PbfWay way, PbfDataProcessor.Action result)
     {
         if (result == PbfDataProcessor.Action.ACCEPTED)
         {

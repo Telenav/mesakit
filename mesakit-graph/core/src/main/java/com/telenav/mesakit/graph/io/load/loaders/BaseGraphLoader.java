@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.graph.io.load.loaders;
 
-import com.telenav.kivakit.kernel.messaging.Message;
 import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.mesakit.graph.io.load.GraphLoader;
 

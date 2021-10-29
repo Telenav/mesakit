@@ -61,8 +61,8 @@ public class DecimatingGraphLoader extends BaseGraphLoader
      * detail cannot be seen at such a low zoom level.
      * @param maximumDeviation The most that an edge can bend before it is included even if it is a short edge
      */
-    public DecimatingGraphLoader(final Graph source, final Distance minimumLength, final Angle maximumDeviation,
-                                 final ProgressReporter reporter)
+    public DecimatingGraphLoader(Graph source, Distance minimumLength, Angle maximumDeviation,
+                                 ProgressReporter reporter)
     {
         this.source = source;
         this.minimumLength = minimumLength;
@@ -71,19 +71,19 @@ public class DecimatingGraphLoader extends BaseGraphLoader
     }
 
     @Override
-    public Metadata onLoad(final GraphStore store, final GraphConstraints constraints)
+    public Metadata onLoad(GraphStore store, GraphConstraints constraints)
     {
         var edges = 0;
         try
         {
             // Go through the source edges within the bounds that match the constraints
-            final var decimated = new EdgeSet();
-            final var edgeStore = store.edgeStore();
-            final var edgeStoreAdder = edgeStore.adder();
-            final var matching = source.forwardEdgesIntersecting(constraints.bounds()).matching(constraints.edgeMatcher());
+            var decimated = new EdgeSet();
+            var edgeStore = store.edgeStore();
+            var edgeStoreAdder = edgeStore.adder();
+            var matching = source.forwardEdgesIntersecting(constraints.bounds()).matching(constraints.edgeMatcher());
             reporter.start("Decimating");
             reporter.steps(Count.count(matching));
-            for (final var edge : matching)
+            for (var edge : matching)
             {
                 // and if the edge is not already decimated
                 if (!decimated.contains(edge))
@@ -111,8 +111,8 @@ public class DecimatingGraphLoader extends BaseGraphLoader
             }
             reporter.end("Decimated");
 
-            final var placeStoreAdder = store.placeStore().adder();
-            for (final var place : source.places())
+            var placeStoreAdder = store.placeStore().adder();
+            for (var place : source.places())
             {
                 if (place.isCity() || place.isTown() || place.population().isGreaterThan(Count._10_000))
                 {
@@ -122,7 +122,7 @@ public class DecimatingGraphLoader extends BaseGraphLoader
 
             return store.metadata();
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             LOGGER.problem(e, "Only able to load the first $ edges of source graph  $", Count.count(edges),
                     source.name());
@@ -142,18 +142,18 @@ public class DecimatingGraphLoader extends BaseGraphLoader
      *
      * @return The simplified edge replacing the set of edges that were decimated
      */
-    private Edge decimate(final EdgeSet decimated, final Edge edge)
+    private Edge decimate(EdgeSet decimated, Edge edge)
     {
         // If we can navigate a small route,
-        final Navigator navigator = new DecimationNavigator(edge, decimated, maximumDeviation);
-        final var route = edge.route(navigator, Distance.MAXIMUM);
+        Navigator navigator = new DecimationNavigator(edge, decimated, maximumDeviation);
+        var route = edge.route(navigator, Distance.MAXIMUM);
         if (route.size() > 1)
         {
             // create a new edge that goes directly from the start of the first edge to the end of the last one
-            final var simplified = source.dataSpecification().newHeavyWeightEdge(null, edge.identifierAsLong());
+            var simplified = source.dataSpecification().newHeavyWeightEdge(null, edge.identifierAsLong());
             simplified.copy(edge);
-            final var first = route.first();
-            final var last = route.last();
+            var first = route.first();
+            var last = route.last();
             simplified.from(first.from());
             simplified.to(last.to());
             simplified.toNodeIdentifier(last.to().mapIdentifier());

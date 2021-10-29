@@ -43,18 +43,18 @@ public class IntersectionMapTest extends GraphUnitTest
     }
 
     @SuppressWarnings("SameParameterValue")
-    private List<Integer> randomIdentifiers(final int maximum, final int minimumIntersections)
+    private List<Integer> randomIdentifiers(int maximum, int minimumIntersections)
     {
         // Create random value factory
-        final RandomValueFactory random = randomValueFactory();
+        RandomValueFactory random = randomValueFactory();
 
-        final var identifiers = new ArrayList<Integer>();
-        final Map<Integer, Integer> references = new HashMap<>();
+        var identifiers = new ArrayList<Integer>();
+        Map<Integer, Integer> references = new HashMap<>();
 
         var intersections = 0;
         while (intersections < minimumIntersections)
         {
-            final var identifier = random.newInt(1, maximum);
+            var identifier = random.newInt(1, maximum);
             identifiers.add(identifier);
             var count = references.get(identifier);
             if (count == null)
@@ -75,34 +75,34 @@ public class IntersectionMapTest extends GraphUnitTest
     }
 
     @SuppressWarnings({ "SameParameterValue", "UnusedReturnValue" })
-    private IntersectionMap test(final List<Integer> identifiers)
+    private IntersectionMap test(List<Integer> identifiers)
     {
         // Create map
-        final var map = new IntersectionMap("test");
+        var map = new IntersectionMap("test");
 
         // Map from identifier to count
-        final Map<MapNodeIdentifier, Count> expected = new HashMap<>();
+        Map<MapNodeIdentifier, Count> expected = new HashMap<>();
 
         // Loop through identifiers,
-        for (final long identifier : identifiers)
+        for (long identifier : identifiers)
         {
             // and reference the identifier as an identifier
-            final var referenceCount = map.addReference(identifier);
+            var referenceCount = map.addReference(identifier);
             ensure(referenceCount > 0);
 
             // Store our expected count
-            final var count = expected.computeIfAbsent(new PbfNodeIdentifier(identifier), k -> Count._0);
+            var count = expected.computeIfAbsent(new PbfNodeIdentifier(identifier), k -> Count._0);
             expected.put(new PbfNodeIdentifier(identifier), count.incremented());
         }
 
         map.doneAdding();
 
         // For each identifier
-        for (final MapNodeIdentifier identifier : expected.keySet())
+        for (MapNodeIdentifier identifier : expected.keySet())
         {
             // check that the count we tracked in the test matches the intersection method result
-            final var expectedIntersection = expected.get(identifier).isGreaterThan(Count._2);
-            final var intersection = map.isIntersection(identifier.asLong());
+            var expectedIntersection = expected.get(identifier).isGreaterThan(Count._2);
+            var intersection = map.isIntersection(identifier.asLong());
             ensureEqual(expectedIntersection, intersection);
         }
 

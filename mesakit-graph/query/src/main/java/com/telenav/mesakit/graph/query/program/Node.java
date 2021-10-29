@@ -32,7 +32,7 @@ public class Node implements Expression
         return code;
     }
 
-    public Node code(final String text)
+    public Node code(String text)
     {
         code = text;
         return this;
@@ -43,7 +43,7 @@ public class Node implements Expression
         return program;
     }
 
-    public void program(final Program program)
+    public void program(Program program)
     {
         this.program = program;
     }
@@ -60,22 +60,22 @@ public class Node implements Expression
     }
 
     @Override
-    public void visit(final Visitor visitor)
+    public void visit(Visitor visitor)
     {
         visitor.at(this);
     }
 
-    protected <T> T fail(final String message, final Object... arguments)
+    protected <T> T fail(String message, Object... arguments)
     {
         return Ensure.fail("Error evaluating '" + code + "': " + message, arguments);
     }
 
-    protected void trace(final String message, final Object... arguments)
+    protected void trace(String message, Object... arguments)
     {
         DEBUG.trace(String.format("%3d. ", traceNumber++) + stack() + "\n     " + code() + "\n     " + message, arguments);
     }
 
-    protected <T> T unsupported(final String message, final Object... arguments)
+    protected <T> T unsupported(String message, Object... arguments)
     {
         return Ensure.unsupported("Error evaluating '" + code + "': " + message, arguments);
     }

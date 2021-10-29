@@ -125,7 +125,7 @@ public abstract class Navigator
     /**
      * @return The next edge in the given direction
      */
-    public Edge next(final Edge edge, final Direction direction)
+    public Edge next(Edge edge, Direction direction)
     {
         return direction == Direction.IN ? in(edge) : out(edge);
     }

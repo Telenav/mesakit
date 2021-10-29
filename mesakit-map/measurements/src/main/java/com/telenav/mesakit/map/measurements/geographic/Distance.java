@@ -72,7 +72,7 @@ public final class Distance implements Quantizable, Comparable<Distance>
     private static final double KILOMETERS_PER_DM7 = 1 / DM7_PER_KILOMETER;
 
     public static final Distance EARTH_RADIUS_MAJOR = meters(6_378_137);
-    
+
     /**
      * Distance around the earth
      */
@@ -118,53 +118,53 @@ public final class Distance implements Quantizable, Comparable<Distance>
      */
     public static final Distance _100_METERS = meters(100);
 
-    public static ArgumentParser.Builder<Distance> argumentParser(final String description)
+    public static ArgumentParser.Builder<Distance> argumentParser(String description)
     {
         return ArgumentParser.builder(Distance.class).converter(new Converter(LOGGER)).description(description);
     }
 
-    public static Distance centimeters(final long centimeters)
+    public static Distance centimeters(long centimeters)
     {
         return millimeters(centimeters * 10);
     }
 
-    public static Distance degrees(final double degrees)
+    public static Distance degrees(double degrees)
     {
         return Distance.meters(degrees * DM7_PER_DEGREE * KILOMETERS_PER_DM7);
     }
 
-    public static SwitchParser.Builder<Distance> distanceSwitchParser(final String name, final String description)
+    public static SwitchParser.Builder<Distance> distanceSwitchParser(String name, String description)
     {
         return SwitchParser.builder(Distance.class).name(name).converter(new Converter(LOGGER))
                 .description(description);
     }
 
-    public static Distance feet(final double feet)
+    public static Distance feet(double feet)
     {
         return meters(feet * METERS_PER_FOOT);
     }
 
-    public static Distance kilometers(final double kilometers)
+    public static Distance kilometers(double kilometers)
     {
         return meters(kilometers * METERS_PER_KILOMETER);
     }
 
-    public static Distance meters(final double meters)
+    public static Distance meters(double meters)
     {
         return millimeters((long) (meters * MILLIMETERS_PER_METER));
     }
 
-    public static Distance miles(final double miles)
+    public static Distance miles(double miles)
     {
         return feet(miles * FEET_PER_MILE);
     }
 
-    public static Distance millimeters(final long millimeters)
+    public static Distance millimeters(long millimeters)
     {
         return new Distance(millimeters);
     }
 
-    public static Distance of(final double value, final Unit unit)
+    public static Distance of(double value, Unit unit)
     {
         switch (unit)
         {
@@ -191,7 +191,7 @@ public final class Distance implements Quantizable, Comparable<Distance>
         }
     }
 
-    public static Distance parse(final String value)
+    public static Distance parse(String value)
     {
         return new Converter(LOGGER).convert(value);
     }
@@ -221,13 +221,13 @@ public final class Distance implements Quantizable, Comparable<Distance>
         private static final Pattern PATTERN = Pattern
                 .compile("([0-9]+([.,][0-9]+)?)(\\s+|-)(mile|kilometer|km|meter|feet)s?", Pattern.CASE_INSENSITIVE);
 
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected String onToString(final Distance value)
+        protected String onToString(Distance value)
         {
             if (value.isLessThan(meters(500)))
             {
@@ -240,13 +240,13 @@ public final class Distance implements Quantizable, Comparable<Distance>
          * {@inheritDoc}
          */
         @Override
-        protected Distance onToValue(final String value)
+        protected Distance onToValue(String value)
         {
-            final var matcher = PATTERN.matcher(value);
+            var matcher = PATTERN.matcher(value);
             if (matcher.matches())
             {
-                final var scalar = Double.parseDouble(matcher.group(1));
-                final var units = matcher.group(4);
+                var scalar = Double.parseDouble(matcher.group(1));
+                var units = matcher.group(4);
                 if ("mile".equalsIgnoreCase(units))
                 {
                     return miles(scalar);
@@ -279,13 +279,13 @@ public final class Distance implements Quantizable, Comparable<Distance>
 
     public static class KilometersConverter extends BaseStringConverter<Distance>
     {
-        public KilometersConverter(final Listener listener)
+        public KilometersConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Distance onToValue(final String value)
+        protected Distance onToValue(String value)
         {
             return kilometers(Double.parseDouble(value));
         }
@@ -293,13 +293,13 @@ public final class Distance implements Quantizable, Comparable<Distance>
 
     public static class MetersConverter extends BaseStringConverter<Distance>
     {
-        public MetersConverter(final Listener listener)
+        public MetersConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Distance onToValue(final String value)
+        protected Distance onToValue(String value)
         {
             return meters(Double.parseDouble(value));
         }
@@ -307,13 +307,13 @@ public final class Distance implements Quantizable, Comparable<Distance>
 
     public static class MilesConverter extends BaseStringConverter<Distance>
     {
-        public MilesConverter(final Listener listener)
+        public MilesConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Distance onToValue(final String value)
+        protected Distance onToValue(String value)
         {
             return miles(Double.parseDouble(value));
         }
@@ -321,13 +321,13 @@ public final class Distance implements Quantizable, Comparable<Distance>
 
     public static class MillimetersConverter extends BaseStringConverter<Distance>
     {
-        public MillimetersConverter(final Listener listener)
+        public MillimetersConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Distance onToValue(final String value)
+        protected Distance onToValue(String value)
         {
             return millimeters(Long.parseLong(value));
         }
@@ -344,7 +344,7 @@ public final class Distance implements Quantizable, Comparable<Distance>
      *
      * @param millimeters The distance in millimeters
      */
-    private Distance(final long millimeters)
+    private Distance(long millimeters)
     {
         // Ensure that the distance is either the special value MAXIMUM or it is < 100_000 km
         assert millimeters == Long.MAX_VALUE || millimeters < (100_000L * METERS_PER_KILOMETER * MILLIMETERS_PER_METER);
@@ -352,12 +352,12 @@ public final class Distance implements Quantizable, Comparable<Distance>
         this.millimeters = millimeters;
     }
 
-    public Distance add(final Distance that)
+    public Distance add(Distance that)
     {
         return millimeters(asMillimeters() + that.asMillimeters());
     }
 
-    public double as(final Unit unit)
+    public double as(Unit unit)
     {
         switch (unit)
         {
@@ -414,7 +414,7 @@ public final class Distance implements Quantizable, Comparable<Distance>
         return asMeters() / METERS_PER_FOOT;
     }
 
-    public int asInt(final Unit unit)
+    public int asInt(Unit unit)
     {
         return (int) (as(unit) + 0.5);
     }
@@ -439,14 +439,14 @@ public final class Distance implements Quantizable, Comparable<Distance>
         return millimeters;
     }
 
-    public Area by(final Distance that)
+    public Area by(Distance that)
     {
         return Area.of(this, that);
     }
 
     @SuppressWarnings("NullableProblems")
     @Override
-    public int compareTo(final Distance that)
+    public int compareTo(Distance that)
     {
         if (isLessThan(that))
         {
@@ -463,18 +463,18 @@ public final class Distance implements Quantizable, Comparable<Distance>
      * @param that The other distance to compare with.
      * @return The absolute value difference between the two distances.
      */
-    public Distance difference(final Distance that)
+    public Distance difference(Distance that)
     {
         return millimeters(Math.abs(asMillimeters() - that.asMillimeters()));
     }
 
-    public Distance dividedBy(final Count divisor)
+    public Distance dividedBy(Count divisor)
     {
         return millimeters(asMillimeters() / divisor.asInt());
     }
 
     @Override
-    public boolean equals(final Object obj)
+    public boolean equals(Object obj)
     {
         if (obj instanceof Distance)
         {
@@ -489,22 +489,22 @@ public final class Distance implements Quantizable, Comparable<Distance>
         return Long.hashCode(asMillimeters());
     }
 
-    public boolean isGreaterThan(final Distance that)
+    public boolean isGreaterThan(Distance that)
     {
         return asMillimeters() > that.asMillimeters();
     }
 
-    public boolean isGreaterThanOrEqualTo(final Distance that)
+    public boolean isGreaterThanOrEqualTo(Distance that)
     {
         return asMillimeters() >= that.asMillimeters();
     }
 
-    public boolean isLessThan(final Distance that)
+    public boolean isLessThan(Distance that)
     {
         return asMillimeters() < that.asMillimeters();
     }
 
-    public boolean isLessThanOrEqualTo(final Distance that)
+    public boolean isLessThanOrEqualTo(Distance that)
     {
         return asMillimeters() <= that.asMillimeters();
     }
@@ -515,12 +515,12 @@ public final class Distance implements Quantizable, Comparable<Distance>
         return equals(ZERO);
     }
 
-    public Distance maximum(final Distance that)
+    public Distance maximum(Distance that)
     {
         return isGreaterThan(that) ? this : that;
     }
 
-    public Distance minimum(final Distance that)
+    public Distance minimum(Distance that)
     {
         return isLessThan(that) ? this : that;
     }
@@ -530,13 +530,13 @@ public final class Distance implements Quantizable, Comparable<Distance>
      * @return The newly calculated distance. Note that if the passed in value is greater than this value 0 is returned.
      * There are no negative distances.
      */
-    public Distance minus(final Distance that)
+    public Distance minus(Distance that)
     {
-        final var difference = asMillimeters() - that.asMillimeters();
+        var difference = asMillimeters() - that.asMillimeters();
         return millimeters(difference < 0 ? 0 : difference);
     }
 
-    public Percent percentageOf(final Distance that)
+    public Percent percentageOf(Distance that)
     {
         if (that.asMeters() == 0.0)
         {
@@ -551,7 +551,7 @@ public final class Distance implements Quantizable, Comparable<Distance>
         return millimeters;
     }
 
-    public double ratio(final Distance divisor)
+    public double ratio(Distance divisor)
     {
         assert divisor.asMillimeters() > 0 : "Unable to divide by zero or a negative value " + divisor;
 
@@ -563,12 +563,12 @@ public final class Distance implements Quantizable, Comparable<Distance>
         return Area.squareMeters(asMeters() * asMeters());
     }
 
-    public Distance times(final Percent percent)
+    public Distance times(Percent percent)
     {
         return millimeters(percent.scale(asMillimeters()));
     }
 
-    public Distance times(final double multiplier)
+    public Distance times(double multiplier)
     {
         if (multiplier < 0)
         {

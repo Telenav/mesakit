@@ -47,13 +47,13 @@ public abstract class RoutingRequest
     /** Debugger to use if any */
     private RoutingDebugger debugger = RoutingDebugger.NULL;
 
-    protected RoutingRequest(final Vertex start, final Vertex end)
+    protected RoutingRequest(Vertex start, Vertex end)
     {
         this.start = start;
         this.end = end;
     }
 
-    protected RoutingRequest(final RoutingRequest that, final RoutingLimiter limiter, final RoutingDebugger debugger)
+    protected RoutingRequest(RoutingRequest that, RoutingLimiter limiter, RoutingDebugger debugger)
     {
         start = that.start;
         end = that.end;
@@ -97,7 +97,7 @@ public abstract class RoutingRequest
         return debugger != RoutingDebugger.NULL;
     }
 
-    public boolean isEnd(final Vertex vertex)
+    public boolean isEnd(Vertex vertex)
     {
         return vertex.equals(end());
     }
@@ -107,7 +107,7 @@ public abstract class RoutingRequest
         return limiter;
     }
 
-    public void onRelaxed(final Route route, final Cost cost)
+    public void onRelaxed(Route route, Cost cost)
     {
         debugger.onRelaxed(route, cost);
     }
@@ -142,12 +142,12 @@ public abstract class RoutingRequest
         return startTime.elapsedSince();
     }
 
-    protected void onEndRouting(final RoutingResponse response)
+    protected void onEndRouting(RoutingResponse response)
     {
         debugger.onEnd(this, response);
     }
 
-    protected void onSettled(final Vertex vertex, final Cost cost)
+    protected void onSettled(Vertex vertex, Cost cost)
     {
         debugger.onSettled(vertex, cost);
     }

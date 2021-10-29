@@ -49,31 +49,31 @@ public class CommonDataSpecification extends DataSpecification
     }
 
     @Override
-    public GraphStore newGraphStore(final Graph graph)
+    public GraphStore newGraphStore(Graph graph)
     {
         return new CommonGraphStore(graph);
     }
 
     @Override
-    public PlaceStore newPlaceStore(final Graph graph)
+    public PlaceStore newPlaceStore(Graph graph)
     {
         return new PlaceStore(graph);
     }
 
     @Override
-    public RelationStore newRelationStore(final Graph graph)
+    public RelationStore newRelationStore(Graph graph)
     {
         return new RelationStore(graph);
     }
 
     @Override
-    public ShapePointStore newShapePointStore(final Graph graph)
+    public ShapePointStore newShapePointStore(Graph graph)
     {
         return new ShapePointStore(graph);
     }
 
     @Override
-    public VertexStore newVertexStore(final Graph graph)
+    public VertexStore newVertexStore(Graph graph)
     {
         return new VertexStore(graph);
     }
@@ -85,7 +85,7 @@ public class CommonDataSpecification extends DataSpecification
     }
 
     @Override
-    protected Graph onNewGraph(final Metadata metadata)
+    protected Graph onNewGraph(Metadata metadata)
     {
         return new CommonGraph(metadata);
     }

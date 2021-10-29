@@ -58,7 +58,7 @@ public class RouteBuilder
     /**
      * Adds an edge, which must be connected to the route that has been built so far
      */
-    public void append(final Edge edge)
+    public void append(Edge edge)
     {
         if (edge != null)
         {
@@ -69,7 +69,7 @@ public class RouteBuilder
     /**
      * Adds a route, which must be connected to the route that has been built so far
      */
-    public void append(final Route that)
+    public void append(Route that)
     {
         if (route == null)
         {
@@ -84,7 +84,7 @@ public class RouteBuilder
     /**
      * @return True if the given edge can be appended to the route being built
      */
-    public boolean canAppend(final Edge edge)
+    public boolean canAppend(Edge edge)
     {
         return route == null || route.canAppend(Route.fromEdge(edge));
     }
@@ -92,7 +92,7 @@ public class RouteBuilder
     /**
      * @return True if the given route can be appended to the route being built
      */
-    public boolean canAppend(final Route route)
+    public boolean canAppend(Route route)
     {
         return this.route == null || this.route.canAppend(route);
     }
@@ -100,7 +100,7 @@ public class RouteBuilder
     /**
      * Adds the given edge to this route, appending, prepending or flipping the edge as need be to make it connect.
      */
-    public boolean canSafeSmartAdd(final Edge edge)
+    public boolean canSafeSmartAdd(Edge edge)
     {
         if (route != null)
         {
@@ -134,7 +134,7 @@ public class RouteBuilder
     /**
      * Prepends an edge, which must be connected to the route that has been built so far
      */
-    public void prepend(final Edge edge)
+    public void prepend(Edge edge)
     {
         prepend(Route.fromEdge(edge));
     }
@@ -142,7 +142,7 @@ public class RouteBuilder
     /**
      * Prepends a route, which must be connected to the route that has been built so far
      */
-    public void prepend(final Route that)
+    public void prepend(Route that)
     {
         if (route == null)
         {
@@ -165,7 +165,7 @@ public class RouteBuilder
     /**
      * Appends the given edge if the operation will succeed
      */
-    public void safeAppend(final Edge edge)
+    public void safeAppend(Edge edge)
     {
         if (canAppend(edge))
         {
@@ -176,7 +176,7 @@ public class RouteBuilder
     /**
      * Appends the given route if the operation will succeed
      */
-    public void safeAppend(final Route route)
+    public void safeAppend(Route route)
     {
         if (canAppend(route))
         {
@@ -187,7 +187,7 @@ public class RouteBuilder
     /**
      * Adds the given edge to this route, appending, prepending or flipping the edge as need be to make it connect.
      */
-    public boolean safeSmartAdd(final Edge edge)
+    public boolean safeSmartAdd(Edge edge)
     {
         if (route == null)
         {
@@ -222,9 +222,9 @@ public class RouteBuilder
     /**
      * Adds the given route to this route, appending, prepending or flipping it as need be to make it connect.
      */
-    public boolean safeSmartAdd(final Route route)
+    public boolean safeSmartAdd(Route route)
     {
-        for (final var edge : route)
+        for (var edge : route)
         {
             if (!safeSmartAdd(edge))
             {
@@ -249,7 +249,7 @@ public class RouteBuilder
     /**
      * Adds the given edge to this route, appending, prepending or flipping the edge as need be to make it connect.
      */
-    public void smartAdd(final Edge edge)
+    public void smartAdd(Edge edge)
     {
         if (!safeSmartAdd(edge))
         {

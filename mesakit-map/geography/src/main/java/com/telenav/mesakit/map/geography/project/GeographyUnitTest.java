@@ -20,8 +20,8 @@ package com.telenav.mesakit.map.geography.project;
 
 import com.telenav.kivakit.kernel.messaging.listeners.ThrowingListener;
 import com.telenav.kivakit.serialization.kryo.KryoTypes;
-import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.GeographyProject;
+import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.project.MeasurementsUnitTest;
 
@@ -33,7 +33,7 @@ public class GeographyUnitTest extends MeasurementsUnitTest
         return GeographyProject.get().kryoTypes();
     }
 
-    protected Location location(final double latitude, final double longitude)
+    protected Location location(double latitude, double longitude)
     {
         return Location.degrees(latitude, longitude);
     }
@@ -44,7 +44,7 @@ public class GeographyUnitTest extends MeasurementsUnitTest
         return newRandomValueFactory(GeographyRandomValueFactory::new);
     }
 
-    protected Rectangle rectangle(final String rectangle)
+    protected Rectangle rectangle(String rectangle)
     {
         return new Rectangle.Converter(new ThrowingListener()).convert(rectangle);
     }

@@ -35,7 +35,7 @@ public class VertexProperties extends GraphElementProperties<Vertex>
 
     public abstract class VertexProperty extends com.telenav.mesakit.graph.specifications.library.properties.GraphElementProperty<Vertex>
     {
-        protected VertexProperty(final String name, final Attribute<?> attribute)
+        protected VertexProperty(String name, Attribute<?> attribute)
         {
             super(name, attribute, CommonDataSpecification.get());
             add(this);
@@ -45,7 +45,7 @@ public class VertexProperties extends GraphElementProperties<Vertex>
     public final VertexProperty GRADE_SEPARATION = new VertexProperty("grade-separation-level", VertexAttributes.get().GRADE_SEPARATION)
     {
         @Override
-        public Object value(final Vertex vertex)
+        public Object value(Vertex vertex)
         {
             if (vertex.supports(VertexAttributes.get().GRADE_SEPARATION))
             {
@@ -58,7 +58,7 @@ public class VertexProperties extends GraphElementProperties<Vertex>
     public final VertexProperty IN_EDGES = new VertexProperty("in-edges", VertexAttributes.get().IN_EDGE_COUNT)
     {
         @Override
-        public Object value(final Vertex vertex)
+        public Object value(Vertex vertex)
         {
             return vertex.inEdges();
         }
@@ -67,7 +67,7 @@ public class VertexProperties extends GraphElementProperties<Vertex>
     public final VertexProperty OUT_EDGES = new VertexProperty("out-edges", VertexAttributes.get().OUT_EDGE_COUNT)
     {
         @Override
-        public Object value(final Vertex vertex)
+        public Object value(Vertex vertex)
         {
             return vertex.outEdges();
         }
@@ -76,7 +76,7 @@ public class VertexProperties extends GraphElementProperties<Vertex>
     public final VertexProperty IS_DEAD_END = new VertexProperty("is-dead-end", VertexAttributes.get().NONE)
     {
         @Override
-        public Object value(final Vertex vertex)
+        public Object value(Vertex vertex)
         {
             return vertex.isDeadEnd();
         }
@@ -85,7 +85,7 @@ public class VertexProperties extends GraphElementProperties<Vertex>
     public final VertexProperty IS_CLIPPED = new VertexProperty("is-clipped", VertexAttributes.get().IS_CLIPPED)
     {
         @Override
-        public Object value(final Vertex vertex)
+        public Object value(Vertex vertex)
         {
             if (vertex.supports(VertexAttributes.get().IS_CLIPPED))
             {
@@ -98,7 +98,7 @@ public class VertexProperties extends GraphElementProperties<Vertex>
     public final VertexProperty IS_SYNTHETIC = new VertexProperty("is-synthetic", VertexAttributes.get().IS_SYNTHETIC)
     {
         @Override
-        public Object value(final Vertex vertex)
+        public Object value(Vertex vertex)
         {
             if (vertex.supports(VertexAttributes.get().IS_SYNTHETIC))
             {
@@ -111,7 +111,7 @@ public class VertexProperties extends GraphElementProperties<Vertex>
     public final VertexProperty IS_DECISION_POINT = new VertexProperty("is-decision-point", VertexAttributes.get().NONE)
     {
         @Override
-        public Object value(final Vertex vertex)
+        public Object value(Vertex vertex)
         {
             return vertex.isDecisionPoint();
         }
@@ -120,7 +120,7 @@ public class VertexProperties extends GraphElementProperties<Vertex>
     public final VertexProperty IS_ON_FREEWAY = new VertexProperty("is-on-freeway", VertexAttributes.get().NONE)
     {
         @Override
-        public Object value(final Vertex vertex)
+        public Object value(Vertex vertex)
         {
             return vertex.isOnFreeway();
         }
@@ -129,7 +129,7 @@ public class VertexProperties extends GraphElementProperties<Vertex>
     public final VertexProperty IS_INTERSECTION = new VertexProperty("is-intersection", VertexAttributes.get().NONE)
     {
         @Override
-        public Object value(final Vertex vertex)
+        public Object value(Vertex vertex)
         {
             return vertex.isIntersection();
         }
@@ -138,7 +138,7 @@ public class VertexProperties extends GraphElementProperties<Vertex>
     public final VertexProperty IS_THROUGH_NODE = new VertexProperty("is-through-vertex", VertexAttributes.get().NONE)
     {
         @Override
-        public Object value(final Vertex vertex)
+        public Object value(Vertex vertex)
         {
             return vertex.isThroughVertex();
         }
@@ -147,7 +147,7 @@ public class VertexProperties extends GraphElementProperties<Vertex>
     public final VertexProperty LOCATION = new VertexProperty("location", VertexAttributes.get().NODE_LOCATION)
     {
         @Override
-        public Object value(final Vertex vertex)
+        public Object value(Vertex vertex)
         {
             return vertex.location();
         }

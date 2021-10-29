@@ -94,7 +94,7 @@ public class PbfDefaultCodecs
         return valueStringCodecFrequencies.get();
     }
 
-    private PropertyMap load(final String codec)
+    private PropertyMap load(String codec)
     {
         return PropertyMap.load(LOGGER, PackagePath.packagePath(PbfDefaultCodecs.class), codec);
     }

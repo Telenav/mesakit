@@ -9,7 +9,7 @@ public class Constant extends Node implements ValueExpression
 {
     private final Value constant;
 
-    public Constant(final Value constant)
+    public Constant(Value constant)
     {
         this.constant = constant;
     }

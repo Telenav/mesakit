@@ -46,7 +46,7 @@ public abstract class Node<T extends Bounded & Intersectable> implements Bounded
 
     private InteriorNode<T> parent;
 
-    protected Node(final RTreeSpatialIndex<T> index, final InteriorNode<T> parent)
+    protected Node(RTreeSpatialIndex<T> index, InteriorNode<T> parent)
     {
         this.index = index;
         this.parent = parent;
@@ -56,7 +56,7 @@ public abstract class Node<T extends Bounded & Intersectable> implements Bounded
     {
     }
 
-    public abstract void add(final T element);
+    public abstract void add(T element);
 
     @Override
     public Rectangle bounds()
@@ -68,14 +68,14 @@ public abstract class Node<T extends Bounded & Intersectable> implements Bounded
         return null;
     }
 
-    public void bounds(final Rectangle bounds)
+    public void bounds(Rectangle bounds)
     {
         // Get bounds long values
-        final var bottomLeft = bounds.bottomLeft().asLong();
-        final var topRight = bounds.topRight().asLong();
+        var bottomLeft = bounds.bottomLeft().asLong();
+        var topRight = bounds.topRight().asLong();
 
         // If the bounds are changing
-        final var changed = bottomLeft != this.bottomLeft || topRight != this.topRight;
+        var changed = bottomLeft != this.bottomLeft || topRight != this.topRight;
 
         // Change the bounds
         this.bottomLeft = bottomLeft;
@@ -89,18 +89,18 @@ public abstract class Node<T extends Bounded & Intersectable> implements Bounded
         }
     }
 
-    public void dump(final PrintStream out, final int level, final DumpDetailLevel detail)
+    public void dump(PrintStream out, int level, DumpDetailLevel detail)
     {
         out.println(AsciiArt.repeat(level, " ") + toString(detail));
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Node)
         {
-            final var that = (Node<T>) object;
+            var that = (Node<T>) object;
             return bottomLeft == that.bottomLeft && topRight == that.topRight;
         }
         return false;
@@ -112,7 +112,7 @@ public abstract class Node<T extends Bounded & Intersectable> implements Bounded
         return Hash.many(bottomLeft, topRight);
     }
 
-    public void index(final RTreeSpatialIndex<T> index)
+    public void index(RTreeSpatialIndex<T> index)
     {
         this.index = index;
     }
@@ -122,33 +122,33 @@ public abstract class Node<T extends Bounded & Intersectable> implements Bounded
         return index;
     }
 
-    public abstract Iterator<T> intersecting(final Rectangle that, final Matcher<T> matcher);
+    public abstract Iterator<T> intersecting(Rectangle that, Matcher<T> matcher);
 
     @Override
-    public boolean intersects(final Rectangle rectangle)
+    public boolean intersects(Rectangle rectangle)
     {
         return bounds().intersects(rectangle);
     }
 
     public abstract boolean isLeaf();
 
-    public abstract void statistics(int depth, final Statistics statistics);
+    public abstract void statistics(int depth, Statistics statistics);
 
     protected abstract void add(Node<T> child);
 
     /**
      * @return The node from the given list whose area would be least increased by the addition of the given element
      */
-    protected <N extends Node<T>> Node<T> bestFit(final List<N> nodes, final Bounded element)
+    protected <N extends Node<T>> Node<T> bestFit(List<N> nodes, Bounded element)
     {
         // Find the node whose area will increase the least by adding the given element
         Area minimumIncrease = null;
         N minimum = null;
-        for (final var node : nodes)
+        for (var node : nodes)
         {
-            final var before = node.bounds().area();
-            final var after = node.bounds().union(element.bounds()).area();
-            final var increase = after.minus(before);
+            var before = node.bounds().area();
+            var after = node.bounds().union(element.bounds()).area();
+            var increase = after.minus(before);
             if (minimum == null || increase.isLessThan(minimumIncrease))
             {
                 minimum = node;
@@ -158,12 +158,12 @@ public abstract class Node<T extends Bounded & Intersectable> implements Bounded
         return minimum;
     }
 
-    protected void expandToInclude(final Rectangle bounds)
+    protected void expandToInclude(Rectangle bounds)
     {
         // Walk up the parent tree
         for (var at = this; at != null; at = at.parent())
         {
-            final var current = at.bounds();
+            var current = at.bounds();
             if (current == null)
             {
                 at.bounds(bounds);
@@ -190,7 +190,7 @@ public abstract class Node<T extends Bounded & Intersectable> implements Bounded
         return parent;
     }
 
-    protected void parent(final InteriorNode<T> parent)
+    protected void parent(InteriorNode<T> parent)
     {
         this.parent = parent;
     }
@@ -202,7 +202,7 @@ public abstract class Node<T extends Bounded & Intersectable> implements Bounded
      * @return A new interior node that is the parent of the two given nodes
      */
     @SuppressWarnings({ "unchecked" })
-    protected InteriorNode<T> replace(final Node<T> siblingA, final Node<T> siblingB)
+    protected InteriorNode<T> replace(Node<T> siblingA, Node<T> siblingB)
     {
         // If there is no parent
         if (parent == null)

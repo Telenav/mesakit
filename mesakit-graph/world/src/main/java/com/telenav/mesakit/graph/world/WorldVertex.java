@@ -69,19 +69,19 @@ public class WorldVertex extends Vertex
     /** The cell where this vertex is located */
     private final WorldCell worldCell;
 
-    public WorldVertex(final WorldCell worldCell, final Vertex vertex)
+    public WorldVertex(WorldCell worldCell, Vertex vertex)
     {
         super(null, vertex.identifier());
         this.worldCell = worldCell;
     }
 
-    public WorldVertex(final WorldCell worldCell, final VertexIdentifier identifier)
+    public WorldVertex(WorldCell worldCell, VertexIdentifier identifier)
     {
         super(null, identifier);
         this.worldCell = worldCell;
     }
 
-    public WorldVertex(final WorldVertexIdentifier identifier)
+    public WorldVertex(WorldVertexIdentifier identifier)
     {
         super(null, identifier);
         worldCell = identifier.worldCell();
@@ -101,18 +101,18 @@ public class WorldVertex extends Vertex
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         // If the object is a world vertex
         if (object instanceof WorldVertex)
         {
             // and the vertex is clipped or synthetic,
-            final var that = (WorldVertex) object;
+            var that = (WorldVertex) object;
             if (isClipped() || isSynthetic())
             {
                 // it doesn't have an identifier that will compare with vertexes in neighboring
                 // cell(s), so compare by location and grade separation
-                final var sameLocation = location().equals(that.location());
+                var sameLocation = location().equals(that.location());
 
                 // For OSM specified data,
                 if (isOsm())
@@ -120,10 +120,10 @@ public class WorldVertex extends Vertex
                     // we must be at the same grade separation as well as the same location
                     if (sameLocation)
                     {
-                        final var thisVertex = vertex(this);
-                        final var thatVertex = vertex(that);
-                        final var thisGrade = thisVertex.gradeSeparation();
-                        final var thatGrade = thatVertex.gradeSeparation();
+                        var thisVertex = vertex(this);
+                        var thatVertex = vertex(that);
+                        var thisGrade = thisVertex.gradeSeparation();
+                        var thatGrade = thatVertex.gradeSeparation();
                         return thisGrade.equals(thatGrade);
                     }
                 }
@@ -175,8 +175,8 @@ public class WorldVertex extends Vertex
     {
         if (isClipped())
         {
-            final var count = new MutableCount();
-            for (final var vertex : equivalentNeighboringVertexes())
+            var count = new MutableCount();
+            for (var vertex : equivalentNeighboringVertexes())
             {
                 count.plus(vertex.superInEdgeCount());
             }
@@ -206,8 +206,8 @@ public class WorldVertex extends Vertex
     {
         if (isClipped())
         {
-            final var edges = new WorldEdgeSet(GraphLimits.Estimated.EDGES_PER_VERTEX);
-            for (final var vertex : equivalentNeighboringVertexes())
+            var edges = new WorldEdgeSet(GraphLimits.Estimated.EDGES_PER_VERTEX);
+            for (var vertex : equivalentNeighboringVertexes())
             {
                 edges.addAll(vertex.worldCell(), vertex.superInEdges());
             }
@@ -234,12 +234,12 @@ public class WorldVertex extends Vertex
         {
             return super.mapIdentifier();
         }
-        final Edge out = superOutEdgeSequence().first();
+        Edge out = superOutEdgeSequence().first();
         if (out != null)
         {
             return out.fromNodeIdentifier();
         }
-        final Edge in = superInEdgeSequence().first();
+        Edge in = superInEdgeSequence().first();
         if (in != null)
         {
             return in.toNodeIdentifier();
@@ -252,8 +252,8 @@ public class WorldVertex extends Vertex
     {
         if (isClipped())
         {
-            final var count = new MutableCount();
-            for (final var vertex : equivalentNeighboringVertexes())
+            var count = new MutableCount();
+            for (var vertex : equivalentNeighboringVertexes())
             {
                 count.plus(vertex.superOutEdgeCount());
             }
@@ -283,8 +283,8 @@ public class WorldVertex extends Vertex
     {
         if (isClipped())
         {
-            final var edges = new WorldEdgeSet(GraphLimits.Estimated.EDGES_PER_VERTEX);
-            for (final var vertex : equivalentNeighboringVertexes())
+            var edges = new WorldEdgeSet(GraphLimits.Estimated.EDGES_PER_VERTEX);
+            for (var vertex : equivalentNeighboringVertexes())
             {
                 edges.addAll(vertex.worldCell(), vertex.superOutEdges());
             }
@@ -307,9 +307,9 @@ public class WorldVertex extends Vertex
         return worldCell.cellGraph();
     }
 
-    protected Vertex vertex(final WorldVertex vertex)
+    protected Vertex vertex(WorldVertex vertex)
     {
-        final var thisGraph = (OsmGraph) vertex.worldCell().cellGraph();
+        var thisGraph = (OsmGraph) vertex.worldCell().cellGraph();
         return thisGraph.vertexForIdentifier(vertex.identifier());
     }
 
@@ -324,19 +324,19 @@ public class WorldVertex extends Vertex
     private List<WorldVertex> equivalentNeighboringVertexes()
     {
         // List of vertexes to return
-        final List<WorldVertex> neighbors = new ArrayList<>();
+        List<WorldVertex> neighbors = new ArrayList<>();
 
         // Go through all cells very near to the location (less than 1 meter away)
-        for (final var worldCell : worldCell().worldGrid().neighbors(location()))
+        for (var worldCell : worldCell().worldGrid().neighbors(location()))
         {
             // Find any vertex in the neighboring cell very close to this location
-            final var graph = worldCell.cellGraph();
+            var graph = worldCell.cellGraph();
             if (graph != null)
             {
-                for (final var vertex : graph.vertexesInside(location().within(Distance.meters(1))))
+                for (var vertex : graph.vertexesInside(location().within(Distance.meters(1))))
                 {
                     // and if this neighboring vertex is the same as this vertex
-                    final var neighbor = new WorldVertex(new WorldVertexIdentifier(worldCell, vertex.identifier()));
+                    var neighbor = new WorldVertex(new WorldVertexIdentifier(worldCell, vertex.identifier()));
                     if (equals(neighbor))
                     {
                         // then add it to the list of neighbor vertexes

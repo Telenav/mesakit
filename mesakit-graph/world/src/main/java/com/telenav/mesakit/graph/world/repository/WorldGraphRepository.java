@@ -59,7 +59,7 @@ public class WorldGraphRepository extends Folder implements Serializable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static SwitchParser.Builder<WorldGraphRepository> worldGraphRepositorySwitchParser(final String description)
+    public static SwitchParser.Builder<WorldGraphRepository> worldGraphRepositorySwitchParser(String description)
     {
         return SwitchParser.builder(WorldGraphRepository.class).name("world-graph-repository")
                 .converter(new Converter(LOGGER)).description(description);
@@ -67,19 +67,19 @@ public class WorldGraphRepository extends Folder implements Serializable
 
     public static class Converter extends BaseStringConverter<WorldGraphRepository>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected WorldGraphRepository onToValue(final String value)
+        protected WorldGraphRepository onToValue(String value)
         {
             if (value == null || "none".equals(value))
             {
                 return null;
             }
-            final var folder = Folder.parse(value);
+            var folder = Folder.parse(value);
             return folder == null ? null : new WorldGraphRepository(folder);
         }
     }
@@ -94,19 +94,19 @@ public class WorldGraphRepository extends Folder implements Serializable
     /**
      * Construct
      */
-    public WorldGraphRepository(final Folder folder)
+    public WorldGraphRepository(Folder folder)
     {
         super(folder.path());
     }
 
     @Override
-    public WorldGraphRepositoryFolder folder(final FileName child)
+    public WorldGraphRepositoryFolder folder(FileName child)
     {
         return unsupported();
     }
 
     @Override
-    public WorldGraphRepositoryFolder folder(final Folder child)
+    public WorldGraphRepositoryFolder folder(Folder child)
     {
         return unsupported();
     }
@@ -115,12 +115,12 @@ public class WorldGraphRepository extends Folder implements Serializable
      * @return The world graph folder for the given sub-folder in this repository with the name derived from the given
      * metadata
      */
-    public WorldGraphRepositoryFolder folder(final FilePath subfolder, final Metadata metadata)
+    public WorldGraphRepositoryFolder folder(FilePath subfolder, Metadata metadata)
     {
         return new WorldGraphRepositoryFolder(this, subfolder, metadata);
     }
 
-    public WorldGraphRepositoryFolder folder(final Metadata metadata)
+    public WorldGraphRepositoryFolder folder(Metadata metadata)
     {
         return new WorldGraphRepositoryFolder(this, null, metadata);
     }
@@ -133,12 +133,12 @@ public class WorldGraphRepository extends Folder implements Serializable
     /**
      * @return A temporary grid folder to extract new data to
      */
-    public WorldGraphRepositoryFolder temporaryFolder(final FilePath subfolder)
+    public WorldGraphRepositoryFolder temporaryFolder(FilePath subfolder)
     {
         int i = 1;
         while (true)
         {
-            final WorldGraphRepositoryFolder folder = temporary(subfolder, i++);
+            WorldGraphRepositoryFolder folder = temporary(subfolder, i++);
             if (!folder.exists())
             {
                 folder.mkdirs();
@@ -147,9 +147,9 @@ public class WorldGraphRepository extends Folder implements Serializable
         }
     }
 
-    private WorldGraphRepositoryFolder temporary(final FilePath subfolder, final int i)
+    private WorldGraphRepositoryFolder temporary(FilePath subfolder, int i)
     {
-        final var name = WorldGraphRepositoryFolder.TEMPORARY_FOLDER_NAME.withSuffix("-" + i);
+        var name = WorldGraphRepositoryFolder.TEMPORARY_FOLDER_NAME.withSuffix("-" + i);
         if (subfolder != null)
         {
             return new WorldGraphRepositoryFolder(this, subfolder.file(name));

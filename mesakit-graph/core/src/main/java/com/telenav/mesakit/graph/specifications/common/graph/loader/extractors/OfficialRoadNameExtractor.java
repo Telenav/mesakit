@@ -36,16 +36,16 @@ public class OfficialRoadNameExtractor extends BaseRoadNameExtractor
                     "name_2"
             };
 
-    public OfficialRoadNameExtractor(final MapLocale locale, final RoadNameStandardizer.Mode mode,
-                                     final Listener listener)
+    public OfficialRoadNameExtractor(MapLocale locale, RoadNameStandardizer.Mode mode,
+                                     Listener listener)
     {
         super(locale, mode, listener);
     }
 
     @Override
-    public List<RoadName> onExtract(final PbfWay way)
+    public List<RoadName> onExtract(PbfWay way)
     {
-        final List<RoadName> names = new ArrayList<>();
+        List<RoadName> names = new ArrayList<>();
 
         addRoadName(names, way.tagValue("name"));
         addRoadName(names, way.tagValue("official_name"));

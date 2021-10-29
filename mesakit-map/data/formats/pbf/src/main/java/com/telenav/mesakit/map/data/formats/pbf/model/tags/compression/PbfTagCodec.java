@@ -52,16 +52,15 @@ public interface PbfTagCodec
     /**
      * @return A {@link PbfTagList} decompressed from the given {@link BitReader} using the trained Huffman codec
      */
-    PbfTagList decode(final ByteList input);
+    PbfTagList decode(ByteList input);
 
     /**
      * @return A {@link PbfTagList} decompressed from the given {@link BitReader} using the trained Huffman codec
      */
-    PbfTagMap decodeMap(final ByteList input);
+    PbfTagMap decodeMap(ByteList input);
 
     /**
      * Encodes the tag list using the Huffman codec and writes it to the given {@link BitWriter}.
      */
-    void encode(final ByteList output, final PbfTagList tags);
+    void encode(ByteList output, PbfTagList tags);
 }
-

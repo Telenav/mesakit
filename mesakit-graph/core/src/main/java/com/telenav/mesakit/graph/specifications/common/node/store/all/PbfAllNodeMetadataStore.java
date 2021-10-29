@@ -37,7 +37,7 @@ public class PbfAllNodeMetadataStore implements Unloadable
 
     private final GraphArchive archive;
 
-    public PbfAllNodeMetadataStore(final GraphArchive archive)
+    public PbfAllNodeMetadataStore(GraphArchive archive)
     {
         this.archive = archive;
         ensure(archive != null);
@@ -54,13 +54,13 @@ public class PbfAllNodeMetadataStore implements Unloadable
         return metadataForCell.isEmpty();
     }
 
-    public PbfAllNodeMetadata metadata(final Location location)
+    public PbfAllNodeMetadata metadata(Location location)
     {
-        final var cell = new AllNodeDiskCell(location);
-        final var metadata = metadataForCell.get(cell);
+        var cell = new AllNodeDiskCell(location);
+        var metadata = metadataForCell.get(cell);
         if (metadata == null)
         {
-            final var store = this.store.load(archive, cell);
+            var store = this.store.load(archive, cell);
             metadataForCell.put(cell, store.metadata(location));
         }
         return metadata;

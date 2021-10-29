@@ -27,7 +27,7 @@ import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapPolyline;
  */
 public class DrawablePolyline extends MapPolyline
 {
-    public DrawablePolyline(final Polyline polyline, final Style style, final String label)
+    public DrawablePolyline(Polyline polyline, Style style, String label)
     {
         super(style, polyline);
         label(label);

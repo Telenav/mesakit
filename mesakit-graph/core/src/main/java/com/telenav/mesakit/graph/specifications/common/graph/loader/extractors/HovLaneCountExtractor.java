@@ -27,16 +27,16 @@ public class HovLaneCountExtractor extends BaseExtractor<Count, PbfWay>
 {
     private final LaneCountExtractor laneCountExtractor;
 
-    public HovLaneCountExtractor(final Listener listener)
+    public HovLaneCountExtractor(Listener listener)
     {
         super(listener);
         laneCountExtractor = new LaneCountExtractor(listener);
     }
 
     @Override
-    public Count onExtract(final PbfWay way)
+    public Count onExtract(PbfWay way)
     {
-        final var hov = way.tagValue("hov");
+        var hov = way.tagValue("hov");
         if (hov != null)
         {
             if ("lane".equals(hov) || "designated".equals(hov))
@@ -45,7 +45,7 @@ public class HovLaneCountExtractor extends BaseExtractor<Count, PbfWay>
             }
             return Count.parse(hov);
         }
-        final var lanes = way.tagValueAsCount("hov:lanes");
+        var lanes = way.tagValueAsCount("hov:lanes");
         if (lanes != null)
         {
             return lanes;

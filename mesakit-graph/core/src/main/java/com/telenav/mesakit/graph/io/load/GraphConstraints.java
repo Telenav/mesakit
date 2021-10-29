@@ -76,7 +76,7 @@ public class GraphConstraints
      *
      * @param that The object to copy
      */
-    private GraphConstraints(final GraphConstraints that)
+    private GraphConstraints(GraphConstraints that)
     {
         bounds = that.bounds;
         edgeMatcher = that.edgeMatcher;
@@ -94,7 +94,7 @@ public class GraphConstraints
         return bounds;
     }
 
-    public boolean clips(final Edge edge)
+    public boolean clips(Edge edge)
     {
         return bounds().containment(edge.fromLocation()) != bounds().containment(edge.toLocation());
     }
@@ -110,7 +110,7 @@ public class GraphConstraints
     /**
      * @return The sequence of edges matching this constraints object
      */
-    public EdgeSequence edges(final Iterable<Edge> edges)
+    public EdgeSequence edges(Iterable<Edge> edges)
     {
         return new EdgeSequence(new FilteredIterable<>(edges, this::includes));
     }
@@ -118,7 +118,7 @@ public class GraphConstraints
     /**
      * @return True if the constraints include the given edge
      */
-    public boolean includes(final Edge edge)
+    public boolean includes(Edge edge)
     {
         if (edge.isInside(bounds()))
         {
@@ -127,12 +127,12 @@ public class GraphConstraints
         return false;
     }
 
-    public boolean includes(final EdgeRelation relation)
+    public boolean includes(EdgeRelation relation)
     {
         return relationMatcher.matches(relation);
     }
 
-    public boolean includes(final Place place)
+    public boolean includes(Place place)
     {
         return placeMatcher.matches(place);
     }
@@ -140,7 +140,7 @@ public class GraphConstraints
     /**
      * @return True if the constraints include the given vertex
      */
-    public boolean includes(final Vertex vertex)
+    public boolean includes(Vertex vertex)
     {
         return vertexMatcher.matches(vertex);
     }
@@ -150,7 +150,7 @@ public class GraphConstraints
         return this::includes;
     }
 
-    public RelationSequence relations(final Iterable<EdgeRelation> relations)
+    public RelationSequence relations(Iterable<EdgeRelation> relations)
     {
         return new RelationSequence(new FilteredIterable<>(relations, this::includes));
     }
@@ -163,9 +163,9 @@ public class GraphConstraints
      * addition the bounding rectangles of the two constraint objects must intersect (or there can be no matched graph
      * data).
      */
-    public MessageList satisfies(final GraphConstraints required)
+    public MessageList satisfies(GraphConstraints required)
     {
-        final var messages = new MessageList(new All<>());
+        var messages = new MessageList(new All<>());
         if (!required.bounds.intersects(bounds))
         {
             messages.add(new Problem("Bounds $ doesn't intersect with $", bounds, required.bounds));
@@ -187,7 +187,7 @@ public class GraphConstraints
         return this::includes;
     }
 
-    public VertexSequence vertexes(final Iterable<Vertex> vertexes)
+    public VertexSequence vertexes(Iterable<Vertex> vertexes)
     {
         return new VertexSequence(new FilteredIterable<>(vertexes, this::includes));
     }
@@ -195,9 +195,9 @@ public class GraphConstraints
     /**
      * @return A copy of this constraints object with the given bounds
      */
-    public GraphConstraints withBounds(final Rectangle bounds)
+    public GraphConstraints withBounds(Rectangle bounds)
     {
-        final var constraints = new GraphConstraints(this);
+        var constraints = new GraphConstraints(this);
         constraints.bounds = bounds;
         return constraints;
     }
@@ -205,37 +205,37 @@ public class GraphConstraints
     /**
      * @return A copy of this constraints object with the given edge matcher
      */
-    public GraphConstraints withEdgeMatcher(final Matcher<Edge> edgeMatcher)
+    public GraphConstraints withEdgeMatcher(Matcher<Edge> edgeMatcher)
     {
-        final var constraints = new GraphConstraints(this);
+        var constraints = new GraphConstraints(this);
         constraints.edgeMatcher = edgeMatcher;
         return constraints;
     }
 
-    public GraphConstraints withEdgeRelationMatcher(final Matcher<EdgeRelation> matcher)
+    public GraphConstraints withEdgeRelationMatcher(Matcher<EdgeRelation> matcher)
     {
-        final var constraints = new GraphConstraints(this);
+        var constraints = new GraphConstraints(this);
         constraints.relationMatcher = matcher;
         return constraints;
     }
 
-    public GraphConstraints withPlaceMatcher(final Matcher<Place> matcher)
+    public GraphConstraints withPlaceMatcher(Matcher<Place> matcher)
     {
-        final var constraints = new GraphConstraints(this);
+        var constraints = new GraphConstraints(this);
         constraints.placeMatcher = matcher;
         return constraints;
     }
 
-    public GraphConstraints withVertexMatcher(final Matcher<Vertex> matcher)
+    public GraphConstraints withVertexMatcher(Matcher<Vertex> matcher)
     {
-        final var constraints = new GraphConstraints(this);
+        var constraints = new GraphConstraints(this);
         constraints.vertexMatcher = matcher;
         return constraints;
     }
 
     public GraphConstraints withoutEdgeRelations()
     {
-        final var constraints = new GraphConstraints(this);
+        var constraints = new GraphConstraints(this);
         constraints.relationMatcher = (relation) -> false;
         return constraints;
     }

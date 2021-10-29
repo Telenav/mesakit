@@ -51,7 +51,7 @@ public class RegionWays
      */
     private final MultiMap<Long, Integer> moreRegionsForWay = new MultiMap<>();
 
-    public RegionWays(final String name, final RegionIndexMap regionIndexMap)
+    public RegionWays(String name, RegionIndexMap regionIndexMap)
     {
         this.regionIndexMap = regionIndexMap;
 
@@ -60,9 +60,9 @@ public class RegionWays
         regionForWay.initialize();
     }
 
-    public void add(final int regionIndex, final long wayIdentifier)
+    public void add(int regionIndex, long wayIdentifier)
     {
-        final var index = regionForWay.get(wayIdentifier);
+        var index = regionForWay.get(wayIdentifier);
         if (regionForWay.isNull(index))
         {
             regionForWay.put(wayIdentifier, regionIndex);
@@ -73,27 +73,27 @@ public class RegionWays
         }
     }
 
-    public void add(final Region<?> region, final PbfWay way)
+    public void add(Region<?> region, PbfWay way)
     {
         add(regionIndexMap.indexForRegion(region), way.identifierAsLong());
     }
 
-    public void addAll(final int regionIndex, final List<Way> ways)
+    public void addAll(int regionIndex, List<Way> ways)
     {
         // Add the region index to our set
         regionIndexes.add(regionIndex);
 
         // Go through each way
-        for (final var way : ways)
+        for (var way : ways)
         {
             // and add it to the given region
             add(regionIndex, way.getId());
         }
     }
 
-    public boolean contains(final int regionIndex, final long wayIdentifier)
+    public boolean contains(int regionIndex, long wayIdentifier)
     {
-        for (final var index : regionIndexes(wayIdentifier))
+        for (var index : regionIndexes(wayIdentifier))
         {
             if (index == regionIndex)
             {
@@ -108,19 +108,19 @@ public class RegionWays
         return regionIndexMap.regionsForIndexes(regionIndexes);
     }
 
-    public RegionSet regions(final long wayIdentifier)
+    public RegionSet regions(long wayIdentifier)
     {
         return regionIndexMap.regionsForIndexes(regionIndexes(wayIdentifier));
     }
 
-    private List<Integer> regionIndexes(final long wayIdentifier)
+    private List<Integer> regionIndexes(long wayIdentifier)
     {
-        final List<Integer> indexes = new ArrayList<>();
-        final var regionIndex = regionForWay.get(wayIdentifier);
+        List<Integer> indexes = new ArrayList<>();
+        var regionIndex = regionForWay.get(wayIdentifier);
         if (!regionForWay.isNull(regionIndex))
         {
             indexes.add(regionIndex);
-            final List<Integer> more = moreRegionsForWay.get(wayIdentifier);
+            List<Integer> more = moreRegionsForWay.get(wayIdentifier);
             if (more != null)
             {
                 indexes.addAll(more);

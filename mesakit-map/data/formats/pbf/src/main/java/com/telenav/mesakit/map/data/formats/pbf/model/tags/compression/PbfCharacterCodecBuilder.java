@@ -1,13 +1,13 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
-import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelCompression;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.language.values.count.Minimum;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.CharacterFrequencies;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.language.values.count.Minimum;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelCompression;
 
 import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
 
@@ -27,19 +27,19 @@ public class PbfCharacterCodecBuilder
     @UmlRelation(label = "builds")
     public HuffmanCharacterCodec build()
     {
-        final var escapes = frequencies
+        var escapes = frequencies
                 .escaped(charactersMinimumOccurrences.asMaximum())
                 .maximum(charactersMinimumOccurrences.incremented());
         frequencies.frequencies().add(ESCAPE, escapes);
-        final var symbols = frequencies.symbols(charactersMinimumOccurrences);
+        var symbols = frequencies.symbols(charactersMinimumOccurrences);
         return symbols.size() < 16 ? PbfDefaultCodecs.get().defaultKeyCharacterCodec() :
                 HuffmanCharacterCodec.from(symbols, charactersMaximumBits);
     }
 
-    public void sample(final PbfEntity<?> entity)
+    public void sample(PbfEntity<?> entity)
     {
-        final var tags = entity.tagList();
-        for (final var tag : tags)
+        var tags = entity.tagList();
+        for (var tag : tags)
         {
             frequencies.add(tag.getKey());
             frequencies.add(tag.getValue());

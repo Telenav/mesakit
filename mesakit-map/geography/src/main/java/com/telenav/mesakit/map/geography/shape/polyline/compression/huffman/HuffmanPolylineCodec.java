@@ -60,7 +60,7 @@ public class HuffmanPolylineCodec extends BaseComponent
 
     public HuffmanPolylineCodec()
     {
-        final var symbols = Symbols.load(PropertyMap.load(this, getClass(), "polyline.codec"),
+        var symbols = Symbols.load(PropertyMap.load(this, getClass(), "polyline.codec"),
                 new IntegerConverter(LOGGER));
 
         codec = HuffmanCodec.from(symbols, Maximum._32);
@@ -68,19 +68,19 @@ public class HuffmanPolylineCodec extends BaseComponent
         initialize();
     }
 
-    public long[] decode(final ByteList input)
+    public long[] decode(ByteList input)
     {
         // Reset the cursor to the start,
         input.reset();
 
         // read the number of locations in the polyline
-        final int size = input.readFlexibleShort();
+        int size = input.readFlexibleShort();
 
         // and create an array for their long values in DM5
-        final var decodedLocationsInDm5 = new long[size];
+        var decodedLocationsInDm5 = new long[size];
 
         // then read the initial latitude
-        final var startLatitude = input.readInt();
+        var startLatitude = input.readInt();
 
         // and put it in the array
         decodedLocationsInDm5[0] = Location.toLong(startLatitude, 0);
@@ -106,7 +106,7 @@ public class HuffmanPolylineCodec extends BaseComponent
         });
 
         // Next, we read the start longitude
-        final var startLongitude = input.readInt();
+        var startLongitude = input.readInt();
 
         // and put it in the array along with the start latitude
         decodedLocationsInDm5[0] = Location.toLong(startLatitude, startLongitude);
@@ -120,7 +120,7 @@ public class HuffmanPolylineCodec extends BaseComponent
             if (offset == END_OF_OFFSETS)
             {
                 // so store the longitude, along with the latitude we found above, in the location array
-                final var lastLatitude = Location.latitude(decodedLocationsInDm5[index - 1]);
+                var lastLatitude = Location.latitude(decodedLocationsInDm5[index - 1]);
                 decodedLocationsInDm5[index++] = Location.toLong(lastLatitude, lastInDm5 + offset);
 
                 // and continue decoding points if we aren't at the last point already
@@ -135,7 +135,7 @@ public class HuffmanPolylineCodec extends BaseComponent
         return decodedLocationsInDm5;
     }
 
-    public void encode(final ByteArray output, final Polyline polyline)
+    public void encode(ByteArray output, Polyline polyline)
     {
         // We only support polylines with fewer than 64K locations
         output.writeFlexibleShort((short) polyline.size());
@@ -145,10 +145,10 @@ public class HuffmanPolylineCodec extends BaseComponent
 
     private void initialize()
     {
-        final var symbols = codec.codedSymbols();
+        var symbols = codec.codedSymbols();
         offsetsInDm5 = new int[symbols.size() / 2];
         var i = 0;
-        for (final var symbol : symbols)
+        for (var symbol : symbols)
         {
             if (symbol.value() > 0)
             {
@@ -161,15 +161,15 @@ public class HuffmanPolylineCodec extends BaseComponent
     private int offsetInDm5(int destination)
     {
         // While we have not arrived at the destination offset,
-        final var sign = destination < 0 ? -1 : 1;
+        var sign = destination < 0 ? -1 : 1;
         destination = Math.abs(destination);
 
         // search for the largest offset that we can apply
-        final var size = offsetsInDm5.length;
+        var size = offsetsInDm5.length;
         for (var index = 0; index < size; index++)
         {
             var offset = offsetsInDm5[index];
-            final var step = destination - offset;
+            var step = destination - offset;
             if (step == 0)
             {
                 return sign * offset;
@@ -183,7 +183,7 @@ public class HuffmanPolylineCodec extends BaseComponent
         return offsetsInDm5[size - 1];
     }
 
-    private void writeLatitudes(final ByteArray output, final Polyline polyline)
+    private void writeLatitudes(ByteArray output, Polyline polyline)
     {
         output.writeInt(polyline.get(0).latitude().asDm5());
         index = 1;
@@ -196,8 +196,8 @@ public class HuffmanPolylineCodec extends BaseComponent
                 {
                     return null;
                 }
-                final var current = polyline.get(index);
-                final var previous = polyline.get(index - 1);
+                var current = polyline.get(index);
+                var previous = polyline.get(index - 1);
                 destination = current.latitude().asDm5() - previous.latitude().asDm5();
                 index++;
                 if (index > 2)
@@ -206,13 +206,13 @@ public class HuffmanPolylineCodec extends BaseComponent
                 }
             }
 
-            final var offset = offsetInDm5(destination);
+            var offset = offsetInDm5(destination);
             destination -= offset;
             return offset;
         });
     }
 
-    private void writeLongitudes(final ByteArray output, final Polyline polyline)
+    private void writeLongitudes(ByteArray output, Polyline polyline)
     {
         output.writeInt(polyline.get(0).longitude().asDm5());
         index = 1;
@@ -226,8 +226,8 @@ public class HuffmanPolylineCodec extends BaseComponent
                     output.write((byte) 0);
                     return null;
                 }
-                final var current = polyline.get(index);
-                final var previous = polyline.get(index - 1);
+                var current = polyline.get(index);
+                var previous = polyline.get(index - 1);
                 destination = current.longitude().asDm5() - previous.longitude().asDm5();
                 index++;
                 if (index > 2)
@@ -236,7 +236,7 @@ public class HuffmanPolylineCodec extends BaseComponent
                 }
             }
 
-            final var offset = offsetInDm5(destination);
+            var offset = offsetInDm5(destination);
             destination -= offset;
             return offset;
         });

@@ -33,15 +33,15 @@ public interface RoadNameStandardizer
 {
     Map<String, RoadNameStandardizer> standardizers = new HashMap<>();
 
-    static RoadNameStandardizer get(final MapLocale locale, final Mode mode)
+    static RoadNameStandardizer get(MapLocale locale, Mode mode)
     {
         synchronized (standardizers)
         {
-            final var key = locale.toString() + "-" + mode;
+            var key = locale.toString() + "-" + mode;
             var standardizer = standardizers.get(key);
             if (standardizer == null)
             {
-                final var packagePath = PackagePath.packagePath(RoadNameStandardizer.class);
+                var packagePath = PackagePath.packagePath(RoadNameStandardizer.class);
                 standardizer = locale.create(packagePath, "RoadNameStandardizer");
                 ensureNotNull(standardizer, "Unable to create road name standardizer");
                 standardizer.mode(mode);
@@ -51,7 +51,7 @@ public interface RoadNameStandardizer
         }
     }
 
-    static void loadInBackground(final MapLocale locale, final Mode mode)
+    static void loadInBackground(MapLocale locale, Mode mode)
     {
         KivaKitThread.run("RoadStandardizerLoader", () -> get(locale, mode));
     }

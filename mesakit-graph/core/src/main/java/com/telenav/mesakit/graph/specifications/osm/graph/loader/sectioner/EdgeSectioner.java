@@ -70,8 +70,8 @@ public class EdgeSectioner extends BaseRepeater
 
     private Set<PbfWayIdentifier> waysToDebug;
 
-    public EdgeSectioner(final Graph destination, final PbfDataAnalysis analysis,
-                         final EdgeNodeMap edgeNodeMap, final Distance maximumEdgeLength)
+    public EdgeSectioner(Graph destination, PbfDataAnalysis analysis,
+                         EdgeNodeMap edgeNodeMap, Distance maximumEdgeLength)
     {
         this.destination = destination;
         this.edgeNodeMap = edgeNodeMap;
@@ -81,7 +81,7 @@ public class EdgeSectioner extends BaseRepeater
         ensure(intersections != null);
     }
 
-    public void debugger(final EdgeSectionerDebugger debugger, final Set<PbfWayIdentifier> waysToDebug)
+    public void debugger(EdgeSectionerDebugger debugger, Set<PbfWayIdentifier> waysToDebug)
     {
         this.debugger = debugger;
         this.waysToDebug = waysToDebug;
@@ -90,16 +90,16 @@ public class EdgeSectioner extends BaseRepeater
     /**
      * @return A list of sectioned edges for the given edge
      */
-    public List<Edge> section(final Edge edge)
+    public List<Edge> section(Edge edge)
     {
         // Get nodes list for way
-        final var nodes = edgeNodeMap.get(edge.identifier());
+        var nodes = edgeNodeMap.get(edge.identifier());
 
         // If there are at least two nodes we can do way sectioning
         if (nodes != null && nodes.size() >= 2)
         {
             // Create a single edge section for the parent edge (the way)
-            final var parent = new EdgeSection(edge, nodes, edge.roadShape());
+            var parent = new EdgeSection(edge, nodes, edge.roadShape());
 
             // If the edge we're sectioning is the specific way we want to debug
             if (debugger != null && waysToDebug.contains(edge.wayIdentifier()))
@@ -116,7 +116,7 @@ public class EdgeSectioner extends BaseRepeater
                 // section any edges that are too long
                 return sectionLongEdges(sectionAmbiguousEdges(sectionLoops(sectionAtIntersections(parent)))).edges();
             }
-            catch (final Exception e)
+            catch (Exception e)
             {
                 LOGGER.warning(e, "Unable to section edge $ of $", edge.identifier(), edge.graph().name());
             }
@@ -136,13 +136,13 @@ public class EdgeSectioner extends BaseRepeater
     /**
      * @return The given list of edge sections with any ambiguities resolved by bisecting a way
      */
-    private EdgeSectionList sectionAmbiguousEdges(final EdgeSectionList sections)
+    private EdgeSectionList sectionAmbiguousEdges(EdgeSectionList sections)
     {
-        final var connections = new MultiMap<Segment, EdgeSection>();
-        final Set<EdgeSection> ambiguous = new HashSet<>();
+        var connections = new MultiMap<Segment, EdgeSection>();
+        Set<EdgeSection> ambiguous = new HashSet<>();
 
         // Go through the given way sections
-        for (final var section : sections)
+        for (var section : sections)
         {
             // add a mapping from the section as a segment to the section
             connections.add(section.asSegment(), section);
@@ -159,8 +159,8 @@ public class EdgeSectioner extends BaseRepeater
         if (!ambiguous.isEmpty() || connections.maximumListSize().isGreaterThan(Count._1))
         {
             // then we need to split each ambiguous edge in the list of sections.
-            final var sectioned = new EdgeSectionList();
-            for (final var section : sections)
+            var sectioned = new EdgeSectionList();
+            for (var section : sections)
             {
                 // If the section is ambiguous,
                 if (ambiguous.contains(section) || connections.get(section.asSegment()).size() > 1)
@@ -185,10 +185,10 @@ public class EdgeSectioner extends BaseRepeater
     /**
      * @return A list of edge sections for the given section, broken at intersections
      */
-    private EdgeSectionList sectionAtIntersections(final EdgeSection section)
+    private EdgeSectionList sectionAtIntersections(EdgeSection section)
     {
         // Section the edge's road shape at intersections
-        final var sectioner = new PolylineSectioner(section.shape());
+        var sectioner = new PolylineSectioner(section.shape());
         for (var index = 1; index < section.nodes().size() - 1; index++)
         {
             if (intersections.isIntersection(section.nodes().get(index).asLong()))
@@ -201,22 +201,22 @@ public class EdgeSectioner extends BaseRepeater
         return section.section(sectioner);
     }
 
-    private EdgeSectionList sectionLongEdges(final EdgeSectionList sections)
+    private EdgeSectionList sectionLongEdges(EdgeSectionList sections)
     {
         // If we are supposed to section long edges,
         if (maximumEdgeLength.isLessThan(Distance.MAXIMUM))
         {
             // Sectioned edges to return
-            final var sectioned = new EdgeSectionList();
+            var sectioned = new EdgeSectionList();
 
             // Go through sections
-            for (final var section : sections)
+            for (var section : sections)
             {
                 // If the section is too long
                 if (section.length().isGreaterThan(maximumEdgeLength))
                 {
                     // break the section's shape into pieces of the maximum length
-                    for (final var polylineSection : section.shape().sections(maximumEdgeLength))
+                    for (var polylineSection : section.shape().sections(maximumEdgeLength))
                     {
                         // and add each piece as a new edge section
                         sectioned.add(section.section(polylineSection));
@@ -242,13 +242,13 @@ public class EdgeSectioner extends BaseRepeater
         }
     }
 
-    private EdgeSectionList sectionLoops(final EdgeSectionList sections)
+    private EdgeSectionList sectionLoops(EdgeSectionList sections)
     {
         // Sections to return
-        final var sectioned = new EdgeSectionList();
+        var sectioned = new EdgeSectionList();
 
         // Go through each section
-        for (final var section : sections)
+        for (var section : sections)
         {
             // and if it's a loop,
             if (section.shape().isLoop())

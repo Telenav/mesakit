@@ -42,7 +42,7 @@ public class RoutingInstruction
 
     private final Meaning meaning;
 
-    public RoutingInstruction(final Meaning meaning, final String message, final Object... arguments)
+    public RoutingInstruction(Meaning meaning, String message, Object... arguments)
     {
         this.meaning = meaning;
         this.message = Message.format(message, arguments);

@@ -29,18 +29,20 @@ import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
 public class MetricCoordinate
 {
     @KivaKitIncludeProperty
+    final
     double xInMeters;
 
     @KivaKitIncludeProperty
+    final
     double yInMeters;
 
-    public MetricCoordinate(final double xInMeters, final double yInMeters)
+    public MetricCoordinate(double xInMeters, double yInMeters)
     {
         this.xInMeters = xInMeters;
         this.yInMeters = yInMeters;
     }
 
-    public boolean isCloseTo(final MetricCoordinate that)
+    public boolean isCloseTo(MetricCoordinate that)
     {
         return Math.abs(xInMeters - that.xInMeters) < 1.0 &&
                 Math.abs(yInMeters - that.yInMeters) < 1.0;

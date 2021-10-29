@@ -32,7 +32,7 @@ public class ContinentTest extends RegionUnitTest
     public void test()
     {
         var count = 0;
-        for (final var ignored : Continent.all())
+        for (var ignored : Continent.all())
         {
             count++;
         }

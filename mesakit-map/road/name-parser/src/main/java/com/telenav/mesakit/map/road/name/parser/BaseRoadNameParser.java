@@ -35,7 +35,7 @@ public abstract class BaseRoadNameParser implements RoadNameParser
     @Override
     public String toString()
     {
-        final var builder = new StringBuilder();
+        var builder = new StringBuilder();
         for (var i = 0; i < size(); i++)
         {
             if (i > 0)
@@ -63,7 +63,7 @@ public abstract class BaseRoadNameParser implements RoadNameParser
         return at;
     }
 
-    protected void at(final int at)
+    protected void at(int at)
     {
         this.at = Math.min(at, size());
     }
@@ -103,12 +103,12 @@ public abstract class BaseRoadNameParser implements RoadNameParser
         return hasMore() ? token(at + 1) : null;
     }
 
-    protected boolean lookingAt(final Token token)
+    protected boolean lookingAt(Token token)
     {
         return current() != null && current().equals(token);
     }
 
-    protected boolean match(final Token token)
+    protected boolean match(Token token)
     {
         if (lookingAt(token))
         {
@@ -139,7 +139,7 @@ public abstract class BaseRoadNameParser implements RoadNameParser
 
     protected String remainder()
     {
-        final var builder = new StringBuilder();
+        var builder = new StringBuilder();
         while (hasMore())
         {
             if (builder.length() > 0)
@@ -154,7 +154,7 @@ public abstract class BaseRoadNameParser implements RoadNameParser
 
     protected String remainderCapitalized()
     {
-        final var builder = new StringBuilder();
+        var builder = new StringBuilder();
         while (hasMore())
         {
             if (builder.length() > 0)
@@ -167,16 +167,16 @@ public abstract class BaseRoadNameParser implements RoadNameParser
         return builder.length() > 0 ? builder.toString() : null;
     }
 
-    protected Token remove(final int index)
+    protected Token remove(int index)
     {
-        final var removed = tokens.remove(index);
+        var removed = tokens.remove(index);
         reset();
         return removed;
     }
 
     protected Token removeFirst()
     {
-        final var token = remove(0);
+        var token = remove(0);
         if (size() > 0 && token(0).isWhitespace())
         {
             remove(0);
@@ -186,7 +186,7 @@ public abstract class BaseRoadNameParser implements RoadNameParser
 
     protected Token removeLast()
     {
-        final var token = remove(size() - 1);
+        var token = remove(size() - 1);
         if (size() > 0 && token(size() - 1).isWhitespace())
         {
             remove(size() - 1);
@@ -204,7 +204,7 @@ public abstract class BaseRoadNameParser implements RoadNameParser
         return tokens.size();
     }
 
-    protected void skipAny(final Token token)
+    protected void skipAny(Token token)
     {
         while (lookingAt(token))
         {
@@ -212,7 +212,7 @@ public abstract class BaseRoadNameParser implements RoadNameParser
         }
     }
 
-    protected Token token(final int index)
+    protected Token token(int index)
     {
         if (index < tokens.size())
         {
@@ -221,14 +221,14 @@ public abstract class BaseRoadNameParser implements RoadNameParser
         return null;
     }
 
-    protected void tokenize(final Tokenizer tokenizer, final String input)
+    protected void tokenize(Tokenizer tokenizer, String input)
     {
         try
         {
             tokens = tokenizer.tokenize(input);
             reset();
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             throw new IllegalStateException("Unable to tokenize '" + input + "'", e);
         }

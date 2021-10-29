@@ -42,12 +42,12 @@ public class GeoJsonFeature implements Iterable<GeoJsonGeometry>, Bounded, Inter
     {
     }
 
-    public GeoJsonFeature(final String title)
+    public GeoJsonFeature(String title)
     {
         title(title);
     }
 
-    public void add(final GeoJsonGeometry geometry)
+    public void add(GeoJsonGeometry geometry)
     {
         if (this.geometry == null)
         {
@@ -55,7 +55,7 @@ public class GeoJsonFeature implements Iterable<GeoJsonGeometry>, Bounded, Inter
         }
         else
         {
-            final GeoJsonGeometryCollection collection;
+            GeoJsonGeometryCollection collection;
             if (this.geometry instanceof GeoJsonGeometryCollection)
             {
                 collection = (GeoJsonGeometryCollection) this.geometry;
@@ -76,8 +76,8 @@ public class GeoJsonFeature implements Iterable<GeoJsonGeometry>, Bounded, Inter
     @Override
     public Rectangle bounds()
     {
-        final var builder = new BoundingBoxBuilder();
-        for (final var geometry : this)
+        var builder = new BoundingBoxBuilder();
+        for (var geometry : this)
         {
             builder.add(geometry.bounds());
         }
@@ -86,10 +86,10 @@ public class GeoJsonFeature implements Iterable<GeoJsonGeometry>, Bounded, Inter
 
     public List<GeoJsonGeometry> geometries()
     {
-        final List<GeoJsonGeometry> geometries = new ArrayList<>();
+        List<GeoJsonGeometry> geometries = new ArrayList<>();
         if (geometry instanceof GeoJsonGeometryCollection)
         {
-            for (final var geometry : (GeoJsonGeometryCollection) geometry)
+            for (var geometry : (GeoJsonGeometryCollection) geometry)
             {
                 geometries.add(geometry);
             }
@@ -105,9 +105,9 @@ public class GeoJsonFeature implements Iterable<GeoJsonGeometry>, Bounded, Inter
     }
 
     @Override
-    public boolean intersects(final Rectangle that)
+    public boolean intersects(Rectangle that)
     {
-        final var bounds = bounds();
+        var bounds = bounds();
         return bounds != null && bounds.intersects(that);
     }
 
@@ -122,14 +122,14 @@ public class GeoJsonFeature implements Iterable<GeoJsonGeometry>, Bounded, Inter
         return properties;
     }
 
-    public void put(final String key, final Object value)
+    public void put(String key, Object value)
     {
         properties.put(key, value);
     }
 
     public String title()
     {
-        final var title = properties.get("title");
+        var title = properties.get("title");
         if (title != null)
         {
             return title.toString();
@@ -137,7 +137,7 @@ public class GeoJsonFeature implements Iterable<GeoJsonGeometry>, Bounded, Inter
         return null;
     }
 
-    public void title(final String title)
+    public void title(String title)
     {
         if (title != null)
         {

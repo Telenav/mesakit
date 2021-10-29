@@ -36,7 +36,7 @@ public class PlaceProperties extends GraphElementPropertySet<Place>
 
     public abstract class PlaceProperty extends GraphElementProperty<Place>
     {
-        protected PlaceProperty(final String name, final Attribute<?> attribute)
+        protected PlaceProperty(String name, Attribute<?> attribute)
         {
             super(name, attribute, CommonDataSpecification.get());
             add(this);
@@ -46,7 +46,7 @@ public class PlaceProperties extends GraphElementPropertySet<Place>
     public PlaceProperty LOCATION = new PlaceProperty("location", PlaceAttributes.get().LOCATION)
     {
         @Override
-        public Object value(final Place place)
+        public Object value(Place place)
         {
             return place.location();
         }
@@ -55,7 +55,7 @@ public class PlaceProperties extends GraphElementPropertySet<Place>
     public PlaceProperty NAME = new PlaceProperty("name", PlaceAttributes.get().NAME)
     {
         @Override
-        public Object value(final Place place)
+        public Object value(Place place)
         {
             return place.name();
         }
@@ -64,7 +64,7 @@ public class PlaceProperties extends GraphElementPropertySet<Place>
     public PlaceProperty TYPE = new PlaceProperty("type", PlaceAttributes.get().TYPE)
     {
         @Override
-        public Object value(final Place place)
+        public Object value(Place place)
         {
             return place.type();
         }
@@ -73,7 +73,7 @@ public class PlaceProperties extends GraphElementPropertySet<Place>
     public PlaceProperty POPULATION = new PlaceProperty("population", PlaceAttributes.get().POPULATION)
     {
         @Override
-        public Object value(final Place place)
+        public Object value(Place place)
         {
             return place.population();
         }

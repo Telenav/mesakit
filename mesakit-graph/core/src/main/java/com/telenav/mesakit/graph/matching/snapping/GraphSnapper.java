@@ -46,8 +46,8 @@ public class GraphSnapper
 
     private final Edge.TransportMode transportMode;
 
-    public GraphSnapper(final Graph graph, final Distance maximumSnapDistance, final Heading maximumHeadingDeviation,
-                        final Edge.TransportMode transportMode)
+    public GraphSnapper(Graph graph, Distance maximumSnapDistance, Heading maximumHeadingDeviation,
+                        Edge.TransportMode transportMode)
     {
         this.graph = graph;
         this.maximumSnapDistance = maximumSnapDistance;
@@ -58,23 +58,23 @@ public class GraphSnapper
     /**
      * @return The given location and heading snapped to the best edge, or null if there is no reasonable snap
      */
-    public GraphSnap snap(final Location location, final Heading heading)
+    public GraphSnap snap(Location location, Heading heading)
     {
         // Determine the snap bounds
-        final var bounds = location.within(maximumSnapDistance);
+        var bounds = location.within(maximumSnapDistance);
 
         // Loop through edges that are close to the given location
-        final var snapper = new PolylineSnapper();
+        var snapper = new PolylineSnapper();
         Edge closestEdge = null;
         PolylineSnap closestSnap = null;
-        final Map<Edge, PolylineSnap> candidates = new HashMap<>();
-        for (final var edge : graph.edgesIntersecting(bounds))
+        Map<Edge, PolylineSnap> candidates = new HashMap<>();
+        for (var edge : graph.edgesIntersecting(bounds))
         {
             // If we can snap to the edge
             if (canSnapTo(edge))
             {
                 // and we snap to the edge's road shape
-                final var snap = snapper.snap(edge.roadShape(), location, heading);
+                var snap = snapper.snap(edge.roadShape(), location, heading);
                 if (snap != null)
                 {
                     // and the heading deviation is "small"
@@ -98,7 +98,7 @@ public class GraphSnapper
         return closestSnap == null ? null : new GraphSnap(closestEdge, closestSnap, candidates);
     }
 
-    private boolean canSnapTo(final Edge edge)
+    private boolean canSnapTo(Edge edge)
     {
         return edge.isNavigable(transportMode);
     }

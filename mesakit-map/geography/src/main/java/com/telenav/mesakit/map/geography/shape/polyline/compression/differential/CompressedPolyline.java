@@ -58,29 +58,29 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
 
     private static final int PROXIMITY_TYPE_BITS = Count.count(Proximity.values()).decremented().bitsToRepresent().asInt();
 
-    public static CompressedPolyline fromBitArray(final BitArray bits)
+    public static CompressedPolyline fromBitArray(BitArray bits)
     {
         return new CompressedPolyline(bits);
     }
 
-    public static CompressedPolyline fromLocationSequence(final Location... locations)
+    public static CompressedPolyline fromLocationSequence(Location... locations)
     {
         return new CompressedPolyline(Arrays.asList(locations));
     }
 
-    public static CompressedPolyline fromLocationSequence(final Iterable<Location> locations)
+    public static CompressedPolyline fromLocationSequence(Iterable<Location> locations)
     {
         return new CompressedPolyline(locations);
     }
 
-    public static CompressedPolyline fromLocationSequence(final LocationSequence sequence)
+    public static CompressedPolyline fromLocationSequence(LocationSequence sequence)
     {
         return fromLocationSequence(sequence.locationSequence());
     }
 
-    public static void main(final String[] args)
+    public static void main(String[] args)
     {
-        for (final var proximity : Proximity.values())
+        for (var proximity : Proximity.values())
         {
             if (proximity != Proximity.DISTANCE8)
             {
@@ -115,7 +115,7 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
 
         private final Encoding encoding;
 
-        Proximity(final Encoding encoding)
+        Proximity(Encoding encoding)
         {
             this.encoding = encoding;
         }
@@ -125,25 +125,25 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
             return ordinal();
         }
 
-        public long read(final BitReader reader, final long last)
+        public long read(BitReader reader, long last)
         {
             final var precision = Precision.DM7;
 
-            final var lastLatitude = Location.latitude(last);
-            final var lastLongitude = Location.longitude(last);
+            var lastLatitude = Location.latitude(last);
+            var lastLongitude = Location.longitude(last);
 
             assert precision.isValidLatitude(lastLatitude);
             assert precision.isValidLongitude(lastLongitude);
 
             if (encoding != null)
             {
-                final var bits = encoding.bits();
+                var bits = encoding.bits();
 
-                final var latitudeOffset = Ints.signExtend(reader.read(bits), bits);
-                final var longitudeOffset = Ints.signExtend(reader.read(bits), bits);
+                var latitudeOffset = Ints.signExtend(reader.read(bits), bits);
+                var longitudeOffset = Ints.signExtend(reader.read(bits), bits);
 
-                final var latitude = lastLatitude + latitudeOffset;
-                final var longitude = lastLongitude + longitudeOffset;
+                var latitude = lastLatitude + latitudeOffset;
+                var longitude = lastLongitude + longitudeOffset;
 
                 assert precision.isValidLatitude(latitude);
                 assert precision.isValidLongitude(longitude);
@@ -153,8 +153,8 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
             return -1;
         }
 
-        public boolean write(final BitWriter writer, final int atLatitude,
-                             final int atLongitude, final int lastLatitude, final int lastLongitude)
+        public boolean write(BitWriter writer, int atLatitude,
+                             int atLongitude, int lastLatitude, int lastLongitude)
         {
             final var precision = Precision.DM7;
 
@@ -165,8 +165,8 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
             assert precision.isValidLongitude(lastLongitude);
 
             // Compute latitude and longitude relative to last location
-            final var latitudeOffset = atLatitude - lastLatitude;
-            final var longitudeOffset = atLongitude - lastLongitude;
+            var latitudeOffset = atLatitude - lastLatitude;
+            var longitudeOffset = atLongitude - lastLongitude;
 
             assert precision.isValidLatitudeOffset(latitudeOffset);
             assert precision.isValidLongitudeOffset(longitudeOffset);
@@ -174,10 +174,10 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
             // Get minimum and maximum latitude and longitude
             if (encoding != null)
             {
-                final var minimumLatitudeOffset = (int) encoding.minimumLatitudeOffset();
-                final var minimumLongitudeOffset = (int) encoding.minimumLongitudeOffset();
-                final var maximumLatitudeOffset = (int) encoding.maximumLatitudeOffset();
-                final var maximumLongitudeOffset = (int) encoding.maximumLongitudeOffset();
+                var minimumLatitudeOffset = (int) encoding.minimumLatitudeOffset();
+                var minimumLongitudeOffset = (int) encoding.minimumLongitudeOffset();
+                var maximumLatitudeOffset = (int) encoding.maximumLatitudeOffset();
+                var maximumLongitudeOffset = (int) encoding.maximumLongitudeOffset();
 
                 assert precision.isValidLatitudeOffset(minimumLatitudeOffset);
                 assert precision.isValidLongitudeOffset(minimumLongitudeOffset);
@@ -185,7 +185,7 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
                 assert precision.isValidLongitudeOffset(maximumLongitudeOffset);
 
                 // Get the number of bits we're using to encode the relative value
-                final var bits = encoding.bits();
+                var bits = encoding.bits();
 
                 // If the relative latitude can be expressed by this proximity
                 if (Ints.isBetween(latitudeOffset, minimumLatitudeOffset, maximumLatitudeOffset)
@@ -217,7 +217,7 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
 
         private final long minimumLongitudeOffset;
 
-        public Encoding(final int bits)
+        public Encoding(int bits)
         {
             this.bits = bits;
             maximumLatitudeOffset = Precision.DM7.inRangeLatitudeOffset(BitCount.bitCount(this.bits).maximumSigned());
@@ -268,7 +268,7 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
     /**
      * @param bits Construct from bits
      */
-    private CompressedPolyline(final BitArray bits)
+    private CompressedPolyline(BitArray bits)
     {
         assert bits != null;
         assert bits.isInitialized();
@@ -278,7 +278,7 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
     /**
      * Construct by compressing a sequence of locations
      */
-    private CompressedPolyline(final Iterable<Location> locations)
+    private CompressedPolyline(Iterable<Location> locations)
     {
         assert locations != null;
         bits = compress(locations);
@@ -292,13 +292,13 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
         return bits().bytes();
     }
 
-    public BitArray compress(final Iterable<Location> locations)
+    public BitArray compress(Iterable<Location> locations)
     {
-        final var array = new BitArray("CompressedPolyline.compressed");
+        var array = new BitArray("CompressedPolyline.compressed");
         array.initialSize(512);
         array.initialize();
 
-        try (final var writer = array.writer())
+        try (var writer = array.writer())
         {
             if (locations instanceof Collection)
             {
@@ -322,7 +322,7 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
     }
 
     @Override
-    public Method compress(final Method method)
+    public Method compress(Method method)
     {
         return bits().compress(method);
     }
@@ -346,27 +346,27 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
     public long[] decompressedInDecimal()
     {
         // Start reading from the byte array,
-        final var reader = bits().reader();
+        var reader = bits().reader();
 
         // and get the number of locations either as 3 bit or 15 bit value
-        final var size = reader.readFlexibleInt(3, 15);
+        var size = reader.readFlexibleInt(3, 15);
 
         // allocate storage for the locations
-        final var locations = new long[size];
+        var locations = new long[size];
 
         // and loop through each location
         var last = 0L;
-        final var proximities = Proximity.values();
+        var proximities = Proximity.values();
         for (var index = 0; index < size; index++)
         {
             // getting the proximity of the location (DISTANCE1 to DISTANCE8).
-            final var proximity = proximities[reader.read(PROXIMITY_TYPE_BITS)];
+            var proximity = proximities[reader.read(PROXIMITY_TYPE_BITS)];
 
             // Read the right number of bits to get the location, assign it to the location store
             // and remember it as the last location
             last = proximity.read(reader, last);
 
-            final var at = last;
+            var at = last;
 
             locations[index] = at;
         }
@@ -400,14 +400,14 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
     }
 
     @SuppressWarnings("UseOfSystemOutOrSystemErr")
-    private static void show(final Proximity proximity)
+    private static void show(Proximity proximity)
     {
-        final var encoding = proximity.encoding;
+        var encoding = proximity.encoding;
         if (encoding != null)
         {
-            final var bits = encoding.bits();
-            final var minimum = (int) encoding.minimumLatitudeOffset();
-            final var maximum = (int) encoding.maximumLatitudeOffset();
+            var bits = encoding.bits();
+            var minimum = (int) encoding.minimumLatitudeOffset();
+            var maximum = (int) encoding.maximumLatitudeOffset();
             System.out.println(bits + " bits " + proximity + " distance = " + Precision.DM7.toLatitudinalDistance(minimum, maximum));
         }
         System.out.println();
@@ -422,16 +422,16 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
     {
         long previous = -1;
         var lengthInMillimeters = 0L;
-        final var locations = decompressedInDecimal();
-        for (final var at : locations)
+        var locations = decompressedInDecimal();
+        for (var at : locations)
         {
             if (previous >= 0)
             {
-                final var fromLatitudeInDm7 = Location.latitude(previous);
-                final var fromLongitudeInDm7 = Location.longitude(previous);
-                final var toLatitudeInDm7 = Location.latitude(at);
-                final var toLongitudeInDm7 = Location.longitude(at);
-                final var millimeters = Location.equirectangularDistanceBetweenInMillimeters(
+                var fromLatitudeInDm7 = Location.latitude(previous);
+                var fromLongitudeInDm7 = Location.longitude(previous);
+                var toLatitudeInDm7 = Location.latitude(at);
+                var toLongitudeInDm7 = Location.longitude(at);
+                var millimeters = Location.equirectangularDistanceBetweenInMillimeters(
                         fromLatitudeInDm7, fromLongitudeInDm7,
                         toLatitudeInDm7, toLongitudeInDm7);
                 lengthInMillimeters += millimeters;
@@ -444,7 +444,7 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
     /**
      * Writes the given sequence of locations to the given bit writer in the given precision
      */
-    private void writeTo(final BitWriter writer, int size, final Iterable<Location> locations)
+    private void writeTo(BitWriter writer, int size, Iterable<Location> locations)
     {
         var lastLatitude = 0;
         var lastLongitude = 0;
@@ -455,13 +455,13 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
         writer.writeFlexibleInt(3, 15, size);
         Location previous = null;
         var lengthInMillimeters = 0L;
-        final var proximities = Proximity.values();
-        for (final var location : locations)
+        var proximities = Proximity.values();
+        for (var location : locations)
         {
-            final var atLatitude = location.latitudeInDm7();
-            final var atLongitude = location.longitudeInDm7();
+            var atLatitude = location.latitudeInDm7();
+            var atLongitude = location.longitudeInDm7();
             var written = false;
-            for (final var proximity : proximities)
+            for (var proximity : proximities)
             {
                 if (proximity.write(writer, atLatitude, atLongitude, lastLatitude, lastLongitude))
                 {

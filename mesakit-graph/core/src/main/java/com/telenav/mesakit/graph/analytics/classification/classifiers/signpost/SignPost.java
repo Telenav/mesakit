@@ -35,13 +35,13 @@ public class SignPost
 
     private final EdgeSet outEdges;
 
-    public SignPost(final Edge ramp)
+    public SignPost(Edge ramp)
     {
         vertex = ramp.from();
         outEdges = ramp.from().outEdges();
     }
 
-    public SignPost(final Vertex vertex, final EdgeSet outEdges)
+    public SignPost(Vertex vertex, EdgeSet outEdges)
     {
         this.vertex = vertex;
         this.outEdges = outEdges;
@@ -49,24 +49,24 @@ public class SignPost
 
     public boolean hasDestinations()
     {
-        for (final var outEdge : outEdges)
+        for (var outEdge : outEdges)
         {
-            final var edgeHighwayTag = outEdge.tagValue("highway");
+            var edgeHighwayTag = outEdge.tagValue("highway");
             if (edgeHighwayTag == null || edgeHighwayTag.isEmpty())
             {
                 return false;
             }
-            final var destinationTag = outEdge.tagValue("destination");
+            var destinationTag = outEdge.tagValue("destination");
             if (destinationTag != null && !destinationTag.isEmpty())
             {
                 continue;
             }
-            final var destinationRefTag = outEdge.tagValue("destination:ref");
+            var destinationRefTag = outEdge.tagValue("destination:ref");
             if (destinationRefTag != null && !destinationRefTag.isEmpty())
             {
                 continue;
             }
-            final var destinationLanesTag = outEdge.tagValue("destination:lanes");
+            var destinationLanesTag = outEdge.tagValue("destination:lanes");
             if (destinationLanesTag != null && !destinationLanesTag.isEmpty())
             {
                 continue;
@@ -78,15 +78,15 @@ public class SignPost
 
     public boolean hasProperAngle()
     {
-        final var iterator = outEdges.iterator();
+        var iterator = outEdges.iterator();
 
-        final var outEdgeShapePoints1 = iterator.next().roadShape();
-        final var outEdgeHeading1 = outEdgeShapePoints1.firstSegment().length().isGreaterThan(Distance.meters(20))
+        var outEdgeShapePoints1 = iterator.next().roadShape();
+        var outEdgeHeading1 = outEdgeShapePoints1.firstSegment().length().isGreaterThan(Distance.meters(20))
                 ? outEdgeShapePoints1.initialHeading()
                 : outEdgeShapePoints1.start().headingTo(outEdgeShapePoints1.end());
 
-        final var outEdgeShapePoints2 = iterator.next().roadShape();
-        final var outEdgeHeading2 = outEdgeShapePoints2.firstSegment().length().isGreaterThan(Distance.meters(20))
+        var outEdgeShapePoints2 = iterator.next().roadShape();
+        var outEdgeHeading2 = outEdgeShapePoints2.firstSegment().length().isGreaterThan(Distance.meters(20))
                 ? outEdgeShapePoints2.initialHeading()
                 : outEdgeShapePoints2.start().headingTo(outEdgeShapePoints2.end());
 
@@ -124,9 +124,9 @@ public class SignPost
         // Distinguish left or right only when there are two branches
         if (outEdges.size() == 2)
         {
-            final var iterator = outEdges.iterator();
-            final var first = iterator.next();
-            final var second = iterator.next();
+            var iterator = outEdges.iterator();
+            var first = iterator.next();
+            var second = iterator.next();
             return isLeftBranchFirst(first, second) ? first : second;
         }
         return null;
@@ -147,9 +147,9 @@ public class SignPost
         // Distinguish left or right only when there are two branches
         if (outEdges.size() == 2)
         {
-            final var iterator = outEdges.iterator();
-            final var first = iterator.next();
-            final var second = iterator.next();
+            var iterator = outEdges.iterator();
+            var first = iterator.next();
+            var second = iterator.next();
             return isLeftBranchFirst(first, second) ? second : first;
         }
         return null;
@@ -166,7 +166,7 @@ public class SignPost
         return vertex;
     }
 
-    private boolean isLeftBranchFirst(final Edge first, final Edge second)
+    private boolean isLeftBranchFirst(Edge first, Edge second)
     {
         return first.initialHeading().difference(second.initialHeading(), Chirality.CLOCKWISE)
                 .isLessThan(_180_DEGREES);

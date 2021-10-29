@@ -36,7 +36,7 @@ public class ShapePointStore extends NodeStore<ShapePoint>
     @SuppressWarnings({ "FieldCanBeLocal" })
     private LongToIntMap shapePointIdentifierToShapePointIndex;
 
-    public ShapePointStore(final Graph graph)
+    public ShapePointStore(Graph graph)
     {
         super(graph);
     }
@@ -44,15 +44,15 @@ public class ShapePointStore extends NodeStore<ShapePoint>
     /**
      * @return Any shape point associated with the given location
      */
-    public ShapePoint forLocation(final Location location)
+    public ShapePoint forLocation(Location location)
     {
         assert location != null;
-        final var identifier = vertexStore().node(location).identifierAsLong();
+        var identifier = vertexStore().node(location).identifierAsLong();
         if (identifier == -1)
         {
             return null;
         }
-        final var point = dataSpecification().newShapePoint(graph(), identifier);
+        var point = dataSpecification().newShapePoint(graph(), identifier);
         point.location(location.asLong());
         return point;
     }

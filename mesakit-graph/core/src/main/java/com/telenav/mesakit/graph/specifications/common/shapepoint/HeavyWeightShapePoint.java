@@ -32,7 +32,7 @@ public class HeavyWeightShapePoint extends ShapePoint
 
     private int index;
 
-    public HeavyWeightShapePoint(final Graph graph, final long identifier)
+    public HeavyWeightShapePoint(Graph graph, long identifier)
     {
         super(graph, identifier);
     }
@@ -45,7 +45,7 @@ public class HeavyWeightShapePoint extends ShapePoint
     }
 
     @Override
-    public void index(final int index)
+    public void index(int index)
     {
         this.index = index;
     }
@@ -62,12 +62,12 @@ public class HeavyWeightShapePoint extends ShapePoint
         return location;
     }
 
-    public void location(final Location location)
+    public void location(Location location)
     {
         this.location = location;
     }
 
-    public void pbfTags(final PbfTagList pbfTags)
+    public void pbfTags(PbfTagList pbfTags)
     {
         this.pbfTags = pbfTags;
     }

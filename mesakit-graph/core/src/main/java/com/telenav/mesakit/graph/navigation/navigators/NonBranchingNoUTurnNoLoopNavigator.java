@@ -28,12 +28,12 @@ public class NonBranchingNoUTurnNoLoopNavigator extends NonBranchingNoUTurnNavig
     private final EdgeSet visited = new EdgeSet();
 
     @Override
-    protected Edge next(final Edge edge, final Count size, final EdgeSequence nextEdges)
+    protected Edge next(Edge edge, Count size, EdgeSequence nextEdges)
     {
-        final var next = super.next(edge, size, nextEdges);
-        if (!this.visited.contains(next))
+        var next = super.next(edge, size, nextEdges);
+        if (!visited.contains(next))
         {
-            this.visited.add(next);
+            visited.add(next);
             return next;
         }
         return null;

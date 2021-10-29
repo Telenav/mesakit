@@ -35,7 +35,7 @@ public class OsmEdgeProperties extends EdgeProperties
 
     public abstract class OsmEdgeProperty extends EdgeProperty
     {
-        protected OsmEdgeProperty(final String name, final Attribute<?> attribute)
+        protected OsmEdgeProperty(String name, Attribute<?> attribute)
         {
             super(name, attribute);
             add(this);
@@ -45,7 +45,7 @@ public class OsmEdgeProperties extends EdgeProperties
     public final OsmEdgeProperty IS_DOUBLE_DIGITIZED = new OsmEdgeProperty("double-digitized", OsmEdgeAttributes.get().IS_DOUBLE_DIGITIZED)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.osmIsDoubleDigitized();
         }
@@ -54,7 +54,7 @@ public class OsmEdgeProperties extends EdgeProperties
     public final EdgeProperty IS_DESTINATION_TAGGED = new EdgeProperty("is-osm-destination-tagged", EdgeAttributes.get().NONE)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.osmIsDestinationTagged();
         }

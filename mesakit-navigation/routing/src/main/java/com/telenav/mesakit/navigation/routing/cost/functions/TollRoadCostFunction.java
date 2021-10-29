@@ -37,15 +37,15 @@ public class TollRoadCostFunction implements CostFunction
 
     private final TollRoadMode mode;
 
-    public TollRoadCostFunction(final TollRoadMode mode)
+    public TollRoadCostFunction(TollRoadMode mode)
     {
         this.mode = mode;
     }
 
     @Override
-    public Cost cost(final Edge edge)
+    public Cost cost(Edge edge)
     {
-        if (this.mode == TollRoadMode.AVOID_TOLL_ROADS && edge.isTollRoad())
+        if (mode == TollRoadMode.AVOID_TOLL_ROADS && edge.isTollRoad())
         {
             return Cost.MAXIMUM;
         }

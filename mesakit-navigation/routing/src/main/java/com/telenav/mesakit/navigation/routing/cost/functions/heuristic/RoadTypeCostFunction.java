@@ -33,7 +33,7 @@ public class RoadTypeCostFunction implements CostFunction
     private final double maximum = RoadFunctionalClass.MAIN.identifier();
 
     @Override
-    public Cost cost(final Edge edge)
+    public Cost cost(Edge edge)
     {
         switch (edge.roadType())
         {

@@ -166,13 +166,13 @@ public class Angle implements
 
     private static final long NANODEGREES_PER_DM7 = 100;
 
-    public static SwitchParser.Builder<Angle> angleSwitchParser(final String name, final String description)
+    public static SwitchParser.Builder<Angle> angleSwitchParser(String name, String description)
     {
         return SwitchParser.builder(Angle.class).name(name).converter(new DegreesConverter(LOGGER))
                 .description(description);
     }
 
-    public static Angle degrees(final double degrees)
+    public static Angle degrees(double degrees)
     {
         return nanodegrees((long) (degrees * NANODEGREES_PER_DEGREE));
     }
@@ -182,17 +182,17 @@ public class Angle implements
         return DEGREES_PER_RADIAN;
     }
 
-    public static Angle microdegrees(final int microdegrees)
+    public static Angle microdegrees(int microdegrees)
     {
         return new Angle(microdegrees * NANODEGREES_PER_MICRODEGREE);
     }
 
-    public static Angle nanodegrees(final long nanodegrees)
+    public static Angle nanodegrees(long nanodegrees)
     {
         return new Angle(nanodegrees);
     }
 
-    public static Angle radians(final double radians)
+    public static Angle radians(double radians)
     {
         return nanodegrees((long) (radians * NANODEGREES_PER_RADIAN));
     }
@@ -223,13 +223,13 @@ public class Angle implements
         private static final Pattern PATTERN = Pattern.compile("([0-9]+([.,][0-9]+)?)\\s+(degree)s?",
                 Pattern.CASE_INSENSITIVE);
 
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected String onToString(final Angle value)
+        protected String onToString(Angle value)
         {
             return value.asDegrees() + " degrees";
         }
@@ -238,13 +238,13 @@ public class Angle implements
          * {@inheritDoc}
          */
         @Override
-        protected Angle onToValue(final String value)
+        protected Angle onToValue(String value)
         {
-            final var matcher = PATTERN.matcher(value);
+            var matcher = PATTERN.matcher(value);
             if (matcher.matches())
             {
-                final var scalar = Double.parseDouble(matcher.group(1));
-                final var units = matcher.group(3);
+                var scalar = Double.parseDouble(matcher.group(1));
+                var units = matcher.group(3);
                 if ("degree".equalsIgnoreCase(units))
                 {
                     return degrees(scalar);
@@ -265,13 +265,13 @@ public class Angle implements
 
     public static class DegreesConverter extends BaseStringConverter<Angle>
     {
-        public DegreesConverter(final Listener listener)
+        public DegreesConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Angle onToValue(final String value)
+        protected Angle onToValue(String value)
         {
             return degrees(Double.parseDouble(value));
         }
@@ -292,11 +292,11 @@ public class Angle implements
     {
     }
 
-    protected Angle(final long nanodegrees)
+    protected Angle(long nanodegrees)
     {
         // Get the valid range for the type of Angle
-        final var maximum = maximumInNanoDegrees();
-        final var minimum = minimumInNanoDegrees();
+        var maximum = maximumInNanoDegrees();
+        var minimum = minimumInNanoDegrees();
 
         // If we have a maximum or a minimum value precisely,
         if (nanodegrees == maximum || nanodegrees == minimum)
@@ -316,7 +316,7 @@ public class Angle implements
      * Returns the simple absolute difference between the two angles in either the clockwise or counterclockwise
      * direction, without handling the case of crossing 360.
      */
-    public Angle absoluteDifference(final Angle that)
+    public Angle absoluteDifference(Angle that)
     {
         return nanodegrees(Math.abs(nanodegrees - that.nanodegrees));
     }
@@ -357,7 +357,7 @@ public class Angle implements
     }
 
     @Override
-    public String asString(final StringFormat format)
+    public String asString(StringFormat format)
     {
         switch (format.identifier())
         {
@@ -369,9 +369,9 @@ public class Angle implements
         }
     }
 
-    public Angle bisect(final Angle that, final Chirality chirality)
+    public Angle bisect(Angle that, Chirality chirality)
     {
-        final var delta = difference(that, chirality);
+        var delta = difference(that, chirality);
         switch (chirality)
         {
             case CLOCKWISE:
@@ -399,7 +399,7 @@ public class Angle implements
      * {@inheritDoc}
      */
     @Override
-    public int compareTo(final Angle that)
+    public int compareTo(Angle that)
     {
         if (nanodegrees == that.nanodegrees)
         {
@@ -433,7 +433,7 @@ public class Angle implements
      * @param that The other angle
      * @return The difference between the two angles as an angle
      */
-    public Angle difference(final Angle that, final Chirality type)
+    public Angle difference(Angle that, Chirality type)
     {
         switch (type)
         {
@@ -469,22 +469,22 @@ public class Angle implements
         throw new IllegalArgumentException("Unsupported difference type " + type);
     }
 
-    public Angle dividedBy(final Angle that)
+    public Angle dividedBy(Angle that)
     {
         return nanodegrees(nanodegrees / that.nanodegrees);
     }
 
-    public Angle dividedBy(final double by)
+    public Angle dividedBy(double by)
     {
         return nanodegrees((long) (nanodegrees / by));
     }
 
     @Override
-    public boolean equals(final Object obj)
+    public boolean equals(Object obj)
     {
         if (obj instanceof Angle)
         {
-            final var that = (Angle) obj;
+            var that = (Angle) obj;
 
             // Two angles are considered to be equal if they are pointing in the
             // same direction. In other words, -1 and 359 are equal.
@@ -510,19 +510,19 @@ public class Angle implements
      * @return True indicates that the angle is greater than or equal to the minimum bound and less than or equal to the
      * upper bound.
      */
-    public boolean isBetween(final Angle a, final Angle b, final Chirality type)
+    public boolean isBetween(Angle a, Angle b, Chirality type)
     {
-        final var aToThis = a.difference(this, type);
-        final var aToB = a.difference(b, type);
+        var aToThis = a.difference(this, type);
+        var aToB = a.difference(b, type);
         return aToThis.isLessThanOrEqualTo(aToB);
     }
 
-    public boolean isClose(final Angle that, final Angle tolerance)
+    public boolean isClose(Angle that, Angle tolerance)
     {
         return difference(that, Chirality.SMALLEST).isLessThanOrEqualTo(tolerance);
     }
 
-    public boolean isCloseOrReverseIsClose(final Angle that, final Angle tolerance)
+    public boolean isCloseOrReverseIsClose(Angle that, Angle tolerance)
     {
         return isClose(that, tolerance) || isClose(that.reversed(), tolerance);
     }
@@ -537,7 +537,7 @@ public class Angle implements
         return equals(minimum());
     }
 
-    public boolean isOppositeDirection(final Angle that, final Angle tolerance)
+    public boolean isOppositeDirection(Angle that, Angle tolerance)
     {
         return difference(that, Chirality.SMALLEST).isClose(_180_DEGREES, tolerance);
     }
@@ -548,7 +548,7 @@ public class Angle implements
     }
 
     @Override
-    public Angle maximum(final Angle that)
+    public Angle maximum(Angle that)
     {
         return nanodegrees > that.nanodegrees ? this : that;
     }
@@ -559,17 +559,17 @@ public class Angle implements
     }
 
     @Override
-    public Angle minimum(final Angle that)
+    public Angle minimum(Angle that)
     {
         return nanodegrees < that.nanodegrees ? this : that;
     }
 
-    public Angle minus(final Angle that)
+    public Angle minus(Angle that)
     {
         return nanodegrees(nanodegrees - that.nanodegrees);
     }
 
-    public Angle plus(final Angle that)
+    public Angle plus(Angle that)
     {
         return nanodegrees(nanodegrees + that.nanodegrees);
     }
@@ -594,7 +594,7 @@ public class Angle implements
         return plus(degrees(180));
     }
 
-    public Angle times(final double multiplier)
+    public Angle times(double multiplier)
     {
         return nanodegrees((long) (asNanodegrees() * multiplier));
     }
@@ -606,7 +606,7 @@ public class Angle implements
     }
 
     @Override
-    public Validator validator(final ValidationType type)
+    public Validator validator(ValidationType type)
     {
         return new BaseValidator()
         {

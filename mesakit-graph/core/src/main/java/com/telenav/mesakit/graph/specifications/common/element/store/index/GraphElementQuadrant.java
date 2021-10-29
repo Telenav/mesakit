@@ -38,7 +38,7 @@ final class GraphElementQuadrant<T extends GraphElement>
 
         private Iterator<T> iterator;
 
-        private QuadrantIterator(final Rectangle bounds, final Matcher<T> matcher)
+        private QuadrantIterator(Rectangle bounds, Matcher<T> matcher)
         {
             this.bounds = bounds;
             filter(matcher);
@@ -77,7 +77,7 @@ final class GraphElementQuadrant<T extends GraphElement>
                 if (!edges.isEmpty())
                 {
                     // and there are matches,
-                    final var iterator = edges.iterator(bounds, filter());
+                    var iterator = edges.iterator(bounds, filter());
                     if (iterator.hasNext())
                     {
                         // return the iterator
@@ -91,10 +91,10 @@ final class GraphElementQuadrant<T extends GraphElement>
                 // Look through each child quadrant from 0 to 3
                 while (childIndex < 4)
                 {
-                    final var child = children[childIndex++];
+                    var child = children[childIndex++];
                     if (!child.isEmpty() && bounds.intersects(child.bounds))
                     {
-                        final var iterator = child.inside(bounds, filter());
+                        var iterator = child.inside(bounds, filter());
                         if (iterator.hasNext())
                         {
                             return iterator;
@@ -116,7 +116,7 @@ final class GraphElementQuadrant<T extends GraphElement>
 
     private int size;
 
-    GraphElementQuadrant(final GraphElementSpatialIndex<T> index, final Rectangle bounds)
+    GraphElementQuadrant(GraphElementSpatialIndex<T> index, Rectangle bounds)
     {
         this.index = index;
         this.bounds = bounds;
@@ -130,7 +130,7 @@ final class GraphElementQuadrant<T extends GraphElement>
                 + edges.size() + ") edges]";
     }
 
-    boolean add(final T element)
+    boolean add(T element)
     {
         // If the edge is fully contained in this quadrant
         if (element.isInside(bounds))
@@ -153,7 +153,7 @@ final class GraphElementQuadrant<T extends GraphElement>
             {
                 // Try to add the edge to all four child quadrants
                 var added = false;
-                for (final var child : children)
+                for (var child : children)
                 {
                     // If it was added to the child,
                     if (child.add(element))
@@ -185,12 +185,12 @@ final class GraphElementQuadrant<T extends GraphElement>
         }
     }
 
-    void dump(final PrintStream out, final int level)
+    void dump(PrintStream out, int level)
     {
         out.println(AsciiArt.repeat(level, " ") + this);
         if (!isLeaf())
         {
-            for (final var child : children)
+            for (var child : children)
             {
                 if (!child.isEmpty())
                 {
@@ -200,7 +200,7 @@ final class GraphElementQuadrant<T extends GraphElement>
         }
     }
 
-    Iterator<T> inside(final Rectangle rectangle, final Matcher<T> matcher)
+    Iterator<T> inside(Rectangle rectangle, Matcher<T> matcher)
     {
         return new QuadrantIterator(rectangle, matcher);
     }
@@ -232,14 +232,14 @@ final class GraphElementQuadrant<T extends GraphElement>
         children[3] = new GraphElementQuadrant<>(index, bounds.southEastQuadrant());
 
         // Keep a list of the edges to add
-        final var toAdd = edges;
+        var toAdd = edges;
 
         // Then clear the element list
         edges = new GraphElementList<>(index, Estimate._1024);
         size = 0;
 
         // and finally, add each edge
-        for (final var element : toAdd)
+        for (var element : toAdd)
         {
             add(element);
         }

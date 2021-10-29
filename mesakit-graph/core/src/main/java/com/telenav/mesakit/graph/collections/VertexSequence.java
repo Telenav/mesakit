@@ -46,7 +46,7 @@ public class VertexSequence implements Iterable<Vertex>
     /**
      * Construct from a sequence of vertexes
      */
-    public VertexSequence(final Iterable<Vertex> vertexes)
+    public VertexSequence(Iterable<Vertex> vertexes)
     {
         this.vertexes = vertexes;
     }
@@ -56,10 +56,10 @@ public class VertexSequence implements Iterable<Vertex>
      */
     public Route asRoute()
     {
-        final var builder = new RouteBuilder();
+        var builder = new RouteBuilder();
 
         // Get the sequence of vertexes
-        final var vertexes = iterator();
+        var vertexes = iterator();
 
         // If there's at least one vertex
         if (vertexes.hasNext())
@@ -71,7 +71,7 @@ public class VertexSequence implements Iterable<Vertex>
             while (vertexes.hasNext())
             {
                 // get the next vertex
-                final var next = vertexes.next();
+                var next = vertexes.next();
 
                 // and add the edge between the last vertex and the next vertex
                 builder.append(last.edgeBetween(next));
@@ -96,8 +96,8 @@ public class VertexSequence implements Iterable<Vertex>
      */
     public EdgeSet edges()
     {
-        final var edges = new EdgeSet(Limit.EDGES, Estimate._16);
-        for (final var vertex : this)
+        var edges = new EdgeSet(Limit.EDGES, Estimate._16);
+        for (var vertex : this)
         {
             edges.addAll(vertex.edges());
         }
@@ -107,7 +107,7 @@ public class VertexSequence implements Iterable<Vertex>
     /**
      * @return The sequence of vertexes within the given bounding rectangle
      */
-    public VertexSequence inside(final Rectangle bounds)
+    public VertexSequence inside(Rectangle bounds)
     {
         return matching(Vertex.inside(bounds));
     }
@@ -115,7 +115,6 @@ public class VertexSequence implements Iterable<Vertex>
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("NullableProblems")
     @Override
     public Iterator<Vertex> iterator()
     {
@@ -125,7 +124,7 @@ public class VertexSequence implements Iterable<Vertex>
     /**
      * @return The sequence of matching vertexes
      */
-    public VertexSequence matching(final Matcher<Vertex> matcher)
+    public VertexSequence matching(Matcher<Vertex> matcher)
     {
         return new VertexSequence(new Matching<>(matcher)
         {
@@ -147,7 +146,7 @@ public class VertexSequence implements Iterable<Vertex>
         return Streams.stream(this);
     }
 
-    public Stream<Vertex> stream(final Processing processing)
+    public Stream<Vertex> stream(Processing processing)
     {
         return Streams.stream(processing, this);
     }

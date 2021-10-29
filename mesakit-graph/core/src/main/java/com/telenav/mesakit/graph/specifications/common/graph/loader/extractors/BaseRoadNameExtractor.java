@@ -44,8 +44,8 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
 
     private final MapLocale locale;
 
-    protected BaseRoadNameExtractor(final MapLocale locale, final RoadNameStandardizer.Mode mode,
-                                    final Listener listener)
+    protected BaseRoadNameExtractor(MapLocale locale, RoadNameStandardizer.Mode mode,
+                                    Listener listener)
     {
         super(listener);
         this.locale = locale;
@@ -56,13 +56,13 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
         }
     }
 
-    protected void addRoadName(final List<RoadName> names, final String name)
+    protected void addRoadName(List<RoadName> names, String name)
     {
         if (name != null && !name.isBlank())
         {
             if (name.contains(";"))
             {
-                for (final var subName : Split.split(name, ';'))
+                for (var subName : Split.split(name, ';'))
                 {
                     addRoadName(names, subName);
                 }
@@ -74,7 +74,7 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
                 {
                     if (standardizer != null && shouldStandardize(name))
                     {
-                        final var standardized = standardizer.standardize(roadName);
+                        var standardized = standardizer.standardize(roadName);
                         if (standardized != null)
                         {
                             roadName = standardized.asRoadName();
@@ -94,21 +94,21 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
         }
     }
 
-    protected void addRoadNameTranslation(final List<RoadName> names, final PbfWay way, final String key)
+    protected void addRoadNameTranslation(List<RoadName> names, PbfWay way, String key)
     {
-        final var languages = languageCodes(way);
-        for (final var language : languages)
+        var languages = languageCodes(way);
+        for (var language : languages)
         {
-            final var name = way.tagValue(key + ":" + language.iso3Code());
+            var name = way.tagValue(key + ":" + language.iso3Code());
             if (name != null)
             {
                 addRoadName(names, name);
             }
-            for (final var translation : languages)
+            for (var translation : languages)
             {
                 if (translation != language)
                 {
-                    final var translated = way.tagValue(key + ":" + language.iso3Code() + ":trans:" + translation.iso3Code());
+                    var translated = way.tagValue(key + ":" + language.iso3Code() + ":trans:" + translation.iso3Code());
                     if (translated != null)
                     {
                         addRoadName(names, translated);
@@ -118,22 +118,22 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
         }
     }
 
-    protected void addRoadNameTranslations(final List<RoadName> names, final PbfWay way, final String[] keys)
+    protected void addRoadNameTranslations(List<RoadName> names, PbfWay way, String[] keys)
     {
-        for (final var key : keys)
+        for (var key : keys)
         {
             addRoadNameTranslation(names, way, key);
         }
     }
 
-    protected List<LanguageIsoCode> languageCodes(final PbfWay way)
+    protected List<LanguageIsoCode> languageCodes(PbfWay way)
     {
         // Get any ISO code from the way
-        final var iso = way.tagValue("iso");
+        var iso = way.tagValue("iso");
         if (iso != null)
         {
             // then get the country for the iso code,
-            final var country = Country.forIsoCode(iso);
+            var country = Country.forIsoCode(iso);
             if (country != null)
             {
                 // and return its languages
@@ -150,7 +150,7 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
      * "17th" and it turns names with hyphens like "Southwest By-Pass" into "Pass". This method is used to filter out
      * these cases.
      */
-    private boolean shouldStandardize(final String name)
+    private boolean shouldStandardize(String name)
     {
         if (Strings.isNaturalNumber(name))
         {

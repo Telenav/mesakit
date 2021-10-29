@@ -47,7 +47,7 @@ public class SlippyTileGrid extends BaseRepeater implements Iterable<SlippyTile>
     /**
      * @param bounds The bounds that this grid of slippy tiles should cover
      */
-    public SlippyTileGrid(final Listener listener, final Rectangle bounds)
+    public SlippyTileGrid(Listener listener, Rectangle bounds)
     {
         this(listener, bounds, SlippyTile.largerThan(bounds.size()).getZoomLevel());
     }
@@ -56,7 +56,7 @@ public class SlippyTileGrid extends BaseRepeater implements Iterable<SlippyTile>
      * @param bounds The bounds for this slippy tile grid
      * @param zoom The zoom level of tiles
      */
-    public SlippyTileGrid(final Listener listener, final Rectangle bounds, final ZoomLevel zoom)
+    public SlippyTileGrid(Listener listener, Rectangle bounds, ZoomLevel zoom)
     {
         listener.listenTo(this);
 
@@ -65,18 +65,18 @@ public class SlippyTileGrid extends BaseRepeater implements Iterable<SlippyTile>
         trace("zoom = " + zoom);
 
         // Get the top left and bottom right slippy tiles
-        final var topLeft = zoom.tileAt(bounds.topLeft());
-        final var bottomRight = zoom.tileAt(bounds.bottomRight());
+        var topLeft = zoom.tileAt(bounds.topLeft());
+        var bottomRight = zoom.tileAt(bounds.bottomRight());
 
         // Iterate through the tile coordinates, adding one for each tile in the grid
-        final var startx = topLeft.x();
-        final var starty = topLeft.y();
-        final var endx = bottomRight.x();
-        final var endy = bottomRight.y();
+        var startx = topLeft.x();
+        var starty = topLeft.y();
+        var endx = bottomRight.x();
+        var endy = bottomRight.y();
         trace("startx = " + startx + ", starty = " + starty + ", endx = " + endx + ", endy = " + endy);
 
         // Compute the total number of tiles in the grid
-        final var total = (endx - startx + 1) * (endy - starty + 1);
+        var total = (endx - startx + 1) * (endy - starty + 1);
         trace("total = " + total);
         if (total < 0)
         {
@@ -103,7 +103,7 @@ public class SlippyTileGrid extends BaseRepeater implements Iterable<SlippyTile>
     /**
      * @return True if this grid contains the given tile
      */
-    public boolean contains(final SlippyTile tile)
+    public boolean contains(SlippyTile tile)
     {
         return tiles.contains(tile);
     }
@@ -111,9 +111,9 @@ public class SlippyTileGrid extends BaseRepeater implements Iterable<SlippyTile>
     /**
      * Draws outlines of all the tiles in this grid on the given canvas
      */
-    public void drawTileOutlines(final MapCanvas canvas)
+    public void drawTileOutlines(MapCanvas canvas)
     {
-        for (final var tile : tiles)
+        for (var tile : tiles)
         {
             tile.drawOutline(canvas, outlineStyle);
         }
@@ -128,7 +128,7 @@ public class SlippyTileGrid extends BaseRepeater implements Iterable<SlippyTile>
         return tiles.iterator();
     }
 
-    public void outlineStyle(final Style outlineStyle)
+    public void outlineStyle(Style outlineStyle)
     {
         this.outlineStyle = outlineStyle;
     }

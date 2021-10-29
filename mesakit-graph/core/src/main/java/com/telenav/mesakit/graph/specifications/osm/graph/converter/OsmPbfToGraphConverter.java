@@ -76,7 +76,7 @@ public class OsmPbfToGraphConverter extends PbfToGraphConverter
 
         private AnalysisType analysisType = AnalysisType.DEFAULT;
 
-        public PbfToGraphConverter.Configuration analysisType(final AnalysisType analysisType)
+        public PbfToGraphConverter.Configuration analysisType(AnalysisType analysisType)
         {
             this.analysisType = analysisType;
             if (analysisType == FULL_NODE_INFORMATION)
@@ -86,23 +86,23 @@ public class OsmPbfToGraphConverter extends PbfToGraphConverter
             return this;
         }
 
-        public void markDoubleDigitizedEdges(final boolean markDoubleDigitizedEdges)
+        public void markDoubleDigitizedEdges(boolean markDoubleDigitizedEdges)
         {
             this.markDoubleDigitizedEdges = markDoubleDigitizedEdges;
         }
 
-        public void markJunctionEdges(final boolean markJunctionEdges)
+        public void markJunctionEdges(boolean markJunctionEdges)
         {
             this.markJunctionEdges = markJunctionEdges;
         }
 
-        public void markRampsAndConnectors(final boolean markRampsAndConnectors)
+        public void markRampsAndConnectors(boolean markRampsAndConnectors)
         {
             this.markRampsAndConnectors = markRampsAndConnectors;
         }
     }
 
-    public OsmPbfToGraphConverter(final Metadata metadata)
+    public OsmPbfToGraphConverter(Metadata metadata)
     {
         super(metadata);
     }
@@ -119,7 +119,7 @@ public class OsmPbfToGraphConverter extends PbfToGraphConverter
      * @return The converted graph
      */
     @Override
-    protected Graph onConvert(final PbfDataSourceFactory input, final Metadata metadata)
+    protected Graph onConvert(PbfDataSourceFactory input, Metadata metadata)
     {
         // Load borders in background while analyzing the input file.
         if (metadata.isOsm())
@@ -128,7 +128,7 @@ public class OsmPbfToGraphConverter extends PbfToGraphConverter
         }
 
         // Analyze the input file,
-        final var analysis = analyze(input.newInstance(metadata),
+        var analysis = analyze(input.newInstance(metadata),
                 metadata.withDataPrecision(Precision.DM6));
 
         // and if there is at least some valid data to load
@@ -146,11 +146,11 @@ public class OsmPbfToGraphConverter extends PbfToGraphConverter
      * Do post processing to mark double-digitized edges, ramps, connectors and junction edges.
      */
     @Override
-    protected void onConverted(final Graph uncast)
+    protected void onConverted(Graph uncast)
     {
         super.onConverted(uncast);
 
-        final var graph = (OsmGraph) uncast;
+        var graph = (OsmGraph) uncast;
 
         if (configuration().markDoubleDigitizedEdges)
         {
@@ -166,10 +166,10 @@ public class OsmPbfToGraphConverter extends PbfToGraphConverter
         }
     }
 
-    private PbfDataAnalysis analyze(final PbfDataSource input, final Metadata metadata)
+    private PbfDataAnalysis analyze(PbfDataSource input, Metadata metadata)
     {
-        final var loaderConfiguration = configuration().loaderConfiguration();
-        final var analysis = listenTo(new PbfDataAnalysis(metadata, configuration().analysisType, loaderConfiguration.wayFilter()));
+        var loaderConfiguration = configuration().loaderConfiguration();
+        var analysis = listenTo(new PbfDataAnalysis(metadata, configuration().analysisType, loaderConfiguration.wayFilter()));
         analysis.analyze(input);
 
         if (analysis.metadata().relationCount(REQUIRE_EXACT).isZero())
@@ -182,20 +182,20 @@ public class OsmPbfToGraphConverter extends PbfToGraphConverter
         return analysis;
     }
 
-    private Graph load(final PbfDataSourceFactory dataSource, final PbfDataAnalysis analysis)
+    private Graph load(PbfDataSourceFactory dataSource, PbfDataAnalysis analysis)
     {
         // Create graph to load with data
-        final var metadata = analysis.metadata();
+        var metadata = analysis.metadata();
 
-        final var graph = listenTo(metadata.newGraph());
+        var graph = listenTo(metadata.newGraph());
 
         // Load graph from PBF
-        final var loader = listenTo(new OsmPbfGraphLoader());
+        var loader = listenTo(new OsmPbfGraphLoader());
         loader.configure(configuration().loaderConfiguration());
         loader.analysis(analysis, configuration().loaderConfiguration().tagFilter());
         loader.dataSourceFactory(dataSource, metadata);
 
-        final var loadedMetadata = graph.load(loader, GraphConstraints.ALL);
+        var loadedMetadata = graph.load(loader, GraphConstraints.ALL);
         if (loadedMetadata != null && loadedMetadata.isValid())
         {
             return graph;

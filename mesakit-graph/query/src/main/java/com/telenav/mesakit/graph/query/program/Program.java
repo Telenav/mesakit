@@ -34,7 +34,7 @@ public class Program
      * @param statement The statement to evaluate
      * @param maximumClosureLength The maximum length of a closure to avoid lengthy queries
      */
-    public Program(final Statement statement, final Maximum maximumClosureLength)
+    public Program(Statement statement, Maximum maximumClosureLength)
     {
         this.statement = statement;
         this.maximumClosureLength = maximumClosureLength;
@@ -52,7 +52,7 @@ public class Program
      * @param start The start edge
      * @return Any route that matches the program or null if none does
      */
-    public Route run(final Edge start)
+    public Route run(Edge start)
     {
         Node.traceNumber = 1;
 

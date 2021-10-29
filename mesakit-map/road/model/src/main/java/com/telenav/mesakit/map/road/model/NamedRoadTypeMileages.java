@@ -37,7 +37,7 @@ public class NamedRoadTypeMileages
 
     private Distance mileages = Distance.ZERO;
 
-    public void add(final String name, final RoadType roadType, final Distance mileage)
+    public void add(String name, RoadType roadType, Distance mileage)
     {
         var roadTypeMileages = namedRoadTypeMileages.get(name);
         if (roadTypeMileages == null)
@@ -51,7 +51,7 @@ public class NamedRoadTypeMileages
         mileages = mileages.add(mileage);
     }
 
-    public RoadTypeMileages get(final String name)
+    public RoadTypeMileages get(String name)
     {
         return namedRoadTypeMileages.get(name);
     }
@@ -61,9 +61,9 @@ public class NamedRoadTypeMileages
         return mileages;
     }
 
-    public Distance namedMileages(final String name)
+    public Distance namedMileages(String name)
     {
-        final var roadTypeMileages = get(name);
+        var roadTypeMileages = get(name);
         if (roadTypeMileages == null)
         {
             return Distance.ZERO;
@@ -79,7 +79,7 @@ public class NamedRoadTypeMileages
 
     public List<Entry<String, RoadTypeMileages>> sortedNamedRoadTypeMileages()
     {
-        final List<Entry<String, RoadTypeMileages>> elements = new ArrayList<>(namedRoadTypeMileages.entrySet());
+        List<Entry<String, RoadTypeMileages>> elements = new ArrayList<>(namedRoadTypeMileages.entrySet());
 
         elements.sort((o1, o2) -> o2.getValue().mileages().compareTo(o1.getValue().mileages()));
 

@@ -87,7 +87,7 @@ public class AttributeLoader implements Unloadable, NamedObject
     /** The name of this object for debugging purposes */
     private String objectName;
 
-    public AttributeLoader(final String objectName)
+    public AttributeLoader(String objectName)
     {
         assert objectName != null;
 
@@ -100,9 +100,9 @@ public class AttributeLoader implements Unloadable, NamedObject
     /**
      * Adds the attribute reference to this loader
      */
-    public void add(final AttributeReference<?> reference)
+    public void add(AttributeReference<?> reference)
     {
-        final var attribute = reference.attribute();
+        var attribute = reference.attribute();
         referenceForAttribute.put(attribute, reference);
         supported.set(attribute.identifier(), 1);
     }
@@ -113,9 +113,9 @@ public class AttributeLoader implements Unloadable, NamedObject
      */
     public void allocateAll()
     {
-        for (final var reference : references())
+        for (var reference : references())
         {
-            final var referent = reference.allocate();
+            var referent = reference.allocate();
             if (referent instanceof CompressibleCollection)
             {
                 ((CompressibleCollection) referent).compress(CompressibleCollection.Method.FREEZE);
@@ -123,11 +123,11 @@ public class AttributeLoader implements Unloadable, NamedObject
         }
     }
 
-    public void attach(final FieldArchive archive)
+    public void attach(FieldArchive archive)
     {
         assert archive != null;
 
-        for (final var reference : references())
+        for (var reference : references())
         {
             reference.attach(archive);
         }
@@ -147,7 +147,7 @@ public class AttributeLoader implements Unloadable, NamedObject
     public boolean isLoaded()
     {
         // Go through each reference
-        for (final var reference : references())
+        for (var reference : references())
         {
             // and if it's populated,
             if (reference.isLoaded())
@@ -162,7 +162,7 @@ public class AttributeLoader implements Unloadable, NamedObject
     /**
      * Loads the given attribute
      */
-    public boolean load(final Attribute<?> attribute)
+    public boolean load(Attribute<?> attribute)
     {
         return reference(attribute).load();
     }
@@ -172,7 +172,7 @@ public class AttributeLoader implements Unloadable, NamedObject
      */
     public void loadAll()
     {
-        for (final var reference : references())
+        for (var reference : references())
         {
             DEBUG.trace("Force loading $", reference);
             reference.load();
@@ -182,9 +182,9 @@ public class AttributeLoader implements Unloadable, NamedObject
     /**
      * Forces all attributes to load except the given ones
      */
-    public void loadAll(final AttributeSet attributes)
+    public void loadAll(AttributeSet attributes)
     {
-        for (final var reference : references())
+        for (var reference : references())
         {
             if (attributes.contains(reference.attribute()))
             {
@@ -197,9 +197,9 @@ public class AttributeLoader implements Unloadable, NamedObject
     /**
      * Forces all attributes to load except the given ones
      */
-    public void loadAllExcept(final AttributeSet attributes)
+    public void loadAllExcept(AttributeSet attributes)
     {
-        for (final var reference : references())
+        for (var reference : references())
         {
             if (!attributes.contains(reference.attribute()))
             {
@@ -212,7 +212,7 @@ public class AttributeLoader implements Unloadable, NamedObject
     /**
      * Loads the given attribute and throws an exception if it cannot be loaded
      */
-    public void loadRequired(final Attribute<?> attribute)
+    public void loadRequired(Attribute<?> attribute)
     {
         if (!load(attribute))
         {
@@ -227,7 +227,7 @@ public class AttributeLoader implements Unloadable, NamedObject
     }
 
     @Override
-    public void objectName(final String objectName)
+    public void objectName(String objectName)
     {
         this.objectName = objectName;
     }
@@ -243,7 +243,7 @@ public class AttributeLoader implements Unloadable, NamedObject
     /**
      * @return True if this attribute loader supports the given attribute
      */
-    public boolean supports(final Attribute<?> attribute)
+    public boolean supports(Attribute<?> attribute)
     {
         return supported.safeGet(attribute.identifier()) != 0;
     }
@@ -255,7 +255,7 @@ public class AttributeLoader implements Unloadable, NamedObject
     public void unload()
     {
         // Go through each reference
-        for (final var reference : references())
+        for (var reference : references())
         {
             // clearing it
             reference.unload();
@@ -265,7 +265,7 @@ public class AttributeLoader implements Unloadable, NamedObject
     /**
      * @return The attribute reference for the given attribute
      */
-    private AttributeReference<?> reference(final Attribute<?> attribute)
+    private AttributeReference<?> reference(Attribute<?> attribute)
     {
         return referenceForAttribute.get(attribute);
     }

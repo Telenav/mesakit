@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.geography;
 
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.associations.UmlRelation;
 
 /**
  * A vector is a distance (magnitude) at a particular heading. In this case vectors are two-dimensional, which presumes
@@ -39,19 +39,19 @@ public class Vector
     /** The magnitude (length) of the vector */
     private final Distance magnitude;
 
-    public Vector(final Distance magnitude)
+    public Vector(Distance magnitude)
     {
         this(Heading.NORTHEAST, magnitude);
     }
 
-    public Vector(final Heading direction, final Distance magnitude)
+    public Vector(Heading direction, Distance magnitude)
     {
         this.direction = direction;
         this.magnitude = magnitude;
     }
 
     @UmlRelation(label = "offsets")
-    public Location offset(final Location that)
+    public Location offset(Location that)
     {
         return that.moved(direction, magnitude);
     }

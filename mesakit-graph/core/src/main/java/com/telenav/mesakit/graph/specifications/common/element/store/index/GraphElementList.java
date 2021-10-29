@@ -37,20 +37,20 @@ final class GraphElementList<T extends GraphElement> implements Iterable<T>
 
     private LongArray identifiers;
 
-    public GraphElementList(final GraphElementSpatialIndex<T> index, final Estimate initialSize)
+    public GraphElementList(GraphElementSpatialIndex<T> index, Estimate initialSize)
     {
         this.index = index;
         this.initialSize = initialSize;
     }
 
-    public void add(final T element)
+    public void add(T element)
     {
         identifiers().add(element.identifierAsLong());
     }
 
     public boolean isEmpty()
     {
-        return this.identifiers == null || this.identifiers.isEmpty();
+        return identifiers == null || identifiers.isEmpty();
     }
 
     @Override
@@ -59,7 +59,7 @@ final class GraphElementList<T extends GraphElement> implements Iterable<T>
         return iterator(null, null);
     }
 
-    public Iterator<T> iterator(final Rectangle bounds, final Matcher<T> matcher)
+    public Iterator<T> iterator(Rectangle bounds, Matcher<T> matcher)
     {
         if (isEmpty())
         {
@@ -67,7 +67,7 @@ final class GraphElementList<T extends GraphElement> implements Iterable<T>
         }
         else
         {
-            final var outer = this;
+            var outer = this;
             return new BaseIterator<>()
             {
                 private final LongIterator identifiers = outer.identifiers.iterator();
@@ -75,9 +75,9 @@ final class GraphElementList<T extends GraphElement> implements Iterable<T>
                 @Override
                 protected T onNext()
                 {
-                    while (this.identifiers.hasNext())
+                    while (identifiers.hasNext())
                     {
-                        final var next = outer.index.forIdentifier(this.identifiers.next());
+                        var next = outer.index.forIdentifier(identifiers.next());
                         if ((bounds == null || next.isInside(bounds)) && (matcher == null || matcher.matches(next)))
                         {
                             return next;
@@ -91,17 +91,17 @@ final class GraphElementList<T extends GraphElement> implements Iterable<T>
 
     public int size()
     {
-        return this.identifiers == null ? 0 : this.identifiers.size();
+        return identifiers == null ? 0 : identifiers.size();
     }
 
     private LongArray identifiers()
     {
-        if (this.identifiers == null)
+        if (identifiers == null)
         {
-            this.identifiers = new LongArray("identifiers");
-            this.identifiers.initialSize(this.initialSize);
-            this.identifiers.initialize();
+            identifiers = new LongArray("identifiers");
+            identifiers.initialSize(initialSize);
+            identifiers.initialize();
         }
-        return this.identifiers;
+        return identifiers;
     }
 }

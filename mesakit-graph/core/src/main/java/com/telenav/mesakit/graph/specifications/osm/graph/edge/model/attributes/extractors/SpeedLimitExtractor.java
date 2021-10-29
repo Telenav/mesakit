@@ -27,15 +27,15 @@ import com.telenav.mesakit.map.measurements.motion.Speed;
 
 public class SpeedLimitExtractor extends BaseExtractor<Speed, PbfTagMap>
 {
-    public SpeedLimitExtractor(final Listener listener)
+    public SpeedLimitExtractor(Listener listener)
     {
         super(listener);
     }
 
     @Override
-    public Speed onExtract(final PbfTagMap tags)
+    public Speed onExtract(PbfTagMap tags)
     {
-        final var maxspeed = tags.get("maxspeed");
+        var maxspeed = tags.get("maxspeed");
         double speed = -1;
         var kph = true;
         if (maxspeed != null)
@@ -43,12 +43,12 @@ public class SpeedLimitExtractor extends BaseExtractor<Speed, PbfTagMap>
             if (maxspeed.endsWith("mph"))
             {
                 var value = Strip.trailing(maxspeed, "mph").trim();
-                final var semicolon = value.lastIndexOf(';');
+                var semicolon = value.lastIndexOf(';');
                 if (semicolon > 0)
                 {
                     value = value.substring(semicolon + 1).trim();
                 }
-                final var dash = value.lastIndexOf('-');
+                var dash = value.lastIndexOf('-');
                 if (dash > 0)
                 {
                     value = value.substring(dash + 1).trim();
@@ -65,7 +65,7 @@ public class SpeedLimitExtractor extends BaseExtractor<Speed, PbfTagMap>
             }
         }
 
-        final var speedUnit = tags.get("speed_unit");
+        var speedUnit = tags.get("speed_unit");
         if (speedUnit != null && !"K".equals(speedUnit))
         {
             kph = false;

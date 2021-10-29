@@ -66,8 +66,8 @@ public class GraphCrawler
      * @param maximumEdges The maximum number of edges to collect
      * @param maximumDistance The maximum distance (as the crow flies) allowable from the start vertex
      */
-    public GraphCrawler(final com.telenav.kivakit.kernel.language.values.count.Maximum maximumEdges,
-                        final Distance maximumDistance, final DistanceMetric metric)
+    public GraphCrawler(com.telenav.kivakit.kernel.language.values.count.Maximum maximumEdges,
+                        Distance maximumDistance, DistanceMetric metric)
     {
         // Save maximum distance
         this.maximumDistance = maximumDistance;
@@ -81,7 +81,7 @@ public class GraphCrawler
      * @param start The vertex to start crawling at
      * @return The set of edges directly or indirectly connected to the starting edge
      */
-    public EdgeSet crawl(final Vertex start)
+    public EdgeSet crawl(Vertex start)
     {
         // Save start vertex
         this.start = start;
@@ -97,7 +97,7 @@ public class GraphCrawler
         while (!itinerary.isEmpty() && visited.count().isLessThan(visited.maximumSize()))
         {
             // get the next edge from the queue,
-            final var next = itinerary.poll();
+            var next = itinerary.poll();
 
             // and if it's acceptable and we haven't already visited it
             if (next != null && accept(next) && !visited.contains(next))
@@ -127,7 +127,7 @@ public class GraphCrawler
         return visited;
     }
 
-    public void progress(final Progress progress)
+    public void progress(Progress progress)
     {
         this.progress = progress;
     }
@@ -136,7 +136,7 @@ public class GraphCrawler
      * @return True if the edge can be visited, false if it should be ignored
      */
     @SuppressWarnings({ "SameReturnValue" })
-    protected boolean accept(final Edge edge)
+    protected boolean accept(Edge edge)
     {
         return true;
     }
@@ -144,12 +144,12 @@ public class GraphCrawler
     /**
      * @return The set of edges to visit from the given vertex
      */
-    protected EdgeSet candidates(final Vertex vertex)
+    protected EdgeSet candidates(Vertex vertex)
     {
         return vertex.edges();
     }
 
-    protected boolean isCloseEnough(final Edge edge)
+    protected boolean isCloseEnough(Edge edge)
     {
         switch (metric)
         {
@@ -164,21 +164,21 @@ public class GraphCrawler
         }
     }
 
-    private boolean isCloseEnough(final Vertex vertex)
+    private boolean isCloseEnough(Vertex vertex)
     {
         return vertex.location().distanceTo(start.location()).isLessThan(maximumDistance);
     }
 
-    private void visit(final Edge next)
+    private void visit(Edge next)
     {
         visit(next.from());
         visit(next.to());
         visited.add(next);
     }
 
-    private void visit(final Vertex vertex)
+    private void visit(Vertex vertex)
     {
-        for (final var edge : candidates(vertex))
+        for (var edge : candidates(vertex))
         {
             if (!visited.contains(edge))
             {

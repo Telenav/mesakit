@@ -67,7 +67,7 @@ public class TimeZone extends Region<TimeZone>
     {
         if (borderCache == null)
         {
-            final var settings = new BorderCache.Settings<TimeZone>()
+            var settings = new BorderCache.Settings<TimeZone>()
                     .withType(TimeZone.class)
                     .withMaximumObjects(RegionLimits.TIME_ZONES)
                     .withMaximumPolygonsPerObject(RegionLimits.POLYGONS_PER_TIME_ZONE)
@@ -79,12 +79,12 @@ public class TimeZone extends Region<TimeZone>
             {
                 @Override
                 protected void assignMultiPolygonIdentity(
-                        final PbfTagMap relationTags,
-                        final Collection<Border<TimeZone>> objects)
+                        PbfTagMap relationTags,
+                        Collection<Border<TimeZone>> objects)
                 {
                     if (relationTags.containsKey("code"))
                     {
-                        for (final var zone : objects)
+                        for (var zone : objects)
                         {
                             zone.region().name(relationTags.get("code"));
                         }
@@ -95,22 +95,22 @@ public class TimeZone extends Region<TimeZone>
         return borderCache;
     }
 
-    public static TimeZone forIdentity(final RegionIdentity identity)
+    public static TimeZone forIdentity(RegionIdentity identity)
     {
         return type(TimeZone.class).forIdentity(identity);
     }
 
-    public static TimeZone forLocation(final Location location)
+    public static TimeZone forLocation(Location location)
     {
         return type(TimeZone.class).forLocation(location);
     }
 
-    public static TimeZone forRegionCode(final RegionCode code)
+    public static TimeZone forRegionCode(RegionCode code)
     {
         return type(TimeZone.class).forRegionCode(code);
     }
 
-    public static SwitchParser.Builder<TimeZone> timeZoneSwitchParser(final String name, final String description)
+    public static SwitchParser.Builder<TimeZone> timeZoneSwitchParser(String name, String description)
     {
         return SwitchParser.builder(TimeZone.class)
                 .name(name)
@@ -118,15 +118,15 @@ public class TimeZone extends Region<TimeZone>
                 .description(description);
     }
 
-    public TimeZone(final RegionInstance<TimeZone> instance)
+    public TimeZone(RegionInstance<TimeZone> instance)
     {
         super(World.INSTANCE, instance.prefix("TimeZone"));
     }
 
     public ZoneId asZoneId()
     {
-        final var code = identity().mesakit().code();
-        final var zone = Paths.tail(code, "TimeZone_");
+        var code = identity().mesakit().code();
+        var zone = Paths.tail(code, "TimeZone_");
         if (zone != null)
         {
             return ZoneId.of(zone);
@@ -154,16 +154,16 @@ public class TimeZone extends Region<TimeZone>
         return new BaseExtractor<>(LOGGER())
         {
             @Override
-            public TimeZone onExtract(final PbfWay way)
+            public TimeZone onExtract(PbfWay way)
             {
-                final var code = code(way, "code");
+                var code = code(way, "code");
                 if (code == null)
                 {
                     LOGGER.glitch("No code found for $", way);
                     return null;
                 }
 
-                final var identity = new RegionIdentity(code.first().code())
+                var identity = new RegionIdentity(code.first().code())
                         .withMesaKitCode(code.first().code());
                 return identity.findOrCreateRegion(TimeZone.class);
             }

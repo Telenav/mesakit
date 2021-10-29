@@ -14,9 +14,9 @@ import com.telenav.mesakit.graph.query.program.Node;
  */
 public class BooleanAttribute extends Node implements BooleanExpression
 {
-    public static BooleanAttribute parse(final String attributeName)
+    public static BooleanAttribute parse(String attributeName)
     {
-        final var method = Type.forClass(Edge.class).property(attributeName);
+        var method = Type.forClass(Edge.class).property(attributeName);
         if (method == null || (method.type().type() != Boolean.class && method.type().type() != Boolean.TYPE))
         {
             return null;
@@ -26,7 +26,7 @@ public class BooleanAttribute extends Node implements BooleanExpression
 
     private final Property method;
 
-    public BooleanAttribute(final Property method)
+    public BooleanAttribute(Property method)
     {
         this.method = method;
     }
@@ -37,8 +37,8 @@ public class BooleanAttribute extends Node implements BooleanExpression
     @Override
     public boolean evaluate()
     {
-        final var value = method.get(stack().top());
-        final var result = value != null && (Boolean) value;
+        var value = method.get(stack().top());
+        var result = value != null && (Boolean) value;
         trace("Attribute $ is $", code(), result);
         return result;
     }

@@ -33,19 +33,19 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupport
 @UmlRelation(label = "indexes", referent = Border.class, referentCardinality = "1+")
 public class BorderSpatialIndex<T extends Region<T>> extends RTreeSpatialIndex<Border<T>>
 {
-    public BorderSpatialIndex(final String objectName, final RTreeSettings settings)
+    public BorderSpatialIndex(String objectName, RTreeSettings settings)
     {
         super(objectName, settings);
     }
 
     @Override
-    public void add(final Border<T> element)
+    public void add(Border<T> element)
     {
         unsupported("BorderSpatialIndex only supports bulk loading of elements");
     }
 
     @Override
-    public Leaf<Border<T>> newLeaf(final InteriorNode<Border<T>> parent)
+    public Leaf<Border<T>> newLeaf(InteriorNode<Border<T>> parent)
     {
         return new BorderLeaf<>(this, parent);
     }

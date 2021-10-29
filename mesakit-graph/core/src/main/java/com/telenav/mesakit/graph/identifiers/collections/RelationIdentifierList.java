@@ -35,39 +35,39 @@ public class RelationIdentifierList extends ObjectList<MapRelationIdentifier>
     {
         private final Separators separators;
 
-        public Converter(final Listener listener, final Separators separators)
+        public Converter(Listener listener, Separators separators)
         {
             super(listener);
             this.separators = separators;
         }
 
         @Override
-        protected RelationIdentifierList onToValue(final String value)
+        protected String onToString(RelationIdentifierList value)
         {
-            final var split = StringList.split(value, separators.current());
-            final var identifiers = new ObjectList<MapRelationIdentifier>();
-            final var converter = new PbfRelationIdentifier.Converter(this);
-            for (final var at : split)
+            return value.join(separators.current());
+        }
+
+        @Override
+        protected RelationIdentifierList onToValue(String value)
+        {
+            var split = StringList.split(value, separators.current());
+            var identifiers = new ObjectList<MapRelationIdentifier>();
+            var converter = new PbfRelationIdentifier.Converter(this);
+            for (var at : split)
             {
                 identifiers.add(converter.convert(at));
             }
             return new RelationIdentifierList(identifiers);
         }
-
-        @Override
-        protected String onToString(final RelationIdentifierList value)
-        {
-            return value.join(separators.current());
-        }
     }
 
-    public RelationIdentifierList(final List<MapRelationIdentifier> identifiers)
+    public RelationIdentifierList(List<MapRelationIdentifier> identifiers)
     {
         super(Maximum.maximum(identifiers.size()));
         appendAll(identifiers);
     }
 
-    public RelationIdentifierList(final Maximum maximumSize)
+    public RelationIdentifierList(Maximum maximumSize)
     {
         super(maximumSize);
     }

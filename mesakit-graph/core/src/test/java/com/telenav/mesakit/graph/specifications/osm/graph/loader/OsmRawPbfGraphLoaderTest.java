@@ -34,13 +34,13 @@ public class OsmRawPbfGraphLoaderTest
     }
 
     @SuppressWarnings("SameParameterValue")
-    private long getLongValue1(final String str)
+    private long getLongValue1(String str)
     {
         return BigDecimal.valueOf(Double.parseDouble(str)).multiply(BigDecimal.valueOf(100)).longValue();
     }
 
     @SuppressWarnings("SameParameterValue")
-    private long getLongValue2(final String str)
+    private long getLongValue2(String str)
     {
         return (long) (Double.parseDouble(str) * 100);
     }

@@ -43,26 +43,26 @@ public abstract class BaseMapDrawable extends BaseDrawable implements MapDrawabl
 {
     private Location location;
 
-    public BaseMapDrawable(final Style style,
-                           final Location location)
+    public BaseMapDrawable(Style style,
+                           Location location)
     {
         super(style);
         this.location = location;
     }
 
-    public BaseMapDrawable(final BaseMapDrawable that)
+    public BaseMapDrawable(BaseMapDrawable that)
     {
         super(that);
         location = that.location;
     }
 
-    protected BaseMapDrawable(final Style style)
+    protected BaseMapDrawable(Style style)
     {
         super(style);
     }
 
     @Override
-    public final Shape draw(final DrawingSurface surface)
+    public final Shape draw(DrawingSurface surface)
     {
         return onDraw((MapCanvas) surface);
     }
@@ -73,81 +73,81 @@ public abstract class BaseMapDrawable extends BaseDrawable implements MapDrawabl
         return location;
     }
 
-    public abstract Shape onDraw(final MapCanvas canvas);
+    public abstract Shape onDraw(MapCanvas canvas);
 
     @Override
-    public BaseMapDrawable withColors(final Style style)
+    public BaseMapDrawable withColors(Style style)
     {
         return (BaseMapDrawable) super.withColors(style);
     }
 
     @Override
-    public BaseMapDrawable withDrawColor(final Color color)
+    public BaseMapDrawable withDrawColor(Color color)
     {
         return (BaseMapDrawable) super.withDrawColor(color);
     }
 
     @Override
-    public BaseMapDrawable withDrawStroke(final Stroke stroke)
+    public BaseMapDrawable withDrawStroke(Stroke stroke)
     {
         return (BaseMapDrawable) super.withDrawStroke(stroke);
     }
 
     @Override
-    public BaseMapDrawable withDrawStrokeWidth(final DrawingWidth width)
+    public BaseMapDrawable withDrawStrokeWidth(DrawingWidth width)
     {
         return (BaseMapDrawable) super.withDrawStrokeWidth(width);
     }
 
-    public BaseMapDrawable withDrawStrokeWidth(final Distance width)
+    public BaseMapDrawable withDrawStrokeWidth(Distance width)
     {
         return withDrawStroke(MapStroke.stroke(width));
     }
 
     @Override
-    public BaseMapDrawable withFillColor(final Color color)
+    public BaseMapDrawable withFillColor(Color color)
     {
         return (BaseMapDrawable) super.withFillColor(color);
     }
 
     @Override
-    public BaseMapDrawable withFillStroke(final Stroke stroke)
+    public BaseMapDrawable withFillStroke(Stroke stroke)
     {
         return (BaseMapDrawable) super.withFillStroke(stroke);
     }
 
     @Override
-    public BaseMapDrawable withFillStrokeWidth(final DrawingWidth width)
+    public BaseMapDrawable withFillStrokeWidth(DrawingWidth width)
     {
         return (BaseMapDrawable) super.withFillStrokeWidth(width);
     }
 
-    public BaseMapDrawable withFillStrokeWidth(final Distance width)
+    public BaseMapDrawable withFillStrokeWidth(Distance width)
     {
         return withFillStroke(MapStroke.stroke(width));
     }
 
     @Override
-    public BaseMapDrawable withLocation(final Location at)
+    public BaseMapDrawable withLocation(Location at)
     {
-        final var copy = (BaseMapDrawable) copy();
+        var copy = (BaseMapDrawable) copy();
         copy.location = at;
         return copy;
     }
 
     @Override
-    public BaseMapDrawable withStyle(final Style style)
+    public BaseMapDrawable withStyle(Style style)
     {
         return (BaseMapDrawable) super.withStyle(style);
     }
 
     @Override
-    public BaseMapDrawable withTextColor(final Color color)
+    public BaseMapDrawable withTextColor(Color color)
     {
         return (BaseMapDrawable) super.withTextColor(color);
     }
 
-    protected DrawingPoint at(final MapCanvas surface)
+    protected DrawingPoint at(MapCanvas surface)
     {
         var at = withLocation();
         if (at == null)

@@ -39,7 +39,7 @@ public class GeographyRandomValueFactory extends MeasurementsRandomValueFactory
     {
     }
 
-    public GeographyRandomValueFactory(final long seed)
+    public GeographyRandomValueFactory(long seed)
     {
         super(seed);
     }
@@ -54,12 +54,12 @@ public class GeographyRandomValueFactory extends MeasurementsRandomValueFactory
      * @param max The maximum value (exclusive)
      * @return A latitude value greater than or equal to the minimum and less than the maximum.
      */
-    public Latitude newLatitude(final Latitude min, final Latitude max)
+    public Latitude newLatitude(Latitude min, Latitude max)
     {
-        final var minimum = min.maximum(MINIMUM_LATITUDE).asMicrodegrees();
-        final var maximum = max.minimum(MAXIMUM_LATITUDE).asMicrodegrees();
-        final var difference = maximum - minimum;
-        final var offset = random.nextInt(difference);
+        var minimum = min.maximum(MINIMUM_LATITUDE).asMicrodegrees();
+        var maximum = max.minimum(MAXIMUM_LATITUDE).asMicrodegrees();
+        var difference = maximum - minimum;
+        var offset = random.nextInt(difference);
         return Latitude.microdegrees(minimum + offset);
     }
 
@@ -72,10 +72,10 @@ public class GeographyRandomValueFactory extends MeasurementsRandomValueFactory
      * @param bounds The bounding region that should contain the location
      * @return A location within the bounding region
      */
-    public Location newLocation(final Rectangle bounds)
+    public Location newLocation(Rectangle bounds)
     {
-        final var latitude = newLatitude(bounds.bottom(), bounds.top());
-        final var longitude = newLongitude(bounds.left(), bounds.right());
+        var latitude = newLatitude(bounds.bottom(), bounds.top());
+        var longitude = newLongitude(bounds.left(), bounds.right());
         return new Location(latitude, longitude);
     }
 
@@ -89,12 +89,12 @@ public class GeographyRandomValueFactory extends MeasurementsRandomValueFactory
      * @param max The maximum value (exclusive)
      * @return A longitude value greater than or equal to the minimum and less than the maximum.
      */
-    public Longitude newLongitude(final Longitude min, final Longitude max)
+    public Longitude newLongitude(Longitude min, Longitude max)
     {
-        final var minimum = min.asMicrodegrees();
-        final var maximum = max.asMicrodegrees();
-        final var difference = maximum - minimum;
-        final var offset = random.nextInt(difference);
+        var minimum = min.asMicrodegrees();
+        var maximum = max.asMicrodegrees();
+        var difference = maximum - minimum;
+        var offset = random.nextInt(difference);
         return Longitude.microdegrees(minimum + offset);
     }
 
@@ -107,33 +107,33 @@ public class GeographyRandomValueFactory extends MeasurementsRandomValueFactory
      * @param bounds The boundary within which to create a new rectangle
      * @return A new rectangle contained within the specified bounds.
      */
-    public Rectangle newRectangle(final Rectangle bounds)
+    public Rectangle newRectangle(Rectangle bounds)
     {
         return Rectangle.fromLocations(newLocation(bounds), newLocation(bounds));
     }
 
-    public Rectangle newRectangle(final Rectangle bounds, final Distance maximumRadius)
+    public Rectangle newRectangle(Rectangle bounds, Distance maximumRadius)
     {
         return Rectangle.fromCenterAndRadius(newLocation(bounds), newDistance(Distance.MINIMUM, maximumRadius));
     }
 
-    public Size newSize(final Size maximum)
+    public Size newSize(Size maximum)
     {
         return newSize(Size.ZERO, maximum);
     }
 
-    public Size newSize(final Size min, final Size max)
+    public Size newSize(Size min, Size max)
     {
-        final var minimumHeight = min.height().asMicrodegrees();
-        final var maximumHeight = max.height().asMicrodegrees();
-        final var minimumWidth = min.width().asMicrodegrees();
-        final var maximumWidth = max.width().asMicrodegrees();
+        var minimumHeight = min.height().asMicrodegrees();
+        var maximumHeight = max.height().asMicrodegrees();
+        var minimumWidth = min.width().asMicrodegrees();
+        var maximumWidth = max.width().asMicrodegrees();
 
-        final var heightDifference = maximumHeight - minimumHeight;
-        final var widthDifference = maximumWidth - minimumWidth;
+        var heightDifference = maximumHeight - minimumHeight;
+        var widthDifference = maximumWidth - minimumWidth;
 
-        final var heightOffset = random.nextInt(heightDifference);
-        final var widthOffset = random.nextInt(widthDifference);
+        var heightOffset = random.nextInt(heightDifference);
+        var widthOffset = random.nextInt(widthDifference);
 
         return new Size(Width.microdegrees(minimumWidth + widthOffset),
                 Height.microdegrees(minimumHeight + heightOffset));

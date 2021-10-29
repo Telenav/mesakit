@@ -30,7 +30,7 @@ public class MetropolitanAreaLoader extends RegionalGraphLoader
 
     private final MetropolitanArea metropolitanArea;
 
-    public MetropolitanAreaLoader(final Graph source, final MetropolitanArea metropolitanArea)
+    public MetropolitanAreaLoader(Graph source, MetropolitanArea metropolitanArea)
     {
         this.source = source;
         this.metropolitanArea = metropolitanArea;
@@ -39,19 +39,19 @@ public class MetropolitanAreaLoader extends RegionalGraphLoader
     @Override
     protected EdgeSequence forwardEdges()
     {
-        return this.source.edgesIntersecting(this.metropolitanArea.bounds(), edge -> !edge.isReverse()
-                && MetropolitanAreaLoader.this.metropolitanArea.equals(edge.metropolitanArea()));
+        return source.edgesIntersecting(metropolitanArea.bounds(), edge -> !edge.isReverse()
+                && metropolitanArea.equals(edge.metropolitanArea()));
     }
 
     @Override
     protected Iterable<Place> places()
     {
-        return this.source.placesInside(this.metropolitanArea);
+        return source.placesInside(metropolitanArea);
     }
 
     @Override
     protected Graph sourceGraph()
     {
-        return this.source;
+        return source;
     }
 }

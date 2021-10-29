@@ -73,8 +73,8 @@ public class RelationSet implements Set<EdgeRelation>
      * @return A relation set for a collection of relations
      */
     @SuppressWarnings({ "unchecked" })
-    public static RelationSet forCollection(final Maximum maximumSize,
-                                            final Collection<? extends EdgeRelation> collection)
+    public static RelationSet forCollection(Maximum maximumSize,
+                                            Collection<? extends EdgeRelation> collection)
     {
         if (collection instanceof Set)
         {
@@ -82,19 +82,19 @@ public class RelationSet implements Set<EdgeRelation>
         }
         else
         {
-            final var set = new RelationSet(maximumSize, Estimate.estimate(collection));
+            var set = new RelationSet(maximumSize, Estimate.estimate(collection));
             set.addAll(collection);
             return set;
         }
     }
 
-    public static RelationSet forIdentifierArray(final Graph graph, final LongArray identifiers)
+    public static RelationSet forIdentifierArray(Graph graph, LongArray identifiers)
     {
-        final var relations = new RelationSet(Limit.RELATIONS, Estimate._16);
-        final var iterator = identifiers.iterator();
+        var relations = new RelationSet(Limit.RELATIONS, Estimate._16);
+        var iterator = identifiers.iterator();
         while (iterator.hasNext())
         {
-            final var identifier = iterator.next();
+            var identifier = iterator.next();
             relations.add(graph.relationForIdentifier(new RelationIdentifier(identifier)));
         }
         return relations;
@@ -103,10 +103,10 @@ public class RelationSet implements Set<EdgeRelation>
     /**
      * @return A relation set for a sequence of relations
      */
-    public static RelationSet forIterable(final Maximum maximum, final Iterable<? extends EdgeRelation> collection)
+    public static RelationSet forIterable(Maximum maximum, Iterable<? extends EdgeRelation> collection)
     {
-        final var set = new RelationSet(maximum, Estimate.estimate(collection));
-        for (final EdgeRelation relation : collection)
+        var set = new RelationSet(maximum, Estimate.estimate(collection));
+        for (EdgeRelation relation : collection)
         {
             set.add(relation);
         }
@@ -116,12 +116,12 @@ public class RelationSet implements Set<EdgeRelation>
     /**
      * @return A relation set containing a single relation
      */
-    public static RelationSet singleton(final EdgeRelation relation)
+    public static RelationSet singleton(EdgeRelation relation)
     {
         return new RelationSet(Maximum._1, Estimate._1, Collections.singleton(relation));
     }
 
-    public static RelationSet threadSafe(final Maximum maximumSize)
+    public static RelationSet threadSafe(Maximum maximumSize)
     {
         return new RelationSet(maximumSize, Estimate._1024, Collections.synchronizedSet(new HashSet<>()));
     }
@@ -132,7 +132,7 @@ public class RelationSet implements Set<EdgeRelation>
 
         private final Separators separators;
 
-        public Converter(final Graph graph, final Separators separators, final Listener listener)
+        public Converter(Graph graph, Separators separators, Listener listener)
         {
             super(listener);
             this.separators = separators;
@@ -140,23 +140,23 @@ public class RelationSet implements Set<EdgeRelation>
         }
 
         @Override
-        protected RelationSet onToValue(final String value)
+        protected String onToString(RelationSet value)
         {
-            final var relations = new RelationSet(Limit.RELATIONS, Estimate._16);
+            return value.joinedIdentifiers(separators.current());
+        }
+
+        @Override
+        protected RelationSet onToValue(String value)
+        {
+            var relations = new RelationSet(Limit.RELATIONS, Estimate._16);
             if (!Strings.isEmpty(value))
             {
-                for (final var relation : value.split(separators.current()))
+                for (var relation : value.split(separators.current()))
                 {
                     relations.add(converter.convert(relation));
                 }
             }
             return relations;
-        }
-
-        @Override
-        protected String onToString(final RelationSet value)
-        {
-            return value.joinedIdentifiers(separators.current());
         }
     }
 
@@ -178,7 +178,7 @@ public class RelationSet implements Set<EdgeRelation>
     /**
      * Constructs a relation set with the given maximum size
      */
-    public RelationSet(final Estimate initialSize)
+    public RelationSet(Estimate initialSize)
     {
         this(Maximum.MAXIMUM, initialSize, new HashSet<>());
     }
@@ -186,7 +186,7 @@ public class RelationSet implements Set<EdgeRelation>
     /**
      * Constructs a relation set with the given maximum size
      */
-    public RelationSet(final Maximum maximumSize, final Estimate initialSize)
+    public RelationSet(Maximum maximumSize, Estimate initialSize)
     {
         this(maximumSize, initialSize, new HashSet<>());
     }
@@ -194,7 +194,7 @@ public class RelationSet implements Set<EdgeRelation>
     /**
      * Constructs a relation set with an underlying set of relations
      */
-    public RelationSet(final Maximum maximumSize, final Estimate initialSize, final Set<EdgeRelation> relations)
+    public RelationSet(Maximum maximumSize, Estimate initialSize, Set<EdgeRelation> relations)
     {
         this.maximumSize = maximumSize;
         this.initialSize = initialSize;
@@ -205,7 +205,7 @@ public class RelationSet implements Set<EdgeRelation>
      * Adds the given relation to this set
      */
     @Override
-    public boolean add(final EdgeRelation relation)
+    public boolean add(EdgeRelation relation)
     {
         if (relations.size() == maximumSize.asInt())
         {
@@ -220,10 +220,10 @@ public class RelationSet implements Set<EdgeRelation>
      * Adds all relations in the given collection to this relation set
      */
     @Override
-    public boolean addAll(final Collection<? extends EdgeRelation> relations)
+    public boolean addAll(Collection<? extends EdgeRelation> relations)
     {
         var changed = false;
-        for (final EdgeRelation relation : relations)
+        for (EdgeRelation relation : relations)
         {
             changed = add(relation) || changed;
         }
@@ -233,9 +233,9 @@ public class RelationSet implements Set<EdgeRelation>
     /**
      * Adds all relations in the given array to this relation set
      */
-    public void addAll(final EdgeRelation[] relations)
+    public void addAll(EdgeRelation[] relations)
     {
-        for (final var relation : relations)
+        for (var relation : relations)
         {
             add(relation);
         }
@@ -248,7 +248,7 @@ public class RelationSet implements Set<EdgeRelation>
     {
         // Determine if all relations are already heavyweight
         var heavyweight = true;
-        for (final var relation : this)
+        for (var relation : this)
         {
             if (!(relation instanceof HeavyWeightRelation))
             {
@@ -265,8 +265,8 @@ public class RelationSet implements Set<EdgeRelation>
         }
 
         // Return a copy of this set as temporary relations
-        final var copy = new RelationSet(maximumSize(), initialSize());
-        for (final var relation : this)
+        var copy = new RelationSet(maximumSize(), initialSize());
+        for (var relation : this)
         {
             copy.add(relation.asHeavyWeight());
         }
@@ -278,8 +278,8 @@ public class RelationSet implements Set<EdgeRelation>
      */
     public LongArray asIdentifierArray()
     {
-        final var identifiers = new LongArray("temporary");
-        for (final var relation : relations)
+        var identifiers = new LongArray("temporary");
+        for (var relation : relations)
         {
             identifiers.add(relation.identifierAsLong());
         }
@@ -315,7 +315,7 @@ public class RelationSet implements Set<EdgeRelation>
      * {@inheritDoc}
      */
     @Override
-    public boolean contains(final Object value)
+    public boolean contains(Object value)
     {
         if (value instanceof EdgeRelation)
         {
@@ -328,9 +328,9 @@ public class RelationSet implements Set<EdgeRelation>
      * {@inheritDoc}
      */
     @Override
-    public boolean containsAll(final Collection<?> relations)
+    public boolean containsAll(Collection<?> relations)
     {
-        for (final Object object : relations)
+        for (Object object : relations)
         {
             if (!contains(object))
             {
@@ -343,9 +343,9 @@ public class RelationSet implements Set<EdgeRelation>
     /**
      * @return True if this set contains any relation in the given collection
      */
-    public boolean containsAny(final Collection<EdgeRelation> relations)
+    public boolean containsAny(Collection<EdgeRelation> relations)
     {
-        for (final var relation : relations)
+        for (var relation : relations)
         {
             if (contains(relation))
             {
@@ -367,11 +367,11 @@ public class RelationSet implements Set<EdgeRelation>
      * {@inheritDoc}
      */
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof RelationSet)
         {
-            final var that = (RelationSet) object;
+            var that = (RelationSet) object;
             return relations.equals(that.relations);
         }
         return false;
@@ -392,7 +392,7 @@ public class RelationSet implements Set<EdgeRelation>
     /**
      * Determines if this EdgeRelationSet has any matching relations
      */
-    public boolean hasMatch(final Matcher<EdgeRelation> matcher)
+    public boolean hasMatch(Matcher<EdgeRelation> matcher)
     {
         return !matching(matcher).isEmpty();
     }
@@ -414,7 +414,7 @@ public class RelationSet implements Set<EdgeRelation>
     /**
      * @return The set of all relations in this set that are also in the given set
      */
-    public RelationSet intersection(final RelationSet that)
+    public RelationSet intersection(RelationSet that)
     {
         return new RelationSet(maximumSize(), initialSize(), new Intersection<>(this, that));
     }
@@ -431,7 +431,6 @@ public class RelationSet implements Set<EdgeRelation>
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("NullableProblems")
     @Override
     public Iterator<EdgeRelation> iterator()
     {
@@ -442,12 +441,12 @@ public class RelationSet implements Set<EdgeRelation>
      * @return All the relation identifiers in this relation set joined into a string using the given separator. The
      * order of identifiers is undefined.
      */
-    public String joinedIdentifiers(final String separator)
+    public String joinedIdentifiers(String separator)
     {
         return Join.join(this, separator, new BaseConverter<>(new ThrowingListener())
         {
             @Override
-            protected String onConvert(final EdgeRelation value)
+            protected String onConvert(EdgeRelation value)
             {
                 return Long.toString(value.identifierAsLong());
             }
@@ -460,7 +459,7 @@ public class RelationSet implements Set<EdgeRelation>
     public Distance length()
     {
         var totalLengthInMillimeters = 0L;
-        for (final var relation : this)
+        for (var relation : this)
         {
             totalLengthInMillimeters += relation.length().asMillimeters();
         }
@@ -470,7 +469,7 @@ public class RelationSet implements Set<EdgeRelation>
     /**
      * @return The set of all matching relations
      */
-    public RelationSet matching(final Matcher<EdgeRelation> matcher)
+    public RelationSet matching(Matcher<EdgeRelation> matcher)
     {
         return new RelationSet(maximumSize(), initialSize(), new Subset<>(this, matcher));
     }
@@ -489,7 +488,7 @@ public class RelationSet implements Set<EdgeRelation>
     public EdgeRelation mostImportant()
     {
         EdgeRelation important = null;
-        for (final var relation : this)
+        for (var relation : this)
         {
             if (important == null || relation.isMoreImportantThan(important))
             {
@@ -501,8 +500,8 @@ public class RelationSet implements Set<EdgeRelation>
 
     public Set<MapRelationIdentifier> relationIdentifiers()
     {
-        final Set<MapRelationIdentifier> identifiers = new HashSet<>();
-        for (final var relation : this)
+        Set<MapRelationIdentifier> identifiers = new HashSet<>();
+        for (var relation : this)
         {
             identifiers.add((MapRelationIdentifier) relation.mapIdentifier());
         }
@@ -513,7 +512,7 @@ public class RelationSet implements Set<EdgeRelation>
      * {@inheritDoc}
      */
     @Override
-    public boolean remove(final Object object)
+    public boolean remove(Object object)
     {
         if (object instanceof EdgeRelation)
         {
@@ -526,9 +525,9 @@ public class RelationSet implements Set<EdgeRelation>
      * {@inheritDoc}
      */
     @Override
-    public boolean removeAll(final Collection<?> relations)
+    public boolean removeAll(Collection<?> relations)
     {
-        for (final Object relation : relations)
+        for (Object relation : relations)
         {
             remove(relation);
         }
@@ -540,7 +539,7 @@ public class RelationSet implements Set<EdgeRelation>
      */
     @SuppressWarnings("NullableProblems")
     @Override
-    public boolean retainAll(final Collection<?> relations)
+    public boolean retainAll(Collection<?> relations)
     {
         return unsupported();
     }
@@ -560,7 +559,7 @@ public class RelationSet implements Set<EdgeRelation>
         return Streams.stream(this);
     }
 
-    public Stream<EdgeRelation> stream(final Processing processing)
+    public Stream<EdgeRelation> stream(Processing processing)
     {
         return Streams.stream(processing, this);
     }
@@ -578,7 +577,7 @@ public class RelationSet implements Set<EdgeRelation>
      * {@inheritDoc}
      */
     @Override
-    public <T> T[] toArray(final T[] a)
+    public <T> T[] toArray(T[] a)
     {
         return unsupported();
     }
@@ -595,7 +594,7 @@ public class RelationSet implements Set<EdgeRelation>
     /**
      * @return The union of this relation set with another set of relations
      */
-    public RelationSet union(final RelationSet relations)
+    public RelationSet union(RelationSet relations)
     {
         return new RelationSet(maximumSize(), initialSize(), new Union<>(this, relations));
     }
@@ -603,7 +602,7 @@ public class RelationSet implements Set<EdgeRelation>
     /**
      * @return The set of relations within the given bounds
      */
-    public RelationSet within(final Rectangle bounds)
+    public RelationSet within(Rectangle bounds)
     {
         return matching(relation -> bounds.intersects(relation.bounds()));
     }
@@ -611,7 +610,7 @@ public class RelationSet implements Set<EdgeRelation>
     /**
      * @return This set of relations without the given relation
      */
-    public RelationSet without(final EdgeRelation exclude)
+    public RelationSet without(EdgeRelation exclude)
     {
         return without(Collections.singleton(exclude));
     }
@@ -619,7 +618,7 @@ public class RelationSet implements Set<EdgeRelation>
     /**
      * @return The set of all relations that don't match
      */
-    public RelationSet without(final Matcher<EdgeRelation> matcher)
+    public RelationSet without(Matcher<EdgeRelation> matcher)
     {
         return new RelationSet(maximumSize(), initialSize(),
                 new Subset<>(this, relation -> !matcher.matches(relation)));
@@ -628,7 +627,7 @@ public class RelationSet implements Set<EdgeRelation>
     /**
      * @return This set of relations without the given set of relations
      */
-    public RelationSet without(final Set<EdgeRelation> exclude)
+    public RelationSet without(Set<EdgeRelation> exclude)
     {
         return new RelationSet(maximumSize(), initialSize(), new Without<>(this, exclude));
     }

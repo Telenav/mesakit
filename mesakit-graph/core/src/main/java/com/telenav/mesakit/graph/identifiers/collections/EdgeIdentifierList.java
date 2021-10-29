@@ -34,41 +34,41 @@ public class EdgeIdentifierList extends ObjectList<EdgeIdentifier>
     {
         private final Separators separators;
 
-        public Converter(final Listener listener, final Separators separators)
+        public Converter(Listener listener, Separators separators)
         {
             super(listener);
             this.separators = separators;
         }
 
         @Override
-        protected EdgeIdentifierList onToValue(final String value)
+        protected String onToString(EdgeIdentifierList value)
+        {
+            return value.join(separators.current());
+        }
+
+        @Override
+        protected EdgeIdentifierList onToValue(String value)
         {
             return new EdgeIdentifierList(StringList.split(value, separators.current())
                     .asObjectList(new EdgeIdentifier.Converter(this)));
         }
-
-        @Override
-        protected String onToString(final EdgeIdentifierList value)
-        {
-            return value.join(separators.current());
-        }
     }
 
-    public EdgeIdentifierList(final List<EdgeIdentifier> identifiers)
+    public EdgeIdentifierList(List<EdgeIdentifier> identifiers)
     {
         super(Maximum.maximum(identifiers.size()));
         appendAll(identifiers);
     }
 
-    public EdgeIdentifierList(final Maximum maximumSize)
+    public EdgeIdentifierList(Maximum maximumSize)
     {
         super(maximumSize);
     }
 
     public WayIdentifierList asPbfWayIdentifierList()
     {
-        final var identifiers = new WayIdentifierList(Maximum.MAXIMUM);
-        for (final var identifier : this)
+        var identifiers = new WayIdentifierList(Maximum.MAXIMUM);
+        for (var identifier : this)
         {
             identifiers.add(identifier.asWayIdentifier());
         }

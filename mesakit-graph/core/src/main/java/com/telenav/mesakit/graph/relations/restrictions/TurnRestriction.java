@@ -45,17 +45,17 @@ public class TurnRestriction
         ONLY_RIGHT(Prohibition.ONLY),
         ONLY_STRAIGHT_ON(Prohibition.ONLY);
 
-        public static Type forEdgeRelation(final EdgeRelation relation)
+        public static Type forEdgeRelation(EdgeRelation relation)
         {
             String value = null;
-            final var restriction = relation.tagValue("restriction");
+            var restriction = relation.tagValue("restriction");
             if (restriction != null)
             {
                 value = restriction;
             }
             else
             {
-                final var conditional = relation.tagValue("restriction:conditional");
+                var conditional = relation.tagValue("restriction:conditional");
                 if (conditional != null)
                 {
                     value = conditional;
@@ -64,9 +64,9 @@ public class TurnRestriction
             return forTagValue(value);
         }
 
-        public static Type forHeadings(final Prohibition prohibition, final Heading in, final Heading out)
+        public static Type forHeadings(Prohibition prohibition, Heading in, Heading out)
         {
-            final var type = TwoHeadingTurnClassifier.DEFAULT.type(in, out);
+            var type = TwoHeadingTurnClassifier.DEFAULT.type(in, out);
             if (type != null)
             {
                 switch (type)
@@ -140,7 +140,7 @@ public class TurnRestriction
 
         private final Prohibition prohibition;
 
-        Type(final Prohibition prohibition)
+        Type(Prohibition prohibition)
         {
             this.prohibition = prohibition;
         }
@@ -169,7 +169,7 @@ public class TurnRestriction
 
     private final Route to;
 
-    public TurnRestriction(final EdgeRelation relation, final Route from, final Route via, final Route to)
+    public TurnRestriction(EdgeRelation relation, Route from, Route via, Route to)
     {
         type = Type.forEdgeRelation(relation);
         this.from = from;
@@ -226,7 +226,7 @@ public class TurnRestriction
 
     public List<Route> routes()
     {
-        final var edges = new EdgeSet();
+        var edges = new EdgeSet();
         edges.add(from);
         edges.add(to);
         edges.add(via);

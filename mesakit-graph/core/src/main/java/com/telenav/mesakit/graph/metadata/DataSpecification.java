@@ -110,8 +110,8 @@ public abstract class DataSpecification implements NamedObject
 
     private static final Debug DEBUG = new Debug(LOGGER);
 
-    public static SwitchParser.Builder<DataSpecification> dataSpecificationSwitchParser(final String name,
-                                                                                        final String description)
+    public static SwitchParser.Builder<DataSpecification> dataSpecificationSwitchParser(String name,
+                                                                                        String description)
     {
         return SwitchParser.builder(DataSpecification.class).name(name).converter(new Converter(LOGGER))
                 .description(description);
@@ -145,12 +145,12 @@ public abstract class DataSpecification implements NamedObject
                     fail("Unrecognized data specification '$'", name);
             }
 
-            final var className = "com.telenav.mesakit.graph.specifications." + name.toLowerCase() + "." + name + "DataSpecification";
-            final var type = Class.forName(className);
-            final var getter = type.getMethod("get");
+            var className = "com.telenav.mesakit.graph.specifications." + name.toLowerCase() + "." + name + "DataSpecification";
+            var type = Class.forName(className);
+            var getter = type.getMethod("get");
             return (DataSpecification) getter.invoke(null);
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             illegalArgument("Unable to find DataSpecification class '$'", name);
         }
@@ -175,7 +175,7 @@ public abstract class DataSpecification implements NamedObject
         UniDb;
 
         @Override
-        public boolean matches(final Type type)
+        public boolean matches(Type type)
         {
             return this == type;
         }
@@ -188,13 +188,13 @@ public abstract class DataSpecification implements NamedObject
 
     public static class Converter extends BaseStringConverter<DataSpecification>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected DataSpecification onToValue(final String value)
+        protected DataSpecification onToValue(String value)
         {
             return parse(value);
         }
@@ -223,8 +223,8 @@ public abstract class DataSpecification implements NamedObject
      */
     public AttributeList attributes()
     {
-        final var attributes = new AttributeList();
-        for (final var store : storeAttributes.keySet())
+        var attributes = new AttributeList();
+        for (var store : storeAttributes.keySet())
         {
             attributes.addAll(attributes(store));
         }
@@ -234,18 +234,18 @@ public abstract class DataSpecification implements NamedObject
     /**
      * @return All attributes supported by this specification
      */
-    public AttributeList attributes(final Class<? extends AttributeStore> store)
+    public AttributeList attributes(Class<? extends AttributeStore> store)
     {
-        final var attributes = storeAttributes.get(store);
+        var attributes = storeAttributes.get(store);
         return attributes == null ? new AttributeList() : new AttributeList(attributes);
     }
 
-    public Differences compare(final Edge a, final Edge b)
+    public Differences compare(Edge a, Edge b)
     {
         return new EdgeDifferences(a, b);
     }
 
-    public Differences compare(final Place a, final Place b)
+    public Differences compare(Place a, Place b)
     {
         return new PlaceDifferences(a, b);
     }
@@ -263,7 +263,7 @@ public abstract class DataSpecification implements NamedObject
     /**
      * Removes the given attribute to this data specification as supported by it
      */
-    public void excludeAttribute(final Attribute<?> attribute)
+    public void excludeAttribute(Attribute<?> attribute)
     {
         supportedAttributes.set(attribute.identifier(), 0);
         excludedAttributes.add(attribute);
@@ -280,22 +280,22 @@ public abstract class DataSpecification implements NamedObject
         return type() == Type.UniDb;
     }
 
-    public final Edge newEdge(final Graph graph, final long identifier)
+    public final Edge newEdge(Graph graph, long identifier)
     {
         return onNewEdge(graph, identifier);
     }
 
-    public final Edge newEdge(final Graph graph, final long identifier, final int index)
+    public final Edge newEdge(Graph graph, long identifier, int index)
     {
         return onNewEdge(graph, identifier, index);
     }
 
-    public EdgeStore newEdgeStore(final Graph graph)
+    public EdgeStore newEdgeStore(Graph graph)
     {
         return unsupported();
     }
 
-    public final Graph newGraph(final Metadata metadata)
+    public final Graph newGraph(Metadata metadata)
     {
         metadata.assertValid(Metadata.VALIDATE_EXCEPT_STATISTICS);
         return onNewGraph(metadata);
@@ -305,7 +305,7 @@ public abstract class DataSpecification implements NamedObject
      * @param metadata Metadata describing the data to convert
      * @return A graph converter suitable for converting the data described by metadata to a {@link Graph}
      */
-    public GraphConverter newGraphConverter(final Metadata metadata)
+    public GraphConverter newGraphConverter(Metadata metadata)
     {
         return onNewGraphConverter(metadata);
     }
@@ -314,62 +314,62 @@ public abstract class DataSpecification implements NamedObject
      * @param metadata Metadata describing the data to load
      * @return A graph loader that can load data as described by the given metadata
      */
-    public GraphLoader newGraphLoader(final Metadata metadata)
+    public GraphLoader newGraphLoader(Metadata metadata)
     {
         return onNewGraphLoader(metadata);
     }
 
-    public abstract GraphStore newGraphStore(final Graph graph);
+    public abstract GraphStore newGraphStore(Graph graph);
 
-    public final HeavyWeightEdge newHeavyWeightEdge(final Graph graph, final long identifier)
+    public final HeavyWeightEdge newHeavyWeightEdge(Graph graph, long identifier)
     {
         return onNewHeavyWeightEdge(graph, identifier);
     }
 
-    public final HeavyWeightPlace newHeavyWeightPlace(final Graph graph, final long identifier)
+    public final HeavyWeightPlace newHeavyWeightPlace(Graph graph, long identifier)
     {
         return onNewHeavyWeightPlace(graph, identifier);
     }
 
-    public final HeavyWeightRelation newHeavyWeightRelation(final Graph graph, final long identifier)
+    public final HeavyWeightRelation newHeavyWeightRelation(Graph graph, long identifier)
     {
         return onNewHeavyWeightRelation(graph, identifier);
     }
 
-    public final HeavyWeightVertex newHeavyWeightVertex(final Graph graph, final long identifier)
+    public final HeavyWeightVertex newHeavyWeightVertex(Graph graph, long identifier)
     {
         return onNewHeavyWeightVertex(graph, identifier);
     }
 
-    public final Place newPlace(final Graph graph, final long identifier)
+    public final Place newPlace(Graph graph, long identifier)
     {
         return onNewPlace(graph, identifier);
     }
 
-    public abstract PlaceStore newPlaceStore(final Graph graph);
+    public abstract PlaceStore newPlaceStore(Graph graph);
 
-    public final EdgeRelation newRelation(final Graph graph, final long identifier)
+    public final EdgeRelation newRelation(Graph graph, long identifier)
     {
         return onNewRelation(graph, identifier);
     }
 
-    public abstract RelationStore newRelationStore(final Graph graph);
+    public abstract RelationStore newRelationStore(Graph graph);
 
-    public final ShapePoint newShapePoint(final Graph graph, final long identifier)
+    public final ShapePoint newShapePoint(Graph graph, long identifier)
     {
         return onNewShapePoint(graph, (int) identifier);
     }
 
-    public abstract ShapePointStore newShapePointStore(final Graph graph);
+    public abstract ShapePointStore newShapePointStore(Graph graph);
 
-    public final Vertex newVertex(final Graph graph, final long identifier)
+    public final Vertex newVertex(Graph graph, long identifier)
     {
         return onNewVertex(graph, identifier);
     }
 
-    public abstract VertexStore newVertexStore(final Graph graph);
+    public abstract VertexStore newVertexStore(Graph graph);
 
-    public boolean owns(final Class<? extends AttributeStore> owner, final Attribute<?> attribute)
+    public boolean owns(Class<? extends AttributeStore> owner, Attribute<?> attribute)
     {
         return storeAttributes.get(owner).contains(attribute);
     }
@@ -399,7 +399,7 @@ public abstract class DataSpecification implements NamedObject
         return ShapePointProperties.get();
     }
 
-    public void supportedAttributes(final IntArray supportedAttributes)
+    public void supportedAttributes(IntArray supportedAttributes)
     {
         this.supportedAttributes = supportedAttributes;
     }
@@ -412,7 +412,7 @@ public abstract class DataSpecification implements NamedObject
     /**
      * @return True if this data specification supports the given attribute
      */
-    public boolean supports(final Attribute<?> attribute)
+    public boolean supports(Attribute<?> attribute)
     {
         return supportedAttributes.safeGet(attribute.identifier()) != 0;
     }
@@ -441,9 +441,9 @@ public abstract class DataSpecification implements NamedObject
     /**
      * Adds the given attribute of the given store to this specification
      */
-    protected void includeAttribute(final Class<? extends AttributeStore> owner, final Attribute<?> attribute)
+    protected void includeAttribute(Class<? extends AttributeStore> owner, Attribute<?> attribute)
     {
-        final var attributes = attributes(owner);
+        var attributes = attributes(owner);
         if (!excludedAttributes.contains(attribute) && !attributes.contains(attribute))
         {
             storeAttributes.add(owner, attribute);
@@ -455,83 +455,83 @@ public abstract class DataSpecification implements NamedObject
     /**
      * Adds the given attributes of the given store to this specification
      */
-    protected void includeAttributes(final Class<? extends AttributeStore> owner, final AttributeList attributes)
+    protected void includeAttributes(Class<? extends AttributeStore> owner, AttributeList attributes)
     {
-        for (final var attribute : attributes)
+        for (var attribute : attributes)
         {
             includeAttribute(owner, attribute);
         }
     }
 
-    protected Edge onNewEdge(final Graph graph, final long identifier)
+    protected Edge onNewEdge(Graph graph, long identifier)
     {
         return unsupported();
     }
 
-    protected Edge onNewEdge(final Graph graph, final long identifier, final int index)
+    protected Edge onNewEdge(Graph graph, long identifier, int index)
     {
         return unsupported();
     }
 
-    protected Graph onNewGraph(final Metadata metadata)
+    protected Graph onNewGraph(Metadata metadata)
     {
         metadata.assertValid(ValidationType.VALIDATE_ALL);
         return new CommonGraph(metadata);
     }
 
-    protected GraphConverter onNewGraphConverter(final Metadata metadata)
+    protected GraphConverter onNewGraphConverter(Metadata metadata)
     {
         return unsupported();
     }
 
-    protected GraphLoader onNewGraphLoader(final Metadata metadata)
+    protected GraphLoader onNewGraphLoader(Metadata metadata)
     {
         return unsupported();
     }
 
-    protected HeavyWeightEdge onNewHeavyWeightEdge(final Graph graph, final long identifier)
+    protected HeavyWeightEdge onNewHeavyWeightEdge(Graph graph, long identifier)
     {
         return new HeavyWeightEdge(graph, identifier);
     }
 
-    protected HeavyWeightPlace onNewHeavyWeightPlace(final Graph graph, final long identifier)
+    protected HeavyWeightPlace onNewHeavyWeightPlace(Graph graph, long identifier)
     {
         return new HeavyWeightPlace(graph, identifier);
     }
 
-    protected HeavyWeightRelation onNewHeavyWeightRelation(final Graph graph, final long identifier)
+    protected HeavyWeightRelation onNewHeavyWeightRelation(Graph graph, long identifier)
     {
         return new HeavyWeightRelation(graph, identifier);
     }
 
-    protected HeavyWeightVertex onNewHeavyWeightVertex(final Graph graph, final long identifier)
+    protected HeavyWeightVertex onNewHeavyWeightVertex(Graph graph, long identifier)
     {
         return new HeavyWeightVertex(graph, identifier);
     }
 
-    protected Place onNewPlace(final Graph graph, final long identifier)
+    protected Place onNewPlace(Graph graph, long identifier)
     {
         return new Place(graph, identifier);
     }
 
-    protected EdgeRelation onNewRelation(final Graph graph, final long identifier)
+    protected EdgeRelation onNewRelation(Graph graph, long identifier)
     {
         return new EdgeRelation(graph, identifier);
     }
 
-    protected ShapePoint onNewShapePoint(final Graph graph, final long identifier)
+    protected ShapePoint onNewShapePoint(Graph graph, long identifier)
     {
         return new ShapePoint(graph, identifier);
     }
 
-    protected Vertex onNewVertex(final Graph graph, final long identifier)
+    protected Vertex onNewVertex(Graph graph, long identifier)
     {
         return new Vertex(graph, identifier);
     }
 
     protected void showAttributes()
     {
-        for (final var store : storeAttributes.keySet())
+        for (var store : storeAttributes.keySet())
         {
             DEBUG.trace("Attributes supported by ${class}:\n    $",
                     store, storeAttributes.get(store).sorted().join("\n    "));

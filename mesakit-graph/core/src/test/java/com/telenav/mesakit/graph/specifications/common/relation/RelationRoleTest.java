@@ -27,7 +27,7 @@ public class RelationRoleTest extends GraphUnitTest
     @Test
     public void test()
     {
-        for (final EdgeRelationMemberRole role : EdgeRelationMemberRole.values())
+        for (EdgeRelationMemberRole role : EdgeRelationMemberRole.values())
         {
             ensureEqual(role, EdgeRelationMemberRole.of(role.value()));
             ensureEqual(role, EdgeRelationMemberRole.of(role.code()));

@@ -35,22 +35,22 @@ public interface RoutingDebugger
     RoutingDebugger NULL = new RoutingDebugger()
     {
         @Override
-        public void onEnd(final RoutingRequest request, final RoutingResponse response)
+        public void onEnd(RoutingRequest request, RoutingResponse response)
         {
         }
 
         @Override
-        public void onRelaxed(final Route route, final Cost cost)
+        public void onRelaxed(Route route, Cost cost)
         {
         }
 
         @Override
-        public void onSettled(final Vertex vertex, final Cost cost)
+        public void onSettled(Vertex vertex, Cost cost)
         {
         }
 
         @Override
-        public void onStart(final RoutingRequest request)
+        public void onStart(RoutingRequest request)
         {
         }
     };
@@ -61,13 +61,13 @@ public interface RoutingDebugger
      * @param route The relaxed route
      * @param cost The cost of the relaxed route
      */
-    void onRelaxed(final Route route, Cost cost);
+    void onRelaxed(Route route, Cost cost);
 
     /**
      * @param vertex The new vertex
      * @param cost Initial cost of the new vertex
      */
-    void onSettled(final Vertex vertex, Cost cost);
+    void onSettled(Vertex vertex, Cost cost);
 
     /**
      * Called by the router at start of routing

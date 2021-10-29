@@ -42,19 +42,19 @@ public class RegionSet extends BaseSet<Region>
         super(new LinkedHashSet<>());
     }
 
-    public RegionSet(final Iterable<? extends Region> regions)
+    public RegionSet(Iterable<? extends Region> regions)
     {
         super(new LinkedHashSet<>());
         addAll(regions);
     }
 
-    public RegionSet(final Set<Region> set)
+    public RegionSet(Set<Region> set)
     {
         super(set);
     }
 
     @Override
-    public boolean add(final Region region)
+    public boolean add(Region region)
     {
         ensureNotNull(region);
         return super.add(region);
@@ -81,8 +81,8 @@ public class RegionSet extends BaseSet<Region>
     @SuppressWarnings("unchecked")
     public RegionSet under()
     {
-        final var under = new RegionSet();
-        for (final var region : this)
+        var under = new RegionSet();
+        for (var region : this)
         {
             under.add(region);
             under.addAll(region.nestedChildren());

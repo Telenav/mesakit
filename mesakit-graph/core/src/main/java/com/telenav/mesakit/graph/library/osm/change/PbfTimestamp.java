@@ -43,18 +43,18 @@ public class PbfTimestamp implements TimestampContainer
         this(new Date());
     }
 
-    public PbfTimestamp(final Date date)
+    public PbfTimestamp(Date date)
     {
         this.date = date;
     }
 
-    public PbfTimestamp(final long time)
+    public PbfTimestamp(long time)
     {
         this(new Date(time));
     }
 
     @Override
-    public String getFormattedTimestamp(final TimestampFormat timestampFormat)
+    public String getFormattedTimestamp(TimestampFormat timestampFormat)
     {
         return timestampFormat.formatTimestamp(date);
     }

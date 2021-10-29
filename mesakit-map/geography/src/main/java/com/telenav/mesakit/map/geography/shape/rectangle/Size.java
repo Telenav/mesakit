@@ -31,12 +31,12 @@ public class Size implements Dimensioned
 
     public static final Size ZERO = new Size(Width.ZERO, Height.ZERO);
 
-    public static Size of(final Width width, final Height height)
+    public static Size of(Width width, Height height)
     {
         return new Size(width, height);
     }
 
-    public static Size of(final Distance width, final Distance height)
+    public static Size of(Distance width, Distance height)
     {
         return new Size(Width.degrees(width.asDegrees()), Height.degrees(height.asDegrees()));
     }
@@ -47,7 +47,7 @@ public class Size implements Dimensioned
     @UmlAggregation
     private final Height height;
 
-    public Size(final Width width, final Height height)
+    public Size(Width width, Height height)
     {
         if (width.asNanodegrees() < 0 || height.asNanodegrees() < 0)
         {
@@ -76,15 +76,15 @@ public class Size implements Dimensioned
     /**
      * @return True if both width and height of this size are greater than the given size
      */
-    public boolean isGreaterThan(final Dimensioned that)
+    public boolean isGreaterThan(Dimensioned that)
     {
         return width.isGreaterThan(that.width()) && height.isGreaterThan(that.height());
     }
 
-    public Size scaledBy(final double widthMultiplier, final double heightMultiplier)
+    public Size scaledBy(double widthMultiplier, double heightMultiplier)
     {
-        final var width = Math.min(360, this.width.asDegrees() * widthMultiplier);
-        final var height = Math.min(180, this.height.asDegrees() * heightMultiplier);
+        var width = Math.min(360, this.width.asDegrees() * widthMultiplier);
+        var height = Math.min(180, this.height.asDegrees() * heightMultiplier);
         return new Size(Width.degrees(width), Height.degrees(height));
     }
 
@@ -106,12 +106,12 @@ public class Size implements Dimensioned
         return width;
     }
 
-    public Size withHeight(final Height height)
+    public Size withHeight(Height height)
     {
         return new Size(width, height);
     }
 
-    public Size withWidth(final Width width)
+    public Size withWidth(Width width)
     {
         return new Size(width, height);
     }

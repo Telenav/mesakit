@@ -33,9 +33,9 @@ import com.telenav.mesakit.graph.navigation.Navigator;
 public class NonBranchingNavigator extends Navigator
 {
     @Override
-    public Edge in(final Edge edge)
+    public Edge in(Edge edge)
     {
-        final var from = edge.from();
+        var from = edge.from();
         if (from.inEdgeCount().equals(Count._1))
         {
             return from.inEdgeSequence().iterator().next();
@@ -44,9 +44,9 @@ public class NonBranchingNavigator extends Navigator
     }
 
     @Override
-    public Edge out(final Edge edge)
+    public Edge out(Edge edge)
     {
-        final var to = edge.to();
+        var to = edge.to();
         if (to.outEdgeCount().equals(Count._1))
         {
             return to.outEdgeSequence().iterator().next();

@@ -78,21 +78,21 @@ public class DeCartaRoadType
 
     private static final Map<Integer, DeCartaRoadType> roadTypes = new HashMap<>();
 
-    public static DeCartaRoadType forType(final int type)
+    public static DeCartaRoadType forType(int type)
     {
         return roadTypes.get(type);
     }
 
     private final int type;
 
-    private DeCartaRoadType(final int type)
+    private DeCartaRoadType(int type)
     {
         this.type = type;
         roadTypes.put(type, this);
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (this == object)
         {
@@ -118,7 +118,7 @@ public class DeCartaRoadType
         return type == ROAD_LOCAL_STREET.type;
     }
 
-    public boolean isMoreImportantThan(final DeCartaRoadType that)
+    public boolean isMoreImportantThan(DeCartaRoadType that)
     {
         return type < that.type;
     }

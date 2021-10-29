@@ -35,14 +35,14 @@ public class RemainingDistanceToStartCostFunction implements CostFunction
 
     private final double totalDistanceInMeters;
 
-    public RemainingDistanceToStartCostFunction(final Located start, final Located end)
+    public RemainingDistanceToStartCostFunction(Located start, Located end)
     {
         this.start = start.location();
         totalDistanceInMeters = end.location().distanceTo(start).asMeters();
     }
 
     @Override
-    public Cost cost(final Edge edge)
+    public Cost cost(Edge edge)
     {
         return Cost.inverse(Math.min(1.0, edge.fromLocation().distanceTo(start).asMeters() / totalDistanceInMeters));
     }

@@ -31,7 +31,7 @@ public class ConflationSet extends HashSet<Conflation>
     {
     }
 
-    public ConflationSet(final ConflationSet conflations)
+    public ConflationSet(ConflationSet conflations)
     {
         addAll(conflations);
     }
@@ -40,11 +40,11 @@ public class ConflationSet extends HashSet<Conflation>
      * Adds the given new conflation object to the set of conflations, but ensures that conflations that are end-to-end
      * don't compete with each other. Instead, the best (closest) match is chosen.
      */
-    public void addUnambiguously(final Conflation newConflation)
+    public void addUnambiguously(Conflation newConflation)
     {
         // Go through each conflation
         var connected = false;
-        for (final var conflation : new ConflationSet(this))
+        for (var conflation : new ConflationSet(this))
         {
             // and if the existing conflation is connected to the new conflation
             if (conflation.base().isConnectedTo(newConflation.base()))
@@ -70,10 +70,10 @@ public class ConflationSet extends HashSet<Conflation>
         }
     }
 
-    public ConflationSet closerThan(final Percent closeness)
+    public ConflationSet closerThan(Percent closeness)
     {
-        final var conflations = new ConflationSet();
-        for (final var conflation : this)
+        var conflations = new ConflationSet();
+        for (var conflation : this)
         {
             if (conflation.isCloserThan(closeness))
             {
@@ -86,7 +86,7 @@ public class ConflationSet extends HashSet<Conflation>
     public Conflation closest()
     {
         Conflation closest = null;
-        for (final var conflation : this)
+        for (var conflation : this)
         {
             if (conflation.isCloserThan(closest))
             {
@@ -96,9 +96,9 @@ public class ConflationSet extends HashSet<Conflation>
         return closest;
     }
 
-    public Conflation forBaseEdge(final Edge base)
+    public Conflation forBaseEdge(Edge base)
     {
-        for (final var conflation : this)
+        for (var conflation : this)
         {
             if (conflation.base().equals(base))
             {

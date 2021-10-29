@@ -107,7 +107,7 @@ public class VertexStore extends NodeStore<Vertex>
                     () -> new ConnectivityStore("connectivity", graph()))
             {
                 @Override
-                protected void onLoaded(final ConnectivityStore store)
+                protected void onLoaded(ConnectivityStore store)
                 {
                     super.onLoaded(store);
                     store.graph(graph());
@@ -144,7 +144,7 @@ public class VertexStore extends NodeStore<Vertex>
 
     private transient boolean vertexesAdded;
 
-    public VertexStore(final Graph graph)
+    public VertexStore(Graph graph)
     {
         super(graph);
         graphStore = graph.graphStore();
@@ -163,15 +163,15 @@ public class VertexStore extends NodeStore<Vertex>
         {
             vertexesAdded = true;
 
-            final var start = Time.now();
+            var start = Time.now();
             information("Adding vertexes");
 
             // Add all the vertexes we built up while reading and adding edges
-            final var graph = graph();
-            final var adder = adder();
+            var graph = graph();
+            var adder = adder();
             visitElementNodes((index, nodeIdentifier, locationAsLong) ->
             {
-                final var vertex = graph.dataSpecification().newHeavyWeightVertex(graph, index);
+                var vertex = graph.dataSpecification().newHeavyWeightVertex(graph, index);
                 vertex.index(index);
                 vertex.location(Location.dm7(locationAsLong));
                 vertex.nodeIdentifier(new PbfNodeIdentifier(nodeIdentifier));
@@ -186,7 +186,7 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * Marks the given location of a vertex where an edge has been clipped at a geographic boundary
      */
-    public final void clipped(final Location location)
+    public final void clipped(Location location)
     {
         temporaryClippedLocation.add(location.asLong());
     }
@@ -194,12 +194,12 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * Marks the given vertex as being clipped at a geographic boundary
      */
-    public final void clipped(final Vertex vertex)
+    public final void clipped(Vertex vertex)
     {
         clipped(vertex.location());
     }
 
-    public boolean contains(final MapIdentifier identifier)
+    public boolean contains(MapIdentifier identifier)
     {
         switch (identifier.type())
         {
@@ -218,7 +218,7 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * @return True if this vertex store contains the given vertex
      */
-    public boolean contains(final Vertex vertex)
+    public boolean contains(Vertex vertex)
     {
         // The +1 is because there is no identifier 0
         return vertex != null && ((int) vertex.identifierAsLong()) < size() + 1;
@@ -227,7 +227,7 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * @return True if this vertex store contains the given identifier
      */
-    public boolean contains(final VertexIdentifier identifier)
+    public boolean contains(VertexIdentifier identifier)
     {
         // The +1 is because there is no identifier 0
         return identifier.asInt() < size() + 1;
@@ -249,7 +249,7 @@ public class VertexStore extends NodeStore<Vertex>
      * @param grade The grade separation level for the new vertex
      * @param edgesAtGrade The edges at the given grade to connect to the new vertex
      */
-    public void gradeSeparate(final Vertex originalVertex, final GradeSeparation grade, final EdgeSet edgesAtGrade)
+    public void gradeSeparate(Vertex originalVertex, GradeSeparation grade, EdgeSet edgesAtGrade)
     {
         // If there are more than two edges its possible that edges at two different grades are
         // connected to the same vertex, so we need to create a new vertex at each grade,
@@ -257,7 +257,7 @@ public class VertexStore extends NodeStore<Vertex>
         if (edgesAtGrade.size() > 2)
         {
             // and if so, we create a new vertex that's a copy of the given vertex,
-            final var newVertex = originalVertex.dataSpecification()
+            var newVertex = originalVertex.dataSpecification()
                     .newHeavyWeightVertex(graph(), nextIndex());
             newVertex.copy(originalVertex);
             adder().add(newVertex);
@@ -284,18 +284,18 @@ public class VertexStore extends NodeStore<Vertex>
      * @param originalVertex The original un-separated vertex
      * @param edgesAtGrade The set of edges at the grade of the new vertex
      */
-    public void gradeSeparateConnectEdgesToNewVertex(final Vertex newVertex, final Vertex originalVertex,
-                                                     final EdgeSet edgesAtGrade)
+    public void gradeSeparateConnectEdgesToNewVertex(Vertex newVertex, Vertex originalVertex,
+                                                     EdgeSet edgesAtGrade)
     {
         // Get all the in and out edges from the original vertex that are in the collection of edges we were given
-        final var inEdges = new EdgeSet(edgesAtGrade.oneWayInEdges(originalVertex));
-        final var outEdges = new EdgeSet(edgesAtGrade.oneWayOutEdges(originalVertex));
+        var inEdges = new EdgeSet(edgesAtGrade.oneWayInEdges(originalVertex));
+        var outEdges = new EdgeSet(edgesAtGrade.oneWayOutEdges(originalVertex));
 
         // then copy the two-way edge indexes into an int array
-        final var twoWayIndexes = new IntArray(objectName() + ".twoWayIndexes");
+        var twoWayIndexes = new IntArray(objectName() + ".twoWayIndexes");
         twoWayIndexes.initialSize(GraphLimits.Estimated.EDGES_PER_VERTEX);
         twoWayIndexes.initialize();
-        final var both = connectivity().retrieveTwoWayEdgeSequence(originalVertex.index());
+        var both = connectivity().retrieveTwoWayEdgeSequence(originalVertex.index());
         for (var edge : both)
         {
             edge = edge.forward();
@@ -321,20 +321,20 @@ public class VertexStore extends NodeStore<Vertex>
      * @param grade - The grade of the new vertex
      * @param edgesAtGrade - The edges at the given grade
      */
-    public void gradeSeparatePerturbVertexLocation(final Vertex vertex, final Vertex originalVertex,
-                                                   final GradeSeparation grade, final EdgeSet edgesAtGrade)
+    public void gradeSeparatePerturbVertexLocation(Vertex vertex, Vertex originalVertex,
+                                                   GradeSeparation grade, EdgeSet edgesAtGrade)
     {
         // then use the grade separation level as an offset to the original vertex location in order to
         // give the new vertex a unique, perturbed vertex location so it doesn't overlap the existing vertexes
-        final var microdegrees = grade.level() + 5;
-        final var offset = new Size(Width.microdegrees(microdegrees), Height.ZERO);
-        final var perturbedLocation = originalVertex.location().offsetBy(offset);
+        var microdegrees = grade.level() + 5;
+        var offset = new Size(Width.microdegrees(microdegrees), Height.ZERO);
+        var perturbedLocation = originalVertex.location().offsetBy(offset);
         storeNodeLocation(vertex.index(), perturbedLocation.asLong());
 
         // correct road shape end-points so they are perturbed as well
-        for (final var edge : edgesAtGrade)
+        for (var edge : edgesAtGrade)
         {
-            final var shape = edge.roadShape();
+            var shape = edge.roadShape();
             if (shape != null)
             {
                 if (shape.end().equals(originalVertex.location()))
@@ -355,8 +355,8 @@ public class VertexStore extends NodeStore<Vertex>
      * @param newVertex The new vertex
      * @param edgesAtGrade The edges to update
      */
-    public void gradeSeparateUpdateGradeSeparatedEdgeVertexes(final HeavyWeightVertex newVertex,
-                                                              final Vertex originalVertex, final EdgeSet edgesAtGrade)
+    public void gradeSeparateUpdateGradeSeparatedEdgeVertexes(HeavyWeightVertex newVertex,
+                                                              Vertex originalVertex, EdgeSet edgesAtGrade)
     {
         // go through the connected edges setting to/from vertexes
         for (var edge : edgesAtGrade)
@@ -364,13 +364,13 @@ public class VertexStore extends NodeStore<Vertex>
             edge = edge.forward();
             if (edge.from().equals(originalVertex))
             {
-                final var heavyweight = edge.asHeavyWeight();
+                var heavyweight = edge.asHeavyWeight();
                 heavyweight.from(newVertex);
                 edgeStore().storeFromVertexIdentifier(heavyweight);
             }
             if (edge.to().equals(originalVertex))
             {
-                final var heavyweight = edge.asHeavyWeight();
+                var heavyweight = edge.asHeavyWeight();
                 heavyweight.to(newVertex);
                 edgeStore().storeToVertexIdentifier(heavyweight);
             }
@@ -389,11 +389,11 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * @return True if the two nodes are connected
      */
-    public boolean internalIsConnected(final MapNodeIdentifier from, final MapNodeIdentifier to)
+    public boolean internalIsConnected(MapNodeIdentifier from, MapNodeIdentifier to)
     {
         // Get existing indexes for the "from" and "to" node identifiers
-        final var fromVertexIndex = nodeIdentifierToIndex(from.identifier());
-        final var toVertexIndex = nodeIdentifierToIndex(to.identifier());
+        var fromVertexIndex = nodeIdentifierToIndex(from.identifier());
+        var toVertexIndex = nodeIdentifierToIndex(to.identifier());
 
         // then ask the connectivity store if they are connected
         return connectivity().temporaryIsConnected(fromVertexIndex, toVertexIndex);
@@ -423,18 +423,18 @@ public class VertexStore extends NodeStore<Vertex>
      * process, but it's not possible to do until vertexes have been identified as loading all node tags into memory
      * might be problematic for some regions.
      */
-    public void loadVertexTags(final PbfDataSource data, final PbfTagFilter filter)
+    public void loadVertexTags(PbfDataSource data, PbfTagFilter filter)
     {
         metadata().configure(data);
         data.process(new PbfDataProcessor()
         {
             @Override
-            public Action onNode(final PbfNode node)
+            public Action onNode(PbfNode node)
             {
-                final var vertex = vertexForNodeIdentifier(node.identifierAsLong());
+                var vertex = vertexForNodeIdentifier(node.identifierAsLong());
                 if (vertex != null)
                 {
-                    final var tags = node.tagList(filter);
+                    var tags = node.tagList(filter);
                     if (!tags.isEmpty())
                     {
                         storeTags(vertex, tags);
@@ -454,7 +454,7 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * @return The vertex at the given location when full node information is supported
      */
-    public GraphNode node(final Location location)
+    public GraphNode node(Location location)
     {
         return new GraphNodeIndex(allNodeIndex(location));
     }
@@ -466,9 +466,26 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
+     * Allocate temporary data structures
+     */
+    @Override
+    public void onInitialize()
+    {
+        super.onInitialize();
+
+        // Start vertex count at 1 since 0 is the uninitialized value in Java
+        resetNextIndex();
+
+        // Temporary vertex information used when loading data
+        temporaryClippedLocation = new LongSet(objectName() + ".temporaryClippedLocation");
+        temporaryClippedLocation.initialSize(graph().metadata().vertexCount(ALLOW_ESTIMATE).asEstimate());
+        temporaryClippedLocation.initialize();
+    }
+
+    /**
      * @return The total number of edges (in and out) attached to the given vertex
      */
-    public final Count retrieveEdgeCount(final Vertex vertex)
+    public final Count retrieveEdgeCount(Vertex vertex)
     {
         return Count.count(connectivity().retrieveEdgeCount(vertex.index()));
     }
@@ -476,9 +493,9 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * @return The sequence of edges attached to the given vertex
      */
-    public final EdgeSequence retrieveEdgeSequence(final Vertex vertex)
+    public final EdgeSequence retrieveEdgeSequence(Vertex vertex)
     {
-        final var edges = connectivity().retrieveEdgeSequence(vertex.index());
+        var edges = connectivity().retrieveEdgeSequence(vertex.index());
         if (edges != null)
         {
             return edges;
@@ -487,16 +504,16 @@ public class VertexStore extends NodeStore<Vertex>
         return EdgeSequence.EMPTY;
     }
 
-    public GradeSeparation retrieveGradeSeparation(final Vertex vertex)
+    public GradeSeparation retrieveGradeSeparation(Vertex vertex)
     {
-        final var grade = GRADE_SEPARATION.retrieveObject(vertex, value -> GradeSeparation.of((int) value));
+        var grade = GRADE_SEPARATION.retrieveObject(vertex, value -> GradeSeparation.of((int) value));
         return grade == null ? GradeSeparation.GROUND : grade;
     }
 
     /**
      * @return The number of "in" edges attached to the given vertex
      */
-    public final Count retrieveInEdgeCount(final Vertex vertex)
+    public final Count retrieveInEdgeCount(Vertex vertex)
     {
         return Count.count(connectivity().retrieveInEdgeCount(vertex.index()));
     }
@@ -505,9 +522,9 @@ public class VertexStore extends NodeStore<Vertex>
      * @return The sequence of all "in" edges to the given vertex
      */
 
-    public final EdgeSequence retrieveInEdgeSequence(final Vertex vertex)
+    public final EdgeSequence retrieveInEdgeSequence(Vertex vertex)
     {
-        final var edges = connectivity().retrieveInEdgeSequence(vertex.index());
+        var edges = connectivity().retrieveInEdgeSequence(vertex.index());
         if (edges != null)
         {
             return edges;
@@ -519,9 +536,9 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * @return The set of "in" edges to the given vertex
      */
-    public final EdgeSet retrieveInEdges(final Vertex vertex)
+    public final EdgeSet retrieveInEdges(Vertex vertex)
     {
-        final var edges = connectivity().retrieveInEdges(vertex.index());
+        var edges = connectivity().retrieveInEdges(vertex.index());
         if (edges != null)
         {
             return edges;
@@ -534,7 +551,7 @@ public class VertexStore extends NodeStore<Vertex>
      * @return The index for the given vertex
      */
     @Override
-    public final int retrieveIndex(final Vertex vertex)
+    public final int retrieveIndex(Vertex vertex)
     {
         // With GraphNodes like Vertex, the identifier is the index
         return (int) (vertex.identifierAsLong() & 0xffff_ffffL);
@@ -543,7 +560,7 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * @return True if the given vertex was added as a result of edge clipping at a region boundary
      */
-    public final boolean retrieveIsClipped(final Vertex vertex)
+    public final boolean retrieveIsClipped(Vertex vertex)
     {
         IS_CLIPPED.load();
         return isClipped.safeGet(vertex.index()) != 0;
@@ -552,7 +569,7 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * @return The number of "out" edges attached to the given vertex
      */
-    public final Count retrieveOutEdgeCount(final Vertex vertex)
+    public final Count retrieveOutEdgeCount(Vertex vertex)
     {
         return Count.count(connectivity().retrieveOutEdgeCount(vertex.index()));
     }
@@ -560,9 +577,9 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * @return The sequence of all "out" edges attached to the given vertex
      */
-    public final EdgeSequence retrieveOutEdgeSequence(final Vertex vertex)
+    public final EdgeSequence retrieveOutEdgeSequence(Vertex vertex)
     {
-        final var edges = connectivity().retrieveOutEdgeSequence(vertex.index());
+        var edges = connectivity().retrieveOutEdgeSequence(vertex.index());
         if (edges != null)
         {
             return edges;
@@ -574,9 +591,9 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * @return The set of all "out" edges attached to the given vertex
      */
-    public final EdgeSet retrieveOutEdges(final Vertex vertex)
+    public final EdgeSet retrieveOutEdges(Vertex vertex)
     {
-        final var edges = connectivity().retrieveOutEdges(vertex.index());
+        var edges = connectivity().retrieveOutEdges(vertex.index());
         if (edges != null)
         {
             return edges;
@@ -588,7 +605,7 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * Stores base attributes and the clip state for the given vertex.
      */
-    public void storeAttributes(final Vertex vertex)
+    public void storeAttributes(Vertex vertex)
     {
         super.storeAttributes(vertex);
         IS_CLIPPED.allocate();
@@ -596,7 +613,7 @@ public class VertexStore extends NodeStore<Vertex>
         storeGradeSeparation(vertex, vertex.gradeSeparation());
     }
 
-    public void storeGradeSeparation(final Vertex vertex, final GradeSeparation separation)
+    public void storeGradeSeparation(Vertex vertex, GradeSeparation separation)
     {
         if (separation != null && separation != GradeSeparation.GROUND)
         {
@@ -636,30 +653,30 @@ public class VertexStore extends NodeStore<Vertex>
      * Finally, the edge and its "from" and "to" vertex identifiers are then added to the {@link ConnectivityStore}
      * via {@link ConnectivityStore#temporaryConnect(Edge, int, int)}
      */
-    public void temporaryAddVertexes(final Edge edge)
+    public void temporaryAddVertexes(Edge edge)
     {
         // Get "from" and "to" locations
-        final var fromLocation = edge.fromLocation();
-        final var toLocation = edge.toLocation();
+        var fromLocation = edge.fromLocation();
+        var toLocation = edge.toLocation();
 
         assert fromLocation != null;
         assert toLocation != null;
 
         // Get "from" and "to" node identifiers
-        final var fromNodeIdentifier = edge.fromNodeIdentifier().asLong();
-        final var toNodeIdentifier = edge.toNodeIdentifier().asLong();
+        var fromNodeIdentifier = edge.fromNodeIdentifier().asLong();
+        var toNodeIdentifier = edge.toNodeIdentifier().asLong();
 
         // Store the node's location, both as nodeIdentifier -> location and vertexIdentifier -> location
-        final var fromVertexIdentifier = storeNodeLocation(fromNodeIdentifier, fromLocation);
-        final var toVertexIdentifier = storeNodeLocation(toNodeIdentifier, toLocation);
+        var fromVertexIdentifier = storeNodeLocation(fromNodeIdentifier, fromLocation);
+        var toVertexIdentifier = storeNodeLocation(toNodeIdentifier, toLocation);
 
         // If this edge is not already in a graph
         if (edge instanceof HeavyWeightEdge)
         {
             // then create new vertex objects
-            final var heavyweight = (HeavyWeightEdge) edge;
-            final var from = graph().newHeavyWeightVertex(new VertexIdentifier(fromVertexIdentifier));
-            final var to = graph().newHeavyWeightVertex(new VertexIdentifier(toVertexIdentifier));
+            var heavyweight = (HeavyWeightEdge) edge;
+            var from = graph().newHeavyWeightVertex(new VertexIdentifier(fromVertexIdentifier));
+            var to = graph().newHeavyWeightVertex(new VertexIdentifier(toVertexIdentifier));
             from.location(fromLocation);
             to.location(toLocation);
 
@@ -675,11 +692,11 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * Removes the given edge from this store by detaching the "from" and "to" vertexes
      */
-    public void temporaryRemove(final Edge edge)
+    public void temporaryRemove(Edge edge)
     {
         // Get existing vertex identifiers for the "from" and "to" node identifiers
-        final var fromVertexIndex = nodeIdentifierToIndex(edge.fromNodeIdentifier().asLong());
-        final var toVertexIndex = nodeIdentifierToIndex(edge.toNodeIdentifier().asLong());
+        var fromVertexIndex = nodeIdentifierToIndex(edge.fromNodeIdentifier().asLong());
+        var toVertexIndex = nodeIdentifierToIndex(edge.toNodeIdentifier().asLong());
         connectivity().temporaryDisconnect(edge, fromVertexIndex, toVertexIndex);
     }
 
@@ -687,7 +704,7 @@ public class VertexStore extends NodeStore<Vertex>
      * {@inheritDoc}
      */
     @Override
-    public Validator validator(final ValidationType validation)
+    public Validator validator(ValidationType validation)
     {
         return !validation.shouldValidate(getClass()) ? Validator.NULL : new StoreValidator()
         {
@@ -699,7 +716,7 @@ public class VertexStore extends NodeStore<Vertex>
 
                 // then check the "from" and "to" vertexes of each edge in the edge store,
                 var count = 0;
-                for (final var edge : edgeStore().edges())
+                for (var edge : edgeStore().edges())
                 {
                     problemIf(edge.from() == null, "'from' vertex of edge $ is null", edge.identifier());
                     problemIf(edge.to() == null, "'to' vertex of edge $ is null", edge.identifier());
@@ -728,9 +745,9 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * @return The vertex, if any, for the given node identifier
      */
-    public Vertex vertexForNodeIdentifier(final long nodeIdentifier)
+    public Vertex vertexForNodeIdentifier(long nodeIdentifier)
     {
-        final var index = nodeIdentifierToIndex(nodeIdentifier);
+        var index = nodeIdentifierToIndex(nodeIdentifier);
         if (index > 0)
         {
             return dataSpecification().newVertex(graph(), index);
@@ -741,7 +758,7 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * @return The vertexes inside the given bounding rectangle that match the given matcher
      */
-    public VertexSequence vertexesInside(final Rectangle bounds, final Matcher<Vertex> matcher)
+    public VertexSequence vertexesInside(Rectangle bounds, Matcher<Vertex> matcher)
     {
         if (bounds == null)
         {
@@ -749,12 +766,12 @@ public class VertexStore extends NodeStore<Vertex>
         }
         if (graph().edgeCount().isGreaterThan(Count._0))
         {
-            final var index = edgeStore().spatialIndex();
+            var index = edgeStore().spatialIndex();
             if (index == null)
             {
                 return fail("Unable to load spatial index");
             }
-            final var intersecting = index.intersecting(bounds);
+            var intersecting = index.intersecting(bounds);
             return new VertexSequence(new DeduplicatingIterable<>(Iterables.iterable(() -> new Next<>()
             {
                 final Iterator<Edge> edges = intersecting.iterator();
@@ -768,7 +785,7 @@ public class VertexStore extends NodeStore<Vertex>
                 {
                     while (true)
                     {
-                        final var from = i++ % 2 == 0;
+                        var from = i++ % 2 == 0;
                         if (from)
                         {
                             if (edges.hasNext())
@@ -782,7 +799,7 @@ public class VertexStore extends NodeStore<Vertex>
                         }
                         if (edge != null)
                         {
-                            final var vertex = from ? edge.from() : edge.to();
+                            var vertex = from ? edge.from() : edge.to();
                             if (vertex != null && bounds.contains(vertex) && matcher.matches(vertex))
                             {
                                 return vertex;
@@ -827,12 +844,12 @@ public class VertexStore extends NodeStore<Vertex>
      * bounds of the graph store and stores the vertex's clips state.
      */
     @Override
-    protected void onAdd(final Vertex vertex)
+    protected void onAdd(Vertex vertex)
     {
         super.onAdd(vertex);
 
-        final var vertexIndex = vertex.index();
-        final var locationAsLong = vertex.location().asLong();
+        var vertexIndex = vertex.index();
+        var locationAsLong = vertex.location().asLong();
 
         // Update vertex edges from temporary data structures used during loading
         connectivity().storeTemporaryLists(vertex.index());
@@ -841,14 +858,14 @@ public class VertexStore extends NodeStore<Vertex>
         graphStore.addToBounds(locationAsLong);
 
         // and finally, store the vertex attributes
-        final var heavyweight = vertex.asHeavyWeight();
-        final var clipped = temporaryClippedLocation.contains(locationAsLong);
+        var heavyweight = vertex.asHeavyWeight();
+        var clipped = temporaryClippedLocation.contains(locationAsLong);
         heavyweight.clipped(clipped);
         storeAttributes(heavyweight);
 
         if (DEBUG.isDebugOn())
         {
-            final var retrieved = dataSpecification().newVertex(graph(), vertexIndex);
+            var retrieved = dataSpecification().newVertex(graph(), vertexIndex);
             assert retrieved.validator().validate(LOGGER);
         }
     }
@@ -861,27 +878,10 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * Allocate temporary data structures
-     */
-    @Override
-    public void onInitialize()
-    {
-        super.onInitialize();
-
-        // Start vertex count at 1 since 0 is the uninitialized value in Java
-        resetNextIndex();
-
-        // Temporary vertex information used when loading data
-        temporaryClippedLocation = new LongSet(objectName() + ".temporaryClippedLocation");
-        temporaryClippedLocation.initialSize(graph().metadata().vertexCount(ALLOW_ESTIMATE).asEstimate());
-        temporaryClippedLocation.initialize();
-    }
-
-    /**
      * Free temporary data structures
      */
     @Override
-    protected void onLoaded(final GraphArchive archive)
+    protected void onLoaded(GraphArchive archive)
     {
         super.onLoaded(archive);
 
@@ -892,7 +892,7 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * Throws an exception if the given vertex is not in this graph
      */
-    private void checkVertex(final Vertex vertex)
+    private void checkVertex(Vertex vertex)
     {
         assert contains(vertex.identifier()) : "Invalid vertex " + vertex.identifier();
     }

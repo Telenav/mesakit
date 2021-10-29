@@ -31,28 +31,28 @@ public interface LevelPromoter
     LevelPromoter NULL = new LevelPromoter()
     {
         @Override
-        public void onRelax(final Edge edge)
+        public void onRelax(Edge edge)
         {
         }
 
         @Override
-        public void onSettle(final Edge edge)
+        public void onSettle(Edge edge)
         {
         }
 
         @Override
-        public boolean shouldExplore(final Edge edge)
+        public boolean shouldExplore(Edge edge)
         {
             return true;
         }
     };
 
-    void onRelax(final Edge edge);
+    void onRelax(Edge edge);
 
-    void onSettle(final Edge edge);
+    void onSettle(Edge edge);
 
     /**
      * @return True if the given edge should be explored
      */
-    boolean shouldExplore(final Edge edge);
+    boolean shouldExplore(Edge edge);
 }

@@ -34,39 +34,39 @@ public class LocationExtractor extends BaseExtractor<Location, PbfEntity<?>>
 {
     private final Extractor<Location, WayNode> wayNodeLocationExtractor;
 
-    public LocationExtractor(final Listener listener,
-                             final Extractor<Location, WayNode> wayNodeLocationExtractor)
+    public LocationExtractor(Listener listener,
+                             Extractor<Location, WayNode> wayNodeLocationExtractor)
     {
         super(listener);
         this.wayNodeLocationExtractor = wayNodeLocationExtractor;
     }
 
     @Override
-    public Location onExtract(final PbfEntity<?> entity)
+    public Location onExtract(PbfEntity<?> entity)
     {
         switch (entity.type())
         {
             case Node:
             {
-                final var node = (PbfNode) entity;
-                final var latitude = Latitude.degrees(node.latitude());
-                final var longitude = Longitude.degrees(node.longitude());
+                var node = (PbfNode) entity;
+                var latitude = Latitude.degrees(node.latitude());
+                var longitude = Longitude.degrees(node.longitude());
                 return new Location(latitude, longitude);
             }
 
             case Way:
             {
-                final var way = (PbfWay) entity;
-                final var builder = new BoundingBoxBuilder();
-                for (final var node : way.nodes())
+                var way = (PbfWay) entity;
+                var builder = new BoundingBoxBuilder();
+                for (var node : way.nodes())
                 {
-                    final var location = wayNodeLocationExtractor.extract(node);
+                    var location = wayNodeLocationExtractor.extract(node);
                     if (location != null)
                     {
                         builder.add(location);
                     }
                 }
-                final var bounds = builder.build();
+                var bounds = builder.build();
                 if (bounds != null)
                 {
                     return bounds.center();

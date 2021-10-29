@@ -29,7 +29,7 @@ public class PbfUserName extends Name
 {
     public static final PbfUserName SCOUT = new PbfUserName("scout_osm");
 
-    public PbfUserName(final String username)
+    public PbfUserName(String username)
     {
         super(username);
         ensureNotNull(username);

@@ -36,7 +36,7 @@ public class ShapePointIdentifier extends Identifier implements GraphElementIden
 {
     public static class Converter extends Quantizable.Converter<ShapePointIdentifier>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener, ShapePointIdentifier::new);
         }
@@ -45,7 +45,7 @@ public class ShapePointIdentifier extends Identifier implements GraphElementIden
     /**
      * Construct from identifier
      */
-    public ShapePointIdentifier(final long identifier)
+    public ShapePointIdentifier(long identifier)
     {
         super(identifier);
     }
@@ -56,7 +56,7 @@ public class ShapePointIdentifier extends Identifier implements GraphElementIden
      * @return The graph element from the given graph for this identifier
      */
     @Override
-    public GraphElement element(final Graph graph)
+    public GraphElement element(Graph graph)
     {
         return unsupported();
     }

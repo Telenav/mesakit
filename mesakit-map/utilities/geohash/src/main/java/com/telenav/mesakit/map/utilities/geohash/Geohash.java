@@ -51,7 +51,7 @@ public class Geohash
      * @param alphabet the alphabet of the desired world geohash
      * @return an imaginary geohash which encompasses the entire map
      */
-    public static Geohash world(final GeohashAlphabet alphabet)
+    public static Geohash world(GeohashAlphabet alphabet)
     {
         return new Geohash(Code.root(alphabet));
     }
@@ -60,12 +60,12 @@ public class Geohash
 
     private final Code code;
 
-    public Geohash(final Code code)
+    public Geohash(Code code)
     {
         this.code = ensureNotNull(code);
     }
 
-    public Geohash(final GeohashAlphabet alphabet, final Location location, final int resolution)
+    public Geohash(GeohashAlphabet alphabet, Location location, int resolution)
     {
         this(new Codec(alphabet).encode(location, resolution));
     }
@@ -76,7 +76,7 @@ public class Geohash
      * @param location a geographic location
      * @param resolution the desired resolution for the geohash
      */
-    public Geohash(final Location location, final int resolution)
+    public Geohash(Location location, int resolution)
     {
         this(GeohashAlphabet.DEFAULT, location, resolution);
     }
@@ -95,10 +95,10 @@ public class Geohash
      */
     public Collection<Geohash> children()
     {
-        final Collection<Geohash> children = new HashSet<>();
+        Collection<Geohash> children = new HashSet<>();
         if (depth() < maximumDepth())
         {
-            for (final var child : code.children())
+            for (var child : code.children())
             {
                 children.add(new Geohash(child));
             }
@@ -126,7 +126,7 @@ public class Geohash
     }
 
     @Override
-    public boolean equals(final Object that)
+    public boolean equals(Object that)
     {
         if (that instanceof Geohash)
         {

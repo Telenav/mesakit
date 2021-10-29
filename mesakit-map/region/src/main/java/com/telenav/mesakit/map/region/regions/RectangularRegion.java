@@ -18,19 +18,19 @@
 
 package com.telenav.mesakit.map.region.regions;
 
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
 import com.telenav.mesakit.map.utilities.grid.GridCell;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 @UmlClassDiagram(diagram = DiagramRegions.class)
 public class RectangularRegion extends Region<RectangularRegion>
 {
     private final GridCell cell;
 
-    public RectangularRegion(final GridCell cell)
+    public RectangularRegion(GridCell cell)
     {
         super(null, new RegionInstance<>(RectangularRegion.class));
         this.cell = cell;

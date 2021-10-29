@@ -74,37 +74,37 @@ public class RoadFunctionalClassExtractor extends BaseExtractor<RoadFunctionalCl
         roadFunctionalClassForHighway.put("proposed", FOURTH_CLASS);
     }
 
-    public RoadFunctionalClassExtractor(final Listener listener)
+    public RoadFunctionalClassExtractor(Listener listener)
     {
         super(listener);
     }
 
     @Override
-    public RoadFunctionalClass onExtract(final PbfWay way)
+    public RoadFunctionalClass onExtract(PbfWay way)
     {
-        final var hereFunctionalClass = way.tagValue("functional_class");
+        var hereFunctionalClass = way.tagValue("functional_class");
         if (hereFunctionalClass != null)
         {
-            final var value = Ints.parse(hereFunctionalClass);
+            var value = Ints.parse(hereFunctionalClass);
             if (value != Ints.INVALID)
             {
                 return RoadFunctionalClass.forInvertedIdentifier(value);
             }
         }
 
-        final var navteqFunctionalClass = way.tagValue("fc");
+        var navteqFunctionalClass = way.tagValue("fc");
         if (navteqFunctionalClass != null)
         {
-            final var value = Ints.parse(navteqFunctionalClass);
+            var value = Ints.parse(navteqFunctionalClass);
             if (value != Ints.INVALID)
             {
                 return RoadFunctionalClass.forIdentifier(value);
             }
         }
 
-        for (final var highway : way.tagValueSplit("highway"))
+        for (var highway : way.tagValueSplit("highway"))
         {
-            final var _class = roadFunctionalClassForHighway.get(highway);
+            var _class = roadFunctionalClassForHighway.get(highway);
             if (_class != null)
             {
                 return _class;

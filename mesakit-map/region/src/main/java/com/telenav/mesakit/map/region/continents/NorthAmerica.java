@@ -27,7 +27,25 @@ import com.telenav.mesakit.map.region.countries.UnitedStates;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
 
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.*;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.ANGUILLA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.BAHAMAS;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.BERMUDA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.CAYMAN_ISLANDS;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.CUBA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.DOMINICAN_REPUBLIC;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.EL_SALVADOR;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.HAITI;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.JAMAICA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.PUERTO_RICO;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SAINT_BARTHELEMY;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SAINT_KITTS_AND_NEVIS;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SAINT_MARTIN_FRENCH_PART;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SAINT_PIERRE_AND_MIQUELON;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SVALBARD_AND_JAN_MAYEN_ISLANDS;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.TURKS_AND_CAICOS_ISLANDS;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.UNITED_STATES_MINOR_OUTLYING_ISLANDS;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.VIRGIN_ISLANDS;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.VIRGIN_ISLANDS_BRITISH;
 
 public class NorthAmerica extends Continent
 {

@@ -35,7 +35,7 @@ public class Cost implements Comparable<Cost>
     /**
      * @return A cost of 1.0 minus the given cost value
      */
-    public static Cost inverse(final double value)
+    public static Cost inverse(double value)
     {
         return new Cost(1.0 - value);
     }
@@ -43,7 +43,7 @@ public class Cost implements Comparable<Cost>
     /**
      * @return The given cost between 0.0 and 1.0, inclusive
      */
-    public static Cost of(final double value)
+    public static Cost of(double value)
     {
         return new Cost(value);
     }
@@ -51,12 +51,12 @@ public class Cost implements Comparable<Cost>
     // The cost, from 0 to MAXIMUM, inclusive
     private final double cost;
 
-    private Cost(final double cost)
+    private Cost(double cost)
     {
         this.cost = cost;
     }
 
-    public Cost add(final Cost that)
+    public Cost add(Cost that)
     {
         return new Cost(Math.min(MAXIMUM.asDouble(), cost + that.cost));
     }
@@ -67,17 +67,17 @@ public class Cost implements Comparable<Cost>
     }
 
     @Override
-    public int compareTo(final Cost that)
+    public int compareTo(Cost that)
     {
         return Double.compare(cost, that.cost);
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Cost)
         {
-            final var that = (Cost) object;
+            var that = (Cost) object;
             return cost == that.cost;
         }
         return false;
@@ -89,12 +89,12 @@ public class Cost implements Comparable<Cost>
         return Double.hashCode(cost);
     }
 
-    public boolean isGreaterThan(final Cost that)
+    public boolean isGreaterThan(Cost that)
     {
         return cost > that.cost;
     }
 
-    public boolean isLessThan(final Cost that)
+    public boolean isLessThan(Cost that)
     {
         return cost < that.cost;
     }
@@ -104,17 +104,17 @@ public class Cost implements Comparable<Cost>
         return equals(MAXIMUM);
     }
 
-    public Cost maximum(final Cost that)
+    public Cost maximum(Cost that)
     {
         return cost > that.cost ? this : that;
     }
 
-    public Cost minimum(final Cost that)
+    public Cost minimum(Cost that)
     {
         return cost < that.cost ? this : that;
     }
 
-    public Cost times(final double multiplier)
+    public Cost times(double multiplier)
     {
         return new Cost(asDouble() * multiplier);
     }
@@ -125,12 +125,12 @@ public class Cost implements Comparable<Cost>
         return toString(4);
     }
 
-    public String toString(final int places)
+    public String toString(int places)
     {
         return Doubles.format(asDouble(), places);
     }
 
-    public Cost weighted(final Weight weight)
+    public Cost weighted(Weight weight)
     {
         return new Cost(cost * weight.asZeroToOne());
     }

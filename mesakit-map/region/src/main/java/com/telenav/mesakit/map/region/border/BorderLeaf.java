@@ -33,18 +33,18 @@ public class BorderLeaf<T extends Region<T>> extends Leaf<Border<T>>
 {
     final ArrayList<Border<T>> borders;
 
-    public BorderLeaf(final RTreeSpatialIndex<Border<T>> index, final InteriorNode<Border<T>> parent)
+    public BorderLeaf(RTreeSpatialIndex<Border<T>> index, InteriorNode<Border<T>> parent)
     {
         super(index, parent);
         borders = new ArrayList<>(index.settings().estimatedChildrenPerLeaf().asInt());
     }
 
     @Override
-    public void addAll(final List<Border<T>> elements)
+    public void addAll(List<Border<T>> elements)
     {
         if (!elements.isEmpty())
         {
-            for (final var border : elements)
+            for (var border : elements)
             {
                 assert border != null;
                 assert border.identity() != null;
@@ -57,11 +57,11 @@ public class BorderLeaf<T extends Region<T>> extends Leaf<Border<T>>
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof BorderLeaf)
         {
-            final BorderLeaf<T> that = (BorderLeaf<T>) object;
+            BorderLeaf<T> that = (BorderLeaf<T>) object;
             assert borders.equals(that.borders);
             return borders.equals(that.borders);
         }
@@ -75,7 +75,7 @@ public class BorderLeaf<T extends Region<T>> extends Leaf<Border<T>>
     }
 
     @Override
-    protected void addElement(final Border<T> element)
+    protected void addElement(Border<T> element)
     {
         ensure(element != null);
         borders.add(element);

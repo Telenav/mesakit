@@ -48,7 +48,7 @@ class OverpassOsmResource extends BaseRepeater
             .reader()
             .string();
 
-    public OverpassOsmResource(final Rectangle bounds)
+    public OverpassOsmResource(Rectangle bounds)
     {
         this.bounds = bounds;
         if (bounds.widestWidth().isGreaterThan(OverpassDataDownloader.MAXIMUM_SIZE))
@@ -63,14 +63,14 @@ class OverpassOsmResource extends BaseRepeater
         }
     }
 
-    public void safeCopyTo(final File destination)
+    public void safeCopyTo(File destination)
     {
         location(bounds).safeCopyTo(destination, OVERWRITE, Progress.create(this, "bytes"));
     }
 
-    private HttpPostResource location(final Rectangle bounds)
+    private HttpPostResource location(Rectangle bounds)
     {
-        final var payload = new MessageFormatter().format(template, bounds.toCommaSeparatedString());
+        var payload = new MessageFormatter().format(template, bounds.toCommaSeparatedString());
         return new HttpNetworkLocation(OverpassDataDownloader.HOST.http().path("/api/interpreter")).post(payload);
     }
 }

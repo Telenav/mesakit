@@ -37,7 +37,7 @@ public class CompressedEdgeSpatialIndex extends RTreeSpatialIndex<Edge> implemen
 {
     CompressedEdgeListStore edges;
 
-    public CompressedEdgeSpatialIndex(final String objectName, final Graph graph, final RTreeSettings settings)
+    public CompressedEdgeSpatialIndex(String objectName, Graph graph, RTreeSettings settings)
     {
         super(objectName, settings);
 
@@ -49,13 +49,13 @@ public class CompressedEdgeSpatialIndex extends RTreeSpatialIndex<Edge> implemen
     }
 
     @Override
-    public void add(final Edge element)
+    public void add(Edge element)
     {
         unsupported("CompressedEdgeSpatialIndex only supports bulk loading of elements");
     }
 
     @Override
-    public Method compress(final Method method)
+    public Method compress(Method method)
     {
         return edges.compress(method);
     }
@@ -66,13 +66,13 @@ public class CompressedEdgeSpatialIndex extends RTreeSpatialIndex<Edge> implemen
         return edges.compressionMethod();
     }
 
-    public void graph(final Graph graph)
+    public void graph(Graph graph)
     {
         edges.graph(graph);
     }
 
     @Override
-    public Leaf<Edge> newLeaf(final InteriorNode<Edge> parent)
+    public Leaf<Edge> newLeaf(InteriorNode<Edge> parent)
     {
         return new CompressedLeaf(this, parent);
     }

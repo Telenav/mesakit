@@ -1037,72 +1037,72 @@ public class EnglishTokenizer extends Tokenizer
 
     public final Token CLOSE_PARENTHESIS = create("CloseParenthesis").matchesAnyOf(")");
 
-    public boolean isCardinalDirection(final Token token)
+    public boolean isCardinalDirection(Token token)
     {
         return cardinalDirections.contains(token);
     }
 
-    public boolean isCloseParenthesis(final Token token)
+    public boolean isCloseParenthesis(Token token)
     {
         return matches(token, CLOSE_PARENTHESIS);
     }
 
-    public boolean isDigit(final Token token)
+    public boolean isDigit(Token token)
     {
         return matches(token, DIGIT);
     }
 
-    public boolean isInterstate(final Token token)
+    public boolean isInterstate(Token token)
     {
         return matches(token, INTERSTATE);
     }
 
-    public boolean isNamedDigit(final Token token)
+    public boolean isNamedDigit(Token token)
     {
         return isOnesDigit(token) || isTeensDigit(token) || isTensDigit(token);
     }
 
-    public boolean isNumericOrdinalSuffix(final Token token)
+    public boolean isNumericOrdinalSuffix(Token token)
     {
         return numericOrdinalSuffixes.contains(token);
     }
 
-    public boolean isOnesDigit(final Token token)
+    public boolean isOnesDigit(Token token)
     {
         return onesDigits.contains(token);
     }
 
-    public boolean isOpenParenthesis(final Token token)
+    public boolean isOpenParenthesis(Token token)
     {
         return matches(token, OPEN_PARENTHESIS);
     }
 
-    public boolean isOrdinal(final Token token)
+    public boolean isOrdinal(Token token)
     {
         return ordinals.contains(token);
     }
 
-    public boolean isQuadrant(final Token token)
+    public boolean isQuadrant(Token token)
     {
         return quadrants.contains(token);
     }
 
-    public boolean isRoadType(final Token token)
+    public boolean isRoadType(Token token)
     {
         return roadTypes.contains(token);
     }
 
-    public boolean isTeensDigit(final Token token)
+    public boolean isTeensDigit(Token token)
     {
         return teensDigits.contains(token);
     }
 
-    public boolean isTensDigit(final Token token)
+    public boolean isTensDigit(Token token)
     {
         return tensDigits.contains(token);
     }
 
-    protected boolean lookingAtHighwayDesignator(final SymbolStream stream)
+    protected boolean lookingAtHighwayDesignator(SymbolStream stream)
     {
         return stream.lookingAtDigit();
     }
@@ -1112,7 +1112,7 @@ public class EnglishTokenizer extends Tokenizer
         return roadTypes;
     }
 
-    private boolean matches(final Token token, final Token expected)
+    private boolean matches(Token token, Token expected)
     {
         return token != null && token.equals(expected);
     }

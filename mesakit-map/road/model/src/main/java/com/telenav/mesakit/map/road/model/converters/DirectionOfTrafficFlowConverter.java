@@ -18,19 +18,19 @@
 
 package com.telenav.mesakit.map.road.model.converters;
 
-import com.telenav.mesakit.map.road.model.DirectionOfTrafficFlow;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.mesakit.map.road.model.DirectionOfTrafficFlow;
 
 public class DirectionOfTrafficFlowConverter extends BaseStringConverter<DirectionOfTrafficFlow>
 {
-    public DirectionOfTrafficFlowConverter(final Listener listener)
+    public DirectionOfTrafficFlowConverter(Listener listener)
     {
         super(listener);
     }
 
     @Override
-    protected DirectionOfTrafficFlow onToValue(final String value)
+    protected DirectionOfTrafficFlow onToValue(String value)
     {
         String direction = null;
         if (value != null)
@@ -38,7 +38,7 @@ public class DirectionOfTrafficFlowConverter extends BaseStringConverter<Directi
             // A direction flow(DF) field can contain the below formatted string.
             // DF|DF%VT=xx,xx,xx%VP=xxxxxxxx%AL=x%NP=x%23=x. For OSM data, the format is just
             // "DF|DF". Anyway, we just use "DF|DF" part to get the flow direction.
-            final var index = value.indexOf("%");
+            var index = value.indexOf("%");
             if (index > 0)
             {
                 // In TomTom case

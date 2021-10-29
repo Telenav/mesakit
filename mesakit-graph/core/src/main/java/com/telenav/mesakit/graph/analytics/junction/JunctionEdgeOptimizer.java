@@ -38,7 +38,7 @@ public class JunctionEdgeOptimizer
 
     private final EdgeSet junctions;
 
-    public JunctionEdgeOptimizer(final EdgeSet junctions)
+    public JunctionEdgeOptimizer(EdgeSet junctions)
     {
         this.junctions = junctions;
     }
@@ -51,15 +51,15 @@ public class JunctionEdgeOptimizer
         // handle rectangle junctions
         optimizeRectangularJunctionEdges();
 
-        return this.junctions;
+        return junctions;
     }
 
     /**
      * @return another vertex of edge other than the shared vertex of edge and junctionEdge
      */
-    private Vertex anotherVertex(final Edge edge, final Edge junctionEdge)
+    private Vertex anotherVertex(Edge edge, Edge junctionEdge)
     {
-        final var shared = edge.vertexConnecting(junctionEdge);
+        var shared = edge.vertexConnecting(junctionEdge);
         if (shared != null)
         {
             return edge.oppositeVertex(shared);
@@ -71,10 +71,10 @@ public class JunctionEdgeOptimizer
         }
     }
 
-    private boolean hasSameName(final Edge edge1, final Edge edge2)
+    private boolean hasSameName(Edge edge1, Edge edge2)
     {
-        final var name1 = edge1.roadName();
-        final var name2 = edge2.roadName();
+        var name1 = edge1.roadName();
+        var name2 = edge2.roadName();
 
         return name1 != null && name1.equals(name2);
     }
@@ -82,7 +82,7 @@ public class JunctionEdgeOptimizer
     /**
      * @return Ture if the difference of length is less or equals to 15 meters
      */
-    private boolean isLengthValid(final Edge edge, final Edge junctionEdge)
+    private boolean isLengthValid(Edge edge, Edge junctionEdge)
     {
         return edge.length().difference(junctionEdge.length()).isLessThanOrEqualTo(Distance.meters(10));
     }
@@ -93,14 +93,14 @@ public class JunctionEdgeOptimizer
      */
     private void optimizeRectangularJunctionEdges()
     {
-        final var junctionEdges = new EdgeSet();
+        var junctionEdges = new EdgeSet();
 
         // Loop through every junction edge
-        for (final var junctionEdge : this.junctions)
+        for (var junctionEdge : junctions)
         {
             // Validate if there are two connected edges are both less than 60 meters and both
             // connecting to another junction edge
-            for (final var edge1 : junctionEdge.fromEdgesWithoutThisEdge())
+            for (var edge1 : junctionEdge.fromEdgesWithoutThisEdge())
             {
                 // connected edges should not have same road name as the junctionEdge
                 if (hasSameName(edge1, junctionEdge))
@@ -109,7 +109,7 @@ public class JunctionEdgeOptimizer
                 }
 
                 var found = false;
-                for (final var edge2 : junctionEdge.toEdgesWithoutThisEdge())
+                for (var edge2 : junctionEdge.toEdgesWithoutThisEdge())
                 {
                     // connected edges should not have same road name as the junctionEdge
                     if (hasSameName(edge2, junctionEdge))
@@ -117,16 +117,16 @@ public class JunctionEdgeOptimizer
                         continue;
                     }
 
-                    if (!edge1.equals(edge2) && !this.junctions.contains(edge1)
-                            && !this.junctions.contains(edge2) && isLengthValid(edge1, junctionEdge)
+                    if (!edge1.equals(edge2) && !junctions.contains(edge1)
+                            && !junctions.contains(edge2) && isLengthValid(edge1, junctionEdge)
                             && isLengthValid(edge2, junctionEdge))
                     {
-                        final var vertex1 = anotherVertex(edge1, junctionEdge);
-                        final var vertex2 = anotherVertex(edge2, junctionEdge);
+                        var vertex1 = anotherVertex(edge1, junctionEdge);
+                        var vertex2 = anotherVertex(edge2, junctionEdge);
                         if (vertex1 != null && vertex2 != null)
                         {
-                            final var anotherEdge = vertex1.edgeBetween(vertex2);
-                            if (anotherEdge != null && this.junctions.contains(anotherEdge)
+                            var anotherEdge = vertex1.edgeBetween(vertex2);
+                            if (anotherEdge != null && junctions.contains(anotherEdge)
                                     && sameAttribute(anotherEdge, junctionEdge))
                             {
                                 junctionEdges.add(edge1);
@@ -145,7 +145,7 @@ public class JunctionEdgeOptimizer
                 }
             }
         }
-        this.junctions.addAll(junctionEdges);
+        junctions.addAll(junctionEdges);
     }
 
     /**
@@ -154,19 +154,19 @@ public class JunctionEdgeOptimizer
      */
     private void optimizeTriangularJunctionEdges()
     {
-        final var junctionEdges = new EdgeSet();
+        var junctionEdges = new EdgeSet();
 
         // if edge1 is junction edge
-        for (final var edge1 : this.junctions)
+        for (var edge1 : junctions)
         {
-            for (final var edge2 : edge1.connectedEdgesWithoutReversed())
+            for (var edge2 : edge1.connectedEdgesWithoutReversed())
             {
                 // and edge2 is junction edge
-                if (this.junctions.contains(edge2))
+                if (junctions.contains(edge2))
                 {
-                    final var shared = edge1.vertexConnecting(edge2);
+                    var shared = edge1.vertexConnecting(edge2);
                     // edge1, edge2 and triangleEdge form a triangle
-                    final var triangleEdge = edge1.oppositeVertex(shared).edgeBetween(edge2.oppositeVertex(shared));
+                    var triangleEdge = edge1.oppositeVertex(shared).edgeBetween(edge2.oppositeVertex(shared));
                     if (triangleEdge != null && triangleEdge.length().isLessThanOrEqualTo(Distance.meters(60)))
                     {
                         junctionEdges.add(triangleEdge);
@@ -174,10 +174,10 @@ public class JunctionEdgeOptimizer
                 }
             }
         }
-        this.junctions.addAll(junctionEdges);
+        junctions.addAll(junctionEdges);
     }
 
-    private boolean sameAttribute(final Edge edge1, final Edge edge2)
+    private boolean sameAttribute(Edge edge1, Edge edge2)
     {
         return edge1.roadFunctionalClass().equals(edge2.roadFunctionalClass())
                 && edge1.roadType().equals(edge2.roadType());

@@ -108,18 +108,18 @@ public abstract class GraphStore extends BaseRepeater implements Unloadable, Val
     /** True if this graph store has finalized all changes */
     private boolean committed;
 
-    protected GraphStore(final Graph graph)
+    protected GraphStore(Graph graph)
     {
         this.graph = graph;
     }
 
-    public final void addToBounds(final long location)
+    public final void addToBounds(long location)
     {
         bounds = null;
         boundsBuilder.add(location);
     }
 
-    public final void addToBounds(final Rectangle rectangle)
+    public final void addToBounds(Rectangle rectangle)
     {
         bounds = null;
         boundsBuilder.add(rectangle);
@@ -137,7 +137,7 @@ public abstract class GraphStore extends BaseRepeater implements Unloadable, Val
         return bounds;
     }
 
-    public void bounds(final Rectangle bounds)
+    public void bounds(Rectangle bounds)
     {
         this.bounds = bounds;
     }
@@ -190,7 +190,7 @@ public abstract class GraphStore extends BaseRepeater implements Unloadable, Val
      */
     public final boolean isEmpty()
     {
-        for (final GraphElementStore<?> store : stores())
+        for (GraphElementStore<?> store : stores())
         {
             if (!store.isEmpty())
             {
@@ -268,7 +268,7 @@ public abstract class GraphStore extends BaseRepeater implements Unloadable, Val
      * @return True if this graph store and all graph element sub-stores are in a consistent, valid state.
      */
     @Override
-    public final Validator validator(final ValidationType type)
+    public final Validator validator(ValidationType type)
     {
         return new BaseValidator()
         {
@@ -277,7 +277,7 @@ public abstract class GraphStore extends BaseRepeater implements Unloadable, Val
             {
                 if (DEBUG.isDebugOn())
                 {
-                    final var start = Time.now();
+                    var start = Time.now();
                     forEachStore(store -> validate(store.validator(type)));
                     information("Validated ${class} in $", GraphStore.this.getClass(), start.elapsedSince());
                 }
@@ -313,9 +313,9 @@ public abstract class GraphStore extends BaseRepeater implements Unloadable, Val
         return graph().dataSpecification();
     }
 
-    protected void forEachStore(final Consumer<ArchivedGraphElementStore<?>> consumer)
+    protected void forEachStore(Consumer<ArchivedGraphElementStore<?>> consumer)
     {
-        for (final var store : stores())
+        for (var store : stores())
         {
             consumer.accept(store);
         }

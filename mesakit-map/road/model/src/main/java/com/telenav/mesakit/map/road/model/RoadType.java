@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 /**
  * Road type (as defined in the TXD specification)
@@ -49,7 +49,7 @@ public enum RoadType implements Quantizable
     /**
      * @return The road type for the given identifier
      */
-    public static RoadType forIdentifier(final int identifier)
+    public static RoadType forIdentifier(int identifier)
     {
         switch (identifier)
         {
@@ -109,7 +109,7 @@ public enum RoadType implements Quantizable
     /**
      * @return The identifier for the given road type or NULL.identifier if the type is null
      */
-    public static int identifierFor(final RoadType type)
+    public static int identifierFor(RoadType type)
     {
         if (type == null)
         {
@@ -120,7 +120,7 @@ public enum RoadType implements Quantizable
 
     private final int identifier;
 
-    RoadType(final int identifier)
+    RoadType(int identifier)
     {
         this.identifier = identifier;
     }
@@ -130,27 +130,27 @@ public enum RoadType implements Quantizable
         return identifier;
     }
 
-    public boolean isEqualOrLessImportantThan(final RoadType that)
+    public boolean isEqualOrLessImportantThan(RoadType that)
     {
         return identifier >= that.identifier;
     }
 
-    public boolean isEqualOrMoreImportantThan(final RoadType that)
+    public boolean isEqualOrMoreImportantThan(RoadType that)
     {
         return identifier <= that.identifier;
     }
 
-    public boolean isLessImportantThan(final RoadType that)
+    public boolean isLessImportantThan(RoadType that)
     {
         return identifier > that.identifier;
     }
 
-    public boolean isMoreImportantThan(final RoadType that)
+    public boolean isMoreImportantThan(RoadType that)
     {
         return identifier < that.identifier;
     }
 
-    public RoadType maximum(final RoadType that)
+    public RoadType maximum(RoadType that)
     {
         if (isMoreImportantThan(that))
         {

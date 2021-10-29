@@ -37,17 +37,17 @@ public class GraphRandomValueFactory extends GeographyRandomValueFactory
     {
         final List<T> list = new ArrayList<>();
 
-        protected RandomListBuilder(final int minimum, final int maximum)
+        protected RandomListBuilder(int minimum, int maximum)
         {
             for (var i = 0; i < newInt(minimum, maximum); i++)
             {
-                this.list.add(newElement());
+                list.add(newElement());
             }
         }
 
         public List<T> list()
         {
-            return this.list;
+            return list;
         }
 
         protected abstract T newElement();
@@ -57,7 +57,7 @@ public class GraphRandomValueFactory extends GeographyRandomValueFactory
     {
     }
 
-    public GraphRandomValueFactory(final long seed)
+    public GraphRandomValueFactory(long seed)
     {
         super(seed);
     }

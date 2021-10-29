@@ -41,13 +41,13 @@ public class PbfTagPatternFilter implements PbfTagFilter
 
     private static final Debug DEBUG = new Debug(LOGGER);
 
-    public static PbfTagPatternFilter forPattern(final String pattern)
+    public static PbfTagPatternFilter forPattern(String pattern)
     {
         return new PbfTagPatternFilter(pattern);
     }
 
-    public static SwitchParser.Builder<PbfTagPatternFilter> tagFilterSwitchParser(final String name,
-                                                                                  final String description)
+    public static SwitchParser.Builder<PbfTagPatternFilter> tagFilterSwitchParser(String name,
+                                                                                  String description)
     {
         return SwitchParser.builder(PbfTagPatternFilter.class)
                 .name(name)
@@ -62,13 +62,13 @@ public class PbfTagPatternFilter implements PbfTagFilter
 
     public static class Converter extends BaseStringConverter<PbfTagPatternFilter>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected PbfTagPatternFilter onToValue(final String value)
+        protected PbfTagPatternFilter onToValue(String value)
         {
             return forPattern(value);
         }
@@ -78,18 +78,18 @@ public class PbfTagPatternFilter implements PbfTagFilter
 
     private final Map<String, Boolean> filteredTags = new HashMap<>();
 
-    public PbfTagPatternFilter(final String pattern)
+    public PbfTagPatternFilter(String pattern)
     {
         this.pattern = Pattern.compile(pattern);
     }
 
     @Override
-    public boolean accepts(final Tag tag)
+    public boolean accepts(Tag tag)
     {
         var accepted = filteredTags.get(tag.getKey());
         if (accepted == null)
         {
-            final var matcher = pattern.matcher(tag.getKey());
+            var matcher = pattern.matcher(tag.getKey());
             accepted = matcher.matches();
             filteredTags.put(tag.getKey(), accepted);
             if (!accepted)
@@ -107,8 +107,8 @@ public class PbfTagPatternFilter implements PbfTagFilter
 
     public Set<String> rejectedTags()
     {
-        final Set<String> rejectedTags = new HashSet<>();
-        for (final var entry : filteredTags.entrySet())
+        Set<String> rejectedTags = new HashSet<>();
+        for (var entry : filteredTags.entrySet())
         {
             if (!entry.getValue())
             {

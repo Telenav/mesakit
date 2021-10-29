@@ -35,8 +35,8 @@ public class BorderTest extends RegionUnitTest
     @Test
     public void testSerialization()
     {
-        final var polygon = polygon(-0.5, -0.5, 1, -0.5, 1, 0.85, -0.5, 0.85);
-        final var border = new Border<>(Continent.ASIA, polygon);
+        var polygon = polygon(-0.5, -0.5, 1, -0.5, 1, 0.85, -0.5, 0.85);
+        var border = new Border<>(Continent.ASIA, polygon);
         border.identity(new RegionIdentity("x-y")
                 .withIdentifier(new RegionIdentifier(1))
                 .withIsoCode("X")
@@ -44,9 +44,9 @@ public class BorderTest extends RegionUnitTest
         serializationTest(border);
     }
 
-    private Polygon polygon(final double... values)
+    private Polygon polygon(double... values)
     {
-        final List<Location> locations = new ArrayList<>();
+        List<Location> locations = new ArrayList<>();
         for (var i = 0; i < values.length; i += 2)
         {
             locations.add(new Location(Latitude.degrees(values[i]), Longitude.degrees(values[i + 1])));

@@ -32,30 +32,30 @@ import com.telenav.mesakit.graph.world.identifiers.WorldEdgeIdentifier;
  */
 class WorldEdgeSet extends EdgeSet
 {
-    public WorldEdgeSet(final Estimate estimate)
+    public WorldEdgeSet(Estimate estimate)
     {
         super(estimate);
     }
 
-    public WorldEdgeSet(final Estimate estimate, final WorldCell worldCell, final EdgeSet edges)
+    public WorldEdgeSet(Estimate estimate, WorldCell worldCell, EdgeSet edges)
     {
         this(estimate);
         addAll(worldCell, edges);
     }
 
-    public void add(final WorldCell worldCell, final Edge edge)
+    public void add(WorldCell worldCell, Edge edge)
     {
         add(new WorldEdge(new WorldEdgeIdentifier(worldCell, edge.identifier())));
     }
 
-    public void add(final WorldEdge edge)
+    public void add(WorldEdge edge)
     {
         super.add(edge);
     }
 
-    public void addAll(final WorldCell worldCell, final EdgeSet edges)
+    public void addAll(WorldCell worldCell, EdgeSet edges)
     {
-        for (final var edge : edges)
+        for (var edge : edges)
         {
             add(worldCell, edge);
         }

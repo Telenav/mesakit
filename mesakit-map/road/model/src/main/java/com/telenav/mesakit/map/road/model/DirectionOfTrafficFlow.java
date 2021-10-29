@@ -26,9 +26,9 @@ public enum DirectionOfTrafficFlow
     BOTH("+/-"),
     UNKNOWN("?");
 
-    public static DirectionOfTrafficFlow forOrdinal(final int ordinal)
+    public static DirectionOfTrafficFlow forOrdinal(int ordinal)
     {
-        for (final var direction : values())
+        for (var direction : values())
         {
             if (direction.ordinal() == ordinal)
             {
@@ -40,7 +40,7 @@ public enum DirectionOfTrafficFlow
 
     private final String symbol;
 
-    DirectionOfTrafficFlow(final String symbol)
+    DirectionOfTrafficFlow(String symbol)
     {
         this.symbol = symbol;
     }

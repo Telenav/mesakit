@@ -37,7 +37,7 @@ public class VertexAttributes extends NodeAttributes
 
     public class VertexAttribute extends NodeAttribute
     {
-        public VertexAttribute(final String name)
+        public VertexAttribute(String name)
         {
             super(name);
         }

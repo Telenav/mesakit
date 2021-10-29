@@ -50,7 +50,7 @@ public abstract class RampFinder extends BaseRepeater
 
     private final Graph graph;
 
-    protected RampFinder(final Graph graph)
+    protected RampFinder(Graph graph)
     {
         this.graph = graph;
     }
@@ -58,17 +58,17 @@ public abstract class RampFinder extends BaseRepeater
     public void find()
     {
         // Visit each edge in the sequence
-        final var progress = isDeaf() ? Progress.NULL : Progress.create(this, "edges");
+        var progress = isDeaf() ? Progress.NULL : Progress.create(this, "edges");
         progress.steps(graph.edgeCount().asMaximum());
         progress.start();
-        for (final var edge : graph.edges())
+        for (var edge : graph.edges())
         {
             try
             {
                 visit(edge);
                 progress.next();
             }
-            catch (final Exception e)
+            catch (Exception e)
             {
                 LOGGER.problem(e, "Unable to process edge $", edge.identifier());
             }
@@ -94,7 +94,7 @@ public abstract class RampFinder extends BaseRepeater
     /**
      * Visits the given edge looking for ramps
      */
-    private void visit(final Edge edge)
+    private void visit(Edge edge)
     {
         // If we're including ramps and this edge is a ramp
         if (edge.isRamp())
@@ -108,7 +108,7 @@ public abstract class RampFinder extends BaseRepeater
         if (edge.isConnector() && !visited.contains(edge))
         {
             // Get all links connected to this edge
-            final var links = new LinkCrawler(MAXIMUM_LINKS).crawl(edge);
+            var links = new LinkCrawler(MAXIMUM_LINKS).crawl(edge);
             if (links.count().isGreaterThanOrEqualTo(MAXIMUM_LINKS))
             {
                 LOGGER.warning("Edge $ has $ links: $", edge, links.size(), links);
@@ -118,7 +118,7 @@ public abstract class RampFinder extends BaseRepeater
             if (new LinkSetJudger(links).isRamp())
             {
                 // notify the subclass of each edge
-                for (final var link : links)
+                for (var link : links)
                 {
                     // If the link is a connector
                     if (link.isConnector())

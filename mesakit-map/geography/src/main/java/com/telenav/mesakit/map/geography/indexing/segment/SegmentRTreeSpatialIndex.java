@@ -40,21 +40,21 @@ public class SegmentRTreeSpatialIndex extends RTreeSpatialIndex<Segment>
     {
         private final CompressedSegmentList segments;
 
-        CompressedLeaf(final InteriorNode<Segment> parent)
+        CompressedLeaf(InteriorNode<Segment> parent)
         {
             super(SegmentRTreeSpatialIndex.this, parent);
             segments = new CompressedSegmentList();
         }
 
         @Override
-        public void addAll(final List<Segment> segments)
+        public void addAll(List<Segment> segments)
         {
             this.segments.addAll(segments);
             bounds(Rectangle.fromBoundedObjects(segments));
         }
 
         @Override
-        protected void addElement(final Segment element)
+        protected void addElement(Segment element)
         {
             unsupported();
         }
@@ -72,15 +72,15 @@ public class SegmentRTreeSpatialIndex extends RTreeSpatialIndex<Segment>
         }
     }
 
-    public SegmentRTreeSpatialIndex(final String objectName, final Maximum segmentCount,
-                                    final Iterable<Segment> segments)
+    public SegmentRTreeSpatialIndex(String objectName, Maximum segmentCount,
+                                    Iterable<Segment> segments)
     {
         super(objectName, new RTreeSettings());
         bulkLoad(new ObjectList<Segment>(segmentCount).appendAll(segments));
     }
 
     @Override
-    public Leaf<Segment> newLeaf(final InteriorNode<Segment> parent)
+    public Leaf<Segment> newLeaf(InteriorNode<Segment> parent)
     {
         return new CompressedLeaf(parent);
     }

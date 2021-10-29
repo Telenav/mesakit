@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.osm;
 
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfOsm;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfOsm;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.Arrays;
@@ -201,22 +201,22 @@ public class OsmHighwayTag
             PRIMARY_LINK, SECONDARY, SECONDARY_LINK, TERTIARY, TERTIARY_LINK, RESIDENTIAL, RESIDENTIAL_LINK, UNCLASSIFIED,
             SERVICE, TRACK, FOOTWAY, PEDESTRIAN, STEPS, BRIDLEWAY, CONSTRUCTION, CYCLEWAY, PATH, BUS_GUIDEWAY);
 
-    public static boolean isNavigableHighway(final Tag tag)
+    public static boolean isNavigableHighway(Tag tag)
     {
         return KEY.equalsIgnoreCase(tag.getKey()) && NAVIGABLE_WAYS.contains(tag.getValue());
     }
 
-    public static boolean isNullServiceWay(final Tag tag)
+    public static boolean isNullServiceWay(Tag tag)
     {
         return SERVICE.equalsIgnoreCase(tag.getKey()) && null == tag.getValue();
     }
 
-    public static boolean isPrivateAccess(final Tag tag)
+    public static boolean isPrivateAccess(Tag tag)
     {
         return ACCESS.equalsIgnoreCase(tag.getKey()) && PRIVATE.equalsIgnoreCase(tag.getValue());
     }
 
-    public static boolean isServiceWay(final Tag tag)
+    public static boolean isServiceWay(Tag tag)
     {
         return KEY.equalsIgnoreCase(tag.getKey()) && SERVICE.equalsIgnoreCase(tag.getValue());
     }

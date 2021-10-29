@@ -38,10 +38,10 @@ public class SimpleIndonesianRoadNameStandardizerTest extends UnitTest
     @Test
     public void test()
     {
-        final List<String> lines = new ArrayList<>();
-        for (final String line : testCases().reader().linesAsStringList())
+        List<String> lines = new ArrayList<>();
+        for (String line : testCases().reader().linesAsStringList())
         {
-            final var columns = line.split(",");
+            var columns = line.split(",");
             if (columns.length == 2)
             {
                 if (Strings.isNaturalNumber(columns[0]))
@@ -52,13 +52,13 @@ public class SimpleIndonesianRoadNameStandardizerTest extends UnitTest
         }
         for (var i = 0; i < lines.size(); i += 2)
         {
-            final var given = lines.get(i).split(",")[1];
-            final var expected = normalize(lines.get(i + 1).split(",")[1]);
+            var given = lines.get(i).split(",")[1];
+            var expected = normalize(lines.get(i + 1).split(",")[1]);
             test(expected, given);
         }
     }
 
-    protected String normalize(final String string)
+    protected String normalize(String string)
     {
         return string.replaceAll("[.?]", "");
     }
@@ -68,9 +68,9 @@ public class SimpleIndonesianRoadNameStandardizerTest extends UnitTest
         return PackageResource.of(getClass(), "test-cases.csv");
     }
 
-    private void test(final String expected, final String given)
+    private void test(String expected, String given)
     {
-        final var standardizer = new SimpleIndonesianRoadNameStandardizer();
+        var standardizer = new SimpleIndonesianRoadNameStandardizer();
         ensureEqual(RoadName.forName(expected), standardizer.standardize(RoadName.forName(given)));
     }
 }

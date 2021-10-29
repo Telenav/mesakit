@@ -94,10 +94,10 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return A route for the given edges
      */
-    public static Route forEdges(final Edge... edges)
+    public static Route forEdges(Edge... edges)
     {
-        final var builder = new RouteBuilder();
-        for (final var edge : edges)
+        var builder = new RouteBuilder();
+        for (var edge : edges)
         {
             builder.append(edge);
         }
@@ -107,20 +107,20 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return A route for the given edges
      */
-    public static Route forEdges(final Iterable<Edge> edges)
+    public static Route forEdges(Iterable<Edge> edges)
     {
-        final var builder = new RouteBuilder();
-        for (final var edge : edges)
+        var builder = new RouteBuilder();
+        for (var edge : edges)
         {
             builder.append(edge);
         }
         return builder.route();
     }
 
-    public static Route forLongArray(final Graph graph, final long[] identifiers)
+    public static Route forLongArray(Graph graph, long[] identifiers)
     {
-        final var builder = new RouteBuilder();
-        for (final var identifier : identifiers)
+        var builder = new RouteBuilder();
+        for (var identifier : identifiers)
         {
             builder.append(graph.edgeForIdentifier(new EdgeIdentifier(identifier)));
         }
@@ -130,19 +130,19 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return A route for the given vertexes
      */
-    public static Route forVertexes(final Iterable<Vertex> vertexes)
+    public static Route forVertexes(Iterable<Vertex> vertexes)
     {
-        final var edges = new EdgeSet();
+        var edges = new EdgeSet();
         Vertex previous = null;
-        for (final var vertex : vertexes)
+        for (var vertex : vertexes)
         {
             if (previous == null)
             {
                 previous = vertex;
                 continue;
             }
-            final var candidates = previous.outEdges();
-            for (final var candidate : candidates)
+            var candidates = previous.outEdges();
+            for (var candidate : candidates)
             {
                 if (candidate.to().equals(vertex))
                 {
@@ -157,7 +157,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return A route for the given edge
      */
-    public static Route fromEdge(final Edge edge)
+    public static Route fromEdge(Edge edge)
     {
         return new OneEdgeRoute(edge);
     }
@@ -177,13 +177,13 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
 
         private final Graph graph;
 
-        public Converter(final Graph graph, final Separators separators, final Listener listener)
+        public Converter(Graph graph, Separators separators, Listener listener)
         {
             this(graph, separators, listener, new Edge.Converter(graph, listener));
         }
 
-        public Converter(final Graph graph, final Separators separators, final Listener listener,
-                         final Edge.Converter edgeConverter)
+        public Converter(Graph graph, Separators separators, Listener listener,
+                         Edge.Converter edgeConverter)
         {
             super(listener);
             this.graph = graph;
@@ -192,34 +192,34 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
 
         @Override
-        protected Route onToValue(final String value)
+        protected String onToString(Route route)
+        {
+            var edges = new StringList(Maximum.maximum(route.size()));
+            for (var edge : route)
+            {
+                edges.add(edgeConverter.unconvert(edge));
+            }
+            return edges.join(separators.current());
+        }
+
+        @Override
+        protected Route onToValue(String value)
         {
             try
             {
-                final var edges = new EdgeSet();
-                for (final var edge : Split.split(value, separators.current()))
+                var edges = new EdgeSet();
+                for (var edge : Split.split(value, separators.current()))
                 {
                     edges.add(edgeConverter.convert(edge));
                 }
                 return edges.asRoute();
             }
-            catch (final Exception e)
+            catch (Exception e)
             {
                 problem(problemBroadcastFrequency(), e, "${class}: Problem converting ${debug} with graph ${debug}",
                         subclass(), value, graph.name());
             }
             return null;
-        }
-
-        @Override
-        protected String onToString(final Route route)
-        {
-            final var edges = new StringList(Maximum.maximum(route.size()));
-            for (final var edge : route)
-            {
-                edges.add(edgeConverter.unconvert(edge));
-            }
-            return edges.join(separators.current());
         }
     }
 
@@ -238,7 +238,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
 
         private final Graph graph;
 
-        public MapIdentifierConverter(final Graph graph, final Separators separators, final Listener listener)
+        public MapIdentifierConverter(Graph graph, Separators separators, Listener listener)
         {
             super(listener);
             this.graph = graph;
@@ -247,14 +247,25 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
 
         @Override
-        protected Route onToValue(final String value)
+        protected String onToString(Route route)
         {
-            final var builder = new RouteBuilder();
+            var edges = new StringList(Maximum.maximum(route.size()));
+            for (var edge : route)
+            {
+                edges.add(edgeConverter.unconvert(edge));
+            }
+            return edges.join(separators.current());
+        }
+
+        @Override
+        protected Route onToValue(String value)
+        {
+            var builder = new RouteBuilder();
             try
             {
-                for (final var edge : Split.split(value, separators.current()))
+                for (var edge : Split.split(value, separators.current()))
                 {
-                    final var next = edgeConverter.convert(edge);
+                    var next = edgeConverter.convert(edge);
                     if (next == null)
                     {
                         problem("Unable to locate edge $ ", edge);
@@ -263,23 +274,12 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
                     builder.append(next);
                 }
             }
-            catch (final Exception e)
+            catch (Exception e)
             {
                 problem(problemBroadcastFrequency(), e, "${class}: Problem converting ${debug} with graph ${debug}", subclass(), value,
                         graph.name());
             }
             return builder.route();
-        }
-
-        @Override
-        protected String onToString(final Route route)
-        {
-            final var edges = new StringList(Maximum.maximum(route.size()));
-            for (final var edge : route)
-            {
-                edges.add(edgeConverter.unconvert(edge));
-            }
-            return edges.join(separators.current());
         }
     }
 
@@ -308,7 +308,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         /** The total number of edges */
         private int size = -1;
 
-        private ConcatenatedRoute(final Route head, final Route tail)
+        private ConcatenatedRoute(Route head, Route tail)
         {
             this.head = head;
             this.tail = tail;
@@ -360,7 +360,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
 
         @Override
-        public Edge get(final int index)
+        public Edge get(int index)
         {
             if (index < head.size())
             {
@@ -391,7 +391,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
                         if (current instanceof OneEdgeRoute)
                         {
                             // return the single edge and advance to the next route
-                            final var next = ((OneEdgeRoute) current).edge;
+                            var next = ((OneEdgeRoute) current).edge;
                             current = stack.pop();
                             return next;
                         }
@@ -429,7 +429,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
             }
 
             // Use iteration to find the last edge instead of recursion to avoid heavy stack use
-            final var iterator = iterator();
+            var iterator = iterator();
             Edge last = null;
             while (iterator.hasNext())
             {
@@ -516,9 +516,9 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
             }
             else
             {
-                final var builder = new RouteBuilder();
+                var builder = new RouteBuilder();
                 var at = 0;
-                for (final var edge : head)
+                for (var edge : head)
                 {
                     if (at++ > 0)
                     {
@@ -539,11 +539,11 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
             }
             else
             {
-                final var builder = new RouteBuilder();
+                var builder = new RouteBuilder();
                 builder.append(head);
-                final var size = size();
+                var size = size();
                 var at = 0;
-                for (final var edge : tail)
+                for (var edge : tail)
                 {
                     if (++at < size - 1)
                     {
@@ -564,7 +564,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     {
         private final Edge edge;
 
-        public OneEdgeRoute(final Edge edge)
+        public OneEdgeRoute(Edge edge)
         {
             assert edge != null : "Edge cannot be null";
 
@@ -591,7 +591,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
 
         @Override
-        public Edge get(final int index)
+        public Edge get(int index)
         {
             if (index == 0)
             {
@@ -640,7 +640,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         @Override
         public int travelTimeInMilliseconds()
         {
-            final var ratio = (double) lengthInMillimeters() / (double) totalLengthInMillimeters();
+            var ratio = (double) lengthInMillimeters() / (double) totalLengthInMillimeters();
             return (int) (edge.travelTimeInMilliseconds() * ratio);
         }
 
@@ -657,20 +657,20 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
 
         @Override
-        protected void checkEndOffset(final Distance offset)
+        protected void checkEndOffset(Distance offset)
         {
             super.checkEndOffset(offset);
             checkLengthWithOffset(startOffset(), offset);
         }
 
         @Override
-        protected void checkStartOffset(final Distance offset)
+        protected void checkStartOffset(Distance offset)
         {
             super.checkStartOffset(offset);
             checkLengthWithOffset(offset, endOffset());
         }
 
-        private void checkLengthWithOffset(final Distance startOffset, final Distance endOffset)
+        private void checkLengthWithOffset(Distance startOffset, Distance endOffset)
         {
             if (edge.length().asMillimeters() - offsetInMillimeters(startOffset, endOffset) < 0)
             {
@@ -707,7 +707,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      * @return This route with the given edge appended, if the resulting route is less than the maximum length. If the
      * resulting route would be too long, a warning is logged and the edge is not appended.
      */
-    public Route append(final Count maximum, final Edge edge)
+    public Route append(Count maximum, Edge edge)
     {
         return append(maximum, new OneEdgeRoute(edge));
     }
@@ -716,7 +716,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      * @return This route with the given route appended, if the resulting route is less than the maximum length. If the
      * resulting route would be too long, a warning is logged and the route is not appended.
      */
-    public Route append(final Count maximum, final Route that)
+    public Route append(Count maximum, Route that)
     {
         assert that != null : "Route cannot be null";
 
@@ -728,7 +728,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
 
         // then try to append the reversed route
-        final var reversed = that.reversed();
+        var reversed = that.reversed();
         if (canAppend(maximum, reversed))
         {
             // and return the concatenated route
@@ -758,7 +758,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      * @return This route with the given edge appended. For convenience the edge can be null and nothing will be
      * appended.
      */
-    public Route append(final Edge edge)
+    public Route append(Edge edge)
     {
         if (edge == null)
         {
@@ -773,7 +773,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return This route with the given route appended
      */
-    public Route append(final Route route)
+    public Route append(Route route)
     {
         return append(Limit.EDGES_PER_ROUTE, route);
     }
@@ -783,8 +783,8 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      */
     public EdgeSet asEdgeSet()
     {
-        final var edges = new EdgeSet(Estimate.estimate(size()));
-        for (final var edge : this)
+        var edges = new EdgeSet(Estimate.estimate(size()));
+        for (var edge : this)
         {
             edges.add(edge);
         }
@@ -796,13 +796,13 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      */
     public LongArray asIdentifierArray()
     {
-        final var size = Estimate.estimate(this);
+        var size = Estimate.estimate(this);
 
-        final var array = new LongArray("temporary");
+        var array = new LongArray("temporary");
         array.initialSize(size);
         array.initialize();
 
-        for (final var edge : this)
+        for (var edge : this)
         {
             array.add(edge.identifierAsLong());
         }
@@ -816,8 +816,8 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      */
     public List<Edge> asList()
     {
-        final List<Edge> edges = new ArrayList<>(size());
-        for (final var edge : this)
+        List<Edge> edges = new ArrayList<>(size());
+        for (var edge : this)
         {
             edges.add(edge);
         }
@@ -839,10 +839,10 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
 
     public PbfWay asWay()
     {
-        final List<WayNode> nodes = new ArrayList<>();
-        for (final var point : shapePoints())
+        List<WayNode> nodes = new ArrayList<>();
+        for (var point : shapePoints())
         {
-            final var node = new WayNode(point.mapIdentifier().asLong());
+            var node = new WayNode(point.mapIdentifier().asLong());
             nodes.add(node);
         }
         return new PbfWay(new Way(first().commonEntityData(), nodes));
@@ -857,7 +857,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         return Rectangle.fromBoundedObjects(this);
     }
 
-    public boolean canAppend(final Count maximum, final Route that)
+    public boolean canAppend(Count maximum, Route that)
     {
         // If the the last edge of this route is connected to the first edge of that route and the
         // maximum size won't be exceeded, we can append.
@@ -868,12 +868,12 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         return false;
     }
 
-    public boolean canAppend(final Route that)
+    public boolean canAppend(Route that)
     {
         return canAppend(Limit.EDGES_PER_ROUTE, that);
     }
 
-    public Route connect(final Edge edge)
+    public Route connect(Edge edge)
     {
         return connect(Route.fromEdge(edge));
     }
@@ -881,7 +881,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return Connect two routes, if possible. If either route is two way they may be reversed to form the connection
      */
-    public Route connect(final Route that)
+    public Route connect(Route that)
     {
         if (leadsTo(that))
         {
@@ -893,14 +893,14 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
         if (isReversible())
         {
-            final var thisReversed = reversed();
+            var thisReversed = reversed();
             if (thisReversed.leadsTo(that))
             {
                 return thisReversed.append(that);
             }
             if (that.isReversible())
             {
-                final var thatReversed = that.reversed();
+                var thatReversed = that.reversed();
                 if (thisReversed.leadsTo(thatReversed))
                 {
                     return thisReversed.append(thatReversed);
@@ -909,7 +909,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
         if (that.isReversible())
         {
-            final var toReversed = that.reversed();
+            var toReversed = that.reversed();
             if (leadsTo(toReversed))
             {
                 return append(toReversed);
@@ -923,12 +923,12 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      */
     public boolean connectsToSameRoad()
     {
-        final var isRouteStraight = isStraight();
-        final var fromEdges = first().fromEdgesWithoutThisEdge();
-        final var toEdges = last().toEdgesWithoutThisEdge();
-        for (final var toEdge : toEdges)
+        var isRouteStraight = isStraight();
+        var fromEdges = first().fromEdgesWithoutThisEdge();
+        var toEdges = last().toEdgesWithoutThisEdge();
+        for (var toEdge : toEdges)
         {
-            for (final var fromEdge : fromEdges)
+            for (var fromEdge : fromEdges)
             {
                 // if the route is connecting to same edge
                 if (fromEdge.equals(toEdge))
@@ -940,7 +940,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
                 if (!isRouteStraight && isAngleValid(fromEdge, toEdge))
                 {
                     // check if they are connecting to same road
-                    final var nonbranchingRoute = fromEdge.nonBranchingRouteWithSameName(Maximum._6);
+                    var nonbranchingRoute = fromEdge.nonBranchingRouteWithSameName(Maximum._6);
                     if (nonbranchingRoute.contains(toEdge))
                     {
                         return true;
@@ -960,8 +960,8 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         // should be junction edges
         if (length().isLessThan(Distance.meters(5)))
         {
-            final var inEdges = first().inEdgesWithoutReversed();
-            final var outEdges = last().outEdgesWithoutReversed();
+            var inEdges = first().inEdgesWithoutReversed();
+            var outEdges = last().outEdgesWithoutReversed();
             if (inEdges.size() > 1 && outEdges.size() > 1)
             {
                 return !inEdges.first().roadType().equals(RoadType.LOW_SPEED_ROAD)
@@ -985,9 +985,9 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
             return false;
         }
 
-        for (final var edgeFrom : first().fromEdgesWithoutThisEdge())
+        for (var edgeFrom : first().fromEdgesWithoutThisEdge())
         {
-            for (final var edgeTo : last().toEdgesWithoutThisEdge())
+            for (var edgeTo : last().toEdgesWithoutThisEdge())
             {
                 if (edgeFrom.equals(edgeTo) || edgeFrom.equals(edgeTo.reversed()))
                 {
@@ -1058,7 +1058,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
 
         // If any edge in this route
-        for (final var edge : this)
+        for (var edge : this)
         {
             // is double digitized or not a one-way road,
             if (edge.osmIsDoubleDigitized() || !edge.isOneWay())
@@ -1069,13 +1069,13 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
 
         // Go through all edges that are entering this route
-        for (final var in : first().from().inEdges())
+        for (var in : first().from().inEdges())
         {
             // and if the in edge is a one way road
             if (in.isOneWay())
             {
                 // go through all out edges of this route
-                for (final var out : last().to().outEdges())
+                for (var out : last().to().outEdges())
                 {
                     // and if the out edge is also a one way road
                     if (out.isOneWay())
@@ -1101,9 +1101,9 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     {
         if (!connectsToSameRoad())
         {
-            for (final var edgeFrom : first().inEdgesWithoutReversed())
+            for (var edgeFrom : first().inEdgesWithoutReversed())
             {
-                for (final var edgeTo : last().outEdgesWithoutReversed())
+                for (var edgeTo : last().outEdgesWithoutReversed())
                 {
                     if (!edgeFrom.isForwardOrReverseOf(edgeTo) && !areOnSameLogicalWay(edgeFrom, edgeTo, this)
                             && (hasReasonableLength(edgeFrom) || hasReasonableLength(edgeTo))
@@ -1120,9 +1120,9 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      *
      */
-    public boolean contains(final Edge that)
+    public boolean contains(Edge that)
     {
-        for (final var edge : this)
+        for (var edge : this)
         {
             if (edge.equals(that))
             {
@@ -1135,9 +1135,9 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return True if this route contains every edge in the given route
      */
-    public boolean contains(final Route that)
+    public boolean contains(Route that)
     {
-        for (final var edge : that)
+        for (var edge : that)
         {
             if (!contains(edge))
             {
@@ -1150,9 +1150,9 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return True if this route contains the given vertex
      */
-    public boolean contains(final Vertex that)
+    public boolean contains(Vertex that)
     {
-        for (final var vertex : vertexes())
+        for (var vertex : vertexes())
         {
             if (vertex.equals(that))
             {
@@ -1167,8 +1167,8 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      */
     public boolean containsRepeatedEdge()
     {
-        final Set<Edge> edges = new HashSet<>();
-        for (final var edge : this)
+        Set<Edge> edges = new HashSet<>();
+        for (var edge : this)
         {
             if (edges.contains(edge))
             {
@@ -1187,14 +1187,14 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return The location of the vertex where the given road name crosses this route
      */
-    public Location crossStreet(final RoadNameStandardizer standardizer, final RoadName name)
+    public Location crossStreet(RoadNameStandardizer standardizer, RoadName name)
     {
-        final var standardizedName = standardizer.standardize(name).asRoadName();
-        for (final var vertex : vertexes())
+        var standardizedName = standardizer.standardize(name).asRoadName();
+        for (var vertex : vertexes())
         {
-            for (final var edge : vertex.inEdges())
+            for (var edge : vertex.inEdges())
             {
-                for (final var crossName : edge.roadNames())
+                for (var crossName : edge.roadNames())
                 {
                     if (standardizer.standardize(crossName).asRoadName().equals(standardizedName))
                     {
@@ -1209,7 +1209,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     public Distance distanceToDecisionPoint()
     {
         var distance = Distance.ZERO;
-        for (final var edge : this)
+        for (var edge : this)
         {
             distance = distance.add(edge.length());
             if (edge.to().isDecisionPoint())
@@ -1231,9 +1231,9 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
             return null;
         }
 
-        for (final var edgeFrom : first().fromEdgesWithoutThisEdge())
+        for (var edgeFrom : first().fromEdgesWithoutThisEdge())
         {
-            for (final var edgeTo : last().toEdgesWithoutThisEdge())
+            for (var edgeTo : last().toEdgesWithoutThisEdge())
             {
                 if (edgeFrom.equals(edgeTo) || edgeFrom.equals(edgeTo.reversed()))
                 {
@@ -1326,11 +1326,11 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      * {@inheritDoc}
      */
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Route)
         {
-            final var that = (Route) object;
+            var that = (Route) object;
             if (size() == that.size())
             {
                 if (this == that)
@@ -1358,7 +1358,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     public Duration functionalClassTravelTime()
     {
         var travelTimeInMilliseconds = 0L;
-        for (final var edge : this)
+        for (var edge : this)
         {
             travelTimeInMilliseconds += edge.travelTimeForFunctionalClass().asMilliseconds();
         }
@@ -1403,7 +1403,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
                 if (edges.hasNext())
                 {
                     // get the next edge
-                    final var edge = edges.next();
+                    var edge = edges.next();
 
                     // and if we're not at the very end
                     if (edges.hasNext())
@@ -1420,7 +1420,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return True if the given edge is connected to either end of this route
      */
-    public boolean isConnectedTo(final Edge edge)
+    public boolean isConnectedTo(Edge edge)
     {
         return first().isConnectedTo(edge) || last().isConnectedTo(edge);
     }
@@ -1431,7 +1431,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     public boolean isInPlaceUTurn()
     {
         Edge previous = null;
-        for (final var edge : this)
+        for (var edge : this)
         {
             if (previous != null)
             {
@@ -1450,9 +1450,9 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return True if all edges in this route are inside the given bounds
      */
-    public boolean isInside(final Rectangle bounds)
+    public boolean isInside(Rectangle bounds)
     {
-        for (final var edge : this)
+        for (var edge : this)
         {
             if (!edge.isInside(bounds))
             {
@@ -1467,17 +1467,17 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      */
     public boolean isLoop()
     {
-        final var first = first();
-        final var last = last();
+        var first = first();
+        var last = last();
         return first.from().equals(last.to()) && first.heading().isClose(last.heading(), degrees(20));
     }
 
     /**
      * @return True if any edge in this route is parallel to the given edge
      */
-    public boolean isParallel(final Edge that)
+    public boolean isParallel(Edge that)
     {
-        for (final var edge : this)
+        for (var edge : this)
         {
             if (edge.isParallelTo(that))
             {
@@ -1489,7 +1489,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
 
     public boolean isReversible()
     {
-        for (final var edge : this)
+        for (var edge : this)
         {
             if (!edge.isTwoWay())
             {
@@ -1502,9 +1502,9 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return True if every edge in this route is on the same road as the given edge
      */
-    public boolean isSameRoadAs(final Edge that)
+    public boolean isSameRoadAs(Edge that)
     {
-        for (final var edge : this)
+        for (var edge : this)
         {
             if (edge.isOnSameRoadAs(that))
             {
@@ -1514,7 +1514,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         return false;
     }
 
-    public boolean isSharpUTurn(final Angle maximumTurnAngle)
+    public boolean isSharpUTurn(Angle maximumTurnAngle)
     {
         return turnVertexInSharpUTurn(maximumTurnAngle) != null;
     }
@@ -1530,7 +1530,6 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("NullableProblems")
     @Override
     public abstract Iterator<Edge> iterator();
 
@@ -1542,7 +1541,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return True if this route leads to the given edge
      */
-    public boolean leadsTo(final Edge edge)
+    public boolean leadsTo(Edge edge)
     {
         return last().leadsTo(edge);
     }
@@ -1550,7 +1549,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return True if this route leads to that route
      */
-    public boolean leadsTo(final Route that)
+    public boolean leadsTo(Route that)
     {
         return leadsTo(that.first());
     }
@@ -1574,10 +1573,10 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return True if the two routes meet at one or more vertexes, false if the routes are completely disjoint
      */
-    public boolean meets(final Route that)
+    public boolean meets(Route that)
     {
-        final var thatVertexes = that.asVertexSet();
-        for (final var vertex : vertexes())
+        var thatVertexes = that.asVertexSet();
+        for (var vertex : vertexes())
         {
             if (thatVertexes.contains(vertex))
             {
@@ -1589,16 +1588,16 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
 
     public Edge middleEdge()
     {
-        final var middle = size() / 2;
+        var middle = size() / 2;
         return get(Ints.inRange(middle, 0, size() - 1));
     }
 
     /**
      * @return True if this route shares one or more edges with that route
      */
-    public boolean overlaps(final Route that)
+    public boolean overlaps(Route that)
     {
-        for (final var edge : this)
+        for (var edge : this)
         {
             if (that.contains(edge))
             {
@@ -1618,12 +1617,12 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      */
     public Polyline polyline()
     {
-        final var builder = new PolylineBuilder();
+        var builder = new PolylineBuilder();
         var firstEdge = true;
-        for (final var edge : this)
+        for (var edge : this)
         {
             var firstLocation = true;
-            for (final var location : edge.roadShape().locationSequence())
+            for (var location : edge.roadShape().locationSequence())
             {
                 if (firstEdge || !firstLocation)
                 {
@@ -1639,7 +1638,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return This route with the given edge prepended
      */
-    public Route prepend(final Edge edge)
+    public Route prepend(Edge edge)
     {
         return fromEdge(edge).append(Limit.EDGES_PER_ROUTE, this);
     }
@@ -1648,7 +1647,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      * @return This route with the given edge prepended if the resulting route would be less than the given maximum
      * length
      */
-    public Route prepend(final Edge edge, final Distance maximum)
+    public Route prepend(Edge edge, Distance maximum)
     {
         if (length().add(edge.length()).isGreaterThan(maximum))
         {
@@ -1660,7 +1659,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return This route with the given route appended
      */
-    public Route prepend(final Route route)
+    public Route prepend(Route route)
     {
         return route.append(Limit.EDGES_PER_ROUTE, this);
     }
@@ -1670,8 +1669,8 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      */
     public Route reversed()
     {
-        final var builder = new RouteBuilder();
-        for (final var edge : this)
+        var builder = new RouteBuilder();
+        for (var edge : this)
         {
             if (!edge.isTwoWay())
             {
@@ -1696,9 +1695,9 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      */
     public List<Route> sectionedAtNonUTurnDecisionPoints()
     {
-        final List<Route> sections = new ArrayList<>();
+        List<Route> sections = new ArrayList<>();
         var builder = new RouteBuilder();
-        for (final var edge : this)
+        for (var edge : this)
         {
             builder.append(edge);
             if (!edge.to().isThroughVertex())
@@ -1721,8 +1720,8 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
 
     public Set<SignPostSupport> signPostSupport()
     {
-        final Set<SignPostSupport> support = new HashSet<>();
-        for (final var edge : this)
+        Set<SignPostSupport> support = new HashSet<>();
+        for (var edge : this)
         {
             support.addAll(edge.signPostSupport());
         }
@@ -1758,7 +1757,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return The sub-route of this route starting at the given edge (inclusive)
      */
-    public Route startingAt(final Edge start)
+    public Route startingAt(Edge start)
     {
         return startingAt(start, Integer.MAX_VALUE);
     }
@@ -1766,11 +1765,11 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return The sub-route of this route starting at the given edge (inclusive)
      */
-    public Route startingAt(final Edge start, final int limit)
+    public Route startingAt(Edge start, int limit)
     {
-        final var builder = new RouteBuilder();
+        var builder = new RouteBuilder();
         var started = false;
-        for (final var edge : this)
+        for (var edge : this)
         {
             started = started || edge.equals(start);
             if (started)
@@ -1794,9 +1793,9 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         return Streams.stream(this);
     }
 
-    public ObjectList<Edge> tail(final Count count)
+    public ObjectList<Edge> tail(Count count)
     {
-        final var last = new ObjectList<Edge>(count.asMaximum());
+        var last = new ObjectList<Edge>(count.asMaximum());
         for (var i = Math.max(0, size() - count.asInt()); i < size(); i++)
         {
             last.add(get(i));
@@ -1813,10 +1812,10 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         return toString(":");
     }
 
-    public String toString(final String separator)
+    public String toString(String separator)
     {
-        final var edges = new StringList();
-        for (final var edge : this)
+        var edges = new StringList();
+        for (var edge : this)
         {
             edges.append(edge.identifier().toString());
         }
@@ -1828,11 +1827,11 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      */
     public String toWayIdentifierString()
     {
-        final var identifiers = new StringList(Maximum._100_000);
+        var identifiers = new StringList(Maximum._100_000);
         PbfWayIdentifier last = null;
-        for (final var edge : this)
+        for (var edge : this)
         {
-            final var identifier = edge.wayIdentifier();
+            var identifier = edge.wayIdentifier();
             if (!identifier.equals(last))
             {
                 identifiers.add(identifier.toString());
@@ -1855,7 +1854,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     public Route trimLeadingWay()
     {
         var current = first();
-        for (final var edge : this)
+        for (var edge : this)
         {
             if (!edge.isOnSameWay(current) || edge.isForward() != current.isForward())
             {
@@ -1868,11 +1867,11 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
 
     public Route trimTrailingWay()
     {
-        final var edges = asList();
+        var edges = asList();
         var current = last();
         for (var i = edges.size() - 2; i >= 0; i--)
         {
-            final var edge = edges.get(i);
+            var edge = edges.get(i);
             if (!edge.isOnSameWay(current) || edge.isForward() != current.isForward())
             {
                 break;
@@ -1882,16 +1881,16 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         return upTo(current);
     }
 
-    public Vertex turnVertexInSharpUTurn(final Angle maximumTurnAngle)
+    public Vertex turnVertexInSharpUTurn(Angle maximumTurnAngle)
     {
         Vertex turnVertex = null;
         Edge previous = null;
-        for (final var edge : this)
+        for (var edge : this)
         {
             if (previous != null)
             {
-                final var fromHeading = previous.finalHeading();
-                final var toHeading = edge.initialHeading();
+                var fromHeading = previous.finalHeading();
+                var toHeading = edge.initialHeading();
 
                 if (fromHeading.difference(toHeading, Chirality.SMALLEST).isGreaterThan(maximumTurnAngle))
                 {
@@ -1909,10 +1908,10 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return The sub-route of this route from the beginning to the ending edge (inclusive)
      */
-    public Route upTo(final Edge end)
+    public Route upTo(Edge end)
     {
-        final var builder = new RouteBuilder();
-        for (final var edge : this)
+        var builder = new RouteBuilder();
+        for (var edge : this)
         {
             builder.append(edge);
             if (edge.equals(end))
@@ -1968,7 +1967,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
             @Override
             public Vertex onNext()
             {
-                final Vertex next;
+                Vertex next;
 
                 // If we're just starting iteration,
                 if (last == null)
@@ -1982,7 +1981,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
                     if (edges.hasNext())
                     {
                         // get the next edge
-                        final var edge = edges.next();
+                        var edge = edges.next();
 
                         // and the next vertex is the vertex on this edge that is at the
                         // opposite end from the last vertex
@@ -2005,10 +2004,10 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return This route with the given end offset (the amount of the last edge that is not included in this route)
      */
-    public Route withEndOffset(final Distance offset)
+    public Route withEndOffset(Distance offset)
     {
         checkEndOffset(offset);
-        final var route = forEdges(this);
+        var route = forEdges(this);
         route.startOffset = startOffset;
         route.endOffset = offset;
         return route;
@@ -2017,10 +2016,10 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return This route with the given start offset (the amount of the first edge that is not included in this route)
      */
-    public Route withStartOffset(final Distance offset)
+    public Route withStartOffset(Distance offset)
     {
         checkStartOffset(offset);
-        final var route = forEdges(this);
+        var route = forEdges(this);
         route.startOffset = offset;
         route.endOffset = endOffset;
         return route;
@@ -2036,7 +2035,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      */
     public abstract Route withoutLast();
 
-    protected void checkEndOffset(final Distance offset)
+    protected void checkEndOffset(Distance offset)
     {
         if (offset.isGreaterThan(last().length()))
         {
@@ -2044,7 +2043,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
     }
 
-    protected void checkStartOffset(final Distance offset)
+    protected void checkStartOffset(Distance offset)
     {
         if (offset.isGreaterThan(first().length()))
         {
@@ -2052,7 +2051,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
     }
 
-    protected long offsetInMillimeters(final Distance startOffset, final Distance endOffset)
+    protected long offsetInMillimeters(Distance startOffset, Distance endOffset)
     {
         var lengthInMillimeters = 0L;
         if (startOffset != null)
@@ -2077,10 +2076,10 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      * @param route the route between the given edges
      * @return true if the edges and the route are on the same logical way, false otherwise
      */
-    private boolean areOnSameLogicalWay(final Edge edgeIntoRoute, final Edge edgeOutOfRoute, final Route route)
+    private boolean areOnSameLogicalWay(Edge edgeIntoRoute, Edge edgeOutOfRoute, Route route)
     {
-        final var routeFirst = route.first();
-        final var routeLast = route.last();
+        var routeFirst = route.first();
+        var routeLast = route.last();
         return routeFirst.isOnSameWay(edgeIntoRoute) || routeLast.isOnSameWay(edgeOutOfRoute)
                 || new EdgePair(edgeIntoRoute, routeFirst).isStraight(degrees(25D))
                 || new EdgePair(routeLast, edgeOutOfRoute).isStraight(degrees(25D));
@@ -2089,7 +2088,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return True if the size of this route plus the size of that route
      */
-    private boolean checkSize(final Count maximumSize, final Route that)
+    private boolean checkSize(Count maximumSize, Route that)
     {
         if (size() + that.size() > maximumSize.asInt())
         {
@@ -2108,7 +2107,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return True if the edge has a reasonable length (at least 5 meters long)
      */
-    private boolean hasReasonableLength(final Edge edge)
+    private boolean hasReasonableLength(Edge edge)
     {
         return edge.length().isGreaterThan(Distance.meters(5));
     }
@@ -2116,7 +2115,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return True if the road type and functional class are same for both edges
      */
-    private boolean hasSameTypeAndFunctionalClass(final Edge edgeFrom, final Edge edgeTo)
+    private boolean hasSameTypeAndFunctionalClass(Edge edgeFrom, Edge edgeTo)
     {
         return edgeFrom.roadType().equals(edgeTo.roadType())
                 && edgeFrom.roadFunctionalClass().equals(edgeTo.roadFunctionalClass());
@@ -2127,13 +2126,13 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      *
      * @return true if the edges hac=ve the same ref tag value, false otherwise
      */
-    private boolean hasTheSameRef(final EdgePair edgePair)
+    private boolean hasTheSameRef(EdgePair edgePair)
     {
-        final var refValueFirst = edgePair.first().tag("ref");
-        final var refValueSecond = edgePair.second().tag("ref");
+        var refValueFirst = edgePair.first().tag("ref");
+        var refValueSecond = edgePair.second().tag("ref");
 
-        final var firstRef = refValueFirst != null ? refValueFirst.getValue() : null;
-        final var secondRef = refValueSecond != null ? refValueSecond.getValue() : null;
+        var firstRef = refValueFirst != null ? refValueFirst.getValue() : null;
+        var secondRef = refValueSecond != null ? refValueSecond.getValue() : null;
 
         return firstRef != null && firstRef.equalsIgnoreCase(secondRef);
     }
@@ -2142,14 +2141,14 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      * @return True if the edgeFrom and edgeTo are coming from same side and parallel, and they should be not parallel
      * with the route
      */
-    private boolean isAngleValid(final Edge edgeFrom, final Edge edgeTo)
+    private boolean isAngleValid(Edge edgeFrom, Edge edgeTo)
     {
         // angle from 'from vertex of route' to edgeFrom
-        final var headingFrom = edgeFrom.from().equals(first().from()) ? edgeFrom.roadShape().initialHeading()
+        var headingFrom = edgeFrom.from().equals(first().from()) ? edgeFrom.roadShape().initialHeading()
                 : edgeFrom.roadShape().reversed().initialHeading();
 
         // angle from 'to vertex of route' to edgeTo
-        final var headingTo = edgeTo.from().equals(last().to()) ? edgeTo.roadShape().initialHeading()
+        var headingTo = edgeTo.from().equals(last().to()) ? edgeTo.roadShape().initialHeading()
                 : edgeTo.roadShape().reversed().initialHeading();
 
         if (headingFrom.difference(headingTo, Chirality.SMALLEST).isGreaterThan(degrees(30)))
@@ -2158,18 +2157,18 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
 
         // angle between headingFrom and edgeFrom
-        final var intersectionAngleFrom = headingFrom.difference(first().roadShape().initialHeading(),
+        var intersectionAngleFrom = headingFrom.difference(first().roadShape().initialHeading(),
                 Chirality.SMALLEST);
 
         // angle between headingTo and edgeTo
-        final var intersectionAngleTo = headingTo.difference(last().roadShape().reversed().initialHeading(),
+        var intersectionAngleTo = headingTo.difference(last().roadShape().reversed().initialHeading(),
                 Chirality.SMALLEST);
 
         return intersectionAngleFrom.isBetween(degrees(40), degrees(140), Chirality.SMALLEST)
                 && intersectionAngleTo.isBetween(degrees(40), degrees(140), Chirality.SMALLEST);
     }
 
-    private boolean isAttributeValid(final Edge edge)
+    private boolean isAttributeValid(Edge edge)
     {
         // check road sub type
         if (edge.isRoundabout())
@@ -2199,13 +2198,13 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      *
      * @return true if the edges are double digitized, false otherwise
      */
-    private boolean isDoubleDigitizedWithDifferentNames(final EdgePair edgePair)
+    private boolean isDoubleDigitizedWithDifferentNames(EdgePair edgePair)
     {
         return hasTheSameRef(edgePair)
                 && edgePair.isDoubleDigitized(EdgePair.DoubleDigitizedType.MISMATCHED_NAMES, degrees(35));
     }
 
-    private boolean isFromVertexConnectedToRoute(final Edge edge)
+    private boolean isFromVertexConnectedToRoute(Edge edge)
     {
         return edge.from().equals(first().from()) || edge.from().equals(last().to());
     }
@@ -2213,7 +2212,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     /**
      * @return True if the edge is a low-priority road
      */
-    private boolean isLowPriorityRoad(final Edge edge)
+    private boolean isLowPriorityRoad(Edge edge)
     {
         return edge.roadFunctionalClass().isLessImportantThan(RoadFunctionalClass.SECOND_CLASS);
     }

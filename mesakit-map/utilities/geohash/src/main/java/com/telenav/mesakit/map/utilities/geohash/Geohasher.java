@@ -58,7 +58,7 @@ public class Geohasher
             this(GeohashAlphabet.DEFAULT);
         }
 
-        public Builder(final GeohashAlphabet alphabet)
+        public Builder(GeohashAlphabet alphabet)
         {
             this.alphabet = alphabet;
             if (resolution > alphabet.maximumTextLength())
@@ -67,13 +67,13 @@ public class Geohasher
             }
         }
 
-        public Builder allowBorderCrossings(final boolean allowBorderCrossings)
+        public Builder allowBorderCrossings(boolean allowBorderCrossings)
         {
             this.allowBorderCrossings = allowBorderCrossings;
             return this;
         }
 
-        public Builder borderCompactingTolerance(final int borderCompactingTolerance)
+        public Builder borderCompactingTolerance(int borderCompactingTolerance)
         {
             if (borderCompactingTolerance < 0 || borderCompactingTolerance >= alphabet.numberOfCharacters())
             {
@@ -88,7 +88,7 @@ public class Geohasher
             return new Geohasher(this);
         }
 
-        public Builder interiorCompactingTolerance(final int interiorCompactingTolerance)
+        public Builder interiorCompactingTolerance(int interiorCompactingTolerance)
         {
             if (interiorCompactingTolerance < 0 || interiorCompactingTolerance >= alphabet.numberOfCharacters())
             {
@@ -98,7 +98,7 @@ public class Geohasher
             return this;
         }
 
-        public Builder resolution(final int resolution)
+        public Builder resolution(int resolution)
         {
             if (resolution < 0 || resolution > alphabet.maximumTextLength())
             {
@@ -119,7 +119,7 @@ public class Geohasher
 
     private final boolean allowBorderCrossings;
 
-    private Geohasher(final Builder builder)
+    private Geohasher(Builder builder)
     {
         alphabet = builder.alphabet;
         resolution = builder.resolution;
@@ -128,15 +128,15 @@ public class Geohasher
         borderCompactingTolerance = builder.borderCompactingTolerance;
     }
 
-    public Collection<Geohash> geohashes(final Polygon polygon)
+    public Collection<Geohash> geohashes(Polygon polygon)
     {
-        final var organizer = new GeohashOrganizer(interiorCompactingTolerance,
+        var organizer = new GeohashOrganizer(interiorCompactingTolerance,
                 borderCompactingTolerance);
         geohashes(polygon, Geohash.world(alphabet), organizer);
         return organizer.all();
     }
 
-    private void geohashes(final Polygon polygon, final Geohash geohash, final GeohashOrganizer organizer)
+    private void geohashes(Polygon polygon, Geohash geohash, GeohashOrganizer organizer)
     {
         if (polygon.contains(geohash.bounds()))
         {
@@ -146,7 +146,7 @@ public class Geohasher
         {
             if (geohash.depth() < resolution)
             {
-                for (final var child : geohash.children())
+                for (var child : geohash.children())
                 {
                     geohashes(polygon, child, organizer);
                 }

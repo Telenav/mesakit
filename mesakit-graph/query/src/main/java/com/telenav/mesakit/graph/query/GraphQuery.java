@@ -34,24 +34,24 @@ public class GraphQuery
      * @param errorHandler Callback for receiving error messages
      * @return The set of candidate edges matching the query
      */
-    public Set<Route> execute(final ProgressReporter reporter,
-                              final EdgeSequence candidates,
-                              final String query,
-                              final Maximum maximumMatches,
-                              final Callback<String> errorHandler)
+    public Set<Route> execute(ProgressReporter reporter,
+                              EdgeSequence candidates,
+                              String query,
+                              Maximum maximumMatches,
+                              Callback<String> errorHandler)
     {
         // Start the progress reporter,
         reporter.steps(candidates.count().asMaximum());
         reporter.start();
 
         // create a lexer for query,
-        final var lexer = new GraphQueryLexer(CharStreams.fromString(query));
+        var lexer = new GraphQueryLexer(CharStreams.fromString(query));
 
         // parse the lexer's token stream,
-        final var parser = new GraphQueryParser(new CommonTokenStream(lexer));
-        final var listener = new GraphQueryErrorListener(errorHandler);
+        var parser = new GraphQueryParser(new CommonTokenStream(lexer));
+        var listener = new GraphQueryErrorListener(errorHandler);
         parser.addErrorListener(listener);
-        final var queryParseTree = parser.select();
+        var queryParseTree = parser.select();
 
         // and if an error was reported
         if (listener.error())
@@ -77,14 +77,14 @@ public class GraphQuery
         }
 
         // otherwise, create a query compiler,
-        final var compiler = new GraphQueryCompiler();
+        var compiler = new GraphQueryCompiler();
 
         // build the query program to run,
-        final var program = compiler.compile(queryParseTree, Maximum._8);
+        var program = compiler.compile(queryParseTree, Maximum._8);
 
         // then go through all the candidate edges
-        final var matches = new HashSet<Route>();
-        for (final var candidate : candidates)
+        var matches = new HashSet<Route>();
+        for (var candidate : candidates)
         {
             if (stop)
             {
@@ -92,7 +92,7 @@ public class GraphQuery
             }
 
             // and if running the program on the candidate results in a match
-            final var match = program.run(candidate);
+            var match = program.run(candidate);
             if (match != null)
             {
                 // then add the route to the set of matches

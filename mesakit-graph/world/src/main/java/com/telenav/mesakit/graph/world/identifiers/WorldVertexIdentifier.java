@@ -38,7 +38,7 @@ public class WorldVertexIdentifier extends VertexIdentifier
     /** The cell where this identifier resides */
     private final WorldCell worldCell;
 
-    public WorldVertexIdentifier(final WorldCell worldCell, final VertexIdentifier identifier)
+    public WorldVertexIdentifier(WorldCell worldCell, VertexIdentifier identifier)
     {
         super(identifier.asInt());
         this.worldCell = worldCell;

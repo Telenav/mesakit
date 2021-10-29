@@ -50,7 +50,7 @@ class LinkSetJudger
     /**
      * Constructor with the edge set to be checked.
      */
-    LinkSetJudger(final EdgeSet edges)
+    LinkSetJudger(EdgeSet edges)
     {
         this.edges = edges;
     }
@@ -92,18 +92,18 @@ class LinkSetJudger
         return edges.length().isGreaterThan(CONNECTION_LENGTH_LIMIT);
     }
 
-    private void accumulateAngleBackward(final Edge edge, final AccumulatedAngle angle,
-                                         final HashSet<Edge> visited)
+    private void accumulateAngleBackward(Edge edge, AccumulatedAngle angle,
+                                         HashSet<Edge> visited)
     {
         if (!angle.isGreaterThan(CONNECTION_CURVE_ANGLE_LIMIT) && !visited.contains(edge))
         {
-            final var inEdges = edge.from().inEdges().without(edge.reversed()).logicalSetMatching(Matchers.LINKS)
+            var inEdges = edge.from().inEdges().without(edge.reversed()).logicalSetMatching(Matchers.LINKS)
                     .intersection(edges);
             if (!inEdges.isEmpty())
             {
                 // if the in edges are not empty, accumulate the angles and continue to search
                 // backward.
-                final var inEdge = inEdges.first();
+                var inEdge = inEdges.first();
                 angle.accumulate(inEdge.roadShape().turnAngleTo(edge.roadShape()));
                 angle.accumulate(AccumulatedAngle.curveAngle(inEdge));
                 visited.add(inEdge);
@@ -113,18 +113,18 @@ class LinkSetJudger
         }
     }
 
-    private void accumulateAngleForward(final Edge edge, final AccumulatedAngle angle,
-                                        final HashSet<Edge> visited)
+    private void accumulateAngleForward(Edge edge, AccumulatedAngle angle,
+                                        HashSet<Edge> visited)
     {
         if (!angle.isGreaterThan(CONNECTION_CURVE_ANGLE_LIMIT) && !visited.contains(edge))
         {
-            final var outEdges = edge.to().outEdges().without(edge.reversed()).logicalSetMatching(Matchers.LINKS)
+            var outEdges = edge.to().outEdges().without(edge.reversed()).logicalSetMatching(Matchers.LINKS)
                     .intersection(edges);
             if (!outEdges.isEmpty())
             {
                 // if the out edges are not empty, accumulate the angles and continue to search
                 // forward.
-                final var outEdge = outEdges.first();
+                var outEdge = outEdges.first();
                 angle.accumulate(edge.roadShape().turnAngleTo(outEdge.roadShape()));
                 angle.accumulate(AccumulatedAngle.curveAngle(outEdge));
                 visited.add(edge);
@@ -141,7 +141,7 @@ class LinkSetJudger
     {
         if (edges.size() > 2)
         {
-            for (final var edge : edges)
+            for (var edge : edges)
             {
                 if (hasOutBifurcation(edge) || hasInBifurcation(edge))
                 {
@@ -155,9 +155,9 @@ class LinkSetJudger
     /**
      * Checks if the given edge has any in bifurcation.
      */
-    private boolean hasInBifurcation(final Edge edge)
+    private boolean hasInBifurcation(Edge edge)
     {
-        final var inEdges = edge.from().inEdges().without(edge.reversed()).logicalSetMatching(Matchers.LINKS)
+        var inEdges = edge.from().inEdges().without(edge.reversed()).logicalSetMatching(Matchers.LINKS)
                 .intersection(edges);
         if (inEdges.isEmpty())
         {
@@ -167,7 +167,7 @@ class LinkSetJudger
         else if (inEdges.size() == 1)
         {
             // if only 1 in connection/ramp, check out connections/ramps.
-            final var outEdges = edge.from().outEdges().without(edge).without(inEdges.first().reversed())
+            var outEdges = edge.from().outEdges().without(edge).without(inEdges.first().reversed())
                     .logicalSetMatching(Matchers.LINKS).intersection(edges);
             // if no out connections/ramps, return false.
             // if have any out connections/ramps (which will form a bifurcation with the current
@@ -186,10 +186,10 @@ class LinkSetJudger
      */
     private boolean hasLargeCurveAngle()
     {
-        final var edge = edges.first();
-        final var visited = new HashSet<Edge>();
+        var edge = edges.first();
+        var visited = new HashSet<Edge>();
 
-        final var angle = AccumulatedAngle.curveAngle(edge);
+        var angle = AccumulatedAngle.curveAngle(edge);
         accumulateAngleForward(edge, angle, visited);
         accumulateAngleBackward(edge, angle, visited);
         return angle.isGreaterThan(CONNECTION_CURVE_ANGLE_LIMIT);
@@ -198,9 +198,9 @@ class LinkSetJudger
     /**
      * Checks if the given edge has any out bifurcation.
      */
-    private boolean hasOutBifurcation(final Edge edge)
+    private boolean hasOutBifurcation(Edge edge)
     {
-        final var outEdges = edge.to().outEdges().without(edge.reversed()).logicalSetMatching(Matchers.LINKS)
+        var outEdges = edge.to().outEdges().without(edge.reversed()).logicalSetMatching(Matchers.LINKS)
                 .intersection(edges);
         if (outEdges.isEmpty())
         {
@@ -210,7 +210,7 @@ class LinkSetJudger
         else if (outEdges.size() == 1)
         {
             // if only 1 out connection/ramp, check in connections/ramps.
-            final var inEdges = edge.to().inEdges().without(edge).without(outEdges.first().reversed())
+            var inEdges = edge.to().inEdges().without(edge).without(outEdges.first().reversed())
                     .logicalSetMatching(Matchers.LINKS).intersection(edges);
             // if no in connections/ramps, return false.
             // if have any in connections/ramps (which will form a bifurcation with the current

@@ -35,39 +35,39 @@ public class NodeIdentifierList extends ObjectList<MapNodeIdentifier>
     {
         private final Separators separators;
 
-        public Converter(final Listener listener, final Separators separators)
+        public Converter(Listener listener, Separators separators)
         {
             super(listener);
             this.separators = separators;
         }
 
         @Override
-        protected NodeIdentifierList onToValue(final String value)
+        protected String onToString(NodeIdentifierList value)
         {
-            final var split = StringList.split(value, separators.current());
-            final var identifiers = new ObjectList<MapNodeIdentifier>();
-            final var converter = new PbfNodeIdentifier.Converter(this);
-            for (final var at : split)
+            return value.join();
+        }
+
+        @Override
+        protected NodeIdentifierList onToValue(String value)
+        {
+            var split = StringList.split(value, separators.current());
+            var identifiers = new ObjectList<MapNodeIdentifier>();
+            var converter = new PbfNodeIdentifier.Converter(this);
+            for (var at : split)
             {
                 identifiers.add(converter.convert(at));
             }
             return new NodeIdentifierList(identifiers);
         }
-
-        @Override
-        protected String onToString(final NodeIdentifierList value)
-        {
-            return value.join();
-        }
     }
 
-    public NodeIdentifierList(final List<MapNodeIdentifier> identifiers)
+    public NodeIdentifierList(List<MapNodeIdentifier> identifiers)
     {
         super(Maximum.maximum(identifiers.size()));
         appendAll(identifiers);
     }
 
-    public NodeIdentifierList(final Maximum maximumSize)
+    public NodeIdentifierList(Maximum maximumSize)
     {
         super(maximumSize);
     }

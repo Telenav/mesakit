@@ -61,7 +61,7 @@ public final class OsmRawPbfGraphLoader extends RawPbfGraphLoader
     private final ObjectMap<MapLocale, OfficialRoadNameExtractor> officialRoadNameExtractorForLocale = new ObjectMap<>()
     {
         @Override
-        protected OfficialRoadNameExtractor onInitialize(final MapLocale locale)
+        protected OfficialRoadNameExtractor onInitialize(MapLocale locale)
         {
             return new OfficialRoadNameExtractor(locale, MESAKIT_STANDARDIZATION, OsmRawPbfGraphLoader.this);
         }
@@ -70,7 +70,7 @@ public final class OsmRawPbfGraphLoader extends RawPbfGraphLoader
     private final ObjectMap<MapLocale, ExitRoadNameExtractor> exitRoadNameExtractorForLocale = new ObjectMap<>()
     {
         @Override
-        protected ExitRoadNameExtractor onInitialize(final MapLocale locale)
+        protected ExitRoadNameExtractor onInitialize(MapLocale locale)
         {
             return new ExitRoadNameExtractor(locale, MESAKIT_STANDARDIZATION, OsmRawPbfGraphLoader.this);
         }
@@ -79,7 +79,7 @@ public final class OsmRawPbfGraphLoader extends RawPbfGraphLoader
     private final ObjectMap<MapLocale, AlternateRoadNameExtractor> alternateRoadNameExtractorForLocale = new ObjectMap<>()
     {
         @Override
-        protected AlternateRoadNameExtractor onInitialize(final MapLocale locale)
+        protected AlternateRoadNameExtractor onInitialize(MapLocale locale)
         {
             return new AlternateRoadNameExtractor(locale, MESAKIT_STANDARDIZATION, OsmRawPbfGraphLoader.this);
         }
@@ -88,7 +88,7 @@ public final class OsmRawPbfGraphLoader extends RawPbfGraphLoader
     private final ObjectMap<MapLocale, RouteRoadNameExtractor> routeRoadNameExtractorForLocale = new ObjectMap<>()
     {
         @Override
-        protected RouteRoadNameExtractor onInitialize(final MapLocale locale)
+        protected RouteRoadNameExtractor onInitialize(MapLocale locale)
         {
             return new RouteRoadNameExtractor(locale, MESAKIT_STANDARDIZATION, OsmRawPbfGraphLoader.this);
         }
@@ -101,8 +101,8 @@ public final class OsmRawPbfGraphLoader extends RawPbfGraphLoader
      * @param dataSourceFactory OSM data source to read from
      * @param analysis Information about the data in the source
      */
-    public OsmRawPbfGraphLoader(final PbfDataSourceFactory dataSourceFactory, final PbfDataAnalysis analysis,
-                                final PbfTagFilter filter)
+    public OsmRawPbfGraphLoader(PbfDataSourceFactory dataSourceFactory, PbfDataAnalysis analysis,
+                                PbfTagFilter filter)
     {
         super(dataSourceFactory, analysis.metadata(), filter);
 
@@ -122,17 +122,17 @@ public final class OsmRawPbfGraphLoader extends RawPbfGraphLoader
     }
 
     @Override
-    protected ProcessingDirective onExtractEdge(final ExtractedEdges extracted)
+    protected ProcessingDirective onExtractEdge(ExtractedEdges extracted)
     {
-        final var edge = (OsmHeavyWeightEdge) extracted.edge();
-        final var way = extracted.way();
+        var edge = (OsmHeavyWeightEdge) extracted.edge();
+        var way = extracted.way();
 
         // Extract lane count (for whole road in both directions if two way)
-        final var laneCount = laneCountExtractor.extract(way);
+        var laneCount = laneCountExtractor.extract(way);
         edge.laneCount(laneCount);
 
         // Extract road names
-        final var locale = edge.country() == null ? MapLocale.ENGLISH_UNITED_STATES.get() : edge.country().locale();
+        var locale = edge.country() == null ? MapLocale.ENGLISH_UNITED_STATES.get() : edge.country().locale();
         edge.roadNames(RoadName.Type.ALTERNATE, alternateRoadNameExtractorForLocale.getOrCreate(locale).extract(way));
         edge.roadNames(RoadName.Type.OFFICIAL, officialRoadNameExtractorForLocale.getOrCreate(locale).extract(way));
         edge.roadNames(RoadName.Type.EXIT, exitRoadNameExtractorForLocale.getOrCreate(locale).extract(way));
@@ -142,7 +142,7 @@ public final class OsmRawPbfGraphLoader extends RawPbfGraphLoader
         edge.pbfRevisionNumber(revisionExtractor.extract(way));
         edge.pbfChangeSetIdentifier(new PbfChangeSetIdentifier(way.changeSetIdentifier()));
         edge.lastModificationTime(timestampExtractor.extract(way));
-        final var user = lastModifierExtractor.extract(way);
+        var user = lastModifierExtractor.extract(way);
         if (user != null)
         {
             if (!Strings.isEmpty(user.getName()))
@@ -157,25 +157,25 @@ public final class OsmRawPbfGraphLoader extends RawPbfGraphLoader
     }
 
     @Override
-    protected ProcessingDirective onProcessingNode(final GraphStore store, final PbfNode node)
+    protected ProcessingDirective onProcessingNode(GraphStore store, PbfNode node)
     {
         return ProcessingDirective.ACCEPT;
     }
 
     @Override
-    protected ProcessingDirective onProcessingRelation(final GraphStore store, final PbfRelation relation)
+    protected ProcessingDirective onProcessingRelation(GraphStore store, PbfRelation relation)
     {
         return ProcessingDirective.ACCEPT;
     }
 
     @Override
-    protected ProcessingDirective onProcessingWay(final GraphStore store, final PbfWay way)
+    protected ProcessingDirective onProcessingWay(GraphStore store, PbfWay way)
     {
         return ProcessingDirective.ACCEPT;
     }
 
     @Override
-    protected boolean shouldStoreNodeLocation(final PbfNode node)
+    protected boolean shouldStoreNodeLocation(PbfNode node)
     {
         // If the file has way node locations
         if (analysis.hasWayNodeLocations())

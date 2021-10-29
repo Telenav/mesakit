@@ -44,16 +44,16 @@ public class SurfaceExtractor extends BaseExtractor<RoadSurface, PbfWay>
         surfaceForName.put("sand", RoadSurface.UNPAVED);
     }
 
-    public SurfaceExtractor(final Listener listener)
+    public SurfaceExtractor(Listener listener)
     {
         super(listener);
     }
 
     @Override
-    public RoadSurface onExtract(final PbfWay way)
+    public RoadSurface onExtract(PbfWay way)
     {
-        final var surfaceName = way.tagValue("surface");
-        final var surface = surfaceForName.get(surfaceName);
+        var surfaceName = way.tagValue("surface");
+        var surface = surfaceForName.get(surfaceName);
         if (surface != null)
         {
             return surface;

@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.measurements.motion;
 
-import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementMotion;
 import com.telenav.kivakit.kernel.language.time.Duration;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
+import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementMotion;
 
 /**
  * Change in {@link Speed} per {@link Duration}, or distance per time squared. An acceleration can be negative if the
@@ -35,14 +35,14 @@ import com.telenav.lexakai.annotations.associations.UmlAggregation;
 @LexakaiJavadoc(complete = true)
 public class Acceleration
 {
-    public static Acceleration metersPerSecondSquared(final double metersPerSecondSquared)
+    public static Acceleration metersPerSecondSquared(double metersPerSecondSquared)
     {
         return new Acceleration(
                 Speed.metersPerSecond((metersPerSecondSquared < 0 ? -1.0 : 1.0) * metersPerSecondSquared),
                 Duration.ONE_SECOND, metersPerSecondSquared < 0);
     }
 
-    public static Acceleration milesPerHourSquared(final double milesPerHourSquared)
+    public static Acceleration milesPerHourSquared(double milesPerHourSquared)
     {
         return new Acceleration(Speed.milesPerHour((milesPerHourSquared < 0 ? -1.0 : 1.0) * milesPerHourSquared),
                 Duration.ONE_HOUR, milesPerHourSquared < 0);
@@ -56,7 +56,7 @@ public class Acceleration
 
     private final boolean negative;
 
-    private Acceleration(final Speed speed, final Duration duration, final boolean negative)
+    private Acceleration(Speed speed, Duration duration, boolean negative)
     {
         this.speed = speed;
         this.duration = duration;
@@ -74,11 +74,11 @@ public class Acceleration
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Acceleration)
         {
-            final var that = (Acceleration) object;
+            var that = (Acceleration) object;
             return speed.equals(that.speed) && duration.equals(that.duration)
                     && negative == that.negative;
         }

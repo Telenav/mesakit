@@ -37,27 +37,27 @@ public class Width extends Angle
 
     public static final Width ZERO = nanodegrees(0);
 
-    public static Width angle(final Angle angle)
+    public static Width angle(Angle angle)
     {
         return nanodegrees(angle.asNanodegrees());
     }
 
-    public static Width degrees(final double degrees)
+    public static Width degrees(double degrees)
     {
         return nanodegrees((long) (degrees * NANODEGREES_PER_DEGREE));
     }
 
-    public static Width microdegrees(final int microdegrees)
+    public static Width microdegrees(int microdegrees)
     {
         return new Width(microdegrees * NANODEGREES_PER_MICRODEGREE);
     }
 
-    public static Width nanodegrees(final long nanodegrees)
+    public static Width nanodegrees(long nanodegrees)
     {
         return new Width(nanodegrees);
     }
 
-    protected Width(final long nanodegrees)
+    protected Width(long nanodegrees)
     {
         super(nanodegrees);
     }
@@ -85,7 +85,7 @@ public class Width extends Angle
     }
 
     @Override
-    public Width times(final double multiplier)
+    public Width times(double multiplier)
     {
         return nanodegrees((long) (asNanodegrees() * multiplier));
     }

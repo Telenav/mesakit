@@ -152,8 +152,8 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
 
         private final RoadStateExtractor.ExtractedRoadState state;
 
-        public ExtractedEdges(final List<? extends Edge> edges, final PbfWay way,
-                              final RoadStateExtractor.ExtractedRoadState state)
+        public ExtractedEdges(List<? extends Edge> edges, PbfWay way,
+                              RoadStateExtractor.ExtractedRoadState state)
         {
             this.edges = edges;
             this.way = way;
@@ -197,13 +197,13 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
 
         private final Location to;
 
-        WayChunk(final MapWayIdentifier identifier,
-                 final Location from,
-                 final Location to,
-                 final Polyline shape,
-                 final ObjectList<MapNodeIdentifier> nodes,
-                 final boolean fromOnBorder,
-                 final boolean toOnBorder)
+        WayChunk(MapWayIdentifier identifier,
+                 Location from,
+                 Location to,
+                 Polyline shape,
+                 ObjectList<MapNodeIdentifier> nodes,
+                 boolean fromOnBorder,
+                 boolean toOnBorder)
         {
             assert identifier != null;
             assert shape == null || shape.size() == nodes.size();
@@ -336,7 +336,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
      * @param tagFilter What tags (if any) should be included in the loaded graph
      */
     @SuppressWarnings("ConstantConditions")
-    protected RawPbfGraphLoader(final PbfDataSourceFactory data, final Metadata metadata, final PbfTagFilter tagFilter)
+    protected RawPbfGraphLoader(PbfDataSourceFactory data, Metadata metadata, PbfTagFilter tagFilter)
     {
         ensure(data != null);
         ensure(metadata != null);
@@ -363,10 +363,10 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         gradeSeparationFromExtractor = new GradeSeparationExtractor(this, GradeSeparationExtractor.Type.FROM);
         gradeSeparationToExtractor = new GradeSeparationExtractor(this, GradeSeparationExtractor.Type.TO);
 
-        final Extractor<Location, WayNode> wayNodeLocationExtractor = new BaseExtractor<>(this)
+        Extractor<Location, WayNode> wayNodeLocationExtractor = new BaseExtractor<>(this)
         {
             @Override
-            public Location onExtract(final WayNode node)
+            public Location onExtract(WayNode node)
             {
                 return nodeToLocation(node);
             }
@@ -386,37 +386,37 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     }
 
     @Override
-    public final Metadata onLoad(final GraphStore store, final GraphConstraints constraints)
+    public final Metadata onLoad(GraphStore store, GraphConstraints constraints)
     {
-        final var graph = store.graph();
+        var graph = store.graph();
 
         placeAdder = ThreadLocal.withInitial(() -> store.placeStore().adder());
         edgeAdder = ThreadLocal.withInitial(() -> store.edgeStore().adder());
         relationAdder = ThreadLocal.withInitial(() -> store.relationStore().adder());
 
-        final var resource = resource();
-        final var metadata = metadata();
-        final var name = metadata.name();
+        var resource = resource();
+        var metadata = metadata();
+        var name = metadata.name();
 
         graph.metadata(metadata);
 
         // Process the input
         bounds = constraints.bounds();
-        final var outer = this;
+        var outer = this;
 
-        final var acceptedNodes = new MutableCount();
-        final var acceptedWays = new MutableCount();
-        final var acceptedRelations = new MutableCount();
+        var acceptedNodes = new MutableCount();
+        var acceptedWays = new MutableCount();
+        var acceptedRelations = new MutableCount();
 
-        final var filteredNodes = new MutableCount();
-        final var filteredWays = new MutableCount();
-        final var filteredRelations = new MutableCount();
+        var filteredNodes = new MutableCount();
+        var filteredWays = new MutableCount();
+        var filteredRelations = new MutableCount();
 
-        final var discardedNodes = new MutableCount();
-        final var discardedWays = new MutableCount();
-        final var discardedRelations = new MutableCount();
+        var discardedNodes = new MutableCount();
+        var discardedWays = new MutableCount();
+        var discardedRelations = new MutableCount();
 
-        final var dataSource = dataSourceFactory().newInstance(metadata);
+        var dataSource = dataSourceFactory().newInstance(metadata);
         metadata.configure(dataSource);
         dataSource.process(new PbfDataProcessor()
         {
@@ -443,9 +443,9 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
             }
 
             @Override
-            public Action onNode(final PbfNode node)
+            public Action onNode(PbfNode node)
             {
-                final var action = processNode(store, node);
+                var action = processNode(store, node);
                 switch (action)
                 {
                     case ACCEPTED:
@@ -464,19 +464,19 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
             }
 
             @Override
-            public void onNodes(final Collection<PbfNode> nodes)
+            public void onNodes(Collection<PbfNode> nodes)
             {
-                for (final var node : nodes)
+                for (var node : nodes)
                 {
                     onNode(node);
                 }
             }
 
             @Override
-            public Action onRelation(final PbfRelation relation)
+            public Action onRelation(PbfRelation relation)
             {
                 assert relation != null;
-                final var action = processRelation(store, relation);
+                var action = processRelation(store, relation);
                 switch (action)
                 {
                     case ACCEPTED:
@@ -495,9 +495,9 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
             }
 
             @Override
-            public Action onWay(final PbfWay way)
+            public Action onWay(PbfWay way)
             {
-                final var action = processWay(store, way);
+                var action = processWay(store, way);
                 switch (action)
                 {
                     case ACCEPTED:
@@ -516,9 +516,9 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
             }
 
             @Override
-            public void onWays(final Collection<PbfWay> ways)
+            public void onWays(Collection<PbfWay> ways)
             {
-                for (final var way : ways)
+                for (var way : ways)
                 {
                     onWay(way);
                 }
@@ -527,13 +527,13 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
 
         store.flush();
 
-        final var edgeStore = store.edgeStore();
-        final var relationStore = store.relationStore();
-        final var placeStore = store.placeStore();
+        var edgeStore = store.edgeStore();
+        var relationStore = store.relationStore();
+        var placeStore = store.placeStore();
 
-        final var edgeCount = edgeStore.retrieveCount();
-        final var relationCount = relationStore.retrieveCount();
-        final var placeCount = placeStore.retrieveCount();
+        var edgeCount = edgeStore.retrieveCount();
+        var relationCount = relationStore.retrieveCount();
+        var placeCount = placeStore.retrieveCount();
 
         information(AsciiArt.topLine("Raw Data Statistics for '$'", name));
         information("");
@@ -561,7 +561,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                 .exclude(VertexStore.class);
     }
 
-    protected Location nodeToLocation(final WayNode node)
+    protected Location nodeToLocation(WayNode node)
     {
         // If way node locations are available due to more recent PBF data
         if (nodeIdentifierToLocation.isEmpty())
@@ -573,7 +573,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         {
             // otherwise return the node's location by looking at the map we populated earlier
             // while reading nodes
-            final var location = nodeIdentifierToLocation.get(node.getNodeId());
+            var location = nodeIdentifierToLocation.get(node.getNodeId());
             if (!nodeIdentifierToLocation.isNull(location))
             {
                 return DM7.toLocation(location);
@@ -582,15 +582,15 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         return null;
     }
 
-    protected void onCleanCutCrossedBorder(final WayNode node, final Location location)
+    protected void onCleanCutCrossedBorder(WayNode node, Location location)
     {
     }
 
-    protected void onCleanCutInside(final WayNode node, final Location location)
+    protected void onCleanCutInside(WayNode node, Location location)
     {
     }
 
-    protected void onCleanCutOutside(final WayNode node, final Location location)
+    protected void onCleanCutOutside(WayNode node, Location location)
     {
     }
 
@@ -604,22 +604,22 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     @SuppressWarnings({ "UnusedReturnValue", "SameReturnValue" })
     protected abstract ProcessingDirective onExtractEdge(ExtractedEdges edges);
 
-    protected void onProcessWayNode(final GraphStore store, final WayNode node, final Location location)
+    protected void onProcessWayNode(GraphStore store, WayNode node, Location location)
     {
     }
 
     @SuppressWarnings({ "EmptyMethod" })
-    protected void onProcessedNode(final GraphStore store, final PbfNode node)
+    protected void onProcessedNode(GraphStore store, PbfNode node)
     {
     }
 
     @SuppressWarnings({ "EmptyMethod" })
-    protected void onProcessedRelation(final GraphStore store, final PbfRelation relation)
+    protected void onProcessedRelation(GraphStore store, PbfRelation relation)
     {
     }
 
     @SuppressWarnings({ "EmptyMethod" })
-    protected void onProcessedWay(final GraphStore store, final PbfWay way)
+    protected void onProcessedWay(GraphStore store, PbfWay way)
     {
     }
 
@@ -627,17 +627,17 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
      * @return True if the given node should be processed
      */
     @SuppressWarnings({ "SameReturnValue" })
-    protected abstract ProcessingDirective onProcessingNode(final GraphStore store, final PbfNode node);
+    protected abstract ProcessingDirective onProcessingNode(GraphStore store, PbfNode node);
 
     /**
      * @return True if the given relation should be processed
      */
-    protected abstract ProcessingDirective onProcessingRelation(final GraphStore store, final PbfRelation relation);
+    protected abstract ProcessingDirective onProcessingRelation(GraphStore store, PbfRelation relation);
 
     /**
      * @return True if the given way should be processed
      */
-    protected abstract ProcessingDirective onProcessingWay(final GraphStore store, final PbfWay way);
+    protected abstract ProcessingDirective onProcessingWay(GraphStore store, PbfWay way);
 
     /**
      * Determines if the given node's location should be stored. If this method returns true, the node's location must
@@ -658,17 +658,17 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
      */
     protected abstract boolean shouldStoreNodeLocation(PbfNode node);
 
-    boolean includeTags(final Graph graph)
+    boolean includeTags(Graph graph)
     {
         // For small graphs, we throw in the tags for debugging purposes
         return graph.supports(GraphElementAttributes.get().TAGS) || graph.edgeCount().isLessThan(Count._1_000);
     }
 
-    private void addRouteName(final GraphStore store, final Edge edge, final PbfRelation relation)
+    private void addRouteName(GraphStore store, Edge edge, PbfRelation relation)
     {
         String ref = null;
         String network = null;
-        for (final var tag : relation)
+        for (var tag : relation)
         {
             if ("network".equalsIgnoreCase(tag.getKey()))
             {
@@ -681,7 +681,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         }
         if (ref != null && network != null)
         {
-            final var name = network.replaceAll("\\w+:", "") + "-" + ref;
+            var name = network.replaceAll("\\w+:", "") + "-" + ref;
             if (!Strings.isEmpty(name))
             {
                 store.edgeStore().storeRoadName(edge, RoadName.Type.ROUTE, RoadName.forName(name));
@@ -692,17 +692,17 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     /**
      * @return A single chunk for the given way
      */
-    private WayChunk chunk(final GraphStore store, final PbfWay way)
+    private WayChunk chunk(GraphStore store, PbfWay way)
     {
         Polyline shape = null;
-        final var wayNodes = way.nodes();
-        final var nodes = new ObjectList<MapNodeIdentifier>();
-        final Location from;
-        final Location to;
+        var wayNodes = way.nodes();
+        var nodes = new ObjectList<MapNodeIdentifier>();
+        Location from;
+        Location to;
         if (wayNodes.size() == 2)
         {
-            final var fromNode = wayNodes.get(0);
-            final var toNode = wayNodes.get(1);
+            var fromNode = wayNodes.get(0);
+            var toNode = wayNodes.get(1);
             nodes.add(new PbfNodeIdentifier(fromNode));
             nodes.add(new PbfNodeIdentifier(toNode));
             from = nodeToLocation(fromNode);
@@ -711,13 +711,13 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         else
         {
             // Build polyline
-            final var builder = new PolylineBuilder();
+            var builder = new PolylineBuilder();
 
             // Go through way nodes
-            for (final var node : wayNodes)
+            for (var node : wayNodes)
             {
                 // get the location for the node
-                final var location = nodeToLocation(node);
+                var location = nodeToLocation(node);
                 if (location != null)
                 {
                     // add node to list
@@ -751,9 +751,9 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         }
 
         // Validate to see if the 'from' or 'to' node is exactly on the border
-        final var cleanCutTo = configuration().cleanCutTo();
-        final var fromOnBorder = cleanCutTo != null && cleanCutTo.containment(from) == Containment.ON_BORDER;
-        final var toOnBorder = cleanCutTo != null && cleanCutTo.containment(to) == Containment.ON_BORDER;
+        var cleanCutTo = configuration().cleanCutTo();
+        var fromOnBorder = cleanCutTo != null && cleanCutTo.containment(from) == Containment.ON_BORDER;
+        var toOnBorder = cleanCutTo != null && cleanCutTo.containment(to) == Containment.ON_BORDER;
 
         // Create a chunk for this way
         if (from != null && to != null)
@@ -766,10 +766,10 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     /**
      * @return Breaks the given way into chunks if it crosses the clean-cutting region border
      */
-    private List<WayChunk> cleanCut(final GraphStore store, final PbfWay way)
+    private List<WayChunk> cleanCut(GraphStore store, PbfWay way)
     {
         // Chunks to return
-        final List<WayChunk> chunks = new ArrayList<>();
+        List<WayChunk> chunks = new ArrayList<>();
 
         // Polyline builder for way shape
         var builder = new PolylineBuilder();
@@ -788,10 +788,10 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         Location previousLocation = null;
 
         // Go through way nodes
-        for (final var node : way.nodes())
+        for (var node : way.nodes())
         {
             // Get location of node
-            final var location = nodeToLocation(node);
+            var location = nodeToLocation(node);
             if (location != null)
             {
                 // If we were inside and now we're outside the cleanCutTo region, or we were outside
@@ -805,13 +805,13 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                 {
                     // compute the intersection with the segment from the previous location to
                     // the current location.
-                    final var intersection = configuration().cleanCutTo().intersection(new Segment(previousLocation, location));
+                    var intersection = configuration().cleanCutTo().intersection(new Segment(previousLocation, location));
 
                     // If there is an intersection
                     if (intersection != null)
                     {
                         // Create a synthetic node identifier for the intersection
-                        final var synthetic = PbfNodeIdentifier.nextSyntheticNodeIdentifier();
+                        var synthetic = PbfNodeIdentifier.nextSyntheticNodeIdentifier();
 
                         switch (now)
                         {
@@ -881,7 +881,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                     if (builder.isValid() && !builder.isZeroLength())
                     {
                         // then build and add it
-                        final var line = builder.build();
+                        var line = builder.build();
                         chunks.add(new WayChunk(new PbfWayIdentifier(way), line.start(), line.end(), line, nodes, fromOnBorder, toOnBorder));
 
                         // Reset on-border booleans until we re-enter the region
@@ -904,14 +904,14 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         if (builder.isValid() && !builder.isZeroLength())
         {
             // build and add it
-            final var line = builder.build();
+            var line = builder.build();
             chunks.add(new WayChunk(new PbfWayIdentifier(way), line.start(), line.end(), line, nodes, fromOnBorder, toOnBorder));
         }
 
         return chunks;
     }
 
-    private Country country(final Polyline shape)
+    private Country country(Polyline shape)
     {
         return configuration().regionInformation() ? Country.forLocation(shape.start()) : null;
     }
@@ -921,7 +921,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
      * efficiency since we already have it in the calling code.
      */
     @SuppressWarnings("SpellCheckingInspection")
-    private List<HeavyWeightEdge> extractEdges(final GraphStore store, final PbfWay way)
+    private List<HeavyWeightEdge> extractEdges(GraphStore store, PbfWay way)
     {
         // We don't want to process certain highway types for any data supplier
         if (RawPbfGraphLoader.ignoreHighwayTypes.contains(way.highway()))
@@ -929,19 +929,19 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
             return Collections.emptyList();
         }
 
-        final var tags = way.tagMap();
+        var tags = way.tagMap();
 
         // Get the graph's store
-        final var graph = store.graph();
+        var graph = store.graph();
 
         // Extracted edges to return
-        final List<HeavyWeightEdge> edges = new ArrayList<>();
+        List<HeavyWeightEdge> edges = new ArrayList<>();
 
         // Get way identifier as a sequence numbered edge identifier
         var identifier = new EdgeIdentifier(way.identifierAsLong()).sequenceNumbered();
 
         // Get road state from way tags
-        final var state = roadStateExtractor.extract(way);
+        var state = roadStateExtractor.extract(way);
         if (state.state() == RoadState.NULL)
         {
             glitch("Way $ has invalid road state (oneway = $, highway = $), assuming TWO_WAY",
@@ -969,14 +969,14 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
             }
 
             // Create temporary edge
-            final var edge = graph.newHeavyWeightEdge(identifier);
+            var edge = graph.newHeavyWeightEdge(identifier);
 
             // We identify multiple chunks in the high two digits, like NNNNNN0100, NNNNNN0200, etc.
             // The low two decimal digits are used for edge sectioning.
             identifier = identifier.nextChunk();
 
             // Get any shape
-            final var shape = chunk.shape();
+            var shape = chunk.shape();
 
             // and if it's got just one point,
             if (shape != null && shape.size() < 2)
@@ -1011,7 +1011,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
             edge.roadState(state.state());
             edge.roadSubType(subType);
             edge.roadType(roadTypeExtractor.extract(way));
-            final var speedLimit = speedLimitExtractor.extract(way);
+            var speedLimit = speedLimitExtractor.extract(way);
             if (speedLimit != null)
             {
                 edge.speedLimit(speedLimit.minimum(Speed.kilometersPerHour(160)));
@@ -1027,7 +1027,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
 
             if (includeTags(graph))
             {
-                final var pbfTags = way.tagList(tagFilter);
+                var pbfTags = way.tagList(tagFilter);
                 edge.tags(pbfTags);
             }
 
@@ -1041,7 +1041,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
             // Extract grade separations
             fromGradeSeparation.set(gradeSeparationFromExtractor.extract(way));
             toGradeSeparation.set(gradeSeparationToExtractor.extract(way));
-            final var maximumGradeSeparation = fromGradeSeparation.get().maximum(toGradeSeparation.get());
+            var maximumGradeSeparation = fromGradeSeparation.get().maximum(toGradeSeparation.get());
             edge.fromGradeSeparation(maximumGradeSeparation);
             edge.toGradeSeparation(maximumGradeSeparation);
         }
@@ -1050,8 +1050,8 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         if (!edges.isEmpty())
         {
             // Get first and last edge
-            final var first = (HeavyWeightEdge) edges.get(0);
-            final var last = (HeavyWeightEdge) edges.get(edges.size() - 1);
+            var first = (HeavyWeightEdge) edges.get(0);
+            var last = (HeavyWeightEdge) edges.get(edges.size() - 1);
 
             // If the first edge's 'from' vertex is NOT clipped
             if (!first.isFromVertexClipped())
@@ -1073,9 +1073,9 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         return edges;
     }
 
-    private Location firstWayLocation(final PbfWay way)
+    private Location firstWayLocation(PbfWay way)
     {
-        final var nodes = way.nodes();
+        var nodes = way.nodes();
         if (!nodes.isEmpty())
         {
             return nodeToLocation(nodes.get(0));
@@ -1083,9 +1083,9 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         return null;
     }
 
-    private Location lastWayLocation(final PbfWay way)
+    private Location lastWayLocation(PbfWay way)
     {
-        final var nodes = way.nodes();
+        var nodes = way.nodes();
         if (!nodes.isEmpty())
         {
             return nodeToLocation(nodes.get(nodes.size() - 1));
@@ -1093,12 +1093,12 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         return null;
     }
 
-    private Action processNode(final GraphStore store, final PbfNode node)
+    private Action processNode(GraphStore store, PbfNode node)
     {
         // HOTSPOT: This method has been determined to be a hotspot by YourKit profiling
 
         // Extract any place
-        final var place = placeExtractor.extract(node);
+        var place = placeExtractor.extract(node);
         if (place != null)
         {
             placeAdder.get().add(place);
@@ -1114,9 +1114,9 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                 // To do this, we convert the latitude and longitude to DM7. Normally,
                 // this would be done by Location.degrees(latitude, longitude).asLong()
                 // but YourKit shows this code to be a hotspot, so we do that inline here.
-                final var latitude = (long) (node.latitude() * 1_000_000_0);
-                final var longitude = (long) (node.longitude() * 1_000_000_0);
-                final var locationAsLong = (latitude << 32) | (longitude & 0xffff_ffffL);
+                var latitude = (long) (node.latitude() * 1_000_000_0);
+                var longitude = (long) (node.longitude() * 1_000_000_0);
+                var locationAsLong = (latitude << 32) | (longitude & 0xffff_ffffL);
                 synchronized (nodeIdentifierToLocation)
                 {
                     nodeIdentifierToLocation.put(node.identifierAsLong(), locationAsLong);
@@ -1130,33 +1130,33 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         return FILTERED_OUT;
     }
 
-    private Action processRelation(final GraphStore store, final PbfRelation relation)
+    private Action processRelation(GraphStore store, PbfRelation relation)
     {
-        final var tags = relation.tagMap();
+        var tags = relation.tagMap();
 
         if (!"administrative".equals(tags.get("boundary"))
                 && configuration().relationFilter().accepts(relation)
                 && onProcessingRelation(store, relation) == ProcessingDirective.ACCEPT)
         {
             // Add the relation,
-            final var newRelation = new HeavyWeightRelation(relation);
+            var newRelation = new HeavyWeightRelation(relation);
             relationAdder.get().add(newRelation);
 
             // then go through relation members
-            for (final var member : relation.members())
+            for (var member : relation.members())
             {
                 // and if the member is a way
                 if (member.getMemberType() == EntityType.Way)
                 {
                     // get the member as a way identifier
-                    final var wayIdentifier = new PbfWayIdentifier(member.getMemberId());
+                    var wayIdentifier = new PbfWayIdentifier(member.getMemberId());
 
                     // and find the route, if any, for the way
-                    final var route = store.graph().routeForWayIdentifier(wayIdentifier);
+                    var route = store.graph().routeForWayIdentifier(wayIdentifier);
                     if (route != null)
                     {
                         // and go through edges in the route
-                        for (final var edge : route)
+                        for (var edge : route)
                         {
                             // naming each edge based on the relation
                             addRouteName(store, edge, relation);
@@ -1184,14 +1184,14 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         }
     }
 
-    private Action processWay(final GraphStore store, final PbfWay way)
+    private Action processWay(GraphStore store, PbfWay way)
     {
         // If the way is accepted by the way filter, it should be processed
         if (configuration().wayFilter().accepts(way) && onProcessingWay(store, way) == ProcessingDirective.ACCEPT)
         {
             // then get the first and last locations of the way
-            final var firstWayLocation = firstWayLocation(way);
-            final var lastWayLocation = lastWayLocation(way);
+            var firstWayLocation = firstWayLocation(way);
+            var lastWayLocation = lastWayLocation(way);
 
             // and if either location is missing (because the way references a non-existent node),
             if (firstWayLocation == null && lastWayLocation == null)
@@ -1201,7 +1201,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
             }
 
             // otherwise if this way is a place (yes, ways can be places),
-            final var place = placeExtractor.extract(way);
+            var place = placeExtractor.extract(way);
             if (place != null)
             {
                 // add it to the place store
@@ -1213,14 +1213,14 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                 if (bounds.contains(firstWayLocation) || bounds.contains(lastWayLocation))
                 {
                     // then break the way down into edges
-                    final var edges = extractEdges(store, way);
+                    var edges = extractEdges(store, way);
                     if (edges.isEmpty())
                     {
                         return DISCARDED;
                     }
                     else
                     {
-                        for (final Edge edge : edges)
+                        for (Edge edge : edges)
                         {
                             // and add them to the store.
                             edgeAdder.get().add(edge);
@@ -1240,7 +1240,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
      * @return The given way broken into chunks if we're clean cutting and it crosses the clean-cutting region, or in a
      * single chunk if we're not clean-cutting.
      */
-    private List<WayChunk> wayChunks(final GraphStore store, final PbfWay way)
+    private List<WayChunk> wayChunks(GraphStore store, PbfWay way)
     {
         // If we're clean cutting a soft-cut way
         if (configuration().cleanCutTo() != null && way.hasKey("telenav:softcut"))
@@ -1251,7 +1251,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         else
         {
             // return the way as a single chunk
-            final var chunk = chunk(store, way);
+            var chunk = chunk(store, way);
             if (chunk != null)
             {
                 return Collections.singletonList(chunk);

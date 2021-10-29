@@ -35,55 +35,55 @@ import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndexKryoSer
  */
 public class CompressedEdgeSpatialIndexKryoSerializer extends RTreeSpatialIndexKryoSerializer<Edge> implements NamedObject
 {
-    public static int IDENTIFIER = 333;
+    public static final int IDENTIFIER = 333;
 
     private final Graph graph;
 
-    public CompressedEdgeSpatialIndexKryoSerializer(final Graph graph)
+    public CompressedEdgeSpatialIndexKryoSerializer(Graph graph)
     {
         this.graph = graph;
     }
 
     @Override
-    public RTreeSpatialIndex<Edge> onRead(final KryoSerializationSession kryo)
+    public RTreeSpatialIndex<Edge> onRead(KryoSerializationSession kryo)
     {
-        final var edgeSpatialIndex = (CompressedEdgeSpatialIndex) super.onRead(kryo);
+        var edgeSpatialIndex = (CompressedEdgeSpatialIndex) super.onRead(kryo);
         edgeSpatialIndex.edges = kryo.readObject(CompressedEdgeListStore.class);
         return edgeSpatialIndex;
     }
 
     @SuppressWarnings({ "rawtypes" })
     @Override
-    public void onWrite(final KryoSerializationSession kryo, final RTreeSpatialIndex index)
+    public void onWrite(KryoSerializationSession kryo, RTreeSpatialIndex index)
     {
         super.onWrite(kryo, index);
-        final var edgeSpatialIndex = (CompressedEdgeSpatialIndex) index;
-        final var edges = edgeSpatialIndex.edges;
+        var edgeSpatialIndex = (CompressedEdgeSpatialIndex) index;
+        var edges = edgeSpatialIndex.edges;
         kryo.writeObject(edges);
     }
 
     @Override
-    protected CompressedEdgeSpatialIndex newSpatialIndex(final RTreeSettings settings)
+    protected CompressedEdgeSpatialIndex newSpatialIndex(RTreeSettings settings)
     {
-        return new CompressedEdgeSpatialIndex(objectName(), this.graph, settings);
+        return new CompressedEdgeSpatialIndex(objectName(), graph, settings);
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
-    protected Leaf readLeaf(final KryoSerializationSession kryo,
-                            final RTreeSpatialIndex index,
-                            final InteriorNode parent)
+    protected Leaf readLeaf(KryoSerializationSession kryo,
+                            RTreeSpatialIndex index,
+                            InteriorNode parent)
     {
-        final var leaf = new CompressedLeaf(index, parent);
+        var leaf = new CompressedLeaf(index, parent);
         leaf.list = kryo.readObject(int.class);
         return leaf;
     }
 
     @Override
-    protected void writeLeaf(final KryoSerializationSession kryo,
-                             final Leaf<Edge> leaf)
+    protected void writeLeaf(KryoSerializationSession kryo,
+                             Leaf<Edge> leaf)
     {
-        final var kryoLeaf = (CompressedLeaf) leaf;
+        var kryoLeaf = (CompressedLeaf) leaf;
         kryo.writeObject(kryoLeaf.list);
     }
 }

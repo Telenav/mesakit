@@ -25,7 +25,7 @@ import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.Diagram
 @UmlClassDiagram(diagram = DiagramPbfModelMetadata.class)
 public class PbfChangeSetIdentifier extends Identifier
 {
-    public PbfChangeSetIdentifier(final long identifier)
+    public PbfChangeSetIdentifier(long identifier)
     {
         super(identifier);
     }

@@ -85,14 +85,14 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
     /**
      * @param file The file to read from or write to
      */
-    public PbfFileMetadataAnnotator(final File file, final Mode mode, final WayFilter wayFilter,
-                                    final RelationFilter relationFilter)
+    public PbfFileMetadataAnnotator(File file, Mode mode, WayFilter wayFilter,
+                                    RelationFilter relationFilter)
     {
         this.file = file;
         this.mode = mode;
         this.wayFilter = wayFilter;
         this.relationFilter = relationFilter;
-        
+
         retain = (SplitLongSet) new SplitLongSet("keep").initialSize(1_000_000);
         retain.initialize();
     }
@@ -106,13 +106,13 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
      */
     public Metadata read()
     {
-        final var bounds = new BoundingBoxBuilder();
+        var bounds = new BoundingBoxBuilder();
         codecBuilder = new PbfTagCodecBuilder();
         characterCodecBuilder = new PbfCharacterCodecBuilder();
-        final var statistics = reader().process(new PbfDataProcessor()
+        var statistics = reader().process(new PbfDataProcessor()
         {
             @Override
-            public Action onNode(final PbfNode node)
+            public Action onNode(PbfNode node)
             {
                 bounds.add(node.latitude(), node.longitude());
 
@@ -129,7 +129,7 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
             }
 
             @Override
-            public Action onRelation(final PbfRelation relation)
+            public Action onRelation(PbfRelation relation)
             {
                 if (relationFilter.accepts(relation))
                 {
@@ -138,7 +138,7 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
                     if (mode == Mode.STRIP_UNREFERENCED_NODES)
                     {
                         // Keep any nodes that are members of a relation
-                        for (final var member : relation.members())
+                        for (var member : relation.members())
                         {
                             if (member.getMemberType() == EntityType.Node)
                             {
@@ -152,7 +152,7 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
             }
 
             @Override
-            public Action onWay(final PbfWay way)
+            public Action onWay(PbfWay way)
             {
                 if (wayFilter.accepts(way))
                 {
@@ -161,7 +161,7 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
                     if (mode == Mode.STRIP_UNREFERENCED_NODES)
                     {
                         // Keep any nodes that are referenced by a way
-                        for (final var node : way.nodes())
+                        for (var node : way.nodes())
                         {
                             retain.add(node.getNodeId());
                         }
@@ -188,21 +188,21 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
      * @return True if the given metadata was successfully added or if it successfully replaced existing metadata
      */
     @SuppressWarnings("UseOfObsoleteDateTimeApi")
-    public boolean write(final Metadata metadata)
+    public boolean write(Metadata metadata)
     {
-        final var reader = reader();
-        final var temporary = file.parent().file(file.fileName().withExtension(Extension.TMP));
-        final var writer = new PbfWriter(temporary, false);
+        var reader = reader();
+        var temporary = file.parent().file(file.fileName().withExtension(Extension.TMP));
+        var writer = new PbfWriter(temporary, false);
 
-        final var processedFirstNode = new MutableValue<>(false);
-        final var wroteCompleteFile = new MutableValue<>(false);
+        var processedFirstNode = new MutableValue<>(false);
+        var wroteCompleteFile = new MutableValue<>(false);
 
         final var metadataNodeIdentifier = 99_999_999_999L;
 
-        final var statistics = reader.process(new PbfDataProcessor()
+        var statistics = reader.process(new PbfDataProcessor()
         {
             @Override
-            public void onBounds(final Bound bounds)
+            public void onBounds(Bound bounds)
             {
                 writer.write(bounds);
             }
@@ -223,14 +223,14 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
             }
 
             @Override
-            public Action onNode(final PbfNode node)
+            public Action onNode(PbfNode node)
             {
                 if (!processedFirstNode.get())
                 {
                     try
                     {
                         // Write out metadata node
-                        final var tags = new ArrayList<Tag>();
+                        var tags = new ArrayList<Tag>();
 
                         tags.add(new Tag("telenav-data-descriptor", metadata.descriptor()));
                         tags.add(new Tag("telenav-data-size", metadata.dataSize().toString()));
@@ -252,8 +252,8 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
 
                         tags.addAll(PbfTags.tags("telenav-road-name-character-codec-", characterCodecBuilder.build().asProperties()));
 
-                        final var entityData = new CommonEntityData(metadataNodeIdentifier, 1, new Date(), new OsmUser(99_999_999, "telenav"), 1L, tags);
-                        final var metadataNode = new PbfNode(new Node(entityData, 0.0, 0.0));
+                        var entityData = new CommonEntityData(metadataNodeIdentifier, 1, new Date(), new OsmUser(99_999_999, "telenav"), 1L, tags);
+                        var metadataNode = new PbfNode(new Node(entityData, 0.0, 0.0));
                         writer.write(metadataNode);
 
                         // If the node we read was a metadata nodes
@@ -280,14 +280,14 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
             }
 
             @Override
-            public Action onRelation(final PbfRelation relation)
+            public Action onRelation(PbfRelation relation)
             {
                 writer.write(relation);
                 return ACCEPTED;
             }
 
             @Override
-            public Action onWay(final PbfWay way)
+            public Action onWay(PbfWay way)
             {
                 if (wayFilter.accepts(way))
                 {
@@ -315,7 +315,7 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
 
     private SerialPbfReader reader()
     {
-        final var reader = new SerialPbfReader(file);
+        var reader = new SerialPbfReader(file);
         if (file.sizeInBytes().isGreaterThan(Bytes.megabytes(20)))
         {
             listenTo(reader);

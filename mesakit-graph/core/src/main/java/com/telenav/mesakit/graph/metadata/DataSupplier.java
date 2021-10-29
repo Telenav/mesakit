@@ -44,7 +44,7 @@ public enum DataSupplier implements Matcher<DataSupplier>
 
     private final Precision precision;
 
-    DataSupplier(final Precision precision)
+    DataSupplier(Precision precision)
     {
         this.precision = precision;
     }
@@ -65,7 +65,7 @@ public enum DataSupplier implements Matcher<DataSupplier>
     }
 
     @Override
-    public boolean matches(final DataSupplier supplier)
+    public boolean matches(DataSupplier supplier)
     {
         switch (this)
         {

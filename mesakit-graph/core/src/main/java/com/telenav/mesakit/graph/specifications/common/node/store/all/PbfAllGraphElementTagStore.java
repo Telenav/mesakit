@@ -42,7 +42,7 @@ public class PbfAllGraphElementTagStore implements Unloadable
 
     private final Map<AllNodeDiskCell, PbfNodeTagStore> tagStoreForCell = new WeakHashMap<>();
 
-    public PbfAllGraphElementTagStore(final Graph graph, final GraphArchive archive, final PbfTagCodec codec)
+    public PbfAllGraphElementTagStore(Graph graph, GraphArchive archive, PbfTagCodec codec)
     {
         this.graph = graph;
         ensure(archive != null);
@@ -59,9 +59,9 @@ public class PbfAllGraphElementTagStore implements Unloadable
         return tagStoreForCell.isEmpty();
     }
 
-    public PbfTagList tags(final GraphElement element, final Location location)
+    public PbfTagList tags(GraphElement element, Location location)
     {
-        final var cell = new AllNodeDiskCell(location);
+        var cell = new AllNodeDiskCell(location);
         var tagStore = tagStoreForCell.get(cell);
         if (tagStore == null)
         {

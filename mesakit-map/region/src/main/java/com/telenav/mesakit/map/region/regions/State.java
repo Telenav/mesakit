@@ -59,7 +59,7 @@ public class State extends Region<State>
         return type(State.class).all();
     }
 
-    public static Collection<State> all(final Matcher<State> matcher)
+    public static Collection<State> all(Matcher<State> matcher)
     {
         return type(State.class).matching(matcher);
     }
@@ -68,7 +68,7 @@ public class State extends Region<State>
     {
         if (borderCache == null)
         {
-            final var settings = new BorderCache.Settings<State>()
+            var settings = new BorderCache.Settings<State>()
                     .withType(State.class)
                     .withMaximumObjects(RegionLimits.STATES)
                     .withMaximumPolygonsPerObject(RegionLimits.POLYGONS_PER_STATE)
@@ -81,27 +81,27 @@ public class State extends Region<State>
         return borderCache;
     }
 
-    public static State forIdentifier(final RegionIdentifier identifier)
+    public static State forIdentifier(RegionIdentifier identifier)
     {
         return type(State.class).forIdentifier(identifier);
     }
 
-    public static State forIdentity(final RegionIdentity identity)
+    public static State forIdentity(RegionIdentity identity)
     {
         return type(State.class).forIdentity(identity);
     }
 
-    public static State forLocation(final Location location)
+    public static State forLocation(Location location)
     {
         return type(State.class).forLocation(location);
     }
 
-    public static State forRegionCode(final RegionCode code)
+    public static State forRegionCode(RegionCode code)
     {
         return type(State.class).forRegionCode(code);
     }
 
-    public static SwitchParser.Builder<State> stateSwitchParser(final String name, final String description)
+    public static SwitchParser.Builder<State> stateSwitchParser(String name, String description)
     {
         return SwitchParser.builder(State.class).name(name).converter(new Converter<>(LOGGER()))
                 .description(description);
@@ -109,7 +109,7 @@ public class State extends Region<State>
 
     private final List<LanguageIsoCode> languages;
 
-    public State(final Country country, final RegionInstance<State> instance)
+    public State(Country country, RegionInstance<State> instance)
     {
         super(country, instance.prefix(country));
         languages = country.languages();
@@ -120,12 +120,12 @@ public class State extends Region<State>
         return children(City.class);
     }
 
-    public boolean contains(final County county)
+    public boolean contains(County county)
     {
         return counties().contains(county);
     }
 
-    public boolean contains(final MetropolitanArea area)
+    public boolean contains(MetropolitanArea area)
     {
         return metropolitanAreas().contains(area);
     }
@@ -141,9 +141,9 @@ public class State extends Region<State>
         return (Country) parent();
     }
 
-    public County county(final RegionIdentity identity)
+    public County county(RegionIdentity identity)
     {
-        for (final var county : counties())
+        for (var county : counties())
         {
             if (county.identity().last().equals(identity.last()))
             {
@@ -165,9 +165,9 @@ public class State extends Region<State>
         return languages;
     }
 
-    public MetropolitanArea metropolitanArea(final RegionIdentity identifier)
+    public MetropolitanArea metropolitanArea(RegionIdentity identifier)
     {
-        for (final var metropolitanArea : metropolitanAreas())
+        for (var metropolitanArea : metropolitanAreas())
         {
             if (metropolitanArea.identity().last().equals(identifier.last()))
             {
@@ -211,7 +211,7 @@ public class State extends Region<State>
         return new BaseExtractor<>(LOGGER())
         {
             @Override
-            public State onExtract(final PbfWay way)
+            public State onExtract(PbfWay way)
             {
                 // Get name and ISO codes
                 var name = Region.name(way);
@@ -236,7 +236,7 @@ public class State extends Region<State>
                     iso = iso.append(name.isoized());
                 }
 
-                final var mesakit = name;
+                var mesakit = name;
 
                 if (!iso.isState())
                 {
@@ -244,7 +244,7 @@ public class State extends Region<State>
                     return null;
                 }
 
-                final var country = Country.forRegionCode(iso.first());
+                var country = Country.forRegionCode(iso.first());
                 if (country == null)
                 {
                     DEBUG().glitch("Can't find country for ISO code $", iso);
@@ -258,7 +258,7 @@ public class State extends Region<State>
                 }
 
                 // Construct region identity
-                final var identity = new RegionIdentity(name.code())
+                var identity = new RegionIdentity(name.code())
                         .withIsoCode(iso.last().isoized())
                         .withMesaKitCode(mesakit.last().aonized());
 
@@ -271,11 +271,11 @@ public class State extends Region<State>
                 {
                     // Create new region so identity gets hierarchically populated and
                     // inserted into the RegionType cache for this region type
-                    final var instance = new RegionInstance<>(State.class)
+                    var instance = new RegionInstance<>(State.class)
                             .withIdentity(identity);
 
                     // Return either some old instance or the new one
-                    final var newRegion = new State(country, instance);
+                    var newRegion = new State(country, instance);
                     return ensureNotNull(forIdentity(newRegion.identity()));
                 }
             }

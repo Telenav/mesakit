@@ -15,7 +15,7 @@ public class Or extends Node implements BooleanExpression
 
     private final BooleanExpression right;
 
-    public Or(final BooleanExpression left, final BooleanExpression right)
+    public Or(BooleanExpression left, BooleanExpression right)
     {
         this.left = left;
         this.right = right;
@@ -32,14 +32,14 @@ public class Or extends Node implements BooleanExpression
     {
         do
         {
-            final int size = stack().size();
-            final var leftResult = left.evaluate();
+            int size = stack().size();
+            var leftResult = left.evaluate();
             trace("OR left expression $ is $", left.code(), leftResult);
             if (leftResult)
             {
                 return true;
             }
-            final var rightResult = right.evaluate();
+            var rightResult = right.evaluate();
             trace("OR right expression $ is $", right.code(), rightResult);
             if (rightResult)
             {
@@ -58,7 +58,7 @@ public class Or extends Node implements BooleanExpression
     }
 
     @Override
-    public void visit(final Visitor visitor)
+    public void visit(Visitor visitor)
     {
         super.visit(visitor);
         left.visit(visitor);

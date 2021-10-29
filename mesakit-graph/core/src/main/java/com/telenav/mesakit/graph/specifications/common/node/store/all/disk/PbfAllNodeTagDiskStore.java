@@ -41,47 +41,47 @@ public class PbfAllNodeTagDiskStore extends AllNodeDiskStore
 {
     private final PbfTagCodec codec;
 
-    public PbfAllNodeTagDiskStore(final Folder data)
+    public PbfAllNodeTagDiskStore(Folder data)
     {
         super(data);
         codec = null;
     }
 
-    public PbfAllNodeTagDiskStore(final GraphArchive archive, final PbfTagCodec codec)
+    public PbfAllNodeTagDiskStore(GraphArchive archive, PbfTagCodec codec)
     {
         super(archive);
         this.codec = codec;
     }
 
-    public void add(final PbfNode node)
+    public void add(PbfNode node)
     {
-        final var location = Location.degrees(node.latitude(), node.longitude());
-        final var out = output(new AllNodeDiskCell(location));
+        var location = Location.degrees(node.latitude(), node.longitude());
+        var out = output(new AllNodeDiskCell(location));
         try
         {
-            final var tags = node.tagList();
+            var tags = node.tagList();
             out.writeInt(tags.size());
-            for (final var tag : tags)
+            for (var tag : tags)
             {
                 out.writeUTF(tag.getKey());
                 out.writeUTF(tag.getValue());
             }
         }
-        catch (final IOException e)
+        catch (IOException e)
         {
             throw new IllegalStateException("Unable to add node tags", e);
         }
     }
 
-    public PbfNodeTagStore load(final Graph graph, final AllNodeDiskCell cell)
+    public PbfNodeTagStore load(Graph graph, AllNodeDiskCell cell)
     {
-        final var store = new PbfNodeTagStore(codec);
-        try (final var in = new DataInputStream(entry(cell).openForReading()))
+        var store = new PbfNodeTagStore(codec);
+        try (var in = new DataInputStream(entry(cell).openForReading()))
         {
             while (in.available() > 0)
             {
-                final var count = in.readInt();
-                final var tags = PbfTagList.create();
+                var count = in.readInt();
+                var tags = PbfTagList.create();
                 for (var i = 0; i < count; i++)
                 {
                     tags.add(new Tag(in.readUTF(), in.readUTF()));
@@ -89,7 +89,7 @@ public class PbfAllNodeTagDiskStore extends AllNodeDiskStore
                 store.add(tags);
             }
         }
-        catch (final IOException e)
+        catch (IOException e)
         {
             throw new IllegalStateException("Unable to load node tags", e);
         }

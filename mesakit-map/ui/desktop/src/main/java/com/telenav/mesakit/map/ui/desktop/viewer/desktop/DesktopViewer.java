@@ -25,14 +25,14 @@ import javax.swing.JFrame;
 public class DesktopViewer extends BaseViewer
 {
     @Override
-    protected InteractiveView newView(final String title)
+    protected InteractiveView newView(String title)
     {
         // Create view panel
-        final var view = new DesktopViewPanel(this);
+        var view = new DesktopViewPanel(this);
         view.setName(title);
 
         // Add to JFrame
-        final var frame = new JFrame(title);
+        var frame = new JFrame(title);
         frame.setContentPane(view);
         frame.pack();
         frame.setVisible(true);

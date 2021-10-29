@@ -38,7 +38,7 @@ public class DecimationNavigator extends Navigator
      * @param decimated The set of edges that have already been decimated
      * @param maximumDeviation The maximum deviation to allow
      */
-    public DecimationNavigator(final Edge start, final EdgeSet decimated, final Angle maximumDeviation)
+    public DecimationNavigator(Edge start, EdgeSet decimated, Angle maximumDeviation)
     {
         this.start = start;
         this.decimated = decimated;
@@ -46,25 +46,25 @@ public class DecimationNavigator extends Navigator
     }
 
     @Override
-    public Edge in(final Edge at)
+    public Edge in(Edge at)
     {
         return to(at.inEdgesWithoutReversed());
     }
 
     @Override
-    public Edge out(final Edge at)
+    public Edge out(Edge at)
     {
         return to(at.outEdgesWithoutReversed());
     }
 
-    private Edge to(final EdgeSet toSet)
+    private Edge to(EdgeSet toSet)
     {
         if (toSet.size() == 1)
         {
-            final var to = toSet.first();
-            if (!this.decimated.contains(to) && this.start.turnAngleTo(to, Chirality.SMALLEST).isLessThan(this.maximumDeviation))
+            var to = toSet.first();
+            if (!decimated.contains(to) && start.turnAngleTo(to, Chirality.SMALLEST).isLessThan(maximumDeviation))
             {
-                this.decimated.add(to);
+                decimated.add(to);
                 return to;
             }
         }

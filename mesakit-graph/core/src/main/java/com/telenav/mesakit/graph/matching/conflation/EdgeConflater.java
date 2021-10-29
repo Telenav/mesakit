@@ -103,13 +103,13 @@ public class EdgeConflater
      *
      * @param base The base graph to conflate with
      */
-    public EdgeConflater(final Graph base)
+    public EdgeConflater(Graph base)
     {
         this.base = base;
         viewer = visualDebug() ? new GraphDebugViewer() : null;
     }
 
-    public void augmentationSpacing(final Distance spacing)
+    public void augmentationSpacing(Distance spacing)
     {
         augmentationSpacing = spacing;
     }
@@ -117,7 +117,7 @@ public class EdgeConflater
     /**
      * @return The set of conflations in the base map for the given enhancing edge.
      */
-    public ConflationSet conflate(final Edge enhancing)
+    public ConflationSet conflate(Edge enhancing)
     {
         // Show current edge in viewer
         if (viewer != null)
@@ -127,13 +127,13 @@ public class EdgeConflater
         }
 
         // Set of conflations
-        final var conflations = new ConflationSet();
+        var conflations = new ConflationSet();
 
         // Augment road shape
-        final var augmented = enhancing.roadShape().augmented(augmentationSpacing);
+        var augmented = enhancing.roadShape().augmented(augmentationSpacing);
 
         // Go through all the edges that could possibly match in the base graph
-        for (final var base : base.edgesIntersecting(enhancing.bounds().expanded(maximumSnapDistance)))
+        for (var base : base.edgesIntersecting(enhancing.bounds().expanded(maximumSnapDistance)))
         {
             // If we hit the debug edge identifier or road name defined at the top of this file,
             if (base.identifier().asLong() == DEBUG_CANDIDATE_EDGE_IDENTIFIER || (base.roadName() != null
@@ -163,11 +163,11 @@ public class EdgeConflater
             }
 
             // Augment the candidate
-            final var augmentedCandidate = base.roadShape().augmented(augmentationSpacing);
+            var augmentedCandidate = base.roadShape().augmented(augmentationSpacing);
 
             // Determine closeness
-            final Percent closeness;
-            final Distance overlap;
+            Percent closeness;
+            Distance overlap;
             if (augmented.length().isLessThan(augmentedCandidate.length()))
             {
                 closeness = augmented.closeness(augmentedCandidate, maximumSnapDistance, maximumHeadingDeviation);
@@ -210,27 +210,27 @@ public class EdgeConflater
         return conflations;
     }
 
-    public void conflateEdgesWithDifferentNames(final boolean conflateEdgesWithDifferentNames)
+    public void conflateEdgesWithDifferentNames(boolean conflateEdgesWithDifferentNames)
     {
         this.conflateEdgesWithDifferentNames = conflateEdgesWithDifferentNames;
     }
 
-    public void conflateToConstruction(final boolean conflateToConstruction)
+    public void conflateToConstruction(boolean conflateToConstruction)
     {
         this.conflateToConstruction = conflateToConstruction;
     }
 
-    public void maximumHeadingDeviation(final Angle maximumHeadingDeviation)
+    public void maximumHeadingDeviation(Angle maximumHeadingDeviation)
     {
         this.maximumHeadingDeviation = maximumHeadingDeviation;
     }
 
-    public void maximumSnapDistance(final Distance maximumSnapDistance)
+    public void maximumSnapDistance(Distance maximumSnapDistance)
     {
         this.maximumSnapDistance = maximumSnapDistance;
     }
 
-    public void minimumCloseness(final Percent minimumCloseness)
+    public void minimumCloseness(Percent minimumCloseness)
     {
         this.minimumCloseness = minimumCloseness;
     }
@@ -238,7 +238,7 @@ public class EdgeConflater
     /**
      * @return True if the given edge should be conflated to the base graph candidate edge
      */
-    private boolean shouldConflate(final Edge edge, final Edge baseCandidate)
+    private boolean shouldConflate(Edge edge, Edge baseCandidate)
     {
         // If we don't want to conflate edges with different names
         if (!conflateEdgesWithDifferentNames)

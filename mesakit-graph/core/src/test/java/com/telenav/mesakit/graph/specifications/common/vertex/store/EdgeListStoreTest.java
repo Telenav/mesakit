@@ -32,17 +32,17 @@ public class EdgeListStoreTest extends GraphUnitTest
     @Test
     public void testAddRetrieve()
     {
-        final var store = new EdgeArrayStore("test", Metadata.defaultMetadata().withEdgeCount(Count._128));
+        var store = new EdgeArrayStore("test", Metadata.defaultMetadata().withEdgeCount(Count._128));
 
-        final var indexes = new ArrayList<Integer>();
-        final var lists = new HashMap<Integer, IntArray>();
+        var indexes = new ArrayList<Integer>();
+        var lists = new HashMap<Integer, IntArray>();
         randomIndexes(Repeats.NO_REPEATS, Count._1024, 65_536, index ->
         {
             indexes.add(index);
 
-            final var values = new IntArray("values");
+            var values = new IntArray("values");
             values.initialize();
-            for (final var value : randomIntList(Repeats.ALLOW_REPEATS, Count.count(randomInt(0, 20)), 1, 500))
+            for (var value : randomIntList(Repeats.ALLOW_REPEATS, Count.count(randomInt(0, 20)), 1, 500))
             {
                 values.add(value);
             }
@@ -51,9 +51,9 @@ public class EdgeListStoreTest extends GraphUnitTest
             store.list(index, values.iterator());
         });
 
-        for (final var index : indexes)
+        for (var index : indexes)
         {
-            final var list = store.list(index);
+            var list = store.list(index);
             ensure(lists.get(index).iterator().identical(list.iterator()));
         }
     }

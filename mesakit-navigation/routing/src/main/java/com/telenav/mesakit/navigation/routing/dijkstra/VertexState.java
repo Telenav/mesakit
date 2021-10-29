@@ -43,17 +43,17 @@ public class VertexState implements Comparable<VertexState>
     /** The route to this vertex */
     private Route route;
 
-    VertexState(final Vertex vertex)
+    VertexState(Vertex vertex)
     {
         this.vertex = vertex;
     }
 
     @Override
     @SuppressWarnings("UseCompareMethod")
-    public int compareTo(final VertexState that)
+    public int compareTo(VertexState that)
     {
-        final var thisCost = heuristicCost.asDouble();
-        final var thatCost = that.heuristicCost.asDouble();
+        var thisCost = heuristicCost.asDouble();
+        var thatCost = that.heuristicCost.asDouble();
         if (thisCost < thatCost)
         {
             return -1;
@@ -75,7 +75,7 @@ public class VertexState implements Comparable<VertexState>
      * previous vertex (if we're going backward) or null if there's no such edge (either because there's no previous, or
      * because there's no edge, as in the case of a one-way street).
      */
-    public Edge edge(final Direction direction)
+    public Edge edge(Direction direction)
     {
         if (previous != null)
         {
@@ -100,14 +100,14 @@ public class VertexState implements Comparable<VertexState>
         return settled;
     }
 
-    public void relax(final VertexState previous, final Cost cost, final Cost heuristicCost)
+    public void relax(VertexState previous, Cost cost, Cost heuristicCost)
     {
         this.previous = previous;
         this.cost = cost;
         this.heuristicCost = heuristicCost;
     }
 
-    public Route route(final Direction direction)
+    public Route route(Direction direction)
     {
         // If we don't have the route to this vertex yet
         if (route == null)
@@ -119,7 +119,7 @@ public class VertexState implements Comparable<VertexState>
             }
 
             // If there is an edge in the given direction from this vertex
-            final var edge = edge(direction);
+            var edge = edge(direction);
             if (edge != null)
             {
                 // If there's no previous route,

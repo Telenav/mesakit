@@ -72,29 +72,35 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
 
         private final Separators separators;
 
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             this(listener, new Separators(":", ","));
         }
 
-        public Converter(final Listener listener, final Separators separators)
+        public Converter(Listener listener, Separators separators)
         {
             super(listener);
             this.separators = separators;
             locationConverter = new Location.DegreesConverter(listener);
         }
 
+        @Override
+        protected String onToString(Segment value)
+        {
+            return value.start() + ":" + value.end();
+        }
+
         /**
          * {@inheritDoc}
          */
         @Override
-        protected Segment onToValue(final String value)
+        protected Segment onToValue(String value)
         {
-            final var values = StringList.split(value, separators.current());
+            var values = StringList.split(value, separators.current());
             if (values.size() == 2)
             {
-                final var from = locationConverter.convert(values.get(0).trim());
-                final var to = locationConverter.convert(values.get(1).trim());
+                var from = locationConverter.convert(values.get(0).trim());
+                var to = locationConverter.convert(values.get(1).trim());
                 if (from == null || to == null)
                 {
                     problem("Invalid value(s) ${debug}", value);
@@ -108,12 +114,6 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
                 return null;
             }
         }
-
-        @Override
-        protected String onToString(final Segment value)
-        {
-            return value.start() + ":" + value.end();
-        }
     }
 
     private Location start;
@@ -124,7 +124,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
 
     private final long endInDm7;
 
-    public Segment(final Location start, final Location end)
+    public Segment(Location start, Location end)
     {
         this.start = start;
         this.end = end;
@@ -132,7 +132,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
         endInDm7 = end.asDm7Long();
     }
 
-    public Segment(final long startInDm7, final long endInDm7)
+    public Segment(long startInDm7, long endInDm7)
     {
         assert Precision.DM7.isValidLocation(startInDm7);
         assert Precision.DM7.isValidLocation(endInDm7);
@@ -156,24 +156,24 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
     /**
      * @return The location at the given distance from the start along this segment
      */
-    public Location at(final Distance distance)
+    public Location at(Distance distance)
     {
         if (length().equals(Distance.ZERO))
         {
             return start();
         }
-        final var scale = distance.ratio(length());
+        var scale = distance.ratio(length());
         return start().moved(heading(), length().times(scale));
     }
 
     /**
      * @return A polyline of a backward arrow with direction from end to start
      */
-    public Polyline backwardArrow(final Angle offset, final Distance arrowSize)
+    public Polyline backwardArrow(Angle offset, Distance arrowSize)
     {
-        final var arrowHeading = heading();
-        final var line1 = start().moved(arrowHeading.plus(offset), arrowSize);
-        final var line2 = start().moved(arrowHeading.minus(offset), arrowSize);
+        var arrowHeading = heading();
+        var line1 = start().moved(arrowHeading.plus(offset), arrowSize);
+        var line2 = start().moved(arrowHeading.minus(offset), arrowSize);
         return Polyline.fromLocations(line1, start(), line2);
     }
 
@@ -185,8 +185,8 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
 
     public Location center()
     {
-        final var latitude = Latitude.degrees((start().latitude().asDegrees() + end().latitude().asDegrees()) / 2.);
-        final var longitude = Longitude.degrees((start().longitude().asDegrees() + end().longitude().asDegrees()) / 2.);
+        var latitude = Latitude.degrees((start().latitude().asDegrees() + end().latitude().asDegrees()) / 2.);
+        var longitude = Longitude.degrees((start().longitude().asDegrees() + end().longitude().asDegrees()) / 2.);
         return new Location(latitude, longitude);
     }
 
@@ -205,11 +205,11 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Segment)
         {
-            final var that = (Segment) object;
+            var that = (Segment) object;
             return start().equals(that.start) && end().equals(that.end());
         }
         return false;
@@ -218,11 +218,11 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
     /**
      * @return A polyline of a forward arrow with direction from start to end
      */
-    public Polyline forwardArrow(final Angle offset, final Distance arrowSize)
+    public Polyline forwardArrow(Angle offset, Distance arrowSize)
     {
-        final var arrowHeading = heading().reversed();
-        final var line1 = end().moved(arrowHeading.plus(offset), arrowSize);
-        final var line2 = end().moved(arrowHeading.minus(offset), arrowSize);
+        var arrowHeading = heading().reversed();
+        var line1 = end().moved(arrowHeading.plus(offset), arrowSize);
+        var line2 = end().moved(arrowHeading.minus(offset), arrowSize);
         return Polyline.fromLocations(line1, end(), line2);
     }
 
@@ -238,28 +238,28 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
         return start().headingTo(end());
     }
 
-    public Location intersection(final Segment that)
+    public Location intersection(Segment that)
     {
         // Get this segment in degrees
-        final var this_x1 = start().longitude().asDegrees();
-        final var this_y1 = start().latitude().asDegrees();
-        final var this_x2 = end().longitude().asDegrees();
-        final var this_y2 = end().latitude().asDegrees();
+        var this_x1 = start().longitude().asDegrees();
+        var this_y1 = start().latitude().asDegrees();
+        var this_x2 = end().longitude().asDegrees();
+        var this_y2 = end().latitude().asDegrees();
 
         // Get that segment in degrees
-        final var that_x1 = that.start().longitude().asDegrees();
-        final var that_y1 = that.start().latitude().asDegrees();
-        final var that_x2 = that.end().longitude().asDegrees();
-        final var that_y2 = that.end().latitude().asDegrees();
+        var that_x1 = that.start().longitude().asDegrees();
+        var that_y1 = that.start().latitude().asDegrees();
+        var that_x2 = that.end().longitude().asDegrees();
+        var that_y2 = that.end().latitude().asDegrees();
 
         // Compute delta x for both lines
-        final var this_dx = this_x1 - this_x2;
-        final var this_dy = this_y1 - this_y2;
-        final var that_dx = that_x1 - that_x2;
-        final var that_dy = that_y1 - that_y2;
+        var this_dx = this_x1 - this_x2;
+        var this_dy = this_y1 - this_y2;
+        var that_dx = that_x1 - that_x2;
+        var that_dy = that_y1 - that_y2;
 
         // Denominator of determinant
-        final var denominator = this_dx * that_dy - this_dy * that_dx;
+        var denominator = this_dx * that_dy - this_dy * that_dx;
 
         // If the denominator is zero
         if (denominator == 0)
@@ -335,29 +335,29 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
      * @see "http://www.skytopia.com/project/articles/compsci/clipping.html"
      */
     @Override
-    public boolean intersects(final Rectangle rectangle)
+    public boolean intersects(Rectangle rectangle)
     {
-        final var bottom = rectangle.bottom().asDegrees();
-        final var left = rectangle.left().asDegrees();
-        final var top = rectangle.top().asDegrees();
-        final var right = rectangle.right().asDegrees();
+        var bottom = rectangle.bottom().asDegrees();
+        var left = rectangle.left().asDegrees();
+        var top = rectangle.top().asDegrees();
+        var right = rectangle.right().asDegrees();
 
-        final var x0 = start().longitude().asDegrees();
-        final var y0 = start().latitude().asDegrees();
-        final var x1 = end().longitude().asDegrees();
-        final var y1 = end().latitude().asDegrees();
+        var x0 = start().longitude().asDegrees();
+        var y0 = start().latitude().asDegrees();
+        var x1 = end().longitude().asDegrees();
+        var y1 = end().latitude().asDegrees();
 
         var t0 = 0.0;
         var t1 = 1.0;
 
-        final var dx = x1 - x0;
-        final var dy = y1 - y0;
+        var dx = x1 - x0;
+        var dy = y1 - y0;
 
         // For each side of the rectangle
         for (var side = 0; side < 4; side++)
         {
-            final double p;
-            final double q;
+            double p;
+            double q;
             switch (side)
             {
                 case 0:
@@ -381,7 +381,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
                     p = 0;
                     q = 0;
             }
-            final var r = q / p;
+            var r = q / p;
             if (p == 0 && q < 0)
             {
                 return false;
@@ -417,44 +417,44 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
      *
      * @return True if this segment intersects that segment.
      */
-    public boolean intersects(final Segment that)
+    public boolean intersects(Segment that)
     {
-        final var x1 = start().longitude().asNanodegrees();
-        final var x2 = end().longitude().asNanodegrees();
-        final var x3 = that.start().longitude().asNanodegrees();
-        final var x4 = that.end().longitude().asNanodegrees();
+        var x1 = start().longitude().asNanodegrees();
+        var x2 = end().longitude().asNanodegrees();
+        var x3 = that.start().longitude().asNanodegrees();
+        var x4 = that.end().longitude().asNanodegrees();
 
-        final var thisRight = Math.max(x1, x2);
-        final var thatLeft = Math.min(x3, x4);
+        var thisRight = Math.max(x1, x2);
+        var thatLeft = Math.min(x3, x4);
 
         if (thisRight < thatLeft)
         {
             return false;
         }
 
-        final var thisLeft = Math.min(x1, x2);
-        final var thatRight = Math.max(x3, x4);
+        var thisLeft = Math.min(x1, x2);
+        var thatRight = Math.max(x3, x4);
 
         if (thisLeft > thatRight)
         {
             return false;
         }
 
-        final var y1 = start().latitude().asNanodegrees();
-        final var y2 = end().latitude().asNanodegrees();
-        final var y3 = that.start().latitude().asNanodegrees();
-        final var y4 = that.end().latitude().asNanodegrees();
+        var y1 = start().latitude().asNanodegrees();
+        var y2 = end().latitude().asNanodegrees();
+        var y3 = that.start().latitude().asNanodegrees();
+        var y4 = that.end().latitude().asNanodegrees();
 
-        final var thisTop = Math.max(y1, y2);
-        final var thatBottom = Math.min(y3, y4);
+        var thisTop = Math.max(y1, y2);
+        var thatBottom = Math.min(y3, y4);
 
         if (thisTop < thatBottom)
         {
             return false;
         }
 
-        final var thisBottom = Math.min(y1, y2);
-        final var thatTop = Math.max(y3, y4);
+        var thisBottom = Math.min(y1, y2);
+        var thatTop = Math.max(y3, y4);
 
         if (thisBottom > thatTop)
         {
@@ -471,7 +471,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
         return Line2D.linesIntersect(x1, y1, x2, y2, x3, y3, x4, y4);
     }
 
-    public boolean isConnectedTo(final Segment that)
+    public boolean isConnectedTo(Segment that)
     {
         return start().equals(that.start()) || start().equals(that.end()) || end().equals(that.start())
                 || end().equals(that.end());
@@ -482,7 +482,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
         return start.latitudeInDm7() == end.latitudeInDm7();
     }
 
-    public boolean isParallel(final Segment that, final Angle threshold)
+    public boolean isParallel(Segment that, Angle threshold)
     {
         return heading().difference(that.heading(), Chirality.SMALLEST).isLessThan(threshold);
     }
@@ -497,7 +497,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
         return start.longitudeInDm7() == end.longitudeInDm7();
     }
 
-    public boolean leadsTo(final Segment that)
+    public boolean leadsTo(Segment that)
     {
         return end().equals(that.start());
     }
@@ -526,7 +526,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
      * @param offset the distance from the new created segment to this segment
      * @return a new created segment that is parallel to this segment with distance of offset and on the left or right
      */
-    public Segment parallel(final boolean left, final Distance offset)
+    public Segment parallel(boolean left, Distance offset)
     {
         var heading = heading();
         heading = left ? heading.plus(Angle._270_DEGREES) : heading.plus(Angle._90_DEGREES);
@@ -538,10 +538,10 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
      * @return A segment perpendicular to this segment at the given location of the given length on both sides of this
      * segment.
      */
-    public Segment perpendicular(final Location at, final Distance length)
+    public Segment perpendicular(Location at, Distance length)
     {
-        final var start = at.moved(heading().plus(Angle._90_DEGREES), length);
-        final var end = at.moved(heading().plus(Angle._270_DEGREES), length);
+        var start = at.moved(heading().plus(Angle._90_DEGREES), length);
+        var end = at.moved(heading().plus(Angle._270_DEGREES), length);
         return new Segment(start, end);
     }
 
@@ -550,7 +550,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
         return new Segment(end(), start());
     }
 
-    public Iterable<Segment> sections(final Distance length)
+    public Iterable<Segment> sections(Distance length)
     {
         return Iterables.iterable(() -> new Next<>()
         {
@@ -559,11 +559,11 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
             @Override
             public Segment onNext()
             {
-                final var startOffset = offset;
-                final var endOffset = offset.add(length);
+                var startOffset = offset;
+                var endOffset = offset.add(length);
                 if (endOffset.isLessThan(length()))
                 {
-                    final var heading = heading();
+                    var heading = heading();
                     offset = offset.add(length);
                     return new Segment(start().moved(heading, startOffset), start().moved(heading, endOffset));
                 }
@@ -589,24 +589,24 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
     /**
      * @return The surrounding bounding box along the segment
      */
-    public Polygon surroundingBox(final Distance range)
+    public Polygon surroundingBox(Distance range)
     {
-        final var heading = heading();
-        final var reversedHeading = heading().reversed();
+        var heading = heading();
+        var reversedHeading = heading().reversed();
 
-        final var location1 = start()
+        var location1 = start()
                 .moved(reversedHeading, range)
                 .moved(reversedHeading.plus(Angle._90_DEGREES), range);
 
-        final var location2 = start()
+        var location2 = start()
                 .moved(reversedHeading, range)
                 .moved(reversedHeading.minus(Angle._90_DEGREES), range);
 
-        final var location3 = end()
+        var location3 = end()
                 .moved(heading, range)
                 .moved(heading.plus(Angle._90_DEGREES), range);
 
-        final var location4 = end()
+        var location4 = end()
                 .moved(heading, range)
                 .moved(heading.minus(Angle._90_DEGREES), range);
 
@@ -619,17 +619,17 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
         return start() + ":" + end();
     }
 
-    public Angle turnAngleTo(final Segment that, final Chirality chirality)
+    public Angle turnAngleTo(Segment that, Chirality chirality)
     {
         return heading().difference(that.heading(), chirality);
     }
 
-    public Segment withEndExtended(final Distance distance)
+    public Segment withEndExtended(Distance distance)
     {
         return new Segment(start(), end().moved(heading(), distance));
     }
 
-    public Segment withStartExtended(final Distance distance)
+    public Segment withStartExtended(Distance distance)
     {
         return new Segment(start().moved(heading().reversed(), distance), end());
     }

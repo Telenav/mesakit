@@ -32,14 +32,14 @@ public class EdgeCountRouteLimiter implements RouteLimiter
 {
     private final int maximumEdges;
 
-    public EdgeCountRouteLimiter(final Count maximumEdges)
+    public EdgeCountRouteLimiter(Count maximumEdges)
     {
         this.maximumEdges = maximumEdges.asInt();
     }
 
     @Override
-    public boolean canExtendRoute(final Route route, final Edge edge)
+    public boolean canExtendRoute(Route route, Edge edge)
     {
-        return route.size() + 1 < this.maximumEdges;
+        return route.size() + 1 < maximumEdges;
     }
 }

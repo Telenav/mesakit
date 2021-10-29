@@ -64,7 +64,7 @@ public class SoftCut extends Cut
     /** The exterior regions for nodes that belong to a region due to a soft-cut way */
     private final MultiMap<Long, Integer> exteriorRegionsForNode = new MultiMap<>();
 
-    public SoftCut(final PbfRegionCutter extractor, final RegionNodes regionNodes, final RegionWays regionWays)
+    public SoftCut(PbfRegionCutter extractor, RegionNodes regionNodes, RegionWays regionWays)
     {
         super(extractor);
         nodesInsideRegion = regionNodes;
@@ -89,7 +89,7 @@ public class SoftCut extends Cut
     private void analyze()
     {
         // Determine which nodes and ways belong to each region
-        final var data = extractor().data().get();
+        var data = extractor().data().get();
         data.phase("Analyzing");
         data.process(new PbfDataProcessor()
         {
@@ -98,7 +98,7 @@ public class SoftCut extends Cut
             {
                 if (DEBUG.isDebugOn())
                 {
-                    final var size = JavaVirtualMachine.local().sizeOfObjectGraph(nodesInsideRegion(),
+                    var size = JavaVirtualMachine.local().sizeOfObjectGraph(nodesInsideRegion(),
                             "nodesInsideRegion", Bytes.kilobytes(100));
                     LOGGER.information("nodesInsideRegion = $", size);
                 }
@@ -117,12 +117,12 @@ public class SoftCut extends Cut
             }
 
             @Override
-            public Action onNode(final PbfNode node)
+            public Action onNode(PbfNode node)
             {
                 // Add node to relevant regions
-                for (final var region : regionsForLocation(location(node)))
+                for (var region : regionsForLocation(location(node)))
                 {
-                    final var regionIndex = indexForRegion(region);
+                    var regionIndex = indexForRegion(region);
                     if (regionIndex != null)
                     {
                         checkRegionIndex(regionIndex);
@@ -133,23 +133,23 @@ public class SoftCut extends Cut
             }
 
             @Override
-            public Action onWay(final PbfWay way)
+            public Action onWay(PbfWay way)
             {
                 // If the way is included
                 if (include(way))
                 {
                     // get the regions that have way nodes
-                    final var regionIndexes = nodesInsideRegion().regionIndexes(way);
+                    var regionIndexes = nodesInsideRegion().regionIndexes(way);
                     checkRegionIndexes(regionIndexes);
 
                     // go through each region
-                    for (final int regionIndex : regionIndexes)
+                    for (int regionIndex : regionIndexes)
                     {
                         // and for each way node
-                        for (final var node : way.nodes())
+                        for (var node : way.nodes())
                         {
                             // if the node is not in the region
-                            final var nodeId = node.getNodeId();
+                            var nodeId = node.getNodeId();
                             if (!nodesInsideRegion().inRegion(nodeId, regionIndex))
                             {
                                 // add it to the exterior regions
@@ -168,13 +168,13 @@ public class SoftCut extends Cut
         LOGGER.information(AsciiArt.bottomLine(20, "Done Analyzing $", data.resource()));
     }
 
-    private void checkRegionIndex(final Integer regionIndex)
+    private void checkRegionIndex(Integer regionIndex)
     {
         assert nodesInsideRegion().regionIndexMap().isValidRegionIndex(regionIndex) : "Invalid region index "
                 + regionIndex;
     }
 
-    private void checkRegionIndexes(final Collection<Integer> regionIndexes)
+    private void checkRegionIndexes(Collection<Integer> regionIndexes)
     {
         assert nodesInsideRegion().regionIndexMap()
                 .isValidRegionIndexList(regionIndexes) : "Invalid region index list: " + regionIndexes;
@@ -188,25 +188,25 @@ public class SoftCut extends Cut
     private void extractCells()
     {
         // Determine which nodes belong to each region
-        final var data = extractor().data().get();
+        var data = extractor().data().get();
         data.phase("Extracting");
         data.process(new PbfDataProcessor()
         {
             @Override
-            public Action onNode(final PbfNode node)
+            public Action onNode(PbfNode node)
             {
                 // and any regions that strictly contain the location
-                for (final var region : regionsForLocation(location(node)))
+                for (var region : regionsForLocation(location(node)))
                 {
                     // Get the region index
-                    final var regionIndex = indexForRegion(region);
+                    var regionIndex = indexForRegion(region);
                     if (regionIndex != null)
                     {
                         // and if the node strictly belongs to the region,
                         if (nodesInsideRegion().inRegion(node.identifierAsLong(), regionIndex))
                         {
                             // write the node to the writer for the given region
-                            final var writer = writer(region);
+                            var writer = writer(region);
                             if (writer != null)
                             {
                                 writer.write(node);
@@ -216,17 +216,17 @@ public class SoftCut extends Cut
                 }
 
                 // Get any exterior regions this node might belong to
-                final List<Integer> regionIndexes = exteriorRegionsForNode().get(node.identifierAsLong());
+                List<Integer> regionIndexes = exteriorRegionsForNode().get(node.identifierAsLong());
                 if (regionIndexes != null)
                 {
                     // Ensure region indexes
                     checkRegionIndexes(regionIndexes);
 
                     // Go through each exterior region
-                    for (final var regionIndex : regionIndexes)
+                    for (var regionIndex : regionIndexes)
                     {
                         // and write the node to that region
-                        final var writer = writer(regionForIndex(regionIndex));
+                        var writer = writer(regionForIndex(regionIndex));
                         if (writer != null)
                         {
                             writer.write(node);
@@ -237,26 +237,26 @@ public class SoftCut extends Cut
             }
 
             @Override
-            public Action onRelation(final PbfRelation relation)
+            public Action onRelation(PbfRelation relation)
             {
                 // Go through members of the relation
-                final var written = new HashSet<String>();
-                for (final var member : relation.members())
+                var written = new HashSet<String>();
+                for (var member : relation.members())
                 {
                     // and if the member is a way
                     if (member.getMemberType() == EntityType.Way)
                     {
                         // go through each region that the way belongs to
-                        for (final var region : waysBelongingToRegion().regions(member.getMemberId()))
+                        for (var region : waysBelongingToRegion().regions(member.getMemberId()))
                         {
-                            final var key = region.identifier().asInt() + "-" + relation.identifierAsLong();
+                            var key = region.identifier().asInt() + "-" + relation.identifierAsLong();
                             if (!written.contains(key))
                             {
                                 written.add(key);
 
                                 // and write out the relation (which may reference missing ways from
                                 // neighboring regions) to that region
-                                final var writer = writer(region);
+                                var writer = writer(region);
                                 if (writer != null)
                                 {
                                     writer.write(relation);
@@ -269,13 +269,13 @@ public class SoftCut extends Cut
             }
 
             @Override
-            public Action onWay(final PbfWay way)
+            public Action onWay(PbfWay way)
             {
                 // and each region that the way belongs to
-                for (final var region : waysBelongingToRegion().regions(way.identifierAsLong()))
+                for (var region : waysBelongingToRegion().regions(way.identifierAsLong()))
                 {
                     // Get the writer for the region
-                    final var writer = writer(region);
+                    var writer = writer(region);
                     if (writer != null)
                     {
                         // and write the way, with telenav:softcut=true if the way is soft-cut
@@ -288,17 +288,17 @@ public class SoftCut extends Cut
         LOGGER.information(AsciiArt.bottomLine(20, "Done Extracting Cells From $", data.resource()));
     }
 
-    private boolean isSoftCut(final Region region, final PbfWay way)
+    private boolean isSoftCut(Region region, PbfWay way)
     {
         // Get region index
-        final var regionIndex = indexForRegion(region);
+        var regionIndex = indexForRegion(region);
         if (regionIndex != null)
         {
             // Ensure region index
             checkRegionIndex(regionIndex);
 
             // Go through nodes
-            for (final var node : way.nodes())
+            for (var node : way.nodes())
             {
                 // and if there's a way node not inside this region
                 if (!nodesInsideRegion().inRegion(node.getNodeId(), regionIndex))

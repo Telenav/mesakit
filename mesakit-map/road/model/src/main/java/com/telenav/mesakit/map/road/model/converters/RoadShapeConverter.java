@@ -42,13 +42,13 @@ public class RoadShapeConverter extends BaseStringConverter<Polyline>
 
     private final int columns;
 
-    public RoadShapeConverter(final Listener listener, final int columns)
+    public RoadShapeConverter(Listener listener, int columns)
     {
         super(listener);
         this.columns = columns;
     }
 
-    public void type(final Type type)
+    public void type(Type type)
     {
         this.type = type;
     }
@@ -57,13 +57,13 @@ public class RoadShapeConverter extends BaseStringConverter<Polyline>
     // columns for altitude and "relative elevation" in unified TXD). This is how the
     // shapepoints are stored in the TXD file format.
     @Override
-    protected Polyline onToValue(final String value)
+    protected Polyline onToValue(String value)
     {
-        final List<Location> locations = new ObjectList<>(GeographyLimits.LOCATIONS_PER_POLYLINE);
+        List<Location> locations = new ObjectList<>(GeographyLimits.LOCATIONS_PER_POLYLINE);
         var i = 0;
         Latitude latitude = null;
         Longitude longitude;
-        for (final var coordinate : Split.split(value, ','))
+        for (var coordinate : Split.split(value, ','))
         {
             if (i % columns == 0)
             {

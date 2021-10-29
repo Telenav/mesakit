@@ -45,15 +45,15 @@ public class StringListTagCodecTest extends UnitTest
     @Test
     public void test()
     {
-        final var keyCharacterCodec = HuffmanCharacterCodec.from(characterSymbols(("test-key-character.codec")));
-        final var keyStringCodec = HuffmanStringCodec.from(stringSymbols("test-key-string.codec"));
-        final var keyStringListCodec = new HuffmanStringListCodec(keyStringCodec, keyCharacterCodec);
+        var keyCharacterCodec = HuffmanCharacterCodec.from(characterSymbols(("test-key-character.codec")));
+        var keyStringCodec = HuffmanStringCodec.from(stringSymbols("test-key-string.codec"));
+        var keyStringListCodec = new HuffmanStringListCodec(keyStringCodec, keyCharacterCodec);
 
-        final var valueCharacterCodec = HuffmanCharacterCodec.from(characterSymbols("test-value-character.codec"));
-        final var valueStringCodec = HuffmanStringCodec.from(stringSymbols("test-value-string.codec"));
-        final var valueStringListCodec = new HuffmanStringListCodec(valueStringCodec, valueCharacterCodec);
+        var valueCharacterCodec = HuffmanCharacterCodec.from(characterSymbols("test-value-character.codec"));
+        var valueStringCodec = HuffmanStringCodec.from(stringSymbols("test-value-string.codec"));
+        var valueStringListCodec = new HuffmanStringListCodec(valueStringCodec, valueCharacterCodec);
 
-        final var codec = new PbfStringListTagCodec(keyStringListCodec, valueStringListCodec);
+        var codec = new PbfStringListTagCodec(keyStringListCodec, valueStringListCodec);
 
         test(codec, PbfTagList.create().add("x", "XXX"));
         test(codec, PbfTagList.create().add("jdlficxqxbjlzen", "mmjpqcbor").add("iyvxmttgmgl", "path"));
@@ -61,7 +61,7 @@ public class StringListTagCodecTest extends UnitTest
         test(codec, PbfTagList.create().add("z", "z"));
         test(codec, tags());
 
-        final var progress = Progress.create();
+        var progress = Progress.create();
         loop(1_000, () ->
         {
             test(codec, randomTags());
@@ -69,32 +69,32 @@ public class StringListTagCodecTest extends UnitTest
         });
     }
 
-    private Symbols<Character> characterSymbols(final String fileName)
+    private Symbols<Character> characterSymbols(String fileName)
     {
         return Symbols.load(frequencies(fileName), ESCAPE, new HuffmanCharacterCodec.Converter(LOGGER));
     }
 
-    private PropertyMap frequencies(final String name)
+    private PropertyMap frequencies(String name)
     {
-        final var path = PackagePath.packagePath(getClass());
+        var path = PackagePath.packagePath(getClass());
         return PropertyMap.load(this, path, "codecs/" + name);
     }
 
     private PbfTagList randomTags()
     {
-        final var tags = PbfTagList.create();
+        var tags = PbfTagList.create();
         loop(1, 4, () -> tags.add(randomAsciiString(), randomAsciiString()));
         return tags;
     }
 
-    private Symbols<String> stringSymbols(final String fileName)
+    private Symbols<String> stringSymbols(String fileName)
     {
         return Symbols.load(frequencies(fileName), new HuffmanStringCodec.Converter(LOGGER));
     }
 
     private PbfTagList tags()
     {
-        final var tags = PbfTagList.create();
+        var tags = PbfTagList.create();
         tags.add("highway", "track");
         tags.add("highway", "motorway");
         tags.add("highway", "secondary");
@@ -102,15 +102,15 @@ public class StringListTagCodecTest extends UnitTest
         return tags;
     }
 
-    private void test(final PbfStringListTagCodec codec, final PbfTagList tags)
+    private void test(PbfStringListTagCodec codec, PbfTagList tags)
     {
-        final var data = new ByteArray("data");
+        var data = new ByteArray("data");
         data.initialize();
 
         codec.encode(data, tags);
 
         data.reset();
-        final var decoded = codec.decode(data);
+        var decoded = codec.decode(data);
         ensureEqual(decoded, tags);
     }
 }

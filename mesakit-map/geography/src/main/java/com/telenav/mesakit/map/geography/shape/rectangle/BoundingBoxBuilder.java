@@ -37,18 +37,18 @@ public final class BoundingBoxBuilder
 
     private int maximumLongitudeInDm7 = Integer.MIN_VALUE;
 
-    public void add(final long locationInDm7)
+    public void add(long locationInDm7)
     {
         // We don't include the origin (0,0) because there's nothing there
         if (locationInDm7 != 0)
         {
-            final var latitudeInDm7 = Location.latitude(locationInDm7);
-            final var longitudeInDm7 = Location.longitude(locationInDm7);
+            var latitudeInDm7 = Location.latitude(locationInDm7);
+            var longitudeInDm7 = Location.longitude(locationInDm7);
             add(latitudeInDm7, longitudeInDm7);
         }
     }
 
-    public void add(final int latitudeInDm7, final int longitudeDm7)
+    public void add(int latitudeInDm7, int longitudeDm7)
     {
         if (latitudeInDm7 < minimumLatitudeInDm7)
         {
@@ -68,15 +68,15 @@ public final class BoundingBoxBuilder
         }
     }
 
-    public void add(final Iterable<Location> locations)
+    public void add(Iterable<Location> locations)
     {
-        for (final var location : locations)
+        for (var location : locations)
         {
             add(location);
         }
     }
 
-    public void add(final double latitude, final double longitude)
+    public void add(double latitude, double longitude)
     {
         if (latitude != 0 || longitude != 0)
         {
@@ -84,7 +84,7 @@ public final class BoundingBoxBuilder
         }
     }
 
-    public void add(final Location location)
+    public void add(Location location)
     {
         if (location != null)
         {
@@ -92,16 +92,16 @@ public final class BoundingBoxBuilder
         }
     }
 
-    public void add(final Rectangle rectangle)
+    public void add(Rectangle rectangle)
     {
         add(rectangle.bottomInDm7(), rectangle.leftInDm7());
         add(rectangle.topInDm7(), rectangle.rightInDm7());
     }
 
-    public void add(final Segment segment)
+    public void add(Segment segment)
     {
-        final var start = segment.startInDm7();
-        final var end = segment.endInDm7();
+        var start = segment.startInDm7();
+        var end = segment.endInDm7();
         add(Location.latitude(start), Location.longitude(start));
         add(Location.latitude(end), Location.longitude(end));
     }

@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.extractors;
 
-import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
 import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
 import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
 
 /**
  *
@@ -29,19 +29,19 @@ public class IntegerExtractor extends BaseExtractor<Integer, PbfTagMap>
 {
     private String tagName;
 
-    public IntegerExtractor(final Listener listener)
+    public IntegerExtractor(Listener listener)
     {
         super(listener);
     }
 
-    public IntegerExtractor(final Listener listener, final String tagName)
+    public IntegerExtractor(Listener listener, String tagName)
     {
         super(listener);
         this.tagName = tagName;
     }
 
     @Override
-    public Integer onExtract(final PbfTagMap tags)
+    public Integer onExtract(PbfTagMap tags)
     {
         if (tags.containsKey(tagName))
         {

@@ -58,7 +58,7 @@ public class PolylineStore implements Named, CompressibleCollection
     /** Name for debugging purposes */
     private String name;
 
-    public PolylineStore(final String name, final Estimate initialSize)
+    public PolylineStore(String name, Estimate initialSize)
     {
         ensure(name != null);
         ensure(initialSize != Estimate.MAXIMUM);
@@ -87,16 +87,16 @@ public class PolylineStore implements Named, CompressibleCollection
     /**
      * @return The store index if the given polyline was added and INVALID_INDEX if it wouldn't fit
      */
-    public int add(final CompressedPolyline polyline)
+    public int add(CompressedPolyline polyline)
     {
         // Get polyline data as a byte array
-        final var bytes = polyline.asBytes();
+        var bytes = polyline.asBytes();
 
         // and if we can fit another polyline in the data store,
         if (data.size() + bytes.size() + 1 < data.maximumSize().asInt())
         {
             // get the index of the data we are adding,
-            final var index = ends.size();
+            var index = ends.size();
 
             // add the data,
             data.addAll(bytes);
@@ -113,7 +113,7 @@ public class PolylineStore implements Named, CompressibleCollection
     }
 
     @Override
-    public Method compress(final Method method)
+    public Method compress(Method method)
     {
         data.compress(method);
         ends.compress(method);
@@ -128,11 +128,11 @@ public class PolylineStore implements Named, CompressibleCollection
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof PolylineStore)
         {
-            final var that = (PolylineStore) object;
+            var that = (PolylineStore) object;
             return Objects.equalPairs(size(), that.size(), data, that.data, ends, that.ends);
         }
         return false;
@@ -141,16 +141,16 @@ public class PolylineStore implements Named, CompressibleCollection
     /**
      * Gets the polyline stored at the given index
      */
-    public Polyline get(final int index)
+    public Polyline get(int index)
     {
-        final var start = ends.get(index - 1);
-        final var end = ends.get(index);
-        final var data = this.data.sublist(start, end - start);
+        var start = ends.get(index - 1);
+        var end = ends.get(index);
+        var data = this.data.sublist(start, end - start);
         if (DEBUG.isDebugOn())
         {
             DEBUG.trace("Retrieved data: $", data);
         }
-        final var bits = new BitArray("bits", data);
+        var bits = new BitArray("bits", data);
         bits.initialize();
         return CompressedPolyline.fromBitArray(bits);
     }
@@ -161,7 +161,7 @@ public class PolylineStore implements Named, CompressibleCollection
         return Hash.many(size(), data.hashCode(), ends.hashCode());
     }
 
-    public boolean isNull(final int index)
+    public boolean isNull(int index)
     {
         return ends.isNull(index);
     }

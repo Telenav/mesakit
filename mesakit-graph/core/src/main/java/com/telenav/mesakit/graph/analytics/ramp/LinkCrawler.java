@@ -48,7 +48,7 @@ class LinkCrawler
     /** The maximum number of links to crawl */
     private final Maximum maximumLinks;
 
-    public LinkCrawler(final Maximum maximumLinks)
+    public LinkCrawler(Maximum maximumLinks)
     {
         this.maximumLinks = maximumLinks;
     }
@@ -57,7 +57,7 @@ class LinkCrawler
      * @param start The edge at which to begin crawling
      * @return The set of links (connectors or ramps) directly or indirectly connected to the starting edge
      */
-    EdgeSet crawl(final Edge start)
+    EdgeSet crawl(Edge start)
     {
         // Make sure we're starting with a connecting road or ramp
         if (!start.isLink())
@@ -86,7 +86,7 @@ class LinkCrawler
     /**
      * Adds the edge to the set of connectors we're accumulating
      */
-    private void add(final Edge connector)
+    private void add(Edge connector)
     {
         // If we haven't already added this edge to the set of connectors
         if (!links.contains(connector) && links.count().isLessThan(maximumLinks))
@@ -98,7 +98,7 @@ class LinkCrawler
             itinerary.offer(connector);
 
             // then get any reversed edge
-            final var reversed = connector.reversed();
+            var reversed = connector.reversed();
 
             // and if the reversed edge exists and we haven't added that
             if (reversed != null && !links.contains(reversed))
@@ -115,9 +115,9 @@ class LinkCrawler
     /**
      * Add each edge in the set of connectors
      */
-    private void add(final EdgeSet connectors)
+    private void add(EdgeSet connectors)
     {
-        for (final var connector : connectors)
+        for (var connector : connectors)
         {
             add(connector);
         }
@@ -129,16 +129,16 @@ class LinkCrawler
      * @param edge The edge to visit
      * @param direction The direction to extend
      */
-    private void addLinks(final Edge edge, final Direction direction)
+    private void addLinks(Edge edge, Direction direction)
     {
         // Get the vertex to extend from
-        final var vertex = direction.isOut() ? edge.to() : edge.from();
+        var vertex = direction.isOut() ? edge.to() : edge.from();
 
         // If the vertex has only link edges
         if (hasOnlyLinkEdges(vertex))
         {
             // If there are any links extending in the given direction
-            final var next = links(edge, vertex, direction);
+            var next = links(edge, vertex, direction);
             if (!next.isEmpty())
             {
                 // add those forward links
@@ -153,9 +153,9 @@ class LinkCrawler
     /**
      * @return True if the vertex has any navigable non-link edge
      */
-    private boolean hasOnlyLinkEdges(final Vertex vertex)
+    private boolean hasOnlyLinkEdges(Vertex vertex)
     {
-        for (final var edge : vertex.edges())
+        for (var edge : vertex.edges())
         {
             if (!edge.isLink() && edge.isDrivable())
             {
@@ -168,16 +168,16 @@ class LinkCrawler
     /**
      * @return The set of in or out connector (connecting or ramp) edges from the given vertex
      */
-    private EdgeSet links(final Edge edge, final Vertex vertex, final Direction direction)
+    private EdgeSet links(Edge edge, Vertex vertex, Direction direction)
     {
-        final var edges = direction.isOut() ? vertex.outEdges() : vertex.inEdges();
+        var edges = direction.isOut() ? vertex.outEdges() : vertex.inEdges();
         return edges.without(edge).without(edge.reversed()).logicalSetMatching(Matchers.LINKS);
     }
 
     /**
      * Visits the given edge
      */
-    private void visit(final Edge edge)
+    private void visit(Edge edge)
     {
         addLinks(edge, Direction.OUT);
         addLinks(edge, Direction.IN);

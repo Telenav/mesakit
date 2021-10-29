@@ -15,7 +15,7 @@ public class Attribute extends Node implements ValueExpression
 {
     private final Property method;
 
-    public Attribute(final String attributeName)
+    public Attribute(String attributeName)
     {
         method = Type.forClass(Edge.class).property(attributeName);
         if (method == null)
@@ -30,7 +30,7 @@ public class Attribute extends Node implements ValueExpression
     @Override
     public Value evaluate()
     {
-        final var result = method.get(stack().top());
+        var result = method.get(stack().top());
         trace("Attribute $ is $", code(), result);
         return result == null ? Value.NULL : Value.of(result);
     }

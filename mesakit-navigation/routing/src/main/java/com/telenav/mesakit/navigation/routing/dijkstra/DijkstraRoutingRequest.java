@@ -51,13 +51,13 @@ public class DijkstraRoutingRequest extends RoutingRequest
     /** The most recently settled vertex */
     private VertexState settled;
 
-    public DijkstraRoutingRequest(final Vertex start, final Vertex end)
+    public DijkstraRoutingRequest(Vertex start, Vertex end)
     {
         super(start, end);
     }
 
-    protected DijkstraRoutingRequest(final DijkstraRoutingRequest request, final RoutingLimiter limiter,
-                                     final RoutingDebugger debugger)
+    protected DijkstraRoutingRequest(DijkstraRoutingRequest request, RoutingLimiter limiter,
+                                     RoutingDebugger debugger)
     {
         super(request, limiter, debugger);
         direction = request.direction;
@@ -74,9 +74,9 @@ public class DijkstraRoutingRequest extends RoutingRequest
         return direction;
     }
 
-    public RoutingResponse done(final Route route)
+    public RoutingResponse done(Route route)
     {
-        final var response = new RoutingResponse(route, elapsed());
+        var response = new RoutingResponse(route, elapsed());
         super.onEndRouting(response);
         return response;
     }
@@ -97,31 +97,31 @@ public class DijkstraRoutingRequest extends RoutingRequest
      * routing request. This is used by the {@link BiDijkstraRouter} to determine when the forward and backward routing
      * requests have met.
      */
-    public Meet meet(final DijkstraRoutingRequest that)
+    public Meet meet(DijkstraRoutingRequest that)
     {
         // If this request has settled a vertex,
         if (settled != null)
         {
             // get the state of the corresponding vertex in the other request (to see if our
             // request meets any of the vertexes settled by that other request)
-            final var thatState = that.state.get(settled.vertex());
+            var thatState = that.state.get(settled.vertex());
 
             // and if there is corresponding vertex state, then the two requests have met.
             if (thatState != null)
             {
                 // Get the route to meeting point from the other request,
-                final var thatRoute = thatState.route(that.direction);
+                var thatRoute = thatState.route(that.direction);
                 if (thatRoute != null)
                 {
                     // Get the route from this request
-                    final var thisRoute = route();
+                    var thisRoute = route();
                     if (thisRoute != null)
                     {
                         // connect this route to that route
-                        final var route = thisRoute.connect(thatRoute);
+                        var route = thisRoute.connect(thatRoute);
 
                         // and add the costs together,
-                        final var cost = settled.cost().add(thatState.cost());
+                        var cost = settled.cost().add(thatState.cost());
 
                         // finally returning the meet.
                         return new Meet(route, cost);
@@ -157,24 +157,24 @@ public class DijkstraRoutingRequest extends RoutingRequest
         return isForward() ? super.start() : super.end();
     }
 
-    public DijkstraRoutingRequest withDebugger(final RoutingDebugger debugger)
+    public DijkstraRoutingRequest withDebugger(RoutingDebugger debugger)
     {
         return new DijkstraRoutingRequest(this, null, debugger);
     }
 
-    public DijkstraRoutingRequest withDirection(final Direction direction)
+    public DijkstraRoutingRequest withDirection(Direction direction)
     {
-        final var router = new DijkstraRoutingRequest(this, null, null);
+        var router = new DijkstraRoutingRequest(this, null, null);
         router.direction = direction;
         return router;
     }
 
-    public DijkstraRoutingRequest withLimiter(final RoutingLimiter limiter)
+    public DijkstraRoutingRequest withLimiter(RoutingLimiter limiter)
     {
         return new DijkstraRoutingRequest(this, limiter, null);
     }
 
-    EdgeSet candidates(final Vertex vertex)
+    EdgeSet candidates(Vertex vertex)
     {
         return isForward() ? vertex.outEdges() : vertex.inEdges();
     }
@@ -184,14 +184,14 @@ public class DijkstraRoutingRequest extends RoutingRequest
         return queue.isEmpty();
     }
 
-    Vertex nextVertex(final Edge edge)
+    Vertex nextVertex(Edge edge)
     {
         return isForward() ? edge.to() : edge.from();
     }
 
     VertexState settle()
     {
-        final var first = queue.pollFirst();
+        var first = queue.pollFirst();
         assert first != null;
         queue.remove(first);
         settled = first;
@@ -200,17 +200,17 @@ public class DijkstraRoutingRequest extends RoutingRequest
         return settled;
     }
 
-    VertexState state(final Vertex vertex)
+    VertexState state(Vertex vertex)
     {
         return state.computeIfAbsent(vertex, v ->
         {
-            final var state = new VertexState(v);
+            var state = new VertexState(v);
             queue.add(state);
             return state;
         });
     }
 
-    void update(final VertexState vertex)
+    void update(VertexState vertex)
     {
         queue.remove(vertex);
         queue.add(vertex);

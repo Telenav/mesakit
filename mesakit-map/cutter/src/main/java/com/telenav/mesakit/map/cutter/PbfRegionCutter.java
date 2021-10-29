@@ -77,7 +77,7 @@ public class PbfRegionCutter
 
     private RegionIndexMap regionIndexMap;
 
-    public PbfRegionCutter(final Source<PbfDataSource> data, final Folder outputFolder, final WayFilter wayFilter)
+    public PbfRegionCutter(Source<PbfDataSource> data, Folder outputFolder, WayFilter wayFilter)
     {
         this.data = data;
         this.outputFolder = outputFolder;
@@ -94,7 +94,7 @@ public class PbfRegionCutter
         LOGGER.information("Extracting $ cell(s) from $", regionsToExtract.size(), data.get().resource());
 
         // Cut the desired regions from the input file
-        final Cut cut;
+        Cut cut;
         if (hasWayNodeLocations(data.get()))
         {
             cut = new FastCut(this, regionWays());
@@ -106,8 +106,8 @@ public class PbfRegionCutter
         cut.cut();
 
         // Remove any zero-size output files and their parent folders
-        final Set<Resource> outputs = new HashSet<>();
-        for (final var resource : cut.outputResources())
+        Set<Resource> outputs = new HashSet<>();
+        for (var resource : cut.outputResources())
         {
             if (resource.exists())
             {
@@ -115,7 +115,7 @@ public class PbfRegionCutter
                 {
                     if (resource instanceof File)
                     {
-                        final var file = (File) resource;
+                        var file = (File) resource;
                         file.delete();
                         if (file.parent().isEmpty())
                         {
@@ -129,7 +129,7 @@ public class PbfRegionCutter
                 }
             }
         }
-        final var outputResources = new ResourceList(outputs);
+        var outputResources = new ResourceList(outputs);
         LOGGER.information(AsciiArt.textBox("Output Files", "$\n$", outputFolder,
                 AsciiArt.bulleted(outputResources.relativeTo(outputFolder))));
         return outputResources;
@@ -159,28 +159,28 @@ public class PbfRegionCutter
     }
 
     @UmlExcludeMember
-    public List<Region> regionsForLocation(final Location location)
+    public List<Region> regionsForLocation(Location location)
     {
         // List of regions we're extracting that include the location
-        final List<Region> regions = new ArrayList<>();
+        List<Region> regions = new ArrayList<>();
 
         // Find any metropolitan area for the location and if we're extracting it, add it to the
         // list
-        final var metropolitanArea = MetropolitanArea.forLocation(location);
+        var metropolitanArea = MetropolitanArea.forLocation(location);
         if (metropolitanArea != null && regionsToExtract.contains(metropolitanArea))
         {
             regions.add(metropolitanArea);
         }
 
         // Find any county for the location and if we're extracting it, add it to the list
-        final var county = County.forLocation(location);
+        var county = County.forLocation(location);
         if (county != null && regionsToExtract.contains(county))
         {
             regions.add(county);
         }
 
         // Find any state for the location and if we're extracting it, add it to the list
-        final State state;
+        State state;
         if (metropolitanArea != null)
         {
             state = metropolitanArea.state();
@@ -199,7 +199,7 @@ public class PbfRegionCutter
         }
 
         // Find any country for the location and if we're extracting it, add it to the list
-        final var country = state != null ? state.country() : Country.forLocation(location);
+        var country = state != null ? state.country() : Country.forLocation(location);
         if (country != null && regionsToExtract.contains(country))
         {
             regions.add(country);
@@ -215,7 +215,7 @@ public class PbfRegionCutter
         return regionsToExtract;
     }
 
-    public void regionsToExtract(final RegionSet regionsToExtract)
+    public void regionsToExtract(RegionSet regionsToExtract)
     {
         this.regionsToExtract = regionsToExtract;
     }
@@ -235,8 +235,8 @@ public class PbfRegionCutter
     @UmlExcludeMember
     protected RegionIndexMap newRegionIndexMap()
     {
-        final var regionIndexMap = new RegionIndexMap();
-        for (final var region : regionsToExtract())
+        var regionIndexMap = new RegionIndexMap();
+        for (var region : regionsToExtract())
         {
             regionIndexMap.add(region);
         }
@@ -247,9 +247,9 @@ public class PbfRegionCutter
      * @return True if the data has {@link WayNode} locations available. This can speed up processing and reduce memory
      * consumption by not requiring that {@link Node} locations be kept in memory until {@link Way} processing occurs.
      */
-    private boolean hasWayNodeLocations(final PbfDataSource data)
+    private boolean hasWayNodeLocations(PbfDataSource data)
     {
-        final var metadata = data.metadata();
+        var metadata = data.metadata();
         return metadata != null && Booleans.isTrue(metadata.get(WayNode.METADATA_KEY_LOCATION_INCLUDED));
     }
 

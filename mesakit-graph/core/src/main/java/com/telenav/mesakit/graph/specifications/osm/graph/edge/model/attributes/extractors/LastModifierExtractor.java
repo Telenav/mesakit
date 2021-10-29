@@ -25,13 +25,13 @@ import org.openstreetmap.osmosis.core.domain.v0_6.OsmUser;
 
 public class LastModifierExtractor extends BaseExtractor<OsmUser, PbfWay>
 {
-    public LastModifierExtractor(final Listener listener)
+    public LastModifierExtractor(Listener listener)
     {
         super(listener);
     }
 
     @Override
-    public OsmUser onExtract(final PbfWay object)
+    public OsmUser onExtract(PbfWay object)
     {
         return object.user();
     }

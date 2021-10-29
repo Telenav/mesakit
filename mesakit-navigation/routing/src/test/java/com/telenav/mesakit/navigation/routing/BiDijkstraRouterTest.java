@@ -56,9 +56,9 @@ public class BiDijkstraRouterTest extends GraphUnitTest
     {
         for (var i = 0; i < 3; i++)
         {
-            final var start = osmDowntownSeattleTestEdge(6348968000003L);
-            final var end = osmDowntownSeattleTestEdge(6415868000005L);
-            final var weight = Weight.weight(i / 3.0);
+            var start = osmDowntownSeattleTestEdge(6348968000003L);
+            var end = osmDowntownSeattleTestEdge(6415868000005L);
+            var weight = Weight.weight(i / 3.0);
             weightedRoute(weight, start.to(), end.to());
         }
     }
@@ -68,8 +68,8 @@ public class BiDijkstraRouterTest extends GraphUnitTest
     {
         for (var i = 0; i < 3; i++)
         {
-            final var start = osmDowntownSeattleTestEdge(6348968000003L);
-            final var end = osmDowntownSeattleTestEdge(6415868000005L);
+            var start = osmDowntownSeattleTestEdge(6348968000003L);
+            var end = osmDowntownSeattleTestEdge(6415868000005L);
             fixedSpeedRoute(start.to(), end.to());
         }
     }
@@ -77,52 +77,52 @@ public class BiDijkstraRouterTest extends GraphUnitTest
     @Test
     public void testDowntownSeattleTravelTimeRouting()
     {
-        final var start = osmDowntownSeattleTestEdge(6348968000003L);
-        final var end = osmDowntownSeattleTestEdge(6415868000005L);
+        var start = osmDowntownSeattleTestEdge(6348968000003L);
+        var end = osmDowntownSeattleTestEdge(6415868000005L);
         fixedSpeedRoute(start.to(), end.to());
     }
 
     @Test
     public void testGreenLakeAStarRouting()
     {
-        final var start = osmGreenLakeSeattleEdge(6366507000001L);
-        final var end = osmGreenLakeSeattleEdge(4794181000017L);
-        final var weight = Weight.weight(99 / 100.0);
+        var start = osmGreenLakeSeattleEdge(6366507000001L);
+        var end = osmGreenLakeSeattleEdge(4794181000017L);
+        var weight = Weight.weight(99 / 100.0);
         weightedRoute(weight, start.to(), end.from());
     }
 
     @Test
     public void testGreenLakeTravelTimeRouting()
     {
-        final var start = osmGreenLakeSeattleEdge(6366507000001L);
-        final var end = osmGreenLakeSeattleEdge(4794181000017L);
+        var start = osmGreenLakeSeattleEdge(6366507000001L);
+        var end = osmGreenLakeSeattleEdge(4794181000017L);
         fixedSpeedRoute(start.to(), end.from());
     }
 
     @Test
     public void testOneEdgeRouting()
     {
-        final var edge = osmGreenLakeSeattleEdge(6366507000001L);
+        var edge = osmGreenLakeSeattleEdge(6366507000001L);
         ensure(edge.isTwoWay());
         ensureEqual(route(edge), fixedSpeedRoute(edge.from(), edge.to()));
         ensureEqual(route(edge.reversed()), fixedSpeedRoute(edge.to(), edge.from()));
     }
 
-    private Route fixedSpeedRoute(final Vertex start, final Vertex end)
+    private Route fixedSpeedRoute(Vertex start, Vertex end)
     {
         return route(start, end, new TravelTimeCostFunction(Speed.SIXTY_FIVE_MILES_PER_HOUR,
                 start.location(), end.location()));
     }
 
-    private Route route(final Vertex start, final Vertex end, final CostFunction costFunction)
+    private Route route(Vertex start, Vertex end, CostFunction costFunction)
     {
-        final RoutingRequest request = new BiDijkstraRoutingRequest(start, end).withDebugger(DEBUGGER);
-        final var routeResult = new BiDijkstraRouter(costFunction).findRoute(request);
+        RoutingRequest request = new BiDijkstraRoutingRequest(start, end).withDebugger(DEBUGGER);
+        var routeResult = new BiDijkstraRouter(costFunction).findRoute(request);
         DEBUG.trace("Found route ${debug}", routeResult);
         return routeResult.route();
     }
 
-    private void weightedRoute(final Weight weight, final Vertex start, final Vertex end)
+    private void weightedRoute(Weight weight, Vertex start, Vertex end)
     {
         route(start, end, new RemainingDistanceToEndCostFunction(start.location(), end.location())
                 .weightedSum(weight, new RoadTypeCostFunction()));

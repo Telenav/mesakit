@@ -113,7 +113,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     /** PBF node identifier -> node location map which holds this information until vertexes are created */
     private transient SplitLongToLongMap temporaryNodeIdentifierToLocation;
 
-    protected NodeStore(final Graph graph)
+    protected NodeStore(Graph graph)
     {
         super(graph);
     }
@@ -122,7 +122,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
      * Provides storage for full node information
      */
     @SuppressWarnings("ClassEscapesDefinedScope")
-    public void allPbfNodeDiskStores(final PbfAllNodeDiskStores stores)
+    public void allPbfNodeDiskStores(PbfAllNodeDiskStores stores)
     {
         allPbfNodeDiskStores = stores;
     }
@@ -130,7 +130,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     /**
      * @return True if this node store contains the given identifier
      */
-    public boolean contains(final MapNodeIdentifier identifier)
+    public boolean contains(MapNodeIdentifier identifier)
     {
         NODE_IDENTIFIER_TO_INDEX.load();
         return nodeIdentifierToIndex.containsKey(identifier.asLong());
@@ -148,8 +148,21 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
         return false;
     }
 
+    /**
+     * Allocate temporary map from node identifier -> location
+     */
     @Override
-    public long retrieveIdentifier(final int index)
+    public void onInitialize()
+    {
+        super.onInitialize();
+
+        temporaryNodeIdentifierToLocation = new SplitLongToLongMap("node.store.temporaryNodeIdentifierToLocation");
+        temporaryNodeIdentifierToLocation.initialSize(graph().metadata().nodeCount(ALLOW_ESTIMATE).asEstimate());
+        temporaryNodeIdentifierToLocation.initialize();
+    }
+
+    @Override
+    public long retrieveIdentifier(int index)
     {
         // With GraphNodes, the index is the identifier
         return index;
@@ -158,7 +171,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     /**
      * @return True if the given node is synthetic (not in the original source data)
      */
-    public final boolean retrieveIsNodeSynthetic(final GraphNode node)
+    public final boolean retrieveIsNodeSynthetic(GraphNode node)
     {
         if (nodeIdentifier == null)
         {
@@ -170,7 +183,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     /**
      * @return The location of the given vertex
      */
-    public final long retrieveLocationAsLong(final Vertex vertex)
+    public final long retrieveLocationAsLong(Vertex vertex)
     {
         // If the vertex is valid,
         if (vertex != null)
@@ -183,14 +196,14 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     /**
      * @return The location of the given vertex
      */
-    public final long retrieveLocationAsLong(final int vertexIndex)
+    public final long retrieveLocationAsLong(int vertexIndex)
     {
         // If the vertex is valid,
         if (vertexIndex > 0)
         {
             // get its location
             NODE_LOCATION.load();
-            final var location = nodeLocation.safeGet(vertexIndex);
+            var location = nodeLocation.safeGet(vertexIndex);
 
             // and if that's valid,
             if (!nodeLocation.isNull(location))
@@ -210,7 +223,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     /**
      * @return The node identifier for the given node
      */
-    public MapNodeIdentifier retrieveNodeIdentifier(final GraphNode node)
+    public MapNodeIdentifier retrieveNodeIdentifier(GraphNode node)
     {
         return NODE_IDENTIFIER.retrieveObject(node, PbfNodeIdentifier::new);
     }
@@ -219,21 +232,21 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
      * {@inheritDoc}
      */
     @Override
-    public void storeAttributes(final GraphElement element)
+    public void storeAttributes(GraphElement element)
     {
         // Store base attributes
         super.storeAttributes(element);
 
         // and store the node identifier
-        final var identifier = element.mapIdentifier();
+        var identifier = element.mapIdentifier();
         ensure(identifier instanceof MapNodeIdentifier);
         NODE_IDENTIFIER.storeObject(element, identifier);
     }
 
     @Override
-    public Validator validator(final ValidationType validation)
+    public Validator validator(ValidationType validation)
     {
-        final var outer = this;
+        var outer = this;
         return new StoreValidator()
         {
             @Override
@@ -252,7 +265,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
                 for (var index = 1; index < size() && !isInvalid(); index++)
                 {
                     // and check the node identifier
-                    final var nodeIdentifier = outer.nodeIdentifier.safeGet(index);
+                    var nodeIdentifier = outer.nodeIdentifier.safeGet(index);
                     problemIf(nodeIdentifier <= 0, "nodeIdentifier is missing for index $", index);
 
                     // and the node identifier <-> index mapping
@@ -269,7 +282,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
      *
      * @see NodeVisitor
      */
-    public void visitElementNodes(final NodeVisitor visitor)
+    public void visitElementNodes(NodeVisitor visitor)
     {
         // Traverse the node identifier --> index entries,
         if (nodeIdentifierToIndex != null)
@@ -277,7 +290,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
             nodeIdentifierToIndex.entries((nodeIdentifier, index) ->
             {
                 // get the location for the node identifier,
-                final var locationAsLong = temporaryNodeIdentifierToLocation.get(nodeIdentifier);
+                var locationAsLong = temporaryNodeIdentifierToLocation.get(nodeIdentifier);
                 if (!temporaryNodeIdentifierToLocation.isNull(locationAsLong))
                 {
                     // and visit the node, passing the index, node identifier and location
@@ -298,7 +311,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     /**
      * Adds the given location to the {@link PbfAllNodeIndexStore}, when full node information is available
      */
-    protected int allNodeIndex(final Location location)
+    protected int allNodeIndex(Location location)
     {
         return allPbfNodeIndexStore.index(location);
     }
@@ -320,7 +333,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
      * @return The index for the given node identifier, or a new index if none exists. For all {@link GraphNode}
      * elements, the index will serve as the identifier, since node elements are synthetic.
      */
-    protected int maybeCreateNodeIdentifierToIndex(final long nodeIdentifier)
+    protected int maybeCreateNodeIdentifierToIndex(long nodeIdentifier)
     {
         NODE_IDENTIFIER_TO_INDEX.allocate();
 
@@ -345,7 +358,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
      * @return The index for the given node identifier, or a new index if none exists. For all {@link GraphNode}
      * elements, the index will serve as the identifier, since node elements are synthetic.
      */
-    protected int nodeIdentifierToIndex(final long nodeIdentifier)
+    protected int nodeIdentifierToIndex(long nodeIdentifier)
     {
         // Allocate data structures, if need be,
         if (!NODE_IDENTIFIER_TO_INDEX.load())
@@ -362,7 +375,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
      * during onCommit() of VertexStore, are stored here.
      */
     @Override
-    protected void onAdd(final T element)
+    protected void onAdd(T element)
     {
         super.onAdd(element);
 
@@ -371,9 +384,9 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
 
         // Save the node identifier and location
         NODE_LOCATION.allocate();
-        final var index = element.index();
+        var index = element.index();
         storeNodeIdentifier(index, element.mapIdentifier().asLong());
-        final var location = element.location().asLong();
+        var location = element.location().asLong();
         assert location != 0 && DM7.isValidLocation(location);
         nodeLocation.set(index, location);
         assert nodeLocation.get(index) == location;
@@ -384,7 +397,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
      * relevant node stores to the given {@link GraphArchive}.
      */
     @Override
-    protected void onAttached(final GraphArchive archive)
+    protected void onAttached(GraphArchive archive)
     {
         super.onAttached(archive);
 
@@ -400,23 +413,10 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     }
 
     /**
-     * Allocate temporary map from node identifier -> location
-     */
-    @Override
-    public void onInitialize()
-    {
-        super.onInitialize();
-
-        temporaryNodeIdentifierToLocation = new SplitLongToLongMap("node.store.temporaryNodeIdentifierToLocation");
-        temporaryNodeIdentifierToLocation.initialSize(graph().metadata().nodeCount(ALLOW_ESTIMATE).asEstimate());
-        temporaryNodeIdentifierToLocation.initialize();
-    }
-
-    /**
      * If full node information is supported, saves node information into the given {@link GraphArchive}.
      */
     @Override
-    protected void onSaving(final GraphArchive archive)
+    protected void onSaving(GraphArchive archive)
     {
         super.onSaving(archive);
 
@@ -448,22 +448,22 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
      * @param location The location
      * @return The index for the node identifier, for the sake of efficiency since we retrieve it
      */
-    protected int storeNodeLocation(final long nodeIdentifier, final Location location)
+    protected int storeNodeLocation(long nodeIdentifier, Location location)
     {
         assert location != null;
 
         // Store node identifier -> location mapping,
-        final var locationAsLong = location.asLong();
+        var locationAsLong = location.asLong();
         assert locationAsLong != 0 : "The location of " + nodeIdentifier + " is " + locationAsLong;
         temporaryNodeIdentifierToLocation.put(nodeIdentifier, locationAsLong);
 
         // get or create the index for the node identifier,
-        final var index = maybeCreateNodeIdentifierToIndex(nodeIdentifier);
+        var index = maybeCreateNodeIdentifierToIndex(nodeIdentifier);
         storeNodeLocation(index, locationAsLong);
         return index;
     }
 
-    protected void storeNodeLocation(final int index, final long locationAsLong)
+    protected void storeNodeLocation(int index, long locationAsLong)
     {
         assert index > 0;
         assert locationAsLong != 0 && DM7.isValidLocation(locationAsLong);
@@ -476,7 +476,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     /**
      * Stores the given node identifier at the given index
      */
-    private void storeNodeIdentifier(final int index, final long nodeIdentifier)
+    private void storeNodeIdentifier(int index, long nodeIdentifier)
     {
         NODE_IDENTIFIER.allocate();
         this.nodeIdentifier.set(index, nodeIdentifier);

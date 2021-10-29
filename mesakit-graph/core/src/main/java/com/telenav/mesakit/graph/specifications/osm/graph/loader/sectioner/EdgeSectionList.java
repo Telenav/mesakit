@@ -40,13 +40,13 @@ public class EdgeSectionList extends ArrayList<EdgeSection>
     public List<Edge> edges()
     {
         // Edges to return
-        final List<Edge> edges = new ArrayList<>();
+        List<Edge> edges = new ArrayList<>();
 
         // Get the parent edge identifier
         var identifier = get(0).edge().identifier();
 
         // Go through each section in this list
-        for (final var section : this)
+        for (var section : this)
         {
             // add an edge for the section
             edges.add(section.edge(identifier));

@@ -31,7 +31,7 @@ public class OneOrMore extends Node implements BooleanExpression
     /** Size of stack before evaluation */
     private int stackIndex;
 
-    public OneOrMore(final BooleanExpression expression)
+    public OneOrMore(BooleanExpression expression)
     {
         this.expression = expression;
     }
@@ -40,7 +40,7 @@ public class OneOrMore extends Node implements BooleanExpression
     public boolean canEvaluateAgain()
     {
         // Get the edge on top of the stack to evaluate
-        final var top = stack().top();
+        var top = stack().top();
 
         // and if there is no iterator or the top edge has changed
         if (iterator == null || !top.equals(this.top))
@@ -56,7 +56,7 @@ public class OneOrMore extends Node implements BooleanExpression
         }
 
         // Finally if the iterator
-        final var hasNext = iterator.hasNext();
+        var hasNext = iterator.hasNext();
 
         // does not have a next element
         if (!hasNext)
@@ -78,7 +78,7 @@ public class OneOrMore extends Node implements BooleanExpression
             stack().unwind(stackIndex);
 
             // push the next match onto the stack
-            final var next = iterator.next();
+            var next = iterator.next();
             trace("Next CLOSURE element is $", next);
             if (stack().push(next) == PUSHED)
             {
@@ -99,22 +99,22 @@ public class OneOrMore extends Node implements BooleanExpression
     }
 
     @Override
-    public void visit(final Visitor visitor)
+    public void visit(Visitor visitor)
     {
         super.visit(visitor);
         expression.visit(visitor);
     }
 
-    private void findMatches(final List<Route> routes, final Route at)
+    private void findMatches(List<Route> routes, Route at)
     {
         // If we haven't searched far enough,
         if (at.size() < program().maximumClosureLength().asInt())
         {
             // save the size of the stack
-            final int size = stack().size();
+            int size = stack().size();
 
             // then go through the edges that can extend the route we are at
-            for (final Edge out : at.last().outEdgesWithoutReversed())
+            for (Edge out : at.last().outEdgesWithoutReversed())
             {
                 // unwind the stack and push the next edge
                 if (stack().push(out) == PUSHED)
@@ -123,7 +123,7 @@ public class OneOrMore extends Node implements BooleanExpression
                     if (expression.evaluate())
                     {
                         // append the out edge to form a new route
-                        final var newRoute = at.append(out);
+                        var newRoute = at.append(out);
 
                         // and the new route to the set of matches
                         routes.add(newRoute);
@@ -137,10 +137,10 @@ public class OneOrMore extends Node implements BooleanExpression
         }
     }
 
-    private Iterator<Route> iterator(final Edge start)
+    private Iterator<Route> iterator(Edge start)
     {
         // Find all the matches from the start edge
-        final var matches = new ArrayList<Route>();
+        var matches = new ArrayList<Route>();
 
         // if it matches the expression
         if (expression.evaluate())

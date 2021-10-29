@@ -55,13 +55,13 @@ public class SwingRoutingDebugger implements RoutingDebugger
 
     private ConsoleRoutingDebugger console;
 
-    public SwingRoutingDebugger(final String title)
+    public SwingRoutingDebugger(String title)
     {
         this.title = title;
     }
 
     @Override
-    public void onEnd(final RoutingRequest request, final RoutingResponse response)
+    public void onEnd(RoutingRequest request, RoutingResponse response)
     {
         if (console != null)
         {
@@ -78,9 +78,9 @@ public class SwingRoutingDebugger implements RoutingDebugger
     }
 
     @Override
-    public void onRelaxed(final Route route, final Cost cost)
+    public void onRelaxed(Route route, Cost cost)
     {
-        for (final var edge : route)
+        for (var edge : route)
         {
             if (!explored.contains(edge))
             {
@@ -101,7 +101,7 @@ public class SwingRoutingDebugger implements RoutingDebugger
     }
 
     @Override
-    public void onSettled(final Vertex vertex, final Cost cost)
+    public void onSettled(Vertex vertex, Cost cost)
     {
         if (console != null)
         {
@@ -110,7 +110,7 @@ public class SwingRoutingDebugger implements RoutingDebugger
     }
 
     @Override
-    public void onStart(final RoutingRequest request)
+    public void onStart(RoutingRequest request)
     {
         if (console != null)
         {

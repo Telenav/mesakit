@@ -32,7 +32,7 @@ public class StateLoader extends RegionalGraphLoader
 
     private final State state;
 
-    public StateLoader(final Graph source, final State state)
+    public StateLoader(Graph source, State state)
     {
         this.source = source;
         this.state = state;
@@ -41,24 +41,24 @@ public class StateLoader extends RegionalGraphLoader
     @Override
     protected EdgeSequence forwardEdges()
     {
-        final var bounds = this.state.bounds();
+        var bounds = state.bounds();
         if (bounds == null)
         {
-            return fail("Bounds for $ is missing", this.state);
+            return fail("Bounds for $ is missing", state);
         }
-        return this.source.edgesIntersecting(this.state.bounds(),
-                edge -> !edge.isReverse() && StateLoader.this.state.equals(edge.state()));
+        return source.edgesIntersecting(state.bounds(),
+                edge -> !edge.isReverse() && state.equals(edge.state()));
     }
 
     @Override
     protected Iterable<Place> places()
     {
-        return this.source.placesInside(this.state);
+        return source.placesInside(state);
     }
 
     @Override
     protected Graph sourceGraph()
     {
-        return this.source;
+        return source;
     }
 }

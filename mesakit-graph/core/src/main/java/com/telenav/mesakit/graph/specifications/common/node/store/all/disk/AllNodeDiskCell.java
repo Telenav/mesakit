@@ -28,24 +28,24 @@ public class AllNodeDiskCell
 
     final int longitude;
 
-    public AllNodeDiskCell(final Located located)
+    public AllNodeDiskCell(Located located)
     {
         this(located.location());
     }
 
-    public AllNodeDiskCell(final Location location)
+    public AllNodeDiskCell(Location location)
     {
-        this.latitude = (int) location.latitude().asDegrees();
-        this.longitude = (int) location.longitude().asDegrees();
+        latitude = (int) location.latitude().asDegrees();
+        longitude = (int) location.longitude().asDegrees();
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof AllNodeDiskCell)
         {
-            final var that = (AllNodeDiskCell) object;
-            return this.latitude == that.latitude && this.longitude == that.longitude;
+            var that = (AllNodeDiskCell) object;
+            return latitude == that.latitude && longitude == that.longitude;
         }
         return false;
     }
@@ -53,11 +53,11 @@ public class AllNodeDiskCell
     @Override
     public int hashCode()
     {
-        return Hash.many(this.latitude, this.longitude);
+        return Hash.many(latitude, longitude);
     }
 
-    public String toFileString(final String base)
+    public String toFileString(String base)
     {
-        return base + "." + this.latitude + "." + this.longitude;
+        return base + "." + latitude + "." + longitude;
     }
 }

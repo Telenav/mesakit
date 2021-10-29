@@ -24,9 +24,9 @@ import java.util.List;
 
 public class SymbolList implements Iterable<Symbol>
 {
-    public static SymbolList of(final String input)
+    public static SymbolList of(String input)
     {
-        final var symbols = new SymbolList();
+        var symbols = new SymbolList();
 
         var inWord = false;
         var inWhitespace = false;
@@ -35,15 +35,15 @@ public class SymbolList implements Iterable<Symbol>
 
         for (var i = 0; i < input.length(); i++)
         {
-            final var c = input.charAt(i);
+            var c = input.charAt(i);
 
             if (c == '.' || c == '?')
             {
                 continue;
             }
 
-            final var isLetter = isLetter(c);
-            final var isWhitespace = Character.isWhitespace(c);
+            var isLetter = isLetter(c);
+            var isWhitespace = Character.isWhitespace(c);
 
             if (inWhitespace && !isWhitespace)
             {
@@ -90,7 +90,7 @@ public class SymbolList implements Iterable<Symbol>
         this(new ArrayList<>());
     }
 
-    public SymbolList(final List<Symbol> symbols)
+    public SymbolList(List<Symbol> symbols)
     {
         this.symbols = symbols;
     }
@@ -105,7 +105,7 @@ public class SymbolList implements Iterable<Symbol>
         return symbols.isEmpty() ? null : symbols.get(0);
     }
 
-    public Symbol get(final int index)
+    public Symbol get(int index)
     {
         return index < size() ? symbols.get(index) : null;
     }
@@ -126,12 +126,12 @@ public class SymbolList implements Iterable<Symbol>
         return symbols.size();
     }
 
-    public SymbolList subList(final int from)
+    public SymbolList subList(int from)
     {
         return new SymbolList(symbols.subList(from, symbols.size()));
     }
 
-    private static boolean isLetter(final char character)
+    private static boolean isLetter(char character)
     {
         // Characters that are considered to be letters so they are part of a word (like "can't
         // drive")
@@ -142,7 +142,7 @@ public class SymbolList implements Iterable<Symbol>
         return Character.isLetter(character);
     }
 
-    private void add(final Symbol symbol)
+    private void add(Symbol symbol)
     {
         symbols.add(symbol);
     }

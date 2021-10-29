@@ -167,8 +167,8 @@ public class WorldGrid
     /** The index for this graph */
     private WorldGraphIndex index;
 
-    public WorldGrid(final WorldGraph worldGraph, final WorldGraph.AccessMode mode,
-                     final WorldGraphRepositoryFolder folder)
+    public WorldGrid(WorldGraph worldGraph, WorldGraph.AccessMode mode,
+                     WorldGraphRepositoryFolder folder)
     {
         assert mode != null;
         assert worldGraph != null;
@@ -185,8 +185,8 @@ public class WorldGrid
 
     public Iterable<WorldCell> cells()
     {
-        final List<WorldCell> cells = new ArrayList<>();
-        for (final var gridCell : grid.cells())
+        List<WorldCell> cells = new ArrayList<>();
+        for (var gridCell : grid.cells())
         {
             cells.add(worldCell(gridCell));
         }
@@ -196,7 +196,7 @@ public class WorldGrid
     /**
      * @return List of world cells in the given grid folder with the given data
      */
-    public WorldCellList cells(final WorldGraphRepositoryFolder repositoryFolder, final WorldCell.DataType data)
+    public WorldCellList cells(WorldGraphRepositoryFolder repositoryFolder, WorldCell.DataType data)
     {
         return cells(repositoryFolder, data, Rectangle.MAXIMUM);
     }
@@ -204,13 +204,13 @@ public class WorldGrid
     /**
      * @return List of world cells intersecting the given bounds in the given grid folder with the given data
      */
-    public WorldCellList cells(final WorldGraphRepositoryFolder repositoryFolder, final WorldCell.DataType data,
-                               final Rectangle bounds)
+    public WorldCellList cells(WorldGraphRepositoryFolder repositoryFolder, WorldCell.DataType data,
+                               Rectangle bounds)
     {
-        final var cells = new WorldCellList();
-        for (final var gridCell : grid.cellsIntersecting(bounds))
+        var cells = new WorldCellList();
+        for (var gridCell : grid.cellsIntersecting(bounds))
         {
-            final var worldCell = worldCell(gridCell);
+            var worldCell = worldCell(gridCell);
             if (worldCell.hasData(repositoryFolder, data))
             {
                 cells.add(worldCell);
@@ -226,17 +226,17 @@ public class WorldGrid
      * @param repositoryFolder The folder to extract to
      * @return The number of cells for which graph data was successfully extracted
      */
-    public Count extract(final WorldGraphRepositoryFolder repositoryFolder, final Source<PbfDataSource> data)
+    public Count extract(WorldGraphRepositoryFolder repositoryFolder, Source<PbfDataSource> data)
     {
         // Start time
-        final var start = Time.now();
+        var start = Time.now();
 
         // Clear our data folder before writing to it
         LOGGER.information(AsciiArt.textBox("Extracting", "input: $\noutput: $", data.get().resource(), repositoryFolder));
         repositoryFolder.clearAll();
 
         // Extract regions from PBF file
-        final var extracted = extractCells(data, repositoryFolder);
+        var extracted = extractCells(data, repositoryFolder);
         if (extracted != null)
         {
             refreshCellData(repositoryFolder);
@@ -262,7 +262,7 @@ public class WorldGrid
     /**
      * @return True if the cell is included in the current set of regions
      */
-    public boolean included(final WorldCell worldCell)
+    public boolean included(WorldCell worldCell)
     {
         return included().contains(worldCell);
     }
@@ -311,7 +311,7 @@ public class WorldGrid
     /**
      * @return The cells near the given location having graphs
      */
-    public WorldCellList neighbors(final Location location)
+    public WorldCellList neighbors(Location location)
     {
         return cellsNear(repositoryFolder(), location);
     }
@@ -321,10 +321,10 @@ public class WorldGrid
      */
     public void outputCellsAsGeoJson()
     {
-        final var output = new GeoJsonDocument();
-        for (final var worldCell : included())
+        var output = new GeoJsonDocument();
+        for (var worldCell : included())
         {
-            final var feature = new GeoJsonFeature(worldCell.toString());
+            var feature = new GeoJsonFeature(worldCell.toString());
             feature.title(worldCell.identity().mesakit().code());
             feature.add(new GeoJsonPolyline(worldCell.bounds().asPolyline()));
             output.add(feature);
@@ -340,12 +340,12 @@ public class WorldGrid
         return repositoryFolder;
     }
 
-    public void saveIndex(final WorldGraphRepositoryFolder repositoryFolder, final Metadata metadata)
+    public void saveIndex(WorldGraphRepositoryFolder repositoryFolder, Metadata metadata)
     {
         index().save(repositoryFolder.indexFile(), metadata);
     }
 
-    public WorldCell worldCell(final WorldCell.WorldCellIdentifier identifier)
+    public WorldCell worldCell(WorldCell.WorldCellIdentifier identifier)
     {
         return worldCell(identifier.gridCell());
     }
@@ -353,10 +353,10 @@ public class WorldGrid
     /**
      * @return The world cell for the given grid cell
      */
-    public WorldCell worldCell(final GridCell gridCell)
+    public WorldCell worldCell(GridCell gridCell)
     {
-        final var latitudeIndex = gridCell.identifier().latitudeIndex();
-        final var longitudeIndex = gridCell.identifier().longitudeIndex();
+        var latitudeIndex = gridCell.identifier().latitudeIndex();
+        var longitudeIndex = gridCell.identifier().longitudeIndex();
         var worldCell = cells[latitudeIndex][longitudeIndex];
         if (worldCell == null)
         {
@@ -366,7 +366,7 @@ public class WorldGrid
         return worldCell;
     }
 
-    public WorldCell worldCell(final int identifier)
+    public WorldCell worldCell(int identifier)
     {
         return worldCell(grid.cellForIdentifier(new GridCellIdentifier(grid, identifier)));
     }
@@ -374,22 +374,22 @@ public class WorldGrid
     /**
      * @return The world cell for the given location
      */
-    public WorldCell worldCell(final Location location)
+    public WorldCell worldCell(Location location)
     {
         assert location != null;
         return worldCell(grid.cell(location));
     }
 
-    public WorldCell worldCell(final String cellName)
+    public WorldCell worldCell(String cellName)
     {
         // Break "cell-12-34" into words "cell", "12", "34"
-        final var words = cellName.split("-");
+        var words = cellName.split("-");
 
         // If a valid cell name was specified
         if ("cell".equalsIgnoreCase(words[0]) && Strings.isNaturalNumber(words[1]) && Strings.isNaturalNumber(words[2]))
         {
             // look the cell up
-            final var gridCell = grid.cellForIdentifier(
+            var gridCell = grid.cellForIdentifier(
                     new GridCellIdentifier(grid, Integer.parseInt(words[1]), Integer.parseInt(words[2])));
 
             // and if we found it
@@ -419,7 +419,7 @@ public class WorldGrid
     /**
      * @return List of world cells near the given location in the given grid folder with the given data
      */
-    private WorldCellList cellsNear(final WorldGraphRepositoryFolder repositoryFolder, final Location location)
+    private WorldCellList cellsNear(WorldGraphRepositoryFolder repositoryFolder, Location location)
     {
         return cells(repositoryFolder, WorldCell.DataType.GRAPH, location.bounds().expanded(Distance.meters(1)));
     }
@@ -435,8 +435,8 @@ public class WorldGrid
         grid = new Grid(configuration().cellSize(), Latitude.MAXIMUM);
 
         // Create 2D array of cells
-        final var latitudeCells = grid.latitudeCellCount().asInt();
-        final var longitudeCells = grid.longitudeCellCount().asInt();
+        var latitudeCells = grid.latitudeCellCount().asInt();
+        var longitudeCells = grid.longitudeCellCount().asInt();
         cells = new WorldCell[latitudeCells][longitudeCells];
 
         // Get set of cells that are geographically included
@@ -446,14 +446,14 @@ public class WorldGrid
     /**
      * @return The PBF files extracted from the given pbf file into the given world grid folder
      */
-    private ResourceList extractCells(final Source<PbfDataSource> data,
-                                      final WorldGraphRepositoryFolder repositoryFolder)
+    private ResourceList extractCells(Source<PbfDataSource> data,
+                                      WorldGraphRepositoryFolder repositoryFolder)
     {
         // Extract grid cells into the grid folder
-        final var cutter = new PbfRegionCutter(data, repositoryFolder, new OsmNavigableWayFilter())
+        var cutter = new PbfRegionCutter(data, repositoryFolder, new OsmNavigableWayFilter())
         {
             @Override
-            public List<Region> regionsForLocation(final Location location)
+            public List<Region> regionsForLocation(Location location)
             {
                 // Since grid cells do not overlap, there is only one cell region for the given location
                 return Collections.singletonList(worldCell(location));
@@ -471,20 +471,20 @@ public class WorldGrid
     private ObjectSet<WorldCell> findIncludedCells()
     {
         // Go through cells in included regions
-        final var included = new ObjectSet<WorldCell>(Maximum._10_000);
-        for (final var region : includedRegions())
+        var included = new ObjectSet<WorldCell>(Maximum._10_000);
+        for (var region : includedRegions())
         {
-            final var cached = regionCache().file(region.fileName()
+            var cached = regionCache().file(region.fileName()
                     .withSuffix("-" + Math.round(grid.approximateCellSize().asDegrees()) + "-degree-grid")
                     .withExtension(Extension.parse(".cells")));
             if (cached.exists())
             {
-                final var cellNames = cached.reader().string();
+                var cellNames = cached.reader().string();
                 if (!Strings.isEmpty(cellNames))
                 {
-                    for (final var cellName : cellNames.split(","))
+                    for (var cellName : cellNames.split(","))
                     {
-                        final var worldCell = worldCell(cellName);
+                        var worldCell = worldCell(cellName);
                         if (worldCell != null)
                         {
                             included.add(worldCell);
@@ -499,12 +499,12 @@ public class WorldGrid
             else
             {
                 // and for each polygon of the region
-                final List<WorldCell> cells = new ArrayList<>();
-                @SuppressWarnings("unchecked") final Collection<Polygon> polygons = region.borders();
-                for (final var polygon : polygons)
+                List<WorldCell> cells = new ArrayList<>();
+                @SuppressWarnings("unchecked") Collection<Polygon> polygons = region.borders();
+                for (var polygon : polygons)
                 {
                     // find all the cells that might intersect with it
-                    for (final var gridCell : grid.cellsIntersecting(polygon.bounds()))
+                    for (var gridCell : grid.cellsIntersecting(polygon.bounds()))
                     {
                         // and if the cell does intersect
                         if (polygon.intersectsOrContains(gridCell.bounds().asPolyline())
@@ -531,7 +531,7 @@ public class WorldGrid
      */
     private RegionSet includedRegions()
     {
-        final var regions = new RegionSet();
+        var regions = new RegionSet();
         regions.addAll(Continent.NORTH_AMERICA.children());
         regions.addAll(Continent.EUROPE.children());
         regions.addAll(Continent.SOUTH_AMERICA.children());
@@ -541,7 +541,7 @@ public class WorldGrid
         return regions;
     }
 
-    private void initialize(final WorldGraph.AccessMode mode, final WorldGraphRepositoryFolder folder)
+    private void initialize(WorldGraph.AccessMode mode, WorldGraphRepositoryFolder folder)
     {
         // Save the grid mode
         this.mode = mode;
@@ -587,22 +587,22 @@ public class WorldGrid
     /**
      * @param repositoryFolder The repository folder for which cell data should be refreshed from the filesystem
      */
-    private void refreshCellData(final WorldGraphRepositoryFolder repositoryFolder)
+    private void refreshCellData(WorldGraphRepositoryFolder repositoryFolder)
     {
         // Update status of PBF files
-        final var pbfs = repositoryFolder.files(Extension.OSM_PBF.fileMatcher()).asSet();
-        for (final var worldCell : included)
+        var pbfs = repositoryFolder.files(Extension.OSM_PBF.fileMatcher()).asSet();
+        for (var worldCell : included)
         {
             worldCell.hasPbf(repositoryFolder, pbfs.contains(worldCell.pbfFile(repositoryFolder)));
         }
 
         // Update status and size of graph files
-        final var graphs = repositoryFolder.files(Extension.GRAPH.fileMatcher()).asSet();
-        for (final var worldCell : included)
+        var graphs = repositoryFolder.files(Extension.GRAPH.fileMatcher()).asSet();
+        for (var worldCell : included)
         {
-            final var graphFile = worldCell.cellGraphFile(repositoryFolder);
+            var graphFile = worldCell.cellGraphFile(repositoryFolder);
             worldCell.hasGraph(repositoryFolder, graphs.contains(graphFile));
-            for (final var file : graphs)
+            for (var file : graphs)
             {
                 if (file.equals(graphFile))
                 {
@@ -617,10 +617,10 @@ public class WorldGrid
         return GraphProject.get().graphFolder().folder("world-graph/regions").mkdirs();
     }
 
-    private String toString(final List<WorldCell> cells)
+    private String toString(List<WorldCell> cells)
     {
-        final var builder = new StringBuilder();
-        for (final var worldCell : cells)
+        var builder = new StringBuilder();
+        for (var worldCell : cells)
         {
             if (builder.length() > 0)
             {

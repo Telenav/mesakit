@@ -46,7 +46,7 @@ public class GraphNodeIndex extends GraphNode
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public GraphNodeIndex(final int index)
+    public GraphNodeIndex(int index)
     {
         this.index = index;
     }

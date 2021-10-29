@@ -13,7 +13,7 @@ public class Not extends Node implements BooleanExpression
 {
     private final BooleanExpression expression;
 
-    public Not(final BooleanExpression expression)
+    public Not(BooleanExpression expression)
     {
         this.expression = expression;
     }
@@ -29,8 +29,8 @@ public class Not extends Node implements BooleanExpression
     {
         do
         {
-            final int size = stack().size();
-            final var result = !expression.evaluate();
+            int size = stack().size();
+            var result = !expression.evaluate();
             trace("NOT expression $ is $", expression.code(), result);
             if (result)
             {
@@ -49,7 +49,7 @@ public class Not extends Node implements BooleanExpression
     }
 
     @Override
-    public void visit(final Visitor visitor)
+    public void visit(Visitor visitor)
     {
         super.visit(visitor);
         expression.visit(visitor);

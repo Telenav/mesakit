@@ -53,7 +53,7 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNot
  */
 public class CommonGraph extends Graph
 {
-    public CommonGraph(final Metadata metadata)
+    public CommonGraph(Metadata metadata)
     {
         super(metadata);
     }
@@ -62,8 +62,8 @@ public class CommonGraph extends Graph
      * @return The edges whose road shape intersects the given bounding rectangle which also match the given matcher
      */
     @Override
-    public EdgeSequence edgesIntersecting(final Rectangle bounds, final Matcher<Edge> matcher,
-                                          final EdgeSequence.Type type)
+    public EdgeSequence edgesIntersecting(Rectangle bounds, Matcher<Edge> matcher,
+                                          EdgeSequence.Type type)
     {
         ensureNotNull(bounds);
 
@@ -75,9 +75,9 @@ public class CommonGraph extends Graph
             }
             else
             {
-                final var index = edgeStore().spatialIndex();
+                var index = edgeStore().spatialIndex();
                 ensureNotNull(index);
-                final var sequence = new EdgeSequence(index.intersecting(bounds, matcher));
+                var sequence = new EdgeSequence(index.intersecting(bounds, matcher));
                 return type == EdgeSequence.Type.FORWARD_EDGES ? sequence : sequence.asDirectional();
             }
         }
@@ -91,14 +91,14 @@ public class CommonGraph extends Graph
      * {@inheritDoc}
      */
     @Override
-    public void load(final GraphArchive archive)
+    public void load(GraphArchive archive)
     {
         super.load(archive);
         graphStore().load(archive);
     }
 
     @Override
-    public Graph loadAllExcept(final AttributeSet except)
+    public Graph loadAllExcept(AttributeSet except)
     {
         graphStore().loadAllExcept(except);
         return this;
@@ -110,22 +110,22 @@ public class CommonGraph extends Graph
      * @param side The resource to load
      */
     @Override
-    public final void loadFreeFlow(final Resource side)
+    public final void loadFreeFlow(Resource side)
     {
-        final var speedConverter = new Speed.KilometersPerHourConverter(this);
-        for (final var line : side.reader().lines())
+        var speedConverter = new Speed.KilometersPerHourConverter(this);
+        for (var line : side.reader().lines())
         {
-            final var columns = line.split(";");
+            var columns = line.split(";");
             if (columns.length < 2)
             {
                 warning("Lines in " + side + " must contain two or more columns separated by ';'");
             }
             Edge edge = null;
-            final String column = columns[1];
+            String column = columns[1];
             if (column.contains(":"))
             {
-                final var edgeIdentifierConverter = new MapEdgeIdentifier.Converter(this);
-                final var identifier = edgeIdentifierConverter.convert(column);
+                var edgeIdentifierConverter = new MapEdgeIdentifier.Converter(this);
+                var identifier = edgeIdentifierConverter.convert(column);
                 if (identifier != null)
                 {
                     edge = edgeForIdentifier(identifier);
@@ -133,8 +133,8 @@ public class CommonGraph extends Graph
             }
             else
             {
-                final var edgeIdentifierConverter = new EdgeIdentifier.Converter(this);
-                final var identifier = edgeIdentifierConverter.convert(column);
+                var edgeIdentifierConverter = new EdgeIdentifier.Converter(this);
+                var identifier = edgeIdentifierConverter.convert(column);
                 if (identifier != null && contains(identifier))
                 {
                     edge = edgeForIdentifier(identifier);
@@ -142,7 +142,7 @@ public class CommonGraph extends Graph
             }
             if (edge != null)
             {
-                final var speed = speedConverter.convert(columns[2]);
+                var speed = speedConverter.convert(columns[2]);
                 if (speed != null)
                 {
                     edgeStore().storeFreeFlow(edge, speed);
@@ -157,17 +157,17 @@ public class CommonGraph extends Graph
      * @param side The resource to load
      */
     @Override
-    public final void loadTurnRestrictions(final Resource side)
+    public final void loadTurnRestrictions(Resource side)
     {
-        final var routeConverter = new Route.MapIdentifierConverter(this, new Separators(","), this);
-        for (final var line : side.reader().lines())
+        var routeConverter = new Route.MapIdentifierConverter(this, new Separators(","), this);
+        for (var line : side.reader().lines())
         {
-            final var columns = line.split(";");
+            var columns = line.split(";");
             if (columns.length < 4)
             {
                 warning("Lines in " + side + " must contain four or more columns separated by ';'");
             }
-            final var restriction = routeConverter.convert(columns[3]);
+            var restriction = routeConverter.convert(columns[3]);
             if (restriction != null)
             {
                 edgeStore().storeTurnRestriction(restriction);
@@ -176,7 +176,7 @@ public class CommonGraph extends Graph
     }
 
     @Override
-    public Iterable<Place> placesInside(final Rectangle bounds)
+    public Iterable<Place> placesInside(Rectangle bounds)
     {
         ensureNotNull(bounds);
         return Iterables.iterable(() -> new Next<>()
@@ -205,15 +205,15 @@ public class CommonGraph extends Graph
      * {@inheritDoc}
      */
     @Override
-    public void save(final GraphArchive archive)
+    public void save(GraphArchive archive)
     {
         // Get the file the archive is targeting
-        final var file = archive.file();
+        var file = archive.file();
 
         // then save to that file with a ".tmp" extension"
-        final var temporaryFile = file.withExtension(Extension.TMP);
+        var temporaryFile = file.withExtension(Extension.TMP);
         temporaryFile.delete();
-        final var temporary = new GraphArchive(this, temporaryFile, archive.mode(), archive.reporter());
+        var temporary = new GraphArchive(this, temporaryFile, archive.mode(), archive.reporter());
         super.save(temporary);
         graphStore().save(temporary);
         temporary.close();
@@ -232,13 +232,13 @@ public class CommonGraph extends Graph
     }
 
     @Override
-    public VertexSequence vertexesInside(final Rectangle bounds)
+    public VertexSequence vertexesInside(Rectangle bounds)
     {
         return vertexesInside(bounds, new All<>());
     }
 
     @Override
-    public VertexSequence vertexesInside(final Rectangle bounds, final Matcher<Vertex> matcher)
+    public VertexSequence vertexesInside(Rectangle bounds, Matcher<Vertex> matcher)
     {
         return vertexStore().vertexesInside(bounds, matcher);
     }

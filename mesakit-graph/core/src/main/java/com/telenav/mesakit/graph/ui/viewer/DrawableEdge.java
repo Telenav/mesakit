@@ -26,12 +26,12 @@ import com.telenav.mesakit.graph.Edge;
  */
 public class DrawableEdge extends DrawablePolyline
 {
-    public DrawableEdge(final Edge edge, final Style style)
+    public DrawableEdge(Edge edge, Style style)
     {
         this(edge, style, null);
     }
 
-    public DrawableEdge(final Edge edge, final Style style, final String label)
+    public DrawableEdge(Edge edge, Style style, String label)
     {
         super(edge.roadShape(), style, label);
     }

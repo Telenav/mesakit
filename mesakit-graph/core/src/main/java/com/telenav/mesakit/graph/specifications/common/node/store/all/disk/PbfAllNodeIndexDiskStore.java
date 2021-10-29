@@ -36,45 +36,45 @@ import java.io.IOException;
  */
 public class PbfAllNodeIndexDiskStore extends AllNodeDiskStore
 {
-    public PbfAllNodeIndexDiskStore(final Folder data)
+    public PbfAllNodeIndexDiskStore(Folder data)
     {
         super(data);
     }
 
-    public PbfAllNodeIndexDiskStore(final GraphArchive archive)
+    public PbfAllNodeIndexDiskStore(GraphArchive archive)
     {
         super(archive);
     }
 
-    public void add(final PbfNode node)
+    public void add(PbfNode node)
     {
-        final var location = Location.degrees(node.latitude(), node.longitude());
-        final var out = output(new AllNodeDiskCell(location));
+        var location = Location.degrees(node.latitude(), node.longitude());
+        var out = output(new AllNodeDiskCell(location));
         try
         {
             out.writeLong(location.asLong());
         }
-        catch (final IOException e)
+        catch (IOException e)
         {
             throw new IllegalStateException("Unable to add node index", e);
         }
     }
 
-    public LongToIntMap load(final AllNodeDiskCell cell)
+    public LongToIntMap load(AllNodeDiskCell cell)
     {
-        final var indexForLocation = new LongToIntMap(name() + ".indexForLocation");
+        var indexForLocation = new LongToIntMap(name() + ".indexForLocation");
         indexForLocation.initialSize(Estimate._65536);
         indexForLocation.initialize();
 
-        try (final var in = new DataInputStream(entry(cell).openForReading()))
+        try (var in = new DataInputStream(entry(cell).openForReading()))
         {
             for (var index = 0; in.available() > 0; index++)
             {
-                final var location = in.readLong();
+                var location = in.readLong();
                 indexForLocation.put(location, index);
             }
         }
-        catch (final IOException e)
+        catch (IOException e)
         {
             throw new IllegalStateException("Unable to load node indexes", e);
         }

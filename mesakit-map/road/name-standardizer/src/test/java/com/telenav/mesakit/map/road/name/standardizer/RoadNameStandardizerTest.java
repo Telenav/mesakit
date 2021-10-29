@@ -35,21 +35,21 @@ public abstract class RoadNameStandardizerTest extends RegionUnitTest
 
     private List<String> lines;
 
-    protected RoadNameStandardizerTest(final String g2Country, final String g2Language)
+    protected RoadNameStandardizerTest(String g2Country, String g2Language)
     {
         standardizer = RoadNameStandardizer.get(locale(), RoadNameStandardizer.Mode.MESAKIT_STANDARDIZATION);
     }
 
     protected abstract MapLocale locale();
 
-    protected abstract String normalize(final String string);
+    protected abstract String normalize(String string);
 
-    protected Iterable<String> regressionTestCases(final Resource resource)
+    protected Iterable<String> regressionTestCases(Resource resource)
     {
         if (lines == null)
         {
             lines = new ArrayList<>();
-            for (final String line : resource.reader().linesAsStringList())
+            for (String line : resource.reader().linesAsStringList())
             {
                 if (!line.startsWith("#"))
                 {
@@ -60,15 +60,15 @@ public abstract class RoadNameStandardizerTest extends RegionUnitTest
         return lines;
     }
 
-    protected ParsedRoadName standardize(final String given)
+    protected ParsedRoadName standardize(String given)
     {
         return standardizer.standardize(RoadName.forName(given));
     }
 
-    protected void test(final String expected, String given)
+    protected void test(String expected, String given)
     {
         given = normalize(given);
-        final var parsed = standardize(given);
+        var parsed = standardize(given);
         ensureEqual(expected, parsed.toString());
         ensureEqual(given, parsed.asRawRoadName().name());
         trace(given + " -> " + parsed);

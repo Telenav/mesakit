@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.geography.shape.rectangle;
 
-import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import org.junit.Test;
 
 public class BoundingBoxBuilderTest extends GeographyUnitTest
@@ -31,16 +31,16 @@ public class BoundingBoxBuilderTest extends GeographyUnitTest
         int left = Integer.MAX_VALUE;
         int top = Integer.MIN_VALUE;
         int right = Integer.MIN_VALUE;
-        final var boundingBox = new BoundingBoxBuilder();
+        var boundingBox = new BoundingBoxBuilder();
         for (var i = 0; i < 100; i++)
         {
-            final Location location = randomValueFactory().newLocation();
+            Location location = randomValueFactory().newLocation();
             boundingBox.add(location.latitude().asDegrees(), location.longitude().asDegrees());
             bottom = Math.min(bottom, location.latitudeInDm7());
             left = Math.min(left, location.longitudeInDm7());
             top = Math.max(top, location.latitudeInDm7());
             right = Math.max(right, location.longitudeInDm7());
-            final Rectangle bounds = boundingBox.build();
+            Rectangle bounds = boundingBox.build();
             ensure(bounds != null);
             assert bounds != null;
             close(bottom, bounds.bottomLeft().latitudeInDm7());
@@ -57,16 +57,16 @@ public class BoundingBoxBuilderTest extends GeographyUnitTest
         int left = Integer.MAX_VALUE;
         int top = Integer.MIN_VALUE;
         int right = Integer.MIN_VALUE;
-        final var boundingBox = new BoundingBoxBuilder();
+        var boundingBox = new BoundingBoxBuilder();
         for (var i = 0; i < 100; i++)
         {
-            final Location location = randomValueFactory().newLocation();
+            Location location = randomValueFactory().newLocation();
             boundingBox.add(location);
             bottom = Math.min(bottom, location.latitudeInDm7());
             left = Math.min(left, location.longitudeInDm7());
             top = Math.max(top, location.latitudeInDm7());
             right = Math.max(right, location.longitudeInDm7());
-            final Rectangle bounds = boundingBox.build();
+            Rectangle bounds = boundingBox.build();
             ensure(bounds != null);
             assert bounds != null;
             close(bottom, bounds.bottomLeft().latitudeInDm7());
@@ -76,7 +76,7 @@ public class BoundingBoxBuilderTest extends GeographyUnitTest
         }
     }
 
-    private void close(final int a, final int b)
+    private void close(int a, int b)
     {
         ensure(Math.abs(a - b) <= 1);
     }

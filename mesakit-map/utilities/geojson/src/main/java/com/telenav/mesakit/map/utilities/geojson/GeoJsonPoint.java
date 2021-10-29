@@ -31,7 +31,7 @@ public class GeoJsonPoint extends GeoJsonGeometry
 {
     private final List<Double> coordinates = new ArrayList<>();
 
-    public GeoJsonPoint(final Location location)
+    public GeoJsonPoint(Location location)
     {
         add(location);
     }
@@ -47,7 +47,7 @@ public class GeoJsonPoint extends GeoJsonGeometry
         return new Location(Latitude.degrees(coordinates.get(1)), Longitude.degrees(coordinates.get(0)));
     }
 
-    protected void add(final Location location)
+    protected void add(Location location)
     {
         coordinates.add(location.longitude().asDegrees());
         coordinates.add(location.latitude().asDegrees());

@@ -41,8 +41,8 @@ public class WorldRelationMember extends EdgeRelationMember
     /** The cell where this relation member resides */
     private final WorldCell worldCell;
 
-    public WorldRelationMember(final WorldRelation relation, final WorldCell worldCell, final MapIdentifier identifier,
-                               final String role)
+    public WorldRelationMember(WorldRelation relation, WorldCell worldCell, MapIdentifier identifier,
+                               String role)
     {
         super(relation, identifier, role);
 
@@ -56,10 +56,10 @@ public class WorldRelationMember extends EdgeRelationMember
     public Route route()
     {
         // Get the way identifier
-        final var wayIdentifier = (PbfWayIdentifier) identifier();
+        var wayIdentifier = (PbfWayIdentifier) identifier();
 
         // Find route in world graph
-        var route = this.worldCell.worldGraph().routeForWayIdentifier(wayIdentifier);
+        var route = worldCell.worldGraph().routeForWayIdentifier(wayIdentifier);
 
         // If the way identifier is reversed
         if (route != null && wayIdentifier.isReverse())
@@ -81,20 +81,20 @@ public class WorldRelationMember extends EdgeRelationMember
     @Override
     public Vertex vertex()
     {
-        final var vertex = super.vertex();
+        var vertex = super.vertex();
         if (vertex != null)
         {
-            return new WorldVertex(this.worldCell, vertex);
+            return new WorldVertex(worldCell, vertex);
         }
 
         // We couldn't find the vertex for this member in this cell, so look in neighboring cells
-        final var identifier = new PbfNodeIdentifier(super.identifier().asLong());
-        for (final var neighbor : this.worldCell.neighbors())
+        var identifier = new PbfNodeIdentifier(super.identifier().asLong());
+        for (var neighbor : worldCell.neighbors())
         {
-            final var neighborGraph = neighbor.cellGraph();
+            var neighborGraph = neighbor.cellGraph();
             if (neighborGraph.contains(identifier))
             {
-                final var neighboringVertex = neighborGraph.vertexForNodeIdentifier(identifier);
+                var neighboringVertex = neighborGraph.vertexForNodeIdentifier(identifier);
                 if (neighboringVertex != null)
                 {
                     return new WorldVertex(neighbor, neighboringVertex);
@@ -106,6 +106,6 @@ public class WorldRelationMember extends EdgeRelationMember
 
     public WorldCell worldCell()
     {
-        return this.worldCell;
+        return worldCell;
     }
 }

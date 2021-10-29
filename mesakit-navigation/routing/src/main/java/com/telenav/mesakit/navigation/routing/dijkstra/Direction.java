@@ -26,7 +26,7 @@ public enum Direction
     FORWARD,
     BACKWARD;
 
-    public Route concatenate(final Route route, final Edge candidate)
+    public Route concatenate(Route route, Edge candidate)
     {
         return isForward() ? route.append(candidate) : route.prepend(candidate);
     }

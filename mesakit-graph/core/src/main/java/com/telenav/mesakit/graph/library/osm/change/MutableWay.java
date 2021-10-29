@@ -94,7 +94,7 @@ public class MutableWay extends BaseMutableWay
      *
      * @param nodes The node store to work with
      */
-    public MutableWay(final PbfNodeStore nodes, final Edge edge)
+    public MutableWay(PbfNodeStore nodes, Edge edge)
     {
         this.nodes = nodes;
         identifier = edge.wayIdentifier();
@@ -111,9 +111,9 @@ public class MutableWay extends BaseMutableWay
         }
     }
 
-    public MutableWay(final PbfNodeStore nodes, final PbfUserIdentifier userIdentifier, final PbfUserName userName,
-                      final PbfWayIdentifier identifier, final Polyline shape, final PbfTagList tags,
-                      final int version)
+    public MutableWay(PbfNodeStore nodes, PbfUserIdentifier userIdentifier, PbfUserName userName,
+                      PbfWayIdentifier identifier, Polyline shape, PbfTagList tags,
+                      int version)
     {
         this.nodes = nodes;
         this.identifier = identifier;
@@ -128,16 +128,16 @@ public class MutableWay extends BaseMutableWay
      * Adds any tags from the given list which don't already have a value in the current list of tags for this way
      */
     @Override
-    public void addNewTags(final PbfTagList tags)
+    public void addNewTags(PbfTagList tags)
     {
-        for (final var tag : tags)
+        for (var tag : tags)
         {
             addTag(tag.getKey(), tag.getValue());
         }
     }
 
     @Override
-    public void addTag(final String key, final String value)
+    public void addTag(String key, String value)
     {
         if (!tags.containsKey(key))
         {
@@ -148,17 +148,17 @@ public class MutableWay extends BaseMutableWay
 
     public PbfWay asPbfWay()
     {
-        final var data = new CommonEntityData(identifier.asLong(), version, new PbfTimestamp(), user(),
+        var data = new CommonEntityData(identifier.asLong(), version, new PbfTimestamp(), user(),
                 changeSetIdentifier.asLong(), tags.asList());
-        final List<WayNode> wayNodes = new ArrayList<>();
-        for (final var location : shape.locationSequence())
+        List<WayNode> wayNodes = new ArrayList<>();
+        for (var location : shape.locationSequence())
         {
             wayNodes.add(new WayNode(nodes.identifier(location).asLong()));
         }
         return new PbfWay(new Way(data, wayNodes));
     }
 
-    public void changeSetIdentifier(final PbfChangeSetIdentifier changeSetIdentifier)
+    public void changeSetIdentifier(PbfChangeSetIdentifier changeSetIdentifier)
     {
         if (!Objects.equal(changeSetIdentifier, this.changeSetIdentifier))
         {
@@ -168,7 +168,7 @@ public class MutableWay extends BaseMutableWay
     }
 
     @Override
-    public void changeTag(final String key, final String baseValue, final String enhancingValue)
+    public void changeTag(String key, String baseValue, String enhancingValue)
     {
         if (tags.containsKey(key))
         {
@@ -187,7 +187,7 @@ public class MutableWay extends BaseMutableWay
      * @param maximumDistance The maximum distance to look for a connection
      * @return The connection made to this way
      */
-    public ConnectionPoint connect(final Polyline shape, final Distance maximumDistance, final ConnectionPoint.End end)
+    public ConnectionPoint connect(Polyline shape, Distance maximumDistance, ConnectionPoint.End end)
     {
         // If the first/last segment crosses the way, it's a one segment overshoot
         var connection = connect(end == ConnectionPoint.End.FROM ? shape.firstSegment() : shape.lastSegment(),
@@ -220,13 +220,13 @@ public class MutableWay extends BaseMutableWay
         return !modifications.isEmpty();
     }
 
-    public void modified(final String modification)
+    public void modified(String modification)
     {
         // If this way hasn't yet been modified,
         if (!isModified())
         {
             // it is being modified for the first time, so reference its nodes
-            for (final var location : shape.locationSequence())
+            for (var location : shape.locationSequence())
             {
                 nodes.reference(location);
             }
@@ -242,7 +242,7 @@ public class MutableWay extends BaseMutableWay
     /**
      * Names this modified way if it is unnamed
      */
-    public void name(final RoadName name)
+    public void name(RoadName name)
     {
         if (this.name == null && !tags.containsKey("name"))
         {
@@ -257,15 +257,15 @@ public class MutableWay extends BaseMutableWay
 
     public Set<PbfNodeIdentifier> referencedNodes()
     {
-        final Set<PbfNodeIdentifier> referenced = new HashSet<>();
-        for (final var location : shape.locationSequence())
+        Set<PbfNodeIdentifier> referenced = new HashSet<>();
+        for (var location : shape.locationSequence())
         {
             referenced.add(nodes.identifier(location));
         }
         return referenced;
     }
 
-    public void shape(final Polyline shape)
+    public void shape(Polyline shape)
     {
         if (!Objects.equal(shape, this.shape))
         {
@@ -291,10 +291,10 @@ public class MutableWay extends BaseMutableWay
         return toString(false, false);
     }
 
-    public String toString(final boolean addTelenavTag, final boolean debug)
+    public String toString(boolean addTelenavTag, boolean debug)
     {
         // Create XML lines list
-        final var lines = new StringList();
+        var lines = new StringList();
 
         // Add way open tag
         lines.add("  <way id=\"" + identifier + "\" action=\"modify\" visible=\"true\" version=\"" + version
@@ -302,7 +302,7 @@ public class MutableWay extends BaseMutableWay
                 + (userName.name()) + "\">");
 
         // Add references to nodes
-        final var identifiers = new PbfNodeIdentifierList(nodes, shape().locationSequence());
+        var identifiers = new PbfNodeIdentifierList(nodes, shape().locationSequence());
         lines.addAll(identifiers.references());
 
         // Add OSM tags
@@ -314,7 +314,7 @@ public class MutableWay extends BaseMutableWay
             }
             lines.add("    <tag k=\"telenav:action\" v=\"modified:" + modifications.join(",") + "\"/>");
         }
-        for (final var tag : tags)
+        for (var tag : tags)
         {
             if (name == null || !"name".equals(tag.getKey()))
             {
@@ -336,7 +336,7 @@ public class MutableWay extends BaseMutableWay
         return lines.join('\n');
     }
 
-    public void userIdentifier(final PbfUserIdentifier userIdentifier)
+    public void userIdentifier(PbfUserIdentifier userIdentifier)
     {
         if (!Objects.equal(userIdentifier, this.userIdentifier))
         {
@@ -345,7 +345,7 @@ public class MutableWay extends BaseMutableWay
         }
     }
 
-    public void userName(final PbfUserName userName)
+    public void userName(PbfUserName userName)
     {
         if (!Objects.equal(userName, this.userName))
         {
@@ -354,13 +354,13 @@ public class MutableWay extends BaseMutableWay
         }
     }
 
-    private ConnectionPoint connect(final Segment segment, final ConnectionPoint.Type type)
+    private ConnectionPoint connect(Segment segment, ConnectionPoint.Type type)
     {
         if (segment != null)
         {
-            final var builder = new PolylineBuilder();
+            var builder = new PolylineBuilder();
             builder.addAll(shape.locationSequence());
-            final var intersection = builder.addIntersectionWith(segment, Distance.meters(5));
+            var intersection = builder.addIntersectionWith(segment, Distance.meters(5));
             if (intersection != null)
             {
                 if (intersection.isModified())

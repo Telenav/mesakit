@@ -55,15 +55,15 @@ public class ModifiedWayStore
     /**
      * @param nodes The node store to work with
      */
-    public ModifiedWayStore(final PbfNodeStore nodes)
+    public ModifiedWayStore(PbfNodeStore nodes)
     {
         this.nodes = nodes;
     }
 
-    public List<PbfWay> asWays(final boolean modified)
+    public List<PbfWay> asWays(boolean modified)
     {
-        final List<PbfWay> ways = new ArrayList<>();
-        for (final var way : modifiedWays())
+        List<PbfWay> ways = new ArrayList<>();
+        for (var way : modifiedWays())
         {
             ways.add(way.asPbfWay());
         }
@@ -78,7 +78,7 @@ public class ModifiedWayStore
     /**
      * @return The {@link MutableWay} for the given edge
      */
-    public MutableWay modifiableWay(final Edge edge)
+    public MutableWay modifiableWay(Edge edge)
     {
         // Get any existing modified way
         var way = modifiedWayForWayIdentifier.get(edge.wayIdentifier());
@@ -97,9 +97,9 @@ public class ModifiedWayStore
     /**
      * @return The {@link MutableWay} for the given edge
      */
-    public MutableWay modifiableWay(final PbfUserIdentifier userIdentifier, final PbfUserName userName,
-                                    final PbfWayIdentifier identifier, final Polyline shape, final PbfTagList tags,
-                                    final int version)
+    public MutableWay modifiableWay(PbfUserIdentifier userIdentifier, PbfUserName userName,
+                                    PbfWayIdentifier identifier, Polyline shape, PbfTagList tags,
+                                    int version)
     {
         // Get any existing modified way
         var way = modifiedWayForWayIdentifier.get(identifier);
@@ -120,8 +120,8 @@ public class ModifiedWayStore
      */
     public Collection<MutableWay> modifiedWays()
     {
-        final List<MutableWay> modified = new ArrayList<>();
-        for (final var way : modifiedWayForWayIdentifier.values())
+        List<MutableWay> modified = new ArrayList<>();
+        for (var way : modifiedWayForWayIdentifier.values())
         {
             if (way.isModified())
             {
@@ -136,12 +136,12 @@ public class ModifiedWayStore
         return nodes;
     }
 
-    public void saveAll(final PbfWriter writer)
+    public void saveAll(PbfWriter writer)
     {
         save(writer, false);
     }
 
-    public void saveModified(final PbfWriter writer)
+    public void saveModified(PbfWriter writer)
     {
         save(writer, true);
     }
@@ -151,14 +151,14 @@ public class ModifiedWayStore
         return Count.count(modifiedWayForWayIdentifier.size());
     }
 
-    private void save(final PbfWriter writer, final boolean modified)
+    private void save(PbfWriter writer, boolean modified)
     {
         LOGGER.information("Preparing $ nodes", nodes.size());
-        final var nodes = this.nodes.asNodes();
+        var nodes = this.nodes.asNodes();
         LOGGER.information("Saving $ nodes", nodes.size());
         writer.writeNodes(nodes);
         LOGGER.information("Preparing $ ways", size());
-        final var ways = asWays(modified);
+        var ways = asWays(modified);
         LOGGER.information("Saving $ ways", ways.size());
         writer.writeWays(ways);
     }

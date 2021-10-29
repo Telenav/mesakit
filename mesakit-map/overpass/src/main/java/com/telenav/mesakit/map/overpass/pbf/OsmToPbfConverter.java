@@ -41,18 +41,18 @@ import java.util.Map;
 @UmlClassDiagram(diagram = DiagramOverpass.class)
 public class OsmToPbfConverter extends BaseRepeater
 {
-    public OsmToPbfConverter(final Listener listener)
+    public OsmToPbfConverter(Listener listener)
     {
         addListener(listener);
     }
 
-    public void convert(final File in, final File out)
+    public void convert(File in, File out)
     {
         try
         {
-            final var output = new BlockOutputStream(out.openForWriting());
-            final var writer = new OsmosisSerializer(output);
-            final var readerSink = new Sink()
+            var output = new BlockOutputStream(out.openForWriting());
+            var writer = new OsmosisSerializer(output);
+            var readerSink = new Sink()
             {
                 @Override
                 public void close()
@@ -65,24 +65,24 @@ public class OsmToPbfConverter extends BaseRepeater
                 }
 
                 @Override
-                public void initialize(final Map<String, Object> metadata)
+                public void initialize(Map<String, Object> metadata)
                 {
                 }
 
                 @Override
-                public void process(final EntityContainer entityContainer)
+                public void process(EntityContainer entityContainer)
                 {
                     writer.process(entityContainer);
                 }
             };
 
-            final RunnableSource reader = new XmlReader(in.asJavaFile(), false, CompressionMethod.None);
+            RunnableSource reader = new XmlReader(in.asJavaFile(), false, CompressionMethod.None);
             reader.setSink(readerSink);
             reader.run();
             writer.complete();
             writer.close();
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             problem(e, "Unable to convert $ to $", in, out);
         }

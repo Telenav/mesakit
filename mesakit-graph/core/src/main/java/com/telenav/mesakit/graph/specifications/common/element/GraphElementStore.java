@@ -108,7 +108,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     protected abstract class StoreValidator extends BaseValidator
     {
         @Override
-        protected Glitch glitch(final String message, final Object... parameters)
+        protected Glitch glitch(String message, Object... parameters)
         {
             if (DEBUG.isDebugOn())
             {
@@ -120,14 +120,14 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
             }
         }
 
-        protected boolean isNull(final PrimitiveList list, final int index)
+        protected boolean isNull(PrimitiveList list, int index)
         {
             assert list != null;
             return list.isPrimitiveNull(list.safeGetPrimitive(index));
         }
 
         @Override
-        protected Problem problem(final String message, final Object... parameters)
+        protected Problem problem(String message, Object... parameters)
         {
             if (DEBUG.isDebugOn())
             {
@@ -140,7 +140,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         }
 
         @Override
-        protected Quibble quibble(final String message, final Object... parameters)
+        protected Quibble quibble(String message, Object... parameters)
         {
             if (DEBUG.isDebugOn())
             {
@@ -165,7 +165,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         }
 
         @Override
-        protected Warning warning(final String message, final Object... parameters)
+        protected Warning warning(String message, Object... parameters)
         {
             if (DEBUG.isDebugOn())
             {
@@ -258,7 +258,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
                     () -> new TagStore("tags", metadata().tagCodec()))
             {
                 @Override
-                protected void onLoaded(final TagStore store)
+                protected void onLoaded(TagStore store)
                 {
                     store.codec(metadata().tagCodec());
                     super.onLoaded(store);
@@ -295,7 +295,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     /** The method used to compress this store */
     private Method compressionMethod;
 
-    protected GraphElementStore(final Graph graph)
+    protected GraphElementStore(Graph graph)
     {
         this.graph = graph;
         dataSpecification = graph.dataSpecification();
@@ -343,9 +343,9 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     /**
      * @return Iterator of graph element batches of the given size
      */
-    public Iterator<List<T>> batches(final Count batchSize)
+    public Iterator<List<T>> batches(Count batchSize)
     {
-        final var outer = this;
+        var outer = this;
         return new BaseIterator<>()
         {
             int index = 1;
@@ -355,11 +355,11 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
             @Override
             protected List<T> onNext()
             {
-                final var batch = new ArrayList<T>();
-                final var size = size();
+                var batch = new ArrayList<T>();
+                var size = size();
                 for (var i = 0; i < batchSizeAsInt && index < size + 1; i++)
                 {
-                    final var identifier = outer.identifier.safeGet(index++);
+                    var identifier = outer.identifier.safeGet(index++);
                     if (!outer.identifier.isNull(identifier))
                     {
                         batch.add(outer.elementFactory.newElement(outer.graph, identifier));
@@ -385,7 +385,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     @Override
-    public Method compress(final Method method)
+    public Method compress(Method method)
     {
         if (!isCompressed())
         {
@@ -394,7 +394,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
             // Must specify -javaagent to VM, see JavaVirtualMachine.sizeOfObjectGraph()
             JavaVirtualMachine.local().traceSizeChange(this, "compress", this, Bytes.kilobytes(100), () ->
             {
-                final var size = CompressibleCollection.compressReachableObjects(this, this, method, event ->
+                var size = CompressibleCollection.compressReachableObjects(this, this, method, event ->
                         DEBUG.trace("Compressed $", Name.synthetic(event)));
                 if (size != null)
                 {
@@ -417,7 +417,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     /**
      * @return True if this store contains the given element identifier
      */
-    public final boolean containsIdentifier(final GraphElementIdentifier identifier)
+    public final boolean containsIdentifier(GraphElementIdentifier identifier)
     {
         return containsIdentifier(identifier.asLong());
     }
@@ -425,7 +425,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     /**
      * @return True if this store contains the given element element identifier
      */
-    public boolean containsIdentifier(final long identifier)
+    public boolean containsIdentifier(long identifier)
     {
         if (!IDENTIFIER_TO_INDEX.load())
         {
@@ -492,7 +492,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     @Override
     public Iterator<T> iterator()
     {
-        final var outer = this;
+        var outer = this;
         IDENTIFIER.load();
         return new BaseIterator<>()
         {
@@ -504,7 +504,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
             {
                 if (index < size() + 1)
                 {
-                    final var identifier = outer.identifier.safeGet(index++);
+                    var identifier = outer.identifier.safeGet(index++);
                     if (!outer.identifier.isNull(identifier))
                     {
                         return outer.elementFactory.newElement(outer.graph, identifier);
@@ -516,10 +516,19 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
+     * Called to initialize this store
+     */
+    @MustBeInvokedByOverriders
+    public void onInitialize()
+    {
+        resetNextIndex();
+    }
+
+    /**
      * In special circumstance, it may be necessary to run logic and add extra elements to a committed element store.
      * This method runs the given code, allowing final additions.
      */
-    public void postCommit(final Runnable code)
+    public void postCommit(Runnable code)
     {
         committed = false;
         try
@@ -541,7 +550,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         return Count.count(count());
     }
 
-    public long retrieveIdentifier(final int index)
+    public long retrieveIdentifier(int index)
     {
         IDENTIFIER.load();
         return identifier.safeGet(index);
@@ -553,7 +562,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
      *
      * @return The index for the given element
      */
-    public int retrieveIndex(final long identifier)
+    public int retrieveIndex(long identifier)
     {
         checkIdentifier(identifier);
         return identifierToIndex(identifier, IndexingMode.GET);
@@ -565,9 +574,9 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
      *
      * @return The index for the given element
      */
-    public int retrieveIndex(final T element)
+    public int retrieveIndex(T element)
     {
-        final var identifier = element.identifierAsLong();
+        var identifier = element.identifierAsLong();
         checkIdentifier(identifier);
         return identifierToIndex(identifier, IndexingMode.GET);
     }
@@ -575,7 +584,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     /**
      * @return The last modification time of the given {@link GraphElement}
      */
-    public Time retrieveLastModificationTime(final GraphElement element)
+    public Time retrieveLastModificationTime(GraphElement element)
     {
         return LAST_MODIFIED.retrieveObject(element, Time::milliseconds);
     }
@@ -587,7 +596,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
      *
      * @return The OSM change set identifier for the given {@link GraphElement}.
      */
-    public PbfChangeSetIdentifier retrievePbfChangeSetIdentifier(final GraphElement element)
+    public PbfChangeSetIdentifier retrievePbfChangeSetIdentifier(GraphElement element)
     {
         return PBF_CHANGE_SET_IDENTIFIER.retrieveObject(element, value -> new PbfChangeSetIdentifier((int) value));
     }
@@ -599,7 +608,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
      *
      * @return The OSM change set identifier for the given {@link GraphElement}.
      */
-    public PbfRevisionNumber retrievePbfRevisionNumber(final GraphElement element)
+    public PbfRevisionNumber retrievePbfRevisionNumber(GraphElement element)
     {
         return PBF_REVISION_NUMBER.retrieveObject(element, revision -> new PbfRevisionNumber((int) revision));
     }
@@ -610,7 +619,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
      *
      * @return The OSM change set identifier for the given {@link GraphElement}.
      */
-    public PbfUserIdentifier retrievePbfUserIdentifier(final GraphElement element)
+    public PbfUserIdentifier retrievePbfUserIdentifier(GraphElement element)
     {
         return PBF_USER_IDENTIFIER.retrieveObject(element, value -> new PbfUserIdentifier((int) value));
     }
@@ -621,9 +630,9 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
      *
      * @return The OSM change set identifier for the given {@link GraphElement}.
      */
-    public PbfUserName retrievePbfUserName(final GraphElement element)
+    public PbfUserName retrievePbfUserName(GraphElement element)
     {
-        final var userName = PBF_USER_NAME.retrieveString(element);
+        var userName = PBF_USER_NAME.retrieveString(element);
         if (userName != null)
         {
             return new PbfUserName(userName);
@@ -634,18 +643,18 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     /**
      * @return The list of tags for this {@link GraphElement}.
      */
-    public final PbfTagList retrieveTagList(final GraphElement element)
+    public final PbfTagList retrieveTagList(GraphElement element)
     {
-        final var tags = tags();
+        var tags = tags();
         return tags == null ? null : tags.tagList(element);
     }
 
     /**
      * @return The list of tags for this {@link GraphElement}.
      */
-    public final PbfTagMap retrieveTagMap(final GraphElement element)
+    public final PbfTagMap retrieveTagMap(GraphElement element)
     {
-        final var tags = tags();
+        var tags = tags();
         return tags == null ? null : tags.tagMap(element);
     }
 
@@ -663,13 +672,13 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
      * Stores all of the metadata attributes of the given graph element using its index
      */
     @MustBeInvokedByOverriders
-    public void storeAttributes(final GraphElement element)
+    public void storeAttributes(GraphElement element)
     {
         LAST_MODIFIED.storeObject(element, element.lastModificationTime());
         PBF_CHANGE_SET_IDENTIFIER.storeObject(element, element.pbfChangeSetIdentifier());
         PBF_REVISION_NUMBER.storeObject(element, element.pbfRevisionNumber());
         PBF_USER_IDENTIFIER.storeObject(element, element.pbfUserIdentifier());
-        final var userName = element.pbfUserName();
+        var userName = element.pbfUserName();
         if (userName != null)
         {
             PBF_USER_NAME.storeString(element, userName.name());
@@ -680,7 +689,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     /**
      * Stores any tags for a given {@link GraphElement}
      */
-    public void storeTags(final GraphElement element, final PbfTagList tags)
+    public void storeTags(GraphElement element, PbfTagList tags)
     {
         if (dataSpecification().supports(GraphElementAttributes.get().TAGS))
         {
@@ -697,7 +706,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     @Override
-    public boolean supports(final Attribute<?> attribute)
+    public boolean supports(Attribute<?> attribute)
     {
         return attributeLoader().supports(attribute);
     }
@@ -707,7 +716,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
      */
     public PbfTagCodec tagCodec()
     {
-        final var tags = tags();
+        var tags = tags();
         return tags == null ? null : tags().codec();
     }
 
@@ -728,9 +737,9 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
      * {@inheritDoc}
      */
     @Override
-    public Validator validator(final ValidationType validation)
+    public Validator validator(ValidationType validation)
     {
-        final var outer = this;
+        var outer = this;
         return new StoreValidator()
         {
             @Override
@@ -749,7 +758,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
                     for (var index = 1; index < size() && !isInvalid(); index++)
                     {
                         // and get the identifier
-                        final var identifier = outer.identifier.get(index);
+                        var identifier = outer.identifier.get(index);
 
                         // and if the identifier is valid
                         if (identifier > 0)
@@ -800,7 +809,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         return metadata().count(ALLOW_ESTIMATE, elementType()).asEstimate();
     }
 
-    protected Estimate estimatedElements(final Class<? extends GraphElement> type)
+    protected Estimate estimatedElements(Class<? extends GraphElement> type)
     {
         return metadata().count(ALLOW_ESTIMATE, type).asEstimate();
     }
@@ -826,7 +835,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
      * @param mode Specifies whether to simply get the index or if it doesn't exist, create it instead
      * @return An index for the given graph element identifier
      */
-    protected int identifierToIndex(final long identifier, final IndexingMode mode)
+    protected int identifierToIndex(long identifier, IndexingMode mode)
     {
         if (!IDENTIFIER_TO_INDEX.load())
         {
@@ -835,7 +844,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
 
         // Get the index for the given element identifier if any
         var index = identifierToIndex.get(Math.abs(identifier));
-        final var isNull = identifierToIndex.isNull(index);
+        var isNull = identifierToIndex.isNull(index);
 
         // If there's no index and we can create one,
         if (isNull && mode == IndexingMode.CREATE)
@@ -880,7 +889,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
      * Called when an element is being added
      */
     @MustBeInvokedByOverriders
-    protected void onAdd(final T element)
+    protected void onAdd(T element)
     {
     }
 
@@ -888,7 +897,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
      * Called after an element is added
      */
     @MustBeInvokedByOverriders
-    protected void onAdded(final T ignored)
+    protected void onAdded(T ignored)
     {
     }
 
@@ -896,7 +905,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
      * Called before an element is added
      */
     @MustBeInvokedByOverriders
-    protected void onAdding(final T ignored)
+    protected void onAdding(T ignored)
     {
     }
 
@@ -909,22 +918,13 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * Called to initialize this store
-     */
-    @MustBeInvokedByOverriders
-    public void onInitialize()
-    {
-        resetNextIndex();
-    }
-
-    /**
      * Overwrites the existing element with a new element
      *
      * @param existingIndex The index of the existing element
      * @param existingIdentifier The identifier of the existing element
      * @param newIdentifier The new element identifier
      */
-    protected void overwriteElement(final int existingIndex, final long existingIdentifier, final long newIdentifier)
+    protected void overwriteElement(int existingIndex, long existingIdentifier, long newIdentifier)
     {
         IDENTIFIER_TO_INDEX.load();
 
@@ -958,7 +958,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
      * Removes the given graph element. This can only be performed during graph loading. Once the graph is loaded, it
      * becomes unmodifiable.
      */
-    protected void remove(final GraphElement element)
+    protected void remove(GraphElement element)
     {
         IDENTIFIER_TO_INDEX.load();
         identifierToIndex.remove(element.identifierAsLong());
@@ -1001,13 +1001,13 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         return batcher;
     }
 
-    private void checkIdentifier(final long identifier)
+    private void checkIdentifier(long identifier)
     {
         assert identifier != 0;
         assert identifier != Long.MIN_VALUE;
     }
 
-    private void checkIndex(final int index)
+    private void checkIndex(int index)
     {
         assert index > 0;
     }
@@ -1017,7 +1017,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
      * @return True if the element was added and false if it was invalid
      */
     @SuppressWarnings("unchecked")
-    private synchronized boolean internalAdd(final T element)
+    private synchronized boolean internalAdd(T element)
     {
         // If we have already finalized changes to this store,
         if (committed)
@@ -1034,7 +1034,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
             // belong to two graphs at once. The flyweight element will have its own graph and index, but those fields
             // will be overwritten prior to adding the element's values to storage. As soon as those fields are changed,
             // it belongs to the new graph and its values can no longer be retrieved in order to add it.
-            final var heavyweight = (T) element.asHeavyWeight();
+            var heavyweight = (T) element.asHeavyWeight();
 
             // assign it to this graph,
             heavyweight.graph(graph());
@@ -1047,7 +1047,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
                 onAdded(heavyweight);
                 size++;
             }
-            catch (final Exception e)
+            catch (Exception e)
             {
                 warning(e, "Unable to add graph element $", heavyweight);
             }
@@ -1069,7 +1069,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     /**
      * Stores the element identifier for the element at the given index
      */
-    private void storeIdentifier(final int index, final long identifier)
+    private void storeIdentifier(int index, long identifier)
     {
         IDENTIFIER.allocate();
         IDENTIFIER_TO_INDEX.allocate();

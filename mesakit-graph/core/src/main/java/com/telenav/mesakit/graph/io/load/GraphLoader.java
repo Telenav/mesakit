@@ -56,7 +56,7 @@ public interface GraphLoader extends Repeater
      *
      * @param store The graph into which data has been loaded
      */
-    default void onCommit(final GraphStore store)
+    default void onCommit(GraphStore store)
     {
     }
 
@@ -67,7 +67,7 @@ public interface GraphLoader extends Repeater
      * @param constraints The constraints restricting what graph elements should be added to the graph
      * @return Metadata describing the data that was loaded
      */
-    Metadata onLoad(final GraphStore store, final GraphConstraints constraints);
+    Metadata onLoad(GraphStore store, GraphConstraints constraints);
 
     /**
      * @return The resource from which loaded data originates. In the case of a database or some similar source that is

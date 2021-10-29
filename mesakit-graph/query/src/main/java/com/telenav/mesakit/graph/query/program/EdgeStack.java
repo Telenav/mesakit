@@ -44,7 +44,7 @@ public class EdgeStack
     /** The name of this edge stack */
     private final String name;
 
-    public EdgeStack(final String name)
+    public EdgeStack(String name)
     {
         this.name = name;
     }
@@ -79,7 +79,7 @@ public class EdgeStack
      * @return The result of pushing the edge, either {@link Result#PUSHED} if successful or {@link
      * Result#ALREADY_ON_STACK} if the edge has already been pushed on the stack in the past
      */
-    public Result push(final Edge edge)
+    public Result push(Edge edge)
     {
         if (stack.contains(edge))
         {
@@ -93,9 +93,9 @@ public class EdgeStack
     /**
      * Push all the edges in the given route, in order
      */
-    public Result push(final Route route)
+    public Result push(Route route)
     {
-        for (final var edge : route)
+        for (var edge : route)
         {
             if (stack.contains(edge))
             {
@@ -118,10 +118,10 @@ public class EdgeStack
     /**
      * @return The route from the given stack index to the top of the stack
      */
-    public Route route(final int index)
+    public Route route(int index)
     {
-        final var set = new EdgeSet();
-        final var iterator = stack.listIterator(index);
+        var set = new EdgeSet();
+        var iterator = stack.listIterator(index);
         while (iterator.hasNext())
         {
             set.add(iterator.next());
@@ -158,7 +158,7 @@ public class EdgeStack
     /**
      * Removes all elements on the stack beyond the given index
      */
-    public void unwind(final int index)
+    public void unwind(int index)
     {
         while (stack.size() > index)
         {

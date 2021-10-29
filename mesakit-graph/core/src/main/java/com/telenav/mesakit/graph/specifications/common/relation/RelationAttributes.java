@@ -38,7 +38,7 @@ public class RelationAttributes extends GraphElementAttributes<EdgeRelation>
 
     public class RelationAttribute extends GraphElementAttribute
     {
-        public RelationAttribute(final String name)
+        public RelationAttribute(String name)
         {
             super(name);
         }

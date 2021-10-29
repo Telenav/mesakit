@@ -40,7 +40,7 @@ public interface CostFunction
     /**
      * @return A cost function that returns the maximum of this cost function and that cost function
      */
-    default CostFunction maximum(final CostFunction that)
+    default CostFunction maximum(CostFunction that)
     {
         return new MaximumCost(this, that);
     }
@@ -48,7 +48,7 @@ public interface CostFunction
     /**
      * @return A cost function that returns the minimum of this cost function and that cost function
      */
-    default CostFunction minimum(final CostFunction that)
+    default CostFunction minimum(CostFunction that)
     {
         return new Minimum(this, that);
     }
@@ -56,7 +56,7 @@ public interface CostFunction
     /**
      * @return A cost function that adds this cost function to the given cost function
      */
-    default CostFunction plus(final CostFunction that)
+    default CostFunction plus(CostFunction that)
     {
         return new Plus(this, that);
     }
@@ -64,7 +64,7 @@ public interface CostFunction
     /**
      * @return This cost function multiplied by the given weight
      */
-    default CostFunction weighted(final Weight weight)
+    default CostFunction weighted(Weight weight)
     {
         return new Weighted(this, weight);
     }
@@ -72,7 +72,7 @@ public interface CostFunction
     /**
      * @return This cost function plus the given cost function at the given weight
      */
-    default CostFunction weightedSum(final Weight weight, final CostFunction that)
+    default CostFunction weightedSum(Weight weight, CostFunction that)
     {
         return weighted(weight.inverse()).plus(that.weighted(weight));
     }

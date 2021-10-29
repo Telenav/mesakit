@@ -34,7 +34,7 @@ public abstract class BaseMutableWay
      * Adds any name tag from the enhancing way to the base way so long as the base way isn't a link or roundabout and
      * doesn't already have a "ref" or "name" tag.
      */
-    public String addNameTag(final Edge base, final Edge enhancing)
+    public String addNameTag(Edge base, Edge enhancing)
     {
         // If the enhancing edge has a name
         if (!enhancing.isNameless())
@@ -44,7 +44,7 @@ public abstract class BaseMutableWay
             if (!base.osmIsLink() && !base.osmIsRoundabout() && !base.hasTag("ref") && !base.hasTag("name"))
             {
                 // add the enhancing edge's name to the base edge
-                final var name = normalizeName(enhancing.tagValue("name"));
+                var name = normalizeName(enhancing.tagValue("name"));
                 addTag("name", name);
                 return name;
             }
@@ -52,20 +52,20 @@ public abstract class BaseMutableWay
         return null;
     }
 
-    public abstract void addNewTags(final PbfTagList tags);
+    public abstract void addNewTags(PbfTagList tags);
 
     /**
      * Adds any one way tag from the enhancing way if the the base way doesn't already have a "oneway" or "junction"
      * tag.
      */
-    public String addOneWayTag(final Edge base, final Edge enhancing)
+    public String addOneWayTag(Edge base, Edge enhancing)
     {
         // If the enhancing edge is one way and the base does not already have a "oneway"
         // tag or a "junction" tag,
         if (enhancing.osmIsOneWay() && !base.hasTag("oneway") && !base.hasTag("junction"))
         {
             // then add the "oneway" tag from the enhancing edge
-            final var oneway = enhancing.tagValue("oneway");
+            var oneway = enhancing.tagValue("oneway");
             addTag("oneway", oneway);
             return oneway;
         }
@@ -76,10 +76,10 @@ public abstract class BaseMutableWay
      * Add the given tag from the enhancing edge to the base edge if the enhancing tag is non-null and the base edge
      * doesn't already have a value for the tag.
      */
-    public String addTag(final Edge base, final Edge enhancing, final String tag)
+    public String addTag(Edge base, Edge enhancing, String tag)
     {
         // If the tag value is non-empty and the base doesn't have a value for the tag
-        final var value = enhancing.tagValue(tag);
+        var value = enhancing.tagValue(tag);
         if (!Strings.isEmpty(value) && !base.hasTag(tag))
         {
             // then add the enhancing tag
@@ -89,11 +89,11 @@ public abstract class BaseMutableWay
         return null;
     }
 
-    public abstract void addTag(final String key, final String value);
+    public abstract void addTag(String key, String value);
 
-    public abstract void changeTag(final String key, final String baseValue, final String enhancingValue);
+    public abstract void changeTag(String key, String baseValue, String enhancingValue);
 
-    private String normalizeName(final String value)
+    private String normalizeName(String value)
     {
         if (value != null)
         {

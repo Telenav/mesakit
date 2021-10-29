@@ -41,50 +41,50 @@ public class JosmChangeFile
 
     private NewWayStore newWays;
 
-    public void add(final NewWay way)
+    public void add(NewWay way)
     {
         newWays.add(way);
     }
 
-    public void connectFromEnd(final ConnectionPoint connection, final MutableWay way)
+    public void connectFromEnd(ConnectionPoint connection, MutableWay way)
     {
         way.shape(connection.withFromEndConnected(way.shape()));
     }
 
-    public void connectToEnd(final ConnectionPoint connection, final MutableWay way)
+    public void connectToEnd(ConnectionPoint connection, MutableWay way)
     {
         way.shape(connection.withToEndConnected(way.shape()));
     }
 
-    public MutableWay modifiableWay(final Edge edge)
+    public MutableWay modifiableWay(Edge edge)
     {
         return ways(edge.graph()).modifiableWay(edge);
     }
 
-    public MutableWay modifiableWay(final Graph graph, final PbfUserIdentifier userIdentifier,
-                                    final PbfUserName userName, final PbfWayIdentifier identifier,
-                                    final Polyline shape,
-                                    final PbfTagList tags,
-                                    final int version)
+    public MutableWay modifiableWay(Graph graph, PbfUserIdentifier userIdentifier,
+                                    PbfUserName userName, PbfWayIdentifier identifier,
+                                    Polyline shape,
+                                    PbfTagList tags,
+                                    int version)
     {
         return ways(graph).modifiableWay(userIdentifier, userName, identifier, shape, tags, version);
     }
 
-    public void save(final File output)
+    public void save(File output)
     {
         save(output, false);
     }
 
-    public void save(final File output, final boolean debug)
+    public void save(File output, boolean debug)
     {
-        final var xml = new JosmXml(output);
+        var xml = new JosmXml(output);
         xml.addModifiedWays(modifiedWays.modifiedWays());
         xml.addNewWays(newWays.ways());
         xml.addNodes(nodes);
         xml.save(debug);
     }
 
-    private ModifiedWayStore ways(final Graph graph)
+    private ModifiedWayStore ways(Graph graph)
     {
         if (nodes == null)
         {

@@ -29,20 +29,20 @@ public class ExitNumber
             RoadLimits.EXIT_NUMBERS)
     {
         @Override
-        protected ExitNumber onInitialize(final String identifier)
+        protected ExitNumber onInitialize(String identifier)
         {
             return new ExitNumber(identifier);
         }
     };
 
-    public static ExitNumber forIdentifier(final String identifier)
+    public static ExitNumber forIdentifier(String identifier)
     {
         return forIdentifier.getOrCreate(identifier);
     }
 
     private final String identifier;
 
-    private ExitNumber(final String identifier)
+    private ExitNumber(String identifier)
     {
         this.identifier = identifier;
     }

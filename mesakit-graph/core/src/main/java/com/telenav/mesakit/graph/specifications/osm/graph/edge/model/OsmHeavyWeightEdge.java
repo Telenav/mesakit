@@ -33,7 +33,7 @@ public class OsmHeavyWeightEdge extends HeavyWeightEdge
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public OsmHeavyWeightEdge(final Graph graph, final long identifier)
+    public OsmHeavyWeightEdge(Graph graph, long identifier)
     {
         super(graph, identifier);
     }
@@ -42,7 +42,7 @@ public class OsmHeavyWeightEdge extends HeavyWeightEdge
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public OsmHeavyWeightEdge(final HeavyWeightEdge that)
+    public OsmHeavyWeightEdge(HeavyWeightEdge that)
     {
         super(that);
         copy(that);
@@ -53,7 +53,7 @@ public class OsmHeavyWeightEdge extends HeavyWeightEdge
         return Objects.requireNonNullElse(isKnownDoubleDigitized, false);
     }
 
-    public void knownDoubleDigitized(final Boolean isDoubleDigitized)
+    public void knownDoubleDigitized(Boolean isDoubleDigitized)
     {
         isKnownDoubleDigitized = isDoubleDigitized;
     }

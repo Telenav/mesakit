@@ -37,7 +37,7 @@ public class AttributeList implements Iterable<Attribute<?>>
 
     private boolean sorted;
 
-    public AttributeList(final ObjectList<Attribute<?>> attributes)
+    public AttributeList(ObjectList<Attribute<?>> attributes)
     {
         this.attributes = attributes;
     }
@@ -55,7 +55,7 @@ public class AttributeList implements Iterable<Attribute<?>>
     public Attribute<?> add(Attribute<?> attribute)
     {
         // If an attribute with the same name already exists,
-        final var existing = nameToAttribute.get(attribute.name());
+        var existing = nameToAttribute.get(attribute.name());
         if (existing != null)
         {
 
@@ -78,12 +78,12 @@ public class AttributeList implements Iterable<Attribute<?>>
         return attribute;
     }
 
-    public void addAll(final AttributeList that)
+    public void addAll(AttributeList that)
     {
         addAll(that.attributes);
     }
 
-    public void addAll(final List<Attribute<?>> list)
+    public void addAll(List<Attribute<?>> list)
     {
         list.forEach(this::add);
     }
@@ -101,12 +101,12 @@ public class AttributeList implements Iterable<Attribute<?>>
         return attributes;
     }
 
-    public <T> boolean contains(final Attribute<T> attribute)
+    public <T> boolean contains(Attribute<T> attribute)
     {
         return attributes.contains(attribute);
     }
 
-    public boolean contains(final String attributeName)
+    public boolean contains(String attributeName)
     {
         return nameToAttribute.containsKey(attributeName);
     }
@@ -118,12 +118,12 @@ public class AttributeList implements Iterable<Attribute<?>>
         return attributes.iterator();
     }
 
-    public String join(final String separator)
+    public String join(String separator)
     {
         return attributes.join(separator);
     }
 
-    public void remove(final Attribute<?> attribute)
+    public void remove(Attribute<?> attribute)
     {
         attributes.remove(attribute);
         nameToAttribute.remove(attribute.name());

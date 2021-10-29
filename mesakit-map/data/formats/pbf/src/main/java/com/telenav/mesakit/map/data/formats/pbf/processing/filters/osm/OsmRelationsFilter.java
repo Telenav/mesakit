@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing.filters.osm;
 
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.RelationFilter;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfOsm;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -43,13 +43,13 @@ public class OsmRelationsFilter extends RelationFilter
     }
 
     @Override
-    public boolean accepts(final PbfRelation relation)
+    public boolean accepts(PbfRelation relation)
     {
         if (!relation.hasTags())
         {
             return false;
         }
-        for (final var tag : relation)
+        for (var tag : relation)
         {
             if (acceptableRelationTypes.contains(tag.getValue()))
             {

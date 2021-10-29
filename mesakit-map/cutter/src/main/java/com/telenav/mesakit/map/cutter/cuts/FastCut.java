@@ -64,7 +64,7 @@ public class FastCut extends Cut
     private final RegionWays regionWays;
 
     @SuppressWarnings("ClassEscapesDefinedScope")
-    public FastCut(final PbfRegionCutter extractor, final RegionWays regionWays)
+    public FastCut(PbfRegionCutter extractor, RegionWays regionWays)
     {
         super(extractor);
         this.regionWays = regionWays;
@@ -84,7 +84,7 @@ public class FastCut extends Cut
             // Close output files
             closeWriters();
         }
-        catch (final Throwable e)
+        catch (Throwable e)
         {
             LOGGER.problem(e, "Cutting PBF failed");
         }
@@ -95,24 +95,24 @@ public class FastCut extends Cut
     private void analyze()
     {
         // Determine which nodes belong to each region
-        final var data = extractor().data().get();
+        var data = extractor().data().get();
         data.phase("Analysis");
         data.process(new PbfDataProcessor()
         {
             @Override
-            public Action onWay(final PbfWay way)
+            public Action onWay(PbfWay way)
             {
                 // If the way is included
                 if (include(way))
                 {
                     // get the regions that the way is included in or which it spans
-                    final var regions = regions(way);
+                    var regions = regions(way);
 
                     // and if the way spans more than one region (cells in the world graph)
                     if (regions.size() > 1)
                     {
                         // then go through each node in the way,
-                        for (final var node : way.nodes())
+                        for (var node : way.nodes())
                         {
                             // and record that the node belongs to all the regions that the way
                             // spans so we can output the node to each region's output file during
@@ -122,7 +122,7 @@ public class FastCut extends Cut
                     }
 
                     // Record which regions the way belongs to for the output pass
-                    for (final var region : regions)
+                    for (var region : regions)
                     {
                         regionWays().add(region, way);
                     }
@@ -136,12 +136,12 @@ public class FastCut extends Cut
     private void output()
     {
         // Determine which nodes belong to each region
-        final var data = extractor().data().get();
+        var data = extractor().data().get();
         data.phase("Extracting");
         data.process(new PbfDataProcessor()
         {
             @Override
-            public Action onNode(final PbfNode node)
+            public Action onNode(PbfNode node)
             {
                 // Get any list of regions if the node is involved in a way that spans regions
                 List<Region> regions = regionsForNode().get(new PbfNodeIdentifier(node));
@@ -159,10 +159,10 @@ public class FastCut extends Cut
             }
 
             @Override
-            public Action onRelation(final PbfRelation relation)
+            public Action onRelation(PbfRelation relation)
             {
                 // Go through members of the relation
-                for (final var member : relation.members())
+                for (var member : relation.members())
                 {
                     // and if the member is a way
                     if (member.getMemberType() == EntityType.Way)
@@ -175,13 +175,13 @@ public class FastCut extends Cut
             }
 
             @Override
-            public Action onWay(final PbfWay way)
+            public Action onWay(PbfWay way)
             {
                 // Get any list of regions for this way if it spans regions
-                final var regions = regionWays().regions(way.identifierAsLong());
+                var regions = regionWays().regions(way.identifierAsLong());
 
                 // The way is soft-cut if it spans regions
-                final var softcut = regions.size() > 1;
+                var softcut = regions.size() > 1;
 
                 // Write the way to the output files for each region
                 write(way, regions, softcut);

@@ -40,7 +40,7 @@ public class RoutingResponse
 
     private final Duration elapsed;
 
-    public RoutingResponse(final Route route, final Duration elapsed)
+    public RoutingResponse(Route route, Duration elapsed)
     {
         this.route = route;
         this.elapsed = elapsed;

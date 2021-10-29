@@ -72,25 +72,25 @@ public class SpeedCategoryExtractor extends BaseExtractor<SpeedCategory, PbfWay>
         speedCategoryForHighway.put("proposed", SpeedCategory.forIdentifier(10));
     }
 
-    public SpeedCategoryExtractor(final Listener listener)
+    public SpeedCategoryExtractor(Listener listener)
     {
         super(listener);
     }
 
     @Override
-    public SpeedCategory onExtract(final PbfWay way)
+    public SpeedCategory onExtract(PbfWay way)
     {
         {
-            final var category = way.tagValueAsNaturalNumber("sc");
+            var category = way.tagValueAsNaturalNumber("sc");
             if (category != Ints.INVALID)
             {
                 return SpeedCategory.forIdentifier(category);
             }
         }
 
-        for (final var highway : way.highways())
+        for (var highway : way.highways())
         {
-            final var category = speedCategoryForHighway.get(highway);
+            var category = speedCategoryForHighway.get(highway);
             if (category != null)
             {
                 return category;

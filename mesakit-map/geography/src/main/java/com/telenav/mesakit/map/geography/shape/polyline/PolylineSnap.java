@@ -66,8 +66,8 @@ public class PolylineSnap extends Location
      * @param polylineIndex The index of the segment in the polyline snappedOnto where the point has been snapped. This
      * starts with 0.
      */
-    public PolylineSnap(final Latitude latitude, final Longitude longitude, final LocationSequence snappedOnto,
-                        final Level offsetOnSegment, final Location source, final int polylineIndex)
+    public PolylineSnap(Latitude latitude, Longitude longitude, LocationSequence snappedOnto,
+                        Level offsetOnSegment, Location source, int polylineIndex)
     {
         super(latitude, longitude);
         this.offsetOnSegment = offsetOnSegment;
@@ -83,8 +83,8 @@ public class PolylineSnap extends Location
      * @param polylineIndex The index of the segment in the polyline snappedOnto where the point has been snapped. This
      * starts with 0.
      */
-    public PolylineSnap(final Location location, final LocationSequence snappedOnto, final Level offset,
-                        final Location source, final int polylineIndex)
+    public PolylineSnap(Location location, LocationSequence snappedOnto, Level offset,
+                        Location source, int polylineIndex)
     {
         this(location.latitude(), location.longitude(), snappedOnto, offset, source, polylineIndex);
     }
@@ -129,20 +129,20 @@ public class PolylineSnap extends Location
     {
         if (offset == null || Double.isNaN(offset.asZeroToOne()))
         {
-            final var polyline = Polyline.fromLocations(snappedOnto.locationSequence());
+            var polyline = Polyline.fromLocations(snappedOnto.locationSequence());
             var iterations = 0;
             Location previous = null;
             var traversed = Distance.ZERO;
-            final var polylineLength = polyline.length();
-            for (final var shapePoint : polyline.locationSequence())
+            var polylineLength = polyline.length();
+            for (var shapePoint : polyline.locationSequence())
             {
                 iterations++;
                 if (previous != null)
                 {
-                    final var considered = new Segment(previous, shapePoint);
+                    var considered = new Segment(previous, shapePoint);
                     if (iterations == polylineIndex + 2)
                     {
-                        final var toAdd = considered.approximateLength().times(offsetOnSegment.asZeroToOne());
+                        var toAdd = considered.approximateLength().times(offsetOnSegment.asZeroToOne());
                         traversed = traversed.add(toAdd);
                     }
                     else
@@ -155,7 +155,7 @@ public class PolylineSnap extends Location
                 }
                 previous = shapePoint;
             }
-            final var ratio = ((double) traversed.asMillimeters()) / ((double) polylineLength.asMillimeters());
+            var ratio = ((double) traversed.asMillimeters()) / ((double) polylineLength.asMillimeters());
             if (ratio - 1.0 > 0.0001 || 0.0 - ratio > 0.0001)
             {
                 LOGGER.warning("Rounding up an offset ${debug} on a segment...", ratio);
@@ -196,7 +196,7 @@ public class PolylineSnap extends Location
         {
             Location previous = null;
             var iterations = 0;
-            for (final var shapePoint : snappedOnto.locationSequence())
+            for (var shapePoint : snappedOnto.locationSequence())
             {
                 iterations++;
                 if (previous != null && iterations == polylineIndex + 2)

@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing.filters.all;
 
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.RelationFilter;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessingFilters;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**
  * All ways
@@ -37,7 +37,7 @@ public class AllRelationsFilter extends RelationFilter
     }
 
     @Override
-    public boolean accepts(final PbfRelation relation)
+    public boolean accepts(PbfRelation relation)
     {
         return true;
     }

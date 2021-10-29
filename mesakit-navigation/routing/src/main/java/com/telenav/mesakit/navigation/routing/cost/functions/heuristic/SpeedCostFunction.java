@@ -30,7 +30,7 @@ import com.telenav.mesakit.navigation.routing.cost.CostFunction;
 public class SpeedCostFunction implements CostFunction
 {
     @Override
-    public Cost cost(final Edge candidate)
+    public Cost cost(Edge candidate)
     {
         return Cost.inverse(Math.min(1.0, candidate.freeFlowSpeed().speed().asMilesPerHour() / 100.0));
     }

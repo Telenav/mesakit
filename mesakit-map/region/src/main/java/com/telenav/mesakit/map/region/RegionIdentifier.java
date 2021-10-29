@@ -30,7 +30,7 @@ import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegion;
 @UmlExcludeSuperTypes
 public class RegionIdentifier extends IntegerIdentifier
 {
-    public RegionIdentifier(final int identifier)
+    public RegionIdentifier(int identifier)
     {
         super(identifier);
     }

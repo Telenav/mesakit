@@ -27,13 +27,13 @@ public class GridCell extends Rectangle
 
     private transient Integer hashCode;
 
-    public GridCell(final GridCellIdentifier identifier, final Location bottomLeft, final Location topRight)
+    public GridCell(GridCellIdentifier identifier, Location bottomLeft, Location topRight)
     {
         super(bottomLeft, topRight);
         this.identifier = identifier;
     }
 
-    public GridCell(final GridCellIdentifier identifier, final Rectangle that)
+    public GridCell(GridCellIdentifier identifier, Rectangle that)
     {
         this(identifier, that.bottomLeft(), that.topRight());
     }
@@ -47,17 +47,17 @@ public class GridCell extends Rectangle
      * border is included.
      */
     @Override
-    public boolean contains(final Location location)
+    public boolean contains(Location location)
     {
         return !containment(location).isOutside();
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof GridCell)
         {
-            final var that = (GridCell) object;
+            var that = (GridCell) object;
             return this == that || identifier.equals(that.identifier);
         }
         return false;

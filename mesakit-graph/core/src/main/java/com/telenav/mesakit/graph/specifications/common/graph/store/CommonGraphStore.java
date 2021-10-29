@@ -31,7 +31,7 @@ import com.telenav.mesakit.graph.specifications.library.store.GraphStore;
  */
 public final class CommonGraphStore extends ArchivedGraphStore
 {
-    public CommonGraphStore(final Graph graph)
+    public CommonGraphStore(Graph graph)
     {
         super(graph);
     }

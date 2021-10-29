@@ -23,10 +23,10 @@ import java.util.Set;
 
 public class AttributeSet
 {
-    public static AttributeSet of(final Attribute<?>... attributes)
+    public static AttributeSet of(Attribute<?>... attributes)
     {
-        final var set = new AttributeSet();
-        for (final var attribute : attributes)
+        var set = new AttributeSet();
+        for (var attribute : attributes)
         {
             set.add(attribute);
         }
@@ -35,18 +35,18 @@ public class AttributeSet
 
     private final Set<Attribute<?>> attributes = new HashSet<>();
 
-    public void add(final Attribute<?> attribute)
+    public void add(Attribute<?> attribute)
     {
-        this.attributes.add(attribute);
+        attributes.add(attribute);
     }
 
     public synchronized Set<Attribute<?>> attributes()
     {
-        return this.attributes;
+        return attributes;
     }
 
-    public boolean contains(final Attribute<?> attribute)
+    public boolean contains(Attribute<?> attribute)
     {
-        return this.attributes.contains(attribute);
+        return attributes.contains(attribute);
     }
 }

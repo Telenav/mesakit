@@ -49,7 +49,7 @@ public class VertexSet extends ObjectSet<Vertex>
     /**
      * @return A set of vertexes for the given vertex collection
      */
-    public static VertexSet forCollection(final Maximum maximum, final Collection<? extends Vertex> collection)
+    public static VertexSet forCollection(Maximum maximum, Collection<? extends Vertex> collection)
     {
         if (collection instanceof VertexSet)
         {
@@ -57,7 +57,7 @@ public class VertexSet extends ObjectSet<Vertex>
         }
         else
         {
-            final var set = new VertexSet(maximum);
+            var set = new VertexSet(maximum);
             set.addAll(collection);
             return set;
         }
@@ -66,9 +66,9 @@ public class VertexSet extends ObjectSet<Vertex>
     /**
      * A set of vertexes for a sequence of vertexes
      */
-    public static VertexSet forIterable(final Maximum maximum, final Iterable<? extends Vertex> collection)
+    public static VertexSet forIterable(Maximum maximum, Iterable<? extends Vertex> collection)
     {
-        final var set = new VertexSet(maximum);
+        var set = new VertexSet(maximum);
         set.addAll(collection);
         return set;
     }
@@ -76,16 +76,16 @@ public class VertexSet extends ObjectSet<Vertex>
     /**
      * @return A single vertex set
      */
-    public static VertexSet singleton(final Vertex vertex)
+    public static VertexSet singleton(Vertex vertex)
     {
-        final var set = new VertexSet(Maximum._1);
+        var set = new VertexSet(Maximum._1);
         set.add(vertex);
         return set;
     }
 
     public static class Converter extends BaseSetConverter<Vertex>
     {
-        public Converter(final Graph graph, final Listener listener)
+        public Converter(Graph graph, Listener listener)
         {
             super(listener, new Vertex.Converter(graph, listener), ",");
         }
@@ -102,7 +102,7 @@ public class VertexSet extends ObjectSet<Vertex>
     /**
      * Construct a vertex set with a given maximum
      */
-    public VertexSet(final Maximum maximum)
+    public VertexSet(Maximum maximum)
     {
         super(maximum);
     }
@@ -110,7 +110,7 @@ public class VertexSet extends ObjectSet<Vertex>
     /**
      * Construct from an underlying vertex set
      */
-    public VertexSet(final Set<Vertex> vertexes)
+    public VertexSet(Set<Vertex> vertexes)
     {
         super(Maximum.MAXIMUM, vertexes);
     }
@@ -118,7 +118,7 @@ public class VertexSet extends ObjectSet<Vertex>
     /**
      * @return The set of vertexes in this set within the bounding rectangle
      */
-    public VertexSet inside(final Rectangle bounds)
+    public VertexSet inside(Rectangle bounds)
     {
         return matching(Vertex.inside(bounds));
     }
@@ -126,7 +126,7 @@ public class VertexSet extends ObjectSet<Vertex>
     /**
      * @return The intersection of this vertex set with the given set of vertexes
      */
-    public VertexSet intersection(final Set<Vertex> vertexes)
+    public VertexSet intersection(Set<Vertex> vertexes)
     {
         return new VertexSet(new Intersection<>(this, vertexes));
     }
@@ -135,12 +135,12 @@ public class VertexSet extends ObjectSet<Vertex>
      * @return All the vertexes identifiers in this set joined into a string using the given separator. The order of
      * identifiers is undefined.
      */
-    public String joinedIdentifiers(final String separator)
+    public String joinedIdentifiers(String separator)
     {
         return Join.join(this, separator, new BaseConverter<>(new ThrowingListener())
         {
             @Override
-            protected String onConvert(final Vertex value)
+            protected String onConvert(Vertex value)
             {
                 return Long.toString(value.identifierAsLong());
             }
@@ -151,7 +151,7 @@ public class VertexSet extends ObjectSet<Vertex>
      * @return Matching vertexes
      */
     @Override
-    public VertexSet matching(final Matcher<Vertex> matcher)
+    public VertexSet matching(Matcher<Vertex> matcher)
     {
         return new VertexSet(new Subset<>(this, matcher));
     }
@@ -159,7 +159,7 @@ public class VertexSet extends ObjectSet<Vertex>
     /**
      * @return The union of this set of vertexes with that set of vertexes
      */
-    public VertexSet union(final Set<Vertex> that)
+    public VertexSet union(Set<Vertex> that)
     {
         return new VertexSet(new Union<>(this, that));
     }
@@ -167,7 +167,7 @@ public class VertexSet extends ObjectSet<Vertex>
     /**
      * @return This set of vertexes without the given vertexes
      */
-    public VertexSet without(final Set<Vertex> exclude)
+    public VertexSet without(Set<Vertex> exclude)
     {
         return new VertexSet(new Without<>(this, exclude));
     }
@@ -175,7 +175,7 @@ public class VertexSet extends ObjectSet<Vertex>
     /**
      * @return This set of vertexes excluding the given vertex
      */
-    public VertexSet without(final Vertex exclude)
+    public VertexSet without(Vertex exclude)
     {
         return without(Collections.singleton(exclude));
     }

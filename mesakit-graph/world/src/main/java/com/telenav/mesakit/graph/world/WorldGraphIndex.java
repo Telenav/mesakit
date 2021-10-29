@@ -122,7 +122,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
         return new WorldGraphIndex();
     }
 
-    public static WorldGraphIndex load(final File file)
+    public static WorldGraphIndex load(File file)
     {
         if (file.isRemote())
         {
@@ -142,7 +142,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
     {
         private final Source<Iterator<T>> iteratorSource;
 
-        public CastingIterableAdapter(final Source<Iterator<T>> iteratorSource)
+        public CastingIterableAdapter(Source<Iterator<T>> iteratorSource)
         {
             this.iteratorSource = iteratorSource;
         }
@@ -196,9 +196,9 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
         cellForWayIdentifier.initialize();
     }
 
-    public synchronized void index(final WorldCell worldCell, final Graph cellGraph)
+    public synchronized void index(WorldCell worldCell, Graph cellGraph)
     {
-        final var worldGrid = worldCell.worldGrid();
+        var worldGrid = worldCell.worldGrid();
         assert worldGrid.worldGraph() != null;
 
         // store the size of the graph in the index
@@ -209,13 +209,13 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
         }
 
         // and add all places having a population
-        for (final var place : cellGraph.placesWithPopulationOfAtLeast(Count._1))
+        for (var place : cellGraph.placesWithPopulationOfAtLeast(Count._1))
         {
             places().add(new WorldPlace(worldCell, place));
         }
 
         // add way identifiers to map
-        for (final var edge : cellGraph.forwardEdges())
+        for (var edge : cellGraph.forwardEdges())
         {
             cellForWayIdentifier.put(edge.wayIdentifier().asLong(), worldCell.gridCell().identifier().identifier());
         }
@@ -231,7 +231,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
         if (ZipArchive.is(LOGGER, file))
         {
             // Record start time
-            final var start = Time.now();
+            var start = Time.now();
 
             // If the resource is a virtual file, it must be materialized to read it as a zip file
             file = file.materialized(ProgressReporter.NULL);
@@ -245,8 +245,8 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
             try
             {
                 // Load archived fields
-                final var version = archive.version();
-                final VersionedObject<Metadata> metadata = archive.zip().load(SerializationSession.threadLocal(LOGGER), "metadata");
+                var version = archive.version();
+                VersionedObject<Metadata> metadata = archive.zip().load(SerializationSession.threadLocal(LOGGER), "metadata");
                 if (metadata != null)
                 {
                     this.metadata = metadata.get();
@@ -260,7 +260,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
                     fail("Unable to load metadata");
                 }
             }
-            catch (final Exception e)
+            catch (Exception e)
             {
                 fail(e, "Unable to load from " + file);
             }
@@ -272,7 +272,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
         return this;
     }
 
-    public Bytes memorySize(final WorldCell worldCell)
+    public Bytes memorySize(WorldCell worldCell)
     {
         synchronized (memorySize)
         {
@@ -305,9 +305,9 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
         }
     }
 
-    public Place placeForLocation(final Location location)
+    public Place placeForLocation(Location location)
     {
-        for (final var place : placesInside(location.bounds().expanded(Distance.ONE_METER)))
+        for (var place : placesInside(location.bounds().expanded(Distance.ONE_METER)))
         {
             if (place.location().equals(location))
             {
@@ -317,7 +317,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
         return null;
     }
 
-    public Iterable<Place> placesInside(final Rectangle bounds)
+    public Iterable<Place> placesInside(Rectangle bounds)
     {
         return new CastingIterableAdapter<>(() -> placeSpatialIndex().inside(bounds));
     }
@@ -325,18 +325,18 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
     /**
      * Saves this world graph index to the given file
      */
-    public final void save(final File file, final Metadata metadata)
+    public final void save(File file, Metadata metadata)
     {
         assert metadata != null;
 
         // Record start time
-        final var start = Time.now();
+        var start = Time.now();
 
         try
         {
             // Create archive and save all non-null archived fields
-            final var archive = new FieldArchive(file, SerializationSessionFactory.threadLocal(), ProgressReporter.NULL, WRITE);
-            final var version = GraphArchive.VERSION;
+            var archive = new FieldArchive(file, SerializationSessionFactory.threadLocal(), ProgressReporter.NULL, WRITE);
+            var version = GraphArchive.VERSION;
             archive.version(version);
             archive.save("metadata", new VersionedObject<>(version, metadata));
             archive.saveFieldsOf(this, version);
@@ -345,7 +345,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
             // We're done!
             DEBUG.trace("Saved $ (version $) in ${debug}", file, version, start.elapsedSince());
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             fail(e, "Unable to save to" + file);
         }
@@ -361,13 +361,13 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
     }
 
     @SuppressWarnings({ "exports" })
-    public WorldCell worldCellForWayIdentifier(final WorldGrid grid, final MapWayIdentifier wayIdentifier)
+    public WorldCell worldCellForWayIdentifier(WorldGrid grid, MapWayIdentifier wayIdentifier)
     {
         if (cellForWayIdentifier == null)
         {
             archive.loadFieldOf(this, "cell-for-way-identifier");
         }
-        final var cellIdentifier = cellForWayIdentifier.get(wayIdentifier.asLong());
+        var cellIdentifier = cellForWayIdentifier.get(wayIdentifier.asLong());
         if (!cellForWayIdentifier.isNull(cellIdentifier))
         {
             return grid.worldCell(cellIdentifier);
@@ -375,7 +375,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
         return null;
     }
 
-    public void worldGraph(final WorldGraph worldGraph)
+    public void worldGraph(WorldGraph worldGraph)
     {
         this.worldGraph = worldGraph;
     }
@@ -394,7 +394,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
             placeSpatialIndex = new QuadTreeSpatialIndex<>();
             synchronized (this)
             {
-                for (final var place : places())
+                for (var place : places())
                 {
                     placeSpatialIndex.add(place);
                 }
@@ -412,7 +412,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
             if (archive != null)
             {
                 archive.loadFieldOf(this, "places");
-                for (final var place : places)
+                for (var place : places)
                 {
                     place.graph(worldGraph);
                 }

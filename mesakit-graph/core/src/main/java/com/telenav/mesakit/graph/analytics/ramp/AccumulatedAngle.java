@@ -43,11 +43,11 @@ class AccumulatedAngle
     /**
      * Gets the curve angle by accumulating angles between all connected segments of the edge.
      */
-    static AccumulatedAngle curveAngle(final Edge edge)
+    static AccumulatedAngle curveAngle(Edge edge)
     {
-        final var curveAngle = new AccumulatedAngle(0);
+        var curveAngle = new AccumulatedAngle(0);
         Heading beginHeading = null;
-        for (final var segment : edge.roadShape().segments())
+        for (var segment : edge.roadShape().segments())
         {
             if (beginHeading == null)
             {
@@ -55,7 +55,7 @@ class AccumulatedAngle
             }
             else
             {
-                final var endHeading = segment.heading();
+                var endHeading = segment.heading();
                 curveAngle.accumulate(beginHeading.difference(endHeading, Chirality.CLOCKWISE));
                 beginHeading = endHeading;
             }
@@ -66,47 +66,47 @@ class AccumulatedAngle
     /** the accumulated degrees */
     private double degrees;
 
-    AccumulatedAngle(final Angle angle)
+    AccumulatedAngle(Angle angle)
     {
         this(0);
         accumulate(angle);
     }
 
-    AccumulatedAngle(final double degrees)
+    AccumulatedAngle(double degrees)
     {
         this.degrees = degrees;
     }
 
     @SuppressWarnings("UnusedReturnValue")
-    AccumulatedAngle accumulate(final AccumulatedAngle that)
+    AccumulatedAngle accumulate(AccumulatedAngle that)
     {
-        this.degrees += that.degrees;
+        degrees += that.degrees;
         return this;
     }
 
     @SuppressWarnings("UnusedReturnValue")
-    AccumulatedAngle accumulate(final Angle angle)
+    AccumulatedAngle accumulate(Angle angle)
     {
         if (angle.isGreaterThan(_0_DEGREES))
         {
             if (angle.isLessThan(_180_DEGREES))
             {
-                this.degrees += angle.asDegrees();
+                degrees += angle.asDegrees();
             }
             else
             {
-                this.degrees -= MAXIMUM.minus(angle).asDegrees();
+                degrees -= MAXIMUM.minus(angle).asDegrees();
             }
         }
         else
         {
             if (angle.isGreaterThan(_MINUS_180_DEGREES))
             {
-                this.degrees += angle.asDegrees();
+                degrees += angle.asDegrees();
             }
             else
             {
-                this.degrees += MAXIMUM.plus(angle).asDegrees();
+                degrees += MAXIMUM.plus(angle).asDegrees();
             }
         }
         return this;
@@ -116,8 +116,8 @@ class AccumulatedAngle
      * Compares the abstract degrees of this and that accumulate angles.
      */
     @SuppressWarnings("SameParameterValue")
-    boolean isGreaterThan(final AccumulatedAngle that)
+    boolean isGreaterThan(AccumulatedAngle that)
     {
-        return Math.abs(this.degrees) > Math.abs(that.degrees);
+        return Math.abs(degrees) > Math.abs(that.degrees);
     }
 }

@@ -33,16 +33,16 @@ public class Value
 
     public static Value FALSE = of(false);
 
-    public static Value NULL = of(null);
+    public static final Value NULL = of(null);
 
-    public static Value of(final Object value)
+    public static Value of(Object value)
     {
         return new Value(value);
     }
 
     private final Object value;
 
-    private Value(final Object value)
+    private Value(Object value)
     {
         this.value = value;
     }
@@ -69,19 +69,19 @@ public class Value
         }
         if (isString())
         {
-            final var enumName = asString().toUpperCase();
-            for (final var type : new Class[] { RoadType.class, RoadFunctionalClass.class, RoadSurface.class,
+            var enumName = asString().toUpperCase();
+            for (var type : new Class[] { RoadType.class, RoadFunctionalClass.class, RoadSurface.class,
                     RoadSubType.class, Edge.TransportMode.class, BridgeType.class, RoadState.class, TurnType.class })
             {
                 try
                 {
-                    final var enumValue = Enum.valueOf(type, enumName);
+                    var enumValue = Enum.valueOf(type, enumName);
                     if (enumValue instanceof Quantizable)
                     {
                         return (double) ((Quantizable) enumValue).quantum();
                     }
                 }
-                catch (final Exception ignored)
+                catch (Exception ignored)
                 {
                 }
             }
@@ -105,12 +105,12 @@ public class Value
 
     public Object asValue()
     {
-        final var doubleValue = asNumber();
+        var doubleValue = asNumber();
         if (doubleValue != null)
         {
             return doubleValue;
         }
-        final var stringValue = asString();
+        var stringValue = asString();
         if (stringValue != null)
         {
             return stringValue;

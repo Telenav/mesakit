@@ -39,21 +39,21 @@ public class WorldGraphRoutingTest extends WorldGraphUnitTest
     @Test
     public void testRouting()
     {
-        final var from = osmGraph().vertexNearest(Location.degrees(34.9559601, -79.9980919));
-        final var to = osmGraph().vertexNearest(Location.degrees(34.9453363, -80.0146624));
-        final var router = new DijkstraRouter(new RemainingDistanceToEndCostFunction(from.location(), to.location())
+        var from = osmGraph().vertexNearest(Location.degrees(34.9559601, -79.9980919));
+        var to = osmGraph().vertexNearest(Location.degrees(34.9453363, -80.0146624));
+        var router = new DijkstraRouter(new RemainingDistanceToEndCostFunction(from.location(), to.location())
                 .weightedSum(Weight.weight(0.75), new SpeedCostFunction()));
-        final RoutingRequest request = new DijkstraRoutingRequest(from, to)
+        RoutingRequest request = new DijkstraRoutingRequest(from, to)
                 .withLimiter(new CpuTimeRoutingLimiter(PreciseDuration.seconds(3)))
                 .withDebugger(SWING_DEBUG ? new SwingRoutingDebugger("test routing") : RoutingDebugger.NULL);
         try
         {
-            final var result = router.findRoute(request);
+            var result = router.findRoute(request);
             ensureEqual(
                     "cell-24-20--16398033000000:cell-24-20--16399176000002:cell-24-20--16399176000001:cell-24-20--16399176000000:cell-24-19--16399176000000:cell-24-19--16399995000001:cell-24-19--16399995000000:cell-23-19--16399995000002:cell-23-19--16399995000001:cell-23-19-16399369000000",
                     result.route().toString());
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             e.printStackTrace();
             fail("failed");

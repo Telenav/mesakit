@@ -35,17 +35,17 @@ public class NamedRoadNavigator extends Navigator
 
     private final EdgeSet visited = new EdgeSet();
 
-    public NamedRoadNavigator(final RoadName name)
+    public NamedRoadNavigator(RoadName name)
     {
         this.name = name;
     }
 
     @Override
-    public Edge in(final Edge edge)
+    public Edge in(Edge edge)
     {
-        final var from = edge.from();
-        final var reversed = edge.reversed();
-        for (final var in : from.inEdges())
+        var from = edge.from();
+        var reversed = edge.reversed();
+        for (var in : from.inEdges())
         {
             if (accept(in) && !in.equals(reversed))
             {
@@ -56,9 +56,9 @@ public class NamedRoadNavigator extends Navigator
     }
 
     @Override
-    public Edge next(final Edge edge, final Direction direction)
+    public Edge next(Edge edge, Direction direction)
     {
-        final var next = super.next(edge, direction);
+        var next = super.next(edge, direction);
         if (next != null && !visited.contains(next.forward()))
         {
             visited.add(next.forward());
@@ -68,11 +68,11 @@ public class NamedRoadNavigator extends Navigator
     }
 
     @Override
-    public Edge out(final Edge edge)
+    public Edge out(Edge edge)
     {
-        final var to = edge.to();
-        final var reversed = edge.reversed();
-        for (final var out : to.outEdges())
+        var to = edge.to();
+        var reversed = edge.reversed();
+        for (var out : to.outEdges())
         {
             if (accept(out) && !out.equals(reversed))
             {
@@ -82,7 +82,7 @@ public class NamedRoadNavigator extends Navigator
         return null;
     }
 
-    protected boolean accept(final Edge edge)
+    protected boolean accept(Edge edge)
     {
         if (!edge.isRamp())
         {

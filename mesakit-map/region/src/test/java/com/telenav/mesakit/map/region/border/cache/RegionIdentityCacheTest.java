@@ -43,44 +43,44 @@ public class RegionIdentityCacheTest extends RegionUnitTest
     public void test()
     {
         // Create cache
-        final RegionIdentityCache<State> cache = listenTo(new RegionIdentityCache<>(State.class));
+        RegionIdentityCache<State> cache = listenTo(new RegionIdentityCache<>(State.class));
 
         // Create kryo output to memory
-        final var session = sessionFactory().session(Listener.none());
-        final var data = new ByteArrayOutputStream(20_000);
-        final var output = new Output(data);
+        var session = sessionFactory().session(Listener.none());
+        var data = new ByteArrayOutputStream(20_000);
+        var output = new Output(data);
 
         // Save the identities
-        final var version = RegionProject.get().borderDataVersion();
+        var version = RegionProject.get().borderDataVersion();
         session.open(RESOURCE, KivaKit.get().projectVersion(), output);
         session.write(new VersionedObject<>(version, identities()));
         session.close();
         output.close();
 
         // Load and create region objects for the identities
-        final var input = new ByteArrayInputStream(data.toByteArray());
+        var input = new ByteArrayInputStream(data.toByteArray());
         ensure(cache.load(input, session));
         IO.close(input);
 
         // Ensure the region objects
-        final State ca = State.forRegionCode(code("US-CA"));
+        State ca = State.forRegionCode(code("US-CA"));
         ensureEqual("US-CA", ca.identity().iso().code());
-        final State wa = State.forRegionCode(code("US-WA"));
+        State wa = State.forRegionCode(code("US-WA"));
         ensureEqual("US-WA", wa.identity().iso().code());
-        final State nm = State.forRegionCode(code("US-NM"));
+        State nm = State.forRegionCode(code("US-NM"));
         ensureEqual("US-NM", nm.identity().iso().code());
     }
 
     private Set<RegionIdentity> identities()
     {
-        final Set<RegionIdentity> identities = new HashSet<>();
+        Set<RegionIdentity> identities = new HashSet<>();
         identities.add(identity("California", "US-CA", "United_States-California"));
         identities.add(identity("Washington", "US-WA", "United_States-Washington"));
         identities.add(identity("New Mexico", "US-NM", "United_States-New_Mexico"));
         return identities;
     }
 
-    private RegionIdentity identity(final String name, final String iso, final String mesakit)
+    private RegionIdentity identity(String name, String iso, String mesakit)
     {
         return new RegionIdentity(name)
                 .withIdentifier(new RegionIdentifier(0))

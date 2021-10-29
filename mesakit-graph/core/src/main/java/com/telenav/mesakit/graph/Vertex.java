@@ -65,7 +65,7 @@ public class Vertex extends GraphNode
     /**
      * @return A matcher for vertexes inside the given bounds
      */
-    public static Matcher<Vertex> inside(final Rectangle bounds)
+    public static Matcher<Vertex> inside(Rectangle bounds)
     {
         return vertex -> vertex.isInside(bounds);
     }
@@ -74,22 +74,22 @@ public class Vertex extends GraphNode
     {
         private final Graph graph;
 
-        public Converter(final Graph graph, final Listener listener)
+        public Converter(Graph graph, Listener listener)
         {
             super(listener);
             this.graph = graph;
         }
 
         @Override
-        protected Vertex onToValue(final String value)
+        protected String onToString(Vertex vertex)
         {
-            return graph.vertexForIdentifier(new VertexIdentifier(Integer.parseInt(value)));
+            return Integer.toString((int) vertex.identifierAsLong());
         }
 
         @Override
-        protected String onToString(final Vertex vertex)
+        protected Vertex onToValue(String value)
         {
-            return Integer.toString((int) vertex.identifierAsLong());
+            return graph.vertexForIdentifier(new VertexIdentifier(Integer.parseInt(value)));
         }
     }
 
@@ -97,7 +97,7 @@ public class Vertex extends GraphNode
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public Vertex(final Graph graph, final VertexIdentifier identifier)
+    public Vertex(Graph graph, VertexIdentifier identifier)
     {
         this(graph, identifier.asLong());
     }
@@ -106,7 +106,7 @@ public class Vertex extends GraphNode
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public Vertex(final Graph graph, final long identifier)
+    public Vertex(Graph graph, long identifier)
     {
         graph(graph);
         identifier(identifier);
@@ -120,14 +120,14 @@ public class Vertex extends GraphNode
         {
             return (HeavyWeightVertex) this;
         }
-        final var heavyweight = dataSpecification().newHeavyWeightVertex(graph(), identifierAsLong());
+        var heavyweight = dataSpecification().newHeavyWeightVertex(graph(), identifierAsLong());
         heavyweight.copy(this);
         return heavyweight;
     }
 
     public HeavyWeightVertex asHeavyWeightCopy()
     {
-        final var copy = graph().newHeavyWeightVertex(identifier());
+        var copy = graph().newHeavyWeightVertex(identifier());
         copy.copy(this);
         return copy;
     }
@@ -147,9 +147,9 @@ public class Vertex extends GraphNode
     /**
      * @return The differences between this vertex and that vertex
      */
-    public Differences differences(final Vertex that, final Rectangle bounds)
+    public Differences differences(Vertex that, Rectangle bounds)
     {
-        final var differences = new Differences();
+        var differences = new Differences();
         differences.compare("identifier", identifier(), that.identifier());
         differences.compare("location", location(), that.location());
         differences.compare("inEdges", inEdges().within(bounds), that.inEdges().within(bounds));
@@ -160,9 +160,9 @@ public class Vertex extends GraphNode
     /**
      * @return The edge between this vertex and the given vertex (in either direction)
      */
-    public Edge edgeBetween(final Vertex vertex)
+    public Edge edgeBetween(Vertex vertex)
     {
-        final var sharedEdges = new Intersection<>(edges(), vertex.edges()).iterator();
+        var sharedEdges = new Intersection<>(edges(), vertex.edges()).iterator();
         if (sharedEdges.hasNext())
         {
             return sharedEdges.next();
@@ -186,9 +186,9 @@ public class Vertex extends GraphNode
         return store().retrieveEdgeSequence(this);
     }
 
-    public Edge edgeTo(final Vertex that)
+    public Edge edgeTo(Vertex that)
     {
-        for (final var edge : outEdgeSequence())
+        for (var edge : outEdgeSequence())
         {
             if (edge.to().equals(that))
             {
@@ -209,17 +209,17 @@ public class Vertex extends GraphNode
     /**
      * @return The set of edges connecting this vertex to the given vertex
      */
-    public EdgeSet edgesBetween(final Vertex that)
+    public EdgeSet edgesBetween(Vertex that)
     {
-        final var edges = new EdgeSet();
-        for (final var edge : outEdges())
+        var edges = new EdgeSet();
+        for (var edge : outEdges())
         {
             if (edge.to().equals(that))
             {
                 edges.add(edge);
             }
         }
-        for (final var edge : inEdges())
+        for (var edge : inEdges())
         {
             if (edge.from().equals(that))
             {
@@ -232,10 +232,10 @@ public class Vertex extends GraphNode
     /**
      * @return The set of edges connecting this vertex to the given vertex
      */
-    public EdgeSet edgesTo(final Vertex vertex)
+    public EdgeSet edgesTo(Vertex vertex)
     {
-        final var edges = new EdgeSet();
-        for (final var edge : outEdges())
+        var edges = new EdgeSet();
+        for (var edge : outEdges())
         {
             if (edge.to().equals(vertex))
             {
@@ -300,7 +300,7 @@ public class Vertex extends GraphNode
     /**
      * @return True if this vertex is connected to that vertex
      */
-    public boolean isConnectedTo(final Vertex that)
+    public boolean isConnectedTo(Vertex that)
     {
         return edgeBetween(that) != null;
     }
@@ -312,8 +312,8 @@ public class Vertex extends GraphNode
     {
         if (!isClipped() && inEdgeCount().equals(Count._1) && outEdgeCount().equals(Count._1))
         {
-            final var out = outEdges();
-            final var in = inEdges();
+            var out = outEdges();
+            var in = inEdges();
             return out != null && in != null && !out.isEmpty() && !in.isEmpty()
                     && out.first().equals(in.first().reversed());
         }
@@ -332,7 +332,7 @@ public class Vertex extends GraphNode
 
     public boolean isIntersection()
     {
-        for (final var edge : edges())
+        for (var edge : edges())
         {
             if (edge.isIntersectionEdge())
             {
@@ -401,7 +401,7 @@ public class Vertex extends GraphNode
         // Two way street case
         if (inEdgeCount().isLessThanOrEqualTo(Count._2) && outEdgeCount().isLessThanOrEqualTo(Count._2))
         {
-            for (final var in : inEdges())
+            for (var in : inEdges())
             {
                 if (!outEdges().contains(in.reversed()))
                 {
@@ -445,12 +445,12 @@ public class Vertex extends GraphNode
         {
             return store().retrieveNodeIdentifier(this);
         }
-        final var out = outEdges().first();
+        var out = outEdges().first();
         if (out != null)
         {
             return out.fromNodeIdentifier();
         }
-        final var in = inEdges().first();
+        var in = inEdges().first();
         if (in != null)
         {
             return in.toNodeIdentifier();
@@ -512,7 +512,7 @@ public class Vertex extends GraphNode
     RoadFunctionalClass maximumRoadFunctionalClass()
     {
         var maximum = RoadFunctionalClass.UNKNOWN;
-        for (final var edge : edges())
+        for (var edge : edges())
         {
             if (edge.roadFunctionalClass().isMoreImportantThan(maximum))
             {

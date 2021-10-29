@@ -41,8 +41,8 @@ public class PlaceIdentifier extends MapNodeIdentifier implements GraphElementId
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static SwitchParser.Builder<PlaceIdentifier> placeIdentifierSwitchParser(final String name,
-                                                                                    final String description)
+    public static SwitchParser.Builder<PlaceIdentifier> placeIdentifierSwitchParser(String name,
+                                                                                    String description)
     {
         return SwitchParser.builder(PlaceIdentifier.class)
                 .name(name)
@@ -52,7 +52,7 @@ public class PlaceIdentifier extends MapNodeIdentifier implements GraphElementId
 
     public static class Converter extends Quantizable.Converter<PlaceIdentifier>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener, PlaceIdentifier::new);
         }
@@ -61,13 +61,13 @@ public class PlaceIdentifier extends MapNodeIdentifier implements GraphElementId
     /**
      * Construct from identifier
      */
-    public PlaceIdentifier(final long identifier)
+    public PlaceIdentifier(long identifier)
     {
         super(identifier);
     }
 
     @Override
-    public GraphElement element(final Graph graph)
+    public GraphElement element(Graph graph)
     {
         return graph.placeForIdentifier(this);
     }
@@ -82,7 +82,7 @@ public class PlaceIdentifier extends MapNodeIdentifier implements GraphElementId
     }
 
     @Override
-    protected MapIdentifier newIdentifier(final long identifier)
+    protected MapIdentifier newIdentifier(long identifier)
     {
         return new PlaceIdentifier(identifier);
     }

@@ -38,7 +38,7 @@ public class WorldPlaceIdentifier extends PlaceIdentifier
     /** The cell where this identifier resides */
     private final WorldCell worldCell;
 
-    public WorldPlaceIdentifier(final WorldCell worldCell, final PlaceIdentifier identifier)
+    public WorldPlaceIdentifier(WorldCell worldCell, PlaceIdentifier identifier)
     {
         super(identifier.asLong());
         this.worldCell = worldCell;

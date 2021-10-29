@@ -43,12 +43,12 @@ public class RouteList implements Iterable<Route>
     {
     }
 
-    public RouteList(final Iterable<Route> iterable)
+    public RouteList(Iterable<Route> iterable)
     {
         Iterables.addAll(iterable, routes);
     }
 
-    public void add(final Route edge)
+    public void add(Route edge)
     {
         if (edge != null)
         {
@@ -58,8 +58,8 @@ public class RouteList implements Iterable<Route>
 
     public EdgeSet asEdgeSet()
     {
-        final var edges = new EdgeSet();
-        for (final var route : this)
+        var edges = new EdgeSet();
+        for (var route : this)
         {
             edges.add(route);
         }
@@ -79,18 +79,18 @@ public class RouteList implements Iterable<Route>
      */
     public ObjectList<Route> asRoutes()
     {
-        final var result = new ObjectList<Route>();
+        var result = new ObjectList<Route>();
 
         // Create a queue with the routes in this list
-        final var queue = new LinkedList<>(routes);
+        var queue = new LinkedList<>(routes);
 
         // and if there is at least one route to add
         if (!isEmpty())
         {
             // create maps from vertexes to in and out routes
-            final Map<Vertex, Route> outRoute = new HashMap<>();
-            final Map<Vertex, Route> inRoute = new HashMap<>();
-            for (final var route : queue)
+            Map<Vertex, Route> outRoute = new HashMap<>();
+            Map<Vertex, Route> inRoute = new HashMap<>();
+            for (var route : queue)
             {
                 outRoute.put(route.start(), route);
                 inRoute.put(route.end(), route);
@@ -100,18 +100,18 @@ public class RouteList implements Iterable<Route>
             while (queue.size() > 1)
             {
                 // remove the head of the queue
-                final var head = queue.removeFirst();
+                var head = queue.removeFirst();
 
                 // and get its start and end vertex
-                final var start = head.start();
-                final var end = head.end();
+                var start = head.start();
+                var end = head.end();
 
                 // and if there is an in-route to the start vertex
-                final var in = inRoute.get(start);
+                var in = inRoute.get(start);
                 if (in != null)
                 {
                     // then connect it to the head
-                    final var connected = head.connect(in);
+                    var connected = head.connect(in);
                     if (connected != null)
                     {
                         // remove the in route and add the new head back to the queue
@@ -123,11 +123,11 @@ public class RouteList implements Iterable<Route>
                 }
 
                 // and if there is an out-route from the end vertex
-                final var out = outRoute.get(end);
+                var out = outRoute.get(end);
                 if (out != null)
                 {
                     // then append it to the head
-                    final var connected = head.connect(out);
+                    var connected = head.connect(out);
                     if (connected != null)
                     {
                         // remove the out route and add the new head back to the queue

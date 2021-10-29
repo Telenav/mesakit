@@ -49,7 +49,7 @@ public class HuffmanPolyline extends Polyline implements CompressibleCollection
     /**
      * @param compressed Construct from compressed data
      */
-    public HuffmanPolyline(final ByteList compressed)
+    public HuffmanPolyline(ByteList compressed)
     {
         assert compressed != null;
         this.compressed = compressed;
@@ -59,9 +59,9 @@ public class HuffmanPolyline extends Polyline implements CompressibleCollection
     /**
      * Construct by compressing another polyline
      */
-    public HuffmanPolyline(final Polyline polyline)
+    public HuffmanPolyline(Polyline polyline)
     {
-        final var compressed = new ByteArray("polyline-data");
+        var compressed = new ByteArray("polyline-data");
         compressed.initialSize(16);
         compressed.initialize();
         this.compressed = compressed;
@@ -82,7 +82,7 @@ public class HuffmanPolyline extends Polyline implements CompressibleCollection
     }
 
     @Override
-    public Method compress(final Method method)
+    public Method compress(Method method)
     {
         return asBytes().compress(method);
     }
@@ -133,16 +133,16 @@ public class HuffmanPolyline extends Polyline implements CompressibleCollection
     {
         long previous = -1;
         var lengthInMillimeters = 0L;
-        final var locations = decompressedLongs();
-        for (final var at : locations)
+        var locations = decompressedLongs();
+        for (var at : locations)
         {
             if (previous >= 0)
             {
-                final var fromLatitude = Location.latitude(previous);
-                final var fromLongitude = Location.longitude(previous);
-                final var toLatitude = Location.latitude(at);
-                final var toLongitude = Location.longitude(at);
-                final var millimeters = Location.equirectangularDistanceBetweenInMillimeters(
+                var fromLatitude = Location.latitude(previous);
+                var fromLongitude = Location.longitude(previous);
+                var toLatitude = Location.latitude(at);
+                var toLongitude = Location.longitude(at);
+                var millimeters = Location.equirectangularDistanceBetweenInMillimeters(
                         fromLatitude, fromLongitude,
                         toLatitude, toLongitude);
 

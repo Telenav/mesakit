@@ -36,44 +36,44 @@ import java.io.IOException;
  */
 public class PbfAllNodeIdentifierDiskStore extends AllNodeDiskStore
 {
-    public PbfAllNodeIdentifierDiskStore(final Folder data)
+    public PbfAllNodeIdentifierDiskStore(Folder data)
     {
         super(data);
     }
 
-    public PbfAllNodeIdentifierDiskStore(final GraphArchive archive)
+    public PbfAllNodeIdentifierDiskStore(GraphArchive archive)
     {
         super(archive);
     }
 
-    public void add(final PbfNode node)
+    public void add(PbfNode node)
     {
-        final var location = Location.degrees(node.latitude(), node.longitude());
-        final var out = output(new AllNodeDiskCell(location));
+        var location = Location.degrees(node.latitude(), node.longitude());
+        var out = output(new AllNodeDiskCell(location));
         try
         {
             out.writeLong(node.identifierAsLong());
         }
-        catch (final IOException e)
+        catch (IOException e)
         {
             throw new IllegalStateException("Unable to add node identifier", e);
         }
     }
 
-    public LongArray load(final AllNodeDiskCell cell)
+    public LongArray load(AllNodeDiskCell cell)
     {
-        final var identifiers = new LongArray(name() + ".identifiers");
+        var identifiers = new LongArray(name() + ".identifiers");
         identifiers.initialSize(RegionLimits.ESTIMATED_NODES);
         identifiers.initialize();
 
-        try (final var in = new DataInputStream(entry(cell).openForReading()))
+        try (var in = new DataInputStream(entry(cell).openForReading()))
         {
             while (in.available() > 0)
             {
                 identifiers.add(in.readLong());
             }
         }
-        catch (final IOException e)
+        catch (IOException e)
         {
             throw new IllegalStateException("Unable to load node identifiers", e);
         }

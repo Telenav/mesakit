@@ -37,14 +37,14 @@ public class EdgeAttributes extends GraphElementAttributes<Edge>
         return EdgeAttributes.singleton.get();
     }
 
-    public static EdgeAttributes get(final Graph graph)
+    public static EdgeAttributes get(Graph graph)
     {
         return graph.supportedEdgeAttributes();
     }
 
     public class EdgeAttribute extends GraphElementAttribute
     {
-        public EdgeAttribute(final String name)
+        public EdgeAttribute(String name)
         {
             super(name);
         }

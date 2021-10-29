@@ -43,7 +43,7 @@ public class DataBuild
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static DataBuild at(final LocalTime time)
+    public static DataBuild at(LocalTime time)
     {
         return new DataBuild(time);
     }
@@ -53,21 +53,21 @@ public class DataBuild
         return at(LocalTime.now());
     }
 
-    public static DataBuild parse(final String string)
+    public static DataBuild parse(String string)
     {
-        final var time = new LocalDateTimeConverter(LOGGER).convert(string);
+        var time = new LocalDateTimeConverter(LOGGER).convert(string);
         return time == null ? null : new DataBuild(time);
     }
 
     public static class Converter extends BaseStringConverter<DataBuild>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected DataBuild onToValue(final String date)
+        protected DataBuild onToValue(String date)
         {
             return parse(date);
         }
@@ -91,7 +91,7 @@ public class DataBuild
     {
     }
 
-    public DataBuild(final DataBuild that)
+    public DataBuild(DataBuild that)
     {
         year = that.year;
         month = that.month;
@@ -102,7 +102,7 @@ public class DataBuild
         zoneId = that.zoneId;
     }
 
-    public DataBuild(final LocalTime time)
+    public DataBuild(LocalTime time)
     {
         year = time.year();
         month = time.month();
@@ -119,11 +119,11 @@ public class DataBuild
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof DataBuild)
         {
-            final var that = (DataBuild) object;
+            var that = (DataBuild) object;
             return year == that.year
                     && month == that.month
                     && day == that.day
@@ -160,56 +160,56 @@ public class DataBuild
         return localTime().localTime(LocalTime.utcTimeZone());
     }
 
-    public DataBuild withDay(final int day)
+    public DataBuild withDay(int day)
     {
         ensure(day >= 1 && day <= 31);
-        final var build = new DataBuild(this);
+        var build = new DataBuild(this);
         build.day = day;
         return build;
     }
 
-    public DataBuild withHour(final int hour)
+    public DataBuild withHour(int hour)
     {
         ensure(hour >= 1 && hour <= 12);
-        final var build = new DataBuild(this);
+        var build = new DataBuild(this);
         build.hour = hour;
         return build;
     }
 
-    public DataBuild withMeridiem(final Meridiem ampm)
+    public DataBuild withMeridiem(Meridiem ampm)
     {
-        final var build = new DataBuild(this);
+        var build = new DataBuild(this);
         build.ampm = ampm;
         return build;
     }
 
-    public DataBuild withMinute(final int minute)
+    public DataBuild withMinute(int minute)
     {
         ensure(minute >= 0 && minute <= 59);
-        final var build = new DataBuild(this);
+        var build = new DataBuild(this);
         build.minute = minute;
         return build;
     }
 
-    public DataBuild withMonth(final int month)
+    public DataBuild withMonth(int month)
     {
         ensure(month >= 1 && month <= 12);
-        final var build = new DataBuild(this);
+        var build = new DataBuild(this);
         build.month = month;
         return build;
     }
 
-    public DataBuild withTimeZone(final ZoneId zone)
+    public DataBuild withTimeZone(ZoneId zone)
     {
-        final var build = new DataBuild(this);
+        var build = new DataBuild(this);
         build.zoneId = zone.getId().trim();
         return build;
     }
 
-    public DataBuild withYear(final int year)
+    public DataBuild withYear(int year)
     {
         ensure(year >= 1970 && year <= 2100);
-        final var build = new DataBuild(this);
+        var build = new DataBuild(this);
         build.year = year;
         return build;
     }

@@ -46,7 +46,7 @@ public class GraphElementAttributes<T extends GraphElement> extends AttributeLis
 
     public class GraphElementAttribute extends Attribute<T>
     {
-        public GraphElementAttribute(final String name)
+        public GraphElementAttribute(String name)
         {
             super(name);
             add(this);

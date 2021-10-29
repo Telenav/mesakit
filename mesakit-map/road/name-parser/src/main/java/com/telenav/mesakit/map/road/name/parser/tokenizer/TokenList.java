@@ -32,7 +32,7 @@ public class TokenList implements Iterable<Token>
         private final List<Token> tokens = new ArrayList<>();
 
         @SuppressWarnings("UnusedReturnValue")
-        public Builder add(final Token token)
+        public Builder add(Token token)
         {
             tokens.add(token);
             return this;
@@ -50,7 +50,7 @@ public class TokenList implements Iterable<Token>
     // Current position in token list
     private int at;
 
-    private TokenList(final List<Token> tokens)
+    private TokenList(List<Token> tokens)
     {
         this.tokens = tokens;
     }
@@ -60,7 +60,7 @@ public class TokenList implements Iterable<Token>
         return at;
     }
 
-    public void at(final int at)
+    public void at(int at)
     {
         this.at = Math.min(at, size());
     }
@@ -80,7 +80,7 @@ public class TokenList implements Iterable<Token>
         return token(0);
     }
 
-    public Token get(final int index)
+    public Token get(int index)
     {
         return tokens.get(index);
     }
@@ -106,12 +106,12 @@ public class TokenList implements Iterable<Token>
         return isEmpty() ? null : token(size() - 1);
     }
 
-    public boolean lookingAt(final Token token)
+    public boolean lookingAt(Token token)
     {
         return current() != null && current().equals(token);
     }
 
-    public boolean match(final Token token)
+    public boolean match(Token token)
     {
         if (lookingAt(token))
         {
@@ -142,7 +142,7 @@ public class TokenList implements Iterable<Token>
 
     public String remainder()
     {
-        final var builder = new StringBuilder();
+        var builder = new StringBuilder();
         while (hasMore())
         {
             if (builder.length() > 0)
@@ -157,7 +157,7 @@ public class TokenList implements Iterable<Token>
 
     public String remainderCapitalized()
     {
-        final var builder = new StringBuilder();
+        var builder = new StringBuilder();
         while (hasMore())
         {
             if (builder.length() > 0)
@@ -170,9 +170,9 @@ public class TokenList implements Iterable<Token>
         return builder.length() > 0 ? builder.toString() : null;
     }
 
-    public Token remove(final int index)
+    public Token remove(int index)
     {
-        final var removed = tokens.remove(index);
+        var removed = tokens.remove(index);
         reset();
         return removed;
     }
@@ -197,7 +197,7 @@ public class TokenList implements Iterable<Token>
         return tokens.size();
     }
 
-    public void skipAny(final Token token)
+    public void skipAny(Token token)
     {
         if (lookingAt(token))
         {
@@ -208,14 +208,14 @@ public class TokenList implements Iterable<Token>
     @Override
     public String toString()
     {
-        final var builder = new StringBuilder();
+        var builder = new StringBuilder();
         for (var i = 0; i < size(); i++)
         {
             if (i > 0)
             {
                 builder.append(", ");
             }
-            final var text = token(i).toString();
+            var text = token(i).toString();
             if (i == at)
             {
                 builder.append("** ").append(text).append(" **");
@@ -232,7 +232,7 @@ public class TokenList implements Iterable<Token>
         return builder.toString();
     }
 
-    public Token token(final int index)
+    public Token token(int index)
     {
         if (index < tokens.size())
         {

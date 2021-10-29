@@ -42,7 +42,7 @@ public abstract class PbfToGraphConverter extends BaseRepeater implements GraphC
         return new Configuration();
     }
 
-    public static Configuration newConfiguration(final Metadata metadata)
+    public static Configuration newConfiguration(Metadata metadata)
     {
         switch (metadata.dataSpecification().type())
         {
@@ -74,7 +74,7 @@ public abstract class PbfToGraphConverter extends BaseRepeater implements GraphC
 
         private boolean verify;
 
-        public Configuration addSideFilesTo(final Graph graph)
+        public Configuration addSideFilesTo(Graph graph)
         {
             if (freeFlowSideFile != null)
             {
@@ -91,7 +91,7 @@ public abstract class PbfToGraphConverter extends BaseRepeater implements GraphC
             return this;
         }
 
-        public Configuration freeFlowSideFile(final File freeFlowSideFile)
+        public Configuration freeFlowSideFile(File freeFlowSideFile)
         {
             this.freeFlowSideFile = freeFlowSideFile;
             return this;
@@ -102,19 +102,19 @@ public abstract class PbfToGraphConverter extends BaseRepeater implements GraphC
             return loaderConfiguration;
         }
 
-        public Configuration loaderConfiguration(final PbfGraphLoader.Configuration loaderConfiguration)
+        public Configuration loaderConfiguration(PbfGraphLoader.Configuration loaderConfiguration)
         {
             this.loaderConfiguration = loaderConfiguration;
             return this;
         }
 
-        public Configuration parallel(final boolean parallel)
+        public Configuration parallel(boolean parallel)
         {
             this.parallel = parallel;
             return this;
         }
 
-        public Configuration speedPatternFile(final File speedPatternFile)
+        public Configuration speedPatternFile(File speedPatternFile)
         {
             this.speedPatternFile = speedPatternFile;
             return this;
@@ -125,12 +125,12 @@ public abstract class PbfToGraphConverter extends BaseRepeater implements GraphC
             return threads;
         }
 
-        public void threads(final Count threads)
+        public void threads(Count threads)
         {
             this.threads = threads;
         }
 
-        public Configuration turnRestrictionsSideFile(final File turnRestrictionsSideFile)
+        public Configuration turnRestrictionsSideFile(File turnRestrictionsSideFile)
         {
             this.turnRestrictionsSideFile = turnRestrictionsSideFile;
             return this;
@@ -141,7 +141,7 @@ public abstract class PbfToGraphConverter extends BaseRepeater implements GraphC
             return verify;
         }
 
-        public Configuration verify(final boolean verify)
+        public Configuration verify(boolean verify)
         {
             this.verify = verify;
             return this;
@@ -152,7 +152,7 @@ public abstract class PbfToGraphConverter extends BaseRepeater implements GraphC
 
     private final Metadata metadata;
 
-    protected PbfToGraphConverter(final Metadata metadata)
+    protected PbfToGraphConverter(Metadata metadata)
     {
         this.metadata = metadata;
         configuration = newConfiguration(metadata);
@@ -170,7 +170,7 @@ public abstract class PbfToGraphConverter extends BaseRepeater implements GraphC
      * @param configuration The configuration for this converter
      */
     @MustBeInvokedByOverriders
-    public void configure(final Configuration configuration)
+    public void configure(Configuration configuration)
     {
         this.configuration = configuration;
     }
@@ -185,15 +185,15 @@ public abstract class PbfToGraphConverter extends BaseRepeater implements GraphC
         file = file.materialized(Progress.create(this));
 
         // Extract metadata from the file,
-        final var metadata = this.metadata != null ? this.metadata : Metadata.from(file);
+        var metadata = this.metadata != null ? this.metadata : Metadata.from(file);
         if (metadata != null)
         {
             // create a reader for the data,
-            final var input = listenTo(new PbfDataSourceFactory(file,
+            var input = listenTo(new PbfDataSourceFactory(file,
                     configuration().threads(), configuration().parallel ? PARALLEL_READER : SERIAL_READER));
 
             // convert the data to a graph,
-            final var graph = onConvert(input, metadata);
+            var graph = onConvert(input, metadata);
             if (graph != null)
             {
                 // then let the subclass add anything else it wants
@@ -218,7 +218,7 @@ public abstract class PbfToGraphConverter extends BaseRepeater implements GraphC
      * @return The converted graph
      */
     @MustBeInvokedByOverriders
-    protected abstract Graph onConvert(final PbfDataSourceFactory input, final Metadata metadata);
+    protected abstract Graph onConvert(PbfDataSourceFactory input, Metadata metadata);
 
     /**
      * Allows the subclass to perform finalization of the graph
@@ -226,7 +226,7 @@ public abstract class PbfToGraphConverter extends BaseRepeater implements GraphC
      * @param graph The graph that has been converted
      */
     @MustBeInvokedByOverriders
-    protected void onConverted(final Graph graph)
+    protected void onConverted(Graph graph)
     {
     }
 }

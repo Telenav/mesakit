@@ -115,7 +115,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
         /** The underlying {@link GridCell} */
         private final GridCell gridCell;
 
-        public WorldCellIdentifier(final WorldGrid grid, final GridCell gridCell)
+        public WorldCellIdentifier(WorldGrid grid, GridCell gridCell)
         {
             super(gridCell.identifier().identifier());
             this.grid = grid;
@@ -158,7 +158,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
      * @param worldGrid The parent grid
      * @param gridCell The logical cell
      */
-    public WorldCell(final WorldGrid worldGrid, final GridCell gridCell)
+    public WorldCell(WorldGrid worldGrid, GridCell gridCell)
     {
         super(null, new RegionInstance<>(WorldCell.class)
                 .withIdentity(new RegionIdentity("cell-" + gridCell.identifier().latitudeIndex() + "-" + gridCell.identifier().longitudeIndex())
@@ -173,10 +173,10 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     {
     }
 
-    public Iterable<Edge> asWorldEdges(final Iterable<Edge> edges)
+    public Iterable<Edge> asWorldEdges(Iterable<Edge> edges)
     {
-        final List<Edge> worldEdges = new ArrayList<>();
-        for (final var edge : edges)
+        List<Edge> worldEdges = new ArrayList<>();
+        for (var edge : edges)
         {
             worldEdges.add(new WorldEdge(this, edge));
         }
@@ -200,7 +200,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
      */
     public Graph cellGraph()
     {
-        final var graph = cellGraphReference().get();
+        var graph = cellGraphReference().get();
         if (graph == null)
         {
             worldGrid().worldGraph().newCellGraph();
@@ -219,19 +219,19 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     /**
      * @return The graph file in the given grid folder
      */
-    public File cellGraphFile(final WorldGraphRepositoryFolder repositoryFolder)
+    public File cellGraphFile(WorldGraphRepositoryFolder repositoryFolder)
     {
         return repositoryFolder.file(fileName().withExtension(Extension.GRAPH));
     }
 
     @Override
-    public Containment containment(final Location location)
+    public Containment containment(Location location)
     {
         return bounds().containment(location);
     }
 
     @Override
-    public boolean contains(final Location location)
+    public boolean contains(Location location)
     {
         return gridCell.contains(location);
     }
@@ -240,11 +240,11 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
      * {@inheritDoc}
      */
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof WorldCell)
         {
-            final var that = (WorldCell) object;
+            var that = (WorldCell) object;
             return this == that || gridCell.equals(that.gridCell);
         }
         return false;
@@ -259,7 +259,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
         return fileSize;
     }
 
-    public void fileSize(final Bytes fileSize)
+    public void fileSize(Bytes fileSize)
     {
         this.fileSize = fileSize;
     }
@@ -284,7 +284,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     /**
      * @return True if the given grid folder has the given data
      */
-    public boolean hasData(final WorldGraphRepositoryFolder repositoryFolder, final DataType data)
+    public boolean hasData(WorldGraphRepositoryFolder repositoryFolder, DataType data)
     {
         switch (data)
         {
@@ -300,7 +300,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     /**
      * Updates graph data presence for the this cell in the given grid folder
      */
-    public void hasGraph(final WorldGraphRepositoryFolder repositoryFolder, final boolean has)
+    public void hasGraph(WorldGraphRepositoryFolder repositoryFolder, boolean has)
     {
         hasGraph.put(repositoryFolder, has);
     }
@@ -308,7 +308,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     /**
      * @return True if there is a graph file for this cell in the given grid folder
      */
-    public boolean hasGraphFile(final WorldGraphRepositoryFolder repositoryFolder)
+    public boolean hasGraphFile(WorldGraphRepositoryFolder repositoryFolder)
     {
         return repositoryFolder != null
                 && hasGraph.computeIfAbsent(repositoryFolder, folder -> isIncluded() && cellGraphFile(folder).exists());
@@ -317,7 +317,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     /**
      * Updates PBF data presence for the this cell in the given grid folder
      */
-    public void hasPbf(final WorldGraphRepositoryFolder repositoryFolder, final boolean has)
+    public void hasPbf(WorldGraphRepositoryFolder repositoryFolder, boolean has)
     {
         hasPbf.put(repositoryFolder, has);
     }
@@ -325,7 +325,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     /**
      * @return True if there is a PBF file for this cell in the given grid folder
      */
-    public boolean hasPbfFile(final WorldGraphRepositoryFolder repositoryFolder)
+    public boolean hasPbfFile(WorldGraphRepositoryFolder repositoryFolder)
     {
         return repositoryFolder != null
                 && hasPbf.computeIfAbsent(repositoryFolder, folder -> isIncluded() && pbfFile(folder).exists());
@@ -350,7 +350,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
 
     public Bytes memorySize()
     {
-        final var graph = worldGrid.worldGraph();
+        var graph = worldGrid.worldGraph();
         return graph == null ? null : graph.estimatedMemorySize(this);
     }
 
@@ -359,7 +359,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
      */
     public WorldCellList neighbors()
     {
-        final var neighbors = neighborsAndThis();
+        var neighbors = neighborsAndThis();
         neighbors.remove(this);
         return neighbors;
     }
@@ -372,6 +372,45 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
         return worldGrid.cells(worldGrid.repositoryFolder(), DataType.GRAPH, bounds().expanded(Distance.ONE_METER));
     }
 
+    @Override
+    public void onInitialize()
+    {
+        // Create a variable strength reference that installs and loads this cell's graph when
+        // needed. When the reference is hard (vs soft or weak or null) is determined by the
+        // logic in ReferenceTracker, which keeps the N most recently accessed references as
+        // hard references and softens the remaining references.
+        var outer = this;
+        cellGraphReference = new VirtualReference<>(worldGrid.tracker())
+        {
+            @Override
+            public String name()
+            {
+                return outer.name() + " (" + memorySize() + ")";
+            }
+
+            @Override
+            protected Bytes memorySize()
+            {
+                return outer.memorySize();
+            }
+
+            @Override
+            protected Graph onLoad()
+            {
+                // Load the graph file
+                DEBUG.trace("Loading graph for $", name());
+                @SuppressWarnings(
+                        "resource") var archive = new GraphArchive(LOGGER, cellGraphFile(), READ, ProgressReporter.NULL);
+                var graph = archive.load(DEBUG.isDebugOn() ? DEBUG.listener() : Listener.none());
+                if (graph == null)
+                {
+                    LOGGER.warning("Unable to load graph for $", name());
+                }
+                return graph;
+            }
+        };
+    }
+
     public File pbfFile()
     {
         return pbfFile(worldGrid.repositoryFolder());
@@ -380,7 +419,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     /**
      * @return The PBF file in the given grid folder
      */
-    public File pbfFile(final WorldGraphRepositoryFolder repositoryFolder)
+    public File pbfFile(WorldGraphRepositoryFolder repositoryFolder)
     {
         return repositoryFolder.file(fileName().withExtension(Extension.OSM_PBF));
     }
@@ -422,45 +461,6 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     public WorldGrid worldGrid()
     {
         return worldGrid;
-    }
-
-    @Override
-    public void onInitialize()
-    {
-        // Create a variable strength reference that installs and loads this cell's graph when
-        // needed. When the reference is hard (vs soft or weak or null) is determined by the
-        // logic in ReferenceTracker, which keeps the N most recently accessed references as
-        // hard references and softens the remaining references.
-        final var outer = this;
-        cellGraphReference = new VirtualReference<>(worldGrid.tracker())
-        {
-            @Override
-            public String name()
-            {
-                return outer.name() + " (" + memorySize() + ")";
-            }
-
-            @Override
-            protected Bytes memorySize()
-            {
-                return outer.memorySize();
-            }
-
-            @Override
-            protected Graph onLoad()
-            {
-                // Load the graph file
-                DEBUG.trace("Loading graph for $", name());
-                @SuppressWarnings(
-                        "resource") final var archive = new GraphArchive(LOGGER, cellGraphFile(), READ, ProgressReporter.NULL);
-                final var graph = archive.load(DEBUG.isDebugOn() ? DEBUG.listener() : Listener.none());
-                if (graph == null)
-                {
-                    LOGGER.warning("Unable to load graph for $", name());
-                }
-                return graph;
-            }
-        };
     }
 
     private VirtualReference<Graph> cellGraphReference()

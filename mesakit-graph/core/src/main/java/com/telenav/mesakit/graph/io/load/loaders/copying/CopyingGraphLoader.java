@@ -54,7 +54,7 @@ public class CopyingGraphLoader extends BaseGraphLoader
     /**
      * @param source The source graph to copy (load) from
      */
-    public CopyingGraphLoader(final GraphArchive source)
+    public CopyingGraphLoader(GraphArchive source)
     {
         this(source.load(LOGGER));
     }
@@ -62,7 +62,7 @@ public class CopyingGraphLoader extends BaseGraphLoader
     /**
      * @param source The source graph to copy (load) from
      */
-    public CopyingGraphLoader(final Graph source)
+    public CopyingGraphLoader(Graph source)
     {
         this.source = source;
         pbfNodeDiskStores = new PbfAllNodeDiskStores(PbfAllNodeDiskStores.temporary(),
@@ -73,7 +73,7 @@ public class CopyingGraphLoader extends BaseGraphLoader
      * {@inheritDoc}
      */
     @Override
-    public void onCommit(final GraphStore store)
+    public void onCommit(GraphStore store)
     {
         if (source.supportsFullPbfNodeInformation())
         {
@@ -85,19 +85,19 @@ public class CopyingGraphLoader extends BaseGraphLoader
      * {@inheritDoc}
      */
     @Override
-    public Metadata onLoad(final GraphStore store, final GraphConstraints constraints)
+    public Metadata onLoad(GraphStore store, GraphConstraints constraints)
     {
         if (!source.isEmpty())
         {
-            final var edgeCountBefore = store.edgeStore().count();
-            final var vertexCountBefore = store.vertexStore().count();
-            final var relationCountBefore = store.relationStore().count();
-            final var placeCountBefore = store.placeStore().count();
+            var edgeCountBefore = store.edgeStore().count();
+            var vertexCountBefore = store.vertexStore().count();
+            var relationCountBefore = store.relationStore().count();
+            var placeCountBefore = store.placeStore().count();
 
             // Go through the forward edges in the source graph,
-            final var edgeAdder = store.edgeStore().adder();
-            final var relationAdder = store.relationStore().adder();
-            for (final var edge : source.forwardEdgesIntersecting(constraints.bounds()))
+            var edgeAdder = store.edgeStore().adder();
+            var relationAdder = store.relationStore().adder();
+            for (var edge : source.forwardEdgesIntersecting(constraints.bounds()))
             {
                 // and if the constraints include the edge,
                 if (constraints.includes(edge))
@@ -106,7 +106,7 @@ public class CopyingGraphLoader extends BaseGraphLoader
                     edgeAdder.add(edge);
 
                     // and each relation,
-                    for (final var relation : edge.relations())
+                    for (var relation : edge.relations())
                     {
                         // if it hasn't already been added.
                         if (!store.relationStore().containsIdentifier(relation.identifierAsLong()))
@@ -119,7 +119,7 @@ public class CopyingGraphLoader extends BaseGraphLoader
                     if (source.supportsFullPbfNodeInformation())
                     {
                         // go through the shape points
-                        for (final var point : edge.shapePoints())
+                        for (var point : edge.shapePoints())
                         {
                             // and add them to the disk store.
                             pbfNodeDiskStores.add(point.asPbfNode());
@@ -129,8 +129,8 @@ public class CopyingGraphLoader extends BaseGraphLoader
             }
 
             // Go through places in the source graph
-            final var placeAdder = store.placeStore().adder();
-            for (final var place : source.placesInside(constraints.bounds()))
+            var placeAdder = store.placeStore().adder();
+            for (var place : source.placesInside(constraints.bounds()))
             {
                 // and if the constraints includes the place,
                 if (constraints.includes(place))

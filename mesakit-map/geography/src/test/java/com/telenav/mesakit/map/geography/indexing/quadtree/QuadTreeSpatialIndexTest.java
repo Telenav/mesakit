@@ -46,9 +46,9 @@ public class QuadTreeSpatialIndexTest extends GeographyUnitTest
     @Test
     public void test()
     {
-        final var index = new QuadTreeSpatialIndex<Location>(2, Distance.miles(10));
-        final var location = location(10, 10);
-        final var rectangle = Rectangle.fromLocations(location(0, 0), location(20, 20));
+        var index = new QuadTreeSpatialIndex<Location>(2, Distance.miles(10));
+        var location = location(10, 10);
+        var rectangle = Rectangle.fromLocations(location(0, 0), location(20, 20));
         index.add(location);
         ensureEqual(true, index.inside(rectangle).hasNext());
         index.add(location(11, 11));
@@ -78,8 +78,8 @@ public class QuadTreeSpatialIndexTest extends GeographyUnitTest
     @Test
     public void test4()
     {
-        final var index = new QuadTreeSpatialIndex<Location>(2, Distance.miles(10));
-        final var rectangle = Rectangle.fromLocations(location(-20, -20), location(20, 20));
+        var index = new QuadTreeSpatialIndex<Location>(2, Distance.miles(10));
+        var rectangle = Rectangle.fromLocations(location(-20, -20), location(20, 20));
         index.add(location(10, -10));
         index.add(location(11, -11));
         index.add(location(12, -12));
@@ -109,7 +109,7 @@ public class QuadTreeSpatialIndexTest extends GeographyUnitTest
     @Test
     public void testBoundaries()
     {
-        final var index = new QuadTreeSpatialIndex<Location>(8, Distance.miles(10));
+        var index = new QuadTreeSpatialIndex<Location>(8, Distance.miles(10));
         for (var latitude = Latitude.MINIMUM_DEGREES; latitude <= Latitude.MAXIMUM_DEGREES; latitude += Latitude.MAXIMUM_DEGREES)
         {
             for (var longitude = Longitude.MINIMUM_DEGREES; longitude <= Longitude.MAXIMUM_DEGREES; longitude += Longitude.MAXIMUM_DEGREES)
@@ -120,7 +120,7 @@ public class QuadTreeSpatialIndexTest extends GeographyUnitTest
 
         // index.dump(System.out);
 
-        final var locations = index.inside(Rectangle.MAXIMUM);
+        var locations = index.inside(Rectangle.MAXIMUM);
         var count = 0;
         while (locations.hasNext())
         {
@@ -140,26 +140,26 @@ public class QuadTreeSpatialIndexTest extends GeographyUnitTest
         }
     }
 
-    public void testRandomOnce(final int iteration)
+    public void testRandomOnce(int iteration)
     {
-        final var index = new QuadTreeSpatialIndex<Location>(10, Distance.miles(0.1));
-        final var rectangle = randomValueFactory().newRectangle();
-        final var inside = Collections.synchronizedList(new ArrayList<Location>());
-        final var threads = randomInt(5, 10);
-        final var total = new AtomicInteger(0);
-        final var exited = new CountDownLatch(threads);
+        var index = new QuadTreeSpatialIndex<Location>(10, Distance.miles(0.1));
+        var rectangle = randomValueFactory().newRectangle();
+        var inside = Collections.synchronizedList(new ArrayList<Location>());
+        var threads = randomInt(5, 10);
+        var total = new AtomicInteger(0);
+        var exited = new CountDownLatch(threads);
         for (var i = 0; i < threads; i++)
         {
-            final var thread = new KivaKitThread("test-" + iteration + "-" + i)
+            var thread = new KivaKitThread("test-" + iteration + "-" + i)
             {
                 @Override
                 protected void onRun()
                 {
-                    final var count = randomInt(100, 1000);
+                    var count = randomInt(100, 1000);
                     total.addAndGet(count);
                     for (var i = 0; i < count; i++)
                     {
-                        final var location = randomValueFactory().newLocation();
+                        var location = randomValueFactory().newLocation();
                         index.add(location);
                         if (rectangle.contains(location))
                         {
@@ -179,13 +179,13 @@ public class QuadTreeSpatialIndexTest extends GeographyUnitTest
         {
             exited.await();
         }
-        catch (final InterruptedException e)
+        catch (InterruptedException e)
         {
             e.printStackTrace();
         }
-        final BaseList<Location> found = new ObjectList<Location>().appendAll(index.inside(rectangle));
+        BaseList<Location> found = new ObjectList<Location>().appendAll(index.inside(rectangle));
         ensureEqual(inside.size(), found.size());
-        for (final Location location : found)
+        for (Location location : found)
         {
             ensure(inside.contains(location));
         }
@@ -195,7 +195,7 @@ public class QuadTreeSpatialIndexTest extends GeographyUnitTest
             LOGGER.information("Profiling");
             for (var i = 0; i < 100000; i++)
             {
-                final var bounds = randomValueFactory().newRectangle();
+                var bounds = randomValueFactory().newRectangle();
                 Count.count(index.inside(bounds));
             }
         }

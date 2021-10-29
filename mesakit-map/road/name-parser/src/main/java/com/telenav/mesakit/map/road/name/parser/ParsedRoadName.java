@@ -57,13 +57,13 @@ public class ParsedRoadName
             parsed = new ParsedRoadName();
         }
 
-        public Builder(final ParsedRoadName name)
+        public Builder(ParsedRoadName name)
         {
             parsed = new ParsedRoadName(name);
         }
 
         @SuppressWarnings("UnusedReturnValue")
-        public Builder baseName(final String baseName, final String rawName)
+        public Builder baseName(String baseName, String rawName)
         {
             parsed.baseName = baseName;
             parsed.rawBaseName = rawName;
@@ -80,7 +80,7 @@ public class ParsedRoadName
         }
 
         @SuppressWarnings("UnusedReturnValue")
-        public Builder direction(final String direction, final String rawDirection)
+        public Builder direction(String direction, String rawDirection)
         {
             parsed.direction = direction;
             parsed.rawDirection = rawDirection;
@@ -88,25 +88,25 @@ public class ParsedRoadName
         }
 
         @SuppressWarnings("UnusedReturnValue")
-        public Builder directionFormat(final DirectionFormat directionFormat)
+        public Builder directionFormat(DirectionFormat directionFormat)
         {
             parsed.directionFormat = directionFormat;
             return this;
         }
 
-        public Builder exception(final Exception exception)
+        public Builder exception(Exception exception)
         {
             parsed.exception = exception;
             return this;
         }
 
-        public void position(final TypePosition position)
+        public void position(TypePosition position)
         {
             parsed.position = position;
         }
 
         @SuppressWarnings("UnusedReturnValue")
-        public Builder type(final String type, final String rawType)
+        public Builder type(String type, String rawType)
         {
             parsed.type = type;
             parsed.rawType = rawType;
@@ -136,7 +136,7 @@ public class ParsedRoadName
     {
     }
 
-    private ParsedRoadName(final ParsedRoadName that)
+    private ParsedRoadName(ParsedRoadName that)
     {
         assert that != null;
         baseName = that.baseName;
@@ -155,7 +155,7 @@ public class ParsedRoadName
      */
     public RoadName asRawRoadName()
     {
-        final var builder = new StringBuilder();
+        var builder = new StringBuilder();
         if (rawType != null && position == TypePosition.FIRST)
         {
             builder.append(rawType);
@@ -185,7 +185,7 @@ public class ParsedRoadName
      */
     public RoadName asRoadName()
     {
-        final var builder = new StringBuilder();
+        var builder = new StringBuilder();
         if (type != null && position == TypePosition.FIRST)
         {
             builder.append(type);
@@ -230,11 +230,11 @@ public class ParsedRoadName
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof ParsedRoadName)
         {
-            final var that = (ParsedRoadName) object;
+            var that = (ParsedRoadName) object;
             return Objects.equalPairs(baseName, that.baseName, type, that.type, direction,
                     that.direction, directionFormat, that.directionFormat);
         }

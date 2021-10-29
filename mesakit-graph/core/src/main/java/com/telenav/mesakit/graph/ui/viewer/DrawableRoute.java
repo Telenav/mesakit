@@ -26,12 +26,12 @@ import com.telenav.mesakit.graph.Route;
  */
 public class DrawableRoute extends DrawablePolyline
 {
-    public DrawableRoute(final Route route, final Style style)
+    public DrawableRoute(Route route, Style style)
     {
         this(route, style, null);
     }
 
-    public DrawableRoute(final Route route, final Style style, final String label)
+    public DrawableRoute(Route route, Style style, String label)
     {
         super(route.polyline(), style, label);
     }

@@ -40,7 +40,7 @@ public class ShapePoint extends GraphNode
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public ShapePoint(final Graph graph, final long identifier)
+    public ShapePoint(Graph graph, long identifier)
     {
         graph(graph);
         identifier(identifier);
@@ -79,7 +79,7 @@ public class ShapePoint extends GraphNode
         return Location.dm7(location);
     }
 
-    public ShapePoint location(final long location)
+    public ShapePoint location(long location)
     {
         this.location = location;
         return this;

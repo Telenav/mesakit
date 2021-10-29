@@ -22,7 +22,7 @@ import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 
 class TestSpatialIndex extends RTreeSpatialIndex<Polyline>
 {
-    public TestSpatialIndex(final RTreeSettings settings)
+    public TestSpatialIndex(RTreeSettings settings)
     {
         super("test", settings);
     }
@@ -33,7 +33,7 @@ class TestSpatialIndex extends RTreeSpatialIndex<Polyline>
     }
 
     @Override
-    public TestLeaf newLeaf(final InteriorNode<Polyline> parent)
+    public TestLeaf newLeaf(InteriorNode<Polyline> parent)
     {
         return new TestLeaf(this, parent);
     }

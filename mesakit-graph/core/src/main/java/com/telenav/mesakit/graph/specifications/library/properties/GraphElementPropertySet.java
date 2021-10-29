@@ -31,16 +31,15 @@ public class GraphElementPropertySet<T extends GraphElement> implements Iterable
 {
     private final Set<GraphElementProperty<T>> properties = new HashSet<>();
 
-    public GraphElementPropertySet<T> add(final GraphElementPropertySet<T> that)
+    public GraphElementPropertySet<T> add(GraphElementPropertySet<T> that)
     {
-        for (final var at : that)
+        for (var at : that)
         {
             add(at);
         }
         return this;
     }
 
-    @SuppressWarnings("NullableProblems")
     @Override
     public Iterator<GraphElementProperty<T>> iterator()
     {
@@ -49,13 +48,13 @@ public class GraphElementPropertySet<T extends GraphElement> implements Iterable
 
     public List<GraphElementProperty<T>> properties()
     {
-        final var properties = new ArrayList<>(this.properties);
+        var properties = new ArrayList<>(this.properties);
         Collections.sort(properties);
         return properties;
     }
 
-    protected void add(final GraphElementProperty<T> property)
+    protected void add(GraphElementProperty<T> property)
     {
-        this.properties.add(property);
+        properties.add(property);
     }
 }

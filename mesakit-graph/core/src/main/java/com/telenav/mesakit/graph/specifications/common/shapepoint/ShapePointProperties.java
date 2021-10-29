@@ -35,7 +35,7 @@ public class ShapePointProperties extends GraphElementProperties<ShapePoint>
 
     public abstract class ShapePointProperty extends com.telenav.mesakit.graph.specifications.library.properties.GraphElementProperty<ShapePoint>
     {
-        protected ShapePointProperty(final String name, final Attribute<?> attribute)
+        protected ShapePointProperty(String name, Attribute<?> attribute)
         {
             super(name, attribute, CommonDataSpecification.get());
             add(this);
@@ -45,7 +45,7 @@ public class ShapePointProperties extends GraphElementProperties<ShapePoint>
     public final ShapePointProperty LOCATION = new ShapePointProperty("location", ShapePointAttributes.get().NODE_LOCATION)
     {
         @Override
-        public Object value(final ShapePoint point)
+        public Object value(ShapePoint point)
         {
             return point.location();
         }

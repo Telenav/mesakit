@@ -92,7 +92,7 @@ public class PbfAllNodeMetadata implements AttributeStore
                     () -> new TagStore("tags", graph().metadata().tagCodec()))
             {
                 @Override
-                protected void onLoaded(final TagStore store)
+                protected void onLoaded(TagStore store)
                 {
                     store.codec(graph().metadata().tagCodec());
                     super.onLoaded(store);
@@ -103,7 +103,7 @@ public class PbfAllNodeMetadata implements AttributeStore
             new AttributeReference<>(this, GraphElementAttributes.get().PBF_USER_IDENTIFIER, "userIdentifier",
                     () -> (SplitIntArray) new SplitIntArray("userIdentifier").initialSize(elementCount()));
 
-    public PbfAllNodeMetadata(final Graph graph)
+    public PbfAllNodeMetadata(Graph graph)
     {
         this.graph = graph;
     }
@@ -160,38 +160,38 @@ public class PbfAllNodeMetadata implements AttributeStore
         return tags.codec();
     }
 
-    public final void pbfTagCodec(final PbfTagCodec codec)
+    public final void pbfTagCodec(PbfTagCodec codec)
     {
         tags = new TagStore("PbfNodeMetadata.pbfTags", codec);
     }
 
-    public PbfChangeSetIdentifier retrievePbfChangeSetIdentifier(final GraphElement element)
+    public PbfChangeSetIdentifier retrievePbfChangeSetIdentifier(GraphElement element)
     {
         return CHANGE_SET_IDENTIFIER.retrieveObject(element, PbfChangeSetIdentifier::new);
     }
 
-    public Time retrievePbfLastModificationTime(final GraphElement element)
+    public Time retrievePbfLastModificationTime(GraphElement element)
     {
         return LAST_MODIFIED.retrieveObject(element, Time::milliseconds);
     }
 
-    public PbfRevisionNumber retrievePbfRevisionNumber(final GraphElement element)
+    public PbfRevisionNumber retrievePbfRevisionNumber(GraphElement element)
     {
         return REVISION_NUMBER.retrieveObject(element, revision -> new PbfRevisionNumber((int) revision));
     }
 
-    public final PbfTagList retrievePbfTags(final GraphElement element)
+    public final PbfTagList retrievePbfTags(GraphElement element)
     {
         TAGS.load();
         return tags.tagList(element);
     }
 
-    public PbfUserIdentifier retrievePbfUserIdentifier(final GraphElement element)
+    public PbfUserIdentifier retrievePbfUserIdentifier(GraphElement element)
     {
         return USER_IDENTIFIER.retrieveObject(element, value -> new PbfUserIdentifier((int) value));
     }
 
-    public PbfUserName retrievePbfUserName(final GraphElement element)
+    public PbfUserName retrievePbfUserName(GraphElement element)
     {
         return new PbfUserName(USER_NAME.retrieveString(element));
     }
@@ -205,7 +205,7 @@ public class PbfAllNodeMetadata implements AttributeStore
     /**
      * Stores all of the simple attributes of the given edge at the given edge index
      */
-    public void storeAttributes(final GraphElement element)
+    public void storeAttributes(GraphElement element)
     {
         CHANGE_SET_IDENTIFIER.storeObject(element, element.pbfChangeSetIdentifier());
         LAST_MODIFIED.storeObject(element, element.lastModificationTime());
@@ -216,7 +216,7 @@ public class PbfAllNodeMetadata implements AttributeStore
     }
 
     @Override
-    public boolean supports(final Attribute<?> attribute)
+    public boolean supports(Attribute<?> attribute)
     {
         return attributes().contains(attribute);
     }

@@ -27,7 +27,7 @@ public class PbfUserIdentifier extends IntegerIdentifier
 {
     public static final PbfUserIdentifier SCOUT = new PbfUserIdentifier(2100001);
 
-    public PbfUserIdentifier(final int identifier)
+    public PbfUserIdentifier(int identifier)
     {
         super(identifier);
     }

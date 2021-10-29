@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.world;
 
+import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.world.grid.WorldCell;
-import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
 
 import java.util.Iterator;
 
@@ -37,7 +37,7 @@ class WorldEdgeSequence extends EdgeSequence
 
     private final Iterable<Edge> sequence;
 
-    public WorldEdgeSequence(final WorldCell worldCell, final Iterable<Edge> sequence)
+    public WorldEdgeSequence(WorldCell worldCell, Iterable<Edge> sequence)
     {
         super(sequence);
         this.worldCell = worldCell;
@@ -46,8 +46,8 @@ class WorldEdgeSequence extends EdgeSequence
 
     public WorldEdge first()
     {
-        final var iterator = this.sequence.iterator();
-        return iterator.hasNext() ? new WorldEdge(this.worldCell, iterator.next()) : null;
+        var iterator = sequence.iterator();
+        return iterator.hasNext() ? new WorldEdge(worldCell, iterator.next()) : null;
     }
 
     @Override
@@ -55,14 +55,14 @@ class WorldEdgeSequence extends EdgeSequence
     {
         return new BaseIterator<>()
         {
-            private final Iterator<Edge> iterator = WorldEdgeSequence.this.sequence.iterator();
+            private final Iterator<Edge> iterator = sequence.iterator();
 
             @Override
             protected WorldEdge onNext()
             {
-                if (this.iterator.hasNext())
+                if (iterator.hasNext())
                 {
-                    return new WorldEdge(WorldEdgeSequence.this.worldCell, this.iterator.next());
+                    return new WorldEdge(worldCell, iterator.next());
                 }
                 return null;
             }

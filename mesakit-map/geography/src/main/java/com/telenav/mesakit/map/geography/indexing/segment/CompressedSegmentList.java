@@ -35,7 +35,7 @@ public final class CompressedSegmentList extends AbstractList<Segment>
 
     @SuppressWarnings("NullableProblems")
     @Override
-    public boolean addAll(final Collection<? extends Segment> segments)
+    public boolean addAll(Collection<? extends Segment> segments)
     {
         if (start != null || end != null)
         {
@@ -46,7 +46,7 @@ public final class CompressedSegmentList extends AbstractList<Segment>
         start = new long[size];
         end = new long[size];
         var index = 0;
-        for (final Segment segment : segments)
+        for (Segment segment : segments)
         {
             start[index] = segment.start().asLong();
             end[index] = segment.end().asLong();
@@ -56,7 +56,7 @@ public final class CompressedSegmentList extends AbstractList<Segment>
     }
 
     @Override
-    public Segment get(final int index)
+    public Segment get(int index)
     {
         return new Segment(start[index], end[index]);
     }

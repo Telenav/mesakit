@@ -34,20 +34,20 @@ import com.telenav.mesakit.map.measurements.geographic.Distance;
  */
 public class MapWay extends Way
 {
-    public static MapWay forEdge(final Edge edge)
+    public static MapWay forEdge(Edge edge)
     {
         return forRoute(edge.forward().route(new WayNavigator(edge), Distance.miles(1000)));
     }
 
-    public static MapWay forRoute(final Route route)
+    public static MapWay forRoute(Route route)
     {
         return new MapWay(route);
     }
 
-    public static MapWay forWayIdentifier(final Graph graph, final Rectangle bounds,
-                                          final PbfWayIdentifier identifier)
+    public static MapWay forWayIdentifier(Graph graph, Rectangle bounds,
+                                          PbfWayIdentifier identifier)
     {
-        for (final var edge : graph.edgesIntersecting(bounds))
+        for (var edge : graph.edgesIntersecting(bounds))
         {
             if (edge.wayIdentifier().equals(identifier))
             {
@@ -57,7 +57,7 @@ public class MapWay extends Way
         return null;
     }
 
-    private MapWay(final Route route)
+    private MapWay(Route route)
     {
         super(route);
     }

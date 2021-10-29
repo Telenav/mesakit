@@ -53,8 +53,8 @@ public class VertexIdentifier extends IntegerIdentifier implements GraphElementI
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static SwitchParser.Builder<VertexIdentifier> vertexIdentifierSwitchParser(final String name,
-                                                                                      final String description)
+    public static SwitchParser.Builder<VertexIdentifier> vertexIdentifierSwitchParser(String name,
+                                                                                      String description)
     {
         return SwitchParser.builder(VertexIdentifier.class)
                 .name(name)
@@ -64,7 +64,7 @@ public class VertexIdentifier extends IntegerIdentifier implements GraphElementI
 
     public static class Converter extends Quantizable.Converter<VertexIdentifier>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener, identifier ->
             {
@@ -77,7 +77,7 @@ public class VertexIdentifier extends IntegerIdentifier implements GraphElementI
         }
     }
 
-    public VertexIdentifier(final int identifier)
+    public VertexIdentifier(int identifier)
     {
         super(identifier);
         assert identifier > 0;
@@ -89,7 +89,7 @@ public class VertexIdentifier extends IntegerIdentifier implements GraphElementI
      * @return The graph element from the given graph for this identifier
      */
     @Override
-    public GraphElement element(final Graph graph)
+    public GraphElement element(Graph graph)
     {
         return graph.vertexForIdentifier(this);
     }

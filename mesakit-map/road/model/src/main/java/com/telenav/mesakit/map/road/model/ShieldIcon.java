@@ -26,20 +26,20 @@ public class ShieldIcon
             RoadLimits.SHIELD_ICONS)
     {
         @Override
-        protected ShieldIcon onInitialize(final String identifier)
+        protected ShieldIcon onInitialize(String identifier)
         {
             return new ShieldIcon(identifier);
         }
     };
 
-    public static ShieldIcon forIdentifier(final String identifier)
+    public static ShieldIcon forIdentifier(String identifier)
     {
         return forIdentifier.getOrCreate(identifier);
     }
 
     private final String identifier;
 
-    private ShieldIcon(final String identifier)
+    private ShieldIcon(String identifier)
     {
         this.identifier = identifier;
     }

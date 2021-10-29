@@ -40,12 +40,12 @@ public abstract class RegionalGraphLoader extends BaseGraphLoader
     }
 
     @Override
-    public Metadata onLoad(final GraphStore store, final GraphConstraints constraints)
+    public Metadata onLoad(GraphStore store, GraphConstraints constraints)
     {
-        final var edges = forwardEdges();
-        final var relations = relations();
-        final var places = places();
-        final var edgeCount = store.edgeStore().addAll(edges, constraints);
+        var edges = forwardEdges();
+        var relations = relations();
+        var places = places();
+        var edgeCount = store.edgeStore().addAll(edges, constraints);
         store.relationStore().add(relations, constraints);
         add(store.placeStore(), constraints, places);
         return new Metadata().withEdgeCount(edgeCount);
@@ -63,8 +63,8 @@ public abstract class RegionalGraphLoader extends BaseGraphLoader
 
     protected Iterable<EdgeRelation> relations()
     {
-        final Set<EdgeRelation> relations = new HashSet<>();
-        for (final var edge : forwardEdges())
+        Set<EdgeRelation> relations = new HashSet<>();
+        for (var edge : forwardEdges())
         {
             relations.addAll(edge.relations());
         }
@@ -73,12 +73,12 @@ public abstract class RegionalGraphLoader extends BaseGraphLoader
 
     protected abstract Graph sourceGraph();
 
-    private Count add(final PlaceStore placeStore, final GraphConstraints constraints,
-                      final Iterable<? extends Place> places)
+    private Count add(PlaceStore placeStore, GraphConstraints constraints,
+                      Iterable<? extends Place> places)
     {
         var count = 0;
-        final var adder = placeStore.adder();
-        for (final Place place : places)
+        var adder = placeStore.adder();
+        for (Place place : places)
         {
             if (constraints.includes(place))
             {

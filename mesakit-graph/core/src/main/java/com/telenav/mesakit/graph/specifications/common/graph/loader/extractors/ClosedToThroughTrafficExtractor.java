@@ -24,13 +24,13 @@ import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 
 public class ClosedToThroughTrafficExtractor extends BaseExtractor<Boolean, PbfWay>
 {
-    public ClosedToThroughTrafficExtractor(final Listener listener)
+    public ClosedToThroughTrafficExtractor(Listener listener)
     {
         super(listener);
     }
 
     @Override
-    public Boolean onExtract(final PbfWay way)
+    public Boolean onExtract(PbfWay way)
     {
         return way.tagValueIs("access", "destination");
     }

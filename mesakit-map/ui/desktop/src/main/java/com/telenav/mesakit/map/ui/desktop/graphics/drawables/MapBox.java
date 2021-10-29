@@ -42,12 +42,12 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNot
  */
 public class MapBox extends LabeledMapShape
 {
-    public static MapBox box(final Style style, final Rectangle box, final String label)
+    public static MapBox box(Style style, Rectangle box, String label)
     {
         return new MapBox(style, box, label);
     }
 
-    public static MapBox box(final Style style)
+    public static MapBox box(Style style)
     {
         return new MapBox(style, null, null);
     }
@@ -59,7 +59,7 @@ public class MapBox extends LabeledMapShape
 
     private Size size;
 
-    protected MapBox(final Style style, final Rectangle box, final String label)
+    protected MapBox(Style style, Rectangle box, String label)
     {
         super(style, box == null ? null : box.topLeft(), label);
         if (box != null)
@@ -68,7 +68,7 @@ public class MapBox extends LabeledMapShape
         }
     }
 
-    protected MapBox(final MapBox that)
+    protected MapBox(MapBox that)
     {
         super(that);
         size = that.size;
@@ -87,21 +87,21 @@ public class MapBox extends LabeledMapShape
     }
 
     @Override
-    public Shape onDraw(final MapCanvas canvas)
+    public Shape onDraw(MapCanvas canvas)
     {
-        final var box = Box.box()
+        var box = Box.box()
                 .withLocation(canvas.toDrawing(location()))
                 .withStyle(style())
                 .withSize(canvas.toDrawing(size))
                 .draw(canvas);
 
-        final var label = super.onDraw(canvas);
+        var label = super.onDraw(canvas);
 
         return Java2dShapes.combine(box, label);
     }
 
     @Override
-    public MapBox scaledBy(final double scaleFactor)
+    public MapBox scaledBy(double scaleFactor)
     {
         return withSize(size.scaledBy(scaleFactor, scaleFactor));
     }
@@ -112,97 +112,97 @@ public class MapBox extends LabeledMapShape
     }
 
     @Override
-    public MapBox withColors(final Style style)
+    public MapBox withColors(Style style)
     {
         return (MapBox) super.withColors(style);
     }
 
     @Override
-    public MapBox withDrawColor(final Color color)
+    public MapBox withDrawColor(Color color)
     {
         return (MapBox) super.withDrawColor(color);
     }
 
     @Override
-    public MapBox withDrawStroke(final Stroke stroke)
+    public MapBox withDrawStroke(Stroke stroke)
     {
         return (MapBox) super.withDrawStroke(stroke);
     }
 
     @Override
-    public MapBox withDrawStrokeWidth(final DrawingWidth width)
+    public MapBox withDrawStrokeWidth(DrawingWidth width)
     {
         return (MapBox) super.withDrawStrokeWidth(width);
     }
 
     @Override
-    public MapBox withDrawStrokeWidth(final Distance width)
+    public MapBox withDrawStrokeWidth(Distance width)
     {
         return (MapBox) super.withDrawStrokeWidth(width);
     }
 
     @Override
-    public MapBox withFillColor(final Color color)
+    public MapBox withFillColor(Color color)
     {
         return (MapBox) super.withFillColor(color);
     }
 
     @Override
-    public MapBox withFillStroke(final Stroke stroke)
+    public MapBox withFillStroke(Stroke stroke)
     {
         return (MapBox) super.withFillStroke(stroke);
     }
 
     @Override
-    public MapBox withFillStrokeWidth(final Distance width)
+    public MapBox withFillStrokeWidth(Distance width)
     {
         return (MapBox) super.withFillStrokeWidth(width);
     }
 
     @Override
-    public MapBox withFillStrokeWidth(final DrawingWidth width)
+    public MapBox withFillStrokeWidth(DrawingWidth width)
     {
         return (MapBox) super.withFillStrokeWidth(width);
     }
 
     @Override
-    public MapBox withLabelStyle(final Style style)
+    public MapBox withLabelStyle(Style style)
     {
         ensureNotNull(style);
         return (MapBox) super.withLabelStyle(style);
     }
 
     @Override
-    public MapBox withLabelText(final String label)
+    public MapBox withLabelText(String label)
     {
         return (MapBox) super.withLabelText(label);
     }
 
     @Override
-    public MapBox withLocation(final DrawingPoint at)
+    public MapBox withLocation(DrawingPoint at)
     {
         return (MapBox) super.withLocation(at);
     }
 
     @Override
-    public MapBox withLocation(final Location at)
+    public MapBox withLocation(Location at)
     {
         return (MapBox) super.withLocation(at);
     }
 
     @Override
-    public MapBox withMargin(final int margin)
+    public MapBox withMargin(int margin)
     {
         return (MapBox) super.withMargin(margin);
     }
 
     @Override
-    public MapBox withOffset(final int dx, final int dy)
+    public MapBox withOffset(int dx, int dy)
     {
         return (MapBox) super.withOffset(dx, dy);
     }
 
-    public MapBox withRectangle(final Rectangle rectangle)
+    public MapBox withRectangle(Rectangle rectangle)
     {
         return copy()
                 .withLocation(rectangle.topLeft())
@@ -210,33 +210,33 @@ public class MapBox extends LabeledMapShape
     }
 
     @Override
-    public MapBox withRoundedLabelCorners(final DrawingLength corner)
+    public MapBox withRoundedLabelCorners(DrawingLength corner)
     {
         return (MapBox) super.withRoundedLabelCorners(corner);
     }
 
     @Override
-    public MapBox withRoundedLabelCorners(final DrawingWidth cornerWidth,
-                                          final DrawingHeight cornerHeight)
+    public MapBox withRoundedLabelCorners(DrawingWidth cornerWidth,
+                                          DrawingHeight cornerHeight)
     {
         return (MapBox) super.withRoundedLabelCorners(cornerWidth, cornerHeight);
     }
 
-    public MapBox withSize(final Size size)
+    public MapBox withSize(Size size)
     {
-        final var copy = copy();
+        var copy = copy();
         copy.size = size;
         return copy;
     }
 
     @Override
-    public MapBox withStyle(final Style style)
+    public MapBox withStyle(Style style)
     {
         return (MapBox) super.withStyle(style);
     }
 
     @Override
-    public MapBox withTextColor(final Color color)
+    public MapBox withTextColor(Color color)
     {
         return (MapBox) super.withTextColor(color);
     }

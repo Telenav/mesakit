@@ -34,16 +34,16 @@ public class ExitRoadNameExtractor extends BaseRoadNameExtractor
                     "exit_ref",
             };
 
-    public ExitRoadNameExtractor(final MapLocale locale, final RoadNameStandardizer.Mode mode,
-                                 final Listener listener)
+    public ExitRoadNameExtractor(MapLocale locale, RoadNameStandardizer.Mode mode,
+                                 Listener listener)
     {
         super(locale, mode, listener);
     }
 
     @Override
-    public List<RoadName> onExtract(final PbfWay way)
+    public List<RoadName> onExtract(PbfWay way)
     {
-        final List<RoadName> names = new ArrayList<>();
+        List<RoadName> names = new ArrayList<>();
 
         addRoadNameTranslations(names, way, KEYS);
 

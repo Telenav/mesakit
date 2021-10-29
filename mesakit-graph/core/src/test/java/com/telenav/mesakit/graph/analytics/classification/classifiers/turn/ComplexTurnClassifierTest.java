@@ -54,15 +54,15 @@ public class ComplexTurnClassifierTest extends GraphUnitTest
      */
     public void testUTurn2()
     {
-        final Route route = huronCharterRoute(0L);
-        final TurnType turnType = classifier.type(route);
+        Route route = huronCharterRoute(0L);
+        TurnType turnType = classifier.type(route);
         ensureEqual(TurnType.LEFT_SIDE_U_TURN, turnType);
     }
 
-    private Route huronCharterRoute(final Long... edges)
+    private Route huronCharterRoute(Long... edges)
     {
-        final RouteBuilder builder = new RouteBuilder();
-        for (final Long edge : edges)
+        RouteBuilder builder = new RouteBuilder();
+        for (Long edge : edges)
         {
             builder.append(huronCharterGraph.edgeForIdentifier(new EdgeIdentifier(edge)));
         }

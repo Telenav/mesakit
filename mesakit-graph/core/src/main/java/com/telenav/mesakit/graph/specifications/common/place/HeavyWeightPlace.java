@@ -58,7 +58,7 @@ public class HeavyWeightPlace extends Place
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public HeavyWeightPlace(final Graph graph, final PlaceIdentifier identifier)
+    public HeavyWeightPlace(Graph graph, PlaceIdentifier identifier)
     {
         super(graph, identifier);
     }
@@ -67,12 +67,12 @@ public class HeavyWeightPlace extends Place
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public HeavyWeightPlace(final Graph graph, final long identifier)
+    public HeavyWeightPlace(Graph graph, long identifier)
     {
         super(graph, identifier);
     }
 
-    public void copy(final Place that)
+    public void copy(Place that)
     {
         name(that.name());
         type(that.type());
@@ -98,7 +98,7 @@ public class HeavyWeightPlace extends Place
         return lastModificationTime;
     }
 
-    public void lastModificationTime(final Time lastModified)
+    public void lastModificationTime(Time lastModified)
     {
         lastModificationTime = lastModified;
     }
@@ -109,7 +109,7 @@ public class HeavyWeightPlace extends Place
         return location;
     }
 
-    public void location(final Location location)
+    public void location(Location location)
     {
         this.location = location;
     }
@@ -120,7 +120,7 @@ public class HeavyWeightPlace extends Place
         return name;
     }
 
-    public void name(final String name)
+    public void name(String name)
     {
         this.name = name;
     }
@@ -131,7 +131,7 @@ public class HeavyWeightPlace extends Place
         return pbfChangeSetIdentifier;
     }
 
-    public void pbfChangeSetIdentifier(final PbfChangeSetIdentifier PbfChangeSetIdentifier)
+    public void pbfChangeSetIdentifier(PbfChangeSetIdentifier PbfChangeSetIdentifier)
     {
         pbfChangeSetIdentifier = PbfChangeSetIdentifier;
     }
@@ -142,7 +142,7 @@ public class HeavyWeightPlace extends Place
         return pbfRevisionNumber;
     }
 
-    public void pbfRevisionNumber(final PbfRevisionNumber revision)
+    public void pbfRevisionNumber(PbfRevisionNumber revision)
     {
         pbfRevisionNumber = revision;
     }
@@ -153,7 +153,7 @@ public class HeavyWeightPlace extends Place
         return pbfUserIdentifier;
     }
 
-    public void pbfUserIdentifier(final PbfUserIdentifier PbfUserIdentifier)
+    public void pbfUserIdentifier(PbfUserIdentifier PbfUserIdentifier)
     {
         pbfUserIdentifier = PbfUserIdentifier;
     }
@@ -164,7 +164,7 @@ public class HeavyWeightPlace extends Place
         return pbfUserName;
     }
 
-    public void pbfUserName(final PbfUserName PbfUserName)
+    public void pbfUserName(PbfUserName PbfUserName)
     {
         pbfUserName = PbfUserName;
     }
@@ -175,7 +175,7 @@ public class HeavyWeightPlace extends Place
         return population;
     }
 
-    public void population(final Count population)
+    public void population(Count population)
     {
         this.population = population;
     }
@@ -186,7 +186,7 @@ public class HeavyWeightPlace extends Place
         return tags;
     }
 
-    public void tags(final PbfTagList tags)
+    public void tags(PbfTagList tags)
     {
         this.tags = tags;
     }
@@ -206,7 +206,7 @@ public class HeavyWeightPlace extends Place
         return type;
     }
 
-    public void type(final Type type)
+    public void type(Type type)
     {
         this.type = type;
     }

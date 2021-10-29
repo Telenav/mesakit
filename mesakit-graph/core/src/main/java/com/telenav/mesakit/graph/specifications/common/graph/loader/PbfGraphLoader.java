@@ -61,7 +61,7 @@ import com.telenav.mesakit.map.region.Region;
 @SuppressWarnings("rawtypes")
 public abstract class PbfGraphLoader extends BaseGraphLoader
 {
-    public static Configuration newConfiguration(final Metadata metadata)
+    public static Configuration newConfiguration(Metadata metadata)
     {
         return new Configuration();
     }
@@ -95,7 +95,7 @@ public abstract class PbfGraphLoader extends BaseGraphLoader
             return cleanCutTo;
         }
 
-        public Configuration cleanCutTo(final Region cleanCutTo)
+        public Configuration cleanCutTo(Region cleanCutTo)
         {
             this.cleanCutTo = cleanCutTo;
             return this;
@@ -106,7 +106,7 @@ public abstract class PbfGraphLoader extends BaseGraphLoader
             return regionInformation;
         }
 
-        public Configuration regionInformation(final Boolean regionInformation)
+        public Configuration regionInformation(Boolean regionInformation)
         {
             this.regionInformation = regionInformation;
             return this;
@@ -117,13 +117,13 @@ public abstract class PbfGraphLoader extends BaseGraphLoader
             return relationFilter;
         }
 
-        public Configuration relationFilter(final RelationFilter relationFilter)
+        public Configuration relationFilter(RelationFilter relationFilter)
         {
             this.relationFilter = relationFilter;
             return this;
         }
 
-        public void tagFilter(final PbfTagFilter tagFilter)
+        public void tagFilter(PbfTagFilter tagFilter)
         {
             this.tagFilter = tagFilter;
         }
@@ -138,7 +138,7 @@ public abstract class PbfGraphLoader extends BaseGraphLoader
             return wayFilter;
         }
 
-        public Configuration wayFilter(final WayFilter wayFilter)
+        public Configuration wayFilter(WayFilter wayFilter)
         {
             this.wayFilter = wayFilter;
             return this;
@@ -160,7 +160,7 @@ public abstract class PbfGraphLoader extends BaseGraphLoader
     /**
      * @param configuration The configuration for this loader
      */
-    public void configure(final Configuration configuration)
+    public void configure(Configuration configuration)
     {
         this.configuration = configuration;
     }
@@ -168,7 +168,7 @@ public abstract class PbfGraphLoader extends BaseGraphLoader
     /**
      * Specifies the data source to load from, such as a {@link SerialPbfReader}
      */
-    public PbfGraphLoader dataSourceFactory(final PbfDataSourceFactory dataSourceFactory, final Metadata metadata)
+    public PbfGraphLoader dataSourceFactory(PbfDataSourceFactory dataSourceFactory, Metadata metadata)
     {
         this.dataSourceFactory = dataSourceFactory;
         this.metadata = metadata;
@@ -179,7 +179,7 @@ public abstract class PbfGraphLoader extends BaseGraphLoader
      * Sets the current phase of processing that's in progress. This is used when reporting progress via a {@link
      * ProgressReporter}
      */
-    public PbfGraphLoader phase(final String phase)
+    public PbfGraphLoader phase(String phase)
     {
         this.phase = phase;
         return this;

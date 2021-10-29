@@ -34,18 +34,18 @@ public class TravelTimeCostFunction implements CostFunction
 {
     private final double fastestInMilliseconds;
 
-    public TravelTimeCostFunction(final Duration fastest)
+    public TravelTimeCostFunction(Duration fastest)
     {
         fastestInMilliseconds = fastest.asMilliseconds();
     }
 
-    public TravelTimeCostFunction(final Speed maximum, final Located from, final Located to)
+    public TravelTimeCostFunction(Speed maximum, Located from, Located to)
     {
         this(maximum.timeToTravel(from.location().distanceTo(to.location())));
     }
 
     @Override
-    public Cost cost(final Edge edge)
+    public Cost cost(Edge edge)
     {
         return Cost.of(Math.min(1.0, edge.travelTime().asMilliseconds() / fastestInMilliseconds));
     }

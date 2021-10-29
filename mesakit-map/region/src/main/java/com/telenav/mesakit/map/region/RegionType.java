@@ -81,7 +81,7 @@ public class RegionType<T extends Region<T>>
 
     private final Map<RegionIdentifier, T> forRegionIdentifier;
 
-    public RegionType(final Class<T> subclass)
+    public RegionType(Class<T> subclass)
     {
         this.subclass = subclass;
         forIsoCode = new CaseFoldingStringMap<>(Maximum.MAXIMUM);
@@ -90,7 +90,7 @@ public class RegionType<T extends Region<T>>
         forRegionIdentifier = new HashMap<>();
     }
 
-    private RegionType(final RegionType<T> that)
+    private RegionType(RegionType<T> that)
     {
         name = that.name;
         all = Sets.copy(TreeSet::new, that.all);
@@ -106,9 +106,9 @@ public class RegionType<T extends Region<T>>
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked", "UnusedReturnValue" })
-    public RegionType<T> add(final Region uncheckedRegion)
+    public RegionType<T> add(Region uncheckedRegion)
     {
-        final var region = (T) uncheckedRegion;
+        var region = (T) uncheckedRegion;
 
         // Assign the next identifier to the region
         if (nextIdentifier.asInt() < size() && forRegionIdentifier.get(nextIdentifier) != null)
@@ -135,13 +135,13 @@ public class RegionType<T extends Region<T>>
             }
         }
 
-        final var identity = region.identity();
+        var identity = region.identity();
 
         forIsoCode.putIfAbsent(identity.iso().code(), region);
         forMesaKitCode.putIfAbsent(identity.mesakit().code(), region);
         forRegionIdentifier.putIfAbsent(region.identifier(), region);
 
-        final var countryIsoCode = identity.countryIsoCode();
+        var countryIsoCode = identity.countryIsoCode();
         if (countryIsoCode != null)
         {
             forIsoCode.putIfAbsent(countryIsoCode.alpha2Code(), region);
@@ -165,21 +165,21 @@ public class RegionType<T extends Region<T>>
         return new ArrayList<>(all());
     }
 
-    public boolean contains(final T region)
+    public boolean contains(T region)
     {
         return all().contains(region);
     }
 
-    public T forIdentifier(final RegionIdentifier identifier)
+    public T forIdentifier(RegionIdentifier identifier)
     {
         return forRegionIdentifier.get(identifier);
     }
 
-    public T forIdentity(final RegionIdentity identity)
+    public T forIdentity(RegionIdentity identity)
     {
         if (identity.hasIsoCode())
         {
-            final var region = forIsoCode.get(identity.iso().code());
+            var region = forIsoCode.get(identity.iso().code());
             if (region != null)
             {
                 return region;
@@ -193,19 +193,19 @@ public class RegionType<T extends Region<T>>
         return null;
     }
 
-    public T forLocation(final Location location)
+    public T forLocation(Location location)
     {
         return borderCache().object(location);
     }
 
-    public T forNumericCountryCode(final int code)
+    public T forNumericCountryCode(int code)
     {
         return forNumericCountryCode.get(code);
     }
 
-    public T forRegionCode(final RegionCode code)
+    public T forRegionCode(RegionCode code)
     {
-        final var region = forIsoCode.get(code.code());
+        var region = forIsoCode.get(code.code());
         if (region != null)
         {
             return region;
@@ -233,7 +233,7 @@ public class RegionType<T extends Region<T>>
         return this;
     }
 
-    public Collection<T> matching(final Matcher<T> matcher)
+    public Collection<T> matching(Matcher<T> matcher)
     {
         return all().stream().filter(matcher::matches).collect(Collectors.toList());
     }
@@ -258,33 +258,33 @@ public class RegionType<T extends Region<T>>
         return all().size();
     }
 
-    public RegionType<T> withBorderCache(final BorderCache<T> borderCache)
+    public RegionType<T> withBorderCache(BorderCache<T> borderCache)
     {
-        final var copy = new RegionType<>(this);
+        var copy = new RegionType<>(this);
         copy.borderCache = borderCache;
         return copy;
     }
 
-    public RegionType<T> withMaximumIdentifier(final RegionIdentifier maximumIdentifier)
+    public RegionType<T> withMaximumIdentifier(RegionIdentifier maximumIdentifier)
     {
-        final var copy = new RegionType<>(this);
+        var copy = new RegionType<>(this);
         copy.maximumIdentifier = maximumIdentifier;
         return copy;
     }
 
-    public RegionType<T> withMinimumIdentifier(final RegionIdentifier minimumIdentifier)
+    public RegionType<T> withMinimumIdentifier(RegionIdentifier minimumIdentifier)
     {
         // Set next identifier to the minimum
         nextIdentifier = new RegionIdentifier(minimumIdentifier.asInt());
 
-        final var copy = new RegionType<>(this);
+        var copy = new RegionType<>(this);
         copy.minimumIdentifier = minimumIdentifier;
         return copy;
     }
 
-    public RegionType<T> withName(final String name)
+    public RegionType<T> withName(String name)
     {
-        final var copy = new RegionType<>(this);
+        var copy = new RegionType<>(this);
         copy.name = name;
         return copy;
     }

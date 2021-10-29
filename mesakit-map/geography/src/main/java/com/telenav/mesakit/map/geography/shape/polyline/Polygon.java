@@ -44,25 +44,25 @@ public class Polygon extends Polyline implements Shape
 {
     public static final Collection<Polygon> EMPTY_SET = Collections.emptySet();
 
-    public static Polygon fromLocationSequence(final Iterable<Location> locations)
+    public static Polygon fromLocationSequence(Iterable<Location> locations)
     {
         if (locations instanceof Polygon)
         {
             return (Polygon) locations;
         }
-        final var builder = new PolygonBuilder();
+        var builder = new PolygonBuilder();
         builder.addAll(locations);
         return builder.build();
     }
 
-    public static Polygon fromLocationSequence(final Location one, final Location two, final Location three,
-                                               final Location... more)
+    public static Polygon fromLocationSequence(Location one, Location two, Location three,
+                                               Location... more)
     {
-        final var builder = new PolygonBuilder();
+        var builder = new PolygonBuilder();
         builder.add(one);
         builder.add(two);
         builder.add(three);
-        for (final var location : more)
+        for (var location : more)
         {
             builder.add(location);
         }
@@ -82,7 +82,7 @@ public class Polygon extends Polyline implements Shape
          * {@inheritDoc}
          */
         @Override
-        public Containment containment(final Location location)
+        public Containment containment(Location location)
         {
             // TODO to correctly clean-cut edges, this method would need to handle the
             // Containment.ON_BORDER case. it presently doesn't do this.
@@ -90,20 +90,20 @@ public class Polygon extends Polyline implements Shape
             // Create a strip from the left side of the polygon to the location, that is 10 meters
             // high and contains the location and is also 5 meters left and right of the bounds to
             // take care of edge cases where the location is right on the edge of the polygon.
-            final var bounds = location.bounds().withLeft(bounds().left()).withRight(location.longitude())
+            var bounds = location.bounds().withLeft(bounds().left()).withRight(location.longitude())
                     .expanded(Distance.meters(5));
 
             // Create a horizontal from the left size of the polygon to the location
-            final var horizontal = new Segment(location.withLongitude(bounds.left()), location);
+            var horizontal = new Segment(location.withLongitude(bounds.left()), location);
 
             // Count the number of intersections with segments and the horizontal line
             var intersections = 0;
-            for (final var segment : segmentSpatialIndex().intersecting(bounds))
+            for (var segment : segmentSpatialIndex().intersecting(bounds))
             {
                 // Determine which "region" (above or below the ray) each endpoint of the segment is
                 // in (see http://idav.ucdavis.edu/~okreylos/TAship/Spring2000/PointInPolygon.html)
-                final var startAbove = segment.start().latitude().isGreaterThanOrEqualTo(location.latitude());
-                final var endAbove = segment.end().latitude().isGreaterThanOrEqualTo(location.latitude());
+                var startAbove = segment.start().latitude().isGreaterThanOrEqualTo(location.latitude());
+                var endAbove = segment.end().latitude().isGreaterThanOrEqualTo(location.latitude());
 
                 // If the segment spans both regions and it intersects
                 if (startAbove != endAbove && segment.intersects(horizontal))
@@ -130,14 +130,14 @@ public class Polygon extends Polyline implements Shape
 
     private List<Polygon> holes;
 
-    public Polygon(final List<Location> locations)
+    public Polygon(List<Location> locations)
     {
         super(locations);
         ensure(segmentCountAsInteger() >= 3, "Not a polygon");
         ensure(isLoop(), "Polygon isn't closed");
     }
 
-    public Polygon(final long[] locations)
+    public Polygon(long[] locations)
     {
         super(locations);
     }
@@ -146,7 +146,7 @@ public class Polygon extends Polyline implements Shape
     {
     }
 
-    public void addHole(final Polygon hole)
+    public void addHole(Polygon hole)
     {
         if (holes == null)
         {
@@ -164,9 +164,9 @@ public class Polygon extends Polyline implements Shape
     {
         if (polygon == null)
         {
-            final var size = size();
-            final var x = new int[size];
-            final var y = new int[size];
+            var size = size();
+            var x = new int[size];
+            var y = new int[size];
             for (var i = 0; i < size; i++)
             {
                 x[i] = get(i).longitude().asMicrodegrees();
@@ -178,16 +178,16 @@ public class Polygon extends Polyline implements Shape
     }
 
     @Override
-    public Containment containment(final Location location)
+    public Containment containment(Location location)
     {
         if (bounds().containment(location).isInside())
         {
-            final var containment = outline().containment(location);
+            var containment = outline().containment(location);
             if (containment != Containment.OUTSIDE)
             {
                 if (holes != null)
                 {
-                    for (final var hole : holes)
+                    for (var hole : holes)
                     {
                         if (hole.contains(location))
                         {
@@ -201,13 +201,13 @@ public class Polygon extends Polyline implements Shape
         return Containment.OUTSIDE;
     }
 
-    public boolean contains(final Polyline line)
+    public boolean contains(Polyline line)
     {
         if (!bounds().contains(line.bounds()))
         {
             return false;
         }
-        for (final var location : line.locationSequence())
+        for (var location : line.locationSequence())
         {
             if (!contains(location))
             {
@@ -217,7 +217,7 @@ public class Polygon extends Polyline implements Shape
         return true;
     }
 
-    public boolean contains(final Rectangle rectangle)
+    public boolean contains(Rectangle rectangle)
     {
         // The rectangle is fully contained if the bounds contains the rectangle fully,
         if (bounds().contains(rectangle))
@@ -233,7 +233,7 @@ public class Polygon extends Polyline implements Shape
         return false;
     }
 
-    public void fast(final boolean fast)
+    public void fast(boolean fast)
     {
         this.fast = fast;
     }
@@ -249,12 +249,12 @@ public class Polygon extends Polyline implements Shape
     /**
      * @return A list of up to the given maximum number segments intersecting the given bounds
      */
-    public List<Segment> intersections(final Rectangle bounds, final Count maximum)
+    public List<Segment> intersections(Rectangle bounds, Count maximum)
     {
-        final List<Segment> intersections = new ArrayList<>();
+        List<Segment> intersections = new ArrayList<>();
         if (size() < 100)
         {
-            for (final var segment : segments())
+            for (var segment : segments())
             {
                 if (segment.intersects(bounds))
                 {
@@ -269,7 +269,7 @@ public class Polygon extends Polyline implements Shape
         else
         {
             // Loop through segments that intersect the bounds
-            for (final var segment : segmentSpatialIndex().intersecting(bounds))
+            for (var segment : segmentSpatialIndex().intersecting(bounds))
             {
                 intersections.add(segment);
                 if (intersections.size() == maximum.asInt())
@@ -281,9 +281,9 @@ public class Polygon extends Polyline implements Shape
         return intersections;
     }
 
-    public boolean intersectsOrContains(final Polyline line)
+    public boolean intersectsOrContains(Polyline line)
     {
-        for (final var location : line.locationSequence())
+        for (var location : line.locationSequence())
         {
             if (contains(location))
             {
@@ -302,12 +302,12 @@ public class Polygon extends Polyline implements Shape
             // It is based on the "Shoelace Formula" which is described here:
             // http://en.wikipedia.org/wiki/Shoelace_formula
             var sum = 0D;
-            for (final var segment : segments())
+            for (var segment : segments())
             {
-                final var x1 = segment.start().longitude().asDegrees();
-                final var y1 = segment.start().latitude().asDegrees();
-                final var x2 = segment.end().longitude().asDegrees();
-                final var y2 = segment.end().latitude().asDegrees();
+                var x1 = segment.start().longitude().asDegrees();
+                var y1 = segment.start().latitude().asDegrees();
+                var x2 = segment.end().longitude().asDegrees();
+                var y2 = segment.end().latitude().asDegrees();
                 sum += (x2 - x1) * (y2 + y1);
             }
             clockwise = sum > 0;

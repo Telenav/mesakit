@@ -58,7 +58,7 @@ public final class OsmEdgeStore extends EdgeStore
                             .initialSize(estimatedElements()))
             {
                 @Override
-                protected void onLoaded(final SplitPackedArray array)
+                protected void onLoaded(SplitPackedArray array)
                 {
                     super.onLoaded(array);
 
@@ -79,17 +79,17 @@ public final class OsmEdgeStore extends EdgeStore
     @KivaKitArchivedField
     private SplitLongArray rawIdentifier;
 
-    public OsmEdgeStore(final Graph graph)
+    public OsmEdgeStore(Graph graph)
     {
         super(graph);
     }
 
-    public final boolean retrieveIsDoubleDigitized(final Edge edge)
+    public boolean retrieveIsDoubleDigitized(Edge edge)
     {
         return IS_DOUBLE_DIGITIZED.retrieveBoolean(edge);
     }
 
-    public final EdgeIdentifier retrieveRawIdentifier(final Edge edge)
+    public EdgeIdentifier retrieveRawIdentifier(Edge edge)
     {
         return RAW_IDENTIFIER.retrieveObject(edge, EdgeIdentifier::new);
     }
@@ -99,11 +99,11 @@ public final class OsmEdgeStore extends EdgeStore
      */
 
     @Override
-    public void storeAttributes(final Edge uncast)
+    public void storeAttributes(Edge uncast)
     {
         super.storeAttributes(uncast);
 
-        final var edge = (OsmHeavyWeightEdge) uncast;
+        var edge = (OsmHeavyWeightEdge) uncast;
 
         // Store attributes
         RAW_IDENTIFIER.storeObject(edge, edge.rawIdentifier());
@@ -113,7 +113,7 @@ public final class OsmEdgeStore extends EdgeStore
         }
 
         // If the edge is known to be double digitized
-        final var isKnownDoubleDigitized = edge.isKnownDoubleDigitized();
+        var isKnownDoubleDigitized = edge.isKnownDoubleDigitized();
         if (isKnownDoubleDigitized != null)
         {
             // then we can store that state
@@ -121,7 +121,7 @@ public final class OsmEdgeStore extends EdgeStore
         }
     }
 
-    public final void storeIsDoubleDigitized(final Edge edge, final boolean isDoubleDigitized)
+    public void storeIsDoubleDigitized(Edge edge, boolean isDoubleDigitized)
     {
         IS_DOUBLE_DIGITIZED.storeBoolean(edge, isDoubleDigitized);
     }

@@ -184,7 +184,7 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
     protected abstract class ElementValidator extends BaseValidator
     {
         @Override
-        protected Glitch glitch(final String message, final Object... parameters)
+        protected Glitch glitch(String message, Object... parameters)
         {
             if (DEBUG.isDebugOn())
             {
@@ -197,7 +197,7 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
         }
 
         @Override
-        protected Problem problem(final String message, final Object... parameters)
+        protected Problem problem(String message, Object... parameters)
         {
             if (DEBUG.isDebugOn())
             {
@@ -210,7 +210,7 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
         }
 
         @Override
-        protected Quibble quibble(final String message, final Object... parameters)
+        protected Quibble quibble(String message, Object... parameters)
         {
             if (DEBUG.isDebugOn())
             {
@@ -223,7 +223,7 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
         }
 
         @Override
-        protected Warning warning(final String message, final Object... parameters)
+        protected Warning warning(String message, Object... parameters)
         {
             if (DEBUG.isDebugOn())
             {
@@ -271,18 +271,18 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
     public abstract GraphElement asHeavyWeight();
 
     @Override
-    public String asString(final StringFormat format)
+    public String asString(StringFormat format)
     {
         if (format == StringFormat.PROGRAMMATIC)
         {
             return Long.toString(identifierAsLong());
         }
 
-        final var indenter = new AsStringIndenter(format)
+        var indenter = new AsStringIndenter(format)
                 .levels(Maximum._8)
                 .pruneAt(Edge.class);
 
-        final var string = asString(format, indenter).toString();
+        var string = asString(format, indenter).toString();
         return format == StringFormat.HTML ? StringTo.html(string) : string;
     }
 
@@ -290,7 +290,7 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
      * {@inheritDoc}
      */
     @Override
-    public AsStringIndenter asString(final StringFormat format, final AsStringIndenter indenter)
+    public AsStringIndenter asString(StringFormat format, AsStringIndenter indenter)
     {
         if (indenter.indentationLevel() > 1 && !indenter.canExplore(this))
         {
@@ -302,18 +302,18 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
             indenter.indented(name(), () ->
             {
                 // and add the elements properties
-                for (final var property : properties())
+                for (var property : properties())
                 {
-                    final var isNone = property.attribute().equals(GraphElementAttributes.get().NONE);
+                    var isNone = property.attribute().equals(GraphElementAttributes.get().NONE);
                     if (isNone || dataSpecification().supports(property.attribute()))
                     {
-                        final var propertyName = property.name() + (isNone ? "*" : "");
-                        final var value = property.valueFromObject(this);
+                        var propertyName = property.name() + (isNone ? "*" : "");
+                        var value = property.valueFromObject(this);
                         if (value != null && indenter.canExplore(value))
                         {
                             if (value instanceof Iterable<?>)
                             {
-                                final var collection = (Iterable<?>) value;
+                                var collection = (Iterable<?>) value;
                                 indenter.label(CaseFormat.camelCaseToHyphenated(propertyName));
                                 indenter.bracketed(collection, indenter::asString);
                             }
@@ -371,11 +371,11 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
      * @return True if the given object is a {@link GraphElement} with the same identifier as this element
      */
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof GraphElement)
         {
-            final var that = (GraphElement) object;
+            var that = (GraphElement) object;
             return identifierAsLong() == that.identifierAsLong();
         }
         return false;
@@ -394,7 +394,7 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
      *
      * @param graph The graph that owns this element
      */
-    public void graph(final Graph graph)
+    public void graph(Graph graph)
     {
         this.graph = graph;
     }
@@ -402,7 +402,7 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
     /**
      * @return True if this element has a tag with the given key
      */
-    public final boolean hasTag(final String key)
+    public final boolean hasTag(String key)
     {
         return tag(key) != null;
     }
@@ -424,7 +424,7 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
     /**
      * Assigns this element a graph element identifier
      */
-    public final void identifier(final long identifier)
+    public final void identifier(long identifier)
     {
         this.identifier = identifier;
     }
@@ -460,7 +460,7 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
     /**
      * Sets the index for this graph element
      */
-    public void index(final int index)
+    public void index(int index)
     {
         assert index > 0;
         this.index = index;
@@ -581,7 +581,7 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
     /**
      * @return True if this element supports the given attribute, under the owning graph's data specification
      */
-    public final boolean supports(final Attribute<?> attribute)
+    public final boolean supports(Attribute<?> attribute)
     {
         return dataSpecification().supports(attribute);
     }
@@ -589,7 +589,7 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
     /**
      * @return A tag for the given key, if any
      */
-    public final Tag tag(final String key)
+    public final Tag tag(String key)
     {
         return tagList().get(key);
     }
@@ -621,9 +621,9 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
     /**
      * @return The value of any tag with the given key, or null if no such tag exists
      */
-    public final String tagValue(final String key)
+    public final String tagValue(String key)
     {
-        final var tag = tag(key);
+        var tag = tag(key);
         if (tag != null)
         {
             return tag.getValue();
@@ -632,7 +632,7 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
     }
 
     @Override
-    public Validator validator(final ValidationType type)
+    public Validator validator(ValidationType type)
     {
         return new ElementValidator()
         {

@@ -29,15 +29,15 @@ import static com.telenav.mesakit.map.road.model.BridgeType.TUNNEL;
 
 public class BridgeTypeExtractor extends BaseExtractor<BridgeType, PbfWay>
 {
-    public BridgeTypeExtractor(final Listener listener)
+    public BridgeTypeExtractor(Listener listener)
     {
         super(listener);
     }
 
     @Override
-    public BridgeType onExtract(final PbfWay way)
+    public BridgeType onExtract(PbfWay way)
     {
-        final var bridge = way.tagValue("bridge");
+        var bridge = way.tagValue("bridge");
         if ("yes".equals(bridge) || "viaduct".equals(bridge))
         {
             return BRIDGE;

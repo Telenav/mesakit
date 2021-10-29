@@ -39,18 +39,18 @@ public class WorldRelationIdentifier extends RelationIdentifier
     /** The cell where this identifier resides */
     private final WorldCell worldCell;
 
-    public WorldRelationIdentifier(final WorldCell worldCell, final RelationIdentifier identifier)
+    public WorldRelationIdentifier(WorldCell worldCell, RelationIdentifier identifier)
     {
         super(identifier.asLong());
         this.worldCell = worldCell;
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof WorldRelationIdentifier)
         {
-            final var that = (WorldRelationIdentifier) object;
+            var that = (WorldRelationIdentifier) object;
             return worldCell.equals(that.worldCell) && super.equals(that);
         }
         return false;

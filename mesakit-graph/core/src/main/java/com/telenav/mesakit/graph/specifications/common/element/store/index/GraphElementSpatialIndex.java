@@ -55,7 +55,7 @@ public abstract class GraphElementSpatialIndex<T extends GraphElement>
      * @param graph The graph that this index is for
      * @param maximumObjectsPerQuadrant The maximum number of objects in a quadrant before a split is attempted
      */
-    protected GraphElementSpatialIndex(final Graph graph, final int maximumObjectsPerQuadrant)
+    protected GraphElementSpatialIndex(Graph graph, int maximumObjectsPerQuadrant)
     {
         this.graph = graph;
         this.maximumObjectsPerQuadrant = maximumObjectsPerQuadrant;
@@ -65,21 +65,21 @@ public abstract class GraphElementSpatialIndex<T extends GraphElement>
     /**
      * Adds the given element
      */
-    public void add(final T element)
+    public void add(T element)
     {
-        if (element.graph() != this.graph)
+        if (element.graph() != graph)
         {
             fail("Element does not belong to the graph for this spatial index");
         }
-        this.root.add(element);
+        root.add(element);
     }
 
     /**
      * Adds the given elements
      */
-    public void addAll(final Iterable<T> elements)
+    public void addAll(Iterable<T> elements)
     {
-        for (final var element : elements)
+        for (var element : elements)
         {
             add(element);
         }
@@ -90,18 +90,18 @@ public abstract class GraphElementSpatialIndex<T extends GraphElement>
      */
     public void clear()
     {
-        this.root = new GraphElementQuadrant<>(this, Rectangle.MAXIMUM);
+        root = new GraphElementQuadrant<>(this, Rectangle.MAXIMUM);
     }
 
     /**
      * Dumps the index quadrant tree to the given print stream
      */
-    public void dump(final PrintStream out)
+    public void dump(PrintStream out)
     {
-        this.root.dump(out, 0);
+        root.dump(out, 0);
     }
 
-    public void graph(final Graph graph)
+    public void graph(Graph graph)
     {
         this.graph = graph;
     }
@@ -109,15 +109,14 @@ public abstract class GraphElementSpatialIndex<T extends GraphElement>
     /**
      * @return All elements completely contained by the given bounding rectangle which match the given matcher
      */
-    public Iterable<T> inside(final Rectangle bounds, final Matcher<T> matcher)
+    public Iterable<T> inside(Rectangle bounds, Matcher<T> matcher)
     {
         return new Iterable<>()
         {
-            @SuppressWarnings("NullableProblems")
             @Override
             public Iterator<T> iterator()
             {
-                return GraphElementSpatialIndex.this.root.inside(bounds, matcher);
+                return root.inside(bounds, matcher);
             }
 
             @Override
@@ -125,8 +124,8 @@ public abstract class GraphElementSpatialIndex<T extends GraphElement>
             {
                 /* For debugging purposes */
                 var count = 0;
-                final var builder = new StringBuilder();
-                for (final var element : this)
+                var builder = new StringBuilder();
+                for (var element : this)
                 {
                     count++;
                     builder.append(element);
@@ -140,9 +139,9 @@ public abstract class GraphElementSpatialIndex<T extends GraphElement>
     /**
      * @return All elements completely contained by the given bounding rectangle
      */
-    public Iterable<T> inside(final Rectangle bounds)
+    public Iterable<T> inside(Rectangle bounds)
     {
-        return inside(bounds, this.allElements);
+        return inside(bounds, allElements);
     }
 
     /**
@@ -150,7 +149,7 @@ public abstract class GraphElementSpatialIndex<T extends GraphElement>
      */
     public int size()
     {
-        return this.root.size();
+        return root.size();
     }
 
     /**
@@ -160,11 +159,11 @@ public abstract class GraphElementSpatialIndex<T extends GraphElement>
 
     protected Graph graph()
     {
-        return this.graph;
+        return graph;
     }
 
-    boolean isFull(final int size)
+    boolean isFull(int size)
     {
-        return size > this.maximumObjectsPerQuadrant;
+        return size > maximumObjectsPerQuadrant;
     }
 }

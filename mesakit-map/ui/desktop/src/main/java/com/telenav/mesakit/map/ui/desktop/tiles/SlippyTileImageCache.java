@@ -72,7 +72,7 @@ public abstract class SlippyTileImageCache extends BaseRepeater
     /**
      * @param maximumTiles The maximum number of images to hold in the cache
      */
-    protected SlippyTileImageCache(final Listener listener, final Maximum maximumTiles)
+    protected SlippyTileImageCache(Listener listener, Maximum maximumTiles)
     {
         listener.listenTo(this);
 
@@ -88,17 +88,17 @@ public abstract class SlippyTileImageCache extends BaseRepeater
     /**
      * Draw map tiles on the given graphics
      */
-    public void drawTiles(final DrawingSurface surface,
-                          final Iterable<SlippyTile> tiles)
+    public void drawTiles(DrawingSurface surface,
+                          Iterable<SlippyTile> tiles)
     {
         // Go through each tile
-        for (final var tile : tiles)
+        for (var tile : tiles)
         {
-            final var tileArea = tile.drawingArea();
+            var tileArea = tile.drawingArea();
             if (surface.drawingArea().intersects(tileArea))
             {
                 // get any available image for the tile
-                final var image = image(tile);
+                var image = image(tile);
 
                 // and if one is available,
                 if (image != null)
@@ -120,7 +120,7 @@ public abstract class SlippyTileImageCache extends BaseRepeater
     /**
      * @return The HTTP network location of the given slippy tile
      */
-    protected abstract HttpNetworkLocation networkLocation(final SlippyTile tile);
+    protected abstract HttpNetworkLocation networkLocation(SlippyTile tile);
 
     /**
      * Called when a download finishes and an image is added to the cache
@@ -130,7 +130,7 @@ public abstract class SlippyTileImageCache extends BaseRepeater
     /**
      * @return The image for the given tile
      */
-    private BufferedImage download(final SlippyTile tile)
+    private BufferedImage download(SlippyTile tile)
     {
         // If we can't find the file in the cache folder,
         var resource = cache.resource(tile);
@@ -140,7 +140,7 @@ public abstract class SlippyTileImageCache extends BaseRepeater
             resource = cache.add(tile, networkLocation(tile).get(DEFAULT, get ->
             {
                 get.setHeader("User-Agent", "MesaKit");
-                get.setHeader("Referer", "http://www.mesakit.org");
+                get.setHeader("Referer", "https://www.mesakit.org");
             }));
         }
 
@@ -148,11 +148,11 @@ public abstract class SlippyTileImageCache extends BaseRepeater
         if (resource != null)
         {
             // read and return it.
-            try (final var in = resource.openForReading())
+            try (var in = resource.openForReading())
             {
                 return ImageIO.read(in);
             }
-            catch (final IOException e)
+            catch (IOException e)
             {
                 warning(e, "Unable to read image $", resource);
             }
@@ -170,11 +170,11 @@ public abstract class SlippyTileImageCache extends BaseRepeater
         try
         {
             // Get the next request
-            final var next = requested.take();
+            var next = requested.take();
             downloading.add(next);
 
             // and download the image for it
-            final var image = download(next);
+            var image = download(next);
 
             // and if we got the image,
             if (image != null)
@@ -185,7 +185,7 @@ public abstract class SlippyTileImageCache extends BaseRepeater
                 onCacheUpdated();
             }
         }
-        catch (final InterruptedException ignored)
+        catch (InterruptedException ignored)
         {
         }
     }
@@ -194,9 +194,9 @@ public abstract class SlippyTileImageCache extends BaseRepeater
      * @return The current buffered image for the given tile from the cache. If the image is not available it is
      * requested so it will be available in the future.
      */
-    private BufferedImage image(final SlippyTile tile)
+    private BufferedImage image(SlippyTile tile)
     {
-        final var image = imageForTile.get(tile);
+        var image = imageForTile.get(tile);
         if (image == null)
         {
             if (!isRequested(tile))
@@ -205,7 +205,7 @@ public abstract class SlippyTileImageCache extends BaseRepeater
                 {
                     requested.put(tile);
                 }
-                catch (final InterruptedException e)
+                catch (InterruptedException e)
                 {
                     e.printStackTrace();
                 }
@@ -217,7 +217,7 @@ public abstract class SlippyTileImageCache extends BaseRepeater
     /**
      * @return True if the given tile is being downloaded or is requested to be downloaded
      */
-    private boolean isRequested(final SlippyTile tile)
+    private boolean isRequested(SlippyTile tile)
     {
         return downloading.contains(tile) || requested.contains(tile);
     }

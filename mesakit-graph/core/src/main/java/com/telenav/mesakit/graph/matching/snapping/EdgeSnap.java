@@ -25,7 +25,7 @@ public class EdgeSnap extends PolylineSnap
 {
     private final Edge edge;
 
-    public EdgeSnap(final Edge edge, final PolylineSnap snap)
+    public EdgeSnap(Edge edge, PolylineSnap snap)
     {
         super(snap.latitude(), snap.longitude(), snap.target(), snap.offsetOnSegment(), snap.source(),
                 snap.polylineIndex());

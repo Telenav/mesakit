@@ -15,7 +15,7 @@ public class Contains extends Node implements BooleanExpression
 
     private final ValueExpression right;
 
-    public Contains(final ValueExpression left, final ValueExpression right)
+    public Contains(ValueExpression left, ValueExpression right)
     {
         this.left = left;
         this.right = right;
@@ -24,11 +24,11 @@ public class Contains extends Node implements BooleanExpression
     @Override
     public boolean evaluate()
     {
-        final var left = this.left.evaluate();
-        final var right = this.right.evaluate();
+        var left = this.left.evaluate();
+        var right = this.right.evaluate();
         if (left.isString() && right.isString())
         {
-            final var result = Strings.containsIgnoreCase(left.asString(), right.asString());
+            var result = Strings.containsIgnoreCase(left.asString(), right.asString());
             trace("Evaluates to $", result);
             return result;
         }
@@ -42,7 +42,7 @@ public class Contains extends Node implements BooleanExpression
     }
 
     @Override
-    public void visit(final Visitor visitor)
+    public void visit(Visitor visitor)
     {
         super.visit(visitor);
         left.visit(visitor);

@@ -36,21 +36,21 @@ public class GraphList extends AbstractList<Graph>
 
     private final FileList files;
 
-    public GraphList(final FileList files)
+    public GraphList(FileList files)
     {
         this.files = files;
     }
 
     @SuppressWarnings("resource")
     @Override
-    public Graph get(final int index)
+    public Graph get(int index)
     {
-        final var resource = files.get(index);
+        var resource = files.get(index);
         try
         {
             return new GraphArchive(LOGGER, resource, READ, ProgressReporter.NULL).load(LOGGER);
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             LOGGER.warning("Unable to load $", resource);
             return null;

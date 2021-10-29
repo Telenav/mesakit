@@ -95,21 +95,21 @@ public class RoadTypeExtractor extends BaseExtractor<RoadType, PbfWay>
         priorityForRoadType.put(RoadType.RESERVED_2, 9);
     }
 
-    public RoadTypeExtractor(final Listener listener)
+    public RoadTypeExtractor(Listener listener)
     {
         super(listener);
     }
 
     @Override
-    public RoadType onExtract(final PbfWay way)
+    public RoadType onExtract(PbfWay way)
     {
-        final var roadType = way.tagValueAsNaturalNumber("rt");
+        var roadType = way.tagValueAsNaturalNumber("rt");
         if (roadType >= 0)
         {
             return RoadType.forIdentifier(roadType);
         }
 
-        final Set<RoadType> types = new HashSet<>();
+        Set<RoadType> types = new HashSet<>();
         if (way.tagValueIs("route", "ferry"))
         {
             types.add(RoadType.FERRY);
@@ -122,9 +122,9 @@ public class RoadTypeExtractor extends BaseExtractor<RoadType, PbfWay>
         {
             types.add(RoadType.NON_NAVIGABLE);
         }
-        for (final var highway : way.tagValueSplit("highway"))
+        for (var highway : way.tagValueSplit("highway"))
         {
-            final var type = roadTypeForHighway.get(highway);
+            var type = roadTypeForHighway.get(highway);
             if (type != null)
             {
                 types.add(type);
@@ -133,13 +133,13 @@ public class RoadTypeExtractor extends BaseExtractor<RoadType, PbfWay>
         return choose(types);
     }
 
-    private RoadType choose(final Set<RoadType> types)
+    private RoadType choose(Set<RoadType> types)
     {
         RoadType chosen = null;
         var highestPriority = Integer.MAX_VALUE;
-        for (final var type : types)
+        for (var type : types)
         {
-            final var priority = priorityForRoadType.get(type);
+            var priority = priorityForRoadType.get(type);
             if (priority != null && (chosen == null || priority < highestPriority))
             {
                 chosen = type;

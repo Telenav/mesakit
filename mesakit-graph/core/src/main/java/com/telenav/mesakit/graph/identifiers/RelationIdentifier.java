@@ -37,8 +37,8 @@ public class RelationIdentifier extends MapRelationIdentifier implements GraphEl
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static SwitchParser.Builder<RelationIdentifier> relationIdentifierSwitchParser(final String name,
-                                                                                          final String description)
+    public static SwitchParser.Builder<RelationIdentifier> relationIdentifierSwitchParser(String name,
+                                                                                          String description)
     {
         return SwitchParser.builder(RelationIdentifier.class)
                 .name(name)
@@ -48,7 +48,7 @@ public class RelationIdentifier extends MapRelationIdentifier implements GraphEl
 
     public static class Converter extends Quantizable.Converter<RelationIdentifier>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener, RelationIdentifier::new);
         }
@@ -57,13 +57,13 @@ public class RelationIdentifier extends MapRelationIdentifier implements GraphEl
     /**
      * Construct from identifier
      */
-    public RelationIdentifier(final long identifier)
+    public RelationIdentifier(long identifier)
     {
         super(identifier);
     }
 
     @Override
-    public GraphElement element(final Graph graph)
+    public GraphElement element(Graph graph)
     {
         return graph.relationForIdentifier(this);
     }
@@ -78,7 +78,7 @@ public class RelationIdentifier extends MapRelationIdentifier implements GraphEl
     }
 
     @Override
-    protected MapIdentifier newIdentifier(final long identifier)
+    protected MapIdentifier newIdentifier(long identifier)
     {
         return new RelationIdentifier(identifier);
     }

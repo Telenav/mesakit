@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.road.name.parser.tokenizer.symbols;
 
 class Word extends Symbol
 {
-    Word(final String text)
+    Word(String text)
     {
         super(text, "<WORD>");
     }

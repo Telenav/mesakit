@@ -35,25 +35,25 @@ public class ConsoleRoutingDebugger implements RoutingDebugger
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
     @Override
-    public void onEnd(final RoutingRequest request, final RoutingResponse response)
+    public void onEnd(RoutingRequest request, RoutingResponse response)
     {
         ConsoleRoutingDebugger.LOGGER.information("Completed $ from $ to $", request.description(), request.start(), request.end());
     }
 
     @Override
-    public void onRelaxed(final Route route, final Cost cost)
+    public void onRelaxed(Route route, Cost cost)
     {
         ConsoleRoutingDebugger.LOGGER.information("${nowrap}Relaxed (cost $) $ at end of $", cost, route.last(), simplified(route));
     }
 
     @Override
-    public void onSettled(final Vertex vertex, final Cost cost)
+    public void onSettled(Vertex vertex, Cost cost)
     {
         ConsoleRoutingDebugger.LOGGER.information("${nowrap}Settled (cost $) $", cost, vertex);
     }
 
     @Override
-    public void onStart(final RoutingRequest request)
+    public void onStart(RoutingRequest request)
     {
         ConsoleRoutingDebugger.LOGGER.information("Starting $ from $ to $", request.description(), request.start(), request.end());
     }
@@ -61,12 +61,12 @@ public class ConsoleRoutingDebugger implements RoutingDebugger
     /**
      * @return True if the given route spans more than one world cell
      */
-    private boolean oneCell(final Route route)
+    private boolean oneCell(Route route)
     {
         RegionIdentifier lastCell = null;
-        for (final var edge : route)
+        for (var edge : route)
         {
-            final var worldEdge = (WorldEdge) edge;
+            var worldEdge = (WorldEdge) edge;
             if (lastCell != null && !lastCell.equals(worldEdge.worldCell().identifier()))
             {
                 return false;
@@ -76,7 +76,7 @@ public class ConsoleRoutingDebugger implements RoutingDebugger
         return true;
     }
 
-    private String simplified(final Route route)
+    private String simplified(Route route)
     {
         // If the route is a world edge route
         if (route.first() instanceof WorldEdge)
@@ -85,8 +85,8 @@ public class ConsoleRoutingDebugger implements RoutingDebugger
             if (oneCell(route))
             {
                 // return a simplified route string without the cell identifiers
-                final var edges = new StringList();
-                for (final var edge : route)
+                var edges = new StringList();
+                for (var edge : route)
                 {
                     edges.add(Long.toString(edge.identifier().asLong()));
                 }

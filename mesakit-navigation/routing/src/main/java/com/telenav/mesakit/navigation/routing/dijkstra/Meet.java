@@ -27,7 +27,7 @@ public class Meet
 
     private final Cost cost;
 
-    public Meet(final Route route, final Cost cost)
+    public Meet(Route route, Cost cost)
     {
         this.route = route;
         this.cost = cost;
@@ -35,21 +35,21 @@ public class Meet
 
     public Cost cost()
     {
-        return this.cost;
+        return cost;
     }
 
-    public boolean equals(final Meet that)
+    public boolean equals(Meet that)
     {
-        return that != null && this.route.equals(that.route);
+        return that != null && route.equals(that.route);
     }
 
-    public boolean isCheaperThan(final Meet that)
+    public boolean isCheaperThan(Meet that)
     {
-        return this.cost.isLessThan(that.cost);
+        return cost.isLessThan(that.cost);
     }
 
     public Route route()
     {
-        return this.route;
+        return route;
     }
 }

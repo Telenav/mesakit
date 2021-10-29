@@ -30,11 +30,11 @@ import java.lang.reflect.Type;
 public class GeoJsonGeometryTypeAdapter implements JsonSerializer<GeoJsonGeometry>, JsonDeserializer<GeoJsonGeometry>
 {
     @Override
-    public GeoJsonGeometry deserialize(final JsonElement json, final Type typeOfT,
-                                       final JsonDeserializationContext context) throws JsonParseException
+    public GeoJsonGeometry deserialize(JsonElement json, Type typeOfT,
+                                       JsonDeserializationContext context) throws JsonParseException
     {
-        final var jsonObject = json.getAsJsonObject();
-        final var type = jsonObject.get("type").getAsString();
+        var jsonObject = json.getAsJsonObject();
+        var type = jsonObject.get("type").getAsString();
         if ("Point".equalsIgnoreCase(type))
         {
             return context.deserialize(jsonObject, GeoJsonPoint.class);
@@ -51,8 +51,8 @@ public class GeoJsonGeometryTypeAdapter implements JsonSerializer<GeoJsonGeometr
     }
 
     @Override
-    public JsonElement serialize(final GeoJsonGeometry src, final Type typeOfSrc,
-                                 final JsonSerializationContext context)
+    public JsonElement serialize(GeoJsonGeometry src, Type typeOfSrc,
+                                 JsonSerializationContext context)
     {
         return context.serialize(src, src.getClass());
     }

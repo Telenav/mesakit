@@ -91,7 +91,7 @@ public class PlaceStore extends ArchivedGraphElementStore<Place>
     /** A spatial index for the edges in this graph */
     private QuadTreeSpatialIndex<Place> spatialIndex;
 
-    public PlaceStore(final Graph graph)
+    public PlaceStore(Graph graph)
     {
         super(graph);
     }
@@ -111,22 +111,22 @@ public class PlaceStore extends ArchivedGraphElementStore<Place>
         return "place-store";
     }
 
-    public Location retrieveLocation(final Place place)
+    public Location retrieveLocation(Place place)
     {
         return LOCATION.retrieveObject(place, DM7::toLocation);
     }
 
-    public String retrieveName(final Place place)
+    public String retrieveName(Place place)
     {
         return NAME.retrieveString(place);
     }
 
-    public Count retrievePopulation(final Place place)
+    public Count retrievePopulation(Place place)
     {
         return POPULATION.retrieveObject(place, Count::count);
     }
 
-    public Place.Type retrieveType(final Place place)
+    public Place.Type retrieveType(Place place)
     {
         return TYPE.retrieveObject(place, value -> Place.Type.forIdentifier((int) value));
     }
@@ -136,7 +136,7 @@ public class PlaceStore extends ArchivedGraphElementStore<Place>
         if (spatialIndex == null)
         {
             spatialIndex = new QuadTreeSpatialIndex<>();
-            for (final var place : this)
+            for (var place : this)
             {
                 spatialIndex.add(place);
             }
@@ -145,9 +145,9 @@ public class PlaceStore extends ArchivedGraphElementStore<Place>
     }
 
     @Override
-    public Validator validator(final ValidationType validation)
+    public Validator validator(ValidationType validation)
     {
-        final var outer = this;
+        var outer = this;
 
         return !validation.shouldValidate(getClass()) ? Validator.NULL : new StoreValidator()
         {
@@ -162,7 +162,7 @@ public class PlaceStore extends ArchivedGraphElementStore<Place>
                 {
                     validate(PlaceStore.super.validator(validation));
 
-                    final var outer = PlaceStore.this;
+                    var outer = PlaceStore.this;
 
                     problemIf(outer.name == null, "there are no names");
                     problemIf(outer.type == null, "there are no types");
@@ -200,10 +200,10 @@ public class PlaceStore extends ArchivedGraphElementStore<Place>
     }
 
     @Override
-    protected void onAdd(final Place place)
+    protected void onAdd(Place place)
     {
         // Assign the place an index
-        final var index = identifierToIndex(place.identifierAsLong(), IndexingMode.CREATE);
+        var index = identifierToIndex(place.identifierAsLong(), IndexingMode.CREATE);
         place.index(index);
 
         // call the superclass,
@@ -214,7 +214,7 @@ public class PlaceStore extends ArchivedGraphElementStore<Place>
 
         if (DEBUG.isDebugOn())
         {
-            final var retrieved = dataSpecification().newPlace(graph(), place.identifierAsLong());
+            var retrieved = dataSpecification().newPlace(graph(), place.identifierAsLong());
             assert retrieved.validator(VALIDATE_ALL).validate(LOGGER);
             assert place.equals(retrieved);
         }
@@ -223,7 +223,7 @@ public class PlaceStore extends ArchivedGraphElementStore<Place>
     /**
      * Stores all of the simple attributes of the given place at the given index
      */
-    private void storeAttributes(final Place place)
+    private void storeAttributes(Place place)
     {
         LOCATION.storeObject(place, place.location());
         NAME.storeString(place, place.name());

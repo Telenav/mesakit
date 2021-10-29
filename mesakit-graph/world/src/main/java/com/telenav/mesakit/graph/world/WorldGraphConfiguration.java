@@ -58,7 +58,7 @@ public final class WorldGraphConfiguration
     }
 
     @KivaKitPropertyConverter(Angle.Converter.class)
-    public void cellSize(final Angle size)
+    public void cellSize(Angle size)
     {
         cellSize = size;
     }
@@ -69,24 +69,24 @@ public final class WorldGraphConfiguration
     }
 
     @KivaKitPropertyConverter(Folder.Converter.class)
-    public void localRepository(final Folder local)
+    public void localRepository(Folder local)
     {
         localRepository = new WorldGraphRepository(local);
     }
 
-    public WorldGraphRepositoryFolder materializedGraphFolder(final Metadata metadata)
+    public WorldGraphRepositoryFolder materializedGraphFolder(Metadata metadata)
     {
         // Get the local and remote repositories
-        final var local = localRepository();
-        final var remote = remoteRepository();
+        var local = localRepository();
+        var remote = remoteRepository();
 
         // and if there is a remote repository,
         if (remote != null)
         {
             // copy any out-of-date files in the specified graph metadata to the local repository
-            final var progress = Progress.create(LOGGER, "bytes");
-            final var remoteGraph = remoteRepository.folder(metadata);
-            final var localGraph = localRepository.folder(metadata);
+            var progress = Progress.create(LOGGER, "bytes");
+            var remoteGraph = remoteRepository.folder(metadata);
+            var localGraph = localRepository.folder(metadata);
             remoteGraph.copyTo(localGraph, CopyMode.UPDATE, progress);
         }
 
@@ -96,14 +96,14 @@ public final class WorldGraphConfiguration
     public WorldGraphRepository materializedRepository()
     {
         // Get the local and remote repositories
-        final var local = localRepository();
-        final var remote = remoteRepository();
+        var local = localRepository();
+        var remote = remoteRepository();
 
         // and if there is a remote repository,
         if (remote != null)
         {
             // copy any out-of-date files to the local repository
-            final var progress = Progress.create(LOGGER, "bytes");
+            var progress = Progress.create(LOGGER, "bytes");
             remote.copyTo(local, CopyMode.UPDATE, progress);
         }
 
@@ -111,7 +111,7 @@ public final class WorldGraphConfiguration
     }
 
     @KivaKitPropertyConverter(Folder.Converter.class)
-    public void remoteRepository(final Folder remote)
+    public void remoteRepository(Folder remote)
     {
         remoteRepository = new WorldGraphRepository(remote);
     }

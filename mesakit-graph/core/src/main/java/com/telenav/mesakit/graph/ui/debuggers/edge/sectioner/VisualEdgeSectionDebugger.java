@@ -51,7 +51,7 @@ public class VisualEdgeSectionDebugger implements EdgeSectionerDebugger
         if (!debugging)
         {
             debugging = true;
-            final var viewer = new DebugViewer();
+            var viewer = new DebugViewer();
             debugView = (InteractiveView) viewer.view("debug");
             debugView.frameSpeed(Duration.ONE_SECOND);
         }
@@ -67,11 +67,11 @@ public class VisualEdgeSectionDebugger implements EdgeSectionerDebugger
     }
 
     @Override
-    public void update(final EdgeSection section)
+    public void update(EdgeSection section)
     {
         if (viewing)
         {
-            final var identifier = section.edge().identifier();
+            var identifier = section.edge().identifier();
             debugView.update(new DrawableIdentifier(identifier),
                     new DrawablePolyline(section.shape(), rainbow.next(), "Edge " + identifier));
             debugView.zoomToContents(Percent.of(10));

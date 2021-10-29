@@ -149,16 +149,16 @@ public abstract class GraphUnitTest extends RegionUnitTest
 
     protected GraphUnitTest()
     {
-        final var store = Settings.of(this);
+        var store = Settings.of(this);
         LOGGER.listenTo(store);
         store.registerAllSettingsIn(this, Folder.parse("configuration"));
     }
 
-    protected Edge edge(final Graph graph, final double fromLatitude, final double fromLongitude,
-                        final double toLatitude, final double toLongitude)
+    protected Edge edge(Graph graph, double fromLatitude, double fromLongitude,
+                        double toLatitude, double toLongitude)
     {
-        final var from = vertex(graph, fromLatitude, fromLongitude);
-        final var to = vertex(graph, toLatitude, toLongitude);
+        var from = vertex(graph, fromLatitude, fromLongitude);
+        var to = vertex(graph, toLatitude, toLongitude);
         if (from != null && to != null)
         {
             return from.edgeTo(to);
@@ -166,70 +166,70 @@ public abstract class GraphUnitTest extends RegionUnitTest
         return null;
     }
 
-    protected Edge edgeNear(final Graph graph, final double latitude, final double longitude)
+    protected Edge edgeNear(Graph graph, double latitude, double longitude)
     {
         return graph.edgeNearest(Location.degrees(latitude, longitude), Distance.meters(20));
     }
 
-    protected EdgeSet edges(final Edge... edges)
+    protected EdgeSet edges(Edge... edges)
     {
-        final var set = new EdgeSet(Estimate.estimate(edges));
+        var set = new EdgeSet(Estimate.estimate(edges));
         set.addAll(edges);
         return set;
     }
 
-    protected Location location(final String location)
+    protected Location location(String location)
     {
         return locationInDegreesConverter.convert(location);
     }
 
-    protected Location locationInDegreesMinutesAndSeconds(final String location)
+    protected Location locationInDegreesMinutesAndSeconds(String location)
     {
         return locationInDegreesMinutesAndSecondsConverter.convert(location);
     }
 
-    protected HeavyWeightEdge nextOsmEdge(final Graph graph)
+    protected HeavyWeightEdge nextOsmEdge(Graph graph)
     {
-        final var edge = osmEdge(graph, nextOsmEdgeIdentifier, nextOsmEdgeIdentifier);
+        var edge = osmEdge(graph, nextOsmEdgeIdentifier, nextOsmEdgeIdentifier);
         nextOsmEdgeIdentifier++;
         return edge;
     }
 
     protected HeavyWeightRelation nextOsmRelation()
     {
-        final var relation = osmRelation(nextOsmRelationIdentifier, nextOsmRelationIdentifier);
+        var relation = osmRelation(nextOsmRelationIdentifier, nextOsmRelationIdentifier);
         nextOsmRelationIdentifier++;
         return relation;
     }
 
-    protected Edge osmDowntownSeattleTestEdge(final long identifier)
+    protected Edge osmDowntownSeattleTestEdge(long identifier)
     {
         return osmDowntownSeattleTest().edgeForIdentifier(new EdgeIdentifier(identifier));
     }
 
-    protected EdgeSet osmDowntownSeattleTestEdges(final long... identifiers)
+    protected EdgeSet osmDowntownSeattleTestEdges(long... identifiers)
     {
-        final var edges = new EdgeSet(Estimate.estimate(identifiers.length));
-        for (final var identifier : identifiers)
+        var edges = new EdgeSet(Estimate.estimate(identifiers.length));
+        for (var identifier : identifiers)
         {
             edges.add(osmDowntownSeattleTestEdge(identifier));
         }
         return edges;
     }
 
-    protected Route osmDowntownSeattleTestRoute(final long... identifiers)
+    protected Route osmDowntownSeattleTestRoute(long... identifiers)
     {
-        final var builder = new RouteBuilder();
-        for (final var identifier : identifiers)
+        var builder = new RouteBuilder();
+        for (var identifier : identifiers)
         {
             builder.append(osmDowntownSeattleTestEdge(identifier));
         }
         return builder.route();
     }
 
-    protected HeavyWeightEdge osmEdge(final Graph graph, final int index, final int identifier)
+    protected HeavyWeightEdge osmEdge(Graph graph, int index, int identifier)
     {
-        final var edge = graph.newHeavyWeightEdge(new EdgeIdentifier(identifier));
+        var edge = graph.newHeavyWeightEdge(new EdgeIdentifier(identifier));
         edge.graph(graph);
         edge.populateWithTestValues();
         edge.index(index);
@@ -241,22 +241,22 @@ public abstract class GraphUnitTest extends RegionUnitTest
         return (OsmGraph) OsmDataSpecification.get().newGraph(Metadata.osm(OSM, PBF));
     }
 
-    protected Edge osmGreenLakeSeattleEdge(final long identifier)
+    protected Edge osmGreenLakeSeattleEdge(long identifier)
     {
         return osmGreenLakeSeattle().edgeForIdentifier(new EdgeIdentifier(identifier));
     }
 
-    protected HeavyWeightRelation osmRelation(final int identifier, final int index)
+    protected HeavyWeightRelation osmRelation(int identifier, int index)
     {
-        final var relation = OsmDataSpecification.get().newHeavyWeightRelation(null, identifier);
+        var relation = OsmDataSpecification.get().newHeavyWeightRelation(null, identifier);
         relation.index(index);
         return relation;
     }
 
-    protected HeavyWeightVertex osmVertex(final Graph graph, final int index, final int identifier,
-                                          final Location location)
+    protected HeavyWeightVertex osmVertex(Graph graph, int index, int identifier,
+                                          Location location)
     {
-        final var vertex = graph.newHeavyWeightVertex(new VertexIdentifier(identifier));
+        var vertex = graph.newHeavyWeightVertex(new VertexIdentifier(identifier));
         vertex.graph(graph);
         vertex.index(index);
         vertex.identifier(identifier);
@@ -270,24 +270,24 @@ public abstract class GraphUnitTest extends RegionUnitTest
         return newRandomValueFactory(GraphRandomValueFactory::new);
     }
 
-    protected Route route(final Edge... edges)
+    protected Route route(Edge... edges)
     {
-        final var builder = new RouteBuilder();
-        for (final var edge : edges)
+        var builder = new RouteBuilder();
+        for (var edge : edges)
         {
             builder.append(edge);
         }
         return builder.route();
     }
 
-    protected HeavyWeightEdge testEdge(final long identifier)
+    protected HeavyWeightEdge testEdge(long identifier)
     {
-        final var edge = OsmDataSpecification.get().newHeavyWeightEdge(null, identifier);
+        var edge = OsmDataSpecification.get().newHeavyWeightEdge(null, identifier);
         edge.populateWithTestValues();
         return edge;
     }
 
-    protected Vertex vertex(final Graph graph, final double latitude, final double longitude)
+    protected Vertex vertex(Graph graph, double latitude, double longitude)
     {
         return graph.vertexNearest(Location.degrees(latitude, longitude), Distance.meters(50));
     }
@@ -297,17 +297,17 @@ public abstract class GraphUnitTest extends RegionUnitTest
         return GraphProject.get().overpassFolder();
     }
 
-    private static void downloadFromOverpass(final String dataDescriptor, final Rectangle bounds)
+    private static void downloadFromOverpass(String dataDescriptor, Rectangle bounds)
     {
         LOGGER.information("Downloading $_$", dataDescriptor, bounds.toFileString());
-        final var overpass = LOGGER.listenTo(new OverpassDataDownloader(cacheFolder()));
-        final var pbf = overpass.pbf(dataDescriptor, bounds);
+        var overpass = LOGGER.listenTo(new OverpassDataDownloader(cacheFolder()));
+        var pbf = overpass.pbf(dataDescriptor, bounds);
 
         // then make sure it has metadata
         var metadata = Metadata.from(pbf);
         if (metadata == null)
         {
-            final var annotator = LOGGER.listenTo(new PbfFileMetadataAnnotator(
+            var annotator = LOGGER.listenTo(new PbfFileMetadataAnnotator(
                     pbf, STRIP_UNREFERENCED_NODES, new OsmNavigableWayFilter(), new OsmRelationsFilter()));
             metadata = annotator.read()
                     .withDataPrecision(Precision.DM6)
@@ -316,28 +316,28 @@ public abstract class GraphUnitTest extends RegionUnitTest
         }
     }
 
-    private static File file(final String dataDescriptor, final Rectangle bounds)
+    private static File file(String dataDescriptor, Rectangle bounds)
     {
         return cacheFolder().file(dataDescriptor + "-" + bounds.toFileString());
     }
 
     @SuppressWarnings("resource")
-    private static Graph graph(final DataSpecification specification,
-                               final String name,
-                               final Rectangle bounds)
+    private static Graph graph(DataSpecification specification,
+                               String name,
+                               Rectangle bounds)
     {
         // If we can't find the graph file
-        final var dataDescriptor = "OSM-OSM-PBF-" + name;
-        final var graphFile = file(dataDescriptor, bounds).withExtension(Extension.GRAPH);
+        var dataDescriptor = "OSM-OSM-PBF-" + name;
+        var graphFile = file(dataDescriptor, bounds).withExtension(Extension.GRAPH);
         if (!graphFile.exists())
         {
             // and the PBF file doesn't exist
-            final var pbfFile = file(dataDescriptor, bounds).withExtension(Extension.OSM_PBF);
+            var pbfFile = file(dataDescriptor, bounds).withExtension(Extension.OSM_PBF);
             if (!pbfFile.exists())
             {
                 // then try to copy it from the test data folder
-                final var destination = GraphProject.get().graphFolder().folder("overpass");
-                final var source = MesaKit.get().mesakitHome().folder("mesakit-graph/core/data");
+                var destination = GraphProject.get().graphFolder().folder("overpass");
+                var source = MesaKit.get().mesakitHome().folder("mesakit-graph/core/data");
                 source.copyTo(destination, CopyMode.OVERWRITE, Extension.OSM_PBF.fileMatcher(), ProgressReporter.NULL);
             }
 
@@ -352,12 +352,12 @@ public abstract class GraphUnitTest extends RegionUnitTest
             if (pbfFile.exists())
             {
                 // get its metadata
-                final Metadata metadata = Metadata.from(pbfFile);
+                Metadata metadata = Metadata.from(pbfFile);
                 if (metadata != null)
                 {
                     // and convert the PBF file to a graph file using the right kind of converter for the metadata
-                    final var converter = LOGGER.listenTo(metadata.dataSpecification().newGraphConverter(metadata));
-                    final var graph = converter.convert(pbfFile);
+                    var converter = LOGGER.listenTo(metadata.dataSpecification().newGraphConverter(metadata));
+                    var graph = converter.convert(pbfFile);
                     if (graph != null)
                     {
                         // and if we succeeded, then save the graph file and return the graph

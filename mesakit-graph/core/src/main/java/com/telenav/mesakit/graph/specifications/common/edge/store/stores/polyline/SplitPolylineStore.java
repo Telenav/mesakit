@@ -62,8 +62,8 @@ public class SplitPolylineStore implements KryoSerializable, NamedObject, Initia
     /** Estimated size of child polyline stores */
     private Estimate initialChildSize;
 
-    public SplitPolylineStore(final String objectName, final Maximum maximumSize, final Maximum maximumChildSize,
-                              final Estimate initialSize, final Estimate initialChildSize)
+    public SplitPolylineStore(String objectName, Maximum maximumSize, Maximum maximumChildSize,
+                              Estimate initialSize, Estimate initialChildSize)
     {
         ensure(objectName != null);
         ensure(!initialSize.isMaximum());
@@ -94,9 +94,9 @@ public class SplitPolylineStore implements KryoSerializable, NamedObject, Initia
     }
 
     @Override
-    public Method compress(final Method method)
+    public Method compress(Method method)
     {
-        for (final var store : stores)
+        for (var store : stores)
         {
             store.compress(method);
         }
@@ -115,11 +115,11 @@ public class SplitPolylineStore implements KryoSerializable, NamedObject, Initia
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof SplitPolylineStore)
         {
-            final var that = (SplitPolylineStore) object;
+            var that = (SplitPolylineStore) object;
             return Objects.equalPairs(stores, that.stores, indexToStore, that.indexToStore,
                     indexToStoreIndex, that.indexToStoreIndex);
         }
@@ -129,7 +129,7 @@ public class SplitPolylineStore implements KryoSerializable, NamedObject, Initia
     /**
      * @return The polyline for the given index
      */
-    public Polyline get(final Indexed indexed)
+    public Polyline get(Indexed indexed)
     {
         return get(indexed.index());
     }
@@ -137,19 +137,19 @@ public class SplitPolylineStore implements KryoSerializable, NamedObject, Initia
     /**
      * @return The polyline for the given index
      */
-    public Polyline get(final int index)
+    public Polyline get(int index)
     {
         ensure(index > 0);
 
         // If the store for the given index is not null,
-        final var which = indexToStore.safeGet(index);
+        var which = indexToStore.safeGet(index);
         if (!indexToStore.isNull(which))
         {
             // then get the store
-            final var store = stores.get(which);
+            var store = stores.get(which);
 
             // and the index within the store,
-            final var storeIndex = indexToStoreIndex.safeGet(index);
+            var storeIndex = indexToStoreIndex.safeGet(index);
 
             // and if that index is not null,
             if (!store.isNull(storeIndex))
@@ -168,7 +168,7 @@ public class SplitPolylineStore implements KryoSerializable, NamedObject, Initia
     }
 
     @Override
-    public void objectName(final String objectName)
+    public void objectName(String objectName)
     {
         this.objectName = objectName;
     }
@@ -185,14 +185,14 @@ public class SplitPolylineStore implements KryoSerializable, NamedObject, Initia
     }
 
     @Override
-    public void read(final Kryo kryo, final Input input)
+    public void read(Kryo kryo, Input input)
     {
         objectName = kryo.readObject(input, String.class);
         maximumChildSize = kryo.readObject(input, Maximum.class);
         initialChildSize = kryo.readObject(input, Estimate.class);
         indexToStore = kryo.readObject(input, IntArray.class);
         indexToStoreIndex = kryo.readObject(input, IntArray.class);
-        final int storeCount = kryo.readObject(input, int.class);
+        int storeCount = kryo.readObject(input, int.class);
         stores = new ArrayList<>();
         for (var at = 0; at < storeCount; at++)
         {
@@ -203,12 +203,12 @@ public class SplitPolylineStore implements KryoSerializable, NamedObject, Initia
     /**
      * Stores the given polyline at the given index.
      */
-    public void set(final Indexed indexed, final Polyline line)
+    public void set(Indexed indexed, Polyline line)
     {
         unsupported();
     }
 
-    public void set(final Indexed indexed, final CompressedPolyline line)
+    public void set(Indexed indexed, CompressedPolyline line)
     {
         // Add to store
         var storeIndex = polylines.add(line);
@@ -224,7 +224,7 @@ public class SplitPolylineStore implements KryoSerializable, NamedObject, Initia
         }
 
         // Save which store we put the polyline in and what index in that store
-        final var index = indexed.index();
+        var index = indexed.index();
         indexToStore.set(index, stores.size() - 1);
         indexToStoreIndex.set(index, storeIndex);
     }
@@ -232,7 +232,7 @@ public class SplitPolylineStore implements KryoSerializable, NamedObject, Initia
     public int size()
     {
         var size = 0;
-        for (final var store : stores)
+        for (var store : stores)
         {
             size += store.size();
         }
@@ -240,7 +240,7 @@ public class SplitPolylineStore implements KryoSerializable, NamedObject, Initia
     }
 
     @Override
-    public void write(final Kryo kryo, final Output output)
+    public void write(Kryo kryo, Output output)
     {
         kryo.writeObject(output, objectName);
         kryo.writeObject(output, maximumChildSize);
@@ -248,7 +248,7 @@ public class SplitPolylineStore implements KryoSerializable, NamedObject, Initia
         kryo.writeObject(output, indexToStore);
         kryo.writeObject(output, indexToStoreIndex);
         kryo.writeObject(output, stores.size());
-        for (final var store : stores)
+        for (var store : stores)
         {
             kryo.writeObject(output, store);
         }

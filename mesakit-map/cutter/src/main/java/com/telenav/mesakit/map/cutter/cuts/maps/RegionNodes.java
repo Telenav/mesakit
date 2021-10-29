@@ -53,7 +53,7 @@ public class RegionNodes
     /** Regions for each node */
     private final SplitLongToLongMap regionsForNode;
 
-    public RegionNodes(final String name, final RegionIndexMap regionIndexMap)
+    public RegionNodes(String name, RegionIndexMap regionIndexMap)
     {
         this.regionIndexMap = regionIndexMap;
 
@@ -62,13 +62,13 @@ public class RegionNodes
         regionsForNode.initialize();
     }
 
-    public void add(final long nodeIdentifier, final int regionIndex)
+    public void add(long nodeIdentifier, int regionIndex)
     {
         // Add the region index to our set
         regionIndexes.add(regionIndex);
 
         // Ensure the main map for a region
-        final var value = regionsForNode.get(nodeIdentifier);
+        var value = regionsForNode.get(nodeIdentifier);
 
         // If there's no entry at all yet,
         if (regionsForNode.isNull(value))
@@ -79,7 +79,7 @@ public class RegionNodes
         else
         {
             // Convert the value to a list of region indexes
-            final var regionIndexes = longToList(value);
+            var regionIndexes = longToList(value);
 
             // If we don't have too many indexes for this node
             if (regionIndexes.size() < 4)
@@ -98,19 +98,19 @@ public class RegionNodes
         }
     }
 
-    public void addAll(final List<Node> nodes, final int regionIndex)
+    public void addAll(List<Node> nodes, int regionIndex)
     {
         // Go through each node
-        for (final var node : nodes)
+        for (var node : nodes)
         {
             // and add it to the given region
             add(node.getId(), regionIndex);
         }
     }
 
-    public boolean inRegion(final long nodeIdentifier, final int regionIndex)
+    public boolean inRegion(long nodeIdentifier, int regionIndex)
     {
-        final var value = regionsForNode.get(nodeIdentifier);
+        var value = regionsForNode.get(nodeIdentifier);
         if (!regionsForNode.isNull(value))
         {
             return Longs.searchWords(value, 16, regionIndex);
@@ -118,7 +118,7 @@ public class RegionNodes
         return false;
     }
 
-    public Region<?> regionForIndex(final int index)
+    public Region<?> regionForIndex(int index)
     {
         return regionIndexMap.regionForIndex(index);
     }
@@ -128,10 +128,10 @@ public class RegionNodes
         return regionIndexMap;
     }
 
-    public Set<Integer> regionIndexes(final PbfWay way)
+    public Set<Integer> regionIndexes(PbfWay way)
     {
-        final Set<Integer> indexes = new HashSet<>();
-        for (final var node : way.nodes())
+        Set<Integer> indexes = new HashSet<>();
+        for (var node : way.nodes())
         {
             indexes.addAll(regionIndexes(node.getNodeId()));
         }
@@ -143,27 +143,27 @@ public class RegionNodes
         return regionIndexMap.regionsForIndexes(regionIndexes);
     }
 
-    public RegionSet regions(final Iterable<Integer> identifiers)
+    public RegionSet regions(Iterable<Integer> identifiers)
     {
         return regionIndexMap.regionsForIndexes(identifiers);
     }
 
-    public RegionSet regions(final long wayIdentifier)
+    public RegionSet regions(long wayIdentifier)
     {
         return regionIndexMap.regionsForIndexes(regionIndexes(wayIdentifier));
     }
 
-    private void checkRegionIndex(final int regionIndex)
+    private void checkRegionIndex(int regionIndex)
     {
         assert regionIndexMap.isValidRegionIndex(regionIndex) : "Bad region index " + regionIndex;
     }
 
-    private void checkRegionIndexes(final List<Integer> regionIndexes)
+    private void checkRegionIndexes(List<Integer> regionIndexes)
     {
         assert regionIndexMap.isValidRegionIndexList(regionIndexes) : "Bad region index list: " + regionIndexes;
     }
 
-    private long listToLong(final List<Integer> regionIndexes)
+    private long listToLong(List<Integer> regionIndexes)
     {
         checkRegionIndexes(regionIndexes);
 
@@ -171,7 +171,7 @@ public class RegionNodes
         var value = 0L;
 
         // Go through each region index
-        for (final var regionIndex : regionIndexes)
+        for (var regionIndex : regionIndexes)
         {
             // ensure the index is valid
             assert regionIndexMap.isValidRegionIndex(regionIndex) : "Bad region index " + regionIndex;
@@ -189,13 +189,13 @@ public class RegionNodes
     private List<Integer> longToList(long value)
     {
         // The region index list to return
-        final List<Integer> regionIndexes = new ArrayList<>();
+        List<Integer> regionIndexes = new ArrayList<>();
 
         // Go through up to four 16 bit values in the long
         for (var i = 0; i < 4; i++)
         {
             // Get the next potential region index
-            final var regionIndex = (int) (value & 0xffffL);
+            var regionIndex = (int) (value & 0xffffL);
 
             // If the region index is non-zero,
             if (regionIndex > 0)
@@ -217,12 +217,12 @@ public class RegionNodes
         return regionIndexes;
     }
 
-    private List<Integer> regionIndexes(final long nodeIdentifier)
+    private List<Integer> regionIndexes(long nodeIdentifier)
     {
-        final var value = regionsForNode.get(nodeIdentifier);
+        var value = regionsForNode.get(nodeIdentifier);
         if (!regionsForNode.isNull(value))
         {
-            final var regionIndexes = longToList(value);
+            var regionIndexes = longToList(value);
             checkRegionIndexes(regionIndexes);
             return regionIndexes;
         }

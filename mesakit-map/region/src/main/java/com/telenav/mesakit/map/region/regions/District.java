@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.region.regions;
 
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**
  * NOTE: Full district support is still in the future.
@@ -31,7 +31,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 @UmlClassDiagram(diagram = DiagramRegions.class)
 public class District extends Region<District>
 {
-    public District(final City city, final RegionInstance<District> instance)
+    public District(City city, RegionInstance<District> instance)
     {
         super(city, instance.prefix(city));
     }

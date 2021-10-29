@@ -36,15 +36,15 @@ public class HeadingDeviationCostFunction implements CostFunction
 {
     private final Heading heading;
 
-    public HeadingDeviationCostFunction(final Located from, final Located to)
+    public HeadingDeviationCostFunction(Located from, Located to)
     {
         heading = new Segment(from.location(), to.location()).heading();
     }
 
     @Override
-    public Cost cost(final Edge candidate)
+    public Cost cost(Edge candidate)
     {
-        final var deviation = candidate.heading().difference(heading, SMALLEST);
+        var deviation = candidate.heading().difference(heading, SMALLEST);
         return Cost.of(deviation.asDegrees() / 180.0);
     }
 }

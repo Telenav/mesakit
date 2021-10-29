@@ -45,7 +45,7 @@ public class SegmentPair
     @UmlRelation(label = "second segment")
     private final Segment second;
 
-    public SegmentPair(final Segment first, final Segment second)
+    public SegmentPair(Segment first, Segment second)
     {
         this.first = first;
         this.second = second;
@@ -85,7 +85,7 @@ public class SegmentPair
         return null;
     }
 
-    public Heading bisect(final Chirality chirality)
+    public Heading bisect(Chirality chirality)
     {
         return first.heading().bisect(second.heading(), chirality);
     }

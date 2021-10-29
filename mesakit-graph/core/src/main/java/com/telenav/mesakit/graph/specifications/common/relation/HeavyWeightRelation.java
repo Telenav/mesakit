@@ -71,7 +71,7 @@ public class HeavyWeightRelation extends EdgeRelation
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public HeavyWeightRelation(final Graph graph, final RelationIdentifier identifier)
+    public HeavyWeightRelation(Graph graph, RelationIdentifier identifier)
     {
         super(graph, identifier);
     }
@@ -80,7 +80,7 @@ public class HeavyWeightRelation extends EdgeRelation
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public HeavyWeightRelation(final Graph graph, final long identifier)
+    public HeavyWeightRelation(Graph graph, long identifier)
     {
         super(graph, identifier);
     }
@@ -88,14 +88,14 @@ public class HeavyWeightRelation extends EdgeRelation
     /**
      * <b>Not Public API</b>
      */
-    public HeavyWeightRelation(final PbfRelation relation)
+    public HeavyWeightRelation(PbfRelation relation)
     {
         this(null, relation.identifierAsLong());
 
         tags = relation.tagList();
         assert tags.isValid();
 
-        final var time = relation.get().getTimestamp().getTime();
+        var time = relation.get().getTimestamp().getTime();
         if (time > 0)
         {
             lastModificationTime = Time.milliseconds(time);
@@ -109,7 +109,7 @@ public class HeavyWeightRelation extends EdgeRelation
         members = members(this, relation);
     }
 
-    public void add(final Edge edge, final String role)
+    public void add(Edge edge, String role)
     {
         members.add(new EdgeRelationMember(this, edge.mapIdentifier(), role));
     }
@@ -121,8 +121,8 @@ public class HeavyWeightRelation extends EdgeRelation
         {
             if (members != null && !members.isEmpty())
             {
-                final var builder = new BoundingBoxBuilder();
-                for (final var member : members())
+                var builder = new BoundingBoxBuilder();
+                for (var member : members())
                 {
                     builder.add(member.element().bounds());
                 }
@@ -132,19 +132,19 @@ public class HeavyWeightRelation extends EdgeRelation
         return bounds;
     }
 
-    public void bounds(final Rectangle bounds)
+    public void bounds(Rectangle bounds)
     {
         this.bounds = bounds;
     }
 
     public HeavyWeightRelation copy()
     {
-        final var copy = dataSpecification().newHeavyWeightRelation(graph(), identifierAsLong());
+        var copy = dataSpecification().newHeavyWeightRelation(graph(), identifierAsLong());
         copy.copy(this);
         return copy;
     }
 
-    public void copy(final EdgeRelation that)
+    public void copy(EdgeRelation that)
     {
         index(that.index());
         bounds(that.bounds());
@@ -164,7 +164,7 @@ public class HeavyWeightRelation extends EdgeRelation
     }
 
     @Override
-    public void index(final int index)
+    public void index(int index)
     {
         this.index = index;
     }
@@ -181,7 +181,7 @@ public class HeavyWeightRelation extends EdgeRelation
         return lastModificationTime;
     }
 
-    public void lastModificationTime(final Time lastModified)
+    public void lastModificationTime(Time lastModified)
     {
         lastModificationTime = lastModified;
     }
@@ -192,7 +192,7 @@ public class HeavyWeightRelation extends EdgeRelation
         return Objects.requireNonNullElse(members, Collections.emptyList());
     }
 
-    public void members(final List<EdgeRelationMember> members)
+    public void members(List<EdgeRelationMember> members)
     {
         this.members = members;
     }
@@ -203,7 +203,7 @@ public class HeavyWeightRelation extends EdgeRelation
         return pbfChangeSetIdentifier;
     }
 
-    public void pbfChangeSetIdentifier(final PbfChangeSetIdentifier pbfChangeSetIdentifier)
+    public void pbfChangeSetIdentifier(PbfChangeSetIdentifier pbfChangeSetIdentifier)
     {
         this.pbfChangeSetIdentifier = pbfChangeSetIdentifier;
     }
@@ -214,7 +214,7 @@ public class HeavyWeightRelation extends EdgeRelation
         return pbfRevisionNumber;
     }
 
-    public void pbfRevisionNumber(final PbfRevisionNumber pbfRevisionNumber)
+    public void pbfRevisionNumber(PbfRevisionNumber pbfRevisionNumber)
     {
         this.pbfRevisionNumber = pbfRevisionNumber;
     }
@@ -225,7 +225,7 @@ public class HeavyWeightRelation extends EdgeRelation
         return pbfUserIdentifier;
     }
 
-    public void pbfUserIdentifier(final PbfUserIdentifier PbfUserIdentifier)
+    public void pbfUserIdentifier(PbfUserIdentifier PbfUserIdentifier)
     {
         pbfUserIdentifier = PbfUserIdentifier;
     }
@@ -236,7 +236,7 @@ public class HeavyWeightRelation extends EdgeRelation
         return pbfUserName;
     }
 
-    public void pbfUserName(final PbfUserName PbfUserName)
+    public void pbfUserName(PbfUserName PbfUserName)
     {
         pbfUserName = PbfUserName;
     }
@@ -248,8 +248,8 @@ public class HeavyWeightRelation extends EdgeRelation
         {
             return Collections.emptyList();
         }
-        final List<PbfWayIdentifier> identifiers = new ArrayList<>();
-        for (final var member : members)
+        List<PbfWayIdentifier> identifiers = new ArrayList<>();
+        for (var member : members)
         {
             if (member.isWay())
             {
@@ -265,7 +265,7 @@ public class HeavyWeightRelation extends EdgeRelation
         return tags;
     }
 
-    public void tags(final PbfTagList tags)
+    public void tags(PbfTagList tags)
     {
         assert tags.isValid();
         this.tags = tags;
@@ -277,17 +277,17 @@ public class HeavyWeightRelation extends EdgeRelation
         return viaNodeLocation;
     }
 
-    public void viaNodeLocation(final Location location)
+    public void viaNodeLocation(Location location)
     {
         viaNodeLocation = location;
     }
 
-    private List<EdgeRelationMember> members(final EdgeRelation relation, final PbfRelation pbfRelation)
+    private List<EdgeRelationMember> members(EdgeRelation relation, PbfRelation pbfRelation)
     {
-        final List<EdgeRelationMember> from = new ArrayList<>();
-        final List<EdgeRelationMember> to = new ArrayList<>();
-        final List<EdgeRelationMember> via = new ArrayList<>();
-        for (final var member : pbfRelation.members())
+        List<EdgeRelationMember> from = new ArrayList<>();
+        List<EdgeRelationMember> to = new ArrayList<>();
+        List<EdgeRelationMember> via = new ArrayList<>();
+        for (var member : pbfRelation.members())
         {
             var role = member.getMemberRole();
             if (Strings.isEmpty(role))
@@ -296,8 +296,8 @@ public class HeavyWeightRelation extends EdgeRelation
             }
             if (member.getMemberType() == EntityType.Way)
             {
-                final var wayIdentifier = new PbfWayIdentifier(member.getMemberId());
-                final var relationMember = new EdgeRelationMember(relation, wayIdentifier, role);
+                var wayIdentifier = new PbfWayIdentifier(member.getMemberId());
+                var relationMember = new EdgeRelationMember(relation, wayIdentifier, role);
                 if ("from".equalsIgnoreCase(role))
                 {
                     from.add(relationMember);
@@ -320,13 +320,13 @@ public class HeavyWeightRelation extends EdgeRelation
             {
                 if ("via".equalsIgnoreCase(role))
                 {
-                    final var nodeIdentifier = new PbfNodeIdentifier(member.getMemberId());
-                    final var relationMember = new EdgeRelationMember(relation, nodeIdentifier, role);
+                    var nodeIdentifier = new PbfNodeIdentifier(member.getMemberId());
+                    var relationMember = new EdgeRelationMember(relation, nodeIdentifier, role);
                     via.add(relationMember);
                 }
             }
         }
-        final List<EdgeRelationMember> members = new ArrayList<>();
+        List<EdgeRelationMember> members = new ArrayList<>();
         members.addAll(from);
         members.addAll(via);
         members.addAll(to);

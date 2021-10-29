@@ -36,7 +36,6 @@ import com.telenav.mesakit.graph.specifications.common.element.ArchivedGraphElem
 import com.telenav.mesakit.graph.specifications.library.attributes.AttributeSet;
 
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.illegalState;
 
 public abstract class ArchivedGraphStore extends GraphStore
 {
@@ -61,7 +60,7 @@ public abstract class ArchivedGraphStore extends GraphStore
      * and edges is used to prevent unnecessary map rehashes to improve performance. It is a good idea to guess
      * accurately, but round up a bit.
      */
-    protected ArchivedGraphStore(final Graph graph)
+    protected ArchivedGraphStore(Graph graph)
     {
         super(graph);
     }
@@ -76,7 +75,7 @@ public abstract class ArchivedGraphStore extends GraphStore
 
     public final boolean isUnloaded()
     {
-        for (final var store : stores())
+        for (var store : stores())
         {
             if (!store.isUnloaded())
             {
@@ -89,13 +88,13 @@ public abstract class ArchivedGraphStore extends GraphStore
     /**
      * Loads this graph store with data from a .graph archive that was created by {@link #save(GraphArchive)}.
      */
-    public final void load(final GraphArchive archive)
+    public final void load(GraphArchive archive)
     {
         // Check that we haven't already loaded into this graph store
         ensure(isEmpty(), "Cannot load data into an existing, loaded graph");
 
         // Record start time
-        final var start = Time.now();
+        var start = Time.now();
 
         // We're about to load
         loading(archive);
@@ -111,7 +110,7 @@ public abstract class ArchivedGraphStore extends GraphStore
         // it needs the graph in order to function, so we do it here.
 
         // Load metadata
-        final var metadata = graph().metadata(archive.metadata());
+        var metadata = graph().metadata(archive.metadata());
         bounds(metadata.dataBounds());
 
         // We're done loading
@@ -137,9 +136,9 @@ public abstract class ArchivedGraphStore extends GraphStore
     /**
      * Force each graph element store to fully load, except for the given attributes
      */
-    public void loadAll(final AttributeSet except)
+    public void loadAll(AttributeSet except)
     {
-        for (final var store : stores())
+        for (var store : stores())
         {
             store.loadAll(except);
         }
@@ -148,15 +147,15 @@ public abstract class ArchivedGraphStore extends GraphStore
     /**
      * Force each graph element store to fully load, except for the given attributes
      */
-    public void loadAllExcept(final AttributeSet except)
+    public void loadAllExcept(AttributeSet except)
     {
-        for (final var store : stores())
+        for (var store : stores())
         {
             store.loadAllExcept(except);
         }
     }
 
-    public void loaded(final Resource resource)
+    public void loaded(Resource resource)
     {
         // Save the data source we loaded,
         resource(resource);
@@ -166,7 +165,7 @@ public abstract class ArchivedGraphStore extends GraphStore
         onLoaded(resource);
     }
 
-    public void loading(final Resource resource)
+    public void loading(Resource resource)
     {
         loading = true;
         onLoading(resource);
@@ -184,7 +183,7 @@ public abstract class ArchivedGraphStore extends GraphStore
         return resource;
     }
 
-    public void resource(final Resource resource)
+    public void resource(Resource resource)
     {
         this.resource = resource;
     }
@@ -194,7 +193,7 @@ public abstract class ArchivedGraphStore extends GraphStore
      *
      * @param archive The .graph file to save to
      */
-    public final void save(final GraphArchive archive)
+    public final void save(GraphArchive archive)
     {
         // If the store is invalid
         if (!isValid())
@@ -204,7 +203,7 @@ public abstract class ArchivedGraphStore extends GraphStore
         }
 
         // Record start time
-        final var start = Time.now();
+        var start = Time.now();
 
         try
         {
@@ -219,7 +218,7 @@ public abstract class ArchivedGraphStore extends GraphStore
             saving(archive);
 
             // Save metadata with kryo
-            final var metadata = graph().metadata().withDataBounds(bounds());
+            var metadata = graph().metadata().withDataBounds(bounds());
             archive.saveMetadata(metadata);
 
             // Save fields of each graph element store
@@ -231,13 +230,13 @@ public abstract class ArchivedGraphStore extends GraphStore
             // We're done saving
             saved(archive);
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             problem(e, "Unable to save to $", archive);
         }
 
         // We're done!
-        final var report = new StringList();
+        var report = new StringList();
         report.add("output: " + archive);
         report.add("elapsed: " + start.elapsedSince());
         report.add(graph().asString());
@@ -260,7 +259,7 @@ public abstract class ArchivedGraphStore extends GraphStore
                 // Must specify -javaagent to VM, see JavaVirtualMachine.sizeOfObjectGraph()
                 JavaVirtualMachine.local().traceSizeChange(this, "unload", this, Bytes.kilobytes(100), () ->
                 {
-                    for (final var object : Type.of(this).reachableObjects(this))
+                    for (var object : Type.of(this).reachableObjects(this))
                     {
                         if (object instanceof Unloadable)
                         {
@@ -278,50 +277,50 @@ public abstract class ArchivedGraphStore extends GraphStore
         }
     }
 
-    protected void onAttached(final GraphArchive archive)
+    protected void onAttached(GraphArchive archive)
     {
     }
 
-    protected void onAttaching(final GraphArchive archive)
+    protected void onAttaching(GraphArchive archive)
     {
     }
 
-    protected void onLoaded(final Resource resource)
+    protected void onLoaded(Resource resource)
     {
     }
 
-    protected void onLoaded(final GraphArchive archive)
+    protected void onLoaded(GraphArchive archive)
     {
     }
 
-    protected void onLoading(final Resource resource)
+    protected void onLoading(Resource resource)
     {
     }
 
-    protected void onLoading(final GraphArchive archive)
+    protected void onLoading(GraphArchive archive)
     {
     }
 
-    protected void onSaved(final GraphArchive archive)
+    protected void onSaved(GraphArchive archive)
     {
     }
 
-    protected void onSaving(final GraphArchive archive)
+    protected void onSaving(GraphArchive archive)
     {
     }
 
-    protected void onUnloaded(final GraphArchive archive)
+    protected void onUnloaded(GraphArchive archive)
     {
     }
 
-    protected void onUnloading(final GraphArchive archive)
+    protected void onUnloading(GraphArchive archive)
     {
     }
 
     /**
      * Attach the given field archive to each graph element store
      */
-    private void attach(final GraphArchive archive)
+    private void attach(GraphArchive archive)
     {
         ensure(archive != null);
         this.archive = archive;
@@ -330,7 +329,7 @@ public abstract class ArchivedGraphStore extends GraphStore
         onAttached(archive);
     }
 
-    private void loaded(final GraphArchive archive)
+    private void loaded(GraphArchive archive)
     {
         forEachStore((store) -> store.loaded(archive));
         onLoaded(archive);
@@ -340,20 +339,20 @@ public abstract class ArchivedGraphStore extends GraphStore
         resource(archive.zip().resource());
     }
 
-    private void loading(final GraphArchive archive)
+    private void loading(GraphArchive archive)
     {
         loading = true;
         onLoading(archive);
         forEachStore((store) -> store.loading(archive));
     }
 
-    private void saved(final GraphArchive archive)
+    private void saved(GraphArchive archive)
     {
         forEachStore((store) -> store.saved(archive));
         onSaved(archive);
     }
 
-    private void saving(final GraphArchive archive)
+    private void saving(GraphArchive archive)
     {
         onSaving(archive);
         forEachStore((store) -> store.saving(archive));

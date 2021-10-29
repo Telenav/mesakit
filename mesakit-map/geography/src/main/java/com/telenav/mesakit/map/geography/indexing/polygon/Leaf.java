@@ -50,7 +50,7 @@ public class Leaf extends Quadrant
      * @param a The first segment that intersects with the leaf
      * @param b Any (optional) second segment that intersects with the leaf
      */
-    public Leaf(final Segment a, final Segment b, final Location inside)
+    public Leaf(Segment a, Segment b, Location inside)
     {
         // Save a and b and inside
         this.a = a;
@@ -72,7 +72,7 @@ public class Leaf extends Quadrant
      * {@inheritDoc}
      */
     @Override
-    public Containment contains(final Location location, final Rectangle bounds)
+    public Containment contains(Location location, Rectangle bounds)
     {
         // If there is no segment,
         if (a == null)
@@ -82,16 +82,16 @@ public class Leaf extends Quadrant
         }
 
         // Create a test line from the inside location to the given location
-        final var test = new Segment(inside(), location);
+        var test = new Segment(inside(), location);
 
         // The location is contained by the polygon if the test line (from the inside location
         // to the given location) does not intersect either segment a or segment b (if b exists)
-        final var contained = !a.intersects(test) && (b == null || !b.intersects(test));
+        var contained = !a.intersects(test) && (b == null || !b.intersects(test));
         return contained ? INSIDE : OUTSIDE;
     }
 
     @Override
-    public void debug(final PolygonSpatialIndexDebugger debugger, final Rectangle bounds)
+    public void debug(PolygonSpatialIndexDebugger debugger, Rectangle bounds)
     {
         debugger.leaf(bounds, a, b, inside);
     }
@@ -105,7 +105,7 @@ public class Leaf extends Quadrant
      * {@inheritDoc}
      */
     @Override
-    protected void visit(final Visitor visitor, final Rectangle bounds)
+    protected void visit(Visitor visitor, Rectangle bounds)
     {
         visitor.onLeaf(bounds, a, b, inside());
     }

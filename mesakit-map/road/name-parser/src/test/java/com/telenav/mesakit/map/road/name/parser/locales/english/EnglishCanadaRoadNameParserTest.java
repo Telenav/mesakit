@@ -82,14 +82,14 @@ public class EnglishCanadaRoadNameParserTest extends RegionUnitTest
         test("Parlez-Vous Boulevard", "parlez-vous boulevard");
     }
 
-    private String normalize(final String string)
+    private String normalize(String string)
     {
         return string.replaceAll("[ ,'.]", "");
     }
 
-    private void test(final String expected, final String given)
+    private void test(String expected, String given)
     {
-        final ParsedRoadName parsed = RoadNameParser.get(MapLocale.ENGLISH_CANADA.get()).parse(RoadName.forName(given));
+        ParsedRoadName parsed = RoadNameParser.get(MapLocale.ENGLISH_CANADA.get()).parse(RoadName.forName(given));
         ensureEqual(expected, parsed.toString());
         ensureEqual(normalize(given), normalize(parsed.asRawRoadName().name()));
         trace(given + " -> " + parsed);

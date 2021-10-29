@@ -39,7 +39,7 @@ public class Attribute<T> implements Comparable<Attribute<T>>
 
     private final int identifier;
 
-    protected Attribute(final String name)
+    protected Attribute(String name)
     {
         this.name = name;
 
@@ -49,7 +49,7 @@ public class Attribute<T> implements Comparable<Attribute<T>>
             if (identifier == null)
             {
                 identifier = nextIdentifier++;
-                final var existingAttribute = nameToIdentifier.key(identifier);
+                var existingAttribute = nameToIdentifier.key(identifier);
                 ensure(existingAttribute == null || name.equalsIgnoreCase(existingAttribute),
                         "The attribute $ already has identifier $", existingAttribute, identifier);
                 nameToIdentifier.put(name, identifier);
@@ -59,17 +59,17 @@ public class Attribute<T> implements Comparable<Attribute<T>>
     }
 
     @Override
-    public int compareTo(final Attribute<T> that)
+    public int compareTo(Attribute<T> that)
     {
         return toString().compareTo(that.toString());
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Attribute)
         {
-            final var that = (Attribute<?>) object;
+            var that = (Attribute<?>) object;
             return identifier == that.identifier;
         }
         return false;

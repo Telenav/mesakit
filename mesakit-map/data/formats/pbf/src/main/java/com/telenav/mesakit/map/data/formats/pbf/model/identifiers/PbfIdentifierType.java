@@ -40,9 +40,9 @@ public interface PbfIdentifierType
     /**
      * @return An {@link MapIdentifier} of the correct type for the TYPE {@link BitField}
      */
-    static MapIdentifier forIdentifierAndType(final long identifierAndType)
+    static MapIdentifier forIdentifierAndType(long identifierAndType)
     {
-        final var type = MapIdentifier.Type.forOrdinal(TYPE.getInt(identifierAndType));
+        var type = MapIdentifier.Type.forOrdinal(TYPE.getInt(identifierAndType));
         if (type != null)
         {
             var identifier = IDENTIFIER.getLong(identifierAndType);
@@ -55,7 +55,7 @@ public interface PbfIdentifierType
         return null;
     }
 
-    static MapIdentifier forIdentifierAndType(final MapIdentifier.Type type, final long identifier)
+    static MapIdentifier forIdentifierAndType(MapIdentifier.Type type, long identifier)
     {
         switch (type)
         {
@@ -88,8 +88,8 @@ public interface PbfIdentifierType
      */
     default MapIdentifier withType()
     {
-        final var identifierWithType = TYPE.set(Math.abs(asLong()), type().identifier());
-        final var identifierWithTypeAndSign = REVERSE.set(identifierWithType, asLong() < 0);
+        var identifierWithType = TYPE.set(Math.abs(asLong()), type().identifier());
+        var identifierWithTypeAndSign = REVERSE.set(identifierWithType, asLong() < 0);
         return newIdentifier(identifierWithTypeAndSign);
     }
 
@@ -97,10 +97,10 @@ public interface PbfIdentifierType
      * @return This OSM identifier with the type encoded in it according to the {@link BitDiagram} layout
      * TYPE_AND_IDENTIFIER
      */
-    default MapIdentifier withType(final MapIdentifier identifier, final MapIdentifier.Type type)
+    default MapIdentifier withType(MapIdentifier identifier, MapIdentifier.Type type)
     {
-        final var identifierWithType = TYPE.set(Math.abs(identifier.asLong()), type.identifier());
-        final var identifierWithTypeAndSign = REVERSE.set(identifierWithType, identifier.asLong() < 0);
+        var identifierWithType = TYPE.set(Math.abs(identifier.asLong()), type.identifier());
+        var identifierWithTypeAndSign = REVERSE.set(identifierWithType, identifier.asLong() < 0);
         return newIdentifier(identifierWithTypeAndSign);
     }
 

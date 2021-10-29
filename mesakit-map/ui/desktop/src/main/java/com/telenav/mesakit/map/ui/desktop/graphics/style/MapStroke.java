@@ -38,7 +38,7 @@ public class MapStroke extends Stroke
         return new MapStroke();
     }
 
-    public static MapStroke stroke(final Distance width)
+    public static MapStroke stroke(Distance width)
     {
         return stroke().withWidth(width);
     }
@@ -51,14 +51,14 @@ public class MapStroke extends Stroke
     {
     }
 
-    protected MapStroke(final MapStroke that)
+    protected MapStroke(MapStroke that)
     {
         super(that);
         width = that.width;
         drawingWidth = that.drawingWidth;
     }
 
-    public void apply(final Graphics2D graphics, final MapCanvas canvas)
+    public void apply(Graphics2D graphics, MapCanvas canvas)
     {
         super.apply(graphics);
         drawingWidth = canvas.toDrawing(width).asWidth();
@@ -71,7 +71,7 @@ public class MapStroke extends Stroke
     }
 
     @Override
-    public MapStroke scale(final double scaleFactor)
+    public MapStroke scale(double scaleFactor)
     {
         return (MapStroke) super.scale(scaleFactor);
     }
@@ -83,44 +83,44 @@ public class MapStroke extends Stroke
     }
 
     @Override
-    public MapStroke withCap(final int cap)
+    public MapStroke withCap(int cap)
     {
         return (MapStroke) super.withCap(cap);
     }
 
     @Override
-    public MapStroke withDash(final float[] dash)
+    public MapStroke withDash(float[] dash)
     {
         return (MapStroke) super.withDash(dash);
     }
 
     @Override
-    public MapStroke withDashPhase(final float dash)
+    public MapStroke withDashPhase(float dash)
     {
         return (MapStroke) super.withDashPhase(dash);
     }
 
     @Override
-    public MapStroke withJoin(final int join)
+    public MapStroke withJoin(int join)
     {
         return (MapStroke) super.withJoin(join);
     }
 
     @Override
-    public MapStroke withMiterLimit(final int miterLimit)
+    public MapStroke withMiterLimit(int miterLimit)
     {
         return (MapStroke) super.withMiterLimit(miterLimit);
     }
 
     @Override
-    public MapStroke withWidth(final DrawingWidth width)
+    public MapStroke withWidth(DrawingWidth width)
     {
         return (MapStroke) super.withWidth(width);
     }
 
-    public MapStroke withWidth(final Distance width)
+    public MapStroke withWidth(Distance width)
     {
-        final var copy = copy();
+        var copy = copy();
         copy.width = width;
         return copy;
     }

@@ -34,21 +34,21 @@ abstract class LinearSplit<T extends Bounded & Intersectable>
 {
     protected abstract InteriorNode<T> onSplit(T a, T b);
 
-    protected InteriorNode<T> split(final Iterable<T> objects)
+    protected InteriorNode<T> split(Iterable<T> objects)
     {
-        final List<T> latitudeSorted = new ArrayList<>();
-        final List<T> longitudeSorted = new ArrayList<>();
+        List<T> latitudeSorted = new ArrayList<>();
+        List<T> longitudeSorted = new ArrayList<>();
         objects.forEach(latitudeSorted::add);
         objects.forEach(longitudeSorted::add);
         latitudeSorted.sort(Comparator.comparing(t -> t.bounds().center().latitude()));
         longitudeSorted.sort(Comparator.comparing(t -> t.bounds().center().longitude()));
-        final var latitudeMinimum = latitudeSorted.get(0);
-        final var latitudeMaximum = latitudeSorted.get(latitudeSorted.size() - 1);
-        final var longitudeMinimum = longitudeSorted.get(0);
-        final var longitudeMaximum = longitudeSorted.get(longitudeSorted.size() - 1);
-        final Angle latitudeDifference = latitudeMaximum.bounds().center().latitude()
+        var latitudeMinimum = latitudeSorted.get(0);
+        var latitudeMaximum = latitudeSorted.get(latitudeSorted.size() - 1);
+        var longitudeMinimum = longitudeSorted.get(0);
+        var longitudeMaximum = longitudeSorted.get(longitudeSorted.size() - 1);
+        Angle latitudeDifference = latitudeMaximum.bounds().center().latitude()
                 .minus(latitudeMinimum.bounds().center().latitude());
-        final Angle longitudeDifference = longitudeMaximum.bounds().center().longitude()
+        Angle longitudeDifference = longitudeMaximum.bounds().center().longitude()
                 .minus(longitudeMinimum.bounds().center().longitude());
         if (latitudeDifference.isGreaterThan(longitudeDifference))
         {

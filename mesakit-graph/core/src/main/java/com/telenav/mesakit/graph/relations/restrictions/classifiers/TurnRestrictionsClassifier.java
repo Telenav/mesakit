@@ -29,12 +29,12 @@ public class TurnRestrictionsClassifier implements EdgeClassifier
     public static TurnRestrictionsClassifier INSTANCE = new TurnRestrictionsClassifier();
 
     @Override
-    public boolean accept(final Edge edge)
+    public boolean accept(Edge edge)
     {
         return count(edge) > 0;
     }
 
-    private int count(final Edge edge)
+    private int count(Edge edge)
     {
         var turnRestrictionCount = edge.turnRestrictionsBeginningAt().size();
         if (edge.isTwoWay())

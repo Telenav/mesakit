@@ -33,10 +33,10 @@ import java.util.Set;
 
 public class WayIdentifierList extends ObjectList<PbfWayIdentifier>
 {
-    public static WayIdentifierList fromEdges(final Maximum count, final Iterable<Edge> edges)
+    public static WayIdentifierList fromEdges(Maximum count, Iterable<Edge> edges)
     {
-        final var ways = new WayIdentifierList(count);
-        for (final var edge : edges)
+        var ways = new WayIdentifierList(count);
+        for (var edge : edges)
         {
             if (!ways.contains(edge.wayIdentifier()))
             {
@@ -46,7 +46,7 @@ public class WayIdentifierList extends ObjectList<PbfWayIdentifier>
         return ways;
     }
 
-    public static WayIdentifierList parse(final String string)
+    public static WayIdentifierList parse(String string)
     {
         return new Converter(Listener.none(), new Separators(",")).convert(string);
     }
@@ -55,39 +55,39 @@ public class WayIdentifierList extends ObjectList<PbfWayIdentifier>
     {
         private final Separators separators;
 
-        public Converter(final Listener listener, final Separators separators)
+        public Converter(Listener listener, Separators separators)
         {
             super(listener);
             this.separators = separators;
         }
 
         @Override
-        protected WayIdentifierList onToValue(final String value)
+        protected String onToString(WayIdentifierList value)
         {
-            final var split = StringList.split(value, separators.current());
-            final var identifiers = new ObjectList<PbfWayIdentifier>();
-            final var converter = new PbfWayIdentifier.Converter(this);
-            for (final var at : split)
+            return value.join(separators.current());
+        }
+
+        @Override
+        protected WayIdentifierList onToValue(String value)
+        {
+            var split = StringList.split(value, separators.current());
+            var identifiers = new ObjectList<PbfWayIdentifier>();
+            var converter = new PbfWayIdentifier.Converter(this);
+            for (var at : split)
             {
                 identifiers.add(converter.convert(at));
             }
             return new WayIdentifierList(identifiers);
         }
-
-        @Override
-        protected String onToString(final WayIdentifierList value)
-        {
-            return value.join(separators.current());
-        }
     }
 
-    public WayIdentifierList(final List<PbfWayIdentifier> identifiers)
+    public WayIdentifierList(List<PbfWayIdentifier> identifiers)
     {
         super(Maximum.maximum(identifiers.size()));
         appendAll(identifiers);
     }
 
-    public WayIdentifierList(final Maximum maximumSize)
+    public WayIdentifierList(Maximum maximumSize)
     {
         super(maximumSize);
     }
@@ -95,9 +95,9 @@ public class WayIdentifierList extends ObjectList<PbfWayIdentifier>
     @Override
     public WayIdentifierList uniqued()
     {
-        final var uniqued = new WayIdentifierList(count().asMaximum());
-        final Set<PbfWayIdentifier> identifiers = new HashSet<>();
-        for (final var identifier : this)
+        var uniqued = new WayIdentifierList(count().asMaximum());
+        Set<PbfWayIdentifier> identifiers = new HashSet<>();
+        for (var identifier : this)
         {
             if (!identifiers.contains(identifier))
             {

@@ -298,7 +298,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     () -> new RoadNameStore("roadName", estimatedElements(), metadata()))
             {
                 @Override
-                protected void onLoaded(final RoadNameStore store)
+                protected void onLoaded(RoadNameStore store)
                 {
                     super.onLoaded(store);
                     store.codec(metadata().roadNameCharacterCodec());
@@ -430,7 +430,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
 
     private LongToIntMap temporaryWayIdentifierToRelationIndex;
 
-    protected EdgeStore(final Graph graph)
+    protected EdgeStore(Graph graph)
     {
         super(graph);
     }
@@ -440,12 +440,12 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      *
      * @return The number of directional edges added
      */
-    public Count addAll(final EdgeSequence edges, final GraphConstraints constraints)
+    public Count addAll(EdgeSequence edges, GraphConstraints constraints)
     {
-        final var adder = adder();
-        final var start = Time.now();
+        var adder = adder();
+        var start = Time.now();
         var count = 0;
-        for (final var edge : edges)
+        for (var edge : edges)
         {
             if (constraints.includes(edge))
             {
@@ -467,7 +467,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * Used in testing to eliminate generation of a spatial index when that is not useful
      */
-    public void commitSpatialIndex(final boolean commitSpatialIndex)
+    public void commitSpatialIndex(boolean commitSpatialIndex)
     {
         this.commitSpatialIndex = commitSpatialIndex;
     }
@@ -475,7 +475,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * @return True if this store contains the given edge
      */
-    public boolean contains(final Edge edge)
+    public boolean contains(Edge edge)
     {
         return contains(edge.identifier());
     }
@@ -483,7 +483,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * @return True if this store contains the given edge identifier
      */
-    public boolean contains(final EdgeIdentifier identifier)
+    public boolean contains(EdgeIdentifier identifier)
     {
         return containsIdentifier(identifier.asLong());
     }
@@ -491,7 +491,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * @return True if this store contains the given way identifier
      */
-    public boolean contains(final PbfWayIdentifier identifier)
+    public boolean contains(PbfWayIdentifier identifier)
     {
         WAY_IDENTIFIER_TO_EDGE_INDEX.load();
         return wayIdentifierToEdgeIndex.containsKey(identifier.asLong());
@@ -504,7 +504,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      * @return True if this store contains the given directional edge identifier.
      */
     @Override
-    public boolean containsIdentifier(final long identifier)
+    public boolean containsIdentifier(long identifier)
     {
         // If the edge is a forward edge
         if (identifier > 0)
@@ -515,7 +515,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         else
         {
             // If the edge is a reverse edge and the graph contains the forward edge identifier
-            final var forward = -identifier;
+            var forward = -identifier;
             if (super.containsIdentifier(forward))
             {
                 // then it's in the graph if the forward edge is a reversible road
@@ -538,11 +538,11 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * @return The edge for the given index. If the index is negative, then the reverse edge is returned.
      */
-    public Edge edgeForIndex(final int index)
+    public Edge edgeForIndex(int index)
     {
-        final var negative = index < 0;
-        final var absoluteIndex = negative ? -index : index;
-        final var identifier = retrieveIdentifier(absoluteIndex);
+        var negative = index < 0;
+        var absoluteIndex = negative ? -index : index;
+        var identifier = retrieveIdentifier(absoluteIndex);
         if (identifier <= 0)
         {
             return null;
@@ -576,12 +576,12 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         return estimatedElements();
     }
 
-    public boolean isOneWay(final Edge edge)
+    public boolean isOneWay(Edge edge)
     {
         return isOneWay(edge.index());
     }
 
-    public boolean isTwoWay(final Edge edge)
+    public boolean isTwoWay(Edge edge)
     {
         return isTwoWay(edge.index());
     }
@@ -590,12 +590,12 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      * Sets the merge state of this store. When merging is enabled, clean cut edges that are added will be fused
      * together to form a single connected graph.
      */
-    public void merge(final boolean merging)
+    public void merge(boolean merging)
     {
         this.merging = merging;
         if (merging)
         {
-            for (final var edge : forwardEdges())
+            for (var edge : forwardEdges())
             {
                 if (edge.fromNodeIdentifier() == null)
                 {
@@ -617,7 +617,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      * @return The next unique edge identifier for the given way identifier
      * @see EdgeIdentifier
      */
-    public long nextEdgeIdentifier(final long wayIdentifier)
+    public long nextEdgeIdentifier(long wayIdentifier)
     {
         var edgeIdentifier = wayIdentifier * EdgeIdentifier.SEQUENCE_NUMBER_SHIFT;
         while (containsIdentifier(edgeIdentifier))
@@ -634,23 +634,42 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     }
 
     /**
+     * Initializes this edge store by resetting the count and the next index.
+     */
+    @Override
+    public void onInitialize()
+    {
+        super.onInitialize();
+
+        count = 0;
+
+        resetNextIndex();
+
+        temporaryWayIdentifierToRelationIndex = new LongToIntMap(objectName() + ".temporaryEdgeIdentifierToRelationsIndex");
+        temporaryWayIdentifierToRelationIndex.initialize();
+
+        temporaryRelations = new LongLinkedListStore(objectName() + ".temporaryRelations");
+        temporaryRelations.initialize();
+    }
+
+    /**
      * @return The bounds of the given edge
      */
-    public final Rectangle retrieveBounds(final Edge edge)
+    public final Rectangle retrieveBounds(Edge edge)
     {
         BOUNDS_BOTTOM_LEFT.load();
         BOUNDS_TOP_RIGHT.load();
 
-        final var index = edge.index();
-        final var bottomLeft = boundsBottomLeft.get(index);
-        final var topRight = boundsTopRight.get(index);
+        var index = edge.index();
+        var bottomLeft = boundsBottomLeft.get(index);
+        var topRight = boundsTopRight.get(index);
         return Rectangle.fromLongs(bottomLeft, topRight);
     }
 
     /**
      * @return The bridge type for the given edge
      */
-    public final BridgeType retrieveBridgeType(final Edge edge)
+    public final BridgeType retrieveBridgeType(Edge edge)
     {
         return BRIDGE_TYPE.retrieveObject(edge, value -> BridgeType.forIdentifier((int) value));
     }
@@ -658,15 +677,15 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * @return The country for the given edge, as determined by the from vertex.
      */
-    public final Country retrieveCountry(final Edge edge)
+    public final Country retrieveCountry(Edge edge)
     {
         COUNTRY.load();
         if (country != null)
         {
-            final var identifierByte = (byte) country.safeGet(edge.index());
+            var identifierByte = (byte) country.safeGet(edge.index());
             if (!country.isNull(identifierByte))
             {
-                final var identifier = identifierByte & 0xff;
+                var identifier = identifierByte & 0xff;
                 return Country.forIdentifier(new RegionIdentifier(identifier));
             }
         }
@@ -685,7 +704,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      * @return Free flow for the edge
      * @see SpeedCategory
      */
-    public final SpeedCategory retrieveFreeFlow(final Edge edge)
+    public final SpeedCategory retrieveFreeFlow(Edge edge)
     {
         if (freeFlowSpeedCategory == null)
         {
@@ -697,7 +716,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * @return The node identifier of the from vertex
      */
-    public final MapNodeIdentifier retrieveFromNodeIdentifier(final Edge edge)
+    public final MapNodeIdentifier retrieveFromNodeIdentifier(Edge edge)
     {
         if (edge.isReverse())
         {
@@ -712,7 +731,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * @return The vertex identifier of the from vertex
      */
-    public final int retrieveFromVertexIdentifier(final Edge edge)
+    public final int retrieveFromVertexIdentifier(Edge edge)
     {
         if (edge.isReverse())
         {
@@ -735,7 +754,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * @return The number of HOV lanes for the given edge
      */
-    public final Count retrieveHovLaneCount(final Edge edge)
+    public final Count retrieveHovLaneCount(Edge edge)
     {
         return HOV_LANE_COUNT.retrieveObject(edge, Count::count);
     }
@@ -743,7 +762,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * @return True if the edge is closed to through traffic
      */
-    public final boolean retrieveIsClosedToThroughTraffic(final Edge edge)
+    public final boolean retrieveIsClosedToThroughTraffic(Edge edge)
     {
         return IS_CLOSED_TO_THROUGH_TRAFFIC.retrieveBoolean(edge);
     }
@@ -751,7 +770,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * @return True if the given edge is on a toll road
      */
-    public final boolean retrieveIsTollRoad(final Edge edge)
+    public final boolean retrieveIsTollRoad(Edge edge)
     {
         return IS_TOLL_ROAD.retrieveBoolean(edge);
     }
@@ -759,7 +778,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * @return True if the given edge is under construction
      */
-    public final boolean retrieveIsUnderConstruction(final Edge edge)
+    public final boolean retrieveIsUnderConstruction(Edge edge)
     {
         return IS_UNDER_CONSTRUCTION.retrieveBoolean(edge);
     }
@@ -767,7 +786,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * @return The number of lanes for the given edge
      */
-    public final Count retrieveLaneCount(final Edge edge)
+    public final Count retrieveLaneCount(Edge edge)
     {
         return LANE_COUNT.retrieveObject(edge, Count::count);
     }
@@ -775,14 +794,14 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * @return The length of the given edge as a unit-less {@link Distance} value
      */
-    public final long retrieveLengthInMillimeters(final Edge edge)
+    public final long retrieveLengthInMillimeters(Edge edge)
     {
         if (lengthInMillimeters == null)
         {
             LENGTH_IN_MILLIMETERS.load();
         }
 
-        final var millimeters = lengthInMillimeters.safeGet(edge.index());
+        var millimeters = lengthInMillimeters.safeGet(edge.index());
 
         // If we have a zero length edge (should not happen, but could), return 1mm distance to prevent
         // divide-by-zero errors
@@ -793,20 +812,20 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      * @return The relations for which the given edge is a member
      * @see EdgeRelation
      */
-    public final Set<EdgeRelation> retrieveRelations(final Edge edge)
+    public final Set<EdgeRelation> retrieveRelations(Edge edge)
     {
         WAY_IDENTIFIER_TO_RELATIONS.load();
 
         if (wayIdentifierToRelationIdentifiers != null)
         {
-            final var relations = wayIdentifierToRelationIdentifiers.get(edge.mapIdentifier().asLong());
+            var relations = wayIdentifierToRelationIdentifiers.get(edge.mapIdentifier().asLong());
             if (relations != null)
             {
-                final Set<EdgeRelation> set = new HashSet<>();
-                final var iterator = relations.iterator();
+                Set<EdgeRelation> set = new HashSet<>();
+                var iterator = relations.iterator();
                 while (iterator.hasNext())
                 {
-                    final var relation = iterator.next();
+                    var relation = iterator.next();
                     set.add(graph().relationForIdentifier(new RelationIdentifier(relation)));
                 }
                 return set;
@@ -819,7 +838,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      * @return The functional class of the given edge
      * @see RoadFunctionalClass
      */
-    public final RoadFunctionalClass retrieveRoadFunctionalClass(final Edge edge)
+    public final RoadFunctionalClass retrieveRoadFunctionalClass(Edge edge)
     {
         return ROAD_FUNCTIONAL_CLASS.retrieveObject(edge,
                 value -> RoadFunctionalClass.forIdentifier((int) value));
@@ -830,15 +849,15 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      * @return The road names of the given type for the given edge
      * @see RoadName.Type
      */
-    public final List<RoadName> retrieveRoadNames(final Edge edge, final RoadName.Type type)
+    public final List<RoadName> retrieveRoadNames(Edge edge, RoadName.Type type)
     {
         ROAD_NAME.load();
         if (roadName != null)
         {
-            final List<RoadName> names = new ArrayList<>();
+            List<RoadName> names = new ArrayList<>();
             for (var index = 0; index < 4; index++)
             {
-                final var name = roadName.get(edge, type, index);
+                var name = roadName.get(edge, type, index);
                 if (name != null)
                 {
                     names.add(name);
@@ -856,7 +875,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * @return The shape of the given edge as a {@link Polyline}, or null if the road is segmental
      */
-    public final Polyline retrieveRoadShape(final Edge edge)
+    public final Polyline retrieveRoadShape(Edge edge)
     {
         ROAD_SHAPE.load();
         return roadShape.get(edge);
@@ -866,7 +885,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      * @return The state of the given road among {@link RoadState#ONE_WAY}, {@link RoadState#TWO_WAY} and {@link
      * RoadState#CLOSED}
      */
-    public final RoadState retrieveRoadState(final Edge edge)
+    public final RoadState retrieveRoadState(Edge edge)
     {
         if (roadState == null)
         {
@@ -879,7 +898,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      * @return The road subtype, for example, a main road, a ramp or a bridge.
      * @see RoadSubType
      */
-    public final RoadSubType retrieveRoadSubType(final Edge edge)
+    public final RoadSubType retrieveRoadSubType(Edge edge)
     {
         return ROAD_SUB_TYPE.retrieveObject(edge, value -> RoadSubType.forIdentifier((int) value));
     }
@@ -888,7 +907,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      * @return The road surface, among paved, unpaved and poor condition
      * @see RoadSurface
      */
-    public final RoadSurface retrieveRoadSurface(final Edge edge)
+    public final RoadSurface retrieveRoadSurface(Edge edge)
     {
         return ROAD_SURFACE.retrieveObject(edge, value -> RoadSurface.forIdentifier((int) value));
     }
@@ -896,7 +915,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * @return The type of road, for example a highway, local road or freeway
      */
-    public final RoadType retrieveRoadType(final Edge edge)
+    public final RoadType retrieveRoadType(Edge edge)
     {
         if (roadType == null)
         {
@@ -909,7 +928,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      * @return The sequence of edges that correspond to the given way identifier
      */
     @SuppressWarnings("StatementWithEmptyBody")
-    public Route retrieveRouteForWayIdentifier(final MapWayIdentifier wayIdentifier)
+    public Route retrieveRouteForWayIdentifier(MapWayIdentifier wayIdentifier)
     {
         assert wayIdentifier != null;
 
@@ -917,13 +936,13 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
 
         // NOTE: These edges will always be in order because edges are added to the store in the
         // order they appear from way sectioning
-        final var edges = wayIdentifierToEdgeIndex.iterator(wayIdentifier.asLong());
-        final var set = new EdgeSet(Estimate._32);
+        var edges = wayIdentifierToEdgeIndex.iterator(wayIdentifier.asLong());
+        var set = new EdgeSet(Estimate._32);
         if (edges != null)
         {
             while (edges.hasNext())
             {
-                final var index = edges.next();
+                var index = edges.next();
                 set.add(dataSpecification().newEdge(graph(), NULL_IDENTIFIER, index));
             }
         }
@@ -934,14 +953,14 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
             // DEBUG.trace("No edges found for way identifier $", wayIdentifier);
         }
 
-        final var routes = set.asRoutes();
+        var routes = set.asRoutes();
         return routes.size() == 1 ? routes.get(0) : null;
     }
 
     /**
      * @return The speed limit along the given edge
      */
-    public final Speed retrieveSpeedLimit(final Edge edge)
+    public final Speed retrieveSpeedLimit(Edge edge)
     {
         return SPEED_LIMIT.retrieveObject(edge, value ->
         {
@@ -959,7 +978,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * @return The node identifier of the "to" vertex of the edge
      */
-    public final MapNodeIdentifier retrieveToNodeIdentifier(final Edge edge)
+    public final MapNodeIdentifier retrieveToNodeIdentifier(Edge edge)
     {
         if (edge.isForward())
         {
@@ -974,7 +993,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * @return The identifier of the "to" vertex of the edge
      */
-    public final int retrieveToVertexIdentifier(final Edge edge)
+    public final int retrieveToVertexIdentifier(Edge edge)
     {
         if (edge.isReverse())
         {
@@ -1007,7 +1026,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
             if (archive() != null)
             {
                 // then load the spatial index from the graph file
-                final var start = Time.now();
+                var start = Time.now();
                 configureSerializer();
                 loadField("spatial-index");
                 assert spatialIndex != null : "No spatial index for " + graph().name();
@@ -1030,7 +1049,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      *
      * @see GraphElementStore#retrieveIndex(GraphElement)
      */
-    public synchronized void storeAttributes(final Edge edge)
+    public synchronized void storeAttributes(Edge edge)
     {
         assert edge != null;
 
@@ -1041,7 +1060,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         FREE_FLOW_SPEED_CATEGORY.storeObject(edge, edge.freeFlowSpeed());
         FROM_VERTEX_IDENTIFIER.storeObject(edge, edge.fromVertexIdentifier());
         HOV_LANE_COUNT.storeObject(edge, edge.hovLaneCount());
-        final var laneCount = edge.laneCount();
+        var laneCount = edge.laneCount();
         if (laneCount != null)
         {
             LANE_COUNT.storeObject(edge, laneCount.minimum(Count.count(63)));
@@ -1068,8 +1087,8 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
 
         if (edge.speedLimit() != null)
         {
-            final var kph = edge.speedLimit().asKilometersPerHour();
-            final var nearestMultipleOf5Kph = (kph + 2.5) / 5.0;
+            var kph = edge.speedLimit().asKilometersPerHour();
+            var nearestMultipleOf5Kph = (kph + 2.5) / 5.0;
             SPEED_LIMIT.storeObject(edge, (byte) nearestMultipleOf5Kph);
         }
 
@@ -1081,19 +1100,19 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         TO_NODE_IDENTIFIER.storeObject(edge, edge.toNodeIdentifier());
 
         // Store road names
-        for (final var type : RoadName.Type.values())
+        for (var type : RoadName.Type.values())
         {
-            final var names = edge.roadNames(type);
+            var names = edge.roadNames(type);
             if (names != null)
             {
-                for (final var name : names)
+                for (var name : names)
                 {
                     storeRoadName(edge, type, name);
                 }
                 if (DEBUG.isDebugOn())
                 {
-                    final var stored = new HashSet<>(names);
-                    final var retrieved = new HashSet<>(retrieveRoadNames(edge, type));
+                    var stored = new HashSet<>(names);
+                    var retrieved = new HashSet<>(retrieveRoadNames(edge, type));
                     if (!retrieved.equals(stored))
                     {
                         DEBUG.warning("Stored road names: $\n Retrieved road names $", stored, retrieved);
@@ -1105,7 +1124,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         // If we've got a heavy-weight edge,
         if (edge instanceof HeavyWeightEdge)
         {
-            final var heavy = (HeavyWeightEdge) edge;
+            var heavy = (HeavyWeightEdge) edge;
 
             // store its vertex clip state (if any)
             if (heavy.isFromVertexClipped() == Boolean.TRUE)
@@ -1123,7 +1142,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      * Stores the given speed as the free flow value for the given edge. This method is called when loading free flow
      * information in CommonGraph.loadFreeFlow()
      */
-    public synchronized void storeFreeFlow(final Edge edge, final Speed speed)
+    public synchronized void storeFreeFlow(Edge edge, Speed speed)
     {
         assert speed != null;
         FREE_FLOW_SPEED_CATEGORY.storeObject(edge, SpeedCategory.forSpeed(speed));
@@ -1132,7 +1151,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * Stores the given "from" vertex identifier for the given edge
      */
-    public synchronized void storeFromVertexIdentifier(final Edge edge)
+    public synchronized void storeFromVertexIdentifier(Edge edge)
     {
         assert edge.fromVertexIdentifier() != null;
         FROM_VERTEX_IDENTIFIER.storeObject(edge, edge.fromVertexIdentifier());
@@ -1141,7 +1160,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * Stores the given relation for the given edge
      */
-    public final synchronized void storeRelation(final Edge edge, final EdgeRelation relation)
+    public final synchronized void storeRelation(Edge edge, EdgeRelation relation)
     {
         assert edge != null;
         assert relation != null;
@@ -1159,20 +1178,20 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * Stores a road name of the given type for the given edge
      */
-    public final synchronized void storeRoadName(final Edge edge, final RoadName.Type type, final RoadName name)
+    public final synchronized void storeRoadName(Edge edge, RoadName.Type type, RoadName name)
     {
         assert type != null;
         assert name != null;
 
         ROAD_NAME.allocate();
-        final var count = roadName.size(edge, type);
+        var count = roadName.size(edge, type);
         roadName.set(edge, type, count, name);
     }
 
-    public final synchronized void storeRoadShape(final Edge edge, final Polyline shape)
+    public final synchronized void storeRoadShape(Edge edge, Polyline shape)
     {
-        final long bottomLeft;
-        final long topRight;
+        long bottomLeft;
+        long topRight;
 
         // If the edge has no shape,
         if (shape == null)
@@ -1188,7 +1207,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
             roadShape.set(edge, shape.compressed());
 
             // and get the bounds from the polyline
-            final var bounds = shape.bounds();
+            var bounds = shape.bounds();
             bottomLeft = Location.toLong(bounds.bottomInDm7(), bounds.leftInDm7());
             topRight = Location.toLong(bounds.topInDm7(), bounds.rightInDm7());
         }
@@ -1197,11 +1216,11 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         BOUNDS_BOTTOM_LEFT.allocate();
         BOUNDS_TOP_RIGHT.allocate();
 
-        final var index = edge.index();
+        var index = edge.index();
         boundsBottomLeft.set(index, bottomLeft);
         boundsTopRight.set(index, topRight);
 
-        final var store = graph().graphStore();
+        var store = graph().graphStore();
         store.addToBounds(bottomLeft);
         store.addToBounds(topRight);
     }
@@ -1211,7 +1230,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      *
      * @see #retrieveRoadSubType(Edge)
      */
-    public final synchronized void storeRoadSubType(final Edge edge, final RoadSubType subtype)
+    public final synchronized void storeRoadSubType(Edge edge, RoadSubType subtype)
     {
         assert subtype != null;
         ROAD_SUB_TYPE.storeObject(edge, subtype);
@@ -1220,7 +1239,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * Stores the given "to" vertex identifier for the given edge
      */
-    public synchronized void storeToVertexIdentifier(final Edge edge)
+    public synchronized void storeToVertexIdentifier(Edge edge)
     {
         assert edge.toVertexIdentifier() != null;
         TO_VERTEX_IDENTIFIER.storeObject(edge, edge.toVertexIdentifier());
@@ -1229,16 +1248,16 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * Stores a turn restriction route
      */
-    public final synchronized void storeTurnRestriction(final Route restriction)
+    public final synchronized void storeTurnRestriction(Route restriction)
     {
         assert restriction != null;
         assert restriction.size() > 0;
 
         // Loop through all edges in the restriction
-        for (final var edge : restriction)
+        for (var edge : restriction)
         {
             // and for each edge, go through the existing relations for the edge
-            for (final var relation : retrieveRelations(edge))
+            for (var relation : retrieveRelations(edge))
             {
                 // and if the relation is a turn restriction that has the same route as the
                 // restriction that we're proposing to add,
@@ -1254,18 +1273,18 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         nextRelationIdentifier = nextRelationIdentifier.next();
 
         // Create a new relation for the turn restriction
-        final var newRelation = (HeavyWeightRelation) graph().dataSpecification()
+        var newRelation = (HeavyWeightRelation) graph().dataSpecification()
                 .newHeavyWeightRelation(graph(), nextRelationIdentifier.asLong());
-        final var tags = PbfTagList.create();
+        var tags = PbfTagList.create();
         tags.add(new Tag("type", "restriction"));
         newRelation.tags(tags);
         newRelation.bounds(restriction.bounds());
 
         // Go through each edge in the turn restriction
-        for (final var edge : restriction)
+        for (var edge : restriction)
         {
             // get the existing relations for the edge
-            final Set<EdgeRelation> relations = new HashSet<>(retrieveRelations(edge));
+            Set<EdgeRelation> relations = new HashSet<>(retrieveRelations(edge));
 
             // add the new turn restriction relation
             relations.add(newRelation);
@@ -1284,9 +1303,9 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      * {@inheritDoc}
      */
     @Override
-    public Validator validator(final ValidationType validation)
+    public Validator validator(ValidationType validation)
     {
-        final var outer = this;
+        var outer = this;
         return !validation.shouldValidate(getClass()) ? Validator.NULL : new StoreValidator()
         {
             @Override
@@ -1309,7 +1328,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     problemIf(!Precision.DM7.isValidLocation(outer.boundsBottomLeft.get(index)), "the bottom left bounds is invalid");
                     problemIf(!Precision.DM7.isValidLocation(outer.boundsTopRight.get(index)), "the top right bounds is invalid");
 
-                    final var edgeIdentifier = retrieveIdentifier(index);
+                    var edgeIdentifier = retrieveIdentifier(index);
 
                     problemIf(isNull(outer.bridgeType, index), "the bridge type for edge ${long} at index $ is null", edgeIdentifier, index);
                     warningIf(isNull(outer.country, index), "the country for edge ${long} is null", edgeIdentifier);
@@ -1367,7 +1386,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         var identifier = Math.abs(edge.identifierAsLong());
 
         // and if the element identifier is already in this store
-        final var exists = containsIdentifier(identifier);
+        var exists = containsIdentifier(identifier);
         if (exists)
         {
             // we make up a new element identifier using the way identifier
@@ -1376,7 +1395,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         }
 
         // then we create a new index for the element,
-        final var index = identifierToIndex(identifier, IndexingMode.CREATE);
+        var index = identifierToIndex(identifier, IndexingMode.CREATE);
 
         // set the edge's index,
         edge.index(index);
@@ -1385,7 +1404,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         vertexStore().temporaryAddVertexes(edge);
 
         // store the road shape and other edge attributes,
-        final var shape = edge.roadShape();
+        var shape = edge.roadShape();
         if (shape.size() == 2)
         {
             storeRoadShape(edge, null);
@@ -1409,13 +1428,13 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
 
         if (DEBUG.isDebugOn())
         {
-            final var retrieved = dataSpecification().newEdge(graph(), identifier);
+            var retrieved = dataSpecification().newEdge(graph(), identifier);
             assert retrieved.validator(VALIDATE_RAW).validate(this);
         }
     }
 
     @Override
-    protected void onAdded(final Edge edge)
+    protected void onAdded(Edge edge)
     {
         super.onAdded(edge);
 
@@ -1436,16 +1455,16 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
 
         WAY_IDENTIFIER_TO_RELATIONS.allocate();
 
-        final var wayIdentifiers = temporaryWayIdentifierToRelationIndex.keys();
+        var wayIdentifiers = temporaryWayIdentifierToRelationIndex.keys();
         while (wayIdentifiers.hasNext())
         {
-            final var wayIdentifier = wayIdentifiers.next();
+            var wayIdentifier = wayIdentifiers.next();
 
-            final var relations = new LongArray("temporary");
+            var relations = new LongArray("temporary");
             relations.initialSize(Estimate._8);
             relations.initialize();
 
-            final var list = temporaryRelations.list(temporaryWayIdentifierToRelationIndex.get(wayIdentifier));
+            var list = temporaryRelations.list(temporaryWayIdentifierToRelationIndex.get(wayIdentifier));
             while (list.hasNext())
             {
                 relations.add(list.next());
@@ -1459,29 +1478,10 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     }
 
     /**
-     * Initializes this edge store by resetting the count and the next index.
-     */
-    @Override
-    public void onInitialize()
-    {
-        super.onInitialize();
-
-        count = 0;
-
-        resetNextIndex();
-
-        temporaryWayIdentifierToRelationIndex = new LongToIntMap(objectName() + ".temporaryEdgeIdentifierToRelationsIndex");
-        temporaryWayIdentifierToRelationIndex.initialize();
-
-        temporaryRelations = new LongLinkedListStore(objectName() + ".temporaryRelations");
-        temporaryRelations.initialize();
-    }
-
-    /**
      * Free data structures that are no longer needed
      */
     @Override
-    protected void onLoaded(final GraphArchive archive)
+    protected void onLoaded(GraphArchive archive)
     {
         super.onLoaded(archive);
 
@@ -1494,7 +1494,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     }
 
     @Override
-    protected void onLoading(final GraphArchive archive)
+    protected void onLoading(GraphArchive archive)
     {
         configureSerializer();
         super.onLoading(archive);
@@ -1505,7 +1505,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      * Validate that a spatial index exists any speed pattern store is saved before saving this store
      */
     @Override
-    protected void onSaving(final GraphArchive archive)
+    protected void onSaving(GraphArchive archive)
     {
         configureSerializer();
         super.onSaving(archive);
@@ -1520,8 +1520,8 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
 
     private void configureSerializer()
     {
-        final var kryo = (KryoSerializationSession) SerializationSession.threadLocal(this);
-        final var types = kryo.kryoTypes();
+        var kryo = (KryoSerializationSession) SerializationSession.threadLocal(this);
+        var types = kryo.kryoTypes();
         types.registerDynamic(CompressedEdgeSpatialIndex.class, new CompressedEdgeSpatialIndexKryoSerializer(graph()),
                 CompressedEdgeSpatialIndexKryoSerializer.IDENTIFIER);
     }
@@ -1532,9 +1532,9 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
      *
      * @return The fused edge incorporating all neighboring clean cut edges
      */
-    private Edge fuse(final Edge edge)
+    private Edge fuse(Edge edge)
     {
-        final var fused = edge.asHeavyWeight();
+        var fused = edge.asHeavyWeight();
 
         // Get road shape and start/end location from that
         var shape = edge.roadShape();
@@ -1542,7 +1542,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         // If the from node needs to be fused
         if (edge.fromNodeIdentifier() == null)
         {
-            final var start = shape.start();
+            var start = shape.start();
             var head = temporaryCleanCuts.get(start);
             if (head != null)
             {
@@ -1571,7 +1571,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         // If the to node needs to be fused
         if (edge.toNodeIdentifier() == null)
         {
-            final var end = shape.end();
+            var end = shape.end();
             var tail = temporaryCleanCuts.get(end);
             if (tail != null)
             {
@@ -1603,7 +1603,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * @return True if the edge at the given index is two-way
      */
-    private boolean isOneWay(final int index)
+    private boolean isOneWay(int index)
     {
         if (roadState == null)
         {
@@ -1615,7 +1615,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * @return True if the edge at the given index is two-way
      */
-    private boolean isTwoWay(final int index)
+    private boolean isTwoWay(int index)
     {
         if (roadState == null)
         {
@@ -1627,9 +1627,9 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     /**
      * Removes the given edge from this store and the vertex store
      */
-    private void remove(final Edge edge)
+    private void remove(Edge edge)
     {
-        final var index = identifierToIndex(edge.identifierAsLong(), IndexingMode.GET);
+        var index = identifierToIndex(edge.identifierAsLong(), IndexingMode.GET);
         edge.index(index);
         vertexStore().temporaryRemove(edge);
         super.remove(edge);

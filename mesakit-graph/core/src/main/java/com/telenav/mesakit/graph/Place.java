@@ -94,13 +94,13 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
         UNKNOWN(7),
         ;
 
-        public static Type forIdentifier(final int identifier)
+        public static Type forIdentifier(int identifier)
         {
             if (identifier == 0)
             {
                 return null;
             }
-            for (final var type : values())
+            for (var type : values())
             {
                 if (type.identifier == identifier)
                 {
@@ -110,7 +110,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
             throw new IllegalArgumentException("Invalid identifier " + identifier);
         }
 
-        public static Type forString(final String type)
+        public static Type forString(String type)
         {
             if ("city".equalsIgnoreCase(type))
             {
@@ -143,7 +143,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
 
         private final int identifier;
 
-        Type(final int identifier)
+        Type(int identifier)
         {
             this.identifier = identifier;
         }
@@ -153,22 +153,22 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
             return identifier;
         }
 
-        public boolean isLargerThan(final Type that)
+        public boolean isLargerThan(Type that)
         {
             return identifier < that.identifier;
         }
 
-        public boolean isLargerThanOrEqualTo(final Type that)
+        public boolean isLargerThanOrEqualTo(Type that)
         {
             return identifier <= that.identifier;
         }
 
-        public boolean isSmallerThan(final Type that)
+        public boolean isSmallerThan(Type that)
         {
             return identifier > that.identifier;
         }
 
-        public boolean isSmallerThanOrEqualTo(final Type that)
+        public boolean isSmallerThanOrEqualTo(Type that)
         {
             return identifier >= that.identifier;
         }
@@ -184,7 +184,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public Place(final Graph graph, final long identifier, final int index)
+    public Place(Graph graph, long identifier, int index)
     {
         graph(graph);
         identifier(identifier);
@@ -195,7 +195,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public Place(final Graph graph, final PlaceIdentifier identifier)
+    public Place(Graph graph, PlaceIdentifier identifier)
     {
         assert graph != null;
         graph(graph);
@@ -206,7 +206,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public Place(final Graph graph, final long identifier)
+    public Place(Graph graph, long identifier)
     {
         graph(graph);
         identifier(identifier);
@@ -216,7 +216,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
     {
     }
 
-    protected Place(final Place that)
+    protected Place(Place that)
     {
         graph(that.graph());
         identifier(that.identifierAsLong());
@@ -234,7 +234,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
             return this;
         }
 
-        final var place = dataSpecification().newHeavyWeightPlace(graph(), identifierAsLong());
+        var place = dataSpecification().newHeavyWeightPlace(graph(), identifierAsLong());
         place.copy(this);
         return place;
     }
@@ -261,7 +261,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
      * {@inheritDoc}
      */
     @Override
-    public int compareTo(final Place that)
+    public int compareTo(Place that)
     {
         return name().compareTo(that.name());
     }
@@ -293,7 +293,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
     /**
      * @return Differences in attributes between this place and the given place
      */
-    public Differences differences(final Place that)
+    public Differences differences(Place that)
     {
         return dataSpecification().compare(this, that);
     }
@@ -301,7 +301,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
     /**
      * @return The distance from this place to the given located object (having a location)
      */
-    public Distance distanceTo(final Located that)
+    public Distance distanceTo(Located that)
     {
         return location().distanceTo(that.location());
     }
@@ -319,7 +319,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
      * {@inheritDoc}
      */
     @Override
-    public boolean intersects(final Rectangle rectangle)
+    public boolean intersects(Rectangle rectangle)
     {
         return rectangle.contains(location());
     }
@@ -336,7 +336,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
      * {@inheritDoc}
      */
     @Override
-    public boolean isInside(final Rectangle bounds)
+    public boolean isInside(Rectangle bounds)
     {
         return bounds.contains(location());
     }
@@ -344,7 +344,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
     /**
      * @return True if this place has a larger population than the given place
      */
-    public boolean isLargerThan(final Place that)
+    public boolean isLargerThan(Place that)
     {
         return population().isGreaterThan(that.population());
     }
@@ -360,7 +360,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
     /**
      * @return True if this place has a smaller population than the given place
      */
-    public boolean isSmallerThan(final Place that)
+    public boolean isSmallerThan(Place that)
     {
         return population().isLessThan(that.population());
     }
@@ -422,7 +422,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
     public Count population()
     {
         // Get population from place store
-        final var population = store().retrievePopulation(this);
+        var population = store().retrievePopulation(this);
 
         // If there's no exact population, make a round estimate
         if (population == null)
@@ -475,7 +475,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
      */
     public List<Region<?>> regions()
     {
-        final var regions = new ObjectList<Region<?>>();
+        var regions = new ObjectList<Region<?>>();
         regions.addIfNotNull(continent());
         regions.addIfNotNull(country());
         regions.addIfNotNull(state());
@@ -513,7 +513,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
      * {@inheritDoc}
      */
     @Override
-    public Validator validator(final ValidationType type)
+    public Validator validator(ValidationType type)
     {
         return new ElementValidator()
         {

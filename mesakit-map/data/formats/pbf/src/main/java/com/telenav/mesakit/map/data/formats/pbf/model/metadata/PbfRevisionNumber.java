@@ -25,7 +25,7 @@ import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.Diagram
 @UmlClassDiagram(diagram = DiagramPbfModelMetadata.class)
 public class PbfRevisionNumber extends IntegerIdentifier
 {
-    public PbfRevisionNumber(final int revision)
+    public PbfRevisionNumber(int revision)
     {
         super(revision);
     }

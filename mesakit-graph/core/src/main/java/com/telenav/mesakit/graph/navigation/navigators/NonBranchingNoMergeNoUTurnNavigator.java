@@ -29,9 +29,9 @@ import com.telenav.mesakit.graph.navigation.Navigator;
 public class NonBranchingNoMergeNoUTurnNavigator extends Navigator
 {
     @Override
-    public Edge in(final Edge edge)
+    public Edge in(Edge edge)
     {
-        final var from = edge.from();
+        var from = edge.from();
         if (from.isThroughVertex())
         {
             return Navigator.NON_BRANCHING_NO_UTURN.in(edge);
@@ -40,9 +40,9 @@ public class NonBranchingNoMergeNoUTurnNavigator extends Navigator
     }
 
     @Override
-    public Edge out(final Edge edge)
+    public Edge out(Edge edge)
     {
-        final var to = edge.to();
+        var to = edge.to();
         if (to.isThroughVertex())
         {
             return Navigator.NON_BRANCHING_NO_UTURN.out(edge);

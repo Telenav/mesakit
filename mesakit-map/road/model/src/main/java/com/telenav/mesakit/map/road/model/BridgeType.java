@@ -28,9 +28,9 @@ public enum BridgeType implements Identifiable
     TUNNEL(3),
     UNDERPASS(4);
 
-    public static BridgeType forIdentifier(final int identifier)
+    public static BridgeType forIdentifier(int identifier)
     {
-        for (final var value : values())
+        for (var value : values())
         {
             if (value.identifier == identifier)
             {
@@ -42,7 +42,7 @@ public enum BridgeType implements Identifiable
 
     private final int identifier;
 
-    BridgeType(final int identifier)
+    BridgeType(int identifier)
     {
         this.identifier = identifier;
     }

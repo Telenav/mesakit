@@ -47,7 +47,7 @@ public class CompressedEdgeListStore implements CompressibleCollection, NamedObj
     /**
      * Construct an edge list store for the given graph
      */
-    public CompressedEdgeListStore(final String objectName, final Graph graph)
+    public CompressedEdgeListStore(String objectName, Graph graph)
     {
         this.graph = graph;
 
@@ -59,13 +59,13 @@ public class CompressedEdgeListStore implements CompressibleCollection, NamedObj
     {
     }
 
-    public int add(final List<Edge> edges)
+    public int add(List<Edge> edges)
     {
         return store.list(edges);
     }
 
     @Override
-    public Method compress(final Method method)
+    public Method compress(Method method)
     {
         return store.compress(method);
     }
@@ -79,14 +79,14 @@ public class CompressedEdgeListStore implements CompressibleCollection, NamedObj
     /**
      * @return The edge list for the given index
      */
-    public List<Edge> get(final int list)
+    public List<Edge> get(int list)
     {
-        final var edges = store.list(list);
-        final var outer = this;
+        var edges = store.list(list);
+        var outer = this;
         return new AbstractList<>()
         {
             @Override
-            public Edge get(final int index)
+            public Edge get(int index)
             {
                 return outer.graph.edgeStore().edgeForIndex(edges.get(index));
             }
@@ -99,7 +99,7 @@ public class CompressedEdgeListStore implements CompressibleCollection, NamedObj
         };
     }
 
-    public void graph(final Graph graph)
+    public void graph(Graph graph)
     {
         this.graph = graph;
     }
@@ -110,7 +110,7 @@ public class CompressedEdgeListStore implements CompressibleCollection, NamedObj
         return objectName;
     }
 
-    public int size(final int list)
+    public int size(int list)
     {
         return store.size(list);
     }

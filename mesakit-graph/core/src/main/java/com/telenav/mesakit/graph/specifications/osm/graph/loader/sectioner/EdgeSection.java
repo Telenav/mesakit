@@ -54,7 +54,7 @@ public class EdgeSection
      * @param nodes List of nodes for this edge section
      * @param shape The {@link Polyline} for this edge section
      */
-    public EdgeSection(final Edge edge, final List<MapNodeIdentifier> nodes, final Polyline shape)
+    public EdgeSection(Edge edge, List<MapNodeIdentifier> nodes, Polyline shape)
     {
         assert edge != null;
         assert nodes != null;
@@ -78,37 +78,37 @@ public class EdgeSection
      */
     public Segment asSegment()
     {
-        final var shape = shape();
+        var shape = shape();
         return new Segment(shape.start(), shape.end());
     }
 
     public EdgeSectionList bisect()
     {
-        final var sections = new EdgeSectionList();
+        var sections = new EdgeSectionList();
 
         // If we're bisecting a segment
         if (size() == 2)
         {
             // create a synthetic OSM node identifier for the bisection point
-            final var syntheticIdentifier = PbfNodeIdentifier.nextSyntheticNodeIdentifier();
+            var syntheticIdentifier = PbfNodeIdentifier.nextSyntheticNodeIdentifier();
 
             // add first segment to the bisection point
-            final List<MapNodeIdentifier> firstNodes = new ArrayList<>();
+            List<MapNodeIdentifier> firstNodes = new ArrayList<>();
             firstNodes.add(nodes.get(0));
             firstNodes.add(syntheticIdentifier);
 
-            final var firstShape = new PolylineBuilder();
+            var firstShape = new PolylineBuilder();
             firstShape.add(shape.start());
             firstShape.add(asSegment().midpoint());
 
             sections.add(new EdgeSection(edge(), firstNodes, firstShape.build()));
 
             // add second segment from the bisection point
-            final List<MapNodeIdentifier> secondNodes = new ArrayList<>();
+            List<MapNodeIdentifier> secondNodes = new ArrayList<>();
             secondNodes.add(syntheticIdentifier);
             secondNodes.add(nodes.get(1));
 
-            final var secondShape = new PolylineBuilder();
+            var secondShape = new PolylineBuilder();
             secondShape.add(asSegment().midpoint());
             secondShape.add(shape.end());
 
@@ -117,7 +117,7 @@ public class EdgeSection
         else
         {
             // Bisect at existing OSM node
-            for (final var section : shape.bisect())
+            for (var section : shape.bisect())
             {
                 sections.add(section(section));
             }
@@ -134,10 +134,10 @@ public class EdgeSection
      * @return A copy of the parent edge that's been modified to have the 'from' and 'to' nodes and road shape of this
      * edge section.
      */
-    public HeavyWeightEdge edge(final EdgeIdentifier identifier)
+    public HeavyWeightEdge edge(EdgeIdentifier identifier)
     {
         // Create a new temporary edge that's a copy of the parent edge for this section
-        final var section = edge.graph().newHeavyWeightEdge(identifier);
+        var section = edge.graph().newHeavyWeightEdge(identifier);
 
         // Copy the attributes of the parent edge
         section.copy(edge);
@@ -152,8 +152,8 @@ public class EdgeSection
         section.toNodeIdentifier(to());
 
         // Set the clipped state to true only for vertexes that are at the ends of the parent edge
-        final var fromClipped = shape.start().asDm5Long() == edge.fromLocation().asDm5Long() && edge.from().isClipped();
-        final var toClipped = shape.end().asDm5Long() == edge.toLocation().asDm5Long() && edge.to().isClipped();
+        var fromClipped = shape.start().asDm5Long() == edge.fromLocation().asDm5Long() && edge.from().isClipped();
+        var toClipped = shape.end().asDm5Long() == edge.toLocation().asDm5Long() && edge.to().isClipped();
         section.fromVertexClipped(fromClipped);
         section.toVertexClipped(toClipped);
 
@@ -166,11 +166,11 @@ public class EdgeSection
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof EdgeSection)
         {
-            final var that = (EdgeSection) object;
+            var that = (EdgeSection) object;
             return this == that;
         }
         return false;
@@ -201,7 +201,7 @@ public class EdgeSection
     /**
      * @return A sub-section of this edge section given a section of a {@link Polyline}
      */
-    public EdgeSection section(final PolylineSection section)
+    public EdgeSection section(PolylineSection section)
     {
         return new EdgeSection(edge(), nodes.subList(section.fromIndex(), section.toIndex() + 1), section.shape());
     }
@@ -209,10 +209,10 @@ public class EdgeSection
     /**
      * @return This edge section broken into pieces by the given sectioner
      */
-    public EdgeSectionList section(final PolylineSectioner sectioner)
+    public EdgeSectionList section(PolylineSectioner sectioner)
     {
-        final var sections = new EdgeSectionList();
-        for (final var section : sectioner.sections())
+        var sections = new EdgeSectionList();
+        for (var section : sectioner.sections())
         {
             sections.add(section(section));
         }
@@ -243,8 +243,8 @@ public class EdgeSection
 
     public EdgeSectionList trisect()
     {
-        final var sections = new EdgeSectionList();
-        for (final var section : shape.trisect())
+        var sections = new EdgeSectionList();
+        for (var section : shape.trisect())
         {
             sections.add(section(section));
         }

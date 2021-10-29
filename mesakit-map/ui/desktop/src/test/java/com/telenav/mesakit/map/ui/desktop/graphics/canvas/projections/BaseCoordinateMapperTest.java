@@ -27,14 +27,14 @@ import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 
 public abstract class BaseCoordinateMapperTest extends UnitTest
 {
-    protected void checkMapping(final MapProjection projection,
-                                final DrawingPoint point,
-                                final Location location)
+    protected void checkMapping(MapProjection projection,
+                                DrawingPoint point,
+                                Location location)
     {
-        final var projectedPoint = projection.toDrawing(location);
+        var projectedPoint = projection.toDrawing(location);
         ensure(point.isClose(projectedPoint, 0.01), "");
 
-        final var projectedLocation = projection.toMap(point);
+        var projectedLocation = projection.toMap(point);
         if (!location.isClose(projectedLocation, Angle.degrees(0.001)))
         {
             fail("location " + location + " is not close enough to " + projectedLocation);
@@ -42,12 +42,12 @@ public abstract class BaseCoordinateMapperTest extends UnitTest
     }
 
     @SuppressWarnings("SameParameterValue")
-    protected DrawingSize drawingSize(final int width, final int height)
+    protected DrawingSize drawingSize(int width, int height)
     {
         return DrawingSize.pixels(width, height);
     }
 
-    protected DrawingPoint point(final int x, final int y)
+    protected DrawingPoint point(int x, int y)
     {
         return DrawingPoint.pixels(x, y);
     }

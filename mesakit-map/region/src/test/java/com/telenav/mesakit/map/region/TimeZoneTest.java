@@ -120,10 +120,10 @@ public class TimeZoneTest extends RegionUnitTest
         check("America/Sitka", 57.053, -135.335);
     }
 
-    private void check(final String expectedTimeZone, final double latitudeInDegrees, final double longitudeInDegrees)
+    private void check(String expectedTimeZone, double latitudeInDegrees, double longitudeInDegrees)
     {
-        final var location = Location.degrees(latitudeInDegrees, longitudeInDegrees);
-        final var timeZone = TimeZone.forLocation(location);
+        var location = Location.degrees(latitudeInDegrees, longitudeInDegrees);
+        var timeZone = TimeZone.forLocation(location);
         if (timeZone == null)
         {
             if (expectedTimeZone != null)

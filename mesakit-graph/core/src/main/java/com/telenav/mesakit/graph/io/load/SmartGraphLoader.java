@@ -36,7 +36,6 @@ import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.PbfToGraphConverter;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.illegalState;
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
 
@@ -53,31 +52,31 @@ public class SmartGraphLoader extends BaseRepeater implements Named
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static boolean accepts(final FileName name)
+    public static boolean accepts(FileName name)
     {
         return name.endsWith(GraphArchive.EXTENSION);
     }
 
-    public static ArgumentParser.Builder<SmartGraphLoader> graphArgumentParser(final String description)
+    public static ArgumentParser.Builder<SmartGraphLoader> graphArgumentParser(String description)
     {
         return graphArgumentParser(description, PbfToGraphConverter.defaultConfiguration());
     }
 
-    public static ArgumentParser.Builder<SmartGraphLoader> graphArgumentParser(final String description,
-                                                                               final PbfToGraphConverter.Configuration configuration)
+    public static ArgumentParser.Builder<SmartGraphLoader> graphArgumentParser(String description,
+                                                                               PbfToGraphConverter.Configuration configuration)
     {
         return ArgumentParser.builder(SmartGraphLoader.class)
                 .description(description)
                 .converter(new Converter(LOGGER, configuration));
     }
 
-    public static SwitchParser.Builder<SmartGraphLoader> graphSwitchParser(final String name, final String description)
+    public static SwitchParser.Builder<SmartGraphLoader> graphSwitchParser(String name, String description)
     {
         return graphSwitchParser(name, description, PbfToGraphConverter.defaultConfiguration());
     }
 
-    public static SwitchParser.Builder<SmartGraphLoader> graphSwitchParser(final String name, final String description,
-                                                                           final PbfToGraphConverter.Configuration configuration)
+    public static SwitchParser.Builder<SmartGraphLoader> graphSwitchParser(String name, String description,
+                                                                           PbfToGraphConverter.Configuration configuration)
     {
         return SwitchParser.builder(SmartGraphLoader.class)
                 .name(name)
@@ -86,7 +85,7 @@ public class SmartGraphLoader extends BaseRepeater implements Named
     }
 
     public static SwitchParser.Builder<SmartGraphLoader> graphSwitchParser(
-            final PbfToGraphConverter.Configuration configuration)
+            PbfToGraphConverter.Configuration configuration)
     {
         return graphSwitchParser("graph", "Graph file resource", configuration);
     }
@@ -96,7 +95,7 @@ public class SmartGraphLoader extends BaseRepeater implements Named
         return graphSwitchParser("graph", "Graph file resource", PbfToGraphConverter.defaultConfiguration());
     }
 
-    public static SmartGraphLoader of(final String specifier)
+    public static SmartGraphLoader of(String specifier)
     {
         return new Converter(LOGGER, PbfToGraphConverter.defaultConfiguration()).convert(specifier);
     }
@@ -110,22 +109,22 @@ public class SmartGraphLoader extends BaseRepeater implements Named
     {
         private final PbfToGraphConverter.Configuration configuration;
 
-        public Converter(final Listener listener, final PbfToGraphConverter.Configuration configuration)
+        public Converter(Listener listener, PbfToGraphConverter.Configuration configuration)
         {
             super(listener);
             this.configuration = configuration;
         }
 
         @Override
-        protected SmartGraphLoader onToValue(final String specifier)
+        protected String onToString(SmartGraphLoader graph)
         {
-            return new SmartGraphLoader(File.parse(specifier), configuration);
+            return unsupported();
         }
 
         @Override
-        protected String onToString(final SmartGraphLoader graph)
+        protected SmartGraphLoader onToValue(String specifier)
         {
-            return unsupported();
+            return new SmartGraphLoader(File.parse(specifier), configuration);
         }
     }
 
@@ -133,12 +132,12 @@ public class SmartGraphLoader extends BaseRepeater implements Named
 
     private final PbfToGraphConverter.Configuration configuration;
 
-    public SmartGraphLoader(final File file)
+    public SmartGraphLoader(File file)
     {
         this(file, PbfToGraphConverter.defaultConfiguration());
     }
 
-    public SmartGraphLoader(final File file, final PbfToGraphConverter.Configuration configuration)
+    public SmartGraphLoader(File file, PbfToGraphConverter.Configuration configuration)
     {
         this.file = file;
         this.configuration = configuration;
@@ -154,19 +153,19 @@ public class SmartGraphLoader extends BaseRepeater implements Named
         return load(this, ProgressReporter.NULL);
     }
 
-    public Graph load(final Listener listener)
+    public Graph load(Listener listener)
     {
         return load(listener, Progress.create(LOGGER, "bytes"));
     }
 
     @SuppressWarnings("resource")
-    public Graph load(final Listener listener, final ProgressReporter reporter)
+    public Graph load(Listener listener, ProgressReporter reporter)
     {
         // If the file we're trying to load exists,
         if (file.exists())
         {
             // get the file extension
-            final var extension = file.extension();
+            var extension = file.extension();
 
             // and load the file accordingly
             switch (extension.toString())
@@ -176,10 +175,10 @@ public class SmartGraphLoader extends BaseRepeater implements Named
 
                 case ".pbf":
                 {
-                    final var metadata = Metadata.from(file);
+                    var metadata = Metadata.from(file);
                     if (metadata != null)
                     {
-                        final var converter = (PbfToGraphConverter) metadata.dataSpecification().newGraphConverter(metadata);
+                        var converter = (PbfToGraphConverter) metadata.dataSpecification().newGraphConverter(metadata);
                         converter.addListener(this);
                         converter.configure(configuration);
                         return converter.convert(file);

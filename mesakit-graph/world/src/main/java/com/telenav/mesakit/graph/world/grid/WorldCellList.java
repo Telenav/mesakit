@@ -80,12 +80,6 @@ import java.util.stream.Collectors;
  *     location within the given distance having the given minimum functional class</li>
  *     <li>{@link #relationsIntersecting(Rectangle, Matcher)} - All relations that intersect the rectangle and match the matcher</li>
  * </ul>
- * <p>
- * <b>Traffic</b>
- * <ul>
- *     <li>{@link #roadSectionIdentifiersIntersecting(Rectangle)} - All road section identifiers intersecting the rectangle</li>
- *     <li>{@link #routeFor(RoadSectionIdentifier)} - A route through these cells for the given road section identifier</li>
- * </ul>
  *
  * @author jonathanl (shibo)
  * @see WorldCell
@@ -100,7 +94,7 @@ public class WorldCellList extends ArrayList<WorldCell>
     public WorldCell biggest()
     {
         WorldCell biggest = null;
-        for (final var worldCell : this)
+        for (var worldCell : this)
         {
             if (biggest == null || worldCell.fileSize().isLargerThan(biggest.fileSize()))
             {
@@ -115,9 +109,9 @@ public class WorldCellList extends ArrayList<WorldCell>
         return stream().map(WorldCell::cellGraph).collect(Collectors.toList());
     }
 
-    public boolean contains(final Edge edge)
+    public boolean contains(Edge edge)
     {
-        for (final var worldCell : this)
+        for (var worldCell : this)
         {
             if (worldCell.cellGraph().contains(edge))
             {
@@ -127,9 +121,9 @@ public class WorldCellList extends ArrayList<WorldCell>
         return false;
     }
 
-    public boolean contains(final EdgeRelation relation)
+    public boolean contains(EdgeRelation relation)
     {
-        for (final var worldCell : this)
+        for (var worldCell : this)
         {
             if (worldCell.cellGraph().contains(relation))
             {
@@ -139,9 +133,9 @@ public class WorldCellList extends ArrayList<WorldCell>
         return false;
     }
 
-    public boolean contains(final Vertex vertex)
+    public boolean contains(Vertex vertex)
     {
-        for (final var worldCell : this)
+        for (var worldCell : this)
         {
             if (worldCell.cellGraph().contains(vertex))
             {
@@ -166,7 +160,7 @@ public class WorldCellList extends ArrayList<WorldCell>
         return edges(worldCell -> worldCell.cellGraph().edges());
     }
 
-    public EdgeSequence edgesIntersecting(final Rectangle bounds, final Matcher<Edge> matcher)
+    public EdgeSequence edgesIntersecting(Rectangle bounds, Matcher<Edge> matcher)
     {
         return edges(worldCell -> worldCell.cellGraph().edgesIntersecting(bounds, matcher));
     }
@@ -190,7 +184,7 @@ public class WorldCellList extends ArrayList<WorldCell>
         return edges(worldCell -> worldCell.cellGraph().forwardEdges());
     }
 
-    public EdgeSequence forwardEdgesIntersecting(final Rectangle bounds, final Matcher<Edge> matcher)
+    public EdgeSequence forwardEdgesIntersecting(Rectangle bounds, Matcher<Edge> matcher)
     {
         return edges(worldCell -> worldCell.cellGraph().forwardEdgesIntersecting(bounds, matcher));
     }
@@ -205,7 +199,7 @@ public class WorldCellList extends ArrayList<WorldCell>
         return relations(worldCell -> worldCell.cellGraph().relations());
     }
 
-    public RelationSet relationsIntersecting(final Rectangle bounds, final Matcher<EdgeRelation> matcher)
+    public RelationSet relationsIntersecting(Rectangle bounds, Matcher<EdgeRelation> matcher)
     {
         return relations(worldCell -> worldCell.cellGraph().relationsIntersecting(bounds));
     }
@@ -213,7 +207,7 @@ public class WorldCellList extends ArrayList<WorldCell>
     public WorldCell smallest()
     {
         WorldCell smallest = null;
-        for (final var worldCell : this)
+        for (var worldCell : this)
         {
             if (smallest == null || worldCell.fileSize().isSmallerThan(smallest.fileSize()))
             {
@@ -225,7 +219,7 @@ public class WorldCellList extends ArrayList<WorldCell>
 
     public WorldCellList sortedDescendingByPbfSize()
     {
-        final var list = new WorldCellList();
+        var list = new WorldCellList();
         list.addAll(this);
         list.sort(Comparator.comparing(cell -> cell.pbfFile().sizeInBytes()));
         Collections.reverse(list);
@@ -242,25 +236,25 @@ public class WorldCellList extends ArrayList<WorldCell>
         return vertexes(worldCell -> worldCell.cellGraph().vertexes());
     }
 
-    public VertexSequence vertexesInside(final Rectangle bounds)
+    public VertexSequence vertexesInside(Rectangle bounds)
     {
         return vertexes(worldCell -> worldCell.cellGraph().vertexesInside(bounds));
     }
 
-    public VertexSequence vertexesInside(final Rectangle bounds, final Matcher<Vertex> matcher)
+    public VertexSequence vertexesInside(Rectangle bounds, Matcher<Vertex> matcher)
     {
         return vertexes(worldCell -> worldCell.cellGraph().vertexesInside(bounds, matcher));
     }
 
-    public VertexSequence vertexesNearest(final Location location, final Distance maximum,
-                                          final RoadFunctionalClass functionalClass)
+    public VertexSequence vertexesNearest(Location location, Distance maximum,
+                                          RoadFunctionalClass functionalClass)
     {
         return vertexes(worldCell ->
         {
-            final var graph = worldCell.cellGraph();
+            var graph = worldCell.cellGraph();
             if (graph != null)
             {
-                final var vertex = graph.vertexNearest(location, maximum, functionalClass);
+                var vertex = graph.vertexNearest(location, maximum, functionalClass);
                 if (vertex != null)
                 {
                     return new VertexSequence(Collections.singletonList(vertex));
@@ -270,10 +264,10 @@ public class WorldCellList extends ArrayList<WorldCell>
         });
     }
 
-    private Count count(final Function<Graph, Count> function)
+    private Count count(Function<Graph, Count> function)
     {
-        final var count = new MutableCount();
-        for (final var graph : cellGraphs())
+        var count = new MutableCount();
+        for (var graph : cellGraphs())
         {
             count.plus(function.apply(graph));
         }
@@ -281,7 +275,7 @@ public class WorldCellList extends ArrayList<WorldCell>
     }
 
     @SuppressWarnings("Convert2Diamond")
-    private EdgeSequence edges(final Function<WorldCell, EdgeSequence> sequence)
+    private EdgeSequence edges(Function<WorldCell, EdgeSequence> sequence)
     {
         return new EdgeSequence(Iterables.iterable(() -> new Next<Edge>()
         {
@@ -311,7 +305,7 @@ public class WorldCellList extends ArrayList<WorldCell>
         }));
     }
 
-    private RelationSet relations(final Function<WorldCell, Iterable<EdgeRelation>> sequence)
+    private RelationSet relations(Function<WorldCell, Iterable<EdgeRelation>> sequence)
     {
         return RelationSet.forIterable(GraphLimits.Limit.RELATIONS, Iterables.iterable(() -> new Next<>()
         {
@@ -338,13 +332,13 @@ public class WorldCellList extends ArrayList<WorldCell>
                 }
 
                 // Get the relation
-                final var relation = relationIterator.next();
+                var relation = relationIterator.next();
 
                 // and if it's a turn restriction
                 if (relation.isTurnRestriction())
                 {
                     // with a via node location that is not in this cell
-                    final var viaNodeLocation = relation.viaNodeLocation();
+                    var viaNodeLocation = relation.viaNodeLocation();
                     if (viaNodeLocation != null && !viaNodeLocation.isOrigin()
                             && !worldCell.contains(viaNodeLocation))
                     {
@@ -359,7 +353,7 @@ public class WorldCellList extends ArrayList<WorldCell>
         }));
     }
 
-    private VertexSequence vertexes(final Function<WorldCell, VertexSequence> sequenceForCell)
+    private VertexSequence vertexes(Function<WorldCell, VertexSequence> sequenceForCell)
     {
         return new VertexSequence(Iterables.iterable(() -> new Next<>()
         {

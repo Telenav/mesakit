@@ -109,8 +109,8 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
 
     private static final long CHUNK_NUMBER_INCREMENT = MAXIMUM_CHUNK_NUMBER + 1;
 
-    public static SwitchParser.Builder<EdgeIdentifier> edgeIdentifierSwitchParser(final String name,
-                                                                                  final String description)
+    public static SwitchParser.Builder<EdgeIdentifier> edgeIdentifierSwitchParser(String name,
+                                                                                  String description)
     {
         return SwitchParser.builder(EdgeIdentifier.class)
                 .name(name)
@@ -122,7 +122,7 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
      * @return The way identifier for the given element identifier. This is obtained by shifting the element identifier
      * six decimal places to the right, removing the sequence number that was added to the way identifier.
      */
-    public static long identifierToWayIdentifier(final long elementIdentifier)
+    public static long identifierToWayIdentifier(long elementIdentifier)
     {
         return Math.abs(elementIdentifier) / SEQUENCE_NUMBER_SHIFT;
     }
@@ -145,7 +145,7 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
         // The edge identifier output will be dynamic decided based on graph
         CORRECTION_IDENTIFIER;
 
-        public static Type forString(final String value)
+        public static Type forString(String value)
         {
             if (value.contains(":"))
             {
@@ -160,7 +160,7 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
 
     public static class Converter extends Quantizable.Converter<EdgeIdentifier>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener, EdgeIdentifier::new);
         }
@@ -173,13 +173,13 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
      */
     public static class ToWayIdentifierConverter extends BaseConverter<EdgeIdentifier, PbfWayIdentifier>
     {
-        public ToWayIdentifierConverter(final Listener listener)
+        public ToWayIdentifierConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected PbfWayIdentifier onConvert(final EdgeIdentifier value)
+        protected PbfWayIdentifier onConvert(EdgeIdentifier value)
         {
             return value.asWayIdentifier();
         }
@@ -188,7 +188,7 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
     /**
      * Construct from identifier
      */
-    public EdgeIdentifier(final long identifier)
+    public EdgeIdentifier(long identifier)
     {
         super(identifier);
     }
@@ -198,7 +198,7 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
      */
     public MapWayIdentifier asDirectionalWayIdentifier()
     {
-        final var wayIdentifier = new PbfWayIdentifier(Math.abs(asLong()) / SEQUENCE_NUMBER_SHIFT);
+        var wayIdentifier = new PbfWayIdentifier(Math.abs(asLong()) / SEQUENCE_NUMBER_SHIFT);
         if (isReverse())
         {
             return wayIdentifier.reversed();
@@ -224,7 +224,7 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
      */
     public PbfWayIdentifier asWayIdentifier()
     {
-        final var wayIdentifier = identifierToWayIdentifier(asLong());
+        var wayIdentifier = identifierToWayIdentifier(asLong());
         assert wayIdentifier > 0 : "Cannot derive way identifier derived from identifier " + this;
         return new PbfWayIdentifier(wayIdentifier);
     }
@@ -235,7 +235,7 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
      * @return The graph element from the given graph for this identifier
      */
     @Override
-    public GraphElement element(final Graph graph)
+    public GraphElement element(Graph graph)
     {
         return graph.edgeForIdentifier(this);
     }
@@ -312,7 +312,7 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
      * @return This number with the given sequence number. For example, identifier 12340003 with sequence number 7
      * becomes 12340007
      */
-    public EdgeIdentifier withSequenceNumber(final int sequenceNumber)
+    public EdgeIdentifier withSequenceNumber(int sequenceNumber)
     {
         assert sequenceNumber < MAXIMUM_SEQUENCE_NUMBER : "Invalid sequence number " + sequenceNumber;
         return new EdgeIdentifier((asLong() / SEQUENCE_NUMBER_SHIFT * SEQUENCE_NUMBER_SHIFT) + sequenceNumber);

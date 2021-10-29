@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.world.grid;
 
-import com.telenav.mesakit.map.utilities.grid.GridCell;
 import com.telenav.mesakit.graph.world.WorldGraph;
 import com.telenav.mesakit.graph.world.repository.WorldGraphReference;
+import com.telenav.mesakit.map.utilities.grid.GridCell;
 
 /**
  * A source of a {@link WorldCell} given a {@link WorldGraphReference} and a {@link GridCell}. This is essentially a
@@ -41,7 +41,7 @@ public class WorldCellReference
     /** The grid cell within the world graph */
     private final GridCell gridCell;
 
-    public WorldCellReference(final WorldGraphReference graph, final GridCell gridCell)
+    public WorldCellReference(WorldGraphReference graph, GridCell gridCell)
     {
         this.graph = graph;
         this.gridCell = gridCell;
@@ -52,6 +52,6 @@ public class WorldCellReference
      */
     public WorldCell worldCell()
     {
-        return this.graph.get().worldGrid().worldCell(this.gridCell);
+        return graph.get().worldGrid().worldCell(gridCell);
     }
 }

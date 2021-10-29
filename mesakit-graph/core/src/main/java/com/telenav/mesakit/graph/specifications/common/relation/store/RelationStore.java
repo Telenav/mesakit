@@ -122,21 +122,21 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
     @KivaKitArchivedField
     private SplitLongArray viaNodeLocation;
 
-    public RelationStore(final Graph graph)
+    public RelationStore(Graph graph)
     {
         super(graph);
     }
 
-    public Count add(final Iterable<? extends EdgeRelation> relations, final GraphConstraints constraints)
+    public Count add(Iterable<? extends EdgeRelation> relations, GraphConstraints constraints)
     {
         var count = 0;
 
-        final var adder = adder();
-        for (final EdgeRelation relation : relations)
+        var adder = adder();
+        for (EdgeRelation relation : relations)
         {
             if (constraints.includes(relation))
             {
-                final var route = relation.asRoute();
+                var route = relation.asRoute();
                 if (route != null)
                 {
                     adder.add(relation);
@@ -148,7 +148,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
         return Count.count(count);
     }
 
-    public boolean contains(final MapRelationIdentifier identifier)
+    public boolean contains(MapRelationIdentifier identifier)
     {
         MAP_IDENTIFIER.load();
         return mapIdentifierToIdentifier.containsKey(identifier.asLong());
@@ -169,10 +169,10 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
         return "relation-store";
     }
 
-    public EdgeRelation relationForIdentifier(final MapRelationIdentifier identifier)
+    public EdgeRelation relationForIdentifier(MapRelationIdentifier identifier)
     {
         MAP_IDENTIFIER.load();
-        final var relationIdentifier = mapIdentifierToIdentifier.get(identifier.asLong());
+        var relationIdentifier = mapIdentifierToIdentifier.get(identifier.asLong());
         if (!mapIdentifierToIdentifier.isNull(relationIdentifier))
         {
             return dataSpecification().newRelation(graph(), relationIdentifier);
@@ -180,25 +180,25 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
         return null;
     }
 
-    public List<EdgeRelationMember> retrieveMembers(final EdgeRelation relation)
+    public List<EdgeRelationMember> retrieveMembers(EdgeRelation relation)
     {
         MEMBER_ROLES.load();
         MEMBER_IDENTIFIERS.load();
-        final var identifiers = memberIdentifiers.get(relation.index());
-        final var roles = roles(relation.index());
+        var identifiers = memberIdentifiers.get(relation.index());
+        var roles = roles(relation.index());
         if (identifiers != null && roles != null)
         {
             if (identifiers.size() != roles.size())
             {
                 DEBUG.warning("Relation $ has $ identifiers but $ roles", relation, identifiers.size(), roles.size());
             }
-            final List<EdgeRelationMember> members = new ArrayList<>();
+            List<EdgeRelationMember> members = new ArrayList<>();
             for (var index = 0; index < identifiers.size(); index++)
             {
-                final var identifier = PbfIdentifierType.forIdentifierAndType(identifiers.get(index));
+                var identifier = PbfIdentifierType.forIdentifierAndType(identifiers.get(index));
                 if (identifier instanceof MapNodeIdentifier || identifier instanceof MapWayIdentifier)
                 {
-                    final long code = roles.get(index);
+                    long code = roles.get(index);
                     members.add(new EdgeRelationMember(relation, identifier, EdgeRelationMemberRole.of((int) code).name()));
                 }
             }
@@ -218,12 +218,12 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
         return Collections.emptyList();
     }
 
-    public EdgeRelation.Type retrieveType(final EdgeRelation relation)
+    public EdgeRelation.Type retrieveType(EdgeRelation relation)
     {
         return TYPE.retrieveObject(relation, value -> EdgeRelation.Type.forIdentifier((int) value));
     }
 
-    public Location retrieveViaNodeLocation(final EdgeRelation relation)
+    public Location retrieveViaNodeLocation(EdgeRelation relation)
     {
         return VIA_NODE_LOCATION.retrieveObject(relation, Location::dm7);
     }
@@ -231,7 +231,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
     /**
      * Stores all of the simple attributes of the given relation at the given edge index
      */
-    public void storeAttributes(final EdgeRelation relation)
+    public void storeAttributes(EdgeRelation relation)
     {
         super.storeAttributes(relation);
 
@@ -239,11 +239,11 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
         storeViaNodeLocation(relation);
     }
 
-    public void storeViaNodeLocation(final EdgeRelation relation)
+    public void storeViaNodeLocation(EdgeRelation relation)
     {
         VIA_NODE_LOCATION.allocate();
 
-        final var via = relation.memberInRole("via");
+        var via = relation.memberInRole("via");
         if (via != null)
         {
             Location location = null;
@@ -253,7 +253,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
             }
             else
             {
-                final var firstEdge = via.firstEdge();
+                var firstEdge = via.firstEdge();
                 if (firstEdge != null)
                 {
                     location = firstEdge.toLocation();
@@ -267,11 +267,11 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
     }
 
     @Override
-    public Validator validator(final ValidationType validation)
+    public Validator validator(ValidationType validation)
     {
-        final var outer = this;
+        var outer = this;
 
-        final var validator = validation == VALIDATE_ALL;
+        var validator = validation == VALIDATE_ALL;
 
         return !validator ? Validator.NULL : new StoreValidator()
         {
@@ -303,10 +303,10 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
     }
 
     @Override
-    protected synchronized void onAdd(final EdgeRelation relation)
+    protected synchronized void onAdd(EdgeRelation relation)
     {
         // Classify the relation using tags and members
-        final var type = relation.classify();
+        var type = relation.classify();
 
         // and if it's a grade separation,
         if (type == EdgeRelation.Type.GRADE_SEPARATION)
@@ -317,14 +317,14 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
         else
         {
             // Get the relation identifier
-            final var identifier = relation.identifierAsLong();
+            var identifier = relation.identifierAsLong();
 
             // and if we haven't already stored a relation with this identifier
             // (some erroneous PBF input files may contain duplicate relations)
             if (!containsIdentifier(identifier))
             {
                 // assign an index to the relation identifier,
-                final var index = identifierToIndex(identifier, IndexingMode.CREATE);
+                var index = identifierToIndex(identifier, IndexingMode.CREATE);
                 relation.index(index);
 
                 // call the superclass,
@@ -346,7 +346,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
 
                 if (DEBUG.isDebugOn())
                 {
-                    final var retrieved = dataSpecification().newRelation(graph(), identifier);
+                    var retrieved = dataSpecification().newRelation(graph(), identifier);
                     assert retrieved.validator(VALIDATE_ALL).validate(LOGGER);
                     assert relation.equals(retrieved);
                 }
@@ -363,10 +363,10 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
      * @param vertex The vertex to grade-separate
      * @param grade The grade of the vertexes and the edges in the given route
      */
-    private void gradeSeparate(final Vertex vertex, final GradeSeparation grade, final EdgeSet edgesAtGrade)
+    private void gradeSeparate(Vertex vertex, GradeSeparation grade, EdgeSet edgesAtGrade)
     {
         // Get the edges connected to the vertex that at the given grade
-        final var edges = vertex.edges().intersection(edgesAtGrade);
+        var edges = vertex.edges().intersection(edgesAtGrade);
 
         // then grade separate the vertex and its edges
         vertexStore().gradeSeparate(vertex, grade, edges);
@@ -378,24 +378,24 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
      *
      * @param relation The relation of edges which need to be grade separated
      */
-    private void gradeSeparate(final EdgeRelation relation)
+    private void gradeSeparate(EdgeRelation relation)
     {
         // Go through the relation's members
-        final var edgesAtGrade = new HashMap<GradeSeparation, EdgeSet>();
-        for (final var member : relation.members())
+        var edgesAtGrade = new HashMap<GradeSeparation, EdgeSet>();
+        for (var member : relation.members())
         {
             // get the member's grade level
-            final var level = Ints.parse(member.role());
+            var level = Ints.parse(member.role());
             if (level != Ints.INVALID)
             {
                 // and add to the set of edges at that level
-                final var route = member.route();
+                var route = member.route();
                 if (route != null)
                 {
-                    final var grade = GradeSeparation.of(level);
-                    final var existing = edgesAtGrade.computeIfAbsent(grade, ignored -> new EdgeSet());
+                    var grade = GradeSeparation.of(level);
+                    var existing = edgesAtGrade.computeIfAbsent(grade, ignored -> new EdgeSet());
                     existing.add(route);
-                    for (final var edge : route)
+                    for (var edge : route)
                     {
                         existing.add(edge.forward());
                     }
@@ -409,13 +409,13 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
         }
 
         // Go through each grade
-        for (final var grade : edgesAtGrade.keySet())
+        for (var grade : edgesAtGrade.keySet())
         {
             // get the edges at that grade
-            final var edges = edgesAtGrade.get(grade);
+            var edges = edgesAtGrade.get(grade);
 
             // and if there is a shared vertex,
-            final var vertex = edges.sharedVertex();
+            var vertex = edges.sharedVertex();
             if (vertex != null)
             {
                 // grade-separate the vertex
@@ -429,37 +429,37 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
         }
     }
 
-    private LongArray roles(final int index)
+    private LongArray roles(int index)
     {
         MEMBER_ROLES.load();
         return memberRoles.get(index);
     }
 
-    private void storeMembers(final EdgeRelation relation)
+    private void storeMembers(EdgeRelation relation)
     {
         MEMBER_ROLES.allocate();
         MEMBER_IDENTIFIERS.allocate();
 
         // If we have relation members
-        final var members = relation.members();
+        var members = relation.members();
         if (members != null && !members.isEmpty())
         {
             // go through each member and store their roles and identifiers
-            final var identifiers = new LongArray(objectName() + ".identifiers");
+            var identifiers = new LongArray(objectName() + ".identifiers");
             identifiers.initialSize(Estimated.MEMBERS_PER_RELATION);
             identifiers.initialize();
 
-            final var roles = new LongArray(objectName() + ".roles");
+            var roles = new LongArray(objectName() + ".roles");
             roles.nullLong(31);
             roles.initialSize(Estimated.MEMBERS_PER_RELATION);
             roles.initialize();
 
-            for (final var member : members)
+            for (var member : members)
             {
                 if (member != null)
                 {
                     identifiers.add(((PbfIdentifierType) member.identifier()).withType().asLong());
-                    final var role = EdgeRelationMemberRole.of(member.role());
+                    var role = EdgeRelationMemberRole.of(member.role());
                     roles.add(role == null ? EdgeRelationMemberRole.EMPTY.code() : (byte) role.code());
                 }
             }

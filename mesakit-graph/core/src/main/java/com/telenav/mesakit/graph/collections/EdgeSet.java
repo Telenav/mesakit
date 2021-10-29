@@ -86,7 +86,7 @@ public class EdgeSet implements Set<Edge>, AsString
      * @return An edge set for a collection of edges
      */
     @SuppressWarnings("unchecked")
-    public static EdgeSet forCollection(final Maximum maximumSize, final Collection<? extends Edge> collection)
+    public static EdgeSet forCollection(Maximum maximumSize, Collection<? extends Edge> collection)
     {
         if (collection instanceof Set)
         {
@@ -94,19 +94,19 @@ public class EdgeSet implements Set<Edge>, AsString
         }
         else
         {
-            final var set = new EdgeSet(maximumSize, Estimate.estimate(collection));
+            var set = new EdgeSet(maximumSize, Estimate.estimate(collection));
             set.addAll(collection);
             return set;
         }
     }
 
-    public static EdgeSet forIdentifierArray(final Graph graph, final LongArray identifiers)
+    public static EdgeSet forIdentifierArray(Graph graph, LongArray identifiers)
     {
-        final var edges = new EdgeSet(Limit.EDGES, Estimate._16);
-        final var iterator = identifiers.iterator();
+        var edges = new EdgeSet(Limit.EDGES, Estimate._16);
+        var iterator = identifiers.iterator();
         while (iterator.hasNext())
         {
-            final var identifier = iterator.next();
+            var identifier = iterator.next();
             edges.add(graph.edgeForIdentifier(new EdgeIdentifier(identifier)));
         }
         return edges;
@@ -115,26 +115,26 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * @return An edge set for a sequence of edges
      */
-    public static EdgeSet forIterable(final Estimate estimate, final Iterable<? extends Edge> collection)
+    public static EdgeSet forIterable(Estimate estimate, Iterable<? extends Edge> collection)
     {
-        final var set = new EdgeSet(estimate);
-        for (final Edge edge : collection)
+        var set = new EdgeSet(estimate);
+        for (Edge edge : collection)
         {
             set.add(edge);
         }
         return set;
     }
 
-    public static EdgeSet of(final Edge one)
+    public static EdgeSet of(Edge one)
     {
-        final var set = new EdgeSet();
+        var set = new EdgeSet();
         set.add(one);
         return set;
     }
 
-    public static EdgeSet of(final Edge one, final Edge... more)
+    public static EdgeSet of(Edge one, Edge... more)
     {
-        final var set = new EdgeSet();
+        var set = new EdgeSet();
         set.add(one);
         set.addAll(Arrays.asList(more));
         return set;
@@ -143,12 +143,12 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * @return An edge set containing a single edge
      */
-    public static EdgeSet singleton(final Edge edge)
+    public static EdgeSet singleton(Edge edge)
     {
         return new EdgeSet(Maximum._1, Estimate._1, Collections.singleton(edge));
     }
 
-    public static EdgeSet threadSafe(final Maximum maximumSize, final Estimate initialSize)
+    public static EdgeSet threadSafe(Maximum maximumSize, Estimate initialSize)
     {
         return new EdgeSet(maximumSize, initialSize, Collections.synchronizedSet(new HashSet<>()));
     }
@@ -159,7 +159,7 @@ public class EdgeSet implements Set<Edge>, AsString
 
         private final Separators separators;
 
-        public Converter(final Graph graph, final Separators separators, final Listener listener)
+        public Converter(Graph graph, Separators separators, Listener listener)
         {
             super(listener);
             this.separators = separators;
@@ -167,23 +167,23 @@ public class EdgeSet implements Set<Edge>, AsString
         }
 
         @Override
-        protected EdgeSet onToValue(final String value)
+        protected String onToString(EdgeSet value)
         {
-            final var edges = new EdgeSet(Limit.EDGES, Estimate._16);
+            return value.joinedIdentifiers(separators.current());
+        }
+
+        @Override
+        protected EdgeSet onToValue(String value)
+        {
+            var edges = new EdgeSet(Limit.EDGES, Estimate._16);
             if (!Strings.isEmpty(value))
             {
-                for (final var edge : value.split(separators.current()))
+                for (var edge : value.split(separators.current()))
                 {
                     edges.add(converter.convert(edge));
                 }
             }
             return edges;
-        }
-
-        @Override
-        protected String onToString(final EdgeSet value)
-        {
-            return value.joinedIdentifiers(separators.current());
         }
     }
 
@@ -207,22 +207,22 @@ public class EdgeSet implements Set<Edge>, AsString
         this(Estimate._16);
     }
 
-    public EdgeSet(final Set<Edge> edges)
+    public EdgeSet(Set<Edge> edges)
     {
         this(Maximum.MAXIMUM, Estimate._16, edges);
     }
 
-    public EdgeSet(final Estimate initialSize)
+    public EdgeSet(Estimate initialSize)
     {
         this(Maximum.MAXIMUM, initialSize);
     }
 
-    public EdgeSet(final Maximum maximumSize, final Estimate initialSize)
+    public EdgeSet(Maximum maximumSize, Estimate initialSize)
     {
         this(maximumSize, initialSize, new HashSet<>());
     }
 
-    public EdgeSet(final Maximum maximumSize, final Estimate initialSize, final Set<Edge> edges)
+    public EdgeSet(Maximum maximumSize, Estimate initialSize, Set<Edge> edges)
     {
         this.maximumSize = maximumSize;
         this.initialSize = initialSize;
@@ -233,7 +233,7 @@ public class EdgeSet implements Set<Edge>, AsString
      * Adds the given edge to this set
      */
     @Override
-    public boolean add(final Edge edge)
+    public boolean add(Edge edge)
     {
         if (edges.size() == maximumSize.asInt())
         {
@@ -246,11 +246,11 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * Adds each edge in the given route to this set
      */
-    public void add(final Route route)
+    public void add(Route route)
     {
         if (route != null)
         {
-            for (final var edge : route)
+            for (var edge : route)
             {
                 add(edge);
             }
@@ -261,10 +261,10 @@ public class EdgeSet implements Set<Edge>, AsString
      * Adds all edges in the given collection to this edge set
      */
     @Override
-    public boolean addAll(final Collection<? extends Edge> edges)
+    public boolean addAll(Collection<? extends Edge> edges)
     {
         var changed = false;
-        for (final Edge edge : edges)
+        for (Edge edge : edges)
         {
             changed = add(edge) || changed;
         }
@@ -274,9 +274,9 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * Adds all edges in the given array to this edge set
      */
-    public void addAll(final Edge[] edges)
+    public void addAll(Edge[] edges)
     {
-        for (final var edge : edges)
+        for (var edge : edges)
         {
             add(edge);
         }
@@ -287,8 +287,8 @@ public class EdgeSet implements Set<Edge>, AsString
      */
     public LongArray asIdentifierArray()
     {
-        final var identifiers = new LongArray("temporary");
-        for (final var edge : edges)
+        var identifiers = new LongArray("temporary");
+        for (var edge : edges)
         {
             identifiers.add(edge.identifierAsLong());
         }
@@ -307,8 +307,8 @@ public class EdgeSet implements Set<Edge>, AsString
 
     public RouteList asRouteList()
     {
-        final var routes = new RouteList();
-        for (final var edge : this)
+        var routes = new RouteList();
+        for (var edge : this)
         {
             routes.add(Route.fromEdge(edge));
         }
@@ -333,20 +333,20 @@ public class EdgeSet implements Set<Edge>, AsString
 
     public List<Edge> asSortedList()
     {
-        final var sorted = asList();
+        var sorted = asList();
         sorted.sort(Comparator.comparing(Edge::identifier));
         return sorted;
     }
 
     @Override
-    public String asString(final StringFormat format)
+    public String asString(StringFormat format)
     {
         switch (format.identifier())
         {
             case "USER_LABEL":
             {
-                final var details = new StringList();
-                for (final var edge : this)
+                var details = new StringList();
+                for (var edge : this)
                 {
                     details.add("e${long}", edge.isForward() ? edge.index() : -edge.index());
                 }
@@ -362,7 +362,7 @@ public class EdgeSet implements Set<Edge>, AsString
     {
         if (!isEmpty())
         {
-            final var routes = asRoutes();
+            var routes = asRoutes();
             if (routes.size() == 1)
             {
                 return routes.get(0).asWay();
@@ -387,10 +387,10 @@ public class EdgeSet implements Set<Edge>, AsString
     {
         Edge center = null;
         Distance closest = null;
-        for (final var edge : this)
+        for (var edge : this)
         {
-            final var edgeCenter = edge.bounds().center();
-            final var edgeDistance = edgeCenter.distanceTo(bounds().center());
+            var edgeCenter = edge.bounds().center();
+            var edgeDistance = edgeCenter.distanceTo(bounds().center());
             if (center == null || edgeDistance.isLessThan(closest))
             {
                 center = edge;
@@ -413,7 +413,7 @@ public class EdgeSet implements Set<Edge>, AsString
      * {@inheritDoc}
      */
     @Override
-    public boolean contains(final Object value)
+    public boolean contains(Object value)
     {
         if (value instanceof Edge)
         {
@@ -426,9 +426,9 @@ public class EdgeSet implements Set<Edge>, AsString
      * {@inheritDoc}
      */
     @Override
-    public boolean containsAll(final Collection<?> edges)
+    public boolean containsAll(Collection<?> edges)
     {
-        for (final Object object : edges)
+        for (Object object : edges)
         {
             if (!contains(object))
             {
@@ -441,9 +441,9 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * @return True if this set contains any edge in the given collection
      */
-    public boolean containsAny(final Collection<Edge> edges)
+    public boolean containsAny(Collection<Edge> edges)
     {
-        for (final var edge : edges)
+        for (var edge : edges)
         {
             if (contains(edge))
             {
@@ -464,17 +464,17 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * @return The differences that would turn this edge set into that edge set
      */
-    public Differences differences(final EdgeSet that)
+    public Differences differences(EdgeSet that)
     {
-        final var differences = new Differences();
-        for (final var edge : this)
+        var differences = new Differences();
+        for (var edge : this)
         {
             if (!that.contains(edge))
             {
                 differences.add("-" + edge);
             }
         }
-        for (final var edge : that)
+        for (var edge : that)
         {
             if (!contains(edge))
             {
@@ -511,11 +511,11 @@ public class EdgeSet implements Set<Edge>, AsString
      * {@inheritDoc}
      */
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof EdgeSet)
         {
-            final var that = (EdgeSet) object;
+            var that = (EdgeSet) object;
             return edges.equals(that.edges);
         }
         return false;
@@ -538,7 +538,7 @@ public class EdgeSet implements Set<Edge>, AsString
      *
      * @return boolean
      */
-    public boolean hasMatch(final Matcher<Edge> matcher)
+    public boolean hasMatch(Matcher<Edge> matcher)
     {
         return !logicalSetMatching(matcher).isEmpty();
     }
@@ -548,7 +548,7 @@ public class EdgeSet implements Set<Edge>, AsString
      */
     public boolean hasOneWay()
     {
-        for (final var edge : this)
+        for (var edge : this)
         {
             if (edge.isOneWay())
             {
@@ -563,7 +563,7 @@ public class EdgeSet implements Set<Edge>, AsString
      */
     public boolean hasTwoWay()
     {
-        for (final var edge : this)
+        for (var edge : this)
         {
             if (edge.isTwoWay())
             {
@@ -585,7 +585,7 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * @return The set of edges in this set that are in edges to the given vertex
      */
-    public EdgeSet inEdges(final Vertex vertex)
+    public EdgeSet inEdges(Vertex vertex)
     {
         return matching(edge -> edge.to().equals(vertex));
     }
@@ -598,7 +598,7 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * @return The set of all edges in this set that are also in the given set
      */
-    public EdgeSet intersection(final EdgeSet that)
+    public EdgeSet intersection(EdgeSet that)
     {
         return logicalSet(new Intersection<>(this, that));
     }
@@ -617,7 +617,7 @@ public class EdgeSet implements Set<Edge>, AsString
      */
     public boolean isOneWay()
     {
-        for (final var edge : this)
+        for (var edge : this)
         {
             if (!edge.isOneWay())
             {
@@ -632,7 +632,7 @@ public class EdgeSet implements Set<Edge>, AsString
      */
     public boolean isTwoWay()
     {
-        for (final var edge : this)
+        for (var edge : this)
         {
             if (!edge.isTwoWay())
             {
@@ -655,12 +655,12 @@ public class EdgeSet implements Set<Edge>, AsString
      * @return All the edge identifiers in this edge set joined into a string using the given separator. The order of
      * identifiers is undefined.
      */
-    public String joinedIdentifiers(final String separator)
+    public String joinedIdentifiers(String separator)
     {
         return Join.join(this, separator, new BaseConverter<>(new ThrowingListener())
         {
             @Override
-            protected String onConvert(final Edge value)
+            protected String onConvert(Edge value)
             {
                 return value.identifier().toString();
             }
@@ -673,7 +673,7 @@ public class EdgeSet implements Set<Edge>, AsString
     public Distance length()
     {
         var totalLengthInMillimeters = 0L;
-        for (final var edge : this)
+        for (var edge : this)
         {
             totalLengthInMillimeters += edge.length().asMillimeters();
         }
@@ -683,7 +683,7 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * @return An edge set of the {@link LogicalSet} of all matching edges
      */
-    public EdgeSet logicalSetMatching(final Matcher<Edge> matcher)
+    public EdgeSet logicalSetMatching(Matcher<Edge> matcher)
     {
         return logicalSet(new Subset<>(this, matcher));
     }
@@ -691,10 +691,10 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * @return The set of edges matching the given matcher
      */
-    public EdgeSet matching(final Matcher<Edge> matcher)
+    public EdgeSet matching(Matcher<Edge> matcher)
     {
-        final var matching = new EdgeSet();
-        for (final var edge : this)
+        var matching = new EdgeSet();
+        for (var edge : this)
         {
             if (matcher.matches(edge))
             {
@@ -718,7 +718,7 @@ public class EdgeSet implements Set<Edge>, AsString
     public Edge mostImportant()
     {
         Edge important = null;
-        for (final var edge : this)
+        for (var edge : this)
         {
             if (important == null || edge.isMoreImportantThan(important))
             {
@@ -739,7 +739,7 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * @return The set of all one way edges in this set that lead to the given vertex
      */
-    public EdgeSet oneWayInEdges(final Vertex vertex)
+    public EdgeSet oneWayInEdges(Vertex vertex)
     {
         return matching(edge -> !edge.isTwoWay() && edge.to().equals(vertex));
     }
@@ -747,7 +747,7 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * @return The set of all one way edges in this set that depart from the given vertex
      */
-    public EdgeSet oneWayOutEdges(final Vertex vertex)
+    public EdgeSet oneWayOutEdges(Vertex vertex)
     {
         return matching(edge -> !edge.isTwoWay() && edge.from().equals(vertex));
     }
@@ -755,7 +755,7 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * @return The set of all edges in this set that depart from the given vertex
      */
-    public EdgeSet outEdges(final Vertex vertex)
+    public EdgeSet outEdges(Vertex vertex)
     {
         return matching(edge -> edge.from().equals(vertex));
     }
@@ -764,7 +764,7 @@ public class EdgeSet implements Set<Edge>, AsString
      * @return The edge in this set (most) parallel to the given edge (but never the given edge itself) or null if none
      * are considered parallel
      */
-    public Edge parallelTo(final Edge that)
+    public Edge parallelTo(Edge that)
     {
         return parallelTo(that, Edge.PARALLEL_TOLERANCE);
     }
@@ -773,16 +773,16 @@ public class EdgeSet implements Set<Edge>, AsString
      * @return The edge in this set most parallel to the given edge (but never the given edge itself) or null if none
      * are considered parallel
      */
-    public Edge parallelTo(final Edge that, final Angle tolerance)
+    public Edge parallelTo(Edge that, Angle tolerance)
     {
         Edge parallel = null;
         var angle = Angle.MAXIMUM;
-        for (final var edge : this)
+        for (var edge : this)
         {
             if (!edge.equals(that))
             {
-                final var pair = new EdgePair(edge, that);
-                final var difference = pair.smallestAngleBetween();
+                var pair = new EdgePair(edge, that);
+                var difference = pair.smallestAngleBetween();
                 if (difference.isLessThan(tolerance) && difference.isLessThan(angle))
                 {
                     parallel = edge;
@@ -797,7 +797,7 @@ public class EdgeSet implements Set<Edge>, AsString
      * {@inheritDoc}
      */
     @Override
-    public boolean remove(final Object object)
+    public boolean remove(Object object)
     {
         if (object instanceof Edge)
         {
@@ -810,9 +810,9 @@ public class EdgeSet implements Set<Edge>, AsString
      * {@inheritDoc}
      */
     @Override
-    public boolean removeAll(final Collection<?> edges)
+    public boolean removeAll(Collection<?> edges)
     {
-        for (final Object edge : edges)
+        for (Object edge : edges)
         {
             remove(edge);
         }
@@ -824,7 +824,7 @@ public class EdgeSet implements Set<Edge>, AsString
      */
     @SuppressWarnings("NullableProblems")
     @Override
-    public boolean retainAll(final Collection<?> edges)
+    public boolean retainAll(Collection<?> edges)
     {
         return unsupported();
     }
@@ -834,10 +834,10 @@ public class EdgeSet implements Set<Edge>, AsString
      */
     public EdgeSet reversed()
     {
-        final var set = new EdgeSet(maximumSize(), initialSize());
-        for (final var edge : this)
+        var set = new EdgeSet(maximumSize(), initialSize());
+        for (var edge : this)
         {
-            final var reversed = edge.reversed();
+            var reversed = edge.reversed();
             if (reversed != null)
             {
                 set.add(reversed);
@@ -848,8 +848,8 @@ public class EdgeSet implements Set<Edge>, AsString
 
     public Vertex sharedVertex()
     {
-        final var vertexes = new VertexSet();
-        for (final var edge : this)
+        var vertexes = new VertexSet();
+        for (var edge : this)
         {
             if (vertexes.contains(edge.from()))
             {
@@ -893,7 +893,7 @@ public class EdgeSet implements Set<Edge>, AsString
      * {@inheritDoc}
      */
     @Override
-    public <T> T[] toArray(final T[] a)
+    public <T> T[] toArray(T[] a)
     {
         return unsupported();
     }
@@ -918,7 +918,7 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * @return The union of this edge set with another set of edges
      */
-    public EdgeSet union(final EdgeSet edges)
+    public EdgeSet union(EdgeSet edges)
     {
         return logicalSet(new Union<>(this, edges));
     }
@@ -928,8 +928,8 @@ public class EdgeSet implements Set<Edge>, AsString
      */
     public VertexSet vertexes()
     {
-        final var vertexes = new VertexSet(Maximum.maximum(size() * 2L));
-        for (final var edge : this)
+        var vertexes = new VertexSet(Maximum.maximum(size() * 2L));
+        for (var edge : this)
         {
             vertexes.add(edge.from());
             vertexes.add(edge.to());
@@ -939,8 +939,8 @@ public class EdgeSet implements Set<Edge>, AsString
 
     public Set<PbfWayIdentifier> wayIdentifiers()
     {
-        final Set<PbfWayIdentifier> identifiers = new HashSet<>();
-        for (final var edge : this)
+        Set<PbfWayIdentifier> identifiers = new HashSet<>();
+        for (var edge : this)
         {
             identifiers.add(edge.wayIdentifier());
         }
@@ -950,11 +950,11 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * @return The set of edges with the given road name
      */
-    public EdgeSet withRoadName(final RoadName name)
+    public EdgeSet withRoadName(RoadName name)
     {
         return logicalSetMatching(edge ->
         {
-            final var edgeName = edge.roadName();
+            var edgeName = edge.roadName();
             return edgeName != null && edgeName.equals(name);
         });
     }
@@ -962,7 +962,7 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * @return The set of edges within the given bounds
      */
-    public EdgeSet within(final Rectangle bounds)
+    public EdgeSet within(Rectangle bounds)
     {
         return logicalSetMatching(Edge.within(bounds));
     }
@@ -970,7 +970,7 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * @return This set of edges without the given edge
      */
-    public EdgeSet without(final Edge exclude)
+    public EdgeSet without(Edge exclude)
     {
         return without(Collections.singleton(exclude));
     }
@@ -978,7 +978,7 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * @return The set of all edges that don't match
      */
-    public EdgeSet without(final Matcher<Edge> matcher)
+    public EdgeSet without(Matcher<Edge> matcher)
     {
         return logicalSet(new Subset<>(this, edge -> !matcher.matches(edge)));
     }
@@ -986,12 +986,12 @@ public class EdgeSet implements Set<Edge>, AsString
     /**
      * @return This set of edges without the given set of edges
      */
-    public EdgeSet without(final Set<Edge> exclude)
+    public EdgeSet without(Set<Edge> exclude)
     {
         return logicalSet(new Without<>(this, exclude));
     }
 
-    private EdgeSet logicalSet(final LogicalSet<Edge> set)
+    private EdgeSet logicalSet(LogicalSet<Edge> set)
     {
         return new EdgeSet(maximumSize(), initialSize(), set);
     }

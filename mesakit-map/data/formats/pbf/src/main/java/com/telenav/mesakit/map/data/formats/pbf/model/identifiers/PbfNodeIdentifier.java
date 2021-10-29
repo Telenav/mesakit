@@ -42,7 +42,7 @@ public class PbfNodeIdentifier extends MapNodeIdentifier implements PbfIdentifie
     private static final PbfNodeIdentifier SYNTHETIC_IDENTIFIER_FIRST = new PbfNodeIdentifier(
             99_999_999L * SEQUENCE_NUMBER_BASE);
 
-    public static PbfNodeIdentifier forLong(final long identifier)
+    public static PbfNodeIdentifier forLong(long identifier)
     {
         if (identifier == 0)
         {
@@ -51,7 +51,7 @@ public class PbfNodeIdentifier extends MapNodeIdentifier implements PbfIdentifie
         return new PbfNodeIdentifier(identifier);
     }
 
-    public static boolean isSynthetic(final long identifier)
+    public static boolean isSynthetic(long identifier)
     {
         return SYNTHETIC_IDENTIFIER_FIRST.asLong() == (identifier / SEQUENCE_NUMBER_BASE * SEQUENCE_NUMBER_BASE);
     }
@@ -65,9 +65,9 @@ public class PbfNodeIdentifier extends MapNodeIdentifier implements PbfIdentifie
         return nodeIdentifierFactory.newInstance();
     }
 
-    public static PbfNodeIdentifier parse(final String string)
+    public static PbfNodeIdentifier parse(String string)
     {
-        final var identifier = Longs.parse(Strip.trailing(string, "L"));
+        var identifier = Longs.parse(Strip.trailing(string, "L"));
         if (identifier != Longs.INVALID)
         {
             return new PbfNodeIdentifier(identifier);
@@ -77,13 +77,13 @@ public class PbfNodeIdentifier extends MapNodeIdentifier implements PbfIdentifie
 
     public static class Converter extends BaseStringConverter<PbfNodeIdentifier>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected PbfNodeIdentifier onToValue(final String value)
+        protected PbfNodeIdentifier onToValue(String value)
         {
             return new PbfNodeIdentifier(Long.parseLong(value));
         }
@@ -96,23 +96,23 @@ public class PbfNodeIdentifier extends MapNodeIdentifier implements PbfIdentifie
         @Override
         public synchronized PbfNodeIdentifier newInstance()
         {
-            final var next = this.next;
+            var next = this.next;
             this.next = (PbfNodeIdentifier) next.next();
             return next;
         }
     }
 
-    public PbfNodeIdentifier(final long identifier)
+    public PbfNodeIdentifier(long identifier)
     {
         super(identifier);
     }
 
-    public PbfNodeIdentifier(final PbfNode node)
+    public PbfNodeIdentifier(PbfNode node)
     {
         super(node.identifierAsLong());
     }
 
-    public PbfNodeIdentifier(final WayNode node)
+    public PbfNodeIdentifier(WayNode node)
     {
         super(node.getNodeId());
     }
@@ -129,7 +129,7 @@ public class PbfNodeIdentifier extends MapNodeIdentifier implements PbfIdentifie
     }
 
     @Override
-    public PbfNodeIdentifier newIdentifier(final long identifier)
+    public PbfNodeIdentifier newIdentifier(long identifier)
     {
         return new PbfNodeIdentifier(identifier);
     }

@@ -40,7 +40,7 @@ public class SphericalMercatorMetricProjection implements MetricProjection
     private static final double EARTH_RADIUS_IN_METERS = EARTH_RADIUS_MAJOR.asMeters();
 
     @Override
-    public MetricCoordinate toCoordinate(final Location location)
+    public MetricCoordinate toCoordinate(Location location)
     {
         return new MetricCoordinate(
                 longitudeInDegreesToMeters(location.longitudeInDegrees()),
@@ -48,30 +48,30 @@ public class SphericalMercatorMetricProjection implements MetricProjection
     }
 
     @Override
-    public Location toLocation(final MetricCoordinate coordinate)
+    public Location toLocation(MetricCoordinate coordinate)
     {
         return Location.degrees(
                 metersToLatitudeInDegrees(coordinate.yInMeters()),
                 metersToLongitudeInDegrees(coordinate.xInMeters()));
     }
 
-    private double latitudeInDegreesToMeters(final double latitudeInDegrees)
+    private double latitudeInDegreesToMeters(double latitudeInDegrees)
     {
-        final var latitudeInRadians = toRadians(Latitude.inRange(latitudeInDegrees));
+        var latitudeInRadians = toRadians(Latitude.inRange(latitudeInDegrees));
         return EARTH_RADIUS_IN_METERS * Math.log(Math.tan(Math.PI / 4 + latitudeInRadians / 2));
     }
 
-    private double longitudeInDegreesToMeters(final double longitudeInDegrees)
+    private double longitudeInDegreesToMeters(double longitudeInDegrees)
     {
         return EARTH_RADIUS_IN_METERS * toRadians(Longitude.inRange(longitudeInDegrees));
     }
 
-    private double metersToLatitudeInDegrees(final double yInMeters)
+    private double metersToLatitudeInDegrees(double yInMeters)
     {
         return Latitude.inRange(toDegrees(atan(exp(yInMeters / EARTH_RADIUS_IN_METERS)) * 2 - PI / 2));
     }
 
-    private double metersToLongitudeInDegrees(final double xInMeters)
+    private double metersToLongitudeInDegrees(double xInMeters)
     {
         return Longitude.inRange(toDegrees(xInMeters / EARTH_RADIUS_IN_METERS));
     }

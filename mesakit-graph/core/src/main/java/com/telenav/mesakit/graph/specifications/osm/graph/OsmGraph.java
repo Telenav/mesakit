@@ -36,7 +36,7 @@ import com.telenav.mesakit.map.road.model.RoadSubType;
 
 public final class OsmGraph extends CommonGraph
 {
-    public OsmGraph(final Metadata metadata)
+    public OsmGraph(Metadata metadata)
     {
         super(metadata);
     }
@@ -44,17 +44,17 @@ public final class OsmGraph extends CommonGraph
     /**
      * Forces each edge in this graph to determine and possibly cache its double-digitization status
      */
-    public final void markDoubleDigitizedEdges()
+    public void markDoubleDigitizedEdges()
     {
         if (supports(EdgeAttributes.get().ROAD_NAMES))
         {
             information(AsciiArt.topLine(20, "Marking double-digitized edges"));
-            final var start = Time.now();
-            final var count = new MutableCount();
-            final var progress = isDeaf() ? Progress.NULL : Progress.create(this, "edges");
+            var start = Time.now();
+            var count = new MutableCount();
+            var progress = isDeaf() ? Progress.NULL : Progress.create(this, "edges");
             progress.steps(edgeCount().asMaximum());
             progress.start();
-            for (final var edge : forwardEdges())
+            for (var edge : forwardEdges())
             {
                 if (((OsmEdge) edge).computeDoubleDigitized(Angle.degrees(50)))
                 {
@@ -67,7 +67,7 @@ public final class OsmGraph extends CommonGraph
         }
     }
 
-    public final void markEdges()
+    public void markEdges()
     {
         if (metadata().dataSupplier().isOsm())
         {
@@ -80,25 +80,25 @@ public final class OsmGraph extends CommonGraph
     public void markJunctionEdges()
     {
         information(AsciiArt.topLine(20, "Marking junction edges"));
-        final var junctionEdges = optimizeJunctionEdges(findJunctionEdges());
+        var junctionEdges = optimizeJunctionEdges(findJunctionEdges());
         storeJunctionEdges(junctionEdges);
         information(AsciiArt.bottomLine(20, "Marked $ junction edges", junctionEdges.size()));
     }
 
     public void markRampsAndConnectors()
     {
-        final var ramps = new MutableCount();
+        var ramps = new MutableCount();
         information(AsciiArt.topLine(20, "Marking ramps and connectors"));
-        final var finder = listenTo(new RampFinder(this)
+        var finder = listenTo(new RampFinder(this)
         {
             @Override
-            protected void onRamp(final Edge ramp)
+            protected void onRamp(Edge ramp)
             {
                 // Edge is already a ramp so do nothing
             }
 
             @Override
-            protected void onRampConnector(final Edge edge)
+            protected void onRampConnector(Edge edge)
             {
                 // Make this ramp connector edge a proper ramp
                 edgeStore().storeRoadSubType(edge, RoadSubType.RAMP);
@@ -111,20 +111,20 @@ public final class OsmGraph extends CommonGraph
 
     private EdgeSet findJunctionEdges()
     {
-        final var start = Time.now();
-        final var connectors = new MutableCount();
-        final var junctions = new EdgeSet();
-        final var finder = new JunctionEdgeFinder(edges())
+        var start = Time.now();
+        var connectors = new MutableCount();
+        var junctions = new EdgeSet();
+        var finder = new JunctionEdgeFinder(edges())
         {
             @Override
-            protected void onConnector(final Edge edge)
+            protected void onConnector(Edge edge)
             {
                 edgeStore().storeRoadSubType(edge, RoadSubType.CONNECTING_ROAD);
                 connectors.increment();
             }
 
             @Override
-            protected void onJunction(final Edge edge)
+            protected void onJunction(Edge edge)
             {
                 junctions.add(edge);
             }
@@ -135,17 +135,17 @@ public final class OsmGraph extends CommonGraph
         return junctions;
     }
 
-    private EdgeSet optimizeJunctionEdges(final EdgeSet edges)
+    private EdgeSet optimizeJunctionEdges(EdgeSet edges)
     {
-        final var start = Time.now();
-        final var optimized = new JunctionEdgeOptimizer(edges).optimize();
+        var start = Time.now();
+        var optimized = new JunctionEdgeOptimizer(edges).optimize();
         information("Optimized $ junction edges in $", optimized.size(), start.elapsedSince());
         return optimized;
     }
 
-    private void storeJunctionEdges(final EdgeSet junctions)
+    private void storeJunctionEdges(EdgeSet junctions)
     {
-        for (final var edge : junctions)
+        for (var edge : junctions)
         {
             edgeStore().storeRoadSubType(edge, RoadSubType.INTERSECTION_LINK);
         }

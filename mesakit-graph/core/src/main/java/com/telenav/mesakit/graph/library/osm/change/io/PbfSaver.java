@@ -32,21 +32,21 @@ public class PbfSaver
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public void save(final Graph graph, final File output)
+    public void save(Graph graph, File output)
     {
         if (graph.supportsFullPbfNodeInformation())
         {
-            final var start = Time.now();
-            final var progress = Progress.create(LOGGER);
-            final var nodes = new PbfNodeStore(graph);
-            final var ways = new ModifiedWayStore(nodes);
+            var start = Time.now();
+            var progress = Progress.create(LOGGER);
+            var nodes = new PbfNodeStore(graph);
+            var ways = new ModifiedWayStore(nodes);
             graph.forwardEdges().stream().forEach(edge ->
             {
                 ways.modifiableWay(edge);
                 progress.next();
             });
             LOGGER.information("Saving double digitized edges to " + output);
-            final var writer = new PbfWriter(output, true);
+            var writer = new PbfWriter(output, true);
             ways.saveAll(writer);
             writer.close();
             LOGGER.information("Done in $", start.elapsedSince());

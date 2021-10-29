@@ -74,12 +74,12 @@ public class EdgeArrayStore implements CompressibleCollection, NamedObject
     /**
      * @param metadata Data for determining initial capacity of collections
      */
-    public EdgeArrayStore(final String objectName, final Metadata metadata)
+    public EdgeArrayStore(String objectName, Metadata metadata)
     {
         this.objectName = objectName;
 
         // Allocate the array of all edge indexes
-        final var estimatedEdges = metadata.edgeCount(ALLOW_ESTIMATE).asEstimate();
+        var estimatedEdges = metadata.edgeCount(ALLOW_ESTIMATE).asEstimate();
         indexes = new SplitIntArray(objectName + ".indexes");
         indexes.initialSize(estimatedEdges);
         indexes.initialize();
@@ -101,7 +101,7 @@ public class EdgeArrayStore implements CompressibleCollection, NamedObject
     }
 
     @Override
-    public Method compress(final Method method)
+    public Method compress(Method method)
     {
         lengths.compress(method);
         offsets.compress(method);
@@ -118,7 +118,7 @@ public class EdgeArrayStore implements CompressibleCollection, NamedObject
     /**
      * @return A sequence of edges from the given edge store created from the list stored at the given index
      */
-    public EdgeSequence edgeSequence(final EdgeStore store, final int index)
+    public EdgeSequence edgeSequence(EdgeStore store, int index)
     {
         return new EdgeSequence(Iterables.iterable(() -> new Next<>()
         {
@@ -144,15 +144,15 @@ public class EdgeArrayStore implements CompressibleCollection, NamedObject
      * @param index The index at which to store the values
      * @param values The values to store
      */
-    public void list(final int index, final IntIterator values)
+    public void list(int index, IntIterator values)
     {
         // Add each value
-        final var start = offset;
+        var start = offset;
         var length = 0;
         DEBUG.trace("Putting values into array $", index);
         while (values.hasNext())
         {
-            final var value = values.next();
+            var value = values.next();
             DEBUG.trace("  Adding value $", value);
             indexes.set(offset++, value);
             length++;
@@ -163,9 +163,9 @@ public class EdgeArrayStore implements CompressibleCollection, NamedObject
         lengths.set(index, (byte) length);
     }
 
-    public int list(final List<Edge> edges)
+    public int list(List<Edge> edges)
     {
-        final var list = nextList++;
+        var list = nextList++;
         list(list, new IntIterator()
         {
             private int at;
@@ -189,15 +189,15 @@ public class EdgeArrayStore implements CompressibleCollection, NamedObject
      * @return An {@link IntList} for the given index that is backed by the store (no new object is created aside from
      * the anonymous {@link IntList} subclass).
      */
-    public IntList list(final int index)
+    public IntList list(int index)
     {
-        final var offset = offsets.get(index);
-        final int length = lengths.get(index);
-        final var outer = this;
+        var offset = offsets.get(index);
+        int length = lengths.get(index);
+        var outer = this;
         return new IntListAdapter()
         {
             @Override
-            public int get(final int index)
+            public int get(int index)
             {
                 return outer.indexes.get(offset + index);
             }
@@ -209,7 +209,7 @@ public class EdgeArrayStore implements CompressibleCollection, NamedObject
             }
 
             @Override
-            public boolean isNull(final int value)
+            public boolean isNull(int value)
             {
                 return outer.indexes.isNull(value);
             }
@@ -227,7 +227,7 @@ public class EdgeArrayStore implements CompressibleCollection, NamedObject
             }
 
             @Override
-            public int safeGet(final int index)
+            public int safeGet(int index)
             {
                 return outer.indexes.safeGet(offset + index);
             }
@@ -257,7 +257,7 @@ public class EdgeArrayStore implements CompressibleCollection, NamedObject
     /**
      * @return The size of the list at the given index
      */
-    public int size(final int index)
+    public int size(int index)
     {
         return lengths.get(index);
     }

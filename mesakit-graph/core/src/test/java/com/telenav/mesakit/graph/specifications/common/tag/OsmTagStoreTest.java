@@ -40,31 +40,31 @@ public class OsmTagStoreTest extends GraphUnitTest
     public void test()
     {
         // Create tag store with the codec
-        final var graph = osmGraph();
-        final var store = new TagStore("test", Metadata.defaultMetadata().tagCodec());
+        var graph = osmGraph();
+        var store = new TagStore("test", Metadata.defaultMetadata().tagCodec());
 
         // Store three tag collections
-        final Edge edge1 = nextOsmEdge(graph);
-        final Edge edge2 = nextOsmEdge(graph);
-        final Edge edge3 = nextOsmEdge(graph);
+        Edge edge1 = nextOsmEdge(graph);
+        Edge edge2 = nextOsmEdge(graph);
+        Edge edge3 = nextOsmEdge(graph);
         store.set(edge1, tags("a", "one", "b", "two"));
         store.set(edge2, tags("a", "one", "a", "two"));
         store.set(edge3, tags("a", "three", "c", "one"));
 
         // Retrieve and check each tag collection
-        final PbfTagList tags = store.tagList(edge1);
+        PbfTagList tags = store.tagList(edge1);
         ensureEqual(tags.get(0).getKey(), "a");
         ensureEqual(tags.get(0).getValue(), "one");
         ensureEqual(tags.get(1).getKey(), "b");
         ensureEqual(tags.get(1).getValue(), "two");
 
-        final PbfTagList tags2 = store.tagList(edge2);
+        PbfTagList tags2 = store.tagList(edge2);
         ensureEqual(tags2.get(0).getKey(), "a");
         ensureEqual(tags2.get(0).getValue(), "one");
         ensureEqual(tags2.get(1).getKey(), "a");
         ensureEqual(tags2.get(1).getValue(), "two");
 
-        final PbfTagList tags3 = store.tagList(edge3);
+        PbfTagList tags3 = store.tagList(edge3);
         ensureEqual(tags3.get(0).getKey(), "a");
         ensureEqual(tags3.get(0).getValue(), "three");
         ensureEqual(tags3.get(1).getKey(), "c");
@@ -75,14 +75,14 @@ public class OsmTagStoreTest extends GraphUnitTest
     public void testBug()
     {
         // Create tag store with the codec
-        final var graph = osmGraph();
-        final var store = new TagStore("test", Metadata.defaultMetadata().tagCodec());
+        var graph = osmGraph();
+        var store = new TagStore("test", Metadata.defaultMetadata().tagCodec());
 
-        final Edge edge = nextOsmEdge(graph);
+        Edge edge = nextOsmEdge(graph);
         store.set(edge, tags("J", "J"));
 
         // Retrieve and check each tag collection
-        final PbfTagList tags = store.tagList(edge);
+        PbfTagList tags = store.tagList(edge);
         ensureEqual(tags.get(0).getKey(), "J");
         ensureEqual(tags.get(0).getValue(), "J");
     }
@@ -90,17 +90,17 @@ public class OsmTagStoreTest extends GraphUnitTest
     @Test
     public void testCodec()
     {
-        final var graph = osmGraph();
-        final PbfStringListTagCodec codec = codec();
-        final var store = new TagStore("test", codec);
+        var graph = osmGraph();
+        PbfStringListTagCodec codec = codec();
+        var store = new TagStore("test", codec);
 
-        final Edge edge2 = nextOsmEdge(graph);
+        Edge edge2 = nextOsmEdge(graph);
         store.set(edge2, tags("x", "XXX"));
         ensureEqual("XXX", store.tagList(edge2).get(0).getValue());
 
-        final Edge edge1 = nextOsmEdge(graph);
+        Edge edge1 = nextOsmEdge(graph);
         store.set(edge1, tags("a", "b"));
-        final PbfTagList tags = store.tagList(edge1);
+        PbfTagList tags = store.tagList(edge1);
         ensureEqual("a", tags.get(0).getKey());
         ensureEqual("b", tags.get(0).getValue());
     }
@@ -108,30 +108,30 @@ public class OsmTagStoreTest extends GraphUnitTest
     @Test
     public void testOsm()
     {
-        final var graph = osmGraph();
-        final PbfStringListTagCodec codec = codec();
-        final var store = new TagStore("test", codec);
-        final Edge edge = nextOsmEdge(graph);
+        var graph = osmGraph();
+        PbfStringListTagCodec codec = codec();
+        var store = new TagStore("test", codec);
+        Edge edge = nextOsmEdge(graph);
         store.set(edge, tags("a", "b"));
-        final PbfTagList tags = store.tagList(edge);
+        PbfTagList tags = store.tagList(edge);
         ensureEqual("a", tags.get(0).getKey());
         ensureEqual("b", tags.get(0).getValue());
     }
 
     private PbfStringListTagCodec codec()
     {
-        final var characterFrequencies = new CharacterFrequencies().add("abc").add("def");
+        var characterFrequencies = new CharacterFrequencies().add("abc").add("def");
         characterFrequencies.frequencies().add(HuffmanCharacterCodec.ESCAPE, Count._16);
 
-        final var keyCharacterCodec = HuffmanCharacterCodec.from(
+        var keyCharacterCodec = HuffmanCharacterCodec.from(
                 characterFrequencies.symbols());
 
-        final var valueFrequencies = new CharacterFrequencies().add("bcd").add("ghi");
+        var valueFrequencies = new CharacterFrequencies().add("bcd").add("ghi");
         valueFrequencies.frequencies().add(HuffmanCharacterCodec.ESCAPE, Count._16);
-        final var valueCharacterCodec = HuffmanCharacterCodec.from(
+        var valueCharacterCodec = HuffmanCharacterCodec.from(
                 valueFrequencies.symbols());
 
-        final var keyStringCodec = HuffmanStringCodec.from(
+        var keyStringCodec = HuffmanStringCodec.from(
                 new StringFrequencies(Count._128, Maximum.MAXIMUM)
                         .add("abc")
                         .add("def")
@@ -140,7 +140,7 @@ public class OsmTagStoreTest extends GraphUnitTest
                         .add("ghi")
                         .add("ghi").symbols());
 
-        final var valueStringCodec = HuffmanStringCodec.from(
+        var valueStringCodec = HuffmanStringCodec.from(
                 new StringFrequencies(Count._128, Maximum.MAXIMUM)
                         .add("jkl")
                         .add("mno")
@@ -149,15 +149,15 @@ public class OsmTagStoreTest extends GraphUnitTest
                         .add("pqr")
                         .add("stu").symbols());
 
-        final var keyStringListCodec = new HuffmanStringListCodec(keyStringCodec, keyCharacterCodec);
-        final var valueStringListCodec = new HuffmanStringListCodec(valueStringCodec, valueCharacterCodec);
+        var keyStringListCodec = new HuffmanStringListCodec(keyStringCodec, keyCharacterCodec);
+        var valueStringListCodec = new HuffmanStringListCodec(valueStringCodec, valueCharacterCodec);
 
         return new PbfStringListTagCodec(keyStringListCodec, valueStringListCodec);
     }
 
-    private PbfTagList tags(final String... pairs)
+    private PbfTagList tags(String... pairs)
     {
-        final var tags = PbfTagList.create();
+        var tags = PbfTagList.create();
         for (var i = 0; i < pairs.length; i += 2)
         {
             tags.add(new Tag(pairs[i], pairs[i + 1]));

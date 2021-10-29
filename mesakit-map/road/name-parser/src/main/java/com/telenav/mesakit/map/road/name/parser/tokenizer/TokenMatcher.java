@@ -27,5 +27,5 @@ public interface TokenMatcher
      * @param symbols Stream of symbols to match against
      * @return The token matching the symbols
      */
-    Token match(final SymbolStream symbols);
+    Token match(SymbolStream symbols);
 }

@@ -47,22 +47,22 @@ public class LengthRouteLimiter implements RouteLimiter
 
     private final Distance maximum;
 
-    public LengthRouteLimiter(final Distance maximum, final Type type)
+    public LengthRouteLimiter(Distance maximum, Type type)
     {
         this.maximum = maximum;
         this.type = type;
     }
 
     @Override
-    public boolean canExtendRoute(final Route route, final Edge edge)
+    public boolean canExtendRoute(Route route, Edge edge)
     {
-        switch (this.type)
+        switch (type)
         {
             case STRICT:
-                return route.length().add(edge.length()).isLessThan(this.maximum);
+                return route.length().add(edge.length()).isLessThan(maximum);
 
             case LENIENT:
-                return route.length().isLessThan(this.maximum);
+                return route.length().isLessThan(maximum);
         }
         return false;
     }

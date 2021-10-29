@@ -23,8 +23,8 @@ import com.telenav.kivakit.serialization.kryo.KryoTypes;
 import com.telenav.mesakit.map.geography.project.GeographyKryoTypes;
 import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import com.telenav.mesakit.map.measurements.project.MeasurementsKryoTypes;
-import com.telenav.mesakit.map.region.RegionProject;
 import com.telenav.mesakit.map.region.RegionCode;
+import com.telenav.mesakit.map.region.RegionProject;
 
 public class RegionUnitTest extends GeographyUnitTest
 {
@@ -33,9 +33,9 @@ public class RegionUnitTest extends GeographyUnitTest
         RegionProject.get().initialize();
     }
 
-    protected RegionCode code(final String string)
+    protected RegionCode code(String string)
     {
-        final var code = RegionCode.parse(string);
+        var code = RegionCode.parse(string);
         if (code != null)
         {
             return code;

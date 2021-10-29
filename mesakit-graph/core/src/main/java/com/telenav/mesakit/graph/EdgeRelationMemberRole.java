@@ -63,19 +63,19 @@ public enum EdgeRelationMemberRole
 
     static
     {
-        for (final var role : values())
+        for (var role : values())
         {
             codeToRole.put(role.code(), role);
             valueToRole.put(role.value().toLowerCase(), role);
         }
     }
 
-    public static EdgeRelationMemberRole of(final int code)
+    public static EdgeRelationMemberRole of(int code)
     {
         return codeToRole.get(code);
     }
 
-    public static EdgeRelationMemberRole of(final String value)
+    public static EdgeRelationMemberRole of(String value)
     {
         if (value != null)
         {
@@ -88,7 +88,7 @@ public enum EdgeRelationMemberRole
 
     private final String value;
 
-    EdgeRelationMemberRole(final int code, final String value)
+    EdgeRelationMemberRole(int code, String value)
     {
         this.code = code;
         this.value = value;

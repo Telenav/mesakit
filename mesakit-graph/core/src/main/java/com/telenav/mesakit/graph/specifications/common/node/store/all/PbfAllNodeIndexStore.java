@@ -39,23 +39,23 @@ public class PbfAllNodeIndexStore implements Unloadable
 
     private final Precision precision;
 
-    public PbfAllNodeIndexStore(final GraphArchive archive, final Precision precision)
+    public PbfAllNodeIndexStore(GraphArchive archive, Precision precision)
     {
         ensure(archive != null);
         this.precision = precision;
         store = new PbfAllNodeIndexDiskStore(archive);
     }
 
-    public int index(final Location location)
+    public int index(Location location)
     {
-        final var cell = new AllNodeDiskCell(location);
+        var cell = new AllNodeDiskCell(location);
         var map = indexMapForCell.get(cell);
         if (map == null)
         {
             map = store.load(cell);
             indexMapForCell.put(cell, map);
         }
-        final var index = map.get(location.asLong(precision));
+        var index = map.get(location.asLong(precision));
         if (map.isNull(index))
         {
             return -1;

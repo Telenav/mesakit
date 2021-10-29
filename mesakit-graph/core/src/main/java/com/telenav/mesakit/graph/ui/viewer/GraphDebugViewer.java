@@ -50,22 +50,22 @@ public class GraphDebugViewer extends DebugViewer
     {
     }
 
-    public void candidate(final Edge edge)
+    public void candidate(Edge edge)
     {
         candidate(edge, "candidate");
     }
 
-    public void candidate(final Edge edge, final String label)
+    public void candidate(Edge edge, String label)
     {
         view().update(CANDIDATE_EDGE, new DrawableEdge(edge, theme.styleCandidate(), label));
     }
 
-    public void candidate(final Route route)
+    public void candidate(Route route)
     {
         candidate(route, "candidate");
     }
 
-    public void candidate(final Route route, final String label)
+    public void candidate(Route route, String label)
     {
 
         view().update(CANDIDATE_EDGE, new DrawableRoute(route, theme.styleCandidate(), label));
@@ -101,42 +101,42 @@ public class GraphDebugViewer extends DebugViewer
         view().remove(HIGHLIGHT_ROUTE);
     }
 
-    public void current(final Edge edge)
+    public void current(Edge edge)
     {
         current(edge, "current");
     }
 
-    public void current(final Edge edge, final String label)
+    public void current(Edge edge, String label)
     {
         view().update(CURRENT_EDGE, new DrawableEdge(edge, theme.styleCurrent(), label));
     }
 
-    public void current(final Route route)
+    public void current(Route route)
     {
         current(route, "current");
     }
 
-    public void current(final Route route, final String label)
+    public void current(Route route, String label)
     {
         view().update(CURRENT_ROUTE, new DrawableRoute(route, theme.styleCurrent(), label));
     }
 
-    public void edge(final Edge edge, final String label)
+    public void edge(Edge edge, String label)
     {
         view().add(new DrawableEdge(edge, theme.styleEdge(), label));
     }
 
-    public void highlight(final Edge edge, final String label)
+    public void highlight(Edge edge, String label)
     {
         view().update(HIGHLIGHT_EDGE, new DrawableEdge(edge, theme.styleHighlight(), label));
     }
 
-    public void highlight(final Route route, final String label)
+    public void highlight(Route route, String label)
     {
         view().update(HIGHLIGHT_ROUTE, new DrawableRoute(route, theme.styleRoute(), label));
     }
 
-    public void route(final Route route, final String label)
+    public void route(Route route, String label)
     {
         view().add(new DrawableRoute(route, theme.styleRoute(), label));
     }

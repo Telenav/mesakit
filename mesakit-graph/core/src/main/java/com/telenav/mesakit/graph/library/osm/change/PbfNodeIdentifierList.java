@@ -41,10 +41,10 @@ public class PbfNodeIdentifierList extends ArrayList<PbfNodeIdentifier>
      * @param nodes The OSM node store to work with
      * @param locations A list of locations to add
      */
-    public PbfNodeIdentifierList(final PbfNodeStore nodes, final Iterable<Location> locations)
+    public PbfNodeIdentifierList(PbfNodeStore nodes, Iterable<Location> locations)
     {
         this.nodes = nodes;
-        for (final var location : locations)
+        for (var location : locations)
         {
             append(location);
         }
@@ -53,18 +53,18 @@ public class PbfNodeIdentifierList extends ArrayList<PbfNodeIdentifier>
     /**
      * Appends the given location to this list if it's not already contained in the list
      */
-    public void append(final Location location)
+    public void append(Location location)
     {
-        final var identifier = nodes.identifier(location);
+        var identifier = nodes.identifier(location);
         add(identifier);
     }
 
     /**
      * Prepends the given location to this list if it's not already contained in the list
      */
-    public void prepend(final Location location)
+    public void prepend(Location location)
     {
-        final var identifier = nodes.identifier(location);
+        var identifier = nodes.identifier(location);
         add(0, identifier);
     }
 
@@ -75,8 +75,8 @@ public class PbfNodeIdentifierList extends ArrayList<PbfNodeIdentifier>
      */
     public StringList references()
     {
-        final var lines = new StringList();
-        for (final var identifier : this)
+        var lines = new StringList();
+        for (var identifier : this)
         {
             lines.add("    <nd ref=\"" + identifier + "\"/>");
         }

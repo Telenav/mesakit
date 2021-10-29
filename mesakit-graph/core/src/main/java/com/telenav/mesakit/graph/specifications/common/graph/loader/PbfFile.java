@@ -44,12 +44,12 @@ public class PbfFile extends BaseRepeater implements Named
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static boolean accepts(final File file)
+    public static boolean accepts(File file)
     {
-        final var fileName = file.fileName();
+        var fileName = file.fileName();
         if (fileName != null)
         {
-            final var extension = fileName.compoundExtension();
+            var extension = fileName.compoundExtension();
             return extension != null && (extension.endsWith(Extension.OSM_PBF));
         }
         return false;
@@ -65,7 +65,7 @@ public class PbfFile extends BaseRepeater implements Named
      * @param file The .osm.pbf input file
      * @param configuration The pbf converter configuration
      */
-    public PbfFile(final File file, final PbfToGraphConverter.Configuration configuration)
+    public PbfFile(File file, PbfToGraphConverter.Configuration configuration)
     {
         ensure(accepts(file), "Resource '$' is not a $", file, Extension.GRAPH);
 
@@ -76,25 +76,25 @@ public class PbfFile extends BaseRepeater implements Named
     /**
      * @return The graph for this PBF resource
      */
-    public Graph graph(final ProgressReporter reporter)
+    public Graph graph(ProgressReporter reporter)
     {
-        final var metadata = Metadata.from(file);
+        var metadata = Metadata.from(file);
         if (metadata != null)
         {
-            final var output = Folder.temporaryForProcess(Folder.Type.CLEAN_UP_ON_EXIT)
+            var output = Folder.temporaryForProcess(Folder.Type.CLEAN_UP_ON_EXIT)
                     .temporaryFile(file.fileName().withoutExtension(Extension.OSM_PBF)
                             .withoutExtension(Extension.parse(".pbf.gz")), Extension.GRAPH);
 
-            final var converter = (PbfToGraphConverter) metadata.dataSpecification().newGraphConverter(metadata);
+            var converter = (PbfToGraphConverter) metadata.dataSpecification().newGraphConverter(metadata);
             converter.configure(configuration);
 
             // Convert to a graph
-            final var graph = converter.convert(file);
+            var graph = converter.convert(file);
             if (graph != null)
             {
                 // save to disk,
                 reporter.phase("Writing");
-                try (final var archive = new GraphArchive(LOGGER, output, WRITE, reporter))
+                try (var archive = new GraphArchive(LOGGER, output, WRITE, reporter))
                 {
                     graph.save(archive);
                 }
@@ -102,7 +102,7 @@ public class PbfFile extends BaseRepeater implements Named
 
                 // then reload it
                 reporter.phase("Loading");
-                @SuppressWarnings("resource") final var archive = new GraphArchive(LOGGER, output, READ, reporter);
+                @SuppressWarnings("resource") var archive = new GraphArchive(LOGGER, output, READ, reporter);
                 return archive.load(this);
             }
             else

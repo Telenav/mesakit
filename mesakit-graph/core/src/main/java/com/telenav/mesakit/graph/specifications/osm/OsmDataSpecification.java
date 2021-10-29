@@ -68,7 +68,7 @@ public class OsmDataSpecification extends CommonDataSpecification
     }
 
     @Override
-    public Differences compare(final Edge a, final Edge b)
+    public Differences compare(Edge a, Edge b)
     {
         return new OsmEdgeDifferences((OsmEdge) a, (OsmEdge) b).compare();
     }
@@ -87,7 +87,7 @@ public class OsmDataSpecification extends CommonDataSpecification
 
     @Override
     @SuppressWarnings({ "exports" })
-    public OsmEdgeStore newEdgeStore(final Graph graph)
+    public OsmEdgeStore newEdgeStore(Graph graph)
     {
         return new OsmEdgeStore(graph);
     }
@@ -99,25 +99,25 @@ public class OsmDataSpecification extends CommonDataSpecification
     }
 
     @Override
-    protected Edge onNewEdge(final Graph graph, final long identifier, final int index)
+    protected Edge onNewEdge(Graph graph, long identifier, int index)
     {
         return new OsmEdge(graph, identifier, index);
     }
 
     @Override
-    protected Edge onNewEdge(final Graph graph, final long identifier)
+    protected Edge onNewEdge(Graph graph, long identifier)
     {
         return new OsmEdge(graph, identifier);
     }
 
     @Override
-    protected Graph onNewGraph(final Metadata metadata)
+    protected Graph onNewGraph(Metadata metadata)
     {
         return new OsmGraph(metadata);
     }
 
     @Override
-    protected GraphConverter onNewGraphConverter(final Metadata metadata)
+    protected GraphConverter onNewGraphConverter(Metadata metadata)
     {
         if (metadata.dataFormat() == DataFormat.PBF)
         {
@@ -127,7 +127,7 @@ public class OsmDataSpecification extends CommonDataSpecification
     }
 
     @Override
-    protected GraphLoader onNewGraphLoader(final Metadata metadata)
+    protected GraphLoader onNewGraphLoader(Metadata metadata)
     {
         if (metadata.dataFormat() == DataFormat.PBF)
         {
@@ -137,7 +137,7 @@ public class OsmDataSpecification extends CommonDataSpecification
     }
 
     @Override
-    protected HeavyWeightEdge onNewHeavyWeightEdge(final Graph graph, final long identifier)
+    protected HeavyWeightEdge onNewHeavyWeightEdge(Graph graph, long identifier)
     {
         return new OsmHeavyWeightEdge(graph, identifier);
     }

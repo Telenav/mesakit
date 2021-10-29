@@ -92,21 +92,21 @@ public class RoadSubTypeExtractor extends BaseExtractor<RoadSubType, PbfWay>
         priorityForRoadSubType.put(RoadSubType.FUNCTIONAL_SPECIAL_ROAD, 7);
     }
 
-    public RoadSubTypeExtractor(final Listener listener)
+    public RoadSubTypeExtractor(Listener listener)
     {
         super(listener);
     }
 
     @Override
-    public RoadSubType onExtract(final PbfWay way)
+    public RoadSubType onExtract(PbfWay way)
     {
-        final var roadSubType = way.tagValueAsNaturalNumber("rst");
+        var roadSubType = way.tagValueAsNaturalNumber("rst");
         if (roadSubType >= 0)
         {
             return RoadSubType.forIdentifier(roadSubType);
         }
 
-        final Set<RoadSubType> subtypes = new HashSet<>();
+        Set<RoadSubType> subtypes = new HashSet<>();
         if (way.tagValueIs("route", "ferry"))
         {
             subtypes.add(RoadSubType.MAIN_ROAD);
@@ -130,7 +130,7 @@ public class RoadSubTypeExtractor extends BaseExtractor<RoadSubType, PbfWay>
             {
                 subtypes.add(RoadSubType.CONNECTING_ROAD);
             }
-            final var subtype = roadSubTypeForHighway.get(highway);
+            var subtype = roadSubTypeForHighway.get(highway);
             if (subtype == null)
             {
                 glitch("No road subtype inferred for highway tag '$'", highway);
@@ -143,13 +143,13 @@ public class RoadSubTypeExtractor extends BaseExtractor<RoadSubType, PbfWay>
         return choose(subtypes);
     }
 
-    private RoadSubType choose(final Set<RoadSubType> subtypes)
+    private RoadSubType choose(Set<RoadSubType> subtypes)
     {
         RoadSubType chosen = null;
         var minimumPriority = 9;
-        for (final var subtype : subtypes)
+        for (var subtype : subtypes)
         {
-            final var priority = priorityForRoadSubType.get(subtype);
+            var priority = priorityForRoadSubType.get(subtype);
             if (priority == null)
             {
                 glitch("No priority for $", subtype);

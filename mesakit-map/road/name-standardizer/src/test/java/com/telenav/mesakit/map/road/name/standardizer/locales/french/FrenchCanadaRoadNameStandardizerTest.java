@@ -43,7 +43,7 @@ public class FrenchCanadaRoadNameStandardizerTest extends RoadNameStandardizerTe
     }
 
     @Override
-    protected String normalize(final String string)
+    protected String normalize(String string)
     {
         return string.replaceAll("[.?]", "");
     }

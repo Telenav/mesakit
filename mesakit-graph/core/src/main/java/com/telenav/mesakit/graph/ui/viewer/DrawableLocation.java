@@ -28,12 +28,12 @@ import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDot;
  */
 public class DrawableLocation extends MapDot
 {
-    public DrawableLocation(final Location location, final Style style)
+    public DrawableLocation(Location location, Style style)
     {
         this(location, style, null);
     }
 
-    public DrawableLocation(final Location location, final Style style, final String label)
+    public DrawableLocation(Location location, Style style, String label)
     {
         super(style, location, Distance.meters(1), label);
     }

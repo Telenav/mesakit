@@ -32,9 +32,9 @@ public class GeoJsonPolyline extends GeoJsonGeometry
 {
     private final List<List<Double>> coordinates = new ArrayList<>();
 
-    public GeoJsonPolyline(final Polyline line)
+    public GeoJsonPolyline(Polyline line)
     {
-        for (final var location : line.locationSequence())
+        for (var location : line.locationSequence())
         {
             add(location);
         }
@@ -48,8 +48,8 @@ public class GeoJsonPolyline extends GeoJsonGeometry
 
     public Polyline polyline()
     {
-        final var builder = new PolylineBuilder();
-        for (final var location : coordinates)
+        var builder = new PolylineBuilder();
+        for (var location : coordinates)
         {
             builder.add(new Location(Latitude.degrees(location.get(1)), Longitude.degrees(location.get(0))));
         }
@@ -60,9 +60,9 @@ public class GeoJsonPolyline extends GeoJsonGeometry
         return builder.build();
     }
 
-    protected void add(final Location location)
+    protected void add(Location location)
     {
-        final List<Double> coordinates = new ArrayList<>();
+        List<Double> coordinates = new ArrayList<>();
         coordinates.add(location.longitude().asDegrees());
         coordinates.add(location.latitude().asDegrees());
         this.coordinates.add(coordinates);

@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing.readers;
 
+import com.telenav.kivakit.kernel.language.io.IO;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataStatistics;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfStopProcessingException;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessing;
-import com.telenav.kivakit.kernel.language.io.IO;
-import com.telenav.kivakit.resource.Resource;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 import crosby.binary.osmosis.OsmosisReader;
 import org.openstreetmap.osmosis.core.container.v0_6.EntityContainer;
 import org.openstreetmap.osmosis.core.domain.v0_6.Entity;
@@ -41,7 +41,7 @@ import java.util.Map;
 @UmlClassDiagram(diagram = DiagramPbfProcessing.class)
 public class SerialPbfReader extends BasePbfReader
 {
-    public SerialPbfReader(final Resource resource)
+    public SerialPbfReader(Resource resource)
     {
         super(resource);
     }
@@ -50,23 +50,23 @@ public class SerialPbfReader extends BasePbfReader
      * {@inheritDoc}
      */
     @Override
-    public PbfDataStatistics onProcess(final PbfDataProcessor processor)
+    public PbfDataStatistics onProcess(PbfDataProcessor processor)
     {
         // Start processing
         start(processor);
 
         // Open the resource for reading
-        final var in = resource().openForReading();
+        var in = resource().openForReading();
         try
         {
             // Read the OSM data with this as the sink
-            final var reader = new OsmosisReader(in);
+            var reader = new OsmosisReader(in);
             reader.setSink(sink());
             reader.run();
 
             end();
         }
-        catch (final PbfStopProcessingException ignored)
+        catch (PbfStopProcessingException ignored)
         {
         }
         finally
@@ -83,7 +83,7 @@ public class SerialPbfReader extends BasePbfReader
      */
     private Sink sink()
     {
-        final var outer = this;
+        var outer = this;
         return new Sink()
         {
             @Override
@@ -98,13 +98,13 @@ public class SerialPbfReader extends BasePbfReader
 
             @Override
 
-            public void initialize(final Map<String, Object> metadata)
+            public void initialize(Map<String, Object> metadata)
             {
                 processMetadata(metadata);
             }
 
             @Override
-            public void process(final EntityContainer container)
+            public void process(EntityContainer container)
             {
                 outer.process(container.getEntity());
             }

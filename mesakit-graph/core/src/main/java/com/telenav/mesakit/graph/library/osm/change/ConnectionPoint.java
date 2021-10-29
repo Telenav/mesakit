@@ -60,7 +60,7 @@ public class ConnectionPoint
 
     private final ConnectionPoint.Type type;
 
-    ConnectionPoint(final Location location, final ConnectionPoint.Type type)
+    ConnectionPoint(Location location, ConnectionPoint.Type type)
     {
         this.location = location;
         this.type = type;
@@ -79,13 +79,13 @@ public class ConnectionPoint
     /**
      * Connect the 'from' end of the given shape to the connection location
      */
-    public Polyline withFromEndConnected(final Polyline shape)
+    public Polyline withFromEndConnected(Polyline shape)
     {
         // The new polyline
-        final var builder = new PolylineBuilder();
+        var builder = new PolylineBuilder();
 
         // Get the location to connect to
-        final var location = location();
+        var location = location();
 
         switch (type())
         {
@@ -118,13 +118,13 @@ public class ConnectionPoint
     /**
      * Connect the 'to' end of the given shape to the connection location
      */
-    public Polyline withToEndConnected(final Polyline shape)
+    public Polyline withToEndConnected(Polyline shape)
     {
         // The new polyline
-        final var builder = new PolylineBuilder();
+        var builder = new PolylineBuilder();
 
         // Get the location to connect to
-        final var location = location();
+        var location = location();
 
         switch (type())
         {

@@ -369,9 +369,9 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @param input The input data
      * @return A graph that is compatible with the data source represented by the input parameter
      */
-    public static Graph createCompatible(final File input)
+    public static Graph createCompatible(File input)
     {
-        final var metadata = Metadata.from(input);
+        var metadata = Metadata.from(input);
         return metadata == null ? null : metadata.newGraph();
     }
 
@@ -419,7 +419,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @param metadata The metadata for this graph
      */
-    protected Graph(final Metadata metadata)
+    protected Graph(Metadata metadata)
     {
         this.metadata = metadata;
         dataSpecification = metadata.dataSpecification();
@@ -446,7 +446,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     }
 
     @Override
-    public AsStringIndenter asString(final StringFormat format, final AsStringIndenter indenter)
+    public AsStringIndenter asString(StringFormat format, AsStringIndenter indenter)
     {
         indenter.labeled("resource", resource().path().asContraction(120));
         indenter.indented("metadata", () -> metadata().asString(format, indenter));
@@ -459,7 +459,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * <p>
      * NOTE: This method is used internally by world graph, so it's not a good idea to use it
      */
-    public <T> Graph attachObject(final T object)
+    public <T> Graph attachObject(T object)
     {
         attachedObject = object;
         return this;
@@ -479,7 +479,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return Batches of edges of the given size
      */
-    public Iterator<List<Edge>> batches(final Count batchSize)
+    public Iterator<List<Edge>> batches(Count batchSize)
     {
         return edgeStore.batches(batchSize);
     }
@@ -495,7 +495,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return A new graph restricted to all of the graph elements that intersect the given bounding rectangle
      */
-    public final Graph clippedTo(final Rectangle bounds)
+    public final Graph clippedTo(Rectangle bounds)
     {
         return createConstrained(GraphConstraints.ALL.withBounds(bounds));
     }
@@ -511,7 +511,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return True if the given edge is in this graph
      */
-    public boolean contains(final Edge edge)
+    public boolean contains(Edge edge)
     {
         return contains(edge.identifier());
     }
@@ -519,7 +519,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return True if the given edge identifier is in this graph
      */
-    public final boolean contains(final EdgeIdentifier identifier)
+    public final boolean contains(EdgeIdentifier identifier)
     {
         return edgeStore.contains(identifier);
     }
@@ -527,7 +527,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return True if the given edge relation is in this graph
      */
-    public boolean contains(final EdgeRelation relation)
+    public boolean contains(EdgeRelation relation)
     {
         return contains(relation.identifier());
     }
@@ -535,7 +535,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return True if the given node, way or relation identifier is in this graph
      */
-    public final boolean contains(final MapIdentifier identifier)
+    public final boolean contains(MapIdentifier identifier)
     {
         switch (identifier.type())
         {
@@ -558,7 +558,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return True if the given node identifier is in this graph
      */
-    public final boolean contains(final MapNodeIdentifier identifier)
+    public final boolean contains(MapNodeIdentifier identifier)
     {
         return vertexStore.contains(identifier);
     }
@@ -566,7 +566,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return True if the given relation identifier is in this graph
      */
-    public final boolean contains(final MapRelationIdentifier identifier)
+    public final boolean contains(MapRelationIdentifier identifier)
     {
         return relationStore.contains(identifier);
     }
@@ -574,7 +574,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return True if the given way identifier is in this graph
      */
-    public final boolean contains(final PbfWayIdentifier identifier)
+    public final boolean contains(PbfWayIdentifier identifier)
     {
         return edgeStore.contains(identifier);
     }
@@ -582,7 +582,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return True if the given place identifier is in this graph
      */
-    public final boolean contains(final PlaceIdentifier identifier)
+    public final boolean contains(PlaceIdentifier identifier)
     {
         return placeStore.containsIdentifier(identifier);
     }
@@ -590,7 +590,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return True if the given vertex is in this graph
      */
-    public boolean contains(final Vertex vertex)
+    public boolean contains(Vertex vertex)
     {
         return vertexStore.contains(vertex);
     }
@@ -598,7 +598,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return True if the given vertex identifier is in this graph
      */
-    public final boolean contains(final VertexIdentifier identifier)
+    public final boolean contains(VertexIdentifier identifier)
     {
         return vertexStore.contains(identifier);
     }
@@ -615,7 +615,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return An empty graph that is compatible with the data specification in the given metadata.
      */
-    public final Graph createCompatible(final Metadata metadata)
+    public final Graph createCompatible(Metadata metadata)
     {
         return metadata.newGraph();
     }
@@ -624,7 +624,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @return An empty graph that is compatible with this graph. Any special attributes like tag codecs will be copied
      * into the clone.
      */
-    public final Graph createCompatible(final String name)
+    public final Graph createCompatible(String name)
     {
         return createCompatible(metadata().withName(name));
     }
@@ -635,21 +635,21 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @param constraints The graph constraints to apply
      * @return A copy of this graph limited to the graph elements that match the constraints
      */
-    public final Graph createConstrained(final GraphConstraints constraints)
+    public final Graph createConstrained(GraphConstraints constraints)
     {
         // Create constrained graph to copy this graph into
-        final var constrained = listenTo(createCompatible(metadata().withName(name() + "-constrained")));
+        var constrained = listenTo(createCompatible(metadata().withName(name() + "-constrained")));
 
         // Load the constrained graph with information from this graph
-        final var loader = listenTo(new CopyingGraphLoader(this));
-        final var metadata = constrained.load(loader, constraints);
+        var loader = listenTo(new CopyingGraphLoader(this));
+        var metadata = constrained.load(loader, constraints);
         return metadata == null || metadata.edgeCount(REQUIRE_EXACT).isZero() ? null : constrained;
     }
 
     /**
      * @return A copy of this graph containing only edges that match the given edge matcher
      */
-    public final Graph createConstrained(final Matcher<Edge> matcher)
+    public final Graph createConstrained(Matcher<Edge> matcher)
     {
         return createConstrained(GraphConstraints.ALL.withEdgeMatcher(matcher).withoutEdgeRelations());
     }
@@ -663,11 +663,11 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @param maximumDeviation The maximum amount of turning the edges can make before being decimated
      * @return This graph, decimated
      */
-    public final Graph createDecimated(final Distance minimumLength,
-                                       final Angle maximumDeviation,
-                                       final ProgressReporter reporter)
+    public final Graph createDecimated(Distance minimumLength,
+                                       Angle maximumDeviation,
+                                       ProgressReporter reporter)
     {
-        final var decimated = createCompatible(metadata().withName(name() + "-decimated"));
+        var decimated = createCompatible(metadata().withName(name() + "-decimated"));
         decimated.addListener(this);
         decimated.load(new DecimatingGraphLoader(this, minimumLength, maximumDeviation, reporter), GraphConstraints.ALL);
         return decimated;
@@ -685,16 +685,16 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The deep differences between this graph and the given graph within the given bounds.
      */
-    public final Differences differencesFrom(final Graph that, final Rectangle bounds, final Maximum maximumDifferences)
+    public final Differences differencesFrom(Graph that, Rectangle bounds, Maximum maximumDifferences)
     {
-        final var differences = new Differences();
+        var differences = new Differences();
         var progress = Progress.create(this);
 
         // Then compare edge counts
         if (!edgeCount().equals(that.edgeCount()))
         {
-            final var thisCount = Count.count(edges().within(bounds));
-            final var thatCount = Count.count(that.edges().within(bounds));
+            var thisCount = Count.count(edges().within(bounds));
+            var thatCount = Count.count(that.edges().within(bounds));
             if (!thisCount.equals(thatCount))
             {
                 differences.add("Graph '" + name() + "' has " + thisCount + " edges, while graph '" + that.name() + "' has " + thatCount);
@@ -705,13 +705,13 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
         progress = progress.withItemName("edges");
         progress.feedback("Comparing edges");
         progress.start();
-        for (final var edge : edges().within(bounds))
+        for (var edge : edges().within(bounds))
         {
             progress.next();
-            final var thatEdge = that.edgeForIdentifier(edge.identifier());
+            var thatEdge = that.edgeForIdentifier(edge.identifier());
             if (thatEdge != null)
             {
-                final var edgeDifferences = edge.differencesFrom(thatEdge);
+                var edgeDifferences = edge.differencesFrom(thatEdge);
                 if (edgeDifferences.isDifferent())
                 {
                     differences.add(edge + " property differences: " + differences);
@@ -725,7 +725,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
         progress.end();
 
         // Record all edges in that graph which don't exist in this graph
-        for (final var edge : that.edges().within(bounds))
+        for (var edge : that.edges().within(bounds))
         {
             if (edgeForIdentifier(edge.identifier()) == null)
             {
@@ -742,13 +742,13 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
         progress = progress.withItemName("places");
         progress.feedback("Comparing places");
         progress.reset();
-        for (final var place : placesInside(bounds))
+        for (var place : placesInside(bounds))
         {
             progress.next();
-            final var thatPlace = that.placeForIdentifier(place.identifier());
+            var thatPlace = that.placeForIdentifier(place.identifier());
             if (thatPlace != null)
             {
-                final var placeDifferences = place.differences(thatPlace);
+                var placeDifferences = place.differences(thatPlace);
                 if (placeDifferences.isDifferent())
                 {
                     differences.add(place + " property differences: " + placeDifferences);
@@ -776,7 +776,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @param identifier An edge identifier
      * @return The edge for the given identifier
      */
-    public Edge edgeForIdentifier(final EdgeIdentifier identifier)
+    public Edge edgeForIdentifier(EdgeIdentifier identifier)
     {
         if (edgeStore.contains(identifier))
         {
@@ -789,7 +789,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @param identifier An edge identifier
      * @return The edge for the given identifier
      */
-    public final Edge edgeForIdentifier(final long identifier)
+    public final Edge edgeForIdentifier(long identifier)
     {
         if (edgeStore.containsIdentifier(identifier))
         {
@@ -802,15 +802,15 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @param identifier A map edge identifier of the form [way-identifier]:[from-node-identifier]:[to-node-identifier]
      * @return The graph edge for the given map "edge" identifier, if any
      */
-    public final Edge edgeForIdentifier(final MapEdgeIdentifier identifier)
+    public final Edge edgeForIdentifier(MapEdgeIdentifier identifier)
     {
         if (supports(EdgeAttributes.get().FROM_NODE_IDENTIFIER)
                 && supports(EdgeAttributes.get().TO_NODE_IDENTIFIER))
         {
             var edgeIdentifier = new EdgeIdentifier(
                     identifier.way().asLong() * EdgeIdentifier.SEQUENCE_NUMBER_SHIFT);
-            final var from = identifier.from();
-            final var to = identifier.to();
+            var from = identifier.from();
+            var to = identifier.to();
 
             Edge edge;
             while (contains(edgeIdentifier))
@@ -834,7 +834,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The closest edge to the given location
      */
-    public final Edge edgeNearest(final Location location)
+    public final Edge edgeNearest(Location location)
     {
         return edgeNearest(location, Distance.meters(1000));
     }
@@ -842,7 +842,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The closest edge to the given location
      */
-    public final Edge edgeNearest(final Location location, final Distance near)
+    public final Edge edgeNearest(Location location, Distance near)
     {
         return edgeNearest(location, near, null, Edge.TransportMode.ANY);
     }
@@ -850,7 +850,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The closest edge to the given location
      */
-    public final Edge edgeNearest(final Location location, final Distance near, final Edge.TransportMode mode)
+    public final Edge edgeNearest(Location location, Distance near, Edge.TransportMode mode)
     {
         return edgeNearest(location, near, null, mode);
     }
@@ -874,7 +874,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The edges whose road shape intersects the given bounding rectangle
      */
-    public final EdgeSequence edgesIntersecting(final Rectangle bounds)
+    public final EdgeSequence edgesIntersecting(Rectangle bounds)
     {
         return edgesIntersecting(bounds, new All<>(), EDGES);
     }
@@ -882,7 +882,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The edges whose road shape intersects the given bounding rectangle which also match the given matcher
      */
-    public EdgeSequence edgesIntersecting(final Rectangle bounds, final Matcher<Edge> matcher)
+    public EdgeSequence edgesIntersecting(Rectangle bounds, Matcher<Edge> matcher)
     {
         return edgesIntersecting(bounds, matcher, EDGES);
     }
@@ -890,8 +890,8 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The edges whose road shape intersects the given bounding rectangle which also match the given matcher
      */
-    public EdgeSequence edgesIntersecting(final Rectangle bounds, final Matcher<Edge> matcher,
-                                          final EdgeSequence.Type type)
+    public EdgeSequence edgesIntersecting(Rectangle bounds, Matcher<Edge> matcher,
+                                          EdgeSequence.Type type)
     {
         return unsupported();
     }
@@ -901,7 +901,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @return The graph element associated with the identifier. In the case of a node, this would be a {@link Vertex},
      * in the case of a way, a {@link Route} and in the case of a relation, an {@link EdgeRelation}.
      */
-    public final GraphElement elementForMapIdentifier(final MapIdentifier identifier)
+    public final GraphElement elementForMapIdentifier(MapIdentifier identifier)
     {
         switch (identifier.type())
         {
@@ -909,7 +909,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
                 return vertexForNodeIdentifier((MapNodeIdentifier) identifier);
 
             case WAY:
-                final var route = routeForWayIdentifier((PbfWayIdentifier) identifier);
+                var route = routeForWayIdentifier((PbfWayIdentifier) identifier);
                 if (route != null)
                 {
                     return route.first();
@@ -926,11 +926,11 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Graph)
         {
-            final var that = (Graph) object;
+            var that = (Graph) object;
             return metadata().equals(that.metadata());
         }
         return false;
@@ -939,7 +939,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The edge in this graph that is equivalent to the given edge (probably an edge in another graph)
      */
-    public final EdgeSet equivalentEdges(final Edge edge)
+    public final EdgeSet equivalentEdges(Edge edge)
     {
         var matches = edgesMatching(edge);
         if (matches.isEmpty())
@@ -968,7 +968,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @param size An estimate of the in-memory size of this graph
      */
-    public final void estimatedMemorySize(final Bytes size)
+    public final void estimatedMemorySize(Bytes size)
     {
         estimatedMemorySize = size;
     }
@@ -993,7 +993,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The forward (non-reversed) edges intersecting the given bounds which match the given predicate.
      */
-    public EdgeSequence forwardEdgesIntersecting(final Rectangle bounds, final Matcher<Edge> matcher)
+    public EdgeSequence forwardEdgesIntersecting(Rectangle bounds, Matcher<Edge> matcher)
     {
         return edgesIntersecting(bounds, matcher, FORWARD_EDGES);
     }
@@ -1001,7 +1001,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return Forward (non-reversed) edges that intersect the given bounds
      */
-    public final EdgeSequence forwardEdgesIntersecting(final Rectangle bounds)
+    public final EdgeSequence forwardEdgesIntersecting(Rectangle bounds)
     {
         return forwardEdgesIntersecting(bounds, new All<>());
     }
@@ -1009,7 +1009,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The number of forward edges within the given distance of the given location
      */
-    public final EdgeSequence forwardEdgesNear(final Location location, final Distance distance)
+    public final EdgeSequence forwardEdgesNear(Location location, Distance distance)
     {
         return forwardEdgesIntersecting(location.within(distance));
     }
@@ -1071,7 +1071,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      *
      * @return Metadata describing the data that was loaded
      */
-    public final Metadata load(final GraphLoader loader)
+    public final Metadata load(GraphLoader loader)
     {
         return load(loader, GraphConstraints.ALL);
     }
@@ -1084,16 +1084,16 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @param constraints Restrictions that determine what graph elements to include
      * @return Metadata describing what was loaded into the graph
      */
-    public final Metadata load(final GraphLoader loader, final GraphConstraints constraints)
+    public final Metadata load(GraphLoader loader, GraphConstraints constraints)
     {
         // Start loading
-        final var start = Time.now();
+        var start = Time.now();
         graphStore.loading(loader.resource());
 
         try
         {
             // Load the graph
-            final var metadata = loader.onLoad(graphStore, constraints);
+            var metadata = loader.onLoad(graphStore, constraints);
             if (metadata != null && metadata.edgeCount(Metadata.CountType.ALLOW_ESTIMATE).isNonZero()
                     && metadata.validator(loader.validation()).validate(this))
             {
@@ -1101,7 +1101,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
                 graphStore.flush();
 
                 // and if at least one edge was loaded,
-                final var edgeCount = metadata.edgeCount(REQUIRE_EXACT);
+                var edgeCount = metadata.edgeCount(REQUIRE_EXACT);
                 if (edgeCount != null && !edgeCount.isZero())
                 {
                     // let the loader commit any final changes,
@@ -1133,7 +1133,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
                 }
             }
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             problem(e, "Unable to load $", loader.resource());
             return null;
@@ -1150,7 +1150,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @see #load(GraphArchive)
      */
     @MustBeInvokedByOverriders
-    public void load(final GraphArchive archive)
+    public void load(GraphArchive archive)
     {
         this.archive = archive;
     }
@@ -1161,7 +1161,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     public Graph loadAll()
     {
         // Start timer
-        final var start = Time.now();
+        var start = Time.now();
 
         graphStore.loadAll();
 
@@ -1172,10 +1172,10 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * Forces any lazy-loaded data on disk to load into memory
      */
-    public Graph loadAll(final AttributeSet attributes)
+    public Graph loadAll(AttributeSet attributes)
     {
         // Start timer
-        final var start = Time.now();
+        var start = Time.now();
         graphStore.loadAll(attributes);
         DEBUG.trace("Graph.loadAll($) completed in ${debug}", attributes, start.elapsedSince());
         return this;
@@ -1184,24 +1184,24 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * Forces any lazy-loaded data on disk to load into memory
      */
-    public Graph loadAllExcept(final AttributeSet attributes)
+    public Graph loadAllExcept(AttributeSet attributes)
     {
         // Start timer
-        final var start = Time.now();
+        var start = Time.now();
         graphStore.loadAllExcept(attributes);
         DEBUG.trace("Graph.loadAllExcept($) completed in ${debug}", attributes, start.elapsedSince());
         return this;
     }
 
-    public void loadFreeFlow(final Resource resource)
+    public void loadFreeFlow(Resource resource)
     {
     }
 
-    public void loadSpeedPattern(final Resource resource)
+    public void loadSpeedPattern(Resource resource)
     {
     }
 
-    public void loadTurnRestrictions(final Resource resource)
+    public void loadTurnRestrictions(Resource resource)
     {
     }
 
@@ -1216,7 +1216,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * Called to update the metadata for this graph when a graph is loaded by a {@link GraphLoader}.
      */
-    public final Metadata metadata(final Metadata metadata)
+    public final Metadata metadata(Metadata metadata)
     {
         metadata.assertValid(VALIDATE_EXCEPT_STATISTICS);
         this.metadata = metadata;
@@ -1224,7 +1224,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     }
 
     /** Sets the name of this graph */
-    public final Graph name(final String name)
+    public final Graph name(String name)
     {
         metadata(metadata().withName(name));
         return this;
@@ -1236,7 +1236,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     @Override
     public String name()
     {
-        final var metadata = metadata();
+        var metadata = metadata();
         return metadata == null ? Name.synthetic(this) : metadata.name();
     }
 
@@ -1244,7 +1244,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @return A new {@link Edge} with the given identifier, created from this graph's data specification
      */
     @SuppressWarnings("unchecked")
-    public <T extends Edge> T newEdge(final EdgeIdentifier identifier)
+    public <T extends Edge> T newEdge(EdgeIdentifier identifier)
     {
         return (T) dataSpecification.newEdge(this, identifier.asLong());
     }
@@ -1253,7 +1253,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @return A new {@link HeavyWeightEdge} with the given identifier, created from this graph's data specification
      */
     @SuppressWarnings("unchecked")
-    public final <T extends HeavyWeightEdge> T newHeavyWeightEdge(final EdgeIdentifier identifier)
+    public final <T extends HeavyWeightEdge> T newHeavyWeightEdge(EdgeIdentifier identifier)
     {
         return (T) dataSpecification.newHeavyWeightEdge(this, identifier.asLong());
     }
@@ -1262,7 +1262,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @return A new {@link HeavyWeightPlace} with the given identifier, created from this graph's data specification
      */
     @SuppressWarnings({ "unchecked" })
-    public final <T extends HeavyWeightPlace> T newHeavyWeightPlace(final PlaceIdentifier identifier)
+    public final <T extends HeavyWeightPlace> T newHeavyWeightPlace(PlaceIdentifier identifier)
     {
         return (T) dataSpecification.newHeavyWeightPlace(this, identifier.asLong());
     }
@@ -1271,7 +1271,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @return A new {@link HeavyWeightRelation} with the given identifier, created from this graph's data specification
      */
     @SuppressWarnings("unchecked")
-    public final <T extends HeavyWeightRelation> T newHeavyWeightRelation(final RelationIdentifier identifier)
+    public final <T extends HeavyWeightRelation> T newHeavyWeightRelation(RelationIdentifier identifier)
     {
         return (T) dataSpecification.newHeavyWeightRelation(this, identifier.asLong());
     }
@@ -1280,7 +1280,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @return A new {@link HeavyWeightVertex} with the given identifier, created from this graph's data specification
      */
     @SuppressWarnings("unchecked")
-    public final <T extends HeavyWeightVertex> T newHeavyWeightVertex(final VertexIdentifier identifier)
+    public final <T extends HeavyWeightVertex> T newHeavyWeightVertex(VertexIdentifier identifier)
     {
         return (T) dataSpecification.newHeavyWeightVertex(this, identifier.asLong());
     }
@@ -1289,7 +1289,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @return A new {@link Place} with the given identifier, created from this graph's data specification
      */
     @SuppressWarnings("unchecked")
-    public <T extends Place> T newPlace(final PlaceIdentifier identifier)
+    public <T extends Place> T newPlace(PlaceIdentifier identifier)
     {
         return (T) dataSpecification.newPlace(this, identifier.asLong());
     }
@@ -1298,7 +1298,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @return A new {@link EdgeRelation} with the given identifier, created from this graph's data specification
      */
     @SuppressWarnings("unchecked")
-    public <T extends EdgeRelation> T newRelation(final RelationIdentifier identifier)
+    public <T extends EdgeRelation> T newRelation(RelationIdentifier identifier)
     {
         return (T) dataSpecification.newRelation(this, identifier.asLong());
     }
@@ -1306,9 +1306,9 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return A new {@link ShapePoint} with the given identifier, created from this graph's data specification
      */
-    public final ShapePoint newShapePoint(final ShapePointIdentifier identifier, final Location location)
+    public final ShapePoint newShapePoint(ShapePointIdentifier identifier, Location location)
     {
-        final var point = new ShapePoint(this, identifier.asLong());
+        var point = new ShapePoint(this, identifier.asLong());
         point.location(location.asLong());
         return point;
     }
@@ -1317,7 +1317,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @return A new {@link Vertex} with the given identifier, created from this graph's data specification
      */
     @SuppressWarnings("unchecked")
-    public <T extends Vertex> T newVertex(final VertexIdentifier identifier)
+    public <T extends Vertex> T newVertex(VertexIdentifier identifier)
     {
         return (T) dataSpecification.newVertex(this, identifier.asLong());
     }
@@ -1343,7 +1343,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The place for the given identifier, if any
      */
-    public final Place placeForIdentifier(final PlaceIdentifier identifier)
+    public final Place placeForIdentifier(PlaceIdentifier identifier)
     {
         if (placeStore.containsIdentifier(identifier))
         {
@@ -1355,10 +1355,10 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return Any place within 5 meters of the given location
      */
-    public Place placeNear(final Location location)
+    public Place placeNear(Location location)
     {
-        final var places = placesInside(Rectangle.fromLocation(location).expanded(Distance.meters(5)));
-        for (final var place : places)
+        var places = placesInside(Rectangle.fromLocation(location).expanded(Distance.meters(5)));
+        for (var place : places)
         {
             if (place.location().equals(location))
             {
@@ -1387,7 +1387,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The places inside the given bounding rectangle
      */
-    public Iterable<Place> placesInside(final Rectangle bounds)
+    public Iterable<Place> placesInside(Rectangle bounds)
     {
         return unsupported();
     }
@@ -1395,7 +1395,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The places inside the given region
      */
-    public final Iterable<Place> placesInside(final Region<?> region)
+    public final Iterable<Place> placesInside(Region<?> region)
     {
         return Iterables.iterable(() -> new Next<>()
         {
@@ -1406,7 +1406,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
             {
                 while (places.hasNext())
                 {
-                    final var place = places.next();
+                    var place = places.next();
                     if (region.contains(place.location()))
                     {
                         return place;
@@ -1421,8 +1421,8 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @return The closest maximum number of places to the given location within the given maximum distance with the
      * given minimum population
      */
-    public final Iterable<Place> placesNear(final Location location, final Count minimumPopulation,
-                                            final Distance maximumDistance, final Count maximum)
+    public final Iterable<Place> placesNear(Location location, Count minimumPopulation,
+                                            Distance maximumDistance, Count maximum)
     {
         return placesNear(location, minimumPopulation, Distance.ZERO, maximumDistance, maximum);
     }
@@ -1432,12 +1432,12 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * distance with the given minimum population
      */
     @SuppressWarnings("SameParameterValue")
-    public List<Place> placesNear(final Location location, final Count minimumPopulation,
-                                  final Distance minimumDistanceBetweenPlaces,
-                                  final Distance maximumDistance, final Count maximum)
+    public List<Place> placesNear(Location location, Count minimumPopulation,
+                                  Distance minimumDistanceBetweenPlaces,
+                                  Distance maximumDistance, Count maximum)
     {
-        final List<Place> places = new ArrayList<>();
-        for (final var place : placesInside(location.bounds().expanded(maximumDistance)))
+        List<Place> places = new ArrayList<>();
+        for (var place : placesInside(location.bounds().expanded(maximumDistance)))
         {
             if (place.population().isGreaterThanOrEqualTo(minimumPopulation))
             {
@@ -1463,7 +1463,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return A list of places in this graph with at least the given population
      */
-    public final List<Place> placesWithPopulationOfAtLeast(final Count minimumPopulation)
+    public final List<Place> placesWithPopulationOfAtLeast(Count minimumPopulation)
     {
         return Streams.stream(places()).filter(place -> place.population().isGreaterThanOrEqualTo(minimumPopulation))
                 .collect(Collectors.toList());
@@ -1488,7 +1488,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The relation for the given identifier
      */
-    public EdgeRelation relationForIdentifier(final RelationIdentifier identifier)
+    public EdgeRelation relationForIdentifier(RelationIdentifier identifier)
     {
         if (relationStore.contains(identifier))
         {
@@ -1500,7 +1500,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The relation for the given map relation identifier, such as a PBF relation id.
      */
-    public final EdgeRelation relationForMapRelationIdentifier(final MapRelationIdentifier identifier)
+    public final EdgeRelation relationForMapRelationIdentifier(MapRelationIdentifier identifier)
     {
         return relationStore.relationForIdentifier(identifier);
     }
@@ -1524,7 +1524,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The edge relations that intersect the given bounding rectangle
      */
-    public final RelationSet relationsIntersecting(final Rectangle bounds)
+    public final RelationSet relationsIntersecting(Rectangle bounds)
     {
         return relationsIntersecting(bounds, new All<>());
     }
@@ -1532,12 +1532,12 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The set of relations inside the given bounds that match the given matcher predicate
      */
-    public RelationSet relationsIntersecting(final Rectangle bounds, final Matcher<EdgeRelation> matcher)
+    public RelationSet relationsIntersecting(Rectangle bounds, Matcher<EdgeRelation> matcher)
     {
-        final var relations = new RelationSet(Estimate._1024);
-        for (final var edge : edgesIntersecting(bounds))
+        var relations = new RelationSet(Estimate._1024);
+        for (var edge : edgesIntersecting(bounds))
         {
-            for (final var relation : edge.relations())
+            for (var relation : edge.relations())
             {
                 if (matcher.matches(relation))
                 {
@@ -1563,10 +1563,10 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return Restriction relations intersecting the given bounds
      */
-    public final Set<EdgeRelation> restrictionRelationsIntersecting(final Rectangle bounds)
+    public final Set<EdgeRelation> restrictionRelationsIntersecting(Rectangle bounds)
     {
-        final Set<EdgeRelation> restrictions = new HashSet<>();
-        for (final var relation : relationsIntersecting(bounds))
+        Set<EdgeRelation> restrictions = new HashSet<>();
+        for (var relation : relationsIntersecting(bounds))
         {
             if (relation.isRestriction())
             {
@@ -1579,7 +1579,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The sequence of edges that covers the given way
      */
-    public Route routeForWayIdentifier(final MapWayIdentifier wayIdentifier)
+    public Route routeForWayIdentifier(MapWayIdentifier wayIdentifier)
     {
         return edgeStore.retrieveRouteForWayIdentifier(wayIdentifier);
     }
@@ -1591,14 +1591,14 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @param archive The resource to write to
      */
     @MustBeInvokedByOverriders
-    public void save(final GraphArchive archive)
+    public void save(GraphArchive archive)
     {
     }
 
     /**
      * @return The shape point at the given location
      */
-    public final ShapePoint shapePointForLocation(final Location location)
+    public final ShapePoint shapePointForLocation(Location location)
     {
         return shapePointStore().forLocation(location);
     }
@@ -1618,14 +1618,14 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return Shape points for the given polyline
      */
-    public final List<ShapePoint> shapePoints(final Polyline line)
+    public final List<ShapePoint> shapePoints(Polyline line)
     {
-        final List<ShapePoint> points = new ArrayList<>();
+        List<ShapePoint> points = new ArrayList<>();
         if (supportsFullPbfNodeInformation())
         {
-            for (final var location : line.locationSequence())
+            for (var location : line.locationSequence())
             {
-                final var point = shapePointForLocation(location);
+                var point = shapePointForLocation(location);
                 if (point != null)
                 {
                     points.add(point);
@@ -1678,7 +1678,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return True if this graph supports the given attribute
      */
-    public boolean supports(final Attribute<?> attribute)
+    public boolean supports(Attribute<?> attribute)
     {
         return dataSpecification.supports(attribute);
     }
@@ -1709,8 +1709,8 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      */
     public final Set<EdgeRelation> turnRestrictionRelations()
     {
-        final Set<EdgeRelation> turnRestrictions = new HashSet<>();
-        for (final var relation : relations())
+        Set<EdgeRelation> turnRestrictions = new HashSet<>();
+        for (var relation : relations())
         {
             if (relation.isTurnRestriction())
             {
@@ -1749,7 +1749,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @param identifier A vertex identifier
      * @return The vertex for the given identifier, or null if the vertex does not exist in this graph
      */
-    public Vertex vertexForIdentifier(final VertexIdentifier identifier)
+    public Vertex vertexForIdentifier(VertexIdentifier identifier)
     {
         if (contains(identifier))
         {
@@ -1762,7 +1762,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The vertex for the given node identifier, if any
      */
-    public final Vertex vertexForNodeIdentifier(final MapNodeIdentifier identifier)
+    public final Vertex vertexForNodeIdentifier(MapNodeIdentifier identifier)
     {
         return vertexStore.vertexForNodeIdentifier(identifier.asLong());
     }
@@ -1771,9 +1771,9 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @return Any vertex within the given distance of the given location. It's not guaranteed that this is the closest
      * vertex to the location, only that it is within the given distance.
      */
-    public Vertex vertexNear(final Location location, final Distance near)
+    public Vertex vertexNear(Location location, Distance near)
     {
-        for (final var vertex : vertexesInside(location.bounds().expanded(near)))
+        for (var vertex : vertexesInside(location.bounds().expanded(near)))
         {
             return vertex;
         }
@@ -1784,10 +1784,10 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @return A vertex within the given distance of the given location that is connected to at least one edge with the
      * given road functional class.
      */
-    public final Vertex vertexNear(final Location location, final Distance near,
-                                   final RoadFunctionalClass minimumFunctionalClass)
+    public final Vertex vertexNear(Location location, Distance near,
+                                   RoadFunctionalClass minimumFunctionalClass)
     {
-        for (final var vertex : vertexesInside(location.bounds().expanded(near)))
+        for (var vertex : vertexesInside(location.bounds().expanded(near)))
         {
             if (vertex.maximumRoadFunctionalClass().isMoreImportantThanOrEqual(minimumFunctionalClass))
             {
@@ -1800,7 +1800,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The vertex closest to the location (but no further than 1km)
      */
-    public final Vertex vertexNearest(final Location location)
+    public final Vertex vertexNearest(Location location)
     {
         return vertexNearest(location, Distance.ONE_KILOMETER);
     }
@@ -1808,7 +1808,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The vertex nearest to the given location, within the maximum distance
      */
-    public Vertex vertexNearest(final Location location, final Distance maximum)
+    public Vertex vertexNearest(Location location, Distance maximum)
     {
         return vertexNearest(location, maximum, RoadFunctionalClass.FOURTH_CLASS);
     }
@@ -1817,8 +1817,8 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @return The vertex nearest to the given location, within the maximum distance
      */
     @SuppressWarnings("SameParameterValue")
-    public Vertex vertexNearest(final Location location, final Distance maximum,
-                                final RoadFunctionalClass minimumFunctionalClass)
+    public Vertex vertexNearest(Location location, Distance maximum,
+                                RoadFunctionalClass minimumFunctionalClass)
     {
         // The nearest vertex
         Vertex closest = null;
@@ -1829,13 +1829,13 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
                 .isLessThanOrEqualTo(maximum); near = near.add(Distance.meters(100)))
         {
             // Go through candidates at the given (rectangular) distance
-            for (final var candidate : vertexesInside(location.within(near)))
+            for (var candidate : vertexesInside(location.within(near)))
             {
                 // If the candidate vertex' most important edge has the minimum importance
                 if (candidate.maximumRoadFunctionalClass().isMoreImportantThanOrEqual(minimumFunctionalClass))
                 {
                     // If this is the first candidate or the distance of the candidate is closer
-                    final var candidateDistance = candidate.location().distanceTo(location);
+                    var candidateDistance = candidate.location().distanceTo(location);
                     if (closest == null || candidateDistance.isLessThan(closestDistance))
                     {
                         // then this is now the closest
@@ -1874,7 +1874,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The vertexes inside the given bounding rectangle
      */
-    public VertexSequence vertexesInside(final Rectangle bounds)
+    public VertexSequence vertexesInside(Rectangle bounds)
     {
         return unsupported();
     }
@@ -1882,7 +1882,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The vertexes inside the given bounding rectangle that match the given matcher
      */
-    public VertexSequence vertexesInside(final Rectangle bounds, final Matcher<Vertex> matcher)
+    public VertexSequence vertexesInside(Rectangle bounds, Matcher<Vertex> matcher)
     {
         return unsupported();
     }
@@ -1900,8 +1900,8 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      */
     public final Set<PbfWayIdentifier> wayIdentifiers()
     {
-        final Set<PbfWayIdentifier> ways = new HashSet<>();
-        for (final var edge : forwardEdges())
+        Set<PbfWayIdentifier> ways = new HashSet<>();
+        for (var edge : forwardEdges())
         {
             ways.add(edge.wayIdentifier());
         }
@@ -1912,10 +1912,10 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @return The closest edge to the given location
      */
     @SuppressWarnings("SameParameterValue")
-    private Edge edgeNearest(final Location location, final Distance near, final Heading heading,
-                             final Edge.TransportMode mode)
+    private Edge edgeNearest(Location location, Distance near, Heading heading,
+                             Edge.TransportMode mode)
     {
-        final var snap = new GraphSnapper(this, near, null, mode).snap(location, heading);
+        var snap = new GraphSnapper(this, near, null, mode).snap(location, heading);
         if (snap != null)
         {
             return snap.closestEdge();
@@ -1926,13 +1926,13 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /**
      * @return The set of edges matching the given edge
      */
-    private EdgeSet edgesMatching(final Edge edge)
+    private EdgeSet edgesMatching(Edge edge)
     {
-        final var matches = new EdgeSet();
-        final var from = vertexForNodeIdentifier(edge.fromNodeIdentifier());
+        var matches = new EdgeSet();
+        var from = vertexForNodeIdentifier(edge.fromNodeIdentifier());
         if (from != null)
         {
-            for (final var out : from.outEdges())
+            for (var out : from.outEdges())
             {
                 if (out.toLocation().equals(edge.toLocation()))
                 {

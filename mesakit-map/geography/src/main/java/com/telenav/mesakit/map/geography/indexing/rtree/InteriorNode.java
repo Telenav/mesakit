@@ -39,7 +39,7 @@ public class InteriorNode<T extends Bounded & Intersectable> extends Node<T>
     /** The children of this interior node */
     List<Node<T>> children;
 
-    public InteriorNode(final RTreeSpatialIndex<T> index, final InteriorNode<T> parent)
+    public InteriorNode(RTreeSpatialIndex<T> index, InteriorNode<T> parent)
     {
         super(index, parent);
         children = new ArrayList<>(index.settings().maximumChildrenPerInteriorNode().asInt());
@@ -53,22 +53,22 @@ public class InteriorNode<T extends Bounded & Intersectable> extends Node<T>
      * Adds the given element to the child node which would be least expanded by the addition
      */
     @Override
-    public void add(final T element)
+    public void add(T element)
     {
         // Add the element to the appropriate child
         bestFit(children(), element).add(element);
     }
 
-    public void children(final List<Node<T>> children)
+    public void children(List<Node<T>> children)
     {
         this.children = children;
     }
 
     @Override
-    public void dump(final PrintStream out, final int level, final RTreeSpatialIndex.DumpDetailLevel detail)
+    public void dump(PrintStream out, int level, RTreeSpatialIndex.DumpDetailLevel detail)
     {
         super.dump(out, level, detail);
-        for (final var child : children())
+        for (var child : children())
         {
             child.dump(out, level + 1, detail);
         }
@@ -76,11 +76,11 @@ public class InteriorNode<T extends Bounded & Intersectable> extends Node<T>
 
     @SuppressWarnings("rawtypes")
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof InteriorNode)
         {
-            final var that = (InteriorNode) object;
+            var that = (InteriorNode) object;
             return super.equals(that) && children.equals(that.children);
         }
         return false;
@@ -96,11 +96,11 @@ public class InteriorNode<T extends Bounded & Intersectable> extends Node<T>
      * @return Any elements under this interior node that intersect the given rectangle
      */
     @Override
-    public Iterator<T> intersecting(final Rectangle that, final Matcher<T> matcher)
+    public Iterator<T> intersecting(Rectangle that, Matcher<T> matcher)
     {
         // Go through each child node,
-        final var matches = new CompoundIterator<T>();
-        for (final var child : children())
+        var matches = new CompoundIterator<T>();
+        for (var child : children())
         {
             // and if the child's bounds intersects the given rectangle,
             if (that.intersects(child.bounds()))
@@ -119,11 +119,11 @@ public class InteriorNode<T extends Bounded & Intersectable> extends Node<T>
     }
 
     @Override
-    public void statistics(final int depth, final Statistics statistics)
+    public void statistics(int depth, Statistics statistics)
     {
         statistics.interiorNodes++;
         statistics.maximumDepth = Math.max(depth, statistics.maximumDepth);
-        for (final var child : children())
+        for (var child : children())
         {
             child.statistics(depth + 1, statistics);
         }
@@ -140,7 +140,7 @@ public class InteriorNode<T extends Bounded & Intersectable> extends Node<T>
      * they are expanded. If this results in too many nodes, a split is performed.
      */
     @Override
-    protected void add(final Node<T> child)
+    protected void add(Node<T> child)
     {
         // If there are too many children,
         if (isFull())
@@ -169,14 +169,14 @@ public class InteriorNode<T extends Bounded & Intersectable> extends Node<T>
         return settings().isInteriorNodeFull(Count.count(children));
     }
 
-    protected void remove(final Node<T> node)
+    protected void remove(Node<T> node)
     {
         children().remove(node);
         index().debugger().remove(node);
     }
 
     @Override
-    protected String toString(final RTreeSpatialIndex.DumpDetailLevel detail)
+    protected String toString(RTreeSpatialIndex.DumpDetailLevel detail)
     {
         return "[InteriorNode bounds = " + bounds() + ", children = " + children().size() + "]";
     }
@@ -192,23 +192,23 @@ public class InteriorNode<T extends Bounded & Intersectable> extends Node<T>
      * @return the parent of the two resulting nodes
      */
     @SuppressWarnings("UnusedReturnValue")
-    private InteriorNode<Node<T>> splitAndAdd(final Node<T> reasonForSplit)
+    private InteriorNode<Node<T>> splitAndAdd(Node<T> reasonForSplit)
     {
         // Split the children into two
         return new LinearSplit<Node<T>>()
         {
             @Override
             @SuppressWarnings({ "unchecked", "rawtypes" })
-            protected InteriorNode<Node<T>> onSplit(final Node<T> childA, final Node<T> childB)
+            protected InteriorNode<Node<T>> onSplit(Node<T> childA, Node<T> childB)
             {
                 // Create two buckets for the most distant elements
-                final var bucketA = new InteriorNode(index(), null);
-                final var bucketB = new InteriorNode(index(), null);
+                var bucketA = new InteriorNode(index(), null);
+                var bucketB = new InteriorNode(index(), null);
                 bucketA.add(childA);
                 bucketB.add(childB);
 
                 // Go through all elements that need to be split
-                for (final var child : children())
+                for (var child : children())
                 {
                     // and if it's not one of the two we started with,
                     if (!child.equals(childA) && !child.equals(childB))
@@ -222,10 +222,10 @@ public class InteriorNode<T extends Bounded & Intersectable> extends Node<T>
                 return replace(bucketA, bucketB);
             }
 
-            private void addChildToBestBucket(final Node<T> child, final InteriorNode<T> bucketA,
-                                              final InteriorNode<T> bucketB)
+            private void addChildToBestBucket(Node<T> child, InteriorNode<T> bucketA,
+                                              InteriorNode<T> bucketB)
             {
-                final var center = child.bounds().center();
+                var center = child.bounds().center();
                 if (center.preciseDistanceTo(bucketA.bounds().center())
                         .isLessThan(center.preciseDistanceTo(bucketB.bounds().center())))
                 {

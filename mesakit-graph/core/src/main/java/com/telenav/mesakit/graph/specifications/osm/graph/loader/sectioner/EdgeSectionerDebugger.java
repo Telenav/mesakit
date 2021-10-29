@@ -36,7 +36,7 @@ public interface EdgeSectionerDebugger
         }
 
         @Override
-        public void update(final EdgeSection section)
+        public void update(EdgeSection section)
         {
         }
     };

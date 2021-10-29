@@ -83,7 +83,7 @@ public abstract class Continent extends Region<Continent> implements Iterable<Co
     {
         if (borderCache == null)
         {
-            final var settings = new BorderCache.Settings<Continent>()
+            var settings = new BorderCache.Settings<Continent>()
                     .withType(Continent.class)
                     .withMaximumObjects(RegionLimits.CONTINENTS)
                     .withMaximumPolygonsPerObject(RegionLimits.POLYGONS_PER_CONTINENT)
@@ -95,12 +95,12 @@ public abstract class Continent extends Region<Continent> implements Iterable<Co
             {
                 @Override
                 protected void assignMultiPolygonIdentity(
-                        final PbfTagMap relationTags,
-                        final Collection<Border<Continent>> objects)
+                        PbfTagMap relationTags,
+                        Collection<Border<Continent>> objects)
                 {
                     if (relationTags.containsKey("continent"))
                     {
-                        for (final var country : objects)
+                        for (var country : objects)
                         {
                             country.region().name(relationTags.get("continent"));
                         }
@@ -111,7 +111,7 @@ public abstract class Continent extends Region<Continent> implements Iterable<Co
         return borderCache;
     }
 
-    public static SwitchParser.Builder<Continent> continentSwitchParser(final String name, final String description)
+    public static SwitchParser.Builder<Continent> continentSwitchParser(String name, String description)
     {
         return SwitchParser.builder(Continent.class)
                 .name(name)
@@ -143,27 +143,27 @@ public abstract class Continent extends Region<Continent> implements Iterable<Co
         OCEANIA.initialize();
     }
 
-    public static Continent forIdentity(final RegionIdentity identity)
+    public static Continent forIdentity(RegionIdentity identity)
     {
         return type(Continent.class).forIdentity(identity);
     }
 
-    public static Continent forLocation(final Location location)
+    public static Continent forLocation(Location location)
     {
         return type(Continent.class).forLocation(location);
     }
 
-    protected Continent(final RegionInstance<Continent> instance)
+    protected Continent(RegionInstance<Continent> instance)
     {
         super(null, instance);
     }
 
     public List<Country> allSupportedCountries()
     {
-        final List<Country> countries = new ArrayList<>();
-        for (final var country : this)
+        List<Country> countries = new ArrayList<>();
+        for (var country : this)
         {
-            final var border = country.largestBorder();
+            var border = country.largestBorder();
             if (border != null && border.bounds().area().isGreaterThan(Area.squareMiles(0)))
             {
                 countries.add(country);
@@ -173,7 +173,7 @@ public abstract class Continent extends Region<Continent> implements Iterable<Co
         return countries;
     }
 
-    public boolean contains(final Country country)
+    public boolean contains(Country country)
     {
         return countries().contains(country);
     }
@@ -184,9 +184,9 @@ public abstract class Continent extends Region<Continent> implements Iterable<Co
     }
 
     @Override
-    public boolean intersects(final Rectangle rectangle)
+    public boolean intersects(Rectangle rectangle)
     {
-        for (final var polygon : borders())
+        for (var polygon : borders())
         {
             if (polygon.intersects(rectangle))
             {
@@ -222,9 +222,9 @@ public abstract class Continent extends Region<Continent> implements Iterable<Co
         return new BaseExtractor<>(LOGGER())
         {
             @Override
-            public Continent onExtract(final PbfWay way)
+            public Continent onExtract(PbfWay way)
             {
-                final var continent = way.tagValue("continent");
+                var continent = way.tagValue("continent");
                 if (continent != null)
                 {
                     return forIdentity(new RegionIdentity(continent)

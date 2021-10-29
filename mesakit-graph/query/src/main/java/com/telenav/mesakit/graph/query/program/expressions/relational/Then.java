@@ -20,7 +20,7 @@ public class Then extends Node implements BooleanExpression
 
     private final BooleanExpression right;
 
-    public Then(final BooleanExpression left, final BooleanExpression right)
+    public Then(BooleanExpression left, BooleanExpression right)
     {
         this.left = left;
         this.right = right;
@@ -35,20 +35,20 @@ public class Then extends Node implements BooleanExpression
     @Override
     public boolean evaluate()
     {
-        final int size = stack().size();
+        int size = stack().size();
         do
         {
             trace("Evaluating THEN left expression $", left.code());
             if (left.evaluate())
             {
                 trace("THEN left expression $ is true", left.code());
-                for (final Edge edge : stack().reachableEdges())
+                for (Edge edge : stack().reachableEdges())
                 {
-                    final int sizeBeforeEdge = stack().size();
+                    int sizeBeforeEdge = stack().size();
                     if (stack().push(edge) == PUSHED)
                     {
                         trace("Evaluating THEN right expression $ against ${long}", right.code(), edge.identifierAsLong());
-                        final var result = right.evaluate();
+                        var result = right.evaluate();
                         trace("THEN right expression $ is $", right.code(), result);
                         if (result)
                         {
@@ -75,7 +75,7 @@ public class Then extends Node implements BooleanExpression
     }
 
     @Override
-    public void visit(final Visitor visitor)
+    public void visit(Visitor visitor)
     {
         super.visit(visitor);
         left.visit(visitor);

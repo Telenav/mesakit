@@ -30,7 +30,7 @@ public interface PolygonSpatialIndexDebugger
     /**
      * Called for each leaf in the spatial index
      */
-    void leaf(final Rectangle bounds, Segment a, Segment b, Location inside);
+    void leaf(Rectangle bounds, Segment a, Segment b, Location inside);
 
     /**
      * Called for each quadrant in the index

@@ -33,10 +33,10 @@ public class StateTest extends RegionUnitTest
     @Test
     public void testAll()
     {
-        final var mexicoStates = State.all().stream().filter(state -> state.identity().iso().code().startsWith("MX"))
+        var mexicoStates = State.all().stream().filter(state -> state.identity().iso().code().startsWith("MX"))
                 .collect(Collectors.toList());
         ensureEqual(32, mexicoStates.size());
-        final var mexicoAG = mexicoStates.stream().filter(state -> "MX-AG".equals(state.identity().iso().code()))
+        var mexicoAG = mexicoStates.stream().filter(state -> "MX-AG".equals(state.identity().iso().code()))
                 .collect(Collectors.toList());
         ensureEqual(1, mexicoAG.size());
         ensureEqual("MX-AG", mexicoAG.get(0).identity().iso().code());
@@ -61,7 +61,7 @@ public class StateTest extends RegionUnitTest
     @Test
     public void testForString()
     {
-        final var state = State.forRegionCode(RegionCode.parse("MX-BC")).identity().state();
+        var state = State.forRegionCode(RegionCode.parse("MX-BC")).identity().state();
         ensureEqual("Mexico-Baja_California", state.identity().mesakit().code());
         ensureEqual("MX-BC", state.identity().iso().code());
         ensureEqual(Country.MEXICO.BAJA_CALIFORNIA, State.forRegionCode(code("MX-BC")).identity().state());
@@ -70,33 +70,33 @@ public class StateTest extends RegionUnitTest
     @Test
     public void testIsoCodeLettersAndNumbers()
     {
-        final var state = State.forLocation(Location.degrees(12.1758692, -68.2484687));
+        var state = State.forLocation(Location.degrees(12.1758692, -68.2484687));
         ensureEqual("NL-BQ1", state.identity().iso().code());
     }
 
     @Test
     public void testIsoCodeLettersOnly()
     {
-        final var state = State.forLocation(Location.degrees(8.3453033, 80.3820343));
+        var state = State.forLocation(Location.degrees(8.3453033, 80.3820343));
         ensureEqual("LK-71", state.identity().iso().code());
     }
 
     @Test
     public void testMetros()
     {
-        final Region<?> sj = MetropolitanArea.forRegionCode(code("US-CA-METROSANJOSE")).identity()
+        Region<?> sj = MetropolitanArea.forRegionCode(code("US-CA-METROSANJOSE")).identity()
                 .metropolitanArea();
         ensureNotNull(sj);
-        final Region<?> seattle = City.forRegionCode(code("US-WA-CITYSEATTLE")).identity().city();
+        Region<?> seattle = City.forRegionCode(code("US-WA-CITYSEATTLE")).identity().city();
         ensureNotNull(seattle);
         var count = 0;
-        for (final City ignored : Country.UNITED_STATES.WASHINGTON.cities())
+        for (City ignored : Country.UNITED_STATES.WASHINGTON.cities())
         {
             count++;
         }
         ensureEqual(1, count);
         count = 0;
-        for (final MetropolitanArea ignored : MetropolitanArea.all())
+        for (MetropolitanArea ignored : MetropolitanArea.all())
         {
             count++;
         }
@@ -106,7 +106,7 @@ public class StateTest extends RegionUnitTest
     @Test
     public void testMexicoAG()
     {
-        final var state = State.forLocation(Location.degrees(21.896758, -102.283537));
+        var state = State.forLocation(Location.degrees(21.896758, -102.283537));
         ensureEqual("MX-AG", state.identity().iso().code());
         ensureEqual("Mexico-Aguascalientes", state.identity().mesakit().code());
         ensureEqual("Aguascalientes", state.name());
@@ -115,7 +115,7 @@ public class StateTest extends RegionUnitTest
     @Test
     public void testSpecialCharacters()
     {
-        final var state = State.forLocation(Location.degrees(39.0638841, 125.8376773));
+        var state = State.forLocation(Location.degrees(39.0638841, 125.8376773));
         ensureEqual("North_Korea-P_yŏngyang", state.identity().mesakit().code());
         ensureEqual("KP-PYNGYANG", state.identity().iso().code());
         ensureEqual("P'yŏngyang", state.name());
@@ -124,7 +124,7 @@ public class StateTest extends RegionUnitTest
     @Test
     public void testWithCorrectIsoCode()
     {
-        final var state = State.forLocation(Location.degrees(64.202173, -137.891684));
+        var state = State.forLocation(Location.degrees(64.202173, -137.891684));
         ensureEqual("CA-YT", state.identity().iso().code());
         ensureEqual("Canada-Yukon", state.identity().mesakit().code());
     }
@@ -132,14 +132,14 @@ public class StateTest extends RegionUnitTest
     @Test
     public void testWithIsoCodeAsCodeDashNumber()
     {
-        final var state = State.forLocation(Location.degrees(7.973467, 79.735602));
+        var state = State.forLocation(Location.degrees(7.973467, 79.735602));
         ensureEqual("LK-62", state.identity().iso().code());
     }
 
     @Test
     public void testWithIsoCodeNothingAfterDash()
     {
-        final var state = State.forLocation(Location.degrees(8.6992333, 106.5968633));
+        var state = State.forLocation(Location.degrees(8.6992333, 106.5968633));
         ensureEqual("VN-SCTRNG", state.identity().iso().code());
     }
 
@@ -147,14 +147,14 @@ public class StateTest extends RegionUnitTest
     // Spratly Islands -99 code in boundary
     public void testWithIsoCodeOnlyANumber()
     {
-        final var state = State.forLocation(Location.degrees(9.6836461, 114.3740521));
+        var state = State.forLocation(Location.degrees(9.6836461, 114.3740521));
         ensureNull(state);
     }
 
     @Test
     public void testYetAnotherCode()
     {
-        final var state = State.forLocation(Location.degrees(40.281435, 49.125561));
+        var state = State.forLocation(Location.degrees(40.281435, 49.125561));
         ensureEqual("AZ-ABERON", state.identity().iso().code());
         ensureEqual("Azerbaijan-Abşeron", state.identity().mesakit().code());
         ensureEqual("Abşeron", state.name());

@@ -68,7 +68,7 @@ public class EdgePair implements Iterable<Edge>, Bounded
     /**
      * Construct a pair
      */
-    public EdgePair(final Edge first, final Edge second)
+    public EdgePair(Edge first, Edge second)
     {
         this.first = first;
         this.second = second;
@@ -78,7 +78,7 @@ public class EdgePair implements Iterable<Edge>, Bounded
      * @return The angle between the headings of the two edges in this pair using the given {@link Chirality}, whether
      * the edges are connected or not.
      */
-    public Angle angleBetween(final Chirality chirality)
+    public Angle angleBetween(Chirality chirality)
     {
         return first.heading().difference(second.heading(), chirality);
     }
@@ -94,7 +94,7 @@ public class EdgePair implements Iterable<Edge>, Bounded
     /**
      * @return The average heading of the two edges in this pair
      */
-    public Heading averageHeading(final Chirality chirality)
+    public Heading averageHeading(Chirality chirality)
     {
         return first.heading().bisect(second.heading(), chirality);
     }
@@ -111,11 +111,11 @@ public class EdgePair implements Iterable<Edge>, Bounded
     /**
      * @return The percentage in which the two edges are close to one another given distance and angle constraints
      */
-    public Percent closeness(final Distance maximumSeparation, final Angle maximumHeadingDeviation)
+    public Percent closeness(Distance maximumSeparation, Angle maximumHeadingDeviation)
     {
-        final var augmentationDistance = Distance.TEN_METERS;
-        final var first = this.first.roadShape().augmented(augmentationDistance);
-        final var second = this.second.roadShape().augmented(augmentationDistance);
+        var augmentationDistance = Distance.TEN_METERS;
+        var first = this.first.roadShape().augmented(augmentationDistance);
+        var second = this.second.roadShape().augmented(augmentationDistance);
         return first.closeness(second, maximumSeparation, maximumHeadingDeviation);
     }
 
@@ -130,7 +130,7 @@ public class EdgePair implements Iterable<Edge>, Bounded
     /**
      * @return True if this pair contains the given edge
      */
-    public boolean contains(final Edge edge)
+    public boolean contains(Edge edge)
     {
         return first.equals(edge) || second.equals(edge);
     }
@@ -139,11 +139,11 @@ public class EdgePair implements Iterable<Edge>, Bounded
      * {@inheritDoc}
      */
     @Override
-    public boolean equals(final Object other)
+    public boolean equals(Object other)
     {
         if (other instanceof EdgePair)
         {
-            final var that = (EdgePair) other;
+            var that = (EdgePair) other;
             return first().equals(that.first()) && second().equals(that.second());
         }
         return false;
@@ -177,9 +177,9 @@ public class EdgePair implements Iterable<Edge>, Bounded
     /**
      * @return True if this edge pair is connected within a given distance limit along some non-branching route
      */
-    public boolean isConnectedByRoute(final Navigator navigator, final Distance within)
+    public boolean isConnectedByRoute(Navigator navigator, Distance within)
     {
-        final RouteLimiter limiter = new LengthRouteLimiter(within, LengthRouteLimiter.Type.STRICT);
+        RouteLimiter limiter = new LengthRouteLimiter(within, LengthRouteLimiter.Type.STRICT);
 
         return isConnected()
                 || first.outRoute(navigator, limiter).overlaps(second.outRoute(navigator, limiter));
@@ -205,7 +205,7 @@ public class EdgePair implements Iterable<Edge>, Bounded
     /**
      * @return True if this pair of edges forms a double-digitized pair
      */
-    public boolean isDoubleDigitized(final DoubleDigitizedType type, final Angle maximumHeadingDeviation)
+    public boolean isDoubleDigitized(DoubleDigitizedType type, Angle maximumHeadingDeviation)
     {
         // If both edges could be double digitized
         if (first.osmCouldBeDoubleDigitized() && second.osmCouldBeDoubleDigitized())
@@ -218,11 +218,11 @@ public class EdgePair implements Iterable<Edge>, Bounded
                     .isGreaterThan(Percent.of(50)))
             {
                 // must have the same base name (not including modifiers)
-                final var firstName = first.roadName();
-                final var secondName = second.roadName();
+                var firstName = first.roadName();
+                var secondName = second.roadName();
                 if (firstName != null && secondName != null)
                 {
-                    final var matches = firstName.extractNameOnly().equals(secondName.extractNameOnly());
+                    var matches = firstName.extractNameOnly().equals(secondName.extractNameOnly());
                     if (type == DoubleDigitizedType.MATCHING_NAMES)
                     {
                         return matches;
@@ -243,8 +243,8 @@ public class EdgePair implements Iterable<Edge>, Bounded
      */
     public boolean isOverlapping()
     {
-        final var aSegment = first.asSegment();
-        final var bSegment = second.asSegment();
+        var aSegment = first.asSegment();
+        var bSegment = second.asSegment();
         return aSegment.intersects(bSegment.perpendicular(second.fromLocation(), Distance.miles(50)))
                 || aSegment.intersects(bSegment.perpendicular(second.toLocation(), Distance.miles(50)))
                 || bSegment.intersects(aSegment.perpendicular(first.fromLocation(), Distance.miles(50)))
@@ -262,7 +262,7 @@ public class EdgePair implements Iterable<Edge>, Bounded
     /**
      * @return True if the two edges in this pair are parallel
      */
-    public boolean isParallel(final Angle tolerance)
+    public boolean isParallel(Angle tolerance)
     {
         return smallestAngleBetween().isLessThan(tolerance);
     }
@@ -278,7 +278,7 @@ public class EdgePair implements Iterable<Edge>, Bounded
     /**
      * @return True if the two edges in this pair are perpendicular
      */
-    public boolean isPerpendicular(final Angle tolerance)
+    public boolean isPerpendicular(Angle tolerance)
     {
         return smallestAngleBetween().isClose(_90_DEGREES, tolerance);
     }
@@ -289,8 +289,8 @@ public class EdgePair implements Iterable<Edge>, Bounded
      */
     public boolean isSameRoad()
     {
-        final var aRoad = first.roadName();
-        final var bRoad = second.roadName();
+        var aRoad = first.roadName();
+        var bRoad = second.roadName();
         if (aRoad != null && bRoad != null)
         {
             return aRoad.extractNameOnly().equals(bRoad.extractNameOnly());
@@ -309,7 +309,7 @@ public class EdgePair implements Iterable<Edge>, Bounded
     /**
      * @return True if the edge pair form an angle that is straight within the given amount of tolerance
      */
-    public boolean isStraight(final Angle tolerance)
+    public boolean isStraight(Angle tolerance)
     {
         return smallestAngleBetween().isLessThan(tolerance);
     }
@@ -361,7 +361,7 @@ public class EdgePair implements Iterable<Edge>, Bounded
      */
     public Angle smallestAngleBetween()
     {
-        final var difference = first.heading().difference(second.heading(), Chirality.SMALLEST);
+        var difference = first.heading().difference(second.heading(), Chirality.SMALLEST);
         if (!difference.isAcute())
         {
             return _180_DEGREES.minus(difference);

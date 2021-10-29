@@ -30,7 +30,7 @@ public class CountryLoader extends RegionalGraphLoader
 
     private final Country country;
 
-    public CountryLoader(final Graph source, final Country country)
+    public CountryLoader(Graph source, Country country)
     {
         this.source = source;
         this.country = country;
@@ -39,19 +39,19 @@ public class CountryLoader extends RegionalGraphLoader
     @Override
     protected EdgeSequence forwardEdges()
     {
-        return this.source.edgesIntersecting(this.country.bounds(),
-                edge -> !edge.isReverse() && CountryLoader.this.country.equals(edge.country()));
+        return source.edgesIntersecting(country.bounds(),
+                edge -> !edge.isReverse() && country.equals(edge.country()));
     }
 
     @Override
     protected Iterable<Place> places()
     {
-        return this.source.placesInside(this.country);
+        return source.placesInside(country);
     }
 
     @Override
     protected Graph sourceGraph()
     {
-        return this.source;
+        return source;
     }
 }

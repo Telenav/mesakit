@@ -29,7 +29,7 @@ public class NullViewer implements Viewer
     private final View view = new NullInteractiveView();
 
     @Override
-    public View view(final String name)
+    public View view(String name)
     {
         return view;
     }

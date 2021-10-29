@@ -31,7 +31,7 @@ public class RoadStateExtractor extends BaseExtractor<RoadStateExtractor.Extract
 
         private boolean reversed;
 
-        public ExtractedRoadState(final RoadState state)
+        public ExtractedRoadState(RoadState state)
         {
             this.state = state;
         }
@@ -47,30 +47,30 @@ public class RoadStateExtractor extends BaseExtractor<RoadStateExtractor.Extract
         }
 
         @SuppressWarnings("UnusedReturnValue")
-        public ExtractedRoadState state(final RoadState state)
+        public ExtractedRoadState state(RoadState state)
         {
             this.state = state;
             return this;
         }
 
-        ExtractedRoadState reversed(final boolean reversed)
+        ExtractedRoadState reversed(boolean reversed)
         {
             this.reversed = reversed;
             return this;
         }
     }
 
-    public RoadStateExtractor(final Listener listener)
+    public RoadStateExtractor(Listener listener)
     {
         super(listener);
     }
 
     @Override
-    public ExtractedRoadState onExtract(final PbfWay way)
+    public ExtractedRoadState onExtract(PbfWay way)
     {
-        final var oneway = way.tagValue("oneway");
-        final var highway = way.tagValue("highway");
-        final var reversed = "-1".equals(oneway) || "reversed".equals(oneway);
+        var oneway = way.tagValue("oneway");
+        var highway = way.tagValue("highway");
+        var reversed = "-1".equals(oneway) || "reversed".equals(oneway);
         if (way.tagValueIs("junction", "roundabout"))
         {
             return new ExtractedRoadState(RoadState.ONE_WAY).reversed(reversed);

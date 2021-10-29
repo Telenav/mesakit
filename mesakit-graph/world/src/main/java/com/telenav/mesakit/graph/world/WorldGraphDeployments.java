@@ -50,7 +50,7 @@ public class WorldGraphDeployments extends DeploymentSet
     /**
      * A set of built-in deployments
      */
-    public WorldGraphDeployments(final Listener listener)
+    public WorldGraphDeployments(Listener listener)
     {
         listener.listenTo(this);
         addDeploymentsIn(mesakitWorldGraphDeploymentsFolder());

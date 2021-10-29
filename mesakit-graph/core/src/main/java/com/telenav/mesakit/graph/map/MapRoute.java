@@ -47,40 +47,52 @@ public class MapRoute implements Iterable<MapEdgeIdentifier>
 
         private final Graph graph;
 
-        public Converter(final Listener listener, final Graph graph, final Separators separators)
+        public Converter(Listener listener, Graph graph, Separators separators)
         {
             super(listener);
             this.graph = graph;
             this.separators = separators;
-            this.edgeConverter = new MapEdgeIdentifier.EdgeConverter(listener, this.graph);
-            this.edgeIdentifierConverter = new MapEdgeIdentifier.Converter(listener);
+            edgeConverter = new MapEdgeIdentifier.EdgeConverter(listener, this.graph);
+            edgeIdentifierConverter = new MapEdgeIdentifier.Converter(listener);
         }
 
-        public Converter(final Listener listener, final Separators separators)
+        public Converter(Listener listener, Separators separators)
         {
             this(listener, null, separators);
         }
 
         @Override
-        protected MapRoute onToValue(final String value)
+        protected String onToString(MapRoute route)
         {
-            if (this.graph == null)
+            var identifiers = route.pbfEdgeIdentifiers();
+            var edges = new StringList(Maximum.maximum(identifiers.size()));
+            for (var identifier : identifiers)
             {
-                final List<MapEdgeIdentifier> identifiers = new ArrayList<>();
-                for (final var identifier : Split.split(value, this.separators.current()))
+                edges.add(identifier.toString());
+            }
+            return edges.join(separators.current());
+        }
+
+        @Override
+        protected MapRoute onToValue(String value)
+        {
+            if (graph == null)
+            {
+                List<MapEdgeIdentifier> identifiers = new ArrayList<>();
+                for (var identifier : Split.split(value, separators.current()))
                 {
-                    identifiers.add(this.edgeIdentifierConverter.convert(identifier));
+                    identifiers.add(edgeIdentifierConverter.convert(identifier));
                 }
                 return new MapRoute(identifiers);
             }
             else
             {
-                final var builder = new RouteBuilder();
+                var builder = new RouteBuilder();
                 try
                 {
-                    for (final var identifier : Split.split(value, this.separators.current()))
+                    for (var identifier : Split.split(value, separators.current()))
                     {
-                        final var next = this.edgeConverter.convert(identifier);
+                        var next = edgeConverter.convert(identifier);
                         if (next == null)
                         {
                             problem("Unable to locate edge $ ", identifier);
@@ -89,54 +101,41 @@ public class MapRoute implements Iterable<MapEdgeIdentifier>
                         builder.append(next);
                     }
                 }
-                catch (final Exception e)
+                catch (Exception e)
                 {
                     problem(problemBroadcastFrequency(), e, "${class}: Problem converting ${debug} with graph ${debug}", subclass(),
-                            value, this.graph.name());
+                            value, graph.name());
                 }
                 return builder.route().asMapRoute();
             }
-        }
-
-        @Override
-        protected String onToString(final MapRoute route)
-        {
-            final var identifiers = route.pbfEdgeIdentifiers();
-            final var edges = new StringList(Maximum.maximum(identifiers.size()));
-            for (final var identifier : identifiers)
-            {
-                edges.add(identifier.toString());
-            }
-            return edges.join(this.separators.current());
         }
     }
 
     private final List<MapEdgeIdentifier> identifiers;
 
-    public MapRoute(final List<MapEdgeIdentifier> identifiers)
+    public MapRoute(List<MapEdgeIdentifier> identifiers)
     {
         this.identifiers = identifiers;
     }
 
-    public MapRoute(final Route route)
+    public MapRoute(Route route)
     {
-        this.identifiers = new ArrayList<>();
-        for (final var edge : route)
+        identifiers = new ArrayList<>();
+        for (var edge : route)
         {
-            this.identifiers.add(edge.mapEdgeIdentifier());
+            identifiers.add(edge.mapEdgeIdentifier());
         }
     }
 
-    @SuppressWarnings("NullableProblems")
     @Override
     public Iterator<MapEdgeIdentifier> iterator()
     {
-        return this.identifiers.iterator();
+        return identifiers.iterator();
     }
 
-    public String join(final String separator)
+    public String join(String separator)
     {
-        return Join.join(this.identifiers, separator);
+        return Join.join(identifiers, separator);
     }
 
     public Stream<MapEdgeIdentifier> parallelStream()
@@ -146,7 +145,7 @@ public class MapRoute implements Iterable<MapEdgeIdentifier>
 
     public List<MapEdgeIdentifier> pbfEdgeIdentifiers()
     {
-        return this.identifiers;
+        return identifiers;
     }
 
     public Stream<MapEdgeIdentifier> stream()

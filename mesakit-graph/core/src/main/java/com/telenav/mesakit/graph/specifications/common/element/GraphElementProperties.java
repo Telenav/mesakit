@@ -36,7 +36,7 @@ public class GraphElementProperties<T extends GraphElement> extends GraphElement
 
     public abstract class GraphElementProperty extends com.telenav.mesakit.graph.specifications.library.properties.GraphElementProperty<T>
     {
-        protected GraphElementProperty(final String name, final Attribute<?> attribute)
+        protected GraphElementProperty(String name, Attribute<?> attribute)
         {
             super(name, attribute, CommonDataSpecification.get());
             add(this);
@@ -46,7 +46,7 @@ public class GraphElementProperties<T extends GraphElement> extends GraphElement
     public final GraphElementProperty PBF_CHANGE_SET_IDENTIFIER = new GraphElementProperty("pbf-change-set", GraphElementAttributes.get().PBF_CHANGE_SET_IDENTIFIER)
     {
         @Override
-        public Object value(final T element)
+        public Object value(T element)
         {
             if (element.supports(GraphElementAttributes.get().PBF_CHANGE_SET_IDENTIFIER))
             {
@@ -59,7 +59,7 @@ public class GraphElementProperties<T extends GraphElement> extends GraphElement
     public final GraphElementProperty LAST_MODIFIED = new GraphElementProperty("last-modified", GraphElementAttributes.get().LAST_MODIFIED)
     {
         @Override
-        public Object value(final T element)
+        public Object value(T element)
         {
             if (element.supports(GraphElementAttributes.get().LAST_MODIFIED))
             {
@@ -72,7 +72,7 @@ public class GraphElementProperties<T extends GraphElement> extends GraphElement
     public final GraphElementProperty PBF_REVISION_NUMBER = new GraphElementProperty("pbf-revision", GraphElementAttributes.get().PBF_REVISION_NUMBER)
     {
         @Override
-        public Object value(final T element)
+        public Object value(T element)
         {
             if (element.supports(GraphElementAttributes.get().PBF_REVISION_NUMBER))
             {
@@ -85,7 +85,7 @@ public class GraphElementProperties<T extends GraphElement> extends GraphElement
     public final GraphElementProperty PBF_USER_IDENTIFIER = new GraphElementProperty("pbf-user-identifier", GraphElementAttributes.get().PBF_USER_IDENTIFIER)
     {
         @Override
-        public Object value(final T element)
+        public Object value(T element)
         {
             if (element.supports(GraphElementAttributes.get().PBF_USER_IDENTIFIER))
             {
@@ -98,7 +98,7 @@ public class GraphElementProperties<T extends GraphElement> extends GraphElement
     public final GraphElementProperty PBF_USER_NAME = new GraphElementProperty("pbf-user-name", GraphElementAttributes.get().PBF_USER_NAME)
     {
         @Override
-        public Object value(final T element)
+        public Object value(T element)
         {
             if (element.supports(GraphElementAttributes.get().PBF_USER_NAME))
             {
@@ -111,7 +111,7 @@ public class GraphElementProperties<T extends GraphElement> extends GraphElement
     public final GraphElementProperty TAGS = new GraphElementProperty("tags", GraphElementAttributes.get().TAGS)
     {
         @Override
-        public Object value(final T element)
+        public Object value(T element)
         {
             return element.tagList();
         }
@@ -120,7 +120,7 @@ public class GraphElementProperties<T extends GraphElement> extends GraphElement
     public final GraphElementProperty IDENTIFIER = new GraphElementProperty("identifier", GraphElementAttributes.get().IDENTIFIER)
     {
         @Override
-        public Object value(final T element)
+        public Object value(T element)
         {
             return element.identifier();
         }
@@ -129,7 +129,7 @@ public class GraphElementProperties<T extends GraphElement> extends GraphElement
     public final GraphElementProperty INDEX = new GraphElementProperty("index", GraphElementAttributes.get().NONE)
     {
         @Override
-        public Object value(final T point)
+        public Object value(T point)
         {
             return point.index();
         }
@@ -138,7 +138,7 @@ public class GraphElementProperties<T extends GraphElement> extends GraphElement
     public final GraphElementProperty MAP_IDENTIFIER = new GraphElementProperty("map-identifier", GraphElementAttributes.get().NONE)
     {
         @Override
-        public Object value(final T element)
+        public Object value(T element)
         {
             return element.mapIdentifier();
         }

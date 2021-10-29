@@ -43,7 +43,7 @@ public class EdgeRelationMember implements AsIndentedString
     /** The role of this member */
     private final String role;
 
-    public EdgeRelationMember(final EdgeRelation relation, final MapIdentifier identifier, final String role)
+    public EdgeRelationMember(EdgeRelation relation, MapIdentifier identifier, String role)
     {
         ensure(relation != null);
         ensure(identifier != null);
@@ -54,7 +54,7 @@ public class EdgeRelationMember implements AsIndentedString
     }
 
     @Override
-    public AsStringIndenter asString(final StringFormat format, final AsStringIndenter indenter)
+    public AsStringIndenter asString(StringFormat format, AsStringIndenter indenter)
     {
         indenter.add(role().toLowerCase() + " " + type().name().toLowerCase() + " " + identifier());
         return indenter;
@@ -66,11 +66,11 @@ public class EdgeRelationMember implements AsIndentedString
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof EdgeRelationMember)
         {
-            final var that = (EdgeRelationMember) object;
+            var that = (EdgeRelationMember) object;
             return relation.equals(that.relation) && identifier.equals(that.identifier);
         }
         return false;
@@ -91,7 +91,7 @@ public class EdgeRelationMember implements AsIndentedString
 
     public Edge firstEdge()
     {
-        final var route = route();
+        var route = route();
         if (route != null)
         {
             return route.first();
@@ -127,7 +127,7 @@ public class EdgeRelationMember implements AsIndentedString
 
     public Location location()
     {
-        final var vertex = vertex();
+        var vertex = vertex();
         if (vertex != null)
         {
             return vertex.location();
@@ -147,7 +147,7 @@ public class EdgeRelationMember implements AsIndentedString
 
     public Route route()
     {
-        final var wayIdentifier = (PbfWayIdentifier) identifier;
+        var wayIdentifier = (PbfWayIdentifier) identifier;
         var route = relation.graph().routeForWayIdentifier(wayIdentifier.forward());
         if (route != null && wayIdentifier.isReverse())
         {

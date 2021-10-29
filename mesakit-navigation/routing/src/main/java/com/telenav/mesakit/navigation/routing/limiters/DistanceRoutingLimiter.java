@@ -31,24 +31,24 @@ public class DistanceRoutingLimiter implements RoutingLimiter
 
     private Location start;
 
-    public DistanceRoutingLimiter(final Distance maximum)
+    public DistanceRoutingLimiter(Distance maximum)
     {
         this.maximum = maximum;
     }
 
     @Override
-    public RoutingInstruction instruction(final Edge edge)
+    public RoutingInstruction instruction(Edge edge)
     {
         // Get the distance that this edge puts us from the starting point
-        final var distance = edge.toLocation().distanceTo(this.start);
+        var distance = edge.toLocation().distanceTo(start);
 
         // If this edge is too far away, ignore it
-        return distance.isGreaterThan(this.maximum) ? RoutingInstruction.IGNORE_EDGE : RoutingInstruction.EXPLORE_EDGE;
+        return distance.isGreaterThan(maximum) ? RoutingInstruction.IGNORE_EDGE : RoutingInstruction.EXPLORE_EDGE;
     }
 
     @Override
-    public void start(final RoutingRequest request)
+    public void start(RoutingRequest request)
     {
-        this.start = request.start().location();
+        start = request.start().location();
     }
 }

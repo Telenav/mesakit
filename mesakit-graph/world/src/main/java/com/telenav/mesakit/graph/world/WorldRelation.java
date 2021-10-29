@@ -49,24 +49,24 @@ public class WorldRelation extends EdgeRelation
     /** The cell where this relation is located */
     private final WorldCell worldCell;
 
-    public WorldRelation(final WorldCell worldCell, final EdgeRelation relation)
+    public WorldRelation(WorldCell worldCell, EdgeRelation relation)
     {
         super(worldCell.cellGraph(), relation.identifier());
         this.worldCell = worldCell;
     }
 
-    public WorldRelation(final WorldRelationIdentifier identifier)
+    public WorldRelation(WorldRelationIdentifier identifier)
     {
         super(identifier.worldCell().cellGraph(), identifier);
         worldCell = identifier.worldCell();
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof WorldRelation)
         {
-            final var that = (WorldRelation) object;
+            var that = (WorldRelation) object;
             return worldCell.equals(that.worldCell) && super.equals(that);
         }
         return false;
@@ -88,10 +88,10 @@ public class WorldRelation extends EdgeRelation
     public List<EdgeRelationMember> members()
     {
         // List of members
-        final List<EdgeRelationMember> members = new ArrayList<>();
+        List<EdgeRelationMember> members = new ArrayList<>();
 
         // Go through this cell's relation members
-        for (final var member : super.members())
+        for (var member : super.members())
         {
             // If it's a node
             if (member.isNode())
@@ -104,14 +104,14 @@ public class WorldRelation extends EdgeRelation
             if (member.isWay())
             {
                 // then find out what cell the way is in
-                final var owner = worldCell(member);
+                var owner = worldCell(member);
                 if (owner != null)
                 {
                     // create world edge relation member for the given edge relation member
-                    final var worldMember = worldEdgeRelationMember(owner, member);
+                    var worldMember = worldEdgeRelationMember(owner, member);
 
                     // get the route
-                    final var route = worldMember.route();
+                    var route = worldMember.route();
 
                     // and if the route is valid
                     if (route != null)
@@ -123,7 +123,7 @@ public class WorldRelation extends EdgeRelation
                         if (route.first().from().isClipped() || route.last().to().isClipped())
                         {
                             // go through neighboring cells
-                            for (final var neighbor : worldCell.neighbors())
+                            for (var neighbor : worldCell.neighbors())
                             {
                                 // and if the neighboring cell contains the osm way identifier
                                 if (neighbor.cellGraph().contains(member.identifier()))
@@ -154,13 +154,13 @@ public class WorldRelation extends EdgeRelation
         return worldCell;
     }
 
-    private WorldCell worldCell(final EdgeRelationMember member)
+    private WorldCell worldCell(EdgeRelationMember member)
     {
         if (worldCell.cellGraph().contains(member.identifier()))
         {
             return worldCell;
         }
-        for (final var neighbor : worldCell.neighbors())
+        for (var neighbor : worldCell.neighbors())
         {
             if (neighbor.cellGraph().contains(member.identifier()))
             {
@@ -170,7 +170,7 @@ public class WorldRelation extends EdgeRelation
         return null;
     }
 
-    private WorldRelationMember worldEdgeRelationMember(final WorldCell worldCell, final EdgeRelationMember member)
+    private WorldRelationMember worldEdgeRelationMember(WorldCell worldCell, EdgeRelationMember member)
     {
         return new WorldRelationMember(this, worldCell, member.identifier(), member.role());
     }

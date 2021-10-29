@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.measurements.project;
 
+import com.telenav.kivakit.test.random.RandomValueFactory;
+import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Area;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.motion.Speed;
-import com.telenav.kivakit.test.random.RandomValueFactory;
-import com.telenav.lexakai.annotations.LexakaiJavadoc;
 
 /**
  * Adds the ability to produce random map measurements to {@link RandomValueFactory}.
@@ -37,7 +37,7 @@ public class MeasurementsRandomValueFactory extends RandomValueFactory
     {
     }
 
-    public MeasurementsRandomValueFactory(final long seed)
+    public MeasurementsRandomValueFactory(long seed)
     {
         super(seed);
     }
@@ -52,9 +52,9 @@ public class MeasurementsRandomValueFactory extends RandomValueFactory
      * @param maximum The maximum value (exclusive)
      * @return An angle value greater than or equal to the minimum and less than the maximum.
      */
-    public Angle newAngle(final Angle minimum, final Angle maximum)
+    public Angle newAngle(Angle minimum, Angle maximum)
     {
-        final var difference = maximum.minus(minimum);
+        var difference = maximum.minus(minimum);
         return minimum.plus(difference.times(Math.random()));
     }
 
@@ -68,9 +68,9 @@ public class MeasurementsRandomValueFactory extends RandomValueFactory
      * @param maximum The maximum value (exclusive)
      * @return An area value greater than or equal to the minimum and less than the maximum.
      */
-    public Area newArea(final Area minimum, final Area maximum)
+    public Area newArea(Area minimum, Area maximum)
     {
-        final var difference = maximum.minus(minimum);
+        var difference = maximum.minus(minimum);
         return minimum.plus(difference.times(Math.random()));
     }
 
@@ -84,9 +84,9 @@ public class MeasurementsRandomValueFactory extends RandomValueFactory
      * @param maximum The maximum value (exclusive)
      * @return A distance value greater than or equal to the minimum and less than the maximum.
      */
-    public Distance newDistance(final Distance minimum, final Distance maximum)
+    public Distance newDistance(Distance minimum, Distance maximum)
     {
-        final var difference = maximum.minus(minimum);
+        var difference = maximum.minus(minimum);
         return minimum.add(difference.times(Math.random()));
     }
 

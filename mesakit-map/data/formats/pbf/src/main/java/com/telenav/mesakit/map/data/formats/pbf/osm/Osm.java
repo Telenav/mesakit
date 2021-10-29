@@ -18,18 +18,18 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.osm;
 
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfOsm;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 @UmlClassDiagram(diagram = DiagramPbfOsm.class)
 public class Osm
 {
-    public static boolean isNavigable(final PbfWay way)
+    public static boolean isNavigable(PbfWay way)
     {
-        for (final var tag : way)
+        for (var tag : way)
         {
-            final var key = tag.getKey();
+            var key = tag.getKey();
             if ("area".equalsIgnoreCase(key) || "landuse".equalsIgnoreCase(key))
             {
                 return false;

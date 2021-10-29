@@ -31,46 +31,46 @@ public class FunctionalClassCounterLevelPromoter implements LevelPromoter
     private final int[] counter = { 0, 0, 0, 0, 0, 0 };
 
     @Override
-    public void onRelax(final Edge edge)
+    public void onRelax(Edge edge)
     {
         // Increase the counter for the given road functional class
-        this.counter[edge.roadFunctionalClass().identifier()]++;
+        counter[edge.roadFunctionalClass().identifier()]++;
 
         // If there is a next level
-        var nextLevel = this.currentLevel.nextLevel();
+        var nextLevel = currentLevel.nextLevel();
         if (nextLevel != null)
         {
             // Loop through levels getting the sum of all counters
             var total = 0;
             for (; nextLevel != null; nextLevel = nextLevel.nextLevel())
             {
-                total += this.counter[nextLevel.identifier()];
+                total += counter[nextLevel.identifier()];
             }
 
             // If we reached the promotion threshold,
-            if (total >= promotionThreshold[this.currentLevel.identifier()])
+            if (total >= promotionThreshold[currentLevel.identifier()])
             {
                 // promote to next level
-                this.currentLevel = this.currentLevel.nextLevel();
+                currentLevel = currentLevel.nextLevel();
             }
         }
     }
 
     @Override
-    public void onSettle(final Edge edge)
+    public void onSettle(Edge edge)
     {
         if (edge != null)
         {
             // Decrease the counter based on edge's functional class, but not less than zero
-            final var index = edge.roadFunctionalClass().identifier();
-            this.counter[index] = Math.max(0, this.counter[index] - 1);
+            var index = edge.roadFunctionalClass().identifier();
+            counter[index] = Math.max(0, counter[index] - 1);
         }
     }
 
     @Override
-    public boolean shouldExplore(final Edge edge)
+    public boolean shouldExplore(Edge edge)
     {
         // We should settle the edge if the road functional class is NOT less than the current level
-        return !edge.roadFunctionalClass().isLessImportantThan(this.currentLevel);
+        return !edge.roadFunctionalClass().isLessImportantThan(currentLevel);
     }
 }

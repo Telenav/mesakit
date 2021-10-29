@@ -56,12 +56,12 @@ public class DijkstraRouter extends BaseRouter
     /** Any level promoter */
     private LevelPromoter levelPromoter = LevelPromoter.NULL;
 
-    public DijkstraRouter(final CostFunction costFunction)
+    public DijkstraRouter(CostFunction costFunction)
     {
         this.costFunction = costFunction;
     }
 
-    private DijkstraRouter(final DijkstraRouter that)
+    private DijkstraRouter(DijkstraRouter that)
     {
         costFunction = that.costFunction;
         routePermissionFunction = that.routePermissionFunction;
@@ -70,16 +70,16 @@ public class DijkstraRouter extends BaseRouter
         heuristicCostFunction = that.heuristicCostFunction;
     }
 
-    public RoutingResponse execute(final DijkstraRoutingRequest request, int iterations)
+    public RoutingResponse execute(DijkstraRoutingRequest request, int iterations)
     {
         // If iterations is 1, we're doing bi-dijkstra
-        final var bidirectionalDijkstra = iterations == 1;
+        var bidirectionalDijkstra = iterations == 1;
 
         // While we have vertexes to process
         while (!request.isDone() && iterations-- > 0)
         {
             // get the next vertex and mark it as visited or "settled"
-            final var at = request.settle();
+            var at = request.settle();
 
             // update level promoter
             levelPromoter.onSettle(at.edge(request.direction()));
@@ -92,10 +92,10 @@ public class DijkstraRouter extends BaseRouter
             }
 
             // Go through each candidate edge leaving the vertex we're at
-            for (final var candidate : request.candidates(at.vertex()))
+            for (var candidate : request.candidates(at.vertex()))
             {
                 // Get candidate cost
-                final var candidateCost = costFunction.cost(candidate);
+                var candidateCost = costFunction.cost(candidate);
 
                 // and if the cost is maximum (for example, if the edge is a toll road and we're
                 // avoiding toll roads, the cost function will return Cost.MAXIMUM)
@@ -109,13 +109,13 @@ public class DijkstraRouter extends BaseRouter
                 if (levelPromoter.shouldExplore(candidate))
                 {
                     // then get the state for the next vertex we can reach via this edge
-                    final var next = request.state(request.nextVertex(candidate));
+                    var next = request.state(request.nextVertex(candidate));
 
                     // and if the to vertex is not already settled,
                     if (!next.isSettled())
                     {
                         // ask the limiter what we should do with the edge
-                        final var instruction = request.limiter().instruction(candidate);
+                        var instruction = request.limiter().instruction(candidate);
                         switch (instruction.meaning())
                         {
                             case STOP_ROUTING:
@@ -128,7 +128,7 @@ public class DijkstraRouter extends BaseRouter
                                 // of vertexes that lead to the 'at' vertex so we cannot skip this
                                 // call in the YES case below even though we would not actually test
                                 // the route with the route permission function.
-                                final var route = at.route(request.direction());
+                                var route = at.route(request.direction());
 
                                 // If the candidate edge needs to be checked
                                 if (edgePermissionFunction.allowed(candidate) == MAYBE)
@@ -169,7 +169,7 @@ public class DijkstraRouter extends BaseRouter
     }
 
     @Override
-    public RoutingResponse onFindRoute(final RoutingRequest request)
+    public RoutingResponse onFindRoute(RoutingRequest request)
     {
         // Start routing
         request.onStartRouting();
@@ -178,39 +178,39 @@ public class DijkstraRouter extends BaseRouter
         return execute((DijkstraRoutingRequest) request, Integer.MAX_VALUE);
     }
 
-    public DijkstraRouter withEdgePermissionFunction(final EdgePermissionFunction edgePermissionFunction)
+    public DijkstraRouter withEdgePermissionFunction(EdgePermissionFunction edgePermissionFunction)
     {
-        final var router = new DijkstraRouter(this);
+        var router = new DijkstraRouter(this);
         router.edgePermissionFunction = edgePermissionFunction;
         return router;
     }
 
-    public DijkstraRouter withHeuristicCostFunction(final CostFunction heuristicCostFunction)
+    public DijkstraRouter withHeuristicCostFunction(CostFunction heuristicCostFunction)
     {
         if (heuristicCostFunction != null)
         {
-            final var router = new DijkstraRouter(this);
+            var router = new DijkstraRouter(this);
             router.heuristicCostFunction = heuristicCostFunction;
             return router;
         }
         return this;
     }
 
-    public DijkstraRouter withLevelPromoter(final LevelPromoter levelPromoter)
+    public DijkstraRouter withLevelPromoter(LevelPromoter levelPromoter)
     {
-        final var router = new DijkstraRouter(this);
+        var router = new DijkstraRouter(this);
         router.levelPromoter = levelPromoter;
         return router;
     }
 
-    public DijkstraRouter withRoutePermissionFunction(final RoutePermissionFunction routePermissionFunction)
+    public DijkstraRouter withRoutePermissionFunction(RoutePermissionFunction routePermissionFunction)
     {
-        final var router = new DijkstraRouter(this);
+        var router = new DijkstraRouter(this);
         router.routePermissionFunction = routePermissionFunction;
         return router;
     }
 
-    private Cost heuristicCost(final Edge edge)
+    private Cost heuristicCost(Edge edge)
     {
         if (heuristicCostFunction != null)
         {
@@ -219,14 +219,14 @@ public class DijkstraRouter extends BaseRouter
         return costFunction.cost(edge);
     }
 
-    private void maybeRelax(final DijkstraRoutingRequest request, final VertexState at, final VertexState next,
-                            final Edge candidate, final Cost candidateCost)
+    private void maybeRelax(DijkstraRoutingRequest request, VertexState at, VertexState next,
+                            Edge candidate, Cost candidateCost)
     {
         // Tell the level promoter we are relaxing a new candidate
         levelPromoter.onRelax(candidate);
 
         // Get the total cost of where we're at, plus the cost of candidate
-        final var cost = at.cost().add(candidateCost);
+        var cost = at.cost().add(candidateCost);
 
         // If the cost is lower,
         if (cost.isLessThan(next.cost()))
@@ -241,7 +241,7 @@ public class DijkstraRouter extends BaseRouter
             if (request.isDebugging())
             {
                 // call onRelaxed
-                final var relaxed = next.route(request.direction());
+                var relaxed = next.route(request.direction());
                 if (relaxed != null)
                 {
                     request.onRelaxed(relaxed, next.cost());

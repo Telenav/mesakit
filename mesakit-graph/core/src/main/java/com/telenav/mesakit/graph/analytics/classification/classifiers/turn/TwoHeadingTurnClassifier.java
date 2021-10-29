@@ -41,27 +41,27 @@ public final class TwoHeadingTurnClassifier
 
     private Angle slightTurn = Angle.degrees(16);
 
-    public void hardTurn(final Angle hardTurn)
+    public void hardTurn(Angle hardTurn)
     {
         this.hardTurn = hardTurn;
     }
 
-    public void normalTurn(final Angle normalTurn)
+    public void normalTurn(Angle normalTurn)
     {
         this.normalTurn = normalTurn;
     }
 
-    public void slightTurn(final Angle slightTurn)
+    public void slightTurn(Angle slightTurn)
     {
         this.slightTurn = slightTurn;
     }
 
-    public TurnType type(final Headed from, final Headed to)
+    public TurnType type(Headed from, Headed to)
     {
-        final var fromHeading = from.heading();
-        final var toHeading = to.heading();
+        var fromHeading = from.heading();
+        var toHeading = to.heading();
 
-        final var clockwise = fromHeading.difference(toHeading, Chirality.CLOCKWISE);
+        var clockwise = fromHeading.difference(toHeading, Chirality.CLOCKWISE);
         if (clockwise.isClose(Angle._180_DEGREES, Angle.degrees(1)))
         {
             return TurnType.IN_PLACE_U_TURN;
@@ -89,7 +89,7 @@ public final class TwoHeadingTurnClassifier
                 return TurnType.RIGHT_SIDE_U_TURN;
             }
         }
-        final var counterclockwise = fromHeading.difference(toHeading, Chirality.COUNTERCLOCKWISE);
+        var counterclockwise = fromHeading.difference(toHeading, Chirality.COUNTERCLOCKWISE);
         if (counterclockwise.isLessThan(Angle._180_DEGREES))
         {
             if (counterclockwise.isGreaterThanOrEqualTo(Angle._0_DEGREES) && counterclockwise.isLessThan(slightTurn))
@@ -118,7 +118,7 @@ public final class TwoHeadingTurnClassifier
         return fail("Internal Error");
     }
 
-    public void uTurn(final Angle uTurn)
+    public void uTurn(Angle uTurn)
     {
         this.uTurn = uTurn;
     }

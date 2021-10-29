@@ -27,130 +27,6 @@ import java.util.Set;
 public class RegionCodeTest extends RegionUnitTest
 {
     @Test
-    public void testMesaKitCity()
-    {
-        final var code = code("United_States-Washington-City_San_Jose");
-        ensureEqual(3, code.size());
-        ensureEqual("United_States", code.first().code());
-        ensureEqual("Washington", code.second().code());
-        ensureEqual("City_San_Jose", code.third().code());
-        ensureEqual("United_States", code.first(1).code());
-        ensureEqual("United_States-Washington", code.first(2).code());
-        ensureEqual("United_States-Washington-City_San_Jose", code.first(3).code());
-        ensureEqual("United_States-Washington-City_San_Jose", code.code());
-        ensure(code.hasState());
-        ensure(code.hasCity());
-        ensure(code.isMesaKitn());
-        ensure(code.isCity());
-        ensure(code.isValid());
-    }
-
-    @Test
-    public void testMesaKitContinent()
-    {
-        final var code = code("North_America");
-        ensureEqual(1, code.size());
-        ensureEqual("North_America", code.first().code());
-        ensure(code.isMesaKitn());
-        ensure(code.isContinent());
-        ensure(code.isValid());
-    }
-
-    @Test
-    public void testMesaKitCountry()
-    {
-        final var code = code("United_States");
-        ensureEqual(1, code.size());
-        ensureEqual("United_States", code.first().code());
-        ensure(code.isMesaKitn());
-        ensure(code.isCountry());
-        ensure(code.isValid());
-    }
-
-    @Test
-    public void testMesaKitCounty()
-    {
-        final var code = code("United_States-Washington-County_King");
-        ensureEqual(3, code.size());
-        ensureEqual("United_States", code.first().code());
-        ensureEqual("Washington", code.second().code());
-        ensureEqual("County_King", code.third().code());
-        ensureEqual("United_States", code.first(1).code());
-        ensureEqual("United_States-Washington", code.first(2).code());
-        ensureEqual("United_States-Washington-County_King", code.first(3).code());
-        ensureEqual("United_States-Washington-County_King", code.code());
-        ensure(code.hasCounty());
-        ensure(code.hasState());
-        ensure(code.hasCounty());
-        ensure(code.isMesaKitn());
-        ensure(code.isCounty());
-        ensure(code.isValid());
-    }
-
-    @Test
-    public void testMesaKitDistrict()
-    {
-        final var code = code("United_States-Washington-City_San_Jose-District_Telenav");
-        ensureEqual(4, code.size());
-        ensureEqual("United_States", code.first().code());
-        ensureEqual("Washington", code.second().code());
-        ensureEqual("City_San_Jose", code.third().code());
-        ensureEqual("District_Telenav", code.fourth().code());
-        ensureEqual("United_States", code.first(1).code());
-        ensureEqual("United_States-Washington", code.first(2).code());
-        ensureEqual("United_States-Washington-City_San_Jose", code.first(3).code());
-        ensureEqual("United_States-Washington-City_San_Jose-District_Telenav", code.first(4).code());
-        ensureEqual("United_States-Washington-City_San_Jose-District_Telenav", code.code());
-        ensure(code.hasState());
-        ensure(code.hasCity());
-        ensure(code.hasDistrict());
-        ensure(code.isMesaKitn());
-        ensure(code.isDistrict());
-        ensure(code.isValid());
-    }
-
-    @Test
-    public void testMesaKitMetro()
-    {
-        final var code = code("United_States-Washington-Metro_San_Jose");
-        ensureEqual(3, code.size());
-        ensureEqual("United_States", code.first().code());
-        ensureEqual("Washington", code.second().code());
-        ensureEqual("Metro_San_Jose", code.third().code());
-        ensureEqual("United_States", code.first(1).code());
-        ensureEqual("United_States-Washington", code.first(2).code());
-        ensureEqual("United_States-Washington-Metro_San_Jose", code.first(3).code());
-        ensureEqual("United_States-Washington-Metro_San_Jose", code.code());
-        ensure(code.hasState());
-        ensure(code.hasMetropolitanArea());
-        ensure(code.isMesaKitn());
-        ensure(code.isMetropolitanArea());
-        ensure(code.isValid());
-    }
-
-    @Test
-    public void testMesaKitState()
-    {
-        final var code = code("United_States-Washington");
-        ensureEqual(2, code.size());
-        ensureEqual("United_States-Washington", code.first(2).code());
-        ensure(code.isMesaKitn());
-        ensure(code.isState());
-        ensure(code.isValid());
-    }
-
-    @Test
-    public void testMesaKitWorld()
-    {
-        final var code = code("Earth");
-        ensureEqual(1, code.size());
-        ensureEqual("Earth", code.first().code());
-        ensure(code.isMesaKitn());
-        ensure(code.isWorld());
-        ensure(code.isValid());
-    }
-
-    @Test
     public void testAppend()
     {
         final var washington = code("US-WA");
@@ -295,6 +171,130 @@ public class RegionCodeTest extends RegionUnitTest
         ensureEqual(1, code.size());
         ensureEqual("EARTH", code.first().code());
         ensure(code.isIso());
+        ensure(code.isWorld());
+        ensure(code.isValid());
+    }
+
+    @Test
+    public void testMesaKitCity()
+    {
+        final var code = code("United_States-Washington-City_San_Jose");
+        ensureEqual(3, code.size());
+        ensureEqual("United_States", code.first().code());
+        ensureEqual("Washington", code.second().code());
+        ensureEqual("City_San_Jose", code.third().code());
+        ensureEqual("United_States", code.first(1).code());
+        ensureEqual("United_States-Washington", code.first(2).code());
+        ensureEqual("United_States-Washington-City_San_Jose", code.first(3).code());
+        ensureEqual("United_States-Washington-City_San_Jose", code.code());
+        ensure(code.hasState());
+        ensure(code.hasCity());
+        ensure(code.isMesaKitn());
+        ensure(code.isCity());
+        ensure(code.isValid());
+    }
+
+    @Test
+    public void testMesaKitContinent()
+    {
+        final var code = code("North_America");
+        ensureEqual(1, code.size());
+        ensureEqual("North_America", code.first().code());
+        ensure(code.isMesaKitn());
+        ensure(code.isContinent());
+        ensure(code.isValid());
+    }
+
+    @Test
+    public void testMesaKitCountry()
+    {
+        final var code = code("United_States");
+        ensureEqual(1, code.size());
+        ensureEqual("United_States", code.first().code());
+        ensure(code.isMesaKitn());
+        ensure(code.isCountry());
+        ensure(code.isValid());
+    }
+
+    @Test
+    public void testMesaKitCounty()
+    {
+        final var code = code("United_States-Washington-County_King");
+        ensureEqual(3, code.size());
+        ensureEqual("United_States", code.first().code());
+        ensureEqual("Washington", code.second().code());
+        ensureEqual("County_King", code.third().code());
+        ensureEqual("United_States", code.first(1).code());
+        ensureEqual("United_States-Washington", code.first(2).code());
+        ensureEqual("United_States-Washington-County_King", code.first(3).code());
+        ensureEqual("United_States-Washington-County_King", code.code());
+        ensure(code.hasCounty());
+        ensure(code.hasState());
+        ensure(code.hasCounty());
+        ensure(code.isMesaKitn());
+        ensure(code.isCounty());
+        ensure(code.isValid());
+    }
+
+    @Test
+    public void testMesaKitDistrict()
+    {
+        final var code = code("United_States-Washington-City_San_Jose-District_Telenav");
+        ensureEqual(4, code.size());
+        ensureEqual("United_States", code.first().code());
+        ensureEqual("Washington", code.second().code());
+        ensureEqual("City_San_Jose", code.third().code());
+        ensureEqual("District_Telenav", code.fourth().code());
+        ensureEqual("United_States", code.first(1).code());
+        ensureEqual("United_States-Washington", code.first(2).code());
+        ensureEqual("United_States-Washington-City_San_Jose", code.first(3).code());
+        ensureEqual("United_States-Washington-City_San_Jose-District_Telenav", code.first(4).code());
+        ensureEqual("United_States-Washington-City_San_Jose-District_Telenav", code.code());
+        ensure(code.hasState());
+        ensure(code.hasCity());
+        ensure(code.hasDistrict());
+        ensure(code.isMesaKitn());
+        ensure(code.isDistrict());
+        ensure(code.isValid());
+    }
+
+    @Test
+    public void testMesaKitMetro()
+    {
+        final var code = code("United_States-Washington-Metro_San_Jose");
+        ensureEqual(3, code.size());
+        ensureEqual("United_States", code.first().code());
+        ensureEqual("Washington", code.second().code());
+        ensureEqual("Metro_San_Jose", code.third().code());
+        ensureEqual("United_States", code.first(1).code());
+        ensureEqual("United_States-Washington", code.first(2).code());
+        ensureEqual("United_States-Washington-Metro_San_Jose", code.first(3).code());
+        ensureEqual("United_States-Washington-Metro_San_Jose", code.code());
+        ensure(code.hasState());
+        ensure(code.hasMetropolitanArea());
+        ensure(code.isMesaKitn());
+        ensure(code.isMetropolitanArea());
+        ensure(code.isValid());
+    }
+
+    @Test
+    public void testMesaKitState()
+    {
+        final var code = code("United_States-Washington");
+        ensureEqual(2, code.size());
+        ensureEqual("United_States-Washington", code.first(2).code());
+        ensure(code.isMesaKitn());
+        ensure(code.isState());
+        ensure(code.isValid());
+    }
+
+    @Test
+    public void testMesaKitWorld()
+    {
+        final var code = code("Earth");
+        ensureEqual(1, code.size());
+        ensureEqual("Earth", code.first().code());
+        ensure(code.isMesaKitn());
         ensure(code.isWorld());
         ensure(code.isValid());
     }

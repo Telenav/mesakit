@@ -25,13 +25,13 @@ import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfRevisionNumber
 
 public class RevisionNumberExtractor extends BaseExtractor<PbfRevisionNumber, PbfWay>
 {
-    public RevisionNumberExtractor(final Listener listener)
+    public RevisionNumberExtractor(Listener listener)
     {
         super(listener);
     }
 
     @Override
-    public PbfRevisionNumber onExtract(final PbfWay way)
+    public PbfRevisionNumber onExtract(PbfWay way)
     {
         return new PbfRevisionNumber(way.version());
     }

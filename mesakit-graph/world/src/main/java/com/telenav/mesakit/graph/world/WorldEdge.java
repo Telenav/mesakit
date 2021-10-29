@@ -57,33 +57,39 @@ public class WorldEdge extends Edge
     {
         private final WorldGraph graph;
 
-        public Converter(final WorldGraph graph, final Listener listener)
+        public Converter(WorldGraph graph, Listener listener)
         {
             super(graph, listener);
             this.graph = graph;
         }
 
         @Override
-        protected Edge onToValue(final String value)
+        protected String onToString(Edge edge)
+        {
+            return edge.toString();
+        }
+
+        @Override
+        protected Edge onToValue(String value)
         {
             // Try to find the third '-' in the string value (for example, "cell-60-36-")
-            final var end = Strings.nth(value, 3, '-');
+            var end = Strings.nth(value, 3, '-');
 
             // and if we found a third '-'
             if (end > 0)
             {
                 // extract the cell name from the value
-                final var cellName = value.substring(0, end);
+                var cellName = value.substring(0, end);
 
                 // and look up the cell by name,
-                final var worldCell = graph.worldGrid().worldCell(cellName);
+                var worldCell = graph.worldGrid().worldCell(cellName);
 
                 // and if we got the cell
                 if (worldCell != null)
                 {
                     // then convert the edge using the cell's graph
-                    final var converter = new Edge.Converter(worldCell.cellGraph(), this);
-                    final var edge = converter.convert(value.substring(end + 1));
+                    var converter = new Edge.Converter(worldCell.cellGraph(), this);
+                    var edge = converter.convert(value.substring(end + 1));
 
                     // and if the edge converted
                     if (edge != null)
@@ -95,41 +101,35 @@ public class WorldEdge extends Edge
             }
             return null;
         }
-
-        @Override
-        protected String onToString(final Edge edge)
-        {
-            return edge.toString();
-        }
     }
 
     /** The cell where this edge is located */
     private final WorldCell worldCell;
 
-    public WorldEdge(final WorldCell worldCell, final Edge edge)
+    public WorldEdge(WorldCell worldCell, Edge edge)
     {
         super(null, edge.identifier());
         this.worldCell = worldCell;
     }
 
-    public WorldEdge(final WorldCell worldCell, final EdgeIdentifier identifier)
+    public WorldEdge(WorldCell worldCell, EdgeIdentifier identifier)
     {
         super(null, identifier);
         this.worldCell = worldCell;
     }
 
-    public WorldEdge(final WorldEdgeIdentifier identifier)
+    public WorldEdge(WorldEdgeIdentifier identifier)
     {
         super(null, identifier);
         worldCell = identifier.worldCell();
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof WorldEdge)
         {
-            final var that = (WorldEdge) object;
+            var that = (WorldEdge) object;
             return worldCell.equals(that.worldCell) && super.equals(that);
         }
         return false;
@@ -180,8 +180,8 @@ public class WorldEdge extends Edge
     @Override
     public Set<EdgeRelation> relations()
     {
-        final Set<EdgeRelation> relations = new HashSet<>();
-        for (final var relation : super.relations())
+        Set<EdgeRelation> relations = new HashSet<>();
+        for (var relation : super.relations())
         {
             relations.add(new WorldRelation(worldCell, relation));
         }

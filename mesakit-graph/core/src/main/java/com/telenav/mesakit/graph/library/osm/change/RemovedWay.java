@@ -32,7 +32,7 @@ public class RemovedWay
     // The identifier of this new way
     private final PbfWayIdentifier identifier;
 
-    public RemovedWay(final PbfWayIdentifier identifier)
+    public RemovedWay(PbfWayIdentifier identifier)
     {
         this.identifier = ensureNotNull(identifier);
     }
@@ -41,11 +41,11 @@ public class RemovedWay
      * {@inheritDoc}
      */
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof RemovedWay)
         {
-            final var that = (RemovedWay) object;
+            var that = (RemovedWay) object;
             return identifier.equals(that.identifier);
         }
         return false;

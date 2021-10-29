@@ -38,7 +38,7 @@ public class PbfAllNodeDiskStores
 
     private final PbfAllNodeIndexDiskStore pbfNodeIndexDiskStore;
 
-    public PbfAllNodeDiskStores(final Folder folder, final FileName fileName)
+    public PbfAllNodeDiskStores(Folder folder, FileName fileName)
     {
         pbfNodeIndexDiskStore = new PbfAllNodeIndexDiskStore(folder.folder(fileName + "-node-indexes"));
         pbfNodeIdentifierDiskStore = new PbfAllNodeIdentifierDiskStore(folder.folder(fileName + "-node-identifiers"));
@@ -46,7 +46,7 @@ public class PbfAllNodeDiskStores
         pbfNodeMetadataDiskStore = new PbfAllNodeMetadataDiskStore(folder.folder(fileName + "-node-metadata"));
     }
 
-    public void add(final PbfNode node)
+    public void add(PbfNode node)
     {
         pbfNodeIndexDiskStore.add(node);
         pbfNodeIdentifierDiskStore.add(node);
@@ -87,7 +87,7 @@ public class PbfAllNodeDiskStores
         return pbfNodeTagDiskStore;
     }
 
-    public void saveTo(final GraphArchive archive)
+    public void saveTo(GraphArchive archive)
     {
         pbfNodeIndexDiskStore.saveTo(archive);
         pbfNodeIdentifierDiskStore.saveTo(archive);

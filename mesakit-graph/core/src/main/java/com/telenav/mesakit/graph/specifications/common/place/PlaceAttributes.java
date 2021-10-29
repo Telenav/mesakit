@@ -38,7 +38,7 @@ public class PlaceAttributes extends GraphElementAttributes<Place>
 
     public class PlaceAttribute extends GraphElementAttribute
     {
-        public PlaceAttribute(final String name)
+        public PlaceAttribute(String name)
         {
             super(name);
         }

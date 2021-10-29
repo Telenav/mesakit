@@ -30,17 +30,17 @@ public class PbfNodeTagStore
 
     private int index = 1;
 
-    public PbfNodeTagStore(final PbfTagCodec codec)
+    public PbfNodeTagStore(PbfTagCodec codec)
     {
         tags = new TagStore("PbfNodeTagStore.tags", codec);
     }
 
-    public void add(final PbfTagList tags)
+    public void add(PbfTagList tags)
     {
         this.tags.set(new GraphNodeIndex(index++), tags);
     }
 
-    public PbfTagList get(final GraphElement element)
+    public PbfTagList get(GraphElement element)
     {
         return tags.tagList(element);
     }

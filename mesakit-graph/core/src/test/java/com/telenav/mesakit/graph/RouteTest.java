@@ -70,16 +70,16 @@ public class RouteTest extends GraphUnitTest
     public void testAppend()
     {
         // Both (1 => 2) + 3 and 1 + (2 => 3) should construct 1 => 2 => 3
-        final Route route1 = Route.forEdges(edge1, edge2).append(edge3);
-        final Route route2 = Route.fromEdge(edge1).append(Route.forEdges(edge2, edge3));
+        Route route1 = Route.forEdges(edge1, edge2).append(edge3);
+        Route route2 = Route.fromEdge(edge1).append(Route.forEdges(edge2, edge3));
         ensureEqual(route1, route2);
 
         // But 2 => 3 should not be equal to 1 => 2 => 3
-        final Route route3 = Route.fromEdge(edge2).append(edge3);
+        Route route3 = Route.fromEdge(edge2).append(edge3);
         ensureNotEqual(route1, route3);
 
         // And 1 with 2 => 3 should equal 1 => 2 => 3
-        final Route route4 = Route.fromEdge(edge1).append(route3);
+        Route route4 = Route.fromEdge(edge1).append(route3);
         ensureEqual(route1, route4);
 
         try
@@ -88,7 +88,7 @@ public class RouteTest extends GraphUnitTest
             Route.fromEdge(edge1).append(unconnectedEdge);
             fail("Should have caused an exception");
         }
-        catch (final AssertionError ignored)
+        catch (AssertionError ignored)
         {
         }
     }
@@ -96,7 +96,7 @@ public class RouteTest extends GraphUnitTest
     @Test
     public void testComplexTurnType()
     {
-        final ComplexTurnClassifier classifier = ComplexTurnClassifier.DEFAULT;
+        ComplexTurnClassifier classifier = ComplexTurnClassifier.DEFAULT;
         ensure(classifier.type(osmDowntownSeattleTestRoute(450919738000001L, 450919738000002L, 428243940000000L)) == TurnType.LEFT);
         ensure(classifier.type(osmDowntownSeattleTestRoute(240874273000001L, 240874273000002L, 484863624000000L)) == TurnType.RIGHT);
     }
@@ -105,10 +105,10 @@ public class RouteTest extends GraphUnitTest
     public void testConcatenation()
     {
         // 1 + (2 => 3 => 4) => 1, 2, 3, 4
-        final Route route1 = Route.fromEdge(edge1).append(Route.forEdges(edge2, edge3, edge4));
+        Route route1 = Route.fromEdge(edge1).append(Route.forEdges(edge2, edge3, edge4));
 
         // (1 => 2 => 3) + 4 => 1, 2, 3, 4
-        final Route route2 = Route.forEdges(edge1, edge2, edge3).append(Route.fromEdge(edge4));
+        Route route2 = Route.forEdges(edge1, edge2, edge3).append(Route.fromEdge(edge4));
 
         ensureEqual(route1, route2);
 
@@ -126,7 +126,7 @@ public class RouteTest extends GraphUnitTest
 
         // Check total length
         Distance length = Distance.ZERO;
-        for (final Edge edge : route1)
+        for (Edge edge : route1)
         {
             length = length.add(edge.length());
         }
@@ -152,7 +152,7 @@ public class RouteTest extends GraphUnitTest
                     osmDowntownSeattleTestEdge(65113930001L));
             fail("Should have thrown exception");
         }
-        catch (final AssertionError ignored)
+        catch (AssertionError ignored)
         {
         }
     }
@@ -165,7 +165,7 @@ public class RouteTest extends GraphUnitTest
             Route.forEdges(edge1, edge2).append(Route.fromEdge(edge2));
             fail("Should have thrown exception");
         }
-        catch (final AssertionError ignored)
+        catch (AssertionError ignored)
         {
         }
     }
@@ -173,7 +173,7 @@ public class RouteTest extends GraphUnitTest
     @Ignore
     public void testEquals()
     {
-        final Graph graph = osmDowntownSeattleTest();
+        Graph graph = osmDowntownSeattleTest();
 
         // We shouldn't be able to look up invalid edge identifiers
         try
@@ -181,7 +181,7 @@ public class RouteTest extends GraphUnitTest
             graph.edgeForIdentifier(new EdgeIdentifier(-111111111));
             fail("Should have thrown exception");
         }
-        catch (final AssertionError ignored)
+        catch (AssertionError ignored)
         {
             // expected
         }
@@ -203,7 +203,7 @@ public class RouteTest extends GraphUnitTest
     public void testGet()
     {
         // 1 => 2 => 3 => 4
-        final Route route = Route.forEdges(edge1, edge2, edge3, edge4);
+        Route route = Route.forEdges(edge1, edge2, edge3, edge4);
 
         ensureEqual(edge1, route.get(0));
         ensureEqual(edge2, route.get(1));
@@ -214,7 +214,7 @@ public class RouteTest extends GraphUnitTest
             route.get(-1);
             fail("Should not have worked");
         }
-        catch (final AssertionError ignored)
+        catch (AssertionError ignored)
         {
         }
         try
@@ -222,7 +222,7 @@ public class RouteTest extends GraphUnitTest
             route.get(4);
             fail("Should not have worked");
         }
-        catch (final AssertionError ignored)
+        catch (AssertionError ignored)
         {
         }
     }
@@ -232,13 +232,13 @@ public class RouteTest extends GraphUnitTest
     {
 
         // 1 => 2
-        final Route route1 = Route.fromEdge(edge1).append(edge2);
+        Route route1 = Route.fromEdge(edge1).append(edge2);
 
         // 2 => 3
-        final Route route2 = Route.fromEdge(edge2).append(edge3);
+        Route route2 = Route.fromEdge(edge2).append(edge3);
 
         // 4
-        final Route route3 = Route.fromEdge(edge4);
+        Route route3 = Route.fromEdge(edge4);
 
         // Overlaps at edge 2
         ensure(route1.overlaps(route2));
@@ -250,15 +250,15 @@ public class RouteTest extends GraphUnitTest
     @Test
     public void testPrepend()
     {
-        final Route route1 = Route.fromEdge(edge2).prepend(edge1);
-        final Route route2 = Route.fromEdge(edge1).append(edge2);
+        Route route1 = Route.fromEdge(edge2).prepend(edge1);
+        Route route2 = Route.fromEdge(edge1).append(edge2);
         ensureEqual(route1, route2);
     }
 
     @Test
     public void testTurnType()
     {
-        final TurnRestrictionsTurnClassifier classifier = new TurnRestrictionsTurnClassifier();
+        TurnRestrictionsTurnClassifier classifier = new TurnRestrictionsTurnClassifier();
         ensure(classifier.type(osmDowntownSeattleTestRoute(450919738000001L, 450919738000002L, 428243940000000L)) == TurnType.LEFT);
         ensure(classifier.type(osmDowntownSeattleTestRoute(240874273000001L, 240874273000002L, 484863624000000L)) == TurnType.RIGHT);
     }
@@ -267,11 +267,11 @@ public class RouteTest extends GraphUnitTest
     public void testVertexes()
     {
         // 1 => 2 => 3 => 4
-        final Route route = Route.forEdges(edge1, edge2, edge3, edge4);
+        Route route = Route.forEdges(edge1, edge2, edge3, edge4);
 
         // Should get vertexes in order
         int i = 0;
-        for (final Vertex vertex : route.vertexes())
+        for (Vertex vertex : route.vertexes())
         {
             ensureEqual(vertexes.get(i++), vertex);
         }

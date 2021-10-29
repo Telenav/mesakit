@@ -84,7 +84,7 @@ public class TagStore implements KryoSerializable, NamedObject, Initializable
      * @param objectName The name of this object
      * @param codec The codec to compress tags with
      */
-    public TagStore(final String objectName, final PbfTagCodec codec)
+    public TagStore(String objectName, PbfTagCodec codec)
     {
         this.objectName = objectName;
         this.codec = ensureNotNull(codec);
@@ -100,7 +100,7 @@ public class TagStore implements KryoSerializable, NamedObject, Initializable
         return codec;
     }
 
-    public void codec(final PbfTagCodec codec)
+    public void codec(PbfTagCodec codec)
     {
         this.codec = ensureNotNull(codec);
     }
@@ -117,7 +117,7 @@ public class TagStore implements KryoSerializable, NamedObject, Initializable
     }
 
     @Override
-    public void objectName(final String objectName)
+    public void objectName(String objectName)
     {
         this.objectName = objectName;
     }
@@ -134,14 +134,14 @@ public class TagStore implements KryoSerializable, NamedObject, Initializable
         length.nullLong(65_535);
         length.initialize();
 
-        final var tags = new SplitByteArray(objectName() + ".tags");
+        var tags = new SplitByteArray(objectName() + ".tags");
         tags.hasNullByte(false);
         tags.initialize();
         this.tags = tags;
     }
 
     @Override
-    public void read(final Kryo kryo, final Input input)
+    public void read(Kryo kryo, Input input)
     {
         objectName = kryo.readObject(input, String.class);
         offset = kryo.readObject(input, SplitIntArray.class);
@@ -151,21 +151,21 @@ public class TagStore implements KryoSerializable, NamedObject, Initializable
         codec = (PbfTagCodec) kryo.readClassAndObject(input);
     }
 
-    public void set(final GraphElement element, final Entry entry)
+    public void set(GraphElement element, Entry entry)
     {
         offset.set(element.index(), entry.offset);
         length.set(element.index(), entry.length);
     }
 
-    public void set(final GraphElement element, final PbfTagList tags)
+    public void set(GraphElement element, PbfTagList tags)
     {
         if (tags != null && !tags.isEmpty())
         {
             // Get the hashcode of the tags we would like to store
-            final var hash = tags.hashCode();
+            var hash = tags.hashCode();
 
             // and from that get any recently created entry in the tag store with the same hash code
-            final var existingEntry = hashToEntry.get(hash);
+            var existingEntry = hashToEntry.get(hash);
 
             // and if the entry is non-null and the actual tag lists are the same (the hash is not enough)
             if (existingEntry != null && existingEntry.tags.equals(tags))
@@ -176,23 +176,23 @@ public class TagStore implements KryoSerializable, NamedObject, Initializable
             else
             {
                 // otherwise, get the element's index
-                final var index = element.index();
+                var index = element.index();
 
                 // then get the output writer and record the position before encoding
-                final var start = this.tags.cursor();
+                var start = this.tags.cursor();
                 offset.set(index, start);
 
                 // write the tag list
                 codec.encode(this.tags, tags);
 
                 // and then mark the end of the output,
-                final var length = this.tags.cursor() - start;
+                var length = this.tags.cursor() - start;
                 this.length.set(index, length);
 
                 // and finally we check that we can get the element's tag list back
                 assert tags.equals(tagList(element)) : "Tag list stored at index " + index + " should have been:\n" + tags + "\nbut was:\n" + tagList(element);
 
-                final var entry = new Entry();
+                var entry = new Entry();
                 entry.offset = start;
                 entry.length = length;
                 entry.tags = tags;
@@ -207,34 +207,34 @@ public class TagStore implements KryoSerializable, NamedObject, Initializable
         return offset.size();
     }
 
-    public PbfTagList tagList(final GraphElement element)
+    public PbfTagList tagList(GraphElement element)
     {
         // Get offset of tag list
-        final var index = element.index();
-        final var offset = this.offset.safeGet(index);
+        var index = element.index();
+        var offset = this.offset.safeGet(index);
 
         // and if we have tags,
         if (!this.offset.isNull(offset))
         {
             // decode them
-            final var length = (int) this.length.safeGet(index);
+            var length = (int) this.length.safeGet(index);
             return codec.decode(tags.sublist(offset, length));
         }
 
         return PbfTagList.EMPTY;
     }
 
-    public PbfTagMap tagMap(final GraphElement element)
+    public PbfTagMap tagMap(GraphElement element)
     {
         // Get offset of tag list
-        final var index = element.index();
-        final var offset = this.offset.safeGet(index);
+        var index = element.index();
+        var offset = this.offset.safeGet(index);
 
         // and if we have tags,
         if (!this.offset.isNull(offset))
         {
             // decode them
-            final var length = (int) this.length.safeGet(index);
+            var length = (int) this.length.safeGet(index);
             return codec.decodeMap(tags.sublist(offset, length));
         }
 
@@ -248,7 +248,7 @@ public class TagStore implements KryoSerializable, NamedObject, Initializable
     }
 
     @Override
-    public void write(final Kryo kryo, final Output output)
+    public void write(Kryo kryo, Output output)
     {
         kryo.writeObject(output, objectName);
         kryo.writeObject(output, offset);
@@ -261,7 +261,7 @@ public class TagStore implements KryoSerializable, NamedObject, Initializable
 
     private ByteArray unsplit()
     {
-        final var bytes = new ByteArray("bytes");
+        var bytes = new ByteArray("bytes");
         bytes.hasNullByte(false);
         bytes.initialize();
         bytes.addAll(tags);

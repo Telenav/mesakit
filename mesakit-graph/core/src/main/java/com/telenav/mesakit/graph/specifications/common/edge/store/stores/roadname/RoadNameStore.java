@@ -73,7 +73,7 @@ public class RoadNameStore implements NamedObject, Initializable
 
     private final transient WeakHashMap<Long, String> cache = new WeakHashMap<>();
 
-    public RoadNameStore(final String objectName, final Estimate initialSize, final Metadata metadata)
+    public RoadNameStore(String objectName, Estimate initialSize, Metadata metadata)
     {
         codec = metadata.roadNameCharacterCodec();
 
@@ -87,16 +87,16 @@ public class RoadNameStore implements NamedObject, Initializable
     {
     }
 
-    public void codec(final HuffmanCharacterCodec codec)
+    public void codec(HuffmanCharacterCodec codec)
     {
         this.codec = codec;
     }
 
-    public RoadName get(final Edge edge, final RoadName.Type type, final int roadNameOrdinal)
+    public RoadName get(Edge edge, RoadName.Type type, int roadNameOrdinal)
     {
-        final var edgeIndex = edge.index();
-        final var key = keyFor(edgeIndex, type, roadNameOrdinal);
-        final var nameIndex = keyToNameIndex.get(key);
+        var edgeIndex = edge.index();
+        var key = keyFor(edgeIndex, type, roadNameOrdinal);
+        var nameIndex = keyToNameIndex.get(key);
         if (!keyToNameIndex.isNull(nameIndex))
         {
             synchronized (cache)
@@ -104,7 +104,7 @@ public class RoadNameStore implements NamedObject, Initializable
                 var cached = cache.get(key);
                 if (cached == null)
                 {
-                    final var name = new MutableValue<String>();
+                    var name = new MutableValue<String>();
                     codec.decode(names.sublist(nameIndex, 256), (ordinal, decoded) ->
                     {
                         name.set(decoded);
@@ -120,7 +120,7 @@ public class RoadNameStore implements NamedObject, Initializable
     }
 
     @Override
-    public void objectName(final String objectName)
+    public void objectName(String objectName)
     {
         this.objectName = objectName;
     }
@@ -144,25 +144,25 @@ public class RoadNameStore implements NamedObject, Initializable
         keyToNameIndex.initialize();
     }
 
-    public void set(final Edge edge, final RoadName.Type type, final int roadNameOrdinal, final RoadName roadName)
+    public void set(Edge edge, RoadName.Type type, int roadNameOrdinal, RoadName roadName)
     {
         if (roadName != null)
         {
-            final var name = roadName.name();
+            var name = roadName.name();
             if (name != null)
             {
-                final var edgeIndex = edge.index();
-                final var key = keyFor(edgeIndex, type, roadNameOrdinal);
+                var edgeIndex = edge.index();
+                var key = keyFor(edgeIndex, type, roadNameOrdinal);
 
                 // Look in pool for an already-stored index
-                final var pooledIndex = pool.get(name);
+                var pooledIndex = pool.get(name);
                 if (pooledIndex != null)
                 {
                     keyToNameIndex.put(key, pooledIndex);
                 }
                 else
                 {
-                    final var index = names.cursor();
+                    var index = names.cursor();
                     codec.encode(names, SymbolProducer.singleton(name));
                     keyToNameIndex.put(key, index);
                     pool.put(name, index);
@@ -178,14 +178,14 @@ public class RoadNameStore implements NamedObject, Initializable
         }
     }
 
-    public int size(final Edge edge, final RoadName.Type type)
+    public int size(Edge edge, RoadName.Type type)
     {
         var count = 0;
-        final var edgeIndex = edge.index();
+        var edgeIndex = edge.index();
         for (var roadNameOrdinal = 0; roadNameOrdinal < 256; roadNameOrdinal++)
         {
-            final var key = keyFor(edgeIndex, type, roadNameOrdinal);
-            final var nameIndex = keyToNameIndex.get(key);
+            var key = keyFor(edgeIndex, type, roadNameOrdinal);
+            var nameIndex = keyToNameIndex.get(key);
             if (keyToNameIndex.isNull(nameIndex))
             {
                 break;
@@ -198,7 +198,7 @@ public class RoadNameStore implements NamedObject, Initializable
     /**
      * @return A pseudo-index for a given edgeIndex, type and road-name ordinal
      */
-    private long keyFor(final int edgeIndex, final RoadName.Type type, final int roadNameOrdinal)
+    private long keyFor(int edgeIndex, RoadName.Type type, int roadNameOrdinal)
     {
         assert type.ordinal() < 16;
         assert roadNameOrdinal < 256;

@@ -56,16 +56,16 @@ public class RegionCode
 
     private static Pattern MESAKIT_PATTERN;
 
-    public static RegionCode parse(final String... parts)
+    public static RegionCode parse(String... parts)
     {
         if (parts != null && parts.length > 0)
         {
             // If we have only one string,
-            final String[] normalized;
+            String[] normalized;
             if (parts.length == 1)
             {
                 // normalize because of dirty source data
-                final var code = normalizeName(parts[0]);
+                var code = normalizeName(parts[0]);
 
                 // and split into parts
                 normalized = code.split("-");
@@ -75,7 +75,7 @@ public class RegionCode
                 // otherwise normalize each part
                 normalized = new String[parts.length];
                 var index = 0;
-                for (final var part : parts)
+                for (var part : parts)
                 {
                     normalized[index++] = normalizeName(part);
                 }
@@ -85,7 +85,7 @@ public class RegionCode
             if (normalized.length <= 4)
             {
                 // and it is an iso or mesakit code,
-                final var code = new RegionCode(normalized);
+                var code = new RegionCode(normalized);
                 if (code.isIso() || code.isMesaKitn())
                 {
                     // then return it
@@ -99,7 +99,7 @@ public class RegionCode
 
     private String[] parts;
 
-    private RegionCode(final String... parts)
+    private RegionCode(String... parts)
     {
         this.parts = parts;
     }
@@ -113,9 +113,9 @@ public class RegionCode
         return RegionCode.parse(aonize(code()));
     }
 
-    public RegionCode append(final RegionCode that)
+    public RegionCode append(RegionCode that)
     {
-        final var copy = new RegionCode();
+        var copy = new RegionCode();
         copy.parts = new String[parts.length + that.parts.length];
         System.arraycopy(parts, 0, copy.parts, 0, parts.length);
         System.arraycopy(that.parts, 0, copy.parts, parts.length, that.parts.length);
@@ -129,11 +129,11 @@ public class RegionCode
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof RegionCode)
         {
-            final var that = (RegionCode) object;
+            var that = (RegionCode) object;
             return Arrays.equals(parts, that.parts);
         }
         return false;
@@ -144,7 +144,7 @@ public class RegionCode
         return get(0);
     }
 
-    public RegionCode first(final int count)
+    public RegionCode first(int count)
     {
         return RegionCode.parse(new StringList(Maximum._4, parts).first(Count.count(count)).join('-'));
     }
@@ -195,11 +195,6 @@ public class RegionCode
         return Arrays.hashCode(parts);
     }
 
-    public boolean isMesaKitn()
-    {
-        return !isIso();
-    }
-
     public boolean isCity()
     {
         return size() == 3 && hasState() && hasCity();
@@ -228,6 +223,11 @@ public class RegionCode
     public boolean isIso()
     {
         return ISO.matcher(code()).matches();
+    }
+
+    public boolean isMesaKitn()
+    {
+        return !isIso();
     }
 
     public boolean isMetropolitanArea()
@@ -296,7 +296,7 @@ public class RegionCode
         return parts.length;
     }
 
-    public boolean startsWithIgnoreCase(final String prefix)
+    public boolean startsWithIgnoreCase(String prefix)
     {
         return Strings.startsWithIgnoreCase(parts[0], prefix);
     }
@@ -312,12 +312,33 @@ public class RegionCode
         return code();
     }
 
-    public RegionCode withoutPrefix(final String prefix)
+    public RegionCode withoutPrefix(String prefix)
     {
         ensure(!Strings.isEmpty(prefix));
         var code = Strip.leading(code(), prefix);
         code = Strip.leading(code, "_");
         return RegionCode.parse(code);
+    }
+
+    private static Pattern ISO_PATTERN()
+    {
+        if (ISO_PATTERN == null)
+        {
+            ISO_PATTERN = Pattern.compile(
+                    "(?<world>EARTH|MARS)"
+                            + "|"
+                            + "(?<continent>AF|AN|AS|EU|NA|OC|SA)"
+                            + "|"
+                            + "(?<timezone>TIMEZONE_" + ISO_CLASS + "+)"
+                            + "|"
+                            + "((?<country>[A-Z]{2,3})"
+                            + "(-(?<state>" + ISO_CLASS + "+?))?"
+                            + "(-(?<metro>METRO_" + ISO_CLASS + "+))?"
+                            + "(-(?<county>COUNTY_" + ISO_CLASS + "+))?"
+                            + "(-(?<city>CITY_" + ISO_CLASS + "+))?"
+                            + "(-(?<district>DISTRICT" + ISO_CLASS + "+))?)");
+        }
+        return ISO_PATTERN;
     }
 
     private static Pattern MESAKIT_PATTERN()
@@ -342,31 +363,10 @@ public class RegionCode
         return MESAKIT_PATTERN;
     }
 
-    private static Pattern ISO_PATTERN()
-    {
-        if (ISO_PATTERN == null)
-        {
-            ISO_PATTERN = Pattern.compile(
-                    "(?<world>EARTH|MARS)"
-                            + "|"
-                            + "(?<continent>AF|AN|AS|EU|NA|OC|SA)"
-                            + "|"
-                            + "(?<timezone>TIMEZONE_" + ISO_CLASS + "+)"
-                            + "|"
-                            + "((?<country>[A-Z]{2,3})"
-                            + "(-(?<state>" + ISO_CLASS + "+?))?"
-                            + "(-(?<metro>METRO_" + ISO_CLASS + "+))?"
-                            + "(-(?<county>COUNTY_" + ISO_CLASS + "+))?"
-                            + "(-(?<city>CITY_" + ISO_CLASS + "+))?"
-                            + "(-(?<district>DISTRICT" + ISO_CLASS + "+))?)");
-        }
-        return ISO_PATTERN;
-    }
-
     /**
      * Normalized the string and makes it compatible with the filesystem
      */
-    private static String aonize(final String name)
+    private static String aonize(String name)
     {
         return normalizeName(name).replaceAll("[,:;' ]", "_");
     }
@@ -375,13 +375,13 @@ public class RegionCode
      * Makes a string into a fake ISO code by converting to upper-case and removing all characters except letters,
      * digits and dashes.
      */
-    private static String isoize(final String code)
+    private static String isoize(String code)
     {
-        final var normalized = normalizeName(code.toUpperCase());
-        final var builder = new StringBuilder();
+        var normalized = normalizeName(code.toUpperCase());
+        var builder = new StringBuilder();
         for (var i = 0; i < normalized.length(); i++)
         {
-            final var at = normalized.charAt(i);
+            var at = normalized.charAt(i);
             if ((at >= 'A' && at <= 'Z') || (at >= '0' && at <= '9') || at == '-')
             {
                 builder.append(at);
@@ -393,7 +393,7 @@ public class RegionCode
     /**
      * @return Turns a raw name string into one that's compatible with region codes
      */
-    private static String nameize(final String name)
+    private static String nameize(String name)
     {
         return name.replaceAll("-", "_");
     }
@@ -413,7 +413,7 @@ public class RegionCode
         return name;
     }
 
-    RegionCode get(final int index)
+    RegionCode get(int index)
     {
         if (index < parts.length)
         {

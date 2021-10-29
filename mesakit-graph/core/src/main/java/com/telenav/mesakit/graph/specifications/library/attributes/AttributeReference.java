@@ -76,7 +76,7 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
  * @see Factory
  * @see Quantizable
  */
-@SuppressWarnings({ "ConstantConditions", "rawtypes" })
+@SuppressWarnings({ "ConstantConditions" })
 public class AttributeReference<Referent extends NamedObject & Initializable> implements NamedObject
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
@@ -113,8 +113,8 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
      * @param fieldName The name of the field in the store that's being managed
      * @param factory A factory that can create the referent
      */
-    public AttributeReference(final AttributeStore store, final Attribute<?> attribute, final String fieldName,
-                              final Factory<Referent> factory)
+    public AttributeReference(AttributeStore store, Attribute<?> attribute, String fieldName,
+                              Factory<Referent> factory)
     {
         assert store != null;
         assert attribute != null;
@@ -148,11 +148,11 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
             if (supported())
             {
                 // check the field in the store, and if it hasn't been allocated yet,
-                final var storeValue = (Referent) field.get(store);
+                var storeValue = (Referent) field.get(store);
                 if (storeValue == null)
                 {
                     // create and initialize the referent,
-                    final var referent = factory.newInstance();
+                    var referent = factory.newInstance();
                     trace("allocated");
                     ensureEqual(field.name(), referent.objectName(), "The field name '$' and the name of the referent '$' should match", field.name(), referent.objectName());
                     referent.objectName(store.objectName() + "." + field.name());
@@ -177,7 +177,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
      * Attaches this reference to the given field archive so that referenced attributes can be loaded with {@link
      * #load()}
      */
-    public void attach(final FieldArchive archive)
+    public void attach(FieldArchive archive)
     {
         this.archive = archive;
         trace("attached '$'", archive.zip().resource());
@@ -217,15 +217,15 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
                 loadAttempted = true;
 
                 // load the reference
-                final var archive = archive();
+                var archive = archive();
                 if (archive != null)
                 {
-                    final Referent reference = archive.loadFieldOf(store, field.name());
+                    Referent reference = archive.loadFieldOf(store, field.name());
                     if (reference != null)
                     {
                         if (reference instanceof Sized)
                         {
-                            final var size = ((Sized) reference).size();
+                            var size = ((Sized) reference).size();
                             trace("loaded (size $)", size);
                         }
                         else
@@ -262,7 +262,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * @return Returns the boolean value at the index specified by the quantizable index object
      */
-    public boolean retrieveBoolean(final Quantizable index)
+    public boolean retrieveBoolean(Quantizable index)
     {
         if (!load())
         {
@@ -271,17 +271,17 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
 
         if (reference instanceof LongList)
         {
-            final var list = (LongList) reference;
+            var list = (LongList) reference;
             return list.safeGet((int) index.quantum()) != 0;
         }
         else if (reference instanceof PrimitiveSet)
         {
-            final var set = (PrimitiveSet) reference;
+            var set = (PrimitiveSet) reference;
             return set.contains(index.quantum());
         }
         else if (reference instanceof PrimitiveScalarMap)
         {
-            final var map = (PrimitiveScalarMap) reference;
+            var map = (PrimitiveScalarMap) reference;
             return map.getScalar(index.quantum()) == 1;
         }
 
@@ -292,7 +292,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * @return Returns the int value at the index specified by the quantizable index object
      */
-    public int retrieveInt(final Quantizable index)
+    public int retrieveInt(Quantizable index)
     {
         if (!load())
         {
@@ -301,7 +301,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
 
         if (reference instanceof IntList)
         {
-            final var list = (IntList) reference;
+            var list = (IntList) reference;
             return list.safeGet((int) index.quantum());
         }
 
@@ -312,7 +312,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * @return Returns the long value at the index specified by the quantizable index object
      */
-    public long retrieveLong(final Quantizable index)
+    public long retrieveLong(Quantizable index)
     {
         if (!load())
         {
@@ -321,7 +321,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
 
         if (reference instanceof LongList)
         {
-            final var list = (LongList) reference;
+            var list = (LongList) reference;
             return list.safeGet((int) index.quantum());
         }
 
@@ -332,7 +332,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * @return An object for the given quantizable value
      */
-    public <T> T retrieveObject(final Quantizable index, final LongMapFactory<T> factory)
+    public <T> T retrieveObject(Quantizable index, LongMapFactory<T> factory)
     {
         if (!load())
         {
@@ -341,8 +341,8 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
 
         if (reference instanceof PrimitiveList)
         {
-            final var array = (PrimitiveList) reference;
-            final var value = array.safeGetPrimitive((int) index.quantum());
+            var array = (PrimitiveList) reference;
+            var value = array.safeGetPrimitive((int) index.quantum());
             if (!array.isPrimitiveNull(value))
             {
                 return factory.newInstance(value);
@@ -351,8 +351,8 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
         }
         else if (reference instanceof PrimitiveScalarMap)
         {
-            final var array = (PrimitiveScalarMap) reference;
-            final var value = array.getScalar((int) index.quantum());
+            var array = (PrimitiveScalarMap) reference;
+            var value = array.getScalar((int) index.quantum());
             if (!array.isScalarValueNull(value))
             {
                 return factory.newInstance(value);
@@ -364,7 +364,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
         return null;
     }
 
-    public <T> ObjectList<T> retrieveObjectList(final Quantizable index, final LongMapFactory<T> factory)
+    public <T> ObjectList<T> retrieveObjectList(Quantizable index, LongMapFactory<T> factory)
     {
         if (!load())
         {
@@ -373,9 +373,9 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
 
         if (reference instanceof PrimitiveScalarMultiMap)
         {
-            final var map = (PrimitiveScalarMultiMap) reference;
+            var map = (PrimitiveScalarMultiMap) reference;
             ensure(index != null);
-            final var values = map.getPrimitiveList(index.quantum());
+            var values = map.getPrimitiveList(index.quantum());
             if (values != null)
             {
                 return values.asList(factory);
@@ -387,7 +387,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
         return null;
     }
 
-    public <T> ObjectList<T> retrieveSignedObjectList(final Quantizable index, final LongMapFactory<T> factory)
+    public <T> ObjectList<T> retrieveSignedObjectList(Quantizable index, LongMapFactory<T> factory)
     {
         if (!load())
         {
@@ -396,9 +396,9 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
 
         if (reference instanceof PrimitiveScalarMultiMap)
         {
-            final var map = (PrimitiveScalarMultiMap) reference;
+            var map = (PrimitiveScalarMultiMap) reference;
             ensure(index != null);
-            final var values = map.getSignedPrimitiveList(index.quantum());
+            var values = map.getSignedPrimitiveList(index.quantum());
             if (values != null)
             {
                 return values.asList(factory);
@@ -413,7 +413,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * @return Returns the long value at the index specified by the quantizable index object
      */
-    public String retrieveString(final Quantizable index)
+    public String retrieveString(Quantizable index)
     {
         if (!load())
         {
@@ -432,7 +432,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * Stores the given value at the index specified by the quantizable index object
      */
-    public void storeBoolean(final Quantizable index, final boolean value)
+    public void storeBoolean(Quantizable index, boolean value)
     {
         if (supported())
         {
@@ -443,7 +443,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * Stores the given value at the index specified by the quantizable index object
      */
-    public void storeBoolean(final Quantizable index, final Boolean value)
+    public void storeBoolean(Quantizable index, Boolean value)
     {
         if (value != null)
         {
@@ -457,7 +457,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * Stores the given value at the index specified by the quantizable index object
      */
-    public void storeObject(final Quantizable index, final Quantizable value)
+    public void storeObject(Quantizable index, Quantizable value)
     {
         if (value != null)
         {
@@ -471,27 +471,27 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * Stores the given value at the index specified by the quantizable index object
      */
-    public void storeObject(final Quantizable index, final long value)
+    public void storeObject(Quantizable index, long value)
     {
         assert index != null;
 
         if (supported())
         {
-            final var attribute = allocate();
+            var attribute = allocate();
             if (attribute instanceof PrimitiveList)
             {
                 ((PrimitiveList) attribute).setPrimitive((int) index.quantum(), value);
             }
             else if (reference instanceof PrimitiveScalarMap)
             {
-                final var map = (PrimitiveScalarMap) reference;
+                var map = (PrimitiveScalarMap) reference;
                 map.putScalar(index.quantum(), value);
             }
             else if (reference instanceof PrimitiveSet)
             {
                 if (value != 0)
                 {
-                    final var set = (PrimitiveSet) reference;
+                    var set = (PrimitiveSet) reference;
                     set.add(index.quantum());
                 }
             }
@@ -505,14 +505,14 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * Stores the given list of values at the index specified by the quantizable index object
      */
-    public void storeObjectList(final Quantizable index, final List<? extends Quantizable> values)
+    public void storeObjectList(Quantizable index, List<? extends Quantizable> values)
     {
         if (values != null)
         {
             if (supported())
             {
 
-                final var attribute = allocate();
+                var attribute = allocate();
                 if (attribute instanceof PrimitiveScalarMultiMap)
                 {
                     ((PrimitiveScalarMultiMap) attribute).putPrimitiveList((int) index.quantum(), values);
@@ -528,11 +528,11 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * Stores the given string at the index specified by the quantizable index object
      */
-    public void storeString(final Quantizable index, final String value)
+    public void storeString(Quantizable index, String value)
     {
         if (supported())
         {
-            final var attribute = allocate();
+            var attribute = allocate();
             if (attribute instanceof PackedStringStore)
             {
                 ((PackedStringStore) attribute).set((int) index.quantum(), value);
@@ -559,7 +559,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     public void unload()
     {
         // We must have an archive or we cannot reload the attribute
-        final var archive = archive();
+        var archive = archive();
         assert archive != null : "Cannot clear attribute without archive attached or the attribute cannot be reloaded";
 
         // Clear the reference
@@ -578,7 +578,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
 
     /** Called when a referent is loaded */
     @MustBeInvokedByOverriders
-    protected void onLoaded(final Referent value)
+    protected void onLoaded(Referent value)
     {
     }
 
@@ -612,7 +612,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * Assigns the given reference to the reference and to the attribute field in the store
      */
-    private synchronized void reference(final Referent referent)
+    private synchronized void reference(Referent referent)
     {
         reference = referent;
         if (!(field.setter().set(store, referent) instanceof OperationSucceeded))
@@ -627,9 +627,9 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
         return dataSpecification().supports(attribute);
     }
 
-    private void trace(final String message, final Object... arguments)
+    private void trace(String message, Object... arguments)
     {
-        final var objects = new Object[arguments.length + 3];
+        var objects = new Object[arguments.length + 3];
         objects[0] = store.objectName();
         objects[1] = store.hashCode();
         objects[2] = attribute.name();

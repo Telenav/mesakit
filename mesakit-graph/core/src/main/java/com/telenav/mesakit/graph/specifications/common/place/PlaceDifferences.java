@@ -27,7 +27,7 @@ public class PlaceDifferences extends Differences
 
     private final Place b;
 
-    public PlaceDifferences(final Place a, final Place b)
+    public PlaceDifferences(Place a, Place b)
     {
         this.a = a;
         this.b = b;
@@ -35,7 +35,7 @@ public class PlaceDifferences extends Differences
 
     public Differences compare()
     {
-        final var differences = new Differences();
+        var differences = new Differences();
 
         // Add differences that are meaningful for all data specifications
         differences.compare("name", a.name(), b.name());

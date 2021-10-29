@@ -62,7 +62,7 @@ public class MetropolitanArea extends Region<MetropolitanArea>
     {
         if (borderCache == null)
         {
-            final var settings = new BorderCache.Settings<MetropolitanArea>()
+            var settings = new BorderCache.Settings<MetropolitanArea>()
                     .withType(MetropolitanArea.class)
                     .withMaximumObjects(RegionLimits.METROPOLITAN_AREAS)
                     .withMaximumPolygonsPerObject(RegionLimits.POLYGONS_PER_METROPOLITAN_AREA)
@@ -75,39 +75,39 @@ public class MetropolitanArea extends Region<MetropolitanArea>
         return borderCache;
     }
 
-    public static MetropolitanArea forIdentifier(final RegionIdentifier identifier)
+    public static MetropolitanArea forIdentifier(RegionIdentifier identifier)
     {
         return type(MetropolitanArea.class).forIdentifier(identifier);
     }
 
-    public static MetropolitanArea forIdentity(final RegionIdentity identity)
+    public static MetropolitanArea forIdentity(RegionIdentity identity)
     {
         return type(MetropolitanArea.class).forIdentity(identity);
     }
 
-    public static MetropolitanArea forLocation(final Location location)
+    public static MetropolitanArea forLocation(Location location)
     {
         return type(MetropolitanArea.class).forLocation(location);
     }
 
-    public static MetropolitanArea forRegionCode(final RegionCode code)
+    public static MetropolitanArea forRegionCode(RegionCode code)
     {
         return type(MetropolitanArea.class).forRegionCode(code);
     }
 
-    public static Collection<MetropolitanArea> matching(final Matcher<MetropolitanArea> matcher)
+    public static Collection<MetropolitanArea> matching(Matcher<MetropolitanArea> matcher)
     {
         return type(MetropolitanArea.class).matching(matcher);
     }
 
-    public static SwitchParser.Builder<MetropolitanArea> metropolitanAreaSwitchParser(final String name,
-                                                                                      final String description)
+    public static SwitchParser.Builder<MetropolitanArea> metropolitanAreaSwitchParser(String name,
+                                                                                      String description)
     {
         return SwitchParser.builder(MetropolitanArea.class).name(name)
                 .converter(new Converter<>(LOGGER())).description(description);
     }
 
-    public MetropolitanArea(final State state, final RegionInstance<MetropolitanArea> instance)
+    public MetropolitanArea(State state, RegionInstance<MetropolitanArea> instance)
     {
         super(state, instance.prefix("Metro").prefix(state));
     }
@@ -146,11 +146,11 @@ public class MetropolitanArea extends Region<MetropolitanArea>
         return new BaseExtractor<>(LOGGER())
         {
             @Override
-            public MetropolitanArea onExtract(final PbfWay way)
+            public MetropolitanArea onExtract(PbfWay way)
             {
                 // Get name and ISO code
-                final var name = name(way).normalized();
-                final var code = code(way, "code");
+                var name = name(way).normalized();
+                var code = code(way, "code");
 
                 if (name == null)
                 {
@@ -164,7 +164,7 @@ public class MetropolitanArea extends Region<MetropolitanArea>
                     return null;
                 }
 
-                final var state = State.forRegionCode(code.first(2));
+                var state = State.forRegionCode(code.first(2));
                 if (state == null)
                 {
                     DEBUG().glitch("Can't find or construct state '$' for $", code.first(2), way);
@@ -172,21 +172,21 @@ public class MetropolitanArea extends Region<MetropolitanArea>
                 }
 
                 // Construct region identity
-                final var identity = new RegionIdentity(name.code());
+                var identity = new RegionIdentity(name.code());
 
                 // Create new region so code gets hierarchically populated and
                 // inserted into the RegionType cache for this region type
-                final var instance = new RegionInstance<>(MetropolitanArea.class)
+                var instance = new RegionInstance<>(MetropolitanArea.class)
                         .withLanguages(state.languages())
                         .withIdentity(identity);
 
                 // Create new instance of the metro area. If it doesn't already exist (as happens
                 // with regions that have multiple boundary ways), it will be added to the list of
                 // children of the parent.
-                final var possiblyNew = new MetropolitanArea(state, instance);
+                var possiblyNew = new MetropolitanArea(state, instance);
 
                 // Return either some old instance or possibly the new one
-                final var area = forIdentity(possiblyNew.identity());
+                var area = forIdentity(possiblyNew.identity());
                 ensure(area != null);
                 return area;
             }

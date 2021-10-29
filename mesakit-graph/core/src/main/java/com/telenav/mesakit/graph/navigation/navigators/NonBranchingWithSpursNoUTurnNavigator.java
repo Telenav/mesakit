@@ -31,9 +31,9 @@ public class NonBranchingWithSpursNoUTurnNavigator extends NonBranchingNoUTurnNa
      * @return The in edge to navigate (backwards) to from the given edge, or null if there is no such edge.
      */
     @Override
-    public Edge in(final Edge edge)
+    public Edge in(Edge edge)
     {
-        final var edges = edge.inEdges().without(e -> e.leadsToDeadEnd() || e.isLoop());
+        var edges = edge.inEdges().without(e -> e.leadsToDeadEnd() || e.isLoop());
         return next(edge, edges.count(), edges.asSequence());
     }
 
@@ -41,9 +41,9 @@ public class NonBranchingWithSpursNoUTurnNavigator extends NonBranchingNoUTurnNa
      * @return The out edge to navigate to from the given edge, or null if there is no such edge.
      */
     @Override
-    public Edge out(final Edge edge)
+    public Edge out(Edge edge)
     {
-        final var edges = edge.outEdges().without(e -> e.leadsToDeadEnd() || e.isLoop());
+        var edges = edge.outEdges().without(e -> e.leadsToDeadEnd() || e.isLoop());
         return next(edge, edges.count(), edges.asSequence());
     }
 }

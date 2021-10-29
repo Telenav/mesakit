@@ -37,7 +37,7 @@ public class CompressedLeaf extends Leaf<Edge>
 {
     int list;
 
-    CompressedLeaf(final RTreeSpatialIndex<Edge> index, final InteriorNode<Edge> parent)
+    CompressedLeaf(RTreeSpatialIndex<Edge> index, InteriorNode<Edge> parent)
     {
         super(index, parent);
     }
@@ -47,14 +47,14 @@ public class CompressedLeaf extends Leaf<Edge>
     }
 
     @Override
-    public void addAll(final List<Edge> list)
+    public void addAll(List<Edge> list)
     {
         this.list = edges().add(list);
         bounds(Rectangle.fromBoundedObjects(list));
     }
 
     @Override
-    protected void addElement(final Edge element)
+    protected void addElement(Edge element)
     {
         unsupported();
     }

@@ -65,22 +65,22 @@ public final class Latitude extends Angle
         RANGE = new Range<>(MINIMUM, MAXIMUM);
     }
 
-    public static Latitude angle(final Angle angle)
+    public static Latitude angle(Angle angle)
     {
         return new Latitude(angle.asNanodegrees());
     }
 
-    public static Latitude degrees(final double degrees)
+    public static Latitude degrees(double degrees)
     {
         return nanodegrees((long) (degrees * 1E9));
     }
 
-    public static Latitude degreesInRange(final double degrees)
+    public static Latitude degreesInRange(double degrees)
     {
         return degrees(inRange(degrees));
     }
 
-    public static Latitude degreesMinutesAndSeconds(final int degrees, final float minutes, final float seconds)
+    public static Latitude degreesMinutesAndSeconds(int degrees, float minutes, float seconds)
     {
         if (degrees < 0)
         {
@@ -89,22 +89,22 @@ public final class Latitude extends Angle
         return degrees(degrees + minutes / 60.0 + seconds / 3600.0);
     }
 
-    public static Latitude dm5(final int latitudeInDm5)
+    public static Latitude dm5(int latitudeInDm5)
     {
         return DM5.toLatitude(latitudeInDm5);
     }
 
-    public static Latitude dm6(final int latitudeInDm6)
+    public static Latitude dm6(int latitudeInDm6)
     {
         return DM6.toLatitude(latitudeInDm6);
     }
 
-    public static Latitude dm7(final int latitudeInDm7)
+    public static Latitude dm7(int latitudeInDm7)
     {
         return DM7.toLatitude(latitudeInDm7);
     }
 
-    public static double inRange(final double degrees)
+    public static double inRange(double degrees)
     {
         if (degrees < MINIMUM_DEGREES)
         {
@@ -113,30 +113,30 @@ public final class Latitude extends Angle
         return Math.min(degrees, MAXIMUM_DEGREES);
     }
 
-    public static boolean isValid(final double latitude)
+    public static boolean isValid(double latitude)
     {
         return latitude >= MINIMUM_DEGREES && latitude <= MAXIMUM_DEGREES;
     }
 
-    public static Latitude microdegrees(final int microdegrees)
+    public static Latitude microdegrees(int microdegrees)
     {
         return new Latitude(microdegrees * NANODEGREES_PER_MICRODEGREE);
     }
 
-    public static Latitude nanodegrees(final long nanodegrees)
+    public static Latitude nanodegrees(long nanodegrees)
     {
         return new Latitude(nanodegrees);
     }
 
     public static class DegreesConverter extends BaseStringConverter<Latitude>
     {
-        public DegreesConverter(final Listener listener)
+        public DegreesConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Latitude onToValue(final String value)
+        protected Latitude onToValue(String value)
         {
             return degrees(Double.parseDouble(value));
         }
@@ -147,21 +147,21 @@ public final class Latitude extends Angle
         private static final Pattern pattern = Pattern
                 .compile("\\+?(-?\\d+)\\s*°\\s*(\\d+\\.?\\d*)\\s*'\\s*((\\d+\\.?\\d*)\\s*\")?");
 
-        public DegreesMinutesAndSecondsConverter(final Listener listener)
+        public DegreesMinutesAndSecondsConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Latitude onToValue(final String string)
+        protected Latitude onToValue(String string)
         {
-            final var matcher = pattern.matcher(string);
+            var matcher = pattern.matcher(string);
             if (matcher.matches())
             {
-                final var degrees = Integer.parseInt(matcher.group(1));
-                final var minutes = Float.parseFloat(matcher.group(2));
+                var degrees = Integer.parseInt(matcher.group(1));
+                var minutes = Float.parseFloat(matcher.group(2));
                 var seconds = 0F;
-                final var group4 = matcher.group(4);
+                var group4 = matcher.group(4);
                 if (!Strings.isEmpty(group4))
                 {
                     seconds = Float.parseFloat(group4);
@@ -172,17 +172,17 @@ public final class Latitude extends Angle
         }
     }
 
-    protected Latitude()
+    private Latitude()
     {
     }
 
-    private Latitude(final long nanodegrees)
+    private Latitude(long nanodegrees)
     {
         super(nanodegrees);
         assert nanodegrees >= MINIMUM_NANODEGREES && nanodegrees <= MAXIMUM_NANODEGREES : "Invalid latitude angle:  " + Angle.nanodegrees(nanodegrees);
     }
 
-    public int as(final Precision precision)
+    public int as(Precision precision)
     {
         return precision.nanodegreesToDecimal(asNanodegrees());
     }
@@ -202,7 +202,7 @@ public final class Latitude extends Angle
         return nanodegrees(DM7.offsetNanodegrees(asNanodegrees(), -1));
     }
 
-    public Distance distanceTo(final Latitude that)
+    public Distance distanceTo(Latitude that)
     {
         return new Location(this, Longitude.ORIGIN).distanceTo(new Location(that, Longitude.ORIGIN));
     }
@@ -222,7 +222,7 @@ public final class Latitude extends Angle
         return MAXIMUM;
     }
 
-    public Latitude maximum(final Latitude that)
+    public Latitude maximum(Latitude that)
     {
         return asNanodegrees() > that.asNanodegrees() ? this : that;
     }
@@ -233,7 +233,7 @@ public final class Latitude extends Angle
         return MINIMUM;
     }
 
-    public Latitude minimum(final Latitude that)
+    public Latitude minimum(Latitude that)
     {
         return asNanodegrees() < that.asNanodegrees() ? this : that;
     }
@@ -243,9 +243,9 @@ public final class Latitude extends Angle
      * @return The resulting latitude or -85 if the minimum latitude has been reached.
      */
     @Override
-    public Latitude minus(final Angle that)
+    public Latitude minus(Angle that)
     {
-        final var result = super.minus(that);
+        var result = super.minus(that);
 
         // Cap the values at the poles.
         if (result.asNanodegrees() < MINIMUM_NANODEGREES)
@@ -260,9 +260,9 @@ public final class Latitude extends Angle
      * @return The resulting latitude or 85 if the maximum latitude has been reached.
      */
     @Override
-    public Latitude plus(final Angle that)
+    public Latitude plus(Angle that)
     {
-        final var result = super.plus(that);
+        var result = super.plus(that);
 
         // Cap the values at the poles.
         if (result.asNanodegrees() < MINIMUM_NANODEGREES)
@@ -273,9 +273,9 @@ public final class Latitude extends Angle
     }
 
     @Override
-    public Latitude times(final double multiplier)
+    public Latitude times(double multiplier)
     {
-        final var result = (long) (asNanodegrees() * multiplier);
+        var result = (long) (asNanodegrees() * multiplier);
 
         // Cap the values at the poles.
         if (result < MINIMUM_NANODEGREES)

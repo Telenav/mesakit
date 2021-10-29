@@ -51,7 +51,7 @@ public class PbfDataSourceFactory extends BaseRepeater implements MapFactory<Met
 
     private final Count threads;
 
-    public PbfDataSourceFactory(final Resource resource, final Count threads, final Type type)
+    public PbfDataSourceFactory(Resource resource, Count threads, Type type)
     {
         ensureNotNull(resource);
         ensureNotNull(type);
@@ -63,7 +63,7 @@ public class PbfDataSourceFactory extends BaseRepeater implements MapFactory<Met
     }
 
     @Override
-    public PbfDataSource newInstance(final Metadata metadata)
+    public PbfDataSource newInstance(Metadata metadata)
     {
         switch (type)
         {

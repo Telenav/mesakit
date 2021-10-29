@@ -63,28 +63,28 @@ public class Heading extends Angle implements Headed
 
     public static final Heading SOUTHWEST = degrees(180 + 45);
 
-    public static Heading degrees(final double degrees)
+    public static Heading degrees(double degrees)
     {
         return nanodegrees((long) (degrees * NANODEGREES_PER_DEGREE));
     }
 
-    public static Heading microdegrees(final int microdegrees)
+    public static Heading microdegrees(int microdegrees)
     {
         return nanodegrees(microdegrees * 1_000L);
     }
 
-    public static Heading nanodegrees(final long nanodegrees)
+    public static Heading nanodegrees(long nanodegrees)
     {
         // Make sure it is a positive value.
         return new Heading((nanodegrees % MAXIMUM_NANODEGREES) + MAXIMUM_NANODEGREES);
     }
 
-    public static Heading parse(final String text)
+    public static Heading parse(String text)
     {
         return new Converter(Listener.none()).convert(text);
     }
 
-    public static Heading radians(final double radians)
+    public static Heading radians(double radians)
     {
         return nanodegrees((long) (radians * NANODEGREES_PER_RADIAN));
     }
@@ -102,22 +102,28 @@ public class Heading extends Angle implements Headed
         private static final Pattern PATTERN = Pattern.compile("([0-9]+([.,][0-9]+)?)\\s+(degree)s?",
                 Pattern.CASE_INSENSITIVE);
 
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
+        }
+
+        @Override
+        protected String onToString(Heading value)
+        {
+            return value.asDegrees() + " degrees";
         }
 
         /**
          * {@inheritDoc}
          */
         @Override
-        protected Heading onToValue(final String value)
+        protected Heading onToValue(String value)
         {
-            final var matcher = PATTERN.matcher(value);
+            var matcher = PATTERN.matcher(value);
             if (matcher.matches())
             {
-                final var scalar = Double.parseDouble(matcher.group(1));
-                final var units = matcher.group(3);
+                var scalar = Double.parseDouble(matcher.group(1));
+                var units = matcher.group(3);
                 if ("degree".equalsIgnoreCase(units))
                 {
                     return degrees(scalar);
@@ -134,12 +140,6 @@ public class Heading extends Angle implements Headed
                 return null;
             }
         }
-
-        @Override
-        protected String onToString(final Heading value)
-        {
-            return value.asDegrees() + " degrees";
-        }
     }
 
     /**
@@ -150,19 +150,19 @@ public class Heading extends Angle implements Headed
     @LexakaiJavadoc(complete = true)
     public static class DegreesConverter extends BaseStringConverter<Heading>
     {
-        public DegreesConverter(final Listener listener)
+        public DegreesConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Heading onToValue(final String value)
+        protected Heading onToValue(String value)
         {
             return degrees(Double.parseDouble(value));
         }
     }
 
-    private Heading(final long nanodegrees)
+    private Heading(long nanodegrees)
     {
         super(nanodegrees);
     }
@@ -184,13 +184,13 @@ public class Heading extends Angle implements Headed
         return Direction.NORTH;
     }
 
-    public Heading average(final Heading that)
+    public Heading average(Heading that)
     {
-        final var smaller = isLessThan(that) ? this : that;
-        final var larger = isGreaterThan(that) ? this : that;
+        var smaller = isLessThan(that) ? this : that;
+        var larger = isGreaterThan(that) ? this : that;
 
-        final var smallerClockwiseDifference = smaller.difference(larger, Chirality.CLOCKWISE);
-        final var largerClockwiseDifference = larger.difference(smaller, Chirality.CLOCKWISE);
+        var smallerClockwiseDifference = smaller.difference(larger, Chirality.CLOCKWISE);
+        var largerClockwiseDifference = larger.difference(smaller, Chirality.CLOCKWISE);
 
         if (smallerClockwiseDifference.isLessThan(largerClockwiseDifference))
         {
@@ -202,7 +202,7 @@ public class Heading extends Angle implements Headed
         }
     }
 
-    public Heading bisect(final Heading that, final Chirality chirality)
+    public Heading bisect(Heading that, Chirality chirality)
     {
         return degrees(super.bisect(that, chirality).asDegrees());
     }
@@ -213,27 +213,27 @@ public class Heading extends Angle implements Headed
         return this;
     }
 
-    public Heading minimum(final Heading that)
+    public Heading minimum(Heading that)
     {
         return isLessThan(that) ? this : that;
     }
 
     @Override
-    public Heading minus(final Angle angle)
+    public Heading minus(Angle angle)
     {
         return nanodegrees(super.minus(angle).asNanodegrees());
     }
 
     @Override
-    public Heading plus(final Angle angle)
+    public Heading plus(Angle angle)
     {
         return nanodegrees(super.plus(angle).asNanodegrees());
     }
 
     @SuppressWarnings("IntegerDivisionInFloatingPointContext")
-    public Heading quantize(final Angle quantum)
+    public Heading quantize(Angle quantum)
     {
-        final var quantumDegrees = (int) quantum.asDegrees();
+        var quantumDegrees = (int) quantum.asDegrees();
         return degrees(((int) (asDegrees() + (quantumDegrees / 2))) / quantumDegrees * quantumDegrees);
     }
 

@@ -18,6 +18,9 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
+import com.telenav.kivakit.kernel.language.values.level.Level;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.LocationSequence;
@@ -25,9 +28,6 @@ import com.telenav.mesakit.map.geography.Longitude;
 import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
 import com.telenav.mesakit.map.geography.shape.segment.Segment;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
-import com.telenav.kivakit.kernel.language.values.level.Level;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.associations.UmlRelation;
 
 /**
  * Snaps a point to a polyline (or list of points defining a list of segments)
@@ -45,7 +45,7 @@ public class PolylineSnapper
      * @return The point snapped to the polyline
      */
     @UmlRelation(label = "calculates")
-    public PolylineSnap snap(final LocationSequence polyline, final Location point)
+    public PolylineSnap snap(LocationSequence polyline, Location point)
     {
         return snap(polyline, point, null);
     }
@@ -58,7 +58,7 @@ public class PolylineSnapper
      * @param headingAtPoint The heading of the point to help with disambiguation
      * @return The point snapped to the polyline
      */
-    public PolylineSnap snap(final LocationSequence polyline, final Location point, final Heading headingAtPoint)
+    public PolylineSnap snap(LocationSequence polyline, Location point, Heading headingAtPoint)
     {
         Location previous = null;
         PolylineSnap best = null;
@@ -66,14 +66,14 @@ public class PolylineSnapper
         var iterations = 0;
         var indexOnPolyline = 0;
 
-        for (final var location : polyline.locationSequence())
+        for (var location : polyline.locationSequence())
         {
             /* Loop through the Segments in this iteration of locations */
             iterations++;
             if (previous != null)
             {
-                final var segment = new Segment(previous, location);
-                final var snappedLocation = planarOrthogonalProjectionWithCartesianIndexing(segment, point);
+                var segment = new Segment(previous, location);
+                var snappedLocation = planarOrthogonalProjectionWithCartesianIndexing(segment, point);
                 if (best != null)
                 {
                     /* Give more importance to a closer snap */
@@ -89,7 +89,7 @@ public class PolylineSnapper
                           If snaps are as far away, give more importance to the one that has the
                           closest heading
                          */
-                        final var difference = headingAtPoint != null
+                        var difference = headingAtPoint != null
                                 ? headingAtPoint.minus(snappedLocation.segmentHeading())
                                 : null;
                         if (headingAtPoint != null && snappedLocation.distanceToSource().equals(best.distanceToSource())
@@ -131,52 +131,52 @@ public class PolylineSnapper
      * @param there The {@link Location} to snap to the {@link Segment}
      * @return The {@link PolylineSnap} on the {@link Segment}
      */
-    private PolylineSnap planarOrthogonalProjectionWithCartesianIndexing(final Segment segment, final Location there)
+    private PolylineSnap planarOrthogonalProjectionWithCartesianIndexing(Segment segment, Location there)
     {
 
         /*
           The abscissa of the start of the segment = origin of the referential
          */
-        final var xZero = segment.start().longitude().asDegrees();
+        var xZero = segment.start().longitude().asDegrees();
 
         /*
           The ordinate of the start of the segment = origin of the referential
          */
 
-        final var yZero = segment.start().latitude().asDegrees();
+        var yZero = segment.start().latitude().asDegrees();
 
         /*
           The normalization coefficient to take into account the fact that delta longitudes
           equivalent distance get skewed smaller at higher latitudes. We then normalize longitudes
           to have a normalized planar space
          */
-        final var normalizationCoefficient = Math.cos(segment.start().latitude().asRadians());
+        var normalizationCoefficient = Math.cos(segment.start().latitude().asRadians());
 
         /*
           The abscissa of the end of the segment
          */
-        final var xb = (segment.end().longitude().asDegrees() - xZero) * normalizationCoefficient;
+        var xb = (segment.end().longitude().asDegrees() - xZero) * normalizationCoefficient;
 
         /*
           The ordinate of the end of the segment
          */
-        final var yb = segment.end().latitude().asDegrees() - yZero;
+        var yb = segment.end().latitude().asDegrees() - yZero;
 
         /*
           The abscissa of the point to snap
          */
-        final var xp = (there.longitude().asDegrees() - xZero) * normalizationCoefficient;
+        var xp = (there.longitude().asDegrees() - xZero) * normalizationCoefficient;
 
         /*
           The ordinate of the point to snap
          */
-        final var yp = there.latitude().asDegrees() - yZero;
+        var yp = there.latitude().asDegrees() - yZero;
 
         /*
           The abscissa, ordinate of the snapped point, and the offset on the segment from the start
           point
          */
-        final double xs, ys, offset;
+        double xs, ys, offset;
 
         /*
           Special case: If we have a segment that spans along no delta of longitude (segment
@@ -212,7 +212,7 @@ public class PolylineSnapper
               start point of the segment is the origin. This leads us to the slope of the segment
               defined by the end point's coordinates only.
              */
-            final var alpha = yb / xb;
+            var alpha = yb / xb;
 
             /*
               The abscissa of the matched point, obtained by using the fact that the slope of the
@@ -257,7 +257,7 @@ public class PolylineSnapper
         /*
           De-normalize to come back to lat/lon
          */
-        final var longitudeXs = xs / normalizationCoefficient;
+        var longitudeXs = xs / normalizationCoefficient;
 
         return new PolylineSnap(Latitude.degrees(yZero + ys), Longitude.degrees(xZero + longitudeXs), segment,
                 new Level(offset), there, 0);

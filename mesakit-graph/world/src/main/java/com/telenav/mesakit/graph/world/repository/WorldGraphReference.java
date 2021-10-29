@@ -85,7 +85,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
 
     private String serializedPath;
 
-    public WorldGraphReference(final Deployment deployment, final WorldGraphRepositoryFolder folder)
+    public WorldGraphReference(Deployment deployment, WorldGraphRepositoryFolder folder)
     {
         this.deployment = deployment;
         this.folder = folder;
@@ -105,17 +105,17 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
         }
     }
 
-    public WorldGraphReference(final Deployment deployment, final WorldGraph graph)
+    public WorldGraphReference(Deployment deployment, WorldGraph graph)
     {
         this(deployment, graph.worldGrid().repositoryFolder());
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof WorldGraphReference)
         {
-            final var that = (WorldGraphReference) object;
+            var that = (WorldGraphReference) object;
             return Objects.equalPairs(folder(), that.folder(), deployment, that.deployment);
         }
         return false;
@@ -187,7 +187,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
     /**
      * @return A reference to a cell within the world graph referred to by this reference object
      */
-    public WorldCellReference worldCellSource(final GridCell gridCell)
+    public WorldCellReference worldCellSource(GridCell gridCell)
     {
         return new WorldCellReference(this, gridCell);
     }
@@ -196,10 +196,10 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
     {
         if (folder == null)
         {
-            final var folder = Folder.parse(serializedWorldGraphRepository);
+            var folder = Folder.parse(serializedWorldGraphRepository);
             if (folder != null)
             {
-                final var repository = new WorldGraphRepository(folder);
+                var repository = new WorldGraphRepository(folder);
                 this.folder = new WorldGraphRepositoryFolder(repository, FilePath.parseFilePath(serializedPath));
             }
         }

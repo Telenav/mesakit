@@ -57,14 +57,14 @@ public class SpeedCategory implements Quantizable
         new SpeedCategory(23, Speed.kilometersPerHour(0), Speed.kilometersPerHour(5));
     }
 
-    public static SpeedCategory forIdentifier(final int category)
+    public static SpeedCategory forIdentifier(int category)
     {
         return speedCategoryForIdentifier.get(category);
     }
 
-    public static SpeedCategory forSpeed(final Speed speed)
+    public static SpeedCategory forSpeed(Speed speed)
     {
-        for (final var category : speedCategoryForIdentifier.values())
+        for (var category : speedCategoryForIdentifier.values())
         {
             if (category.includes(speed))
             {
@@ -76,7 +76,7 @@ public class SpeedCategory implements Quantizable
 
     public static class Converter extends Quantizable.Converter<SpeedCategory>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener, value -> forIdentifier(value.intValue()));
         }
@@ -88,7 +88,7 @@ public class SpeedCategory implements Quantizable
 
     private final Speed maximum;
 
-    private SpeedCategory(final int identifier, final Speed minimum, final Speed maximum)
+    private SpeedCategory(int identifier, Speed minimum, Speed maximum)
     {
         this.identifier = identifier;
         this.minimum = minimum;
@@ -107,7 +107,7 @@ public class SpeedCategory implements Quantizable
         return identifier;
     }
 
-    public boolean includes(final Speed speed)
+    public boolean includes(Speed speed)
     {
         return speed.isGreaterThanOrEqualTo(minimum) && speed.isLessThan(maximum);
     }

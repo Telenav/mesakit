@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.geography.shape;
 
-import com.telenav.mesakit.map.geography.Located;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.geography.Located;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramShape;
 
@@ -60,7 +60,7 @@ public interface Outline
             return this == OUTSIDE;
         }
 
-        public boolean matches(final Containment that)
+        public boolean matches(Containment that)
         {
             return isInside() == that.isInside() || this == INDETERMINATE || that == INDETERMINATE;
         }
@@ -73,12 +73,12 @@ public interface Outline
      */
     Containment containment(Location location);
 
-    default boolean contains(final Location location)
+    default boolean contains(Location location)
     {
         return containment(location).isInside();
     }
 
-    default boolean contains(final Located located)
+    default boolean contains(Located located)
     {
         return contains(located.location());
     }

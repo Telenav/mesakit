@@ -44,7 +44,7 @@ public class DataVersion
         return dataVersionSwitchParser("data-version", "The data version such as 2020Q4");
     }
 
-    public static SwitchParser.Builder<DataVersion> dataVersionSwitchParser(final String name, final String description)
+    public static SwitchParser.Builder<DataVersion> dataVersionSwitchParser(String name, String description)
     {
         return SwitchParser.builder(DataVersion.class)
                 .name(name)
@@ -52,10 +52,10 @@ public class DataVersion
                 .description(description);
     }
 
-    public static DataVersion parse(final String string)
+    public static DataVersion parse(String string)
     {
         // Parse strings like 2020Q4
-        final var matcher = Pattern.compile("(?<year>20\\d\\d)"
+        var matcher = Pattern.compile("(?<year>20\\d\\d)"
                 + "Q(?<quarter>[1-4])").matcher(string);
 
         if (matcher.find())
@@ -70,15 +70,15 @@ public class DataVersion
 
     public static class Converter extends BaseStringConverter<DataVersion>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected DataVersion onToValue(final String date)
+        protected DataVersion onToValue(String date)
         {
-            final var version = parse(date);
+            var version = parse(date);
             if (version == null)
             {
                 problem("Data version '" + date + "' is not valid.");
@@ -95,25 +95,25 @@ public class DataVersion
     {
     }
 
-    public DataVersion(final DataVersion that)
+    public DataVersion(DataVersion that)
     {
-        this.year = that.year;
-        this.quarter = that.quarter;
+        year = that.year;
+        quarter = that.quarter;
     }
 
-    public DataVersion(final LocalTime time)
+    public DataVersion(LocalTime time)
     {
-        this.year = time.year();
-        this.quarter = time.quarter();
+        year = time.year();
+        quarter = time.quarter();
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof DataVersion)
         {
-            final var that = (DataVersion) object;
-            return this.year == that.year && this.quarter == that.quarter;
+            var that = (DataVersion) object;
+            return year == that.year && quarter == that.quarter;
         }
         return false;
     }
@@ -121,34 +121,34 @@ public class DataVersion
     @Override
     public int hashCode()
     {
-        return Hash.many(this.year, this.quarter);
+        return Hash.many(year, quarter);
     }
 
     public boolean isValid()
     {
-        return this.year >= 1970 && this.year <= 2100
-                && this.quarter >= 1 && this.quarter <= 4;
+        return year >= 1970 && year <= 2100
+                && quarter >= 1 && quarter <= 4;
     }
 
     @Override
     public String toString()
     {
         ensure(isValid());
-        return this.year + "Q" + this.quarter;
+        return year + "Q" + quarter;
     }
 
-    public DataVersion withQuarter(final int quarter)
+    public DataVersion withQuarter(int quarter)
     {
         ensure(quarter >= 1 && quarter <= 4);
-        final var version = new DataVersion(this);
+        var version = new DataVersion(this);
         version.quarter = quarter;
         return version;
     }
 
-    public DataVersion withYear(final int year)
+    public DataVersion withYear(int year)
     {
         ensure(year >= 1970 && year <= 2100);
-        final var version = new DataVersion(this);
+        var version = new DataVersion(this);
         version.year = year;
         return version;
     }

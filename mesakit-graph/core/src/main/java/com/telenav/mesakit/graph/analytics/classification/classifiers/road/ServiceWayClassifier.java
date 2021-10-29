@@ -29,7 +29,7 @@ public class ServiceWayClassifier implements EdgeClassifier
     public static ServiceWayClassifier INSTANCE = new ServiceWayClassifier();
 
     @Override
-    public boolean accept(final Edge edge)
+    public boolean accept(Edge edge)
     {
         return edge.osmIsServiceWay();
     }

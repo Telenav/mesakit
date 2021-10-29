@@ -70,7 +70,7 @@ public class ParallelPbfReader extends BaseRepeater implements PbfDataSource
 
     private final BasePbfReader reader;
 
-    public ParallelPbfReader(final Resource resource, final Count threads)
+    public ParallelPbfReader(Resource resource, Count threads)
     {
         this.resource = resource;
         this.threads = threads;
@@ -80,19 +80,19 @@ public class ParallelPbfReader extends BaseRepeater implements PbfDataSource
     }
 
     @Override
-    public void expectedNodes(final Count nodes)
+    public void expectedNodes(Count nodes)
     {
         reader.expectedNodes(nodes);
     }
 
     @Override
-    public void expectedRelations(final Count relations)
+    public void expectedRelations(Count relations)
     {
         reader.expectedRelations(relations);
     }
 
     @Override
-    public void expectedWays(final Count ways)
+    public void expectedWays(Count ways)
     {
         reader.expectedWays(ways);
     }
@@ -103,7 +103,7 @@ public class ParallelPbfReader extends BaseRepeater implements PbfDataSource
         return reader.nodes();
     }
 
-    public void nodes(final Count nodes)
+    public void nodes(Count nodes)
     {
         reader.expectedNodes(nodes);
     }
@@ -114,7 +114,7 @@ public class ParallelPbfReader extends BaseRepeater implements PbfDataSource
     }
 
     @Override
-    public PbfDataStatistics onProcess(final PbfDataProcessor dataProcessor)
+    public PbfDataStatistics onProcess(PbfDataProcessor dataProcessor)
     {
         processor = dataProcessor;
 
@@ -124,7 +124,7 @@ public class ParallelPbfReader extends BaseRepeater implements PbfDataSource
 
         // reading the data,
         trace("Reading data");
-        final var statistics = read();
+        var statistics = read();
         trace("Done reading data");
 
         return statistics;
@@ -136,12 +136,12 @@ public class ParallelPbfReader extends BaseRepeater implements PbfDataSource
     }
 
     @Override
-    public void phase(final String phase)
+    public void phase(String phase)
     {
         reader.phase(phase);
     }
 
-    public void relations(final Count relations)
+    public void relations(Count relations)
     {
         reader.expectedRelations(relations);
     }
@@ -158,7 +158,7 @@ public class ParallelPbfReader extends BaseRepeater implements PbfDataSource
         return resource;
     }
 
-    public void ways(final Count ways)
+    public void ways(Count ways)
     {
         reader.expectedWays(ways);
     }
@@ -181,11 +181,11 @@ public class ParallelPbfReader extends BaseRepeater implements PbfDataSource
      */
     private PbfDataStatistics read()
     {
-        final var outer = this;
+        var outer = this;
 
-        final var nodeAdder = nodeBatcher.adder();
-        final var wayAdder = wayBatcher.adder();
-        final var relationAdder = relationBatcher.adder();
+        var nodeAdder = nodeBatcher.adder();
+        var wayAdder = wayBatcher.adder();
+        var relationAdder = relationBatcher.adder();
 
         return reader.process(new PbfDataProcessor()
         {
@@ -214,21 +214,21 @@ public class ParallelPbfReader extends BaseRepeater implements PbfDataSource
             }
 
             @Override
-            public Action onNode(final PbfNode node)
+            public Action onNode(PbfNode node)
             {
                 nodeAdder.add(node);
                 return Action.ACCEPTED;
             }
 
             @Override
-            public Action onRelation(final PbfRelation relation)
+            public Action onRelation(PbfRelation relation)
             {
                 relationAdder.add(relation);
                 return Action.ACCEPTED;
             }
 
             @Override
-            public Action onWay(final PbfWay way)
+            public Action onWay(PbfWay way)
             {
                 wayAdder.add(way);
                 return Action.ACCEPTED;

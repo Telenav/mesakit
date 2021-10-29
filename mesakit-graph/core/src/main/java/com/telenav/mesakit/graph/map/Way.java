@@ -60,7 +60,7 @@ public class Way implements Road, Iterable<Edge>
     /**
      * @return The contiguous, non-branching way connected to the given edge.
      */
-    public static Way contiguousWayForEdge(final Edge edge)
+    public static Way contiguousWayForEdge(Edge edge)
     {
         if (edge.isOneWay())
         {
@@ -72,7 +72,7 @@ public class Way implements Road, Iterable<Edge>
         }
     }
 
-    public static Way forRoute(final Route route)
+    public static Way forRoute(Route route)
     {
         return new Way(route);
     }
@@ -83,7 +83,7 @@ public class Way implements Road, Iterable<Edge>
 
     private Polyline shape;
 
-    protected Way(final Route route)
+    protected Way(Route route)
     {
         ensureNotNull(route);
         ensure(route.size() > 0, "Zero length route");
@@ -108,11 +108,11 @@ public class Way implements Road, Iterable<Edge>
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Way)
         {
-            final var that = (Way) object;
+            var that = (Way) object;
             return wayIdentifier().equals(that.wayIdentifier());
         }
         return false;
@@ -148,11 +148,10 @@ public class Way implements Road, Iterable<Edge>
     @Override
     public boolean isValid()
     {
-        final var route = asRoute();
+        var route = asRoute();
         return route != null && route.size() > 0;
     }
 
-    @SuppressWarnings("NullableProblems")
     @Override
     public Iterator<Edge> iterator()
     {
@@ -178,8 +177,8 @@ public class Way implements Road, Iterable<Edge>
 
     public List<MapNodeIdentifier> mapNodeIdentifiers()
     {
-        final List<MapNodeIdentifier> identifiers = new ArrayList<>();
-        for (final var point : route.graph().shapePoints(roadShape()))
+        List<MapNodeIdentifier> identifiers = new ArrayList<>();
+        for (var point : route.graph().shapePoints(roadShape()))
         {
             identifiers.add(point.mapIdentifier());
         }
@@ -194,7 +193,7 @@ public class Way implements Road, Iterable<Edge>
     @Override
     public Way reversed()
     {
-        final var reversed = route.reversed();
+        var reversed = route.reversed();
         if (reversed != null)
         {
             return new Way(reversed);
@@ -215,7 +214,7 @@ public class Way implements Road, Iterable<Edge>
     }
 
     @Override
-    public RoadName roadName(final Type type)
+    public RoadName roadName(Type type)
     {
         return first().roadName(type);
     }
@@ -268,8 +267,8 @@ public class Way implements Road, Iterable<Edge>
     @Override
     public String toString()
     {
-        final var builder = new StringBuilder();
-        for (final var edge : route)
+        var builder = new StringBuilder();
+        for (var edge : route)
         {
             builder.append(edge.identifierAsLong()).append(",");
         }

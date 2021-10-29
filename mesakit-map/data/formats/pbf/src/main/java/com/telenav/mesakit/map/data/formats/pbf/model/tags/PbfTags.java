@@ -23,7 +23,7 @@ public class PbfTags
             + "\\s*=\\s*"
             + "(?<value>((?<quote>[\"']).*?\\k<quote>)|([^ ]+))");
 
-    public static boolean equals(final Tag a, final Tag b)
+    public static boolean equals(Tag a, Tag b)
     {
         if (a == null)
         {
@@ -39,24 +39,24 @@ public class PbfTags
      *     <li>tag="value with spaces"</li>
      * </ul>
      */
-    public static Tag parse(final String string)
+    public static Tag parse(String string)
     {
-        final var matcher = TAG.matcher(string);
+        var matcher = TAG.matcher(string);
         if (matcher.matches())
         {
-            final var key = matcher.group("key");
-            final var value = matcher.group("value");
+            var key = matcher.group("key");
+            var value = matcher.group("value");
             return new Tag(key, Strip.quotes(value));
         }
         return null;
     }
 
-    public static PropertyMap tags(final String prefix, final Collection<Tag> tags)
+    public static PropertyMap tags(String prefix, Collection<Tag> tags)
     {
-        final var properties = PropertyMap.create();
-        for (final var tag : tags)
+        var properties = PropertyMap.create();
+        for (var tag : tags)
         {
-            final var key = tag.getKey();
+            var key = tag.getKey();
             if (key.startsWith(prefix))
             {
                 properties.put(key.substring(prefix.length()), tag.getValue());
@@ -65,10 +65,10 @@ public class PbfTags
         return properties;
     }
 
-    public static List<Tag> tags(final String prefix, final PropertyMap properties)
+    public static List<Tag> tags(String prefix, PropertyMap properties)
     {
-        final var tags = new ArrayList<Tag>();
-        for (final var property : properties.entrySet())
+        var tags = new ArrayList<Tag>();
+        for (var property : properties.entrySet())
         {
             tags.add(new Tag(prefix + property.getKey(), property.getValue()));
         }

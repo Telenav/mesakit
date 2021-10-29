@@ -29,7 +29,7 @@ public class OneWayClassifier implements EdgeClassifier
     public static OneWayClassifier INSTANCE = new OneWayClassifier();
 
     @Override
-    public boolean accept(final Edge edge)
+    public boolean accept(Edge edge)
     {
         return edge.isOneWay();
     }

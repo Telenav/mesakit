@@ -49,7 +49,7 @@ public class Border<T extends Region<T>> implements Bounded, Intersectable
     /**
      * Constructor called when creating borders from a PBF file
      */
-    public Border(final T region, final Polygon border)
+    public Border(T region, Polygon border)
     {
         ensure(region != null);
         ensure(border != null);
@@ -70,18 +70,18 @@ public class Border<T extends Region<T>> implements Bounded, Intersectable
         return bounds;
     }
 
-    public boolean contains(final Location location)
+    public boolean contains(Location location)
     {
         return border.contains(location);
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Border)
         {
-            final var that = (Border<T>) object;
+            var that = (Border<T>) object;
             return Objects.equal(identity, that.identity);
         }
         return false;
@@ -98,13 +98,13 @@ public class Border<T extends Region<T>> implements Bounded, Intersectable
         return identity;
     }
 
-    public void identity(final RegionIdentity identity)
+    public void identity(RegionIdentity identity)
     {
         this.identity = ensureNotNull(identity);
     }
 
     @Override
-    public boolean intersects(final Rectangle rectangle)
+    public boolean intersects(Rectangle rectangle)
     {
         return bounds.intersects(rectangle);
     }
@@ -124,7 +124,7 @@ public class Border<T extends Region<T>> implements Bounded, Intersectable
         return region;
     }
 
-    public void region(final T region)
+    public void region(T region)
     {
         this.region = region;
     }

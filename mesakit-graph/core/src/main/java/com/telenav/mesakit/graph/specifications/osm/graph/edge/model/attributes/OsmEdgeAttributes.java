@@ -34,7 +34,7 @@ public class OsmEdgeAttributes extends EdgeAttributes
 
     public class OsmEdgeAttribute extends GraphElementAttribute
     {
-        public OsmEdgeAttribute(final String name)
+        public OsmEdgeAttribute(String name)
         {
             super(name);
         }

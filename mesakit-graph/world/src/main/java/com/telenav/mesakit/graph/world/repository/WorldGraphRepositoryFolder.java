@@ -80,7 +80,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
      * @return A {@link Problem} message detailing the problem if the given folder doesn't exist or is not of the
      * correct form, otherwise {@link StepSuccess}.
      */
-    public static Message check(final Folder folder, final Check check)
+    public static Message check(Folder folder, Check check)
     {
         if (!folder.name().startsWith("temporary"))
         {
@@ -120,25 +120,25 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
     {
         private final Check existence;
 
-        public Converter(final Listener listener, final Check existence)
+        public Converter(Listener listener, Check existence)
         {
             super(listener);
             this.existence = existence;
         }
 
         @Override
-        protected WorldGraphRepositoryFolder onToValue(final String value)
+        protected WorldGraphRepositoryFolder onToValue(String value)
         {
-            final var folder = Folder.parse(value);
+            var folder = Folder.parse(value);
             if (folder != null)
             {
-                final var message = check(folder, existence);
+                var message = check(folder, existence);
                 if (message.status().failed())
                 {
                     transmit(message);
                     return null;
                 }
-                final var repository = new WorldGraphRepository(folder.parent());
+                var repository = new WorldGraphRepository(folder.parent());
                 return repository.folder(folder.name());
             }
             return null;
@@ -154,18 +154,18 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
      * at the root of the repository and not in any sub-folder.
      * @param metadata The metadata of the graph used to construct the folder name
      */
-    WorldGraphRepositoryFolder(final WorldGraphRepository repository, final FilePath path, final Metadata metadata)
+    WorldGraphRepositoryFolder(WorldGraphRepository repository, FilePath path, Metadata metadata)
     {
         this(repository, path == null ? FilePath.filePath(metadata.asFileName()) : path.withChild(metadata.asFileName().toString()));
     }
 
-    WorldGraphRepositoryFolder(final WorldGraphRepository repository, final FilePath path)
+    WorldGraphRepositoryFolder(WorldGraphRepository repository, FilePath path)
     {
         super(repository.path().withChild(path.withoutRoot().withExtension(WORLD).toString()));
         this.repository = repository;
 
         // Validate the form of the folder (it does not have to exist)
-        final var message = check(this, Check.IS_VALID);
+        var message = check(this, Check.IS_VALID);
         if (message.status().failed())
         {
             throw message.asException();
@@ -175,7 +175,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
     /**
      * Ensures that the given {@link Check} passes
      */
-    public void ensure(final Check check)
+    public void ensure(Check check)
     {
         Ensure.ensure(!check(this, check).status().failed(), "No valid local data in $", this);
     }

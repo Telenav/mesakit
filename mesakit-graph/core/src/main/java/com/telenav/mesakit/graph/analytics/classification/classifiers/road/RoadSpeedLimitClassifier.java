@@ -32,11 +32,11 @@ public class RoadSpeedLimitClassifier implements EdgeClassifier
      * @return boolean
      */
     @Override
-    public boolean accept(final Edge edge)
+    public boolean accept(Edge edge)
     {
-        for (final var tag : edge.tagList())
+        for (var tag : edge.tagList())
         {
-            final var key = tag.getKey();
+            var key = tag.getKey();
             if (key != null && ("maxspeed".equals(key) || key.startsWith("maxspeed:")))
             {
                 return true;

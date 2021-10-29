@@ -46,7 +46,7 @@ public class EdgeNodeMap
     /** All node identifiers for all edges laid out end-to-end */
     private final SplitLongArray nodeIdentifiers;
 
-    public EdgeNodeMap(final String name)
+    public EdgeNodeMap(String name)
     {
         indexForEdge = new SplitLongToIntMap(name + ".indexForEdge");
         indexForEdge.nullInt(Integer.MIN_VALUE);
@@ -62,19 +62,19 @@ public class EdgeNodeMap
     /**
      * @return The list of node identifiers (in order) for the given edge identifier
      */
-    public List<MapNodeIdentifier> get(final EdgeIdentifier identifier)
+    public List<MapNodeIdentifier> get(EdgeIdentifier identifier)
     {
         // Get the node count for the edge
-        final var nodeCount = nodeCountForEdge.get(identifier.asLong());
+        var nodeCount = nodeCountForEdge.get(identifier.asLong());
 
         // If the count is not null
         if (!nodeCountForEdge.isNull(nodeCount))
         {
             // Get the index of the node identifiers
-            final var index = indexForEdge.get(identifier.asLong());
+            var index = indexForEdge.get(identifier.asLong());
 
             // and add each node identifier starting at that index to the list
-            final List<MapNodeIdentifier> identifiers = new ArrayList<>();
+            List<MapNodeIdentifier> identifiers = new ArrayList<>();
             for (var offset = 0; offset < nodeCount; offset++)
             {
                 identifiers.add(new PbfNodeIdentifier(nodeIdentifiers.get(index + offset)));
@@ -88,7 +88,7 @@ public class EdgeNodeMap
     /**
      * Store node identifiers (in order) for the given edge for later retrieval via {@link #get(EdgeIdentifier)}
      */
-    public void put(final EdgeIdentifier identifier, final List<MapNodeIdentifier> nodes)
+    public void put(EdgeIdentifier identifier, List<MapNodeIdentifier> nodes)
     {
         // Add nodes at next available index
         var index = nodeIdentifiers.size();
@@ -98,7 +98,7 @@ public class EdgeNodeMap
         nodeCountForEdge.put(identifier.asLong(), nodes.size());
 
         // Go through nodes
-        for (final var node : nodes)
+        for (var node : nodes)
         {
             // adding each node identifier
             nodeIdentifiers.set(index++, node.asLong());

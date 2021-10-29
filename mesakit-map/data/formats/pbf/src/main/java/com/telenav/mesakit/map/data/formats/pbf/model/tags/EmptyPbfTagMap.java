@@ -24,25 +24,25 @@ public class EmptyPbfTagMap extends PbfTagMap
     }
 
     @Override
-    public boolean containsKey(final String key)
+    public boolean containsKey(String key)
     {
         return false;
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         return super.equals(object);
     }
 
     @Override
-    public String get(final String key)
+    public String get(String key)
     {
         return null;
     }
 
     @Override
-    public String get(final String key, final String defaultValue)
+    public String get(String key, String defaultValue)
     {
         return null;
     }
@@ -72,13 +72,13 @@ public class EmptyPbfTagMap extends PbfTagMap
     }
 
     @Override
-    public void put(final String key, final String value)
+    public void put(String key, String value)
     {
         unsupported();
     }
 
     @Override
-    public void putAll(final Iterable<Tag> tags)
+    public void putAll(Iterable<Tag> tags)
     {
         unsupported();
     }
@@ -90,31 +90,31 @@ public class EmptyPbfTagMap extends PbfTagMap
     }
 
     @Override
-    public Tag tag(final String key)
+    public Tag tag(String key)
     {
         return null;
     }
 
     @Override
-    public String value(final String key)
+    public String value(String key)
     {
         return null;
     }
 
     @Override
-    public int valueAsInt(final String key)
+    public int valueAsInt(String key)
     {
         return Ints.INVALID;
     }
 
     @Override
-    public int valueAsNaturalNumber(final String key)
+    public int valueAsNaturalNumber(String key)
     {
         return Ints.INVALID;
     }
 
     @Override
-    public StringList valueSplit(final String key)
+    public StringList valueSplit(String key)
     {
         return new StringList();
     }

@@ -59,15 +59,15 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
     /**
      * Construct relation sequence
      */
-    public RelationSequence(final Iterable<EdgeRelation> relations)
+    public RelationSequence(Iterable<EdgeRelation> relations)
     {
         this.relations = relations;
     }
 
     public EdgeSet asEdgeSet()
     {
-        final var edges = new EdgeSet(Limit.EDGES_PER_RELATION, Estimated.EDGES_PER_RELATION);
-        for (final var relation : this)
+        var edges = new EdgeSet(Limit.EDGES_PER_RELATION, Estimated.EDGES_PER_RELATION);
+        for (var relation : this)
         {
             edges.addAll(relation.edgeSet());
         }
@@ -79,8 +79,8 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
      */
     public List<EdgeRelation> asList()
     {
-        final List<EdgeRelation> list = new ArrayList<>();
-        for (final var relation : this)
+        List<EdgeRelation> list = new ArrayList<>();
+        for (var relation : this)
         {
             list.add(relation);
         }
@@ -99,7 +99,7 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
     /**
      * @return This sequence as an {@link RelationSet}
      */
-    public RelationSet asSet(final Maximum maximum)
+    public RelationSet asSet(Maximum maximum)
     {
         return RelationSet.forIterable(maximum, this);
     }
@@ -129,7 +129,7 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
      * @param maximum A count after which the program will stop iterating the iterable and return stopAfter.
      * @return The count is smaller than stopAfter, or stopAfter otherwise.
      */
-    public Count count(final Count maximum)
+    public Count count(Count maximum)
     {
         return Count.count(this, maximum);
     }
@@ -137,7 +137,7 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
     /**
      * @return The relations in this sequence within the given bounds
      */
-    public RelationSequence intersecting(final Rectangle bounds)
+    public RelationSequence intersecting(Rectangle bounds)
     {
         return matching(relation -> bounds.intersects(relation.bounds()));
     }
@@ -145,7 +145,6 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("NullableProblems")
     @Override
     public Iterator<EdgeRelation> iterator()
     {
@@ -155,7 +154,7 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
     /**
      * @return The sequence of relations matching the given graph constraints
      */
-    public RelationSequence matching(final GraphConstraints constraints)
+    public RelationSequence matching(GraphConstraints constraints)
     {
         return constraints.relations(relations);
     }
@@ -163,7 +162,7 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
     /**
      * @return The relations in this sequence that match the given matcher
      */
-    public RelationSequence matching(final Matcher<EdgeRelation> matcher)
+    public RelationSequence matching(Matcher<EdgeRelation> matcher)
     {
         return new RelationSequence(new Matching<>(matcher)
         {
@@ -191,8 +190,8 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
     @Override
     public String toString()
     {
-        final var relations = new StringList();
-        for (final var relation : this.relations)
+        var relations = new StringList();
+        for (var relation : this.relations)
         {
             relations.add(relation.identifier().toString());
         }
@@ -202,7 +201,7 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
     /**
      * @return The relations in this sequence within the given bounds
      */
-    public RelationSequence within(final Rectangle bounds)
+    public RelationSequence within(Rectangle bounds)
     {
         return matching(relation -> bounds.intersects(relation.bounds()));
     }

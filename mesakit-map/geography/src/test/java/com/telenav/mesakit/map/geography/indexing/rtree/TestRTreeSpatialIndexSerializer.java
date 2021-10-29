@@ -25,26 +25,26 @@ import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 public class TestRTreeSpatialIndexSerializer extends RTreeSpatialIndexKryoSerializer<Polyline>
 {
     @Override
-    protected TestSpatialIndex newSpatialIndex(final RTreeSettings settings)
+    protected TestSpatialIndex newSpatialIndex(RTreeSettings settings)
     {
         return new TestSpatialIndex(settings);
     }
 
     @Override
-    protected Leaf readLeaf(final KryoSerializationSession session,
-                            final RTreeSpatialIndex index,
-                            final InteriorNode parent)
+    protected Leaf readLeaf(KryoSerializationSession session,
+                            RTreeSpatialIndex index,
+                            InteriorNode parent)
     {
-        final var leaf = new TestLeaf(index, parent);
+        var leaf = new TestLeaf(index, parent);
         leaf.polylines = session.readList(Polyline.class);
         return leaf;
     }
 
     @Override
-    protected void writeLeaf(final KryoSerializationSession session,
-                             final Leaf leaf)
+    protected void writeLeaf(KryoSerializationSession session,
+                             Leaf leaf)
     {
-        final var compressedLeaf = (TestLeaf) leaf;
+        var compressedLeaf = (TestLeaf) leaf;
         session.writeList(compressedLeaf.polylines, Polyline.class);
     }
 }

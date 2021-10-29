@@ -28,22 +28,22 @@ public class LaneCountExtractor extends BaseExtractor<Count, PbfWay>
 {
     private final String key;
 
-    public LaneCountExtractor(final Listener listener)
+    public LaneCountExtractor(Listener listener)
     {
         this(listener, "lanes");
     }
 
-    public LaneCountExtractor(final Listener listener, final String key)
+    public LaneCountExtractor(Listener listener, String key)
     {
         super(listener);
         this.key = key;
     }
 
     @Override
-    public Count onExtract(final PbfWay way)
+    public Count onExtract(PbfWay way)
     {
         var lanes = 1;
-        final var lanesString = way.tagValue(key);
+        var lanesString = way.tagValue(key);
         if (lanesString != null)
         {
             if (Strings.isNaturalNumber(lanesString))
@@ -53,7 +53,7 @@ public class LaneCountExtractor extends BaseExtractor<Count, PbfWay>
             else
             {
                 var total = 0;
-                for (final var laneCount : lanesString.split("\\s*[;+]\\s*"))
+                for (var laneCount : lanesString.split("\\s*[;+]\\s*"))
                 {
                     if (Strings.isNaturalNumber(laneCount))
                     {

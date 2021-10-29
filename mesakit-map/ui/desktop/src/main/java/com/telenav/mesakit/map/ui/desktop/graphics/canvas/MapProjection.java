@@ -61,7 +61,7 @@ public interface MapProjection
     /**
      * @return The given {@link Rectangle} in the drawing area
      */
-    default DrawingRectangle toDrawing(final Rectangle rectangle)
+    default DrawingRectangle toDrawing(Rectangle rectangle)
     {
         return DrawingRectangle.rectangle(
                 toDrawing(rectangle.topLeft()),
@@ -71,7 +71,7 @@ public interface MapProjection
     /**
      * @return The given {@link Width} in the drawing area
      */
-    default DrawingWidth toDrawing(final Width width)
+    default DrawingWidth toDrawing(Width width)
     {
         return toDrawing(width.asSize()).width();
     }
@@ -79,7 +79,7 @@ public interface MapProjection
     /**
      * @return The given {@link Distance} in the drawing area
      */
-    default DrawingLength toDrawing(final Distance distance)
+    default DrawingLength toDrawing(Distance distance)
     {
         return toDrawing(Width.degrees(distance.asDegrees()));
     }
@@ -87,7 +87,7 @@ public interface MapProjection
     /**
      * @return The given {@link Height} in the drawing area
      */
-    default DrawingHeight toDrawing(final Height height)
+    default DrawingHeight toDrawing(Height height)
     {
         return toDrawing(height.asSize()).height();
     }
@@ -95,40 +95,40 @@ public interface MapProjection
     /**
      * @return The given {@link Size} in the drawing area
      */
-    DrawingSize toDrawing(final Size size);
+    DrawingSize toDrawing(Size size);
 
     /**
      * @return The given drawing area size as a map {@link Size}
      */
-    default Size toMap(final DrawingSize size)
+    default Size toMap(DrawingSize size)
     {
-        final var width = toMap(size.width());
-        final var height = toMap(size.height());
+        var width = toMap(size.width());
+        var height = toMap(size.height());
         return width == null || height == null ? null : Size.of(width, height);
     }
 
     /**
      * @return The given drawing area height as a map {@link Height}
      */
-    default Height toMap(final DrawingHeight height)
+    default Height toMap(DrawingHeight height)
     {
-        final var location = toMap(height.asPoint());
+        var location = toMap(height.asPoint());
         return location == null ? null : location.asHeight();
     }
 
     /**
      * @return The given drawing area width as a map {@link Width}
      */
-    default Width toMap(final DrawingWidth width)
+    default Width toMap(DrawingWidth width)
     {
-        final var location = toMap(width.asPoint());
+        var location = toMap(width.asPoint());
         return location == null ? null : location.asWidth();
     }
 
     /**
      * @return The given drawing area length as a map {@link Distance}
      */
-    default Distance toMap(final DrawingLength length)
+    default Distance toMap(DrawingLength length)
     {
         return Distance.degrees(toMap(length.asWidth()).asDegrees());
     }
@@ -141,10 +141,10 @@ public interface MapProjection
     /**
      * @return The given rectangle in drawing coordinates as a map {@link Rectangle}
      */
-    default Rectangle toMap(final DrawingRectangle rectangle)
+    default Rectangle toMap(DrawingRectangle rectangle)
     {
-        final var at = toMap(rectangle.at());
-        final var to = toMap(rectangle.asPoint());
+        var at = toMap(rectangle.at());
+        var to = toMap(rectangle.asPoint());
         return at == null || to == null ? null : Rectangle.fromLocations(at, to);
     }
 }

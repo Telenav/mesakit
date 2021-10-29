@@ -26,7 +26,7 @@ import com.telenav.mesakit.map.measurements.geographic.Headed;
 
 public class EdgeSnapper
 {
-    public <T extends Location & Headed> PolylineSnap snap(final Edge edge, final T point)
+    public <T extends Location & Headed> PolylineSnap snap(Edge edge, T point)
     {
         return new PolylineSnapper().snap(edge, point, point.heading());
     }

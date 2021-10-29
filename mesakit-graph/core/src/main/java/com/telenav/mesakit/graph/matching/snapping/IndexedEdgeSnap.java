@@ -25,13 +25,13 @@ public class IndexedEdgeSnap extends EdgeSnap
 {
     private final int index;
 
-    public IndexedEdgeSnap(final Edge edge, final PolylineSnap snap, final int index)
+    public IndexedEdgeSnap(Edge edge, PolylineSnap snap, int index)
     {
         super(edge, snap);
         this.index = index;
     }
 
-    public IndexedEdgeSnap(final EdgeSnap snap, final int index)
+    public IndexedEdgeSnap(EdgeSnap snap, int index)
     {
         this(snap.edge(), snap, index);
     }

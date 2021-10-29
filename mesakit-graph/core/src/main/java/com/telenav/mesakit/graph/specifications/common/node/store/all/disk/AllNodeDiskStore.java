@@ -45,7 +45,7 @@ public abstract class AllNodeDiskStore
 
     private final Map<AllNodeDiskCell, DataOutputStream> output = new HashMap<>();
 
-    protected AllNodeDiskStore(final Folder folder)
+    protected AllNodeDiskStore(Folder folder)
     {
         this.folder = folder;
         archive = null;
@@ -53,7 +53,7 @@ public abstract class AllNodeDiskStore
         folder.clearAll();
     }
 
-    protected AllNodeDiskStore(final GraphArchive archive)
+    protected AllNodeDiskStore(GraphArchive archive)
     {
         folder = null;
         this.archive = archive;
@@ -75,7 +75,7 @@ public abstract class AllNodeDiskStore
         {
             if (archive() != null)
             {
-                try (final var zip = archive().zip())
+                try (var zip = archive().zip())
                 {
                     containsData = !zip.entries(Pattern.compile(name() + ".*")).isEmpty();
                 }
@@ -90,23 +90,23 @@ public abstract class AllNodeDiskStore
 
     public void delete()
     {
-        for (final var DiskCell : DiskCells())
+        for (var DiskCell : DiskCells())
         {
             fileForDiskCell(DiskCell).delete();
         }
         folder.delete();
     }
 
-    public InputStream in(final AllNodeDiskCell DiskCell)
+    public InputStream in(AllNodeDiskCell DiskCell)
     {
         return fileForDiskCell(DiskCell).openForReading();
     }
 
-    public void saveTo(final GraphArchive archive)
+    public void saveTo(GraphArchive archive)
     {
         LOGGER.information("Saving store $ to $", folder, archive);
         close();
-        for (final var DiskCell : DiskCells())
+        for (var DiskCell : DiskCells())
         {
             archive.zip().save(DiskCell.toFileString(name()), fileForDiskCell(DiskCell));
         }
@@ -118,10 +118,10 @@ public abstract class AllNodeDiskStore
         return "[" + getClass().getSimpleName() + " root = " + folder + ", archive = " + archive + "]";
     }
 
-    protected ZipEntry entry(final AllNodeDiskCell DiskCell)
+    protected ZipEntry entry(AllNodeDiskCell DiskCell)
     {
-        final var file = DiskCell.toFileString(name());
-        final var entry = archive().zip().entry(file);
+        var file = DiskCell.toFileString(name());
+        var entry = archive().zip().entry(file);
         if (entry == null)
         {
             throw new IllegalStateException(file + " is not available in " + this);
@@ -129,14 +129,14 @@ public abstract class AllNodeDiskStore
         return entry;
     }
 
-    protected DataInputStream input(final AllNodeDiskCell DiskCell)
+    protected DataInputStream input(AllNodeDiskCell DiskCell)
     {
         return new DataInputStream(in(DiskCell));
     }
 
     protected abstract String name();
 
-    protected DataOutputStream output(final AllNodeDiskCell DiskCell)
+    protected DataOutputStream output(AllNodeDiskCell DiskCell)
     {
         var out = output.get(DiskCell);
         if (out == null)
@@ -149,14 +149,14 @@ public abstract class AllNodeDiskStore
 
     private void close()
     {
-        for (final var out : output.values())
+        for (var out : output.values())
         {
             IO.flush(out);
             IO.close(out);
         }
     }
 
-    private File fileForDiskCell(final AllNodeDiskCell DiskCell)
+    private File fileForDiskCell(AllNodeDiskCell DiskCell)
     {
         return folder.file(DiskCell.toFileString(name()));
     }

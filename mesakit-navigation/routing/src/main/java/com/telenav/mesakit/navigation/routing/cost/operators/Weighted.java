@@ -38,15 +38,15 @@ public class Weighted implements CostFunction
      * @param costFunction The cost function
      * @param weight The weight to apply to the cost function
      */
-    public Weighted(final CostFunction costFunction, final Weight weight)
+    public Weighted(CostFunction costFunction, Weight weight)
     {
         this.costFunction = costFunction;
         this.weight = weight;
     }
 
     @Override
-    public Cost cost(final Edge edge)
+    public Cost cost(Edge edge)
     {
-        return this.costFunction.cost(edge).weighted(this.weight);
+        return costFunction.cost(edge).weighted(weight);
     }
 }

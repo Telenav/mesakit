@@ -31,29 +31,29 @@ public class SignPostDetectionClassifier implements EdgeClassifier
     public static SignPostDetectionClassifier INSTANCE = new SignPostDetectionClassifier();
 
     @Override
-    public boolean accept(final Edge edge)
+    public boolean accept(Edge edge)
     {
         if (edge.leadsToFork())
         {
-            final var to = edge.to();
+            var to = edge.to();
             return hasSignPost(to) || hasOldSignPost(to);
         }
         return false;
     }
 
-    private boolean hasOldSignPost(final Vertex vertex)
+    private boolean hasOldSignPost(Vertex vertex)
     {
         return vertex.tag("exit_to") != null;
     }
 
-    private boolean hasSignPost(final Vertex vertex)
+    private boolean hasSignPost(Vertex vertex)
     {
         if (vertex.tag("ref") == null && !"yes".equalsIgnoreCase(vertex.tagValue("noref")))
         {
             return false;
         }
         var foundDestination = false;
-        for (final var edge : vertex.outEdges())
+        for (var edge : vertex.outEdges())
         {
             if (edge.roadType() != RoadType.FREEWAY)
             {

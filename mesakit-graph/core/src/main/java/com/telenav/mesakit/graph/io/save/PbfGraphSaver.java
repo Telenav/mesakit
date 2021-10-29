@@ -36,7 +36,7 @@ public class PbfGraphSaver
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public void save(final Graph graph, final WritableResource resource)
+    public void save(Graph graph, WritableResource resource)
     {
         if (!graph.supportsFullPbfNodeInformation())
         {
@@ -44,55 +44,55 @@ public class PbfGraphSaver
                     "Graph file does not contain OSM node information required to convert to PBF\n"
                             + "To convert a graph file to a PBF, the graph file must be created with -osmNodeInformation=true");
         }
-        final var writer = new PbfWriter(resource, true);
+        var writer = new PbfWriter(resource, true);
         LOGGER.information("Writing bounds");
         writeBounds(graph, writer);
         LOGGER.information("Writing nodes");
-        final var nodes = writeNodes(graph, writer);
+        var nodes = writeNodes(graph, writer);
         LOGGER.information("Wrote $ nodes", nodes);
         LOGGER.information("Writing ways");
-        final var ways = writeWays(graph, writer);
+        var ways = writeWays(graph, writer);
         LOGGER.information("Wrote $ ways", ways);
         LOGGER.information("Writing relations");
-        final var relations = writeRelations(graph, writer);
+        var relations = writeRelations(graph, writer);
         writer.close();
         LOGGER.information("Wrote $ relations", relations);
         LOGGER.information("Done");
     }
 
-    private void writeBounds(final Graph graph, final PbfWriter writer)
+    private void writeBounds(Graph graph, PbfWriter writer)
     {
-        final var bounds = graph.bounds();
+        var bounds = graph.bounds();
         writer.write(new Bound(bounds.right().asDegrees(), bounds.left().asDegrees(), bounds.top().asDegrees(),
                 bounds.bottom().asDegrees(), graph.name()));
     }
 
-    private Count writeNodes(final Graph graph, final PbfWriter writer)
+    private Count writeNodes(Graph graph, PbfWriter writer)
     {
-        final Map<MapNodeIdentifier, ShapePoint> toWrite = new TreeMap<>();
-        for (final var edge : graph.forwardEdges())
+        Map<MapNodeIdentifier, ShapePoint> toWrite = new TreeMap<>();
+        for (var edge : graph.forwardEdges())
         {
-            for (final var point : edge.shapePoints())
+            for (var point : edge.shapePoints())
             {
-                final var identifier = point.mapIdentifier();
+                var identifier = point.mapIdentifier();
                 if (!toWrite.containsKey(identifier))
                 {
                     toWrite.put(identifier, point);
                 }
             }
         }
-        for (final var key : toWrite.keySet())
+        for (var key : toWrite.keySet())
         {
-            final var point = toWrite.get(key);
+            var point = toWrite.get(key);
             writer.write(point.asPbfNode());
         }
         return Count.count(toWrite.keySet());
     }
 
-    private Count writeRelations(final Graph graph, final PbfWriter writer)
+    private Count writeRelations(Graph graph, PbfWriter writer)
     {
-        final var count = new MutableCount();
-        for (final var relation : graph.relations())
+        var count = new MutableCount();
+        for (var relation : graph.relations())
         {
             writer.write(relation.asPbfRelation());
             count.increment();
@@ -100,10 +100,10 @@ public class PbfGraphSaver
         return count.asCount();
     }
 
-    private Count writeWays(final Graph graph, final PbfWriter writer)
+    private Count writeWays(Graph graph, PbfWriter writer)
     {
-        final var count = new MutableCount();
-        for (final var identifier : graph.wayIdentifiers())
+        var count = new MutableCount();
+        for (var identifier : graph.wayIdentifiers())
         {
             writer.write(graph.routeForWayIdentifier(identifier).asWay());
             count.increment();

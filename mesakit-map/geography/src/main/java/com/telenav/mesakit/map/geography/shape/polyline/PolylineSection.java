@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
 
 /**
  * Represents a section of a polyline
@@ -42,7 +42,7 @@ public class PolylineSection
     /** Keep the size to validate that the parent didn't change later */
     private final int parentSize;
 
-    public PolylineSection(final Polyline parent, final int fromIndex, final int toIndex)
+    public PolylineSection(Polyline parent, int fromIndex, int toIndex)
     {
         assert parent != null;
         assert (parent.size() >= 2);
@@ -59,11 +59,11 @@ public class PolylineSection
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof PolylineSection)
         {
-            final var that = (PolylineSection) object;
+            var that = (PolylineSection) object;
             return shape().equals(that.shape())
                     && fromIndex == that.fromIndex
                     && toIndex == that.toIndex;

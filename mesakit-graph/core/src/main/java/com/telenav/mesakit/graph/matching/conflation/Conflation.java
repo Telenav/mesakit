@@ -32,7 +32,7 @@ public class Conflation
 
     private final Distance overlap;
 
-    Conflation(final Edge enhancing, final Edge base, final Percent closeness, final Distance overlap)
+    Conflation(Edge enhancing, Edge base, Percent closeness, Distance overlap)
     {
         this.enhancing = enhancing;
         this.base = base;
@@ -42,26 +42,26 @@ public class Conflation
 
     public Edge base()
     {
-        return this.base;
+        return base;
     }
 
     public Percent closeness()
     {
-        return this.closeness;
+        return closeness;
     }
 
     public Edge enhancing()
     {
-        return this.enhancing;
+        return enhancing;
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Conflation)
         {
-            final var that = (Conflation) object;
-            return this.base.equals(that.base);
+            var that = (Conflation) object;
+            return base.equals(that.base);
         }
         return false;
     }
@@ -69,32 +69,32 @@ public class Conflation
     @Override
     public int hashCode()
     {
-        return this.base.hashCode();
+        return base.hashCode();
     }
 
-    public boolean isCloserThan(final Conflation that)
+    public boolean isCloserThan(Conflation that)
     {
         return that == null || closeness().isGreaterThan(that.closeness());
     }
 
-    public boolean isCloserThan(final Percent closeness)
+    public boolean isCloserThan(Percent closeness)
     {
         return closeness().isGreaterThan(closeness);
     }
 
     public Distance overlap()
     {
-        return this.overlap;
+        return overlap;
     }
 
     @Override
     public String toString()
     {
         return "[Conflation enhancing = " + edge(enhancing()) + ", base = " + edge(base()) + ", closeness = "
-                + this.closeness + "]";
+                + closeness + "]";
     }
 
-    private String edge(final Edge edge)
+    private String edge(Edge edge)
     {
         return edge.identifier() + " (" + edge.displayRoadName() + ")";
     }

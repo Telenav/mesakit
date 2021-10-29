@@ -23,7 +23,7 @@ public class Compare extends Node implements BooleanExpression
 
         private final String text;
 
-        Type(final String text)
+        Type(String text)
         {
             this.text = text;
         }
@@ -44,7 +44,7 @@ public class Compare extends Node implements BooleanExpression
     /** The right side of the comparison */
     private final ValueExpression right;
 
-    public Compare(final Type type, final ValueExpression left, final ValueExpression right)
+    public Compare(Type type, ValueExpression left, ValueExpression right)
     {
         this.type = type;
         this.left = left;
@@ -60,15 +60,15 @@ public class Compare extends Node implements BooleanExpression
     @Override
     public boolean evaluate()
     {
-        final var left = this.left.evaluate();
-        final var right = this.right.evaluate();
+        var left = this.left.evaluate();
+        var right = this.right.evaluate();
         if (!left.isNull() && !right.isNull())
         {
-            final var leftNumber = left.asNumber();
-            final var rightNumber = right.asNumber();
+            var leftNumber = left.asNumber();
+            var rightNumber = right.asNumber();
             if (leftNumber != null && rightNumber != null)
             {
-                final boolean result;
+                boolean result;
                 switch (type)
                 {
                     case EQUAL:
@@ -115,7 +115,7 @@ public class Compare extends Node implements BooleanExpression
     }
 
     @Override
-    public void visit(final Visitor visitor)
+    public void visit(Visitor visitor)
     {
         super.visit(visitor);
         left.visit(visitor);

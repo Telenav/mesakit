@@ -106,7 +106,7 @@ public class PbfDataAnalysis extends BaseRepeater
     /**
      * Constructs a set of codecs for encoding nodes, ways and relations from an PBF data source
      */
-    public PbfDataAnalysis(final Metadata metadata, final AnalysisType analysisType, final WayFilter wayFilter)
+    public PbfDataAnalysis(Metadata metadata, AnalysisType analysisType, WayFilter wayFilter)
     {
         ensure(metadata != null);
         ensure(analysisType != null);
@@ -123,13 +123,13 @@ public class PbfDataAnalysis extends BaseRepeater
         intersections = new IntersectionMap("data-analysis.intersections");
     }
 
-    public void analyze(final PbfDataSource input)
+    public void analyze(PbfDataSource input)
     {
-        final var fileName = input.resource().fileName();
+        var fileName = input.resource().fileName();
         metadata.configure(input);
 
         // Build bounding box around data
-        final var builder = new BoundingBoxBuilder();
+        var builder = new BoundingBoxBuilder();
 
         // Initialize disk stores if we're storing full PBF information
         if (analysisType == AnalysisType.FULL_NODE_INFORMATION)
@@ -138,7 +138,7 @@ public class PbfDataAnalysis extends BaseRepeater
         }
 
         // Process input data
-        final var statistics = input.process(new PbfDataProcessor()
+        var statistics = input.process(new PbfDataProcessor()
         {
             @Override
             public void onEndWays()
@@ -147,32 +147,32 @@ public class PbfDataAnalysis extends BaseRepeater
             }
 
             @Override
-            public Action onNode(final PbfNode node)
+            public Action onNode(PbfNode node)
             {
                 processNode(node, builder);
                 return ACCEPTED;
             }
 
             @Override
-            public void onNodes(final Collection<PbfNode> nodes)
+            public void onNodes(Collection<PbfNode> nodes)
             {
-                for (final var node : nodes)
+                for (var node : nodes)
                 {
                     processNode(node, builder);
                 }
             }
 
             @Override
-            public Action onWay(final PbfWay way)
+            public Action onWay(PbfWay way)
             {
                 processWay(way);
                 return ACCEPTED;
             }
 
             @Override
-            public void onWays(final Collection<PbfWay> ways)
+            public void onWays(Collection<PbfWay> ways)
             {
-                for (final var way : ways)
+                for (var way : ways)
                 {
                     processWay(way);
                 }
@@ -187,7 +187,7 @@ public class PbfDataAnalysis extends BaseRepeater
                 .withWayCount(statistics.ways())
                 .withRelationCount(statistics.relations());
 
-        final var indenter = new AsStringIndenter(StringFormat.USER_MULTILINE);
+        var indenter = new AsStringIndenter(StringFormat.USER_MULTILINE);
         indenter.indented("metadata", () -> metadata().asString(StringFormat.USER_MULTILINE, indenter));
         information(AsciiArt.textBox(Message.format("PBF Data Analysis of $", fileName), indenter.toString()));
     }
@@ -244,10 +244,10 @@ public class PbfDataAnalysis extends BaseRepeater
         return wayNodes;
     }
 
-    private void expandBounds(final BoundingBoxBuilder boundsBuilder, final PbfNode node)
+    private void expandBounds(BoundingBoxBuilder boundsBuilder, PbfNode node)
     {
-        final var latitude = node.latitude();
-        final var longitude = node.longitude();
+        var latitude = node.latitude();
+        var longitude = node.longitude();
         if (latitude > 90 || latitude < -90)
         {
             warning("PBF node $ has invalid latitude of $", node.identifierAsLong(), latitude);
@@ -259,7 +259,7 @@ public class PbfDataAnalysis extends BaseRepeater
         boundsBuilder.add(latitude, longitude);
     }
 
-    private void processNode(final PbfNode node, final BoundingBoxBuilder builder)
+    private void processNode(PbfNode node, BoundingBoxBuilder builder)
     {
         // Possibly increase the data bounds
         expandBounds(builder, node);
@@ -275,7 +275,7 @@ public class PbfDataAnalysis extends BaseRepeater
         }
     }
 
-    private void processWay(final PbfWay way)
+    private void processWay(PbfWay way)
     {
         // If we accept this way
         if (wayFilter.accepts(way))
@@ -288,17 +288,17 @@ public class PbfDataAnalysis extends BaseRepeater
         }
     }
 
-    private synchronized void processWayNodes(final PbfWay way)
+    private synchronized void processWayNodes(PbfWay way)
     {
         // Get way nodes
-        final var wayNodes = way.nodes();
+        var wayNodes = way.nodes();
 
         // Go through nodes
         var i = 0;
-        for (final var node : wayNodes)
+        for (var node : wayNodes)
         {
             // Get node id and add it to the set of way nodes we know about
-            final var nodeIdentifier = node.getNodeId();
+            var nodeIdentifier = node.getNodeId();
             this.wayNodes.add(nodeIdentifier);
 
             // Possibly increase highest node identifier
@@ -321,18 +321,18 @@ public class PbfDataAnalysis extends BaseRepeater
         }
     }
 
-    private void reference(final long nodeIdentifier)
+    private void reference(long nodeIdentifier)
     {
         intersections.addReference(nodeIdentifier);
     }
 
-    private void referenceBarriersAndSignals(final PbfNode node)
+    private void referenceBarriersAndSignals(PbfNode node)
     {
         // HOTSPOT: This method has been determined to be a hotspot by YourKit profiling
 
         String signal = null;
         String barrier = null;
-        for (final var tag : node)
+        for (var tag : node)
         {
             if ("barrier".equals(tag.getKey()))
             {
@@ -349,7 +349,7 @@ public class PbfDataAnalysis extends BaseRepeater
         {
             // A barrier is marked as an intersection so it will be broken up by
             // the edge sectioner when it sections intersections
-            final var identifier = node.identifierAsLong();
+            var identifier = node.identifierAsLong();
             reference(identifier);
             reference(identifier);
             reference(identifier);

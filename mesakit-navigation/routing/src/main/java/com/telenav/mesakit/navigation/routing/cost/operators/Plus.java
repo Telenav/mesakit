@@ -37,17 +37,17 @@ public class Plus implements CostFunction
      * @param a The first cost function
      * @param b The second cost function
      */
-    public Plus(final CostFunction a, final CostFunction b)
+    public Plus(CostFunction a, CostFunction b)
     {
         this.a = a;
         this.b = b;
     }
 
     @Override
-    public Cost cost(final Edge edge)
+    public Cost cost(Edge edge)
     {
-        final var costA = this.a.cost(edge);
-        final var costB = this.b.cost(edge);
+        var costA = a.cost(edge);
+        var costB = b.cost(edge);
         return costA.add(costB);
     }
 }

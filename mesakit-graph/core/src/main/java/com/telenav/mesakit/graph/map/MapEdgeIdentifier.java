@@ -38,18 +38,18 @@ public class MapEdgeIdentifier
 {
     public static class Converter extends BaseStringConverter<MapEdgeIdentifier>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected MapEdgeIdentifier onToValue(final String value)
+        protected MapEdgeIdentifier onToValue(String value)
         {
-            final var values = Split.split(value, ':').iterator();
-            final var way = PbfWayIdentifier.parse(values.next());
-            final var from = PbfNodeIdentifier.parse(values.next());
-            final var to = PbfNodeIdentifier.parse(values.next());
+            var values = Split.split(value, ':').iterator();
+            var way = PbfWayIdentifier.parse(values.next());
+            var from = PbfNodeIdentifier.parse(values.next());
+            var to = PbfNodeIdentifier.parse(values.next());
             if (way != null && from != null && to != null)
             {
                 return new MapEdgeIdentifier(way, from, to);
@@ -64,7 +64,7 @@ public class MapEdgeIdentifier
 
         private final Converter identifierConverter;
 
-        public EdgeConverter(final Listener listener, final Graph graph)
+        public EdgeConverter(Listener listener, Graph graph)
         {
             super(listener);
             this.graph = graph;
@@ -72,15 +72,15 @@ public class MapEdgeIdentifier
         }
 
         @Override
-        protected Edge onToValue(final String value)
+        protected String onToString(Edge edge)
         {
-            return graph.edgeForIdentifier(identifierConverter.convert(value));
+            return edge.mapEdgeIdentifier().toString();
         }
 
         @Override
-        protected String onToString(final Edge edge)
+        protected Edge onToValue(String value)
         {
-            return edge.mapEdgeIdentifier().toString();
+            return graph.edgeForIdentifier(identifierConverter.convert(value));
         }
     }
 
@@ -90,7 +90,7 @@ public class MapEdgeIdentifier
 
     private final MapNodeIdentifier to;
 
-    public MapEdgeIdentifier(final MapWayIdentifier way, final MapNodeIdentifier from, final MapNodeIdentifier to)
+    public MapEdgeIdentifier(MapWayIdentifier way, MapNodeIdentifier from, MapNodeIdentifier to)
     {
         this.way = way;
         this.from = from;
@@ -98,11 +98,11 @@ public class MapEdgeIdentifier
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof MapEdgeIdentifier)
         {
-            final var that = (MapEdgeIdentifier) object;
+            var that = (MapEdgeIdentifier) object;
             return way.equals(that.way) && from.equals(that.from) && to.equals(that.to);
         }
         return false;

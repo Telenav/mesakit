@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.data.formats.library.map.identifiers;
 
-import com.telenav.mesakit.map.data.formats.library.project.lexakai.diagrams.DiagramDataMapIdentifier;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.data.formats.library.project.lexakai.diagrams.DiagramDataMapIdentifier;
 
 /**
  * OSM way identifier
@@ -32,7 +32,7 @@ public abstract class MapWayIdentifier extends MapIdentifier
     public static final MapWayIdentifier NULL = new MapWayIdentifier(0)
     {
         @Override
-        protected MapIdentifier newIdentifier(final long asLong)
+        protected MapIdentifier newIdentifier(long asLong)
         {
             return null;
         }
@@ -41,7 +41,7 @@ public abstract class MapWayIdentifier extends MapIdentifier
     /**
      * Construct from identifier
      */
-    protected MapWayIdentifier(final long identifier)
+    protected MapWayIdentifier(long identifier)
     {
         super(identifier);
     }

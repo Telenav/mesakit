@@ -61,12 +61,12 @@ public class JosmXml
     /**
      * @param writable The writable resource to save to
      */
-    public JosmXml(final WritableResource writable)
+    public JosmXml(WritableResource writable)
     {
         this.writable = writable;
     }
 
-    public void addModifiedTags(final boolean add)
+    public void addModifiedTags(boolean add)
     {
         addModifiedTags = add;
     }
@@ -74,12 +74,12 @@ public class JosmXml
     /**
      * Adds modified ways
      */
-    public void addModifiedWays(final Collection<MutableWay> ways)
+    public void addModifiedWays(Collection<MutableWay> ways)
     {
         modifiedWays.addAll(ways);
     }
 
-    public void addNewTags(final boolean add)
+    public void addNewTags(boolean add)
     {
         addNewTags = add;
     }
@@ -87,7 +87,7 @@ public class JosmXml
     /**
      * Adds new ways
      */
-    public void addNewWays(final Collection<NewWay> ways)
+    public void addNewWays(Collection<NewWay> ways)
     {
         newWays.addAll(ways);
     }
@@ -95,12 +95,12 @@ public class JosmXml
     /**
      * Adds OSM nodes
      */
-    public void addNodes(final PbfNodeStore nodes)
+    public void addNodes(PbfNodeStore nodes)
     {
         this.nodes = nodes;
     }
 
-    public void removeWay(final PbfWayIdentifier identifier)
+    public void removeWay(PbfWayIdentifier identifier)
     {
         removedWays.add(new RemovedWay(identifier));
     }
@@ -108,12 +108,12 @@ public class JosmXml
     /**
      * Saves the nodes, modified ways and new ways to this JOSM XML file.
      */
-    public void save(final boolean debug)
+    public void save(boolean debug)
     {
         try
         {
             // Get file output
-            final var out = writable.writer(StandardCharsets.UTF_8).textWriter();
+            var out = writable.writer(StandardCharsets.UTF_8).textWriter();
 
             // Header
             out.write("<?xml version='1.0' encoding='UTF-8'?>\n");
@@ -123,19 +123,19 @@ public class JosmXml
             out.write(nodes.toString() + "\n");
 
             // Save modified ways
-            for (final var way : modifiedWays)
+            for (var way : modifiedWays)
             {
                 out.write(way.toString(addModifiedTags, debug) + "\n");
             }
 
             // Save new ways
-            for (final var way : newWays)
+            for (var way : newWays)
             {
                 out.write(way.toString(addNewTags) + "\n");
             }
 
             // Save removed ways
-            for (final var way : removedWays)
+            for (var way : removedWays)
             {
                 out.write(way.toString() + "\n");
             }
@@ -147,7 +147,7 @@ public class JosmXml
             IO.flush(out);
             IO.close(out);
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             throw new RuntimeException("Cannot write to " + writable, e);
         }

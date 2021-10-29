@@ -28,7 +28,7 @@ public class EdgeDifferences extends Differences
 
     private final Edge b;
 
-    public EdgeDifferences(final Edge a, final Edge b)
+    public EdgeDifferences(Edge a, Edge b)
     {
         this.a = a;
         this.b = b;
@@ -36,7 +36,7 @@ public class EdgeDifferences extends Differences
 
     public Differences compare()
     {
-        final var differences = new Differences();
+        var differences = new Differences();
 
         // Add differences that are meaningful for all data specifications
         differences.compare("freeFlow", a.freeFlowSpeed(), b.freeFlowSpeed());

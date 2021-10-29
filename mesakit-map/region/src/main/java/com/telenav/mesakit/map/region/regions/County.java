@@ -61,7 +61,7 @@ public class County extends Region<County>
         return type(County.class).all();
     }
 
-    public static Collection<County> all(final Matcher<County> matcher)
+    public static Collection<County> all(Matcher<County> matcher)
     {
         return type(County.class).matching(matcher);
     }
@@ -70,7 +70,7 @@ public class County extends Region<County>
     {
         if (borderCache == null)
         {
-            final var settings = new BorderCache.Settings<County>()
+            var settings = new BorderCache.Settings<County>()
                     .withType(County.class)
                     .withMaximumObjects(RegionLimits.COUNTIES)
                     .withMaximumPolygonsPerObject(RegionLimits.POLYGONS_PER_COUNTY)
@@ -82,12 +82,12 @@ public class County extends Region<County>
             {
                 @Override
                 protected void assignMultiPolygonIdentity(
-                        final PbfTagMap relationTags,
-                        final Collection<Border<County>> objects)
+                        PbfTagMap relationTags,
+                        Collection<Border<County>> objects)
                 {
                     if (relationTags.containsKey("CODE"))
                     {
-                        for (final var country : objects)
+                        for (var country : objects)
                         {
                             country.region().name(relationTags.get("CODE"));
                         }
@@ -98,7 +98,7 @@ public class County extends Region<County>
         return borderCache;
     }
 
-    public static SwitchParser.Builder<County> countySwitchParser(final String name, final String description)
+    public static SwitchParser.Builder<County> countySwitchParser(String name, String description)
     {
         return SwitchParser.builder(County.class)
                 .name(name)
@@ -106,27 +106,27 @@ public class County extends Region<County>
                 .description(description);
     }
 
-    public static County forIdentifier(final RegionIdentifier identifier)
+    public static County forIdentifier(RegionIdentifier identifier)
     {
         return type(County.class).forIdentifier(identifier);
     }
 
-    public static County forIdentity(final RegionIdentity identity)
+    public static County forIdentity(RegionIdentity identity)
     {
         return type(County.class).forIdentity(identity);
     }
 
-    public static County forLocation(final Location location)
+    public static County forLocation(Location location)
     {
         return type(County.class).forLocation(location);
     }
 
-    public static County forRegionCode(final RegionCode code)
+    public static County forRegionCode(RegionCode code)
     {
         return type(County.class).forRegionCode(code);
     }
 
-    public County(final State state, final RegionInstance<County> instance)
+    public County(State state, RegionInstance<County> instance)
     {
         super(state, instance.prefix("County").prefix(state));
     }
@@ -165,10 +165,10 @@ public class County extends Region<County>
         return new BaseExtractor<>(LOGGER())
         {
             @Override
-            public County onExtract(final PbfWay way)
+            public County onExtract(PbfWay way)
             {
-                final var name = Region.name(way);
-                final var code = code(way, "code");
+                var name = Region.name(way);
+                var code = code(way, "code");
 
                 if (code == null)
                 {
@@ -176,7 +176,7 @@ public class County extends Region<County>
                     return null;
                 }
 
-                final var iso = code.isoized();
+                var iso = code.isoized();
 
                 if (name == null)
                 {
@@ -190,7 +190,7 @@ public class County extends Region<County>
                     return null;
                 }
 
-                final var state = State.forRegionCode(iso.first(2));
+                var state = State.forRegionCode(iso.first(2));
                 if (state == null)
                 {
                     DEBUG().glitch("Can't locate parent state $ for $", iso.first(2), way);
@@ -198,23 +198,23 @@ public class County extends Region<County>
                 }
 
                 // Return if it already exists
-                final var area = forRegionCode(iso);
+                var area = forRegionCode(iso);
                 if (area != null)
                 {
                     return area;
                 }
 
                 // Construct region identity
-                final var identity = new RegionIdentity(name.code())
+                var identity = new RegionIdentity(name.code())
                         .withIsoCode(iso.last());
 
                 // Create new region so code gets hierarchically populated and
                 // inserted into the RegionType cache for this region type
-                final var instance = new RegionInstance<>(County.class)
+                var instance = new RegionInstance<>(County.class)
                         .withIdentity(identity);
 
                 // Return either some old instance or the new one
-                final var newRegion = new County(state, instance);
+                var newRegion = new County(state, instance);
                 return ensureNotNull(forIdentity(newRegion.identity()));
             }
         };

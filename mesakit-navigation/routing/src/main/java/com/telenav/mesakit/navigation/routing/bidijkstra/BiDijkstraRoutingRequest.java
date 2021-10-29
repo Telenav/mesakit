@@ -40,23 +40,23 @@ public class BiDijkstraRoutingRequest extends RoutingRequest
     /** The backward heuristic cost function */
     private CostFunction backwardHeuristicCostFunction;
 
-    public BiDijkstraRoutingRequest(final Vertex start, final Vertex end)
+    public BiDijkstraRoutingRequest(Vertex start, Vertex end)
     {
         super(start, end);
     }
 
-    protected BiDijkstraRoutingRequest(final BiDijkstraRoutingRequest that, final RoutingLimiter limiter,
-                                       final RoutingDebugger debugger)
+    protected BiDijkstraRoutingRequest(BiDijkstraRoutingRequest that, RoutingLimiter limiter,
+                                       RoutingDebugger debugger)
     {
         super(that, limiter, debugger);
-        this.meets = that.meets;
-        this.forwardHeuristicCostFunction = that.forwardHeuristicCostFunction;
-        this.backwardHeuristicCostFunction = that.backwardHeuristicCostFunction;
+        meets = that.meets;
+        forwardHeuristicCostFunction = that.forwardHeuristicCostFunction;
+        backwardHeuristicCostFunction = that.backwardHeuristicCostFunction;
     }
 
     public CostFunction backwardHeuristicCostFunction()
     {
-        return this.backwardHeuristicCostFunction;
+        return backwardHeuristicCostFunction;
     }
 
     @Override
@@ -67,77 +67,77 @@ public class BiDijkstraRoutingRequest extends RoutingRequest
 
     public CostFunction forwardHeuristicCostFunction()
     {
-        return this.forwardHeuristicCostFunction;
+        return forwardHeuristicCostFunction;
     }
 
     public double maximumFirstMeetCostMultiple()
     {
-        return this.maximumFirstMeetCostMultiple;
+        return maximumFirstMeetCostMultiple;
     }
 
     public Count meets()
     {
-        if (this.meets == null)
+        if (meets == null)
         {
-            final var distance = distance();
+            var distance = distance();
             if (distance.isLessThan(Distance.miles(50)))
             {
-                this.meets = Count.count(200);
+                meets = Count.count(200);
             }
             else if (distance.isLessThan(Distance.miles(300)))
             {
-                this.meets = Count.count(500);
+                meets = Count.count(500);
             }
             else
             {
-                this.meets = Count.count(1_000);
+                meets = Count.count(1_000);
             }
         }
-        return this.meets;
+        return meets;
     }
 
-    public BiDijkstraRoutingRequest withBackwardHeuristicCostFunction(final CostFunction backwardHeuristicCostFunction)
+    public BiDijkstraRoutingRequest withBackwardHeuristicCostFunction(CostFunction backwardHeuristicCostFunction)
     {
         if (backwardHeuristicCostFunction != null)
         {
-            final var request = new BiDijkstraRoutingRequest(this, null, null);
+            var request = new BiDijkstraRoutingRequest(this, null, null);
             request.backwardHeuristicCostFunction = backwardHeuristicCostFunction;
             return request;
         }
         return this;
     }
 
-    public BiDijkstraRoutingRequest withDebugger(final RoutingDebugger debugger)
+    public BiDijkstraRoutingRequest withDebugger(RoutingDebugger debugger)
     {
         return new BiDijkstraRoutingRequest(this, null, debugger);
     }
 
-    public BiDijkstraRoutingRequest withForwardHeuristicCostFunction(final CostFunction forwardHeuristicCostFunction)
+    public BiDijkstraRoutingRequest withForwardHeuristicCostFunction(CostFunction forwardHeuristicCostFunction)
     {
         if (forwardHeuristicCostFunction != null)
         {
-            final var router = new BiDijkstraRoutingRequest(this, null, null);
+            var router = new BiDijkstraRoutingRequest(this, null, null);
             router.forwardHeuristicCostFunction = forwardHeuristicCostFunction;
             return router;
         }
         return this;
     }
 
-    public BiDijkstraRoutingRequest withLimiter(final RoutingLimiter limiter)
+    public BiDijkstraRoutingRequest withLimiter(RoutingLimiter limiter)
     {
         return new BiDijkstraRoutingRequest(this, limiter, null);
     }
 
-    public BiDijkstraRoutingRequest withMaximumFirstMeetCostMultiple(final double maximumFirstMeetCostMultiple)
+    public BiDijkstraRoutingRequest withMaximumFirstMeetCostMultiple(double maximumFirstMeetCostMultiple)
     {
-        final var router = new BiDijkstraRoutingRequest(this, null, null);
+        var router = new BiDijkstraRoutingRequest(this, null, null);
         router.maximumFirstMeetCostMultiple = this.maximumFirstMeetCostMultiple;
         return router;
     }
 
-    public BiDijkstraRoutingRequest withMeets(final Count meets)
+    public BiDijkstraRoutingRequest withMeets(Count meets)
     {
-        final var router = new BiDijkstraRoutingRequest(this, null, null);
+        var router = new BiDijkstraRoutingRequest(this, null, null);
         router.meets = meets;
         return router;
     }

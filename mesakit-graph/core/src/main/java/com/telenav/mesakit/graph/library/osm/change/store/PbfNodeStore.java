@@ -72,7 +72,7 @@ public class PbfNodeStore
     /**
      * @param base The base graph
      */
-    public PbfNodeStore(final Graph base)
+    public PbfNodeStore(Graph base)
     {
         this.base = ensureNotNull(base);
     }
@@ -82,15 +82,15 @@ public class PbfNodeStore
      */
     public List<PbfNode> asNodes()
     {
-        final List<PbfNode> nodes = new ArrayList<>();
+        List<PbfNode> nodes = new ArrayList<>();
 
         // Go through each identifier
-        final var progress = Progress.create(LOGGER);
-        for (final var identifier : identifiers())
+        var progress = Progress.create(LOGGER);
+        for (var identifier : identifiers())
         {
             // and get the node or shape point as a Node object
-            final var location = locationForIdentifier.get(identifier);
-            final var point = base.shapePointForLocation(location);
+            var location = locationForIdentifier.get(identifier);
+            var point = base.shapePointForLocation(location);
             if (point != null)
             {
                 nodes.add(point.asPbfNode());
@@ -108,7 +108,7 @@ public class PbfNodeStore
     /**
      * @return True if this store contains the given location
      */
-    public boolean contains(final Location location)
+    public boolean contains(Location location)
     {
         return identifierForLocation.containsKey(location);
     }
@@ -116,12 +116,12 @@ public class PbfNodeStore
     /**
      * Decrements the reference count to the given location, removing it if there are no more references
      */
-    public void dereference(final Location location)
+    public void dereference(Location location)
     {
         referenceCount.dereference(location);
         if (!referenceCount.isReferenced(location))
         {
-            final var identifier = identifier(location);
+            var identifier = identifier(location);
             locationForIdentifier.remove(identifier);
             identifierForLocation.remove(location);
         }
@@ -130,7 +130,7 @@ public class PbfNodeStore
     /**
      * @return The OSM node identifier for the given location
      */
-    public PbfNodeIdentifier identifier(final Location location)
+    public PbfNodeIdentifier identifier(Location location)
     {
         return identifierForLocation.get(location);
     }
@@ -146,7 +146,7 @@ public class PbfNodeStore
     /**
      * @return The location for the given identifier if it exists in this store
      */
-    public Location location(final PbfNodeIdentifier identifier)
+    public Location location(PbfNodeIdentifier identifier)
     {
         return locationForIdentifier.get(identifier);
     }
@@ -179,7 +179,7 @@ public class PbfNodeStore
      * Increments the reference count to the given location, adding the given location if it doesn't yet exist.
      */
     @SuppressWarnings("ConstantConditions")
-    public void reference(final Location location)
+    public void reference(Location location)
     {
         // If we hit the debug node location defined at the top of this file,
         if (location.equals(DEBUG_NODE_LOCATION))
@@ -193,7 +193,7 @@ public class PbfNodeStore
         {
             // Get any existing identifier for the location
             PbfNodeIdentifier identifier = null;
-            final var point = base.shapePointForLocation(location);
+            var point = base.shapePointForLocation(location);
             if (point != null)
             {
                 identifier = (PbfNodeIdentifier) point.mapIdentifier();
@@ -218,19 +218,19 @@ public class PbfNodeStore
         return Count.count(locationForIdentifier.size());
     }
 
-    public PbfNodeStore subset(final Set<PbfNodeIdentifier> include)
+    public PbfNodeStore subset(Set<PbfNodeIdentifier> include)
     {
         // Create subset
-        final var subset = new PbfNodeStore(base);
+        var subset = new PbfNodeStore(base);
 
         // Go through the identifiers in this store
-        for (final var identifier : identifiers())
+        for (var identifier : identifiers())
         {
             // and if the set of identifiers to include contains the given identifier
             if (include.contains(identifier))
             {
                 // then copy the location, identifier and reference count to the subset
-                final var location = location(identifier);
+                var location = location(identifier);
                 subset.identifierForLocation.put(location, identifier);
                 subset.locationForIdentifier.put(identifier, location);
                 subset.referenceCount.count(location, referenceCount.count(location));
@@ -247,17 +247,17 @@ public class PbfNodeStore
     public String toString()
     {
         // Create XML lines list
-        final var lines = new StringList();
+        var lines = new StringList();
 
         // Go through each identifier
-        for (final var identifier : identifiers())
+        for (var identifier : identifiers())
         {
             // Get location for identifier
-            final var location = location(identifier);
+            var location = location(identifier);
 
             // Get OSM tags for the location
             var tags = PbfTagList.EMPTY;
-            final var point = base.shapePointForLocation(location);
+            var point = base.shapePointForLocation(location);
             if (point != null)
             {
                 tags = point.tagList();
@@ -269,7 +269,7 @@ public class PbfNodeStore
                     + "\" uid=\"2100001\" user=\"scout_osm\" version=\"1\"" + (tags.isEmpty() ? "/>" : ">"));
 
             // Add OSM tags
-            for (final var tag : tags)
+            for (var tag : tags)
             {
                 lines.add("    <tag k=\"" + tag.getKey() + "\" v=\"" + tag.getValue() + "\"/>");
             }

@@ -34,31 +34,31 @@ public interface MapDrawable extends Drawable, Bounded
     Location location();
 
     @Override
-    MapDrawable withColors(final Style style);
+    MapDrawable withColors(Style style);
 
     @Override
-    MapDrawable withDrawColor(final Color color);
+    MapDrawable withDrawColor(Color color);
 
     @Override
-    MapDrawable withDrawStroke(final Stroke stroke);
+    MapDrawable withDrawStroke(Stroke stroke);
 
     @Override
-    MapDrawable withDrawStrokeWidth(final DrawingWidth width);
+    MapDrawable withDrawStrokeWidth(DrawingWidth width);
 
     @Override
-    MapDrawable withFillColor(final Color color);
+    MapDrawable withFillColor(Color color);
 
     @Override
-    MapDrawable withFillStroke(final Stroke stroke);
+    MapDrawable withFillStroke(Stroke stroke);
 
     @Override
-    MapDrawable withFillStrokeWidth(final DrawingWidth width);
+    MapDrawable withFillStrokeWidth(DrawingWidth width);
 
-    MapDrawable withLocation(final Location at);
-
-    @Override
-    MapDrawable withStyle(final Style style);
+    MapDrawable withLocation(Location at);
 
     @Override
-    MapDrawable withTextColor(final Color color);
+    MapDrawable withStyle(Style style);
+
+    @Override
+    MapDrawable withTextColor(Color color);
 }

@@ -34,16 +34,16 @@ public class GradeSeparationExtractor extends BaseExtractor<GradeSeparation, Pbf
 
     private final Type type;
 
-    public GradeSeparationExtractor(final Listener listener, final Type type)
+    public GradeSeparationExtractor(Listener listener, Type type)
     {
         super(listener);
         this.type = type;
     }
 
     @Override
-    public GradeSeparation onExtract(final PbfWay tags)
+    public GradeSeparation onExtract(PbfWay tags)
     {
-        final var level = tags.tagValueAsNaturalNumber(type == Type.FROM ? "zlevel:ref" : "zlevel:nonref");
+        var level = tags.tagValueAsNaturalNumber(type == Type.FROM ? "zlevel:ref" : "zlevel:nonref");
         return level == Ints.INVALID ? GradeSeparation.GROUND : GradeSeparation.of(level);
     }
 }

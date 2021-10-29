@@ -60,37 +60,37 @@ public class Tokenizer
     /**
      * @return A new token with the next available token identifier
      */
-    public Token create(final String name)
+    public Token create(String name)
     {
         return new Token(this, nextTokenIdentifier++, name, null);
     }
 
-    public boolean isDash(final Token token)
+    public boolean isDash(Token token)
     {
         return token != null && token.equals(DASH);
     }
 
-    public boolean isDot(final Token token)
+    public boolean isDot(Token token)
     {
         return token != null && token.equals(DOT);
     }
 
-    public boolean isLetter(final Token token)
+    public boolean isLetter(Token token)
     {
         return token != null && token.isWord() && token.symbolCount() == 1;
     }
 
-    public boolean isPoundSign(final Token token)
+    public boolean isPoundSign(Token token)
     {
         return token != null && token.equals(POUND_SIGN);
     }
 
-    public boolean isSemicolon(final Token token)
+    public boolean isSemicolon(Token token)
     {
         return token != null && token.equals(SEMICOLON);
     }
 
-    public boolean isSlash(final Token token)
+    public boolean isSlash(Token token)
     {
         return token != null && token.equals(SLASH);
     }
@@ -99,15 +99,15 @@ public class Tokenizer
      * @param stream The input symbols
      * @return Any token recognized by the registered token matchers or null if no token was recognized
      */
-    public Token next(final SymbolStream stream)
+    public Token next(SymbolStream stream)
     {
-        final var at = stream.at();
-        final List<TokenMatcher> matchers = this.matchers.get(stream.first());
+        var at = stream.at();
+        List<TokenMatcher> matchers = this.matchers.get(stream.first());
         if (matchers != null)
         {
-            for (final var matcher : matchers)
+            for (var matcher : matchers)
             {
-                final var token = matcher.match(stream);
+                var token = matcher.match(stream);
                 if (token != null)
                 {
                     return token;
@@ -123,9 +123,9 @@ public class Tokenizer
      * @param input The input string
      * @return The list of tokens
      */
-    public TokenList tokenize(final String input)
+    public TokenList tokenize(String input)
     {
-        final var builder = new TokenList.Builder();
+        var builder = new TokenList.Builder();
 
         // Parse the road name into terminal symbols
         var symbols = SymbolList.of(input);
@@ -134,7 +134,7 @@ public class Tokenizer
         while (!symbols.isEmpty())
         {
             // get the next token from list of symbols
-            final var token = next(symbols.asStream());
+            var token = next(symbols.asStream());
 
             // and if we got a valid token
             if (token != null)
@@ -155,7 +155,7 @@ public class Tokenizer
         return builder.build();
     }
 
-    void add(final Symbol symbol, final TokenMatcher matcher)
+    void add(Symbol symbol, TokenMatcher matcher)
     {
         matchers.add(symbol, matcher);
     }

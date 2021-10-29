@@ -32,7 +32,7 @@ public class RoadNameClassifier implements EdgeClassifier
      * @return boolean
      */
     @Override
-    public boolean accept(final Edge edge)
+    public boolean accept(Edge edge)
     {
         return edge.roadName() != null;
     }

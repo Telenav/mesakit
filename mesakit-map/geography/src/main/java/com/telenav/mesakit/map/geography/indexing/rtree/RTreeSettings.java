@@ -51,7 +51,7 @@ public class RTreeSettings
     {
     }
 
-    private RTreeSettings(final RTreeSettings that)
+    private RTreeSettings(RTreeSettings that)
     {
         maximumChildrenPerInteriorNode = that.maximumChildrenPerInteriorNode;
         maximumElementsPerLeaf = that.maximumElementsPerLeaf;
@@ -60,7 +60,8 @@ public class RTreeSettings
     }
 
     @Override
-    public boolean equals(final Object object)
+    @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
+    public boolean equals(Object object)
     {
         return unsupported();
     }
@@ -95,12 +96,12 @@ public class RTreeSettings
         return unsupported();
     }
 
-    public boolean isInteriorNodeFull(final Count size)
+    public boolean isInteriorNodeFull(Count size)
     {
         return size.isGreaterThanOrEqualTo(maximumChildrenPerInteriorNode);
     }
 
-    public boolean isLeafFull(final Count size)
+    public boolean isLeafFull(Count size)
     {
         return size.isGreaterThanOrEqualTo(maximumElementsPerLeaf);
     }
@@ -123,37 +124,37 @@ public class RTreeSettings
         return new ObjectFormatter(this).toString();
     }
 
-    public RTreeSettings withEstimatedChildrenPerInteriorNode(final Estimate estimate)
+    public RTreeSettings withEstimatedChildrenPerInteriorNode(Estimate estimate)
     {
-        final var copy = new RTreeSettings(this);
+        var copy = new RTreeSettings(this);
         copy.estimatedChildrenPerLeaf = estimate;
         return copy;
     }
 
-    public RTreeSettings withEstimatedChildrenPerLeaf(final Estimate estimate)
+    public RTreeSettings withEstimatedChildrenPerLeaf(Estimate estimate)
     {
-        final var copy = new RTreeSettings(this);
+        var copy = new RTreeSettings(this);
         copy.estimatedChildrenPerLeaf = estimate;
         return copy;
     }
 
-    public RTreeSettings withEstimatedNodes(final Estimate estimate)
+    public RTreeSettings withEstimatedNodes(Estimate estimate)
     {
-        final var copy = new RTreeSettings(this);
+        var copy = new RTreeSettings(this);
         copy.estimatedNodes = estimate;
         return copy;
     }
 
-    public RTreeSettings withMaximumChildrenPerInteriorNode(final Maximum maximum)
+    public RTreeSettings withMaximumChildrenPerInteriorNode(Maximum maximum)
     {
-        final var copy = new RTreeSettings(this);
+        var copy = new RTreeSettings(this);
         copy.maximumChildrenPerInteriorNode = maximum;
         return copy;
     }
 
-    public RTreeSettings withMaximumChildrenPerLeaf(final Maximum maximum)
+    public RTreeSettings withMaximumChildrenPerLeaf(Maximum maximum)
     {
-        final var copy = new RTreeSettings(this);
+        var copy = new RTreeSettings(this);
         copy.maximumElementsPerLeaf = maximum;
         return copy;
     }

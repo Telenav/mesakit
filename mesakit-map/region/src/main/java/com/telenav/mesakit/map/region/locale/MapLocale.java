@@ -73,12 +73,12 @@ public class MapLocale extends Locale
 
     private final Region<?> region;
 
-    public MapLocale(final Country country)
+    public MapLocale(Country country)
     {
         this(country, country.instance().defaultLanguage());
     }
 
-    public MapLocale(final Region<?> region, final LanguageIsoCode language)
+    public MapLocale(Region<?> region, LanguageIsoCode language)
     {
         super(language);
         this.region = region;
@@ -90,18 +90,18 @@ public class MapLocale extends Locale
      * "[package-path].locales.english.English_United_States_RoadNameParser"
      */
     @SuppressWarnings("unchecked")
-    public <T> T create(final PackagePath packagePath, final String suffix)
+    public <T> T create(PackagePath packagePath, String suffix)
     {
         // Try to load most specific first
         try
         {
-            final var languagePackage = packagePath + ".locales." + language().name().toLowerCase();
-            final var language = language().name().replaceAll("[_ ]", "");
-            final var region = region().name().replaceAll("[_ ]", "");
-            final var className = language + region + suffix;
+            var languagePackage = packagePath + ".locales." + language().name().toLowerCase();
+            var language = language().name().replaceAll("[_ ]", "");
+            var region = region().name().replaceAll("[_ ]", "");
+            var className = language + region + suffix;
             return (T) Type.forName(languagePackage + "." + className).newInstance();
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             DEBUG.trace(e, "Locale sensitive '$' is not supported for $", suffix, this);
         }
@@ -109,10 +109,10 @@ public class MapLocale extends Locale
         // Try to load language without region
         try
         {
-            final var language = packagePath + ".locales." + language().name().toLowerCase();
+            var language = packagePath + ".locales." + language().name().toLowerCase();
             return (T) Type.forName(language + "." + language() + "" + suffix).newInstance();
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             DEBUG.trace(e, "Locale sensitive '$' is not supported for $", suffix, this);
         }

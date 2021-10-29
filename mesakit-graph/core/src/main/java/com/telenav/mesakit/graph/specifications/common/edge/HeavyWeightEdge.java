@@ -164,7 +164,7 @@ public class HeavyWeightEdge extends Edge
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public HeavyWeightEdge(final Graph graph, final EdgeIdentifier identifier)
+    public HeavyWeightEdge(Graph graph, EdgeIdentifier identifier)
     {
         super(graph, identifier);
     }
@@ -173,7 +173,7 @@ public class HeavyWeightEdge extends Edge
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public HeavyWeightEdge(final Graph graph, final long identifier)
+    public HeavyWeightEdge(Graph graph, long identifier)
     {
         super(graph, identifier);
     }
@@ -183,17 +183,17 @@ public class HeavyWeightEdge extends Edge
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
     @SuppressWarnings("CopyConstructorMissesField")
-    protected HeavyWeightEdge(final HeavyWeightEdge that)
+    protected HeavyWeightEdge(HeavyWeightEdge that)
     {
         super(that.graph(), that.identifier());
         copy(that);
     }
 
-    public void addRoadName(final RoadName.Type type, final RoadName roadName)
+    public void addRoadName(RoadName.Type type, RoadName roadName)
     {
         ensure(type != null);
         ensure(roadName != null);
-        final var names = roadNames.computeIfAbsent(type, k -> new ArrayList<>());
+        var names = roadNames.computeIfAbsent(type, k -> new ArrayList<>());
         names.add(roadName);
     }
 
@@ -209,21 +209,21 @@ public class HeavyWeightEdge extends Edge
         return bridgeType;
     }
 
-    public void bridgeType(final BridgeType bridgeType)
+    public void bridgeType(BridgeType bridgeType)
     {
         this.bridgeType = bridgeType;
     }
 
-    public void closedToThroughTraffic(final boolean isClosedToThroughTraffic)
+    public void closedToThroughTraffic(boolean isClosedToThroughTraffic)
     {
         this.isClosedToThroughTraffic = isClosedToThroughTraffic;
     }
 
     @MustBeInvokedByOverriders
-    public void copy(final Edge that)
+    public void copy(Edge that)
     {
-        final var thatFrom = that.from();
-        final var thatTo = that.to();
+        var thatFrom = that.from();
+        var thatTo = that.to();
 
         index(that.index());
         type(that.type());
@@ -280,16 +280,16 @@ public class HeavyWeightEdge extends Edge
         copyRoadNames(that);
     }
 
-    public void copyRoadNames(final Edge that)
+    public void copyRoadNames(Edge that)
     {
         if (that.supports(EdgeAttributes.get().ROAD_NAMES))
         {
-            for (final var type : RoadName.Type.values())
+            for (var type : RoadName.Type.values())
             {
-                final var names = that.roadNames(type);
+                var names = that.roadNames(type);
                 if (names != null)
                 {
-                    for (final var name : names)
+                    for (var name : names)
                     {
                         addRoadName(type, name);
                     }
@@ -304,7 +304,7 @@ public class HeavyWeightEdge extends Edge
         return country;
     }
 
-    public void country(final Country country)
+    public void country(Country country)
     {
         this.country = country;
     }
@@ -315,12 +315,12 @@ public class HeavyWeightEdge extends Edge
         return county;
     }
 
-    public void county(final County county)
+    public void county(County county)
     {
         this.county = county;
     }
 
-    public void freeFlow(final SpeedCategory freeFlow)
+    public void freeFlow(SpeedCategory freeFlow)
     {
         this.freeFlow = freeFlow;
     }
@@ -337,7 +337,7 @@ public class HeavyWeightEdge extends Edge
         return from;
     }
 
-    public void from(final Vertex from)
+    public void from(Vertex from)
     {
         this.from = from;
         if (from != null)
@@ -346,7 +346,7 @@ public class HeavyWeightEdge extends Edge
         }
     }
 
-    public void fromGradeSeparation(final GradeSeparation separation)
+    public void fromGradeSeparation(GradeSeparation separation)
     {
         // Grade separation can legitimately be null here because we don't store the omnipresent
         // grade separation "GROUND"
@@ -365,7 +365,7 @@ public class HeavyWeightEdge extends Edge
         return fromLocation;
     }
 
-    public void fromLocation(final Location fromLocation)
+    public void fromLocation(Location fromLocation)
     {
         assert fromLocation != null;
         this.fromLocation = fromLocation;
@@ -377,12 +377,12 @@ public class HeavyWeightEdge extends Edge
         return fromNodeIdentifier;
     }
 
-    public void fromNodeIdentifier(final MapNodeIdentifier identifier)
+    public void fromNodeIdentifier(MapNodeIdentifier identifier)
     {
         fromNodeIdentifier = identifier;
     }
 
-    public void fromVertexClipped(final Boolean fromVertexClipped)
+    public void fromVertexClipped(Boolean fromVertexClipped)
     {
         this.fromVertexClipped = fromVertexClipped;
     }
@@ -400,7 +400,7 @@ public class HeavyWeightEdge extends Edge
         return hovLaneCount;
     }
 
-    public void hovLaneCount(final Count hovLaneCount)
+    public void hovLaneCount(Count hovLaneCount)
     {
         this.hovLaneCount = hovLaneCount;
     }
@@ -412,7 +412,7 @@ public class HeavyWeightEdge extends Edge
     }
 
     @Override
-    public void index(final int index)
+    public void index(int index)
     {
         this.index = index;
     }
@@ -423,12 +423,12 @@ public class HeavyWeightEdge extends Edge
         return Objects.notNullOr(isClosedToThroughTraffic, false);
     }
 
-    public void isClosedToThroughTraffic(final Boolean isClosedToThroughTraffic)
+    public void isClosedToThroughTraffic(Boolean isClosedToThroughTraffic)
     {
         this.isClosedToThroughTraffic = isClosedToThroughTraffic;
     }
 
-    public void isDoubleDigitized(final Boolean isDoubleDigitized)
+    public void isDoubleDigitized(Boolean isDoubleDigitized)
     {
         this.isDoubleDigitized = isDoubleDigitized;
     }
@@ -467,7 +467,7 @@ public class HeavyWeightEdge extends Edge
         return Objects.notNullOr(isTollRoad, false);
     }
 
-    public void isTollRoad(final Boolean isTollRoad)
+    public void isTollRoad(Boolean isTollRoad)
     {
         this.isTollRoad = isTollRoad;
     }
@@ -484,7 +484,7 @@ public class HeavyWeightEdge extends Edge
         return Objects.notNullOr(isUnderConstruction, false);
     }
 
-    public void isUnderConstruction(final Boolean isUnderConstruction)
+    public void isUnderConstruction(Boolean isUnderConstruction)
     {
         this.isUnderConstruction = isUnderConstruction;
     }
@@ -495,7 +495,7 @@ public class HeavyWeightEdge extends Edge
         return laneCount;
     }
 
-    public void laneCount(final Count laneCount)
+    public void laneCount(Count laneCount)
     {
         this.laneCount = laneCount;
     }
@@ -506,7 +506,7 @@ public class HeavyWeightEdge extends Edge
         return lastModificationTime;
     }
 
-    public void lastModificationTime(final Time lastModified)
+    public void lastModificationTime(Time lastModified)
     {
         lastModificationTime = lastModified;
     }
@@ -517,7 +517,7 @@ public class HeavyWeightEdge extends Edge
         return length;
     }
 
-    public void length(final Distance length)
+    public void length(Distance length)
     {
         this.length = length;
     }
@@ -528,7 +528,7 @@ public class HeavyWeightEdge extends Edge
         return metropolitanArea;
     }
 
-    public void metropolitanArea(final MetropolitanArea metropolitanArea)
+    public void metropolitanArea(MetropolitanArea metropolitanArea)
     {
         this.metropolitanArea = metropolitanArea;
     }
@@ -545,7 +545,7 @@ public class HeavyWeightEdge extends Edge
         return pbfChangeSetIdentifier;
     }
 
-    public void pbfChangeSetIdentifier(final PbfChangeSetIdentifier PbfChangeSetIdentifier)
+    public void pbfChangeSetIdentifier(PbfChangeSetIdentifier PbfChangeSetIdentifier)
     {
         pbfChangeSetIdentifier = PbfChangeSetIdentifier;
     }
@@ -556,7 +556,7 @@ public class HeavyWeightEdge extends Edge
         return pbfRevisionNumber;
     }
 
-    public void pbfRevisionNumber(final PbfRevisionNumber revision)
+    public void pbfRevisionNumber(PbfRevisionNumber revision)
     {
         pbfRevisionNumber = revision;
     }
@@ -567,7 +567,7 @@ public class HeavyWeightEdge extends Edge
         return pbfUserIdentifier;
     }
 
-    public void pbfUserIdentifier(final PbfUserIdentifier PbfUserIdentifier)
+    public void pbfUserIdentifier(PbfUserIdentifier PbfUserIdentifier)
     {
         pbfUserIdentifier = PbfUserIdentifier;
     }
@@ -578,7 +578,7 @@ public class HeavyWeightEdge extends Edge
         return pbfUserName;
     }
 
-    public void pbfUserName(final PbfUserName PbfUserName)
+    public void pbfUserName(PbfUserName PbfUserName)
     {
         pbfUserName = PbfUserName;
     }
@@ -637,12 +637,12 @@ public class HeavyWeightEdge extends Edge
         return rawIdentifier;
     }
 
-    public void rawIdentifier(final EdgeIdentifier rawIdentifier)
+    public void rawIdentifier(EdgeIdentifier rawIdentifier)
     {
         this.rawIdentifier = rawIdentifier;
     }
 
-    public void referenceSpeed(final Speed referenceSpeed)
+    public void referenceSpeed(Speed referenceSpeed)
     {
         this.referenceSpeed = referenceSpeed;
     }
@@ -650,7 +650,7 @@ public class HeavyWeightEdge extends Edge
     @Override
     public HeavyWeightEdge reversed()
     {
-        final var reversed = graph().newHeavyWeightEdge(identifier());
+        var reversed = graph().newHeavyWeightEdge(identifier());
         reversed.identifier(identifier().reversed().asLong());
         reversed.from(to());
         reversed.to(from());
@@ -673,14 +673,14 @@ public class HeavyWeightEdge extends Edge
         return roadFunctionalClass;
     }
 
-    public void roadFunctionalClass(final RoadFunctionalClass roadFunctionalClass)
+    public void roadFunctionalClass(RoadFunctionalClass roadFunctionalClass)
     {
         assert roadFunctionalClass != null;
         this.roadFunctionalClass = roadFunctionalClass;
     }
 
     @Override
-    public List<RoadName> roadNames(final RoadName.Type type)
+    public List<RoadName> roadNames(RoadName.Type type)
     {
         var roadNames = this.roadNames.get(type);
         if (roadNames == null)
@@ -690,7 +690,7 @@ public class HeavyWeightEdge extends Edge
         return roadNames;
     }
 
-    public void roadNames(final RoadName.Type type, final List<RoadName> roadNames)
+    public void roadNames(RoadName.Type type, List<RoadName> roadNames)
     {
         assert roadNames.stream().noneMatch(Objects::isNull);
         this.roadNames.put(type, roadNames);
@@ -707,7 +707,7 @@ public class HeavyWeightEdge extends Edge
         return roadShape;
     }
 
-    public void roadShape(final Polyline roadShape)
+    public void roadShape(Polyline roadShape)
     {
         this.roadShape = roadShape;
         if (roadShape != null)
@@ -716,7 +716,7 @@ public class HeavyWeightEdge extends Edge
         }
     }
 
-    public void roadShapeAndLength(final Polyline shape, final Location from, final Location to)
+    public void roadShapeAndLength(Polyline shape, Location from, Location to)
     {
         if (shape != null)
         {
@@ -739,7 +739,7 @@ public class HeavyWeightEdge extends Edge
         return roadState;
     }
 
-    public void roadState(final RoadState roadState)
+    public void roadState(RoadState roadState)
     {
         this.roadState = roadState;
     }
@@ -750,7 +750,7 @@ public class HeavyWeightEdge extends Edge
         return roadSubType;
     }
 
-    public void roadSubType(final RoadSubType roadSubType)
+    public void roadSubType(RoadSubType roadSubType)
     {
         this.roadSubType = roadSubType;
     }
@@ -767,7 +767,7 @@ public class HeavyWeightEdge extends Edge
         return roadType;
     }
 
-    public void roadType(final RoadType roadType)
+    public void roadType(RoadType roadType)
     {
         this.roadType = roadType;
     }
@@ -778,7 +778,7 @@ public class HeavyWeightEdge extends Edge
         return speedLimit;
     }
 
-    public void speedLimit(final Speed speedLimit)
+    public void speedLimit(Speed speedLimit)
     {
         this.speedLimit = Functions.apply(speedLimit, speed -> speed.minimum(Speed.kilometersPerHour(160)));
     }
@@ -789,12 +789,12 @@ public class HeavyWeightEdge extends Edge
         return state;
     }
 
-    public void state(final State state)
+    public void state(State state)
     {
         this.state = state;
     }
 
-    public void surface(final RoadSurface surface)
+    public void surface(RoadSurface surface)
     {
         this.surface = surface;
     }
@@ -805,7 +805,7 @@ public class HeavyWeightEdge extends Edge
         return tags;
     }
 
-    public void tags(final PbfTagList tags)
+    public void tags(PbfTagList tags)
     {
         assert tags.isValid();
         this.tags = tags;
@@ -824,7 +824,7 @@ public class HeavyWeightEdge extends Edge
         return to;
     }
 
-    public void to(final Vertex to)
+    public void to(Vertex to)
     {
         this.to = to;
         if (to != null)
@@ -839,7 +839,7 @@ public class HeavyWeightEdge extends Edge
         return toGradeSeparation;
     }
 
-    public void toGradeSeparation(final GradeSeparation separation)
+    public void toGradeSeparation(GradeSeparation separation)
     {
         // Grade separation can legitimately be null here because we don't store the omnipresent
         // grade separation "GROUND"
@@ -852,7 +852,7 @@ public class HeavyWeightEdge extends Edge
         return toLocation;
     }
 
-    public void toLocation(final Location toLocation)
+    public void toLocation(Location toLocation)
     {
         assert toLocation != null;
         this.toLocation = toLocation;
@@ -864,12 +864,12 @@ public class HeavyWeightEdge extends Edge
         return toNodeIdentifier;
     }
 
-    public void toNodeIdentifier(final MapNodeIdentifier identifier)
+    public void toNodeIdentifier(MapNodeIdentifier identifier)
     {
         toNodeIdentifier = identifier;
     }
 
-    public void toVertexClipped(final Boolean toVertexClipped)
+    public void toVertexClipped(Boolean toVertexClipped)
     {
         this.toVertexClipped = toVertexClipped;
     }
@@ -881,7 +881,7 @@ public class HeavyWeightEdge extends Edge
         return to != null ? to.identifier() : null;
     }
 
-    public void tollRoad(final Boolean isTollRoad)
+    public void tollRoad(Boolean isTollRoad)
     {
         this.isTollRoad = isTollRoad;
     }
@@ -898,12 +898,12 @@ public class HeavyWeightEdge extends Edge
         return type;
     }
 
-    public void type(final Type type)
+    public void type(Type type)
     {
         this.type = type;
     }
 
-    public void underConstruction(final Boolean isUnderConstruction)
+    public void underConstruction(Boolean isUnderConstruction)
     {
         this.isUnderConstruction = isUnderConstruction;
     }
@@ -924,7 +924,7 @@ public class HeavyWeightEdge extends Edge
         return reverseReferenceSpeed;
     }
 
-    public void uniDbReverseReferenceSpeed(final Speed reversedReferenceSpeed)
+    public void uniDbReverseReferenceSpeed(Speed reversedReferenceSpeed)
     {
         reverseReferenceSpeed = reversedReferenceSpeed;
     }

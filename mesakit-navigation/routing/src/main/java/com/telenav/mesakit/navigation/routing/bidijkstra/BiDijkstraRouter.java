@@ -52,12 +52,12 @@ public class BiDijkstraRouter extends BaseRouter
     /** Any level promoter */
     private LevelPromoter levelPromoter = LevelPromoter.NULL;
 
-    public BiDijkstraRouter(final CostFunction costFunction)
+    public BiDijkstraRouter(CostFunction costFunction)
     {
         this.costFunction = costFunction;
     }
 
-    private BiDijkstraRouter(final BiDijkstraRouter that)
+    private BiDijkstraRouter(BiDijkstraRouter that)
     {
         costFunction = that.costFunction;
         routePermissionFunction = that.routePermissionFunction;
@@ -66,25 +66,25 @@ public class BiDijkstraRouter extends BaseRouter
     }
 
     @Override
-    public RoutingResponse onFindRoute(final RoutingRequest request)
+    public RoutingResponse onFindRoute(RoutingRequest request)
     {
         // Get request as BiDijkstraRoutingRequest
-        final var birequest = (BiDijkstraRoutingRequest) request;
+        var birequest = (BiDijkstraRoutingRequest) request;
 
         // Construct forward and backwards routing requests
-        final var forward = new DijkstraRoutingRequest(request.start(), request.end())
+        var forward = new DijkstraRoutingRequest(request.start(), request.end())
                 .withDirection(Direction.FORWARD)
                 .withDebugger(request.debugger())
                 .withLimiter(request.limiter());
 
-        final var backward = new DijkstraRoutingRequest(request.start(), request.end())
+        var backward = new DijkstraRoutingRequest(request.start(), request.end())
                 .withDirection(Direction.BACKWARD)
                 .withDebugger(request.debugger())
                 .withLimiter(request.limiter());
 
         // Create router
-        final var forwardRouter = router().withHeuristicCostFunction(birequest.forwardHeuristicCostFunction());
-        final var backwardRouter = router().withHeuristicCostFunction(birequest.backwardHeuristicCostFunction());
+        var forwardRouter = router().withHeuristicCostFunction(birequest.forwardHeuristicCostFunction());
+        var backwardRouter = router().withHeuristicCostFunction(birequest.backwardHeuristicCostFunction());
 
         // Start routing
         forward.onStartRouting();
@@ -94,13 +94,13 @@ public class BiDijkstraRouter extends BaseRouter
         Meet best = null;
 
         // The number of meets we've found
-        final var meets = new MutableCount();
+        var meets = new MutableCount();
 
         // Flip route direction back and forth forever
         for (var direction = Direction.FORWARD; ; direction = direction.reversed())
         {
             // execute the next step in either the forward or backward request
-            final RoutingResponse result;
+            RoutingResponse result;
             if (direction.isForward())
             {
                 result = forwardRouter.execute(forward, 1);
@@ -111,11 +111,11 @@ public class BiDijkstraRouter extends BaseRouter
             }
 
             // If the forward request has just met the backward request
-            final var meet = direction.isForward() ? forward.meet(backward) : backward.meet(forward);
+            var meet = direction.isForward() ? forward.meet(backward) : backward.meet(forward);
             if (meet != null)
             {
                 // If we found the same route twice in a row
-                final var sameRoute = meet.equals(best);
+                var sameRoute = meet.equals(best);
 
                 // If we have no best meet yet or this meet is cheaper than the best
                 if (best == null || meet.isCheaperThan(best))
@@ -146,23 +146,23 @@ public class BiDijkstraRouter extends BaseRouter
         }
     }
 
-    public BiDijkstraRouter withEdgePermissionFunction(final EdgePermissionFunction edgePermissionFunction)
+    public BiDijkstraRouter withEdgePermissionFunction(EdgePermissionFunction edgePermissionFunction)
     {
-        final var router = new BiDijkstraRouter(this);
+        var router = new BiDijkstraRouter(this);
         router.edgePermissionFunction = edgePermissionFunction;
         return router;
     }
 
-    public BiDijkstraRouter withLevelPromoter(final LevelPromoter levelPromoter)
+    public BiDijkstraRouter withLevelPromoter(LevelPromoter levelPromoter)
     {
-        final var router = new BiDijkstraRouter(this);
+        var router = new BiDijkstraRouter(this);
         router.levelPromoter = levelPromoter;
         return router;
     }
 
-    public BiDijkstraRouter withRoutePermissionFunction(final RoutePermissionFunction routePermissionFunction)
+    public BiDijkstraRouter withRoutePermissionFunction(RoutePermissionFunction routePermissionFunction)
     {
-        final var router = new BiDijkstraRouter(this);
+        var router = new BiDijkstraRouter(this);
         router.routePermissionFunction = routePermissionFunction;
         return router;
     }

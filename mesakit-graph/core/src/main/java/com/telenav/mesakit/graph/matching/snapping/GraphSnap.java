@@ -36,7 +36,7 @@ public class GraphSnap
 
     private final Map<Edge, PolylineSnap> candidates;
 
-    public GraphSnap(final Edge closestEdge, final PolylineSnap closestSnap, final Map<Edge, PolylineSnap> candidates)
+    public GraphSnap(Edge closestEdge, PolylineSnap closestSnap, Map<Edge, PolylineSnap> candidates)
     {
         this.closestEdge = closestEdge;
         this.closestSnap = closestSnap;
@@ -54,11 +54,11 @@ public class GraphSnap
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof GraphSnap)
         {
-            final var that = (GraphSnap) object;
+            var that = (GraphSnap) object;
             return closestSnap.equals(that.closestSnap);
         }
         return false;
@@ -72,7 +72,7 @@ public class GraphSnap
 
     public boolean isAmbiguous()
     {
-        final var candidates = new EdgeSet(Maximum._1_000, Estimate.estimate(this.candidates.keySet()),
+        var candidates = new EdgeSet(Maximum._1_000, Estimate.estimate(this.candidates.keySet()),
                 this.candidates.keySet());
         removeEdgesOnNonBranchingRoute(candidates, closestEdge);
         return !candidates.isEmpty();
@@ -83,10 +83,10 @@ public class GraphSnap
         return closestSnap;
     }
 
-    private void removeEdgesOnNonBranchingRoute(final EdgeSet edges, final Edge first)
+    private void removeEdgesOnNonBranchingRoute(EdgeSet edges, Edge first)
     {
         // We limit the route search to one mile to be sure we don't go too far
-        for (final var edge : first.route(Navigator.NON_BRANCHING_NO_MERGE_NO_UTURN_NO_LOOP, Distance.ONE_MILE))
+        for (var edge : first.route(Navigator.NON_BRANCHING_NO_MERGE_NO_UTURN_NO_LOOP, Distance.ONE_MILE))
         {
             if (!edges.contains(edge))
             {

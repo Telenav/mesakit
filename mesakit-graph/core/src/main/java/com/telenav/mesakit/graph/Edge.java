@@ -473,7 +473,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return A matcher for edges intersecting the given bounds
      */
-    public static Matcher<Edge> intersecting(final Rectangle bounds)
+    public static Matcher<Edge> intersecting(Rectangle bounds)
     {
         return edge -> edge.intersects(bounds);
     }
@@ -481,7 +481,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return A matcher for edges inside the given bounds
      */
-    public static Matcher<Edge> within(final Rectangle bounds)
+    public static Matcher<Edge> within(Rectangle bounds)
     {
         return edge -> edge.isInside(bounds);
     }
@@ -524,20 +524,20 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     {
         private final Graph graph;
 
-        public Converter(final Graph graph, final Listener listener)
+        public Converter(Graph graph, Listener listener)
         {
             super(listener);
             this.graph = graph;
         }
 
         @Override
-        protected String onToString(final Edge edge)
+        protected String onToString(Edge edge)
         {
             return Long.toString(edge.identifierAsLong());
         }
 
         @Override
-        protected Edge onToValue(final String value)
+        protected Edge onToValue(String value)
         {
             switch (EdgeIdentifier.Type.forString(value))
             {
@@ -552,12 +552,12 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
             }
         }
 
-        private Edge edgeForLongIdentifier(final String value)
+        private Edge edgeForLongIdentifier(String value)
         {
-            final var identifierAsLong = Longs.parse(value);
+            var identifierAsLong = Longs.parse(value);
             if (identifierAsLong != Longs.INVALID)
             {
-                final var identifier = new EdgeIdentifier(identifierAsLong);
+                var identifier = new EdgeIdentifier(identifierAsLong);
                 if (graph.contains(identifier))
                 {
                     return graph.edgeForIdentifier(identifier);
@@ -566,9 +566,9 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
             return null;
         }
 
-        private Edge edgeForMapIdentifier(final String value)
+        private Edge edgeForMapIdentifier(String value)
         {
-            final var identifier = new MapEdgeIdentifier.Converter(this).convert(value);
+            var identifier = new MapEdgeIdentifier.Converter(this).convert(value);
             return graph.edgeForIdentifier(identifier);
         }
     }
@@ -577,7 +577,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    protected Edge(final Graph graph, final EdgeIdentifier identifier)
+    protected Edge(Graph graph, EdgeIdentifier identifier)
     {
         graph(graph);
         identifier(identifier.asLong());
@@ -587,7 +587,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    protected Edge(final Graph graph, final long identifier)
+    protected Edge(Graph graph, long identifier)
     {
         graph(graph);
         identifier(identifier);
@@ -597,7 +597,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    protected Edge(final Graph graph, final long identifier, final int index)
+    protected Edge(Graph graph, long identifier, int index)
     {
         graph(graph);
         identifier(identifier);
@@ -608,7 +608,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    protected Edge(final Edge that)
+    protected Edge(Edge that)
     {
         graph(that.graph());
         identifier(that.identifierAsLong());
@@ -625,7 +625,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
         {
             return (HeavyWeightEdge) this;
         }
-        final var copy = dataSpecification().newHeavyWeightEdge(graph(), identifierAsLong());
+        var copy = dataSpecification().newHeavyWeightEdge(graph(), identifierAsLong());
         copy.copy(this);
         return copy;
     }
@@ -718,7 +718,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return True if this edge's road shape crosses that edge's road shape
      */
-    public boolean crosses(final Edge that)
+    public boolean crosses(Edge that)
     {
         return roadShape().crosses(that.roadShape());
     }
@@ -726,7 +726,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return The differences between this edge and that edge
      */
-    public Differences differencesFrom(final Edge that)
+    public Differences differencesFrom(Edge that)
     {
         return dataSpecification().compare(this, that);
     }
@@ -750,13 +750,13 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return The shortest distance between any node on this edge and the road shape of that edge
      */
-    public Distance distanceTo(final Edge that)
+    public Distance distanceTo(Edge that)
     {
-        final var snapper = new PolylineSnapper();
+        var snapper = new PolylineSnapper();
         var distance = Distance.MAXIMUM;
-        for (final var location : locationSequence())
+        for (var location : locationSequence())
         {
-            final var snap = snapper.snap(that, location);
+            var snap = snapper.snap(that, location);
             if (snap != null)
             {
                 distance = distance.minimum(snap.distanceToSource());
@@ -769,11 +769,11 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @param located The location
      * @return The end vertex (to or from) of this edge nearest to the given location
      */
-    public Vertex endNearestTo(final Located located)
+    public Vertex endNearestTo(Located located)
     {
-        final var location = located.location();
-        final var toDistance = location.distanceTo(toLocation());
-        final var fromDistance = location.distanceTo(fromLocation());
+        var location = located.location();
+        var toDistance = location.distanceTo(toLocation());
+        var fromDistance = location.distanceTo(fromLocation());
         return fromDistance.isGreaterThan(toDistance) ? from() : to();
     }
 
@@ -782,7 +782,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      */
     public boolean entersRoundabout()
     {
-        for (final var edge : outEdgeSequence())
+        for (var edge : outEdgeSequence())
         {
             if (edge.isRoundabout())
             {
@@ -893,7 +893,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      */
     public Location fromLocation()
     {
-        final var from = from();
+        var from = from();
         if (from == null)
         {
             return roadShape().start();
@@ -930,14 +930,14 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @return The hardest left-turn edge from this edge where a left turn is determined by a counter-clockwise angle
      * between the two edges, within the given tolerance
      */
-    public Edge hardestLeft(final Angle tolerance)
+    public Edge hardestLeft(Angle tolerance)
     {
         // Go through out edges from the "to" end of this edge
         var hardestAngle = Angle._0_DEGREES;
         Edge hardestEdge = null;
-        for (final var out : to().outEdges())
+        for (var out : to().outEdges())
         {
-            final var angle = finalHeading().difference(out.initialHeading(), Chirality.COUNTERCLOCKWISE);
+            var angle = finalHeading().difference(out.initialHeading(), Chirality.COUNTERCLOCKWISE);
             if (angle.isClose(Angle._90_DEGREES, tolerance))
             {
                 if (angle.isGreaterThan(hardestAngle))
@@ -953,14 +953,14 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return The hardest right-turn edge from this edge within the given tolerance
      */
-    public Edge hardestRight(final Angle tolerance)
+    public Edge hardestRight(Angle tolerance)
     {
         // Go through out edges from the "to" end of this edge
         var hardestAngle = Angle._0_DEGREES;
         Edge hardestEdge = null;
-        for (final var out : to().outEdges())
+        for (var out : to().outEdges())
         {
-            final var angle = finalHeading().difference(out.initialHeading(), Chirality.CLOCKWISE);
+            var angle = finalHeading().difference(out.initialHeading(), Chirality.CLOCKWISE);
             if (angle.isClose(Angle._90_DEGREES, tolerance))
             {
                 if (angle.isGreaterThan(hardestAngle))
@@ -984,10 +984,10 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return True if this edge has the same base name as the given edge
      */
-    public boolean hasSameRoadNameAs(final Edge that)
+    public boolean hasSameRoadNameAs(Edge that)
     {
-        final var thisName = roadName();
-        final var thatName = that.roadName();
+        var thisName = roadName();
+        var thatName = that.roadName();
         if (thisName != null && thatName != null)
         {
             return thisName.extractNameOnly().equals(thatName.extractNameOnly());
@@ -999,13 +999,13 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @return True if the road has the same standardized root name as the given edge. For example, "Main St" and "Main
      * Street NE" would match.
      */
-    public boolean hasSameStandardizedBaseNameAs(final Edge that)
+    public boolean hasSameStandardizedBaseNameAs(Edge that)
     {
-        final var thisName = roadName();
-        final var thatName = that.roadName();
+        var thisName = roadName();
+        var thatName = that.roadName();
         if (thisName != null && thatName != null)
         {
-            final var standardizer = RoadNameStandardizer.get(locale(), RoadNameStandardizer.Mode.MESAKIT_STANDARDIZATION);
+            var standardizer = RoadNameStandardizer.get(locale(), RoadNameStandardizer.Mode.MESAKIT_STANDARDIZATION);
             return standardizer.standardize(thisName).baseName().equals(standardizer.standardize(thatName).baseName());
         }
         return false;
@@ -1067,7 +1067,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @return A continuous non-branching route ending with this directed edge and extended using the given navigator
      * for as long as the route limiter allows
      */
-    public Route inRoute(final Navigator navigator, final RouteLimiter limiter)
+    public Route inRoute(Navigator navigator, RouteLimiter limiter)
     {
         // Create the route with only this edge
         var route = Route.fromEdge(this);
@@ -1097,7 +1097,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @see Intersectable
      */
     @Override
-    public boolean intersects(final Rectangle bounds)
+    public boolean intersects(Rectangle bounds)
     {
         // If the given bounds completely contains this edge's bounding rectangle, then we don't need to do the more
         // expensive tests involving the road shape
@@ -1124,7 +1124,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return True if this edge is connected to that one (at either vertex)
      */
-    public boolean isConnectedTo(final Edge that)
+    public boolean isConnectedTo(Edge that)
     {
         return vertexConnecting(that) != null;
     }
@@ -1133,7 +1133,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @return True if this edge is connected to the given vertex (the vertex must be the "from" vertex or the "to"
      * vertex of the edge)
      */
-    public boolean isConnectedTo(final Vertex vertex)
+    public boolean isConnectedTo(Vertex vertex)
     {
         return from().equals(vertex) || to().equals(vertex);
     }
@@ -1165,7 +1165,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return True if this edge is either the forward or the reverse of the given edge
      */
-    public boolean isForwardOrReverseOf(final Edge that)
+    public boolean isForwardOrReverseOf(Edge that)
     {
         return equals(that) || equals(that.reversed());
     }
@@ -1174,7 +1174,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @return True if this edge is fully contained within the given bounds
      */
     @Override
-    public final boolean isInside(final Rectangle bounds)
+    public final boolean isInside(Rectangle bounds)
     {
         if (bounds == Rectangle.MAXIMUM)
         {
@@ -1258,7 +1258,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @return Whichever edge is more important this edge or that edge.  Importance based on functional class, and on
      * road type if the two edges have the same functional class.
      */
-    public boolean isMoreImportantThan(final Edge that)
+    public boolean isMoreImportantThan(Edge that)
     {
         if (roadFunctionalClass().equals(that.roadFunctionalClass()))
         {
@@ -1285,7 +1285,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      */
     public boolean isNameless()
     {
-        final var name = roadName();
+        var name = roadName();
         return name == null || Strings.isEmpty(name.name()) || "Unnamed".equalsIgnoreCase(name.name());
     }
 
@@ -1293,7 +1293,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @return True if this edge can be navigated in the given transport mode (walking, driving, biking, etc)
      * @see TransportMode
      */
-    public boolean isNavigable(final TransportMode mode)
+    public boolean isNavigable(TransportMode mode)
     {
         switch (mode)
         {
@@ -1389,7 +1389,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @return True if this edge is on the same logical road, as determined by name (not considering N, S, E, NW, etc.),
      * as the given edge
      */
-    public boolean isOnSameRoadAs(final Edge that)
+    public boolean isOnSameRoadAs(Edge that)
     {
         return new EdgePair(this, that).isSameRoad();
     }
@@ -1398,7 +1398,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @return True if this edge and that edge have the same road type and sub-type and are on the same road as
      * determined by the road name
      */
-    public boolean isOnSameRoadWithSameTypeAs(final Edge that)
+    public boolean isOnSameRoadWithSameTypeAs(Edge that)
     {
         return roadType() == that.roadType() && roadSubType() == that.roadSubType() && isOnSameRoadAs(that);
     }
@@ -1406,7 +1406,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return True if this edge is on the same way as the given edge
      */
-    public boolean isOnSameWay(final Edge that)
+    public boolean isOnSameWay(Edge that)
     {
         return wayIdentifier().equals(that.wayIdentifier());
     }
@@ -1422,7 +1422,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return True if this edge is considered parallel to the given edge
      */
-    public boolean isParallelTo(final Edge that)
+    public boolean isParallelTo(Edge that)
     {
         return new EdgePair(this, that).isParallel();
     }
@@ -1430,7 +1430,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return True if this edge is considered perpendicular to the given edge
      */
-    public boolean isPerpendicularTo(final Edge that)
+    public boolean isPerpendicularTo(Edge that)
     {
         return new EdgePair(this, that).isPerpendicular();
     }
@@ -1472,7 +1472,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return True if this edge has the same {@link RoadFunctionalClass} as the given edge
      */
-    public boolean isSameFunctionalClassAs(final Edge that)
+    public boolean isSameFunctionalClassAs(Edge that)
     {
         return roadFunctionalClass().equals(that.roadFunctionalClass());
     }
@@ -1566,7 +1566,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return True if this edge leads to that edge
      */
-    public boolean leadsTo(final Edge that)
+    public boolean leadsTo(Edge that)
     {
         return to().equals(that.from());
     }
@@ -1574,7 +1574,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return True if this edge leads to that route
      */
-    public boolean leadsTo(final Route that)
+    public boolean leadsTo(Route that)
     {
         return leadsTo(that.first());
     }
@@ -1608,7 +1608,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return The counter-clockwise (left) turn angle to the given edge
      */
-    public Angle leftTurnAngleTo(final Edge that)
+    public Angle leftTurnAngleTo(Edge that)
     {
         return turnAngleTo(that, Chirality.COUNTERCLOCKWISE);
     }
@@ -1686,15 +1686,15 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return The most straight-on edge from this edge within the given tolerance
      */
-    public Edge mostStraightOn(final Angle tolerance)
+    public Edge mostStraightOn(Angle tolerance)
     {
         // Go through out edges from the "to" end of this edge
         var mostStraightOnAngle = Angle._180_DEGREES;
         Edge mostStraightOnEdge = null;
-        for (final var out : to().outEdges())
+        for (var out : to().outEdges())
         {
             // and if the smallest difference between the headings is close to zero,
-            final var angle = finalHeading().difference(out.initialHeading(), Chirality.SMALLEST);
+            var angle = finalHeading().difference(out.initialHeading(), Chirality.SMALLEST);
             if (angle.isClose(Angle._0_DEGREES, tolerance))
             {
                 // possibly update the most straight-on we've found
@@ -1713,15 +1713,15 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return All edges within the given <i>rectangular</i> distance (not radius) that match the given matcher
      */
-    public EdgeSet nearbyEdges(final Distance range, final Matcher<Edge> matcher)
+    public EdgeSet nearbyEdges(Distance range, Matcher<Edge> matcher)
     {
-        final var surrounded = new EdgeSet();
-        for (final var segment : roadShape().segments())
+        var surrounded = new EdgeSet();
+        for (var segment : roadShape().segments())
         {
-            final var polygon = segment.surroundingBox(range);
+            var polygon = segment.surroundingBox(range);
             if (polygon != null)
             {
-                for (final var edge : graph().edgesIntersecting(segment.bounds().expanded(range), matcher))
+                for (var edge : graph().edgesIntersecting(segment.bounds().expanded(range), matcher))
                 {
                     if (polygon.intersectsOrContains(edge.roadShape()))
                     {
@@ -1744,7 +1744,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return The longest non-branching route or null if the maximum number of edges is exceeded.
      */
-    public Route nonBranchingRoute(final Maximum maximumEdges)
+    public Route nonBranchingRoute(Maximum maximumEdges)
     {
         var route = Route.fromEdge(this);
         while (route.first().inEdgesWithoutReversed().size() == 1
@@ -1772,12 +1772,12 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @return The non-branching route that contains maximum number edges which have same road name as this edge
      */
     @SuppressWarnings("SameParameterValue")
-    public Route nonBranchingRouteWithSameName(final Maximum extensionNumber)
+    public Route nonBranchingRouteWithSameName(Maximum extensionNumber)
     {
         var route = Route.fromEdge(this);
         if (supports(EdgeAttributes.get().ROAD_NAMES))
         {
-            final var name = roadName();
+            var name = roadName();
             var count = Count._1;
             while (count.isLessThanOrEqualTo(extensionNumber)
                     && route.first().inEdgesWithoutReversed().withRoadName(name).size() == 1
@@ -1811,10 +1811,10 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return The opposite vertex on this edge from the given vertex
      */
-    public Vertex oppositeVertex(final Vertex vertex)
+    public Vertex oppositeVertex(Vertex vertex)
     {
-        final var from = from();
-        final var to = to();
+        var from = from();
+        var to = to();
         if (vertex.equals(from))
         {
             return to;
@@ -1839,9 +1839,9 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      */
     public boolean osmIsDestinationTagged()
     {
-        for (final var tag : tagList())
+        for (var tag : tagList())
         {
-            final var key = tag.getKey();
+            var key = tag.getKey();
             if ("destination".equals(key) || "destination_sign".equals(key) || key.startsWith("destination:"))
             {
                 return true;
@@ -1872,7 +1872,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      */
     public boolean osmIsLink()
     {
-        final var highway = tagValue("highway");
+        var highway = tagValue("highway");
         return highway != null && highway.contains("_link");
     }
 
@@ -1893,7 +1893,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      */
     public boolean osmIsOneWay()
     {
-        final var value = tagValue("oneway");
+        var value = tagValue("oneway");
         return ("yes".equals(value) || "1".equals(value) || "-1".equals(value));
     }
 
@@ -1915,7 +1915,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      */
     public boolean osmIsServiceWay()
     {
-        for (final var tag : tagList())
+        for (var tag : tagList())
         {
             if ("highway".equalsIgnoreCase(tag.getKey()) && "service".equalsIgnoreCase(tag.getValue()))
             {
@@ -1936,7 +1936,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return All the edges other than this one that are connected to this edge at the given vertex
      */
-    public EdgeSet otherEdges(final Vertex vertex)
+    public EdgeSet otherEdges(Vertex vertex)
     {
         if (isConnectedTo(vertex))
         {
@@ -1974,7 +1974,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @return A continuous non-branching route starting with this directed edge and extended using the given navigator
      * for as long as the route limiter allows
      */
-    public Route outRoute(final Navigator navigator, final RouteLimiter limiter)
+    public Route outRoute(Navigator navigator, RouteLimiter limiter)
     {
         // Create the route with only this edge
         var route = Route.fromEdge(this);
@@ -2068,7 +2068,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return The clockwise (right) turn angle to the given edge
      */
-    public Angle rightTurnAngleTo(final Edge that)
+    public Angle rightTurnAngleTo(Edge that)
     {
         return turnAngleTo(that, Chirality.CLOCKWISE);
     }
@@ -2105,12 +2105,12 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @return The first road name of the given type or null if none exists
      */
     @Override
-    public RoadName roadName(final RoadName.Type type)
+    public RoadName roadName(RoadName.Type type)
     {
-        final var names = roadNames(type);
+        var names = roadNames(type);
         if (names != null)
         {
-            final var iterator = names.iterator();
+            var iterator = names.iterator();
             if (iterator.hasNext())
             {
                 return iterator.next();
@@ -2124,8 +2124,8 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      */
     public Set<RoadName> roadNames()
     {
-        final Set<RoadName> names = new HashSet<>();
-        for (final var type : RoadName.Type.values())
+        Set<RoadName> names = new HashSet<>();
+        for (var type : RoadName.Type.values())
         {
             names.addAll(roadNames(type));
         }
@@ -2135,7 +2135,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return All road names of the given type
      */
-    public List<RoadName> roadNames(final RoadName.Type type)
+    public List<RoadName> roadNames(RoadName.Type type)
     {
         return store().retrieveRoadNames(this, type);
     }
@@ -2147,7 +2147,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     @KivaKitExcludeProperty
     public Polyline roadShape()
     {
-        final var polyline = store().retrieveRoadShape(this);
+        var polyline = store().retrieveRoadShape(this);
         if (polyline == null)
         {
             return Polyline.fromLocations(fromLocationAsLong(), toLocationAsLong());
@@ -2196,18 +2196,18 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @return A route starting with this edge and extending as far as possible via "in" and "out" edges that match the
      * given matcher. Loops are detected to avoid non-termination.
      */
-    public Route route(final Matcher<Edge> matcher)
+    public Route route(Matcher<Edge> matcher)
     {
-        final var builder = new RouteBuilder();
+        var builder = new RouteBuilder();
         builder.append(this);
         boolean moved;
         var at = this;
-        final var visited = new EdgeSet();
+        var visited = new EdgeSet();
         visited.add(this);
         do
         {
             moved = false;
-            for (final var out : at.outEdgesWithoutReversed())
+            for (var out : at.outEdgesWithoutReversed())
             {
                 if (matcher.matches(out))
                 {
@@ -2229,7 +2229,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
         do
         {
             moved = false;
-            for (final var in : at.inEdgesWithoutReversed())
+            for (var in : at.inEdgesWithoutReversed())
             {
                 if (matcher.matches(in))
                 {
@@ -2253,9 +2253,9 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @return A route, as navigated by the given {@link Navigator} for up to the maximum distance. The final edge in
      * the route may extend beyond the maximum distance.
      */
-    public Route route(final Navigator navigator, final Distance maximum)
+    public Route route(Navigator navigator, Distance maximum)
     {
-        final RouteLimiter limiter = new LengthRouteLimiter(maximum, LengthRouteLimiter.Type.LENIENT);
+        RouteLimiter limiter = new LengthRouteLimiter(maximum, LengthRouteLimiter.Type.LENIENT);
 
         return route(navigator, limiter);
     }
@@ -2263,7 +2263,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return A route, as navigated by the given {@link Navigator} for up to the maximum number of edges.
      */
-    public Route route(final Navigator navigator, final Maximum maximum)
+    public Route route(Navigator navigator, Maximum maximum)
     {
         return route(navigator, new EdgeCountRouteLimiter(maximum));
     }
@@ -2271,15 +2271,15 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return A route, as navigated by the given {@link Navigator} as limited by the given {@link RouteLimiter}
      */
-    public Route route(final Navigator navigator, final RouteLimiter routeLimiter)
+    public Route route(Navigator navigator, RouteLimiter routeLimiter)
     {
-        final var out = outRoute(navigator, routeLimiter);
+        var out = outRoute(navigator, routeLimiter);
         if (out != null && (out.isLoop() || out.size() == 1))
         {
             return out;
         }
 
-        final var in = inRoute(navigator, routeLimiter);
+        var in = inRoute(navigator, routeLimiter);
         if (in != null && (in.isLoop() || in.size() == 1))
         {
             return in;
@@ -2307,8 +2307,8 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      */
     public List<MapNodeIdentifier> shapePointNodeIdentifiers()
     {
-        final List<MapNodeIdentifier> identifiers = new ArrayList<>();
-        for (final var point : shapePoints())
+        List<MapNodeIdentifier> identifiers = new ArrayList<>();
+        for (var point : shapePoints())
         {
             identifiers.add(point.mapIdentifier());
         }
@@ -2330,7 +2330,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      */
     public List<ShapePoint> shapePointsWithoutVertexes()
     {
-        final var shapePoints = shapePoints();
+        var shapePoints = shapePoints();
         if (shapePoints.size() >= 2)
         {
             shapePoints.remove(0);
@@ -2344,7 +2344,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      */
     public Set<SignPostSupport> signPostSupport()
     {
-        final Set<SignPostSupport> support = new HashSet<>();
+        Set<SignPostSupport> support = new HashSet<>();
         if (osmIsDestinationTagged())
         {
             support.add(SignPostSupport.DESTINATION_TAGGED);
@@ -2379,7 +2379,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return The smallest turn angle from this edge to the given edge
      */
-    public Angle straightOnTurnAngleTo(final Edge that)
+    public Angle straightOnTurnAngleTo(Edge that)
     {
         return turnAngleTo(that, Chirality.SMALLEST);
     }
@@ -2426,7 +2426,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      */
     public Location toLocation()
     {
-        final var to = to();
+        var to = to();
         if (to == null)
         {
             return roadShape().end();
@@ -2486,7 +2486,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return The amount of time it would take to travel the length of this edge at the given speed
      */
-    public Duration travelTime(final Speed speed)
+    public Duration travelTime(Speed speed)
     {
         return speed.timeToTravel(length());
     }
@@ -2513,7 +2513,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * smallest angle)
      * @see Chirality
      */
-    public Angle turnAngleTo(final Edge that, final Chirality chirality)
+    public Angle turnAngleTo(Edge that, Chirality chirality)
     {
         return finalHeading().difference(that.initialHeading(), chirality);
     }
@@ -2523,11 +2523,11 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      */
     public Set<EdgeRelation> turnRestrictions()
     {
-        final var relations = relations();
+        var relations = relations();
         if (!relations.isEmpty())
         {
-            final Set<EdgeRelation> turnRestrictions = new HashSet<>();
-            for (final var relation : relations)
+            Set<EdgeRelation> turnRestrictions = new HashSet<>();
+            for (var relation : relations)
             {
                 if (relation.isTurnRestriction())
                 {
@@ -2546,15 +2546,15 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     {
         if (supports(EdgeAttributes.get().RELATIONS))
         {
-            final var relations = relations();
+            var relations = relations();
             if (!relations.isEmpty())
             {
-                final Set<EdgeRelation> turnRestrictions = new HashSet<>();
-                for (final var relation : relations)
+                Set<EdgeRelation> turnRestrictions = new HashSet<>();
+                for (var relation : relations)
                 {
                     if (relation.isTurnRestriction())
                     {
-                        final var route = relation.asRoute();
+                        var route = relation.asRoute();
                         if (route != null && route.first().equals(this))
                         {
                             turnRestrictions.add(relation);
@@ -2570,7 +2570,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return The type of turn from this edge to that edge, like: left, right, u-turn, hard left, etc.
      */
-    public TurnType turnType(final Edge that)
+    public TurnType turnType(Edge that)
     {
         return turnType(that, TwoHeadingTurnClassifier.DEFAULT);
     }
@@ -2578,7 +2578,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return The type of turn from this edge to that edge using the given turn classifier
      */
-    public TurnType turnType(final Edge that, final TwoHeadingTurnClassifier classifier)
+    public TurnType turnType(Edge that, TwoHeadingTurnClassifier classifier)
     {
         return classifier.type(lastSegment(), that.firstSegment());
     }
@@ -2595,7 +2595,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * {@inheritDoc}
      */
     @Override
-    public Validator validator(final ValidationType type)
+    public Validator validator(ValidationType type)
     {
         return new ElementValidator()
         {
@@ -2634,13 +2634,13 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return The vertex that connects this edge with that edge or null if the two edges are not connected at a vertex
      */
-    public Vertex vertexConnecting(final Edge that)
+    public Vertex vertexConnecting(Edge that)
     {
         // Don't allow the case of an edge being "connected" to itself
         if (!equals(that))
         {
             // If that edge is connected to the "from" vertex
-            final var from = that.from();
+            var from = that.from();
             if (isConnectedTo(from))
             {
                 // return the from vertex
@@ -2648,7 +2648,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
             }
 
             // If that edge is connected to the "to" vertex
-            final var to = that.to();
+            var to = that.to();
             if (isConnectedTo(to))
             {
                 // return the to vertex
@@ -2665,10 +2665,10 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     {
         try
         {
-            final var firstEdge = graph().edgeForIdentifier(identifier().asForward().withSequenceNumber(0));
+            var firstEdge = graph().edgeForIdentifier(identifier().asForward().withSequenceNumber(0));
             return firstEdge.route(new WayNavigator(firstEdge), Maximum._10_000);
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             // If we are unable to get the way as a route, then just return this edge as the
             // route instead. This will occur in degenerate cases like OSM way #221097361
@@ -2709,7 +2709,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * @return IllegalArgument exception for a vertex that is not connected to this edge
      */
-    private IllegalArgumentException invalidVertex(final Vertex vertex)
+    private IllegalArgumentException invalidVertex(Vertex vertex)
     {
         return new IllegalArgumentException("Vertex " + vertex + " is not attached to " + this);
     }

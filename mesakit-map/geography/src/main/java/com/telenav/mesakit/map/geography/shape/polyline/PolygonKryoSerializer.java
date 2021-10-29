@@ -31,13 +31,13 @@ public class PolygonKryoSerializer extends KryoSerializer<Polygon>
     }
 
     @Override
-    protected Polygon onRead(final KryoSerializationSession session)
+    protected Polygon onRead(KryoSerializationSession session)
     {
         return session.readObject(Polygon.class);
     }
 
     @Override
-    protected void onWrite(final KryoSerializationSession session, final Polygon polygon)
+    protected void onWrite(KryoSerializationSession session, Polygon polygon)
     {
         ensure(polygon != null);
         session.writeObject(polygon);

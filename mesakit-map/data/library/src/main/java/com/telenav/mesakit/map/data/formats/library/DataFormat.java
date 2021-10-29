@@ -39,7 +39,7 @@ public enum DataFormat
     PBF, // OpenStreetMap protobuf format
     ;
 
-    public static DataFormat of(final Resource input)
+    public static DataFormat of(Resource input)
     {
         switch (input.extension().toString())
         {

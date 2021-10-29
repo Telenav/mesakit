@@ -39,7 +39,7 @@ public class TurnRestrictionsTurnClassifier implements TurnClassifier
     public static final Angle MINIMUM_UTURN_ANGLE = degrees(170);
 
     @Override
-    public TurnType type(final Route route)
+    public TurnType type(Route route)
     {
         if (route.isInPlaceUTurn())
         {
@@ -54,11 +54,11 @@ public class TurnRestrictionsTurnClassifier implements TurnClassifier
         }
 
         // Get initial and final headings of the turn route
-        final var initialHeading = route.first().finalHeading();
-        final var finalHeading = route.last().initialHeading();
+        var initialHeading = route.first().finalHeading();
+        var finalHeading = route.last().initialHeading();
 
         // Find out how much we're going right
-        final var right = initialHeading.difference(finalHeading, Chirality.CLOCKWISE);
+        var right = initialHeading.difference(finalHeading, Chirality.CLOCKWISE);
 
         // If we're bearing right between 0 and 40 degrees we will consider that straight-on
         if (right.isGreaterThanOrEqualTo(degrees(0)) && right.isLessThanOrEqualTo(degrees(40)))
@@ -73,7 +73,7 @@ public class TurnRestrictionsTurnClassifier implements TurnClassifier
         }
 
         // Find out how much we're going left
-        final var left = initialHeading.difference(finalHeading, Chirality.COUNTERCLOCKWISE);
+        var left = initialHeading.difference(finalHeading, Chirality.COUNTERCLOCKWISE);
 
         // If we're bearing left between 0 and 40 degrees we will consider that straight-on
         if (left.isGreaterThanOrEqualTo(degrees(0)) && left.isLessThanOrEqualTo(degrees(40)))

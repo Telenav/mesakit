@@ -25,15 +25,15 @@ import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
 
 public class TimestampExtractor extends BaseExtractor<Time, PbfEntity<?>>
 {
-    public TimestampExtractor(final Listener listener)
+    public TimestampExtractor(Listener listener)
     {
         super(listener);
     }
 
     @Override
-    public Time onExtract(final PbfEntity<?> way)
+    public Time onExtract(PbfEntity<?> way)
     {
-        final var time = way.timestamp().getTime();
+        var time = way.timestamp().getTime();
         if (time > 0)
         {
             return Time.milliseconds(time);

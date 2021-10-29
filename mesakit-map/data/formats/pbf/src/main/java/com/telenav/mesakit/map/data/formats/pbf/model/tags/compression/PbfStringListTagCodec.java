@@ -68,7 +68,7 @@ public class PbfStringListTagCodec implements PbfTagCodec
     /** The codec for values */
     private StringListCodec valueCodec;
 
-    public PbfStringListTagCodec(final StringListCodec keyCodec, final StringListCodec valueCodec)
+    public PbfStringListTagCodec(StringListCodec keyCodec, StringListCodec valueCodec)
     {
         this.keyCodec = keyCodec;
         this.valueCodec = valueCodec;
@@ -82,9 +82,9 @@ public class PbfStringListTagCodec implements PbfTagCodec
      * @return A {@link PbfTagList} decompressed from the given {@link BitReader} using the trained Huffman codec
      */
     @Override
-    public PbfTagList decode(final ByteList input)
+    public PbfTagList decode(ByteList input)
     {
-        final var tags = PbfTagList.create();
+        var tags = PbfTagList.create();
 
         keyCodec.decode(input, (index, key) ->
         {
@@ -111,11 +111,11 @@ public class PbfStringListTagCodec implements PbfTagCodec
      * @return A {@link PbfTagList} decompressed from the given {@link BitReader} using the trained Huffman codec
      */
     @Override
-    public PbfTagMap decodeMap(final ByteList input)
+    public PbfTagMap decodeMap(ByteList input)
     {
-        final var tags = PbfTagMap.create();
+        var tags = PbfTagMap.create();
 
-        final var keys = new ArrayList<String>();
+        var keys = new ArrayList<String>();
         keyCodec.decode(input, (index, key) ->
         {
             if (key != null)
@@ -141,12 +141,12 @@ public class PbfStringListTagCodec implements PbfTagCodec
      * Encodes the tag list using the Huffman codec and writes it to the given {@link BitWriter}.
      */
     @Override
-    public void encode(final ByteList output, final PbfTagList tags)
+    public void encode(ByteList output, PbfTagList tags)
     {
         keyCodec.encode(output, new SymbolProducer<>()
         {
             @Override
-            public String get(final int ordinal)
+            public String get(int ordinal)
             {
                 return ordinal < tags.size() ? tags.get(ordinal).getKey() : null;
             }
@@ -161,7 +161,7 @@ public class PbfStringListTagCodec implements PbfTagCodec
         valueCodec.encode(output, new SymbolProducer<>()
         {
             @Override
-            public String get(final int ordinal)
+            public String get(int ordinal)
             {
                 return ordinal < tags.size() ? tags.get(ordinal).getValue() : null;
             }

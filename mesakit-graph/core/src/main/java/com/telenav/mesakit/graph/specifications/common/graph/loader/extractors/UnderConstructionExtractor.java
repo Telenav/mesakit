@@ -24,15 +24,15 @@ import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 
 public class UnderConstructionExtractor extends BaseExtractor<Boolean, PbfWay>
 {
-    public UnderConstructionExtractor(final Listener listener)
+    public UnderConstructionExtractor(Listener listener)
     {
         super(listener);
     }
 
     @Override
-    public Boolean onExtract(final PbfWay way)
+    public Boolean onExtract(PbfWay way)
     {
-        final var highway = way.highway();
+        var highway = way.highway();
         if ("construction".equals(highway))
         {
             return Boolean.TRUE;

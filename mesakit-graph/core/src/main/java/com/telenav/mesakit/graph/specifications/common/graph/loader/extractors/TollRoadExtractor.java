@@ -24,13 +24,13 @@ import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 
 public class TollRoadExtractor extends BaseExtractor<Boolean, PbfWay>
 {
-    public TollRoadExtractor(final Listener listener)
+    public TollRoadExtractor(Listener listener)
     {
         super(listener);
     }
 
     @Override
-    public Boolean onExtract(final PbfWay way)
+    public Boolean onExtract(PbfWay way)
     {
         return way.tagValueIsYes("toll");
     }

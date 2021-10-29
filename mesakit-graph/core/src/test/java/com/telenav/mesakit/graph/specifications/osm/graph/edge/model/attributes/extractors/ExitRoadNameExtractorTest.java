@@ -42,16 +42,16 @@ public class ExitRoadNameExtractorTest extends RegionUnitTest
         ensureEqual(extract(way("exit_ref:eng", "Shibo Lane", "exit_ref:spa:trans:eng", "Shibo Road")), Set.of("Shibo Ln", "Shibo Rd"));
     }
 
-    private Set<String> extract(final PbfWay way)
+    private Set<String> extract(PbfWay way)
     {
-        final var extractor = new ExitRoadNameExtractor(MapLocale.ENGLISH_UNITED_STATES.get(), MESAKIT_STANDARDIZATION, Listener.none());
-        final var roadNames = extractor.extract(way);
+        var extractor = new ExitRoadNameExtractor(MapLocale.ENGLISH_UNITED_STATES.get(), MESAKIT_STANDARDIZATION, Listener.none());
+        var roadNames = extractor.extract(way);
         return StringList.stringList(roadNames).asSet();
     }
 
-    private PbfWay way(final String... values)
+    private PbfWay way(String... values)
     {
-        final var tags = new ArrayList<Tag>();
+        var tags = new ArrayList<Tag>();
         for (int i = 0; i < values.length; i += 2)
         {
             tags.add(new Tag(values[i], values[i + 1]));

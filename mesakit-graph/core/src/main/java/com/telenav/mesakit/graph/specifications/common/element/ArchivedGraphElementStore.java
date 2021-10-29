@@ -74,7 +74,7 @@ public abstract class ArchivedGraphElementStore<T extends GraphElement> extends 
     /**
      * @param graph The graph that owns this element store
      */
-    protected ArchivedGraphElementStore(final Graph graph)
+    protected ArchivedGraphElementStore(Graph graph)
     {
         super(graph);
     }
@@ -93,7 +93,7 @@ public abstract class ArchivedGraphElementStore<T extends GraphElement> extends 
      *
      * @param archive The field archive to load fields from
      */
-    public final void attach(final GraphArchive archive)
+    public final void attach(GraphArchive archive)
     {
         ensureNotNull(archive);
 
@@ -142,7 +142,7 @@ public abstract class ArchivedGraphElementStore<T extends GraphElement> extends 
     /**
      * Forces all attributes to load except the given ones
      */
-    public void loadAll(final AttributeSet attributes)
+    public void loadAll(AttributeSet attributes)
     {
         attributeLoader().loadAll(attributes);
     }
@@ -150,12 +150,12 @@ public abstract class ArchivedGraphElementStore<T extends GraphElement> extends 
     /**
      * Forces all attributes to load except the given ones
      */
-    public void loadAllExcept(final AttributeSet attributes)
+    public void loadAllExcept(AttributeSet attributes)
     {
         attributeLoader().loadAllExcept(attributes);
     }
 
-    public void loaded(final Resource resource)
+    public void loaded(Resource resource)
     {
         if (!loaded)
         {
@@ -164,17 +164,17 @@ public abstract class ArchivedGraphElementStore<T extends GraphElement> extends 
         }
     }
 
-    public void loaded(final GraphArchive archive)
+    public void loaded(GraphArchive archive)
     {
         onLoaded(archive);
     }
 
-    public void loading(final Resource resource)
+    public void loading(Resource resource)
     {
         onLoading(resource);
     }
 
-    public void loading(final GraphArchive archive)
+    public void loading(GraphArchive archive)
     {
         // load the unmanaged fields of the superclass,
         archive.loadFieldOf(this, "size");
@@ -204,12 +204,12 @@ public abstract class ArchivedGraphElementStore<T extends GraphElement> extends 
         onSaved(archive());
     }
 
-    public void saved(final GraphArchive archive)
+    public void saved(GraphArchive archive)
     {
         onSaved(archive);
     }
 
-    public void saving(final GraphArchive archive)
+    public void saving(GraphArchive archive)
     {
         onSaving(archive);
     }
@@ -228,7 +228,7 @@ public abstract class ArchivedGraphElementStore<T extends GraphElement> extends 
     /**
      * Loads the given attribute
      */
-    protected void load(final Attribute<?> attribute)
+    protected void load(Attribute<?> attribute)
     {
         attributeLoader().load(attribute);
     }
@@ -237,7 +237,7 @@ public abstract class ArchivedGraphElementStore<T extends GraphElement> extends 
      * Loads the named field from this attribute store
      */
     @SuppressWarnings("SameParameterValue")
-    protected void loadField(final String fieldName)
+    protected void loadField(String fieldName)
     {
         archive.loadFieldOf(this, fieldName);
     }
@@ -246,7 +246,7 @@ public abstract class ArchivedGraphElementStore<T extends GraphElement> extends 
      * Called after an archive has been attached to this store
      */
     @MustBeInvokedByOverriders
-    protected void onAttached(final GraphArchive archive)
+    protected void onAttached(GraphArchive archive)
     {
     }
 
@@ -254,28 +254,28 @@ public abstract class ArchivedGraphElementStore<T extends GraphElement> extends 
      * Called before an archive is attached to this store
      */
     @MustBeInvokedByOverriders
-    protected void onAttaching(final GraphArchive archive)
+    protected void onAttaching(GraphArchive archive)
     {
     }
 
     @MustBeInvokedByOverriders
-    protected void onLoaded(final GraphArchive archive)
+    protected void onLoaded(GraphArchive archive)
     {
 
     }
 
     @MustBeInvokedByOverriders
-    protected void onLoaded(final Resource resource)
+    protected void onLoaded(Resource resource)
     {
     }
 
     @MustBeInvokedByOverriders
-    protected void onLoading(final Resource resource)
+    protected void onLoading(Resource resource)
     {
     }
 
     @MustBeInvokedByOverriders
-    protected void onLoading(final GraphArchive archive)
+    protected void onLoading(GraphArchive archive)
     {
     }
 
@@ -283,7 +283,7 @@ public abstract class ArchivedGraphElementStore<T extends GraphElement> extends 
      * Called after this store is saved
      */
     @MustBeInvokedByOverriders
-    protected void onSaved(final GraphArchive archive)
+    protected void onSaved(GraphArchive archive)
     {
     }
 
@@ -291,7 +291,7 @@ public abstract class ArchivedGraphElementStore<T extends GraphElement> extends 
      * Called before this store is saved
      */
     @MustBeInvokedByOverriders
-    protected void onSaving(final GraphArchive archive)
+    protected void onSaving(GraphArchive archive)
     {
     }
 

@@ -26,13 +26,13 @@ import com.telenav.mesakit.graph.specifications.common.element.store.index.Graph
 
 public class VertexSpatialIndex extends GraphElementSpatialIndex<Vertex>
 {
-    public VertexSpatialIndex(final Graph graph, final Count maximumObjectsPerQuadrant)
+    public VertexSpatialIndex(Graph graph, Count maximumObjectsPerQuadrant)
     {
         super(graph, maximumObjectsPerQuadrant.asInt());
     }
 
     @Override
-    protected Vertex forIdentifier(final long identifier)
+    protected Vertex forIdentifier(long identifier)
     {
         return graph().vertexForIdentifier(new VertexIdentifier((int) identifier));
     }

@@ -36,7 +36,7 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupport
  */
 public abstract class Leaf<T extends Bounded & Intersectable> extends Node<T>
 {
-    protected Leaf(final RTreeSpatialIndex<T> index, final InteriorNode<T> parent)
+    protected Leaf(RTreeSpatialIndex<T> index, InteriorNode<T> parent)
     {
         super(index, parent);
     }
@@ -50,7 +50,7 @@ public abstract class Leaf<T extends Bounded & Intersectable> extends Node<T>
      * are expanded. If the node is too full, a split is performed.
      */
     @Override
-    public void add(final T element)
+    public void add(T element)
     {
         // If we're out of room in this leaf,
         if (isFull())
@@ -76,7 +76,7 @@ public abstract class Leaf<T extends Bounded & Intersectable> extends Node<T>
      * to implement this efficiently.
      */
     @Override
-    public Iterator<T> intersecting(final Rectangle that, final Matcher<T> matcher)
+    public Iterator<T> intersecting(Rectangle that, Matcher<T> matcher)
     {
         return new FilteredIterator<>(elements().iterator(), value -> value.intersects(that) && matcher.matches(value));
     }
@@ -88,7 +88,7 @@ public abstract class Leaf<T extends Bounded & Intersectable> extends Node<T>
     }
 
     @Override
-    public void statistics(final int depth, final Statistics statistics)
+    public void statistics(int depth, Statistics statistics)
     {
         statistics.leaves++;
         statistics.elements += size();
@@ -102,7 +102,7 @@ public abstract class Leaf<T extends Bounded & Intersectable> extends Node<T>
     }
 
     @Override
-    protected void add(final Node<T> child)
+    protected void add(Node<T> child)
     {
         unsupported("Leaf node cannot add child $", child);
     }
@@ -125,7 +125,7 @@ public abstract class Leaf<T extends Bounded & Intersectable> extends Node<T>
     protected abstract int size();
 
     @Override
-    protected String toString(final RTreeSpatialIndex.DumpDetailLevel detail)
+    protected String toString(RTreeSpatialIndex.DumpDetailLevel detail)
     {
         return "[Leaf bounds = " + bounds() + ", size = " + size() + ", elements = "
                 + (detail == RTreeSpatialIndex.DumpDetailLevel.SUMMARY_ONLY ? "" + size() : new ObjectList<>().appendAll(elements()).join())
@@ -143,21 +143,21 @@ public abstract class Leaf<T extends Bounded & Intersectable> extends Node<T>
         return new LinearSplit<T>()
         {
             @Override
-            protected InteriorNode<T> onSplit(final T a, final T b)
+            protected InteriorNode<T> onSplit(T a, T b)
             {
                 // Create two un-parented leaves for the most distant elements
-                final var leafA = index().newLeaf(null);
-                final var leafB = index().newLeaf(null);
+                var leafA = index().newLeaf(null);
+                var leafB = index().newLeaf(null);
                 leafA.add(a);
                 leafB.add(b);
 
                 // Go through all elements that need to be split
-                for (final var element : elements())
+                for (var element : elements())
                 {
                     // and if it's not one of the two we started with,
                     if (!element.equals(a) && !element.equals(b))
                     {
-                        final var center = element.bounds().center();
+                        var center = element.bounds().center();
                         if (center.preciseDistanceTo(a.bounds().center())
                                 .isLessThan(center.preciseDistanceTo(b.bounds().center())))
                         {

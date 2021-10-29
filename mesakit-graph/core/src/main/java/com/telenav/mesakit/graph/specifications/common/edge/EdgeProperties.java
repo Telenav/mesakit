@@ -38,7 +38,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
 
     public abstract class EdgeProperty extends GraphElementProperty
     {
-        protected EdgeProperty(final String name, final Attribute<?> attribute)
+        protected EdgeProperty(String name, Attribute<?> attribute)
         {
             super(name, attribute);
             add(this);
@@ -48,7 +48,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty ALTERNATE_ROAD_NAME = new EdgeProperty("alternate-road-name", EdgeAttributes.get().ROAD_NAMES)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.roadName(RoadName.Type.ALTERNATE);
         }
@@ -57,7 +57,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty BRIDGE_TYPE = new EdgeProperty("bridge-type", EdgeAttributes.get().BRIDGE_TYPE)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.bridgeType();
         }
@@ -66,9 +66,9 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty COUNTRY = new EdgeProperty("country", EdgeAttributes.get().COUNTRY)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
-            final var country = edge.country();
+            var country = edge.country();
             if (country != null)
             {
                 return country.identity().mesakit().first();
@@ -80,7 +80,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty FREE_FLOW_SPEED = new EdgeProperty("free-flow-speed", EdgeAttributes.get().FREE_FLOW_SPEED_CATEGORY)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.freeFlowSpeed();
         }
@@ -89,7 +89,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty FROM = new EdgeProperty("from", EdgeAttributes.get().FROM_VERTEX_IDENTIFIER)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.from() == null ? null : edge.from().identifier();
         }
@@ -98,7 +98,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty FROM_IDENTIFIER = new EdgeProperty("from-identifier", EdgeAttributes.get().FROM_VERTEX_IDENTIFIER)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.fromVertexIdentifier();
         }
@@ -107,7 +107,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty HEADING = new EdgeProperty("heading", EdgeAttributes.get().NONE)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.heading();
         }
@@ -116,7 +116,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty HOV_LANE_COUNT = new EdgeProperty("hov-lane-count", EdgeAttributes.get().HOV_LANE_COUNT)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.hovLaneCount();
         }
@@ -125,7 +125,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty IS_CLOSED_TO_THROUGH_TRAFFIC = new EdgeProperty("closed", EdgeAttributes.get().IS_CLOSED_TO_THROUGH_TRAFFIC)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.isClosedToThroughTraffic();
         }
@@ -134,7 +134,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty IS_JUNCTION = new EdgeProperty("is-junction", EdgeAttributes.get().NONE)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.isJunctionEdge();
         }
@@ -143,7 +143,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty IS_RAMP = new EdgeProperty("is-ramp", EdgeAttributes.get().NONE)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.isRamp();
         }
@@ -152,7 +152,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty IS_SOFT_CUT = new EdgeProperty("is-soft-cut", EdgeAttributes.get().NONE)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.tagList() == null ? null : edge.isSoftCut();
         }
@@ -161,7 +161,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty IS_TOLL_ROAD = new EdgeProperty("is-toll-road", EdgeAttributes.get().IS_TOLL_ROAD)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.isTollRoad();
         }
@@ -170,7 +170,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty IS_UNDER_CONSTRUCTION = new EdgeProperty("is-under-construction", EdgeAttributes.get().IS_UNDER_CONSTRUCTION)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.isUnderConstruction();
         }
@@ -179,7 +179,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty LANE_COUNT = new EdgeProperty("lanes", EdgeAttributes.get().LANE_COUNT)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.laneCount();
         }
@@ -188,7 +188,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty LENGTH = new EdgeProperty("length", EdgeAttributes.get().LENGTH)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.length();
         }
@@ -197,7 +197,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty METROPOLITAN_AREA = new EdgeProperty("metropolitan-area", EdgeAttributes.get().NONE)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return Functions.apply(edge.metropolitanArea(), metro -> metro.identity().mesakit().third());
         }
@@ -206,7 +206,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty OFFICIAL_ROAD_NAME = new EdgeProperty("official-road-name", EdgeAttributes.get().ROAD_NAMES)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.roadName(RoadName.Type.OFFICIAL);
         }
@@ -215,7 +215,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty MAP_EDGE_IDENTIFIER = new EdgeProperty("map-edge-identifier", EdgeAttributes.get().NONE)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             if (edge.supportsNodeIdentifiers())
             {
@@ -228,7 +228,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty FROM_NODE_IDENTIFIER = new EdgeProperty("from-node", EdgeAttributes.get().FROM_NODE_IDENTIFIER)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.fromNodeIdentifier();
         }
@@ -237,7 +237,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty TO_NODE_IDENTIFIER = new EdgeProperty("to-node", EdgeAttributes.get().TO_NODE_IDENTIFIER)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.toNodeIdentifier();
         }
@@ -246,9 +246,9 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty RELATIONS = new EdgeProperty("relations", EdgeAttributes.get().RELATIONS)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
-            final var relations = new StringList();
+            var relations = new StringList();
             edge.relations().forEach(relation -> relations.add(StringTo.string(relation.identifier())));
             return relations.join(", ");
         }
@@ -257,7 +257,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty ROAD_FUNCTIONAL_CLASS = new EdgeProperty("road-functional-class", EdgeAttributes.get().ROAD_FUNCTIONAL_CLASS)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.roadFunctionalClass();
         }
@@ -266,12 +266,12 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty ROAD_NAMES = new EdgeProperty("road-names", EdgeAttributes.get().ROAD_NAMES)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
-            final var names = new StringList();
-            for (final var type : RoadName.Type.values())
+            var names = new StringList();
+            for (var type : RoadName.Type.values())
             {
-                for (final var name : edge.roadNames(type))
+                for (var name : edge.roadNames(type))
                 {
                     names.add(type + ": " + name);
                 }
@@ -283,7 +283,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty ROAD_SHAPE = new EdgeProperty("road-shape", EdgeAttributes.get().ROAD_SHAPE)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.roadShape();
         }
@@ -292,7 +292,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty ROAD_STATE = new EdgeProperty("road-state", EdgeAttributes.get().ROAD_STATE)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.roadState();
         }
@@ -301,7 +301,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty ROAD_STATE_TYPE_SUBTYPE_AND_FUNCTIONAL_CLASS = new EdgeProperty("state", EdgeAttributes.get().ROAD_STATE)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.roadState() + " / " + edge.roadType() + " / " + edge.roadSubType() + " / "
                     + edge.roadFunctionalClass();
@@ -311,7 +311,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty ROAD_SUBTYPE = new EdgeProperty("road-sub-type", EdgeAttributes.get().ROAD_SUB_TYPE)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.roadSubType();
         }
@@ -320,7 +320,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty ROAD_SURFACE = new EdgeProperty("surface", EdgeAttributes.get().ROAD_SURFACE)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.roadSurface();
         }
@@ -329,7 +329,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty ROAD_TYPE = new EdgeProperty("road-type", EdgeAttributes.get().ROAD_TYPE)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.roadType();
         }
@@ -338,7 +338,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty ROUTE_ROAD_NAME = new EdgeProperty("route-road-name", EdgeAttributes.get().NONE)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.roadName(RoadName.Type.ROUTE);
         }
@@ -347,7 +347,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty SPEED_LIMIT = new EdgeProperty("speed-limit", EdgeAttributes.get().SPEED_LIMIT)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.speedLimit();
         }
@@ -356,7 +356,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty TO = new EdgeProperty("to", EdgeAttributes.get().TO_VERTEX_IDENTIFIER)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.to() == null ? null : edge.to().identifier();
         }
@@ -365,7 +365,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
     public final EdgeProperty TO_IDENTIFIER = new EdgeProperty("to-identifier", EdgeAttributes.get().TO_VERTEX_IDENTIFIER)
     {
         @Override
-        public Object value(final Edge edge)
+        public Object value(Edge edge)
         {
             return edge.toVertexIdentifier();
         }

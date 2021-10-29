@@ -38,7 +38,7 @@ public class NodeAttributes extends GraphElementAttributes<Vertex>
 
     public class NodeAttribute extends GraphElementAttribute
     {
-        public NodeAttribute(final String name)
+        public NodeAttribute(String name)
         {
             super(name);
         }

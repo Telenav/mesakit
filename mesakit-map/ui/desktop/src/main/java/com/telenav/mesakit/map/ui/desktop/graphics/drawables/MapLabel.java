@@ -45,22 +45,22 @@ public class MapLabel extends LabeledMapShape
         return label(null, null, null);
     }
 
-    public static MapLabel label(final Style style, final Location at, final String label)
+    public static MapLabel label(Style style, Location at, String label)
     {
         return new MapLabel(style, at, label);
     }
 
-    public static MapLabel label(final Style style)
+    public static MapLabel label(Style style)
     {
         return new MapLabel(style, null, null);
     }
 
-    protected MapLabel(final Style style, final Location at, final String label)
+    protected MapLabel(Style style, Location at, String label)
     {
         super(style, at, label);
     }
 
-    protected MapLabel(final MapLabel that)
+    protected MapLabel(MapLabel that)
     {
         super(that);
     }
@@ -78,116 +78,116 @@ public class MapLabel extends LabeledMapShape
     }
 
     @Override
-    public Shape onDraw(final MapCanvas canvas)
+    public Shape onDraw(MapCanvas canvas)
     {
         return super.onDraw(canvas);
     }
 
     @Override
-    public Drawable scaledBy(final double scaleFactor)
+    public Drawable scaledBy(double scaleFactor)
     {
         return unsupported();
     }
 
     @Override
-    public Drawable scaledBy(final Percent scaleFactor)
+    public Drawable scaledBy(Percent scaleFactor)
     {
         return unsupported();
     }
 
     @Override
-    public MapLabel withColors(final Style style)
+    public MapLabel withColors(Style style)
     {
         return (MapLabel) super.withColors(style);
     }
 
     @Override
-    public MapLabel withDrawColor(final Color color)
+    public MapLabel withDrawColor(Color color)
     {
         return (MapLabel) super.withDrawColor(color);
     }
 
     @Override
-    public MapLabel withDrawStrokeWidth(final DrawingWidth width)
+    public MapLabel withDrawStrokeWidth(DrawingWidth width)
     {
         return (MapLabel) super.withDrawStrokeWidth(width);
     }
 
     @Override
-    public MapLabel withDrawStrokeWidth(final Distance width)
+    public MapLabel withDrawStrokeWidth(Distance width)
     {
         return (MapLabel) super.withDrawStrokeWidth(width);
     }
 
     @Override
-    public MapLabel withFillColor(final Color color)
+    public MapLabel withFillColor(Color color)
     {
         return (MapLabel) super.withFillColor(color);
     }
 
     @Override
-    public MapLabel withFillStrokeWidth(final Distance width)
+    public MapLabel withFillStrokeWidth(Distance width)
     {
         return (MapLabel) super.withFillStrokeWidth(width);
     }
 
     @Override
-    public MapLabel withFillStrokeWidth(final DrawingWidth width)
+    public MapLabel withFillStrokeWidth(DrawingWidth width)
     {
         return (MapLabel) super.withFillStrokeWidth(width);
     }
 
     @Override
-    public MapLabel withLabelText(final String label)
+    public MapLabel withLabelText(String label)
     {
         return (MapLabel) super.withLabelText(label);
     }
 
     @Override
-    public MapLabel withLocation(final DrawingPoint at)
+    public MapLabel withLocation(DrawingPoint at)
     {
         return (MapLabel) super.withLocation(at);
     }
 
     @Override
-    public MapLabel withLocation(final Location at)
+    public MapLabel withLocation(Location at)
     {
         return (MapLabel) super.withLocation(at);
     }
 
     @Override
-    public MapLabel withMargin(final int margin)
+    public MapLabel withMargin(int margin)
     {
         return (MapLabel) super.withMargin(margin);
     }
 
     @Override
-    public MapLabel withOffset(final int dx, final int dy)
+    public MapLabel withOffset(int dx, int dy)
     {
         return (MapLabel) super.withOffset(dx, dy);
     }
 
     @Override
-    public MapLabel withRoundedLabelCorners(final DrawingLength corner)
+    public MapLabel withRoundedLabelCorners(DrawingLength corner)
     {
         return (MapLabel) super.withRoundedLabelCorners(corner);
     }
 
     @Override
-    public MapLabel withRoundedLabelCorners(final DrawingWidth cornerWidth,
-                                            final DrawingHeight cornerHeight)
+    public MapLabel withRoundedLabelCorners(DrawingWidth cornerWidth,
+                                            DrawingHeight cornerHeight)
     {
         return (MapLabel) super.withRoundedLabelCorners(cornerWidth, cornerHeight);
     }
 
     @Override
-    public MapLabel withStyle(final Style style)
+    public MapLabel withStyle(Style style)
     {
         return (MapLabel) super.withStyle(style);
     }
 
     @Override
-    public MapLabel withTextColor(final Color color)
+    public MapLabel withTextColor(Color color)
     {
         return (MapLabel) super.withTextColor(color);
     }

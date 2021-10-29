@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.objects.Hash;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.objects.Hash;
 
 import java.util.List;
 
@@ -30,13 +30,13 @@ public class UncompressedLeaf<T extends Bounded & Intersectable> extends Leaf<T>
 {
     List<T> elements;
 
-    public UncompressedLeaf(final RTreeSpatialIndex<T> index, final InteriorNode<T> parent)
+    public UncompressedLeaf(RTreeSpatialIndex<T> index, InteriorNode<T> parent)
     {
         super(index, parent);
     }
 
     @Override
-    public void addAll(final List<T> elements)
+    public void addAll(List<T> elements)
     {
         elements().addAll(elements);
         bounds(Rectangle.fromBoundedObjects(elements()));
@@ -44,11 +44,11 @@ public class UncompressedLeaf<T extends Bounded & Intersectable> extends Leaf<T>
 
     @SuppressWarnings("rawtypes")
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof UncompressedLeaf)
         {
-            final var that = (UncompressedLeaf) object;
+            var that = (UncompressedLeaf) object;
             return super.equals(that) && elements().equals(that.elements());
         }
         return false;
@@ -61,7 +61,7 @@ public class UncompressedLeaf<T extends Bounded & Intersectable> extends Leaf<T>
     }
 
     @Override
-    protected void addElement(final T element)
+    protected void addElement(T element)
     {
         elements().add(element);
         bounds(Rectangle.fromBoundedObjects(elements));

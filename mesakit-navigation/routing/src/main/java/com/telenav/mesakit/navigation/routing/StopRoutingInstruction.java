@@ -23,7 +23,7 @@ package com.telenav.mesakit.navigation.routing;
  */
 public class StopRoutingInstruction extends RoutingInstruction
 {
-    public StopRoutingInstruction(final String message, final Object... arguments)
+    public StopRoutingInstruction(String message, Object... arguments)
     {
         super(Meaning.STOP_ROUTING, message, arguments);
     }

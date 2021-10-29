@@ -132,7 +132,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /** The name of this object for debugging purposes */
     private String objectName;
 
-    public ConnectivityStore(final String objectName, final Graph graph)
+    public ConnectivityStore(String objectName, Graph graph)
     {
         assert objectName != null;
 
@@ -146,7 +146,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     }
 
     @Override
-    public Method compress(final Method method)
+    public Method compress(Method method)
     {
         inEdges.compress(method);
         outEdges.compress(method);
@@ -173,7 +173,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
      * The graph that owns this store (this method will need to be called when an EdgeStore is deserialized since the
      * graph field is transient)
      */
-    public void graph(final Graph graph)
+    public void graph(Graph graph)
     {
         this.graph = ensureNotNull(graph);
     }
@@ -185,7 +185,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     }
 
     @Override
-    public void objectName(final String objectName)
+    public void objectName(String objectName)
     {
         this.objectName = objectName;
     }
@@ -193,7 +193,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     @Override
     public void onInitialize()
     {
-        final var vertexCount = graph.metadata().vertexCount(ALLOW_ESTIMATE).asEstimate();
+        var vertexCount = graph.metadata().vertexCount(ALLOW_ESTIMATE).asEstimate();
 
         // Allocate "in", "out" and two-way edge list stores
         inEdges = new EdgeArrayStore(objectName() + "." + "in-edges", graph.metadata());
@@ -219,7 +219,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     }
 
     @Override
-    public void read(final Kryo kryo, final Input input)
+    public void read(Kryo kryo, Input input)
     {
         inEdges = kryo.readObject(input, EdgeArrayStore.class);
         outEdges = kryo.readObject(input, EdgeArrayStore.class);
@@ -229,7 +229,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * @return The total number of edges attached to the given vertex
      */
-    public final int retrieveEdgeCount(final int vertexIndex)
+    public final int retrieveEdgeCount(int vertexIndex)
     {
         assert vertexIndex > 0;
         return inEdges.size(vertexIndex)
@@ -237,7 +237,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
                 + twoWayEdges.size(vertexIndex) * 2;
     }
 
-    public EdgeSequence retrieveEdgeSequence(final int vertexIndex)
+    public EdgeSequence retrieveEdgeSequence(int vertexIndex)
     {
         return retrieveEdgeSequence(vertexIndex, ALL);
     }
@@ -245,7 +245,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * @return The total number of "in" edges, including two-way roads
      */
-    public final int retrieveInEdgeCount(final int vertexIndex)
+    public final int retrieveInEdgeCount(int vertexIndex)
     {
         assert vertexIndex > 0;
         return inEdges.size(vertexIndex) + twoWayEdges.size(vertexIndex);
@@ -254,7 +254,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * @return A sequences of "in" edges to the given vertex
      */
-    public EdgeSequence retrieveInEdgeSequence(final int vertexIndex)
+    public EdgeSequence retrieveInEdgeSequence(int vertexIndex)
     {
         assert vertexIndex > 0;
         return retrieveEdgeSequence(vertexIndex, IN);
@@ -263,7 +263,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * @return The edge set for the given index
      */
-    public EdgeSet retrieveInEdges(final int vertexIndex)
+    public EdgeSet retrieveInEdges(int vertexIndex)
     {
         assert vertexIndex > 0;
         return retrieveInEdgeSequence(vertexIndex).asSet(Estimate._4);
@@ -272,7 +272,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * @return The total number of "out" edges, including two-way roads
      */
-    public final int retrieveOutEdgeCount(final int vertexIndex)
+    public final int retrieveOutEdgeCount(int vertexIndex)
     {
         assert vertexIndex > 0;
         return outEdges.size(vertexIndex) + twoWayEdges.size(vertexIndex);
@@ -281,7 +281,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * @return The sequence of "out" edges for the given vertex
      */
-    public EdgeSequence retrieveOutEdgeSequence(final int vertexIndex)
+    public EdgeSequence retrieveOutEdgeSequence(int vertexIndex)
     {
         assert vertexIndex > 0;
         return retrieveEdgeSequence(vertexIndex, OUT);
@@ -290,7 +290,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * @return The edge set for the given index
      */
-    public EdgeSet retrieveOutEdges(final int vertexIndex)
+    public EdgeSet retrieveOutEdges(int vertexIndex)
     {
         assert vertexIndex > 0;
         return retrieveOutEdgeSequence(vertexIndex).asSet(Estimate._4);
@@ -299,7 +299,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * @return The number of two-way edges attached to the given vertex
      */
-    public final int retrieveTwoWayEdgeCount(final int vertexIndex)
+    public final int retrieveTwoWayEdgeCount(int vertexIndex)
     {
         assert vertexIndex > 0;
         return twoWayEdges.size(vertexIndex);
@@ -308,13 +308,13 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * @return An iterator over the two-way edges for the given vertex
      */
-    public EdgeSequence retrieveTwoWayEdgeSequence(final int vertexIndex)
+    public EdgeSequence retrieveTwoWayEdgeSequence(int vertexIndex)
     {
         assert vertexIndex > 0;
         return retrieveEdgeSequence(vertexIndex, TWO_WAY);
     }
 
-    public void storeLists(final int vertexIndex, final IntIterator in, final IntIterator out, final IntIterator twoWay)
+    public void storeLists(int vertexIndex, IntIterator in, IntIterator out, IntIterator twoWay)
     {
         assert vertexIndex > 0;
 
@@ -323,14 +323,14 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
         twoWayEdges.list(vertexIndex, twoWay);
     }
 
-    public void storeTemporaryLists(final int vertexIndex)
+    public void storeTemporaryLists(int vertexIndex)
     {
         DEBUG.trace("Storing temporary lists for vertex $", vertexIndex);
         assert vertexIndex > 0;
 
-        final var inList = temporaryVertexInEdges.safeGet(vertexIndex);
-        final var outList = temporaryVertexOutEdges.safeGet(vertexIndex);
-        final var twoWayList = temporaryVertexTwoWayEdges.safeGet(vertexIndex);
+        var inList = temporaryVertexInEdges.safeGet(vertexIndex);
+        var outList = temporaryVertexOutEdges.safeGet(vertexIndex);
+        var twoWayList = temporaryVertexTwoWayEdges.safeGet(vertexIndex);
 
         storeLists(vertexIndex,
                 temporaryVertexEdgeListStore.list(inList),
@@ -343,11 +343,11 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
      * state (one-way or two-way). This connection is temporary during edge loading and is discarded once connectivity
      * has been finalized.
      */
-    public void temporaryConnect(final Edge edge, final int fromVertexIndex, final int toVertexIndex)
+    public void temporaryConnect(Edge edge, int fromVertexIndex, int toVertexIndex)
     {
         DEBUG.trace("Storing connection between vertex $ and vertex $ for edge index $", fromVertexIndex, toVertexIndex, edge.index());
 
-        final var edgeIndex = edge.index();
+        var edgeIndex = edge.index();
 
         switch (edge.roadState())
         {
@@ -371,11 +371,11 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
      * Detaches "in" and "out" and two-way edges from the "from" and "to" vertexes in the appropriate way, depending on
      * the road state. This method is called when an edge is removed.
      */
-    public void temporaryDisconnect(final Edge edge, final int fromVertexIndex, final int toVertexIndex)
+    public void temporaryDisconnect(Edge edge, int fromVertexIndex, int toVertexIndex)
     {
         DEBUG.trace("Removing connection between vertex $ and vertex $ for edge index $", fromVertexIndex, toVertexIndex, edge.index());
 
-        final var edgeIndex = edge.index();
+        var edgeIndex = edge.index();
 
         switch (edge.roadState())
         {
@@ -398,7 +398,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * @return True if the given "from" and "to" vertex identifiers are connected
      */
-    public boolean temporaryIsConnected(final int fromVertexIndex, final int toVertexIndex)
+    public boolean temporaryIsConnected(int fromVertexIndex, int toVertexIndex)
     {
         // If the set intersection of the outbound and inbound edges isn't empty then there must be a shared edge
         return !new Intersection<>(temporaryOutEdges(fromVertexIndex), temporaryInEdges(toVertexIndex)).isEmpty();
@@ -408,7 +408,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
      * {@inheritDoc}
      */
     @Override
-    public Validator validator(final ValidationType type)
+    public Validator validator(ValidationType type)
     {
         return new BaseValidator()
         {
@@ -440,7 +440,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     }
 
     @Override
-    public void write(final Kryo kryo, final Output output)
+    public void write(Kryo kryo, Output output)
     {
         kryo.writeObject(output, inEdges);
         kryo.writeObject(output, outEdges);
@@ -458,10 +458,10 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * @return The sequence of all edges for the given vertex
      */
-    private EdgeSequence retrieveEdgeSequence(final int vertexIndex, final Sequence sequence)
+    private EdgeSequence retrieveEdgeSequence(int vertexIndex, Sequence sequence)
     {
         assert vertexIndex > 0;
-        final var outer = this;
+        var outer = this;
         return new EdgeSequence(Iterables.iterable(() -> new Next<>()
         {
             final IntIterator in = sequence == ALL || sequence == IN ? outer.inEdges.list(vertexIndex).iterator() : IntIterator.NULL;
@@ -477,13 +477,13 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
             {
                 if (sequence == ALL && reverseEdge != 0)
                 {
-                    final var edge = edgeStore().edgeForIndex(reverseEdge);
+                    var edge = edgeStore().edgeForIndex(reverseEdge);
                     reverseEdge = 0;
                     return edge;
                 }
                 if (twoWayEdges.hasNext())
                 {
-                    final var next = (sequence == IN) ? -twoWayEdges.next() : twoWayEdges.next();
+                    var next = (sequence == IN) ? -twoWayEdges.next() : twoWayEdges.next();
                     reverseEdge = -next;
                     return edgeStore().edgeForIndex(next);
                 }
@@ -503,7 +503,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * Adds the given edge index to the list of edges for the given vertex index
      */
-    private void temporaryAddEdgeTo(final SplitIntArray vertexEdges, final int vertexIndex, final int edgeIndex)
+    private void temporaryAddEdgeTo(SplitIntArray vertexEdges, int vertexIndex, int edgeIndex)
     {
         // Get any existing list of edges,
         var list = vertexEdges.safeGet(vertexIndex);
@@ -519,7 +519,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * Adds the given edge index as an "in" edge to the given vertex identifier
      */
-    private void temporaryAddInEdge(final int vertexIndex, final int edgeIndex)
+    private void temporaryAddInEdge(int vertexIndex, int edgeIndex)
     {
         temporaryAddEdgeTo(temporaryVertexInEdges, vertexIndex, edgeIndex);
     }
@@ -527,7 +527,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * Adds the given edge index as an "out" edge to the given vertex identifier
      */
-    private void temporaryAddOutEdge(final int vertexIndex, final int edgeIndex)
+    private void temporaryAddOutEdge(int vertexIndex, int edgeIndex)
     {
         temporaryAddEdgeTo(temporaryVertexOutEdges, vertexIndex, edgeIndex);
     }
@@ -535,7 +535,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * Adds the given edge index as a two-way edge to the given vertex identifier
      */
-    private void temporaryAddTwoWayEdge(final int vertexIndex, final int edgeIndex)
+    private void temporaryAddTwoWayEdge(int vertexIndex, int edgeIndex)
     {
         temporaryAddEdgeTo(temporaryVertexTwoWayEdges, vertexIndex, edgeIndex);
     }
@@ -543,13 +543,13 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * @return The set of all inbound edge indexes connected to the given vertex index
      */
-    private Set<Integer> temporaryInEdges(final int vertexIndex)
+    private Set<Integer> temporaryInEdges(int vertexIndex)
     {
-        final Set<Integer> inbound = new HashSet<>();
+        Set<Integer> inbound = new HashSet<>();
         var index = temporaryVertexInEdges.safeGet(vertexIndex);
         if (!temporaryVertexInEdges.isNull(index))
         {
-            final var in = temporaryVertexEdgeListStore.list(index);
+            var in = temporaryVertexEdgeListStore.list(index);
             while (in.hasNext())
             {
                 inbound.add(Math.abs(in.next()));
@@ -558,7 +558,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
         index = temporaryVertexTwoWayEdges.safeGet(vertexIndex);
         if (!temporaryVertexTwoWayEdges.isNull(index))
         {
-            final var twoWay = temporaryVertexEdgeListStore.list(index);
+            var twoWay = temporaryVertexEdgeListStore.list(index);
             while (twoWay.hasNext())
             {
                 inbound.add((Math.abs(twoWay.next())));
@@ -570,13 +570,13 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * @return The set of "out" edges for the given vertex index
      */
-    private Set<Integer> temporaryOutEdges(final int vertexIndex)
+    private Set<Integer> temporaryOutEdges(int vertexIndex)
     {
-        final Set<Integer> outbound = new HashSet<>();
+        Set<Integer> outbound = new HashSet<>();
         var index = temporaryVertexOutEdges.safeGet(vertexIndex);
         if (!temporaryVertexOutEdges.isNull(index))
         {
-            final var out = temporaryVertexEdgeListStore.list(index);
+            var out = temporaryVertexEdgeListStore.list(index);
             while (out.hasNext())
             {
                 outbound.add(Math.abs(out.next()));
@@ -585,7 +585,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
         index = temporaryVertexTwoWayEdges.safeGet(vertexIndex);
         if (!temporaryVertexTwoWayEdges.isNull(index))
         {
-            final var twoWay = temporaryVertexEdgeListStore.list(index);
+            var twoWay = temporaryVertexEdgeListStore.list(index);
             while (twoWay.hasNext())
             {
                 outbound.add((Math.abs(twoWay.next())));
@@ -597,10 +597,10 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * Removes the given "in" edge from the given vertex
      */
-    private void temporaryRemoveInEdge(final int vertexIndex, final int edgeIndex)
+    private void temporaryRemoveInEdge(int vertexIndex, int edgeIndex)
     {
         // Get the list of "in" edges for the vertex
-        final var edges = temporaryVertexInEdges.get(vertexIndex);
+        var edges = temporaryVertexInEdges.get(vertexIndex);
 
         // then store a new list without the given edge
         temporaryVertexInEdges.set(vertexIndex, temporaryVertexEdgeListStore.remove(edges, edgeIndex));
@@ -609,10 +609,10 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * Removes the given "out" edge from the given vertex
      */
-    private void temporaryRemoveOutEdge(final int vertexIndex, final int edgeIndex)
+    private void temporaryRemoveOutEdge(int vertexIndex, int edgeIndex)
     {
         // Get the list of "in" edges for the vertex
-        final var edges = temporaryVertexOutEdges.get(vertexIndex);
+        var edges = temporaryVertexOutEdges.get(vertexIndex);
 
         // then store a new list without the given edge
         temporaryVertexOutEdges.set(vertexIndex, temporaryVertexEdgeListStore.remove(edges, edgeIndex));
@@ -621,10 +621,10 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     /**
      * Removes the given two-way edge from the given vertex
      */
-    private void temporaryRemoveTwoWayEdge(final int vertexIndex, final int edgeIndex)
+    private void temporaryRemoveTwoWayEdge(int vertexIndex, int edgeIndex)
     {
         // Get the list of two-way edges for the vertex
-        final var edges = temporaryVertexTwoWayEdges.get(vertexIndex);
+        var edges = temporaryVertexTwoWayEdges.get(vertexIndex);
 
         // then store a new list without the given edge
         temporaryVertexTwoWayEdges.set(vertexIndex, temporaryVertexEdgeListStore.remove(edges, edgeIndex));

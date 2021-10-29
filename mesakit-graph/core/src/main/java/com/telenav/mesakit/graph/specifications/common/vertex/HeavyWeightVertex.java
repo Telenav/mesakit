@@ -74,7 +74,7 @@ public class HeavyWeightVertex extends Vertex
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public HeavyWeightVertex(final Graph graph, final VertexIdentifier identifier)
+    public HeavyWeightVertex(Graph graph, VertexIdentifier identifier)
     {
         super(graph, identifier);
     }
@@ -83,29 +83,29 @@ public class HeavyWeightVertex extends Vertex
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
      * {@link DataSpecification}, which ensures proper initialization and specialization of elements.
      */
-    public HeavyWeightVertex(final Graph graph, final long identifier)
+    public HeavyWeightVertex(Graph graph, long identifier)
     {
         super(graph, identifier);
     }
 
-    public void addIn(final Edge in)
+    public void addIn(Edge in)
     {
         ensureNotNull(in);
         inEdges.add(in);
     }
 
-    public void addOut(final Edge out)
+    public void addOut(Edge out)
     {
         ensureNotNull(out);
         outEdges.add(out);
     }
 
-    public void clipped(final boolean clipped)
+    public void clipped(boolean clipped)
     {
         isClipped = clipped;
     }
 
-    public void copy(final Vertex that)
+    public void copy(Vertex that)
     {
         location(that.location());
         pbfTags = that.tagList();
@@ -132,7 +132,7 @@ public class HeavyWeightVertex extends Vertex
         return grade;
     }
 
-    public void gradeSeparation(final GradeSeparation grade)
+    public void gradeSeparation(GradeSeparation grade)
     {
         this.grade = grade;
     }
@@ -157,7 +157,7 @@ public class HeavyWeightVertex extends Vertex
     }
 
     @Override
-    public void index(final int index)
+    public void index(int index)
     {
         this.index = index;
     }
@@ -186,7 +186,7 @@ public class HeavyWeightVertex extends Vertex
         return location;
     }
 
-    public void location(final Location location)
+    public void location(Location location)
     {
         this.location = location;
     }
@@ -197,7 +197,7 @@ public class HeavyWeightVertex extends Vertex
         return nodeIdentifier;
     }
 
-    public void nodeIdentifier(final MapNodeIdentifier nodeIdentifier)
+    public void nodeIdentifier(MapNodeIdentifier nodeIdentifier)
     {
         this.nodeIdentifier = nodeIdentifier;
     }
@@ -220,12 +220,12 @@ public class HeavyWeightVertex extends Vertex
         return pbfChangeSetIdentifier;
     }
 
-    public void pbfChangeSetIdentifier(final PbfChangeSetIdentifier PbfChangeSetIdentifier)
+    public void pbfChangeSetIdentifier(PbfChangeSetIdentifier PbfChangeSetIdentifier)
     {
         pbfChangeSetIdentifier = PbfChangeSetIdentifier;
     }
 
-    public void pbfLastModificationTime(final Time lastModified)
+    public void pbfLastModificationTime(Time lastModified)
     {
         pbfLastModificationTime = lastModified;
     }
@@ -236,12 +236,12 @@ public class HeavyWeightVertex extends Vertex
         return pbfRevisionNumber;
     }
 
-    public void pbfRevisionNumber(final PbfRevisionNumber revision)
+    public void pbfRevisionNumber(PbfRevisionNumber revision)
     {
         pbfRevisionNumber = revision;
     }
 
-    public void pbfTags(final PbfTagList tags)
+    public void pbfTags(PbfTagList tags)
     {
         pbfTags = tags;
     }
@@ -252,7 +252,7 @@ public class HeavyWeightVertex extends Vertex
         return pbfUserIdentifier;
     }
 
-    public void pbfUserIdentifier(final PbfUserIdentifier PbfUserIdentifier)
+    public void pbfUserIdentifier(PbfUserIdentifier PbfUserIdentifier)
     {
         pbfUserIdentifier = PbfUserIdentifier;
     }
@@ -263,7 +263,7 @@ public class HeavyWeightVertex extends Vertex
         return pbfUserName;
     }
 
-    public void pbfUserName(final PbfUserName PbfUserName)
+    public void pbfUserName(PbfUserName PbfUserName)
     {
         pbfUserName = PbfUserName;
     }

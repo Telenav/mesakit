@@ -107,7 +107,7 @@ public class EnglishUnitedStatesRoadNameStandardizerTest extends RoadNameStandar
     }
 
     @Override
-    protected String normalize(final String string)
+    protected String normalize( String string)
     {
         return string.replaceAll("[.?]", "");
     }

@@ -84,44 +84,43 @@ public class Speed implements Comparable<Speed>, Quantizable
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static Speed distancePerDuration(final Distance distance, final Duration duration)
+    public static Speed distancePerDuration(Distance distance, Duration duration)
     {
         return new Speed(distance, duration);
     }
 
-    public static Speed hundredthsOfAMilePerHour(final int speedInHundredthsOfAMilePerHour)
+    public static Speed hundredthsOfAMilePerHour(int speedInHundredthsOfAMilePerHour)
     {
         return milesPerHour(speedInHundredthsOfAMilePerHour / 100.0);
     }
 
-    public static Speed kilometersPerHour(final double kph)
+    public static Speed kilometersPerHour(double kph)
     {
         return new Speed(Distance.kilometers(kph), Duration.ONE_HOUR);
     }
 
-    public static Speed metersPerHour(final double metersPerHour)
+    public static Speed metersPerHour(double metersPerHour)
     {
         return new Speed(Distance.meters(metersPerHour), Duration.ONE_HOUR);
     }
 
-    public static Speed metersPerSecond(final double metersPerSecond)
+    public static Speed metersPerSecond(double metersPerSecond)
     {
         return new Speed(Distance.meters(metersPerSecond), Duration.ONE_SECOND);
     }
 
-    public static Speed microDegreesPerSecond(final int value)
+    public static Speed microDegreesPerSecond(int value)
     {
         return milesPerHour(Duration.ONE_HOUR.asSeconds() * value / Distance.ONE_MILE.asDm6());
     }
 
-    public static Speed milesPerHour(final double mph)
+    public static Speed milesPerHour(double mph)
     {
-        final var index = round(mph * 100);
+        var index = round(mph * 100);
         if (index < 0)
         {
             return INVALID;
         }
-        //noinspection ConditionCoveredByFurtherCondition
         if (hundredthsOfMilesPerHourCache != null && index < hundredthsOfMilesPerHourCache.length)
         {
             if (hundredthsOfMilesPerHourCache[index] == null)
@@ -133,17 +132,17 @@ public class Speed implements Comparable<Speed>, Quantizable
         return new Speed(Distance.miles(mph), Duration.ONE_HOUR);
     }
 
-    public static Speed millimetersPerHour(final long millimetersPerHour)
+    public static Speed millimetersPerHour(long millimetersPerHour)
     {
         return new Speed(Distance.millimeters(millimetersPerHour), Duration.ONE_HOUR);
     }
 
-    public static Speed parse(final String text)
+    public static Speed parse(String text)
     {
         return new Converter(LOGGER).convert(text);
     }
 
-    public static SwitchParser.Builder<Speed> speedSwitchParser(final String name, final String description)
+    public static SwitchParser.Builder<Speed> speedSwitchParser(String name, String description)
     {
         return SwitchParser.builder(Speed.class)
                 .name(name)
@@ -164,7 +163,7 @@ public class Speed implements Comparable<Speed>, Quantizable
         private static final Pattern PATTERN = Pattern.compile("([0-9]+([.,][0-9]+)?)\\s+(mph|msec|kph)",
                 Pattern.CASE_INSENSITIVE);
 
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
@@ -173,13 +172,13 @@ public class Speed implements Comparable<Speed>, Quantizable
          * {@inheritDoc}
          */
         @Override
-        protected Speed onToValue(final String value)
+        protected Speed onToValue(String value)
         {
-            final var matcher = PATTERN.matcher(value);
+            var matcher = PATTERN.matcher(value);
             if (matcher.matches())
             {
-                final var scalar = Double.parseDouble(matcher.group(1));
-                final var units = matcher.group(3);
+                var scalar = Double.parseDouble(matcher.group(1));
+                var units = matcher.group(3);
                 if ("mph".equalsIgnoreCase(units))
                 {
                     return milesPerHour(scalar);
@@ -208,13 +207,13 @@ public class Speed implements Comparable<Speed>, Quantizable
 
     public static class KilometersPerHourConverter extends BaseStringConverter<Speed>
     {
-        public KilometersPerHourConverter(final Listener listener)
+        public KilometersPerHourConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Speed onToValue(final String value)
+        protected Speed onToValue(String value)
         {
             return kilometersPerHour(Double.parseDouble(value));
         }
@@ -224,16 +223,16 @@ public class Speed implements Comparable<Speed>, Quantizable
     {
         private final IntegerConverter integerConverter;
 
-        public MicroDegreesPerSecondConverter(final Listener listener)
+        public MicroDegreesPerSecondConverter(Listener listener)
         {
             super(listener);
             integerConverter = new IntegerConverter(listener);
         }
 
         @Override
-        protected Speed onToValue(final String value)
+        protected Speed onToValue(String value)
         {
-            final var kilometersPerHour = integerConverter.convert(value);
+            var kilometersPerHour = integerConverter.convert(value);
             if (kilometersPerHour == null)
             {
                 return null;
@@ -244,13 +243,13 @@ public class Speed implements Comparable<Speed>, Quantizable
 
     public static class MilesPerHourConverter extends BaseStringConverter<Speed>
     {
-        public MilesPerHourConverter(final Listener listener)
+        public MilesPerHourConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Speed onToValue(final String value)
+        protected Speed onToValue(String value)
         {
             return milesPerHour(Double.parseDouble(value));
         }
@@ -262,7 +261,7 @@ public class Speed implements Comparable<Speed>, Quantizable
     @UmlAggregation(label = "per")
     private final Duration duration;
 
-    private Speed(final Distance distance, final Duration duration)
+    private Speed(Distance distance, Duration duration)
     {
         this.distance = distance;
         this.duration = duration;
@@ -305,23 +304,23 @@ public class Speed implements Comparable<Speed>, Quantizable
 
     @SuppressWarnings("NullableProblems")
     @Override
-    public int compareTo(final Speed that)
+    public int compareTo(Speed that)
     {
         return isLessThan(that) ? -1 : (equals(that) ? 0 : 1);
     }
 
-    public Speed difference(final Speed that)
+    public Speed difference(Speed that)
     {
-        final var difference = Math.abs(that.asMetersPerHour() - asMetersPerHour());
+        var difference = Math.abs(that.asMetersPerHour() - asMetersPerHour());
         return metersPerHour(difference);
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Speed)
         {
-            final var that = (Speed) object;
+            var that = (Speed) object;
 
             // Two speeds that are within 0.1 mm/hour are considered equal
             return Math.abs(asMillimetersPerHour() - that.asMillimetersPerHour()) < 0.1;
@@ -335,17 +334,17 @@ public class Speed implements Comparable<Speed>, Quantizable
         return Double.hashCode(asMillimetersPerHour());
     }
 
-    public boolean isBetween(final Speed a, final Speed b)
+    public boolean isBetween(Speed a, Speed b)
     {
         return isGreaterThan(a.minimum(b)) && isLessThan(a.maximum(b));
     }
 
-    public boolean isGreaterThan(final Speed that)
+    public boolean isGreaterThan(Speed that)
     {
         return asMetersPerSecond() > that.asMetersPerSecond();
     }
 
-    public boolean isGreaterThanOrEqualTo(final Speed that)
+    public boolean isGreaterThanOrEqualTo(Speed that)
     {
         return asMetersPerSecond() >= that.asMetersPerSecond();
     }
@@ -355,12 +354,12 @@ public class Speed implements Comparable<Speed>, Quantizable
         return this == INVALID;
     }
 
-    public boolean isLessThan(final Speed that)
+    public boolean isLessThan(Speed that)
     {
         return asMetersPerSecond() < that.asMetersPerSecond();
     }
 
-    public boolean isLessThanOrEqualTo(final Speed that)
+    public boolean isLessThanOrEqualTo(Speed that)
     {
         return asMetersPerSecond() <= that.asMetersPerSecond();
     }
@@ -370,12 +369,12 @@ public class Speed implements Comparable<Speed>, Quantizable
         return equals(NONE);
     }
 
-    public Speed maximum(final Speed that)
+    public Speed maximum(Speed that)
     {
         return isGreaterThan(that) ? this : that;
     }
 
-    public Speed minimum(final Speed that)
+    public Speed minimum(Speed that)
     {
         return isLessThan(that) ? this : that;
     }
@@ -386,17 +385,17 @@ public class Speed implements Comparable<Speed>, Quantizable
         return (long) asKilometersPerHour();
     }
 
-    public Speed scale(final Level coefficient)
+    public Speed scale(Level coefficient)
     {
         return metersPerHour(asMetersPerHour() * coefficient.asZeroToOne());
     }
 
-    public Duration timeToTravel(final Distance length)
+    public Duration timeToTravel(Distance length)
     {
         return Duration.milliseconds(timeToTravelInMilliseconds(length));
     }
 
-    public long timeToTravelInMilliseconds(final Distance length)
+    public long timeToTravelInMilliseconds(Distance length)
     {
         return length.asMillimeters() * duration.asMilliseconds() / distance.asMillimeters();
     }
@@ -410,7 +409,7 @@ public class Speed implements Comparable<Speed>, Quantizable
     /**
      * This is a faster alternative to Math.round, which is (as of JVM 6) painfully slow.
      */
-    private static int round(final double value)
+    private static int round(double value)
     {
         return (int) (value + .5);
     }

@@ -32,45 +32,45 @@ import com.telenav.mesakit.map.region.regions.Country;
 
 public class OsmEdge extends Edge
 {
-    public OsmEdge(final Graph graph, final EdgeIdentifier identifier)
+    public OsmEdge(Graph graph, EdgeIdentifier identifier)
     {
         super(graph, identifier);
     }
 
-    public OsmEdge(final Graph graph, final long identifier)
+    public OsmEdge(Graph graph, long identifier)
     {
         super(graph, identifier);
     }
 
-    public OsmEdge(final Graph graph, final long identifier, final int index)
+    public OsmEdge(Graph graph, long identifier, int index)
     {
         super(graph, identifier, index);
     }
 
-    public boolean computeDoubleDigitized(final Angle maximumHeadingDeviation)
+    public boolean computeDoubleDigitized(Angle maximumHeadingDeviation)
     {
         // Don't waste time on edges that can't be double digitized
         if (osmCouldBeDoubleDigitized())
         {
             // Create snapper
-            final var snapper = new PolylineSnapper();
+            var snapper = new PolylineSnapper();
 
             // Go through segments for this edge,
             var doubleDigitized = 0;
-            final var segments = roadShape().segments();
-            for (final var segment : segments)
+            var segments = roadShape().segments();
+            for (var segment : segments)
             {
                 // get the segment mid-point
-                final var midpoint = segment.midpoint();
+                var midpoint = segment.midpoint();
 
                 // and find distinct candidate edges near to the mid-point that could be
                 // double-digitized
-                for (final var candidate : graph().edgesIntersecting(
+                for (var candidate : graph().edgesIntersecting(
                         midpoint.bounds().expanded(roadType().maximumDoubleDigitizationSeparation()),
                         edge -> !equals(edge) && edge.osmCouldBeDoubleDigitized()))
                 {
                     // Snap the segment midpoint to the candidate using the segment heading
-                    final var snap = snapper.snap(candidate, midpoint, segment.heading());
+                    var snap = snapper.snap(candidate, midpoint, segment.heading());
 
                     // If the two are close enough
                     if (snap.distanceToSource().isLessThan(roadType().maximumDoubleDigitizationSeparation()))
@@ -91,7 +91,7 @@ public class OsmEdge extends Edge
             }
 
             // If there are more double-digitized segments than non-double-digitized
-            final var nonDoubleDigitized = segments.size() - doubleDigitized;
+            var nonDoubleDigitized = segments.size() - doubleDigitized;
             if (doubleDigitized > nonDoubleDigitized)
             {
                 // then we'll flag it as double-digitized
@@ -175,7 +175,7 @@ public class OsmEdge extends Edge
     }
 
     @Override
-    public Validator validator(final ValidationType type)
+    public Validator validator(ValidationType type)
     {
         return new ElementValidator()
         {
@@ -195,7 +195,7 @@ public class OsmEdge extends Edge
         return (OsmEdgeStore) graph().edgeStore();
     }
 
-    boolean setDoubleDigitized(final boolean isDoubleDigitized)
+    boolean setDoubleDigitized(boolean isDoubleDigitized)
     {
         store().storeIsDoubleDigitized(this, isDoubleDigitized);
         return isDoubleDigitized;

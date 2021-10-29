@@ -70,9 +70,9 @@ public class ZoomLevel implements AsString
      * @return The zoom level that is the best to fit the given bounds into the visible drawing rectangle using the
      * given tile size
      */
-    public static ZoomLevel bestFit(final DrawingRectangle visible,
-                                    final DrawingSize tileSize,
-                                    final Rectangle bounds)
+    public static ZoomLevel bestFit(DrawingRectangle visible,
+                                    DrawingSize tileSize,
+                                    Rectangle bounds)
     {
         // If the bounds is all in the same tile at the highest zoom level
         if (CLOSEST.tileAt(bounds.topLeft()).equals(CLOSEST.tileAt(bounds.bottomRight())))
@@ -82,18 +82,18 @@ public class ZoomLevel implements AsString
         }
 
         // Get the dimensions of the display in tiles
-        final var displayWidthInTiles = visible.width() / tileSize.widthInUnits();
-        final var displayHeightInTiles = visible.height() / tileSize.heightInUnits();
+        var displayWidthInTiles = visible.width() / tileSize.widthInUnits();
+        var displayHeightInTiles = visible.height() / tileSize.heightInUnits();
 
         // Zoom out from closest in to furthest out
         for (var zoom = CLOSEST; !zoom.isFurthestOut(); zoom = zoom.zoomOut())
         {
-            final var topLeft = zoom.tileAt(bounds.topLeft());
-            final var bottomRight = zoom.tileAt(bounds.bottomRight());
+            var topLeft = zoom.tileAt(bounds.topLeft());
+            var bottomRight = zoom.tileAt(bounds.bottomRight());
 
             // If the screen width is big enough to accommodate the given bounds
-            final var widthInTiles = bottomRight.x() - topLeft.x();
-            final var heightInTiles = bottomRight.y() - topLeft.y();
+            var widthInTiles = bottomRight.x() - topLeft.x();
+            var heightInTiles = bottomRight.y() - topLeft.y();
             if (widthInTiles < displayWidthInTiles && heightInTiles < displayHeightInTiles)
             {
                 // then this zoom level is good enough
@@ -106,7 +106,7 @@ public class ZoomLevel implements AsString
     /**
      * @return The specified OSM zoom level, from 0 (furthest) to 18 (closest)
      */
-    public static ZoomLevel osm(final int level)
+    public static ZoomLevel osm(int level)
     {
         return levels.get(level);
     }
@@ -114,7 +114,7 @@ public class ZoomLevel implements AsString
     /**
      * @return The given Telenav zoom level from 0 (closest) to 17 (furthest)
      */
-    public static ZoomLevel telenav(final int level)
+    public static ZoomLevel telenav(int level)
     {
         ensure(level < CLOSEST.level, "Level must be greater than or equal to " + CLOSEST.level);
         ensure(level >= FURTHEST.level, "Level must be less than or equal to " + FURTHEST.level);
@@ -130,7 +130,7 @@ public class ZoomLevel implements AsString
     /**
      * @param level The Telenav zoom level
      */
-    private ZoomLevel(final int level)
+    private ZoomLevel(int level)
     {
         if (level < 0 || level > 18)
         {
@@ -154,11 +154,11 @@ public class ZoomLevel implements AsString
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof ZoomLevel)
         {
-            final var that = (ZoomLevel) object;
+            var that = (ZoomLevel) object;
             return level == that.level;
         }
         return false;
@@ -173,7 +173,7 @@ public class ZoomLevel implements AsString
     /**
      * @return The total height in pixels for all tiles at the given tile size
      */
-    public double heightInPixels(final DrawingSize tileSize)
+    public double heightInPixels(DrawingSize tileSize)
     {
         return heightInTiles() * tileSize.heightInUnits();
     }
@@ -186,7 +186,7 @@ public class ZoomLevel implements AsString
         return 1 << level;
     }
 
-    public DrawingPoint inRange(final DrawingPoint point, final DrawingSize tileSize)
+    public DrawingPoint inRange(DrawingPoint point, DrawingSize tileSize)
     {
         return DrawingPoint.point(point.coordinates(), Doubles.inRange(point.x(), 0, widthInPixels(tileSize)),
                 Doubles.inRange(point.y(), 0, heightInPixels(tileSize)));
@@ -195,7 +195,7 @@ public class ZoomLevel implements AsString
     /**
      * @return True if this zoom level is zoomed in more than the given zoom level
      */
-    public boolean isCloserThan(final ZoomLevel that)
+    public boolean isCloserThan(ZoomLevel that)
     {
         return level > that.level;
     }
@@ -211,7 +211,7 @@ public class ZoomLevel implements AsString
     /**
      * @return True if this zoom level is zoomed out more than the given zoom level
      */
-    public boolean isFurtherThan(final ZoomLevel that)
+    public boolean isFurtherThan(ZoomLevel that)
     {
         return level < that.level;
     }
@@ -236,7 +236,7 @@ public class ZoomLevel implements AsString
     /**
      * @return The total dimension of an image of the world at this zoom level using the given tile size
      */
-    public DrawingSize sizeInDrawingUnits(final DrawingSize tileSize)
+    public DrawingSize sizeInDrawingUnits(DrawingSize tileSize)
     {
         return DrawingSize.size(tileSize.coordinates(), widthInPixels(tileSize), heightInPixels(tileSize));
     }
@@ -244,7 +244,7 @@ public class ZoomLevel implements AsString
     /**
      * @return The tile at the given location using this zoom level
      */
-    public SlippyTile tileAt(final Location location)
+    public SlippyTile tileAt(Location location)
     {
         return new SlippyTileCoordinateSystem(this).tileForLocation(location);
     }
@@ -266,7 +266,7 @@ public class ZoomLevel implements AsString
     /**
      * @return The total width in pixels for all tiles at the given tile size
      */
-    public double widthInPixels(final DrawingSize tileSize)
+    public double widthInPixels(DrawingSize tileSize)
     {
         return widthInTiles() * tileSize.widthInUnits();
     }
@@ -290,7 +290,7 @@ public class ZoomLevel implements AsString
     /**
      * @return This zoom level zoomed in by the given number of levels
      */
-    public ZoomLevel zoomIn(final int levels)
+    public ZoomLevel zoomIn(int levels)
     {
         return osm(Math.min(CLOSEST.level, level + levels));
     }
@@ -306,7 +306,7 @@ public class ZoomLevel implements AsString
     /**
      * @return This zoom level zoomed out by the given number of levels
      */
-    public ZoomLevel zoomOut(final int levels)
+    public ZoomLevel zoomOut(int levels)
     {
         return osm(Math.max(FURTHEST.level, level - levels));
     }

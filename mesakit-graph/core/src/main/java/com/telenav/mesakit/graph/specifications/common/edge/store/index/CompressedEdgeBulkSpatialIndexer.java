@@ -43,7 +43,7 @@ public class CompressedEdgeBulkSpatialIndexer extends BaseRepeater implements Na
     /** Used while loading to make sorting in bulk R-Tree loader faster */
     private LongArray edgeCenter;
 
-    public CompressedEdgeBulkSpatialIndexer(final Listener listener)
+    public CompressedEdgeBulkSpatialIndexer(Listener listener)
     {
         addListener(listener);
     }
@@ -52,10 +52,10 @@ public class CompressedEdgeBulkSpatialIndexer extends BaseRepeater implements Na
      * @return A comparison result for the centers of the given edges that is suitable for use in a sort algorithm
      * @see Comparable#compareTo(Object)
      */
-    public final int compareHorizontal(final Edge a, final Edge b)
+    public final int compareHorizontal(Edge a, Edge b)
     {
-        final var aCenter = Location.longitude(edgeCenter.get(a.index()));
-        final var bCenter = Location.longitude(edgeCenter.get(b.index()));
+        var aCenter = Location.longitude(edgeCenter.get(a.index()));
+        var bCenter = Location.longitude(edgeCenter.get(b.index()));
         return Integer.compare(aCenter, bCenter);
     }
 
@@ -63,10 +63,10 @@ public class CompressedEdgeBulkSpatialIndexer extends BaseRepeater implements Na
      * @return A comparison result for the centers of the given edges that is suitable for use in a sort algorithm.
      * @see Comparable#compareTo(Object)
      */
-    public final int compareVertical(final Edge a, final Edge b)
+    public final int compareVertical(Edge a, Edge b)
     {
-        final var aCenter = Location.latitude(edgeCenter.get(a.index()));
-        final var bCenter = Location.latitude(edgeCenter.get(b.index()));
+        var aCenter = Location.latitude(edgeCenter.get(a.index()));
+        var bCenter = Location.latitude(edgeCenter.get(b.index()));
         return Integer.compare(aCenter, bCenter);
     }
 
@@ -75,14 +75,14 @@ public class CompressedEdgeBulkSpatialIndexer extends BaseRepeater implements Na
      *
      * @param graph The graph containing the edges
      */
-    public CompressedEdgeSpatialIndex index(final Graph graph)
+    public CompressedEdgeSpatialIndex index(Graph graph)
     {
         // Record start time
-        final var start = Time.now();
+        var start = Time.now();
         information("Creating edge spatial index");
 
         // Get the number of edges to index
-        final var initialSize = graph.edgeCount().asEstimate();
+        var initialSize = graph.edgeCount().asEstimate();
 
         // Create array of edge centers
         edgeCenter = new LongArray("CompressedEdgeBulkSpatialIndexer.edgeCenter");
@@ -90,20 +90,20 @@ public class CompressedEdgeBulkSpatialIndexer extends BaseRepeater implements Na
         edgeCenter.initialize();
 
         // Create edge spatial index
-        final var index = new CompressedEdgeSpatialIndex(objectName() + ".index", graph, new RTreeSettings().withEstimatedNodes(initialSize));
+        var index = new CompressedEdgeSpatialIndex(objectName() + ".index", graph, new RTreeSettings().withEstimatedNodes(initialSize));
 
         // Allocate edge array
-        final List<Edge> edges = new ArrayList<>(initialSize.asInt());
+        List<Edge> edges = new ArrayList<>(initialSize.asInt());
 
         // Loop through edge identifiers adding forward edges and edge centers
-        for (final var edge : graph.forwardEdges())
+        for (var edge : graph.forwardEdges())
         {
             edges.add(edge);
             edgeCenter.set(edge.index(), edge.bounds().center().asLong(graph.precision()));
         }
 
         // If we are loading exactly the number of forward edges,
-        final var edgeCount = Count.count(edges.size());
+        var edgeCount = Count.count(edges.size());
         if (edgeCount.equals(graph.forwardEdgeCount()))
         {
             // then show the number of edges,
@@ -121,13 +121,13 @@ public class CompressedEdgeBulkSpatialIndexer extends BaseRepeater implements Na
             new RTreeBulkLoader<>(index)
             {
                 @Override
-                protected int compareHorizontal(final Edge a, final Edge b)
+                protected int compareHorizontal(Edge a, Edge b)
                 {
                     return CompressedEdgeBulkSpatialIndexer.this.compareHorizontal(a, b);
                 }
 
                 @Override
-                protected int compareVertical(final Edge a, final Edge b)
+                protected int compareVertical(Edge a, Edge b)
                 {
                     return CompressedEdgeBulkSpatialIndexer.this.compareVertical(a, b);
                 }

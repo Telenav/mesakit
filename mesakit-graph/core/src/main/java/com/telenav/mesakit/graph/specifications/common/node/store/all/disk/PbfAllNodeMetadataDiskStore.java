@@ -45,27 +45,27 @@ public class PbfAllNodeMetadataDiskStore extends AllNodeDiskStore
 {
     private final Map<AllNodeDiskCell, PbfNode> lastForCell = new HashMap<>();
 
-    public PbfAllNodeMetadataDiskStore(final Folder data)
+    public PbfAllNodeMetadataDiskStore(Folder data)
     {
         super(data);
     }
 
-    public PbfAllNodeMetadataDiskStore(final GraphArchive archive)
+    public PbfAllNodeMetadataDiskStore(GraphArchive archive)
     {
         super(archive);
     }
 
-    public void add(final PbfNode node)
+    public void add(PbfNode node)
     {
-        final var location = Location.degrees(node.latitude(), node.longitude());
-        final var cell = new AllNodeDiskCell(location);
-        final var out = output(cell);
+        var location = Location.degrees(node.latitude(), node.longitude());
+        var cell = new AllNodeDiskCell(location);
+        var out = output(cell);
         try
         {
             out.writeLong(node.changeSetIdentifier());
             out.writeInt(node.version());
             out.writeLong(node.timestamp().getTime());
-            final var last = lastForCell.get(cell);
+            var last = lastForCell.get(cell);
             if (last != null && last.user().getId() == node.user().getId())
             {
                 out.writeInt(-1);
@@ -77,29 +77,29 @@ public class PbfAllNodeMetadataDiskStore extends AllNodeDiskStore
             }
             lastForCell.put(cell, node);
         }
-        catch (final IOException e)
+        catch (IOException e)
         {
             throw new IllegalStateException("Unable to add node metadata", e);
         }
     }
 
     @SuppressWarnings({ "exports" })
-    public PbfAllNodeMetadataStore load(final GraphArchive archive, final AllNodeDiskCell cell)
+    public PbfAllNodeMetadataStore load(GraphArchive archive, AllNodeDiskCell cell)
     {
-        final var meta = new PbfAllNodeMetadataStore(archive);
-        try (final var in = new DataInputStream(entry(cell).openForReading()))
+        var meta = new PbfAllNodeMetadataStore(archive);
+        try (var in = new DataInputStream(entry(cell).openForReading()))
         {
             var lastUserIdentifier = -1;
             String lastUserName = null;
             for (var index = 0; in.available() > 0; index++)
             {
-                final var edge = OsmDataSpecification.get().newHeavyWeightEdge(null, index);
+                var edge = OsmDataSpecification.get().newHeavyWeightEdge(null, index);
                 edge.index(index);
                 edge.pbfChangeSetIdentifier(new PbfChangeSetIdentifier(in.readLong()));
                 edge.pbfRevisionNumber(new PbfRevisionNumber(in.readInt()));
                 edge.lastModificationTime(Time.milliseconds(in.readLong()));
                 var userIdentifier = in.readInt();
-                final String userName;
+                String userName;
                 if (userIdentifier == -1)
                 {
                     userIdentifier = lastUserIdentifier;
@@ -115,7 +115,7 @@ public class PbfAllNodeMetadataDiskStore extends AllNodeDiskStore
                 lastUserName = userName;
             }
         }
-        catch (final IOException e)
+        catch (IOException e)
         {
             throw new IllegalStateException("Unable to load node metadata", e);
         }

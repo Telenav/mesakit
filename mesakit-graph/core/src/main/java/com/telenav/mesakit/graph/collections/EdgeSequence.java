@@ -67,7 +67,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     /**
      * Construct edge sequence
      */
-    public EdgeSequence(final Iterable<Edge> edges)
+    public EdgeSequence(Iterable<Edge> edges)
     {
         this.edges = edges;
     }
@@ -110,8 +110,8 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
      */
     public List<Edge> asList()
     {
-        final var edges = new ArrayList<Edge>();
-        for (final var edge : this)
+        var edges = new ArrayList<Edge>();
+        for (var edge : this)
         {
             edges.add(edge);
         }
@@ -129,8 +129,8 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
 
     public EdgeSet asSet()
     {
-        final var set = new EdgeSet();
-        for (final var edge : this)
+        var set = new EdgeSet();
+        for (var edge : this)
         {
             set.add(edge);
         }
@@ -140,7 +140,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     /**
      * @return This sequence as an {@link EdgeSet}
      */
-    public EdgeSet asSet(final Estimate estimate)
+    public EdgeSet asSet(Estimate estimate)
     {
         return EdgeSet.forIterable(estimate, this);
     }
@@ -170,7 +170,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
      * @param maximum A count after which the program will stop iterating the iterable and return stopAfter.
      * @return The count is smaller than stopAfter, or stopAfter otherwise.
      */
-    public Count count(final Count maximum)
+    public Count count(Count maximum)
     {
         return Count.count(this, maximum);
     }
@@ -178,9 +178,9 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     /**
      * @return True if any edge in this sequence crosses the given edge
      */
-    public boolean crosses(final Edge that)
+    public boolean crosses(Edge that)
     {
-        for (final var edge : this)
+        for (var edge : this)
         {
             if (!edge.equals(that) && edge.crosses(that))
             {
@@ -193,7 +193,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     /**
      * @return The edges in this sequence within the given bounds
      */
-    public EdgeSequence intersecting(final Rectangle bounds)
+    public EdgeSequence intersecting(Rectangle bounds)
     {
         return matching(Edge.intersecting(bounds));
     }
@@ -210,7 +210,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     /**
      * @return The sequence of edges matching the given graph constraints
      */
-    public EdgeSequence matching(final GraphConstraints constraints)
+    public EdgeSequence matching(GraphConstraints constraints)
     {
         return constraints.edges(edges);
     }
@@ -218,7 +218,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     /**
      * @return The edges in this sequence that match the given matcher
      */
-    public EdgeSequence matching(final Matcher<Edge> matcher)
+    public EdgeSequence matching(Matcher<Edge> matcher)
     {
         return new EdgeSequence(new Matching<>(matcher)
         {
@@ -233,7 +233,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     /**
      * @return The edges in this sequence of the given type
      */
-    public EdgeSequence ofType(final Edge.Type type)
+    public EdgeSequence ofType(Edge.Type type)
     {
         return matching(edge -> edge.type() == type);
     }
@@ -247,15 +247,15 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
      * Calls the given call back with each edge in this sequence. If an exception is thrown, the sequence is not
      * interrupted, but the listener is called.
      */
-    public void process(final Listener listener, final Callback<Edge> callback)
+    public void process(Listener listener, Callback<Edge> callback)
     {
-        for (final var edge : this)
+        for (var edge : this)
         {
             try
             {
                 callback.onCallback(edge);
             }
-            catch (final Exception e)
+            catch (Exception e)
             {
                 listener.receive(new Problem(e, "Unable to process edge $", edge));
             }
@@ -267,7 +267,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
         return Streams.stream(this);
     }
 
-    public Stream<Edge> stream(final Streams.Processing processing)
+    public Stream<Edge> stream(Streams.Processing processing)
     {
         return Streams.stream(processing, this);
     }
@@ -278,8 +278,8 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     @Override
     public String toString()
     {
-        final var edges = new StringList();
-        for (final var edge : this.edges)
+        var edges = new StringList();
+        for (var edge : this.edges)
         {
             edges.add(edge.identifier().toString());
         }
@@ -289,7 +289,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     /**
      * @return The edges in this sequence within the given bounds
      */
-    public EdgeSequence within(final Rectangle bounds)
+    public EdgeSequence within(Rectangle bounds)
     {
         return matching(Edge.within(bounds));
     }

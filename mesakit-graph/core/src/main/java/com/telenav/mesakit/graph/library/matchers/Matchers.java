@@ -81,37 +81,37 @@ public class Matchers
         return edge.roadType().isMoreImportantThan(RoadType.LOCAL_ROAD);
     };
 
-    public static Matcher<Edge> lessImportantThan(final RoadFunctionalClass functionalClass)
+    public static Matcher<Edge> lessImportantThan(RoadFunctionalClass functionalClass)
     {
         return edge -> edge.roadFunctionalClass().isLessImportantThan(functionalClass);
     }
 
-    public static Matcher<Edge> lessImportantThanOrEqual(final RoadFunctionalClass functionalClass)
+    public static Matcher<Edge> lessImportantThanOrEqual(RoadFunctionalClass functionalClass)
     {
         return edge -> edge.roadFunctionalClass().isLessImportantThanOrEqual(functionalClass);
     }
 
-    public static Matcher<Edge> mainRoadMoreImportantThanOrEqual(final RoadType type)
+    public static Matcher<Edge> mainRoadMoreImportantThanOrEqual(RoadType type)
     {
         return edge -> edge.isMainRoad() && edge.roadType().isEqualOrMoreImportantThan(type);
     }
 
-    public static Matcher<Edge> moreImportantThan(final RoadFunctionalClass functionalClass)
+    public static Matcher<Edge> moreImportantThan(RoadFunctionalClass functionalClass)
     {
         return edge -> edge.roadFunctionalClass().isMoreImportantThan(functionalClass);
     }
 
-    public static Matcher<Edge> moreImportantThan(final RoadType type)
+    public static Matcher<Edge> moreImportantThan(RoadType type)
     {
         return edge -> edge.roadType().isMoreImportantThan(type);
     }
 
-    public static Matcher<Edge> moreImportantThanOrEqual(final RoadFunctionalClass functionalClass)
+    public static Matcher<Edge> moreImportantThanOrEqual(RoadFunctionalClass functionalClass)
     {
         return edge -> edge.roadFunctionalClass().isMoreImportantThanOrEqual(functionalClass);
     }
 
-    public static Matcher<Edge> moreImportantThanOrEqual(final RoadType type)
+    public static Matcher<Edge> moreImportantThanOrEqual(RoadType type)
     {
         return edge -> edge.roadType().isEqualOrMoreImportantThan(type);
     }

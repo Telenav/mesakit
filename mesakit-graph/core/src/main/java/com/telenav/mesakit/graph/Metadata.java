@@ -183,7 +183,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * @return Metadata from the given input file, allowing for an estimate of entities based on file size
      */
-    public static Metadata from(final File input)
+    public static Metadata from(File input)
     {
         return from(input, ALLOW_ESTIMATE);
     }
@@ -192,14 +192,14 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      * @return Complete metadata read for the given input resource. For resources that don't support all of the
      * statistics values, those values may be estimates based on the size of the resource.
      */
-    public static Metadata from(File input, final CountType countType)
+    public static Metadata from(File input, CountType countType)
     {
         input = input.materialized(Progress.create(LOGGER));
-        final var format = DataFormat.of(input);
+        var format = DataFormat.of(input);
         switch (format)
         {
             case Graph:
-                try (final var archive = new GraphArchive(LOGGER, input, ZipArchive.Mode.READ, ProgressReporter.NULL))
+                try (var archive = new GraphArchive(LOGGER, input, ZipArchive.Mode.READ, ProgressReporter.NULL))
                 {
                     return archive.metadata();
                 }
@@ -224,7 +224,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         return metadataSwitchParser("metadata", "The graph meta data to use such as OSM-OSM-PBF-North_America-2007Q4-2020.04.01_04.01PM_PT");
     }
 
-    public static SwitchParser.Builder<Metadata> metadataSwitchParser(final String name, final String description)
+    public static SwitchParser.Builder<Metadata> metadataSwitchParser(String name, String description)
     {
         return SwitchParser.builder(Metadata.class)
                 .name(name)
@@ -232,8 +232,8 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
                 .description(description);
     }
 
-    public static Metadata of(final DataSpecification specification, final DataSupplier supplier,
-                              final DataFormat format)
+    public static Metadata of(DataSpecification specification, DataSupplier supplier,
+                              DataFormat format)
     {
         return defaultMetadata()
                 .withDataSpecification(specification)
@@ -242,7 +242,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
                 .withName(specification.objectName() + "-" + supplier.name() + "-" + format);
     }
 
-    public static Metadata osm(final DataSupplier supplier, final DataFormat format)
+    public static Metadata osm(DataSupplier supplier, DataFormat format)
     {
         return of(OsmDataSpecification.get(), supplier, format);
     }
@@ -250,7 +250,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * @return Metadata from the given filename
      */
-    public static Metadata parse(final FileName name)
+    public static Metadata parse(FileName name)
     {
         return parse(name.base().name());
     }
@@ -258,7 +258,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * @return Metadata from the name of the given folder
      */
-    public static Metadata parse(final Folder folder)
+    public static Metadata parse(Folder folder)
     {
         return parse(folder.name());
     }
@@ -278,7 +278,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     {
         value = Strip.trailing(value, ".world");
 
-        final Pattern pattern = Pattern.compile
+        Pattern pattern = Pattern.compile
                 (
                         "(?<supplier>[A-Za-z]+)"
                                 + "-"
@@ -292,7 +292,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
                                 + "(-(?<build>(20\\d\\d\\.\\d\\d\\.\\d\\d_\\d{1,2}\\.\\d\\d[AP]M_[A-Z]{1,3})))?"
                 );
 
-        final var matcher = pattern.matcher(value);
+        var matcher = pattern.matcher(value);
         if (matcher.matches())
         {
             var metadata = new Metadata()
@@ -301,9 +301,9 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
                     .withDataFormat(DataFormat.valueOf(matcher.group("format")))
                     .withName(matcher.group("name"));
 
-            final var dataBounds = matcher.group("bounds");
-            final var dataVersion = matcher.group("version");
-            final var dataBuild = matcher.group("build");
+            var dataBounds = matcher.group("bounds");
+            var dataVersion = matcher.group("version");
+            var dataBuild = matcher.group("build");
             if (dataBounds != null)
             {
                 metadata = metadata.withDataBounds(Rectangle.parse(dataBounds));
@@ -333,16 +333,16 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      *
      * @return Partial metadata for the descriptor
      */
-    public static Metadata parseDescriptor(final String value)
+    public static Metadata parseDescriptor(String value)
     {
         if (value != null)
         {
-            final var parts = value.split("-");
+            var parts = value.split("-");
             if (parts.length == 4 || parts.length == 5)
             {
                 try
                 {
-                    final var metadata = new Metadata()
+                    var metadata = new Metadata()
                             .withDataSupplier(DataSupplier.valueOf(parts[0]))
                             .withDataSpecification(DataSpecification.parse(parts[1]))
                             .withDataFormat(DataFormat.valueOf(parts[2]))
@@ -353,7 +353,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
                     }
                     return metadata;
                 }
-                catch (final Exception ignored)
+                catch (Exception ignored)
                 {
                 }
             }
@@ -372,13 +372,13 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      */
     public static class Converter extends BaseStringConverter<Metadata>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Metadata onToValue(final String value)
+        protected Metadata onToValue(String value)
         {
             return parse(value);
         }
@@ -474,7 +474,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     {
     }
 
-    private Metadata(final Metadata that)
+    private Metadata(Metadata that)
     {
         name = that.name;
 
@@ -510,7 +510,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         roadNameCharacterCodecFrequencies = that.roadNameCharacterCodecFrequencies;
     }
 
-    public Metadata add(final Metadata that)
+    public Metadata add(Metadata that)
     {
         return withNodeCount(nodeCount(REQUIRE_EXACT).plus(that.nodeCount(REQUIRE_EXACT)))
                 .withWayCount(wayCount(REQUIRE_EXACT).plus(that.wayCount(REQUIRE_EXACT)))
@@ -555,7 +555,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     @Override
-    public AsStringIndenter asString(final StringFormat format, final AsStringIndenter indenter)
+    public AsStringIndenter asString(StringFormat format, AsStringIndenter indenter)
     {
         indenter.asString(this);
         indenter.labeled("nodes", nodeCount(REQUIRE_EXACT));
@@ -573,20 +573,20 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         return indenter;
     }
 
-    public Metadata assertValid(final ValidationType type)
+    public Metadata assertValid(ValidationType type)
     {
         ensure(validator(type).validate(LOGGER));
         return this;
     }
 
-    public void configure(final PbfDataSource reader)
+    public void configure(PbfDataSource reader)
     {
         reader.expectedNodes(nodeCount(ALLOW_ESTIMATE));
         reader.expectedWays(wayCount(ALLOW_ESTIMATE));
         reader.expectedRelations(relationCount(ALLOW_ESTIMATE));
     }
 
-    public Count count(final CountType type, final Class<? extends GraphElement> element)
+    public Count count(CountType type, Class<? extends GraphElement> element)
     {
         if (element.isAssignableFrom(Edge.class))
         {
@@ -697,7 +697,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * @return The number of edges
      */
-    public Count edgeCount(final CountType type)
+    public Count edgeCount(CountType type)
     {
         if (type == ALLOW_ESTIMATE && edges == null)
         {
@@ -709,7 +709,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * @return The exact or estimated number of edge relations
      */
-    public Count edgeRelationCount(final CountType type)
+    public Count edgeRelationCount(CountType type)
     {
         if (type == ALLOW_ESTIMATE && edgeRelations == null && dataSize() != null)
         {
@@ -720,11 +720,11 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Metadata)
         {
-            final var that = (Metadata) object;
+            var that = (Metadata) object;
             return descriptor().equals(that.descriptor());
         }
         return false;
@@ -733,7 +733,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * @return The number of forward edges (without considering bi-directional edges)
      */
-    public Count forwardEdgeCount(final CountType type)
+    public Count forwardEdgeCount(CountType type)
     {
         if (type == ALLOW_ESTIMATE && forwardEdges == null)
         {
@@ -745,11 +745,11 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * @return The total number of edges, vertexes and relations in this data
      */
-    public Count graphElementCount(final CountType type)
+    public Count graphElementCount(CountType type)
     {
         if (edgeCount(type) != null && vertexCount(type) != null && edgeRelationCount(type) != null)
         {
-            final var count = edgeCount(type).plus(vertexCount(type)).plus(edgeRelationCount(type));
+            var count = edgeCount(type).plus(vertexCount(type)).plus(edgeRelationCount(type));
             return type == ALLOW_ESTIMATE ? count.asEstimate().ceiling(3) : count;
         }
         return null;
@@ -792,7 +792,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * @return The exact or estimated (OSM) number of nodes in OSM data. Not relevant to UniDb.
      */
-    public Count nodeCount(final CountType type)
+    public Count nodeCount(CountType type)
     {
         if (type == ALLOW_ESTIMATE && nodes == null && dataSize() != null)
         {
@@ -802,7 +802,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         return nodes;
     }
 
-    public Count placeCount(final CountType type)
+    public Count placeCount(CountType type)
     {
         if (type == ALLOW_ESTIMATE && places == null)
         {
@@ -811,14 +811,14 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         return places;
     }
 
-    public String property(final String key)
+    public String property(String key)
     {
         return properties.get(key);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public void read(final Kryo kryo, final Input input)
+    public void read(Kryo kryo, Input input)
     {
         name = kryo.readObject(input, String.class);
         nodes = kryo.readObject(input, Count.class);
@@ -840,20 +840,20 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         dataSupplier = kryo.readObject(input, DataSupplier.class);
 
         // Read the data specification class name
-        final var dataSpecificationClassName = kryo.readObject(input, String.class);
+        var dataSpecificationClassName = kryo.readObject(input, String.class);
         try
         {
             // load the specification class
-            final var specification = (Class<? extends DataSpecification>) Class.forName(dataSpecificationClassName);
+            var specification = (Class<? extends DataSpecification>) Class.forName(dataSpecificationClassName);
 
             // and get the DataSpecification by calling the get() method
-            final var get = specification.getMethod("get");
+            var get = specification.getMethod("get");
             dataSpecification = (DataSpecification) get.invoke(null);
 
-            final var supportedAttributes = kryo.readObject(input, IntArray.class);
+            var supportedAttributes = kryo.readObject(input, IntArray.class);
             dataSpecification.supportedAttributes(supportedAttributes);
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             LOGGER.problem(e, "Unable to read data specification");
         }
@@ -868,7 +868,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * @return The exact or estimated number of relations
      */
-    public Count relationCount(final CountType type)
+    public Count relationCount(CountType type)
     {
         if (type == ALLOW_ESTIMATE && relations == null && dataSize() != null)
         {
@@ -887,7 +887,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         return roadNameCharacterCodec;
     }
 
-    public Count shapePointCount(final CountType type)
+    public Count shapePointCount(CountType type)
     {
         return shapePoints;
     }
@@ -896,14 +896,14 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     {
         if (tagCodec == null)
         {
-            final var keyCharacterCodec = PbfDefaultCodecs.get().defaultKeyCharacterCodec();
-            final var keyStringCodec = PbfDefaultCodecs.get().defaultKeyStringCodec();
+            var keyCharacterCodec = PbfDefaultCodecs.get().defaultKeyCharacterCodec();
+            var keyStringCodec = PbfDefaultCodecs.get().defaultKeyStringCodec();
 
-            final var valueCharacterCodec = PbfDefaultCodecs.get().defaultValueCharacterCodec();
-            final var valueStringCodec = PbfDefaultCodecs.get().defaultValueStringCodec();
+            var valueCharacterCodec = PbfDefaultCodecs.get().defaultValueCharacterCodec();
+            var valueStringCodec = PbfDefaultCodecs.get().defaultValueStringCodec();
 
-            final var keyStringListCodec = new HuffmanStringListCodec(keyStringCodec, keyCharacterCodec);
-            final var valueStringListCodec = new HuffmanStringListCodec(valueStringCodec, valueCharacterCodec);
+            var keyStringListCodec = new HuffmanStringListCodec(keyStringCodec, keyCharacterCodec);
+            var valueStringListCodec = new HuffmanStringListCodec(valueStringCodec, valueCharacterCodec);
 
             tagCodec = new PbfStringListTagCodec(keyStringListCodec, valueStringListCodec);
         }
@@ -918,7 +918,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     @Override
-    public Validator validator(final ValidationType type)
+    public Validator validator(ValidationType type)
     {
         return new BaseValidator()
         {
@@ -953,7 +953,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * @return The exact (UniDb) or estimated (OSM) number of vertexes
      */
-    public Count vertexCount(final CountType type)
+    public Count vertexCount(CountType type)
     {
         if (type == ALLOW_ESTIMATE && vertexes == null)
         {
@@ -965,7 +965,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * @return The exact or estimated (OSM) number of ways in this data. Not relevant to UniDb.
      */
-    public Count wayCount(final CountType type)
+    public Count wayCount(CountType type)
     {
         if (type == ALLOW_ESTIMATE && ways == null && dataSize() != null)
         {
@@ -975,13 +975,13 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         return ways;
     }
 
-    public Metadata withCodecFrequencies(final PropertyMap keyCharacterCodecFrequencies,
-                                         final PropertyMap keyStringCodecFrequencies,
-                                         final PropertyMap valueCharacterCodecFrequencies,
-                                         final PropertyMap valueStringCodecFrequencies,
-                                         final PropertyMap roadNameCharacterCodecFrequencies)
+    public Metadata withCodecFrequencies(PropertyMap keyCharacterCodecFrequencies,
+                                         PropertyMap keyStringCodecFrequencies,
+                                         PropertyMap valueCharacterCodecFrequencies,
+                                         PropertyMap valueStringCodecFrequencies,
+                                         PropertyMap roadNameCharacterCodecFrequencies)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
 
         copy.keyCharacterCodecFrequencies = keyCharacterCodecFrequencies;
         copy.keyStringCodecFrequencies = keyStringCodecFrequencies;
@@ -992,86 +992,86 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         return copy;
     }
 
-    public Metadata withDataBounds(final Rectangle bounds)
+    public Metadata withDataBounds(Rectangle bounds)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
         copy.dataBounds = bounds;
         return copy;
     }
 
-    public Metadata withDataBuild(final DataBuild build)
+    public Metadata withDataBuild(DataBuild build)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
         copy.dataBuild = build;
         return copy;
     }
 
-    public Metadata withDataFormat(final DataFormat format)
+    public Metadata withDataFormat(DataFormat format)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
         copy.dataFormat = format;
         return copy;
     }
 
-    public Metadata withDataPrecision(final Precision precision)
+    public Metadata withDataPrecision(Precision precision)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
         copy.dataPrecision = precision;
         return copy;
     }
 
-    public Metadata withDataSize(final Bytes dataSize)
+    public Metadata withDataSize(Bytes dataSize)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
         copy.dataSize = dataSize;
         return copy;
     }
 
-    public Metadata withDataSpecification(final DataSpecification specification)
+    public Metadata withDataSpecification(DataSpecification specification)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
         copy.dataSpecification = specification;
         return copy;
     }
 
-    public Metadata withDataSupplier(final DataSupplier supplier)
+    public Metadata withDataSupplier(DataSupplier supplier)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
         copy.dataSupplier = supplier;
         return copy;
     }
 
-    public Metadata withDataVersion(final DataVersion version)
+    public Metadata withDataVersion(DataVersion version)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
         copy.dataVersion = version;
         return copy;
     }
 
-    public Metadata withEdgeCount(final Count edges)
+    public Metadata withEdgeCount(Count edges)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
         copy.edges = edges;
         return copy;
     }
 
-    public Metadata withEdgeRelationCount(final Count edgeRelations)
+    public Metadata withEdgeRelationCount(Count edgeRelations)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
         copy.edgeRelations = edgeRelations;
         return copy;
     }
 
-    public Metadata withForwardEdgeCount(final Count forwardEdges)
+    public Metadata withForwardEdgeCount(Count forwardEdges)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
         copy.forwardEdges = forwardEdges;
         return copy;
     }
 
-    public Metadata withMetadata(final Metadata metadata)
+    public Metadata withMetadata(Metadata metadata)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
 
         if (copy.name == null)
         {
@@ -1148,64 +1148,64 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         return copy;
     }
 
-    public Metadata withName(final String name)
+    public Metadata withName(String name)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
         copy.name = name;
         return copy;
     }
 
-    public Metadata withNodeCount(final Count nodes)
+    public Metadata withNodeCount(Count nodes)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
         copy.nodes = nodes;
         return copy;
     }
 
-    public Metadata withPlaceCount(final Count places)
+    public Metadata withPlaceCount(Count places)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
         copy.places = places;
         return copy;
     }
 
-    public Metadata withProperties(final Map<String, String> properties)
+    public Metadata withProperties(Map<String, String> properties)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
         copy.properties.putAll(properties);
         return copy;
     }
 
-    public Metadata withRelationCount(final Count relations)
+    public Metadata withRelationCount(Count relations)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
         copy.relations = relations;
         return copy;
     }
 
-    public Metadata withShapePointCount(final Count shapePoints)
+    public Metadata withShapePointCount(Count shapePoints)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
         copy.shapePoints = shapePoints;
         return copy;
     }
 
-    public Metadata withVertexCount(final Count vertexes)
+    public Metadata withVertexCount(Count vertexes)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
         copy.vertexes = vertexes;
         return copy;
     }
 
-    public Metadata withWayCount(final Count ways)
+    public Metadata withWayCount(Count ways)
     {
-        final var copy = new Metadata(this);
+        var copy = new Metadata(this);
         copy.ways = ways;
         return copy;
     }
 
     @Override
-    public void write(final Kryo kryo, final Output output)
+    public void write(Kryo kryo, Output output)
     {
         kryo.writeObject(output, name());
         kryo.writeObject(output, nodes);
@@ -1235,51 +1235,51 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         kryo.writeObject(output, roadNameCharacterCodecFrequencies);
     }
 
-    private static Metadata extractPbfMetadata(final File file)
+    private static Metadata extractPbfMetadata(File file)
     {
-        final var reader = new SerialPbfReader(file);
+        var reader = new SerialPbfReader(file);
         reader.silence();
-        final var metadata = new MutableValue<Metadata>();
+        var metadata = new MutableValue<Metadata>();
         try
         {
             reader.process(new PbfDataProcessor()
             {
                 @Override
-                public Action onNode(final PbfNode node)
+                public Action onNode(PbfNode node)
                 {
                     metadata.set(metadata(node));
                     throw new PbfStopProcessingException();
                 }
             });
         }
-        catch (final Exception ignored)
+        catch (Exception ignored)
         {
         }
         return metadata.get();
     }
 
-    private static Metadata metadata(final PbfEntity<?> entity)
+    private static Metadata metadata(PbfEntity<?> entity)
     {
-        final var tags = entity.tagMap();
+        var tags = entity.tagMap();
 
         // [supplier]-[specification]-[format]-[name]-[version]?
-        final var descriptor = tags.get("telenav-data-descriptor");
+        var descriptor = tags.get("telenav-data-descriptor");
 
-        final var build = tags.get("telenav-data-build");
-        final var size = Bytes.parse(Listener.none(), tags.get("telenav-data-size"));
-        final var precision = tags.get("telenav-data-precision");
-        final var bounds = tags.get("telenav-data-bounds");
-        final var nodes = tags.get("telenav-data-nodes");
-        final var ways = tags.get("telenav-data-ways");
-        final var relations = tags.get("telenav-data-relations");
+        var build = tags.get("telenav-data-build");
+        var size = Bytes.parse(Listener.none(), tags.get("telenav-data-size"));
+        var precision = tags.get("telenav-data-precision");
+        var bounds = tags.get("telenav-data-bounds");
+        var nodes = tags.get("telenav-data-nodes");
+        var ways = tags.get("telenav-data-ways");
+        var relations = tags.get("telenav-data-relations");
 
         if (build != null && size != null && bounds != null && nodes != null && ways != null && relations != null)
         {
-            final var keyCharacterCodecFrequencies = PbfTags.tags("telenav-key-character-codec-", entity.get().getTags());
-            final var keyStringCodecFrequencies = PbfTags.tags("telenav-key-string-codec-", entity.get().getTags());
-            final var valueCharacterCodecFrequencies = PbfTags.tags("telenav-value-character-codec-", entity.get().getTags());
-            final var valueStringCodecFrequencies = PbfTags.tags("telenav-value-string-codec-", entity.get().getTags());
-            final var roadNameCharacterCodecFrequencies = PbfTags.tags("telenav-road-name-character-codec-", entity.get().getTags());
+            var keyCharacterCodecFrequencies = PbfTags.tags("telenav-key-character-codec-", entity.get().getTags());
+            var keyStringCodecFrequencies = PbfTags.tags("telenav-key-string-codec-", entity.get().getTags());
+            var valueCharacterCodecFrequencies = PbfTags.tags("telenav-value-character-codec-", entity.get().getTags());
+            var valueStringCodecFrequencies = PbfTags.tags("telenav-value-string-codec-", entity.get().getTags());
+            var roadNameCharacterCodecFrequencies = PbfTags.tags("telenav-road-name-character-codec-", entity.get().getTags());
 
             if (!keyCharacterCodecFrequencies.isEmpty()
                     && !keyStringCodecFrequencies.isEmpty()
@@ -1287,7 +1287,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
                     && !valueStringCodecFrequencies.isEmpty()
                     && !roadNameCharacterCodecFrequencies.isEmpty())
             {
-                final var metadata = parseDescriptor(descriptor);
+                var metadata = parseDescriptor(descriptor);
                 if (metadata != null)
                 {
                     return metadata.withDataBuild(DataBuild.parse(build))

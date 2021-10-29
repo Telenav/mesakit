@@ -34,7 +34,7 @@ public interface RoutingLimiter
      */
     RoutingInstruction instruction(Edge edge);
 
-    default void start(final RoutingRequest request)
+    default void start(RoutingRequest request)
     {
     }
 }

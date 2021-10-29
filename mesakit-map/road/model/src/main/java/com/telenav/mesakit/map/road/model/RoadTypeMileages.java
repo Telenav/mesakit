@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.kivakit.kernel.language.values.level.Percent;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,14 +33,14 @@ public class RoadTypeMileages
 
     private Distance totalMileages = Distance.ZERO;
 
-    public void add(final RoadType roadType, final Distance length)
+    public void add(RoadType roadType, Distance length)
     {
-        final var mileage = roadTypeMileages.computeIfAbsent(roadType, k -> Distance.ZERO);
+        var mileage = roadTypeMileages.computeIfAbsent(roadType, k -> Distance.ZERO);
         roadTypeMileages.put(roadType, mileage.add(length));
         totalMileages = totalMileages.add(length);
     }
 
-    public Distance mileage(final RoadType roadType)
+    public Distance mileage(RoadType roadType)
     {
         var mileage = roadTypeMileages.get(roadType);
         if (mileage == null)
@@ -56,7 +56,7 @@ public class RoadTypeMileages
         return totalMileages;
     }
 
-    public Percent roadTypMileagePercent(final RoadType roadType)
+    public Percent roadTypMileagePercent(RoadType roadType)
     {
         if (totalMileages.equals(Distance.ZERO))
         {
@@ -64,7 +64,7 @@ public class RoadTypeMileages
         }
         else
         {
-            final var mileage = mileage(roadType);
+            var mileage = mileage(roadType);
             return Percent.of(mileage.asMeters() * 100 / mileages().asMeters());
         }
     }
@@ -76,7 +76,7 @@ public class RoadTypeMileages
 
     public List<Entry<RoadType, Distance>> sortedRoadTypeMileages()
     {
-        final List<Entry<RoadType, Distance>> elements = new ArrayList<>(roadTypeMileages.entrySet());
+        List<Entry<RoadType, Distance>> elements = new ArrayList<>(roadTypeMileages.entrySet());
 
         elements.sort((o1, o2) -> o2.getValue().compareTo(o1.getValue()));
 
@@ -86,11 +86,11 @@ public class RoadTypeMileages
     @Override
     public String toString()
     {
-        final var builder = new StringBuilder();
-        for (final var roadTypeMileage : sortedRoadTypeMileages())
+        var builder = new StringBuilder();
+        for (var roadTypeMileage : sortedRoadTypeMileages())
         {
-            final var roadType = roadTypeMileage.getKey();
-            final var mileages = roadTypeMileage.getValue();
+            var roadType = roadTypeMileage.getKey();
+            var mileages = roadTypeMileage.getValue();
             builder.append(roadType);
             builder.append("\t");
             builder.append(mileages);

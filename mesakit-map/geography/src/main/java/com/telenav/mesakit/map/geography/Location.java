@@ -179,15 +179,15 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
             0.06975647374412523, 0.052335956242943966, 0.03489949670250108, 0.0174524064372836, 0.0
     };
 
-    public static Location degrees(final double latitude, final double longitude)
+    public static Location degrees(double latitude, double longitude)
     {
-        final var latitudeRound = latitude < 0 ? -0.000_000_05 : 0.000_000_05;
-        final var longitudeRound = longitude < 0 ? -0.000_000_05 : 0.000_000_05;
+        var latitudeRound = latitude < 0 ? -0.000_000_05 : 0.000_000_05;
+        var longitudeRound = longitude < 0 ? -0.000_000_05 : 0.000_000_05;
         return new Location((int) ((latitude + latitudeRound) * 1_000_000_0),
                 (int) ((longitude + longitudeRound) * 1_000_000_0));
     }
 
-    public static Location dm5(final int latitudeInDm5, final int longitudeInDm5)
+    public static Location dm5(int latitudeInDm5, int longitudeInDm5)
     {
         return new Location(latitudeInDm5 * 100, longitudeInDm5 * 100);
     }
@@ -198,7 +198,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
      * @param location The combined latitude/longitude value
      * @return A new location object with the given latitude and longitude
      */
-    public static Location dm5(final long location)
+    public static Location dm5(long location)
     {
         if (location == NULL)
         {
@@ -210,7 +210,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         }
     }
 
-    public static Location dm6(final int latitudeInDm6, final int longitudeInDm6)
+    public static Location dm6(int latitudeInDm6, int longitudeInDm6)
     {
         return new Location(latitudeInDm6 * 10, longitudeInDm6 * 10);
     }
@@ -221,7 +221,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
      * @param location The combined latitude/longitude value
      * @return A new location object with the given latitude and longitude
      */
-    public static Location dm6(final long location)
+    public static Location dm6(long location)
     {
         if (location == NULL)
         {
@@ -233,7 +233,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         }
     }
 
-    public static Location dm7(final int latitudeInDm7, final int longitudeInDm7)
+    public static Location dm7(int latitudeInDm7, int longitudeInDm7)
     {
         return new Location(latitudeInDm7, longitudeInDm7);
     }
@@ -244,7 +244,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
      * @param location The combined latitude/longitude value
      * @return A new location object with the given latitude and longitude
      */
-    public static Location dm7(final long location)
+    public static Location dm7(long location)
     {
         if (location == NULL)
         {
@@ -272,16 +272,16 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
      * @see "http://www.movable-type.co.uk/scripts/latlong.html"
      */
     public static long equirectangularDistanceBetweenInMillimeters(
-            final long fromLatitudeInDm7, final long fromLongitudeInDm7,
-            final long toLatitudeInDm7, final long toLongitudeInDm7)
+            long fromLatitudeInDm7, long fromLongitudeInDm7,
+            long toLatitudeInDm7, long toLongitudeInDm7)
     {
-        final var fromLatitude = fromLatitudeInDm7 / 1E7;
-        final var fromLongitude = fromLongitudeInDm7 / 1E7;
-        final var toLatitude = toLatitudeInDm7 / 1E7;
-        final var toLongitude = toLongitudeInDm7 / 1E7;
+        var fromLatitude = fromLatitudeInDm7 / 1E7;
+        var fromLongitude = fromLongitudeInDm7 / 1E7;
+        var toLatitude = toLatitudeInDm7 / 1E7;
+        var toLongitude = toLongitudeInDm7 / 1E7;
 
-        final var x = Math.toRadians(toLongitude - fromLongitude) * (latitudeCosine[(int) Math.abs(fromLatitude)] * (fromLatitude < 0 ? -1 : 1));
-        final var y = Math.toRadians(toLatitude - fromLatitude);
+        var x = Math.toRadians(toLongitude - fromLongitude) * (latitudeCosine[(int) Math.abs(fromLatitude)] * (fromLatitude < 0 ? -1 : 1));
+        var y = Math.toRadians(toLatitude - fromLatitude);
 
         return (long) (Math.sqrt(x * x + y * y) * EARTH_RADIUS_IN_METERS * 1_000.0);
     }
@@ -289,34 +289,34 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
     /**
      * @return A location for the given long value in DM7
      */
-    public static Location fromLong(final long locationInDm7)
+    public static Location fromLong(long locationInDm7)
     {
         return dm7(locationInDm7);
     }
 
-    public static int latitude(final long latitudeAndLongitude)
+    public static int latitude(long latitudeAndLongitude)
     {
         return Longs.high(latitudeAndLongitude);
     }
 
-    public static SwitchParser.Builder<Location> locationSwitchParser(final String name, final String description)
+    public static SwitchParser.Builder<Location> locationSwitchParser(String name, String description)
     {
         return SwitchParser.builder(Location.class).name(name).converter(new DegreesConverter(LOGGER))
                 .description(description);
     }
 
-    public static int longitude(final long latitudeAndLongitude)
+    public static int longitude(long latitudeAndLongitude)
     {
         return Longs.low(latitudeAndLongitude);
     }
 
     @SuppressWarnings("UseOfSystemOutOrSystemErr")
-    public static void main(final String[] args)
+    public static void main(String[] args)
     {
         // Generate latitudeCosine table
         for (var latitude = 0.0; latitude <= Latitude.MAXIMUM_DEGREES; latitude += 1.0)
         {
-            final var cosine = Math.cos(Math.toRadians(latitude));
+            var cosine = Math.cos(Math.toRadians(latitude));
             System.out.print(cosine + ", ");
             if (latitude % 10 == 0.0)
             {
@@ -329,7 +329,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
      * @return The given latitude and longitude as a single long value, with latitude in the high 32 bits and longitude
      * in the low 32 bits. The latitude and longitude may be in any {@link Precision}.
      */
-    public static long toLong(final int latitude, final int longitude)
+    public static long toLong(int latitude, int longitude)
     {
         return Longs.forHighLow(latitude, longitude);
     }
@@ -344,23 +344,23 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
 
         private Type type = Type.DM5;
 
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
-        public void type(final Type type)
+        public void type(Type type)
         {
             this.type = type;
         }
 
         @Override
-        protected Location onToValue(final String value)
+        protected Location onToValue(String value)
         {
-            final Latitude latitude;
-            final Longitude longitude;
+            Latitude latitude;
+            Longitude longitude;
 
-            final var coordinates = StringList.split(value, ',');
+            var coordinates = StringList.split(value, ',');
 
             if (type == Type.DM5)
             {
@@ -392,12 +392,12 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
 
         private final Separators separators;
 
-        public DegreesConverter(final Listener listener)
+        public DegreesConverter(Listener listener)
         {
             this(listener, new Separators(","));
         }
 
-        public DegreesConverter(final Listener listener, final Separators separators)
+        public DegreesConverter(Listener listener, Separators separators)
         {
             super(listener);
             this.separators = separators;
@@ -406,7 +406,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         }
 
         @Override
-        protected String onToString(final Location value)
+        protected String onToString(Location value)
         {
             return value.latitude() + separators.current() + value.longitude();
         }
@@ -415,13 +415,13 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
          * {@inheritDoc}
          */
         @Override
-        protected Location onToValue(final String value)
+        protected Location onToValue(String value)
         {
-            final var values = StringList.split(value, separators.current());
+            var values = StringList.split(value, separators.current());
             if (values.size() == 2)
             {
-                final var latitude = latitudeConverter.convert(values.get(0).trim());
-                final var longitude = longitudeConverter.convert(values.get(1).trim());
+                var latitude = latitudeConverter.convert(values.get(0).trim());
+                var longitude = longitudeConverter.convert(values.get(1).trim());
 
                 if (latitude == null || longitude == null)
                 {
@@ -447,12 +447,12 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
 
         private final Separators separators;
 
-        public DegreesMinutesAndSecondsConverter(final Listener listener)
+        public DegreesMinutesAndSecondsConverter(Listener listener)
         {
             this(listener, new Separators(","));
         }
 
-        public DegreesMinutesAndSecondsConverter(final Listener listener, final Separators separators)
+        public DegreesMinutesAndSecondsConverter(Listener listener, Separators separators)
         {
             super(listener);
             this.separators = separators;
@@ -461,7 +461,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         }
 
         @Override
-        protected String onToString(final Location value)
+        protected String onToString(Location value)
         {
             return value.latitude() + separators.current() + value.longitude();
         }
@@ -470,13 +470,13 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
          * {@inheritDoc}
          */
         @Override
-        protected Location onToValue(final String value)
+        protected Location onToValue(String value)
         {
-            final var values = StringList.split(value, separators.current());
+            var values = StringList.split(value, separators.current());
             if (values.size() == 2)
             {
-                final var latitude = latitudeConverter.convert(values.get(0).trim());
-                final var longitude = longitudeConverter.convert(values.get(1).trim());
+                var latitude = latitudeConverter.convert(values.get(0).trim());
+                var longitude = longitudeConverter.convert(values.get(1).trim());
 
                 if (latitude == null || longitude == null)
                 {
@@ -501,12 +501,12 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
 
         private final Separators separators;
 
-        public Dm5Converter(final Listener listener)
+        public Dm5Converter(Listener listener)
         {
             this(listener, new Separators(","));
         }
 
-        public Dm5Converter(final Listener listener, final Separators separators)
+        public Dm5Converter(Listener listener, Separators separators)
         {
             super(listener);
             this.separators = separators;
@@ -515,7 +515,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         }
 
         @Override
-        protected String onToString(final Location value)
+        protected String onToString(Location value)
         {
             return latitudeConverter.unconvert(value.latitude()) + separators.current()
                     + longitudeConverter.unconvert(value.longitude());
@@ -525,13 +525,13 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
          * {@inheritDoc}
          */
         @Override
-        protected Location onToValue(final String value)
+        protected Location onToValue(String value)
         {
-            final var values = StringList.split(value, separators.current());
+            var values = StringList.split(value, separators.current());
             if (values.size() == 2)
             {
-                final var latitude = latitudeConverter.convert(values.get(0).trim());
-                final var longitude = longitudeConverter.convert(values.get(1).trim());
+                var latitude = latitudeConverter.convert(values.get(0).trim());
+                var longitude = longitudeConverter.convert(values.get(1).trim());
 
                 if (latitude == null || longitude == null)
                 {
@@ -566,7 +566,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         longitudeInDm7 = Integer.MAX_VALUE;
     }
 
-    public Location(final Latitude latitude, final Longitude longitude)
+    public Location(Latitude latitude, Longitude longitude)
     {
         assert latitude != null;
         assert longitude != null;
@@ -583,12 +583,12 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
     }
 
     @SuppressWarnings("CopyConstructorMissesField")
-    public Location(final Location location)
+    public Location(Location location)
     {
         this(location.latitude(), location.longitude());
     }
 
-    private Location(final int latitudeInDm7, final int longitudeInDm7)
+    private Location(int latitudeInDm7, int longitudeInDm7)
     {
         this.latitudeInDm7 = latitudeInDm7;
         this.longitudeInDm7 = longitudeInDm7;
@@ -605,12 +605,12 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         return new Point(longitude().asMicrodegrees(), latitude().asMicrodegrees());
     }
 
-    public long asDecimal(final Precision precision)
+    public long asDecimal(Precision precision)
     {
         return DM7.to(precision, asDm7Long());
     }
 
-    public long asDecimalLong(final Precision precision)
+    public long asDecimalLong(Precision precision)
     {
         return precision.toLong(this);
     }
@@ -646,7 +646,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
      * an uninitialized serialized field), then 6 is assumed to allow for easy defaulting of old 6 decimal graph api
      * values.
      */
-    public long asLong(final Precision precision)
+    public long asLong(Precision precision)
     {
         assert precision != null;
 
@@ -678,7 +678,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
     }
 
     @Override
-    public String asString(final StringFormat format)
+    public String asString(StringFormat format)
     {
         switch (format.identifier())
         {
@@ -713,7 +713,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
     /**
      * @return The distance from this location to the given {@link Located} object
      */
-    public Distance distanceTo(final Located that)
+    public Distance distanceTo(Located that)
     {
         return distanceTo(that.location());
     }
@@ -727,7 +727,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
      *
      * @return The distance from this location to the given location
      */
-    public Distance distanceTo(final Location that)
+    public Distance distanceTo(Location that)
     {
         // If the latitudes are within about 0.05 degrees (10_000_000 / 20)
         if (Math.abs(that.latitudeInDm7 - latitudeInDm7) < 500_000)
@@ -744,11 +744,11 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
      * {@inheritDoc}
      */
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Location)
         {
-            final var that = (Location) object;
+            var that = (Location) object;
             return latitudeInDm7 == that.latitudeInDm7 && longitudeInDm7 == that.longitudeInDm7;
         }
         return false;
@@ -761,12 +761,12 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
      * @see #equirectangularDistanceToInMillimeters(Location)
      * @see #equirectangularDistanceBetweenInMillimeters(long, long, long, long)
      */
-    public final Distance equirectangularDistanceTo(final Location that)
+    public final Distance equirectangularDistanceTo(Location that)
     {
         return Distance.millimeters(equirectangularDistanceToInMillimeters(that));
     }
 
-    public final long equirectangularDistanceToInMillimeters(final Location that)
+    public final long equirectangularDistanceToInMillimeters(Location that)
     {
         // HOTSPOT: This method has been determined to be a hotspot by YourKit profiling
 
@@ -787,20 +787,20 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
      * @return The distance to the given location using the Haversine formula. Adapted from:
      * http://www.movable-type.co.uk/scripts/latlong.html
      */
-    public Distance haversineDistanceTo(final Location that)
+    public Distance haversineDistanceTo(Location that)
     {
         /*
           (lat2 - lat1) -> Vertical Angle
          */
-        final Angle latitudeDifference = that.latitude().minus(latitude());
+        Angle latitudeDifference = that.latitude().minus(latitude());
         /*
           (lon2 - lon1) -> Horizontal Angle
          */
-        final Angle longitudeDifference = that.longitude().minus(longitude());
-        final var hav = Math.pow(Math.sin(latitudeDifference.asRadians() / 2.0), 2.0)
+        Angle longitudeDifference = that.longitude().minus(longitude());
+        var hav = Math.pow(Math.sin(latitudeDifference.asRadians() / 2.0), 2.0)
                 + Math.pow(Math.sin(longitudeDifference.asRadians() / 2.0), 2.0) * Math.cos(latitude().asRadians())
                 * Math.cos(that.latitude().asRadians());
-        final var resultAngle = 2.0 * Math.atan2(Math.sqrt(hav), Math.sqrt(1.0 - hav));
+        var resultAngle = 2.0 * Math.atan2(Math.sqrt(hav), Math.sqrt(1.0 - hav));
         return Distance.meters(Distance.EARTH_RADIUS_MINOR.asMeters() * resultAngle);
     }
 
@@ -808,13 +808,13 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
      * Computes the heading from start to end. See a sample algorithm here:
      * http://www.movable-type.co.uk/scripts/latlong.html
      */
-    public Heading headingTo(final Location that)
+    public Heading headingTo(Location that)
     {
-        final var longitudeDifference = DM7.toRadians(that.longitudeInDm7 - longitudeInDm7);
-        final var startLatitude = DM7.toRadians(latitudeInDm7);
-        final var endLatitude = DM7.toRadians(that.latitudeInDm7);
-        final var y = Math.sin(longitudeDifference) * Math.cos(endLatitude);
-        final var x = Math.cos(startLatitude) * Math.sin(endLatitude)
+        var longitudeDifference = DM7.toRadians(that.longitudeInDm7 - longitudeInDm7);
+        var startLatitude = DM7.toRadians(latitudeInDm7);
+        var endLatitude = DM7.toRadians(that.latitudeInDm7);
+        var y = Math.sin(longitudeDifference) * Math.cos(endLatitude);
+        var x = Math.cos(startLatitude) * Math.sin(endLatitude)
                 - Math.sin(startLatitude) * Math.cos(endLatitude) * Math.cos(longitudeDifference);
         return Heading.radians(Trigonometry.arcTangent2(y, x));
     }
@@ -839,12 +839,12 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
      * @return True if the given rectangle contains this location
      */
     @Override
-    public boolean intersects(final Rectangle rectangle)
+    public boolean intersects(Rectangle rectangle)
     {
         return rectangle.contains(this);
     }
 
-    public boolean isClose(final Location that, final Angle tolerance)
+    public boolean isClose(Location that, Angle tolerance)
     {
         return latitude().isClose(that.latitude(), tolerance) && longitude().isClose(that.longitude(), tolerance);
     }
@@ -852,7 +852,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
     /**
      * @return True if the given location is as close or closer than the given distance from this location
      */
-    public boolean isClose(final Location that, final Distance distance)
+    public boolean isClose(Location that, Distance distance)
     {
         return distanceTo(that).isLessThanOrEqualTo(distance);
     }
@@ -890,16 +890,16 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
     /**
      * @see "http://www.movable-type.co.uk/scripts/latlong.html"
      */
-    public Distance lawOfCosinesDistanceTo(final Location that)
+    public Distance lawOfCosinesDistanceTo(Location that)
     {
         if (equals(that))
         {
             return Distance.ZERO;
         }
-        final var lat1 = DM7.toRadians(latitudeInDm7);
-        final var lon1 = DM7.toRadians(longitudeInDm7);
-        final var lat2 = DM7.toRadians(that.latitudeInDm7);
-        final var lon2 = DM7.toRadians(that.longitudeInDm7);
+        var lat1 = DM7.toRadians(latitudeInDm7);
+        var lon1 = DM7.toRadians(longitudeInDm7);
+        var lat2 = DM7.toRadians(that.latitudeInDm7);
+        var lon2 = DM7.toRadians(that.longitudeInDm7);
         return Distance.meters(Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon2 - lon1)) * EARTH_RADIUS_IN_METERS);
     }
 
@@ -934,17 +934,17 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         return longitudeInDm7;
     }
 
-    public Location minus(final Dimensioned sized)
+    public Location minus(Dimensioned sized)
     {
         return new Location(latitude().minus(sized.height()), longitude().minus(sized.width()));
     }
 
-    public Location minus(final Height height)
+    public Location minus(Height height)
     {
         return new Location(latitude().minus(height), longitude());
     }
 
-    public Location minus(final Width width)
+    public Location minus(Width width)
     {
         return new Location(latitude(), longitude().minus(width));
     }
@@ -960,15 +960,15 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
      * @return The new Location. If this location is on the other side of the -180/180 day separation line, then the
      * Longitudes will be adjusted to be between -180 and 180.
      */
-    public Location moved(final Heading heading, final Distance offset)
+    public Location moved(Heading heading, Distance offset)
     {
-        final var latitude = latitude().asRadians();
-        final var longitude = longitude().asRadians();
-        final var angularDistance = offset.ratio(Distance.EARTH_RADIUS_MINOR);
+        var latitude = latitude().asRadians();
+        var longitude = longitude().asRadians();
+        var angularDistance = offset.ratio(Distance.EARTH_RADIUS_MINOR);
 
-        final var movedLatitude = Math.asin(Math.sin(latitude) * Math.cos(angularDistance)
+        var movedLatitude = Math.asin(Math.sin(latitude) * Math.cos(angularDistance)
                 + Math.cos(latitude) * Math.sin(angularDistance) * Math.cos(heading.asRadians()));
-        final var movedLongitude = longitude
+        var movedLongitude = longitude
                 + Math.atan2(Math.sin(heading.asRadians()) * Math.sin(angularDistance) * Math.cos(latitude),
                 Math.cos(angularDistance) - Math.sin(latitude) * Math.sin(movedLatitude));
         var newLongitude = Angle.radians(movedLongitude);
@@ -983,63 +983,63 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         return new Location(Latitude.angle(Angle.radians(movedLatitude)), Longitude.angle(newLongitude));
     }
 
-    public Location offsetBy(final Dimensioned sized)
+    public Location offsetBy(Dimensioned sized)
     {
         return new Location(latitude().plus(sized.height()), longitude().plus(sized.width()));
     }
 
-    public Location offsetBy(final Height height)
+    public Location offsetBy(Height height)
     {
         return new Location(latitude().plus(height), longitude());
     }
 
-    public Location offsetBy(final Latitude latitude, final Longitude longitude)
+    public Location offsetBy(Latitude latitude, Longitude longitude)
     {
         return new Location(latitude().plus(latitude), longitude().plus(longitude));
     }
 
-    public Location offsetBy(final Width width)
+    public Location offsetBy(Width width)
     {
         return new Location(latitude(), longitude().plus(width));
     }
 
-    public Offset offsetTo(final Location at)
+    public Offset offsetTo(Location at)
     {
         return new Offset(at.longitude().minus(longitude()).asWidth(),
                 at.latitude().minus(latitude()).asHeight());
     }
 
-    public Distance preciseDistanceTo(final Location that)
+    public Distance preciseDistanceTo(Location that)
     {
         return lawOfCosinesDistanceTo(that);
     }
 
-    public Location quantize(final Distance quantum)
+    public Location quantize(Distance quantum)
     {
-        final var quantumMicrodegrees = quantum.asAngle().asMicrodegrees();
-        final var latitude = Latitude.microdegrees(
+        var quantumMicrodegrees = quantum.asAngle().asMicrodegrees();
+        var latitude = Latitude.microdegrees(
                 (latitude().asMicrodegrees() + (quantumMicrodegrees / 2)) / quantumMicrodegrees * quantumMicrodegrees);
-        final var longitude = Longitude.microdegrees(
+        var longitude = Longitude.microdegrees(
                 (longitude().asMicrodegrees() + (quantumMicrodegrees / 2)) / quantumMicrodegrees * quantumMicrodegrees);
         return new Location(latitude, longitude);
     }
 
-    public Rectangle rectangle(final Dimensioned sized)
+    public Rectangle rectangle(Dimensioned sized)
     {
         return Rectangle.fromLocations(this, offsetBy(sized));
     }
 
-    public Location relativeTo(final Location that)
+    public Location relativeTo(Location that)
     {
         return new Location(latitude().minus(that.latitude()), longitude().minus(that.longitude()));
     }
 
-    public Location relativeTo(final Latitude latitude, final Longitude longitude)
+    public Location relativeTo(Latitude latitude, Longitude longitude)
     {
         return new Location(latitude().minus(latitude), longitude().minus(longitude));
     }
 
-    public Location scaledBy(final double latitudeScale, final double longitudeScale)
+    public Location scaledBy(double latitudeScale, double longitudeScale)
     {
         return new Location(latitude().times(latitudeScale), longitude().times(longitudeScale));
     }
@@ -1049,7 +1049,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         return asRectangle().size();
     }
 
-    public Segment to(final Location to)
+    public Segment to(Location to)
     {
         return new Segment(this, to);
     }
@@ -1061,7 +1061,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
     }
 
     @Override
-    public Validator validator(final ValidationType type)
+    public Validator validator(ValidationType type)
     {
         return new BaseValidator()
         {
@@ -1075,17 +1075,17 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         };
     }
 
-    public Location withLatitude(final Latitude latitude)
+    public Location withLatitude(Latitude latitude)
     {
         return new Location(latitude, longitude());
     }
 
-    public Location withLongitude(final Longitude longitude)
+    public Location withLongitude(Longitude longitude)
     {
         return new Location(latitude(), longitude);
     }
 
-    public Rectangle within(final Distance distance)
+    public Rectangle within(Distance distance)
     {
         return Rectangle.fromLocations(this, this).expanded(distance);
     }

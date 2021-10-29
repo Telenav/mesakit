@@ -51,7 +51,7 @@ public interface Road
 
     RoadName roadName();
 
-    RoadName roadName(final RoadName.Type type);
+    RoadName roadName(RoadName.Type type);
 
     Polyline roadShape();
 

@@ -32,11 +32,11 @@ public class RoadLanesClassifier implements EdgeClassifier
      * @return boolean
      */
     @Override
-    public boolean accept(final Edge edge)
+    public boolean accept(Edge edge)
     {
-        for (final var tag : edge.tagList())
+        for (var tag : edge.tagList())
         {
-            final var key = tag.getKey();
+            var key = tag.getKey();
             if (key != null && ("lanes".equals(key) || key.startsWith("lanes:")))
             {
                 return true;

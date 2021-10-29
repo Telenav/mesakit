@@ -60,7 +60,7 @@ public class WorldPlace extends Place
 
     private Type type;
 
-    public WorldPlace(final WorldCell worldCell, final Place place)
+    public WorldPlace(WorldCell worldCell, Place place)
     {
         super(worldCell.worldGraph(), place.identifier());
         this.worldCell = ensureNotNull(worldCell);
@@ -70,7 +70,7 @@ public class WorldPlace extends Place
         type = place.type();
     }
 
-    public WorldPlace(final WorldPlaceIdentifier identifier)
+    public WorldPlace(WorldPlaceIdentifier identifier)
     {
         super(identifier.place().worldCell().worldGraph(), identifier);
         worldCell = ensureNotNull(identifier.worldCell());
@@ -81,11 +81,11 @@ public class WorldPlace extends Place
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof WorldPlace)
         {
-            final var that = (WorldPlace) object;
+            var that = (WorldPlace) object;
             return location().equals(that.location());
         }
         return false;
@@ -147,7 +147,7 @@ public class WorldPlace extends Place
     {
         if (worldCell == null)
         {
-            final var worldGraph = (WorldGraph) graph();
+            var worldGraph = (WorldGraph) graph();
             worldCell = worldGraph.worldGrid().worldCell(location);
         }
         return worldCell;

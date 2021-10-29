@@ -34,13 +34,13 @@ public class PolygonSpatialIndexVisualDebugger implements PolygonSpatialIndexDeb
 {
     private final View view;
 
-    public PolygonSpatialIndexVisualDebugger(final View view)
+    public PolygonSpatialIndexVisualDebugger(View view)
     {
         this.view = view;
     }
 
     @Override
-    public void leaf(final Rectangle bounds, final Segment a, final Segment b, final Location inside)
+    public void leaf(Rectangle bounds, Segment a, Segment b, Location inside)
     {
         view.add(Bounds.ACTIVE_BOUNDING_BOX.withRectangle(bounds));
         if (a != null)
@@ -58,7 +58,7 @@ public class PolygonSpatialIndexVisualDebugger implements PolygonSpatialIndexDeb
     }
 
     @Override
-    public void quadrant(final Rectangle bounds)
+    public void quadrant(Rectangle bounds)
     {
         view.add(Bounds.INACTIVE_BOUNDING_BOX.withRectangle(bounds));
     }

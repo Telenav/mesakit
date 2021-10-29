@@ -36,7 +36,7 @@ public class RelationProperties extends GraphElementPropertySet<EdgeRelation>
 
     public abstract class RelationProperty extends GraphElementProperty<EdgeRelation>
     {
-        protected RelationProperty(final String name, final Attribute<?> attribute)
+        protected RelationProperty(String name, Attribute<?> attribute)
         {
             super(name, attribute, CommonDataSpecification.get());
             add(this);
@@ -46,7 +46,7 @@ public class RelationProperties extends GraphElementPropertySet<EdgeRelation>
     public final RelationProperty MEMBERS = new RelationProperty("members", RelationAttributes.get().MEMBER_IDENTIFIERS)
     {
         @Override
-        public Object value(final EdgeRelation relation)
+        public Object value(EdgeRelation relation)
         {
             return relation.members();
         }
@@ -55,9 +55,9 @@ public class RelationProperties extends GraphElementPropertySet<EdgeRelation>
     public final RelationProperty TYPE = new RelationProperty("type", RelationAttributes.get().TYPE)
     {
         @Override
-        public Object value(final EdgeRelation relation)
+        public Object value(EdgeRelation relation)
         {
-            final var type = relation.type();
+            var type = relation.type();
             return type == null ? "N/A" : type.toString();
         }
     };

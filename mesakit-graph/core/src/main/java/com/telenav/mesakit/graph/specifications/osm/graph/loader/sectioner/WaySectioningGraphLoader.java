@@ -58,7 +58,7 @@ public class WaySectioningGraphLoader extends BaseGraphLoader
      * @param raw The raw graph to section
      * @param edgeSectioner The configured edge sectioner to do the job
      */
-    public WaySectioningGraphLoader(final Graph raw, final EdgeSectioner edgeSectioner)
+    public WaySectioningGraphLoader(Graph raw, EdgeSectioner edgeSectioner)
     {
         this.raw = raw;
         this.edgeSectioner = edgeSectioner;
@@ -69,27 +69,27 @@ public class WaySectioningGraphLoader extends BaseGraphLoader
      * {@inheritDoc}
      */
     @Override
-    public Metadata onLoad(final GraphStore store, final GraphConstraints constraints)
+    public Metadata onLoad(GraphStore store, GraphConstraints constraints)
     {
         // To add sectioned edges to the graph,
-        final var start = Time.now();
-        final var progress = ConcurrentProgress.createConcurrent(this, "edges",
+        var start = Time.now();
+        var progress = ConcurrentProgress.createConcurrent(this, "edges",
                 raw.forwardEdgeCount().asMaximum()).withPhase("  [Sectioning Ways] ");
         progress.start();
 
         // we get the edge and relation stores
-        final var edgeStore = store.edgeStore();
-        final var relationStore = store.relationStore();
+        var edgeStore = store.edgeStore();
+        var relationStore = store.relationStore();
 
         // and an iterator over batches of edges
-        final var batches = raw.batches(Count._16384);
+        var batches = raw.batches(Count._16384);
 
         // then we start a thread pool
-        final var lock = new ReentrantLock(true);
+        var lock = new ReentrantLock(true);
 
         // and get adders for each store
-        final var edgeStoreAdder = edgeStore.adder();
-        final var relationStoreAdder = relationStore.adder();
+        var edgeStoreAdder = edgeStore.adder();
+        var relationStoreAdder = relationStore.adder();
 
         // then we loop
         while (true)
@@ -114,24 +114,24 @@ public class WaySectioningGraphLoader extends BaseGraphLoader
             }
 
             // and process each way/edge in the batch
-            for (final var way : batch)
+            for (var way : batch)
             {
                 // breaking the way into smaller sections
-                final var sections = edgeSectioner.section(way);
-                for (final var section : sections)
+                var sections = edgeSectioner.section(way);
+                for (var section : sections)
                 {
                     // and if a section is included,
                     if (constraints.includes(section))
                     {
                         // we add it to the edge store.
-                        final var heavyweight = section.asHeavyWeight();
+                        var heavyweight = section.asHeavyWeight();
                         heavyweight.copyRoadNames(way);
                         edgeStoreAdder.add(heavyweight);
                     }
                 }
 
                 // Then for each of the way's relations,
-                for (final var relation : way.relations())
+                for (var relation : way.relations())
                 {
                     // if it hasn't already been added,
                     if (!relationStore.containsIdentifier(relation.identifierAsLong()))
@@ -141,7 +141,7 @@ public class WaySectioningGraphLoader extends BaseGraphLoader
                     }
 
                     // and go through the way's sections
-                    for (final var edge : sections)
+                    for (var edge : sections)
                     {
                         // adding the relation to the edge
                         store.edgeStore().storeRelation(edge, relation);
@@ -160,10 +160,10 @@ public class WaySectioningGraphLoader extends BaseGraphLoader
         information("Added $ edges, discarded $ in $", Count.count(edgeStore.count()), edgeStore.discarded(), start.elapsedSince());
 
         // Add places to the graph
-        final var startPlaces = Time.now();
-        final var placeStore = store.placeStore();
-        final var adder = placeStore.adder();
-        for (final var place : raw.places())
+        var startPlaces = Time.now();
+        var placeStore = store.placeStore();
+        var adder = placeStore.adder();
+        for (var place : raw.places())
         {
             adder.add(place);
         }

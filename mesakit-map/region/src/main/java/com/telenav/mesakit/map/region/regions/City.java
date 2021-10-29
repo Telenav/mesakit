@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.region.regions;
 
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionCode;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**
  * @author Jianbo Chen
@@ -32,17 +32,17 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 @UmlClassDiagram(diagram = DiagramRegions.class)
 public class City extends Region<City>
 {
-    public static City forIdentity(final RegionIdentity identity)
+    public static City forIdentity(RegionIdentity identity)
     {
         return type(City.class).forIdentity(identity);
     }
 
-    public static City forRegionCode(final RegionCode code)
+    public static City forRegionCode(RegionCode code)
     {
         return type(City.class).forRegionCode(code);
     }
 
-    public City(final State state, final RegionInstance<City> instance)
+    public City(State state, RegionInstance<City> instance)
     {
         super(state, instance.prefix("City").prefix(state));
     }

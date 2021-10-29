@@ -85,7 +85,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     /**
      * Construct with good defaults
      */
-    public RTreeSpatialIndex(final String objectName, final RTreeSettings settings)
+    public RTreeSpatialIndex(String objectName, RTreeSettings settings)
     {
         assert objectName != null;
 
@@ -101,7 +101,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     /**
      * Adds the given element to this spatial index
      */
-    public synchronized void add(final Element element)
+    public synchronized void add(Element element)
     {
         root().add(element);
     }
@@ -117,7 +117,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
         return root.bounds();
     }
 
-    public void bulkLoad(final List<Element> elements)
+    public void bulkLoad(List<Element> elements)
     {
         new RTreeBulkLoader<>(this).load(elements);
     }
@@ -128,7 +128,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
         return Count.count(all());
     }
 
-    public void debugger(final RTreeSpatialIndexDebugger<Element> debugger)
+    public void debugger(RTreeSpatialIndexDebugger<Element> debugger)
     {
         this.debugger = debugger;
     }
@@ -138,7 +138,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
         return debugger;
     }
 
-    public void dump(final PrintStream out)
+    public void dump(PrintStream out)
     {
         dump(out, DumpDetailLevel.SHOW_OBJECTS);
     }
@@ -146,7 +146,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     /**
      * Dumps the r-tree to the given print stream
      */
-    public void dump(final PrintStream out, final DumpDetailLevel detail)
+    public void dump(PrintStream out, DumpDetailLevel detail)
     {
         out.println(statistics());
         root().dump(out, 1, detail);
@@ -154,11 +154,11 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
 
     @SuppressWarnings("rawtypes")
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof RTreeSpatialIndex)
         {
-            final var that = (RTreeSpatialIndex) object;
+            var that = (RTreeSpatialIndex) object;
             return Objects.equalPairs(root, that.root);
         }
         return false;
@@ -173,7 +173,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     /**
      * @return An iterator of elements that intersect with the given bounding rectangle
      */
-    public synchronized Iterable<Element> intersecting(final Rectangle bounds)
+    public synchronized Iterable<Element> intersecting(Rectangle bounds)
     {
         return intersecting(bounds, allElements);
     }
@@ -181,7 +181,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     /**
      * @return An iterator of elements that intersect with the given bounding rectangle and match the given matcher
      */
-    public synchronized Iterable<Element> intersecting(final Rectangle bounds, final Matcher<Element> matcher)
+    public synchronized Iterable<Element> intersecting(Rectangle bounds, Matcher<Element> matcher)
     {
         return Iterables.iterable(() -> new Next<>()
         {
@@ -199,7 +199,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
         });
     }
 
-    public Leaf<Element> newLeaf(final InteriorNode<Element> parent)
+    public Leaf<Element> newLeaf(InteriorNode<Element> parent)
     {
         return new UncompressedLeaf<>(this, parent);
     }
@@ -211,12 +211,12 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     }
 
     @Override
-    public void objectName(final String objectName)
+    public void objectName(String objectName)
     {
         this.objectName = objectName;
     }
 
-    public void root(final Node<Element> root)
+    public void root(Node<Element> root)
     {
         if (this.root != null)
         {
@@ -232,7 +232,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
 
     public Statistics statistics()
     {
-        final var statistics = new Statistics();
+        var statistics = new Statistics();
         root().statistics(1, statistics);
         return statistics;
     }

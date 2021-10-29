@@ -31,7 +31,7 @@ class TestLeaf extends Leaf<Polyline>
 {
     ObjectList<Polyline> polylines = new ObjectList<>();
 
-    public TestLeaf(final RTreeSpatialIndex<Polyline> index, final InteriorNode<Polyline> parent)
+    public TestLeaf(RTreeSpatialIndex<Polyline> index, InteriorNode<Polyline> parent)
     {
         super(index, parent);
     }
@@ -42,18 +42,18 @@ class TestLeaf extends Leaf<Polyline>
     }
 
     @Override
-    public void addAll(final List<Polyline> elements)
+    public void addAll(List<Polyline> elements)
     {
         polylines.addAll(elements);
         bounds(Rectangle.fromBoundedObjects(elements));
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof TestLeaf)
         {
-            final var that = (TestLeaf) object;
+            var that = (TestLeaf) object;
             return super.equals(that) && polylines.equals(that.polylines);
         }
         return false;
@@ -66,7 +66,7 @@ class TestLeaf extends Leaf<Polyline>
     }
 
     @Override
-    protected void addElement(final Polyline element)
+    protected void addElement(Polyline element)
     {
         unsupported();
     }

@@ -68,10 +68,10 @@ public class Grid
 
     private transient GridCell[][] cells;
 
-    public Grid(final Angle cellSize, final Latitude maximum)
+    public Grid(Angle cellSize, Latitude maximum)
     {
         approximateCellSize = Distance.EARTH_RADIUS_MINOR.times(cellSize.asRadians());
-        final var approximateCellSizeInMicroDegrees = (int) (cellSize.asDegrees() * 1000000L);
+        var approximateCellSizeInMicroDegrees = (int) (cellSize.asDegrees() * 1000000L);
 
         initialize(maximum, approximateCellSizeInMicroDegrees);
 
@@ -79,10 +79,10 @@ public class Grid
         cellHeightInMicroDegrees = approximateCellSizeInMicroDegrees;
     }
 
-    public Grid(final Distance approximateCellSize, final Latitude maximum)
+    public Grid(Distance approximateCellSize, Latitude maximum)
     {
         this.approximateCellSize = approximateCellSize;
-        final var approximateCellSizeInMicroDegrees = (int) (this.approximateCellSize.asDegrees() * 1000000L);
+        var approximateCellSizeInMicroDegrees = (int) (this.approximateCellSize.asDegrees() * 1000000L);
 
         initialize(maximum, approximateCellSizeInMicroDegrees);
 
@@ -95,7 +95,7 @@ public class Grid
         return approximateCellSize;
     }
 
-    public GridCell cell(final Location location)
+    public GridCell cell(Location location)
     {
         assert location != null;
         return cellForIndices(indexForLatitude(location.latitude()), indexForLongitude(location.longitude()));
@@ -107,7 +107,7 @@ public class Grid
         return Count.count((long) latitudeCellCount * longitudeCellCount);
     }
 
-    public GridCell cellForIdentifier(final GridCellIdentifier identifier)
+    public GridCell cellForIdentifier(GridCellIdentifier identifier)
     {
         return cellForIndices(identifier.latitudeIndex(), identifier.longitudeIndex());
     }
@@ -115,15 +115,15 @@ public class Grid
     /**
      * Add a method to just get the identifiers within a bounding box
      */
-    public List<GridCellIdentifier> cellIdentifiersWithin(final Rectangle bounds)
+    public List<GridCellIdentifier> cellIdentifiersWithin(Rectangle bounds)
     {
         if (bounds != null)
         {
-            final List<GridCellIdentifier> list = new ArrayList<>();
-            final var bottomIndex = indexForLatitude(bounds.bottomLeft().latitude());
-            final var leftIndex = indexForLongitude(bounds.bottomLeft().longitude());
-            final var topIndex = indexForLatitude(bounds.topRight().latitude().decremented());
-            final var rightIndex = indexForLongitude(bounds.topRight().longitude().decremented());
+            List<GridCellIdentifier> list = new ArrayList<>();
+            var bottomIndex = indexForLatitude(bounds.bottomLeft().latitude());
+            var leftIndex = indexForLongitude(bounds.bottomLeft().longitude());
+            var topIndex = indexForLatitude(bounds.topRight().latitude().decremented());
+            var rightIndex = indexForLongitude(bounds.topRight().longitude().decremented());
             for (var latitudeIndex = bottomIndex; latitudeIndex <= topIndex; latitudeIndex++)
             {
                 for (var longitudeIndex = leftIndex; longitudeIndex <= rightIndex; longitudeIndex++)
@@ -148,15 +148,15 @@ public class Grid
         return cellsIntersecting(Rectangle.MAXIMUM);
     }
 
-    public List<GridCell> cellsIntersecting(final Rectangle bounds)
+    public List<GridCell> cellsIntersecting(Rectangle bounds)
     {
         if (bounds != null)
         {
-            final List<GridCell> list = new ArrayList<>();
-            final var bottomIndex = indexForLatitude(bounds.bottomLeft().latitude());
-            final var leftIndex = indexForLongitude(bounds.bottomLeft().longitude());
-            final var topIndex = indexForLatitude(bounds.topRight().latitude().decremented());
-            final var rightIndex = indexForLongitude(bounds.topRight().longitude().decremented());
+            List<GridCell> list = new ArrayList<>();
+            var bottomIndex = indexForLatitude(bounds.bottomLeft().latitude());
+            var leftIndex = indexForLongitude(bounds.bottomLeft().longitude());
+            var topIndex = indexForLatitude(bounds.topRight().latitude().decremented());
+            var rightIndex = indexForLongitude(bounds.topRight().longitude().decremented());
             for (var latitudeIndex = bottomIndex; latitudeIndex <= topIndex; latitudeIndex++)
             {
                 for (var longitudeIndex = leftIndex; longitudeIndex <= rightIndex; longitudeIndex++)
@@ -176,7 +176,7 @@ public class Grid
      * @param location The location
      * @return The grid cell identifier
      */
-    public GridCellIdentifier identifierForLocation(final Location location)
+    public GridCellIdentifier identifierForLocation(Location location)
     {
         return new GridCellIdentifier(this, indexForLatitude(location.latitude()),
                 indexForLongitude(location.longitude()));
@@ -184,8 +184,8 @@ public class Grid
 
     public List<GridCellIdentifier> identifiers()
     {
-        final List<GridCellIdentifier> identifiers = new ArrayList<>();
-        for (final var cell : cells())
+        List<GridCellIdentifier> identifiers = new ArrayList<>();
+        for (var cell : cells())
         {
             identifiers.add(cell.identifier());
         }
@@ -226,7 +226,7 @@ public class Grid
      * @param longitudeIndex The zero-based longitude cell index
      * @return The cell for the given indices
      */
-    private GridCell cellForIndices(final int latitudeIndex, final int longitudeIndex)
+    private GridCell cellForIndices(int latitudeIndex, int longitudeIndex)
     {
         if (latitudeIndex >= 0 && longitudeIndex >= 0 && latitudeIndex < latitudeCellCount
                 && longitudeIndex < longitudeCellCount)
@@ -256,7 +256,7 @@ public class Grid
      * @param latitude The latitude
      * @return The zero-based grid index
      */
-    private int indexForLatitude(final Latitude latitude)
+    private int indexForLatitude(Latitude latitude)
     {
         return Ints.inRange(
                 (latitude.asMicrodegrees() + maximumLatitude.asMicrodegrees()) / cellHeightInMicroDegrees, 0,
@@ -267,14 +267,14 @@ public class Grid
      * @param longitude The longitude
      * @return The zero-based grid index
      */
-    private int indexForLongitude(final Longitude longitude)
+    private int indexForLongitude(Longitude longitude)
     {
         return Ints.inRange(
                 (longitude.asMicrodegrees() + Longitude.MAXIMUM.asMicrodegrees()) / cellWidthInMicroDegrees, 0,
                 longitudeCellCount - 1);
     }
 
-    private void initialize(final Latitude maximum, final int approximateCellSizeInMicroDegrees)
+    private void initialize(Latitude maximum, int approximateCellSizeInMicroDegrees)
     {
         maximumLatitude = maximum;
 
@@ -290,7 +290,7 @@ public class Grid
         ensure(longitudeCellCount <= 1000);
     }
 
-    private Latitude latitudeForIndex(final int latitudeIndex)
+    private Latitude latitudeForIndex(int latitudeIndex)
     {
         var microdegrees = latitudeIndex * cellHeightInMicroDegrees - maximumLatitude.asMicrodegrees();
 
@@ -303,12 +303,12 @@ public class Grid
         return Latitude.microdegrees(microdegrees);
     }
 
-    private Location locationForIndices(final int latitudeIndex, final int longitudeIndex)
+    private Location locationForIndices(int latitudeIndex, int longitudeIndex)
     {
         return new Location(latitudeForIndex(latitudeIndex), longitudeForIndex(longitudeIndex));
     }
 
-    private Longitude longitudeForIndex(final int longitudeIndex)
+    private Longitude longitudeForIndex(int longitudeIndex)
     {
         var microdegrees = longitudeIndex * cellWidthInMicroDegrees - Longitude.MAXIMUM.asMicrodegrees();
 
