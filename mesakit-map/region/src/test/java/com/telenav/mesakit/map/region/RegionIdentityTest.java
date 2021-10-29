@@ -74,7 +74,7 @@ public class RegionIdentityTest extends RegionUnitTest
     @Test
     public void testHashAndEquals()
     {
-        Set<RegionIdentity> identities = new HashSet<>();
+        final Set<RegionIdentity> identities = new HashSet<>();
         var identity = new RegionIdentity("Alameda").withIsoCode("US-CA-COUNTY_ALAMEDA");
         identities.add(identity);
         identities.add(identity);

@@ -41,7 +41,7 @@ public class PolylineSnapperTest extends GeographyUnitTest
         var shape1 = new Location(Latitude.degrees(37.386482), Longitude.degrees(-122.004362));
         var shape2 = new Location(Latitude.degrees(37.386618), Longitude.degrees(-122.003158));
         var end = new Location(Latitude.degrees(37.38553), Longitude.degrees(-122.002442));
-        List<Location> locations = new ArrayList<>();
+        final List<Location> locations = new ArrayList<>();
         locations.add(start);
         locations.add(shape1);
         locations.add(shape2);

@@ -42,7 +42,7 @@ public class EncodedPolylineConverterTest extends GeographyUnitTest
     public void testEncodingDecoding()
     {
         // Line wrapping Telenav's buildings
-        var encoded = "_}dcFrhtgVlA?G_JuDF";
+        @SuppressWarnings("SpellCheckingInspection") var encoded = "_}dcFrhtgVlA?G_JuDF";
         var builder = new PolylineBuilder();
         builder.add(new Location(Latitude.degrees(37.38592), Longitude.degrees(-122.00602)));
         builder.add(new Location(Latitude.degrees(37.38553), Longitude.degrees(-122.00602)));

@@ -41,7 +41,7 @@ public class CountyTest extends RegionUnitTest
     @Test
     public void testCountySameAsMetro()
     {
-        County county = County.forLocation(Location.degrees(39.5615881, -77.7744467));
+        final County county = County.forLocation(Location.degrees(39.5615881, -77.7744467));
         ensureEqual("US-MD-COUNTYWASHINGTON", county.identity().iso().code());
         ensureEqual("United_States-Maryland-County_Washington", county.identity().mesakit().code());
         ensureEqual("Washington", county.name());
@@ -80,7 +80,7 @@ public class CountyTest extends RegionUnitTest
     public void testSpecialCharacters()
     {
         var location = Location.degrees(18.3616778, -66.1814385);
-        County county = County.forLocation(location);
+        final County county = County.forLocation(location);
         ensureEqual("US-PR-COUNTYBAYAMN", county.identity().iso().code());
         ensureEqual("United_States-Puerto_Rico-County_Bayamón", county.identity().mesakit().code());
     }
