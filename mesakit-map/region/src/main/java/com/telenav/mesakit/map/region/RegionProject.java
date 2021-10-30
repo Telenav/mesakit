@@ -21,6 +21,7 @@ package com.telenav.mesakit.map.region;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.language.objects.Lazy;
 import com.telenav.kivakit.kernel.language.values.version.Version;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.kivakit.kernel.project.Project;
 import com.telenav.kivakit.primitive.collections.project.PrimitiveCollectionsKryoTypes;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
@@ -56,7 +57,7 @@ public class RegionProject extends Project
      */
     public Version borderDataVersion()
     {
-        return Version.parse("0.9.1");
+        return Version.parse(Listener.none(), "0.9.1");
     }
 
     /**
