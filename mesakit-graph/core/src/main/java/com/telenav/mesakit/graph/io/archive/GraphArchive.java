@@ -83,11 +83,6 @@ public class GraphArchive extends FieldArchive implements Named
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public SwitchParser.Builder<Graph> GRAPH = graphArchiveSwitchParser(this, "graph", "Input graph file");
-
-    public SwitchParser.Builder<GraphList> GRAPH_LIST = graphListSwitchParser(this, "graphs",
-            "A comma separated list of graph files and/or folders");
-
     private static final Debug DEBUG = new Debug(LOGGER);
 
     public static boolean accepts(FileName name)
@@ -187,6 +182,11 @@ public class GraphArchive extends FieldArchive implements Named
             return null;
         }
     }
+
+    public SwitchParser.Builder<Graph> GRAPH = graphArchiveSwitchParser(this, "graph", "Input graph file");
+
+    public SwitchParser.Builder<GraphList> GRAPH_LIST = graphListSwitchParser(this, "graphs",
+            "A comma separated list of graph files and/or folders");
 
     public GraphArchive(Listener listener, File file, ZipArchive.Mode mode,
                         ProgressReporter reporter)
