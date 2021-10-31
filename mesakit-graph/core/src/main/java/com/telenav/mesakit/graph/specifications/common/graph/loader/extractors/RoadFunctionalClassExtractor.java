@@ -85,7 +85,7 @@ public class RoadFunctionalClassExtractor extends BaseExtractor<RoadFunctionalCl
         var hereFunctionalClass = way.tagValue("functional_class");
         if (hereFunctionalClass != null)
         {
-            var value = Ints.parse(hereFunctionalClass);
+            var value = Ints.parse(this, hereFunctionalClass);
             if (value != Ints.INVALID)
             {
                 return RoadFunctionalClass.forInvertedIdentifier(value);
@@ -95,7 +95,7 @@ public class RoadFunctionalClassExtractor extends BaseExtractor<RoadFunctionalCl
         var navteqFunctionalClass = way.tagValue("fc");
         if (navteqFunctionalClass != null)
         {
-            var value = Ints.parse(navteqFunctionalClass);
+            var value = Ints.parse(this, navteqFunctionalClass);
             if (value != Ints.INVALID)
             {
                 return RoadFunctionalClass.forIdentifier(value);

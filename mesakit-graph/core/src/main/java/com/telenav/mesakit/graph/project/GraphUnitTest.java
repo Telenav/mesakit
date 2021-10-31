@@ -151,7 +151,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
     {
         var store = Settings.of(this);
         LOGGER.listenTo(store);
-        store.registerAllSettingsIn(this, Folder.parse("configuration"));
+        store.registerAllSettingsIn(this, Folder.parse(this, "configuration"));
     }
 
     protected Edge edge(Graph graph, double fromLatitude, double fromLongitude,

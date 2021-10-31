@@ -39,6 +39,7 @@ import com.telenav.kivakit.kernel.language.values.count.Estimate;
 import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.kernel.language.values.count.MutableCount;
 import com.telenav.kivakit.kernel.language.values.version.VersionedObject;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.kivakit.kernel.messaging.Message;
 import com.telenav.kivakit.kernel.messaging.messages.status.Problem;
 import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
@@ -130,9 +131,9 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
     /**
      * Border data path on S3
      */
-    private static final NetworkPath NETWORK_PATH = Host.parse("www.mesakit.org")
+    private static final NetworkPath NETWORK_PATH = Host.parse(Listener.console(), "www.mesakit.org")
             .https()
-            .path(Message.format("/data/$/administrative-borders-$.jar",
+            .path(Listener.console(), Message.format("/data/$/administrative-borders-$.jar",
                     RegionProject.get().borderDataVersion(),
                     RegionProject.get().borderDataVersion()));
 
@@ -443,7 +444,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
     {
         return cacheFolder()
                 .mkdirs()
-                .file(FileName.parse(baseName(type()) + ".kryo"));
+                .file(FileName.parse(this, baseName(type()) + ".kryo"));
     }
 
     private FileCache cache()
@@ -471,7 +472,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
 
     private File identitiesFile()
     {
-        return cacheFolder().file(FileName.parse(baseName(type()) + "-identities.kryo"));
+        return cacheFolder().file(FileName.parse(this, baseName(type()) + "-identities.kryo"));
     }
 
     private void installData()
@@ -922,7 +923,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
 
     private File pbfFile(Class<?> type)
     {
-        return cacheFolder().file(FileName.parse(baseName(type) + ".osm.pbf"));
+        return cacheFolder().file(FileName.parse(this, baseName(type) + ".osm.pbf"));
     }
 
     private void saveBordersToCache()

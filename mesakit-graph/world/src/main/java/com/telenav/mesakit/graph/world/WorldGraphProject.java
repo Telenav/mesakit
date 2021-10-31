@@ -44,7 +44,7 @@ public class WorldGraphProject extends Project
     @Override
     public ObjectSet<Project> dependencies()
     {
-        return ObjectSet.of(GraphProject.get());
+        return ObjectSet.objectSet(GraphProject.get());
     }
 
     /**

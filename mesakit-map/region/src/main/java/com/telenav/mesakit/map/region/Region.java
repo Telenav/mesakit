@@ -106,11 +106,11 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static SwitchParser.Builder<RegionSet> REGIONS = regionListSwitchParser("regions",
+    public static SwitchParser.Builder<RegionSet> REGIONS = regionListSwitchParser(LOGGER, "regions",
             "A comma separated list of regions");
 
     @SuppressWarnings({ "rawtypes" })
-    public static SwitchParser.Builder<Region> REGION = regionSwitchParser("region",
+    public static SwitchParser.Builder<Region> REGION = regionSwitchParser(LOGGER, "region",
             "A comma separated list of regions");
 
     private static final Debug DEBUG = new Debug(LOGGER);
@@ -306,23 +306,24 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    public static ArgumentParser.Builder<Region> regionArgumentParser(String description)
+    public static ArgumentParser.Builder<Region> regionArgumentParser(Listener listener, String description)
     {
-        return ArgumentParser.builder(Region.class).converter(new Converter(LOGGER)).description(description);
+        return ArgumentParser.builder(Region.class).converter(new Converter(listener)).description(description);
     }
 
-    public static SwitchParser.Builder<RegionSet> regionListSwitchParser(String name, String description)
+    public static SwitchParser.Builder<RegionSet> regionListSwitchParser(Listener listener, String name,
+                                                                         String description)
     {
         return SwitchParser.builder(RegionSet.class)
                 .name(name)
                 .description(description)
-                .converter(new SetConverter(LOGGER));
+                .converter(new SetConverter(listener));
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public static SwitchParser.Builder<Region> regionSwitchParser(String name, String description)
+    public static SwitchParser.Builder<Region> regionSwitchParser(Listener listener, String name, String description)
     {
-        return SwitchParser.builder(Region.class).name(name).description(description).converter(new Converter(LOGGER));
+        return SwitchParser.builder(Region.class).name(name).description(description).converter(new Converter(listener));
     }
 
     @SuppressWarnings({ "rawtypes" })
@@ -632,7 +633,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     @KivaKitIncludeProperty
     public FileName fileName()
     {
-        return FileName.parse(name());
+        return FileName.parse(LOGGER, name());
     }
 
     /**
@@ -643,7 +644,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     {
         if (parent == null)
         {
-            return Folder.of(fileName());
+            return Folder.from(fileName());
         }
         else
         {

@@ -40,7 +40,7 @@ import com.telenav.mesakit.map.overpass.project.lexakai.diagrams.DiagramOverpass
 @UmlRelation(label = "converts data with", referent = OsmToPbfConverter.class)
 public class OverpassDataDownloader extends BaseRepeater
 {
-    public static final Host HOST = Host.parse("overpass-api.de");
+    public final Host HOST = Host.parse(this, "overpass-api.de");
 
     public static final Distance MAXIMUM_SIZE = Distance.kilometers(50);
 

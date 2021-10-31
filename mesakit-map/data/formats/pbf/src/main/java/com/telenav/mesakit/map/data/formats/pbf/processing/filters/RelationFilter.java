@@ -24,8 +24,6 @@ import com.telenav.kivakit.kernel.interfaces.comparison.Filter;
 import com.telenav.kivakit.kernel.interfaces.naming.Named;
 import com.telenav.kivakit.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.kernel.language.collections.map.string.NameMap;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -44,8 +42,6 @@ public class RelationFilter implements Filter<PbfRelation>, Named
 {
     private static final NameMap<RelationFilter> relationFilterForName = new NameMap<>();
 
-    private static final Logger LOGGER = LoggerFactory.newLogger();
-
     public static RelationFilter forName(String name)
     {
         var filter = relationFilterForName.get(name);
@@ -56,17 +52,17 @@ public class RelationFilter implements Filter<PbfRelation>, Named
         return fail("Unrecognized relation filter '" + name + "'");
     }
 
-    public static SwitchParser.Builder<RelationFilter> relationFilterSwitchParser()
+    public static SwitchParser.Builder<RelationFilter> relationFilterSwitchParser(Listener listener)
     {
         PbfFilters.loadAll();
-        return relationFilterSwitchParser("relation-filter", "The name of a relation filter:\n\n" + help() + "\n");
+        return relationFilterSwitchParser(listener, "relation-filter", "The name of a relation filter:\n\n" + help() + "\n");
     }
 
-    public static SwitchParser.Builder<RelationFilter> relationFilterSwitchParser(String name,
+    public static SwitchParser.Builder<RelationFilter> relationFilterSwitchParser(Listener listener, String name,
                                                                                   String description)
     {
         return SwitchParser.builder(RelationFilter.class).name(name).description(description)
-                .converter(new Converter(LOGGER));
+                .converter(new Converter(listener));
     }
 
     public static class Converter extends BaseStringConverter<RelationFilter>

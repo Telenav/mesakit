@@ -23,8 +23,6 @@ import com.telenav.kivakit.kernel.data.conversion.BaseConverter;
 import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
 import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludeProperty;
 import com.telenav.kivakit.kernel.language.values.identifier.Identifier;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
@@ -90,8 +88,6 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
      */
     public static final long SEQUENCE_NUMBER_EDGE_SECTION_INCREMENT = 1;
 
-    private static final Logger LOGGER = LoggerFactory.newLogger();
-
     /**
      * The sequence number is incremented by this value for each 'chunk' that is produced by clean cutting. Note that
      * this will only happen if a way wanders back and forth across the clean-cutting boundary, producing two or more
@@ -109,13 +105,14 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
 
     private static final long CHUNK_NUMBER_INCREMENT = MAXIMUM_CHUNK_NUMBER + 1;
 
-    public static SwitchParser.Builder<EdgeIdentifier> edgeIdentifierSwitchParser(String name,
+    public static SwitchParser.Builder<EdgeIdentifier> edgeIdentifierSwitchParser(Listener listener,
+                                                                                  String name,
                                                                                   String description)
     {
         return SwitchParser.builder(EdgeIdentifier.class)
                 .name(name)
                 .description(description)
-                .converter(new Converter(LOGGER));
+                .converter(new Converter(listener));
     }
 
     /**

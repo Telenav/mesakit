@@ -19,10 +19,11 @@
 package com.telenav.mesakit.map.geography.project;
 
 import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.messaging.Listener;
 
 public class GeographyLimits
 {
-    public static final Maximum LOCATIONS_PER_POLYLINE = Maximum.parse("200,000");
+    public static final Maximum LOCATIONS_PER_POLYLINE = Maximum.parseMaximum(Listener.console(), "200,000");
 
-    public static final Maximum BYTES_PER_POLYLINE = Maximum.parse("65,536");
+    public static final Maximum BYTES_PER_POLYLINE = Maximum.parseMaximum(Listener.console(), "65,536");
 }

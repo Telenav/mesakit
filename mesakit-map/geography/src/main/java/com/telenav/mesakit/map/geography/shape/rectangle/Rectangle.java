@@ -257,9 +257,13 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         return null;
     }
 
-    public static SwitchParser.Builder<Rectangle> rectangleSwitchParser(String name, String description)
+    public static SwitchParser.Builder<Rectangle> rectangleSwitchParser(Listener listener,
+                                                                        String name,
+                                                                        String description)
     {
-        return SwitchParser.builder(Rectangle.class).name(name).converter(new Rectangle.Converter(LOGGER))
+        return SwitchParser.builder(Rectangle.class)
+                .name(name)
+                .converter(new Rectangle.Converter(listener))
                 .description(description);
     }
 

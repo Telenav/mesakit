@@ -76,16 +76,16 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupport
 public class GraphArchive extends FieldArchive implements Named
 {
     /** The current graph archive version */
-    public static final Version VERSION = Version.parse("0.9.8");
+    public static Version VERSION = Version.parse(Listener.console(), "0.9.8");
 
     /** The extension for a graph archive */
     public static final Extension EXTENSION = Extension.GRAPH;
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static SwitchParser.Builder<Graph> GRAPH = graphArchiveSwitchParser("graph", "Input graph file");
+    public SwitchParser.Builder<Graph> GRAPH = graphArchiveSwitchParser(this, "graph", "Input graph file");
 
-    public static SwitchParser.Builder<GraphList> GRAPH_LIST = graphListSwitchParser("graphs",
+    public SwitchParser.Builder<GraphList> GRAPH_LIST = graphListSwitchParser(this, "graphs",
             "A comma separated list of graph files and/or folders");
 
     private static final Debug DEBUG = new Debug(LOGGER);
@@ -113,20 +113,24 @@ public class GraphArchive extends FieldArchive implements Named
         return Resource.resolve(specifier);
     }
 
-    public static SwitchParser.Builder<Graph> graphArchiveSwitchParser(String name, String description)
+    public static SwitchParser.Builder<Graph> graphArchiveSwitchParser(Listener listener,
+                                                                       String name,
+                                                                       String description)
     {
         return SwitchParser.builder(Graph.class)
                 .name(name)
                 .description(description)
-                .converter(new Converter(LOGGER, ProgressReporter.NULL));
+                .converter(new Converter(listener, ProgressReporter.NULL));
     }
 
-    public static SwitchParser.Builder<GraphList> graphListSwitchParser(String name, String description)
+    public static SwitchParser.Builder<GraphList> graphListSwitchParser(Listener listener,
+                                                                        String name,
+                                                                        String description)
     {
         return SwitchParser.builder(GraphList.class)
                 .name(name)
                 .description(description)
-                .converter(new GraphArchive.ListConverter(LOGGER));
+                .converter(new GraphArchive.ListConverter(listener));
     }
 
     public static class Converter extends BaseStringConverter<Graph>

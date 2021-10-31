@@ -537,10 +537,10 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      */
     public FileName asFileName()
     {
-        return FileName.parse(dataSupplier
+        return FileName.parse(LOGGER, dataSupplier
                 + "-" + dataSpecification
                 + "-" + dataFormat
-                + "-" + FileName.parse(name.replaceAll("-", "_")).normalized()
+                + "-" + FileName.parse(LOGGER, name.replaceAll("-", "_")).normalized()
                 + (dataVersion == null ? "" : "-" + dataVersion)
                 + (dataBuild == null ? "" : "-" + dataBuild.asFileName()));
     }
@@ -551,7 +551,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      */
     public Folder asFolder()
     {
-        return Folder.of(asFileName());
+        return Folder.from(asFileName());
     }
 
     @Override
@@ -1294,9 +1294,9 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
                             .withDataSize(size)
                             .withDataPrecision(Precision.valueOf(precision))
                             .withDataBounds(Rectangle.parse(bounds))
-                            .withNodeCount(Count.parse(nodes))
-                            .withWayCount(Count.parse(ways))
-                            .withRelationCount(Count.parse(relations))
+                            .withNodeCount(Count.parseCount(LOGGER, nodes))
+                            .withWayCount(Count.parseCount(LOGGER, ways))
+                            .withRelationCount(Count.parseCount(LOGGER, relations))
                             .withCodecFrequencies(keyCharacterCodecFrequencies,
                                     keyStringCodecFrequencies,
                                     valueCharacterCodecFrequencies,

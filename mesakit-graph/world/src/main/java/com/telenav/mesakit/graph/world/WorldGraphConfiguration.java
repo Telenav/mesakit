@@ -90,7 +90,7 @@ public final class WorldGraphConfiguration
             remoteGraph.copyTo(localGraph, CopyMode.UPDATE, progress);
         }
 
-        return local.folder(FilePath.parseFilePath("/"), metadata);
+        return local.folder(FilePath.parseFilePath(LOGGER, "/"), metadata);
     }
 
     public WorldGraphRepository materializedRepository()

@@ -554,7 +554,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
 
         private Edge edgeForLongIdentifier(String value)
         {
-            var identifierAsLong = Longs.parse(value);
+            var identifierAsLong = Longs.parseFast(value);
             if (identifierAsLong != Longs.INVALID)
             {
                 var identifier = new EdgeIdentifier(identifierAsLong);

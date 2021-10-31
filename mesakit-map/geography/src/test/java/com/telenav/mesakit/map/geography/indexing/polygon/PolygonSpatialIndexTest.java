@@ -150,6 +150,6 @@ public class PolygonSpatialIndexTest extends GeographyUnitTest
 
     private ShapeFileReader world()
     {
-        return new ShapeFileReader(this, PackageResource.of(PolygonSpatialIndexTest.class, "world.shp"));
+        return new ShapeFileReader(this, PackageResource.packageResource(this, PolygonSpatialIndexTest.class, "world.shp"));
     }
 }

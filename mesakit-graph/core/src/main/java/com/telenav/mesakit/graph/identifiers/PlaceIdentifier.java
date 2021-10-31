@@ -20,8 +20,6 @@ package com.telenav.mesakit.graph.identifiers;
 
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
@@ -39,15 +37,14 @@ public class PlaceIdentifier extends MapNodeIdentifier implements GraphElementId
 {
     public static final int SIZE_IN_BITS = 64;
 
-    private static final Logger LOGGER = LoggerFactory.newLogger();
-
-    public static SwitchParser.Builder<PlaceIdentifier> placeIdentifierSwitchParser(String name,
+    public static SwitchParser.Builder<PlaceIdentifier> placeIdentifierSwitchParser(Listener listener,
+                                                                                    String name,
                                                                                     String description)
     {
         return SwitchParser.builder(PlaceIdentifier.class)
                 .name(name)
                 .description(description)
-                .converter(new Converter(LOGGER));
+                .converter(new Converter(listener));
     }
 
     public static class Converter extends Quantizable.Converter<PlaceIdentifier>

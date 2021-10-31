@@ -43,7 +43,7 @@ public class HovLaneCountExtractor extends BaseExtractor<Count, PbfWay>
             {
                 return Count._1;
             }
-            return Count.parse(hov);
+            return Count.parseCount(this, hov);
         }
         var lanes = way.tagValueAsCount("hov:lanes");
         if (lanes != null)

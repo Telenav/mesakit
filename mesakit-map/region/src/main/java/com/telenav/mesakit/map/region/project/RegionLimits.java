@@ -20,6 +20,7 @@ package com.telenav.mesakit.map.region.project;
 
 import com.telenav.kivakit.kernel.language.values.count.Estimate;
 import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.messaging.Listener;
 
 /**
  * Limits of ways nodes and relations in a single PBF or graph
@@ -36,12 +37,12 @@ public class RegionLimits
 
     public static final Estimate ESTIMATED_NODES = Estimate.estimate(Estimated.NODES);
 
-    public static final Maximum CITIES = Maximum.parse("10,000");
+    public static final Maximum CITIES = Maximum.parseMaximum(Listener.console(), "10,000");
 
     // Regions
     public static final Maximum CONTINENTS = Maximum._7;
 
-    public static final Maximum DISTRICTS_PER_CITY = Maximum.parse("100");
+    public static final Maximum DISTRICTS_PER_CITY = Maximum.parseMaximum(Listener.console(), "100");
 
     public static final Maximum COUNTIES = Maximum._10_000;
 
@@ -64,7 +65,7 @@ public class RegionLimits
 
     public static final Maximum STATES = Maximum._10_000;
 
-    public static final Maximum TIME_ZONES = Maximum.parse("30,000");
+    public static final Maximum TIME_ZONES = Maximum.parseMaximum(Listener.console(), "30,000");
 
     static class Estimated
     {

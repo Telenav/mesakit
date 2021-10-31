@@ -57,7 +57,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
     /**
      * The name of the temporary extraction folder
      */
-    public static final FileName TEMPORARY_FOLDER_NAME = FileName.parse("temporary");
+    public static final FileName TEMPORARY_FOLDER_NAME = FileName.parse(LOGGER, "temporary");
 
     /** A switch parser to select an existing world graph folder */
     public static SwitchParser.Builder<WorldGraphRepositoryFolder> SWITCH_PARSER_EXISTING =
@@ -74,7 +74,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
                     .description("Full path to world graph data folder");
 
     /** The extension for world graph folders */
-    public static final Extension WORLD = Extension.parse(".world");
+    public static final Extension WORLD = Extension.parse(LOGGER, ".world");
 
     /**
      * @return A {@link Problem} message detailing the problem if the given folder doesn't exist or is not of the
@@ -129,7 +129,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
         @Override
         protected WorldGraphRepositoryFolder onToValue(String value)
         {
-            var folder = Folder.parse(value);
+            var folder = Folder.parse(this, value);
             if (folder != null)
             {
                 var message = check(folder, existence);

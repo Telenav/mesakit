@@ -34,6 +34,7 @@ import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.kivakit.resource.ResourceList;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.mesakit.graph.Graph;
@@ -329,7 +330,7 @@ public class WorldGrid
             feature.add(new GeoJsonPolyline(worldCell.bounds().asPolyline()));
             output.add(feature);
         }
-        output.save(File.parse("data/world-graph-2-degree-cells.geojson"));
+        output.save(File.parse(Listener.console(), "data/world-graph-2-degree-cells.geojson"));
     }
 
     /**
@@ -476,7 +477,7 @@ public class WorldGrid
         {
             var cached = regionCache().file(region.fileName()
                     .withSuffix("-" + Math.round(grid.approximateCellSize().asDegrees()) + "-degree-grid")
-                    .withExtension(Extension.parse(".cells")));
+                    .withExtension(Extension.parse(Listener.console(), ".cells")));
             if (cached.exists())
             {
                 var cellNames = cached.reader().string();

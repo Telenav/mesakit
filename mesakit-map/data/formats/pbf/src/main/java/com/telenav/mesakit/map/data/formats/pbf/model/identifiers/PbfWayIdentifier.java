@@ -22,8 +22,6 @@ import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.kernel.language.primitives.Longs;
 import com.telenav.kivakit.kernel.language.strings.Strip;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
@@ -36,8 +34,6 @@ import org.openstreetmap.osmosis.core.domain.v0_6.Way;
 @UmlClassDiagram(diagram = DiagramPbfModelIdentifiers.class)
 public class PbfWayIdentifier extends MapWayIdentifier implements PbfIdentifierType
 {
-    private static final Logger LOGGER = LoggerFactory.newLogger();
-
     public static MapWayIdentifier forLong(long identifier)
     {
         if (identifier == 0)
@@ -54,7 +50,7 @@ public class PbfWayIdentifier extends MapWayIdentifier implements PbfIdentifierT
 
     public static PbfWayIdentifier parse(String string)
     {
-        var identifier = Longs.parse(Strip.trailing(string, "L"));
+        var identifier = Longs.parseFast(Strip.trailing(string, "L"));
         if (identifier != Longs.INVALID)
         {
             return new PbfWayIdentifier(identifier);
@@ -62,13 +58,14 @@ public class PbfWayIdentifier extends MapWayIdentifier implements PbfIdentifierT
         return null;
     }
 
-    public static SwitchParser.Builder<PbfWayIdentifier> pbfWayIdentifierSwitchParser(String name,
+    public static SwitchParser.Builder<PbfWayIdentifier> pbfWayIdentifierSwitchParser(Listener listener,
+                                                                                      String name,
                                                                                       String description)
     {
         return SwitchParser.builder(PbfWayIdentifier.class)
                 .name(name)
                 .description(description)
-                .converter(new Converter(LOGGER));
+                .converter(new Converter(listener));
     }
 
     public static class Converter extends BaseStringConverter<PbfWayIdentifier>

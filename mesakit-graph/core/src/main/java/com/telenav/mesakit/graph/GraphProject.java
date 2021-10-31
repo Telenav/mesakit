@@ -51,7 +51,7 @@ public class GraphProject extends Project
     @Override
     public ObjectSet<Project> dependencies()
     {
-        return ObjectSet.of(RegionProject.get(), PbfProject.get());
+        return ObjectSet.objectSet(RegionProject.get(), PbfProject.get());
     }
 
     /**
@@ -85,6 +85,6 @@ public class GraphProject extends Project
     public Folder userGraphFolder()
     {
         var graphFolder = JavaVirtualMachine.property("MESAKIT_USER_GRAPH_FOLDER");
-        return graphFolder == null ? Folder.desktop() : Folder.parse(graphFolder);
+        return graphFolder == null ? Folder.desktop() : Folder.parse(this, graphFolder);
     }
 }

@@ -39,7 +39,7 @@ public class MesaKit extends Project
         var home = JavaVirtualMachine.property("MESAKIT_HOME");
         if (home != null)
         {
-            return Folder.parse(home);
+            return Folder.parse(this, home);
         }
         return fail("Cannot find MesaKit home folder");
     }

@@ -31,6 +31,7 @@ import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.kernel.language.values.version.Version;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.kivakit.kernel.messaging.filters.operators.All;
 import com.telenav.kivakit.resource.CopyMode;
 import com.telenav.kivakit.resource.Resource;
@@ -165,9 +166,9 @@ public class WorldGraph extends Graph
         /** Create a graph during extraction or for test purposes */
         CREATE;
 
-        public static SwitchParser.Builder<AccessMode> switchParser()
+        public static SwitchParser.Builder<AccessMode> switchParser(Listener listener)
         {
-            return enumSwitchParser("world-graph-mode", "The world graph access mode", AccessMode.class);
+            return enumSwitchParser(listener, "world-graph-mode", "The world graph access mode", AccessMode.class);
         }
     }
 

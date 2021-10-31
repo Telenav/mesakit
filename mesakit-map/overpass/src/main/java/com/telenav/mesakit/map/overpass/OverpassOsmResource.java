@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.overpass;
 
+import com.telenav.kivakit.component.BaseComponent;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
 import com.telenav.kivakit.kernel.messaging.messages.MessageFormatter;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.network.http.HttpPostResource;
 import com.telenav.kivakit.resource.resources.packaged.PackageResource;
@@ -40,11 +40,11 @@ import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
  */
 @UmlClassDiagram(diagram = DiagramOverpass.class)
 @UmlRelation(label = "copies data to", referent = Folder.class)
-class OverpassOsmResource extends BaseRepeater
+class OverpassOsmResource extends BaseComponent
 {
     private final Rectangle bounds;
 
-    private final String template = PackageResource.of(getClass(), "OverpassRequestTemplate.txt")
+    private final String template = PackageResource.packageResource(this, getClass(), "OverpassRequestTemplate.txt")
             .reader()
             .string();
 
@@ -71,6 +71,6 @@ class OverpassOsmResource extends BaseRepeater
     private HttpPostResource location(Rectangle bounds)
     {
         var payload = new MessageFormatter().format(template, bounds.toCommaSeparatedString());
-        return new HttpNetworkLocation(OverpassDataDownloader.HOST.http().path("/api/interpreter")).post(payload);
+        return new HttpNetworkLocation(require(OverpassDataDownloader.class).HOST.http().path(this, "/api/interpreter")).post(payload);
     }
 }

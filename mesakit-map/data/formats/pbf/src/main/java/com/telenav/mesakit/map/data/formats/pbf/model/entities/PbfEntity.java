@@ -4,6 +4,7 @@ import com.telenav.kivakit.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
 import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
 import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
@@ -142,7 +143,7 @@ public abstract class PbfEntity<T extends Entity> implements AsString, Iterable<
 
     public Count tagValueAsCount(String key)
     {
-        return Count.parse(tagValue(key));
+        return Count.parseCount(Listener.console(), tagValue(key));
     }
 
     public int tagValueAsInt(String key)

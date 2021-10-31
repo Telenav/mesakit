@@ -66,7 +66,7 @@ public class CopyingGraphLoader extends BaseGraphLoader
     {
         this.source = source;
         pbfNodeDiskStores = new PbfAllNodeDiskStores(PbfAllNodeDiskStores.temporary(),
-                FileName.parse(source.name() + "-" + Time.now().asMilliseconds()));
+                FileName.parse(this, source.name() + "-" + Time.now().asMilliseconds()));
     }
 
     /**

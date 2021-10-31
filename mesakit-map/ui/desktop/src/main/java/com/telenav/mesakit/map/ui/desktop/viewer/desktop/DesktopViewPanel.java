@@ -644,9 +644,9 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
                 var y = tile.y();
                 var z = tile.getZoomLevel().level();
 
-                return new HttpNetworkLocation(Host.parse("b.tile.openstreetmap.org")
+                return new HttpNetworkLocation(Host.parse(this, "b.tile.openstreetmap.org")
                         .http()
-                        .path(Message.format("/${long}/${long}/${long}.png", z, x, y)));
+                        .path(this, Message.format("/${long}/${long}/${long}.png", z, x, y)));
             }
 
             /**

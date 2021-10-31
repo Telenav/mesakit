@@ -24,6 +24,7 @@ import com.telenav.kivakit.kernel.language.objects.Hash;
 import com.telenav.kivakit.kernel.language.primitives.Ints;
 import com.telenav.kivakit.kernel.language.primitives.Longs;
 import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -384,12 +385,12 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
 
     public int valueAsInt(String key)
     {
-        return Ints.parse(get(key));
+        return Ints.parse(Listener.console(), get(key));
     }
 
     public long valueAsLong(String key)
     {
-        return Longs.parse(get(key));
+        return Longs.parseFast(get(key));
     }
 
     public int valueAsNaturalNumber(String key)

@@ -83,7 +83,7 @@ public class PbfFile extends BaseRepeater implements Named
         {
             var output = Folder.temporaryForProcess(Folder.Type.CLEAN_UP_ON_EXIT)
                     .temporaryFile(file.fileName().withoutExtension(Extension.OSM_PBF)
-                            .withoutExtension(Extension.parse(".pbf.gz")), Extension.GRAPH);
+                            .withoutExtension(Extension.parse(this, ".pbf.gz")), Extension.GRAPH);
 
             var converter = (PbfToGraphConverter) metadata.dataSpecification().newGraphConverter(metadata);
             converter.configure(configuration);

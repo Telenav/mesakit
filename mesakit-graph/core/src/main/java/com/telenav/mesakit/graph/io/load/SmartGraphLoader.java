@@ -57,25 +57,29 @@ public class SmartGraphLoader extends BaseRepeater implements Named
         return name.endsWith(GraphArchive.EXTENSION);
     }
 
-    public static ArgumentParser.Builder<SmartGraphLoader> graphArgumentParser(String description)
+    public static ArgumentParser.Builder<SmartGraphLoader> graphArgumentParser(Listener listener, String description)
     {
-        return graphArgumentParser(description, PbfToGraphConverter.defaultConfiguration());
+        return graphArgumentParser(listener, description, PbfToGraphConverter.defaultConfiguration());
     }
 
-    public static ArgumentParser.Builder<SmartGraphLoader> graphArgumentParser(String description,
+    public static ArgumentParser.Builder<SmartGraphLoader> graphArgumentParser(Listener listener,
+                                                                               String description,
                                                                                PbfToGraphConverter.Configuration configuration)
     {
         return ArgumentParser.builder(SmartGraphLoader.class)
                 .description(description)
-                .converter(new Converter(LOGGER, configuration));
+                .converter(new Converter(listener, configuration));
     }
 
-    public static SwitchParser.Builder<SmartGraphLoader> graphSwitchParser(String name, String description)
+    public static SwitchParser.Builder<SmartGraphLoader> graphSwitchParser(Listener listener, String name,
+                                                                           String description)
     {
-        return graphSwitchParser(name, description, PbfToGraphConverter.defaultConfiguration());
+        return graphSwitchParser(listener, name, description, PbfToGraphConverter.defaultConfiguration());
     }
 
-    public static SwitchParser.Builder<SmartGraphLoader> graphSwitchParser(String name, String description,
+    public static SwitchParser.Builder<SmartGraphLoader> graphSwitchParser(Listener listener,
+                                                                           String name,
+                                                                           String description,
                                                                            PbfToGraphConverter.Configuration configuration)
     {
         return SwitchParser.builder(SmartGraphLoader.class)
@@ -84,20 +88,20 @@ public class SmartGraphLoader extends BaseRepeater implements Named
                 .converter(new Converter(LOGGER, configuration));
     }
 
-    public static SwitchParser.Builder<SmartGraphLoader> graphSwitchParser(
-            PbfToGraphConverter.Configuration configuration)
+    public static SwitchParser.Builder<SmartGraphLoader> graphSwitchParser(Listener listener,
+                                                                           PbfToGraphConverter.Configuration configuration)
     {
-        return graphSwitchParser("graph", "Graph file resource", configuration);
+        return graphSwitchParser(listener, "graph", "Graph file resource", configuration);
     }
 
-    public static SwitchParser.Builder<SmartGraphLoader> graphSwitchParser()
+    public static SwitchParser.Builder<SmartGraphLoader> graphSwitchParser(Listener listener)
     {
-        return graphSwitchParser("graph", "Graph file resource", PbfToGraphConverter.defaultConfiguration());
+        return graphSwitchParser(listener, "graph", "Graph file resource", PbfToGraphConverter.defaultConfiguration());
     }
 
-    public static SmartGraphLoader of(String specifier)
+    public static SmartGraphLoader parse(Listener listener, String specifier)
     {
-        return new Converter(LOGGER, PbfToGraphConverter.defaultConfiguration()).convert(specifier);
+        return new Converter(listener, PbfToGraphConverter.defaultConfiguration()).convert(specifier);
     }
 
     /**
@@ -124,7 +128,7 @@ public class SmartGraphLoader extends BaseRepeater implements Named
         @Override
         protected SmartGraphLoader onToValue(String specifier)
         {
-            return new SmartGraphLoader(File.parse(specifier), configuration);
+            return new SmartGraphLoader(File.parse(this, specifier), configuration);
         }
     }
 

@@ -87,18 +87,19 @@ public class WayFilter implements Filter<PbfWay>, Named
         return filter;
     }
 
-    public static SwitchParser.Builder<WayFilter> wayFilterSwitchParser(String name, String description)
+    public static SwitchParser.Builder<WayFilter> wayFilterSwitchParser(Listener listener, String name,
+                                                                        String description)
     {
         return SwitchParser.builder(WayFilter.class)
                 .name(name)
                 .description(description)
-                .converter(new Converter(LOGGER));
+                .converter(new Converter(listener));
     }
 
-    public static SwitchParser.Builder<WayFilter> wayFilterSwitchParser()
+    public static SwitchParser.Builder<WayFilter> wayFilterSwitchParser(Listener listener)
     {
         PbfFilters.loadAll();
-        return wayFilterSwitchParser("way-filter", "The name of a way filter:\n\n" + help());
+        return wayFilterSwitchParser(listener, "way-filter", "The name of a way filter:\n\n" + help());
     }
 
     public static class Converter extends BaseStringConverter<WayFilter>
