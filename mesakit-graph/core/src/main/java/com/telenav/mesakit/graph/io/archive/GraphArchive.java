@@ -100,17 +100,17 @@ public class GraphArchive extends FieldArchive implements Named
         return ArgumentParser.builder(Graph.class).description(description).converter(new GraphArchive.Converter(LOGGER, ProgressReporter.NULL));
     }
 
-    public static Resource forSpecifier(String specifier)
+    public static Resource forSpecifier(Listener listener, String specifier)
     {
         for (var current : DataSupplier.values())
         {
             var prefix = current + ":";
             if (specifier.toUpperCase().startsWith(prefix))
             {
-                return Resource.resolve(specifier.substring(prefix.length()));
+                return Resource.resolve(listener, specifier.substring(prefix.length()));
             }
         }
-        return Resource.resolve(specifier);
+        return Resource.resolve(listener, specifier);
     }
 
     public static SwitchParser.Builder<Graph> graphArchiveSwitchParser(Listener listener,
@@ -149,7 +149,6 @@ public class GraphArchive extends FieldArchive implements Named
             return unsupported();
         }
 
-        @SuppressWarnings("resource")
         @Override
         protected Graph onToValue(String path)
         {
@@ -158,7 +157,7 @@ public class GraphArchive extends FieldArchive implements Named
             {
                 return new GraphArchive(this, file, ZipArchive.Mode.READ, reporter).load(this);
             }
-            LOGGER.warning("Unable to load graph archive '$'", path);
+            warning("Unable to load graph archive '$'", path);
             return null;
         }
     }
