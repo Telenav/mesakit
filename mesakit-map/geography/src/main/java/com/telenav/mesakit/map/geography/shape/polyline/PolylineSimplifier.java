@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
 import com.telenav.mesakit.map.geography.shape.segment.Segment;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
@@ -48,9 +48,9 @@ public class PolylineSimplifier
      * Peucker</a>
      */
     @UmlRelation(label = "simplifies")
-    public Polyline simplify(final Polyline polyline, final Distance tolerance)
+    public Polyline simplify(Polyline polyline, Distance tolerance)
     {
-        final var simplified = simplify(new ArrayList<>(polyline.locations()), tolerance);
+        var simplified = simplify(new ArrayList<>(polyline.locations()), tolerance);
         return Polyline.fromLocations(simplified);
     }
 
@@ -63,7 +63,7 @@ public class PolylineSimplifier
      * @see <a href= "http://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm">Ramer Douglas
      * Peucker</a>
      */
-    private List<Location> simplify(final List<Location> points, final Distance tolerance)
+    private List<Location> simplify(List<Location> points, Distance tolerance)
     {
         // Terminal Case
         if (points.size() <= 2)
@@ -73,23 +73,23 @@ public class PolylineSimplifier
         // Weird case, when we have a loop
         if (points.get(0).equals(points.get(points.size() - 1)))
         {
-            final var size = points.size();
-            final var points1 = points.subList(0, size / 2 + 1);
-            final var points2 = points.subList(size / 2, size - 1);
+            var size = points.size();
+            var points1 = points.subList(0, size / 2 + 1);
+            var points2 = points.subList(size / 2, size - 1);
             // split in 2 and simplify each side
             return simplifyAndConcatenate(points1, points2, tolerance);
         }
         // Non-Terminal Case
-        final var size = points.size();
-        final var segment = new Segment(points.get(0), points.get(size - 1));
+        var size = points.size();
+        var segment = new Segment(points.get(0), points.get(size - 1));
         Distance maximumSnapDistance = null;
         var indexOfFarthestPoint = -1;
-        final var snapper = new PolylineSnapper();
+        var snapper = new PolylineSnapper();
         // Find the farthest point
         for (var i = 1; i < size - 1; i++)
         {
-            final var candidate = points.get(i);
-            final var snapDistance = snapper.snap(segment, candidate).distanceToSource();
+            var candidate = points.get(i);
+            var snapDistance = snapper.snap(segment, candidate).distanceToSource();
             if (maximumSnapDistance != null)
             {
                 if (snapDistance.isGreaterThan(maximumSnapDistance))
@@ -106,8 +106,8 @@ public class PolylineSimplifier
         }
         if (maximumSnapDistance.isGreaterThanOrEqualTo(tolerance))
         {
-            final var points1 = points.subList(0, indexOfFarthestPoint + 1);
-            final var points2 = points.subList(indexOfFarthestPoint, size);
+            var points1 = points.subList(0, indexOfFarthestPoint + 1);
+            var points2 = points.subList(indexOfFarthestPoint, size);
             // Keep the point and recurse when applicable
             return simplifyAndConcatenate(points1, points2, tolerance);
         }
@@ -115,7 +115,7 @@ public class PolylineSimplifier
         {
             // Remove all the points together and keep the Segment, because they must all be
             // within the tolerance
-            final List<Location> result = new ArrayList<>();
+            List<Location> result = new ArrayList<>();
             result.add(segment.start());
             result.add(segment.end());
             return result;
@@ -125,11 +125,11 @@ public class PolylineSimplifier
     /**
      * Subroutine of Simplify
      */
-    private List<Location> simplifyAndConcatenate(final List<Location> points1, final List<Location> points2,
-                                                  final Distance tolerance)
+    private List<Location> simplifyAndConcatenate(List<Location> points1, List<Location> points2,
+                                                  Distance tolerance)
     {
-        final List<Location> result1 = new ArrayList<>(simplify(points1, tolerance));
-        final List<Location> result2 = new ArrayList<>(simplify(points2, tolerance));
+        List<Location> result1 = new ArrayList<>(simplify(points1, tolerance));
+        List<Location> result2 = new ArrayList<>(simplify(points2, tolerance));
         // Add all from the second list except its first point to avoid duplicates
         result1.addAll(result2.subList(1, result2.size()));
         return result1;

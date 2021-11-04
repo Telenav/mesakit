@@ -7,7 +7,7 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-source library-functions.sh
+source mesakit-library-functions.sh
 source mesakit-projects.sh
 
 help="[feature-name]"
@@ -16,7 +16,7 @@ feature_name=$1
 
 require_variable feature_name "$help"
 
-for project_home in "${MESAKIT_ALL_HOMES[@]}"; do
+for project_home in "${MESAKIT_PROJECT_HOMES[@]}"; do
 
     git_flow_feature_start "$project_home" "$feature_name"
 

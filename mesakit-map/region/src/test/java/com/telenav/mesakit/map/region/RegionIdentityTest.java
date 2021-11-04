@@ -18,26 +18,26 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
+import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import org.junit.Test;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class RegionIdentityTest extends MapRegionUnitTest
+public class RegionIdentityTest extends RegionUnitTest
 {
     @Test
     public void testContinent()
     {
         {
-            final var identity = new RegionIdentity("Oceania");
+            var identity = new RegionIdentity("Oceania");
             ensure(identity.isContinent());
             ensureEqual(1, identity.iso().size());
             ensureEqual(1, identity.mesakit().size());
             ensureEqual("Oceania", identity.mesakit().code());
         }
         {
-            final var identity = new RegionIdentity("Oceania").withIsoCode("OC");
+            var identity = new RegionIdentity("Oceania").withIsoCode("OC");
             ensure(identity.isContinent());
             ensureEqual("Oceania", identity.name());
             ensureEqual(1, identity.iso().size());
@@ -49,7 +49,7 @@ public class RegionIdentityTest extends MapRegionUnitTest
     @Test
     public void testCountry()
     {
-        final var identity = new RegionIdentity("United States").withIsoCode("US");
+        var identity = new RegionIdentity("United States").withIsoCode("US");
         ensure(identity.isCountry());
         ensureEqual("United States", identity.name());
         ensureEqual(1, identity.iso().size());
@@ -61,7 +61,7 @@ public class RegionIdentityTest extends MapRegionUnitTest
     @Test
     public void testCounty()
     {
-        final var identity = new RegionIdentity("Alameda")
+        var identity = new RegionIdentity("Alameda")
                 .withMesaKitCode("County_Alameda")
                 .withIsoCode("COUNTYALAMEDA");
         ensureEqual("Alameda", identity.name());
@@ -75,7 +75,7 @@ public class RegionIdentityTest extends MapRegionUnitTest
     public void testHashAndEquals()
     {
         final Set<RegionIdentity> identities = new HashSet<>();
-        final var identity = new RegionIdentity("Alameda").withIsoCode("US-CA-COUNTY_ALAMEDA");
+        var identity = new RegionIdentity("Alameda").withIsoCode("US-CA-COUNTY_ALAMEDA");
         identities.add(identity);
         identities.add(identity);
         ensureEqual(1, identities.size());
@@ -85,7 +85,7 @@ public class RegionIdentityTest extends MapRegionUnitTest
     public void testMetro()
     {
         {
-            final var identity = new RegionIdentity("San Jose");
+            var identity = new RegionIdentity("San Jose");
             ensureEqual(1, identity.iso().size());
             ensureEqual(1, identity.mesakit().size());
             ensureEqual("San Jose", identity.name());
@@ -93,7 +93,7 @@ public class RegionIdentityTest extends MapRegionUnitTest
             ensureEqual("San_Jose", identity.mesakit().code());
         }
         {
-            final var identity = new RegionIdentity("Metro San Francisco");
+            var identity = new RegionIdentity("Metro San Francisco");
             ensureEqual(1, identity.iso().size());
             ensureEqual(1, identity.mesakit().size());
             ensureEqual("Metro San Francisco", identity.name());
@@ -105,15 +105,15 @@ public class RegionIdentityTest extends MapRegionUnitTest
     @Test
     public void testPrefix()
     {
-        final var us = new RegionIdentity("United States")
+        var us = new RegionIdentity("United States")
                 .withIsoCode("US")
                 .withMesaKitCode("United_States");
 
-        final var ohio = new RegionIdentity("Ohio")
+        var ohio = new RegionIdentity("Ohio")
                 .withIsoCode("OH")
                 .withMesaKitCode("Ohio");
 
-        final var prefixed = ohio.withPrefix(us);
+        var prefixed = ohio.withPrefix(us);
         ensureEqual(1, us.iso().size());
         ensureEqual(1, us.mesakit().size());
         ensureEqual(1, ohio.iso().size());
@@ -128,11 +128,11 @@ public class RegionIdentityTest extends MapRegionUnitTest
     @Test
     public void testState()
     {
-        final var identity = new RegionIdentity("California").withIsoCode("CA");
+        var identity = new RegionIdentity("California").withIsoCode("CA");
         ensureEqual(1, identity.iso().size());
         ensureEqual("CA", identity.iso().first().code());
 
-        final var fiji = new RegionIdentity("Eastern").withMesaKitCode("Fiji-Eastern");
+        var fiji = new RegionIdentity("Eastern").withMesaKitCode("Fiji-Eastern");
         ensure(fiji.isState());
         ensureEqual("Fiji-Eastern", fiji.mesakit().code());
     }

@@ -32,10 +32,10 @@ public class DebugViewerIcons
     public static final MapDot END_ICON = MapDot.dot()
             .withStyle(END)
             .withRadius(DrawingLength.pixels(10))
-            .withLabel("end");
+            .withLabelText("end");
 
     public static final MapDot START_ICON = MapDot.dot()
             .withStyle(START)
             .withRadius(DrawingLength.pixels(10))
-            .withLabel("start");
+            .withLabelText("start");
 }

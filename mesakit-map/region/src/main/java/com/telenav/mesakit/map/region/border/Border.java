@@ -18,6 +18,9 @@
 
 package com.telenav.mesakit.map.region.border;
 
+import com.telenav.kivakit.kernel.language.objects.Objects;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
@@ -26,12 +29,9 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramBorder;
-import com.telenav.kivakit.core.kernel.language.objects.Objects;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.associations.UmlAggregation;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 @UmlClassDiagram(diagram = DiagramBorder.class)
 public class Border<T extends Region<T>> implements Bounded, Intersectable
@@ -49,7 +49,7 @@ public class Border<T extends Region<T>> implements Bounded, Intersectable
     /**
      * Constructor called when creating borders from a PBF file
      */
-    public Border(final T region, final Polygon border)
+    public Border(T region, Polygon border)
     {
         ensure(region != null);
         ensure(border != null);
@@ -70,18 +70,18 @@ public class Border<T extends Region<T>> implements Bounded, Intersectable
         return bounds;
     }
 
-    public boolean contains(final Location location)
+    public boolean contains(Location location)
     {
         return border.contains(location);
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Border)
         {
-            final var that = (Border<T>) object;
+            var that = (Border<T>) object;
             return Objects.equal(identity, that.identity);
         }
         return false;
@@ -98,13 +98,13 @@ public class Border<T extends Region<T>> implements Bounded, Intersectable
         return identity;
     }
 
-    public void identity(final RegionIdentity identity)
+    public void identity(RegionIdentity identity)
     {
         this.identity = ensureNotNull(identity);
     }
 
     @Override
-    public boolean intersects(final Rectangle rectangle)
+    public boolean intersects(Rectangle rectangle)
     {
         return bounds.intersects(rectangle);
     }
@@ -124,7 +124,7 @@ public class Border<T extends Region<T>> implements Bounded, Intersectable
         return region;
     }
 
-    public void region(final T region)
+    public void region(T region)
     {
         this.region = region;
     }

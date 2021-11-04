@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.identifiers;
 
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapRelationIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelIdentifiers;
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 import org.openstreetmap.osmosis.core.domain.v0_6.EntityType;
 import org.openstreetmap.osmosis.core.domain.v0_6.Relation;
 
@@ -35,7 +35,7 @@ public class PbfRelationIdentifier extends MapRelationIdentifier implements PbfI
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static MapRelationIdentifier forLong(final long identifier)
+    public static MapRelationIdentifier forLong(long identifier)
     {
         if (identifier == 0)
         {
@@ -44,12 +44,13 @@ public class PbfRelationIdentifier extends MapRelationIdentifier implements PbfI
         return new PbfRelationIdentifier(identifier);
     }
 
-    public static PbfRelationIdentifier forRelation(final Relation relation)
+    public static PbfRelationIdentifier forRelation(Relation relation)
     {
         return new PbfRelationIdentifier(relation.getId());
     }
 
-    public static SwitchParser.Builder<PbfRelationIdentifier> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<PbfRelationIdentifier> pbfRelationIdentifierSwitchParser(String name,
+                                                                                                String description)
     {
         return SwitchParser.builder(PbfRelationIdentifier.class).name(name).description(description)
                 .converter(new Converter(LOGGER));
@@ -57,13 +58,13 @@ public class PbfRelationIdentifier extends MapRelationIdentifier implements PbfI
 
     public static class Converter extends BaseStringConverter<PbfRelationIdentifier>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected PbfRelationIdentifier onConvertToObject(final String value)
+        protected PbfRelationIdentifier onToValue(String value)
         {
             return new PbfRelationIdentifier(Long.parseLong(value));
         }
@@ -72,12 +73,12 @@ public class PbfRelationIdentifier extends MapRelationIdentifier implements PbfI
     /**
      * Construct from identifier
      */
-    public PbfRelationIdentifier(final long identifier)
+    public PbfRelationIdentifier(long identifier)
     {
         super(identifier);
     }
 
-    public PbfRelationIdentifier(final PbfRelation relation)
+    public PbfRelationIdentifier(PbfRelation relation)
     {
         this(relation.identifierAsLong());
     }
@@ -89,7 +90,7 @@ public class PbfRelationIdentifier extends MapRelationIdentifier implements PbfI
     }
 
     @Override
-    public MapRelationIdentifier newIdentifier(final long identifier)
+    public MapRelationIdentifier newIdentifier(long identifier)
     {
         return new PbfRelationIdentifier(identifier);
     }

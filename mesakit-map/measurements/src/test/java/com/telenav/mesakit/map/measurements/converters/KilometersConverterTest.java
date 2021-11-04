@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.measurements.converters;
 
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.listeners.ThrowingListener;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.mesakit.map.measurements.project.MapMeasurementsUnitTest;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
-import com.telenav.kivakit.core.kernel.messaging.listeners.ThrowingListener;
+import com.telenav.mesakit.map.measurements.project.MeasurementsUnitTest;
 import org.junit.Test;
 
-public class KilometersConverterTest extends MapMeasurementsUnitTest
+public class KilometersConverterTest extends MeasurementsUnitTest
 {
     @Test
     public void testToObject()

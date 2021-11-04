@@ -18,6 +18,12 @@
 
 package com.telenav.mesakit.map.geography.indexing.polygon;
 
+import com.telenav.kivakit.kernel.language.iteration.Iterables;
+import com.telenav.kivakit.kernel.language.iteration.Next;
+import com.telenav.kivakit.kernel.language.primitives.Doubles;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.messages.status.Warning;
+import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
@@ -25,11 +31,6 @@ import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.geography.shape.polyline.PolygonBuilder;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.polyline.PolylineBuilder;
-import com.telenav.kivakit.core.kernel.language.iteration.Iterables;
-import com.telenav.kivakit.core.kernel.language.iteration.Next;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
-import com.telenav.kivakit.core.kernel.messaging.messages.status.Warning;
-import com.telenav.kivakit.core.resource.Resource;
 import org.nocrala.tools.gis.data.esri.shapefile.ValidationPreferences;
 import org.nocrala.tools.gis.data.esri.shapefile.exception.InvalidShapeFileException;
 import org.nocrala.tools.gis.data.esri.shapefile.shape.AbstractShape;
@@ -46,18 +47,18 @@ public class ShapeFileReader
 
     private final Listener listener;
 
-    public ShapeFileReader(final Listener listener, final Resource resource)
+    public ShapeFileReader(Listener listener, Resource resource)
     {
         this.listener = listener;
         try
         {
-            final var in = resource.openForReading();
-            final ValidationPreferences preferences = new ValidationPreferences();
+            var in = resource.openForReading();
+            ValidationPreferences preferences = new ValidationPreferences();
             preferences.setMaxNumberOfPointsPerShape(100000);
             reader = new org.nocrala.tools.gis.data.esri.shapefile.ShapeFileReader(in, preferences);
             reader.getHeader();
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             throw new IllegalStateException("Unable to read shape file " + resource, e);
         }
@@ -83,11 +84,14 @@ public class ShapeFileReader
                     }
                     if (shape != null)
                     {
-                        final var builder = new PolygonBuilder();
-                        for (final PointData point : shape.getPointsOfPart(part))
+                        var builder = new PolygonBuilder();
+                        for (PointData point : shape.getPointsOfPart(part))
                         {
-                            builder.add(new Location(Latitude.degrees(point.getY()),
-                                    Longitude.degrees(point.getX())));
+                            if (Doubles.isBetween(point.getY(), -85, 85))
+                            {
+                                builder.add(new Location(Latitude.degrees(point.getY()),
+                                        Longitude.degrees(point.getX())));
+                            }
                         }
                         if (++part == shape.getNumberOfParts())
                         {
@@ -104,7 +108,7 @@ public class ShapeFileReader
                         }
                     }
                 }
-                catch (final Exception e)
+                catch (Exception e)
                 {
                     e.printStackTrace();
                 }
@@ -151,8 +155,8 @@ public class ShapeFileReader
                     }
                     if (shape != null)
                     {
-                        final var builder = new PolylineBuilder();
-                        for (final PointData point : shape.getPointsOfPart(part))
+                        var builder = new PolylineBuilder();
+                        for (PointData point : shape.getPointsOfPart(part))
                         {
                             builder.add(
                                     new Location(Latitude.degrees(point.getY()), Longitude.degrees(point.getX())));
@@ -164,7 +168,7 @@ public class ShapeFileReader
                         return builder.build();
                     }
                 }
-                catch (final Exception e)
+                catch (Exception e)
                 {
                     e.printStackTrace();
                 }

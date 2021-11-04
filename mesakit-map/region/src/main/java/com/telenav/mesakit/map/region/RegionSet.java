@@ -18,18 +18,18 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegion;
+import com.telenav.kivakit.kernel.language.collections.set.BaseSet;
+import com.telenav.kivakit.kernel.language.strings.Join;
+import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
-import com.telenav.kivakit.core.kernel.language.collections.set.BaseSet;
-import com.telenav.kivakit.core.kernel.language.strings.Join;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
+import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegion;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 @SuppressWarnings("rawtypes")
 @UmlClassDiagram(diagram = DiagramRegion.class)
@@ -42,19 +42,19 @@ public class RegionSet extends BaseSet<Region>
         super(new LinkedHashSet<>());
     }
 
-    public RegionSet(final Iterable<? extends Region> regions)
+    public RegionSet(Iterable<? extends Region> regions)
     {
         super(new LinkedHashSet<>());
         addAll(regions);
     }
 
-    public RegionSet(final Set<Region> set)
+    public RegionSet(Set<Region> set)
     {
         super(set);
     }
 
     @Override
-    public boolean add(final Region region)
+    public boolean add(Region region)
     {
         ensureNotNull(region);
         return super.add(region);
@@ -81,8 +81,8 @@ public class RegionSet extends BaseSet<Region>
     @SuppressWarnings("unchecked")
     public RegionSet under()
     {
-        final var under = new RegionSet();
-        for (final var region : this)
+        var under = new RegionSet();
+        for (var region : this)
         {
             under.add(region);
             under.addAll(region.nestedChildren());

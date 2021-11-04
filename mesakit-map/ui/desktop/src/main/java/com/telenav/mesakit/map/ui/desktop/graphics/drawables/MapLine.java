@@ -34,7 +34,7 @@ import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 
 import java.awt.Shape;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 
 /**
  * @author jonathanl (shibo)
@@ -46,12 +46,12 @@ public class MapLine extends LabeledMapShape
         return line(null);
     }
 
-    public static MapLine line(final Style style)
+    public static MapLine line(Style style)
     {
         return new MapLine(style, null, null, null);
     }
 
-    public static MapLine line(final Style style, final Location from, final Location to, final String label)
+    public static MapLine line(Style style, Location from, Location to, String label)
     {
         return new MapLine(style, from, to, label);
     }
@@ -64,7 +64,7 @@ public class MapLine extends LabeledMapShape
 
     private final String label;
 
-    protected MapLine(final Style style, final Location at, final Location to, final String label)
+    protected MapLine(Style style, Location at, Location to, String label)
     {
         super(style, at, label);
 
@@ -72,7 +72,7 @@ public class MapLine extends LabeledMapShape
         this.label = label;
     }
 
-    protected MapLine(final MapLine that)
+    protected MapLine(MapLine that)
     {
         super(that);
 
@@ -80,12 +80,6 @@ public class MapLine extends LabeledMapShape
         label = that.label;
         fromArrowHead = that.fromArrowHead;
         toArrowHead = that.toArrowHead;
-    }
-
-    @Override
-    public MapLine at(final DrawingPoint at)
-    {
-        return (MapLine) super.at(at);
     }
 
     @Override
@@ -106,19 +100,19 @@ public class MapLine extends LabeledMapShape
     }
 
     @Override
-    public Shape onDraw(final MapCanvas canvas)
+    public Shape onDraw(MapCanvas canvas)
     {
-        final var line = line(style(), from(), to, label)
+        var line = line(style(), from(), to, label)
                 .withFromArrowHead(fromArrowHead)
                 .withToArrowHead(toArrowHead)
-                .at(canvas.toDrawing(location()))
+                .withLocation(canvas.toDrawing(location()))
                 .draw(canvas);
 
         return Java2dShapes.combine(line, super.onDraw(canvas));
     }
 
     @Override
-    public MapLine scaledBy(final double scaleFactor)
+    public MapLine scaledBy(double scaleFactor)
     {
         return unsupported();
     }
@@ -129,124 +123,130 @@ public class MapLine extends LabeledMapShape
     }
 
     @Override
-    public MapLine withColors(final Style style)
+    public MapLine withColors(Style style)
     {
         return (MapLine) super.withColors(style);
     }
 
     @Override
-    public MapLine withDrawColor(final Color color)
+    public MapLine withDrawColor(Color color)
     {
         return (MapLine) super.withDrawColor(color);
     }
 
     @Override
-    public MapLine withDrawStrokeWidth(final Distance width)
+    public MapLine withDrawStrokeWidth(Distance width)
     {
         return (MapLine) super.withDrawStrokeWidth(width);
     }
 
     @Override
-    public MapLine withDrawStrokeWidth(final DrawingWidth width)
+    public MapLine withDrawStrokeWidth(DrawingWidth width)
     {
         return (MapLine) super.withDrawStrokeWidth(width);
     }
 
     @Override
-    public MapLine withFillColor(final Color color)
+    public MapLine withFillColor(Color color)
     {
         return (MapLine) super.withFillColor(color);
     }
 
     @Override
-    public MapLine withFillStroke(final Stroke stroke)
+    public MapLine withFillStroke(Stroke stroke)
     {
         return (MapLine) super.withFillStroke(stroke);
     }
 
     @Override
-    public MapLine withFillStrokeWidth(final Distance width)
+    public MapLine withFillStrokeWidth(Distance width)
     {
         return (MapLine) super.withFillStrokeWidth(width);
     }
 
     @Override
-    public MapLine withFillStrokeWidth(final DrawingWidth width)
+    public MapLine withFillStrokeWidth(DrawingWidth width)
     {
         return (MapLine) super.withFillStrokeWidth(width);
     }
 
-    public MapLine withFrom(final Location from)
+    public MapLine withFrom(Location from)
     {
         return withLocation(from);
     }
 
-    public MapLine withFromArrowHead(final Drawable arrowHead)
+    public MapLine withFromArrowHead(Drawable arrowHead)
     {
-        final var copy = copy();
+        var copy = copy();
         copy.fromArrowHead = arrowHead;
         return copy;
     }
 
     @Override
-    public MapLine withLabel(final String label)
+    public MapLine withLabelText(String label)
     {
-        return (MapLine) super.withLabel(label);
+        return (MapLine) super.withLabelText(label);
     }
 
     @Override
-    public MapLine withLocation(final Location at)
+    public MapLine withLocation(DrawingPoint at)
     {
         return (MapLine) super.withLocation(at);
     }
 
     @Override
-    public MapLine withMargin(final int margin)
+    public MapLine withLocation(Location at)
+    {
+        return (MapLine) super.withLocation(at);
+    }
+
+    @Override
+    public MapLine withMargin(int margin)
     {
         return (MapLine) super.withMargin(margin);
     }
 
     @Override
-    public MapLine withOffset(final int dx, final int dy)
+    public MapLine withOffset(int dx, int dy)
     {
         return (MapLine) super.withOffset(dx, dy);
     }
 
     @Override
-    public MapLine withRoundedLabelCorners(final DrawingLength corner)
+    public MapLine withRoundedLabelCorners(DrawingLength corner)
     {
         return (MapLine) super.withRoundedLabelCorners(corner);
     }
 
     @Override
-    public MapLine withRoundedLabelCorners(final DrawingWidth cornerWidth,
-                                           final DrawingHeight cornerHeight)
+    public MapLine withRoundedLabelCorners(DrawingWidth cornerWidth,
+                                           DrawingHeight cornerHeight)
     {
         return (MapLine) super.withRoundedLabelCorners(cornerWidth, cornerHeight);
     }
 
     @Override
-    public MapLine withStyle(final Style style)
+    public MapLine withStyle(Style style)
     {
         return (MapLine) super.withStyle(style);
     }
 
     @Override
-    public MapLine withTextColor(final Color color)
+    public MapLine withTextColor(Color color)
     {
         return (MapLine) super.withTextColor(color);
     }
 
-    public MapLine withTo(final Location to)
+    public MapLine withTo(Location to)
     {
-        final var copy = copy();
+        var copy = copy();
         this.to = to;
         return copy;
     }
 
-    public MapLine withToArrowHead(final Drawable arrowHead)
+    public MapLine withToArrowHead(Drawable arrowHead)
     {
-        final var copy = copy();
+        var copy = copy();
         copy.toArrowHead = arrowHead;
         return copy;
     }

@@ -20,20 +20,20 @@ package com.telenav.mesakit.map.measurements;
 
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
-import com.telenav.mesakit.map.measurements.project.MapMeasurementsUnitTest;
+import com.telenav.mesakit.map.measurements.project.MeasurementsUnitTest;
 import org.junit.Test;
 
-public class AngleTest extends MapMeasurementsUnitTest
+public class AngleTest extends MeasurementsUnitTest
 {
     @Test
     public void testAdd()
     {
-        final var angle1 = random().newAngle();
-        final var angle2 = random().newAngle();
+        var angle1 = random().newAngle();
+        var angle2 = random().newAngle();
 
         // Retrieve the nanodegrees and then make sure that it doesn't wrap around 360.
-        final var totalNanodegrees = angle1.asNanodegrees() + angle2.asNanodegrees();
-        final var normalizedNanodegrees = totalNanodegrees % 360_000_000_000L;
+        var totalNanodegrees = angle1.asNanodegrees() + angle2.asNanodegrees();
+        var normalizedNanodegrees = totalNanodegrees % 360_000_000_000L;
 
         ensureEqual(normalizedNanodegrees, angle1.plus(angle2).asNanodegrees());
     }
@@ -75,10 +75,10 @@ public class AngleTest extends MapMeasurementsUnitTest
     @Test
     public void testDifference()
     {
-        final var angle1 = random().newAngle();
-        final var angle2 = random().newAngle();
+        var angle1 = random().newAngle();
+        var angle2 = random().newAngle();
 
-        final var difference = Math.abs(angle1.asNanodegrees() - angle2.asNanodegrees());
+        var difference = Math.abs(angle1.asNanodegrees() - angle2.asNanodegrees());
 
         ensureEqual(difference, angle1.absoluteDifference(angle2).asNanodegrees());
         ensureEqual(Angle.degrees(10), Angle.degrees(10).difference(Angle.degrees(20), Chirality.CLOCKWISE));
@@ -92,8 +92,8 @@ public class AngleTest extends MapMeasurementsUnitTest
     @Test
     public void testGreaterThan()
     {
-        final var smallAngle = random().newAngle(Angle.degrees(-180), Angle.degrees(180));
-        final var bigAngle = random().newAngle(Angle.degrees(180), Angle.degrees(360));
+        var smallAngle = random().newAngle(Angle.degrees(-180), Angle.degrees(180));
+        var bigAngle = random().newAngle(Angle.degrees(180), Angle.degrees(360));
 
         ensure(bigAngle.isGreaterThan(smallAngle));
         ensureFalse(smallAngle.isGreaterThan(bigAngle));
@@ -103,8 +103,8 @@ public class AngleTest extends MapMeasurementsUnitTest
     @Test
     public void testGreaterThanOrEqualTo()
     {
-        final var smallAngle = random().newAngle(Angle.degrees(-180), Angle.degrees(180));
-        final var bigAngle = random().newAngle(Angle.degrees(180), Angle.degrees(360));
+        var smallAngle = random().newAngle(Angle.degrees(-180), Angle.degrees(180));
+        var bigAngle = random().newAngle(Angle.degrees(180), Angle.degrees(360));
 
         ensure(bigAngle.isGreaterThanOrEqualTo(smallAngle));
         ensureFalse(smallAngle.isGreaterThanOrEqualTo(bigAngle));
@@ -123,8 +123,8 @@ public class AngleTest extends MapMeasurementsUnitTest
     @Test
     public void testLessThan()
     {
-        final var smallAngle = random().newAngle(Angle.degrees(-180), Angle.degrees(180));
-        final var bigAngle = random().newAngle(Angle.degrees(180), Angle.degrees(360));
+        var smallAngle = random().newAngle(Angle.degrees(-180), Angle.degrees(180));
+        var bigAngle = random().newAngle(Angle.degrees(180), Angle.degrees(360));
 
         ensure(smallAngle.isLessThan(bigAngle));
         ensureFalse(bigAngle.isLessThan(smallAngle));
@@ -134,8 +134,8 @@ public class AngleTest extends MapMeasurementsUnitTest
     @Test
     public void testLessThanOrEqualTo()
     {
-        final var smallAngle = random().newAngle(Angle.degrees(-180), Angle.degrees(180));
-        final var bigAngle = random().newAngle(Angle.degrees(180), Angle.degrees(360));
+        var smallAngle = random().newAngle(Angle.degrees(-180), Angle.degrees(180));
+        var bigAngle = random().newAngle(Angle.degrees(180), Angle.degrees(360));
 
         ensure(smallAngle.isLessThanOrEqualTo(bigAngle));
         ensureFalse(bigAngle.isLessThanOrEqualTo(smallAngle));
@@ -145,8 +145,8 @@ public class AngleTest extends MapMeasurementsUnitTest
     @Test
     public void testMaximum()
     {
-        final var smallAngle = random().newAngle(Angle.degrees(-180), Angle.degrees(180));
-        final var bigAngle = random().newAngle(Angle.degrees(180), Angle.degrees(360));
+        var smallAngle = random().newAngle(Angle.degrees(-180), Angle.degrees(180));
+        var bigAngle = random().newAngle(Angle.degrees(180), Angle.degrees(360));
 
         ensureEqual(bigAngle, smallAngle.maximum(bigAngle));
         ensureEqual(bigAngle, bigAngle.maximum(smallAngle));
@@ -156,8 +156,8 @@ public class AngleTest extends MapMeasurementsUnitTest
     @Test
     public void testMinimum()
     {
-        final var smallAngle = random().newAngle(Angle.degrees(-180), Angle.degrees(180));
-        final var bigAngle = random().newAngle(Angle.degrees(180), Angle.degrees(360));
+        var smallAngle = random().newAngle(Angle.degrees(-180), Angle.degrees(180));
+        var bigAngle = random().newAngle(Angle.degrees(180), Angle.degrees(360));
 
         ensureEqual(smallAngle, smallAngle.minimum(bigAngle));
         ensureEqual(smallAngle, bigAngle.minimum(smallAngle));
@@ -167,28 +167,28 @@ public class AngleTest extends MapMeasurementsUnitTest
     @Test
     public void testScaleBy()
     {
-        final var angle = random().newAngle();
-        final var multiplier = random().newDouble(0, 10000);
+        var angle = random().newAngle();
+        var multiplier = random().newDouble(0, 10000);
 
         // Test the standard case.
-        final var expected = (angle.asNanodegrees() * multiplier) % 360_000_000_000L;
+        var expected = (angle.asNanodegrees() * multiplier) % 360_000_000_000L;
         ensureEqual(angle.times(multiplier).asNanodegrees(), (long) expected);
     }
 
     @Test
     public void testSubtract()
     {
-        final var angle1 = random().newAngle();
-        final var angle2 = random().newAngle();
+        var angle1 = random().newAngle();
+        var angle2 = random().newAngle();
 
         // Retrieve the nanodegrees and then make sure that it doesn't wrap around 360.
-        final var nanodegreesDifference = angle1.asNanodegrees() - angle2.asNanodegrees();
-        final var normalizedNanodegrees = nanodegreesDifference % 360_000_000_000L;
+        var nanodegreesDifference = angle1.asNanodegrees() - angle2.asNanodegrees();
+        var normalizedNanodegrees = nanodegreesDifference % 360_000_000_000L;
 
         ensureEqual(normalizedNanodegrees, angle1.minus(angle2).asNanodegrees());
 
         // Verify validity of negative angle
-        final var angle3 = Angle.degrees(10.0).minus(Angle.degrees(20.0));
+        var angle3 = Angle.degrees(10.0).minus(Angle.degrees(20.0));
         ensureWithin(-10.0, angle3.asDegrees(), 0.0);
     }
 }

@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.road.name.parser;
 
+import com.telenav.kivakit.kernel.language.paths.PackagePath;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.locales.english.EnglishUnitedStatesRoadNameParser;
-import com.telenav.kivakit.core.kernel.language.paths.PackagePath;
 
 import java.util.Objects;
 
@@ -35,10 +35,10 @@ public interface RoadNameParser
     /**
      * @return RoadNameParser for the given locale
      */
-    static RoadNameParser get(final MapLocale locale)
+    static RoadNameParser get(MapLocale locale)
     {
         // Get the road name parser from the locale
-        final RoadNameParser parser = locale.create(PackagePath.packagePath(RoadNameParser.class), "RoadNameParser");
+        RoadNameParser parser = locale.create(PackagePath.packagePath(RoadNameParser.class), "RoadNameParser");
 
         // and if there isn't one
         // default to US English
@@ -51,5 +51,5 @@ public interface RoadNameParser
      * @param name The road name to parse
      * @return The parsed road name
      */
-    ParsedRoadName parse(final RoadName name);
+    ParsedRoadName parse(RoadName name);
 }

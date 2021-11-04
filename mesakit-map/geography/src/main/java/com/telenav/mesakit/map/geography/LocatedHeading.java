@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.geography;
 
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**
  * A directional vector (a heading with no magnitude) at a particular location.
@@ -33,7 +33,7 @@ public class LocatedHeading extends Location
     /** The direction */
     private final Heading heading;
 
-    public LocatedHeading(final Location location, final Heading heading)
+    public LocatedHeading(Location location, Heading heading)
     {
         super(location.latitude(), location.longitude());
         this.heading = heading;

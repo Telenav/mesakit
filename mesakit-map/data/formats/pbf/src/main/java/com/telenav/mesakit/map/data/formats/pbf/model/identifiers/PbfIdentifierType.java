@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.identifiers;
 
+import com.telenav.kivakit.kernel.language.bits.BitDiagram;
+import com.telenav.kivakit.kernel.language.bits.BitDiagram.BitField;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelIdentifiers;
-import com.telenav.kivakit.core.kernel.language.bits.BitDiagram;
-import com.telenav.kivakit.core.kernel.language.bits.BitDiagram.BitField;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 import org.openstreetmap.osmosis.core.domain.v0_6.EntityType;
 
 /**
@@ -40,13 +40,13 @@ public interface PbfIdentifierType
     /**
      * @return An {@link MapIdentifier} of the correct type for the TYPE {@link BitField}
      */
-    static MapIdentifier forIdentifierAndType(final long identifierAndType)
+    static MapIdentifier forIdentifierAndType(long identifierAndType)
     {
-        final var type = MapIdentifier.Type.forOrdinal(TYPE.extractInt(identifierAndType));
+        var type = MapIdentifier.Type.forOrdinal(TYPE.getInt(identifierAndType));
         if (type != null)
         {
-            var identifier = IDENTIFIER.extractLong(identifierAndType);
-            if (REVERSE.extractBoolean(identifierAndType))
+            var identifier = IDENTIFIER.getLong(identifierAndType);
+            if (REVERSE.getBoolean(identifierAndType))
             {
                 identifier *= -1;
             }
@@ -55,7 +55,7 @@ public interface PbfIdentifierType
         return null;
     }
 
-    static MapIdentifier forIdentifierAndType(final MapIdentifier.Type type, final long identifier)
+    static MapIdentifier forIdentifierAndType(MapIdentifier.Type type, long identifier)
     {
         switch (type)
         {
@@ -88,8 +88,8 @@ public interface PbfIdentifierType
      */
     default MapIdentifier withType()
     {
-        final var identifierWithType = TYPE.set(Math.abs(asLong()), type().identifier());
-        final var identifierWithTypeAndSign = REVERSE.set(identifierWithType, asLong() < 0);
+        var identifierWithType = TYPE.set(Math.abs(asLong()), type().identifier());
+        var identifierWithTypeAndSign = REVERSE.set(identifierWithType, asLong() < 0);
         return newIdentifier(identifierWithTypeAndSign);
     }
 
@@ -97,10 +97,10 @@ public interface PbfIdentifierType
      * @return This OSM identifier with the type encoded in it according to the {@link BitDiagram} layout
      * TYPE_AND_IDENTIFIER
      */
-    default MapIdentifier withType(final MapIdentifier identifier, final MapIdentifier.Type type)
+    default MapIdentifier withType(MapIdentifier identifier, MapIdentifier.Type type)
     {
-        final var identifierWithType = TYPE.set(Math.abs(identifier.asLong()), type.identifier());
-        final var identifierWithTypeAndSign = REVERSE.set(identifierWithType, identifier.asLong() < 0);
+        var identifierWithType = TYPE.set(Math.abs(identifier.asLong()), type.identifier());
+        var identifierWithTypeAndSign = REVERSE.set(identifierWithType, identifier.asLong() < 0);
         return newIdentifier(identifierWithTypeAndSign);
     }
 
@@ -110,8 +110,8 @@ public interface PbfIdentifierType
      */
     default MapIdentifier withoutType()
     {
-        var identifier = IDENTIFIER.extractLong(asLong());
-        if (REVERSE.extractBoolean(asLong()))
+        var identifier = IDENTIFIER.getLong(asLong());
+        if (REVERSE.getBoolean(asLong()))
         {
             identifier = identifier * -1;
         }

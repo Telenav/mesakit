@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.utilities.geohash;
 
-import com.telenav.kivakit.core.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.objects.Hash;
 
 import java.util.Collection;
 import java.util.HashSet;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 public class Code implements CharSequence
 {
@@ -39,7 +39,7 @@ public class Code implements CharSequence
         return root(GeohashAlphabet.DEFAULT);
     }
 
-    public static Code root(final GeohashAlphabet alphabet)
+    public static Code root(GeohashAlphabet alphabet)
     {
         return new Code(alphabet, "");
     }
@@ -48,7 +48,7 @@ public class Code implements CharSequence
 
     private final String value;
 
-    public Code(final GeohashAlphabet alphabet, final String value)
+    public Code(GeohashAlphabet alphabet, String value)
     {
         ensure(alphabet.isValid(value), "Invalid code: $ for alphabet ${class}", value, alphabet);
         this.alphabet = alphabet;
@@ -60,23 +60,23 @@ public class Code implements CharSequence
      *
      * @param value the code value
      */
-    public Code(final String value)
+    public Code(String value)
     {
         this(GeohashAlphabet.DEFAULT, value);
     }
 
     @Override
-    public char charAt(final int index)
+    public char charAt(int index)
     {
         return value.charAt(index);
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Code)
         {
-            final var that = (Code) object;
+            var that = (Code) object;
             return alphabet.equals(that.alphabet) && value.equals(that.value);
         }
         return false;
@@ -100,7 +100,7 @@ public class Code implements CharSequence
     }
 
     @Override
-    public CharSequence subSequence(final int start, final int end)
+    public CharSequence subSequence(int start, int end)
     {
         return value.subSequence(start, end);
     }
@@ -118,10 +118,10 @@ public class Code implements CharSequence
 
     Collection<Code> children()
     {
-        final Collection<Code> children = new HashSet<>();
+        Collection<Code> children = new HashSet<>();
         if (length() < alphabet.maximumTextLength())
         {
-            for (final char character : alphabet().characters())
+            for (char character : alphabet().characters())
             {
                 children.add(new Code(alphabet, value + character));
             }

@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.region.countries;
 
+import com.telenav.kivakit.kernel.language.locales.CountryIsoCode;
+import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.State;
-import com.telenav.kivakit.core.kernel.language.locales.CountryIsoCode;
-import com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode;
 
 @SuppressWarnings({ "NonAsciiCharacters" })
 public class Mexico extends Country

@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.road.name.parser.tokenizer.symbols;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 public class Symbol
 {
@@ -39,9 +39,9 @@ public class Symbol
 
     public static final Symbol CLOSE_PARENTHESIS = new Symbol(")", "<CLOSE-PARENTHESIS>");
 
-    public static synchronized Symbol of(final String value)
+    public static synchronized Symbol of(String value)
     {
-        final var symbol = symbols.get(value);
+        var symbol = symbols.get(value);
         return symbol != null ? symbol : new Word(value);
     }
 
@@ -49,7 +49,7 @@ public class Symbol
 
     private final String name;
 
-    Symbol(final String text, final String name)
+    Symbol(String text, String name)
     {
         this.text = text;
         this.name = name;
@@ -64,11 +64,11 @@ public class Symbol
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Symbol)
         {
-            final var that = (Symbol) object;
+            var that = (Symbol) object;
             return text.equalsIgnoreCase(that.text);
         }
         return false;

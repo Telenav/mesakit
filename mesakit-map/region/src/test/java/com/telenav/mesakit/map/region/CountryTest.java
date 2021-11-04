@@ -18,27 +18,27 @@
 
 package com.telenav.mesakit.map.region;
 
+import com.telenav.kivakit.kernel.language.locales.CountryIsoCode;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.loggers.ConsoleLogger;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
+import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
-import com.telenav.kivakit.core.kernel.language.locales.CountryIsoCode;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.loggers.ConsoleLogger;
 import org.junit.Test;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode.CHINESE_MANDARIN;
-import static com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode.ENGLISH;
-import static com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode.FRENCH;
-import static com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode.GERMAN;
-import static com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode.PORTUGUESE;
-import static com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode.SPANISH;
+import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.CHINESE_MANDARIN;
+import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.ENGLISH;
+import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.FRENCH;
+import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.GERMAN;
+import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.PORTUGUESE;
+import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.SPANISH;
 
-public class CountryTest extends MapRegionUnitTest
+public class CountryTest extends RegionUnitTest
 {
     private static final Logger LOGGER = new ConsoleLogger();
 
@@ -60,8 +60,8 @@ public class CountryTest extends MapRegionUnitTest
     @Test
     public void testForLocation()
     {
-        final var location = Location.degrees(39.747203, -104.987507);
-        final var denverByLocation = MetropolitanArea.forLocation(location);
+        var location = Location.degrees(39.747203, -104.987507);
+        var denverByLocation = MetropolitanArea.forLocation(location);
         ensureEqual(Country.UNITED_STATES, Country.forLocation(location));
         ensureEqual(Country.UNITED_STATES.COLORADO.metropolitanArea(new RegionIdentity("Denver Aurora")
                 .withMesaKitCode(code("United_States-Colorado-Metro_Denver_Aurora"))
@@ -92,23 +92,23 @@ public class CountryTest extends MapRegionUnitTest
     @Test
     public void testNumeric()
     {
-        final var map = alpha3ToNumericMap();
+        var map = alpha3ToNumericMap();
         map.forEach((key, value) ->
         {
-            final var country = Country.forNumericCountryCode(value);
+            var country = Country.forNumericCountryCode(value);
             if (country == null)
             {
-                LOGGER.quibble("No country for numeric country code $", value);
+                LOGGER.glitch("No country for numeric country code $", value);
             }
             ensure(country != null);
-            final CountryIsoCode iso = ensureNotNull(country).identity().countryIsoCode();
+            CountryIsoCode iso = ensureNotNull(country).identity().countryIsoCode();
             ensureEqual(key, iso.alpha3Code());
         });
     }
 
     private Map<String, Integer> alpha3ToNumericMap()
     {
-        final Map<String, Integer> map = new LinkedHashMap<>();
+        Map<String, Integer> map = new LinkedHashMap<>();
         map.put("ABW", 533);
         map.put("AFG", 4);
         map.put("AGO", 24);

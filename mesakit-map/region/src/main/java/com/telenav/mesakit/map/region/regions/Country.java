@@ -18,6 +18,23 @@
 
 package com.telenav.mesakit.map.region.regions;
 
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.data.conversion.string.collection.BaseListConverter;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.data.extraction.Extractor;
+import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.kernel.language.values.identifier.IntegerIdentifier;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
 import com.telenav.mesakit.map.geography.Location;
@@ -32,25 +49,8 @@ import com.telenav.mesakit.map.region.border.cache.BorderCache;
 import com.telenav.mesakit.map.region.countries.Canada;
 import com.telenav.mesakit.map.region.countries.Mexico;
 import com.telenav.mesakit.map.region.countries.UnitedStates;
-import com.telenav.mesakit.map.region.project.MapRegionLimits;
+import com.telenav.mesakit.map.region.project.RegionLimits;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.data.conversion.string.collection.BaseListConverter;
-import com.telenav.kivakit.core.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.core.kernel.data.extraction.Extractor;
-import com.telenav.kivakit.core.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.core.kernel.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode;
-import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.kernel.language.strings.Strings;
-import com.telenav.kivakit.core.kernel.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.core.kernel.language.values.identifier.IntegerIdentifier;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -574,11 +574,11 @@ public abstract class Country extends Region<Country> implements Quantizable
         return type(Country.class).all();
     }
 
-    public static Collection<Country> allLargerThan(final Area minimum)
+    public static Collection<Country> allLargerThan(Area minimum)
     {
         return matching(country ->
         {
-            final var border = country.largestBorder();
+            var border = country.largestBorder();
             return border != null && border.bounds().area().isGreaterThan(minimum);
         });
     }
@@ -604,10 +604,10 @@ public abstract class Country extends Region<Country> implements Quantizable
     {
         if (borderCache == null)
         {
-            final var settings = new BorderCache.Settings<Country>()
+            var settings = new BorderCache.Settings<Country>()
                     .withType(Country.class)
-                    .withMaximumObjects(MapRegionLimits.COUNTRIES)
-                    .withMaximumPolygonsPerObject(MapRegionLimits.POLYGONS_PER_COUNTRY)
+                    .withMaximumObjects(RegionLimits.COUNTRIES)
+                    .withMaximumPolygonsPerObject(RegionLimits.POLYGONS_PER_COUNTRY)
                     .withMinimumBorderArea(Area.squareMiles(5))
                     .withRegionExtractor(newExtractor())
                     .withRegionFactory((identity) -> identity.findOrCreateRegion(Country.class));
@@ -616,12 +616,12 @@ public abstract class Country extends Region<Country> implements Quantizable
             {
                 @Override
                 protected void assignMultiPolygonIdentity(
-                        final PbfTagMap relationTags,
-                        final Collection<Border<Country>> objects)
+                        PbfTagMap relationTags,
+                        Collection<Border<Country>> objects)
                 {
                     if (relationTags.containsKey("ISO3166-1"))
                     {
-                        for (final var country : objects)
+                        for (var country : objects)
                         {
                             country.region().name(relationTags.get("ISO3166-1"));
                         }
@@ -632,24 +632,29 @@ public abstract class Country extends Region<Country> implements Quantizable
         return borderCache;
     }
 
-    public static Country forIdentifier(final RegionIdentifier identifier)
+    public static SwitchParser.Builder<Country> countrySwitchParser(String name, String description)
+    {
+        return SwitchParser.builder(Country.class).name(name).description(description).converter(new Converter(LOGGER()));
+    }
+
+    public static Country forIdentifier(RegionIdentifier identifier)
     {
         return type(Country.class).forIdentifier(identifier);
     }
 
-    public static Country forIdentity(final RegionIdentity identity)
+    public static Country forIdentity(RegionIdentity identity)
     {
         return type(Country.class).forRegionCode(identity.iso().first(1));
     }
 
-    public static Country forIsoCode(final String iso)
+    public static Country forIsoCode(String iso)
     {
         // Look in the map for an existing country for the code,
         var country = isoToCountry.get(iso);
         if (country == null)
         {
             // and if there isn't one, parse the iso string into a region code
-            final var code = RegionCode.parse(iso);
+            var code = RegionCode.parse(iso);
             if (code != null)
             {
                 // get the country for that code
@@ -665,7 +670,7 @@ public abstract class Country extends Region<Country> implements Quantizable
     /**
      * @return The Country that the given location is in, or null if the location is not in any country.
      */
-    public static Country forLocation(final Location location)
+    public static Country forLocation(Location location)
     {
         return type(Country.class).forLocation(location);
     }
@@ -673,12 +678,12 @@ public abstract class Country extends Region<Country> implements Quantizable
     /**
      * @return The country for the given numeric code
      */
-    public static Country forNumericCountryCode(final int code)
+    public static Country forNumericCountryCode(int code)
     {
         return type(Country.class).forNumericCountryCode(code);
     }
 
-    public static Country forRegionCode(final RegionCode code)
+    public static Country forRegionCode(RegionCode code)
     {
         return type(Country.class).forRegionCode(code);
     }
@@ -711,25 +716,25 @@ public abstract class Country extends Region<Country> implements Quantizable
         return islands;
     }
 
-    protected static List<LanguageIsoCode> languages(final LanguageIsoCode... languages)
+    protected static List<LanguageIsoCode> languages(LanguageIsoCode... languages)
     {
-        final List<LanguageIsoCode> list = new ArrayList<>();
+        List<LanguageIsoCode> list = new ArrayList<>();
         Collections.addAll(list, languages);
         return list;
     }
 
     public static Set<Country> largeCountries()
     {
-        final Set<Country> large = new HashSet<>();
+        Set<Country> large = new HashSet<>();
         large.add(UNITED_STATES);
         large.add(GERMANY);
         return large;
     }
 
-    public static Collection<Country> matching(final Matcher<Country> matcher)
+    public static Collection<Country> matching(Matcher<Country> matcher)
     {
-        final List<Country> all = new ArrayList<>();
-        for (final var country : all())
+        List<Country> all = new ArrayList<>();
+        for (var country : all())
         {
             if (matcher.matches(country))
             {
@@ -737,11 +742,6 @@ public abstract class Country extends Region<Country> implements Quantizable
             }
         }
         return all;
-    }
-
-    public static SwitchParser.Builder<Country> switchParser(final String name, final String description)
-    {
-        return SwitchParser.builder(Country.class).name(name).description(description).converter(new Converter(LOGGER()));
     }
 
     public enum AutomotiveSupportLevel
@@ -757,42 +757,25 @@ public abstract class Country extends Region<Country> implements Quantizable
         RIGHT
     }
 
-    public static class CountryTmcCode extends IntegerIdentifier
-    {
-        public static final CountryTmcCode UNKNOWN = new CountryTmcCode(-1);
-
-        public CountryTmcCode(final int value)
-        {
-            super(value);
-        }
-    }
-
-    public static class ListConverter extends BaseListConverter<Country>
-    {
-        public ListConverter(final Listener listener)
-        {
-            super(listener, new Region.Converter<>(listener), ",");
-        }
-
-        public ListConverter(final Listener listener, final String delimiter)
-        {
-            super(listener, new Region.Converter<>(listener), delimiter);
-        }
-    }
-
     public static class Converter extends BaseStringConverter<Country>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Country onConvertToObject(final String country)
+        protected String onToString(Country country)
+        {
+            return country.identity().mesakit().code();
+        }
+
+        @Override
+        protected Country onToValue(String country)
         {
             if (!Strings.isEmpty(country) && !"NULL".equalsIgnoreCase(country))
             {
-                final var regions = Region.allRegionsMatching(country);
+                var regions = Region.allRegionsMatching(country);
                 if (!regions.isEmpty())
                 {
                     if (regions.first() instanceof Country)
@@ -800,10 +783,10 @@ public abstract class Country extends Region<Country> implements Quantizable
                         return (Country) regions.first();
                     }
                 }
-                final var code = RegionCode.parse(country);
+                var code = RegionCode.parse(country);
                 if (code != null)
                 {
-                    final var region = Region.globalForRegionCode(code);
+                    var region = Region.globalForRegionCode(code);
                     if (region instanceof Country)
                     {
                         return (Country) region;
@@ -814,15 +797,32 @@ public abstract class Country extends Region<Country> implements Quantizable
             }
             return null;
         }
+    }
 
-        @Override
-        protected String onConvertToString(final Country country)
+    public static class CountryTmcCode extends IntegerIdentifier
+    {
+        public static final CountryTmcCode UNKNOWN = new CountryTmcCode(-1);
+
+        public CountryTmcCode(int value)
         {
-            return country.identity().mesakit().code();
+            super(value);
         }
     }
 
-    protected Country(final Continent continent, final RegionInstance<Country> instance)
+    public static class ListConverter extends BaseListConverter<Country>
+    {
+        public ListConverter(Listener listener)
+        {
+            super(listener, new Region.Converter<>(listener), ",");
+        }
+
+        public ListConverter(Listener listener, String delimiter)
+        {
+            super(listener, new Region.Converter<>(listener), delimiter);
+        }
+    }
+
+    protected Country(Continent continent, RegionInstance<Country> instance)
     {
         super(continent, instance);
     }
@@ -834,9 +834,9 @@ public abstract class Country extends Region<Country> implements Quantizable
     }
 
     @Override
-    public boolean contains(final Location location)
+    public boolean contains(Location location)
     {
-        for (final var polygon : borders())
+        for (var polygon : borders())
         {
             if (polygon.contains(location))
             {
@@ -860,11 +860,11 @@ public abstract class Country extends Region<Country> implements Quantizable
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Country)
         {
-            final var that = (Country) object;
+            var that = (Country) object;
             return identity().equals(that.identity());
         }
         return false;
@@ -908,9 +908,9 @@ public abstract class Country extends Region<Country> implements Quantizable
         return new BaseExtractor<>(LOGGER())
         {
             @Override
-            public Country onExtract(final PbfWay way)
+            public Country onExtract(PbfWay way)
             {
-                final var iso = isoCode(way);
+                var iso = isoCode(way);
                 if (iso != null)
                 {
                     return forRegionCode(iso.first());

@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.map.geography;
 
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.data.conversion.string.enumeration.EnumConverter;
-import com.telenav.kivakit.core.kernel.language.primitives.Ints;
-import com.telenav.kivakit.core.kernel.language.primitives.Longs;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.data.conversion.string.enumeration.EnumConverter;
+import com.telenav.kivakit.kernel.language.primitives.Ints;
+import com.telenav.kivakit.kernel.language.primitives.Longs;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
 import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
@@ -112,12 +112,12 @@ public enum Precision
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static SwitchParser.Builder<Precision> switchParser()
+    public static SwitchParser.Builder<Precision> precisionSwitchParser()
     {
-        return switchParser("data-precision", "The data precision (DM5, DM6 or DM7)");
+        return precisionSwitchParser("data-precision", "The data precision (DM5, DM6 or DM7)");
     }
 
-    public static SwitchParser.Builder<Precision> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<Precision> precisionSwitchParser(String name, String description)
     {
         return SwitchParser.builder(Precision.class)
                 .name(name)
@@ -127,13 +127,13 @@ public enum Precision
 
     public static class Dm5LatitudeConverter extends BaseStringConverter<Latitude>
     {
-        public Dm5LatitudeConverter(final Listener listener)
+        public Dm5LatitudeConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Latitude onConvertToObject(final String value)
+        protected Latitude onToValue(String value)
         {
             return DM5.toLatitude(Integer.parseInt(value));
         }
@@ -141,13 +141,13 @@ public enum Precision
 
     public static class Dm5LongitudeConverter extends BaseStringConverter<Longitude>
     {
-        public Dm5LongitudeConverter(final Listener listener)
+        public Dm5LongitudeConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Longitude onConvertToObject(final String value)
+        protected Longitude onToValue(String value)
         {
             return DM5.toLongitude(Integer.parseInt(value));
         }
@@ -155,13 +155,13 @@ public enum Precision
 
     public static class Dm6LatitudeConverter extends BaseStringConverter<Latitude>
     {
-        public Dm6LatitudeConverter(final Listener listener)
+        public Dm6LatitudeConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Latitude onConvertToObject(final String value)
+        protected Latitude onToValue(String value)
         {
             return DM6.toLatitude(Integer.parseInt(value));
         }
@@ -169,13 +169,13 @@ public enum Precision
 
     public static class Dm6LongitudeConverter extends BaseStringConverter<Longitude>
     {
-        public Dm6LongitudeConverter(final Listener listener)
+        public Dm6LongitudeConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Longitude onConvertToObject(final String value)
+        protected Longitude onToValue(String value)
         {
             return DM6.toLongitude(Integer.parseInt(value));
         }
@@ -183,13 +183,13 @@ public enum Precision
 
     public static class Dm7LatitudeConverter extends BaseStringConverter<Latitude>
     {
-        public Dm7LatitudeConverter(final Listener listener)
+        public Dm7LatitudeConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Latitude onConvertToObject(final String value)
+        protected Latitude onToValue(String value)
         {
             return DM7.toLatitude(Integer.parseInt(value));
         }
@@ -197,13 +197,13 @@ public enum Precision
 
     public static class Dm7LongitudeConverter extends BaseStringConverter<Longitude>
     {
-        public Dm7LongitudeConverter(final Listener listener)
+        public Dm7LongitudeConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Longitude onConvertToObject(final String value)
+        protected Longitude onToValue(String value)
         {
             return DM7.toLongitude(Integer.parseInt(value));
         }
@@ -216,7 +216,7 @@ public enum Precision
     {
     }
 
-    Precision(final int decimalPlaces)
+    Precision(int decimalPlaces)
     {
         places = decimalPlaces;
     }
@@ -241,68 +241,68 @@ public enum Precision
         return true;
     }
 
-    public long inRangeLatitude(final int decimal)
+    public long inRangeLatitude(int decimal)
     {
         return Longs.inRange(decimal, minimumLatitude(), maximumLatitude());
     }
 
-    public long inRangeLatitudeOffset(final long decimal)
+    public long inRangeLatitudeOffset(long decimal)
     {
         return Longs.inRange(decimal, minimumLatitudeOffset(), maximumLatitudeOffset());
     }
 
-    public long inRangeLongitude(final int decimal)
+    public long inRangeLongitude(int decimal)
     {
         return Longs.inRange(decimal, minimumLongitude(), maximumLongitude());
     }
 
-    public long inRangeLongitudeOffset(final long decimal)
+    public long inRangeLongitudeOffset(long decimal)
     {
         return Longs.inRange(decimal, minimumLongitudeOffset(), maximumLongitudeOffset());
     }
 
-    public final boolean isMaximum(final int decimal)
+    public final boolean isMaximum(int decimal)
     {
         return maximum() == decimal;
     }
 
-    public final boolean isMaximumLatitude(final int decimal)
+    public final boolean isMaximumLatitude(int decimal)
     {
         return maximumLatitude() == decimal;
     }
 
-    public final boolean isMaximumLongitude(final int decimal)
+    public final boolean isMaximumLongitude(int decimal)
     {
         return maximumLongitude() == decimal;
     }
 
-    public final boolean isMinimum(final int decimal)
+    public final boolean isMinimum(int decimal)
     {
         return maximum() == decimal;
     }
 
-    public final boolean isValidLatitude(final int latitude)
+    public final boolean isValidLatitude(int latitude)
     {
         return latitude >= minimumLatitude() && latitude <= maximumLatitude();
     }
 
-    public final boolean isValidLatitudeOffset(final int latitude)
+    public final boolean isValidLatitudeOffset(int latitude)
     {
         return latitude >= minimumLatitudeOffset() && latitude <= maximumLatitudeOffset();
     }
 
-    public boolean isValidLocation(final long latitudeAndLongitude)
+    public boolean isValidLocation(long latitudeAndLongitude)
     {
         return isValidLatitude(Location.latitude(latitudeAndLongitude)) &&
                 isValidLongitude(Location.longitude(latitudeAndLongitude));
     }
 
-    public final boolean isValidLongitude(final int longitude)
+    public final boolean isValidLongitude(int longitude)
     {
         return longitude >= minimumLongitude() && longitude <= maximumLongitude();
     }
 
-    public final boolean isValidLongitudeOffset(final int longitude)
+    public final boolean isValidLongitudeOffset(int longitude)
     {
         return longitude >= minimumLongitudeOffset() && longitude <= maximumLongitudeOffset();
     }
@@ -357,12 +357,12 @@ public enum Precision
         return -MAXIMUM_LONGITUDE_OFFSET[ordinal()];
     }
 
-    public final int nanodegreesToDecimal(final long nanodegrees)
+    public final int nanodegreesToDecimal(long nanodegrees)
     {
         return (int) (nanodegrees / NANODEGREES_PER_DECIMAL[ordinal()]);
     }
 
-    public final long offsetNanodegrees(final long nanodegrees, final int decimal)
+    public final long offsetNanodegrees(long nanodegrees, int decimal)
     {
         return toNanodegrees(nanodegreesToDecimal(nanodegrees) + decimal);
     }
@@ -375,11 +375,11 @@ public enum Precision
     /**
      * Converts the decimal value in the given precision to a decimal value in this precision
      */
-    public final int to(final Precision precision, final int decimal)
+    public final int to(Precision precision, int decimal)
     {
-        final var fromPlaces = places();
-        final var toPlaces = precision.places();
-        final var difference = toPlaces - fromPlaces;
+        var fromPlaces = places();
+        var toPlaces = precision.places();
+        var difference = toPlaces - fromPlaces;
         if (difference > 0)
         {
             return decimal * Ints.powerOfTen(difference);
@@ -391,7 +391,7 @@ public enum Precision
         return decimal;
     }
 
-    public final long to(final Precision precision, final int latitude, final int longitude)
+    public final long to(Precision precision, int latitude, int longitude)
     {
         return Location.toLong(to(precision, latitude),
                 to(precision, longitude));
@@ -400,7 +400,7 @@ public enum Precision
     /**
      * Converts the decimal value in the given precision to a decimal value in this precision
      */
-    public final long to(final Precision precision, final long decimal)
+    public final long to(Precision precision, long decimal)
     {
         return to(precision, Location.latitude(decimal), Location.longitude(decimal));
     }
@@ -414,71 +414,71 @@ public enum Precision
      * @param degrees Degrees to convert
      * @return The decimal value in this precision
      */
-    public int toDecimal(final double degrees)
+    public int toDecimal(double degrees)
     {
         return (int) (degrees * Angle.NANODEGREES_PER_DEGREE / NANODEGREES_PER_DECIMAL[ordinal()]);
     }
 
-    public final int toDecimal(final Angle angle)
+    public final int toDecimal(Angle angle)
     {
         return (int) (angle.asNanodegrees() / NANODEGREES_PER_DECIMAL[ordinal()]);
     }
 
-    public double toDegrees(final int decimal)
+    public double toDegrees(int decimal)
     {
         return (double) toNanodegrees(decimal) / Angle.NANODEGREES_PER_DEGREE;
     }
 
-    public final int toDm5(final int decimal)
+    public final int toDm5(int decimal)
     {
         assert decimal >= minimum();
         assert decimal <= maximum();
         return to(DM5, decimal);
     }
 
-    public final int toDm6(final int decimal)
+    public final int toDm6(int decimal)
     {
         assert decimal >= minimum();
         assert decimal <= maximum();
         return to(DM6, decimal);
     }
 
-    public final int toDm7(final int decimal)
+    public final int toDm7(int decimal)
     {
         assert decimal >= minimum();
         assert decimal <= maximum();
         return to(DM7, decimal);
     }
 
-    public final Latitude toLatitude(final int decimal)
+    public final Latitude toLatitude(int decimal)
     {
         assert decimal >= minimumLatitude();
         assert decimal <= maximumLatitude();
         return Latitude.nanodegrees(toNanodegrees(decimal));
     }
 
-    public Distance toLatitudinalDistance(final int from, final int to)
+    public Distance toLatitudinalDistance(int from, int to)
     {
         return toLatitude(from).distanceTo(toLatitude(to));
     }
 
-    public final Location toLocation(final long decimal)
+    public final Location toLocation(long decimal)
     {
-        final var latitude = Location.latitude(decimal);
-        final var longitude = Location.longitude(decimal);
+        var latitude = Location.latitude(decimal);
+        var longitude = Location.longitude(decimal);
         return Location.dm7(toDm7(latitude), toDm7(longitude));
     }
 
-    public final Location toLocation(final int latitude, final int longitude)
+    public final Location toLocation(int latitude, int longitude)
     {
         return Location.dm7(toDm7(latitude), toDm7(longitude));
     }
 
-    public final long toLong(final Location location)
+    public final long toLong(Location location)
     {
-        final var latitudeInDm7 = location.latitudeInDm7();
-        final var longitudeInDm7 = location.longitudeInDm7();
-        final long value;
+        var latitudeInDm7 = location.latitudeInDm7();
+        var longitudeInDm7 = location.longitudeInDm7();
+        long value;
         if (this == DM7)
         {
             value = Location.toLong(latitudeInDm7, longitudeInDm7);
@@ -492,33 +492,33 @@ public enum Precision
         return value;
     }
 
-    public final Longitude toLongitude(final int decimal)
+    public final Longitude toLongitude(int decimal)
     {
         assert decimal >= minimumLongitude();
         assert decimal <= maximumLongitude();
         return Longitude.nanodegrees(toNanodegrees(decimal));
     }
 
-    public Distance toLongitudinalDistance(final int from, final int to, final int at)
+    public Distance toLongitudinalDistance(int from, int to, int at)
     {
         return toLongitude(from).distanceTo(toLongitude(to), toLatitude(at));
     }
 
-    public final long toNanodegrees(final int decimal)
+    public final long toNanodegrees(int decimal)
     {
         assert decimal >= minimum();
         assert decimal <= maximum();
         return decimal * NANODEGREES_PER_DECIMAL[ordinal()];
     }
 
-    public double toRadians(final int decimal)
+    public double toRadians(int decimal)
     {
         return (double) toNanodegrees(decimal) / Angle.NANODEGREES_PER_RADIAN;
     }
 
     public final Rectangle toRectangle(
-            final int bottomInDecimal, final int leftInDecimal, final int topInDecimal,
-            final int rightInDecimal)
+            int bottomInDecimal, int leftInDecimal, int topInDecimal,
+            int rightInDecimal)
     {
         return Rectangle.fromInts(toDm7(bottomInDecimal), toDm7(leftInDecimal),
                 toDm7(topInDecimal), toDm7(rightInDecimal));

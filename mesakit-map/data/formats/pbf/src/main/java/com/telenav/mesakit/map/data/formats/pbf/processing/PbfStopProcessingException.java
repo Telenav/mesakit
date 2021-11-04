@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing;
 
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessing;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessing;
 
 @UmlClassDiagram(diagram = DiagramPbfProcessing.class)
 public class PbfStopProcessingException extends RuntimeException

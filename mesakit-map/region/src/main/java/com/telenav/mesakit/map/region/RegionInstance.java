@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.kivakit.core.collections.set.ConcurrentHashSet;
-import com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode;
-import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
-import com.telenav.kivakit.core.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
+import com.telenav.kivakit.collections.set.ConcurrentHashSet;
+import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -43,7 +43,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 @UmlClassDiagram(diagram = DiagramRegion.class)
 @UmlExcludeSuperTypes(AsString.class)
@@ -83,12 +83,12 @@ public class RegionInstance<T extends Region<T>> implements AsString
     @UmlAggregation
     private MapLocale locale;
 
-    public RegionInstance(final Class<T> subclass)
+    public RegionInstance(Class<T> subclass)
     {
         this.subclass = subclass;
     }
 
-    private RegionInstance(final RegionInstance<T> that)
+    private RegionInstance(RegionInstance<T> that)
     {
         identity = that.identity;
         ordinal = that.ordinal;
@@ -102,7 +102,7 @@ public class RegionInstance<T extends Region<T>> implements AsString
     }
 
     @SuppressWarnings("UnusedReturnValue")
-    public RegionInstance<T> add(final Region<?> region)
+    public RegionInstance<T> add(Region<?> region)
     {
         if (!children.contains(region))
         {
@@ -135,11 +135,11 @@ public class RegionInstance<T extends Region<T>> implements AsString
     {
         if (bounds == null)
         {
-            final var borders = borders();
+            var borders = borders();
             if (borders != null && !borders.isEmpty())
             {
-                final var builder = new BoundingBoxBuilder();
-                for (final var polygon : borders)
+                var builder = new BoundingBoxBuilder();
+                for (var polygon : borders)
                 {
                     builder.add(polygon.locationSequence());
                 }
@@ -159,11 +159,11 @@ public class RegionInstance<T extends Region<T>> implements AsString
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    public <C extends Region> Set<C> children(final Class<C> type)
+    public <C extends Region> Set<C> children(Class<C> type)
     {
-        final var matching = children().matching((child) -> child.subclass().isAssignableFrom(type));
-        final Set<C> set = new TreeSet<>();
-        for (final var region : matching)
+        var matching = children().matching((child) -> child.subclass().isAssignableFrom(type));
+        Set<C> set = new TreeSet<>();
+        for (var region : matching)
         {
             set.add((C) region);
         }
@@ -185,7 +185,7 @@ public class RegionInstance<T extends Region<T>> implements AsString
         return identity;
     }
 
-    public RegionInstance<T> identity(final RegionIdentity identity)
+    public RegionInstance<T> identity(RegionIdentity identity)
     {
         this.identity = identity;
         return this;
@@ -216,14 +216,14 @@ public class RegionInstance<T extends Region<T>> implements AsString
         return ordinal;
     }
 
-    public RegionInstance<T> prefix(final Region<?> prefix)
+    public RegionInstance<T> prefix(Region<?> prefix)
     {
         assert prefix != null;
         identity = identity().withPrefix(prefix.identity());
         return this;
     }
 
-    public RegionInstance<T> prefix(final String prefix)
+    public RegionInstance<T> prefix(String prefix)
     {
         ensure(prefix != null);
         identity = identity().withPrefix(prefix);
@@ -236,7 +236,7 @@ public class RegionInstance<T extends Region<T>> implements AsString
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked", "UnusedReturnValue" })
-    public RegionInstance<T> region(final Region region)
+    public RegionInstance<T> region(Region region)
     {
         this.region = (T) region;
         return this;
@@ -247,13 +247,13 @@ public class RegionInstance<T extends Region<T>> implements AsString
         return subclass;
     }
 
-    public String toDebugString(final int level)
+    public String toDebugString(int level)
     {
-        final var builder = new StringBuilder();
+        var builder = new StringBuilder();
         builder.append(AsciiArt.repeat(level, ' '));
         builder.append(this);
         builder.append("\n");
-        for (final Region<?> child : children())
+        for (Region<?> child : children())
         {
             builder.append(child.instance().toDebugString(level + 2));
         }
@@ -266,58 +266,58 @@ public class RegionInstance<T extends Region<T>> implements AsString
         return identity() + " (" + Count.count(children()) + " children)";
     }
 
-    public RegionInstance<T> withAutomotiveSupportLevel(final Country.AutomotiveSupportLevel automotiveSupportLevel)
+    public RegionInstance<T> withAutomotiveSupportLevel(Country.AutomotiveSupportLevel automotiveSupportLevel)
     {
-        final var copy = new RegionInstance<>(this);
+        var copy = new RegionInstance<>(this);
         copy.automotiveSupportLevel = automotiveSupportLevel;
         return copy;
     }
 
-    public RegionInstance<T> withBounds(final Rectangle bounds)
+    public RegionInstance<T> withBounds(Rectangle bounds)
     {
-        final var copy = new RegionInstance<>(this);
+        var copy = new RegionInstance<>(this);
         copy.bounds = bounds;
         return copy;
     }
 
-    public RegionInstance<T> withDrivingSide(final Country.DrivingSide drivingSide)
+    public RegionInstance<T> withDrivingSide(Country.DrivingSide drivingSide)
     {
-        final var copy = new RegionInstance<>(this);
+        var copy = new RegionInstance<>(this);
         copy.drivingSide = drivingSide;
         return copy;
     }
 
-    public RegionInstance<T> withIdentity(final RegionIdentity identity)
+    public RegionInstance<T> withIdentity(RegionIdentity identity)
     {
-        final var copy = new RegionInstance<>(this);
+        var copy = new RegionInstance<>(this);
         copy.identity = identity;
         return copy;
     }
 
-    public RegionInstance<T> withLanguage(final LanguageIsoCode language)
+    public RegionInstance<T> withLanguage(LanguageIsoCode language)
     {
-        final var copy = new RegionInstance<>(this);
+        var copy = new RegionInstance<>(this);
         copy.languages.add(language);
         return copy;
     }
 
-    public RegionInstance<T> withLanguages(final List<LanguageIsoCode> languages)
+    public RegionInstance<T> withLanguages(List<LanguageIsoCode> languages)
     {
-        final var copy = new RegionInstance<>(this);
+        var copy = new RegionInstance<>(this);
         copy.languages = languages;
         return copy;
     }
 
-    public RegionInstance<T> withLocale(final MapLocale locale)
+    public RegionInstance<T> withLocale(MapLocale locale)
     {
-        final var copy = new RegionInstance<>(this);
+        var copy = new RegionInstance<>(this);
         copy.locale = locale;
         return copy;
     }
 
-    public RegionInstance<T> withOrdinal(final int ordinal)
+    public RegionInstance<T> withOrdinal(int ordinal)
     {
-        final var copy = new RegionInstance<>(this);
+        var copy = new RegionInstance<>(this);
         copy.ordinal = ordinal;
         return copy;
     }

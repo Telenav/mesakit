@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
-import com.telenav.kivakit.core.filesystem.File;
-import com.telenav.kivakit.core.filesystem.FileCache;
-import com.telenav.kivakit.core.filesystem.Folder;
-import com.telenav.kivakit.core.resource.CopyMode;
-import com.telenav.kivakit.core.resource.Resource;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.filesystem.FileCache;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.resource.CopyMode;
+import com.telenav.kivakit.resource.Resource;
 
 /**
  * A persistent cache of tile images.
@@ -34,7 +34,7 @@ public class SlippyTileCache extends FileCache
     /**
      * @param folder The cache folder
      */
-    public SlippyTileCache(final Folder folder)
+    public SlippyTileCache(Folder folder)
     {
         super(folder);
         startPruner();
@@ -43,7 +43,7 @@ public class SlippyTileCache extends FileCache
     /**
      * Add the given tile image to this cache
      */
-    public File add(final SlippyTile tile, final Resource image)
+    public File add(SlippyTile tile, Resource image)
     {
         return addAs(image, tile.asFileName(), CopyMode.OVERWRITE);
     }
@@ -51,9 +51,9 @@ public class SlippyTileCache extends FileCache
     /**
      * @return Input stream to read the given tile if it exists in this cache or null if it doesn't
      */
-    public Resource resource(final SlippyTile tile)
+    public Resource resource(SlippyTile tile)
     {
-        final var file = file(tile.asFileName());
+        var file = file(tile.asFileName());
         return file.exists() ? file : null;
     }
 }

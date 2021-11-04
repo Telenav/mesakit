@@ -18,16 +18,16 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
+import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 @UmlClassDiagram(diagram = DiagramPolyline.class)
 public class PolylineSectioner
@@ -37,12 +37,12 @@ public class PolylineSectioner
 
     private final List<Integer> cuts = new ArrayList<>();
 
-    public PolylineSectioner(final Polyline polyline)
+    public PolylineSectioner(Polyline polyline)
     {
         this.polyline = polyline;
     }
 
-    public void cutAtIndex(final int index)
+    public void cutAtIndex(int index)
     {
         checkIndex(index);
         cuts.add(index);
@@ -51,14 +51,14 @@ public class PolylineSectioner
     @UmlRelation(label = "creates")
     public List<PolylineSection> sections()
     {
-        final List<PolylineSection> sections = new ArrayList<>();
+        List<PolylineSection> sections = new ArrayList<>();
 
         // Sort cuts so we go through them in polyline order
         Collections.sort(cuts);
 
         // Loop through cuts
         var last = 0;
-        for (final int cut : cuts)
+        for (int cut : cuts)
         {
             // If we're cutting in a new place (cut indexes could stutter),
             if (last != cut)
@@ -80,7 +80,7 @@ public class PolylineSectioner
         return sections;
     }
 
-    private void checkIndex(final int index)
+    private void checkIndex(int index)
     {
         ensure(index >= 0);
         ensure(index < polyline.size());

@@ -18,6 +18,8 @@
 
 package com.telenav.mesakit.map.region.countries;
 
+import com.telenav.kivakit.kernel.language.locales.CountryIsoCode;
+import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.countries.states.California;
@@ -26,8 +28,6 @@ import com.telenav.mesakit.map.region.countries.states.Washington;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.State;
-import com.telenav.kivakit.core.kernel.language.locales.CountryIsoCode;
-import com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode;
 
 public class UnitedStates extends Country
 {
@@ -149,9 +149,9 @@ public class UnitedStates extends Country
     }
 
     @Override
-    protected void onInitialize()
+    public void onInitialize()
     {
-        final var BASE = new RegionInstance<>(State.class);
+        var BASE = new RegionInstance<>(State.class);
 
         CALIFORNIA = new California();
         CALIFORNIA.initialize();

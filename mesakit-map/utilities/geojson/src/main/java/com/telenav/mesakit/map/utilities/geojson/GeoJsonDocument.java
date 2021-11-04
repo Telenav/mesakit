@@ -20,11 +20,12 @@ package com.telenav.mesakit.map.utilities.geojson;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.telenav.kivakit.core.kernel.language.collections.map.string.StringToStringMap;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.core.resource.WritableResource;
-import com.telenav.kivakit.core.resource.path.Extension;
+import com.telenav.kivakit.kernel.language.collections.map.string.StringToStringMap;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.resource.WritableResource;
+import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
@@ -39,27 +40,27 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 public class GeoJsonDocument implements Iterable<GeoJsonFeature>
 {
-    public static Extension EXTENSION = Extension.parse(".geojson");
+    public static Extension EXTENSION = Extension.parse(Listener.console(), ".geojson");
 
-    public static GeoJsonDocument forJson(final String json)
+    public static GeoJsonDocument forJson(String json)
     {
         return gson().fromJson(json, GeoJsonDocument.class);
     }
 
-    public static void main(final String[] args)
+    public static void main(String[] args)
     {
-        final var document = new GeoJsonDocument();
-        final var feature = new GeoJsonFeature("Title");
+        var document = new GeoJsonDocument();
+        var feature = new GeoJsonFeature("Title");
         feature.put("title", "Feature Title");
         feature.put("description", "This is the description of this feature");
-        final var location = Location.degrees(47.678714, -122.337366);
+        var location = Location.degrees(47.678714, -122.337366);
         feature.add(new GeoJsonPoint(location));
-        final var a = location.moved(Heading.EAST, Distance.meters(50));
-        final var b = a.moved(Heading.SOUTHEAST, Distance.meters(50));
+        var a = location.moved(Heading.EAST, Distance.meters(50));
+        var b = a.moved(Heading.SOUTHEAST, Distance.meters(50));
         feature.add(new GeoJsonPolyline(Polyline.fromLocations(a, b)));
         document.add(feature);
         System.out.println(document);
@@ -69,7 +70,7 @@ public class GeoJsonDocument implements Iterable<GeoJsonFeature>
 
     private final Map<String, Object> properties = new HashMap<>();
 
-    public synchronized void add(final GeoJsonFeature feature)
+    public synchronized void add(GeoJsonFeature feature)
     {
         if (feature == null)
         {
@@ -80,10 +81,10 @@ public class GeoJsonDocument implements Iterable<GeoJsonFeature>
 
     public Rectangle bounds()
     {
-        final var builder = new BoundingBoxBuilder();
-        for (final var feature : this)
+        var builder = new BoundingBoxBuilder();
+        for (var feature : this)
         {
-            for (final var geometry : feature)
+            for (var geometry : feature)
             {
                 builder.add(geometry.bounds());
             }
@@ -106,7 +107,7 @@ public class GeoJsonDocument implements Iterable<GeoJsonFeature>
         return features.toArray(new GeoJsonFeature[size()]);
     }
 
-    public GeoJsonFeature get(final int index)
+    public GeoJsonFeature get(int index)
     {
         return features.get(index);
     }
@@ -124,17 +125,17 @@ public class GeoJsonDocument implements Iterable<GeoJsonFeature>
 
     public Map<String, String> propertiesAsStringToStringMap()
     {
-        final var map = new StringToStringMap(Maximum.MAXIMUM);
-        for (final var key : properties.keySet())
+        var map = new StringToStringMap(Maximum.MAXIMUM);
+        for (var key : properties.keySet())
         {
             map.put(key, properties.get(key).toString());
         }
         return map;
     }
 
-    public void save(final WritableResource resource)
+    public void save(WritableResource resource)
     {
-        final var out = resource.printWriter();
+        var out = resource.printWriter();
         out.print(this);
         out.close();
     }
@@ -144,7 +145,7 @@ public class GeoJsonDocument implements Iterable<GeoJsonFeature>
         return features.size();
     }
 
-    public void sortFeatures(final Comparator<? super GeoJsonFeature> featureComparator)
+    public void sortFeatures(Comparator<? super GeoJsonFeature> featureComparator)
     {
         features.sort(featureComparator);
     }
@@ -157,7 +158,7 @@ public class GeoJsonDocument implements Iterable<GeoJsonFeature>
 
     private static Gson gson()
     {
-        final var builder = new GsonBuilder().setPrettyPrinting();
+        var builder = new GsonBuilder().setPrettyPrinting();
         builder.registerTypeAdapter(GeoJsonGeometry.class, new GeoJsonGeometryTypeAdapter());
         return builder.create();
     }

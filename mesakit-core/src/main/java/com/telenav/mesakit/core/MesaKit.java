@@ -1,8 +1,11 @@
 package com.telenav.mesakit.core;
 
-import com.telenav.kivakit.core.filesystem.Folder;
-import com.telenav.kivakit.core.kernel.language.objects.Lazy;
-import com.telenav.kivakit.core.kernel.project.Project;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.kernel.language.objects.Lazy;
+import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.kernel.project.Project;
+
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 /**
  * @author jonathanl (shibo)
@@ -16,17 +19,32 @@ public class MesaKit extends Project
         return mesakit.get();
     }
 
-    public Folder cacheFolder()
+    public Folder mesakitAllVersionsCacheFolder()
     {
-        return mesakitFolder().folder(version().toString()).mkdirs();
+        return mesakitRootCacheFolder().folder("all-versions");
     }
 
-    public Folder mesakitAllVersionsFolder()
+    public Folder mesakitCacheFolder()
     {
-        return mesakitFolder().folder("all-versions");
+        return mesakitRootCacheFolder().folder(projectVersion().toString()).mkdirs();
     }
 
-    public Folder mesakitFolder()
+    public Folder mesakitExtensionsHome()
+    {
+        return mesakitHome().parent().folder("mesakit-extensions");
+    }
+
+    public Folder mesakitHome()
+    {
+        var home = JavaVirtualMachine.property("MESAKIT_HOME");
+        if (home != null)
+        {
+            return Folder.parse(this, home);
+        }
+        return fail("Cannot find MesaKit home folder");
+    }
+
+    public Folder mesakitRootCacheFolder()
     {
         return Folder.userHome().folder(".mesakit");
     }

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.core.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +44,7 @@ public enum RoadFunctionalClass implements Quantizable
     /**
      * @return The road type for the given identifier
      */
-    public static RoadFunctionalClass forIdentifier(final int identifier)
+    public static RoadFunctionalClass forIdentifier(int identifier)
     {
         switch (identifier)
         {
@@ -71,7 +71,7 @@ public enum RoadFunctionalClass implements Quantizable
     /**
      * @return The road type for the given identifier
      */
-    public static RoadFunctionalClass forInvertedIdentifier(final int identifier)
+    public static RoadFunctionalClass forInvertedIdentifier(int identifier)
     {
         switch (identifier)
         {
@@ -98,7 +98,7 @@ public enum RoadFunctionalClass implements Quantizable
     /**
      * @return The identifier for the given road type or NULL.identifier if the type is null
      */
-    public static int identifierFor(final RoadFunctionalClass type)
+    public static int identifierFor(RoadFunctionalClass type)
     {
         if (type == null)
         {
@@ -109,7 +109,7 @@ public enum RoadFunctionalClass implements Quantizable
 
     private final int identifier;
 
-    RoadFunctionalClass(final int identifier)
+    RoadFunctionalClass(int identifier)
     {
         this.identifier = identifier;
     }
@@ -119,7 +119,7 @@ public enum RoadFunctionalClass implements Quantizable
      */
     public List<RoadFunctionalClass> atOrBelow()
     {
-        final List<RoadFunctionalClass> classes = new ArrayList<>();
+        List<RoadFunctionalClass> classes = new ArrayList<>();
 
         for (var i = identifier(); i > 0; i--)
         {
@@ -133,27 +133,27 @@ public enum RoadFunctionalClass implements Quantizable
         return identifier;
     }
 
-    public boolean isLessImportantThan(final RoadFunctionalClass that)
+    public boolean isLessImportantThan(RoadFunctionalClass that)
     {
         return identifier < that.identifier;
     }
 
-    public boolean isLessImportantThanOrEqual(final RoadFunctionalClass that)
+    public boolean isLessImportantThanOrEqual(RoadFunctionalClass that)
     {
         return identifier <= that.identifier;
     }
 
-    public boolean isMoreImportantThan(final RoadFunctionalClass that)
+    public boolean isMoreImportantThan(RoadFunctionalClass that)
     {
         return identifier > that.identifier;
     }
 
-    public boolean isMoreImportantThanOrEqual(final RoadFunctionalClass that)
+    public boolean isMoreImportantThanOrEqual(RoadFunctionalClass that)
     {
         return identifier >= that.identifier;
     }
 
-    public RoadFunctionalClass maximum(final RoadFunctionalClass that)
+    public RoadFunctionalClass maximum(RoadFunctionalClass that)
     {
         return isMoreImportantThan(that) ? this : that;
     }

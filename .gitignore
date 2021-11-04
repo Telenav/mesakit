@@ -11,8 +11,9 @@
 **/.includepath
 **/*.log
 **/*.ids
+**/src/main/generated/
 **/.DS_Store
 **/*.class
 **/*.hprof
 **/dependency-reduced-pom.xml
-/setup.properties
+setup.properties

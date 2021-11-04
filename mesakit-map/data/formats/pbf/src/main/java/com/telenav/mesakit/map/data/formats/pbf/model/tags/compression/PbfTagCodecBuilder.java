@@ -1,17 +1,18 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
-import com.telenav.kivakit.core.filesystem.File;
-import com.telenav.kivakit.core.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.core.kernel.language.values.count.Minimum;
-import com.telenav.kivakit.core.kernel.language.values.count.MutableCount;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.CharacterFrequencies;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.StringFrequencies;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.kernel.language.values.count.Minimum;
+import com.telenav.kivakit.kernel.language.values.count.MutableCount;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
@@ -72,17 +73,17 @@ public class PbfTagCodecBuilder
 
     private RelationFilter relationFilter;
 
-    public void addCharacters(final PbfEntity<?> entity)
+    public void addCharacters(PbfEntity<?> entity)
     {
-        final var tags = entity.tagList();
-        for (final var tag : tags)
+        var tags = entity.tagList();
+        for (var tag : tags)
         {
-            final var key = tag.getKey();
+            var key = tag.getKey();
             if (keyStringCodec == null || !keyStringCodec.canEncode(key))
             {
                 keyCharacterFrequencies.add(key);
             }
-            final var value = tag.getValue();
+            var value = tag.getValue();
             if (valueStringCodec == null || !valueStringCodec.canEncode(value))
             {
                 valueCharacterFrequencies.add(value);
@@ -90,23 +91,23 @@ public class PbfTagCodecBuilder
         }
     }
 
-    public void build(final File input)
+    public void build(File input)
     {
         buildStringCodecs(input);
         buildCharacterCodecs(input);
     }
 
-    public void buildCharacterCodecs(final File input)
+    public void buildCharacterCodecs(File input)
     {
         // Then take another pass through the file to build the character codecs but without any of the
         // string values that will be compressed with the string compressors
-        final var reader = LOGGER.listenTo(new SerialPbfReader(input));
-        final var entities = new MutableCount();
+        var reader = LOGGER.listenTo(new SerialPbfReader(input));
+        var entities = new MutableCount();
         reader.phase("Building Character Codecs");
         reader.process(new PbfDataProcessor()
         {
             @Override
-            public Action onRelation(final PbfRelation relation)
+            public Action onRelation(PbfRelation relation)
             {
                 if (entities.increment() % sampleFrequency == 0)
                 {
@@ -116,7 +117,7 @@ public class PbfTagCodecBuilder
             }
 
             @Override
-            public Action onWay(final PbfWay way)
+            public Action onWay(PbfWay way)
             {
                 if (wayFilter.accepts(way))
                 {
@@ -135,11 +136,11 @@ public class PbfTagCodecBuilder
 
     public void buildCharacterCodecs()
     {
-        final var keyEscapes = keyCharacterFrequencies
+        var keyEscapes = keyCharacterFrequencies
                 .escaped(charactersMinimumOccurrences.asMaximum())
                 .maximum(charactersMinimumOccurrences.incremented());
         keyCharacterFrequencies.frequencies().add(ESCAPE, keyEscapes);
-        final var keySymbols = keyCharacterFrequencies.symbols(charactersMinimumOccurrences);
+        var keySymbols = keyCharacterFrequencies.symbols(charactersMinimumOccurrences);
         if (keySymbols.size() < 32)
         {
             keyCharacterCodec = PbfDefaultCodecs.get().defaultKeyCharacterCodec();
@@ -149,11 +150,11 @@ public class PbfTagCodecBuilder
             keyCharacterCodec = HuffmanCharacterCodec.from(keySymbols, charactersMaximumBits);
         }
 
-        final var valueEscapes = valueCharacterFrequencies
+        var valueEscapes = valueCharacterFrequencies
                 .escaped(charactersMinimumOccurrences.asMaximum())
                 .maximum(charactersMinimumOccurrences.incremented());
         valueCharacterFrequencies.frequencies().add(ESCAPE, valueEscapes);
-        final var valueSymbols = valueCharacterFrequencies.symbols(charactersMinimumOccurrences);
+        var valueSymbols = valueCharacterFrequencies.symbols(charactersMinimumOccurrences);
         if (valueSymbols.size() < 32)
         {
             valueCharacterCodec = PbfDefaultCodecs.get().defaultValueCharacterCodec();
@@ -164,15 +165,15 @@ public class PbfTagCodecBuilder
         }
     }
 
-    public void buildStringCodecs(final File input)
+    public void buildStringCodecs(File input)
     {
-        final var reader = LOGGER.listenTo(new SerialPbfReader(input));
-        final var entities = new MutableCount();
+        var reader = LOGGER.listenTo(new SerialPbfReader(input));
+        var entities = new MutableCount();
         reader.phase("Building String Codecs");
         reader.process(new PbfDataProcessor()
         {
             @Override
-            public Action onRelation(final PbfRelation relation)
+            public Action onRelation(PbfRelation relation)
             {
                 if (relationFilter.accepts(relation))
                 {
@@ -186,7 +187,7 @@ public class PbfTagCodecBuilder
             }
 
             @Override
-            public Action onWay(final PbfWay way)
+            public Action onWay(PbfWay way)
             {
                 if (wayFilter.accepts(way))
                 {
@@ -206,7 +207,7 @@ public class PbfTagCodecBuilder
     public void buildStringCodecs()
     {
         // Build the string codecs using only symbols with a high enough frequency up to the given number of bits
-        final var keySymbols = keyStringFrequencies
+        var keySymbols = keyStringFrequencies
                 .top(stringsMaximum)
                 .symbols(stringsMinimumOccurrences);
         if (keySymbols.size() < 16)
@@ -218,7 +219,7 @@ public class PbfTagCodecBuilder
             keyStringCodec = HuffmanStringCodec.from(keySymbols, stringsMaximumBits);
         }
 
-        final var valueSymbols = valueStringFrequencies
+        var valueSymbols = valueStringFrequencies
                 .top(stringsMaximum)
                 .symbols(stringsMinimumOccurrences);
         if (valueSymbols.size() < 16)
@@ -231,13 +232,13 @@ public class PbfTagCodecBuilder
         }
     }
 
-    public PbfTagCodecBuilder charactersMaximumBits(final Maximum charactersMaximumBits)
+    public PbfTagCodecBuilder charactersMaximumBits(Maximum charactersMaximumBits)
     {
         this.charactersMaximumBits = charactersMaximumBits;
         return this;
     }
 
-    public PbfTagCodecBuilder charactersMinimumOccurrences(final Minimum charactersMinimumOccurrences)
+    public PbfTagCodecBuilder charactersMinimumOccurrences(Minimum charactersMinimumOccurrences)
     {
         this.charactersMinimumOccurrences = charactersMinimumOccurrences;
         return this;
@@ -270,43 +271,43 @@ public class PbfTagCodecBuilder
         System.out.println(AsciiArt.box("Value String Codec"));
         System.out.println(valueStringCodec);
 
-        keyCharacterCodec.asProperties().save(keyCharacterCodec.toString(), File.parse("default-key-character.codec"));
-        valueCharacterCodec.asProperties().save(valueCharacterCodec.toString(), File.parse("default-value-character.codec"));
-        keyStringCodec.asProperties().save(keyStringCodec.toString(), File.parse("default-key-string.codec"));
-        valueStringCodec.asProperties().save(valueStringCodec.toString(), File.parse("default-value-string.codec"));
+        keyCharacterCodec.asProperties().save(keyCharacterCodec.toString(), File.parse(Listener.console(), "default-key-character.codec"));
+        valueCharacterCodec.asProperties().save(valueCharacterCodec.toString(), File.parse(Listener.console(), "default-value-character.codec"));
+        keyStringCodec.asProperties().save(keyStringCodec.toString(), File.parse(Listener.console(), "default-key-string.codec"));
+        valueStringCodec.asProperties().save(valueStringCodec.toString(), File.parse(Listener.console(), "default-value-string.codec"));
     }
 
-    public PbfTagCodecBuilder relationFilter(final RelationFilter relationFilter)
+    public PbfTagCodecBuilder relationFilter(RelationFilter relationFilter)
     {
         this.relationFilter = relationFilter;
         return this;
     }
 
-    public void sample(final PbfEntity<?> entity)
+    public void sample(PbfEntity<?> entity)
     {
         addStrings(entity);
         addCharacters(entity);
     }
 
-    public PbfTagCodecBuilder sampleFrequency(final Integer sampleFrequency)
+    public PbfTagCodecBuilder sampleFrequency(Integer sampleFrequency)
     {
         this.sampleFrequency = sampleFrequency;
         return this;
     }
 
-    public PbfTagCodecBuilder stringsMaximum(final Maximum stringsMaximum)
+    public PbfTagCodecBuilder stringsMaximum(Maximum stringsMaximum)
     {
         this.stringsMaximum = stringsMaximum;
         return this;
     }
 
-    public PbfTagCodecBuilder stringsMaximumBits(final Maximum stringsMaximumBits)
+    public PbfTagCodecBuilder stringsMaximumBits(Maximum stringsMaximumBits)
     {
         this.stringsMaximumBits = stringsMaximumBits;
         return this;
     }
 
-    public PbfTagCodecBuilder stringsMinimumOccurrences(final Minimum stringsMinimumOccurrences)
+    public PbfTagCodecBuilder stringsMinimumOccurrences(Minimum stringsMinimumOccurrences)
     {
         this.stringsMinimumOccurrences = stringsMinimumOccurrences;
         return this;
@@ -322,7 +323,7 @@ public class PbfTagCodecBuilder
         return valueStringCodec;
     }
 
-    public PbfTagCodecBuilder wayFilter(final WayFilter wayFilter)
+    public PbfTagCodecBuilder wayFilter(WayFilter wayFilter)
     {
         this.wayFilter = wayFilter;
         return this;
@@ -331,19 +332,19 @@ public class PbfTagCodecBuilder
     /**
      * Adds the given tags to this codec to train it.
      */
-    void addStrings(final PbfEntity<?> entity)
+    void addStrings(PbfEntity<?> entity)
     {
-        final var tags = entity.tagList();
+        var tags = entity.tagList();
         if (!tags.isEmpty())
         {
-            for (final var tag : tags)
+            for (var tag : tags)
             {
-                final var key = tag.getKey();
+                var key = tag.getKey();
                 if (validPropertiesFileString(key))
                 {
                     keyStringFrequencies.add(key);
                 }
-                final var value = tag.getValue();
+                var value = tag.getValue();
                 if (validPropertiesFileString(value))
                 {
                     valueStringFrequencies.add(value);
@@ -352,9 +353,9 @@ public class PbfTagCodecBuilder
         }
     }
 
-    private boolean validPropertiesFileString(final String value)
+    private boolean validPropertiesFileString(String value)
     {
-        final var length = value.length();
+        var length = value.length();
         return length >= 4 && length < 64 && !value.contains("=");
     }
 }

@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.road.name.parser.locales.indonesian;
 
+import com.telenav.kivakit.kernel.language.strings.CaseFormat;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.BaseRoadNameParser;
 import com.telenav.mesakit.map.road.name.parser.ParsedRoadName;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.Token;
-import com.telenav.kivakit.core.kernel.language.strings.CaseFormat;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -62,10 +62,10 @@ public class IndonesianRoadNameParser extends BaseRoadNameParser
      * {@inheritDoc}
      */
     @Override
-    public synchronized ParsedRoadName parse(final RoadName name)
+    public synchronized ParsedRoadName parse(RoadName name)
     {
         // Get input text
-        final var input = name.name();
+        var input = name.name();
         if (input.indexOf(';') >= 0)
         {
             throw new IllegalStateException(
@@ -100,7 +100,7 @@ public class IndonesianRoadNameParser extends BaseRoadNameParser
         return builder.build();
     }
 
-    private Capitalization capitalization(final Token previous, final Token token)
+    private Capitalization capitalization(Token previous, Token token)
     {
         if (previous == null)
         {
@@ -117,7 +117,7 @@ public class IndonesianRoadNameParser extends BaseRoadNameParser
         return Capitalization.CAPITALIZED;
     }
 
-    private String direction(final Token token)
+    private String direction(Token token)
     {
         return direction.get(token);
     }
@@ -153,13 +153,13 @@ public class IndonesianRoadNameParser extends BaseRoadNameParser
             if (suffix)
             {
                 builder.directionFormat(SUFFIXED);
-                final var removed = removeLast();
+                var removed = removeLast();
                 builder.direction(direction(removed), removed.text());
             }
             else if (prefix)
             {
                 builder.directionFormat(PREFIXED);
-                final var removed = removeFirst();
+                var removed = removeFirst();
                 builder.direction(direction(removed), removed.text());
             }
             else
@@ -182,13 +182,13 @@ public class IndonesianRoadNameParser extends BaseRoadNameParser
     {
         if (size() >= 2)
         {
-            final var first = first();
+            var first = first();
 
             // If the last token is a road type
             if (TOKENIZER.isRoadType(first))
             {
                 // remove the token and add to the builder
-                final var removed = removeFirst();
+                var removed = removeFirst();
                 builder.type(roadType.get(removed), removed.text());
             }
         }
@@ -206,9 +206,9 @@ public class IndonesianRoadNameParser extends BaseRoadNameParser
     private void parseRoadName()
     {
         // then it's a normal street name so just accept it as it is
-        final var builder = new StringBuilder();
+        var builder = new StringBuilder();
         Token previous = null;
-        for (final var token : tokens())
+        for (var token : tokens())
         {
             if (!token.isWhitespace())
             {
@@ -247,7 +247,7 @@ public class IndonesianRoadNameParser extends BaseRoadNameParser
     /**
      * @return True if there should be a space between the given tokens
      */
-    private boolean space(final Token previous, final Token token)
+    private boolean space(Token previous, Token token)
     {
         if (TOKENIZER.isOpenParenthesis(token) || TOKENIZER.isCloseParenthesis(previous))
         {

@@ -18,23 +18,23 @@
 
 package com.telenav.mesakit.map.region.border.cache;
 
-import com.telenav.kivakit.core.filesystem.File;
-import com.telenav.kivakit.core.kernel.KivaKit;
-import com.telenav.kivakit.core.kernel.language.time.Time;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.language.values.version.Version;
-import com.telenav.kivakit.core.kernel.language.values.version.VersionedObject;
-import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.kivakit.core.serialization.core.SerializationSession;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.kernel.KivaKit;
+import com.telenav.kivakit.kernel.language.time.Time;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.version.Version;
+import com.telenav.kivakit.kernel.language.values.version.VersionedObject;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.serialization.core.SerializationSession;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionIdentity;
-import com.telenav.mesakit.map.region.project.MapRegionProject;
+import com.telenav.mesakit.map.region.RegionProject;
 
 import java.io.InputStream;
 import java.util.Set;
 
-import static com.telenav.kivakit.core.serialization.core.SerializationSession.Type.RESOURCE;
+import static com.telenav.kivakit.serialization.core.SerializationSession.Type.RESOURCE;
 
 /**
  * Holds a set of region identities for a given region type, so they can be quickly loaded, creating a region object for
@@ -46,7 +46,7 @@ public class RegionIdentityCache<T extends Region<T>> extends BaseRepeater
 {
     private final Class<T> type;
 
-    public RegionIdentityCache(final Class<T> type)
+    public RegionIdentityCache(Class<T> type)
     {
         this.type = type;
     }
@@ -54,43 +54,43 @@ public class RegionIdentityCache<T extends Region<T>> extends BaseRepeater
     /**
      * Load the region codes from, the serialized file, file that was created from reading borders.
      */
-    public synchronized boolean load(final File cacheFile, final SerializationSession session)
+    public synchronized boolean load(File cacheFile, SerializationSession session)
     {
         // We're loading identities
-        final var region = type().getSimpleName();
+        var region = type().getSimpleName();
         trace("Loading $ identities from $", region, cacheFile);
 
         // so open cache file for reading
-        try (final var input = cacheFile.openForReading())
+        try (var input = cacheFile.openForReading())
         {
             // and load the identities
             return load(input, session);
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             trace(e, "Unable to load $ identifies from $", region, cacheFile);
         }
         return false;
     }
 
-    public synchronized boolean load(final InputStream input, final SerializationSession session)
+    public synchronized boolean load(InputStream input, SerializationSession session)
     {
-        final var start = Time.now();
+        var start = Time.now();
 
         // Read the KivaKit version that wrote the data
-        final var kivakitVersion = session.open(RESOURCE, KivaKit.get().version(), input);
+        var kivakitVersion = session.open(RESOURCE, KivaKit.get().projectVersion(), input);
 
         // read the set of identities
-        final VersionedObject<Set<RegionIdentity>> identities = session.read();
+        VersionedObject<Set<RegionIdentity>> identities = session.read();
         if (identities != null)
         {
             trace("Region identities cache file is version $, written by KivaKit version $", identities.version(), kivakitVersion);
 
             // ensure that this MesaKit version can read the data (data is backwards compatible but not forward),
-            if (MesaKit.get().version().isNewerThanOrEqualTo(MapRegionProject.get().borderDataVersion()))
+            if (MesaKit.get().projectVersion().isNewerThanOrEqualTo(RegionProject.get().borderDataVersion()))
             {
                 // and loop through them
-                for (final var identity : identities.get())
+                for (var identity : identities.get())
                 {
                     // creating the region object for each identity if it doesn't already exist.
                     identity.findOrCreateRegion(type());
@@ -103,9 +103,9 @@ public class RegionIdentityCache<T extends Region<T>> extends BaseRepeater
         return false;
     }
 
-    public void save(final SerializationSession session,
-                     final Version version,
-                     final Set<RegionIdentity> identities)
+    public void save(SerializationSession session,
+                     Version version,
+                     Set<RegionIdentity> identities)
     {
         session.write(new VersionedObject<>(version, identities));
         session.close();

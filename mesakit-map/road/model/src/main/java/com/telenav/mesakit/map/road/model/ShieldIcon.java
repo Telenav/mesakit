@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.core.kernel.language.collections.map.BaseMap;
+import com.telenav.kivakit.kernel.language.collections.map.BaseMap;
 
 public class ShieldIcon
 {
@@ -26,20 +26,20 @@ public class ShieldIcon
             RoadLimits.SHIELD_ICONS)
     {
         @Override
-        protected ShieldIcon onInitialize(final String identifier)
+        protected ShieldIcon onInitialize(String identifier)
         {
             return new ShieldIcon(identifier);
         }
     };
 
-    public static ShieldIcon forIdentifier(final String identifier)
+    public static ShieldIcon forIdentifier(String identifier)
     {
         return forIdentifier.getOrCreate(identifier);
     }
 
     private final String identifier;
 
-    private ShieldIcon(final String identifier)
+    private ShieldIcon(String identifier)
     {
         this.identifier = identifier;
     }

@@ -38,11 +38,11 @@ public class GeoJsonPolygon extends GeoJsonGeometry
 {
     private final List<List<List<Double>>> coordinates = new ArrayList<>();
 
-    public GeoJsonPolygon(final Polygon polygon)
+    public GeoJsonPolygon(Polygon polygon)
     {
         // Add the outer polygon
         coordinates.add(new ArrayList<>());
-        for (final var location : polygon.locationSequence())
+        for (var location : polygon.locationSequence())
         {
             add(location);
         }
@@ -56,17 +56,17 @@ public class GeoJsonPolygon extends GeoJsonGeometry
 
     public Polyline polyline()
     {
-        final var builder = new PolylineBuilder();
-        for (final var location : coordinates.get(0))
+        var builder = new PolylineBuilder();
+        for (var location : coordinates.get(0))
         {
             builder.add(new Location(Latitude.degrees(location.get(1)), Longitude.degrees(location.get(0))));
         }
         return builder.build();
     }
 
-    protected void add(final Location location)
+    protected void add(Location location)
     {
-        final List<Double> coordinates = new ArrayList<>();
+        List<Double> coordinates = new ArrayList<>();
         coordinates.add(location.longitude().asDegrees());
         coordinates.add(location.latitude().asDegrees());
         this.coordinates.get(0).add(coordinates);

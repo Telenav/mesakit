@@ -1,7 +1,0 @@
-#―――― Setup ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
-
-system_variable MESAKIT_WORKSPACE $KIVAKIT_WORKSPACE
-
-#―――― MesaKit ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
-
-source $MESAKIT_WORKSPACE/mesakit/tools/library/mesakit-common-profile.sh

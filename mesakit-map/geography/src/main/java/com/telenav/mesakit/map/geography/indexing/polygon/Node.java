@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.geography.indexing.polygon;
 
+import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.polygon.PolygonSpatialIndex.Visitor;
 import com.telenav.mesakit.map.geography.shape.Outline;
@@ -26,7 +27,6 @@ import com.telenav.mesakit.map.geography.shape.segment.Segment;
 import com.telenav.mesakit.map.geography.shape.segment.SegmentPair;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
 
 import static com.telenav.mesakit.map.geography.indexing.polygon.PolygonSpatialIndex.MINIMUM_QUADRANT_SIZE;
 
@@ -52,8 +52,8 @@ public class Node extends Quadrant
     /**
      * Used when reconstructing quadrants from the quadrant store
      */
-    public Node(final PolygonSpatialIndex index, final int northEast, final int northWest, final int southEast,
-                final int southWest)
+    public Node(PolygonSpatialIndex index, int northEast, int northWest, int southEast,
+                int southWest)
     {
         spatialIndex = index;
         this.northEast = northEast;
@@ -65,7 +65,7 @@ public class Node extends Quadrant
     /**
      * @param bounds The bounding rectangle of this quadrant
      */
-    public Node(final PolygonSpatialIndex spatialIndex, final Rectangle bounds)
+    public Node(PolygonSpatialIndex spatialIndex, Rectangle bounds)
     {
         this.spatialIndex = spatialIndex;
 
@@ -80,13 +80,13 @@ public class Node extends Quadrant
      * {@inheritDoc}
      */
     @Override
-    public Outline.Containment contains(final Location location, final Rectangle bounds)
+    public Outline.Containment contains(Location location, Rectangle bounds)
     {
         // If there is a NE quadrant,
         if (northEast != 0)
         {
             // and the location is inside the bounds for it,
-            final var northEastQuadrant = bounds.northEastQuadrant();
+            var northEastQuadrant = bounds.northEastQuadrant();
             if (northEastQuadrant.contains(location))
             {
                 // return the result of searching that quadrant for the location
@@ -98,7 +98,7 @@ public class Node extends Quadrant
         if (northWest != 0)
         {
             // and the location is inside the bounds for it,
-            final var northWestQuadrant = bounds.northWestQuadrant();
+            var northWestQuadrant = bounds.northWestQuadrant();
             if (northWestQuadrant.contains(location))
             {
                 // return the result of searching that quadrant for the location
@@ -110,7 +110,7 @@ public class Node extends Quadrant
         if (southEast != 0)
         {
             // and the location is inside the bounds for it,
-            final var southEastQuadrant = bounds.southEastQuadrant();
+            var southEastQuadrant = bounds.southEastQuadrant();
             if (southEastQuadrant.contains(location))
             {
                 // return the result of searching that quadrant for the location
@@ -122,7 +122,7 @@ public class Node extends Quadrant
         if (southWest != 0)
         {
             // and the location is inside the bounds for it,
-            final var southWestQuadrant = bounds.southWestQuadrant();
+            var southWestQuadrant = bounds.southWestQuadrant();
             if (southWestQuadrant.contains(location))
             {
                 // return the result of searching that quadrant for the location
@@ -136,7 +136,7 @@ public class Node extends Quadrant
     }
 
     @Override
-    public void debug(final PolygonSpatialIndexDebugger debugger, final Rectangle bounds)
+    public void debug(PolygonSpatialIndexDebugger debugger, Rectangle bounds)
     {
         if (northEast != 0)
         {
@@ -180,7 +180,7 @@ public class Node extends Quadrant
      * {@inheritDoc}
      */
     @Override
-    protected void visit(final Visitor visitor, final Rectangle bounds)
+    protected void visit(Visitor visitor, Rectangle bounds)
     {
         if (northEast != 0)
         {
@@ -223,12 +223,12 @@ public class Node extends Quadrant
     /**
      * @return The {@link Node} or {@link Leaf} quadrant that indexes the given bounding rectangle
      */
-    private int index(final Rectangle bounds)
+    private int index(Rectangle bounds)
     {
         // Find up to 3 intersections between the given bounding rectangle and the complete list
         // of polygon segments. This is time consuming but only has to be done once when
         // building the spatial index so we don't care too much about optimizing it.
-        final var intersections = spatialIndex.polygon().intersections(bounds, Count._3);
+        var intersections = spatialIndex.polygon().intersections(bounds, Count._3);
 
         // Switch on the number of intersections we found
         switch (intersections.size())
@@ -250,16 +250,16 @@ public class Node extends Quadrant
             case 1:
             {
                 // A single intersection was found, so we have a leaf with just one segment
-                final var a = intersections.iterator().next();
+                var a = intersections.iterator().next();
                 return spatialIndex.store().add(new Leaf(a, null, inside(a, null)));
             }
 
             case 2:
             {
                 // Two intersections were found, so get those two segments
-                final var iterator = intersections.iterator();
-                final var a = iterator.next();
-                final var b = iterator.next();
+                var iterator = intersections.iterator();
+                var a = iterator.next();
+                var b = iterator.next();
 
                 // If a leads to b
                 if (a.leadsTo(b))
@@ -276,7 +276,12 @@ public class Node extends Quadrant
                 }
 
                 // otherwise we need to break things down further
-                return spatialIndex.store().add(new Node(spatialIndex, bounds));
+                if (bounds.widthAtBase().isGreaterThan(MINIMUM_QUADRANT_SIZE)
+                        && bounds.heightAsDistance().isGreaterThan(MINIMUM_QUADRANT_SIZE))
+                {
+                    return spatialIndex.store().add(new Node(spatialIndex, bounds));
+                }
+                return 0;
             }
 
             case 3:
@@ -298,7 +303,7 @@ public class Node extends Quadrant
         }
     }
 
-    private Location inside(final Segment a, final Segment b)
+    private Location inside(Segment a, Segment b)
     {
         // If we have no segment a
         if (a == null)
@@ -312,7 +317,7 @@ public class Node extends Quadrant
             if (b == null)
             {
                 // then we locate the inside point a short distance perpendicular to the line
-                final var perpendicular = spatialIndex.polygon().isClockwise() ? Angle._90_DEGREES
+                var perpendicular = spatialIndex.polygon().isClockwise() ? Angle._90_DEGREES
                         : Angle._270_DEGREES;
                 return a.center().moved(a.heading().plus(perpendicular), PolygonSpatialIndex.INSIDE_OFFSET);
             }
@@ -320,12 +325,12 @@ public class Node extends Quadrant
             {
                 // Create a segment pair such that it's organized as a pair of clock hands (the
                 // shared point is the start of each segment)
-                final var pair = new SegmentPair(a, b).asClockHands();
+                var pair = new SegmentPair(a, b).asClockHands();
                 if (pair != null)
                 {
                     // Bisect the heading of the two clock hands
-                    final var clockCenter = pair.first().start();
-                    final var bisected = pair.bisect(
+                    var clockCenter = pair.first().start();
+                    var bisected = pair.bisect(
                             spatialIndex.polygon().isClockwise() ? Chirality.COUNTERCLOCKWISE : Chirality.CLOCKWISE);
 
                     // and pick a point a short distance away

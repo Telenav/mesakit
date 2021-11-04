@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.road.name.parser.tokenizer.english;
 
+import com.telenav.kivakit.test.UnitTest;
 import com.telenav.mesakit.map.road.name.parser.locales.english.EnglishTokenizer;
 import com.telenav.mesakit.map.road.name.parser.locales.english.EnglishUnitedStatesTokenizer;
-import com.telenav.kivakit.core.test.UnitTest;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -30,9 +30,9 @@ public class EnglishTokenizerTest extends UnitTest
     @Test
     public void test()
     {
-        final EnglishTokenizer english = new EnglishUnitedStatesTokenizer();
+        EnglishTokenizer english = new EnglishUnitedStatesTokenizer();
 
-        final var tokens = english.tokenize("123 Main Street");
+        var tokens = english.tokenize("123 Main Street");
 
         // 1
         ensure(tokens.lookingAt(english.DIGIT));
@@ -76,16 +76,16 @@ public class EnglishTokenizerTest extends UnitTest
     @Test
     public void testInterstate()
     {
-        final EnglishTokenizer english = new EnglishUnitedStatesTokenizer();
+        EnglishTokenizer english = new EnglishUnitedStatesTokenizer();
 
         {
-            final var tokens = english.tokenize("I-5");
+            var tokens = english.tokenize("I-5");
             ensure(tokens.match(english.INTERSTATE));
             ensure(tokens.match(english.DIGIT));
         }
 
         {
-            final var tokens = english.tokenize("Interstate 5");
+            var tokens = english.tokenize("Interstate 5");
             ensure(tokens.match(english.INTERSTATE));
             ensure(tokens.match(english.DIGIT));
         }
@@ -94,8 +94,8 @@ public class EnglishTokenizerTest extends UnitTest
     @Test
     public void testNorthWestComplex()
     {
-        final EnglishTokenizer english = new EnglishUnitedStatesTokenizer();
-        final var tokens = english.tokenize("North West Main");
+        EnglishTokenizer english = new EnglishUnitedStatesTokenizer();
+        var tokens = english.tokenize("North West Main");
 
         // "North West" is a single token (NORTHWEST), so there should only be three tokens
         ensureEqual(tokens.size(), 3);
@@ -110,8 +110,8 @@ public class EnglishTokenizerTest extends UnitTest
     @Test
     public void testNorthWestSimple()
     {
-        final EnglishTokenizer english = new EnglishUnitedStatesTokenizer();
-        final var tokens = english.tokenize("NW Main");
+        EnglishTokenizer english = new EnglishUnitedStatesTokenizer();
+        var tokens = english.tokenize("NW Main");
 
         ensureEqual(tokens.size(), 3);
     }
@@ -119,10 +119,10 @@ public class EnglishTokenizerTest extends UnitTest
     @Test
     public void testUsHighway()
     {
-        final var english = new EnglishUnitedStatesTokenizer();
+        var english = new EnglishUnitedStatesTokenizer();
 
         {
-            final var tokens = english.tokenize("U.S. 101");
+            var tokens = english.tokenize("U.S. 101");
             ensure(tokens.match(english.US_HIGHWAY));
             ensure(tokens.match(english.DIGIT));
         }

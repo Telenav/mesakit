@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.road.name.standardizer.locales.indonesian;
 
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.locales.indonesian.IndonesianTokenizer;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.Token;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,25 +44,25 @@ public class SimpleIndonesianRoadNameStandardizer
 
     private final Map<Token, String> properName = new HashMap<>();
 
-    public RoadName standardize(final RoadName name)
+    public RoadName standardize(RoadName name)
     {
         try
         {
-            final var builder = new StringBuilder();
-            for (final var token : TOKENIZER.tokenize(name.name()))
+            var builder = new StringBuilder();
+            for (var token : TOKENIZER.tokenize(name.name()))
             {
                 builder.append(standardize(token));
             }
             return RoadName.forName(builder.toString());
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             DEBUG.warning(e, "Unable to standardize '$'", name);
         }
         return null;
     }
 
-    private String standardize(final Token token)
+    private String standardize(Token token)
     {
         String standardized = null;
         if (TOKENIZER.isCardinalDirection(token) || TOKENIZER.isOctant(token)

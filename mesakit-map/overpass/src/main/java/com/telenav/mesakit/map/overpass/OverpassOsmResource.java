@@ -18,20 +18,20 @@
 
 package com.telenav.mesakit.map.overpass;
 
-import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.overpass.project.lexakai.diagrams.DiagramOverpass;
-import com.telenav.kivakit.core.filesystem.File;
-import com.telenav.kivakit.core.filesystem.Folder;
-import com.telenav.kivakit.core.kernel.language.progress.reporters.Progress;
-import com.telenav.kivakit.core.kernel.messaging.messages.MessageFormatter;
-import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.kivakit.core.network.http.HttpNetworkLocation;
-import com.telenav.kivakit.core.network.http.HttpPostResource;
-import com.telenav.kivakit.core.resource.resources.packaged.PackageResource;
+import com.telenav.kivakit.component.BaseComponent;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
+import com.telenav.kivakit.kernel.messaging.messages.MessageFormatter;
+import com.telenav.kivakit.network.http.HttpNetworkLocation;
+import com.telenav.kivakit.network.http.HttpPostResource;
+import com.telenav.kivakit.resource.resources.packaged.PackageResource;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.overpass.project.lexakai.diagrams.DiagramOverpass;
 
-import static com.telenav.kivakit.core.resource.CopyMode.OVERWRITE;
+import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
 
 /**
  * <b>Not public API</b>
@@ -40,15 +40,15 @@ import static com.telenav.kivakit.core.resource.CopyMode.OVERWRITE;
  */
 @UmlClassDiagram(diagram = DiagramOverpass.class)
 @UmlRelation(label = "copies data to", referent = Folder.class)
-class OverpassOsmResource extends BaseRepeater
+class OverpassOsmResource extends BaseComponent
 {
     private final Rectangle bounds;
 
-    private final String template = PackageResource.of(getClass(), "OverpassRequestTemplate.txt")
+    private final String template = PackageResource.packageResource(this, getClass(), "OverpassRequestTemplate.txt")
             .reader()
             .string();
 
-    public OverpassOsmResource(final Rectangle bounds)
+    public OverpassOsmResource(Rectangle bounds)
     {
         this.bounds = bounds;
         if (bounds.widestWidth().isGreaterThan(OverpassDataDownloader.MAXIMUM_SIZE))
@@ -63,14 +63,14 @@ class OverpassOsmResource extends BaseRepeater
         }
     }
 
-    public void safeCopyTo(final File destination)
+    public void safeCopyTo(File destination)
     {
         location(bounds).safeCopyTo(destination, OVERWRITE, Progress.create(this, "bytes"));
     }
 
-    private HttpPostResource location(final Rectangle bounds)
+    private HttpPostResource location(Rectangle bounds)
     {
-        final var payload = new MessageFormatter().format(template, bounds.toCommaSeparatedString());
-        return new HttpNetworkLocation(OverpassDataDownloader.HOST.http().path("/api/interpreter")).post(payload);
+        var payload = new MessageFormatter().format(template, bounds.toCommaSeparatedString());
+        return new HttpNetworkLocation(require(OverpassDataDownloader.class).HOST.http().path(this, "/api/interpreter")).post(payload);
     }
 }

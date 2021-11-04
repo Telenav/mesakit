@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.core.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 public class GradeSeparation implements Quantizable
 {
@@ -52,7 +52,7 @@ public class GradeSeparation implements Quantizable
 
     public static final GradeSeparation LEVEL_9 = new GradeSeparation(9);
 
-    public static GradeSeparation of(final int level)
+    public static GradeSeparation of(int level)
     {
         switch (level)
         {
@@ -91,17 +91,17 @@ public class GradeSeparation implements Quantizable
 
     private final int level;
 
-    private GradeSeparation(final int level)
+    private GradeSeparation(int level)
     {
         this.level = level;
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof GradeSeparation)
         {
-            final var that = (GradeSeparation) object;
+            var that = (GradeSeparation) object;
             return level == that.level;
         }
         return false;
@@ -118,7 +118,7 @@ public class GradeSeparation implements Quantizable
         return of(level + 1);
     }
 
-    public boolean isGreaterThan(final GradeSeparation that)
+    public boolean isGreaterThan(GradeSeparation that)
     {
         return level > that.level;
     }
@@ -128,12 +128,12 @@ public class GradeSeparation implements Quantizable
         return equals(GROUND);
     }
 
-    public boolean isHigherThan(final GradeSeparation that)
+    public boolean isHigherThan(GradeSeparation that)
     {
         return level > that.level;
     }
 
-    public boolean isLowerThan(final GradeSeparation that)
+    public boolean isLowerThan(GradeSeparation that)
     {
         return level < that.level;
     }
@@ -148,7 +148,7 @@ public class GradeSeparation implements Quantizable
         return of(level - 1);
     }
 
-    public GradeSeparation maximum(final GradeSeparation that)
+    public GradeSeparation maximum(GradeSeparation that)
     {
         return isGreaterThan(that) ? this : that;
     }

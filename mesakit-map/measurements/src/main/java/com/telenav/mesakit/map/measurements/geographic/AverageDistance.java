@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.measurements.geographic;
 
-import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
 import com.telenav.kivakit.math.statistics.Average;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
+import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
 
 /**
  * Computes an average {@link Distance} given a series of samples.
@@ -33,7 +33,7 @@ import com.telenav.lexakai.annotations.associations.UmlRelation;
 @LexakaiJavadoc(complete = true)
 public class AverageDistance extends Average
 {
-    public void add(final Distance distance)
+    public void add(Distance distance)
     {
         super.add(distance.asMillimeters());
     }

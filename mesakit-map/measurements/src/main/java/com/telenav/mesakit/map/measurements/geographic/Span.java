@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.measurements.geographic;
 
-import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
-import com.telenav.kivakit.core.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.objects.Hash;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
+import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
 
 /**
  * A span from a start distance to an end distance, such as from 1 foot to 8 feet (the span is 7 feet). The length of
@@ -37,7 +37,7 @@ public class Span
     @UmlAggregation
     private final Distance start, end;
 
-    public Span(final Distance start, final Distance end)
+    public Span(Distance start, Distance end)
     {
         this.start = start;
         this.end = end;
@@ -53,11 +53,11 @@ public class Span
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Span)
         {
-            final var that = (Span) object;
+            var that = (Span) object;
             return start.equals(that.start) && end.equals(that.end);
         }
         return false;

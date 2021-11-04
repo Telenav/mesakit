@@ -18,16 +18,16 @@
 
 package com.telenav.mesakit.map.road.model;
 
+import com.telenav.kivakit.kernel.data.extraction.Extractor;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.strings.StringComparison;
+import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.language.values.level.Confidence;
+import com.telenav.kivakit.kernel.language.values.name.Name;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.mesakit.map.measurements.geographic.Direction;
-import com.telenav.kivakit.core.kernel.data.extraction.Extractor;
-import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.core.kernel.language.strings.Comparison;
-import com.telenav.kivakit.core.kernel.language.strings.Strings;
-import com.telenav.kivakit.core.kernel.language.values.level.Confidence;
-import com.telenav.kivakit.core.kernel.language.values.name.Name;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +60,7 @@ public class RoadName extends Name
     private static final Pattern HIGHWAY_IDENTIFIERS = Pattern
             .compile("\\bRT\\b|\\b?+I\\b++|ON RAMP|OFF RAMP|HWY|(.*?)-");
 
-    public static RoadName forName(final String name)
+    public static RoadName forName(String name)
     {
         if (Strings.isEmpty(name))
         {
@@ -69,7 +69,7 @@ public class RoadName extends Name
         return new RoadName(name);
     }
 
-    public static RoadName forName(final String nameOnly, final Direction direction)
+    public static RoadName forName(String nameOnly, Direction direction)
     {
         return forName(nameOnly + " " + direction);
     }
@@ -82,23 +82,23 @@ public class RoadName extends Name
         EXIT
     }
 
-    private RoadName(final String name)
+    private RoadName(String name)
     {
         super(name);
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof RoadName)
         {
-            final var that = (RoadName) object;
+            var that = (RoadName) object;
             return name().equalsIgnoreCase(that.name());
         }
         return false;
     }
 
-    public <T> T extract(final Extractor<T, RoadName> extractor)
+    public <T> T extract(Extractor<T, RoadName> extractor)
     {
         return extractor.extract(this);
     }
@@ -135,9 +135,9 @@ public class RoadName extends Name
         return name().toLowerCase().hashCode();
     }
 
-    public Confidence matchConfidence(final RoadName that, final Direction thatDirection)
+    public Confidence matchConfidence(RoadName that, Direction thatDirection)
     {
-        final List<Direction> thatDirections = new ArrayList<>();
+        List<Direction> thatDirections = new ArrayList<>();
         if (thatDirection != null)
         {
             thatDirections.add(thatDirection);
@@ -145,11 +145,11 @@ public class RoadName extends Name
         return matchConfidence(that, thatDirections);
     }
 
-    public Confidence matchConfidence(final RoadName that, final List<Direction> thatDirections)
+    public Confidence matchConfidence(RoadName that, List<Direction> thatDirections)
     {
-        final var thisName = extractNameOnly().withoutHighwayIdentifiers().name().toUpperCase();
-        final var thatStreetName = that.extractNameOnly().withoutHighwayIdentifiers().name().toUpperCase();
-        final var thisDirection = extractDirection();
+        var thisName = extractNameOnly().withoutHighwayIdentifiers().name().toUpperCase();
+        var thatStreetName = that.extractNameOnly().withoutHighwayIdentifiers().name().toUpperCase();
+        var thisDirection = extractDirection();
 
         DEBUG.trace("Comparing for perfect match between '${debug} ${debug}' and '${debug} ${debug}'", thisName,
                 thisDirection, thatStreetName, thatDirections);
@@ -165,12 +165,12 @@ public class RoadName extends Name
         // Ensure to see if we have a perfect match with direction. If both of the direction are
         // unknown, or this direction matches to that expected directions, we have a perfect match
         // with direction
-        final var isDirectionPerfectMatch = (thisDirection == null
+        var isDirectionPerfectMatch = (thisDirection == null
                 && (thatDirections == null || thatDirections.isEmpty()))
                 || (thisDirection != null && thatDirections != null && !thatDirections.isEmpty()
                 && isMatched(thisDirection, thatDirections));
         // Ensure to see if we have a perfect match with name and direction.
-        final var isPerfectMatch = thatStreetName.equalsIgnoreCase(thisName) && isDirectionPerfectMatch;
+        var isPerfectMatch = thatStreetName.equalsIgnoreCase(thisName) && isDirectionPerfectMatch;
 
         if (isPerfectMatch)
         {
@@ -179,16 +179,16 @@ public class RoadName extends Name
         }
 
         // Compute the difference between strings.
-        final var levenshteinDistance = Comparison.levenshteinDistance(thatStreetName, thisName);
+        var levenshteinDistance = StringComparison.levenshteinDistance(thatStreetName, thisName);
 
         // Compute error ratio from levenschtein distance
-        final var maximumLength = Math.max(thatStreetName.length(), thisName.length());
+        var maximumLength = Math.max(thatStreetName.length(), thisName.length());
 
         // Finally, take care of the case where one of the directions was unknown and that was why
         // the directions 'matched'. If either one is null then it is really 50 / 50 that we have a
         // match, so divide by 1.5. This divisor is to keep the confidence above the result
         // threshold (MINIMUM_NAME_MATCHING_CONFIDENCE = 0.5, defined in MapFeatureExtractor)
-        final var directionDivisor = !isDirectionPerfectMatch ? 1.5 : 1;
+        var directionDivisor = !isDirectionPerfectMatch ? 1.5 : 1;
 
         var confidence = Confidence.confidence(
                 (1. - (double) levenshteinDistance / (double) maximumLength) / directionDivisor);
@@ -197,7 +197,7 @@ public class RoadName extends Name
         if (!Strings.isEmpty(thatStreetName) && !Strings.isEmpty(thisName) && !thatStreetName.equalsIgnoreCase(thisName)
                 && (thatStreetName.contains(thisName) || (thisName.contains(thatStreetName))))
         {
-            final var confidenceForSimilarNames = Confidence.confidence(0.8 / directionDivisor);
+            var confidenceForSimilarNames = Confidence.confidence(0.8 / directionDivisor);
             if (confidence.isLessThan(confidenceForSimilarNames))
             {
                 confidence = confidenceForSimilarNames;
@@ -224,8 +224,8 @@ public class RoadName extends Name
     {
         if (name() != null)
         {
-            final var stripPrefixes = HIGHWAY_IDENTIFIERS.matcher(name()).replaceAll("");
-            final var idxToTrim = stripPrefixes.indexOf("BOTH");
+            var stripPrefixes = HIGHWAY_IDENTIFIERS.matcher(name()).replaceAll("");
+            var idxToTrim = stripPrefixes.indexOf("BOTH");
             var strippedName = stripPrefixes;
             if (idxToTrim > 0)
             {
@@ -241,10 +241,10 @@ public class RoadName extends Name
         return without(OCTANT_PATTERN);
     }
 
-    private Direction extractDirection(final Pattern pattern)
+    private Direction extractDirection(Pattern pattern)
     {
         // Split the string into words
-        final var words = words();
+        var words = words();
 
         // If there is more than one word
         if (words.size() > 1)
@@ -274,7 +274,7 @@ public class RoadName extends Name
      * @return True if the heading difference between the two directions is no more than 45 degree, such as EAST and
      * NORTHEAST.
      */
-    private boolean isCloseTo(final Direction a, final Direction b)
+    private boolean isCloseTo(Direction a, Direction b)
     {
         if (a != null && b != null)
         {
@@ -292,11 +292,11 @@ public class RoadName extends Name
      *
      * @return true if matched
      */
-    private boolean isMatched(final Direction direction, final List<Direction> expectedDirections)
+    private boolean isMatched(Direction direction, List<Direction> expectedDirections)
     {
         if (expectedDirections != null && !expectedDirections.isEmpty())
         {
-            for (final var expectedDirection : expectedDirections)
+            for (var expectedDirection : expectedDirections)
             {
                 if (isCloseTo(direction, expectedDirection))
                 {
@@ -312,10 +312,10 @@ public class RoadName extends Name
         }
     }
 
-    private RoadName without(final Pattern pattern)
+    private RoadName without(Pattern pattern)
     {
         // Split into words
-        final var words = words();
+        var words = words();
 
         // If there is more than one word
         if (words.size() > 1)
@@ -342,13 +342,13 @@ public class RoadName extends Name
 
     private StringList words()
     {
-        final var words = new StringList(RoadLimits.WORDS_PER_ROAD_NAME);
-        final var name = name();
+        var words = new StringList(RoadLimits.WORDS_PER_ROAD_NAME);
+        var name = name();
         var word = new StringBuilder();
         var separator = false;
         for (var i = 0; i < name.length(); i++)
         {
-            final var c = name.charAt(i);
+            var c = name.charAt(i);
             switch (c)
             {
                 case '(':

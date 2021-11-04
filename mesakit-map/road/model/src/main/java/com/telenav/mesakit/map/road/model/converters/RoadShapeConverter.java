@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.map.road.model.converters;
 
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.core.kernel.language.strings.Split;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.strings.Split;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.MapGeographyLimits;
+import com.telenav.mesakit.map.geography.project.GeographyLimits;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 
 import java.util.List;
@@ -42,13 +42,13 @@ public class RoadShapeConverter extends BaseStringConverter<Polyline>
 
     private final int columns;
 
-    public RoadShapeConverter(final Listener listener, final int columns)
+    public RoadShapeConverter(Listener listener, int columns)
     {
         super(listener);
         this.columns = columns;
     }
 
-    public void type(final Type type)
+    public void type(Type type)
     {
         this.type = type;
     }
@@ -57,13 +57,13 @@ public class RoadShapeConverter extends BaseStringConverter<Polyline>
     // columns for altitude and "relative elevation" in unified TXD). This is how the
     // shapepoints are stored in the TXD file format.
     @Override
-    protected Polyline onConvertToObject(final String value)
+    protected Polyline onToValue(String value)
     {
-        final List<Location> locations = new ObjectList<>(MapGeographyLimits.LOCATIONS_PER_POLYLINE);
+        List<Location> locations = new ObjectList<>(GeographyLimits.LOCATIONS_PER_POLYLINE);
         var i = 0;
         Latitude latitude = null;
         Longitude longitude;
-        for (final var coordinate : Split.split(value, ','))
+        for (var coordinate : Split.split(value, ','))
         {
             if (i % columns == 0)
             {

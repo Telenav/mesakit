@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.ui.debug.debuggers;
 
-import com.telenav.kivakit.core.kernel.messaging.Listener;
-import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.mesakit.map.geography.indexing.rtree.InteriorNode;
 import com.telenav.mesakit.map.geography.indexing.rtree.Leaf;
 import com.telenav.mesakit.map.geography.indexing.rtree.Node;
@@ -57,18 +57,18 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
 
     private final transient Map<Leaf<T>, DrawableIdentifier> identifierForLeaf = new HashMap<>();
 
-    public RTreeSpatialIndexVisualDebugger(final Listener listener, final String title)
+    public RTreeSpatialIndexVisualDebugger(Listener listener, String title)
     {
         view = listener.listenTo(new DebugViewer()).view(title);
     }
 
     @Override
-    public void remove(final Node<T> node)
+    public void remove(Node<T> node)
     {
         removeNodeFromView(node);
     }
 
-    public void removeNodeFromView(final Node<T> node)
+    public void removeNodeFromView(Node<T> node)
     {
         if (view != null)
         {
@@ -78,40 +78,40 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
     }
 
     @Override
-    public void update(final Leaf<T> leaf, final T element)
+    public void update(Leaf<T> leaf, T element)
     {
         updateView(leaf, element);
     }
 
     @Override
-    public void update(final Node<T> node)
+    public void update(Node<T> node)
     {
         updateView(node);
     }
 
-    public void updateView(final Node<T> node)
+    public void updateView(Node<T> node)
     {
         if (view != null)
         {
-            final var identifier = identifier(node);
-            final var label = identifier.toString();
+            var identifier = identifier(node);
+            var label = identifier.toString();
 
             addToView(identifier, box(node, label));
         }
     }
 
-    public void updateView(final Leaf<T> leaf, final T element)
+    public void updateView(Leaf<T> leaf, T element)
     {
         if (view != null)
         {
-            final var identifier = identifier(leaf, element);
-            final var label = identifier + "-" + element.toString();
+            var identifier = identifier(leaf, element);
+            var label = identifier + "-" + element.toString();
 
             addToView(identifier, box(leaf, label));
         }
     }
 
-    private void addToView(final DrawableIdentifier identifier, final MapBox box)
+    private void addToView(DrawableIdentifier identifier, MapBox box)
     {
         // Make all existing labeled shapes inactive
         view.map(at -> ((LabeledMapShape) at)
@@ -128,14 +128,14 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
         frameComplete();
     }
 
-    private MapBox box(final Node<T> node, final String label)
+    private MapBox box(Node<T> node, String label)
     {
         return MapBox.box()
                 .withStyle(ACTIVE_BOX)
                 .withLabelStyle(ACTIVE_LABEL)
                 .withRoundedLabelCorners(pixels(10))
                 .withRectangle(node.bounds())
-                .withLabel(label);
+                .withLabelText(label);
     }
 
     private void frameComplete()
@@ -146,7 +146,7 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
         }
     }
 
-    private DrawableIdentifier identifier(final InteriorNode<T> node)
+    private DrawableIdentifier identifier(InteriorNode<T> node)
     {
         var identifier = identifierForNode.get(node);
         if (identifier == null)
@@ -157,7 +157,7 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
         return identifier;
     }
 
-    private DrawableIdentifier identifier(final Leaf<T> leaf)
+    private DrawableIdentifier identifier(Leaf<T> leaf)
     {
         var identifier = identifierForLeaf.get(leaf);
         if (identifier == null)
@@ -168,7 +168,7 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
         return identifier;
     }
 
-    private DrawableIdentifier identifier(final Leaf<T> leaf, final T element)
+    private DrawableIdentifier identifier(Leaf<T> leaf, T element)
     {
         var identifier = identifierForElement.get(element);
         if (identifier == null)
@@ -179,7 +179,7 @@ public class RTreeSpatialIndexVisualDebugger<T extends Bounded & Intersectable> 
         return identifier;
     }
 
-    private DrawableIdentifier identifier(final Node<T> node)
+    private DrawableIdentifier identifier(Node<T> node)
     {
         return node.isLeaf() ? identifier((Leaf<T>) node) : identifier((InteriorNode<T>) node);
     }

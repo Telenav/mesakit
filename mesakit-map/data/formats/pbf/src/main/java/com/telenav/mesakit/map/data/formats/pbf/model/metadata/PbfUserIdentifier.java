@@ -18,16 +18,16 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.metadata;
 
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelMetadata;
-import com.telenav.kivakit.core.kernel.language.values.identifier.IntegerIdentifier;
+import com.telenav.kivakit.kernel.language.values.identifier.IntegerIdentifier;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelMetadata;
 
 @UmlClassDiagram(diagram = DiagramPbfModelMetadata.class)
 public class PbfUserIdentifier extends IntegerIdentifier
 {
     public static final PbfUserIdentifier SCOUT = new PbfUserIdentifier(2100001);
 
-    public PbfUserIdentifier(final int identifier)
+    public PbfUserIdentifier(int identifier)
     {
         super(identifier);
     }

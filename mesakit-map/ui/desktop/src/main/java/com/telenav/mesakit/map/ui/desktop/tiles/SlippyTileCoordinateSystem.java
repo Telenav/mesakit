@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
-import com.telenav.kivakit.core.kernel.language.primitives.Ints;
+import com.telenav.kivakit.kernel.language.primitives.Ints;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.DrawingCoordinateSystem;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
@@ -54,19 +54,19 @@ public class SlippyTileCoordinateSystem extends DrawingCoordinateSystem
 
     private final DrawingSize tileSize;
 
-    public SlippyTileCoordinateSystem(final ZoomLevel zoom)
+    public SlippyTileCoordinateSystem(ZoomLevel zoom)
     {
         this(zoom, STANDARD_TILE_SIZE);
     }
 
-    public SlippyTileCoordinateSystem(final ZoomLevel zoom, final DrawingSize tileSize)
+    public SlippyTileCoordinateSystem(ZoomLevel zoom, DrawingSize tileSize)
     {
         super("slippy-tile");
 
         origin(0, 0);
 
-        final var width = zoom.widthInPixels(tileSize);
-        final var height = zoom.heightInPixels(tileSize);
+        var width = zoom.widthInPixels(tileSize);
+        var height = zoom.heightInPixels(tileSize);
 
         extent(width, height);
 
@@ -76,14 +76,14 @@ public class SlippyTileCoordinateSystem extends DrawingCoordinateSystem
         projection = new SphericalMercatorMapProjection(SLIPPY_TILE_MAP_AREA, extent());
     }
 
-    public DrawingRectangle drawingArea(final SlippyTile tile)
+    public DrawingRectangle drawingArea(SlippyTile tile)
     {
-        final var upperLeft =
+        var upperLeft =
                 DrawingPoint.point(this,
                         tile.x() * tileSize.widthInUnits(),
                         tile.y() * tileSize.heightInUnits());
 
-        final var lowerRight =
+        var lowerRight =
                 DrawingPoint.point(this,
                         (tile.x() + 1) * tileSize.widthInUnits(),
                         (tile.y() + 1) * tileSize.heightInUnits());
@@ -91,30 +91,30 @@ public class SlippyTileCoordinateSystem extends DrawingCoordinateSystem
         return DrawingRectangle.rectangle(upperLeft, lowerRight);
     }
 
-    public Rectangle mapArea(final SlippyTile tile)
+    public Rectangle mapArea(SlippyTile tile)
     {
         return projection.toMap(drawingArea(tile));
     }
 
-    public SlippyTile tileForLocation(final Location location)
+    public SlippyTile tileForLocation(Location location)
     {
         return tileForPoint(projection.toDrawing(location));
     }
 
-    public SlippyTile tileForPoint(final DrawingPoint point)
+    public SlippyTile tileForPoint(DrawingPoint point)
     {
-        final var x = Ints.inRange((int) (point.x() / tileSize.widthInUnits()), 0, zoom.widthInTiles() - 1);
-        final var y = Ints.inRange((int) (point.y() / tileSize.heightInUnits()), 0, zoom.heightInTiles() - 1);
+        var x = Ints.inRange((int) (point.x() / tileSize.widthInUnits()), 0, zoom.widthInTiles() - 1);
+        var y = Ints.inRange((int) (point.y() / tileSize.heightInUnits()), 0, zoom.heightInTiles() - 1);
 
         return new SlippyTile(zoom, x, y);
     }
 
-    public DrawingPoint toDrawing(final Location at)
+    public DrawingPoint toDrawing(Location at)
     {
         return projection.toDrawing(at);
     }
 
-    public Location toMap(final DrawingPoint at)
+    public Location toMap(DrawingPoint at)
     {
         return projection.toMap(at);
     }

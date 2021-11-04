@@ -23,20 +23,20 @@ import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.region.border.Border;
-import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
+import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Continent;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BorderTest extends MapRegionUnitTest
+public class BorderTest extends RegionUnitTest
 {
     @Test
     public void testSerialization()
     {
-        final var polygon = polygon(-0.5, -0.5, 1, -0.5, 1, 0.85, -0.5, 0.85);
-        final var border = new Border<>(Continent.ASIA, polygon);
+        var polygon = polygon(-0.5, -0.5, 1, -0.5, 1, 0.85, -0.5, 0.85);
+        var border = new Border<>(Continent.ASIA, polygon);
         border.identity(new RegionIdentity("x-y")
                 .withIdentifier(new RegionIdentifier(1))
                 .withIsoCode("X")
@@ -44,9 +44,9 @@ public class BorderTest extends MapRegionUnitTest
         serializationTest(border);
     }
 
-    private Polygon polygon(final double... values)
+    private Polygon polygon(double... values)
     {
-        final List<Location> locations = new ArrayList<>();
+        List<Location> locations = new ArrayList<>();
         for (var i = 0; i < values.length; i += 2)
         {
             locations.add(new Location(Latitude.degrees(values[i]), Longitude.degrees(values[i + 1])));

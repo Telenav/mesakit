@@ -9,10 +9,11 @@
 <project xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-road</artifactId>
-        <version>0.9.5-alpha-SNAPSHOT</version>
+        <version>0.9.9-SNAPSHOT</version>
     </parent>
 
     <name>MesaKit Map Road - Name Parser</name>
@@ -26,12 +27,10 @@
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-map-region</artifactId>
-            <version>${mesakit.version}</version>
         </dependency>
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-map-road-model</artifactId>
-            <version>${mesakit.version}</version>
         </dependency>
 
     </dependencies>

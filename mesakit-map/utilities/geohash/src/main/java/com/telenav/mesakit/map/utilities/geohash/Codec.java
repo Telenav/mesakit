@@ -18,26 +18,26 @@
 
 package com.telenav.mesakit.map.utilities.geohash;
 
+import com.telenav.kivakit.kernel.language.values.count.Range;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
-import com.telenav.kivakit.core.kernel.language.values.count.Range;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 public class Codec
 {
     private final GeohashAlphabet alphabet;
 
-    public Codec(final GeohashAlphabet alphabet)
+    public Codec(GeohashAlphabet alphabet)
     {
         this.alphabet = alphabet;
     }
 
-    public Rectangle decode(final Code code)
+    public Rectangle decode(Code code)
     {
         if (code.isRoot())
         {
@@ -46,11 +46,11 @@ public class Codec
         else
         {
             // The following algorithm is taken from http://en.wikipedia.org/wiki/Geohash
-            final var codeBits = codeToBitArray(code);
-            final var longitudeBits = new BitArray.Builder();
-            final var latitudeBits = new BitArray.Builder();
+            var codeBits = codeToBitArray(code);
+            var longitudeBits = new BitArray.Builder();
+            var latitudeBits = new BitArray.Builder();
             var index = 0;
-            for (final boolean bit : codeBits.allBits())
+            for (boolean bit : codeBits.allBits())
             {
                 if (index % 2 == 0)
                 {
@@ -63,36 +63,36 @@ public class Codec
                 index++;
             }
 
-            final var longitudeRange = bitsToCoordinateRange(longitudeBits.build(), Longitude.RANGE);
-            final var latitudeRange = bitsToCoordinateRange(latitudeBits.build(), Latitude.RANGE);
+            var longitudeRange = bitsToCoordinateRange(longitudeBits.build(), Longitude.RANGE);
+            var latitudeRange = bitsToCoordinateRange(latitudeBits.build(), Latitude.RANGE);
 
-            final var north = Latitude.angle(latitudeRange.maximum());
-            final var south = Latitude.angle(latitudeRange.minimum());
-            final var east = Longitude.angle(longitudeRange.maximum());
-            final var west = Longitude.angle(longitudeRange.minimum());
+            var north = Latitude.angle(latitudeRange.maximum());
+            var south = Latitude.angle(latitudeRange.minimum());
+            var east = Longitude.angle(longitudeRange.maximum());
+            var west = Longitude.angle(longitudeRange.minimum());
 
-            final var bottomLeft = new Location(south, west);
-            final var topRight = new Location(north, east);
+            var bottomLeft = new Location(south, west);
+            var topRight = new Location(north, east);
 
             return Rectangle.fromLocations(bottomLeft, topRight);
         }
     }
 
-    public Code encode(final Location location, final int resolution)
+    public Code encode(Location location, int resolution)
     {
         ensure(resolution >= 0 && resolution <= alphabet.maximumTextLength(),
                 "The resolution must be between 0 and $ (inclusive)", alphabet.maximumTextLength());
 
         // The following algorithm is taken from
         // http://architects.dzone.com/articles/designing-spacial-index
-        final var bitCount = alphabet.bitsPerCharacter() * resolution;
-        final var latitudeBitCount = bitCount / 2;
-        final var longitudeBitCount = bitCount - latitudeBitCount;
-        final var latitudeBits = coordinateToBits(location.latitude(), Latitude.RANGE, latitudeBitCount);
-        final var longitudeBits = coordinateToBits(location.longitude(), Longitude.RANGE, longitudeBitCount);
+        var bitCount = alphabet.bitsPerCharacter() * resolution;
+        var latitudeBitCount = bitCount / 2;
+        var longitudeBitCount = bitCount - latitudeBitCount;
+        var latitudeBits = coordinateToBits(location.latitude(), Latitude.RANGE, latitudeBitCount);
+        var longitudeBits = coordinateToBits(location.longitude(), Longitude.RANGE, longitudeBitCount);
 
         // Merge the two bit arrays by interleaving their bits
-        final var geohashBits = new BitArray.Builder();
+        var geohashBits = new BitArray.Builder();
         for (var i = 0; i < longitudeBits.length(); i++)
         {
             geohashBits.appendBit(longitudeBits.isSet(i));
@@ -104,19 +104,19 @@ public class Codec
         return bitArrayToCode(geohashBits.build());
     }
 
-    private Code bitArrayToCode(final BitArray bits)
+    private Code bitArrayToCode(BitArray bits)
     {
         // Group bits in sets of 'bitsPerCharacter' and read the sets as integers
         // Each integer is an index in the character alphabet
-        final var codeBuilder = new StringBuilder();
-        final var geohashBinary = bits.toString();
-        final var resolution = bits.length() / alphabet.bitsPerCharacter();
+        var codeBuilder = new StringBuilder();
+        var geohashBinary = bits.toString();
+        var resolution = bits.length() / alphabet.bitsPerCharacter();
         for (var i = 0; i < resolution; i++)
         {
-            final var start = alphabet.bitsPerCharacter() * i;
-            final var end = alphabet.bitsPerCharacter() * (i + 1);
-            final var indexBinary = geohashBinary.substring(start, end);
-            final var index = Integer.parseInt(indexBinary, 2);
+            var start = alphabet.bitsPerCharacter() * i;
+            var end = alphabet.bitsPerCharacter() * (i + 1);
+            var indexBinary = geohashBinary.substring(start, end);
+            var index = Integer.parseInt(indexBinary, 2);
             codeBuilder.append(alphabet.get(index));
         }
         return new Code(alphabet, codeBuilder.toString());
@@ -129,13 +129,13 @@ public class Codec
      * boundary will have a wide range of coordinates and a {@link Geohash} with a small boundary will have a narrow
      * range of coordinates.
      */
-    private Range<Angle> bitsToCoordinateRange(final BitArray coordinateBits, final Range<Angle> coordinateRange)
+    private Range<Angle> bitsToCoordinateRange(BitArray coordinateBits, Range<Angle> coordinateRange)
     {
         var lower = coordinateRange.minimum();
         var upper = coordinateRange.maximum();
         for (var i = 0; i < coordinateBits.length(); i++)
         {
-            final var middle = lower.bisect(upper, Chirality.CLOCKWISE);
+            var middle = lower.bisect(upper, Chirality.CLOCKWISE);
             if (coordinateBits.isSet(i))
             {
                 lower = middle;
@@ -148,12 +148,12 @@ public class Codec
         return new Range<>(lower, upper);
     }
 
-    private BitArray codeToBitArray(final Code code)
+    private BitArray codeToBitArray(Code code)
     {
-        final var builder = new BitArray.Builder();
+        var builder = new BitArray.Builder();
         for (var i = 0; i < code.length(); i++)
         {
-            final var c = code.charAt(i);
+            var c = code.charAt(i);
             builder.appendBits(alphabet.indexOf(c), alphabet.bitsPerCharacter());
         }
         return builder.build();
@@ -167,14 +167,14 @@ public class Codec
      * recursively in two equal ranges, and at each step a bit is added to the result. If the coordinate is found in the
      * lower half of the range the bit is 0, otherwise it's 1.
      */
-    private BitArray coordinateToBits(final Angle coordinate, final Range<Angle> coordinateRange, final int resolution)
+    private BitArray coordinateToBits(Angle coordinate, Range<Angle> coordinateRange, int resolution)
     {
-        final var bits = new BitArray.Builder();
+        var bits = new BitArray.Builder();
         var lower = coordinateRange.minimum();
         var upper = coordinateRange.maximum();
         for (var i = 0; i < resolution; i++)
         {
-            final var middle = lower.bisect(upper, Chirality.CLOCKWISE);
+            var middle = lower.bisect(upper, Chirality.CLOCKWISE);
             if (coordinate.isGreaterThanOrEqualTo(middle))
             {
                 bits.appendBit(true);

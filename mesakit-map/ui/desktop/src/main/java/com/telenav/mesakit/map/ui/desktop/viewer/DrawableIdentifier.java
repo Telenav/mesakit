@@ -29,17 +29,17 @@ public class DrawableIdentifier
 {
     private final Object object;
 
-    public DrawableIdentifier(final Object object)
+    public DrawableIdentifier(Object object)
     {
         this.object = object;
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof DrawableIdentifier)
         {
-            final var that = (DrawableIdentifier) object;
+            var that = (DrawableIdentifier) object;
             return this.object.equals(that.object);
         }
         return false;

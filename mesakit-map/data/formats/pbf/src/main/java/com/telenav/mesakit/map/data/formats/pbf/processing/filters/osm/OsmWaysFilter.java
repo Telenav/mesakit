@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing.filters.osm;
 
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.osm.Osm;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.WayFilter;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfOsm;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**
  * PbfFilters out highway types that we never want to consider.
@@ -38,7 +38,7 @@ public class OsmWaysFilter extends WayFilter
     }
 
     @Override
-    public boolean accepts(final PbfWay way)
+    public boolean accepts(PbfWay way)
     {
         return Osm.isNavigable(way);
     }

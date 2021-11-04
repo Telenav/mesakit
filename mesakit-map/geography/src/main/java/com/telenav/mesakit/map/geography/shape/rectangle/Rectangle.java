@@ -18,19 +18,19 @@
 
 package com.telenav.mesakit.map.geography.shape.rectangle;
 
-import com.telenav.kivakit.core.commandline.ArgumentParser;
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.core.kernel.language.iteration.Iterables;
-import com.telenav.kivakit.core.kernel.language.iteration.Next;
-import com.telenav.kivakit.core.kernel.language.objects.Hash;
-import com.telenav.kivakit.core.kernel.language.patterns.Pattern;
-import com.telenav.kivakit.core.kernel.language.patterns.group.Group;
-import com.telenav.kivakit.core.kernel.language.values.level.Percent;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
+import com.telenav.kivakit.commandline.ArgumentParser;
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.iteration.Iterables;
+import com.telenav.kivakit.kernel.language.iteration.Next;
+import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.patterns.Pattern;
+import com.telenav.kivakit.kernel.language.patterns.group.Group;
+import com.telenav.kivakit.kernel.language.values.level.Percent;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
@@ -105,7 +105,8 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
             new Location(Latitude.degrees(33.20192), Longitude.degrees(-119.11377)),
             new Location(Latitude.degrees(35.37114), Longitude.degrees(-116.36719)));
 
-    public static final Rectangle MAXIMUM = new Rectangle(new Location(Latitude.MINIMUM, Longitude.MINIMUM),
+    public static final Rectangle MAXIMUM = new Rectangle(
+            new Location(Latitude.MINIMUM, Longitude.MINIMUM),
             new Location(Latitude.MAXIMUM, Longitude.MAXIMUM));
 
     public static final Rectangle MINIMUM = new Rectangle(Location.ORIGIN, Location.ORIGIN);
@@ -126,7 +127,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
             new Location(Latitude.degrees(18.39623), Longitude.degrees(-126.12305)),
             new Location(Latitude.degrees(60.06484), Longitude.degrees(-106.69922)));
 
-    public static ArgumentParser.Builder<Rectangle> argumentParser(final String description)
+    public static ArgumentParser.Builder<Rectangle> argumentParser(String description)
     {
         return ArgumentParser.builder(Rectangle.class).converter(new Rectangle.Converter(LOGGER))
                 .description(description);
@@ -136,10 +137,10 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
      * @param objects The bounded objects
      * @return The smallest bounds that contains all the bounded objects
      */
-    public static Rectangle fromBoundedObjects(final Bounded[] objects)
+    public static Rectangle fromBoundedObjects(Bounded[] objects)
     {
-        final var builder = new BoundingBoxBuilder();
-        for (final var object : objects)
+        var builder = new BoundingBoxBuilder();
+        for (var object : objects)
         {
             builder.add(object.bounds());
         }
@@ -150,10 +151,10 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
      * @param objects The bounded objects
      * @return The smallest bounds that contains all the bounded objects
      */
-    public static Rectangle fromBoundedObjects(final Iterable<? extends Bounded> objects)
+    public static Rectangle fromBoundedObjects(Iterable<? extends Bounded> objects)
     {
-        final var builder = new BoundingBoxBuilder();
-        for (final Bounded object : objects)
+        var builder = new BoundingBoxBuilder();
+        for (Bounded object : objects)
         {
             builder.add(object.bounds());
         }
@@ -167,13 +168,13 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
      * @param approximateOrthogonalRadius The orthogonal distance from the center to the edges
      * @return The rectangle
      */
-    public static Rectangle fromCenterAndRadius(final Location center, final Distance approximateOrthogonalRadius)
+    public static Rectangle fromCenterAndRadius(Location center, Distance approximateOrthogonalRadius)
     {
-        final var bottomLeft = center
+        var bottomLeft = center
                 .moved(Heading.degrees(270), approximateOrthogonalRadius)
                 .moved(Heading.degrees(180), approximateOrthogonalRadius);
 
-        final var topRight = center
+        var topRight = center
                 .moved(Heading.degrees(90), approximateOrthogonalRadius)
                 .moved(Heading.degrees(0), approximateOrthogonalRadius);
 
@@ -183,7 +184,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     /**
      * @return A rectangle for the given DM7 ints
      */
-    public static Rectangle fromInts(final int bottom, final int left, final int top, final int right)
+    public static Rectangle fromInts(int bottom, int left, int top, int right)
     {
         return new Rectangle(bottom, left, top, right);
     }
@@ -191,7 +192,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     /**
      * @return A zero size rectangle at the given location
      */
-    public static Rectangle fromLocation(final Location location)
+    public static Rectangle fromLocation(Location location)
     {
         return fromLocations(location, location);
     }
@@ -199,7 +200,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     /**
      * @return A rectangle of the given width and height with the bottom left at the given location
      */
-    public static Rectangle fromLocationWidthAndHeight(final Location location, final Width width, final Height height)
+    public static Rectangle fromLocationWidthAndHeight(Location location, Width width, Height height)
     {
         return new Rectangle(location, location.offsetBy(width).offsetBy(height));
     }
@@ -211,7 +212,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
      * @param b The other corner of the rectangle.
      * @return The rectangle
      */
-    public static Rectangle fromLocations(final Location a, final Location b)
+    public static Rectangle fromLocations(Location a, Location b)
     {
         return new Rectangle(new Location(a.latitude().minimum(b.latitude()), a.longitude().minimum(b.longitude())),
                 new Location(a.latitude().maximum(b.latitude()), a.longitude().maximum(b.longitude())));
@@ -225,7 +226,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
      * @param b The other corner of the rectangle.
      * @return The rectangle
      */
-    public static Rectangle fromLocationsInclusive(final Location a, final Location b)
+    public static Rectangle fromLocationsInclusive(Location a, Location b)
     {
         return fromLocations(a, b).incremented();
     }
@@ -233,7 +234,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     /**
      * @return A rectangle for the given DM7 longs
      */
-    public static Rectangle fromLongs(final long bottomLeft, final long topRight)
+    public static Rectangle fromLongs(long bottomLeft, long topRight)
     {
         return new Rectangle(Location.latitude(bottomLeft),
                 Location.longitude(bottomLeft),
@@ -244,21 +245,25 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     /**
      * @return A rectangle from the given string of the form: [latitude-1],[longitude-1]:[latitude-2],[latitude-2]
      */
-    public static Rectangle parse(final String string)
+    public static Rectangle parse(String string)
     {
-        final var parts = StringList.split(string, ":");
+        var parts = StringList.split(string, ":");
         if (parts.size() == 2)
         {
-            final var a = LOCATION_CONVERTER.convert(parts.get(0));
-            final var b = LOCATION_CONVERTER.convert(parts.get(1));
+            var a = LOCATION_CONVERTER.convert(parts.get(0));
+            var b = LOCATION_CONVERTER.convert(parts.get(1));
             return (a == null || b == null) ? null : fromLocations(a, b);
         }
         return null;
     }
 
-    public static SwitchParser.Builder<Rectangle> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<Rectangle> rectangleSwitchParser(Listener listener,
+                                                                        String name,
+                                                                        String description)
     {
-        return SwitchParser.builder(Rectangle.class).name(name).converter(new Rectangle.Converter(LOGGER))
+        return SwitchParser.builder(Rectangle.class)
+                .name(name)
+                .converter(new Rectangle.Converter(listener))
                 .description(description);
     }
 
@@ -274,13 +279,13 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
      */
     public static class Converter extends BaseStringConverter<Rectangle>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Rectangle onConvertToObject(final String value)
+        protected Rectangle onToValue(String value)
         {
             return parse(value);
         }
@@ -302,7 +307,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
          */
         public static final String NO_BOUNDS = "full";
 
-        public static Group<Rectangle> group(final Listener listener)
+        public static Group<Rectangle> group(Listener listener)
         {
             return Pattern.expression(NO_BOUNDS)
                     .or(Pattern.FLOATING_POINT_NUMBER
@@ -319,7 +324,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
 
         private final Longitude.DegreesConverter longitudeConverter;
 
-        public FileNameConverter(final Listener listener)
+        public FileNameConverter(Listener listener)
         {
             super(listener);
             latitudeConverter = new Latitude.DegreesConverter(listener);
@@ -327,26 +332,26 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         }
 
         @Override
-        protected Rectangle onConvertToObject(final String value)
+        protected String onToString(Rectangle value)
+        {
+            return value.toFileString();
+        }
+
+        @Override
+        protected Rectangle onToValue(String value)
         {
             if (value.equals(NO_BOUNDS))
             {
                 return MAXIMUM;
             }
-            final var parts = StringList.split(value, "_");
-            final var bottomLeftLatitude = latitudeConverter.convert(parts.get(0));
-            final var bottomLeftLongitude = longitudeConverter.convert(parts.get(1));
-            final var topRightLatitude = latitudeConverter.convert(parts.get(2));
-            final var topRightLongitude = longitudeConverter.convert(parts.get(3));
+            var parts = StringList.split(value, "_");
+            var bottomLeftLatitude = latitudeConverter.convert(parts.get(0));
+            var bottomLeftLongitude = longitudeConverter.convert(parts.get(1));
+            var topRightLatitude = latitudeConverter.convert(parts.get(2));
+            var topRightLongitude = longitudeConverter.convert(parts.get(3));
             return (bottomLeftLatitude == null || bottomLeftLongitude == null || topRightLatitude == null || topRightLongitude == null)
                     ? null : fromLocations(new Location(bottomLeftLatitude, bottomLeftLongitude),
                     new Location(topRightLatitude, topRightLongitude));
-        }
-
-        @Override
-        protected String onConvertToString(final Rectangle value)
-        {
-            return value.toFileString();
         }
     }
 
@@ -379,7 +384,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
      * @param bottomLeft The bottom left corner of the rectangle (inclusive)
      * @param topRight The top right corner of the rectangle (exclusive)
      */
-    protected Rectangle(final Location bottomLeft, final Location topRight)
+    protected Rectangle(Location bottomLeft, Location topRight)
     {
         bottomInDm7 = bottomLeft.latitude().asDm7();
         leftInDm7 = bottomLeft.longitude().asDm7();
@@ -392,15 +397,15 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         }
     }
 
-    protected Rectangle(final int bottomLeftInDm7, final int topRightInDm7)
+    protected Rectangle(int bottomLeftInDm7, int topRightInDm7)
     {
         bottomInDm7 = Location.latitude(bottomLeftInDm7);
         leftInDm7 = Location.longitude(bottomLeftInDm7);
-        topInDm7 = Location.latitude(bottomLeftInDm7);
+        topInDm7 = Location.latitude(topRightInDm7);
         rightInDm7 = Location.longitude(topRightInDm7);
     }
 
-    private Rectangle(final int bottomInDm7, final int leftInDm7, final int topInDm7, final int rightInDm7)
+    private Rectangle(int bottomInDm7, int leftInDm7, int topInDm7, int rightInDm7)
     {
         this.bottomInDm7 = bottomInDm7;
         this.leftInDm7 = leftInDm7;
@@ -413,15 +418,15 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
      */
     public Area area()
     {
-        final var earthRadius = Distance.EARTH_RADIUS_MINOR.asMeters();
-        final var earthSquare = earthRadius * earthRadius;
-        final var radiansTop = top().asRadians();
-        final var radiansBottom = bottom().asRadians();
-        final var radiansLeft = left().asRadians();
-        final var radiansRight = right().asRadians();
-        final var latSinDifference = Math.sin(radiansTop) - Math.sin(radiansBottom);
-        final var lonDifference = radiansLeft - radiansRight;
-        final var squareMeters = earthSquare * Math.abs(lonDifference) * Math.abs(latSinDifference);
+        var earthRadius = Distance.EARTH_RADIUS_MINOR.asMeters();
+        var earthSquare = earthRadius * earthRadius;
+        var radiansTop = top().asRadians();
+        var radiansBottom = bottom().asRadians();
+        var radiansLeft = left().asRadians();
+        var radiansRight = right().asRadians();
+        var latSinDifference = Math.sin(radiansTop) - Math.sin(radiansBottom);
+        var lonDifference = radiansLeft - radiansRight;
+        var squareMeters = earthSquare * Math.abs(lonDifference) * Math.abs(latSinDifference);
         return Area.squareMeters((long) squareMeters);
     }
 
@@ -432,7 +437,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
 
     public Polyline asPolyline()
     {
-        final var builder = new PolylineBuilder();
+        var builder = new PolylineBuilder();
         builder.add(topLeft());
         builder.add(topRight());
         builder.add(bottomRight());
@@ -476,7 +481,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         return this;
     }
 
-    public Iterable<Rectangle> cells(final Distance size)
+    public Iterable<Rectangle> cells(Distance size)
     {
         return Iterables.iterable(() -> new Next<>()
         {
@@ -494,9 +499,9 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
                 }
                 if (bottom.isLessThan(top()))
                 {
-                    final var top = bottom.plus(size.asAngle());
-                    final var right = left.plus(size.asAngle());
-                    final var next = fromLocations(new Location(bottom, left),
+                    var top = bottom.plus(size.asAngle());
+                    var right = left.plus(size.asAngle());
+                    var next = fromLocations(new Location(bottom, left),
                             new Location(top.minimum(top()), right.minimum(right())));
                     left = right;
                     return next;
@@ -511,34 +516,34 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
      */
     public Location center()
     {
-        final var centerLatitude = bottomInDm7 + Math.abs(topInDm7 - bottomInDm7) / 2;
-        final var centerLongitude = (int) (leftInDm7 + ((Math.abs((long) rightInDm7 - (long) leftInDm7) / 2L)));
+        var centerLatitude = bottomInDm7 + Math.abs(topInDm7 - bottomInDm7) / 2;
+        var centerLongitude = (int) (leftInDm7 + ((Math.abs((long) rightInDm7 - (long) leftInDm7) / 2L)));
         return Location.dm7(centerLatitude, centerLongitude);
     }
 
     /**
      * @return A value for use in a {@link Comparator} that sorts rectangles by longitude
      */
-    public int compareHorizontal(final Rectangle that)
+    public int compareHorizontal(Rectangle that)
     {
-        final var thisCenter = leftInDm7 + ((rightInDm7 - leftInDm7) / 2);
-        final var thatCenter = that.leftInDm7 + ((that.rightInDm7 - that.leftInDm7) / 2);
+        var thisCenter = leftInDm7 + ((rightInDm7 - leftInDm7) / 2);
+        var thatCenter = that.leftInDm7 + ((that.rightInDm7 - that.leftInDm7) / 2);
         return Integer.compare(thisCenter, thatCenter);
     }
 
     /**
      * @return A value for use in a {@link Comparator} that sorts rectangles by longitude
      */
-    public int compareVertical(final Rectangle that)
+    public int compareVertical(Rectangle that)
     {
-        final var thisCenter = bottomInDm7 + ((topInDm7 - bottomInDm7) / 2);
-        final var thatCenter = that.bottomInDm7 + ((that.topInDm7 - that.bottomInDm7) / 2);
+        var thisCenter = bottomInDm7 + ((topInDm7 - bottomInDm7) / 2);
+        var thatCenter = that.bottomInDm7 + ((that.topInDm7 - that.bottomInDm7) / 2);
         return Integer.compare(thisCenter, thatCenter);
     }
 
-    public int compareVerticalThenHorizontal(final Rectangle that)
+    public int compareVerticalThenHorizontal(Rectangle that)
     {
-        final var compareVertical = compareVertical(that);
+        var compareVertical = compareVertical(that);
         if (compareVertical == 0)
         {
             return compareHorizontal(that);
@@ -547,14 +552,24 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     }
 
     @Override
-    public final Outline.Containment containment(final Location location)
+    public final Outline.Containment containment(Location location)
     {
-        final var latitude = location.latitude().asDm7();
-        final var longitude = location.longitude().asDm7();
+        var latitude = location.latitude().asDm7();
+        var longitude = location.longitude().asDm7();
 
         // All locations are inside the maximum rectangle
         if (this == MAXIMUM)
         {
+            return Containment.INSIDE;
+        }
+
+        // If the point is inside the bottom, left, top and right, exclusive
+        if (latitude > bottomInDm7
+                && latitude < topInDm7
+                && longitude > leftInDm7
+                && longitude < rightInDm7)
+        {
+            // then it's inside
             return Containment.INSIDE;
         }
 
@@ -580,14 +595,6 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
             }
         }
 
-        // If the point is inside the bottom, left, top and right, exclusive
-        if (latitude > bottomInDm7 && latitude < topInDm7 && longitude > leftInDm7
-                && longitude < rightInDm7)
-        {
-            // then it's inside
-            return Containment.INSIDE;
-        }
-
         // The point is outside this rectangle
         return Containment.OUTSIDE;
     }
@@ -598,7 +605,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
      * top right corner).
      */
     @Override
-    public boolean contains(final Location location)
+    public boolean contains(Location location)
     {
         if (this == MAXIMUM)
         {
@@ -606,8 +613,8 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         }
         else
         {
-            final var latitude = location.latitudeInDm7();
-            final var longitude = location.longitudeInDm7();
+            var latitude = location.latitudeInDm7();
+            var longitude = location.longitudeInDm7();
             if (latitude >= bottomInDm7)
             {
                 if (latitude < topInDm7 || DM7.isMaximumLatitude(topInDm7))
@@ -630,7 +637,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
      * @param that The rectangle to test
      * @return True if the given rectangle is inside this rectangle
      */
-    public boolean contains(final Rectangle that)
+    public boolean contains(Rectangle that)
     {
         if (this == MAXIMUM)
         {
@@ -662,7 +669,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (this == object)
         {
@@ -670,7 +677,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         }
         if (object instanceof Rectangle)
         {
-            final var that = (Rectangle) object;
+            var that = (Rectangle) object;
             return bottomInDm7 == that.bottomInDm7
                     && leftInDm7 == that.leftInDm7
                     && topInDm7 == that.topInDm7
@@ -679,45 +686,45 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         return false;
     }
 
-    public Rectangle expanded(final Distance distance)
+    public Rectangle expanded(Distance distance)
     {
-        final var expansion = Angle.degrees(distance.asDegrees());
-        final var newBottomLeft = new Location(bottomLeft().latitude().minus(expansion),
+        var expansion = Angle.degrees(distance.asDegrees());
+        var newBottomLeft = new Location(bottomLeft().latitude().minus(expansion),
                 bottomLeft().longitude().minus(expansion));
-        final var newTopRight = new Location(topRight().latitude().plus(expansion),
+        var newTopRight = new Location(topRight().latitude().plus(expansion),
                 topRight().longitude().plus(expansion));
         return fromLocations(newBottomLeft, newTopRight);
     }
 
-    public Rectangle expanded(final Percent scaleFactor)
+    public Rectangle expanded(Percent scaleFactor)
     {
-        final var latitude = Latitude.degrees(scaleFactor.scale(height().asDegrees()));
-        final var longitude = Longitude.degrees(scaleFactor.scale(width().asDegrees()));
+        var latitude = Latitude.degrees(scaleFactor.scale(height().asDegrees()));
+        var longitude = Longitude.degrees(scaleFactor.scale(width().asDegrees()));
         return fromLocations(bottomLeft().relativeTo(latitude, longitude), topRight().offsetBy(latitude, longitude));
     }
 
-    public Rectangle expandedBottom(final Distance distance)
+    public Rectangle expandedBottom(Distance distance)
     {
-        final var expansion = Angle.degrees(distance.asDegrees());
-        final var newBottomLeft = new Location(bottomLeft().latitude().minus(expansion), bottomLeft().longitude());
+        var expansion = Angle.degrees(distance.asDegrees());
+        var newBottomLeft = new Location(bottomLeft().latitude().minus(expansion), bottomLeft().longitude());
         return fromLocations(newBottomLeft, topRight());
     }
 
-    public Rectangle expandedLeft(final Distance distance)
+    public Rectangle expandedLeft(Distance distance)
     {
-        final var expansion = Angle.degrees(distance.asDegrees());
-        final var newBottomLeft = new Location(bottomLeft().latitude(), bottomLeft().longitude().minus(expansion));
+        var expansion = Angle.degrees(distance.asDegrees());
+        var newBottomLeft = new Location(bottomLeft().latitude(), bottomLeft().longitude().minus(expansion));
         return fromLocations(newBottomLeft, topRight());
     }
 
-    public Rectangle expandedRight(final Distance distance)
+    public Rectangle expandedRight(Distance distance)
     {
-        final var expansion = Angle.degrees(distance.asDegrees());
-        final var newTopRight = new Location(topRight().latitude(), topRight().longitude().plus(expansion));
+        var expansion = Angle.degrees(distance.asDegrees());
+        var newTopRight = new Location(topRight().latitude(), topRight().longitude().plus(expansion));
         return fromLocations(bottomLeft(), newTopRight);
     }
 
-    public Rectangle expandedToInclude(final Location location)
+    public Rectangle expandedToInclude(Location location)
     {
         if (!containment(location).isOutside())
         {
@@ -725,22 +732,22 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         }
         else
         {
-            final var latitudeInDm7 = location.latitudeInDm7();
-            final var longitudeInDm7 = location.longitudeInDm7();
+            var latitudeInDm7 = location.latitudeInDm7();
+            var longitudeInDm7 = location.longitudeInDm7();
 
-            final var bottomInDm7 = Math.min(bottomInDm7(), latitudeInDm7);
-            final var leftInDm7 = Math.min(leftInDm7(), longitudeInDm7);
-            final var topInDm7 = Math.max(topInDm7(), latitudeInDm7);
-            final var rightInDm7 = Math.max(rightInDm7(), longitudeInDm7);
+            var bottomInDm7 = Math.min(bottomInDm7(), latitudeInDm7);
+            var leftInDm7 = Math.min(leftInDm7(), longitudeInDm7);
+            var topInDm7 = Math.max(topInDm7(), latitudeInDm7);
+            var rightInDm7 = Math.max(rightInDm7(), longitudeInDm7);
 
             return fromInts(bottomInDm7, leftInDm7, topInDm7, rightInDm7);
         }
     }
 
-    public Rectangle expandedTop(final Distance distance)
+    public Rectangle expandedTop(Distance distance)
     {
-        final var expansion = Angle.degrees(distance.asDegrees());
-        final var newTopRight = new Location(topRight().latitude().plus(expansion), topRight().longitude());
+        var expansion = Angle.degrees(distance.asDegrees());
+        var newTopRight = new Location(topRight().latitude().plus(expansion), topRight().longitude());
         return fromLocations(bottomLeft(), newTopRight);
     }
 
@@ -788,7 +795,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         return fromInts(bottomInDm7, leftInDm7, topInDm7 + 1, rightInDm7 + 1);
     }
 
-    public Rectangle intersect(final Rectangle that)
+    public Rectangle intersect(Rectangle that)
     {
         if (intersects(that))
         {
@@ -806,7 +813,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
 
     @SuppressWarnings("RedundantIfStatement")
     @Override
-    public boolean intersects(final Rectangle that)
+    public boolean intersects(Rectangle that)
     {
         if (this != MAXIMUM)
         {
@@ -865,7 +872,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     @Override
     public Iterable<Location> locationSequence()
     {
-        final List<Location> locations = new ArrayList<>();
+        List<Location> locations = new ArrayList<>();
         locations.add(bottomLeft());
         locations.add(bottomRight());
         locations.add(topRight());
@@ -873,7 +880,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         return locations;
     }
 
-    public Rectangle moved(final Offset offset)
+    public Rectangle moved(Offset offset)
     {
         return fromLocations(topLeft().offsetBy(offset), bottomRight().offsetBy(offset));
     }
@@ -908,27 +915,27 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         return shrunken(Latitude.dm7(1), Longitude.dm7(1));
     }
 
-    public Rectangle shrunken(final Angle angle)
+    public Rectangle shrunken(Angle angle)
     {
         return fromLocations(bottomLeft().offsetBy(Width.angle(angle)).offsetBy(Height.angle(angle)),
                 topRight().minus(Width.angle(angle)).minus(Height.angle(angle)));
     }
 
-    public Rectangle shrunken(final Distance distance)
+    public Rectangle shrunken(Distance distance)
     {
         return fromLocations(bottomLeft().moved(Heading.EAST, distance).moved(Heading.NORTH, distance),
                 topRight().moved(Heading.WEST, distance).moved(Heading.SOUTH, distance));
     }
 
-    public Rectangle shrunken(final Latitude latitude, final Longitude longitude)
+    public Rectangle shrunken(Latitude latitude, Longitude longitude)
     {
         return fromLocations(bottomLeft().offsetBy(latitude, longitude), topRight().relativeTo(latitude, longitude));
     }
 
-    public Rectangle shrunken(final Percent scaleFactor)
+    public Rectangle shrunken(Percent scaleFactor)
     {
-        final var latitude = Latitude.degrees(scaleFactor.scale(height().asDegrees()));
-        final var longitude = Longitude.degrees(scaleFactor.scale(width().asDegrees()));
+        var latitude = Latitude.degrees(scaleFactor.scale(height().asDegrees()));
+        var longitude = Longitude.degrees(scaleFactor.scale(width().asDegrees()));
         return shrunken(latitude, longitude);
     }
 
@@ -994,12 +1001,12 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         return topRight;
     }
 
-    public Rectangle union(final Rectangle that)
+    public Rectangle union(Rectangle that)
     {
         return expandedToInclude(that.bottomLeft()).expandedToInclude(that.topRight());
     }
 
-    public Iterable<Rectangle> verticalStrips(final Distance width, final Distance overlap)
+    public Iterable<Rectangle> verticalStrips(Distance width, Distance overlap)
     {
         return Iterables.iterable(() -> new Next<>()
         {
@@ -1010,8 +1017,8 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
             {
                 if (left.isLessThan(right().minus(overlap.asAngle())))
                 {
-                    final var right = left.plus(width.add(overlap).asAngle());
-                    final var next = fromLocations(new Location(bottom(), left),
+                    var right = left.plus(width.add(overlap).asAngle());
+                    var next = fromLocations(new Location(bottom(), left),
                             new Location(top(), right.minimum(right())));
                     left = right.minus(overlap.asAngle());
                     return next;
@@ -1021,10 +1028,10 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         });
     }
 
-    public Iterable<Rectangle> verticalStrips(final int stripCount, final Width overlap)
+    public Iterable<Rectangle> verticalStrips(int stripCount, Width overlap)
     {
-        final var difference = right().asWidth().minus(left().asWidth());
-        final var stripWidth = difference.dividedBy(stripCount);
+        var difference = right().asWidth().minus(left().asWidth());
+        var stripWidth = difference.dividedBy(stripCount);
 
         return Iterables.iterable(() -> new Next<>()
         {
@@ -1041,7 +1048,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
                     {
                         right = right();
                     }
-                    final var next = fromLocations(new Location(bottom(), left),
+                    var next = fromLocations(new Location(bottom(), left),
                             new Location(top(), right));
                     left = right.minus(overlap);
                     return next;
@@ -1096,8 +1103,8 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
      */
     public Distance widthAtBase()
     {
-        final Location point1;
-        final Location point2;
+        Location point1;
+        Location point2;
 
         // Select the side that is closest to the equator
         if (Math.abs(topRight().latitude().asDegrees()) > Math.abs(bottomLeft().latitude().asDegrees()))
@@ -1118,22 +1125,22 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         return Math.abs(rightInDegrees() - leftInDegrees());
     }
 
-    public Rectangle withBottom(final Latitude latitude)
+    public Rectangle withBottom(Latitude latitude)
     {
         return fromLocations(bottomLeft().withLatitude(latitude), topRight());
     }
 
-    public Rectangle withLeft(final Longitude longitude)
+    public Rectangle withLeft(Longitude longitude)
     {
         return fromLocations(bottomLeft().withLongitude(longitude), topRight());
     }
 
-    public Rectangle withRight(final Longitude longitude)
+    public Rectangle withRight(Longitude longitude)
     {
         return fromLocations(bottomLeft(), topRight().withLongitude(longitude));
     }
 
-    public Rectangle withTop(final Latitude latitude)
+    public Rectangle withTop(Latitude latitude)
     {
         return fromLocations(bottomLeft(), topRight().withLatitude(latitude));
     }

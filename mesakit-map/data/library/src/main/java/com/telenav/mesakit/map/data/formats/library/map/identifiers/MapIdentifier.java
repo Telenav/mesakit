@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.data.formats.library.map.identifiers;
 
-import com.telenav.mesakit.map.data.formats.library.project.lexakai.diagrams.DiagramDataMapIdentifier;
-import com.telenav.kivakit.core.kernel.language.values.identifier.Identifier;
+import com.telenav.kivakit.kernel.language.values.identifier.Identifier;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.data.formats.library.project.lexakai.diagrams.DiagramDataMapIdentifier;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -49,20 +49,20 @@ public abstract class MapIdentifier extends Identifier
 
         static
         {
-            for (final var type : values())
+            for (var type : values())
             {
                 forOrdinal.put(type.identifier(), type);
             }
         }
 
-        public static Type forOrdinal(final int ordinal)
+        public static Type forOrdinal(int ordinal)
         {
             return forOrdinal.get(ordinal);
         }
 
         private final int identifier;
 
-        Type(final int identifier)
+        Type(int identifier)
         {
             this.identifier = identifier;
         }
@@ -76,7 +76,7 @@ public abstract class MapIdentifier extends Identifier
     /**
      * Construct from primitive identifier
      */
-    protected MapIdentifier(final long identifier)
+    protected MapIdentifier(long identifier)
     {
         super(identifier);
     }

@@ -18,29 +18,31 @@
 
 package com.telenav.mesakit.map.geography.projection;
 
-import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.kernel.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
 
 /**
- * An x,y cartesian coordinate in meters from the lower left of the map projection
+ * An x,y cartesian coordinate in meters from the origin
  *
  * @author jonathanl (shibo)
  */
 public class MetricCoordinate
 {
     @KivaKitIncludeProperty
+    final
     double xInMeters;
 
     @KivaKitIncludeProperty
+    final
     double yInMeters;
 
-    public MetricCoordinate(final double xInMeters, final double yInMeters)
+    public MetricCoordinate(double xInMeters, double yInMeters)
     {
         this.xInMeters = xInMeters;
         this.yInMeters = yInMeters;
     }
 
-    public boolean isCloseTo(final MetricCoordinate that)
+    public boolean isCloseTo(MetricCoordinate that)
     {
         return Math.abs(xInMeters - that.xInMeters) < 1.0 &&
                 Math.abs(yInMeters - that.yInMeters) < 1.0;

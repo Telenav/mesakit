@@ -18,22 +18,22 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.interfaces.collection.Indexable;
-import com.telenav.kivakit.core.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.core.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.core.kernel.language.iteration.BaseIterator;
-import com.telenav.kivakit.core.kernel.language.iteration.Iterables;
-import com.telenav.kivakit.core.kernel.language.iteration.Next;
-import com.telenav.kivakit.core.kernel.language.strings.Split;
-import com.telenav.kivakit.core.kernel.language.strings.Strings;
-import com.telenav.kivakit.core.kernel.language.strings.formatting.Separators;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.language.values.level.Percent;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.interfaces.collection.Indexable;
+import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
+import com.telenav.kivakit.kernel.language.iteration.Iterables;
+import com.telenav.kivakit.kernel.language.iteration.Next;
+import com.telenav.kivakit.kernel.language.strings.Split;
+import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.level.Percent;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
@@ -42,7 +42,7 @@ import com.telenav.mesakit.map.geography.LocatedHeading;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.LocationSequence;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.MapGeographyLimits;
+import com.telenav.mesakit.map.geography.project.GeographyLimits;
 import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
 import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
@@ -68,7 +68,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 /**
  * A sequence of two or more locations that are connected, leading from a {@link #start()} to an {@link #end()}
@@ -128,7 +128,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static Polyline fromLocations(final long start, final long end)
+    public static Polyline fromLocations(long start, long end)
     {
         return new Polyline(new long[] { start, end });
     }
@@ -136,19 +136,19 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     /**
      * Construct from a convenient argument list of locations
      */
-    public static Polyline fromLocations(final Location one, final Location two, final Location... more)
+    public static Polyline fromLocations(Location one, Location two, Location... more)
     {
-        final var builder = new PolylineBuilder();
+        var builder = new PolylineBuilder();
         builder.add(one);
         builder.add(two);
-        for (final var location : more)
+        for (var location : more)
         {
             builder.add(location);
         }
         return builder.build();
     }
 
-    public static Polyline fromLocations(final Iterable<Location> locations)
+    public static Polyline fromLocations(Iterable<Location> locations)
     {
         if (locations instanceof Polyline)
         {
@@ -161,14 +161,14 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         return fromLocations(locations.iterator());
     }
 
-    public static Polyline fromLocations(final Iterator<Location> locations)
+    public static Polyline fromLocations(Iterator<Location> locations)
     {
         return new PolylineBuilder().addAll(locations).build();
     }
 
-    public static Polyline fromLongArray(final LongArray locations)
+    public static Polyline fromLongArray(LongArray locations)
     {
-        final var builder = new PolylineBuilder();
+        var builder = new PolylineBuilder();
         for (var i = 0; i < locations.size(); i++)
         {
             builder.add(Location.dm7(locations.get(i)));
@@ -176,18 +176,18 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         return builder.build();
     }
 
-    public static Polyline fromLongs(final long[] locations)
+    public static Polyline fromLongs(long[] locations)
     {
         return new Polyline(locations);
     }
 
-    public static Polyline parse(final String value)
+    public static Polyline parse(String value)
     {
         if (!Strings.isEmpty(value))
         {
-            final var builder = new PolylineBuilder();
-            final var converter = new Location.DegreesConverter(LOGGER);
-            for (final var location : Split.split(value, ':'))
+            var builder = new PolylineBuilder();
+            var converter = new Location.DegreesConverter(LOGGER);
+            for (var location : Split.split(value, ':'))
             {
                 builder.add(converter.convert(location));
             }
@@ -202,7 +202,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
 
         private final Separators separators;
 
-        public Converter(final Listener listener, final Separators separators)
+        public Converter(Listener listener, Separators separators)
         {
             super(listener);
             this.separators = separators;
@@ -212,35 +212,35 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         }
 
         @Override
-        protected String onConvertNullToString()
+        protected String nullString()
         {
             return "";
         }
 
         @Override
-        protected Polyline onConvertToObject(final String value)
+        protected String onToString(Polyline value)
+        {
+            var locations = new StringList(GeographyLimits.LOCATIONS_PER_POLYLINE);
+            for (var location : value.locationSequence())
+            {
+                locations.add(locationConverter.unconvert(location));
+            }
+            return locations.join(separators.current());
+        }
+
+        @Override
+        protected Polyline onToValue(String value)
         {
             if (!Strings.isEmpty(value))
             {
-                final var builder = new PolylineBuilder();
-                for (final var location : Split.split(value, separators.current()))
+                var builder = new PolylineBuilder();
+                for (var location : Split.split(value, separators.current()))
                 {
                     builder.add(locationConverter.convert(location));
                 }
                 return builder.build();
             }
             return null;
-        }
-
-        @Override
-        protected String onConvertToString(final Polyline value)
-        {
-            final var locations = new StringList(MapGeographyLimits.LOCATIONS_PER_POLYLINE);
-            for (final var location : value.locationSequence())
-            {
-                locations.add(locationConverter.toString(location));
-            }
-            return locations.join(separators.current());
         }
     }
 
@@ -251,21 +251,21 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
      */
     public static class GoogleEncodingConverter extends BaseStringConverter<Polyline>
     {
-        public GoogleEncodingConverter(final Listener listener)
+        public GoogleEncodingConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Polyline onConvertToObject(final String value)
+        protected String onToString(Polyline value)
         {
-            return decodePolyline(value);
+            return createPolyline(value);
         }
 
         @Override
-        protected String onConvertToString(final Polyline value)
+        protected Polyline onToValue(String value)
         {
-            return createPolyline(value);
+            return decodePolyline(value);
         }
 
         /**
@@ -274,19 +274,19 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
          * @param line The {@link Polyline} to encode
          * @return The encoded polyline
          */
-        private String createPolyline(final Polyline line)
+        private String createPolyline(Polyline line)
         {
             var oldlat = 0D;
             var oldlon = 0D;
-            final var nb = new StringBuilder();
-            for (final var temp : line.locationSequence())
+            var nb = new StringBuilder();
+            for (var temp : line.locationSequence())
             {
-                final var p1 = temp.latitude().asDegrees();
-                final var p2 = temp.longitude().asDegrees();
+                var p1 = temp.latitude().asDegrees();
+                var p2 = temp.longitude().asDegrees();
 
                 if (Math.abs(p1 - oldlat) >= 0.00001)
                 {
-                    final var temp2 = encodePolyline(p1 - oldlat);
+                    var temp2 = encodePolyline(p1 - oldlat);
                     nb.append(temp2);
                 }
                 else
@@ -295,7 +295,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
                 }
                 if (Math.abs(p2 - oldlon) >= 0.00001)
                 {
-                    final var temp2 = encodePolyline(p2 - oldlon);
+                    var temp2 = encodePolyline(p2 - oldlon);
                     nb.append(temp2);
                 }
                 else
@@ -309,8 +309,8 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
             var temp = nb.toString();
 
             // Ensure temp for "*\*" pattern
-            final var pattern = Pattern.compile("\".*\\.*\"");
-            final var matcher = pattern.matcher(temp);
+            var pattern = Pattern.compile("\".*\\.*\"");
+            var matcher = pattern.matcher(temp);
 
             while (matcher.find())
             {
@@ -329,11 +329,11 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
          * @param encoded The encoded {@link Polyline}
          * @return The decoded {@link Polyline}
          */
-        private Polyline decodePolyline(final String encoded)
+        private Polyline decodePolyline(String encoded)
         {
-            final var builder = new PolylineBuilder();
+            var builder = new PolylineBuilder();
             var index = 0;
-            final var encodedLength = encoded.length();
+            var encodedLength = encoded.length();
             int lat = 0, lon = 0;
             while (index < encodedLength)
             {
@@ -347,7 +347,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
                     shift += 5;
                 }
                 while (b >= 0x20);
-                final var deltaLat = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
+                var deltaLat = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
                 lat += deltaLat;
 
                 shift = 0;
@@ -359,12 +359,12 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
                     shift += 5;
                 }
                 while (b >= 0x20);
-                final var deltaLon = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
+                var deltaLon = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
                 lon += deltaLon;
 
-                final var latitude = Latitude.dm5(lat);
-                final var longitude = Longitude.dm5(lon);
-                final var location = new Location(latitude, longitude);
+                var latitude = Latitude.dm5(lat);
+                var longitude = Longitude.dm5(lon);
+                var location = new Location(latitude, longitude);
                 builder.add(location);
             }
             return builder.build();
@@ -376,17 +376,17 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
          * @param angleInDegrees The angle in degrees to encode
          * @return The encoded angle
          */
-        private String encodePolyline(final double angleInDegrees)
+        private String encodePolyline(double angleInDegrees)
         {
             // Google's procedure for encoding polyline data
             // This doesn't cater for backslashes in string literals i.e. the character sequence "\"
             // which should be returned as "\\". Function createPolyline will do this.
 
-            final String polyline;
-            final var signNum = (int) Math.signum(angleInDegrees);
+            String polyline;
+            var signNum = (int) Math.signum(angleInDegrees);
 
             var b = (int) Math.round(angleInDegrees * 1e5);
-            final List<Integer> ab = new ArrayList<>();
+            List<Integer> ab = new ArrayList<>();
 
             // Left shift
             b = b << 1;
@@ -405,11 +405,11 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
             }
 
             // Convert to ASCII
-            final var nc4 = new StringBuilder();
+            var nc4 = new StringBuilder();
             for (var i = 0; i < ab.size() - 1; i++)
             {
                 // Or with 0x20 and add 63
-                final var c = (char) ((ab.get(i) | 0x20) + 63);
+                var c = (char) ((ab.get(i) | 0x20) + 63);
                 nc4.append(c);
             }
             // Add 63 to last chunk
@@ -426,7 +426,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
 
         private final Location location;
 
-        public Intersection(final Location location, final boolean modified)
+        public Intersection(Location location, boolean modified)
         {
             this.location = location;
             this.modified = modified;
@@ -447,7 +447,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     {
         private final LongArray.Converter longArrayConverter;
 
-        public LongArrayConverter(final Listener listener, final Separators separators)
+        public LongArrayConverter(Listener listener, Separators separators)
         {
             super(listener);
             longArrayConverter = new LongArray.Converter(listener, separators);
@@ -456,30 +456,30 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         }
 
         @Override
-        protected String onConvertNullToString()
+        protected String nullString()
         {
             return "";
         }
 
         @Override
-        protected Polyline onConvertToObject(final String value)
-        {
-            if (!Strings.isEmpty(value))
-            {
-                final var converted = longArrayConverter.convert(value);
-                return converted == null ? null : fromLongArray(converted);
-            }
-            return null;
-        }
-
-        @Override
-        protected String onConvertToString(final Polyline value)
+        protected String onToString(Polyline value)
         {
             if (!value.isEmpty())
             {
-                return longArrayConverter.toString(value.asLongArray());
+                return longArrayConverter.unconvert(value.asLongArray());
             }
             return "";
+        }
+
+        @Override
+        protected Polyline onToValue(String value)
+        {
+            if (!Strings.isEmpty(value))
+            {
+                var converted = longArrayConverter.convert(value);
+                return converted == null ? null : fromLongArray(converted);
+            }
+            return null;
         }
     }
 
@@ -498,7 +498,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
             return startIndex > 0 ? section(0, startIndex) : null;
         }
 
-        public void intersections(final Count intersections)
+        public void intersections(Count intersections)
         {
             this.intersections = intersections;
         }
@@ -550,20 +550,20 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
 
     private Integer hashCode;
 
-    public Polyline(final List<Location> locations)
+    public Polyline(List<Location> locations)
     {
         ensure(locations.size() >= 2);
 
         this.locations = new SoftReference<>(locations);
         locationsInDecimal = new long[locations.size()];
         var i = 0;
-        for (final var location : locations)
+        for (var location : locations)
         {
             locationsInDecimal[i++] = expandBounds(location.asDm7Long());
         }
     }
 
-    public Polyline(final long[] locationsInDecimal)
+    public Polyline(long[] locationsInDecimal)
     {
         assert locationsInDecimal.length >= 2;
 
@@ -575,9 +575,9 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     {
     }
 
-    public Polyline append(final Polyline that)
+    public Polyline append(Polyline that)
     {
-        final var builder = new PolylineBuilder();
+        var builder = new PolylineBuilder();
         builder.addAllUnique(locationSequence());
         builder.addAllUnique(that.locationSequence());
         return builder.build();
@@ -605,7 +605,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
 
     @Override
     public @NotNull
-    Iterator<Location> asIterator(final Matcher<Location> matcher)
+    Iterator<Location> asIterator(Matcher<Location> matcher)
     {
         return new BaseIterator<>()
         {
@@ -616,7 +616,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
             {
                 while (index < size())
                 {
-                    final var location = get(index++);
+                    var location = get(index++);
                     if (matcher.matches(location))
                     {
                         return location;
@@ -632,8 +632,8 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
      */
     public Set<Location> asLocationSet()
     {
-        final Set<Location> locations = new HashSet<>();
-        for (final var location : locationSequence())
+        Set<Location> locations = new HashSet<>();
+        for (var location : locationSequence())
         {
             locations.add(location);
         }
@@ -642,11 +642,11 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
 
     public LongArray asLongArray()
     {
-        final var array = new LongArray("asLongArray");
+        var array = new LongArray("asLongArray");
         array.initialSize(size());
         array.initialize();
 
-        for (final var location : locationSequence())
+        for (var location : locationSequence())
         {
             array.add(location.asLong());
         }
@@ -660,7 +660,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     {
         if (distance.isLessThanOrEqualTo(length()))
         {
-            for (final var segment : segments())
+            for (var segment : segments())
             {
                 if (distance.isLessThan(segment.length()))
                 {
@@ -676,7 +676,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
      * @return The location on this polyline at the given percentage from the start of the polyline, where 0% is the
      * start of the polyline, 50% is the midpoint and 100% is the end.
      */
-    public Location at(final Percent parameter)
+    public Location at(Percent parameter)
     {
         return at(length().times(parameter.asUnitValue()));
     }
@@ -684,12 +684,12 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     /**
      * @return This polyline with the given polyline attached at the closest end
      */
-    public Polyline attach(final Polyline that)
+    public Polyline attach(Polyline that)
     {
-        final var endToStart = end().distanceTo(that.start());
-        final var endToEnd = end().distanceTo(that.end());
-        final var startToEnd = start().distanceTo(that.end());
-        final var startToStart = start().distanceTo(that.start());
+        var endToStart = end().distanceTo(that.start());
+        var endToEnd = end().distanceTo(that.end());
+        var startToEnd = start().distanceTo(that.end());
+        var startToStart = start().distanceTo(that.start());
         switch (minimum(new Distance[] { endToStart, endToEnd, startToEnd, startToStart }))
         {
             case 0:
@@ -717,15 +717,15 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
      * @return This polyline augmented with extra interpolated points so that the maximum spacing between locations is
      * the given distance
      */
-    public Polyline augmented(final Distance maximumShapePointSpacing)
+    public Polyline augmented(Distance maximumShapePointSpacing)
     {
-        final var builder = new PolylineBuilder();
+        var builder = new PolylineBuilder();
         Location last = null;
-        for (final var location : locationSequence())
+        for (var location : locationSequence())
         {
             if (last != null && last.distanceTo(location).isGreaterThan(maximumShapePointSpacing))
             {
-                final var segment = new Segment(last, location);
+                var segment = new Segment(last, location);
                 for (var at = maximumShapePointSpacing; at
                         .isLessThan(segment.length()); at = at.add(maximumShapePointSpacing))
                 {
@@ -764,16 +764,16 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     {
         var bend = 0D;
         Segment previous = null;
-        for (final var segment : segments())
+        for (var segment : segments())
         {
             if (previous != null)
             {
-                final var left = previous.turnAngleTo(segment, Chirality.COUNTERCLOCKWISE);
+                var left = previous.turnAngleTo(segment, Chirality.COUNTERCLOCKWISE);
                 if (left.isLessThan(Angle._180_DEGREES))
                 {
                     bend -= left.asDegrees();
                 }
-                final var right = previous.turnAngleTo(segment, Chirality.CLOCKWISE);
+                var right = previous.turnAngleTo(segment, Chirality.CLOCKWISE);
                 if (right.isLessThan(Angle._180_DEGREES))
                 {
                     bend += right.asDegrees();
@@ -790,7 +790,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     public List<PolylineSection> bisect()
     {
         // Sections to return
-        final List<PolylineSection> sections = new ArrayList<>();
+        List<PolylineSection> sections = new ArrayList<>();
 
         // If this polyline is a segment,
         if (isSegment())
@@ -801,7 +801,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         else
         {
             // otherwise, find the mid point
-            final var midpoint = size() / 2;
+            var midpoint = size() / 2;
 
             // and add two sections
             sections.add(section(0, midpoint));
@@ -828,23 +828,23 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
      * headings of the two polylines deviate by more than the given maximumHeadingDeviation are not considered close,
      * nor are areas where the polylines are more end-to-end than side-by-side.
      */
-    public Percent closeness(final Polyline that, final Distance maximumDistance,
-                             final Angle maximumHeadingDeviation)
+    public Percent closeness(Polyline that, Distance maximumDistance,
+                             Angle maximumHeadingDeviation)
     {
         // Create polyline snapper
-        final var snapper = new PolylineSnapper();
+        var snapper = new PolylineSnapper();
 
         // The amount of this polyline that is close to that polyline
         var close = Distance.ZERO;
 
         // Go through each segment in this polyline
-        for (final var segment : segments())
+        for (var segment : segments())
         {
             // Snap the midpoint of this segment to that polyline. NOTE: We don't remember the
             // reason for using the mid-point here, but this algorithm gives good results, so don't
             // change this without a good reason
-            final var point = segment.midpoint();
-            final var snap = snapper.snap(that, point);
+            var point = segment.midpoint();
+            var snap = snapper.snap(that, point);
 
             // If the snap is close enough and the heading is within tolerance,
             if (snap.distanceToSource().isLessThan(maximumDistance)
@@ -867,13 +867,13 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         return CompressedPolyline.fromLocationSequence(locationSequence());
     }
 
-    public boolean crosses(final Polyline that)
+    public boolean crosses(Polyline that)
     {
         if (bounds().intersects(that.bounds()))
         {
-            for (final var thisSegment : segments())
+            for (var thisSegment : segments())
             {
-                for (final var thatSegment : that.segments())
+                for (var thatSegment : that.segments())
                 {
                     if (!thisSegment.start().equals(thatSegment.start())
                             && !thisSegment.start().equals(thatSegment.end())
@@ -899,18 +899,18 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         return null;
     }
 
-    public Distance distanceTo(final Location location)
+    public Distance distanceTo(Location location)
     {
-        final var snapper = new PolylineSnapper();
-        final var to = snapper.snap(this, location);
+        var snapper = new PolylineSnapper();
+        var to = snapper.snap(this, location);
         return length().times(to.offset().asZeroToOne());
     }
 
     public Set<Location> duplicateLocations()
     {
-        final Set<Location> visited = new HashSet<>();
-        final Set<Location> duplicates = new HashSet<>();
-        for (final var location : locationSequence())
+        Set<Location> visited = new HashSet<>();
+        Set<Location> duplicates = new HashSet<>();
+        for (var location : locationSequence())
         {
             if (visited.contains(location))
             {
@@ -926,9 +926,9 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
      */
     public Set<Segment> duplicateSegments()
     {
-        final Set<Segment> duplicates = new HashSet<>();
-        final Set<Segment> visited = new HashSet<>();
-        for (final var segment : segments())
+        Set<Segment> duplicates = new HashSet<>();
+        Set<Segment> visited = new HashSet<>();
+        for (var segment : segments())
         {
             if (visited.contains(segment) || visited.contains(segment.reversed()))
             {
@@ -952,11 +952,11 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     }
 
     @Override
-    public final boolean equals(final Object object)
+    public final boolean equals(Object object)
     {
         if (object instanceof Polyline)
         {
-            final var that = (Polyline) object;
+            var that = (Polyline) object;
             if (hashCode != null)
             {
                 return hashCode.equals(that.hashCode);
@@ -971,7 +971,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
 
     public Heading finalHeading()
     {
-        final var last = lastSegment();
+        var last = lastSegment();
         if (last != null)
         {
             return last.heading();
@@ -985,14 +985,14 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     }
 
     @Override
-    public Location get(final int index)
+    public Location get(int index)
     {
         return Location.dm7(locationsInDecimal()[index]);
     }
 
-    public boolean has(final Location location)
+    public boolean has(Location location)
     {
-        for (final var current : locationSequence())
+        for (var current : locationSequence())
         {
             if (current.equals(location))
             {
@@ -1012,14 +1012,14 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
      * Provides a hashcode for very large polylines, such as those used in country and state borders, to avoid the
      * expense of hashing every location in the polyline (which happens if this method is not called).
      */
-    public void hashCode(final int hashCode)
+    public void hashCode(int hashCode)
     {
         this.hashCode = hashCode;
     }
 
     public Heading initialHeading()
     {
-        final var first = firstSegment();
+        var first = firstSegment();
         if (first != null)
         {
             return first.heading();
@@ -1027,11 +1027,11 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         return null;
     }
 
-    public Location intersection(final Polyline that)
+    public Location intersection(Polyline that)
     {
-        for (final var segment : that.segments())
+        for (var segment : that.segments())
         {
-            final var intersection = intersection(segment);
+            var intersection = intersection(segment);
             if (intersection != null)
             {
                 return intersection;
@@ -1040,9 +1040,9 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         return null;
     }
 
-    public Location intersection(final Segment that)
+    public Location intersection(Segment that)
     {
-        for (final var segment : segments())
+        for (var segment : segments())
         {
             if (segment.intersects(that))
             {
@@ -1053,11 +1053,11 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     }
 
     @Override
-    public boolean intersects(final Rectangle rectangle)
+    public boolean intersects(Rectangle rectangle)
     {
         if (bounds().intersects(rectangle))
         {
-            for (final var segment : segments())
+            for (var segment : segments())
             {
                 if (segment.intersects(rectangle))
                 {
@@ -1068,9 +1068,9 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         return false;
     }
 
-    public boolean intersects(final Segment that)
+    public boolean intersects(Segment that)
     {
-        for (final var segment : segments())
+        for (var segment : segments())
         {
             if (segment.intersects(that))
             {
@@ -1083,11 +1083,11 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     /**
      * @return True if any segment is more than the given tolerance out of line with the initial segment
      */
-    public boolean isBent(final Distance within, final Angle tolerance)
+    public boolean isBent(Distance within, Angle tolerance)
     {
         Heading initial = null;
         var length = Distance.ZERO;
-        for (final var segment : segments())
+        for (var segment : segments())
         {
             if (initial == null)
             {
@@ -1106,7 +1106,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         return false;
     }
 
-    public boolean isConnectedTo(final Polyline that)
+    public boolean isConnectedTo(Polyline that)
     {
         return end().equals(that.start()) || start().equals(that.end());
     }
@@ -1129,8 +1129,8 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
 
     public boolean isSelfIntersecting()
     {
-        final Set<Location> visited = new HashSet<>();
-        for (final var location : locationSequence())
+        Set<Location> visited = new HashSet<>();
+        for (var location : locationSequence())
         {
             if (visited.contains(location))
             {
@@ -1141,7 +1141,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         return false;
     }
 
-    public boolean isStraight(final Distance within, final Angle tolerance)
+    public boolean isStraight(Distance within, Angle tolerance)
     {
         return !isBent(within, tolerance);
     }
@@ -1173,8 +1173,8 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         if (referenced == null)
         {
             referenced = new ArrayList<>();
-            final var locationsInDecimal = locationsInDecimal();
-            for (final var location : locationsInDecimal)
+            var locationsInDecimal = locationsInDecimal();
+            for (var location : locationsInDecimal)
             {
                 referenced.add(Location.dm7(location));
             }
@@ -1191,16 +1191,16 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
      */
     public List<Loop> loops()
     {
-        final Map<Location, Integer> locations = new HashMap<>();
+        Map<Location, Integer> locations = new HashMap<>();
         var index = 0;
         Location last = null;
-        final List<Loop> loops = new ArrayList<>();
-        for (final var location : locationSequence())
+        List<Loop> loops = new ArrayList<>();
+        for (var location : locationSequence())
         {
-            final var startIndex = locations.get(location);
+            var startIndex = locations.get(location);
             if (startIndex != null && !location.equals(last))
             {
-                final var loop = new Loop();
+                var loop = new Loop();
                 loop.startIndex = startIndex;
                 loop.endIndex = index;
                 loop.loopAt = location;
@@ -1220,7 +1220,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
 
     public Segment middleSegment()
     {
-        final var first = size() / 2;
+        var first = size() / 2;
         var second = first + 1;
         if (first == 0)
         {
@@ -1235,12 +1235,12 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
 
     public Location midpoint()
     {
-        final var length = length();
-        final var midpoint = length.dividedBy(Count._2);
+        var length = length();
+        var midpoint = length.dividedBy(Count._2);
         var from = Distance.ZERO;
-        for (final var segment : segments())
+        for (var segment : segments())
         {
-            final var to = from.add(segment.length());
+            var to = from.add(segment.length());
             if (to.isGreaterThanOrEqualTo(midpoint))
             {
                 return segment.at(midpoint.minus(from));
@@ -1254,10 +1254,10 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         return null;
     }
 
-    public Polyline moved(final Heading heading, final Distance offset)
+    public Polyline moved(Heading heading, Distance offset)
     {
-        final var builder = new PolylineBuilder();
-        for (final var location : locationSequence())
+        var builder = new PolylineBuilder();
+        for (var location : locationSequence())
         {
             builder.add(location.moved(heading, offset));
         }
@@ -1276,16 +1276,16 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     /**
      * @return Set of overlapping (common) segments with the given polyline
      */
-    public Set<Segment> overlapping(final Polyline that)
+    public Set<Segment> overlapping(Polyline that)
     {
-        final Set<Segment> overlaps = new HashSet<>();
-        final Set<Segment> visited = new HashSet<>();
-        for (final var segment : segments())
+        Set<Segment> overlaps = new HashSet<>();
+        Set<Segment> visited = new HashSet<>();
+        for (var segment : segments())
         {
             visited.add(segment);
             visited.add(segment.reversed());
         }
-        for (final var segment : that.segments())
+        for (var segment : that.segments())
         {
             if (visited.contains(segment) || visited.contains(segment.reversed()))
             {
@@ -1305,11 +1305,11 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     /**
      * @return True if more than one point is shared between the two polylines
      */
-    public boolean overlaps(final Polyline that)
+    public boolean overlaps(Polyline that)
     {
         var overlap = 0;
-        final var locations = size() < 4 ? that.locations() : that.asLocationSet();
-        for (final var location : locationSequence())
+        var locations = size() < 4 ? that.locations() : that.asLocationSet();
+        for (var location : locationSequence())
         {
             if (locations.contains(location))
             {
@@ -1326,11 +1326,11 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     /**
      * Create a parallel Polyline at the left/right with distance of offset
      */
-    public Polyline parallel(final Heading heading, final Distance offset)
+    public Polyline parallel(Heading heading, Distance offset)
     {
-        final List<Location> locations = new ArrayList<>();
+        List<Location> locations = new ArrayList<>();
 
-        for (final var location : locationSequence())
+        for (var location : locationSequence())
         {
             locations.add(location.moved(heading, offset));
         }
@@ -1340,8 +1340,8 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
 
     public Polyline reversed()
     {
-        final var reversed = locationsInDecimal();
-        com.telenav.kivakit.core.kernel.language.primitives.Arrays.reverse(reversed);
+        var reversed = locationsInDecimal();
+        com.telenav.kivakit.kernel.language.primitives.Arrays.reverse(reversed);
         return new Polyline(reversed);
     }
 
@@ -1357,13 +1357,13 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     /**
      * @return The section of this polyline between the start and end distances
      */
-    public Polyline section(final Distance start, final Distance end)
+    public Polyline section(Distance start, Distance end)
     {
-        final var builder = new PolylineBuilder();
+        var builder = new PolylineBuilder();
         var distance = Distance.ZERO;
-        for (final var segment : segments())
+        for (var segment : segments())
         {
-            final var length = segment.approximateLength();
+            var length = segment.approximateLength();
             if (length.isGreaterThan(Distance.ZERO))
             {
                 if (builder.isEmpty())
@@ -1407,7 +1407,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     /**
      * @return The section of this polyline between the start and end index (inclusive)
      */
-    public PolylineSection section(final int startIndex, final int endIndex)
+    public PolylineSection section(int startIndex, int endIndex)
     {
         return new PolylineSection(this, startIndex, endIndex);
     }
@@ -1415,11 +1415,11 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     /**
      * @return The section of this polyline between the start and end locations (inclusive) in polyline order.
      */
-    public Polyline section(final Location start, final Location end)
+    public Polyline section(Location start, Location end)
     {
-        final var builder = new PolylineBuilder();
+        var builder = new PolylineBuilder();
         var started = false;
-        for (final var location : locationSequence())
+        for (var location : locationSequence())
         {
             if (!started && location.equals(start))
             {
@@ -1440,10 +1440,10 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     /**
      * @return This polyline sectioned into pieces no longer than maximumLength
      */
-    public List<PolylineSection> sections(final Distance maximumLength)
+    public List<PolylineSection> sections(Distance maximumLength)
     {
         // The sections to return
-        final List<PolylineSection> sections = new ArrayList<>();
+        List<PolylineSection> sections = new ArrayList<>();
 
         // Builder because we may need to create new locations in the shape
         var builder = new PolylineBuilder();
@@ -1453,7 +1453,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
 
         // Go through each segment in this polyline
         var startIndex = 0;
-        for (final var segment : segments())
+        for (var segment : segments())
         {
             // If the line has no start point yet,
             if (builder.isEmpty())
@@ -1463,20 +1463,20 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
             }
 
             // Get the segment length
-            final var length = segment.approximateLength();
+            var length = segment.approximateLength();
 
             // If the segment pushes us beyond the maximum length
             if (total.add(length).isGreaterThan(maximumLength))
             {
                 // the end index is the next location
-                final var endIndex = startIndex + builder.size();
+                var endIndex = startIndex + builder.size();
 
                 // add the final location where we reach the maximum length
-                final var cutAt = segment.at(maximumLength.minus(total));
+                var cutAt = segment.at(maximumLength.minus(total));
                 builder.add(cutAt);
 
                 // and add this completed section to the list.
-                final var line = builder.build();
+                var line = builder.build();
                 sections.add(new PolylineSection(line, startIndex, endIndex));
 
                 // Then, create a new builder with the remainder of the segment we cut
@@ -1525,7 +1525,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         return new AbstractList<>()
         {
             @Override
-            public Segment get(final int index)
+            public Segment get(int index)
             {
                 return segment(index);
             }
@@ -1541,10 +1541,10 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     public Location selfIntersection()
     {
         var i = 0;
-        for (final var a : segments())
+        for (var a : segments())
         {
             var j = 0;
-            for (final var b : segments())
+            for (var b : segments())
             {
                 if (Math.abs(j - i) > 1)
                 {
@@ -1567,11 +1567,11 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     {
         Segment previous = null;
         SegmentPair sharpest = null;
-        for (final var segment : segments())
+        for (var segment : segments())
         {
             if (previous != null)
             {
-                final var pair = new SegmentPair(previous, segment);
+                var pair = new SegmentPair(previous, segment);
                 if (sharpest == null || pair.angle().isGreaterThan(sharpest.angle()))
                 {
                     sharpest = pair;
@@ -1590,7 +1590,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
      * @see <a href= "http://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm">Ramer Douglas
      * Peucker</a>
      */
-    public Polyline simplified(final Distance tolerance)
+    public Polyline simplified(Distance tolerance)
     {
         return new PolylineSimplifier().simplify(this, tolerance);
     }
@@ -1601,12 +1601,12 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         return locationsInDecimal().length;
     }
 
-    public Polyline smooth(final Angle tolerance)
+    public Polyline smooth(Angle tolerance)
     {
         var smoothed = smoothOnce(tolerance);
         for (var iteration = 0; iteration < 2; iteration++)
         {
-            final var resmoothed = smoothed.smoothOnce(tolerance);
+            var resmoothed = smoothed.smoothOnce(tolerance);
             if (resmoothed.size() == smoothed.size())
             {
                 break;
@@ -1619,12 +1619,12 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     /**
      * @return The section of this polyline between the origin and destination points
      */
-    public Polyline snapAndSection(final Location origin, final Location destination)
+    public Polyline snapAndSection(Location origin, Location destination)
     {
-        final var snapper = new PolylineSnapper();
-        final var start = snapper.snap(this, origin);
-        final var end = snapper.snap(this, destination);
-        final var builder = new PolylineBuilder();
+        var snapper = new PolylineSnapper();
+        var start = snapper.snap(this, origin);
+        var end = snapper.snap(this, destination);
+        var builder = new PolylineBuilder();
         builder.add(start);
         for (var index = start.polylineIndex() + 1; index <= end.polylineIndex(); index++)
         {
@@ -1646,20 +1646,20 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     @Override
     public String toString()
     {
-        return new ObjectList<>(MapGeographyLimits.LOCATIONS_PER_POLYLINE).appendAll(locationSequence()).join(":");
+        return new ObjectList<>(GeographyLimits.LOCATIONS_PER_POLYLINE).appendAll(locationSequence()).join(":");
     }
 
     public List<PolylineSection> trisect()
     {
         // Sections to return
-        final List<PolylineSection> sections = new ArrayList<>();
+        List<PolylineSection> sections = new ArrayList<>();
 
         // If there are at least three segments,
         if (segmentCount().isGreaterThanOrEqualTo(Count._3))
         {
             // find the two split points
-            final var first = size() / 3;
-            final var second = first * 2;
+            var first = size() / 3;
+            var second = first * 2;
 
             // and then add the three sections
             sections.add(section(0, first));
@@ -1675,12 +1675,12 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         return sections;
     }
 
-    public final Angle turnAngleTo(final Polyline that)
+    public final Angle turnAngleTo(Polyline that)
     {
         return finalHeading().difference(that.initialHeading(), Chirality.CLOCKWISE);
     }
 
-    public final Angle turnAngleTo(final Polyline that, final Chirality chirality)
+    public final Angle turnAngleTo(Polyline that, Chirality chirality)
     {
         return finalHeading().difference(that.initialHeading(), chirality);
     }
@@ -1719,7 +1719,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
                 }
                 if (segment != null)
                 {
-                    final var next = new LocatedHeading(segment.midpoint(), segment.heading());
+                    var next = new LocatedHeading(segment.midpoint(), segment.heading());
                     if (segments.hasNext())
                     {
                         segment = segments.next();
@@ -1735,33 +1735,33 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         });
     }
 
-    public Polyline withAppended(final Location location)
+    public Polyline withAppended(Location location)
     {
-        final var builder = new PolylineBuilder();
+        var builder = new PolylineBuilder();
         builder.addAll(locationSequence());
         builder.add(location);
         return builder.build();
     }
 
-    public Polyline withFirstReplaced(final Location location)
+    public Polyline withFirstReplaced(Location location)
     {
-        final var locations = Arrays.copyOf(locationsInDecimal(), size());
+        var locations = Arrays.copyOf(locationsInDecimal(), size());
         locations[0] = expandBounds(location.asDm7Long());
         return new Polyline(locations);
     }
 
-    public Polyline withLastReplaced(final Location location)
+    public Polyline withLastReplaced(Location location)
     {
-        final var locations = Arrays.copyOf(locationsInDecimal(), size());
+        var locations = Arrays.copyOf(locationsInDecimal(), size());
         locations[size() - 1] = expandBounds(location.asLong());
         return new Polyline(locations);
     }
 
     public Polyline withoutDuplicates()
     {
-        final List<Location> deduplicated = new ArrayList<>();
+        List<Location> deduplicated = new ArrayList<>();
         Location last = null;
-        for (final var location : locationSequence())
+        for (var location : locationSequence())
         {
             // Avoid putting two duplicates in a row.
             if (last == null || !last.equals(location))
@@ -1783,13 +1783,13 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         return new Polyline(Arrays.copyOfRange(locationsInDecimal(), 0, size() - 1));
     }
 
-    protected long expandBounds(final long location)
+    protected long expandBounds(long location)
     {
-        final var latitude = Location.latitude(location);
+        var latitude = Location.latitude(location);
         topInDecimal = Math.max(topInDecimal, latitude);
         bottomInDecimal = Math.min(bottomInDecimal, latitude);
 
-        final var longitude = Location.longitude(location);
+        var longitude = Location.longitude(location);
         leftInDecimal = Math.min(leftInDecimal, longitude);
         rightInDecimal = Math.max(rightInDecimal, longitude);
 
@@ -1805,7 +1805,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     /**
      * @return The section of this polyline between the start and end index (inclusive)
      */
-    Polyline shape(final int startIndex, final int endIndex)
+    Polyline shape(int startIndex, int endIndex)
     {
         return new Polyline(Arrays.copyOfRange(locationsInDecimal(), startIndex, endIndex + 1));
     }
@@ -1816,10 +1816,10 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         var previousLatitudeInDm7 = Long.MIN_VALUE;
         var previousLongitudeInDm7 = Long.MIN_VALUE;
         var index = 0;
-        for (final var location : locationsInDecimal())
+        for (var location : locationsInDecimal())
         {
-            final var latitudeInDm7 = Location.latitude(location);
-            final var longitudeInDm7 = Location.longitude(location);
+            var latitudeInDm7 = Location.latitude(location);
+            var longitudeInDm7 = Location.longitude(location);
             if (index++ > 0)
             {
                 lengthInMillimeters += Location.equirectangularDistanceBetweenInMillimeters(
@@ -1831,19 +1831,19 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         return lengthInMillimeters;
     }
 
-    private long[] expandBounds(final long[] locations)
+    private long[] expandBounds(long[] locations)
     {
         ensure(locations.length >= 2);
-        for (final var location : locations)
+        for (var location : locations)
         {
             expandBounds(location);
         }
         return locations;
     }
 
-    private int minimum(final Distance[] distances)
+    private int minimum(Distance[] distances)
     {
-        final var minimum = Distance.MAXIMUM;
+        var minimum = Distance.MAXIMUM;
         var index = -1;
         for (var i = 0; i < distances.length; i++)
         {
@@ -1855,7 +1855,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         return index;
     }
 
-    private Segment segment(final int index)
+    private Segment segment(int index)
     {
         if (index < size())
         {
@@ -1864,14 +1864,14 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         throw new IndexOutOfBoundsException("No segment at index " + index);
     }
 
-    private Polyline smoothOnce(final Angle tolerance)
+    private Polyline smoothOnce(Angle tolerance)
     {
-        final var builder = new PolylineBuilder();
+        var builder = new PolylineBuilder();
         builder.add(get(0));
         for (var i = 1; i < size() - 1; i++)
         {
-            final var a = new Segment(get(i - 1), get(i));
-            final var b = new Segment(get(i), get(i + 1));
+            var a = new Segment(get(i - 1), get(i));
+            var b = new Segment(get(i), get(i + 1));
             if (a.heading().isClose(b.heading(), tolerance) || a.length().isLessThan(Distance.meters(20))
                     || b.length().isLessThan(Distance.meters(20)))
             {
@@ -1888,14 +1888,14 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
                 {
                     if (a.length().isGreaterThan(b.length()))
                     {
-                        final var start = a.at(a.length().minus(b.length()));
+                        var start = a.at(a.length().minus(b.length()));
                         builder.add(start);
                         builder.add(new Segment(start, a.end()).midpoint());
                         builder.add(b.midpoint());
                     }
                     else
                     {
-                        final var end = b.at(a.length());
+                        var end = b.at(a.length());
                         builder.add(a.midpoint());
                         builder.add(new Segment(b.start(), end).midpoint());
                         builder.add(end);

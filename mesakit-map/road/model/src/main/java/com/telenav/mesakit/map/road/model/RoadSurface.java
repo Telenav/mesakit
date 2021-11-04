@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.core.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
 
 public enum RoadSurface implements Quantizable
 {
@@ -27,9 +27,9 @@ public enum RoadSurface implements Quantizable
     POOR_CONDITION(2),
     NOT_APPLICABLE(3);
 
-    public static RoadSurface forIdentifier(final int identifier)
+    public static RoadSurface forIdentifier(int identifier)
     {
-        for (final var value : values())
+        for (var value : values())
         {
             if (value.identifier == identifier)
             {
@@ -41,7 +41,7 @@ public enum RoadSurface implements Quantizable
 
     private final int identifier;
 
-    RoadSurface(final int identifier)
+    RoadSurface(int identifier)
     {
         this.identifier = identifier;
     }

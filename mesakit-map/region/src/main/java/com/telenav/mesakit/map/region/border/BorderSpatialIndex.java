@@ -18,34 +18,34 @@
 
 package com.telenav.mesakit.map.region.border;
 
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.indexing.rtree.InteriorNode;
 import com.telenav.mesakit.map.geography.indexing.rtree.Leaf;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSettings;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndex;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramBorder;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.associations.UmlRelation;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 
 @UmlClassDiagram(diagram = DiagramBorder.class)
 @UmlRelation(label = "indexes", referent = Border.class, referentCardinality = "1+")
 public class BorderSpatialIndex<T extends Region<T>> extends RTreeSpatialIndex<Border<T>>
 {
-    public BorderSpatialIndex(final String objectName, final RTreeSettings settings)
+    public BorderSpatialIndex(String objectName, RTreeSettings settings)
     {
         super(objectName, settings);
     }
 
     @Override
-    public void add(final Border<T> element)
+    public void add(Border<T> element)
     {
         unsupported("BorderSpatialIndex only supports bulk loading of elements");
     }
 
     @Override
-    public Leaf<Border<T>> newLeaf(final InteriorNode<Border<T>> parent)
+    public Leaf<Border<T>> newLeaf(InteriorNode<Border<T>> parent)
     {
         return new BorderLeaf<>(this, parent);
     }

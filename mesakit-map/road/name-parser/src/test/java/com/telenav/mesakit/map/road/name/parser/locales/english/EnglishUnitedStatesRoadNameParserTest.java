@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.road.name.parser.locales.english;
 
+import com.telenav.kivakit.test.UnitTest;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.ParsedRoadName;
 import com.telenav.mesakit.map.road.name.parser.RoadNameParser;
-import com.telenav.kivakit.core.test.UnitTest;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -97,17 +97,17 @@ public class EnglishUnitedStatesRoadNameParserTest extends UnitTest
         test("US-99", "united states highway 99");
     }
 
-    private String normalize(final String string)
+    private String normalize(String string)
     {
         return string.replaceAll("[ ,'.]", "");
     }
 
-    private void test(final String expected, final String given)
+    private void test(String expected, String given)
     {
-        final var locale = MapLocale.ENGLISH_UNITED_STATES.get();
-        final var parser = RoadNameParser.get(locale);
+        var locale = MapLocale.ENGLISH_UNITED_STATES.get();
+        var parser = RoadNameParser.get(locale);
         assert parser != null;
-        final ParsedRoadName parsed = parser.parse(RoadName.forName(given));
+        ParsedRoadName parsed = parser.parse(RoadName.forName(given));
         ensureEqual(expected, parsed.toString());
         ensureEqual(normalize(given), normalize(parsed.asRawRoadName().name()));
         trace(given + " -> " + parsed);

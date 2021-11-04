@@ -18,6 +18,15 @@
 
 package com.telenav.mesakit.map.region.regions;
 
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
+import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.measurements.geographic.Area;
@@ -27,23 +36,14 @@ import com.telenav.mesakit.map.region.RegionIdentifier;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.border.cache.BorderCache;
-import com.telenav.mesakit.map.region.project.MapRegionLimits;
+import com.telenav.mesakit.map.region.project.RegionLimits;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.core.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode;
-import com.telenav.kivakit.core.kernel.language.strings.Strings;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 @UmlClassDiagram(diagram = DiagramRegions.class)
 public class State extends Region<State>
@@ -59,7 +59,7 @@ public class State extends Region<State>
         return type(State.class).all();
     }
 
-    public static Collection<State> all(final Matcher<State> matcher)
+    public static Collection<State> all(Matcher<State> matcher)
     {
         return type(State.class).matching(matcher);
     }
@@ -68,10 +68,10 @@ public class State extends Region<State>
     {
         if (borderCache == null)
         {
-            final var settings = new BorderCache.Settings<State>()
+            var settings = new BorderCache.Settings<State>()
                     .withType(State.class)
-                    .withMaximumObjects(MapRegionLimits.STATES)
-                    .withMaximumPolygonsPerObject(MapRegionLimits.POLYGONS_PER_STATE)
+                    .withMaximumObjects(RegionLimits.STATES)
+                    .withMaximumPolygonsPerObject(RegionLimits.POLYGONS_PER_STATE)
                     .withMinimumBorderArea(Area.squareMiles(5))
                     .withRegionExtractor(newExtractor())
                     .withRegionFactory((identity) -> identity.findOrCreateRegion(State.class));
@@ -81,27 +81,27 @@ public class State extends Region<State>
         return borderCache;
     }
 
-    public static State forIdentifier(final RegionIdentifier identifier)
+    public static State forIdentifier(RegionIdentifier identifier)
     {
         return type(State.class).forIdentifier(identifier);
     }
 
-    public static State forIdentity(final RegionIdentity identity)
+    public static State forIdentity(RegionIdentity identity)
     {
         return type(State.class).forIdentity(identity);
     }
 
-    public static State forLocation(final Location location)
+    public static State forLocation(Location location)
     {
         return type(State.class).forLocation(location);
     }
 
-    public static State forRegionCode(final RegionCode code)
+    public static State forRegionCode(RegionCode code)
     {
         return type(State.class).forRegionCode(code);
     }
 
-    public static SwitchParser.Builder<State> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<State> stateSwitchParser(String name, String description)
     {
         return SwitchParser.builder(State.class).name(name).converter(new Converter<>(LOGGER()))
                 .description(description);
@@ -109,7 +109,7 @@ public class State extends Region<State>
 
     private final List<LanguageIsoCode> languages;
 
-    public State(final Country country, final RegionInstance<State> instance)
+    public State(Country country, RegionInstance<State> instance)
     {
         super(country, instance.prefix(country));
         languages = country.languages();
@@ -120,12 +120,12 @@ public class State extends Region<State>
         return children(City.class);
     }
 
-    public boolean contains(final County county)
+    public boolean contains(County county)
     {
         return counties().contains(county);
     }
 
-    public boolean contains(final MetropolitanArea area)
+    public boolean contains(MetropolitanArea area)
     {
         return metropolitanAreas().contains(area);
     }
@@ -141,9 +141,9 @@ public class State extends Region<State>
         return (Country) parent();
     }
 
-    public County county(final RegionIdentity identity)
+    public County county(RegionIdentity identity)
     {
-        for (final var county : counties())
+        for (var county : counties())
         {
             if (county.identity().last().equals(identity.last()))
             {
@@ -165,9 +165,9 @@ public class State extends Region<State>
         return languages;
     }
 
-    public MetropolitanArea metropolitanArea(final RegionIdentity identifier)
+    public MetropolitanArea metropolitanArea(RegionIdentity identifier)
     {
-        for (final var metropolitanArea : metropolitanAreas())
+        for (var metropolitanArea : metropolitanAreas())
         {
             if (metropolitanArea.identity().last().equals(identifier.last()))
             {
@@ -211,7 +211,7 @@ public class State extends Region<State>
         return new BaseExtractor<>(LOGGER())
         {
             @Override
-            public State onExtract(final PbfWay way)
+            public State onExtract(PbfWay way)
             {
                 // Get name and ISO codes
                 var name = Region.name(way);
@@ -227,7 +227,7 @@ public class State extends Region<State>
                 var iso = isoCode(way);
                 if (iso == null)
                 {
-                    DEBUG().quibble("Way $ doesn't have any ISO code", way);
+                    DEBUG().glitch("Way $ doesn't have any ISO code", way);
                     return null;
                 }
 
@@ -236,46 +236,46 @@ public class State extends Region<State>
                     iso = iso.append(name.isoized());
                 }
 
-                final var mesakit = name;
+                var mesakit = name;
 
                 if (!iso.isState())
                 {
-                    DEBUG().quibble("Way $ doesn't have a state ISO code", way);
+                    DEBUG().glitch("Way $ doesn't have a state ISO code", way);
                     return null;
                 }
 
-                final var country = Country.forRegionCode(iso.first());
+                var country = Country.forRegionCode(iso.first());
                 if (country == null)
                 {
-                    DEBUG().quibble("Can't find country for ISO code $", iso);
+                    DEBUG().glitch("Can't find country for ISO code $", iso);
                     return null;
                 }
 
                 if (iso.size() != 2)
                 {
-                    DEBUG().quibble("Invalid state ISO code $", iso);
+                    DEBUG().glitch("Invalid state ISO code $", iso);
                     return null;
                 }
 
                 // Construct region identity
-                final var identity = new RegionIdentity(name.code())
+                var identity = new RegionIdentity(name.code())
                         .withIsoCode(iso.last().isoized())
                         .withMesaKitCode(mesakit.last().aonized());
 
                 if (!identity.isValid())
                 {
-                    DEBUG().quibble("Can't construct a valid region identity from $", way);
+                    DEBUG().glitch("Can't construct a valid region identity from $", way);
                     return null;
                 }
                 else
                 {
                     // Create new region so identity gets hierarchically populated and
                     // inserted into the RegionType cache for this region type
-                    final var instance = new RegionInstance<>(State.class)
+                    var instance = new RegionInstance<>(State.class)
                             .withIdentity(identity);
 
                     // Return either some old instance or the new one
-                    final var newRegion = new State(country, instance);
+                    var newRegion = new State(country, instance);
                     return ensureNotNull(forIdentity(newRegion.identity()));
                 }
             }

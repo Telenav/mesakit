@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.measurements;
 
+import com.telenav.kivakit.test.UnitTest;
 import com.telenav.mesakit.map.measurements.motion.Acceleration;
-import com.telenav.kivakit.core.test.UnitTest;
 import org.junit.Test;
 
 public class AccelerationTest extends UnitTest
@@ -27,7 +27,7 @@ public class AccelerationTest extends UnitTest
     @Test
     public void testNegative()
     {
-        final var negative = Acceleration.milesPerHourSquared(Byte.MIN_VALUE);
+        var negative = Acceleration.milesPerHourSquared(Byte.MIN_VALUE);
         ensure(negative.asMetersPerSecondSquared() < 0);
     }
 }

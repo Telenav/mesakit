@@ -18,17 +18,17 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
+import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompressedPolylineTest extends MapGeographyUnitTest
+public class CompressedPolylineTest extends GeographyUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -41,17 +41,17 @@ public class CompressedPolylineTest extends MapGeographyUnitTest
     @Test
     public void testSegment()
     {
-        final var locationConverter = new Location.DegreesConverter(LOGGER);
-        final var a = locationConverter.convert("47.61524,-122.32147");
-        final var b = locationConverter.convert("47.61409,-122.32146");
-        final var line = CompressedPolyline.fromLocationSequence(a, b);
+        var locationConverter = new Location.DegreesConverter(LOGGER);
+        var a = locationConverter.convert("47.61524,-122.32147");
+        var b = locationConverter.convert("47.61409,-122.32146");
+        var line = CompressedPolyline.fromLocationSequence(a, b);
         ensureEqual("47.61524,-122.32147:47.61409,-122.32146", line.toString());
     }
 
     private List<Location> locations()
     {
-        final List<Location> locations = new ArrayList<>();
-        final var locationConverter = new Location.DegreesConverter(LOGGER);
+        List<Location> locations = new ArrayList<>();
+        var locationConverter = new Location.DegreesConverter(LOGGER);
         locations.add(locationConverter.convert("47.0,-122.0"));
         locations.add(locationConverter.convert("47.0000015,-122.0000015"));
         locations.add(locationConverter.convert("47.6777477,-122.3204223"));
@@ -63,9 +63,9 @@ public class CompressedPolylineTest extends MapGeographyUnitTest
         return locations;
     }
 
-    private void testCompression(final List<Location> locations)
+    private void testCompression(List<Location> locations)
     {
-        final var line = CompressedPolyline.fromLocationSequence(locations);
+        var line = CompressedPolyline.fromLocationSequence(locations);
         ensureEqual(new Polyline(locations), line.decompress());
     }
 }

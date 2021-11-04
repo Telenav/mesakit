@@ -18,18 +18,18 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing;
 
-import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
-import com.telenav.mesakit.map.data.formats.pbf.processing.readers.SerialPbfReader;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessing;
-import com.telenav.kivakit.core.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.core.kernel.language.time.Time;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.language.values.mutable.MutableValue;
-import com.telenav.kivakit.core.kernel.messaging.Broadcaster;
-import com.telenav.kivakit.core.resource.Resourceful;
+import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.time.Time;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.mutable.MutableValue;
+import com.telenav.kivakit.kernel.messaging.Broadcaster;
+import com.telenav.kivakit.resource.Resourceful;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
+import com.telenav.mesakit.map.data.formats.pbf.processing.readers.SerialPbfReader;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessing;
 
 import java.util.Map;
 
@@ -47,31 +47,31 @@ import java.util.Map;
 @UmlRelation(label = "calls", referent = PbfDataProcessor.class)
 public interface PbfDataSource extends Resourceful, Broadcaster
 {
-    void expectedNodes(final Count nodes);
+    void expectedNodes(Count nodes);
 
-    void expectedRelations(final Count relations);
+    void expectedRelations(Count relations);
 
-    void expectedWays(final Count ways);
+    void expectedWays(Count ways);
 
     /**
      * @return The metadata record of this PBF data source
      */
     default Map<String, String> metadata()
     {
-        final var value = new MutableValue<Map<String, String>>(null);
-        final var reader = new SerialPbfReader(resource());
+        var value = new MutableValue<Map<String, String>>(null);
+        var reader = new SerialPbfReader(resource());
         reader.silence();
         reader.process(new PbfDataProcessor()
         {
             @Override
-            public void onMetadata(final Map<String, String> metadata)
+            public void onMetadata(Map<String, String> metadata)
             {
                 value.set(metadata);
                 throw new PbfStopProcessingException();
             }
 
             @Override
-            public Action onNode(final PbfNode node)
+            public Action onNode(PbfNode node)
             {
                 throw new PbfStopProcessingException();
             }
@@ -114,9 +114,9 @@ public interface PbfDataSource extends Resourceful, Broadcaster
      * source.
      */
     @UmlRelation(label = "collects")
-    default PbfDataStatistics process(final PbfDataProcessor processor)
+    default PbfDataStatistics process(PbfDataProcessor processor)
     {
-        final var start = Time.now();
+        var start = Time.now();
         onStart();
         try
         {

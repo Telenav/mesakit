@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.geography;
 
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ import java.util.List;
 @UmlClassDiagram(diagram = DiagramLocation.class)
 public interface LocationSequence
 {
-    static LocationSequence of(final List<Location> locations)
+    static LocationSequence of(List<Location> locations)
     {
         return () -> locations;
     }

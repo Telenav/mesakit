@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.core.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
 
 /**
  *
@@ -29,9 +29,9 @@ public enum OverpassUnderpassType implements Quantizable
     OVERPASS(1),
     UNDERPASS(2);
 
-    public static OverpassUnderpassType forIdentifier(final Integer identifier)
+    public static OverpassUnderpassType forIdentifier(Integer identifier)
     {
-        for (final var value : values())
+        for (var value : values())
         {
             if (value.identifier == identifier)
             {
@@ -43,7 +43,7 @@ public enum OverpassUnderpassType implements Quantizable
 
     private final int identifier;
 
-    OverpassUnderpassType(final int identifier)
+    OverpassUnderpassType(int identifier)
     {
         this.identifier = identifier;
     }

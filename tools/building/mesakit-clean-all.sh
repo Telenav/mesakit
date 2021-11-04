@@ -7,8 +7,15 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-source $KIVAKIT_FUNCTIONS
+source mesakit-library-functions.sh
+source mesakit-projects.sh
 
-clean_maven_repository $MESAKIT_HOME
+source mesakit-projects.sh
+
+for project_home in "${MESAKIT_PROJECT_HOMES[@]}"; do
+
+    clean_maven_repository "$project_home"
+
+done
 
 bash mesakit-clean.sh

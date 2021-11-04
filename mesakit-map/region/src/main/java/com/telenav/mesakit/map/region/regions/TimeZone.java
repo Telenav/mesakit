@@ -18,6 +18,12 @@
 
 package com.telenav.mesakit.map.region.regions;
 
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
+import com.telenav.kivakit.kernel.language.strings.Paths;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
 import com.telenav.mesakit.map.geography.Location;
@@ -29,14 +35,8 @@ import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.RegionType;
 import com.telenav.mesakit.map.region.border.Border;
 import com.telenav.mesakit.map.region.border.cache.BorderCache;
-import com.telenav.mesakit.map.region.project.MapRegionLimits;
+import com.telenav.mesakit.map.region.project.RegionLimits;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.core.kernel.language.strings.Paths;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.time.ZoneId;
 import java.util.Collection;
@@ -67,10 +67,10 @@ public class TimeZone extends Region<TimeZone>
     {
         if (borderCache == null)
         {
-            final var settings = new BorderCache.Settings<TimeZone>()
+            var settings = new BorderCache.Settings<TimeZone>()
                     .withType(TimeZone.class)
-                    .withMaximumObjects(MapRegionLimits.TIME_ZONES)
-                    .withMaximumPolygonsPerObject(MapRegionLimits.POLYGONS_PER_TIME_ZONE)
+                    .withMaximumObjects(RegionLimits.TIME_ZONES)
+                    .withMaximumPolygonsPerObject(RegionLimits.POLYGONS_PER_TIME_ZONE)
                     .withMinimumBorderArea(Area.squareMiles(5))
                     .withRegionExtractor(newExtractor())
                     .withRegionFactory((identity) -> identity.findOrCreateRegion(TimeZone.class));
@@ -79,12 +79,12 @@ public class TimeZone extends Region<TimeZone>
             {
                 @Override
                 protected void assignMultiPolygonIdentity(
-                        final PbfTagMap relationTags,
-                        final Collection<Border<TimeZone>> objects)
+                        PbfTagMap relationTags,
+                        Collection<Border<TimeZone>> objects)
                 {
                     if (relationTags.containsKey("code"))
                     {
-                        for (final var zone : objects)
+                        for (var zone : objects)
                         {
                             zone.region().name(relationTags.get("code"));
                         }
@@ -95,36 +95,38 @@ public class TimeZone extends Region<TimeZone>
         return borderCache;
     }
 
-    public static TimeZone forIdentity(final RegionIdentity identity)
+    public static TimeZone forIdentity(RegionIdentity identity)
     {
         return type(TimeZone.class).forIdentity(identity);
     }
 
-    public static TimeZone forLocation(final Location location)
+    public static TimeZone forLocation(Location location)
     {
         return type(TimeZone.class).forLocation(location);
     }
 
-    public static TimeZone forRegionCode(final RegionCode code)
+    public static TimeZone forRegionCode(RegionCode code)
     {
         return type(TimeZone.class).forRegionCode(code);
     }
 
-    public static SwitchParser.Builder<TimeZone> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<TimeZone> timeZoneSwitchParser(String name, String description)
     {
-        return SwitchParser.builder(TimeZone.class).name(name).converter(new Converter<>(LOGGER()))
+        return SwitchParser.builder(TimeZone.class)
+                .name(name)
+                .converter(new Converter<>(LOGGER()))
                 .description(description);
     }
 
-    public TimeZone(final RegionInstance<TimeZone> instance)
+    public TimeZone(RegionInstance<TimeZone> instance)
     {
         super(World.INSTANCE, instance.prefix("TimeZone"));
     }
 
     public ZoneId asZoneId()
     {
-        final var code = identity().mesakit().code();
-        final var zone = Paths.tail(code, "TimeZone_");
+        var code = identity().mesakit().code();
+        var zone = Paths.tail(code, "TimeZone_");
         if (zone != null)
         {
             return ZoneId.of(zone);
@@ -152,16 +154,16 @@ public class TimeZone extends Region<TimeZone>
         return new BaseExtractor<>(LOGGER())
         {
             @Override
-            public TimeZone onExtract(final PbfWay way)
+            public TimeZone onExtract(PbfWay way)
             {
-                final var code = code(way, "code");
+                var code = code(way, "code");
                 if (code == null)
                 {
-                    LOGGER.quibble("No code found for $", way);
+                    LOGGER.glitch("No code found for $", way);
                     return null;
                 }
 
-                final var identity = new RegionIdentity(code.first().code())
+                var identity = new RegionIdentity(code.first().code())
                         .withMesaKitCode(code.first().code());
                 return identity.findOrCreateRegion(TimeZone.class);
             }

@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
-import com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode;
+import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
+import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import org.junit.Test;
 
-public class LanguageTest extends MapRegionUnitTest
+public class LanguageTest extends RegionUnitTest
 {
     @Test
     public void test()

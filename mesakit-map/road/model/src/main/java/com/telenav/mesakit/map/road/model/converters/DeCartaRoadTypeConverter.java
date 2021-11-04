@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.road.model.converters;
 
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.data.conversion.string.primitive.IntegerConverter;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.map.road.model.DeCartaRoadType;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.data.conversion.string.primitive.IntegerConverter;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
 
 /**
  * @author Jianbo chen
@@ -30,20 +30,20 @@ public class DeCartaRoadTypeConverter extends BaseStringConverter<DeCartaRoadTyp
 {
     private final IntegerConverter integerConverter;
 
-    public DeCartaRoadTypeConverter(final Listener listener)
+    public DeCartaRoadTypeConverter(Listener listener)
     {
         super(listener);
         integerConverter = new IntegerConverter(listener);
     }
 
     @Override
-    protected DeCartaRoadType onConvertToObject(final String value)
+    protected DeCartaRoadType onToValue(String value)
     {
         if ("null".equalsIgnoreCase(value))
         {
             return null;
         }
-        final var converted = integerConverter.convert(value);
+        var converted = integerConverter.convert(value);
         return converted == null ? null : DeCartaRoadType.forType(converted);
     }
 }

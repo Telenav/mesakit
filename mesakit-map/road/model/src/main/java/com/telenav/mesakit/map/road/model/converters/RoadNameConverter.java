@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.road.model.converters;
 
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.map.road.model.RoadName;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.language.strings.Strings;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
 
 import java.text.Normalizer;
 import java.util.regex.Pattern;
@@ -30,13 +30,13 @@ public class RoadNameConverter extends BaseStringConverter<RoadName>
 {
     private static final Pattern SYMBOLS_AND_ACCENTS = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
 
-    public RoadNameConverter(final Listener listener)
+    public RoadNameConverter(Listener listener)
     {
         super(listener);
     }
 
     @Override
-    protected RoadName onConvertToObject(final String value)
+    protected RoadName onToValue(String value)
     {
         if ("null".equalsIgnoreCase(value))
         {
@@ -57,7 +57,7 @@ public class RoadNameConverter extends BaseStringConverter<RoadName>
         // We remove the degree' and 'german sharp s' characters, which cause parsing problems on
         // traffic client
         string = Strings.replaceAll(string.replace('\u00B0', 'o'), "\u00DF", "ss");
-        final var normalized = Normalizer.normalize(string, Normalizer.Form.NFD);
+        var normalized = Normalizer.normalize(string, Normalizer.Form.NFD);
         return SYMBOLS_AND_ACCENTS.matcher(normalized).replaceAll("");
     }
 }

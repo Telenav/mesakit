@@ -18,7 +18,9 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
-import com.telenav.kivakit.core.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
+import com.telenav.kivakit.kernel.language.values.level.Percent;
+import com.telenav.kivakit.ui.desktop.graphics.drawing.Drawable;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingHeight;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingWidth;
@@ -33,7 +35,7 @@ import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 
 import java.awt.Shape;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 
 /**
  * @author jonathanl (shibo)
@@ -45,12 +47,12 @@ public class MapPolyline extends LabeledMapShape
         return polyline(null, null);
     }
 
-    public static MapPolyline polyline(final Style style, final Polyline polyline)
+    public static MapPolyline polyline(Style style, Polyline polyline)
     {
         return new MapPolyline(style, polyline);
     }
 
-    public static MapPolyline polyline(final Style style)
+    public static MapPolyline polyline(Style style)
     {
         return new MapPolyline(style, null);
     }
@@ -63,25 +65,25 @@ public class MapPolyline extends LabeledMapShape
 
     private String centerLabel;
 
-    protected MapPolyline(final Style style, final Polyline polyline)
+    private Drawable fromArrowHead;
+
+    private Drawable toArrowHead;
+
+    protected MapPolyline(Style style, Polyline polyline)
     {
         super(style, null, null);
         this.polyline = polyline;
     }
 
-    protected MapPolyline(final MapPolyline that)
+    protected MapPolyline(MapPolyline that)
     {
         super(that);
         startLabel = that.startLabel;
         centerLabel = that.centerLabel;
         endLabel = that.endLabel;
         polyline = that.polyline;
-    }
-
-    @Override
-    public MapPolyline at(final DrawingPoint at)
-    {
-        return (MapPolyline) super.at(at);
+        fromArrowHead = that.fromArrowHead;
+        toArrowHead = that.toArrowHead;
     }
 
     @Override
@@ -97,9 +99,15 @@ public class MapPolyline extends LabeledMapShape
     }
 
     @Override
-    public Shape onDraw(final MapCanvas canvas)
+    public MapPolyline fattened(Percent percent)
     {
-        final var shapes = new ObjectList<Shape>();
+        return (MapPolyline) super.fattened(percent);
+    }
+
+    @Override
+    public Shape onDraw(MapCanvas canvas)
+    {
+        var shapes = new ObjectList<Shape>();
 
         shapes.add(canvas.drawPolyline(style(), polyline));
 
@@ -122,121 +130,141 @@ public class MapPolyline extends LabeledMapShape
     }
 
     @Override
-    public MapPolyline scaledBy(final double scaleFactor)
+    public MapPolyline scaledBy(double scaleFactor)
     {
         return unsupported();
     }
 
-    public MapPolyline withCenterLabel(final String text)
+    public MapPolyline withCenterLabel(String text)
     {
-        final var copy = copy();
+        var copy = copy();
         copy.centerLabel = text;
         return copy;
     }
 
     @Override
-    public MapPolyline withColors(final Style style)
+    public MapPolyline withColors(Style style)
     {
         return (MapPolyline) super.withColors(style);
     }
 
     @Override
-    public MapPolyline withDrawColor(final Color color)
+    public MapPolyline withDrawColor(Color color)
     {
         return (MapPolyline) super.withDrawColor(color);
     }
 
     @Override
-    public MapPolyline withDrawStrokeWidth(final Distance width)
+    public MapPolyline withDrawStrokeWidth(Distance width)
     {
         return (MapPolyline) super.withDrawStrokeWidth(width);
     }
 
     @Override
-    public MapPolyline withDrawStrokeWidth(final DrawingWidth width)
+    public MapPolyline withDrawStrokeWidth(DrawingWidth width)
     {
         return (MapPolyline) super.withDrawStrokeWidth(width);
     }
 
-    public MapPolyline withEndLabel(final String text)
+    public MapPolyline withEndLabel(String text)
     {
-        final var copy = copy();
+        var copy = copy();
         copy.endLabel = text;
         return copy;
     }
 
     @Override
-    public MapPolyline withFillColor(final Color color)
+    public MapPolyline withFillColor(Color color)
     {
         return (MapPolyline) super.withFillColor(color);
     }
 
     @Override
-    public MapPolyline withFillStrokeWidth(final Distance width)
+    public MapPolyline withFillStrokeWidth(Distance width)
     {
         return (MapPolyline) super.withFillStrokeWidth(width);
     }
 
     @Override
-    public MapPolyline withFillStrokeWidth(final DrawingWidth width)
+    public MapPolyline withFillStrokeWidth(DrawingWidth width)
     {
         return (MapPolyline) super.withFillStrokeWidth(width);
     }
 
-    @Override
-    public MapPolyline withLabel(final String label)
+    public MapPolyline withFromArrowHead(Drawable arrowHead)
     {
-        return (MapPolyline) super.withLabel(label);
+        var copy = copy();
+        copy.fromArrowHead = arrowHead;
+        return copy;
     }
 
     @Override
-    public MapPolyline withMargin(final int margin)
+    public MapPolyline withLabelText(String label)
+    {
+        return (MapPolyline) super.withLabelText(label);
+    }
+
+    @Override
+    public MapPolyline withLocation(DrawingPoint at)
+    {
+        return (MapPolyline) super.withLocation(at);
+    }
+
+    @Override
+    public MapPolyline withMargin(int margin)
     {
         return (MapPolyline) super.withMargin(margin);
     }
 
     @Override
-    public MapPolyline withOffset(final int dx, final int dy)
+    public MapPolyline withOffset(int dx, int dy)
     {
         return (MapPolyline) super.withOffset(dx, dy);
     }
 
-    public MapPolyline withPolyline(final Polyline polyline)
+    public MapPolyline withPolyline(Polyline polyline)
     {
-        final var copy = copy();
+        var copy = copy();
         copy.polyline = polyline;
         return copy;
     }
 
     @Override
-    public MapPolyline withRoundedLabelCorners(final DrawingLength corner)
+    public MapPolyline withRoundedLabelCorners(DrawingLength corner)
     {
         return (MapPolyline) super.withRoundedLabelCorners(corner);
     }
 
     @Override
-    public MapPolyline withRoundedLabelCorners(final DrawingWidth cornerWidth,
-                                               final DrawingHeight cornerHeight)
+    public MapPolyline withRoundedLabelCorners(DrawingWidth cornerWidth,
+                                               DrawingHeight cornerHeight)
     {
         return (MapPolyline) super.withRoundedLabelCorners(cornerWidth, cornerHeight);
     }
 
-    public MapPolyline withStartLabel(final String text)
+    public MapPolyline withStartLabel(String text)
     {
-        final var copy = copy();
+        var copy = copy();
         copy.startLabel = text;
         return copy;
     }
 
     @Override
-    public MapPolyline withStyle(final Style style)
+    public MapPolyline withStyle(Style style)
     {
         return (MapPolyline) super.withStyle(style);
     }
 
     @Override
-    public MapPolyline withTextColor(final Color color)
+    public MapPolyline withTextColor(Color color)
     {
         return (MapPolyline) super.withTextColor(color);
+    }
+
+    public MapPolyline withToArrowHead(Drawable arrowHead)
+    {
+        var copy = copy();
+        copy.toArrowHead = arrowHead;
+        return copy;
     }
 }

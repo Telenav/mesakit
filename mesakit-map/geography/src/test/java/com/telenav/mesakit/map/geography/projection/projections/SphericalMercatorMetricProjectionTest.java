@@ -26,7 +26,7 @@ import com.telenav.mesakit.map.geography.projection.MetricCoordinate;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import org.junit.Test;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 /**
  * @author jonathanl (shibo)
@@ -48,7 +48,7 @@ public class SphericalMercatorMetricProjectionTest
     @Test
     public void testToCoordinate()
     {
-        final var projection = new SphericalMercatorMetricProjection();
+        var projection = new SphericalMercatorMetricProjection();
         ensure(projection.toCoordinate(Location.ORIGIN).isCloseTo(METRIC_ORIGIN));
         ensure(projection.toCoordinate(Location.TOP_LEFT).isCloseTo(METRIC_TOP_LEFT));
         ensure(projection.toCoordinate(Location.BOTTOM_LEFT).isCloseTo(METRIC_BOTTOM_LEFT));
@@ -60,7 +60,7 @@ public class SphericalMercatorMetricProjectionTest
     @Test
     public void testToLocation()
     {
-        final var projection = new SphericalMercatorMetricProjection();
+        var projection = new SphericalMercatorMetricProjection();
         ensure(projection.toLocation(METRIC_ORIGIN).isClose(Location.ORIGIN, Distance.meters(1)));
         ensure(projection.toLocation(METRIC_TOP_LEFT).isClose(Location.TOP_LEFT, Distance.meters(1)));
         ensure(projection.toLocation(METRIC_BOTTOM_LEFT).isClose(Location.BOTTOM_LEFT, Distance.meters(1)));

@@ -18,25 +18,23 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing.filters;
 
-import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessingFilters;
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.interfaces.comparison.Filter;
+import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.collections.map.string.NameMap;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.interfaces.comparison.Filter;
-import com.telenav.kivakit.core.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.core.kernel.language.collections.map.string.NameMap;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessingFilters;
 
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 @UmlClassDiagram(diagram = DiagramPbfProcessingFilters.class)
 @UmlExcludeSuperTypes(Named.class)
@@ -44,11 +42,9 @@ public class RelationFilter implements Filter<PbfRelation>, Named
 {
     private static final NameMap<RelationFilter> relationFilterForName = new NameMap<>();
 
-    private static final Logger LOGGER = LoggerFactory.newLogger();
-
-    public static RelationFilter forName(final String name)
+    public static RelationFilter forName(String name)
     {
-        final var filter = relationFilterForName.get(name);
+        var filter = relationFilterForName.get(name);
         if (filter != null)
         {
             return filter;
@@ -56,27 +52,28 @@ public class RelationFilter implements Filter<PbfRelation>, Named
         return fail("Unrecognized relation filter '" + name + "'");
     }
 
-    public static SwitchParser.Builder<RelationFilter> relationFilter()
+    public static SwitchParser.Builder<RelationFilter> relationFilterSwitchParser(Listener listener)
     {
         PbfFilters.loadAll();
-        return switchParser("relation-filter", "The name of a relation filter:\n\n" + help() + "\n");
+        return relationFilterSwitchParser(listener, "relation-filter", "The name of a relation filter:\n\n" + help() + "\n");
     }
 
-    public static SwitchParser.Builder<RelationFilter> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<RelationFilter> relationFilterSwitchParser(Listener listener, String name,
+                                                                                  String description)
     {
         return SwitchParser.builder(RelationFilter.class).name(name).description(description)
-                .converter(new Converter(LOGGER));
+                .converter(new Converter(listener));
     }
 
     public static class Converter extends BaseStringConverter<RelationFilter>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected RelationFilter onConvertToObject(final String value)
+        protected RelationFilter onToValue(String value)
         {
             return forName(value);
         }
@@ -90,7 +87,7 @@ public class RelationFilter implements Filter<PbfRelation>, Named
 
     private final Set<String> included = new HashSet<>();
 
-    public RelationFilter(final String name, final String description)
+    public RelationFilter(String name, String description)
     {
         this.name = name;
         this.description = description;
@@ -98,11 +95,11 @@ public class RelationFilter implements Filter<PbfRelation>, Named
     }
 
     @Override
-    public boolean accepts(final PbfRelation relation)
+    public boolean accepts(PbfRelation relation)
     {
         // Ensure if we're including or excluding
-        final var include = !included.isEmpty();
-        final var exclude = !excluded.isEmpty();
+        var include = !included.isEmpty();
+        var exclude = !excluded.isEmpty();
 
         // Don't allow both options
         if (exclude && include)
@@ -134,12 +131,12 @@ public class RelationFilter implements Filter<PbfRelation>, Named
         return description;
     }
 
-    public void exclude(final String type)
+    public void exclude(String type)
     {
         excluded.add(type);
     }
 
-    public void include(final String type)
+    public void include(String type)
     {
         included.add(type);
     }
@@ -156,21 +153,21 @@ public class RelationFilter implements Filter<PbfRelation>, Named
         return name();
     }
 
-    protected boolean isExcluded(final PbfRelation relation)
+    protected boolean isExcluded(PbfRelation relation)
     {
         if (relation.hasKey("type"))
         {
-            final var type = relation.tagValue("type");
+            var type = relation.tagValue("type");
             return excluded.contains(type);
         }
         return false;
     }
 
-    protected boolean isIncluded(final PbfRelation relation)
+    protected boolean isIncluded(PbfRelation relation)
     {
         if (relation.hasKey("type"))
         {
-            final var type = relation.tagValue("type");
+            var type = relation.tagValue("type");
             return included.contains(type);
         }
         return false;
@@ -178,10 +175,10 @@ public class RelationFilter implements Filter<PbfRelation>, Named
 
     private static String help()
     {
-        final var help = new StringList();
-        for (final var name : relationFilterForName.keySet())
+        var help = new StringList();
+        for (var name : relationFilterForName.keySet())
         {
-            final var filter = relationFilterForName.get(name);
+            var filter = relationFilterForName.get(name);
             help.add(name + " - " + filter.description());
         }
         help.sort(Comparator.naturalOrder());

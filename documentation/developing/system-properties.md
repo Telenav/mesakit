@@ -1,4 +1,3 @@
-
 <a href="https://github.com/Telenav/mesakit">
 <img src="https://www.kivakit.org/images/github-32.png" srcset="https://www.kivakit.org/images/github-32-2x.png 2x"/>
 </a>
@@ -24,3 +23,4 @@ The following properties affect the function of MesaKit in useful ways.
 | System Property | Description |
 |-----------------|-------------|
 | **MESAKIT_RTREE_VISUAL_DEBUG** | Turns on visual debugging of RTree spatial indexes |
+| **MESAKIT_EDGE_CONFLATER_VISUAL_DEBUG** | Turns on visual debugging of edge conflation |

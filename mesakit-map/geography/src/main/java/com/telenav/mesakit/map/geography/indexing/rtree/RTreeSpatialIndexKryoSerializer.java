@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
+import com.telenav.kivakit.serialization.kryo.KryoSerializer;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
-import com.telenav.kivakit.core.serialization.kryo.KryoSerializationSession;
-import com.telenav.kivakit.core.serialization.kryo.KryoSerializer;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public abstract class RTreeSpatialIndexKryoSerializer<T extends Bounded & Intersectable> extends KryoSerializer<RTreeSpatialIndex>
@@ -40,16 +40,16 @@ public abstract class RTreeSpatialIndexKryoSerializer<T extends Bounded & Inters
     }
 
     @Override
-    public RTreeSpatialIndex<T> onRead(final KryoSerializationSession session)
+    public RTreeSpatialIndex<T> onRead(KryoSerializationSession session)
     {
-        final var settings = session.readObject(RTreeSettings.class);
-        final RTreeSpatialIndex<T> index = newSpatialIndex(settings);
+        var settings = session.readObject(RTreeSettings.class);
+        RTreeSpatialIndex<T> index = newSpatialIndex(settings);
         index.root = readNode(session, index, null);
         return index;
     }
 
     @Override
-    public void onWrite(final KryoSerializationSession session, final RTreeSpatialIndex index)
+    public void onWrite(KryoSerializationSession session, RTreeSpatialIndex index)
     {
         session.writeObject(index.settings());
         writeNode(session, index.root);
@@ -57,26 +57,26 @@ public abstract class RTreeSpatialIndexKryoSerializer<T extends Bounded & Inters
 
     protected abstract RTreeSpatialIndex newSpatialIndex(RTreeSettings settings);
 
-    protected Leaf readLeaf(final KryoSerializationSession session,
-                            final RTreeSpatialIndex index,
-                            final InteriorNode parent)
+    protected Leaf readLeaf(KryoSerializationSession session,
+                            RTreeSpatialIndex index,
+                            InteriorNode parent)
     {
-        final var leaf = new UncompressedLeaf(index, parent);
+        var leaf = new UncompressedLeaf(index, parent);
         leaf.elements = session.readList(type());
         return leaf;
     }
 
-    protected void writeLeaf(final KryoSerializationSession session, final Leaf<T> leaf)
+    protected void writeLeaf(KryoSerializationSession session, Leaf<T> leaf)
     {
         session.writeList(((UncompressedLeaf) leaf).elements, type());
     }
 
-    private InteriorNode readInteriorNode(final KryoSerializationSession session,
-                                          final RTreeSpatialIndex index,
-                                          final InteriorNode parent)
+    private InteriorNode readInteriorNode(KryoSerializationSession session,
+                                          RTreeSpatialIndex index,
+                                          InteriorNode parent)
     {
-        final var node = new InteriorNode(index, parent);
-        final int size = session.readObject(int.class);
+        var node = new InteriorNode(index, parent);
+        int size = session.readObject(int.class);
         for (var i = 0; i < size; i++)
         {
             node.children.add(readNode(session, index, node));
@@ -84,14 +84,14 @@ public abstract class RTreeSpatialIndexKryoSerializer<T extends Bounded & Inters
         return node;
     }
 
-    private Node readNode(final KryoSerializationSession session,
-                          final RTreeSpatialIndex index,
-                          final InteriorNode parent)
+    private Node readNode(KryoSerializationSession session,
+                          RTreeSpatialIndex index,
+                          InteriorNode parent)
     {
-        final var type = session.readObject(NodeType.class);
-        final long bottomLeft = session.readObject(long.class);
-        final long topRight = session.readObject(long.class);
-        final Node node;
+        var type = session.readObject(NodeType.class);
+        long bottomLeft = session.readObject(long.class);
+        long topRight = session.readObject(long.class);
+        Node node;
         switch (type)
         {
             case INTERIOR_NODE:
@@ -110,9 +110,9 @@ public abstract class RTreeSpatialIndexKryoSerializer<T extends Bounded & Inters
         return node;
     }
 
-    private void writeInteriorNode(final KryoSerializationSession session, final InteriorNode node)
+    private void writeInteriorNode(KryoSerializationSession session, InteriorNode node)
     {
-        final var size = node.children.size();
+        var size = node.children.size();
         session.writeObject(size);
         for (var i = 0; i < size; i++)
         {
@@ -120,7 +120,7 @@ public abstract class RTreeSpatialIndexKryoSerializer<T extends Bounded & Inters
         }
     }
 
-    private void writeNode(final KryoSerializationSession session, final Node node)
+    private void writeNode(KryoSerializationSession session, Node node)
     {
         if (node instanceof InteriorNode)
         {

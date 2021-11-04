@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelTags;
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelTags;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.HashMap;
@@ -39,17 +39,15 @@ public class PbfTagPatternFilter implements PbfTagFilter
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static final SwitchParser.Builder<PbfTagPatternFilter> TAG_FILTER =
-            switchParser("tag-filter", "The regular expression used to filter tags by key");
-
     private static final Debug DEBUG = new Debug(LOGGER);
 
-    public static PbfTagPatternFilter forPattern(final String pattern)
+    public static PbfTagPatternFilter forPattern(String pattern)
     {
         return new PbfTagPatternFilter(pattern);
     }
 
-    public static SwitchParser.Builder<PbfTagPatternFilter> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<PbfTagPatternFilter> tagFilterSwitchParser(String name,
+                                                                                  String description)
     {
         return SwitchParser.builder(PbfTagPatternFilter.class)
                 .name(name)
@@ -57,15 +55,20 @@ public class PbfTagPatternFilter implements PbfTagFilter
                 .converter(new Converter(LOGGER));
     }
 
+    public static SwitchParser.Builder<PbfTagPatternFilter> tagFilterSwitchParser()
+    {
+        return tagFilterSwitchParser("tag-filter", "The regular expression used to filter tags by key");
+    }
+
     public static class Converter extends BaseStringConverter<PbfTagPatternFilter>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected PbfTagPatternFilter onConvertToObject(final String value)
+        protected PbfTagPatternFilter onToValue(String value)
         {
             return forPattern(value);
         }
@@ -75,18 +78,18 @@ public class PbfTagPatternFilter implements PbfTagFilter
 
     private final Map<String, Boolean> filteredTags = new HashMap<>();
 
-    public PbfTagPatternFilter(final String pattern)
+    public PbfTagPatternFilter(String pattern)
     {
         this.pattern = Pattern.compile(pattern);
     }
 
     @Override
-    public boolean accepts(final Tag tag)
+    public boolean accepts(Tag tag)
     {
         var accepted = filteredTags.get(tag.getKey());
         if (accepted == null)
         {
-            final var matcher = pattern.matcher(tag.getKey());
+            var matcher = pattern.matcher(tag.getKey());
             accepted = matcher.matches();
             filteredTags.put(tag.getKey(), accepted);
             if (!accepted)
@@ -104,8 +107,8 @@ public class PbfTagPatternFilter implements PbfTagFilter
 
     public Set<String> rejectedTags()
     {
-        final Set<String> rejectedTags = new HashSet<>();
-        for (final var entry : filteredTags.entrySet())
+        Set<String> rejectedTags = new HashSet<>();
+        for (var entry : filteredTags.entrySet())
         {
             if (!entry.getValue())
             {

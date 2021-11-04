@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
-import com.telenav.kivakit.core.test.UnitTest;
+import com.telenav.kivakit.test.UnitTest;
 import org.junit.Test;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
@@ -30,13 +30,13 @@ public class TagMapTest extends UnitTest
     @Test
     public void test()
     {
-        final var tags = tags("a", "b", "c", "d", "e", "1");
-        final var map = PbfTagMap.create();
+        var tags = tags("a", "b", "c", "d", "e", "1");
+        var map = PbfTagMap.create();
         ensure(map.isEmpty());
         map.putAll(tags);
         ensure(!map.isEmpty());
         ensure(map.size() == 3);
-        final var keys = map.keys();
+        var keys = map.keys();
         ensure(keys.hasNext());
         ensure(keys.next().equals("a"));
         ensure(keys.hasNext());
@@ -60,17 +60,17 @@ public class TagMapTest extends UnitTest
     @Test
     public void testSplit()
     {
-        final var tags = PbfTagMap.from(tags("x", "a:bar;c:"));
-        final var values = tags.valueSplit("x");
+        var tags = PbfTagMap.from(tags("x", "a:bar;c:"));
+        var values = tags.valueSplit("x");
         ensureEqual("a", values.get(0));
         ensureEqual("bar", values.get(1));
         ensureEqual("c", values.get(2));
         ensureEqual("", values.get(3));
     }
 
-    private List<Tag> tags(final String... pairs)
+    private List<Tag> tags(String... pairs)
     {
-        final List<Tag> tags = new ArrayList<>();
+        List<Tag> tags = new ArrayList<>();
         for (var i = 0; i < pairs.length; i += 2)
         {
             tags.add(new Tag(pairs[i], pairs[i + 1]));

@@ -21,14 +21,14 @@ package com.telenav.mesakit.map.region;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
+import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.County;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
 import org.junit.Test;
 
-public class CountyTest extends MapRegionUnitTest
+public class CountyTest extends RegionUnitTest
 {
     @Test
     public void testAttributes()
@@ -46,7 +46,7 @@ public class CountyTest extends MapRegionUnitTest
         ensureEqual("United_States-Maryland-County_Washington", county.identity().mesakit().code());
         ensureEqual("Washington", county.name());
 
-        final var metro = MetropolitanArea.forLocation(Location.degrees(38.9083212, -77.0395367));
+        var metro = MetropolitanArea.forLocation(Location.degrees(38.9083212, -77.0395367));
         ensureEqual("US-MD-METROWASHINGTON", metro.identity().iso().code());
         ensureEqual("United_States-Maryland-Metro_Washington", metro.identity().mesakit().code());
     }
@@ -54,8 +54,8 @@ public class CountyTest extends MapRegionUnitTest
     @Test
     public void testDC()
     {
-        final var location = new Location(Latitude.degrees(38.910861), Longitude.degrees(-77.039704));
-        final var state = State.forLocation(location);
+        var location = new Location(Latitude.degrees(38.910861), Longitude.degrees(-77.039704));
+        var state = State.forLocation(location);
         ensureEqual(Country.UNITED_STATES.DISTRICT_OF_COLUMBIA, state);
         ensureEqual("United_States-District_of_Columbia", state.identity().mesakit().code());
     }
@@ -79,7 +79,7 @@ public class CountyTest extends MapRegionUnitTest
     @Test
     public void testSpecialCharacters()
     {
-        final var location = Location.degrees(18.3616778, -66.1814385);
+        var location = Location.degrees(18.3616778, -66.1814385);
         final County county = County.forLocation(location);
         ensureEqual("US-PR-COUNTYBAYAMN", county.identity().iso().code());
         ensureEqual("United_States-Puerto_Rico-County_Bayamón", county.identity().mesakit().code());

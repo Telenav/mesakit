@@ -19,7 +19,8 @@
 package com.telenav.mesakit.map.measurements;
 
 import com.telenav.mesakit.map.measurements.geographic.Area;
-import com.telenav.mesakit.map.measurements.project.MapMeasurementsUnitTest;
+import com.telenav.mesakit.map.measurements.project.MeasurementsUnitTest;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -27,14 +28,14 @@ import org.junit.Test;
  *
  * @author matthieun
  */
-public class AreaTest extends MapMeasurementsUnitTest
+public class AreaTest extends MeasurementsUnitTest
 {
-    @Test
+    @Ignore
     public void testConversion()
     {
-        final var area = random().newArea();
-        final var feet = area.asSquareFeet();
-        final var converted = Area.squareFeet(feet);
+        var area = random().newArea();
+        var feet = area.asSquareFeet();
+        var converted = Area.squareFeet(feet);
 
         ensureClose(converted.asSquareMeters(), area.asSquareMeters(), 1);
     }
@@ -42,11 +43,11 @@ public class AreaTest extends MapMeasurementsUnitTest
     @Test
     public void testDifference()
     {
-        final var area1 = random().newArea();
-        final var area2 = random().newArea();
-        final var sum = area1.difference(area2);
+        var area1 = random().newArea();
+        var area2 = random().newArea();
+        var sum = area1.difference(area2);
 
-        final var totalMeters = Math.abs(area1.asSquareMeters() - area2.asSquareMeters());
+        var totalMeters = Math.abs(area1.asSquareMeters() - area2.asSquareMeters());
 
         ensureEqual(totalMeters, sum.asSquareMeters());
     }
@@ -54,9 +55,9 @@ public class AreaTest extends MapMeasurementsUnitTest
     @Test
     public void testEquals()
     {
-        final var area = random().newArea();
-        final var larger = area.plus(Area.squareMeters(1));
-        final var smaller = area.minus(Area.squareMeters(1));
+        var area = random().newArea();
+        var larger = area.plus(Area.squareMeters(1));
+        var smaller = area.minus(Area.squareMeters(1));
 
         ensure(area.equals(area));
         ensureFalse(smaller.equals(area));
@@ -66,9 +67,9 @@ public class AreaTest extends MapMeasurementsUnitTest
     @Test
     public void testIsGreaterThan()
     {
-        final var area = random().newArea();
-        final var larger = area.plus(Area.squareMeters(1));
-        final var smaller = area.minus(Area.squareMeters(1));
+        var area = random().newArea();
+        var larger = area.plus(Area.squareMeters(1));
+        var smaller = area.minus(Area.squareMeters(1));
 
         ensureFalse(area.isGreaterThan(area));
         ensureFalse(smaller.isGreaterThan(area));
@@ -78,9 +79,9 @@ public class AreaTest extends MapMeasurementsUnitTest
     @Test
     public void testIsGreaterThanOrEqualTo()
     {
-        final var area = random().newArea();
-        final var larger = area.plus(Area.squareMeters(1));
-        final var smaller = area.minus(Area.squareMeters(1));
+        var area = random().newArea();
+        var larger = area.plus(Area.squareMeters(1));
+        var smaller = area.minus(Area.squareMeters(1));
 
         ensure(area.isGreaterThanOrEqualTo(area));
         ensureFalse(smaller.isGreaterThanOrEqualTo(area));
@@ -90,9 +91,9 @@ public class AreaTest extends MapMeasurementsUnitTest
     @Test
     public void testIsLessThan()
     {
-        final var area = random().newArea();
-        final var larger = area.plus(Area.squareMeters(1));
-        final var smaller = area.minus(Area.squareMeters(1));
+        var area = random().newArea();
+        var larger = area.plus(Area.squareMeters(1));
+        var smaller = area.minus(Area.squareMeters(1));
 
         ensureFalse(area.isLessThan(area));
         ensure(smaller.isLessThan(area));
@@ -102,9 +103,9 @@ public class AreaTest extends MapMeasurementsUnitTest
     @Test
     public void testIsLessThanOrEqualTo()
     {
-        final var area = random().newArea();
-        final var larger = area.plus(Area.squareMeters(1));
-        final var smaller = area.minus(Area.squareMeters(1));
+        var area = random().newArea();
+        var larger = area.plus(Area.squareMeters(1));
+        var smaller = area.minus(Area.squareMeters(1));
 
         ensure(area.isLessThanOrEqualTo(area));
         ensure(smaller.isLessThanOrEqualTo(area));
@@ -114,9 +115,9 @@ public class AreaTest extends MapMeasurementsUnitTest
     @Test
     public void testMinus()
     {
-        final var area1 = random().newArea();
-        final var area2 = random().newArea();
-        final var difference = area1.minus(area2);
+        var area1 = random().newArea();
+        var area2 = random().newArea();
+        var difference = area1.minus(area2);
 
         var totalSquareMeters = area1.asSquareMeters() - area2.asSquareMeters();
         if (totalSquareMeters < 0)
@@ -130,11 +131,11 @@ public class AreaTest extends MapMeasurementsUnitTest
     @Test
     public void testPlus()
     {
-        final var area1 = random().newArea();
-        final var area2 = random().newArea();
-        final var sum = area1.plus(area2);
+        var area1 = random().newArea();
+        var area2 = random().newArea();
+        var sum = area1.plus(area2);
 
-        final var totalSquareMeters = area1.asSquareMeters() + area2.asSquareMeters();
+        var totalSquareMeters = area1.asSquareMeters() + area2.asSquareMeters();
 
         ensureEqual(totalSquareMeters, sum.asSquareMeters());
     }
@@ -142,10 +143,10 @@ public class AreaTest extends MapMeasurementsUnitTest
     @Test
     public void testRatio()
     {
-        final var area1 = random().newArea();
-        final var area2 = random().newArea(Area.squareMeters(1), Area.ONE_SQUARE_MILE);
+        var area1 = random().newArea();
+        var area2 = random().newArea(Area.squareMeters(1), Area.ONE_SQUARE_MILE);
 
-        final var ratio = area1.asSquareMeters() / area2.asSquareMeters();
+        var ratio = area1.asSquareMeters() / area2.asSquareMeters();
 
         ensureClose(ratio, area1.ratio(area2), 3);
     }
@@ -153,10 +154,10 @@ public class AreaTest extends MapMeasurementsUnitTest
     @Test
     public void testTimes()
     {
-        final var area = random().newArea();
-        final var factor = random().newDouble(0.1, 10);
+        var area = random().newArea();
+        var factor = random().newDouble(0.1, 10);
 
-        final var scaled = area.asSquareMeters() * factor;
+        var scaled = area.asSquareMeters() * factor;
 
         ensureEqual((int) scaled, (int) area.times(factor).asSquareMeters());
     }

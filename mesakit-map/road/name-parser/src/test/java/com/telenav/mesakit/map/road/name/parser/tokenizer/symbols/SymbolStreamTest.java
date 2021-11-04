@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.name.parser.tokenizer.symbols;
 
-import com.telenav.kivakit.core.test.UnitTest;
+import com.telenav.kivakit.test.UnitTest;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -28,7 +28,7 @@ public class SymbolStreamTest extends UnitTest
     @Test
     public void test()
     {
-        final var in = new SymbolStream(SymbolList.of(" North   125th  Street "));
+        var in = new SymbolStream(SymbolList.of(" North   125th  Street "));
         in.skipAnyWhiteSpace();
         ensure(in.matches("North"));
         ensure(in.matches(Symbol.WHITESPACE));

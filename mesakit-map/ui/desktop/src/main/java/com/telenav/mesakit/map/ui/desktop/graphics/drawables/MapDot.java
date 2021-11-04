@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
+import com.telenav.kivakit.kernel.language.values.level.Percent;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Dot;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingHeight;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
@@ -33,8 +34,6 @@ import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 
 import java.awt.Shape;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.unsupported;
-
 /**
  * @author jonathanl (shibo)
  */
@@ -45,12 +44,12 @@ public class MapDot extends LabeledMapShape
         return dot(null, null, null, null);
     }
 
-    public static MapDot dot(final Style style, final Location at, final Distance radius, final String label)
+    public static MapDot dot(Style style, Location at, Distance radius, String label)
     {
         return new MapDot(style, at, radius, label);
     }
 
-    public static MapDot dot(final Style style)
+    public static MapDot dot(Style style)
     {
         return new MapDot(style, null, null, null);
     }
@@ -59,23 +58,17 @@ public class MapDot extends LabeledMapShape
 
     private DrawingLength coordinateRadius;
 
-    protected MapDot(final Style style, final Location at, final Distance radius, final String label)
+    protected MapDot(Style style, Location at, Distance radius, String label)
     {
         super(style, at, label);
         this.radius = radius;
     }
 
-    protected MapDot(final MapDot that)
+    protected MapDot(MapDot that)
     {
         super(that);
         radius = that.radius;
         coordinateRadius = that.coordinateRadius;
-    }
-
-    @Override
-    public MapDot at(final DrawingPoint at)
-    {
-        return (MapDot) super.at(at);
     }
 
     /**
@@ -96,129 +89,141 @@ public class MapDot extends LabeledMapShape
     }
 
     @Override
-    public Shape onDraw(final MapCanvas canvas)
+    public Shape onDraw(MapCanvas canvas)
     {
-        final var radius = coordinateRadius != null
+        var radius = coordinateRadius != null
                 ? coordinateRadius
                 : canvas.toDrawing(this.radius);
 
-        final var dot = Dot.dot()
+        var dot = Dot.dot()
                 .withRadius(radius)
-                .at(at())
+                .withLocation(withLocation())
                 .draw(canvas);
 
-        final var label = super.onDraw(canvas);
+        var label = super.onDraw(canvas);
 
         return Java2dShapes.combine(dot, label);
     }
 
     @Override
-    public MapDot scaledBy(final double scaleFactor)
+    public MapDot scaledBy(Percent scaleFactor)
     {
-        return unsupported();
+        return copy().withRadius(radius.times(scaleFactor));
     }
 
     @Override
-    public MapDot withColors(final Style style)
+    public MapDot scaledBy(double scaleFactor)
+    {
+        return copy().withRadius(radius.times(scaleFactor));
+    }
+
+    @Override
+    public MapDot withColors(Style style)
     {
         return (MapDot) super.withColors(style);
     }
 
     @Override
-    public MapDot withDrawColor(final Color color)
+    public MapDot withDrawColor(Color color)
     {
         return (MapDot) super.withDrawColor(color);
     }
 
     @Override
-    public MapDot withDrawStrokeWidth(final DrawingWidth width)
+    public MapDot withDrawStrokeWidth(DrawingWidth width)
     {
         return (MapDot) super.withDrawStrokeWidth(width);
     }
 
     @Override
-    public MapDot withDrawStrokeWidth(final Distance width)
+    public MapDot withDrawStrokeWidth(Distance width)
     {
         return (MapDot) super.withDrawStrokeWidth(width);
     }
 
     @Override
-    public MapDot withFillColor(final Color color)
+    public MapDot withFillColor(Color color)
     {
         return (MapDot) super.withFillColor(color);
     }
 
     @Override
-    public MapDot withFillStrokeWidth(final Distance width)
+    public MapDot withFillStrokeWidth(Distance width)
     {
         return (MapDot) super.withFillStrokeWidth(width);
     }
 
     @Override
-    public MapDot withFillStrokeWidth(final DrawingWidth width)
+    public MapDot withFillStrokeWidth(DrawingWidth width)
     {
         return (MapDot) super.withFillStrokeWidth(width);
     }
 
     @Override
-    public MapDot withLabel(final String label)
+    public MapDot withLabelText(String label)
     {
-        return (MapDot) super.withLabel(label);
+        return (MapDot) super.withLabelText(label);
     }
 
     @Override
-    public MapDot withLocation(final Location at)
+    public MapDot withLocation(DrawingPoint at)
     {
         return (MapDot) super.withLocation(at);
     }
 
     @Override
-    public MapDot withMargin(final int margin)
+    public MapDot withLocation(Location at)
+    {
+        return (MapDot) super.withLocation(at);
+    }
+
+    @Override
+    public MapDot withMargin(int margin)
     {
         return (MapDot) super.withMargin(margin);
     }
 
     @Override
-    public MapDot withOffset(final int dx, final int dy)
+    public MapDot withOffset(int dx, int dy)
     {
         return (MapDot) super.withOffset(dx, dy);
     }
 
-    public MapDot withRadius(final Distance radius)
+    public MapDot withRadius(Distance radius)
     {
-        final var copy = copy();
+        var copy = copy();
         copy.radius = radius;
         return copy;
     }
 
-    public MapDot withRadius(final DrawingLength radius)
+    public MapDot withRadius(DrawingLength radius)
     {
-        final var copy = copy();
+        var copy = copy();
         copy.coordinateRadius = radius;
         return copy;
     }
 
     @Override
-    public MapDot withRoundedLabelCorners(final DrawingLength corner)
+    public MapDot withRoundedLabelCorners(DrawingLength corner)
     {
         return (MapDot) super.withRoundedLabelCorners(corner);
     }
 
     @Override
-    public MapDot withRoundedLabelCorners(final DrawingWidth cornerWidth,
-                                          final DrawingHeight cornerHeight)
+    public MapDot withRoundedLabelCorners(DrawingWidth cornerWidth,
+                                          DrawingHeight cornerHeight)
     {
         return (MapDot) super.withRoundedLabelCorners(cornerWidth, cornerHeight);
     }
 
     @Override
-    public MapDot withStyle(final Style style)
+    public MapDot withStyle(Style style)
     {
         return (MapDot) super.withStyle(style);
     }
 
     @Override
-    public MapDot withTextColor(final Color color)
+    public MapDot withTextColor(Color color)
     {
         return (MapDot) super.withTextColor(color);
     }

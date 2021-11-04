@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.core.kernel.language.collections.map.BaseMap;
+import com.telenav.kivakit.kernel.language.collections.map.BaseMap;
 
 /**
  * An exit number is a name rather than a number because of exits like "21a".
@@ -29,20 +29,20 @@ public class ExitNumber
             RoadLimits.EXIT_NUMBERS)
     {
         @Override
-        protected ExitNumber onInitialize(final String identifier)
+        protected ExitNumber onInitialize(String identifier)
         {
             return new ExitNumber(identifier);
         }
     };
 
-    public static ExitNumber forIdentifier(final String identifier)
+    public static ExitNumber forIdentifier(String identifier)
     {
         return forIdentifier.getOrCreate(identifier);
     }
 
     private final String identifier;
 
-    private ExitNumber(final String identifier)
+    private ExitNumber(String identifier)
     {
         this.identifier = identifier;
     }

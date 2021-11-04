@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline.Intersection;
 import com.telenav.mesakit.map.geography.shape.segment.Segment;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
@@ -42,12 +42,12 @@ public class PolylineBuilder
     private boolean hasDuplicates;
 
     @SuppressWarnings("UnusedReturnValue")
-    public PolylineBuilder add(final double latitude, final double longitude)
+    public PolylineBuilder add(double latitude, double longitude)
     {
         return add(Location.degrees(latitude, longitude));
     }
 
-    public PolylineBuilder add(final Location location)
+    public PolylineBuilder add(Location location)
     {
         if (location != null)
         {
@@ -62,16 +62,16 @@ public class PolylineBuilder
     }
 
     @SuppressWarnings("UnusedReturnValue")
-    public PolylineBuilder addAll(final Iterable<Location> locations)
+    public PolylineBuilder addAll(Iterable<Location> locations)
     {
-        for (final var location : locations)
+        for (var location : locations)
         {
             add(location);
         }
         return this;
     }
 
-    public PolylineBuilder addAll(final Iterator<Location> locations)
+    public PolylineBuilder addAll(Iterator<Location> locations)
     {
         while (locations.hasNext())
         {
@@ -81,10 +81,10 @@ public class PolylineBuilder
     }
 
     @SuppressWarnings("UnusedReturnValue")
-    public PolylineBuilder addAllButFirst(final Iterable<Location> locations)
+    public PolylineBuilder addAllButFirst(Iterable<Location> locations)
     {
         var first = true;
-        for (final var location : locations)
+        for (var location : locations)
         {
             if (!first)
             {
@@ -96,10 +96,10 @@ public class PolylineBuilder
     }
 
     @SuppressWarnings("UnusedReturnValue")
-    public PolylineBuilder addAllButLast(final Iterable<Location> locations)
+    public PolylineBuilder addAllButLast(Iterable<Location> locations)
     {
         Location previous = null;
-        for (final var location : locations)
+        for (var location : locations)
         {
             if (previous != null)
             {
@@ -111,9 +111,9 @@ public class PolylineBuilder
     }
 
     @SuppressWarnings("UnusedReturnValue")
-    public PolylineBuilder addAllUnique(final Iterable<Location> locations)
+    public PolylineBuilder addAllUnique(Iterable<Location> locations)
     {
-        for (final var location : locations)
+        for (var location : locations)
         {
             addUnique(location);
         }
@@ -129,14 +129,14 @@ public class PolylineBuilder
      * and a modified boolean. If the modified boolean is true, a location was added to this polyline. If the modified
      * boolean is false, an existing location on this polyline was reused and no new location was added.
      */
-    public Intersection addIntersectionWith(final Segment segment, final Distance maximumSnapDistance)
+    public Intersection addIntersectionWith(Segment segment, Distance maximumSnapDistance)
     {
         // Go through line segments
         var index = 0;
-        for (final var current : segments())
+        for (var current : segments())
         {
             // If there's an intersection between the given segment and the current one
-            final var intersection = current.intersection(segment);
+            var intersection = current.intersection(segment);
             if (intersection != null)
             {
                 // If the intersection is close enough to the end
@@ -165,10 +165,10 @@ public class PolylineBuilder
     /**
      * Adds all locations except the first one
      */
-    public PolylineBuilder addTail(final Iterable<Location> locations)
+    public PolylineBuilder addTail(Iterable<Location> locations)
     {
         var first = true;
-        for (final var location : locations)
+        for (var location : locations)
         {
             if (!first)
             {
@@ -180,7 +180,7 @@ public class PolylineBuilder
     }
 
     @SuppressWarnings("UnusedReturnValue")
-    public boolean addUnique(final Location location)
+    public boolean addUnique(Location location)
     {
         if (location != null && !location.equals(last))
         {
@@ -225,7 +225,7 @@ public class PolylineBuilder
         return size() == 2 && locations.get(0).equals(locations.get(1));
     }
 
-    public void prepend(final Location location)
+    public void prepend(Location location)
     {
         locations.add(0, location);
     }
@@ -235,7 +235,7 @@ public class PolylineBuilder
         return new AbstractList<>()
         {
             @Override
-            public Segment get(final int index)
+            public Segment get(int index)
             {
                 return segment(index);
             }
@@ -248,7 +248,7 @@ public class PolylineBuilder
         };
     }
 
-    public void set(final int index, final Location location)
+    public void set(int index, Location location)
     {
         locations.set(index, location);
     }
@@ -268,12 +268,12 @@ public class PolylineBuilder
         return locations;
     }
 
-    private Location get(final int index)
+    private Location get(int index)
     {
         return locations.get(index);
     }
 
-    private Segment segment(final int index)
+    private Segment segment(int index)
     {
         if (index < size())
         {

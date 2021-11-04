@@ -28,7 +28,7 @@ public class Offset implements Dimensioned
 
     private final Height height;
 
-    public Offset(final Width width, final Height height)
+    public Offset(Width width, Height height)
     {
         this.height = height;
         this.width = width;

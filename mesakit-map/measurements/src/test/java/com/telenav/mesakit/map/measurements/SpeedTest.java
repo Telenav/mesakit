@@ -20,18 +20,18 @@ package com.telenav.mesakit.map.measurements;
 
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.motion.Speed;
-import com.telenav.mesakit.map.measurements.project.MapMeasurementsUnitTest;
+import com.telenav.mesakit.map.measurements.project.MeasurementsUnitTest;
 import org.junit.Test;
 
-public class SpeedTest extends MapMeasurementsUnitTest
+public class SpeedTest extends MeasurementsUnitTest
 {
     @Test
     public void test()
     {
-        final var miles = Distance.miles(5);
+        var miles = Distance.miles(5);
         ensureWithin(5, miles.asMiles(), 0.001);
 
-        final var speed = Speed.milesPerHour(5);
+        var speed = Speed.milesPerHour(5);
         ensureWithin(5, speed.asMilesPerHour(), 0.001);
     }
 }

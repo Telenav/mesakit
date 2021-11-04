@@ -10,8 +10,8 @@ import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 
 import java.awt.Shape;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 /**
  * A map drawable object which has an optional label
@@ -34,19 +34,19 @@ public abstract class LabeledMapShape extends BaseMapDrawable
 
     private DrawingHeight labelCornerHeight;
 
-    public LabeledMapShape(final Style style, final String label)
+    public LabeledMapShape(Style style, String label)
     {
         super(style);
         this.label = label;
     }
 
-    public LabeledMapShape(final Style style, final Location at, final String label)
+    public LabeledMapShape(Style style, Location at, String label)
     {
         super(style, at);
         this.label = label;
     }
 
-    public LabeledMapShape(final LabeledMapShape that)
+    public LabeledMapShape(LabeledMapShape that)
     {
         super(that);
         labelCornerWidth = that.labelCornerWidth;
@@ -61,7 +61,7 @@ public abstract class LabeledMapShape extends BaseMapDrawable
     @Override
     public abstract LabeledMapShape copy();
 
-    public Shape drawLabel(final MapCanvas canvas, final DrawingPoint coordinate)
+    public Shape drawLabel(MapCanvas canvas, DrawingPoint coordinate)
     {
         ensureNotNull(canvas);
         ensureNotNull(coordinate);
@@ -70,7 +70,7 @@ public abstract class LabeledMapShape extends BaseMapDrawable
         if (label != null)
         {
             return label(label)
-                    .at(coordinate)
+                    .withLocation(coordinate)
                     .withStyle(labelStyle)
                     .withRoundedCorners(labelCornerWidth, labelCornerHeight)
                     .withMargin(margin)
@@ -81,7 +81,7 @@ public abstract class LabeledMapShape extends BaseMapDrawable
     }
 
     @Override
-    public Shape onDraw(final MapCanvas canvas)
+    public Shape onDraw(MapCanvas canvas)
     {
         if (label != null)
         {
@@ -92,50 +92,50 @@ public abstract class LabeledMapShape extends BaseMapDrawable
         return null;
     }
 
-    public LabeledMapShape withLabel(final String label)
+    public LabeledMapShape withLabelStyle(Style style)
     {
-        final var copy = copy();
-        copy.label = label;
-        return copy;
-    }
-
-    public LabeledMapShape withLabelStyle(final Style style)
-    {
-        final var copy = copy();
+        var copy = copy();
         copy.labelStyle = style;
         return copy;
     }
 
-    public LabeledMapShape withMargin(final int margin)
+    public LabeledMapShape withLabelText(String label)
     {
-        final var copy = copy();
+        var copy = copy();
+        copy.label = label;
+        return copy;
+    }
+
+    public LabeledMapShape withMargin(int margin)
+    {
+        var copy = copy();
         copy.margin = margin;
         return copy;
     }
 
-    public LabeledMapShape withOffset(final int dx, final int dy)
+    public LabeledMapShape withOffset(int dx, int dy)
     {
-        final var copy = copy();
+        var copy = copy();
         copy.labelXOffset = dx;
         copy.labelYOffset = dy;
         return copy;
     }
 
-    public LabeledMapShape withRoundedLabelCorners(final DrawingWidth cornerWidth,
-                                                   final DrawingHeight cornerHeight)
+    public LabeledMapShape withRoundedLabelCorners(DrawingWidth cornerWidth,
+                                                   DrawingHeight cornerHeight)
     {
-        final var copy = copy();
+        var copy = copy();
         copy.labelCornerWidth = cornerWidth;
         copy.labelCornerHeight = cornerHeight;
         return copy;
     }
 
-    public LabeledMapShape withRoundedLabelCorners(final DrawingLength corner)
+    public LabeledMapShape withRoundedLabelCorners(DrawingLength corner)
     {
         return withRoundedLabelCorners(corner.asWidth(), corner.asHeight());
     }
 
-    protected DrawingPoint anchor(final MapCanvas canvas, final Location location)
+    protected DrawingPoint anchor(MapCanvas canvas, Location location)
     {
         return canvas.toDrawing(location).plus(labelXOffset, labelYOffset);
     }

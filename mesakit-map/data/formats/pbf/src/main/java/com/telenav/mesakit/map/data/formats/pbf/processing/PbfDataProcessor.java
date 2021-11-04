@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing;
 
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessing;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.associations.UmlRelation;
 import org.openstreetmap.osmosis.core.domain.v0_6.Bound;
 
 import java.util.Collection;
@@ -51,7 +51,7 @@ public interface PbfDataProcessor
         FILTERED_OUT
     }
 
-    default void onBounds(final Bound bounds)
+    default void onBounds(Bound bounds)
     {
     }
 
@@ -70,35 +70,35 @@ public interface PbfDataProcessor
     /**
      * Called for all ways, nodes and relations (but not for any other entities)
      */
-    default void onEntity(final PbfEntity<?> entity)
+    default void onEntity(PbfEntity<?> entity)
     {
     }
 
-    default void onMetadata(final Map<String, String> metadata)
+    default void onMetadata(Map<String, String> metadata)
     {
     }
 
-    default Action onNode(final PbfNode node)
+    default Action onNode(PbfNode node)
     {
         return ACCEPTED;
     }
 
-    default void onNodes(final Collection<PbfNode> nodes)
+    default void onNodes(Collection<PbfNode> nodes)
     {
-        for (final var node : nodes)
+        for (var node : nodes)
         {
             onNode(node);
         }
     }
 
-    default Action onRelation(final PbfRelation relation)
+    default Action onRelation(PbfRelation relation)
     {
         return ACCEPTED;
     }
 
-    default void onRelations(final Collection<PbfRelation> relations)
+    default void onRelations(Collection<PbfRelation> relations)
     {
-        for (final var relation : relations)
+        for (var relation : relations)
         {
             onRelation(relation);
         }
@@ -119,14 +119,14 @@ public interface PbfDataProcessor
     {
     }
 
-    default Action onWay(final PbfWay way)
+    default Action onWay(PbfWay way)
     {
         return ACCEPTED;
     }
 
-    default void onWays(final Collection<PbfWay> ways)
+    default void onWays(Collection<PbfWay> ways)
     {
-        for (final var way : ways)
+        for (var way : ways)
         {
             onWay(way);
         }

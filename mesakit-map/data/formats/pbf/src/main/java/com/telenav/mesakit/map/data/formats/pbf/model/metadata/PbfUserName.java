@@ -18,18 +18,18 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.metadata;
 
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelMetadata;
-import com.telenav.kivakit.core.kernel.language.values.name.Name;
+import com.telenav.kivakit.kernel.language.values.name.Name;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelMetadata;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 @UmlClassDiagram(diagram = DiagramPbfModelMetadata.class)
 public class PbfUserName extends Name
 {
     public static final PbfUserName SCOUT = new PbfUserName("scout_osm");
 
-    public PbfUserName(final String username)
+    public PbfUserName(String username)
     {
         super(username);
         ensureNotNull(username);

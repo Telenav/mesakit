@@ -29,7 +29,7 @@ public class GeoJsonGeometryCollection extends GeoJsonGeometry implements Iterab
 {
     private final List<GeoJsonGeometry> geometries = new ArrayList<>();
 
-    public void add(final GeoJsonGeometry geometry)
+    public void add(GeoJsonGeometry geometry)
     {
         geometries.add(geometry);
     }
@@ -37,8 +37,8 @@ public class GeoJsonGeometryCollection extends GeoJsonGeometry implements Iterab
     @Override
     public Rectangle bounds()
     {
-        final var builder = new BoundingBoxBuilder();
-        for (final var geometry : this)
+        var builder = new BoundingBoxBuilder();
+        for (var geometry : this)
         {
             builder.add(geometry.bounds());
         }

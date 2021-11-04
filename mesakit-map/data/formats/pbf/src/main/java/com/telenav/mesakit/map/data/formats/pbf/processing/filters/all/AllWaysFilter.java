@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing.filters.all;
 
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.WayFilter;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessingFilters;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**
  * All ways
@@ -37,7 +37,7 @@ public class AllWaysFilter extends WayFilter
     }
 
     @Override
-    public boolean accepts(final PbfWay way)
+    public boolean accepts(PbfWay way)
     {
         return true;
     }

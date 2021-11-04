@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.road.name.parser.locales.english;
 
+import com.telenav.kivakit.kernel.language.strings.CaseFormat;
+import com.telenav.kivakit.kernel.language.strings.Strip;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.Token;
-import com.telenav.kivakit.core.kernel.language.strings.CaseFormat;
-import com.telenav.kivakit.core.kernel.language.strings.Strip;
 
 public class EnglishUnitedStatesRoadNameParser extends EnglishRoadNameParser
 {
@@ -44,9 +44,9 @@ public class EnglishUnitedStatesRoadNameParser extends EnglishRoadNameParser
                 && !parseUsStateRoute())
         {
             // then it's a normal street name so just accept it as it is
-            final var builder = new StringBuilder();
+            var builder = new StringBuilder();
             Token previous = null;
-            for (final var token : tokens())
+            for (var token : tokens())
             {
                 if (!token.isWhitespace())
                 {
@@ -70,7 +70,7 @@ public class EnglishUnitedStatesRoadNameParser extends EnglishRoadNameParser
     {
         if (match(TOKENIZER.US_HIGHWAY))
         {
-            final var number = number();
+            var number = number();
             if (number != null)
             {
                 builder().baseName("US-" + number, rawText());
@@ -88,7 +88,7 @@ public class EnglishUnitedStatesRoadNameParser extends EnglishRoadNameParser
     {
         if (match(TOKENIZER.INTERSTATE))
         {
-            final var number = number();
+            var number = number();
             if (number != null)
             {
                 if (hasMore())
@@ -113,7 +113,7 @@ public class EnglishUnitedStatesRoadNameParser extends EnglishRoadNameParser
     {
         if (lookingAt(TOKENIZER.STATE_ROUTE))
         {
-            final var state = Strip.trailing(current().text().trim(), "-");
+            var state = Strip.trailing(current().text().trim(), "-");
             next();
             skipAny(TOKENIZER.WHITESPACE);
             if (lookingAt(TOKENIZER.DASH))
@@ -121,7 +121,7 @@ public class EnglishUnitedStatesRoadNameParser extends EnglishRoadNameParser
                 next();
             }
             skipAny(TOKENIZER.WHITESPACE);
-            final var number = number();
+            var number = number();
             if (number != null)
             {
                 builder().baseName(state + "-" + number, rawText());
@@ -136,7 +136,7 @@ public class EnglishUnitedStatesRoadNameParser extends EnglishRoadNameParser
      * @return True if there should be a space between the given tokens
      */
     @SuppressWarnings("RedundantIfStatement")
-    private boolean space(final Token previous, final Token token)
+    private boolean space(Token previous, Token token)
     {
         if (TOKENIZER.isOpenParenthesis(token) || TOKENIZER.isCloseParenthesis(previous))
         {

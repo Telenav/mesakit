@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.data.formats.library.map.identifiers;
 
-import com.telenav.mesakit.map.data.formats.library.project.lexakai.diagrams.DiagramDataMapIdentifier;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.data.formats.library.project.lexakai.diagrams.DiagramDataMapIdentifier;
 
 /**
  * OSM node identifier
@@ -32,7 +32,7 @@ public abstract class MapNodeIdentifier extends MapIdentifier
     public static class Comparator implements java.util.Comparator<MapNodeIdentifier>
     {
         @Override
-        public int compare(final MapNodeIdentifier a, final MapNodeIdentifier b)
+        public int compare(MapNodeIdentifier a, MapNodeIdentifier b)
         {
             return a.compareTo(b);
         }
@@ -41,7 +41,7 @@ public abstract class MapNodeIdentifier extends MapIdentifier
     /**
      * Construct from identifier
      */
-    protected MapNodeIdentifier(final long identifier)
+    protected MapNodeIdentifier(long identifier)
     {
         super(identifier);
     }

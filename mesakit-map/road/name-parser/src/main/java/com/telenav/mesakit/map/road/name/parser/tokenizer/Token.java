@@ -35,7 +35,7 @@ public class Token
 
     private final String text;
 
-    Token(final Tokenizer grammar, final int identifier, final String name, final SymbolStream stream)
+    Token(Tokenizer grammar, int identifier, String name, SymbolStream stream)
     {
         tokenizer = grammar;
         this.identifier = identifier;
@@ -52,18 +52,18 @@ public class Token
         }
     }
 
-    public Token addTo(final Set<Token> tokens)
+    public Token addTo(Set<Token> tokens)
     {
         tokens.add(this);
         return this;
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Token)
         {
-            final var that = (Token) object;
+            var that = (Token) object;
             return identifier == that.identifier;
         }
         return false;
@@ -106,14 +106,14 @@ public class Token
     }
 
     @SuppressWarnings("UnusedReturnValue")
-    public Token matches(final String symbol, final TokenMatcher matcher)
+    public Token matches(String symbol, TokenMatcher matcher)
     {
         matches(Symbol.of(symbol), matcher);
         return this;
     }
 
     @SuppressWarnings("UnusedReturnValue")
-    public Token matches(final Symbol symbol, final TokenMatcher matcher)
+    public Token matches(Symbol symbol, TokenMatcher matcher)
     {
         tokenizer.add(symbol, matcher);
         return this;
@@ -125,11 +125,11 @@ public class Token
      * @param values The symbol values to match
      * @return The token
      */
-    public Token matchesAnyOf(final String... values)
+    public Token matchesAnyOf(String... values)
     {
-        for (final var value : values)
+        for (var value : values)
         {
-            final var symbol = Symbol.of(value);
+            var symbol = Symbol.of(value);
             matches(symbol, (symbols) ->
             {
                 if (symbols.lookingAt(symbol))
@@ -143,13 +143,13 @@ public class Token
         return this;
     }
 
-    public Token matchesSequence(final String... words)
+    public Token matchesSequence(String... words)
     {
         matches(words[0], (stream) ->
         {
-            final var symbols = new Symbol[words.length];
+            var symbols = new Symbol[words.length];
             var i = 0;
-            for (final var word : words)
+            for (var word : words)
             {
                 symbols[i++] = Symbol.of(word);
             }
@@ -167,7 +167,7 @@ public class Token
         return name;
     }
 
-    public Token of(final SymbolStream stream)
+    public Token of(SymbolStream stream)
     {
         return new Token(tokenizer, identifier(), name(), stream);
     }

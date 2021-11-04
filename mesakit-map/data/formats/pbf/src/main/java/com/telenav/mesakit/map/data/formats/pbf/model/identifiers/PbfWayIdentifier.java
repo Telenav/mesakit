@@ -18,27 +18,23 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.identifiers;
 
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.language.primitives.Longs;
+import com.telenav.kivakit.kernel.language.strings.Strip;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapWayIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelIdentifiers;
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.language.primitives.Longs;
-import com.telenav.kivakit.core.kernel.language.strings.Strip;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 import org.openstreetmap.osmosis.core.domain.v0_6.EntityType;
 import org.openstreetmap.osmosis.core.domain.v0_6.Way;
 
 @UmlClassDiagram(diagram = DiagramPbfModelIdentifiers.class)
 public class PbfWayIdentifier extends MapWayIdentifier implements PbfIdentifierType
 {
-    private static final Logger LOGGER = LoggerFactory.newLogger();
-
-    public static MapWayIdentifier forLong(final long identifier)
+    public static MapWayIdentifier forLong(long identifier)
     {
         if (identifier == 0)
         {
@@ -47,14 +43,14 @@ public class PbfWayIdentifier extends MapWayIdentifier implements PbfIdentifierT
         return new PbfWayIdentifier(identifier);
     }
 
-    public static PbfWayIdentifier forWay(final Way way)
+    public static PbfWayIdentifier forWay(Way way)
     {
         return new PbfWayIdentifier(way.getId());
     }
 
-    public static PbfWayIdentifier parse(final String string)
+    public static PbfWayIdentifier parse(String string)
     {
-        final var identifier = Longs.parse(Strip.trailing(string, "L"));
+        var identifier = Longs.parseFast(Strip.trailing(string, "L"));
         if (identifier != Longs.INVALID)
         {
             return new PbfWayIdentifier(identifier);
@@ -62,23 +58,25 @@ public class PbfWayIdentifier extends MapWayIdentifier implements PbfIdentifierT
         return null;
     }
 
-    public static SwitchParser.Builder<PbfWayIdentifier> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<PbfWayIdentifier> pbfWayIdentifierSwitchParser(Listener listener,
+                                                                                      String name,
+                                                                                      String description)
     {
         return SwitchParser.builder(PbfWayIdentifier.class)
                 .name(name)
                 .description(description)
-                .converter(new Converter(LOGGER));
+                .converter(new Converter(listener));
     }
 
     public static class Converter extends BaseStringConverter<PbfWayIdentifier>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected PbfWayIdentifier onConvertToObject(final String value)
+        protected PbfWayIdentifier onToValue(String value)
         {
             return new PbfWayIdentifier(Long.parseLong(value));
         }
@@ -87,12 +85,12 @@ public class PbfWayIdentifier extends MapWayIdentifier implements PbfIdentifierT
     /**
      * Construct from identifier
      */
-    public PbfWayIdentifier(final long identifier)
+    public PbfWayIdentifier(long identifier)
     {
         super(identifier);
     }
 
-    public PbfWayIdentifier(final PbfWay way)
+    public PbfWayIdentifier(PbfWay way)
     {
         this(way.identifierAsLong());
     }
@@ -104,7 +102,7 @@ public class PbfWayIdentifier extends MapWayIdentifier implements PbfIdentifierT
     }
 
     @Override
-    public MapIdentifier newIdentifier(final long identifier)
+    public MapIdentifier newIdentifier(long identifier)
     {
         return new PbfWayIdentifier(identifier);
     }

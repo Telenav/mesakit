@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramSpatialIndex;
@@ -29,7 +29,7 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 /**
  * This is a top-down bulk loader that minimizes overlap. It's roughly based on a very sketchy research paper that was
@@ -51,17 +51,17 @@ public class RTreeBulkLoader<Element extends Bounded & Intersectable>
 
     private final RTreeSpatialIndex<Element> index;
 
-    public RTreeBulkLoader(final RTreeSpatialIndex<Element> index)
+    public RTreeBulkLoader(RTreeSpatialIndex<Element> index)
     {
         this.index = index;
     }
 
-    public void load(final List<Element> elements)
+    public void load(List<Element> elements)
     {
         assert !elements.isEmpty();
 
         var index = 0;
-        for (final var element : elements)
+        for (var element : elements)
         {
             ensureNotNull(element, "Null element at index " + index);
             index++;
@@ -70,31 +70,31 @@ public class RTreeBulkLoader<Element extends Bounded & Intersectable>
         this.index.root(tree(null, Rectangle.MAXIMUM, elements, Sort.NONE));
     }
 
-    public double log(final int base, final int num)
+    public double log(int base, int num)
     {
         return Math.log(num) / Math.log(base);
     }
 
-    protected int compareHorizontal(final Element a, final Element b)
+    protected int compareHorizontal(Element a, Element b)
     {
         return a.bounds().compareHorizontal(b.bounds());
     }
 
-    protected int compareVertical(final Element a, final Element b)
+    protected int compareVertical(Element a, Element b)
     {
         return a.bounds().compareVertical(b.bounds());
     }
 
-    private Node<Element> tree(final InteriorNode<Element> parent,
-                               final Rectangle bounds,
-                               final List<Element> elements,
+    private Node<Element> tree(InteriorNode<Element> parent,
+                               Rectangle bounds,
+                               List<Element> elements,
                                Sort sort)
     {
         // If the elements will all fit in a leaf,
         if (!index.settings().isLeafFull(Count.count(elements)))
         {
             // return a leaf
-            final var leaf = index.newLeaf(parent);
+            var leaf = index.newLeaf(parent);
             leaf.index(index);
             leaf.addAll(elements);
             return leaf;
@@ -103,18 +103,18 @@ public class RTreeBulkLoader<Element extends Bounded & Intersectable>
         {
             // The height of the tree is log base M of N, where M is the maximum children per
             // interior node and N is the number of elements to be loaded into this subtree
-            final var height = ((int) Math
+            var height = ((int) Math
                     .ceil(log(index.settings().maximumChildrenPerInteriorNode().asInt(), elements.size())));
 
             // The number of elements in each child, N(s), is M ^ height - 1
-            final var elementsPerChild = (int) Math
+            var elementsPerChild = (int) Math
                     .pow(index.settings().maximumChildrenPerInteriorNode().asInt(), height - 1);
 
             // The number of children is ceiling(N / N(s))
-            final var childCount = ((elements.size() + elementsPerChild) / elementsPerChild);
+            var childCount = ((elements.size() + elementsPerChild) / elementsPerChild);
 
             // Sort elements by longitude or latitude, depending
-            final var horizontal = bounds.isHorizontal();
+            var horizontal = bounds.isHorizontal();
             if (horizontal)
             {
                 if (sort != Sort.HORIZONTAL)
@@ -133,21 +133,21 @@ public class RTreeBulkLoader<Element extends Bounded & Intersectable>
             }
 
             // Build an interior node with the given number of children
-            final var node = new InteriorNode<>(index, parent);
+            var node = new InteriorNode<>(index, parent);
 
             // Create children
-            final List<Node<Element>> children = new ArrayList<>();
+            List<Node<Element>> children = new ArrayList<>();
             var first = 0;
-            final var countPerChild = elements.size() / childCount;
+            var countPerChild = elements.size() / childCount;
             for (var i = 0; i < childCount; i++)
             {
                 // Get the child elements to assign to this node
-                final var last = i == childCount - 1 ? elements.size() : (i + 1) * countPerChild;
-                final List<Element> childElements = new ArrayList<>(elements.subList(first, last));
+                var last = i == childCount - 1 ? elements.size() : (i + 1) * countPerChild;
+                List<Element> childElements = new ArrayList<>(elements.subList(first, last));
                 first = last;
 
                 // Get the bounding rectangle around the child elements
-                final var childBounds = Rectangle.fromBoundedObjects(childElements);
+                var childBounds = Rectangle.fromBoundedObjects(childElements);
 
                 // Add a child node with the given bounds and elements
                 children.add(tree(node, childBounds, childElements, sort));

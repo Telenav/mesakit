@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.ui.desktop.viewer.desktop;
 
-import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.mesakit.map.ui.desktop.viewer.View;
 import com.telenav.mesakit.map.ui.desktop.viewer.Viewer;
 
@@ -31,16 +31,16 @@ public abstract class BaseViewer extends BaseRepeater implements Viewer
     private final List<View> views = new ArrayList<>();
 
     @Override
-    public View view(final String title)
+    public View view(String title)
     {
-        for (final var view : views)
+        for (var view : views)
         {
             if (view.name().equals(title))
             {
                 return view;
             }
         }
-        final var view = newView(title);
+        var view = newView(title);
         views.add(view);
         return view;
     }

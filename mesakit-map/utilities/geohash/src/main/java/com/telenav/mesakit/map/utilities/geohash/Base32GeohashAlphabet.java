@@ -62,7 +62,7 @@ class Base32GeohashAlphabet implements GeohashAlphabet
     private Base32GeohashAlphabet()
     {
         var i = 0;
-        for (final var c : characters)
+        for (var c : characters)
         {
             indexForCharacter.put(c, i++);
         }
@@ -81,18 +81,18 @@ class Base32GeohashAlphabet implements GeohashAlphabet
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Base32GeohashAlphabet)
         {
-            final var that = (Base32GeohashAlphabet) object;
+            var that = (Base32GeohashAlphabet) object;
             return Arrays.equals(characters, that.characters);
         }
         return false;
     }
 
     @Override
-    public char get(final int index)
+    public char get(int index)
     {
         return characters[index];
     }
@@ -104,13 +104,13 @@ class Base32GeohashAlphabet implements GeohashAlphabet
     }
 
     @Override
-    public int indexOf(final char character)
+    public int indexOf(char character)
     {
         return indexForCharacter.get(character);
     }
 
     @Override
-    public boolean isValid(final String text)
+    public boolean isValid(String text)
     {
         var valid = text != null && text.length() <= maximumTextLength();
         for (var i = 0; valid && i < text.length(); i++)

@@ -18,12 +18,13 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
-import com.telenav.kivakit.core.kernel.interfaces.collection.Keyed;
-import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.core.kernel.language.objects.Hash;
-import com.telenav.kivakit.core.kernel.language.primitives.Ints;
-import com.telenav.kivakit.core.kernel.language.primitives.Longs;
-import com.telenav.kivakit.core.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.interfaces.collection.Keyed;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.primitives.Ints;
+import com.telenav.kivakit.kernel.language.primitives.Longs;
+import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -35,7 +36,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 
 /**
  * A map between tag keys and values.
@@ -60,28 +61,28 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
         return new PbfTagMap(1);
     }
 
-    public static PbfTagMap from(final Collection<Tag> tags)
+    public static PbfTagMap from(Collection<Tag> tags)
     {
         if (tags.isEmpty())
         {
             return EMPTY;
         }
-        final var map = new PbfTagMap(tags.size());
-        for (final var tag : tags)
+        var map = new PbfTagMap(tags.size());
+        for (var tag : tags)
         {
             map.put(tag.getKey(), tag.getValue());
         }
         return map;
     }
 
-    public static PbfTagMap from(final Collection<Tag> tags, final PbfTagFilter filter)
+    public static PbfTagMap from(Collection<Tag> tags, PbfTagFilter filter)
     {
         if (tags.isEmpty())
         {
             return EMPTY;
         }
-        final var map = new PbfTagMap(tags.size());
-        for (final var tag : tags)
+        var map = new PbfTagMap(tags.size());
+        for (var tag : tags)
         {
             if (filter.accepts(tag))
             {
@@ -114,7 +115,7 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
 
     private String key7, value7;
 
-    protected PbfTagMap(final int initialCapacity)
+    protected PbfTagMap(int initialCapacity)
     {
         if (initialCapacity > 8)
         {
@@ -123,7 +124,7 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
         }
     }
 
-    public boolean containsKey(final String key)
+    public boolean containsKey(String key)
     {
         if (isCompact())
         {
@@ -143,17 +144,17 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof PbfTagMap)
         {
-            final var that = (PbfTagMap) object;
+            var that = (PbfTagMap) object;
             if (size() == that.size())
             {
-                final var keys = keys();
+                var keys = keys();
                 while (keys.hasNext())
                 {
-                    final var at = keys.next();
+                    var at = keys.next();
                     if (!Strings.equals(that.get(at), get(at)))
                     {
                         return false;
@@ -166,7 +167,7 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
     }
 
     @Override
-    public String get(final String key)
+    public String get(String key)
     {
         if (isCompact())
         {
@@ -250,9 +251,9 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
         }
     }
 
-    public String get(final String key, final String defaultValue)
+    public String get(String key, String defaultValue)
     {
-        final var value = get(key);
+        var value = get(key);
         if (value == null)
         {
             return defaultValue;
@@ -296,7 +297,7 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
             @Override
             public Tag next()
             {
-                final var at = keys.next();
+                var at = keys.next();
                 return new Tag(at, get(at));
             }
         };
@@ -329,7 +330,7 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
         }
     }
 
-    public void put(final String key, final String value)
+    public void put(String key, String value)
     {
         if (isCompact())
         {
@@ -359,9 +360,9 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
         }
     }
 
-    public void putAll(final Iterable<Tag> tags)
+    public void putAll(Iterable<Tag> tags)
     {
-        for (final var tag : tags)
+        for (var tag : tags)
         {
             put(tag.getKey(), tag.getValue());
         }
@@ -372,34 +373,34 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
         return tags == null ? size : tags.size();
     }
 
-    public Tag tag(final String key)
+    public Tag tag(String key)
     {
         return new Tag(key, get(key));
     }
 
-    public String value(final String key)
+    public String value(String key)
     {
         return get(key);
     }
 
-    public int valueAsInt(final String key)
+    public int valueAsInt(String key)
     {
-        return Ints.parse(get(key));
+        return Ints.parse(Listener.console(), get(key));
     }
 
-    public long valueAsLong(final String key)
+    public long valueAsLong(String key)
     {
-        return Longs.parse(get(key));
+        return Longs.parseFast(get(key));
     }
 
-    public int valueAsNaturalNumber(final String key)
+    public int valueAsNaturalNumber(String key)
     {
         return Ints.parseNaturalNumber(get(key));
     }
 
-    public boolean valueIsNo(final String key)
+    public boolean valueIsNo(String key)
     {
-        final var value = value(key);
+        var value = value(key);
         if (value != null)
         {
             return "no".equals(value);
@@ -407,9 +408,9 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
         return false;
     }
 
-    public boolean valueIsYes(final String key)
+    public boolean valueIsYes(String key)
     {
-        final var value = value(key);
+        var value = value(key);
         if (value != null)
         {
             return "yes".equals(value);
@@ -417,14 +418,14 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
         return false;
     }
 
-    public StringList valueSplit(final String key)
+    public StringList valueSplit(String key)
     {
-        final var split = new StringList();
-        final var value = get(key);
+        var split = new StringList();
+        var value = get(key);
         if (value != null)
         {
             var start = 0;
-            final var end = value.length();
+            var end = value.length();
             for (var at = 0; at < end; at++)
             {
                 switch (value.charAt(at))
@@ -444,7 +445,7 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
         return split;
     }
 
-    private void capacity(final int capacity)
+    private void capacity(int capacity)
     {
         if (tags == null && capacity > FIELDS)
         {
@@ -472,7 +473,7 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
         }
     }
 
-    private String compactKey(final int index)
+    private String compactKey(int index)
     {
         switch (index)
         {
@@ -502,7 +503,7 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
         return tags == null;
     }
 
-    private void setField(final int index, final String key, final String value)
+    private void setField(int index, String key, String value)
     {
         switch (index)
         {

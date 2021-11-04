@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.metadata;
 
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelMetadata;
-import com.telenav.kivakit.core.kernel.language.values.identifier.Identifier;
+import com.telenav.kivakit.kernel.language.values.identifier.Identifier;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelMetadata;
 
 @UmlClassDiagram(diagram = DiagramPbfModelMetadata.class)
 public class PbfChangeSetIdentifier extends Identifier
 {
-    public PbfChangeSetIdentifier(final long identifier)
+    public PbfChangeSetIdentifier(long identifier)
     {
         super(identifier);
     }

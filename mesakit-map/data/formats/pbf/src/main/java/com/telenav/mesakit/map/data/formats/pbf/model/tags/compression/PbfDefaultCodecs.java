@@ -1,10 +1,12 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
-import com.telenav.kivakit.core.kernel.language.objects.Lazy;
-import com.telenav.kivakit.core.kernel.language.paths.PackagePath;
-import com.telenav.kivakit.core.resource.resources.other.PropertyMap;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
+import com.telenav.kivakit.kernel.language.objects.Lazy;
+import com.telenav.kivakit.kernel.language.paths.PackagePath;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.resource.resources.other.PropertyMap;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelCompression;
@@ -19,6 +21,8 @@ import static com.telenav.kivakit.data.compression.codecs.huffman.character.Huff
 public class PbfDefaultCodecs
 {
     private static final Lazy<PbfDefaultCodecs> defaultCodecs = Lazy.of(PbfDefaultCodecs::new);
+
+    private static final Logger LOGGER = LoggerFactory.newLogger();
 
     public static PbfDefaultCodecs get()
     {
@@ -90,8 +94,8 @@ public class PbfDefaultCodecs
         return valueStringCodecFrequencies.get();
     }
 
-    private PropertyMap load(final String codec)
+    private PropertyMap load(String codec)
     {
-        return PropertyMap.load(PackagePath.packagePath(PbfDefaultCodecs.class), codec);
+        return PropertyMap.load(LOGGER, PackagePath.packagePath(PbfDefaultCodecs.class), codec);
     }
 }

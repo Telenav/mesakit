@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.data.formats.library.map.identifiers;
 
-import com.telenav.mesakit.map.data.formats.library.project.lexakai.diagrams.DiagramDataMapIdentifier;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.data.formats.library.project.lexakai.diagrams.DiagramDataMapIdentifier;
 
 /**
  * OSM relation identifier
@@ -32,7 +32,7 @@ public abstract class MapRelationIdentifier extends MapIdentifier
     public static final MapRelationIdentifier NULL = new MapRelationIdentifier(0)
     {
         @Override
-        protected MapIdentifier newIdentifier(final long asLong)
+        protected MapIdentifier newIdentifier(long asLong)
         {
             return null;
         }
@@ -41,7 +41,7 @@ public abstract class MapRelationIdentifier extends MapIdentifier
     /**
      * Construct from identifier
      */
-    protected MapRelationIdentifier(final long identifier)
+    protected MapRelationIdentifier(long identifier)
     {
         super(identifier);
     }

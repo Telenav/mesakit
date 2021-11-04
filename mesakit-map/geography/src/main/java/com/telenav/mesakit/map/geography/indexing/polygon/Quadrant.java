@@ -34,15 +34,15 @@ abstract class Quadrant
     /**
      * @return True if the location is inside the polygon as indexed by this quadrant
      */
-    public abstract Containment contains(final Location location, Rectangle bounds);
+    public abstract Containment contains(Location location, Rectangle bounds);
 
     /**
      * Subclasses can call the debugger with the given bounds and their own information
      */
-    public abstract void debug(final PolygonSpatialIndexDebugger debugger, final Rectangle bounds);
+    public abstract void debug(PolygonSpatialIndexDebugger debugger, Rectangle bounds);
 
     /**
      * @param visitor The visitor that should visit this quadrant
      */
-    protected abstract void visit(final Visitor visitor, Rectangle bounds);
+    protected abstract void visit(Visitor visitor, Rectangle bounds);
 }

@@ -18,19 +18,19 @@
 
 package com.telenav.mesakit.map.overpass;
 
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.network.core.Host;
+import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.associations.UmlAggregation;
+import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.overpass.pbf.OsmToPbfConverter;
 import com.telenav.mesakit.map.overpass.project.lexakai.diagrams.DiagramOverpass;
-import com.telenav.kivakit.core.filesystem.File;
-import com.telenav.kivakit.core.filesystem.Folder;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
-import com.telenav.kivakit.core.kernel.messaging.repeaters.BaseRepeater;
-import com.telenav.kivakit.core.network.core.Host;
-import com.telenav.kivakit.core.resource.path.Extension;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.associations.UmlAggregation;
-import com.telenav.lexakai.annotations.associations.UmlRelation;
 
 /**
  * @author jonathanl (shibo)
@@ -40,7 +40,7 @@ import com.telenav.lexakai.annotations.associations.UmlRelation;
 @UmlRelation(label = "converts data with", referent = OsmToPbfConverter.class)
 public class OverpassDataDownloader extends BaseRepeater
 {
-    public static final Host HOST = Host.parse("overpass-api.de");
+    public final Host HOST = Host.parse(this, "overpass-api.de");
 
     public static final Distance MAXIMUM_SIZE = Distance.kilometers(50);
 
@@ -49,14 +49,14 @@ public class OverpassDataDownloader extends BaseRepeater
     @UmlAggregation(label = "caches data in")
     private final Folder cache;
 
-    public OverpassDataDownloader(final Folder cache)
+    public OverpassDataDownloader(Folder cache)
     {
         this.cache = cache.mkdirs();
     }
 
-    public File osm(final String descriptor, final Rectangle bounds)
+    public File osm(String descriptor, Rectangle bounds)
     {
-        final var osm = file(descriptor, bounds).withExtension(Extension.OSM);
+        var osm = file(descriptor, bounds).withExtension(Extension.OSM);
         if (osm.exists())
         {
             trace("Using cached overpass data for $ from $", bounds, osm);
@@ -68,10 +68,10 @@ public class OverpassDataDownloader extends BaseRepeater
             {
                 trace("Downloading overpass data for $ to $", bounds, osm);
                 listenTo(new OverpassOsmResource(bounds)).safeCopyTo(osm);
-                trace("Downloaded $ bytes to $", osm.bytes(), osm);
+                trace("Downloaded $ bytes to $", osm.sizeInBytes(), osm);
                 return osm;
             }
-            catch (final Exception e)
+            catch (Exception e)
             {
                 problem(e, "Unable to extract $ to $", bounds, osm);
             }
@@ -79,9 +79,9 @@ public class OverpassDataDownloader extends BaseRepeater
         }
     }
 
-    public File pbf(final String baseName, final Rectangle bounds)
+    public File pbf(String baseName, Rectangle bounds)
     {
-        final var pbf = file(baseName, bounds).withExtension(Extension.OSM_PBF);
+        var pbf = file(baseName, bounds).withExtension(Extension.OSM_PBF);
         if (pbf.exists())
         {
             trace("Using cached pbf data for $ from $", bounds, pbf);
@@ -91,7 +91,7 @@ public class OverpassDataDownloader extends BaseRepeater
         {
             try
             {
-                final var osm = osm(baseName, bounds);
+                var osm = osm(baseName, bounds);
                 if (osm != null)
                 {
                     new OsmToPbfConverter(this).convert(osm, pbf);
@@ -102,7 +102,7 @@ public class OverpassDataDownloader extends BaseRepeater
                     return pbf;
                 }
             }
-            catch (final Exception e)
+            catch (Exception e)
             {
                 problem(e, "Unable to extract $ to $", bounds, pbf);
             }
@@ -110,7 +110,7 @@ public class OverpassDataDownloader extends BaseRepeater
         }
     }
 
-    private File file(final String descriptor, final Rectangle bounds)
+    private File file(String descriptor, Rectangle bounds)
     {
         return cache.file(descriptor + "-" + bounds.toFileString());
     }

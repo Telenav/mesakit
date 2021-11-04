@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.cutter;
 
-import com.telenav.kivakit.core.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
-import com.telenav.kivakit.core.resource.Resource;
-import com.telenav.kivakit.core.resource.path.Extension;
+import com.telenav.kivakit.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.kivakit.primitive.collections.set.SplitLongSet;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.cutter.project.lexakai.diagrams.DiagramMapCutter;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
@@ -58,7 +58,7 @@ public abstract class Cut
 
     private final Set<Resource> outputResources = new HashSet<>();
 
-    protected Cut(final PbfRegionCutter extractor)
+    protected Cut(PbfRegionCutter extractor)
     {
         this.extractor = extractor;
     }
@@ -67,7 +67,7 @@ public abstract class Cut
 
     protected void closeWriters()
     {
-        for (final var writer : writerForRegion.values())
+        for (var writer : writerForRegion.values())
         {
             writer.close();
         }
@@ -78,29 +78,29 @@ public abstract class Cut
         return extractor;
     }
 
-    protected boolean include(final PbfWay way)
+    protected boolean include(PbfWay way)
     {
         return extractor().wayFilter().accepts(way);
     }
 
-    protected Integer indexForRegion(final Region region)
+    protected Integer indexForRegion(Region region)
     {
         return extractor().regionIndexMap().indexForRegion(region);
     }
 
-    protected Location location(final PbfNode node)
+    protected Location location(PbfNode node)
     {
         return Location.degrees(node.latitude(), node.longitude());
     }
 
-    protected Location location(final WayNode node)
+    protected Location location(WayNode node)
     {
         return Location.degrees(node.getLatitude(), node.getLongitude());
     }
 
-    protected SplitLongSet newSplitLongSet(final String name)
+    protected SplitLongSet newSplitLongSet(String name)
     {
-        final var set = new SplitLongSet(name);
+        var set = new SplitLongSet(name);
         set.initialSize(Estimate._65536);
         set.initialize();
         return set;
@@ -111,15 +111,15 @@ public abstract class Cut
         return outputResources;
     }
 
-    protected Region regionForIndex(final Integer index)
+    protected Region regionForIndex(Integer index)
     {
         return extractor().regionIndexMap().regionForIndex(index);
     }
 
-    protected RegionSet regions(final PbfWay way)
+    protected RegionSet regions(PbfWay way)
     {
-        final var regions = new RegionSet();
-        for (final var node : way.nodes())
+        var regions = new RegionSet();
+        for (var node : way.nodes())
         {
             regions.addAll(regionsForLocation(location(node)));
         }
@@ -134,30 +134,30 @@ public abstract class Cut
      * code, while no longer used, should still work, albeit VERY inefficiently), but now regions are non-overlapping,
      * non-nested grid cells in the world graph)
      */
-    protected List<Region> regionsForLocation(final Location location)
+    protected List<Region> regionsForLocation(Location location)
     {
         return extractor.regionsForLocation(location);
     }
 
-    protected PbfWay withTelenavSoftCutTag(final PbfWay way)
+    protected PbfWay withTelenavSoftCutTag(PbfWay way)
     {
-        final List<Tag> tags = new ArrayList<>(way.get().getTags());
+        List<Tag> tags = new ArrayList<>(way.get().getTags());
         tags.add(new Tag("telenav:softcut", "true"));
         return way.withTags(tags);
     }
 
-    protected void write(final PbfNode node, final List<Region> regions)
+    protected void write(PbfNode node, List<Region> regions)
     {
         if (regions != null)
         {
             // Go through each region,
-            for (final var region : regions)
+            for (var region : regions)
             {
                 // and if we're supposed to extract the region
                 if (extractor().regionsToExtract().contains(region))
                 {
                     // get the write for the region
-                    final var writer = writer(region);
+                    var writer = writer(region);
 
                     // and write the node
                     if (writer != null)
@@ -169,19 +169,19 @@ public abstract class Cut
         }
     }
 
-    protected void write(final PbfRelation relation, final Iterable<Region> regions)
+    protected void write(PbfRelation relation, Iterable<Region> regions)
     {
         if (regions != null)
         {
             // Go through each region,
-            for (final var region : regions)
+            for (var region : regions)
             {
                 // and if we're supposed to extract the region
                 if (extractor().regionsToExtract().contains(region))
                 {
                     // and write out the relation (which may reference missing ways from
                     // neighboring regions) to the output file for the region
-                    final var writer = writer(region);
+                    var writer = writer(region);
                     if (writer != null)
                     {
                         writer.write(relation);
@@ -191,18 +191,18 @@ public abstract class Cut
         }
     }
 
-    protected void write(final PbfWay way, final Iterable<Region> regions, final boolean softcut)
+    protected void write(PbfWay way, Iterable<Region> regions, boolean softcut)
     {
         if (regions != null)
         {
             // Go through each region,
-            for (final var region : regions)
+            for (var region : regions)
             {
                 // and if we're supposed to extract the region
                 if (extractor().regionsToExtract().contains(region))
                 {
                     // get the writer for the region
-                    final var writer = writer(region);
+                    var writer = writer(region);
                     if (writer != null)
                     {
                         // and write the way, with telenav:softcut=true if the way is soft-cut
@@ -213,15 +213,15 @@ public abstract class Cut
         }
     }
 
-    protected PbfWriter writer(final Region region)
+    protected PbfWriter writer(Region region)
     {
         return writerForRegion.computeIfAbsent(region, this::openWriter);
     }
 
-    private PbfWriter openWriter(final Region region)
+    private PbfWriter openWriter(Region region)
     {
         var folder = extractor.outputFolder();
-        final var regionFolder = region.folder();
+        var regionFolder = region.folder();
         if (regionFolder != null)
         {
             folder = folder.folder(regionFolder);
@@ -230,7 +230,7 @@ public abstract class Cut
         {
             folder.mkdirs();
         }
-        final var output = folder.file(region.name()).withExtension(Extension.OSM_PBF);
+        var output = folder.file(region.name()).withExtension(Extension.OSM_PBF);
         DEBUG.trace("Opened stream #$ to $", writerForRegion.size() + 1, output);
         outputResources.add(output);
         return new PbfWriter(output, true);

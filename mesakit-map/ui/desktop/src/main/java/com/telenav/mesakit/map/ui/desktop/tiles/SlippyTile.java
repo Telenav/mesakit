@@ -18,8 +18,9 @@
 
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
-import com.telenav.kivakit.core.kernel.language.objects.Hash;
-import com.telenav.kivakit.core.resource.path.FileName;
+import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.resource.path.FileName;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Label;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
@@ -33,7 +34,7 @@ import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
 import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.GRID_LABEL;
 
 /**
@@ -69,7 +70,7 @@ public class SlippyTile
     /**
      * @return The smallest tile that is larger than the given size
      */
-    public static SlippyTile largerThan(final Size size)
+    public static SlippyTile largerThan(Size size)
     {
         var tile = ZoomLevel.CLOSEST.tileAt(Location.ORIGIN);
         while (!tile.size().isGreaterThan(size) && !tile.getZoomLevel().isFurthestOut())
@@ -90,7 +91,7 @@ public class SlippyTile
 
     private ZoomLevel zoom;
 
-    protected SlippyTile(final ZoomLevel zoom, final int x, final int y)
+    protected SlippyTile(ZoomLevel zoom, int x, int y)
     {
         this.zoom = zoom;
 
@@ -101,7 +102,7 @@ public class SlippyTile
         this.y = y;
     }
 
-    private SlippyTile(final SlippyTile that)
+    private SlippyTile(SlippyTile that)
     {
         x = that.x;
         y = that.y;
@@ -110,27 +111,27 @@ public class SlippyTile
 
     public FileName asFileName()
     {
-        return FileName.parse(x + "-" + y + "-" + zoom.level() + ".png");
+        return FileName.parse(Listener.console(), x + "-" + y + "-" + zoom.level() + ".png");
     }
 
     /**
      * Draws the outline of this slippy tile on the given canvas in the given style clipped to the given bounds
      */
-    public void drawOutline(final MapCanvas canvas, final Style style)
+    public void drawOutline(MapCanvas canvas, Style style)
     {
         // Get the drawing area for this tile in slippy tile coordinates
-        final var tileArea = drawingArea();
+        var tileArea = drawingArea();
 
         // then draw it on the canvas
         canvas.drawBox(style, tileArea);
 
         // and draw label for tile rectangle
-        final var at = tileArea.topLeft().plus(8, 8);
-        final var visible = canvas.drawingArea().contains(at);
+        var at = tileArea.topLeft().plus(8, 8);
+        var visible = canvas.drawingArea().contains(at);
         if (visible)
         {
             Label.label()
-                    .at(at)
+                    .withLocation(at)
                     .withStyle(GRID_LABEL)
                     .withMargin(4)
                     .withText(toString())
@@ -145,11 +146,11 @@ public class SlippyTile
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof SlippyTile)
         {
-            final var that = (SlippyTile) object;
+            var that = (SlippyTile) object;
             return x == that.x && y == that.y && zoom.equals(that.zoom);
         }
         return false;
@@ -188,10 +189,10 @@ public class SlippyTile
 
     public List<SlippyTile> tilesInside()
     {
-        final List<SlippyTile> tiles = new ArrayList<>();
-        final var zoomedIn = getZoomLevel().zoomIn();
-        final var x = this.x * 2;
-        final var y = this.y * 2;
+        List<SlippyTile> tiles = new ArrayList<>();
+        var zoomedIn = getZoomLevel().zoomIn();
+        var x = this.x * 2;
+        var y = this.y * 2;
         tiles.add(new SlippyTile(zoomedIn, x, y));
         tiles.add(new SlippyTile(zoomedIn, x + 1, y));
         tiles.add(new SlippyTile(zoomedIn, x, y + 1));
@@ -205,23 +206,23 @@ public class SlippyTile
         return "x = " + x + ", y = " + y + ", z = " + zoom.level();
     }
 
-    public SlippyTile withX(final int x)
+    public SlippyTile withX(int x)
     {
-        final var tile = new SlippyTile(this);
+        var tile = new SlippyTile(this);
         tile.x = x;
         return tile;
     }
 
-    public SlippyTile withY(final int y)
+    public SlippyTile withY(int y)
     {
-        final var tile = new SlippyTile(this);
+        var tile = new SlippyTile(this);
         tile.y = y;
         return tile;
     }
 
-    public SlippyTile withZoomLevel(final ZoomLevel zoom)
+    public SlippyTile withZoomLevel(ZoomLevel zoom)
     {
-        final var tile = new SlippyTile(this);
+        var tile = new SlippyTile(this);
         tile.zoom = zoom;
         return tile;
     }

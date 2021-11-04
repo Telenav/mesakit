@@ -18,31 +18,31 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.kivakit.core.commandline.ArgumentParser;
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.filesystem.Folder;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.interfaces.naming.Nameable;
-import com.telenav.kivakit.core.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.core.kernel.language.locales.LanguageIsoCode;
-import com.telenav.kivakit.core.kernel.language.objects.Objects;
-import com.telenav.kivakit.core.kernel.language.patterns.Pattern;
-import com.telenav.kivakit.core.kernel.language.patterns.SimplifiedPattern;
-import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
-import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.core.kernel.language.strings.Strings;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.core.kernel.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.core.kernel.language.threading.KivaKitThread;
-import com.telenav.kivakit.core.kernel.language.threading.Threads;
-import com.telenav.kivakit.core.kernel.language.time.Duration;
-import com.telenav.kivakit.core.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
-import com.telenav.kivakit.core.resource.path.FileName;
+import com.telenav.kivakit.commandline.ArgumentParser;
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.interfaces.naming.Nameable;
+import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
+import com.telenav.kivakit.kernel.language.objects.Objects;
+import com.telenav.kivakit.kernel.language.patterns.Pattern;
+import com.telenav.kivakit.kernel.language.patterns.SimplifiedPattern;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
+import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.kernel.language.threading.KivaKitThread;
+import com.telenav.kivakit.kernel.language.threading.Threads;
+import com.telenav.kivakit.kernel.language.time.Duration;
+import com.telenav.kivakit.kernel.language.values.count.Bytes;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.resource.path.FileName;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
@@ -81,9 +81,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Executors;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 
 /**
  * @author Jonathan Locke
@@ -106,11 +106,11 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static SwitchParser.Builder<RegionSet> REGIONS = regionListSwitchParser("regions",
+    public static SwitchParser.Builder<RegionSet> REGIONS = regionListSwitchParser(LOGGER, "regions",
             "A comma separated list of regions");
 
     @SuppressWarnings({ "rawtypes" })
-    public static SwitchParser.Builder<Region> REGION = regionSwitchParser("region",
+    public static SwitchParser.Builder<Region> REGION = regionSwitchParser(LOGGER, "region",
             "A comma separated list of regions");
 
     private static final Debug DEBUG = new Debug(LOGGER);
@@ -164,13 +164,13 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     }
 
     @SuppressWarnings("rawtypes")
-    public static RegionSet allRegionsMatching(final String simplifiedPattern)
+    public static RegionSet allRegionsMatching(String simplifiedPattern)
     {
-        final Pattern pattern = new SimplifiedPattern(simplifiedPattern);
-        final var matches = new RegionSet();
-        for (final var object : all.allUntyped())
+        Pattern pattern = new SimplifiedPattern(simplifiedPattern);
+        var matches = new RegionSet();
+        for (var object : all.allUntyped())
         {
-            final var region = (Region) object;
+            var region = (Region) object;
             if (pattern.matches(region.identity().mesakit().code()))
             {
                 matches.add(region);
@@ -240,7 +240,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
             Continent.create();
 
             // Load region identity data
-            final var executor = Executors.newFixedThreadPool(RTreeSpatialIndex.visualDebug() ? 1 : 5);
+            var executor = Executors.newFixedThreadPool(RTreeSpatialIndex.visualDebug() ? 1 : 5);
             executor.execute(() -> type(Continent.class).loadIdentities());
             executor.execute(() -> type(Country.class).loadIdentities());
             executor.execute(() -> type(State.class).loadIdentities());
@@ -250,24 +250,24 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         }
     }
 
-    public static RegionCode code(final PbfEntity<?> entity, final String key)
+    public static RegionCode code(PbfEntity<?> entity, String key)
     {
-        final var value = entity.tagValue(key);
+        var value = entity.tagValue(key);
         return value == null ? null : RegionCode.parse(value);
     }
 
     @SuppressWarnings({ "unchecked" })
-    public static <T extends Region<T>> Region<T> globalForRegionCode(final RegionCode code)
+    public static <T extends Region<T>> Region<T> globalForRegionCode(RegionCode code)
     {
         return all.forRegionCode(code);
     }
 
-    public static Region<?> globalForRegionIdentifier(final RegionIdentifier identifier)
+    public static Region<?> globalForRegionIdentifier(RegionIdentifier identifier)
     {
         return all.forIdentifier(identifier);
     }
 
-    protected static RegionCode isoCode(final PbfEntity<?> entity)
+    protected static RegionCode isoCode(PbfEntity<?> entity)
     {
         var iso = entity.tagValue("iso-3166-2");
         if (iso == null)
@@ -300,57 +300,64 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         }
     }
 
-    public static RegionCode name(final PbfEntity<?> entity)
+    public static RegionCode name(PbfEntity<?> entity)
     {
         return code(entity, "name");
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    public static ArgumentParser.Builder<Region> regionArgumentParser(final String description)
+    public static ArgumentParser.Builder<Region> regionArgumentParser(Listener listener, String description)
     {
-        return ArgumentParser.builder(Region.class).converter(new Converter(LOGGER)).description(description);
+        return ArgumentParser.builder(Region.class).converter(new Converter(listener)).description(description);
     }
 
-    public static SwitchParser.Builder<RegionSet> regionListSwitchParser(final String name, final String description)
+    public static SwitchParser.Builder<RegionSet> regionListSwitchParser(Listener listener, String name,
+                                                                         String description)
     {
         return SwitchParser.builder(RegionSet.class)
                 .name(name)
                 .description(description)
-                .converter(new SetConverter(LOGGER));
+                .converter(new SetConverter(listener));
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public static SwitchParser.Builder<Region> regionSwitchParser(final String name, final String description)
+    public static SwitchParser.Builder<Region> regionSwitchParser(Listener listener, String name, String description)
     {
-        return SwitchParser.builder(Region.class).name(name).description(description).converter(new Converter(LOGGER));
+        return SwitchParser.builder(Region.class).name(name).description(description).converter(new Converter(listener));
     }
 
     @SuppressWarnings({ "rawtypes" })
-    public static void register(final Class regionClass, final RegionType type)
+    public static void register(Class regionClass, RegionType type)
     {
         typeForClass.putIfAbsent(regionClass, type);
     }
 
     @SuppressWarnings("unchecked")
-    public static <T extends Region<T>> RegionType<T> type(final Class<T> regionClass)
+    public static <T extends Region<T>> RegionType<T> type(Class<T> regionClass)
     {
         return typeForClass.get(regionClass);
     }
 
     public static class Converter<R extends Region<R>> extends BaseStringConverter<R>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
+        protected String onToString(R value)
+        {
+            return value.identity().mesakit().code();
+        }
+
+        @Override
         @SuppressWarnings("unchecked")
-        protected R onConvertToObject(final String value)
+        protected R onToValue(String value)
         {
             if (!Strings.isEmpty(value) && !"NULL".equalsIgnoreCase(value))
             {
-                final var regions = allRegionsMatching(value);
+                var regions = allRegionsMatching(value);
                 if (regions.size() == 1)
                 {
                     return (R) regions.first();
@@ -360,28 +367,28 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
             }
             return null;
         }
-
-        @Override
-        protected String onConvertToString(final R value)
-        {
-            return value.identity().mesakit().code();
-        }
     }
 
     public static class SetConverter extends BaseStringConverter<RegionSet>
     {
-        public SetConverter(final Listener listener)
+        public SetConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected RegionSet onConvertToObject(final String value)
+        protected String onToString(RegionSet regions)
         {
-            final var regions = new RegionSet();
-            for (final var pattern : value.split(","))
+            return unsupported();
+        }
+
+        @Override
+        protected RegionSet onToValue(String value)
+        {
+            var regions = new RegionSet();
+            for (var pattern : value.split(","))
             {
-                final var matches = allRegionsMatching(pattern);
+                var matches = allRegionsMatching(pattern);
                 if (!matches.isEmpty())
                 {
                     regions.addAll(matches);
@@ -393,25 +400,19 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
             }
             return regions;
         }
-
-        @Override
-        protected String onConvertToString(final RegionSet regions)
-        {
-            return unsupported();
-        }
     }
 
     protected static class RegionBorderCache<R extends Region<R>> extends BorderCache<R>
     {
-        public RegionBorderCache(final Settings<R> settings)
+        public RegionBorderCache(Settings<R> settings)
         {
             super(settings);
         }
 
         @Override
-        protected final RegionIdentity identityForRegion(final R region)
+        protected final RegionIdentity identityForRegion(R region)
         {
-            final var identity = region.identity();
+            var identity = region.identity();
             if (identity.isValid())
             {
                 return region.identity();
@@ -420,7 +421,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         }
 
         @Override
-        protected final R regionForIdentity(final RegionIdentity identity)
+        protected final R regionForIdentity(RegionIdentity identity)
         {
             if (identity.isValid())
             {
@@ -451,7 +452,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     {
     }
 
-    protected Region(final Region<?> parent, final RegionInstance<T> instance)
+    protected Region(Region<?> parent, RegionInstance<T> instance)
     {
         // Save instance data and parent
         this.instance = instance;
@@ -507,23 +508,23 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         return instance().children();
     }
 
-    public final <C extends Region<?>> Set<C> children(final Class<C> type)
+    public final <C extends Region<?>> Set<C> children(Class<C> type)
     {
         return instance().children(type);
     }
 
     @Override
-    public final int compareTo(final Region<T> that)
+    public final int compareTo(Region<T> that)
     {
         return name().compareTo(that.name());
     }
 
     @Override
-    public Containment containment(final Location location)
+    public Containment containment(Location location)
     {
-        for (final var polygon : borders())
+        for (var polygon : borders())
         {
-            final var containment = polygon.containment(location);
+            var containment = polygon.containment(location);
             if (containment.isInside())
             {
                 return containment;
@@ -533,9 +534,9 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     }
 
     @Override
-    public boolean contains(final Location location)
+    public boolean contains(Location location)
     {
-        for (final var polygon : borders())
+        for (var polygon : borders())
         {
             if (polygon.contains(location))
             {
@@ -545,9 +546,9 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         return false;
     }
 
-    public boolean contains(final Polyline line)
+    public boolean contains(Polyline line)
     {
-        for (final var polygon : borders())
+        for (var polygon : borders())
         {
             if (polygon.contains(line))
             {
@@ -557,9 +558,9 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         return false;
     }
 
-    public boolean contains(final Rectangle bounds)
+    public boolean contains(Rectangle bounds)
     {
-        for (final var polygon : borders())
+        for (var polygon : borders())
         {
             if (polygon.contains(bounds))
             {
@@ -592,17 +593,17 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Region)
         {
-            @SuppressWarnings("unchecked") final var that = (Region<T>) object;
+            @SuppressWarnings("unchecked") var that = (Region<T>) object;
             return Objects.equal(identity(), that.identity());
         }
         return false;
     }
 
-    public Duration estimatedGraphExtractionTime(final Bytes size)
+    public Duration estimatedGraphExtractionTime(Bytes size)
     {
         // The linear formula here was found by taking the graph extraction profiling data created
         // by running StateExtractionProfiler on all country files on the graph server and then
@@ -614,7 +615,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         return Duration.ONE_SECOND;
     }
 
-    public Duration estimatedPbfToGraphConversionTime(final Bytes size)
+    public Duration estimatedPbfToGraphConversionTime(Bytes size)
     {
         // The constant 0.0062 was found by taking the graph converter profiling data created by
         // running GraphConversionProfiler on all PBF files on the graph server and then using
@@ -632,7 +633,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     @KivaKitIncludeProperty
     public FileName fileName()
     {
-        return FileName.parse(name());
+        return FileName.parse(LOGGER, name());
     }
 
     /**
@@ -643,7 +644,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     {
         if (parent == null)
         {
-            return Folder.of(fileName());
+            return Folder.from(fileName());
         }
         else
         {
@@ -651,6 +652,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         }
     }
 
+    @SuppressWarnings("HttpUrlsUsage")
     @KivaKitIncludeProperty
     public URI geofabrikUri()
     {
@@ -662,7 +664,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
             }
             return new URI("http://download.geofabrik.de/" + geofabrikPath() + "-latest.osm.pbf");
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             return null;
         }
@@ -696,9 +698,9 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         return instance;
     }
 
-    public Location intersection(final Segment segment)
+    public Location intersection(Segment segment)
     {
-        for (final var polygon : borders())
+        for (var polygon : borders())
         {
             if (polygon.intersects(segment))
             {
@@ -709,9 +711,9 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     }
 
     @Override
-    public boolean intersects(final Rectangle rectangle)
+    public boolean intersects(Rectangle rectangle)
     {
-        for (final var polygon : borders())
+        for (var polygon : borders())
         {
             if (polygon.intersects(rectangle))
             {
@@ -721,9 +723,9 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         return false;
     }
 
-    public boolean intersectsOrContains(final Polyline line)
+    public boolean intersectsOrContains(Polyline line)
     {
-        for (final var polygon : borders())
+        for (var polygon : borders())
         {
             if (polygon.intersectsOrContains(line))
             {
@@ -741,7 +743,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         return false;
     }
 
-    public boolean isLargerThan(final Region<T> that)
+    public boolean isLargerThan(Region<T> that)
     {
         return largestArea().isGreaterThan(that.largestArea());
     }
@@ -759,7 +761,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
 
     public Area largestArea()
     {
-        final var largestBorder = largestBorder();
+        var largestBorder = largestBorder();
         if (largestBorder != null)
         {
             return largestBorder.bounds().area();
@@ -770,7 +772,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     public Polygon largestBorder()
     {
         Polygon largest = null;
-        for (final var polygon : borders())
+        for (var polygon : borders())
         {
             if (largest == null || polygon.bounds().area().isGreaterThan(largest.bounds().area()))
             {
@@ -798,7 +800,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         return metadata;
     }
 
-    public void metadata(final Object metadata)
+    public void metadata(Object metadata)
     {
         this.metadata = metadata;
     }
@@ -811,20 +813,24 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     }
 
     @Override
-    public void name(final String name)
+    public void name(String name)
     {
         instance().identity().name(name);
     }
 
     public final Collection<Region<?>> nestedChildren()
     {
-        final List<Region<?>> children = new ArrayList<>();
-        for (final Region<?> region : children())
+        List<Region<?>> children = new ArrayList<>();
+        for (Region<?> region : children())
         {
             children.add(region);
             children.addAll(region.nestedChildren());
         }
         return children;
+    }
+
+    public void onInitialize()
+    {
     }
 
     public final Region<?> parent()
@@ -847,10 +853,6 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         return typeForClass.get(subclass());
     }
 
-    protected void onInitialize()
-    {
-    }
-
     private String geofabrikPath()
     {
         if (this instanceof Continent)
@@ -868,23 +870,23 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         }
         if (this instanceof State)
         {
-            final var state = (State) this;
+            var state = (State) this;
             return parent().geofabrikPath() + "/" + geofabrikize(state.name());
         }
         if (this instanceof County)
         {
-            final var county = (County) this;
+            var county = (County) this;
             return parent().geofabrikPath() + "/" + geofabrikize(county.name());
         }
         if (this instanceof MetropolitanArea)
         {
-            final var metro = (MetropolitanArea) this;
+            var metro = (MetropolitanArea) this;
             return parent().geofabrikPath() + "/" + geofabrikize(metro.name());
         }
         return fail("Can't form geofabrik path for " + identity().mesakit());
     }
 
-    private String geofabrikize(final String name)
+    private String geofabrikize(String name)
     {
         return name.toLowerCase().replace("_", "-").replace(" ", "-");
     }

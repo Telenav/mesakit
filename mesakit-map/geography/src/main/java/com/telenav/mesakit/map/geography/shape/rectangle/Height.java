@@ -37,27 +37,27 @@ public class Height extends Angle
 
     public static final Height ZERO = nanodegrees(0);
 
-    public static Height angle(final Angle difference)
+    public static Height angle(Angle difference)
     {
         return nanodegrees(difference.asNanodegrees());
     }
 
-    public static Height degrees(final double degrees)
+    public static Height degrees(double degrees)
     {
         return nanodegrees((long) (degrees * NANODEGREES_PER_DEGREE));
     }
 
-    public static Height microdegrees(final int microdegrees)
+    public static Height microdegrees(int microdegrees)
     {
         return new Height(microdegrees * NANODEGREES_PER_MICRODEGREE);
     }
 
-    public static Height nanodegrees(final long nanodegrees)
+    public static Height nanodegrees(long nanodegrees)
     {
         return new Height(nanodegrees);
     }
 
-    protected Height(final long nanodegrees)
+    protected Height(long nanodegrees)
     {
         super(nanodegrees);
     }
@@ -85,7 +85,7 @@ public class Height extends Angle
     }
 
     @Override
-    public Height times(final double multiplier)
+    public Height times(double multiplier)
     {
         return nanodegrees((long) (asNanodegrees() * multiplier));
     }

@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.core.kernel.language.objects.Hash;
-import com.telenav.kivakit.core.kernel.language.objects.Objects;
+import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.objects.Objects;
 
 public class Intersection
 {
-    public static Intersection forStreets(final RoadName mainStreet, final RoadName crossStreet)
+    public static Intersection forStreets(RoadName mainStreet, RoadName crossStreet)
     {
         if (mainStreet != null && crossStreet != null)
         {
@@ -36,7 +36,7 @@ public class Intersection
 
     private final RoadName crossStreet;
 
-    private Intersection(final RoadName mainStreet, final RoadName crossStreet)
+    private Intersection(RoadName mainStreet, RoadName crossStreet)
     {
         this.mainStreet = mainStreet;
         this.crossStreet = crossStreet;
@@ -48,11 +48,11 @@ public class Intersection
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Intersection)
         {
-            final var that = (Intersection) object;
+            var that = (Intersection) object;
             return Objects.equal(mainStreet, that.mainStreet) && Objects.equal(crossStreet, that.crossStreet);
         }
         return false;

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections;
 
-import com.telenav.kivakit.core.test.UnitTest;
+import com.telenav.kivakit.test.UnitTest;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
 import com.telenav.mesakit.map.geography.Location;
@@ -27,26 +27,27 @@ import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapProjection;
 
 public abstract class BaseCoordinateMapperTest extends UnitTest
 {
-    protected void checkMapping(final MapProjection projection,
-                                final DrawingPoint point,
-                                final Location location)
+    protected void checkMapping(MapProjection projection,
+                                DrawingPoint point,
+                                Location location)
     {
-        final var projected = projection.toDrawing(location);
-        ensureEqual(point, projected);
-        final var mappedPoint = projection.toMap(point);
-        if (!location.isClose(mappedPoint, Angle.degrees(0.001)))
+        var projectedPoint = projection.toDrawing(location);
+        ensure(point.isClose(projectedPoint, 0.01), "");
+
+        var projectedLocation = projection.toMap(point);
+        if (!location.isClose(projectedLocation, Angle.degrees(0.001)))
         {
-            fail("location " + location + " is not close enough to " + mappedPoint);
+            fail("location " + location + " is not close enough to " + projectedLocation);
         }
     }
 
     @SuppressWarnings("SameParameterValue")
-    protected DrawingSize drawingSize(final int width, final int height)
+    protected DrawingSize drawingSize(int width, int height)
     {
         return DrawingSize.pixels(width, height);
     }
 
-    protected DrawingPoint point(final int x, final int y)
+    protected DrawingPoint point(int x, int y)
     {
         return DrawingPoint.pixels(x, y);
     }

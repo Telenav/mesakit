@@ -47,10 +47,10 @@ public abstract class EnglishRoadNameParser extends BaseRoadNameParser
      * {@inheritDoc}
      */
     @Override
-    public synchronized ParsedRoadName parse(final RoadName name)
+    public synchronized ParsedRoadName parse(RoadName name)
     {
         // Get input text
-        final var input = name.name();
+        var input = name.name();
         if (input.indexOf(';') >= 0)
         {
             throw new IllegalStateException(
@@ -91,14 +91,14 @@ public abstract class EnglishRoadNameParser extends BaseRoadNameParser
         return builder;
     }
 
-    protected String direction(final Token token)
+    protected String direction(Token token)
     {
         return direction.get(token);
     }
 
     protected String number()
     {
-        final var builder = new StringBuilder();
+        var builder = new StringBuilder();
         while (lookingAt(TOKENIZER.DIGIT))
         {
             builder.append(current().text());
@@ -107,12 +107,12 @@ public abstract class EnglishRoadNameParser extends BaseRoadNameParser
         return builder.length() > 0 ? builder.toString() : null;
     }
 
-    protected String number(final Token token)
+    protected String number(Token token)
     {
         return number.get(token);
     }
 
-    protected String ordinal(final Token token)
+    protected String ordinal(Token token)
     {
         return ordinal.get(token);
     }
@@ -152,13 +152,13 @@ public abstract class EnglishRoadNameParser extends BaseRoadNameParser
             if (suffix)
             {
                 builder.directionFormat(SUFFIXED);
-                final var removed = removeLast();
+                var removed = removeLast();
                 builder.direction(direction(removed), removed.text());
             }
             else if (prefix)
             {
                 builder.directionFormat(PREFIXED);
-                final var removed = removeFirst();
+                var removed = removeFirst();
                 builder.direction(direction(removed), removed.text());
             }
             else
@@ -186,8 +186,8 @@ public abstract class EnglishRoadNameParser extends BaseRoadNameParser
             // abbreviation for ROAD or the "rd" in "3rd". We know if it's a road type if the prior
             // token is whitespace. In other words, "3 rd" would be "3 road" and not "3rd".
 
-            final var last = last();
-            final var nextToLast = token(size() - 2);
+            var last = last();
+            var nextToLast = token(size() - 2);
 
             if (TOKENIZER.WHITESPACE.equals(nextToLast))
             {
@@ -217,7 +217,7 @@ public abstract class EnglishRoadNameParser extends BaseRoadNameParser
                 else if (TOKENIZER.isRoadType(last))
                 {
                     // remove the token and add to the builder
-                    final var removed = removeLast();
+                    var removed = removeLast();
                     builder.type(removed.name(), removed.text());
                 }
             }
@@ -234,7 +234,7 @@ public abstract class EnglishRoadNameParser extends BaseRoadNameParser
         if (TOKENIZER.isOrdinal(current()) || TOKENIZER.isTensDigit(current()))
         {
             // parse the one or two digit ordinal ('fifth', 'twenty-second') => (5th, 22nd)
-            final var ordinal = parseTwoDigitNamedOrdinal();
+            var ordinal = parseTwoDigitNamedOrdinal();
             if (ordinal != null && !hasMore())
             {
                 builder.baseName(ordinal, rawText());
@@ -246,7 +246,7 @@ public abstract class EnglishRoadNameParser extends BaseRoadNameParser
         if (TOKENIZER.isNamedDigit(current()))
         {
             // add the digit ('2')
-            final var name = new StringBuilder(number(current()));
+            var name = new StringBuilder(number(current()));
 
             // advance to next token
             next();
@@ -296,7 +296,7 @@ public abstract class EnglishRoadNameParser extends BaseRoadNameParser
                 skipAny(TOKENIZER.WHITESPACE);
 
                 // parse out two digit ordinal (ninety-ninth, fifth)
-                final var ordinal = parseTwoDigitNamedOrdinal();
+                var ordinal = parseTwoDigitNamedOrdinal();
                 if (ordinal != null && !hasMore())
                 {
                     name.append(ordinal);
@@ -327,11 +327,11 @@ public abstract class EnglishRoadNameParser extends BaseRoadNameParser
         if (lookingAt(TOKENIZER.DIGIT))
         {
             // get the specified number
-            final var number = number();
+            var number = number();
             if (number != null)
             {
                 // and add any suffix
-                final var name = new StringBuilder(number);
+                var name = new StringBuilder(number);
                 if (TOKENIZER.isNumericOrdinalSuffix(current()))
                 {
                     name.append(current().text());
@@ -371,7 +371,7 @@ public abstract class EnglishRoadNameParser extends BaseRoadNameParser
             if (TOKENIZER.isTensDigit(current()))
             {
                 // add the tens digit ('2')
-                final var name = new StringBuilder(number(current()));
+                var name = new StringBuilder(number(current()));
                 next();
                 skipAny(TOKENIZER.WHITESPACE);
 
@@ -397,7 +397,7 @@ public abstract class EnglishRoadNameParser extends BaseRoadNameParser
         return null;
     }
 
-    protected boolean shouldCapitalize(final Token previous, final Token token)
+    protected boolean shouldCapitalize(Token previous, Token token)
     {
         if (previous == null)
         {

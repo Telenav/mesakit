@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing.writers;
 
+import com.telenav.kivakit.resource.WritableResource;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessing;
-import com.telenav.kivakit.core.resource.WritableResource;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import crosby.binary.osmosis.OsmosisSerializer;
 import org.openstreetmap.osmosis.core.container.v0_6.BoundContainer;
 import org.openstreetmap.osmosis.core.container.v0_6.NodeContainer;
@@ -36,7 +36,7 @@ import org.openstreetmap.osmosis.osmbinary.file.BlockOutputStream;
 import java.util.Collection;
 import java.util.List;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 @UmlClassDiagram(diagram = DiagramPbfProcessing.class)
 public class PbfWriter
@@ -57,10 +57,10 @@ public class PbfWriter
     @UmlAggregation
     private Phase phase;
 
-    public PbfWriter(final WritableResource resource, final boolean wayNodeLocations)
+    public PbfWriter(WritableResource resource, boolean wayNodeLocations)
     {
         this.resource = resource;
-        final var output = new BlockOutputStream(resource.openForWriting());
+        var output = new BlockOutputStream(resource.openForWriting());
         serializer = new OsmosisSerializer(output);
         serializer.setUseDense(true);
         phase = Phase.NODES;
@@ -81,12 +81,12 @@ public class PbfWriter
         return resource;
     }
 
-    public synchronized void write(final Bound bound)
+    public synchronized void write(Bound bound)
     {
         serializer.process(new BoundContainer(bound));
     }
 
-    public synchronized void write(final PbfNode node)
+    public synchronized void write(PbfNode node)
     {
         if (phase != Phase.NODES)
         {
@@ -95,7 +95,7 @@ public class PbfWriter
         serializer.process(new NodeContainer(node.get()));
     }
 
-    public synchronized void write(final PbfRelation relation)
+    public synchronized void write(PbfRelation relation)
     {
         if (phase == Phase.WAYS)
         {
@@ -110,7 +110,7 @@ public class PbfWriter
         serializer.process(new RelationContainer(relation.get()));
     }
 
-    public synchronized void write(final PbfWay way)
+    public synchronized void write(PbfWay way)
     {
         if (phase == Phase.NODES)
         {
@@ -123,25 +123,25 @@ public class PbfWriter
         serializer.process(new WayContainer(way.get()));
     }
 
-    public synchronized void writeNodes(final List<PbfNode> nodes)
+    public synchronized void writeNodes(List<PbfNode> nodes)
     {
-        for (final var node : nodes)
+        for (var node : nodes)
         {
             write(node);
         }
     }
 
-    public synchronized void writeRelations(final Collection<PbfRelation> relations)
+    public synchronized void writeRelations(Collection<PbfRelation> relations)
     {
-        for (final var relation : relations)
+        for (var relation : relations)
         {
             write(relation);
         }
     }
 
-    public synchronized void writeWays(final List<PbfWay> ways)
+    public synchronized void writeWays(List<PbfWay> ways)
     {
-        for (final var way : ways)
+        for (var way : ways)
         {
             write(way);
         }

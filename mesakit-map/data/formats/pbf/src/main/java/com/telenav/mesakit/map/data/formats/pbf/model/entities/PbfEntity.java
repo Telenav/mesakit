@@ -1,16 +1,17 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.entities;
 
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
+import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagFilter;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelEntities;
-import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import org.jetbrains.annotations.NotNull;
 import org.openstreetmap.osmosis.core.domain.v0_6.Entity;
 import org.openstreetmap.osmosis.core.domain.v0_6.EntityType;
@@ -20,8 +21,8 @@ import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 import java.util.Date;
 import java.util.Iterator;
 
-import static com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat.PROGRAMMATIC_IDENTIFIER;
-import static com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat.USER_LABEL_IDENTIFIER;
+import static com.telenav.kivakit.kernel.language.strings.conversion.StringFormat.PROGRAMMATIC_IDENTIFIER;
+import static com.telenav.kivakit.kernel.language.strings.conversion.StringFormat.USER_LABEL_IDENTIFIER;
 
 /**
  * This wrapper (and {@link PbfNode}, {@link PbfWay} and {@link PbfRelation} subclasses) adds a slight amount of
@@ -43,13 +44,13 @@ public abstract class PbfEntity<T extends Entity> implements AsString, Iterable<
 
     private PbfTagList tagList;
 
-    public PbfEntity(final T entity)
+    public PbfEntity(T entity)
     {
         this.entity = entity;
     }
 
     @Override
-    public String asString(final StringFormat format)
+    public String asString(StringFormat format)
     {
         switch (format.identifier())
         {
@@ -72,7 +73,7 @@ public abstract class PbfEntity<T extends Entity> implements AsString, Iterable<
         return entity;
     }
 
-    public boolean hasKey(final String key)
+    public boolean hasKey(String key)
     {
         return tagMap().containsKey(key);
     }
@@ -110,12 +111,12 @@ public abstract class PbfEntity<T extends Entity> implements AsString, Iterable<
         return tagList;
     }
 
-    public PbfTagList tagList(final PbfTagFilter filter)
+    public PbfTagList tagList(PbfTagFilter filter)
     {
         return PbfTagList.from(entity.getTags(), filter);
     }
 
-    public PbfTagMap tagMap(final PbfTagFilter filter)
+    public PbfTagMap tagMap(PbfTagFilter filter)
     {
         return PbfTagMap.from(entity.getTags(), filter);
     }
@@ -129,63 +130,63 @@ public abstract class PbfEntity<T extends Entity> implements AsString, Iterable<
         return tagMap;
     }
 
-    public String tagValue(final String key, final String defaultValue)
+    public String tagValue(String key, String defaultValue)
     {
-        final var value = tagMap().get(key);
+        var value = tagMap().get(key);
         return value == null ? defaultValue : value;
     }
 
-    public String tagValue(final String key)
+    public String tagValue(String key)
     {
         return tagMap().get(key);
     }
 
-    public Count tagValueAsCount(final String key)
+    public Count tagValueAsCount(String key)
     {
-        return Count.parse(tagValue(key));
+        return Count.parseCount(Listener.console(), tagValue(key));
     }
 
-    public int tagValueAsInt(final String key)
+    public int tagValueAsInt(String key)
     {
         return tagMap().valueAsInt(key);
     }
 
-    public int tagValueAsNaturalNumber(final String key)
+    public int tagValueAsNaturalNumber(String key)
     {
         return tagMap().valueAsNaturalNumber(key);
     }
 
-    public StringList tagValueAsWords(final String key)
+    public StringList tagValueAsWords(String key)
     {
         return StringList.words(tagValue(key));
     }
 
-    public boolean tagValueIs(final String key, final String value)
+    public boolean tagValueIs(String key, String value)
     {
         return value.equals(tagValue(key));
     }
 
-    public boolean tagValueIsNegativeOne(final String key)
+    public boolean tagValueIsNegativeOne(String key)
     {
         return "-1".equals(tagValue(key));
     }
 
-    public boolean tagValueIsNo(final String key)
+    public boolean tagValueIsNo(String key)
     {
         return tagMap().valueIsNo(key);
     }
 
-    public boolean tagValueIsYes(final String key)
+    public boolean tagValueIsYes(String key)
     {
         return tagMap().valueIsYes(key);
     }
 
-    public StringList tagValueSplit(final String key, final char delimiter)
+    public StringList tagValueSplit(String key, char delimiter)
     {
         return StringList.split(tagValue(key), delimiter);
     }
 
-    public StringList tagValueSplit(final String key)
+    public StringList tagValueSplit(String key)
     {
         return tagMap().valueSplit(key);
     }

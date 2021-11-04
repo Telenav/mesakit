@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.core.kernel.interfaces.model.Identifiable;
-import com.telenav.kivakit.core.kernel.language.strings.CaseFormat;
+import com.telenav.kivakit.kernel.interfaces.model.Identifiable;
+import com.telenav.kivakit.kernel.language.strings.CaseFormat;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -116,18 +116,18 @@ public enum HighwayType implements Identifiable
         Arrays.stream(values()).forEach(type -> identifierToType.put(type.identifier(), type));
     }
 
-    public static HighwayType forIdentifier(final long identifier)
+    public static HighwayType forIdentifier(long identifier)
     {
         return identifierToType.get(identifier);
     }
 
-    public static HighwayType forName(final String name)
+    public static HighwayType forName(String name)
     {
         try
         {
             return valueOf(name);
         }
-        catch (final IllegalArgumentException ignored)
+        catch (IllegalArgumentException ignored)
         {
             return null;
         }
@@ -135,7 +135,7 @@ public enum HighwayType implements Identifiable
 
     private final int identifier;
 
-    HighwayType(final int identifier)
+    HighwayType(int identifier)
     {
         this.identifier = identifier;
     }

@@ -18,17 +18,19 @@
 
 package com.telenav.mesakit.map.utilities.geohash;
 
+import com.telenav.kivakit.test.UnitTest;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.kivakit.core.test.UnitTest;
 import org.junit.Test;
 
 import java.util.Collection;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 
 /**
+ * Note that the coordinates for geohashing are restricted from -85 to 85 latitude
+ *
  * @author Mihai Chintoanu
  * @author jonathanl (shibo)
  */
@@ -49,19 +51,19 @@ public class GeohashTest extends UnitTest
         }
 
         @Override
-        public char get(final int index)
+        public char get(int index)
         {
             return unsupported();
         }
 
         @Override
-        public int indexOf(final char character)
+        public int indexOf(char character)
         {
             return unsupported();
         }
 
         @Override
-        public boolean isValid(final String text)
+        public boolean isValid(String text)
         {
             return true;
         }
@@ -82,18 +84,18 @@ public class GeohashTest extends UnitTest
     @Test
     public void testBounds()
     {
-        expectBoundsForCode(-90, -180, 90, 180, "");
-        expectBoundsForCode(45, -180, 90, -135, "b");
-        expectBoundsForCode(65.5664062, -151.171875, 65.7421875, -150.8203125, "best");
-        expectBoundsForCode(-26.71875, -29.53125, -25.3125, -28.125, "777");
+        expectBoundsForCode(-85, -180, 85, 180, "");
+        expectBoundsForCode(42.5, -180, 85, -135, "b");
+        expectBoundsForCode(65.5761718, -151.171875, 65.7421875, -150.8203125, "bske");
+        expectBoundsForCode(-26.5625, -29.53125, -25.234375, -28.125, "775");
     }
 
     @Test
     public void testChildren()
     {
-        final var geohash = new Geohash(new Code("b"));
+        var geohash = new Geohash(new Code("b"));
         ensure(geohash.children().contains(new Geohash(new Code("be"))));
-        ensureFalse(geohash.children().contains(new Geohash(new Code("best"))));
+        ensureFalse(geohash.children().contains(new Geohash(new Code("bske"))));
     }
 
     @Test
@@ -102,7 +104,7 @@ public class GeohashTest extends UnitTest
         ensureEqual(0, Geohash.world().depth());
         ensureEqual(1, new Geohash(new Code("b")).depth());
         ensureEqual(4, new Geohash(new Code("best")).depth());
-        final var location = Location.degrees(0, 0);
+        var location = Location.degrees(0, 0);
         ensureEqual(1, new Geohash(location, 1).depth());
         ensureEqual(4, new Geohash(location, 4).depth());
     }
@@ -110,10 +112,10 @@ public class GeohashTest extends UnitTest
     @Test
     public void testEquals()
     {
-        final var code = "b";
-        final var location = Location.degrees(65.6, -151);
-        final var forCode = new Geohash(new Code(code));
-        final var forNonDefaultCode = new Geohash(new Code(nonDefaultAlphabet, code));
+        var code = "b";
+        var location = Location.degrees(65.6, -151);
+        var forCode = new Geohash(new Code(code));
+        var forNonDefaultCode = new Geohash(new Code(nonDefaultAlphabet, code));
 
         ensureEqual(forCode, new Geohash(new Code(code)));
         ensureFalse(forCode.equals(new Geohash(new Code("y"))));
@@ -125,8 +127,8 @@ public class GeohashTest extends UnitTest
     @Test
     public void testGeohash_Code()
     {
-        final var code = new Code("b");
-        final var geohash = new Geohash(code);
+        var code = new Code("b");
+        var geohash = new Geohash(code);
         ensureEqual(code, geohash.code());
     }
 
@@ -134,8 +136,8 @@ public class GeohashTest extends UnitTest
     public void testGeohash_Location_Resolution()
     {
         expectCodeForLocationAndResolution("b", 65.6, -151, 1);
-        expectCodeForLocationAndResolution("best", 65.6, -151, 4);
-        expectCodeForLocationAndResolution("777", -25.5, -29, 3);
+        expectCodeForLocationAndResolution("bske", 65.6, -151, 4);
+        expectCodeForLocationAndResolution("775", -25.5, -29, 3);
     }
 
     @Test(expected = AssertionError.class)
@@ -190,7 +192,7 @@ public class GeohashTest extends UnitTest
     public void testParent()
     {
         ensureNull(Geohash.world().parent());
-        final var geohash = new Geohash(new Code("b"));
+        var geohash = new Geohash(new Code("b"));
         ensureEqual(Geohash.world(), geohash.parent());
     }
 
@@ -212,31 +214,36 @@ public class GeohashTest extends UnitTest
         checkWorldCodeAndBounds(Geohash.world(null));
     }
 
-    private void checkWorldCodeAndBounds(final Geohash world)
+    private void checkWorldCodeAndBounds(Geohash world)
     {
         ensure(world.code().isRoot());
-        final var bounds = world.bounds();
+        var bounds = world.bounds();
         ensureEqual(Longitude.MINIMUM, bounds.left());
         ensureEqual(Longitude.MAXIMUM, bounds.right());
         ensureEqual(Latitude.MINIMUM, bounds.bottom());
         ensureEqual(Latitude.MAXIMUM, bounds.top());
     }
 
-    private void expectBoundsForCode(final double south, final double west, final double north, final double east,
-                                     final String code)
+    private void expectBoundsForCode(double south,
+                                     double west,
+                                     double north,
+                                     double east,
+                                     String code)
     {
-        final var geohash = new Geohash(new Code(code));
+        var geohash = new Geohash(new Code(code));
         ensureEqual(Latitude.degrees(north), geohash.bounds().top());
         ensureEqual(Latitude.degrees(south), geohash.bounds().bottom());
         ensureEqual(Longitude.degrees(east), geohash.bounds().right());
         ensureEqual(Longitude.degrees(west), geohash.bounds().left());
     }
 
-    private void expectCodeForLocationAndResolution(final String code, final double latitude, final double longitude,
-                                                    final int resolution)
+    private void expectCodeForLocationAndResolution(String code,
+                                                    double latitude,
+                                                    double longitude,
+                                                    int resolution)
     {
-        final var location = Location.degrees(latitude, longitude);
-        final var geohash = new Geohash(location, resolution);
+        var location = Location.degrees(latitude, longitude);
+        var geohash = new Geohash(location, resolution);
         ensureEqual(code, geohash.code().toString());
     }
 }

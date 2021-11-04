@@ -7,7 +7,6 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-source library-functions.sh
-source library-build.sh
+rm -rf $MESAKIT_ASSETS_HOME/docs/$MESAKIT_VERSION/javadoc/
 
-build $MESAKIT_HOME javadoc
+bash mesakit-build.sh javadoc

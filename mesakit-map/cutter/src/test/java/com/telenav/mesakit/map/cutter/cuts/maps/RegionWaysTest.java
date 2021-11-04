@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.cutter.cuts.maps;
 
-import com.telenav.kivakit.core.kernel.language.collections.set.Sets;
-import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
+import com.telenav.kivakit.kernel.language.collections.set.Sets;
+import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
@@ -32,22 +32,22 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class RegionWaysTest extends MapRegionUnitTest
+public class RegionWaysTest extends RegionUnitTest
 {
     @Test
     public void test()
     {
-        final RegionIndexMap regionIndexMap = regionIndexMap();
+        RegionIndexMap regionIndexMap = regionIndexMap();
         test(regionIndexMap, new RegionWays("test", regionIndexMap));
     }
 
     private RegionIndexMap regionIndexMap()
     {
-        final RegionIndexMap identifiers = new RegionIndexMap();
-        for (final State state : Country.UNITED_STATES.states())
+        RegionIndexMap identifiers = new RegionIndexMap();
+        for (State state : Country.UNITED_STATES.states())
         {
             identifiers.add(state);
-            for (final MetropolitanArea area : state.metropolitanAreas())
+            for (MetropolitanArea area : state.metropolitanAreas())
             {
                 identifiers.add(area);
             }
@@ -55,19 +55,19 @@ public class RegionWaysTest extends MapRegionUnitTest
         return identifiers;
     }
 
-    private void test(final RegionIndexMap regionIndexMap, final RegionWays ways)
+    private void test(RegionIndexMap regionIndexMap, RegionWays ways)
     {
-        final var waysPerList = 5;
+        var waysPerList = 5;
 
         var wayIdentifier = 1;
-        for (final State state : Country.UNITED_STATES.states())
+        for (State state : Country.UNITED_STATES.states())
         {
             ways.addAll(regionIndexMap.indexForRegion(state), ways(wayIdentifier, waysPerList));
             wayIdentifier += waysPerList;
         }
 
         wayIdentifier = 1;
-        for (final State state : Country.UNITED_STATES.states())
+        for (State state : Country.UNITED_STATES.states())
         {
             for (var i = 0; i < waysPerList; i++)
             {
@@ -80,10 +80,9 @@ public class RegionWaysTest extends MapRegionUnitTest
         }
     }
 
-    @SuppressWarnings("SameParameterValue")
-    private List<Way> ways(final long wayIdentifier, final int count)
+    private List<Way> ways(long wayIdentifier, int count)
     {
-        final List<Way> ways = new ArrayList<>();
+        List<Way> ways = new ArrayList<>();
         for (var i = 0; i < count; i++)
         {
             ways.add(new Way(new CommonEntityData(wayIdentifier + i, 1, new Date(), new OsmUser(3, "test"), 1)));

@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.core.kernel.language.objects.Hash;
-import com.telenav.kivakit.core.kernel.language.objects.Objects;
+import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.objects.Objects;
 
 /**
  * Identifies a segment of a given road between two cross streets. For example, I-5 between Mercer and Stewart.
@@ -28,8 +28,8 @@ import com.telenav.kivakit.core.kernel.language.objects.Objects;
  */
 public class BetweenCrossRoads
 {
-    public static BetweenCrossRoads newInstance(final RoadName mainRoad, final RoadName firstCrossStreet,
-                                                final RoadName secondCrossStreet)
+    public static BetweenCrossRoads newInstance(RoadName mainRoad, RoadName firstCrossStreet,
+                                                RoadName secondCrossStreet)
     {
         if (mainRoad != null)
         {
@@ -44,8 +44,8 @@ public class BetweenCrossRoads
 
     private final RoadName secondCrossStreet;
 
-    private BetweenCrossRoads(final RoadName mainRoad, final RoadName firstCrossStreet,
-                              final RoadName secondCrossStreet)
+    private BetweenCrossRoads(RoadName mainRoad, RoadName firstCrossStreet,
+                              RoadName secondCrossStreet)
     {
         this.mainRoad = mainRoad;
         this.firstCrossStreet = firstCrossStreet;
@@ -69,11 +69,11 @@ public class BetweenCrossRoads
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof BetweenCrossRoads)
         {
-            final var that = (BetweenCrossRoads) object;
+            var that = (BetweenCrossRoads) object;
             return Objects.equal(mainRoad, that.mainRoad)
                     && Objects.equal(firstCrossStreet, that.firstCrossStreet)
                     && Objects.equal(secondCrossStreet, that.secondCrossStreet);

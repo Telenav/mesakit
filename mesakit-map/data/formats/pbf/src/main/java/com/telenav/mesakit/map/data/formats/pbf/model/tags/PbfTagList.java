@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
-import com.telenav.kivakit.core.kernel.language.objects.Hash;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.AsIndentedString;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.AsStringIndenter;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat;
+import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
+import com.telenav.kivakit.kernel.language.strings.conversion.AsStringIndenter;
+import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -35,7 +35,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 @UmlClassDiagram(diagram = DiagramPbfModelTags.class)
 @UmlExcludeSuperTypes({ AsIndentedString.class, Iterable.class })
@@ -53,17 +53,17 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         return new PbfTagList(FIELDS);
     }
 
-    public static PbfTagList from(final Collection<Tag> tags)
+    public static PbfTagList from(Collection<Tag> tags)
     {
-        final var list = new PbfTagList(tags.size());
+        var list = new PbfTagList(tags.size());
         list.addAll(tags);
         return list;
     }
 
-    public static PbfTagList from(final Collection<Tag> tags, final PbfTagFilter filter)
+    public static PbfTagList from(Collection<Tag> tags, PbfTagFilter filter)
     {
-        final var list = new PbfTagList(tags.size());
-        for (final var tag : tags)
+        var list = new PbfTagList(tags.size());
+        for (var tag : tags)
         {
             if (filter.accepts(tag))
             {
@@ -73,9 +73,9 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         return list;
     }
 
-    public static PbfTagList of(final Tag tag)
+    public static PbfTagList of(Tag tag)
     {
-        final var list = new PbfTagList(1);
+        var list = new PbfTagList(1);
         list.add(tag);
         return list;
     }
@@ -103,7 +103,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
 
     private String key7, value7;
 
-    private PbfTagList(final int capacity)
+    private PbfTagList(int capacity)
     {
         if (capacity > FIELDS)
         {
@@ -111,7 +111,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         }
     }
 
-    public PbfTagList add(final Tag tag)
+    public PbfTagList add(Tag tag)
     {
         if (isCompact())
         {
@@ -127,7 +127,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         return this;
     }
 
-    public PbfTagList add(final String key, final String value)
+    public PbfTagList add(String key, String value)
     {
         assert key != null;
         assert value != null;
@@ -137,9 +137,9 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         return this;
     }
 
-    public PbfTagList addAll(final Iterable<Tag> tags)
+    public PbfTagList addAll(Iterable<Tag> tags)
     {
-        for (final var tag : tags)
+        for (var tag : tags)
         {
             add(tag);
         }
@@ -157,13 +157,13 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
     }
 
     @Override
-    public AsStringIndenter asString(final StringFormat format, final AsStringIndenter indenter)
+    public AsStringIndenter asString(StringFormat format, AsStringIndenter indenter)
     {
         indenter.bracketed(sorted(), tag -> indenter.add(tag.toString()));
         return indenter;
     }
 
-    public boolean containsKey(final String key)
+    public boolean containsKey(String key)
     {
         for (var index = 0; index < size(); index++)
         {
@@ -177,18 +177,18 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
 
     public PbfTagList copy()
     {
-        final var copy = new PbfTagList(size());
+        var copy = new PbfTagList(size());
         copy.addAll(this);
         return copy;
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof PbfTagList)
         {
-            final var that = (PbfTagList) object;
-            final var size = size();
+            var that = (PbfTagList) object;
+            var size = size();
             if (size == that.size())
             {
                 for (var i = 0; i < size; i++)
@@ -204,7 +204,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         return false;
     }
 
-    public Tag get(final int index)
+    public Tag get(int index)
     {
         if (isCompact())
         {
@@ -244,11 +244,11 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         }
     }
 
-    public Tag get(final String key)
+    public Tag get(String key)
     {
         if (isCompact())
         {
-            final var value = valueForKey(key);
+            var value = valueForKey(key);
             if (value != null)
             {
                 return new Tag(key, value);
@@ -288,7 +288,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
 
     public boolean isValid()
     {
-        for (final var tag : this)
+        for (var tag : this)
         {
             if (tag.getKey() == null || tag.getValue() == null)
             {
@@ -319,10 +319,10 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         };
     }
 
-    public PbfTagList matchingKey(final String key)
+    public PbfTagList matchingKey(String key)
     {
-        final var copy = new PbfTagList(size());
-        for (final var tag : this)
+        var copy = new PbfTagList(size());
+        for (var tag : this)
         {
             if (tag.getKey().equals(key))
             {
@@ -332,12 +332,12 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         return copy;
     }
 
-    public void removeKey(final String key)
+    public void removeKey(String key)
     {
         asList().removeIf(next -> next.getKey().equalsIgnoreCase(key));
     }
 
-    public void retainOnly(final Set<String> keys)
+    public void retainOnly(Set<String> keys)
     {
         asList().removeIf(tag -> !keys.contains(tag.getKey()));
     }
@@ -347,7 +347,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
      * <p>
      * If either the key or the value is null, that aspect of the tag at the given index remains unchanged
      */
-    public PbfTagList set(final int index, final String key, final String value)
+    public PbfTagList set(int index, String key, String value)
     {
         // Increase capacity by one, if necessary,
         if (index + 1 > size())
@@ -406,7 +406,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
      */
     public PbfTagList sorted()
     {
-        final var copy = copy();
+        var copy = copy();
         copy.asList();
         copy.tags.sort(Comparator.comparing(Tag::getKey));
         return copy;
@@ -415,7 +415,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
     @Override
     public String toString()
     {
-        final List<Tag> list;
+        List<Tag> list;
         if (isCompact())
         {
             list = new ArrayList<>();
@@ -435,7 +435,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
     /**
      * The value for the given key, or null if the key is not in this tag list
      */
-    public String valueForKey(final String key)
+    public String valueForKey(String key)
     {
         if (isCompact())
         {
@@ -449,7 +449,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         }
         else
         {
-            final var tag = get(key);
+            var tag = get(key);
             if (tag != null)
             {
                 return tag.getValue();
@@ -458,9 +458,9 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         return null;
     }
 
-    public String valueForKey(final String key, final String defaultValue)
+    public String valueForKey(String key, String defaultValue)
     {
-        final var value = valueForKey(key);
+        var value = valueForKey(key);
         if (value == null)
         {
             return defaultValue;
@@ -468,10 +468,10 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         return value;
     }
 
-    public PbfTagList withoutKey(final String key)
+    public PbfTagList withoutKey(String key)
     {
-        final var copy = new PbfTagList(size());
-        for (final var tag : this)
+        var copy = new PbfTagList(size());
+        for (var tag : this)
         {
             if (!tag.getKey().equals(key))
             {
@@ -481,7 +481,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         return copy;
     }
 
-    private String fieldKey(final int index)
+    private String fieldKey(int index)
     {
         switch (index)
         {
@@ -512,7 +512,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         return fail("Invalid field index");
     }
 
-    private void fieldKey(final int index, final String key)
+    private void fieldKey(int index, String key)
     {
         switch (index)
         {
@@ -550,7 +550,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         }
     }
 
-    private String fieldValue(final int index)
+    private String fieldValue(int index)
     {
         switch (index)
         {
@@ -581,7 +581,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         return fail("Invalid field index");
     }
 
-    private void fieldValue(final int index, final String value)
+    private void fieldValue(int index, String value)
     {
         switch (index)
         {
@@ -630,7 +630,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         return tags == null;
     }
 
-    private String key(final int index)
+    private String key(int index)
     {
         if (isCompact())
         {
@@ -666,16 +666,16 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         }
         else
         {
-            final var tag = tags.get(index);
+            var tag = tags.get(index);
             return tag == null ? null : tag.getKey();
         }
     }
 
-    private void size(final int size)
+    private void size(int size)
     {
         if (tags == null && size > FIELDS)
         {
-            final var tags = new ArrayList<Tag>(16);
+            var tags = new ArrayList<Tag>(16);
             for (var index = 0; index < this.size; index++)
             {
                 tags.add(new Tag(key(index), value(index)));
@@ -707,7 +707,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         }
     }
 
-    private String value(final int index)
+    private String value(int index)
     {
         if (isCompact())
         {

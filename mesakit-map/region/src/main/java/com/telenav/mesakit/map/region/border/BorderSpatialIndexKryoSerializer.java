@@ -18,6 +18,9 @@
 
 package com.telenav.mesakit.map.region.border;
 
+import com.telenav.kivakit.kernel.interfaces.lifecycle.Configured;
+import com.telenav.kivakit.kernel.language.values.count.MutableCount;
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.rtree.InteriorNode;
 import com.telenav.mesakit.map.geography.indexing.rtree.Leaf;
@@ -29,45 +32,42 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.border.cache.BorderCache;
-import com.telenav.kivakit.core.kernel.interfaces.lifecycle.Configured;
-import com.telenav.kivakit.core.kernel.language.values.count.MutableCount;
-import com.telenav.kivakit.core.serialization.kryo.KryoSerializationSession;
 
 public class BorderSpatialIndexKryoSerializer<T extends Region<T>> extends RTreeSpatialIndexKryoSerializer<Border<T>> implements Configured<BorderCache.Settings<T>>
 {
     private BorderCache.Settings<T> settings;
 
     @Override
-    public void configure(final BorderCache.Settings<T> settings)
+    public void configure(BorderCache.Settings<T> settings)
     {
         this.settings = settings;
     }
 
     @Override
-    protected BorderSpatialIndex<T> newSpatialIndex(final RTreeSettings settings)
+    protected BorderSpatialIndex<T> newSpatialIndex(RTreeSettings settings)
     {
         return new BorderSpatialIndex<>("kryo", settings);
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     @Override
-    protected Leaf readLeaf(final KryoSerializationSession session,
-                            final RTreeSpatialIndex index,
-                            final InteriorNode parent)
+    protected Leaf readLeaf(KryoSerializationSession session,
+                            RTreeSpatialIndex index,
+                            InteriorNode parent)
     {
-        final var leaf = new BorderLeaf<T>(index, parent);
-        final int size = session.readObject(int.class);
+        var leaf = new BorderLeaf<T>(index, parent);
+        int size = session.readObject(int.class);
         for (var i = 0; i < size; i++)
         {
             // Populate the region identity and the border polygon.
-            final var identity = session.readObject(RegionIdentity.class);
-            final var polygon = session.readObject(Polygon.class);
+            var identity = session.readObject(RegionIdentity.class);
+            var polygon = session.readObject(Polygon.class);
             if (identity.isValid())
             {
-                final var region = settings.regionFactory().newInstance(identity);
+                var region = settings.regionFactory().newInstance(identity);
                 if (region != null)
                 {
-                    final var border = new Border<>(region, polygon);
+                    var border = new Border<>(region, polygon);
                     leaf.borders.add(border);
                 }
             }
@@ -84,12 +84,12 @@ public class BorderSpatialIndexKryoSerializer<T extends Region<T>> extends RTree
     }
 
     @Override
-    protected void writeLeaf(final KryoSerializationSession session,
-                             final Leaf<Border<T>> leaf)
+    protected void writeLeaf(KryoSerializationSession session,
+                             Leaf<Border<T>> leaf)
     {
-        final Iterable<Border<T>> borders = ((BorderLeaf<T>) leaf).borders;
-        final var size = new MutableCount();
-        for (final var border : borders)
+        Iterable<Border<T>> borders = ((BorderLeaf<T>) leaf).borders;
+        var size = new MutableCount();
+        for (var border : borders)
         {
             if (border.isValid())
             {
@@ -97,7 +97,7 @@ public class BorderSpatialIndexKryoSerializer<T extends Region<T>> extends RTree
             }
         }
         session.writeObject((int) size.asLong());
-        for (final var border : borders)
+        for (var border : borders)
         {
             if (border.region().isValid())
             {

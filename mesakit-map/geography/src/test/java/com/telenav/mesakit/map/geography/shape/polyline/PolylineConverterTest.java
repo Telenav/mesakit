@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
-import com.telenav.kivakit.core.kernel.language.strings.formatting.Separators;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.test.UnitTest;
+import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.test.UnitTest;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
@@ -39,14 +39,14 @@ public class PolylineConverterTest extends UnitTest
     @Test
     public void testOnConvertToString()
     {
-        final var builder = new PolylineBuilder();
+        var builder = new PolylineBuilder();
         builder.add(new Location(Latitude.degrees(37.38592), Longitude.degrees(-122.00602)));
         builder.add(new Location(Latitude.degrees(37.38553), Longitude.degrees(-122.00602)));
         builder.add(new Location(Latitude.degrees(37.38557), Longitude.degrees(-122.00426)));
         builder.add(new Location(Latitude.degrees(37.38648), Longitude.degrees(-122.00430)));
 
-        final var polyline = builder.build();
-        final var stringConversion = polylineConverter.toStringConverter().convert(polyline);
+        var polyline = builder.build();
+        var stringConversion = polylineConverter.unconvert(polyline);
         ensureEqual(polyline, polylineConverter.onConvert(stringConversion));
     }
 }

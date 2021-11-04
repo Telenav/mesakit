@@ -1,16 +1,16 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelTags;
-import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.core.kernel.language.iteration.Iterators;
-import com.telenav.kivakit.core.kernel.language.primitives.Ints;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.iteration.Iterators;
+import com.telenav.kivakit.kernel.language.primitives.Ints;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelTags;
 import org.jetbrains.annotations.NotNull;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.Iterator;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 
 /**
  * @author jonathanl (shibo)
@@ -24,25 +24,25 @@ public class EmptyPbfTagMap extends PbfTagMap
     }
 
     @Override
-    public boolean containsKey(final String key)
+    public boolean containsKey(String key)
     {
         return false;
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         return super.equals(object);
     }
 
     @Override
-    public String get(final String key)
+    public String get(String key)
     {
         return null;
     }
 
     @Override
-    public String get(final String key, final String defaultValue)
+    public String get(String key, String defaultValue)
     {
         return null;
     }
@@ -72,13 +72,13 @@ public class EmptyPbfTagMap extends PbfTagMap
     }
 
     @Override
-    public void put(final String key, final String value)
+    public void put(String key, String value)
     {
         unsupported();
     }
 
     @Override
-    public void putAll(final Iterable<Tag> tags)
+    public void putAll(Iterable<Tag> tags)
     {
         unsupported();
     }
@@ -90,31 +90,31 @@ public class EmptyPbfTagMap extends PbfTagMap
     }
 
     @Override
-    public Tag tag(final String key)
+    public Tag tag(String key)
     {
         return null;
     }
 
     @Override
-    public String value(final String key)
+    public String value(String key)
     {
         return null;
     }
 
     @Override
-    public int valueAsInt(final String key)
+    public int valueAsInt(String key)
     {
         return Ints.INVALID;
     }
 
     @Override
-    public int valueAsNaturalNumber(final String key)
+    public int valueAsNaturalNumber(String key)
     {
         return Ints.INVALID;
     }
 
     @Override
-    public StringList valueSplit(final String key)
+    public StringList valueSplit(String key)
     {
         return new StringList();
     }

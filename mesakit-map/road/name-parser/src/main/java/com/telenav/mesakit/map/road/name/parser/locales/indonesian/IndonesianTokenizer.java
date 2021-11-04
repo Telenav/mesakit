@@ -250,47 +250,47 @@ public class IndonesianTokenizer extends Tokenizer
     public final Token CLOSE_PARENTHESIS = create("CloseParenthesis")
             .matchesAnyOf(")");
 
-    public boolean isCardinalDirection(final Token token)
+    public boolean isCardinalDirection(Token token)
     {
         return cardinalDirections.contains(token);
     }
 
-    public boolean isCloseParenthesis(final Token token)
+    public boolean isCloseParenthesis(Token token)
     {
         return token != null && token.equals(CLOSE_PARENTHESIS);
     }
 
-    public boolean isDigit(final Token token)
+    public boolean isDigit(Token token)
     {
         return token != null && token.equals(DIGIT);
     }
 
-    public boolean isOctant(final Token token)
+    public boolean isOctant(Token token)
     {
         return octants.contains(token);
     }
 
-    public boolean isOpenParenthesis(final Token token)
+    public boolean isOpenParenthesis(Token token)
     {
         return token != null && token.equals(OPEN_PARENTHESIS);
     }
 
-    public boolean isProperName(final Token token)
+    public boolean isProperName(Token token)
     {
         return properNames.contains(token);
     }
 
-    public boolean isQuadrant(final Token token)
+    public boolean isQuadrant(Token token)
     {
         return quadrants.contains(token);
     }
 
-    public boolean isRoadType(final Token token)
+    public boolean isRoadType(Token token)
     {
         return roadTypes.contains(token);
     }
 
-    public boolean isRomanNumeral(final Token token)
+    public boolean isRomanNumeral(Token token)
     {
         return token.text().matches("[XIV]+");
     }

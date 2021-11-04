@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.measurements.geographic;
 
-import com.telenav.kivakit.core.collections.map.CaseFoldingStringMap;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
+import com.telenav.kivakit.collections.map.CaseFoldingStringMap;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
@@ -55,7 +55,7 @@ public enum Direction implements Named
     static
     {
         // Populate the nameToDirection map with canonical names that    we can parse
-        for (final var direction : values())
+        for (var direction : values())
         {
             // NORTH
             Direction.nameToDirection.put(direction.name(), direction);
@@ -78,7 +78,7 @@ public enum Direction implements Named
      * @param text The text to be parsed(NW, N, SB, SE, SOUTHBOUND, EB, etc.)
      * @return The direction associated with the identifier or null if none could be found.
      */
-    public static Direction parse(final String text)
+    public static Direction parse(String text)
     {
         return nameToDirection.get(SPACES_AND_PERIODS.matcher(text).replaceAll(""));
     }
@@ -88,13 +88,13 @@ public enum Direction implements Named
      */
     public static class Converter extends BaseStringConverter<Direction>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Direction onConvertToObject(final String value)
+        protected Direction onToValue(String value)
         {
             return parse(value);
         }
@@ -106,7 +106,7 @@ public enum Direction implements Named
     /** The heading for this compass direction */
     private final Heading heading;
 
-    Direction(final String abbreviation, final Heading heading)
+    Direction(String abbreviation, Heading heading)
     {
         this.abbreviation = abbreviation;
         this.heading = heading;

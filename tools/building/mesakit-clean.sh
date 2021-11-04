@@ -7,6 +7,9 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-source $KIVAKIT_FUNCTIONS
+source "$MESAKIT_WORKSPACE"/mesakit/tools/library/mesakit-library-functions.sh
 
-clean_temporary_files $MESAKIT_HOME
+clean_cache "$MESAKIT_CACHE_HOME"
+clean_temporary_files "$MESAKIT_WORKSPACE"
+
+bash mesakit-maven-setup.sh

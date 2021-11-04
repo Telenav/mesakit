@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.utilities.grid;
 
-import com.telenav.kivakit.core.kernel.language.objects.Hash;
-import com.telenav.kivakit.core.kernel.language.primitives.Ints;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.StringFormat;
+import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.kernel.language.primitives.Ints;
+import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
+import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
 
 public class GridCellIdentifier implements AsString
 {
@@ -41,14 +41,14 @@ public class GridCellIdentifier implements AsString
         latitudeIndex = 0;
     }
 
-    public GridCellIdentifier(final Grid grid, final int identifier)
+    public GridCellIdentifier(Grid grid, int identifier)
     {
         this.identifier = identifier;
         latitudeIndex = Ints.high(identifier);
         longitudeIndex = Ints.low(identifier);
     }
 
-    public GridCellIdentifier(final Grid grid, final int latitudeIndex, final int longitudeIndex)
+    public GridCellIdentifier(Grid grid, int latitudeIndex, int longitudeIndex)
     {
         identifier = Ints.forHighLow(latitudeIndex, longitudeIndex);
         this.longitudeIndex = longitudeIndex;
@@ -56,17 +56,17 @@ public class GridCellIdentifier implements AsString
     }
 
     @Override
-    public String asString(final StringFormat format)
+    public String asString(StringFormat format)
     {
         return "[CellIdentifier " + this + "]";
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof GridCellIdentifier)
         {
-            final var that = (GridCellIdentifier) object;
+            var that = (GridCellIdentifier) object;
             return longitudeIndex == that.longitudeIndex && latitudeIndex == that.latitudeIndex;
         }
         return false;

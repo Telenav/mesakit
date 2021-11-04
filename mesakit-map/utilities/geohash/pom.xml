@@ -7,10 +7,11 @@
 
 <project xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <parent>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-utilities</artifactId>
-        <version>0.9.5-alpha-SNAPSHOT</version>
+        <version>0.9.9-SNAPSHOT</version>
     </parent>
 
     <name>MesaKit Map Utilities - Geohash</name>
@@ -26,7 +27,6 @@
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-map-geography</artifactId>
-            <version>${mesakit.version}</version>
         </dependency>
 
     </dependencies>

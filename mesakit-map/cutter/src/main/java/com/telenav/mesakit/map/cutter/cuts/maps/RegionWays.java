@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.cutter.cuts.maps;
 
-import com.telenav.kivakit.core.collections.map.MultiMap;
-import com.telenav.kivakit.core.kernel.language.vm.JavaVirtualMachine.KivaKitExcludeFromSizeOf;
+import com.telenav.kivakit.collections.map.MultiMap;
+import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine.KivaKitExcludeFromSizeOf;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionSet;
-import com.telenav.mesakit.map.region.project.MapRegionLimits;
+import com.telenav.mesakit.map.region.project.RegionLimits;
 import org.openstreetmap.osmosis.core.domain.v0_6.Way;
 
 import java.util.ArrayList;
@@ -51,18 +51,18 @@ public class RegionWays
      */
     private final MultiMap<Long, Integer> moreRegionsForWay = new MultiMap<>();
 
-    public RegionWays(final String name, final RegionIndexMap regionIndexMap)
+    public RegionWays(String name, RegionIndexMap regionIndexMap)
     {
         this.regionIndexMap = regionIndexMap;
 
         regionForWay = new SplitLongToIntMap(name + ".regionForWay");
-        regionForWay.initialSize(MapRegionLimits.ESTIMATED_WAYS);
+        regionForWay.initialSize(RegionLimits.ESTIMATED_WAYS);
         regionForWay.initialize();
     }
 
-    public void add(final int regionIndex, final long wayIdentifier)
+    public void add(int regionIndex, long wayIdentifier)
     {
-        final var index = regionForWay.get(wayIdentifier);
+        var index = regionForWay.get(wayIdentifier);
         if (regionForWay.isNull(index))
         {
             regionForWay.put(wayIdentifier, regionIndex);
@@ -73,27 +73,27 @@ public class RegionWays
         }
     }
 
-    public void add(final Region<?> region, final PbfWay way)
+    public void add(Region<?> region, PbfWay way)
     {
         add(regionIndexMap.indexForRegion(region), way.identifierAsLong());
     }
 
-    public void addAll(final int regionIndex, final List<Way> ways)
+    public void addAll(int regionIndex, List<Way> ways)
     {
         // Add the region index to our set
         regionIndexes.add(regionIndex);
 
         // Go through each way
-        for (final var way : ways)
+        for (var way : ways)
         {
             // and add it to the given region
             add(regionIndex, way.getId());
         }
     }
 
-    public boolean contains(final int regionIndex, final long wayIdentifier)
+    public boolean contains(int regionIndex, long wayIdentifier)
     {
-        for (final var index : regionIndexes(wayIdentifier))
+        for (var index : regionIndexes(wayIdentifier))
         {
             if (index == regionIndex)
             {
@@ -108,19 +108,19 @@ public class RegionWays
         return regionIndexMap.regionsForIndexes(regionIndexes);
     }
 
-    public RegionSet regions(final long wayIdentifier)
+    public RegionSet regions(long wayIdentifier)
     {
         return regionIndexMap.regionsForIndexes(regionIndexes(wayIdentifier));
     }
 
-    private List<Integer> regionIndexes(final long wayIdentifier)
+    private List<Integer> regionIndexes(long wayIdentifier)
     {
-        final List<Integer> indexes = new ArrayList<>();
-        final var regionIndex = regionForWay.get(wayIdentifier);
+        List<Integer> indexes = new ArrayList<>();
+        var regionIndex = regionForWay.get(wayIdentifier);
         if (!regionForWay.isNull(regionIndex))
         {
             indexes.add(regionIndex);
-            final List<Integer> more = moreRegionsForWay.get(wayIdentifier);
+            List<Integer> more = moreRegionsForWay.get(wayIdentifier);
             if (more != null)
             {
                 indexes.addAll(more);

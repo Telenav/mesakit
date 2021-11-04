@@ -18,38 +18,38 @@
 
 package com.telenav.mesakit.map.road.name.standardizer;
 
+import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.map.region.locale.MapLocale;
-import com.telenav.mesakit.map.region.project.MapRegionUnitTest;
+import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.ParsedRoadName;
-import com.telenav.kivakit.core.resource.Resource;
 import org.junit.Ignore;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Ignore
-public abstract class RoadNameStandardizerTest extends MapRegionUnitTest
+public abstract class RoadNameStandardizerTest extends RegionUnitTest
 {
     private final RoadNameStandardizer standardizer;
 
     private List<String> lines;
 
-    protected RoadNameStandardizerTest(final String g2Country, final String g2Language)
+    protected RoadNameStandardizerTest(String g2Country, String g2Language)
     {
         standardizer = RoadNameStandardizer.get(locale(), RoadNameStandardizer.Mode.MESAKIT_STANDARDIZATION);
     }
 
     protected abstract MapLocale locale();
 
-    protected abstract String normalize(final String string);
+    protected abstract String normalize(String string);
 
-    protected Iterable<String> regressionTestCases(final Resource resource)
+    protected Iterable<String> regressionTestCases(Resource resource)
     {
         if (lines == null)
         {
             lines = new ArrayList<>();
-            for (final String line : resource.reader().linesAsStringList())
+            for (String line : resource.reader().linesAsStringList())
             {
                 if (!line.startsWith("#"))
                 {
@@ -60,15 +60,15 @@ public abstract class RoadNameStandardizerTest extends MapRegionUnitTest
         return lines;
     }
 
-    protected ParsedRoadName standardize(final String given)
+    protected ParsedRoadName standardize(String given)
     {
         return standardizer.standardize(RoadName.forName(given));
     }
 
-    protected void test(final String expected, String given)
+    protected void test(String expected, String given)
     {
         given = normalize(given);
-        final var parsed = standardize(given);
+        var parsed = standardize(given);
         ensureEqual(expected, parsed.toString());
         ensureEqual(given, parsed.asRawRoadName().name());
         trace(given + " -> " + parsed);

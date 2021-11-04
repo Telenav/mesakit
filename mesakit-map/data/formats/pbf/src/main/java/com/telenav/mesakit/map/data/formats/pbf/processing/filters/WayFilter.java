@@ -18,28 +18,28 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing.filters;
 
-import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessingFilters;
-import com.telenav.kivakit.core.commandline.SwitchParser;
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.interfaces.comparison.Filter;
-import com.telenav.kivakit.core.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.core.kernel.language.collections.map.string.NameMap;
-import com.telenav.kivakit.core.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.core.kernel.language.strings.Strings;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
-import com.telenav.kivakit.core.resource.Resource;
+import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.interfaces.comparison.Filter;
+import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.collections.map.string.NameMap;
+import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
+import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.resource.Resource;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessingFilters;
 
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 @UmlClassDiagram(diagram = DiagramPbfProcessingFilters.class)
 @UmlExcludeSuperTypes(Named.class)
@@ -49,12 +49,12 @@ public class WayFilter implements Filter<PbfWay>, Named
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static WayFilter exclude(final String name, final Resource resource)
+    public static WayFilter exclude(String name, Resource resource)
     {
-        final var filter = new WayFilter(name, "exclude list from resource");
-        for (final var line : resource.reader().lines(ProgressReporter.NULL))
+        var filter = new WayFilter(name, "exclude list from resource");
+        for (var line : resource.reader().lines(ProgressReporter.NULL))
         {
-            final var highway = line.trim();
+            var highway = line.trim();
             if (!Strings.isEmpty(highway))
             {
                 filter.exclude(highway);
@@ -63,9 +63,9 @@ public class WayFilter implements Filter<PbfWay>, Named
         return filter;
     }
 
-    public static WayFilter forName(final String name)
+    public static WayFilter forName(String name)
     {
-        final var filter = wayFilterForName.get(name);
+        var filter = wayFilterForName.get(name);
         if (filter != null)
         {
             return filter;
@@ -73,12 +73,12 @@ public class WayFilter implements Filter<PbfWay>, Named
         return fail("Unrecognized way filter '" + name + "'");
     }
 
-    public static WayFilter include(final String name, final Resource resource)
+    public static WayFilter include(String name, Resource resource)
     {
-        final var filter = new WayFilter(name, "include list from resource");
-        for (final var line : resource.reader().lines(ProgressReporter.NULL))
+        var filter = new WayFilter(name, "include list from resource");
+        for (var line : resource.reader().lines(ProgressReporter.NULL))
         {
-            final var highway = line.trim();
+            var highway = line.trim();
             if (!Strings.isEmpty(highway))
             {
                 filter.include(highway);
@@ -87,29 +87,30 @@ public class WayFilter implements Filter<PbfWay>, Named
         return filter;
     }
 
-    public static SwitchParser.Builder<WayFilter> switchParser(final String name, final String description)
+    public static SwitchParser.Builder<WayFilter> wayFilterSwitchParser(Listener listener, String name,
+                                                                        String description)
     {
         return SwitchParser.builder(WayFilter.class)
                 .name(name)
                 .description(description)
-                .converter(new Converter(LOGGER));
+                .converter(new Converter(listener));
     }
 
-    public static SwitchParser.Builder<WayFilter> wayFilter()
+    public static SwitchParser.Builder<WayFilter> wayFilterSwitchParser(Listener listener)
     {
         PbfFilters.loadAll();
-        return switchParser("way-filter", "The name of a way filter:\n\n" + help());
+        return wayFilterSwitchParser(listener, "way-filter", "The name of a way filter:\n\n" + help());
     }
 
     public static class Converter extends BaseStringConverter<WayFilter>
     {
-        public Converter(final Listener listener)
+        public Converter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected WayFilter onConvertToObject(final String value)
+        protected WayFilter onToValue(String value)
         {
             return forName(value);
         }
@@ -123,7 +124,7 @@ public class WayFilter implements Filter<PbfWay>, Named
 
     private final String description;
 
-    public WayFilter(final String name, final String description)
+    public WayFilter(String name, String description)
     {
         this.name = name;
         this.description = description;
@@ -131,7 +132,7 @@ public class WayFilter implements Filter<PbfWay>, Named
     }
 
     @Override
-    public boolean accepts(final PbfWay way)
+    public boolean accepts(PbfWay way)
     {
         // We don't accept anything that's not a highway or ferry route at this time
         if (!(isHighway(way) || isFerryRoute(way)))
@@ -140,8 +141,8 @@ public class WayFilter implements Filter<PbfWay>, Named
         }
 
         // Ensure if we're including or excluding
-        final var include = !included.isEmpty();
-        final var exclude = !excluded.isEmpty();
+        var include = !included.isEmpty();
+        var exclude = !excluded.isEmpty();
 
         // Don't allow both options
         if (exclude && include)
@@ -173,12 +174,12 @@ public class WayFilter implements Filter<PbfWay>, Named
         return description;
     }
 
-    public void exclude(final String highway)
+    public void exclude(String highway)
     {
         excluded.add(highway);
     }
 
-    public void include(final String highway)
+    public void include(String highway)
     {
         included.add(highway);
     }
@@ -195,9 +196,9 @@ public class WayFilter implements Filter<PbfWay>, Named
         return name();
     }
 
-    protected boolean isExcluded(final PbfWay way)
+    protected boolean isExcluded(PbfWay way)
     {
-        for (final var highway : way.highways())
+        for (var highway : way.highways())
         {
             if (excluded.contains(highway))
             {
@@ -211,9 +212,9 @@ public class WayFilter implements Filter<PbfWay>, Named
         return "ferry".equals(way.tagValue("route")) && excluded.contains("ferry");
     }
 
-    protected boolean isIncluded(final PbfWay way)
+    protected boolean isIncluded(PbfWay way)
     {
-        for (final var highway : way.highways())
+        for (var highway : way.highways())
         {
             if (included.contains(highway))
             {
@@ -225,22 +226,22 @@ public class WayFilter implements Filter<PbfWay>, Named
 
     private static String help()
     {
-        final var help = new StringList();
-        for (final var name : wayFilterForName.keySet())
+        var help = new StringList();
+        for (var name : wayFilterForName.keySet())
         {
-            final var filter = wayFilterForName.get(name);
+            var filter = wayFilterForName.get(name);
             help.add(name + " - " + filter.description());
         }
         help.sort(Comparator.naturalOrder());
         return help.bulleted(4) + "\n";
     }
 
-    private boolean isFerryRoute(final PbfWay way)
+    private boolean isFerryRoute(PbfWay way)
     {
         return way.hasKey("route") && "ferry".equals(way.tagValue("route"));
     }
 
-    private boolean isHighway(final PbfWay way)
+    private boolean isHighway(PbfWay way)
     {
         return way.hasKey("highway");
     }

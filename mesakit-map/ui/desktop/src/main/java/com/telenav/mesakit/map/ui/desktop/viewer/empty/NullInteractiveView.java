@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.ui.desktop.viewer.empty;
 
-import com.telenav.kivakit.core.kernel.language.time.Duration;
-import com.telenav.kivakit.core.kernel.language.values.level.Percent;
+import com.telenav.kivakit.kernel.language.time.Duration;
+import com.telenav.kivakit.kernel.language.values.level.Percent;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDrawable;
 import com.telenav.mesakit.map.ui.desktop.viewer.DrawableIdentifier;
@@ -30,7 +30,7 @@ import java.util.function.Function;
 public class NullInteractiveView implements InteractiveView
 {
     @Override
-    public void add(final MapDrawable drawable)
+    public void add(MapDrawable drawable)
     {
     }
 
@@ -45,43 +45,43 @@ public class NullInteractiveView implements InteractiveView
     }
 
     @Override
-    public void frameDelay(final Duration delay)
+    public void frameSpeed(Duration delay)
     {
     }
 
     @Override
-    public void map(final Function<MapDrawable, MapDrawable> function)
+    public void map(Function<MapDrawable, MapDrawable> function)
     {
     }
 
     @Override
-    public void pullToFront(final DrawableIdentifier identifier)
+    public void pullToFront(DrawableIdentifier identifier)
     {
     }
 
     @Override
-    public void pushToBack(final DrawableIdentifier identifier)
+    public void pushToBack(DrawableIdentifier identifier)
     {
     }
 
     @Override
-    public void remove(final DrawableIdentifier identifier)
+    public void remove(DrawableIdentifier identifier)
     {
 
     }
 
     @Override
-    public void update(final DrawableIdentifier identifier, final MapDrawable object)
+    public void update(DrawableIdentifier identifier, MapDrawable object)
     {
     }
 
     @Override
-    public void zoomTo(final Rectangle bounds)
+    public void zoomTo(Rectangle bounds)
     {
     }
 
     @Override
-    public void zoomToContents(final Percent margin)
+    public void zoomToContents(Percent margin)
     {
     }
 }

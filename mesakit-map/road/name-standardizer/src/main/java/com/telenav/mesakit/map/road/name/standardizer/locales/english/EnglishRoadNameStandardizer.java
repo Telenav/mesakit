@@ -18,20 +18,20 @@
 
 package com.telenav.mesakit.map.road.name.standardizer.locales.english;
 
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.ParsedRoadName;
 import com.telenav.mesakit.map.road.name.parser.RoadNameParser;
 import com.telenav.mesakit.map.road.name.standardizer.BaseRoadNameStandardizer;
-import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.kernel.messaging.Debug;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 import static com.telenav.mesakit.map.road.name.parser.ParsedRoadName.DirectionFormat.PREFIXED;
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class EnglishRoadNameStandardizer extends BaseRoadNameStandardizer
@@ -46,20 +46,20 @@ public class EnglishRoadNameStandardizer extends BaseRoadNameStandardizer
 
     private Mode mode;
 
-    public EnglishRoadNameStandardizer(final MapLocale locale)
+    public EnglishRoadNameStandardizer(MapLocale locale)
     {
         parser = ThreadLocal.withInitial(() -> RoadNameParser.get(locale));
     }
 
     @Override
-    public void mode(final Mode mode)
+    public void mode(Mode mode)
     {
         this.mode = mode;
         initialize(mode);
     }
 
     @Override
-    public ParsedRoadName standardize(final RoadName name)
+    public ParsedRoadName standardize(RoadName name)
     {
         if (mode == null)
         {
@@ -67,20 +67,20 @@ public class EnglishRoadNameStandardizer extends BaseRoadNameStandardizer
         }
         try
         {
-            final var parsed = parser.get().parse(name);
+            var parsed = parser.get().parse(name);
             if (parsed != null)
             {
                 return standardize(parsed);
             }
         }
-        catch (final Exception e)
+        catch (Exception e)
         {
             DEBUG.warning(e, "Unable to standardize '$'", name);
         }
         return null;
     }
 
-    private void initialize(final Mode mode)
+    private void initialize(Mode mode)
     {
         baseName.put("Metro", "Metropolitan");
         baseName.put("Saint", "St");
@@ -171,20 +171,20 @@ public class EnglishRoadNameStandardizer extends BaseRoadNameStandardizer
         type.put("Viaduct", "Via");
     }
 
-    private ParsedRoadName standardize(final ParsedRoadName name)
+    private ParsedRoadName standardize(ParsedRoadName name)
     {
-        final var builder = new ParsedRoadName.Builder(name);
+        var builder = new ParsedRoadName.Builder(name);
         builder.type(standardizedType(name.type()), name.rawType());
         builder.baseName(standardizedBaseName(name), name.rawBaseName());
         return builder.build();
     }
 
-    private String standardizedBaseName(final ParsedRoadName name)
+    private String standardizedBaseName(ParsedRoadName name)
     {
-        final var words = StringList.words(name.baseName());
+        var words = StringList.words(name.baseName());
         for (var i = 0; i < words.size(); i++)
         {
-            final var standardized = baseName.get(words.get(i));
+            var standardized = baseName.get(words.get(i));
             if (standardized != null)
             {
                 words.set(i, standardized);
@@ -214,9 +214,9 @@ public class EnglishRoadNameStandardizer extends BaseRoadNameStandardizer
         return words.join(' ');
     }
 
-    private String standardizedType(final String type)
+    private String standardizedType(String type)
     {
-        final var standardized = this.type.get(type);
+        var standardized = this.type.get(type);
         return standardized != null ? standardized : type;
     }
 }

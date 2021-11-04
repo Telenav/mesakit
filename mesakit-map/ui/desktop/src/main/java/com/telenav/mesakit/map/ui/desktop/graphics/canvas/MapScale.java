@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas;
 
-import com.telenav.kivakit.core.kernel.language.primitives.Doubles;
+import com.telenav.kivakit.kernel.language.primitives.Doubles;
 
 /**
  * The map scale, from street level to statewide level
@@ -33,9 +33,9 @@ public enum MapScale
     NEIGHBORHOOD(2, 6),
     STREET(0, 2);
 
-    public static MapScale of(final double scale)
+    public static MapScale of(double scale)
     {
-        for (final var value : values())
+        for (var value : values())
         {
             if (Doubles.isBetween(scale, value.minimum, value.maximum))
             {
@@ -49,43 +49,43 @@ public enum MapScale
 
     private final double maximum;
 
-    MapScale(final double minimum, final double maximum)
+    MapScale(double minimum, double maximum)
     {
         this.minimum = minimum;
         this.maximum = maximum;
     }
 
-    public boolean at(final MapScale that)
+    public boolean at(MapScale that)
     {
         return this == that;
     }
 
-    public boolean atOrCloserThan(final MapScale that)
+    public boolean atOrCloserThan(MapScale that)
     {
         return minimum <= that.minimum;
     }
 
-    public boolean atOrFurtherThan(final MapScale that)
+    public boolean atOrFurtherThan(MapScale that)
     {
         return minimum >= that.minimum;
     }
 
-    public boolean closerThan(final MapScale that)
+    public boolean closerThan(MapScale that)
     {
         return minimum < that.minimum;
     }
 
-    public boolean furtherThan(final MapScale that)
+    public boolean furtherThan(MapScale that)
     {
         return minimum > that.minimum;
     }
 
-    public boolean isZoomedIn(final MapScale that)
+    public boolean isZoomedIn(MapScale that)
     {
         return atOrCloserThan(that);
     }
 
-    public boolean isZoomedOut(final MapScale that)
+    public boolean isZoomedOut(MapScale that)
     {
         return atOrFurtherThan(that);
     }

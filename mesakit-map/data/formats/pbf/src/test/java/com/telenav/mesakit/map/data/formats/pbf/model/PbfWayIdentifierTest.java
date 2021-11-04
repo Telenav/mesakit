@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model;
 
+import com.telenav.kivakit.test.UnitTest;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
-import com.telenav.kivakit.core.test.UnitTest;
 import org.junit.Test;
 
 public class PbfWayIdentifierTest extends UnitTest
@@ -27,8 +27,8 @@ public class PbfWayIdentifierTest extends UnitTest
     @Test
     public void testReverse()
     {
-        final var identifier = new PbfWayIdentifier(5);
-        final var reversed = identifier.reversed();
+        var identifier = new PbfWayIdentifier(5);
+        var reversed = identifier.reversed();
         ensure(reversed.isReverse());
         ensureFalse(reversed.isForward());
         ensureEqual(identifier, reversed.reversed());
@@ -37,18 +37,18 @@ public class PbfWayIdentifierTest extends UnitTest
     @Test
     public void testTypingNegative()
     {
-        final var identifier = (PbfWayIdentifier) new PbfWayIdentifier(59172301723L).reversed();
-        final var withType = (PbfWayIdentifier) identifier.withType();
-        final var withoutType = (PbfWayIdentifier) withType.withoutType();
+        var identifier = (PbfWayIdentifier) new PbfWayIdentifier(59172301723L).reversed();
+        var withType = (PbfWayIdentifier) identifier.withType();
+        var withoutType = (PbfWayIdentifier) withType.withoutType();
         ensureEqual(withoutType, identifier);
     }
 
     @Test
     public void testTypingPositive()
     {
-        final var identifier = new PbfWayIdentifier(59172301723L);
-        final var withType = (PbfWayIdentifier) identifier.withType();
-        final var withoutType = (PbfWayIdentifier) withType.withoutType();
+        var identifier = new PbfWayIdentifier(59172301723L);
+        var withType = (PbfWayIdentifier) identifier.withType();
+        var withoutType = (PbfWayIdentifier) withType.withoutType();
         ensureEqual(withoutType, identifier);
     }
 }

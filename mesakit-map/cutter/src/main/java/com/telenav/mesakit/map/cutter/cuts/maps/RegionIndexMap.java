@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.cutter.cuts.maps;
 
+import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionSet;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -40,14 +40,14 @@ public class RegionIndexMap
 
     private final List<Region> regions = new ArrayList<>();
 
-    public void add(final Region region)
+    public void add(Region region)
     {
         // Index 0 is the null region, so the index stored in the region metadata slot starts at 1
         regions.add(region);
         region.metadata(size());
     }
 
-    public void addAll(final Iterable<? extends Region> regions)
+    public void addAll(Iterable<? extends Region> regions)
     {
         regions.forEach(this::add);
     }
@@ -60,19 +60,19 @@ public class RegionIndexMap
     /**
      * @return An index &gt; 0 for the region in the index map
      */
-    public Integer indexForRegion(final Region region)
+    public Integer indexForRegion(Region region)
     {
         return (Integer) region.metadata();
     }
 
-    public boolean isValidRegionIndex(final Integer regionIndex)
+    public boolean isValidRegionIndex(Integer regionIndex)
     {
         return regionIndex > 0 && regionIndex < size() + 1;
     }
 
-    public boolean isValidRegionIndexList(final Collection<Integer> regionIndexes)
+    public boolean isValidRegionIndexList(Collection<Integer> regionIndexes)
     {
-        for (final var regionIndex : regionIndexes)
+        for (var regionIndex : regionIndexes)
         {
             if (!isValidRegionIndex(regionIndex))
             {
@@ -85,18 +85,18 @@ public class RegionIndexMap
     /**
      * @return The region for an index &gt; 0
      */
-    public Region regionForIndex(final int index)
+    public Region regionForIndex(int index)
     {
         // Subtract one because index 0 is reserved to represent the null region
         return regions.get(index - 1);
     }
 
-    public RegionSet regionsForIndexes(final Iterable<Integer> indexes)
+    public RegionSet regionsForIndexes(Iterable<Integer> indexes)
     {
-        final var regions = new RegionSet();
-        for (final var index : indexes)
+        var regions = new RegionSet();
+        for (var index : indexes)
         {
-            final var region = regionForIndex(index);
+            var region = regionForIndex(index);
             if (region != null)
             {
                 regions.add(region);

@@ -18,6 +18,22 @@
 
 package com.telenav.mesakit.map.cutter;
 
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.kernel.interfaces.value.Source;
+import com.telenav.kivakit.kernel.language.primitives.Booleans;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.resource.ResourceList;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.UmlMethodGroup;
+import com.telenav.lexakai.annotations.associations.UmlAggregation;
+import com.telenav.lexakai.annotations.associations.UmlRelation;
+import com.telenav.lexakai.annotations.visibility.UmlExcludeMember;
 import com.telenav.mesakit.map.cutter.cuts.FastCut;
 import com.telenav.mesakit.map.cutter.cuts.SoftCut;
 import com.telenav.mesakit.map.cutter.cuts.maps.RegionIndexMap;
@@ -33,22 +49,6 @@ import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.County;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
-import com.telenav.kivakit.core.filesystem.File;
-import com.telenav.kivakit.core.filesystem.Folder;
-import com.telenav.kivakit.core.kernel.interfaces.value.Source;
-import com.telenav.kivakit.core.kernel.language.primitives.Booleans;
-import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.core.kernel.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.core.resource.Resource;
-import com.telenav.kivakit.core.resource.ResourceList;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.UmlMethodGroup;
-import com.telenav.lexakai.annotations.associations.UmlAggregation;
-import com.telenav.lexakai.annotations.associations.UmlRelation;
-import com.telenav.lexakai.annotations.visibility.UmlExcludeMember;
 import org.openstreetmap.osmosis.core.domain.v0_6.Node;
 import org.openstreetmap.osmosis.core.domain.v0_6.Way;
 import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
@@ -77,7 +77,7 @@ public class PbfRegionCutter
 
     private RegionIndexMap regionIndexMap;
 
-    public PbfRegionCutter(final Source<PbfDataSource> data, final Folder outputFolder, final WayFilter wayFilter)
+    public PbfRegionCutter(Source<PbfDataSource> data, Folder outputFolder, WayFilter wayFilter)
     {
         this.data = data;
         this.outputFolder = outputFolder;
@@ -94,7 +94,7 @@ public class PbfRegionCutter
         LOGGER.information("Extracting $ cell(s) from $", regionsToExtract.size(), data.get().resource());
 
         // Cut the desired regions from the input file
-        final Cut cut;
+        Cut cut;
         if (hasWayNodeLocations(data.get()))
         {
             cut = new FastCut(this, regionWays());
@@ -106,20 +106,20 @@ public class PbfRegionCutter
         cut.cut();
 
         // Remove any zero-size output files and their parent folders
-        final Set<Resource> outputs = new HashSet<>();
-        for (final var resource : cut.outputResources())
+        Set<Resource> outputs = new HashSet<>();
+        for (var resource : cut.outputResources())
         {
             if (resource.exists())
             {
-                if (resource.bytes().isZero())
+                if (resource.sizeInBytes().isZero())
                 {
                     if (resource instanceof File)
                     {
-                        final var file = (File) resource;
+                        var file = (File) resource;
                         file.delete();
-                        if (file.parentBroadcaster().isEmpty())
+                        if (file.parent().isEmpty())
                         {
-                            file.parentBroadcaster().delete();
+                            file.parent().delete();
                         }
                     }
                 }
@@ -129,7 +129,7 @@ public class PbfRegionCutter
                 }
             }
         }
-        final var outputResources = new ResourceList(outputs);
+        var outputResources = new ResourceList(outputs);
         LOGGER.information(AsciiArt.textBox("Output Files", "$\n$", outputFolder,
                 AsciiArt.bulleted(outputResources.relativeTo(outputFolder))));
         return outputResources;
@@ -159,28 +159,28 @@ public class PbfRegionCutter
     }
 
     @UmlExcludeMember
-    public List<Region> regionsForLocation(final Location location)
+    public List<Region> regionsForLocation(Location location)
     {
         // List of regions we're extracting that include the location
-        final List<Region> regions = new ArrayList<>();
+        List<Region> regions = new ArrayList<>();
 
         // Find any metropolitan area for the location and if we're extracting it, add it to the
         // list
-        final var metropolitanArea = MetropolitanArea.forLocation(location);
+        var metropolitanArea = MetropolitanArea.forLocation(location);
         if (metropolitanArea != null && regionsToExtract.contains(metropolitanArea))
         {
             regions.add(metropolitanArea);
         }
 
         // Find any county for the location and if we're extracting it, add it to the list
-        final var county = County.forLocation(location);
+        var county = County.forLocation(location);
         if (county != null && regionsToExtract.contains(county))
         {
             regions.add(county);
         }
 
         // Find any state for the location and if we're extracting it, add it to the list
-        final State state;
+        State state;
         if (metropolitanArea != null)
         {
             state = metropolitanArea.state();
@@ -199,7 +199,7 @@ public class PbfRegionCutter
         }
 
         // Find any country for the location and if we're extracting it, add it to the list
-        final var country = state != null ? state.country() : Country.forLocation(location);
+        var country = state != null ? state.country() : Country.forLocation(location);
         if (country != null && regionsToExtract.contains(country))
         {
             regions.add(country);
@@ -215,7 +215,7 @@ public class PbfRegionCutter
         return regionsToExtract;
     }
 
-    public void regionsToExtract(final RegionSet regionsToExtract)
+    public void regionsToExtract(RegionSet regionsToExtract)
     {
         this.regionsToExtract = regionsToExtract;
     }
@@ -235,8 +235,8 @@ public class PbfRegionCutter
     @UmlExcludeMember
     protected RegionIndexMap newRegionIndexMap()
     {
-        final var regionIndexMap = new RegionIndexMap();
-        for (final var region : regionsToExtract())
+        var regionIndexMap = new RegionIndexMap();
+        for (var region : regionsToExtract())
         {
             regionIndexMap.add(region);
         }
@@ -247,9 +247,9 @@ public class PbfRegionCutter
      * @return True if the data has {@link WayNode} locations available. This can speed up processing and reduce memory
      * consumption by not requiring that {@link Node} locations be kept in memory until {@link Way} processing occurs.
      */
-    private boolean hasWayNodeLocations(final PbfDataSource data)
+    private boolean hasWayNodeLocations(PbfDataSource data)
     {
-        final var metadata = data.metadata();
+        var metadata = data.metadata();
         return metadata != null && Booleans.isTrue(metadata.get(WayNode.METADATA_KEY_LOCATION_INCLUDED));
     }
 

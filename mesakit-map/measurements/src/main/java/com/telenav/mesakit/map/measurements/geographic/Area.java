@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.measurements.geographic;
 
-import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 /**
  * A square area on a <a href="https://en.wikipedia.org/wiki/Cartesian_coordinate_system">Cartesian</a> plane, measured
@@ -49,34 +49,34 @@ public class Area implements Comparable<Area>
 
     public static final Area ONE_SQUARE_MILE = squareMiles(1);
 
-    public static Area of(final Distance width, final Distance height)
+    public static Area of(Distance width, Distance height)
     {
         return squareMeters(width.asMeters() * height.asMeters());
     }
 
-    public static Area squareFeet(final double squareFeet)
+    public static Area squareFeet(double squareFeet)
     {
         return squareMeters((long) (squareFeet * SQUARE_METERS_PER_SQUARE_FOOT));
     }
 
-    public static Area squareKilometers(final double squareKilometers)
+    public static Area squareKilometers(double squareKilometers)
     {
         return squareMeters(squareKilometers * SQUARE_METERS_PER_SQUARE_KILOMETER);
     }
 
-    public static Area squareMeters(final double squareMeters)
+    public static Area squareMeters(double squareMeters)
     {
         return new Area(squareMeters);
     }
 
-    public static Area squareMiles(final double squareMiles)
+    public static Area squareMiles(double squareMiles)
     {
         return squareFeet(squareMiles * SQUARE_FEET_PER_SQUARE_MILE);
     }
 
     private final double squareMeters;
 
-    private Area(final double squareMeters)
+    private Area(double squareMeters)
     {
         this.squareMeters = squareMeters;
     }
@@ -102,9 +102,9 @@ public class Area implements Comparable<Area>
     }
 
     @Override
-    public int compareTo(final Area that)
+    public int compareTo(Area that)
     {
-        final var difference = squareMeters - that.asSquareMeters();
+        var difference = squareMeters - that.asSquareMeters();
         if (difference == 0L)
         {
             return 0;
@@ -119,17 +119,17 @@ public class Area implements Comparable<Area>
      * @param that The other area to compare with.
      * @return The absolute value difference between the two areas.
      */
-    public Area difference(final Area that)
+    public Area difference(Area that)
     {
         return squareMeters(Math.abs(asSquareMeters() - that.asSquareMeters()));
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof Area)
         {
-            final var that = (Area) object;
+            var that = (Area) object;
             return asSquareMeters() == that.asSquareMeters();
         }
         return false;
@@ -141,32 +141,32 @@ public class Area implements Comparable<Area>
         return Double.hashCode(asSquareMeters());
     }
 
-    public boolean isGreaterThan(final Area that)
+    public boolean isGreaterThan(Area that)
     {
         return compareTo(that) > 0;
     }
 
-    public boolean isGreaterThanOrEqualTo(final Area that)
+    public boolean isGreaterThanOrEqualTo(Area that)
     {
         return compareTo(that) >= 0;
     }
 
-    public boolean isLessThan(final Area that)
+    public boolean isLessThan(Area that)
     {
         return compareTo(that) < 0;
     }
 
-    public boolean isLessThanOrEqualTo(final Area that)
+    public boolean isLessThanOrEqualTo(Area that)
     {
         return compareTo(that) <= 0;
     }
 
-    public Area maximum(final Area that)
+    public Area maximum(Area that)
     {
         return isGreaterThan(that) ? this : that;
     }
 
-    public Area minimum(final Area that)
+    public Area minimum(Area that)
     {
         return isLessThan(that) ? this : that;
     }
@@ -176,18 +176,18 @@ public class Area implements Comparable<Area>
      * @return The newly calculated area. Note that if the passed in value is greater than this value 0 is returned.
      * There are no negative areas.
      */
-    public Area minus(final Area that)
+    public Area minus(Area that)
     {
-        final var difference = asSquareMeters() - that.asSquareMeters();
+        var difference = asSquareMeters() - that.asSquareMeters();
         return squareMeters(difference < 0 ? 0 : difference);
     }
 
-    public Area plus(final Area that)
+    public Area plus(Area that)
     {
         return squareMeters(asSquareMeters() + that.asSquareMeters());
     }
 
-    public double ratio(final Area divisor)
+    public double ratio(Area divisor)
     {
         if (divisor.asSquareMeters() <= 0)
         {
@@ -197,7 +197,7 @@ public class Area implements Comparable<Area>
         return asSquareMeters() / divisor.asSquareMeters();
     }
 
-    public Area times(final double multiplier)
+    public Area times(double multiplier)
     {
         if (multiplier < 0)
         {

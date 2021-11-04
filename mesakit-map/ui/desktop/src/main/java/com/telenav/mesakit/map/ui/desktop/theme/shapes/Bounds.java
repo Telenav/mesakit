@@ -29,11 +29,11 @@ import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.INACTIVE_BOX;
  */
 public class Bounds
 {
-    public static MapBox ACTIVE_BOUNDING_BOX = MapBox.box()
+    public static final MapBox ACTIVE_BOUNDING_BOX = MapBox.box()
             .withLabelStyle(ACTIVE_LABEL)
             .withStyle(ACTIVE_BOX);
 
-    public static MapBox INACTIVE_BOUNDING_BOX = MapBox.box()
+    public static final MapBox INACTIVE_BOUNDING_BOX = MapBox.box()
             .withLabelStyle(ACTIVE_LABEL)
             .withStyle(INACTIVE_BOX);
 }

@@ -22,7 +22,16 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.mesakit.map.region.project.MapRegionProject;
+import com.telenav.kivakit.kernel.language.locales.CountryIsoCode;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
+import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.kernel.logging.Logger;
+import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.lexakai.annotations.associations.UmlAggregation;
+import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegion;
 import com.telenav.mesakit.map.region.regions.City;
 import com.telenav.mesakit.map.region.regions.Continent;
@@ -31,20 +40,10 @@ import com.telenav.mesakit.map.region.regions.County;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
 import com.telenav.mesakit.map.region.regions.TimeZone;
-import com.telenav.kivakit.core.kernel.language.locales.CountryIsoCode;
-import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitExcludeProperty;
-import com.telenav.kivakit.core.kernel.language.reflection.property.filters.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.core.kernel.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.core.kernel.logging.Logger;
-import com.telenav.kivakit.core.kernel.logging.LoggerFactory;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.lexakai.annotations.associations.UmlAggregation;
-import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import org.junit.Before;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 /**
  * <p>
@@ -127,7 +126,7 @@ public class RegionIdentity implements AsString, KryoSerializable
     {
     }
 
-    public RegionIdentity(final RegionIdentity that)
+    public RegionIdentity(RegionIdentity that)
     {
         identifier = that.identifier;
         name = that.name;
@@ -139,15 +138,9 @@ public class RegionIdentity implements AsString, KryoSerializable
         countryIsoCode = that.countryIsoCode;
     }
 
-    public RegionIdentity(final String name)
+    public RegionIdentity(String name)
     {
         name(name);
-    }
-
-    @KivaKitIncludeProperty
-    public RegionCode mesakit()
-    {
-        return mesakit;
     }
 
     @Override
@@ -194,11 +187,11 @@ public class RegionIdentity implements AsString, KryoSerializable
     }
 
     @Override
-    public boolean equals(final Object object)
+    public boolean equals(Object object)
     {
         if (object instanceof RegionIdentity)
         {
-            final var that = (RegionIdentity) object;
+            var that = (RegionIdentity) object;
             if (hasIsoCode() && that.hasIsoCode())
             {
                 return iso().equals(that.iso());
@@ -212,7 +205,7 @@ public class RegionIdentity implements AsString, KryoSerializable
     }
 
     @SuppressWarnings("unchecked")
-    public <T extends Region<T>> T findOrCreateRegion(final Class<T> type)
+    public <T extends Region<T>> T findOrCreateRegion(Class<T> type)
     {
         if (type.isAssignableFrom(Country.class))
         {
@@ -234,7 +227,7 @@ public class RegionIdentity implements AsString, KryoSerializable
         }
         if (type.isAssignableFrom(State.class))
         {
-            final var country = country();
+            var country = country();
             if (country != null)
             {
                 var state = State.forIdentity(this);
@@ -248,7 +241,7 @@ public class RegionIdentity implements AsString, KryoSerializable
         }
         if (type.isAssignableFrom(MetropolitanArea.class))
         {
-            final var state = first(2).state();
+            var state = first(2).state();
             if (state != null)
             {
                 var area = MetropolitanArea.forIdentity(this);
@@ -262,7 +255,7 @@ public class RegionIdentity implements AsString, KryoSerializable
         }
         if (type.isAssignableFrom(County.class))
         {
-            final var state = first(2).state();
+            var state = first(2).state();
             if (state != null)
             {
                 var county = County.forIdentity(this);
@@ -278,17 +271,12 @@ public class RegionIdentity implements AsString, KryoSerializable
         return null;
     }
 
-    public RegionIdentity first(final int n)
+    public RegionIdentity first(int n)
     {
-        final var copy = new RegionIdentity(this);
+        var copy = new RegionIdentity(this);
         copy.mesakit = mesakit().first(n);
         copy.iso = iso().first(n);
         return copy;
-    }
-
-    public boolean hasMesaKitCode()
-    {
-        return mesakit() != null;
     }
 
     public boolean hasIdentifier()
@@ -299,6 +287,11 @@ public class RegionIdentity implements AsString, KryoSerializable
     public boolean hasIsoCode()
     {
         return iso() != null;
+    }
+
+    public boolean hasMesaKitCode()
+    {
+        return mesakit() != null;
     }
 
     @Override
@@ -321,7 +314,7 @@ public class RegionIdentity implements AsString, KryoSerializable
         return identifier;
     }
 
-    public RegionIdentity identifier(final RegionIdentifier identifier)
+    public RegionIdentity identifier(RegionIdentifier identifier)
     {
         this.identifier = identifier;
         return this;
@@ -395,10 +388,16 @@ public class RegionIdentity implements AsString, KryoSerializable
 
     public RegionIdentity last()
     {
-        final var copy = new RegionIdentity(this);
+        var copy = new RegionIdentity(this);
         copy.iso = iso().last();
         copy.mesakit = mesakit().last();
         return copy;
+    }
+
+    @KivaKitIncludeProperty
+    public RegionCode mesakit()
+    {
+        return mesakit;
     }
 
     public MetropolitanArea metropolitanArea()
@@ -413,7 +412,7 @@ public class RegionIdentity implements AsString, KryoSerializable
     }
 
     @Override
-    public void read(final Kryo kryo, final Input input)
+    public void read(Kryo kryo, Input input)
     {
         name = kryo.readObject(input, String.class);
         identifier = new RegionIdentifier(kryo.readObject(input, Integer.class));
@@ -422,11 +421,11 @@ public class RegionIdentity implements AsString, KryoSerializable
         mesakit = RegionCode.parse(kryo.readObject(input, String.class));
         ensureNotNull(mesakit, "Missing MesaKit code for $", name);
         countryOrdinal = kryo.readObject(input, Integer.class);
-        final var tmcCode = kryo.readObjectOrNull(input, Integer.class);
+        var tmcCode = kryo.readObjectOrNull(input, Integer.class);
         countryTmcCode = tmcCode == null ? null : new Country.CountryTmcCode(tmcCode);
-        final var alpha2CountryCode = kryo.readObjectOrNull(input, String.class);
-        final var alpha3CountryCode = kryo.readObjectOrNull(input, String.class);
-        final var numericCountryCode = kryo.readObjectOrNull(input, Integer.class);
+        var alpha2CountryCode = kryo.readObjectOrNull(input, String.class);
+        var alpha3CountryCode = kryo.readObjectOrNull(input, String.class);
+        var numericCountryCode = kryo.readObjectOrNull(input, Integer.class);
         countryIsoCode = alpha2CountryCode == null ? null :
                 new CountryIsoCode(name, alpha2CountryCode, alpha3CountryCode, numericCountryCode);
     }
@@ -439,7 +438,7 @@ public class RegionIdentity implements AsString, KryoSerializable
     @Before
     public void testSetup()
     {
-        MapRegionProject.get().initialize();
+        RegionProject.get().initialize();
     }
 
     public TimeZone timeZone()
@@ -455,54 +454,42 @@ public class RegionIdentity implements AsString, KryoSerializable
 
     public RegionIdentity unqualified()
     {
-        final var identity = new RegionIdentity(this);
+        var identity = new RegionIdentity(this);
         identity.mesakit = mesakit().last();
         identity.iso = iso().last();
         return identity;
     }
 
-    public RegionIdentity withMesaKitCode(final RegionCode code)
+    public RegionIdentity withCountryIsoCode(CountryIsoCode code)
     {
-        final var copy = new RegionIdentity(this);
-        copy.mesakit = code;
-        return copy;
-    }
-
-    public RegionIdentity withMesaKitCode(final String code)
-    {
-        return new RegionIdentity(this).mesakit(code);
-    }
-
-    public RegionIdentity withCountryIsoCode(final CountryIsoCode code)
-    {
-        final var copy = new RegionIdentity(this);
+        var copy = new RegionIdentity(this);
         copy.countryIsoCode = code;
         copy.iso = RegionCode.parse(code.alpha2Code());
         return copy;
     }
 
-    public RegionIdentity withCountryOrdinal(final int ordinal)
+    public RegionIdentity withCountryOrdinal(int ordinal)
     {
-        final var copy = new RegionIdentity(this);
+        var copy = new RegionIdentity(this);
         copy.countryOrdinal = ordinal;
         return copy;
     }
 
-    public RegionIdentity withCountryTmcCode(final Country.CountryTmcCode code)
+    public RegionIdentity withCountryTmcCode(Country.CountryTmcCode code)
     {
-        final var copy = new RegionIdentity(this);
+        var copy = new RegionIdentity(this);
         copy.countryTmcCode = code;
         return copy;
     }
 
-    public RegionIdentity withIdentifier(final RegionIdentifier identifier)
+    public RegionIdentity withIdentifier(RegionIdentifier identifier)
     {
         return new RegionIdentity(this).identifier(identifier);
     }
 
-    public RegionIdentity withIsoCode(final RegionCode code)
+    public RegionIdentity withIsoCode(RegionCode code)
     {
-        final var copy = new RegionIdentity(this);
+        var copy = new RegionIdentity(this);
         copy.iso = code;
         return copy;
     }
@@ -511,22 +498,34 @@ public class RegionIdentity implements AsString, KryoSerializable
      * Handles continent ISO codes like "OC" and "NA", country ISO codes like "US" and "MX", state ISO codes like
      * "US-WA" and "US-NM" and metro area codes like "MX-CH-CHIHUAHUA"
      */
-    public RegionIdentity withIsoCode(final String code)
+    public RegionIdentity withIsoCode(String code)
     {
         return new RegionIdentity(this).iso(code);
     }
 
-    public RegionIdentity withName(final String name)
+    public RegionIdentity withMesaKitCode(RegionCode code)
+    {
+        var copy = new RegionIdentity(this);
+        copy.mesakit = code;
+        return copy;
+    }
+
+    public RegionIdentity withMesaKitCode(String code)
+    {
+        return new RegionIdentity(this).mesakit(code);
+    }
+
+    public RegionIdentity withName(String name)
     {
         return new RegionIdentity(this).name(name);
     }
 
-    public RegionIdentity withPrefix(final RegionIdentity identity)
+    public RegionIdentity withPrefix(RegionIdentity identity)
     {
         assertNonNullAndNonEmpty(identity);
         ensure(identity.isValid());
 
-        final var copy = new RegionIdentity(this);
+        var copy = new RegionIdentity(this);
         if (hasIsoCode() && identity.hasIsoCode())
         {
             copy.iso = identity.iso().append(iso());
@@ -538,11 +537,11 @@ public class RegionIdentity implements AsString, KryoSerializable
         return copy;
     }
 
-    public RegionIdentity withPrefix(final String prefix)
+    public RegionIdentity withPrefix(String prefix)
     {
         assertNonNullAndNonEmpty(prefix);
 
-        final var copy = new RegionIdentity(this);
+        var copy = new RegionIdentity(this);
         if (hasIsoCode())
         {
             copy.iso = RegionCode.parse(prefix.toUpperCase() + iso().code());
@@ -554,11 +553,11 @@ public class RegionIdentity implements AsString, KryoSerializable
         return copy;
     }
 
-    public RegionIdentity withoutPrefix(final String prefix)
+    public RegionIdentity withoutPrefix(String prefix)
     {
         assertNonNullAndNonEmpty(prefix);
 
-        final var copy = new RegionIdentity(this);
+        var copy = new RegionIdentity(this);
         if (hasIsoCode())
         {
             copy.iso = iso().withoutPrefix(prefix.toUpperCase());
@@ -571,20 +570,20 @@ public class RegionIdentity implements AsString, KryoSerializable
     }
 
     @Override
-    public void write(final Kryo kryo, final Output output)
+    public void write(Kryo kryo, Output output)
     {
         kryo.writeObject(output, name());
-        kryo.writeObject(output, identifier().asInteger());
+        kryo.writeObject(output, identifier().asInt());
         kryo.writeObject(output, iso().code());
         kryo.writeObject(output, mesakit().code());
         kryo.writeObject(output, countryOrdinal());
-        kryo.writeObjectOrNull(output, countryTmcCode() == null ? null : countryTmcCode().asInteger(), Integer.class);
+        kryo.writeObjectOrNull(output, countryTmcCode() == null ? null : countryTmcCode().asInt(), Integer.class);
         kryo.writeObjectOrNull(output, countryIsoCode() == null ? null : countryIsoCode().alpha2Code(), String.class);
         kryo.writeObjectOrNull(output, countryIsoCode() == null ? null : countryIsoCode().alpha3Code(), String.class);
         kryo.writeObjectOrNull(output, countryIsoCode() == null ? null : countryIsoCode().numericCountryCode(), Integer.class);
     }
 
-    RegionIdentity name(final String name)
+    RegionIdentity name(String name)
     {
         this.name = assertNonNullAndNonEmpty(name);
         if (!hasMesaKitCode())
@@ -598,23 +597,12 @@ public class RegionIdentity implements AsString, KryoSerializable
         return this;
     }
 
-    private RegionIdentity mesakit(final String string)
-    {
-        assertNonNullAndNonEmpty(string);
-        final var code = RegionCode.parse(string);
-        if (code != null)
-        {
-            mesakit = code.aonized();
-        }
-        return this;
-    }
-
-    private <T> T assertNonNullAndNonEmpty(final T object)
+    private <T> T assertNonNullAndNonEmpty(T object)
     {
         ensure(object != null);
         if (object instanceof String)
         {
-            final var string = (String) object;
+            var string = (String) object;
             ensure(!string.contains("null") && !string.contains("NULL"));
             ensure(!"".equals(string));
         }
@@ -626,13 +614,24 @@ public class RegionIdentity implements AsString, KryoSerializable
         return name() != null;
     }
 
-    private RegionIdentity iso(final String string)
+    private RegionIdentity iso(String string)
     {
         assertNonNullAndNonEmpty(string);
-        final var code = RegionCode.parse(string);
+        var code = RegionCode.parse(string);
         if (code != null)
         {
             iso = code.isoized();
+        }
+        return this;
+    }
+
+    private RegionIdentity mesakit(String string)
+    {
+        assertNonNullAndNonEmpty(string);
+        var code = RegionCode.parse(string);
+        if (code != null)
+        {
+            mesakit = code.aonized();
         }
         return this;
     }

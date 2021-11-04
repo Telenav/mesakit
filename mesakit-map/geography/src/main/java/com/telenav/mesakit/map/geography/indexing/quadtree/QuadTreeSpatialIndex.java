@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.geography.indexing.quadtree;
 
-import com.telenav.kivakit.core.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.core.kernel.language.collections.list.LinkedObjectList;
-import com.telenav.kivakit.core.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.core.kernel.language.iteration.BaseIterator;
-import com.telenav.kivakit.core.kernel.language.values.count.Count;
+import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.kernel.language.collections.list.LinkedObjectList;
+import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
+import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Located;
@@ -37,7 +37,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.illegalState;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.illegalState;
 
 /**
  * Stores {@link Located} objects in a tree of quadrants so they can be quickly located spatially.
@@ -58,18 +58,18 @@ public class QuadTreeSpatialIndex<Element extends Located>
 
             private final Iterator<Element> iterator = objects.iterator();
 
-            private BoundedLeafIterator(final Rectangle bounds, final Matcher<Element> matcher)
+            private BoundedLeafIterator(Rectangle bounds, Matcher<Element> matcher)
             {
                 this.bounds = bounds;
                 filter(matcher);
             }
 
             @Override
-            protected final Element onNext()
+            protected Element onNext()
             {
                 while (iterator.hasNext())
                 {
-                    final var next = iterator.next();
+                    var next = iterator.next();
                     if (bounds.contains(next.location()))
                     {
                         return next;
@@ -87,7 +87,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
 
             private Iterator<Element> iterator;
 
-            private QuadrantIterator(final Rectangle bounds, final Matcher<Element> matcher)
+            private QuadrantIterator(Rectangle bounds, Matcher<Element> matcher)
             {
                 this.bounds = bounds;
                 filter(matcher);
@@ -118,7 +118,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
             {
                 while (++index < QUADRANTS)
                 {
-                    final var child = children[index];
+                    var child = children[index];
                     if (bounds.intersects(child.bounds))
                     {
                         iterator = child.inside(bounds);
@@ -138,12 +138,12 @@ public class QuadTreeSpatialIndex<Element extends Located>
 
         private LinkedObjectList<Element> objects = new LinkedObjectList<>();
 
-        Quadrant(final Rectangle bounds)
+        Quadrant(Rectangle bounds)
         {
             this.bounds = bounds;
         }
 
-        protected Quadrant()
+        private Quadrant()
         {
         }
 
@@ -153,10 +153,10 @@ public class QuadTreeSpatialIndex<Element extends Located>
             return "[Quadrant " + bounds.toString() + "]";
         }
 
-        boolean add(final Element object)
+        boolean add(Element object)
         {
             // If the object is inside this quadrant
-            if (bounds.contains(object.location()))
+            if (!bounds.containment(object.location()).isOutside())
             {
                 synchronized (this)
                 {
@@ -176,7 +176,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
                     else
                     {
                         // Add the object to the first quadrant that takes it
-                        for (final var child : children)
+                        for (var child : children)
                         {
                             if (child.add(object))
                             {
@@ -190,7 +190,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
             return false;
         }
 
-        void dump(final PrintStream out)
+        void dump(PrintStream out)
         {
             if (isLeaf())
             {
@@ -198,19 +198,19 @@ public class QuadTreeSpatialIndex<Element extends Located>
             }
             else
             {
-                for (final var child : children)
+                for (var child : children)
                 {
                     child.dump(out);
                 }
             }
         }
 
-        Iterator<Element> inside(final Rectangle bounds)
+        Iterator<Element> inside(Rectangle bounds)
         {
             return inside(bounds, null);
         }
 
-        Iterator<Element> inside(final Rectangle bounds, final Matcher<Element> matcher)
+        Iterator<Element> inside(Rectangle bounds, Matcher<Element> matcher)
         {
             if (isLeaf())
             {
@@ -229,7 +229,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
             }
         }
 
-        boolean remove(final Element object)
+        boolean remove(Element object)
         {
             if (isLeaf())
             {
@@ -240,7 +240,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
             else
             {
                 // Go through each child quadrant
-                for (final var child : children)
+                for (var child : children)
                 {
                     // If the object we're looking for intersects with the quadrant bounds
                     if (child.bounds.contains(object))
@@ -257,7 +257,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
             }
         }
 
-        Collection<Element> removeAll(final Rectangle bounds, final Matcher<Element> matcher)
+        Collection<Element> removeAll(Rectangle bounds, Matcher<Element> matcher)
         {
             if (isLeaf())
             {
@@ -267,8 +267,8 @@ public class QuadTreeSpatialIndex<Element extends Located>
             }
             else
             {
-                final Collection<Element> removed = new HashSet<>();
-                for (final var child : children)
+                Collection<Element> removed = new HashSet<>();
+                for (var child : children)
                 {
                     if (child.bounds.contains(bounds))
                     {
@@ -279,7 +279,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
             }
         }
 
-        boolean replace(final Element object, final Element replacement)
+        boolean replace(Element object, Element replacement)
         {
             if (bounds.contains(object))
             {
@@ -290,7 +290,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
                 else
                 {
                     // Go through each child quadrant
-                    for (final var child : children)
+                    for (var child : children)
                     {
                         // If the object we're looking for intersects with the quadrant bounds
                         if (child.bounds.contains(object))
@@ -330,7 +330,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
             if (canBeSplit())
             {
                 // Create four child quadrants
-                @SuppressWarnings("unchecked") final Quadrant[] children = new QuadTreeSpatialIndex.Quadrant[QUADRANTS];
+                @SuppressWarnings("unchecked") Quadrant[] children = new QuadTreeSpatialIndex.Quadrant[QUADRANTS];
                 children[0] = new Quadrant(bounds.northWestQuadrant());
                 children[1] = new Quadrant(bounds.northEastQuadrant());
                 children[2] = new Quadrant(bounds.southWestQuadrant());
@@ -338,17 +338,21 @@ public class QuadTreeSpatialIndex<Element extends Located>
 
                 // Insert each object from this quadrant into each child quadrant (the object
                 // addition will be ignored by quadrants that don't contain the object's location)
-                for (final var object : objects)
+                for (var object : objects)
                 {
                     // Go through quadrants
-                    for (final var quadrant : children)
+                    boolean added = false;
+                    for (var quadrant : children)
                     {
                         // until one adds it
                         if (quadrant.add(object))
                         {
+                            added = true;
                             break;
                         }
                     }
+
+                    assert added : "Unable to add " + object.location();
                 }
 
                 // There are no objects in this quadrant now, only child quadrants
@@ -377,7 +381,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
         this(100, Distance.miles(0.25));
     }
 
-    public QuadTreeSpatialIndex(final int maximumObjectsPerQuadrant, final Distance minimumQuadrantSize)
+    public QuadTreeSpatialIndex(int maximumObjectsPerQuadrant, Distance minimumQuadrantSize)
     {
         this.maximumObjectsPerQuadrant = maximumObjectsPerQuadrant;
         minimumHeight = Latitude.degrees(minimumQuadrantSize.asDegrees());
@@ -385,7 +389,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
         clear();
     }
 
-    public void add(final Element object)
+    public void add(Element object)
     {
         if (bounds == null)
         {
@@ -401,9 +405,9 @@ public class QuadTreeSpatialIndex<Element extends Located>
         }
     }
 
-    public void addAll(final Iterable<Element> objects)
+    public void addAll(Iterable<Element> objects)
     {
-        for (final var object : objects)
+        for (var object : objects)
         {
             add(object);
         }
@@ -430,22 +434,22 @@ public class QuadTreeSpatialIndex<Element extends Located>
         return Count.count(size());
     }
 
-    public void dump(final PrintStream out)
+    public void dump(PrintStream out)
     {
         root.dump(out);
     }
 
-    public Iterator<Element> inside(final Rectangle bounds)
+    public Iterator<Element> inside(Rectangle bounds)
     {
         return inside(bounds, null);
     }
 
-    public Iterator<Element> inside(final Rectangle bounds, final Matcher<Element> matcher)
+    public Iterator<Element> inside(Rectangle bounds, Matcher<Element> matcher)
     {
         return root.inside(bounds, matcher);
     }
 
-    public void remove(final Element object)
+    public void remove(Element object)
     {
         if (root.remove(object))
         {
@@ -454,14 +458,14 @@ public class QuadTreeSpatialIndex<Element extends Located>
         }
     }
 
-    public void removeAll(final Rectangle bounds, final Matcher<Element> matcher)
+    public void removeAll(Rectangle bounds, Matcher<Element> matcher)
     {
-        final var removed = root.removeAll(bounds, matcher);
+        var removed = root.removeAll(bounds, matcher);
         size.addAndGet(-1 * removed.size());
         elementRemoved = true;
     }
 
-    public boolean replace(final Element oldValue, final Element newValue)
+    public boolean replace(Element oldValue, Element newValue)
     {
         return root.replace(oldValue, newValue);
     }

@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.ui.debug;
 
-import com.telenav.kivakit.core.kernel.language.time.Duration;
-import com.telenav.kivakit.core.kernel.language.values.level.Percent;
+import com.telenav.kivakit.kernel.language.time.Duration;
+import com.telenav.kivakit.kernel.language.values.level.Percent;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDrawable;
 import com.telenav.mesakit.map.ui.desktop.viewer.DrawableIdentifier;
@@ -48,7 +48,7 @@ public class DebugViewer extends DesktopViewer
         view.clear();
     }
 
-    public void end(final Location end)
+    public void end(Location end)
     {
         view.update(END, END_ICON);
     }
@@ -59,18 +59,18 @@ public class DebugViewer extends DesktopViewer
         view.frameComplete();
     }
 
-    public void frameSpeed(final Duration delay)
+    public void frameSpeed(Duration delay)
     {
-        view.frameDelay(delay);
+        view.frameSpeed(delay);
     }
 
-    public void start(final Location start)
+    public void start(Location start)
     {
         view.update(START, START_ICON);
     }
 
     @Override
-    public View view(final String title)
+    public View view(String title)
     {
         view = (InteractiveView) super.view(title);
         frameSpeed(Duration.seconds(0.5));

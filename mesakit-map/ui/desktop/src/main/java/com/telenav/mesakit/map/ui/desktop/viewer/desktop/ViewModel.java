@@ -48,18 +48,18 @@ public class ViewModel
 
         private Shape shape;
 
-        public Entry(final DrawableIdentifier identifier, final MapDrawable viewable)
+        public Entry(DrawableIdentifier identifier, MapDrawable viewable)
         {
             this.identifier = identifier;
             this.viewable = viewable;
         }
 
         @Override
-        public boolean equals(final Object object)
+        public boolean equals(Object object)
         {
             if (object instanceof Entry)
             {
-                final var that = (Entry) object;
+                var that = (Entry) object;
                 return identifier.equals(that.identifier);
             }
             return false;
@@ -71,7 +71,7 @@ public class ViewModel
             return identifier.hashCode();
         }
 
-        public void shape(final Shape shape)
+        public void shape(Shape shape)
         {
             this.shape = shape;
         }
@@ -82,7 +82,7 @@ public class ViewModel
             return identifier.toString();
         }
 
-        public void viewable(final MapDrawable viewable)
+        public void viewable(MapDrawable viewable)
         {
             this.viewable = viewable;
         }
@@ -116,15 +116,15 @@ public class ViewModel
     /**
      * Adds the given viewable
      */
-    public void add(final MapDrawable viewable)
+    public void add(MapDrawable viewable)
     {
         update(nextIdentifier(), viewable);
     }
 
     public synchronized Rectangle bounds()
     {
-        final var builder = new BoundingBoxBuilder();
-        for (final var entry : entries)
+        var builder = new BoundingBoxBuilder();
+        for (var entry : entries)
         {
             builder.add(entry.viewable.bounds());
         }
@@ -143,17 +143,17 @@ public class ViewModel
      * Draws the {@link MapDrawable} objects in this map on the given drawing surface, keeping outlines for hit-testing
      * in the entry structure.
      */
-    public void draw(final DrawingSurface surface)
+    public void draw(DrawingSurface surface)
     {
         // Get a copy of the entries list
-        final List<Entry> copy;
+        List<Entry> copy;
         synchronized (this)
         {
             copy = new ArrayList<>(entries);
         }
 
         // For each entry
-        for (final var entry : copy)
+        for (var entry : copy)
         {
             // if the entry isn't the selected one
             if (entry != selected)
@@ -170,7 +170,7 @@ public class ViewModel
         }
     }
 
-    public void map(final Function<MapDrawable, MapDrawable> function)
+    public void map(Function<MapDrawable, MapDrawable> function)
     {
         entries.forEach(entry -> entry.viewable = function.apply(entry.viewable));
     }
@@ -178,9 +178,9 @@ public class ViewModel
     /**
      * Moves the given viewable to the top of the view
      */
-    public synchronized void pullToFront(final DrawableIdentifier identifier)
+    public synchronized void pullToFront(DrawableIdentifier identifier)
     {
-        final var entry = entry(identifier);
+        var entry = entry(identifier);
         entries.remove(new Entry(identifier, null));
         entries.add(entry);
     }
@@ -188,9 +188,9 @@ public class ViewModel
     /**
      * Moves the given viewable to the back of the view
      */
-    public synchronized void pushToBack(final DrawableIdentifier identifier)
+    public synchronized void pushToBack(DrawableIdentifier identifier)
     {
-        final var entry = entry(identifier);
+        var entry = entry(identifier);
         entries.remove(new Entry(identifier, null));
         entries.add(0, entry);
     }
@@ -198,7 +198,7 @@ public class ViewModel
     /**
      * Remove the identified viewable
      */
-    public synchronized void remove(final DrawableIdentifier identifier)
+    public synchronized void remove(DrawableIdentifier identifier)
     {
         entries.remove(new Entry(identifier, null));
         entryForIdentifier.remove(identifier);
@@ -207,10 +207,10 @@ public class ViewModel
     /**
      * Changes the current selection and drawing order based on the mouse click location
      */
-    public void select(final Point point)
+    public void select(Point point)
     {
         // Get all entries that are selected by the given point
-        final var entries = entriesForPoint(point);
+        var entries = entriesForPoint(point);
 
         // If there is at least one entry to select from
         if (!entries.isEmpty())
@@ -244,7 +244,7 @@ public class ViewModel
     /**
      * Update the viewable with the given unique identifier
      */
-    public synchronized void update(final DrawableIdentifier identifier, final MapDrawable viewable)
+    public synchronized void update(DrawableIdentifier identifier, MapDrawable viewable)
     {
         var entry = entry(identifier);
         if (entry != null)
@@ -259,7 +259,7 @@ public class ViewModel
         }
     }
 
-    private void draw(final DrawingSurface surface, final Entry entry)
+    private void draw(DrawingSurface surface, Entry entry)
     {
         entry.viewable.draw(surface);
     }
@@ -267,12 +267,12 @@ public class ViewModel
     /**
      * @return The list of entries whose outlines contain the given point, in front-to-back order
      */
-    private List<Entry> entriesForPoint(final Point2D point)
+    private List<Entry> entriesForPoint(Point2D point)
     {
-        final List<Entry> entries = new ArrayList<>();
+        List<Entry> entries = new ArrayList<>();
         synchronized (this)
         {
-            for (final var entry : this.entries)
+            for (var entry : this.entries)
             {
                 if (entry.shape != null && entry.shape.contains(point))
                 {
@@ -284,12 +284,12 @@ public class ViewModel
         return entries;
     }
 
-    private synchronized Entry entry(final DrawableIdentifier identifier)
+    private synchronized Entry entry(DrawableIdentifier identifier)
     {
         return entryForIdentifier.get(identifier);
     }
 
-    private void moveToBack(final Entry entry)
+    private void moveToBack(Entry entry)
     {
         synchronized (this)
         {
@@ -299,7 +299,7 @@ public class ViewModel
     }
 
     @SuppressWarnings("unused")
-    private synchronized void moveToTop(final Entry entry)
+    private synchronized void moveToTop(Entry entry)
     {
         entries.remove(entry);
         entries.addLast(entry);

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.geography.indexing.polygon;
 
-import com.telenav.kivakit.core.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.kernel.language.values.count.Estimate;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.map.geography.Location;
 
@@ -26,7 +26,7 @@ public class LocationArray
 {
     private LongArray locations;
 
-    public LocationArray(final String objectName, final Estimate estimate)
+    public LocationArray(String objectName, Estimate estimate)
     {
         locations = new LongArray(objectName + ".locations");
         locations.initialSize(estimate);
@@ -37,9 +37,9 @@ public class LocationArray
     {
     }
 
-    public Location get(final int index)
+    public Location get(int index)
     {
-        final var location = locations.get(index);
+        var location = locations.get(index);
         if (location != Location.NULL)
         {
             return Location.fromLong(location);
@@ -47,7 +47,7 @@ public class LocationArray
         return null;
     }
 
-    public void set(final int index, final Location location)
+    public void set(int index, Location location)
     {
         locations.set(index, location == null ? Location.NULL : location.asLong());
     }

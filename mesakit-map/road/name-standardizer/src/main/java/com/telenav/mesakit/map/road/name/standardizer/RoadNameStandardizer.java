@@ -18,30 +18,30 @@
 
 package com.telenav.mesakit.map.road.name.standardizer;
 
+import com.telenav.kivakit.kernel.language.paths.PackagePath;
+import com.telenav.kivakit.kernel.language.threading.KivaKitThread;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.ParsedRoadName;
-import com.telenav.kivakit.core.kernel.language.paths.PackagePath;
-import com.telenav.kivakit.core.kernel.language.threading.KivaKitThread;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.core.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
 
 public interface RoadNameStandardizer
 {
     Map<String, RoadNameStandardizer> standardizers = new HashMap<>();
 
-    static RoadNameStandardizer get(final MapLocale locale, final Mode mode)
+    static RoadNameStandardizer get(MapLocale locale, Mode mode)
     {
         synchronized (standardizers)
         {
-            final var key = locale.toString() + "-" + mode;
+            var key = locale.toString() + "-" + mode;
             var standardizer = standardizers.get(key);
             if (standardizer == null)
             {
-                final var packagePath = PackagePath.packagePath(RoadNameStandardizer.class);
+                var packagePath = PackagePath.packagePath(RoadNameStandardizer.class);
                 standardizer = locale.create(packagePath, "RoadNameStandardizer");
                 ensureNotNull(standardizer, "Unable to create road name standardizer");
                 standardizer.mode(mode);
@@ -51,7 +51,7 @@ public interface RoadNameStandardizer
         }
     }
 
-    static void loadInBackground(final MapLocale locale, final Mode mode)
+    static void loadInBackground(MapLocale locale, Mode mode)
     {
         KivaKitThread.run("RoadStandardizerLoader", () -> get(locale, mode));
     }

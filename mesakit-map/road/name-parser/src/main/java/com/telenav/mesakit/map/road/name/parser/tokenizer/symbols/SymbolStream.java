@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.name.parser.tokenizer.symbols;
 
-import com.telenav.kivakit.core.kernel.language.strings.AsciiArt;
+import com.telenav.kivakit.kernel.language.strings.Strings;
 
 public class SymbolStream
 {
@@ -26,12 +26,12 @@ public class SymbolStream
 
     private final SymbolList input;
 
-    SymbolStream(final SymbolList input)
+    SymbolStream(SymbolList input)
     {
         this.input = input;
     }
 
-    public void advance(final int count)
+    public void advance(int count)
     {
         at = Math.min(at + count, size());
     }
@@ -41,7 +41,7 @@ public class SymbolStream
         return at;
     }
 
-    public void at(final int at)
+    public void at(int at)
     {
         this.at = at;
     }
@@ -66,10 +66,10 @@ public class SymbolStream
         return at < input.size();
     }
 
-    public boolean lookingAt(final String... symbols)
+    public boolean lookingAt(String... symbols)
     {
         var index = at();
-        for (final var symbol : symbols)
+        for (var symbol : symbols)
         {
             if (!Symbol.of(symbol).equals(input.get(index++)))
             {
@@ -79,10 +79,10 @@ public class SymbolStream
         return true;
     }
 
-    public boolean lookingAt(final Symbol... symbols)
+    public boolean lookingAt(Symbol... symbols)
     {
         var index = at();
-        for (final var symbol : symbols)
+        for (var symbol : symbols)
         {
             if (!symbol.equals(input.get(index++)))
             {
@@ -94,7 +94,7 @@ public class SymbolStream
 
     public boolean lookingAtDigit()
     {
-        return AsciiArt.isNaturalNumber(currentText());
+        return Strings.isNaturalNumber(currentText());
     }
 
     public boolean lookingAtWhiteSpace()
@@ -102,7 +102,7 @@ public class SymbolStream
         return lookingAt(Symbol.WHITESPACE);
     }
 
-    public boolean matches(final String... symbols)
+    public boolean matches(String... symbols)
     {
         if (lookingAt(symbols))
         {
@@ -112,7 +112,7 @@ public class SymbolStream
         return false;
     }
 
-    public boolean matches(final Symbol... symbols)
+    public boolean matches(Symbol... symbols)
     {
         if (lookingAt(symbols))
         {
@@ -130,15 +130,15 @@ public class SymbolStream
         }
     }
 
-    public void skipAny(final String... symbols)
+    public void skipAny(String... symbols)
     {
-        for (final var symbol : symbols)
+        for (var symbol : symbols)
         {
             skipAny(Symbol.of(symbol));
         }
     }
 
-    public void skipAny(final Symbol symbol)
+    public void skipAny(Symbol symbol)
     {
         if (current() != null && current().equals(symbol))
         {
@@ -153,7 +153,7 @@ public class SymbolStream
 
     public String text()
     {
-        final var builder = new StringBuilder();
+        var builder = new StringBuilder();
         for (var i = 0; i < at; i++)
         {
             builder.append(input.get(i));
@@ -164,14 +164,14 @@ public class SymbolStream
     @Override
     public String toString()
     {
-        final var builder = new StringBuilder();
+        var builder = new StringBuilder();
         for (var i = 0; i < size(); i++)
         {
             if (i > 0)
             {
                 builder.append(", ");
             }
-            final var text = input.get(i).toString();
+            var text = input.get(i).toString();
             if (i == at)
             {
                 builder.append("** ").append(text).append(" **");

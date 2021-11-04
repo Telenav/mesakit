@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.geography.indexing.polygon;
 
-import com.telenav.kivakit.core.resource.resources.packaged.PackageResource;
-import com.telenav.kivakit.core.test.annotations.SlowTests;
+import com.telenav.kivakit.resource.resources.packaged.PackageResource;
+import com.telenav.kivakit.test.annotations.SlowTests;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.project.MapGeographyUnitTest;
+import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
@@ -29,12 +29,12 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 @Category({ SlowTests.class })
-public class PolygonSpatialIndexTest extends MapGeographyUnitTest
+public class PolygonSpatialIndexTest extends GeographyUnitTest
 {
     @Test
     public void test1()
     {
-        final var polygon = Polygon.fromLocationSequence(Location.ORIGIN,
+        var polygon = Polygon.fromLocationSequence(Location.ORIGIN,
                 Location.ORIGIN.moved(Heading.NORTHEAST, Distance.kilometers(100)),
                 Location.ORIGIN.moved(Heading.NORTHWEST, Distance.kilometers(100)));
         ensure(polygon.isCounterClockwise());
@@ -44,7 +44,7 @@ public class PolygonSpatialIndexTest extends MapGeographyUnitTest
     @Test
     public void test2()
     {
-        final var polygon = Polygon.fromLocationSequence(Location.ORIGIN,
+        var polygon = Polygon.fromLocationSequence(Location.ORIGIN,
                 Location.ORIGIN.moved(Heading.NORTHEAST, Distance.kilometers(100)),
                 Location.ORIGIN.moved(Heading.NORTH, Distance.kilometers(50)),
                 Location.ORIGIN.moved(Heading.NORTHWEST, Distance.kilometers(100)));
@@ -55,10 +55,10 @@ public class PolygonSpatialIndexTest extends MapGeographyUnitTest
     public void test3()
     {
         var i = 0;
-        for (final Polygon polygon : world().polygons())
+        for (Polygon polygon : world().polygons())
         {
-            final var index = new PolygonSpatialIndex(polygon);
-            final var center = polygon.bounds().center();
+            var index = new PolygonSpatialIndex(polygon);
+            var center = polygon.bounds().center();
             if (!index.containment(center).matches(polygon.containment(center)))
             {
                 trace("#" + i + ". failed: index = " + index.containment(center)
@@ -85,7 +85,7 @@ public class PolygonSpatialIndexTest extends MapGeographyUnitTest
 
         var index = 0;
 
-        for (final Polygon polygon : world().polygons())
+        for (Polygon polygon : world().polygons())
         {
             trace("\ntesting polygon " + index + " with " + polygon.segmentCount() + " segments");
 
@@ -103,12 +103,12 @@ public class PolygonSpatialIndexTest extends MapGeographyUnitTest
     public void test6()
     {
         var i = 0;
-        for (final Polygon polygon : world().polygons())
+        for (Polygon polygon : world().polygons())
         {
             if (i == 2)
             {
-                final var index = new PolygonSpatialIndex(polygon);
-                final var location = Location.degrees(-54.45, -65.93118);
+                var index = new PolygonSpatialIndex(polygon);
+                var location = Location.degrees(-54.45, -65.93118);
                 if (index.contains(location))
                 {
                     ensure(index.contains(location));
@@ -121,23 +121,23 @@ public class PolygonSpatialIndexTest extends MapGeographyUnitTest
     @Test
     public void testSerialization()
     {
-        final var polygon = Polygon.fromLocationSequence(Location.ORIGIN,
+        var polygon = Polygon.fromLocationSequence(Location.ORIGIN,
                 Location.ORIGIN.moved(Heading.NORTHEAST, Distance.kilometers(100)),
                 Location.ORIGIN.moved(Heading.NORTHWEST, Distance.kilometers(100)));
         ensure(polygon.isCounterClockwise());
-        final var spatialIndex = new PolygonSpatialIndex(polygon);
+        var spatialIndex = new PolygonSpatialIndex(polygon);
         serializationTest(spatialIndex);
     }
 
-    private void testPolygonIndex(final Polygon polygon)
+    private void testPolygonIndex(Polygon polygon)
     {
-        final var index = new PolygonSpatialIndex(polygon);
-        final var bounds = polygon.bounds();
+        var index = new PolygonSpatialIndex(polygon);
+        var bounds = polygon.bounds();
         for (var i = 0; i < 100; i++)
         {
-            final var location = randomValueFactory().newLocation(bounds);
-            final var polygonContainment = polygon.containment(location);
-            final var indexContainment = index.containment(location);
+            var location = randomValueFactory().newLocation(bounds);
+            var polygonContainment = polygon.containment(location);
+            var indexContainment = index.containment(location);
             if (!indexContainment.matches(polygonContainment))
             {
                 trace("Containment test failed at " + location + ": polygon = " + polygonContainment
@@ -150,6 +150,6 @@ public class PolygonSpatialIndexTest extends MapGeographyUnitTest
 
     private ShapeFileReader world()
     {
-        return new ShapeFileReader(this, PackageResource.of(PolygonSpatialIndexTest.class, "world.shp"));
+        return new ShapeFileReader(this, PackageResource.packageResource(this, PolygonSpatialIndexTest.class, "world.shp"));
     }
 }

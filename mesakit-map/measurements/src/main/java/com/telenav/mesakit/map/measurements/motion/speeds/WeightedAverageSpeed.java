@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.measurements.motion.speeds;
 
-import com.telenav.mesakit.map.measurements.motion.Speed;
-import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementMotion;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
+import com.telenav.mesakit.map.measurements.motion.Speed;
+import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementMotion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class WeightedAverageSpeed
 
         private final double weight;
 
-        public WeightedSpeed(final Speed speed, final double weight)
+        public WeightedSpeed(Speed speed, double weight)
         {
             speedInMetersPerHour = speed.asMetersPerHour();
             this.weight = weight;
@@ -60,7 +60,7 @@ public class WeightedAverageSpeed
 
     private final List<WeightedSpeed> weightedSpeeds = new ArrayList<>();
 
-    public void add(final Speed speed, final double weight)
+    public void add(Speed speed, double weight)
     {
         if (speed != null)
         {
@@ -78,7 +78,7 @@ public class WeightedAverageSpeed
 
         var totalWeightedSpeed = 0D;
         var totalWeight = 0D;
-        for (final var speed : weightedSpeeds)
+        for (var speed : weightedSpeeds)
         {
             totalWeightedSpeed += speed.speedInMetersPerHour() * speed.weight();
             totalWeight += speed.weight();

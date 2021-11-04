@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.measurements.geographic;
 
-import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
+import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
 
 /**
  * A slope angle, such as for the steepness of the rise or fall of a roadway. Supports basic mathematical operations and
@@ -35,7 +35,7 @@ public class Slope extends Angle
     /**
      * @return The slope for the number of degrees
      */
-    public static Slope degrees(final double degrees)
+    public static Slope degrees(double degrees)
     {
         return new Slope((long) (degrees * NANODEGREES_PER_DEGREE));
     }
@@ -43,34 +43,34 @@ public class Slope extends Angle
     /**
      * @return A slope of the given angle of steepness
      */
-    public static Slope of(final Angle angle)
+    public static Slope of(Angle angle)
     {
         return new Slope(angle);
     }
 
-    private Slope(final Angle angle)
+    private Slope(Angle angle)
     {
         super(angle.nanodegrees);
     }
 
-    private Slope(final long nanoDegrees)
+    private Slope(long nanoDegrees)
     {
         super(nanoDegrees);
     }
 
-    public Slope difference(final Slope that)
+    public Slope difference(Slope that)
     {
         return of(super.difference(that, Chirality.SMALLEST));
     }
 
     @Override
-    public Slope minus(final Angle that)
+    public Slope minus(Angle that)
     {
         return of(super.minus(that));
     }
 
     @Override
-    public Slope plus(final Angle that)
+    public Slope plus(Angle that)
     {
         return of(super.plus(that));
     }
@@ -85,7 +85,13 @@ public class Slope extends Angle
     }
 
     @Override
-    public Slope times(final double multiplier)
+    public Slope reversed()
+    {
+        return (Slope) super.reversed();
+    }
+
+    @Override
+    public Slope times(double multiplier)
     {
         return of(super.times(multiplier));
     }

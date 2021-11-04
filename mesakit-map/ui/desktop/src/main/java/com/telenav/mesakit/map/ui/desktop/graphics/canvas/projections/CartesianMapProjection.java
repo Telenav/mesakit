@@ -55,8 +55,8 @@ public class CartesianMapProjection implements MapProjection
      * @param mapArea The map map to map to and from
      * @param drawingSize The size of the drawing area to map to and from
      */
-    public CartesianMapProjection(final Rectangle mapArea,
-                                  final DrawingSize drawingSize)
+    public CartesianMapProjection(Rectangle mapArea,
+                                  DrawingSize drawingSize)
     {
         this.mapArea = mapArea;
         this.drawingSize = drawingSize;
@@ -81,45 +81,45 @@ public class CartesianMapProjection implements MapProjection
     }
 
     @Override
-    public DrawingPoint toDrawing(final Location location)
+    public DrawingPoint toDrawing(Location location)
     {
         // Get the latitude and longitude of the location,
-        final var latitude = location.latitudeInDegrees();
-        final var longitude = location.longitudeInDegrees();
+        var latitude = location.latitudeInDegrees();
+        var longitude = location.longitudeInDegrees();
 
         // convert to unit values between 0 and 1 relative to the top left,
-        final var latitudeUnit = (mapTopInDegrees - latitude) / mapHeightInDegrees;
-        final var longitudeUnit = (longitude - mapLeftInDegrees) / mapWidthInDegrees;
+        var latitudeUnit = (mapTopInDegrees - latitude) / mapHeightInDegrees;
+        var longitudeUnit = (longitude - mapLeftInDegrees) / mapWidthInDegrees;
 
         // then compute the x, y location.
-        final var x = drawingSize.widthInUnits() * longitudeUnit;
-        final var y = drawingSize.heightInUnits() * latitudeUnit;
+        var x = drawingSize.widthInUnits() * longitudeUnit;
+        var y = drawingSize.heightInUnits() * latitudeUnit;
 
         return DrawingPoint.point(coordinates(), x, y);
     }
 
     @Override
-    public DrawingSize toDrawing(final Size size)
+    public DrawingSize toDrawing(Size size)
     {
         // Get the size in degrees,
-        final var latitude = size.height().asDegrees();
-        final var longitude = size.width().asDegrees();
+        var latitude = size.height().asDegrees();
+        var longitude = size.width().asDegrees();
 
         // convert to unit values,
-        final var latitudeUnit = latitude / mapHeightInDegrees;
-        final var longitudeUnit = longitude / mapWidthInDegrees;
+        var latitudeUnit = latitude / mapHeightInDegrees;
+        var longitudeUnit = longitude / mapWidthInDegrees;
 
         // then compute the x, y location.
-        final var width = drawingSize.widthInUnits() * longitudeUnit;
-        final var height = drawingSize.heightInUnits() * latitudeUnit;
+        var width = drawingSize.widthInUnits() * longitudeUnit;
+        var height = drawingSize.heightInUnits() * latitudeUnit;
 
         return DrawingSize.size(coordinates(), width, height);
     }
 
     @Override
-    public Location toMap(final DrawingPoint point)
+    public Location toMap(DrawingPoint point)
     {
-        final DrawingPoint localPoint;
+        DrawingPoint localPoint;
         if (coordinates().isBounded())
         {
             localPoint = point.toCoordinates(coordinates());
@@ -130,20 +130,20 @@ public class CartesianMapProjection implements MapProjection
         }
 
         // Get the offset of the drawing point from the bottom left
-        final var xOffset = localPoint.x();
-        final var yOffset = drawingSize.heightInUnits() - localPoint.y();
+        var xOffset = localPoint.x();
+        var yOffset = drawingSize.heightInUnits() - localPoint.y();
 
         // compute a unit value between 0 and 1 from bottom left,
-        final var xUnit = xOffset / drawingSize.widthInUnits();
-        final var yUnit = yOffset / drawingSize.heightInUnits();
+        var xUnit = xOffset / drawingSize.widthInUnits();
+        var yUnit = yOffset / drawingSize.heightInUnits();
 
         // scale the map area map by the unit value,
-        final var latitudeOffset = mapHeightInDegrees * yUnit;
-        final var longitudeOffset = mapWidthInDegrees * xUnit;
+        var latitudeOffset = mapHeightInDegrees * yUnit;
+        var longitudeOffset = mapWidthInDegrees * xUnit;
 
         // and add the offset to the bottom left of the map map area.
-        final var latitude = mapBottomInDegrees + latitudeOffset;
-        final var longitude = mapLeftInDegrees + longitudeOffset;
+        var latitude = mapBottomInDegrees + latitudeOffset;
+        var longitude = mapLeftInDegrees + longitudeOffset;
 
         if (Latitude.isValid(latitude) && Longitude.isValid(longitude))
         {

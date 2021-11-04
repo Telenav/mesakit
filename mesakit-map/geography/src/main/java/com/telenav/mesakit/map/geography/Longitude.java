@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.geography;
 
-import com.telenav.kivakit.core.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.kernel.language.strings.Strings;
-import com.telenav.kivakit.core.kernel.language.values.count.Range;
-import com.telenav.kivakit.core.kernel.messaging.Listener;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.kernel.language.values.count.Range;
+import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
 import com.telenav.mesakit.map.geography.shape.rectangle.Width;
@@ -63,22 +63,22 @@ public final class Longitude extends Angle
         RANGE = new Range<>(MINIMUM, MAXIMUM);
     }
 
-    public static Longitude angle(final Angle angle)
+    public static Longitude angle(Angle angle)
     {
         return new Longitude(angle.asNanodegrees());
     }
 
-    public static Longitude degrees(final double degrees)
+    public static Longitude degrees(double degrees)
     {
         return new Longitude((long) (degrees * 1_000_000_000));
     }
 
-    public static Longitude degreesInRange(final double degrees)
+    public static Longitude degreesInRange(double degrees)
     {
         return degrees(inRange(degrees));
     }
 
-    public static Longitude degreesMinutesAndSeconds(final int degrees, final float minutes, final float seconds)
+    public static Longitude degreesMinutesAndSeconds(int degrees, float minutes, float seconds)
     {
         if (degrees < 0)
         {
@@ -87,58 +87,54 @@ public final class Longitude extends Angle
         return degrees(degrees + minutes / 60.0 + seconds / 3600.0);
     }
 
-    public static Longitude dm5(final int longitudeInDm5)
+    public static Longitude dm5(int longitudeInDm5)
     {
         return Precision.DM5.toLongitude(longitudeInDm5);
     }
 
-    public static Longitude dm6(final int longitudeInDm6)
+    public static Longitude dm6(int longitudeInDm6)
     {
         return Precision.DM6.toLongitude(longitudeInDm6);
     }
 
-    public static Longitude dm7(final int longitudeInDm7)
+    public static Longitude dm7(int longitudeInDm7)
     {
         return DM7.toLongitude(longitudeInDm7);
     }
 
-    public static double inRange(final double degrees)
+    public static double inRange(double degrees)
     {
         if (degrees < MINIMUM_DEGREES)
         {
             return MINIMUM_DEGREES;
         }
-        if (degrees > MAXIMUM_DEGREES)
-        {
-            return MAXIMUM_DEGREES;
-        }
-        return degrees;
+        return Math.min(degrees, MAXIMUM_DEGREES);
     }
 
-    public static boolean isValid(final double longitude)
+    public static boolean isValid(double longitude)
     {
         return longitude >= -180 && longitude <= 180;
     }
 
-    public static Longitude microdegrees(final int microdegrees)
+    public static Longitude microdegrees(int microdegrees)
     {
         return new Longitude(microdegrees * NANODEGREES_PER_MICRODEGREE);
     }
 
-    public static Longitude nanodegrees(final long nanodegrees)
+    public static Longitude nanodegrees(long nanodegrees)
     {
         return new Longitude(nanodegrees);
     }
 
     public static class DegreesConverter extends BaseStringConverter<Longitude>
     {
-        public DegreesConverter(final Listener listener)
+        public DegreesConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Longitude onConvertToObject(final String value)
+        protected Longitude onToValue(String value)
         {
             return degrees(Double.parseDouble(value));
         }
@@ -149,21 +145,21 @@ public final class Longitude extends Angle
         private static final Pattern pattern = Pattern
                 .compile("\\+?(-?\\d+)\\s*°\\s*(\\d+\\.?\\d*)\\s*'\\s*((\\d+\\.?\\d*)\\s*\")?");
 
-        public DegreesMinutesAndSecondsConverter(final Listener listener)
+        public DegreesMinutesAndSecondsConverter(Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected Longitude onConvertToObject(final String string)
+        protected Longitude onToValue(String string)
         {
-            final var matcher = pattern.matcher(string);
+            var matcher = pattern.matcher(string);
             if (matcher.matches())
             {
-                final var degrees = Integer.parseInt(matcher.group(1));
-                final var minutes = Float.parseFloat(matcher.group(2));
+                var degrees = Integer.parseInt(matcher.group(1));
+                var minutes = Float.parseFloat(matcher.group(2));
                 var seconds = 0F;
-                final var group4 = matcher.group(4);
+                var group4 = matcher.group(4);
                 if (!Strings.isEmpty(group4))
                 {
                     seconds = Float.parseFloat(group4);
@@ -174,17 +170,17 @@ public final class Longitude extends Angle
         }
     }
 
-    protected Longitude()
+    private Longitude()
     {
     }
 
-    private Longitude(final long nanodegrees)
+    private Longitude(long nanodegrees)
     {
         super(nanodegrees);
         assert nanodegrees >= MINIMUM_NANODEGREES && nanodegrees <= MAXIMUM_NANODEGREES : "Invalid longitude angle:  " + Angle.nanodegrees(nanodegrees);
     }
 
-    public int as(final Precision precision)
+    public int as(Precision precision)
     {
         return precision.nanodegreesToDecimal(asNanodegrees());
     }
@@ -204,7 +200,7 @@ public final class Longitude extends Angle
         return nanodegrees(DM7.offsetNanodegrees(asNanodegrees(), -1));
     }
 
-    public Distance distanceTo(final Longitude that, final Latitude at)
+    public Distance distanceTo(Longitude that, Latitude at)
     {
         return new Location(at, this).distanceTo(new Location(at, that));
     }
@@ -224,7 +220,7 @@ public final class Longitude extends Angle
         return MAXIMUM;
     }
 
-    public Longitude maximum(final Longitude that)
+    public Longitude maximum(Longitude that)
     {
         return asNanodegrees() > that.asNanodegrees() ? this : that;
     }
@@ -235,7 +231,7 @@ public final class Longitude extends Angle
         return MINIMUM;
     }
 
-    public Longitude minimum(final Longitude that)
+    public Longitude minimum(Longitude that)
     {
         return asNanodegrees() < that.asNanodegrees() ? this : that;
     }
@@ -245,9 +241,9 @@ public final class Longitude extends Angle
      * @return The resulting longitude. Note that if the longitude goes out of bounds it will be capped.
      */
     @Override
-    public Longitude minus(final Angle that)
+    public Longitude minus(Angle that)
     {
-        final var result = super.minus(that);
+        var result = super.minus(that);
 
         // Cap the result at the minimum and maximum.
         if (result.asNanodegrees() < MINIMUM_NANODEGREES)
@@ -262,10 +258,10 @@ public final class Longitude extends Angle
      * @return The resulting longitude. Note that if the longitude goes out of bounds it will be capped.
      */
     @Override
-    public Longitude plus(final Angle that)
+    public Longitude plus(Angle that)
     {
         // Add the values. Note that this caps between -360 and 360.
-        final var result = super.plus(that);
+        var result = super.plus(that);
 
         // Cap the result at the minimum and maximum.
         if (result.asNanodegrees() < MINIMUM_NANODEGREES)
@@ -276,9 +272,9 @@ public final class Longitude extends Angle
     }
 
     @Override
-    public Longitude times(final double multiplier)
+    public Longitude times(double multiplier)
     {
-        final var result = (long) (asNanodegrees() * multiplier);
+        var result = (long) (asNanodegrees() * multiplier);
 
         // Cap the result at the minimum and maximum.
         if (result < MINIMUM_NANODEGREES)

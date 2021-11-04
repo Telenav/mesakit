@@ -1,8 +1,8 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.entities;
 
+import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelEntities;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
 import org.openstreetmap.osmosis.core.domain.v0_6.Node;
 
 /**
@@ -11,7 +11,7 @@ import org.openstreetmap.osmosis.core.domain.v0_6.Node;
 @UmlClassDiagram(diagram = DiagramPbfModelEntities.class)
 public class PbfNode extends PbfEntity<Node>
 {
-    public PbfNode(final Node node)
+    public PbfNode(Node node)
     {
         super(node);
     }

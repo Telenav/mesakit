@@ -43,22 +43,22 @@ class GeohashOrganizer
 
         private final Collection<Node> children = new HashSet<>();
 
-        public Node(final Geohash geohash)
+        public Node(Geohash geohash)
         {
             this.geohash = geohash;
         }
 
-        public void add(final Node node)
+        public void add(Node node)
         {
             children.add(node);
         }
 
         public void compact()
         {
-            for (final var child : children)
+            for (var child : children)
             {
-                final var childGeohash = child.geohash();
-                final var childLevel = levels.get(childGeohash.depth());
+                var childGeohash = child.geohash();
+                var childLevel = levels.get(childGeohash.depth());
                 if (!childLevel.contains(childGeohash))
                 {
                     throw new IllegalStateException("No node found for geohash " + childGeohash);
@@ -85,7 +85,7 @@ class GeohashOrganizer
         public int numberOfMissingChildren()
         {
             var count = 0;
-            for (final var child : children)
+            for (var child : children)
             {
                 if (child.isLeaf())
                 {
@@ -100,20 +100,20 @@ class GeohashOrganizer
     {
         private final Map<Geohash, Node> nodeForGeohash = new HashMap<>();
 
-        public Node add(final Geohash geohash)
+        public Node add(Geohash geohash)
         {
-            final var node = new Node(geohash);
+            var node = new Node(geohash);
             nodeForGeohash.put(geohash, node);
             return node;
         }
 
         @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-        public boolean contains(final Geohash geohash)
+        public boolean contains(Geohash geohash)
         {
             return nodeForGeohash.containsKey(geohash);
         }
 
-        public Node get(final Geohash geohash)
+        public Node get(Geohash geohash)
         {
             return nodeForGeohash.get(geohash);
         }
@@ -123,7 +123,7 @@ class GeohashOrganizer
             return nodeForGeohash.values();
         }
 
-        public void remove(final Geohash geohash)
+        public void remove(Geohash geohash)
         {
             nodeForGeohash.remove(geohash);
         }
@@ -138,7 +138,7 @@ class GeohashOrganizer
     /**
      * @see Geohasher
      */
-    public GeohashOrganizer(final int interiorCompactingTolerance, final int borderCompactingTolerance)
+    public GeohashOrganizer(int interiorCompactingTolerance, int borderCompactingTolerance)
     {
         if (borderCompactingTolerance < interiorCompactingTolerance)
         {
@@ -154,10 +154,10 @@ class GeohashOrganizer
         this(0, 0);
     }
 
-    public void add(final Geohash geohash)
+    public void add(Geohash geohash)
     {
         // Create any missing levels
-        final var maximumDepth = levels.size();
+        var maximumDepth = levels.size();
         if (maximumDepth <= geohash.depth())
         {
             for (var i = maximumDepth; i <= geohash.depth(); i++)
@@ -167,13 +167,13 @@ class GeohashOrganizer
         }
 
         // Get the level for the geohash
-        final var level = levels.get(geohash.depth());
+        var level = levels.get(geohash.depth());
 
         // If the map doesn't have this geohash
         if (!level.contains(geohash))
         {
             // then add a new node to the map
-            final var node = level.add(geohash);
+            var node = level.add(geohash);
 
             // and add the new node to the tree, possibly creating nodes up to the root
             addToTree(node);
@@ -188,10 +188,10 @@ class GeohashOrganizer
     public Collection<Geohash> all()
     {
         compact();
-        final Collection<Geohash> all = new HashSet<>();
-        for (final var level : levels)
+        Collection<Geohash> all = new HashSet<>();
+        for (var level : levels)
         {
-            for (final var node : level.nodes())
+            for (var node : level.nodes())
             {
                 if (node.isLeaf())
                 {
@@ -202,10 +202,10 @@ class GeohashOrganizer
         return all;
     }
 
-    private void addToTree(final Node node)
+    private void addToTree(Node node)
     {
-        final var parentGeohash = node.geohash().parent();
-        final var parentLevel = levels.get(parentGeohash.depth());
+        var parentGeohash = node.geohash().parent();
+        var parentLevel = levels.get(parentGeohash.depth());
         var parentNode = parentLevel.get(parentGeohash);
         if (parentNode == null)
         {
@@ -226,16 +226,16 @@ class GeohashOrganizer
     private void compact()
     {
         // The index of the level above the border level
-        final var indexBeforeBorderLevel = borderLevelIndex() - 1;
+        var indexBeforeBorderLevel = borderLevelIndex() - 1;
 
         // Compact the children of all nodes above the border level
         for (var i = indexBeforeBorderLevel; i >= 0; i--)
         {
-            final var tolerance = (i == indexBeforeBorderLevel) ? borderCompactingTolerance
+            var tolerance = (i == indexBeforeBorderLevel) ? borderCompactingTolerance
                     : interiorCompactingTolerance;
 
             // Go through nodes at the given level
-            for (final var node : levels.get(i).nodes())
+            for (var node : levels.get(i).nodes())
             {
                 // If the node has children, and it's not missing too many children
                 if (!node.isLeaf() && node.numberOfMissingChildren() <= tolerance)

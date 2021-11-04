@@ -23,7 +23,65 @@ import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
 
-import static com.telenav.kivakit.core.kernel.language.locales.CountryIsoCode.*;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.ALGERIA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.ANGOLA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.BENIN;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.BOTSWANA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.BURKINA_FASO;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.BURUNDI;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.CAMEROON;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.CAPE_VERDE;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.CENTRAL_AFRICAN_REPUBLIC;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.CHAD;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.COMOROS;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.CONGO_BRAZZAVILLE;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.CONGO_KINSHASA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.COTE_D_IVOIRE;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.DJIBOUTI;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.EGYPT;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.EQUATORIAL_GUINEA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.ERITREA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.ETHIOPIA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.GABON;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.GAMBIA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.GHANA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.GUINEA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.GUINEA_BISSAU;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.KENYA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.LESOTHO;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.LIBERIA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.LIBYA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.MADAGASCAR;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.MALAWI;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.MALI;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.MAURITANIA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.MAURITIUS;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.MAYOTTE;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.MOROCCO;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.MOZAMBIQUE;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.NAMIBIA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.NIGER;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.NIGERIA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.REUNION;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.RWANDA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SAINT_HELENA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SAO_TOME_AND_PRINCIPE;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SENEGAL;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SEYCHELLES;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SIERRA_LEONE;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SOMALIA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SOUTH_AFRICA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SOUTH_SUDAN;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SUDAN;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SWAZILAND;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.TANZANIA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.TOGO;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.TONGA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.TUNISIA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.UGANDA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.WESTERN_SAHARA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.ZAMBIA;
+import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.ZIMBABWE;
 
 public class Africa extends Continent
 {
@@ -35,7 +93,7 @@ public class Africa extends Continent
     }
 
     @Override
-    protected void onInitialize()
+    public void onInitialize()
     {
         Country.ANGOLA = new Country(this, Country.baseInstance()
                 .withIdentity(Country.baseRegionCode()

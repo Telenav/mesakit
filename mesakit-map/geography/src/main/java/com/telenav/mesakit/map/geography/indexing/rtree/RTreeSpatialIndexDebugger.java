@@ -31,18 +31,18 @@ public interface RTreeSpatialIndexDebugger<T extends Bounded & Intersectable>
         return new RTreeSpatialIndexDebugger<>()
         {
             @Override
-            public void remove(final Node<T> node)
+            public void remove(Node<T> node)
             {
             }
 
             @Override
-            public void update(final Node<T> tNode)
+            public void update(Node<T> tNode)
             {
 
             }
 
             @Override
-            public void update(final Leaf<T> leaf, final T element)
+            public void update(Leaf<T> leaf, T element)
             {
 
             }
