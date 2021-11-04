@@ -336,8 +336,8 @@ public abstract class GraphUnitTest extends RegionUnitTest
             if (!pbfFile.exists())
             {
                 // then try to copy it from the test data folder
-                var destination = GraphProject.get().graphFolder().folder("overpass");
-                var source = MesaKit.get().mesakitHome().folder("mesakit-graph/core/data");
+                var destination = LOGGER.listenTo(GraphProject.get().graphFolder().folder("overpass"));
+                var source = LOGGER.listenTo(MesaKit.get().mesakitHome().folder("mesakit-graph/core/data"));
                 source.copyTo(destination, CopyMode.OVERWRITE, Extension.OSM_PBF.fileMatcher(), ProgressReporter.NULL);
             }
 

@@ -10,6 +10,8 @@
 source mesakit-library-functions.sh
 source mesakit-projects.sh
 
+export ALLOW_CLEANING=true
+
 remove_maven_repository
 
 bash mesakit-clean.sh
