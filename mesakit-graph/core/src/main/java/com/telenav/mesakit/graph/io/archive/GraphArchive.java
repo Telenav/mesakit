@@ -76,104 +76,106 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupport
 public class GraphArchive extends FieldArchive implements Named
 {
     /** The current graph archive version */
-    public static Version VERSION = Version.parse(Listener.console(), "0.9.8");
+    public static final Version VERSION = Version.parse("0.9.8");
 
     /** The extension for a graph archive */
     public static final Extension EXTENSION = Extension.GRAPH;
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
+    public static SwitchParser.Builder<Graph> GRAPH = graphArchiveSwitchParser("graph", "Input graph file");
+
+    public static SwitchParser.Builder<GraphList> GRAPH_LIST = graphListSwitchParser("graphs",
+            "A comma separated list of graph files and/or folders");
+
     private static final Debug DEBUG = new Debug(LOGGER);
 
-    public static boolean accepts(FileName name)
+    public static boolean accepts(final FileName name)
     {
         return name.endsWith(EXTENSION);
     }
 
-    public static ArgumentParser.Builder<Graph> argumentParser(String description)
+    public static ArgumentParser.Builder<Graph> argumentParser(final String description)
     {
         return ArgumentParser.builder(Graph.class).description(description).converter(new GraphArchive.Converter(LOGGER, ProgressReporter.NULL));
     }
 
-    public static Resource forSpecifier(Listener listener, String specifier)
+    public static Resource forSpecifier(final String specifier)
     {
-        for (var current : DataSupplier.values())
+        for (final var current : DataSupplier.values())
         {
-            var prefix = current + ":";
+            final var prefix = current + ":";
             if (specifier.toUpperCase().startsWith(prefix))
             {
-                return Resource.resolve(listener, specifier.substring(prefix.length()));
+                return Resource.resolve(specifier.substring(prefix.length()));
             }
         }
-        return Resource.resolve(listener, specifier);
+        return Resource.resolve(specifier);
     }
 
-    public static SwitchParser.Builder<Graph> graphArchiveSwitchParser(Listener listener,
-                                                                       String name,
-                                                                       String description)
+    public static SwitchParser.Builder<Graph> graphArchiveSwitchParser(final String name, final String description)
     {
         return SwitchParser.builder(Graph.class)
                 .name(name)
                 .description(description)
-                .converter(new Converter(listener, ProgressReporter.NULL));
+                .converter(new Converter(LOGGER, ProgressReporter.NULL));
     }
 
-    public static SwitchParser.Builder<GraphList> graphListSwitchParser(Listener listener,
-                                                                        String name,
-                                                                        String description)
+    public static SwitchParser.Builder<GraphList> graphListSwitchParser(final String name, final String description)
     {
         return SwitchParser.builder(GraphList.class)
                 .name(name)
                 .description(description)
-                .converter(new GraphArchive.ListConverter(listener));
+                .converter(new GraphArchive.ListConverter(LOGGER));
     }
 
     public static class Converter extends BaseStringConverter<Graph>
     {
         private final ProgressReporter reporter;
 
-        public Converter(Listener listener, ProgressReporter reporter)
+        public Converter(final Listener listener, final ProgressReporter reporter)
         {
             super(listener);
             this.reporter = reporter;
         }
 
         @Override
-        protected String onToString(Graph graph)
+        protected String onToString(final Graph graph)
         {
             return unsupported();
         }
 
+        @SuppressWarnings("resource")
         @Override
-        protected Graph onToValue(String path)
+        protected Graph onToValue(final String path)
         {
-            var file = new File.Converter(this).convert(path);
+            final var file = new File.Converter(this).convert(path);
             if (file != null)
             {
                 return new GraphArchive(this, file, ZipArchive.Mode.READ, reporter).load(this);
             }
-            warning("Unable to load graph archive '$'", path);
+            LOGGER.warning("Unable to load graph archive '$'", path);
             return null;
         }
     }
 
     public static class ListConverter extends BaseStringConverter<GraphList>
     {
-        public ListConverter(Listener listener)
+        public ListConverter(final Listener listener)
         {
             super(listener);
         }
 
         @Override
-        protected String onToString(GraphList graph)
+        protected String onToString(final GraphList graph)
         {
             return unsupported();
         }
 
         @Override
-        protected GraphList onToValue(String value)
+        protected GraphList onToValue(final String value)
         {
-            var files = new FileList.Converter(this, Extension.GRAPH).convert(value);
+            final var files = new FileList.Converter(this, Extension.GRAPH).convert(value);
             if (files != null)
             {
                 return new GraphList(files);
@@ -183,13 +185,8 @@ public class GraphArchive extends FieldArchive implements Named
         }
     }
 
-    public SwitchParser.Builder<Graph> GRAPH = graphArchiveSwitchParser(this, "graph", "Input graph file");
-
-    public SwitchParser.Builder<GraphList> GRAPH_LIST = graphListSwitchParser(this, "graphs",
-            "A comma separated list of graph files and/or folders");
-
-    public GraphArchive(Listener listener, File file, ZipArchive.Mode mode,
-                        ProgressReporter reporter)
+    public GraphArchive(final Listener listener, final File file, final ZipArchive.Mode mode,
+                        final ProgressReporter reporter)
     {
         super(file, SerializationSessionFactory.threadLocal(), reporter, mode);
         listener.listenTo(this);
@@ -200,44 +197,44 @@ public class GraphArchive extends FieldArchive implements Named
         return resource().lastModified();
     }
 
-    public Graph load(Listener listener)
+    public Graph load(final Listener listener)
     {
-        var metadata = ensureNotNull(metadata());
+        final var metadata = ensureNotNull(metadata());
 
         DEBUG.trace("Loading $ from $", metadata, resource());
-        var graph = metadata.dataSpecification().newGraph(metadata.withName(resource().fileName().name()));
+        final var graph = metadata.dataSpecification().newGraph(metadata.withName(resource().fileName().name()));
         graph.addListener(listener);
         graph.load(this);
 
         if (DEBUG.isDebugOn() && JavaVirtualMachine.local().instrument())
         {
             graph.loadAll();
-            var memory = JavaVirtualMachine.local().sizeOfObjectGraph(graph, "GraphResource.load.graph",
+            final var memory = JavaVirtualMachine.local().sizeOfObjectGraph(graph, "GraphResource.load.graph",
                     Bytes.megabytes(1));
-            var disk = resource().sizeInBytes();
+            final var disk = resource().sizeInBytes();
             DEBUG.trace("Graph memory = $, disk = $, memory/disk = $%", memory, disk,
                     Doubles.format((double) memory.asBytes() / (double) disk.asBytes() * 100.0, 1));
         }
         return graph;
     }
 
-    public Graph loadAll(Listener listener)
+    public Graph loadAll(final Listener listener)
     {
-        var graph = load(listener);
+        final var graph = load(listener);
         graph.loadAll();
         return graph;
     }
 
     public Metadata metadata()
     {
-        VersionedObject<Metadata> metadata = zip().load(SerializationSession.threadLocal(LOGGER), "metadata");
+        final VersionedObject<Metadata> metadata = zip().load(SerializationSession.threadLocal(LOGGER), "metadata");
         return metadata == null ? null : metadata.get();
     }
 
     @Override
     public String name()
     {
-        var resource = resource();
+        final var resource = resource();
         return resource == null ? objectName() : resource.fileName().name();
     }
 
@@ -249,11 +246,11 @@ public class GraphArchive extends FieldArchive implements Named
 
     public Resource resource()
     {
-        var zip = zip();
+        final var zip = zip();
         return zip == null ? null : zip.resource();
     }
 
-    public void saveMetadata(Metadata metadata)
+    public void saveMetadata(final Metadata metadata)
     {
         metadata.assertValid(ValidationType.VALIDATE_ALL);
         zip().save(SerializationSession.threadLocal(LOGGER), "metadata", new VersionedObject<>(VERSION, metadata));
