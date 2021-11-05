@@ -72,7 +72,6 @@ clean_cache() {
 
         if [ -d "$cache" ]; then
             read -p "┋ Remove ALL cached files in $cache (y/n)? " -n 1 -r
-            echo "┋ "
             if [[ $REPLY =~ ^[Yy]$ ]]; then
                 rm -rf "$cache"
             fi
@@ -88,7 +87,7 @@ clean_maven_repository() {
         project_home=$1
         name=$(basename -- "$project_home")
 
-        if yes_no "Remove all $name artifacts from ~\.m2"; then
+        if yes_no "┋ Remove all $name artifacts from ~\.m2"; then
 
             rm -rf "$HOME/.m2/repository/com/telenav/$name"
         fi
@@ -102,7 +101,7 @@ remove_maven_repository() {
 
         if [ -d "$HOME/.m2/repository" ]; then
 
-            if yes_no "Remove ALL artifacts in $HOME/.m2/repository"; then
+            if yes_no "┋ Remove ALL artifacts in $HOME/.m2/repository"; then
 
                 rm -rf "$HOME/.m2/repository"
 
@@ -117,7 +116,7 @@ clean_temporary_files() {
 
     if [[ "$ALLOW_CLEANING" == "true" ]]; then
 
-        if yes_no "Remove temporary files (.DS_Store, .metadata, .classpath, .project, *.hprof, *~) from $project_home tree"; then
+        if yes_no "┋ Remove temporary files (.DS_Store, .metadata, .classpath, .project, *.hprof, *~) from $project_home tree"; then
 
             find "$project_home" \( -name \.DS_Store -o -name \.metadata -o -name \.classpath -o -name \.project -o -name \*\.hprof -o -name \*~ \) | xargs rm
 
