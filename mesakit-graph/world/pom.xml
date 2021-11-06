@@ -17,7 +17,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mesakit-graph-world</artifactId>
     <packaging>jar</packaging>
-    <name>MesaKit - Graph - World</name>
 
     <dependencies>
 

@@ -23,7 +23,6 @@
 
     <!-- Project -->
 
-    <name>MesaKit Super POM</name>
     <description>The MesaKit super POM depends on the KivaKit super POM and defines dependency versions to help ensure consistent builds.</description>
     <url>https://www.telenav.com/</url>
     <inceptionYear>2011</inceptionYear>

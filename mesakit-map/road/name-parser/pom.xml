@@ -16,8 +16,6 @@
         <version>0.9.9-SNAPSHOT</version>
     </parent>
 
-    <name>MesaKit Map Road - Name Parser</name>
-
     <artifactId>mesakit-map-road-name-parser</artifactId>
 
     <dependencies>

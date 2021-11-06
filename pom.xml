@@ -23,7 +23,6 @@
 
     <!-- Project -->
 
-    <name>MesaKit</name>
     <description>MesaKit is a framework for developing mapping and navigation software.</description>
     <url>https://www.mesakit.org</url>
     <inceptionYear>2011</inceptionYear>

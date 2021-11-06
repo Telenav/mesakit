@@ -14,8 +14,6 @@
         <version>0.9.9-SNAPSHOT</version>
     </parent>
 
-    <name>MesaKit Map UI - Debug</name>
-
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mesakit-map-ui-debug</artifactId>
     <packaging>jar</packaging>
