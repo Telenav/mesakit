@@ -12,6 +12,7 @@ open module mesakit.map.geography
 
     requires org.jetbrains.annotations;
     requires junit;
+    requires shapefilereader;
 
     // Java
     requires transitive java.desktop;
