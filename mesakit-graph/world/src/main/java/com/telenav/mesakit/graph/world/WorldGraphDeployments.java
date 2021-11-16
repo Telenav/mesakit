@@ -18,12 +18,14 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.configuration.settings.deployment.Deployment;
-import com.telenav.kivakit.configuration.settings.deployment.DeploymentSet;
+import com.telenav.kivakit.configuration.settings.Deployment;
+import com.telenav.kivakit.configuration.settings.DeploymentSet;
+import com.telenav.kivakit.configuration.settings.stores.resource.PackageSettingsStore;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.resource.resources.packaged.Package;
 import com.telenav.mesakit.core.MesaKit;
 
 /**
@@ -43,8 +45,9 @@ public class WorldGraphDeployments extends DeploymentSet
      */
     public static Deployment localDeployment()
     {
-        return LOGGER.listenTo(new Deployment("local", "developer laptop"))
-                .registerAllSettingsIn(LOGGER, WorldGraph.class, "configuration/local");
+        var deployment = LOGGER.listenTo(new Deployment("local", "developer laptop"));
+        deployment.addAll(PackageSettingsStore.of(LOGGER, Package.packageFrom(LOGGER, WorldGraph.class, "configuration/local")));
+        return deployment;
     }
 
     /**

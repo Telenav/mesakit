@@ -19,6 +19,7 @@
 package com.telenav.mesakit.graph.project;
 
 import com.telenav.kivakit.configuration.settings.Settings;
+import com.telenav.kivakit.configuration.settings.stores.resource.FolderSettingsStore;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.language.objects.Lazy;
@@ -151,7 +152,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
     {
         var store = Settings.of(this);
         LOGGER.listenTo(store);
-        store.registerAllSettingsIn(this, Folder.parse(this, "configuration"));
+        store.registerSettingsIn(FolderSettingsStore.of(this, Folder.parse(this, "configuration")));
     }
 
     protected Edge edge(Graph graph, double fromLatitude, double fromLongitude,
