@@ -46,7 +46,7 @@ public class WorldGraphDeployments extends DeploymentSet
     public static Deployment localDeployment()
     {
         var deployment = LOGGER.listenTo(new Deployment("local", "developer laptop"));
-        deployment.addAll(PackageSettingsStore.of(LOGGER, Package.packageFrom(LOGGER, WorldGraph.class, "configuration/local")));
+        deployment.indexAll(PackageSettingsStore.of(LOGGER, Package.packageFrom(LOGGER, WorldGraph.class, "configuration/local")));
         return deployment;
     }
 
