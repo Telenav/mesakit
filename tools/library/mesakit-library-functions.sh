@@ -205,6 +205,7 @@ git_flow_release_finish() {
     cd "$project_home" || exit
 
     git checkout master
+    git tag -a "$version" -m "$version"
     git merge release/"$version"
     git flow release finish "$version"
     git push origin --tags
