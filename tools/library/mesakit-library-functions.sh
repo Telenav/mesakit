@@ -172,7 +172,7 @@ git_flow_release_start() {
     version=$2
 
     # Check out the develop branch
-    cd "$project_home"
+    cd "$project_home" || exit
     git checkout develop
 
     # then start a new release branch
@@ -202,7 +202,7 @@ git_flow_release_finish() {
     project_home=$1
     version=$2
 
-    cd "$project_home"
+    cd "$project_home" || exit
 
     git checkout master
     git merge release/"$version"
@@ -214,8 +214,7 @@ git_flow_release_finish() {
     echo "┋"
     echo "┋  VERSION: $version"
     echo "┋"
-    echo "┋  1. The branch 'release/$version' has been merged into master using git flow."
-    echo "┋  2. Artifacts from the release will be published shortly by Jenkins"
+    echo "┋  The branch 'release/$version' has been merged into master using git flow."
     echo "┋"
     echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
     echo " "
@@ -228,7 +227,7 @@ git_flow_feature_start() {
 
     if yes_no "Start '$feature_name' branch of $project_home"; then
 
-        cd "$project_home"
+        cd "$project_home" || exit
         git-flow feature start "$feature_name"
 
     fi
@@ -240,7 +239,7 @@ git_flow_feature_finish() {
     feature_name=$2
 
     if yes_no "Finish '$feature_name' branch of $project_home"; then
-        cd "$project_home"
+        cd "$project_home" || exit
         git-flow feature finish "$feature_name"
     fi
 }
