@@ -120,7 +120,7 @@ public class VertexSet extends ObjectSet<Vertex>
      */
     public VertexSet inside(Rectangle bounds)
     {
-        return matching(Vertex.inside(bounds));
+        return matchingAsIterable(Vertex.inside(bounds));
     }
 
     /**
@@ -151,7 +151,7 @@ public class VertexSet extends ObjectSet<Vertex>
      * @return Matching vertexes
      */
     @Override
-    public VertexSet matching(Matcher<Vertex> matcher)
+    public VertexSet matchingAsIterable(Matcher<Vertex> matcher)
     {
         return new VertexSet(new Subset<>(this, matcher));
     }
