@@ -1065,12 +1065,13 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
     {
         return new BaseValidator()
         {
-
             @Override
             protected void onValidate()
             {
-                problemIf(!latitude().isValid(), "latitude is invalid");
-                problemIf(!longitude().isValid(), "longitude is invalid");
+                problemIfNull(latitude(), "Latitude is missing");
+                problemIfNull(longitude(), "Longitude is missing");
+                problemIf(!latitude().isValid(), "Latitude is invalid");
+                problemIf(!longitude().isValid(), "Longitude is invalid");
             }
         };
     }
