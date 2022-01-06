@@ -188,8 +188,8 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
                 var bits = encoding.bits();
 
                 // If the relative latitude can be expressed by this proximity
-                if (Ints.isBetween(latitudeOffset, minimumLatitudeOffset, maximumLatitudeOffset)
-                        && Ints.isBetween(longitudeOffset, minimumLongitudeOffset, maximumLongitudeOffset))
+                if (Ints.isBetweenInclusive(latitudeOffset, minimumLatitudeOffset, maximumLatitudeOffset)
+                        && Ints.isBetweenInclusive(longitudeOffset, minimumLongitudeOffset, maximumLongitudeOffset))
                 {
                     // write out the proximity identifier
                     writer.write(identifier(), PROXIMITY_TYPE_BITS);
