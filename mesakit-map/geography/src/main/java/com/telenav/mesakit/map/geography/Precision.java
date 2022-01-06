@@ -226,7 +226,7 @@ public enum Precision
         if (latitude != 0)
         {
             latitude = latitude / Ints.powerOfTen(places());
-            return latitude != 0 && Ints.isBetween(latitude, (int) Latitude.MINIMUM_DEGREES, (int) Latitude.MAXIMUM_DEGREES);
+            return latitude != 0 && Ints.isBetweenInclusive(latitude, (int) Latitude.MINIMUM_DEGREES, (int) Latitude.MAXIMUM_DEGREES);
         }
         return true;
     }
@@ -236,7 +236,7 @@ public enum Precision
         if (longitude != 0)
         {
             longitude = longitude / Ints.powerOfTen(places());
-            return longitude != 0 && Ints.isBetween(longitude, (int) Longitude.MINIMUM_DEGREES, (int) Longitude.MAXIMUM_DEGREES);
+            return longitude != 0 && Ints.isBetweenInclusive(longitude, (int) Longitude.MINIMUM_DEGREES, (int) Longitude.MAXIMUM_DEGREES);
         }
         return true;
     }
