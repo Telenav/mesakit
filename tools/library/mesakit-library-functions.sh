@@ -48,7 +48,9 @@ project_build() {
         build_number=$(property_value "$build_properties" build-number)
         build_date=$(property_value "$build_properties" build-date)
 
-        echo "build #$build_number on $build_date '$build_name'"
+        branch_name=$(git_branch_name "$project_home")
+
+        echo "$branch_name build #$build_number ($build_name) on $build_date"
 
     fi
 }
