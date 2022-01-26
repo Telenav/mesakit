@@ -10,4 +10,4 @@
 source mesakit-library-functions.sh
 source mesakit-projects.sh
 
-showVersion $MESAKIT_HOME
+showVersion "$MESAKIT_HOME"
