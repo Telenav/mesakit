@@ -10,13 +10,15 @@
 <img src="https://www.kivakit.org/images/zulip-32.png" srcset="https://www.kivakit.org/images/zulip-32-2x.png 2x"/>
 </a>
 
-# MesaKit - Setup   <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"></img>
+# MesaKit - Build Setup   <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"></img>
 
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"></img>
 
-## Setting Up MesaKit
+## Setting Up to Build MesaKit
 
 Whether you plan to use MesaKit or help to develop it, this page will help you get rolling in 3 easy steps.
+
+> [Build MesaKit anywhere *fast* with Docker](docker-build-setup.md)
 
 ### Prerequisites
 
@@ -28,13 +30,11 @@ Whether you plan to use MesaKit or help to develop it, this page will help you g
 
 The MesaKit project will look roughly like this when we're done with the setup process:
 
-> * Workspace
-    >
-* mesakit
-  >
-* mesakit-map
->     * mesakit-graph
->     * [...]
+    Workspace
+    └── mesakit
+        ├── mesakit-map
+        ├── mesakit-graph
+        └── [...]
 
 Notice how the *mesakit* project (**MESAKIT_HOME**) is checked out in the IDE workspace called
 *Workspace* (**MESAKIT_WORKSPACE**).
@@ -63,17 +63,13 @@ To configure your environment, you will need several environment variables set.
 
 > Without the correct environment variables set, the setup script in Step 3 won't work.
 
-1. Copy the provided mesakit-profile to your root folder
-
-        cp mesakit/setup/mesakit-profile ~/.mesakit-profile
-
-2. *If you have checked MesaKit out in a different workspace* from KivaKit, you will need to change the **MESAKIT_WORKSPACE** variable to the workspace where you checked it out.
+1. *If you have checked MesaKit out in a different workspace* from KivaKit, you will need to change the **MESAKIT_WORKSPACE** variable to the workspace where you checked it out.
 
        export MESAKIT_WORKSPACE=$HOME/Workspace
 
 > **MESAKIT_WORKSPACE** must point to your *workspace* **NOT** the *mesakit* project in the workspace
 
-3. Start a new shell window
+2. Shut down your terminal program and start a new shell window
 
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"></img>
 

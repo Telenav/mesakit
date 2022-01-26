@@ -87,8 +87,8 @@ MesaKit provides support for:
 
 ### Quick Start <a name = "quick-start"></a>&nbsp; <img src="https://www.kivakit.org/images/rocket-32.png" srcset="https://www.kivakit.org/images/rocket-32-2x.png 2x"/>
 
-[**Setup**](documentation/overview/setup.md)  
-[**Building**](documentation/overview/building.md)  
+[**Setup**](documentation/building/build-setup.md)  
+[**Building**](documentation/building/building.md)  
 [**Developing**](documentation/developing/index.md)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
