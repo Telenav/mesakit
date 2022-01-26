@@ -11,6 +11,9 @@ ENV MESAKIT_VERSION=${ENV_MESAKIT_VERSION}
 ENV MESAKIT_WORKSPACE=$HOME/workspace
 ENV MESAKIT_HOME="${MESAKIT_WORKSPACE}/mesakit"
 
+RUN mkdir -p $DEVELOPER/.mesakit && \
+    ln -s $DEVELOPER/.mesakit $HOME/.mesakit
+
 # Clone mesakit:develop
 
 RUN cd "$MESAKIT_WORKSPACE" && \

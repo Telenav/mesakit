@@ -1,39 +1,83 @@
 # MesaKit - Docker Build Setup   <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"/>
 
-Docker makes it quick and easy to build MesaKit in any environment, without setup hassles.
+Docker makes it quick and easy to build MesaKit in any environment, without software setup hassles.
 
 ### Building MesaKit in Docker
 
-Building MesaKit (and KivaKit) in Docker is a snap:
+Building MesaKit in Docker is a snap:
 
 1. [Install docker](https://docs.docker.com/get-docker/)
-2. In a shell window on your host:
 
-       docker run -it jonathanlocke/mesakit:[version]
 
-   The [MesaKit Docker build environment image]( https://hub.docker.com/repository/docker/jonathanlocke/mesakit) of the specified version will launch with the *develop* branch checked out. The source code can be built with:
+2. If you have *NOT* [set up a local build](build-setup.md) already, choose a workspace:
+
+       export MESAKIT_WORKSPACE=~/workspaces/mesakit
+       export KIVAKIT_WORKSPACE=$MESAKIT_WORKSPACE
+
+   and check out a fresh set of KivaKit and MesaKit repositories:
+
+       mkdir -p $MESAKIT_WORKSPACE 
+       cd $MESAKIT_WORKSPACE
+       git clone --branch develop https://github.com/Telenav/kivakit.git
+       bash $KIVAKIT_WORKSPACE/setup/setup-repositories.sh
+       git clone --branch develop https://github.com/Telenav/mesakit.git
+       bash $MESAKIT_WORKSPACE/setup/setup-repositories.sh
+
+
+3. Next, launch the MesaKit build environment. If you have a local build set up, you can use the *mesakit-docker-run.sh* script. If you don't have a local build, set this variable to an image tag from [Docker Hub](https://hub.docker.com/repository/docker/jonathanlocke/mesakit):
+
+       export MESAKIT_BUILD_IMAGE=0.9.9-snapshot
+
+   and launch the build environment like this:
+
+       docker run \
+           --volume "$MESAKIT_WORKSPACE:/host/workspace" \
+           --volume "$HOME/.m2:/host/.m2" \
+           --volume "$HOME/.kivakit:/host/.kivakit" \
+           --volume "$HOME/.mesakit:/host/.mesakit" \
+           --interactive --tty "jonathanlocke/kivakit:$KIVAKIT_BUILD_IMAGE" \
+           /bin/bash
+
+   > The volume mounts here make the host workspace ($MESAKIT_WORKSPACE) and cache
+   > folders ($HOME/.m2, $HOME/.kivakit) visible in Docker under /host. This makes it
+   > possible for Docker to build your host workspace, which is useful when
+   > working with an IDE.
+
+
+4. The source code now can be built with:
 
        mesakit-build.sh
 
-   and updated as desired with git. The scripts *mesakit-git-pull.sh* and *mesakit-git-checkout.sh* conveniently operate across all mesakit repositories.
+   and updated as desired with git.
 
-3. Use the scripts in the table below to build MesaKit on your host or in the Docker container. To switch your build workspace from the container (/root/workspace) to your host (/host/workspace), execute the command:
+
+5. Use the scripts in the table below to build MesaKit on your host or in Docker.
+
+
+6. To switch to your host workspace (to work with an IDE):
 
        mesakit-docker-workspace.sh host
 
-   to switch back to the container workspace:
+   Host locations:
 
-       mesakit-docker-workspace.sh container
+    * MESAKIT_WORKSPACE => /host/workspace
+    * /root/.m2 => /host/.m2
+    * /root/.kivakit => /host/.kivakit
+    * /root/.mesakit => /host/.mesakit
 
-   > **NOTE**
-   >
-   > To switch to the host workspace, it must be mounted as a volume in the container like this:
-   >
-   >     docker -v "$MESAKIT_WORKSPACE:/host/workspace" [...]
-   >
-   > For convenience, the script *mesakit-docker-run.sh* launches docker with this volume mounted.
 
-### MesaKit Scripts
+7. To switch your workspace back to Docker:
+
+       kivakit-docker-workspace.sh docker
+
+   Docker locations:
+
+    * MESAKIT_WORKSPACE => /root/workspace
+    * /root/.m2 => /root/developer/.m2
+    * /root/.kivakit => /root/developer/.kivakit
+    * /root/.mesakit => /root/developer/.mesakit
+
+### MesaKit Build Scripts
 
 | MesaKit Script                                    | Purpose                                      |
 |---------------------------------------------------|----------------------------------------------|
@@ -47,3 +91,4 @@ Building MesaKit (and KivaKit) in Docker is a snap:
 | mesakit-feature-finish.sh \[branch\]              | finish a feature branch **                   |
 
 ** executes the command in each mesakit repository
+
