@@ -9,7 +9,7 @@ Building MesaKit (and KivaKit) in Docker is a snap:
 1. [Install docker](https://docs.docker.com/get-docker/)
 2. In a shell window on your host:
 
-       docker -it jonathanlocke/mesakit:[version]
+       docker run -it jonathanlocke/mesakit:[version]
 
    The [MesaKit Docker build environment image]( https://hub.docker.com/repository/docker/jonathanlocke/mesakit) of the specified version will launch with the *develop* branch checked out. The source code can be built with:
 
