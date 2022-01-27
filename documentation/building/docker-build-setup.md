@@ -19,9 +19,9 @@ Building MesaKit in Docker is a snap:
        mkdir -p $MESAKIT_WORKSPACE 
        cd $MESAKIT_WORKSPACE
        git clone --branch develop https://github.com/Telenav/kivakit.git
-       bash $KIVAKIT_WORKSPACE/setup/setup-repositories.sh
+       bash $KIVAKIT_WORKSPACE/kivakit/setup/setup-repositories.sh
        git clone --branch develop https://github.com/Telenav/mesakit.git
-       bash $MESAKIT_WORKSPACE/setup/setup-repositories.sh
+       bash $MESAKIT_WORKSPACE/mesakit/setup/setup-repositories.sh
 
 
 3. Next, launch the MesaKit build environment. If you have a local build set up, you can use the *mesakit-docker-run.sh* script. If you don't have a local build, set this variable to an image tag from [Docker Hub](https://hub.docker.com/repository/docker/jonathanlocke/mesakit):
