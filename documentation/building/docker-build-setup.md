@@ -79,16 +79,16 @@ Building MesaKit in Docker is a snap:
 
 ### MesaKit Build Scripts
 
-| MesaKit Script                                    | Purpose                                      |
-|---------------------------------------------------|----------------------------------------------|
-| mesakit-\[tab\]                                   | see available mesakit shell scripts          |
-| mesakit-version.sh                                | show mesakit version                         |
-| mesakit-build.sh                                  | build mesakit                                |
-| mesakit-git-pull.sh                               | pull changes **                              |
-| mesakit-git-checkout.sh \[branch\]                | check out the given branch **                |
-| mesakit-docker-workspace.sh \[host or container\] | switch between host and container workspaces |
-| mesakit-feature-start.sh \[branch\]               | start a feature branch **                    |
-| mesakit-feature-finish.sh \[branch\]              | finish a feature branch **                   |
+| MesaKit Script                                 | Purpose                                   |
+|------------------------------------------------|-------------------------------------------|
+| mesakit-\[tab\]                                | see available mesakit shell scripts       |
+| mesakit-version.sh                             | show mesakit version                      |
+| mesakit-build.sh                               | build mesakit                             |
+| mesakit-git-pull.sh                            | pull changes **                           |
+| mesakit-git-checkout.sh \[branch\]             | check out the given branch **             |
+| mesakit-docker-workspace.sh \[host or docker\] | switch between host and docker workspaces |
+| mesakit-feature-start.sh \[branch\]            | start a feature branch **                 |
+| mesakit-feature-finish.sh \[branch\]           | finish a feature branch **                |
 
 ** executes the command in each mesakit repository
 
