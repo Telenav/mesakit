@@ -21,7 +21,7 @@ cd "$MESAKIT_WORKSPACE"
 git clone https://github.com/Telenav/mesakit.git
 git clone https://github.com/Telenav/mesakit-extensions.git
 git clone https://github.com/Telenav/mesakit-examples.git
-git clone https://github.com/Telenav/mesakit-assets.git
+git clone --depth 1 https://github.com/Telenav/mesakit-assets.git
 
 #
 # Initialize git for each project
