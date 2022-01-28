@@ -37,4 +37,6 @@ fi
 export KIVAKIT_WORKSPACE="$WORKSPACE"
 export MESAKIT_WORKSPACE="$WORKSPACE"
 
-source ~/.profile
+source "$HOME/.profile"
+
+$SHELL
