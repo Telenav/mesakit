@@ -15,10 +15,10 @@ echo " "
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ Cloning Repositories"
 echo " "
 
-mkdir -p "$MESAKIT_WORKSPACE"
+mkdir -p "$MESAKIT_WORKSPACE" > /dev/null 2>&1
 cd "$MESAKIT_WORKSPACE" || exit
 
-git clone --quiet https://github.com/Telenav/mesakit.git
+[ ! -d "$MESAKIT_WORKSPACE/mesakit" ] && git clone --quiet https://github.com/Telenav/mesakit.git
 git clone https://github.com/Telenav/mesakit-extensions.git
 git clone https://github.com/Telenav/mesakit-examples.git
 git clone --depth 1 https://github.com/Telenav/mesakit-assets.git

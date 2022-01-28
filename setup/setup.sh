@@ -35,7 +35,7 @@ fi
 #
 
 echo " "
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ Cloning Repositories"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ Setting Up Repositories"
 echo " "
 
 cd "$MESAKIT_WORKSPACE" || exit

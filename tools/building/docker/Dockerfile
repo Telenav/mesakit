@@ -17,9 +17,7 @@ RUN mkdir -p $DEVELOPER/.mesakit && \
 # Clone mesakit:develop
 
 RUN cd "$MESAKIT_WORKSPACE" && \
-    git clone https://github.com/Telenav/mesakit.git && \
-    cd "$MESAKIT_HOME" && \
-    git checkout develop
+    git clone --branch develop https://github.com/Telenav/mesakit.git
 
 # Run setup script
 
