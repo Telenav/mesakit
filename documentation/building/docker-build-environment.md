@@ -6,7 +6,7 @@ Docker makes it quick and easy to build MesaKit in any environment, without soft
 
 Building MesaKit in Docker is a snap:
 
-1. [Install docker](https://docs.docker.com/get-docker/)
+1. Install [Docker Desktop](https://docs.docker.com/get-docker/) and ensure that your home folder can be shared under Settings / Resources / File Sharing
 
 
 2. If you have *NOT* [set up a local build](host-build-environment.md) already, choose a workspace:
