@@ -16,7 +16,7 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo " "
 
 mkdir -p "$MESAKIT_WORKSPACE"
-cd "$MESAKIT_WORKSPACE"
+cd "$MESAKIT_WORKSPACE" || exit
 
 git clone --quiet https://github.com/Telenav/mesakit.git
 git clone https://github.com/Telenav/mesakit-extensions.git
@@ -36,7 +36,7 @@ initialize() {
     project_home=$1
     branch=$2
 
-    cd "$project_home"
+    cd "$project_home" || exit
     echo " "
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━┫ Initializing $(pwd)"
     echo " "
