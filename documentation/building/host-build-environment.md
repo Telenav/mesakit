@@ -10,7 +10,7 @@
 <img src="https://www.kivakit.org/images/zulip-32.png" srcset="https://www.kivakit.org/images/zulip-32-2x.png 2x"/>
 </a>
 
-# MesaKit - Build Setup   <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"></img>
+# MesaKit - Host Build Setup   <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"></img>
 
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"></img>
 
@@ -18,7 +18,7 @@
 
 Whether you plan to use MesaKit or help to develop it, this page will help you get rolling in 3 easy steps.
 
-> [Build MesaKit anywhere *fast* with Docker](docker-build-setup.md)
+> [Build MesaKit anywhere *fast* with Docker](docker-build-environment.md)
 
 ### Prerequisites
 
@@ -89,7 +89,7 @@ Congratulations! You're set up and ready to build or help to develop MesaKit.
 
 ### Next Steps &nbsp; &nbsp;  <img src="https://www.kivakit.org/images/footprints-32.png" srcset="https://www.kivakit.org/images/footprints-32-2x.png 2x"></img>
 
-[I want to build MesaKit](building.md)
+[I want to build MesaKit](index.md)
 
 [I want to work on MesaKit](../developing/index.md)
 

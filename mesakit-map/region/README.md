@@ -14,9 +14,9 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map region &nbsp;&nbsp; <img src="https://www.mesakit.org/images/map-32.png" srcset="https://www.mesakit.org/images/map-32-2x.png 2x"/>
+# mesakit-map-region &nbsp;&nbsp; <img src="https://www.mesakit.org/images/map-32.png" srcset="https://www.mesakit.org/images/map-32-2x.png 2x"/>
 
-This module contains packages for handling administrative regions.
+This module contains code for map administrative regions
 
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
@@ -30,16 +30,15 @@ This module contains packages for handling administrative regions.
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/dependencies-32.png" srcset="https://www.kivakit.org/images/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/region/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/region/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-region</artifactId>
-        <version>-SNAPSHOT</version>
+        <version>0.9.9-SNAPSHOT</version>
     </dependency>
-
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
@@ -53,24 +52,24 @@ This module contains packages for handling administrative regions.
 
 ### Class Diagrams <a name="class-diagrams"></a> &nbsp; &nbsp; <img src="https://www.kivakit.org/images/diagram-40.png" srcset="https://www.kivakit.org/images/diagram-40-2x.png 2x"/>
 
-[*Administrative Regions*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/region/documentation/diagrams/diagram-region.svg)  
-[*Region Borders*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/region/documentation/diagrams/diagram-border.svg)  
-[*Regions*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/region/documentation/diagrams/diagram-regions.svg)
+[*Administrative area model*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/region/documentation/diagrams/diagram-region.svg)  
+[*Administrative areas*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/region/documentation/diagrams/diagram-regions.svg)  
+[*Geographic borders*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/region/documentation/diagrams/diagram-border.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"/>
 
-[*com.telenav.mesakit.map.region*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.svg)  
-[*com.telenav.mesakit.map.region.border*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.border.svg)  
-[*com.telenav.mesakit.map.region.border.cache*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.border.cache.svg)  
-[*com.telenav.mesakit.map.region.continents*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.continents.svg)  
-[*com.telenav.mesakit.map.region.countries*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.countries.svg)  
-[*com.telenav.mesakit.map.region.countries.states*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.countries.states.svg)  
-[*com.telenav.mesakit.map.region.countries.states.cities*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.countries.states.cities.svg)  
-[*com.telenav.mesakit.map.region.locale*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.locale.svg)  
-[*com.telenav.mesakit.map.region.project*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.project.svg)  
-[*com.telenav.mesakit.map.region.regions*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.regions.svg)
+[*com.telenav.mesakit.map.region*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.svg)  
+[*com.telenav.mesakit.map.region.border*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.border.svg)  
+[*com.telenav.mesakit.map.region.border.cache*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.border.cache.svg)  
+[*com.telenav.mesakit.map.region.continents*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.continents.svg)  
+[*com.telenav.mesakit.map.region.countries*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.countries.svg)  
+[*com.telenav.mesakit.map.region.countries.states*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.countries.states.svg)  
+[*com.telenav.mesakit.map.region.countries.states.cities*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.countries.states.cities.svg)  
+[*com.telenav.mesakit.map.region.locale*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.locale.svg)  
+[*com.telenav.mesakit.map.region.project*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.project.svg)  
+[*com.telenav.mesakit.map.region.regions*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/region/documentation/diagrams/com.telenav.mesakit.map.region.regions.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
@@ -108,62 +107,62 @@ The following significant classes are undocumented:
 
 | Class | Documentation Sections |
 |---|---|
-| [*Africa*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/continents/Africa.html) |  |  
-| [*Antarctica*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/continents/Antarctica.html) |  |  
-| [*Asia*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/continents/Asia.html) |  |  
-| [*Border*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/border/Border.html) |  |  
-| [*BorderCache*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/border/cache/BorderCache.html) |  |  
-| [*BorderCache.Settings*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/border/cache/BorderCache.Settings.html) |  |  
-| [*BorderLeaf*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/border/BorderLeaf.html) |  |  
-| [*BorderSpatialIndex*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/border/BorderSpatialIndex.html) |  |  
-| [*BorderSpatialIndexKryoSerializer*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/border/BorderSpatialIndexKryoSerializer.html) |  |  
-| [*Bordered*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/border/Bordered.html) |  |  
-| [*California*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/countries/states/California.html) |  |  
-| [*Canada*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/countries/Canada.html) |  |  
-| [*City*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/City.html) |  |  
-| [*Continent*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/Continent.html) |  |  
-| [*Country*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/Country.html) |  |  
-| [*Country.AutomotiveSupportLevel*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/Country.AutomotiveSupportLevel.html) |  |  
-| [*Country.Converter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/Country.Converter.html) |  |  
-| [*Country.CountryTmcCode*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/Country.CountryTmcCode.html) |  |  
-| [*Country.DrivingSide*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/Country.DrivingSide.html) |  |  
-| [*Country.ListConverter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/Country.ListConverter.html) |  |  
-| [*County*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/County.html) |  |  
-| [*District*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/District.html) |  |  
-| [*Europe*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/continents/Europe.html) |  |  
-| [*HascCode*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/locale/HascCode.html) |  |  
-| [*MapLocale*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/locale/MapLocale.html) |  |  
-| [*MapRegionKryoTypes*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/project/MapRegionKryoTypes.html) |  |  
-| [*MapRegionLimits*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/project/MapRegionLimits.html) |  |  
-| [*MapRegionLimits.Estimated*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/project/MapRegionLimits.Estimated.html) |  |  
-| [*MapRegionLimits.Limit*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/project/MapRegionLimits.Limit.html) |  |  
-| [*MapRegionProject*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/project/MapRegionProject.html) |  |  
-| [*MapRegionUnitTest*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/project/MapRegionUnitTest.html) |  |  
-| [*MetropolitanArea*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/MetropolitanArea.html) |  |  
-| [*Mexico*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/countries/Mexico.html) |  |  
-| [*NewYork*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/countries/states/NewYork.html) |  |  
-| [*NorthAmerica*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/continents/NorthAmerica.html) |  |  
-| [*Oceania*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/continents/Oceania.html) |  |  
-| [*RectangularRegion*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/RectangularRegion.html) |  |  
-| [*Region*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/Region.html) |  |  
-| [*Region.Converter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/Region.Converter.html) |  |  
-| [*Region.RegionBorderCache*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/Region.RegionBorderCache.html) |  |  
-| [*Region.SetConverter*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/Region.SetConverter.html) |  |  
-| [*RegionCode*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/RegionCode.html) |  |  
-| [*RegionIdentifier*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/RegionIdentifier.html) |  |  
-| [*RegionIdentity*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/RegionIdentity.html) |  |  
-| [*RegionIdentityCache*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/border/cache/RegionIdentityCache.html) |  |  
-| [*RegionInstance*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/RegionInstance.html) |  |  
-| [*RegionSet*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/RegionSet.html) |  |  
-| [*RegionType*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/RegionType.html) |  |  
-| [*RegionType.RegionFactory*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/RegionType.RegionFactory.html) |  |  
-| [*Seattle*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/countries/states/cities/Seattle.html) |  |  
-| [*SouthAmerica*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/continents/SouthAmerica.html) |  |  
-| [*State*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/State.html) |  |  
-| [*TimeZone*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/TimeZone.html) |  |  
-| [*UnitedStates*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/countries/UnitedStates.html) |  |  
-| [*Washington*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/countries/states/Washington.html) |  |  
-| [*World*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/World.html) |  |  
+| [*Africa*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/continents/Africa.html) |  |  
+| [*Antarctica*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/continents/Antarctica.html) |  |  
+| [*Asia*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/continents/Asia.html) |  |  
+| [*Border*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/border/Border.html) |  |  
+| [*BorderCache*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/border/cache/BorderCache.html) |  |  
+| [*BorderCache.Settings*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/border/cache/BorderCache.Settings.html) |  |  
+| [*BorderLeaf*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/border/BorderLeaf.html) |  |  
+| [*BorderSpatialIndex*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/border/BorderSpatialIndex.html) |  |  
+| [*BorderSpatialIndexKryoSerializer*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/border/BorderSpatialIndexKryoSerializer.html) |  |  
+| [*Bordered*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/border/Bordered.html) |  |  
+| [*California*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/countries/states/California.html) |  |  
+| [*Canada*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/countries/Canada.html) |  |  
+| [*City*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/City.html) |  |  
+| [*Continent*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/Continent.html) |  |  
+| [*Country*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/Country.html) |  |  
+| [*Country.AutomotiveSupportLevel*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/Country.AutomotiveSupportLevel.html) |  |  
+| [*Country.Converter*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/Country.Converter.html) |  |  
+| [*Country.CountryTmcCode*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/Country.CountryTmcCode.html) |  |  
+| [*Country.DrivingSide*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/Country.DrivingSide.html) |  |  
+| [*Country.ListConverter*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/Country.ListConverter.html) |  |  
+| [*County*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/County.html) |  |  
+| [*District*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/District.html) |  |  
+| [*Europe*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/continents/Europe.html) |  |  
+| [*HascCode*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/locale/HascCode.html) |  |  
+| [*MapLocale*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/locale/MapLocale.html) |  |  
+| [*MetropolitanArea*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/MetropolitanArea.html) |  |  
+| [*Mexico*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/countries/Mexico.html) |  |  
+| [*NewYork*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/countries/states/NewYork.html) |  |  
+| [*NorthAmerica*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/continents/NorthAmerica.html) |  |  
+| [*Oceania*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/continents/Oceania.html) |  |  
+| [*RectangularRegion*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/RectangularRegion.html) |  |  
+| [*Region*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/Region.html) |  |  
+| [*Region.Converter*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/Region.Converter.html) |  |  
+| [*Region.RegionBorderCache*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/Region.RegionBorderCache.html) |  |  
+| [*Region.SetConverter*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/Region.SetConverter.html) |  |  
+| [*RegionCode*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/RegionCode.html) |  |  
+| [*RegionIdentifier*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/RegionIdentifier.html) |  |  
+| [*RegionIdentity*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/RegionIdentity.html) |  |  
+| [*RegionIdentityCache*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/border/cache/RegionIdentityCache.html) |  |  
+| [*RegionInstance*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/RegionInstance.html) |  |  
+| [*RegionKryoTypes*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/project/RegionKryoTypes.html) |  |  
+| [*RegionLimits*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/project/RegionLimits.html) |  |  
+| [*RegionLimits.Estimated*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/project/RegionLimits.Estimated.html) |  |  
+| [*RegionLimits.Limit*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/project/RegionLimits.Limit.html) |  |  
+| [*RegionProject*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/RegionProject.html) |  |  
+| [*RegionSet*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/RegionSet.html) |  |  
+| [*RegionType*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/RegionType.html) |  |  
+| [*RegionType.RegionFactory*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/RegionType.RegionFactory.html) |  |  
+| [*RegionUnitTest*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/project/RegionUnitTest.html) |  |  
+| [*Seattle*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/countries/states/cities/Seattle.html) |  |  
+| [*SouthAmerica*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/continents/SouthAmerica.html) |  |  
+| [*State*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/State.html) |  |  
+| [*TimeZone*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/TimeZone.html) |  |  
+| [*UnitedStates*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/countries/UnitedStates.html) |  |  
+| [*Washington*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/countries/states/Washington.html) |  |  
+| [*World*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.region/com/telenav/mesakit/map/region/regions/World.html) |  |  
 
 [//]: # (start-user-text)
 
@@ -173,7 +172,6 @@ The following significant classes are undocumented:
 
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
-<sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc., distributed under [Apache License, Version 2.0](LICENSE). Made with Natural Earth, free vector and raster map data at naturalearthdata.com. Portions of map data &#169; OpenStreetMap contributors, distributed under [ODC Open Database License](legal/OPEN_DATABASE_LICENSE).</sub>  
-<sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai). UML diagrams courtesy
-of [PlantUML](http://plantuml.com).</sub>
+<sub>Copyright &#169; 2011-2021 [Telenav](https://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>  
+<sub>This documentation was generated by [Lexakai](https://lexakai.org). UML diagrams courtesy of [PlantUML](https://plantuml.com).</sub>
 

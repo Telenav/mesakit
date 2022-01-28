@@ -20,7 +20,7 @@ MesaKit can be built in [IntelliJ](https://www.jetbrains.com/idea/download/) or 
 
 ### Key Build Scripts
 
-Once you have completed the [Setup](build-setup.md) process, it is easy to build projects from the command line with **mesakit-build.sh**.
+Once you have completed the [Setup](host-build-environment.md) process, it is easy to build projects from the command line with **mesakit-build.sh**.
 
 | Script                           | Purpose                                                              |
 |----------------------------------|----------------------------------------------------------------------|

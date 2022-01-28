@@ -9,7 +9,7 @@ Building MesaKit in Docker is a snap:
 1. [Install docker](https://docs.docker.com/get-docker/)
 
 
-2. If you have *NOT* [set up a local build](build-setup.md) already, choose a workspace:
+2. If you have *NOT* [set up a local build](host-build-environment.md) already, choose a workspace:
 
        export MESAKIT_WORKSPACE=~/workspaces/mesakit
        export KIVAKIT_WORKSPACE=$MESAKIT_WORKSPACE
@@ -24,7 +24,7 @@ Building MesaKit in Docker is a snap:
        bash $MESAKIT_WORKSPACE/mesakit/setup/setup-repositories.sh
 
 
-3. Next, launch the MesaKit build environment. If you have a local build set up, you can use the *mesakit-docker-run.sh* script. If you don't have a local build, set this variable to an image tag from [Docker Hub](https://hub.docker.com/repository/docker/jonathanlocke/mesakit):
+3. Next, launch the MesaKit build environment. If you have a local build set up, you can use the *mesakit-docker-build.sh* script. If you don't have a local build, set this variable to an image tag from [Docker Hub](https://hub.docker.com/repository/docker/jonathanlocke/mesakit):
 
        export MESAKIT_BUILD_IMAGE=0.9.9-snapshot
 
@@ -56,7 +56,7 @@ Building MesaKit in Docker is a snap:
 
 6. To switch to your host workspace (to work with an IDE):
 
-       mesakit-docker-workspace.sh host
+       mesakit-docker-build-workspace.sh host
 
    Host locations:
 
@@ -68,7 +68,7 @@ Building MesaKit in Docker is a snap:
 
 7. To switch your workspace back to Docker:
 
-       kivakit-docker-workspace.sh docker
+       kivakit-docker-build-workspace.sh docker
 
    Docker locations:
 
@@ -79,16 +79,16 @@ Building MesaKit in Docker is a snap:
 
 ### MesaKit Build Scripts
 
-| MesaKit Script                                 | Purpose                                   |
-|------------------------------------------------|-------------------------------------------|
-| mesakit-\[tab\]                                | see available mesakit shell scripts       |
-| mesakit-version.sh                             | show mesakit version                      |
-| mesakit-build.sh                               | build mesakit                             |
-| mesakit-git-pull.sh                            | pull changes **                           |
-| mesakit-git-checkout.sh \[branch\]             | check out the given branch **             |
-| mesakit-docker-workspace.sh \[host or docker\] | switch between host and docker workspaces |
-| mesakit-feature-start.sh \[branch\]            | start a feature branch **                 |
-| mesakit-feature-finish.sh \[branch\]           | finish a feature branch **                |
+| MesaKit Script                       | Purpose                                   |
+|--------------------------------------|-------------------------------------------|
+| mesakit-\[tab\]                      | see available mesakit shell scripts       |
+| mesakit-version.sh                   | show mesakit version                      |
+| mesakit-build.sh                     | build mesakit                             |
+| mesakit-git-pull.sh                  | pull changes **                           |
+| mesakit-git-checkout.sh \[branch\]   | check out the given branch **             |
+| mesakit-docker-build-workspace.sh    | switch between host and docker workspaces |
+| mesakit-feature-start.sh \[branch\]  | start a feature branch **                 |
+| mesakit-feature-finish.sh \[branch\] | finish a feature branch **                |
 
 ** executes the command in each mesakit repository
 

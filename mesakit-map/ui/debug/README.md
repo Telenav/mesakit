@@ -1,22 +1,12 @@
 [//]: # (start-user-text)
 
-<a href="https://www.mesakit.org">
-<img src="https://www.kivakit.org/images/web-32.png" srcset="https://www.kivakit.org/images/web-32-2x.png 2x"/>
-</a>
-&nbsp;
-<a href="https://twitter.com/openmesakit">
-<img src="https://www.kivakit.org/images/twitter-32.png" srcset="https://www.kivakit.org/images/twitter-32-2x.png 2x"/>
-</a>
-&nbsp;
-<a href="https://mesakit.zulipchat.com">
-<img src="https://www.kivakit.org/images/zulip-32.png" srcset="https://www.kivakit.org/images/zulip-32-2x.png 2x"/>
-</a>
+
 
 [//]: # (end-user-text)
 
-# mesakit-map-overpass &nbsp;&nbsp; <img src="https://www.mesakit.org/images/communicate-32.png" srcset="https://www.mesakit.org/images/communicate-32-2x.png 2x"/>
+# mesakit-ui-debug &nbsp;&nbsp; <img src="https://www.mesakit.org/images/bug-32.png" srcset="https://www.mesakit.org/images/bug-32-2x.png 2x"/>
 
-This module contains code for downloading map data from OSM Overpass (https://wiki.openstreetmap.org/wiki/Overpass_API)
+This module contains modules for visual debugging of maps and routing
 
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
@@ -30,13 +20,13 @@ This module contains code for downloading map data from OSM Overpass (https://wi
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/dependencies-32.png" srcset="https://www.kivakit.org/images/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/ui/debug/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
-        <artifactId>mesakit-map-overpass</artifactId>
+        <artifactId>mesakit-map-ui-debug</artifactId>
         <version>0.9.9-SNAPSHOT</version>
     </dependency>
 
@@ -52,34 +42,36 @@ This module contains code for downloading map data from OSM Overpass (https://wi
 
 ### Class Diagrams <a name="class-diagrams"></a> &nbsp; &nbsp; <img src="https://www.kivakit.org/images/diagram-40.png" srcset="https://www.kivakit.org/images/diagram-40-2x.png 2x"/>
 
-[*OSM Overpass*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/diagram-overpass.svg)
+None
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"/>
 
-[*com.telenav.mesakit.map.overpass*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/com.telenav.mesakit.map.overpass.svg)  
-[*com.telenav.mesakit.map.overpass.pbf*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/com.telenav.mesakit.map.overpass.pbf.svg)
+[*com.telenav.mesakit.map.ui.debug*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/ui/debug/documentation/diagrams/com.telenav.mesakit.map.ui.debug.svg)  
+[*com.telenav.mesakit.map.ui.debug.debuggers*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/ui/debug/documentation/diagrams/com.telenav.mesakit.map.ui.debug.debuggers.svg)  
+[*com.telenav.mesakit.map.ui.debug.theme*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/ui/debug/documentation/diagrams/com.telenav.mesakit.map.ui.debug.theme.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
 ### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/books-32.png" srcset="https://www.kivakit.org/images/books-32-2x.png 2x"/>
 
-Javadoc coverage for this project is 12.5%.  
+Javadoc coverage for this project is 33.3%.  
   
-&nbsp; &nbsp; <img src="https://www.mesakit.org/images/meter-10-96.png" srcset="https://www.mesakit.org/images/meter-10-96-2x.png 2x"/>
+&nbsp; &nbsp; <img src="https://www.mesakit.org/images/meter-30-96.png" srcset="https://www.mesakit.org/images/meter-30-96-2x.png 2x"/>
 
 
 The following significant classes are undocumented:  
 
-- OverpassDataDownloader
+- RTreeSpatialIndexVisualDebugger
 
 | Class | Documentation Sections |
 |---|---|
-| [*OsmToPbfConverter*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.overpass/com/telenav/mesakit/map/overpass/pbf/OsmToPbfConverter.html) |  |  
-| [*OverpassDataDownloader*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.overpass/com/telenav/mesakit/map/overpass/OverpassDataDownloader.html) |  |  
-| [*OverpassOsmResource*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.overpass/com/telenav/mesakit/map/overpass/OverpassOsmResource.html) |  |  
-| [*OverpassProject*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.overpass/com/telenav/mesakit/map/overpass/OverpassProject.html) |  |  
+| [*DebugViewer*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.ui.debug/com/telenav/mesakit/map/ui/debug/DebugViewer.html) |  |  
+| [*DebugViewerIcons*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.ui.debug/com/telenav/mesakit/map/ui/debug/theme/DebugViewerIcons.html) |  |  
+| [*DebugViewerStyles*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.ui.debug/com/telenav/mesakit/map/ui/debug/theme/DebugViewerStyles.html) |  |  
+| [*PolygonSpatialIndexVisualDebugger*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.ui.debug/com/telenav/mesakit/map/ui/debug/debuggers/PolygonSpatialIndexVisualDebugger.html) |  |  
+| [*RTreeSpatialIndexVisualDebugger*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.ui.debug/com/telenav/mesakit/map/ui/debug/debuggers/RTreeSpatialIndexVisualDebugger.html) |  |  
 
 [//]: # (start-user-text)
 

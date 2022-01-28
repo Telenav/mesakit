@@ -7,6 +7,6 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-rm -rf $MESAKIT_ASSETS_HOME/docs/$MESAKIT_VERSION/javadoc/
+rm -rf "$MESAKIT_ASSETS_HOME"/docs/"$MESAKIT_VERSION"/javadoc/
 
 bash mesakit-build.sh javadoc

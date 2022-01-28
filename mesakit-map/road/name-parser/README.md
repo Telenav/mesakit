@@ -14,9 +14,9 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-road name-parser &nbsp;&nbsp; <img src="https://www.mesakit.org/images/gears-32.png" srcset="https://www.mesakit.org/images/gears-32-2x.png 2x"/>
+# mesakit-map-road-name-parser &nbsp;&nbsp; <img src="https://www.mesakit.org/images/road-32.png" srcset="https://www.mesakit.org/images/road-32-2x.png 2x"/>
 
-This project provides parsers for road names in different languages.
+This module contains a parser for road names
 
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
@@ -30,16 +30,15 @@ This project provides parsers for road names in different languages.
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/dependencies-32.png" srcset="https://www.kivakit.org/images/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/road/name-parser/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/road/name-parser/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-road-name-parser</artifactId>
-        <version>-SNAPSHOT</version>
+        <version>0.9.9-SNAPSHOT</version>
     </dependency>
-
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
@@ -59,12 +58,11 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"/>
 
-[*com.telenav.mesakit.map.road.name.parser*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/road/name-parser/documentation/diagrams/com.telenav.mesakit.map.road.name.parser.svg)  
-[*com.telenav.mesakit.map.road.name.parser.locales.english*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/road/name-parser/documentation/diagrams/com.telenav.mesakit.map.road.name.parser.locales.english.svg)  
-[*com.telenav.mesakit.map.road.name.parser.locales.indonesian*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/road/name-parser/documentation/diagrams/com.telenav.mesakit.map.road.name.parser.locales.indonesian.svg)  
-[*com.telenav.mesakit.map.road.name.parser.project*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/road/name-parser/documentation/diagrams/com.telenav.mesakit.map.road.name.parser.project.svg)  
-[*com.telenav.mesakit.map.road.name.parser.tokenizer*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/road/name-parser/documentation/diagrams/com.telenav.mesakit.map.road.name.parser.tokenizer.svg)  
-[*com.telenav.mesakit.map.road.name.parser.tokenizer.symbols*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/road/name-parser/documentation/diagrams/com.telenav.mesakit.map.road.name.parser.tokenizer.symbols.svg)
+[*com.telenav.mesakit.map.road.name.parser*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/road/name-parser/documentation/diagrams/com.telenav.mesakit.map.road.name.parser.svg)  
+[*com.telenav.mesakit.map.road.name.parser.locales.english*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/road/name-parser/documentation/diagrams/com.telenav.mesakit.map.road.name.parser.locales.english.svg)  
+[*com.telenav.mesakit.map.road.name.parser.locales.indonesian*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/road/name-parser/documentation/diagrams/com.telenav.mesakit.map.road.name.parser.locales.indonesian.svg)  
+[*com.telenav.mesakit.map.road.name.parser.tokenizer*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/road/name-parser/documentation/diagrams/com.telenav.mesakit.map.road.name.parser.tokenizer.svg)  
+[*com.telenav.mesakit.map.road.name.parser.tokenizer.symbols*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/road/name-parser/documentation/diagrams/com.telenav.mesakit.map.road.name.parser.tokenizer.symbols.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
@@ -91,31 +89,31 @@ The following significant classes are undocumented:
 
 | Class | Documentation Sections |
 |---|---|
-| [*BaseRoadNameParser*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/BaseRoadNameParser.html) |  |  
-| [*EnglishCanadaRoadNameParser*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/locales/english/EnglishCanadaRoadNameParser.html) |  |  
-| [*EnglishCanadaTokenizer*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/locales/english/EnglishCanadaTokenizer.html) |  |  
-| [*EnglishRoadNameParser*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/locales/english/EnglishRoadNameParser.html) |  |  
-| [*EnglishTokenizer*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/locales/english/EnglishTokenizer.html) |  |  
-| [*EnglishUnitedStatesRoadNameParser*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/locales/english/EnglishUnitedStatesRoadNameParser.html) |  |  
-| [*EnglishUnitedStatesTokenizer*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/locales/english/EnglishUnitedStatesTokenizer.html) |  |  
-| [*IndonesianRoadNameParser*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/locales/indonesian/IndonesianRoadNameParser.html) |  |  
-| [*IndonesianRoadNameParser.Capitalization*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/locales/indonesian/IndonesianRoadNameParser.Capitalization.html) |  |  
-| [*IndonesianTokenizer*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/locales/indonesian/IndonesianTokenizer.html) |  |  
-| [*MapRoadNameParserProject*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/project/MapRoadNameParserProject.html) |  |  
-| [*ParsedRoadName*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/ParsedRoadName.html) |  |  
-| [*ParsedRoadName.Builder*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/ParsedRoadName.Builder.html) |  |  
-| [*ParsedRoadName.DirectionFormat*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/ParsedRoadName.DirectionFormat.html) |  |  
-| [*ParsedRoadName.TypePosition*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/ParsedRoadName.TypePosition.html) |  |  
-| [*RoadNameParser*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/RoadNameParser.html) |  |  
-| [*Symbol*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/tokenizer/symbols/Symbol.html) |  |  
-| [*SymbolList*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/tokenizer/symbols/SymbolList.html) |  |  
-| [*SymbolStream*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/tokenizer/symbols/SymbolStream.html) |  |  
-| [*Token*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/tokenizer/Token.html) |  |  
-| [*TokenList*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/tokenizer/TokenList.html) |  |  
-| [*TokenList.Builder*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/tokenizer/TokenList.Builder.html) |  |  
-| [*TokenMatcher*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/tokenizer/TokenMatcher.html) |  |  
-| [*Tokenizer*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/tokenizer/Tokenizer.html) |  |  
-| [*Word*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/tokenizer/symbols/Word.html) |  |  
+| [*BaseRoadNameParser*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/BaseRoadNameParser.html) |  |  
+| [*EnglishCanadaRoadNameParser*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/locales/english/EnglishCanadaRoadNameParser.html) |  |  
+| [*EnglishCanadaTokenizer*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/locales/english/EnglishCanadaTokenizer.html) |  |  
+| [*EnglishRoadNameParser*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/locales/english/EnglishRoadNameParser.html) |  |  
+| [*EnglishTokenizer*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/locales/english/EnglishTokenizer.html) |  |  
+| [*EnglishUnitedStatesRoadNameParser*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/locales/english/EnglishUnitedStatesRoadNameParser.html) |  |  
+| [*EnglishUnitedStatesTokenizer*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/locales/english/EnglishUnitedStatesTokenizer.html) |  |  
+| [*IndonesianRoadNameParser*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/locales/indonesian/IndonesianRoadNameParser.html) |  |  
+| [*IndonesianRoadNameParser.Capitalization*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/locales/indonesian/IndonesianRoadNameParser.Capitalization.html) |  |  
+| [*IndonesianTokenizer*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/locales/indonesian/IndonesianTokenizer.html) |  |  
+| [*ParsedRoadName*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/ParsedRoadName.html) |  |  
+| [*ParsedRoadName.Builder*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/ParsedRoadName.Builder.html) |  |  
+| [*ParsedRoadName.DirectionFormat*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/ParsedRoadName.DirectionFormat.html) |  |  
+| [*ParsedRoadName.TypePosition*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/ParsedRoadName.TypePosition.html) |  |  
+| [*RoadNameParser*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/RoadNameParser.html) |  |  
+| [*RoadNameParserProject*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/RoadNameParserProject.html) |  |  
+| [*Symbol*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/tokenizer/symbols/Symbol.html) |  |  
+| [*SymbolList*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/tokenizer/symbols/SymbolList.html) |  |  
+| [*SymbolStream*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/tokenizer/symbols/SymbolStream.html) |  |  
+| [*Token*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/tokenizer/Token.html) |  |  
+| [*TokenList*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/tokenizer/TokenList.html) |  |  
+| [*TokenList.Builder*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/tokenizer/TokenList.Builder.html) |  |  
+| [*TokenMatcher*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/tokenizer/TokenMatcher.html) |  |  
+| [*Tokenizer*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/tokenizer/Tokenizer.html) |  |  
+| [*Word*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.road.name.parser/com/telenav/mesakit/map/road/name/parser/tokenizer/symbols/Word.html) |  |  
 
 [//]: # (start-user-text)
 
@@ -125,7 +123,6 @@ The following significant classes are undocumented:
 
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
-<sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc., distributed under [Apache License, Version 2.0](LICENSE). Made with Natural Earth, free vector and raster map data at naturalearthdata.com. Portions of map data &#169; OpenStreetMap contributors, distributed under [ODC Open Database License](legal/OPEN_DATABASE_LICENSE).</sub>  
-<sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai). UML diagrams courtesy
-of [PlantUML](http://plantuml.com).</sub>
+<sub>Copyright &#169; 2011-2021 [Telenav](https://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>  
+<sub>This documentation was generated by [Lexakai](https://lexakai.org). UML diagrams courtesy of [PlantUML](https://plantuml.com).</sub>
 

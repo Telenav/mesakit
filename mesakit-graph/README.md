@@ -4,9 +4,9 @@
 
 [//]: # (end-user-text)
 
-# mesakit-navigation &nbsp;&nbsp; <img src="https://www.mesakit.org/images/gears-32.png" srcset="https://www.mesakit.org/images/gears-32-2x.png 2x"/>
+# mesakit-graph &nbsp;&nbsp; <img src="https://www.mesakit.org/images/gears-32.png" srcset="https://www.mesakit.org/images/gears-32-2x.png 2x"/>
 
-This module contains a simple, heuristic a* router.
+This module contains a directed graph model of map data for navigation.
 
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
@@ -18,14 +18,20 @@ This module contains a simple, heuristic a* router.
 
 ### Projects <a name = "projects"></a> &nbsp; <img src="https://www.kivakit.org/images/gears-32.png" srcset="https://www.kivakit.org/images/gears-32-2x.png 2x"/>
 
-[**mesakit-navigation-routing**](routing/README.md)  
+[**mesakit-graph-core**](core/README.md)  
+[**mesakit-graph-query**](query/README.md)  
+[**mesakit-graph-world**](world/README.md)  
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
 ### Javadoc Coverage <a name = "javadoc-coverage"></a> &nbsp; <img src="https://www.kivakit.org/images/bargraph-32.png" srcset="https://www.kivakit.org/images/bargraph-32-2x.png 2x"/>
 
-&nbsp; <img src="https://www.mesakit.org/images/meter-40-96.png" srcset="https://www.mesakit.org/images/meter-40-96-2x.png 2x"/>
- &nbsp; &nbsp; [**mesakit-navigation-routing**](routing/README.md)
+&nbsp; <img src="https://www.mesakit.org/images/meter-50-96.png" srcset="https://www.mesakit.org/images/meter-50-96-2x.png 2x"/>
+ &nbsp; &nbsp; [**mesakit-graph-core**](core/README.md)  
+&nbsp; <img src="https://www.mesakit.org/images/meter-50-96.png" srcset="https://www.mesakit.org/images/meter-50-96-2x.png 2x"/>
+ &nbsp; &nbsp; [**mesakit-graph-query**](query/README.md)  
+&nbsp; <img src="https://www.mesakit.org/images/meter-70-96.png" srcset="https://www.mesakit.org/images/meter-70-96-2x.png 2x"/>
+ &nbsp; &nbsp; [**mesakit-graph-world**](world/README.md)
 
 [//]: # (start-user-text)
 
