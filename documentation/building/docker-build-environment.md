@@ -35,7 +35,7 @@ Building MesaKit in Docker is a snap:
            --volume "$HOME/.m2:/host/.m2" \
            --volume "$HOME/.kivakit:/host/.kivakit" \
            --volume "$HOME/.mesakit:/host/.mesakit" \
-           --interactive --tty "jonathanlocke/kivakit:$KIVAKIT_BUILD_IMAGE" \
+           --interactive --tty "jonathanlocke/mesakit:$MESAKIT_BUILD_IMAGE" \
            /bin/bash
 
    > The volume mounts here make the host workspace ($MESAKIT_WORKSPACE) and cache
@@ -44,17 +44,10 @@ Building MesaKit in Docker is a snap:
    > working with an IDE.
 
 
-4. The source code now can be built with:
-
-       mesakit-build.sh
-
-   and updated as desired with git.
+4. Use the scripts in the table below to build MesaKit.
 
 
-5. Use the scripts in the table below to build MesaKit on your host or in Docker.
-
-
-6. To switch to your host workspace (to work with an IDE):
+5. To switch from the Docker workspace (default) to your host workspace:
 
        mesakit-docker-build-workspace.sh host
 
@@ -66,9 +59,9 @@ Building MesaKit in Docker is a snap:
     * /root/.mesakit => /host/.mesakit
 
 
-7. To switch your workspace back to Docker:
+6. To switch your workspace back to Docker:
 
-       kivakit-docker-build-workspace.sh docker
+       mesakit-docker-build-workspace.sh docker
 
    Docker locations:
 
@@ -76,6 +69,8 @@ Building MesaKit in Docker is a snap:
     * /root/.m2 => /root/developer/.m2
     * /root/.kivakit => /root/developer/.kivakit
     * /root/.mesakit => /root/developer/.mesakit
+
+<img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
 ### MesaKit Build Scripts
 
