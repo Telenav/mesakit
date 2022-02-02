@@ -15,8 +15,12 @@ system_variable MESAKIT_BUILD "$(project_build "$MESAKIT_HOME")"
 system_variable MESAKIT_TOOLS "$MESAKIT_HOME/tools"
 system_variable MESAKIT_JAVA_OPTIONS "-Xmx12g"
 
-prepend_path "$M2_HOME/bin"
-prepend_path "$JAVA_HOME/bin"
+if [ -z "$KIVAKIT_WORKSPACE" ]; then
+
+    prepend_path "$M2_HOME/bin"
+    prepend_path "$JAVA_HOME/bin"
+
+fi
 
 append_path "$MESAKIT_TOOLS/building"
 append_path "$MESAKIT_TOOLS/developing"
@@ -29,7 +33,11 @@ system_variable MESAKIT_CACHE_HOME "$HOME/.mesakit/$MESAKIT_VERSION"
 
 source "$MESAKIT_TOOLS"/library/mesakit-projects.sh
 
-source_project_profile "cactus-build"
+if [ -z "$KIVAKIT_WORKSPACE" ]; then
+
+    source_project_profile "cactus-build"
+
+fi
 
 echo " "
 echo "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ MesaKit Environment ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"

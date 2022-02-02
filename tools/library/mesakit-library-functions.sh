@@ -50,7 +50,7 @@ project_build() {
 
         branch_name=$(git_branch_name "$project_home")
 
-        echo "$branch_name build #$build_number ($build_name) on $build_date"
+        echo "$branch_name build #$build_number [$build_name] on $build_date"
 
     fi
 }
@@ -296,7 +296,7 @@ system_variable() {
 
     variable=$1
     value=$2
-    temporary="$TMPDIR/export.txt"
+    temporary="${TMPDIR%/}/export.txt"
 
     echo "export $variable=\"$value\"" >"$temporary"
     source "$temporary"
