@@ -129,7 +129,7 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
      * @param maximum A count after which the program will stop iterating the iterable and return stopAfter.
      * @return The count is smaller than stopAfter, or stopAfter otherwise.
      */
-    public Count count(Count maximum)
+    public Count count(Maximum maximum)
     {
         return Count.count(this, maximum);
     }

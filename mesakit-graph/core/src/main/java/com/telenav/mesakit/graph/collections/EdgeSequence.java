@@ -27,6 +27,7 @@ import com.telenav.kivakit.kernel.language.iteration.Next;
 import com.telenav.kivakit.kernel.language.iteration.Streams;
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.kivakit.kernel.messaging.messages.status.Problem;
 import com.telenav.mesakit.graph.Edge;
@@ -170,7 +171,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
      * @param maximum A count after which the program will stop iterating the iterable and return stopAfter.
      * @return The count is smaller than stopAfter, or stopAfter otherwise.
      */
-    public Count count(Count maximum)
+    public Count count(Maximum maximum)
     {
         return Count.count(this, maximum);
     }
