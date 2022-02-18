@@ -2,9 +2,12 @@ package com.telenav.mesakit.core;
 
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.language.objects.Lazy;
+import com.telenav.kivakit.kernel.language.values.version.Version;
 import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.kernel.messaging.Message;
 import com.telenav.kivakit.kernel.project.Project;
 
+import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureEqual;
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 
 /**
@@ -26,6 +29,10 @@ public class MesaKit extends Project
 
     public Folder mesakitCacheFolder()
     {
+        if (!projectVersion().equals(Version.parse(this, "0.9.9-SNAPSHOT")))
+        {
+            Message.println("oops");
+        }
         return mesakitRootCacheFolder().folder(projectVersion().toString()).mkdirs();
     }
 

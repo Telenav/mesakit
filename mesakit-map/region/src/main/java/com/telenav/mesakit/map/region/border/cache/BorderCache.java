@@ -129,7 +129,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
     private static final boolean DETAILED_TRACE = false;
 
     /**
-     * Border data path on S3
+     * Border data path on mesakit.org
      */
     private static final NetworkPath NETWORK_PATH = Host.parse(Listener.console(), "www.mesakit.org")
             .https()
@@ -501,11 +501,11 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                         jar.delete();
                     }
 
-                    // then get the jar location on S3
+                    // then get the jar location on mesakit.org,
                     var source = new SecureHttpNetworkLocation(NETWORK_PATH);
                     try
                     {
-                        // then try to download the data into the cache
+                        // try to download the data into the cache
                         information(AsciiArt.textBox("Downloading", "from: $\nto: $",
                                 NETWORK_PATH.asContraction(80), jar.path().asContraction(80)) + "\n ");
                         var downloadProgress = Progress.create(this, "bytes");
