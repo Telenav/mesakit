@@ -60,6 +60,14 @@
             <version>1.0</version>
         </dependency>
 
+        <!-- Google Maps polyline codec -->
+
+        <dependency>
+            <groupId>io.leonard</groupId>
+            <artifactId>google-polyline-codec</artifactId>
+            <version>0.0.2</version>
+        </dependency>
+
     </dependencies>
 
 </project>

@@ -54,6 +54,8 @@ import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
+import io.leonard.PolylineUtils;
+import io.leonard.Position;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.ref.SoftReference;
@@ -128,9 +130,15 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static Polyline fromLocations(long start, long end)
+    public static Polyline fromGoogleMapsEncoded(String text)
     {
-        return new Polyline(new long[] { start, end });
+        var line = PolylineUtils.decode(text, 7);
+        var builder = new PolylineBuilder();
+        for (var at : line)
+        {
+            builder.add(at.getLatitude(), at.getLongitude());
+        }
+        return builder.build();
     }
 
     /**
@@ -164,6 +172,11 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     public static Polyline fromLocations(Iterator<Location> locations)
     {
         return new PolylineBuilder().addAll(locations).build();
+    }
+
+    public static Polyline fromLocations(long start, long end)
+    {
+        return new Polyline(new long[] { start, end });
     }
 
     public static Polyline fromLongArray(LongArray locations)
@@ -422,9 +435,9 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
 
     public static class Intersection
     {
-        private final boolean modified;
-
         private final Location location;
+
+        private final boolean modified;
 
         public Intersection(Location location, boolean modified)
         {
@@ -485,13 +498,11 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
 
     public class Loop
     {
-        public Location loopAt;
-
-        private int startIndex;
-
         private int endIndex;
 
         private Count intersections;
+
+        private int startIndex;
 
         public PolylineSection head()
         {
@@ -522,7 +533,20 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         {
             return endIndex < size() - 1 ? section(endIndex, size() - 1) : null;
         }
+
+        public Location loopAt;
     }
+
+    private int bottomInDecimal = Integer.MAX_VALUE;
+
+    private Integer hashCode;
+
+    private int leftInDecimal = Integer.MAX_VALUE;
+
+    /**
+     * Length in millimeters of the polyline
+     */
+    private long lengthInMillimeters = -1;
 
     /**
      * Soft-referenced list of locations for convenience and efficiency
@@ -534,21 +558,10 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
      */
     private long[] locationsInDecimal;
 
-    /**
-     * Length in millimeters of the polyline
-     */
-    private long lengthInMillimeters = -1;
+    private int rightInDecimal = Integer.MIN_VALUE;
 
     // The bounding rectangle
     private int topInDecimal = Integer.MIN_VALUE;
-
-    private int leftInDecimal = Integer.MAX_VALUE;
-
-    private int bottomInDecimal = Integer.MAX_VALUE;
-
-    private int rightInDecimal = Integer.MIN_VALUE;
-
-    private Integer hashCode;
 
     public Polyline(List<Location> locations)
     {
@@ -583,14 +596,22 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         return builder.build();
     }
 
+    public String asGoogleMapsEncoded()
+    {
+        var positions = new ArrayList<Position>();
+        for (var at : locations())
+        {
+            positions.add(Position.fromLngLat(at.longitudeInDegrees(), at.latitudeInDegrees()));
+        }
+        return PolylineUtils.encode(positions, 7);
+    }
+
     @Override
     public @NotNull
     Iterator<Location> asIterator()
     {
         return new BaseIterator<>()
         {
-            int index = 0;
-
             @Override
             protected Location onNext()
             {
@@ -600,6 +621,8 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
                 }
                 return null;
             }
+
+            int index = 0;
         };
     }
 
@@ -609,8 +632,6 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     {
         return new BaseIterator<>()
         {
-            int index = 0;
-
             @Override
             protected Location onNext()
             {
@@ -624,6 +645,8 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
                 }
                 return null;
             }
+
+            int index = 0;
         };
     }
 
@@ -1689,16 +1712,6 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     {
         return Iterables.iterable(() -> new Next<>()
         {
-            boolean first = true;
-
-            boolean last;
-
-            boolean done;
-
-            final Iterator<Segment> segments = segments().iterator();
-
-            Segment segment;
-
             @Override
             public LocatedHeading onNext()
             {
@@ -1732,6 +1745,16 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
                 }
                 return null;
             }
+
+            boolean first = true;
+
+            boolean last;
+
+            boolean done;
+
+            final Iterator<Segment> segments = segments().iterator();
+
+            Segment segment;
         });
     }
 
