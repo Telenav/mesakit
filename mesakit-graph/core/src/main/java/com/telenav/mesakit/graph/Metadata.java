@@ -27,20 +27,19 @@ import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanChar
 import com.telenav.kivakit.data.compression.codecs.huffman.list.HuffmanStringListCodec;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.kernel.data.validation.BaseValidator;
 import com.telenav.kivakit.kernel.data.validation.Validatable;
 import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.interfaces.naming.Named;
 import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
 import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
 import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.kernel.language.strings.Strip;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsStringIndenter;
-import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
 import com.telenav.kivakit.kernel.language.strings.formatting.KivaKitFormatProperty;
 import com.telenav.kivakit.kernel.language.values.count.Bytes;
 import com.telenav.kivakit.kernel.language.values.count.Count;
@@ -132,7 +131,7 @@ import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
  *     <li>{@link #graphElementCount(CountType)}</li>
  * </ul>
  * <p>
- * {@link Metadata} objects are {@link KryoSerializable} and implement {@link AsString}. They are also
+ * {@link Metadata} objects are {@link KryoSerializable} and implement {@link Stringable}. They are also
  * {@link Validatable} and can be validated with the {@link Validator} returned by {@link #validator(ValidationType)}.
  * If no validation of statistics is desired the {@link ValidationType} VALIDATE_EXCEPT_STATISTICS can be passed as the
  * validation type. For convenience, full validation can be performed with {@link #isValid(Listener)}.
@@ -150,7 +149,7 @@ import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
  * @see Version
  * @see KryoSerializable
  * @see Validatable
- * @see AsString
+ * @see Stringable
  */
 @SuppressWarnings("DuplicateBranchesInSwitch")
 public class Metadata implements Named, AsIndentedString, KryoSerializable, Validatable
@@ -384,20 +383,32 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         }
     }
 
-    /** The name of the graph data */
-    private String name;
+    /** Bounds of data */
+    private Rectangle dataBounds;
 
-    /** Number of nodes in the data */
-    private Count nodes;
+    /** Data build */
+    private DataBuild dataBuild;
 
-    /** Number of ways in the data */
-    private Count ways;
+    /** StringFormat of data, like PBF or CSV */
+    private DataFormat dataFormat;
 
-    /** Number of relations in the data */
-    private Count relations;
+    /** The precision of the data like DM5, DM6 or DM7 */
+    private Precision dataPrecision;
 
-    /** Number of vertexes in the data */
-    private Count vertexes;
+    /** The size of the resource */
+    private Bytes dataSize;
+
+    /** The specification for the data */
+    private DataSpecification dataSpecification;
+
+    /** The supplier of data */
+    private DataSupplier dataSupplier;
+
+    /** Data version */
+    private DataVersion dataVersion;
+
+    /** Number of edge relations */
+    private Count edgeRelations;
 
     /** Number of edges in the data */
     private Count edges;
@@ -405,42 +416,20 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /** Number of forward edges in the data */
     private Count forwardEdges;
 
-    /** Number of edge relations */
-    private Count edgeRelations;
+    /** Frequencies for compressing keys by character */
+    private PropertyMap keyCharacterCodecFrequencies;
+
+    /** Frequencies for compressing keys */
+    private PropertyMap keyStringCodecFrequencies;
+
+    /** The name of the graph data */
+    private String name;
+
+    /** Number of nodes in the data */
+    private Count nodes;
 
     /** Number of places in the data */
     private Count places;
-
-    /**
-     * Number of shape points in the data. Shape points are nodes between vertexes. Graph files do not normally have
-     * shape points. This feature is only used when graph files contain all node information, such as when editing OSM
-     * data for upload with tools like Cygnus.
-     */
-    private Count shapePoints = Count._0;
-
-    /** The size of the resource */
-    private Bytes dataSize;
-
-    /** Bounds of data */
-    private Rectangle dataBounds;
-
-    /** Data build */
-    private DataBuild dataBuild;
-
-    /** Data version */
-    private DataVersion dataVersion;
-
-    /** The precision of the data like DM5, DM6 or DM7 */
-    private Precision dataPrecision;
-
-    /** StringFormat of data, like PBF or CSV */
-    private DataFormat dataFormat;
-
-    /** The supplier of data */
-    private DataSupplier dataSupplier;
-
-    /** The specification for the data */
-    private DataSpecification dataSpecification;
 
     /**
      * PropertyMap defined by a {@link DataSpecification}, {@link DataFormat} or {@link DataSupplier}. For example, the
@@ -449,14 +438,24 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      */
     private final Map<String, String> properties = new HashMap<>();
 
+    /** Number of relations in the data */
+    private Count relations;
+
+    /** Codec for compressing road names */
+    private HuffmanCharacterCodec roadNameCharacterCodec;
+
+    /** Codec frequencies for road names */
+    private PropertyMap roadNameCharacterCodecFrequencies;
+
+    /**
+     * Number of shape points in the data. Shape points are nodes between vertexes. Graph files do not normally have
+     * shape points. This feature is only used when graph files contain all node information, such as when editing OSM
+     * data for upload with tools like Cygnus.
+     */
+    private Count shapePoints = Count._0;
+
     /** Tag codec */
     private PbfTagCodec tagCodec;
-
-    /** Frequencies for compressing keys by character */
-    private PropertyMap keyCharacterCodecFrequencies;
-
-    /** Frequencies for compressing keys */
-    private PropertyMap keyStringCodecFrequencies;
 
     /** Frequencies for compressing value by character */
     private PropertyMap valueCharacterCodecFrequencies;
@@ -464,11 +463,11 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /** Frequencies for compressing values */
     private PropertyMap valueStringCodecFrequencies;
 
-    /** Codec frequencies for road names */
-    private PropertyMap roadNameCharacterCodecFrequencies;
+    /** Number of vertexes in the data */
+    private Count vertexes;
 
-    /** Codec for compressing road names */
-    private HuffmanCharacterCodec roadNameCharacterCodec;
+    /** Number of ways in the data */
+    private Count ways;
 
     public Metadata()
     {
@@ -555,7 +554,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     @Override
-    public AsStringIndenter asString(StringFormat format, AsStringIndenter indenter)
+    public AsStringIndenter asString(Format format, AsStringIndenter indenter)
     {
         indenter.asString(this);
         indenter.labeled("nodes", nodeCount(REQUIRE_EXACT));
@@ -654,7 +653,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      * @return The data's specification
      */
     @KivaKitIncludeProperty
-    @KivaKitFormatProperty(format = "toString")
+    @KivaKitFormatProperty(format = Format.TEXT)
     public DataSpecification dataSpecification()
     {
         return dataSpecification;

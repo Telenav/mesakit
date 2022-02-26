@@ -20,6 +20,7 @@ package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.collections.iteration.iterators.SingletonIterator;
 import com.telenav.kivakit.collections.stack.Stack;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
 import com.telenav.kivakit.kernel.language.collections.list.StringList;
@@ -30,7 +31,6 @@ import com.telenav.kivakit.kernel.language.iteration.Streams;
 import com.telenav.kivakit.kernel.language.objects.Hash;
 import com.telenav.kivakit.kernel.language.primitives.Ints;
 import com.telenav.kivakit.kernel.language.strings.Split;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
 import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
 import com.telenav.kivakit.kernel.language.time.Duration;
 import com.telenav.kivakit.kernel.language.values.count.Count;
@@ -63,6 +63,7 @@ import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.model.RoadSubType;
 import com.telenav.mesakit.map.road.model.RoadType;
 import com.telenav.mesakit.map.road.name.standardizer.RoadNameStandardizer;
+import org.jetbrains.annotations.NotNull;
 import org.openstreetmap.osmosis.core.domain.v0_6.Way;
 import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
 
@@ -87,7 +88,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
  *
  * @author jonathanl (shibo)
  */
-public abstract class Route implements Iterable<Edge>, Bounded, AsString
+public abstract class Route implements Iterable<Edge>, Bounded, Stringable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -171,11 +172,11 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      */
     public static class Converter extends BaseStringConverter<Route>
     {
-        private final Separators separators;
-
         private final Edge.Converter edgeConverter;
 
         private final Graph graph;
+
+        private final Separators separators;
 
         public Converter(Graph graph, Separators separators, Listener listener)
         {
@@ -232,11 +233,11 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      */
     public static class MapIdentifierConverter extends BaseStringConverter<Route>
     {
-        private final Separators separators;
-
         private final MapEdgeIdentifier.EdgeConverter edgeConverter;
 
         private final Graph graph;
+
+        private final Separators separators;
 
         public MapIdentifierConverter(Graph graph, Separators separators, Listener listener)
         {
@@ -293,20 +294,20 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         /** The head route */
         private final Route head;
 
-        /** The tail route */
-        private final Route tail;
-
         /** The last edge in the route */
         private Edge last;
 
         /** The total distance */
         private long lengthInMillimeters = -1L;
 
-        /** The total travel time for this route */
-        private int travelTimeInMilliseconds = -1;
-
         /** The total number of edges */
         private int size = -1;
+
+        /** The tail route */
+        private final Route tail;
+
+        /** The total travel time for this route */
+        private int travelTimeInMilliseconds = -1;
 
         private ConcatenatedRoute(Route head, Route tail)
         {
@@ -316,7 +317,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
 
         @Override
-        public String asString()
+        public String asString(Format format)
         {
             return "[Route edges = [" + new ObjectList<>().appendAll(this) + "], length = " + length()
                     + ", travelTime = " + travelTime() + "]";
@@ -370,16 +371,16 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
 
         @Override
-        public Iterator<Edge> iterator()
+        public @NotNull Iterator<Edge> iterator()
         {
             return new BaseIterator<>()
             {
+                // The current route object we are at in the iteration process
+                private Route current = head;
+
                 // Keep a stack of routes to iterate through so we can avoid using the Java stack
                 // (which can cause stack overflows with long routes)
                 private final Stack<Route> stack = new Stack<>(count().asMaximum());
-
-                // The current route object we are at in the iteration process
-                private Route current = head;
 
                 @Override
                 protected Edge onNext()
@@ -572,7 +573,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
         }
 
         @Override
-        public String asString()
+        public String asString(Format format)
         {
             return "[Route edges = " + edge + ", length = " + length() + ", travelTime = " + travelTime()
                     + "]";
@@ -680,6 +681,12 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     }
 
     /**
+     * The amount of the last edge that is NOT included in the route (if the route doesn't include the entire last
+     * edge)
+     */
+    private Distance endOffset = Distance.MINIMUM;
+
+    /**
      * True if we have already warned that the maximum was exceeded by a concatenation attempt
      */
     private boolean maximumExceeded;
@@ -689,12 +696,6 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
      * edge)
      */
     private Distance startOffset = Distance.MINIMUM;
-
-    /**
-     * The amount of the last edge that is NOT included in the route (if the route doesn't include the entire last
-     * edge)
-     */
-    private Distance endOffset = Distance.MINIMUM;
 
     /**
      * Force use of static factory method
@@ -940,8 +941,8 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
                 if (!isRouteStraight && isAngleValid(fromEdge, toEdge))
                 {
                     // check if they are connecting to same road
-                    var nonbranchingRoute = fromEdge.nonBranchingRouteWithSameName(Maximum._6);
-                    if (nonbranchingRoute.contains(toEdge))
+                    var nonBranchingRoute = fromEdge.nonBranchingRouteWithSameName(Maximum._6);
+                    if (nonBranchingRoute.contains(toEdge))
                     {
                         return true;
                     }
@@ -1682,7 +1683,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, AsString
     }
 
     /**
-     * @return A rough polyline for this route, including only vertexes in the route but not the shapepoints of each
+     * @return A rough polyline for this route, including only vertexes in the route but not the shape-points of each
      * individual edge
      */
     public Polyline roughPolyline()

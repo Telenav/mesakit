@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.library.pbf;
 
-import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
 import com.telenav.kivakit.kernel.language.values.count.Estimate;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToByteMap;

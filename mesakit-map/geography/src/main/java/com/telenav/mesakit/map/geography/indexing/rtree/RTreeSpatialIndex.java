@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.interfaces.comparison.Filter;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.kernel.language.iteration.Iterables;
 import com.telenav.kivakit.kernel.language.iteration.Next;
 import com.telenav.kivakit.kernel.language.objects.Objects;
 import com.telenav.kivakit.kernel.language.primitives.Booleans;
 import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.messaging.filters.operators.All;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramSpatialIndex;
@@ -67,20 +67,17 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
         public static final DumpDetailLevel DEFAULT = SHOW_OBJECTS;
     }
 
-    /** The root of the tree, initially just a root node with a single leaf */
-    public Node<Element> root;
+    /** Matcher that matches all elements */
+    private final Matcher<Element> allElements = Filter.all();
+
+    /** Debugger interface */
+    private RTreeSpatialIndexDebugger<Element> debugger = RTreeSpatialIndexDebugger.nullDebugger();
+
+    private String objectName;
 
     /** Settings that determine how the tree is laid out */
     @KivaKitIncludeProperty
     private RTreeSettings settings;
-
-    /** Matcher that matches all elements */
-    private final Matcher<Element> allElements = new All<>();
-
-    private String objectName;
-
-    /** Debugger interface */
-    private RTreeSpatialIndexDebugger<Element> debugger = RTreeSpatialIndexDebugger.nullDebugger();
 
     /**
      * Construct with good defaults
@@ -185,8 +182,6 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     {
         return Iterables.iterable(() -> new Next<>()
         {
-            final Iterator<Element> elements = root().intersecting(bounds, matcher);
-
             @Override
             public Element onNext()
             {
@@ -196,6 +191,8 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
                 }
                 return null;
             }
+
+            final Iterator<Element> elements = root().intersecting(bounds, matcher);
         });
     }
 
@@ -247,4 +244,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     {
         return root;
     }
+
+    /** The root of the tree, initially just a root node with a single leaf */
+    public Node<Element> root;
 }

@@ -18,11 +18,12 @@
 
 package com.telenav.mesakit.graph.specifications.common.element;
 
+import com.telenav.kivakit.interfaces.collection.Addable;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.kernel.data.validation.BaseValidator;
 import com.telenav.kivakit.kernel.data.validation.Validatable;
 import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.interfaces.collection.Addable;
 import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
 import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
@@ -32,7 +33,6 @@ import com.telenav.kivakit.kernel.language.values.count.Bytes;
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.kernel.language.values.count.Estimate;
 import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.language.values.name.Name;
 import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
@@ -183,43 +183,32 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         }
     }
 
-    @KivaKitArchivedField
-    private SplitLongArray identifier;
+    /** The interface for batch adding for each thread */
+    private ThreadLocal<Addable<T>> adder;
 
-    @KivaKitArchivedField
-    private SplitLongToIntMap identifierToIndex;
+    /** A batch queue with an associated thread to speed up throughput */
+    private Batcher<T> batcher;
 
-    @KivaKitArchivedField
-    private SplitLongArray lastModified;
+    /** True if we are using the batcher to add elements on a separate thread */
+    private boolean batching;
 
-    @KivaKitArchivedField
-    private SplitLongArray pbfChangeSetIdentifier;
+    /** True if this graph store has been committed */
+    private transient volatile boolean committed;
 
-    @KivaKitArchivedField
-    private SplitCharArray pbfRevisionNumber;
+    /** The method used to compress this store */
+    private Method compressionMethod;
 
-    @KivaKitArchivedField
-    private PackedStringStore pbfUserName;
+    /** The data specification for this element store */
+    private final transient DataSpecification dataSpecification;
 
-    @KivaKitArchivedField
-    private SplitIntArray pbfUserIdentifier;
+    /** The number of elements that have been discarded due to validation problems */
+    private int discarded;
 
-    /**
-     * Tags for this attribute
-     */
-    @KivaKitArchivedField
-    private TagStore tags;
+    /** Cached element factory for efficiency */
+    private final DataSpecification.GraphElementFactory<T> elementFactory;
 
-    /**
-     * The next index for an element in this store. Note that we start index values at 1 rather than 0 because we want
-     * to catch bugs that involve uninitialized index values (the default value for an int in Java is zero).
-     */
-    @KivaKitArchivedField
-    private int nextIndex = 1;
-
-    /** The number of elements in this store (distinct from the count(), which takes into account reversible edges) */
-    @KivaKitArchivedField
-    private int size;
+    /** True if this store is batching and has been flushed (which can only be done once) */
+    private boolean flushed;
 
     /** The graph for which this is a graph */
     private final transient Graph graph;
@@ -265,35 +254,46 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
                 }
             };
 
-    /** True if this graph store has been committed */
-    private transient volatile boolean committed;
+    @KivaKitArchivedField
+    private SplitLongArray identifier;
 
-    /** Cached element factory for efficiency */
-    private final DataSpecification.GraphElementFactory<T> elementFactory;
+    @KivaKitArchivedField
+    private SplitLongToIntMap identifierToIndex;
 
-    /** The data specification for this element store */
-    private final transient DataSpecification dataSpecification;
+    @KivaKitArchivedField
+    private SplitLongArray lastModified;
 
-    /** The number of elements that have been discarded due to validation problems */
-    private int discarded;
+    /**
+     * The next index for an element in this store. Note that we start index values at 1 rather than 0 because we want
+     * to catch bugs that involve uninitialized index values (the default value for an int in Java is zero).
+     */
+    @KivaKitArchivedField
+    private int nextIndex = 1;
+
+    @KivaKitArchivedField
+    private SplitLongArray pbfChangeSetIdentifier;
+
+    @KivaKitArchivedField
+    private SplitCharArray pbfRevisionNumber;
+
+    @KivaKitArchivedField
+    private SplitIntArray pbfUserIdentifier;
+
+    @KivaKitArchivedField
+    private PackedStringStore pbfUserName;
+
+    /** The number of elements in this store (distinct from the count(), which takes into account reversible edges) */
+    @KivaKitArchivedField
+    private int size;
+
+    /**
+     * Tags for this attribute
+     */
+    @KivaKitArchivedField
+    private TagStore tags;
 
     /** True if this store has been trimmed to its minimum size */
     private boolean trimmed;
-
-    /** A batch queue with an associated thread to speed up throughput */
-    private Batcher<T> batcher;
-
-    /** True if we are using the batcher to add elements on a separate thread */
-    private boolean batching;
-
-    /** The interface for batch adding for each thread */
-    private ThreadLocal<Addable<T>> adder;
-
-    /** True if this store is batching and has been flushed (which can only be done once) */
-    private boolean flushed;
-
-    /** The method used to compress this store */
-    private Method compressionMethod;
 
     protected GraphElementStore(Graph graph)
     {
@@ -348,10 +348,6 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         var outer = this;
         return new BaseIterator<>()
         {
-            int index = 1;
-
-            final int batchSizeAsInt = batchSize.asInt();
-
             @Override
             protected List<T> onNext()
             {
@@ -367,6 +363,10 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
                 }
                 return batch.isEmpty() ? null : batch;
             }
+
+            int index = 1;
+
+            final int batchSizeAsInt = batchSize.asInt();
         };
     }
 
@@ -395,7 +395,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
             JavaVirtualMachine.local().traceSizeChange(this, "compress", this, Bytes.kilobytes(100), () ->
             {
                 var size = CompressibleCollection.compressReachableObjects(this, this, method, event ->
-                        DEBUG.trace("Compressed $", Name.synthetic(event)));
+                        DEBUG.trace("Compressed $", NamedObject.syntheticName(event)));
                 if (size != null)
                 {
                     graph().estimatedMemorySize(size);
@@ -496,9 +496,6 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         IDENTIFIER.load();
         return new BaseIterator<>()
         {
-            // The first index (see details in comment above for nextIndex)
-            int index = 1;
-
             @Override
             protected T onNext()
             {
@@ -512,6 +509,9 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
                 }
                 return null;
             }
+
+            // The first index (see details in comment above for nextIndex)
+            int index = 1;
         };
     }
 

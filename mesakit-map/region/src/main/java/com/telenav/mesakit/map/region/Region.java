@@ -21,9 +21,10 @@ package com.telenav.mesakit.map.region;
 import com.telenav.kivakit.commandline.ArgumentParser;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.interfaces.naming.Nameable;
+import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.interfaces.naming.Nameable;
-import com.telenav.kivakit.kernel.interfaces.naming.Named;
 import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
 import com.telenav.kivakit.kernel.language.objects.Objects;
 import com.telenav.kivakit.kernel.language.patterns.Pattern;
@@ -32,7 +33,6 @@ import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludePro
 import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.kernel.language.strings.AsciiArt;
 import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
 import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
 import com.telenav.kivakit.kernel.language.threading.KivaKitThread;
 import com.telenav.kivakit.kernel.language.threading.Threads;
@@ -89,8 +89,8 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupport
  * @author Jonathan Locke
  */
 @UmlClassDiagram(diagram = DiagramRegion.class)
-@UmlExcludeSuperTypes({ AsString.class, Comparable.class, Nameable.class, Named.class })
-public abstract class Region<T extends Region<T>> implements Bounded, Bordered, Intersectable, Outline, Nameable, Named, Comparable<Region<T>>, AsString
+@UmlExcludeSuperTypes({ Stringable.class, Comparable.class, Nameable.class, Named.class })
+public abstract class Region<T extends Region<T>> implements Bounded, Bordered, Intersectable, Outline, Nameable, Named, Comparable<Region<T>>, Stringable
 {
     public static final RegionIdentifier WORLD_IDENTIFIER_MINIMUM = new RegionIdentifier(1_000_000);
 
@@ -432,12 +432,6 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     }
 
     /**
-     * Region that is the parent of this region, or null if there is no parent (for example for the World region)
-     */
-    @UmlAggregation(label = "parent")
-    private Region<?> parent;
-
-    /**
      * Instance data for this region
      */
     @UmlAggregation
@@ -447,6 +441,12 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
      * An object that can be associated with every region, for convenience
      */
     private transient Object metadata;
+
+    /**
+     * Region that is the parent of this region, or null if there is no parent (for example for the World region)
+     */
+    @UmlAggregation(label = "parent")
+    private Region<?> parent;
 
     protected Region()
     {
@@ -479,7 +479,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     }
 
     @Override
-    public String asString()
+    public String asString(Format format)
     {
         return new ObjectFormatter(this).toString();
     }

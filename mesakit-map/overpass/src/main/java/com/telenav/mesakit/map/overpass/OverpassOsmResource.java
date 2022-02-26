@@ -46,7 +46,7 @@ class OverpassOsmResource extends BaseComponent
 
     private final String template = PackageResource.packageResource(this, getClass(), "OverpassRequestTemplate.txt")
             .reader()
-            .string();
+            .asString();
 
     public OverpassOsmResource(Rectangle bounds)
     {

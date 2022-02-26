@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.specifications.library.attributes;
 
-import com.telenav.kivakit.kernel.interfaces.loading.Unloadable;
-import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.interfaces.loading.Unloadable;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
 import com.telenav.kivakit.kernel.logging.Logger;

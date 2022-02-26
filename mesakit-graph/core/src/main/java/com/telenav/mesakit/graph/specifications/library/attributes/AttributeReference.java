@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.graph.specifications.library.attributes;
 
-import com.telenav.kivakit.kernel.interfaces.collection.Indexable;
-import com.telenav.kivakit.kernel.interfaces.factory.Factory;
-import com.telenav.kivakit.kernel.interfaces.factory.LongMapFactory;
-import com.telenav.kivakit.kernel.interfaces.lifecycle.Initializable;
-import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
-import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.kernel.interfaces.numeric.Sized;
+import com.telenav.kivakit.interfaces.collection.Indexable;
+import com.telenav.kivakit.interfaces.collection.Sized;
+import com.telenav.kivakit.interfaces.factory.Factory;
+import com.telenav.kivakit.interfaces.factory.LongMapFactory;
+import com.telenav.kivakit.interfaces.lifecycle.Initializable;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
+import com.telenav.kivakit.interfaces.numeric.Quantizable;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
 import com.telenav.kivakit.kernel.language.reflection.Type;
 import com.telenav.kivakit.kernel.language.reflection.property.Property;
@@ -83,29 +83,29 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
 
     private static final Debug DEBUG = new Debug(LOGGER);
 
-    /** The store being referenced */
-    private final AttributeStore store;
-
     /** The attached field archive to load from */
     private FieldArchive archive;
 
     /** The attribute in the store */
     private final Attribute<?> attribute;
 
-    /** The store field to manage */
-    private final Property field;
-
-    /** A cached reference to the store field (so reflection does not have to be used often) */
-    private volatile Referent reference;
-
     /** A factory to create the referent */
     private final Factory<Referent> factory;
+
+    /** The store field to manage */
+    private final Property field;
 
     /** The name of the field referenced in the attribute store */
     private final String fieldName;
 
     /** True if a load has been attempted */
     private boolean loadAttempted;
+
+    /** A cached reference to the store field (so reflection does not have to be used often) */
+    private volatile Referent reference;
+
+    /** The store being referenced */
+    private final AttributeStore store;
 
     /**
      * @param store The attribute store that's being managed

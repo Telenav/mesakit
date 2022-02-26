@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge.store.index;
 
-import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;

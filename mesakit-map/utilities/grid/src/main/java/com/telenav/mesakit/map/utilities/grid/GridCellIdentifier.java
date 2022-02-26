@@ -18,18 +18,17 @@
 
 package com.telenav.mesakit.map.utilities.grid;
 
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.kernel.language.objects.Hash;
 import com.telenav.kivakit.kernel.language.primitives.Ints;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
 
-public class GridCellIdentifier implements AsString
+public class GridCellIdentifier implements Stringable
 {
     private final int identifier;
 
-    private final int longitudeIndex;
-
     private final int latitudeIndex;
+
+    private final int longitudeIndex;
 
     /**
      * For serialization purposes only
@@ -56,7 +55,7 @@ public class GridCellIdentifier implements AsString
     }
 
     @Override
-    public String asString(StringFormat format)
+    public String asString(Format format)
     {
         return "[CellIdentifier " + this + "]";
     }

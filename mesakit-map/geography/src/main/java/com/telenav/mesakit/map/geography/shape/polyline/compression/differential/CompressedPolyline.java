@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline.compression.differential;
 
-import com.telenav.kivakit.kernel.interfaces.numeric.Sized;
+import com.telenav.kivakit.interfaces.collection.Sized;
 import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
 import com.telenav.kivakit.kernel.language.primitives.Ints;
 import com.telenav.kivakit.kernel.language.values.count.BitCount;

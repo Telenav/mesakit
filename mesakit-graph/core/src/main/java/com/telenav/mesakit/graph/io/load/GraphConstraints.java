@@ -19,10 +19,10 @@
 package com.telenav.mesakit.graph.io.load;
 
 import com.telenav.kivakit.collections.iteration.iterables.FilteredIterable;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.comparison.Filter;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.kernel.messaging.filters.operators.All;
 import com.telenav.kivakit.kernel.messaging.listeners.MessageList;
 import com.telenav.kivakit.kernel.messaging.messages.status.Problem;
 import com.telenav.mesakit.graph.Edge;
@@ -52,16 +52,16 @@ public class GraphConstraints
     private Rectangle bounds = Rectangle.MAXIMUM;
 
     /** An edge matcher for filtering */
-    private Matcher<Edge> edgeMatcher = new All<>();
-
-    /** A vertex matcher for filtering */
-    private Matcher<Vertex> vertexMatcher = new All<>();
+    private Matcher<Edge> edgeMatcher = Filter.all();
 
     /** A place matcher for filtering */
-    private Matcher<Place> placeMatcher = new All<>();
+    private Matcher<Place> placeMatcher = Filter.all();
 
     /** A relation matcher for filtering */
-    private Matcher<EdgeRelation> relationMatcher = new All<>();
+    private Matcher<EdgeRelation> relationMatcher = Filter.all();
+
+    /** A vertex matcher for filtering */
+    private Matcher<Vertex> vertexMatcher = Filter.all();
 
     /**
      * Construct default graph constraints, which includes all edge types, all vertex attributes and all edge attributes
@@ -165,7 +165,7 @@ public class GraphConstraints
      */
     public MessageList satisfies(GraphConstraints required)
     {
-        var messages = new MessageList(new All<>());
+        var messages = new MessageList(Filter.all());
         if (!required.bounds.intersects(bounds))
         {
             messages.add(new Problem("Bounds $ doesn't intersect with $", bounds, required.bounds));

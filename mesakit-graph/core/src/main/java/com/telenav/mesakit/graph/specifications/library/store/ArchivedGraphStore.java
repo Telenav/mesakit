@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.library.store;
 
-import com.telenav.kivakit.kernel.interfaces.loading.Unloadable;
+import com.telenav.kivakit.interfaces.loading.Unloadable;
 import com.telenav.kivakit.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.kernel.language.reflection.Type;
 import com.telenav.kivakit.kernel.language.strings.AsciiArt;

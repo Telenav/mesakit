@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
+import com.telenav.kivakit.interfaces.collection.Indexable;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.interfaces.collection.Indexable;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
 import com.telenav.kivakit.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
@@ -124,7 +124,11 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
  */
 @UmlClassDiagram(diagram = DiagramPolyline.class)
 @UmlRelation(label = "contains", referent = Location.class, referentCardinality = "2+")
-public class Polyline implements Indexable<Location>, Bounded, Intersectable, LocationSequence
+public class Polyline implements
+        Indexable<Location>,
+        Bounded,
+        Intersectable,
+        LocationSequence
 {
     public static final Distance DEFAULT_MAXIMUM_SHAPE_POINT_SPACING = Distance.meters(15);
 
@@ -342,6 +346,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
          * @param encoded The encoded {@link Polyline}
          * @return The decoded {@link Polyline}
          */
+        @SuppressWarnings("DuplicatedCode")
         private Polyline decodePolyline(String encoded)
         {
             var builder = new PolylineBuilder();
@@ -980,14 +985,7 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
         if (object instanceof Polyline)
         {
             var that = (Polyline) object;
-            if (hashCode != null)
-            {
-                return hashCode.equals(that.hashCode);
-            }
-            else
-            {
-                return isEqualTo(that);
-            }
+            return isEqualTo(that);
         }
         return false;
     }
@@ -1028,7 +1026,11 @@ public class Polyline implements Indexable<Location>, Bounded, Intersectable, Lo
     @Override
     public final int hashCode()
     {
-        return hashCode != null ? hashCode : asHashCode();
+        if (hashCode == null)
+        {
+            hashCode = asHashCode();
+        }
+        return hashCode;
     }
 
     /**

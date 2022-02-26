@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
-import com.telenav.kivakit.kernel.interfaces.collection.Keyed;
+import com.telenav.kivakit.interfaces.collection.Keyed;
 import com.telenav.kivakit.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.kernel.language.objects.Hash;
 import com.telenav.kivakit.kernel.language.primitives.Ints;

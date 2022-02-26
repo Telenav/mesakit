@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.language.objects.Hash;
 import com.telenav.kivakit.kernel.language.strings.AsciiArt;
 import com.telenav.mesakit.map.geography.Location;

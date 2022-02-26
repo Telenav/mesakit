@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.identifiers;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.kernel.data.conversion.QuantizableConverter;
 import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
@@ -43,7 +43,7 @@ public class RelationIdentifier extends MapRelationIdentifier implements GraphEl
                 .converter(new Converter(listener));
     }
 
-    public static class Converter extends Quantizable.Converter<RelationIdentifier>
+    public static class Converter extends QuantizableConverter<RelationIdentifier>
     {
         public Converter(Listener listener)
         {

@@ -23,16 +23,15 @@ import com.telenav.kivakit.collections.set.logical.operations.Intersection;
 import com.telenav.kivakit.collections.set.logical.operations.Subset;
 import com.telenav.kivakit.collections.set.logical.operations.Union;
 import com.telenav.kivakit.collections.set.logical.operations.Without;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.kernel.data.comparison.Differences;
 import com.telenav.kivakit.kernel.data.conversion.BaseConverter;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.kernel.language.iteration.Streams;
 import com.telenav.kivakit.kernel.language.strings.Join;
 import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
 import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
 import com.telenav.kivakit.kernel.language.time.Frequency;
 import com.telenav.kivakit.kernel.language.values.count.Count;
@@ -55,6 +54,7 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.road.model.RoadName;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -76,7 +76,7 @@ import static com.telenav.mesakit.graph.project.GraphLimits.Limit;
  *
  * @author jonathanl (shibo)
  */
-public class EdgeSet implements Set<Edge>, AsString
+public class EdgeSet implements Set<Edge>, Stringable
 {
     public static final EdgeSet EMPTY = new EdgeSet(Maximum._0, Estimate._0, Collections.emptySet());
 
@@ -193,14 +193,14 @@ public class EdgeSet implements Set<Edge>, AsString
     private final Set<Edge> edges;
 
     /**
-     * The maximum number of edges in this set
-     */
-    private final Maximum maximumSize;
-
-    /**
      * The estimated number of edges in this set
      */
     private final Estimate initialSize;
+
+    /**
+     * The maximum number of edges in this set
+     */
+    private final Maximum maximumSize;
 
     public EdgeSet()
     {
@@ -339,11 +339,12 @@ public class EdgeSet implements Set<Edge>, AsString
     }
 
     @Override
-    public String asString(StringFormat format)
+    @SuppressWarnings("SwitchStatementWithTooFewBranches")
+    public String asString(Format format)
     {
-        switch (format.identifier())
+        switch (format)
         {
-            case "USER_LABEL":
+            case USER_LABEL:
             {
                 var details = new StringList();
                 for (var edge : this)
@@ -491,8 +492,6 @@ public class EdgeSet implements Set<Edge>, AsString
     {
         return new IntIterator()
         {
-            final Iterator<Edge> edges = iterator();
-
             @Override
             public boolean hasNext()
             {
@@ -504,6 +503,8 @@ public class EdgeSet implements Set<Edge>, AsString
             {
                 return edges.next().index();
             }
+
+            final Iterator<Edge> edges = iterator();
         };
     }
 
@@ -893,7 +894,7 @@ public class EdgeSet implements Set<Edge>, AsString
      * {@inheritDoc}
      */
     @Override
-    public <T> T[] toArray(T[] a)
+    public <T> T[] toArray(T @NotNull [] a)
     {
         return unsupported();
     }

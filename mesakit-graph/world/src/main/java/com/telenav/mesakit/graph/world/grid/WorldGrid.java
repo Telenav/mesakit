@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.world.grid;
 import com.telenav.kivakit.configuration.settings.Settings;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.interfaces.value.Source;
+import com.telenav.kivakit.interfaces.value.Source;
 import com.telenav.kivakit.kernel.language.collections.set.ObjectSet;
 import com.telenav.kivakit.kernel.language.objects.reference.virtual.VirtualReferenceTracker;
 import com.telenav.kivakit.kernel.language.objects.reference.virtual.VirtualReferenceType;
@@ -138,26 +138,17 @@ public class WorldGrid
                 .withMaximumIdentifier(Region.WORLD_CELL_IDENTIFIER_MAXIMUM));
     }
 
-    /** The logical world grid */
-    private Grid grid;
-
-    /** The repository folder holding cell data for this grid */
-    private WorldGraphRepositoryFolder repositoryFolder;
-
     /** WorldCells for each cell included in the grid */
     private WorldCell[][] cells;
+
+    /** The logical world grid */
+    private Grid grid;
 
     /** The set of all world cells included */
     private ObjectSet<WorldCell> included;
 
-    /** The world graph */
-    private WorldGraph worldGraph;
-
-    /** The grid mode */
-    private WorldGraph.AccessMode mode;
-
-    /** Graph reference tracker for cells belonging to the grid */
-    private VirtualReferenceTracker<Graph> tracker;
+    /** The index for this graph */
+    private WorldGraphIndex index;
 
     /** Approximate maximum amount of memory to hard reference */
     private final Bytes maximumMemory = Bytes.gigabytes(26);
@@ -165,8 +156,17 @@ public class WorldGrid
     /** Graph meta data */
     private Metadata metadata;
 
-    /** The index for this graph */
-    private WorldGraphIndex index;
+    /** The grid mode */
+    private WorldGraph.AccessMode mode;
+
+    /** The repository folder holding cell data for this grid */
+    private WorldGraphRepositoryFolder repositoryFolder;
+
+    /** Graph reference tracker for cells belonging to the grid */
+    private VirtualReferenceTracker<Graph> tracker;
+
+    /** The world graph */
+    private WorldGraph worldGraph;
 
     public WorldGrid(WorldGraph worldGraph, WorldGraph.AccessMode mode,
                      WorldGraphRepositoryFolder folder)
@@ -480,7 +480,7 @@ public class WorldGrid
                     .withExtension(Extension.parse(Listener.console(), ".cells")));
             if (cached.exists())
             {
-                var cellNames = cached.reader().string();
+                var cellNames = cached.reader().asString();
                 if (!Strings.isEmpty(cellNames))
                 {
                     for (var cellName : cellNames.split(","))

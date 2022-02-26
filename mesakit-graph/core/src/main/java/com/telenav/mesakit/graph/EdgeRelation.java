@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.graph;
 
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
 import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.kernel.language.strings.Strings;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
 import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
@@ -614,7 +614,7 @@ public class EdgeRelation extends GraphElement implements Bounded
     /**
      * @return The properties of this element from its {@link DataSpecification},
      * @see GraphElementPropertySet
-     * @see AsString
+     * @see Stringable
      * @see AsIndentedString
      */
     @Override

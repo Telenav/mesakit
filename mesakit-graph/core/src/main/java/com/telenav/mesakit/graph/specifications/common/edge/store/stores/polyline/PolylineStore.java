@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge.store.stores.polyline;
 
-import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
 import com.telenav.kivakit.kernel.language.objects.Hash;
 import com.telenav.kivakit.kernel.language.objects.Objects;

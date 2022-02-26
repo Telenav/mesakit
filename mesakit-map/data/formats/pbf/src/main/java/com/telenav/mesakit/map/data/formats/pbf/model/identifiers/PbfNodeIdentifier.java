@@ -89,7 +89,7 @@ public class PbfNodeIdentifier extends MapNodeIdentifier implements PbfIdentifie
         }
     }
 
-    private static class Factory implements com.telenav.kivakit.kernel.interfaces.factory.Factory<PbfNodeIdentifier>
+    private static class Factory implements com.telenav.kivakit.interfaces.factory.Factory<PbfNodeIdentifier>
     {
         private PbfNodeIdentifier next = SYNTHETIC_IDENTIFIER_FIRST;
 

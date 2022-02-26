@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.measurements.geographic;
 import com.telenav.kivakit.commandline.ArgumentParser;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.interfaces.numeric.Quantizable;
 import com.telenav.kivakit.kernel.language.primitives.Doubles;
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.kernel.language.values.level.Percent;

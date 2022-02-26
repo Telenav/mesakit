@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.library.pbf;
 
-import com.telenav.kivakit.kernel.interfaces.factory.MapFactory;
+import com.telenav.kivakit.interfaces.factory.MapFactory;
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.resource.Resource;

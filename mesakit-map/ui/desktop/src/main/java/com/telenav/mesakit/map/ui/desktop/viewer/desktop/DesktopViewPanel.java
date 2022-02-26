@@ -64,7 +64,7 @@ import java.awt.event.MouseWheelListener;
 import java.awt.geom.Point2D;
 import java.util.function.Function;
 
-import static com.telenav.kivakit.kernel.language.strings.conversion.StringFormat.USER_LABEL;
+import static com.telenav.kivakit.interfaces.string.Stringable.Format.USER_LABEL;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle.pixels;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle.rectangle;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.surfaces.java2d.Java2dDrawingSurface.surface;
@@ -94,56 +94,56 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
         STEPPING
     }
 
-    /** Map of {@link MapDrawable} objects in the display */
-    private final ViewModel viewModel = new ViewModel();
+    /** Location of cursor when not dragging */
+    private Location cursorAt;
 
-    /** The center of the current view */
-    private Location viewCenter = Location.ORIGIN;
+    /** Delay between frames when running */
+    private Duration delay = Duration.NONE;
 
-    /** The view area being displayed */
-    private Rectangle viewArea;
+    /** The point where dragging started when zooming or panning */
+    private DrawingPoint dragStart;
+
+    /** The drawing surface of the entire panel */
+    private Java2dDrawingSurface drawingSurface;
+
+    /** True if the map is currently zoomed in at all */
+    private boolean isZoomedIn;
 
     /** The canvas to draw on */
     private MapCanvas mapCanvas;
 
-    /** Location of cursor when not dragging */
-    private Location cursorAt;
-
     /** Translates between the view area and drawing coordinates */
     private MapProjection mapProjection;
 
+    /** Cache of slippy tile images */
+    private SlippyTileImageCache mapTileCache;
+
+    /** The original coordinate mapper that was being used when panning started */
+    private MapProjection panProjection;
+
+    /** The original center point that was visible when panning started */
+    private Location panStart;
+
     /** True when this component is ready to paint itself */
     private boolean readyToPaint;
+
+    /** The state of the interactive view, {@link State#RUNNING}, {@link State#STEPPING} or {@link State#PAUSED} */
+    private final StateMachine<State> state = new StateMachine<>(PAUSED);
+
+    /** The view area being displayed */
+    private Rectangle viewArea;
+
+    /** The center of the current view */
+    private Location viewCenter = Location.ORIGIN;
+
+    /** Map of {@link MapDrawable} objects in the display */
+    private final ViewModel viewModel = new ViewModel();
 
     /** The current zoom level */
     private ZoomLevel zoom = FURTHEST;
 
     /** When drawing a zoom rectangle, this is the current rectangle */
     private DrawingRectangle zoomSelection;
-
-    /** The point where dragging started when zooming or panning */
-    private DrawingPoint dragStart;
-
-    /** The original center point that was visible when panning started */
-    private Location panStart;
-
-    /** The original coordinate mapper that was being used when panning started */
-    private MapProjection panProjection;
-
-    /** True if the map is currently zoomed in at all */
-    private boolean isZoomedIn;
-
-    /** The state of the interactive view, {@link State#RUNNING}, {@link State#STEPPING} or {@link State#PAUSED} */
-    private final StateMachine<State> state = new StateMachine<>(PAUSED);
-
-    /** Delay between frames when running */
-    private Duration delay = Duration.NONE;
-
-    /** Cache of slippy tile images */
-    private SlippyTileImageCache mapTileCache;
-
-    /** The drawing surface of the entire panel */
-    private Java2dDrawingSurface drawingSurface;
 
     /**
      * Construct

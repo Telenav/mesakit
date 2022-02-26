@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph;
 
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
 import com.telenav.mesakit.graph.identifiers.ShapePointIdentifier;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
 import com.telenav.mesakit.graph.specifications.common.element.GraphElementAttributes;
@@ -94,7 +94,7 @@ public class ShapePoint extends GraphNode
     /**
      * @return The properties of this element from its {@link DataSpecification},
      * @see GraphElementPropertySet
-     * @see AsString
+     * @see Stringable
      * @see AsIndentedString
      */
     @Override

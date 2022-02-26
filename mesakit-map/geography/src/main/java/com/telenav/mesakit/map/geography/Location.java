@@ -19,17 +19,16 @@
 package com.telenav.mesakit.map.geography;
 
 import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.interfaces.model.Identifiable;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.kernel.data.validation.BaseValidator;
 import com.telenav.kivakit.kernel.data.validation.Validatable;
 import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.interfaces.model.Identifiable;
 import com.telenav.kivakit.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.kernel.language.primitives.Longs;
 import com.telenav.kivakit.kernel.language.reflection.populator.KivaKitPropertyConverter;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
 import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
 import com.telenav.kivakit.kernel.language.values.count.BitCount;
 import com.telenav.kivakit.kernel.logging.Logger;
@@ -58,7 +57,6 @@ import java.awt.Point;
 import java.io.Serializable;
 
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
-import static com.telenav.kivakit.kernel.language.strings.conversion.StringFormat.USER_LABEL_IDENTIFIER;
 import static com.telenav.mesakit.map.geography.Precision.DM7;
 
 /**
@@ -129,9 +127,9 @@ import static com.telenav.mesakit.map.geography.Precision.DM7;
  */
 @SuppressWarnings("SwitchStatementWithTooFewBranches")
 @UmlClassDiagram(diagram = DiagramLocation.class)
-@UmlExcludeSuperTypes({ Validatable.class, Identifiable.class, AsString.class, Serializable.class })
+@UmlExcludeSuperTypes({ Validatable.class, Identifiable.class, Stringable.class, Serializable.class })
 @UmlRelation(label = "represented at", referent = Precision.class)
-public class Location implements Validatable, Located, Identifiable, Bounded, Intersectable, AsString, Serializable
+public class Location implements Validatable, Located, Identifiable, Bounded, Intersectable, Stringable, Serializable
 {
     private static final long EARTH_RADIUS_IN_METERS = (long) Distance.EARTH_RADIUS_MINOR.asMeters();
 
@@ -414,6 +412,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         /**
          * {@inheritDoc}
          */
+        @SuppressWarnings("DuplicatedCode")
         @Override
         protected Location onToValue(String value)
         {
@@ -469,6 +468,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         /**
          * {@inheritDoc}
          */
+        @SuppressWarnings("DuplicatedCode")
         @Override
         protected Location onToValue(String value)
         {
@@ -524,6 +524,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         /**
          * {@inheritDoc}
          */
+        @SuppressWarnings("DuplicatedCode")
         @Override
         protected Location onToValue(String value)
         {
@@ -552,11 +553,11 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
     @UmlAggregation
     private Latitude latitude;
 
+    private final int latitudeInDm7;
+
     @KivaKitPropertyConverter(Longitude.DegreesConverter.class)
     @UmlAggregation
     private Longitude longitude;
-
-    private final int latitudeInDm7;
 
     private final int longitudeInDm7;
 
@@ -678,11 +679,11 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
     }
 
     @Override
-    public String asString(StringFormat format)
+    public String asString(Format format)
     {
-        switch (format.identifier())
+        switch (format)
         {
-            case USER_LABEL_IDENTIFIER:
+            case USER_LABEL:
                 return String.format("latitude = %.07f, longitude = %.07f", latitude().asDegrees(), longitude().asDegrees());
 
             default:

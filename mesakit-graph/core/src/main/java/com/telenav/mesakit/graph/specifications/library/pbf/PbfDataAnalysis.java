@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.specifications.library.pbf;
 
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.kernel.language.strings.AsciiArt;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsStringIndenter;
-import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
 import com.telenav.kivakit.kernel.messaging.Message;
 import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.primitive.collections.set.SplitLongSet;
@@ -87,6 +87,11 @@ public class PbfDataAnalysis extends BaseRepeater
     /** Node count map for finding intersections */
     private IntersectionMap intersections;
 
+    /**
+     * Metadata for allocation sizing
+     */
+    private Metadata metadata;
+
     /** Disk stores with full node information */
     private PbfAllNodeDiskStores pbfNodeDiskStores;
 
@@ -97,11 +102,6 @@ public class PbfDataAnalysis extends BaseRepeater
      * Way nodes for the second pass so we can store information about only the nodes we will actually use
      */
     private SplitLongSet wayNodes;
-
-    /**
-     * Metadata for allocation sizing
-     */
-    private Metadata metadata;
 
     /**
      * Constructs a set of codecs for encoding nodes, ways and relations from an PBF data source
@@ -187,8 +187,8 @@ public class PbfDataAnalysis extends BaseRepeater
                 .withWayCount(statistics.ways())
                 .withRelationCount(statistics.relations());
 
-        var indenter = new AsStringIndenter(StringFormat.USER_MULTILINE);
-        indenter.indented("metadata", () -> metadata().asString(StringFormat.USER_MULTILINE, indenter));
+        var indenter = new AsStringIndenter(Stringable.Format.USER_MULTILINE);
+        indenter.indented("metadata", () -> metadata().asString(Stringable.Format.USER_MULTILINE, indenter));
         information(AsciiArt.textBox(Message.format("PBF Data Analysis of $", fileName), indenter.toString()));
     }
 

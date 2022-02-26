@@ -20,9 +20,11 @@ package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.data.formats.library.DataFormat;
 import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.interfaces.comparison.Filter;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.kernel.data.comparison.Differences;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.interfaces.naming.Named;
 import com.telenav.kivakit.kernel.language.iteration.Iterables;
 import com.telenav.kivakit.kernel.language.iteration.Next;
 import com.telenav.kivakit.kernel.language.iteration.Streams;
@@ -31,7 +33,6 @@ import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
 import com.telenav.kivakit.kernel.language.strings.AsciiArt;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsStringIndenter;
-import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
 import com.telenav.kivakit.kernel.language.threading.context.CallStack;
 import com.telenav.kivakit.kernel.language.time.Time;
 import com.telenav.kivakit.kernel.language.types.Classes;
@@ -39,7 +40,6 @@ import com.telenav.kivakit.kernel.language.values.count.Bytes;
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.kivakit.kernel.language.values.count.Estimate;
 import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.language.values.name.Name;
 import com.telenav.kivakit.kernel.language.values.version.Version;
 import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
 import com.telenav.kivakit.kernel.logging.Logger;
@@ -48,7 +48,6 @@ import com.telenav.kivakit.kernel.messaging.Debug;
 import com.telenav.kivakit.kernel.messaging.Listener;
 import com.telenav.kivakit.kernel.messaging.Message;
 import com.telenav.kivakit.kernel.messaging.Repeater;
-import com.telenav.kivakit.kernel.messaging.filters.operators.All;
 import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
@@ -375,14 +374,8 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
         return metadata == null ? null : metadata.newGraph();
     }
 
-    /**
-     * The store where graph data for this graph is located. The {@link GraphStore} has sub-stores that are subclasses
-     * of {@link GraphElementStore} which vary depending on the {@link DataSpecification}.
-     */
-    private final ArchivedGraphStore graphStore;
-
-    /** Size of the graph, if debugging */
-    private Bytes estimatedMemorySize;
+    /** The archive that this graph was loaded from, if any */
+    private GraphArchive archive;
 
     /**
      * An attached object, defined by a user application. When this graph is in a compound graph, like a world graph,
@@ -390,13 +383,25 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      */
     private transient Object attachedObject;
 
+    /** The data specification for data in this graph */
+    private final DataSpecification dataSpecification;
+
+    /** A copy of the reference to the graph store's edge attributes for efficiency */
+    private final EdgeStore edgeStore;
+
+    /** Size of the graph, if debugging */
+    private Bytes estimatedMemorySize;
+
+    /**
+     * The store where graph data for this graph is located. The {@link GraphStore} has sub-stores that are subclasses
+     * of {@link GraphElementStore} which vary depending on the {@link DataSpecification}.
+     */
+    private final ArchivedGraphStore graphStore;
+
     /**
      * Meta data about this graph
      */
     private Metadata metadata;
-
-    /** A copy of the reference to the graph store's edge attributes for efficiency */
-    private final EdgeStore edgeStore;
 
     /** A copy of the reference to the graph store's place attributes for efficiency */
     private final PlaceStore placeStore;
@@ -404,17 +409,11 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /** A copy of the reference to the graph store's edge relation attributes for efficiency */
     private final RelationStore relationStore;
 
-    /** A copy of the reference to the graph store's vertex attributes for efficiency */
-    private final VertexStore vertexStore;
-
     /** A copy of the reference to the graph store's shape point attributes for efficiency */
     private ShapePointStore shapePointStore;
 
-    /** The data specification for data in this graph */
-    private final DataSpecification dataSpecification;
-
-    /** The archive that this graph was loaded from, if any */
-    private GraphArchive archive;
+    /** A copy of the reference to the graph store's vertex attributes for efficiency */
+    private final VertexStore vertexStore;
 
     /**
      * @param metadata The metadata for this graph
@@ -446,7 +445,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     }
 
     @Override
-    public AsStringIndenter asString(StringFormat format, AsStringIndenter indenter)
+    public AsStringIndenter asString(Format format, AsStringIndenter indenter)
     {
         indenter.labeled("resource", resource().path().asContraction(120));
         indenter.indented("metadata", () -> metadata().asString(format, indenter));
@@ -876,7 +875,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      */
     public final EdgeSequence edgesIntersecting(Rectangle bounds)
     {
-        return edgesIntersecting(bounds, new All<>(), EDGES);
+        return edgesIntersecting(bounds, Filter.all(), EDGES);
     }
 
     /**
@@ -1003,7 +1002,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      */
     public final EdgeSequence forwardEdgesIntersecting(Rectangle bounds)
     {
-        return forwardEdgesIntersecting(bounds, new All<>());
+        return forwardEdgesIntersecting(bounds, Filter.all());
     }
 
     /**
@@ -1237,7 +1236,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     public String name()
     {
         var metadata = metadata();
-        return metadata == null ? Name.synthetic(this) : metadata.name();
+        return metadata == null ? NamedObject.syntheticName(this) : metadata.name();
     }
 
     /**
@@ -1399,8 +1398,6 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     {
         return Iterables.iterable(() -> new Next<>()
         {
-            final Iterator<Place> places = placesInside(region.bounds()).iterator();
-
             @Override
             public Place onNext()
             {
@@ -1414,6 +1411,8 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
                 }
                 return null;
             }
+
+            final Iterator<Place> places = placesInside(region.bounds()).iterator();
         });
     }
 
@@ -1526,7 +1525,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      */
     public final RelationSet relationsIntersecting(Rectangle bounds)
     {
-        return relationsIntersecting(bounds, new All<>());
+        return relationsIntersecting(bounds, Filter.all());
     }
 
     /**

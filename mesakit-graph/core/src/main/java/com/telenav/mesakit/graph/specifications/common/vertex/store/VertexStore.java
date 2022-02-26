@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.specifications.common.vertex.store;
 import com.telenav.kivakit.collections.iteration.iterables.DeduplicatingIterable;
 import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
 import com.telenav.kivakit.kernel.language.iteration.Iterables;
 import com.telenav.kivakit.kernel.language.iteration.Next;

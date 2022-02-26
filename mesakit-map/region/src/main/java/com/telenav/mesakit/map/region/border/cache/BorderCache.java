@@ -24,7 +24,7 @@ import com.telenav.kivakit.filesystem.FileCache;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.kernel.KivaKit;
 import com.telenav.kivakit.kernel.data.extraction.Extractor;
-import com.telenav.kivakit.kernel.interfaces.lifecycle.Configured;
+import com.telenav.kivakit.interfaces.lifecycle.Configured;
 import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
 import com.telenav.kivakit.kernel.language.collections.CompressibleCollection.Method;
 import com.telenav.kivakit.kernel.language.io.IO;

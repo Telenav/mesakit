@@ -24,7 +24,7 @@ import com.telenav.kivakit.collections.set.logical.operations.Union;
 import com.telenav.kivakit.collections.set.logical.operations.Without;
 import com.telenav.kivakit.kernel.data.conversion.BaseConverter;
 import com.telenav.kivakit.kernel.data.conversion.string.collection.BaseSetConverter;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.language.collections.set.ObjectSet;
 import com.telenav.kivakit.kernel.language.strings.Join;
 import com.telenav.kivakit.kernel.language.values.count.Maximum;

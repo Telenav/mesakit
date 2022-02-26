@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.graph;
 
+import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.kernel.data.comparison.Differences;
 import com.telenav.kivakit.kernel.data.validation.Validatable;
 import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.mesakit.graph.identifiers.PlaceIdentifier;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
@@ -461,7 +461,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
     /**
      * @return The properties of this element from its {@link DataSpecification},
      * @see GraphElementPropertySet
-     * @see AsString
+     * @see Stringable
      * @see AsIndentedString
      */
     @Override

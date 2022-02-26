@@ -1,7 +1,7 @@
 package com.telenav.mesakit.graph.query.program.expressions.terminal.value;
 
-import com.telenav.kivakit.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.numeric.Quantizable;
 import com.telenav.kivakit.kernel.language.strings.Strip;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.analytics.classification.classifiers.turn.TurnType;

@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.kernel.language.primitives.Doubles;
 import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
@@ -43,7 +43,7 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
  *
  * @author jonathanl (shibo)
  */
-public class ZoomLevel implements AsString
+public class ZoomLevel implements Stringable
 {
     /** Maximum zoom level in OSM */
     public static final ZoomLevel CLOSEST = new ZoomLevel(17);
@@ -140,7 +140,7 @@ public class ZoomLevel implements AsString
     }
 
     @Override
-    public String asString()
+    public String asString(Format format)
     {
         return "[ZoomLevel level = " + level + ", widthInTiles = " + widthInTiles() + "]";
     }

@@ -19,9 +19,9 @@
 package com.telenav.mesakit.graph.world;
 
 import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
-import com.telenav.kivakit.kernel.interfaces.value.Source;
+import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
+import com.telenav.kivakit.interfaces.value.Source;
 import com.telenav.kivakit.kernel.language.iteration.BaseIterable;
 import com.telenav.kivakit.kernel.language.iteration.Next;
 import com.telenav.kivakit.kernel.language.progress.ProgressReporter;

@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph;
 import com.telenav.kivakit.collections.set.logical.operations.Intersection;
 import com.telenav.kivakit.kernel.data.comparison.Differences;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludeProperty;
 import com.telenav.kivakit.kernel.language.time.Time;
 import com.telenav.kivakit.kernel.language.values.count.Count;

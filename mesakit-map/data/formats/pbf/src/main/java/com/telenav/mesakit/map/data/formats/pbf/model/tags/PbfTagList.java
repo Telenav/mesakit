@@ -21,7 +21,6 @@ package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 import com.telenav.kivakit.kernel.language.objects.Hash;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsStringIndenter;
-import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -80,12 +79,6 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         return list;
     }
 
-    // Full array list when there are more than FIELDS tags
-    private List<Tag> tags;
-
-    // The size of this list
-    private int size;
-
     // Simple fields when the size <= FIELDS
     private String key0, value0;
 
@@ -102,6 +95,12 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
     private String key6, value6;
 
     private String key7, value7;
+
+    // The size of this list
+    private int size;
+
+    // Full array list when there are more than FIELDS tags
+    private List<Tag> tags;
 
     private PbfTagList(int capacity)
     {
@@ -157,7 +156,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
     }
 
     @Override
-    public AsStringIndenter asString(StringFormat format, AsStringIndenter indenter)
+    public AsStringIndenter asString(Format format, AsStringIndenter indenter)
     {
         indenter.bracketed(sorted(), tag -> indenter.add(tag.toString()));
         return indenter;
@@ -303,8 +302,6 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
     {
         return new Iterator<>()
         {
-            int at;
-
             @Override
             public boolean hasNext()
             {
@@ -316,6 +313,8 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
             {
                 return get(at++);
             }
+
+            int at;
         };
     }
 

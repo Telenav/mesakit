@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph.specifications.common.graph.loader;
 
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
 import com.telenav.kivakit.kernel.language.time.Time;
 import com.telenav.kivakit.kernel.logging.Logger;

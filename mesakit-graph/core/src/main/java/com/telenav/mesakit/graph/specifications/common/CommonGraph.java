@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.graph.specifications.common;
 
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.comparison.Filter;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.language.iteration.Iterables;
 import com.telenav.kivakit.kernel.language.iteration.Next;
 import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
 import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.messaging.filters.operators.All;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.mesakit.graph.Edge;
@@ -181,8 +181,6 @@ public class CommonGraph extends Graph
         ensureNotNull(bounds);
         return Iterables.iterable(() -> new Next<>()
         {
-            final Iterator<Place> iterator = placeStore().spatialIndex().inside(bounds);
-
             @Override
             public Place onNext()
             {
@@ -192,6 +190,8 @@ public class CommonGraph extends Graph
                 }
                 return null;
             }
+
+            final Iterator<Place> iterator = placeStore().spatialIndex().inside(bounds);
         });
     }
 
@@ -234,7 +234,7 @@ public class CommonGraph extends Graph
     @Override
     public VertexSequence vertexesInside(Rectangle bounds)
     {
-        return vertexesInside(bounds, new All<>());
+        return vertexesInside(bounds, Filter.all());
     }
 
     @Override

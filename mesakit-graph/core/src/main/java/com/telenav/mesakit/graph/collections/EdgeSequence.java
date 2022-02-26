@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.collections;
 
-import com.telenav.kivakit.kernel.interfaces.code.Callback;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.code.Callback;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.kernel.language.iteration.Iterables;
 import com.telenav.kivakit.kernel.language.iteration.Matching;

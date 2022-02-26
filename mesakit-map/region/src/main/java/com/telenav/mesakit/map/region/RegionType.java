@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.region;
 
 import com.telenav.kivakit.collections.map.CaseFoldingStringMap;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.language.collections.set.Sets;
 import com.telenav.kivakit.kernel.language.values.count.Maximum;
 import com.telenav.kivakit.kernel.logging.Logger;

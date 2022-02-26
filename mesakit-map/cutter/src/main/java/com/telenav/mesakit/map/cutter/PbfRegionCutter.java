@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.cutter;
 
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.interfaces.value.Source;
+import com.telenav.kivakit.interfaces.value.Source;
 import com.telenav.kivakit.kernel.language.primitives.Booleans;
 import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.kernel.language.strings.AsciiArt;

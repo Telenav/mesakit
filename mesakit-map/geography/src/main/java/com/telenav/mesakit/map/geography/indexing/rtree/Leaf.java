@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
 import com.telenav.kivakit.collections.iteration.iterators.FilteredIterator;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
 import com.telenav.kivakit.kernel.language.values.count.Count;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;

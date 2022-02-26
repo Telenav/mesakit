@@ -22,10 +22,10 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.kernel.language.locales.CountryIsoCode;
 import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludeProperty;
 import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
 import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
@@ -101,11 +101,18 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNot
  */
 @UmlClassDiagram(diagram = DiagramRegion.class)
 @UmlExcludeSuperTypes
-public class RegionIdentity implements AsString, KryoSerializable
+public class RegionIdentity implements Stringable, KryoSerializable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    private String name;
+    private CountryIsoCode countryIsoCode;
+
+    private int countryOrdinal;
+
+    private Country.CountryTmcCode countryTmcCode;
+
+    @UmlAggregation
+    private RegionIdentifier identifier;
 
     @UmlAggregation(label = "iso")
     private RegionCode iso;
@@ -113,14 +120,7 @@ public class RegionIdentity implements AsString, KryoSerializable
     @UmlAggregation(label = "mesakit")
     private RegionCode mesakit;
 
-    @UmlAggregation
-    private RegionIdentifier identifier;
-
-    private int countryOrdinal;
-
-    private Country.CountryTmcCode countryTmcCode;
-
-    private CountryIsoCode countryIsoCode;
+    private String name;
 
     public RegionIdentity()
     {
@@ -144,7 +144,7 @@ public class RegionIdentity implements AsString, KryoSerializable
     }
 
     @Override
-    public String asString()
+    public String asString(Format format)
     {
         return new ObjectFormatter(this).toString();
     }

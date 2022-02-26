@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.node.store.all;
 
-import com.telenav.kivakit.kernel.interfaces.loading.Unloadable;
+import com.telenav.kivakit.interfaces.loading.Unloadable;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.specifications.common.node.store.all.disk.AllNodeDiskCell;
 import com.telenav.mesakit.graph.specifications.common.node.store.all.disk.PbfAllNodeMetadataDiskStore;

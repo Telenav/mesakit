@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.region.regions;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
 import com.telenav.kivakit.kernel.data.extraction.Extractor;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Debug;

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.element;
 
-import com.telenav.kivakit.kernel.interfaces.loading.Unloadable;
+import com.telenav.kivakit.interfaces.loading.Unloadable;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Debug;

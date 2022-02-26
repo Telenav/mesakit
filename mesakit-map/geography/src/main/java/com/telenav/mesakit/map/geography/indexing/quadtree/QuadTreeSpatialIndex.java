@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.geography.indexing.quadtree;
 
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.kernel.language.collections.list.LinkedObjectList;
 import com.telenav.kivakit.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.kernel.language.iteration.BaseIterator;

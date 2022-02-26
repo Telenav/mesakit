@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.interfaces.numeric.Quantizable;
 
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 

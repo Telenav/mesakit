@@ -19,9 +19,9 @@
 package com.telenav.mesakit.map.measurements.motion;
 
 import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.interfaces.numeric.Quantizable;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.kernel.data.conversion.string.primitive.IntegerConverter;
-import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
 import com.telenav.kivakit.kernel.language.time.Duration;
 import com.telenav.kivakit.kernel.language.values.level.Level;
 import com.telenav.kivakit.kernel.logging.Logger;
@@ -36,7 +36,7 @@ import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapM
 import java.util.regex.Pattern;
 
 /**
- * A unitless speed, as the {@link Distance} traveled over a given {@link Duration}, both of which are also unitless.
+ * A unit-less speed, as the {@link Distance} traveled over a given {@link Duration}, both of which are also unitless.
  *
  * @author jonathanl (shibo)
  */
@@ -397,7 +397,7 @@ public class Speed implements Comparable<Speed>, Quantizable
 
     public long timeToTravelInMilliseconds(Distance length)
     {
-        return length.asMillimeters() * duration.asMilliseconds() / distance.asMillimeters();
+        return length.asMillimeters() * duration.milliseconds() / distance.asMillimeters();
     }
 
     @Override

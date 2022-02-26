@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph.world.grid;
 
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.interfaces.loading.Unloadable;
+import com.telenav.kivakit.interfaces.loading.Unloadable;
 import com.telenav.kivakit.kernel.language.collections.set.Sets;
 import com.telenav.kivakit.kernel.language.objects.reference.virtual.VirtualReference;
 import com.telenav.kivakit.kernel.language.progress.ProgressReporter;

@@ -19,16 +19,15 @@
 package com.telenav.mesakit.map.measurements.geographic;
 
 import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.interfaces.numeric.Maximizable;
+import com.telenav.kivakit.interfaces.numeric.Minimizable;
+import com.telenav.kivakit.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.kernel.data.validation.BaseValidator;
 import com.telenav.kivakit.kernel.data.validation.Validatable;
 import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.interfaces.numeric.Maximizable;
-import com.telenav.kivakit.kernel.interfaces.numeric.Minimizable;
-import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
 import com.telenav.kivakit.kernel.logging.Logger;
 import com.telenav.kivakit.kernel.logging.LoggerFactory;
 import com.telenav.kivakit.kernel.messaging.Listener;
@@ -41,7 +40,6 @@ import java.io.Serializable;
 import java.util.regex.Pattern;
 
 import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
-import static com.telenav.kivakit.kernel.language.strings.conversion.StringFormat.USER_LABEL_IDENTIFIER;
 
 /**
  * An angle value represented between -360 and 360 degrees. Note that an angle of -45 degrees is seen as being less than
@@ -115,14 +113,14 @@ import static com.telenav.kivakit.kernel.language.strings.conversion.StringForma
  */
 @SuppressWarnings("SwitchStatementWithTooFewBranches")
 @UmlClassDiagram(diagram = DiagramMapMeasurementGeographic.class)
-@UmlExcludeSuperTypes({ AsString.class, Serializable.class, Quantizable.class })
+@UmlExcludeSuperTypes({ Stringable.class, Serializable.class, Quantizable.class })
 @LexakaiJavadoc(complete = true)
 public class Angle implements
         Validatable,
         Comparable<Angle>,
         Minimizable<Angle>,
         Maximizable<Angle>,
-        AsString,
+        Stringable,
         Quantizable,
         Serializable
 {
@@ -237,6 +235,7 @@ public class Angle implements
         /**
          * {@inheritDoc}
          */
+        @SuppressWarnings("DuplicatedCode")
         @Override
         protected Angle onToValue(String value)
         {
@@ -276,17 +275,6 @@ public class Angle implements
             return degrees(Double.parseDouble(value));
         }
     }
-
-    /**
-     * The earth is approximately 24,901 miles around at the equator.
-     * <p>
-     * There are 360,000,000,000 nanodegrees in that distance.
-     * <p>
-     * So there are about 14,457,251 nanodegrees per mile (at the equator).
-     * <p>
-     * Since a mile is roughly 5,280 feet, one nanodegree is then about 0.0003 feet or 1/10th of 1mm.
-     */
-    long nanodegrees;
 
     protected Angle()
     {
@@ -357,11 +345,11 @@ public class Angle implements
     }
 
     @Override
-    public String asString(StringFormat format)
+    public String asString(Format format)
     {
-        switch (format.identifier())
+        switch (format)
         {
-            case USER_LABEL_IDENTIFIER:
+            case USER_LABEL:
                 return this + " degrees";
 
             default:
@@ -602,7 +590,7 @@ public class Angle implements
     @Override
     public String toString()
     {
-        return asString(StringFormat.TEXT);
+        return asString(Format.TEXT);
     }
 
     @Override
@@ -628,4 +616,15 @@ public class Angle implements
     {
         return -MAXIMUM_NANODEGREES;
     }
+
+    /**
+     * The earth is approximately 24,901 miles around at the equator.
+     * <p>
+     * There are 360,000,000,000 nanodegrees in that distance.
+     * <p>
+     * So there are about 14,457,251 nanodegrees per mile (at the equator).
+     * <p>
+     * Since a mile is roughly 5,280 feet, one nanodegree is then about 0.0003 feet or 1/10th of 1mm.
+     */
+    long nanodegrees;
 }

@@ -18,19 +18,18 @@
 
 package com.telenav.mesakit.graph;
 
+import com.telenav.kivakit.interfaces.collection.Indexed;
+import com.telenav.kivakit.interfaces.collection.LongKeyed;
+import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.numeric.Quantizable;
 import com.telenav.kivakit.kernel.data.validation.BaseValidator;
 import com.telenav.kivakit.kernel.data.validation.Validatable;
 import com.telenav.kivakit.kernel.data.validation.ValidationType;
 import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.interfaces.collection.Indexed;
-import com.telenav.kivakit.kernel.interfaces.collection.LongKeyed;
-import com.telenav.kivakit.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
 import com.telenav.kivakit.kernel.language.strings.CaseFormat;
 import com.telenav.kivakit.kernel.language.strings.StringTo;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
 import com.telenav.kivakit.kernel.language.strings.conversion.AsStringIndenter;
-import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
 import com.telenav.kivakit.kernel.language.threading.context.CallStack;
 import com.telenav.kivakit.kernel.language.time.Time;
 import com.telenav.kivakit.kernel.language.values.count.Maximum;
@@ -239,11 +238,11 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
     /** The graph that this element belongs to */
     private transient Graph graph;
 
-    /** The index of this element, used to find data quickly in {@link GraphElement} stores */
-    private int index = NULL_INDEX;
-
     /** The identifier for this element */
     private long identifier = NULL_IDENTIFIER;
+
+    /** The index of this element, used to find data quickly in {@link GraphElement} stores */
+    private int index = NULL_INDEX;
 
     /**
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
@@ -271,9 +270,9 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
     public abstract GraphElement asHeavyWeight();
 
     @Override
-    public String asString(StringFormat format)
+    public String asString(Format format)
     {
-        if (format == StringFormat.PROGRAMMATIC)
+        if (format == Format.PROGRAMMATIC)
         {
             return Long.toString(identifierAsLong());
         }
@@ -283,14 +282,14 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
                 .pruneAt(Edge.class);
 
         var string = asString(format, indenter).toString();
-        return format == StringFormat.HTML ? StringTo.html(string) : string;
+        return format == Format.HTML ? StringTo.html(string) : string;
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public AsStringIndenter asString(StringFormat format, AsStringIndenter indenter)
+    public AsStringIndenter asString(Format format, AsStringIndenter indenter)
     {
         if (indenter.indentationLevel() > 1 && !indenter.canExplore(this))
         {
