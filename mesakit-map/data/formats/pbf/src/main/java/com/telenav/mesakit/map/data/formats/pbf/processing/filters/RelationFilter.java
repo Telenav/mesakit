@@ -19,9 +19,9 @@
 package com.telenav.mesakit.map.data.formats.pbf.processing.filters;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.interfaces.comparison.Filter;
 import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.kernel.language.collections.list.StringList;
 import com.telenav.kivakit.kernel.language.collections.map.string.NameMap;
 import com.telenav.kivakit.kernel.messaging.Listener;
@@ -79,13 +79,13 @@ public class RelationFilter implements Filter<PbfRelation>, Named
         }
     }
 
-    private final String name;
-
     private final String description;
 
     private final Set<String> excluded = new HashSet<>();
 
     private final Set<String> included = new HashSet<>();
+
+    private final String name;
 
     public RelationFilter(String name, String description)
     {

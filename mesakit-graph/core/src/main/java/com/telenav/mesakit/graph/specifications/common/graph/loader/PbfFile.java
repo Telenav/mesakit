@@ -55,11 +55,11 @@ public class PbfFile extends BaseRepeater implements Named
         return false;
     }
 
-    /** The file to convert */
-    private final File file;
-
     /** The converter configuration */
     private final PbfToGraphConverter.Configuration configuration;
+
+    /** The file to convert */
+    private final File file;
 
     /**
      * @param file The .osm.pbf input file

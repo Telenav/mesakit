@@ -21,8 +21,8 @@ package com.telenav.mesakit.graph.io.load;
 import com.telenav.kivakit.commandline.ArgumentParser;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
 import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
 import com.telenav.kivakit.kernel.language.time.Time;
@@ -132,9 +132,9 @@ public class SmartGraphLoader extends BaseRepeater implements Named
         }
     }
 
-    private final File file;
-
     private final PbfToGraphConverter.Configuration configuration;
+
+    private final File file;
 
     public SmartGraphLoader(File file)
     {

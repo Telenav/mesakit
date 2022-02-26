@@ -168,24 +168,24 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
         }
     }
 
-    @KivaKitArchivedField(lazy = true)
-    private List<WorldPlace> places;
-
-    @KivaKitArchivedField
-    private final Map<GridCell, Bytes> memorySize = new HashMap<>();
-
-    /** Spatial index of places */
-    private transient QuadTreeSpatialIndex<WorldPlace> placeSpatialIndex;
+    /** The archive where this is stored */
+    private FieldArchive archive;
 
     /** Edge identifier to cell map */
     @KivaKitArchivedField(lazy = true)
     private SplitLongToIntMap cellForWayIdentifier;
 
-    /** The archive where this is stored */
-    private FieldArchive archive;
+    @KivaKitArchivedField
+    private final Map<GridCell, Bytes> memorySize = new HashMap<>();
 
     /** Meta data about this world graph */
     private Metadata metadata;
+
+    /** Spatial index of places */
+    private transient QuadTreeSpatialIndex<WorldPlace> placeSpatialIndex;
+
+    @KivaKitArchivedField(lazy = true)
+    private List<WorldPlace> places;
 
     private WorldGraph worldGraph;
 
