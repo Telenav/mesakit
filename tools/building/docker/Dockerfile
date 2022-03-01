@@ -1,5 +1,5 @@
 
-FROM jonathanlocke/kivakit:1.2.3-snapshot
+FROM jonathanlocke/kivakit:1.3.1-snapshot
 
 # Get MesaKit version
 
