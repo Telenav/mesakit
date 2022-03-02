@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.name.standardizer.locales.french;
 
-import com.telenav.kivakit.test.annotations.SlowTests;
+import com.telenav.kivakit.core.test.SlowTest;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.name.standardizer.RoadNameStandardizerTest;
 import org.junit.Ignore;
@@ -27,7 +27,7 @@ import org.junit.experimental.categories.Category;
 /**
  * @author jonathanl (shibo)
  */
-@Category({ SlowTests.class })
+@Category({ SlowTest.class })
 @Ignore
 public class FrenchCanadaRoadNameStandardizerTest extends RoadNameStandardizerTest
 {

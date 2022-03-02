@@ -19,11 +19,11 @@
 package com.telenav.mesakit.graph.collections;
 
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.iteration.Matching;
-import com.telenav.kivakit.kernel.language.iteration.Streams;
-import com.telenav.kivakit.kernel.language.iteration.Streams.Processing;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.core.collections.iteration.Matching;
+import com.telenav.kivakit.core.language.iteration.Streams;
+import com.telenav.kivakit.core.language.iteration.Streams.Processing;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.language.count.Estimate;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.RouteBuilder;
 import com.telenav.mesakit.graph.Vertex;

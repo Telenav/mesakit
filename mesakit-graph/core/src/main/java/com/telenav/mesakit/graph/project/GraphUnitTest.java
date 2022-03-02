@@ -18,16 +18,16 @@
 
 package com.telenav.mesakit.graph.project;
 
-import com.telenav.kivakit.configuration.settings.Settings;
-import com.telenav.kivakit.configuration.settings.stores.resource.FolderSettingsStore;
+import com.telenav.kivakit.settings.settings.Settings;
+import com.telenav.kivakit.settings.settings.stores.resource.FolderSettingsStore;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.language.objects.Lazy;
-import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.core.object.Lazy;
+import com.telenav.kivakit.core.language.progress.ProgressReporter;
+import com.telenav.kivakit.language.count.Estimate;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.resource.CopyMode;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.path.Extension;
@@ -339,7 +339,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
                 // then try to copy it from the test data folder
                 var destination = LOGGER.listenTo(GraphProject.get().graphFolder().folder("overpass"));
                 var source = LOGGER.listenTo(MesaKit.get().mesakitHome().folder("mesakit-graph/core/data"));
-                source.copyTo(destination, CopyMode.OVERWRITE, Extension.OSM_PBF.fileMatcher(), ProgressReporter.NULL);
+                source.copyTo(destination, CopyMode.OVERWRITE, Extension.OSM_PBF.fileMatcher(), ProgressReporter.none());
             }
 
             // and if we can't find it there and it's an OSM graph being requested,
@@ -362,7 +362,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
                     if (graph != null)
                     {
                         // and if we succeeded, then save the graph file and return the graph
-                        graph.save(new GraphArchive(LOGGER, graphFile, ZipArchive.Mode.WRITE, ProgressReporter.NULL));
+                        graph.save(new GraphArchive(LOGGER, graphFile, ZipArchive.Mode.WRITE, ProgressReporter.none()));
                         return LOGGER.listenTo(graph);
                     }
 
@@ -380,7 +380,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
         }
         else
         {
-            return new GraphArchive(LOGGER, graphFile, READ, ProgressReporter.NULL).load(Listener.none());
+            return new GraphArchive(LOGGER, graphFile, READ, ProgressReporter.none()).load(Listener.none());
         }
         return null;
     }

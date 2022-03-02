@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.language.count.Estimate;
+import com.telenav.kivakit.language.count.Maximum;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.ensure.Ensure.unsupported;
 
 public class RTreeSettings
 {

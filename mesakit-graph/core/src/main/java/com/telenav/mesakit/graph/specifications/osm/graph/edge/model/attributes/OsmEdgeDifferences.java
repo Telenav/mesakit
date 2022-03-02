@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes;
 
-import com.telenav.kivakit.kernel.data.comparison.Differences;
+import com.telenav.kivakit.coredata.comparison.Differences;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.OsmEdge;
 
 public class OsmEdgeDifferences

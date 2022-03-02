@@ -21,15 +21,15 @@ package com.telenav.mesakit.graph.world.grid;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.loading.Unloadable;
-import com.telenav.kivakit.kernel.language.collections.set.Sets;
-import com.telenav.kivakit.kernel.language.objects.reference.virtual.VirtualReference;
-import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.collections.set.Sets;
+import com.telenav.kivakit.core.language.objects.reference.virtual.VirtualReference;
+import com.telenav.kivakit.core.language.progress.ProgressReporter;
+import com.telenav.kivakit.language.count.Bytes;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
@@ -400,7 +400,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
                 // Load the graph file
                 DEBUG.trace("Loading graph for $", name());
                 @SuppressWarnings(
-                        "resource") var archive = new GraphArchive(LOGGER, cellGraphFile(), READ, ProgressReporter.NULL);
+                        "resource") var archive = new GraphArchive(LOGGER, cellGraphFile(), READ, ProgressReporter.none());
                 var graph = archive.load(DEBUG.isDebugOn() ? DEBUG.listener() : Listener.none());
                 if (graph == null)
                 {

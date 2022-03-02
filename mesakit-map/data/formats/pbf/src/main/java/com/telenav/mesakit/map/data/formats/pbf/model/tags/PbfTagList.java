@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
-import com.telenav.kivakit.kernel.language.objects.Hash;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsStringIndenter;
+import com.telenav.kivakit.core.language.Hash;
+import com.telenav.kivakit.core.language.strings.conversion.AsIndentedString;
+import com.telenav.kivakit.core.language.strings.conversion.AsStringIndenter;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelTags;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfModelTags;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.ensure.Ensure.fail;
 
 @UmlClassDiagram(diagram = DiagramPbfModelTags.class)
 @UmlExcludeSuperTypes({ AsIndentedString.class, Iterable.class })

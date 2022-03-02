@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge;
 
-import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.core.language.strings.formatting.Separators;
+import com.telenav.kivakit.language.count.Estimate;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.graph.specifications.common.edge.store.stores.polyline.PolylineStore;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;

@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.graph.analytics.junction;
 
-import com.telenav.kivakit.kernel.language.threading.KivaKitThread;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.language.values.count.MutableCount;
-import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.language.threading.KivaKitThread;
+import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.language.count.MutableCount;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;

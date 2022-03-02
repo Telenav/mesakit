@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.world.identifiers;
 
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.language.objects.Hash;
-import com.telenav.kivakit.kernel.language.strings.Paths;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.core.language.Hash;
+import com.telenav.kivakit.core.language.strings.Paths;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.world.WorldEdge;
 import com.telenav.mesakit.graph.world.WorldGraph;

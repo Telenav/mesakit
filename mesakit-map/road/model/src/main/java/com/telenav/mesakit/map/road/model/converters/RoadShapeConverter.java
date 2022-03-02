@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.road.model.converters;
 
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.strings.Split;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.core.language.collections.list.ObjectList;
+import com.telenav.kivakit.core.language.strings.Split;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;

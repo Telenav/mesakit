@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.graph.identifiers.collections;
 
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.core.language.collections.list.ObjectList;
+import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.core.language.strings.formatting.Separators;
+import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapRelationIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfRelationIdentifier;
 

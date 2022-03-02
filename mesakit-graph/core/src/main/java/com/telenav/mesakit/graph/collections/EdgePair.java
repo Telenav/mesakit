@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.collections;
 
-import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
-import com.telenav.kivakit.kernel.language.iteration.Streams;
-import com.telenav.kivakit.kernel.language.values.level.Percent;
+import com.telenav.kivakit.core.collections.iteration.BaseIterator;
+import com.telenav.kivakit.core.language.iteration.Streams;
+import com.telenav.kivakit.language.level.Percent;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;

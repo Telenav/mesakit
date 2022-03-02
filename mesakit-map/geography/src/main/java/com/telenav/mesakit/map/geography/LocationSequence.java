@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.geography;
 
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
+import com.telenav.mesakit.map.geography.project.lexakai.DiagramLocation;
 
 import java.util.List;
 

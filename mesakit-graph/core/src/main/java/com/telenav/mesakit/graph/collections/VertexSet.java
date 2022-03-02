@@ -18,18 +18,18 @@
 
 package com.telenav.mesakit.graph.collections;
 
-import com.telenav.kivakit.collections.set.logical.operations.Intersection;
-import com.telenav.kivakit.collections.set.logical.operations.Subset;
-import com.telenav.kivakit.collections.set.logical.operations.Union;
-import com.telenav.kivakit.collections.set.logical.operations.Without;
-import com.telenav.kivakit.kernel.data.conversion.BaseConverter;
-import com.telenav.kivakit.kernel.data.conversion.string.collection.BaseSetConverter;
+import com.telenav.kivakit.collections.set.ObjectSet;
+import com.telenav.kivakit.collections.set.operations.Intersection;
+import com.telenav.kivakit.collections.set.operations.Subset;
+import com.telenav.kivakit.collections.set.operations.Union;
+import com.telenav.kivakit.collections.set.operations.Without;
+import com.telenav.kivakit.conversion.BaseConverter;
+import com.telenav.kivakit.conversion.string.collection.BaseSetConverter;
+import com.telenav.kivakit.core.language.strings.Join;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.listeners.ThrowingListener;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.collections.set.ObjectSet;
-import com.telenav.kivakit.kernel.language.strings.Join;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.messaging.listeners.ThrowingListener;
+import com.telenav.kivakit.language.count.Maximum;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;

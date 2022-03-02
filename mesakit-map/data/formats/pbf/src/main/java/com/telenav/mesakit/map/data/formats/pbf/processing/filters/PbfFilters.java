@@ -6,7 +6,7 @@ import com.telenav.mesakit.map.data.formats.pbf.processing.filters.osm.OsmMajorR
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.osm.OsmNavigableWayFilter;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.osm.OsmRelationsFilter;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.osm.OsmWaysFilter;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessingFilters;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfProcessingFilters;
 
 /**
  * @author jonathanl (shibo)

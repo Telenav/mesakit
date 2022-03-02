@@ -19,9 +19,9 @@
 package com.telenav.mesakit.graph.specifications.common.element;
 
 import com.telenav.kivakit.interfaces.loading.Unloadable;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
@@ -37,7 +37,7 @@ import com.telenav.mesakit.graph.specifications.library.attributes.AttributeSet;
 import com.telenav.mesakit.map.geography.Precision;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
 
 /**
  * Base class for various kinds of attribute stores that are stored in {@link GraphArchive}s. Archived stores are

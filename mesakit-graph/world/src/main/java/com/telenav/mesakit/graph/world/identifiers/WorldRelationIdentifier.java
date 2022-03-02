@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.world.identifiers;
 
-import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.core.language.Hash;
 import com.telenav.mesakit.graph.identifiers.RelationIdentifier;
 import com.telenav.mesakit.graph.world.WorldGraph;
 import com.telenav.mesakit.graph.world.WorldRelation;

@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner;
 
-import com.telenav.kivakit.kernel.data.validation.ValidationType;
-import com.telenav.kivakit.kernel.language.progress.reporters.ConcurrentProgress;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.coredata.validation.ValidationType;
+import com.telenav.kivakit.core.language.progress.reporters.ConcurrentProgress;
+import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.language.count.Count;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;

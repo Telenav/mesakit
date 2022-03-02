@@ -23,8 +23,8 @@ import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanChar
 import com.telenav.kivakit.data.compression.codecs.huffman.list.HuffmanStringListCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.StringFrequencies;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.language.count.Maximum;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.project.GraphUnitTest;

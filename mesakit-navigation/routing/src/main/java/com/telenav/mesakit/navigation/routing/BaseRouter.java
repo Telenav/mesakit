@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.navigation.routing;
 
-import com.telenav.kivakit.kernel.language.time.Duration;
+import com.telenav.kivakit.language.time.Duration;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.world.WorldVertex;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.ensure.Ensure.fail;
 
 /**
  * Router base class that handles trivial cases

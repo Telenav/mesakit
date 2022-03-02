@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.navigation.routing.cost.functions;
 
-import com.telenav.kivakit.kernel.language.time.Duration;
+import com.telenav.kivakit.language.time.Duration;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.map.geography.Located;
 import com.telenav.mesakit.map.measurements.motion.Speed;

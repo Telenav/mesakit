@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
+import com.telenav.kivakit.core.language.locales.LanguageIsoCode;
 import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import org.junit.Test;
 

@@ -18,17 +18,17 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge.store.stores.roadname;
 
-import com.telenav.kivakit.collections.map.CacheMap;
+import com.telenav.kivakit.core.collections.map.CacheMap;
+import com.telenav.kivakit.core.language.bits.BitDiagram;
+import com.telenav.kivakit.core.language.values.mutable.MutableValue;
 import com.telenav.kivakit.data.compression.SymbolProducer;
 import com.telenav.kivakit.data.compression.codecs.CharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.interfaces.lifecycle.Initializable;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
-import com.telenav.kivakit.kernel.language.bits.BitDiagram;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.language.values.mutable.MutableValue;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.language.count.Estimate;
+import com.telenav.kivakit.language.count.Maximum;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitByteArray;
 import com.telenav.kivakit.primitive.collections.map.scalars.LongToIntMap;
 import com.telenav.mesakit.graph.Edge;
@@ -37,8 +37,8 @@ import com.telenav.mesakit.map.road.model.RoadName;
 
 import java.util.WeakHashMap;
 
+import static com.telenav.kivakit.core.language.bits.BitDiagram.BitField;
 import static com.telenav.kivakit.data.compression.SymbolConsumer.Directive.STOP;
-import static com.telenav.kivakit.kernel.language.bits.BitDiagram.BitField;
 
 public class RoadNameStore implements NamedObject, Initializable
 {

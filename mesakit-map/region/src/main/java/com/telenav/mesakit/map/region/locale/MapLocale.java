@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.map.region.locale;
 
-import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
-import com.telenav.kivakit.kernel.language.locales.Locale;
-import com.telenav.kivakit.kernel.language.objects.Lazy;
-import com.telenav.kivakit.kernel.language.paths.PackagePath;
-import com.telenav.kivakit.kernel.language.reflection.Type;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.core.language.locales.LanguageIsoCode;
+import com.telenav.kivakit.core.language.locales.Locale;
+import com.telenav.kivakit.core.object.Lazy;
+import com.telenav.kivakit.core.path.PackagePath;
+import com.telenav.kivakit.core.language.reflection.Type;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.World;

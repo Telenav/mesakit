@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.geography.indexing.quadtree;
 
-import com.telenav.kivakit.kernel.language.collections.list.BaseList;
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.threading.KivaKitThread;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.core.language.collections.list.BaseList;
+import com.telenav.kivakit.core.language.collections.list.ObjectList;
+import com.telenav.kivakit.core.language.threading.KivaKitThread;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;

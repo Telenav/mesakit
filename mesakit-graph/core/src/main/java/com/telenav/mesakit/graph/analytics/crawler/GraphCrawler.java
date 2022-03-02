@@ -18,8 +18,9 @@
 
 package com.telenav.mesakit.graph.analytics.crawler;
 
-import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.core.language.progress.reporters.Progress;
+import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.language.count.Estimate;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSet;
@@ -74,7 +75,7 @@ public class GraphCrawler
         this.metric = metric;
 
         // Initialize the visited set and the itinerary
-        visitedEdges = new EdgeSet(maximumEdges, com.telenav.kivakit.kernel.language.values.count.Estimate._65536);
+        visitedEdges = new EdgeSet(maximumEdges, Estimate._65536);
     }
 
     /**

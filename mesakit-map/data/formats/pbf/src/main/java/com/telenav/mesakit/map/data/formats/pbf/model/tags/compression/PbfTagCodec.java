@@ -25,7 +25,7 @@ import com.telenav.kivakit.primitive.collections.list.ByteList;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelCompression;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfModelCompression;
 
 /**
  * A tag codec is used to compress the key / value pairs found in tags. Different codecs can be tuned to different data

@@ -20,15 +20,15 @@ package com.telenav.mesakit.graph.metadata;
 
 import com.telenav.kivakit.collections.map.MultiMap;
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.kernel.data.comparison.Differences;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.data.validation.ValidationType;
+import com.telenav.kivakit.coredata.comparison.Differences;
+import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.coredata.validation.ValidationType;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
@@ -73,9 +73,9 @@ import com.telenav.mesakit.map.data.formats.library.DataFormat;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.illegalArgument;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.ensure.Ensure.illegalArgument;
+import static com.telenav.kivakit.ensure.Ensure.unsupported;
 
 /**
  * A specification of {@link Graph} data and its storage, independent of format or supplier. For example, data of UniDB

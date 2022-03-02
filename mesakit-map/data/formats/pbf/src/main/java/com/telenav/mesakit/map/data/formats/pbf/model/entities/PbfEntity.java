@@ -1,16 +1,16 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.entities;
 
 import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagFilter;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelEntities;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfModelEntities;
 import org.jetbrains.annotations.NotNull;
 import org.openstreetmap.osmosis.core.domain.v0_6.Entity;
 import org.openstreetmap.osmosis.core.domain.v0_6.EntityType;

@@ -24,7 +24,7 @@ import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.io.load.loaders.region.RegionalGraphLoader;
 import com.telenav.mesakit.map.region.regions.State;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.ensure.Ensure.fail;
 
 public class StateLoader extends RegionalGraphLoader
 {

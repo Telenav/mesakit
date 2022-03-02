@@ -23,7 +23,7 @@ import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionCode;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
-import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
+import com.telenav.mesakit.map.region.project.lexakai.DiagramRegions;
 
 /**
  * @author Jianbo Chen

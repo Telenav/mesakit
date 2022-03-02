@@ -22,21 +22,21 @@ import com.telenav.kivakit.commandline.ArgumentParser;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.interfaces.naming.Named;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.core.language.progress.ProgressReporter;
+import com.telenav.kivakit.core.language.progress.reporters.Progress;
+import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.resource.path.FileName;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.PbfToGraphConverter;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.ensure.Ensure.unsupported;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
 
 /**
@@ -154,7 +154,7 @@ public class SmartGraphLoader extends BaseRepeater implements Named
 
     public Graph load()
     {
-        return load(this, ProgressReporter.NULL);
+        return load(this, ProgressReporter.none());
     }
 
     public Graph load(Listener listener)

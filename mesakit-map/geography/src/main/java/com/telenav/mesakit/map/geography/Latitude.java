@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.geography;
 
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.values.count.Range;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.core.language.strings.Strings;
+import com.telenav.kivakit.language.count.Range;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
+import com.telenav.mesakit.map.geography.project.lexakai.DiagramLocation;
 import com.telenav.mesakit.map.geography.shape.rectangle.Height;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;

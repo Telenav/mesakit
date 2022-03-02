@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
-import com.telenav.kivakit.kernel.language.values.level.Level;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.language.level.Level;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.LocationSequence;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
+import com.telenav.mesakit.map.geography.project.lexakai.DiagramPolyline;
 import com.telenav.mesakit.map.geography.shape.segment.Segment;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;

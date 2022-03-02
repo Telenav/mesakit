@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.library.osm.change.store;
 
 import com.telenav.kivakit.collections.map.MultiMap;
-import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.core.language.strings.Strings;
 import com.telenav.mesakit.graph.library.osm.change.NewWay;
 
 import java.util.ArrayList;

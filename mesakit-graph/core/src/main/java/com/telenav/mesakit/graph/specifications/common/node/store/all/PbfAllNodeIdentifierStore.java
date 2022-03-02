@@ -31,7 +31,7 @@ import com.telenav.mesakit.map.geography.Location;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.ensure.Ensure.ensure;
 
 public class PbfAllNodeIdentifierStore implements Unloadable
 {

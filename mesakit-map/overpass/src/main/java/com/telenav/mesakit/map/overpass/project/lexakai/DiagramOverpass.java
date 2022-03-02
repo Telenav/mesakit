@@ -1,4 +1,4 @@
-package com.telenav.mesakit.map.overpass.project.lexakai.diagrams;
+package com.telenav.mesakit.map.overpass.project.lexakai;
 
 import com.telenav.lexakai.annotations.diagrams.UmlDiagramIdentifier;
 

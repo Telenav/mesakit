@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.specifications.common.place;
 
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.language.count.Count;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.Place;

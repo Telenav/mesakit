@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.name.standardizer.locales.english;
 
-import com.telenav.kivakit.test.annotations.SlowTests;
+import com.telenav.kivakit.core.test.SlowTest;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.name.standardizer.RoadNameStandardizerTest;
 import org.junit.Ignore;
@@ -28,7 +28,7 @@ import org.junit.experimental.categories.Category;
 /**
  * @author jonathanl (shibo)
  */
-@Category({ SlowTests.class })
+@Category({ SlowTest.class })
 @Ignore
 public class EnglishUnitedStatesRoadNameStandardizerTest extends RoadNameStandardizerTest
 {
@@ -107,7 +107,7 @@ public class EnglishUnitedStatesRoadNameStandardizerTest extends RoadNameStandar
     }
 
     @Override
-    protected String normalize( String string)
+    protected String normalize(String string)
     {
         return string.replaceAll("[.?]", "");
     }

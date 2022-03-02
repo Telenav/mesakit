@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.specifications.common.vertex;
 
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSet;

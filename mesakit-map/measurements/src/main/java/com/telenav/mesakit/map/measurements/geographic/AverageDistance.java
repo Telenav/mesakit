@@ -22,7 +22,7 @@ import com.telenav.kivakit.math.statistics.Average;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
-import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
+import com.telenav.mesakit.map.measurements.project.lexakai.DiagramMapMeasurementGeographic;
 
 /**
  * Computes an average {@link Distance} given a series of samples.

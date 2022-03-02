@@ -22,7 +22,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.region.RegionIdentity;
-import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramBorder;
+import com.telenav.mesakit.map.region.project.lexakai.DiagramBorder;
 
 import java.util.Collection;
 

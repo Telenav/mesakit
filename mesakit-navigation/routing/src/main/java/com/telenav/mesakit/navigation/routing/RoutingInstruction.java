@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.navigation.routing;
 
-import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.core.messaging.Message;
 
 /**
  * @author jonathanl (shibo)

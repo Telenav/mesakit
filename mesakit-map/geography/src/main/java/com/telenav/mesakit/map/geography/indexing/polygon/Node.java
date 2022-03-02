@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.geography.indexing.polygon;
 
-import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.language.count.Count;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.polygon.PolygonSpatialIndex.Visitor;
 import com.telenav.mesakit.map.geography.shape.Outline;

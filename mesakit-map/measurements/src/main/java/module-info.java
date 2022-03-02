@@ -2,7 +2,6 @@ open module mesakit.map.measurements
 {
     requires transitive kivakit.commandline;
     requires transitive kivakit.serialization.kryo;
-    requires kivakit.test;
     requires kivakit.math;
     requires kivakit.collections;
 

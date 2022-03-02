@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.edge.store;
 
-import com.telenav.kivakit.kernel.language.values.count.BitCount;
+import com.telenav.kivakit.language.count.BitCount;
 import com.telenav.kivakit.primitive.collections.array.packed.SplitPackedArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;

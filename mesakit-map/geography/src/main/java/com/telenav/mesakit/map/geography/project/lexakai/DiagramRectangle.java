@@ -1,4 +1,4 @@
-package com.telenav.mesakit.map.geography.project.lexakai.diagrams;
+package com.telenav.mesakit.map.geography.project.lexakai;
 
 import com.telenav.lexakai.annotations.diagrams.UmlDiagramIdentifier;
 

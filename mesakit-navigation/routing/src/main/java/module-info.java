@@ -4,8 +4,6 @@ open module mesakit.navigation.routing
     requires transitive mesakit.map.ui.desktop;
     requires transitive mesakit.map.region;
 
-    requires kivakit.test;
-
     exports com.telenav.mesakit.navigation.routing;
     exports com.telenav.mesakit.navigation.routing.promoters;
     exports com.telenav.mesakit.navigation.routing.bidijkstra;

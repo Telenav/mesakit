@@ -19,12 +19,12 @@
 package com.telenav.mesakit.graph.world;
 
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.language.reflection.populator.KivaKitPropertyConverter;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.core.language.progress.reporters.Progress;
+import com.telenav.kivakit.core.language.reflection.populator.KivaKitPropertyConverter;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.resource.CopyMode;
 import com.telenav.kivakit.resource.path.FilePath;
 import com.telenav.mesakit.graph.Metadata;

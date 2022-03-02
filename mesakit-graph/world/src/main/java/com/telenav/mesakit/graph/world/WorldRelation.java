@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.core.language.Hash;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.EdgeRelationMember;
 import com.telenav.mesakit.graph.GraphElement;

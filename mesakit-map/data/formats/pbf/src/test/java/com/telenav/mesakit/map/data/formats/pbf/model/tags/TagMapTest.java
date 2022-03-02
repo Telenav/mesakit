@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
-import com.telenav.kivakit.test.UnitTest;
+import com.telenav.kivakit.core.test.UnitTest;
 import org.junit.Test;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 

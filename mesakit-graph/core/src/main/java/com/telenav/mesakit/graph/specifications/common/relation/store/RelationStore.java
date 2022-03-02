@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.graph.specifications.common.relation.store;
 
-import com.telenav.kivakit.kernel.data.validation.ValidationType;
-import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.language.primitives.Ints;
-import com.telenav.kivakit.kernel.language.values.count.BitCount;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.coredata.validation.ValidationType;
+import com.telenav.kivakit.coredata.validation.Validator;
+import com.telenav.kivakit.language.primitive.Ints;
+import com.telenav.kivakit.language.count.BitCount;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.language.count.Estimate;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.primitive.collections.array.packed.SplitPackedArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
@@ -58,7 +58,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.telenav.kivakit.kernel.data.validation.ValidationType.VALIDATE_ALL;
+import static com.telenav.kivakit.coredata.validation.ValidationType.VALIDATE_ALL;
 import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 

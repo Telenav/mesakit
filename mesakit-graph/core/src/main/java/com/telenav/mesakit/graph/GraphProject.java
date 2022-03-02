@@ -19,10 +19,10 @@
 package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.language.collections.set.ObjectSet;
-import com.telenav.kivakit.kernel.language.objects.Lazy;
-import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.kivakit.kernel.project.Project;
+import com.telenav.kivakit.collections.set.ObjectSet;
+import com.telenav.kivakit.core.object.Lazy;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
+import com.telenav.kivakit.coreproject.Project;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.graph.project.GraphKryoTypes;

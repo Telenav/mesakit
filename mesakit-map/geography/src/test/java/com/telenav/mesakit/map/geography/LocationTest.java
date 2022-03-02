@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.geography;
 
-import com.telenav.kivakit.kernel.language.values.level.Percent;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.language.level.Percent;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.geography.shape.rectangle.Size;

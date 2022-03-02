@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.library.osm.change;
 
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
+import com.telenav.kivakit.core.language.collections.list.StringList;
 import com.telenav.mesakit.graph.library.osm.change.store.PbfNodeStore;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 import com.telenav.mesakit.map.geography.Location;

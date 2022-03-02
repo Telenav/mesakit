@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
-import com.telenav.kivakit.kernel.language.values.level.Percent;
+import com.telenav.kivakit.language.level.Percent;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Dot;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingHeight;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;

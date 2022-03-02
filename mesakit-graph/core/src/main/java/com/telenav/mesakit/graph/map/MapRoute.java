@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.graph.map;
 
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.language.iteration.Streams;
-import com.telenav.kivakit.kernel.language.strings.Join;
-import com.telenav.kivakit.kernel.language.strings.Split;
-import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.core.language.iteration.Streams;
+import com.telenav.kivakit.core.language.strings.Join;
+import com.telenav.kivakit.core.language.strings.Split;
+import com.telenav.kivakit.core.language.strings.formatting.Separators;
+import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.RouteBuilder;

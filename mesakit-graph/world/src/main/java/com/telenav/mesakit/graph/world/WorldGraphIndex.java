@@ -22,18 +22,18 @@ import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.interfaces.value.Source;
-import com.telenav.kivakit.kernel.language.iteration.BaseIterable;
-import com.telenav.kivakit.kernel.language.iteration.Next;
-import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.version.Version;
-import com.telenav.kivakit.kernel.language.values.version.VersionedObject;
-import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.core.collections.iteration.BaseIterable;
+import com.telenav.kivakit.core.collections.iteration.Next;
+import com.telenav.kivakit.core.language.progress.ProgressReporter;
+import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.language.count.Bytes;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.language.version.Version;
+import com.telenav.kivakit.language.version.VersionedObject;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
 import com.telenav.kivakit.resource.compression.archive.FieldArchive;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
@@ -63,7 +63,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.ensure.Ensure.fail;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.WRITE;
 
@@ -234,10 +234,10 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
             var start = Time.now();
 
             // If the resource is a virtual file, it must be materialized to read it as a zip file
-            file = file.materialized(ProgressReporter.NULL);
+            file = file.materialized(ProgressReporter.none());
 
             // Attach the zip archive and the field archive based on it
-            archive = new FieldArchive(file, SerializationSessionFactory.threadLocal(), ProgressReporter.NULL, READ);
+            archive = new FieldArchive(file, SerializationSessionFactory.threadLocal(), ProgressReporter.none(), READ);
 
             // Clear out fields we will load from archive
             clearLazyLoadedFields();
@@ -335,7 +335,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
         try
         {
             // Create archive and save all non-null archived fields
-            var archive = new FieldArchive(file, SerializationSessionFactory.threadLocal(), ProgressReporter.NULL, WRITE);
+            var archive = new FieldArchive(file, SerializationSessionFactory.threadLocal(), ProgressReporter.none(), WRITE);
             var version = GraphArchive.VERSION;
             archive.version(version);
             archive.save("metadata", new VersionedObject<>(version, metadata));

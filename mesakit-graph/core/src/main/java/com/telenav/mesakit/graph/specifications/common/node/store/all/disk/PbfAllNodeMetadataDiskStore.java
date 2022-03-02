@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.specifications.common.node.store.all.disk;
 
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.language.time.Time;
+import com.telenav.kivakit.language.time.Time;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.specifications.common.node.store.all.PbfAllNodeMetadataStore;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;

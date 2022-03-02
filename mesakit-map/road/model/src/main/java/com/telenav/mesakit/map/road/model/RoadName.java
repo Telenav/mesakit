@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.kernel.data.extraction.Extractor;
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.language.strings.StringComparison;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.values.level.Confidence;
-import com.telenav.kivakit.kernel.language.values.name.Name;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.coredata.extraction.Extractor;
+import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.core.language.strings.StringComparison;
+import com.telenav.kivakit.core.language.strings.Strings;
+import com.telenav.kivakit.language.level.Confidence;
+import com.telenav.kivakit.core.language.values.name.Name;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.mesakit.map.measurements.geographic.Direction;
 
 import java.util.ArrayList;

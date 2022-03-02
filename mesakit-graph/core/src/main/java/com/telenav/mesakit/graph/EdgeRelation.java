@@ -19,16 +19,16 @@
 package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.core.language.collections.list.ObjectList;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.strings.Strings;
+import com.telenav.kivakit.core.language.strings.conversion.AsIndentedString;
+import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.collections.RouteList;
 import com.telenav.mesakit.graph.identifiers.RelationIdentifier;
@@ -59,7 +59,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.ensure.Ensure.unsupported;
 
 public class EdgeRelation extends GraphElement implements Bounded
 {

@@ -25,9 +25,9 @@ import com.telenav.mesakit.map.geography.indexing.rtree.Leaf;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSettings;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndex;
 import com.telenav.mesakit.map.region.Region;
-import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramBorder;
+import com.telenav.mesakit.map.region.project.lexakai.DiagramBorder;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.ensure.Ensure.unsupported;
 
 @UmlClassDiagram(diagram = DiagramBorder.class)
 @UmlRelation(label = "indexes", referent = Border.class, referentCardinality = "1+")

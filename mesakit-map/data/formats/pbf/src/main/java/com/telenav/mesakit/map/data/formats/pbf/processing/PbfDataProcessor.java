@@ -24,7 +24,7 @@ import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessing;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfProcessing;
 import org.openstreetmap.osmosis.core.domain.v0_6.Bound;
 
 import java.util.Collection;

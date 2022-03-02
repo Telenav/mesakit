@@ -3,7 +3,7 @@ package com.telenav.mesakit.map.data.formats.pbf.osm;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagFilter;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfOsm;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfOsm;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.HashSet;

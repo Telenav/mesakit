@@ -1,4 +1,4 @@
-package com.telenav.mesakit.map.cutter.project.lexakai.diagrams;
+package com.telenav.mesakit.map.cutter.project.lexakai;
 
 import com.telenav.lexakai.annotations.diagrams.UmlDiagramIdentifier;
 

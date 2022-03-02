@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.extractors;
 
-import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.coredata.extraction.BaseExtractor;
+import com.telenav.kivakit.core.language.strings.Strings;
+import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.Place;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.extractors.LocationExtractor;

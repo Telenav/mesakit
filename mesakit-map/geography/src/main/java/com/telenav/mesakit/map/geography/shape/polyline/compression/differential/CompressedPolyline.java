@@ -19,13 +19,13 @@
 package com.telenav.mesakit.map.geography.shape.polyline.compression.differential;
 
 import com.telenav.kivakit.interfaces.collection.Sized;
-import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
-import com.telenav.kivakit.kernel.language.primitives.Ints;
-import com.telenav.kivakit.kernel.language.values.count.BitCount;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.core.language.collections.CompressibleCollection;
+import com.telenav.kivakit.language.primitive.Ints;
+import com.telenav.kivakit.language.count.BitCount;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.primitive.collections.array.bits.BitArray;
 import com.telenav.kivakit.primitive.collections.array.bits.io.BitReader;
 import com.telenav.kivakit.primitive.collections.array.bits.io.BitWriter;
@@ -35,7 +35,7 @@ import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.LocationSequence;
 import com.telenav.mesakit.map.geography.Precision;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
+import com.telenav.mesakit.map.geography.project.lexakai.DiagramPolyline;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 

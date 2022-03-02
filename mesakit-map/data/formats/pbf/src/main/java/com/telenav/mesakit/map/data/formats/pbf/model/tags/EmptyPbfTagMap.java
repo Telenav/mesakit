@@ -1,16 +1,16 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.language.iteration.Iterators;
-import com.telenav.kivakit.kernel.language.primitives.Ints;
+import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.core.collections.iteration.Iterators;
+import com.telenav.kivakit.language.primitive.Ints;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelTags;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfModelTags;
 import org.jetbrains.annotations.NotNull;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.Iterator;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.ensure.Ensure.unsupported;
 
 /**
  * @author jonathanl (shibo)
@@ -60,7 +60,8 @@ public class EmptyPbfTagMap extends PbfTagMap
     }
 
     @Override
-    public @NotNull Iterator<Tag> iterator()
+    public @NotNull
+    Iterator<Tag> iterator()
     {
         return Iterators.empty();
     }

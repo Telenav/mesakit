@@ -1,9 +1,9 @@
 package com.telenav.mesakit.graph.query.program;
 
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.query.program.statements.Select;

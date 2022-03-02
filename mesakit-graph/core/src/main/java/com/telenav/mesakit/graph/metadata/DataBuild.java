@@ -18,21 +18,21 @@
 
 package com.telenav.mesakit.graph.metadata;
 
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.language.objects.Hash;
-import com.telenav.kivakit.kernel.language.time.LocalTime;
-import com.telenav.kivakit.kernel.language.time.Meridiem;
-import com.telenav.kivakit.kernel.language.time.conversion.converters.LocalDateTimeConverter;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.core.language.Hash;
+import com.telenav.kivakit.language.time.LocalTime;
+import com.telenav.kivakit.language.time.Meridiem;
+import com.telenav.kivakit.conversion.core.time.LocalDateTimeConverter;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.resource.path.FileName;
 
 import java.time.ZoneId;
 import java.time.format.TextStyle;
 import java.util.Locale;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.ensure.Ensure.ensure;
 
 /**
  * A {@link DataBuild} is of the form: [year.month.day_hour.minute.meridiem_zone], for example "2015.09.23_4.01PM_PST"

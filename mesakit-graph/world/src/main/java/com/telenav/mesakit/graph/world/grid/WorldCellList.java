@@ -19,10 +19,10 @@
 package com.telenav.mesakit.graph.world.grid;
 
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.iteration.Iterables;
-import com.telenav.kivakit.kernel.language.iteration.Next;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.MutableCount;
+import com.telenav.kivakit.core.collections.iteration.Iterables;
+import com.telenav.kivakit.core.collections.iteration.Next;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.language.count.MutableCount;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;

@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
-import com.telenav.kivakit.kernel.language.strings.Split;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.coredata.extraction.BaseExtractor;
+import com.telenav.kivakit.core.language.locales.LanguageIsoCode;
+import com.telenav.kivakit.core.language.strings.Split;
+import com.telenav.kivakit.core.language.strings.Strings;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.region.regions.Country;

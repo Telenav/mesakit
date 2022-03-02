@@ -1,7 +1,7 @@
 package com.telenav.mesakit.graph.query.compiler;
 
 import com.telenav.kivakit.interfaces.code.Callback;
-import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.core.messaging.Message;
 import org.antlr.v4.runtime.ANTLRErrorListener;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.RecognitionException;

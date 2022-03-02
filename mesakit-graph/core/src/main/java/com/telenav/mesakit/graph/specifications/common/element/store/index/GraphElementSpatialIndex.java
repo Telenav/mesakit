@@ -27,7 +27,7 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import java.io.PrintStream;
 import java.util.Iterator;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.ensure.Ensure.fail;
 
 /**
  * A space-efficient read-only spatial index of graph elements (edges or nodes).

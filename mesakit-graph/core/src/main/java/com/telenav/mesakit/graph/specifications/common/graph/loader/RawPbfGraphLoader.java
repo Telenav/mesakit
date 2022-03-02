@@ -18,19 +18,19 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader;
 
-import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.kernel.data.extraction.Extractor;
-import com.telenav.kivakit.kernel.data.validation.ValidationType;
+import com.telenav.kivakit.coredata.extraction.BaseExtractor;
+import com.telenav.kivakit.coredata.extraction.Extractor;
+import com.telenav.kivakit.coredata.validation.ValidationType;
 import com.telenav.kivakit.interfaces.collection.Addable;
-import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.MutableCount;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.core.language.collections.CompressibleCollection;
+import com.telenav.kivakit.core.language.collections.list.ObjectList;
+import com.telenav.kivakit.core.language.strings.AsciiArt;
+import com.telenav.kivakit.core.language.strings.Strings;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.language.count.MutableCount;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToLongMap;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
@@ -96,7 +96,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.ensure.Ensure.ensure;
 import static com.telenav.mesakit.graph.GraphElement.VALIDATE_RAW;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action;

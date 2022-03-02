@@ -19,10 +19,10 @@
 package com.telenav.mesakit.graph.collections;
 
 import com.telenav.kivakit.filesystem.FileList;
-import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.core.language.progress.ProgressReporter;
+import com.telenav.kivakit.core.language.strings.AsciiArt;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 
@@ -48,7 +48,7 @@ public class GraphList extends AbstractList<Graph>
         var resource = files.get(index);
         try
         {
-            return new GraphArchive(LOGGER, resource, READ, ProgressReporter.NULL).load(LOGGER);
+            return new GraphArchive(LOGGER, resource, READ, ProgressReporter.none()).load(LOGGER);
         }
         catch (Exception e)
         {

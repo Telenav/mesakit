@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.collections;
 
-import com.telenav.kivakit.kernel.language.iteration.Iterables;
+import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;

@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.drawables;
 
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.values.level.Percent;
+import com.telenav.kivakit.core.language.collections.list.ObjectList;
+import com.telenav.kivakit.language.level.Percent;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.Drawable;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingHeight;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
@@ -35,7 +35,7 @@ import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 
 import java.awt.Shape;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.ensure.Ensure.unsupported;
 
 /**
  * @author jonathanl (shibo)

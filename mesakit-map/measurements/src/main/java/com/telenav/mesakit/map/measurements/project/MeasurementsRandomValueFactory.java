@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.measurements.project;
 
-import com.telenav.kivakit.test.random.RandomValueFactory;
+import com.telenav.kivakit.core.test.RandomValueFactory;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Area;

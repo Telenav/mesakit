@@ -20,21 +20,21 @@ package com.telenav.mesakit.map.measurements.geographic;
 
 import com.telenav.kivakit.commandline.ArgumentParser;
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.conversion.string.BaseStringConverter;
 import com.telenav.kivakit.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.kernel.language.primitives.Doubles;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.level.Percent;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.language.primitive.Doubles;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.language.level.Percent;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
+import com.telenav.mesakit.map.measurements.project.lexakai.DiagramMapMeasurementGeographic;
 
 import java.util.regex.Pattern;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.ensure.Ensure.fail;
 
 /**
  * Abstract representation of the spatial separation of two points.

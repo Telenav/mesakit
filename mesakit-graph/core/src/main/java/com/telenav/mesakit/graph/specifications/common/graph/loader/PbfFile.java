@@ -21,17 +21,17 @@ package com.telenav.mesakit.graph.specifications.common.graph.loader;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.naming.Named;
-import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.language.progress.ProgressReporter;
+import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.ensure.Ensure.ensure;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.WRITE;
 

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge.store.index;
 
-import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
+import com.telenav.kivakit.core.language.collections.CompressibleCollection;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.map.geography.indexing.rtree.InteriorNode;
@@ -26,7 +26,7 @@ import com.telenav.mesakit.map.geography.indexing.rtree.Leaf;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSettings;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndex;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.ensure.Ensure.unsupported;
 
 /**
  * Compressed spatial index for edges.

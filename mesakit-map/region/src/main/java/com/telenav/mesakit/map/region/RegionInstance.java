@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.kivakit.collections.set.ConcurrentHashSet;
+import com.telenav.kivakit.core.collections.set.ConcurrentHashSet;
+import com.telenav.kivakit.core.language.locales.LanguageIsoCode;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.core.language.strings.AsciiArt;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludeProperty;
-import com.telenav.kivakit.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.language.count.Count;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -34,7 +34,7 @@ import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.region.locale.MapLocale;
-import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegion;
+import com.telenav.mesakit.map.region.project.lexakai.DiagramRegion;
 import com.telenav.mesakit.map.region.regions.Country;
 
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.ensure.Ensure.ensure;
 
 @UmlClassDiagram(diagram = DiagramRegion.class)
 @UmlExcludeSuperTypes(Stringable.class)

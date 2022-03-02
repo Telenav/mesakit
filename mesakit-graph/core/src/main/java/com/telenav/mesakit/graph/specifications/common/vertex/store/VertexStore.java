@@ -18,20 +18,20 @@
 
 package com.telenav.mesakit.graph.specifications.common.vertex.store;
 
-import com.telenav.kivakit.collections.iteration.iterables.DeduplicatingIterable;
-import com.telenav.kivakit.kernel.data.validation.ValidationType;
-import com.telenav.kivakit.kernel.data.validation.Validator;
+import com.telenav.kivakit.core.collections.iteration.BaseIterator;
+import com.telenav.kivakit.core.collections.iteration.DeduplicatingIterable;
+import com.telenav.kivakit.core.collections.iteration.Iterables;
+import com.telenav.kivakit.core.collections.iteration.Next;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.coredata.validation.ValidationType;
+import com.telenav.kivakit.coredata.validation.Validator;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
-import com.telenav.kivakit.kernel.language.iteration.Iterables;
-import com.telenav.kivakit.kernel.language.iteration.Next;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.language.values.count.BitCount;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.language.count.BitCount;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.language.count.Estimate;
+import com.telenav.kivakit.language.time.Time;
 import com.telenav.kivakit.primitive.collections.array.packed.SplitPackedArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.kivakit.primitive.collections.map.scalars.IntToByteMap;
@@ -74,7 +74,7 @@ import com.telenav.mesakit.map.road.model.GradeSeparation;
 import java.util.Collections;
 import java.util.Iterator;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.ensure.Ensure.fail;
 import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;

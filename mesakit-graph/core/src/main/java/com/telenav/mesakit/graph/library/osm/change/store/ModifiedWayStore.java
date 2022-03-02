@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.library.osm.change.store;
 
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.library.osm.change.MutableWay;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;

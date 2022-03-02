@@ -23,16 +23,16 @@ import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.kernel.language.locales.CountryIsoCode;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludeProperty;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.core.language.locales.CountryIsoCode;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
-import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegion;
+import com.telenav.mesakit.map.region.project.lexakai.DiagramRegion;
 import com.telenav.mesakit.map.region.regions.City;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
@@ -42,8 +42,8 @@ import com.telenav.mesakit.map.region.regions.State;
 import com.telenav.mesakit.map.region.regions.TimeZone;
 import org.junit.Before;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
 
 /**
  * <p>

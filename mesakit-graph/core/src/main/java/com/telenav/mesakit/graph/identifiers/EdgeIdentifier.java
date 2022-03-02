@@ -19,11 +19,11 @@
 package com.telenav.mesakit.graph.identifiers;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.kernel.data.conversion.BaseConverter;
-import com.telenav.kivakit.kernel.data.conversion.QuantizableConverter;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludeProperty;
-import com.telenav.kivakit.kernel.language.values.identifier.Identifier;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.BaseConverter;
+import com.telenav.kivakit.conversion.QuantizableConverter;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.core.language.values.identifier.Identifier;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;

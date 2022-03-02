@@ -1,9 +1,9 @@
 package com.telenav.mesakit.graph.query;
 
 import com.telenav.kivakit.interfaces.code.Callback;
-import com.telenav.kivakit.kernel.language.collections.set.Sets;
-import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.collections.set.Sets;
+import com.telenav.kivakit.core.language.progress.ProgressReporter;
+import com.telenav.kivakit.language.count.Maximum;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.query.antlr.GraphQueryLexer;

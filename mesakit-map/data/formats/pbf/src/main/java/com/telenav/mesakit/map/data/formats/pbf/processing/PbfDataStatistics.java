@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing;
 
-import com.telenav.kivakit.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.language.count.Bytes;
+import com.telenav.kivakit.language.count.Count;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessing;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfProcessing;
 
 /**
  * A simple container for statistics accumulated while processing data from a {@link PbfDataSource}

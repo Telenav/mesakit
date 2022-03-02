@@ -18,20 +18,20 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.strings.Strip;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.core.language.strings.Strings;
+import com.telenav.kivakit.core.language.strings.Strip;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.language.count.Maximum;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegion;
+import com.telenav.mesakit.map.region.project.lexakai.DiagramRegion;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.ensure.Ensure.ensure;
 
 /**
  * Represents a hyphenated region or ISO code with up to four parts.

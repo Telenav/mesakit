@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.specifications.library.attributes;
 
 import com.telenav.kivakit.interfaces.naming.NamedObject;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.language.count.Estimate;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.specifications.common.edge.store.EdgeStore;

@@ -20,20 +20,20 @@ package com.telenav.mesakit.map.geography.shape.polyline;
 
 import com.telenav.kivakit.interfaces.collection.Indexable;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
-import com.telenav.kivakit.kernel.language.iteration.Iterables;
-import com.telenav.kivakit.kernel.language.iteration.Next;
-import com.telenav.kivakit.kernel.language.strings.Split;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.level.Percent;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.core.language.collections.list.ObjectList;
+import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.core.collections.iteration.BaseIterator;
+import com.telenav.kivakit.core.collections.iteration.Iterables;
+import com.telenav.kivakit.core.collections.iteration.Next;
+import com.telenav.kivakit.core.language.strings.Split;
+import com.telenav.kivakit.core.language.strings.Strings;
+import com.telenav.kivakit.core.language.strings.formatting.Separators;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.language.level.Percent;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
@@ -43,7 +43,7 @@ import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.LocationSequence;
 import com.telenav.mesakit.map.geography.Longitude;
 import com.telenav.mesakit.map.geography.project.GeographyLimits;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
+import com.telenav.mesakit.map.geography.project.lexakai.DiagramPolyline;
 import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
@@ -70,7 +70,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.ensure.Ensure.ensure;
 
 /**
  * A sequence of two or more locations that are connected, leading from a {@link #start()} to an {@link #end()}
@@ -1366,7 +1366,7 @@ public class Polyline implements
     public Polyline reversed()
     {
         var reversed = locationsInDecimal();
-        com.telenav.kivakit.kernel.language.primitives.Arrays.reverse(reversed);
+        com.telenav.kivakit.language.primitive.Arrays.reverse(reversed);
         return new Polyline(reversed);
     }
 

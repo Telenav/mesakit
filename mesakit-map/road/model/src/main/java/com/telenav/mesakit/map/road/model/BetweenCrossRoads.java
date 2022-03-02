@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.kernel.language.objects.Hash;
-import com.telenav.kivakit.kernel.language.objects.Objects;
+import com.telenav.kivakit.core.language.Hash;
+import com.telenav.kivakit.core.language.Objects;
 
 /**
  * Identifies a segment of a given road between two cross streets. For example, I-5 between Mercer and Stewart.

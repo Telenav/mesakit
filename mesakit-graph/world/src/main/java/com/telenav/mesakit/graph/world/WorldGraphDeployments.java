@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.configuration.settings.Deployment;
-import com.telenav.kivakit.configuration.settings.DeploymentSet;
-import com.telenav.kivakit.configuration.settings.stores.resource.PackageSettingsStore;
+import com.telenav.kivakit.settings.settings.Deployment;
+import com.telenav.kivakit.settings.settings.DeploymentSet;
+import com.telenav.kivakit.settings.settings.stores.resource.PackageSettingsStore;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.resource.resources.packaged.Package;
 import com.telenav.mesakit.core.MesaKit;
 

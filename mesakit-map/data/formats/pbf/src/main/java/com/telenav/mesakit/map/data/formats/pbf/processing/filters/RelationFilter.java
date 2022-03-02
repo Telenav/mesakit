@@ -21,20 +21,20 @@ package com.telenav.mesakit.map.data.formats.pbf.processing.filters;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.interfaces.comparison.Filter;
 import com.telenav.kivakit.interfaces.naming.Named;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.language.collections.map.string.NameMap;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.collections.map.string.NameMap;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessingFilters;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfProcessingFilters;
 
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.ensure.Ensure.fail;
 
 @UmlClassDiagram(diagram = DiagramPbfProcessingFilters.class)
 @UmlExcludeSuperTypes(Named.class)

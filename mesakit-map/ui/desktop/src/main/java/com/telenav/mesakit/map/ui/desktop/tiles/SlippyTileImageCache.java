@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
-import com.telenav.kivakit.collections.map.CacheMap;
-import com.telenav.kivakit.collections.set.ConcurrentHashSet;
-import com.telenav.kivakit.kernel.language.threading.RepeatingKivaKitThread;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.collections.map.CacheMap;
+import com.telenav.kivakit.core.collections.set.ConcurrentHashSet;
+import com.telenav.kivakit.core.language.threading.RepeatingKivaKitThread;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.language.count.Maximum;
 import com.telenav.kivakit.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;

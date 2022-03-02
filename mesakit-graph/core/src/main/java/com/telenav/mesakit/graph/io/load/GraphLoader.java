@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.io.load;
 
-import com.telenav.kivakit.kernel.data.validation.ValidationType;
-import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.messaging.Repeater;
+import com.telenav.kivakit.coredata.validation.ValidationType;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.Repeater;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;

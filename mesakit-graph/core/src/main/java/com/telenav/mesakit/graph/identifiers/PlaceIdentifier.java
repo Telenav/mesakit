@@ -19,8 +19,8 @@
 package com.telenav.mesakit.graph.identifiers;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.kernel.data.conversion.QuantizableConverter;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.QuantizableConverter;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.Place;

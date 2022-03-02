@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.utilities.grid;
 
-import com.telenav.kivakit.kernel.language.primitives.Ints;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.language.primitive.Ints;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.language.count.Count;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
@@ -35,8 +35,8 @@ import com.telenav.mesakit.map.measurements.geographic.Distance;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.ensure.Ensure.fail;
 
 public class Grid
 {

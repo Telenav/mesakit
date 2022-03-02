@@ -19,15 +19,15 @@
 package com.telenav.mesakit.map.geography;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.data.conversion.string.enumeration.EnumConverter;
-import com.telenav.kivakit.kernel.language.primitives.Ints;
-import com.telenav.kivakit.kernel.language.primitives.Longs;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.conversion.string.enumeration.EnumConverter;
+import com.telenav.kivakit.language.primitive.Ints;
+import com.telenav.kivakit.language.primitive.Longs;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
+import com.telenav.mesakit.map.geography.project.lexakai.DiagramLocation;
 import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
 import com.telenav.mesakit.map.geography.shape.rectangle.Height;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;

@@ -8,8 +8,7 @@ open module mesakit.graph.core
     requires transitive mesakit.map.ui.debug;
     requires transitive mesakit.map.geography;
 
-    requires transitive kivakit.configuration;
-    requires kivakit.test;
+    requires transitive kivakit.settings;
 
     requires transitive java.sql;
     requires org.jetbrains.annotations;

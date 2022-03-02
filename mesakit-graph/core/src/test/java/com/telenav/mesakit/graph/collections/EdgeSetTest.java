@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.collections;
 
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.language.count.Maximum;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Vertex;

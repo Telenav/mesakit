@@ -8,7 +8,6 @@ open module mesakit.map.geography
     requires transitive kivakit.data.compression;
     requires transitive kivakit.math;
     requires kivakit.primitive.collections;
-    requires kivakit.test;
 
     requires org.jetbrains.annotations;
     requires junit;

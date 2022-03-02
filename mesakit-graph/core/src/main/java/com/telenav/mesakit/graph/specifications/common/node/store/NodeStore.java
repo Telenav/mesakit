@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.specifications.common.node.store;
 
-import com.telenav.kivakit.kernel.data.validation.ValidationType;
-import com.telenav.kivakit.kernel.data.validation.Validator;
+import com.telenav.kivakit.coredata.validation.ValidationType;
+import com.telenav.kivakit.coredata.validation.Validator;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToLongMap;
@@ -43,7 +43,7 @@ import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdent
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 import com.telenav.mesakit.map.geography.Location;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.ensure.Ensure.ensure;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 import static com.telenav.mesakit.map.geography.Precision.DM7;
 

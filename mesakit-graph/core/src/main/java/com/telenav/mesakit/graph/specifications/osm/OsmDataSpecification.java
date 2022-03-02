@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.osm;
 
-import com.telenav.kivakit.kernel.data.comparison.Differences;
+import com.telenav.kivakit.coredata.comparison.Differences;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;

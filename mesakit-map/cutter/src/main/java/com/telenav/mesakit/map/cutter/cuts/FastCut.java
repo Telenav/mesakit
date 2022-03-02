@@ -19,14 +19,14 @@
 package com.telenav.mesakit.map.cutter.cuts;
 
 import com.telenav.kivakit.collections.map.MultiMap;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.cutter.Cut;
 import com.telenav.mesakit.map.cutter.PbfRegionCutter;
 import com.telenav.mesakit.map.cutter.cuts.maps.RegionWays;
-import com.telenav.mesakit.map.cutter.project.lexakai.diagrams.DiagramMapCutter;
+import com.telenav.mesakit.map.cutter.project.lexakai.DiagramMapCutter;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;

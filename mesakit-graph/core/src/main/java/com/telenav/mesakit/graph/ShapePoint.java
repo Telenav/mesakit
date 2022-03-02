@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
+import com.telenav.kivakit.core.language.strings.conversion.AsIndentedString;
 import com.telenav.mesakit.graph.identifiers.ShapePointIdentifier;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
 import com.telenav.mesakit.graph.specifications.common.element.GraphElementAttributes;
@@ -29,7 +29,7 @@ import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdent
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.ensure.Ensure.unsupported;
 
 public class ShapePoint extends GraphNode
 {

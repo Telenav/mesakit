@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.kernel.data.extraction.Extractor;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.coredata.extraction.BaseExtractor;
+import com.telenav.kivakit.coredata.extraction.Extractor;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;

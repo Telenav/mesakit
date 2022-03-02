@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.navigation.routing;
 
-import com.telenav.kivakit.kernel.language.time.PreciseDuration;
-import com.telenav.kivakit.kernel.language.values.level.Weight;
+import com.telenav.kivakit.language.time.PreciseDuration;
+import com.telenav.kivakit.language.level.Weight;
 import com.telenav.mesakit.graph.world.project.WorldGraphUnitTest;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.navigation.routing.cost.functions.heuristic.RemainingDistanceToEndCostFunction;

@@ -22,27 +22,27 @@ import com.telenav.kivakit.collections.map.MultiMap;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.FileCache;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.KivaKit;
-import com.telenav.kivakit.kernel.data.extraction.Extractor;
+import com.telenav.kivakit.coreKivaKit;
+import com.telenav.kivakit.coredata.extraction.Extractor;
 import com.telenav.kivakit.interfaces.lifecycle.Configured;
-import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
-import com.telenav.kivakit.kernel.language.collections.CompressibleCollection.Method;
-import com.telenav.kivakit.kernel.language.io.IO;
-import com.telenav.kivakit.kernel.language.objects.Objects;
-import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.language.values.count.MutableCount;
-import com.telenav.kivakit.kernel.language.values.version.VersionedObject;
-import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.messaging.Message;
-import com.telenav.kivakit.kernel.messaging.messages.status.Problem;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.language.collections.CompressibleCollection;
+import com.telenav.kivakit.core.language.collections.CompressibleCollection.Method;
+import com.telenav.kivakit.core.language.io.IO;
+import com.telenav.kivakit.core.language.Objects;
+import com.telenav.kivakit.core.language.progress.ProgressReporter;
+import com.telenav.kivakit.core.language.progress.reporters.Progress;
+import com.telenav.kivakit.core.language.strings.AsciiArt;
+import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.language.count.Bytes;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.language.count.Estimate;
+import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.language.count.MutableCount;
+import com.telenav.kivakit.language.version.VersionedObject;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.Message;
+import com.telenav.kivakit.core.messaging.messages.status.Problem;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.network.core.Host;
 import com.telenav.kivakit.network.core.NetworkPath;
 import com.telenav.kivakit.network.http.secure.SecureHttpNetworkLocation;
@@ -77,7 +77,7 @@ import com.telenav.mesakit.map.region.RegionType;
 import com.telenav.mesakit.map.region.RegionType.RegionFactory;
 import com.telenav.mesakit.map.region.border.Border;
 import com.telenav.mesakit.map.region.border.BorderSpatialIndex;
-import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramBorder;
+import com.telenav.mesakit.map.region.project.lexakai.DiagramBorder;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.County;
@@ -96,9 +96,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureEqual;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.ensure.Ensure.ensureEqual;
+import static com.telenav.kivakit.ensure.Ensure.fail;
 import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
 import static com.telenav.kivakit.serialization.core.SerializationSession.Type.RESOURCE;
@@ -485,7 +485,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
             // and the zip file target we're going to download to and unzip.
             var jar = localJar(NETWORK_PATH.fileName());
             trace("Trying to open $", jar);
-            var archive = ZipArchive.open(this, jar, ProgressReporter.NULL, READ);
+            var archive = ZipArchive.open(this, jar, ProgressReporter.none(), READ);
             try
             {
                 // If archive isn't valid,
@@ -516,7 +516,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
 
                         // and try to open the archive again
                         trace("Trying to open $", jar);
-                        archive = ZipArchive.open(this, jar, ProgressReporter.NULL, READ);
+                        archive = ZipArchive.open(this, jar, ProgressReporter.none(), READ);
                     }
                     catch (Throwable e)
                     {

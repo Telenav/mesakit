@@ -29,26 +29,26 @@ import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.data.validation.BaseValidator;
-import com.telenav.kivakit.kernel.data.validation.Validatable;
-import com.telenav.kivakit.kernel.data.validation.ValidationType;
-import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.kernel.language.strings.Strip;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsStringIndenter;
-import com.telenav.kivakit.kernel.language.strings.formatting.KivaKitFormatProperty;
-import com.telenav.kivakit.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.level.Percent;
-import com.telenav.kivakit.kernel.language.values.mutable.MutableValue;
-import com.telenav.kivakit.kernel.language.values.version.Version;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.coredata.validation.BaseValidator;
+import com.telenav.kivakit.coredata.validation.Validatable;
+import com.telenav.kivakit.coredata.validation.ValidationType;
+import com.telenav.kivakit.coredata.validation.Validator;
+import com.telenav.kivakit.core.language.progress.ProgressReporter;
+import com.telenav.kivakit.core.language.progress.reporters.Progress;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.strings.Strip;
+import com.telenav.kivakit.core.language.strings.conversion.AsIndentedString;
+import com.telenav.kivakit.core.language.strings.conversion.AsStringIndenter;
+import com.telenav.kivakit.core.language.strings.formatting.KivaKitFormatProperty;
+import com.telenav.kivakit.language.count.Bytes;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.language.level.Percent;
+import com.telenav.kivakit.core.language.values.mutable.MutableValue;
+import com.telenav.kivakit.language.version.Version;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
@@ -82,8 +82,8 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 
 import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.ensure.Ensure.unsupported;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 import static com.telenav.mesakit.graph.Metadata.CountType.REQUIRE_EXACT;
 import static com.telenav.mesakit.graph.metadata.DataSupplier.OSM;
@@ -198,7 +198,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         switch (format)
         {
             case Graph:
-                try (var archive = new GraphArchive(LOGGER, input, ZipArchive.Mode.READ, ProgressReporter.NULL))
+                try (var archive = new GraphArchive(LOGGER, input, ZipArchive.Mode.READ, ProgressReporter.none()))
                 {
                     return archive.metadata();
                 }

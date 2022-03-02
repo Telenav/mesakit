@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph;
 
-import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.language.count.Count;
 import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.map.geography.Location;
 import org.junit.Test;

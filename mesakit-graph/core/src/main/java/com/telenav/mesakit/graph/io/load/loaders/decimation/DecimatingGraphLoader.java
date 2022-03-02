@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.io.load.loaders.decimation;
 
-import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.core.language.progress.ProgressReporter;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;

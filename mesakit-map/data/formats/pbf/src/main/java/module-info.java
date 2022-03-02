@@ -5,7 +5,6 @@ open module mesakit.data.formats.pbf
     requires transitive kivakit.data.formats.library;
     requires transitive kivakit.data.compression;
     requires transitive kivakit.primitive.collections;
-    requires kivakit.test;
 
     requires osmosis.core;
     requires osmosis.osm.binary;

@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.road.model;
 
 import com.telenav.kivakit.interfaces.model.Identifiable;
-import com.telenav.kivakit.kernel.language.strings.CaseFormat;
+import com.telenav.kivakit.core.language.strings.CaseFormat;
 
 import java.util.Arrays;
 import java.util.HashMap;

@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.navigation.routing.debuggers;
 
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.world.WorldEdge;

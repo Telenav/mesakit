@@ -24,19 +24,19 @@ import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.FileList;
 import com.telenav.kivakit.interfaces.naming.Named;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.data.validation.ValidationType;
-import com.telenav.kivakit.kernel.language.primitives.Doubles;
-import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.kernel.language.values.version.Version;
-import com.telenav.kivakit.kernel.language.values.version.VersionedObject;
-import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.coredata.validation.ValidationType;
+import com.telenav.kivakit.language.primitive.Doubles;
+import com.telenav.kivakit.core.language.progress.ProgressReporter;
+import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.language.count.Bytes;
+import com.telenav.kivakit.language.version.Version;
+import com.telenav.kivakit.language.version.VersionedObject;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.compression.archive.FieldArchive;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
@@ -54,8 +54,8 @@ import com.telenav.mesakit.graph.specifications.library.store.GraphStore;
 
 import java.util.zip.ZipFile;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.ensure.Ensure.unsupported;
 
 /**
  * A graph archive is a {@link ZipArchive} which is based on the support in java.util for {@link ZipFile}s. When a
@@ -97,7 +97,7 @@ public class GraphArchive extends FieldArchive implements Named
 
     public static ArgumentParser.Builder<Graph> argumentParser(String description)
     {
-        return ArgumentParser.builder(Graph.class).description(description).converter(new GraphArchive.Converter(LOGGER, ProgressReporter.NULL));
+        return ArgumentParser.builder(Graph.class).description(description).converter(new GraphArchive.Converter(LOGGER, ProgressReporter.none()));
     }
 
     public static Resource forSpecifier(Listener listener, String specifier)
@@ -118,7 +118,7 @@ public class GraphArchive extends FieldArchive implements Named
         return SwitchParser.builder(Graph.class)
                 .name(name)
                 .description(description)
-                .converter(new Converter(LOGGER, ProgressReporter.NULL));
+                .converter(new Converter(LOGGER, ProgressReporter.none()));
     }
 
     public static SwitchParser.Builder<GraphList> graphListSwitchParser(String name, String description)

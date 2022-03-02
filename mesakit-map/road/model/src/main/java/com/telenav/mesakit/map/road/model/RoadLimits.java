@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.messaging.Listener;
 
 public class RoadLimits
 {

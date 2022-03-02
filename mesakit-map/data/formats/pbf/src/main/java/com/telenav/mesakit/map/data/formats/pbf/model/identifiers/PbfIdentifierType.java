@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.identifiers;
 
-import com.telenav.kivakit.kernel.language.bits.BitDiagram;
-import com.telenav.kivakit.kernel.language.bits.BitDiagram.BitField;
+import com.telenav.kivakit.core.language.bits.BitDiagram;
+import com.telenav.kivakit.core.language.bits.BitDiagram.BitField;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelIdentifiers;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfModelIdentifiers;
 import org.openstreetmap.osmosis.core.domain.v0_6.EntityType;
 
 /**

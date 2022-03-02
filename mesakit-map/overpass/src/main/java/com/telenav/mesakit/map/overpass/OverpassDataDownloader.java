@@ -20,8 +20,8 @@ package com.telenav.mesakit.map.overpass;
 
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.network.core.Host;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
@@ -30,7 +30,7 @@ import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.overpass.pbf.OsmToPbfConverter;
-import com.telenav.mesakit.map.overpass.project.lexakai.diagrams.DiagramOverpass;
+import com.telenav.mesakit.map.overpass.project.lexakai.DiagramOverpass;
 
 /**
  * @author jonathanl (shibo)

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader;
 
-import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
+import com.telenav.kivakit.core.language.progress.ProgressReporter;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;

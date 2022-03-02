@@ -19,12 +19,12 @@
 package com.telenav.mesakit.map.region.regions;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.kernel.data.extraction.Extractor;
+import com.telenav.kivakit.coredata.extraction.BaseExtractor;
+import com.telenav.kivakit.coredata.extraction.Extractor;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
@@ -38,11 +38,11 @@ import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.border.Border;
 import com.telenav.mesakit.map.region.border.cache.BorderCache;
 import com.telenav.mesakit.map.region.project.RegionLimits;
-import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
+import com.telenav.mesakit.map.region.project.lexakai.DiagramRegions;
 
 import java.util.Collection;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
 
 /**
  * @author Jonathan Locke

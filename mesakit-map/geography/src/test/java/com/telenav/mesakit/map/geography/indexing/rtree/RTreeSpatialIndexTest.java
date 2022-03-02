@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
+import com.telenav.kivakit.core.test.SlowTest;
 import com.telenav.kivakit.serialization.kryo.KryoTypes;
-import com.telenav.kivakit.test.annotations.SlowTests;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
@@ -36,7 +36,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Category({ SlowTests.class })
+@Category({ SlowTest.class })
 public class RTreeSpatialIndexTest extends GeographyUnitTest
 {
     private static class TestKryoTypes extends KryoTypes

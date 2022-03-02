@@ -19,15 +19,15 @@
 package com.telenav.mesakit.map.geography.indexing.quadtree;
 
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.collections.list.LinkedObjectList;
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
-import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.core.language.collections.list.LinkedObjectList;
+import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.core.collections.iteration.BaseIterator;
+import com.telenav.kivakit.language.count.Count;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Located;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramSpatialIndex;
+import com.telenav.mesakit.map.geography.project.lexakai.DiagramSpatialIndex;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
@@ -37,7 +37,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.illegalState;
+import static com.telenav.kivakit.ensure.Ensure.illegalState;
 
 /**
  * Stores {@link Located} objects in a tree of quadrants so they can be quickly located spatially.

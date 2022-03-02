@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.navigation.routing;
 
-import com.telenav.kivakit.kernel.language.values.level.Weight;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.test.annotations.SlowTests;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.test.SlowTest;
+import com.telenav.kivakit.language.level.Weight;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.project.GraphUnitTest;
@@ -44,7 +44,7 @@ import org.junit.experimental.categories.Category;
  * @author jonathanl (shibo)
  */
 @Ignore
-@Category({ SlowTests.class })
+@Category({ SlowTest.class })
 public class DijkstraRouterTest extends GraphUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();

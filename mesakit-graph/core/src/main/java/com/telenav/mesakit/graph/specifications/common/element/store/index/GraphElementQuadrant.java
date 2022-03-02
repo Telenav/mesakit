@@ -19,9 +19,9 @@
 package com.telenav.mesakit.graph.specifications.common.element.store.index;
 
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
-import com.telenav.kivakit.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.core.collections.iteration.BaseIterator;
+import com.telenav.kivakit.core.language.strings.AsciiArt;
+import com.telenav.kivakit.language.count.Estimate;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 

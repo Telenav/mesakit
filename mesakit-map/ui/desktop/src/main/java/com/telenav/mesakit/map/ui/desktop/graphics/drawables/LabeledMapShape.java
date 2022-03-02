@@ -10,8 +10,8 @@ import com.telenav.mesakit.map.ui.desktop.graphics.canvas.MapCanvas;
 
 import java.awt.Shape;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
 
 /**
  * A map drawable object which has an optional label

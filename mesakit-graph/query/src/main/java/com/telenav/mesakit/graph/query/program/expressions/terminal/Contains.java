@@ -1,6 +1,6 @@
 package com.telenav.mesakit.graph.query.program.expressions.terminal;
 
-import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.core.language.strings.Strings;
 import com.telenav.mesakit.graph.query.program.BooleanExpression;
 import com.telenav.mesakit.graph.query.program.Node;
 import com.telenav.mesakit.graph.query.program.Visitor;

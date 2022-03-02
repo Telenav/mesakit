@@ -24,31 +24,31 @@ import com.telenav.kivakit.interfaces.comparison.Filter;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
-import com.telenav.kivakit.kernel.data.comparison.Differences;
-import com.telenav.kivakit.kernel.language.iteration.Iterables;
-import com.telenav.kivakit.kernel.language.iteration.Next;
-import com.telenav.kivakit.kernel.language.iteration.Streams;
-import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsStringIndenter;
-import com.telenav.kivakit.kernel.language.threading.context.CallStack;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.language.types.Classes;
-import com.telenav.kivakit.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.language.values.version.Version;
-import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.messaging.Message;
-import com.telenav.kivakit.kernel.messaging.Repeater;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.coredata.comparison.Differences;
+import com.telenav.kivakit.core.collections.iteration.Iterables;
+import com.telenav.kivakit.core.collections.iteration.Next;
+import com.telenav.kivakit.core.language.iteration.Streams;
+import com.telenav.kivakit.core.language.progress.ProgressReporter;
+import com.telenav.kivakit.core.language.progress.reporters.Progress;
+import com.telenav.kivakit.core.language.strings.AsciiArt;
+import com.telenav.kivakit.core.language.strings.conversion.AsIndentedString;
+import com.telenav.kivakit.core.language.strings.conversion.AsStringIndenter;
+import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.core.language.types.Classes;
+import com.telenav.kivakit.language.count.Bytes;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.language.count.Estimate;
+import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.language.version.Version;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.Message;
+import com.telenav.kivakit.core.messaging.Repeater;
+import com.telenav.kivakit.core.messaging.context.CallStack;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.collections.EdgeSet;
@@ -129,10 +129,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
-import static com.telenav.kivakit.kernel.language.threading.context.CallStack.Matching.SUBCLASS;
-import static com.telenav.kivakit.kernel.language.threading.context.CallStack.Proximity.DISTANT;
+import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.messaging.context.CallStack.Matching.SUBCLASS;
+import static com.telenav.kivakit.core.messaging.context.CallStack.Proximity.DISTANT;
 import static com.telenav.mesakit.graph.Metadata.CountType.REQUIRE_EXACT;
 import static com.telenav.mesakit.graph.Metadata.VALIDATE_EXCEPT_STATISTICS;
 import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.EDGES;
@@ -1398,6 +1398,8 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     {
         return Iterables.iterable(() -> new Next<>()
         {
+            final Iterator<Place> places = placesInside(region.bounds()).iterator();
+
             @Override
             public Place onNext()
             {
@@ -1411,8 +1413,6 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
                 }
                 return null;
             }
-
-            final Iterator<Place> places = placesInside(region.bounds()).iterator();
         });
     }
 

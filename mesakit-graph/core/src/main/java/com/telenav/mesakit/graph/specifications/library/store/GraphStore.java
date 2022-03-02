@@ -18,16 +18,16 @@
 
 package com.telenav.mesakit.graph.specifications.library.store;
 
-import com.telenav.kivakit.kernel.data.validation.BaseValidator;
-import com.telenav.kivakit.kernel.data.validation.Validatable;
-import com.telenav.kivakit.kernel.data.validation.ValidationType;
-import com.telenav.kivakit.kernel.data.validation.Validator;
+import com.telenav.kivakit.coredata.validation.BaseValidator;
+import com.telenav.kivakit.coredata.validation.Validatable;
+import com.telenav.kivakit.coredata.validation.ValidationType;
+import com.telenav.kivakit.coredata.validation.Validator;
 import com.telenav.kivakit.interfaces.loading.Unloadable;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.metadata.DataSpecification;

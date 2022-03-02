@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing.readers;
 
-import com.telenav.kivakit.kernel.language.threading.batcher.Batcher;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.language.threading.batcher.Batcher;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
@@ -30,7 +30,7 @@ import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataSource;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataStatistics;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessing;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfProcessing;
 
 /**
  * A parallel version of {@link SerialPbfReader}. Entities are read with a {@link SerialPbfReader} and inserted into a

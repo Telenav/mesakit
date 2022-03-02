@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.navigation.routing;
 
-import com.telenav.kivakit.kernel.language.time.Duration;
+import com.telenav.kivakit.language.time.Duration;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.navigation.routing.bidijkstra.BiDijkstraRouter;
 import com.telenav.mesakit.navigation.routing.dijkstra.DijkstraRouter;

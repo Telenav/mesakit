@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.road.name.parser.tokenizer.symbols;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.ensure.Ensure.fail;
 
 public class Symbol
 {

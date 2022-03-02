@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.ui.desktop.viewer.desktop;
 
-import com.telenav.kivakit.kernel.language.threading.conditions.StateMachine;
-import com.telenav.kivakit.kernel.language.time.Duration;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.language.values.level.Percent;
-import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.core.language.threading.conditions.StateMachine;
+import com.telenav.kivakit.language.time.Duration;
+import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.language.level.Percent;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.Message;
 import com.telenav.kivakit.network.core.Host;
 import com.telenav.kivakit.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.ui.desktop.component.KivaKitPanel;

@@ -18,23 +18,23 @@
 
 package com.telenav.mesakit.graph.world.grid;
 
-import com.telenav.kivakit.configuration.settings.Settings;
+import com.telenav.kivakit.settings.settings.Settings;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.value.Source;
-import com.telenav.kivakit.kernel.language.collections.set.ObjectSet;
-import com.telenav.kivakit.kernel.language.objects.reference.virtual.VirtualReferenceTracker;
-import com.telenav.kivakit.kernel.language.objects.reference.virtual.VirtualReferenceType;
-import com.telenav.kivakit.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.collections.set.ObjectSet;
+import com.telenav.kivakit.core.language.objects.reference.virtual.VirtualReferenceTracker;
+import com.telenav.kivakit.core.language.objects.reference.virtual.VirtualReferenceType;
+import com.telenav.kivakit.core.language.strings.AsciiArt;
+import com.telenav.kivakit.core.language.strings.Strings;
+import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.language.count.Bytes;
+import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.resource.ResourceList;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.mesakit.graph.Graph;
@@ -69,8 +69,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.ensure.Ensure.fail;
 
 /**
  * A grid of {@link WorldCell}s, each containing its own cell-{@link Graph}. The grid is stored in a {@link

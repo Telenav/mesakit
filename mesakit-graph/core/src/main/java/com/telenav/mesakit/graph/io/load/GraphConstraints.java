@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.graph.io.load;
 
-import com.telenav.kivakit.collections.iteration.iterables.FilteredIterable;
+import com.telenav.kivakit.core.collections.iteration.FilteredIterable;
 import com.telenav.kivakit.interfaces.comparison.Filter;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.kernel.messaging.listeners.MessageList;
-import com.telenav.kivakit.kernel.messaging.messages.status.Problem;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.core.messaging.listeners.MessageList;
+import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;

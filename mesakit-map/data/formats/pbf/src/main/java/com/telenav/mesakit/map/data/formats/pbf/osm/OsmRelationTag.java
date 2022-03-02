@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.data.formats.pbf.osm;
 
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfOsm;
+import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfOsm;
 
 @UmlClassDiagram(diagram = DiagramPbfOsm.class)
 public class OsmRelationTag

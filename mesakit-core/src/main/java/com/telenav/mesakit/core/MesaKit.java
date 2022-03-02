@@ -1,14 +1,14 @@
 package com.telenav.mesakit.core;
 
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.language.objects.Lazy;
-import com.telenav.kivakit.kernel.language.values.version.Version;
-import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.kivakit.kernel.messaging.Message;
-import com.telenav.kivakit.kernel.project.Project;
+import com.telenav.kivakit.core.object.Lazy;
+import com.telenav.kivakit.language.version.Version;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
+import com.telenav.kivakit.core.messaging.Message;
+import com.telenav.kivakit.coreproject.Project;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureEqual;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.ensure.Ensure.ensureEqual;
+import static com.telenav.kivakit.ensure.Ensure.fail;
 
 /**
  * @author jonathanl (shibo)

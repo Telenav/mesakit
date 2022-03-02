@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.navigation.routing;
 
-import com.telenav.kivakit.kernel.language.time.Duration;
-import com.telenav.kivakit.kernel.language.time.Time;
+import com.telenav.kivakit.language.time.Duration;
+import com.telenav.kivakit.language.time.Time;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.map.measurements.geographic.Distance;

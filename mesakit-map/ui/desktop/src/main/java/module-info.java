@@ -5,7 +5,6 @@ open module mesakit.map.ui.desktop
 
     requires transitive kivakit.network.http;
     requires transitive kivakit.ui.desktop;
-    requires kivakit.test;
 
     requires org.apache.httpcomponents.httpclient;
 
