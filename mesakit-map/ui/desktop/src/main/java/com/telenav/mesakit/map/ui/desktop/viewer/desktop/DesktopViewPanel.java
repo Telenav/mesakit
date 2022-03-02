@@ -19,11 +19,11 @@
 package com.telenav.mesakit.map.ui.desktop.viewer.desktop;
 
 import com.telenav.kivakit.core.language.threading.conditions.StateMachine;
-import com.telenav.kivakit.language.time.Duration;
-import com.telenav.kivakit.language.count.Maximum;
-import com.telenav.kivakit.language.level.Percent;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.messaging.Message;
+import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.language.level.Percent;
+import com.telenav.kivakit.language.time.Duration;
 import com.telenav.kivakit.network.core.Host;
 import com.telenav.kivakit.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.ui.desktop.component.KivaKitPanel;
@@ -644,7 +644,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
                 var y = tile.y();
                 var z = tile.getZoomLevel().level();
 
-                return new HttpNetworkLocation(Host.parse(this, "b.tile.openstreetmap.org")
+                return new HttpNetworkLocation(Host.parseHost(this, "b.tile.openstreetmap.org")
                         .http()
                         .path(this, Message.format("/${long}/${long}/${long}.png", z, x, y)));
             }

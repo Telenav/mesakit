@@ -1,18 +1,18 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
+import com.telenav.kivakit.core.language.strings.AsciiArt;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.CharacterFrequencies;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.StringFrequencies;
 import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.core.language.strings.AsciiArt;
 import com.telenav.kivakit.language.count.Count;
 import com.telenav.kivakit.language.count.Maximum;
 import com.telenav.kivakit.language.count.Minimum;
 import com.telenav.kivakit.language.count.MutableCount;
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
@@ -271,10 +271,10 @@ public class PbfTagCodecBuilder
         System.out.println(AsciiArt.box("Value String Codec"));
         System.out.println(valueStringCodec);
 
-        keyCharacterCodec.asProperties().save(keyCharacterCodec.toString(), File.parse(Listener.console(), "default-key-character.codec"));
-        valueCharacterCodec.asProperties().save(valueCharacterCodec.toString(), File.parse(Listener.console(), "default-value-character.codec"));
-        keyStringCodec.asProperties().save(keyStringCodec.toString(), File.parse(Listener.console(), "default-key-string.codec"));
-        valueStringCodec.asProperties().save(valueStringCodec.toString(), File.parse(Listener.console(), "default-value-string.codec"));
+        keyCharacterCodec.asProperties().save(keyCharacterCodec.toString(), File.parseFile(Listener.console(), "default-key-character.codec"));
+        valueCharacterCodec.asProperties().save(valueCharacterCodec.toString(), File.parseFile(Listener.console(), "default-value-character.codec"));
+        keyStringCodec.asProperties().save(keyStringCodec.toString(), File.parseFile(Listener.console(), "default-key-string.codec"));
+        valueStringCodec.asProperties().save(valueStringCodec.toString(), File.parseFile(Listener.console(), "default-value-string.codec"));
     }
 
     public PbfTagCodecBuilder relationFilter(RelationFilter relationFilter)

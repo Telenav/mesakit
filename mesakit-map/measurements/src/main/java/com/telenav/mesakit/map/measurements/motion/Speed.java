@@ -19,14 +19,14 @@
 package com.telenav.mesakit.map.measurements.motion;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.conversion.string.primitive.IntegerConverter;
-import com.telenav.kivakit.language.time.Duration;
-import com.telenav.kivakit.language.level.Level;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.language.level.Level;
+import com.telenav.kivakit.language.time.Duration;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;

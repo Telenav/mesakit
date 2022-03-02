@@ -19,30 +19,29 @@
 package com.telenav.mesakit.map.region.border.cache;
 
 import com.telenav.kivakit.collections.map.MultiMap;
-import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.filesystem.FileCache;
-import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.coreKivaKit;
-import com.telenav.kivakit.coredata.extraction.Extractor;
-import com.telenav.kivakit.interfaces.lifecycle.Configured;
+import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.language.collections.CompressibleCollection;
 import com.telenav.kivakit.core.language.collections.CompressibleCollection.Method;
 import com.telenav.kivakit.core.language.io.IO;
-import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.language.progress.ProgressReporter;
 import com.telenav.kivakit.core.language.progress.reporters.Progress;
 import com.telenav.kivakit.core.language.strings.AsciiArt;
-import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.Message;
+import com.telenav.kivakit.core.messaging.messages.status.Problem;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.coredata.extraction.Extractor;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.filesystem.FileCache;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.interfaces.lifecycle.Configured;
 import com.telenav.kivakit.language.count.Bytes;
 import com.telenav.kivakit.language.count.Count;
 import com.telenav.kivakit.language.count.Estimate;
 import com.telenav.kivakit.language.count.Maximum;
 import com.telenav.kivakit.language.count.MutableCount;
+import com.telenav.kivakit.language.time.Time;
 import com.telenav.kivakit.language.version.VersionedObject;
-import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.core.messaging.Message;
-import com.telenav.kivakit.core.messaging.messages.status.Problem;
-import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.network.core.Host;
 import com.telenav.kivakit.network.core.NetworkPath;
 import com.telenav.kivakit.network.http.secure.SecureHttpNetworkLocation;
@@ -131,7 +130,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
     /**
      * Border data path on mesakit.org
      */
-    private static final NetworkPath NETWORK_PATH = Host.parse(Listener.console(), "www.mesakit.org")
+    private static final NetworkPath NETWORK_PATH = Host.parseHost(Listener.console(), "www.mesakit.org")
             .https()
             .path(Listener.console(), Message.format("/data/$/administrative-borders-$.jar",
                     RegionProject.get().borderDataVersion(),
