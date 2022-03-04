@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.kivakit.coredata.extraction.BaseExtractor;
-import com.telenav.kivakit.core.language.strings.Strings;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.extraction.BaseExtractor;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 

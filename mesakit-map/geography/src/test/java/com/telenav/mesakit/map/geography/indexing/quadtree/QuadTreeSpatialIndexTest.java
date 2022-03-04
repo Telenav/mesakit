@@ -18,12 +18,11 @@
 
 package com.telenav.mesakit.map.geography.indexing.quadtree;
 
-import com.telenav.kivakit.core.language.collections.list.BaseList;
-import com.telenav.kivakit.core.language.collections.list.ObjectList;
-import com.telenav.kivakit.core.language.threading.KivaKitThread;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.thread.KivaKitThread;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
@@ -183,7 +182,7 @@ public class QuadTreeSpatialIndexTest extends GeographyUnitTest
         {
             e.printStackTrace();
         }
-        BaseList<Location> found = new ObjectList<Location>().appendAll(index.inside(rectangle));
+        var found = new ObjectList<Location>().appendAll(index.inside(rectangle));
         ensureEqual(inside.size(), found.size());
         for (Location location : found)
         {

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing.readers;
 
-import com.telenav.kivakit.core.language.io.IO;
+import com.telenav.kivakit.core.io.IO;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor;

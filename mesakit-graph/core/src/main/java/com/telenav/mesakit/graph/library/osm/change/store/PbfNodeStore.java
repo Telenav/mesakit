@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.library.osm.change.store;
 
-import com.telenav.kivakit.collections.map.ReferenceCountMap;
-import com.telenav.kivakit.core.language.collections.list.StringList;
-import com.telenav.kivakit.core.language.progress.reporters.Progress;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.collections.map.ReferenceCountMap;
+import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.mesakit.graph.Graph;
@@ -42,7 +42,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 /**
  * Holds OSM nodes being referenced by {@link NewWay} and {@link MutableWay} objects.

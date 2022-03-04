@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.overpass;
 import com.telenav.kivakit.component.BaseComponent;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.core.language.progress.reporters.Progress;
+import com.telenav.kivakit.core.progress.reporters.Progress;
 import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.network.http.HttpPostResource;

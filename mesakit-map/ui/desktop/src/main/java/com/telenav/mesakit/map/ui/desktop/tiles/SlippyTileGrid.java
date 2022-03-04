@@ -28,7 +28,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.GRID_LINES;
 
 /**

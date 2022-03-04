@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
-import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.test.UnitTest;
 import com.telenav.mesakit.map.geography.Latitude;

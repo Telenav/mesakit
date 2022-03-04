@@ -20,14 +20,14 @@ package com.telenav.mesakit.graph.collections;
 
 import com.telenav.kivakit.interfaces.code.Callback;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.kivakit.core.collections.iteration.Matching;
 import com.telenav.kivakit.core.collections.iteration.Next;
 import com.telenav.kivakit.core.language.iteration.Streams;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.count.Estimate;
-import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.mesakit.graph.Edge;

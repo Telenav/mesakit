@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
+import com.telenav.kivakit.core.language.object.ObjectFormatter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter;
 
 public class Statistics
 {

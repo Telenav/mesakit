@@ -19,8 +19,8 @@
 package com.telenav.mesakit.graph.collections;
 
 import com.telenav.kivakit.filesystem.FileList;
-import com.telenav.kivakit.core.language.progress.ProgressReporter;
-import com.telenav.kivakit.core.language.strings.AsciiArt;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.mesakit.graph.Graph;

@@ -18,8 +18,7 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.identifiers;
 
-import com.telenav.kivakit.core.language.bits.BitDiagram;
-import com.telenav.kivakit.core.language.bits.BitDiagram.BitField;
+import com.telenav.kivakit.core.bits.BitDiagram;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfModelIdentifiers;
@@ -33,12 +32,12 @@ import org.openstreetmap.osmosis.core.domain.v0_6.EntityType;
 public interface PbfIdentifierType
 {
     BitDiagram TYPE_AND_IDENTIFIER = new BitDiagram("RTTTIIII IIIIIIII IIIIIIII IIIIIIII IIIIIIII IIIIIIII IIIIIIII IIIIIIII");
-    BitField TYPE = TYPE_AND_IDENTIFIER.field('T');
-    BitField REVERSE = TYPE_AND_IDENTIFIER.field('R');
-    BitField IDENTIFIER = TYPE_AND_IDENTIFIER.field('I');
+    BitDiagram.BitField TYPE = TYPE_AND_IDENTIFIER.field('T');
+    BitDiagram.BitField REVERSE = TYPE_AND_IDENTIFIER.field('R');
+    BitDiagram.BitField IDENTIFIER = TYPE_AND_IDENTIFIER.field('I');
 
     /**
-     * @return An {@link MapIdentifier} of the correct type for the TYPE {@link BitField}
+     * @return An {@link MapIdentifier} of the correct type for the TYPE {@link BitDiagram.BitField}
      */
     static MapIdentifier forIdentifierAndType(long identifierAndType)
     {

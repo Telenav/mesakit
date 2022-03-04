@@ -26,7 +26,7 @@ import org.junit.Test;
 
 import java.util.Collection;
 
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * Note that the coordinates for geohashing are restricted from -85 to 85 latitude
@@ -34,7 +34,7 @@ import static com.telenav.kivakit.ensure.Ensure.unsupported;
  * @author Mihai Chintoanu
  * @author jonathanl (shibo)
  */
-public class GeohashTest extends UnitTest
+@SuppressWarnings("SpellCheckingInspection") public class GeohashTest extends UnitTest
 {
     private final GeohashAlphabet nonDefaultAlphabet = new GeohashAlphabet()
     {

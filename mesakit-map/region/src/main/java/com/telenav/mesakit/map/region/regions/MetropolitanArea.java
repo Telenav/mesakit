@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.region.regions;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.coredata.extraction.BaseExtractor;
+import com.telenav.kivakit.extraction.BaseExtractor;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
@@ -39,7 +39,7 @@ import com.telenav.mesakit.map.region.project.lexakai.DiagramRegions;
 
 import java.util.Collection;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 /**
  * @author Jonathan Locke

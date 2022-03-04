@@ -1,6 +1,6 @@
 package com.telenav.mesakit.graph.query.compiler;
 
-import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.mesakit.graph.query.antlr.GraphQueryBaseVisitor;
 import com.telenav.mesakit.graph.query.antlr.GraphQueryParser;
 import com.telenav.mesakit.graph.query.program.BooleanExpression;
@@ -23,8 +23,8 @@ import com.telenav.mesakit.map.measurements.motion.Speed;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
 
-import static com.telenav.kivakit.ensure.Ensure.fail;
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 import static com.telenav.mesakit.graph.query.antlr.GraphQueryParser.AND;
 import static com.telenav.mesakit.graph.query.antlr.GraphQueryParser.EQUAL;
 import static com.telenav.mesakit.graph.query.antlr.GraphQueryParser.GREATER_THAN;

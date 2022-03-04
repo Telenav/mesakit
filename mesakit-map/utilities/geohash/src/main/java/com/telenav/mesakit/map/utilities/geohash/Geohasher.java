@@ -22,12 +22,12 @@ import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 
 import java.util.Collection;
 
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 /**
  * Finds a collection of {@link Geohash}es that cover a given polygon.
  * <p>
- * Geohashes are compacted using a tolerance which determines how many sub-hashes must exist for the sub-hashes to be
+ * Geo-hashes are compacted using a tolerance which determines how many sub-hashes must exist for the sub-hashes to be
  * compacted into a single {@link Geohash}. A tolerance can be set for interior compaction ( {@link
  * Builder#interiorCompactingTolerance(int)}) and a separate, finer tolerance can be set for fine-grained compaction
  * around the border of the polygon ( {@link Builder#borderCompactingTolerance(int)}).

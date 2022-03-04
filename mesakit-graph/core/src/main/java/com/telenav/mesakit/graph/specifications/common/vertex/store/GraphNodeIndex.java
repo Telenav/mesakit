@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.vertex.store;
 
-import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.core.time.Time;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.GraphNode;
@@ -36,7 +36,7 @@ import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 public class GraphNodeIndex extends GraphNode
 {

@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.coreKivaKit;
-import com.telenav.kivakit.collections.set.ObjectSet;
+import com.telenav.kivakit.core.collections.set.ObjectSet;
+import com.telenav.kivakit.core.KivaKit;
 import com.telenav.kivakit.core.object.Lazy;
-import com.telenav.kivakit.language.version.Version;
 import com.telenav.kivakit.coreproject.Project;
+import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.mesakit.graph.GraphProject;
 import com.telenav.mesakit.graph.world.project.WorldGraphKryoTypes;

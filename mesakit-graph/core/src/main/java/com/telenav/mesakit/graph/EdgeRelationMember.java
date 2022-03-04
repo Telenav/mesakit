@@ -19,14 +19,14 @@
 package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.core.language.Hash;
-import com.telenav.kivakit.core.language.strings.conversion.AsIndentedString;
-import com.telenav.kivakit.core.language.strings.conversion.AsStringIndenter;
+import com.telenav.kivakit.core.string.conversion.AsIndentedString;
+import com.telenav.kivakit.core.string.conversion.AsStringIndenter;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 import com.telenav.mesakit.map.geography.Location;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 public class EdgeRelationMember implements AsIndentedString
 {

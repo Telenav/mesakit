@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
-import com.telenav.kivakit.interfaces.comparison.Filter;
-import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.kivakit.core.collections.iteration.Next;
 import com.telenav.kivakit.core.language.Objects;
-import com.telenav.kivakit.language.primitive.Booleans;
+import com.telenav.kivakit.core.language.primitive.Booleans;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.interfaces.comparison.Filter;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.geography.project.lexakai.DiagramSpatialIndex;
@@ -78,6 +78,9 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     /** Settings that determine how the tree is laid out */
     @KivaKitIncludeProperty
     private RTreeSettings settings;
+
+    /** The root of the tree, initially just a root node with a single leaf */
+    public Node<Element> root;
 
     /**
      * Construct with good defaults
@@ -182,6 +185,8 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     {
         return Iterables.iterable(() -> new Next<>()
         {
+            final Iterator<Element> elements = root().intersecting(bounds, matcher);
+
             @Override
             public Element onNext()
             {
@@ -191,8 +196,6 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
                 }
                 return null;
             }
-
-            final Iterator<Element> elements = root().intersecting(bounds, matcher);
         });
     }
 
@@ -244,7 +247,4 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     {
         return root;
     }
-
-    /** The root of the tree, initially just a root node with a single leaf */
-    public Node<Element> root;
 }

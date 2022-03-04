@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.region.border.cache;
 
-import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.coreKivaKit;
-import com.telenav.kivakit.language.time.Time;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.version.Version;
-import com.telenav.kivakit.language.version.VersionedObject;
+import com.telenav.kivakit.core.KivaKit;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.version.Version;
+import com.telenav.kivakit.core.version.VersionedObject;
+import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.serialization.core.SerializationSession;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.map.region.Region;

@@ -23,7 +23,7 @@ import com.telenav.mesakit.map.geography.shape.segment.Segment;
 import java.util.AbstractList;
 import java.util.Collection;
 
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 public final class CompressedSegmentList extends AbstractList<Segment>
 {

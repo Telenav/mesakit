@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
-import com.telenav.kivakit.language.level.Level;
+import com.telenav.kivakit.core.value.level.Level;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.Latitude;

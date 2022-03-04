@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
-import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.language.primitive.Doubles;
+import com.telenav.kivakit.core.language.primitive.Doubles;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
@@ -30,8 +30,8 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 /**
  * In OSM, zoom level 0 is zoomed out so that the entire world is one tile and zoom level 17 is zoomed in as far as
@@ -188,7 +188,8 @@ public class ZoomLevel implements Stringable
 
     public DrawingPoint inRange(DrawingPoint point, DrawingSize tileSize)
     {
-        return DrawingPoint.point(point.coordinates(), Doubles.inRange(point.x(), 0, widthInPixels(tileSize)),
+        return DrawingPoint.point(point.coordinates(),
+                Doubles.inRange(point.x(), 0, widthInPixels(tileSize)),
                 Doubles.inRange(point.y(), 0, heightInPixels(tileSize)));
     }
 

@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.conversion.QuantizableConverter;
+import com.telenav.kivakit.conversion.core.value.QuantizableConverter;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.interfaces.numeric.Quantizable;
 import com.telenav.mesakit.map.measurements.motion.Speed;
 
 import java.util.HashMap;

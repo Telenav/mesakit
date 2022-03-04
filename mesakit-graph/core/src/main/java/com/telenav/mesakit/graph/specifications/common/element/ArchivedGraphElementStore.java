@@ -37,7 +37,7 @@ import com.telenav.mesakit.graph.specifications.library.attributes.AttributeSet;
 import com.telenav.mesakit.map.geography.Precision;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 
-import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 /**
  * Base class for various kinds of attribute stores that are stored in {@link GraphArchive}s. Archived stores are

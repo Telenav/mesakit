@@ -32,7 +32,7 @@ import com.telenav.mesakit.map.geography.Location;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 public class PbfAllGraphElementTagStore implements Unloadable
 {

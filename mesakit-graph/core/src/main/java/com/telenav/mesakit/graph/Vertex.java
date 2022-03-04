@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.graph;
 
-import com.telenav.kivakit.collections.set.operations.Intersection;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.core.collections.set.operations.Intersection;
+import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.coredata.comparison.Differences;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.time.Time;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.identifiers.VertexIdentifier;

@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.metadata;
 
-import com.telenav.kivakit.core.language.values.name.Name;
+import com.telenav.kivakit.core.value.name.Name;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfModelMetadata;
 
-import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 @UmlClassDiagram(diagram = DiagramPbfModelMetadata.class)
 public class PbfUserName extends Name

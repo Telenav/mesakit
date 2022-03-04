@@ -36,7 +36,7 @@ import org.openstreetmap.osmosis.osmbinary.file.BlockOutputStream;
 import java.util.Collection;
 import java.util.List;
 
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 @UmlClassDiagram(diagram = DiagramPbfProcessing.class)
 public class PbfWriter

@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.region.border;
 
 import com.telenav.kivakit.interfaces.lifecycle.Configured;
-import com.telenav.kivakit.language.count.MutableCount;
+import com.telenav.kivakit.core.value.count.MutableCount;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.rtree.InteriorNode;

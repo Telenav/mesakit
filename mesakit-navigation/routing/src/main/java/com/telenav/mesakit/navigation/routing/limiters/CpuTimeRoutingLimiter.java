@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.navigation.routing.limiters;
 
-import com.telenav.kivakit.language.time.PreciseDuration;
+import com.telenav.kivakit.core.time.PreciseDuration;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.navigation.routing.RoutingInstruction;
 import com.telenav.mesakit.navigation.routing.RoutingLimiter;

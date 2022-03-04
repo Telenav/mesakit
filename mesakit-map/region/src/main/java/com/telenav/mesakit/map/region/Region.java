@@ -20,28 +20,27 @@ package com.telenav.mesakit.map.region;
 
 import com.telenav.kivakit.commandline.ArgumentParser;
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.interfaces.naming.Nameable;
-import com.telenav.kivakit.interfaces.naming.Named;
-import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.language.locales.LanguageIsoCode;
+import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.language.Objects;
-import com.telenav.kivakit.core.language.patterns.Pattern;
-import com.telenav.kivakit.core.language.patterns.SimplifiedPattern;
+import com.telenav.kivakit.core.language.Patterns;
+import com.telenav.kivakit.core.language.object.ObjectFormatter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.language.strings.AsciiArt;
-import com.telenav.kivakit.core.language.strings.Strings;
-import com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.core.language.threading.KivaKitThread;
-import com.telenav.kivakit.core.language.threading.Threads;
-import com.telenav.kivakit.language.time.Duration;
-import com.telenav.kivakit.language.count.Bytes;
+import com.telenav.kivakit.core.locale.LanguageIsoCode;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.AsciiArt;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.thread.KivaKitThread;
+import com.telenav.kivakit.core.thread.Threads;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.interfaces.naming.Nameable;
+import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.resource.path.FileName;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
@@ -81,9 +80,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Executors;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
-import static com.telenav.kivakit.ensure.Ensure.fail;
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * @author Jonathan Locke
@@ -166,12 +165,12 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     @SuppressWarnings("rawtypes")
     public static RegionSet allRegionsMatching(String simplifiedPattern)
     {
-        Pattern pattern = new SimplifiedPattern(simplifiedPattern);
+        var pattern = Patterns.simplified(simplifiedPattern);
         var matches = new RegionSet();
         for (var object : all.allUntyped())
         {
             var region = (Region) object;
-            if (pattern.matches(region.identity().mesakit().code()))
+            if (Patterns.matches(pattern, region.identity().mesakit().code()))
             {
                 matches.add(region);
             }

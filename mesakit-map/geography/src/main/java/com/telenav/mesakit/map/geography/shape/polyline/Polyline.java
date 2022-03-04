@@ -18,22 +18,23 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
-import com.telenav.kivakit.interfaces.collection.Indexable;
-import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.language.collections.list.ObjectList;
-import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.iteration.BaseIterator;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.kivakit.core.collections.iteration.Next;
-import com.telenav.kivakit.core.language.strings.Split;
-import com.telenav.kivakit.core.language.strings.Strings;
-import com.telenav.kivakit.core.language.strings.formatting.Separators;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.level.Percent;
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.language.Arrays;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.Separators;
+import com.telenav.kivakit.core.string.Split;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.level.Percent;
+import com.telenav.kivakit.interfaces.collection.Indexable;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
@@ -61,7 +62,6 @@ import org.jetbrains.annotations.NotNull;
 import java.lang.ref.SoftReference;
 import java.util.AbstractList;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -70,7 +70,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 /**
  * A sequence of two or more locations that are connected, leading from a {@link #start()} to an {@link #end()}
@@ -78,11 +78,11 @@ import static com.telenav.kivakit.ensure.Ensure.ensure;
  * <pre>
  *     for (var location : polyline) { ... }
  * </pre>
- * Polylines also have a bounding rectangle retrieved with {@link Bounded#bounds()}. It can be determined if the
+ * Poly-lines also have a bounding rectangle retrieved with {@link Bounded#bounds()}. It can be determined if the
  * polyline intersects a rectangle or segment with {@link Intersectable#intersects(Rectangle)} and {@link
  * #intersects(Segment)}, and whether it intersects itself with {@link #selfIntersection()}. The point of intersection
  * with another polyline or with a segment can be determined with {@link #intersection(Polyline)} and {@link
- * #intersection(Segment)}. Whether two polylines cross each other can be determined with {@link #crosses(Polyline)}.
+ * #intersection(Segment)}. Whether two poly-lines cross each other can be determined with {@link #crosses(Polyline)}.
  * <p>
  * Segments of the polyline can be retrieved with:
  * <ul>
@@ -204,7 +204,7 @@ public class Polyline implements
         {
             var builder = new PolylineBuilder();
             var converter = new Location.DegreesConverter(LOGGER);
-            for (var location : Split.split(value, ':'))
+            for (var location : Split.split(value, ":"))
             {
                 builder.add(converter.convert(location));
             }
@@ -237,7 +237,7 @@ public class Polyline implements
         @Override
         protected String onToString(Polyline value)
         {
-            var locations = new StringList(GeographyLimits.LOCATIONS_PER_POLYLINE);
+            var locations = new StringList();
             for (var location : value.locationSequence())
             {
                 locations.add(locationConverter.unconvert(location));
@@ -293,34 +293,34 @@ public class Polyline implements
          */
         private String createPolyline(Polyline line)
         {
-            var oldlat = 0D;
-            var oldlon = 0D;
+            var oldLatitude = 0D;
+            var oldLongitude = 0D;
             var nb = new StringBuilder();
             for (var temp : line.locationSequence())
             {
                 var p1 = temp.latitude().asDegrees();
                 var p2 = temp.longitude().asDegrees();
 
-                if (Math.abs(p1 - oldlat) >= 0.00001)
+                if (Math.abs(p1 - oldLatitude) >= 0.00001)
                 {
-                    var temp2 = encodePolyline(p1 - oldlat);
+                    var temp2 = encodePolyline(p1 - oldLatitude);
                     nb.append(temp2);
                 }
                 else
                 {
                     nb.append("?");
                 }
-                if (Math.abs(p2 - oldlon) >= 0.00001)
+                if (Math.abs(p2 - oldLongitude) >= 0.00001)
                 {
-                    var temp2 = encodePolyline(p2 - oldlon);
+                    var temp2 = encodePolyline(p2 - oldLongitude);
                     nb.append(temp2);
                 }
                 else
                 {
                     nb.append("?");
                 }
-                oldlat = p1;
-                oldlon = p2;
+                oldLatitude = p1;
+                oldLongitude = p2;
             }
 
             var temp = nb.toString();
@@ -509,6 +509,8 @@ public class Polyline implements
 
         private int startIndex;
 
+        public Location loopAt;
+
         public PolylineSection head()
         {
             return startIndex > 0 ? section(0, startIndex) : null;
@@ -538,8 +540,6 @@ public class Polyline implements
         {
             return endIndex < size() - 1 ? section(endIndex, size() - 1) : null;
         }
-
-        public Location loopAt;
     }
 
     private int bottomInDecimal = Integer.MAX_VALUE;
@@ -617,6 +617,8 @@ public class Polyline implements
     {
         return new BaseIterator<>()
         {
+            int index = 0;
+
             @Override
             protected Location onNext()
             {
@@ -626,8 +628,6 @@ public class Polyline implements
                 }
                 return null;
             }
-
-            int index = 0;
         };
     }
 
@@ -637,6 +637,8 @@ public class Polyline implements
     {
         return new BaseIterator<>()
         {
+            int index = 0;
+
             @Override
             protected Location onNext()
             {
@@ -650,8 +652,6 @@ public class Polyline implements
                 }
                 return null;
             }
-
-            int index = 0;
         };
     }
 
@@ -828,7 +828,7 @@ public class Polyline implements
         }
         else
         {
-            // otherwise, find the mid point
+            // otherwise, find the mid-point
             var midpoint = size() / 2;
 
             // and add two sections
@@ -839,7 +839,7 @@ public class Polyline implements
     }
 
     /**
-     * @return The minimum bounding rectangle of all shapepoints
+     * @return The minimum bounding rectangle of all shape-points
      */
     @Override
     public final Rectangle bounds()
@@ -853,8 +853,8 @@ public class Polyline implements
 
     /**
      * @return The percentage of this polyline that is within the given distance from that polyline. Areas where the
-     * headings of the two polylines deviate by more than the given maximumHeadingDeviation are not considered close,
-     * nor are areas where the polylines are more end-to-end than side-by-side.
+     * headings of the two poly-lines deviate by more than the given maximumHeadingDeviation are not considered close,
+     * nor are areas where the poly-lines are more end-to-end than side-by-side.
      */
     public Percent closeness(Polyline that, Distance maximumDistance,
                              Angle maximumHeadingDeviation)
@@ -1034,7 +1034,7 @@ public class Polyline implements
     }
 
     /**
-     * Provides a hashcode for very large polylines, such as those used in country and state borders, to avoid the
+     * Provides a hashcode for very large poly-lines, such as those used in country and state borders, to avoid the
      * expense of hashing every location in the polyline (which happens if this method is not called).
      */
     public void hashCode(int hashCode)
@@ -1328,7 +1328,7 @@ public class Polyline implements
     }
 
     /**
-     * @return True if more than one point is shared between the two polylines
+     * @return True if more than one point is shared between the two poly-lines
      */
     public boolean overlaps(Polyline that)
     {
@@ -1366,7 +1366,7 @@ public class Polyline implements
     public Polyline reversed()
     {
         var reversed = locationsInDecimal();
-        com.telenav.kivakit.language.primitive.Arrays.reverse(reversed);
+        Arrays.reverse(reversed);
         return new Polyline(reversed);
     }
 
@@ -1615,6 +1615,7 @@ public class Polyline implements
      * @see <a href= "http://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm">Ramer Douglas
      * Peucker</a>
      */
+    @SuppressWarnings("SpellCheckingInspection")
     public Polyline simplified(Distance tolerance)
     {
         return new PolylineSimplifier().simplify(this, tolerance);
@@ -1631,12 +1632,12 @@ public class Polyline implements
         var smoothed = smoothOnce(tolerance);
         for (var iteration = 0; iteration < 2; iteration++)
         {
-            var resmoothed = smoothed.smoothOnce(tolerance);
-            if (resmoothed.size() == smoothed.size())
+            var reSmoothed = smoothed.smoothOnce(tolerance);
+            if (reSmoothed.size() == smoothed.size())
             {
                 break;
             }
-            smoothed = resmoothed;
+            smoothed = reSmoothed;
         }
         return smoothed;
     }
@@ -1714,6 +1715,16 @@ public class Polyline implements
     {
         return Iterables.iterable(() -> new Next<>()
         {
+            boolean first = true;
+
+            boolean last;
+
+            boolean done;
+
+            final Iterator<Segment> segments = segments().iterator();
+
+            Segment segment;
+
             @Override
             public LocatedHeading onNext()
             {
@@ -1747,16 +1758,6 @@ public class Polyline implements
                 }
                 return null;
             }
-
-            boolean first = true;
-
-            boolean last;
-
-            boolean done;
-
-            final Iterator<Segment> segments = segments().iterator();
-
-            Segment segment;
         });
     }
 
@@ -1770,42 +1771,42 @@ public class Polyline implements
 
     public Polyline withFirstReplaced(Location location)
     {
-        var locations = Arrays.copyOf(locationsInDecimal(), size());
+        var locations = java.util.Arrays.copyOf(locationsInDecimal(), size());
         locations[0] = expandBounds(location.asDm7Long());
         return new Polyline(locations);
     }
 
     public Polyline withLastReplaced(Location location)
     {
-        var locations = Arrays.copyOf(locationsInDecimal(), size());
+        var locations = java.util.Arrays.copyOf(locationsInDecimal(), size());
         locations[size() - 1] = expandBounds(location.asLong());
         return new Polyline(locations);
     }
 
     public Polyline withoutDuplicates()
     {
-        List<Location> deduplicated = new ArrayList<>();
+        List<Location> withoutDuplicates = new ArrayList<>();
         Location last = null;
         for (var location : locationSequence())
         {
             // Avoid putting two duplicates in a row.
             if (last == null || !last.equals(location))
             {
-                deduplicated.add(location);
+                withoutDuplicates.add(location);
             }
             last = location;
         }
-        return deduplicated.size() == size() ? this : new Polyline(deduplicated);
+        return withoutDuplicates.size() == size() ? this : new Polyline(withoutDuplicates);
     }
 
     public Polyline withoutFirst()
     {
-        return new Polyline(Arrays.copyOfRange(locationsInDecimal(), 1, size()));
+        return new Polyline(java.util.Arrays.copyOfRange(locationsInDecimal(), 1, size()));
     }
 
     public Polyline withoutLast()
     {
-        return new Polyline(Arrays.copyOfRange(locationsInDecimal(), 0, size() - 1));
+        return new Polyline(java.util.Arrays.copyOfRange(locationsInDecimal(), 0, size() - 1));
     }
 
     protected long expandBounds(long location)
@@ -1832,7 +1833,7 @@ public class Polyline implements
      */
     Polyline shape(int startIndex, int endIndex)
     {
-        return new Polyline(Arrays.copyOfRange(locationsInDecimal(), startIndex, endIndex + 1));
+        return new Polyline(java.util.Arrays.copyOfRange(locationsInDecimal(), startIndex, endIndex + 1));
     }
 
     private long computeLengthInMillimeters()

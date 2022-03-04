@@ -23,7 +23,7 @@ import com.telenav.kivakit.coredata.validation.Validatable;
 import com.telenav.kivakit.coredata.validation.ValidationType;
 import com.telenav.kivakit.coredata.validation.Validator;
 import com.telenav.kivakit.interfaces.loading.Unloadable;
-import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;

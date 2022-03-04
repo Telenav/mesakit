@@ -25,7 +25,7 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import java.util.Collection;
 import java.util.HashSet;
 
-import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 /**
  * @author Mihai Chintoanu
@@ -91,7 +91,7 @@ public class Geohash
     }
 
     /**
-     * @return this geohash's children, or an empty collection if this geohash is at the maximum allowed depth
+     * @return This geohash's children, or an empty collection if this geohash is at the maximum allowed depth
      */
     public Collection<Geohash> children()
     {

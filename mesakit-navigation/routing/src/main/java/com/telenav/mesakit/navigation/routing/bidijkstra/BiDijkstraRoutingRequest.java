@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.navigation.routing.bidijkstra;
 
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.navigation.routing.RoutingDebugger;

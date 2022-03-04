@@ -26,7 +26,7 @@ import com.telenav.mesakit.map.road.name.parser.ParsedRoadName;
 import com.telenav.mesakit.map.road.name.parser.RoadNameParser;
 import com.telenav.mesakit.map.road.name.standardizer.BaseRoadNameStandardizer;
 
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.mesakit.map.road.name.parser.ParsedRoadName.TypePosition.FIRST;
 
 /**

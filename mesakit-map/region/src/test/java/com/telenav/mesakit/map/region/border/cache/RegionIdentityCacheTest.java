@@ -19,10 +19,10 @@
 package com.telenav.mesakit.map.region.border.cache;
 
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.coreKivaKit;
-import com.telenav.kivakit.core.language.io.IO;
-import com.telenav.kivakit.language.version.VersionedObject;
+import com.telenav.kivakit.core.KivaKit;
+import com.telenav.kivakit.core.io.IO;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.version.VersionedObject;
 import com.telenav.mesakit.map.region.RegionIdentifier;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionProject;

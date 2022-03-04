@@ -18,7 +18,8 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.language.level.Percent;
+import com.telenav.kivakit.core.value.level.Percent;
+
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 import java.util.ArrayList;

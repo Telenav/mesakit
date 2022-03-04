@@ -1,6 +1,6 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
-import com.telenav.kivakit.core.language.strings.Strip;
+import com.telenav.kivakit.core.string.Strip;
 import com.telenav.kivakit.resource.resources.other.PropertyMap;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;

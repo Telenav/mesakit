@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.io.load.loaders.copying;
 
-import com.telenav.kivakit.language.time.Time;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.resource.Resource;

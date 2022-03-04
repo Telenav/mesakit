@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.cutter.cuts;
 
-import com.telenav.kivakit.collections.map.MultiMap;
-import com.telenav.kivakit.core.language.strings.AsciiArt;
-import com.telenav.kivakit.language.count.Bytes;
+import com.telenav.kivakit.core.collections.map.MultiMap;
+import com.telenav.kivakit.core.string.AsciiArt;
+import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;

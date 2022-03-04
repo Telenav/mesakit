@@ -29,7 +29,7 @@ import com.telenav.mesakit.map.geography.Precision;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 public class PbfAllNodeIndexStore implements Unloadable
 {

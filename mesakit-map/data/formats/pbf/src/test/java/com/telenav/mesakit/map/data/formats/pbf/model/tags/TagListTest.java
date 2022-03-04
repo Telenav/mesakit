@@ -24,7 +24,7 @@ import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 public class TagListTest
 {

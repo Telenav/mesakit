@@ -19,11 +19,11 @@
 package com.telenav.mesakit.graph.specifications.library.store;
 
 import com.telenav.kivakit.interfaces.loading.Unloadable;
-import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.language.reflection.Type;
-import com.telenav.kivakit.core.language.strings.AsciiArt;
-import com.telenav.kivakit.language.time.Time;
-import com.telenav.kivakit.language.count.Bytes;
+import com.telenav.kivakit.core.string.AsciiArt;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
@@ -35,7 +35,7 @@ import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.specifications.common.element.ArchivedGraphElementStore;
 import com.telenav.mesakit.graph.specifications.library.attributes.AttributeSet;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 public abstract class ArchivedGraphStore extends GraphStore
 {

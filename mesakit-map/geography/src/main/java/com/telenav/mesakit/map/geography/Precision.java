@@ -19,10 +19,10 @@
 package com.telenav.mesakit.map.geography;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.conversion.string.enumeration.EnumConverter;
-import com.telenav.kivakit.language.primitive.Ints;
-import com.telenav.kivakit.language.primitive.Longs;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.conversion.core.language.EnumConverter;
+import com.telenav.kivakit.core.language.primitive.Ints;
+import com.telenav.kivakit.core.language.primitive.Longs;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
@@ -48,7 +48,7 @@ import com.telenav.mesakit.map.measurements.geographic.Heading;
  *
  * @author jonathanl (shibo)
  */
-@UmlClassDiagram(diagram = DiagramLocation.class)
+@SuppressWarnings("SpellCheckingInspection") @UmlClassDiagram(diagram = DiagramLocation.class)
 public enum Precision
 {
     NONE(0), // No precision

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.extractors;
 
-import com.telenav.kivakit.coredata.extraction.BaseExtractor;
+import com.telenav.kivakit.extraction.BaseExtractor;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfRevisionNumber;

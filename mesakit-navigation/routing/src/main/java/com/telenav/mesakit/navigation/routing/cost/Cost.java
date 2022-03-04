@@ -18,8 +18,9 @@
 
 package com.telenav.mesakit.navigation.routing.cost;
 
-import com.telenav.kivakit.language.primitive.Doubles;
-import com.telenav.kivakit.language.level.Weight;
+import com.telenav.kivakit.core.language.primitive.Doubles;
+
+import com.telenav.kivakit.core.value.level.Weight;
 
 /**
  * The cost of an edge or route

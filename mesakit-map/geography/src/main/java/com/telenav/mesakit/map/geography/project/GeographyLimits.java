@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.geography.project;
 
-import com.telenav.kivakit.language.count.Maximum;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.value.count.Maximum;
 
 public class GeographyLimits
 {

@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline.compression.differential;
 
-import com.telenav.kivakit.interfaces.collection.Sized;
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
-import com.telenav.kivakit.language.primitive.Ints;
-import com.telenav.kivakit.language.count.BitCount;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.language.primitive.Ints;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.value.count.BitCount;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.interfaces.collection.Sized;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.array.bits.BitArray;
 import com.telenav.kivakit.primitive.collections.array.bits.io.BitReader;
 import com.telenav.kivakit.primitive.collections.array.bits.io.BitWriter;
@@ -356,11 +356,11 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
 
         // and loop through each location
         var last = 0L;
-        var proximities = Proximity.values();
+        var proximityValues = Proximity.values();
         for (var index = 0; index < size; index++)
         {
             // getting the proximity of the location (DISTANCE1 to DISTANCE8).
-            var proximity = proximities[reader.read(PROXIMITY_TYPE_BITS)];
+            var proximity = proximityValues[reader.read(PROXIMITY_TYPE_BITS)];
 
             // Read the right number of bits to get the location, assign it to the location store
             // and remember it as the last location
@@ -454,13 +454,13 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
         writer.writeFlexibleInt(3, 15, size);
         Location previous = null;
         var lengthInMillimeters = 0L;
-        var proximities = Proximity.values();
+        var proximityValues = Proximity.values();
         for (var location : locations)
         {
             var atLatitude = location.latitudeInDm7();
             var atLongitude = location.longitudeInDm7();
             var written = false;
-            for (var proximity : proximities)
+            for (var proximity : proximityValues)
             {
                 if (proximity.write(writer, atLatitude, atLongitude, lastLatitude, lastLongitude))
                 {

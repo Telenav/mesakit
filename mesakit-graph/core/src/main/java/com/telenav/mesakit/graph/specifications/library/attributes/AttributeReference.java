@@ -25,7 +25,7 @@ import com.telenav.kivakit.interfaces.factory.LongMapFactory;
 import com.telenav.kivakit.interfaces.lifecycle.Initializable;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.core.language.collections.list.ObjectList;
+import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.language.reflection.Type;
 import com.telenav.kivakit.core.language.reflection.property.Property;
 import com.telenav.kivakit.core.logging.Logger;
@@ -48,9 +48,9 @@ import org.jetbrains.annotations.MustBeInvokedByOverriders;
 
 import java.util.List;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
-import static com.telenav.kivakit.ensure.Ensure.ensureEqual;
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureEqual;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 /**
  * Manages a referent (a value that's referred to by a reference) {@link Attribute}s in an {@link AttributeStore}.

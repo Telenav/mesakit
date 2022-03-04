@@ -19,11 +19,11 @@
 package com.telenav.mesakit.graph.collections;
 
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.collections.iteration.Matching;
 import com.telenav.kivakit.core.language.iteration.Streams;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.io.load.GraphConstraints;

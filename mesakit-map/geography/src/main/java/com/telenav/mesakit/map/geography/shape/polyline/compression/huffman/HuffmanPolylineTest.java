@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline.compression.huffman;
 
-import com.telenav.kivakit.core.language.io.IO;
+import com.telenav.kivakit.core.io.IO;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.mesakit.map.geography.Location;

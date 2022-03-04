@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner;
 
-import com.telenav.kivakit.collections.map.MultiMap;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.collections.map.MultiMap;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
@@ -37,7 +37,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 /**
  * Sections a raw way (represented as an edge) into smaller pieces according to the following rules:

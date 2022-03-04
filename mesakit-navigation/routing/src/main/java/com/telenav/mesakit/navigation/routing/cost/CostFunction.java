@@ -18,7 +18,8 @@
 
 package com.telenav.mesakit.navigation.routing.cost;
 
-import com.telenav.kivakit.language.level.Weight;
+import com.telenav.kivakit.core.value.level.Weight;
+
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.navigation.routing.cost.operators.MaximumCost;
 import com.telenav.mesakit.navigation.routing.cost.operators.Minimum;

@@ -18,7 +18,8 @@
 
 package com.telenav.mesakit.navigation.routing;
 
-import com.telenav.kivakit.language.level.Weight;
+import com.telenav.kivakit.core.value.level.Weight;
+
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;

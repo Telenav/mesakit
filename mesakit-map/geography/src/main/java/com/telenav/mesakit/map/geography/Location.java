@@ -19,22 +19,22 @@
 package com.telenav.mesakit.map.geography;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.interfaces.model.Identifiable;
-import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.coredata.validation.BaseValidator;
-import com.telenav.kivakit.coredata.validation.Validatable;
-import com.telenav.kivakit.coredata.validation.ValidationType;
-import com.telenav.kivakit.coredata.validation.Validator;
-import com.telenav.kivakit.core.language.collections.list.StringList;
-import com.telenav.kivakit.language.primitive.Longs;
-import com.telenav.kivakit.core.language.reflection.populator.KivaKitPropertyConverter;
-import com.telenav.kivakit.core.language.strings.formatting.Separators;
-import com.telenav.kivakit.language.count.BitCount;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.conversion.core.language.object.KivaKitPropertyConverter;
+import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.language.primitive.Longs;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.Separators;
+import com.telenav.kivakit.core.value.count.BitCount;
+import com.telenav.kivakit.interfaces.model.Identifiable;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.math.trigonometry.Trigonometry;
+import com.telenav.kivakit.validation.BaseValidator;
+import com.telenav.kivakit.validation.Validatable;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
@@ -56,7 +56,7 @@ import com.telenav.mesakit.map.measurements.geographic.Heading;
 import java.awt.Point;
 import java.io.Serializable;
 
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.mesakit.map.geography.Precision.DM7;
 
 /**
@@ -129,7 +129,14 @@ import static com.telenav.mesakit.map.geography.Precision.DM7;
 @UmlClassDiagram(diagram = DiagramLocation.class)
 @UmlExcludeSuperTypes({ Validatable.class, Identifiable.class, Stringable.class, Serializable.class })
 @UmlRelation(label = "represented at", referent = Precision.class)
-public class Location implements Validatable, Located, Identifiable, Bounded, Intersectable, Stringable, Serializable
+public class Location implements
+        Validatable,
+        Located,
+        Identifiable,
+        Bounded,
+        Intersectable,
+        Stringable,
+        Serializable
 {
     private static final long EARTH_RADIUS_IN_METERS = (long) Distance.EARTH_RADIUS_MINOR.asMeters();
 
@@ -299,7 +306,9 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
 
     public static SwitchParser.Builder<Location> locationSwitchParser(String name, String description)
     {
-        return SwitchParser.builder(Location.class).name(name).converter(new DegreesConverter(LOGGER))
+        return SwitchParser.builder(Location.class)
+                .name(name)
+                .converter(new DegreesConverter(LOGGER))
                 .description(description);
     }
 

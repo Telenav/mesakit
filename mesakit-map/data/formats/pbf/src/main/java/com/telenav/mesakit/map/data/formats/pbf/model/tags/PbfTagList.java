@@ -19,8 +19,9 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
 import com.telenav.kivakit.core.language.Hash;
-import com.telenav.kivakit.core.language.strings.conversion.AsIndentedString;
-import com.telenav.kivakit.core.language.strings.conversion.AsStringIndenter;
+import com.telenav.kivakit.core.string.AsIndentedString;
+import com.telenav.kivakit.core.string.AsStringIndenter;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -34,7 +35,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 @UmlClassDiagram(diagram = DiagramPbfModelTags.class)
 @UmlExcludeSuperTypes({ AsIndentedString.class, Iterable.class })
@@ -156,7 +157,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
     }
 
     @Override
-    public AsStringIndenter asString(Format format, AsStringIndenter indenter)
+    public AsStringIndenter asString(Stringable.Format format, AsStringIndenter indenter)
     {
         indenter.bracketed(sorted(), tag -> indenter.add(tag.toString()));
         return indenter;
@@ -302,6 +303,8 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
     {
         return new Iterator<>()
         {
+            int at;
+
             @Override
             public boolean hasNext()
             {
@@ -313,8 +316,6 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
             {
                 return get(at++);
             }
-
-            int at;
         };
     }
 

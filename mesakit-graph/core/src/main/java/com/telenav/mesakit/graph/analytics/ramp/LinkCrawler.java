@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.analytics.ramp;
 
-import com.telenav.kivakit.language.count.Estimate;
-import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSet;
@@ -29,7 +29,7 @@ import com.telenav.mesakit.graph.navigation.Navigator.Direction;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 /**
  * Crawls out all links (connectors and ramps) beginning from an initial link.

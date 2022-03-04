@@ -18,9 +18,7 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
-import com.telenav.kivakit.core.language.strings.formatting.Separators;
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.string.Separators;
 import com.telenav.kivakit.core.test.UnitTest;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
@@ -32,9 +30,7 @@ import org.junit.Test;
  */
 public class PolylineConverterTest extends UnitTest
 {
-    private static final Logger LOGGER = LoggerFactory.newLogger();
-
-    private final Polyline.Converter polylineConverter = new Polyline.Converter(LOGGER, Separators.DEFAULT);
+    private final Polyline.Converter polylineConverter = new Polyline.Converter(this, Separators.DEFAULT);
 
     @Test
     public void testOnConvertToString()

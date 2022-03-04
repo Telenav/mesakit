@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge;
 
-import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.language.functions.Functions;
 import com.telenav.kivakit.core.object.Lazy;
-import com.telenav.kivakit.core.language.strings.StringTo;
+import com.telenav.kivakit.core.string.StringTo;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.specifications.common.element.GraphElementProperties;
 import com.telenav.mesakit.graph.specifications.library.attributes.Attribute;

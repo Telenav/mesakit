@@ -24,14 +24,14 @@ import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.FileList;
 import com.telenav.kivakit.interfaces.naming.Named;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.coredata.validation.ValidationType;
-import com.telenav.kivakit.language.primitive.Doubles;
-import com.telenav.kivakit.core.language.progress.ProgressReporter;
-import com.telenav.kivakit.language.time.Time;
-import com.telenav.kivakit.language.count.Bytes;
-import com.telenav.kivakit.language.version.Version;
-import com.telenav.kivakit.language.version.VersionedObject;
+import com.telenav.kivakit.core.language.primitive.Doubles;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.core.version.Version;
+import com.telenav.kivakit.core.version.VersionedObject;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
@@ -54,8 +54,8 @@ import com.telenav.mesakit.graph.specifications.library.store.GraphStore;
 
 import java.util.zip.ZipFile;
 
-import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * A graph archive is a {@link ZipArchive} which is based on the support in java.util for {@link ZipFile}s. When a

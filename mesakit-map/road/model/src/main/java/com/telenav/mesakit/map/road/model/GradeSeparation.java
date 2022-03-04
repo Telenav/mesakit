@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.road.model;
 
 import com.telenav.kivakit.interfaces.numeric.Quantizable;
 
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 public class GradeSeparation implements Quantizable
 {

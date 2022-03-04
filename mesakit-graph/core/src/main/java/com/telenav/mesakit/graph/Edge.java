@@ -22,16 +22,16 @@ import com.telenav.kivakit.interfaces.collection.LongKeyed;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.coredata.comparison.Differences;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.coredata.validation.ValidationType;
 import com.telenav.kivakit.coredata.validation.Validator;
-import com.telenav.kivakit.language.primitive.Longs;
+import com.telenav.kivakit.core.language.primitive.Longs;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
-import com.telenav.kivakit.core.language.strings.CaseFormat;
-import com.telenav.kivakit.core.language.strings.Strings;
-import com.telenav.kivakit.language.time.Duration;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.string.CaseFormat;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
@@ -115,7 +115,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * An edge in a {@link Graph} connecting two {@link Vertex}es. In the case of PBF graphs, edges are sections of ways

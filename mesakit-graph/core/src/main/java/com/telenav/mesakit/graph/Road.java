@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph;
 
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapWayIdentifier;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.measurements.geographic.Distance;

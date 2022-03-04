@@ -9,6 +9,7 @@ open module mesakit.data.formats.pbf
     requires osmosis.core;
     requires osmosis.osm.binary;
     requires osmosis.pbf;
+    requires kivakit.extraction;
 
     exports com.telenav.mesakit.map.data.formats.pbf.model.entities;
     exports com.telenav.mesakit.map.data.formats.pbf.model.extractors;
@@ -24,5 +25,4 @@ open module mesakit.data.formats.pbf
     exports com.telenav.mesakit.map.data.formats.pbf.processing.writers;
     exports com.telenav.mesakit.map.data.formats.pbf.processing;
     exports com.telenav.mesakit.map.data.formats.pbf.project;
-    exports com.telenav.mesakit.map.data.formats.pbf;
 }

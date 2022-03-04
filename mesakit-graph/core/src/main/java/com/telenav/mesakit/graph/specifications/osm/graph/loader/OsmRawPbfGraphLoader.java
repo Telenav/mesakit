@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.specifications.osm.graph.loader;
 
 import com.telenav.kivakit.core.collections.map.ObjectMap;
-import com.telenav.kivakit.core.language.strings.Strings;
+import com.telenav.kivakit.core.string.Strings;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.RawPbfGraphLoader;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.extractors.AlternateRoadNameExtractor;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.extractors.ExitRoadNameExtractor;

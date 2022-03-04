@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.cutter.cuts.maps;
 
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.mesakit.map.region.Region;

@@ -24,12 +24,12 @@ import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.interfaces.value.Source;
 import com.telenav.kivakit.core.collections.iteration.BaseIterable;
 import com.telenav.kivakit.core.collections.iteration.Next;
-import com.telenav.kivakit.core.language.progress.ProgressReporter;
-import com.telenav.kivakit.language.time.Time;
-import com.telenav.kivakit.language.count.Bytes;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.version.Version;
-import com.telenav.kivakit.language.version.VersionedObject;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.version.Version;
+import com.telenav.kivakit.core.version.VersionedObject;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
@@ -63,7 +63,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.WRITE;
 

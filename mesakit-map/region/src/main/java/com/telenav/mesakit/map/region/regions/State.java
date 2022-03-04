@@ -19,13 +19,13 @@
 package com.telenav.mesakit.map.region.regions;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.coredata.extraction.BaseExtractor;
-import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.core.language.locales.LanguageIsoCode;
-import com.telenav.kivakit.core.language.strings.Strings;
+import com.telenav.kivakit.core.locale.LanguageIsoCode;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.extraction.BaseExtractor;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.geography.Location;
@@ -43,7 +43,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 @UmlClassDiagram(diagram = DiagramRegions.class)
 public class State extends Region<State>

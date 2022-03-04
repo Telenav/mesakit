@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.specifications.library.attributes;
 import com.telenav.kivakit.interfaces.loading.Unloadable;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.core.language.collections.CompressibleCollection;
-import com.telenav.kivakit.core.language.collections.list.ObjectList;
+import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
@@ -34,7 +34,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
 
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 /**
  * Loads attributes from a {@link FieldArchive} (note that {@link GraphArchive} is a field archive) and populates the

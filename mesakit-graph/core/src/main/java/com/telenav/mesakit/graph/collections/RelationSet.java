@@ -18,26 +18,26 @@
 
 package com.telenav.mesakit.graph.collections;
 
-import com.telenav.kivakit.collections.set.operations.Intersection;
-import com.telenav.kivakit.collections.set.operations.Subset;
-import com.telenav.kivakit.collections.set.operations.Union;
-import com.telenav.kivakit.collections.set.operations.Without;
+import com.telenav.kivakit.core.collections.set.operations.Intersection;
+import com.telenav.kivakit.core.collections.set.operations.Subset;
+import com.telenav.kivakit.core.collections.set.operations.Union;
+import com.telenav.kivakit.core.collections.set.operations.Without;
 import com.telenav.kivakit.conversion.BaseConverter;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.language.iteration.Streams;
 import com.telenav.kivakit.core.language.iteration.Streams.Processing;
-import com.telenav.kivakit.core.language.strings.Join;
-import com.telenav.kivakit.core.language.strings.Strings;
-import com.telenav.kivakit.core.language.strings.formatting.Separators;
+import com.telenav.kivakit.core.string.Join;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.string.formatting.Separators;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.messaging.listeners.ThrowingListener;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.count.Estimate;
-import com.telenav.kivakit.language.count.Maximum;
-import com.telenav.kivakit.language.time.Frequency;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.time.Frequency;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;
@@ -55,7 +55,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * A set of relations. Supports {@link #union(RelationSet)} and {@link #without(Set)} operations, that logically combine

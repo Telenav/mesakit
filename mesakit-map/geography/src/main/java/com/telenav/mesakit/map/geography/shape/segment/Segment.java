@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.map.geography.shape.segment;
 
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.language.Hash;
-import com.telenav.kivakit.core.object.Pair;
-import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.kivakit.core.collections.iteration.Next;
-import com.telenav.kivakit.core.language.strings.formatting.Separators;
+import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.object.Pair;
+import com.telenav.kivakit.core.string.Separators;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.geography.Latitude;
@@ -334,6 +334,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
      *
      * @see "http://www.skytopia.com/project/articles/compsci/clipping.html"
      */
+    @SuppressWarnings("SpellCheckingInspection")
     @Override
     public boolean intersects(Rectangle rectangle)
     {

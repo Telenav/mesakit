@@ -19,20 +19,19 @@
 package com.telenav.mesakit.map.region.regions;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.conversion.string.collection.BaseListConverter;
-import com.telenav.kivakit.coredata.extraction.BaseExtractor;
-import com.telenav.kivakit.coredata.extraction.Extractor;
-import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.core.language.locales.LanguageIsoCode;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.language.object.ObjectFormatter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.language.strings.Strings;
-import com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.core.language.values.identifier.IntegerIdentifier;
+import com.telenav.kivakit.core.locale.LanguageIsoCode;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.value.identifier.IntegerIdentifier;
+import com.telenav.kivakit.extraction.BaseExtractor;
+import com.telenav.kivakit.extraction.Extractor;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.numeric.Quantizable;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
@@ -117,10 +116,12 @@ public abstract class Country extends Region<Country> implements Quantizable
 
     public static Country BENIN;
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static Country SAINT_BARTHELEMY;
 
     public static Country BERMUDA;
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static Country BRUNEI_DARUSSALAM;
 
     public static Country BOLIVIA;
@@ -131,6 +132,7 @@ public abstract class Country extends Region<Country> implements Quantizable
 
     public static Country BHUTAN;
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static Country BOUVET_ISLAND;
 
     public static Country BOTSWANA;
@@ -151,6 +153,7 @@ public abstract class Country extends Region<Country> implements Quantizable
 
     public static Country SWITZERLAND;
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static Country COTE_D_IVOIRE;
 
     public static Country COOK_ISLANDS;
@@ -163,6 +166,7 @@ public abstract class Country extends Region<Country> implements Quantizable
 
     public static Country COLOMBIA;
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static Country COSTA_RICA;
 
     public static Country CUBA;
@@ -211,6 +215,7 @@ public abstract class Country extends Region<Country> implements Quantizable
 
     public static Country MICRONESIA;
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static Country FAROE_ISLANDS;
 
     public static Country FRANCE;
@@ -303,6 +308,7 @@ public abstract class Country extends Region<Country> implements Quantizable
 
     public static Country COMOROS;
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static Country SAINT_KITTS_AND_NEVIS;
 
     public static Country KOREA_NORTH;
@@ -403,6 +409,7 @@ public abstract class Country extends Region<Country> implements Quantizable
 
     public static Country NAURU;
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static Country NIUE;
 
     public static Country NEW_ZEALAND;
@@ -433,6 +440,7 @@ public abstract class Country extends Region<Country> implements Quantizable
 
     public static Country PORTUGAL;
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static Country PALAU;
 
     public static Country PARAGUAY;
@@ -467,6 +475,7 @@ public abstract class Country extends Region<Country> implements Quantizable
 
     public static Country SLOVENIA;
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static Country SVALBARD_AND_JAN_MAYEN_ISLANDS;
 
     public static Country SLOVAKIA;
@@ -489,6 +498,7 @@ public abstract class Country extends Region<Country> implements Quantizable
 
     public static Country SWAZILAND;
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static Country TURKS_AND_CAICOS_ISLANDS;
 
     public static Country CHAD;
@@ -501,6 +511,7 @@ public abstract class Country extends Region<Country> implements Quantizable
 
     public static Country TAJIKISTAN;
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static Country TOKELAU;
 
     public static Country TIMOR_LESTE;
@@ -547,12 +558,14 @@ public abstract class Country extends Region<Country> implements Quantizable
 
     public static Country VANUATU;
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static Country WALLIS_AND_FUTUNA_ISLANDS;
 
     public static Country SAMOA;
 
     public static Country YEMEN;
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static Country MAYOTTE;
 
     public static Country SOUTH_AFRICA;
@@ -806,19 +819,6 @@ public abstract class Country extends Region<Country> implements Quantizable
         public CountryTmcCode(int value)
         {
             super(value);
-        }
-    }
-
-    public static class ListConverter extends BaseListConverter<Country>
-    {
-        public ListConverter(Listener listener)
-        {
-            super(listener, new Region.Converter<>(listener), ",");
-        }
-
-        public ListConverter(Listener listener, String delimiter)
-        {
-            super(listener, new Region.Converter<>(listener), delimiter);
         }
     }
 

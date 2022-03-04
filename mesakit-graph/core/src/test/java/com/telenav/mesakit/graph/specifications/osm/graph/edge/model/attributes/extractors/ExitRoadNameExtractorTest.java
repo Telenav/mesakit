@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.extractors;
 
-import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.extractors.ExitRoadNameExtractor;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.Place;
@@ -27,7 +27,7 @@ import com.telenav.mesakit.graph.world.grid.WorldCell;
 import com.telenav.mesakit.graph.world.identifiers.WorldPlaceIdentifier;
 import com.telenav.mesakit.map.geography.Location;
 
-import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 /**
  * An place in a {@link WorldGraph}, scoped by a {@link WorldCell} and having a {@link WorldPlaceIdentifier}. The cell

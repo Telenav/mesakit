@@ -19,8 +19,8 @@
 package com.telenav.mesakit.graph.specifications.common.graph.loader;
 
 import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.core.language.progress.reporters.Progress;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;

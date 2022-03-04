@@ -23,7 +23,7 @@ import com.telenav.kivakit.serialization.kryo.KryoSerializer;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
 
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public abstract class RTreeSpatialIndexKryoSerializer<T extends Bounded & Intersectable> extends KryoSerializer<RTreeSpatialIndex>

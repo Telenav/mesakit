@@ -25,14 +25,14 @@ import com.telenav.kivakit.coredata.validation.Validatable;
 import com.telenav.kivakit.coredata.validation.ValidationType;
 import com.telenav.kivakit.coredata.validation.Validator;
 import com.telenav.kivakit.core.language.collections.CompressibleCollection;
-import com.telenav.kivakit.core.language.collections.list.ObjectList;
+import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.collections.iteration.BaseIterator;
-import com.telenav.kivakit.core.language.threading.batcher.Batcher;
-import com.telenav.kivakit.language.time.Time;
-import com.telenav.kivakit.language.count.Bytes;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.count.Estimate;
-import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.thread.batcher.Batcher;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
@@ -77,7 +77,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 
 /**

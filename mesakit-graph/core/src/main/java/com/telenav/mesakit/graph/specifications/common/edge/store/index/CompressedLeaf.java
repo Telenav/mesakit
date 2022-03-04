@@ -26,7 +26,7 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
 import java.util.List;
 
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * Leaf of a compressed edge spatial index

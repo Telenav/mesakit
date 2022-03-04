@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.graph.specifications.library.attributes;
 
-import com.telenav.kivakit.collections.map.TwoWayMap;
+import com.telenav.kivakit.core.collections.map.TwoWayMap;
 
 import java.util.Objects;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 /**
  * An attribute of an {@link AttributeStore}, having a name and an automatically assigned identifier.

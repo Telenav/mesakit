@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;

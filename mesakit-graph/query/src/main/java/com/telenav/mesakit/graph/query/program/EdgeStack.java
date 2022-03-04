@@ -1,7 +1,7 @@
 package com.telenav.mesakit.graph.query.program;
 
 import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.core.language.collections.list.ObjectList;
+import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;

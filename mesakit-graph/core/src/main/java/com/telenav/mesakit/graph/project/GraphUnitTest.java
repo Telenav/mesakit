@@ -23,8 +23,8 @@ import com.telenav.kivakit.settings.settings.stores.resource.FolderSettingsStore
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.core.object.Lazy;
-import com.telenav.kivakit.core.language.progress.ProgressReporter;
-import com.telenav.kivakit.language.count.Estimate;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.library.osm.change.store;
 
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.mesakit.graph.Edge;

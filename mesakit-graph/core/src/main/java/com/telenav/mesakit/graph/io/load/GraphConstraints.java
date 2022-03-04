@@ -22,7 +22,7 @@ import com.telenav.kivakit.core.collections.iteration.FilteredIterable;
 import com.telenav.kivakit.interfaces.comparison.Filter;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.core.language.object.ObjectFormatter;
 import com.telenav.kivakit.core.messaging.listeners.MessageList;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.mesakit.graph.Edge;

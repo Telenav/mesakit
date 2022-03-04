@@ -20,10 +20,10 @@ package com.telenav.mesakit.graph.specifications.common.relation.store;
 
 import com.telenav.kivakit.coredata.validation.ValidationType;
 import com.telenav.kivakit.coredata.validation.Validator;
-import com.telenav.kivakit.language.primitive.Ints;
-import com.telenav.kivakit.language.count.BitCount;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.count.Estimate;
+import com.telenav.kivakit.core.language.primitive.Ints;
+import com.telenav.kivakit.core.value.count.BitCount;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;

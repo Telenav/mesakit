@@ -1,11 +1,12 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
-import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
-import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
-import com.telenav.kivakit.core.object.Lazy;
-import com.telenav.kivakit.core.path.PackagePath;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.object.Lazy;
+import com.telenav.kivakit.core.path.PackagePath;
+import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
+import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
 import com.telenav.kivakit.resource.resources.other.PropertyMap;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
@@ -47,7 +48,7 @@ public class PbfDefaultCodecs
     @UmlRelation(label = "provides", referentCardinality = "2")
     public HuffmanCharacterCodec defaultKeyCharacterCodec()
     {
-        return HuffmanCharacterCodec.from(keyCharacterCodecFrequencies(), ESCAPE);
+        return HuffmanCharacterCodec.from(Listener.throwing(), keyCharacterCodecFrequencies(), ESCAPE);
     }
 
     @NotNull
@@ -60,7 +61,7 @@ public class PbfDefaultCodecs
     @NotNull
     public HuffmanCharacterCodec defaultValueCharacterCodec()
     {
-        return HuffmanCharacterCodec.from(valueCharacterCodecFrequencies(), ESCAPE);
+        return HuffmanCharacterCodec.from(Listener.throwing(), valueCharacterCodecFrequencies(), ESCAPE);
     }
 
     @NotNull

@@ -18,8 +18,10 @@
 
 package com.telenav.mesakit.graph.matching.conflation;
 
-import com.telenav.kivakit.language.primitive.Booleans;
-import com.telenav.kivakit.language.level.Percent;
+import com.telenav.kivakit.core.language.primitive.Booleans;
+
+import com.telenav.kivakit.core.value.level.Percent;
+
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.mesakit.graph.Edge;

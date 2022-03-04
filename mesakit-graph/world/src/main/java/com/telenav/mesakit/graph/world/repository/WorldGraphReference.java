@@ -27,7 +27,7 @@ import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.value.Source;
-import com.telenav.kivakit.core.language.strings.Strip;
+import com.telenav.kivakit.core.string.Strip;
 import com.telenav.kivakit.resource.path.FilePath;
 import com.telenav.mesakit.graph.world.WorldGraph;
 import com.telenav.mesakit.graph.world.WorldGraphDeployments;
@@ -38,7 +38,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 /**
  * A logical reference that lazy loads a {@link WorldGraph} using descriptors passed to the constructor when {@link

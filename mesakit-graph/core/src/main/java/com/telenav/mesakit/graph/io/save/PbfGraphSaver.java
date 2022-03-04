@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.io.save;
 
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.count.MutableCount;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.MutableCount;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.resource.WritableResource;

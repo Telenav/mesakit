@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing;
 
-import com.telenav.kivakit.core.language.strings.AsciiArt;
-import com.telenav.kivakit.language.time.Time;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.core.language.values.mutable.MutableValue;
 import com.telenav.kivakit.core.messaging.Broadcaster;
+import com.telenav.kivakit.core.string.AsciiArt;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.mutable.MutableValue;
 import com.telenav.kivakit.resource.Resourceful;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;

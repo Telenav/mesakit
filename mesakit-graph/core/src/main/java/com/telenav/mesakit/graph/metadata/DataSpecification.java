@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.metadata;
 
-import com.telenav.kivakit.collections.map.MultiMap;
+import com.telenav.kivakit.core.collections.map.MultiMap;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.coredata.comparison.Differences;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.coredata.validation.ValidationType;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
@@ -73,9 +73,9 @@ import com.telenav.mesakit.map.data.formats.library.DataFormat;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.telenav.kivakit.ensure.Ensure.fail;
-import static com.telenav.kivakit.ensure.Ensure.illegalArgument;
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.illegalArgument;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * A specification of {@link Graph} data and its storage, independent of format or supplier. For example, data of UniDB

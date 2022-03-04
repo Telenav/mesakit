@@ -23,7 +23,7 @@ import com.telenav.kivakit.data.compression.codecs.huffman.list.HuffmanStringLis
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
 import com.telenav.kivakit.core.path.PackagePath;
-import com.telenav.kivakit.core.language.progress.reporters.Progress;
+import com.telenav.kivakit.core.progress.reporters.Progress;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;

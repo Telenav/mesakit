@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.loader;
 
-import com.telenav.kivakit.core.language.progress.ProgressReporter;
-import com.telenav.kivakit.core.language.strings.AsciiArt;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.mesakit.graph.GraphProject;
@@ -38,7 +38,7 @@ import com.telenav.mesakit.graph.ui.debuggers.edge.sectioner.VisualEdgeSectionDe
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagFilter;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.mesakit.graph.Metadata.VALIDATE_EXCEPT_STATISTICS;
 
 /**

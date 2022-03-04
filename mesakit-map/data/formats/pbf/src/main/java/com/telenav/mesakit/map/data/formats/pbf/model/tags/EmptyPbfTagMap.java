@@ -1,8 +1,8 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
-import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.collections.iteration.Iterators;
-import com.telenav.kivakit.language.primitive.Ints;
+import com.telenav.kivakit.core.language.primitive.Ints;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfModelTags;
 import org.jetbrains.annotations.NotNull;
@@ -10,7 +10,7 @@ import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.Iterator;
 
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * @author jonathanl (shibo)

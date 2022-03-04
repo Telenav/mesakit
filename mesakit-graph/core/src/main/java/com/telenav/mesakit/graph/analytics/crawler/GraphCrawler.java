@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.analytics.crawler;
 
-import com.telenav.kivakit.core.language.progress.reporters.Progress;
-import com.telenav.kivakit.language.count.Maximum;
-import com.telenav.kivakit.language.count.Estimate;
+import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSet;

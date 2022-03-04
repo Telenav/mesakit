@@ -19,8 +19,8 @@
 package com.telenav.mesakit.graph.specifications.library.pbf;
 
 import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.core.language.strings.AsciiArt;
-import com.telenav.kivakit.core.language.strings.conversion.AsStringIndenter;
+import com.telenav.kivakit.core.string.AsciiArt;
+import com.telenav.kivakit.core.string.conversion.AsStringIndenter;
 import com.telenav.kivakit.core.messaging.Message;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.primitive.collections.set.SplitLongSet;
@@ -39,7 +39,7 @@ import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
 
 import java.util.Collection;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
 

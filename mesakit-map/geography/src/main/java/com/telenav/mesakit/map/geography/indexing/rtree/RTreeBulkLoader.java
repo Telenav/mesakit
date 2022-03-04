@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.project.lexakai.DiagramSpatialIndex;
@@ -29,7 +29,7 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 /**
  * This is a top-down bulk loader that minimizes overlap. It's roughly based on a very sketchy research paper that was

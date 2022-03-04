@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.kivakit.core.language.values.identifier.IntegerIdentifier;
+import com.telenav.kivakit.core.value.identifier.IntegerIdentifier;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.region.project.lexakai.DiagramRegion;

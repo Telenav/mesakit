@@ -22,8 +22,8 @@ import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.core.language.collections.CompressibleCollection;
 import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.core.language.Objects;
-import com.telenav.kivakit.language.count.Bytes;
-import com.telenav.kivakit.language.count.Estimate;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
@@ -33,7 +33,7 @@ import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 /**
  * A compressed store of polyline data

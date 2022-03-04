@@ -1,6 +1,6 @@
 package com.telenav.mesakit.graph.query.program;
 
-import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;

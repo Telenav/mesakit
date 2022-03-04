@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.map;
 
 import com.telenav.kivakit.core.language.iteration.Streams;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Road;
 import com.telenav.mesakit.graph.Route;
@@ -45,8 +45,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
-import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 /**
  * This class represents a way, but not necessarily a {@link MapWay}. It might be a shorter or longer stretch of a road

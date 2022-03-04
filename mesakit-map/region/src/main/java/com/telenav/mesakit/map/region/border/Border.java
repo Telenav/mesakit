@@ -30,8 +30,8 @@ import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.project.lexakai.DiagramBorder;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
-import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 @UmlClassDiagram(diagram = DiagramBorder.class)
 public class Border<T extends Region<T>> implements Bounded, Intersectable

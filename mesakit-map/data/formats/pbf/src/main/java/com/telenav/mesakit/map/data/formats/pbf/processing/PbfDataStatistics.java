@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing;
 
-import com.telenav.kivakit.language.count.Bytes;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfProcessing;

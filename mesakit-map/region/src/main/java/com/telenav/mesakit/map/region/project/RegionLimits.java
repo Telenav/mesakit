@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.region.project;
 
-import com.telenav.kivakit.language.count.Estimate;
-import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.messaging.Listener;
 
 /**

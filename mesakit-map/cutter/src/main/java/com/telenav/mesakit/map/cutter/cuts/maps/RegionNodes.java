@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.cutter.cuts.maps;
 
-import com.telenav.kivakit.language.primitive.Longs;
+import com.telenav.kivakit.core.language.primitive.Longs;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine.KivaKitExcludeFromSizeOf;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;

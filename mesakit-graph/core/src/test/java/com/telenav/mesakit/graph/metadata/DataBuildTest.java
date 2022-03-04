@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.metadata;
 
-import com.telenav.kivakit.core.language.strings.Paths;
-import com.telenav.kivakit.language.time.LocalTime;
-import com.telenav.kivakit.language.time.TimeZones;
+import com.telenav.kivakit.core.string.Paths;
+import com.telenav.kivakit.core.time.LocalTime;
+import com.telenav.kivakit.core.time.TimeZones;
 import com.telenav.kivakit.core.test.UnitTest;
 import org.junit.Test;
 

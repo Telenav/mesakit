@@ -26,12 +26,12 @@ import com.telenav.kivakit.coredata.validation.BaseValidator;
 import com.telenav.kivakit.coredata.validation.Validatable;
 import com.telenav.kivakit.coredata.validation.ValidationType;
 import com.telenav.kivakit.coredata.validation.Validator;
-import com.telenav.kivakit.core.language.strings.CaseFormat;
-import com.telenav.kivakit.core.language.strings.StringTo;
-import com.telenav.kivakit.core.language.strings.conversion.AsIndentedString;
-import com.telenav.kivakit.core.language.strings.conversion.AsStringIndenter;
-import com.telenav.kivakit.language.time.Time;
-import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.string.CaseFormat;
+import com.telenav.kivakit.core.string.StringTo;
+import com.telenav.kivakit.core.string.conversion.AsIndentedString;
+import com.telenav.kivakit.core.string.conversion.AsStringIndenter;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.messaging.context.CallStack;
 import com.telenav.kivakit.core.logging.Logger;
@@ -68,7 +68,7 @@ import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.messaging.context.CallStack.Matching.SUBCLASS;
 import static com.telenav.kivakit.core.messaging.context.CallStack.Proximity.DISTANT;
 

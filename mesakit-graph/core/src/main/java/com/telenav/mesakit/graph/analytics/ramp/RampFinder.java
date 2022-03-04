@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.analytics.ramp;
 
-import com.telenav.kivakit.core.language.progress.reporters.Progress;
-import com.telenav.kivakit.language.count.Maximum;
-import com.telenav.kivakit.language.count.MutableCount;
+import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.value.count.MutableCount;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;

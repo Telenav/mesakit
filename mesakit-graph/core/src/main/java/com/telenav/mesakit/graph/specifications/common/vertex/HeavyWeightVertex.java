@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.specifications.common.vertex;
 
-import com.telenav.kivakit.collections.set.operations.Union;
+import com.telenav.kivakit.core.collections.set.operations.Union;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.time.Time;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
@@ -38,7 +38,7 @@ import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.road.model.GradeSeparation;
 
-import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 import static com.telenav.mesakit.graph.project.GraphLimits.Estimated;
 import static com.telenav.mesakit.graph.project.GraphLimits.Limit;
 

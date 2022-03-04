@@ -19,12 +19,12 @@
 package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.language.collections.list.ObjectList;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.language.strings.Strings;
-import com.telenav.kivakit.core.language.strings.conversion.AsIndentedString;
-import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.string.conversion.AsIndentedString;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
@@ -59,7 +59,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 public class EdgeRelation extends GraphElement implements Bounded
 {

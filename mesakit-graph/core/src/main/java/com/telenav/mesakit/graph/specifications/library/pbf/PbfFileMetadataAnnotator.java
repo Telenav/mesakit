@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.specifications.library.pbf;
 
 import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.language.count.Bytes;
+import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.language.values.mutable.MutableValue;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.primitive.collections.set.SplitLongSet;

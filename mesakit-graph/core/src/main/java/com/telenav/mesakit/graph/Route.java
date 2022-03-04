@@ -18,27 +18,27 @@
 
 package com.telenav.mesakit.graph;
 
-import com.telenav.kivakit.collections.iteration.iterators.SingletonIterator;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.core.collections.iteration.iterators.SingletonIterator;
+import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.list.Stack;
-import com.telenav.kivakit.core.language.collections.list.ObjectList;
-import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.collections.iteration.BaseIterator;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.kivakit.core.collections.iteration.Next;
 import com.telenav.kivakit.core.language.iteration.Streams;
 import com.telenav.kivakit.core.language.Hash;
-import com.telenav.kivakit.core.language.strings.Split;
-import com.telenav.kivakit.core.language.strings.formatting.Separators;
+import com.telenav.kivakit.core.string.Split;
+import com.telenav.kivakit.core.string.formatting.Separators;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.count.Estimate;
-import com.telenav.kivakit.language.count.Maximum;
-import com.telenav.kivakit.language.primitive.Ints;
-import com.telenav.kivakit.language.time.Duration;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.language.primitive.Ints;
+import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.graph.Edge.SignPostSupport;
 import com.telenav.mesakit.graph.collections.EdgePair;
@@ -76,7 +76,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 import static com.telenav.kivakit.core.language.collections.CompressibleCollection.Method.RESIZE;
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
 import static com.telenav.mesakit.map.measurements.geographic.Angle._90_DEGREES;
 import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;

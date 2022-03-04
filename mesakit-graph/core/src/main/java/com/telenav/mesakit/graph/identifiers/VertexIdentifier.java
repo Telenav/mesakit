@@ -20,9 +20,9 @@ package com.telenav.mesakit.graph.identifiers;
 
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.QuantizableConverter;
-import com.telenav.kivakit.language.count.BitCount;
-import com.telenav.kivakit.core.language.values.identifier.IntegerIdentifier;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.value.count.BitCount;
+import com.telenav.kivakit.core.value.identifier.IntegerIdentifier;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;

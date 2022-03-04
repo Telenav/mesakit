@@ -26,7 +26,7 @@ import com.telenav.mesakit.map.geography.indexing.rtree.Leaf;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSettings;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndex;
 
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * Compressed spatial index for edges.

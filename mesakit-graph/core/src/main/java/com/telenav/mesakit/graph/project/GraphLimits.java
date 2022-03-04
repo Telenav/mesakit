@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.project;
 
-import com.telenav.kivakit.language.count.Estimate;
-import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
 
 public class GraphLimits
 {

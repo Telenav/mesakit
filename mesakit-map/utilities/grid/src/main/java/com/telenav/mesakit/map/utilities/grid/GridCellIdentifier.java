@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.utilities.grid;
 
-import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.core.language.Hash;
-import com.telenav.kivakit.language.primitive.Ints;
+import com.telenav.kivakit.core.language.primitive.Ints;
+import com.telenav.kivakit.interfaces.string.Stringable;
 
 public class GridCellIdentifier implements Stringable
 {

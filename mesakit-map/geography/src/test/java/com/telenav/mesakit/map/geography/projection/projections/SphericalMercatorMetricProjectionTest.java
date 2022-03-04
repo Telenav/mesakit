@@ -26,7 +26,7 @@ import com.telenav.mesakit.map.geography.projection.MetricCoordinate;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import org.junit.Test;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 /**
  * @author jonathanl (shibo)

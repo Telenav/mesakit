@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge;
 
-import com.telenav.kivakit.core.language.strings.formatting.Separators;
-import com.telenav.kivakit.language.count.Estimate;
-import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.string.formatting.Separators;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.mesakit.graph.Edge;

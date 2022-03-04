@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.library.attributes;
 
-import com.telenav.kivakit.core.language.collections.list.ObjectList;
+import com.telenav.kivakit.core.collections.list.ObjectList;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;

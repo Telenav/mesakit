@@ -18,9 +18,8 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
-import com.telenav.kivakit.core.language.Objects;
-import com.telenav.kivakit.language.count.Bytes;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.polygon.PolygonSpatialIndex;
@@ -37,7 +36,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 @UmlClassDiagram(diagram = DiagramPolyline.class)
 public class Polygon extends Polyline implements Shape
@@ -157,7 +156,7 @@ public class Polygon extends Polyline implements Shape
 
     public Bytes approximateSize()
     {
-        return Objects.primitiveSize(this);
+        return Bytes.primitiveSize(this);
     }
 
     public java.awt.Polygon asAwtPolygonInMicroDegrees()

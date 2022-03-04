@@ -18,9 +18,11 @@
 
 package com.telenav.mesakit.navigation.routing.debuggers;
 
-import com.telenav.kivakit.language.time.Duration;
-import com.telenav.kivakit.language.count.Estimate;
-import com.telenav.kivakit.language.level.Percent;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.value.count.Estimate;
+
+import com.telenav.kivakit.core.value.level.Percent;
+
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSet;

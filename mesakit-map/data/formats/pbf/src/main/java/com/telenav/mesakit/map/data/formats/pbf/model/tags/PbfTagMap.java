@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
-import com.telenav.kivakit.interfaces.collection.Keyed;
-import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.language.Hash;
-import com.telenav.kivakit.language.primitive.Ints;
-import com.telenav.kivakit.language.primitive.Longs;
-import com.telenav.kivakit.core.language.strings.Strings;
+import com.telenav.kivakit.core.language.primitive.Ints;
+import com.telenav.kivakit.core.language.primitive.Longs;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.interfaces.collection.Keyed;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -36,7 +36,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 /**
  * A map between tag keys and values.
@@ -385,7 +385,7 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
 
     public int valueAsInt(String key)
     {
-        return Ints.parse(Listener.console(), get(key));
+        return Ints.parseInt(Listener.console(), get(key));
     }
 
     public long valueAsLong(String key)
@@ -395,7 +395,7 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
 
     public int valueAsNaturalNumber(String key)
     {
-        return Ints.parseNaturalNumber(get(key));
+        return Ints.parseFastNaturalNumber(get(key));
     }
 
     public boolean valueIsNo(String key)

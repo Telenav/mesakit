@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.geography.indexing.polygon;
 
-import com.telenav.kivakit.language.count.Estimate;
+import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.mesakit.map.geography.shape.segment.Segment;
 

@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.collections.set.ObjectSet;
+import com.telenav.kivakit.core.collections.set.ObjectSet;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.coreproject.Project;

@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.extractors;
 
-import com.telenav.kivakit.coredata.extraction.BaseExtractor;
-import com.telenav.kivakit.core.language.strings.Strings;
-import com.telenav.kivakit.core.language.strings.Strip;
+import com.telenav.kivakit.extraction.BaseExtractor;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.string.Strip;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
 import com.telenav.mesakit.map.measurements.motion.Speed;

@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.extractors;
 
-import com.telenav.kivakit.coredata.extraction.BaseExtractor;
-import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.extraction.BaseExtractor;
+import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
 

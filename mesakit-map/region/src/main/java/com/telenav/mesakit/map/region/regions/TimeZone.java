@@ -19,8 +19,8 @@
 package com.telenav.mesakit.map.region.regions;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.coredata.extraction.BaseExtractor;
-import com.telenav.kivakit.core.language.strings.Paths;
+import com.telenav.kivakit.extraction.BaseExtractor;
+import com.telenav.kivakit.core.string.Paths;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.lexakai.annotations.UmlClassDiagram;

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.cutter;
 
-import com.telenav.kivakit.language.count.Estimate;
+import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;

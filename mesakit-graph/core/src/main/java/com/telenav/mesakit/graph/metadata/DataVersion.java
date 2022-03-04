@@ -19,16 +19,16 @@
 package com.telenav.mesakit.graph.metadata;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.language.Hash;
-import com.telenav.kivakit.language.time.LocalTime;
+import com.telenav.kivakit.core.time.LocalTime;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 
 import java.util.regex.Pattern;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 /**
  * A {@link DataVersion} is of the form: 2001Q1

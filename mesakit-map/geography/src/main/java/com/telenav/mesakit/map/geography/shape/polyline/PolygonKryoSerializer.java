@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.geography.shape.polyline;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
 import com.telenav.kivakit.serialization.kryo.KryoSerializer;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 public class PolygonKryoSerializer extends KryoSerializer<Polygon>
 {

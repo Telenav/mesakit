@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.region.countries;
 
-import com.telenav.kivakit.core.language.locales.CountryIsoCode;
-import com.telenav.kivakit.core.language.locales.LanguageIsoCode;
+import com.telenav.kivakit.core.locale.CountryIsoCode;
+import com.telenav.kivakit.core.locale.LanguageIsoCode;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.countries.states.California;

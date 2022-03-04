@@ -23,13 +23,13 @@ import com.telenav.kivakit.settings.settings.Deployment;
 import com.telenav.kivakit.interfaces.code.Callback;
 import com.telenav.kivakit.interfaces.comparison.Filter;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.core.language.progress.reporters.Progress;
-import com.telenav.kivakit.core.language.threading.Threads;
-import com.telenav.kivakit.language.time.Duration;
-import com.telenav.kivakit.language.count.Bytes;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.count.Maximum;
-import com.telenav.kivakit.language.version.Version;
+import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.thread.Threads;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
@@ -71,8 +71,8 @@ import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.road.model.RoadFunctionalClass;
 
 import static com.telenav.kivakit.commandline.SwitchParsers.enumSwitchParser;
-import static com.telenav.kivakit.ensure.Ensure.fail;
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 import static com.telenav.mesakit.graph.Metadata.CountType.REQUIRE_EXACT;
 
 /**

@@ -19,32 +19,32 @@
 package com.telenav.mesakit.map.region.border.cache;
 
 import com.telenav.kivakit.collections.map.MultiMap;
+import com.telenav.kivakit.core.KivaKit;
+import com.telenav.kivakit.core.io.IO;
 import com.telenav.kivakit.core.language.Objects;
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
-import com.telenav.kivakit.core.language.collections.CompressibleCollection.Method;
-import com.telenav.kivakit.core.language.io.IO;
-import com.telenav.kivakit.core.language.progress.ProgressReporter;
-import com.telenav.kivakit.core.language.progress.reporters.Progress;
-import com.telenav.kivakit.core.language.strings.AsciiArt;
 import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.core.messaging.Message;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
-import com.telenav.kivakit.coredata.extraction.Extractor;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.string.AsciiArt;
+import com.telenav.kivakit.core.string.Formatter;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.value.count.MutableCount;
+import com.telenav.kivakit.core.version.VersionedObject;
+import com.telenav.kivakit.extraction.Extractor;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.FileCache;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.lifecycle.Configured;
-import com.telenav.kivakit.language.count.Bytes;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.count.Estimate;
-import com.telenav.kivakit.language.count.Maximum;
-import com.telenav.kivakit.language.count.MutableCount;
-import com.telenav.kivakit.language.time.Time;
-import com.telenav.kivakit.language.version.VersionedObject;
 import com.telenav.kivakit.network.core.Host;
 import com.telenav.kivakit.network.core.NetworkPath;
 import com.telenav.kivakit.network.http.secure.SecureHttpNetworkLocation;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.path.FileName;
@@ -95,9 +95,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
-import static com.telenav.kivakit.ensure.Ensure.ensureEqual;
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureEqual;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
 import static com.telenav.kivakit.serialization.core.SerializationSession.Type.RESOURCE;
@@ -132,7 +132,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
      */
     private static final NetworkPath NETWORK_PATH = Host.parseHost(Listener.console(), "www.mesakit.org")
             .https()
-            .path(Listener.console(), Message.format("/data/$/administrative-borders-$.jar",
+            .path(Listener.console(), Formatter.format("/data/$/administrative-borders-$.jar",
                     RegionProject.get().borderDataVersion(),
                     RegionProject.get().borderDataVersion()));
 
@@ -142,7 +142,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
     private static final boolean SHOW_APPROXIMATE_SIZES = false;
 
     /**
-     * Set this to true to use the fast (and large) polygon spatial index implementation. Set to false to use a method
+     * Set this to true to use the fast (and large) polygon spatial index implementation. Specify false to use a method
      * based on RTreeSpatialIndex.
      * <p>
      * NOTE: Once the CACHED_SPATIAL_INDEX file has been created (using this value), it will be necessary to remove the
@@ -258,7 +258,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
     }
 
     /**
-     * RTree spatial index of polygons so we can test only the minimum number of polygon outlines when locating an
+     * RTree spatial index of polygons, so we can test only the minimum number of polygon outlines when locating an
      * object for a location
      */
     @UmlAggregation(label = "indexed by")
@@ -326,7 +326,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
     @SuppressWarnings("UnusedReturnValue")
     public synchronized BorderCache<T> loadIdentities()
     {
-        // If the cache file doesn't exist or we can't load it
+        // If the cache file doesn't exist, or we can't load it
         var cacheFile = identitiesFile();
         if (!cacheFile.exists() || !identityCache.load(cacheFile, serializationSession()))
         {
@@ -607,7 +607,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
             return true;
         }
 
-        // otherwise Read borders from PBF file into cached index file
+        // otherwise, Read borders from PBF file into cached index file
         return loadBordersFromPbf(borders);
     }
 
@@ -832,14 +832,14 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                         // If the border polygon is valid,
                         if (builder.isValid())
                         {
-                            // build the polygon and set an identifier so it can be efficiently stored in a map
+                            // build the polygon and set an identifier, so it can be efficiently stored in a map
                             var border = builder.build();
                             if (border.bounds().area().isGreaterThan(settings().minimumBorderArea()))
                             {
                                 border.hashCode(identifier++);
                                 border.fast(USE_FAST_POLYGON_SPATIAL_INDEX);
                                 border.initialize();
-                                CompressibleCollection.compressReachableObjects(outer, border, Method.FREEZE,
+                                CompressibleCollection.compressReachableObjects(outer, border, CompressibleCollection.Method.FREEZE,
                                         event ->
                                         {
                                         });
@@ -852,7 +852,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                                 Bytes size = null;
                                 if (SHOW_APPROXIMATE_SIZES)
                                 {
-                                    size = Objects.primitiveSize(border.outline());
+                                    size = Bytes.primitiveSize(border.outline());
                                     ensure(size != null);
                                     totalSize.plus(size.asBytes());
                                 }
@@ -928,7 +928,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
     private void saveBordersToCache()
     {
         trace("Optimizing border index");
-        CompressibleCollection.compressReachableObjects(this, index(), Method.FREEZE, Compressible ->
+        CompressibleCollection.compressReachableObjects(this, index(), CompressibleCollection.Method.FREEZE, Compressible ->
         {
         });
         trace("Optimized border index");

@@ -19,12 +19,12 @@
 package com.telenav.mesakit.map.geography.shape.polyline.compression.huffman;
 
 import com.telenav.kivakit.component.BaseComponent;
-import com.telenav.kivakit.data.compression.codecs.huffman.HuffmanCodec;
-import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
-import com.telenav.kivakit.conversion.string.primitive.IntegerConverter;
-import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.conversion.core.language.primitive.IntegerConverter;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.data.compression.codecs.huffman.HuffmanCodec;
+import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
 import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
 import com.telenav.kivakit.primitive.collections.list.ByteList;
 import com.telenav.kivakit.resource.resources.other.PropertyMap;

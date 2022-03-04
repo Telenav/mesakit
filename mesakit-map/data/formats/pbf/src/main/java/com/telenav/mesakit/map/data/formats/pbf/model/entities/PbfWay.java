@@ -1,6 +1,6 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.entities;
 
-import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfModelEntities;

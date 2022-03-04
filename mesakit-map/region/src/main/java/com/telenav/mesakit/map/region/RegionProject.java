@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.core.object.Lazy;
-import com.telenav.kivakit.language.version.Version;
 import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.coreproject.Project;
+import com.telenav.kivakit.core.object.Lazy;
+import com.telenav.kivakit.core.project.Project;
+import com.telenav.kivakit.core.version.Version;
+import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.primitive.collections.project.PrimitiveCollectionsKryoTypes;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.kivakit.serialization.kryo.CoreKernelKryoTypes;
@@ -57,7 +57,7 @@ public class RegionProject extends Project
      */
     public Version borderDataVersion()
     {
-        return Version.parse(Listener.console(), "0.9.1");
+        return Version.parseVersion(Listener.throwing(), "0.9.1");
     }
 
     /**

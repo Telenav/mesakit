@@ -19,8 +19,8 @@
 package com.telenav.mesakit.graph.library.osm.change.io;
 
 import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.core.language.progress.reporters.Progress;
-import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.mesakit.graph.Graph;

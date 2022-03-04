@@ -20,17 +20,15 @@ package com.telenav.mesakit.map.geography.shape.rectangle;
 
 import com.telenav.kivakit.commandline.ArgumentParser;
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.kivakit.core.collections.iteration.Next;
+import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.language.Hash;
-import com.telenav.kivakit.core.language.patterns.Pattern;
-import com.telenav.kivakit.core.language.patterns.group.Group;
-import com.telenav.kivakit.language.level.Percent;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.value.level.Percent;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
@@ -54,7 +52,7 @@ import java.util.List;
 import static com.telenav.mesakit.map.geography.Precision.DM7;
 
 /**
- * NOTE: Rectangles cannot span the -180/180 longitude line.
+ * NOTE: Rectangles cannot cross the -180/180 longitude line.
  *
  * @author jonathanl (shibo)
  * @author matthieun
@@ -305,20 +303,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         /**
          * String used when there's no bounds specified
          */
-        public static final String NO_BOUNDS = "full";
-
-        public static Group<Rectangle> group(Listener listener)
-        {
-            return Pattern.expression(NO_BOUNDS)
-                    .or(Pattern.FLOATING_POINT_NUMBER
-                            .then(Pattern.UNDERSCORE)
-                            .then(Pattern.FLOATING_POINT_NUMBER)
-                            .then(Pattern.UNDERSCORE)
-                            .then(Pattern.FLOATING_POINT_NUMBER)
-                            .then(Pattern.UNDERSCORE)
-                            .then(Pattern.FLOATING_POINT_NUMBER))
-                    .group(new Rectangle.FileNameConverter(listener));
-        }
+        public static final String NO_BOUNDS = "null";
 
         private final Latitude.DegreesConverter latitudeConverter;
 

@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge;
 
-import com.telenav.kivakit.core.language.collections.list.ObjectList;
+import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.language.functions.Functions;
 import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
-import com.telenav.kivakit.language.time.Duration;
-import com.telenav.kivakit.language.time.Time;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
@@ -68,7 +68,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.mesakit.map.road.model.RoadState.ONE_WAY;
 import static com.telenav.mesakit.map.road.model.RoadState.TWO_WAY;
 

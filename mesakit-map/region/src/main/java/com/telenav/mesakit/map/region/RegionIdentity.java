@@ -22,13 +22,13 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.core.language.locales.CountryIsoCode;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.core.locale.CountryIsoCode;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.language.object.ObjectFormatter;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -42,8 +42,8 @@ import com.telenav.mesakit.map.region.regions.State;
 import com.telenav.mesakit.map.region.regions.TimeZone;
 import org.junit.Before;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
-import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 /**
  * <p>

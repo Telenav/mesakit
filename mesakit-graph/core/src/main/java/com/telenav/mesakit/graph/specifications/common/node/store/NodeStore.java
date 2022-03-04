@@ -43,7 +43,7 @@ import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdent
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 import com.telenav.mesakit.map.geography.Location;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 import static com.telenav.mesakit.map.geography.Precision.DM7;
 

@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph;
 
-import com.telenav.kivakit.core.language.progress.reporters.Progress;
-import com.telenav.kivakit.core.language.strings.AsciiArt;
-import com.telenav.kivakit.language.time.Time;
-import com.telenav.kivakit.language.count.MutableCount;
+import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.string.AsciiArt;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.MutableCount;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.analytics.junction.JunctionEdgeFinder;
