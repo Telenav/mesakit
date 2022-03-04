@@ -1,14 +1,11 @@
 package com.telenav.mesakit.core;
 
-import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.core.object.Lazy;
-import com.telenav.kivakit.language.version.Version;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine;
-import com.telenav.kivakit.core.messaging.Message;
-import com.telenav.kivakit.coreproject.Project;
+import com.telenav.kivakit.core.project.Project;
+import com.telenav.kivakit.core.vm.SystemProperties;
+import com.telenav.kivakit.filesystem.Folder;
 
-import static com.telenav.kivakit.ensure.Ensure.ensureEqual;
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 /**
  * @author jonathanl (shibo)
@@ -29,10 +26,6 @@ public class MesaKit extends Project
 
     public Folder mesakitCacheFolder()
     {
-        if (!projectVersion().equals(Version.parse(this, "0.9.9-SNAPSHOT")))
-        {
-            Message.println("oops");
-        }
         return mesakitRootCacheFolder().folder(projectVersion().toString()).mkdirs();
     }
 
@@ -43,7 +36,7 @@ public class MesaKit extends Project
 
     public Folder mesakitHome()
     {
-        var home = JavaVirtualMachine.property("MESAKIT_HOME");
+        var home = SystemProperties.property("MESAKIT_HOME");
         if (home != null)
         {
             return Folder.parse(this, home);

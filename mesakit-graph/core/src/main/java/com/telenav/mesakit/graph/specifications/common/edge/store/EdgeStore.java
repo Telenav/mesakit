@@ -37,7 +37,7 @@ import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
 import com.telenav.kivakit.primitive.collections.list.store.LongLinkedListStore;
 import com.telenav.kivakit.primitive.collections.map.multi.dynamic.LongToIntMultiMap;
-import com.telenav.kivakit.primitive.collections.map.multi.fixed.LongToLongFixedMultiMap;
+import com.telenav.kivakit.primitive.collections.map.scalars.fixed.LongToLongFixedMultiMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.IntToByteMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.LongToIntMap;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;

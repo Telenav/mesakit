@@ -19,18 +19,18 @@
 package com.telenav.mesakit.map.measurements.geographic;
 
 import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.interfaces.numeric.Maximizable;
 import com.telenav.kivakit.interfaces.numeric.Minimizable;
 import com.telenav.kivakit.interfaces.numeric.Quantizable;
 import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.coredata.validation.BaseValidator;
-import com.telenav.kivakit.coredata.validation.Validatable;
-import com.telenav.kivakit.coredata.validation.ValidationType;
-import com.telenav.kivakit.coredata.validation.Validator;
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.validation.BaseValidator;
+import com.telenav.kivakit.validation.Validatable;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -39,7 +39,7 @@ import com.telenav.mesakit.map.measurements.project.lexakai.DiagramMapMeasuremen
 import java.io.Serializable;
 import java.util.regex.Pattern;
 
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * An angle value represented between -360 and 360 degrees. Note that an angle of -45 degrees is seen as being less than
@@ -111,7 +111,7 @@ import static com.telenav.kivakit.ensure.Ensure.unsupported;
  *
  * @author jonathanl (shibo)
  */
-@SuppressWarnings("SwitchStatementWithTooFewBranches")
+@SuppressWarnings({ "SwitchStatementWithTooFewBranches", "SpellCheckingInspection" })
 @UmlClassDiagram(diagram = DiagramMapMeasurementGeographic.class)
 @UmlExcludeSuperTypes({ Stringable.class, Serializable.class, Quantizable.class })
 @LexakaiJavadoc(complete = true)
@@ -196,8 +196,8 @@ public class Angle implements
     }
 
     /**
-     * Chirality is the generic term for clockwise or counterclockwise (the term comes from from the Greek for "hand"
-     * and relates to the "hand rule" in physics)
+     * Chirality is the generic term for clockwise or counterclockwise (the term comes from the Greek for "hand" and
+     * relates to the "hand rule" in physics)
      *
      * @author jonathanl (shibo)
      */
@@ -210,7 +210,7 @@ public class Angle implements
 
     /**
      * Converts the given <code>String</code> to a new <code>Angle</code> object. The input string is expected to be of
-     * the format of a floating point number followed by a units identifier (just "degrees" for right now). Examples
+     * the format of a floating point number followed by a unit identifier (just "degrees" for right now). Examples
      * would include '1 degree', '180.3 degrees'.
      *
      * @author jonathanl (shibo)
@@ -275,6 +275,17 @@ public class Angle implements
             return degrees(Double.parseDouble(value));
         }
     }
+
+    /**
+     * The earth is approximately 24,901 miles around at the equator.
+     * <p>
+     * There are 360,000,000,000 nanodegrees in that distance.
+     * <p>
+     * So there are about 14,457,251 nanodegrees per mile (at the equator).
+     * <p>
+     * Since a mile is roughly 5,280 feet, one nanodegree is then about 0.0003 feet or 1/10th of 1 mm.
+     */
+    long nanodegrees;
 
     protected Angle()
     {
@@ -416,7 +427,7 @@ public class Angle implements
      * and 10 degrees is 10 degrees. The counterclockwise difference between 5 degrees and 355 degrees is also 10
      * degrees.
      * <p>
-     * Chirality.SMALLEST - Returns the smaller of the clockwise and the counterclockwise differences
+     * Chirality.SMALLEST - Returns the smallest of the clockwise and the counterclockwise differences
      *
      * @param that The other angle
      * @return The difference between the two angles as an angle
@@ -616,15 +627,4 @@ public class Angle implements
     {
         return -MAXIMUM_NANODEGREES;
     }
-
-    /**
-     * The earth is approximately 24,901 miles around at the equator.
-     * <p>
-     * There are 360,000,000,000 nanodegrees in that distance.
-     * <p>
-     * So there are about 14,457,251 nanodegrees per mile (at the equator).
-     * <p>
-     * Since a mile is roughly 5,280 feet, one nanodegree is then about 0.0003 feet or 1/10th of 1mm.
-     */
-    long nanodegrees;
 }

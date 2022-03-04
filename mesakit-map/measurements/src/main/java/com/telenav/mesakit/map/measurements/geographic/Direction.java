@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.measurements.geographic;
 
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
+import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.map.CaseFoldingStringMap;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.interfaces.naming.Named;
