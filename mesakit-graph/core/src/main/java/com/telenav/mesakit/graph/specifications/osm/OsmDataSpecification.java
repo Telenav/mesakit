@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.osm;
 
-import com.telenav.kivakit.coredata.comparison.Differences;
+import com.telenav.kivakit.core.string.Differences;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
@@ -34,7 +34,7 @@ import com.telenav.mesakit.graph.specifications.osm.graph.converter.OsmPbfToGrap
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.OsmEdge;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.OsmHeavyWeightEdge;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeAttributes;
-import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeDifferences;
+import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeComparator;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes.OsmEdgeProperties;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.store.OsmEdgeStore;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.OsmPbfGraphLoader;
@@ -70,7 +70,7 @@ public class OsmDataSpecification extends CommonDataSpecification
     @Override
     public Differences compare(Edge a, Edge b)
     {
-        return new OsmEdgeDifferences((OsmEdge) a, (OsmEdge) b).compare();
+        return new OsmEdgeComparator((OsmEdge) a, (OsmEdge) b).compare();
     }
 
     @Override

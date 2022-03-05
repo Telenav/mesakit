@@ -134,7 +134,7 @@ public abstract class BaseRoadNameParser implements RoadNameParser
 
     protected String rawText()
     {
-        return Join.join(tokens.tokens(), Token::text, "");
+        return Join.join(tokens.tokens(), "", Token::text);
     }
 
     protected String remainder()

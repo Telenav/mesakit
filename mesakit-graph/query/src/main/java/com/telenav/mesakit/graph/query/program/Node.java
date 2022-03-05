@@ -1,6 +1,6 @@
 package com.telenav.mesakit.graph.query.program;
 
-import com.telenav.kivakit.ensure.Ensure;
+import com.telenav.kivakit.core.ensure.Ensure;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;

@@ -22,24 +22,24 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.core.collections.set.operations.Intersection;
+import com.telenav.kivakit.collections.set.operations.Intersection;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.kivakit.core.collections.iteration.Next;
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
-import com.telenav.kivakit.coredata.validation.BaseValidator;
-import com.telenav.kivakit.coredata.validation.Validatable;
-import com.telenav.kivakit.coredata.validation.ValidationType;
-import com.telenav.kivakit.coredata.validation.Validator;
+import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.interfaces.lifecycle.Initializable;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
-import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
 import com.telenav.kivakit.primitive.collections.iteration.IntIterator;
 import com.telenav.kivakit.primitive.collections.list.store.IntLinkedListStore;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.validation.BaseValidator;
+import com.telenav.kivakit.validation.Validatable;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
@@ -146,7 +146,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     }
 
     @Override
-    public Method compress(Method method)
+    public CompressibleCollection.Method compress(Method method)
     {
         inEdges.compress(method);
         outEdges.compress(method);

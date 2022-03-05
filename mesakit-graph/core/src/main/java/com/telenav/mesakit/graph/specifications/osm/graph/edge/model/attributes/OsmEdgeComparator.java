@@ -18,16 +18,16 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes;
 
-import com.telenav.kivakit.coredata.comparison.Differences;
+import com.telenav.kivakit.core.string.Differences;
 import com.telenav.mesakit.graph.specifications.osm.graph.edge.model.OsmEdge;
 
-public class OsmEdgeDifferences
+public class OsmEdgeComparator
 {
     private final OsmEdge a;
 
     private final OsmEdge b;
 
-    public OsmEdgeDifferences(OsmEdge a, OsmEdge b)
+    public OsmEdgeComparator(OsmEdge a, OsmEdge b)
     {
         this.a = a;
         this.b = b;

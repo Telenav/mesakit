@@ -21,9 +21,9 @@ package com.telenav.mesakit.graph.identifiers.collections;
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.collections.list.StringList;
-import com.telenav.kivakit.core.string.formatting.Separators;
-import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.Separators;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 

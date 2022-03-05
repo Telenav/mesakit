@@ -1,6 +1,5 @@
 package com.telenav.mesakit.graph.query.program;
 
-import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
@@ -12,6 +11,7 @@ import com.telenav.mesakit.graph.collections.EdgeSet;
 import java.util.HashSet;
 import java.util.LinkedList;
 
+import static com.telenav.kivakit.interfaces.string.Stringable.Format;
 import static com.telenav.mesakit.graph.query.program.EdgeStack.Result.ALREADY_ON_STACK;
 import static com.telenav.mesakit.graph.query.program.EdgeStack.Result.PUSHED;
 
@@ -144,7 +144,7 @@ public class EdgeStack
         {
             return "[empty]";
         }
-        return ObjectList.objectList(stack).reversed().mapped(edge -> edge.asString(Stringable.Format.PROGRAMMATIC)).join(":") + " [top]";
+        return ObjectList.objectList(stack).reversed().mapped(edge -> edge.asString(Format.PROGRAMMATIC)).join(":") + " [top]";
     }
 
     /**

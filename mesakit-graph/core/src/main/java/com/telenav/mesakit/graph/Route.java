@@ -18,27 +18,27 @@
 
 package com.telenav.mesakit.graph;
 
-import com.telenav.kivakit.core.collections.iteration.iterators.SingletonIterator;
 import com.telenav.kivakit.conversion.BaseStringConverter;
-import com.telenav.kivakit.core.collections.list.Stack;
-import com.telenav.kivakit.core.collections.list.ObjectList;
-import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.collections.iteration.BaseIterator;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
+import com.telenav.kivakit.core.collections.iteration.Iterators;
 import com.telenav.kivakit.core.collections.iteration.Next;
-import com.telenav.kivakit.core.language.iteration.Streams;
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.collections.list.Stack;
+import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.language.Hash;
-import com.telenav.kivakit.core.string.Split;
-import com.telenav.kivakit.core.string.formatting.Separators;
+import com.telenav.kivakit.core.language.Streams;
+import com.telenav.kivakit.core.language.primitive.Ints;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.core.string.Separators;
+import com.telenav.kivakit.core.string.Split;
+import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.kivakit.core.language.primitive.Ints;
-import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.graph.Edge.SignPostSupport;
 import com.telenav.mesakit.graph.collections.EdgePair;
@@ -75,8 +75,8 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import static com.telenav.kivakit.core.language.collections.CompressibleCollection.Method.RESIZE;
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
+import static com.telenav.kivakit.primitive.collections.CompressibleCollection.Method.RESIZE;
 import static com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
 import static com.telenav.mesakit.map.measurements.geographic.Angle._90_DEGREES;
 import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
@@ -231,7 +231,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
      * @author jonathanl (shibo)
      * @see Route.Converter
      */
-    public static class MapIdentifierConverter extends BaseStringConverter<Route>
+    @SuppressWarnings("DuplicatedCode") public static class MapIdentifierConverter extends BaseStringConverter<Route>
     {
         private final MapEdgeIdentifier.EdgeConverter edgeConverter;
 
@@ -344,7 +344,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
                 }
                 else
                 {
-                    // otherwise the start is the start
+                    // otherwise, the start is the start
                     return tail.end();
                 }
             }
@@ -379,7 +379,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
                 // The current route object we are at in the iteration process
                 private Route current = head;
 
-                // Keep a stack of routes to iterate through so we can avoid using the Java stack
+                // Keep a stack of routes to iterate through, so we can avoid using the Java stack
                 // (which can cause stack overflows with long routes)
                 private final Stack<Route> stack = new Stack<>(count().asMaximum());
 
@@ -472,7 +472,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
                 }
                 else
                 {
-                    // otherwise the start is the start
+                    // otherwise, the start is the start
                     return head.start();
                 }
             }
@@ -606,7 +606,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
         @Override
         public Iterator<Edge> iterator()
         {
-            return new SingletonIterator<>(edge);
+            return Iterators.iterator(() -> edge);
         }
 
         @Override
@@ -861,7 +861,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
 
     public boolean canAppend(Count maximum, Route that)
     {
-        // If the the last edge of this route is connected to the first edge of that route and the
+        // If the last edge of this route is connected to the first edge of that route and the
         // maximum size won't be exceeded, we can append.
         if (that != null && last() != null && that.first() != null)
         {
@@ -881,7 +881,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
     }
 
     /**
-     * @return Connect two routes, if possible. If either route is two way they may be reversed to form the connection
+     * @return Connect two routes, if possible. If either route is two-way they may be reversed to form the connection
      */
     public Route connect(Route that)
     {
@@ -1189,6 +1189,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
     /**
      * @return The location of the vertex where the given road name crosses this route
      */
+    @SuppressWarnings("SpellCheckingInspection")
     public Location crossStreet(RoadNameStandardizer standardizer, RoadName name)
     {
         var standardizedName = standardizer.standardize(name).asRoadName();
@@ -1428,7 +1429,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
     }
 
     /**
-     * @return True if this route is an in-place u-turn
+     * @return True if this route is an in-place U-turn
      */
     public boolean isInPlaceUTurn()
     {
@@ -2172,7 +2173,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
 
     private boolean isAttributeValid(Edge edge)
     {
-        // check road sub type
+        // check road subtype
         if (edge.isRoundabout())
         {
             return false;

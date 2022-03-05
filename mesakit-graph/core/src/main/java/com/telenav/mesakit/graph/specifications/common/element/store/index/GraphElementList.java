@@ -18,14 +18,15 @@
 
 package com.telenav.mesakit.graph.specifications.common.element.store.index;
 
-import com.telenav.kivakit.core.collections.iteration.iterators.EmptyIterator;
-import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.core.collections.iteration.BaseIterator;
+import com.telenav.kivakit.core.collections.iteration.Iterators;
 import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.kivakit.primitive.collections.iteration.LongIterator;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
 
@@ -54,7 +55,7 @@ final class GraphElementList<T extends GraphElement> implements Iterable<T>
     }
 
     @Override
-    public Iterator<T> iterator()
+    public @NotNull Iterator<T> iterator()
     {
         return iterator(null, null);
     }
@@ -63,7 +64,7 @@ final class GraphElementList<T extends GraphElement> implements Iterable<T>
     {
         if (isEmpty())
         {
-            return new EmptyIterator<>();
+            return Iterators.empty();
         }
         else
         {

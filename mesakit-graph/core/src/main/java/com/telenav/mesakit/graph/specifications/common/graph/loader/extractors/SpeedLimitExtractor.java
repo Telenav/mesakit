@@ -18,21 +18,22 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.kivakit.extraction.BaseExtractor;
 import com.telenav.kivakit.core.language.primitive.Ints;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.string.Strip;
-import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.extraction.BaseExtractor;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.measurements.motion.Speed;
 
-public class SpeedLimitExtractor extends BaseExtractor<Speed, PbfWay>
+@SuppressWarnings("DuplicatedCode") public class SpeedLimitExtractor extends BaseExtractor<Speed, PbfWay>
 {
     public SpeedLimitExtractor(Listener listener)
     {
         super(listener);
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
     @Override
     public Speed onExtract(PbfWay way)
     {
@@ -61,7 +62,7 @@ public class SpeedLimitExtractor extends BaseExtractor<Speed, PbfWay>
             {
                 if (Strings.isNaturalNumber(maxspeed))
                 {
-                    speed = Ints.parseNaturalNumber(maxspeed);
+                    speed = Ints.parseFastNaturalNumber(maxspeed);
                 }
             }
         }

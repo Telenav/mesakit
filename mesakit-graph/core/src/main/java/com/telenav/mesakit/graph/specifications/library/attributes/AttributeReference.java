@@ -18,6 +18,13 @@
 
 package com.telenav.mesakit.graph.specifications.library.attributes;
 
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.language.reflection.ReflectionProblem;
+import com.telenav.kivakit.core.language.reflection.Type;
+import com.telenav.kivakit.core.language.reflection.property.Property;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.interfaces.collection.Indexable;
 import com.telenav.kivakit.interfaces.collection.Sized;
 import com.telenav.kivakit.interfaces.factory.Factory;
@@ -25,13 +32,6 @@ import com.telenav.kivakit.interfaces.factory.LongMapFactory;
 import com.telenav.kivakit.interfaces.lifecycle.Initializable;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.core.collections.list.ObjectList;
-import com.telenav.kivakit.core.language.reflection.Type;
-import com.telenav.kivakit.core.language.reflection.property.Property;
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.messaging.Debug;
-import com.telenav.kivakit.core.messaging.messages.lifecycle.OperationSucceeded;
 import com.telenav.kivakit.primitive.collections.list.IntList;
 import com.telenav.kivakit.primitive.collections.list.LongList;
 import com.telenav.kivakit.primitive.collections.list.PrimitiveList;
@@ -64,8 +64,8 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
  * The remaining methods in attribute reference are methods for retrieving and storing different kinds of values in the
  * referent object. Many of these methods take a {@link Quantizable} rather than a specific primitive key value. This
  * permits any quantizable object to be used as a key. For example, all {@link GraphElement}s are {@link Indexable} and
- * indexable objects are {@link Quantizable}, so an {@link Edge} (which is a graph element) can be used as an index into
- * an array. The quantum (long value) is just the index in this case.
+ * index-able objects are {@link Quantizable}, so an {@link Edge} (which is a graph element) can be used as an index
+ * into an array. The quantum (long value) is just the index in this case.
  *
  * @author jonathanl (shibo)
  * @see Attribute
@@ -558,7 +558,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
      */
     public void unload()
     {
-        // We must have an archive or we cannot reload the attribute
+        // We must have an archive, or we cannot reload the attribute
         var archive = archive();
         assert archive != null : "Cannot clear attribute without archive attached or the attribute cannot be reloaded";
 
@@ -615,7 +615,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     private synchronized void reference(Referent referent)
     {
         reference = referent;
-        if (!(field.setter().set(store, referent) instanceof OperationSucceeded))
+        if (!(field.setter().set(store, referent) instanceof ReflectionProblem))
         {
             LOGGER.problem("Unable to set value of $ field", field);
         }

@@ -26,9 +26,9 @@ import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.progress.ProgressReporter;
-import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.string.AsciiArt;
-import com.telenav.kivakit.core.string.Formatter;
+import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.value.count.Count;
@@ -132,7 +132,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
      */
     private static final NetworkPath NETWORK_PATH = Host.parseHost(Listener.console(), "www.mesakit.org")
             .https()
-            .path(Listener.console(), Formatter.format("/data/$/administrative-borders-$.jar",
+            .path(Listener.console(), Strings.format("/data/$/administrative-borders-$.jar",
                     RegionProject.get().borderDataVersion(),
                     RegionProject.get().borderDataVersion()));
 
@@ -507,7 +507,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                         // try to download the data into the cache
                         information(AsciiArt.textBox("Downloading", "from: $\nto: $",
                                 NETWORK_PATH.asContraction(80), jar.path().asContraction(80)) + "\n ");
-                        var downloadProgress = Progress.create(this, "bytes");
+                        var downloadProgress = BroadcastingProgressReporter.create(this, "bytes");
                         downloadProgress.start("Downloading");
                         information("Downloading $ from $", jar, source);
                         cache().add(source.get(), OVERWRITE, downloadProgress);

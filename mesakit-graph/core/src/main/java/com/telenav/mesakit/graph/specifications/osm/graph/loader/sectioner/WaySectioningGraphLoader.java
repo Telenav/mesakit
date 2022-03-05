@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner;
 
-import com.telenav.kivakit.coredata.validation.ValidationType;
-import com.telenav.kivakit.core.progress.reporters.ConcurrentProgress;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.core.progress.reporters.ConcurrentBroadcastingProgressReporter;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.resource.Resource;
@@ -73,7 +73,7 @@ public class WaySectioningGraphLoader extends BaseGraphLoader
     {
         // To add sectioned edges to the graph,
         var start = Time.now();
-        var progress = ConcurrentProgress.createConcurrent(this, "edges",
+        var progress = ConcurrentBroadcastingProgressReporter.createConcurrent(this, "edges",
                 raw.forwardEdgeCount().asMaximum()).withPhase("  [Sectioning Ways] ");
         progress.start();
 

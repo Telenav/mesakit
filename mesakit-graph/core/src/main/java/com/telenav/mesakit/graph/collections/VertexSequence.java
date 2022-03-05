@@ -18,12 +18,11 @@
 
 package com.telenav.mesakit.graph.collections;
 
-import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.core.collections.iteration.Matching;
-import com.telenav.kivakit.core.language.iteration.Streams;
-import com.telenav.kivakit.core.language.iteration.Streams.Processing;
+import com.telenav.kivakit.core.language.Streams;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.RouteBuilder;
 import com.telenav.mesakit.graph.Vertex;
@@ -146,7 +145,7 @@ public class VertexSequence implements Iterable<Vertex>
         return Streams.stream(this);
     }
 
-    public Stream<Vertex> stream(Processing processing)
+    public Stream<Vertex> stream(Streams.Processing processing)
     {
         return Streams.stream(processing, this);
     }

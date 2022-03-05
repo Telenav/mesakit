@@ -20,8 +20,8 @@ package com.telenav.mesakit.graph.map;
 
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.language.Hash;
-import com.telenav.kivakit.core.string.Split;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.Split;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
@@ -30,7 +30,7 @@ import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentif
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 
 /**
- * Represents an map "edge" using the form "[way-identifier]:[from-node-identifier]:[to-node-identifier]"
+ * Represents a map "edge" using the form "[way-identifier]:[from-node-identifier]:[to-node-identifier]"
  *
  * @author jonathanl (shibo)
  */
@@ -46,7 +46,7 @@ public class MapEdgeIdentifier
         @Override
         protected MapEdgeIdentifier onToValue(String value)
         {
-            var values = Split.split(value, ':').iterator();
+            var values = Split.split(value, ":").iterator();
             var way = PbfWayIdentifier.parse(values.next());
             var from = PbfNodeIdentifier.parse(values.next());
             var to = PbfNodeIdentifier.parse(values.next());

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.map;
 
-import com.telenav.kivakit.core.language.iteration.Streams;
+import com.telenav.kivakit.core.language.Streams;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Road;

@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.ui.desktop.viewer.desktop;
 
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.os.Console;
-import com.telenav.kivakit.core.string.Formatter;
+import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.thread.StateMachine;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.value.count.Maximum;
@@ -344,10 +344,10 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
             else
             {
                 // We're drawing a zoom selection rectangle, so get the width and height of it
-                Console.get().printLine("dragPoint = " + dragPoint);
-                Console.get().printLine("dragStart = " + dragStart);
+                Console.println("dragPoint = " + dragPoint);
+                Console.println("dragStart = " + dragStart);
                 var width = dragPoint.x() - dragStart.x();
-                Console.get().printLine("width = " + width);
+                Console.println("width = " + width);
                 var height = heightForWidth(width);
 
                 // If the selection is down and to the right
@@ -410,14 +410,14 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
 
         // project it to a map location,
         var pressedLocation = pointToLocation(pressedAt);
-        Console.get().printLine("Location = $", pressedLocation);
+        Console.println("Location = $", pressedLocation);
 
         // and if that location is valid,
         if (pressedLocation != null)
         {
             // then the user clicked on the map, which potentially starts a drag operation.
             dragStart = pressedAt;
-            Console.get().printLine("dragStart = " + dragStart);
+            Console.println("dragStart = " + dragStart);
 
             // If we're zoomed in and the control key is down,
             if (isZoomedIn && e.isControlDown())
@@ -648,7 +648,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
 
                 return new HttpNetworkLocation(Host.parseHost(this, "b.tile.openstreetmap.org")
                         .http()
-                        .path(this, Formatter.format("/${long}/${long}/${long}.png", z, x, y)));
+                        .path(this, Strings.format("/${long}/${long}/${long}.png", z, x, y)));
             }
 
             /**

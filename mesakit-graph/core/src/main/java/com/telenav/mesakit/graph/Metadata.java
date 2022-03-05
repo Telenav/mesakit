@@ -23,39 +23,37 @@ import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.language.object.KivaKitFormatProperty;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
+import com.telenav.kivakit.core.string.AsIndentedString;
+import com.telenav.kivakit.core.string.AsStringIndenter;
+import com.telenav.kivakit.core.string.Strip;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.level.Percent;
+import com.telenav.kivakit.core.value.mutable.MutableValue;
+import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.list.HuffmanStringListCodec;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.conversion.BaseStringConverter;
-import com.telenav.kivakit.coredata.validation.BaseValidator;
-import com.telenav.kivakit.coredata.validation.Validatable;
-import com.telenav.kivakit.coredata.validation.ValidationType;
-import com.telenav.kivakit.coredata.validation.Validator;
-import com.telenav.kivakit.core.progress.ProgressReporter;
-import com.telenav.kivakit.core.progress.reporters.Progress;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.string.Strip;
-import com.telenav.kivakit.core.string.conversion.AsIndentedString;
-import com.telenav.kivakit.core.string.conversion.AsStringIndenter;
-import com.telenav.kivakit.core.string.formatting.KivaKitFormatProperty;
-import com.telenav.kivakit.core.value.count.Bytes;
-import com.telenav.kivakit.core.value.count.Count;
-
-import com.telenav.kivakit.core.value.level.Percent;
-
-import com.telenav.kivakit.core.language.values.mutable.MutableValue;
-import com.telenav.kivakit.core.version.Version;
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.path.FileName;
 import com.telenav.kivakit.resource.resources.other.PropertyMap;
+import com.telenav.kivakit.validation.BaseValidator;
+import com.telenav.kivakit.validation.Validatable;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.metadata.DataBuild;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
@@ -83,9 +81,9 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 import static com.telenav.mesakit.graph.Metadata.CountType.REQUIRE_EXACT;
 import static com.telenav.mesakit.graph.metadata.DataSupplier.OSM;
@@ -195,7 +193,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      */
     public static Metadata from(File input, CountType countType)
     {
-        input = input.materialized(Progress.create(LOGGER));
+        input = input.materialized(BroadcastingProgressReporter.create(LOGGER));
         var format = DataFormat.of(input);
         switch (format)
         {
@@ -556,7 +554,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     @Override
-    public AsStringIndenter asString(Format format, AsStringIndenter indenter)
+    public AsStringIndenter asString(Stringable.Format format, AsStringIndenter indenter)
     {
         indenter.asString(this);
         indenter.labeled("nodes", nodeCount(REQUIRE_EXACT));
@@ -655,7 +653,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      * @return The data's specification
      */
     @KivaKitIncludeProperty
-    @KivaKitFormatProperty(format = Format.TEXT)
+    @KivaKitFormatProperty
     public DataSpecification dataSpecification()
     {
         return dataSpecification;
@@ -883,7 +881,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     {
         if (roadNameCharacterCodec == null)
         {
-            roadNameCharacterCodec = HuffmanCharacterCodec.from(roadNameCharacterCodecFrequencies, ESCAPE);
+            roadNameCharacterCodec = HuffmanCharacterCodec.from(Listener.throwing(), roadNameCharacterCodecFrequencies, ESCAPE);
         }
         return roadNameCharacterCodec;
     }
@@ -1267,7 +1265,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         var descriptor = tags.get("telenav-data-descriptor");
 
         var build = tags.get("telenav-data-build");
-        var size = Bytes.parse(Listener.none(), tags.get("telenav-data-size"));
+        var size = Bytes.parseBytes(Listener.none(), tags.get("telenav-data-size"));
         var precision = tags.get("telenav-data-precision");
         var bounds = tags.get("telenav-data-bounds");
         var nodes = tags.get("telenav-data-nodes");

@@ -19,9 +19,9 @@
 package com.telenav.mesakit.map.overpass;
 
 import com.telenav.kivakit.component.BaseComponent;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.core.progress.reporters.Progress;
 import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.network.http.HttpPostResource;
@@ -65,7 +65,7 @@ class OverpassOsmResource extends BaseComponent
 
     public void safeCopyTo(File destination)
     {
-        location(bounds).safeCopyTo(destination, OVERWRITE, Progress.create(this, "bytes"));
+        location(bounds).safeCopyTo(destination, OVERWRITE, BroadcastingProgressReporter.create(this, "bytes"));
     }
 
     private HttpPostResource location(Rectangle bounds)

@@ -19,10 +19,8 @@
 package com.telenav.mesakit.graph.collections;
 
 import com.telenav.kivakit.core.collections.iteration.BaseIterator;
-import com.telenav.kivakit.core.language.iteration.Streams;
-
+import com.telenav.kivakit.core.language.Streams;
 import com.telenav.kivakit.core.value.level.Percent;
-
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
@@ -188,8 +186,8 @@ public class EdgePair implements Iterable<Edge>, Bounded
     }
 
     /**
-     * @return True if the two edges are connected in the same direction so you can go from the first edge to the second
-     * edge or from the second edge to the first edge.
+     * @return True if the two edges are connected in the same direction, so you can go from the first edge to the
+     * second edge or from the second edge to the first edge.
      */
     public boolean isConnectedInSameDirection()
     {

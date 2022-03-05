@@ -62,7 +62,7 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
         {
             if (name.contains(";"))
             {
-                for (var subName : Split.split(name, ';'))
+                for (var subName : Split.split(name, ";"))
                 {
                     addRoadName(names, subName);
                 }
@@ -141,7 +141,7 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
             }
         }
 
-        // otherwise return the default language for the locale
+        // otherwise, return the default language for the locale
         return List.of(locale.language());
     }
 
@@ -150,6 +150,7 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
      * "17th" and it turns names with hyphens like "Southwest By-Pass" into "Pass". This method is used to filter out
      * these cases.
      */
+    @SuppressWarnings("SpellCheckingInspection")
     private boolean shouldStandardize(String name)
     {
         if (Strings.isNaturalNumber(name))

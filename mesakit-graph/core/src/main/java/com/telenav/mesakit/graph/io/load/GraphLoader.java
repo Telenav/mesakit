@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.io.load;
 
-import com.telenav.kivakit.coredata.validation.ValidationType;
+import com.telenav.kivakit.validation.ValidationType;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.messaging.Repeater;
 import com.telenav.kivakit.resource.Resource;

@@ -18,29 +18,27 @@
 
 package com.telenav.mesakit.graph.collections;
 
-import com.telenav.kivakit.core.collections.set.LogicalSet;
-import com.telenav.kivakit.core.collections.set.operations.Intersection;
-import com.telenav.kivakit.core.collections.set.operations.Subset;
-import com.telenav.kivakit.core.collections.set.operations.Union;
-import com.telenav.kivakit.core.collections.set.operations.Without;
-import com.telenav.kivakit.conversion.BaseConverter;
+import com.telenav.kivakit.collections.set.LogicalSet;
+import com.telenav.kivakit.collections.set.operations.Intersection;
+import com.telenav.kivakit.collections.set.operations.Subset;
+import com.telenav.kivakit.collections.set.operations.Union;
+import com.telenav.kivakit.collections.set.operations.Without;
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.list.StringList;
-import com.telenav.kivakit.core.language.iteration.Streams;
-import com.telenav.kivakit.core.string.Join;
-import com.telenav.kivakit.core.string.Strings;
-import com.telenav.kivakit.core.string.formatting.Separators;
+import com.telenav.kivakit.core.language.Streams;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.core.messaging.listeners.ThrowingListener;
-import com.telenav.kivakit.coredata.comparison.Differences;
-import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.core.string.Differences;
+import com.telenav.kivakit.core.string.Join;
+import com.telenav.kivakit.core.string.Separators;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.time.Frequency;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.kivakit.core.time.Frequency;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.kivakit.primitive.collections.iteration.IntIterator;
 import com.telenav.mesakit.graph.Edge;
@@ -560,7 +558,7 @@ public class EdgeSet implements Set<Edge>, Stringable
     }
 
     /**
-     * @return True if any edge in this set is two way
+     * @return True if any edge in this set is two-way
      */
     public boolean hasTwoWay()
     {
@@ -629,7 +627,7 @@ public class EdgeSet implements Set<Edge>, Stringable
     }
 
     /**
-     * @return True if every edge in this set is two way
+     * @return True if every edge in this set is two-way
      */
     public boolean isTwoWay()
     {
@@ -658,14 +656,7 @@ public class EdgeSet implements Set<Edge>, Stringable
      */
     public String joinedIdentifiers(String separator)
     {
-        return Join.join(this, separator, new BaseConverter<>(new ThrowingListener())
-        {
-            @Override
-            protected String onConvert(Edge value)
-            {
-                return value.identifier().toString();
-            }
-        });
+        return Join.join(this, separator, value -> value.identifier().toString());
     }
 
     /**

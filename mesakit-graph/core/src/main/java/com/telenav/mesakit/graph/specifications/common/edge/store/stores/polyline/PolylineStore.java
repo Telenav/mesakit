@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge.store.stores.polyline;
 
-import com.telenav.kivakit.interfaces.naming.Named;
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
 import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.core.language.Objects;
-import com.telenav.kivakit.core.value.count.Bytes;
-import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.array.bits.BitArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;

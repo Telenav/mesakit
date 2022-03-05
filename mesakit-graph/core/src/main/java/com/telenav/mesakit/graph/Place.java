@@ -18,16 +18,16 @@
 
 package com.telenav.mesakit.graph;
 
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.string.AsIndentedString;
+import com.telenav.kivakit.core.string.Differences;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.interfaces.numeric.Quantizable;
 import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.coredata.comparison.Differences;
-import com.telenav.kivakit.coredata.validation.Validatable;
-import com.telenav.kivakit.coredata.validation.ValidationType;
-import com.telenav.kivakit.coredata.validation.Validator;
-import com.telenav.kivakit.core.collections.list.ObjectList;
-import com.telenav.kivakit.core.string.conversion.AsIndentedString;
-import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.validation.Validatable;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.mesakit.graph.identifiers.PlaceIdentifier;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
 import com.telenav.mesakit.graph.specifications.common.element.GraphElementAttributes;
@@ -73,7 +73,7 @@ import java.util.List;
  * <p>
  * Places have a {@link #name()}, a {@link #type()} and a location that can be retrieved through {@link
  * Located#location()}. They are also {@link Intersectable} and {@link Bounded} with a zero-sized rectangle that can be
- * expanded and they are {@link Validatable}.
+ * expanded, and they are {@link Validatable}.
  *
  * @author jonathanl (shibo)
  * @see Named
@@ -120,6 +120,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
             {
                 return SUBURB;
             }
+            //noinspection SpellCheckingInspection
             if ("neighborhood".equalsIgnoreCase(type)
                     || "neighbourhood".equalsIgnoreCase(type)
                     || "neigbourhood".equalsIgnoreCase(type))

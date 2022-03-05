@@ -19,8 +19,8 @@
 package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.core.language.Hash;
-import com.telenav.kivakit.core.string.conversion.AsIndentedString;
-import com.telenav.kivakit.core.string.conversion.AsStringIndenter;
+import com.telenav.kivakit.core.string.AsIndentedString;
+import com.telenav.kivakit.core.string.AsStringIndenter;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;

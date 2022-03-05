@@ -18,7 +18,8 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph;
 
-import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.MutableCount;
@@ -51,7 +52,7 @@ public final class OsmGraph extends CommonGraph
             information(AsciiArt.topLine(20, "Marking double-digitized edges"));
             var start = Time.now();
             var count = new MutableCount();
-            var progress = isDeaf() ? Progress.NULL : Progress.create(this, "edges");
+            var progress = isDeaf() ? ProgressReporter.none() : BroadcastingProgressReporter.create(this, "edges");
             progress.steps(edgeCount().asMaximum());
             progress.start();
             for (var edge : forwardEdges())

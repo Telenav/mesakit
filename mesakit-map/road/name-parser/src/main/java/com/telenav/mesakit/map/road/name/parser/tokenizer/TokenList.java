@@ -137,7 +137,7 @@ public class TokenList implements Iterable<Token>
 
     public String rawText()
     {
-        return Join.join(tokens(), Token::text, " ");
+        return Join.join(tokens(), " ", Token::text);
     }
 
     public String remainder()

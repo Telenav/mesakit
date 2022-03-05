@@ -18,18 +18,18 @@
 
 package com.telenav.mesakit.graph.metadata;
 
-import com.telenav.kivakit.core.collections.map.MultiMap;
+import com.telenav.kivakit.collections.map.MultiMap;
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.coredata.comparison.Differences;
 import com.telenav.kivakit.conversion.BaseStringConverter;
-import com.telenav.kivakit.coredata.validation.ValidationType;
-import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.Differences;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
+import com.telenav.kivakit.validation.ValidationType;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;

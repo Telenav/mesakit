@@ -19,11 +19,11 @@
 package com.telenav.mesakit.graph.world;
 
 import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.settings.settings.Deployment;
 import com.telenav.kivakit.interfaces.code.Callback;
 import com.telenav.kivakit.interfaces.comparison.Filter;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.core.progress.reporters.Progress;
 import com.telenav.kivakit.core.thread.Threads;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.value.count.Bytes;
@@ -137,7 +137,7 @@ public class WorldGraph extends Graph
     {
         if (remote != null)
         {
-            var progress = Progress.create(LOGGER, "bytes");
+            var progress = BroadcastingProgressReporter.create(LOGGER, "bytes");
             remote.copyTo(local, CopyMode.OVERWRITE, progress);
         }
 

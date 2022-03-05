@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge;
 
-import com.telenav.kivakit.coredata.comparison.Differences;
+import com.telenav.kivakit.core.string.Differences;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.map.road.model.RoadName;
 

@@ -4,7 +4,6 @@ open module mesakit.graph.world
     requires transitive mesakit.map.cutter;
     requires transitive mesakit.graph.core;
 
-    requires transitive kivakit.kernel;
     requires transitive kivakit.settings;
 
     requires junit;

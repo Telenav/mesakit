@@ -18,37 +18,38 @@
 
 package com.telenav.mesakit.graph;
 
-import com.telenav.kivakit.data.formats.library.DataFormat;
-import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.interfaces.comparison.Filter;
-import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.interfaces.naming.Named;
-import com.telenav.kivakit.interfaces.naming.NamedObject;
-import com.telenav.kivakit.coredata.comparison.Differences;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.kivakit.core.collections.iteration.Next;
-import com.telenav.kivakit.core.language.iteration.Streams;
+import com.telenav.kivakit.core.language.Classes;
+import com.telenav.kivakit.core.language.Streams;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.Message;
+import com.telenav.kivakit.core.messaging.Repeater;
+import com.telenav.kivakit.core.messaging.context.CallStack;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.progress.ProgressReporter;
-import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
+import com.telenav.kivakit.core.string.AsIndentedString;
+import com.telenav.kivakit.core.string.AsStringIndenter;
 import com.telenav.kivakit.core.string.AsciiArt;
-import com.telenav.kivakit.core.string.conversion.AsIndentedString;
-import com.telenav.kivakit.core.string.conversion.AsStringIndenter;
+import com.telenav.kivakit.core.string.Differences;
+import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.time.Time;
-import com.telenav.kivakit.core.language.types.Classes;
 import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
-import com.telenav.kivakit.core.messaging.Debug;
-import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.core.messaging.Message;
-import com.telenav.kivakit.core.messaging.Repeater;
-import com.telenav.kivakit.core.messaging.context.CallStack;
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.data.formats.library.DataFormat;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.interfaces.comparison.Filter;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.collections.EdgeSet;
@@ -687,7 +688,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     public final Differences differencesFrom(Graph that, Rectangle bounds, Maximum maximumDifferences)
     {
         var differences = new Differences();
-        var progress = Progress.create(this);
+        var progress = BroadcastingProgressReporter.create(this);
 
         // Then compare edge counts
         if (!edgeCount().equals(that.edgeCount()))
@@ -1123,7 +1124,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
                     if (graphStore.validator(loader.validation()).validate(this))
                     {
                         // we have succeeded in loading the graph,
-                        information(AsciiArt.textBox(Message.format("${class} loaded $ in $", loader.getClass(),
+                        information(AsciiArt.textBox(Strings.format("${class} loaded $ in $", loader.getClass(),
                                 metadata().descriptor(), start.elapsedSince()), asString()));
 
                         // so return its metadata.

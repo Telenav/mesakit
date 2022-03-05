@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph;
 
+import com.telenav.kivakit.core.string.AsIndentedString;
 import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.core.string.conversion.AsIndentedString;
 import com.telenav.mesakit.graph.identifiers.ShapePointIdentifier;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
 import com.telenav.mesakit.graph.specifications.common.element.GraphElementAttributes;

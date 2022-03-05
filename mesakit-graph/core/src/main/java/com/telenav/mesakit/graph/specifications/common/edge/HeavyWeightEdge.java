@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.specifications.common.edge;
 
 import com.telenav.kivakit.core.collections.list.ObjectList;
-import com.telenav.kivakit.core.language.functions.Functions;
+import com.telenav.kivakit.core.function.Functions;
 import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
 import com.telenav.kivakit.core.time.Duration;
@@ -72,7 +72,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.mesakit.map.road.model.RoadState.ONE_WAY;
 import static com.telenav.mesakit.map.road.model.RoadState.TWO_WAY;
 
-public class HeavyWeightEdge extends Edge
+@SuppressWarnings("SpellCheckingInspection") public class HeavyWeightEdge extends Edge
 {
     private Rectangle bounds;
 

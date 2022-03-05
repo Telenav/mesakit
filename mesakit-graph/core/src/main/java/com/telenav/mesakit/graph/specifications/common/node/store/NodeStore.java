@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.specifications.common.node.store;
 
-import com.telenav.kivakit.coredata.validation.ValidationType;
-import com.telenav.kivakit.coredata.validation.Validator;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToLongMap;

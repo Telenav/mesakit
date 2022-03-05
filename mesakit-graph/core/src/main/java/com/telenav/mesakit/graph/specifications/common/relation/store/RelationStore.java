@@ -18,22 +18,22 @@
 
 package com.telenav.mesakit.graph.specifications.common.relation.store;
 
-import com.telenav.kivakit.coredata.validation.ValidationType;
-import com.telenav.kivakit.coredata.validation.Validator;
 import com.telenav.kivakit.core.language.primitive.Ints;
-import com.telenav.kivakit.core.value.count.BitCount;
-import com.telenav.kivakit.core.value.count.Count;
-import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.value.count.BitCount;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.primitive.collections.array.packed.SplitPackedArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
+import com.telenav.kivakit.primitive.collections.map.scalars.LongToIntMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.fixed.IntToLongFixedMultiMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.fixed.IntToPackedArrayFixedMultiMap;
-import com.telenav.kivakit.primitive.collections.map.scalars.LongToIntMap;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.EdgeRelationMember;
 import com.telenav.mesakit.graph.EdgeRelationMemberRole;
@@ -58,8 +58,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.telenav.kivakit.coredata.validation.ValidationType.VALIDATE_ALL;
 import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
+import static com.telenav.kivakit.validation.ValidationType.VALIDATE_ALL;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 
 /**
@@ -229,7 +229,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
     }
 
     /**
-     * Stores all of the simple attributes of the given relation at the given edge index
+     * Stores all the simple attributes of the given relation at the given edge index
      */
     public void storeAttributes(EdgeRelation relation)
     {
@@ -385,7 +385,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
         for (var member : relation.members())
         {
             // get the member's grade level
-            var level = Ints.parse(this, member.role());
+            var level = Ints.parseInt(this, member.role());
             if (level != Ints.INVALID)
             {
                 // and add to the set of edges at that level

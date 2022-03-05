@@ -18,17 +18,18 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge.store.stores.roadname;
 
+import com.telenav.kivakit.core.bits.BitDiagram;
 import com.telenav.kivakit.core.collections.map.CacheMap;
-import com.telenav.kivakit.core.language.bits.BitDiagram;
-import com.telenav.kivakit.core.language.values.mutable.MutableValue;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.value.mutable.MutableValue;
 import com.telenav.kivakit.data.compression.SymbolProducer;
 import com.telenav.kivakit.data.compression.codecs.CharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.interfaces.lifecycle.Initializable;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
-import com.telenav.kivakit.core.value.count.Count;
-import com.telenav.kivakit.core.value.count.Estimate;
-import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitByteArray;
 import com.telenav.kivakit.primitive.collections.map.scalars.LongToIntMap;
 import com.telenav.mesakit.graph.Edge;
@@ -37,7 +38,6 @@ import com.telenav.mesakit.map.road.model.RoadName;
 
 import java.util.WeakHashMap;
 
-import static com.telenav.kivakit.core.language.bits.BitDiagram.BitField;
 import static com.telenav.kivakit.data.compression.SymbolConsumer.Directive.STOP;
 
 public class RoadNameStore implements NamedObject, Initializable
@@ -45,11 +45,11 @@ public class RoadNameStore implements NamedObject, Initializable
     @SuppressWarnings("SpellCheckingInspection")
     private static final BitDiagram KEY = new BitDiagram("IIIIIIII IIIIIIII IIIIIIII IIIIIIII IIIIIIII IIIIIIII IIIITTTT OOOOOOOO");
 
-    private static final BitField INDEX = KEY.field('I');
+    private static final BitDiagram.BitField INDEX = KEY.field('I');
 
-    private static final BitField TYPE = KEY.field('T');
+    private static final BitDiagram.BitField TYPE = KEY.field('T');
 
-    private static final BitField ORDINAL = KEY.field('O');
+    private static final BitDiagram.BitField ORDINAL = KEY.field('O');
 
     /** Efficient store of road names */
     private SplitByteArray names;
@@ -57,7 +57,7 @@ public class RoadNameStore implements NamedObject, Initializable
     /** The index in the name array for a given edge index */
     private LongToIntMap keyToNameIndex;
 
-    /** The codec for decoding compressed data in the names byte array */
+    /** The codec for decoding compressed data in the 'names' byte array */
     private transient CharacterCodec codec;
 
     private Estimate initialSize;
@@ -69,7 +69,7 @@ public class RoadNameStore implements NamedObject, Initializable
      * String pooling map used while loading to avoid duplicating frequently occurring strings. This effectively
      * compresses the input ala LZW.
      */
-    private final transient CacheMap<String, Integer> pool = new CacheMap<>(Maximum._8192);
+    private final transient CacheMap<String, Integer> pool = new CacheMap<>(Maximum._8192, Duration.MAXIMUM);
 
     private final transient WeakHashMap<Long, String> cache = new WeakHashMap<>();
 
@@ -200,7 +200,6 @@ public class RoadNameStore implements NamedObject, Initializable
      */
     private long keyFor(int edgeIndex, RoadName.Type type, int roadNameOrdinal)
     {
-        assert type.ordinal() < 16;
         assert roadNameOrdinal < 256;
 
         var key = INDEX.set(0L, edgeIndex);

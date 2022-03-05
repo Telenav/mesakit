@@ -18,15 +18,14 @@
 
 package com.telenav.mesakit.graph;
 
-import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.core.collections.set.ObjectSet;
 import com.telenav.kivakit.core.object.Lazy;
+import com.telenav.kivakit.core.project.Project;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
-import com.telenav.kivakit.coreproject.Project;
+import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.graph.project.GraphKryoTypes;
-import com.telenav.mesakit.map.data.formats.pbf.PbfProject;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.PbfFilters;
 import com.telenav.mesakit.map.region.RegionProject;
 
@@ -51,7 +50,7 @@ public class GraphProject extends Project
     @Override
     public ObjectSet<Project> dependencies()
     {
-        return ObjectSet.objectSet(RegionProject.get(), PbfProject.get());
+        return ObjectSet.objectSet(RegionProject.get());
     }
 
     /**
@@ -84,7 +83,7 @@ public class GraphProject extends Project
 
     public Folder userGraphFolder()
     {
-        var graphFolder = JavaVirtualMachine.property("MESAKIT_USER_GRAPH_FOLDER");
+        var graphFolder = systemProperty("MESAKIT_USER_GRAPH_FOLDER");
         return graphFolder == null ? Folder.desktop() : Folder.parse(this, graphFolder);
     }
 }

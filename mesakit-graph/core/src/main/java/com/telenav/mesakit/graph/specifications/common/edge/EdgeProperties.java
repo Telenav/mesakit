@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.specifications.common.edge;
 
 import com.telenav.kivakit.core.collections.list.StringList;
-import com.telenav.kivakit.core.language.functions.Functions;
+import com.telenav.kivakit.core.function.Functions;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.string.StringTo;
 import com.telenav.mesakit.graph.Edge;

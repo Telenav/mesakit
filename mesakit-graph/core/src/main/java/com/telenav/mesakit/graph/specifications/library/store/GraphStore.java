@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.specifications.library.store;
 
-import com.telenav.kivakit.coredata.validation.BaseValidator;
-import com.telenav.kivakit.coredata.validation.Validatable;
-import com.telenav.kivakit.coredata.validation.ValidationType;
-import com.telenav.kivakit.coredata.validation.Validator;
+import com.telenav.kivakit.validation.BaseValidator;
+import com.telenav.kivakit.validation.Validatable;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.kivakit.interfaces.loading.Unloadable;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.logging.Logger;

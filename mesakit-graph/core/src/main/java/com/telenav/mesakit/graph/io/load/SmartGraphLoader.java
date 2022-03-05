@@ -22,7 +22,7 @@ import com.telenav.kivakit.commandline.ArgumentParser;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.progress.ProgressReporter;
-import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
@@ -159,7 +159,7 @@ public class SmartGraphLoader extends BaseRepeater implements Named
 
     public Graph load(Listener listener)
     {
-        return load(listener, Progress.create(LOGGER, "bytes"));
+        return load(listener, BroadcastingProgressReporter.create(LOGGER, "bytes"));
     }
 
     @SuppressWarnings("resource")

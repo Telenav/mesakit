@@ -18,28 +18,28 @@
 
 package com.telenav.mesakit.graph;
 
-import com.telenav.kivakit.interfaces.collection.Indexed;
-import com.telenav.kivakit.interfaces.collection.LongKeyed;
-import com.telenav.kivakit.interfaces.naming.Named;
-import com.telenav.kivakit.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.coredata.validation.BaseValidator;
-import com.telenav.kivakit.coredata.validation.Validatable;
-import com.telenav.kivakit.coredata.validation.ValidationType;
-import com.telenav.kivakit.coredata.validation.Validator;
-import com.telenav.kivakit.core.string.CaseFormat;
-import com.telenav.kivakit.core.string.StringTo;
-import com.telenav.kivakit.core.string.conversion.AsIndentedString;
-import com.telenav.kivakit.core.string.conversion.AsStringIndenter;
-import com.telenav.kivakit.core.time.Time;
-import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.kivakit.core.messaging.Debug;
-import com.telenav.kivakit.core.messaging.context.CallStack;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.context.CallStack;
 import com.telenav.kivakit.core.messaging.messages.status.Glitch;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.messaging.messages.status.Quibble;
 import com.telenav.kivakit.core.messaging.messages.status.Warning;
+import com.telenav.kivakit.core.string.AsIndentedString;
+import com.telenav.kivakit.core.string.AsStringIndenter;
+import com.telenav.kivakit.core.string.CaseFormat;
+import com.telenav.kivakit.core.string.StringTo;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.interfaces.collection.Indexed;
+import com.telenav.kivakit.interfaces.collection.LongKeyed;
+import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.validation.BaseValidator;
+import com.telenav.kivakit.validation.Validatable;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.identifiers.GraphElementIdentifier;
 import com.telenav.mesakit.graph.identifiers.VertexIdentifier;
@@ -71,6 +71,7 @@ import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.messaging.context.CallStack.Matching.SUBCLASS;
 import static com.telenav.kivakit.core.messaging.context.CallStack.Proximity.DISTANT;
+import static com.telenav.kivakit.interfaces.string.Stringable.Format.PROGRAMMATIC;
 
 /**
  * Base class for {@link Edge}, {@link EdgeRelation}, {@link Vertex}, {@link ShapePoint} and {@link Place} elements in a
@@ -128,7 +129,7 @@ import static com.telenav.kivakit.core.messaging.context.CallStack.Proximity.DIS
  *     <li>{@link #pbfUserName()}</li>
  * </ul>
  * <p>
- * Graph elements are extremely small objects, and mostly have only three fields:
+ * Graph elements are tiny objects, and mostly have only three fields:
  * <ul>
  *     <li><b>1.</b> <i>graph</i> - A reference to the {@link Graph} that contains the element</li>
  *     <li><b>2.</b> <i>identifier</i> - A {@link GraphElementIdentifier} used to identify the element in the graph</li>
@@ -272,7 +273,7 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
     @Override
     public String asString(Format format)
     {
-        if (format == Format.PROGRAMMATIC)
+        if (format == PROGRAMMATIC)
         {
             return Long.toString(identifierAsLong());
         }
@@ -559,7 +560,7 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
     }
 
     /**
-     * @return The user name of the user that last changed this element
+     * @return The username of the user that last changed this element
      */
     public PbfUserName pbfUserName()
     {
@@ -655,7 +656,7 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
 
     /**
      * @return The graph where this {@link GraphElement} is stored, distinct from {@link #graph()}. If this {@link
-     * GraphElement} is in a normal graph, this value  will be the same as graph(). However if this element is in a
+     * GraphElement} is in a normal graph, this value  will be the same as graph(). However, if this element is in a
      * world graph, this method will return the graph for the cell in which this resides (the cell graph) and graph()
      * will return the WorldGraph, as expected.
      */

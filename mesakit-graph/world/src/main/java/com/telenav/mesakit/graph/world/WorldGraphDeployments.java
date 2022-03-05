@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.settings.settings.Deployment;
-import com.telenav.kivakit.settings.settings.DeploymentSet;
-import com.telenav.kivakit.settings.settings.stores.resource.PackageSettingsStore;
-import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.resource.resources.packaged.Package;
+import com.telenav.kivakit.settings.settings.Deployment;
+import com.telenav.kivakit.settings.settings.DeploymentSet;
+import com.telenav.kivakit.settings.settings.stores.PackageSettingsStore;
 import com.telenav.mesakit.core.MesaKit;
 
 /**
@@ -36,6 +36,7 @@ import com.telenav.mesakit.core.MesaKit;
  * @see Deployment
  * @see DeploymentSet
  */
+@SuppressWarnings("SpellCheckingInspection")
 public class WorldGraphDeployments extends DeploymentSet
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();

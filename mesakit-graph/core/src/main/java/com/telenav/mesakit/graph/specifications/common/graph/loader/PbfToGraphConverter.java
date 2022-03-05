@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader;
 
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.core.progress.reporters.Progress;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.mesakit.graph.Graph;
@@ -182,7 +182,7 @@ public abstract class PbfToGraphConverter extends BaseRepeater implements GraphC
     public final Graph convert(File file)
     {
         // Ensure that the file is local
-        file = file.materialized(Progress.create(this));
+        file = file.materialized(BroadcastingProgressReporter.create(this));
 
         // Extract metadata from the file,
         var metadata = this.metadata != null ? this.metadata : Metadata.from(file);

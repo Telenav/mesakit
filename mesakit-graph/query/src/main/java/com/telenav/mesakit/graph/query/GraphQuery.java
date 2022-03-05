@@ -1,9 +1,9 @@
 package com.telenav.mesakit.graph.query;
 
-import com.telenav.kivakit.interfaces.code.Callback;
-import com.telenav.kivakit.core.collections.set.Sets;
+import com.telenav.kivakit.core.collections.Sets;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.interfaces.code.Callback;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.query.antlr.GraphQueryLexer;
@@ -47,7 +47,7 @@ public class GraphQuery
         // create a lexer for query,
         var lexer = new GraphQueryLexer(CharStreams.fromString(query));
 
-        // parse the lexer's token stream,
+        // parse the lexer token stream,
         var parser = new GraphQueryParser(new CommonTokenStream(lexer));
         var listener = new GraphQueryErrorListener(errorHandler);
         parser.addErrorListener(listener);

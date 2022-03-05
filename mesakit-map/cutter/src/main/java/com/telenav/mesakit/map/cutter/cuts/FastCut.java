@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.cutter.cuts;
 
-import com.telenav.kivakit.core.collections.map.MultiMap;
+import com.telenav.kivakit.collections.map.MultiMap;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.resource.Resource;
@@ -115,7 +115,7 @@ public class FastCut extends Cut
                         for (var node : way.nodes())
                         {
                             // and record that the node belongs to all the regions that the way
-                            // spans so we can output the node to each region's output file during
+                            // spans, so we can output the node to each region's output file during
                             // the output pass
                             regionsForNode().addAll(new PbfNodeIdentifier(node), regions);
                         }

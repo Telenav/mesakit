@@ -18,26 +18,23 @@
 
 package com.telenav.mesakit.graph.collections;
 
-import com.telenav.kivakit.core.collections.set.operations.Intersection;
-import com.telenav.kivakit.core.collections.set.operations.Subset;
-import com.telenav.kivakit.core.collections.set.operations.Union;
-import com.telenav.kivakit.core.collections.set.operations.Without;
-import com.telenav.kivakit.conversion.BaseConverter;
+import com.telenav.kivakit.collections.set.operations.Intersection;
+import com.telenav.kivakit.collections.set.operations.Subset;
+import com.telenav.kivakit.collections.set.operations.Union;
+import com.telenav.kivakit.collections.set.operations.Without;
 import com.telenav.kivakit.conversion.BaseStringConverter;
-import com.telenav.kivakit.core.language.iteration.Streams;
-import com.telenav.kivakit.core.language.iteration.Streams.Processing;
-import com.telenav.kivakit.core.string.Join;
-import com.telenav.kivakit.core.string.Strings;
-import com.telenav.kivakit.core.string.formatting.Separators;
+import com.telenav.kivakit.core.language.Streams;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.core.messaging.listeners.ThrowingListener;
-import com.telenav.kivakit.interfaces.comparison.Matcher;
+import com.telenav.kivakit.core.string.Join;
+import com.telenav.kivakit.core.string.Separators;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.time.Frequency;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.kivakit.core.time.Frequency;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;
@@ -47,6 +44,7 @@ import com.telenav.mesakit.graph.specifications.common.relation.HeavyWeightRelat
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapRelationIdentifier;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -443,14 +441,7 @@ public class RelationSet implements Set<EdgeRelation>
      */
     public String joinedIdentifiers(String separator)
     {
-        return Join.join(this, separator, new BaseConverter<>(new ThrowingListener())
-        {
-            @Override
-            protected String onConvert(EdgeRelation value)
-            {
-                return Long.toString(value.identifierAsLong());
-            }
-        });
+        return Join.join(this, separator, value -> Long.toString(value.identifierAsLong()));
     }
 
     /**
@@ -559,7 +550,7 @@ public class RelationSet implements Set<EdgeRelation>
         return Streams.stream(this);
     }
 
-    public Stream<EdgeRelation> stream(Processing processing)
+    public Stream<EdgeRelation> stream(Streams.Processing processing)
     {
         return Streams.stream(processing, this);
     }
@@ -577,7 +568,7 @@ public class RelationSet implements Set<EdgeRelation>
      * {@inheritDoc}
      */
     @Override
-    public <T> T[] toArray(T[] a)
+    public <T> T[] toArray(T @NotNull [] a)
     {
         return unsupported();
     }

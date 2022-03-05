@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.place;
 
-import com.telenav.kivakit.coredata.comparison.Differences;
+import com.telenav.kivakit.core.string.Differences;
 import com.telenav.mesakit.graph.Place;
 
 public class PlaceDifferences extends Differences

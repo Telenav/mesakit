@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.library.attributes;
 
-import com.telenav.kivakit.core.collections.map.TwoWayMap;
+import com.telenav.kivakit.collections.map.TwoWayMap;
 
 import java.util.Objects;
 

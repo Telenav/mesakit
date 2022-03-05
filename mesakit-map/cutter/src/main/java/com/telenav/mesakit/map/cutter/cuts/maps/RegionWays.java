@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.cutter.cuts.maps;
 
-import com.telenav.kivakit.core.collections.map.MultiMap;
+import com.telenav.kivakit.collections.map.MultiMap;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine.KivaKitExcludeFromSizeOf;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;

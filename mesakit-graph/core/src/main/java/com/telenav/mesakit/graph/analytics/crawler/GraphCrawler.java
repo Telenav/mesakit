@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.analytics.crawler;
 
-import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.mesakit.graph.Edge;
@@ -62,7 +62,7 @@ public class GraphCrawler
     /** Whether the maximum distance is a strict measurement or not */
     private final DistanceMetric metric;
 
-    private Progress progress;
+    private BroadcastingProgressReporter progress;
 
     /**
      * @param maximumEdges The maximum number of edges to collect
@@ -124,7 +124,7 @@ public class GraphCrawler
         return visitedEdges.contains(edge);
     }
 
-    public void progress(Progress progress)
+    public void progress(BroadcastingProgressReporter progress)
     {
         this.progress = progress;
     }

@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.data.formats.pbf.processing.readers;
 
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.progress.ProgressReporter;
-import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.identifier.Identifier;
 import com.telenav.kivakit.resource.Resource;
@@ -58,11 +58,11 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
 public abstract class BasePbfReader extends BaseRepeater implements PbfDataSource
 {
     // Progress in processing each entity type
-    private ProgressReporter nodeProgress = Progress.create(this, "nodes");
+    private ProgressReporter nodeProgress = BroadcastingProgressReporter.create(this, "nodes");
 
-    private ProgressReporter wayProgress = Progress.create(this, "ways");
+    private ProgressReporter wayProgress = BroadcastingProgressReporter.create(this, "ways");
 
-    private ProgressReporter relationProgress = Progress.create(this, "relations");
+    private ProgressReporter relationProgress = BroadcastingProgressReporter.create(this, "relations");
 
     // The resource being read
     @UmlAggregation

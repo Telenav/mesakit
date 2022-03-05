@@ -2,7 +2,6 @@ package com.telenav.mesakit.core;
 
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.project.Project;
-import com.telenav.kivakit.core.vm.SystemProperties;
 import com.telenav.kivakit.filesystem.Folder;
 
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
@@ -36,7 +35,7 @@ public class MesaKit extends Project
 
     public Folder mesakitHome()
     {
-        var home = SystemProperties.property("MESAKIT_HOME");
+        var home = systemProperty("MESAKIT_HOME");
         if (home != null)
         {
             return Folder.parse(this, home);

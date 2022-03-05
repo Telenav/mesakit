@@ -1,7 +1,7 @@
 package com.telenav.mesakit.graph.query.compiler;
 
+import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.interfaces.code.Callback;
-import com.telenav.kivakit.core.messaging.Message;
 import org.antlr.v4.runtime.ANTLRErrorListener;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.RecognitionException;
@@ -53,6 +53,6 @@ public class GraphQueryErrorListener implements ANTLRErrorListener
                             int character, String message, RecognitionException e)
     {
         error = true;
-        errorHandler.callback(Message.format("Syntax error at $: $", character, message));
+        errorHandler.callback(Strings.format("Syntax error at $: $", character, message));
     }
 }

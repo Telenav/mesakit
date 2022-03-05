@@ -18,22 +18,8 @@
 
 package com.telenav.mesakit.graph.specifications.common.element;
 
-import com.telenav.kivakit.interfaces.collection.Addable;
-import com.telenav.kivakit.interfaces.naming.NamedObject;
-import com.telenav.kivakit.coredata.validation.BaseValidator;
-import com.telenav.kivakit.coredata.validation.Validatable;
-import com.telenav.kivakit.coredata.validation.ValidationType;
-import com.telenav.kivakit.coredata.validation.Validator;
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
-import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.collections.iteration.BaseIterator;
-import com.telenav.kivakit.core.thread.batcher.Batcher;
-import com.telenav.kivakit.core.time.Time;
-import com.telenav.kivakit.core.value.count.Bytes;
-import com.telenav.kivakit.core.value.count.Count;
-import com.telenav.kivakit.core.value.count.Estimate;
-import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine;
+import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
@@ -42,6 +28,16 @@ import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.messaging.messages.status.Quibble;
 import com.telenav.kivakit.core.messaging.messages.status.Warning;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.thread.Batcher;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
+import com.telenav.kivakit.interfaces.collection.Addable;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitCharArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
@@ -49,6 +45,10 @@ import com.telenav.kivakit.primitive.collections.list.PrimitiveList;
 import com.telenav.kivakit.primitive.collections.list.store.PackedStringStore;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.validation.BaseValidator;
+import com.telenav.kivakit.validation.Validatable;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.Metadata;
@@ -196,7 +196,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     private transient volatile boolean committed;
 
     /** The method used to compress this store */
-    private Method compressionMethod;
+    private CompressibleCollection.Method compressionMethod;
 
     /** The data specification for this element store */
     private final transient DataSpecification dataSpecification;
@@ -348,6 +348,10 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         var outer = this;
         return new BaseIterator<>()
         {
+            int index = 1;
+
+            final int batchSizeAsInt = batchSize.asInt();
+
             @Override
             protected List<T> onNext()
             {
@@ -363,10 +367,6 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
                 }
                 return batch.isEmpty() ? null : batch;
             }
-
-            int index = 1;
-
-            final int batchSizeAsInt = batchSize.asInt();
         };
     }
 
@@ -496,6 +496,9 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         IDENTIFIER.load();
         return new BaseIterator<>()
         {
+            // The first index (see details in comment above for nextIndex)
+            int index = 1;
+
             @Override
             protected T onNext()
             {
@@ -509,9 +512,6 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
                 }
                 return null;
             }
-
-            // The first index (see details in comment above for nextIndex)
-            int index = 1;
         };
     }
 

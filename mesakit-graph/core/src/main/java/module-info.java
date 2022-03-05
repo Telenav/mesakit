@@ -15,6 +15,7 @@ open module mesakit.graph.core
     requires osmosis.core;
     requires kryo;
     requires junit;
+    requires kivakit.extraction;
 
     exports com.telenav.mesakit.graph.analytics.classification.classifiers.road;
     exports com.telenav.mesakit.graph.analytics.classification.classifiers.signpost;

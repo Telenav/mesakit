@@ -21,22 +21,21 @@ package com.telenav.mesakit.graph.io.archive;
 import com.esotericsoftware.kryo.Kryo;
 import com.telenav.kivakit.commandline.ArgumentParser;
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.filesystem.FileList;
-import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.conversion.BaseStringConverter;
-import com.telenav.kivakit.coredata.validation.ValidationType;
 import com.telenav.kivakit.core.language.primitive.Doubles;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.core.version.VersionedObject;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.messaging.Debug;
-import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.filesystem.FileList;
+import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.compression.archive.FieldArchive;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
@@ -45,6 +44,7 @@ import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.kivakit.resource.path.FileName;
 import com.telenav.kivakit.serialization.core.SerializationSession;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
+import com.telenav.kivakit.validation.ValidationType;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.collections.GraphList;
@@ -76,7 +76,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 public class GraphArchive extends FieldArchive implements Named
 {
     /** The current graph archive version */
-    public static final Version VERSION = Version.parse(Listener.none(), "0.9.8");
+    public static final Version VERSION = Version.version("0.9.8");
 
     /** The extension for a graph archive */
     public static final Extension EXTENSION = Extension.GRAPH;

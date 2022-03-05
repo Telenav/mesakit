@@ -18,19 +18,14 @@
 
 package com.telenav.mesakit.graph.collections;
 
+import com.telenav.kivakit.collections.set.operations.Intersection;
+import com.telenav.kivakit.collections.set.operations.Subset;
+import com.telenav.kivakit.collections.set.operations.Union;
+import com.telenav.kivakit.collections.set.operations.Without;
 import com.telenav.kivakit.core.collections.set.ObjectSet;
-import com.telenav.kivakit.core.collections.set.operations.Intersection;
-import com.telenav.kivakit.core.collections.set.operations.Subset;
-import com.telenav.kivakit.core.collections.set.operations.Union;
-import com.telenav.kivakit.core.collections.set.operations.Without;
-import com.telenav.kivakit.conversion.BaseConverter;
-import com.telenav.kivakit.conversion.collection.BaseSetConverter;
 import com.telenav.kivakit.core.string.Join;
-import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.core.messaging.listeners.ThrowingListener;
-import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.mesakit.graph.Graph;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
@@ -83,14 +78,6 @@ public class VertexSet extends ObjectSet<Vertex>
         return set;
     }
 
-    public static class Converter extends BaseSetConverter<Vertex>
-    {
-        public Converter(Graph graph, Listener listener)
-        {
-            super(listener, new Vertex.Converter(graph, listener), ",");
-        }
-    }
-
     /**
      * Construct a vertex set with a given maximum
      */
@@ -137,14 +124,7 @@ public class VertexSet extends ObjectSet<Vertex>
      */
     public String joinedIdentifiers(String separator)
     {
-        return Join.join(this, separator, new BaseConverter<>(new ThrowingListener())
-        {
-            @Override
-            protected String onConvert(Vertex value)
-            {
-                return Long.toString(value.identifierAsLong());
-            }
-        });
+        return Join.join(this, separator, value -> Long.toString(value.identifierAsLong()));
     }
 
     /**

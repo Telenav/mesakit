@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge.store.index;
 
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.map.geography.indexing.rtree.InteriorNode;
