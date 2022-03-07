@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.measurements.project;
 
-import com.telenav.kivakit.serialization.kryo.CoreKernelKryoTypes;
+import com.telenav.kivakit.serialization.kryo.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.KryoTypes;
 import com.telenav.kivakit.serialization.kryo.KryoUnitTest;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
@@ -36,7 +36,7 @@ public class MeasurementsUnitTest extends KryoUnitTest
     @Override
     protected KryoTypes kryoTypes()
     {
-        return new CoreKernelKryoTypes().mergedWith(new MeasurementsKryoTypes());
+        return new CoreKryoTypes().mergedWith(new MeasurementsKryoTypes());
     }
 
     protected MeasurementsRandomValueFactory random()

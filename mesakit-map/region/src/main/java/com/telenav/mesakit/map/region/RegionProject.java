@@ -25,7 +25,7 @@ import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.primitive.collections.project.PrimitiveCollectionsKryoTypes;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
-import com.telenav.kivakit.serialization.kryo.CoreKernelKryoTypes;
+import com.telenav.kivakit.serialization.kryo.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.KryoTypes;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.map.geography.project.GeographyKryoTypes;
@@ -38,7 +38,7 @@ public class RegionProject extends Project
             .mergedWith(new GeographyKryoTypes())
             .mergedWith(new MeasurementsKryoTypes())
             .mergedWith(new PrimitiveCollectionsKryoTypes())
-            .mergedWith(new CoreKernelKryoTypes());
+            .mergedWith(new CoreKryoTypes());
 
     private static final Lazy<RegionProject> project = Lazy.of(RegionProject::new);
 
