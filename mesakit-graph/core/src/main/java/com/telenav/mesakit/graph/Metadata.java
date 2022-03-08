@@ -49,7 +49,7 @@ import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.path.FileName;
-import com.telenav.kivakit.resource.resources.other.PropertyMap;
+import com.telenav.kivakit.resource.resources.properties.PropertyMap;
 import com.telenav.kivakit.validation.BaseValidator;
 import com.telenav.kivakit.validation.Validatable;
 import com.telenav.kivakit.validation.ValidationType;

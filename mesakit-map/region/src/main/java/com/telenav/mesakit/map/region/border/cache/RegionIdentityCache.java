@@ -90,12 +90,12 @@ public class RegionIdentityCache<T extends Region<T>> extends BaseRepeater
             if (MesaKit.get().projectVersion().isNewerThanOrEqualTo(RegionProject.get().borderDataVersion()))
             {
                 // and loop through them
-                for (var identity : identities.get())
+                for (var identity : identities.object())
                 {
                     // creating the region object for each identity if it doesn't already exist.
                     identity.findOrCreateRegion(type());
                 }
-                trace("Loaded $ identities from cache in $", Count.count(identities.get()), start.elapsedSince());
+                trace("Loaded $ identities from cache in $", Count.count(identities.object()), start.elapsedSince());
             }
             return true;
         }

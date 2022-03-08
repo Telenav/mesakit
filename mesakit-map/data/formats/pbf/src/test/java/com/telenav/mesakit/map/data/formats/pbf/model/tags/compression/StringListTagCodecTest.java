@@ -27,7 +27,7 @@ import com.telenav.kivakit.core.path.PackagePath;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
-import com.telenav.kivakit.resource.resources.other.PropertyMap;
+import com.telenav.kivakit.resource.resources.properties.PropertyMap;
 import com.telenav.kivakit.core.test.UnitTest;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import org.junit.Test;

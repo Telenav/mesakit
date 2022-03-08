@@ -7,7 +7,7 @@ import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.path.PackagePath;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
-import com.telenav.kivakit.resource.resources.other.PropertyMap;
+import com.telenav.kivakit.resource.resources.properties.PropertyMap;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfModelCompression;

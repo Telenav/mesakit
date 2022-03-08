@@ -18,12 +18,11 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.interfaces.naming.Named;
-import com.telenav.kivakit.interfaces.naming.NamedObject;
-import com.telenav.kivakit.interfaces.value.Source;
 import com.telenav.kivakit.core.collections.iteration.BaseIterable;
 import com.telenav.kivakit.core.collections.iteration.Next;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Bytes;
@@ -31,9 +30,10 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.core.version.VersionedObject;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
+import com.telenav.kivakit.interfaces.value.Source;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
 import com.telenav.kivakit.resource.compression.archive.FieldArchive;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
@@ -246,10 +246,10 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
             {
                 // Load archived fields
                 var version = archive.version();
-                VersionedObject<Metadata> metadata = archive.zip().load(SerializationSession.threadLocal(LOGGER), "metadata");
+                VersionedObject<Metadata> metadata = archive.zip().load("metadata", SerializationSession.threadLocal(LOGGER));
                 if (metadata != null)
                 {
-                    this.metadata = metadata.get();
+                    this.metadata = metadata.object();
                     archive.loadFieldsOf(this);
 
                     // Done!

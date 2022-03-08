@@ -227,8 +227,8 @@ public class GraphArchive extends FieldArchive implements Named
 
     public Metadata metadata()
     {
-        VersionedObject<Metadata> metadata = zip().load(SerializationSession.threadLocal(LOGGER), "metadata");
-        return metadata == null ? null : metadata.get();
+        VersionedObject<Metadata> metadata = zip().load("metadata", SerializationSession.threadLocal(LOGGER));
+        return metadata == null ? null : metadata.object();
     }
 
     @Override
@@ -253,7 +253,7 @@ public class GraphArchive extends FieldArchive implements Named
     public void saveMetadata(Metadata metadata)
     {
         metadata.assertValid(ValidationType.VALIDATE_ALL);
-        zip().save(SerializationSession.threadLocal(LOGGER), "metadata", new VersionedObject<>(VERSION, metadata));
+        zip().save("metadata", SerializationSession.threadLocal(LOGGER), new VersionedObject<>(VERSION, metadata));
     }
 
     @Override

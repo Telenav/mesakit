@@ -634,7 +634,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
                     var session = serializationSession();
                     session.open(RESOURCE, KivaKit.get().projectVersion(), in);
                     var loaded = session.read();
-                    var cachedIndex = (BorderSpatialIndex<T>) loaded.get();
+                    var cachedIndex = (BorderSpatialIndex<T>) loaded.object();
                     var version = loaded.version();
                     trace("Cached border index is version $", version);
 
@@ -965,7 +965,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
             serialization.open(RESOURCE, KivaKit.get().projectVersion(), in);
             var index = serialization.read();
             ensureEqual(index.version(), RegionProject.get().borderDataVersion());
-            ensureEqual(index.get(), index());
+            ensureEqual(index.object(), index());
         }
         catch (IOException e)
         {

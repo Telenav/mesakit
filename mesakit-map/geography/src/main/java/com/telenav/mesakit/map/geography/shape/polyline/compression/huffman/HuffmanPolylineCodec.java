@@ -27,7 +27,7 @@ import com.telenav.kivakit.data.compression.codecs.huffman.HuffmanCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
 import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
 import com.telenav.kivakit.primitive.collections.list.ByteList;
-import com.telenav.kivakit.resource.resources.other.PropertyMap;
+import com.telenav.kivakit.resource.resources.properties.PropertyMap;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 
