@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.world.repository;
 
-import com.telenav.kivakit.settings.settings.Deployment;
-import com.telenav.kivakit.settings.settings.Settings;
+import com.telenav.kivakit.settings.Deployment;
+import com.telenav.kivakit.settings.Settings;
 import com.telenav.kivakit.core.collections.map.CountMap;
 import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.core.language.Objects;

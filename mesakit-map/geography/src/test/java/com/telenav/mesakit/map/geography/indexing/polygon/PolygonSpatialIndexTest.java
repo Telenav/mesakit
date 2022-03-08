@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.geography.indexing.polygon;
 
 import com.telenav.kivakit.core.test.SlowTest;
-import com.telenav.kivakit.resource.resources.packaged.PackageResource;
+import com.telenav.kivakit.resource.resources.PackageResource;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;

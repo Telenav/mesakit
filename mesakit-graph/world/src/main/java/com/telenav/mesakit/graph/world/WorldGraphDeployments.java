@@ -22,10 +22,10 @@ import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.resource.resources.packaged.Package;
-import com.telenav.kivakit.settings.settings.Deployment;
-import com.telenav.kivakit.settings.settings.DeploymentSet;
-import com.telenav.kivakit.settings.settings.stores.PackageSettingsStore;
+import com.telenav.kivakit.resource.Package;
+import com.telenav.kivakit.settings.Deployment;
+import com.telenav.kivakit.settings.DeploymentSet;
+import com.telenav.kivakit.settings.stores.PackageSettingsStore;
 import com.telenav.mesakit.core.MesaKit;
 
 /**

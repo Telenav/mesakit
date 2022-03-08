@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph.world;
 
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
-import com.telenav.kivakit.settings.settings.Deployment;
+import com.telenav.kivakit.settings.Deployment;
 import com.telenav.kivakit.interfaces.code.Callback;
 import com.telenav.kivakit.interfaces.comparison.Filter;
 import com.telenav.kivakit.interfaces.comparison.Matcher;

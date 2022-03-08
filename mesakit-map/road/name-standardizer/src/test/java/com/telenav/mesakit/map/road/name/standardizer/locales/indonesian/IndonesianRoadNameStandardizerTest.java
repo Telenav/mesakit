@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.road.name.standardizer.locales.indonesian;
 
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.test.SlowTest;
-import com.telenav.kivakit.resource.resources.packaged.PackageResource;
+import com.telenav.kivakit.resource.resources.PackageResource;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.name.standardizer.RoadNameStandardizerTest;
 import org.junit.Test;

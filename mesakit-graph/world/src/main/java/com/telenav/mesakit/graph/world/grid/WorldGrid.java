@@ -34,7 +34,7 @@ import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.value.Source;
 import com.telenav.kivakit.resource.ResourceList;
 import com.telenav.kivakit.resource.path.Extension;
-import com.telenav.kivakit.settings.settings.Settings;
+import com.telenav.kivakit.settings.Settings;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphProject;
 import com.telenav.mesakit.graph.Metadata;
@@ -330,7 +330,7 @@ public class WorldGrid
             feature.add(new GeoJsonPolyline(worldCell.bounds().asPolyline()));
             output.add(feature);
         }
-        
+
         //noinspection SpellCheckingInspection
         output.save(File.parseFile(Listener.console(), "data/world-graph-2-degree-cells.geojson"));
     }
