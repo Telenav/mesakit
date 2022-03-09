@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.geography.project;
 
 import com.telenav.kivakit.core.messaging.listeners.ThrowingListener;
-import com.telenav.kivakit.serialization.kryo.KryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.mesakit.map.geography.GeographyProject;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;

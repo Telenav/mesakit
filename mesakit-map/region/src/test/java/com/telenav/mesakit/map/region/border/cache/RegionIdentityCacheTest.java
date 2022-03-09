@@ -53,7 +53,7 @@ public class RegionIdentityCacheTest extends RegionUnitTest
         // Save the identities
         var version = RegionProject.get().borderDataVersion();
         session.open(RESOURCE, KivaKit.get().projectVersion(), output);
-        session.write(new VersionedObject<>(version, identities()));
+        session.write(new VersionedObject<>(identities(), version));
         session.close();
         output.close();
 

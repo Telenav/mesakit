@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.project;
 
 import com.telenav.kivakit.data.formats.library.DataFormat;
-import com.telenav.kivakit.serialization.kryo.KryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.Place;
 import com.telenav.mesakit.graph.metadata.DataBuild;

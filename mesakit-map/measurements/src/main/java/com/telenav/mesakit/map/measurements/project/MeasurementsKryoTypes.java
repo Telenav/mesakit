@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.measurements.project;
 
-import com.telenav.kivakit.serialization.kryo.KryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Area;
 import com.telenav.mesakit.map.measurements.geographic.AverageDistance;

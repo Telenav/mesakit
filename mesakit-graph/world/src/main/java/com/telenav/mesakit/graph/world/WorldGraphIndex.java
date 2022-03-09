@@ -335,10 +335,10 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
         try
         {
             // Create archive and save all non-null archived fields
-            var archive = new FieldArchive(file, SerializationSessionFactory.threadLocal(), ProgressReporter.none(), WRITE);
+            var archive = new FieldArchive(file, SerializationSessionFactory.threadLocal(), WRITE);
             var version = GraphArchive.VERSION;
             archive.version(version);
-            archive.save("metadata", new VersionedObject<>(version, metadata));
+            archive.save("metadata", new VersionedObject<>(metadata, version));
             archive.saveFieldsOf(this, version);
             archive.close();
 

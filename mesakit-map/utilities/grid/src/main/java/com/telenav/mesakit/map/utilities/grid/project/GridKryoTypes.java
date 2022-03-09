@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.utilities.grid.project;
 
-import com.telenav.kivakit.serialization.kryo.KryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.mesakit.map.utilities.grid.GridCell;
 import com.telenav.mesakit.map.utilities.grid.GridCellIdentifier;
 

@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
 import com.telenav.kivakit.core.test.SlowTest;
-import com.telenav.kivakit.serialization.kryo.KryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;

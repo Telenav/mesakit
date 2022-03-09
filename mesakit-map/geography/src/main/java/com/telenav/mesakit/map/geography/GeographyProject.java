@@ -2,8 +2,8 @@ package com.telenav.mesakit.map.geography;
 
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.project.Project;
-import com.telenav.kivakit.serialization.kryo.CoreKryoTypes;
-import com.telenav.kivakit.serialization.kryo.KryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.mesakit.map.geography.project.GeographyKryoTypes;
 import com.telenav.mesakit.map.measurements.project.MeasurementsKryoTypes;
 

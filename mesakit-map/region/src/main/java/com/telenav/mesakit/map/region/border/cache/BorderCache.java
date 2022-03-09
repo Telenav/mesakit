@@ -941,7 +941,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
         {
             var session = serializationSession();
             session.open(RESOURCE, KivaKit.get().projectVersion(), output);
-            session.write(new VersionedObject<>(RegionProject.get().borderDataVersion(), index()));
+            session.write(new VersionedObject<>(index(), RegionProject.get().borderDataVersion()));
             session.close();
         }
         catch (Exception e)

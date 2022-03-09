@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.world.project;
 
-import com.telenav.kivakit.serialization.kryo.KryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.mesakit.graph.world.WorldGraphIndex;
 import com.telenav.mesakit.graph.world.WorldPlace;
 import com.telenav.mesakit.graph.world.grid.WorldCell;

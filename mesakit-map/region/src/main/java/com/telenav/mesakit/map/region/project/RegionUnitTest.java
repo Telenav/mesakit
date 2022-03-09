@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.region.project;
 
-import com.telenav.kivakit.serialization.kryo.CoreKryoTypes;
-import com.telenav.kivakit.serialization.kryo.KryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.mesakit.map.geography.project.GeographyKryoTypes;
 import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import com.telenav.mesakit.map.measurements.project.MeasurementsKryoTypes;

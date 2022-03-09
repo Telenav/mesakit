@@ -253,7 +253,7 @@ public class GraphArchive extends FieldArchive implements Named
     public void saveMetadata(Metadata metadata)
     {
         metadata.assertValid(ValidationType.VALIDATE_ALL);
-        zip().save("metadata", SerializationSession.threadLocal(LOGGER), new VersionedObject<>(VERSION, metadata));
+        zip().save("metadata", SerializationSession.threadLocal(LOGGER), new VersionedObject<>(metadata, VERSION));
     }
 
     @Override

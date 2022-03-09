@@ -107,7 +107,7 @@ public class RegionIdentityCache<T extends Region<T>> extends BaseRepeater
                      Version version,
                      Set<RegionIdentity> identities)
     {
-        session.write(new VersionedObject<>(version, identities));
+        session.write(new VersionedObject<>(identities, version));
         session.close();
     }
 
