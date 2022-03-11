@@ -126,7 +126,7 @@ public class PolygonSpatialIndexTest extends GeographyUnitTest
                 Location.ORIGIN.moved(Heading.NORTHWEST, Distance.kilometers(100)));
         ensure(polygon.isCounterClockwise());
         var spatialIndex = new PolygonSpatialIndex(polygon);
-        serializationTest(spatialIndex);
+        testSerialization(spatialIndex);
     }
 
     private void testPolygonIndex(Polygon polygon)

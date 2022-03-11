@@ -99,7 +99,7 @@ public class PolygonTest extends GeographyUnitTest
     public void testSerialization()
     {
         var polygon = polygon(-0.5, -0.5, 1, -0.5, 1, 0.85, -0.5, 0.85);
-        serializationTest(polygon);
+        testSerialization(polygon);
     }
 
     private Polygon polygon(double... values)

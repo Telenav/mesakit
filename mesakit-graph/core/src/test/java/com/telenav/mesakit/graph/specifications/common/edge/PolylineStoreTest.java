@@ -78,7 +78,7 @@ public class PolylineStoreTest extends GraphUnitTest
         ensureEqual(c.decompress(), c2);
         ensureEqual(d.decompress(), d2);
 
-        serializationTest(store);
+        testSerialization(store);
     }
 
     private CompressedPolyline a()

@@ -41,7 +41,7 @@ public class BorderTest extends RegionUnitTest
                 .withIdentifier(new RegionIdentifier(1))
                 .withIsoCode("X")
                 .withMesaKitCode("X"));
-        serializationTest(border);
+        testSerialization(border);
     }
 
     private Polygon polygon(double... values)
