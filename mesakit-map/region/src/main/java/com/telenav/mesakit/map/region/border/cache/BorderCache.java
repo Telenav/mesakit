@@ -25,7 +25,6 @@ import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
-import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.string.Strings;
@@ -100,7 +99,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensureEqual;
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
-import static com.telenav.kivakit.serialization.core.SerializationSession.Type.RESOURCE;
+import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.DISCARDED;
 
@@ -484,7 +483,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
             // and the zip file target we're going to download to and unzip.
             var jar = localJar(NETWORK_PATH.fileName());
             trace("Trying to open $", jar);
-            var archive = ZipArchive.open(this, jar, ProgressReporter.none(), READ);
+            var archive = ZipArchive.open(this, jar, READ);
             try
             {
                 // If archive isn't valid,
@@ -515,7 +514,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
 
                         // and try to open the archive again
                         trace("Trying to open $", jar);
-                        archive = ZipArchive.open(this, jar, ProgressReporter.none(), READ);
+                        archive = ZipArchive.open(this, jar, READ);
                     }
                     catch (Throwable e)
                     {

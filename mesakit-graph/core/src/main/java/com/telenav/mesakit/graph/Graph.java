@@ -186,7 +186,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
  * <p>
  * Graphs can be loaded and saved to {@link GraphArchive}s with {@link #load(GraphArchive)} and {@link #save(GraphArchive)}.
  * For a turn-key way to load graphs, see {@link SmartGraphLoader}. This loader can identify and load data stored in
- * all of the supported data formats.
+ * all the supported data formats.
  * <p>
  * The methods that load data with {@link GraphLoader} objects are used to load data from some {@link DataSupplier}
  * in a {@link DataFormat} under a {@link DataSpecification}. {@link GraphLoader}s should be of limited use to end-users,
@@ -400,7 +400,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     private final ArchivedGraphStore graphStore;
 
     /**
-     * Meta data about this graph
+     * Metadata about this graph
      */
     private Metadata metadata;
 
@@ -493,7 +493,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     }
 
     /**
-     * @return A new graph restricted to all of the graph elements that intersect the given bounding rectangle
+     * @return A new graph restricted to all the graph elements that intersect the given bounding rectangle
      */
     public final Graph clippedTo(Rectangle bounds)
     {
@@ -1687,7 +1687,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @return True if this graph contains all PBF node identifier information (both node identifiers and node tags).
      * Normally this information is not available in a graph, but in the case of graph editing by the OpenTerra team, it
      * is necessary for graphs to contain all information in the PBF source file or the data cannot be uploaded to the
-     * OSM community. In general this information is voluminous and so it is stored on disk and it is generally a good
+     * OSM community. In general this information is voluminous and so it is stored on disk, and it is generally a good
      * idea not to make large graphs with this level of detail.
      */
     public boolean supportsFullPbfNodeInformation()
@@ -1824,7 +1824,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
         Vertex closest = null;
         var closestDistance = Distance.MAXIMUM;
 
-        // Look in 100 meter increments so we don't search too wide an area
+        // Look in 100 meter increments, so we don't search too wide an area
         for (var near = maximum.minimum(Distance.meters(100)); near
                 .isLessThanOrEqualTo(maximum); near = near.add(Distance.meters(100)))
         {
@@ -1845,7 +1845,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
                 }
             }
 
-            // If a closest was found
+            // If we found the closest vertex
             if (closest != null)
             {
                 // then return it (otherwise expand the search area)

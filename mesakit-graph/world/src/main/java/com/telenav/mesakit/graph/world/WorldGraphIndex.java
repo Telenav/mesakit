@@ -38,8 +38,6 @@ import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
 import com.telenav.kivakit.resource.compression.archive.FieldArchive;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
-import com.telenav.kivakit.serialization.core.SerializationSession;
-import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.Place;
@@ -237,7 +235,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
             file = file.materialized(ProgressReporter.none());
 
             // Attach the zip archive and the field archive based on it
-            archive = new FieldArchive(file, SerializationSessionFactory.threadLocal(), ProgressReporter.none(), READ);
+            archive = new FieldArchive(file, ProgressReporter.none(), READ);
 
             // Clear out fields we will load from archive
             clearLazyLoadedFields();
@@ -246,7 +244,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
             {
                 // Load archived fields
                 var version = archive.version();
-                VersionedObject<Metadata> metadata = archive.zip().load("metadata", SerializationSession.threadLocal(LOGGER));
+                VersionedObject<Metadata> metadata = archive.zip().load("metadata");
                 if (metadata != null)
                 {
                     this.metadata = metadata.object();
@@ -335,7 +333,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
         try
         {
             // Create archive and save all non-null archived fields
-            var archive = new FieldArchive(file, SerializationSessionFactory.threadLocal(), WRITE);
+            var archive = new FieldArchive(file, WRITE);
             var version = GraphArchive.VERSION;
             archive.version(version);
             archive.save("metadata", new VersionedObject<>(metadata, version));

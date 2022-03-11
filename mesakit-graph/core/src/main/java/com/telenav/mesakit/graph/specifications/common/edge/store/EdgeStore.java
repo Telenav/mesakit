@@ -18,17 +18,15 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge.store;
 
-import com.telenav.kivakit.validation.Validatable;
-import com.telenav.kivakit.validation.ValidationType;
-import com.telenav.kivakit.validation.Validator;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.registry.RegistryTrait;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.BitCount;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.primitive.collections.array.packed.SplitPackedArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
@@ -37,12 +35,14 @@ import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
 import com.telenav.kivakit.primitive.collections.list.store.LongLinkedListStore;
 import com.telenav.kivakit.primitive.collections.map.multi.dynamic.LongToIntMultiMap;
-import com.telenav.kivakit.primitive.collections.map.scalars.fixed.LongToLongFixedMultiMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.IntToByteMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.LongToIntMap;
+import com.telenav.kivakit.primitive.collections.map.scalars.fixed.LongToLongFixedMultiMap;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
-import com.telenav.kivakit.serialization.core.SerializationSession;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
+import com.telenav.kivakit.validation.Validatable;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;
@@ -132,7 +132,7 @@ import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
  * GraphElementIdentifier}). This index can be retrieved with {@link Edge#index()} and is used to efficiently retrieve
  * values from the store with calls to the various retrieve* methods.
  * <p>
- * An edge store maintains an {@link RTreeSpatialIndex} of the edge polylines to allow fast spatial searches, such as
+ * An edge store maintains an {@link RTreeSpatialIndex} of the edge poly-lines to allow fast spatial searches, such as
  * finding all the edges that intersect a given {@link Rectangle}. This index is also used when querying {@link
  * EdgeRelation}s by finding the relevant edges and then returning the set of all relations that those edges reference.
  * <p>
@@ -150,7 +150,7 @@ import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
  * @see EdgeAttributes
  */
 @SuppressWarnings("unused")
-public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
+public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implements RegistryTrait
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -192,7 +192,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     private final AttributeReference<SplitLongArray> FROM_NODE_IDENTIFIER = new AttributeReference<>(this, EdgeAttributes.get().FROM_NODE_IDENTIFIER, "fromNodeIdentifier",
             () -> (SplitLongArray) new SplitLongArray("fromNodeIdentifier").initialSize(estimatedElements()));
 
-    /** ============ The from vertex identifier for each edge in this store */
+    /** ============ The 'from' vertex identifier for each edge in this store */
     private final AttributeReference<SplitIntArray> FROM_VERTEX_IDENTIFIER = new AttributeReference<>(this, EdgeAttributes.get().FROM_VERTEX_IDENTIFIER, "fromVertexIdentifier",
             () -> (SplitIntArray) new SplitIntArray("fromVertexIdentifier")
                     .initialSize(estimatedElements()));
@@ -267,7 +267,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     () -> (ByteArray) new ByteArray("roadState")
                             .initialSize(estimatedElements()));
 
-    /** ============ The road sub-type for edges in this store */
+    /** ============ The road subtype for edges in this store */
     private final AttributeReference<SplitPackedArray> ROAD_SUB_TYPE =
             new AttributeReference<>(this, EdgeAttributes.get().ROAD_SUB_TYPE, "roadSubType",
                     () -> (SplitPackedArray) new SplitPackedArray("roadSubType")
@@ -338,7 +338,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     private boolean commitSpatialIndex = true;
 
     /**
-     * The number of edges in this graph (this is different from edgeIndex because edge count reflects two way edges,
+     * The number of edges in this graph (this is different from edgeIndex because edge count reflects two-way edges,
      * while edge index does not)
      */
     @KivaKitArchivedField
@@ -675,7 +675,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     }
 
     /**
-     * @return The country for the given edge, as determined by the from vertex.
+     * @return The country for the given edge, as determined by the 'from' vertex.
      */
     public final Country retrieveCountry(Edge edge)
     {
@@ -714,7 +714,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     }
 
     /**
-     * @return The node identifier of the from vertex
+     * @return The node identifier of the 'from' vertex
      */
     public final MapNodeIdentifier retrieveFromNodeIdentifier(Edge edge)
     {
@@ -729,7 +729,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     }
 
     /**
-     * @return The vertex identifier of the from vertex
+     * @return The vertex identifier of the 'from' vertex
      */
     public final int retrieveFromVertexIdentifier(Edge edge)
     {
@@ -1036,7 +1036,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
             }
             else
             {
-                // otherwise create the index from scratch
+                // otherwise, create the index from scratch
                 spatialIndex = new CompressedEdgeBulkSpatialIndexer(this).index(graph());
             }
         }
@@ -1045,7 +1045,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     }
 
     /**
-     * Stores all of the simple attributes of the given edge using the given edge index
+     * Stores all the simple attributes of the given edge using the given edge index
      *
      * @see GraphElementStore#retrieveIndex(GraphElement)
      */
@@ -1520,7 +1520,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
 
     private void configureSerializer()
     {
-        var kryo = (KryoSerializationSession) SerializationSession.threadLocal(this);
+        var kryo = require(KryoSerializationSession.class);
         var types = kryo.kryoTypes();
         types.registerDynamic(CompressedEdgeSpatialIndex.class,
                 new CompressedEdgeSpatialIndexKryoSerializer(graph()),
@@ -1540,7 +1540,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         // Get road shape and start/end location from that
         var shape = edge.roadShape();
 
-        // If the from node needs to be fused
+        // If the 'from' node needs to be fused
         if (edge.fromNodeIdentifier() == null)
         {
             var start = shape.start();
@@ -1569,7 +1569,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
             }
         }
 
-        // If the to node needs to be fused
+        // If the 'to' node needs to be fused
         if (edge.toNodeIdentifier() == null)
         {
             var end = shape.end();

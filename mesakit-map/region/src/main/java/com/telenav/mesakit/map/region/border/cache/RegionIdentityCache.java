@@ -34,7 +34,7 @@ import com.telenav.mesakit.map.region.RegionProject;
 import java.io.InputStream;
 import java.util.Set;
 
-import static com.telenav.kivakit.serialization.core.SerializationSession.Type.RESOURCE;
+import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE;
 
 /**
  * Holds a set of region identities for a given region type, so they can be quickly loaded, creating a region object for

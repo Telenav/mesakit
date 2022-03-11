@@ -123,7 +123,7 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
         randomValueFactory().seed(900178094L);
 
         var index = randomSpatialIndex(500);
-        testSerialization(index);
+        testSessionSerialization(index);
     }
 
     @Override

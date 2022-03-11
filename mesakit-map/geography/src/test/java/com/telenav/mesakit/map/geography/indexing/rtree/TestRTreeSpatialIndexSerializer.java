@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
+import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 
@@ -36,7 +37,7 @@ public class TestRTreeSpatialIndexSerializer extends RTreeSpatialIndexKryoSerial
                             InteriorNode parent)
     {
         var leaf = new TestLeaf(index, parent);
-        leaf.polylines = session.readList(Polyline.class);
+        leaf.polylines = session.read(ObjectList.class);
         return leaf;
     }
 
@@ -45,6 +46,6 @@ public class TestRTreeSpatialIndexSerializer extends RTreeSpatialIndexKryoSerial
                              Leaf leaf)
     {
         var compressedLeaf = (TestLeaf) leaf;
-        session.writeList(compressedLeaf.polylines, Polyline.class);
+        session.write(compressedLeaf.polylines);
     }
 }

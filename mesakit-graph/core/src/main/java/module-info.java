@@ -16,6 +16,7 @@ open module mesakit.graph.core
     requires kryo;
     requires junit;
     requires kivakit.extraction;
+    requires kivakit.serialization.core;
 
     exports com.telenav.mesakit.graph.analytics.classification.classifiers.road;
     exports com.telenav.mesakit.graph.analytics.classification.classifiers.signpost;

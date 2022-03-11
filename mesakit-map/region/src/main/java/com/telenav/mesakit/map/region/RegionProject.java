@@ -24,7 +24,7 @@ import com.telenav.kivakit.core.project.Project;
 import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.primitive.collections.project.PrimitiveCollectionsKryoTypes;
-import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.mesakit.core.MesaKit;
@@ -49,7 +49,7 @@ public class RegionProject extends Project
 
     protected RegionProject()
     {
-        SerializationSessionFactory.threadLocal(KRYO_TYPES.sessionFactory());
+        register(new KryoSerializationSessionFactory(KRYO_TYPES));
     }
 
     /**

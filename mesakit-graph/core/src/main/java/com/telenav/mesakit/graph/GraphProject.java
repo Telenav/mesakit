@@ -24,6 +24,7 @@ import com.telenav.kivakit.core.project.Project;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.graph.project.GraphKryoTypes;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.PbfFilters;
@@ -78,7 +79,7 @@ public class GraphProject extends Project
 
     public SerializationSessionFactory serializationFactory()
     {
-        return new GraphKryoTypes().sessionFactory();
+        return new KryoSerializationSessionFactory(new GraphKryoTypes());
     }
 
     public Folder userGraphFolder()

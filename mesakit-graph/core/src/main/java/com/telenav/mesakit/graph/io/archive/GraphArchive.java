@@ -37,13 +37,12 @@ import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.FileList;
 import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.resource.SerializableObject;
 import com.telenav.kivakit.resource.compression.archive.FieldArchive;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.compression.archive.ZipEntry;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.kivakit.resource.path.FileName;
-import com.telenav.kivakit.serialization.core.SerializationSession;
-import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.kivakit.validation.ValidationType;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
@@ -188,7 +187,7 @@ public class GraphArchive extends FieldArchive implements Named
     public GraphArchive(Listener listener, File file, ZipArchive.Mode mode,
                         ProgressReporter reporter)
     {
-        super(file, SerializationSessionFactory.threadLocal(), reporter, mode);
+        super(file, reporter, mode);
         listener.listenTo(this);
     }
 
@@ -227,7 +226,7 @@ public class GraphArchive extends FieldArchive implements Named
 
     public Metadata metadata()
     {
-        VersionedObject<Metadata> metadata = zip().load("metadata", SerializationSession.threadLocal(LOGGER));
+        VersionedObject<Metadata> metadata = zip().load("metadata");
         return metadata == null ? null : metadata.object();
     }
 
@@ -253,7 +252,7 @@ public class GraphArchive extends FieldArchive implements Named
     public void saveMetadata(Metadata metadata)
     {
         metadata.assertValid(ValidationType.VALIDATE_ALL);
-        zip().save("metadata", SerializationSession.threadLocal(LOGGER), new VersionedObject<>(metadata, VERSION));
+        zip().save("metadata", new SerializableObject<Metadata>(metadata, VERSION));
     }
 
     @Override

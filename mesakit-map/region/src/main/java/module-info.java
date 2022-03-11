@@ -12,6 +12,7 @@ open module mesakit.map.region
     requires kryo;
     requires junit;
     requires kivakit.extraction;
+    requires kivakit.serialization.core;
 
     exports com.telenav.mesakit.map.region;
     exports com.telenav.mesakit.map.region.regions;
