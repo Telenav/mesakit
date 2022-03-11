@@ -23,11 +23,9 @@ import com.telenav.kivakit.commandline.ArgumentParser;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.language.primitive.Doubles;
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.registry.RegistryTrait;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.version.Version;
@@ -43,6 +41,7 @@ import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.compression.archive.ZipEntry;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.kivakit.resource.path.FileName;
+import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
 import com.telenav.kivakit.validation.ValidationType;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
@@ -72,7 +71,9 @@ import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
  * @see SmartGraphLoader
  * @see ZipArchive
  */
-public class GraphArchive extends FieldArchive implements Named
+public class GraphArchive extends FieldArchive implements
+        RegistryTrait,
+        Named
 {
     /** The current graph archive version */
     public static final Version VERSION = Version.version("0.9.8");
@@ -80,23 +81,16 @@ public class GraphArchive extends FieldArchive implements Named
     /** The extension for a graph archive */
     public static final Extension EXTENSION = Extension.GRAPH;
 
-    private static final Logger LOGGER = LoggerFactory.newLogger();
-
-    public static SwitchParser.Builder<Graph> GRAPH = graphArchiveSwitchParser("graph", "Input graph file");
-
-    public static SwitchParser.Builder<GraphList> GRAPH_LIST = graphListSwitchParser("graphs",
-            "A comma separated list of graph files and/or folders");
-
-    private static final Debug DEBUG = new Debug(LOGGER);
-
     public static boolean accepts(FileName name)
     {
         return name.endsWith(EXTENSION);
     }
 
-    public static ArgumentParser.Builder<Graph> argumentParser(String description)
+    public static ArgumentParser.Builder<Graph> argumentParser(Listener listener, String description)
     {
-        return ArgumentParser.builder(Graph.class).description(description).converter(new GraphArchive.Converter(LOGGER, ProgressReporter.none()));
+        return ArgumentParser.builder(Graph.class)
+                .description(description)
+                .converter(new GraphArchive.Converter(listener));
     }
 
     public static Resource forSpecifier(Listener listener, String specifier)
@@ -112,23 +106,26 @@ public class GraphArchive extends FieldArchive implements Named
         return Resource.resolve(listener, specifier);
     }
 
-    public static SwitchParser.Builder<Graph> graphArchiveSwitchParser(String name, String description)
+    public static SwitchParser.Builder<Graph> graphArchiveSwitchParser(Listener listener,
+                                                                       String name,
+                                                                       String description)
     {
         return SwitchParser.builder(Graph.class)
                 .name(name)
                 .description(description)
-                .converter(new Converter(LOGGER, ProgressReporter.none()));
+                .converter(new Converter(listener));
     }
 
-    public static SwitchParser.Builder<GraphList> graphListSwitchParser(String name, String description)
+    public static SwitchParser.Builder<GraphList> graphListSwitchParser(Listener listener, String name,
+                                                                        String description)
     {
         return SwitchParser.builder(GraphList.class)
                 .name(name)
                 .description(description)
-                .converter(new GraphArchive.ListConverter(LOGGER));
+                .converter(new GraphArchive.ListConverter(listener));
     }
 
-    public static class Converter extends BaseStringConverter<Graph>
+    public static class Converter extends BaseStringConverter<Graph> implements RegistryTrait
     {
         private final ProgressReporter reporter;
 
@@ -136,6 +133,11 @@ public class GraphArchive extends FieldArchive implements Named
         {
             super(listener);
             this.reporter = reporter;
+        }
+
+        public Converter(Listener listener)
+        {
+            this(listener, ProgressReporter.none());
         }
 
         @Override
@@ -153,7 +155,7 @@ public class GraphArchive extends FieldArchive implements Named
             {
                 return new GraphArchive(this, file, ZipArchive.Mode.READ, reporter).load(this);
             }
-            LOGGER.warning("Unable to load graph archive '$'", path);
+            warning("Unable to load graph archive '$'", path);
             return null;
         }
     }
@@ -179,12 +181,14 @@ public class GraphArchive extends FieldArchive implements Named
             {
                 return new GraphList(files);
             }
-            LOGGER.warning("Unable to load graph file(s) '$'", value);
+            warning("Unable to load graph file(s) '$'", value);
             return null;
         }
     }
 
-    public GraphArchive(Listener listener, File file, ZipArchive.Mode mode,
+    public GraphArchive(Listener listener,
+                        File file,
+                        ZipArchive.Mode mode,
                         ProgressReporter reporter)
     {
         super(file, reporter, mode);
@@ -200,20 +204,21 @@ public class GraphArchive extends FieldArchive implements Named
     {
         var metadata = ensureNotNull(metadata());
 
-        DEBUG.trace("Loading $ from $", metadata, resource());
+        trace("Loading $ from $", metadata, resource());
         var graph = metadata.dataSpecification().newGraph(metadata.withName(resource().fileName().name()));
         graph.addListener(listener);
         graph.load(this);
 
-        if (DEBUG.isDebugOn() && JavaVirtualMachine.local().instrument())
+        if (isDebugOn() && JavaVirtualMachine.local().instrument())
         {
             graph.loadAll();
             var memory = JavaVirtualMachine.local().sizeOfObjectGraph(graph, "GraphResource.load.graph",
                     Bytes.megabytes(1));
             var disk = resource().sizeInBytes();
-            DEBUG.trace("Graph memory = $, disk = $, memory/disk = $%", memory, disk,
+            trace("Graph memory = $, disk = $, memory/disk = $%", memory, disk,
                     Doubles.format((double) memory.asBytes() / (double) disk.asBytes() * 100.0, 1));
         }
+
         return graph;
     }
 
@@ -226,7 +231,7 @@ public class GraphArchive extends FieldArchive implements Named
 
     public Metadata metadata()
     {
-        VersionedObject<Metadata> metadata = zip().load("metadata");
+        VersionedObject<Metadata> metadata = zip().load(require(KryoObjectSerializer.class), "metadata");
         return metadata == null ? null : metadata.object();
     }
 
@@ -252,7 +257,7 @@ public class GraphArchive extends FieldArchive implements Named
     public void saveMetadata(Metadata metadata)
     {
         metadata.assertValid(ValidationType.VALIDATE_ALL);
-        zip().save("metadata", new SerializableObject<Metadata>(metadata, VERSION));
+        zip().save(require(KryoObjectSerializer.class), "metadata", new SerializableObject<>(metadata, VERSION));
     }
 
     @Override

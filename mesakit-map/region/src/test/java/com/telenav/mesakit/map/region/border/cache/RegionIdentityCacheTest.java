@@ -22,7 +22,7 @@ import com.esotericsoftware.kryo.io.Output;
 import com.telenav.kivakit.core.KivaKit;
 import com.telenav.kivakit.core.io.IO;
 import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.core.version.VersionedObject;
+import com.telenav.kivakit.resource.SerializableObject;
 import com.telenav.mesakit.map.region.RegionIdentifier;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionProject;
@@ -53,7 +53,7 @@ public class RegionIdentityCacheTest extends RegionUnitTest
         // Save the identities
         var version = RegionProject.get().borderDataVersion();
         session.open(RESOURCE, KivaKit.get().projectVersion(), output);
-        session.write(new VersionedObject<>(identities(), version));
+        session.write(new SerializableObject<>(identities(), version));
         session.close();
         output.close();
 

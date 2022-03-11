@@ -26,6 +26,7 @@ import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
+import com.telenav.kivakit.core.registry.RegistryTrait;
 import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.time.Time;
@@ -34,7 +35,6 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.value.count.MutableCount;
-import com.telenav.kivakit.core.version.VersionedObject;
 import com.telenav.kivakit.extraction.Extractor;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.FileCache;
@@ -45,10 +45,11 @@ import com.telenav.kivakit.network.core.NetworkPath;
 import com.telenav.kivakit.network.http.secure.SecureHttpNetworkLocation;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.resource.SerializableObject;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.path.FileName;
 import com.telenav.kivakit.serialization.core.SerializationSession;
-import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
@@ -121,7 +122,7 @@ import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcess
  */
 @UmlClassDiagram(diagram = DiagramBorder.class)
 @UmlRelation(label = "loads borders for", referent = Region.class)
-public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
+public abstract class BorderCache<T extends Region<T>> extends BaseRepeater implements RegistryTrait
 {
     /** True to show extra tracing details */
     private static final boolean DETAILED_TRACE = false;
@@ -940,7 +941,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
         {
             var session = serializationSession();
             session.open(RESOURCE, KivaKit.get().projectVersion(), output);
-            session.write(new VersionedObject<>(index(), RegionProject.get().borderDataVersion()));
+            session.write(new SerializableObject<>(index(), RegionProject.get().borderDataVersion()));
             session.close();
         }
         catch (Exception e)
@@ -980,14 +981,13 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater
     private SerializationSession serializationSession()
     {
         // Get a serialization session for this thread,
-        var session = SerializationSession.threadLocal(debug().listener());
+        var session = require(KryoSerializationSessionFactory.class).newSession(this);
 
         // and if it's a kryo session,
-        if (session instanceof KryoSerializationSession)
+        if (session != null)
         {
             // get the kryo serializer as a BorderSpatialIndexKryoSerializer
-            var kryoSession = (KryoSerializationSession) session;
-            var serializer = (Configured<Settings<T>>) kryoSession.serializer(BorderSpatialIndex.class);
+            var serializer = (Configured<Settings<T>>) session.serializer(BorderSpatialIndex.class);
 
             // and update its settings for this particular border cache.
             serializer.configure(settings);

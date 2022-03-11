@@ -18,8 +18,6 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge;
 
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.project.GraphUnitTest;
@@ -33,13 +31,11 @@ import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
 
 public class EdgeStoreTest extends GraphUnitTest
 {
-    private static final Logger LOGGER = LoggerFactory.newLogger();
-
     @Test
     public void test()
     {
         var graph = OsmDataSpecification.get().newGraph(Metadata.osm(OSM, PBF));
-        graph.addListener(LOGGER);
+        graph.addListener(this);
         var store = graph.edgeStore();
 
         final int iterations = 1_000;

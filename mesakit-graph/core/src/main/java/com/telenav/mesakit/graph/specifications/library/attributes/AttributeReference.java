@@ -25,6 +25,7 @@ import com.telenav.kivakit.core.language.reflection.property.Property;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.registry.RegistryTrait;
 import com.telenav.kivakit.interfaces.collection.Indexable;
 import com.telenav.kivakit.interfaces.collection.Sized;
 import com.telenav.kivakit.interfaces.factory.Factory;
@@ -40,6 +41,7 @@ import com.telenav.kivakit.primitive.collections.map.PrimitiveScalarMap;
 import com.telenav.kivakit.primitive.collections.map.multi.PrimitiveScalarMultiMap;
 import com.telenav.kivakit.primitive.collections.set.PrimitiveSet;
 import com.telenav.kivakit.resource.compression.archive.FieldArchive;
+import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
@@ -77,7 +79,9 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
  * @see Quantizable
  */
 @SuppressWarnings({ "ConstantConditions" })
-public class AttributeReference<Referent extends NamedObject & Initializable> implements NamedObject
+public class AttributeReference<Referent extends NamedObject & Initializable> implements
+        RegistryTrait,
+        NamedObject
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -113,7 +117,9 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
      * @param fieldName The name of the field in the store that's being managed
      * @param factory A factory that can create the referent
      */
-    public AttributeReference(AttributeStore store, Attribute<?> attribute, String fieldName,
+    public AttributeReference(AttributeStore store,
+                              Attribute<?> attribute,
+                              String fieldName,
                               Factory<Referent> factory)
     {
         assert store != null;
@@ -220,7 +226,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
                 var archive = archive();
                 if (archive != null)
                 {
-                    Referent reference = archive.loadFieldOf(store, field.name());
+                    Referent reference = archive.loadFieldOf(require(KryoObjectSerializer.class), store, field.name());
                     if (reference != null)
                     {
                         if (reference instanceof Sized)
@@ -615,9 +621,9 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     private synchronized void reference(Referent referent)
     {
         reference = referent;
-        if (!(field.setter().set(store, referent) instanceof ReflectionProblem))
+        if (field.setter().set(store, referent) instanceof ReflectionProblem)
         {
-            LOGGER.problem("Unable to set value of $ field", field);
+            LOGGER.problem("Unable to set value of $", field);
         }
         assert field.getter().get(store) == referent;
     }

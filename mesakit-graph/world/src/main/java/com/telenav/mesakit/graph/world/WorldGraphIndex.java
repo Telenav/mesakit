@@ -24,6 +24,7 @@ import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.registry.RegistryTrait;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.value.count.Count;
@@ -35,9 +36,11 @@ import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.interfaces.value.Source;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
+import com.telenav.kivakit.resource.SerializableObject;
 import com.telenav.kivakit.resource.compression.archive.FieldArchive;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
+import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.Place;
@@ -67,7 +70,7 @@ import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.W
 
 /**
  * The world graph index stores metadata and provides spatial indexing services for a {@link WorldGraph} which can't
- * easily be composed from the spatial indexes in individual cell graphs.
+ * easily be composed of the spatial indexes in individual cell graphs.
  * <p>
  * This class is an implementation detail of the {@link WorldGraph} and is only public because it has to be accessed
  * from other packages.
@@ -97,7 +100,7 @@ import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.W
  * <p>
  * <b>Ways</b>
  * <p>
- * It would be time consuming to search all cells in the world graph for a way identifier, so this index provides
+ * It would be time-consuming to search all cells in the world graph for a way identifier, so this index provides
  * the {@link #worldCellForWayIdentifier(WorldGrid, MapWayIdentifier)} method to find one arbitrary cell containing a given way identifier.
  * Any other cells that contain the way identifier can be found by navigating the way starting within the given cell.
  *
@@ -107,7 +110,11 @@ import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.W
  * @see FieldArchive
  * @see Metadata
  */
-public class WorldGraphIndex implements Named, Serializable, NamedObject
+public class WorldGraphIndex implements
+        Named,
+        Serializable,
+        NamedObject,
+        RegistryTrait
 {
     private static final long serialVersionUID = -9197937010512624042L;
 
@@ -176,7 +183,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
     @KivaKitArchivedField
     private final Map<GridCell, Bytes> memorySize = new HashMap<>();
 
-    /** Meta data about this world graph */
+    /** Metadata about this world graph */
     private Metadata metadata;
 
     /** Spatial index of places */
@@ -244,11 +251,11 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
             {
                 // Load archived fields
                 var version = archive.version();
-                VersionedObject<Metadata> metadata = archive.zip().load("metadata");
+                VersionedObject<Metadata> metadata = archive.zip().load(require(KryoObjectSerializer.class), "metadata");
                 if (metadata != null)
                 {
                     this.metadata = metadata.object();
-                    archive.loadFieldsOf(this);
+                    archive.loadFieldsOf(require(KryoObjectSerializer.class), this);
 
                     // Done!
                     DEBUG.trace("Loaded $ (version $) in ${debug}", file, version, start.elapsedSince());
@@ -336,8 +343,8 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
             var archive = new FieldArchive(file, WRITE);
             var version = GraphArchive.VERSION;
             archive.version(version);
-            archive.save("metadata", new VersionedObject<>(metadata, version));
-            archive.saveFieldsOf(this, version);
+            archive.save(require(KryoObjectSerializer.class), "metadata", new SerializableObject<>(metadata, version));
+            archive.saveFieldsOf(require(KryoObjectSerializer.class), this, version);
             archive.close();
 
             // We're done!
@@ -363,7 +370,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
     {
         if (cellForWayIdentifier == null)
         {
-            archive.loadFieldOf(this, "cell-for-way-identifier");
+            archive.loadFieldOf(require(KryoObjectSerializer.class), this, "cell-for-way-identifier");
         }
         var cellIdentifier = cellForWayIdentifier.get(wayIdentifier.asLong());
         if (!cellForWayIdentifier.isNull(cellIdentifier))
@@ -409,7 +416,7 @@ public class WorldGraphIndex implements Named, Serializable, NamedObject
             // load the field from the archive
             if (archive != null)
             {
-                archive.loadFieldOf(this, "places");
+                archive.loadFieldOf(require(KryoObjectSerializer.class), this, "places");
                 for (var place : places)
                 {
                     place.graph(worldGraph);

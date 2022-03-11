@@ -18,11 +18,13 @@
 
 package com.telenav.mesakit.graph.specifications.common.element;
 
-import com.telenav.kivakit.interfaces.loading.Unloadable;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.registry.RegistryTrait;
+import com.telenav.kivakit.interfaces.loading.Unloadable;
 import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.Metadata;
@@ -52,14 +54,16 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
  * @see VertexStore
  * @see RelationStore
  */
-public abstract class ArchivedGraphElementStore<T extends GraphElement> extends GraphElementStore<T> implements Unloadable
+public abstract class ArchivedGraphElementStore<T extends GraphElement> extends GraphElementStore<T> implements
+        Unloadable,
+        RegistryTrait
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
     private static final Debug DEBUG = new Debug(LOGGER);
 
     /**
-     * Field archive to load fields from
+     * The field archive to load fields from
      */
     private transient GraphArchive archive;
 
@@ -177,8 +181,8 @@ public abstract class ArchivedGraphElementStore<T extends GraphElement> extends 
     public void loading(GraphArchive archive)
     {
         // load the unmanaged fields of the superclass,
-        archive.loadFieldOf(this, "size");
-        archive.loadFieldOf(this, "nextIndex");
+        archive.loadFieldOf(require(KryoObjectSerializer.class), this, "size");
+        archive.loadFieldOf(require(KryoObjectSerializer.class), this, "nextIndex");
 
         onLoading(archive);
     }
@@ -200,7 +204,7 @@ public abstract class ArchivedGraphElementStore<T extends GraphElement> extends 
         DEBUG.trace("Saving $", objectName());
         onSaving(archive());
         attributeLoader().allocateAll();
-        archive().saveFieldsOf(this, GraphArchive.VERSION);
+        archive().saveFieldsOf(require(KryoObjectSerializer.class), this, GraphArchive.VERSION);
         onSaved(archive());
     }
 
@@ -239,7 +243,7 @@ public abstract class ArchivedGraphElementStore<T extends GraphElement> extends 
     @SuppressWarnings("SameParameterValue")
     protected void loadField(String fieldName)
     {
-        archive.loadFieldOf(this, fieldName);
+        archive.loadFieldOf(require(KryoObjectSerializer.class), this, fieldName);
     }
 
     /**
