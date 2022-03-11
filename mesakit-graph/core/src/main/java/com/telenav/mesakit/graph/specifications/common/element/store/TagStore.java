@@ -23,7 +23,6 @@ import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.telenav.kivakit.core.collections.map.CacheMap;
-import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.value.count.BitCount;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.interfaces.lifecycle.Initializable;
@@ -79,7 +78,7 @@ public class TagStore implements KryoSerializable, NamedObject, Initializable
     private SplitPackedArray length;
 
     /** Map from hashcode to entry for compressing tag entries in the tag store */
-    private transient final Map<Integer, Entry> hashToEntry = new CacheMap<>(Maximum._8192, Duration.MAXIMUM);
+    private transient final Map<Integer, Entry> hashToEntry = new CacheMap<>(Maximum._8192);
 
     /**
      * @param objectName The name of this object

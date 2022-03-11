@@ -20,7 +20,6 @@ package com.telenav.mesakit.graph.specifications.common.edge.store.stores.roadna
 
 import com.telenav.kivakit.core.bits.BitDiagram;
 import com.telenav.kivakit.core.collections.map.CacheMap;
-import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
@@ -69,7 +68,7 @@ public class RoadNameStore implements NamedObject, Initializable
      * String pooling map used while loading to avoid duplicating frequently occurring strings. This effectively
      * compresses the input ala LZW.
      */
-    private final transient CacheMap<String, Integer> pool = new CacheMap<>(Maximum._8192, Duration.MAXIMUM);
+    private final transient CacheMap<String, Integer> pool = new CacheMap<>(Maximum._8192);
 
     private final transient WeakHashMap<Long, String> cache = new WeakHashMap<>();
 
