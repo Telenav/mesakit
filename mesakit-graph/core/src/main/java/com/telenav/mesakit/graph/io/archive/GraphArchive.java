@@ -35,7 +35,7 @@ import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.FileList;
 import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.resource.Resource;
-import com.telenav.kivakit.resource.SerializableObject;
+import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.kivakit.resource.compression.archive.FieldArchive;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.compression.archive.ZipEntry;

@@ -22,7 +22,7 @@ import com.esotericsoftware.kryo.io.Output;
 import com.telenav.kivakit.core.KivaKit;
 import com.telenav.kivakit.core.io.IO;
 import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.resource.SerializableObject;
+import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.mesakit.map.region.RegionIdentifier;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionProject;

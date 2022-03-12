@@ -36,7 +36,7 @@ import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.interfaces.value.Source;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
-import com.telenav.kivakit.resource.SerializableObject;
+import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.kivakit.resource.compression.archive.FieldArchive;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
