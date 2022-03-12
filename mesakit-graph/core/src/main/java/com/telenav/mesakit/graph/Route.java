@@ -606,7 +606,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
         @Override
         public Iterator<Edge> iterator()
         {
-            return Iterators.iterator(() -> edge);
+            return Iterators.singletonIterator(edge);
         }
 
         @Override

@@ -448,7 +448,6 @@ public class Location implements
 
     public static class DegreesMinutesAndSecondsConverter extends BaseStringConverter<Location>
     {
-
         private final Latitude.DegreesMinutesAndSecondsConverter latitudeConverter;
 
         private final Longitude.DegreesMinutesAndSecondsConverter longitudeConverter;
