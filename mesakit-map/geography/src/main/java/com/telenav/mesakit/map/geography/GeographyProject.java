@@ -1,34 +1,26 @@
 package com.telenav.mesakit.map.geography;
 
-import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.project.Project;
+import com.telenav.kivakit.core.project.ProjectTrait;
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
-import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.mesakit.map.geography.project.GeographyKryoTypes;
 import com.telenav.mesakit.map.measurements.project.MeasurementsKryoTypes;
 
 /**
+ * This class defines a KivaKit {@link Project}. It cannot be constructed with the new operator since it has a private
+ * constructor. To access the singleton instance of this class, call {@link Project#resolveProject(Class)}, or use
+ * {@link ProjectTrait#project(Class)}.
+ *
  * @author jonathanl (shibo)
  */
+
 public class GeographyProject extends Project
 {
-    private static final Lazy<GeographyProject> project = Lazy.of(GeographyProject::new);
-
-    private static final KryoTypes KRYO_TYPES = new GeographyKryoTypes()
-            .mergedWith(new MeasurementsKryoTypes())
-            .mergedWith(new CoreKryoTypes());
-
-    public static GeographyProject get()
+    public GeographyProject()
     {
-        return project.get();
-    }
-
-    protected GeographyProject()
-    {
-    }
-
-    public KryoTypes kryoTypes()
-    {
-        return KRYO_TYPES;
+        register(new KryoSerializationSessionFactory(new GeographyKryoTypes()
+                .mergedWith(new MeasurementsKryoTypes())
+                .mergedWith(new CoreKryoTypes())));
     }
 }

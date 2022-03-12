@@ -39,6 +39,7 @@ import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagFilter;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.core.vm.SystemProperties.isPropertyTrue;
 import static com.telenav.mesakit.graph.Metadata.VALIDATE_EXCEPT_STATISTICS;
 
@@ -122,7 +123,7 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
 
             if (isPropertyTrue("MESAKIT_DEBUG_SAVE_RAW_GRAPH"))
             {
-                raw.save(new GraphArchive(this, GraphProject.get().userGraphFolder().file("raw.graph"), ZipArchive.Mode.WRITE, ProgressReporter.none()));
+                raw.save(new GraphArchive(this, resolveProject(GraphProject.class).userGraphFolder().file("raw.graph"), ZipArchive.Mode.WRITE, ProgressReporter.none()));
             }
 
             // and then section the raw graph by loading it into the destination graph

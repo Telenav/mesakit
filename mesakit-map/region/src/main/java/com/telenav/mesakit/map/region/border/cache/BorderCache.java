@@ -19,14 +19,12 @@
 package com.telenav.mesakit.map.region.border.cache;
 
 import com.telenav.kivakit.collections.map.MultiMap;
-import com.telenav.kivakit.core.KivaKit;
+import com.telenav.kivakit.component.BaseComponent;
 import com.telenav.kivakit.core.io.IO;
 import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
-import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
-import com.telenav.kivakit.core.registry.RegistryTrait;
 import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.time.Time;
@@ -98,6 +96,7 @@ import java.util.Set;
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.ensure.Ensure.ensureEqual;
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
 import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE;
@@ -122,7 +121,7 @@ import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcess
  */
 @UmlClassDiagram(diagram = DiagramBorder.class)
 @UmlRelation(label = "loads borders for", referent = Region.class)
-public abstract class BorderCache<T extends Region<T>> extends BaseRepeater implements RegistryTrait
+public abstract class BorderCache<T extends Region<T>> extends BaseComponent
 {
     /** True to show extra tracing details */
     private static final boolean DETAILED_TRACE = false;
@@ -133,8 +132,8 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater impl
     private static final NetworkPath NETWORK_PATH = Host.parseHost(Listener.console(), "www.mesakit.org")
             .https()
             .path(Listener.console(), Strings.format("/data/$/administrative-borders-$.jar",
-                    RegionProject.get().borderDataVersion(),
-                    RegionProject.get().borderDataVersion()));
+                    resolveProject(RegionProject.class).borderDataVersion(),
+                    resolveProject(RegionProject.class).borderDataVersion()));
 
     /**
      * Set to true to show approximate sizes of polygon objects
@@ -343,8 +342,8 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater impl
                 {
                     // and save the identities to it
                     var session = serializationSession();
-                    session.open(out, RESOURCE, KivaKit.get().projectVersion());
-                    identityCache.save(session, RegionProject.get().borderDataVersion(), identities);
+                    session.open(out, RESOURCE, kivakit().projectVersion());
+                    identityCache.save(session, regionProject().borderDataVersion(), identities);
                 }
                 catch (Exception e)
                 {
@@ -454,10 +453,12 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater impl
 
     private Folder cacheFolder()
     {
-        return RegionProject.get()
+        var project = regionProject();
+
+        return project
                 .mesakitMapFolder()
                 .folder("region/borders")
-                .folder(RegionProject.get().borderDataVersion().toString())
+                .folder(project.borderDataVersion().toString())
                 .mkdirs();
     }
 
@@ -639,7 +640,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater impl
                     trace("Cached border index is version $", version);
 
                     // and if it is the current version
-                    if (version.equals(RegionProject.get().borderDataVersion()))
+                    if (version.equals(regionProject().borderDataVersion()))
                     {
                         var invalid = false;
                         var borders = 0;
@@ -678,7 +679,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater impl
                     else
                     {
                         information("Ignoring version $ cache file '$' since current cache version is $",
-                                version, borderCacheFile().fileName(), RegionProject.get().borderDataVersion());
+                                version, borderCacheFile().fileName(), regionProject().borderDataVersion());
                     }
                 }
                 finally
@@ -925,6 +926,11 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater impl
         return cacheFolder().file(FileName.parse(this, baseName(type) + ".osm.pbf"));
     }
 
+    private RegionProject regionProject()
+    {
+        return project(RegionProject.class);
+    }
+
     private void saveBordersToCache()
     {
         trace("Optimizing border index");
@@ -940,8 +946,8 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater impl
         try (var output = borderCacheFile().openForWriting())
         {
             var session = serializationSession();
-            session.open(output, RESOURCE, KivaKit.get().projectVersion());
-            session.write(new SerializableObject<>(index(), RegionProject.get().borderDataVersion()));
+            session.open(output, RESOURCE, kivakit().projectVersion());
+            session.write(new SerializableObject<>(index(), regionProject().borderDataVersion()));
             session.close();
         }
         catch (Exception e)
@@ -964,7 +970,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater impl
             var serialization = serializationSession();
             serialization.open(input);
             var index = serialization.read();
-            ensureEqual(index.version(), RegionProject.get().borderDataVersion());
+            ensureEqual(index.version(), regionProject().borderDataVersion());
             ensureEqual(index.object(), index());
         }
         catch (IOException e)

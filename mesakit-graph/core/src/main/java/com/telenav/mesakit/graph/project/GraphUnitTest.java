@@ -29,6 +29,7 @@ import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.resource.CopyMode;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.kivakit.settings.Settings;
 import com.telenav.kivakit.settings.stores.FolderSettingsStore;
 import com.telenav.mesakit.core.MesaKit;
@@ -61,6 +62,7 @@ import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Country;
 import org.junit.BeforeClass;
 
+import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
 import static com.telenav.mesakit.graph.metadata.DataSupplier.OSM;
 import static com.telenav.mesakit.graph.specifications.library.pbf.PbfFileMetadataAnnotator.Mode.STRIP_UNREFERENCED_NODES;
@@ -138,7 +140,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
     @BeforeClass
     public static synchronized void testSetup()
     {
-        GraphProject.get().initialize();
+        resolveProject(GraphProject.class).initialize();
     }
 
     private final Location.DegreesConverter locationInDegreesConverter = new Location.DegreesConverter(LOGGER);
@@ -150,6 +152,8 @@ public abstract class GraphUnitTest extends RegionUnitTest
 
     protected GraphUnitTest()
     {
+        register(new KryoSerializationSessionFactory(new GraphKryoTypes()));
+
         var store = Settings.of(this);
         LOGGER.listenTo(store);
         store.registerSettingsIn(FolderSettingsStore.of(this, Folder.parse(this, "configuration")));
@@ -295,7 +299,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
 
     private static Folder cacheFolder()
     {
-        return GraphProject.get().overpassFolder();
+        return resolveProject(GraphProject.class).overpassFolder();
     }
 
     private static void downloadFromOverpass(String dataDescriptor, Rectangle bounds)
@@ -337,12 +341,12 @@ public abstract class GraphUnitTest extends RegionUnitTest
             if (!pbfFile.exists())
             {
                 // then try to copy it from the test data folder
-                var destination = LOGGER.listenTo(GraphProject.get().graphFolder().folder("overpass"));
-                var source = LOGGER.listenTo(MesaKit.get().mesakitHome().folder("mesakit-graph/core/data"));
+                var destination = LOGGER.listenTo(resolveProject(GraphProject.class).graphFolder().folder("overpass"));
+                var source = LOGGER.listenTo(resolveProject(MesaKit.class).mesakitHome().folder("mesakit-graph/core/data"));
                 source.copyTo(destination, CopyMode.OVERWRITE, Extension.OSM_PBF.fileMatcher(), ProgressReporter.none());
             }
 
-            // and if we can't find it there and it's an OSM graph being requested,
+            // and if we can't find it there, and it's an OSM graph being requested,
             if (!pbfFile.exists() && specification.isOsm())
             {
                 // then download the area from overpass.

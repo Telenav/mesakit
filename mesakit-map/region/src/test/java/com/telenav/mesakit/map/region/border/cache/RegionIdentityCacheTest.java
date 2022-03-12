@@ -19,7 +19,6 @@
 package com.telenav.mesakit.map.region.border.cache;
 
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.core.KivaKit;
 import com.telenav.kivakit.core.io.IO;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.resource.serialization.SerializableObject;
@@ -35,6 +34,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE;
 
 public class RegionIdentityCacheTest extends RegionUnitTest
@@ -51,8 +51,8 @@ public class RegionIdentityCacheTest extends RegionUnitTest
         var output = new Output(data);
 
         // Save the identities
-        var version = RegionProject.get().borderDataVersion();
-        session.open(output, RESOURCE, KivaKit.get().projectVersion());
+        var version = resolveProject(RegionProject.class).borderDataVersion();
+        session.open(output, RESOURCE, kivakit().projectVersion());
         session.write(new SerializableObject<>(identities(), version));
         session.close();
         output.close();

@@ -26,11 +26,13 @@ import com.telenav.mesakit.map.measurements.project.MeasurementsKryoTypes;
 import com.telenav.mesakit.map.region.RegionCode;
 import com.telenav.mesakit.map.region.RegionProject;
 
+import static com.telenav.kivakit.core.project.Project.resolveProject;
+
 public class RegionUnitTest extends GeographyUnitTest
 {
     public RegionUnitTest()
     {
-        RegionProject.get().initialize();
+        resolveProject(RegionProject.class).initialize();
     }
 
     protected RegionCode code(String string)

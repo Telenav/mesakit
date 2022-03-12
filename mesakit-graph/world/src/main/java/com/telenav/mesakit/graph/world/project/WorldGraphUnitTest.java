@@ -22,11 +22,13 @@ import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.graph.world.WorldGraphProject;
 import org.junit.BeforeClass;
 
+import static com.telenav.kivakit.core.project.Project.resolveProject;
+
 public class WorldGraphUnitTest extends GraphUnitTest
 {
     @BeforeClass
     public static void testSetup()
     {
-        WorldGraphProject.get().initialize();
+        resolveProject(WorldGraphProject.class).initialize();
     }
 }

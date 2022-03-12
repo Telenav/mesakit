@@ -34,6 +34,8 @@ import com.telenav.mesakit.map.region.RegionProject;
 import java.io.InputStream;
 import java.util.Set;
 
+import static com.telenav.kivakit.core.project.Project.resolveProject;
+
 /**
  * Holds a set of region identities for a given region type, so they can be quickly loaded, creating a region object for
  * each identity, without loading the borders (either from PBF or Kryo) to find the identities.
@@ -85,7 +87,8 @@ public class RegionIdentityCache<T extends Region<T>> extends BaseRepeater
             trace("Region identities cache file is version $, written by KivaKit version $", identities.version(), kivakitVersion);
 
             // ensure that this MesaKit version can read the data (data is backwards compatible but not forward),
-            if (MesaKit.get().projectVersion().isNewerThanOrEqualTo(RegionProject.get().borderDataVersion()))
+            if (resolveProject(MesaKit.class).projectVersion().isNewerThanOrEqualTo(
+                    resolveProject(RegionProject.class).borderDataVersion()))
             {
                 // and loop through them
                 for (var identity : identities.object())

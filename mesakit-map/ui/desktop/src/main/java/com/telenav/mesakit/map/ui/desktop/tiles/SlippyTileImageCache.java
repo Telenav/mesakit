@@ -40,6 +40,7 @@ import java.util.Set;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
+import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.network.core.NetworkAccessConstraints.DEFAULT;
 import static java.awt.AlphaComposite.SRC_OVER;
 
@@ -77,7 +78,7 @@ public abstract class SlippyTileImageCache extends BaseRepeater
     {
         listener.listenTo(this);
 
-        cache = listenTo(new SlippyTileCache(MesaKit.get().mesakitAllVersionsCacheFolder().folder("tile-cache")));
+        cache = listenTo(new SlippyTileCache(resolveProject(MesaKit.class).mesakitAllVersionsCacheFolder().folder("tile-cache")));
 
         imageForTile = Collections.synchronizedMap(new CacheMap<>(maximumTiles, Duration.days(1)));
         requested = new ArrayBlockingQueue<>(maximumTiles.asInt());

@@ -71,6 +71,7 @@ import java.util.List;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.project.Project.resolveProject;
 
 /**
  * A grid of {@link WorldCell}s, each containing its own cell-{@link Graph}. The grid is stored in a {@link
@@ -617,7 +618,7 @@ public class WorldGrid
 
     private Folder regionCache()
     {
-        return GraphProject.get().graphFolder().folder("world-graph/regions").mkdirs();
+        return resolveProject(GraphProject.class).graphFolder().folder("world-graph/regions").mkdirs();
     }
 
     private String toString(List<WorldCell> cells)

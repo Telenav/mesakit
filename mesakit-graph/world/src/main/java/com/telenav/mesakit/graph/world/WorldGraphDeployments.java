@@ -28,6 +28,8 @@ import com.telenav.kivakit.settings.DeploymentSet;
 import com.telenav.kivakit.settings.stores.PackageSettingsStore;
 import com.telenav.mesakit.core.MesaKit;
 
+import static com.telenav.kivakit.core.project.Project.resolveProject;
+
 /**
  * {@link WorldGraphDeployments} is a {@link DeploymentSet} that includes deployment configurations for a few built-in
  * world graph deployments (local, osmteam and navteam).
@@ -63,6 +65,6 @@ public class WorldGraphDeployments extends DeploymentSet
 
     private Folder mesakitWorldGraphDeploymentsFolder()
     {
-        return MesaKit.get().mesakitCacheFolder().folder("world-graph/deployments");
+        return resolveProject(MesaKit.class).mesakitCacheFolder().folder("world-graph/deployments");
     }
 }
