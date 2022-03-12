@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.map.region.border.cache;
 
-import com.telenav.kivakit.core.KivaKit;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Count;
@@ -34,8 +33,6 @@ import com.telenav.mesakit.map.region.RegionProject;
 
 import java.io.InputStream;
 import java.util.Set;
-
-import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE;
 
 /**
  * Holds a set of region identities for a given region type, so they can be quickly loaded, creating a region object for
@@ -79,7 +76,7 @@ public class RegionIdentityCache<T extends Region<T>> extends BaseRepeater
         var start = Time.now();
 
         // Read the KivaKit version that wrote the data
-        var kivakitVersion = session.open(RESOURCE, KivaKit.get().projectVersion(), input);
+        var kivakitVersion = session.open(input);
 
         // read the set of identities
         VersionedObject<Set<RegionIdentity>> identities = session.read();

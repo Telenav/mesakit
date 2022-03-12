@@ -45,9 +45,9 @@ import com.telenav.kivakit.network.core.NetworkPath;
 import com.telenav.kivakit.network.http.secure.SecureHttpNetworkLocation;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.resource.Resource;
-import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.path.FileName;
+import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.kivakit.serialization.core.SerializationSession;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
@@ -343,7 +343,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater impl
                 {
                     // and save the identities to it
                     var session = serializationSession();
-                    session.open(RESOURCE, KivaKit.get().projectVersion(), out);
+                    session.open(out, RESOURCE, KivaKit.get().projectVersion());
                     identityCache.save(session, RegionProject.get().borderDataVersion(), identities);
                 }
                 catch (Exception e)
@@ -627,12 +627,12 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater impl
             try
             {
                 trace("Loading cached borders from '$'", borderCacheFile().fileName());
-                var in = borderCacheFile().openForReading();
+                var input = borderCacheFile().openForReading();
                 try
                 {
                     // Read the spatial index
                     var session = serializationSession();
-                    session.open(RESOURCE, KivaKit.get().projectVersion(), in);
+                    session.open(input);
                     var loaded = session.read();
                     var cachedIndex = (BorderSpatialIndex<T>) loaded.object();
                     var version = loaded.version();
@@ -683,7 +683,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater impl
                 }
                 finally
                 {
-                    IO.close(in);
+                    IO.close(input);
                 }
             }
             catch (Exception e)
@@ -940,7 +940,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater impl
         try (var output = borderCacheFile().openForWriting())
         {
             var session = serializationSession();
-            session.open(RESOURCE, KivaKit.get().projectVersion(), output);
+            session.open(output, RESOURCE, KivaKit.get().projectVersion());
             session.write(new SerializableObject<>(index(), RegionProject.get().borderDataVersion()));
             session.close();
         }
@@ -959,10 +959,10 @@ public abstract class BorderCache<T extends Region<T>> extends BaseRepeater impl
 
         // Read the index back in to verify it
         trace("Verifying border spatial index $", borderCacheFile().fileName());
-        try (var in = borderCacheFile().openForReading())
+        try (var input = borderCacheFile().openForReading())
         {
             var serialization = serializationSession();
-            serialization.open(RESOURCE, KivaKit.get().projectVersion(), in);
+            serialization.open(input);
             var index = serialization.read();
             ensureEqual(index.version(), RegionProject.get().borderDataVersion());
             ensureEqual(index.object(), index());
