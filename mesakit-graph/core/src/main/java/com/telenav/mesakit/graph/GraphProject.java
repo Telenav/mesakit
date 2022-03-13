@@ -24,6 +24,7 @@ import com.telenav.kivakit.core.project.ProjectTrait;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
+import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.graph.project.GraphKryoTypes;
@@ -43,6 +44,8 @@ public class GraphProject extends Project
     {
         System.setProperty("mesakit.graph.folder", graphFolder().toString());
         JavaVirtualMachine.local().invalidateProperties();
+        
+        register(new KryoObjectSerializer(new GraphKryoTypes()));
     }
 
     @Override
