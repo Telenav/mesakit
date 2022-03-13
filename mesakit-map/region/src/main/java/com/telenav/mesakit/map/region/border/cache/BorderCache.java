@@ -27,6 +27,7 @@ import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.thread.locks.Lock;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.value.count.Count;
@@ -148,6 +149,8 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
      * cached file if you change this value again (or it will keep loading the old cached data).
      */
     private static final boolean USE_FAST_POLYGON_SPATIAL_INDEX = true;
+
+    private static Lock cacheLock = new Lock();
 
     public static class Settings<R extends Region<R>>
     {
@@ -292,71 +295,77 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
         return polygonsForRegion.containsKey(object) ? polygonsForRegion.get(object) : Polygon.EMPTY_SET;
     }
 
-    public synchronized boolean loadBorders()
+    public boolean loadBorders()
     {
-        if (index() == null)
+        synchronized (cacheLock)
         {
-            // Ensure data is installed in cache
-            trace("Loading $", name());
-            installData();
-
-            // Load borders
-            if (loadBorders(pbfFile()))
+            if (index() == null)
             {
-                for (var border : index().all())
+                // Ensure data is installed in cache
+                trace("Loading $", name());
+                installData();
+
+                // Load borders
+                if (loadBorders(pbfFile()))
                 {
-                    polygonsForRegion.add(border.region(), border.polygon());
+                    for (var border : index().all())
+                    {
+                        polygonsForRegion.add(border.region(), border.polygon());
+                    }
+                    trace("Loaded $", name());
                 }
-                trace("Loaded $", name());
+                else
+                {
+                    index = null;
+                    problem("Unable to load $", name());
+                }
             }
-            else
-            {
-                index = null;
-                problem("Unable to load $", name());
-            }
-        }
 
-        return index() != null;
+            return index() != null;
+        }
     }
 
     /**
      * Load the region codes from, the serialized file, file that was created from reading borders.
      */
     @SuppressWarnings("UnusedReturnValue")
-    public synchronized BorderCache<T> loadIdentities()
+    public BorderCache<T> loadIdentities()
     {
-        // If the cache file doesn't exist, or we can't load it
-        var cacheFile = identitiesFile();
-        if (!cacheFile.exists() || !identityCache.load(cacheFile, serializationSession()))
+        synchronized (cacheLock)
         {
-            // then load the borders (forcing identities to be created in the process)
-            trace("Loading $", name());
-            if (loadBorders())
+            // If the cache file doesn't exist, or we can't load it
+            var cacheFile = identitiesFile();
+            if (!cacheFile.exists() || !identityCache.load(cacheFile, serializationSession()))
             {
-                // and if we loaded okay, extract all the identities from the index
-                Set<RegionIdentity> identities = new HashSet<>();
-                index().all().forEach((border) -> identities.add(border.identity()));
-
-                // open identities cache file
-                try (var out = cacheFile.openForWriting())
+                // then load the borders (forcing identities to be created in the process)
+                trace("Loading $", name());
+                if (loadBorders())
                 {
-                    // and save the identities to it
-                    var session = serializationSession();
-                    session.open(out, RESOURCE, kivakit().projectVersion());
-                    identityCache.save(session, regionProject().borderDataVersion(), identities);
-                }
-                catch (Exception e)
-                {
-                    problem(e, "Unable to write identities");
-                }
-                trace("Saved identities for $", name());
+                    // and if we loaded okay, extract all the identities from the index
+                    Set<RegionIdentity> identities = new HashSet<>();
+                    index().all().forEach((border) -> identities.add(border.identity()));
 
-                // and finally give all users access to this data
-                grantAccess();
+                    // open identities cache file
+                    try (var out = cacheFile.openForWriting())
+                    {
+                        // and save the identities to it
+                        var session = serializationSession();
+                        session.open(out, RESOURCE, kivakit().projectVersion());
+                        identityCache.save(session, regionProject().borderDataVersion(), identities);
+                    }
+                    catch (Exception e)
+                    {
+                        problem(e, "Unable to write identities");
+                    }
+                    trace("Saved identities for $", name());
+
+                    // and finally give all users access to this data
+                    grantAccess();
+                }
             }
-        }
 
-        return this;
+            return this;
+        }
     }
 
     public String name()
@@ -477,7 +486,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
 
     private void installData()
     {
-        synchronized (BorderCache.class)
+        synchronized (cacheLock)
         {
             // Ensure the data folder exists
             cacheFolder().mkdirs();
@@ -601,15 +610,18 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
      */
     private boolean loadBorders(Resource borders)
     {
-        // If we can load the borders from serialized index file
-        if (loadBordersFromCache())
+        synchronized (cacheLock)
         {
-            // we're done,
-            return true;
-        }
+            // If we can load the borders from serialized index file
+            if (loadBordersFromCache())
+            {
+                // we're done,
+                return true;
+            }
 
-        // otherwise, Read borders from PBF file into cached index file
-        return loadBordersFromPbf(borders);
+            // otherwise, Read borders from PBF file into cached index file
+            return loadBordersFromPbf(borders);
+        }
     }
 
     /**
@@ -618,82 +630,86 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
     @SuppressWarnings("unchecked")
     private boolean loadBordersFromCache()
     {
-        var start = Time.now();
-        if (!borderCacheFile().exists())
+        synchronized (cacheLock)
         {
-            information("Border cache '$' does not exist, will generate it", borderCacheFile().fileName());
-        }
-        else
-        {
-            try
+            var start = Time.now();
+            if (!borderCacheFile().exists())
             {
-                trace("Loading cached borders from '$'", borderCacheFile().fileName());
-                var input = borderCacheFile().openForReading();
+                information("Border cache '$' does not exist, will generate it", borderCacheFile().fileName());
+            }
+            else
+            {
                 try
                 {
-                    // Read the spatial index
-                    var session = serializationSession();
-                    session.open(input);
-                    var loaded = session.read();
-                    var cachedIndex = (BorderSpatialIndex<T>) loaded.object();
-                    var version = loaded.version();
-                    trace("Cached border index is version $", version);
-
-                    // and if it is the current version
-                    if (version.equals(regionProject().borderDataVersion()))
+                    trace("Loading cached borders from '$'", borderCacheFile().fileName());
+                    var input = borderCacheFile().openForReading();
+                    try
                     {
-                        var invalid = false;
-                        var borders = 0;
-                        for (var border : cachedIndex.all())
+                        // Read the spatial index
+                        var session = serializationSession();
+                        session.open(input);
+                        var loaded = session.read();
+                        var cachedIndex = (BorderSpatialIndex<T>) loaded.object();
+                        var version = loaded.version();
+                        trace("Cached border index is version $", version);
+
+                        // and if it is the current version
+                        if (version.equals(regionProject().borderDataVersion()))
                         {
-                            if (!border.isValid())
+                            var invalid = false;
+                            var borders = 0;
+                            for (var border : cachedIndex.all())
                             {
-                                invalid = true;
-                                break;
+                                if (!border.isValid())
+                                {
+                                    invalid = true;
+                                    break;
+                                }
+                                borders++;
                             }
-                            borders++;
-                        }
-                        if (invalid || borders == 0)
-                        {
-                            information("Border cache '$' is invalid or has no borders", borderCacheFile());
+                            if (invalid || borders == 0)
+                            {
+                                information("Border cache '$' is invalid or has no borders", borderCacheFile());
+                            }
+                            else
+                            {
+                                index = cachedIndex;
+
+                                // Convert persistent string identifiers back to bounded objects
+                                for (var border : index().all())
+                                {
+                                    var region = regionForIdentity(border.identity());
+                                    if (region == null)
+                                    {
+                                        warning("regionForIdentity returned null for $", border.identity());
+                                    }
+                                    border.region(region);
+                                }
+
+                                trace("Loaded $ $ in $", Count.count(index().all()), name(), start.elapsedSince());
+                                return true;
+                            }
                         }
                         else
                         {
-                            index = cachedIndex;
-
-                            // Convert persistent string identifiers back to bounded objects
-                            for (var border : index().all())
-                            {
-                                var region = regionForIdentity(border.identity());
-                                if (region == null)
-                                {
-                                    warning("regionForIdentity returned null for $", border.identity());
-                                }
-                                border.region(region);
-                            }
-
-                            trace("Loaded $ $ in $", Count.count(index().all()), name(), start.elapsedSince());
-                            return true;
+                            information("Ignoring version $ cache file '$' since current cache version is $",
+                                    version, borderCacheFile().fileName(), regionProject().borderDataVersion());
                         }
                     }
-                    else
+                    finally
                     {
-                        information("Ignoring version $ cache file '$' since current cache version is $",
-                                version, borderCacheFile().fileName(), regionProject().borderDataVersion());
+                        IO.close(input);
                     }
                 }
-                finally
+                catch (Exception e)
                 {
-                    IO.close(input);
+                    information("Unable to load border cache file '$'", borderCacheFile().fileName());
                 }
+                borderCacheFile().delete();
+                information("Removed invalid border cache file '$', will regenerate it", borderCacheFile().fileName());
             }
-            catch (Exception e)
-            {
-                information("Unable to load border cache file '$'", borderCacheFile().fileName());
-            }
-            borderCacheFile().delete();
-            information("Removed invalid border cache file '$', will regenerate it", borderCacheFile().fileName());
         }
+
         return false;
     }
 
@@ -705,209 +721,212 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
     @SuppressWarnings("UseOfSystemOutOrSystemErr")
     private boolean loadBordersFromPbf(Resource resource)
     {
-        information(AsciiArt.textBox("Building " + type().getSimpleName() + " Borders",
-                "Building borders from $\nThis may take a little while...", resource.fileName()));
-
-        var start = Time.now();
-        Map<Long, Location> locationForIdentifier = new HashMap<>();
-        var totalSize = new MutableCount();
-        var totalLocations = new MutableCount();
-        var total = new MutableCount();
-        Map<Long, Border<T>> borderForWayIdentifier = new HashMap<>();
-        List<Border<T>> borders = new ArrayList<>();
-        var settings = new RTreeSettings()
-                .withMaximumChildrenPerInteriorNode(Maximum._8)
-                .withMaximumChildrenPerLeaf(Maximum._32)
-                .withEstimatedChildrenPerInteriorNode(Estimate._8)
-                .withEstimatedChildrenPerLeaf(Estimate._32)
-                .withEstimatedNodes(Estimate._1024);
-
-        index = new BorderSpatialIndex<>(name() + ".index", settings);
-
-        if (RTreeSpatialIndex.visualDebug())
+        synchronized (cacheLock)
         {
-            var title = "RTree Debugger (" + name() + ")";
-            index().debugger(new RTreeSpatialIndexVisualDebugger<>(this, title));
-        }
+            information(AsciiArt.textBox("Building " + type().getSimpleName() + " Borders",
+                    "Building borders from $\nThis may take a little while...", resource.fileName()));
 
-        try
-        {
-            var reader = listenTo(new SerialPbfReader(resource));
-            var outer = this;
-            reader.phase("Loading");
-            reader.process(new PbfDataProcessor()
+            var start = Time.now();
+            Map<Long, Location> locationForIdentifier = new HashMap<>();
+            var totalSize = new MutableCount();
+            var totalLocations = new MutableCount();
+            var total = new MutableCount();
+            Map<Long, Border<T>> borderForWayIdentifier = new HashMap<>();
+            List<Border<T>> borders = new ArrayList<>();
+            var settings = new RTreeSettings()
+                    .withMaximumChildrenPerInteriorNode(Maximum._8)
+                    .withMaximumChildrenPerLeaf(Maximum._32)
+                    .withEstimatedChildrenPerInteriorNode(Estimate._8)
+                    .withEstimatedChildrenPerLeaf(Estimate._32)
+                    .withEstimatedNodes(Estimate._1024);
+
+            index = new BorderSpatialIndex<>(name() + ".index", settings);
+
+            if (RTreeSpatialIndex.visualDebug())
             {
-                private int identifier = 1;
+                var title = "RTree Debugger (" + name() + ")";
+                index().debugger(new RTreeSpatialIndexVisualDebugger<>(this, title));
+            }
 
-                @Override
-                public Action onNode(PbfNode node)
+            try
+            {
+                var reader = listenTo(new SerialPbfReader(resource));
+                var outer = this;
+                reader.phase("Loading");
+                reader.process(new PbfDataProcessor()
                 {
-                    var identifier = node.identifierAsLong();
-                    if (node.latitude() > 85 || node.latitude() < -85)
+                    private int identifier = 1;
+
+                    @Override
+                    public Action onNode(PbfNode node)
                     {
-                        return DISCARDED;
+                        var identifier = node.identifierAsLong();
+                        if (node.latitude() > 85 || node.latitude() < -85)
+                        {
+                            return DISCARDED;
+                        }
+                        else
+                        {
+                            var latitude = Latitude.degrees(node.latitude());
+                            var longitude = Longitude.degrees(node.longitude());
+                            var location = new Location(latitude, longitude);
+                            locationForIdentifier.put(identifier, location);
+                            totalLocations.increment();
+                            return ACCEPTED;
+                        }
                     }
-                    else
+
+                    @Override
+                    public Action onRelation(PbfRelation relation)
                     {
-                        var latitude = Latitude.degrees(node.latitude());
-                        var longitude = Longitude.degrees(node.longitude());
-                        var location = new Location(latitude, longitude);
-                        locationForIdentifier.put(identifier, location);
-                        totalLocations.increment();
+                        var tags = relation.tagMap();
+                        if ("multipolygon".equals(tags.get("type")))
+                        {
+                            List<Border<T>> unnamed = new ArrayList<>();
+                            List<Border<T>> inners = new ArrayList<>();
+                            List<Border<T>> outers = new ArrayList<>();
+                            for (var member : relation.members())
+                            {
+                                var border = borderForWayIdentifier.get(member.getMemberId());
+                                if (border != null)
+                                {
+                                    var object = border.region();
+                                    if (object.name() == null)
+                                    {
+                                        unnamed.add(border);
+                                    }
+                                    if ("inner".equalsIgnoreCase(member.getMemberRole()))
+                                    {
+                                        inners.add(border);
+                                    }
+                                    if ("outer".equalsIgnoreCase(member.getMemberRole()))
+                                    {
+                                        outers.add(border);
+                                    }
+                                }
+                                else
+                                {
+                                    trace("Multi-polygon relation $: member $ was not found", relation.identifierAsLong(), member.getMemberId());
+                                }
+                            }
+                            for (var outer : outers)
+                            {
+                                for (var inner : inners)
+                                {
+                                    outer.polygon().addHole(inner.polygon());
+                                    borders.remove(inner);
+                                }
+                            }
+                            assignMultiPolygonIdentity(tags, unnamed);
+                            for (var border : unnamed)
+                            {
+                                trace("Named inner polygon $ ($ segments)", border.region(),
+                                        border.polygon().segmentCount());
+                            }
+                        }
                         return ACCEPTED;
                     }
-                }
 
-                @Override
-                public Action onRelation(PbfRelation relation)
-                {
-                    var tags = relation.tagMap();
-                    if ("multipolygon".equals(tags.get("type")))
+                    @SuppressWarnings("ConstantConditions")
+                    @Override
+                    public Action onWay(PbfWay way)
                     {
-                        List<Border<T>> unnamed = new ArrayList<>();
-                        List<Border<T>> inners = new ArrayList<>();
-                        List<Border<T>> outers = new ArrayList<>();
-                        for (var member : relation.members())
+                        var region = settings().regionExtractor().extract(way);
+                        if (region != null && region.identity().isValid())
                         {
-                            var border = borderForWayIdentifier.get(member.getMemberId());
-                            if (border != null)
+                            // Start profiling time to load
+                            var start = Time.now();
+
+                            // Read polygon nodes
+                            var builder = new PolygonBuilder();
+                            for (var node : way.nodes())
                             {
-                                var object = border.region();
-                                if (object.name() == null)
+                                var location = locationForIdentifier.get(node.getNodeId());
+                                if (location != null)
                                 {
-                                    unnamed.add(border);
+                                    builder.add(location);
                                 }
-                                if ("inner".equalsIgnoreCase(member.getMemberRole()))
+                            }
+
+                            // If the border polygon is valid,
+                            if (builder.isValid())
+                            {
+                                // build the polygon and set an identifier, so it can be efficiently stored in a map
+                                var border = builder.build();
+                                if (border.bounds().area().isGreaterThan(settings().minimumBorderArea()))
                                 {
-                                    inners.add(border);
-                                }
-                                if ("outer".equalsIgnoreCase(member.getMemberRole()))
-                                {
-                                    outers.add(border);
+                                    border.hashCode(identifier++);
+                                    border.fast(USE_FAST_POLYGON_SPATIAL_INDEX);
+                                    border.initialize();
+                                    CompressibleCollection.compressReachableObjects(outer, border, CompressibleCollection.Method.FREEZE,
+                                            event ->
+                                            {
+                                            });
+                                    total.increment();
+
+                                    // Get time elapsed to build polygon
+                                    var elapsed = start.elapsedSince();
+
+                                    // Get the approximate size of the polygon
+                                    Bytes size = null;
+                                    if (SHOW_APPROXIMATE_SIZES)
+                                    {
+                                        size = Bytes.primitiveSize(border.outline());
+                                        ensure(size != null);
+                                        totalSize.plus(size.asBytes());
+                                    }
+
+                                    // Show information about the loaded border
+                                    if (DETAILED_TRACE)
+                                    {
+                                        trace("Loaded $ ($ segments) in $ $", region, border.segmentCount(), elapsed,
+                                                (size != null ? "(" + size + ")" : ""));
+                                    }
+
+                                    // Add polygon to spatial index
+                                    var newBorder = new Border<>(region, border);
+                                    borders.add(newBorder);
+                                    borderForWayIdentifier.put(way.identifierAsLong(), newBorder);
                                 }
                             }
                             else
                             {
-                                trace("Multi-polygon relation $: member $ was not found", relation.identifierAsLong(), member.getMemberId());
-                            }
-                        }
-                        for (var outer : outers)
-                        {
-                            for (var inner : inners)
-                            {
-                                outer.polygon().addHole(inner.polygon());
-                                borders.remove(inner);
-                            }
-                        }
-                        assignMultiPolygonIdentity(tags, unnamed);
-                        for (var border : unnamed)
-                        {
-                            trace("Named inner polygon $ ($ segments)", border.region(),
-                                    border.polygon().segmentCount());
-                        }
-                    }
-                    return ACCEPTED;
-                }
-
-                @SuppressWarnings("ConstantConditions")
-                @Override
-                public Action onWay(PbfWay way)
-                {
-                    var region = settings().regionExtractor().extract(way);
-                    if (region != null && region.identity().isValid())
-                    {
-                        // Start profiling time to load
-                        var start = Time.now();
-
-                        // Read polygon nodes
-                        var builder = new PolygonBuilder();
-                        for (var node : way.nodes())
-                        {
-                            var location = locationForIdentifier.get(node.getNodeId());
-                            if (location != null)
-                            {
-                                builder.add(location);
-                            }
-                        }
-
-                        // If the border polygon is valid,
-                        if (builder.isValid())
-                        {
-                            // build the polygon and set an identifier, so it can be efficiently stored in a map
-                            var border = builder.build();
-                            if (border.bounds().area().isGreaterThan(settings().minimumBorderArea()))
-                            {
-                                border.hashCode(identifier++);
-                                border.fast(USE_FAST_POLYGON_SPATIAL_INDEX);
-                                border.initialize();
-                                CompressibleCollection.compressReachableObjects(outer, border, CompressibleCollection.Method.FREEZE,
-                                        event ->
-                                        {
-                                        });
-                                total.increment();
-
-                                // Get time elapsed to build polygon
-                                var elapsed = start.elapsedSince();
-
-                                // Get the approximate size of the polygon
-                                Bytes size = null;
-                                if (SHOW_APPROXIMATE_SIZES)
-                                {
-                                    size = Bytes.primitiveSize(border.outline());
-                                    ensure(size != null);
-                                    totalSize.plus(size.asBytes());
-                                }
-
-                                // Show information about the loaded border
-                                if (DETAILED_TRACE)
-                                {
-                                    trace("Loaded $ ($ segments) in $ $", region, border.segmentCount(), elapsed,
-                                            (size != null ? "(" + size + ")" : ""));
-                                }
-
-                                // Add polygon to spatial index
-                                var newBorder = new Border<>(region, border);
-                                borders.add(newBorder);
-                                borderForWayIdentifier.put(way.identifierAsLong(), newBorder);
+                                warning("The region $ (way $) is not closed", region.identity(), way.identifier());
                             }
                         }
                         else
                         {
-                            warning("The region $ (way $) is not closed", region.identity(), way.identifier());
+                            trace("Unable to extract a valid " + type().getSimpleName() + " from " + way);
                         }
+                        return ACCEPTED;
                     }
-                    else
-                    {
-                        trace("Unable to extract a valid " + type().getSimpleName() + " from " + way);
-                    }
-                    return ACCEPTED;
+                });
+
+                // Bulk load spatial index
+                index().bulkLoad(borders);
+
+                if (isDebugOn())
+                {
+                    index().dump(System.out);
                 }
-            });
 
-            // Bulk load spatial index
-            index().bulkLoad(borders);
+                // Show what was loaded
+                if (DETAILED_TRACE)
+                {
+                    trace("Loaded $ polygons with $ locations $ in $", total.asCount(), totalLocations.asCount(),
+                            SHOW_APPROXIMATE_SIZES ? "(" + Bytes.bytes(totalSize.asLong()) + ") " : "", start.elapsedSince());
+                }
 
-            if (isDebugOn())
-            {
-                index().dump(System.out);
+                saveBordersToCache();
+
+                // We succeeded
+                return true;
             }
-
-            // Show what was loaded
-            if (DETAILED_TRACE)
+            catch (Exception e)
             {
-                trace("Loaded $ polygons with $ locations $ in $", total.asCount(), totalLocations.asCount(),
-                        SHOW_APPROXIMATE_SIZES ? "(" + Bytes.bytes(totalSize.asLong()) + ") " : "", start.elapsedSince());
+                warning(e, "Unable to load borders from pbf file '$'", resource);
+                return false;
             }
-
-            saveBordersToCache();
-
-            // We succeeded
-            return true;
-        }
-        catch (Exception e)
-        {
-            warning(e, "Unable to load borders from pbf file '$'", resource);
-            return false;
         }
     }
 
@@ -933,54 +952,58 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
 
     private void saveBordersToCache()
     {
-        trace("Optimizing border index");
-        CompressibleCollection.compressReachableObjects(this, index(), CompressibleCollection.Method.FREEZE, Compressible ->
+        synchronized (cacheLock)
         {
-        });
-        trace("Optimized border index");
+            trace("Optimizing border index");
+            CompressibleCollection.compressReachableObjects(this, index(), CompressibleCollection.Method.FREEZE, Compressible ->
+            {
+            });
+            trace("Optimized border index");
 
-        trace("Saving borders to $", borderCacheFile().fileName());
+            trace("Saving borders to $", borderCacheFile().fileName());
 
-        // Save spatial index in cache file
-        trace("Saving border spatial index to $", borderCacheFile().fileName());
-        try (var output = borderCacheFile().openForWriting())
-        {
-            var session = serializationSession();
-            session.open(output, RESOURCE, kivakit().projectVersion());
-            session.write(new SerializableObject<>(index(), regionProject().borderDataVersion()));
-            session.close();
-        }
-        catch (Exception e)
-        {
-            throw new Problem(e, "Unable to save border spatial index to ${debug}", borderCacheFile().fileName()).asException();
-        }
-        if (borderCacheFile().exists())
-        {
-            trace("Saved border spatial index to $", borderCacheFile().fileName());
-        }
-        else
-        {
-            problem("Unable to save border spatial index to $", borderCacheFile().fileName());
-        }
+            // Save spatial index in cache file
+            trace("Saving border spatial index to $", borderCacheFile().fileName());
+            try (var output = borderCacheFile().openForWriting())
+            {
+                var session = serializationSession();
+                session.open(output, RESOURCE, kivakit().projectVersion());
+                session.write(new SerializableObject<>(index(), regionProject().borderDataVersion()));
+                session.close();
+            }
+            catch (Exception e)
+            {
+                throw new Problem(e, "Unable to save border spatial index to ${debug}", borderCacheFile().fileName()).asException();
+            }
+            if (borderCacheFile().exists())
+            {
+                trace("Saved border spatial index to $", borderCacheFile().fileName());
+            }
+            else
+            {
+                problem("Unable to save border spatial index to $", borderCacheFile().fileName());
+            }
 
-        // Read the index back in to verify it
-        trace("Verifying border spatial index $", borderCacheFile().fileName());
-        try (var input = borderCacheFile().openForReading())
-        {
-            var serialization = serializationSession();
-            serialization.open(input);
-            var index = serialization.read();
-            ensureEqual(index.version(), regionProject().borderDataVersion());
-            ensureEqual(index.object(), index());
-        }
-        catch (IOException e)
-        {
-            problem(e, "Unable to verify spatial index");
-        }
-        trace("Verified border spatial index $", borderCacheFile().fileName());
+            // Read the index back in to verify it
+            trace("Verifying border spatial index $", borderCacheFile().fileName());
+            try (var input = borderCacheFile().openForReading())
+            {
+                var session = serializationSession();
+                session.open(input);
+                var index = session.read();
+                session.close();
+                ensureEqual(index.version(), regionProject().borderDataVersion());
+                ensureEqual(index.object(), index());
+            }
+            catch (IOException e)
+            {
+                problem(e, "Unable to verify spatial index");
+            }
+            trace("Verified border spatial index $", borderCacheFile().fileName());
 
-        // Give all users access to this data
-        grantAccess();
+            // Give all users access to this data
+            grantAccess();
+        }
     }
 
     @SuppressWarnings({ "unchecked" })

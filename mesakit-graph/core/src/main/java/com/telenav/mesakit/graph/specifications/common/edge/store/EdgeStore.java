@@ -39,7 +39,7 @@ import com.telenav.kivakit.primitive.collections.map.scalars.IntToByteMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.LongToIntMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.fixed.LongToLongFixedMultiMap;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
-import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.kivakit.validation.Validatable;
 import com.telenav.kivakit.validation.ValidationType;
 import com.telenav.kivakit.validation.Validator;
@@ -1520,8 +1520,8 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
 
     private void configureSerializer()
     {
-        var kryo = require(KryoSerializationSession.class);
-        var types = kryo.kryoTypes();
+        var session = require(KryoSerializationSessionFactory.class).newSession(this);
+        var types = session.kryoTypes();
         types.registerDynamic(CompressedEdgeSpatialIndex.class,
                 new CompressedEdgeSpatialIndexKryoSerializer(graph()),
                 CompressedEdgeSpatialIndexKryoSerializer.IDENTIFIER);

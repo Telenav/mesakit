@@ -23,13 +23,13 @@ import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.project.Project;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.resource.CopyMode;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.path.Extension;
-import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.kivakit.settings.Settings;
 import com.telenav.kivakit.settings.stores.FolderSettingsStore;
 import com.telenav.mesakit.core.MesaKit;
@@ -152,7 +152,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
 
     protected GraphUnitTest()
     {
-        register(new KryoSerializationSessionFactory(new GraphKryoTypes()));
+        Project.resolveProject(GraphProject.class).initialize();
 
         var store = Settings.of(this);
         LOGGER.listenTo(store);
