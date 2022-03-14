@@ -25,7 +25,7 @@ import com.telenav.kivakit.core.string.Split;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.GeographyLimits;
+import com.telenav.mesakit.map.geography.GeographyLimits;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 
 import java.util.List;

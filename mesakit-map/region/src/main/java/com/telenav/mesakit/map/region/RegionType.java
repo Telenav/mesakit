@@ -28,7 +28,7 @@ import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.region.border.cache.BorderCache;
-import com.telenav.mesakit.map.region.project.lexakai.DiagramRegion;
+import com.telenav.mesakit.map.region.lexakai.DiagramRegion;
 
 import java.util.ArrayList;
 import java.util.Collection;

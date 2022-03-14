@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.measurements.geographic;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
-import com.telenav.mesakit.map.measurements.project.lexakai.DiagramMapMeasurementGeographic;
+import com.telenav.mesakit.map.measurements.lexakai.DiagramMapMeasurementGeographic;
 
 /**
  * An object that has a {@link Heading}.

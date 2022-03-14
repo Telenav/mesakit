@@ -23,7 +23,7 @@ import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToByteMap;
 import com.telenav.kivakit.primitive.collections.set.SplitLongSet;
-import com.telenav.mesakit.map.region.project.RegionLimits;
+import com.telenav.mesakit.map.region.RegionLimits;
 import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;

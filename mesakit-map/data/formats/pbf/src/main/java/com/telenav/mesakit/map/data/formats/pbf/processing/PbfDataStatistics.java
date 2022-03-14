@@ -22,7 +22,7 @@ import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfProcessing;
+import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfProcessing;
 
 /**
  * A simple container for statistics accumulated while processing data from a {@link PbfDataSource}

@@ -19,7 +19,6 @@
 package com.telenav.mesakit.map.region;
 
 import com.telenav.kivakit.core.test.SlowTest;
-import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
 import org.junit.Test;

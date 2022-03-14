@@ -31,7 +31,7 @@ import com.telenav.mesakit.map.cutter.Cut;
 import com.telenav.mesakit.map.cutter.PbfRegionCutter;
 import com.telenav.mesakit.map.cutter.cuts.maps.RegionNodes;
 import com.telenav.mesakit.map.cutter.cuts.maps.RegionWays;
-import com.telenav.mesakit.map.cutter.project.lexakai.DiagramMapCutter;
+import com.telenav.mesakit.map.cutter.lexakai.DiagramMapCutter;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;

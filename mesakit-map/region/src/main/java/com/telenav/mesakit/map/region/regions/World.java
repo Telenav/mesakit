@@ -22,7 +22,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
-import com.telenav.mesakit.map.region.project.lexakai.DiagramRegions;
+import com.telenav.mesakit.map.region.lexakai.DiagramRegions;
 
 /**
  * Object representing the world and its continents.

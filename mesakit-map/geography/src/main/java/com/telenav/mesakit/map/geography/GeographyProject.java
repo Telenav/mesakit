@@ -4,8 +4,7 @@ import com.telenav.kivakit.core.project.Project;
 import com.telenav.kivakit.core.project.ProjectTrait;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
-import com.telenav.mesakit.map.geography.project.GeographyKryoTypes;
-import com.telenav.mesakit.map.measurements.project.MeasurementsKryoTypes;
+import com.telenav.mesakit.map.measurements.MeasurementsKryoTypes;
 
 /**
  * This class defines a KivaKit {@link Project}. It cannot be constructed with the new operator since it has a private

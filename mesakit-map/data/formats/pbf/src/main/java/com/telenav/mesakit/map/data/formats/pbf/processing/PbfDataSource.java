@@ -29,7 +29,7 @@ import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
 import com.telenav.mesakit.map.data.formats.pbf.processing.readers.SerialPbfReader;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfProcessing;
+import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfProcessing;
 
 import java.util.Map;
 

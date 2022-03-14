@@ -54,7 +54,7 @@ import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.quadtree.QuadTreeSpatialIndex;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.mesakit.map.region.project.RegionLimits;
+import com.telenav.mesakit.map.region.RegionLimits;
 import com.telenav.mesakit.map.utilities.grid.GridCell;
 
 import java.io.Serializable;

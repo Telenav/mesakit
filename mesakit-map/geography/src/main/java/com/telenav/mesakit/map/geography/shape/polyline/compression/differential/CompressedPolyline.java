@@ -35,7 +35,7 @@ import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.LocationSequence;
 import com.telenav.mesakit.map.geography.Precision;
-import com.telenav.mesakit.map.geography.project.lexakai.DiagramPolyline;
+import com.telenav.mesakit.map.geography.lexakai.DiagramPolyline;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 

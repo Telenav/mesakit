@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.data.formats.pbf.model.metadata;
 
 import com.telenav.kivakit.core.value.name.Name;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfModelMetadata;
+import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelMetadata;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 

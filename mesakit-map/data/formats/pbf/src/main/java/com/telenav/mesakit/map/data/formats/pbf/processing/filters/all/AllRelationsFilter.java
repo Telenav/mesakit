@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.data.formats.pbf.processing.filters.all;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.RelationFilter;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfProcessingFilters;
+import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfProcessingFilters;
 
 /**
  * All ways

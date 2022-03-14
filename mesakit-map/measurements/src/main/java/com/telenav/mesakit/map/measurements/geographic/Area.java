@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.measurements.geographic;
 
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.measurements.project.lexakai.DiagramMapMeasurementGeographic;
+import com.telenav.mesakit.map.measurements.lexakai.DiagramMapMeasurementGeographic;
 
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
 

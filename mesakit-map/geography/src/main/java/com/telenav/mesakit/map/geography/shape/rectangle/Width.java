@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.geography.shape.rectangle;
 
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.project.lexakai.DiagramRectangle;
+import com.telenav.mesakit.map.geography.lexakai.DiagramRectangle;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 
 /**

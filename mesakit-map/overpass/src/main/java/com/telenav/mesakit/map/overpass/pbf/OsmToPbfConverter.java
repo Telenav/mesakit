@@ -22,7 +22,7 @@ import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.overpass.project.lexakai.DiagramOverpass;
+import com.telenav.mesakit.map.overpass.lexakai.DiagramOverpass;
 import crosby.binary.osmosis.OsmosisSerializer;
 import org.openstreetmap.osmosis.core.container.v0_6.EntityContainer;
 import org.openstreetmap.osmosis.core.task.v0_6.RunnableSource;

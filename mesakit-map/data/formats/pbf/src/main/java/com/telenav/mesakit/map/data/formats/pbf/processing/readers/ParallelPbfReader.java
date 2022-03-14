@@ -30,7 +30,7 @@ import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataSource;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataStatistics;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfProcessing;
+import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfProcessing;
 
 /**
  * A parallel version of {@link SerialPbfReader}. Entities are read with a {@link SerialPbfReader} and inserted into a

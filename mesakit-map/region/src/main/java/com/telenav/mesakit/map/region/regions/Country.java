@@ -48,8 +48,8 @@ import com.telenav.mesakit.map.region.border.cache.BorderCache;
 import com.telenav.mesakit.map.region.countries.Canada;
 import com.telenav.mesakit.map.region.countries.Mexico;
 import com.telenav.mesakit.map.region.countries.UnitedStates;
-import com.telenav.mesakit.map.region.project.RegionLimits;
-import com.telenav.mesakit.map.region.project.lexakai.DiagramRegions;
+import com.telenav.mesakit.map.region.RegionLimits;
+import com.telenav.mesakit.map.region.lexakai.DiagramRegions;
 
 import java.util.ArrayList;
 import java.util.Collection;

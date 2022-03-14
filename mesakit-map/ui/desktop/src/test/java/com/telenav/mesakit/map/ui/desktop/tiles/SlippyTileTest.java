@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
+import com.telenav.mesakit.map.geography.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import org.junit.Test;
 

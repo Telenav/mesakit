@@ -10,7 +10,7 @@ import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifie
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagFilter;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfModelEntities;
+import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelEntities;
 import org.jetbrains.annotations.NotNull;
 import org.openstreetmap.osmosis.core.domain.v0_6.Entity;
 import org.openstreetmap.osmosis.core.domain.v0_6.EntityType;

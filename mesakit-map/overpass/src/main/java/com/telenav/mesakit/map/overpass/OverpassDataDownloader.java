@@ -30,7 +30,7 @@ import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.overpass.pbf.OsmToPbfConverter;
-import com.telenav.mesakit.map.overpass.project.lexakai.DiagramOverpass;
+import com.telenav.mesakit.map.overpass.lexakai.DiagramOverpass;
 
 /**
  * @author jonathanl (shibo)

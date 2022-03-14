@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.data.formats.pbf.osm;
 
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfOsm;
+import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfOsm;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.Arrays;

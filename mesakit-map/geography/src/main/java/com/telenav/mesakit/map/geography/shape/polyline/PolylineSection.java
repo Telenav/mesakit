@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.geography.shape.polyline;
 
 import com.telenav.kivakit.core.language.Hash;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.geography.project.lexakai.DiagramPolyline;
+import com.telenav.mesakit.map.geography.lexakai.DiagramPolyline;
 
 /**
  * Represents a section of a polyline

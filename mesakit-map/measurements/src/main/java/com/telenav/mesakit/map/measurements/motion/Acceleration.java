@@ -22,7 +22,7 @@ import com.telenav.kivakit.core.time.Duration;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
-import com.telenav.mesakit.map.measurements.project.lexakai.DiagramMapMeasurementMotion;
+import com.telenav.mesakit.map.measurements.lexakai.DiagramMapMeasurementMotion;
 
 /**
  * Change in {@link Speed} per {@link Duration}, or distance per time squared. An acceleration can be negative if the

@@ -25,7 +25,7 @@ import com.telenav.mesakit.map.geography.indexing.rtree.Leaf;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSettings;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndex;
 import com.telenav.mesakit.map.region.Region;
-import com.telenav.mesakit.map.region.project.lexakai.DiagramBorder;
+import com.telenav.mesakit.map.region.lexakai.DiagramBorder;
 
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 

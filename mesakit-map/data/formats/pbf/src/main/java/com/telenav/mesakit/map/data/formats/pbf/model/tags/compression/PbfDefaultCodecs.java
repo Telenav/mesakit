@@ -10,7 +10,7 @@ import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringC
 import com.telenav.kivakit.resource.PropertyMap;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfModelCompression;
+import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelCompression;
 import org.jetbrains.annotations.NotNull;
 
 import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;

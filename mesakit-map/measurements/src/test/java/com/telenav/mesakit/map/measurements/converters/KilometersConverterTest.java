@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.measurements.converters;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.messaging.listeners.ThrowingListener;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.mesakit.map.measurements.project.MeasurementsUnitTest;
+import com.telenav.mesakit.map.measurements.MeasurementsUnitTest;
 import org.junit.Test;
 
 public class KilometersConverterTest extends MeasurementsUnitTest

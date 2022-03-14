@@ -23,7 +23,7 @@ import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.region.project.RegionLimits;
+import com.telenav.mesakit.map.region.RegionLimits;
 
 import java.io.DataInputStream;
 import java.io.IOException;

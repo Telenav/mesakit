@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import org.junit.Test;
 
 import java.util.HashSet;

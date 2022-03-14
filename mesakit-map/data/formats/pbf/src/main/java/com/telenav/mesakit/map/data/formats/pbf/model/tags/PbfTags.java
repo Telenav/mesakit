@@ -4,7 +4,7 @@ import com.telenav.kivakit.core.string.Strip;
 import com.telenav.kivakit.resource.PropertyMap;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.DiagramPbfModelTags;
+import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelTags;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.ArrayList;
