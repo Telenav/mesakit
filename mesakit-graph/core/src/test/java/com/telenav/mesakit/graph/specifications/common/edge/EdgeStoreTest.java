@@ -65,16 +65,17 @@ public class EdgeStoreTest extends GraphUnitTest
             ensure(edges.get(index - 1).equals(edge));
         }
 
-        var output = new ByteArrayOutputStream();
         var index = new CompressedEdgeSpatialIndex("test", graph, new RTreeSettings());
         index.bulkLoad(graph.edges().asList());
+
         var serializer = new KryoObjectSerializer(new GraphKryoTypes());
+        var output = new ByteArrayOutputStream();
         var path = StringPath.stringPath("test");
         serializer.write(output, path, index, ObjectMetadata.TYPE);
         IO.close(output);
 
         var input = new ByteArrayInputStream(output.toByteArray());
-        var deserialized = serializer.read(input, path, ObjectMetadata.TYPE);
+        var deserialized = serializer.read(input, path, ObjectMetadata.TYPE).object();
 
         ensureEqual(index, deserialized);
     }

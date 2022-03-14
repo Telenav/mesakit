@@ -23,7 +23,6 @@ import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.progress.ProgressReporter;
-import com.telenav.kivakit.core.project.Project;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
@@ -60,7 +59,6 @@ import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.overpass.OverpassDataDownloader;
 import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Country;
-import org.junit.BeforeClass;
 
 import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
@@ -137,12 +135,6 @@ public abstract class GraphUnitTest extends RegionUnitTest
         return osmHuronCharter.get();
     }
 
-    @BeforeClass
-    public static synchronized void testSetup()
-    {
-        resolveProject(GraphProject.class).initialize();
-    }
-
     private final Location.DegreesConverter locationInDegreesConverter = new Location.DegreesConverter(LOGGER);
 
     private final Location.DegreesMinutesAndSecondsConverter locationInDegreesMinutesAndSecondsConverter =
@@ -152,7 +144,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
 
     protected GraphUnitTest()
     {
-        Project.resolveProject(GraphProject.class).initialize();
+        resolveProject(GraphProject.class).initialize();
 
         var store = Settings.of(this);
         LOGGER.listenTo(store);
