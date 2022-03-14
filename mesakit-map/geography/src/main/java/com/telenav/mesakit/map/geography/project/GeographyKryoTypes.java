@@ -64,6 +64,7 @@ public class GeographyKryoTypes extends KryoTypes
         group("r-tree-spatial-index", () ->
         {
             register(RTreeSpatialIndex.class);
+            register(RTreeSpatialIndex.All.class);
             register(RTreeSettings.class);
             register(com.telenav.mesakit.map.geography.indexing.rtree.Leaf.class);
             register(Node.class);

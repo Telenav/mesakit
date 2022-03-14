@@ -24,7 +24,6 @@ import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.language.primitive.Booleans;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.value.count.Count;
-import com.telenav.kivakit.interfaces.comparison.Filter;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
@@ -67,8 +66,21 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
         public static final DumpDetailLevel DEFAULT = SHOW_OBJECTS;
     }
 
+    /**
+     * This class must be declared in order to be serializable, as the Lambda returned by {@link Matcher#anything()} is
+     * not serializable.
+     */
+    public static class All<Element> implements Matcher<Element>
+    {
+        @Override
+        public boolean matches(final Element element)
+        {
+            return true;
+        }
+    }
+
     /** Matcher that matches all elements */
-    private final Matcher<Element> allElements = Filter.all();
+    private final Matcher<Element> allElements = new All<>();
 
     /** Debugger interface */
     private RTreeSpatialIndexDebugger<Element> debugger = RTreeSpatialIndexDebugger.nullDebugger();
