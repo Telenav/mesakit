@@ -16,11 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.graph.world.project;
+package com.telenav.mesakit.graph.world;
 
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
-import com.telenav.mesakit.graph.world.WorldGraphIndex;
-import com.telenav.mesakit.graph.world.WorldPlace;
 import com.telenav.mesakit.graph.world.grid.WorldCell;
 import com.telenav.mesakit.graph.world.grid.WorldGrid;
 

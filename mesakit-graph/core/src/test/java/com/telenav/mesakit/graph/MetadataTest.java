@@ -21,7 +21,6 @@ package com.telenav.mesakit.graph;
 import com.telenav.mesakit.graph.metadata.DataBuild;
 import com.telenav.mesakit.graph.metadata.DataSupplier;
 import com.telenav.mesakit.graph.metadata.DataVersion;
-import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 import com.telenav.mesakit.map.data.formats.library.DataFormat;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;

@@ -59,7 +59,6 @@ import com.telenav.mesakit.graph.metadata.DataBuild;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
 import com.telenav.mesakit.graph.metadata.DataSupplier;
 import com.telenav.mesakit.graph.metadata.DataVersion;
-import com.telenav.mesakit.graph.project.GraphLimits;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 import com.telenav.mesakit.map.data.formats.library.DataFormat;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;

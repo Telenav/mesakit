@@ -39,7 +39,7 @@ import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.identifiers.RelationIdentifier;
-import com.telenav.mesakit.graph.project.GraphLimits.Limit;
+import com.telenav.mesakit.graph.GraphLimits.Limit;
 import com.telenav.mesakit.graph.specifications.common.relation.HeavyWeightRelation;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapRelationIdentifier;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;

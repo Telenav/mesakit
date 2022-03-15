@@ -16,11 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.map.utilities.grid.project;
+package com.telenav.mesakit.map.utilities.grid;
 
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
-import com.telenav.mesakit.map.utilities.grid.GridCell;
-import com.telenav.mesakit.map.utilities.grid.GridCellIdentifier;
 
 public class GridKryoTypes extends KryoTypes
 {

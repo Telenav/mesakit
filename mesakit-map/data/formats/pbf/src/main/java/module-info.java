@@ -24,6 +24,5 @@ open module mesakit.data.formats.pbf
     exports com.telenav.mesakit.map.data.formats.pbf.processing.readers;
     exports com.telenav.mesakit.map.data.formats.pbf.processing.writers;
     exports com.telenav.mesakit.map.data.formats.pbf.processing;
-    exports com.telenav.mesakit.map.data.formats.pbf.project;
     exports com.telenav.mesakit.map.data.formats.pbf;
 }

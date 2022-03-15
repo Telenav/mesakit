@@ -11,6 +11,5 @@ open module mesakit.graph.world
     exports com.telenav.mesakit.graph.world;
     exports com.telenav.mesakit.graph.world.grid;
     exports com.telenav.mesakit.graph.world.identifiers;
-    exports com.telenav.mesakit.graph.world.project;
     exports com.telenav.mesakit.graph.world.repository;
 }

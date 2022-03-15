@@ -26,7 +26,7 @@ import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.RouteBuilder;
 import com.telenav.mesakit.graph.Vertex;
-import com.telenav.mesakit.graph.project.GraphLimits.Limit;
+import com.telenav.mesakit.graph.GraphLimits.Limit;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
 import java.util.Iterator;

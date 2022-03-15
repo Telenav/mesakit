@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph.specifications.common.edge.store.index;
 
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.mesakit.graph.Graph;
-import com.telenav.mesakit.graph.project.GraphUnitTest;
+import com.telenav.mesakit.graph.GraphUnitTest;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;

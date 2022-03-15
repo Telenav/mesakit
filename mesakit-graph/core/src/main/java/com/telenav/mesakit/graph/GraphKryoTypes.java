@@ -16,7 +16,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.graph.project;
+package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.data.formats.library.DataFormat;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;

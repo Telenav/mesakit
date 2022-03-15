@@ -25,7 +25,7 @@ import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
-import com.telenav.mesakit.graph.project.GraphUnitTest;
+import com.telenav.mesakit.graph.GraphUnitTest;
 import com.telenav.mesakit.map.measurements.motion.Speed;
 import com.telenav.mesakit.navigation.routing.bidijkstra.BiDijkstraRouter;
 import com.telenav.mesakit.navigation.routing.bidijkstra.BiDijkstraRoutingRequest;

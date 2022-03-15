@@ -47,7 +47,7 @@ import com.telenav.mesakit.graph.collections.VertexSequence;
 import com.telenav.mesakit.graph.identifiers.VertexIdentifier;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
-import com.telenav.mesakit.graph.project.GraphLimits;
+import com.telenav.mesakit.graph.GraphLimits;
 import com.telenav.mesakit.graph.specifications.common.edge.EdgeAttributes;
 import com.telenav.mesakit.graph.specifications.common.edge.HeavyWeightEdge;
 import com.telenav.mesakit.graph.specifications.common.element.GraphElementStore;

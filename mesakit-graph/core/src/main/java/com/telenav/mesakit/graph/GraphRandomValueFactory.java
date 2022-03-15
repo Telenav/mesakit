@@ -16,7 +16,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.graph.project;
+package com.telenav.mesakit.graph;
 
 import com.telenav.mesakit.map.geography.GeographyRandomValueFactory;
 import com.telenav.mesakit.map.road.model.BetweenCrossRoads;

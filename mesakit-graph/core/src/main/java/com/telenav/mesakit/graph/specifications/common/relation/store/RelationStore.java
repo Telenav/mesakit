@@ -42,7 +42,7 @@ import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.io.load.GraphConstraints;
 import com.telenav.mesakit.graph.metadata.DataSpecification.GraphElementFactory;
-import com.telenav.mesakit.graph.project.GraphLimits.Estimated;
+import com.telenav.mesakit.graph.GraphLimits.Estimated;
 import com.telenav.mesakit.graph.specifications.common.element.ArchivedGraphElementStore;
 import com.telenav.mesakit.graph.specifications.common.relation.RelationAttributes;
 import com.telenav.mesakit.graph.specifications.library.attributes.AttributeReference;

@@ -30,7 +30,7 @@ import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.collections.RelationSet;
 import com.telenav.mesakit.graph.collections.VertexSequence;
-import com.telenav.mesakit.graph.project.GraphLimits;
+import com.telenav.mesakit.graph.GraphLimits;
 import com.telenav.mesakit.graph.world.WorldEdge;
 import com.telenav.mesakit.graph.world.WorldRelation;
 import com.telenav.mesakit.graph.world.WorldVertex;

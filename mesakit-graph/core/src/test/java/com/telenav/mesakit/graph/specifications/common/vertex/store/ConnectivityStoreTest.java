@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.vertex.store;
 
-import com.telenav.mesakit.graph.project.GraphUnitTest;
+import com.telenav.mesakit.graph.GraphUnitTest;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.geographic.Heading;

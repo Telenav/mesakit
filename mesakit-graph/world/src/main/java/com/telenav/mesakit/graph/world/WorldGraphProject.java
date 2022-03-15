@@ -24,7 +24,6 @@ import com.telenav.kivakit.core.project.ProjectTrait;
 import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.mesakit.graph.GraphProject;
-import com.telenav.mesakit.graph.world.project.WorldGraphKryoTypes;
 
 /**
  * This class defines a KivaKit {@link Project}. It cannot be constructed with the new operator since it has a private

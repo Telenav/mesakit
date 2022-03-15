@@ -16,7 +16,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.graph.project;
+package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
@@ -32,13 +32,6 @@ import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.kivakit.settings.Settings;
 import com.telenav.kivakit.settings.stores.FolderSettingsStore;
 import com.telenav.mesakit.core.MesaKit;
-import com.telenav.mesakit.graph.Edge;
-import com.telenav.mesakit.graph.Graph;
-import com.telenav.mesakit.graph.GraphProject;
-import com.telenav.mesakit.graph.Metadata;
-import com.telenav.mesakit.graph.Route;
-import com.telenav.mesakit.graph.RouteBuilder;
-import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.identifiers.VertexIdentifier;

@@ -23,5 +23,4 @@ open module mesakit.map.region
     exports com.telenav.mesakit.map.region.countries.states;
     exports com.telenav.mesakit.map.region.countries.states.cities;
     exports com.telenav.mesakit.map.region.locale;
-    exports com.telenav.mesakit.map.region.project;
 }

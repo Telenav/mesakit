@@ -46,7 +46,6 @@ open module mesakit.graph.core
     exports com.telenav.mesakit.graph.navigation.limiters;
     exports com.telenav.mesakit.graph.navigation.navigators;
     exports com.telenav.mesakit.graph.navigation;
-    exports com.telenav.mesakit.graph.project;
     exports com.telenav.mesakit.graph.relations.restrictions;
     exports com.telenav.mesakit.graph.specifications.common.edge.store;
     exports com.telenav.mesakit.graph.specifications.common.edge;

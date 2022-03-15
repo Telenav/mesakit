@@ -47,7 +47,7 @@ import com.telenav.mesakit.graph.collections.VertexSet;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.map.MapEdgeIdentifier;
 import com.telenav.mesakit.graph.map.MapRoute;
-import com.telenav.mesakit.graph.project.GraphLimits.Limit;
+import com.telenav.mesakit.graph.GraphLimits.Limit;
 import com.telenav.mesakit.graph.specifications.common.edge.EdgeAttributes;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;

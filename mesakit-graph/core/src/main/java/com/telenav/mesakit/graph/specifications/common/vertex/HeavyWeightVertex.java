@@ -39,8 +39,8 @@ import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.road.model.GradeSeparation;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
-import static com.telenav.mesakit.graph.project.GraphLimits.Estimated;
-import static com.telenav.mesakit.graph.project.GraphLimits.Limit;
+import static com.telenav.mesakit.graph.GraphLimits.Estimated;
+import static com.telenav.mesakit.graph.GraphLimits.Limit;
 
 public class HeavyWeightVertex extends Vertex
 {

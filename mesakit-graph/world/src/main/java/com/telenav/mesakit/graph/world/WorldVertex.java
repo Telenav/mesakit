@@ -28,7 +28,7 @@ import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.identifiers.VertexIdentifier;
-import com.telenav.mesakit.graph.project.GraphLimits;
+import com.telenav.mesakit.graph.GraphLimits;
 import com.telenav.mesakit.graph.specifications.common.node.NodeAttributes;
 import com.telenav.mesakit.graph.specifications.osm.graph.OsmGraph;
 import com.telenav.mesakit.graph.world.grid.WorldCell;
