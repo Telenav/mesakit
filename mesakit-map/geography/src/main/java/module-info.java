@@ -30,7 +30,6 @@ open module mesakit.map.geography
     exports com.telenav.mesakit.map.geography.indexing.segment;
     exports com.telenav.mesakit.map.geography.shape.polyline.compression.differential;
     exports com.telenav.mesakit.map.geography.shape.polyline;
-    exports com.telenav.mesakit.map.geography.project;
     exports com.telenav.mesakit.map.geography.projection;
     exports com.telenav.mesakit.map.geography.shape.rectangle;
     exports com.telenav.mesakit.map.geography.shape.segment;
