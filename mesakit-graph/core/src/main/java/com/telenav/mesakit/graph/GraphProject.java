@@ -30,6 +30,8 @@ import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.PbfFilters;
 import com.telenav.mesakit.map.region.RegionProject;
 
+import static com.telenav.kivakit.core.collections.set.ObjectSet.objectSet;
+
 /**
  * This class defines a KivaKit {@link Project}. It cannot be constructed with the new operator since it has a private
  * constructor. To access the singleton instance of this class, call {@link Project#resolveProject(Class)}, or use
@@ -48,9 +50,9 @@ public class GraphProject extends Project
     }
 
     @Override
-    public ObjectSet<Project> dependencies()
+    public ObjectSet<Class<? extends Project>> dependencies()
     {
-        return ObjectSet.objectSet(resolveProject(RegionProject.class));
+        return objectSet(RegionProject.class);
     }
 
     /**

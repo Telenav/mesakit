@@ -25,6 +25,8 @@ import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.mesakit.graph.GraphProject;
 
+import static com.telenav.kivakit.core.collections.set.ObjectSet.objectSet;
+
 /**
  * This class defines a KivaKit {@link Project}. It cannot be constructed with the new operator since it has a private
  * constructor. To access the singleton instance of this class, call {@link Project#resolveProject(Class)}, or use
@@ -40,9 +42,9 @@ public class WorldGraphProject extends Project
     }
 
     @Override
-    public ObjectSet<Project> dependencies()
+    public ObjectSet<Class<? extends Project>> dependencies()
     {
-        return ObjectSet.objectSet(project(GraphProject.class));
+        return objectSet(GraphProject.class);
     }
 
     /**

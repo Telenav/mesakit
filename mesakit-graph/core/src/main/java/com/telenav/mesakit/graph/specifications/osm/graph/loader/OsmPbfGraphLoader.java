@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph.specifications.osm.graph.loader;
 
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.string.AsciiArt;
-import com.telenav.kivakit.core.vm.SystemProperties;
+import com.telenav.kivakit.core.vm.Properties;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.mesakit.graph.GraphProject;
 import com.telenav.mesakit.graph.Metadata;
@@ -40,7 +40,7 @@ import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
-import static com.telenav.kivakit.core.vm.SystemProperties.isPropertyTrue;
+import static com.telenav.kivakit.core.vm.Properties.isPropertyTrue;
 import static com.telenav.mesakit.graph.Metadata.VALIDATE_EXCEPT_STATISTICS;
 
 /**
@@ -130,7 +130,7 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
             var edgeSectioner = listenTo(new EdgeSectioner(
                     destination, analysis, loader.edgeNodes(), Distance.MAXIMUM));
             var waySectioner = new WaySectioningGraphLoader(raw, edgeSectioner);
-            var ways = SystemProperties.property("MESAKIT_DEBUG_WAY_SECTIONS");
+            var ways = Properties.property("MESAKIT_DEBUG_WAY_SECTIONS");
             if (ways != null)
             {
                 var wayIdentifiers = WayIdentifierList.parse(ways).asSet();
