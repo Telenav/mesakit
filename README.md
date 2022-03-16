@@ -115,7 +115,7 @@ MesaKit provides support for:
 
 ### Javadoc Coverage <a name = "javadoc-coverage"></a> &nbsp; <img src="https://www.kivakit.org/images/bargraph-32.png" srcset="https://www.kivakit.org/images/bargraph-32-2x.png 2x"/>
 
-&nbsp; <img src="https://www.mesakit.org/images/meter-40-96.png" srcset="https://www.mesakit.org/images/meter-40-96-2x.png 2x"/>
+&nbsp; <img src="https://www.mesakit.org/images/meter-90-96.png" srcset="https://www.mesakit.org/images/meter-90-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-core**](mesakit-core/README.md)  
 &nbsp; <img src="https://www.mesakit.org/images/meter-50-96.png" srcset="https://www.mesakit.org/images/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-graph-core**](mesakit-graph/core/README.md)  
@@ -133,7 +133,7 @@ MesaKit provides support for:
  &nbsp; &nbsp; [**mesakit-map-geography**](mesakit-map/geography/README.md)  
 &nbsp; <img src="https://www.mesakit.org/images/meter-70-96.png" srcset="https://www.mesakit.org/images/meter-70-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-measurements**](mesakit-map/measurements/README.md)  
-&nbsp; <img src="https://www.mesakit.org/images/meter-10-96.png" srcset="https://www.mesakit.org/images/meter-10-96-2x.png 2x"/>
+&nbsp; <img src="https://www.mesakit.org/images/meter-0-96.png" srcset="https://www.mesakit.org/images/meter-0-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-overpass**](mesakit-map/overpass/README.md)  
 &nbsp; <img src="https://www.mesakit.org/images/meter-40-96.png" srcset="https://www.mesakit.org/images/meter-40-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-region**](mesakit-map/region/README.md)  
@@ -141,13 +141,13 @@ MesaKit provides support for:
  &nbsp; &nbsp; [**mesakit-map-road-model**](mesakit-map/road/model/README.md)  
 &nbsp; <img src="https://www.mesakit.org/images/meter-50-96.png" srcset="https://www.mesakit.org/images/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-road-name-parser**](mesakit-map/road/name-parser/README.md)  
-&nbsp; <img src="https://www.mesakit.org/images/meter-30-96.png" srcset="https://www.mesakit.org/images/meter-30-96-2x.png 2x"/>
+&nbsp; <img src="https://www.mesakit.org/images/meter-20-96.png" srcset="https://www.mesakit.org/images/meter-20-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-road-name-standardizer**](mesakit-map/road/name-standardizer/README.md)  
 &nbsp; <img src="https://www.mesakit.org/images/meter-50-96.png" srcset="https://www.mesakit.org/images/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-ui**](mesakit-map/ui/README.md)  
 &nbsp; <img src="https://www.mesakit.org/images/meter-50-96.png" srcset="https://www.mesakit.org/images/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-utilities-geohash**](mesakit-map/utilities/geohash/README.md)  
-&nbsp; <img src="https://www.mesakit.org/images/meter-30-96.png" srcset="https://www.mesakit.org/images/meter-30-96-2x.png 2x"/>
+&nbsp; <img src="https://www.mesakit.org/images/meter-20-96.png" srcset="https://www.mesakit.org/images/meter-20-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-utilities-geojson**](mesakit-map/utilities/geojson/README.md)  
 &nbsp; <img src="https://www.mesakit.org/images/meter-50-96.png" srcset="https://www.mesakit.org/images/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-utilities-grid**](mesakit-map/utilities/grid/README.md)  
