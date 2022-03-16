@@ -233,12 +233,6 @@ git_flow_release_start()
 
     else
 
-        if ! git_flow_init "$project_home"; then
-
-            exit 1
-
-        fi
-
         # Check out the develop branch
         git checkout develop
 
