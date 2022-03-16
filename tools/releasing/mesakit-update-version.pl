@@ -108,10 +108,11 @@ sub update_superpom {
         my $text = read_file($path);
         $text =~ s!<mesakit.version>(?<version>.*?)</mesakit.version>!<mesakit.version>$new_version</mesakit.version>!;
         $text =~ s#\s+<parent>\s+<groupId>(.*?)</groupId>\s+<artifactId>(.*?)</artifactId>\s+<version>(.*?)</version>\s+<relativePath>(.*?)</relativePath>\s+</parent>#qq!
+        $kivakit_version=$ENV{'KIVAKIT_VERSION'}
         <parent>
             <groupId>$1</groupId>
             <artifactId>$2</artifactId>
-            <version>$new_version</version>
+            <version>$kivakit_version</version>
             <relativePath>$3</relativePath>
         </parent>!#esmg;
         write_file($path, $text);
