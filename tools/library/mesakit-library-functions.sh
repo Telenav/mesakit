@@ -218,9 +218,7 @@ git_flow_init()
 
     git_flow_version=$(git flow version);
 
-    echo "Found git flow version: $git_flow_version"
-
-    if [[ $git_flow_version =~ 'AVH' ]]; then
+    if grep -q AVH <<<"$git_flow_version"; then
 
         git_flow_install
 
