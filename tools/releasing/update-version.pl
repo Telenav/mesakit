@@ -42,7 +42,7 @@ sub update_pom {
 
     my $updated = $text;
     $updated =~ s#^\s+<parent>\s+<groupId>(.*?)</groupId>\s+<artifactId>(.*?)</artifactId>\s+<version>(.*?)</version>\s+</parent>#qq!
-    <parent>
+    <parent>xxx
         <groupId>$1</groupId>
         <artifactId>$2</artifactId>
         <version>$new_version</version>
