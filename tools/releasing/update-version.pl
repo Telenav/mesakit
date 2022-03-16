@@ -33,42 +33,6 @@ my $base_version = $new_version;
 $base_version =~ s/-SNAPSHOT//;
 
 #
-# Begin updating
-#
-print "Updating $root from $old_version to $new_version\n";
-
-#
-# Update markdown file if it contains the old version
-#
-sub update_markdown {
-    my $path = shift @_;
-    my $text = read_file($path);
-    my $updated = $text;
-    $updated =~ s/\b${old_version}\b/${new_version}/g;
-
-    if ($text ne $updated) {
-        print "Updating $path\n";
-        write_file($path, $updated);
-    }
-}
-
-#
-# Update properties files that contain the old version
-#
-sub update_properties {
-    my $path = shift @_;
-    my $text = read_file($path);
-    my $updated = $text;
-    $updated =~ s/\b${old_version}\b/${new_version}/g;
-
-    if ($text ne $updated) {
-        print "Updating $path\n";
-        write_file($path, $updated);
-        print "Updated $path\n";
-    }
-}
-
-#
 # Update the pom file version
 #
 sub update_pom {
@@ -88,7 +52,6 @@ sub update_pom {
     if ($text ne $updated) {
         print "Updating $path\n";
         write_file($path, $updated);
-        print "Updated $path\n";
     }
 }
 
@@ -101,26 +64,52 @@ sub process_file {
     if ($path =~ /pom.xml/g) {
         update_pom($path);
     }
-
     if ($path =~ /project.properties/g) {
-        update_properties($path);
-    }
-
-    if ($path =~ /.*\.md$/) {
-        update_markdown($path);
+        update_project_properties($path);
     }
 }
 
 #
 # Update the root pom
 #
-sub update_root_pom {
+sub update_project_properties {
+    my $path = shift @_;
+
+    my $text = read_file($path);
+    $text =~ s!project-version.*!project-version = $new_version!g;
+    write_file($path, $text);
+    print "Updated $path\n";
+}
+
+#
+# Update the root pom
+#
+sub update_root {
     my $path = "$root/pom.xml";
     my $text = read_file($path);
     $text =~ s!<version>(?<version>.*?)</version>!<version>$new_version</version>!;
     $text =~ s!<mesakit.version>(?<version>.*?)</mesakit.version>!<mesakit.version>$new_version</mesakit.version>!;
     write_file($path, $text);
     print "Updated root pom.xml\n";
+    $path = "$root/project.properties";
+    $text = read_file($path);
+    $text =~ s!project-version.*!project-version = $new_version!g;
+    write_file($path, $text);
+    print "Updated root project.properties\n";
+}
+
+#
+# Update the superpom
+#
+sub update_superpom {
+    my $path = "$root/superpom/pom.xml";
+    if (-e $path) {
+        my $text = read_file($path);
+        $text =~ s!<cactus.version>(?<version>.*?)</cactus.version>!<cactus.version>$new_version</cactus.version>!;
+        $text =~ s!<kivakit.version>(?<version>.*?)</kivakit.version>!<kivakit.version>$new_version</kivakit.version>!;
+        write_file($path, $text);
+        print "Updated superpom/pom.xml\n";
+    }
 }
 
 #
@@ -130,6 +119,7 @@ chdir $root;
 find(\&process_file, $root);
 
 #
-# Update the root pom
+# Update the root pom and superpom
 #
-update_root_pom();
+update_root();
+update_superpom();

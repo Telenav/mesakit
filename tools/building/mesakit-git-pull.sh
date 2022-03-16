@@ -7,7 +7,7 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-source "$MESAKIT_WORKSPACE"/mesakit/tools/library/library-functions.sh
+source "$MESAKIT_WORKSPACE"/mesakit/tools/library/mesakit-library-functions.sh
 source mesakit-projects.sh
 
 for project_home in "${MESAKIT_PROJECT_HOMES[@]}"; do

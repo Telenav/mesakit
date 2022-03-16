@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source library-functions.sh
+source mesakit-library-functions.sh
 
 help="[host|docker]"
 

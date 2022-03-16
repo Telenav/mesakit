@@ -16,4 +16,18 @@ version=$1
 
 require_variable version "$help"
 
-git_flow_release_start $MESAKIT_HOME $version
+for project_home in "${MESAKIT_REPOSITORY_HOMES[@]}"; do
+
+    if ! git_flow_init "$project_home"; then
+
+        exit 1
+
+    fi
+
+done
+
+for project_home in "${MESAKIT_REPOSITORY_HOMES[@]}"; do
+
+    git_flow_release_start "$project_home" "$version"
+
+done
