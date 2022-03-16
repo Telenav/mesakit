@@ -7,7 +7,6 @@
 
 <project xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <parent>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-data-formats</artifactId>
@@ -45,6 +44,10 @@
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-math</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.telenav.kivakit</groupId>
+            <artifactId>kivakit-extraction</artifactId>
+        </dependency>
 
         <!-- OSM -->
 
@@ -59,7 +62,7 @@
         <dependency>
             <groupId>org.openstreetmap.osmosis</groupId>
             <artifactId>osmosis-pbf</artifactId>
-        </dependency><dependency><groupId>com.telenav.kivakit</groupId><artifactId>kivakit-extraction</artifactId><version>1.3.1-SNAPSHOT</version><scope>compile</scope></dependency>
+        </dependency>
 
     </dependencies>
 

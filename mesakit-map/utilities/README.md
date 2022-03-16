@@ -28,7 +28,7 @@ This module contains utilities for working with map data
 
 &nbsp; <img src="https://www.mesakit.org/images/meter-50-96.png" srcset="https://www.mesakit.org/images/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-utilities-geohash**](geohash/README.md)  
-&nbsp; <img src="https://www.mesakit.org/images/meter-30-96.png" srcset="https://www.mesakit.org/images/meter-30-96-2x.png 2x"/>
+&nbsp; <img src="https://www.mesakit.org/images/meter-20-96.png" srcset="https://www.mesakit.org/images/meter-20-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-utilities-geojson**](geojson/README.md)  
 &nbsp; <img src="https://www.mesakit.org/images/meter-50-96.png" srcset="https://www.mesakit.org/images/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-utilities-grid**](grid/README.md)
