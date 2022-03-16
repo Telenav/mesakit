@@ -41,7 +41,8 @@ sub update_pom {
     my $text = read_file($path);
 
     my $updated = $text;
-    $updated =~ s#^\s+<parent>\s+<groupId>(.*?)</groupId>\s+<artifactId>(.*?)</artifactId>\s+<version>(.*?)</version>\s+</parent>#qq!\n    <parent>
+    $updated =~ s#^\s+<parent>\s+<groupId>(.*?)</groupId>\s+<artifactId>(.*?)</artifactId>\s+<version>(.*?)</version>\s+</parent>#qq!
+    <parent>
         <groupId>$1</groupId>
         <artifactId>$2</artifactId>
         <version>$new_version</version>
