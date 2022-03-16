@@ -193,23 +193,42 @@ git_flow_check_changes()
     fi
 }
 
+git_flow_install()
+{
+    echo " "
+    echo "Please install git flow AVH Edition:"
+    echo " "
+    echo "MacOS: brew install git-flow-avh"
+    echo " "
+
+    exit 1
+}
+
 git_flow_init()
 {
     project_home=$1
 
     cd "$project_home" || exit
 
+    if [ "$(git flow config >/dev/null 2>&1)" ]; then
+
+        git_flow_install
+
+    fi
+
+    git_flow_version=$(git flow version);
+
+    if [[ $git_flow_version == *"AVH"* ]]; then
+
+        git_flow_install
+
+    fi
+
     git_flow_check_changes "$project_home"
 
-    git flow init -f -d /dev/null 2>&1
+    git flow init -f -d --feature feature/  --bugfix bugfix/ --release release/ --hotfix hotfix/ --support support/ -t ''
 
-    if [ "$(git flow config >/dev/null 2>&1)" ]; then
-        echo " "
-        echo "Please install git flow and try again."
-        echo "See https://kivakit.org for details."
-        echo " "
-        exit 1
-    fi
+
 }
 
 git_flow_release_start()
