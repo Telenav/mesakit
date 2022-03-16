@@ -201,7 +201,8 @@ git_flow_init()
 
     git_flow_check_changes "$project_home"
 
-    git flow init -f -d /dev/null 2>&1
+    # git flow init -f -d /dev/null 2>&1
+    git flow init -f
 
     if [ "$(git flow config >/dev/null 2>&1)" ]; then
         echo " "
@@ -229,13 +230,13 @@ git_flow_release_start()
 
     branch_name=$(git_branch_name "$project_home")
 
-    echo "On branch $branch_name"
-
     if [ "$branch_name" = "release/$version" ]; then
 
-        echo "Already on release branch"
+        echo "Already on release branch: $branch_name"
 
     else
+
+        git_flow_init "$project_home"
 
         # Check out the develop branch
         git checkout develop
