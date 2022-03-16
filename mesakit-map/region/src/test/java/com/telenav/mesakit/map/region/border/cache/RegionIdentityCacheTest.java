@@ -19,14 +19,13 @@
 package com.telenav.mesakit.map.region.border.cache;
 
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.kernel.KivaKit;
-import com.telenav.kivakit.kernel.language.io.IO;
-import com.telenav.kivakit.kernel.language.values.version.VersionedObject;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.core.io.IO;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.mesakit.map.region.RegionIdentifier;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionProject;
-import com.telenav.mesakit.map.region.project.RegionUnitTest;
+import com.telenav.mesakit.map.region.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.State;
 import org.junit.Test;
 
@@ -35,7 +34,8 @@ import java.io.ByteArrayOutputStream;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.telenav.kivakit.serialization.core.SerializationSession.Type.RESOURCE;
+import static com.telenav.kivakit.core.project.Project.resolveProject;
+import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE;
 
 public class RegionIdentityCacheTest extends RegionUnitTest
 {
@@ -46,14 +46,14 @@ public class RegionIdentityCacheTest extends RegionUnitTest
         RegionIdentityCache<State> cache = listenTo(new RegionIdentityCache<>(State.class));
 
         // Create kryo output to memory
-        var session = sessionFactory().session(Listener.none());
+        var session = sessionFactory().newSession(Listener.none());
         var data = new ByteArrayOutputStream(20_000);
         var output = new Output(data);
 
         // Save the identities
-        var version = RegionProject.get().borderDataVersion();
-        session.open(RESOURCE, KivaKit.get().projectVersion(), output);
-        session.write(new VersionedObject<>(version, identities()));
+        var version = resolveProject(RegionProject.class).borderDataVersion();
+        session.open(output, RESOURCE, kivakit().projectVersion());
+        session.write(new SerializableObject<>(identities(), version));
         session.close();
         output.close();
 

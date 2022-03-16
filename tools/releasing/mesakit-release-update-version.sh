@@ -16,4 +16,24 @@ version=$1
 
 require_variable version "$help"
 
-update_version $MESAKIT_HOME $version
+echo " "
+echo "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ Updating Project Versions  ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
+echo "┋"
+echo "┋  Updating project version information to $version"
+echo "┋"
+echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
+echo " "
+
+for project_home in "${MESAKIT_REPOSITORY_HOMES[@]}"; do
+
+    update_version "$project_home" "$version"
+
+done
+
+echo " "
+echo "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ Updating Project Versions  ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
+echo "┋"
+echo "┋  Updated project version information to $version"
+echo "┋"
+echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
+echo " "

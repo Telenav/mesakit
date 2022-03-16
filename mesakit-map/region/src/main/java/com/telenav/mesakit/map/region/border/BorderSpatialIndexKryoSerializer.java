@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.region.border;
 
-import com.telenav.kivakit.kernel.interfaces.lifecycle.Configured;
-import com.telenav.kivakit.kernel.language.values.count.MutableCount;
+import com.telenav.kivakit.core.value.count.MutableCount;
+import com.telenav.kivakit.interfaces.lifecycle.Configured;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.rtree.InteriorNode;
@@ -56,12 +56,12 @@ public class BorderSpatialIndexKryoSerializer<T extends Region<T>> extends RTree
                             InteriorNode parent)
     {
         var leaf = new BorderLeaf<T>(index, parent);
-        int size = session.readObject(int.class);
+        int size = session.read(Integer.class);
         for (var i = 0; i < size; i++)
         {
             // Populate the region identity and the border polygon.
-            var identity = session.readObject(RegionIdentity.class);
-            var polygon = session.readObject(Polygon.class);
+            var identity = session.read(RegionIdentity.class);
+            var polygon = session.read(Polygon.class);
             if (identity.isValid())
             {
                 var region = settings.regionFactory().newInstance(identity);
@@ -96,13 +96,13 @@ public class BorderSpatialIndexKryoSerializer<T extends Region<T>> extends RTree
                 size.increment();
             }
         }
-        session.writeObject((int) size.asLong());
+        session.write((int) size.asLong());
         for (var border : borders)
         {
             if (border.region().isValid())
             {
-                session.writeObject(border.identity());
-                session.writeObject(border.polygon());
+                session.write(border.identity());
+                session.write(border.polygon());
             }
         }
     }

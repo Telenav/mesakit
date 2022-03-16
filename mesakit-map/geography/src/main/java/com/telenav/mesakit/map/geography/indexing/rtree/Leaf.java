@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
-import com.telenav.kivakit.collections.iteration.iterators.FilteredIterator;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.core.collections.iteration.FilteredIterator;
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
@@ -29,7 +29,7 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * A leaf node holds only elements and has no children.

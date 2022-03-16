@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.cutter.cuts.maps;
 
-import com.telenav.kivakit.kernel.language.collections.set.Sets;
-import com.telenav.mesakit.map.region.project.RegionUnitTest;
+import com.telenav.kivakit.core.collections.Sets;
+import com.telenav.mesakit.map.region.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;

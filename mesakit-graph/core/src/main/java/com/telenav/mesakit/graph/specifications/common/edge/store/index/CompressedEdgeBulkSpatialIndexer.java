@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge.store.index;
 
-import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;

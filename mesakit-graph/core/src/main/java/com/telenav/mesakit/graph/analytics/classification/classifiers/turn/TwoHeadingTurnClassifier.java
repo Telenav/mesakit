@@ -22,7 +22,7 @@ import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
 import com.telenav.mesakit.map.measurements.geographic.Headed;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 /**
  * Classifies two headings as a turn type

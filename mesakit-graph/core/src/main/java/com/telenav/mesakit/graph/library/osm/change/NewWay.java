@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.library.osm.change;
 
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.mesakit.graph.library.osm.change.store.PbfNodeStore;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
@@ -33,7 +33,7 @@ import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 import static com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
 
 /**

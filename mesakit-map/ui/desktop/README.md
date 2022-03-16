@@ -14,9 +14,9 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-ui &nbsp;&nbsp; <img src="https://www.mesakit.org/images/gears-32.png" srcset="https://www.mesakit.org/images/gears-32-2x.png 2x"/>
+# mesakit-ui-desktop &nbsp;&nbsp; <img src="https://www.mesakit.org/images/window-32.png" srcset="https://www.mesakit.org/images/window-32-2x.png 2x"/>
 
-This project provides support for map-related desktop UIs.
+This module contains modules for displaying map data in a Swing UI
 
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
@@ -30,16 +30,15 @@ This project provides support for map-related desktop UIs.
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/dependencies-32.png" srcset="https://www.kivakit.org/images/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/ui/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-map/ui/desktop/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
-        <artifactId>mesakit-map-ui</artifactId>
-        <version>-SNAPSHOT</version>
+        <artifactId>mesakit-map-ui-desktop</artifactId>
+        <version>0.9.10</version>
     </dependency>
-
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
@@ -59,112 +58,85 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"/>
 
-[*com.telenav.mesakit.map.ui.project*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/ui/documentation/diagrams/com.telenav.mesakit.map.ui.project.svg)  
-[*com.telenav.mesakit.map.ui.swing.debug*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/ui/documentation/diagrams/com.telenav.mesakit.map.ui.swing.debug.svg)  
-[*com.telenav.mesakit.map.ui.swing.debug.debuggers.indexing.polygon*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/ui/documentation/diagrams/com.telenav.mesakit.map.ui.swing.debug.debuggers.indexing.polygon.svg)  
-[*com.telenav.mesakit.map.ui.swing.debug.debuggers.indexing.rtree*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/ui/documentation/diagrams/com.telenav.mesakit.map.ui.swing.debug.debuggers.indexing.rtree.svg)  
-[*com.telenav.mesakit.map.ui.swing.debug.viewables*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/ui/documentation/diagrams/com.telenav.mesakit.map.ui.swing.debug.viewables.svg)  
-[*com.telenav.mesakit.map.ui.swing.debug.viewer*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/ui/documentation/diagrams/com.telenav.mesakit.map.ui.swing.debug.viewer.svg)  
-[*com.telenav.mesakit.map.ui.swing.debug.viewer.empty*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/ui/documentation/diagrams/com.telenav.mesakit.map.ui.swing.debug.viewer.empty.svg)  
-[*com.telenav.mesakit.map.ui.swing.debug.viewer.swing*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/ui/documentation/diagrams/com.telenav.mesakit.map.ui.swing.debug.viewer.swing.svg)  
-[*com.telenav.mesakit.map.ui.swing.map.coordinates.mappers*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/ui/documentation/diagrams/com.telenav.mesakit.map.ui.swing.map.coordinates.mappers.svg)  
-[*com.telenav.mesakit.map.ui.swing.map.coordinates.projections*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/ui/documentation/diagrams/com.telenav.mesakit.map.ui.swing.map.coordinates.projections.svg)  
-[*com.telenav.mesakit.map.ui.swing.map.graphics.canvas*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/ui/documentation/diagrams/com.telenav.mesakit.map.ui.swing.map.graphics.canvas.svg)  
-[*com.telenav.mesakit.map.ui.swing.map.graphics.drawables*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/ui/documentation/diagrams/com.telenav.mesakit.map.ui.swing.map.graphics.drawables.svg)  
-[*com.telenav.mesakit.map.ui.swing.map.theme*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/ui/documentation/diagrams/com.telenav.mesakit.map.ui.swing.map.theme.svg)  
-[*com.telenav.mesakit.map.ui.swing.map.tiles*](https://www.mesakit.org/lexakai/mesakit/mesakit-map/ui/documentation/diagrams/com.telenav.mesakit.map.ui.swing.map.tiles.svg)
+[*com.telenav.mesakit.map.ui.desktop.graphics.canvas*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-map/ui/desktop/documentation/diagrams/com.telenav.mesakit.map.ui.desktop.graphics.canvas.svg)  
+[*com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-map/ui/desktop/documentation/diagrams/com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections.svg)  
+[*com.telenav.mesakit.map.ui.desktop.graphics.drawables*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-map/ui/desktop/documentation/diagrams/com.telenav.mesakit.map.ui.desktop.graphics.drawables.svg)  
+[*com.telenav.mesakit.map.ui.desktop.graphics.style*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-map/ui/desktop/documentation/diagrams/com.telenav.mesakit.map.ui.desktop.graphics.style.svg)  
+[*com.telenav.mesakit.map.ui.desktop.theme*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-map/ui/desktop/documentation/diagrams/com.telenav.mesakit.map.ui.desktop.theme.svg)  
+[*com.telenav.mesakit.map.ui.desktop.theme.shapes*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-map/ui/desktop/documentation/diagrams/com.telenav.mesakit.map.ui.desktop.theme.shapes.svg)  
+[*com.telenav.mesakit.map.ui.desktop.tiles*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-map/ui/desktop/documentation/diagrams/com.telenav.mesakit.map.ui.desktop.tiles.svg)  
+[*com.telenav.mesakit.map.ui.desktop.viewer*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-map/ui/desktop/documentation/diagrams/com.telenav.mesakit.map.ui.desktop.viewer.svg)  
+[*com.telenav.mesakit.map.ui.desktop.viewer.desktop*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-map/ui/desktop/documentation/diagrams/com.telenav.mesakit.map.ui.desktop.viewer.desktop.svg)  
+[*com.telenav.mesakit.map.ui.desktop.viewer.empty*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-map/ui/desktop/documentation/diagrams/com.telenav.mesakit.map.ui.desktop.viewer.empty.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
 ### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/books-32.png" srcset="https://www.kivakit.org/images/books-32-2x.png 2x"/>
 
-Javadoc coverage for this project is 41.2%.  
+Javadoc coverage for this project is 52.9%.  
   
-&nbsp; &nbsp; <img src="https://www.mesakit.org/images/meter-40-96.png" srcset="https://www.mesakit.org/images/meter-40-96-2x.png 2x"/>
+&nbsp; &nbsp; <img src="https://www.mesakit.org/images/meter-50-96.png" srcset="https://www.mesakit.org/images/meter-50-96-2x.png 2x"/>
 
 
 The following significant classes are undocumented:  
 
-- Line  
-- MapCanvas  
-- MapStyles  
-- SlippyTileGrid  
+- LabeledMapShape  
+- MapBox  
+- MapDot  
+- MapLabel  
+- MapLine  
+- MapPolyline  
 - SlippyTileImageCache  
-- Style  
-- Styles  
-- SwingCartesianCoordinateMapper  
-- SwingDrawingSurface  
-- SwingMercatorCoordinateMapper  
-- ViewableMap  
-- VisualRTreeSpatialIndexDebugger
+- ViewModel
 
 | Class | Documentation Sections |
 |---|---|
-| [*Arrow*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/graphics/drawables/Arrow.html) |  |  
-| [*Arrows*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/theme/Arrows.html) |  |  
-| [*BaseViewer*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/viewer/BaseViewer.html) |  |  
-| [*ColorSequence*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/viewer/ColorSequence.html) |  |  
-| [*Colors*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/viewer/swing/Colors.html) |  |  
-| [*CoordinateMapper*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/coordinates/mappers/CoordinateMapper.html) |  |  
-| [*DebugViewer*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/viewer/swing/DebugViewer.html) |  |  
-| [*Dot*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/graphics/drawables/Dot.html) |  |  
-| [*Dots*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/theme/Dots.html) |  |  
-| [*Drawable*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/Drawable.html) |  |  
-| [*DrawingSurface*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/DrawingSurface.html) |  |  
-| [*InteractiveDrawingSurface*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/InteractiveDrawingSurface.html) |  |  
-| [*InteractiveView*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/InteractiveView.html) |  |  
-| [*Label*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/graphics/drawables/Label.html) |  |  
-| [*LabelRenderer*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/viewer/swing/LabelRenderer.html) |  |  
-| [*LabelRenderer.Position*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/viewer/swing/LabelRenderer.Position.html) |  |  
-| [*Labels*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/theme/Labels.html) |  |  
-| [*Line*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/graphics/drawables/Line.html) |  |  
-| [*Lines*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/theme/Lines.html) |  |  
-| [*MapCanvas*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/graphics/canvas/MapCanvas.html) |  |  
-| [*MapStyles*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/theme/MapStyles.html) |  |  
-| [*MapStyles.Base*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/theme/MapStyles.Base.html) |  |  
-| [*MapStyles.Debug*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/theme/MapStyles.Debug.html) |  |  
-| [*MapStyles.Edge*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/theme/MapStyles.Edge.html) |  |  
-| [*MapStyles.Place*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/theme/MapStyles.Place.html) |  |  
-| [*MapStyles.Polyline*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/theme/MapStyles.Polyline.html) |  |  
-| [*MapStyles.Relation*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/theme/MapStyles.Relation.html) |  |  
-| [*MapStyles.Road*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/theme/MapStyles.Road.html) |  |  
-| [*MapStyles.ShapePoint*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/theme/MapStyles.ShapePoint.html) |  |  
-| [*MapStyles.Vertex*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/theme/MapStyles.Vertex.html) |  |  
-| [*MapUiProject*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/project/MapUiProject.html) |  |  
-| [*NullInteractiveView*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/viewer/empty/NullInteractiveView.html) |  |  
-| [*NullView*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/viewer/empty/NullView.html) |  |  
-| [*NullViewer*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/viewer/empty/NullViewer.html) |  |  
-| [*Scale*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/graphics/canvas/Scale.html) |  |  
-| [*SlippyTile*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/tiles/SlippyTile.html) |  |  
-| [*SlippyTileCacheFolder*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/tiles/SlippyTileCacheFolder.html) |  |  
-| [*SlippyTileCoordinateSystem*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/tiles/SlippyTileCoordinateSystem.html) |  |  
-| [*SlippyTileGrid*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/tiles/SlippyTileGrid.html) |  |  
-| [*SlippyTileImageCache*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/tiles/SlippyTileImageCache.html) |  |  
-| [*SphericalMercatorProjection*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/coordinates/projections/SphericalMercatorProjection.html) |  |  
-| [*Stroke*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/graphics/canvas/Stroke.html) |  |  
-| [*Strokes*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/theme/Strokes.html) |  |  
-| [*Style*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/graphics/canvas/Style.html) |  |  
-| [*Styles*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/theme/Styles.html) |  |  
-| [*SwingCartesianCoordinateMapper*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/coordinates/mappers/SwingCartesianCoordinateMapper.html) |  |  
-| [*SwingDrawingSurface*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/viewer/swing/SwingDrawingSurface.html) |  |  
-| [*SwingMercatorCoordinateMapper*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/coordinates/mappers/SwingMercatorCoordinateMapper.html) |  |  
-| [*SwingViewPanel*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/viewer/swing/SwingViewPanel.html) |  |  
-| [*SwingViewPanel.State*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/viewer/swing/SwingViewPanel.State.html) |  |  
-| [*SwingViewer*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/viewer/swing/SwingViewer.html) |  |  
-| [*View*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/View.html) |  |  
-| [*Viewable*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/Viewable.html) |  |  
-| [*ViewableIdentifier*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/ViewableIdentifier.html) |  |  
-| [*ViewableLocation*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/viewables/ViewableLocation.html) |  |  
-| [*ViewableMap*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/viewer/ViewableMap.html) |  |  
-| [*ViewableMap.Entry*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/viewer/ViewableMap.Entry.html) |  |  
-| [*ViewablePolyline*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/viewables/ViewablePolyline.html) |  |  
-| [*ViewableRectangle*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/viewables/ViewableRectangle.html) |  |  
-| [*Viewer*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/Viewer.html) |  |  
-| [*VisualPolygonSpatialIndexDebugger*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/debuggers/indexing/polygon/VisualPolygonSpatialIndexDebugger.html) |  |  
-| [*VisualRTreeSpatialIndexDebugger*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/debug/debuggers/indexing/rtree/VisualRTreeSpatialIndexDebugger.html) |  |  
-| [*Width*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/graphics/canvas/Width.html) |  |  
-| [*Width.Metric*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/graphics/canvas/Width.Metric.html) |  |  
-| [*ZoomLevel*](https://www.mesakit.org/javadoc/mesakit/mesakit.map.ui/com/telenav/mesakit/map/ui/swing/map/tiles/ZoomLevel.html) |  |  
+| [*BaseMapDrawable*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/graphics/drawables/BaseMapDrawable.html) |  |  
+| [*BaseViewer*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/viewer/desktop/BaseViewer.html) |  |  
+| [*Bounds*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/theme/shapes/Bounds.html) |  |  
+| [*CartesianMapProjection*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/graphics/canvas/projections/CartesianMapProjection.html) |  |  
+| [*DesktopViewPanel*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/viewer/desktop/DesktopViewPanel.html) |  |  
+| [*DesktopViewPanel.State*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/viewer/desktop/DesktopViewPanel.State.html) |  |  
+| [*DesktopViewer*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/viewer/desktop/DesktopViewer.html) |  |  
+| [*DrawableIdentifier*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/viewer/DrawableIdentifier.html) |  |  
+| [*Edges*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/theme/shapes/Edges.html) |  |  
+| [*InteractiveView*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/viewer/InteractiveView.html) |  |  
+| [*LabeledMapShape*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/graphics/drawables/LabeledMapShape.html) |  |  
+| [*Labels*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/theme/shapes/Labels.html) |  |  
+| [*Lines*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/theme/shapes/Lines.html) |  |  
+| [*Locations*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/theme/shapes/Locations.html) |  |  
+| [*MapBox*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/graphics/drawables/MapBox.html) |  |  
+| [*MapCanvas*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/graphics/canvas/MapCanvas.html) |  |  
+| [*MapColors*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/theme/MapColors.html) |  |  
+| [*MapDot*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/graphics/drawables/MapDot.html) |  |  
+| [*MapDrawable*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/graphics/drawables/MapDrawable.html) |  |  
+| [*MapLabel*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/graphics/drawables/MapLabel.html) |  |  
+| [*MapLine*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/graphics/drawables/MapLine.html) |  |  
+| [*MapPolyline*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/graphics/drawables/MapPolyline.html) |  |  
+| [*MapProjection*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/graphics/canvas/MapProjection.html) |  |  
+| [*MapScale*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/graphics/canvas/MapScale.html) |  |  
+| [*MapStroke*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/graphics/style/MapStroke.html) |  |  
+| [*MapStrokes*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/theme/MapStrokes.html) |  |  
+| [*MapStyles*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/theme/MapStyles.html) |  |  
+| [*NullInteractiveView*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/viewer/empty/NullInteractiveView.html) |  |  
+| [*NullViewer*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/viewer/empty/NullViewer.html) |  |  
+| [*Places*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/theme/shapes/Places.html) |  |  
+| [*Polylines*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/theme/shapes/Polylines.html) |  |  
+| [*Relations*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/theme/shapes/Relations.html) |  |  
+| [*Roads*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/theme/shapes/Roads.html) |  |  
+| [*ShapePoints*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/theme/shapes/ShapePoints.html) |  |  
+| [*SlippyTile*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/tiles/SlippyTile.html) |  |  
+| [*SlippyTileCache*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/tiles/SlippyTileCache.html) |  |  
+| [*SlippyTileCoordinateSystem*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/tiles/SlippyTileCoordinateSystem.html) |  |  
+| [*SlippyTileGrid*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/tiles/SlippyTileGrid.html) |  |  
+| [*SlippyTileImageCache*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/tiles/SlippyTileImageCache.html) |  |  
+| [*SphericalMercatorMapProjection*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/graphics/canvas/projections/SphericalMercatorMapProjection.html) |  |  
+| [*Vertexes*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/theme/shapes/Vertexes.html) |  |  
+| [*View*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/viewer/View.html) |  |  
+| [*ViewModel*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/viewer/desktop/ViewModel.html) |  |  
+| [*ViewModel.Entry*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/viewer/desktop/ViewModel.Entry.html) |  |  
+| [*Viewer*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/viewer/Viewer.html) |  |  
+| [*ZoomLevel*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.ui.desktop/com/telenav/mesakit/map/ui/desktop/tiles/ZoomLevel.html) |  |  
 
 [//]: # (start-user-text)
 
@@ -174,7 +146,6 @@ The following significant classes are undocumented:
 
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
-<sub>Copyright &#169; 2011-2021 [Telenav](http://telenav.com), Inc., distributed under [Apache License, Version 2.0](LICENSE). Made with Natural Earth, free vector and raster map data at naturalearthdata.com. Portions of map data &#169; OpenStreetMap contributors, distributed under [ODC Open Database License](legal/OPEN_DATABASE_LICENSE).</sub>  
-<sub>This documentation was generated by [Lexakai](https://github.com/Telenav/lexakai). UML diagrams courtesy
-of [PlantUML](http://plantuml.com).</sub>
+<sub>Copyright &#169; 2011-2021 [Telenav](https://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>  
+<sub>This documentation was generated by [Lexakai](https://lexakai.org). UML diagrams courtesy of [PlantUML](https://plantuml.com).</sub>
 

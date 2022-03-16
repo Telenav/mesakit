@@ -18,14 +18,13 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.kivakit.test.annotations.SlowTests;
-import com.telenav.mesakit.map.region.project.RegionUnitTest;
+import com.telenav.kivakit.core.test.SlowTest;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-@Category({ SlowTests.class })
+@Category({ SlowTest.class })
 public class ContinentTest extends RegionUnitTest
 {
     @Test

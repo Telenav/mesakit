@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.region.continents;
 
-import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
+import com.telenav.kivakit.core.locale.LanguageIsoCode;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.regions.Continent;
@@ -26,60 +26,60 @@ import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.Country.CountryTmcCode;
 import com.telenav.mesakit.map.region.regions.Country.DrivingSide;
 
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.ALAND;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.ALBANIA;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.ANDORRA;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.ARMENIA;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.AUSTRIA;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.BELARUS;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.BELGIUM;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.BOSNIA_AND_HERZEGOVINA;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.BULGARIA;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.CROATIA;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.CYPRUS;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.CZECH_REPUBLIC;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.DENMARK;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.ESTONIA;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.FAROE_ISLANDS;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.FINLAND;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.FRANCE;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.GERMANY;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.GIBRALTAR;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.GREECE;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.GREENLAND;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.GUERNSEY;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.HUNGARY;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.ICELAND;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.IRELAND;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.ISLE_OF_MAN;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.ITALY;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.JERSEY;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.LATVIA;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.LIECHTENSTEIN;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.LITHUANIA;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.LUXEMBOURG;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.MACEDONIA;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.MALTA;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.MOLDOVA;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.MONACO;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.MONTENEGRO;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.NETHERLANDS;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.NORWAY;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.POLAND;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.PORTUGAL;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.ROMANIA;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.RUSSIA;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SAN_MARINO;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SERBIA;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SLOVAKIA;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SLOVENIA;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SPAIN;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SWEDEN;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.SWITZERLAND;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.TURKEY;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.UKRAINE;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.UNITED_KINGDOM;
-import static com.telenav.kivakit.kernel.language.locales.CountryIsoCode.VATICAN;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.ALAND;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.ALBANIA;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.ANDORRA;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.ARMENIA;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.AUSTRIA;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.BELARUS;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.BELGIUM;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.BOSNIA_AND_HERZEGOVINA;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.BULGARIA;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.CROATIA;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.CYPRUS;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.CZECH_REPUBLIC;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.DENMARK;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.ESTONIA;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.FAROE_ISLANDS;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.FINLAND;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.FRANCE;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.GERMANY;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.GIBRALTAR;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.GREECE;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.GREENLAND;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.GUERNSEY;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.HUNGARY;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.ICELAND;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.IRELAND;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.ISLE_OF_MAN;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.ITALY;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.JERSEY;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.LATVIA;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.LIECHTENSTEIN;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.LITHUANIA;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.LUXEMBOURG;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.MACEDONIA;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.MALTA;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.MOLDOVA;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.MONACO;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.MONTENEGRO;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.NETHERLANDS;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.NORWAY;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.POLAND;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.PORTUGAL;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.ROMANIA;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.RUSSIA;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.SAN_MARINO;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.SERBIA;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.SLOVAKIA;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.SLOVENIA;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.SPAIN;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.SWEDEN;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.SWITZERLAND;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.TURKEY;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.UKRAINE;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.UNITED_KINGDOM;
+import static com.telenav.kivakit.core.locale.CountryIsoCode.VATICAN;
 
 public class Europe extends Continent
 {
@@ -199,6 +199,7 @@ public class Europe extends Continent
                         .withCountryOrdinal(68)
                         .withCountryIsoCode(FINLAND))) {};
 
+        //noinspection SpellCheckingInspection
         Country.FAROE_ISLANDS = new Country(this, Country.baseInstance()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Faroe Islands")

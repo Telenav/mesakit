@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.kernel.data.extraction.Extractor;
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.language.strings.StringComparison;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.values.level.Confidence;
-import com.telenav.kivakit.kernel.language.values.name.Name;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.string.StringSimilarity;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.value.level.Confidence;
+import com.telenav.kivakit.core.value.name.Name;
+import com.telenav.kivakit.extraction.Extractor;
 import com.telenav.mesakit.map.measurements.geographic.Direction;
 
 import java.util.ArrayList;
@@ -115,6 +115,7 @@ public class RoadName extends Name
      * @return This road name without any direction or octant information. For example, "West Greenlake Way North"
      * becomes "Greenlake Way"
      */
+    @SuppressWarnings("SpellCheckingInspection")
     public RoadName extractNameOnly()
     {
         return withoutDirection();
@@ -124,6 +125,7 @@ public class RoadName extends Name
      * @return The octant (quadrant but including all 8 directions) of a city that a road is in, for example "North 1st
      * Street" or "Westlake Avenue North"
      */
+    @SuppressWarnings("SpellCheckingInspection")
     public Direction extractOctant()
     {
         return extractDirection(OCTANT_PATTERN);
@@ -179,9 +181,9 @@ public class RoadName extends Name
         }
 
         // Compute the difference between strings.
-        var levenshteinDistance = StringComparison.levenshteinDistance(thatStreetName, thisName);
+        var levenshteinDistance = StringSimilarity.levenshteinDistance(thatStreetName, thisName);
 
-        // Compute error ratio from levenschtein distance
+        // Compute error ratio from levenshtein distance
         var maximumLength = Math.max(thatStreetName.length(), thisName.length());
 
         // Finally, take care of the case where one of the directions was unknown and that was why

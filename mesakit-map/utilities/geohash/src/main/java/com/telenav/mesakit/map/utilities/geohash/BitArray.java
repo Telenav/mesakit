@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.utilities.geohash;
 
-import com.telenav.kivakit.kernel.language.strings.Align;
+import com.telenav.kivakit.core.string.Align;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

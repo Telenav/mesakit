@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.map.geography;
 
-import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import org.junit.Test;
 

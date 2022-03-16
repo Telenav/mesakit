@@ -18,25 +18,25 @@
 
 package com.telenav.mesakit.graph;
 
-import com.telenav.kivakit.kernel.data.comparison.Differences;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.data.validation.ValidationType;
-import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.interfaces.collection.LongKeyed;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.primitives.Longs;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludeProperty;
-import com.telenav.kivakit.kernel.language.strings.CaseFormat;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.kernel.language.time.Duration;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.language.primitive.Longs;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.CaseFormat;
+import com.telenav.kivakit.core.string.Differences;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.interfaces.collection.LongKeyed;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.primitive.collections.map.PrimitiveMap;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.mesakit.graph.analytics.classification.classifiers.turn.TurnType;
 import com.telenav.mesakit.graph.analytics.classification.classifiers.turn.TwoHeadingTurnClassifier;
 import com.telenav.mesakit.graph.collections.EdgePair;
@@ -115,7 +115,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * An edge in a {@link Graph} connecting two {@link Vertex}es. In the case of PBF graphs, edges are sections of ways
@@ -413,7 +413,7 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupport
  *     <li>{@link #asHeavyWeight()} - This edge as a {@link HeavyWeightEdge}</li>
  *     <li>{@link #isHeavyWeight()} - True if this edge is a {@link HeavyWeightEdge}</li>
  *     <li>{@link #populateWithTestValues()} - Populates this {@link HeavyWeightEdge} with test values</li>
- *     <li>{@link #asString()} - A string representation of the {@link EdgeProperties} of this edge accessible through {@link AsString#asString()}</li>
+ *     <li>{@link #asString()} - A string representation of the {@link EdgeProperties} of this edge accessible through {@link Stringable#asString()}</li>
  * </ul>
  * <p>
  * <b>OSM-Specific</b>
@@ -2012,7 +2012,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @return The properties of this edge from the edge's {@link DataSpecification}, for use in producing a debug
      * string for the edge
      * @see GraphElementPropertySet
-     * @see AsString
+     * @see Stringable
      */
     @Override
     public GraphElementPropertySet<Edge> properties()

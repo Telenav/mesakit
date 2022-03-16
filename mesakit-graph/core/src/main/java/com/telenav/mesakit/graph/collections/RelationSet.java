@@ -18,35 +18,33 @@
 
 package com.telenav.mesakit.graph.collections;
 
-import com.telenav.kivakit.collections.set.logical.operations.Intersection;
-import com.telenav.kivakit.collections.set.logical.operations.Subset;
-import com.telenav.kivakit.collections.set.logical.operations.Union;
-import com.telenav.kivakit.collections.set.logical.operations.Without;
-import com.telenav.kivakit.kernel.data.conversion.BaseConverter;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.iteration.Streams;
-import com.telenav.kivakit.kernel.language.iteration.Streams.Processing;
-import com.telenav.kivakit.kernel.language.strings.Join;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
-import com.telenav.kivakit.kernel.language.time.Frequency;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.messaging.listeners.ThrowingListener;
+import com.telenav.kivakit.collections.set.operations.Intersection;
+import com.telenav.kivakit.collections.set.operations.Subset;
+import com.telenav.kivakit.collections.set.operations.Union;
+import com.telenav.kivakit.collections.set.operations.Without;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.language.Streams;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.Join;
+import com.telenav.kivakit.core.string.Separators;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.time.Frequency;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.identifiers.RelationIdentifier;
-import com.telenav.mesakit.graph.project.GraphLimits.Limit;
+import com.telenav.mesakit.graph.GraphLimits.Limit;
 import com.telenav.mesakit.graph.specifications.common.relation.HeavyWeightRelation;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapRelationIdentifier;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -55,7 +53,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * A set of relations. Supports {@link #union(RelationSet)} and {@link #without(Set)} operations, that logically combine
@@ -443,14 +441,7 @@ public class RelationSet implements Set<EdgeRelation>
      */
     public String joinedIdentifiers(String separator)
     {
-        return Join.join(this, separator, new BaseConverter<>(new ThrowingListener())
-        {
-            @Override
-            protected String onConvert(EdgeRelation value)
-            {
-                return Long.toString(value.identifierAsLong());
-            }
-        });
+        return Join.join(this, separator, value -> Long.toString(value.identifierAsLong()));
     }
 
     /**
@@ -559,7 +550,7 @@ public class RelationSet implements Set<EdgeRelation>
         return Streams.stream(this);
     }
 
-    public Stream<EdgeRelation> stream(Processing processing)
+    public Stream<EdgeRelation> stream(Streams.Processing processing)
     {
         return Streams.stream(processing, this);
     }
@@ -577,7 +568,7 @@ public class RelationSet implements Set<EdgeRelation>
      * {@inheritDoc}
      */
     @Override
-    public <T> T[] toArray(T[] a)
+    public <T> T[] toArray(T @NotNull [] a)
     {
         return unsupported();
     }

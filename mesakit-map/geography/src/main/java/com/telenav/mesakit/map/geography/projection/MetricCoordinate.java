@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.geography.projection;
 
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.core.language.object.ObjectFormatter;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 
 /**
  * An x,y cartesian coordinate in meters from the origin

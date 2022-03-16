@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.vertex;
 
-import com.telenav.kivakit.kernel.language.objects.Lazy;
+import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.specifications.common.CommonDataSpecification;
 import com.telenav.mesakit.graph.specifications.common.element.GraphElementProperties;

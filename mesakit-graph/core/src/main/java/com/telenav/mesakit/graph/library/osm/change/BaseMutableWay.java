@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.library.osm.change;
 
-import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.core.string.Strings;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 

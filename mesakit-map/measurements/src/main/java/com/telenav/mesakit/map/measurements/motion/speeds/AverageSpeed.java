@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.measurements.motion.speeds;
 
-import com.telenav.kivakit.math.statistics.Average;
+import com.telenav.kivakit.core.math.Average;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.measurements.motion.Speed;
-import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementMotion;
+import com.telenav.mesakit.map.measurements.lexakai.DiagramMapMeasurementMotion;
 
 /**
  * Computes the average of a series of {@link Speed} samples.

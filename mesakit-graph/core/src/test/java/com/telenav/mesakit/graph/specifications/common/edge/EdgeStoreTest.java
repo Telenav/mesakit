@@ -18,14 +18,21 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge;
 
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.core.io.IO;
+import com.telenav.kivakit.core.path.StringPath;
+import com.telenav.kivakit.resource.serialization.ObjectMetadata;
+import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Metadata;
-import com.telenav.mesakit.graph.project.GraphUnitTest;
+import com.telenav.mesakit.graph.GraphKryoTypes;
+import com.telenav.mesakit.graph.GraphUnitTest;
+import com.telenav.mesakit.graph.specifications.common.edge.store.index.CompressedEdgeSpatialIndex;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
+import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSettings;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 import static com.telenav.mesakit.graph.metadata.DataSupplier.OSM;
@@ -33,13 +40,11 @@ import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
 
 public class EdgeStoreTest extends GraphUnitTest
 {
-    private static final Logger LOGGER = LoggerFactory.newLogger();
-
     @Test
     public void test()
     {
         var graph = OsmDataSpecification.get().newGraph(Metadata.osm(OSM, PBF));
-        graph.addListener(LOGGER);
+        graph.addListener(this);
         var store = graph.edgeStore();
 
         final int iterations = 1_000;
@@ -48,7 +53,7 @@ public class EdgeStoreTest extends GraphUnitTest
         var adder = store.adder();
         for (var index = 1; index < iterations + 1; index++)
         {
-            Edge edge = osmEdge(graph, index, index * 1_000_000);
+            var edge = osmEdge(graph, index, index * 1_000_000);
             adder.add(edge);
             edges.add(edge);
         }
@@ -59,5 +64,19 @@ public class EdgeStoreTest extends GraphUnitTest
             var edge = graph.edgeForIdentifier(index * 1_000_000);
             ensure(edges.get(index - 1).equals(edge));
         }
+
+        var index = new CompressedEdgeSpatialIndex("test", graph, new RTreeSettings());
+        index.bulkLoad(graph.edges().asList());
+
+        var serializer = new KryoObjectSerializer(new GraphKryoTypes());
+        var output = new ByteArrayOutputStream();
+        var path = StringPath.stringPath("test");
+        serializer.write(output, path, index, ObjectMetadata.TYPE);
+        IO.close(output);
+
+        var input = new ByteArrayInputStream(output.toByteArray());
+        var deserialized = serializer.read(input, path, ObjectMetadata.TYPE).object();
+
+        ensureEqual(index, deserialized);
     }
 }

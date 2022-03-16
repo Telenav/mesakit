@@ -18,19 +18,19 @@
 
 package com.telenav.mesakit.graph.specifications.common.place.store;
 
-import com.telenav.kivakit.kernel.data.validation.ValidationType;
-import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.language.values.count.BitCount;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.value.count.BitCount;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.primitive.collections.array.packed.SplitPackedArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.kivakit.primitive.collections.list.store.PackedStringStore;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Place;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
@@ -40,8 +40,8 @@ import com.telenav.mesakit.graph.specifications.library.attributes.AttributeRefe
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.quadtree.QuadTreeSpatialIndex;
 
-import static com.telenav.kivakit.kernel.data.validation.ValidationType.VALIDATE_ALL;
 import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
+import static com.telenav.kivakit.validation.ValidationType.VALIDATE_ALL;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 import static com.telenav.mesakit.map.geography.Precision.DM7;
 

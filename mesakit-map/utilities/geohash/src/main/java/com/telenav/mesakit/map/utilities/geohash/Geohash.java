@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.map.utilities.geohash;
 
-import com.telenav.kivakit.kernel.language.objects.Objects;
+import com.telenav.kivakit.core.language.Objects;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
 import java.util.Collection;
 import java.util.HashSet;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 /**
  * @author Mihai Chintoanu
@@ -91,7 +91,7 @@ public class Geohash
     }
 
     /**
-     * @return this geohash's children, or an empty collection if this geohash is at the maximum allowed depth
+     * @return This geohash's children, or an empty collection if this geohash is at the maximum allowed depth
      */
     public Collection<Geohash> children()
     {

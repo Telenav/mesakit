@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.geography.shape.rectangle;
 
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramRectangle;
+import com.telenav.mesakit.map.geography.lexakai.DiagramRectangle;
 
 /**
  * An object that has a bounds.

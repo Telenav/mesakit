@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.data.formats.pbf.processing.filters.osm;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.osm.OsmHighwayTag;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.WayFilter;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfOsm;
+import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfOsm;
 
 /**
  * PbfFilters out highway types that we never want to consider.

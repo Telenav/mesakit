@@ -18,12 +18,13 @@
 
 package com.telenav.mesakit.graph.analytics.ramp;
 
-import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.language.values.count.MutableCount;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.value.count.MutableCount;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.collections.EdgeSet;
@@ -58,7 +59,7 @@ public abstract class RampFinder extends BaseRepeater
     public void find()
     {
         // Visit each edge in the sequence
-        var progress = isDeaf() ? Progress.NULL : Progress.create(this, "edges");
+        var progress = isDeaf() ? ProgressReporter.none() : BroadcastingProgressReporter.create(this, "edges");
         progress.steps(graph.edgeCount().asMaximum());
         progress.start();
         for (var edge : graph.edges())

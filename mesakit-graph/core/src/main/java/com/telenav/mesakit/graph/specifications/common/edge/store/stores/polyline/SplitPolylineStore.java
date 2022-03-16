@@ -22,29 +22,34 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.kernel.interfaces.collection.Indexed;
-import com.telenav.kivakit.kernel.interfaces.lifecycle.Initializable;
-import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
-import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
-import com.telenav.kivakit.kernel.language.objects.Hash;
-import com.telenav.kivakit.kernel.language.objects.Objects;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.core.language.Hash;
+import com.telenav.kivakit.core.language.Objects;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.interfaces.collection.Indexed;
+import com.telenav.kivakit.interfaces.lifecycle.Initializable;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
 
 import java.util.ArrayList;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
-public class SplitPolylineStore implements KryoSerializable, NamedObject, Initializable, CompressibleCollection
+public class SplitPolylineStore implements
+        KryoSerializable,
+        NamedObject,
+        Initializable,
+        CompressibleCollection
 {
     /** The underlying polyline stores */
     private ArrayList<PolylineStore> stores;
 
     /** The current store we're adding to */
+    @SuppressWarnings("SpellCheckingInspection")
     private PolylineStore polylines;
 
     /** Map from client index to store */
@@ -154,7 +159,7 @@ public class SplitPolylineStore implements KryoSerializable, NamedObject, Initia
             // and if that index is not null,
             if (!store.isNull(storeIndex))
             {
-                // the the polyline from the store
+                // the polyline from the store
                 return store.get(storeIndex);
             }
         }

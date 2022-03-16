@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.extractors;
 
-import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.extraction.BaseExtractor;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
 
 public class TimestampExtractor extends BaseExtractor<Time, PbfEntity<?>>

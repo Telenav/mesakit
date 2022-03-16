@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.LocationSequence;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
+import com.telenav.mesakit.map.geography.GeographyUnitTest;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import org.junit.Test;
 

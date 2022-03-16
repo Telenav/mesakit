@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.map.road.model.converters;
 
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.strings.Split;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.Split;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.GeographyLimits;
+import com.telenav.mesakit.map.geography.GeographyLimits;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 
 import java.util.List;
@@ -55,7 +55,7 @@ public class RoadShapeConverter extends BaseStringConverter<Polyline>
 
     // Create a new RoadShape from comma delimited repeated lat/lon pairs (there are two extra
     // columns for altitude and "relative elevation" in unified TXD). This is how the
-    // shapepoints are stored in the TXD file format.
+    // shape-points are stored in the TXD file format.
     @Override
     protected Polyline onToValue(String value)
     {
@@ -63,7 +63,7 @@ public class RoadShapeConverter extends BaseStringConverter<Polyline>
         var i = 0;
         Latitude latitude = null;
         Longitude longitude;
-        for (var coordinate : Split.split(value, ','))
+        for (var coordinate : Split.split(value, ","))
         {
             if (i % columns == 0)
             {

@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.map.overpass;
 
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.network.core.Host;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
@@ -30,7 +30,7 @@ import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.overpass.pbf.OsmToPbfConverter;
-import com.telenav.mesakit.map.overpass.project.lexakai.diagrams.DiagramOverpass;
+import com.telenav.mesakit.map.overpass.lexakai.DiagramOverpass;
 
 /**
  * @author jonathanl (shibo)
@@ -40,9 +40,9 @@ import com.telenav.mesakit.map.overpass.project.lexakai.diagrams.DiagramOverpass
 @UmlRelation(label = "converts data with", referent = OsmToPbfConverter.class)
 public class OverpassDataDownloader extends BaseRepeater
 {
-    public final Host HOST = Host.parse(this, "overpass-api.de");
-
     public static final Distance MAXIMUM_SIZE = Distance.kilometers(50);
+
+    public final Host HOST = Host.parseHost(this, "overpass-api.de");
 
     private final Debug DEBUG = new Debug(this);
 

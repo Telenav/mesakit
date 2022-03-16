@@ -18,40 +18,41 @@
 
 package com.telenav.mesakit.graph;
 
+import com.telenav.kivakit.core.collections.set.ObjectSet;
+import com.telenav.kivakit.core.project.Project;
+import com.telenav.kivakit.core.project.ProjectTrait;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.language.collections.set.ObjectSet;
-import com.telenav.kivakit.kernel.language.objects.Lazy;
-import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.kivakit.kernel.project.Project;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
+import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.mesakit.core.MesaKit;
-import com.telenav.mesakit.graph.project.GraphKryoTypes;
-import com.telenav.mesakit.map.data.formats.pbf.PbfProject;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.PbfFilters;
 import com.telenav.mesakit.map.region.RegionProject;
 
+import static com.telenav.kivakit.core.collections.set.ObjectSet.objectSet;
+
 /**
+ * This class defines a KivaKit {@link Project}. It cannot be constructed with the new operator since it has a private
+ * constructor. To access the singleton instance of this class, call {@link Project#resolveProject(Class)}, or use
+ * {@link ProjectTrait#project(Class)}.
+ *
  * @author jonathanl (shibo)
  */
 public class GraphProject extends Project
 {
-    private static final Lazy<GraphProject> singleton = Lazy.of(GraphProject::new);
-
-    public static GraphProject get()
-    {
-        return singleton.get();
-    }
-
-    protected GraphProject()
+    public GraphProject()
     {
         System.setProperty("mesakit.graph.folder", graphFolder().toString());
         JavaVirtualMachine.local().invalidateProperties();
+
+        register(new KryoObjectSerializer(new GraphKryoTypes()));
     }
 
     @Override
-    public ObjectSet<Project> dependencies()
+    public ObjectSet<Class<? extends Project>> dependencies()
     {
-        return ObjectSet.objectSet(RegionProject.get(), PbfProject.get());
+        return objectSet(RegionProject.class);
     }
 
     /**
@@ -59,7 +60,7 @@ public class GraphProject extends Project
      */
     public Folder graphFolder()
     {
-        return MesaKit.get().mesakitCacheFolder()
+        return resolveProject(MesaKit.class).mesakitCacheFolder()
                 .folder("graph")
                 .mkdirs();
     }
@@ -79,12 +80,12 @@ public class GraphProject extends Project
 
     public SerializationSessionFactory serializationFactory()
     {
-        return new GraphKryoTypes().sessionFactory();
+        return new KryoSerializationSessionFactory(new GraphKryoTypes());
     }
 
     public Folder userGraphFolder()
     {
-        var graphFolder = JavaVirtualMachine.property("MESAKIT_USER_GRAPH_FOLDER");
+        var graphFolder = systemProperty("MESAKIT_USER_GRAPH_FOLDER");
         return graphFolder == null ? Folder.desktop() : Folder.parse(this, graphFolder);
     }
 }

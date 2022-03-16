@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.ui.desktop.viewer;
 
-import com.telenav.kivakit.kernel.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDrawable;
 
 import java.util.function.Function;

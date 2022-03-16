@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.osm.graph.edge.model.attributes;
 
-import com.telenav.kivakit.kernel.language.objects.Lazy;
+import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.specifications.common.edge.EdgeAttributes;
 import com.telenav.mesakit.graph.specifications.common.edge.EdgeProperties;

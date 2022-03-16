@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.navigation.routing.bidijkstra;
 
-import com.telenav.kivakit.kernel.language.values.count.MutableCount;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.core.value.count.MutableCount;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.mesakit.navigation.routing.BaseRouter;
 import com.telenav.mesakit.navigation.routing.LevelPromoter;
 import com.telenav.mesakit.navigation.routing.RoutingRequest;

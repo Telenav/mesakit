@@ -26,7 +26,7 @@ import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifie
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 /**
  * A relation member in a {@link WorldGraph}. Overrides {@link #route()} and {@link #vertex()} to provide ways (routes)

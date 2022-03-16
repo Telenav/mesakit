@@ -18,15 +18,17 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
+import com.telenav.kivakit.serialization.kryo.BaseSerializer;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
-import com.telenav.kivakit.serialization.kryo.KryoSerializer;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
+import static com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndexKryoSerializer.NodeType.INTERIOR_NODE;
+import static com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndexKryoSerializer.NodeType.LEAF;
 
 @SuppressWarnings({ "rawtypes", "unchecked" })
-public abstract class RTreeSpatialIndexKryoSerializer<T extends Bounded & Intersectable> extends KryoSerializer<RTreeSpatialIndex>
+public abstract class RTreeSpatialIndexKryoSerializer<T extends Bounded & Intersectable> extends BaseSerializer<RTreeSpatialIndex>
 {
     public enum NodeType
     {
@@ -42,7 +44,7 @@ public abstract class RTreeSpatialIndexKryoSerializer<T extends Bounded & Inters
     @Override
     public RTreeSpatialIndex<T> onRead(KryoSerializationSession session)
     {
-        var settings = session.readObject(RTreeSettings.class);
+        var settings = session.read(RTreeSettings.class);
         RTreeSpatialIndex<T> index = newSpatialIndex(settings);
         index.root = readNode(session, index, null);
         return index;
@@ -51,7 +53,7 @@ public abstract class RTreeSpatialIndexKryoSerializer<T extends Bounded & Inters
     @Override
     public void onWrite(KryoSerializationSession session, RTreeSpatialIndex index)
     {
-        session.writeObject(index.settings());
+        session.write(index.settings());
         writeNode(session, index.root);
     }
 
@@ -68,7 +70,7 @@ public abstract class RTreeSpatialIndexKryoSerializer<T extends Bounded & Inters
 
     protected void writeLeaf(KryoSerializationSession session, Leaf<T> leaf)
     {
-        session.writeList(((UncompressedLeaf) leaf).elements, type());
+        session.writeList(((UncompressedLeaf) leaf).elements);
     }
 
     private InteriorNode readInteriorNode(KryoSerializationSession session,
@@ -76,7 +78,7 @@ public abstract class RTreeSpatialIndexKryoSerializer<T extends Bounded & Inters
                                           InteriorNode parent)
     {
         var node = new InteriorNode(index, parent);
-        int size = session.readObject(int.class);
+        int size = session.read(Integer.class);
         for (var i = 0; i < size; i++)
         {
             node.children.add(readNode(session, index, node));
@@ -88,9 +90,9 @@ public abstract class RTreeSpatialIndexKryoSerializer<T extends Bounded & Inters
                           RTreeSpatialIndex index,
                           InteriorNode parent)
     {
-        var type = session.readObject(NodeType.class);
-        long bottomLeft = session.readObject(long.class);
-        long topRight = session.readObject(long.class);
+        var type = session.read(NodeType.class);
+        long bottomLeft = session.read(Long.class);
+        long topRight = session.read(Long.class);
         Node node;
         switch (type)
         {
@@ -113,7 +115,7 @@ public abstract class RTreeSpatialIndexKryoSerializer<T extends Bounded & Inters
     private void writeInteriorNode(KryoSerializationSession session, InteriorNode node)
     {
         var size = node.children.size();
-        session.writeObject(size);
+        session.write(size);
         for (var i = 0; i < size; i++)
         {
             writeNode(session, (Node) node.children.get(i));
@@ -124,16 +126,16 @@ public abstract class RTreeSpatialIndexKryoSerializer<T extends Bounded & Inters
     {
         if (node instanceof InteriorNode)
         {
-            session.writeObject(NodeType.INTERIOR_NODE);
-            session.writeObject(node.bottomLeft);
-            session.writeObject(node.topRight);
+            session.write(INTERIOR_NODE);
+            session.write(node.bottomLeft);
+            session.write(node.topRight);
             writeInteriorNode(session, (InteriorNode) node);
         }
         else if (node instanceof Leaf)
         {
-            session.writeObject(NodeType.LEAF);
-            session.writeObject(node.bottomLeft);
-            session.writeObject(node.topRight);
+            session.write(LEAF);
+            session.write(node.bottomLeft);
+            session.write(node.topRight);
             writeLeaf(session, (Leaf) node);
         }
     }

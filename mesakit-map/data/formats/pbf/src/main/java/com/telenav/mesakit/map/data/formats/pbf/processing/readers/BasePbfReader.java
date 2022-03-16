@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.processing.readers;
 
-import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.identifier.Identifier;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.identifier.Identifier;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
@@ -34,7 +34,7 @@ import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataSource;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataStatistics;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfStopProcessingException;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessing;
+import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfProcessing;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.openstreetmap.osmosis.core.domain.v0_6.Bound;
 import org.openstreetmap.osmosis.core.domain.v0_6.Entity;
@@ -45,8 +45,8 @@ import org.openstreetmap.osmosis.core.domain.v0_6.Way;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 /**
  * Base class for PBF readers, handling progress reporting and gathering statistics.
@@ -58,11 +58,11 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
 public abstract class BasePbfReader extends BaseRepeater implements PbfDataSource
 {
     // Progress in processing each entity type
-    private ProgressReporter nodeProgress = Progress.create(this, "nodes");
+    private ProgressReporter nodeProgress = BroadcastingProgressReporter.create(this, "nodes");
 
-    private ProgressReporter wayProgress = Progress.create(this, "ways");
+    private ProgressReporter wayProgress = BroadcastingProgressReporter.create(this, "ways");
 
-    private ProgressReporter relationProgress = Progress.create(this, "relations");
+    private ProgressReporter relationProgress = BroadcastingProgressReporter.create(this, "relations");
 
     // The resource being read
     @UmlAggregation
@@ -186,9 +186,9 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
 
     public BasePbfReader noProgress()
     {
-        nodeProgress = ProgressReporter.NULL;
-        wayProgress = ProgressReporter.NULL;
-        relationProgress = ProgressReporter.NULL;
+        nodeProgress = ProgressReporter.none();
+        wayProgress = ProgressReporter.none();
+        relationProgress = ProgressReporter.none();
         return this;
     }
 

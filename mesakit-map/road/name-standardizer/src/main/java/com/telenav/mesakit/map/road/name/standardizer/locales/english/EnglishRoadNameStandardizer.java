@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.road.name.standardizer.locales.english;
 
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.ParsedRoadName;
@@ -30,7 +30,7 @@ import com.telenav.mesakit.map.road.name.standardizer.BaseRoadNameStandardizer;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.mesakit.map.road.name.parser.ParsedRoadName.DirectionFormat.PREFIXED;
 
 @SuppressWarnings("SpellCheckingInspection")

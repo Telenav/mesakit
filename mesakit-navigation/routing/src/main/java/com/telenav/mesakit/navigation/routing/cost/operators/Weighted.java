@@ -18,7 +18,8 @@
 
 package com.telenav.mesakit.navigation.routing.cost.operators;
 
-import com.telenav.kivakit.kernel.language.values.level.Weight;
+import com.telenav.kivakit.core.value.level.Weight;
+
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.navigation.routing.cost.Cost;
 import com.telenav.mesakit.navigation.routing.cost.CostFunction;

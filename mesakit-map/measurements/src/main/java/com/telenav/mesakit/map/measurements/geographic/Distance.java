@@ -20,21 +20,21 @@ package com.telenav.mesakit.map.measurements.geographic;
 
 import com.telenav.kivakit.commandline.ArgumentParser;
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.kernel.language.primitives.Doubles;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.level.Percent;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.language.primitive.Doubles;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.level.Percent;
+import com.telenav.kivakit.interfaces.numeric.Quantizable;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
+import com.telenav.mesakit.map.measurements.lexakai.DiagramMapMeasurementGeographic;
 
 import java.util.regex.Pattern;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 /**
  * Abstract representation of the spatial separation of two points.
@@ -61,15 +61,15 @@ public final class Distance implements Quantizable, Comparable<Distance>
 
     public static final Distance EARTH_RADIUS_MINOR = meters(6_372_797);
 
+    private static final double DM5_PER_KILOMETER = 1000.0 / EARTH_RADIUS_MINOR.asMeters() * Angle.degreesPerRadian() * 100_000;
+
+    private static final double DM7_PER_KILOMETER = 1000.0 / EARTH_RADIUS_MINOR.asMeters() * Angle.degreesPerRadian() * 10_000_000;
+
+    private static final double KILOMETERS_PER_DM7 = 1 / DM7_PER_KILOMETER;
+
     private static final double DM5_PER_DEGREE = 100_000;
 
     private static final double DM7_PER_DEGREE = 10_000_000;
-
-    private static final double DM5_PER_KILOMETER = 1000.0 / EARTH_RADIUS_MINOR.asMeters() * Angle.degreesPerRadian() * DM5_PER_DEGREE;
-
-    private static final double DM7_PER_KILOMETER = 1000.0 / EARTH_RADIUS_MINOR.asMeters() * Angle.degreesPerRadian() * DM7_PER_DEGREE;
-
-    private static final double KILOMETERS_PER_DM7 = 1 / DM7_PER_KILOMETER;
 
     public static final Distance EARTH_RADIUS_MAJOR = meters(6_378_137);
 
@@ -209,7 +209,7 @@ public final class Distance implements Quantizable, Comparable<Distance>
 
     /**
      * Converts the given <code>String</code> to a new <code>Distance</code> object. The input string is expected to be
-     * of the format of a floating point number followed by a units identifier (miles, kilometers, meters, feet, etc.).
+     * of the format of a floating point number followed by a unit identifier (miles, kilometers, meters, feet, etc.).
      * Examples would include '1 mile', '2.3 kilometers', or '62.3 meters'.
      *
      * @author jonathanl (shibo)
@@ -339,8 +339,8 @@ public final class Distance implements Quantizable, Comparable<Distance>
     private final long millimeters;
 
     /**
-     * This constructor should not be used outside of this class. It is made protected to allow for other classes to
-     * extend it.
+     * This constructor should not be used outside this class. It is made protected to allow for other classes to extend
+     * it.
      *
      * @param millimeters The distance in millimeters
      */

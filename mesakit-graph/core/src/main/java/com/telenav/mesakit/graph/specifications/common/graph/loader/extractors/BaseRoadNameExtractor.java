@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
-import com.telenav.kivakit.kernel.language.strings.Split;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.core.locale.LanguageIsoCode;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.Split;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.extraction.BaseExtractor;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.region.regions.Country;
@@ -62,7 +62,7 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
         {
             if (name.contains(";"))
             {
-                for (var subName : Split.split(name, ';'))
+                for (var subName : Split.split(name, ";"))
                 {
                     addRoadName(names, subName);
                 }
@@ -141,7 +141,7 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
             }
         }
 
-        // otherwise return the default language for the locale
+        // otherwise, return the default language for the locale
         return List.of(locale.language());
     }
 
@@ -150,6 +150,7 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
      * "17th" and it turns names with hyphens like "Southwest By-Pass" into "Pass". This method is used to filter out
      * these cases.
      */
+    @SuppressWarnings("SpellCheckingInspection")
     private boolean shouldStandardize(String name)
     {
         if (Strings.isNaturalNumber(name))

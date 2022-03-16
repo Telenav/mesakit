@@ -22,17 +22,17 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.kernel.language.locales.CountryIsoCode;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludeProperty;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.core.language.object.ObjectFormatter;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.locale.CountryIsoCode;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
-import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegion;
+import com.telenav.mesakit.map.region.lexakai.DiagramRegion;
 import com.telenav.mesakit.map.region.regions.City;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
@@ -42,8 +42,9 @@ import com.telenav.mesakit.map.region.regions.State;
 import com.telenav.mesakit.map.region.regions.TimeZone;
 import org.junit.Before;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.project.Project.resolveProject;
 
 /**
  * <p>
@@ -101,11 +102,18 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNot
  */
 @UmlClassDiagram(diagram = DiagramRegion.class)
 @UmlExcludeSuperTypes
-public class RegionIdentity implements AsString, KryoSerializable
+public class RegionIdentity implements Stringable, KryoSerializable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    private String name;
+    private CountryIsoCode countryIsoCode;
+
+    private int countryOrdinal;
+
+    private Country.CountryTmcCode countryTmcCode;
+
+    @UmlAggregation
+    private RegionIdentifier identifier;
 
     @UmlAggregation(label = "iso")
     private RegionCode iso;
@@ -113,14 +121,7 @@ public class RegionIdentity implements AsString, KryoSerializable
     @UmlAggregation(label = "mesakit")
     private RegionCode mesakit;
 
-    @UmlAggregation
-    private RegionIdentifier identifier;
-
-    private int countryOrdinal;
-
-    private Country.CountryTmcCode countryTmcCode;
-
-    private CountryIsoCode countryIsoCode;
+    private String name;
 
     public RegionIdentity()
     {
@@ -144,7 +145,7 @@ public class RegionIdentity implements AsString, KryoSerializable
     }
 
     @Override
-    public String asString()
+    public String asString(Format format)
     {
         return new ObjectFormatter(this).toString();
     }
@@ -438,7 +439,7 @@ public class RegionIdentity implements AsString, KryoSerializable
     @Before
     public void testSetup()
     {
-        RegionProject.get().initialize();
+        resolveProject(RegionProject.class).initialize();
     }
 
     public TimeZone timeZone()

@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.graph.specifications.library.pbf;
 
-import com.telenav.kivakit.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsStringIndenter;
-import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
-import com.telenav.kivakit.kernel.messaging.Message;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.string.AsStringIndenter;
+import com.telenav.kivakit.core.string.AsciiArt;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.primitive.collections.set.SplitLongSet;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.specifications.common.node.store.all.disk.PbfAllNodeDiskStores;
@@ -39,7 +39,7 @@ import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
 
 import java.util.Collection;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
 
@@ -87,6 +87,11 @@ public class PbfDataAnalysis extends BaseRepeater
     /** Node count map for finding intersections */
     private IntersectionMap intersections;
 
+    /**
+     * Metadata for allocation sizing
+     */
+    private Metadata metadata;
+
     /** Disk stores with full node information */
     private PbfAllNodeDiskStores pbfNodeDiskStores;
 
@@ -97,11 +102,6 @@ public class PbfDataAnalysis extends BaseRepeater
      * Way nodes for the second pass so we can store information about only the nodes we will actually use
      */
     private SplitLongSet wayNodes;
-
-    /**
-     * Metadata for allocation sizing
-     */
-    private Metadata metadata;
 
     /**
      * Constructs a set of codecs for encoding nodes, ways and relations from an PBF data source
@@ -187,9 +187,9 @@ public class PbfDataAnalysis extends BaseRepeater
                 .withWayCount(statistics.ways())
                 .withRelationCount(statistics.relations());
 
-        var indenter = new AsStringIndenter(StringFormat.USER_MULTILINE);
-        indenter.indented("metadata", () -> metadata().asString(StringFormat.USER_MULTILINE, indenter));
-        information(AsciiArt.textBox(Message.format("PBF Data Analysis of $", fileName), indenter.toString()));
+        var indenter = new AsStringIndenter(Stringable.Format.USER_MULTILINE);
+        indenter.indented("metadata", () -> metadata().asString(Stringable.Format.USER_MULTILINE, indenter));
+        information(AsciiArt.textBox(Strings.format("PBF Data Analysis of $", fileName), indenter.toString()));
     }
 
     public void freeIntersectionMap()

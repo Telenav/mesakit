@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.io.convert;
 
 import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.kernel.messaging.Repeater;
+import com.telenav.kivakit.core.messaging.Repeater;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.PbfToGraphConverter;
 import com.telenav.mesakit.graph.specifications.osm.graph.converter.OsmPbfToGraphConverter;

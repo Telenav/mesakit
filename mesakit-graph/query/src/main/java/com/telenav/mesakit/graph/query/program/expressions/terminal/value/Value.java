@@ -1,8 +1,8 @@
 package com.telenav.mesakit.graph.query.program.expressions.terminal.value;
 
-import com.telenav.kivakit.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.kernel.language.strings.Strip;
+import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.core.string.Strip;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.analytics.classification.classifiers.turn.TurnType;
 import com.telenav.mesakit.map.road.model.BridgeType;
@@ -12,7 +12,7 @@ import com.telenav.mesakit.map.road.model.RoadSubType;
 import com.telenav.mesakit.map.road.model.RoadSurface;
 import com.telenav.mesakit.map.road.model.RoadType;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 /**
  * A scalar value used in edge attribute comparisons. One of:

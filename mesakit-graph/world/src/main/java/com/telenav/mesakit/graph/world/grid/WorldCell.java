@@ -18,18 +18,17 @@
 
 package com.telenav.mesakit.graph.world.grid;
 
+import com.telenav.kivakit.core.collections.Sets;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.interfaces.loading.Unloadable;
-import com.telenav.kivakit.kernel.language.collections.set.Sets;
-import com.telenav.kivakit.kernel.language.objects.reference.virtual.VirtualReference;
-import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.interfaces.loading.Unloadable;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
@@ -37,6 +36,7 @@ import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.world.WorldEdge;
 import com.telenav.mesakit.graph.world.WorldGraph;
 import com.telenav.mesakit.graph.world.repository.WorldGraphRepositoryFolder;
+import com.telenav.mesakit.graph.world.virtual.VirtualReference;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
@@ -400,7 +400,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
                 // Load the graph file
                 DEBUG.trace("Loading graph for $", name());
                 @SuppressWarnings(
-                        "resource") var archive = new GraphArchive(LOGGER, cellGraphFile(), READ, ProgressReporter.NULL);
+                        "resource") var archive = new GraphArchive(LOGGER, cellGraphFile(), READ, ProgressReporter.none());
                 var graph = archive.load(DEBUG.isDebugOn() ? DEBUG.listener() : Listener.none());
                 if (graph == null)
                 {

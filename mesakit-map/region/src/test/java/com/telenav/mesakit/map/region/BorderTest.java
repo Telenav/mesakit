@@ -23,7 +23,6 @@ import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.region.border.Border;
-import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Continent;
 import org.junit.Test;
 
@@ -41,7 +40,7 @@ public class BorderTest extends RegionUnitTest
                 .withIdentifier(new RegionIdentifier(1))
                 .withIsoCode("X")
                 .withMesaKitCode("X"));
-        serializationTest(border);
+        testSerialization(border);
     }
 
     private Polygon polygon(double... values)

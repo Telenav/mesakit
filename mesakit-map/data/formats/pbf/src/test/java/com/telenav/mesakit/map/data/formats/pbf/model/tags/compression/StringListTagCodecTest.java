@@ -18,17 +18,17 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.list.HuffmanStringListCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
-import com.telenav.kivakit.kernel.language.paths.PackagePath;
-import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.core.path.PackagePath;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
-import com.telenav.kivakit.resource.resources.other.PropertyMap;
-import com.telenav.kivakit.test.UnitTest;
+import com.telenav.kivakit.resource.PropertyMap;
+import com.telenav.kivakit.core.test.UnitTest;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import org.junit.Test;
 
@@ -61,7 +61,7 @@ public class StringListTagCodecTest extends UnitTest
         test(codec, PbfTagList.create().add("z", "z"));
         test(codec, tags());
 
-        var progress = Progress.create();
+        var progress = BroadcastingProgressReporter.create();
         loop(1_000, () ->
         {
             test(codec, randomTags());

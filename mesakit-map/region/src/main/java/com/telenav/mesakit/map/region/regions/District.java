@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.region.regions;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionInstance;
-import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
+import com.telenav.mesakit.map.region.lexakai.DiagramRegions;
 
 /**
  * NOTE: Full district support is still in the future.

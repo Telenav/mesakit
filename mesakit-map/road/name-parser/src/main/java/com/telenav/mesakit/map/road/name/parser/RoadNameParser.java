@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.name.parser;
 
-import com.telenav.kivakit.kernel.language.paths.PackagePath;
+import com.telenav.kivakit.core.path.PackagePath;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.locales.english.EnglishUnitedStatesRoadNameParser;

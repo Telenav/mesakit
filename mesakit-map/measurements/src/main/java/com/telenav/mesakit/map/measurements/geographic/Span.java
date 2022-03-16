@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.measurements.geographic;
 
-import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.core.language.Hash;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
-import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
+import com.telenav.mesakit.map.measurements.lexakai.DiagramMapMeasurementGeographic;
 
 /**
  * A span from a start distance to an end distance, such as from 1 foot to 8 feet (the span is 7 feet). The length of

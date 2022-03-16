@@ -21,7 +21,6 @@ package com.telenav.mesakit.graph;
 import com.telenav.mesakit.graph.analytics.classification.classifiers.turn.ComplexTurnClassifier;
 import com.telenav.mesakit.graph.analytics.classification.classifiers.turn.TurnType;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
-import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.graph.relations.restrictions.classifiers.TurnRestrictionsTurnClassifier;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import org.junit.Before;

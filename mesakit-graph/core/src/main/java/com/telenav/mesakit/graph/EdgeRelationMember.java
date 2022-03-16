@@ -18,27 +18,26 @@
 
 package com.telenav.mesakit.graph;
 
-import com.telenav.kivakit.kernel.language.objects.Hash;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsStringIndenter;
-import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
+import com.telenav.kivakit.core.language.Hash;
+import com.telenav.kivakit.core.string.AsIndentedString;
+import com.telenav.kivakit.core.string.AsStringIndenter;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 import com.telenav.mesakit.map.geography.Location;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 public class EdgeRelationMember implements AsIndentedString
 {
-    /** The relation */
-    private final EdgeRelation relation;
-
     /**
      * A map identifier for this relation member, either a {@link PbfWayIdentifier} if the member is a way or a {@link
      * MapNodeIdentifier} if the member is a via node
      */
     private final MapIdentifier identifier;
+
+    /** The relation */
+    private final EdgeRelation relation;
 
     /** The role of this member */
     private final String role;
@@ -54,7 +53,7 @@ public class EdgeRelationMember implements AsIndentedString
     }
 
     @Override
-    public AsStringIndenter asString(StringFormat format, AsStringIndenter indenter)
+    public AsStringIndenter asString(Format format, AsStringIndenter indenter)
     {
         indenter.add(role().toLowerCase() + " " + type().name().toLowerCase() + " " + identifier());
         return indenter;

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
+import com.telenav.kivakit.core.collections.iteration.BaseIterator;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.world.grid.WorldCell;

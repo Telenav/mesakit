@@ -20,9 +20,9 @@ package com.telenav.mesakit.map.geography.shape.polyline;
 
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
+import com.telenav.mesakit.map.geography.lexakai.DiagramPolyline;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 @UmlClassDiagram(diagram = DiagramPolyline.class)
 public class PolygonBuilder extends PolylineBuilder

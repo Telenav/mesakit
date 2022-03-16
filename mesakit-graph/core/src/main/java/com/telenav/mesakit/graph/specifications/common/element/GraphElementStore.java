@@ -18,30 +18,26 @@
 
 package com.telenav.mesakit.graph.specifications.common.element;
 
-import com.telenav.kivakit.kernel.data.validation.BaseValidator;
-import com.telenav.kivakit.kernel.data.validation.Validatable;
-import com.telenav.kivakit.kernel.data.validation.ValidationType;
-import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.interfaces.collection.Addable;
-import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
-import com.telenav.kivakit.kernel.language.threading.batcher.Batcher;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.language.values.name.Name;
-import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.kernel.messaging.messages.status.Glitch;
-import com.telenav.kivakit.kernel.messaging.messages.status.Problem;
-import com.telenav.kivakit.kernel.messaging.messages.status.Quibble;
-import com.telenav.kivakit.kernel.messaging.messages.status.Warning;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.collections.iteration.BaseIterator;
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.messages.status.Glitch;
+import com.telenav.kivakit.core.messaging.messages.status.Problem;
+import com.telenav.kivakit.core.messaging.messages.status.Quibble;
+import com.telenav.kivakit.core.messaging.messages.status.Warning;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.thread.Batcher;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
+import com.telenav.kivakit.interfaces.collection.Addable;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitCharArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
@@ -49,6 +45,10 @@ import com.telenav.kivakit.primitive.collections.list.PrimitiveList;
 import com.telenav.kivakit.primitive.collections.list.store.PackedStringStore;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.validation.BaseValidator;
+import com.telenav.kivakit.validation.Validatable;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.Metadata;
@@ -77,7 +77,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 
 /**
@@ -183,43 +183,32 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         }
     }
 
-    @KivaKitArchivedField
-    private SplitLongArray identifier;
+    /** The interface for batch adding for each thread */
+    private ThreadLocal<Addable<T>> adder;
 
-    @KivaKitArchivedField
-    private SplitLongToIntMap identifierToIndex;
+    /** A batch queue with an associated thread to speed up throughput */
+    private Batcher<T> batcher;
 
-    @KivaKitArchivedField
-    private SplitLongArray lastModified;
+    /** True if we are using the batcher to add elements on a separate thread */
+    private boolean batching;
 
-    @KivaKitArchivedField
-    private SplitLongArray pbfChangeSetIdentifier;
+    /** True if this graph store has been committed */
+    private transient volatile boolean committed;
 
-    @KivaKitArchivedField
-    private SplitCharArray pbfRevisionNumber;
+    /** The method used to compress this store */
+    private CompressibleCollection.Method compressionMethod;
 
-    @KivaKitArchivedField
-    private PackedStringStore pbfUserName;
+    /** The data specification for this element store */
+    private final transient DataSpecification dataSpecification;
 
-    @KivaKitArchivedField
-    private SplitIntArray pbfUserIdentifier;
+    /** The number of elements that have been discarded due to validation problems */
+    private int discarded;
 
-    /**
-     * Tags for this attribute
-     */
-    @KivaKitArchivedField
-    private TagStore tags;
+    /** Cached element factory for efficiency */
+    private final DataSpecification.GraphElementFactory<T> elementFactory;
 
-    /**
-     * The next index for an element in this store. Note that we start index values at 1 rather than 0 because we want
-     * to catch bugs that involve uninitialized index values (the default value for an int in Java is zero).
-     */
-    @KivaKitArchivedField
-    private int nextIndex = 1;
-
-    /** The number of elements in this store (distinct from the count(), which takes into account reversible edges) */
-    @KivaKitArchivedField
-    private int size;
+    /** True if this store is batching and has been flushed (which can only be done once) */
+    private boolean flushed;
 
     /** The graph for which this is a graph */
     private final transient Graph graph;
@@ -265,35 +254,46 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
                 }
             };
 
-    /** True if this graph store has been committed */
-    private transient volatile boolean committed;
+    @KivaKitArchivedField
+    private SplitLongArray identifier;
 
-    /** Cached element factory for efficiency */
-    private final DataSpecification.GraphElementFactory<T> elementFactory;
+    @KivaKitArchivedField
+    private SplitLongToIntMap identifierToIndex;
 
-    /** The data specification for this element store */
-    private final transient DataSpecification dataSpecification;
+    @KivaKitArchivedField
+    private SplitLongArray lastModified;
 
-    /** The number of elements that have been discarded due to validation problems */
-    private int discarded;
+    /**
+     * The next index for an element in this store. Note that we start index values at 1 rather than 0 because we want
+     * to catch bugs that involve uninitialized index values (the default value for an int in Java is zero).
+     */
+    @KivaKitArchivedField
+    private int nextIndex = 1;
+
+    @KivaKitArchivedField
+    private SplitLongArray pbfChangeSetIdentifier;
+
+    @KivaKitArchivedField
+    private SplitCharArray pbfRevisionNumber;
+
+    @KivaKitArchivedField
+    private SplitIntArray pbfUserIdentifier;
+
+    @KivaKitArchivedField
+    private PackedStringStore pbfUserName;
+
+    /** The number of elements in this store (distinct from the count(), which takes into account reversible edges) */
+    @KivaKitArchivedField
+    private int size;
+
+    /**
+     * Tags for this attribute
+     */
+    @KivaKitArchivedField
+    private TagStore tags;
 
     /** True if this store has been trimmed to its minimum size */
     private boolean trimmed;
-
-    /** A batch queue with an associated thread to speed up throughput */
-    private Batcher<T> batcher;
-
-    /** True if we are using the batcher to add elements on a separate thread */
-    private boolean batching;
-
-    /** The interface for batch adding for each thread */
-    private ThreadLocal<Addable<T>> adder;
-
-    /** True if this store is batching and has been flushed (which can only be done once) */
-    private boolean flushed;
-
-    /** The method used to compress this store */
-    private Method compressionMethod;
 
     protected GraphElementStore(Graph graph)
     {
@@ -395,7 +395,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
             JavaVirtualMachine.local().traceSizeChange(this, "compress", this, Bytes.kilobytes(100), () ->
             {
                 var size = CompressibleCollection.compressReachableObjects(this, this, method, event ->
-                        DEBUG.trace("Compressed $", Name.synthetic(event)));
+                        DEBUG.trace("Compressed $", NamedObject.syntheticName(event)));
                 if (size != null)
                 {
                     graph().estimatedMemorySize(size);

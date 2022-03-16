@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
-import com.telenav.kivakit.kernel.language.primitives.Doubles;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
+import com.telenav.kivakit.core.language.primitive.Doubles;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
@@ -30,8 +30,8 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 /**
  * In OSM, zoom level 0 is zoomed out so that the entire world is one tile and zoom level 17 is zoomed in as far as
@@ -43,7 +43,7 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
  *
  * @author jonathanl (shibo)
  */
-public class ZoomLevel implements AsString
+public class ZoomLevel implements Stringable
 {
     /** Maximum zoom level in OSM */
     public static final ZoomLevel CLOSEST = new ZoomLevel(17);
@@ -140,7 +140,7 @@ public class ZoomLevel implements AsString
     }
 
     @Override
-    public String asString()
+    public String asString(Format format)
     {
         return "[ZoomLevel level = " + level + ", widthInTiles = " + widthInTiles() + "]";
     }
@@ -188,7 +188,8 @@ public class ZoomLevel implements AsString
 
     public DrawingPoint inRange(DrawingPoint point, DrawingSize tileSize)
     {
-        return DrawingPoint.point(point.coordinates(), Doubles.inRange(point.x(), 0, widthInPixels(tileSize)),
+        return DrawingPoint.point(point.coordinates(),
+                Doubles.inRange(point.x(), 0, widthInPixels(tileSize)),
                 Doubles.inRange(point.y(), 0, heightInPixels(tileSize)));
     }
 

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.name.parser.tokenizer.symbols;
 
-import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.core.string.Strings;
 
 public class SymbolStream
 {

@@ -2,12 +2,12 @@ package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
 import com.telenav.kivakit.data.compression.codecs.huffman.character.CharacterFrequencies;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.language.values.count.Minimum;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.value.count.Minimum;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelCompression;
+import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelCompression;
 
 import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
 

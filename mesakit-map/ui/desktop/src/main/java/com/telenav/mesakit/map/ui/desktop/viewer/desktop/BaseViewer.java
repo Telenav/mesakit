@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.ui.desktop.viewer.desktop;
 
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.mesakit.map.ui.desktop.viewer.View;
 import com.telenav.mesakit.map.ui.desktop.viewer.Viewer;
 

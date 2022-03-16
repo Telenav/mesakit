@@ -8,7 +8,9 @@ open module mesakit.map.region
     requires transitive mesakit.map.utilities.grid;
 
     requires transitive kivakit.network.http;
-    requires kivakit.test;
+    requires transitive kivakit.extraction;
+    requires transitive kivakit.serialization.core;
+    requires transitive kivakit.primitive.collections;
 
     requires kryo;
     requires junit;
@@ -22,5 +24,4 @@ open module mesakit.map.region
     exports com.telenav.mesakit.map.region.countries.states;
     exports com.telenav.mesakit.map.region.countries.states.cities;
     exports com.telenav.mesakit.map.region.locale;
-    exports com.telenav.mesakit.map.region.project;
 }

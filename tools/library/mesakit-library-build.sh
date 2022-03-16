@@ -121,7 +121,7 @@ build() {
 
     "setup")
         BUILD_ARGUMENTS="clean install"
-        BUILD_MODIFIERS=(multi-threaded tests shade tools ${@:3})
+        BUILD_MODIFIERS=(multi-threaded no-tests shade tools ${@:3})
         ;;
 
     "test")

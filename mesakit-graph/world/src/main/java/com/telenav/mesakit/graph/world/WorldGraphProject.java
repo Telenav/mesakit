@@ -18,33 +18,33 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.kernel.KivaKit;
-import com.telenav.kivakit.kernel.language.collections.set.ObjectSet;
-import com.telenav.kivakit.kernel.language.objects.Lazy;
-import com.telenav.kivakit.kernel.language.values.version.Version;
-import com.telenav.kivakit.kernel.project.Project;
-import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
+import com.telenav.kivakit.core.collections.set.ObjectSet;
+import com.telenav.kivakit.core.project.Project;
+import com.telenav.kivakit.core.project.ProjectTrait;
+import com.telenav.kivakit.core.version.Version;
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.mesakit.graph.GraphProject;
-import com.telenav.mesakit.graph.world.project.WorldGraphKryoTypes;
 
+import static com.telenav.kivakit.core.collections.set.ObjectSet.objectSet;
+
+/**
+ * This class defines a KivaKit {@link Project}. It cannot be constructed with the new operator since it has a private
+ * constructor. To access the singleton instance of this class, call {@link Project#resolveProject(Class)}, or use
+ * {@link ProjectTrait#project(Class)}.
+ *
+ * @author jonathanl (shibo)
+ */
 public class WorldGraphProject extends Project
 {
-    private static final Lazy<WorldGraphProject> singleton = Lazy.of(WorldGraphProject::new);
-
-    public static WorldGraphProject get()
+    public WorldGraphProject()
     {
-        return singleton.get();
-    }
-
-    protected WorldGraphProject()
-    {
-        SerializationSessionFactory.threadLocal(new WorldGraphKryoTypes().sessionFactory());
+        register(new KryoSerializationSessionFactory(new WorldGraphKryoTypes()));
     }
 
     @Override
-    public ObjectSet<Project> dependencies()
+    public ObjectSet<Class<? extends Project>> dependencies()
     {
-        return ObjectSet.objectSet(GraphProject.get());
+        return objectSet(GraphProject.class);
     }
 
     /**
@@ -54,6 +54,6 @@ public class WorldGraphProject extends Project
      */
     public Version worldGraphVersion()
     {
-        return KivaKit.get().kivakitVersion();
+        return kivakit().kivakitVersion();
     }
 }

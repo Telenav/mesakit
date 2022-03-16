@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.metadata;
 
-import com.telenav.kivakit.kernel.language.strings.Paths;
-import com.telenav.kivakit.kernel.language.time.LocalTime;
-import com.telenav.kivakit.kernel.language.time.TimeZones;
-import com.telenav.kivakit.test.UnitTest;
+import com.telenav.kivakit.core.string.Paths;
+import com.telenav.kivakit.core.time.LocalTime;
+import com.telenav.kivakit.core.time.TimeZones;
+import com.telenav.kivakit.core.test.UnitTest;
 import org.junit.Test;
 
 public class DataBuildTest extends UnitTest
@@ -44,7 +44,7 @@ public class DataBuildTest extends UnitTest
         var build = DataBuild.parse(time.toString());
 
         ensureEqual(Paths.withoutSuffix(time.toString(), '_'), Paths.withoutSuffix(build.toString(), '_'));
-        ensureEqual(TimeZones.displayName(time.timeZone()), Paths.optionalSuffix(build.toString(), '_'));
+        ensureEqual(TimeZones.shortDisplayName(time.timeZone()), Paths.optionalSuffix(build.toString(), '_'));
     }
 
     @Test

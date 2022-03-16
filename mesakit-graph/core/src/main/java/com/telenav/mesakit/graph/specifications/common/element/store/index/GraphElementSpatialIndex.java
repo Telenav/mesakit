@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.specifications.common.element.store.index;
 
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.messaging.filters.operators.All;
+import com.telenav.kivakit.interfaces.comparison.Filter;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
@@ -27,7 +27,7 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import java.io.PrintStream;
 import java.util.Iterator;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 /**
  * A space-efficient read-only spatial index of graph elements (edges or nodes).
@@ -41,13 +41,13 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
  */
 public abstract class GraphElementSpatialIndex<T extends GraphElement>
 {
-    private final int maximumObjectsPerQuadrant;
-
-    private GraphElementQuadrant<T> root;
+    private final Matcher<T> allElements = Filter.all();
 
     private transient Graph graph;
 
-    private final Matcher<T> allElements = new All<>();
+    private final int maximumObjectsPerQuadrant;
+
+    private GraphElementQuadrant<T> root;
 
     /**
      * Construct

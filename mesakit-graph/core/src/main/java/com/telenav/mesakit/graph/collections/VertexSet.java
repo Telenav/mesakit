@@ -18,19 +18,14 @@
 
 package com.telenav.mesakit.graph.collections;
 
-import com.telenav.kivakit.collections.set.logical.operations.Intersection;
-import com.telenav.kivakit.collections.set.logical.operations.Subset;
-import com.telenav.kivakit.collections.set.logical.operations.Union;
-import com.telenav.kivakit.collections.set.logical.operations.Without;
-import com.telenav.kivakit.kernel.data.conversion.BaseConverter;
-import com.telenav.kivakit.kernel.data.conversion.string.collection.BaseSetConverter;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.collections.set.ObjectSet;
-import com.telenav.kivakit.kernel.language.strings.Join;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.messaging.listeners.ThrowingListener;
-import com.telenav.mesakit.graph.Graph;
+import com.telenav.kivakit.collections.set.operations.Intersection;
+import com.telenav.kivakit.collections.set.operations.Subset;
+import com.telenav.kivakit.collections.set.operations.Union;
+import com.telenav.kivakit.collections.set.operations.Without;
+import com.telenav.kivakit.core.collections.set.ObjectSet;
+import com.telenav.kivakit.core.string.Join;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
@@ -83,14 +78,6 @@ public class VertexSet extends ObjectSet<Vertex>
         return set;
     }
 
-    public static class Converter extends BaseSetConverter<Vertex>
-    {
-        public Converter(Graph graph, Listener listener)
-        {
-            super(listener, new Vertex.Converter(graph, listener), ",");
-        }
-    }
-
     /**
      * Construct a vertex set with a given maximum
      */
@@ -120,7 +107,7 @@ public class VertexSet extends ObjectSet<Vertex>
      */
     public VertexSet inside(Rectangle bounds)
     {
-        return matching(Vertex.inside(bounds));
+        return matchingAsIterable(Vertex.inside(bounds));
     }
 
     /**
@@ -137,21 +124,14 @@ public class VertexSet extends ObjectSet<Vertex>
      */
     public String joinedIdentifiers(String separator)
     {
-        return Join.join(this, separator, new BaseConverter<>(new ThrowingListener())
-        {
-            @Override
-            protected String onConvert(Vertex value)
-            {
-                return Long.toString(value.identifierAsLong());
-            }
-        });
+        return Join.join(this, separator, value -> Long.toString(value.identifierAsLong()));
     }
 
     /**
      * @return Matching vertexes
      */
     @Override
-    public VertexSet matching(Matcher<Vertex> matcher)
+    public VertexSet matchingAsIterable(Matcher<Vertex> matcher)
     {
         return new VertexSet(new Subset<>(this, matcher));
     }

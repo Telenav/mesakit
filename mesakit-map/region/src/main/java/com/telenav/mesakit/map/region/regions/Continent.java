@@ -19,10 +19,10 @@
 package com.telenav.mesakit.map.region.regions;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.kernel.data.extraction.Extractor;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.extraction.BaseExtractor;
+import com.telenav.kivakit.extraction.Extractor;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
@@ -43,8 +43,8 @@ import com.telenav.mesakit.map.region.continents.Europe;
 import com.telenav.mesakit.map.region.continents.NorthAmerica;
 import com.telenav.mesakit.map.region.continents.Oceania;
 import com.telenav.mesakit.map.region.continents.SouthAmerica;
-import com.telenav.mesakit.map.region.project.RegionLimits;
-import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegions;
+import com.telenav.mesakit.map.region.RegionLimits;
+import com.telenav.mesakit.map.region.lexakai.DiagramRegions;
 
 import java.util.ArrayList;
 import java.util.Collection;

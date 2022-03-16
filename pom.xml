@@ -8,22 +8,22 @@
 <project xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
+    <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>superpom</artifactId>
-        <version>1.0.1</version>
+        <version>0.9.10</version>
         <relativePath>superpom</relativePath>
     </parent>
 
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit</artifactId>
-    <version>0.9.9-SNAPSHOT</version>
+    <version>0.9.10</version>
+
     <packaging>pom</packaging>
 
     <!-- Project -->
 
-    <name>MesaKit</name>
     <description>MesaKit is a framework for developing mapping and navigation software.</description>
     <url>https://www.mesakit.org</url>
     <inceptionYear>2011</inceptionYear>

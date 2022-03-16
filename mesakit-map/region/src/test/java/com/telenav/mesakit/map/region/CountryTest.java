@@ -18,11 +18,10 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.kivakit.kernel.language.locales.CountryIsoCode;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.loggers.ConsoleLogger;
+import com.telenav.kivakit.core.locale.CountryIsoCode;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.loggers.ConsoleLogger;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
@@ -31,12 +30,12 @@ import org.junit.Test;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.CHINESE_MANDARIN;
-import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.ENGLISH;
-import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.FRENCH;
-import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.GERMAN;
-import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.PORTUGUESE;
-import static com.telenav.kivakit.kernel.language.locales.LanguageIsoCode.SPANISH;
+import static com.telenav.kivakit.core.locale.LanguageIsoCode.CHINESE_MANDARIN;
+import static com.telenav.kivakit.core.locale.LanguageIsoCode.ENGLISH;
+import static com.telenav.kivakit.core.locale.LanguageIsoCode.FRENCH;
+import static com.telenav.kivakit.core.locale.LanguageIsoCode.GERMAN;
+import static com.telenav.kivakit.core.locale.LanguageIsoCode.PORTUGUESE;
+import static com.telenav.kivakit.core.locale.LanguageIsoCode.SPANISH;
 
 public class CountryTest extends RegionUnitTest
 {
@@ -63,6 +62,7 @@ public class CountryTest extends RegionUnitTest
         var location = Location.degrees(39.747203, -104.987507);
         var denverByLocation = MetropolitanArea.forLocation(location);
         ensureEqual(Country.UNITED_STATES, Country.forLocation(location));
+        //noinspection SpellCheckingInspection
         ensureEqual(Country.UNITED_STATES.COLORADO.metropolitanArea(new RegionIdentity("Denver Aurora")
                 .withMesaKitCode(code("United_States-Colorado-Metro_Denver_Aurora"))
                 .withIsoCode(code("US-CO-METRODENVERAURORA"))), denverByLocation);

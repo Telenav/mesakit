@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge.store.index;
 
-import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
@@ -48,7 +48,7 @@ public class CompressedEdgeSpatialIndexKryoSerializer extends RTreeSpatialIndexK
     public RTreeSpatialIndex<Edge> onRead(KryoSerializationSession kryo)
     {
         var edgeSpatialIndex = (CompressedEdgeSpatialIndex) super.onRead(kryo);
-        edgeSpatialIndex.edges = kryo.readObject(CompressedEdgeListStore.class);
+        edgeSpatialIndex.edges = kryo.read(CompressedEdgeListStore.class);
         return edgeSpatialIndex;
     }
 
@@ -59,7 +59,7 @@ public class CompressedEdgeSpatialIndexKryoSerializer extends RTreeSpatialIndexK
         super.onWrite(kryo, index);
         var edgeSpatialIndex = (CompressedEdgeSpatialIndex) index;
         var edges = edgeSpatialIndex.edges;
-        kryo.writeObject(edges);
+        kryo.write(edges);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class CompressedEdgeSpatialIndexKryoSerializer extends RTreeSpatialIndexK
                             InteriorNode parent)
     {
         var leaf = new CompressedLeaf(index, parent);
-        leaf.list = kryo.readObject(int.class);
+        leaf.list = kryo.read(int.class);
         return leaf;
     }
 
@@ -84,6 +84,6 @@ public class CompressedEdgeSpatialIndexKryoSerializer extends RTreeSpatialIndexK
                              Leaf<Edge> leaf)
     {
         var kryoLeaf = (CompressedLeaf) leaf;
-        kryo.writeObject(kryoLeaf.list);
+        kryo.write(kryoLeaf.list);
     }
 }

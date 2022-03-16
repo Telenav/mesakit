@@ -18,12 +18,13 @@
 
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
-import com.telenav.kivakit.collections.map.CacheMap;
-import com.telenav.kivakit.collections.set.ConcurrentHashSet;
-import com.telenav.kivakit.kernel.language.threading.RepeatingKivaKitThread;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.collections.map.CacheMap;
+import com.telenav.kivakit.core.collections.set.ConcurrentHashSet;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.thread.RepeatingThread;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
@@ -39,6 +40,7 @@ import java.util.Set;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
+import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.network.core.NetworkAccessConstraints.DEFAULT;
 import static java.awt.AlphaComposite.SRC_OVER;
 
@@ -76,13 +78,13 @@ public abstract class SlippyTileImageCache extends BaseRepeater
     {
         listener.listenTo(this);
 
-        cache = listenTo(new SlippyTileCache(MesaKit.get().mesakitAllVersionsCacheFolder().folder("tile-cache")));
+        cache = listenTo(new SlippyTileCache(resolveProject(MesaKit.class).mesakitAllVersionsCacheFolder().folder("tile-cache")));
 
-        imageForTile = Collections.synchronizedMap(new CacheMap<>(maximumTiles));
+        imageForTile = Collections.synchronizedMap(new CacheMap<>(maximumTiles, Duration.days(1)));
         requested = new ArrayBlockingQueue<>(maximumTiles.asInt());
 
         // Request tiles (on a single thread only because of limits on OpenStreetMap tile servers)
-        RepeatingKivaKitThread.run(this, "TileDownloader", this::downloadNext);
+        RepeatingThread.run(this, "TileDownloader", this::downloadNext);
     }
 
     /**

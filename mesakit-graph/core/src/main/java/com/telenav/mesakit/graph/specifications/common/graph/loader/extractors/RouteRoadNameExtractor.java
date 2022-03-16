@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.model.RoadName;

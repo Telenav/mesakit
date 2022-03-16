@@ -1,24 +1,20 @@
 package com.telenav.mesakit.core;
 
+import com.telenav.kivakit.core.project.Project;
+import com.telenav.kivakit.core.project.ProjectTrait;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.language.objects.Lazy;
-import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.kivakit.kernel.project.Project;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 /**
+ * This class defines a KivaKit {@link Project}. It cannot be constructed with the new operator since it has a private
+ * constructor. To access the singleton instance of this class, call {@link Project#resolveProject(Class)}, or use
+ * {@link ProjectTrait#project(Class)}.
+ *
  * @author jonathanl (shibo)
  */
 public class MesaKit extends Project
 {
-    private static final Lazy<MesaKit> mesakit = Lazy.of(MesaKit::new);
-
-    public static MesaKit get()
-    {
-        return mesakit.get();
-    }
-
     public Folder mesakitAllVersionsCacheFolder()
     {
         return mesakitRootCacheFolder().folder("all-versions");
@@ -36,7 +32,7 @@ public class MesaKit extends Project
 
     public Folder mesakitHome()
     {
-        var home = JavaVirtualMachine.property("MESAKIT_HOME");
+        var home = systemProperty("MESAKIT_HOME");
         if (home != null)
         {
             return Folder.parse(this, home);

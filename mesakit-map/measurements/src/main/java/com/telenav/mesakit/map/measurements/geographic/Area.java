@@ -20,9 +20,9 @@ package com.telenav.mesakit.map.measurements.geographic;
 
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
+import com.telenav.mesakit.map.measurements.lexakai.DiagramMapMeasurementGeographic;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 /**
  * A square area on a <a href="https://en.wikipedia.org/wiki/Cartesian_coordinate_system">Cartesian</a> plane, measured

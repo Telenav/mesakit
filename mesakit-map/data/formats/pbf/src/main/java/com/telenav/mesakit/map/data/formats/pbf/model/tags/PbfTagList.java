@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
-import com.telenav.kivakit.kernel.language.objects.Hash;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsStringIndenter;
-import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
+import com.telenav.kivakit.core.language.Hash;
+import com.telenav.kivakit.core.string.AsIndentedString;
+import com.telenav.kivakit.core.string.AsStringIndenter;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelTags;
+import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelTags;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 @UmlClassDiagram(diagram = DiagramPbfModelTags.class)
 @UmlExcludeSuperTypes({ AsIndentedString.class, Iterable.class })
@@ -80,12 +80,6 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
         return list;
     }
 
-    // Full array list when there are more than FIELDS tags
-    private List<Tag> tags;
-
-    // The size of this list
-    private int size;
-
     // Simple fields when the size <= FIELDS
     private String key0, value0;
 
@@ -102,6 +96,12 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
     private String key6, value6;
 
     private String key7, value7;
+
+    // The size of this list
+    private int size;
+
+    // Full array list when there are more than FIELDS tags
+    private List<Tag> tags;
 
     private PbfTagList(int capacity)
     {
@@ -157,7 +157,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
     }
 
     @Override
-    public AsStringIndenter asString(StringFormat format, AsStringIndenter indenter)
+    public AsStringIndenter asString(Stringable.Format format, AsStringIndenter indenter)
     {
         indenter.bracketed(sorted(), tag -> indenter.add(tag.toString()));
         return indenter;

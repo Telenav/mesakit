@@ -19,11 +19,11 @@
 package com.telenav.mesakit.graph.library.osm.change.store;
 
 import com.telenav.kivakit.collections.map.ReferenceCountMap;
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.library.osm.change.MutableWay;
 import com.telenav.mesakit.graph.library.osm.change.NewWay;
@@ -42,7 +42,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 /**
  * Holds OSM nodes being referenced by {@link NewWay} and {@link MutableWay} objects.
@@ -85,7 +85,7 @@ public class PbfNodeStore
         List<PbfNode> nodes = new ArrayList<>();
 
         // Go through each identifier
-        var progress = Progress.create(LOGGER);
+        var progress = BroadcastingProgressReporter.create(LOGGER);
         for (var identifier : identifiers())
         {
             // and get the node or shape point as a Node object

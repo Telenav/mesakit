@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.graph.specifications.common;
 
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.iteration.Iterables;
-import com.telenav.kivakit.kernel.language.iteration.Next;
-import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.messaging.filters.operators.All;
+import com.telenav.kivakit.core.collections.iteration.Iterables;
+import com.telenav.kivakit.core.collections.iteration.Next;
+import com.telenav.kivakit.core.string.Separators;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.interfaces.comparison.Filter;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.mesakit.graph.Edge;
@@ -44,7 +44,7 @@ import com.telenav.mesakit.map.measurements.motion.Speed;
 import java.util.Collections;
 import java.util.Iterator;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 /**
  * An efficient in-memory {@link Graph} implementation.
@@ -234,7 +234,7 @@ public class CommonGraph extends Graph
     @Override
     public VertexSequence vertexesInside(Rectangle bounds)
     {
-        return vertexesInside(bounds, new All<>());
+        return vertexesInside(bounds, Filter.all());
     }
 
     @Override

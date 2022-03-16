@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.utilities.geohash;
 
-import com.telenav.kivakit.kernel.language.values.count.Range;
+import com.telenav.kivakit.core.value.count.Range;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
@@ -26,7 +26,7 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 public class Codec
 {

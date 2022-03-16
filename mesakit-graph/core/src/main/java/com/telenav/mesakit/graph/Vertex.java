@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.graph;
 
-import com.telenav.kivakit.collections.set.logical.operations.Intersection;
-import com.telenav.kivakit.kernel.data.comparison.Differences;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludeProperty;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.collections.set.operations.Intersection;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.Differences;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.identifiers.VertexIdentifier;
@@ -322,7 +322,7 @@ public class Vertex extends GraphNode
 
     /**
      * @return True if there is more than one out-bound edge connected to this vertex. Note that for two-way roads, all
-     * vertexes will be decision points because u-turn is a possibility. If you want to know if the road forks, call
+     * vertexes will be decision points because U-turn is a possibility. If you want to know if the road forks, call
      * {@link Edge#leadsToFork()}.
      */
     public boolean isDecisionPoint()
@@ -355,7 +355,7 @@ public class Vertex extends GraphNode
         }
 
         // If there are two in edges but also two out edges and both edges are two-way roads,
-        // it's also a through vertex and there is no merge
+        // it's also a through-vertex and there is no merge
         return !inEdgeCount().equals(Count._2) || !outEdgeCount().equals(Count._2) || !edges().isTwoWay();
 
         // In every other case, some edge merges in at this vertex
@@ -382,6 +382,7 @@ public class Vertex extends GraphNode
      *
      * @return True if this vertex is tagged as a dead end and false otherwise
      */
+    @SuppressWarnings("SpellCheckingInspection")
     public boolean isTaggedAsDeadEnd()
     {
         return "yes".equals(tagValue("noexit"));
@@ -398,7 +399,7 @@ public class Vertex extends GraphNode
             return !isDeadEnd();
         }
 
-        // Two way street case
+        // Two-way street case
         if (inEdgeCount().isLessThanOrEqualTo(Count._2) && outEdgeCount().isLessThanOrEqualTo(Count._2))
         {
             for (var in : inEdges())

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.navigation.navigators;
 
-import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.navigation.Navigator;

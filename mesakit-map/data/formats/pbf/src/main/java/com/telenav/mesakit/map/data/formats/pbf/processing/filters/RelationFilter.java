@@ -19,22 +19,22 @@
 package com.telenav.mesakit.map.data.formats.pbf.processing.filters;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.interfaces.comparison.Filter;
-import com.telenav.kivakit.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.language.collections.map.string.NameMap;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.collections.map.NameMap;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.interfaces.comparison.Filter;
+import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessingFilters;
+import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfProcessingFilters;
 
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 @UmlClassDiagram(diagram = DiagramPbfProcessingFilters.class)
 @UmlExcludeSuperTypes(Named.class)
@@ -79,13 +79,13 @@ public class RelationFilter implements Filter<PbfRelation>, Named
         }
     }
 
-    private final String name;
-
     private final String description;
 
     private final Set<String> excluded = new HashSet<>();
 
     private final Set<String> included = new HashSet<>();
+
+    private final String name;
 
     public RelationFilter(String name, String description)
     {

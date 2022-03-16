@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline.compression.differential;
 
-import com.telenav.kivakit.kernel.interfaces.numeric.Sized;
-import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
-import com.telenav.kivakit.kernel.language.primitives.Ints;
-import com.telenav.kivakit.kernel.language.values.count.BitCount;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.core.language.primitive.Ints;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.value.count.BitCount;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.interfaces.collection.Sized;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.array.bits.BitArray;
 import com.telenav.kivakit.primitive.collections.array.bits.io.BitReader;
 import com.telenav.kivakit.primitive.collections.array.bits.io.BitWriter;
@@ -35,7 +35,7 @@ import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.LocationSequence;
 import com.telenav.mesakit.map.geography.Precision;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramPolyline;
+import com.telenav.mesakit.map.geography.lexakai.DiagramPolyline;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
@@ -188,8 +188,8 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
                 var bits = encoding.bits();
 
                 // If the relative latitude can be expressed by this proximity
-                if (Ints.isBetween(latitudeOffset, minimumLatitudeOffset, maximumLatitudeOffset)
-                        && Ints.isBetween(longitudeOffset, minimumLongitudeOffset, maximumLongitudeOffset))
+                if (Ints.isBetweenInclusive(latitudeOffset, minimumLatitudeOffset, maximumLatitudeOffset)
+                        && Ints.isBetweenInclusive(longitudeOffset, minimumLongitudeOffset, maximumLongitudeOffset))
                 {
                     // write out the proximity identifier
                     writer.write(identifier(), PROXIMITY_TYPE_BITS);
@@ -356,11 +356,11 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
 
         // and loop through each location
         var last = 0L;
-        var proximities = Proximity.values();
+        var proximityValues = Proximity.values();
         for (var index = 0; index < size; index++)
         {
             // getting the proximity of the location (DISTANCE1 to DISTANCE8).
-            var proximity = proximities[reader.read(PROXIMITY_TYPE_BITS)];
+            var proximity = proximityValues[reader.read(PROXIMITY_TYPE_BITS)];
 
             // Read the right number of bits to get the location, assign it to the location store
             // and remember it as the last location
@@ -454,13 +454,13 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
         writer.writeFlexibleInt(3, 15, size);
         Location previous = null;
         var lengthInMillimeters = 0L;
-        var proximities = Proximity.values();
+        var proximityValues = Proximity.values();
         for (var location : locations)
         {
             var atLatitude = location.latitudeInDm7();
             var atLongitude = location.longitudeInDm7();
             var written = false;
-            for (var proximity : proximities)
+            for (var proximity : proximityValues)
             {
                 if (proximity.write(writer, atLatitude, atLongitude, lastLatitude, lastLongitude))
                 {

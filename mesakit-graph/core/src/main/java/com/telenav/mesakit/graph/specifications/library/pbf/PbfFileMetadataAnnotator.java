@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.specifications.library.pbf;
 
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.core.value.mutable.MutableValue;
 import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.kernel.language.values.mutable.MutableValue;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.primitive.collections.set.SplitLongSet;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.mesakit.graph.Metadata;
@@ -271,7 +271,7 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
                 // If we're retaining all nodes or the node is in the list of nodes to retain
                 if (mode == Mode.RETAIN_ALL || retain.contains(node.identifierAsLong()))
                 {
-                    // the write it out
+                    // then write it out
                     writer.write(node);
                     return ACCEPTED;
                 }

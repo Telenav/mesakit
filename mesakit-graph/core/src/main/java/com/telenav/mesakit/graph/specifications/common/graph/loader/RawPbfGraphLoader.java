@@ -18,20 +18,20 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader;
 
-import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.kernel.data.extraction.Extractor;
-import com.telenav.kivakit.kernel.data.validation.ValidationType;
-import com.telenav.kivakit.kernel.interfaces.collection.Addable;
-import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.MutableCount;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.string.AsciiArt;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.MutableCount;
+import com.telenav.kivakit.extraction.BaseExtractor;
+import com.telenav.kivakit.extraction.Extractor;
+import com.telenav.kivakit.interfaces.collection.Addable;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToLongMap;
+import com.telenav.kivakit.validation.ValidationType;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;
@@ -96,7 +96,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.mesakit.graph.GraphElement.VALIDATE_RAW;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action;
@@ -111,7 +111,7 @@ import static com.telenav.mesakit.map.geography.shape.Outline.Containment;
  * not been way-sectioned, where each edge is an OSM way. In the UniDb specification, the data is already way-sectioned
  * and there is no such distinction.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({ "unused", "DuplicatedCode" })
 public abstract class RawPbfGraphLoader extends PbfGraphLoader
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
@@ -571,7 +571,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         }
         else
         {
-            // otherwise return the node's location by looking at the map we populated earlier
+            // otherwise, return the node's location by looking at the map we populated earlier
             // while reading nodes
             var location = nodeIdentifierToLocation.get(node.getNodeId());
             if (!nodeIdentifierToLocation.isNull(location))
@@ -654,7 +654,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
      * </pre>
      *
      * @param node The node to inspect
-     * @return True if the node is a way node and we should store its location in a map for later
+     * @return True if the node is a way node, and we should store its location in a map for later
      */
     protected abstract boolean shouldStoreNodeLocation(PbfNode node);
 
@@ -794,7 +794,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
             var location = nodeToLocation(node);
             if (location != null)
             {
-                // If we were inside and now we're outside the cleanCutTo region, or we were outside
+                // If we were inside, and now we're outside the cleanCutTo region, or we were outside,
                 // and now we're inside the cleanCutToRegion, then we crossed the border
                 now = configuration().cleanCutTo().containment(location);
                 crossedBorder = were != null
@@ -852,7 +852,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                     }
                 }
 
-                // If we didn't cross the border and we're inside or on the border
+                // If we didn't cross the border, and we're inside or on the border
                 if (!crossedBorder && !now.isOutside())
                 {
                     // If we have no "from" yet,
@@ -863,7 +863,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                     }
                     else
                     {
-                        // otherwise this is the "to"
+                        // otherwise, this is the "to"
                         toOnBorder = (now == Containment.ON_BORDER);
                     }
 
@@ -1001,8 +1001,8 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                 subType = RoadSubType.RAMP;
             }
 
-            // The edge length has to be stored here before the road sub-type extractor is called
-            // because that extractor uses the current edge length in determining the sub-type
+            // The edge length has to be stored here before the road subtype extractor is called
+            // because that extractor uses the current edge length in determining the subtype
             edge.bridgeType(bridgeTypeExtractor.extract(way));
             edge.closedToThroughTraffic(closedToThroughTrafficExtractor.extract(way));
             edge.freeFlow(speedCategoryExtractor.extract(way));
@@ -1200,7 +1200,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                 return DISCARDED;
             }
 
-            // otherwise if this way is a place (yes, ways can be places),
+            // otherwise, if this way is a place (yes, ways can be places),
             var place = placeExtractor.extract(way);
             if (place != null)
             {
@@ -1237,15 +1237,16 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     }
 
     /**
-     * @return The given way broken into chunks if we're clean cutting and it crosses the clean-cutting region, or in a
+     * @return The given way broken into chunks if we're clean cutting, and it crosses the clean-cutting region, or in a
      * single chunk if we're not clean-cutting.
      */
     private List<WayChunk> wayChunks(GraphStore store, PbfWay way)
     {
         // If we're clean cutting a soft-cut way
+        //noinspection SpellCheckingInspection
         if (configuration().cleanCutTo() != null && way.hasKey("telenav:softcut"))
         {
-            // return a list of polylines for the way cut against the cleanCutTo region
+            // return a list of poly-lines for the way cut against the cleanCutTo region
             return cleanCut(store, way);
         }
         else

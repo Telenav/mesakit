@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.collections;
 
-import com.telenav.mesakit.graph.project.GraphUnitTest;
+import com.telenav.mesakit.graph.GraphUnitTest;
 import org.junit.Ignore;
 import org.junit.Test;
 

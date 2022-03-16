@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.geography.shape.polyline;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
+import com.telenav.mesakit.map.geography.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.segment.Segment;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import org.junit.Test;
@@ -99,7 +99,7 @@ public class PolygonTest extends GeographyUnitTest
     public void testSerialization()
     {
         var polygon = polygon(-0.5, -0.5, 1, -0.5, 1, 0.85, -0.5, 0.85);
-        serializationTest(polygon);
+        testSerialization(polygon);
     }
 
     private Polygon polygon(double... values)

@@ -19,24 +19,24 @@
 package com.telenav.mesakit.map.measurements.motion;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.data.conversion.string.primitive.IntegerConverter;
-import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.kernel.language.time.Duration;
-import com.telenav.kivakit.kernel.language.values.level.Level;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.conversion.core.language.primitive.IntegerConverter;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.value.level.Level;
+import com.telenav.kivakit.interfaces.numeric.Quantizable;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementMotion;
+import com.telenav.mesakit.map.measurements.lexakai.DiagramMapMeasurementMotion;
 
 import java.util.regex.Pattern;
 
 /**
- * A unitless speed, as the {@link Distance} traveled over a given {@link Duration}, both of which are also unitless.
+ * A unit-less speed, as the {@link Distance} traveled over a given {@link Duration}, both of which are also unit-less.
  *
  * @author jonathanl (shibo)
  */
@@ -152,11 +152,12 @@ public class Speed implements Comparable<Speed>, Quantizable
 
     /**
      * Converts the given <code>String</code> to a new <code>Speed</code> object. The input string is expected to be of
-     * the format of a floating point number followed by a units identifier (mph, msec, kph, etc.). Examples would
+     * the format of a floating point number followed by a unit identifier (mph, msec, kph, etc.). Examples would
      * include '55.4 mph', '13 msec', or '65 kph'.
      *
      * @author ericg
      */
+    @SuppressWarnings("SpellCheckingInspection")
     public static class Converter extends BaseStringConverter<Speed>
     {
         /** Pattern to match strings */
@@ -397,7 +398,7 @@ public class Speed implements Comparable<Speed>, Quantizable
 
     public long timeToTravelInMilliseconds(Distance length)
     {
-        return length.asMillimeters() * duration.asMilliseconds() / distance.asMillimeters();
+        return length.asMillimeters() * duration.milliseconds() / distance.asMillimeters();
     }
 
     @Override

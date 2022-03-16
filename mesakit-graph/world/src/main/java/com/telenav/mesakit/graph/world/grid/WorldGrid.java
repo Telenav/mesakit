@@ -18,25 +18,23 @@
 
 package com.telenav.mesakit.graph.world.grid;
 
-import com.telenav.kivakit.configuration.settings.Settings;
+import com.telenav.kivakit.core.collections.set.ObjectSet;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.AsciiArt;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.interfaces.value.Source;
-import com.telenav.kivakit.kernel.language.collections.set.ObjectSet;
-import com.telenav.kivakit.kernel.language.objects.reference.virtual.VirtualReferenceTracker;
-import com.telenav.kivakit.kernel.language.objects.reference.virtual.VirtualReferenceType;
-import com.telenav.kivakit.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.interfaces.value.Source;
 import com.telenav.kivakit.resource.ResourceList;
 import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.kivakit.settings.Settings;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphProject;
 import com.telenav.mesakit.graph.Metadata;
@@ -45,6 +43,8 @@ import com.telenav.mesakit.graph.world.WorldGraphConfiguration;
 import com.telenav.mesakit.graph.world.WorldGraphIndex;
 import com.telenav.mesakit.graph.world.repository.WorldGraphRepository;
 import com.telenav.mesakit.graph.world.repository.WorldGraphRepositoryFolder;
+import com.telenav.mesakit.graph.world.virtual.VirtualReferenceTracker;
+import com.telenav.mesakit.graph.world.virtual.VirtualReferenceType;
 import com.telenav.mesakit.map.cutter.PbfRegionCutter;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataSource;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.osm.OsmNavigableWayFilter;
@@ -69,8 +69,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.project.Project.resolveProject;
 
 /**
  * A grid of {@link WorldCell}s, each containing its own cell-{@link Graph}. The grid is stored in a {@link
@@ -138,26 +139,17 @@ public class WorldGrid
                 .withMaximumIdentifier(Region.WORLD_CELL_IDENTIFIER_MAXIMUM));
     }
 
-    /** The logical world grid */
-    private Grid grid;
-
-    /** The repository folder holding cell data for this grid */
-    private WorldGraphRepositoryFolder repositoryFolder;
-
     /** WorldCells for each cell included in the grid */
     private WorldCell[][] cells;
+
+    /** The logical world grid */
+    private Grid grid;
 
     /** The set of all world cells included */
     private ObjectSet<WorldCell> included;
 
-    /** The world graph */
-    private WorldGraph worldGraph;
-
-    /** The grid mode */
-    private WorldGraph.AccessMode mode;
-
-    /** Graph reference tracker for cells belonging to the grid */
-    private VirtualReferenceTracker<Graph> tracker;
+    /** The index for this graph */
+    private WorldGraphIndex index;
 
     /** Approximate maximum amount of memory to hard reference */
     private final Bytes maximumMemory = Bytes.gigabytes(26);
@@ -165,8 +157,17 @@ public class WorldGrid
     /** Graph meta data */
     private Metadata metadata;
 
-    /** The index for this graph */
-    private WorldGraphIndex index;
+    /** The grid mode */
+    private WorldGraph.AccessMode mode;
+
+    /** The repository folder holding cell data for this grid */
+    private WorldGraphRepositoryFolder repositoryFolder;
+
+    /** Graph reference tracker for cells belonging to the grid */
+    private VirtualReferenceTracker<Graph> tracker;
+
+    /** The world graph */
+    private WorldGraph worldGraph;
 
     public WorldGrid(WorldGraph worldGraph, WorldGraph.AccessMode mode,
                      WorldGraphRepositoryFolder folder)
@@ -330,7 +331,9 @@ public class WorldGrid
             feature.add(new GeoJsonPolyline(worldCell.bounds().asPolyline()));
             output.add(feature);
         }
-        output.save(File.parse(Listener.console(), "data/world-graph-2-degree-cells.geojson"));
+
+        //noinspection SpellCheckingInspection
+        output.save(File.parseFile(Listener.console(), "data/world-graph-2-degree-cells.geojson"));
     }
 
     /**
@@ -480,7 +483,7 @@ public class WorldGrid
                     .withExtension(Extension.parse(Listener.console(), ".cells")));
             if (cached.exists())
             {
-                var cellNames = cached.reader().string();
+                var cellNames = cached.reader().asString();
                 if (!Strings.isEmpty(cellNames))
                 {
                     for (var cellName : cellNames.split(","))
@@ -615,7 +618,7 @@ public class WorldGrid
 
     private Folder regionCache()
     {
-        return GraphProject.get().graphFolder().folder("world-graph/regions").mkdirs();
+        return resolveProject(GraphProject.class).graphFolder().folder("world-graph/regions").mkdirs();
     }
 
     private String toString(List<WorldCell> cells)

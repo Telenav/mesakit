@@ -19,15 +19,15 @@
 package com.telenav.mesakit.map.geography;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.data.conversion.string.enumeration.EnumConverter;
-import com.telenav.kivakit.kernel.language.primitives.Ints;
-import com.telenav.kivakit.kernel.language.primitives.Longs;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.conversion.core.language.EnumConverter;
+import com.telenav.kivakit.core.language.primitive.Ints;
+import com.telenav.kivakit.core.language.primitive.Longs;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
+import com.telenav.mesakit.map.geography.lexakai.DiagramLocation;
 import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
 import com.telenav.mesakit.map.geography.shape.rectangle.Height;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
@@ -48,7 +48,7 @@ import com.telenav.mesakit.map.measurements.geographic.Heading;
  *
  * @author jonathanl (shibo)
  */
-@UmlClassDiagram(diagram = DiagramLocation.class)
+@SuppressWarnings("SpellCheckingInspection") @UmlClassDiagram(diagram = DiagramLocation.class)
 public enum Precision
 {
     NONE(0), // No precision
@@ -226,7 +226,7 @@ public enum Precision
         if (latitude != 0)
         {
             latitude = latitude / Ints.powerOfTen(places());
-            return latitude != 0 && Ints.isBetween(latitude, (int) Latitude.MINIMUM_DEGREES, (int) Latitude.MAXIMUM_DEGREES);
+            return latitude != 0 && Ints.isBetweenInclusive(latitude, (int) Latitude.MINIMUM_DEGREES, (int) Latitude.MAXIMUM_DEGREES);
         }
         return true;
     }
@@ -236,7 +236,7 @@ public enum Precision
         if (longitude != 0)
         {
             longitude = longitude / Ints.powerOfTen(places());
-            return longitude != 0 && Ints.isBetween(longitude, (int) Longitude.MINIMUM_DEGREES, (int) Longitude.MAXIMUM_DEGREES);
+            return longitude != 0 && Ints.isBetweenInclusive(longitude, (int) Longitude.MINIMUM_DEGREES, (int) Longitude.MAXIMUM_DEGREES);
         }
         return true;
     }

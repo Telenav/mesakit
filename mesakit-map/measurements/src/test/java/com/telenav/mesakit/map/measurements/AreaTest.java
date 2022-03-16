@@ -19,7 +19,6 @@
 package com.telenav.mesakit.map.measurements;
 
 import com.telenav.mesakit.map.measurements.geographic.Area;
-import com.telenav.mesakit.map.measurements.project.MeasurementsUnitTest;
 import org.junit.Ignore;
 import org.junit.Test;
 

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.node.store.all.disk;
 
-import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.core.language.Hash;
 import com.telenav.mesakit.map.geography.Located;
 import com.telenav.mesakit.map.geography.Location;
 

@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.measurements.motion.speeds;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.measurements.motion.Speed;
-import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementMotion;
+import com.telenav.mesakit.map.measurements.lexakai.DiagramMapMeasurementMotion;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -19,8 +19,9 @@
 package com.telenav.mesakit.graph.metadata;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.commandline.SwitchParsers;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.map.geography.Precision;
 
 /**
@@ -38,7 +39,7 @@ public enum DataSupplier implements Matcher<DataSupplier>
 
     public static SwitchParser.Builder<DataSupplier> switchParser(Listener listener)
     {
-        return SwitchParser
+        return SwitchParsers
                 .enumSwitchParser(listener, "data-supplier", "The name of the data supplier", DataSupplier.class)
                 .defaultValue(HERE);
     }

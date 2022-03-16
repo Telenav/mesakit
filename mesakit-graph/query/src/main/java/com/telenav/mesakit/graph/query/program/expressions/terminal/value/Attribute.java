@@ -1,7 +1,7 @@
 package com.telenav.mesakit.graph.query.program.expressions.terminal.value;
 
-import com.telenav.kivakit.kernel.language.reflection.Type;
-import com.telenav.kivakit.kernel.language.reflection.property.Property;
+import com.telenav.kivakit.core.language.reflection.Type;
+import com.telenav.kivakit.core.language.reflection.property.Property;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.query.program.Node;
 

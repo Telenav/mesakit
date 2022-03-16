@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.geography.indexing.polygon;
 
-import com.telenav.kivakit.kernel.language.iteration.Iterables;
-import com.telenav.kivakit.kernel.language.iteration.Next;
-import com.telenav.kivakit.kernel.language.primitives.Doubles;
-import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.messaging.messages.status.Warning;
+import com.telenav.kivakit.core.collections.iteration.Iterables;
+import com.telenav.kivakit.core.collections.iteration.Next;
+import com.telenav.kivakit.core.language.primitive.Doubles;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.messages.status.Warning;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
@@ -87,7 +87,7 @@ public class ShapeFileReader
                         var builder = new PolygonBuilder();
                         for (PointData point : shape.getPointsOfPart(part))
                         {
-                            if (Doubles.isBetween(point.getY(), -85, 85))
+                            if (Doubles.isBetweenInclusive(point.getY(), -85, 85))
                             {
                                 builder.add(new Location(Latitude.degrees(point.getY()),
                                         Longitude.degrees(point.getX())));

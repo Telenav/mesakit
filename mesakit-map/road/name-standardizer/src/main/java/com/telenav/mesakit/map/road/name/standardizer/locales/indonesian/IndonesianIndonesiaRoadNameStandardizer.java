@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.map.road.name.standardizer.locales.indonesian;
 
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.ParsedRoadName;
 import com.telenav.mesakit.map.road.name.parser.RoadNameParser;
 import com.telenav.mesakit.map.road.name.standardizer.BaseRoadNameStandardizer;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.mesakit.map.road.name.parser.ParsedRoadName.TypePosition.FIRST;
 
 /**

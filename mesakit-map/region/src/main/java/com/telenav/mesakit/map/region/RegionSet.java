@@ -18,18 +18,18 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.kivakit.kernel.language.collections.set.BaseSet;
-import com.telenav.kivakit.kernel.language.strings.Join;
-import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.core.collections.set.BaseSet;
+import com.telenav.kivakit.core.string.Join;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
-import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegion;
+import com.telenav.mesakit.map.region.lexakai.DiagramRegion;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 @SuppressWarnings("rawtypes")
 @UmlClassDiagram(diagram = DiagramRegion.class)

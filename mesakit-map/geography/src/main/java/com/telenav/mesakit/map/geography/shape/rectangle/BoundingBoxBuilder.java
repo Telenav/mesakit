@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.geography.shape.rectangle;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramRectangle;
+import com.telenav.mesakit.map.geography.lexakai.DiagramRectangle;
 import com.telenav.mesakit.map.geography.shape.segment.Segment;
 
 import static com.telenav.mesakit.map.geography.Precision.DM7;

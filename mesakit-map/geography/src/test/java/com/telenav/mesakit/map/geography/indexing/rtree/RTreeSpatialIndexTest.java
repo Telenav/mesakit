@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
-import com.telenav.kivakit.serialization.kryo.KryoTypes;
-import com.telenav.kivakit.test.annotations.SlowTests;
+import com.telenav.kivakit.core.test.SlowTest;
+import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
+import com.telenav.mesakit.map.geography.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.polyline.PolylineBuilder;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
@@ -36,7 +36,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Category({ SlowTests.class })
+@Category({ SlowTest.class })
 public class RTreeSpatialIndexTest extends GeographyUnitTest
 {
     private static class TestKryoTypes extends KryoTypes
@@ -123,7 +123,7 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
         randomValueFactory().seed(900178094L);
 
         var index = randomSpatialIndex(500);
-        serializationTest(index);
+        testSessionSerialization(index);
     }
 
     @Override

@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.data.formats.library.map.identifiers;
 
-import com.telenav.kivakit.kernel.language.values.identifier.Identifier;
+import com.telenav.kivakit.core.value.identifier.Identifier;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.data.formats.library.project.lexakai.diagrams.DiagramDataMapIdentifier;
+import com.telenav.mesakit.map.data.formats.library.lexakai.DiagramDataMapIdentifier;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -19,17 +19,17 @@
 package com.telenav.mesakit.map.overpass;
 
 import com.telenav.kivakit.component.BaseComponent;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.messaging.messages.MessageFormatter;
+import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.network.http.HttpPostResource;
-import com.telenav.kivakit.resource.resources.packaged.PackageResource;
+import com.telenav.kivakit.resource.resources.PackageResource;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.overpass.project.lexakai.diagrams.DiagramOverpass;
+import com.telenav.mesakit.map.overpass.lexakai.DiagramOverpass;
 
 import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
 
@@ -46,7 +46,7 @@ class OverpassOsmResource extends BaseComponent
 
     private final String template = PackageResource.packageResource(this, getClass(), "OverpassRequestTemplate.txt")
             .reader()
-            .string();
+            .asString();
 
     public OverpassOsmResource(Rectangle bounds)
     {
@@ -65,12 +65,12 @@ class OverpassOsmResource extends BaseComponent
 
     public void safeCopyTo(File destination)
     {
-        location(bounds).safeCopyTo(destination, OVERWRITE, Progress.create(this, "bytes"));
+        location(bounds).safeCopyTo(destination, OVERWRITE, BroadcastingProgressReporter.create(this, "bytes"));
     }
 
     private HttpPostResource location(Rectangle bounds)
     {
-        var payload = new MessageFormatter().format(template, bounds.toCommaSeparatedString());
+        var payload = new Formatter().format(template, bounds.toCommaSeparatedString());
         return new HttpNetworkLocation(require(OverpassDataDownloader.class).HOST.http().path(this, "/api/interpreter")).post(payload);
     }
 }

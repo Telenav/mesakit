@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph.collections;
 
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Route;
-import com.telenav.mesakit.graph.project.GraphUnitTest;
+import com.telenav.mesakit.graph.GraphUnitTest;
 import org.junit.Before;
 import org.junit.Test;
 

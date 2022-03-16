@@ -12,10 +12,15 @@ source mesakit-projects.sh
 
 version="$1"
 
+export help="[version]"
+
 require_variable version "[version]"
 
-snapshot_version="${1%-SNAPSHOT}-SNAPSHOT"
+export snapshot_version="${1%-SNAPSHOT}-SNAPSHOT"
 
-update_version $MESAKIT_HOME $snapshot_version
-update_version $MESAKIT_EXAMPLES_HOME $snapshot_version
-update_version $MESAKIT_EXTENSIONS_HOME $snapshot_version
+for project_home in "${MESAKIT_REPOSITORY_HOMES[@]}"; do
+
+    update_version "$project_home" "$version"
+
+done
+

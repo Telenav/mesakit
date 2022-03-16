@@ -18,16 +18,16 @@
 
 package com.telenav.mesakit.map.geography.indexing.quadtree;
 
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.collections.list.LinkedObjectList;
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.language.iteration.BaseIterator;
-import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.core.collections.iteration.BaseIterator;
+import com.telenav.kivakit.core.collections.list.LinkedObjectList;
+import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Located;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramSpatialIndex;
+import com.telenav.mesakit.map.geography.lexakai.DiagramSpatialIndex;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
@@ -37,10 +37,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.illegalState;
+import static com.telenav.kivakit.core.ensure.Ensure.illegalState;
 
 /**
- * Stores {@link Located} objects in a tree of quadrants so they can be quickly located spatially.
+ * Stores {@link Located} objects in a tree of quadrants, so they can be quickly located spatially.
  *
  * @param <Element> The {@link Located} type
  * @author jonathanl (shibo)
@@ -216,7 +216,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
             {
                 if (bounds == null)
                 {
-                    return objects.matching(matcher);
+                    return objects.matching(matcher).iterator();
                 }
                 else
                 {
@@ -263,7 +263,9 @@ public class QuadTreeSpatialIndex<Element extends Located>
             {
                 // NOTE: We don't "un-split" if our four sibling quadrants are also empty.
                 // We could do this to conserve memory for data that varies in location a lot.
-                return new HashSet<>(objects.remove(matcher));
+                var toRemove = objects.matching(matcher);
+                objects.removeAll(toRemove);
+                return new HashSet<>(toRemove);
             }
             else
             {
@@ -285,7 +287,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
             {
                 if (isLeaf())
                 {
-                    return objects.replace(object, replacement);
+                    return objects.replaceAll(object, replacement);
                 }
                 else
                 {

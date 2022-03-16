@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge;
 
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.functions.Functions;
-import com.telenav.kivakit.kernel.language.objects.Objects;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludeProperty;
-import com.telenav.kivakit.kernel.language.time.Duration;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.function.Functions;
+import com.telenav.kivakit.core.language.Objects;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
@@ -68,15 +68,35 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.mesakit.map.road.model.RoadState.ONE_WAY;
 import static com.telenav.mesakit.map.road.model.RoadState.TWO_WAY;
 
-public class HeavyWeightEdge extends Edge
+@SuppressWarnings("SpellCheckingInspection") public class HeavyWeightEdge extends Edge
 {
-    private int index;
+    private Rectangle bounds;
+
+    private BridgeType bridgeType;
+
+    private Country country;
+
+    private County county;
+
+    private SpeedCategory freeFlow;
+
+    private Vertex from;
+
+    private GradeSeparation fromGradeSeparation;
+
+    private Location fromLocation;
+
+    private MapNodeIdentifier fromNodeIdentifier;
 
     private Boolean fromVertexClipped;
+
+    private Count hovLaneCount;
+
+    private int index;
 
     private Boolean isClosedToThroughTraffic;
 
@@ -86,63 +106,13 @@ public class HeavyWeightEdge extends Edge
 
     private Boolean isUnderConstruction;
 
-    private Boolean toVertexClipped;
-
-    private BridgeType bridgeType;
-
-    private Count hovLaneCount;
-
     private Count laneCount;
 
-    private Country country;
-
-    private County county;
-
-    private Location fromLocation;
+    private Time lastModificationTime;
 
     private Distance length;
 
-    private Type type;
-
-    private EdgeIdentifier rawIdentifier;
-
     private MetropolitanArea metropolitanArea;
-
-    private MapNodeIdentifier fromNodeIdentifier;
-
-    private MapNodeIdentifier toNodeIdentifier;
-
-    private Polyline roadShape;
-
-    private Rectangle bounds;
-
-    private RoadFunctionalClass roadFunctionalClass;
-
-    private RoadState roadState;
-
-    private RoadSubType roadSubType;
-
-    private RoadSurface surface;
-
-    private RoadType roadType;
-
-    private Speed referenceSpeed;
-
-    private Speed reverseReferenceSpeed;
-
-    private final Map<RoadName.Type, List<RoadName>> roadNames = new HashMap<>();
-
-    private Speed speedLimit;
-
-    private SpeedCategory freeFlow;
-
-    private State state;
-
-    private Vertex from;
-
-    private Vertex to;
-
-    private Location toLocation;
 
     private PbfChangeSetIdentifier pbfChangeSetIdentifier;
 
@@ -152,13 +122,43 @@ public class HeavyWeightEdge extends Edge
 
     private PbfUserName pbfUserName;
 
-    private Time lastModificationTime;
+    private EdgeIdentifier rawIdentifier;
+
+    private Speed referenceSpeed;
+
+    private Speed reverseReferenceSpeed;
+
+    private RoadFunctionalClass roadFunctionalClass;
+
+    private final Map<RoadName.Type, List<RoadName>> roadNames = new HashMap<>();
+
+    private Polyline roadShape;
+
+    private RoadState roadState;
+
+    private RoadSubType roadSubType;
+
+    private RoadType roadType;
+
+    private Speed speedLimit;
+
+    private State state;
+
+    private RoadSurface surface;
 
     private PbfTagList tags = PbfTagList.EMPTY;
 
-    private GradeSeparation fromGradeSeparation;
+    private Vertex to;
 
     private GradeSeparation toGradeSeparation;
+
+    private Location toLocation;
+
+    private MapNodeIdentifier toNodeIdentifier;
+
+    private Boolean toVertexClipped;
+
+    private Type type;
 
     /**
      * It is not permissible to directly construct {@link GraphElement} objects. Elements may only be constructed by a
@@ -420,7 +420,7 @@ public class HeavyWeightEdge extends Edge
     @Override
     public boolean isClosedToThroughTraffic()
     {
-        return Objects.notNullOr(isClosedToThroughTraffic, false);
+        return Objects.nonNullOr(isClosedToThroughTraffic, false);
     }
 
     public void isClosedToThroughTraffic(Boolean isClosedToThroughTraffic)
@@ -458,13 +458,13 @@ public class HeavyWeightEdge extends Edge
 
     public Boolean isToVertexClipped()
     {
-        return Objects.notNullOr(toVertexClipped, false);
+        return Objects.nonNullOr(toVertexClipped, false);
     }
 
     @Override
     public boolean isTollRoad()
     {
-        return Objects.notNullOr(isTollRoad, false);
+        return Objects.nonNullOr(isTollRoad, false);
     }
 
     public void isTollRoad(Boolean isTollRoad)
@@ -481,7 +481,7 @@ public class HeavyWeightEdge extends Edge
     @Override
     public boolean isUnderConstruction()
     {
-        return Objects.notNullOr(isUnderConstruction, false);
+        return Objects.nonNullOr(isUnderConstruction, false);
     }
 
     public void isUnderConstruction(Boolean isUnderConstruction)

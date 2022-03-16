@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.navigation.routing;
 
-import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.core.string.Strings;
 
 /**
  * @author jonathanl (shibo)
@@ -45,7 +45,7 @@ public class RoutingInstruction
     public RoutingInstruction(Meaning meaning, String message, Object... arguments)
     {
         this.meaning = meaning;
-        this.message = Message.format(message, arguments);
+        this.message = Strings.format(message, arguments);
     }
 
     public Meaning meaning()

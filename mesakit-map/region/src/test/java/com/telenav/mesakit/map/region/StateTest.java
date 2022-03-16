@@ -19,7 +19,6 @@
 package com.telenav.mesakit.map.region;
 
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.region.project.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.City;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;

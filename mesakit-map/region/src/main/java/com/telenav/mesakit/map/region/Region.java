@@ -20,28 +20,27 @@ package com.telenav.mesakit.map.region;
 
 import com.telenav.kivakit.commandline.ArgumentParser;
 import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.language.Objects;
+import com.telenav.kivakit.core.language.Patterns;
+import com.telenav.kivakit.core.language.object.ObjectFormatter;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.locale.LanguageIsoCode;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.AsciiArt;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.thread.KivaKitThread;
+import com.telenav.kivakit.core.thread.Threads;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.interfaces.naming.Nameable;
-import com.telenav.kivakit.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.kernel.language.locales.LanguageIsoCode;
-import com.telenav.kivakit.kernel.language.objects.Objects;
-import com.telenav.kivakit.kernel.language.patterns.Pattern;
-import com.telenav.kivakit.kernel.language.patterns.SimplifiedPattern;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludeProperty;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.kernel.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.kernel.language.threading.KivaKitThread;
-import com.telenav.kivakit.kernel.language.threading.Threads;
-import com.telenav.kivakit.kernel.language.time.Duration;
-import com.telenav.kivakit.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.interfaces.naming.Nameable;
+import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.resource.path.FileName;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
@@ -62,7 +61,7 @@ import com.telenav.mesakit.map.region.border.Bordered;
 import com.telenav.mesakit.map.region.border.cache.BorderCache;
 import com.telenav.mesakit.map.region.countries.UnitedStates;
 import com.telenav.mesakit.map.region.locale.MapLocale;
-import com.telenav.mesakit.map.region.project.lexakai.diagrams.DiagramRegion;
+import com.telenav.mesakit.map.region.lexakai.DiagramRegion;
 import com.telenav.mesakit.map.region.regions.City;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
@@ -81,16 +80,16 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Executors;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * @author Jonathan Locke
  */
 @UmlClassDiagram(diagram = DiagramRegion.class)
-@UmlExcludeSuperTypes({ AsString.class, Comparable.class, Nameable.class, Named.class })
-public abstract class Region<T extends Region<T>> implements Bounded, Bordered, Intersectable, Outline, Nameable, Named, Comparable<Region<T>>, AsString
+@UmlExcludeSuperTypes({ Stringable.class, Comparable.class, Nameable.class, Named.class })
+public abstract class Region<T extends Region<T>> implements Bounded, Bordered, Intersectable, Outline, Nameable, Named, Comparable<Region<T>>, Stringable
 {
     public static final RegionIdentifier WORLD_IDENTIFIER_MINIMUM = new RegionIdentifier(1_000_000);
 
@@ -166,12 +165,12 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     @SuppressWarnings("rawtypes")
     public static RegionSet allRegionsMatching(String simplifiedPattern)
     {
-        Pattern pattern = new SimplifiedPattern(simplifiedPattern);
+        var pattern = Patterns.simplified(simplifiedPattern);
         var matches = new RegionSet();
         for (var object : all.allUntyped())
         {
             var region = (Region) object;
-            if (pattern.matches(region.identity().mesakit().code()))
+            if (Patterns.matches(pattern, region.identity().mesakit().code()))
             {
                 matches.add(region);
             }
@@ -432,12 +431,6 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     }
 
     /**
-     * Region that is the parent of this region, or null if there is no parent (for example for the World region)
-     */
-    @UmlAggregation(label = "parent")
-    private Region<?> parent;
-
-    /**
      * Instance data for this region
      */
     @UmlAggregation
@@ -447,6 +440,12 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
      * An object that can be associated with every region, for convenience
      */
     private transient Object metadata;
+
+    /**
+     * Region that is the parent of this region, or null if there is no parent (for example for the World region)
+     */
+    @UmlAggregation(label = "parent")
+    private Region<?> parent;
 
     protected Region()
     {
@@ -479,7 +478,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     }
 
     @Override
-    public String asString()
+    public String asString(Format format)
     {
         return new ObjectFormatter(this).toString();
     }

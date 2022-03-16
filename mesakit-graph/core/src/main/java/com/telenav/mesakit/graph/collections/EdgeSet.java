@@ -18,30 +18,27 @@
 
 package com.telenav.mesakit.graph.collections;
 
-import com.telenav.kivakit.collections.set.logical.LogicalSet;
-import com.telenav.kivakit.collections.set.logical.operations.Intersection;
-import com.telenav.kivakit.collections.set.logical.operations.Subset;
-import com.telenav.kivakit.collections.set.logical.operations.Union;
-import com.telenav.kivakit.collections.set.logical.operations.Without;
-import com.telenav.kivakit.kernel.data.comparison.Differences;
-import com.telenav.kivakit.kernel.data.conversion.BaseConverter;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.language.iteration.Streams;
-import com.telenav.kivakit.kernel.language.strings.Join;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
-import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
-import com.telenav.kivakit.kernel.language.time.Frequency;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.messaging.listeners.ThrowingListener;
+import com.telenav.kivakit.collections.set.LogicalSet;
+import com.telenav.kivakit.collections.set.operations.Intersection;
+import com.telenav.kivakit.collections.set.operations.Subset;
+import com.telenav.kivakit.collections.set.operations.Union;
+import com.telenav.kivakit.collections.set.operations.Without;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.language.Streams;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.Differences;
+import com.telenav.kivakit.core.string.Join;
+import com.telenav.kivakit.core.string.Separators;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.time.Frequency;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.kivakit.primitive.collections.iteration.IntIterator;
 import com.telenav.mesakit.graph.Edge;
@@ -55,6 +52,7 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.road.model.RoadName;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -67,8 +65,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
-import static com.telenav.mesakit.graph.project.GraphLimits.Limit;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
+import static com.telenav.mesakit.graph.GraphLimits.Limit;
 
 /**
  * A set of edges. Supports {@link #union(EdgeSet)} and {@link #without(Set)} operations, that logically combine this
@@ -76,7 +74,7 @@ import static com.telenav.mesakit.graph.project.GraphLimits.Limit;
  *
  * @author jonathanl (shibo)
  */
-public class EdgeSet implements Set<Edge>, AsString
+public class EdgeSet implements Set<Edge>, Stringable
 {
     public static final EdgeSet EMPTY = new EdgeSet(Maximum._0, Estimate._0, Collections.emptySet());
 
@@ -193,14 +191,14 @@ public class EdgeSet implements Set<Edge>, AsString
     private final Set<Edge> edges;
 
     /**
-     * The maximum number of edges in this set
-     */
-    private final Maximum maximumSize;
-
-    /**
      * The estimated number of edges in this set
      */
     private final Estimate initialSize;
+
+    /**
+     * The maximum number of edges in this set
+     */
+    private final Maximum maximumSize;
 
     public EdgeSet()
     {
@@ -339,11 +337,12 @@ public class EdgeSet implements Set<Edge>, AsString
     }
 
     @Override
-    public String asString(StringFormat format)
+    @SuppressWarnings("SwitchStatementWithTooFewBranches")
+    public String asString(Format format)
     {
-        switch (format.identifier())
+        switch (format)
         {
-            case "USER_LABEL":
+            case USER_LABEL:
             {
                 var details = new StringList();
                 for (var edge : this)
@@ -559,7 +558,7 @@ public class EdgeSet implements Set<Edge>, AsString
     }
 
     /**
-     * @return True if any edge in this set is two way
+     * @return True if any edge in this set is two-way
      */
     public boolean hasTwoWay()
     {
@@ -628,7 +627,7 @@ public class EdgeSet implements Set<Edge>, AsString
     }
 
     /**
-     * @return True if every edge in this set is two way
+     * @return True if every edge in this set is two-way
      */
     public boolean isTwoWay()
     {
@@ -657,14 +656,7 @@ public class EdgeSet implements Set<Edge>, AsString
      */
     public String joinedIdentifiers(String separator)
     {
-        return Join.join(this, separator, new BaseConverter<>(new ThrowingListener())
-        {
-            @Override
-            protected String onConvert(Edge value)
-            {
-                return value.identifier().toString();
-            }
-        });
+        return Join.join(this, separator, value -> value.identifier().toString());
     }
 
     /**
@@ -893,7 +885,7 @@ public class EdgeSet implements Set<Edge>, AsString
      * {@inheritDoc}
      */
     @Override
-    public <T> T[] toArray(T[] a)
+    public <T> T[] toArray(T @NotNull [] a)
     {
         return unsupported();
     }

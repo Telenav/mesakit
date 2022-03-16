@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;

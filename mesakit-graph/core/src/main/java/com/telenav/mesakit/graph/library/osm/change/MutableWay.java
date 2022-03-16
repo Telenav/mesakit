@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.library.osm.change;
 
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.language.objects.Objects;
-import com.telenav.kivakit.kernel.language.strings.Escape;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.language.Objects;
+import com.telenav.kivakit.core.string.Escape;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.library.osm.change.store.PbfNodeStore;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
@@ -47,7 +47,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 /**
  * A class that holds an OSM way and models any changes that need to be made to nodes that are caused by adding new

@@ -18,7 +18,9 @@
 
 package com.telenav.mesakit.graph.analytics.crawler;
 
-import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSet;
@@ -46,10 +48,10 @@ public class GraphCrawler
     }
 
     /** Set of edges found during crawling */
-    private final EdgeSet visited;
+    private final EdgeSet visitedEdges;
 
     /** Queue of edges to visit */
-    private final Queue<Edge> itinerary = new LinkedList<>();
+    private final Queue<Edge> itineraryEdges = new LinkedList<>();
 
     /** Start vertex */
     private Vertex start;
@@ -60,21 +62,20 @@ public class GraphCrawler
     /** Whether the maximum distance is a strict measurement or not */
     private final DistanceMetric metric;
 
-    private Progress progress;
+    private BroadcastingProgressReporter progress;
 
     /**
      * @param maximumEdges The maximum number of edges to collect
      * @param maximumDistance The maximum distance (as the crow flies) allowable from the start vertex
      */
-    public GraphCrawler(com.telenav.kivakit.kernel.language.values.count.Maximum maximumEdges,
-                        Distance maximumDistance, DistanceMetric metric)
+    public GraphCrawler(Maximum maximumEdges, Distance maximumDistance, DistanceMetric metric)
     {
         // Save maximum distance
         this.maximumDistance = maximumDistance;
         this.metric = metric;
 
         // Initialize the visited set and the itinerary
-        visited = new EdgeSet(maximumEdges, com.telenav.kivakit.kernel.language.values.count.Estimate._65536);
+        visitedEdges = new EdgeSet(maximumEdges, Estimate._65536);
     }
 
     /**
@@ -83,51 +84,47 @@ public class GraphCrawler
      */
     public EdgeSet crawl(Vertex start)
     {
-        // Save start vertex
+        // Reset this crawler for a new crawl,
+        reset();
+
+        // save the given start vertex,
         this.start = start;
 
-        // Clear out visited edges and itinerary
-        visited.clear();
-        itinerary.clear();
-
-        // Add all edges attached to the starting vertex to the itinerary
+        // add all edges attached to the starting vertex to the itinerary,
         visit(start);
 
-        // While there are edges to visit
-        while (!itinerary.isEmpty() && visited.count().isLessThan(visited.maximumSize()))
-        {
-            // get the next edge from the queue,
-            var next = itinerary.poll();
-
-            // and if it's acceptable and we haven't already visited it
-            if (next != null && accept(next) && !visited.contains(next))
-            {
-                // at least one end of the edge is close enough to the start vertex
-                if (isCloseEnough(next))
-                {
-                    // then visit the edge
-                    visit(next);
-                }
-            }
-
-            // Processed next edge in the queue
-            if (progress != null)
-            {
-                progress.next();
-            }
-        }
-
-        // Completed crawl
-        if (progress != null)
-        {
-            progress.end();
-        }
-
-        // Return the accumulated links
-        return visited;
+        // and start crawling.
+        return crawl();
     }
 
-    public void progress(Progress progress)
+    /**
+     * @param start The vertex to start crawling at
+     * @return The set of edges directly or indirectly connected to the starting edge
+     */
+    public EdgeSet crawl(Edge start)
+    {
+        // Reset this crawler for a new crawl,
+        reset();
+
+        // save the start vertex,
+        this.start = start.from();
+
+        // add the start edge to the itinerary,
+        itineraryEdges.add(start);
+
+        // and start crawling.
+        return crawl();
+    }
+
+    /**
+     * @return True if the given edge has been visited
+     */
+    public boolean hasVisited(Edge edge)
+    {
+        return visitedEdges.contains(edge);
+    }
+
+    public void progress(BroadcastingProgressReporter progress)
     {
         this.progress = progress;
     }
@@ -164,25 +161,71 @@ public class GraphCrawler
         }
     }
 
+    private EdgeSet crawl()
+    {
+        // While there are edges to visit
+        while (!itineraryEdges.isEmpty() && visitedEdges.count().isLessThan(visitedEdges.maximumSize()))
+        {
+            // get the next edge from the queue,
+            var next = itineraryEdges.poll();
+
+            // and if it's acceptable, and we haven't already visited it or its reverse
+            if (next != null && accept(next) && !visitedEdges.contains(next))
+            {
+                // at least one end of the edge is close enough to the start vertex
+                if (isCloseEnough(next))
+                {
+                    // then visit the edge
+                    visit(next);
+                }
+            }
+
+            // Processed next edge in the queue
+            if (progress != null)
+            {
+                progress.next();
+            }
+        }
+
+        // Completed crawl
+        if (progress != null)
+        {
+            progress.end();
+        }
+
+        // Return the accumulated links
+        return visitedEdges;
+    }
+
     private boolean isCloseEnough(Vertex vertex)
     {
         return vertex.location().distanceTo(start.location()).isLessThan(maximumDistance);
+    }
+
+    /**
+     * Resets the crawler for another crawl
+     */
+    private void reset()
+    {
+        // Clear out visited edges and itinerary
+        visitedEdges.clear();
+        itineraryEdges.clear();
     }
 
     private void visit(Edge next)
     {
         visit(next.from());
         visit(next.to());
-        visited.add(next);
+        visitedEdges.add(next);
     }
 
     private void visit(Vertex vertex)
     {
         for (var edge : candidates(vertex))
         {
-            if (!visited.contains(edge))
+            if (!visitedEdges.contains(edge))
             {
-                itinerary.add(edge);
+                itineraryEdges.add(edge);
             }
         }
     }

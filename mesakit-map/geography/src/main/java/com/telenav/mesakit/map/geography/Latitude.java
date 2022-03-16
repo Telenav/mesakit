@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.geography;
 
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.values.count.Range;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.value.count.Range;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
+import com.telenav.mesakit.map.geography.lexakai.DiagramLocation;
 import com.telenav.mesakit.map.geography.shape.rectangle.Height;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
@@ -54,8 +54,10 @@ public final class Latitude extends Angle
 
     public static final double MINIMUM_DEGREES = -85.0;
 
+    @SuppressWarnings("SpellCheckingInspection")
     private static final long MAXIMUM_NANODEGREES = (long) (MAXIMUM_DEGREES * 1E9);
 
+    @SuppressWarnings("SpellCheckingInspection")
     private static final long MINIMUM_NANODEGREES = (long) (MINIMUM_DEGREES * 1E9);
 
     static
@@ -123,6 +125,7 @@ public final class Latitude extends Angle
         return new Latitude(microdegrees * NANODEGREES_PER_MICRODEGREE);
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static Latitude nanodegrees(long nanodegrees)
     {
         return new Latitude(nanodegrees);
@@ -176,6 +179,7 @@ public final class Latitude extends Angle
     {
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
     private Latitude(long nanodegrees)
     {
         super(nanodegrees);

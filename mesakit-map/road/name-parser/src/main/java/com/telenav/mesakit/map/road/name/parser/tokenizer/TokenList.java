@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.road.name.parser.tokenizer;
 
-import com.telenav.kivakit.kernel.language.strings.CaseFormat;
-import com.telenav.kivakit.kernel.language.strings.Join;
+import com.telenav.kivakit.core.string.CaseFormat;
+import com.telenav.kivakit.core.string.Join;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -137,7 +137,7 @@ public class TokenList implements Iterable<Token>
 
     public String rawText()
     {
-        return Join.join(tokens(), Token::text, " ");
+        return Join.join(tokens(), " ", Token::text);
     }
 
     public String remainder()

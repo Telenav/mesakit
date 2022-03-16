@@ -18,14 +18,14 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.language.Hash;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
 import java.util.List;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 class TestLeaf extends Leaf<Polyline>
 {

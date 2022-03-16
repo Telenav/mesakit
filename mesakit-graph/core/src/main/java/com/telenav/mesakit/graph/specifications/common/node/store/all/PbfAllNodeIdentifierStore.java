@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.node.store.all;
 
-import com.telenav.kivakit.kernel.interfaces.loading.Unloadable;
+import com.telenav.kivakit.interfaces.loading.Unloadable;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
@@ -31,7 +31,7 @@ import com.telenav.mesakit.map.geography.Location;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 public class PbfAllNodeIdentifierStore implements Unloadable
 {

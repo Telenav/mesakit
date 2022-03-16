@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.specifications.common.relation;
 
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.time.Time;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.time.Time;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.EdgeRelationMember;

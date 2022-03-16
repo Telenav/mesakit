@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.geography.shape.rectangle;
 
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramRectangle;
+import com.telenav.mesakit.map.geography.lexakai.DiagramRectangle;
 
 /**
  * Interface for an object that can test if it intersects a rectangle.

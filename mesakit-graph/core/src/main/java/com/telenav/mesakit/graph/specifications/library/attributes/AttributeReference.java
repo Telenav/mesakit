@@ -18,20 +18,21 @@
 
 package com.telenav.mesakit.graph.specifications.library.attributes;
 
-import com.telenav.kivakit.kernel.interfaces.collection.Indexable;
-import com.telenav.kivakit.kernel.interfaces.factory.Factory;
-import com.telenav.kivakit.kernel.interfaces.factory.LongMapFactory;
-import com.telenav.kivakit.kernel.interfaces.lifecycle.Initializable;
-import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
-import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.kernel.interfaces.numeric.Sized;
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.reflection.Type;
-import com.telenav.kivakit.kernel.language.reflection.property.Property;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.kernel.messaging.messages.lifecycle.OperationSucceeded;
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.language.reflection.ReflectionProblem;
+import com.telenav.kivakit.core.language.reflection.Type;
+import com.telenav.kivakit.core.language.reflection.property.Property;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.registry.RegistryTrait;
+import com.telenav.kivakit.interfaces.collection.Indexable;
+import com.telenav.kivakit.interfaces.collection.Sized;
+import com.telenav.kivakit.interfaces.factory.Factory;
+import com.telenav.kivakit.interfaces.factory.LongMapFactory;
+import com.telenav.kivakit.interfaces.lifecycle.Initializable;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
+import com.telenav.kivakit.interfaces.numeric.Quantizable;
 import com.telenav.kivakit.primitive.collections.list.IntList;
 import com.telenav.kivakit.primitive.collections.list.LongList;
 import com.telenav.kivakit.primitive.collections.list.PrimitiveList;
@@ -40,6 +41,7 @@ import com.telenav.kivakit.primitive.collections.map.PrimitiveScalarMap;
 import com.telenav.kivakit.primitive.collections.map.multi.PrimitiveScalarMultiMap;
 import com.telenav.kivakit.primitive.collections.set.PrimitiveSet;
 import com.telenav.kivakit.resource.compression.archive.FieldArchive;
+import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
@@ -48,9 +50,9 @@ import org.jetbrains.annotations.MustBeInvokedByOverriders;
 
 import java.util.List;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureEqual;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureEqual;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 /**
  * Manages a referent (a value that's referred to by a reference) {@link Attribute}s in an {@link AttributeStore}.
@@ -64,8 +66,8 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
  * The remaining methods in attribute reference are methods for retrieving and storing different kinds of values in the
  * referent object. Many of these methods take a {@link Quantizable} rather than a specific primitive key value. This
  * permits any quantizable object to be used as a key. For example, all {@link GraphElement}s are {@link Indexable} and
- * indexable objects are {@link Quantizable}, so an {@link Edge} (which is a graph element) can be used as an index into
- * an array. The quantum (long value) is just the index in this case.
+ * index-able objects are {@link Quantizable}, so an {@link Edge} (which is a graph element) can be used as an index
+ * into an array. The quantum (long value) is just the index in this case.
  *
  * @author jonathanl (shibo)
  * @see Attribute
@@ -77,14 +79,13 @@ import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
  * @see Quantizable
  */
 @SuppressWarnings({ "ConstantConditions" })
-public class AttributeReference<Referent extends NamedObject & Initializable> implements NamedObject
+public class AttributeReference<Referent extends NamedObject & Initializable> implements
+        RegistryTrait,
+        NamedObject
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
     private static final Debug DEBUG = new Debug(LOGGER);
-
-    /** The store being referenced */
-    private final AttributeStore store;
 
     /** The attached field archive to load from */
     private FieldArchive archive;
@@ -92,14 +93,11 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /** The attribute in the store */
     private final Attribute<?> attribute;
 
-    /** The store field to manage */
-    private final Property field;
-
-    /** A cached reference to the store field (so reflection does not have to be used often) */
-    private volatile Referent reference;
-
     /** A factory to create the referent */
     private final Factory<Referent> factory;
+
+    /** The store field to manage */
+    private final Property field;
 
     /** The name of the field referenced in the attribute store */
     private final String fieldName;
@@ -107,13 +105,21 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /** True if a load has been attempted */
     private boolean loadAttempted;
 
+    /** A cached reference to the store field (so reflection does not have to be used often) */
+    private volatile Referent reference;
+
+    /** The store being referenced */
+    private final AttributeStore store;
+
     /**
      * @param store The attribute store that's being managed
      * @param attribute The attribute in the store
      * @param fieldName The name of the field in the store that's being managed
      * @param factory A factory that can create the referent
      */
-    public AttributeReference(AttributeStore store, Attribute<?> attribute, String fieldName,
+    public AttributeReference(AttributeStore store,
+                              Attribute<?> attribute,
+                              String fieldName,
                               Factory<Referent> factory)
     {
         assert store != null;
@@ -220,7 +226,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
                 var archive = archive();
                 if (archive != null)
                 {
-                    Referent reference = archive.loadFieldOf(store, field.name());
+                    Referent reference = archive.loadFieldOf(require(KryoObjectSerializer.class), store, field.name());
                     if (reference != null)
                     {
                         if (reference instanceof Sized)
@@ -558,7 +564,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
      */
     public void unload()
     {
-        // We must have an archive or we cannot reload the attribute
+        // We must have an archive, or we cannot reload the attribute
         var archive = archive();
         assert archive != null : "Cannot clear attribute without archive attached or the attribute cannot be reloaded";
 
@@ -615,9 +621,9 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     private synchronized void reference(Referent referent)
     {
         reference = referent;
-        if (!(field.setter().set(store, referent) instanceof OperationSucceeded))
+        if (field.setter().set(store, referent) instanceof ReflectionProblem)
         {
-            LOGGER.problem("Unable to set value of $ field", field);
+            LOGGER.problem("Unable to set value of $", field);
         }
         assert field.getter().get(store) == referent;
     }

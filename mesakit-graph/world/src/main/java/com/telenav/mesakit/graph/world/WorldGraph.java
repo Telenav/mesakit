@@ -19,20 +19,20 @@
 package com.telenav.mesakit.graph.world;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.configuration.settings.deployment.Deployment;
-import com.telenav.kivakit.kernel.interfaces.code.Callback;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.language.threading.Threads;
-import com.telenav.kivakit.kernel.language.time.Duration;
-import com.telenav.kivakit.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.language.values.version.Version;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.messaging.filters.operators.All;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
+import com.telenav.kivakit.settings.Deployment;
+import com.telenav.kivakit.interfaces.code.Callback;
+import com.telenav.kivakit.interfaces.comparison.Filter;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
+import com.telenav.kivakit.core.thread.Threads;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.version.Version;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.resource.CopyMode;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.graph.Edge;
@@ -70,9 +70,9 @@ import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.road.model.RoadFunctionalClass;
 
-import static com.telenav.kivakit.commandline.SwitchParser.enumSwitchParser;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.commandline.SwitchParsers.enumSwitchParser;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 import static com.telenav.mesakit.graph.Metadata.CountType.REQUIRE_EXACT;
 
 /**
@@ -137,7 +137,7 @@ public class WorldGraph extends Graph
     {
         if (remote != null)
         {
-            var progress = Progress.create(LOGGER, "bytes");
+            var progress = BroadcastingProgressReporter.create(LOGGER, "bytes");
             remote.copyTo(local, CopyMode.OVERWRITE, progress);
         }
 
@@ -172,11 +172,11 @@ public class WorldGraph extends Graph
         }
     }
 
-    /** The world grid, which breaks the world up into world cells */
-    private final WorldGrid worldGrid;
-
     /** The smallest sub-graph for accessing attributes common to all cells */
     private Graph smallest;
+
+    /** The world grid, which breaks the world up into world cells */
+    private final WorldGrid worldGrid;
 
     /**
      * Constructs a world graph with a repository folder
@@ -489,7 +489,7 @@ public class WorldGraph extends Graph
 
     public RelationSet relationsInside(Region region)
     {
-        return relationsIntersecting(region.bounds(), new All<>()).matching(relation ->
+        return relationsIntersecting(region.bounds(), Filter.all()).matching(relation ->
         {
             for (var edge : relation.edgeSet())
             {

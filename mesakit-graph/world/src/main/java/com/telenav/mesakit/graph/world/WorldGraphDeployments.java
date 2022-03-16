@@ -18,13 +18,17 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.configuration.settings.deployment.Deployment;
-import com.telenav.kivakit.configuration.settings.deployment.DeploymentSet;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.resource.Package;
+import com.telenav.kivakit.settings.Deployment;
+import com.telenav.kivakit.settings.DeploymentSet;
+import com.telenav.kivakit.settings.stores.PackageSettingsStore;
 import com.telenav.mesakit.core.MesaKit;
+
+import static com.telenav.kivakit.core.project.Project.resolveProject;
 
 /**
  * {@link WorldGraphDeployments} is a {@link DeploymentSet} that includes deployment configurations for a few built-in
@@ -34,6 +38,7 @@ import com.telenav.mesakit.core.MesaKit;
  * @see Deployment
  * @see DeploymentSet
  */
+@SuppressWarnings("SpellCheckingInspection")
 public class WorldGraphDeployments extends DeploymentSet
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
@@ -43,8 +48,9 @@ public class WorldGraphDeployments extends DeploymentSet
      */
     public static Deployment localDeployment()
     {
-        return LOGGER.listenTo(new Deployment("local", "developer laptop"))
-                .registerAllSettingsIn(LOGGER, WorldGraph.class, "configuration/local");
+        var deployment = LOGGER.listenTo(new Deployment("local", "developer laptop"));
+        deployment.indexAll(PackageSettingsStore.of(LOGGER, Package.packageFrom(LOGGER, WorldGraph.class, "configuration/local")));
+        return deployment;
     }
 
     /**
@@ -59,6 +65,6 @@ public class WorldGraphDeployments extends DeploymentSet
 
     private Folder mesakitWorldGraphDeploymentsFolder()
     {
-        return MesaKit.get().mesakitCacheFolder().folder("world-graph/deployments");
+        return resolveProject(MesaKit.class).mesakitCacheFolder().folder("world-graph/deployments");
     }
 }

@@ -8,22 +8,22 @@
 <project xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <parent>
-        <groupId>com.telenav.kivakit</groupId>
-        <artifactId>superpom</artifactId>
-        <version>1.1.0</version>
-        <relativePath>../kivakit/superpom</relativePath>
-    </parent>
-
     <modelVersion>4.0.0</modelVersion>
+        <parent>
+            <groupId>com.telenav.kivakit</groupId>
+            <artifactId>superpom</artifactId>
+            <version>1.4.0</version>
+            <relativePath>1.4.0</relativePath>
+        </parent>
+
     <groupId>com.telenav.mesakit</groupId>
     <artifactId>superpom</artifactId>
-    <version>1.0.1</version>
+    <version>0.9.10</version>
+
     <packaging>pom</packaging>
 
     <!-- Project -->
 
-    <name>MesaKit Super POM</name>
     <description>The MesaKit super POM depends on the KivaKit super POM and defines dependency versions to help ensure consistent builds.</description>
     <url>https://www.telenav.com/</url>
     <inceptionYear>2011</inceptionYear>
@@ -50,7 +50,7 @@
 
         <!-- MesaKit Version -->
 
-        <mesakit.version>0.9.9-SNAPSHOT</mesakit.version>
+        <mesakit.version>0.9.10</mesakit.version>
 
         <!-- Mapping -->
 
@@ -232,6 +232,37 @@
 
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven-javadoc-plugin.version}</version>
+                    <configuration>
+                        <show>public</show>
+                        <source>11</source>
+                        <detectJavaApiLink>false</detectJavaApiLink>
+                        <doclint>none</doclint>
+                        <nohelp>true</nohelp>
+                        <reportOutputDirectory>${env.MESAKIT_ASSETS_HOME}/docs/${env.MESAKIT_VERSION}/javadoc</reportOutputDirectory>
+                        <destDir>${project.name}</destDir>
+                        <additionalOptions>-notimestamp --show-module-contents all --show-packages all --show-types private</additionalOptions>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>aggregate</id>
+                            <phase>site</phase>
+                            <goals>
+                                <goal>aggregate</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>
 

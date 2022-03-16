@@ -18,38 +18,38 @@
 
 package com.telenav.mesakit.graph;
 
+import com.telenav.kivakit.core.collections.iteration.Iterables;
+import com.telenav.kivakit.core.collections.iteration.Next;
+import com.telenav.kivakit.core.language.Classes;
+import com.telenav.kivakit.core.language.Streams;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.Message;
+import com.telenav.kivakit.core.messaging.Repeater;
+import com.telenav.kivakit.core.messaging.context.CallStack;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
+import com.telenav.kivakit.core.string.AsIndentedString;
+import com.telenav.kivakit.core.string.AsStringIndenter;
+import com.telenav.kivakit.core.string.AsciiArt;
+import com.telenav.kivakit.core.string.Differences;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.version.Version;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.data.formats.library.DataFormat;
 import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.kernel.data.comparison.Differences;
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.kernel.language.iteration.Iterables;
-import com.telenav.kivakit.kernel.language.iteration.Next;
-import com.telenav.kivakit.kernel.language.iteration.Streams;
-import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsStringIndenter;
-import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
-import com.telenav.kivakit.kernel.language.threading.context.CallStack;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.language.types.Classes;
-import com.telenav.kivakit.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.language.values.name.Name;
-import com.telenav.kivakit.kernel.language.values.version.Version;
-import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.messaging.Message;
-import com.telenav.kivakit.kernel.messaging.Repeater;
-import com.telenav.kivakit.kernel.messaging.filters.operators.All;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.interfaces.comparison.Filter;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.collections.EdgeSet;
@@ -130,10 +130,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
-import static com.telenav.kivakit.kernel.language.threading.context.CallStack.Matching.SUBCLASS;
-import static com.telenav.kivakit.kernel.language.threading.context.CallStack.Proximity.DISTANT;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.messaging.context.CallStack.Matching.SUBCLASS;
+import static com.telenav.kivakit.core.messaging.context.CallStack.Proximity.DISTANT;
 import static com.telenav.mesakit.graph.Metadata.CountType.REQUIRE_EXACT;
 import static com.telenav.mesakit.graph.Metadata.VALIDATE_EXCEPT_STATISTICS;
 import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.EDGES;
@@ -186,7 +186,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
  * <p>
  * Graphs can be loaded and saved to {@link GraphArchive}s with {@link #load(GraphArchive)} and {@link #save(GraphArchive)}.
  * For a turn-key way to load graphs, see {@link SmartGraphLoader}. This loader can identify and load data stored in
- * all of the supported data formats.
+ * all the supported data formats.
  * <p>
  * The methods that load data with {@link GraphLoader} objects are used to load data from some {@link DataSupplier}
  * in a {@link DataFormat} under a {@link DataSpecification}. {@link GraphLoader}s should be of limited use to end-users,
@@ -375,14 +375,8 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
         return metadata == null ? null : metadata.newGraph();
     }
 
-    /**
-     * The store where graph data for this graph is located. The {@link GraphStore} has sub-stores that are subclasses
-     * of {@link GraphElementStore} which vary depending on the {@link DataSpecification}.
-     */
-    private final ArchivedGraphStore graphStore;
-
-    /** Size of the graph, if debugging */
-    private Bytes estimatedMemorySize;
+    /** The archive that this graph was loaded from, if any */
+    private GraphArchive archive;
 
     /**
      * An attached object, defined by a user application. When this graph is in a compound graph, like a world graph,
@@ -390,13 +384,25 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      */
     private transient Object attachedObject;
 
-    /**
-     * Meta data about this graph
-     */
-    private Metadata metadata;
+    /** The data specification for data in this graph */
+    private final DataSpecification dataSpecification;
 
     /** A copy of the reference to the graph store's edge attributes for efficiency */
     private final EdgeStore edgeStore;
+
+    /** Size of the graph, if debugging */
+    private Bytes estimatedMemorySize;
+
+    /**
+     * The store where graph data for this graph is located. The {@link GraphStore} has sub-stores that are subclasses
+     * of {@link GraphElementStore} which vary depending on the {@link DataSpecification}.
+     */
+    private final ArchivedGraphStore graphStore;
+
+    /**
+     * Metadata about this graph
+     */
+    private Metadata metadata;
 
     /** A copy of the reference to the graph store's place attributes for efficiency */
     private final PlaceStore placeStore;
@@ -404,17 +410,11 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     /** A copy of the reference to the graph store's edge relation attributes for efficiency */
     private final RelationStore relationStore;
 
-    /** A copy of the reference to the graph store's vertex attributes for efficiency */
-    private final VertexStore vertexStore;
-
     /** A copy of the reference to the graph store's shape point attributes for efficiency */
     private ShapePointStore shapePointStore;
 
-    /** The data specification for data in this graph */
-    private final DataSpecification dataSpecification;
-
-    /** The archive that this graph was loaded from, if any */
-    private GraphArchive archive;
+    /** A copy of the reference to the graph store's vertex attributes for efficiency */
+    private final VertexStore vertexStore;
 
     /**
      * @param metadata The metadata for this graph
@@ -446,7 +446,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     }
 
     @Override
-    public AsStringIndenter asString(StringFormat format, AsStringIndenter indenter)
+    public AsStringIndenter asString(Format format, AsStringIndenter indenter)
     {
         indenter.labeled("resource", resource().path().asContraction(120));
         indenter.indented("metadata", () -> metadata().asString(format, indenter));
@@ -493,7 +493,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     }
 
     /**
-     * @return A new graph restricted to all of the graph elements that intersect the given bounding rectangle
+     * @return A new graph restricted to all the graph elements that intersect the given bounding rectangle
      */
     public final Graph clippedTo(Rectangle bounds)
     {
@@ -688,7 +688,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     public final Differences differencesFrom(Graph that, Rectangle bounds, Maximum maximumDifferences)
     {
         var differences = new Differences();
-        var progress = Progress.create(this);
+        var progress = BroadcastingProgressReporter.create(this);
 
         // Then compare edge counts
         if (!edgeCount().equals(that.edgeCount()))
@@ -876,7 +876,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      */
     public final EdgeSequence edgesIntersecting(Rectangle bounds)
     {
-        return edgesIntersecting(bounds, new All<>(), EDGES);
+        return edgesIntersecting(bounds, Filter.all(), EDGES);
     }
 
     /**
@@ -1003,7 +1003,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      */
     public final EdgeSequence forwardEdgesIntersecting(Rectangle bounds)
     {
-        return forwardEdgesIntersecting(bounds, new All<>());
+        return forwardEdgesIntersecting(bounds, Filter.all());
     }
 
     /**
@@ -1124,7 +1124,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
                     if (graphStore.validator(loader.validation()).validate(this))
                     {
                         // we have succeeded in loading the graph,
-                        information(AsciiArt.textBox(Message.format("${class} loaded $ in $", loader.getClass(),
+                        information(AsciiArt.textBox(Strings.format("${class} loaded $ in $", loader.getClass(),
                                 metadata().descriptor(), start.elapsedSince()), asString()));
 
                         // so return its metadata.
@@ -1237,7 +1237,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
     public String name()
     {
         var metadata = metadata();
-        return metadata == null ? Name.synthetic(this) : metadata.name();
+        return metadata == null ? NamedObject.syntheticName(this) : metadata.name();
     }
 
     /**
@@ -1526,7 +1526,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      */
     public final RelationSet relationsIntersecting(Rectangle bounds)
     {
-        return relationsIntersecting(bounds, new All<>());
+        return relationsIntersecting(bounds, Filter.all());
     }
 
     /**
@@ -1687,7 +1687,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      * @return True if this graph contains all PBF node identifier information (both node identifiers and node tags).
      * Normally this information is not available in a graph, but in the case of graph editing by the OpenTerra team, it
      * is necessary for graphs to contain all information in the PBF source file or the data cannot be uploaded to the
-     * OSM community. In general this information is voluminous and so it is stored on disk and it is generally a good
+     * OSM community. In general this information is voluminous and so it is stored on disk, and it is generally a good
      * idea not to make large graphs with this level of detail.
      */
     public boolean supportsFullPbfNodeInformation()
@@ -1824,7 +1824,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
         Vertex closest = null;
         var closestDistance = Distance.MAXIMUM;
 
-        // Look in 100 meter increments so we don't search too wide an area
+        // Look in 100 meter increments, so we don't search too wide an area
         for (var near = maximum.minimum(Distance.meters(100)); near
                 .isLessThanOrEqualTo(maximum); near = near.add(Distance.meters(100)))
         {
@@ -1845,7 +1845,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
                 }
             }
 
-            // If a closest was found
+            // If we found the closest vertex
             if (closest != null)
             {
                 // then return it (otherwise expand the search area)

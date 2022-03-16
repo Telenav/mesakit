@@ -18,20 +18,20 @@
 
 package com.telenav.mesakit.map.geography.indexing.segment;
 
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.indexing.rtree.InteriorNode;
 import com.telenav.mesakit.map.geography.indexing.rtree.Leaf;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSettings;
 import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndex;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramSpatialIndex;
+import com.telenav.mesakit.map.geography.lexakai.DiagramSpatialIndex;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.geography.shape.segment.Segment;
 
 import java.util.List;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 @UmlClassDiagram(diagram = DiagramSpatialIndex.class)
 public class SegmentRTreeSpatialIndex extends RTreeSpatialIndex<Segment>
@@ -72,7 +72,8 @@ public class SegmentRTreeSpatialIndex extends RTreeSpatialIndex<Segment>
         }
     }
 
-    public SegmentRTreeSpatialIndex(String objectName, Maximum segmentCount,
+    public SegmentRTreeSpatialIndex(String objectName,
+                                    Maximum segmentCount,
                                     Iterable<Segment> segments)
     {
         super(objectName, new RTreeSettings());

@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.library.matchers;
 
-import com.telenav.kivakit.kernel.interfaces.comparison.Matcher;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.messaging.filters.operators.All;
+import com.telenav.kivakit.interfaces.comparison.Filter;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.io.load.GraphConstraints;
@@ -39,7 +39,7 @@ import com.telenav.mesakit.map.road.model.RoadType;
  */
 public class Matchers
 {
-    public static Matcher<Edge> ALL = new All<>();
+    public static Matcher<Edge> ALL = Filter.all();
 
     public static Matcher<Edge> AT_LEAST_PRIVATE_ROAD = moreImportantThanOrEqual(RoadType.PRIVATE_ROAD);
 

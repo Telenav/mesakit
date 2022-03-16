@@ -18,12 +18,11 @@
 
 package com.telenav.mesakit.graph;
 
-import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.navigation.Navigator;
 import com.telenav.mesakit.graph.navigation.RouteLimiter;
 import com.telenav.mesakit.graph.navigation.limiters.LengthRouteLimiter;
-import com.telenav.mesakit.graph.project.GraphUnitTest;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.road.model.BridgeType;
 import com.telenav.mesakit.map.road.model.RoadName;
@@ -47,7 +46,7 @@ public class EdgeTest extends GraphUnitTest
     {
         final Graph graph = osmDowntownSeattleTest();
         final Edge edge = graph.edges().iterator().next();
-        ensure(edge.asString(StringFormat.TEXT).length() > 100);
+        ensure(edge.asString(Stringable.Format.TEXT).length() > 100);
     }
 
     @Test

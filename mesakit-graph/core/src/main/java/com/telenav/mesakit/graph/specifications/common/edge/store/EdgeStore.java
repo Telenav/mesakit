@@ -18,17 +18,15 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge.store;
 
-import com.telenav.kivakit.kernel.data.validation.Validatable;
-import com.telenav.kivakit.kernel.data.validation.ValidationType;
-import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.language.time.Time;
-import com.telenav.kivakit.kernel.language.values.count.BitCount;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.registry.RegistryTrait;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.BitCount;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.primitive.collections.array.packed.SplitPackedArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
@@ -37,12 +35,14 @@ import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
 import com.telenav.kivakit.primitive.collections.list.store.LongLinkedListStore;
 import com.telenav.kivakit.primitive.collections.map.multi.dynamic.LongToIntMultiMap;
-import com.telenav.kivakit.primitive.collections.map.multi.fixed.LongToLongFixedMultiMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.IntToByteMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.LongToIntMap;
+import com.telenav.kivakit.primitive.collections.map.scalars.fixed.LongToLongFixedMultiMap;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
-import com.telenav.kivakit.serialization.core.SerializationSession;
-import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
+import com.telenav.kivakit.validation.Validatable;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;
@@ -57,8 +57,8 @@ import com.telenav.mesakit.graph.identifiers.RelationIdentifier;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.io.load.GraphConstraints;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
-import com.telenav.mesakit.graph.project.GraphLimits;
-import com.telenav.mesakit.graph.project.GraphLimits.Limit;
+import com.telenav.mesakit.graph.GraphLimits;
+import com.telenav.mesakit.graph.GraphLimits.Limit;
 import com.telenav.mesakit.graph.specifications.common.edge.EdgeAttributes;
 import com.telenav.mesakit.graph.specifications.common.edge.HeavyWeightEdge;
 import com.telenav.mesakit.graph.specifications.common.edge.store.index.CompressedEdgeBulkSpatialIndexer;
@@ -132,7 +132,7 @@ import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
  * GraphElementIdentifier}). This index can be retrieved with {@link Edge#index()} and is used to efficiently retrieve
  * values from the store with calls to the various retrieve* methods.
  * <p>
- * An edge store maintains an {@link RTreeSpatialIndex} of the edge polylines to allow fast spatial searches, such as
+ * An edge store maintains an {@link RTreeSpatialIndex} of the edge poly-lines to allow fast spatial searches, such as
  * finding all the edges that intersect a given {@link Rectangle}. This index is also used when querying {@link
  * EdgeRelation}s by finding the relevant edges and then returning the set of all relations that those edges reference.
  * <p>
@@ -150,7 +150,7 @@ import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
  * @see EdgeAttributes
  */
 @SuppressWarnings("unused")
-public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
+public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implements RegistryTrait
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -162,17 +162,11 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     .hasNullLong(false)
                     .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
-    private SplitLongArray boundsBottomLeft;
-
     /** ============ The top right location of the bounds around each edge in this store */
     private final AttributeReference<SplitLongArray> BOUNDS_TOP_RIGHT = new AttributeReference<>(this, EdgeAttributes.get().BOUNDS_TOP_RIGHT, "boundsTopRight",
             () -> (SplitLongArray) new SplitLongArray("boundsTopRight")
                     .hasNullLong(false)
                     .initialSize(estimatedElements()));
-
-    @KivaKitArchivedField
-    private SplitLongArray boundsTopRight;
 
     /** ============ The bridge type for each edge in this store */
     private final AttributeReference<SplitPackedArray> BRIDGE_TYPE = new AttributeReference<>(this, EdgeAttributes.get().BRIDGE_TYPE, "bridgeType",
@@ -181,9 +175,6 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     .nullLong(7)
                     .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
-    private SplitPackedArray bridgeType;
-
     /** ============ The country for each edge in this store */
     private final AttributeReference<SplitPackedArray> COUNTRY = new AttributeReference<>(this, EdgeAttributes.get().COUNTRY, "country",
             () -> (SplitPackedArray) new SplitPackedArray("country")
@@ -191,41 +182,20 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     .nullLong(255)
                     .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
-    private SplitPackedArray country;
-
-    /** ============ The relation identifiers of ways */
-    private final AttributeReference<LongToLongFixedMultiMap> WAY_IDENTIFIER_TO_RELATIONS = new AttributeReference<>(this, EdgeAttributes.get().RELATIONS, "wayIdentifierToRelationIdentifiers",
-            () -> (LongToLongFixedMultiMap) new LongToLongFixedMultiMap("wayIdentifierToRelationIdentifiers")
-                    .initialChildSize(GraphLimits.Estimated.RELATIONS_PER_EDGE)
-                    .initialSize(estimatedElements()));
-
-    @KivaKitArchivedField
-    private LongToLongFixedMultiMap wayIdentifierToRelationIdentifiers;
-
     /** ============ The free flow speed category for each edge in this store */
     private final AttributeReference<SplitPackedArray> FREE_FLOW_SPEED_CATEGORY = new AttributeReference<>(this, EdgeAttributes.get().FREE_FLOW_SPEED_CATEGORY, "freeFlowSpeedCategory",
             () -> (SplitPackedArray) new SplitPackedArray("freeFlowSpeedCategory")
                     .bits(BitCount._5, NO_OVERFLOW)
                     .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
-    private SplitPackedArray freeFlowSpeedCategory;
-
-    /** ============ The from vertex identifier for each edge in this store */
-    private final AttributeReference<SplitIntArray> FROM_VERTEX_IDENTIFIER = new AttributeReference<>(this, EdgeAttributes.get().FROM_VERTEX_IDENTIFIER, "fromVertexIdentifier",
-            () -> (SplitIntArray) new SplitIntArray("fromVertexIdentifier")
-                    .initialSize(estimatedElements()));
-
-    @KivaKitArchivedField
-    private SplitIntArray fromVertexIdentifier;
-
     /** ============ The "from" node identifier for each edge in the store, if any */
     private final AttributeReference<SplitLongArray> FROM_NODE_IDENTIFIER = new AttributeReference<>(this, EdgeAttributes.get().FROM_NODE_IDENTIFIER, "fromNodeIdentifier",
             () -> (SplitLongArray) new SplitLongArray("fromNodeIdentifier").initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
-    private SplitLongArray fromNodeIdentifier;
+    /** ============ The 'from' vertex identifier for each edge in this store */
+    private final AttributeReference<SplitIntArray> FROM_VERTEX_IDENTIFIER = new AttributeReference<>(this, EdgeAttributes.get().FROM_VERTEX_IDENTIFIER, "fromVertexIdentifier",
+            () -> (SplitIntArray) new SplitIntArray("fromVertexIdentifier")
+                    .initialSize(estimatedElements()));
 
     /** ============ The number of HOV lanes for each edge in this store */
     private final AttributeReference<SplitPackedArray> HOV_LANE_COUNT = new AttributeReference<>(this, EdgeAttributes.get().HOV_LANE_COUNT, "hovLaneCount",
@@ -234,16 +204,10 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     .nullLong(3)
                     .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
-    private SplitPackedArray hovLaneCount;
-
     /** ============ The closed to through traffic state for each edge in this store */
     private final AttributeReference<IntToByteMap> IS_CLOSED_TO_THROUGH_TRAFFIC = new AttributeReference<>(this, EdgeAttributes.get().IS_CLOSED_TO_THROUGH_TRAFFIC, "isClosedToThroughTraffic",
             () -> (IntToByteMap) new IntToByteMap("isClosedToThroughTraffic")
                     .initialSize(estimatedElements()));
-
-    @KivaKitArchivedField
-    private IntToByteMap isClosedToThroughTraffic;
 
     /** ============ The toll road state for each edge in this store */
     private final AttributeReference<IntToByteMap> IS_TOLL_ROAD =
@@ -251,16 +215,10 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     () -> (IntToByteMap) new IntToByteMap("isTollRoad")
                             .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
-    private IntToByteMap isTollRoad;
-
     /** ============ The under construction state for each edge in this store */
     private final AttributeReference<IntToByteMap> IS_UNDER_CONSTRUCTION = new AttributeReference<>(this, EdgeAttributes.get().IS_UNDER_CONSTRUCTION, "isUnderConstruction",
             () -> (IntToByteMap) new IntToByteMap("isUnderConstruction")
                     .initialSize(estimatedElements()));
-
-    @KivaKitArchivedField
-    private IntToByteMap isUnderConstruction;
 
     /** ============ The lane count for each edge in this store */
     private final AttributeReference<SplitPackedArray> LANE_COUNT = new AttributeReference<>(this, EdgeAttributes.get().LANE_COUNT, "laneCount",
@@ -269,17 +227,11 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     .nullLong(0)
                     .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
-    private SplitPackedArray laneCount;
-
     /** ============ The length of each edge in this store in millimeters (2^32mm ~= 4,295km) */
     private final AttributeReference<SplitIntArray> LENGTH_IN_MILLIMETERS = new AttributeReference<>(this, EdgeAttributes.get().LENGTH, "lengthInMillimeters",
             () -> (SplitIntArray) new SplitIntArray("lengthInMillimeters")
                     .nullInt(Integer.MIN_VALUE)
                     .initialSize(estimatedElements()));
-
-    @KivaKitArchivedField
-    private SplitIntArray lengthInMillimeters;
 
     /** ============ The function class for edges in this store */
     private final AttributeReference<SplitPackedArray> ROAD_FUNCTIONAL_CLASS =
@@ -288,9 +240,6 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                             .bits(BitCount._3, NO_OVERFLOW)
                             .nullLong(7)
                             .initialSize(estimatedElements()));
-
-    @KivaKitArchivedField
-    private SplitPackedArray roadFunctionalClass;
 
     /** ============ The names for edges in this store */
     private final AttributeReference<RoadNameStore> ROAD_NAME =
@@ -305,12 +254,6 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                 }
             };
 
-    @KivaKitArchivedField
-    private RoadNameStore roadName;
-
-    @KivaKitArchivedField
-    private SplitPolylineStore roadShape;
-
     /** ============ The polyline stores for the shapes of edges in this store */
     private final AttributeReference<SplitPolylineStore> ROAD_SHAPE =
             new AttributeReference<>(this, EdgeAttributes.get().ROAD_SHAPE, "roadShape",
@@ -324,19 +267,13 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     () -> (ByteArray) new ByteArray("roadState")
                             .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
-    private ByteArray roadState;
-
-    /** ============ The road sub-type for edges in this store */
+    /** ============ The road subtype for edges in this store */
     private final AttributeReference<SplitPackedArray> ROAD_SUB_TYPE =
             new AttributeReference<>(this, EdgeAttributes.get().ROAD_SUB_TYPE, "roadSubType",
                     () -> (SplitPackedArray) new SplitPackedArray("roadSubType")
                             .bits(BitCount._4, NO_OVERFLOW)
                             .nullLong(15)
                             .initialSize(estimatedElements()));
-
-    @KivaKitArchivedField
-    private SplitPackedArray roadSubType;
 
     /** ============ The road surface types of edges in this store */
     private final AttributeReference<SplitPackedArray> ROAD_SURFACE =
@@ -346,9 +283,6 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                             .nullLong(7)
                             .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
-    private SplitPackedArray roadSurface;
-
     /** ============ The road type for edges in this store */
     private final AttributeReference<SplitPackedArray> ROAD_TYPE =
             new AttributeReference<>(this, EdgeAttributes.get().ROAD_TYPE, "roadType",
@@ -357,9 +291,6 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                             .nullLong(31)
                             .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
-    private SplitPackedArray roadType;
-
     /** ============ The speed limit on edges in this store as a multiple of 5kph */
     private final AttributeReference<SplitByteArray> SPEED_LIMIT =
             new AttributeReference<>(this, EdgeAttributes.get().SPEED_LIMIT, "speedLimit",
@@ -367,32 +298,20 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                             .nullByte((byte) 0)
                             .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
-    private SplitByteArray speedLimit;
-
     /** ============ The speed limit on edges in this store */
     private final AttributeReference<SplitIntArray> SPEED_PATTERN_IDENTIFIER =
             new AttributeReference<>(this, EdgeAttributes.get().SPEED_PATTERN_IDENTIFIER, "speedPatternIdentifier",
                     () -> (SplitIntArray) new SplitIntArray("speedPatternIdentifier").initialSize(estimatedElements()));
-
-    @KivaKitArchivedField
-    private SplitIntArray speedPatternIdentifier;
 
     /** ============ The "to" node identifier for each edge in the store, if any */
     private final AttributeReference<SplitLongArray> TO_NODE_IDENTIFIER =
             new AttributeReference<>(this, EdgeAttributes.get().TO_NODE_IDENTIFIER, "toNodeIdentifier",
                     () -> (SplitLongArray) new SplitLongArray("toNodeIdentifier").initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
-    private SplitLongArray toNodeIdentifier;
-
     /** ============ The "to" vertex identifiers for edges in this store */
     private final AttributeReference<SplitIntArray> TO_VERTEX_IDENTIFIER =
             new AttributeReference<>(this, EdgeAttributes.get().TO_VERTEX_IDENTIFIER, "toVertexIdentifier",
                     () -> (SplitIntArray) new SplitIntArray("toVertexIdentifier").initialSize(estimatedElements()));
-
-    @KivaKitArchivedField
-    private SplitIntArray toVertexIdentifier;
 
     /** ============ A reverse map from way identifier back to edge identifiers */
     private final AttributeReference<LongToIntMultiMap> WAY_IDENTIFIER_TO_EDGE_INDEX =
@@ -400,35 +319,116 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
                     () -> (LongToIntMultiMap) new LongToIntMultiMap("wayIdentifierToEdgeIndex")
                             .initialSize(metadata().wayCount(ALLOW_ESTIMATE).asEstimate()));
 
+    /** ============ The relation identifiers of ways */
+    private final AttributeReference<LongToLongFixedMultiMap> WAY_IDENTIFIER_TO_RELATIONS = new AttributeReference<>(this, EdgeAttributes.get().RELATIONS, "wayIdentifierToRelationIdentifiers",
+            () -> (LongToLongFixedMultiMap) new LongToLongFixedMultiMap("wayIdentifierToRelationIdentifiers")
+                    .initialChildSize(GraphLimits.Estimated.RELATIONS_PER_EDGE)
+                    .initialSize(estimatedElements()));
+
     @KivaKitArchivedField
-    private LongToIntMultiMap wayIdentifierToEdgeIndex;
+    private SplitLongArray boundsBottomLeft;
+
+    @KivaKitArchivedField
+    private SplitLongArray boundsTopRight;
+
+    @KivaKitArchivedField
+    private SplitPackedArray bridgeType;
+
+    /** Used by tests */
+    private boolean commitSpatialIndex = true;
 
     /**
-     * The number of edges in this graph (this is different from edgeIndex because edge count reflects two way edges,
+     * The number of edges in this graph (this is different from edgeIndex because edge count reflects two-way edges,
      * while edge index does not)
      */
     @KivaKitArchivedField
     private int count;
 
-    /** A spatial index for the edges in this graph */
-    @KivaKitArchivedField(lazy = true)
-    private CompressedEdgeSpatialIndex spatialIndex;
+    @KivaKitArchivedField
+    private SplitPackedArray country;
 
-    /** Edges that are clean cut by location */
-    private transient Map<Location, Edge> temporaryCleanCuts = new HashMap<>();
+    @KivaKitArchivedField
+    private SplitPackedArray freeFlowSpeedCategory;
 
-    /** Next relation identifier */
-    private RelationIdentifier nextRelationIdentifier = new RelationIdentifier(1_000_000_000);
+    @KivaKitArchivedField
+    private SplitLongArray fromNodeIdentifier;
+
+    @KivaKitArchivedField
+    private SplitIntArray fromVertexIdentifier;
+
+    @KivaKitArchivedField
+    private SplitPackedArray hovLaneCount;
+
+    @KivaKitArchivedField
+    private IntToByteMap isClosedToThroughTraffic;
+
+    @KivaKitArchivedField
+    private IntToByteMap isTollRoad;
+
+    @KivaKitArchivedField
+    private IntToByteMap isUnderConstruction;
+
+    @KivaKitArchivedField
+    private SplitPackedArray laneCount;
+
+    @KivaKitArchivedField
+    private SplitIntArray lengthInMillimeters;
 
     /** True if merging edges into this store */
     private boolean merging;
 
-    /** Used by tests */
-    private boolean commitSpatialIndex = true;
+    /** Next relation identifier */
+    private RelationIdentifier nextRelationIdentifier = new RelationIdentifier(1_000_000_000);
+
+    @KivaKitArchivedField
+    private SplitPackedArray roadFunctionalClass;
+
+    @KivaKitArchivedField
+    private RoadNameStore roadName;
+
+    @KivaKitArchivedField
+    private SplitPolylineStore roadShape;
+
+    @KivaKitArchivedField
+    private ByteArray roadState;
+
+    @KivaKitArchivedField
+    private SplitPackedArray roadSubType;
+
+    @KivaKitArchivedField
+    private SplitPackedArray roadSurface;
+
+    @KivaKitArchivedField
+    private SplitPackedArray roadType;
+
+    /** A spatial index for the edges in this graph */
+    @KivaKitArchivedField(lazy = true)
+    private CompressedEdgeSpatialIndex spatialIndex;
+
+    @KivaKitArchivedField
+    private SplitByteArray speedLimit;
+
+    @KivaKitArchivedField
+    private SplitIntArray speedPatternIdentifier;
+
+    /** Edges that are clean cut by location */
+    private transient Map<Location, Edge> temporaryCleanCuts = new HashMap<>();
 
     private LongLinkedListStore temporaryRelations;
 
     private LongToIntMap temporaryWayIdentifierToRelationIndex;
+
+    @KivaKitArchivedField
+    private SplitLongArray toNodeIdentifier;
+
+    @KivaKitArchivedField
+    private SplitIntArray toVertexIdentifier;
+
+    @KivaKitArchivedField
+    private LongToIntMultiMap wayIdentifierToEdgeIndex;
+
+    @KivaKitArchivedField
+    private LongToLongFixedMultiMap wayIdentifierToRelationIdentifiers;
 
     protected EdgeStore(Graph graph)
     {
@@ -675,7 +675,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     }
 
     /**
-     * @return The country for the given edge, as determined by the from vertex.
+     * @return The country for the given edge, as determined by the 'from' vertex.
      */
     public final Country retrieveCountry(Edge edge)
     {
@@ -714,7 +714,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     }
 
     /**
-     * @return The node identifier of the from vertex
+     * @return The node identifier of the 'from' vertex
      */
     public final MapNodeIdentifier retrieveFromNodeIdentifier(Edge edge)
     {
@@ -729,7 +729,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     }
 
     /**
-     * @return The vertex identifier of the from vertex
+     * @return The vertex identifier of the 'from' vertex
      */
     public final int retrieveFromVertexIdentifier(Edge edge)
     {
@@ -1036,7 +1036,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
             }
             else
             {
-                // otherwise create the index from scratch
+                // otherwise, create the index from scratch
                 spatialIndex = new CompressedEdgeBulkSpatialIndexer(this).index(graph());
             }
         }
@@ -1045,7 +1045,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
     }
 
     /**
-     * Stores all of the simple attributes of the given edge using the given edge index
+     * Stores all the simple attributes of the given edge using the given edge index
      *
      * @see GraphElementStore#retrieveIndex(GraphElement)
      */
@@ -1520,9 +1520,10 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
 
     private void configureSerializer()
     {
-        var kryo = (KryoSerializationSession) SerializationSession.threadLocal(this);
-        var types = kryo.kryoTypes();
-        types.registerDynamic(CompressedEdgeSpatialIndex.class, new CompressedEdgeSpatialIndexKryoSerializer(graph()),
+        var session = require(KryoSerializationSessionFactory.class).newSession(this);
+        var types = session.kryoTypes();
+        types.registerDynamic(CompressedEdgeSpatialIndex.class,
+                new CompressedEdgeSpatialIndexKryoSerializer(graph()),
                 CompressedEdgeSpatialIndexKryoSerializer.IDENTIFIER);
     }
 
@@ -1539,7 +1540,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
         // Get road shape and start/end location from that
         var shape = edge.roadShape();
 
-        // If the from node needs to be fused
+        // If the 'from' node needs to be fused
         if (edge.fromNodeIdentifier() == null)
         {
             var start = shape.start();
@@ -1568,7 +1569,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge>
             }
         }
 
-        // If the to node needs to be fused
+        // If the 'to' node needs to be fused
         if (edge.toNodeIdentifier() == null)
         {
             var end = shape.end();

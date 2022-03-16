@@ -5,7 +5,6 @@ open module mesakit.map.ui.desktop
 
     requires transitive kivakit.network.http;
     requires transitive kivakit.ui.desktop;
-    requires kivakit.test;
 
     requires org.apache.httpcomponents.httpclient;
 
@@ -19,5 +18,4 @@ open module mesakit.map.ui.desktop
     exports com.telenav.mesakit.map.ui.desktop.viewer.empty;
     exports com.telenav.mesakit.map.ui.desktop.graphics.canvas.projections;
     exports com.telenav.mesakit.map.ui.desktop.graphics.style;
-    exports com.telenav.mesakit.map.ui.desktop;
 }

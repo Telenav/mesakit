@@ -1,18 +1,18 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
+import com.telenav.kivakit.core.string.AsciiArt;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.CharacterFrequencies;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.StringFrequencies;
 import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.kernel.language.strings.AsciiArt;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.language.values.count.Minimum;
-import com.telenav.kivakit.kernel.language.values.count.MutableCount;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.value.count.Minimum;
+import com.telenav.kivakit.core.value.count.MutableCount;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
@@ -22,7 +22,7 @@ import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.RelationFilter;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.WayFilter;
 import com.telenav.mesakit.map.data.formats.pbf.processing.readers.SerialPbfReader;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelCompression;
+import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelCompression;
 
 import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
@@ -271,10 +271,10 @@ public class PbfTagCodecBuilder
         System.out.println(AsciiArt.box("Value String Codec"));
         System.out.println(valueStringCodec);
 
-        keyCharacterCodec.asProperties().save(keyCharacterCodec.toString(), File.parse(Listener.console(), "default-key-character.codec"));
-        valueCharacterCodec.asProperties().save(valueCharacterCodec.toString(), File.parse(Listener.console(), "default-value-character.codec"));
-        keyStringCodec.asProperties().save(keyStringCodec.toString(), File.parse(Listener.console(), "default-key-string.codec"));
-        valueStringCodec.asProperties().save(valueStringCodec.toString(), File.parse(Listener.console(), "default-value-string.codec"));
+        keyCharacterCodec.asProperties().save(keyCharacterCodec.toString(), File.parseFile(Listener.console(), "default-key-character.codec"));
+        valueCharacterCodec.asProperties().save(valueCharacterCodec.toString(), File.parseFile(Listener.console(), "default-value-character.codec"));
+        keyStringCodec.asProperties().save(keyStringCodec.toString(), File.parseFile(Listener.console(), "default-key-string.codec"));
+        valueStringCodec.asProperties().save(valueStringCodec.toString(), File.parseFile(Listener.console(), "default-value-string.codec"));
     }
 
     public PbfTagCodecBuilder relationFilter(RelationFilter relationFilter)

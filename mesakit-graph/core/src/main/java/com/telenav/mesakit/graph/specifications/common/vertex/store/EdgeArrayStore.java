@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.graph.specifications.common.vertex.store;
 
-import com.telenav.kivakit.kernel.interfaces.naming.NamedObject;
-import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
-import com.telenav.kivakit.kernel.language.iteration.Iterables;
-import com.telenav.kivakit.kernel.language.iteration.Next;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
+import com.telenav.kivakit.core.collections.iteration.Iterables;
+import com.telenav.kivakit.core.collections.iteration.Next;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitByteArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
 import com.telenav.kivakit.primitive.collections.iteration.IntIterator;

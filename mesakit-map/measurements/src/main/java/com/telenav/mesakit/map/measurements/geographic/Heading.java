@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.measurements.geographic;
 
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.measurements.project.lexakai.diagrams.DiagramMapMeasurementGeographic;
+import com.telenav.mesakit.map.measurements.lexakai.DiagramMapMeasurementGeographic;
 
 import java.util.regex.Pattern;
 
@@ -41,7 +41,7 @@ import java.util.regex.Pattern;
  *
  * @author jonathanl (shibo)
  */
-@UmlClassDiagram(diagram = DiagramMapMeasurementGeographic.class)
+@SuppressWarnings("SpellCheckingInspection") @UmlClassDiagram(diagram = DiagramMapMeasurementGeographic.class)
 @LexakaiJavadoc(complete = true)
 public class Heading extends Angle implements Headed
 {
@@ -91,7 +91,7 @@ public class Heading extends Angle implements Headed
 
     /**
      * Converts the given <code>String</code> to a new <code>Heading</code> object. The input string is expected to be
-     * of the format of a floating point number followed by a units identifier (just "degrees" for right now). Examples
+     * of the format of a floating point number followed by a unit identifier (just "degrees" for right now). Examples
      * would include '1 degree', '180.3 degrees'.
      *
      * @author jonathanl (shibo)

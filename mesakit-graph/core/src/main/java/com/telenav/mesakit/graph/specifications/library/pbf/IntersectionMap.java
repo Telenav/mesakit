@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.graph.specifications.library.pbf;
 
-import com.telenav.kivakit.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.kernel.language.collections.CompressibleCollection;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToByteMap;
 import com.telenav.kivakit.primitive.collections.set.SplitLongSet;
-import com.telenav.mesakit.map.region.project.RegionLimits;
+import com.telenav.mesakit.map.region.RegionLimits;
 import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 /**
  * Determines which nodes are intersections by counting the number of times that {@link WayNode}s are referenced by

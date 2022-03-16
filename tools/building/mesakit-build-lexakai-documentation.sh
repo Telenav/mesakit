@@ -12,8 +12,8 @@ source mesakit-projects.sh
 
 for project_home in "${MESAKIT_PROJECT_HOMES[@]}"; do
 
-    project_name=$(project_name $project_home)
+    project_name=$(project_name "$project_home")
 
-    lexakai -project-version=$MESAKIT_VERSION -output-folder=$MESAKIT_ASSETS_HOME/docs/$MESAKIT_VERSION/lexakai/$project_name $project_home
+    lexakai -project-version="$MESAKIT_VERSION" -output-folder="$MESAKIT_ASSETS_HOME"/docs/"$MESAKIT_VERSION"/lexakai/"$project_name" "$project_home"
 
 done

@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.geography.shape.segment;
 
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramSegment;
+import com.telenav.mesakit.map.geography.lexakai.DiagramSegment;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
 import com.telenav.mesakit.map.measurements.geographic.Heading;

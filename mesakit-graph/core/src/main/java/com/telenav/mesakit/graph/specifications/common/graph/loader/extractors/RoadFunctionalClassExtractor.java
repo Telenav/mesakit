@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.kernel.language.primitives.Ints;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.core.language.primitive.Ints;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.extraction.BaseExtractor;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.road.model.RoadFunctionalClass;
 
@@ -66,6 +66,7 @@ public class RoadFunctionalClassExtractor extends BaseExtractor<RoadFunctionalCl
         roadFunctionalClassForHighway.put("construction", FOURTH_CLASS);
         roadFunctionalClassForHighway.put("path", FOURTH_CLASS);
         roadFunctionalClassForHighway.put("cycleway", FOURTH_CLASS);
+        //noinspection SpellCheckingInspection
         roadFunctionalClassForHighway.put("bus_guideway", FOURTH_CLASS);
         roadFunctionalClassForHighway.put("minor", FOURTH_CLASS);
         roadFunctionalClassForHighway.put("turning_circle", FOURTH_CLASS);
@@ -85,17 +86,18 @@ public class RoadFunctionalClassExtractor extends BaseExtractor<RoadFunctionalCl
         var hereFunctionalClass = way.tagValue("functional_class");
         if (hereFunctionalClass != null)
         {
-            var value = Ints.parse(this, hereFunctionalClass);
+            var value = Ints.parseInt(this, hereFunctionalClass);
             if (value != Ints.INVALID)
             {
                 return RoadFunctionalClass.forInvertedIdentifier(value);
             }
         }
 
+        @SuppressWarnings("SpellCheckingInspection")
         var navteqFunctionalClass = way.tagValue("fc");
         if (navteqFunctionalClass != null)
         {
-            var value = Ints.parse(this, navteqFunctionalClass);
+            var value = Ints.parseInt(this, navteqFunctionalClass);
             if (value != Ints.INVALID)
             {
                 return RoadFunctionalClass.forIdentifier(value);

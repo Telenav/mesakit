@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.kivakit.kernel.data.extraction.BaseExtractor;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.extraction.BaseExtractor;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 
 public class LaneCountExtractor extends BaseExtractor<Count, PbfWay>

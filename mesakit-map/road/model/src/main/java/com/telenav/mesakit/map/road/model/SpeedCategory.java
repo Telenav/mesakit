@@ -18,8 +18,9 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.core.value.QuantizableConverter;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.interfaces.numeric.Quantizable;
 import com.telenav.mesakit.map.measurements.motion.Speed;
 
 import java.util.HashMap;
@@ -74,7 +75,7 @@ public class SpeedCategory implements Quantizable
         return fastest();
     }
 
-    public static class Converter extends Quantizable.Converter<SpeedCategory>
+    public static class Converter extends QuantizableConverter<SpeedCategory>
     {
         public Converter(Listener listener)
         {
@@ -84,9 +85,9 @@ public class SpeedCategory implements Quantizable
 
     private final int identifier;
 
-    private final Speed minimum;
-
     private final Speed maximum;
+
+    private final Speed minimum;
 
     private SpeedCategory(int identifier, Speed minimum, Speed maximum)
     {

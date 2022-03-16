@@ -23,44 +23,42 @@ import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.language.object.KivaKitFormatProperty;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
+import com.telenav.kivakit.core.string.AsIndentedString;
+import com.telenav.kivakit.core.string.AsStringIndenter;
+import com.telenav.kivakit.core.string.Strip;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.level.Percent;
+import com.telenav.kivakit.core.value.mutable.MutableValue;
+import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.list.HuffmanStringListCodec;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.data.validation.BaseValidator;
-import com.telenav.kivakit.kernel.data.validation.Validatable;
-import com.telenav.kivakit.kernel.data.validation.ValidationType;
-import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.language.progress.reporters.Progress;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.kernel.language.strings.Strip;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsStringIndenter;
-import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
-import com.telenav.kivakit.kernel.language.strings.formatting.KivaKitFormatProperty;
-import com.telenav.kivakit.kernel.language.values.count.Bytes;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.language.values.level.Percent;
-import com.telenav.kivakit.kernel.language.values.mutable.MutableValue;
-import com.telenav.kivakit.kernel.language.values.version.Version;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.path.FileName;
-import com.telenav.kivakit.resource.resources.other.PropertyMap;
+import com.telenav.kivakit.resource.PropertyMap;
+import com.telenav.kivakit.validation.BaseValidator;
+import com.telenav.kivakit.validation.Validatable;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.metadata.DataBuild;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
 import com.telenav.mesakit.graph.metadata.DataSupplier;
 import com.telenav.mesakit.graph.metadata.DataVersion;
-import com.telenav.mesakit.graph.project.GraphLimits;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 import com.telenav.mesakit.map.data.formats.library.DataFormat;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
@@ -82,9 +80,9 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 import static com.telenav.mesakit.graph.Metadata.CountType.REQUIRE_EXACT;
 import static com.telenav.mesakit.graph.metadata.DataSupplier.OSM;
@@ -132,7 +130,7 @@ import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
  *     <li>{@link #graphElementCount(CountType)}</li>
  * </ul>
  * <p>
- * {@link Metadata} objects are {@link KryoSerializable} and implement {@link AsString}. They are also
+ * {@link Metadata} objects are {@link KryoSerializable} and implement {@link Stringable}. They are also
  * {@link Validatable} and can be validated with the {@link Validator} returned by {@link #validator(ValidationType)}.
  * If no validation of statistics is desired the {@link ValidationType} VALIDATE_EXCEPT_STATISTICS can be passed as the
  * validation type. For convenience, full validation can be performed with {@link #isValid(Listener)}.
@@ -150,7 +148,7 @@ import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
  * @see Version
  * @see KryoSerializable
  * @see Validatable
- * @see AsString
+ * @see Stringable
  */
 @SuppressWarnings("DuplicateBranchesInSwitch")
 public class Metadata implements Named, AsIndentedString, KryoSerializable, Validatable
@@ -194,12 +192,12 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      */
     public static Metadata from(File input, CountType countType)
     {
-        input = input.materialized(Progress.create(LOGGER));
+        input = input.materialized(BroadcastingProgressReporter.create(LOGGER));
         var format = DataFormat.of(input);
         switch (format)
         {
             case Graph:
-                try (var archive = new GraphArchive(LOGGER, input, ZipArchive.Mode.READ, ProgressReporter.NULL))
+                try (var archive = new GraphArchive(LOGGER, input, ZipArchive.Mode.READ, ProgressReporter.none()))
                 {
                     return archive.metadata();
                 }
@@ -384,20 +382,32 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         }
     }
 
-    /** The name of the graph data */
-    private String name;
+    /** Bounds of data */
+    private Rectangle dataBounds;
 
-    /** Number of nodes in the data */
-    private Count nodes;
+    /** Data build */
+    private DataBuild dataBuild;
 
-    /** Number of ways in the data */
-    private Count ways;
+    /** StringFormat of data, like PBF or CSV */
+    private DataFormat dataFormat;
 
-    /** Number of relations in the data */
-    private Count relations;
+    /** The precision of the data like DM5, DM6 or DM7 */
+    private Precision dataPrecision;
 
-    /** Number of vertexes in the data */
-    private Count vertexes;
+    /** The size of the resource */
+    private Bytes dataSize;
+
+    /** The specification for the data */
+    private DataSpecification dataSpecification;
+
+    /** The supplier of data */
+    private DataSupplier dataSupplier;
+
+    /** Data version */
+    private DataVersion dataVersion;
+
+    /** Number of edge relations */
+    private Count edgeRelations;
 
     /** Number of edges in the data */
     private Count edges;
@@ -405,42 +415,20 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /** Number of forward edges in the data */
     private Count forwardEdges;
 
-    /** Number of edge relations */
-    private Count edgeRelations;
+    /** Frequencies for compressing keys by character */
+    private PropertyMap keyCharacterCodecFrequencies;
+
+    /** Frequencies for compressing keys */
+    private PropertyMap keyStringCodecFrequencies;
+
+    /** The name of the graph data */
+    private String name;
+
+    /** Number of nodes in the data */
+    private Count nodes;
 
     /** Number of places in the data */
     private Count places;
-
-    /**
-     * Number of shape points in the data. Shape points are nodes between vertexes. Graph files do not normally have
-     * shape points. This feature is only used when graph files contain all node information, such as when editing OSM
-     * data for upload with tools like Cygnus.
-     */
-    private Count shapePoints = Count._0;
-
-    /** The size of the resource */
-    private Bytes dataSize;
-
-    /** Bounds of data */
-    private Rectangle dataBounds;
-
-    /** Data build */
-    private DataBuild dataBuild;
-
-    /** Data version */
-    private DataVersion dataVersion;
-
-    /** The precision of the data like DM5, DM6 or DM7 */
-    private Precision dataPrecision;
-
-    /** StringFormat of data, like PBF or CSV */
-    private DataFormat dataFormat;
-
-    /** The supplier of data */
-    private DataSupplier dataSupplier;
-
-    /** The specification for the data */
-    private DataSpecification dataSpecification;
 
     /**
      * PropertyMap defined by a {@link DataSpecification}, {@link DataFormat} or {@link DataSupplier}. For example, the
@@ -449,14 +437,24 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      */
     private final Map<String, String> properties = new HashMap<>();
 
+    /** Number of relations in the data */
+    private Count relations;
+
+    /** Codec for compressing road names */
+    private HuffmanCharacterCodec roadNameCharacterCodec;
+
+    /** Codec frequencies for road names */
+    private PropertyMap roadNameCharacterCodecFrequencies;
+
+    /**
+     * Number of shape points in the data. Shape points are nodes between vertexes. Graph files do not normally have
+     * shape points. This feature is only used when graph files contain all node information, such as when editing OSM
+     * data for upload with tools like Cygnus.
+     */
+    private Count shapePoints = Count._0;
+
     /** Tag codec */
     private PbfTagCodec tagCodec;
-
-    /** Frequencies for compressing keys by character */
-    private PropertyMap keyCharacterCodecFrequencies;
-
-    /** Frequencies for compressing keys */
-    private PropertyMap keyStringCodecFrequencies;
 
     /** Frequencies for compressing value by character */
     private PropertyMap valueCharacterCodecFrequencies;
@@ -464,11 +462,11 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /** Frequencies for compressing values */
     private PropertyMap valueStringCodecFrequencies;
 
-    /** Codec frequencies for road names */
-    private PropertyMap roadNameCharacterCodecFrequencies;
+    /** Number of vertexes in the data */
+    private Count vertexes;
 
-    /** Codec for compressing road names */
-    private HuffmanCharacterCodec roadNameCharacterCodec;
+    /** Number of ways in the data */
+    private Count ways;
 
     public Metadata()
     {
@@ -555,7 +553,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     @Override
-    public AsStringIndenter asString(StringFormat format, AsStringIndenter indenter)
+    public AsStringIndenter asString(Stringable.Format format, AsStringIndenter indenter)
     {
         indenter.asString(this);
         indenter.labeled("nodes", nodeCount(REQUIRE_EXACT));
@@ -654,7 +652,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      * @return The data's specification
      */
     @KivaKitIncludeProperty
-    @KivaKitFormatProperty(format = "toString")
+    @KivaKitFormatProperty
     public DataSpecification dataSpecification()
     {
         return dataSpecification;
@@ -882,7 +880,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     {
         if (roadNameCharacterCodec == null)
         {
-            roadNameCharacterCodec = HuffmanCharacterCodec.from(roadNameCharacterCodecFrequencies, ESCAPE);
+            roadNameCharacterCodec = HuffmanCharacterCodec.from(Listener.throwing(), roadNameCharacterCodecFrequencies, ESCAPE);
         }
         return roadNameCharacterCodec;
     }
@@ -1266,7 +1264,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         var descriptor = tags.get("telenav-data-descriptor");
 
         var build = tags.get("telenav-data-build");
-        var size = Bytes.parse(Listener.none(), tags.get("telenav-data-size"));
+        var size = Bytes.parseBytes(Listener.none(), tags.get("telenav-data-size"));
         var precision = tags.get("telenav-data-precision");
         var bounds = tags.get("telenav-data-bounds");
         var nodes = tags.get("telenav-data-nodes");

@@ -19,11 +19,11 @@
 package com.telenav.mesakit.graph.identifiers;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.kernel.data.conversion.BaseConverter;
-import com.telenav.kivakit.kernel.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitExcludeProperty;
-import com.telenav.kivakit.kernel.language.values.identifier.Identifier;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.BaseConverter;
+import com.telenav.kivakit.conversion.core.value.QuantizableConverter;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.value.identifier.Identifier;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
@@ -70,6 +70,7 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
      * S = 6 digit sequence number
      * </pre>
      */
+    @SuppressWarnings("SpellCheckingInspection")
     public static final long MAXIMUM_SEQUENCE_NUMBER = 999_999;
 
     public static final long SEQUENCE_NUMBER_SHIFT = 1_000_000;
@@ -86,6 +87,7 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
      * E = edge section number
      * </pre>
      */
+    @SuppressWarnings("SpellCheckingInspection")
     public static final long SEQUENCE_NUMBER_EDGE_SECTION_INCREMENT = 1;
 
     /**
@@ -101,6 +103,7 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
      * E = edge section number
      * </pre>
      */
+    @SuppressWarnings("SpellCheckingInspection")
     private static final long MAXIMUM_CHUNK_NUMBER = 9999;
 
     private static final long CHUNK_NUMBER_INCREMENT = MAXIMUM_CHUNK_NUMBER + 1;
@@ -155,7 +158,7 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
         }
     }
 
-    public static class Converter extends Quantizable.Converter<EdgeIdentifier>
+    public static class Converter extends QuantizableConverter<EdgeIdentifier>
     {
         public Converter(Listener listener)
         {
@@ -217,7 +220,7 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
     }
 
     /**
-     * @return An way identifier for this edge identifier
+     * @return A way identifier for this edge identifier
      */
     public PbfWayIdentifier asWayIdentifier()
     {

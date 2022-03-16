@@ -18,8 +18,10 @@
 
 package com.telenav.mesakit.map.ui.debug;
 
-import com.telenav.kivakit.kernel.language.time.Duration;
-import com.telenav.kivakit.kernel.language.values.level.Percent;
+import com.telenav.kivakit.core.time.Duration;
+
+import com.telenav.kivakit.core.value.level.Percent;
+
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.ui.desktop.graphics.drawables.MapDrawable;
 import com.telenav.mesakit.map.ui.desktop.viewer.DrawableIdentifier;

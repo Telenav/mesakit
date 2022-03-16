@@ -19,12 +19,12 @@
 package com.telenav.mesakit.map.cutter.cuts.maps;
 
 import com.telenav.kivakit.collections.map.MultiMap;
-import com.telenav.kivakit.kernel.language.vm.JavaVirtualMachine.KivaKitExcludeFromSizeOf;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine.KivaKitExcludeFromSizeOf;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionSet;
-import com.telenav.mesakit.map.region.project.RegionLimits;
+import com.telenav.mesakit.map.region.RegionLimits;
 import org.openstreetmap.osmosis.core.domain.v0_6.Way;
 
 import java.util.ArrayList;

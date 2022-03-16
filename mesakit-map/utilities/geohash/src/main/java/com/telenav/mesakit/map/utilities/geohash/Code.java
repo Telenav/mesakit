@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.utilities.geohash;
 
-import com.telenav.kivakit.kernel.language.objects.Hash;
+import com.telenav.kivakit.core.language.Hash;
 
 import java.util.Collection;
 import java.util.HashSet;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 public class Code implements CharSequence
 {

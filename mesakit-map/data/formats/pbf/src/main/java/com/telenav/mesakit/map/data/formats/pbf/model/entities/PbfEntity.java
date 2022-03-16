@@ -1,17 +1,16 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.entities;
 
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagFilter;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfModelEntities;
+import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelEntities;
 import org.jetbrains.annotations.NotNull;
 import org.openstreetmap.osmosis.core.domain.v0_6.Entity;
 import org.openstreetmap.osmosis.core.domain.v0_6.EntityType;
@@ -20,9 +19,6 @@ import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.Date;
 import java.util.Iterator;
-
-import static com.telenav.kivakit.kernel.language.strings.conversion.StringFormat.PROGRAMMATIC_IDENTIFIER;
-import static com.telenav.kivakit.kernel.language.strings.conversion.StringFormat.USER_LABEL_IDENTIFIER;
 
 /**
  * This wrapper (and {@link PbfNode}, {@link PbfWay} and {@link PbfRelation} subclasses) adds a slight amount of
@@ -35,14 +31,14 @@ import static com.telenav.kivakit.kernel.language.strings.conversion.StringForma
  * @author jonathanl (shibo)
  */
 @UmlClassDiagram(diagram = DiagramPbfModelEntities.class)
-@UmlExcludeSuperTypes({ AsString.class, Iterable.class })
-public abstract class PbfEntity<T extends Entity> implements AsString, Iterable<Tag>
+@UmlExcludeSuperTypes({ Stringable.class, Iterable.class })
+public abstract class PbfEntity<T extends Entity> implements Stringable, Iterable<Tag>
 {
     private final T entity;
 
-    private PbfTagMap tagMap;
-
     private PbfTagList tagList;
+
+    private PbfTagMap tagMap;
 
     public PbfEntity(T entity)
     {
@@ -50,14 +46,14 @@ public abstract class PbfEntity<T extends Entity> implements AsString, Iterable<
     }
 
     @Override
-    public String asString(StringFormat format)
+    public String asString(Format format)
     {
-        switch (format.identifier())
+        switch (format)
         {
-            case PROGRAMMATIC_IDENTIFIER:
+            case PROGRAMMATIC:
                 return Long.toString(identifierAsLong());
 
-            case USER_LABEL_IDENTIFIER:
+            case USER_LABEL:
             default:
                 return "[" + type() + " id = " + entity.getId() + ", tags = " + tagList() + "]";
         }
@@ -199,7 +195,7 @@ public abstract class PbfEntity<T extends Entity> implements AsString, Iterable<
     @Override
     public String toString()
     {
-        return asString(StringFormat.USER_LABEL);
+        return asString(Format.USER_LABEL);
     }
 
     public EntityType type()

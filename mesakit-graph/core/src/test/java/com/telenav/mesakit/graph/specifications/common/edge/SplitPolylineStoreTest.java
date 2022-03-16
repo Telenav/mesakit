@@ -18,17 +18,19 @@
 
 package com.telenav.mesakit.graph.specifications.common.edge;
 
-import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
-import com.telenav.kivakit.kernel.language.values.count.Estimate;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.string.Separators;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.mesakit.graph.Edge;
-import com.telenav.mesakit.graph.project.GraphUnitTest;
+import com.telenav.mesakit.graph.GraphUnitTest;
 import com.telenav.mesakit.graph.specifications.common.edge.store.stores.polyline.SplitPolylineStore;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
 import org.junit.Test;
+
+import java.util.Objects;
 
 public class SplitPolylineStoreTest extends GraphUnitTest
 {
@@ -76,18 +78,18 @@ public class SplitPolylineStoreTest extends GraphUnitTest
     private CompressedPolyline a()
     {
         return CompressedPolyline.fromLocationSequence(
-                polylineConverter.convert("80.511852,-151.797959:81.749402,-28.202041:8.250598,-20.468993"));
+                Objects.requireNonNull(polylineConverter.convert("80.511852,-151.797959:81.749402,-28.202041:8.250598,-20.468993")));
     }
 
     private CompressedPolyline b()
     {
         return CompressedPolyline.fromLocationSequence(
-                polylineConverter.convert("-7.226838,-17.942127:4.637036,0.057873:4.637036,0.05789:9.0,-21.879387:9.0,-21.879386"));
+                Objects.requireNonNull(polylineConverter.convert("-7.226838,-17.942127:4.637036,0.057873:4.637036,0.05789:9.0,-21.879387:9.0,-21.879386")));
     }
 
     private CompressedPolyline c()
     {
         return CompressedPolyline.fromLocationSequence(
-                polylineConverter.convert("37.38686,-121.99797:37.387,-121.99794:37.38773,-121.99851"));
+                Objects.requireNonNull(polylineConverter.convert("37.38686,-121.99797:37.387,-121.99794:37.38773,-121.99851")));
     }
 }

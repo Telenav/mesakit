@@ -18,17 +18,17 @@
 
 package com.telenav.mesakit.map.geography.indexing.polygon;
 
-import com.telenav.kivakit.resource.resources.packaged.PackageResource;
-import com.telenav.kivakit.test.annotations.SlowTests;
+import com.telenav.kivakit.core.test.SlowTest;
+import com.telenav.kivakit.resource.resources.PackageResource;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
+import com.telenav.mesakit.map.geography.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-@Category({ SlowTests.class })
+@Category({ SlowTest.class })
 public class PolygonSpatialIndexTest extends GeographyUnitTest
 {
     @Test
@@ -126,7 +126,7 @@ public class PolygonSpatialIndexTest extends GeographyUnitTest
                 Location.ORIGIN.moved(Heading.NORTHWEST, Distance.kilometers(100)));
         ensure(polygon.isCounterClockwise());
         var spatialIndex = new PolygonSpatialIndex(polygon);
-        serializationTest(spatialIndex);
+        testSerialization(spatialIndex);
     }
 
     private void testPolygonIndex(Polygon polygon)

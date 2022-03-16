@@ -18,12 +18,13 @@
 
 package com.telenav.mesakit.map.ui.desktop.viewer.desktop;
 
-import com.telenav.kivakit.kernel.language.threading.conditions.StateMachine;
-import com.telenav.kivakit.kernel.language.time.Duration;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.language.values.level.Percent;
-import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.messaging.Message;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.os.Console;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.thread.StateMachine;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.value.level.Percent;
 import com.telenav.kivakit.network.core.Host;
 import com.telenav.kivakit.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.ui.desktop.component.KivaKitPanel;
@@ -64,7 +65,7 @@ import java.awt.event.MouseWheelListener;
 import java.awt.geom.Point2D;
 import java.util.function.Function;
 
-import static com.telenav.kivakit.kernel.language.strings.conversion.StringFormat.USER_LABEL;
+import static com.telenav.kivakit.interfaces.string.Stringable.Format.USER_LABEL;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle.pixels;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle.rectangle;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.surfaces.java2d.Java2dDrawingSurface.surface;
@@ -82,6 +83,7 @@ import static com.telenav.mesakit.map.ui.desktop.viewer.desktop.DesktopViewPanel
  *
  * @author jonathanl (shibo)
  */
+@SuppressWarnings("GrazieInspection")
 class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMotionListener, MouseListener, MouseWheelListener
 {
     /**
@@ -94,56 +96,56 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
         STEPPING
     }
 
-    /** Map of {@link MapDrawable} objects in the display */
-    private final ViewModel viewModel = new ViewModel();
+    /** Location of cursor when not dragging */
+    private Location cursorAt;
 
-    /** The center of the current view */
-    private Location viewCenter = Location.ORIGIN;
+    /** Delay between frames when running */
+    private Duration delay = Duration.NONE;
 
-    /** The view area being displayed */
-    private Rectangle viewArea;
+    /** The point where dragging started when zooming or panning */
+    private DrawingPoint dragStart;
+
+    /** The drawing surface of the entire panel */
+    private Java2dDrawingSurface drawingSurface;
+
+    /** True if the map is currently zoomed in at all */
+    private boolean isZoomedIn;
 
     /** The canvas to draw on */
     private MapCanvas mapCanvas;
 
-    /** Location of cursor when not dragging */
-    private Location cursorAt;
-
     /** Translates between the view area and drawing coordinates */
     private MapProjection mapProjection;
 
+    /** Cache of slippy tile images */
+    private SlippyTileImageCache mapTileCache;
+
+    /** The original coordinate mapper that was being used when panning started */
+    private MapProjection panProjection;
+
+    /** The original center point that was visible when panning started */
+    private Location panStart;
+
     /** True when this component is ready to paint itself */
     private boolean readyToPaint;
+
+    /** The state of the interactive view, {@link State#RUNNING}, {@link State#STEPPING} or {@link State#PAUSED} */
+    private final StateMachine<State> state = new StateMachine<>(PAUSED);
+
+    /** The view area being displayed */
+    private Rectangle viewArea;
+
+    /** The center of the current view */
+    private Location viewCenter = Location.ORIGIN;
+
+    /** Map of {@link MapDrawable} objects in the display */
+    private final ViewModel viewModel = new ViewModel();
 
     /** The current zoom level */
     private ZoomLevel zoom = FURTHEST;
 
     /** When drawing a zoom rectangle, this is the current rectangle */
     private DrawingRectangle zoomSelection;
-
-    /** The point where dragging started when zooming or panning */
-    private DrawingPoint dragStart;
-
-    /** The original center point that was visible when panning started */
-    private Location panStart;
-
-    /** The original coordinate mapper that was being used when panning started */
-    private MapProjection panProjection;
-
-    /** True if the map is currently zoomed in at all */
-    private boolean isZoomedIn;
-
-    /** The state of the interactive view, {@link State#RUNNING}, {@link State#STEPPING} or {@link State#PAUSED} */
-    private final StateMachine<State> state = new StateMachine<>(PAUSED);
-
-    /** Delay between frames when running */
-    private Duration delay = Duration.NONE;
-
-    /** Cache of slippy tile images */
-    private SlippyTileImageCache mapTileCache;
-
-    /** The drawing surface of the entire panel */
-    private Java2dDrawingSurface drawingSurface;
 
     /**
      * Construct
@@ -342,10 +344,10 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
             else
             {
                 // We're drawing a zoom selection rectangle, so get the width and height of it
-                Message.println("dragPoint = " + dragPoint);
-                Message.println("dragStart = " + dragStart);
+                Console.println("dragPoint = " + dragPoint);
+                Console.println("dragStart = " + dragStart);
                 var width = dragPoint.x() - dragStart.x();
-                Message.println("width = " + width);
+                Console.println("width = " + width);
                 var height = heightForWidth(width);
 
                 // If the selection is down and to the right
@@ -408,14 +410,14 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
 
         // project it to a map location,
         var pressedLocation = pointToLocation(pressedAt);
-        Message.println("Location = $", pressedLocation);
+        Console.println("Location = $", pressedLocation);
 
         // and if that location is valid,
         if (pressedLocation != null)
         {
             // then the user clicked on the map, which potentially starts a drag operation.
             dragStart = pressedAt;
-            Message.println("dragStart = " + dragStart);
+            Console.println("dragStart = " + dragStart);
 
             // If we're zoomed in and the control key is down,
             if (isZoomedIn && e.isControlDown())
@@ -644,9 +646,9 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
                 var y = tile.y();
                 var z = tile.getZoomLevel().level();
 
-                return new HttpNetworkLocation(Host.parse(this, "b.tile.openstreetmap.org")
+                return new HttpNetworkLocation(Host.parseHost(this, "b.tile.openstreetmap.org")
                         .http()
-                        .path(this, Message.format("/${long}/${long}/${long}.png", z, x, y)));
+                        .path(this, Strings.format("/${long}/${long}/${long}.png", z, x, y)));
             }
 
             /**

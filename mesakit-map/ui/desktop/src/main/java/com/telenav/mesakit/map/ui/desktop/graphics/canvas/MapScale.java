@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.ui.desktop.graphics.canvas;
 
-import com.telenav.kivakit.kernel.language.primitives.Doubles;
+import com.telenav.kivakit.core.language.primitive.Doubles;
 
 /**
  * The map scale, from street level to statewide level
@@ -37,7 +37,7 @@ public enum MapScale
     {
         for (var value : values())
         {
-            if (Doubles.isBetween(scale, value.minimum, value.maximum))
+            if (Doubles.isBetweenInclusive(scale, value.minimum, value.maximum))
             {
                 return value;
             }

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.name.parser.locales.indonesian;
 
-import com.telenav.kivakit.kernel.language.strings.CaseFormat;
+import com.telenav.kivakit.core.string.CaseFormat;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.BaseRoadNameParser;
 import com.telenav.mesakit.map.road.name.parser.ParsedRoadName;

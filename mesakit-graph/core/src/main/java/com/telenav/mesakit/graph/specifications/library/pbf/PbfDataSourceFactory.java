@@ -18,17 +18,17 @@
 
 package com.telenav.mesakit.graph.specifications.library.pbf;
 
-import com.telenav.kivakit.kernel.interfaces.factory.MapFactory;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.interfaces.factory.MapFactory;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataSource;
 import com.telenav.mesakit.map.data.formats.pbf.processing.readers.ParallelPbfReader;
 import com.telenav.mesakit.map.data.formats.pbf.processing.readers.SerialPbfReader;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensureNotNull;
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * Creates data sources of a given type to read a resource. The method {@link #newInstance(Metadata)} creates a data

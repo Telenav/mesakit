@@ -19,28 +19,27 @@
 package com.telenav.mesakit.map.geography;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.data.validation.BaseValidator;
-import com.telenav.kivakit.kernel.data.validation.Validatable;
-import com.telenav.kivakit.kernel.data.validation.ValidationType;
-import com.telenav.kivakit.kernel.data.validation.Validator;
-import com.telenav.kivakit.kernel.interfaces.model.Identifiable;
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.language.primitives.Longs;
-import com.telenav.kivakit.kernel.language.reflection.populator.KivaKitPropertyConverter;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.kernel.language.strings.conversion.StringFormat;
-import com.telenav.kivakit.kernel.language.strings.formatting.Separators;
-import com.telenav.kivakit.kernel.language.values.count.BitCount;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.conversion.core.language.object.KivaKitConverted;
+import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.language.primitive.Longs;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.Separators;
+import com.telenav.kivakit.core.value.count.BitCount;
+import com.telenav.kivakit.interfaces.model.Identifiable;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.math.trigonometry.Trigonometry;
+import com.telenav.kivakit.validation.BaseValidator;
+import com.telenav.kivakit.validation.Validatable;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
-import com.telenav.mesakit.map.geography.project.lexakai.diagrams.DiagramLocation;
+import com.telenav.mesakit.map.geography.lexakai.DiagramLocation;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Dimensioned;
 import com.telenav.mesakit.map.geography.shape.rectangle.Height;
@@ -57,8 +56,7 @@ import com.telenav.mesakit.map.measurements.geographic.Heading;
 import java.awt.Point;
 import java.io.Serializable;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
-import static com.telenav.kivakit.kernel.language.strings.conversion.StringFormat.USER_LABEL_IDENTIFIER;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.mesakit.map.geography.Precision.DM7;
 
 /**
@@ -129,9 +127,16 @@ import static com.telenav.mesakit.map.geography.Precision.DM7;
  */
 @SuppressWarnings("SwitchStatementWithTooFewBranches")
 @UmlClassDiagram(diagram = DiagramLocation.class)
-@UmlExcludeSuperTypes({ Validatable.class, Identifiable.class, AsString.class, Serializable.class })
+@UmlExcludeSuperTypes({ Validatable.class, Identifiable.class, Stringable.class, Serializable.class })
 @UmlRelation(label = "represented at", referent = Precision.class)
-public class Location implements Validatable, Located, Identifiable, Bounded, Intersectable, AsString, Serializable
+public class Location implements
+        Validatable,
+        Located,
+        Identifiable,
+        Bounded,
+        Intersectable,
+        Stringable,
+        Serializable
 {
     private static final long EARTH_RADIUS_IN_METERS = (long) Distance.EARTH_RADIUS_MINOR.asMeters();
 
@@ -301,7 +306,9 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
 
     public static SwitchParser.Builder<Location> locationSwitchParser(String name, String description)
     {
-        return SwitchParser.builder(Location.class).name(name).converter(new DegreesConverter(LOGGER))
+        return SwitchParser.builder(Location.class)
+                .name(name)
+                .converter(new DegreesConverter(LOGGER))
                 .description(description);
     }
 
@@ -414,6 +421,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         /**
          * {@inheritDoc}
          */
+        @SuppressWarnings("DuplicatedCode")
         @Override
         protected Location onToValue(String value)
         {
@@ -440,7 +448,6 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
 
     public static class DegreesMinutesAndSecondsConverter extends BaseStringConverter<Location>
     {
-
         private final Latitude.DegreesMinutesAndSecondsConverter latitudeConverter;
 
         private final Longitude.DegreesMinutesAndSecondsConverter longitudeConverter;
@@ -469,6 +476,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         /**
          * {@inheritDoc}
          */
+        @SuppressWarnings("DuplicatedCode")
         @Override
         protected Location onToValue(String value)
         {
@@ -524,6 +532,7 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         /**
          * {@inheritDoc}
          */
+        @SuppressWarnings("DuplicatedCode")
         @Override
         protected Location onToValue(String value)
         {
@@ -548,15 +557,15 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
         }
     }
 
-    @KivaKitPropertyConverter(Latitude.DegreesConverter.class)
+    @KivaKitConverted(Latitude.DegreesConverter.class)
     @UmlAggregation
     private Latitude latitude;
 
-    @KivaKitPropertyConverter(Longitude.DegreesConverter.class)
+    private final int latitudeInDm7;
+
+    @KivaKitConverted(Longitude.DegreesConverter.class)
     @UmlAggregation
     private Longitude longitude;
-
-    private final int latitudeInDm7;
 
     private final int longitudeInDm7;
 
@@ -678,11 +687,11 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
     }
 
     @Override
-    public String asString(StringFormat format)
+    public String asString(Format format)
     {
-        switch (format.identifier())
+        switch (format)
         {
-            case USER_LABEL_IDENTIFIER:
+            case USER_LABEL:
                 return String.format("latitude = %.07f, longitude = %.07f", latitude().asDegrees(), longitude().asDegrees());
 
             default:
@@ -1065,12 +1074,13 @@ public class Location implements Validatable, Located, Identifiable, Bounded, In
     {
         return new BaseValidator()
         {
-
             @Override
             protected void onValidate()
             {
-                problemIf(!latitude().isValid(), "latitude is invalid");
-                problemIf(!longitude().isValid(), "longitude is invalid");
+                problemIfNull(latitude(), "Latitude is missing");
+                problemIfNull(longitude(), "Longitude is missing");
+                problemIf(!latitude().isValid(), "Latitude is invalid");
+                problemIf(!longitude().isValid(), "Longitude is invalid");
             }
         };
     }

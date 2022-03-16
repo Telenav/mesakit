@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.geography.indexing.polygon;
 
-import com.telenav.kivakit.kernel.language.values.count.Count;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.polygon.PolygonSpatialIndex.Visitor;
 import com.telenav.mesakit.map.geography.shape.Outline;
@@ -31,7 +31,7 @@ import com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
 import static com.telenav.mesakit.map.geography.indexing.polygon.PolygonSpatialIndex.MINIMUM_QUADRANT_SIZE;
 
 /**
- * A interior {@link Node} of the spatial index that contains up to four quadrant objects, each of which could be
+ * An interior {@link Node} of the spatial index that contains up to four quadrant objects, each of which could be
  * another {@link Node}, a {@link Leaf} or null (if the quadrant is outside the polygon).
  *
  * @author jonathanl (shibo)
@@ -118,7 +118,7 @@ public class Node extends Quadrant
             }
         }
 
-        // If there is a SW quadrant,
+        // If there is a southwest quadrant,
         if (southWest != 0)
         {
             // and the location is inside the bounds for it,
@@ -226,8 +226,8 @@ public class Node extends Quadrant
     private int index(Rectangle bounds)
     {
         // Find up to 3 intersections between the given bounding rectangle and the complete list
-        // of polygon segments. This is time consuming but only has to be done once when
-        // building the spatial index so we don't care too much about optimizing it.
+        // of polygon segments. This is time-consuming but only has to be done once when
+        // building the spatial index, so we don't care too much about optimizing it.
         var intersections = spatialIndex.polygon().intersections(bounds, Count._3);
 
         // Switch on the number of intersections we found
@@ -275,7 +275,7 @@ public class Node extends Quadrant
                     return spatialIndex.store().add(new Leaf(b, a, inside(b, a)));
                 }
 
-                // otherwise we need to break things down further
+                // otherwise, we need to break things down further
                 if (bounds.widthAtBase().isGreaterThan(MINIMUM_QUADRANT_SIZE)
                         && bounds.heightAsDistance().isGreaterThan(MINIMUM_QUADRANT_SIZE))
                 {
@@ -313,7 +313,7 @@ public class Node extends Quadrant
         }
         else
         {
-            // if we have an a, but no segment b
+            // if we have a segment a, but no segment b
             if (b == null)
             {
                 // then we locate the inside point a short distance perpendicular to the line

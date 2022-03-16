@@ -18,38 +18,34 @@
 
 package com.telenav.mesakit.map.region;
 
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.project.Project;
+import com.telenav.kivakit.core.project.ProjectTrait;
+import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.kernel.language.objects.Lazy;
-import com.telenav.kivakit.kernel.language.values.version.Version;
-import com.telenav.kivakit.kernel.messaging.Listener;
-import com.telenav.kivakit.kernel.project.Project;
-import com.telenav.kivakit.primitive.collections.project.PrimitiveCollectionsKryoTypes;
-import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
-import com.telenav.kivakit.serialization.kryo.CoreKernelKryoTypes;
-import com.telenav.kivakit.serialization.kryo.KryoTypes;
+import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsKryoTypes;
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
+import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
 import com.telenav.mesakit.core.MesaKit;
-import com.telenav.mesakit.map.geography.project.GeographyKryoTypes;
-import com.telenav.mesakit.map.measurements.project.MeasurementsKryoTypes;
-import com.telenav.mesakit.map.region.project.RegionKryoTypes;
+import com.telenav.mesakit.map.geography.GeographyKryoTypes;
+import com.telenav.mesakit.map.measurements.MeasurementsKryoTypes;
 
+/**
+ * This class defines a KivaKit {@link Project}. It cannot be constructed with the new operator since it has a private
+ * constructor. To access the singleton instance of this class, call {@link Project#resolveProject(Class)}, or use
+ * {@link ProjectTrait#project(Class)}.
+ *
+ * @author jonathanl (shibo)
+ */
 public class RegionProject extends Project
 {
-    private static final KryoTypes KRYO_TYPES = new RegionKryoTypes()
-            .mergedWith(new GeographyKryoTypes())
-            .mergedWith(new MeasurementsKryoTypes())
-            .mergedWith(new PrimitiveCollectionsKryoTypes())
-            .mergedWith(new CoreKernelKryoTypes());
-
-    private static final Lazy<RegionProject> project = Lazy.of(RegionProject::new);
-
-    public static RegionProject get()
+    public RegionProject()
     {
-        return project.get();
-    }
-
-    protected RegionProject()
-    {
-        SerializationSessionFactory.threadLocal(KRYO_TYPES.sessionFactory());
+        register(new KryoSerializationSessionFactory(new RegionKryoTypes()
+                .mergedWith(new GeographyKryoTypes())
+                .mergedWith(new MeasurementsKryoTypes())
+                .mergedWith(new PrimitiveCollectionsKryoTypes())
+                .mergedWith(new CoreKryoTypes())));
     }
 
     /**
@@ -57,7 +53,7 @@ public class RegionProject extends Project
      */
     public Version borderDataVersion()
     {
-        return Version.parse(Listener.console(), "0.9.1");
+        return Version.parseVersion(Listener.throwing(), "0.9.1");
     }
 
     /**
@@ -65,7 +61,8 @@ public class RegionProject extends Project
      */
     public Folder mesakitMapFolder()
     {
-        return MesaKit.get().mesakitCacheFolder()
+        return resolveProject(MesaKit.class)
+                .mesakitCacheFolder()
                 .folder("map")
                 .mkdirs();
     }

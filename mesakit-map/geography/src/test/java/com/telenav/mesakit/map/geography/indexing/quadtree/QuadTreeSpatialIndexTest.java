@@ -18,16 +18,15 @@
 
 package com.telenav.mesakit.map.geography.indexing.quadtree;
 
-import com.telenav.kivakit.kernel.language.collections.list.BaseList;
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.threading.KivaKitThread;
-import com.telenav.kivakit.kernel.language.values.count.Count;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.thread.KivaKitThread;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.project.GeographyUnitTest;
+import com.telenav.mesakit.map.geography.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import org.junit.Test;
@@ -183,7 +182,7 @@ public class QuadTreeSpatialIndexTest extends GeographyUnitTest
         {
             e.printStackTrace();
         }
-        BaseList<Location> found = new ObjectList<Location>().appendAll(index.inside(rectangle));
+        var found = new ObjectList<Location>().appendAll(index.inside(rectangle));
         ensureEqual(inside.size(), found.size());
         for (Location location : found)
         {

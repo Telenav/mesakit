@@ -8,14 +8,15 @@ open module mesakit.graph.core
     requires transitive mesakit.map.ui.debug;
     requires transitive mesakit.map.geography;
 
-    requires transitive kivakit.configuration;
-    requires kivakit.test;
+    requires transitive kivakit.settings;
 
     requires transitive java.sql;
     requires org.jetbrains.annotations;
     requires osmosis.core;
     requires kryo;
     requires junit;
+    requires kivakit.extraction;
+    requires kivakit.serialization.core;
 
     exports com.telenav.mesakit.graph.analytics.classification.classifiers.road;
     exports com.telenav.mesakit.graph.analytics.classification.classifiers.signpost;
@@ -45,7 +46,6 @@ open module mesakit.graph.core
     exports com.telenav.mesakit.graph.navigation.limiters;
     exports com.telenav.mesakit.graph.navigation.navigators;
     exports com.telenav.mesakit.graph.navigation;
-    exports com.telenav.mesakit.graph.project;
     exports com.telenav.mesakit.graph.relations.restrictions;
     exports com.telenav.mesakit.graph.specifications.common.edge.store;
     exports com.telenav.mesakit.graph.specifications.common.edge;

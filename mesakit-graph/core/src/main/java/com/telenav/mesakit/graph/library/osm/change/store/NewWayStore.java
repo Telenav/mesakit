@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.library.osm.change.store;
 
 import com.telenav.kivakit.collections.map.MultiMap;
-import com.telenav.kivakit.kernel.language.strings.Strings;
+import com.telenav.kivakit.core.string.Strings;
 import com.telenav.mesakit.graph.library.osm.change.NewWay;
 
 import java.util.ArrayList;
@@ -142,7 +142,7 @@ public class NewWayStore implements Iterable<NewWay>
                 compacted.remove(a);
                 compacted.remove(b);
 
-                // Add a new way that has both polylines
+                // Add a new way that has both poly-lines
                 compacted.add(a.connectedTo(b));
             }
         }

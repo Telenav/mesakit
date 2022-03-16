@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.graph.specifications.library.properties;
 
-import com.telenav.kivakit.kernel.language.strings.CaseFormat;
+import com.telenav.kivakit.core.string.CaseFormat;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
 import com.telenav.mesakit.graph.specifications.library.attributes.Attribute;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 public abstract class GraphElementProperty<T extends GraphElement> implements Comparable<GraphElementProperty<T>>
 {

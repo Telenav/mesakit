@@ -19,27 +19,27 @@
 package com.telenav.mesakit.map.data.formats.pbf.processing.filters;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.interfaces.comparison.Filter;
-import com.telenav.kivakit.kernel.interfaces.naming.Named;
-import com.telenav.kivakit.kernel.language.collections.list.StringList;
-import com.telenav.kivakit.kernel.language.collections.map.string.NameMap;
-import com.telenav.kivakit.kernel.language.progress.ProgressReporter;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.collections.map.NameMap;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.interfaces.comparison.Filter;
+import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
-import com.telenav.mesakit.map.data.formats.pbf.project.lexakai.diagrams.DiagramPbfProcessingFilters;
+import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfProcessingFilters;
 
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 @UmlClassDiagram(diagram = DiagramPbfProcessingFilters.class)
 @UmlExcludeSuperTypes(Named.class)
@@ -52,7 +52,7 @@ public class WayFilter implements Filter<PbfWay>, Named
     public static WayFilter exclude(String name, Resource resource)
     {
         var filter = new WayFilter(name, "exclude list from resource");
-        for (var line : resource.reader().lines(ProgressReporter.NULL))
+        for (var line : resource.reader().lines(ProgressReporter.none()))
         {
             var highway = line.trim();
             if (!Strings.isEmpty(highway))
@@ -76,7 +76,7 @@ public class WayFilter implements Filter<PbfWay>, Named
     public static WayFilter include(String name, Resource resource)
     {
         var filter = new WayFilter(name, "include list from resource");
-        for (var line : resource.reader().lines(ProgressReporter.NULL))
+        for (var line : resource.reader().lines(ProgressReporter.none()))
         {
             var highway = line.trim();
             if (!Strings.isEmpty(highway))
@@ -116,13 +116,13 @@ public class WayFilter implements Filter<PbfWay>, Named
         }
     }
 
+    private final String description;
+
     private final Set<String> excluded = new HashSet<>();
 
     private final Set<String> included = new HashSet<>();
 
     private final String name;
-
-    private final String description;
 
     public WayFilter(String name, String description)
     {

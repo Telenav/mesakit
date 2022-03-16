@@ -5,11 +5,11 @@ open module mesakit.data.formats.pbf
     requires transitive kivakit.data.formats.library;
     requires transitive kivakit.data.compression;
     requires transitive kivakit.primitive.collections;
-    requires kivakit.test;
 
     requires osmosis.core;
     requires osmosis.osm.binary;
     requires osmosis.pbf;
+    requires kivakit.extraction;
 
     exports com.telenav.mesakit.map.data.formats.pbf.model.entities;
     exports com.telenav.mesakit.map.data.formats.pbf.model.extractors;
@@ -24,6 +24,5 @@ open module mesakit.data.formats.pbf
     exports com.telenav.mesakit.map.data.formats.pbf.processing.readers;
     exports com.telenav.mesakit.map.data.formats.pbf.processing.writers;
     exports com.telenav.mesakit.map.data.formats.pbf.processing;
-    exports com.telenav.mesakit.map.data.formats.pbf.project;
     exports com.telenav.mesakit.map.data.formats.pbf;
 }

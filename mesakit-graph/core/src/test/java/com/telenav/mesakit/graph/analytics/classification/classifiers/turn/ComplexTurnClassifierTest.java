@@ -22,7 +22,7 @@ import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.RouteBuilder;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
-import com.telenav.mesakit.graph.project.GraphUnitTest;
+import com.telenav.mesakit.graph.GraphUnitTest;
 import org.junit.Before;
 import org.junit.Ignore;
 

@@ -18,17 +18,17 @@
 
 package com.telenav.mesakit.graph;
 
-import com.telenav.kivakit.kernel.data.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.kernel.language.collections.list.ObjectList;
-import com.telenav.kivakit.kernel.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.kernel.language.strings.Strings;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsIndentedString;
-import com.telenav.kivakit.kernel.language.strings.conversion.AsString;
-import com.telenav.kivakit.kernel.language.values.count.Maximum;
-import com.telenav.kivakit.kernel.logging.Logger;
-import com.telenav.kivakit.kernel.logging.LoggerFactory;
-import com.telenav.kivakit.kernel.messaging.Debug;
-import com.telenav.kivakit.kernel.messaging.Listener;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.AsIndentedString;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.collections.RouteList;
 import com.telenav.mesakit.graph.identifiers.RelationIdentifier;
@@ -59,7 +59,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.telenav.kivakit.kernel.data.validation.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 public class EdgeRelation extends GraphElement implements Bounded
 {
@@ -93,7 +93,7 @@ public class EdgeRelation extends GraphElement implements Bounded
                     "only_straight_on"
             };
 
-    public enum Type
+    @SuppressWarnings("SpellCheckingInspection") public enum Type
     {
         // OSM
         ROUTE(0),
@@ -531,8 +531,8 @@ public class EdgeRelation extends GraphElement implements Bounded
     }
 
     /**
-     * Some turn restrictions are valid in OSM but NOT valid in the graph API because the Graph API's data structure is
-     * a directed graph. We use this method to filter out bad turn restrictions that are actually okay in OSM.
+     * Some turn restrictions are valid in OSM but NOT valid in the graph API because the Graph API data structure is a
+     * directed graph. We use this method to filter out bad turn restrictions that are actually okay in OSM.
      *
      * @return True if the restriction relation is valid in OSM
      */
@@ -614,7 +614,7 @@ public class EdgeRelation extends GraphElement implements Bounded
     /**
      * @return The properties of this element from its {@link DataSpecification},
      * @see GraphElementPropertySet
-     * @see AsString
+     * @see Stringable
      * @see AsIndentedString
      */
     @Override
@@ -731,7 +731,7 @@ public class EdgeRelation extends GraphElement implements Bounded
         if (from != null && to != null)
         {
             // In OSM, it is not valid for a via node to be in the middle of a way. It has to be at
-            // one end or the other of the way or it would be ambiguous. However, in TXD OSM,
+            // one end or the other of the way, or it would be ambiguous. However, in TXD OSM,
             // edges are sectioned and can be positive or negative and so it is possible for the
             // "from" and/or "to" route to be joined at a vertex in the middle of either or both
             // routes.
