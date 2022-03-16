@@ -227,7 +227,11 @@ git_flow_release_start()
 
     cd "$project_home" || exit
 
-    if [ "$(git_branch_name "$project_home")" = "release/$version" ]; then
+    branch_name=git_branch_name $project_home
+
+    echo "On branch $branch_name"
+
+    if [ "$branch_name" = "release/$version" ]; then
 
         echo "Already on release branch"
 
