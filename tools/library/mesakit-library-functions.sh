@@ -212,13 +212,13 @@ git_flow_init()
 
     if [ "$(git flow config >/dev/null 2>&1)" ]; then
 
-        echo git_flow_install
+        git_flow_install
 
     fi
 
     git_flow_version=$(git flow version);
 
-    if [[ $git_flow_version == *"AVH"* ]]; then
+    if [[ $git_flow_version =~ 'AVH' ]]; then
 
         git_flow_install
 
