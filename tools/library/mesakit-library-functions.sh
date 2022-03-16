@@ -212,8 +212,8 @@ git_flow_init()
     fi
 }
 
-git_flow_release_start() {
-
+git_flow_release_start()
+{
     project_home=$1
     version=$2
 
@@ -224,6 +224,12 @@ git_flow_release_start() {
     echo "┋"
     echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
     echo " "
+
+    if ! git_flow_init "$project_home"; then
+
+        exit 1
+
+    fi
 
     cd "$project_home" || exit
 
