@@ -227,17 +227,17 @@ git_flow_release_start()
 
     cd "$project_home" || exit
 
-    if ! git_flow_init "$project_home"; then
-
-        exit 1
-
-    fi
-
-    if [ "$(git_branch_name)" = "release/$version" ]; then
+    if [ "$(git_branch_name "$project_home")" = "release/$version" ]; then
 
         echo "Already on release branch"
 
     else
+
+        if ! git_flow_init "$project_home"; then
+
+            exit 1
+
+        fi
 
         # Check out the develop branch
         git checkout develop
@@ -257,6 +257,7 @@ git_flow_release_start()
 git_branch_name()
 {
     project_home=$1
+
     cd "$project_home" || exit
     branch_name=$(git rev-parse --abbrev-ref HEAD)
     echo "$branch_name"
@@ -336,8 +337,8 @@ git_flow_hotfix_finish()
 
 ################ VERSIONING ################################################################################################
 
-update_version() {
-
+update_version()
+{
     project_home=$1
     new_version=$2
 
@@ -407,8 +408,8 @@ is_mac()
     fi
 }
 
-lexakai() {
-
+lexakai()
+{
     lexakai_download_version="1.0.5"
     lexakai_download_name="lexakai-1.0.5.jar"
 
@@ -444,8 +445,8 @@ lexakai() {
     java -jar "$lexakai_jar" -overwrite-resources=true -update-readme=true $@
 }
 
-yes_no() {
-
+yes_no()
+{
     if [ -z "${NO_PROMPT}" ]; then
 
         prompt=$1
