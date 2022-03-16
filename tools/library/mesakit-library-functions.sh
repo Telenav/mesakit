@@ -201,7 +201,7 @@ git_flow_init()
 
     git_flow_check_changes "$project_home"
 
-    git flow init -d /dev/null 2>&1
+    git flow init -f -d /dev/null 2>&1
 
     if [ "$(git flow config >/dev/null 2>&1)" ]; then
         echo " "
