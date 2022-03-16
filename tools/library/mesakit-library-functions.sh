@@ -201,8 +201,7 @@ git_flow_init()
 
     git_flow_check_changes "$project_home"
 
-    # git flow init -f -d /dev/null 2>&1
-    git flow init -f
+    git flow init -f -d /dev/null 2>&1
 
     if [ "$(git flow config >/dev/null 2>&1)" ]; then
         echo " "
@@ -244,8 +243,19 @@ git_flow_release_start()
         # then start a new release branch
         git flow release start "$version"
 
-        # switch to the release branch
-        git checkout release/"$version"
+        branch_name=$(git_branch_name "$project_home")
+
+        if [ "$branch_name" = "release/$version" ]; then
+
+            # switch to the release branch
+            git checkout release/"$version"
+
+        else
+
+            echo "Could not create release branch: release/$version"
+            exit 1
+
+        fi
 
     fi
 
@@ -329,8 +339,10 @@ git_flow_hotfix_finish()
     feature_name=$2
 
     if yes_no "Finish '$feature_name' branch of $project_home"; then
+
         cd "$project_home" || exit
         git-flow hotfix finish "$feature_name"
+
     fi
 }
 
@@ -394,7 +406,9 @@ system_variable()
     source "$temporary"
 
     if is_mac; then
+
         launchctl setenv "$variable" "$value"
+
     fi
 }
 
