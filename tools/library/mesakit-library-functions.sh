@@ -196,7 +196,7 @@ git_flow_check_changes()
 git_flow_install()
 {
     echo " "
-    echo "Please install git flow AVH Edition:"
+    echo "Please install latest git flow AVH Edition:"
     echo " "
     echo "MacOS: brew install git-flow-avh"
     echo " "
@@ -212,7 +212,7 @@ git_flow_init()
 
     if [ "$(git flow config >/dev/null 2>&1)" ]; then
 
-        git_flow_install
+   #     git_flow_install
 
     fi
 
