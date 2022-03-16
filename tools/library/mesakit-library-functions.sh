@@ -225,6 +225,8 @@ git_flow_release_start() {
     echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
     echo " "
 
+    git_flow_init "$project_home"
+
     if [ "$(git_branch_name)" = "release/$version" ]; then
 
         echo "Already on release branch"
