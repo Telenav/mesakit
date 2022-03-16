@@ -212,7 +212,7 @@ git_flow_init()
 
     if [ "$(git flow config >/dev/null 2>&1)" ]; then
 
-   #     git_flow_install
+        echo git_flow_install
 
     fi
 
