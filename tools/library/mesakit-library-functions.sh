@@ -227,7 +227,7 @@ git_flow_release_start()
 
     cd "$project_home" || exit
 
-    branch_name=git_branch_name $project_home
+    branch_name=$(git_branch_name "$project_home")
 
     echo "On branch $branch_name"
 
