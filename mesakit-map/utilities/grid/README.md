@@ -30,14 +30,14 @@ This module contains code for working with grid cells
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/dependencies-32.png" srcset="https://www.kivakit.org/images/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/utilities/grid/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-map/utilities/grid/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-utilities-grid</artifactId>
-        <version>0.9.9-SNAPSHOT</version>
+        <version>0.9.10</version>
     </dependency>
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
@@ -58,8 +58,7 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"/>
 
-[*com.telenav.mesakit.map.utilities.grid*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/utilities/grid/documentation/diagrams/com.telenav.mesakit.map.utilities.grid.svg)  
-[*com.telenav.mesakit.map.utilities.grid.project*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/utilities/grid/documentation/diagrams/com.telenav.mesakit.map.utilities.grid.project.svg)
+[*com.telenav.mesakit.map.utilities.grid*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-map/utilities/grid/documentation/diagrams/com.telenav.mesakit.map.utilities.grid.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
@@ -76,11 +75,10 @@ The following significant classes are undocumented:
 
 | Class | Documentation Sections |
 |---|---|
-| [*Grid*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.utilities.grid/com/telenav/mesakit/map/utilities/grid/Grid.html) |  |  
-| [*GridCell*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.utilities.grid/com/telenav/mesakit/map/utilities/grid/GridCell.html) |  |  
-| [*GridCellIdentifier*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.utilities.grid/com/telenav/mesakit/map/utilities/grid/GridCellIdentifier.html) |  |  
-| [*GridKryoTypes*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.utilities.grid/com/telenav/mesakit/map/utilities/grid/project/GridKryoTypes.html) |  |  
-| [*GridProject*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.utilities.grid/com/telenav/mesakit/map/utilities/grid/GridProject.html) |  |  
+| [*Grid*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.utilities.grid/com/telenav/mesakit/map/utilities/grid/Grid.html) |  |  
+| [*GridCell*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.utilities.grid/com/telenav/mesakit/map/utilities/grid/GridCell.html) |  |  
+| [*GridCellIdentifier*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.utilities.grid/com/telenav/mesakit/map/utilities/grid/GridCellIdentifier.html) |  |  
+| [*GridKryoTypes*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.utilities.grid/com/telenav/mesakit/map/utilities/grid/GridKryoTypes.html) |  |  
 
 [//]: # (start-user-text)
 

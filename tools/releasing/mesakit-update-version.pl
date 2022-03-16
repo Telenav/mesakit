@@ -105,8 +105,14 @@ sub update_superpom {
     my $path = "$root/superpom/pom.xml";
     if (-e $path) {
         my $text = read_file($path);
-        $text =~ s!<cactus.version>(?<version>.*?)</cactus.version>!<cactus.version>$new_version</cactus.version>!;
-        $text =~ s!<kivakit.version>(?<version>.*?)</kivakit.version>!<kivakit.version>$new_version</kivakit.version>!;
+        $text =~ s!<mesakit.version>(?<version>.*?)</mesakit.version>!<mesakit.version>$new_version</mesakit.version>!;
+        $text =~ s#\s+<parent>\s+<groupId>(.*?)</groupId>\s+<artifactId>(.*?)</artifactId>\s+<version>(.*?)</version>\s+<relativePath>(.*?)</relativePath>\s+</parent>#qq!
+        <parent>
+            <groupId>$1</groupId>
+            <artifactId>$2</artifactId>
+            <version>$ENV{'KIVAKIT_VERSION'}</version>
+            <relativePath>$3</relativePath>
+        </parent>!#esmg;
         write_file($path, $text);
         print "Updated superpom/pom.xml\n";
     }

@@ -193,53 +193,88 @@ git_flow_check_changes()
     fi
 }
 
+git_flow_install()
+{
+    echo " "
+    echo "Please install latest git flow AVH Edition:"
+    echo " "
+    echo "MacOS: brew install git-flow-avh"
+    echo " "
+
+    exit 1
+}
+
 git_flow_init()
 {
     project_home=$1
 
     cd "$project_home" || exit
 
+    if [ "$(git flow config >/dev/null 2>&1)" ]; then
+
+        git_flow_install
+
+    fi
+
+    git_flow_version=$(git flow version);
+
+    if ! grep -q AVH <<<"$git_flow_version"; then
+
+        git_flow_install
+
+    fi
+
     git_flow_check_changes "$project_home"
 
-    git flow init -d /dev/null 2>&1
+    git flow init -f -d --feature feature/  --bugfix bugfix/ --release release/ --hotfix hotfix/ --support support/ -t ''
 
-    if [ "$(git flow config >/dev/null 2>&1)" ]; then
-        echo " "
-        echo "Please install git flow and try again."
-        echo "See https://kivakit.org for details."
-        echo " "
-        exit 1
-    fi
+
 }
 
-git_flow_release_start() {
-
+git_flow_release_start()
+{
     project_home=$1
     version=$2
 
     echo " "
     echo "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ Preparing Release Branch  ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
     echo "┋"
-    echo "┋  Preparing $(basename "$project_home") git flow branch release/$version"
+    echo "┋  Preparing $(basename "$project_home") branch: release/$version"
     echo "┋"
     echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
     echo " "
 
-    if [ "$(git_branch_name)" = "release/$version" ]; then
+    cd "$project_home" || exit
 
-        echo "Already on release branch"
+    branch_name=$(git_branch_name "$project_home")
+
+    if [ "$branch_name" = "release/$version" ]; then
+
+        echo "Already on release branch: $branch_name"
 
     else
 
+        git_flow_init "$project_home"
+
         # Check out the develop branch
-        cd "$project_home" || exit
         git checkout develop
 
         # then start a new release branch
         git flow release start "$version"
 
-        # switch to the release branch
-        git checkout release/"$version"
+        branch_name=$(git_branch_name "$project_home")
+
+        if [ "$branch_name" = "release/$version" ]; then
+
+            # switch to the release branch
+            git checkout release/"$version"
+
+        else
+
+            echo "Could not create release branch: release/$version"
+            exit 1
+
+        fi
 
     fi
 
@@ -250,6 +285,7 @@ git_flow_release_start() {
 git_branch_name()
 {
     project_home=$1
+
     cd "$project_home" || exit
     branch_name=$(git rev-parse --abbrev-ref HEAD)
     echo "$branch_name"
@@ -272,7 +308,7 @@ git_flow_release_finish()
     echo " "
     echo "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ Release Merged to Master  ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
     echo "┋"
-    echo "┋  The branch 'release/$version' has been merged into master using git flow."
+    echo "┋  The branch 'release/$version' has been merged into master."
     echo "┋"
     echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
     echo " "
@@ -322,15 +358,17 @@ git_flow_hotfix_finish()
     feature_name=$2
 
     if yes_no "Finish '$feature_name' branch of $project_home"; then
+
         cd "$project_home" || exit
         git-flow hotfix finish "$feature_name"
+
     fi
 }
 
 ################ VERSIONING ################################################################################################
 
-update_version() {
-
+update_version()
+{
     project_home=$1
     new_version=$2
 
@@ -340,7 +378,7 @@ update_version() {
     echo "Updating $(project_name "$project_home") version from $old_version to $new_version"
 
     # Update POM versions project.properties files
-    update-version.pl "$project_home" "$old_version" "$new_version"
+    "$MESAKIT_HOME"/tools/releasing/mesakit-update-version.pl "$project_home" "$old_version" "$new_version"
 
     echo "Updated"
     echo " "
@@ -387,7 +425,9 @@ system_variable()
     source "$temporary"
 
     if is_mac; then
+
         launchctl setenv "$variable" "$value"
+
     fi
 }
 
@@ -400,8 +440,8 @@ is_mac()
     fi
 }
 
-lexakai() {
-
+lexakai()
+{
     lexakai_download_version="1.0.5"
     lexakai_download_name="lexakai-1.0.5.jar"
 
@@ -437,8 +477,8 @@ lexakai() {
     java -jar "$lexakai_jar" -overwrite-resources=true -update-readme=true $@
 }
 
-yes_no() {
-
+yes_no()
+{
     if [ -z "${NO_PROMPT}" ]; then
 
         prompt=$1

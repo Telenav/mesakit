@@ -30,14 +30,14 @@ This module contains code for working with the geojason map data presentation fo
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/dependencies-32.png" srcset="https://www.kivakit.org/images/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/utilities/geojson/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-map/utilities/geojson/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-utilities-geojson</artifactId>
-        <version>0.9.9-SNAPSHOT</version>
+        <version>0.9.10</version>
     </dependency>
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
@@ -58,15 +58,15 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"/>
 
-[*com.telenav.mesakit.map.utilities.geojson*](https://www.mesakit.org/0.9.9-SNAPSHOT/lexakai/mesakit/mesakit-map/utilities/geojson/documentation/diagrams/com.telenav.mesakit.map.utilities.geojson.svg)
+[*com.telenav.mesakit.map.utilities.geojson*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-map/utilities/geojson/documentation/diagrams/com.telenav.mesakit.map.utilities.geojson.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
 ### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/books-32.png" srcset="https://www.kivakit.org/images/books-32-2x.png 2x"/>
 
-Javadoc coverage for this project is 25.0%.  
+Javadoc coverage for this project is 16.7%.  
   
-&nbsp; &nbsp; <img src="https://www.mesakit.org/images/meter-30-96.png" srcset="https://www.mesakit.org/images/meter-30-96-2x.png 2x"/>
+&nbsp; &nbsp; <img src="https://www.mesakit.org/images/meter-20-96.png" srcset="https://www.mesakit.org/images/meter-20-96-2x.png 2x"/>
 
 
 The following significant classes are undocumented:  
@@ -76,15 +76,14 @@ The following significant classes are undocumented:
 
 | Class | Documentation Sections |
 |---|---|
-| [*GeoJsonDocument*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonDocument.html) |  |  
-| [*GeoJsonFeature*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonFeature.html) |  |  
-| [*GeoJsonGeometry*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonGeometry.html) |  |  
-| [*GeoJsonGeometryCollection*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonGeometryCollection.html) |  |  
-| [*GeoJsonGeometryTypeAdapter*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonGeometryTypeAdapter.html) |  |  
-| [*GeoJsonPoint*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonPoint.html) |  |  
-| [*GeoJsonPolygon*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonPolygon.html) |  |  
-| [*GeoJsonPolyline*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonPolyline.html) |  |  
-| [*GeoJsonProject*](https://www.mesakit.org/0.9.9-SNAPSHOT/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonProject.html) |  |  
+| [*GeoJsonDocument*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonDocument.html) |  |  
+| [*GeoJsonFeature*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonFeature.html) |  |  
+| [*GeoJsonGeometry*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonGeometry.html) |  |  
+| [*GeoJsonGeometryCollection*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonGeometryCollection.html) |  |  
+| [*GeoJsonGeometryTypeAdapter*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonGeometryTypeAdapter.html) |  |  
+| [*GeoJsonPoint*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonPoint.html) |  |  
+| [*GeoJsonPolygon*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonPolygon.html) |  |  
+| [*GeoJsonPolyline*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonPolyline.html) |  |  
 
 [//]: # (start-user-text)
 
