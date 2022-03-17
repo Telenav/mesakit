@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.navigation.limiters;
 
-import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.navigation.RouteLimiter;
@@ -32,7 +32,7 @@ public class EdgeCountRouteLimiter implements RouteLimiter
 {
     private final int maximumEdges;
 
-    public EdgeCountRouteLimiter(Count maximumEdges)
+    public EdgeCountRouteLimiter(Maximum maximumEdges)
     {
         this.maximumEdges = maximumEdges.asInt();
     }

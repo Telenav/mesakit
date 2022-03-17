@@ -150,7 +150,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
      */
     private static final boolean USE_FAST_POLYGON_SPATIAL_INDEX = true;
 
-    private static Lock cacheLock = new Lock();
+    private static final Lock cacheLock = new Lock();
 
     public static class Settings<R extends Region<R>>
     {
@@ -186,12 +186,12 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
                     maximumPolygonsPerObject, regionExtractor, minimumBorderArea);
         }
 
-        public Count maximumObjects()
+        public Maximum maximumObjects()
         {
             return maximumObjects;
         }
 
-        public Count maximumPolygonsPerObject()
+        public Maximum maximumPolygonsPerObject()
         {
             return maximumPolygonsPerObject;
         }

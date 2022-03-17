@@ -21,24 +21,25 @@ package com.telenav.mesakit.graph.specifications.common.vertex.store;
 import com.telenav.kivakit.core.collections.iteration.BaseIterator;
 import com.telenav.kivakit.core.collections.iteration.DeduplicatingIterable;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
-import com.telenav.kivakit.core.collections.iteration.Next;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
-import com.telenav.kivakit.validation.ValidationType;
-import com.telenav.kivakit.validation.Validator;
-import com.telenav.kivakit.interfaces.comparison.Matcher;
+import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.BitCount;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
-import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.interfaces.collection.NextValue;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.primitive.collections.array.packed.SplitPackedArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.kivakit.primitive.collections.map.scalars.IntToByteMap;
 import com.telenav.kivakit.primitive.collections.set.LongSet;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
+import com.telenav.mesakit.graph.GraphLimits;
 import com.telenav.mesakit.graph.GraphNode;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
@@ -47,7 +48,6 @@ import com.telenav.mesakit.graph.collections.VertexSequence;
 import com.telenav.mesakit.graph.identifiers.VertexIdentifier;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
-import com.telenav.mesakit.graph.GraphLimits;
 import com.telenav.mesakit.graph.specifications.common.edge.EdgeAttributes;
 import com.telenav.mesakit.graph.specifications.common.edge.HeavyWeightEdge;
 import com.telenav.mesakit.graph.specifications.common.element.GraphElementStore;
@@ -239,7 +239,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * Creates a new grade separated vertex with a perturbed location so it doesn't precisely overlap any other
+     * Creates a new grade separated vertex with a perturbed location, so it doesn't precisely overlap any other
      * grade-separated vertex. This method is complex and expensive, but it occurs rarely (mainly at freeway
      * interchanges, bridges and overpasses) so optimization is not a concern. Note that the original vertex will
      * eventually be abandoned (left unconnected to anything) once the process of grade separating the vertex is
@@ -266,11 +266,11 @@ public class VertexStore extends NodeStore<Vertex>
             // connect the given edges to the new vertex
             gradeSeparateConnectEdgesToNewVertex(vertex, originalVertex, edgesAtGrade);
 
-            // and update the from and to vertexes of the edges so they point to the new vertex
+            // and update the from and to vertexes of the edges, so they point to the new vertex
             gradeSeparateUpdateGradeSeparatedEdgeVertexes(newVertex, originalVertex, edgesAtGrade);
         }
 
-        // Next, we perturb the vertex location so it doesn't overlap any other vertex at the grade separation location,
+        // Next, we perturb the vertex location, so it doesn't overlap any other vertex at the grade separation location,
         gradeSeparatePerturbVertexLocation(vertex, originalVertex, grade, edgesAtGrade);
 
         // and finally, we update the new vertex' grade separation level
@@ -314,18 +314,20 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * Alters the location of a new vertex  slightly so it will not precisely overlap any other grade-separated vertex.
+     * Alters the location of a new vertex  slightly, so it will not precisely overlap any other grade-separated
+     * vertex.
      *
      * @param vertex The new vertex to perturb
      * @param originalVertex The original un-separated vertex
      * @param grade - The grade of the new vertex
      * @param edgesAtGrade - The edges at the given grade
      */
+    @SuppressWarnings("SpellCheckingInspection")
     public void gradeSeparatePerturbVertexLocation(Vertex vertex, Vertex originalVertex,
                                                    GradeSeparation grade, EdgeSet edgesAtGrade)
     {
         // then use the grade separation level as an offset to the original vertex location in order to
-        // give the new vertex a unique, perturbed vertex location so it doesn't overlap the existing vertexes
+        // give the new vertex a unique, perturbed vertex location, so it doesn't overlap the existing vertexes
         var microdegrees = grade.level() + 5;
         var offset = new Size(Width.microdegrees(microdegrees), Height.ZERO);
         var perturbedLocation = originalVertex.location().offsetBy(offset);
@@ -350,7 +352,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * Updates the from and to vertexes of the given set of edges so they point to the new vertex
+     * Updates the from and to vertexes of the given set of edges, so they point to the new vertex
      *
      * @param newVertex The new vertex
      * @param edgesAtGrade The edges to update
@@ -772,7 +774,7 @@ public class VertexStore extends NodeStore<Vertex>
                 return fail("Unable to load spatial index");
             }
             var intersecting = index.intersecting(bounds);
-            return new VertexSequence(new DeduplicatingIterable<>(Iterables.iterable(() -> new Next<>()
+            return new VertexSequence(new DeduplicatingIterable<>(Iterables.iterable(() -> new NextValue<>()
             {
                 final Iterator<Edge> edges = intersecting.iterator();
 
@@ -781,7 +783,7 @@ public class VertexStore extends NodeStore<Vertex>
                 Edge edge;
 
                 @Override
-                public Vertex onNext()
+                public Vertex next()
                 {
                     while (true)
                     {

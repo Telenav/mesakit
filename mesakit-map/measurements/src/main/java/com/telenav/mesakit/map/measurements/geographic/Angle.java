@@ -23,6 +23,7 @@ import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.interfaces.collection.NextValue;
 import com.telenav.kivakit.interfaces.numeric.Maximizable;
 import com.telenav.kivakit.interfaces.numeric.Minimizable;
 import com.telenav.kivakit.interfaces.numeric.Quantizable;
@@ -120,6 +121,7 @@ public class Angle implements
         Comparable<Angle>,
         Minimizable<Angle>,
         Maximizable<Angle>,
+        NextValue<Angle>,
         Stringable,
         Quantizable,
         Serializable
@@ -566,6 +568,12 @@ public class Angle implements
     public Angle minus(Angle that)
     {
         return nanodegrees(nanodegrees - that.nanodegrees);
+    }
+
+    @Override
+    public Angle next()
+    {
+        return degrees(asDegrees() + 1);
     }
 
     public Angle plus(Angle that)

@@ -19,11 +19,11 @@
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
 import com.telenav.kivakit.core.collections.iteration.Iterables;
-import com.telenav.kivakit.core.collections.iteration.Next;
 import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.language.primitive.Booleans;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.interfaces.collection.NextValue;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
@@ -195,12 +195,12 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
      */
     public synchronized Iterable<Element> intersecting(Rectangle bounds, Matcher<Element> matcher)
     {
-        return Iterables.iterable(() -> new Next<>()
+        return Iterables.iterable(() -> new NextValue<>()
         {
             final Iterator<Element> elements = root().intersecting(bounds, matcher);
 
             @Override
-            public Element onNext()
+            public Element next()
             {
                 if (elements.hasNext())
                 {

@@ -19,10 +19,10 @@
 package com.telenav.mesakit.map.geography.indexing.polygon;
 
 import com.telenav.kivakit.core.collections.iteration.Iterables;
-import com.telenav.kivakit.core.collections.iteration.Next;
 import com.telenav.kivakit.core.language.primitive.Doubles;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.messaging.messages.status.Warning;
+import com.telenav.kivakit.interfaces.collection.NextValue;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
@@ -66,14 +66,14 @@ public class ShapeFileReader
 
     public Iterable<Polygon> polygons()
     {
-        return Iterables.iterable(() -> new Next<>()
+        return Iterables.iterable(() -> new NextValue<>()
         {
             private PolygonShape shape;
 
             private int part;
 
             @Override
-            public Polygon onNext()
+            public Polygon next()
             {
                 try
                 {
@@ -104,7 +104,7 @@ public class ShapeFileReader
                         else
                         {
                             listener.receive(new Warning("Ignoring invalid polygon with $ locations", builder.size()));
-                            return onNext();
+                            return next();
                         }
                     }
                 }
@@ -137,14 +137,14 @@ public class ShapeFileReader
 
     public Iterable<Polyline> polylines()
     {
-        return Iterables.iterable(() -> new Next<>()
+        return Iterables.iterable(() -> new NextValue<>()
         {
             private PolylineShape shape;
 
             private int part;
 
             @Override
-            public Polyline onNext()
+            public Polyline next()
             {
                 try
                 {

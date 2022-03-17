@@ -454,6 +454,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
  * @see Speed
  * @see Angle
  */
+@SuppressWarnings("DuplicatedCode")
 public abstract class Edge extends GraphElement implements Bounded, Intersectable, Road, LocationSequence
 {
     /**
@@ -1785,7 +1786,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
                     .withRoadName(name).size() == 1)
             {
                 route = route.prepend(route.first().inEdgesWithoutReversed().withRoadName(name).first());
-                count = count.plusOne();
+                count = count.incremented();
                 if (count.isGreaterThan(extensionNumber))
                 {
                     break;
@@ -1798,7 +1799,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
                     .withRoadName(name).size() == 1)
             {
                 route = route.append(route.last().outEdgesWithoutReversed().withRoadName(name).first());
-                count = count.plusOne();
+                count = count.incremented();
                 if (count.isGreaterThan(extensionNumber))
                 {
                     break;

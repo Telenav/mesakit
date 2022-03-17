@@ -22,13 +22,13 @@ import com.telenav.kivakit.commandline.ArgumentParser;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
-import com.telenav.kivakit.core.collections.iteration.Next;
 import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.value.level.Percent;
+import com.telenav.kivakit.interfaces.collection.NextValue;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
@@ -363,8 +363,8 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
      * Constructs a rectangle. The bottom left corner is included in the rectangle while the top right corner is NOT
      * included. This means that contains(bottomLeft) == true while contains(topRight) == false. To include the top
      * right location *inside* the rectangle so that contains(topRight) == true, either call {@link #incremented()} to
-     * expand the rectangle's top right bounds by one dm7 value or call {@link Location#decremented()} on the top right
-     * corner location to move it inside the rectangle.
+     * expand the rectangle's top right bounds by one dm7 value or call {@link Location#decremented()} with the
+     * top-right corner location to move it inside the rectangle.
      *
      * @param bottomLeft The bottom left corner of the rectangle (inclusive)
      * @param topRight The top right corner of the rectangle (exclusive)
@@ -468,14 +468,14 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
 
     public Iterable<Rectangle> cells(Distance size)
     {
-        return Iterables.iterable(() -> new Next<>()
+        return Iterables.iterable(() -> new NextValue<>()
         {
             private Latitude bottom = bottom();
 
             private Longitude left = left();
 
             @Override
-            public Rectangle onNext()
+            public Rectangle next()
             {
                 if (left.isGreaterThan(right()))
                 {
@@ -749,7 +749,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     /**
      * Computes the height of this rectangle in latitudinal degrees. Note that the return value is an {@link Angle}
      * because not all latitudinal distances are valid {@link Latitude}s (for example, the distance from the north to
-     * the south pole is 180, which is not a valid {@link Latitude}).
+     * the South Pole is 180, which is not a valid {@link Latitude}).
      *
      * @return The height of this rectangle
      */
@@ -993,12 +993,12 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
 
     public Iterable<Rectangle> verticalStrips(Distance width, Distance overlap)
     {
-        return Iterables.iterable(() -> new Next<>()
+        return Iterables.iterable(() -> new NextValue<>()
         {
             private Longitude left = left();
 
             @Override
-            public Rectangle onNext()
+            public Rectangle next()
             {
                 if (left.isLessThan(right().minus(overlap.asAngle())))
                 {
@@ -1018,12 +1018,12 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         var difference = right().asWidth().minus(left().asWidth());
         var stripWidth = difference.dividedBy(stripCount);
 
-        return Iterables.iterable(() -> new Next<>()
+        return Iterables.iterable(() -> new NextValue<>()
         {
             private Longitude left = left();
 
             @Override
-            public Rectangle onNext()
+            public Rectangle next()
             {
                 if (left.isLessThan(right().minus(overlap)))
                 {

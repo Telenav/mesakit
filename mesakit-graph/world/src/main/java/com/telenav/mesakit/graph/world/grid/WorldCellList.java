@@ -18,19 +18,19 @@
 
 package com.telenav.mesakit.graph.world.grid;
 
-import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
-import com.telenav.kivakit.core.collections.iteration.Next;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.MutableCount;
+import com.telenav.kivakit.interfaces.collection.NextValue;
+import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;
+import com.telenav.mesakit.graph.GraphLimits;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
 import com.telenav.mesakit.graph.collections.RelationSet;
 import com.telenav.mesakit.graph.collections.VertexSequence;
-import com.telenav.mesakit.graph.GraphLimits;
 import com.telenav.mesakit.graph.world.WorldEdge;
 import com.telenav.mesakit.graph.world.WorldRelation;
 import com.telenav.mesakit.graph.world.WorldVertex;
@@ -277,7 +277,7 @@ public class WorldCellList extends ArrayList<WorldCell>
     @SuppressWarnings("Convert2Diamond")
     private EdgeSequence edges(Function<WorldCell, EdgeSequence> sequence)
     {
-        return new EdgeSequence(Iterables.iterable(() -> new Next<Edge>()
+        return new EdgeSequence(Iterables.iterable(() -> new NextValue<Edge>()
         {
             final Iterator<WorldCell> worldCellIterator = iterator();
 
@@ -286,7 +286,7 @@ public class WorldCellList extends ArrayList<WorldCell>
             WorldCell worldCell;
 
             @Override
-            public Edge onNext()
+            public Edge next()
             {
                 while (edgeIterator == null || !edgeIterator.hasNext())
                 {
@@ -307,7 +307,7 @@ public class WorldCellList extends ArrayList<WorldCell>
 
     private RelationSet relations(Function<WorldCell, Iterable<EdgeRelation>> sequence)
     {
-        return RelationSet.forIterable(GraphLimits.Limit.RELATIONS, Iterables.iterable(() -> new Next<>()
+        return RelationSet.forIterable(GraphLimits.Limit.RELATIONS, Iterables.iterable(() -> new NextValue<>()
         {
             final Iterator<WorldCell> cellIterator = iterator();
 
@@ -316,7 +316,7 @@ public class WorldCellList extends ArrayList<WorldCell>
             WorldCell worldCell;
 
             @Override
-            public EdgeRelation onNext()
+            public EdgeRelation next()
             {
                 while (relationIterator == null || !relationIterator.hasNext())
                 {
@@ -343,7 +343,7 @@ public class WorldCellList extends ArrayList<WorldCell>
                             && !worldCell.contains(viaNodeLocation))
                     {
                         // then skip it because it will be found in the other cell
-                        return onNext();
+                        return next();
                     }
                 }
 
@@ -355,7 +355,7 @@ public class WorldCellList extends ArrayList<WorldCell>
 
     private VertexSequence vertexes(Function<WorldCell, VertexSequence> sequenceForCell)
     {
-        return new VertexSequence(Iterables.iterable(() -> new Next<>()
+        return new VertexSequence(Iterables.iterable(() -> new NextValue<>()
         {
             WorldCell worldCell;
 
@@ -365,7 +365,7 @@ public class WorldCellList extends ArrayList<WorldCell>
 
             @SuppressWarnings("LoopStatementThatDoesntLoop")
             @Override
-            public Vertex onNext()
+            public Vertex next()
             {
                 // While there's no vertex iterator, or it's out of elements
                 while (vertexIterator == null || !vertexIterator.hasNext())

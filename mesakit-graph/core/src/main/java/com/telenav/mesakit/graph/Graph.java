@@ -19,7 +19,6 @@
 package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.core.collections.iteration.Iterables;
-import com.telenav.kivakit.core.collections.iteration.Next;
 import com.telenav.kivakit.core.language.Classes;
 import com.telenav.kivakit.core.language.Streams;
 import com.telenav.kivakit.core.logging.Logger;
@@ -46,6 +45,7 @@ import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.data.formats.library.DataFormat;
 import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.interfaces.collection.NextValue;
 import com.telenav.kivakit.interfaces.comparison.Filter;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.interfaces.naming.Named;
@@ -1397,12 +1397,12 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
      */
     public final Iterable<Place> placesInside(Region<?> region)
     {
-        return Iterables.iterable(() -> new Next<>()
+        return Iterables.iterable(() -> new NextValue<>()
         {
             final Iterator<Place> places = placesInside(region.bounds()).iterator();
 
             @Override
-            public Place onNext()
+            public Place next()
             {
                 while (places.hasNext())
                 {
