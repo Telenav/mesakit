@@ -46,7 +46,7 @@ public class PolygonTest extends GeographyUnitTest
         NEXT:
         for (var i = 0; i < 100000; i++)
         {
-            var location = randomValueFactory().newLocation(polygon.bounds());
+            var location = newRandomValueFactory().newLocation(polygon.bounds());
             for (Segment segment : polygon.segments())
             {
                 if (segment.isHorizontal() && segment.start().latitude().equals(location.latitude()))

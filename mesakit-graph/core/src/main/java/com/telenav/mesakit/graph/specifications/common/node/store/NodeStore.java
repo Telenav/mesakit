@@ -344,7 +344,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
         if (nodeIdentifierToIndex.isNull(index))
         {
             // get the next index
-            index = nextIndex();
+            index = index++;
 
             // and store it both as index -> node identifier and node identifier -> index.
             storeNodeIdentifier(index, nodeIdentifier);

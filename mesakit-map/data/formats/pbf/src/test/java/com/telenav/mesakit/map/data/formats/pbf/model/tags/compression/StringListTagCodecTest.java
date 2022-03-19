@@ -32,6 +32,7 @@ import com.telenav.kivakit.resource.PropertyMap;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import org.junit.Test;
 
+import static com.telenav.kivakit.core.value.count.Count._1_000;
 import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
 
 /**
@@ -62,7 +63,7 @@ public class StringListTagCodecTest extends UnitTest
         test(codec, tags());
 
         var progress = BroadcastingProgressReporter.create();
-        loop(1_000, () ->
+        _1_000.loop(() ->
         {
             test(codec, randomTags());
             progress.next();
@@ -83,7 +84,7 @@ public class StringListTagCodecTest extends UnitTest
     private PbfTagList randomTags()
     {
         var tags = PbfTagList.create();
-        loopRandomNumberOfTimes(1, 4, () -> tags.add(randomAsciiString(), randomAsciiString()));
+        random().rangeInclusive(1, 4).loop(() -> tags.add(random().letters(), random().letters()));
         return tags;
     }
 

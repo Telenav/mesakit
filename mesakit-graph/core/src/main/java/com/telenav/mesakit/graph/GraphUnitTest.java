@@ -255,9 +255,9 @@ public abstract class GraphUnitTest extends RegionUnitTest
     }
 
     @Override
-    protected GraphRandomValueFactory randomValueFactory()
+    protected GraphRandomValueFactory newRandomValueFactory()
     {
-        return newRandomValueFactory(GraphRandomValueFactory::new);
+        return new GraphRandomValueFactory();
     }
 
     protected Route route(Edge... edges)

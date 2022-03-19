@@ -145,7 +145,7 @@ public class Codec
                 upper = middle;
             }
         }
-        return new Range<>(lower, upper);
+        return Range.inclusive(lower, upper);
     }
 
     private BitArray codeToBitArray(Code code)

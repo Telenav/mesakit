@@ -135,7 +135,7 @@ public class PolygonSpatialIndexTest extends GeographyUnitTest
         var bounds = polygon.bounds();
         for (var i = 0; i < 100; i++)
         {
-            var location = randomValueFactory().newLocation(bounds);
+            var location = newRandomValueFactory().newLocation(bounds);
             var polygonContainment = polygon.containment(location);
             var indexContainment = index.containment(location);
             if (!indexContainment.matches(polygonContainment))

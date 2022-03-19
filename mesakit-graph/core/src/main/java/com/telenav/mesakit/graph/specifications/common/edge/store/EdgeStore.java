@@ -643,7 +643,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
 
         count = 0;
 
-        resetNextIndex();
+        resetIndex();
 
         temporaryWayIdentifierToRelationIndex = new LongToIntMap(objectName() + ".temporaryEdgeIdentifierToRelationsIndex");
         temporaryWayIdentifierToRelationIndex.initialize();

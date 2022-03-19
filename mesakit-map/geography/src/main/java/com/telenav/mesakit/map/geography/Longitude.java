@@ -60,7 +60,7 @@ public final class Longitude extends Angle
     {
         MAXIMUM = nanodegrees(MAXIMUM_NANODEGREES);
         MINIMUM = nanodegrees(MINIMUM_NANODEGREES);
-        RANGE = new Range<>(MINIMUM, MAXIMUM);
+        RANGE = Range.inclusive(MINIMUM, MAXIMUM);
     }
 
     public static Longitude angle(Angle angle)
@@ -140,7 +140,7 @@ public final class Longitude extends Angle
         }
     }
 
-    public static class DegreesMinutesAndSecondsConverter extends BaseStringConverter<Longitude>
+    @SuppressWarnings("DuplicatedCode") public static class DegreesMinutesAndSecondsConverter extends BaseStringConverter<Longitude>
     {
         private static final Pattern pattern = Pattern
                 .compile("\\+?(-?\\d+)\\s*°\\s*(\\d+\\.?\\d*)\\s*'\\s*((\\d+\\.?\\d*)\\s*\")?");

@@ -20,8 +20,8 @@ package com.telenav.mesakit.graph.specifications.common.vertex.store;
 
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
-import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.GraphUnitTest;
+import com.telenav.mesakit.graph.Metadata;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -36,13 +36,13 @@ public class EdgeListStoreTest extends GraphUnitTest
 
         var indexes = new ArrayList<Integer>();
         var lists = new HashMap<Integer, IntArray>();
-        randomIndexes(Repeats.NO_REPEATS, Count._1024, 65_536, index ->
+        random().indexes(Repeats.NO_REPEATS, 65_536, index ->
         {
             indexes.add(index);
 
             var values = new IntArray("values");
             values.initialize();
-            for (var value : randomIntList(Repeats.ALLOW_REPEATS, Count.count(randomInt(0, 20)), 1, 500))
+            for (var value : random().list(Repeats.ALLOW_REPEATS, Count.count(random().randomIntExclusive(0, 20)),1, 500,Integer.class))
             {
                 values.add(value);
             }

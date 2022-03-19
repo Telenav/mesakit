@@ -133,7 +133,7 @@ public class DistanceTest extends MeasurementsUnitTest
     public void testScaleBy()
     {
         var distance = random().newDistance();
-        var factor = random().newDouble(0.1, 2.0);
+        var factor = random().randomDouble(0.1, 2.0);
 
         var scaled = distance.asMillimeters() * factor;
 

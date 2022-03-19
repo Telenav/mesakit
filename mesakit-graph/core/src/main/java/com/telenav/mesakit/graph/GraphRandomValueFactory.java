@@ -39,7 +39,7 @@ public class GraphRandomValueFactory extends GeographyRandomValueFactory
 
         protected RandomListBuilder(int minimum, int maximum)
         {
-            for (var i = 0; i < newInt(minimum, maximum); i++)
+            for (var i = 0; i < randomInt(minimum, maximum); i++)
             {
                 list.add(newElement());
             }
@@ -74,6 +74,6 @@ public class GraphRandomValueFactory extends GeographyRandomValueFactory
 
     public RoadName newStreetName()
     {
-        return RoadName.forName(newString());
+        return RoadName.forName(string());
     }
 }

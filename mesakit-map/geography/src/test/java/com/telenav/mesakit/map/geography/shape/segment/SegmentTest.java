@@ -41,7 +41,7 @@ public class SegmentTest extends GeographyUnitTest
     @Test
     public void testHeading()
     {
-        var start = randomValueFactory().newLocation();
+        var start = newRandomValueFactory().newLocation();
 
         // we need a small rectangle for computations to be accurate
         var rectangle = Rectangle.fromLocations(start, start).expanded(Distance.ONE_MILE);

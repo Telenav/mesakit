@@ -92,6 +92,6 @@ public class MeasurementsRandomValueFactory extends RandomValueFactory
 
     public Speed newSpeed()
     {
-        return Speed.milesPerHour(newDouble(0, 120));
+        return Speed.milesPerHour(randomDouble(0, 120));
     }
 }

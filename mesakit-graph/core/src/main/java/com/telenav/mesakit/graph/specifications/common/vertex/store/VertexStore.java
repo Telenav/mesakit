@@ -476,7 +476,7 @@ public class VertexStore extends NodeStore<Vertex>
         super.onInitialize();
 
         // Start vertex count at 1 since 0 is the uninitialized value in Java
-        resetNextIndex();
+        resetIndex();
 
         // Temporary vertex information used when loading data
         temporaryClippedLocation = new LongSet(objectName() + ".temporaryClippedLocation");
