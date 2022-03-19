@@ -82,7 +82,7 @@ public class WaySectioningGraphLoader extends BaseGraphLoader
         var relationStore = store.relationStore();
 
         // and an iterator over batches of edges
-        var batches = raw.batches(Count._16384);
+        var batches = raw.batches(Count._16_384);
 
         // then we start a thread pool
         var lock = new ReentrantLock(true);

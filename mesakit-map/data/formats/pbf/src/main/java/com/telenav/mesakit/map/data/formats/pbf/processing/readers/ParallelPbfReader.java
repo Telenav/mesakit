@@ -41,7 +41,7 @@ import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfProcessing;
 @UmlClassDiagram(diagram = DiagramPbfProcessing.class)
 public class ParallelPbfReader extends BaseRepeater implements PbfDataSource
 {
-    private static final Count BATCH_SIZE = Count._65536;
+    private static final Count BATCH_SIZE = Count._65_536;
 
     private static final Maximum QUEUE_SIZE = Maximum._4;
 

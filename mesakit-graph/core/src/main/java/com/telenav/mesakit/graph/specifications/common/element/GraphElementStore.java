@@ -91,7 +91,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
 {
     private static final boolean BATCHING_ENABLED = false;
 
-    private static final Count BATCH_SIZE = Count._16384;
+    private static final Count BATCH_SIZE = Count._16_384;
 
     private static final Maximum QUEUE_SIZE = Maximum._128;
 
