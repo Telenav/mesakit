@@ -146,7 +146,8 @@ public final class Latitude extends Angle
         }
     }
 
-    @SuppressWarnings("DuplicatedCode") public static class DegreesMinutesAndSecondsConverter extends BaseStringConverter<Latitude>
+    @SuppressWarnings("DuplicatedCode")
+    public static class DegreesMinutesAndSecondsConverter extends BaseStringConverter<Latitude>
     {
         private static final Pattern pattern = Pattern
                 .compile("\\+?(-?\\d+)\\s*°\\s*(\\d+\\.?\\d*)\\s*'\\s*((\\d+\\.?\\d*)\\s*\")?");

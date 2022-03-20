@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.graph.world;
 
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.graph.GraphUnitTest;
 import org.junit.BeforeClass;
 
@@ -28,6 +29,6 @@ public class WorldGraphUnitTest extends GraphUnitTest
     @BeforeClass
     public static void testSetup()
     {
-        resolveProject(WorldGraphProject.class).initialize();
+        Listener.none().listenTo(resolveProject(WorldGraphProject.class)).initialize();
     }
 }

@@ -55,7 +55,7 @@ import static com.telenav.mesakit.map.geography.Precision.DM7;
  * Graph#supportsFullPbfNodeInformation()}. Full node information is only a requirement for map editing tools used by
  * the OpenTerra team, such as the map-enhancer project, also known as Cygnus. Having full node information is required
  * in order to contribute enhanced or fixed map data back to the OSM community. In cases where full node information is
- * being stored like this, node information for all of the nodes in each edge's road shape will be stored in the {@link
+ * being stored like this, node information for all the nodes in each edge's road shape will be stored in the {@link
  * ShapePointStore} subclass of this class.
  *
  * @param <T> The subclass of {@link GraphNode} being stored, either {@link VertexStore} or {@link ShapePointStore}.
@@ -344,7 +344,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
         if (nodeIdentifierToIndex.isNull(index))
         {
             // get the next index
-            index = index++;
+            index++;
 
             // and store it both as index -> node identifier and node identifier -> index.
             storeNodeIdentifier(index, nodeIdentifier);
