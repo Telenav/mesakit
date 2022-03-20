@@ -27,7 +27,10 @@ import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.Message;
+import com.telenav.kivakit.core.os.Console;
 import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.interfaces.code.TripwireTrait;
 import com.telenav.kivakit.interfaces.collection.NextValue;
 import com.telenav.kivakit.interfaces.lifecycle.Initializable;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
@@ -89,7 +92,13 @@ import static com.telenav.mesakit.graph.specifications.common.vertex.store.Conne
  * @author jonathanl (shibo)
  */
 @SuppressWarnings("DuplicatedCode")
-public class ConnectivityStore implements Validatable, NamedObject, KryoSerializable, CompressibleCollection, Initializable
+public class ConnectivityStore implements
+        Validatable,
+        NamedObject,
+        KryoSerializable,
+        CompressibleCollection,
+        Initializable,
+        TripwireTrait
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -538,6 +547,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
      */
     private void temporaryAddTwoWayEdge(int vertexIndex, int edgeIndex)
     {
+        tripEvery(1_000);
         temporaryAddEdgeTo(temporaryVertexTwoWayEdges, vertexIndex, edgeIndex);
     }
 

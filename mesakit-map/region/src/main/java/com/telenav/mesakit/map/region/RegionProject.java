@@ -70,8 +70,6 @@ public class RegionProject extends Project
     @Override
     public void onInitialize()
     {
-        super.onInitialize();
-
         Region.bootstrap();
     }
 }

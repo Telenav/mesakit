@@ -18,17 +18,12 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.graph.GraphUnitTest;
-import org.junit.BeforeClass;
-
-import static com.telenav.kivakit.core.project.Project.resolveProject;
 
 public class WorldGraphUnitTest extends GraphUnitTest
 {
-    @BeforeClass
-    public static void testSetup()
+    public WorldGraphUnitTest()
     {
-        Listener.none().listenTo(resolveProject(WorldGraphProject.class)).initialize();
+        initializeProject(WorldGraphProject.class);
     }
 }

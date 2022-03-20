@@ -137,7 +137,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
 
     protected GraphUnitTest()
     {
-        Listener.none().listenTo(resolveProject(GraphProject.class)).initialize();
+        initializeProject(GraphProject.class);
 
         var store = Settings.of(this);
         LOGGER.listenTo(store);
