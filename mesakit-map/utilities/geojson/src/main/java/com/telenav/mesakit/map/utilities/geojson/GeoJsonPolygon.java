@@ -42,7 +42,7 @@ public class GeoJsonPolygon extends GeoJsonGeometry
     {
         // Add the outer polygon
         coordinates.add(new ArrayList<>());
-        for (var location : polygon.locationSequence())
+        for (var location : polygon)
         {
             add(location);
         }

@@ -1625,7 +1625,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
         for (var edge : this)
         {
             var firstLocation = true;
-            for (var location : edge.roadShape().locationSequence())
+            for (var location : edge.roadShape())
             {
                 if (firstEdge || !firstLocation)
                 {

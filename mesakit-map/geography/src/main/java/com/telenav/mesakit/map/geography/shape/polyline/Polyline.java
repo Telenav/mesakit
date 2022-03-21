@@ -128,7 +128,8 @@ public class Polyline implements
         Indexable<Location>,
         Bounded,
         Intersectable,
-        LocationSequence
+        LocationSequence,
+        Iterable<Location>
 {
     public static final Distance DEFAULT_MAXIMUM_SHAPE_POINT_SPACING = Distance.meters(15);
 
@@ -238,7 +239,7 @@ public class Polyline implements
         protected String onToString(Polyline value)
         {
             var locations = new StringList();
-            for (var location : value.locationSequence())
+            for (var location : value)
             {
                 locations.add(locationConverter.unconvert(location));
             }
@@ -296,7 +297,7 @@ public class Polyline implements
             var oldLatitude = 0D;
             var oldLongitude = 0D;
             var nb = new StringBuilder();
-            for (var temp : line.locationSequence())
+            for (var temp : line)
             {
                 var p1 = temp.latitude().asDegrees();
                 var p2 = temp.longitude().asDegrees();
@@ -597,7 +598,7 @@ public class Polyline implements
     {
         var builder = new PolylineBuilder();
         builder.addAllUnique(locationSequence());
-        builder.addAllUnique(that.locationSequence());
+        builder.addAllUnique(that);
         return builder.build();
     }
 
@@ -1189,7 +1190,7 @@ public class Polyline implements
     @Override
     public Iterable<Location> locationSequence()
     {
-        return asIterable();
+        return this;
     }
 
     public List<Location> locations()

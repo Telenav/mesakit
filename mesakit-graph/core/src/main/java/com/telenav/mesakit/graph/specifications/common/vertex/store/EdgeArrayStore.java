@@ -22,6 +22,8 @@ import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.interfaces.code.TripwireTrait;
 import com.telenav.kivakit.interfaces.collection.NextValue;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
@@ -47,7 +49,10 @@ import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
  *
  * @author jonathanl (shibo)
  */
-public class EdgeArrayStore implements CompressibleCollection, NamedObject
+public class EdgeArrayStore extends BaseRepeater implements
+        CompressibleCollection,
+        NamedObject,
+        TripwireTrait
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -94,6 +99,8 @@ public class EdgeArrayStore implements CompressibleCollection, NamedObject
         lengths = new SplitByteArray(objectName + ".lengths");
         lengths.initialSize(estimatedEdges);
         lengths.initialize();
+
+        LOGGER.listenTo(this);
     }
 
     protected EdgeArrayStore()
@@ -149,14 +156,16 @@ public class EdgeArrayStore implements CompressibleCollection, NamedObject
         // Add each value
         var start = offset;
         var length = 0;
-        DEBUG.trace("Putting values into array $", index);
+        ifDebug(() -> trace("Putting values into array $", index));
         while (values.hasNext())
         {
             var value = values.next();
-            DEBUG.trace("  Adding value $", value);
+            ifDebug(() -> trace("  Adding value $", value));
             indexes.set(offset++, value);
             length++;
         }
+
+        tripEvery(10_000);
 
         // and store the offset (where our data started) and the length of the data added.
         offsets.set(index, start);

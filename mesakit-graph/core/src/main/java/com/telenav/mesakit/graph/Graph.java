@@ -1623,7 +1623,7 @@ public abstract class Graph extends BaseRepeater implements AsIndentedString, Na
         List<ShapePoint> points = new ArrayList<>();
         if (supportsFullPbfNodeInformation())
         {
-            for (var location : line.locationSequence())
+            for (var location : line)
             {
                 var point = shapePointForLocation(location);
                 if (point != null)

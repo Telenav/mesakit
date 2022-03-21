@@ -219,7 +219,7 @@ public class NewWay extends BaseMutableWay
 
     public void referenceNodes()
     {
-        for (var location : shape.locationSequence())
+        for (var location : shape)
         {
             nodes.reference(location);
         }
@@ -228,7 +228,7 @@ public class NewWay extends BaseMutableWay
     public Set<MapNodeIdentifier> referencedNodes()
     {
         Set<MapNodeIdentifier> referenced = new HashSet<>();
-        for (var location : shape.locationSequence())
+        for (var location : shape)
         {
             var identifier = nodes.identifier(location);
             if (identifier == null)
@@ -275,7 +275,7 @@ public class NewWay extends BaseMutableWay
         if (shape != null)
         {
             // add references to each node in the way
-            var identifiers = new PbfNodeIdentifierList(nodes, shape.locationSequence());
+            var identifiers = new PbfNodeIdentifierList(nodes, shape);
             lines.addAll(identifiers.references());
         }
 

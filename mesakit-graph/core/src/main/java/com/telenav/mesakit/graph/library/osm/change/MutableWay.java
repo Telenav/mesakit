@@ -151,7 +151,7 @@ public class MutableWay extends BaseMutableWay
         var data = new CommonEntityData(identifier.asLong(), version, new PbfTimestamp(), user(),
                 changeSetIdentifier.asLong(), tags.asList());
         List<WayNode> wayNodes = new ArrayList<>();
-        for (var location : shape.locationSequence())
+        for (var location : shape)
         {
             wayNodes.add(new WayNode(nodes.identifier(location).asLong()));
         }
@@ -226,7 +226,7 @@ public class MutableWay extends BaseMutableWay
         if (!isModified())
         {
             // it is being modified for the first time, so reference its nodes
-            for (var location : shape.locationSequence())
+            for (var location : shape)
             {
                 nodes.reference(location);
             }
@@ -258,7 +258,7 @@ public class MutableWay extends BaseMutableWay
     public Set<PbfNodeIdentifier> referencedNodes()
     {
         Set<PbfNodeIdentifier> referenced = new HashSet<>();
-        for (var location : shape.locationSequence())
+        for (var location : shape)
         {
             referenced.add(nodes.identifier(location));
         }
@@ -302,7 +302,7 @@ public class MutableWay extends BaseMutableWay
                 + (userName.name()) + "\">");
 
         // Add references to nodes
-        var identifiers = new PbfNodeIdentifierList(nodes, shape().locationSequence());
+        var identifiers = new PbfNodeIdentifierList(nodes, shape());
         lines.addAll(identifiers.references());
 
         // Add OSM tags
@@ -359,7 +359,7 @@ public class MutableWay extends BaseMutableWay
         if (segment != null)
         {
             var builder = new PolylineBuilder();
-            builder.addAll(shape.locationSequence());
+            builder.addAll(shape);
             var intersection = builder.addIntersectionWith(segment, Distance.meters(5));
             if (intersection != null)
             {

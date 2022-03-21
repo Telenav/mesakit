@@ -206,7 +206,7 @@ public class Polygon extends Polyline implements Shape
         {
             return false;
         }
-        for (var location : line.locationSequence())
+        for (var location : line)
         {
             if (!contains(location))
             {
@@ -282,7 +282,7 @@ public class Polygon extends Polyline implements Shape
 
     public boolean intersectsOrContains(Polyline line)
     {
-        for (var location : line.locationSequence())
+        for (var location : line)
         {
             if (contains(location))
             {

@@ -1645,7 +1645,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     @Override
     public Iterable<Location> locationSequence()
     {
-        return roadShape().locationSequence();
+        return roadShape();
     }
 
     /**
