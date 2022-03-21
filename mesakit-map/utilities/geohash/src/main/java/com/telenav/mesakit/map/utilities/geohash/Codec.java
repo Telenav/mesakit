@@ -66,9 +66,9 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
             var longitudeRange = bitsToCoordinateRange(longitudeBits.build(), Longitude.RANGE);
             var latitudeRange = bitsToCoordinateRange(latitudeBits.build(), Latitude.RANGE);
 
-            var north = Latitude.angle(latitudeRange.maximum());
+            var north = Latitude.angle(latitudeRange.inclusiveMaximum());
             var south = Latitude.angle(latitudeRange.minimum());
-            var east = Longitude.angle(longitudeRange.maximum());
+            var east = Longitude.angle(longitudeRange.inclusiveMaximum());
             var west = Longitude.angle(longitudeRange.minimum());
 
             var bottomLeft = new Location(south, west);
@@ -132,7 +132,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
     private Range<Angle> bitsToCoordinateRange(BitArray coordinateBits, Range<Angle> coordinateRange)
     {
         var lower = coordinateRange.minimum();
-        var upper = coordinateRange.maximum();
+        var upper = coordinateRange.inclusiveMaximum();
         for (var i = 0; i < coordinateBits.length(); i++)
         {
             var middle = lower.bisect(upper, Chirality.CLOCKWISE);
@@ -171,7 +171,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
     {
         var bits = new BitArray.Builder();
         var lower = coordinateRange.minimum();
-        var upper = coordinateRange.maximum();
+        var upper = coordinateRange.inclusiveMaximum();
         for (var i = 0; i < resolution; i++)
         {
             var middle = lower.bisect(upper, Chirality.CLOCKWISE);
