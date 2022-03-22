@@ -98,10 +98,6 @@ public class VertexStore extends NodeStore<Vertex>
 
     private static final Debug DEBUG = new Debug(LOGGER);
 
-    /** Edge and vertex connectivity information */
-    @KivaKitArchivedField
-    private ConnectivityStore connectivity;
-
     private final AttributeReference<ConnectivityStore> CONNECTIVITY =
             new AttributeReference<>(this, EdgeAttributes.get().CONNECTIVITY, "connectivity",
                     () -> new ConnectivityStore("connectivity", graph()))
@@ -114,12 +110,28 @@ public class VertexStore extends NodeStore<Vertex>
                 }
             };
 
+    private final AttributeReference<IntToByteMap> GRADE_SEPARATION =
+            new AttributeReference<>(this, VertexAttributes.get().GRADE_SEPARATION, "gradeSeparation",
+                    () -> (IntToByteMap) new IntToByteMap("gradeSeparation")
+                            .nullInt(Integer.MIN_VALUE)
+                            .initialSize(estimatedElements()));
+
     private final AttributeReference<SplitPackedArray> IS_CLIPPED =
             new AttributeReference<>(this, VertexAttributes.get().IS_CLIPPED, "isClipped",
                     () -> (SplitPackedArray) new SplitPackedArray("isClipped")
                             .bits(BitCount._1, NO_OVERFLOW)
                             .hasNullLong(false)
                             .initialSize(estimatedElements()));
+
+    /** Edge and vertex connectivity information */
+    @KivaKitArchivedField
+    private ConnectivityStore connectivity;
+
+    @KivaKitArchivedField
+    private IntToByteMap gradeSeparation;
+
+    /** Cached reference to graph store for performance reasons */
+    private final ArchivedGraphStore graphStore;
 
     /**
      * The clip state of each vertex
@@ -129,18 +141,6 @@ public class VertexStore extends NodeStore<Vertex>
 
     /** Locations where vertexes have been created due to clipping at geographic boundaries */
     private LongSet temporaryClippedLocation;
-
-    /** Cached reference to graph store for performance reasons */
-    private final ArchivedGraphStore graphStore;
-
-    private final AttributeReference<IntToByteMap> GRADE_SEPARATION =
-            new AttributeReference<>(this, VertexAttributes.get().GRADE_SEPARATION, "gradeSeparation",
-                    () -> (IntToByteMap) new IntToByteMap("gradeSeparation")
-                            .nullInt(Integer.MIN_VALUE)
-                            .initialSize(estimatedElements()));
-
-    @KivaKitArchivedField
-    private IntToByteMap gradeSeparation;
 
     private transient boolean vertexesAdded;
 
@@ -406,8 +406,6 @@ public class VertexStore extends NodeStore<Vertex>
     {
         return new BaseIterator<>()
         {
-            int index = 1;
-
             @Override
             protected Vertex onNext()
             {
@@ -417,6 +415,8 @@ public class VertexStore extends NodeStore<Vertex>
                 }
                 return null;
             }
+
+            int index = 1;
         };
     }
 
@@ -776,12 +776,6 @@ public class VertexStore extends NodeStore<Vertex>
             var intersecting = index.intersecting(bounds);
             return new VertexSequence(new DeduplicatingIterable<>(Iterables.iterable(() -> new NextValue<>()
             {
-                final Iterator<Edge> edges = intersecting.iterator();
-
-                int i;
-
-                Edge edge;
-
                 @Override
                 public Vertex next()
                 {
@@ -809,6 +803,12 @@ public class VertexStore extends NodeStore<Vertex>
                         }
                     }
                 }
+
+                final Iterator<Edge> edges = intersecting.iterator();
+
+                int i;
+
+                Edge edge;
             })));
         }
         else

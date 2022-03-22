@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.graph.specifications.common.node.store;
 
-import com.telenav.kivakit.validation.ValidationType;
-import com.telenav.kivakit.validation.Validator;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToLongMap;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.GraphNode;
@@ -78,25 +78,16 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
                     () -> (SplitLongArray) new SplitLongArray("nodeIdentifier")
                             .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
-    private SplitLongArray nodeIdentifier;
+    private final AttributeReference<SplitLongToIntMap> NODE_IDENTIFIER_TO_INDEX =
+            new AttributeReference<>(this, NodeAttributes.get().NODE_IDENTIFIER_TO_INDEX, "nodeIdentifierToIndex",
+                    () -> (SplitLongToIntMap) new SplitLongToIntMap("nodeIdentifierToIndex")
+                            .initialSize(estimatedElements()));
 
     private final AttributeReference<SplitLongArray> NODE_LOCATION =
             new AttributeReference<>(this, NodeAttributes.get().NODE_LOCATION, "nodeLocation",
                     () -> (SplitLongArray) new SplitLongArray("nodeLocation")
                             .nullLong(Long.MIN_VALUE)
                             .initialSize(estimatedElements()));
-
-    @KivaKitArchivedField
-    private SplitLongArray nodeLocation;
-
-    private final AttributeReference<SplitLongToIntMap> NODE_IDENTIFIER_TO_INDEX =
-            new AttributeReference<>(this, NodeAttributes.get().NODE_IDENTIFIER_TO_INDEX, "nodeIdentifierToIndex",
-                    () -> (SplitLongToIntMap) new SplitLongToIntMap("nodeIdentifierToIndex")
-                            .initialSize(estimatedElements()));
-
-    @KivaKitArchivedField
-    private SplitLongToIntMap nodeIdentifierToIndex;
 
     /** Disk stores for storing all node information when handling OSM data to be contributed back to the community */
     private PbfAllNodeDiskStores allPbfNodeDiskStores;
@@ -109,6 +100,15 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
 
     /** Store of all PBF node tags */
     private PbfAllGraphElementTagStore allPbfNodeTagStore;
+
+    @KivaKitArchivedField
+    private SplitLongArray nodeIdentifier;
+
+    @KivaKitArchivedField
+    private SplitLongToIntMap nodeIdentifierToIndex;
+
+    @KivaKitArchivedField
+    private SplitLongArray nodeLocation;
 
     /** PBF node identifier -> node location map which holds this information until vertexes are created */
     private transient SplitLongToLongMap temporaryNodeIdentifierToLocation;
@@ -344,7 +344,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
         if (nodeIdentifierToIndex.isNull(index))
         {
             // get the next index
-            index++;
+            index = nextIndex();
 
             // and store it both as index -> node identifier and node identifier -> index.
             storeNodeIdentifier(index, nodeIdentifier);
@@ -470,7 +470,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
 
         // and store the location of the given node at that index
         NODE_LOCATION.allocate();
-        nodeLocation.set(index, locationAsLong);
+        nodeLocation.set(index, locationAsLong);   // 1605739484497293970
     }
 
     /**
