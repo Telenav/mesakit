@@ -165,8 +165,6 @@ public class EdgeArrayStore extends BaseRepeater implements
             length++;
         }
 
-        tripwireTripEvery(10_000);
-
         // and store the offset (where our data started) and the length of the data added.
         offsets.set(index, start);
         lengths.set(index, (byte) length);

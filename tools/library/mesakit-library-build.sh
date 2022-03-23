@@ -22,21 +22,25 @@ usage() {
     echo " "
     echo "         compile - compile and shade (no tests)"
     echo " "
-    echo "    deploy-ossrh - clean-all, compile, run tests, attach jars, build javadoc, sign artifacts and deploy to OSSRH"
+    echo "    deploy-ossrh - clean-sparkling, compile, run tests, attach jars, build javadoc, sign artifacts and deploy to OSSRH"
     echo " "
-    echo "    deploy-local - clean-all, compile, run tests, attach jars, build javadoc, sign artifacts and deploy to local Maven repository"
+    echo "    deploy-local - clean-sparkling, compile, run tests, attach jars, build javadoc, sign artifacts and deploy to local Maven repository"
     echo " "
     echo "           tools - compile, shade, run tests, build tools"
+    echo " "
+    echo "             dmg - compile, shade, run tests, build tools, build dmg"
     echo " "
     echo "         javadoc - compile and build javadoc"
     echo " "
     echo "  Build modifiers:"
     echo " "
-    echo "       clean-all - prompt to remove cached and temporary files and mesakit artifacts from ~/.m2"
-    echo " "
     echo "     attach-jars - attach source and javadoc jars to maven artifacts"
     echo " "
     echo "           clean - prompt to remove cached and temporary files"
+    echo " "
+    echo "       clean-all - prompt to remove cached and temporary files and mesakit artifacts from ~/.m2"
+    echo " "
+    echo " clean-sparkling - prompt to remove entire .m2 repository and all cached and temporary files"
     echo " "
     echo "           debug - turn maven debug mode on"
     echo " "
@@ -53,8 +57,6 @@ usage() {
     echo "           quiet - build with minimal output"
     echo " "
     echo " single-threaded - build with only one thread"
-    echo " "
-    echo "       sparkling - prompt to remove entire .m2 repository and all cached and temporary files"
     echo " "
     echo "           tests - run all tests"
     echo " "
@@ -91,53 +93,66 @@ build() {
     "all")
         JAVADOC=true
         BUILD_ARGUMENTS="clean install"
+        # shellcheck disable=SC2206
         BUILD_MODIFIERS=(multi-threaded clean-all tests shade tools ${@:3})
         ;;
 
     "compile")
         BUILD_ARGUMENTS="clean compile"
+        # shellcheck disable=SC2206
         BUILD_MODIFIERS=(multi-threaded no-tests shade no-javadoc quiet ${@:3})
         ;;
 
     "deploy-ossrh")
-        JAVADOC=true
-        export NO_PROMPT=true
         BUILD_ARGUMENTS="clean deploy"
-        BUILD_MODIFIERS=(multi-threaded clean-all tests attach-jars sign-artifacts ${@:3})
+        # shellcheck disable=SC2206
+        BUILD_MODIFIERS=(multi-threaded no-javadoc clean-sparkling tests attach-jars sign-artifacts ${@:3})
+        export BUILD_LEXAKAI_DOCUMENTATION=true
         ;;
 
     "deploy-local")
-        JAVADOC=true
-        export NO_PROMPT=true
         BUILD_ARGUMENTS="clean install"
-        BUILD_MODIFIERS=(multi-threaded clean-all tests attach-jars sign-artifacts ${@:3})
+        # shellcheck disable=SC2206
+        BUILD_MODIFIERS=(multi-threaded no-javadoc clean-sparkling tests attach-jars sign-artifacts ${@:3})
+        export BUILD_LEXAKAI_DOCUMENTATION=true
         ;;
 
     "javadoc")
         JAVADOC="true"
         BUILD_ARGUMENTS="clean install"
+        # shellcheck disable=SC2206
         BUILD_MODIFIERS=(multi-threaded no-tests javadoc ${@:3})
         ;;
 
     "setup")
         BUILD_ARGUMENTS="clean install"
-        BUILD_MODIFIERS=(multi-threaded no-tests shade tools ${@:3})
+        # shellcheck disable=SC2206
+        BUILD_MODIFIERS=(multi-threaded tests shade tools ${@:3})
         ;;
 
     "test")
         BUILD_ARGUMENTS="clean install"
+        # shellcheck disable=SC2206
         BUILD_MODIFIERS=(single-threaded tests no-javadoc ${@:3})
         ;;
 
     "tools")
         BUILD_ARGUMENTS="clean install"
+        # shellcheck disable=SC2206
         BUILD_MODIFIERS=(multi-threaded tests shade tools no-javadoc ${@:3})
+        ;;
+
+    "dmg")
+        BUILD_ARGUMENTS="clean install"
+        # shellcheck disable=SC2206
+        BUILD_MODIFIERS=(multi-threaded tests shade tools dmg no-javadoc ${@:3})
         ;;
 
     *)
         BUILD_TYPE="default"
         BUILD_ARGUMENTS="clean install"
-        BUILD_MODIFIERS=(multi-threaded tests shade tools no-javadoc ${@:2})
+        # shellcheck disable=SC2206
+        BUILD_MODIFIERS=(multi-threaded tests shade no-javadoc ${@:2})
         ;;
 
     esac
@@ -145,7 +160,8 @@ build() {
     BUILD_MODIFIERS_STRING=""
     DELIMITER=""
 
-    for MODIFIER in "${BUILD_MODIFIERS[@]}"; do
+    # shellcheck disable=SC2068
+    for MODIFIER in ${BUILD_MODIFIERS[@]}; do
 
         BUILD_MODIFIERS_STRING="$BUILD_MODIFIERS_STRING$DELIMITER$MODIFIER"
         DELIMITER=" "
@@ -153,16 +169,21 @@ build() {
         case "$MODIFIER" in
 
         "attach-jars")
+            # To attach jars, we have to build the javadoc for the jars
             SWITCHES="${SWITCHES//-Dmaven.javadoc.skip=true/}"
             BUILD_ARGUMENTS="$BUILD_ARGUMENTS -Pattach-jars"
             ;;
 
-        "clean-all")
-            PRE_BUILD_SCRIPT="mesakit-clean-all.sh"
+        "clean")
+            CLEAN_SCRIPT="mesakit-clean.sh"
             ;;
 
-        "clean")
-            PRE_BUILD_SCRIPT="mesakit-clean.sh"
+        "clean-all")
+            CLEAN_SCRIPT="mesakit-clean-all.sh"
+            ;;
+
+        "clean-sparkling")
+            CLEAN_SCRIPT="mesakit-clean-sparkling.sh"
             ;;
 
         "debug")
@@ -173,9 +194,19 @@ build() {
             addSwitch "-Dmaven.surefire.debug"
             ;;
 
+        "dmg")
+            addSwitch "-P dmg"
+            ;;
+
+        "docker")
+            addSwitch "-P docker"
+            ;;
+
         "javadoc")
-            if [ ! -z "$JAVADOC" ]; then
+            if [ -n "$JAVADOC" ]; then
+
                 BUILD_ARGUMENTS="$BUILD_ARGUMENTS javadoc:aggregate"
+
             fi
             ;;
 
@@ -196,7 +227,7 @@ build() {
             ;;
 
         "quiet")
-            addSwitch "-q -Dsurefire.printSummary=false -DMESAKIT_LOG_LEVEL=Warning"
+            addSwitch "-q -Dsurefire.printSummary=false -DKIVAKIT_LOG_LEVEL=Warning"
             ;;
 
         "shade")
@@ -213,10 +244,6 @@ build() {
 
         "single-threaded")
             THREADS=1
-            ;;
-
-        "sparkling")
-            PRE_BUILD_SCRIPT="mesakit-clean-sparkling.sh"
             ;;
 
         "tests") ;;
@@ -238,23 +265,25 @@ build() {
 
     addSwitch "--threads $THREADS"
 
-    if [ -z "$MESAKIT_DEBUG" ]; then
-        MESAKIT_DEBUG="!Debug"
+    if [ -z "$KIVAKIT_DEBUG" ]; then
+        KIVAKIT_DEBUG="!Debug"
     fi
 
     BUILD_FOLDER="$PROJECT"
 
-    FILTER_OUT="grep -y -v --line-buffered"
-
     if [ -f "$MESAKIT_HOME/build.properties" ]; then
 
+        # shellcheck disable=SC2002
         MESAKIT_BUILD_NAME=$(cat "$MESAKIT_HOME"/build.properties | grep "build-name" | cut -d'=' -f2 | xargs echo)
+        # shellcheck disable=SC2002
         MESAKIT_BUILD_DATE=$(cat "$MESAKIT_HOME"/build.properties | grep "build-date" | cut -d'=' -f2 | xargs echo)
 
     fi
 
-    if [ ! -z "$MESAKIT_BUILD_NAME" ]; then
+    if [ -n "$MESAKIT_BUILD_NAME" ]; then
+
         MESAKIT_BUILD_NAME=" ($MESAKIT_BUILD_DATE $MESAKIT_BUILD_NAME)"
+
     fi
 
     if [ -e "$BUILD_FOLDER" ]; then
@@ -265,42 +294,54 @@ build() {
         echo "┋         Build-Folder: $BUILD_FOLDER"
         echo "┋           Build-Type: $BUILD_TYPE"
         echo "┋      Build-Modifiers: $BUILD_MODIFIERS_STRING"
-        echo "┋   Maven Command Line: mvn -DMESAKIT_DEBUG=\"$MESAKIT_DEBUG\" $SWITCHES $BUILD_ARGUMENTS"
+        echo "┋   Maven Command Line: mvn -DKIVAKIT_DEBUG=\"$KIVAKIT_DEBUG\" $SWITCHES $BUILD_ARGUMENTS"
         echo "┋"
 
         if [ -z "$DRY_RUN" ]; then
 
-            $PRE_BUILD_SCRIPT
+            cd "$BUILD_FOLDER" || exit
 
-            cd "$BUILD_FOLDER"
+            if [ -z "$CLEANED" ] && [ -n "$CLEAN_SCRIPT" ]; then
+
+                bash "$CLEAN_SCRIPT"
+
+                CLEANED=true
+
+            fi
+
+            if [ -z "$PREBUILT" ] && [ -n "$PREBUILD_SCRIPT" ]; then
+
+                bash "$PREBUILD_SCRIPT"
+
+                PREBUILT=true
+
+            fi
 
             # shellcheck disable=SC2086
-            "$M2_HOME"/bin/mvn --no-transfer-progress -DMESAKIT_DEBUG="$MESAKIT_DEBUG" $SWITCHES $BUILD_ARGUMENTS 2>&1 | $FILTER_OUT "illegal reflective access\|denied in a future release\|please consider reporting"
+            "$M2_HOME/bin/mvn" --no-transfer-progress -DKIVAKIT_DEBUG=$KIVAKIT_DEBUG $SWITCHES $BUILD_ARGUMENTS 2>&1
 
             if [ "${PIPESTATUS[0]}" -ne "0" ]; then
 
                 echo "Unable to build $PROJECT_NAME."
                 exit 1
 
-            else
-
-                $POST_BUILD_SCRIPT
-
             fi
 
         fi
 
+        # shellcheck disable=SC2002
         MESAKIT_BUILD_NAME=$(cat "$MESAKIT_HOME"/build.properties | grep "build-name" | cut -d'=' -f2 | xargs echo)
+        # shellcheck disable=SC2002
         MESAKIT_BUILD_DATE=$(cat "$MESAKIT_HOME"/build.properties | grep "build-date" | cut -d'=' -f2 | xargs echo)
 
-        if [ ! -z "$MESAKIT_BUILD_NAME" ]; then
+        if [ -n "$MESAKIT_BUILD_NAME" ]; then
 
             MESAKIT_BUILD_NAME=" ($MESAKIT_BUILD_DATE $MESAKIT_BUILD_NAME)"
 
         fi
 
         echo "┋"
-        echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ Built '$PROJECT'$MESAKIT_BUILD_NAME ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
+        echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ Built '$PROJECT'$KIVAKIT_BUILD_NAME ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
         echo " "
 
     else

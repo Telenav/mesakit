@@ -71,13 +71,13 @@ showVersion()
 
 allow_cleaning()
 {
-    if [[ -z "$ALLOW_CLEANING" ]]; then
+    if [ -z "$ALLOW_CLEANING" ]; then
 
         ALLOW_CLEANING=true
 
     fi
 
-    if [[ "$ALLOW_CLEANING" == "true" ]]; then
+    if [ "$ALLOW_CLEANING" == "true" ]; then
 
         return 0
 

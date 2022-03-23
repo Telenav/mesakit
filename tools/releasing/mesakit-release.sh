@@ -33,8 +33,7 @@ if [ "$MESAKIT_VERSION" = "$version" ]; then
 
     fi
 
-    bash mesakit-build.sh deploy-local
-    bash mesakit-build-documentation.sh
+    bash kivakit-build.sh deploy-local # single-threaded
 
     echo " "
     echo "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ Release Built  ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"

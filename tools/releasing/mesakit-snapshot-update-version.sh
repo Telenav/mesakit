@@ -16,7 +16,7 @@ export help="[version]"
 
 require_variable version "[version]"
 
-export snapshot_version="${version%-SNAPSHOT}-SNAPSHOT"
+snapshot_version="${version%-SNAPSHOT}-SNAPSHOT"
 
 for project_home in "${MESAKIT_REPOSITORY_HOMES[@]}"; do
 
