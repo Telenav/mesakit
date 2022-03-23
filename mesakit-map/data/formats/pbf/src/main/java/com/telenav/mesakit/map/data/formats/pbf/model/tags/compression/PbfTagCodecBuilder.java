@@ -1,20 +1,21 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
-import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.AsciiArt;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.value.count.Minimum;
+import com.telenav.kivakit.core.value.count.MutableCount;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.CharacterFrequencies;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.StringFrequencies;
 import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.core.value.count.Count;
-import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.kivakit.core.value.count.Minimum;
-import com.telenav.kivakit.core.value.count.MutableCount;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
+import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelCompression;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
@@ -22,7 +23,6 @@ import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.RelationFilter;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.WayFilter;
 import com.telenav.mesakit.map.data.formats.pbf.processing.readers.SerialPbfReader;
-import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelCompression;
 
 import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
@@ -138,7 +138,7 @@ public class PbfTagCodecBuilder
     {
         var keyEscapes = keyCharacterFrequencies
                 .escaped(charactersMinimumOccurrences.asMaximum())
-                .maximum(charactersMinimumOccurrences.incremented());
+                .maximum(charactersMinimumOccurrences.incremented().asCount());
         keyCharacterFrequencies.frequencies().add(ESCAPE, keyEscapes);
         var keySymbols = keyCharacterFrequencies.symbols(charactersMinimumOccurrences);
         if (keySymbols.size() < 32)
@@ -152,7 +152,7 @@ public class PbfTagCodecBuilder
 
         var valueEscapes = valueCharacterFrequencies
                 .escaped(charactersMinimumOccurrences.asMaximum())
-                .maximum(charactersMinimumOccurrences.incremented());
+                .maximum(charactersMinimumOccurrences.incremented().asCount());
         valueCharacterFrequencies.frequencies().add(ESCAPE, valueEscapes);
         var valueSymbols = valueCharacterFrequencies.symbols(charactersMinimumOccurrences);
         if (valueSymbols.size() < 32)

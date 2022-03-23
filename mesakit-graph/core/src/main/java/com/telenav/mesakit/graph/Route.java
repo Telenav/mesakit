@@ -22,7 +22,6 @@ import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.iteration.BaseIterator;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.kivakit.core.collections.iteration.Iterators;
-import com.telenav.kivakit.core.collections.iteration.Next;
 import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.collections.list.Stack;
 import com.telenav.kivakit.core.collections.list.StringList;
@@ -38,16 +37,17 @@ import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.interfaces.collection.NextValue;
 import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.graph.Edge.SignPostSupport;
+import com.telenav.mesakit.graph.GraphLimits.Limit;
 import com.telenav.mesakit.graph.collections.EdgePair;
 import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.collections.VertexSet;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.map.MapEdgeIdentifier;
 import com.telenav.mesakit.graph.map.MapRoute;
-import com.telenav.mesakit.graph.GraphLimits.Limit;
 import com.telenav.mesakit.graph.specifications.common.edge.EdgeAttributes;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
@@ -709,7 +709,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
      * @return This route with the given edge appended, if the resulting route is less than the maximum length. If the
      * resulting route would be too long, a warning is logged and the edge is not appended.
      */
-    public Route append(Count maximum, Edge edge)
+    public Route append(Maximum maximum, Edge edge)
     {
         return append(maximum, new OneEdgeRoute(edge));
     }
@@ -718,7 +718,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
      * @return This route with the given route appended, if the resulting route is less than the maximum length. If the
      * resulting route would be too long, a warning is logged and the route is not appended.
      */
-    public Route append(Count maximum, Route that)
+    public Route append(Maximum maximum, Route that)
     {
         assert that != null : "Route cannot be null";
 
@@ -859,7 +859,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
         return Rectangle.fromBoundedObjects(this);
     }
 
-    public boolean canAppend(Count maximum, Route that)
+    public boolean canAppend(Maximum maximum, Route that)
     {
         // If the last edge of this route is connected to the first edge of that route and the
         // maximum size won't be exceeded, we can append.
@@ -1394,13 +1394,13 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
      */
     public Iterable<Vertex> interiorVertexes()
     {
-        return Iterables.iterable(() -> new Next<>()
+        return Iterables.iterable(() -> new NextValue<>()
         {
             // Edge iterator
             private final Iterator<Edge> edges = iterator();
 
             @Override
-            public Vertex onNext()
+            public Vertex next()
             {
                 // If we have more edges,
                 if (edges.hasNext())
@@ -1625,7 +1625,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
         for (var edge : this)
         {
             var firstLocation = true;
-            for (var location : edge.roadShape().locationSequence())
+            for (var location : edge.roadShape())
             {
                 if (firstEdge || !firstLocation)
                 {
@@ -1938,12 +1938,12 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
      */
     public Iterable<Location> vertexLocations()
     {
-        return Iterables.iterable(() -> new Next<>()
+        return Iterables.iterable(() -> new NextValue<>()
         {
             private final Iterator<Vertex> vertexes = vertexes().iterator();
 
             @Override
-            public Location onNext()
+            public Location next()
             {
                 if (vertexes.hasNext())
                 {
@@ -1959,7 +1959,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
      */
     public Iterable<Vertex> vertexes()
     {
-        return Iterables.iterable(() -> new Next<>()
+        return Iterables.iterable(() -> new NextValue<>()
         {
             // Edge iterator
             private final Iterator<Edge> edges = iterator();
@@ -1968,7 +1968,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
             private Vertex last;
 
             @Override
-            public Vertex onNext()
+            public Vertex next()
             {
                 Vertex next;
 
@@ -2091,7 +2091,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
     /**
      * @return True if the size of this route plus the size of that route
      */
-    private boolean checkSize(Count maximumSize, Route that)
+    private boolean checkSize(Maximum maximumSize, Route that)
     {
         if (size() + that.size() > maximumSize.asInt())
         {

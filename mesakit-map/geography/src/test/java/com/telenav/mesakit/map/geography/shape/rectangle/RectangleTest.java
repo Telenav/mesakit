@@ -54,7 +54,7 @@ public class RectangleTest extends GeographyUnitTest
     @Test
     public void testCenter()
     {
-        var rectangle = randomValueFactory().newRectangle();
+        var rectangle = newRandomValueFactory().newRectangle();
 
         // Determine the width and height.
         var height = rectangle.topRight().latitude().asNanodegrees()
@@ -83,7 +83,7 @@ public class RectangleTest extends GeographyUnitTest
     @Test
     public void testContains_Location()
     {
-        var rectangle = randomValueFactory().newRectangle();
+        var rectangle = newRandomValueFactory().newRectangle();
 
         // Generate a location clearly within the box.
         ensure(rectangle.contains(rectangle.center()));
@@ -124,7 +124,7 @@ public class RectangleTest extends GeographyUnitTest
     @Test
     public void testContains_Rectangle()
     {
-        var rectangle = randomValueFactory().newRectangle();
+        var rectangle = newRandomValueFactory().newRectangle();
 
         // A rectangle contains itself
         ensure(rectangle.contains(rectangle));
@@ -136,8 +136,8 @@ public class RectangleTest extends GeographyUnitTest
     @Test
     public void testExpand()
     {
-        var rectangle = randomValueFactory().newRectangle();
-        var distance = randomValueFactory().newDistance(Distance.MINIMUM, Distance.EARTH_RADIUS_MINOR);
+        var rectangle = newRandomValueFactory().newRectangle();
+        var distance = newRandomValueFactory().newDistance(Distance.MINIMUM, Distance.EARTH_RADIUS_MINOR);
         var expansion = Angle.degrees(distance.asDegrees()).asNanodegrees();
 
         // Grow the lower left down and to the left.
@@ -165,8 +165,8 @@ public class RectangleTest extends GeographyUnitTest
     @Test
     public void testForLocations()
     {
-        var locationA = randomValueFactory().newLocation();
-        var locationB = randomValueFactory().newLocation();
+        var locationA = newRandomValueFactory().newLocation();
+        var locationB = newRandomValueFactory().newLocation();
 
         // Determine the lower left corner.
         var lowerLeftLatitude = locationA.latitude().minimum(locationB.latitude());
@@ -184,7 +184,7 @@ public class RectangleTest extends GeographyUnitTest
     @Test
     public void testFromCenter()
     {
-        var location = randomValueFactory().newLocation();
+        var location = newRandomValueFactory().newLocation();
         var shift = Distance.miles(10.0);
         var rectangle = Rectangle.fromCenterAndRadius(location, shift);
         var orthogonalDistance = rectangle.bottomLeft().moved(Heading.degrees(0), shift).preciseDistanceTo(location);
@@ -197,7 +197,7 @@ public class RectangleTest extends GeographyUnitTest
     @Test
     public void testHeight()
     {
-        var rectangle = randomValueFactory().newRectangle();
+        var rectangle = newRandomValueFactory().newRectangle();
         var height = rectangle.topRight().latitude().asMicrodegrees()
                 - rectangle.bottomLeft().latitude().asMicrodegrees();
         ensureEqual(height, rectangle.height().asMicrodegrees());
@@ -206,7 +206,7 @@ public class RectangleTest extends GeographyUnitTest
     @Test
     public void testIntersection()
     {
-        var rectangle = randomValueFactory().newRectangle();
+        var rectangle = newRandomValueFactory().newRectangle();
         ensure(rectangle.intersects(rectangle));
 
         {
@@ -239,7 +239,7 @@ public class RectangleTest extends GeographyUnitTest
     @Test
     public void testIntersects()
     {
-        var loc = randomValueFactory().newLocation();
+        var loc = newRandomValueFactory().newLocation();
 
         var rect1 = Rectangle.fromLocations(loc, loc).expanded(Distance.ONE_MILE);
 
@@ -359,7 +359,7 @@ public class RectangleTest extends GeographyUnitTest
     @Test
     public void testUpperRight()
     {
-        var rectangle = randomValueFactory().newRectangle();
+        var rectangle = newRandomValueFactory().newRectangle();
         ensureFalse(rectangle.contains(rectangle.topRight().incremented()));
         ensureFalse(rectangle.contains(rectangle.topRight()));
         ensure(rectangle.contains(rectangle.topRight().decremented()));

@@ -134,7 +134,7 @@ public class PolylineSnap extends Location
             Location previous = null;
             var traversed = Distance.ZERO;
             var polylineLength = polyline.length();
-            for (var shapePoint : polyline.locationSequence())
+            for (var shapePoint : polyline)
             {
                 iterations++;
                 if (previous != null)

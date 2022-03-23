@@ -34,7 +34,7 @@ public class BoundingBoxBuilderTest extends GeographyUnitTest
         var boundingBox = new BoundingBoxBuilder();
         for (var i = 0; i < 100; i++)
         {
-            Location location = randomValueFactory().newLocation();
+            Location location = newRandomValueFactory().newLocation();
             boundingBox.add(location.latitude().asDegrees(), location.longitude().asDegrees());
             bottom = Math.min(bottom, location.latitudeInDm7());
             left = Math.min(left, location.longitudeInDm7());
@@ -60,7 +60,7 @@ public class BoundingBoxBuilderTest extends GeographyUnitTest
         var boundingBox = new BoundingBoxBuilder();
         for (var i = 0; i < 100; i++)
         {
-            Location location = randomValueFactory().newLocation();
+            Location location = newRandomValueFactory().newLocation();
             boundingBox.add(location);
             bottom = Math.min(bottom, location.latitudeInDm7());
             left = Math.min(left, location.longitudeInDm7());

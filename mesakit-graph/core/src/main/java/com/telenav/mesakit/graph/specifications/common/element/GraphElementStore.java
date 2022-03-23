@@ -81,17 +81,17 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 
 /**
- * Packed meta data attributes for {@link GraphElement}s.
+ * Packed metadata attributes for {@link GraphElement}s.
  *
  * @author jonathanl (shibo)
  * @see ArchivedGraphElementStore
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({ "unused", "SpellCheckingInspection" })
 public abstract class GraphElementStore<T extends GraphElement> extends BaseRepeater implements Iterable<T>, CompressibleCollection, AttributeStore, Validatable
 {
     private static final boolean BATCHING_ENABLED = false;
 
-    private static final Count BATCH_SIZE = Count._16384;
+    private static final Count BATCH_SIZE = Count._16_384;
 
     private static final Maximum QUEUE_SIZE = Maximum._128;
 
@@ -423,7 +423,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return True if this store contains the given element element identifier
+     * @return True if this store contains the given element identifier
      */
     public boolean containsIdentifier(long identifier)
     {
@@ -521,7 +521,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     @MustBeInvokedByOverriders
     public void onInitialize()
     {
-        resetNextIndex();
+        resetIndex();
     }
 
     /**
@@ -625,7 +625,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * This method returns the PBF-specific user name for the user who last modified this {@link GraphElement}. This
+     * This method returns the PBF-specific username for the user who last modified this {@link GraphElement}. This
      * value is not in a PBF-specific subclass because it is metadata for all graph elements when it is available.
      *
      * @return The OSM change set identifier for the given {@link GraphElement}.
@@ -669,7 +669,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * Stores all of the metadata attributes of the given graph element using its index
+     * Stores all the metadata attributes of the given graph element using its index
      */
     @MustBeInvokedByOverriders
     public void storeAttributes(GraphElement element)
@@ -846,7 +846,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         var index = identifierToIndex.get(Math.abs(identifier));
         var isNull = identifierToIndex.isNull(index);
 
-        // If there's no index and we can create one,
+        // If there's no index, and we can create one,
         if (isNull && mode == IndexingMode.CREATE)
         {
             // get the next index,
@@ -967,7 +967,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     /**
      * Resets the next element index to the first index
      */
-    protected void resetNextIndex()
+    protected void resetIndex()
     {
         nextIndex = 1;
     }

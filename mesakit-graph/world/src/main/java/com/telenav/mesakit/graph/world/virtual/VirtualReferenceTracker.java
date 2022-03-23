@@ -87,7 +87,7 @@ public class VirtualReferenceTracker<T> extends BaseRepeater
         assert reference != null : "Reference must not be null";
 
         // Increase memory consumption by the size of the referenced value
-        total = total.add(reference.memorySize());
+        total = total.plus(reference.memorySize());
 
         // Add the given reference to the end of the list of hardened references
         loaded.addLast(reference);

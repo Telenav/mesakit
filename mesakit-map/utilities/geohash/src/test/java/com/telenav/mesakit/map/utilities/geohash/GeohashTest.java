@@ -34,7 +34,8 @@ import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
  * @author Mihai Chintoanu
  * @author jonathanl (shibo)
  */
-@SuppressWarnings("SpellCheckingInspection") public class GeohashTest extends UnitTest
+@SuppressWarnings("SpellCheckingInspection")
+public class GeohashTest extends UnitTest
 {
     private final GeohashAlphabet nonDefaultAlphabet = new GeohashAlphabet()
     {

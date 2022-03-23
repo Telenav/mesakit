@@ -46,7 +46,7 @@ public class IntersectionMapTest extends GraphUnitTest
     private List<Integer> randomIdentifiers(int maximum, int minimumIntersections)
     {
         // Create random value factory
-        RandomValueFactory random = randomValueFactory();
+        RandomValueFactory random = newRandomValueFactory();
 
         var identifiers = new ArrayList<Integer>();
         Map<Integer, Integer> references = new HashMap<>();
@@ -54,7 +54,7 @@ public class IntersectionMapTest extends GraphUnitTest
         var intersections = 0;
         while (intersections < minimumIntersections)
         {
-            var identifier = random.newInt(1, maximum);
+            var identifier = random.randomInt(1, maximum);
             identifiers.add(identifier);
             var count = references.get(identifier);
             if (count == null)

@@ -23,8 +23,7 @@ import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.interfaces.numeric.Maximizable;
-import com.telenav.kivakit.interfaces.numeric.Minimizable;
+import com.telenav.kivakit.interfaces.numeric.IntegerNumeric;
 import com.telenav.kivakit.interfaces.numeric.Quantizable;
 import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.validation.BaseValidator;
@@ -117,9 +116,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 @LexakaiJavadoc(complete = true)
 public class Angle implements
         Validatable,
-        Comparable<Angle>,
-        Minimizable<Angle>,
-        Maximizable<Angle>,
+        IntegerNumeric<Angle>,
         Stringable,
         Quantizable,
         Serializable
@@ -568,6 +565,18 @@ public class Angle implements
         return nanodegrees(nanodegrees - that.nanodegrees);
     }
 
+    @Override
+    public Angle newInstance(Long degrees)
+    {
+        return Angle.degrees(degrees);
+    }
+
+    @Override
+    public Angle next()
+    {
+        return degrees(asDegrees() + 1);
+    }
+
     public Angle plus(Angle that)
     {
         return nanodegrees(nanodegrees + that.nanodegrees);
@@ -591,6 +600,12 @@ public class Angle implements
     public Angle reversed()
     {
         return plus(degrees(180));
+    }
+
+    @Override
+    public Angle times(final Angle angle)
+    {
+        return null;
     }
 
     public Angle times(double multiplier)

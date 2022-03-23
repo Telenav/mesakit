@@ -28,13 +28,12 @@ if [ "$MESAKIT_VERSION" = "$version" ]; then
 
     if yes_no "Maven repository and .mesakit/$version folders must be removed to build a release. Remove them?"; then
 
-        rm -rf ~/.m2
+        rm -rf ~/.m2/repository
         rm -rf ~/.mesakit/"$version"
 
     fi
 
-    bash mesakit-build.sh deploy-local
-    bash mesakit-build-documentation.sh
+    bash mesakit-build.sh deploy-local # single-threaded
 
     echo " "
     echo "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ Release Built  ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"

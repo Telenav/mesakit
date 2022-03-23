@@ -64,7 +64,7 @@ public final class Latitude extends Angle
     {
         MAXIMUM = nanodegrees(MAXIMUM_NANODEGREES);
         MINIMUM = nanodegrees(MINIMUM_NANODEGREES);
-        RANGE = new Range<>(MINIMUM, MAXIMUM);
+        RANGE = Range.inclusive(MINIMUM, MAXIMUM);
     }
 
     public static Latitude angle(Angle angle)
@@ -120,6 +120,7 @@ public final class Latitude extends Angle
         return latitude >= MINIMUM_DEGREES && latitude <= MAXIMUM_DEGREES;
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static Latitude microdegrees(int microdegrees)
     {
         return new Latitude(microdegrees * NANODEGREES_PER_MICRODEGREE);
@@ -145,6 +146,7 @@ public final class Latitude extends Angle
         }
     }
 
+    @SuppressWarnings("DuplicatedCode")
     public static class DegreesMinutesAndSecondsConverter extends BaseStringConverter<Latitude>
     {
         private static final Pattern pattern = Pattern

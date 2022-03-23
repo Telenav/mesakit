@@ -19,7 +19,6 @@
 package com.telenav.mesakit.graph.world;
 
 import com.telenav.kivakit.core.collections.iteration.BaseIterable;
-import com.telenav.kivakit.core.collections.iteration.Next;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
@@ -32,14 +31,15 @@ import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.core.version.VersionedObject;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.interfaces.collection.NextValue;
 import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.interfaces.value.Source;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
-import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.kivakit.resource.compression.archive.FieldArchive;
 import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
+import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
@@ -153,15 +153,15 @@ public class WorldGraphIndex implements
         }
 
         @Override
-        protected Next<AS> newNext()
+        protected NextValue<AS> newNext()
         {
-            return new Next<>()
+            return new NextValue<>()
             {
                 private final Iterator<T> iterator = iteratorSource.get();
 
                 @SuppressWarnings("unchecked")
                 @Override
-                public AS onNext()
+                public AS next()
                 {
                     if (iterator.hasNext())
                     {

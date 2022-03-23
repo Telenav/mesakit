@@ -93,7 +93,7 @@ public class ConnectionPoint
                 if (!shape.isSegment())
                 {
                     // Add shape except start point, then overwrite first location
-                    builder.addAllButFirst(shape.locationSequence());
+                    builder.addAllButFirst(shape);
                     builder.set(0, location);
                 }
                 break;
@@ -106,7 +106,7 @@ public class ConnectionPoint
                 {
                     // snap the start of the shape to the location
                     builder.add(location);
-                    builder.addAllButFirst(shape.locationSequence());
+                    builder.addAllButFirst(shape);
                 }
                 break;
         }
@@ -132,7 +132,7 @@ public class ConnectionPoint
                 if (!shape.isSegment())
                 {
                     // Add all but the last point, then overwrite the last location
-                    builder.addAllButLast(shape.locationSequence());
+                    builder.addAllButLast(shape);
                     builder.set(shape.size() - 2, location);
                 }
                 break;
@@ -144,7 +144,7 @@ public class ConnectionPoint
                 if (!shape.has(location) && shape.end().isClose(location, Distance.meters(5)))
                 {
                     // snap the end of the shape to the location
-                    builder.addAllButLast(shape.locationSequence());
+                    builder.addAllButLast(shape);
                     builder.add(location);
                 }
                 break;

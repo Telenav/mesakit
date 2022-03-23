@@ -46,10 +46,10 @@ import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
+import com.telenav.kivakit.resource.PropertyMap;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.path.FileName;
-import com.telenav.kivakit.resource.PropertyMap;
 import com.telenav.kivakit.validation.BaseValidator;
 import com.telenav.kivakit.validation.Validatable;
 import com.telenav.kivakit.validation.ValidationType;
@@ -150,7 +150,7 @@ import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
  * @see Validatable
  * @see Stringable
  */
-@SuppressWarnings("DuplicateBranchesInSwitch")
+@SuppressWarnings({ "DuplicateBranchesInSwitch", "DuplicatedCode" })
 public class Metadata implements Named, AsIndentedString, KryoSerializable, Validatable
 {
     public static final ValidationType VALIDATE_EXCEPT_STATISTICS = new ValidationType("VALIDATE_EXCEPT_STATISTICS");
@@ -187,8 +187,8 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return Complete metadata read for the given input resource. For resources that don't support all of the
-     * statistics values, those values may be estimates based on the size of the resource.
+     * @return Complete metadata read for the given input resource. For resources that don't support all the statistics
+     * values, those values may be estimates based on the size of the resource.
      */
     public static Metadata from(File input, CountType countType)
     {
@@ -518,7 +518,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
                 .withForwardEdgeCount(forwardEdgeCount(REQUIRE_EXACT).plus(that.forwardEdgeCount(REQUIRE_EXACT)))
                 .withEdgeRelationCount(edgeRelationCount(REQUIRE_EXACT).plus(that.edgeRelationCount(REQUIRE_EXACT)))
                 .withShapePointCount(shapePointCount(REQUIRE_EXACT).plus(that.shapePointCount(REQUIRE_EXACT)))
-                .withDataSize(dataSize().add(that.dataSize()));
+                .withDataSize(dataSize().plus(that.dataSize()));
     }
 
     /**
@@ -699,7 +699,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     {
         if (type == ALLOW_ESTIMATE && edges == null)
         {
-            return wayCount(ALLOW_ESTIMATE).times(0.5).asEstimate().ceiling(3);
+            return wayCount(ALLOW_ESTIMATE).times(0.5).asEstimate().powerOfTenCeiling(3).asCount();
         }
         return edges;
     }
@@ -712,7 +712,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         if (type == ALLOW_ESTIMATE && edgeRelations == null && dataSize() != null)
         {
             // Empirical value from OSM data analysis
-            return dataSize().percent(Percent.of(0.25)).asEstimate().ceiling(3);
+            return dataSize().percent(Percent.of(0.25)).powerOfTenCeiling(3).asCount();
         }
         return edgeRelations;
     }
@@ -729,13 +729,13 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The number of forward edges (without considering bi-directional edges)
+     * @return The number of forward edges (without considering bidirectional edges)
      */
     public Count forwardEdgeCount(CountType type)
     {
         if (type == ALLOW_ESTIMATE && forwardEdges == null)
         {
-            return wayCount(ALLOW_ESTIMATE).times(GraphLimits.Estimated.EDGES_PER_WAY).asEstimate().ceiling(3);
+            return wayCount(ALLOW_ESTIMATE).times(GraphLimits.Estimated.EDGES_PER_WAY).powerOfTenCeiling(3);
         }
         return forwardEdges;
     }
@@ -748,7 +748,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         if (edgeCount(type) != null && vertexCount(type) != null && edgeRelationCount(type) != null)
         {
             var count = edgeCount(type).plus(vertexCount(type)).plus(edgeRelationCount(type));
-            return type == ALLOW_ESTIMATE ? count.asEstimate().ceiling(3) : count;
+            return type == ALLOW_ESTIMATE ? count.asEstimate().powerOfTenCeiling(3).asCount() : count;
         }
         return null;
     }
@@ -795,7 +795,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         if (type == ALLOW_ESTIMATE && nodes == null && dataSize() != null)
         {
             // Empirical value from OSM data analysis
-            return dataSize().percent(Percent.of(12.5)).asEstimate().ceiling(3);
+            return dataSize().percent(Percent.of(12.5)).powerOfTenCeiling(3).asCount();
         }
         return nodes;
     }
@@ -804,7 +804,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     {
         if (type == ALLOW_ESTIMATE && places == null)
         {
-            return nodeCount(ALLOW_ESTIMATE).percent(Percent.of(0.01)).asEstimate().ceiling(3);
+            return nodeCount(ALLOW_ESTIMATE).percent(Percent.of(0.01)).powerOfTenCeiling(3);
         }
         return places;
     }
@@ -871,7 +871,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         if (type == ALLOW_ESTIMATE && relations == null && dataSize() != null)
         {
             // Empirical value from OSM data analysis
-            return dataSize().percent(Percent.of(0.25)).asEstimate().ceiling(3);
+            return dataSize().percent(Percent.of(0.25)).powerOfTenCeiling(3).asCount();
         }
         return relations;
     }
@@ -955,7 +955,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     {
         if (type == ALLOW_ESTIMATE && vertexes == null)
         {
-            return edgeCount(ALLOW_ESTIMATE).asEstimate().ceiling(3);
+            return edgeCount(ALLOW_ESTIMATE).powerOfTenCeiling(3).asCount();
         }
         return vertexes;
     }
@@ -968,7 +968,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         if (type == ALLOW_ESTIMATE && ways == null && dataSize() != null)
         {
             // Empirical value for navigable ways from OSM data analysis
-            return dataSize().percent(Percent.of(0.5)).asEstimate().ceiling(3);
+            return dataSize().percent(Percent.of(0.5)).powerOfTenCeiling(3).asCount();
         }
         return ways;
     }

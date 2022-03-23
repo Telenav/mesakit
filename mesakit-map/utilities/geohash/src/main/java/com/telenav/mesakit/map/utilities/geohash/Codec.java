@@ -28,7 +28,7 @@ import com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
-public class Codec
+@SuppressWarnings("SpellCheckingInspection") public class Codec
 {
     private final GeohashAlphabet alphabet;
 
@@ -66,9 +66,9 @@ public class Codec
             var longitudeRange = bitsToCoordinateRange(longitudeBits.build(), Longitude.RANGE);
             var latitudeRange = bitsToCoordinateRange(latitudeBits.build(), Latitude.RANGE);
 
-            var north = Latitude.angle(latitudeRange.maximum());
+            var north = Latitude.angle(latitudeRange.inclusiveMaximum());
             var south = Latitude.angle(latitudeRange.minimum());
-            var east = Longitude.angle(longitudeRange.maximum());
+            var east = Longitude.angle(longitudeRange.inclusiveMaximum());
             var west = Longitude.angle(longitudeRange.minimum());
 
             var bottomLeft = new Location(south, west);
@@ -132,7 +132,7 @@ public class Codec
     private Range<Angle> bitsToCoordinateRange(BitArray coordinateBits, Range<Angle> coordinateRange)
     {
         var lower = coordinateRange.minimum();
-        var upper = coordinateRange.maximum();
+        var upper = coordinateRange.inclusiveMaximum();
         for (var i = 0; i < coordinateBits.length(); i++)
         {
             var middle = lower.bisect(upper, Chirality.CLOCKWISE);
@@ -145,7 +145,7 @@ public class Codec
                 upper = middle;
             }
         }
-        return new Range<>(lower, upper);
+        return Range.inclusive(lower, upper);
     }
 
     private BitArray codeToBitArray(Code code)
@@ -171,7 +171,7 @@ public class Codec
     {
         var bits = new BitArray.Builder();
         var lower = coordinateRange.minimum();
-        var upper = coordinateRange.maximum();
+        var upper = coordinateRange.inclusiveMaximum();
         for (var i = 0; i < resolution; i++)
         {
             var middle = lower.bisect(upper, Chirality.CLOCKWISE);

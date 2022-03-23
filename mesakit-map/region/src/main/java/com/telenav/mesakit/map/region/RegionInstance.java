@@ -141,7 +141,7 @@ public class RegionInstance<T extends Region<T>> implements Stringable
                 var builder = new BoundingBoxBuilder();
                 for (var polygon : borders)
                 {
-                    builder.add(polygon.locationSequence());
+                    builder.add(polygon);
                 }
                 bounds = builder.build();
             }

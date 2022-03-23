@@ -21,7 +21,6 @@ package com.telenav.mesakit.map.geography.shape.polyline;
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.iteration.BaseIterator;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
-import com.telenav.kivakit.core.collections.iteration.Next;
 import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.language.Arrays;
@@ -34,16 +33,17 @@ import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.level.Percent;
 import com.telenav.kivakit.interfaces.collection.Indexable;
+import com.telenav.kivakit.interfaces.collection.NextValue;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
+import com.telenav.mesakit.map.geography.GeographyLimits;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.LocatedHeading;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.LocationSequence;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.GeographyLimits;
 import com.telenav.mesakit.map.geography.lexakai.DiagramPolyline;
 import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
@@ -128,7 +128,8 @@ public class Polyline implements
         Indexable<Location>,
         Bounded,
         Intersectable,
-        LocationSequence
+        LocationSequence,
+        Iterable<Location>
 {
     public static final Distance DEFAULT_MAXIMUM_SHAPE_POINT_SPACING = Distance.meters(15);
 
@@ -238,7 +239,7 @@ public class Polyline implements
         protected String onToString(Polyline value)
         {
             var locations = new StringList();
-            for (var location : value.locationSequence())
+            for (var location : value)
             {
                 locations.add(locationConverter.unconvert(location));
             }
@@ -296,7 +297,7 @@ public class Polyline implements
             var oldLatitude = 0D;
             var oldLongitude = 0D;
             var nb = new StringBuilder();
-            for (var temp : line.locationSequence())
+            for (var temp : line)
             {
                 var p1 = temp.latitude().asDegrees();
                 var p2 = temp.longitude().asDegrees();
@@ -597,7 +598,7 @@ public class Polyline implements
     {
         var builder = new PolylineBuilder();
         builder.addAllUnique(locationSequence());
-        builder.addAllUnique(that.locationSequence());
+        builder.addAllUnique(that);
         return builder.build();
     }
 
@@ -1189,7 +1190,7 @@ public class Polyline implements
     @Override
     public Iterable<Location> locationSequence()
     {
-        return asIterable();
+        return this;
     }
 
     public List<Location> locations()
@@ -1713,7 +1714,7 @@ public class Polyline implements
 
     public Iterable<LocatedHeading> vectors()
     {
-        return Iterables.iterable(() -> new Next<>()
+        return Iterables.iterable(() -> new NextValue<>()
         {
             boolean first = true;
 
@@ -1726,7 +1727,7 @@ public class Polyline implements
             Segment segment;
 
             @Override
-            public LocatedHeading onNext()
+            public LocatedHeading next()
             {
                 if (isEmpty() || done)
                 {

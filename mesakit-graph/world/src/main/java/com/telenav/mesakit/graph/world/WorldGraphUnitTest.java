@@ -19,15 +19,11 @@
 package com.telenav.mesakit.graph.world;
 
 import com.telenav.mesakit.graph.GraphUnitTest;
-import org.junit.BeforeClass;
-
-import static com.telenav.kivakit.core.project.Project.resolveProject;
 
 public class WorldGraphUnitTest extends GraphUnitTest
 {
-    @BeforeClass
-    public static void testSetup()
+    public WorldGraphUnitTest()
     {
-        resolveProject(WorldGraphProject.class).initialize();
+        initializeProject(WorldGraphProject.class);
     }
 }

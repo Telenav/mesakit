@@ -18,12 +18,11 @@
 
 package com.telenav.mesakit.graph.specifications.common.vertex;
 
-import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.mesakit.graph.Metadata;
-import com.telenav.mesakit.graph.Vertex;
-import com.telenav.mesakit.graph.collections.EdgeSet;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.mesakit.graph.GraphUnitTest;
+import com.telenav.mesakit.graph.Metadata;
+import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 import org.junit.Test;
 
@@ -57,8 +56,8 @@ public class VertexStoreTest extends GraphUnitTest
         edgeStore.commitSpatialIndex(false);
         graph.graphStore().commit();
 
-        Vertex from = vertexStore.vertexForNodeIdentifier(edge.fromNodeIdentifier().asLong());
-        Vertex to = vertexStore.vertexForNodeIdentifier(edge.toNodeIdentifier().asLong());
+        var from = vertexStore.vertexForNodeIdentifier(edge.fromNodeIdentifier().asLong());
+        var to = vertexStore.vertexForNodeIdentifier(edge.toNodeIdentifier().asLong());
 
         ensureNotNull(from);
         ensureNotNull(to);

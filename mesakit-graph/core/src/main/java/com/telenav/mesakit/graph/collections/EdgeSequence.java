@@ -20,7 +20,6 @@ package com.telenav.mesakit.graph.collections;
 
 import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.kivakit.core.collections.iteration.Matching;
-import com.telenav.kivakit.core.collections.iteration.Next;
 import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.language.Streams;
 import com.telenav.kivakit.core.messaging.Listener;
@@ -29,6 +28,7 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.interfaces.code.Callback;
+import com.telenav.kivakit.interfaces.collection.NextValue;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Route;
@@ -78,14 +78,14 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
      */
     public EdgeSequence asDirectional()
     {
-        return new EdgeSequence(Iterables.iterable(() -> new Next<>()
+        return new EdgeSequence(Iterables.iterable(() -> new NextValue<>()
         {
             private final Iterator<Edge> edges = iterator();
 
             private Edge last;
 
             @Override
-            public Edge onNext()
+            public Edge next()
             {
                 // If out last edge was forward, and it's a two-way road,
                 if (last != null && last.isForward() && last.isTwoWay())

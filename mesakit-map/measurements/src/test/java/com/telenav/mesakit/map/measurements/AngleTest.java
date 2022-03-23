@@ -167,7 +167,7 @@ public class AngleTest extends MeasurementsUnitTest
     public void testScaleBy()
     {
         var angle = random().newAngle();
-        var multiplier = random().newDouble(0, 10000);
+        var multiplier = random().randomDouble(0, 10000);
 
         // Test the standard case.
         var expected = (angle.asNanodegrees() * multiplier) % 360_000_000_000L;

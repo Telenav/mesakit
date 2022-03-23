@@ -69,9 +69,28 @@ showVersion()
 
 ################ CLEAN ################################################################################################
 
+allow_cleaning()
+{
+    if [ -z "$ALLOW_CLEANING" ]; then
+
+        ALLOW_CLEANING=true
+
+    fi
+
+    if [ "$ALLOW_CLEANING" == "true" ]; then
+
+        return 0
+
+    else
+
+        return 1
+
+    fi
+}
+
 clean_cache()
 {
-    if [[ "$ALLOW_CLEANING" == "true" ]]; then
+    if allow_cleaning; then
 
         cache=$1
 
@@ -89,7 +108,7 @@ clean_cache()
 
 clean_maven_repository()
 {
-    if [[ "$ALLOW_CLEANING" == "true" ]]; then
+    if allow_cleaning; then
 
         project_home=$1
         name=$(basename -- "$project_home")
@@ -105,7 +124,7 @@ clean_maven_repository()
 
 remove_maven_repository()
 {
-    if [[ "$ALLOW_CLEANING" == "true" ]]; then
+    if allow_cleaning; then
 
         if [ -d "$HOME/.m2/repository" ]; then
 
@@ -122,7 +141,7 @@ clean_temporary_files()
 {
     project_home=$1
 
-    if [[ "$ALLOW_CLEANING" == "true" ]]; then
+    if allow_cleaning; then
 
         if yes_no "┋ Remove transient files from $project_home tree"; then
 

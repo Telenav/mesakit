@@ -137,7 +137,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
 
     protected GraphUnitTest()
     {
-        resolveProject(GraphProject.class).initialize();
+        initializeProject(GraphProject.class);
 
         var store = Settings.of(this);
         LOGGER.listenTo(store);
@@ -255,9 +255,9 @@ public abstract class GraphUnitTest extends RegionUnitTest
     }
 
     @Override
-    protected GraphRandomValueFactory randomValueFactory()
+    protected GraphRandomValueFactory newRandomValueFactory()
     {
-        return newRandomValueFactory(GraphRandomValueFactory::new);
+        return new GraphRandomValueFactory();
     }
 
     protected Route route(Edge... edges)

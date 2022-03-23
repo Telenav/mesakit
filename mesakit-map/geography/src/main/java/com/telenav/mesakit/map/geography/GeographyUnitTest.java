@@ -37,9 +37,9 @@ public class GeographyUnitTest extends MeasurementsUnitTest
     }
 
     @Override
-    protected GeographyRandomValueFactory randomValueFactory()
+    protected GeographyRandomValueFactory newRandomValueFactory()
     {
-        return newRandomValueFactory(GeographyRandomValueFactory::new);
+        return new GeographyRandomValueFactory();
     }
 
     protected Rectangle rectangle(String rectangle)

@@ -38,11 +38,11 @@ import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.EdgeRelationMember;
 import com.telenav.mesakit.graph.EdgeRelationMemberRole;
 import com.telenav.mesakit.graph.Graph;
+import com.telenav.mesakit.graph.GraphLimits.Estimated;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.io.load.GraphConstraints;
 import com.telenav.mesakit.graph.metadata.DataSpecification.GraphElementFactory;
-import com.telenav.mesakit.graph.GraphLimits.Estimated;
 import com.telenav.mesakit.graph.specifications.common.element.ArchivedGraphElementStore;
 import com.telenav.mesakit.graph.specifications.common.relation.RelationAttributes;
 import com.telenav.mesakit.graph.specifications.library.attributes.AttributeReference;
@@ -373,7 +373,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
     }
 
     /**
-     * Grade separates the vertexes of all member edges. The grade level is specified by the members role. A new vertex
+     * Grade separates the vertexes of all member edges. The grade level is specified by the members' role. A new vertex
      * with a perturbed location is created for each vertex that is grade-separated.
      *
      * @param relation The relation of edges which need to be grade separated

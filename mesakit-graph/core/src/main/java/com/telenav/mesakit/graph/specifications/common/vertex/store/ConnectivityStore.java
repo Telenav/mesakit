@@ -24,11 +24,12 @@ import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.telenav.kivakit.collections.set.operations.Intersection;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
-import com.telenav.kivakit.core.collections.iteration.Next;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.interfaces.code.TripwireTrait;
+import com.telenav.kivakit.interfaces.collection.NextValue;
 import com.telenav.kivakit.interfaces.lifecycle.Initializable;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
@@ -88,7 +89,14 @@ import static com.telenav.mesakit.graph.specifications.common.vertex.store.Conne
  *
  * @author jonathanl (shibo)
  */
-public class ConnectivityStore implements Validatable, NamedObject, KryoSerializable, CompressibleCollection, Initializable
+@SuppressWarnings("DuplicatedCode")
+public class ConnectivityStore implements
+        Validatable,
+        NamedObject,
+        KryoSerializable,
+        CompressibleCollection,
+        Initializable,
+        TripwireTrait
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -462,7 +470,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
     {
         assert vertexIndex > 0;
         var outer = this;
-        return new EdgeSequence(Iterables.iterable(() -> new Next<>()
+        return new EdgeSequence(Iterables.iterable(() -> new NextValue<>()
         {
             final IntIterator in = sequence == ALL || sequence == IN ? outer.inEdges.list(vertexIndex).iterator() : IntIterator.NULL;
 
@@ -473,7 +481,7 @@ public class ConnectivityStore implements Validatable, NamedObject, KryoSerializ
             int reverseEdge;
 
             @Override
-            public Edge onNext()
+            public Edge next()
             {
                 if (sequence == ALL && reverseEdge != 0)
                 {

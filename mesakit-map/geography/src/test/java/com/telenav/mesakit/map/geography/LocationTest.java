@@ -28,7 +28,7 @@ import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
 import org.junit.Test;
 
-@SuppressWarnings("ConstantConditions")
+@SuppressWarnings({ "ConstantConditions", "SpellCheckingInspection" })
 public class LocationTest extends GeographyUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
@@ -38,8 +38,8 @@ public class LocationTest extends GeographyUnitTest
     {
         // Assume that the unit test for Latitude and Longitude provide sufficient coverage for
         // their add methods.
-        var location = randomValueFactory().newLocation();
-        var size = randomValueFactory().newSize(Size.MAXIMUM);
+        var location = newRandomValueFactory().newLocation();
+        var size = newRandomValueFactory().newSize(Size.MAXIMUM);
 
         var expectedLatitude = location.latitude().plus(size.height());
         var expectedLongitude = location.longitude().plus(size.width());
@@ -72,10 +72,10 @@ public class LocationTest extends GeographyUnitTest
             ensureBetween(north.haversineDistanceTo(location).asMeters(), 99.9, 100);
         }
 
-        loop(() ->
+        random().loop(() ->
         {
-            var from = randomValueFactory().newLocation(Rectangle.MINIMUM.expanded(Distance.kilometers(5_000)));
-            var to = randomValueFactory().newLocation(from.bounds().expanded(Distance.kilometers(1)));
+            var from = newRandomValueFactory().newLocation(Rectangle.MINIMUM.expanded(Distance.kilometers(5_000)));
+            var to = newRandomValueFactory().newLocation(from.bounds().expanded(Distance.kilometers(1)));
             var haversine = from.haversineDistanceTo(to);
             var cosines = from.lawOfCosinesDistanceTo(to);
             var rectangular = from.equirectangularDistanceTo(to);
@@ -98,15 +98,9 @@ public class LocationTest extends GeographyUnitTest
 
         // 160 degrees is valid for a longitude
         Location.dm7(0, 1600000000);
-        try
-        {
-            // but not for a latitude
-            Location.dm7(160_000_000_0, 0);
-            fail("Should have thrown");
-        }
-        catch (AssertionError ignored)
-        {
-        }
+
+        // but not for a latitude
+        ensureThrows(() -> Location.dm7(160_000_000_0, 0));
     }
 
     @Test
@@ -133,7 +127,7 @@ public class LocationTest extends GeographyUnitTest
         testLongConversion6(Location.ORIGIN);
         for (var i = 0; i < 1000; i++)
         {
-            testLongConversion6(randomValueFactory().newLocation());
+            testLongConversion6(newRandomValueFactory().newLocation());
         }
     }
 
@@ -145,7 +139,7 @@ public class LocationTest extends GeographyUnitTest
         testLongConversion7(Location.ORIGIN);
         for (var i = 0; i < 1000; i++)
         {
-            testLongConversion7(randomValueFactory().newLocation());
+            testLongConversion7(newRandomValueFactory().newLocation());
         }
     }
 
@@ -176,8 +170,8 @@ public class LocationTest extends GeographyUnitTest
     public void testRectangle()
     {
         // Assume that the add methods for Latitude and Longitude are sufficiently tested.
-        var location = randomValueFactory().newLocation();
-        var size = randomValueFactory().newSize(Size.MAXIMUM);
+        var location = newRandomValueFactory().newLocation();
+        var size = newRandomValueFactory().newSize(Size.MAXIMUM);
 
         var expectedLatitude = location.latitude().plus(size.height());
         var expectedLongitude = location.longitude().plus(size.width());
@@ -192,9 +186,9 @@ public class LocationTest extends GeographyUnitTest
     {
         // We are going to have to go by the assumption that the unit tests for scale by for the
         // latitude and longitude work.
-        var location = randomValueFactory().newLocation();
-        var latitudeMultiplier = randomValueFactory().newDouble(-10000, 10000);
-        var longitudeMultiplier = randomValueFactory().newDouble(-10000, 10000);
+        var location = newRandomValueFactory().newLocation();
+        var latitudeMultiplier = newRandomValueFactory().randomDouble(-10000, 10000);
+        var longitudeMultiplier = newRandomValueFactory().randomDouble(-10000, 10000);
 
         var scaledLatitude = location.latitude().times(latitudeMultiplier);
         var scaledLongitude = location.longitude().times(longitudeMultiplier);

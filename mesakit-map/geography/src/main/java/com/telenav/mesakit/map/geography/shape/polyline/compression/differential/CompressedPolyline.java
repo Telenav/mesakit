@@ -73,11 +73,6 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
         return new CompressedPolyline(locations);
     }
 
-    public static CompressedPolyline fromLocationSequence(LocationSequence sequence)
-    {
-        return fromLocationSequence(sequence.locationSequence());
-    }
-
     public static void main(String[] args)
     {
         for (var proximity : Proximity.values())

@@ -34,7 +34,7 @@ public class GeoJsonPolyline extends GeoJsonGeometry
 
     public GeoJsonPolyline(Polyline line)
     {
-        for (var location : line.locationSequence())
+        for (var location : line)
         {
             add(location);
         }

@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.region;
 
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.mesakit.map.geography.GeographyKryoTypes;
@@ -30,7 +31,7 @@ public class RegionUnitTest extends GeographyUnitTest
 {
     public RegionUnitTest()
     {
-        resolveProject(RegionProject.class).initialize();
+        initializeProject(RegionProject.class);
     }
 
     protected RegionCode code(String string)

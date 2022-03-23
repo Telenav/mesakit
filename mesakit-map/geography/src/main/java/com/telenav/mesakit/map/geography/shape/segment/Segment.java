@@ -20,12 +20,12 @@ package com.telenav.mesakit.map.geography.shape.segment;
 
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
-import com.telenav.kivakit.core.collections.iteration.Next;
 import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.object.Pair;
 import com.telenav.kivakit.core.string.Separators;
+import com.telenav.kivakit.interfaces.collection.NextValue;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.geography.Latitude;
@@ -55,7 +55,7 @@ import java.io.Serializable;
  * @author ericg
  * @author matthieun
  */
-@UmlClassDiagram(diagram = DiagramSegment.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramSegment.class)
 @UmlExcludeSuperTypes(Serializable.class)
 public class Segment implements Bounded, Intersectable, Headed, Serializable, LocationSequence
 {
@@ -553,12 +553,12 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
 
     public Iterable<Segment> sections(Distance length)
     {
-        return Iterables.iterable(() -> new Next<>()
+        return Iterables.iterable(() -> new NextValue<>()
         {
             private Distance offset = Distance.ZERO;
 
             @Override
-            public Segment onNext()
+            public Segment next()
             {
                 var startOffset = offset;
                 var endOffset = offset.add(length);

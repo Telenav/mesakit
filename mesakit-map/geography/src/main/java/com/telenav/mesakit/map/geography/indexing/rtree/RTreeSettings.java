@@ -79,13 +79,13 @@ public class RTreeSettings
     }
 
     @KivaKitIncludeProperty
-    public Count estimatedElements()
+    public Estimate estimatedElements()
     {
         return estimatedNodes;
     }
 
     @KivaKitIncludeProperty
-    public Count estimatedLeaves()
+    public Estimate estimatedLeaves()
     {
         return estimatedElements().dividedBy(maximumElementsPerLeaf);
     }

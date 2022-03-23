@@ -301,7 +301,7 @@ public class PbfDataAnalysis extends BaseRepeater
             var nodeIdentifier = node.getNodeId();
             this.wayNodes.add(nodeIdentifier);
 
-            // Possibly increase highest node identifier
+            // Possibly increase the highest node identifier
             highestNodeIdentifier = Math.max(highestNodeIdentifier, nodeIdentifier);
 
             // If way nodes have locations, make a note of it

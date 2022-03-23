@@ -154,7 +154,7 @@ public class AreaTest extends MeasurementsUnitTest
     public void testTimes()
     {
         var area = random().newArea();
-        var factor = random().newDouble(0.1, 10);
+        var factor = random().randomDouble(0.1, 10);
 
         var scaled = area.asSquareMeters() * factor;
 

@@ -268,7 +268,7 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
     {
         var first = true;
         Path2D path = new Path2D.Double();
-        for (var to : line.locationSequence())
+        for (var to : line)
         {
             var point = projection().toDrawing(to);
             if (first)

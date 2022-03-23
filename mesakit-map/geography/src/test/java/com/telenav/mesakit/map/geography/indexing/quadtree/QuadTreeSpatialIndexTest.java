@@ -23,10 +23,10 @@ import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.thread.KivaKitThread;
 import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.mesakit.map.geography.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import org.junit.Test;
@@ -142,9 +142,9 @@ public class QuadTreeSpatialIndexTest extends GeographyUnitTest
     public void testRandomOnce(int iteration)
     {
         var index = new QuadTreeSpatialIndex<Location>(10, Distance.miles(0.1));
-        var rectangle = randomValueFactory().newRectangle();
+        var rectangle = newRandomValueFactory().newRectangle();
         var inside = Collections.synchronizedList(new ArrayList<Location>());
-        var threads = randomInt(5, 10);
+        var threads = random().randomIntExclusive(5, 10);
         var total = new AtomicInteger(0);
         var exited = new CountDownLatch(threads);
         for (var i = 0; i < threads; i++)
@@ -154,11 +154,11 @@ public class QuadTreeSpatialIndexTest extends GeographyUnitTest
                 @Override
                 protected void onRun()
                 {
-                    var count = randomInt(100, 1000);
+                    var count = random().randomIntExclusive(100, 1000);
                     total.addAndGet(count);
                     for (var i = 0; i < count; i++)
                     {
-                        var location = randomValueFactory().newLocation();
+                        var location = newRandomValueFactory().newLocation();
                         index.add(location);
                         if (rectangle.contains(location))
                         {
@@ -194,7 +194,7 @@ public class QuadTreeSpatialIndexTest extends GeographyUnitTest
             LOGGER.information("Profiling");
             for (var i = 0; i < 100000; i++)
             {
-                var bounds = randomValueFactory().newRectangle();
+                var bounds = newRandomValueFactory().newRectangle();
                 Count.count(index.inside(bounds));
             }
         }

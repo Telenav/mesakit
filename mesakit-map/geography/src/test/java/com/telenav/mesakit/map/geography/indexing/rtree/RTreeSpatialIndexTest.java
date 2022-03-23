@@ -20,10 +20,10 @@ package com.telenav.mesakit.map.geography.indexing.rtree;
 
 import com.telenav.kivakit.core.test.SlowTest;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
+import com.telenav.mesakit.map.geography.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.polyline.PolylineBuilder;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
@@ -36,7 +36,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Category({ SlowTest.class })
+@SuppressWarnings("SpellCheckingInspection") @Category({ SlowTest.class })
 public class RTreeSpatialIndexTest extends GeographyUnitTest
 {
     private static class TestKryoTypes extends KryoTypes
@@ -120,7 +120,7 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
     @Test
     public void testSerialization()
     {
-        randomValueFactory().seed(900178094L);
+        newRandomValueFactory().seed(900178094L);
 
         var index = randomSpatialIndex(500);
         testSessionSerialization(index);
@@ -145,7 +145,7 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
     private Location randomLocationNear(Rectangle bounds)
     {
         var expanded = bounds.expanded(bounds.widthAtBase().maximum(bounds.heightAsDistance()));
-        return randomValueFactory().newLocation(expanded);
+        return newRandomValueFactory().newLocation(expanded);
     }
 
     private Location randomLocationOutside(Rectangle bounds)
@@ -170,7 +170,7 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
         builder.add(last);
 
         // For some number of segments
-        var segments = randomInt(5, 10);
+        var segments = random().randomIntExclusive(5, 10);
         for (var i = 0; i < segments; i++)
         {
             for (var j = 0; j < 1000; j++)
@@ -197,7 +197,7 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
         List<Polyline> polylines = new ArrayList<>();
         for (var i = 0; i < count; i++)
         {
-            var bounds = randomValueFactory().newRectangle();
+            var bounds = newRandomValueFactory().newRectangle();
             if (bounds.area().asSquareMeters() > 1000)
             {
                 polylines.add(randomPolyline(bounds, false));
@@ -220,7 +220,7 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
         for (var iteration = 1; iteration <= iterations; iteration++)
         {
             // Create a random rectangle
-            var bounds = randomValueFactory().newRectangle();
+            var bounds = newRandomValueFactory().newRectangle();
 
             // and if it's at least 1000 square meters
             if (bounds.area().asSquareMeters() > 1000)
@@ -231,7 +231,7 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
                 // Create a set of intersecting lines
                 Set<Polyline> intersecting = new HashSet<>();
                 {
-                    var count = randomInt(1, 1000);
+                    var count = random().randomIntExclusive(1, 1000);
                     for (var i = 0; i < count; i++)
                     {
                         var polyline = randomPolyline(bounds, true);
@@ -242,7 +242,7 @@ public class RTreeSpatialIndexTest extends GeographyUnitTest
                 // and a set of disjoint lines
                 Set<Polyline> disjoint = new HashSet<>();
                 {
-                    var count = randomInt(1, 1000);
+                    var count = random().randomIntExclusive(1, 1000);
                     for (var i = 0; i < count; i++)
                     {
                         var polyline = randomPolyline(bounds, false);

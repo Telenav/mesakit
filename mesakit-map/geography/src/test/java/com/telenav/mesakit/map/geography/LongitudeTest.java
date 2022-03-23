@@ -26,8 +26,8 @@ public class LongitudeTest extends GeographyUnitTest
     @Test
     public void testAdd()
     {
-        var longitude1 = randomValueFactory().newLongitude();
-        var longitude2 = randomValueFactory().newLongitude();
+        var longitude1 = newRandomValueFactory().newLongitude();
+        var longitude2 = newRandomValueFactory().newLongitude();
 
         // Calculate the expected value capping where needed
         var expected = longitude1.asMicrodegrees() + longitude2.asMicrodegrees();
@@ -45,8 +45,8 @@ public class LongitudeTest extends GeographyUnitTest
     @Test
     public void testMaximum()
     {
-        var smallLongitude = randomValueFactory().newLongitude(Longitude.degrees(-180), Longitude.degrees(0));
-        var bigLongitude = randomValueFactory().newLongitude(Longitude.degrees(0), Longitude.degrees(180));
+        var smallLongitude = newRandomValueFactory().newLongitude(Longitude.degrees(-180), Longitude.degrees(0));
+        var bigLongitude = newRandomValueFactory().newLongitude(Longitude.degrees(0), Longitude.degrees(180));
 
         ensureEqual(bigLongitude, smallLongitude.maximum(bigLongitude));
         ensureEqual(bigLongitude, bigLongitude.maximum(smallLongitude));
@@ -56,8 +56,8 @@ public class LongitudeTest extends GeographyUnitTest
     @Test
     public void testMinimum()
     {
-        var smallLongitude = randomValueFactory().newLongitude(Longitude.degrees(-180), Longitude.degrees(0));
-        var bigLongitude = randomValueFactory().newLongitude(Longitude.degrees(0), Longitude.degrees(180));
+        var smallLongitude = newRandomValueFactory().newLongitude(Longitude.degrees(-180), Longitude.degrees(0));
+        var bigLongitude = newRandomValueFactory().newLongitude(Longitude.degrees(0), Longitude.degrees(180));
 
         ensureEqual(smallLongitude, smallLongitude.minimum(bigLongitude));
         ensureEqual(smallLongitude, bigLongitude.minimum(smallLongitude));
@@ -75,8 +75,8 @@ public class LongitudeTest extends GeographyUnitTest
     @Test
     public void testScaleBy()
     {
-        var longitude = randomValueFactory().newLongitude();
-        var multiplier = randomValueFactory().newDouble(-10000, 10000);
+        var longitude = newRandomValueFactory().newLongitude();
+        var multiplier = newRandomValueFactory().randomDouble(-10000, 10000);
 
         // Calculate the expected value
         var expected = longitude.asMicrodegrees() * multiplier;
@@ -96,8 +96,8 @@ public class LongitudeTest extends GeographyUnitTest
     @Test
     public void testSubtract()
     {
-        var longitude1 = randomValueFactory().newLongitude();
-        var longitude2 = randomValueFactory().newLongitude();
+        var longitude1 = newRandomValueFactory().newLongitude();
+        var longitude2 = newRandomValueFactory().newLongitude();
 
         // Calculate the expected value capping where needed.
         var expected = longitude1.asMicrodegrees() - longitude2.asMicrodegrees();
