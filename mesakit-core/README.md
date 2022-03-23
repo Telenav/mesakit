@@ -20,14 +20,14 @@ This module contains the core MesaKit project.
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/dependencies-32.png" srcset="https://www.kivakit.org/images/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-core/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/0.9.11/lexakai/mesakit/mesakit-core/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-core</artifactId>
-        <version>0.9.10</version>
+        <version>0.9.11</version>
     </dependency>
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
@@ -48,7 +48,7 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"/>
 
-[*com.telenav.mesakit.core*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-core/documentation/diagrams/com.telenav.mesakit.core.svg)
+[*com.telenav.mesakit.core*](https://www.mesakit.org/0.9.11/lexakai/mesakit/mesakit-core/documentation/diagrams/com.telenav.mesakit.core.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
@@ -63,7 +63,7 @@ Javadoc coverage for this project is 90.0%.
 
 | Class | Documentation Sections |
 |---|---|
-| [*MesaKit*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.core/com/telenav/mesakit/core/MesaKit.html) |  |  
+| [*MesaKit*](https://www.mesakit.org/0.9.11/javadoc/mesakit/mesakit.core/com/telenav/mesakit/core/MesaKit.html) |  |  
 
 [//]: # (start-user-text)
 

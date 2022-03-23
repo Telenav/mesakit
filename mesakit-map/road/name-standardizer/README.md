@@ -30,14 +30,14 @@ This module contains code for converting road names into a consistent format
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/dependencies-32.png" srcset="https://www.kivakit.org/images/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-map/road/name-standardizer/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/0.9.11/lexakai/mesakit/mesakit-map/road/name-standardizer/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-road-name-standardizer</artifactId>
-        <version>0.9.10</version>
+        <version>0.9.11</version>
     </dependency>
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
@@ -58,9 +58,9 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"/>
 
-[*com.telenav.mesakit.map.road.name.standardizer*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-map/road/name-standardizer/documentation/diagrams/com.telenav.mesakit.map.road.name.standardizer.svg)  
-[*com.telenav.mesakit.map.road.name.standardizer.locales.english*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-map/road/name-standardizer/documentation/diagrams/com.telenav.mesakit.map.road.name.standardizer.locales.english.svg)  
-[*com.telenav.mesakit.map.road.name.standardizer.locales.indonesian*](https://www.mesakit.org/0.9.10/lexakai/mesakit/mesakit-map/road/name-standardizer/documentation/diagrams/com.telenav.mesakit.map.road.name.standardizer.locales.indonesian.svg)
+[*com.telenav.mesakit.map.road.name.standardizer*](https://www.mesakit.org/0.9.11/lexakai/mesakit/mesakit-map/road/name-standardizer/documentation/diagrams/com.telenav.mesakit.map.road.name.standardizer.svg)  
+[*com.telenav.mesakit.map.road.name.standardizer.locales.english*](https://www.mesakit.org/0.9.11/lexakai/mesakit/mesakit-map/road/name-standardizer/documentation/diagrams/com.telenav.mesakit.map.road.name.standardizer.locales.english.svg)  
+[*com.telenav.mesakit.map.road.name.standardizer.locales.indonesian*](https://www.mesakit.org/0.9.11/lexakai/mesakit/mesakit-map/road/name-standardizer/documentation/diagrams/com.telenav.mesakit.map.road.name.standardizer.locales.indonesian.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
@@ -78,14 +78,14 @@ The following significant classes are undocumented:
 
 | Class | Documentation Sections |
 |---|---|
-| [*BaseRoadNameStandardizer*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/BaseRoadNameStandardizer.html) |  |  
-| [*EnglishCanadaRoadNameStandardizer*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/english/EnglishCanadaRoadNameStandardizer.html) |  |  
-| [*EnglishRoadNameStandardizer*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/english/EnglishRoadNameStandardizer.html) |  |  
-| [*EnglishUnitedStatesRoadNameStandardizer*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/english/EnglishUnitedStatesRoadNameStandardizer.html) |  |  
-| [*IndonesianIndonesiaRoadNameStandardizer*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/indonesian/IndonesianIndonesiaRoadNameStandardizer.html) |  |  
-| [*RoadNameStandardizer*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/RoadNameStandardizer.html) |  |  
-| [*RoadNameStandardizer.Mode*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/RoadNameStandardizer.Mode.html) |  |  
-| [*SimpleIndonesianRoadNameStandardizer*](https://www.mesakit.org/0.9.10/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/indonesian/SimpleIndonesianRoadNameStandardizer.html) |  |  
+| [*BaseRoadNameStandardizer*](https://www.mesakit.org/0.9.11/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/BaseRoadNameStandardizer.html) |  |  
+| [*EnglishCanadaRoadNameStandardizer*](https://www.mesakit.org/0.9.11/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/english/EnglishCanadaRoadNameStandardizer.html) |  |  
+| [*EnglishRoadNameStandardizer*](https://www.mesakit.org/0.9.11/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/english/EnglishRoadNameStandardizer.html) |  |  
+| [*EnglishUnitedStatesRoadNameStandardizer*](https://www.mesakit.org/0.9.11/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/english/EnglishUnitedStatesRoadNameStandardizer.html) |  |  
+| [*IndonesianIndonesiaRoadNameStandardizer*](https://www.mesakit.org/0.9.11/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/indonesian/IndonesianIndonesiaRoadNameStandardizer.html) |  |  
+| [*RoadNameStandardizer*](https://www.mesakit.org/0.9.11/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/RoadNameStandardizer.html) |  |  
+| [*RoadNameStandardizer.Mode*](https://www.mesakit.org/0.9.11/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/RoadNameStandardizer.Mode.html) |  |  
+| [*SimpleIndonesianRoadNameStandardizer*](https://www.mesakit.org/0.9.11/javadoc/mesakit/mesakit.map.road.name.standardizer/com/telenav/mesakit/map/road/name/standardizer/locales/indonesian/SimpleIndonesianRoadNameStandardizer.html) |  |  
 
 [//]: # (start-user-text)
 
