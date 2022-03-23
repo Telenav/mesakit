@@ -16,7 +16,7 @@ version=$1
 
 require_variable version "$help"
 
-for project_home in "${KIVAKIT_REPOSITORY_HOMES[@]}"; do
+for project_home in "${MESAKIT_REPOSITORY_HOMES[@]}"; do
 
     if ! git_flow_init "$project_home"; then
 
@@ -26,7 +26,7 @@ for project_home in "${KIVAKIT_REPOSITORY_HOMES[@]}"; do
 
 done
 
-for project_home in "${KIVAKIT_REPOSITORY_HOMES[@]}"; do
+for project_home in "${MESAKIT_REPOSITORY_HOMES[@]}"; do
 
     git_flow_release_start "$project_home" "$version"
 
