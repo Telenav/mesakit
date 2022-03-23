@@ -21,7 +21,6 @@ package com.telenav.mesakit.graph.specifications.common.vertex.store;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.interfaces.code.TripwireTrait;
 import com.telenav.kivakit.interfaces.collection.NextValue;
@@ -55,8 +54,6 @@ public class EdgeArrayStore extends BaseRepeater implements
         TripwireTrait
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
-
-    private static final Debug DEBUG = new Debug(LOGGER);
 
     /** All edge indexes laid out end-to-end */
     private SplitIntArray indexes;
