@@ -13,12 +13,12 @@
     <parent>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>superpom</artifactId>
-        <version>0.9.11-SNAPSHOT</version>
+        <version>0.9.11</version>
         <relativePath>superpom</relativePath>
     </parent>
 
     <artifactId>mesakit</artifactId>
-    <version>0.9.11-SNAPSHOT</version>
+    <version>0.9.11</version>
 
     <packaging>pom</packaging>
 

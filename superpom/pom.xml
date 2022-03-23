@@ -13,12 +13,12 @@
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>superpom</artifactId>
             <version>1.4.2-SNAPSHOT</version>
-            <relativePath>../kivakit/superpom</relativePath>
+            <relativePath>1.4.2-SNAPSHOT</relativePath>
         </parent>
 
     <groupId>com.telenav.mesakit</groupId>
     <artifactId>superpom</artifactId>
-    <version>0.9.11-SNAPSHOT</version>
+    <version>0.9.11</version>
 
     <packaging>pom</packaging>
 
@@ -50,7 +50,7 @@
 
         <!-- MesaKit Version -->
 
-        <mesakit.version>0.9.11-SNAPSHOT</mesakit.version>
+        <mesakit.version>0.9.11</mesakit.version>
 
         <!-- Mapping -->
 

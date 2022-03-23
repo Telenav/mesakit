@@ -12,7 +12,7 @@
     <parent>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit</artifactId>
-        <version>0.9.11-SNAPSHOT</version>
+        <version>0.9.11</version>
     </parent>
 
     <artifactId>mesakit-graph</artifactId>
