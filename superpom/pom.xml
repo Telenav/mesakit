@@ -9,17 +9,16 @@
          xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-
-    <parent>
-        <groupId>com.telenav.kivakit</groupId>
-        <artifactId>superpom</artifactId>
-        <version>1.4.2</version>
-        <relativePath>kivakit/pom.xml</relativePath>
-    </parent>
+        <parent>
+            <groupId>com.telenav.kivakit</groupId>
+            <artifactId>superpom</artifactId>
+            <version>1.4.2</version>
+            <relativePath>1.4.2</relativePath>
+        </parent>
 
     <groupId>com.telenav.mesakit</groupId>
     <artifactId>superpom</artifactId>
-    <version>0.9.12-SNAPSHOT</version>
+    <version>0.9.12</version>
 
     <packaging>pom</packaging>
 
@@ -51,7 +50,7 @@
 
         <!-- MesaKit Version -->
 
-        <mesakit.version>0.9.12-SNAPSHOT</mesakit.version>
+        <mesakit.version>0.9.12</mesakit.version>
 
         <!-- Mapping -->
 
