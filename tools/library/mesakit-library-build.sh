@@ -117,6 +117,13 @@ build() {
         export BUILD_LEXAKAI_DOCUMENTATION=true
         ;;
 
+    "deploy-local-release")
+        BUILD_ARGUMENTS="clean install"
+        # shellcheck disable=SC2206
+        BUILD_MODIFIERS=(multi-threaded no-javadoc tests attach-jars sign-artifacts ${@:3})
+        export BUILD_LEXAKAI_DOCUMENTATION=true
+        ;;
+
     "javadoc")
         JAVADOC="true"
         BUILD_ARGUMENTS="clean install"
