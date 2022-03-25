@@ -1,6 +1,10 @@
 <img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
 
-### Version 0.9.9-SNAPSHOT
+### Version 0.9.11
+
+Upgraded to kivakit 1.4.1
+
+### Version 0.9.9
 
 Initial version.
 
