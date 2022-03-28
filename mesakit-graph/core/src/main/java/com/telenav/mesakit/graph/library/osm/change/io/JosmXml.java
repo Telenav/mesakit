@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.library.osm.change.io;
 
 import com.telenav.kivakit.core.io.IO;
-import com.telenav.kivakit.resource.WritableResource;
+import com.telenav.kivakit.resource.writing.WritableResource;
 import com.telenav.mesakit.graph.library.osm.change.MutableWay;
 import com.telenav.mesakit.graph.library.osm.change.NewWay;
 import com.telenav.mesakit.graph.library.osm.change.RemovedWay;

@@ -45,7 +45,7 @@ import com.telenav.kivakit.network.http.secure.SecureHttpNetworkLocation;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
-import com.telenav.kivakit.resource.path.FileName;
+import com.telenav.kivakit.resource.FileName;
 import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.kivakit.serialization.core.SerializationSession;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
@@ -451,7 +451,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
     {
         return cacheFolder()
                 .mkdirs()
-                .file(FileName.parse(this, baseName(type()) + ".kryo"));
+                .file(FileName.parseFileName(this, baseName(type()) + ".kryo"));
     }
 
     private FileCache cache()
@@ -481,7 +481,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
 
     private File identitiesFile()
     {
-        return cacheFolder().file(FileName.parse(this, baseName(type()) + "-identities.kryo"));
+        return cacheFolder().file(FileName.parseFileName(this, baseName(type()) + "-identities.kryo"));
     }
 
     private void installData()
@@ -942,7 +942,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
 
     private File pbfFile(Class<?> type)
     {
-        return cacheFolder().file(FileName.parse(this, baseName(type) + ".osm.pbf"));
+        return cacheFolder().file(FileName.parseFileName(this, baseName(type) + ".osm.pbf"));
     }
 
     private RegionProject regionProject()

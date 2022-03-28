@@ -28,9 +28,9 @@ import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.resource.CopyMode;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
-import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.kivakit.resource.Extension;
 import com.telenav.kivakit.settings.Settings;
-import com.telenav.kivakit.settings.stores.FolderSettingsStore;
+import com.telenav.kivakit.settings.stores.ResourceFolderSettingsStore;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
@@ -141,7 +141,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
 
         var store = Settings.of(this);
         LOGGER.listenTo(store);
-        store.registerSettingsIn(FolderSettingsStore.of(this, Folder.parse(this, "configuration")));
+        store.registerSettingsIn(new ResourceFolderSettingsStore(this, Folder.parse(this, "configuration")));
     }
 
     protected Edge edge(Graph graph, double fromLatitude, double fromLongitude,
@@ -176,6 +176,12 @@ public abstract class GraphUnitTest extends RegionUnitTest
     protected Location locationInDegreesMinutesAndSeconds(String location)
     {
         return locationInDegreesMinutesAndSecondsConverter.convert(location);
+    }
+
+    @Override
+    protected GraphRandomValueFactory newRandomValueFactory()
+    {
+        return new GraphRandomValueFactory();
     }
 
     protected HeavyWeightEdge nextOsmEdge(Graph graph)
@@ -254,12 +260,6 @@ public abstract class GraphUnitTest extends RegionUnitTest
         return vertex;
     }
 
-    @Override
-    protected GraphRandomValueFactory newRandomValueFactory()
-    {
-        return new GraphRandomValueFactory();
-    }
-
     protected Route route(Edge... edges)
     {
         var builder = new RouteBuilder();
@@ -328,7 +328,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
                 // then try to copy it from the test data folder
                 var destination = LOGGER.listenTo(resolveProject(GraphProject.class).graphFolder().folder("overpass"));
                 var source = LOGGER.listenTo(resolveProject(MesaKit.class).mesakitHome().folder("mesakit-graph/core/data"));
-                source.copyTo(destination, CopyMode.OVERWRITE, Extension.OSM_PBF.fileMatcher(), ProgressReporter.none());
+                source.copyTo(destination, CopyMode.OVERWRITE, Extension.OSM_PBF.matcher(), ProgressReporter.none());
             }
 
             // and if we can't find it there, and it's an OSM graph being requested,

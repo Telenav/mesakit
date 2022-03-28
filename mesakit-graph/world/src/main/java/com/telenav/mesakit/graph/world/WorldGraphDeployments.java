@@ -22,7 +22,7 @@ import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.resource.Package;
+import com.telenav.kivakit.resource.packages.Package;
 import com.telenav.kivakit.settings.Deployment;
 import com.telenav.kivakit.settings.DeploymentSet;
 import com.telenav.kivakit.settings.stores.PackageSettingsStore;
@@ -49,7 +49,7 @@ public class WorldGraphDeployments extends DeploymentSet
     public static Deployment localDeployment()
     {
         var deployment = LOGGER.listenTo(new Deployment("local", "developer laptop"));
-        deployment.indexAll(PackageSettingsStore.of(LOGGER, Package.packageFrom(LOGGER, WorldGraph.class, "configuration/local")));
+        deployment.indexAll(PackageSettingsStore.packageSettingsStore(LOGGER, Package.parsePackage(LOGGER, WorldGraph.class, "configuration/local")));
         return deployment;
     }
 

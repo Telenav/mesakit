@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader;
 
-import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.interfaces.naming.Named;
-import com.telenav.kivakit.core.progress.ProgressReporter;
-import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
-import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.resource.Extension;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
@@ -83,7 +83,7 @@ public class PbfFile extends BaseRepeater implements Named
         {
             var output = Folder.temporaryForProcess(Folder.Type.CLEAN_UP_ON_EXIT)
                     .temporaryFile(file.fileName().withoutExtension(Extension.OSM_PBF)
-                            .withoutExtension(Extension.parse(this, ".pbf.gz")), Extension.GRAPH);
+                            .withoutExtension(Extension.parseExtension(this, ".pbf.gz")), Extension.GRAPH);
 
             var converter = (PbfToGraphConverter) metadata.dataSpecification().newGraphConverter(metadata);
             converter.configure(configuration);

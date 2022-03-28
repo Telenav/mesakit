@@ -24,7 +24,7 @@ import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.primitive.collections.set.SplitLongSet;
 import com.telenav.kivakit.resource.Resource;
-import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.kivakit.resource.Extension;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.cutter.lexakai.DiagramMapCutter;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;

@@ -23,7 +23,7 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.resource.Resource;
-import com.telenav.kivakit.resource.path.FileName;
+import com.telenav.kivakit.resource.FileName;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
@@ -66,7 +66,7 @@ public class CopyingGraphLoader extends BaseGraphLoader
     {
         this.source = source;
         pbfNodeDiskStores = new PbfAllNodeDiskStores(PbfAllNodeDiskStores.temporary(),
-                FileName.parse(this, source.name() + "-" + Time.now().asMilliseconds()));
+                FileName.parseFileName(this, source.name() + "-" + Time.now().asMilliseconds()));
     }
 
     /**

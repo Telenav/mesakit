@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.name.standardizer;
 
-import com.telenav.kivakit.core.path.PackagePath;
+import com.telenav.kivakit.core.language.module.PackageReference;
 import com.telenav.kivakit.core.thread.KivaKitThread;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.model.RoadName;
@@ -41,7 +41,7 @@ public interface RoadNameStandardizer
             var standardizer = standardizers.get(key);
             if (standardizer == null)
             {
-                var packagePath = PackagePath.packagePath(RoadNameStandardizer.class);
+                var packagePath = PackageReference.packageReference(RoadNameStandardizer.class);
                 standardizer = locale.create(packagePath, "RoadNameStandardizer");
                 ensureNotNull(standardizer, "Unable to create road name standardizer");
                 standardizer.mode(mode);

@@ -67,7 +67,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     }
 
     /**
-     * This class must be declared in order to be serializable, as the Lambda returned by {@link Matcher#anything()} is
+     * This class must be declared in order to be serializable, as the Lambda returned by {@link Matcher#matchAll()} is
      * not serializable.
      */
     public static class All<Element> implements Matcher<Element>

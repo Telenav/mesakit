@@ -4,15 +4,16 @@ import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.object.Lazy;
-import com.telenav.kivakit.core.path.PackagePath;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
-import com.telenav.kivakit.resource.PropertyMap;
+import com.telenav.kivakit.properties.PropertyMap;
+import com.telenav.kivakit.resource.packages.Package;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelCompression;
 import org.jetbrains.annotations.NotNull;
 
+import static com.telenav.kivakit.core.messaging.Listener.throwing;
 import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
 
 /**
@@ -34,11 +35,11 @@ public class PbfDefaultCodecs
 
     private final Lazy<PropertyMap> keyStringCodecFrequencies = Lazy.of(() -> load("codecs/default-key-string.codec"));
 
+    private final Lazy<PropertyMap> roadNameCharacterCodecFrequencies = Lazy.of(() -> load("codecs/default-road-name-character.codec"));
+
     private final Lazy<PropertyMap> valueCharacterCodecFrequencies = Lazy.of(() -> load("codecs/default-value-character.codec"));
 
     private final Lazy<PropertyMap> valueStringCodecFrequencies = Lazy.of(() -> load("codecs/default-value-string.codec"));
-
-    private final Lazy<PropertyMap> roadNameCharacterCodecFrequencies = Lazy.of(() -> load("codecs/default-road-name-character.codec"));
 
     protected PbfDefaultCodecs()
     {
@@ -97,6 +98,6 @@ public class PbfDefaultCodecs
 
     private PropertyMap load(String codec)
     {
-        return PropertyMap.load(LOGGER, PackagePath.packagePath(PbfDefaultCodecs.class), codec);
+        return PropertyMap.load(throwing(), Package.packageContaining(throwing(), PbfDefaultCodecs.class), codec);
     }
 }

@@ -22,7 +22,7 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.MutableCount;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.resource.WritableResource;
+import com.telenav.kivakit.resource.writing.WritableResource;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.ShapePoint;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
