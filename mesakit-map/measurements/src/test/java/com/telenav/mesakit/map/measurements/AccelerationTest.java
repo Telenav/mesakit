@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.map.measurements;
 
-import com.telenav.kivakit.test.UnitTest;
+import com.telenav.kivakit.core.test.CoreUnitTest;
 import com.telenav.mesakit.map.measurements.motion.Acceleration;
 import org.junit.Test;
 
-public class AccelerationTest extends UnitTest
+public class AccelerationTest extends CoreUnitTest
 {
     @Test
     public void testNegative()

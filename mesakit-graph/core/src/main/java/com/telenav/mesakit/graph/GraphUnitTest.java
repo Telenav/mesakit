@@ -28,7 +28,6 @@ import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.resource.CopyMode;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
-import com.telenav.kivakit.resource.Extension;
 import com.telenav.kivakit.settings.Settings;
 import com.telenav.kivakit.settings.stores.ResourceFolderSettingsStore;
 import com.telenav.mesakit.core.MesaKit;
@@ -54,6 +53,7 @@ import com.telenav.mesakit.map.region.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Country;
 
 import static com.telenav.kivakit.core.project.Project.resolveProject;
+import static com.telenav.kivakit.resource.Extension.*;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
 import static com.telenav.mesakit.graph.metadata.DataSupplier.OSM;
 import static com.telenav.mesakit.graph.specifications.library.pbf.PbfFileMetadataAnnotator.Mode.STRIP_UNREFERENCED_NODES;
@@ -64,6 +64,7 @@ import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
  *
  * @author jonathanl (shibo)
  */
+@SuppressWarnings("unused")
 public abstract class GraphUnitTest extends RegionUnitTest
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
@@ -318,17 +319,17 @@ public abstract class GraphUnitTest extends RegionUnitTest
     {
         // If we can't find the graph file
         var dataDescriptor = "OSM-OSM-PBF-" + name;
-        var graphFile = file(dataDescriptor, bounds).withExtension(Extension.GRAPH);
+        var graphFile = file(dataDescriptor, bounds).withExtension(GRAPH);
         if (!graphFile.exists())
         {
             // and the PBF file doesn't exist
-            var pbfFile = file(dataDescriptor, bounds).withExtension(Extension.OSM_PBF);
+            var pbfFile = file(dataDescriptor, bounds).withExtension(OSM_PBF);
             if (!pbfFile.exists())
             {
                 // then try to copy it from the test data folder
                 var destination = LOGGER.listenTo(resolveProject(GraphProject.class).graphFolder().folder("overpass"));
                 var source = LOGGER.listenTo(resolveProject(MesaKit.class).mesakitHome().folder("mesakit-graph/core/data"));
-                source.copyTo(destination, CopyMode.OVERWRITE, Extension.OSM_PBF.matcher(), ProgressReporter.none());
+                source.copyTo(destination, CopyMode.OVERWRITE, OSM_PBF.fileMatcher(), ProgressReporter.none());
             }
 
             // and if we can't find it there, and it's an OSM graph being requested,

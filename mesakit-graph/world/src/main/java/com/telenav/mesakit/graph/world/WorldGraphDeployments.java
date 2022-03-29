@@ -25,7 +25,7 @@ import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.resource.packages.Package;
 import com.telenav.kivakit.settings.Deployment;
 import com.telenav.kivakit.settings.DeploymentSet;
-import com.telenav.kivakit.settings.stores.PackageSettingsStore;
+import com.telenav.kivakit.settings.stores.ResourceFolderSettingsStore;
 import com.telenav.mesakit.core.MesaKit;
 
 import static com.telenav.kivakit.core.project.Project.resolveProject;
@@ -38,7 +38,6 @@ import static com.telenav.kivakit.core.project.Project.resolveProject;
  * @see Deployment
  * @see DeploymentSet
  */
-@SuppressWarnings("SpellCheckingInspection")
 public class WorldGraphDeployments extends DeploymentSet
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
@@ -48,8 +47,8 @@ public class WorldGraphDeployments extends DeploymentSet
      */
     public static Deployment localDeployment()
     {
-        var deployment = LOGGER.listenTo(new Deployment("local", "developer laptop"));
-        deployment.indexAll(PackageSettingsStore.packageSettingsStore(LOGGER, Package.parsePackage(LOGGER, WorldGraph.class, "configuration/local")));
+        var deployment = new Deployment(LOGGER,"local", "developer laptop");
+        deployment.indexAll(new ResourceFolderSettingsStore( LOGGER, Package.parsePackage(LOGGER, WorldGraph.class, "configuration/local")));
         return deployment;
     }
 

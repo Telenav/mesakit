@@ -13,7 +13,7 @@
     <name>superpom</name>
     <groupId>com.telenav.kivakit</groupId>
     <artifactId>superpom</artifactId>
-    <version>1.4.2</version>
+    <version>1.4.3-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
@@ -179,7 +179,7 @@
 
         <!-- KivaKit Version -->
 
-        <kivakit.version>1.4.2</kivakit.version>
+        <kivakit.version>1.4.3-SNAPSHOT</kivakit.version>
 
         <!-- Merged JARs -->
 
@@ -1282,7 +1282,7 @@
             <dependency>
                 <groupId>com.telenav.kivakit</groupId>
                 <artifactId>kivakit-merged-zookeeper</artifactId>
-                <version>1.4.2</version>
+                <version>${kivakit.merged.version}</version>
             </dependency>
 
             <!-- Parsing -->
