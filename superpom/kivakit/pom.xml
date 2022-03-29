@@ -179,7 +179,7 @@
 
         <!-- KivaKit Version -->
 
-        <kivakit.version>1.4.2</kivakit.version>
+        <kivakit.version>1.4.3-SNAPSHOT</kivakit.version>
 
         <!-- Merged JARs -->
 
