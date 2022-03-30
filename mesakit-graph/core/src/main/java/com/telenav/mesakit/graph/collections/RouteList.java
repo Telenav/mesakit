@@ -35,7 +35,7 @@ import java.util.Map;
  *
  * @author jonathanl (shibo)
  */
-public class RouteList implements Iterable<Route>
+@SuppressWarnings("DuplicatedCode") public class RouteList implements Iterable<Route>
 {
     private final List<Route> routes = new LinkedList<>();
 

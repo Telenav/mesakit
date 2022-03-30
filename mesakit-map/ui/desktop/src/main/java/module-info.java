@@ -6,8 +6,6 @@ open module mesakit.map.ui.desktop
     requires transitive kivakit.network.http;
     requires transitive kivakit.ui.desktop;
 
-    requires org.apache.httpcomponents.httpclient;
-
     exports com.telenav.mesakit.map.ui.desktop.graphics.canvas;
     exports com.telenav.mesakit.map.ui.desktop.graphics.drawables;
     exports com.telenav.mesakit.map.ui.desktop.theme;

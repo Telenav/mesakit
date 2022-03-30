@@ -22,7 +22,7 @@ import com.telenav.kivakit.core.string.CaseFormat;
 import com.telenav.kivakit.core.string.Strip;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.Token;
 
-public class EnglishUnitedStatesRoadNameParser extends EnglishRoadNameParser
+@SuppressWarnings("DuplicatedCode") public class EnglishUnitedStatesRoadNameParser extends EnglishRoadNameParser
 {
     private static final EnglishUnitedStatesTokenizer TOKENIZER = new EnglishUnitedStatesTokenizer();
 

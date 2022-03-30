@@ -45,7 +45,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
  * {@link HashMap} instances for smaller tag maps. The average number of tags per entity in OSM is between 2.3 and 3.95,
  * so 8 fields should cover the majority of OSM tag maps.
  */
-@SuppressWarnings("StaticInitializerReferencesSubClass")
+@SuppressWarnings({ "StaticInitializerReferencesSubClass", "DuplicatedCode" })
 @UmlClassDiagram(diagram = DiagramPbfModelTags.class)
 @UmlRelation(label = "stores", referent = Tag.class)
 @UmlExcludeSuperTypes(Iterable.class)

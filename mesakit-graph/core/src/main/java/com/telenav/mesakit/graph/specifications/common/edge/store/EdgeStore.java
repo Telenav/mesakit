@@ -1290,7 +1290,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
             relations.add(newRelation);
 
             // and store them again (note that space will be lost because there is no garbage
-            // collection for the underlying long to long multimap data structure, but that's
+            // collection for the underlying long to long multi-map data structure, but that's
             // just how it goes)
             relations.forEach(relation -> storeRelation(edge, relation));
         }

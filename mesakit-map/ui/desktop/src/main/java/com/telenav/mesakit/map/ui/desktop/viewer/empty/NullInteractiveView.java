@@ -19,7 +19,6 @@
 package com.telenav.mesakit.map.ui.desktop.viewer.empty;
 
 import com.telenav.kivakit.core.time.Duration;
-import com.telenav.kivakit.core.time.Duration;
 
 import com.telenav.kivakit.core.value.level.Percent;
 

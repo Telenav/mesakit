@@ -33,7 +33,7 @@ import java.util.Map;
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.mesakit.map.road.name.parser.ParsedRoadName.DirectionFormat.PREFIXED;
 
-@SuppressWarnings("SpellCheckingInspection")
+@SuppressWarnings({ "SpellCheckingInspection", "DuplicatedCode" })
 public class EnglishRoadNameStandardizer extends BaseRoadNameStandardizer
 {
     private static final Debug DEBUG = new Debug(LoggerFactory.newLogger());

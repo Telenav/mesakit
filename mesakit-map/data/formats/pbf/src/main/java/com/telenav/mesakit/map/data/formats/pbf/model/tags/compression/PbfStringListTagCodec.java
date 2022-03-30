@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.data.compression.SymbolProducer;
 import com.telenav.kivakit.data.compression.codecs.StringListCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
@@ -28,9 +29,9 @@ import com.telenav.kivakit.primitive.collections.list.ByteList;
 import com.telenav.kivakit.properties.PropertyMap;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.UmlNote;
+import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelCompression;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
-import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelCompression;
 
 import java.util.ArrayList;
 
@@ -51,7 +52,7 @@ import static com.telenav.kivakit.data.compression.SymbolConsumer.Directive.STOP
  *     <li>default-key-string.codec</li>
  *     <li>default-value-string.codec</li>
  * </ul>
- * The properties files can be used to construct the codecs with {@link HuffmanCharacterCodec#from(PropertyMap, Character)}
+ * The properties files can be used to construct the codecs with {@link HuffmanCharacterCodec#from(Listener, PropertyMap, Character)}
  * for character based compression or {@link HuffmanStringCodec#from(PropertyMap)}, and these two codecs can be passed
  * to the constructor of this class.
  *

@@ -36,7 +36,7 @@ import java.util.Set;
 
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
-@UmlClassDiagram(diagram = DiagramPbfProcessingFilters.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPbfProcessingFilters.class)
 @UmlExcludeSuperTypes(Named.class)
 public class RelationFilter implements Filter<PbfRelation>, Named
 {

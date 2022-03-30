@@ -1189,7 +1189,6 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
     /**
      * @return The location of the vertex where the given road name crosses this route
      */
-    @SuppressWarnings("SpellCheckingInspection")
     public Location crossStreet(RoadNameStandardizer standardizer, RoadName name)
     {
         var standardizedName = standardizer.standardize(name).asRoadName();

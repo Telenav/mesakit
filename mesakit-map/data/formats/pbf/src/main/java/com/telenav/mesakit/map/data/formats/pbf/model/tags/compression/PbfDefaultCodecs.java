@@ -1,7 +1,5 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
@@ -23,8 +21,6 @@ import static com.telenav.kivakit.data.compression.codecs.huffman.character.Huff
 public class PbfDefaultCodecs
 {
     private static final Lazy<PbfDefaultCodecs> defaultCodecs = Lazy.of(PbfDefaultCodecs::new);
-
-    private static final Logger LOGGER = LoggerFactory.newLogger();
 
     public static PbfDefaultCodecs get()
     {

@@ -36,6 +36,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle._MINUS_180_D
  */
 class AccumulatedAngle
 {
+    @SuppressWarnings("unused")
     static final AccumulatedAngle ZERO = new AccumulatedAngle(0);
 
     static final AccumulatedAngle _100__8Y = new AccumulatedAngle(180);

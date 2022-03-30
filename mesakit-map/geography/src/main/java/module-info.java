@@ -4,25 +4,19 @@ open module mesakit.map.geography
     requires transitive mesakit.map.measurements;
 
     // KivaKit
-    requires transitive kivakit.component;
-    requires transitive kivakit.data.compression;
     requires transitive kivakit.serialization.kryo;
     requires transitive kivakit.math;
+    requires transitive kivakit.resource;
     requires transitive kivakit.primitive.collections;
 
     // Annotations
     requires org.jetbrains.annotations;
 
-    // Testing
-    requires junit;
-
     // Geographic
-    requires shapefilereader;
     requires google.polyline.codec;
 
     // Java
     requires transitive java.desktop;
-    requires kivakit.serialization.core;
 
     exports com.telenav.mesakit.map.geography.indexing.polygon;
     exports com.telenav.mesakit.map.geography.indexing.quadtree;

@@ -30,7 +30,7 @@ import static com.telenav.mesakit.map.road.name.parser.ParsedRoadName.DirectionF
 import static com.telenav.mesakit.map.road.name.parser.ParsedRoadName.DirectionFormat.PREFIXED;
 import static com.telenav.mesakit.map.road.name.parser.ParsedRoadName.DirectionFormat.SUFFIXED;
 
-public abstract class EnglishRoadNameParser extends BaseRoadNameParser
+@SuppressWarnings("DuplicatedCode") public abstract class EnglishRoadNameParser extends BaseRoadNameParser
 {
     private static final EnglishUnitedStatesTokenizer TOKENIZER = new EnglishUnitedStatesTokenizer();
 

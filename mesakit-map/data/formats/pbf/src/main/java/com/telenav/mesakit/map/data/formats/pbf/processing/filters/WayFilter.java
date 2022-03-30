@@ -22,8 +22,6 @@ import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.collections.map.NameMap;
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.string.Strings;
@@ -32,8 +30,8 @@ import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
-import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfProcessingFilters;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 
 import java.util.Comparator;
 import java.util.HashSet;
@@ -41,13 +39,11 @@ import java.util.Set;
 
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
-@UmlClassDiagram(diagram = DiagramPbfProcessingFilters.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPbfProcessingFilters.class)
 @UmlExcludeSuperTypes(Named.class)
 public class WayFilter implements Filter<PbfWay>, Named
 {
     private static final NameMap<WayFilter> wayFilterForName = new NameMap<>();
-
-    private static final Logger LOGGER = LoggerFactory.newLogger();
 
     public static WayFilter exclude(String name, Resource resource)
     {

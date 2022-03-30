@@ -49,7 +49,6 @@ public class SplitPolylineStore implements
     private ArrayList<PolylineStore> stores;
 
     /** The current store we're adding to */
-    @SuppressWarnings("SpellCheckingInspection")
     private PolylineStore polylines;
 
     /** Map from client index to store */

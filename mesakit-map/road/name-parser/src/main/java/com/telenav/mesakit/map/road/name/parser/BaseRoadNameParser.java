@@ -24,7 +24,7 @@ import com.telenav.mesakit.map.road.name.parser.tokenizer.Token;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.TokenList;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.Tokenizer;
 
-public abstract class BaseRoadNameParser implements RoadNameParser
+@SuppressWarnings("DuplicatedCode") public abstract class BaseRoadNameParser implements RoadNameParser
 {
     // Tokens parsed by tokenizer
     TokenList tokens;

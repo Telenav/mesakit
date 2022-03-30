@@ -70,7 +70,7 @@ class OverpassOsmResource extends BaseComponent
 
     private HttpPostResource location(Rectangle bounds)
     {
-        var payload = new Formatter().format(template, bounds.toCommaSeparatedString());
+        var payload = Formatter.format(template, bounds.toCommaSeparatedString());
         return new HttpNetworkLocation(require(OverpassDataDownloader.class).HOST.http().path(this, "/api/interpreter")).post(payload);
     }
 }

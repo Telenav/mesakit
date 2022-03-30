@@ -39,6 +39,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
  *
  * @author jonathanl (shibo)
  */
+@SuppressWarnings("SpellCheckingInspection")
 public class DataBuild
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();

@@ -60,7 +60,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-@UmlClassDiagram(diagram = DiagramRegions.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramRegions.class)
 @UmlExcludeSuperTypes(Quantizable.class)
 public abstract class Country extends Region<Country> implements Quantizable
 {

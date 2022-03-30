@@ -48,7 +48,7 @@ import com.telenav.mesakit.map.measurements.geographic.Heading;
  *
  * @author jonathanl (shibo)
  */
-@SuppressWarnings("SpellCheckingInspection") @UmlClassDiagram(diagram = DiagramLocation.class)
+@UmlClassDiagram(diagram = DiagramLocation.class)
 public enum Precision
 {
     NONE(0), // No precision

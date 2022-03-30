@@ -37,7 +37,7 @@ import java.util.stream.Stream;
 
 public class MapRoute implements Iterable<MapEdgeIdentifier>
 {
-    public static class Converter extends BaseStringConverter<MapRoute>
+    @SuppressWarnings("DuplicatedCode") public static class Converter extends BaseStringConverter<MapRoute>
     {
         private final Separators separators;
 

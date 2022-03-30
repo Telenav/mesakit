@@ -150,7 +150,6 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
      * "17th" and it turns names with hyphens like "Southwest By-Pass" into "Pass". This method is used to filter out
      * these cases.
      */
-    @SuppressWarnings("SpellCheckingInspection")
     private boolean shouldStandardize(String name)
     {
         if (Strings.isNaturalNumber(name))

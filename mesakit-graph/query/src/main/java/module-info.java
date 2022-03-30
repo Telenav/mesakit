@@ -2,7 +2,7 @@ open module mesakit.graph.query
 {
     requires transitive mesakit.graph.core;
 
-    requires transitive kivakit.application;
+    requires transitive kivakit.interfaces;
 
     requires org.antlr.antlr4.runtime;
 

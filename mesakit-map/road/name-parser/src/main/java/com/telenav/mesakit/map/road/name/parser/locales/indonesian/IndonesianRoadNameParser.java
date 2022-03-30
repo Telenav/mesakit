@@ -37,7 +37,7 @@ import static com.telenav.mesakit.map.road.name.parser.ParsedRoadName.DirectionF
  *
  * @author jonathanl (shibo)
  */
-public class IndonesianRoadNameParser extends BaseRoadNameParser
+@SuppressWarnings("DuplicatedCode") public class IndonesianRoadNameParser extends BaseRoadNameParser
 {
     // Tokenizer for Indonesia
     private static final IndonesianTokenizer TOKENIZER = new IndonesianTokenizer();
