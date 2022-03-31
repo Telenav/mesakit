@@ -24,3 +24,9 @@ for project_home in "${MESAKIT_PROJECT_HOMES[@]}"; do
     export ALLOW_CLEANING=false
 
 done
+
+if [ -n "$BUILD_DOCUMENTATION" ]; then
+
+    bash mesakit-build-documentation.sh
+
+fi

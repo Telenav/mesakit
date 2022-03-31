@@ -10,7 +10,7 @@
     <parent>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-road</artifactId>
-        <version>0.9.13-SNAPSHOT</version>
+        <version>0.9.13</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
