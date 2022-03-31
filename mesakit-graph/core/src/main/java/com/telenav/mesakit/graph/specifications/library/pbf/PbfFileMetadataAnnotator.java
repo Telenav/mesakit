@@ -23,7 +23,7 @@ import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.value.mutable.MutableValue;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.primitive.collections.set.SplitLongSet;
-import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.kivakit.resource.Extension;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.metadata.DataBuild;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;

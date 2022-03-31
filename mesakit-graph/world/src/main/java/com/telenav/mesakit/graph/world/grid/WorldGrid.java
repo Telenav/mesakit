@@ -33,7 +33,6 @@ import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.value.Source;
 import com.telenav.kivakit.resource.ResourceList;
-import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.kivakit.settings.Settings;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphProject;
@@ -72,6 +71,9 @@ import java.util.List;
 import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
+import static com.telenav.kivakit.resource.Extension.GRAPH;
+import static com.telenav.kivakit.resource.Extension.OSM_PBF;
+import static com.telenav.kivakit.resource.Extension.parseExtension;
 
 /**
  * A grid of {@link WorldCell}s, each containing its own cell-{@link Graph}. The grid is stored in a {@link
@@ -124,7 +126,7 @@ import static com.telenav.kivakit.core.project.Project.resolveProject;
  * @see WorldGraphRepositoryFolder
  * @see WorldGraphRepository
  */
-@SuppressWarnings({ "rawtypes" })
+@SuppressWarnings({ "rawtypes", "unused" })
 public class WorldGrid
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
@@ -332,7 +334,6 @@ public class WorldGrid
             output.add(feature);
         }
 
-        //noinspection SpellCheckingInspection
         output.save(File.parseFile(Listener.console(), "data/world-graph-2-degree-cells.geojson"));
     }
 
@@ -480,7 +481,7 @@ public class WorldGrid
         {
             var cached = regionCache().file(region.fileName()
                     .withSuffix("-" + Math.round(grid.approximateCellSize().asDegrees()) + "-degree-grid")
-                    .withExtension(Extension.parse(Listener.console(), ".cells")));
+                    .withExtension(parseExtension(Listener.console(), ".cells")));
             if (cached.exists())
             {
                 var cellNames = cached.reader().asString();
@@ -594,14 +595,15 @@ public class WorldGrid
     private void refreshCellData(WorldGraphRepositoryFolder repositoryFolder)
     {
         // Update status of PBF files
-        var pbfs = repositoryFolder.files(Extension.OSM_PBF.fileMatcher()).asSet();
+        @SuppressWarnings("SpellCheckingInspection")
+        var pbfs = repositoryFolder.files(OSM_PBF.fileMatcher()).asSet();
         for (var worldCell : included)
         {
             worldCell.hasPbf(repositoryFolder, pbfs.contains(worldCell.pbfFile(repositoryFolder)));
         }
 
         // Update status and size of graph files
-        var graphs = repositoryFolder.files(Extension.GRAPH.fileMatcher()).asSet();
+        var graphs = repositoryFolder.files(GRAPH.fileMatcher()).asSet();
         for (var worldCell : included)
         {
             var graphFile = worldCell.cellGraphFile(repositoryFolder);

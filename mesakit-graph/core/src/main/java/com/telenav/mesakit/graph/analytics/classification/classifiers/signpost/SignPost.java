@@ -29,7 +29,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
 import static com.telenav.mesakit.map.measurements.geographic.Angle._180_DEGREES;
 import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
 
-public class SignPost
+@SuppressWarnings("DuplicatedCode") public class SignPost
 {
     private final Vertex vertex;
 

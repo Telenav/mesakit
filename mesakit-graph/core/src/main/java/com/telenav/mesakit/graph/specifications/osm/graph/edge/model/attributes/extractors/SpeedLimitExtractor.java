@@ -25,7 +25,7 @@ import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
 import com.telenav.mesakit.map.measurements.motion.Speed;
 
-public class SpeedLimitExtractor extends BaseExtractor<Speed, PbfTagMap>
+@SuppressWarnings("DuplicatedCode") public class SpeedLimitExtractor extends BaseExtractor<Speed, PbfTagMap>
 {
     public SpeedLimitExtractor(Listener listener)
     {

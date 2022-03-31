@@ -2,7 +2,7 @@ open module mesakit.data.formats.pbf
 {
     requires transitive mesakit.map.data.library;
 
-    requires transitive kivakit.data.formats.library;
+    requires transitive kivakit.resource;
     requires transitive kivakit.data.compression;
     requires transitive kivakit.primitive.collections;
 

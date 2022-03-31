@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.ui.desktop.tiles;
 
 import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.resource.path.FileName;
+import com.telenav.kivakit.resource.FileName;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Label;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
@@ -111,7 +111,7 @@ public class SlippyTile
 
     public FileName asFileName()
     {
-        return FileName.parse(Listener.console(), x + "-" + y + "-" + zoom.level() + ".png");
+        return FileName.parseFileName(Listener.console(), x + "-" + y + "-" + zoom.level() + ".png");
     }
 
     /**

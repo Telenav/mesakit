@@ -6,8 +6,6 @@ open module mesakit.graph.world
 
     requires transitive kivakit.settings;
 
-    requires junit;
-
     exports com.telenav.mesakit.graph.world;
     exports com.telenav.mesakit.graph.world.grid;
     exports com.telenav.mesakit.graph.world.identifiers;

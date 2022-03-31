@@ -25,7 +25,7 @@ import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.object.Lazy;
-import com.telenav.kivakit.core.path.PackagePath;
+import com.telenav.kivakit.core.language.module.PackageReference;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.World;
@@ -90,12 +90,12 @@ public class MapLocale extends Locale
      * "[package-path].locales.english.English_United_States_RoadNameParser"
      */
     @SuppressWarnings("unchecked")
-    public <T> T create(PackagePath packagePath, String suffix)
+    public <T> T create(PackageReference packageReference, String suffix)
     {
         // Try to load most specific first
         try
         {
-            var languagePackage = packagePath + ".locales." + language().name().toLowerCase();
+            var languagePackage = packageReference + ".locales." + language().name().toLowerCase();
             var language = language().name().replaceAll("[_ ]", "");
             var region = region().name().replaceAll("[_ ]", "");
             var className = language + region + suffix;
@@ -109,7 +109,7 @@ public class MapLocale extends Locale
         // Try to load language without region
         try
         {
-            var language = packagePath + ".locales." + language().name().toLowerCase();
+            var language = packageReference + ".locales." + language().name().toLowerCase();
             return (T) Type.forName(language + "." + language() + "" + suffix).newInstance();
         }
         catch (Exception e)

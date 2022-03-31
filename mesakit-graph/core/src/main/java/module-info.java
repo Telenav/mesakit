@@ -9,14 +9,14 @@ open module mesakit.graph.core
     requires transitive mesakit.map.geography;
 
     requires transitive kivakit.settings;
+    requires kivakit.extraction;
+    requires kivakit.serialization.core;
+    requires kivakit.data.formats.library;
 
     requires transitive java.sql;
     requires org.jetbrains.annotations;
     requires osmosis.core;
     requires kryo;
-    requires junit;
-    requires kivakit.extraction;
-    requires kivakit.serialization.core;
 
     exports com.telenav.mesakit.graph.analytics.classification.classifiers.road;
     exports com.telenav.mesakit.graph.analytics.classification.classifiers.signpost;

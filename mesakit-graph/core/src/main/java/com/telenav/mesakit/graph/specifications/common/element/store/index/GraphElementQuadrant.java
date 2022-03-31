@@ -30,7 +30,7 @@ import java.util.Iterator;
 
 final class GraphElementQuadrant<T extends GraphElement>
 {
-    private final class QuadrantIterator extends BaseIterator<T>
+    @SuppressWarnings("DuplicatedCode") private final class QuadrantIterator extends BaseIterator<T>
     {
         private final Rectangle bounds;
 

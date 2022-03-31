@@ -33,7 +33,6 @@ import com.telenav.kivakit.primitive.collections.list.ByteList;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.LocationSequence;
 import com.telenav.mesakit.map.geography.Precision;
 import com.telenav.mesakit.map.geography.lexakai.DiagramPolyline;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;

@@ -36,7 +36,7 @@ import static com.telenav.mesakit.map.road.name.parser.ParsedRoadName.TypePositi
  *
  * @author jonathanl (shibo)
  */
-public class IndonesianIndonesiaRoadNameStandardizer extends BaseRoadNameStandardizer
+@SuppressWarnings("DuplicatedCode") public class IndonesianIndonesiaRoadNameStandardizer extends BaseRoadNameStandardizer
 {
     private static final Debug DEBUG = new Debug(LoggerFactory.newLogger());
 

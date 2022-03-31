@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.geography.shape.polyline;
 
 import com.telenav.kivakit.core.string.Separators;
-import com.telenav.kivakit.core.test.UnitTest;
+import com.telenav.kivakit.test.UnitTest;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;

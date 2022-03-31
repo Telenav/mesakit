@@ -24,8 +24,8 @@ import com.telenav.kivakit.core.collections.map.StringToStringMap;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.kivakit.resource.WritableResource;
-import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.kivakit.resource.writing.WritableResource;
+import com.telenav.kivakit.resource.Extension;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
@@ -44,7 +44,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 public class GeoJsonDocument implements Iterable<GeoJsonFeature>
 {
-    public static Extension EXTENSION = Extension.parse(Listener.console(), ".geojson");
+    public static Extension EXTENSION = Extension.parseExtension(Listener.console(), ".geojson");
 
     public static GeoJsonDocument forJson(String json)
     {

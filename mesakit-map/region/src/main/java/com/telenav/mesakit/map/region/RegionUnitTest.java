@@ -18,14 +18,11 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.mesakit.map.geography.GeographyKryoTypes;
 import com.telenav.mesakit.map.geography.GeographyUnitTest;
 import com.telenav.mesakit.map.measurements.MeasurementsKryoTypes;
-
-import static com.telenav.kivakit.core.project.Project.resolveProject;
 
 public class RegionUnitTest extends GeographyUnitTest
 {

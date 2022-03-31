@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.graph.world.virtual;
 
-import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.interfaces.value.Source;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
@@ -166,10 +165,7 @@ public abstract class VirtualReference<T>
             return value;
         }
 
-        // Start loading
-        var start = Time.now();
-
-        // load a new value, if possible
+        // Load a new value, if possible
         value = onLoad();
 
         // If we loaded the value,

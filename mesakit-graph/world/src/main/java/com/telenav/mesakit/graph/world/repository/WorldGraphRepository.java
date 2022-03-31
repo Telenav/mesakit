@@ -25,8 +25,8 @@ import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.resource.path.FileName;
-import com.telenav.kivakit.resource.path.FilePath;
+import com.telenav.kivakit.resource.FileName;
+import com.telenav.kivakit.filesystem.FilePath;
 import com.telenav.mesakit.graph.Metadata;
 
 import java.io.Serializable;

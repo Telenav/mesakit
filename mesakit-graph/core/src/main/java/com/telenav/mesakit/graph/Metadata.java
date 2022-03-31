@@ -46,10 +46,10 @@ import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
-import com.telenav.kivakit.resource.PropertyMap;
+import com.telenav.kivakit.properties.PropertyMap;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
-import com.telenav.kivakit.resource.path.FileName;
+import com.telenav.kivakit.resource.FileName;
 import com.telenav.kivakit.validation.BaseValidator;
 import com.telenav.kivakit.validation.Validatable;
 import com.telenav.kivakit.validation.ValidationType;
@@ -535,10 +535,10 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      */
     public FileName asFileName()
     {
-        return FileName.parse(LOGGER, dataSupplier
+        return FileName.parseFileName(LOGGER, dataSupplier
                 + "-" + dataSpecification
                 + "-" + dataFormat
-                + "-" + FileName.parse(LOGGER, name.replaceAll("-", "_")).normalized()
+                + "-" + FileName.parseFileName(LOGGER, name.replaceAll("-", "_")).normalized()
                 + (dataVersion == null ? "" : "-" + dataVersion)
                 + (dataBuild == null ? "" : "-" + dataBuild.asFileName()));
     }

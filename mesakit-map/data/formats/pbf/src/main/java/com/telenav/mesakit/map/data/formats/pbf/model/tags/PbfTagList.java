@@ -37,7 +37,7 @@ import java.util.Set;
 
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
-@UmlClassDiagram(diagram = DiagramPbfModelTags.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPbfModelTags.class)
 @UmlExcludeSuperTypes({ AsIndentedString.class, Iterable.class })
 @UmlRelation(label = "stores", referent = Tag.class)
 public class PbfTagList implements Iterable<Tag>, AsIndentedString

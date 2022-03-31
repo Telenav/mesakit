@@ -79,7 +79,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
             }
         }
 
-        private final class QuadrantIterator extends BaseIterator<Element>
+        @SuppressWarnings("DuplicatedCode") private final class QuadrantIterator extends BaseIterator<Element>
         {
             private final Rectangle bounds;
 

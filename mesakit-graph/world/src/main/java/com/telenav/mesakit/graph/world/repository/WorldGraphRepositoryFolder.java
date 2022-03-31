@@ -29,9 +29,9 @@ import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.messaging.messages.status.activity.StepSuccess;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.resource.path.Extension;
-import com.telenav.kivakit.resource.path.FileName;
-import com.telenav.kivakit.resource.path.FilePath;
+import com.telenav.kivakit.resource.Extension;
+import com.telenav.kivakit.resource.FileName;
+import com.telenav.kivakit.filesystem.FilePath;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.world.WorldGraphIndex;
 
@@ -57,7 +57,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
     /**
      * The name of the temporary extraction folder
      */
-    public static final FileName TEMPORARY_FOLDER_NAME = FileName.parse(LOGGER, "temporary");
+    public static final FileName TEMPORARY_FOLDER_NAME = FileName.parseFileName(LOGGER, "temporary");
 
     /** A switch parser to select an existing world graph folder */
     public static SwitchParser.Builder<WorldGraphRepositoryFolder> SWITCH_PARSER_EXISTING =
@@ -74,7 +74,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
                     .description("Full path to world graph data folder");
 
     /** The extension for world graph folders */
-    public static final Extension WORLD = Extension.parse(LOGGER, ".world");
+    public static final Extension WORLD = Extension.parseExtension(LOGGER, ".world");
 
     /**
      * @return A {@link Problem} message detailing the problem if the given folder doesn't exist or is not of the

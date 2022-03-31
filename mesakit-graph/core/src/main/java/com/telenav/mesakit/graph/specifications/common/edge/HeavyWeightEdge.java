@@ -72,7 +72,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.mesakit.map.road.model.RoadState.ONE_WAY;
 import static com.telenav.mesakit.map.road.model.RoadState.TWO_WAY;
 
-@SuppressWarnings("SpellCheckingInspection") public class HeavyWeightEdge extends Edge
+public class HeavyWeightEdge extends Edge
 {
     private Rectangle bounds;
 

@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.specifications.common.node.store.all.disk;
 
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.resource.path.FileName;
+import com.telenav.kivakit.resource.FileName;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
 

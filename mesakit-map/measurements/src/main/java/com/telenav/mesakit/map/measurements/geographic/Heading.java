@@ -96,7 +96,7 @@ public class Heading extends Angle implements Headed
      *
      * @author jonathanl (shibo)
      */
-    public static class Converter extends BaseStringConverter<Heading>
+    @SuppressWarnings("DuplicatedCode") public static class Converter extends BaseStringConverter<Heading>
     {
         /** Pattern to match strings */
         private static final Pattern PATTERN = Pattern.compile("([0-9]+([.,][0-9]+)?)\\s+(degree)s?",

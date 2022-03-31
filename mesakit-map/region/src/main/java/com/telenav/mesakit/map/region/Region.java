@@ -41,7 +41,7 @@ import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.naming.Nameable;
 import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.resource.path.FileName;
+import com.telenav.kivakit.resource.FileName;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
@@ -632,7 +632,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     @KivaKitIncludeProperty
     public FileName fileName()
     {
-        return FileName.parse(LOGGER, name());
+        return FileName.parseFileName(LOGGER, name());
     }
 
     /**

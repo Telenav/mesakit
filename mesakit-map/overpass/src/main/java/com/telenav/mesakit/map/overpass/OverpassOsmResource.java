@@ -25,7 +25,7 @@ import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.network.http.HttpPostResource;
-import com.telenav.kivakit.resource.resources.PackageResource;
+import com.telenav.kivakit.resource.packages.PackageResource;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
@@ -70,7 +70,7 @@ class OverpassOsmResource extends BaseComponent
 
     private HttpPostResource location(Rectangle bounds)
     {
-        var payload = new Formatter().format(template, bounds.toCommaSeparatedString());
+        var payload = Formatter.format(template, bounds.toCommaSeparatedString());
         return new HttpNetworkLocation(require(OverpassDataDownloader.class).HOST.http().path(this, "/api/interpreter")).post(payload);
     }
 }
