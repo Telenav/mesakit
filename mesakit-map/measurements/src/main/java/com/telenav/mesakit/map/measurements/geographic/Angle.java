@@ -110,7 +110,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
  *
  * @author jonathanl (shibo)
  */
-@SuppressWarnings({ "SwitchStatementWithTooFewBranches", "SpellCheckingInspection" })
+@SuppressWarnings({ "SwitchStatementWithTooFewBranches", "SpellCheckingInspection", "unused" })
 @UmlClassDiagram(diagram = DiagramMapMeasurementGeographic.class)
 @UmlExcludeSuperTypes({ Stringable.class, Serializable.class, Quantizable.class })
 @LexakaiJavadoc(complete = true)
@@ -407,6 +407,7 @@ public class Angle implements
     /**
      * @return This angle reduced by one nanodegree
      */
+    @Override
     public Angle decremented()
     {
         return nanodegrees(nanodegrees - 1);
@@ -465,6 +466,7 @@ public class Angle implements
         throw new IllegalArgumentException("Unsupported difference type " + type);
     }
 
+    @Override
     public Angle dividedBy(Angle that)
     {
         return nanodegrees(nanodegrees / that.nanodegrees);
@@ -538,6 +540,7 @@ public class Angle implements
         return difference(that, Chirality.SMALLEST).isClose(_180_DEGREES, tolerance);
     }
 
+    @Override
     public Angle maximum()
     {
         return MAXIMUM;
@@ -549,6 +552,7 @@ public class Angle implements
         return nanodegrees > that.nanodegrees ? this : that;
     }
 
+    @Override
     public Angle minimum()
     {
         return MINIMUM;
@@ -560,6 +564,7 @@ public class Angle implements
         return nanodegrees < that.nanodegrees ? this : that;
     }
 
+    @Override
     public Angle minus(Angle that)
     {
         return nanodegrees(nanodegrees - that.nanodegrees);
@@ -577,6 +582,7 @@ public class Angle implements
         return degrees(asDegrees() + 1);
     }
 
+    @Override
     public Angle plus(Angle that)
     {
         return nanodegrees(nanodegrees + that.nanodegrees);
