@@ -39,6 +39,8 @@ import java.io.Serializable;
 import java.util.regex.Pattern;
 
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
+import com.telenav.kivakit.core.value.count.Countable;
+import com.telenav.kivakit.interfaces.numeric.QuantumComparable;
 
 /**
  * An angle value represented between -360 and 360 degrees. Note that an angle of -45 degrees is seen as being less than
@@ -119,6 +121,8 @@ public class Angle implements
         IntegerNumeric<Angle>,
         Stringable,
         Quantizable,
+        QuantumComparable<Angle>,
+        Comparable<Angle>,
         Serializable
 {
     public static final long NANODEGREES_PER_DEGREE = 1_000_000_000;

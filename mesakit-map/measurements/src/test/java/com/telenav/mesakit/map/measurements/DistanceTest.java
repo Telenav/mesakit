@@ -140,7 +140,7 @@ public class DistanceTest extends MeasurementsUnitTest
         ensureEqual((long) scaled, distance.times(factor).asMillimeters());
 
         var tenMeters = Distance.meters(10);
-        ensureClose(tenMeters.times(Percent.of(50)).asMeters(), 5, 2);
+        ensureClose(tenMeters.times(Percent.percent(50)).asMeters(), 5, 2);
     }
 
     @Test

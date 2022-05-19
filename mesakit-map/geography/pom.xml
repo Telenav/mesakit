@@ -54,6 +54,15 @@
             <artifactId>mesakit-map-measurements</artifactId>
         </dependency>
 
+        <dependency>
+            <!-- To pull in MeasurementUnitTest, which GeographyUnitTest extends -->
+            <groupId>com.telenav.mesakit</groupId>
+            <artifactId>mesakit-map-measurements</artifactId>
+            <type>test-jar</type>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+
         <!-- Shapefile -->
 
         <!-- NOTE: this JAR file is from SourceForge and does not exist in any public Maven repository -->
@@ -75,5 +84,22 @@
         </dependency>
 
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <!-- So we don't have to move GeographyUnitTest to allo
+                     tests in other packages to subclass it. -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

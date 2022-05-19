@@ -25,6 +25,14 @@
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-map-region</artifactId>
         </dependency>
+        <dependency>
+            <!-- To pull in MeasurementUnitTest, which GeographyUnitTest extends -->
+            <groupId>com.telenav.mesakit</groupId>
+            <artifactId>mesakit-map-geography</artifactId>
+            <type>test-jar</type>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 

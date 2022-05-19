@@ -542,7 +542,7 @@ public final class Distance implements Quantizable, Comparable<Distance>
         {
             return Percent._100;
         }
-        return Percent.of(100.0 * Doubles.inRange(asMeters() / that.asMeters(), 0.0, 1.0));
+        return Percent.percent(100.0 * Doubles.inRange(asMeters() / that.asMeters(), 0.0, 1.0));
     }
 
     @Override

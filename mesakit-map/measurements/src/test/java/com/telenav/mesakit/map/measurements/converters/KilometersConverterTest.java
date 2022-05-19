@@ -35,6 +35,6 @@ public class KilometersConverterTest extends MeasurementsUnitTest
         distance = new Distance.KilometersConverter(new ThrowingListener()).convert("33.3");
         ensureEqual(Distance.kilometers(33.3), distance);
 
-        ensureNull(new Distance.KilometersConverter(Listener.none()).convert("hello"));
+        ensureNull(new Distance.KilometersConverter(Listener.emptyListener()).convert("hello"));
     }
 }

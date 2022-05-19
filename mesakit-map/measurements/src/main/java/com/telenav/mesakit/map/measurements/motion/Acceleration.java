@@ -62,15 +62,15 @@ public class Acceleration
         this.duration = duration;
         this.negative = negative;
     }
-
+    
     public double asMetersPerSecondSquared()
     {
-        return (negative ? -1.0 : 1.0) * speed.asMetersPerSecond() / duration.asSeconds();
+        return (negative ? -1.0 : 1.0) * speed.asMetersPerSecond() / duration.dividedBy(Duration.ONE_SECOND);
     }
 
     public double asMilesPerHourSquared()
     {
-        return (negative ? -1.0 : 1.0) * speed.asMilesPerHour() / duration.asHours();
+        return (negative ? -1.0 : 1.0) * speed.asMilesPerHour() / duration.dividedBy(Duration.ONE_HOUR);
     }
 
     @Override
