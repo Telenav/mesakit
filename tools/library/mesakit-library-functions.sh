@@ -58,7 +58,7 @@ project_build()
     fi
 }
 
-showVersion()
+show_version()
 {
     project_home=$1
     project_name=$(project_name "$project_home")
