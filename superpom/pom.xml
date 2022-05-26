@@ -16,6 +16,7 @@
         <relativePath/>
     </parent>
 
+    <name>superpom-mesakit</name>
     <groupId>com.telenav.mesakit</groupId>
     <artifactId>superpom</artifactId>
     <version>0.9.13</version>
