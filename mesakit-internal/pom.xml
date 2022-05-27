@@ -17,6 +17,8 @@
 
     <modules>
         <module>mesakit-map-measurements-unit-tests</module>
+        <module>mesakit-map-geography-unit-tests</module>
+        <module>mesakit-map-region-unit-tests</module>
     </modules>
 
 </project>

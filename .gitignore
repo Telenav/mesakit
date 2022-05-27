@@ -18,3 +18,5 @@
 **/dependency-reduced-pom.xml
 setup.properties
 /mesakit-internal/mesakit-map-measurements-unit-tests/nbproject/
+/mesakit-internal/mesakit-map-geography-unit-tests/nbproject/
+/mesakit-internal/mesakit-map-region-unit-tests/nbproject/

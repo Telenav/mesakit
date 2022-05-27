@@ -31,6 +31,8 @@
         <module>ui</module>
         <module>mesakit-map-shapefilereader</module>
         <module>measurements-test</module>
+        <module>mesakit-map-geography-test</module>
+        <module>mesakit-map-region-test</module>
     </modules>
 
 </project>

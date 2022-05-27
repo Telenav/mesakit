@@ -5,6 +5,7 @@
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map</artifactId>
         <version>0.9.13</version>
+        <relativePath>../../mesakit-map/pom.xml</relativePath>
     </parent>
     <artifactId>mesakit-map-measurements-test</artifactId>
     <dependencies>

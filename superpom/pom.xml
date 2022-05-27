@@ -120,6 +120,21 @@
             </dependency>
             <dependency>
                 <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-map-measurements-test</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-map-geography-test</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-map-region-test</artifactId>
+                <version>${mesakit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
                 <artifactId>mesakit-navigation-routing</artifactId>
                 <version>${mesakit.version}</version>
             </dependency>

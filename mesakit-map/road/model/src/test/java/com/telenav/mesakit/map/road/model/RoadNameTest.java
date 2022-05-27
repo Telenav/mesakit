@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.mesakit.map.geography.GeographyUnitTest;
+import com.telenav.mesakit.map.geography.test.GeographyUnitTest;
 import com.telenav.mesakit.map.measurements.geographic.Direction;
 import org.junit.Test;
 

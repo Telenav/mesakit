@@ -19,10 +19,10 @@
 package com.telenav.mesakit.map.road.name.standardizer;
 
 import com.telenav.kivakit.resource.Resource;
-import com.telenav.mesakit.map.region.RegionUnitTest;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.ParsedRoadName;
+import com.telenav.mesakit.mesakit.map.region.test.RegionUnitTest;
 import org.junit.Ignore;
 
 import java.util.ArrayList;
