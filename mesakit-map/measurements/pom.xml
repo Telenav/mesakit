@@ -34,26 +34,31 @@
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-serialization-kryo</artifactId>
         </dependency>
+
+        <!-- Testing -->
+
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-kryo-tests</artifactId>
+            <artifactId>kivakit-testing</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-test-internal</artifactId>
+            <artifactId>kivakit-serialization-kryo</artifactId>
+            <version>${kivakit.version}</version>
+            <type>test-jar</type>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
-                <!-- So we don't have to move MeasurementsnitTest to allo
-                     tests in other packages to subclass it. GeographyUnitTest
-                     does, and then that is used in road and ui.
-                -->
+                <!-- Export MeasurementsUnitTest for use by tests in other projects -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -64,4 +69,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

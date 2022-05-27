@@ -139,7 +139,7 @@ public abstract class PbfEntity<T extends Entity> implements Stringable, Iterabl
 
     public Count tagValueAsCount(String key)
     {
-        return Count.parseCount(Listener.console(), tagValue(key));
+        return Count.parseCount(Listener.consoleListener(), tagValue(key));
     }
 
     public int tagValueAsInt(String key)

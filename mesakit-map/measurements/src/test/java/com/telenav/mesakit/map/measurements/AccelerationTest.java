@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.measurements;
 
-import com.telenav.kivakit.internal.test.support.CoreUnitTest;
+import com.telenav.kivakit.internal.testing.CoreUnitTest;
 import com.telenav.mesakit.map.measurements.motion.Acceleration;
 import org.junit.Test;
 

@@ -21,13 +21,13 @@ package com.telenav.mesakit.navigation.routing;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
-import com.telenav.kivakit.core.test.SlowTest;
+import com.telenav.kivakit.testing.SlowTest;
 
 import com.telenav.kivakit.core.value.level.Weight;
 
+import com.telenav.mesakit.graph.GraphUnitTest;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
-import com.telenav.mesakit.graph.GraphUnitTest;
 import com.telenav.mesakit.map.measurements.motion.Speed;
 import com.telenav.mesakit.navigation.routing.cost.CostFunction;
 import com.telenav.mesakit.navigation.routing.cost.functions.TravelTimeCostFunction;

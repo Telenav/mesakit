@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.metadata;
 import com.telenav.kivakit.core.string.Paths;
 import com.telenav.kivakit.core.time.LocalTime;
 import com.telenav.kivakit.core.time.TimeZones;
-import com.telenav.kivakit.test.UnitTest;
+import com.telenav.kivakit.testing.UnitTest;
 import org.junit.Test;
 
 public class DataBuildTest extends UnitTest

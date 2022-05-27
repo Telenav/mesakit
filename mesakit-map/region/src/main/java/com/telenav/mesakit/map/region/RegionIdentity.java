@@ -40,7 +40,6 @@ import com.telenav.mesakit.map.region.regions.County;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
 import com.telenav.mesakit.map.region.regions.TimeZone;
-import org.junit.Before;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
@@ -436,7 +435,6 @@ public class RegionIdentity implements Stringable, KryoSerializable
         return State.forIdentity(this);
     }
 
-    @Before
     public void testSetup()
     {
         resolveProject(RegionProject.class).initialize();

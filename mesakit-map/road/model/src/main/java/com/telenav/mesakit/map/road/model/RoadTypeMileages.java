@@ -28,6 +28,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import static com.telenav.kivakit.core.value.level.Percent.percent;
+
 public class RoadTypeMileages
 {
     private final Map<RoadType, Distance> roadTypeMileages = new HashMap<>();
@@ -66,7 +68,7 @@ public class RoadTypeMileages
         else
         {
             var mileage = mileage(roadType);
-            return Percent.of(mileage.asMeters() * 100 / mileages().asMeters());
+            return percent(mileage.asMeters() * 100 / mileages().asMeters());
         }
     }
 
@@ -96,7 +98,7 @@ public class RoadTypeMileages
             builder.append("\t");
             builder.append(mileages);
             builder.append("\t");
-            builder.append(Percent.of(mileages.asMiles() * 100.0 / mileages().asMiles()));
+            builder.append(percent(mileages.asMiles() * 100.0 / mileages().asMiles()));
             builder.append("\n");
         }
 

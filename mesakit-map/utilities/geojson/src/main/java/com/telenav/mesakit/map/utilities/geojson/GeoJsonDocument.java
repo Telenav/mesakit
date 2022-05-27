@@ -21,7 +21,6 @@ package com.telenav.mesakit.map.utilities.geojson;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.telenav.kivakit.core.collections.map.StringToStringMap;
-import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.resource.writing.WritableResource;
@@ -41,10 +40,12 @@ import java.util.List;
 import java.util.Map;
 
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.messaging.Listener.consoleListener;
 
 public class GeoJsonDocument implements Iterable<GeoJsonFeature>
 {
-    public static Extension EXTENSION = Extension.parseExtension(Listener.console(), ".geojson");
+    @SuppressWarnings("SpellCheckingInspection")
+    public static Extension EXTENSION = Extension.parseExtension(consoleListener(), ".geojson");
 
     public static GeoJsonDocument forJson(String json)
     {

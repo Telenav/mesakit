@@ -454,7 +454,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
  * @see Speed
  * @see Angle
  */
-@SuppressWarnings("DuplicatedCode")
+@SuppressWarnings({ "DuplicatedCode", "SpellCheckingInspection" })
 public abstract class Edge extends GraphElement implements Bounded, Intersectable, Road, LocationSequence
 {
     /**
@@ -1000,6 +1000,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @return True if the road has the same standardized root name as the given edge. For example, "Main St" and "Main
      * Street NE" would match.
      */
+    @SuppressWarnings("SpellCheckingInspection")
     public boolean hasSameStandardizedBaseNameAs(Edge that)
     {
         var thisName = roadName();
@@ -2701,7 +2702,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
         return new CommonEntityData(
                 wayIdentifier().asLong(),
                 pbfRevisionNumber().asInt(),
-                new Timestamp(lastModificationTime().asMilliseconds()),
+                new Timestamp(lastModificationTime().milliseconds()),
                 new OsmUser(pbfUserIdentifier().asInt(), pbfUserName().name()),
                 pbfChangeSetIdentifier().asLong(),
                 tagList().asList());

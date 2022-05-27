@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.metadata;
 
-import com.telenav.kivakit.test.UnitTest;
+import com.telenav.kivakit.testing.UnitTest;
 import org.junit.Test;
 
 public class DataSpecificationTest extends UnitTest

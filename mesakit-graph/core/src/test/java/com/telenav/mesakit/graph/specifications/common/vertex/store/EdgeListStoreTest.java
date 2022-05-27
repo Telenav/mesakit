@@ -19,6 +19,7 @@
 package com.telenav.mesakit.graph.specifications.common.vertex.store;
 
 import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.internal.testing.Repeats;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.mesakit.graph.GraphUnitTest;
 import com.telenav.mesakit.graph.Metadata;

@@ -36,7 +36,7 @@ public class TimestampExtractor extends BaseExtractor<Time, PbfEntity<?>>
         var time = way.timestamp().getTime();
         if (time > 0)
         {
-            return Time.milliseconds(time);
+            return Time.epochMilliseconds(time);
         }
         return null;
     }

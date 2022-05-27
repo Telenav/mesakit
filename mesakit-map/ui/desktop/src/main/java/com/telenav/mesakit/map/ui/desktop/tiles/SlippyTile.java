@@ -35,6 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.messaging.Listener.consoleListener;
 import static com.telenav.mesakit.map.ui.desktop.theme.MapStyles.GRID_LABEL;
 
 /**
@@ -111,7 +112,7 @@ public class SlippyTile
 
     public FileName asFileName()
     {
-        return FileName.parseFileName(Listener.console(), x + "-" + y + "-" + zoom.level() + ".png");
+        return FileName.parseFileName(consoleListener(), x + "-" + y + "-" + zoom.level() + ".png");
     }
 
     /**

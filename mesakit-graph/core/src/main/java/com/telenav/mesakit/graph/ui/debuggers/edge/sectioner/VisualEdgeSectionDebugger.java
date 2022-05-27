@@ -31,6 +31,8 @@ import com.telenav.mesakit.map.ui.desktop.viewer.DrawableIdentifier;
 import com.telenav.mesakit.map.ui.desktop.viewer.InteractiveView;
 import com.telenav.mesakit.map.ui.desktop.viewer.empty.NullInteractiveView;
 
+import static com.telenav.kivakit.core.value.level.Percent.percent;
+
 /**
  * @author jonathanl (shibo)
  */
@@ -76,7 +78,7 @@ public class VisualEdgeSectionDebugger implements EdgeSectionerDebugger
             var identifier = section.edge().identifier();
             debugView.update(new DrawableIdentifier(identifier),
                     new DrawablePolyline(section.shape(), rainbow.next(), "Edge " + identifier));
-            debugView.zoomToContents(Percent.of(10));
+            debugView.zoomToContents(percent(10));
             debugView.frameComplete();
         }
     }

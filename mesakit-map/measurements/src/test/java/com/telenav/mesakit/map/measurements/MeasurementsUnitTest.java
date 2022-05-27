@@ -18,12 +18,10 @@
 
 package com.telenav.mesakit.map.measurements;
 
+import com.telenav.kivakit.serialization.kryo.KryoUnitTest;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
-import com.telenav.kivakit.kryo.test.KryoUnitTest;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
-import com.telenav.mesakit.map.measurements.MeasurementsKryoTypes;
-import com.telenav.mesakit.map.measurements.MeasurementsRandomValueFactory;
 
 /**
  * Unit test for classes that involve map measurements

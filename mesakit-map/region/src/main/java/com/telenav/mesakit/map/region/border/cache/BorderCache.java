@@ -22,7 +22,6 @@ import com.telenav.kivakit.collections.map.MultiMap;
 import com.telenav.kivakit.component.BaseComponent;
 import com.telenav.kivakit.core.io.IO;
 import com.telenav.kivakit.core.language.Objects;
-import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.string.AsciiArt;
@@ -97,6 +96,7 @@ import java.util.Set;
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.ensure.Ensure.ensureEqual;
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.messaging.Listener.consoleListener;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
@@ -120,6 +120,7 @@ import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcess
  * @see RegionType
  * @see RegionInstance
  */
+@SuppressWarnings("SpellCheckingInspection")
 @UmlClassDiagram(diagram = DiagramBorder.class)
 @UmlRelation(label = "loads borders for", referent = Region.class)
 public abstract class BorderCache<T extends Region<T>> extends BaseComponent
@@ -130,9 +131,9 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
     /**
      * Border data path on mesakit.org
      */
-    private static final NetworkPath NETWORK_PATH = Host.parseHost(Listener.console(), "www.mesakit.org")
+    private static final NetworkPath NETWORK_PATH = Host.parseHost(consoleListener(), "www.mesakit.org")
             .https()
-            .path(Listener.console(), Strings.format("/data/$/administrative-borders-$.jar",
+            .path(consoleListener(), Strings.format("/data/$/administrative-borders-$.jar",
                     resolveProject(RegionProject.class).borderDataVersion(),
                     resolveProject(RegionProject.class).borderDataVersion()));
 

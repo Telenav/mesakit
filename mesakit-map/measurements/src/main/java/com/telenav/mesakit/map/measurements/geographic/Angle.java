@@ -39,7 +39,6 @@ import java.io.Serializable;
 import java.util.regex.Pattern;
 
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
-import com.telenav.kivakit.core.value.count.Countable;
 import com.telenav.kivakit.interfaces.numeric.QuantumComparable;
 
 /**
@@ -219,7 +218,7 @@ public class Angle implements
     public static class Converter extends BaseStringConverter<Angle>
     {
         /** Pattern to match strings */
-        private static final Pattern PATTERN = Pattern.compile("([0-9]+([.,][0-9]+)?)\\s+(degree)s?",
+        private static final Pattern PATTERN = Pattern.compile("(\\d+([.,]\\d+)?)\\s+(degree)s?",
                 Pattern.CASE_INSENSITIVE);
 
         public Converter(Listener listener)

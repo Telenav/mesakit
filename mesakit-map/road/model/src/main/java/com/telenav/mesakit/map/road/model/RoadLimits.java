@@ -21,13 +21,15 @@ package com.telenav.mesakit.map.road.model;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.messaging.Listener;
 
+import static com.telenav.kivakit.core.messaging.Listener.consoleListener;
+
 public class RoadLimits
 {
-    public static final Maximum WORDS_PER_ROAD_NAME = Maximum.parseMaximum(Listener.console(), "50");
+    public static final Maximum WORDS_PER_ROAD_NAME = Maximum.parseMaximum(consoleListener(), "50");
 
-    public static final Maximum ROAD_NAMES = Maximum.parseMaximum(Listener.console(), "20,000,000");
+    public static final Maximum ROAD_NAMES = Maximum.parseMaximum(consoleListener(), "20,000,000");
 
-    public static final Maximum SHIELD_ICONS = Maximum.parseMaximum(Listener.console(), "20,000");
+    public static final Maximum SHIELD_ICONS = Maximum.parseMaximum(consoleListener(), "20,000");
 
-    public static final Maximum EXIT_NUMBERS = Maximum.parseMaximum(Listener.console(), "20,000");
+    public static final Maximum EXIT_NUMBERS = Maximum.parseMaximum(consoleListener(), "20,000");
 }

@@ -13,7 +13,7 @@
         <groupId>com.telenav.kivakit</groupId>
         <artifactId>superpom</artifactId>
         <version>1.5.1-SNAPSHOT</version>
-        <relativePath/>
+        <relativePath>../../kivakit/superpom</relativePath>
     </parent>
 
     <name>superpom-mesakit</name>
@@ -266,4 +266,3 @@
     </build>
 
 </project>
-

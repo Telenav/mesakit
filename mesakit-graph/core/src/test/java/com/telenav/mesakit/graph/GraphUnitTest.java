@@ -20,7 +20,6 @@ package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.value.count.Estimate;
@@ -52,6 +51,7 @@ import com.telenav.mesakit.map.overpass.OverpassDataDownloader;
 import com.telenav.mesakit.map.region.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Country;
 
+import static com.telenav.kivakit.core.messaging.Listener.emptyListener;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.resource.Extension.*;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
@@ -142,7 +142,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
 
         var store = Settings.of(this);
         LOGGER.listenTo(store);
-        store.registerSettingsIn(new ResourceFolderSettingsStore(this, Folder.parse(this, "configuration")));
+        store.registerSettingsIn(new ResourceFolderSettingsStore(this, Folder.parseFolder(this, "configuration")));
     }
 
     protected Edge edge(Graph graph, double fromLatitude, double fromLongitude,
@@ -370,7 +370,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
         }
         else
         {
-            return new GraphArchive(LOGGER, graphFile, READ, ProgressReporter.none()).load(Listener.none());
+            return new GraphArchive(LOGGER, graphFile, READ, ProgressReporter.none()).load(emptyListener());
         }
         return null;
     }

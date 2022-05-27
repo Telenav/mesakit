@@ -26,6 +26,7 @@ import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 import org.junit.Test;
 
+import static com.telenav.kivakit.core.messaging.Listener.emptyListener;
 import static com.telenav.mesakit.graph.metadata.DataSupplier.OSM;
 import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
 
@@ -37,7 +38,7 @@ public class VertexStoreTest extends GraphUnitTest
         // Create graph
         var specification = OsmDataSpecification.get();
         var graph = specification.newGraph(Metadata.osm(OSM, PBF));
-        graph.addListener(Listener.none());
+        graph.addListener(emptyListener());
 
         // and get vertex vertexStore
         var edgeStore = graph.edgeStore();

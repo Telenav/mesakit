@@ -13,7 +13,6 @@ open module mesakit.map.region
     requires transitive kivakit.primitive.collections;
 
     requires kryo;
-    requires junit;
 
     exports com.telenav.mesakit.map.region;
     exports com.telenav.mesakit.map.region.regions;

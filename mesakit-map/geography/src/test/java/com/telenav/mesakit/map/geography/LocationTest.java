@@ -80,11 +80,11 @@ public class LocationTest extends GeographyUnitTest
             var cosines = from.lawOfCosinesDistanceTo(to);
             var rectangular = from.equirectangularDistanceTo(to);
             ensure(haversine.difference(cosines).isLessThan(Distance.meters(1)));
-            if (haversine.difference(rectangular).percentageOf(haversine).isGreaterThan(Percent.of(3)))
+            if (haversine.difference(rectangular).percentageOf(haversine).isGreaterThan(Percent.percent(3)))
             {
                 fail("The distance between " + from + " and " + to + " is " + haversine.asMeters() + " meters by haversine and " + rectangular.asMeters() + " meters by equirectangular");
             }
-            if (cosines.difference(rectangular).percentageOf(haversine).isGreaterThan(Percent.of(3)))
+            if (cosines.difference(rectangular).percentageOf(haversine).isGreaterThan(Percent.percent(3)))
             {
                 fail("The distance between " + from + " and " + to + " is " + haversine.asMeters() + " meters by cosines and " + rectangular.asMeters() + " meters by equirectangular");
             }

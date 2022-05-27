@@ -1,6 +1,5 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
-import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
@@ -11,7 +10,7 @@ import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelCompression;
 import org.jetbrains.annotations.NotNull;
 
-import static com.telenav.kivakit.core.messaging.Listener.throwing;
+import static com.telenav.kivakit.core.messaging.Listener.throwingListener;
 import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
 
 /**
@@ -45,7 +44,7 @@ public class PbfDefaultCodecs
     @UmlRelation(label = "provides", referentCardinality = "2")
     public HuffmanCharacterCodec defaultKeyCharacterCodec()
     {
-        return HuffmanCharacterCodec.from(Listener.throwing(), keyCharacterCodecFrequencies(), ESCAPE);
+        return HuffmanCharacterCodec.from(throwingListener(), keyCharacterCodecFrequencies(), ESCAPE);
     }
 
     @NotNull
@@ -58,7 +57,7 @@ public class PbfDefaultCodecs
     @NotNull
     public HuffmanCharacterCodec defaultValueCharacterCodec()
     {
-        return HuffmanCharacterCodec.from(Listener.throwing(), valueCharacterCodecFrequencies(), ESCAPE);
+        return HuffmanCharacterCodec.from(throwingListener(), valueCharacterCodecFrequencies(), ESCAPE);
     }
 
     @NotNull
@@ -94,6 +93,6 @@ public class PbfDefaultCodecs
 
     private PropertyMap load(String codec)
     {
-        return PropertyMap.load(throwing(), Package.packageContaining(throwing(), PbfDefaultCodecs.class), codec);
+        return PropertyMap.load(throwingListener(), Package.packageContaining(throwingListener(), PbfDefaultCodecs.class), codec);
     }
 }

@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.map.region;
 
-import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.project.Project;
 import com.telenav.kivakit.core.project.ProjectTrait;
 import com.telenav.kivakit.core.version.Version;
@@ -30,6 +29,8 @@ import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.map.geography.GeographyKryoTypes;
 import com.telenav.mesakit.map.measurements.MeasurementsKryoTypes;
 
+import static com.telenav.kivakit.core.messaging.Listener.throwingListener;
+
 /**
  * This class defines a KivaKit {@link Project}. It cannot be constructed with the new operator since it has a private
  * constructor. To access the singleton instance of this class, call {@link Project#resolveProject(Class)}, or use
@@ -37,7 +38,7 @@ import com.telenav.mesakit.map.measurements.MeasurementsKryoTypes;
  *
  * @author jonathanl (shibo)
  */
-public class RegionProject extends Project
+@SuppressWarnings("SpellCheckingInspection") public class RegionProject extends Project
 {
     public RegionProject()
     {
@@ -53,7 +54,7 @@ public class RegionProject extends Project
      */
     public Version borderDataVersion()
     {
-        return Version.parseVersion(Listener.throwing(), "0.9.1");
+        return Version.parseVersion(throwingListener(), "0.9.1");
     }
 
     /**

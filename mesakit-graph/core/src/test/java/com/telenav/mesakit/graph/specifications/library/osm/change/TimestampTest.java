@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.library.osm.change;
 
-import com.telenav.kivakit.test.UnitTest;
+import com.telenav.kivakit.testing.UnitTest;
 import com.telenav.mesakit.graph.library.osm.change.PbfTimestamp;
 import org.junit.Test;
 

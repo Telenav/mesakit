@@ -82,7 +82,7 @@ public class PlaceExtractor extends BaseExtractor<Place, PbfEntity<?>>
             var time = entity.timestamp().getTime();
             if (time > 0)
             {
-                place.lastModificationTime(Time.milliseconds(time));
+                place.lastModificationTime(Time.epochMilliseconds(time));
             }
             var map = entity.tagMap();
             var name = name(map);

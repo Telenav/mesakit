@@ -86,6 +86,6 @@ public class GraphProject extends Project
     public Folder userGraphFolder()
     {
         var graphFolder = systemProperty("MESAKIT_USER_GRAPH_FOLDER");
-        return graphFolder == null ? Folder.desktop() : Folder.parse(this, graphFolder);
+        return graphFolder == null ? Folder.desktop() : Folder.parseFolder(this, graphFolder);
     }
 }

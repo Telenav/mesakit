@@ -41,12 +41,40 @@
             <artifactId>mesakit-map-geography</artifactId>
         </dependency>
 
+        <!-- Test -->
+
+        <!-- Testing -->
+
         <dependency>
-            <!-- To pull in MeasurementUnitTest, which GeographyUnitTest extends -->
+            <groupId>com.telenav.kivakit</groupId>
+            <artifactId>kivakit-internal-testing</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.telenav.kivakit</groupId>
+            <artifactId>kivakit-testing</artifactId>
+            <version>${kivakit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.telenav.kivakit</groupId>
+            <artifactId>kivakit-serialization-kryo</artifactId>
+            <version>${kivakit.version}</version>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-map-measurements</artifactId>
-            <type>test-jar</type>
             <version>${project.version}</version>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.telenav.mesakit</groupId>
+            <artifactId>mesakit-map-geography</artifactId>
+            <version>${project.version}</version>
+            <type>test-jar</type>
             <scope>test</scope>
         </dependency>
 

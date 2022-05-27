@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.library;
 
-import com.telenav.kivakit.core.test.RandomValueFactory;
+import com.telenav.kivakit.internal.testing.RandomValueFactory;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.mesakit.graph.GraphUnitTest;
 import com.telenav.mesakit.graph.specifications.library.pbf.IntersectionMap;

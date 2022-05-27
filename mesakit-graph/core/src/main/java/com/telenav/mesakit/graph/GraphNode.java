@@ -68,7 +68,7 @@ public abstract class GraphNode extends GraphElement implements Located
         return new CommonEntityData(
                 mapIdentifier().asLong(),
                 pbfRevisionNumber().asInt(),
-                new Timestamp(lastModificationTime().asMilliseconds()),
+                new Timestamp(lastModificationTime().milliseconds()),
                 new OsmUser(pbfUserIdentifier().asInt(), pbfUserName().name()),
                 pbfChangeSetIdentifier().asLong(),
                 tagList().asList());

@@ -20,7 +20,6 @@ package com.telenav.mesakit.map.region.border.cache;
 
 import com.esotericsoftware.kryo.io.Output;
 import com.telenav.kivakit.core.io.IO;
-import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.mesakit.map.region.RegionIdentifier;
 import com.telenav.mesakit.map.region.RegionIdentity;
@@ -34,6 +33,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.telenav.kivakit.core.messaging.Listener.emptyListener;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE;
 
@@ -46,7 +46,7 @@ public class RegionIdentityCacheTest extends RegionUnitTest
         RegionIdentityCache<State> cache = listenTo(new RegionIdentityCache<>(State.class));
 
         // Create kryo output to memory
-        var session = sessionFactory().newSession(Listener.none());
+        var session = sessionFactory().newSession(emptyListener());
         var data = new ByteArrayOutputStream(20_000);
         var output = new Output(data);
 
@@ -80,6 +80,7 @@ public class RegionIdentityCacheTest extends RegionUnitTest
         return identities;
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
     private RegionIdentity identity(String name, String iso, String mesakit)
     {
         return new RegionIdentity(name)

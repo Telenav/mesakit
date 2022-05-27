@@ -19,10 +19,14 @@
 package com.telenav.mesakit.graph.metadata;
 
 import com.telenav.kivakit.core.time.LocalTime;
-import com.telenav.kivakit.test.UnitTest;
+import com.telenav.kivakit.core.time.Quarter;
+import com.telenav.kivakit.core.time.Year;
+import com.telenav.kivakit.testing.UnitTest;
 import org.junit.Test;
 
 import java.util.stream.IntStream;
+
+import static com.telenav.kivakit.core.time.Year.year;
 
 public class DataVersionTest extends UnitTest
 {
@@ -34,7 +38,7 @@ public class DataVersionTest extends UnitTest
 
         IntStream.range(1, 4).forEachOrdered(n ->
         {
-            var adjustedDataVersion = dataVersion.withQuarter(n);
+            var adjustedDataVersion = dataVersion.withQuarter(Quarter.calendarQuarter(n));
 
             ensureEqual("2020Q" + n,
                     adjustedDataVersion.toString());
@@ -47,7 +51,7 @@ public class DataVersionTest extends UnitTest
         final String version = "2020Q1";
         var dataVersion = DataVersion.parse(version);
 
-        var adjustedDataVersion = dataVersion.withYear(2021);
+        var adjustedDataVersion = dataVersion.withYear(year(2021));
 
         ensureEqual("2021Q1", adjustedDataVersion.toString());
     }
@@ -56,7 +60,7 @@ public class DataVersionTest extends UnitTest
     public void testConstructDataVersionFromLocalTime()
     {
         var time = LocalTime.now();
-        var expectedVersion = time.year() + "Q" + time.quarter();
+        var expectedVersion = time.year() + "Q" + time.calendarQuarter();
 
         var dataVersion = new DataVersion(time);
 

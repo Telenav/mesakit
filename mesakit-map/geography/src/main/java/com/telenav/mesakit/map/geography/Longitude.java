@@ -30,6 +30,7 @@ import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 import java.util.regex.Pattern;
 
+import static com.telenav.kivakit.core.value.count.Range.rangeInclusive;
 import static com.telenav.mesakit.map.geography.Precision.DM7;
 
 /**
@@ -37,7 +38,7 @@ import static com.telenav.mesakit.map.geography.Precision.DM7;
  *
  * @author jonathanl (shibo)
  */
-@UmlClassDiagram(diagram = DiagramLocation.class)
+@SuppressWarnings("SpellCheckingInspection") @UmlClassDiagram(diagram = DiagramLocation.class)
 public final class Longitude extends Angle
 {
     public static final Range<Angle> RANGE;
@@ -60,7 +61,7 @@ public final class Longitude extends Angle
     {
         MAXIMUM = nanodegrees(MAXIMUM_NANODEGREES);
         MINIMUM = nanodegrees(MINIMUM_NANODEGREES);
-        RANGE = Range.inclusive(MINIMUM, MAXIMUM);
+        RANGE = rangeInclusive(MINIMUM, MAXIMUM);
     }
 
     public static Longitude angle(Angle angle)
@@ -170,6 +171,7 @@ public final class Longitude extends Angle
         }
     }
 
+    @SuppressWarnings("unused")
     private Longitude()
     {
     }

@@ -65,6 +65,7 @@ import java.awt.event.MouseWheelListener;
 import java.awt.geom.Point2D;
 import java.util.function.Function;
 
+import static com.telenav.kivakit.core.value.level.Percent.percent;
 import static com.telenav.kivakit.interfaces.string.Stringable.Format.USER_LABEL;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle.pixels;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle.rectangle;
@@ -100,7 +101,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     private Location cursorAt;
 
     /** Delay between frames when running */
-    private Duration delay = Duration.NONE;
+    private Duration delay = Duration.ZERO_DURATION;
 
     /** The point where dragging started when zooming or panning */
     private DrawingPoint dragStart;
@@ -199,7 +200,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
                         break;
 
                     case 'f':
-                        zoomToContents(Percent.of(5));
+                        zoomToContents(percent(5));
                         break;
 
                     case '+':
@@ -242,7 +243,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     public void add(MapDrawable drawable)
     {
         viewModel.add(drawable);
-        zoomToContents(Percent.of(5));
+        zoomToContents(percent(5));
         requestRedraw();
     }
 
@@ -467,6 +468,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
      * {@inheritDoc}
      */
     @Override
+    @SuppressWarnings("SpellCheckingInspection")
     public synchronized void paint(Graphics uncast)
     {
         var graphics = (Graphics2D) uncast;
@@ -715,7 +717,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
 
     private void slowDown()
     {
-        delay = delay.longer(Percent.of(25));
+        delay = delay.longerBy(percent(25));
         if (delay.isLessThan(Duration.seconds(0.01)))
         {
             delay = Duration.seconds(0.01);
@@ -724,7 +726,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
 
     private void speedUp()
     {
-        delay = delay.shorter(Percent.of(25));
+        delay = delay.shorterBy(percent(25));
     }
 
     /**

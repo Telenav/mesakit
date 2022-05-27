@@ -18,6 +18,8 @@
 
 package com.telenav.mesakit.map.geography.shape.polyline;
 
+import com.google.maps.internal.PolylineEncoding;
+import com.google.maps.model.LatLng;
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.iteration.BaseIterator;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
@@ -55,8 +57,6 @@ import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
-import io.leonard.PolylineUtils;
-import io.leonard.Position;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.ref.SoftReference;
@@ -137,11 +137,11 @@ public class Polyline implements
 
     public static Polyline fromGoogleMapsEncoded(String text)
     {
-        var line = PolylineUtils.decode(text, 7);
+        var line = PolylineEncoding.decode(text);
         var builder = new PolylineBuilder();
         for (var at : line)
         {
-            builder.add(at.getLatitude(), at.getLongitude());
+            builder.add(at.lat, at.lng);
         }
         return builder.build();
     }
@@ -604,12 +604,12 @@ public class Polyline implements
 
     public String asGoogleMapsEncoded()
     {
-        var positions = new ArrayList<Position>();
+        var positions = new ArrayList<LatLng>();
         for (var at : locations())
         {
-            positions.add(Position.fromLngLat(at.longitudeInDegrees(), at.latitudeInDegrees()));
+            positions.add(new LatLng(at.longitudeInDegrees(), at.latitudeInDegrees()));
         }
-        return PolylineUtils.encode(positions, 7);
+        return PolylineEncoding.encode(positions);
     }
 
     @Override
