@@ -47,17 +47,12 @@
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-collections</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-serialization-kryo</artifactId>
-        </dependency>
 
         <!-- MesaKit -->
 
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-map-measurements</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <!-- Test -->
@@ -75,9 +70,7 @@
         </dependency>
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-serialization-kryo</artifactId>
-            <version>${kivakit.version}</version>
-            <type>test-jar</type>
+            <artifactId>kivakit-serialization-kryo-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -85,6 +78,7 @@
             <artifactId>mesakit-map-measurements</artifactId>
             <version>${project.version}</version>
             <type>test-jar</type>
+            <classifier>tests</classifier>
             <scope>test</scope>
         </dependency>
 
@@ -96,8 +90,6 @@
             <groupId>org.nocrala</groupId>
             <artifactId>shapefilereader</artifactId>
             <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libraries/shapefilereader-1.0.jar</systemPath>
         </dependency>
 
         <!-- Google Maps polyline codec -->
@@ -115,6 +107,12 @@
         </dependency>
 
     </dependencies>
+    <repositories>
+        <repository>
+            <id>localfiles</id>
+            <url>file:///${project.basedir}/fake-repo</url>
+        </repository>
+    </repositories>
     <build>
         <plugins>
             <plugin>
