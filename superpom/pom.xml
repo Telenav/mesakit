@@ -135,6 +135,18 @@
             </dependency>
             <dependency>
                 <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-graph-world-test</artifactId>
+                <version>${mesakit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
+                <artifactId>mesakit-graph-core-test</artifactId>
+                <version>${mesakit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.telenav.mesakit</groupId>
                 <artifactId>mesakit-navigation-routing</artifactId>
                 <version>${mesakit.version}</version>
             </dependency>

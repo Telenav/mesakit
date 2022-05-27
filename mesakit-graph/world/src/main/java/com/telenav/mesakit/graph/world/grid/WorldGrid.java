@@ -334,7 +334,7 @@ public class WorldGrid
             output.add(feature);
         }
 
-        output.save(File.parseFile(Listener.console(), "data/world-graph-2-degree-cells.geojson"));
+        output.save(File.parseFile(Listener.consoleListener(), "data/world-graph-2-degree-cells.geojson"));
     }
 
     /**
@@ -481,7 +481,7 @@ public class WorldGrid
         {
             var cached = regionCache().file(region.fileName()
                     .withSuffix("-" + Math.round(grid.approximateCellSize().asDegrees()) + "-degree-grid")
-                    .withExtension(parseExtension(Listener.console(), ".cells")));
+                    .withExtension(parseExtension(Listener.consoleListener(), ".cells")));
             if (cached.exists())
             {
                 var cellNames = cached.reader().asString();

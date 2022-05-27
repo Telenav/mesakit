@@ -401,7 +401,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
                 DEBUG.trace("Loading graph for $", name());
                 @SuppressWarnings(
                         "resource") var archive = new GraphArchive(LOGGER, cellGraphFile(), READ, ProgressReporter.none());
-                var graph = archive.load(DEBUG.isDebugOn() ? DEBUG.listener() : Listener.none());
+                var graph = archive.load(DEBUG.isDebugOn() ? DEBUG.listener() : Listener.emptyListener());
                 if (graph == null)
                 {
                     LOGGER.warning("Unable to load graph for $", name());

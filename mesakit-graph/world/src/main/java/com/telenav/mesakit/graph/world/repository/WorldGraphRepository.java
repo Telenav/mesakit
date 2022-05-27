@@ -127,7 +127,7 @@ public class WorldGraphRepository extends Folder implements Serializable
 
     public WorldGraphRepositoryFolder temporaryFolder()
     {
-        return temporaryFolder(null);
+        return temporaryFolder((FilePath) null);
     }
 
     /**

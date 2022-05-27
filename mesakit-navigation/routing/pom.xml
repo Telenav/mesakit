@@ -29,8 +29,17 @@
         </dependency>
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
-            <artifactId>mesakit-map-geography</artifactId>
-            <type>test-jar</type>
+            <artifactId>mesakit-graph-core-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.telenav.mesakit</groupId>
+            <artifactId>mesakit-graph-world-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.telenav.mesakit</groupId>
+            <artifactId>mesakit-map-geography-test</artifactId>
             <scope>test</scope>
         </dependency>
 
