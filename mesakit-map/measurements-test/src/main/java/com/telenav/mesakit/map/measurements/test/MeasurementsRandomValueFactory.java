@@ -16,7 +16,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.map.measurements;
+package com.telenav.mesakit.map.measurements.test;
 
 import com.telenav.kivakit.internal.testing.RandomValueFactory;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;

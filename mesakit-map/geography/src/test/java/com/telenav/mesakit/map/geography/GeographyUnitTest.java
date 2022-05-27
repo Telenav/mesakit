@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.geography;
 import com.telenav.kivakit.core.messaging.listeners.ThrowingListener;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.measurements.MeasurementsUnitTest;
+import com.telenav.mesakit.map.measurements.test.MeasurementsUnitTest;
 
 public class GeographyUnitTest extends MeasurementsUnitTest
 {

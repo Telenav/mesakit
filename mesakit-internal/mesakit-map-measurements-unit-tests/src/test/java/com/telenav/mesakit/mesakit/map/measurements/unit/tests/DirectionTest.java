@@ -16,31 +16,20 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.map.measurements;
+package com.telenav.mesakit.mesakit.map.measurements.unit.tests;
 
-import com.telenav.kivakit.serialization.kryo.test.KryoUnitTest;
-import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
-import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
-import com.telenav.lexakai.annotations.LexakaiJavadoc;
+import com.telenav.mesakit.map.measurements.test.MeasurementsUnitTest;
+import com.telenav.mesakit.map.measurements.geographic.Direction;
+import org.junit.Test;
 
-/**
- * Unit test for classes that involve map measurements
- *
- * @author jonathanl (shibo)
- */
-@LexakaiJavadoc(complete = true)
-public class MeasurementsUnitTest extends KryoUnitTest
+public class DirectionTest extends MeasurementsUnitTest
 {
-    private static final MeasurementsRandomValueFactory factory = new MeasurementsRandomValueFactory();
-
-    @Override
-    protected KryoTypes kryoTypes()
+    @Test
+    public void testParse()
     {
-        return new CoreKryoTypes().mergedWith(new MeasurementsKryoTypes());
-    }
-
-    protected MeasurementsRandomValueFactory random()
-    {
-        return factory;
+        ensureEqual(Direction.parse("SW").toString(), "SW");
+        ensureEqual(Direction.parse("northbound").toString(), "N");
+        ensureEqual(Direction.parse("SoutheAst").toString(), "SE");
+        ensureEqual(Direction.parse("SOUTHbound").toString(), "S");
     }
 }

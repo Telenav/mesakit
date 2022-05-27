@@ -101,6 +101,7 @@
         <module>mesakit-map</module>
         <module>mesakit-graph</module>
         <module>mesakit-navigation</module>
+        <module>mesakit-internal</module>
 
     </modules>
 

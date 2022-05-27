@@ -1,6 +1,6 @@
 <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 <!--                                                                                                                 -->
-<!--  © 2011-2021 Telenav, Inc.                                                                                      -->
+<!--  © 2011-2022 Telenav, Inc.                                                                                      -->
 <!--  Licensed under Apache License, Version 2.0                                                                     -->
 <!--                                                                                                                 -->
 <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
@@ -9,28 +9,14 @@
          xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>com.telenav.mesakit</groupId>
-        <artifactId>mesakit</artifactId>
-        <version>0.9.13</version>
-    </parent>
 
-    <artifactId>mesakit-map</artifactId>
+    <groupId>com.telenav.mesakit</groupId>
+    <artifactId>mesakit-internal</artifactId>
+    <version>0.9.13</version>
     <packaging>pom</packaging>
 
     <modules>
-
-        <module>measurements</module>
-        <module>geography</module>
-        <module>data</module>
-        <module>utilities</module>
-        <module>region</module>
-        <module>road</module>
-        <module>cutter</module>
-        <module>overpass</module>
-        <module>ui</module>
-        <module>mesakit-map-shapefilereader</module>
-        <module>measurements-test</module>
+        <module>mesakit-map-measurements-unit-tests</module>
     </modules>
 
 </project>

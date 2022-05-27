@@ -65,7 +65,6 @@
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-testing</artifactId>
-            <version>${kivakit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -75,10 +74,8 @@
         </dependency>
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
-            <artifactId>mesakit-map-measurements</artifactId>
+            <artifactId>mesakit-map-measurements-test</artifactId>
             <version>${project.version}</version>
-            <type>test-jar</type>
-            <classifier>tests</classifier>
             <scope>test</scope>
         </dependency>
 

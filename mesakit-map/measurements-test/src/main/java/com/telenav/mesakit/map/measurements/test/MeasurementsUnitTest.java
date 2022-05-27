@@ -16,29 +16,32 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.map.ui.desktop.tiles;
+package com.telenav.mesakit.map.measurements.test;
 
-import com.telenav.mesakit.map.geography.test.GeographyUnitTest;
-import org.junit.Test;
+import com.telenav.kivakit.serialization.kryo.test.KryoUnitTest;
+import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
+import com.telenav.lexakai.annotations.LexakaiJavadoc;
+import com.telenav.mesakit.map.measurements.MeasurementsKryoTypes;
 
-import static com.telenav.mesakit.map.ui.desktop.tiles.SlippyTileCoordinateSystem.SLIPPY_TILE_MAP_AREA;
-
-public class SlippyTileGridTest extends GeographyUnitTest
+/**
+ * Unit test for classes that involve map measurements
+ *
+ * @author jonathanl (shibo)
+ */
+@LexakaiJavadoc(complete = true)
+public class MeasurementsUnitTest extends KryoUnitTest
 {
-    @Test
-    public void testZoomLevel0()
+    private static final MeasurementsRandomValueFactory factory = new MeasurementsRandomValueFactory();
+
+    @Override
+    protected KryoTypes kryoTypes()
     {
-        var grid = new SlippyTileGrid(this, SLIPPY_TILE_MAP_AREA, ZoomLevel.FURTHEST);
-        ensure(grid.contains(new SlippyTile(ZoomLevel.FURTHEST, 0, 0)));
+        return new CoreKryoTypes().mergedWith(new MeasurementsKryoTypes());
     }
 
-    @Test
-    public void testZoomLevels()
+    protected MeasurementsRandomValueFactory random()
     {
-        for (var zoom = ZoomLevel.FURTHEST; zoom.level() < 4; zoom = zoom.zoomIn())
-        {
-            var grid = new SlippyTileGrid(this, SLIPPY_TILE_MAP_AREA, zoom);
-            ensureEqual((int) zoom.totalTiles(), grid.size());
-        }
+        return factory;
     }
 }

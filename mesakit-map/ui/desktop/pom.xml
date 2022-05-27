@@ -60,16 +60,14 @@
         </dependency>
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-serialization-kryo</artifactId>
+            <artifactId>kivakit-serialization-kryo-test</artifactId>
             <version>${kivakit.version}</version>
-            <type>test-jar</type>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.telenav.mesakit</groupId>
-            <artifactId>mesakit-map-measurements</artifactId>
+            <artifactId>mesakit-map-measurements-test</artifactId>
             <version>${project.version}</version>
-            <type>test-jar</type>
             <scope>test</scope>
         </dependency>
         <dependency>

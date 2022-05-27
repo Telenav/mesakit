@@ -17,3 +17,4 @@
 **/*.hprof
 **/dependency-reduced-pom.xml
 setup.properties
+/mesakit-internal/mesakit-map-measurements-unit-tests/nbproject/

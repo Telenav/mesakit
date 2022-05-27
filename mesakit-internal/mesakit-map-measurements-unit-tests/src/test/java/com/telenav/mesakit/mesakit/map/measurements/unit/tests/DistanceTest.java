@@ -16,8 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.map.measurements;
+package com.telenav.mesakit.mesakit.map.measurements.unit.tests;
 
+import com.telenav.mesakit.map.measurements.test.MeasurementsUnitTest;
 import com.telenav.kivakit.core.value.level.Percent;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import org.junit.Test;

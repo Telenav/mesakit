@@ -16,19 +16,22 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.map.measurements;
+package com.telenav.mesakit.mesakit.map.measurements.unit.tests;
 
-import com.telenav.mesakit.map.measurements.geographic.Direction;
+import com.telenav.mesakit.map.measurements.test.MeasurementsUnitTest;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
+import com.telenav.mesakit.map.measurements.motion.Speed;
 import org.junit.Test;
 
-public class DirectionTest extends MeasurementsUnitTest
+public class SpeedTest extends MeasurementsUnitTest
 {
     @Test
-    public void testParse()
+    public void test()
     {
-        ensureEqual(Direction.parse("SW").toString(), "SW");
-        ensureEqual(Direction.parse("northbound").toString(), "N");
-        ensureEqual(Direction.parse("SoutheAst").toString(), "SE");
-        ensureEqual(Direction.parse("SOUTHbound").toString(), "S");
+        var miles = Distance.miles(5);
+        ensureWithin(5, miles.asMiles(), 0.001);
+
+        var speed = Speed.milesPerHour(5);
+        ensureWithin(5, speed.asMilesPerHour(), 0.001);
     }
 }
