@@ -16,6 +16,7 @@
     </parent>
 
     <artifactId>mesakit-graph-world</artifactId>
+    <version>0.9.13</version>
     <packaging>jar</packaging>
 
     <dependencies>
