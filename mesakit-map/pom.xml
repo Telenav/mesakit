@@ -29,6 +29,7 @@
         <module>cutter</module>
         <module>overpass</module>
         <module>ui</module>
+        <module>mesakit-map-shapefilereader</module>
 
     </modules>
 

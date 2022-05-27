@@ -84,11 +84,9 @@
 
         <!-- Shapefile -->
 
-        <!-- NOTE: this JAR file is from SourceForge and does not exist in any public Maven repository -->
-
         <dependency>
-            <groupId>org.nocrala</groupId>
-            <artifactId>shapefilereader</artifactId>
+            <groupId>org.telenav.mesakit</groupId>
+            <artifactId>mesakit-map-shapefilereader</artifactId>
             <version>1.0</version>
         </dependency>
 
@@ -107,12 +105,6 @@
         </dependency>
 
     </dependencies>
-    <repositories>
-        <repository>
-            <id>localfiles</id>
-            <url>file:///${project.basedir}/fake-repo</url>
-        </repository>
-    </repositories>
     <build>
         <plugins>
             <plugin>
