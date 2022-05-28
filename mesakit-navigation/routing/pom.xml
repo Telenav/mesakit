@@ -45,6 +45,11 @@
             <artifactId>mesakit-map-geography-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <!-- Utility -->
 
@@ -53,5 +58,16 @@
             <artifactId>commons-collections</artifactId>
         </dependency>
     </dependencies>
-
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <!-- Not sure why this is only a problem for these
+                         tests, but it is. -->
+                    <useModulePath>false</useModulePath>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
