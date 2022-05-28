@@ -25,7 +25,7 @@ import com.telenav.kivakit.testing.SlowTest;
 
 import com.telenav.kivakit.core.value.level.Weight;
 
-import com.telenav.mesakit.graph.GraphUnitTest;
+import com.telenav.mesakit.graph.core.test.GraphUnitTest;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.map.measurements.motion.Speed;

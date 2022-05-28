@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.navigation.routing;
 
-import com.telenav.kivakit.core.time.PreciseDuration;
+import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.value.level.Weight;
 import com.telenav.mesakit.graph.world.test.WorldGraphUnitTest;
 import com.telenav.mesakit.map.geography.Location;
@@ -44,7 +44,7 @@ public class WorldGraphRoutingTest extends WorldGraphUnitTest
         var router = new DijkstraRouter(new RemainingDistanceToEndCostFunction(from.location(), to.location())
                 .weightedSum(Weight.weight(0.75), new SpeedCostFunction()));
         RoutingRequest request = new DijkstraRoutingRequest(from, to)
-                .withLimiter(new CpuTimeRoutingLimiter(PreciseDuration.seconds(3)))
+                .withLimiter(new CpuTimeRoutingLimiter(Duration.seconds(3)))
                 .withDebugger(SWING_DEBUG ? new SwingRoutingDebugger("test routing") : RoutingDebugger.NULL);
         try
         {

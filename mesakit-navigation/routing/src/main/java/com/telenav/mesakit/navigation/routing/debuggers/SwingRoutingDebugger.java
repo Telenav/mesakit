@@ -123,7 +123,7 @@ public class SwingRoutingDebugger implements RoutingDebugger
             view = (InteractiveView) new DebugViewer().view(title);
             view.update(startLabel, new DrawableLocation(request.start().location(), theme.styleStart(), "start"));
             view.update(endLabel, new DrawableLocation(request.end().location(), theme.styleEnd(), "end"));
-            view.zoomToContents(Percent.of(5));
+            view.zoomToContents(Percent.percent(5));
             view.frameComplete();
         }
     }

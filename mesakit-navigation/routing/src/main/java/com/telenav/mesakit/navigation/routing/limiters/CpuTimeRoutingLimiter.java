@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.navigation.routing.limiters;
 
-import com.telenav.kivakit.core.time.PreciseDuration;
+import com.telenav.kivakit.core.time.Duration;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.navigation.routing.RoutingInstruction;
 import com.telenav.mesakit.navigation.routing.RoutingLimiter;
@@ -26,13 +26,13 @@ import com.telenav.mesakit.navigation.routing.StopRoutingInstruction;
 
 public class CpuTimeRoutingLimiter implements RoutingLimiter
 {
-    private final PreciseDuration maximum;
+    private final Duration maximum;
 
     private int iteration;
 
-    private final PreciseDuration start = PreciseDuration.cpuTime();
+    private final Duration start = Duration.cpuTime();
 
-    public CpuTimeRoutingLimiter(PreciseDuration maximum)
+    public CpuTimeRoutingLimiter(Duration maximum)
     {
         this.maximum = maximum;
     }
@@ -42,7 +42,7 @@ public class CpuTimeRoutingLimiter implements RoutingLimiter
     {
         if (++iteration % 100 == 0)
         {
-            var duration = PreciseDuration.cpuTime().minus(start);
+            var duration = Duration.cpuTime().minus(start);
             if (duration.isGreaterThan(maximum))
             {
                 return new StopRoutingInstruction("Exceeded $ CPU time", duration);
