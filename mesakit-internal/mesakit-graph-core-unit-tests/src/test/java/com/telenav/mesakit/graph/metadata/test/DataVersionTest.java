@@ -40,8 +40,7 @@ public class DataVersionTest extends UnitTest
         {
             var adjustedDataVersion = dataVersion.withQuarter(Quarter.calendarQuarter(n));
 
-            ensureEqual("2020Q" + n,
-                    adjustedDataVersion.toString());
+            ensureEqual("2020Q" + n, adjustedDataVersion.toString());
         });
     }
 
@@ -60,7 +59,7 @@ public class DataVersionTest extends UnitTest
     public void testConstructDataVersionFromLocalTime()
     {
         var time = LocalTime.now();
-        var expectedVersion = time.year() + "Q" + time.calendarQuarter();
+        var expectedVersion = time.year() + "" + time.calendarQuarter();
 
         var dataVersion = new DataVersion(time);
 

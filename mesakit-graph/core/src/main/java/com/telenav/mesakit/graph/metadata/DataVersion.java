@@ -136,7 +136,7 @@ public class DataVersion
     public String toString()
     {
         ensure(isValid());
-        return year + "Q" + quarter;
+        return year + "" + quarter;
     }
 
     public DataVersion withQuarter(Quarter quarter)
