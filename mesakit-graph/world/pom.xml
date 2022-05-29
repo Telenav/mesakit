@@ -20,7 +20,7 @@
         <version>1.5.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.telenav.kivakit</groupId>
+    <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit-graph-world</artifactId>
     <version>0.9.13</version>
 
