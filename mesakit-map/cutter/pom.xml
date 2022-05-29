@@ -1,42 +1,35 @@
-<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-<!--                                                                                                                 -->
-<!--  © 2011-2021 Telenav, Inc.                                                                                      -->
-<!--  Licensed under Apache License, Version 2.0                                                                     -->
-<!--                                                                                                                 -->
-<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-
-<project xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!--  -->
+<!-- © 2011-2021 Telenav, Inc. -->
+<!-- Licensed under Apache License, Version 2.0 -->
+<!--  -->
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<project
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>com.telenav.mesakit</groupId>
-        <artifactId>mesakit-map</artifactId>
+        <artifactId>mesakit</artifactId>
         <version>0.9.13</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
-
     <artifactId>mesakit-map-cutter</artifactId>
-    <version>0.9.13</version>
-    <packaging>jar</packaging>
-
     <dependencies>
-
-        <!-- MesaKit -->
-
+                <!-- MesaKit -->
         <dependency>
-            <groupId>com.telenav.mesakit</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-region</artifactId>
         </dependency>
-
         <!-- Testing -->
-
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-region-test</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
-
 </project>

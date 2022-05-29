@@ -1,57 +1,52 @@
-<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-<!--                                                                                                                 -->
-<!--  © 2011-2021 Telenav, Inc.                                                                                      -->
-<!--  Licensed under Apache License, Version 2.0                                                                     -->
-<!--                                                                                                                 -->
-<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-
-<project xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!--  -->
+<!-- © 2011-2021 Telenav, Inc. -->
+<!-- Licensed under Apache License, Version 2.0 -->
+<!--  -->
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<project
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <parent>
-        <groupId>com.telenav.mesakit</groupId>
-        <artifactId>superpom</artifactId>
-        <version>0.9.13</version>
-        <relativePath>superpom</relativePath>
-    </parent>
-
-    <artifactId>mesakit</artifactId>
+    <groupId>com.telenav.mesakit</groupId>
     <version>0.9.13</version>
 
+    <parent>
+        <groupId>com.telenav</groupId>
+        <artifactId>telenav-superpom</artifactId>
+        <version>1.5.1-SNAPSHOT</version>
+        <relativePath/>
+    </parent>
+    <artifactId>mesakit</artifactId>
     <packaging>pom</packaging>
-
     <!-- Project -->
-
     <description>MesaKit is a framework for developing mapping and navigation software.</description>
     <url>https://www.mesakit.org</url>
     <inceptionYear>2011</inceptionYear>
+
     <organization>
         <name>Telenav</name>
         <url>https://www.telenav.com</url>
     </organization>
-
     <!-- Licensing -->
 
     <licenses>
-
         <license>
             <name>Apache License, Version 2.0</name>
             <url>https://www.apache.org/licenses/LICENSfE-2.0.txt</url>
             <distribution>repo</distribution>
         </license>
-
     </licenses>
-
     <!-- Contributors -->
 
     <developers>
-
         <developer>
             <id>jonathanl</id>
             <name>Jonathan Locke (Luo Shibo)</name>
             <email>jonathanl@telenav.com</email>
+
             <organization>Telenav</organization>
             <organizationUrl>https://www.telenav.com/</organizationUrl>
             <roles>
@@ -59,11 +54,11 @@
                 <role>administrator</role>
             </roles>
         </developer>
-
         <developer>
             <id>haifeng</id>
             <name>Haifeng Zhu</name>
             <email>hfzhu@telenav.com</email>
+
             <organization>Telenav</organization>
             <organizationUrl>https://www.telenav.com/</organizationUrl>
             <roles>
@@ -71,39 +66,25 @@
                 <role>administrator</role>
             </roles>
         </developer>
-
     </developers>
-
     <!-- Source Code -->
 
     <scm>
-
         <connection>scm:git:https://Telenav/mesakit.git</connection>
         <developerConnection>scm:git:https://Telenav/mesakit.git</developerConnection>
         <url>https://Telenav/mesakit.git</url>
-
     </scm>
-
     <!-- Issue Tracking -->
-
     <issueManagement>
-
         <system>GitHub</system>
         <url>https://github.com/Telenav/mesakit/issues</url>
-
     </issueManagement>
-
     <!-- Modules -->
-
     <modules>
-
         <module>mesakit-core</module>
         <module>mesakit-map</module>
         <module>mesakit-graph</module>
         <module>mesakit-navigation</module>
         <module>mesakit-internal</module>
-
     </modules>
-
 </project>
-
