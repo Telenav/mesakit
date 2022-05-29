@@ -16,9 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.graph.world.test;
+package com.telenav.mesakit.graph.world.testing;
 
-import com.telenav.mesakit.graph.core.test.GraphUnitTest;
+import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
 import com.telenav.mesakit.graph.world.WorldGraphProject;
 
 public class WorldGraphUnitTest extends GraphUnitTest

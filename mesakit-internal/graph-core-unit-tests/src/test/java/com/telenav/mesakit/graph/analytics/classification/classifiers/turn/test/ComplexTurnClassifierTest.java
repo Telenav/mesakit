@@ -25,7 +25,7 @@ import com.telenav.mesakit.graph.analytics.classification.classifiers.turn.Compl
 import com.telenav.mesakit.graph.analytics.classification.classifiers.turn.TurnClassifier;
 import com.telenav.mesakit.graph.analytics.classification.classifiers.turn.TurnType;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
-import com.telenav.mesakit.graph.core.test.GraphUnitTest;
+import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
 import org.junit.Before;
 import org.junit.Ignore;
 

@@ -16,7 +16,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.map.geography.test;
+package com.telenav.mesakit.map.geography.testing;
 
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
@@ -27,7 +27,7 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Size;
 import com.telenav.mesakit.map.geography.shape.rectangle.Width;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.mesakit.map.measurements.test.MeasurementsRandomValueFactory;
+import com.telenav.mesakit.map.measurements.testing.MeasurementsRandomValueFactory;
 
 public class GeographyRandomValueFactory extends MeasurementsRandomValueFactory
 {

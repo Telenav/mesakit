@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.test;
 
-import com.telenav.mesakit.graph.core.test.GraphUnitTest;
+import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
 import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;

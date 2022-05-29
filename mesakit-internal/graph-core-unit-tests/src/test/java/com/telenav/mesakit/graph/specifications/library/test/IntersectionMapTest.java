@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph.specifications.library.test;
 
 import com.telenav.kivakit.internal.testing.RandomValueFactory;
 import com.telenav.kivakit.core.value.count.Count;
-import com.telenav.mesakit.graph.core.test.GraphUnitTest;
+import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
 import com.telenav.mesakit.graph.specifications.library.pbf.IntersectionMap;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapNodeIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;

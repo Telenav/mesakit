@@ -22,7 +22,7 @@ import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.string.Separators;
 import com.telenav.kivakit.core.value.count.Estimate;
-import com.telenav.mesakit.graph.core.test.GraphUnitTest;
+import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
 import com.telenav.mesakit.graph.specifications.common.edge.store.stores.polyline.PolylineStore;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;

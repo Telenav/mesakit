@@ -16,7 +16,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.graph.core.test;
+package com.telenav.mesakit.graph.core.testing;
 
 import com.telenav.mesakit.map.geography.test.GeographyRandomValueFactory;
 import com.telenav.mesakit.map.road.model.BetweenCrossRoads;

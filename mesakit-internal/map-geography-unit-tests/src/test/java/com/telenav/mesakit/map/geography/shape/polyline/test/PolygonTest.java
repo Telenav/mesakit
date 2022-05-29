@@ -24,7 +24,7 @@ import com.telenav.mesakit.map.geography.Longitude;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.polyline.PolylineSnapper;
-import com.telenav.mesakit.map.geography.test.GeographyUnitTest;
+import com.telenav.mesakit.map.geography.testing.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.shape.segment.Segment;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import org.junit.Test;

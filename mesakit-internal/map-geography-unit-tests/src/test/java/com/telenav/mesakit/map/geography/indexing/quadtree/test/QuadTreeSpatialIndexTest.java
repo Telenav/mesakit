@@ -23,7 +23,7 @@ import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.thread.KivaKitThread;
 import com.telenav.kivakit.core.value.count.Count;
-import com.telenav.mesakit.map.geography.test.GeographyUnitTest;
+import com.telenav.mesakit.map.geography.testing.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;

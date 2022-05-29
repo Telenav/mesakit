@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.test;
 
-import com.telenav.mesakit.graph.core.test.GraphUnitTest;
+import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.map.geography.Location;

@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.collections.test;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.collections.RouteList;
-import com.telenav.mesakit.graph.core.test.GraphUnitTest;
+import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -18,9 +18,8 @@
 
 package com.telenav.mesakit.graph.specifications.common.vertex.test;
 
-import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.value.count.Count;
-import com.telenav.mesakit.graph.core.test.GraphUnitTest;
+import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.collections.EdgeSet;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;

@@ -16,40 +16,36 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.mesakit.map.region.test;
+package com.telenav.mesakit.map.geography.testing;
 
-import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
+import com.telenav.kivakit.core.messaging.listeners.ThrowingListener;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.mesakit.map.geography.GeographyKryoTypes;
-import com.telenav.mesakit.map.geography.test.GeographyUnitTest;
-import com.telenav.mesakit.map.measurements.MeasurementsKryoTypes;
-import com.telenav.mesakit.map.region.RegionCode;
-import com.telenav.mesakit.map.region.RegionKryoTypes;
-import com.telenav.mesakit.map.region.RegionProject;
+import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.measurements.testing.MeasurementsUnitTest;
 
-public class RegionUnitTest extends GeographyUnitTest
+public class GeographyUnitTest extends MeasurementsUnitTest
 {
-    public RegionUnitTest()
-    {
-        initializeProject(RegionProject.class);
-    }
-
-    protected RegionCode code(String string)
-    {
-        var code = RegionCode.parse(string);
-        if (code != null)
-        {
-            return code;
-        }
-        throw new IllegalStateException();
-    }
-
     @Override
     protected KryoTypes kryoTypes()
     {
-        return new CoreKryoTypes()
-                .mergedWith(new MeasurementsKryoTypes())
-                .mergedWith(new GeographyKryoTypes())
-                .mergedWith(new RegionKryoTypes());
+        return new GeographyKryoTypes();
+    }
+
+    protected Location location(double latitude, double longitude)
+    {
+        return Location.degrees(latitude, longitude);
+    }
+
+    @Override
+    protected GeographyRandomValueFactory newRandomValueFactory()
+    {
+        return new GeographyRandomValueFactory();
+    }
+
+    protected Rectangle rectangle(String rectangle)
+    {
+        return new Rectangle.Converter(new ThrowingListener()).convert(rectangle);
     }
 }

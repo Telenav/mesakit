@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.identifiers.test;
 
-import com.telenav.mesakit.graph.core.test.GraphUnitTest;
+import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import org.junit.Test;
 

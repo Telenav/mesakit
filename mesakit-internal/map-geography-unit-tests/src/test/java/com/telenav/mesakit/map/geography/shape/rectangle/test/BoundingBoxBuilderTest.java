@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.geography.shape.rectangle.test;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.geography.test.GeographyUnitTest;
+import com.telenav.mesakit.map.geography.testing.GeographyUnitTest;
 import org.junit.Test;
 
 public class BoundingBoxBuilderTest extends GeographyUnitTest

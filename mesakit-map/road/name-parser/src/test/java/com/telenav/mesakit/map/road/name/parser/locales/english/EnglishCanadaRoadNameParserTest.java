@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.road.name.parser.locales.english;
 
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.model.RoadName;
-import com.telenav.mesakit.mesakit.map.region.test.RegionUnitTest;
+import com.telenav.mesakit.mesakit.map.region.testing.RegionUnitTest;
 import com.telenav.mesakit.map.road.name.parser.ParsedRoadName;
 import com.telenav.mesakit.map.road.name.parser.RoadNameParser;
 import org.junit.Ignore;

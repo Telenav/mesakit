@@ -16,36 +16,32 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.map.geography.test;
+package com.telenav.mesakit.map.measurements.testing;
 
-import com.telenav.kivakit.core.messaging.listeners.ThrowingListener;
+import com.telenav.kivakit.serialization.kryo.test.KryoUnitTest;
+import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
-import com.telenav.mesakit.map.geography.GeographyKryoTypes;
-import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.measurements.test.MeasurementsUnitTest;
+import com.telenav.lexakai.annotations.LexakaiJavadoc;
+import com.telenav.mesakit.map.measurements.MeasurementsKryoTypes;
 
-public class GeographyUnitTest extends MeasurementsUnitTest
+/**
+ * Unit test for classes that involve map measurements
+ *
+ * @author jonathanl (shibo)
+ */
+@LexakaiJavadoc(complete = true)
+public class MeasurementsUnitTest extends KryoUnitTest
 {
+    private static final MeasurementsRandomValueFactory factory = new MeasurementsRandomValueFactory();
+
     @Override
     protected KryoTypes kryoTypes()
     {
-        return new GeographyKryoTypes();
+        return new CoreKryoTypes().mergedWith(new MeasurementsKryoTypes());
     }
 
-    protected Location location(double latitude, double longitude)
+    protected MeasurementsRandomValueFactory random()
     {
-        return Location.degrees(latitude, longitude);
-    }
-
-    @Override
-    protected GeographyRandomValueFactory newRandomValueFactory()
-    {
-        return new GeographyRandomValueFactory();
-    }
-
-    protected Rectangle rectangle(String rectangle)
-    {
-        return new Rectangle.Converter(new ThrowingListener()).convert(rectangle);
+        return factory;
     }
 }

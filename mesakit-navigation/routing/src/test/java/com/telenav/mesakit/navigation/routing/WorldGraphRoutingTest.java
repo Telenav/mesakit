@@ -20,7 +20,7 @@ package com.telenav.mesakit.navigation.routing;
 
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.value.level.Weight;
-import com.telenav.mesakit.graph.world.test.WorldGraphUnitTest;
+import com.telenav.mesakit.graph.world.testing.WorldGraphUnitTest;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.navigation.routing.cost.functions.heuristic.RemainingDistanceToEndCostFunction;
 import com.telenav.mesakit.navigation.routing.cost.functions.heuristic.SpeedCostFunction;

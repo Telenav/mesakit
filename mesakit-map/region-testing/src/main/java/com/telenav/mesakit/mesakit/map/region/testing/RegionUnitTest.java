@@ -16,32 +16,40 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.map.measurements.test;
+package com.telenav.mesakit.mesakit.map.region.testing;
 
-import com.telenav.kivakit.serialization.kryo.test.KryoUnitTest;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
-import com.telenav.lexakai.annotations.LexakaiJavadoc;
+import com.telenav.mesakit.map.geography.GeographyKryoTypes;
+import com.telenav.mesakit.map.geography.test.GeographyUnitTest;
 import com.telenav.mesakit.map.measurements.MeasurementsKryoTypes;
+import com.telenav.mesakit.map.region.RegionCode;
+import com.telenav.mesakit.map.region.RegionKryoTypes;
+import com.telenav.mesakit.map.region.RegionProject;
 
-/**
- * Unit test for classes that involve map measurements
- *
- * @author jonathanl (shibo)
- */
-@LexakaiJavadoc(complete = true)
-public class MeasurementsUnitTest extends KryoUnitTest
+public class RegionUnitTest extends GeographyUnitTest
 {
-    private static final MeasurementsRandomValueFactory factory = new MeasurementsRandomValueFactory();
+    public RegionUnitTest()
+    {
+        initializeProject(RegionProject.class);
+    }
+
+    protected RegionCode code(String string)
+    {
+        var code = RegionCode.parse(string);
+        if (code != null)
+        {
+            return code;
+        }
+        throw new IllegalStateException();
+    }
 
     @Override
     protected KryoTypes kryoTypes()
     {
-        return new CoreKryoTypes().mergedWith(new MeasurementsKryoTypes());
-    }
-
-    protected MeasurementsRandomValueFactory random()
-    {
-        return factory;
+        return new CoreKryoTypes()
+                .mergedWith(new MeasurementsKryoTypes())
+                .mergedWith(new GeographyKryoTypes())
+                .mergedWith(new RegionKryoTypes());
     }
 }

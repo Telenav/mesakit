@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.collections.test;
 
-import com.telenav.mesakit.graph.core.test.GraphUnitTest;
+import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
 import org.junit.Ignore;
 import org.junit.Test;
 

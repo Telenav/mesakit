@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.specifications.common.edge.test;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Metadata;
-import com.telenav.mesakit.graph.core.test.GraphUnitTest;
+import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
 import com.telenav.mesakit.graph.specifications.common.edge.store.stores.roadname.RoadNameStore;
 import org.junit.Test;
 

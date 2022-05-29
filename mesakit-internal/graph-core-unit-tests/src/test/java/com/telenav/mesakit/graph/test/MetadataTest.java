@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.test;
 
 import com.telenav.mesakit.graph.Metadata;
-import com.telenav.mesakit.graph.core.test.GraphUnitTest;
+import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
 import com.telenav.mesakit.graph.metadata.DataBuild;
 import com.telenav.mesakit.graph.metadata.DataSupplier;
 import com.telenav.mesakit.graph.metadata.DataVersion;

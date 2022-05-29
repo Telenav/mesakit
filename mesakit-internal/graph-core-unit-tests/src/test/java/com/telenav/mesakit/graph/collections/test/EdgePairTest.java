@@ -23,7 +23,7 @@ import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.collections.EdgePair;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.navigation.Navigator;
-import com.telenav.mesakit.graph.core.test.GraphUnitTest;
+import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import org.junit.Before;
 import org.junit.Ignore;
