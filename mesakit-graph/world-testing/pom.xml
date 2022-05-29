@@ -21,7 +21,7 @@
     </parent>
 
     <groupId>com.telenav.mesakit</groupId>
-    <artifactId>mesakit-graph-world-test</artifactId>
+    <artifactId>mesakit-graph-world-testing</artifactId>
     <version>0.9.13</version>
 
     <dependencies>
@@ -32,9 +32,12 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-graph-world</artifactId>
         </dependency>
+
+        <!-- Testing -->
+
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-graph-core-test</artifactId>
+            <artifactId>mesakit-graph-core-testing</artifactId>
         </dependency>
 
     </dependencies>

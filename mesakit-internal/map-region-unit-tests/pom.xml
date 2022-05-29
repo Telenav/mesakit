@@ -21,22 +21,22 @@
     </parent>
 
     <groupId>com.telenav.mesakit</groupId>
-    <artifactId>mesakit-graph-core-unit-tests</artifactId>
+    <artifactId>mesakit-map-region-unit-tests</artifactId>
     <version>0.9.13</version>
 
     <dependencies>
 
-        <!-- Testing -->
+        <!-- MesaKit -->
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-graph-core-test</artifactId>
-            <version>${project.version}</version>
+            <artifactId>mesakit-map-region</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-graph-core</artifactId>
+            <artifactId>mesakit-map-region-test</artifactId>
+            <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
 

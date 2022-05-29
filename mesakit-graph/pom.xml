@@ -24,8 +24,8 @@
         <module>core</module>
         <module>query</module>
         <module>world</module>
-        <module>mesakit-graph-world-test</module>
-        <module>mesakit-graph-core-test</module>
+        <module>core-testing</module>
+        <module>world-testing</module>
     </modules>
 
 </project>

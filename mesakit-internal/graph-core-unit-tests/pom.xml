@@ -21,29 +21,24 @@
     </parent>
 
     <groupId>com.telenav.mesakit</groupId>
-    <artifactId>mesakit-map-measurements-test</artifactId>
+    <artifactId>mesakit-graph-core-unit-tests</artifactId>
     <version>0.9.13</version>
 
     <dependencies>
 
-        <!-- MesaKit -->
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-map-measurements</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
         <!-- Testing -->
 
         <dependency>
-            <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-serialization-kryo-test</artifactId>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>mesakit-graph-core-testing</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-internal-testing</artifactId>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>mesakit-graph-core</artifactId>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
-
 </project>

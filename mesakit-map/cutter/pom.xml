@@ -37,7 +37,7 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-map-region-test</artifactId>
+            <artifactId>mesakit-map-region-testing</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>

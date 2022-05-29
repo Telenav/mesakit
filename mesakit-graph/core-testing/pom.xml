@@ -21,7 +21,7 @@
     </parent>
 
     <groupId>com.telenav.mesakit</groupId>
-    <artifactId>mesakit-map-geography-test</artifactId>
+    <artifactId>mesakit-graph-core-testing</artifactId>
     <version>0.9.13</version>
 
     <dependencies>
@@ -30,12 +30,14 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-map-geography</artifactId>
+            <artifactId>mesakit-graph-core</artifactId>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-map-measurements-test</artifactId>
+            <artifactId>mesakit-map-region-testing</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
     </dependencies>
+
 </project>

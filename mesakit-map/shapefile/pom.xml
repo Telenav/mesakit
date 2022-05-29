@@ -20,18 +20,8 @@
         <version>1.5.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>mesakit-map-region-unit-tests</artifactId>
-    <dependencies>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-map-region</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-map-region-test</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <groupId>org.telenav.mesakit</groupId>
+    <artifactId>mesakit-map-shapefile</artifactId>
+    <version>1.0</version>
+
 </project>

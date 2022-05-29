@@ -44,12 +44,12 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-graph-world-test</artifactId>
+            <artifactId>mesakit-graph-world-testing</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-map-geography-test</artifactId>
+            <artifactId>mesakit-map-geography-testing</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>

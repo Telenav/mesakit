@@ -30,10 +30,10 @@
         <module>cutter</module>
         <module>overpass</module>
         <module>ui</module>
-        <module>mesakit-map-shapefilereader</module>
-        <module>measurements-test</module>
-        <module>mesakit-map-geography-test</module>
-        <module>mesakit-map-region-test</module>
+        <module>shapefile</module>
+        <module>measurements-testing</module>
+        <module>geography-testing</module>
+        <module>region-testing</module>
     </modules>
 
 </project>

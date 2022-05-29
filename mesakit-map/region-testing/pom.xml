@@ -20,8 +20,23 @@
         <version>1.5.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.telenav.mesakit</groupId>
-    <artifactId>mesakit-map-shapefilereader</artifactId>
-    <version>1.0</version>
+    <groupId>com.telenav.mesakit</groupId>
+    <artifactId>mesakit-map-region-testing</artifactId>
+    <version>0.9.13</version>
 
+    <dependencies>
+
+        <!-- MesaKit -->
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>mesakit-map-region</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>mesakit-map-geography-test</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+    </dependencies>
 </project>
