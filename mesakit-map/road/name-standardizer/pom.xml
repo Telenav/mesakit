@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  //
  // © 2011-2022 Telenav, Inc.
  // Licensed under Apache License, Version 2.0
  //
  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- -->
+-->
 
 <project
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
+     xmlns="http://maven.apache.org/POM/4.0.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit</artifactId>
         <version>0.9.13</version>
-        <relativePath>../../../pom.xml</relativePath>
+        <relativePath/>
     </parent>
-    
+
     <artifactId>mesakit-map-road-name-standardizer</artifactId>
-    
+
     <dependencies>
-        
+
         <!-- MesaKit -->
-        
+
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-road-name-parser</artifactId>
@@ -36,9 +36,9 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-data-formats-pbf</artifactId>
         </dependency>
-        
+
         <!-- Testing -->
-        
+
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-region-testing</artifactId>
@@ -46,5 +46,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    
+
 </project>
+

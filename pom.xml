@@ -14,15 +14,8 @@
     
     <modelVersion>4.0.0</modelVersion>
     
-    <parent>
-        <groupId>com.telenav</groupId>
-        <artifactId>telenav-superpom</artifactId>
-        <version>1.5.1-SNAPSHOT</version>
-        <relativePath/>
-    </parent>
-    
     <groupId>com.telenav.mesakit</groupId>
-    <artifactId>mesakit</artifactId>
+    <artifactId>mesakit-bom</artifactId>
     <version>0.9.13</version>
     
     <packaging>pom</packaging>

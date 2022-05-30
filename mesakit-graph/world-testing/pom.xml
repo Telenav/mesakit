@@ -19,7 +19,7 @@
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit</artifactId>
         <version>0.9.13</version>
-        <relativePath>../../pom.xml</relativePath>
+        <relativePath/>
     </parent>
 
     <artifactId>mesakit-graph-world-testing</artifactId>
