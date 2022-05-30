@@ -84,7 +84,7 @@
         </dependency>
         <dependency>
             <groupId>org.telenav.mesakit</groupId>
-            <artifactId>mesakit-map-shapefilereader</artifactId>
+            <artifactId>mesakit-map-shapefile</artifactId>
             <version>1.0</version>
             <scope>test</scope>
         </dependency>
