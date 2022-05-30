@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// © 2011-2022 Telenav, Inc.
-// Licensed under Apache License, Version 2.0
-//
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
--->
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ //
+ // © 2011-2022 Telenav, Inc.
+ // Licensed under Apache License, Version 2.0
+ //
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ -->
 
 <project
-     xmlns="http://maven.apache.org/POM/4.0.0"
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
     <modelVersion>4.0.0</modelVersion>
-
+    
     <parent>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit</artifactId>
         <version>0.9.13</version>
         <relativePath>../../../../pom.xml</relativePath>
     </parent>
-
+    
     <artifactId>mesakit-map-data-formats-pbf</artifactId>
-
+    
     <dependencies>
-
+        
         <!-- MesaKit -->
-
+        
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-geography</artifactId>
@@ -36,9 +36,9 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-data-library</artifactId>
         </dependency>
-
+        
         <!-- KivaKit -->
-
+        
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-data-formats-library</artifactId>
@@ -55,9 +55,9 @@
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-extraction</artifactId>
         </dependency>
-
+        
         <!-- OSM -->
-
+        
         <dependency>
             <groupId>org.openstreetmap.osmosis</groupId>
             <artifactId>osmosis-core</artifactId>
@@ -70,9 +70,9 @@
             <groupId>org.openstreetmap.osmosis</groupId>
             <artifactId>osmosis-pbf</artifactId>
         </dependency>
-
+        
         <!-- Testing -->
-
+        
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-internal-testing</artifactId>
@@ -90,8 +90,7 @@
             <version>${kivakit.version}</version>
             <scope>test</scope>
         </dependency>
-
+        
     </dependencies>
-
+    
 </project>
-
