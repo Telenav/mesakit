@@ -24,7 +24,7 @@ import com.telenav.mesakit.map.geography.Longitude;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.region.RegionIdentifier;
 import com.telenav.mesakit.map.region.RegionIdentity;
-import com.telenav.mesakit.mesakit.map.region.test.RegionUnitTest;
+import com.telenav.mesakit.mesakit.map.region.testing.RegionUnitTest;
 import com.telenav.mesakit.map.region.border.Border;
 import com.telenav.mesakit.map.region.regions.Continent;
 import org.junit.Test;

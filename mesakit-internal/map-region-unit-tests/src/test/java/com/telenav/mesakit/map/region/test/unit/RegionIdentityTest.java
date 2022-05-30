@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.region.test.unit;
 
 import com.telenav.mesakit.map.region.RegionIdentity;
-import com.telenav.mesakit.mesakit.map.region.test.RegionUnitTest;
+import com.telenav.mesakit.mesakit.map.region.testing.RegionUnitTest;
 import org.junit.Test;
 
 import java.util.HashSet;

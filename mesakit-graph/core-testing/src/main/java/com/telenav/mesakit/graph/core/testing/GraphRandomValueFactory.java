@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.core.testing;
 
-import com.telenav.mesakit.map.geography.test.GeographyRandomValueFactory;
+import com.telenav.mesakit.map.geography.testing.GeographyRandomValueFactory;
 import com.telenav.mesakit.map.road.model.BetweenCrossRoads;
 import com.telenav.mesakit.map.road.model.Intersection;
 import com.telenav.mesakit.map.road.model.RoadName;

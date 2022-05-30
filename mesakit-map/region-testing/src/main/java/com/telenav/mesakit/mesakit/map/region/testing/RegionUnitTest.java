@@ -21,7 +21,7 @@ package com.telenav.mesakit.mesakit.map.region.testing;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.mesakit.map.geography.GeographyKryoTypes;
-import com.telenav.mesakit.map.geography.test.GeographyUnitTest;
+import com.telenav.mesakit.map.geography.testing.GeographyUnitTest;
 import com.telenav.mesakit.map.measurements.MeasurementsKryoTypes;
 import com.telenav.mesakit.map.region.RegionCode;
 import com.telenav.mesakit.map.region.RegionKryoTypes;

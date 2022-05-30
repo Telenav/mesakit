@@ -8,21 +8,21 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 -->
 
-<project xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
-         xmlns = "http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+     xmlns="http://maven.apache.org/POM/4.0.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.telenav</groupId>
-        <artifactId>telenav-superpom</artifactId>
-        <version>1.5.1-SNAPSHOT</version>
+        <groupId>com.telenav.mesakit</groupId>
+        <artifactId>mesakit</artifactId>
+        <version>0.9.13</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit-graph-query</artifactId>
-    <version>0.9.13</version>
 
     <dependencies>
 
@@ -46,12 +46,13 @@
             <groupId>org.antlr</groupId>
             <artifactId>antlr4-runtime</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>
         <plugins>
+
             <plugin>
+
                 <groupId>org.antlr</groupId>
                 <artifactId>antlr4-maven-plugin</artifactId>
                 <version>4.9.2</version>
@@ -66,7 +67,12 @@
                         </configuration>
                     </execution>
                 </executions>
+
             </plugin>
+
         </plugins>
+
     </build>
+
 </project>
+

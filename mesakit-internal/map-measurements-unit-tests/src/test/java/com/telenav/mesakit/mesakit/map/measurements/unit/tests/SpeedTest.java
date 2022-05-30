@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.mesakit.map.measurements.unit.tests;
 
-import com.telenav.mesakit.map.measurements.test.MeasurementsUnitTest;
+import com.telenav.mesakit.map.measurements.testing.MeasurementsUnitTest;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.motion.Speed;
 import org.junit.Test;
