@@ -15,9 +15,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.telenav</groupId>
-        <artifactId>telenav-superpom</artifactId>
-        <version>1.5.1-SNAPSHOT</version>
+        <groupId>com.telenav.mesakit</groupId>
+        <artifactId>mesakit</artifactId>
+        <version>0.9.13</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>com.telenav.mesakit</groupId>
@@ -27,6 +28,7 @@
     <dependencies>
 
         <!-- MesaKit -->
+
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-measurements</artifactId>
