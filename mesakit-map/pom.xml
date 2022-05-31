@@ -21,6 +21,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>shapefile</module>
         <module>measurements</module>
         <module>geography</module>
         <module>data</module>
@@ -30,7 +31,6 @@
         <module>cutter</module>
         <module>overpass</module>
         <module>ui</module>
-        <module>shapefile</module>
         <module>measurements-testing</module>
         <module>geography-testing</module>
         <module>region-testing</module>

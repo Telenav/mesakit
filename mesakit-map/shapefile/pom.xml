@@ -21,4 +21,5 @@
     </parent>
 
     <artifactId>mesakit-map-shapefile</artifactId>
+
 </project>
