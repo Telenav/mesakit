@@ -22,7 +22,7 @@
         <relativePath/>
     </parent>
 
-    <artifactId>mesakit-map-measurements-unit-tests</artifactId>
+    <artifactId>mesakit-internal-map-measurements-unit-tests</artifactId>
 
     <dependencies>
 
@@ -36,4 +36,3 @@
     </dependencies>
 
 </project>
-

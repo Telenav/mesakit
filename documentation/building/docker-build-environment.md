@@ -1,4 +1,4 @@
-# MesaKit - Docker Build Setup   <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"/>
+# MesaKit - Docker Build Setup   <img src="https://telenav.github.io/telenav-assets/images/iconsbox-32.png" srcset="https://telenav.github.io/telenav-assets/images/iconsbox-32-2x.png 2x"/>
 
 Docker makes it quick and easy to build MesaKit in any environment, without software setup hassles.
 
@@ -70,7 +70,7 @@ Building MesaKit in Docker is a snap:
     * /root/.kivakit => /root/developer/.kivakit
     * /root/.mesakit => /root/developer/.mesakit
 
-<img src="https://www.kivakit.org/images/horizontal-line-512.png" srcset="https://www.kivakit.org/images/horizontal-line-512-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/iconshorizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/png/separators/horizontal-line-512-2x.png 2x"/>
 
 ### MesaKit Build Scripts
 
@@ -86,4 +86,3 @@ Building MesaKit in Docker is a snap:
 | mesakit-feature-finish.sh \[branch\] | finish a feature branch **                |
 
 ** executes the command in each mesakit repository
-

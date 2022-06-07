@@ -22,7 +22,7 @@
         <relativePath/>
     </parent>
 
-    <artifactId>mesakit-graph-core-unit-tests</artifactId>
+    <artifactId>mesakit-internal-graph-core-unit-tests</artifactId>
 
     <dependencies>
 
@@ -42,4 +42,3 @@
     </dependencies>
 
 </project>
-
