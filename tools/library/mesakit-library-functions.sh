@@ -23,11 +23,10 @@ property_value()
 project_version()
 {
     project_home=$1
-    project_properties=$project_home/project.properties
 
-    # shellcheck disable=SC2046
-    # shellcheck disable=SC2005
-    echo $(property_value "$project_properties" project-version)
+    pushd "$project_home" 1>/dev/null || exit 1
+    mvn -q -DforceStdout org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.version || exit 1
+    popd 1>/dev/null || exit 1
 }
 
 project_name()
