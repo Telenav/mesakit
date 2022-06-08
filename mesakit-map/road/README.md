@@ -36,11 +36,11 @@ This module contains projects related to road information
 
 ### Javadoc Coverage <a name = "javadoc-coverage"></a> &nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/bargraph-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/bargraph-24-2x.png 2x"/>
 
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meter-50-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-road-model**](model/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meter-50-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-road-name-parser**](name-parser/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-20-96.png" srcset="https://telenav.github.io/telenav-assets/meter-20-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-20-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-20-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-road-name-standardizer**](name-standardizer/README.md)
 
 [//]: # (start-user-text)

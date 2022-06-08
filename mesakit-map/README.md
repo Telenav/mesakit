@@ -46,43 +46,43 @@ This module contains map related functionality.
 
 ### Javadoc Coverage <a name = "javadoc-coverage"></a> &nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/bargraph-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/bargraph-24-2x.png 2x"/>
 
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-40-96.png" srcset="https://telenav.github.io/telenav-assets/meter-40-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-40-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-40-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-cutter**](cutter/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meter-50-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-data-formats-pbf**](data/formats/pbf/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meter-50-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-data-library**](data/library/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meter-50-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-geography**](geography/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meter-50-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-geography-testing**](geography-testing/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-70-96.png" srcset="https://telenav.github.io/telenav-assets/meter-70-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-70-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-70-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-measurements**](measurements/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-100-96.png" srcset="https://telenav.github.io/telenav-assets/meter-100-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-100-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-100-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-measurements-testing**](measurements-testing/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-0-96.png" srcset="https://telenav.github.io/telenav-assets/meter-0-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-0-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-0-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-overpass**](overpass/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-40-96.png" srcset="https://telenav.github.io/telenav-assets/meter-40-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-40-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-40-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-region**](region/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meter-50-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-region-testing**](region-testing/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meter-50-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-road-model**](road/model/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meter-50-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-road-name-parser**](road/name-parser/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-20-96.png" srcset="https://telenav.github.io/telenav-assets/meter-20-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-20-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-20-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-road-name-standardizer**](road/name-standardizer/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meter-50-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-shapefile**](shapefile/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-30-96.png" srcset="https://telenav.github.io/telenav-assets/meter-30-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-30-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-30-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-ui-debug**](ui/debug/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meter-50-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-ui-desktop**](ui/desktop/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meter-50-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-utilities-geohash**](utilities/geohash/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-20-96.png" srcset="https://telenav.github.io/telenav-assets/meter-20-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-20-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-20-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-utilities-geojson**](utilities/geojson/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meter-50-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-utilities-grid**](utilities/grid/README.md)
 
 [//]: # (start-user-text)

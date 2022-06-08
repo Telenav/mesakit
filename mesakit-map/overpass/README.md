@@ -68,7 +68,7 @@ This module contains code for downloading map data from OSM Overpass (https://wi
 
 Javadoc coverage for this project is 0.0%.  
   
-&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/meter-0-96.png" srcset="https://telenav.github.io/telenav-assets/meter-0-96-2x.png 2x"/>
+&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-0-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-0-96-2x.png 2x"/>
 
 
 The following significant classes are undocumented:  

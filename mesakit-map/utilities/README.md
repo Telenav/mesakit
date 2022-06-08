@@ -26,11 +26,11 @@ This module contains utilities for working with map data
 
 ### Javadoc Coverage <a name = "javadoc-coverage"></a> &nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/bargraph-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/bargraph-24-2x.png 2x"/>
 
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meter-50-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-utilities-geohash**](geohash/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-20-96.png" srcset="https://telenav.github.io/telenav-assets/meter-20-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-20-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-20-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-utilities-geojson**](geojson/README.md)  
-&nbsp; <img src="https://telenav.github.io/telenav-assets/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meter-50-96-2x.png 2x"/>
+&nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-map-utilities-grid**](grid/README.md)
 
 [//]: # (start-user-text)
