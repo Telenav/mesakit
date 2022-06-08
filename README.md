@@ -1,49 +1,49 @@
 [//]: # (start-user-text)
 
 <a href="https://www.mesakit.org">
-<img src="https://telenav.github.io/telenav-assets/images/iconsweb-32.png" srcset="https://telenav.github.io/telenav-assets/images/iconsweb-32-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/icons/web-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/web-32-2x.png 2x"/>
 </a>
 &nbsp;
 <a href="https://twitter.com/openmesakit">
-<img src="https://telenav.github.io/telenav-assets/images/iconstwitter-32.png" srcset="https://telenav.github.io/telenav-assets/images/iconstwitter-32-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/logos/twitter/twitter-32.png" srcset="https://telenav.github.io/telenav-assets/images/logos/twitter/twitter-32-2x.png 2x"/>
 </a>
 &nbsp;
 <a href="https://mesakit.zulipchat.com">
-<img src="https://telenav.github.io/telenav-assets/images/iconszulip-32.png" srcset="https://telenav.github.io/telenav-assets/images/iconszulip-32-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/logos/zulip/zulip-32.png" srcset="https://telenav.github.io/telenav-assets/images/logos/zulip/zulip-32-2x.png 2x"/>
 </a>
 
 <p></p>
 
-<img src="https://telenav.github.io/telenav-assets/images/iconskivakit-background.png" srcset="https://telenav.github.io/telenav-assets/images/iconskivakit-background-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/backgrounds/kivakit-background.png" srcset="https://telenav.github.io/telenav-assets/images/backgrounds/kivakit-background-2x.png 2x"/>
 
 [//]: # (end-user-text)
 
-# mesakit &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/mesakit-64.png" srcset="https://telenav.github.io/telenav-assets/images/icons/mesakit-64-2x.png 2x"/>
+# mesakit &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons//mesakit-64.png" srcset="https://telenav.github.io/telenav-assets/images/icons//mesakit-64-2x.png 2x"/>
 
 MesaKit is a modular toolkit for developing map and navigation software.
 
-<img src="https://telenav.github.io/telenav-assets/images/iconshorizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/png/separators/horizontal-line-512-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/icons/horizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512-2x.png 2x"/>
 
 [//]: # (start-user-text)
 
-### Welcome <a name = "welcome"></a>! &nbsp; <img src="https://telenav.github.io/telenav-assets/images/iconsstars-32.png" srcset="https://telenav.github.io/telenav-assets/images/iconsstars-32-2x.png 2x"/>
+### Welcome <a name = "welcome"></a>! &nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/stars-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/stars-32-2x.png 2x"/>
 
 > *The mission of MesaKit is to simplify code and accelerate development*
 
-<img src="https://telenav.github.io/telenav-assets/images/iconshorizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/png/separators/horizontal-line-512-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/icons/horizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512-2x.png 2x"/>
 
 ### Summary <a name = "summary"></a>
 
 MesaKit provides useful APIs and tools for complex back-end map data analysis and processing problems. It may also be appropriate for serving map data in some specialized production applications. MesaKit provides a simple, object-oriented model for working with map data as a directed road network graph. It is designed to be customizable and provides built-in search functionality.
 
-### Quick Start <a name = "quick-start"></a>&nbsp; <img src="https://telenav.github.io/telenav-assets/images/iconsrocket-32.png" srcset="https://telenav.github.io/telenav-assets/images/iconsrocket-32-2x.png 2x"/>
+### Quick Start <a name = "quick-start"></a>&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/rocket-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/rocket-32-2x.png 2x"/>
 
 [**About MesaKit**](#about)  
 [**Example Code**](https://github.com/Telenav/mesakit-examples)  
 [**Published Releases**](https://repo1.maven.org/maven2/com/telenav/mesakit/)  
 [**Docker Build Environment**](documentation/building/docker-build-environment.md)
 
-### Reference <a name = "reference"></a>&nbsp; <img src="https://telenav.github.io/telenav-assets/images/iconsbooks-32.png" srcset="https://telenav.github.io/telenav-assets/images/iconsbooks-32-2x.png 2x"/>
+### Reference <a name = "reference"></a>&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/books-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/books-24-2x.png 2x"/>
 
 [**Building**](documentation/building/index.md)  
 [**Developing**](documentation/developing/index.md)  
@@ -52,7 +52,7 @@ MesaKit provides useful APIs and tools for complex back-end map data analysis an
 [**System Properties**](documentation/developing/system-properties.md)
 
 <a name = "about"></a>
-<img src="https://telenav.github.io/telenav-assets/images/iconshorizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/png/separators/horizontal-line-512-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/icons/horizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512-2x.png 2x"/>
 
 ### About MesaKit <a name = "about-mesakit"></a>
 
@@ -84,9 +84,9 @@ MesaKit provides support for:
     - Tomtom and Navteq codes
     - Historical traffic data processing
 
-<img src="https://telenav.github.io/telenav-assets/images/iconshorizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/png/separators/horizontal-line-128-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/icons/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
 
-### Project Resources <a name = "project-resources"></a> &nbsp; <img src="https://telenav.github.io/telenav-assets/images/iconswater-32.png" srcset="https://telenav.github.io/telenav-assets/images/iconswater-32-2x.png 2x"/>
+### Project Resources <a name = "project-resources"></a> &nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/water-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/water-32-2x.png 2x"/>
 
 | Resource         | Description                                                                                                                                                                              |
 |------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -104,7 +104,7 @@ MesaKit provides support for:
 
 [//]: # (end-user-text)
 
-### Projects <a name = "projects"></a> &nbsp; <img src="https://telenav.github.io/telenav-assets/images/iconsgears-32.png" srcset="https://telenav.github.io/telenav-assets/images/iconsgears-32-2x.png 2x"/>
+### Projects <a name = "projects"></a> &nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/gears-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/gears-32-2x.png 2x"/>
 
 [**mesakit-core**](mesakit-core/README.md)  
 [**mesakit-graph**](mesakit-graph/README.md)  
@@ -112,9 +112,9 @@ MesaKit provides support for:
 [**mesakit-map**](mesakit-map/README.md)  
 [**mesakit-navigation**](mesakit-navigation/README.md)  
 
-<img src="https://telenav.github.io/telenav-assets/images/iconshorizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/png/separators/horizontal-line-128-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/icons/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
 
-### Javadoc Coverage <a name = "javadoc-coverage"></a> &nbsp; <img src="https://telenav.github.io/telenav-assets/images/iconsbargraph-32.png" srcset="https://telenav.github.io/telenav-assets/images/iconsbargraph-32-2x.png 2x"/>
+### Javadoc Coverage <a name = "javadoc-coverage"></a> &nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/bargraph-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/bargraph-24-2x.png 2x"/>
 
 &nbsp; <img src="https://telenav.github.io/telenav-assets/meter-90-96.png" srcset="https://telenav.github.io/telenav-assets/meter-90-96-2x.png 2x"/>
  &nbsp; &nbsp; [**mesakit-core**](mesakit-core/README.md)  
@@ -179,7 +179,7 @@ MesaKit provides support for:
 
 [//]: # (start-user-text)
 
-<img src="https://telenav.github.io/telenav-assets/images/iconshorizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/png/separators/horizontal-line-512-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/icons/horizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512-2x.png 2x"/>
 
 [**Issues**](https://github.com/Telenav/mesakit/issues) |
 [**Change Log**](change-log.md) |
@@ -187,7 +187,7 @@ MesaKit provides support for:
 
 [//]: # (end-user-text)
 
-<img src="https://telenav.github.io/telenav-assets/images/iconshorizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/png/separators/horizontal-line-512-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/icons/horizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512-2x.png 2x"/>
 
 <sub>Copyright &#169; 2011-2021 [Telenav](https://telenav.com), Inc. Distributed under [Apache License, Version 2.0](LICENSE)</sub>  
 <sub>This documentation was generated by [Lexakai](https://www.lexakai.org). UML diagrams courtesy of [PlantUML](https://plantuml.com).</sub>

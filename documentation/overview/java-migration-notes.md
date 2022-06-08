@@ -1,20 +1,20 @@
 <a href="https://github.com/Telenav/mesakit">
-<img src="https://telenav.github.io/telenav-assets/images/iconsgithub-32.png" srcset="https://telenav.github.io/telenav-assets/images/iconsgithub-32-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/icons/github-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/github-32-2x.png 2x"/>
 </a>
 &nbsp;
 <a href="https://twitter.com/openmesakit">
-<img src="https://telenav.github.io/telenav-assets/images/iconstwitter-32.png" srcset="https://telenav.github.io/telenav-assets/images/iconstwitter-32-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/logos/twitter/twitter-32.png" srcset="https://telenav.github.io/telenav-assets/images/logos/twitter/twitter-32-2x.png 2x"/>
 </a>
 &nbsp;
 <a href="https://mesakit.zulipchat.com">
-<img src="https://telenav.github.io/telenav-assets/images/iconszulip-32.png" srcset="https://telenav.github.io/telenav-assets/images/iconszulip-32-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/logos/zulip/zulip-32.png" srcset="https://telenav.github.io/telenav-assets/images/logos/zulip/zulip-32-2x.png 2x"/>
 </a>
 
-## KivaKit - Java Migration Notes &nbsp;  <img src="https://telenav.github.io/telenav-assets/images/iconsfootprints-32.png" srcset="https://telenav.github.io/telenav-assets/images/iconsfootprints-32-2x.png 2x"/>
+## KivaKit - Java Migration Notes &nbsp;  <img src="https://telenav.github.io/telenav-assets/images/icons/footprints-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/footprints-32-2x.png 2x"/>
 
-<img src="https://telenav.github.io/telenav-assets/images/iconshorizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/png/separators/horizontal-line-512-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/icons/horizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512-2x.png 2x"/>
 
-### Welcome to Java 11+ &nbsp;&nbsp;    <img src="https://telenav.github.io/telenav-assets/images/iconscoffee-32.png" srcset="https://telenav.github.io/telenav-assets/images/iconscoffee-32-2x.png 2x"/>
+### Welcome to Java 11+ &nbsp;&nbsp;    <img src="https://telenav.github.io/telenav-assets/images/icons/coffee-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/coffee-32-2x.png 2x"/>
 
 Starting with Java 9, the JDK has supported _modules_. KivaKit has a modular design and runs on Java 11+.
 
@@ -43,9 +43,9 @@ There are a number of good reasons to move on to more recent versions of Java:
 
 The latency introduced by the pause time of the G1 collector (used in Java 8) can be more than 100x the GC pause time of the newest collector implementation, "ZGC". This alone is a very good reason for upgrading because we need to ensure that we can deliver servers with reasonable latency. We don't want customers waiting for GC pauses. A picture is worth a thousand words:
 
-![](https://telenav.github.io/telenav-assets/images/iconsgc.png)
+![](https://telenav.github.io/telenav-assets/images/icons/gc.png)
 
-### Advantages of Modules   <img src="https://telenav.github.io/telenav-assets/images/iconsstars-32.png" srcset="https://telenav.github.io/telenav-assets/images/iconsstars-32-2x.png 2x"/>
+### Advantages of Modules   <img src="https://telenav.github.io/telenav-assets/images/icons/stars-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/stars-32-2x.png 2x"/>
 
 Modules provide strong encapsulation, which has some advantages:
 
@@ -54,7 +54,7 @@ Modules provide strong encapsulation, which has some advantages:
 * HotSpot can perform more aggressive optimizations on code that isn't public
 * It's easier to use only part of the JDK or KivaKit without dragging in a lot of unneeded dependencies
 
-### Strong Encapsulation   <img src="https://telenav.github.io/telenav-assets/images/iconsbox-32.png" srcset="https://telenav.github.io/telenav-assets/images/iconsbox-32-2x.png 2x"/>
+### Strong Encapsulation   <img src="https://telenav.github.io/telenav-assets/images/icons/box-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/box-32-2x.png 2x"/>
 
 Modular Java is more secure and performs better, but it places certain restrictions of Java 9+ code.
 
@@ -66,7 +66,7 @@ Since KivaKit uses reflection, most modules in KivaKit are open modules. This al
 
 This warning is annoying, but it cannot be turned off by design. Although future versions of Java will restrict reflection further, it is nothing to worry about under Java 11.
 
-### Making Your Application Modular &nbsp; <img src="https://telenav.github.io/telenav-assets/images/iconsstars-32.png" srcset="https://telenav.github.io/telenav-assets/images/iconsstars-32-2x.png 2x"/>
+### Making Your Application Modular &nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/stars-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/stars-32-2x.png 2x"/>
 
 For users of KivaKit, it's only _required_ to declare your application to be an open module if you want KivaKit to be able to reflect on _your_ code. Even so, it can be useful to make your application modular, because you can specify exactly what parts of KivaKit you want to use.
 
@@ -82,4 +82,4 @@ This provides access to specific modules in KivaKit to your application and only
 
 <br/> 
 
-<img src="https://telenav.github.io/telenav-assets/images/iconshorizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/png/separators/horizontal-line-512-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/icons/horizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512-2x.png 2x"/>
