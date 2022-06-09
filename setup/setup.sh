@@ -11,7 +11,7 @@ echo " "
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ Preparing for Setup"
 echo " "
 
-if [ -z "$MESAKIT_WORKSPACE" ]; then
+if [ -z "$TELENAV_WORKSPACE" ]; then
     echo " "
     echo "Please set up your .profile before setting up MesaKit."
     echo "See https://mesakit.org for details."
@@ -19,10 +19,10 @@ if [ -z "$MESAKIT_WORKSPACE" ]; then
     exit 1
 fi
 
-cd "$MESAKIT_WORKSPACE"/mesakit || exit
+cd "$TELENAV_WORKSPACE"/mesakit || exit
 git checkout -q develop
 
-if [ ! -e "$MESAKIT_WORKSPACE/mesakit/setup.properties" ]; then
+if [ ! -e "$TELENAV_WORKSPACE/mesakit/setup.properties" ]; then
     echo " "
     echo "Please restart your shell before continuing MesaKit setup."
     echo "See https://mesakit.org for details."
@@ -38,9 +38,9 @@ echo " "
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ Setting Up Repositories"
 echo " "
 
-cd "$MESAKIT_WORKSPACE" || exit
+cd "$TELENAV_WORKSPACE" || exit
 
-bash "$MESAKIT_WORKSPACE"/mesakit/setup/setup-repositories.sh
+bash "$TELENAV_WORKSPACE"/mesakit/setup/setup-repositories.sh
 
 #
 # Install Maven super POM

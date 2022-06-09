@@ -18,8 +18,6 @@
 
 Whether you plan to use MesaKit or help to develop it, this page will help you get rolling in 3 easy steps.
 
-> [Build MesaKit anywhere *fast* with Docker](docker-build-environment.md)
-
 ### Prerequisites
 
 *You will need to set up [KivaKit](https://github.com/Telenav/mesakit) for development.*

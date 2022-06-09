@@ -9,7 +9,7 @@ else
 fi
 
 docker run \
-    --volume "$MESAKIT_WORKSPACE:/host/workspace" \
+    --volume "$TELENAV_WORKSPACE:/host/workspace" \
     --volume "$HOME/.m2:/host/.m2" \
     --volume "$HOME/.kivakit:/host/.kivakit" \
     --volume "$HOME/.mesakit:/host/.mesakit" \

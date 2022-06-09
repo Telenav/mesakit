@@ -41,7 +41,6 @@ MesaKit provides useful APIs and tools for complex back-end map data analysis an
 [**About MesaKit**](#about)  
 [**Example Code**](https://github.com/Telenav/mesakit-examples)  
 [**Published Releases**](https://repo1.maven.org/maven2/com/telenav/mesakit/)  
-[**Docker Build Environment**](documentation/building/docker-build-environment.md)
 
 ### Reference <a name = "reference"></a>&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/books-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/books-24-2x.png 2x"/>
 

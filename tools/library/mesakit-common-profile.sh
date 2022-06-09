@@ -1,21 +1,21 @@
 
-if [ -z "$MESAKIT_WORKSPACE" ]; then
-    system_variable MESAKIT_WORKSPACE "$KIVAKIT_WORKSPACE"
+if [ -z "$TELENAV_WORKSPACE" ]; then
+    system_variable TELENAV_WORKSPACE "$TELENAV_WORKSPACE"
 fi
 
-source "$MESAKIT_WORKSPACE"/mesakit/tools/library/mesakit-library-functions.sh
+source "$TELENAV_WORKSPACE"/mesakit/tools/library/mesakit-library-functions.sh
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-system_variable MESAKIT_HOME "$MESAKIT_WORKSPACE/mesakit"
-system_variable MESAKIT_EXTENSIONS_HOME "$MESAKIT_WORKSPACE/mesakit-extensions"
-system_variable MESAKIT_EXAMPLES_HOME "$MESAKIT_WORKSPACE/mesakit-examples"
+system_variable MESAKIT_HOME "$TELENAV_WORKSPACE/mesakit"
+system_variable MESAKIT_EXTENSIONS_HOME "$TELENAV_WORKSPACE/mesakit-extensions"
+system_variable MESAKIT_EXAMPLES_HOME "$TELENAV_WORKSPACE/mesakit-examples"
 system_variable MESAKIT_VERSION "$(project_version "$MESAKIT_HOME")"
 system_variable MESAKIT_BUILD "$(project_build "$MESAKIT_HOME")"
 system_variable MESAKIT_TOOLS "$MESAKIT_HOME/tools"
 system_variable MESAKIT_JAVA_OPTIONS "-Xmx12g"
 
-if [ -z "$KIVAKIT_WORKSPACE" ]; then
+if [ -z "$TELENAV_WORKSPACE" ]; then
 
     prepend_path "$M2_HOME/bin"
     prepend_path "$JAVA_HOME/bin"
@@ -28,12 +28,12 @@ append_path "$MESAKIT_TOOLS/library"
 append_path "$MESAKIT_TOOLS/releasing"
 append_path "$MESAKIT_EXTENSIONS_HOME/tools/applications"
 
-system_variable MESAKIT_ASSETS_HOME "$MESAKIT_WORKSPACE/mesakit-assets"
+system_variable MESAKIT_ASSETS_HOME "$TELENAV_WORKSPACE/mesakit-assets"
 system_variable MESAKIT_CACHE_HOME "$HOME/.mesakit/$MESAKIT_VERSION"
 
 source "$MESAKIT_TOOLS"/library/mesakit-projects.sh
 
-if [ -z "$KIVAKIT_WORKSPACE" ]; then
+if [ -z "$TELENAV_WORKSPACE" ]; then
 
     source_project_profile "cactus-build"
 
@@ -42,7 +42,7 @@ fi
 echo " "
 echo "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ MesaKit Environment ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
 echo "┋"
-echo -e "┋        MESAKIT_WORKSPACE: ${ATTENTION}$MESAKIT_WORKSPACE${NORMAL}"
+echo -e "┋        TELENAV_WORKSPACE: ${ATTENTION}$TELENAV_WORKSPACE${NORMAL}"
 echo -e "┋             MESAKIT_HOME: ${ATTENTION}$MESAKIT_HOME${NORMAL}"
 echo -e "┋          MESAKIT_VERSION: ${ATTENTION}$MESAKIT_VERSION${NORMAL}"
 echo -e "┋            MESAKIT_BUILD: ${ATTENTION}$MESAKIT_BUILD${NORMAL}"
@@ -55,9 +55,9 @@ echo "┋"
 echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
 echo " "
 
-date +setup-time=%Y.%m.%d-%I.%M%p > "$MESAKIT_WORKSPACE"/mesakit/setup.properties
+date +setup-time=%Y.%m.%d-%I.%M%p > "$TELENAV_WORKSPACE"/mesakit/setup.properties
 
-cd "$MESAKIT_WORKSPACE"
+cd "$TELENAV_WORKSPACE"
 
 if [ "$SHOW_SYSTEM_ENVIRONMENT" != "false" ]; then
 

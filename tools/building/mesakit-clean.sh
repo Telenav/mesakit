@@ -7,9 +7,9 @@
 #
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-source "$MESAKIT_WORKSPACE"/mesakit/tools/library/mesakit-library-functions.sh
+source "$TELENAV_WORKSPACE"/mesakit/tools/library/mesakit-library-functions.sh
 
 clean_cache "$MESAKIT_CACHE_HOME"
-clean_temporary_files "$MESAKIT_WORKSPACE"
+clean_temporary_files "$TELENAV_WORKSPACE"
 
 bash mesakit-maven-setup.sh

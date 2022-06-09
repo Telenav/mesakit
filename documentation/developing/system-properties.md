@@ -20,7 +20,7 @@ One or more system properties can be defined in Java by passing switch(es) of th
 
 The following properties affect the function of MesaKit in useful ways.
 
-| System Property | Description |
-|-----------------|-------------|
-| **MESAKIT_RTREE_VISUAL_DEBUG** | Turns on visual debugging of RTree spatial indexes |
-| **MESAKIT_EDGE_CONFLATER_VISUAL_DEBUG** | Turns on visual debugging of edge conflation |
+| System Property                         | Description                                        |
+|-----------------------------------------|----------------------------------------------------|
+| **MESAKIT_RTREE_VISUAL_DEBUG**          | Turns on visual debugging of RTree spatial indexes |
+| **MESAKIT_EDGE_CONFLATER_VISUAL_DEBUG** | Turns on visual debugging of edge conflation       |
