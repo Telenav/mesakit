@@ -12,7 +12,7 @@
 
 ## KivaKit - Java Migration Notes &nbsp;  <img src="https://telenav.github.io/telenav-assets/images/icons/footprints-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/footprints-32-2x.png 2x"/>
 
-<img src="https://telenav.github.io/telenav-assets/images/icons/horizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512-2x.png 2x"/>
 
 ### Welcome to Java 11+ &nbsp;&nbsp;    <img src="https://telenav.github.io/telenav-assets/images/icons/coffee-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/coffee-32-2x.png 2x"/>
 
@@ -82,4 +82,4 @@ This provides access to specific modules in KivaKit to your application and only
 
 <br/> 
 
-<img src="https://telenav.github.io/telenav-assets/images/icons/horizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512-2x.png 2x"/>
