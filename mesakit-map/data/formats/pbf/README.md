@@ -63,7 +63,7 @@ This module contains code for working with OSM PBF files
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
 
-### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/box-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/box-32-2x.png 2x"/>
+### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/box-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/box-24-2x.png 2x"/>
 
 [*com.telenav.mesakit.map.data.formats.pbf*](https://www.mesakit.org/0.9.13/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/com.telenav.mesakit.map.data.formats.pbf.svg)  
 [*com.telenav.mesakit.map.data.formats.pbf.lexakai*](https://www.mesakit.org/0.9.13/lexakai/mesakit/mesakit-map/data/formats/pbf/documentation/diagrams/com.telenav.mesakit.map.data.formats.pbf.lexakai.svg)  

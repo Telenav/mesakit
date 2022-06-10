@@ -39,7 +39,7 @@ This script does the following:
 
 Restart your terminal window to ensure all environment variables are updated.
 
-### 2. Preparing the Release &nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/box-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/box-32-2x.png 2x"></img>
+### 2. Preparing the Release &nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/box-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/box-24-2x.png 2x"></img>
 
 Once the release branch has been created, several steps need to be performed manually to prepare
 the branch for publication.

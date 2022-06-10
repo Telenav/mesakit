@@ -11,7 +11,7 @@
 <img src="https://telenav.github.io/telenav-assets/images/logos/zulip/zulip-32.png" srcset="https://telenav.github.io/telenav-assets/images/logos/zulip/zulip-32-2x.png 2x"/>
 </a>
 
-## KivaKit Development &nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/toolbox-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/toolbox-32-2x.png 2x"></img>
+## KivaKit Development &nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/toolbox-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/toolbox-24-2x.png 2x"></img>
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512-2x.png 2x"></img>
 

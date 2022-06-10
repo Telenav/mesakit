@@ -54,7 +54,7 @@ Modules provide strong encapsulation, which has some advantages:
 * HotSpot can perform more aggressive optimizations on code that isn't public
 * It's easier to use only part of the JDK or KivaKit without dragging in a lot of unneeded dependencies
 
-### Strong Encapsulation   <img src="https://telenav.github.io/telenav-assets/images/icons/box-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/box-32-2x.png 2x"/>
+### Strong Encapsulation   <img src="https://telenav.github.io/telenav-assets/images/icons/box-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/box-24-2x.png 2x"/>
 
 Modular Java is more secure and performs better, but it places certain restrictions of Java 9+ code.
 
