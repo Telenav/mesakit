@@ -24,6 +24,10 @@
 
     <artifactId>mesakit-internal-map-measurements-unit-tests</artifactId>
 
+    <properties>
+        <maven.javadoc.skip>true</maven.javadoc.skip>
+    </properties>
+
     <dependencies>
 
         <!-- Testing -->
