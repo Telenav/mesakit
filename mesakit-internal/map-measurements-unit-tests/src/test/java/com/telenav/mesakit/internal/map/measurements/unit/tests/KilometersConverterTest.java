@@ -16,20 +16,25 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.mesakit.map.measurements.unit.tests;
+package com.telenav.mesakit.internal.map.measurements.unit.tests;
 
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.listeners.ThrowingListener;
+import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.testing.MeasurementsUnitTest;
-import com.telenav.mesakit.map.measurements.geographic.Direction;
 import org.junit.Test;
 
-public class DirectionTest extends MeasurementsUnitTest
+public class KilometersConverterTest extends MeasurementsUnitTest
 {
     @Test
-    public void testParse()
+    public void testToObject()
     {
-        ensureEqual(Direction.parse("SW").toString(), "SW");
-        ensureEqual(Direction.parse("northbound").toString(), "N");
-        ensureEqual(Direction.parse("SoutheAst").toString(), "SE");
-        ensureEqual(Direction.parse("SOUTHbound").toString(), "S");
+        var distance = new Distance.KilometersConverter(new ThrowingListener()).convert("0");
+        ensureEqual(Distance.kilometers(0), distance);
+
+        distance = new Distance.KilometersConverter(new ThrowingListener()).convert("33.3");
+        ensureEqual(Distance.kilometers(33.3), distance);
+
+        ensureNull(new Distance.KilometersConverter(Listener.emptyListener()).convert("hello"));
     }
 }

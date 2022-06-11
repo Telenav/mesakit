@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.region.test.unit;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.mesakit.map.region.testing.RegionUnitTest;
+import com.telenav.mesakit.map.region.testing.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.County;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;

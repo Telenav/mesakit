@@ -31,6 +31,7 @@ import java.util.List;
  *
  * @author jonathanl (shibo)
  */
+@SuppressWarnings("unused")
 public class GraphRandomValueFactory extends GeographyRandomValueFactory
 {
     protected abstract class RandomListBuilder<T>

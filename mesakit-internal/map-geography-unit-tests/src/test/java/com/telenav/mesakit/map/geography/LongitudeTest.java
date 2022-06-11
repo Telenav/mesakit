@@ -16,7 +16,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.map.geography.testing.unit;
+package com.telenav.mesakit.map.geography;
 
 import com.telenav.mesakit.map.geography.Longitude;
 import com.telenav.mesakit.map.geography.Precision;

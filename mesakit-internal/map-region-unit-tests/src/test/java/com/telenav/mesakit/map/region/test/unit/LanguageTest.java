@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.region.test.unit;
 
 import com.telenav.kivakit.core.locale.LanguageIsoCode;
-import com.telenav.mesakit.mesakit.map.region.testing.RegionUnitTest;
+import com.telenav.mesakit.map.region.testing.RegionUnitTest;
 import org.junit.Test;
 
 public class LanguageTest extends RegionUnitTest

@@ -39,6 +39,7 @@ class TestLeaf extends Leaf<Polyline>
         super(index, parent);
     }
 
+    @SuppressWarnings("unused")
     private TestLeaf()
     {
         super(null, null);

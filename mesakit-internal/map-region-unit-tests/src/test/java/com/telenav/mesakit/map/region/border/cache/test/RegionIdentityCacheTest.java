@@ -24,7 +24,7 @@ import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.mesakit.map.region.RegionIdentifier;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionProject;
-import com.telenav.mesakit.mesakit.map.region.testing.RegionUnitTest;
+import com.telenav.mesakit.map.region.testing.RegionUnitTest;
 import com.telenav.mesakit.map.region.border.cache.RegionIdentityCache;
 import com.telenav.mesakit.map.region.regions.State;
 import org.junit.Test;

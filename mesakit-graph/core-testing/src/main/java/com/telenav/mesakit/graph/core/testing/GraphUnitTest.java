@@ -55,7 +55,7 @@ import com.telenav.mesakit.map.geography.Precision;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.overpass.OverpassDataDownloader;
-import com.telenav.mesakit.mesakit.map.region.testing.RegionUnitTest;
+import com.telenav.mesakit.map.region.testing.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Country;
 
 import static com.telenav.kivakit.core.messaging.Listener.emptyListener;

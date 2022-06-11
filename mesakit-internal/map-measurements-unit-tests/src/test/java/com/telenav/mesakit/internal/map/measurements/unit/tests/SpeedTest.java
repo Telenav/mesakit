@@ -16,7 +16,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.mesakit.mesakit.map.measurements.unit.tests;
+package com.telenav.mesakit.internal.map.measurements.unit.tests;
 
 import com.telenav.mesakit.map.measurements.testing.MeasurementsUnitTest;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
