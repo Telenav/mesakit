@@ -16,7 +16,7 @@
 
     <parent>
         <groupId>com.telenav.mesakit</groupId>
-        <artifactId>mesakit-superpom</artifactId>
+        <artifactId>telenav-superpom-mesakit</artifactId>
         <version>0.9.13</version>
         <relativePath/>
     </parent>
