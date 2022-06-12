@@ -1,36 +1,44 @@
 package org.nocrala.tools.gis.data.esri.shapefile.shape.shapes;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import org.nocrala.tools.gis.data.esri.shapefile.ValidationPreferences;
 import org.nocrala.tools.gis.data.esri.shapefile.shape.AbstractShape;
 import org.nocrala.tools.gis.data.esri.shapefile.shape.ShapeHeader;
 import org.nocrala.tools.gis.data.esri.shapefile.shape.ShapeType;
 import org.nocrala.tools.gis.data.esri.shapefile.util.ISUtil;
 
-public abstract class AbstractPointShape extends AbstractShape {
+import java.io.IOException;
+import java.io.InputStream;
 
-  private double x;
-  private double y;
+/**
+ * The MIT License (MIT)
+ * Copyright (c) 2014 measures 
+ */
 
-  public AbstractPointShape(final ShapeHeader shapeHeader,
-      final ShapeType shapeType, final InputStream is,
-      final ValidationPreferences rules) throws IOException {
-    super(shapeHeader, shapeType, is, rules);
+public abstract class AbstractPointShape extends AbstractShape
+{
+    private double x;
 
-    this.x = ISUtil.readLeDouble(is);
-    this.y = ISUtil.readLeDouble(is);
-  }
+    private double y;
 
-  // Getters
+    public AbstractPointShape(final ShapeHeader shapeHeader,
+                              final ShapeType shapeType, final InputStream is,
+                              final ValidationPreferences rules) throws IOException
+    {
+        super(shapeHeader, shapeType, is, rules);
 
-  public double getX() {
-    return x;
-  }
+        this.x = ISUtil.readLeDouble(is);
+        this.y = ISUtil.readLeDouble(is);
+    }
 
-  public double getY() {
-    return y;
-  }
+    // Getters
 
+    public double getX()
+    {
+        return x;
+    }
+
+    public double getY()
+    {
+        return y;
+    }
 }

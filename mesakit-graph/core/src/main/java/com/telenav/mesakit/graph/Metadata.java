@@ -266,7 +266,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * Parses a complete standardized metadata string of the form:
      * <ul>
-     *     [data-supplier]-[data-specification]-[data-format]-[name]-[bounds]?-[data-version]?-[data-build]?.
+     *     <li>[data-supplier]-[data-specification]-[data-format]-[name]-[bounds]?-[data-version]?-[data-build]?.</li>
      * </ul>
      * <ul>
      *     <li>HERE-UniDb-PBF-North_America-2007Q4-2020.04.01_04.01PM_PT</li>
@@ -526,10 +526,10 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * A filename for this metadata of the form:
      * <ul>
-     *     [supplier]-[specification]-[format]-[name]-[version]-[build].
+     *     <li>[supplier]-[specification]-[format]-[name]-[version]-[build].</li>
      * </ul>
      * <ul>
-     *     HERE-UniDb-PBF-North_America-2007Q4-2020.04.01_04.01PM_PT
+     *     <li>HERE-UniDb-PBF-North_America-2007Q4-2020.04.01_04.01PM_PT</li>
      * </ul>
      * The data version and build are optional.
      *

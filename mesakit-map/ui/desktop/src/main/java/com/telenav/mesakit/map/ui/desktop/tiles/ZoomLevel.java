@@ -39,7 +39,6 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
  * <p>
  * In some Telenav applications, zoom level 0 is zoomed in as far as possible and zoom level 17 is zoomed out as far as
  * possible. The Telenav zoom level can be retrieved with {@link #asTelenavZoomLevel()}.
- * <p>
  *
  * @author jonathanl (shibo)
  */

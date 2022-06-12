@@ -11,17 +11,23 @@ import org.nocrala.tools.gis.data.esri.shapefile.shape.ShapeHeader;
 import org.nocrala.tools.gis.data.esri.shapefile.shape.ShapeType;
 import org.nocrala.tools.gis.data.esri.shapefile.util.ISUtil;
 
+/**
+ * The MIT License (MIT)
+ * Copyright (c) 2014 measures 
+ */
+
+@SuppressWarnings({ "unused", "DuplicatedCode" })
 public abstract class AbstractPolyZShape extends AbstractPolyShape {
 
   private static final int BASE_CONTENT_LENGTH = (4 + 8 * 4 + 4 + 4 + 8 * 2 + 8 * 2) / 2;
 
-  private double minZ;
-  private double maxZ;
-  private double[] z;
+  private final double minZ;
+  private final double maxZ;
+  private final double[] z;
 
-  private double minM;
-  private double maxM;
-  private double[] measures;
+  private final double minM;
+  private final double maxM;
+  private final double[] measures;
 
   public AbstractPolyZShape(final ShapeHeader shapeHeader,
       final ShapeType shapeType, final InputStream is,

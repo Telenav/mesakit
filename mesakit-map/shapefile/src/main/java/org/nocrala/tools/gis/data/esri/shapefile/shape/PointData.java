@@ -1,21 +1,29 @@
 package org.nocrala.tools.gis.data.esri.shapefile.shape;
 
-public class PointData {
+/**
+ * The MIT License (MIT)
+ * Copyright (c) 2014 measures 
+ */
 
-  private double x;
-  private double y;
+public class PointData
+{
+    private final double x;
 
-  public PointData(double x, double y) {
-    this.x = x;
-    this.y = y;
-  }
+    private final double y;
 
-  public double getX() {
-    return x;
-  }
+    public PointData(double x, double y)
+    {
+        this.x = x;
+        this.y = y;
+    }
 
-  public double getY() {
-    return y;
-  }
+    public double getX()
+    {
+        return x;
+    }
 
+    public double getY()
+    {
+        return y;
+    }
 }

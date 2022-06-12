@@ -1,9 +1,5 @@
 package org.nocrala.tools.gis.data.esri.shapefile.shape.shapes;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Arrays;
-
 import org.nocrala.tools.gis.data.esri.shapefile.ValidationPreferences;
 import org.nocrala.tools.gis.data.esri.shapefile.exception.InvalidShapeFileException;
 import org.nocrala.tools.gis.data.esri.shapefile.shape.AbstractShape;
@@ -13,139 +9,172 @@ import org.nocrala.tools.gis.data.esri.shapefile.shape.ShapeHeader;
 import org.nocrala.tools.gis.data.esri.shapefile.shape.ShapeType;
 import org.nocrala.tools.gis.data.esri.shapefile.util.ISUtil;
 
-public abstract class AbstractPolyShape extends AbstractShape {
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Arrays;
 
-  protected double boxMinX;
-  protected double boxMinY;
-  protected double boxMaxX;
-  protected double boxMaxY;
+/**
+ * The MIT License (MIT)
+ * Copyright (c) 2014 measures 
+ */
 
-  protected int numberOfParts;
-  protected int numberOfPoints;
+@SuppressWarnings({ "unused", "DuplicatedCode" })
+public abstract class AbstractPolyShape extends AbstractShape
+{
+    protected double boxMinX;
 
-  protected int[] partFirstPoints;
-  protected PointData[] points;
+    protected double boxMinY;
 
-  public AbstractPolyShape(final ShapeHeader shapeHeader,
-      final ShapeType shapeType, final InputStream is,
-      final ValidationPreferences rules) throws IOException,
-      InvalidShapeFileException {
+    protected double boxMaxX;
 
-    super(shapeHeader, shapeType, is, rules);
+    protected double boxMaxY;
 
-    this.boxMinX = ISUtil.readLeDouble(is);
-    this.boxMinY = ISUtil.readLeDouble(is);
-    this.boxMaxX = ISUtil.readLeDouble(is);
-    this.boxMaxY = ISUtil.readLeDouble(is);
+    protected int numberOfParts;
 
-    this.numberOfParts = ISUtil.readLeInt(is);
+    protected int numberOfPoints;
 
-    if (this.numberOfParts < 0) {
-      throw new InvalidShapeFileException("Invalid " + getShapeTypeName()
-          + " shape number of parts. "
-          + "It should be a number greater than zero, but found "
-          + this.numberOfParts + ". " + Const.PREFERENCES);
+    protected int[] partFirstPoints;
+
+    protected PointData[] points;
+
+    public AbstractPolyShape(final ShapeHeader shapeHeader,
+                             final ShapeType shapeType, final InputStream is,
+                             final ValidationPreferences rules) throws IOException,
+            InvalidShapeFileException
+    {
+
+        super(shapeHeader, shapeType, is, rules);
+
+        this.boxMinX = ISUtil.readLeDouble(is);
+        this.boxMinY = ISUtil.readLeDouble(is);
+        this.boxMaxX = ISUtil.readLeDouble(is);
+        this.boxMaxY = ISUtil.readLeDouble(is);
+
+        this.numberOfParts = ISUtil.readLeInt(is);
+
+        if (this.numberOfParts < 0)
+        {
+            throw new InvalidShapeFileException("Invalid " + getShapeTypeName()
+                    + " shape number of parts. "
+                    + "It should be a number greater than zero, but found "
+                    + this.numberOfParts + ". " + Const.PREFERENCES);
+        }
+
+        this.numberOfPoints = ISUtil.readLeInt(is);
+
+        if (this.numberOfPoints < 0)
+        {
+            throw new InvalidShapeFileException("Invalid " + getShapeTypeName()
+                    + " shape number of points. "
+                    + "It should be a number greater than zero, but found "
+                    + this.numberOfPoints + ". " + Const.PREFERENCES);
+        }
+
+        if (this.numberOfParts > this.numberOfPoints)
+        {
+            throw new InvalidShapeFileException("Invalid " + getShapeTypeName()
+                    + " shape number of parts. "
+                    + "It should be smaller or equal to the number of points ("
+                    + this.numberOfPoints + "), but found " + this.numberOfParts + ". "
+                    + Const.PREFERENCES);
+        }
+
+        if (!rules.isAllowUnlimitedNumberOfPointsPerShape())
+        {
+            if (this.numberOfPoints > rules.getMaxNumberOfPointsPerShape())
+            {
+                throw new InvalidShapeFileException("Invalid " + getShapeTypeName()
+                        + " shape number of points. "
+                        + "The allowed maximum number of points was "
+                        + rules.getMaxNumberOfPointsPerShape() + " but found "
+                        + this.numberOfPoints + ". " + Const.PREFERENCES);
+            }
+        }
+
+        this.partFirstPoints = new int[this.numberOfParts];
+        for (int i = 0; i < this.numberOfParts; i++)
+        {
+            this.partFirstPoints[i] = ISUtil.readLeInt(is);
+        }
+
+        this.points = new PointData[this.numberOfPoints];
+        for (int i = 0; i < this.numberOfPoints; i++)
+        {
+            double x = ISUtil.readLeDouble(is);
+            double y = ISUtil.readLeDouble(is);
+            this.points[i] = new PointData(x, y);
+        }
     }
 
-    this.numberOfPoints = ISUtil.readLeInt(is);
-
-    if (this.numberOfPoints < 0) {
-      throw new InvalidShapeFileException("Invalid " + getShapeTypeName()
-          + " shape number of points. "
-          + "It should be a number greater than zero, but found "
-          + this.numberOfPoints + ". " + Const.PREFERENCES);
+    public double getBoxMaxX()
+    {
+        return boxMaxX;
     }
 
-    if (this.numberOfParts > this.numberOfPoints) {
-      throw new InvalidShapeFileException("Invalid " + getShapeTypeName()
-          + " shape number of parts. "
-          + "It should be smaller or equal to the number of points ("
-          + this.numberOfPoints + "), but found " + this.numberOfParts + ". "
-          + Const.PREFERENCES);
+    public double getBoxMaxY()
+    {
+        return boxMaxY;
     }
 
-    if (!rules.isAllowUnlimitedNumberOfPointsPerShape()) {
-      if (this.numberOfPoints > rules.getMaxNumberOfPointsPerShape()) {
-        throw new InvalidShapeFileException("Invalid " + getShapeTypeName()
-            + " shape number of points. "
-            + "The allowed maximum number of points was "
-            + rules.getMaxNumberOfPointsPerShape() + " but found "
-            + this.numberOfPoints + ". " + Const.PREFERENCES);
-      }
+    // Getters
+
+    public double getBoxMinX()
+    {
+        return boxMinX;
     }
 
-    this.partFirstPoints = new int[this.numberOfParts];
-    for (int i = 0; i < this.numberOfParts; i++) {
-      this.partFirstPoints[i] = ISUtil.readLeInt(is);
+    public double getBoxMinY()
+    {
+        return boxMinY;
     }
 
-    this.points = new PointData[this.numberOfPoints];
-    for (int i = 0; i < this.numberOfPoints; i++) {
-      double x = ISUtil.readLeDouble(is);
-      double y = ISUtil.readLeDouble(is);
-      this.points[i] = new PointData(x, y);
+    public int getNumberOfParts()
+    {
+        return numberOfParts;
     }
 
-  }
-
-  protected abstract String getShapeTypeName();
-
-  public PointData[] getPointsOfPart(final int i) {
-    if (i < 0 || i >= this.numberOfParts) {
-      throw new RuntimeException("Invalid part " + i + ". Available parts [0:"
-          + this.numberOfParts + "].");
-    }
-    int from = this.partFirstPoints[i];
-    int to = i < this.numberOfParts - 1 ? this.partFirstPoints[i + 1]
-        : this.points.length;
-
-    if (from < 0 || from > this.points.length) {
-      throw new RuntimeException("Malformed content. Part start (" + from
-          + ") is out of range. Valid range of points is [0:"
-          + this.points.length + "].");
+    public int getNumberOfPoints()
+    {
+        return numberOfPoints;
     }
 
-    if (to < 0 || to > this.points.length) {
-      throw new RuntimeException("Malformed content. Part end (" + to
-          + ") is out of range. Valid range of points is [0:"
-          + this.points.length + "].");
+    public int[] getPartFirstPoints()
+    {
+        return partFirstPoints;
     }
 
-    return Arrays.copyOfRange(this.points, from, to);
-  }
+    public PointData[] getPoints()
+    {
+        return points;
+    }
 
-  // Getters
+    public PointData[] getPointsOfPart(final int i)
+    {
+        if (i < 0 || i >= this.numberOfParts)
+        {
+            throw new RuntimeException("Invalid part " + i + ". Available parts [0:"
+                    + this.numberOfParts + "].");
+        }
+        int from = this.partFirstPoints[i];
+        int to = i < this.numberOfParts - 1 ? this.partFirstPoints[i + 1]
+                : this.points.length;
 
-  public double getBoxMinX() {
-    return boxMinX;
-  }
+        if (from < 0 || from > this.points.length)
+        {
+            throw new RuntimeException("Malformed content. Part start (" + from
+                    + ") is out of range. Valid range of points is [0:"
+                    + this.points.length + "].");
+        }
 
-  public double getBoxMinY() {
-    return boxMinY;
-  }
+        if (to < 0 || to > this.points.length)
+        {
+            throw new RuntimeException("Malformed content. Part end (" + to
+                    + ") is out of range. Valid range of points is [0:"
+                    + this.points.length + "].");
+        }
 
-  public double getBoxMaxX() {
-    return boxMaxX;
-  }
+        return Arrays.copyOfRange(this.points, from, to);
+    }
 
-  public double getBoxMaxY() {
-    return boxMaxY;
-  }
-
-  public int getNumberOfParts() {
-    return numberOfParts;
-  }
-
-  public int getNumberOfPoints() {
-    return numberOfPoints;
-  }
-
-  public int[] getPartFirstPoints() {
-    return partFirstPoints;
-  }
-
-  public PointData[] getPoints() {
-    return points;
-  }
-
+    protected abstract String getShapeTypeName();
 }

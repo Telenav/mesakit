@@ -9,33 +9,39 @@ import org.nocrala.tools.gis.data.esri.shapefile.exception.InvalidShapeFileExcep
 import org.nocrala.tools.gis.data.esri.shapefile.shape.ShapeType;
 import org.nocrala.tools.gis.data.esri.shapefile.util.ISUtil;
 
-public class ShapeFileHeader {
+/**
+ * The MIT License (MIT)
+ * Copyright (c) 2014 measures 
+ */
 
+@SuppressWarnings("unused")
+public class ShapeFileHeader
+{
 	private static final int SHAPE_FILE_CODE = 9994;
 	private static final int SHAPE_FILE_VERSION = 1000;
 
-	private int fileCode;
+	private final int fileCode;
 
-	private int unused0;
-	private int unused1;
-	private int unused2;
-	private int unused3;
-	private int unused4;
+	private final int unused0;
+	private final int unused1;
+	private final int unused2;
+	private final int unused3;
+	private final int unused4;
 
-	private int fileLength;
-	private int version;
-	private ShapeType shapeType;
+	private final int fileLength;
+	private final int version;
+	private final ShapeType shapeType;
 
-	private double boxMinX;
-	private double boxMinY;
-	private double boxMaxX;
-	private double boxMaxY;
+	private final double boxMinX;
+	private final double boxMinY;
+	private final double boxMaxX;
+	private final double boxMaxY;
 
-	private double boxMinZ;
-	private double boxMaxZ;
+	private final double boxMinZ;
+	private final double boxMaxZ;
 
-	private double boxMinM;
-	private double boxMaxM;
+	private final double boxMinM;
+	private final double boxMaxM;
 
 	public ShapeFileHeader(final InputStream is,
 			final ValidationPreferences rules) throws IOException,
