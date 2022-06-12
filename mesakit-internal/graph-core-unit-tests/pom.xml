@@ -36,12 +36,10 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-graph-core-testing</artifactId>
             <version>${project.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-graph-core</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
