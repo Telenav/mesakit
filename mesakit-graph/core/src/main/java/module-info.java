@@ -47,9 +47,14 @@ open module mesakit.graph.core
     exports com.telenav.mesakit.graph.navigation.navigators;
     exports com.telenav.mesakit.graph.navigation;
     exports com.telenav.mesakit.graph.relations.restrictions;
+    exports com.telenav.mesakit.graph.relations.restrictions.classifiers;
     exports com.telenav.mesakit.graph.specifications.common.edge.store;
+    exports com.telenav.mesakit.graph.specifications.common.edge.store.index;
+    exports com.telenav.mesakit.graph.specifications.common.edge.store.stores.roadname;
+    exports com.telenav.mesakit.graph.specifications.common.edge.store.stores.polyline;
     exports com.telenav.mesakit.graph.specifications.common.edge;
     exports com.telenav.mesakit.graph.specifications.common.element;
+    exports com.telenav.mesakit.graph.specifications.common.element.store;
     exports com.telenav.mesakit.graph.specifications.common.graph.loader;
     exports com.telenav.mesakit.graph.specifications.common.node.store;
     exports com.telenav.mesakit.graph.specifications.common.node;
