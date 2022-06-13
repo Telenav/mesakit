@@ -88,19 +88,17 @@ MesaKit provides support for:
 
 ### Project Resources <a name = "project-resources"></a> &nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/water-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/water-32-2x.png 2x"/>
 
-| Resource         | Description                                                                                                                                                                              |
-|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Project Name     | MesaKit                                                                                                                                                                                  |
-| Summary          | A modular toolkit for developing mapping and navigation software                                                                                                                         |
-| Javadoc Coverage | <!-- <img src="https://www.mesakit.org/images/meter-50-96.png" srcset="https://www.mesakit.org/images/meter-50-96-2x.png 2x"/>
- --> <img src="https://www.mesakit.org/images/meter-50-96.png" srcset="https://www.mesakit.org/images/meter-50-96-2x.png 2x"/>
- <!-- end --> |
-| Lead             | [Jonathan Locke (Luo, Shibo)](mailto:jonathanl@telenav.com)                                                                                                                              |
-| Administrator    | [Jonathan Locke (Luo, Shibo)](mailto:jonathanl@telenav.com)                                                                                                                              |
-| Twitter          | [@OpenMesaKit](https://twitter.com/openmesakit)                                                                                                                                          |
-| Issues           | [GitHub Issues](https://github.com/Telenav/mesakit/issues)                                                                                                                               |
-| Code             | [GitHub](https://github.com/Telenav/mesakit)                                                                                                                                             |
-| Checkout         | `git clone https://github.com/Telenav/mesakit.git`                                                                                                                                       |
+| Resource         | Description                                                                                                                                                                                                                                                                |
+|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Project Name     | MesaKit                                                                                                                                                                                                                                                                    |
+| Summary          | A modular toolkit for developing mapping and navigation software                                                                                                                                                                                                           |
+| Javadoc Coverage | <!-- <img src="https://www.mesakit.org/images/meter-50-96.png" srcset="https://www.mesakit.org/images/meter-50-96-2x.png 2x"/>  --> <img src="https://www.mesakit.org/images/meter-50-96.png" srcset="https://www.mesakit.org/images/meter-50-96-2x.png 2x"/> <!-- end --> |
+| Lead             | [Jonathan Locke (Luo, Shibo)](mailto:jonathanl@telenav.com)                                                                                                                                                                                                                |
+| Administrator    | [Jonathan Locke (Luo, Shibo)](mailto:jonathanl@telenav.com)                                                                                                                                                                                                                |
+| Twitter          | [@OpenMesaKit](https://twitter.com/openmesakit)                                                                                                                                                                                                                            |
+| Issues           | [GitHub Issues](https://github.com/Telenav/mesakit/issues)                                                                                                                                                                                                                 |
+| Code             | [GitHub](https://github.com/Telenav/mesakit)                                                                                                                                                                                                                               |
+| Checkout         | `git clone https://github.com/Telenav/mesakit.git`                                                                                                                                                                                                                         |
 
 [//]: # (end-user-text)
 
