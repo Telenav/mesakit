@@ -574,7 +574,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
                                 var entry = archive.entry(zipEntryName);
                                 if (entry != null)
                                 {
-                                    information("Extracting $ to $", zipEntryName, extracted);
+                                    // information("Extracting $ to $", zipEntryName, extracted);
                                     entry.safeCopyTo(extracted, OVERWRITE);
                                 }
                             }
