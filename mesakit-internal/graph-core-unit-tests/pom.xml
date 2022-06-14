@@ -22,8 +22,8 @@
         <relativePath/>
     </parent>
 
-    <artifactId>mesakit-internal-graph-core-unit-tests</artifactId>
-
+    <artifactId>mesakit--internal-graph-core-unit-tests</artifactId>
+    <version>0.9.13</version>
     <properties>
         <maven.javadoc.skip>true</maven.javadoc.skip>
     </properties>

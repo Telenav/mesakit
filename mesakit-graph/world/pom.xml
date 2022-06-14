@@ -22,7 +22,8 @@
         <relativePath/>
     </parent>
 
-    <artifactId>mesakit-graph-world</artifactId>
+    <artifactId>mesakit--graph-world</artifactId>
+    <version>0.9.13</version>
 
     <dependencies>
 

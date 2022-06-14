@@ -22,7 +22,8 @@
         <relativePath/>
     </parent>
 
-    <artifactId>mesakit-map-region-testing</artifactId>
+    <artifactId>mesakit--map-region-testing</artifactId>
+    <version>0.9.13</version>
 
     <dependencies>
 

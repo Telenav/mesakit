@@ -22,7 +22,8 @@
         <relativePath/>
     </parent>
 
-    <artifactId>mesakit-graph-core-testing</artifactId>
+    <artifactId>mesakit--graph-core-testing</artifactId>
+    <version>0.9.13</version>
 
     <dependencies>
 

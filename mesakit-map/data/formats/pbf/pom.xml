@@ -22,7 +22,8 @@
         <relativePath/>
     </parent>
 
-    <artifactId>mesakit-map-data-formats-pbf</artifactId>
+    <artifactId>mesakit--map-data-formats-pbf</artifactId>
+    <version>0.9.13</version>
 
     <dependencies>
 

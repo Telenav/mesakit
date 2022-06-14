@@ -22,7 +22,8 @@
         <relativePath/>
     </parent>
 
-    <artifactId>mesakit-graph-core</artifactId>
+    <artifactId>mesakit--graph-core</artifactId>
+    <version>0.9.13</version>
 
     <dependencies>
 

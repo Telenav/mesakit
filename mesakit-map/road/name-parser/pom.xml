@@ -22,7 +22,8 @@
         <relativePath/>
     </parent>
 
-    <artifactId>mesakit-map-road-name-parser</artifactId>
+    <artifactId>mesakit--map-road-name-parser</artifactId>
+    <version>0.9.13</version>
 
     <dependencies>
 

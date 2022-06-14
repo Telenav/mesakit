@@ -22,7 +22,8 @@
         <relativePath/>
     </parent>
 
-    <artifactId>mesakit-map-data-library</artifactId>
+    <artifactId>mesakit--map-data-library</artifactId>
+    <version>0.9.13</version>
 
     <dependencies>
 

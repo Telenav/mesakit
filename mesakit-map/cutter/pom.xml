@@ -22,7 +22,8 @@
         <relativePath/>
     </parent>
 
-    <artifactId>mesakit-map-cutter</artifactId>
+    <artifactId>mesakit--map-cutter</artifactId>
+    <version>0.9.13</version>
 
     <dependencies>
 

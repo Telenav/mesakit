@@ -22,7 +22,8 @@
         <relativePath/>
     </parent>
 
-    <artifactId>mesakit-graph-query</artifactId>
+    <artifactId>mesakit--graph-query</artifactId>
+    <version>0.9.13</version>
 
     <dependencies>
 

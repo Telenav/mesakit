@@ -22,7 +22,8 @@
         <relativePath/>
     </parent>
 
-    <artifactId>mesakit-map-road-model</artifactId>
+    <artifactId>mesakit--map-road-model</artifactId>
+    <version>0.9.13</version>
 
     <dependencies>
 

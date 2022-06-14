@@ -22,7 +22,8 @@
         <relativePath/>
     </parent>
 
-    <artifactId>mesakit-map-utilities-geohash</artifactId>
+    <artifactId>mesakit--map-utilities-geohash</artifactId>
+    <version>0.9.13</version>
 
     <dependencies>
 

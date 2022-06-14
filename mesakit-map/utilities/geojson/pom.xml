@@ -22,7 +22,8 @@
         <relativePath/>
     </parent>
 
-    <artifactId>mesakit-map-utilities-geojson</artifactId>
+    <artifactId>mesakit--map-utilities-geojson</artifactId>
+    <version>0.9.13</version>
 
     <dependencies>
 
