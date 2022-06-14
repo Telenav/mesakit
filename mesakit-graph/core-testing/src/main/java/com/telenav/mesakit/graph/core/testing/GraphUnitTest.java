@@ -26,9 +26,14 @@ import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.resource.CopyMode;
+import com.telenav.kivakit.resource.Extension;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
+import com.telenav.kivakit.resource.serialization.ObjectSerializers;
+import com.telenav.kivakit.serialization.gson.GsonObjectSerializer;
+import com.telenav.kivakit.serialization.gson.factory.CoreGsonFactory;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
+import com.telenav.kivakit.serialization.properties.PropertiesObjectSerializer;
 import com.telenav.kivakit.settings.Settings;
 import com.telenav.kivakit.settings.stores.ResourceFolderSettingsStore;
 import com.telenav.mesakit.core.MesaKit;
@@ -152,6 +157,13 @@ public abstract class GraphUnitTest extends RegionUnitTest
     protected GraphUnitTest()
     {
         initializeProject(GraphProject.class);
+
+        register(new CoreGsonFactory(this));
+
+        var serializers = new ObjectSerializers();
+        serializers.add(Extension.JSON, new GsonObjectSerializer());
+        serializers.add(Extension.PROPERTIES, new PropertiesObjectSerializer());
+        register(serializers);
 
         var store = Settings.of(this);
         LOGGER.listenTo(store);
