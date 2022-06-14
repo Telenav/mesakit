@@ -27,6 +27,8 @@ import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.resource.CopyMode;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
+import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.kivakit.settings.Settings;
 import com.telenav.kivakit.settings.stores.ResourceFolderSettingsStore;
 import com.telenav.mesakit.core.MesaKit;
@@ -50,17 +52,21 @@ import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 import com.telenav.mesakit.graph.specifications.osm.graph.OsmGraph;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.osm.OsmNavigableWayFilter;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.osm.OsmRelationsFilter;
+import com.telenav.mesakit.map.geography.GeographyKryoTypes;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.Precision;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.measurements.MeasurementsKryoTypes;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.overpass.OverpassDataDownloader;
-import com.telenav.mesakit.map.region.testing.RegionUnitTest;
+import com.telenav.mesakit.map.region.RegionKryoTypes;
 import com.telenav.mesakit.map.region.regions.Country;
+import com.telenav.mesakit.map.region.testing.RegionUnitTest;
 
 import static com.telenav.kivakit.core.messaging.Listener.emptyListener;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
-import static com.telenav.kivakit.resource.Extension.*;
+import static com.telenav.kivakit.resource.Extension.GRAPH;
+import static com.telenav.kivakit.resource.Extension.OSM_PBF;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
 import static com.telenav.mesakit.graph.metadata.DataSupplier.OSM;
 import static com.telenav.mesakit.graph.specifications.library.pbf.PbfFileMetadataAnnotator.Mode.STRIP_UNREFERENCED_NODES;
@@ -174,6 +180,15 @@ public abstract class GraphUnitTest extends RegionUnitTest
         var set = new EdgeSet(Estimate.estimate(edges));
         set.addAll(edges);
         return set;
+    }
+
+    @Override
+    protected KryoTypes kryoTypes()
+    {
+        return new CoreKryoTypes()
+                .mergedWith(new MeasurementsKryoTypes())
+                .mergedWith(new GeographyKryoTypes())
+                .mergedWith(new RegionKryoTypes());
     }
 
     protected Location location(String location)
