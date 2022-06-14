@@ -23,7 +23,7 @@
     </parent>
 
     <artifactId>mesakit-core</artifactId>
-    <version>0.9.13</version>
+    <version>0.9.14</version>
 
     <dependencies>
         <dependency>

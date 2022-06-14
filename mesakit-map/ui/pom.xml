@@ -16,7 +16,7 @@
 
     <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit-map-ui</artifactId>
-    <version>0.9.13</version>
+    <version>0.9.14</version>
 
     <packaging>pom</packaging>
 

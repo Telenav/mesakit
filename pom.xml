@@ -8,9 +8,9 @@
  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  -->
 <project
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+        xmlns = "http://maven.apache.org/POM/4.0.0"
+        xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     
     <modelVersion>4.0.0</modelVersion>
 
@@ -23,15 +23,15 @@
     
     <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit</artifactId>
-    <version>0.9.13</version>
+    <version>0.9.14</version>
     
     <packaging>pom</packaging>
     <description>
         MesaKit is a framework for developing mapping and navigation software.
     </description>
-    
+
     <!-- Licensing -->
-    
+
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -39,9 +39,9 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-    
+
     <!-- Modules -->
-    
+
     <modules>
         <module>mesakit-core</module>
         <module>mesakit-map</module>
@@ -49,21 +49,21 @@
         <module>mesakit-navigation</module>
         <module>mesakit-internal</module>
     </modules>
-    
+
     <!-- Source Code -->
-    
+
     <scm>
         <connection>scm:git:https://Telenav/mesakit.git</connection>
         <developerConnection>scm:git:https://Telenav/mesakit.git</developerConnection>
         <url>https://Telenav/mesakit.git</url>
     </scm>
-    
+
     <!-- Project -->
-    
+
     <url>https://www.mesakit.org</url>
-    
+
     <!-- Issue Tracking -->
-    
+
     <issueManagement>
         <system>GitHub</system>
         <url>https://github.com/Telenav/mesakit/issues</url>
@@ -75,9 +75,9 @@
         <name>Telenav</name>
         <url>https://www.telenav.com</url>
     </organization>
-    
+
     <!-- Contributors -->
-    
+
     <developers>
         
         <developer>
