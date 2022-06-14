@@ -22,7 +22,7 @@
         <relativePath/>
     </parent>
 
-    <artifactId>mesakit--internal-map-region-unit-tests</artifactId>
+    <artifactId>mesakit-internal-map-region-unit-tests</artifactId>
     <version>0.9.14</version>
     <properties>
         <maven.javadoc.skip>true</maven.javadoc.skip>
