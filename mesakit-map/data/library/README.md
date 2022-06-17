@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-formats-library &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons//map-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons//map-32-2x.png 2x"/>
+# mesakit-map-formats-library &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/map-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/map-32-2x.png 2x"/>
 
 This module contains common code used by different map data formats
 
@@ -69,7 +69,7 @@ This module contains common code used by different map data formats
 
 Javadoc coverage for this project is 52.6%.  
   
-&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
+&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/meters/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meters/meter-50-96-2x.png 2x"/>
 
 
 

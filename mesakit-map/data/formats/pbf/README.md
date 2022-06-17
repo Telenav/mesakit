@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-formats-pbf &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons//map-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons//map-32-2x.png 2x"/>
+# mesakit-map-formats-pbf &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/map-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/map-32-2x.png 2x"/>
 
 This module contains code for working with OSM PBF files
 
@@ -87,7 +87,7 @@ This module contains code for working with OSM PBF files
 
 Javadoc coverage for this project is 46.1%.  
   
-&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
+&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/meters/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meters/meter-50-96-2x.png 2x"/>
 
 
 The following significant classes are undocumented:  

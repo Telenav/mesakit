@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-measurements &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons//ruler-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons//ruler-32-2x.png 2x"/>
+# mesakit-map-measurements &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/ruler-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/ruler-32-2x.png 2x"/>
 
 This module contains code for geographic measurements 
 
@@ -71,7 +71,7 @@ This module contains code for geographic measurements
 
 Javadoc coverage for this project is 70.8%.  
   
-&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-70-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-70-96-2x.png 2x"/>
+&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/meters/meter-70-96.png" srcset="https://telenav.github.io/telenav-assets/meters/meter-70-96-2x.png 2x"/>
 
 
 

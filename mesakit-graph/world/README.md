@@ -4,7 +4,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-graph-world &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons//graph-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons//graph-32-2x.png 2x"/>
+# mesakit-graph-world &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/graph-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/graph-32-2x.png 2x"/>
 
 This module contains a compound road network graph (a graph of graphs) that can represent the entire world
 
@@ -61,7 +61,7 @@ None
 
 Javadoc coverage for this project is 69.4%.  
   
-&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-70-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-70-96-2x.png 2x"/>
+&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/meters/meter-70-96.png" srcset="https://telenav.github.io/telenav-assets/meters/meter-70-96-2x.png 2x"/>
 
 
 The following significant classes are undocumented:  
@@ -87,7 +87,7 @@ The following significant classes are undocumented:
 | [*WorldEdgeIdentifier.Converter*](https://www.mesakit.org/0.9.14/javadoc/mesakit/mesakit.graph.world//////////////////////////////////////////////////////////////////////////.html) |  |  
 | [*WorldEdgeSequence*](https://www.mesakit.org/0.9.14/javadoc/mesakit/mesakit.graph.world//////////////////////////////////////////////////.html) |  |  
 | [*WorldEdgeSet*](https://www.mesakit.org/0.9.14/javadoc/mesakit/mesakit.graph.world/////////////////////////////////////////////.html) |  |  
-| [*WorldGraph*](https://www.mesakit.org/0.9.14/javadoc/mesakit/mesakit.graph.world///////////////////////////////////////////.html) |  |  
+| [*WorldGraph*](https://www.mesakit.org/0.9.14/javadoc/mesakit/mesakit.graph.world///////////////////////////////////////////.html) | Force-Loading Graph Element Attributes |  
 | [*WorldGraph.AccessMode*](https://www.mesakit.org/0.9.14/javadoc/mesakit/mesakit.graph.world//////////////////////////////////////////////////////.html) |  |  
 | [*WorldGraphConfiguration*](https://www.mesakit.org/0.9.14/javadoc/mesakit/mesakit.graph.world////////////////////////////////////////////////////////.html) |  |  
 | [*WorldGraphDeployments*](https://www.mesakit.org/0.9.14/javadoc/mesakit/mesakit.graph.world//////////////////////////////////////////////////////.html) |  |  

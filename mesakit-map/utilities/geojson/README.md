@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-utilities-geojson &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons//toolbox-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons//toolbox-24-2x.png 2x"/>
+# mesakit-map-utilities-geojson &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/toolbox-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/toolbox-32-2x.png 2x"/>
 
 This module contains code for working with the geojason map data presentation format
 
@@ -66,7 +66,7 @@ None
 
 Javadoc coverage for this project is 16.7%.  
   
-&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-20-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-20-96-2x.png 2x"/>
+&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/meters/meter-20-96.png" srcset="https://telenav.github.io/telenav-assets/meters/meter-20-96-2x.png 2x"/>
 
 
 The following significant classes are undocumented:  

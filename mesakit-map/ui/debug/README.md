@@ -4,7 +4,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-ui-debug &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons//bug-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons//bug-32-2x.png 2x"/>
+# mesakit-map-ui-debug &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/bug-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/bug-32-2x.png 2x"/>
 
 This module contains modules for visual debugging of maps and routing
 
@@ -58,7 +58,7 @@ None
 
 Javadoc coverage for this project is 33.3%.  
   
-&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-30-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-30-96-2x.png 2x"/>
+&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/meters/meter-30-96.png" srcset="https://telenav.github.io/telenav-assets/meters/meter-30-96-2x.png 2x"/>
 
 
 The following significant classes are undocumented:  

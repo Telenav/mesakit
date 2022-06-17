@@ -4,7 +4,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-shapefile &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons//gears-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons//gears-32-2x.png 2x"/>
+# mesakit-map-shapefile &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/gears-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/gears-32-2x.png 2x"/>
 
 This module contains code for reading shape files.
 
@@ -59,9 +59,9 @@ None
 
 ### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/books-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/books-24-2x.png 2x"/>
 
-Javadoc coverage for this project is 48.7%.  
+Javadoc coverage for this project is 50.0%.  
   
-&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
+&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/meters/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meters/meter-50-96-2x.png 2x"/>
 
 
 The following significant classes are undocumented:  
@@ -69,10 +69,14 @@ The following significant classes are undocumented:
 - org.nocrala.tools.gis.data.esri.shapefile.shape.shapes  
 - org.nocrala.tools.gis.data.esri.shapefile.shape.shapes  
 - org.nocrala.tools.gis.data.esri.shapefile.shape.shapes  
+- org.nocrala.tools.gis.data.esri.shapefile.shape.shapes  
+- org.nocrala.tools.gis.data.esri.shapefile.util  
+- org.nocrala.tools.gis.data.esri.shapefile.util  
 - org.nocrala.tools.gis.data.esri.shapefile.util  
 - org.nocrala.tools.gis.data.esri.shapefile.shape.shapes  
 - org.nocrala.tools.gis.data.esri.shapefile.shape.shapes  
 - org.nocrala.tools.gis.data.esri.shapefile.header  
+- org.nocrala.tools.gis.data.esri.shapefile  
 - org.nocrala.tools.gis.data.esri.shapefile
 
 | Class | Documentation Sections |

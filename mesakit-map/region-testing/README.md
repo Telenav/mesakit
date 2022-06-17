@@ -4,7 +4,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-region-testing &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons//map-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons//map-32-2x.png 2x"/>
+# mesakit-map-region-testing &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/map-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/map-32-2x.png 2x"/>
 
 This module contains testing code for map administrative regions
 
@@ -48,7 +48,7 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/box-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/box-24-2x.png 2x"/>
 
-[*com.telenav.mesakit.mesakit.map.region.testing*](https://www.mesakit.org/0.9.14/lexakai/mesakit/mesakit-map/region-testing/documentation/diagrams/com.telenav.mesakit.mesakit.map.region.testing.svg)
+[*com.telenav.mesakit.map.region.testing*](https://www.mesakit.org/0.9.14/lexakai/mesakit/mesakit-map/region-testing/documentation/diagrams/com.telenav.mesakit.map.region.testing.svg)
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
 
@@ -56,14 +56,14 @@ None
 
 Javadoc coverage for this project is 50.0%.  
   
-&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
+&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/meters/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meters/meter-50-96-2x.png 2x"/>
 
 
 
 
 | Class | Documentation Sections |
 |---|---|
-| [*RegionUnitTest*](https://www.mesakit.org/0.9.14/javadoc/mesakit/mesakit.map.region.testing//////////////////////////////////////////////////////////////.html) |  |  
+| [*RegionUnitTest*](https://www.mesakit.org/0.9.14/javadoc/mesakit/mesakit.map.region.testing//////////////////////////////////////////////////////.html) |  |  
 
 [//]: # (start-user-text)
 

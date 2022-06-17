@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-road-name-standardizer &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons//road-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons//road-32-2x.png 2x"/>
+# mesakit-map-road-name-standardizer &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/road-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/road-32-2x.png 2x"/>
 
 This module contains code for converting road names into a consistent format
 
@@ -68,7 +68,7 @@ None
 
 Javadoc coverage for this project is 23.8%.  
   
-&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-20-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-20-96-2x.png 2x"/>
+&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/meters/meter-20-96.png" srcset="https://telenav.github.io/telenav-assets/meters/meter-20-96-2x.png 2x"/>
 
 
 The following significant classes are undocumented:  

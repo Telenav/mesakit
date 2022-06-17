@@ -14,7 +14,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-map-ui-desktop &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons//window-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons//window-32-2x.png 2x"/>
+# mesakit-map-ui-desktop &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/window-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/window-32-2x.png 2x"/>
 
 This module contains modules for displaying map data in a Swing UI
 
@@ -75,7 +75,7 @@ None
 
 Javadoc coverage for this project is 52.9%.  
   
-&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
+&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/meters/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meters/meter-50-96-2x.png 2x"/>
 
 
 The following significant classes are undocumented:  

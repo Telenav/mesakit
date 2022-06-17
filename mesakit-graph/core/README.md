@@ -4,7 +4,7 @@
 
 [//]: # (end-user-text)
 
-# mesakit-graph-core &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons//graph-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons//graph-32-2x.png 2x"/>
+# mesakit-graph-core &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/graph-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/graph-32-2x.png 2x"/>
 
 This module contains the core model for MesaKit directed road network graphs.
 
@@ -129,7 +129,7 @@ None
 
 Javadoc coverage for this project is 52.4%.  
   
-&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meter/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meter/meter-50-96-2x.png 2x"/>
+&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/meters/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/meters/meter-50-96-2x.png 2x"/>
 
 
 The following significant classes are undocumented:  
