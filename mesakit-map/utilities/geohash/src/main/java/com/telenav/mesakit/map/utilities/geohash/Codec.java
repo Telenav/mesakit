@@ -145,7 +145,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
                 upper = middle;
             }
         }
-        return Range.inclusive(lower, upper);
+        return Range.rangeInclusive(lower, upper);
     }
 
     private BitArray codeToBitArray(Code code)

@@ -88,7 +88,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
  *
  * @author jonathanl (shibo)
  */
-public abstract class Route implements Iterable<Edge>, Bounded, Stringable
+@SuppressWarnings("SpellCheckingInspection") public abstract class Route implements Iterable<Edge>, Bounded, Stringable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -1591,7 +1591,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, Stringable
     public Edge middleEdge()
     {
         var middle = size() / 2;
-        return get(Ints.inRange(middle, 0, size() - 1));
+        return get(Ints.inRangeInclusive(middle, 0, size() - 1));
     }
 
     /**

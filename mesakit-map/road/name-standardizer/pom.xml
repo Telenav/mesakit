@@ -1,36 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-<!--                                                                                                                 -->
-<!--  © 2011-2021 Telenav, Inc.                                                                                      -->
-<!--  Licensed under Apache License, Version 2.0                                                                     -->
-<!--                                                                                                                 -->
-<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ //
+ // © 2011-2022 Telenav, Inc.
+ // Licensed under Apache License, Version 2.0
+ //
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
 
-<project xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+        xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+        xmlns = "http://maven.apache.org/POM/4.0.0"
+        xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>com.telenav.mesakit</groupId>
-        <artifactId>mesakit-map-road</artifactId>
-        <version>0.9.13</version>
+        <artifactId>telenav-superpom-mesakit</artifactId>
+        <version>2.0.0</version>
+        <relativePath/>
     </parent>
 
     <artifactId>mesakit-map-road-name-standardizer</artifactId>
-    <packaging>jar</packaging>
+    <version>0.9.14</version>
 
     <dependencies>
 
         <!-- MesaKit -->
 
         <dependency>
-            <groupId>com.telenav.mesakit</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-road-name-parser</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.telenav.mesakit</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-data-formats-pbf</artifactId>
         </dependency>
 
+        <!-- Testing -->
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>mesakit-map-region-testing</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>

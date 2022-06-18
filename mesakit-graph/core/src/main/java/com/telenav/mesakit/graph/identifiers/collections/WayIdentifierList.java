@@ -31,6 +31,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static com.telenav.kivakit.core.messaging.Listener.emptyListener;
+
 public class WayIdentifierList extends ObjectList<PbfWayIdentifier>
 {
     public static WayIdentifierList fromEdges(Maximum count, Iterable<Edge> edges)
@@ -48,7 +50,7 @@ public class WayIdentifierList extends ObjectList<PbfWayIdentifier>
 
     public static WayIdentifierList parse(String string)
     {
-        return new Converter(Listener.none(), new Separators(",")).convert(string);
+        return new Converter(emptyListener(), new Separators(",")).convert(string);
     }
 
     public static class Converter extends BaseStringConverter<WayIdentifierList>

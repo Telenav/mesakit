@@ -29,6 +29,7 @@ import com.telenav.mesakit.map.ui.desktop.viewer.InteractiveView;
 import com.telenav.mesakit.map.ui.desktop.viewer.View;
 import com.telenav.mesakit.map.ui.desktop.viewer.desktop.DesktopViewer;
 
+import static com.telenav.kivakit.core.value.level.Percent.percent;
 import static com.telenav.mesakit.map.ui.debug.theme.DebugViewerIcons.END_ICON;
 import static com.telenav.mesakit.map.ui.debug.theme.DebugViewerIcons.START_ICON;
 
@@ -57,7 +58,7 @@ public class DebugViewer extends DesktopViewer
 
     public void frameComplete()
     {
-        view.zoomToContents(Percent.of(5));
+        view.zoomToContents(percent(5));
         view.frameComplete();
     }
 

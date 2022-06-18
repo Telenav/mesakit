@@ -223,9 +223,9 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
  *     <li>{@link CopyingGraphLoader} - Copies one graph to another</li>
  *     <li>{@link OsmPbfGraphLoader} - Loads and processes data from the OpenStreetMap community</li>
  *     <li>{@link ContinentLoader} - Loads data only from a particular {@link Continent}</li>
- *     <li>{@link CountryLoader} - Loads data only from a particular {@link Country}</li></li>
- *     <li>{@link StateLoader} - Loads data only from a particular {@link State}</li></li>
- *     <li>{@link MetropolitanAreaLoader} - Loads data from a particular {@link MetropolitanArea}</li></li>
+ *     <li>{@link CountryLoader} - Loads data only from a particular {@link Country}</li>
+ *     <li>{@link StateLoader} - Loads data only from a particular {@link State}</li>
+ *     <li>{@link MetropolitanAreaLoader} - Loads data from a particular {@link MetropolitanArea}</li>
  * </ul>
  * <p>
  * <b>Graph Creation</b>
@@ -357,7 +357,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
  * @see Listener
  * @see AsIndentedString
  */
-public abstract class Graph extends BaseRepeater implements AsIndentedString, Named
+@SuppressWarnings("unused") public abstract class Graph extends BaseRepeater implements AsIndentedString, Named
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

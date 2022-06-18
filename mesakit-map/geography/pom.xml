@@ -1,22 +1,28 @@
-<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-<!--                                                                                                                 -->
-<!--  © 2011-2021 Telenav, Inc.                                                                                      -->
-<!--  Licensed under Apache License, Version 2.0                                                                     -->
-<!--                                                                                                                 -->
-<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-
-<project xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ //
+ // © 2011-2022 Telenav, Inc.
+ // Licensed under Apache License, Version 2.0
+ //
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<project
+        xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+        xmlns = "http://maven.apache.org/POM/4.0.0"
+        xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>com.telenav.mesakit</groupId>
-        <artifactId>mesakit-map</artifactId>
-        <version>0.9.13</version>
+        <artifactId>telenav-superpom-mesakit</artifactId>
+        <version>2.0.0</version>
+        <relativePath/>
     </parent>
 
     <artifactId>mesakit-map-geography</artifactId>
-    <packaging>jar</packaging>
+    <version>0.9.14</version>
 
     <dependencies>
 
@@ -50,28 +56,37 @@
         <!-- MesaKit -->
 
         <dependency>
-            <groupId>com.telenav.mesakit</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-measurements</artifactId>
-        </dependency>
-
-        <!-- Shapefile -->
-
-        <!-- NOTE: this JAR file is from SourceForge and does not exist in any public Maven repository -->
-
-        <dependency>
-            <groupId>org.nocrala</groupId>
-            <artifactId>shapefilereader</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libraries/shapefilereader-1.0.jar</systemPath>
         </dependency>
 
         <!-- Google Maps polyline codec -->
 
         <dependency>
-            <groupId>io.leonard</groupId>
-            <artifactId>google-polyline-codec</artifactId>
-            <version>0.0.2</version>
+
+            <groupId>com.google.maps</groupId>
+            <artifactId>google-maps-services</artifactId>
+            <version>2.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.jetbrains.kotlin</groupId>
+                    <artifactId>kotlin-stdlib</artifactId>
+                </exclusion>
+            </exclusions>
+
+        </dependency>
+
+        <!-- Testing -->
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.telenav.mesakit</groupId>
+            <artifactId>mesakit-map-shapefile</artifactId>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

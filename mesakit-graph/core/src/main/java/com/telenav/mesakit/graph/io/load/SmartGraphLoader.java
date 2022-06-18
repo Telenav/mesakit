@@ -147,9 +147,9 @@ public class SmartGraphLoader extends BaseRepeater implements Named
         this.configuration = configuration;
     }
 
-    public Time lastModified()
+    public Time modifiedAt()
     {
-        return file.lastModified();
+        return file.modifiedAt();
     }
 
     public Graph load()

@@ -197,7 +197,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
     {
         if (folder == null)
         {
-            var folder = Folder.parse(LOGGER, serializedWorldGraphRepository);
+            var folder = Folder.parseFolder(LOGGER, serializedWorldGraphRepository);
             if (folder != null)
             {
                 var repository = new WorldGraphRepository(folder);

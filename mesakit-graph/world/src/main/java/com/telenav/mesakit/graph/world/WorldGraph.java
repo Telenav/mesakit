@@ -105,16 +105,16 @@ import static com.telenav.mesakit.graph.Metadata.CountType.REQUIRE_EXACT;
  * Methods in {@link Graph} are overridden to provide scoping of virtual graph elements ({@link WorldEdge}, {@link
  * WorldVertex}, {@link WorldRelation} and {@link WorldPlace} by the sub-graph (cell) containing their data. This gives
  * the illusion of one large graph even though the graph is broken down into cells each having their own graph object.
- * <p>
- * <b>Force-Loading Graph Element Attributes</b>
- * <p>
+ *
+ * <p><b>Force-Loading Graph Element Attributes</b></p>
+ *
  * The graphs and graph element attributes in all cells are lazy-loaded, but they can be forced into memory with these
  * load methods:
  * <ul>
  *     <li>{@link #loadAll()} - Loads all data in all cells unconditionally</li>
  *     <li>{@link #loadAll(AttributeSet)} - Loads only the set of attributes specified</li>
  *     <li>{@link #loadAllExcept(AttributeSet)} - Loads all attributes except those specified</li>
- * </p>
+ * </ul>
  *
  * @author jonathanl (shibo)
  */

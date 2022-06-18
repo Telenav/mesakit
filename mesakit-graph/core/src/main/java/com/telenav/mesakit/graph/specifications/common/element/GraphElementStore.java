@@ -586,7 +586,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
      */
     public Time retrieveLastModificationTime(GraphElement element)
     {
-        return LAST_MODIFIED.retrieveObject(element, Time::milliseconds);
+        return LAST_MODIFIED.retrieveObject(element, Time::epochMilliseconds);
     }
 
     /**

@@ -25,10 +25,13 @@ import com.telenav.kivakit.core.time.LocalTime;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.time.Quarter;
+import com.telenav.kivakit.core.time.Year;
 
 import java.util.regex.Pattern;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 /**
  * A {@link DataVersion} is of the form: 2001Q1
@@ -61,8 +64,8 @@ public class DataVersion
         if (matcher.find())
         {
             return new DataVersion()
-                    .withYear(Integer.parseInt(matcher.group("year")))
-                    .withQuarter(Integer.parseInt(matcher.group("quarter")));
+                    .withYear(Year.year(Integer.parseInt(matcher.group("year"))))
+                    .withQuarter(Quarter.calendarQuarter(Integer.parseInt(matcher.group("quarter"))));
         }
 
         return null;
@@ -87,9 +90,9 @@ public class DataVersion
         }
     }
 
-    private int year;
+    private Year year;
 
-    private int quarter;
+    private Quarter quarter;
 
     public DataVersion()
     {
@@ -104,7 +107,7 @@ public class DataVersion
     public DataVersion(LocalTime time)
     {
         year = time.year();
-        quarter = time.quarter();
+        quarter = time.calendarQuarter();
     }
 
     @Override
@@ -126,28 +129,27 @@ public class DataVersion
 
     public boolean isValid()
     {
-        return year >= 1970 && year <= 2100
-                && quarter >= 1 && quarter <= 4;
+        return year != null && quarter != null;
     }
 
     @Override
     public String toString()
     {
         ensure(isValid());
-        return year + "Q" + quarter;
+        return year + "" + quarter;
     }
 
-    public DataVersion withQuarter(int quarter)
+    public DataVersion withQuarter(Quarter quarter)
     {
-        ensure(quarter >= 1 && quarter <= 4);
+        ensureNotNull(quarter);
         var version = new DataVersion(this);
         version.quarter = quarter;
         return version;
     }
 
-    public DataVersion withYear(int year)
+    public DataVersion withYear(Year year)
     {
-        ensure(year >= 1970 && year <= 2100);
+        ensureNotNull(year);
         var version = new DataVersion(this);
         version.year = year;
         return version;

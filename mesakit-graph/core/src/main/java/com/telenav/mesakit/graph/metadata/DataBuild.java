@@ -20,19 +20,24 @@ package com.telenav.mesakit.graph.metadata;
 
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.language.Hash;
+import com.telenav.kivakit.core.time.Day;
+import com.telenav.kivakit.core.time.Hour;
 import com.telenav.kivakit.core.time.LocalTime;
-import com.telenav.kivakit.core.time.Meridiem;
 import com.telenav.kivakit.conversion.core.time.LocalDateTimeConverter;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.time.Minute;
+import com.telenav.kivakit.core.time.Month;
+import com.telenav.kivakit.core.time.Year;
 import com.telenav.kivakit.resource.FileName;
 
 import java.time.ZoneId;
 import java.time.format.TextStyle;
 import java.util.Locale;
 
-import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.time.Second.second;
 
 /**
  * A {@link DataBuild} is of the form: [year.month.day_hour.minute.meridiem_zone], for example "2015.09.23_4.01PM_PST"
@@ -74,17 +79,15 @@ public class DataBuild
         }
     }
 
-    private int year;
+    private Year year;
 
-    private int month;
+    private Month month;
 
-    private int day;
+    private Day day;
 
-    private int hour;
+    private Hour hour;
 
-    private int minute;
-
-    private Meridiem ampm;
+    private Minute minute;
 
     private String zoneId;
 
@@ -99,7 +102,6 @@ public class DataBuild
         day = that.day;
         hour = that.hour;
         minute = that.minute;
-        ampm = that.ampm;
         zoneId = that.zoneId;
     }
 
@@ -107,10 +109,9 @@ public class DataBuild
     {
         year = time.year();
         month = time.month();
-        day = time.day();
-        hour = time.meridiemHour();
+        day = time.dayOfMonth();
+        hour = time.hourOfDay();
         minute = time.minute();
-        ampm = time.meridiem();
         zoneId = time.timeZone().getId().trim();
     }
 
@@ -130,7 +131,6 @@ public class DataBuild
                     && day == that.day
                     && hour == that.hour
                     && minute == that.minute
-                    && ampm == that.ampm
                     && zoneId.equals(that.zoneId);
         }
         return false;
@@ -139,12 +139,12 @@ public class DataBuild
     @Override
     public int hashCode()
     {
-        return Hash.many(year, month, day, hour, minute, ampm, zoneId);
+        return Hash.many(year, month, day, hour, minute, zoneId);
     }
 
     public LocalTime localTime()
     {
-        return LocalTime.of(zone(), year, month, day, hour, minute, 0, ampm);
+        return LocalTime.localTime(zone(), year, month, day, hour, minute, second(0));
     }
 
     @Override
@@ -152,49 +152,47 @@ public class DataBuild
     {
         assertValid();
         return String.format("%d.%02d.%02d_%02d.%02d%s_%s",
-                year, month, day, hour, minute, ampm.name().toUpperCase(),
+                year.asUnits(),
+                month.monthOfYear(),
+                day.asUnits(),
+                hour.asMeridiemHour(),
+                minute.asUnits(),
+                hour.meridiem().name().toUpperCase(),
                 ZoneId.of(zoneId).getDisplayName(TextStyle.SHORT, Locale.getDefault()));
     }
 
     public LocalTime utcTime()
     {
-        return localTime().localTime(LocalTime.utcTimeZone());
+        return localTime().inTimeZone(LocalTime.utcTimeZone());
     }
 
-    public DataBuild withDay(int day)
+    public DataBuild withDay(Day day)
     {
-        ensure(day >= 1 && day <= 31);
+        ensureNotNull(day);
         var build = new DataBuild(this);
         build.day = day;
         return build;
     }
 
-    public DataBuild withHour(int hour)
+    public DataBuild withHour(Hour hour)
     {
-        ensure(hour >= 1 && hour <= 12);
+        ensureNotNull(hour);
         var build = new DataBuild(this);
         build.hour = hour;
         return build;
     }
 
-    public DataBuild withMeridiem(Meridiem ampm)
+    public DataBuild withMinute(Minute minute)
     {
-        var build = new DataBuild(this);
-        build.ampm = ampm;
-        return build;
-    }
-
-    public DataBuild withMinute(int minute)
-    {
-        ensure(minute >= 0 && minute <= 59);
+        ensureNotNull(minute);
         var build = new DataBuild(this);
         build.minute = minute;
         return build;
     }
 
-    public DataBuild withMonth(int month)
+    public DataBuild withMonth(Month month)
     {
-        ensure(month >= 1 && month <= 12);
+        ensureNotNull(month);
         var build = new DataBuild(this);
         build.month = month;
         return build;
@@ -207,9 +205,9 @@ public class DataBuild
         return build;
     }
 
-    public DataBuild withYear(int year)
+    public DataBuild withYear(Year year)
     {
-        ensure(year >= 1970 && year <= 2100);
+        ensureNotNull(year);
         var build = new DataBuild(this);
         build.year = year;
         return build;
@@ -217,13 +215,12 @@ public class DataBuild
 
     private void assertValid()
     {
-        assert year >= 1970 && year <= 2100 : "Year " + year + " is not valid";
-        assert month >= 1 && month <= 12 : "Month " + month + " is not valid";
-        assert day >= 1 && day <= 31 : "Day " + day + " is not valid";
-        assert hour >= 0 && hour <= 12 : "Hour " + hour + " is not valid";
-        assert minute >= 0 && minute <= 59 : "Minute " + minute + " is not valid";
-        ensure(ampm != null);
-        ensure(zoneId != null);
+        ensureNotNull(year);
+        ensureNotNull(month);
+        ensureNotNull(day);
+        ensureNotNull(hour);
+        ensureNotNull(minute);
+        ensureNotNull(zoneId);
     }
 
     private ZoneId zone()

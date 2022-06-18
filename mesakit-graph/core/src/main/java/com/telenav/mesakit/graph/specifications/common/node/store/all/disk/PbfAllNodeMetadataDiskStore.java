@@ -97,7 +97,7 @@ public class PbfAllNodeMetadataDiskStore extends AllNodeDiskStore
                 edge.index(index);
                 edge.pbfChangeSetIdentifier(new PbfChangeSetIdentifier(in.readLong()));
                 edge.pbfRevisionNumber(new PbfRevisionNumber(in.readInt()));
-                edge.lastModificationTime(Time.milliseconds(in.readLong()));
+                edge.lastModificationTime(Time.epochMilliseconds(in.readLong()));
                 var userIdentifier = in.readInt();
                 String userName;
                 if (userIdentifier == -1)

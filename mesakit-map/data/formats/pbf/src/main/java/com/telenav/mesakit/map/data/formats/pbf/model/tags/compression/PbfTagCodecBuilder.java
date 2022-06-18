@@ -24,6 +24,7 @@ import com.telenav.mesakit.map.data.formats.pbf.processing.filters.RelationFilte
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.WayFilter;
 import com.telenav.mesakit.map.data.formats.pbf.processing.readers.SerialPbfReader;
 
+import static com.telenav.kivakit.core.messaging.Listener.consoleListener;
 import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.FILTERED_OUT;
@@ -271,10 +272,10 @@ public class PbfTagCodecBuilder
         System.out.println(AsciiArt.box("Value String Codec"));
         System.out.println(valueStringCodec);
 
-        keyCharacterCodec.asProperties().save(keyCharacterCodec.toString(), File.parseFile(Listener.console(), "default-key-character.codec"));
-        valueCharacterCodec.asProperties().save(valueCharacterCodec.toString(), File.parseFile(Listener.console(), "default-value-character.codec"));
-        keyStringCodec.asProperties().save(keyStringCodec.toString(), File.parseFile(Listener.console(), "default-key-string.codec"));
-        valueStringCodec.asProperties().save(valueStringCodec.toString(), File.parseFile(Listener.console(), "default-value-string.codec"));
+        keyCharacterCodec.asProperties().save(keyCharacterCodec.toString(), File.parseFile(consoleListener(), "default-key-character.codec"));
+        valueCharacterCodec.asProperties().save(valueCharacterCodec.toString(), File.parseFile(consoleListener(), "default-value-character.codec"));
+        keyStringCodec.asProperties().save(keyStringCodec.toString(), File.parseFile(consoleListener(), "default-key-string.codec"));
+        valueStringCodec.asProperties().save(valueStringCodec.toString(), File.parseFile(consoleListener(), "default-value-string.codec"));
     }
 
     public PbfTagCodecBuilder relationFilter(RelationFilter relationFilter)

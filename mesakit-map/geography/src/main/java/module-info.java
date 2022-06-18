@@ -13,7 +13,7 @@ open module mesakit.map.geography
     requires org.jetbrains.annotations;
 
     // Geographic
-    requires google.polyline.codec;
+    requires transitive google.maps.services;
 
     // Java
     requires transitive java.desktop;

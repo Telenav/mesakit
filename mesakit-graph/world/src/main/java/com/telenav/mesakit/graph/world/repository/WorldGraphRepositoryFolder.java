@@ -129,7 +129,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
         @Override
         protected WorldGraphRepositoryFolder onToValue(String value)
         {
-            var folder = Folder.parse(this, value);
+            var folder = Folder.parseFolder(this, value);
             if (folder != null)
             {
                 var message = check(folder, existence);

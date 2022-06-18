@@ -35,7 +35,7 @@ public class MesaKit extends Project
         var home = systemProperty("MESAKIT_HOME");
         if (home != null)
         {
-            return Folder.parse(this, home);
+            return Folder.parseFolder(this, home);
         }
         return fail("Cannot find MesaKit home folder");
     }

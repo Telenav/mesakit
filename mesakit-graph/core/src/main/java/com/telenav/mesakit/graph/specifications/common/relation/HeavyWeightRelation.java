@@ -98,7 +98,7 @@ public class HeavyWeightRelation extends EdgeRelation
         var time = relation.get().getTimestamp().getTime();
         if (time > 0)
         {
-            lastModificationTime = Time.milliseconds(time);
+            lastModificationTime = Time.epochMilliseconds(time);
         }
 
         pbfRevisionNumber = new PbfRevisionNumber(relation.version());

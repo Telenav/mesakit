@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.data.formats.pbf.model;
 
-import com.telenav.kivakit.test.UnitTest;
+import com.telenav.kivakit.testing.UnitTest;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 import org.junit.Test;
 

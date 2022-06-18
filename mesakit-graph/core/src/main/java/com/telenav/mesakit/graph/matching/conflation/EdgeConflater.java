@@ -31,6 +31,8 @@ import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.road.model.RoadFunctionalClass;
 
+import static com.telenav.kivakit.core.value.level.Percent.percent;
+
 public class EdgeConflater
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
@@ -50,11 +52,13 @@ public class EdgeConflater
     /**
      * True to enable visual debugger
      */
+    @SuppressWarnings("unused")
     private static final boolean DEBUG_VIEWER = false;
 
     /**
      * @return True if visual debugging is enabled
      */
+    @SuppressWarnings("SpellCheckingInspection")
     public static boolean visualDebug()
     {
         return Booleans.isTrue(System.getProperty("MESAKIT_EDGE_CONFLATER_VISUAL_DEBUG"));
@@ -98,7 +102,7 @@ public class EdgeConflater
     /**
      * The minimum closeness for an edge to conflate
      */
-    private Percent minimumCloseness = Percent.of(15);
+    private Percent minimumCloseness = percent(15);
 
     /**
      * Construct

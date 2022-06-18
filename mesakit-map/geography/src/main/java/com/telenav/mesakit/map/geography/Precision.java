@@ -243,22 +243,22 @@ public enum Precision
 
     public long inRangeLatitude(int decimal)
     {
-        return Longs.inRange(decimal, minimumLatitude(), maximumLatitude());
+        return Longs.inRangeInclusive(decimal, minimumLatitude(), maximumLatitude());
     }
 
     public long inRangeLatitudeOffset(long decimal)
     {
-        return Longs.inRange(decimal, minimumLatitudeOffset(), maximumLatitudeOffset());
+        return Longs.inRangeInclusive(decimal, minimumLatitudeOffset(), maximumLatitudeOffset());
     }
 
     public long inRangeLongitude(int decimal)
     {
-        return Longs.inRange(decimal, minimumLongitude(), maximumLongitude());
+        return Longs.inRangeInclusive(decimal, minimumLongitude(), maximumLongitude());
     }
 
     public long inRangeLongitudeOffset(long decimal)
     {
-        return Longs.inRange(decimal, minimumLongitudeOffset(), maximumLongitudeOffset());
+        return Longs.inRangeInclusive(decimal, minimumLongitudeOffset(), maximumLongitudeOffset());
     }
 
     public final boolean isMaximum(int decimal)

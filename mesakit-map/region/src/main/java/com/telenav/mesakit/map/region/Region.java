@@ -83,6 +83,7 @@ import java.util.concurrent.Executors;
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.filesystem.Folder.parseFolder;
 
 /**
  * @author Jonathan Locke
@@ -643,7 +644,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     {
         if (parent == null)
         {
-            return Folder.from(fileName());
+            return parseFolder(fileName().name());
         }
         else
         {
@@ -651,7 +652,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         }
     }
 
-    @SuppressWarnings("HttpUrlsUsage")
+    @SuppressWarnings({ "HttpUrlsUsage", "SpellCheckingInspection" })
     @KivaKitIncludeProperty
     public URI geofabrikUri()
     {
@@ -852,6 +853,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         return typeForClass.get(subclass());
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
     private String geofabrikPath()
     {
         if (this instanceof Continent)
@@ -885,6 +887,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
         return fail("Can't form geofabrik path for " + identity().mesakit());
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
     private String geofabrikize(String name)
     {
         return name.toLowerCase().replace("_", "-").replace(" ", "-");

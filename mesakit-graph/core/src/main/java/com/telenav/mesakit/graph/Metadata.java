@@ -36,7 +36,6 @@ import com.telenav.kivakit.core.string.AsStringIndenter;
 import com.telenav.kivakit.core.string.Strip;
 import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.value.count.Count;
-import com.telenav.kivakit.core.value.level.Percent;
 import com.telenav.kivakit.core.value.mutable.MutableValue;
 import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
@@ -82,6 +81,9 @@ import java.util.regex.Pattern;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.messaging.Listener.emptyListener;
+import static com.telenav.kivakit.core.messaging.Listener.throwingListener;
+import static com.telenav.kivakit.core.value.level.Percent.percent;
 import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 import static com.telenav.mesakit.graph.Metadata.CountType.REQUIRE_EXACT;
@@ -264,7 +266,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * Parses a complete standardized metadata string of the form:
      * <ul>
-     *     [data-supplier]-[data-specification]-[data-format]-[name]-[bounds]?-[data-version]?-[data-build]?.
+     *     <li>[data-supplier]-[data-specification]-[data-format]-[name]-[bounds]?-[data-version]?-[data-build]?.</li>
      * </ul>
      * <ul>
      *     <li>HERE-UniDb-PBF-North_America-2007Q4-2020.04.01_04.01PM_PT</li>
@@ -285,7 +287,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
                                 + "(?<format>[A-Za-z]+)"
                                 + "-"
                                 + "(?<name>[A-Za-z_]+)"
-                                + "(-(?<bounds>[-0-9.]+_[-0-9.]+_[-0-9.]+_[-0-9.]+))?"
+                                + "(-(?<bounds>[-\\d.]+_[-\\d.]+_[-\\d.]+_[-\\d.]+))?"
                                 + "(-(?<version>20\\d\\dQ[1-4]))?"
                                 + "(-(?<build>(20\\d\\d\\.\\d\\d\\.\\d\\d_\\d{1,2}\\.\\d\\d[AP]M_[A-Z]{1,3})))?"
                 );
@@ -524,10 +526,10 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * A filename for this metadata of the form:
      * <ul>
-     *     [supplier]-[specification]-[format]-[name]-[version]-[build].
+     *     <li>[supplier]-[specification]-[format]-[name]-[version]-[build].</li>
      * </ul>
      * <ul>
-     *     HERE-UniDb-PBF-North_America-2007Q4-2020.04.01_04.01PM_PT
+     *     <li>HERE-UniDb-PBF-North_America-2007Q4-2020.04.01_04.01PM_PT</li>
      * </ul>
      * The data version and build are optional.
      *
@@ -549,7 +551,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      */
     public Folder asFolder()
     {
-        return Folder.from(asFileName());
+        return Folder.folder(asFileName().asPath());
     }
 
     @Override
@@ -712,7 +714,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         if (type == ALLOW_ESTIMATE && edgeRelations == null && dataSize() != null)
         {
             // Empirical value from OSM data analysis
-            return dataSize().percent(Percent.of(0.25)).powerOfTenCeiling(3).asCount();
+            return dataSize().percent(percent(0.25)).powerOfTenCeiling(3).asCount();
         }
         return edgeRelations;
     }
@@ -795,7 +797,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         if (type == ALLOW_ESTIMATE && nodes == null && dataSize() != null)
         {
             // Empirical value from OSM data analysis
-            return dataSize().percent(Percent.of(12.5)).powerOfTenCeiling(3).asCount();
+            return dataSize().percent(percent(12.5)).powerOfTenCeiling(3).asCount();
         }
         return nodes;
     }
@@ -804,7 +806,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     {
         if (type == ALLOW_ESTIMATE && places == null)
         {
-            return nodeCount(ALLOW_ESTIMATE).percent(Percent.of(0.01)).powerOfTenCeiling(3);
+            return nodeCount(ALLOW_ESTIMATE).percent(percent(0.01)).powerOfTenCeiling(3);
         }
         return places;
     }
@@ -871,7 +873,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         if (type == ALLOW_ESTIMATE && relations == null && dataSize() != null)
         {
             // Empirical value from OSM data analysis
-            return dataSize().percent(Percent.of(0.25)).powerOfTenCeiling(3).asCount();
+            return dataSize().percent(percent(0.25)).powerOfTenCeiling(3).asCount();
         }
         return relations;
     }
@@ -880,7 +882,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     {
         if (roadNameCharacterCodec == null)
         {
-            roadNameCharacterCodec = HuffmanCharacterCodec.from(Listener.throwing(), roadNameCharacterCodecFrequencies, ESCAPE);
+            roadNameCharacterCodec = HuffmanCharacterCodec.from(throwingListener(), roadNameCharacterCodecFrequencies, ESCAPE);
         }
         return roadNameCharacterCodec;
     }
@@ -968,7 +970,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         if (type == ALLOW_ESTIMATE && ways == null && dataSize() != null)
         {
             // Empirical value for navigable ways from OSM data analysis
-            return dataSize().percent(Percent.of(0.5)).powerOfTenCeiling(3).asCount();
+            return dataSize().percent(percent(0.5)).powerOfTenCeiling(3).asCount();
         }
         return ways;
     }
@@ -1264,7 +1266,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         var descriptor = tags.get("telenav-data-descriptor");
 
         var build = tags.get("telenav-data-build");
-        var size = Bytes.parseBytes(Listener.none(), tags.get("telenav-data-size"));
+        var size = Bytes.parseBytes(emptyListener(), tags.get("telenav-data-size"));
         var precision = tags.get("telenav-data-precision");
         var bounds = tags.get("telenav-data-bounds");
         var nodes = tags.get("telenav-data-nodes");

@@ -36,6 +36,7 @@ import com.telenav.mesakit.map.measurements.geographic.Heading;
 import java.util.Iterator;
 import java.util.stream.Stream;
 
+import static com.telenav.kivakit.core.value.level.Percent.percent;
 import static com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
 import static com.telenav.mesakit.map.measurements.geographic.Angle._180_DEGREES;
 import static com.telenav.mesakit.map.measurements.geographic.Angle._45_DEGREES;
@@ -47,7 +48,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
  *
  * @author jonathanl (shibo)
  */
-public class EdgePair implements Iterable<Edge>, Bounded
+@SuppressWarnings("SpellCheckingInspection") public class EdgePair implements Iterable<Edge>, Bounded
 {
     public enum DoubleDigitizedType
     {
@@ -215,7 +216,7 @@ public class EdgePair implements Iterable<Edge>, Bounded
             if (first.heading().isOppositeDirection(second.heading(), maximumHeadingDeviation)
                     && isParallel(maximumHeadingDeviation)
                     && closeness(first.roadType().maximumDoubleDigitizationSeparation(), maximumHeadingDeviation)
-                    .isGreaterThan(Percent.of(50)))
+                    .isGreaterThan(percent(50)))
             {
                 // must have the same base name (not including modifiers)
                 var firstName = first.roadName();

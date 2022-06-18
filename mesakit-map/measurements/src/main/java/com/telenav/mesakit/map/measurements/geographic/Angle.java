@@ -39,6 +39,7 @@ import java.io.Serializable;
 import java.util.regex.Pattern;
 
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
+import com.telenav.kivakit.interfaces.numeric.QuantumComparable;
 
 /**
  * An angle value represented between -360 and 360 degrees. Note that an angle of -45 degrees is seen as being less than
@@ -110,7 +111,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
  *
  * @author jonathanl (shibo)
  */
-@SuppressWarnings({ "SwitchStatementWithTooFewBranches", "SpellCheckingInspection" })
+@SuppressWarnings({ "SwitchStatementWithTooFewBranches", "SpellCheckingInspection", "unused" })
 @UmlClassDiagram(diagram = DiagramMapMeasurementGeographic.class)
 @UmlExcludeSuperTypes({ Stringable.class, Serializable.class, Quantizable.class })
 @LexakaiJavadoc(complete = true)
@@ -119,6 +120,8 @@ public class Angle implements
         IntegerNumeric<Angle>,
         Stringable,
         Quantizable,
+        QuantumComparable<Angle>,
+        Comparable<Angle>,
         Serializable
 {
     public static final long NANODEGREES_PER_DEGREE = 1_000_000_000;
@@ -215,7 +218,7 @@ public class Angle implements
     public static class Converter extends BaseStringConverter<Angle>
     {
         /** Pattern to match strings */
-        private static final Pattern PATTERN = Pattern.compile("([0-9]+([.,][0-9]+)?)\\s+(degree)s?",
+        private static final Pattern PATTERN = Pattern.compile("(\\d+([.,]\\d+)?)\\s+(degree)s?",
                 Pattern.CASE_INSENSITIVE);
 
         public Converter(Listener listener)
@@ -407,6 +410,7 @@ public class Angle implements
     /**
      * @return This angle reduced by one nanodegree
      */
+    @Override
     public Angle decremented()
     {
         return nanodegrees(nanodegrees - 1);
@@ -465,6 +469,7 @@ public class Angle implements
         throw new IllegalArgumentException("Unsupported difference type " + type);
     }
 
+    @Override
     public Angle dividedBy(Angle that)
     {
         return nanodegrees(nanodegrees / that.nanodegrees);
@@ -538,6 +543,7 @@ public class Angle implements
         return difference(that, Chirality.SMALLEST).isClose(_180_DEGREES, tolerance);
     }
 
+    @Override
     public Angle maximum()
     {
         return MAXIMUM;
@@ -549,6 +555,7 @@ public class Angle implements
         return nanodegrees > that.nanodegrees ? this : that;
     }
 
+    @Override
     public Angle minimum()
     {
         return MINIMUM;
@@ -560,6 +567,7 @@ public class Angle implements
         return nanodegrees < that.nanodegrees ? this : that;
     }
 
+    @Override
     public Angle minus(Angle that)
     {
         return nanodegrees(nanodegrees - that.nanodegrees);
@@ -577,6 +585,7 @@ public class Angle implements
         return degrees(asDegrees() + 1);
     }
 
+    @Override
     public Angle plus(Angle that)
     {
         return nanodegrees(nanodegrees + that.nanodegrees);

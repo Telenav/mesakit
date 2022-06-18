@@ -7,7 +7,7 @@ open module mesakit.map.utilities.geojson
     requires transitive kivakit.resource;
 
     // JSON
-    requires gson;
+    requires com.google.gson;
 
     // Exports
     exports com.telenav.mesakit.map.utilities.geojson;

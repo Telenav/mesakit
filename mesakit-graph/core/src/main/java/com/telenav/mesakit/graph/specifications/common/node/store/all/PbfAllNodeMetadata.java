@@ -172,7 +172,7 @@ public class PbfAllNodeMetadata implements AttributeStore
 
     public Time retrievePbfLastModificationTime(GraphElement element)
     {
-        return LAST_MODIFIED.retrieveObject(element, Time::milliseconds);
+        return LAST_MODIFIED.retrieveObject(element, Time::epochMilliseconds);
     }
 
     public PbfRevisionNumber retrievePbfRevisionNumber(GraphElement element)

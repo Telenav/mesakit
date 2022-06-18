@@ -79,7 +79,7 @@ public class WorldGraphRepository extends Folder implements Serializable
             {
                 return null;
             }
-            var folder = Folder.parse(this, value);
+            var folder = Folder.parseFolder(this, value);
             return folder == null ? null : new WorldGraphRepository(folder);
         }
     }
@@ -127,7 +127,7 @@ public class WorldGraphRepository extends Folder implements Serializable
 
     public WorldGraphRepositoryFolder temporaryFolder()
     {
-        return temporaryFolder(null);
+        return temporaryFolder((FilePath) null);
     }
 
     /**

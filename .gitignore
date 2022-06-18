@@ -1,3 +1,4 @@
+*.orig
 **/target/
 **/build.properties
 **/.settings/
@@ -17,3 +18,9 @@
 **/*.hprof
 **/dependency-reduced-pom.xml
 setup.properties
+/mesakit-internal/mesakit-map-measurements-unit-tests/nbproject/
+/mesakit-internal/mesakit-map-geography-unit-tests/nbproject/
+/mesakit-internal/mesakit-map-region-unit-tests/nbproject/
+/mesakit-graph/mesakit-graph-core-test/nbproject/
+${env.MESAKIT_HOME}
+

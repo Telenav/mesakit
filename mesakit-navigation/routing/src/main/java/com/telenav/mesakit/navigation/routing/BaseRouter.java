@@ -72,7 +72,7 @@ public abstract class BaseRouter implements Router
         if (start.equals(end))
         {
             // then no route is needed
-            return new RoutingResponse(null, Duration.NONE);
+            return new RoutingResponse(null, Duration.ZERO_DURATION);
         }
 
         // If the start vertex is connected to the end vertex
@@ -82,12 +82,12 @@ public abstract class BaseRouter implements Router
             if (start.edgeTo(end) != null)
             {
                 // then we have a trivial route from the start vertex to the end vertex
-                return new RoutingResponse(Route.fromEdge(start.edgeTo(end)), Duration.NONE);
+                return new RoutingResponse(Route.fromEdge(start.edgeTo(end)), Duration.ZERO_DURATION);
             }
             else
             {
                 // the vertexes are connected, but the direction must be wrong
-                return new RoutingResponse(null, Duration.NONE);
+                return new RoutingResponse(null, Duration.ZERO_DURATION);
             }
         }
 

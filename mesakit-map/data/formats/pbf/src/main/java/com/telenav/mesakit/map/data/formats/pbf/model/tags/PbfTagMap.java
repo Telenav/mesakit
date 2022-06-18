@@ -37,6 +37,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.messaging.Listener.consoleListener;
 
 /**
  * A map between tag keys and values.
@@ -385,7 +386,7 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
 
     public int valueAsInt(String key)
     {
-        return Ints.parseInt(Listener.console(), get(key));
+        return Ints.parseInt(consoleListener(), get(key));
     }
 
     public long valueAsLong(String key)
