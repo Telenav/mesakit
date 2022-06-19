@@ -48,7 +48,7 @@ MesaKit provides useful APIs and tools for complex back-end map data analysis an
 [**Building**](documentation/building/index.md)  
 [**Developing**](documentation/developing/index.md)  
 [**Javadoc**](https://telenav.github.io/mesakit/0.9.14/javadoc)  
-[**CodeFlowers**](https://telenav.github.io/mesakit/0.9.14/codeflowers/site/index.html)  
+[**CodeFlowers**](https://www.mesakit.org/0.9.14/codeflowers/site/index.html)  
 [**System Properties**](documentation/developing/system-properties.md)
 
 <a name = "about"></a>

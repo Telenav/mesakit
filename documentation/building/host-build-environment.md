@@ -1,5 +1,5 @@
 <a href="https://github.com/Telenav/mesakit">
-<img src="https://telenav.github.io/telenav-assets/images/icons/github-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/github-32-2x.png 2x"/>
+<img src="https://telenav.github.io/telenav-assets/images/logos/github/github-32.png" srcset="https://telenav.github.io/telenav-assets/images/logos/github/github-32-2x.png 2x"/>
 </a>
 &nbsp;
 <a href="https://twitter.com/openmesakit">
