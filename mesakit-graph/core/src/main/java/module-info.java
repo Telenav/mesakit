@@ -16,7 +16,7 @@ open module mesakit.graph.core
     requires transitive java.sql;
     requires org.jetbrains.annotations;
     requires osmosis.core;
-    requires kryo;
+    requires com.esotericsoftware.kryo;
 
     exports com.telenav.mesakit.graph.analytics.classification.classifiers.road;
     exports com.telenav.mesakit.graph.analytics.classification.classifiers.signpost;

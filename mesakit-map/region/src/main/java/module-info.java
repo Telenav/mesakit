@@ -12,7 +12,7 @@ open module mesakit.map.region
     requires transitive kivakit.serialization.core;
     requires transitive kivakit.primitive.collections;
 
-    requires kryo;
+    requires com.esotericsoftware.kryo;
 
     exports com.telenav.mesakit.map.region;
     exports com.telenav.mesakit.map.region.regions;
