@@ -19,10 +19,13 @@
 package com.telenav.mesakit.map.geography.testing;
 
 import com.telenav.kivakit.core.messaging.listeners.ThrowingListener;
+import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsKryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.mesakit.map.geography.GeographyKryoTypes;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import com.telenav.mesakit.map.measurements.MeasurementsKryoTypes;
 import com.telenav.mesakit.map.measurements.testing.MeasurementsUnitTest;
 
 public class GeographyUnitTest extends MeasurementsUnitTest
@@ -30,7 +33,10 @@ public class GeographyUnitTest extends MeasurementsUnitTest
     @Override
     protected KryoTypes kryoTypes()
     {
-        return new GeographyKryoTypes();
+        return new CoreKryoTypes()
+                .mergedWith(new MeasurementsKryoTypes())
+                .mergedWith(new PrimitiveCollectionsKryoTypes())
+                .mergedWith(new GeographyKryoTypes());
     }
 
     protected Location location(double latitude, double longitude)

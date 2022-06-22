@@ -18,27 +18,30 @@
 
 package com.telenav.mesakit.graph.core.testing;
 
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.data.compression.DataCompressionKryoTypes;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsKryoTypes;
 import com.telenav.kivakit.resource.CopyMode;
 import com.telenav.kivakit.resource.Extension;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.serialization.ObjectSerializers;
 import com.telenav.kivakit.serialization.gson.GsonObjectSerializer;
 import com.telenav.kivakit.serialization.gson.factory.CoreGsonFactory;
+import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.ResourceKryoTypes;
 import com.telenav.kivakit.serialization.properties.PropertiesObjectSerializer;
 import com.telenav.kivakit.settings.Settings;
 import com.telenav.kivakit.settings.stores.ResourceFolderSettingsStore;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
+import com.telenav.mesakit.graph.GraphKryoTypes;
 import com.telenav.mesakit.graph.GraphProject;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.Route;
@@ -85,72 +88,35 @@ import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
 @SuppressWarnings("unused")
 public abstract class GraphUnitTest extends RegionUnitTest
 {
-    private static final Logger LOGGER = LoggerFactory.newLogger();
-
     private static int nextOsmRelationIdentifier = 1;
 
-    private static final Lazy<Graph> osmGreenLakeSeattleLarge = Lazy.of(
+    private final Lazy<Graph> osmGreenLakeSeattleLarge = Lazy.of(
             () -> graph(OsmDataSpecification.get(), "Green_Lake_Seattle_Large",
                     Country.UNITED_STATES.WASHINGTON.SEATTLE.GREEN_LAKE.bounds().expanded(Distance.ONE_MILE)));
 
-    private static final Lazy<Graph> osmGreenLakeSeattle = Lazy.of(
+    private final Lazy<Graph> osmGreenLakeSeattle = Lazy.of(
             () -> graph(OsmDataSpecification.get(), "Green_Lake_Seattle", Country.UNITED_STATES.WASHINGTON.SEATTLE.GREEN_LAKE.bounds()));
 
-    private static final Lazy<Graph> osmDowntownSeattle = Lazy.of(
+    private final Lazy<Graph> osmDowntownSeattle = Lazy.of(
             () -> graph(OsmDataSpecification.get(), "Downtown_Seattle", Country.UNITED_STATES.WASHINGTON.SEATTLE.DOWNTOWN.bounds()));
 
-    private static final Lazy<Graph> osmDowntownSeattleTest = Lazy.of(
+    private final Lazy<Graph> osmDowntownSeattleTest = Lazy.of(
             () -> graph(OsmDataSpecification.get(), "Downtown_Seattle_Test", Rectangle.parse("47.587309,-122.346791:47.616221,-122.317879")));
 
-    private static final Lazy<Graph> osmBellevueWashington = Lazy.of(
+    private final Lazy<Graph> osmBellevueWashington = Lazy.of(
             () -> graph(OsmDataSpecification.get(), "Bellevue_Washington", Location.degrees(47.61302, -122.188).within(Distance.miles(2))));
 
-    private static final Lazy<Graph> osmBuffalo = Lazy.of(
+    private final Lazy<Graph> osmBuffalo = Lazy.of(
             () -> graph(OsmDataSpecification.get(), "Buffalo_New_York", Country.UNITED_STATES.NEW_YORK.BUFFALO.bounds()));
 
-    private static final Lazy<Graph> osmHuronCharter = Lazy.of(
+    private final Lazy<Graph> osmHuronCharter = Lazy.of(
             () -> graph(OsmDataSpecification.get(), "Huron_Charter", Rectangle.fromLocations(Location.degrees(42.179459, -83.423221),
                     Location.degrees(42.094242, -83.303885))));
 
-    public static synchronized Graph osmBellevueWashington()
-    {
-        return osmBellevueWashington.get();
-    }
-
-    public static synchronized Graph osmBuffalo()
-    {
-        return osmBuffalo.get();
-    }
-
-    public static synchronized Graph osmDowntownSeattle()
-    {
-        return osmDowntownSeattle.get();
-    }
-
-    public static synchronized Graph osmDowntownSeattleTest()
-    {
-        return osmDowntownSeattleTest.get();
-    }
-
-    public static synchronized Graph osmGreenLakeSeattle()
-    {
-        return osmGreenLakeSeattle.get();
-    }
-
-    public static synchronized Graph osmGreenLakeSeattleLarge()
-    {
-        return osmGreenLakeSeattleLarge.get();
-    }
-
-    public static synchronized Graph osmHuronCharter()
-    {
-        return osmHuronCharter.get();
-    }
-
-    private final Location.DegreesConverter locationInDegreesConverter = new Location.DegreesConverter(LOGGER);
+    private final Location.DegreesConverter locationInDegreesConverter = new Location.DegreesConverter(this);
 
     private final Location.DegreesMinutesAndSecondsConverter locationInDegreesMinutesAndSecondsConverter =
-            new Location.DegreesMinutesAndSecondsConverter(LOGGER);
+            new Location.DegreesMinutesAndSecondsConverter(this);
 
     private int nextOsmEdgeIdentifier = 1;
 
@@ -159,6 +125,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
         initializeProject(GraphProject.class);
 
         register(new CoreGsonFactory(this));
+        register(new KryoObjectSerializer(kryoTypes()));
 
         var serializers = new ObjectSerializers();
         serializers.add(Extension.JSON, new GsonObjectSerializer());
@@ -166,8 +133,43 @@ public abstract class GraphUnitTest extends RegionUnitTest
         register(serializers);
 
         var store = Settings.of(this);
-        LOGGER.listenTo(store);
+        listenTo(store);
         store.registerSettingsIn(new ResourceFolderSettingsStore(this, Folder.parseFolder(this, "configuration")));
+    }
+
+    public synchronized Graph osmBellevueWashington()
+    {
+        return osmBellevueWashington.get();
+    }
+
+    public synchronized Graph osmBuffalo()
+    {
+        return osmBuffalo.get();
+    }
+
+    public synchronized Graph osmDowntownSeattle()
+    {
+        return osmDowntownSeattle.get();
+    }
+
+    public synchronized Graph osmDowntownSeattleTest()
+    {
+        return osmDowntownSeattleTest.get();
+    }
+
+    public synchronized Graph osmGreenLakeSeattle()
+    {
+        return osmGreenLakeSeattle.get();
+    }
+
+    public synchronized Graph osmGreenLakeSeattleLarge()
+    {
+        return osmGreenLakeSeattleLarge.get();
+    }
+
+    public synchronized Graph osmHuronCharter()
+    {
+        return osmHuronCharter.get();
     }
 
     protected Edge edge(Graph graph, double fromLatitude, double fromLongitude,
@@ -199,8 +201,12 @@ public abstract class GraphUnitTest extends RegionUnitTest
     {
         return new CoreKryoTypes()
                 .mergedWith(new MeasurementsKryoTypes())
+                .mergedWith(new ResourceKryoTypes())
+                .mergedWith(new DataCompressionKryoTypes())
                 .mergedWith(new GeographyKryoTypes())
-                .mergedWith(new RegionKryoTypes());
+                .mergedWith(new PrimitiveCollectionsKryoTypes())
+                .mergedWith(new RegionKryoTypes())
+                .mergedWith(new GraphKryoTypes());
     }
 
     protected Location location(String location)
@@ -317,22 +323,22 @@ public abstract class GraphUnitTest extends RegionUnitTest
         return graph.vertexNearest(Location.degrees(latitude, longitude), Distance.meters(50));
     }
 
-    private static Folder cacheFolder()
+    private Folder cacheFolder()
     {
         return resolveProject(GraphProject.class).overpassFolder();
     }
 
-    private static void downloadFromOverpass(String dataDescriptor, Rectangle bounds)
+    private void downloadFromOverpass(String dataDescriptor, Rectangle bounds)
     {
-        LOGGER.information("Downloading $_$", dataDescriptor, bounds.toFileString());
-        var overpass = LOGGER.listenTo(new OverpassDataDownloader(cacheFolder()));
+        information("Downloading $_$", dataDescriptor, bounds.toFileString());
+        var overpass = listenTo(new OverpassDataDownloader(cacheFolder()));
         var pbf = overpass.pbf(dataDescriptor, bounds);
 
         // then make sure it has metadata
         var metadata = Metadata.from(pbf);
         if (metadata == null)
         {
-            var annotator = LOGGER.listenTo(new PbfFileMetadataAnnotator(
+            var annotator = listenTo(new PbfFileMetadataAnnotator(
                     pbf, STRIP_UNREFERENCED_NODES, new OsmNavigableWayFilter(), new OsmRelationsFilter()));
             metadata = annotator.read()
                     .withDataPrecision(Precision.DM6)
@@ -341,15 +347,15 @@ public abstract class GraphUnitTest extends RegionUnitTest
         }
     }
 
-    private static File file(String dataDescriptor, Rectangle bounds)
+    private File file(String dataDescriptor, Rectangle bounds)
     {
         return cacheFolder().file(dataDescriptor + "-" + bounds.toFileString());
     }
 
     @SuppressWarnings("resource")
-    private static Graph graph(DataSpecification specification,
-                               String name,
-                               Rectangle bounds)
+    private Graph graph(DataSpecification specification,
+                        String name,
+                        Rectangle bounds)
     {
         // If we can't find the graph file
         var dataDescriptor = "OSM-OSM-PBF-" + name;
@@ -361,8 +367,8 @@ public abstract class GraphUnitTest extends RegionUnitTest
             if (!pbfFile.exists())
             {
                 // then try to copy it from the test data folder
-                var destination = LOGGER.listenTo(resolveProject(GraphProject.class).graphFolder().folder("overpass"));
-                var source = LOGGER.listenTo(resolveProject(MesaKit.class).mesakitHome().folder("mesakit-graph/core/data"));
+                var destination = listenTo(resolveProject(GraphProject.class).graphFolder().folder("overpass"));
+                var source = listenTo(resolveProject(MesaKit.class).mesakitHome().folder("mesakit-graph/core/data"));
                 source.copyTo(destination, CopyMode.OVERWRITE, OSM_PBF.fileMatcher(), ProgressReporter.none());
             }
 
@@ -381,30 +387,30 @@ public abstract class GraphUnitTest extends RegionUnitTest
                 if (metadata != null)
                 {
                     // and convert the PBF file to a graph file using the right kind of converter for the metadata
-                    var converter = LOGGER.listenTo(metadata.dataSpecification().newGraphConverter(metadata));
+                    var converter = listenTo(metadata.dataSpecification().newGraphConverter(metadata));
                     var graph = converter.convert(pbfFile);
                     if (graph != null)
                     {
                         // and if we succeeded, then save the graph file and return the graph
-                        graph.save(new GraphArchive(LOGGER, graphFile, ZipArchive.Mode.WRITE, ProgressReporter.none()));
-                        return LOGGER.listenTo(graph);
+                        graph.save(new GraphArchive(this, graphFile, ZipArchive.Mode.WRITE, ProgressReporter.none()));
+                        return listenTo(graph);
                     }
 
-                    LOGGER.problem("Unable to extract graph from $", pbfFile);
+                    problem("Unable to extract graph from $", pbfFile);
                 }
                 else
                 {
-                    LOGGER.problem("No metadata found in $", pbfFile);
+                    problem("No metadata found in $", pbfFile);
                 }
             }
             else
             {
-                LOGGER.problem("Unable to install PBF file $", pbfFile);
+                problem("Unable to install PBF file $", pbfFile);
             }
         }
         else
         {
-            return new GraphArchive(LOGGER, graphFile, READ, ProgressReporter.none()).load(emptyListener());
+            return new GraphArchive(this, graphFile, READ, ProgressReporter.none()).load(emptyListener());
         }
         return null;
     }

@@ -40,7 +40,7 @@ import java.util.List;
 /**
  * An r-tree spatial index with a simple linear splitting algorithm that sorts elements by latitude and longitude of
  * their center and picks the two most distant as the beginning of the split. Otherwise, this is a linear r-tree as
- * described in http://en.wikipedia.org/wiki/R-tree.
+ * described in <a href="https://en.wikipedia.org/wiki/R-tree">Wikipedia RTree</a>.
  *
  * @param <Element> An element must be {@link Bounded}, and {@link Intersectable} in order to be spatially indexed by an
  * r-tree.
@@ -83,7 +83,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     private final Matcher<Element> allElements = new All<>();
 
     /** Debugger interface */
-    private RTreeSpatialIndexDebugger<Element> debugger = RTreeSpatialIndexDebugger.nullDebugger();
+    private transient RTreeSpatialIndexDebugger<Element> debugger;
 
     private String objectName;
 
@@ -147,6 +147,10 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
 
     public RTreeSpatialIndexDebugger<Element> debugger()
     {
+        if (debugger == null)
+        {
+            debugger = RTreeSpatialIndexDebugger.nullDebugger();
+        }
         return debugger;
     }
 

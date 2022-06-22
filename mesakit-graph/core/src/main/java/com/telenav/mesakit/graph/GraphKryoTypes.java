@@ -18,10 +18,7 @@
 
 package com.telenav.mesakit.graph;
 
-import com.telenav.kivakit.data.formats.library.DataFormat;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
-import com.telenav.mesakit.graph.Metadata;
-import com.telenav.mesakit.graph.Place;
 import com.telenav.mesakit.graph.metadata.DataBuild;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
 import com.telenav.mesakit.graph.metadata.DataSupplier;
@@ -36,6 +33,7 @@ import com.telenav.mesakit.graph.specifications.common.element.store.TagStore;
 import com.telenav.mesakit.graph.specifications.common.vertex.store.ConnectivityStore;
 import com.telenav.mesakit.graph.specifications.common.vertex.store.EdgeArrayStore;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
+import com.telenav.mesakit.map.data.formats.library.DataFormat;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.compression.PbfStringListTagCodec;
 
 /**

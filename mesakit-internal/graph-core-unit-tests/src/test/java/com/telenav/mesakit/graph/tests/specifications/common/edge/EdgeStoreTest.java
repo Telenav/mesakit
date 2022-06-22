@@ -24,7 +24,6 @@ import com.telenav.kivakit.resource.serialization.ObjectMetadata;
 import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Metadata;
-import com.telenav.mesakit.graph.GraphKryoTypes;
 import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
 import com.telenav.mesakit.graph.specifications.common.edge.store.index.CompressedEdgeSpatialIndex;
 import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
@@ -68,7 +67,7 @@ public class EdgeStoreTest extends GraphUnitTest
         var index = new CompressedEdgeSpatialIndex("test", graph, new RTreeSettings());
         index.bulkLoad(graph.edges().asList());
 
-        var serializer = new KryoObjectSerializer(new GraphKryoTypes());
+        var serializer = new KryoObjectSerializer(kryoTypes());
         var output = new ByteArrayOutputStream();
         var path = StringPath.stringPath("test");
         serializer.write(output, path, index, ObjectMetadata.TYPE);
