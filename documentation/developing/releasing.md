@@ -23,7 +23,7 @@ This section documents how to release a new version of MesaKit, step by step.
 In the text below *\[mesakit-version\]* refers to a [semantic versioning](https://semver.org) identifier, such
 as 2.1.7 or 1.0.0-beta.
 
-MesaKit adheres to the standard [Git Flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) branching model.
+Although MesaKit does not use git flow, it adheres to the [Git Flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) branching model.
 
 ### 1. Creating the Release Branch <img src="https://telenav.github.io/telenav-assets/images/icons/branch-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/branch-32-2x.png 2x"></img>
 
@@ -33,7 +33,7 @@ Start a new release branch with the following command:
 
 This script does the following:
 
-1. Creates the release branch *release/[mesakit-version\]* using git flow
+1. Creates the release branch *release/[mesakit-version\]*
 2. Updates *$MESAKIT_HOME/project.properties* file
 3. Updates the version of all pom.xml files to *[mesakit-version]*
 
