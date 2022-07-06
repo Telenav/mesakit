@@ -28,6 +28,7 @@ import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsKryoTypes;
 import com.telenav.kivakit.resource.CopyMode;
 import com.telenav.kivakit.resource.Extension;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
+import com.telenav.kivakit.resource.packages.Package;
 import com.telenav.kivakit.resource.serialization.ObjectSerializers;
 import com.telenav.kivakit.serialization.gson.GsonObjectSerializer;
 import com.telenav.kivakit.serialization.gson.factory.CoreGsonFactory;
@@ -38,7 +39,6 @@ import com.telenav.kivakit.serialization.kryo.types.ResourceKryoTypes;
 import com.telenav.kivakit.serialization.properties.PropertiesObjectSerializer;
 import com.telenav.kivakit.settings.Settings;
 import com.telenav.kivakit.settings.stores.ResourceFolderSettingsStore;
-import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphKryoTypes;
@@ -368,8 +368,8 @@ public abstract class GraphUnitTest extends RegionUnitTest
             {
                 // then try to copy it from the test data folder
                 var destination = listenTo(resolveProject(GraphProject.class).graphFolder().folder("overpass"));
-                var source = listenTo(resolveProject(MesaKit.class).mesakitHome().folder("mesakit-graph/core/data"));
-                source.copyTo(destination, CopyMode.OVERWRITE, OSM_PBF.fileMatcher(), ProgressReporter.none());
+                var source = listenTo(Package.parsePackage(this, GraphUnitTest.class, "data"));
+                source.copyTo(destination, CopyMode.OVERWRITE, resource -> resource.hasExtension(OSM_PBF), ProgressReporter.none());
             }
 
             // and if we can't find it there, and it's an OSM graph being requested,
