@@ -76,10 +76,10 @@ import static com.telenav.kivakit.resource.Extension.OSM_PBF;
 import static com.telenav.kivakit.resource.Extension.parseExtension;
 
 /**
- * A grid of {@link WorldCell}s, each containing its own cell-{@link Graph}. The grid is stored in a {@link
- * WorldGraphRepository} inside a {@link WorldGraphRepositoryFolder} and it consists of a {@link WorldGraphIndex} stored
- * in a file called "index.world" and a set of cell graphs, each named according to its index in the world grid. For
- * example, the graph file for the cell at grid coordinate (60, 36) would be called "cell-60-36.graph".
+ * A grid of {@link WorldCell}s, each containing its own cell-{@link Graph}. The grid is stored in a
+ * {@link WorldGraphRepository} inside a {@link WorldGraphRepositoryFolder} and it consists of a {@link WorldGraphIndex}
+ * stored in a file called "index.world" and a set of cell graphs, each named according to its index in the world grid.
+ * For example, the graph file for the cell at grid coordinate (60, 36) would be called "cell-60-36.graph".
  * <p>
  * <b>Attributes</b>
  * <ul>
@@ -334,6 +334,7 @@ public class WorldGrid
             output.add(feature);
         }
 
+        //noinspection SpellCheckingInspection
         output.save(File.parseFile(Listener.consoleListener(), "data/world-graph-2-degree-cells.geojson"));
     }
 
@@ -596,14 +597,14 @@ public class WorldGrid
     {
         // Update status of PBF files
         @SuppressWarnings("SpellCheckingInspection")
-        var pbfs = repositoryFolder.files(OSM_PBF.fileMatcher()).asSet();
+        var pbfs = repositoryFolder.files(OSM_PBF.matcher()).asSet();
         for (var worldCell : included)
         {
             worldCell.hasPbf(repositoryFolder, pbfs.contains(worldCell.pbfFile(repositoryFolder)));
         }
 
         // Update status and size of graph files
-        var graphs = repositoryFolder.files(GRAPH.fileMatcher()).asSet();
+        var graphs = repositoryFolder.files(GRAPH.matcher()).asSet();
         for (var worldCell : included)
         {
             var graphFile = worldCell.cellGraphFile(repositoryFolder);
