@@ -28,10 +28,10 @@ import com.telenav.kivakit.core.messaging.Message;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.messaging.messages.status.activity.StepSuccess;
 import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.filesystem.FilePath;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.resource.Extension;
 import com.telenav.kivakit.resource.FileName;
-import com.telenav.kivakit.filesystem.FilePath;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.world.WorldGraphIndex;
 
@@ -41,8 +41,8 @@ import java.io.Serializable;
  * A {@link WorldGraphRepositoryFolder} is a folder within a {@link WorldGraphRepository} that has a name based on the
  * {@link Metadata} of the world graph information that it contains. The repository containing this folder can be
  * retrieved with {@link #repository()} or {@link #parent()} and the {@link WorldGraphIndex} within the folder with
- * {@link #indexFile()}. A folder can be checked to determine if it is a valid world graph folder with {@link
- * #check(Folder, Check)}.
+ * {@link #indexFile()}. A folder can be checked to determine if it is a valid world graph folder with
+ * {@link #check(Folder, Check)}.
  *
  * @author jonathanl (shibo)
  * @see WorldGraphIndex
@@ -50,6 +50,7 @@ import java.io.Serializable;
  * @see File
  * @see Metadata
  */
+@SuppressWarnings("unused")
 public class WorldGraphRepositoryFolder extends Folder implements Serializable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
