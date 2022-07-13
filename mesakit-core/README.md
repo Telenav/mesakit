@@ -20,14 +20,14 @@ This module contains the core MesaKit project.
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/dependencies-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.mesakit.org/0.9.14/lexakai/mesakit/mesakit-core/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/0.9.15/lexakai/mesakit/mesakit-core/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-core</artifactId>
-        <version>0.9.14</version>
+        <version>0.9.15</version>
     </dependency>
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
@@ -48,22 +48,22 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/box-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/box-24-2x.png 2x"/>
 
-[*com.telenav.mesakit.core*](https://www.mesakit.org/0.9.14/lexakai/mesakit/mesakit-core/documentation/diagrams/com.telenav.mesakit.core.svg)
+[*com.telenav.mesakit.core*](https://www.mesakit.org/0.9.15/lexakai/mesakit/mesakit-core/documentation/diagrams/com.telenav.mesakit.core.svg)
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
 
 ### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/books-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/books-24-2x.png 2x"/>
 
-Javadoc coverage for this project is 90.0%.  
+Javadoc coverage for this project is 100.0%.  
   
-&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meters/meter-90-96.png" srcset="https://telenav.github.io/telenav-assets/images/meters/meter-90-96-2x.png 2x"/>
+&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meters/meter-100-96.png" srcset="https://telenav.github.io/telenav-assets/images/meters/meter-100-96-2x.png 2x"/>
 
 
 
 
 | Class | Documentation Sections |
 |---|---|
-| [*MesaKit*](https://www.mesakit.org/0.9.14/javadoc/mesakit/mesakit.core/////////////////////////////////.html) |  |  
+| [*MesaKit*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.core/////////////////////////////////.html) |  |  
 
 [//]: # (start-user-text)
 

@@ -30,14 +30,14 @@ This module contains code for cutting maps.
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/dependencies-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.mesakit.org/0.9.14/lexakai/mesakit/mesakit-map/cutter/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/0.9.15/lexakai/mesakit/mesakit-map/cutter/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-cutter</artifactId>
-        <version>0.9.14</version>
+        <version>0.9.15</version>
     </dependency>
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
@@ -56,16 +56,16 @@ are left uncut.
 
 ### Class Diagrams <a name="class-diagrams"></a> &nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/diagram-40.png" srcset="https://telenav.github.io/telenav-assets/images/icons/diagram-40-2x.png 2x"/>
 
-[*Map Cutting*](https://www.mesakit.org/0.9.14/lexakai/mesakit/mesakit-map/cutter/documentation/diagrams/diagram-map-cutter.svg)
+[*Map Cutting*](https://www.mesakit.org/0.9.15/lexakai/mesakit/mesakit-map/cutter/documentation/diagrams/diagram-map-cutter.svg)
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/box-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/box-24-2x.png 2x"/>
 
-[*com.telenav.mesakit.map.cutter*](https://www.mesakit.org/0.9.14/lexakai/mesakit/mesakit-map/cutter/documentation/diagrams/com.telenav.mesakit.map.cutter.svg)  
-[*com.telenav.mesakit.map.cutter.cuts*](https://www.mesakit.org/0.9.14/lexakai/mesakit/mesakit-map/cutter/documentation/diagrams/com.telenav.mesakit.map.cutter.cuts.svg)  
-[*com.telenav.mesakit.map.cutter.cuts.maps*](https://www.mesakit.org/0.9.14/lexakai/mesakit/mesakit-map/cutter/documentation/diagrams/com.telenav.mesakit.map.cutter.cuts.maps.svg)  
-[*com.telenav.mesakit.map.cutter.lexakai*](https://www.mesakit.org/0.9.14/lexakai/mesakit/mesakit-map/cutter/documentation/diagrams/com.telenav.mesakit.map.cutter.lexakai.svg)
+[*com.telenav.mesakit.map.cutter*](https://www.mesakit.org/0.9.15/lexakai/mesakit/mesakit-map/cutter/documentation/diagrams/com.telenav.mesakit.map.cutter.svg)  
+[*com.telenav.mesakit.map.cutter.cuts*](https://www.mesakit.org/0.9.15/lexakai/mesakit/mesakit-map/cutter/documentation/diagrams/com.telenav.mesakit.map.cutter.cuts.svg)  
+[*com.telenav.mesakit.map.cutter.cuts.maps*](https://www.mesakit.org/0.9.15/lexakai/mesakit/mesakit-map/cutter/documentation/diagrams/com.telenav.mesakit.map.cutter.cuts.maps.svg)  
+[*com.telenav.mesakit.map.cutter.lexakai*](https://www.mesakit.org/0.9.15/lexakai/mesakit/mesakit-map/cutter/documentation/diagrams/com.telenav.mesakit.map.cutter.lexakai.svg)
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
 
@@ -86,14 +86,14 @@ The following significant classes are undocumented:
 
 | Class | Documentation Sections |
 |---|---|
-| [*Cut*](https://www.mesakit.org/0.9.14/javadoc/mesakit/mesakit.map.cutter///////////////////////////////////.html) |  |  
-| [*DiagramMapCutter*](https://www.mesakit.org/0.9.14/javadoc/mesakit/mesakit.map.cutter////////////////////////////////////////////////////////.html) |  |  
-| [*FastCut*](https://www.mesakit.org/0.9.14/javadoc/mesakit/mesakit.map.cutter////////////////////////////////////////////.html) |  |  
-| [*PbfRegionCutter*](https://www.mesakit.org/0.9.14/javadoc/mesakit/mesakit.map.cutter///////////////////////////////////////////////.html) |  |  
-| [*RegionIndexMap*](https://www.mesakit.org/0.9.14/javadoc/mesakit/mesakit.map.cutter////////////////////////////////////////////////////////.html) |  |  
-| [*RegionNodes*](https://www.mesakit.org/0.9.14/javadoc/mesakit/mesakit.map.cutter/////////////////////////////////////////////////////.html) |  |  
-| [*RegionWays*](https://www.mesakit.org/0.9.14/javadoc/mesakit/mesakit.map.cutter////////////////////////////////////////////////////.html) |  |  
-| [*SoftCut*](https://www.mesakit.org/0.9.14/javadoc/mesakit/mesakit.map.cutter////////////////////////////////////////////.html) |  |  
+| [*Cut*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.cutter///////////////////////////////////.html) |  |  
+| [*DiagramMapCutter*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.cutter////////////////////////////////////////////////////////.html) |  |  
+| [*FastCut*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.cutter////////////////////////////////////////////.html) |  |  
+| [*PbfRegionCutter*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.cutter///////////////////////////////////////////////.html) |  |  
+| [*RegionIndexMap*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.cutter////////////////////////////////////////////////////////.html) |  |  
+| [*RegionNodes*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.cutter/////////////////////////////////////////////////////.html) |  |  
+| [*RegionWays*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.cutter////////////////////////////////////////////////////.html) |  |  
+| [*SoftCut*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.cutter////////////////////////////////////////////.html) |  |  
 
 [//]: # (start-user-text)
 
