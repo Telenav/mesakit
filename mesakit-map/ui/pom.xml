@@ -23,7 +23,7 @@
 
     <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit-map-ui</artifactId>
-    <version>0.9.15</version>
+    <version>0.9.16-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
