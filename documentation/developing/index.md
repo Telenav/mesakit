@@ -15,8 +15,8 @@
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512-2x.png 2x"></img>
 
-[**Setup**](https://github.com/Telenav/telenav-build/blob/release/current/documentation/initial-setup-instructions.md) <!-- [cactus.replacement-branch-name] -->
-[**Developer Setup**](https://github.com/Telenav/telenav-build/blob/release/current/documentation/developing.md) <!-- [cactus.replacement-branch-name] -->
+[**Setup**](https://github.com/Telenav/telenav-build/blob/release/0.9.15/documentation/initial-setup-instructions.md) <!-- [cactus.replacement-branch-name] -->
+[**Developer Setup**](https://github.com/Telenav/telenav-build/blob/release/0.9.15/documentation/developing.md) <!-- [cactus.replacement-branch-name] -->
 [**Maven Dependencies**](maven-dependencies.md)  
 [**System Properties**](system-properties.md)  
-[**Releasing KivaKit**](https://github.com/Telenav/telenav-build/blob/release/current/documentation/releasing.md) <!-- [cactus.replacement-branch-name] -->
+[**Releasing KivaKit**](https://github.com/Telenav/telenav-build/blob/release/0.9.15/documentation/releasing.md) <!-- [cactus.replacement-branch-name] -->
