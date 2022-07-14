@@ -25,6 +25,7 @@ import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.thread.RepeatingThread;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.network.http.HttpGetResource;
 import com.telenav.kivakit.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
@@ -34,6 +35,7 @@ import javax.imageio.ImageIO;
 import java.awt.AlphaComposite;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.http.HttpRequest;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
@@ -139,11 +141,15 @@ public abstract class SlippyTileImageCache extends BaseRepeater
         if (resource == null)
         {
             // then download the resource into the cache
-            resource = cache.add(tile, networkLocation(tile).get(DEFAULT, get ->
+            resource = cache.add(tile, new HttpGetResource(networkLocation(tile), DEFAULT)
             {
-                get.setHeader("User-Agent", "MesaKit");
-                get.setHeader("Referer", "https://www.mesakit.org");
-            }));
+                @Override
+                public void onInitialize(HttpRequest request)
+                {
+                    header(request, "User-Agent", "MesaKit");
+                    header(request, "Referer", "https://www.mesakit.org");
+                }
+            });
         }
 
         // If we have a slippy-tile resource,
