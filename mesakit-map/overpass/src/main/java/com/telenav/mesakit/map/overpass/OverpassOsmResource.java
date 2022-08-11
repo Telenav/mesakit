@@ -29,7 +29,7 @@ import com.telenav.kivakit.resource.packages.PackageResource;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.overpass.lexakai.DiagramOverpass;
+import com.telenav.mesakit.map.overpass.internal.lexakai.DiagramOverpass;
 
 import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
 

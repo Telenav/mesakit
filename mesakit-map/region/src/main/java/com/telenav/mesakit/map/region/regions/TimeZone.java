@@ -36,7 +36,7 @@ import com.telenav.mesakit.map.region.RegionType;
 import com.telenav.mesakit.map.region.border.Border;
 import com.telenav.mesakit.map.region.border.cache.BorderCache;
 import com.telenav.mesakit.map.region.RegionLimits;
-import com.telenav.mesakit.map.region.lexakai.DiagramRegions;
+import com.telenav.mesakit.map.region.internal.lexakai.DiagramRegions;
 
 import java.time.ZoneId;
 import java.util.Collection;

@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.data.formats.library.map.identifiers;
 
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.data.formats.library.lexakai.DiagramDataMapIdentifier;
+import com.telenav.mesakit.map.data.formats.library.internal.lexakai.DiagramDataMapIdentifier;
 
 /**
  * OSM relation identifier

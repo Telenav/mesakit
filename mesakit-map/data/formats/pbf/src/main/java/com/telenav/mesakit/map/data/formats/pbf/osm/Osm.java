@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.data.formats.pbf.osm;
 
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
-import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfOsm;
+import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfOsm;
 
 @UmlClassDiagram(diagram = DiagramPbfOsm.class)
 public class Osm

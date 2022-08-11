@@ -39,7 +39,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
-import com.telenav.mesakit.map.geography.lexakai.DiagramLocation;
+import com.telenav.mesakit.map.geography.internal.lexakai.DiagramLocation;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Dimensioned;
 import com.telenav.mesakit.map.geography.shape.rectangle.Height;

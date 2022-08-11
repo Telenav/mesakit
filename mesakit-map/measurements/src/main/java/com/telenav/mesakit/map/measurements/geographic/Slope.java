@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.measurements.geographic;
 
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.measurements.lexakai.DiagramMapMeasurementGeographic;
+import com.telenav.mesakit.map.measurements.internal.lexakai.DiagramMapMeasurementGeographic;
 
 /**
  * A slope angle, such as for the steepness of the rise or fall of a roadway. Supports basic mathematical operations and

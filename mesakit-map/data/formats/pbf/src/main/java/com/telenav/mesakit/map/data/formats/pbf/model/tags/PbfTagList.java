@@ -25,7 +25,7 @@ import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
-import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelTags;
+import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfModelTags;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.ArrayList;

@@ -74,7 +74,7 @@ import com.telenav.mesakit.map.region.RegionType;
 import com.telenav.mesakit.map.region.RegionType.RegionFactory;
 import com.telenav.mesakit.map.region.border.Border;
 import com.telenav.mesakit.map.region.border.BorderSpatialIndex;
-import com.telenav.mesakit.map.region.lexakai.DiagramBorder;
+import com.telenav.mesakit.map.region.internal.lexakai.DiagramBorder;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.County;

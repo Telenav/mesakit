@@ -2,7 +2,6 @@ package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Maximum;
@@ -15,7 +14,7 @@ import com.telenav.kivakit.data.compression.codecs.huffman.string.StringFrequenc
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
-import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelCompression;
+import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfModelCompression;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;

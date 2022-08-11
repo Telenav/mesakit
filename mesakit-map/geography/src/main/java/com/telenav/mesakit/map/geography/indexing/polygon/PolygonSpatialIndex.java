@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.geography.indexing.polygon;
 
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.lexakai.DiagramSpatialIndex;
+import com.telenav.mesakit.map.geography.internal.lexakai.DiagramSpatialIndex;
 import com.telenav.mesakit.map.geography.shape.Outline;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;

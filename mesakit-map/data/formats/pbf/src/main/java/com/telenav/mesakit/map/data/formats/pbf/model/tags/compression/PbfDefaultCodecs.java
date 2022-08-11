@@ -7,7 +7,7 @@ import com.telenav.kivakit.properties.PropertyMap;
 import com.telenav.kivakit.resource.packages.Package;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
-import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelCompression;
+import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfModelCompression;
 import org.jetbrains.annotations.NotNull;
 
 import static com.telenav.kivakit.core.messaging.Listener.throwingListener;

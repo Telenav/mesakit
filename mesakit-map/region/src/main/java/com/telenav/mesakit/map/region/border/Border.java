@@ -28,7 +28,7 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionIdentity;
-import com.telenav.mesakit.map.region.lexakai.DiagramBorder;
+import com.telenav.mesakit.map.region.internal.lexakai.DiagramBorder;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;

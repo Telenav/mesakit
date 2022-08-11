@@ -28,7 +28,7 @@ import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
-import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfProcessingFilters;
+import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfProcessingFilters;
 
 import java.util.Comparator;
 import java.util.HashSet;

@@ -46,7 +46,7 @@ import com.telenav.mesakit.map.geography.LocatedHeading;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.LocationSequence;
 import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.lexakai.DiagramPolyline;
+import com.telenav.mesakit.map.geography.internal.lexakai.DiagramPolyline;
 import com.telenav.mesakit.map.geography.shape.polyline.compression.differential.CompressedPolyline;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Intersectable;

@@ -34,7 +34,7 @@ import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.region.locale.MapLocale;
-import com.telenav.mesakit.map.region.lexakai.DiagramRegion;
+import com.telenav.mesakit.map.region.internal.lexakai.DiagramRegion;
 import com.telenav.mesakit.map.region.regions.Country;
 
 import java.util.ArrayList;
