@@ -43,6 +43,23 @@ MesaKit provides useful APIs and tools for complex back-end map data analysis an
 [**Published Releases**](https://repo1.maven.org/maven2/com/telenav/mesakit/)  
 [**How to Build This Project**](https://github.com/Telenav/telenav-build/blob/release/1.6.2/documentation/building.md) <!-- [cactus.replacement-branch-name] --> 
 
+<img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
+
+### Build Status <a name = "quick-start"></a>&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/gears-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/gears-32-2x.png 2x"/>
+
+| Repository and Branch             | Build Status                                                                                           |
+|-----------------------------------|--------------------------------------------------------------------------------------------------------|
+| `mesakit develop`          | <img src="https://github.com/Telenav/mesakit/actions/workflows/build-develop.yml/badge.svg"/>          |
+| `mesakit release/current`  | <img src="https://github.com/Telenav/mesakit/actions/workflows/build-release.yml/badge.svg"/>          |
+| `mesakit-extensions develop` | <img src="https://github.com/Telenav/mesakit-extensions/actions/workflows/build-develop.yml/badge.svg"/> |
+| `mesakit-extensions release` | <img src="https://github.com/Telenav/mesakit-extensions/actions/workflows/build-release.yml/badge.svg"/> |
+| `mesakit-examples develop` | <img src="https://github.com/Telenav/mesakit-examples/actions/workflows/build-develop.yml/badge.svg"/> |
+| `mesakit-examples release` | <img src="https://github.com/Telenav/mesakit-examples/actions/workflows/build-release.yml/badge.svg"/> |
+
+<br/>
+
+<img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
+
 ### Reference <a name = "reference"></a>&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/books-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/books-24-2x.png 2x"/>
 
 [**Setup and Build**](#setup-and-build)  
