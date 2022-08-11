@@ -47,14 +47,14 @@ MesaKit provides useful APIs and tools for complex back-end map data analysis an
 
 ### Build Status <a name = "quick-start"></a>&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/gears-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/gears-32-2x.png 2x"/>
 
-| Repository and Branch             | Build Status                                                                                           |
-|-----------------------------------|--------------------------------------------------------------------------------------------------------|
-| `mesakit develop`          | <img src="https://github.com/Telenav/mesakit/actions/workflows/build-develop.yml/badge.svg"/>          |
-| `mesakit release/current`  | <img src="https://github.com/Telenav/mesakit/actions/workflows/build-release.yml/badge.svg"/>          |
-| `mesakit-extensions develop` | <img src="https://github.com/Telenav/mesakit-extensions/actions/workflows/build-develop.yml/badge.svg"/> |
-| `mesakit-extensions release` | <img src="https://github.com/Telenav/mesakit-extensions/actions/workflows/build-release.yml/badge.svg"/> |
-| `mesakit-examples develop` | <img src="https://github.com/Telenav/mesakit-examples/actions/workflows/build-develop.yml/badge.svg"/> |
-| `mesakit-examples release` | <img src="https://github.com/Telenav/mesakit-examples/actions/workflows/build-release.yml/badge.svg"/> |
+| Repository and Branch                | Build Status                                                                                             |
+|--------------------------------------|----------------------------------------------------------------------------------------------------------|
+| `mesakit develop`                    | <img src="https://github.com/Telenav/mesakit/actions/workflows/build-develop.yml/badge.svg"/>            |
+| `mesakit release/current`            | <img src="https://github.com/Telenav/mesakit/actions/workflows/build-release.yml/badge.svg"/>            |
+| `mesakit-extensions develop`         | <img src="https://github.com/Telenav/mesakit-extensions/actions/workflows/build-develop.yml/badge.svg"/> |
+| `mesakit-extensions release/current` | <img src="https://github.com/Telenav/mesakit-extensions/actions/workflows/build-release.yml/badge.svg"/> |
+| `mesakit-examples develop`           | <img src="https://github.com/Telenav/mesakit-examples/actions/workflows/build-develop.yml/badge.svg"/>   |
+| `mesakit-examples release/current`   | <img src="https://github.com/Telenav/mesakit-examples/actions/workflows/build-release.yml/badge.svg"/>   |
 
 <br/>
 
