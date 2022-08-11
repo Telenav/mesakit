@@ -22,13 +22,12 @@ import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.core.language.primitive.Ints;
 import com.telenav.kivakit.core.language.primitive.Longs;
-import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.interfaces.collection.Keyed;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
-import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelTags;
+import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfModelTags;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import java.util.Collection;

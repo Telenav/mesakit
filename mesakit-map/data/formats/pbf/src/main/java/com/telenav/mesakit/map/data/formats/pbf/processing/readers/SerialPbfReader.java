@@ -24,7 +24,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataStatistics;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfStopProcessingException;
-import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfProcessing;
+import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfProcessing;
 import crosby.binary.osmosis.OsmosisReader;
 import org.openstreetmap.osmosis.core.container.v0_6.EntityContainer;
 import org.openstreetmap.osmosis.core.domain.v0_6.Entity;

@@ -4,7 +4,7 @@ import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.collections.iteration.Iterators;
 import com.telenav.kivakit.core.language.primitive.Ints;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelTags;
+import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfModelTags;
 import org.jetbrains.annotations.NotNull;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 

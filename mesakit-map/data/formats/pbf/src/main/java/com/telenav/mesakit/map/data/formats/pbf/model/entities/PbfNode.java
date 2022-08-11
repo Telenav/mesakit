@@ -2,7 +2,7 @@ package com.telenav.mesakit.map.data.formats.pbf.model.entities;
 
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfNodeIdentifier;
-import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelEntities;
+import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfModelEntities;
 import org.openstreetmap.osmosis.core.domain.v0_6.Node;
 
 /**

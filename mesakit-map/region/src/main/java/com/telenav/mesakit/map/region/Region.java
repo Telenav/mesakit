@@ -61,7 +61,7 @@ import com.telenav.mesakit.map.region.border.Bordered;
 import com.telenav.mesakit.map.region.border.cache.BorderCache;
 import com.telenav.mesakit.map.region.countries.UnitedStates;
 import com.telenav.mesakit.map.region.locale.MapLocale;
-import com.telenav.mesakit.map.region.lexakai.DiagramRegion;
+import com.telenav.mesakit.map.region.internal.lexakai.DiagramRegion;
 import com.telenav.mesakit.map.region.regions.City;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;

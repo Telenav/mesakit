@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.region;
 import com.telenav.kivakit.core.value.identifier.IntegerIdentifier;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
-import com.telenav.mesakit.map.region.lexakai.DiagramRegion;
+import com.telenav.mesakit.map.region.internal.lexakai.DiagramRegion;
 
 /**
  * A unique identifier for a region which cannot be persisted or relied on in the long-term.

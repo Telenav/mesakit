@@ -30,7 +30,7 @@ import com.telenav.kivakit.core.value.level.Percent;
 import com.telenav.kivakit.interfaces.numeric.Quantizable;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.measurements.lexakai.DiagramMapMeasurementGeographic;
+import com.telenav.mesakit.map.measurements.internal.lexakai.DiagramMapMeasurementGeographic;
 
 import java.util.regex.Pattern;
 
