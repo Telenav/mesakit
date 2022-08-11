@@ -240,7 +240,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
             Continent.create();
 
             // Load region identity data
-            var executor = Executors.newFixedThreadPool(RTreeSpatialIndex.visualDebug() ? 1 : 5);
+            var executor = Executors.newFixedThreadPool(RTreeSpatialIndex.visualDebug() ? 1 : 1);
             executor.execute(() -> type(Continent.class).loadIdentities());
             executor.execute(() -> type(Country.class).loadIdentities());
             executor.execute(() -> type(State.class).loadIdentities());

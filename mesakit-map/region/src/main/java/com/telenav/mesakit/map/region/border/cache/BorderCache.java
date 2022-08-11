@@ -42,9 +42,9 @@ import com.telenav.kivakit.network.core.Host;
 import com.telenav.kivakit.network.core.NetworkPath;
 import com.telenav.kivakit.network.http.secure.SecureHttpNetworkLocation;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
+import com.telenav.kivakit.resource.FileName;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
-import com.telenav.kivakit.resource.FileName;
 import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.kivakit.serialization.core.SerializationSession;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
@@ -120,8 +120,7 @@ import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcess
  * @see RegionType
  * @see RegionInstance
  */
-@SuppressWarnings("SpellCheckingInspection")
-@UmlClassDiagram(diagram = DiagramBorder.class)
+@SuppressWarnings("unused") @UmlClassDiagram(diagram = DiagramBorder.class)
 @UmlRelation(label = "loads borders for", referent = Region.class)
 public abstract class BorderCache<T extends Region<T>> extends BaseComponent
 {
@@ -153,7 +152,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
 
     private static final Lock cacheLock = new Lock();
 
-    public static class Settings<R extends Region<R>>
+    @SuppressWarnings("unused") public static class Settings<R extends Region<R>>
     {
         private Class<R> type;
 
@@ -520,7 +519,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
                                 NETWORK_PATH.asContraction(80), jar.path().asContraction(80)) + "\n ");
                         var downloadProgress = BroadcastingProgressReporter.create(this, "bytes");
                         downloadProgress.start("Downloading");
-                        information("Downloading $ from $", jar, source);
+                        information("Downloading $ to $", source, jar);
                         cache().add(source.get(), OVERWRITE, downloadProgress);
                         downloadProgress.end("Downloaded");
 
@@ -647,54 +646,56 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
                     try
                     {
                         // Read the spatial index
-                        var session = serializationSession();
-                        session.open(input);
-                        var loaded = session.read();
-                        var cachedIndex = (BorderSpatialIndex<T>) loaded.object();
-                        var version = loaded.version();
-                        trace("Cached border index is version $", version);
-
-                        // and if it is the current version
-                        if (version.equals(regionProject().borderDataVersion()))
+                        try (var session = serializationSession())
                         {
-                            var invalid = false;
-                            var borders = 0;
-                            for (var border : cachedIndex.all())
+                            session.open(input);
+                            var loaded = session.read();
+                            var cachedIndex = (BorderSpatialIndex<T>) loaded.object();
+                            var version = loaded.version();
+                            trace("Cached border index is version $", version);
+
+                            // and if it is the current version
+                            if (version.equals(regionProject().borderDataVersion()))
                             {
-                                if (!border.isValid())
+                                var invalid = false;
+                                var borders = 0;
+                                for (var border : cachedIndex.all())
                                 {
-                                    invalid = true;
-                                    break;
+                                    if (!border.isValid())
+                                    {
+                                        invalid = true;
+                                        break;
+                                    }
+                                    borders++;
                                 }
-                                borders++;
-                            }
-                            if (invalid || borders == 0)
-                            {
-                                information("Border cache '$' is invalid or has no borders", borderCacheFile());
+                                if (invalid || borders == 0)
+                                {
+                                    information("Border cache '$' is invalid or has no borders", borderCacheFile());
+                                }
+                                else
+                                {
+                                    index = cachedIndex;
+
+                                    // Convert persistent string identifiers back to bounded objects
+                                    for (var border : index().all())
+                                    {
+                                        var region = regionForIdentity(border.identity());
+                                        if (region == null)
+                                        {
+                                            warning("regionForIdentity returned null for $", border.identity());
+                                        }
+                                        border.region(region);
+                                    }
+
+                                    trace("Loaded $ $ in $", Count.count(index().all()), name(), start.elapsedSince());
+                                    return true;
+                                }
                             }
                             else
                             {
-                                index = cachedIndex;
-
-                                // Convert persistent string identifiers back to bounded objects
-                                for (var border : index().all())
-                                {
-                                    var region = regionForIdentity(border.identity());
-                                    if (region == null)
-                                    {
-                                        warning("regionForIdentity returned null for $", border.identity());
-                                    }
-                                    border.region(region);
-                                }
-
-                                trace("Loaded $ $ in $", Count.count(index().all()), name(), start.elapsedSince());
-                                return true;
+                                information("Ignoring version $ cache file '$' since current cache version is $",
+                                        version, borderCacheFile().fileName(), regionProject().borderDataVersion());
                             }
-                        }
-                        else
-                        {
-                            information("Ignoring version $ cache file '$' since current cache version is $",
-                                    version, borderCacheFile().fileName(), regionProject().borderDataVersion());
                         }
                     }
                     finally

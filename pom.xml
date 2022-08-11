@@ -23,7 +23,7 @@
     
     <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit</artifactId>
-    <version>0.9.15</version>
+    <version>0.9.16</version>
     
     <packaging>pom</packaging>
     <description>
