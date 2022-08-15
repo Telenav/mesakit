@@ -187,7 +187,7 @@ public class SmartGraphLoader extends BaseRepeater implements Named
                         converter.configure(configuration);
                         return converter.convert(file);
                     }
-                    problem("PBF file '$' does not contain metadata. Use mesakit-tools.sh to add metadata.", file);
+                    problem("PBF file '$' does not contain metadata. Use mesakit-tools to add metadata.", file);
                     return null;
                 }
 

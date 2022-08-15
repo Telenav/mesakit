@@ -34,7 +34,7 @@ import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataSource;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataStatistics;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfStopProcessingException;
-import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfProcessing;
+import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfProcessing;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.openstreetmap.osmosis.core.domain.v0_6.Bound;
 import org.openstreetmap.osmosis.core.domain.v0_6.Entity;

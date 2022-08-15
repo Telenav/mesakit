@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.data.formats.pbf.processing.filters.osm;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.RelationFilter;
-import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfOsm;
+import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfOsm;
 
 import java.util.HashSet;
 import java.util.Set;

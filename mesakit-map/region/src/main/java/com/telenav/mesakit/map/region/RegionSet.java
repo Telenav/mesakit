@@ -24,7 +24,7 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
-import com.telenav.mesakit.map.region.lexakai.DiagramRegion;
+import com.telenav.mesakit.map.region.internal.lexakai.DiagramRegion;
 
 import java.util.LinkedHashSet;
 import java.util.Set;

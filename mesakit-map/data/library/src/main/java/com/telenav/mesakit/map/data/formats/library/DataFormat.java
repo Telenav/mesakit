@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.data.formats.library;
 
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.data.formats.library.lexakai.DiagramDataFormat;
+import com.telenav.mesakit.map.data.formats.library.internal.lexakai.DiagramDataFormat;
 
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
 

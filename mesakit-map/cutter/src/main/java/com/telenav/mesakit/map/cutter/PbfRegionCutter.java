@@ -39,7 +39,7 @@ import com.telenav.mesakit.map.cutter.cuts.SoftCut;
 import com.telenav.mesakit.map.cutter.cuts.maps.RegionIndexMap;
 import com.telenav.mesakit.map.cutter.cuts.maps.RegionNodes;
 import com.telenav.mesakit.map.cutter.cuts.maps.RegionWays;
-import com.telenav.mesakit.map.cutter.lexakai.DiagramMapCutter;
+import com.telenav.mesakit.map.cutter.internal.lexakai.DiagramMapCutter;
 import com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataSource;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.WayFilter;
 import com.telenav.mesakit.map.geography.Location;

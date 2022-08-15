@@ -6,7 +6,7 @@ import com.telenav.kivakit.data.compression.codecs.huffman.character.CharacterFr
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
-import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelCompression;
+import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfModelCompression;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
 
 import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;

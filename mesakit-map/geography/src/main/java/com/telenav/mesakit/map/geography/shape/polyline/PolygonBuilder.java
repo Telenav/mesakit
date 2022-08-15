@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.geography.shape.polyline;
 
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
-import com.telenav.mesakit.map.geography.lexakai.DiagramPolyline;
+import com.telenav.mesakit.map.geography.internal.lexakai.DiagramPolyline;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 

@@ -26,7 +26,7 @@ import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapRelationIdentifier;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
-import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelIdentifiers;
+import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfModelIdentifiers;
 import org.openstreetmap.osmosis.core.domain.v0_6.EntityType;
 import org.openstreetmap.osmosis.core.domain.v0_6.Relation;
 
