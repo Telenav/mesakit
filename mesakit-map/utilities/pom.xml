@@ -28,9 +28,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>geojson</module>
         <module>geohash</module>
         <module>grid</module>
+        <module>geojson</module>
     </modules>
 
 </project>

@@ -28,10 +28,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>map-measurements-unit-tests</module>
-        <module>map-geography-unit-tests</module>
         <module>map-region-unit-tests</module>
         <module>graph-core-unit-tests</module>
+        <module>map-measurements-unit-tests</module>
+        <module>map-geography-unit-tests</module>
     </modules>
 
 </project>
