@@ -28,8 +28,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>desktop</module>
         <module>debug</module>
+        <module>desktop</module>
     </modules>
 
 </project>

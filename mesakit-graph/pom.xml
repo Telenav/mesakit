@@ -28,11 +28,11 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>core</module>
-        <module>query</module>
-        <module>world</module>
         <module>core-testing</module>
+        <module>core</module>
+        <module>world</module>
         <module>world-testing</module>
+        <module>query</module>
     </modules>
 
 </project>
