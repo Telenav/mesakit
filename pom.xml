@@ -17,7 +17,7 @@
     <parent>
         <groupId>com.telenav</groupId>
         <artifactId>telenav-superpom-project-family</artifactId>
-        <version>2.0.0</version>
+        <version>2.0.3</version>
         <relativePath/>
     </parent>
     
@@ -44,9 +44,9 @@
 
     <modules>
         <module>mesakit-core</module>
+        <module>mesakit-navigation</module>
         <module>mesakit-map</module>
         <module>mesakit-graph</module>
-        <module>mesakit-navigation</module>
         <module>mesakit-internal</module>
     </modules>
 
