@@ -24,9 +24,11 @@
 
     <artifactId>mesakit-internal-map-region-unit-tests</artifactId>
     <version>0.9.17-SNAPSHOT</version>
+
     <properties>
         <maven.javadoc.skip>true</maven.javadoc.skip>
         <do.not.publish>true</do.not.publish>
+        <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
     </properties>
 
     <dependencies>
