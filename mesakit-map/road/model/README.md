@@ -30,14 +30,14 @@ This module contains a model of road information
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/dependencies-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.mesakit.org/0.9.15/lexakai/mesakit/mesakit-map/road/model/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/0.9.17/lexakai/mesakit/mesakit-map/road/model/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-road-model</artifactId>
-        <version>0.9.15</version>
+        <version>0.9.17</version>
     </dependency>
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
@@ -58,8 +58,8 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/box-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/box-24-2x.png 2x"/>
 
-[*com.telenav.mesakit.map.road.model*](https://www.mesakit.org/0.9.15/lexakai/mesakit/mesakit-map/road/model/documentation/diagrams/com.telenav.mesakit.map.road.model.svg)  
-[*com.telenav.mesakit.map.road.model.converters*](https://www.mesakit.org/0.9.15/lexakai/mesakit/mesakit-map/road/model/documentation/diagrams/com.telenav.mesakit.map.road.model.converters.svg)
+[*com.telenav.mesakit.map.road.model*](https://www.mesakit.org/0.9.17/lexakai/mesakit/mesakit-map/road/model/documentation/diagrams/com.telenav.mesakit.map.road.model.svg)  
+[*com.telenav.mesakit.map.road.model.converters*](https://www.mesakit.org/0.9.17/lexakai/mesakit/mesakit-map/road/model/documentation/diagrams/com.telenav.mesakit.map.road.model.converters.svg)
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
 
@@ -72,42 +72,42 @@ Javadoc coverage for this project is 48.7%.
 
 The following significant classes are undocumented:  
 
-- com.telenav.mesakit.map.road.model  
-- com.telenav.mesakit.map.road.model  
-- com.telenav.mesakit.map.road.model  
-- com.telenav.mesakit.map.road.model.converters
+- com.telenav.mesakit.map.road.model.GradeSeparation  
+- com.telenav.mesakit.map.road.model.RoadName  
+- com.telenav.mesakit.map.road.model.SpeedCategory  
+- com.telenav.mesakit.map.road.model.converters.TrafficDeCartaRoadTypeStringConverter
 
 | Class | Documentation Sections |
 |---|---|
-| [*BetweenCrossRoads*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model/////////////////////////////////////////////////////.html) |  |  
-| [*BridgeType*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model//////////////////////////////////////////////.html) |  |  
-| [*DeCartaRoadType*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model///////////////////////////////////////////////////.html) |  |  
-| [*DeCartaRoadTypeConverter*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model///////////////////////////////////////////////////////////////////////.html) |  |  
-| [*DirectionOfTrafficFlow*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model//////////////////////////////////////////////////////////.html) |  |  
-| [*DirectionOfTrafficFlowConverter*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model//////////////////////////////////////////////////////////////////////////////.html) |  |  
-| [*ExitNumber*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model//////////////////////////////////////////////.html) |  |  
-| [*GradeSeparation*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model///////////////////////////////////////////////////.html) |  |  
-| [*HighwayType*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model///////////////////////////////////////////////.html) |  |  
-| [*Intersection*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model////////////////////////////////////////////////.html) |  |  
-| [*NamedRoadTypeMileages*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model/////////////////////////////////////////////////////////.html) |  |  
-| [*OverpassUnderpassType*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model/////////////////////////////////////////////////////////.html) |  |  
-| [*RampType*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model////////////////////////////////////////////.html) |  |  
-| [*RoadFunctionalClass*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model///////////////////////////////////////////////////////.html) |  |  
-| [*RoadLimits*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model//////////////////////////////////////////////.html) |  |  
-| [*RoadName*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model////////////////////////////////////////////.html) |  |  
-| [*RoadName.Type*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model/////////////////////////////////////////////////.html) |  |  
-| [*RoadNameConverter*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model////////////////////////////////////////////////////////////////.html) |  |  
-| [*RoadShapeConverter*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model/////////////////////////////////////////////////////////////////.html) |  |  
-| [*RoadShapeConverter.Type*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model//////////////////////////////////////////////////////////////////////.html) |  |  
-| [*RoadState*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model/////////////////////////////////////////////.html) |  |  
-| [*RoadSubType*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model///////////////////////////////////////////////.html) |  |  
-| [*RoadSurface*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model///////////////////////////////////////////////.html) |  |  
-| [*RoadType*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model////////////////////////////////////////////.html) |  |  
-| [*RoadTypeMileages*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model////////////////////////////////////////////////////.html) |  |  
-| [*ShieldIcon*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model//////////////////////////////////////////////.html) |  |  
-| [*SpeedCategory*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model/////////////////////////////////////////////////.html) |  |  
-| [*SpeedCategory.Converter*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model///////////////////////////////////////////////////////////.html) |  |  
-| [*TrafficDeCartaRoadTypeStringConverter*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.road.model////////////////////////////////////////////////////////////////////////////////////.html) |  |  
+| [*BetweenCrossRoads*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model/////////////////////////////////////////////////////.html) |  |  
+| [*BridgeType*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model//////////////////////////////////////////////.html) |  |  
+| [*DeCartaRoadType*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model///////////////////////////////////////////////////.html) |  |  
+| [*DeCartaRoadTypeConverter*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model///////////////////////////////////////////////////////////////////////.html) |  |  
+| [*DirectionOfTrafficFlow*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model//////////////////////////////////////////////////////////.html) |  |  
+| [*DirectionOfTrafficFlowConverter*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model//////////////////////////////////////////////////////////////////////////////.html) |  |  
+| [*ExitNumber*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model//////////////////////////////////////////////.html) |  |  
+| [*GradeSeparation*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model///////////////////////////////////////////////////.html) |  |  
+| [*HighwayType*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model///////////////////////////////////////////////.html) |  |  
+| [*Intersection*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model////////////////////////////////////////////////.html) |  |  
+| [*NamedRoadTypeMileages*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model/////////////////////////////////////////////////////////.html) |  |  
+| [*OverpassUnderpassType*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model/////////////////////////////////////////////////////////.html) |  |  
+| [*RampType*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model////////////////////////////////////////////.html) |  |  
+| [*RoadFunctionalClass*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model///////////////////////////////////////////////////////.html) |  |  
+| [*RoadLimits*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model//////////////////////////////////////////////.html) |  |  
+| [*RoadName*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model////////////////////////////////////////////.html) |  |  
+| [*RoadName.Type*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model/////////////////////////////////////////////////.html) |  |  
+| [*RoadNameConverter*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model////////////////////////////////////////////////////////////////.html) |  |  
+| [*RoadShapeConverter*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model/////////////////////////////////////////////////////////////////.html) |  |  
+| [*RoadShapeConverter.Type*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model//////////////////////////////////////////////////////////////////////.html) |  |  
+| [*RoadState*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model/////////////////////////////////////////////.html) |  |  
+| [*RoadSubType*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model///////////////////////////////////////////////.html) |  |  
+| [*RoadSurface*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model///////////////////////////////////////////////.html) |  |  
+| [*RoadType*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model////////////////////////////////////////////.html) |  |  
+| [*RoadTypeMileages*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model////////////////////////////////////////////////////.html) |  |  
+| [*ShieldIcon*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model//////////////////////////////////////////////.html) |  |  
+| [*SpeedCategory*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model/////////////////////////////////////////////////.html) |  |  
+| [*SpeedCategory.Converter*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model///////////////////////////////////////////////////////////.html) |  |  
+| [*TrafficDeCartaRoadTypeStringConverter*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.road.model////////////////////////////////////////////////////////////////////////////////////.html) |  |  
 
 [//]: # (start-user-text)
 

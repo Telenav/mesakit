@@ -20,14 +20,14 @@ This module contains testing code for map administrative regions
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/dependencies-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.mesakit.org/0.9.15/lexakai/mesakit/mesakit-map/region-testing/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/0.9.17/lexakai/mesakit/mesakit-map/region-testing/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-region-testing</artifactId>
-        <version>0.9.15</version>
+        <version>0.9.17</version>
     </dependency>
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
@@ -48,7 +48,7 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/box-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/box-24-2x.png 2x"/>
 
-[*com.telenav.mesakit.map.region.testing*](https://www.mesakit.org/0.9.15/lexakai/mesakit/mesakit-map/region-testing/documentation/diagrams/com.telenav.mesakit.map.region.testing.svg)
+[*com.telenav.mesakit.map.region.testing*](https://www.mesakit.org/0.9.17/lexakai/mesakit/mesakit-map/region-testing/documentation/diagrams/com.telenav.mesakit.map.region.testing.svg)
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
 
@@ -63,7 +63,7 @@ Javadoc coverage for this project is 50.0%.
 
 | Class | Documentation Sections |
 |---|---|
-| [*RegionUnitTest*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.region.testing//////////////////////////////////////////////////////.html) |  |  
+| [*RegionUnitTest*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.region.testing//////////////////////////////////////////////////////.html) |  |  
 
 [//]: # (start-user-text)
 
