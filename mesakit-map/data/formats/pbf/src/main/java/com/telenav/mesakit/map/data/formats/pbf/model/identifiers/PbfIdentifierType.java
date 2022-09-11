@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.data.formats.pbf.model.identifiers;
 import com.telenav.kivakit.core.bits.BitDiagram;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
-import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfModelIdentifiers;
+import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfModelIdentifiers;
 import org.openstreetmap.osmosis.core.domain.v0_6.EntityType;
 
 /**

@@ -22,7 +22,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionInstance;
-import com.telenav.mesakit.map.region.lexakai.DiagramRegions;
+import com.telenav.mesakit.map.region.internal.lexakai.DiagramRegions;
 import com.telenav.mesakit.map.utilities.grid.GridCell;
 
 @UmlClassDiagram(diagram = DiagramRegions.class)

@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.geography.shape;
 
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.geography.lexakai.DiagramShape;
+import com.telenav.mesakit.map.geography.internal.lexakai.DiagramShape;
 
 @UmlClassDiagram(diagram = DiagramShape.class)
 public interface Shape extends Outline

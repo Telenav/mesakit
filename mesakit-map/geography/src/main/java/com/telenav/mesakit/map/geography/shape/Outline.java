@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.geography.shape;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Located;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.lexakai.DiagramShape;
+import com.telenav.mesakit.map.geography.internal.lexakai.DiagramShape;
 
 /**
  * Can tell you if a given location is contained within some shape outline

@@ -24,7 +24,7 @@ import com.telenav.kivakit.core.string.Strip;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
-import com.telenav.mesakit.map.region.lexakai.DiagramRegion;
+import com.telenav.mesakit.map.region.internal.lexakai.DiagramRegion;
 
 import java.util.Arrays;
 import java.util.HashSet;

@@ -24,7 +24,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.polygon.PolygonSpatialIndex;
 import com.telenav.mesakit.map.geography.indexing.segment.SegmentRTreeSpatialIndex;
-import com.telenav.mesakit.map.geography.lexakai.DiagramPolyline;
+import com.telenav.mesakit.map.geography.internal.lexakai.DiagramPolyline;
 import com.telenav.mesakit.map.geography.shape.Outline;
 import com.telenav.mesakit.map.geography.shape.Shape;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;

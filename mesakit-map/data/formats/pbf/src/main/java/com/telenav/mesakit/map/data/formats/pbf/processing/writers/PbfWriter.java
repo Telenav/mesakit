@@ -24,7 +24,7 @@ import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
-import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfProcessing;
+import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfProcessing;
 import crosby.binary.osmosis.OsmosisSerializer;
 import org.openstreetmap.osmosis.core.container.v0_6.BoundContainer;
 import org.openstreetmap.osmosis.core.container.v0_6.NodeContainer;

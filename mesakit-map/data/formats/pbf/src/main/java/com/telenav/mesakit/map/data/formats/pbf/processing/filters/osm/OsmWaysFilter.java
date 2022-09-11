@@ -22,7 +22,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.data.formats.pbf.osm.Osm;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.WayFilter;
-import com.telenav.mesakit.map.data.formats.pbf.lexakai.DiagramPbfOsm;
+import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfOsm;
 
 /**
  * PbfFilters out highway types that we never want to consider.

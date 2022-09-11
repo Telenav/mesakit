@@ -32,7 +32,7 @@ import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
-import com.telenav.mesakit.map.region.lexakai.DiagramRegion;
+import com.telenav.mesakit.map.region.internal.lexakai.DiagramRegion;
 import com.telenav.mesakit.map.region.regions.City;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;

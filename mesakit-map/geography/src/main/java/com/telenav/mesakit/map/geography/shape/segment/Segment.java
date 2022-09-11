@@ -33,7 +33,7 @@ import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.LocationSequence;
 import com.telenav.mesakit.map.geography.Longitude;
 import com.telenav.mesakit.map.geography.Precision;
-import com.telenav.mesakit.map.geography.lexakai.DiagramSegment;
+import com.telenav.mesakit.map.geography.internal.lexakai.DiagramSegment;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;

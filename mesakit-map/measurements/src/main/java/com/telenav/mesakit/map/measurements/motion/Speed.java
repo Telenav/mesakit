@@ -31,7 +31,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.mesakit.map.measurements.lexakai.DiagramMapMeasurementMotion;
+import com.telenav.mesakit.map.measurements.internal.lexakai.DiagramMapMeasurementMotion;
 
 import java.util.regex.Pattern;
 

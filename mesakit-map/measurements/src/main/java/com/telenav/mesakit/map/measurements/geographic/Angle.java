@@ -33,7 +33,7 @@ import com.telenav.kivakit.validation.Validator;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
-import com.telenav.mesakit.map.measurements.lexakai.DiagramMapMeasurementGeographic;
+import com.telenav.mesakit.map.measurements.internal.lexakai.DiagramMapMeasurementGeographic;
 
 import java.io.Serializable;
 import java.util.regex.Pattern;
