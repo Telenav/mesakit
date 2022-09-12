@@ -30,14 +30,14 @@ This module contains code for downloading map data from OSM Overpass (https://wi
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/dependencies-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.mesakit.org/0.9.15/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/0.9.17/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-overpass</artifactId>
-        <version>0.9.15</version>
+        <version>0.9.17</version>
     </dependency>
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
@@ -52,15 +52,15 @@ This module contains code for downloading map data from OSM Overpass (https://wi
 
 ### Class Diagrams <a name="class-diagrams"></a> &nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/diagram-40.png" srcset="https://telenav.github.io/telenav-assets/images/icons/diagram-40-2x.png 2x"/>
 
-[*OSM Overpass*](https://www.mesakit.org/0.9.15/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/diagram-overpass.svg)
+[*OSM Overpass*](https://www.mesakit.org/0.9.17/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/diagram-overpass.svg)
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/box-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/box-24-2x.png 2x"/>
 
-[*com.telenav.mesakit.map.overpass*](https://www.mesakit.org/0.9.15/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/com.telenav.mesakit.map.overpass.svg)  
-[*com.telenav.mesakit.map.overpass.lexakai*](https://www.mesakit.org/0.9.15/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/com.telenav.mesakit.map.overpass.lexakai.svg)  
-[*com.telenav.mesakit.map.overpass.pbf*](https://www.mesakit.org/0.9.15/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/com.telenav.mesakit.map.overpass.pbf.svg)
+[*com.telenav.mesakit.map.overpass*](https://www.mesakit.org/0.9.17/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/com.telenav.mesakit.map.overpass.svg)  
+[*com.telenav.mesakit.map.overpass.internal.lexakai*](https://www.mesakit.org/0.9.17/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/com.telenav.mesakit.map.overpass.internal.lexakai.svg)  
+[*com.telenav.mesakit.map.overpass.pbf*](https://www.mesakit.org/0.9.17/lexakai/mesakit/mesakit-map/overpass/documentation/diagrams/com.telenav.mesakit.map.overpass.pbf.svg)
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
 
@@ -73,14 +73,14 @@ Javadoc coverage for this project is 0.0%.
 
 The following significant classes are undocumented:  
 
-- com.telenav.mesakit.map.overpass
+- com.telenav.mesakit.map.overpass.OverpassDataDownloader
 
 | Class | Documentation Sections |
 |---|---|
-| [*DiagramOverpass*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.overpass/////////////////////////////////////////////////////////.html) |  |  
-| [*OsmToPbfConverter*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.overpass///////////////////////////////////////////////////////.html) |  |  
-| [*OverpassDataDownloader*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.overpass////////////////////////////////////////////////////////.html) |  |  
-| [*OverpassOsmResource*](https://www.mesakit.org/0.9.15/javadoc/mesakit/mesakit.map.overpass/////////////////////////////////////////////////////.html) |  |  
+| [*DiagramOverpass*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.overpass//////////////////////////////////////////////////////////////////.html) |  |  
+| [*OsmToPbfConverter*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.overpass///////////////////////////////////////////////////////.html) |  |  
+| [*OverpassDataDownloader*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.overpass////////////////////////////////////////////////////////.html) |  |  
+| [*OverpassOsmResource*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.overpass/////////////////////////////////////////////////////.html) |  |  
 
 [//]: # (start-user-text)
 
