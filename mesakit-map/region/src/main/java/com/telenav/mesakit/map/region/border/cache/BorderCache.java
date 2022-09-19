@@ -37,7 +37,7 @@ import com.telenav.kivakit.extraction.Extractor;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.FileCache;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.interfaces.lifecycle.Configured;
+import com.telenav.kivakit.interfaces.lifecycle.Configurable;
 import com.telenav.kivakit.network.core.Host;
 import com.telenav.kivakit.network.core.NetworkPath;
 import com.telenav.kivakit.network.http.secure.SecureHttpNetworkLocation;
@@ -1018,7 +1018,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
         if (session != null)
         {
             // get the kryo serializer as a BorderSpatialIndexKryoSerializer
-            var serializer = (Configured<Settings<T>>) session.serializer(BorderSpatialIndex.class);
+            var serializer = (Configurable<Settings<T>>) session.serializer(BorderSpatialIndex.class);
 
             // and update its settings for this particular border cache.
             serializer.configure(settings);

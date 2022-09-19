@@ -48,7 +48,6 @@ import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
 import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndex;
 import com.telenav.mesakit.map.geography.shape.Outline;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
@@ -60,8 +59,8 @@ import com.telenav.mesakit.map.measurements.geographic.Area;
 import com.telenav.mesakit.map.region.border.Bordered;
 import com.telenav.mesakit.map.region.border.cache.BorderCache;
 import com.telenav.mesakit.map.region.countries.UnitedStates;
-import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.region.internal.lexakai.DiagramRegion;
+import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.region.regions.City;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
@@ -88,9 +87,17 @@ import static com.telenav.kivakit.filesystem.Folder.parseFolder;
 /**
  * @author Jonathan Locke
  */
-@UmlClassDiagram(diagram = DiagramRegion.class)
+@SuppressWarnings("unused") @UmlClassDiagram(diagram = DiagramRegion.class)
 @UmlExcludeSuperTypes({ Stringable.class, Comparable.class, Nameable.class, Named.class })
-public abstract class Region<T extends Region<T>> implements Bounded, Bordered, Intersectable, Outline, Nameable, Named, Comparable<Region<T>>, Stringable
+public abstract class Region<T extends Region<T>> implements
+        Bounded,
+        Bordered,
+        Intersectable,
+        Outline,
+        Nameable,
+        Named,
+        Comparable<Region<T>>,
+        Stringable
 {
     public static final RegionIdentifier WORLD_IDENTIFIER_MINIMUM = new RegionIdentifier(1_000_000);
 
@@ -240,7 +247,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
             Continent.create();
 
             // Load region identity data
-            var executor = Executors.newFixedThreadPool(RTreeSpatialIndex.visualDebug() ? 1 : 1);
+            var executor = Executors.newFixedThreadPool(1);
             executor.execute(() -> type(Continent.class).loadIdentities());
             executor.execute(() -> type(Country.class).loadIdentities());
             executor.execute(() -> type(State.class).loadIdentities());
@@ -813,7 +820,7 @@ public abstract class Region<T extends Region<T>> implements Bounded, Bordered, 
     }
 
     @Override
-    public void name(String name)
+    public void assignName(String name)
     {
         instance().identity().name(name);
     }
