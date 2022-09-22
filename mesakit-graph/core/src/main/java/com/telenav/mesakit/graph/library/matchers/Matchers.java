@@ -39,7 +39,7 @@ import com.telenav.mesakit.map.road.model.RoadType;
  */
 public class Matchers
 {
-    public static Matcher<Edge> ALL = Filter.all();
+    public static Matcher<Edge> ALL = Filter.acceptingAll();
 
     public static Matcher<Edge> AT_LEAST_PRIVATE_ROAD = moreImportantThanOrEqual(RoadType.PRIVATE_ROAD);
 
