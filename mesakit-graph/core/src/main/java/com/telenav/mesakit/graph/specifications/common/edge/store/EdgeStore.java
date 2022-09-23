@@ -1063,7 +1063,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
         var laneCount = edge.laneCount();
         if (laneCount != null)
         {
-            LANE_COUNT.storeObject(edge, laneCount.minimum(Count.count(63)));
+            LANE_COUNT.storeObject(edge, laneCount.minimize(Count.count(63)));
         }
         LENGTH_IN_MILLIMETERS.storeObject(edge, edge.length());
         ROAD_FUNCTIONAL_CLASS.storeObject(edge, edge.roadFunctionalClass());

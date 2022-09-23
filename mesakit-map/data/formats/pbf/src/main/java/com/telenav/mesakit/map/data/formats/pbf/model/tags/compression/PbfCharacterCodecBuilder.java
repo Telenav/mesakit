@@ -29,7 +29,7 @@ public class PbfCharacterCodecBuilder
     {
         var escapes = frequencies
                 .escaped(charactersMinimumOccurrences.asMaximum()).asCount()
-                .maximum(charactersMinimumOccurrences.incremented().asCount());
+                .maximize(charactersMinimumOccurrences.incremented().asCount());
         frequencies.frequencies().add(ESCAPE, escapes);
         var symbols = frequencies.symbols(charactersMinimumOccurrences);
         return symbols.size() < 16 ? PbfDefaultCodecs.get().defaultKeyCharacterCodec() :
