@@ -28,7 +28,7 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.interfaces.code.Callback;
-import com.telenav.kivakit.interfaces.collection.NextValue;
+import com.telenav.kivakit.interfaces.collection.NextIterable;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Route;
@@ -78,7 +78,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
      */
     public EdgeSequence asDirectional()
     {
-        return new EdgeSequence(Iterables.iterable(() -> new NextValue<>()
+        return new EdgeSequence(Iterables.iterable(() -> new NextIterable<>()
         {
             private final Iterator<Edge> edges = iterator();
 

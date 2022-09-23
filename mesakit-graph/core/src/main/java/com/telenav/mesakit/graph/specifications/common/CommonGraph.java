@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.specifications.common;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.kivakit.core.string.Separators;
 import com.telenav.kivakit.core.value.count.Count;
-import com.telenav.kivakit.interfaces.collection.NextValue;
+import com.telenav.kivakit.interfaces.collection.NextIterable;
 import com.telenav.kivakit.interfaces.comparison.Filter;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.resource.Resource;
@@ -179,7 +179,7 @@ public class CommonGraph extends Graph
     public Iterable<Place> placesInside(Rectangle bounds)
     {
         ensureNotNull(bounds);
-        return Iterables.iterable(() -> new NextValue<>()
+        return Iterables.iterable(() -> new NextIterable<>()
         {
             final Iterator<Place> iterator = placeStore().spatialIndex().inside(bounds);
 

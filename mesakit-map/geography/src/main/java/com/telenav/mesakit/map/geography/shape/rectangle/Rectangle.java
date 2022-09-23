@@ -28,7 +28,7 @@ import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.value.level.Percent;
-import com.telenav.kivakit.interfaces.collection.NextValue;
+import com.telenav.kivakit.interfaces.collection.NextIterable;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
@@ -468,7 +468,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
 
     public Iterable<Rectangle> cells(Distance size)
     {
-        return Iterables.iterable(() -> new NextValue<>()
+        return Iterables.iterable(() -> new NextIterable<>()
         {
             private Latitude bottom = bottom();
 
@@ -993,7 +993,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
 
     public Iterable<Rectangle> verticalStrips(Distance width, Distance overlap)
     {
-        return Iterables.iterable(() -> new NextValue<>()
+        return Iterables.iterable(() -> new NextIterable<>()
         {
             private Longitude left = left();
 
@@ -1018,7 +1018,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         var difference = right().asWidth().minus(left().asWidth());
         var stripWidth = difference.dividedBy(stripCount);
 
-        return Iterables.iterable(() -> new NextValue<>()
+        return Iterables.iterable(() -> new NextIterable<>()
         {
             private Longitude left = left();
 

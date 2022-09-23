@@ -37,7 +37,7 @@ import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.kivakit.interfaces.collection.NextValue;
+import com.telenav.kivakit.interfaces.collection.NextIterable;
 import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.graph.Edge.SignPostSupport;
@@ -1393,7 +1393,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
      */
     public Iterable<Vertex> interiorVertexes()
     {
-        return Iterables.iterable(() -> new NextValue<>()
+        return Iterables.iterable(() -> new NextIterable<>()
         {
             // Edge iterator
             private final Iterator<Edge> edges = iterator();
@@ -1937,7 +1937,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
      */
     public Iterable<Location> vertexLocations()
     {
-        return Iterables.iterable(() -> new NextValue<>()
+        return Iterables.iterable(() -> new NextIterable<>()
         {
             private final Iterator<Vertex> vertexes = vertexes().iterator();
 
@@ -1958,7 +1958,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
      */
     public Iterable<Vertex> vertexes()
     {
-        return Iterables.iterable(() -> new NextValue<>()
+        return Iterables.iterable(() -> new NextIterable<>()
         {
             // Edge iterator
             private final Iterator<Edge> edges = iterator();
