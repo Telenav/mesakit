@@ -23,7 +23,7 @@ import com.telenav.kivakit.core.string.AsIndentedString;
 import com.telenav.kivakit.core.string.Differences;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.interfaces.naming.Named;
-import com.telenav.kivakit.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.primitive.collections.Quantizable;
 import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.validation.Validatable;
 import com.telenav.kivakit.validation.ValidationType;

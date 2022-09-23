@@ -31,7 +31,7 @@ import com.telenav.kivakit.core.value.identifier.IntegerIdentifier;
 import com.telenav.kivakit.extraction.BaseExtractor;
 import com.telenav.kivakit.extraction.Extractor;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.primitive.collections.Quantizable;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;

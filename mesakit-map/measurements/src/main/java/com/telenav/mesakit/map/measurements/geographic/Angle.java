@@ -23,7 +23,7 @@ import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.interfaces.numeric.IntegerNumeric;
+import com.telenav.kivakit.interfaces.numeric.Numeric;
 import com.telenav.kivakit.interfaces.numeric.Quantizable;
 import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.validation.BaseValidator;
@@ -117,7 +117,7 @@ import com.telenav.kivakit.interfaces.numeric.QuantumComparable;
 @LexakaiJavadoc(complete = true)
 public class Angle implements
         Validatable,
-        IntegerNumeric<Angle>,
+        Numeric<Angle>,
         StringFormattable,
         Quantizable,
         QuantumComparable<Angle>,

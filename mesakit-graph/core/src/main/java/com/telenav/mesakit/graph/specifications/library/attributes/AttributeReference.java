@@ -32,7 +32,7 @@ import com.telenav.kivakit.interfaces.factory.Factory;
 import com.telenav.kivakit.interfaces.factory.LongMapFactory;
 import com.telenav.kivakit.interfaces.lifecycle.Initializable;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
-import com.telenav.kivakit.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.primitive.collections.Quantizable;
 import com.telenav.kivakit.primitive.collections.list.IntList;
 import com.telenav.kivakit.primitive.collections.list.LongList;
 import com.telenav.kivakit.primitive.collections.list.PrimitiveList;
