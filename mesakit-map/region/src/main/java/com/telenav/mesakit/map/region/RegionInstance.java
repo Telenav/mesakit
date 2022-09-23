@@ -26,7 +26,7 @@ import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.value.count.Count;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -46,8 +46,8 @@ import java.util.TreeSet;
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 @UmlClassDiagram(diagram = DiagramRegion.class)
-@UmlExcludeSuperTypes(Stringable.class)
-public class RegionInstance<T extends Region<T>> implements Stringable
+@UmlExcludeSuperTypes(StringFormattable.class)
+public class RegionInstance<T extends Region<T>> implements StringFormattable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

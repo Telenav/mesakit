@@ -43,7 +43,7 @@ import com.telenav.kivakit.data.compression.codecs.huffman.list.HuffmanStringLis
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.naming.Named;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.kivakit.properties.PropertyMap;
 import com.telenav.kivakit.resource.Resource;
@@ -132,7 +132,7 @@ import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
  *     <li>{@link #graphElementCount(CountType)}</li>
  * </ul>
  * <p>
- * {@link Metadata} objects are {@link KryoSerializable} and implement {@link Stringable}. They are also
+ * {@link Metadata} objects are {@link KryoSerializable} and implement {@link StringFormattable}. They are also
  * {@link Validatable} and can be validated with the {@link Validator} returned by {@link #validator(ValidationType)}.
  * If no validation of statistics is desired the {@link ValidationType} VALIDATE_EXCEPT_STATISTICS can be passed as the
  * validation type. For convenience, full validation can be performed with {@link #isValid(Listener)}.
@@ -150,7 +150,7 @@ import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
  * @see Version
  * @see KryoSerializable
  * @see Validatable
- * @see Stringable
+ * @see StringFormattable
  */
 @SuppressWarnings({ "DuplicateBranchesInSwitch", "DuplicatedCode" })
 public class Metadata implements Named, AsIndentedString, KryoSerializable, Validatable
@@ -555,7 +555,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     @Override
-    public AsStringIndenter asString(Stringable.Format format, AsStringIndenter indenter)
+    public AsStringIndenter asString(StringFormattable.Format format, AsStringIndenter indenter)
     {
         indenter.asString(this);
         indenter.labeled("nodes", nodeCount(REQUIRE_EXACT));

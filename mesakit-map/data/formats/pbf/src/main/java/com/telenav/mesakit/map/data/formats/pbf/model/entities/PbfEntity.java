@@ -3,7 +3,7 @@ package com.telenav.mesakit.map.data.formats.pbf.model.entities;
 import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.value.count.Count;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
@@ -31,8 +31,8 @@ import java.util.Iterator;
  * @author jonathanl (shibo)
  */
 @UmlClassDiagram(diagram = DiagramPbfModelEntities.class)
-@UmlExcludeSuperTypes({ Stringable.class, Iterable.class })
-public abstract class PbfEntity<T extends Entity> implements Stringable, Iterable<Tag>
+@UmlExcludeSuperTypes({ StringFormattable.class, Iterable.class })
+public abstract class PbfEntity<T extends Entity> implements StringFormattable, Iterable<Tag>
 {
     private final T entity;
 

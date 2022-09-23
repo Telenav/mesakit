@@ -40,7 +40,7 @@ import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.naming.Nameable;
 import com.telenav.kivakit.interfaces.naming.Named;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.resource.FileName;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
@@ -89,8 +89,8 @@ import static com.telenav.kivakit.filesystem.Folder.parseFolder;
  * @author Jonathan Locke
  */
 @UmlClassDiagram(diagram = DiagramRegion.class)
-@UmlExcludeSuperTypes({ Stringable.class, Comparable.class, Nameable.class, Named.class })
-public abstract class Region<T extends Region<T>> implements Bounded, Bordered, Intersectable, Outline, Nameable, Named, Comparable<Region<T>>, Stringable
+@UmlExcludeSuperTypes({ StringFormattable.class, Comparable.class, Nameable.class, Named.class })
+public abstract class Region<T extends Region<T>> implements Bounded, Bordered, Intersectable, Outline, Nameable, Named, Comparable<Region<T>>, StringFormattable
 {
     public static final RegionIdentifier WORLD_IDENTIFIER_MINIMUM = new RegionIdentifier(1_000_000);
 

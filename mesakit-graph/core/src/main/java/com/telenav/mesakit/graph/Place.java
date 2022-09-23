@@ -24,7 +24,7 @@ import com.telenav.kivakit.core.string.Differences;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.validation.Validatable;
 import com.telenav.kivakit.validation.ValidationType;
 import com.telenav.kivakit.validation.Validator;
@@ -462,7 +462,7 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
     /**
      * @return The properties of this element from its {@link DataSpecification},
      * @see GraphElementPropertySet
-     * @see Stringable
+     * @see StringFormattable
      * @see AsIndentedString
      */
     @Override

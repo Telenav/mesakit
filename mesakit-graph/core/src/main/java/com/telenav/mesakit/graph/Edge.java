@@ -33,7 +33,7 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.interfaces.collection.LongKeyed;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.primitive.collections.map.PrimitiveMap;
 import com.telenav.kivakit.validation.ValidationType;
 import com.telenav.kivakit.validation.Validator;
@@ -413,7 +413,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
  *     <li>{@link #asHeavyWeight()} - This edge as a {@link HeavyWeightEdge}</li>
  *     <li>{@link #isHeavyWeight()} - True if this edge is a {@link HeavyWeightEdge}</li>
  *     <li>{@link #populateWithTestValues()} - Populates this {@link HeavyWeightEdge} with test values</li>
- *     <li>{@link #asString()} - A string representation of the {@link EdgeProperties} of this edge accessible through {@link Stringable#asString()}</li>
+ *     <li>{@link #asString()} - A string representation of the {@link EdgeProperties} of this edge accessible through {@link StringFormattable#asString()}</li>
  * </ul>
  * <p>
  * <b>OSM-Specific</b>
@@ -2014,7 +2014,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      * @return The properties of this edge from the edge's {@link DataSpecification}, for use in producing a debug
      * string for the edge
      * @see GraphElementPropertySet
-     * @see Stringable
+     * @see StringFormattable
      */
     @Override
     public GraphElementPropertySet<Edge> properties()

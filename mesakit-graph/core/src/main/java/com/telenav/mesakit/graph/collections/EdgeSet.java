@@ -38,7 +38,7 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.kivakit.primitive.collections.iteration.IntIterator;
 import com.telenav.mesakit.graph.Edge;
@@ -74,7 +74,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
  *
  * @author jonathanl (shibo)
  */
-public class EdgeSet implements Set<Edge>, Stringable
+public class EdgeSet implements Set<Edge>, StringFormattable
 {
     public static final EdgeSet EMPTY = new EdgeSet(Maximum._0, Estimate._0, Collections.emptySet());
 

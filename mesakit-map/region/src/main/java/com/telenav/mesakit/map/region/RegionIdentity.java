@@ -28,7 +28,7 @@ import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludePrope
 import com.telenav.kivakit.core.locale.CountryIsoCode;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -101,7 +101,7 @@ import static com.telenav.kivakit.core.project.Project.resolveProject;
  */
 @UmlClassDiagram(diagram = DiagramRegion.class)
 @UmlExcludeSuperTypes
-public class RegionIdentity implements Stringable, KryoSerializable
+public class RegionIdentity implements StringFormattable, KryoSerializable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

@@ -20,9 +20,9 @@ package com.telenav.mesakit.map.utilities.grid;
 
 import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.core.language.primitive.Ints;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 
-public class GridCellIdentifier implements Stringable
+public class GridCellIdentifier implements StringFormattable
 {
     private final int identifier;
 

@@ -25,7 +25,7 @@ import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.interfaces.numeric.IntegerNumeric;
 import com.telenav.kivakit.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.validation.BaseValidator;
 import com.telenav.kivakit.validation.Validatable;
 import com.telenav.kivakit.validation.ValidationType;
@@ -113,12 +113,12 @@ import com.telenav.kivakit.interfaces.numeric.QuantumComparable;
  */
 @SuppressWarnings({ "SwitchStatementWithTooFewBranches", "SpellCheckingInspection", "unused" })
 @UmlClassDiagram(diagram = DiagramMapMeasurementGeographic.class)
-@UmlExcludeSuperTypes({ Stringable.class, Serializable.class, Quantizable.class })
+@UmlExcludeSuperTypes({ StringFormattable.class, Serializable.class, Quantizable.class })
 @LexakaiJavadoc(complete = true)
 public class Angle implements
         Validatable,
         IntegerNumeric<Angle>,
-        Stringable,
+        StringFormattable,
         Quantizable,
         QuantumComparable<Angle>,
         Comparable<Angle>,

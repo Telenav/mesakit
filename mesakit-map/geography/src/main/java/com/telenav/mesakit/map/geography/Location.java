@@ -29,7 +29,7 @@ import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.string.Separators;
 import com.telenav.kivakit.core.value.count.BitCount;
 import com.telenav.kivakit.interfaces.model.Identifiable;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.math.trigonometry.Trigonometry;
 import com.telenav.kivakit.validation.BaseValidator;
 import com.telenav.kivakit.validation.Validatable;
@@ -127,7 +127,7 @@ import static com.telenav.mesakit.map.geography.Precision.DM7;
  */
 @SuppressWarnings("SwitchStatementWithTooFewBranches")
 @UmlClassDiagram(diagram = DiagramLocation.class)
-@UmlExcludeSuperTypes({ Validatable.class, Identifiable.class, Stringable.class, Serializable.class })
+@UmlExcludeSuperTypes({ Validatable.class, Identifiable.class, StringFormattable.class, Serializable.class })
 @UmlRelation(label = "represented at", referent = Precision.class)
 public class Location implements
         Validatable,
@@ -135,7 +135,7 @@ public class Location implements
         Identifiable,
         Bounded,
         Intersectable,
-        Stringable,
+        StringFormattable,
         Serializable
 {
     private static final long EARTH_RADIUS_IN_METERS = (long) Distance.EARTH_RADIUS_MINOR.asMeters();

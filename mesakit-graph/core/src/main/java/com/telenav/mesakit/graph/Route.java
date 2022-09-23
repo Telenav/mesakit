@@ -38,7 +38,7 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.interfaces.collection.NextValue;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.graph.Edge.SignPostSupport;
 import com.telenav.mesakit.graph.GraphLimits.Limit;
@@ -88,7 +88,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
  *
  * @author jonathanl (shibo)
  */
-@SuppressWarnings("SpellCheckingInspection") public abstract class Route implements Iterable<Edge>, Bounded, Stringable
+@SuppressWarnings("SpellCheckingInspection") public abstract class Route implements Iterable<Edge>, Bounded, StringFormattable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 

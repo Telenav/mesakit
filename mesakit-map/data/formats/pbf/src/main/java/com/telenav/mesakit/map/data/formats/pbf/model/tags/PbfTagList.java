@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.core.string.AsIndentedString;
 import com.telenav.kivakit.core.string.AsStringIndenter;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -157,7 +157,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
     }
 
     @Override
-    public AsStringIndenter asString(Stringable.Format format, AsStringIndenter indenter)
+    public AsStringIndenter asString(StringFormattable.Format format, AsStringIndenter indenter)
     {
         indenter.bracketed(sorted(), tag -> indenter.add(tag.toString()));
         return indenter;

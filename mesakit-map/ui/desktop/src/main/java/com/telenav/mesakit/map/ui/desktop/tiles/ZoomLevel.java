@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.ui.desktop.tiles;
 
 import com.telenav.kivakit.core.language.primitive.Doubles;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
@@ -42,7 +42,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
  *
  * @author jonathanl (shibo)
  */
-public class ZoomLevel implements Stringable
+public class ZoomLevel implements StringFormattable
 {
     /** Maximum zoom level in OSM */
     public static final ZoomLevel CLOSEST = new ZoomLevel(17);

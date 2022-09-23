@@ -71,7 +71,7 @@ import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.messaging.context.CallStack.Matching.SUBCLASS;
 import static com.telenav.kivakit.core.messaging.context.CallStack.Proximity.DISTANT;
-import static com.telenav.kivakit.interfaces.string.Stringable.Format.PROGRAMMATIC;
+import static com.telenav.kivakit.interfaces.string.StringFormattable.Format.PROGRAMMATIC;
 
 /**
  * Base class for {@link Edge}, {@link EdgeRelation}, {@link Vertex}, {@link ShapePoint} and {@link Place} elements in a
