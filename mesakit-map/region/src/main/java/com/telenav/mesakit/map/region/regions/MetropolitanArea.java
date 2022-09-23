@@ -149,7 +149,7 @@ public class MetropolitanArea extends Region<MetropolitanArea>
             public MetropolitanArea onExtract(PbfWay way)
             {
                 // Get name and ISO code
-                var name = name(way).normalized();
+                var name = Region.name(way).normalized();
                 var code = code(way, "code");
 
                 if (name == null)

@@ -102,7 +102,7 @@ public abstract class Continent extends Region<Continent> implements Iterable<Co
                     {
                         for (var country : objects)
                         {
-                            country.region().name(relationTags.get("continent"));
+                            country.region().assignName(relationTags.get("continent"));
                         }
                     }
                 }

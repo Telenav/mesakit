@@ -89,7 +89,7 @@ public class County extends Region<County>
                     {
                         for (var country : objects)
                         {
-                            country.region().name(relationTags.get("CODE"));
+                            country.region().assignName(relationTags.get("CODE"));
                         }
                     }
                 }

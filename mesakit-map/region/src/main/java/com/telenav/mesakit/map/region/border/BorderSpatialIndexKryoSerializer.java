@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.region.border;
 
 import com.telenav.kivakit.core.value.count.MutableCount;
-import com.telenav.kivakit.interfaces.lifecycle.Configured;
+import com.telenav.kivakit.interfaces.lifecycle.Configurable;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.rtree.InteriorNode;
@@ -33,7 +33,7 @@ import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.border.cache.BorderCache;
 
-public class BorderSpatialIndexKryoSerializer<T extends Region<T>> extends RTreeSpatialIndexKryoSerializer<Border<T>> implements Configured<BorderCache.Settings<T>>
+public class BorderSpatialIndexKryoSerializer<T extends Region<T>> extends RTreeSpatialIndexKryoSerializer<Border<T>> implements Configurable<BorderCache.Settings<T>>
 {
     private BorderCache.Settings<T> settings;
 

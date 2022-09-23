@@ -86,7 +86,7 @@ public class TimeZone extends Region<TimeZone>
                     {
                         for (var zone : objects)
                         {
-                            zone.region().name(relationTags.get("code"));
+                            zone.region().assignName(relationTags.get("code"));
                         }
                     }
                 }
