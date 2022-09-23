@@ -103,7 +103,7 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
         var raw = destination.createCompatible();
         raw.addListener(this);
         var metadata = raw.load(loader, constraints);
-        raw.name("Raw_" + graphName);
+        raw.assignName("Raw_" + graphName);
 
         // and if the load operation succeeded,
         if (metadata != null)

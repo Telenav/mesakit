@@ -285,7 +285,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         @Override
         protected Rectangle onToValue(String value)
         {
-            return parse(value);
+            return Rectangle.parse(value);
         }
     }
 

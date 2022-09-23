@@ -636,7 +636,7 @@ public abstract class Country extends Region<Country> implements Quantizable
                     {
                         for (var country : objects)
                         {
-                            country.region().name(relationTags.get("ISO3166-1"));
+                            country.region().assignName(relationTags.get("ISO3166-1"));
                         }
                     }
                 }
