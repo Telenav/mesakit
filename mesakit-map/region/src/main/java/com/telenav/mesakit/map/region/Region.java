@@ -48,6 +48,7 @@ import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
 import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndex;
 import com.telenav.mesakit.map.geography.shape.Outline;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
@@ -88,8 +89,6 @@ import static com.telenav.kivakit.filesystem.Folder.parseFolder;
  * @author Jonathan Locke
  */
 @UmlClassDiagram(diagram = DiagramRegion.class)
-@UmlExcludeSuperTypes({ StringFormattable.class, Comparable.class, Nameable.class, Named.class })
-public abstract class Region<T extends Region<T>> implements Bounded, Bordered, Intersectable, Outline, Nameable, Named, Comparable<Region<T>>, StringFormattable
 @SuppressWarnings("unused") @UmlClassDiagram(diagram = DiagramRegion.class)
 @UmlExcludeSuperTypes({ StringFormattable.class, Comparable.class, Nameable.class, Named.class })
 public abstract class Region<T extends Region<T>> implements
@@ -250,6 +249,7 @@ public abstract class Region<T extends Region<T>> implements
             Continent.create();
 
             // Load region identity data
+            @SuppressWarnings("ConditionalExpressionWithIdenticalBranches")
             var executor = Executors.newFixedThreadPool(RTreeSpatialIndex.visualDebug() ? 1 : 1);
             executor.execute(() -> type(Continent.class).loadIdentities());
             executor.execute(() -> type(Country.class).loadIdentities());
@@ -823,7 +823,7 @@ public abstract class Region<T extends Region<T>> implements
     }
 
     @Override
-    public void name(String name)
+    public void assignName(String name)
     {
         instance().identity().name(name);
     }

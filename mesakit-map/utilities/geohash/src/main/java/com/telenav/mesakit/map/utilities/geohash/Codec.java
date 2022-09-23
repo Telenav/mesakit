@@ -28,7 +28,8 @@ import com.telenav.mesakit.map.measurements.geographic.Angle.Chirality;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
-@SuppressWarnings("SpellCheckingInspection") public class Codec
+@SuppressWarnings("SpellCheckingInspection")
+public class Codec
 {
     private final GeohashAlphabet alphabet;
 

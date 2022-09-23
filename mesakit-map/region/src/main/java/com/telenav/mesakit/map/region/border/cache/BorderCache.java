@@ -24,6 +24,7 @@ import com.telenav.kivakit.core.io.IO;
 import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
+import com.telenav.kivakit.core.project.ProjectTrait;
 import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.thread.locks.Lock;
@@ -120,9 +121,10 @@ import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcess
  * @see RegionType
  * @see RegionInstance
  */
-@SuppressWarnings("unused") @UmlClassDiagram(diagram = DiagramBorder.class)
+@SuppressWarnings({ "unused", "SpellCheckingInspection" })
+@UmlClassDiagram(diagram = DiagramBorder.class)
 @UmlRelation(label = "loads borders for", referent = Region.class)
-public abstract class BorderCache<T extends Region<T>> extends BaseComponent
+public abstract class BorderCache<T extends Region<T>> extends BaseComponent implements ProjectTrait
 {
     /** True to show extra tracing details */
     private static final boolean DETAILED_TRACE = false;

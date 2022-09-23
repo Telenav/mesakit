@@ -32,7 +32,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
  * @author jonathanl (shibo)
  * @see "http://en.wikipedia.org/wiki/Geohash"
  */
-public class Geohash
+@SuppressWarnings("SpellCheckingInspection") public class Geohash
 {
     /**
      * When checking if a {@code geohash} is a world geohash, don't use {@code geohash.equals(Geohash.world())}; use
