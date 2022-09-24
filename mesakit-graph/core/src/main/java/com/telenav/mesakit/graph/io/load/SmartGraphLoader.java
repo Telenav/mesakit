@@ -48,6 +48,7 @@ import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.R
  *
  * @author jonathanl (shibo)
  */
+@SuppressWarnings({ "unused", "SpellCheckingInspection" })
 public class SmartGraphLoader extends BaseRepeater implements Named
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
@@ -192,7 +193,7 @@ public class SmartGraphLoader extends BaseRepeater implements Named
                 }
 
                 default:
-                    return illegalState("Unrecognized graph resource: $", file);
+                    throw new IllegalStateException("Unrecognized graph resource: " + file);
             }
         }
         warning("File '$' does not exist", file);

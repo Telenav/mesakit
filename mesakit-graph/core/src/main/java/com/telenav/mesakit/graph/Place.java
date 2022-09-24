@@ -23,8 +23,8 @@ import com.telenav.kivakit.core.string.AsIndentedString;
 import com.telenav.kivakit.core.string.Differences;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.interfaces.naming.Named;
-import com.telenav.kivakit.primitive.collections.Quantizable;
 import com.telenav.kivakit.interfaces.string.StringFormattable;
+import com.telenav.kivakit.interfaces.value.LongValued;
 import com.telenav.kivakit.validation.Validatable;
 import com.telenav.kivakit.validation.ValidationType;
 import com.telenav.kivakit.validation.Validator;
@@ -81,9 +81,15 @@ import java.util.List;
  * @see Intersectable
  * @see Validatable
  */
-public class Place extends GraphElement implements Located, Bounded, Intersectable, Comparable<Place>, Serializable
+@SuppressWarnings("unused")
+public class Place extends GraphElement implements
+        Located,
+        Bounded,
+        Intersectable,
+        Comparable<Place>,
+        Serializable
 {
-    public enum Type implements Quantizable
+    @SuppressWarnings("unused") public enum Type implements LongValued
     {
         CITY(1),
         SUBURB(2),
@@ -175,9 +181,9 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
         }
 
         @Override
-        public long quantum()
+        public long longValue()
         {
-            return identifier;
+            return 0;
         }
     }
 
@@ -389,6 +395,12 @@ public class Place extends GraphElement implements Located, Bounded, Intersectab
     public Location location()
     {
         return store().retrieveLocation(this);
+    }
+
+    @Override
+    public long longValue()
+    {
+        return identifierAsLong();
     }
 
     /**

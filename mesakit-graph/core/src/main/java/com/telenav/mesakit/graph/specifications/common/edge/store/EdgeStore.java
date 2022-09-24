@@ -1610,7 +1610,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
         {
             ROAD_STATE.load();
         }
-        return roadState.get(index) == RoadState.ONE_WAY.quantum();
+        return roadState.get(index) == RoadState.ONE_WAY.longValue();
     }
 
     /**
@@ -1622,7 +1622,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
         {
             ROAD_STATE.load();
         }
-        return roadState.get(index) == RoadState.TWO_WAY.quantum();
+        return roadState.get(index) == RoadState.TWO_WAY.longValue();
     }
 
     /**

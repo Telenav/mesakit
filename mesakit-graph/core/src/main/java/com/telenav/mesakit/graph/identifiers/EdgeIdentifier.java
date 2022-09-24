@@ -52,7 +52,9 @@ import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifi
  * @see Edge#identifierAsLong()
  * @see PbfWayIdentifier
  */
-public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
+@SuppressWarnings("unused")
+public class EdgeIdentifier extends Identifier implements
+        GraphElementIdentifier
 {
     public static final int SIZE_IN_BITS = 64;
 

@@ -31,7 +31,7 @@ import com.telenav.kivakit.core.value.identifier.IntegerIdentifier;
 import com.telenav.kivakit.extraction.BaseExtractor;
 import com.telenav.kivakit.extraction.Extractor;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.primitive.collections.Quantizable;
+import com.telenav.kivakit.interfaces.value.LongValued;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
@@ -60,9 +60,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramRegions.class)
-@UmlExcludeSuperTypes(Quantizable.class)
-public abstract class Country extends Region<Country> implements Quantizable
+@SuppressWarnings({ "DuplicatedCode", "unused" })
+@UmlClassDiagram(diagram = DiagramRegions.class)
+@UmlExcludeSuperTypes(LongValued .class)
+public abstract class Country extends Region<Country> implements LongValued
 {
     public static Country AFGHANISTAN;
 
@@ -877,7 +878,7 @@ public abstract class Country extends Region<Country> implements Quantizable
     }
 
     @Override
-    public final long quantum()
+    public final long longValue()
     {
         return identity().identifier().asLong();
     }

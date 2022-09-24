@@ -37,7 +37,7 @@ import com.telenav.mesakit.graph.specifications.library.attributes.AttributeSet;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
-public abstract class ArchivedGraphStore extends GraphStore
+@SuppressWarnings("unused") public abstract class ArchivedGraphStore extends GraphStore
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -105,7 +105,7 @@ public abstract class ArchivedGraphStore extends GraphStore
         // Clear out all the lazy-loaded fields we will load from archive
         unload();
 
-        // Attach the graph archive and the field archive based on it
+        // Attach the graph archive and the field archive based on it.
         // We can't register the spatial index serializer in GraphCore because
         // it needs the graph in order to function, so we do it here.
 
@@ -199,7 +199,7 @@ public abstract class ArchivedGraphStore extends GraphStore
         if (!isValid())
         {
             // we cannot save
-            illegalState("Cannot save invalid graph to $", archive.zip().resource());
+            throw new IllegalStateException("Cannot save invalid graph to " + archive.zip().resource());
         }
 
         // Record start time

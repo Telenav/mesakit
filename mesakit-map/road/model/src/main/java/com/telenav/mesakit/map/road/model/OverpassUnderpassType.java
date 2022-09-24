@@ -18,12 +18,12 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.primitive.collections.Quantizable;
+import com.telenav.kivakit.interfaces.value.LongValued;
 
 /**
  *
  */
-public enum OverpassUnderpassType implements Quantizable
+public enum OverpassUnderpassType implements LongValued
 {
     NONE(0),
     OVERPASS(1),
@@ -54,7 +54,7 @@ public enum OverpassUnderpassType implements Quantizable
     }
 
     @Override
-    public long quantum()
+    public long longValue()
     {
         return identifier;
     }

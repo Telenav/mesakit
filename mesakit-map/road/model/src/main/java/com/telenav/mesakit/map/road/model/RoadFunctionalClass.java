@@ -18,17 +18,18 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.primitive.collections.Quantizable;
+import com.telenav.kivakit.interfaces.value.LongValued;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Indicates the importance of a road based on its functional classification.
+ * Indicates the importance of a road, based on its functional classification.
  *
  * @author jonathanl (shibo)
  */
-public enum RoadFunctionalClass implements Quantizable
+@SuppressWarnings("unused")
+public enum RoadFunctionalClass implements LongValued
 {
     MAIN(5),
     FIRST_CLASS(4),
@@ -153,6 +154,12 @@ public enum RoadFunctionalClass implements Quantizable
         return identifier >= that.identifier;
     }
 
+    @Override
+    public long longValue()
+    {
+        return identifier;
+    }
+
     public RoadFunctionalClass maximum(RoadFunctionalClass that)
     {
         return isMoreImportantThan(that) ? this : that;
@@ -178,11 +185,5 @@ public enum RoadFunctionalClass implements Quantizable
             default:
                 return null;
         }
-    }
-
-    @Override
-    public long quantum()
-    {
-        return identifier;
     }
 }

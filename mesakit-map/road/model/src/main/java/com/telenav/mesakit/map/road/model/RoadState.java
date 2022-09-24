@@ -18,9 +18,10 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.primitive.collections.Quantizable;
+import com.telenav.kivakit.interfaces.value.LongValued;
 
-public enum RoadState implements Quantizable
+@SuppressWarnings("unused")
+public enum RoadState implements LongValued
 {
     NULL(0),
     ONE_WAY(1),
@@ -94,7 +95,7 @@ public enum RoadState implements Quantizable
     }
 
     @Override
-    public long quantum()
+    public long longValue()
     {
         return identifier;
     }

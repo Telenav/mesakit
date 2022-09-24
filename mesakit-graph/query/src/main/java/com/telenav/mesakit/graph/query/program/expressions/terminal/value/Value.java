@@ -18,7 +18,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
  * A scalar value used in edge attribute comparisons. One of:
  * <ul>
  *     <li><b>Boolean</b> - True of false value</li>
- *     <li><b>Number</b> - Double precision number representing double, float, int, short, char or byte value, including {@link Quantizable} values and specific Graph API enum values</li>
+ *     <li><b>Number</b> - Double precision number representing double, float, int, short, char or byte value, including {@link LongValued} values and specific Graph API enum values</li>
  *     <li><b>String</b> - Unicode string</li>
  *     <li><b>Object</b> - Some other kind of object value</li>
  * </ul>
@@ -61,7 +61,7 @@ public class Value
     {
         if (value instanceof Quantizable)
         {
-            return (double) ((Quantizable) value).quantum();
+            return (double) ((Quantizable) value).longValue();
         }
         if (value instanceof Number)
         {
@@ -78,7 +78,7 @@ public class Value
                     var enumValue = Enum.valueOf(type, enumName);
                     if (enumValue instanceof Quantizable)
                     {
-                        return (double) ((Quantizable) enumValue).quantum();
+                        return (double) ((Quantizable) enumValue).longValue();
                     }
                 }
                 catch (Exception ignored)

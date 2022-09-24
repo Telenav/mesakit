@@ -454,8 +454,12 @@ import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
  * @see Speed
  * @see Angle
  */
-@SuppressWarnings({ "DuplicatedCode", "SpellCheckingInspection" })
-public abstract class Edge extends GraphElement implements Bounded, Intersectable, Road, LocationSequence
+@SuppressWarnings({ "DuplicatedCode", "SpellCheckingInspection", "unused" })
+public abstract class Edge extends GraphElement implements
+        Bounded,
+        Intersectable,
+        Road,
+        LocationSequence
 {
     /**
      * Default tolerance for parallel edges
@@ -510,7 +514,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     /**
      * The type of edge, of which there are two types: {@link Type#NORMAL} and {@link Type#ROUTING_SHORTCUT}.
      * <p>
-     * Outside of certain special navigation applications, all edges are of type {@link Type#NORMAL}.
+     * Outside certain special navigation applications, all edges are of type {@link Type#NORMAL}.
      *
      * @author jonathanl (shibo)
      */
@@ -919,7 +923,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     }
 
     /**
-     * @return The identifier of the from vertex
+     * @return The identifier of the "from" vertex
      */
     @KivaKitExcludeProperty
     public VertexIdentifier fromVertexIdentifier()
@@ -933,7 +937,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      */
     public Edge hardestLeft(Angle tolerance)
     {
-        // Go through out edges from the "to" end of this edge
+        // Go through "out" edges from the "to" end of this edge
         var hardestAngle = Angle._0_DEGREES;
         Edge hardestEdge = null;
         for (var out : to().outEdges())
@@ -956,7 +960,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      */
     public Edge hardestRight(Angle tolerance)
     {
-        // Go through out edges from the "to" end of this edge
+        // Go through "out" edges from the "to" end of this edge
         var hardestAngle = Angle._0_DEGREES;
         Edge hardestEdge = null;
         for (var out : to().outEdges())
@@ -1141,7 +1145,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     }
 
     /**
-     * @return True if this edge is a connector (if it has the road sub-type "connecting road"
+     * @return True if this edge is a connector (if it has the road subtype "connecting road"
      */
     public boolean isConnector()
     {
@@ -1206,7 +1210,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
         }
 
         // otherwise, we join if there's not a single in edge when navigating with a non-branching
-        // no u-turn navigator
+        // no uturn navigator
         return Navigator.NON_BRANCHING_NO_UTURN.in(this) == null;
     }
 
@@ -1227,7 +1231,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     }
 
     /**
-     * @return True if this edge is a loop (a circle where the "from" vertex and "to" vertex are the same and you can go
+     * @return True if this edge is a loop (a circle where the "from" vertex and "to" vertex are the same, and you can go
      * around and around).
      */
     public boolean isLoop()
@@ -1397,7 +1401,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     }
 
     /**
-     * @return True if this edge and that edge have the same road type and sub-type and are on the same road as
+     * @return True if this edge and that edge have the same road type and subtype and are on the same road as
      * determined by the road name
      */
     public boolean isOnSameRoadWithSameTypeAs(Edge that)
@@ -1513,7 +1517,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     }
 
     /**
-     * @return True if this edge represents one direction on a two way road. If this method returns true, you can call
+     * @return True if this edge represents one direction on a two-way road. If this method returns true, you can call
      * {@link #reversed()} to get edge in the opposite direction.
      */
     public boolean isTwoWay()
@@ -1591,7 +1595,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
 
     /**
      * @return True if this edge forks. This is different from whether the "to" vertex is a decision point because it
-     * <i>does not</i> consider u-turns.
+     * <i>does not</i> consider uturns.
      */
     public boolean leadsToFork()
     {
@@ -1603,7 +1607,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
         }
 
         // otherwise, we fork if there's not a single out edge when navigating with a non-branching,
-        // no u-turn navigator
+        // no uturn navigator
         return Navigator.NON_BRANCHING_NO_UTURN.out(this) == null;
     }
 
@@ -1690,7 +1694,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
      */
     public Edge mostStraightOn(Angle tolerance)
     {
-        // Go through out edges from the "to" end of this edge
+        // Go through "out" edges from the "to" end of this edge
         var mostStraightOnAngle = Angle._180_DEGREES;
         Edge mostStraightOnEdge = null;
         for (var out : to().outEdges())
@@ -2169,7 +2173,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     }
 
     /**
-     * @return The road sub-type for this edge, such as roundabout, service road, main road, etc.
+     * @return The road subtype for this edge, such as roundabout, service road, main road, etc.
      */
     @Override
     public RoadSubType roadSubType()
@@ -2437,7 +2441,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
     }
 
     /**
-     * @return The to location of this edge as a DM7 long value
+     * @return The "to" location of this edge as a DM7 long value
      */
     public long toLocationAsLong()
     {
@@ -2645,7 +2649,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
             var from = that.from();
             if (isConnectedTo(from))
             {
-                // return the from vertex
+                // return the "from" vertex
                 return from;
             }
 
@@ -2653,7 +2657,7 @@ public abstract class Edge extends GraphElement implements Bounded, Intersectabl
             var to = that.to();
             if (isConnectedTo(to))
             {
-                // return the to vertex
+                // return the "to" vertex
                 return to;
             }
         }

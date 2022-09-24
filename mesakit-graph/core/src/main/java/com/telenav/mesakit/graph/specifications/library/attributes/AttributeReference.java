@@ -34,7 +34,6 @@ import com.telenav.kivakit.interfaces.lifecycle.Initializable;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.interfaces.value.BooleanValued;
 import com.telenav.kivakit.interfaces.value.LongValued;
-import com.telenav.kivakit.primitive.collections.Quantizable;
 import com.telenav.kivakit.primitive.collections.list.IntList;
 import com.telenav.kivakit.primitive.collections.list.LongList;
 import com.telenav.kivakit.primitive.collections.list.PrimitiveList;
@@ -66,10 +65,10 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
  * when an attribute is allocated, {@link #onAllocated()} is called.
  * <p>
  * The remaining methods in attribute reference are methods for retrieving and storing different kinds of values in the
- * referent object. Many of these methods take a {@link Quantizable} rather than a specific primitive key value. This
+ * referent object. Many of these methods take a {@link LongValued} rather than a specific primitive key value. This
  * permits any quantizable object to be used as a key. For example, all {@link GraphElement}s are {@link Indexable} and
- * index-able objects are {@link Quantizable}, so an {@link Edge} (which is a graph element) can be used as an index
- * into an array. The quantum (long value) is just the index in this case.
+ * index-able objects are {@link LongValued}, so an {@link Edge} (which is a graph element) can be used as an index into
+ * an array. The quantum (long value) is just the index in this case.
  *
  * @author jonathanl (shibo)
  * @see Attribute
@@ -78,7 +77,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
  * @see GraphArchive
  * @see Property
  * @see Factory
- * @see Quantizable
+ * @see LongValued
  */
 @SuppressWarnings({ "ConstantConditions", "unused" })
 public class AttributeReference<Referent extends NamedObject & Initializable> implements
@@ -271,7 +270,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * @return Returns the boolean value at the index specified by the quantizable index object
      */
-    public boolean retrieveBoolean(Quantizable index)
+    public boolean retrieveBoolean(LongValued index)
     {
         if (!load())
         {
@@ -281,17 +280,17 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
         if (reference instanceof LongList)
         {
             var list = (LongList) reference;
-            return list.safeGet((int) index.quantum()) != 0;
+            return list.safeGet((int) index.longValue()) != 0;
         }
         else if (reference instanceof PrimitiveSet)
         {
             var set = (PrimitiveSet) reference;
-            return set.contains(index.quantum());
+            return set.contains(index.longValue());
         }
         else if (reference instanceof PrimitiveScalarMap)
         {
             var map = (PrimitiveScalarMap) reference;
-            return map.getScalar(index.quantum()) == 1;
+            return map.getScalar(index.longValue()) == 1;
         }
 
         failedToRetrieveAttribute();
@@ -301,7 +300,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * @return Returns the int value at the index specified by the quantizable index object
      */
-    public int retrieveInt(Quantizable index)
+    public int retrieveInt(LongValued index)
     {
         if (!load())
         {
@@ -311,7 +310,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
         if (reference instanceof IntList)
         {
             var list = (IntList) reference;
-            return list.safeGet((int) index.quantum());
+            return list.safeGet((int) index.longValue());
         }
 
         failedToRetrieveAttribute();
@@ -321,7 +320,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * @return Returns the long value at the index specified by the quantizable index object
      */
-    public long retrieveLong(Quantizable index)
+    public long retrieveLong(LongValued index)
     {
         if (!load())
         {
@@ -331,7 +330,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
         if (reference instanceof LongList)
         {
             var list = (LongList) reference;
-            return list.safeGet((int) index.quantum());
+            return list.safeGet((int) index.longValue());
         }
 
         failedToRetrieveAttribute();
@@ -341,7 +340,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * @return An object for the given quantizable value
      */
-    public <T> T retrieveObject(Quantizable index, LongMapFactory<T> factory)
+    public <T> T retrieveObject(LongValued index, LongMapFactory<T> factory)
     {
         if (!load())
         {
@@ -351,7 +350,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
         if (reference instanceof PrimitiveList)
         {
             var array = (PrimitiveList) reference;
-            var value = array.safeGetPrimitive((int) index.quantum());
+            var value = array.safeGetPrimitive((int) index.longValue());
             if (!array.isPrimitiveNull(value))
             {
                 return factory.newInstance(value);
@@ -361,7 +360,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
         else if (reference instanceof PrimitiveScalarMap)
         {
             var array = (PrimitiveScalarMap) reference;
-            var value = array.getScalar((int) index.quantum());
+            var value = array.getScalar((int) index.longValue());
             if (!array.isScalarValueNull(value))
             {
                 return factory.newInstance(value);
@@ -373,7 +372,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
         return null;
     }
 
-    public <T> ObjectList<T> retrieveObjectList(Quantizable index, LongMapFactory<T> factory)
+    public <T> ObjectList<T> retrieveObjectList(LongValued index, LongMapFactory<T> factory)
     {
         if (!load())
         {
@@ -384,7 +383,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
         {
             var map = (PrimitiveScalarMultiMap) reference;
             ensure(index != null);
-            var values = map.getPrimitiveList(index.quantum());
+            var values = map.getPrimitiveList(index.longValue());
             if (values != null)
             {
                 return values.asList(factory);
@@ -396,7 +395,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
         return null;
     }
 
-    public <T> ObjectList<T> retrieveSignedObjectList(Quantizable index, LongMapFactory<T> factory)
+    public <T> ObjectList<T> retrieveSignedObjectList(LongValued index, LongMapFactory<T> factory)
     {
         if (!load())
         {
@@ -407,7 +406,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
         {
             var map = (PrimitiveScalarMultiMap) reference;
             ensure(index != null);
-            var values = map.getSignedPrimitiveList(index.quantum());
+            var values = map.getSignedPrimitiveList(index.longValue());
             if (values != null)
             {
                 return values.asList(factory);
@@ -422,7 +421,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * @return Returns the long value at the index specified by the quantizable index object
      */
-    public String retrieveString(Quantizable index)
+    public String retrieveString(LongValued index)
     {
         if (!load())
         {
@@ -431,7 +430,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
 
         if (reference instanceof PackedStringStore)
         {
-            return ((PackedStringStore) reference).get((int) index.quantum());
+            return ((PackedStringStore) reference).get((int) index.longValue());
         }
 
         failedToRetrieveAttribute();
@@ -514,7 +513,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * Stores the given list of values at the index specified by the quantizable index object
      */
-    public void storeObjectList(Quantizable index, List<? extends Quantizable> values)
+    public void storeObjectList(LongValued index, List<? extends LongValued> values)
     {
         if (values != null)
         {
@@ -524,7 +523,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
                 var attribute = allocate();
                 if (attribute instanceof PrimitiveScalarMultiMap)
                 {
-                    ((PrimitiveScalarMultiMap) attribute).putPrimitiveList((int) index.quantum(), values);
+                    ((PrimitiveScalarMultiMap) attribute).putPrimitiveList((int) index.longValue(), values);
                 }
                 else
                 {
@@ -537,14 +536,14 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * Stores the given string at the index specified by the quantizable index object
      */
-    public void storeString(Quantizable index, String value)
+    public void storeString(LongValued index, String value)
     {
         if (supported())
         {
             var attribute = allocate();
             if (attribute instanceof PackedStringStore)
             {
-                ((PackedStringStore) attribute).set((int) index.quantum(), value);
+                ((PackedStringStore) attribute).set((int) index.longValue(), value);
             }
             else
             {

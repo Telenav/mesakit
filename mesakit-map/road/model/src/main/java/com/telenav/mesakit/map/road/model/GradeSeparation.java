@@ -18,11 +18,12 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.primitive.collections.Quantizable;
+import com.telenav.kivakit.interfaces.value.LongValued;
 
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
-public class GradeSeparation implements Quantizable
+@SuppressWarnings("unused")
+public class GradeSeparation implements LongValued
 {
     public static final GradeSeparation LEVEL_MINUS_4 = new GradeSeparation(-4);
 
@@ -154,7 +155,7 @@ public class GradeSeparation implements Quantizable
     }
 
     @Override
-    public long quantum()
+    public long longValue()
     {
         return level;
     }
