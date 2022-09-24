@@ -24,7 +24,7 @@ import com.telenav.mesakit.map.measurements.internal.lexakai.DiagramMapMeasureme
 
 /**
  * A slope angle, such as for the steepness of the rise or fall of a roadway. Supports basic mathematical operations and
- * supplies a {@link #quantum()} in integral degrees.
+ * supplies a {@link #longValue()} in integral degrees.
  *
  * @author jonathanl (shibo)
  */
@@ -79,7 +79,7 @@ public class Slope extends Angle
      * @return The quantum of a slope is integral degrees
      */
     @Override
-    public long quantum()
+    public long longValue()
     {
         return (long) asDegrees();
     }

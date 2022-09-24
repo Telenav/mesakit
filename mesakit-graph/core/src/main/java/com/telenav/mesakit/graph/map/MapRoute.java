@@ -22,6 +22,7 @@ import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.language.Streams;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.string.Join;
 import com.telenav.kivakit.core.string.Separators;
 import com.telenav.kivakit.core.string.Split;
@@ -35,6 +36,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Stream;
 
+@SuppressWarnings("unused")
 public class MapRoute implements Iterable<MapEdgeIdentifier>
 {
     @SuppressWarnings("DuplicatedCode") public static class Converter extends BaseStringConverter<MapRoute>
@@ -103,8 +105,8 @@ public class MapRoute implements Iterable<MapEdgeIdentifier>
                 }
                 catch (Exception e)
                 {
-                    problem(problemBroadcastFrequency(), e, "${class}: Problem converting ${debug} with graph ${debug}", subclass(),
-                            value, graph.name());
+                    transmit(new Problem( e, "${class}: Problem converting ${debug} with graph ${debug}", subclass(),
+                            value, graph.name()).maximumFrequency(problemBroadcastFrequency()));
                 }
                 return builder.route().asMapRoute();
             }

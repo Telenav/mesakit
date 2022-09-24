@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.conversion.core.value.QuantizableConverter;
+import com.telenav.kivakit.conversion.core.value.LongValuedConverter;
 import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.primitive.collections.Quantizable;
+import com.telenav.kivakit.interfaces.value.LongValued;
 import com.telenav.mesakit.map.measurements.motion.Speed;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class SpeedCategory implements Quantizable
+public class SpeedCategory implements LongValued
 {
     private static final Map<Integer, SpeedCategory> speedCategoryForIdentifier = new HashMap<>();
 
@@ -75,7 +75,7 @@ public class SpeedCategory implements Quantizable
         return fastest();
     }
 
-    public static class Converter extends QuantizableConverter<SpeedCategory>
+    public static class Converter extends LongValuedConverter<SpeedCategory>
     {
         public Converter(Listener listener)
         {
@@ -113,6 +113,12 @@ public class SpeedCategory implements Quantizable
         return speed.isGreaterThanOrEqualTo(minimum) && speed.isLessThan(maximum);
     }
 
+    @Override
+    public long longValue()
+    {
+        return identifier;
+    }
+
     public Speed maximum()
     {
         return maximum;
@@ -121,12 +127,6 @@ public class SpeedCategory implements Quantizable
     public Speed minimum()
     {
         return minimum;
-    }
-
-    @Override
-    public long quantum()
-    {
-        return identifier;
     }
 
     public Speed speed()

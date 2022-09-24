@@ -31,6 +31,7 @@ import com.telenav.kivakit.core.language.primitive.Ints;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.string.Separators;
 import com.telenav.kivakit.core.string.Split;
 import com.telenav.kivakit.core.time.Duration;
@@ -82,13 +83,14 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle._90_DEGREES;
 import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
 
 /**
- * A list of edges that is organized according to connectivity, forming a continuous route. Attempting to add an {@link
- * Edge} to a {@link Route} that is not connected to the edges already in the route will result in a run-time
+ * A list of edges that is organized according to connectivity, forming a continuous route. Attempting to add an
+ * {@link Edge} to a {@link Route} that is not connected to the edges already in the route will result in a run-time
  * exception.
  *
  * @author jonathanl (shibo)
  */
-@SuppressWarnings("SpellCheckingInspection") public abstract class Route implements Iterable<Edge>, Bounded, StringFormattable
+@SuppressWarnings({ "SpellCheckingInspection", "unused" })
+public abstract class Route implements Iterable<Edge>, Bounded, StringFormattable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -164,8 +166,8 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * Converts routes composed of ordinary {@link EdgeIdentifier}s. To convert routes composed of {@link
-     * MapEdgeIdentifier}s (way:from-node:to-node format), see {@link MapIdentifierConverter}
+     * Converts routes composed of ordinary {@link EdgeIdentifier}s. To convert routes composed of
+     * {@link MapEdgeIdentifier}s (way:from-node:to-node format), see {@link MapIdentifierConverter}
      *
      * @author jonathanl (shibo)
      * @see MapIdentifierConverter
@@ -217,8 +219,8 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
             }
             catch (Exception e)
             {
-                problem(problemBroadcastFrequency(), e, "${class}: Problem converting ${debug} with graph ${debug}",
-                        subclass(), value, graph.name());
+                transmit(new Problem(e, "${class}: Problem converting ${debug} with graph ${debug}",
+                        subclass(), value, graph.name()).maximumFrequency(problemBroadcastFrequency()));
             }
             return null;
         }
@@ -277,8 +279,8 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
             }
             catch (Exception e)
             {
-                problem(problemBroadcastFrequency(), e, "${class}: Problem converting ${debug} with graph ${debug}", subclass(), value,
-                        graph.name());
+                transmit(new Problem(e, "${class}: Problem converting ${debug} with graph ${debug}", subclass(), value,
+                        graph.name()).maximumFrequency(problemBroadcastFrequency()));
             }
             return builder.route();
         }

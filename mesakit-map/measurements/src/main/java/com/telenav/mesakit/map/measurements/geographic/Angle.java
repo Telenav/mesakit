@@ -24,8 +24,8 @@ import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.interfaces.numeric.Numeric;
-import com.telenav.kivakit.interfaces.numeric.Quantizable;
 import com.telenav.kivakit.interfaces.string.StringFormattable;
+import com.telenav.kivakit.interfaces.value.LongValued;
 import com.telenav.kivakit.validation.BaseValidator;
 import com.telenav.kivakit.validation.Validatable;
 import com.telenav.kivakit.validation.ValidationType;
@@ -39,7 +39,6 @@ import java.io.Serializable;
 import java.util.regex.Pattern;
 
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
-import com.telenav.kivakit.interfaces.numeric.QuantumComparable;
 
 /**
  * An angle value represented between -360 and 360 degrees. Note that an angle of -45 degrees is seen as being less than
@@ -113,14 +112,13 @@ import com.telenav.kivakit.interfaces.numeric.QuantumComparable;
  */
 @SuppressWarnings({ "SwitchStatementWithTooFewBranches", "SpellCheckingInspection", "unused" })
 @UmlClassDiagram(diagram = DiagramMapMeasurementGeographic.class)
-@UmlExcludeSuperTypes({ StringFormattable.class, Serializable.class, Quantizable.class })
+@UmlExcludeSuperTypes({ StringFormattable.class, Serializable.class, LongValued.class })
 @LexakaiJavadoc(complete = true)
 public class Angle implements
         Validatable,
         Numeric<Angle>,
         StringFormattable,
-        Quantizable,
-        QuantumComparable<Angle>,
+        LongValued,
         Comparable<Angle>,
         Serializable
 {
@@ -469,7 +467,6 @@ public class Angle implements
         throw new IllegalArgumentException("Unsupported difference type " + type);
     }
 
-    @Override
     public Angle dividedBy(Angle that)
     {
         return nanodegrees(nanodegrees / that.nanodegrees);
@@ -544,12 +541,17 @@ public class Angle implements
     }
 
     @Override
+    public long longValue()
+    {
+        return nanodegrees;
+    }
+
+    @Override
     public Angle maximum()
     {
         return MAXIMUM;
     }
 
-    @Override
     public Angle maximum(Angle that)
     {
         return nanodegrees > that.nanodegrees ? this : that;
@@ -561,13 +563,11 @@ public class Angle implements
         return MINIMUM;
     }
 
-    @Override
     public Angle minimum(Angle that)
     {
         return nanodegrees < that.nanodegrees ? this : that;
     }
 
-    @Override
     public Angle minus(Angle that)
     {
         return nanodegrees(nanodegrees - that.nanodegrees);
@@ -585,7 +585,6 @@ public class Angle implements
         return degrees(asDegrees() + 1);
     }
 
-    @Override
     public Angle plus(Angle that)
     {
         return nanodegrees(nanodegrees + that.nanodegrees);
@@ -600,19 +599,12 @@ public class Angle implements
         return Distance.EARTH_RADIUS_MINOR.times(asRadians());
     }
 
-    @Override
-    public long quantum()
-    {
-        return nanodegrees;
-    }
-
     public Angle reversed()
     {
         return plus(degrees(180));
     }
 
-    @Override
-    public Angle times(final Angle angle)
+    public Angle times(Angle angle)
     {
         return null;
     }

@@ -87,7 +87,11 @@ import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
  * @see ArchivedGraphElementStore
  */
 @SuppressWarnings({ "unused", "SpellCheckingInspection" })
-public abstract class GraphElementStore<T extends GraphElement> extends BaseRepeater implements Iterable<T>, CompressibleCollection, AttributeStore, Validatable
+public abstract class GraphElementStore<T extends GraphElement> extends BaseRepeater implements
+        Iterable<T>,
+        CompressibleCollection,
+        AttributeStore,
+        Validatable
 {
     private static final boolean BATCHING_ENABLED = false;
 

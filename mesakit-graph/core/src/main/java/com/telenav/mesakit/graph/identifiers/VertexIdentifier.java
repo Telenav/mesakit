@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.identifiers;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.conversion.core.value.QuantizableConverter;
+import com.telenav.kivakit.conversion.core.value.LongValuedConverter;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.value.count.BitCount;
 import com.telenav.kivakit.core.value.identifier.IntegerIdentifier;
@@ -59,7 +59,7 @@ public class VertexIdentifier extends IntegerIdentifier implements GraphElementI
                 .converter(new Converter(listener));
     }
 
-    public static class Converter extends QuantizableConverter<VertexIdentifier>
+    public static class Converter extends LongValuedConverter<VertexIdentifier>
     {
         public Converter(Listener listener)
         {

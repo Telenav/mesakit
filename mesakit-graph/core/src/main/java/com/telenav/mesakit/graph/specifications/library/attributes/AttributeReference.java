@@ -32,6 +32,8 @@ import com.telenav.kivakit.interfaces.factory.Factory;
 import com.telenav.kivakit.interfaces.factory.LongMapFactory;
 import com.telenav.kivakit.interfaces.lifecycle.Initializable;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
+import com.telenav.kivakit.interfaces.value.BooleanValued;
+import com.telenav.kivakit.interfaces.value.LongValued;
 import com.telenav.kivakit.primitive.collections.Quantizable;
 import com.telenav.kivakit.primitive.collections.list.IntList;
 import com.telenav.kivakit.primitive.collections.list.LongList;
@@ -78,7 +80,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
  * @see Factory
  * @see Quantizable
  */
-@SuppressWarnings({ "ConstantConditions" })
+@SuppressWarnings({ "ConstantConditions", "unused" })
 public class AttributeReference<Referent extends NamedObject & Initializable> implements
         RegistryTrait,
         NamedObject
@@ -180,8 +182,8 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     }
 
     /**
-     * Attaches this reference to the given field archive so that referenced attributes can be loaded with {@link
-     * #load()}
+     * Attaches this reference to the given field archive so that referenced attributes can be loaded with
+     * {@link #load()}
      */
     public void attach(FieldArchive archive)
     {
@@ -223,6 +225,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
                 loadAttempted = true;
 
                 // load the reference
+                @SuppressWarnings("resource")
                 var archive = archive();
                 if (archive != null)
                 {
@@ -438,7 +441,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * Stores the given value at the index specified by the quantizable index object
      */
-    public void storeBoolean(Quantizable index, boolean value)
+    public void storeBoolean(LongValued index, boolean value)
     {
         if (supported())
         {
@@ -449,13 +452,13 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * Stores the given value at the index specified by the quantizable index object
      */
-    public void storeBoolean(Quantizable index, Boolean value)
+    public void storeBoolean(BooleanValued index, Boolean value)
     {
         if (value != null)
         {
             if (supported())
             {
-                storeBoolean(index, value.booleanValue());
+                storeBoolean(index, value);
             }
         }
     }
@@ -463,13 +466,13 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * Stores the given value at the index specified by the quantizable index object
      */
-    public void storeObject(Quantizable index, Quantizable value)
+    public void storeObject(LongValued index, LongValued value)
     {
         if (value != null)
         {
             if (supported())
             {
-                storeObject(index, value.quantum());
+                storeObject(index, value.longValue());
             }
         }
     }
@@ -477,7 +480,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     /**
      * Stores the given value at the index specified by the quantizable index object
      */
-    public void storeObject(Quantizable index, long value)
+    public void storeObject(LongValued index, long value)
     {
         assert index != null;
 
@@ -486,19 +489,19 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
             var attribute = allocate();
             if (attribute instanceof PrimitiveList)
             {
-                ((PrimitiveList) attribute).setPrimitive((int) index.quantum(), value);
+                ((PrimitiveList) attribute).setPrimitive((int) index.longValue(), value);
             }
             else if (reference instanceof PrimitiveScalarMap)
             {
                 var map = (PrimitiveScalarMap) reference;
-                map.putScalar(index.quantum(), value);
+                map.putScalar(index.longValue(), value);
             }
             else if (reference instanceof PrimitiveSet)
             {
                 if (value != 0)
                 {
                     var set = (PrimitiveSet) reference;
-                    set.add(index.quantum());
+                    set.add(index.longValue());
                 }
             }
             else
@@ -565,6 +568,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     public void unload()
     {
         // We must have an archive, or we cannot reload the attribute
+        @SuppressWarnings("resource")
         var archive = archive();
         assert archive != null : "Cannot clear attribute without archive attached or the attribute cannot be reloaded";
 

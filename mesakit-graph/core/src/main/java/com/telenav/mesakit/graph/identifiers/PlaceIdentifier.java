@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.identifiers;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.conversion.core.value.QuantizableConverter;
+import com.telenav.kivakit.conversion.core.value.LongValuedConverter;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
@@ -47,7 +47,7 @@ public class PlaceIdentifier extends MapNodeIdentifier implements GraphElementId
                 .converter(new Converter(listener));
     }
 
-    public static class Converter extends QuantizableConverter<PlaceIdentifier>
+    public static class Converter extends LongValuedConverter<PlaceIdentifier>
     {
         public Converter(Listener listener)
         {

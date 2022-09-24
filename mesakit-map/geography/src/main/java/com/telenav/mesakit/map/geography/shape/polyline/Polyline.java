@@ -122,7 +122,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
  * @see Intersectable
  * @see Bounded
  */
-@UmlClassDiagram(diagram = DiagramPolyline.class)
+@SuppressWarnings("unused") @UmlClassDiagram(diagram = DiagramPolyline.class)
 @UmlRelation(label = "contains", referent = Location.class, referentCardinality = "2+")
 public class Polyline implements
         Indexable<Location>,
@@ -1673,7 +1673,9 @@ public class Polyline implements
     @Override
     public String toString()
     {
-        return new ObjectList<>(GeographyLimits.LOCATIONS_PER_POLYLINE).appendAll(locationSequence()).join(":");
+        return new ObjectList<>(GeographyLimits.LOCATIONS_PER_POLYLINE)
+                .appendThen(locationSequence())
+                .join(":");
     }
 
     public List<PolylineSection> trisect()

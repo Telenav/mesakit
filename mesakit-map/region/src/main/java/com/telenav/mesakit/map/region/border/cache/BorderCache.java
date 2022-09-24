@@ -593,7 +593,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
                 {
                     // We were unable to install for some other reason
                     cacheFolder().clearAllAndDelete();
-                    illegalState(e, "Unable to install border data");
+                    throw new IllegalStateException("Unable to install border data", e);
                 }
             }
             finally

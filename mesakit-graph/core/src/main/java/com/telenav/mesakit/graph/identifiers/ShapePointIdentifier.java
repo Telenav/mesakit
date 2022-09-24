@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.identifiers;
 
-import com.telenav.kivakit.conversion.core.value.QuantizableConverter;
+import com.telenav.kivakit.conversion.core.value.LongValuedConverter;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.value.identifier.Identifier;
 import com.telenav.mesakit.graph.Graph;
@@ -34,7 +34,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
  */
 public class ShapePointIdentifier extends Identifier implements GraphElementIdentifier
 {
-    public static class Converter extends QuantizableConverter<ShapePointIdentifier>
+    public static class Converter extends LongValuedConverter<ShapePointIdentifier>
     {
         public Converter(Listener listener)
         {

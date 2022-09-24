@@ -46,6 +46,7 @@ import java.util.stream.Stream;
  *
  * @author jonathanl (shibo)
  */
+@SuppressWarnings("unused")
 public class EdgeSequence implements Iterable<Edge>, Bounded
 {
     /**
@@ -254,7 +255,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
         {
             try
             {
-                callback.onCallback(edge);
+                callback.call(edge);
             }
             catch (Exception e)
             {

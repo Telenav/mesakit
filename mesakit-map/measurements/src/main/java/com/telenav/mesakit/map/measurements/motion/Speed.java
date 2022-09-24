@@ -26,7 +26,7 @@ import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.value.level.Level;
-import com.telenav.kivakit.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.interfaces.value.LongValued;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -40,9 +40,9 @@ import java.util.regex.Pattern;
  *
  * @author jonathanl (shibo)
  */
-@UmlClassDiagram(diagram = DiagramMapMeasurementMotion.class)
-@UmlExcludeSuperTypes(Quantizable.class)
-public class Speed implements Comparable<Speed>, Quantizable
+@SuppressWarnings("unused") @UmlClassDiagram(diagram = DiagramMapMeasurementMotion.class)
+@UmlExcludeSuperTypes(LongValued.class)
+public class Speed implements Comparable<Speed>, LongValued
 {
     public static final Speed INVALID = new Speed(Distance.MAXIMUM, Duration.milliseconds(1));
 
@@ -153,9 +153,7 @@ public class Speed implements Comparable<Speed>, Quantizable
     /**
      * Converts the given <code>String</code> to a new <code>Speed</code> object. The input string is expected to be of
      * the format of a floating point number followed by a unit identifier (mph, msec, kph, etc.). Examples would
-     * include '55.4 mph', '13 msec', or '65 kph'.
-     *
-     * @author ericg
+     * include '55.4 mph', '13 msec', or "65 kph".
      */
     @SuppressWarnings("SpellCheckingInspection")
     public static class Converter extends BaseStringConverter<Speed>
@@ -381,7 +379,7 @@ public class Speed implements Comparable<Speed>, Quantizable
     }
 
     @Override
-    public long quantum()
+    public long longValue()
     {
         return (long) asKilometersPerHour();
     }
