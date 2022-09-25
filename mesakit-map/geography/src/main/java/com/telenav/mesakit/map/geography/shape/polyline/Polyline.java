@@ -35,7 +35,7 @@ import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.level.Percent;
 import com.telenav.kivakit.interfaces.collection.Indexable;
-import com.telenav.kivakit.interfaces.collection.NextIterable;
+import com.telenav.kivakit.interfaces.collection.NextIterator;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
@@ -1716,7 +1716,7 @@ public class Polyline implements
 
     public Iterable<LocatedHeading> vectors()
     {
-        return Iterables.iterable(() -> new NextIterable<>()
+        return Iterables.iterable(() -> new NextIterator<>()
         {
             boolean first = true;
 

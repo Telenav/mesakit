@@ -38,7 +38,7 @@ import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.kivakit.interfaces.collection.NextIterable;
+import com.telenav.kivakit.interfaces.collection.NextIterator;
 import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.graph.Edge.SignPostSupport;
@@ -1395,7 +1395,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
      */
     public Iterable<Vertex> interiorVertexes()
     {
-        return Iterables.iterable(() -> new NextIterable<>()
+        return Iterables.iterable(() -> new NextIterator<>()
         {
             // Edge iterator
             private final Iterator<Edge> edges = iterator();
@@ -1939,7 +1939,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
      */
     public Iterable<Location> vertexLocations()
     {
-        return Iterables.iterable(() -> new NextIterable<>()
+        return Iterables.iterable(() -> new NextIterator<>()
         {
             private final Iterator<Vertex> vertexes = vertexes().iterator();
 
@@ -1960,7 +1960,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
      */
     public Iterable<Vertex> vertexes()
     {
-        return Iterables.iterable(() -> new NextIterable<>()
+        return Iterables.iterable(() -> new NextIterator<>()
         {
             // Edge iterator
             private final Iterator<Edge> edges = iterator();

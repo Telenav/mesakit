@@ -22,7 +22,7 @@ import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.kivakit.core.language.primitive.Doubles;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.messaging.messages.status.Warning;
-import com.telenav.kivakit.interfaces.collection.NextIterable;
+import com.telenav.kivakit.interfaces.collection.NextIterator;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
@@ -66,7 +66,7 @@ public class ShapeFileReader
 
     public Iterable<Polygon> polygons()
     {
-        return Iterables.iterable(() -> new NextIterable<>()
+        return Iterables.iterable(() -> new NextIterator<>()
         {
             private PolygonShape shape;
 
@@ -137,7 +137,7 @@ public class ShapeFileReader
 
     public Iterable<Polyline> polylines()
     {
-        return Iterables.iterable(() -> new NextIterable<>()
+        return Iterables.iterable(() -> new NextIterator<>()
         {
             private PolylineShape shape;
 

@@ -31,7 +31,7 @@ import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.core.version.VersionedObject;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.interfaces.collection.NextIterable;
+import com.telenav.kivakit.interfaces.collection.NextIterator;
 import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.interfaces.value.Source;
@@ -153,9 +153,9 @@ public class WorldGraphIndex implements
         }
 
         @Override
-        protected NextIterable<AS> newNext()
+        protected NextIterator<AS> newNextIterator()
         {
-            return new NextIterable<>()
+            return new NextIterator<>()
             {
                 private final Iterator<T> iterator = iteratorSource.get();
 

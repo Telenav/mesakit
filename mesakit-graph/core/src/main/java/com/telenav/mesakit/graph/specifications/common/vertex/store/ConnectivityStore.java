@@ -29,7 +29,7 @@ import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.interfaces.code.TripwireTrait;
-import com.telenav.kivakit.interfaces.collection.NextIterable;
+import com.telenav.kivakit.interfaces.collection.NextIterator;
 import com.telenav.kivakit.interfaces.lifecycle.Initializable;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
@@ -470,7 +470,7 @@ public class ConnectivityStore implements
     {
         assert vertexIndex > 0;
         var outer = this;
-        return new EdgeSequence(Iterables.iterable(() -> new NextIterable<>()
+        return new EdgeSequence(Iterables.iterable(() -> new NextIterator<>()
         {
             final IntIterator in = sequence == ALL || sequence == IN ? outer.inEdges.list(vertexIndex).iterator() : IntIterator.NULL;
 

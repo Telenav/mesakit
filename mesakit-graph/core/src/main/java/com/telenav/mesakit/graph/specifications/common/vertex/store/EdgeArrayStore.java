@@ -23,7 +23,7 @@ import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.interfaces.code.TripwireTrait;
-import com.telenav.kivakit.interfaces.collection.NextIterable;
+import com.telenav.kivakit.interfaces.collection.NextIterator;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitByteArray;
@@ -124,7 +124,7 @@ public class EdgeArrayStore extends BaseRepeater implements
      */
     public EdgeSequence edgeSequence(EdgeStore store, int index)
     {
-        return new EdgeSequence(Iterables.iterable(() -> new NextIterable<>()
+        return new EdgeSequence(Iterables.iterable(() -> new NextIterator<>()
         {
             final IntList edges = list(index);
 

@@ -44,7 +44,7 @@ import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.interfaces.collection.NextIterable;
+import com.telenav.kivakit.interfaces.collection.NextIterator;
 import com.telenav.kivakit.interfaces.comparison.Filter;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.interfaces.naming.Named;
@@ -1397,7 +1397,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
      */
     public final Iterable<Place> placesInside(Region<?> region)
     {
-        return Iterables.iterable(() -> new NextIterable<>()
+        return Iterables.iterable(() -> new NextIterator<>()
         {
             final Iterator<Place> places = placesInside(region.bounds()).iterator();
 

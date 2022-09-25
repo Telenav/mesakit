@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.collections;
 
+import com.telenav.kivakit.core.collections.iteration.FilteredIterable;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
-import com.telenav.kivakit.core.collections.iteration.Matching;
 import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.language.Streams;
 import com.telenav.kivakit.core.messaging.Listener;
@@ -28,7 +28,7 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.interfaces.code.Callback;
-import com.telenav.kivakit.interfaces.collection.NextIterable;
+import com.telenav.kivakit.interfaces.collection.NextIterator;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Route;
@@ -79,7 +79,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
      */
     public EdgeSequence asDirectional()
     {
-        return new EdgeSequence(Iterables.iterable(() -> new NextIterable<>()
+        return new EdgeSequence(Iterables.iterable(() -> new NextIterator<>()
         {
             private final Iterator<Edge> edges = iterator();
 
@@ -222,14 +222,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
      */
     public EdgeSequence matching(Matcher<Edge> matcher)
     {
-        return new EdgeSequence(new Matching<>(matcher)
-        {
-            @Override
-            protected Iterator<Edge> values()
-            {
-                return edges.iterator();
-            }
-        });
+        return new EdgeSequence(new FilteredIterable<>(edges, matcher));
     }
 
     /**
