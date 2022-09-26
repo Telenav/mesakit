@@ -186,7 +186,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     @Override
     public Collection<Polygon> borders()
     {
-        return Sets.of(bounds().asPolygon());
+        return Sets.hashSet(bounds().asPolygon());
     }
 
     @Override
