@@ -99,7 +99,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
 
         synchronized (WorldGraphReference.class)
         {
-            if (!referenceCount.contains(this))
+            if (!referenceCount.containsKey(this))
             {
                 increment();
             }

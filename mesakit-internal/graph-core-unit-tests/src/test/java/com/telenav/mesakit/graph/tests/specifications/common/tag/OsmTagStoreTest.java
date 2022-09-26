@@ -121,13 +121,13 @@ public class OsmTagStoreTest extends GraphUnitTest
     private PbfStringListTagCodec codec()
     {
         var characterFrequencies = new CharacterFrequencies().add("abc").add("def");
-        characterFrequencies.frequencies().add(HuffmanCharacterCodec.ESCAPE, Count._16);
+        characterFrequencies.frequencies().plus(HuffmanCharacterCodec.ESCAPE, Count._16);
 
         var keyCharacterCodec = HuffmanCharacterCodec.from(
                 characterFrequencies.symbols());
 
         var valueFrequencies = new CharacterFrequencies().add("bcd").add("ghi");
-        valueFrequencies.frequencies().add(HuffmanCharacterCodec.ESCAPE, Count._16);
+        valueFrequencies.frequencies().plus(HuffmanCharacterCodec.ESCAPE, Count._16);
         var valueCharacterCodec = HuffmanCharacterCodec.from(
                 valueFrequencies.symbols());
 

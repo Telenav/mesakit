@@ -21,14 +21,14 @@ package com.telenav.mesakit.map.data.formats.pbf.processing.filters;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.list.StringList;
-import com.telenav.kivakit.core.collections.map.NameMap;
+import com.telenav.kivakit.core.collections.map.StringMap;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.interfaces.comparison.Filter;
 import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
-import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfProcessingFilters;
+import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfRelation;
 
 import java.util.Comparator;
 import java.util.HashSet;
@@ -40,7 +40,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
 @UmlExcludeSuperTypes(Named.class)
 public class RelationFilter implements Filter<PbfRelation>, Named
 {
-    private static final NameMap<RelationFilter> relationFilterForName = new NameMap<>();
+    private static final StringMap<RelationFilter> relationFilterForName = new StringMap<>();
 
     public static RelationFilter forName(String name)
     {
@@ -91,7 +91,7 @@ public class RelationFilter implements Filter<PbfRelation>, Named
     {
         this.name = name;
         this.description = description;
-        relationFilterForName.add(this);
+        relationFilterForName.put(name, this);
     }
 
     @Override

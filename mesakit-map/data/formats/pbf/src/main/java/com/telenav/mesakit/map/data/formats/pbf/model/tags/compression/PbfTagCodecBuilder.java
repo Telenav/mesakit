@@ -139,7 +139,7 @@ public class PbfTagCodecBuilder
         var keyEscapes = keyCharacterFrequencies
                 .escaped(charactersMinimumOccurrences.asMaximum())
                 .maximize(charactersMinimumOccurrences.incremented().asCount());
-        keyCharacterFrequencies.frequencies().add(ESCAPE, keyEscapes);
+        keyCharacterFrequencies.frequencies().plus(ESCAPE, keyEscapes);
         var keySymbols = keyCharacterFrequencies.symbols(charactersMinimumOccurrences);
         if (keySymbols.size() < 32)
         {
@@ -153,7 +153,7 @@ public class PbfTagCodecBuilder
         var valueEscapes = valueCharacterFrequencies
                 .escaped(charactersMinimumOccurrences.asMaximum())
                 .maximize(charactersMinimumOccurrences.incremented().asCount());
-        valueCharacterFrequencies.frequencies().add(ESCAPE, valueEscapes);
+        valueCharacterFrequencies.frequencies().plus(ESCAPE, valueEscapes);
         var valueSymbols = valueCharacterFrequencies.symbols(charactersMinimumOccurrences);
         if (valueSymbols.size() < 32)
         {

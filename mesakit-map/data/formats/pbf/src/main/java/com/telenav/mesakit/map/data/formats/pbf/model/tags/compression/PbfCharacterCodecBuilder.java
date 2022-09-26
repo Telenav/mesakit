@@ -30,7 +30,7 @@ public class PbfCharacterCodecBuilder
         var escapes = frequencies
                 .escaped(charactersMinimumOccurrences.asMaximum()).asCount()
                 .maximize(charactersMinimumOccurrences.incremented().asCount());
-        frequencies.frequencies().add(ESCAPE, escapes);
+        frequencies.frequencies().plus(ESCAPE, escapes);
         var symbols = frequencies.symbols(charactersMinimumOccurrences);
         return symbols.size() < 16 ? PbfDefaultCodecs.get().defaultKeyCharacterCodec() :
                 HuffmanCharacterCodec.from(symbols, charactersMaximumBits);

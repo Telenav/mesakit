@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.data.formats.pbf.processing.filters;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.list.StringList;
-import com.telenav.kivakit.core.collections.map.NameMap;
+import com.telenav.kivakit.core.collections.map.StringMap;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.string.Strings;
@@ -43,7 +43,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
 @UmlExcludeSuperTypes(Named.class)
 public class WayFilter implements Filter<PbfWay>, Named
 {
-    private static final NameMap<WayFilter> wayFilterForName = new NameMap<>();
+    private static final StringMap<WayFilter> wayFilterForName = new StringMap<>();
 
     public static WayFilter exclude(String name, Resource resource)
     {
@@ -124,7 +124,7 @@ public class WayFilter implements Filter<PbfWay>, Named
     {
         this.name = name;
         this.description = description;
-        wayFilterForName.add(this);
+        wayFilterForName.put(name, this);
     }
 
     @Override
