@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.region.countries;
 
-import com.telenav.kivakit.core.locale.LocaleCountry;
+import com.telenav.kivakit.core.locale.LocaleRegion;
 import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
@@ -54,7 +54,7 @@ public class Canada extends Country
                 .withOrdinal(37)
                 .withIdentity(new RegionIdentity("Canada")
                         .withCountryTmcCode(new CountryTmcCode(0x0c))
-                        .withCountryIsoCode(LocaleCountry.CANADA))
+                        .withCountryIsoCode(LocaleRegion.CANADA))
                 .withLanguage(LocaleLanguage.ENGLISH)
                 .withLanguage(LocaleLanguage.FRENCH)
                 .withAutomotiveSupportLevel(AutomotiveSupportLevel.UNDER_DEVELOPMENT)

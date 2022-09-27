@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.region;
 
+import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.collections.set.ConcurrentHashSet;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
 import com.telenav.kivakit.core.locale.LocaleLanguage;
@@ -33,18 +34,18 @@ import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.region.internal.lexakai.DiagramRegion;
+import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.region.regions.Country;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import static com.telenav.kivakit.core.collections.list.ObjectList.objectList;
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
+@SuppressWarnings("unused")
 @UmlClassDiagram(diagram = DiagramRegion.class)
 @UmlExcludeSuperTypes(StringFormattable.class)
 public class RegionInstance<T extends Region<T>> implements StringFormattable
@@ -72,7 +73,7 @@ public class RegionInstance<T extends Region<T>> implements StringFormattable
     private RegionIdentity identity;
 
     @UmlAggregation
-    private List<LocaleLanguage> languages = new ArrayList<>();
+    private ObjectList<LocaleLanguage> languages = objectList();
 
     @UmlAggregation
     private MapLocale locale;
@@ -196,7 +197,7 @@ public class RegionInstance<T extends Region<T>> implements StringFormattable
         return identity != null && identity().isValid();
     }
 
-    public final List<LocaleLanguage> languages()
+    public final ObjectList<LocaleLanguage> languages()
     {
         return languages;
     }
@@ -301,10 +302,10 @@ public class RegionInstance<T extends Region<T>> implements StringFormattable
         return copy;
     }
 
-    public RegionInstance<T> withLanguages(List<LocaleLanguage> languages)
+    public RegionInstance<T> withLanguages(Collection<LocaleLanguage> languages)
     {
         var copy = new RegionInstance<>(this);
-        copy.languages = languages;
+        copy.languages = objectList(languages);
         return copy;
     }
 

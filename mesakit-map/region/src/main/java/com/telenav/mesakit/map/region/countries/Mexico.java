@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.region.countries;
 
-import com.telenav.kivakit.core.locale.LocaleCountry;
+import com.telenav.kivakit.core.locale.LocaleRegion;
 import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
@@ -159,7 +159,7 @@ public class Mexico extends Country
                 .withOrdinal(155)
                 .withIdentity(new RegionIdentity("Mexico")
                         .withCountryTmcCode(new CountryTmcCode(0x0f))
-                        .withCountryIsoCode(LocaleCountry.MEXICO))
+                        .withCountryIsoCode(LocaleRegion.MEXICO))
                 .withLanguage(LocaleLanguage.SPANISH)
                 .withAutomotiveSupportLevel(AutomotiveSupportLevel.UNDER_DEVELOPMENT)
                 .withDrivingSide(DrivingSide.RIGHT));

@@ -19,6 +19,7 @@
 package com.telenav.mesakit.map.region.regions;
 
 import com.telenav.kivakit.commandline.SwitchParser;
+import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
@@ -35,16 +36,16 @@ import com.telenav.mesakit.map.region.RegionCode;
 import com.telenav.mesakit.map.region.RegionIdentifier;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
-import com.telenav.mesakit.map.region.border.cache.BorderCache;
 import com.telenav.mesakit.map.region.RegionLimits;
+import com.telenav.mesakit.map.region.border.cache.BorderCache;
 import com.telenav.mesakit.map.region.internal.lexakai.DiagramRegions;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
+@SuppressWarnings("unused")
 @UmlClassDiagram(diagram = DiagramRegions.class)
 public class State extends Region<State>
 {
@@ -107,7 +108,7 @@ public class State extends Region<State>
                 .description(description);
     }
 
-    private final List<LocaleLanguage> languages;
+    private final ObjectList<LocaleLanguage> languages;
 
     public State(Country country, RegionInstance<State> instance)
     {
@@ -160,7 +161,7 @@ public class State extends Region<State>
     }
 
     @Override
-    public List<LocaleLanguage> languages()
+    public ObjectList<LocaleLanguage> languages()
     {
         return languages;
     }

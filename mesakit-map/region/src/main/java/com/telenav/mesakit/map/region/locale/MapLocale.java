@@ -18,23 +18,27 @@
 
 package com.telenav.mesakit.map.region.locale;
 
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.language.module.PackageReference;
 import com.telenav.kivakit.core.language.reflection.Type;
-import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.kivakit.core.locale.Locale;
+import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.object.Lazy;
-import com.telenav.kivakit.core.language.module.PackageReference;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.World;
+
+import java.util.Collection;
 
 /**
  * A locale
  *
  * @author jonathanl (shibo)
  */
+@SuppressWarnings("unused")
 public class MapLocale extends Locale
 {
     public static final Lazy<MapLocale> ENGLISH_UNITED_STATES = Lazy.of(() -> new MapLocale(Country.UNITED_STATES, LocaleLanguage.ENGLISH));
@@ -75,13 +79,18 @@ public class MapLocale extends Locale
 
     public MapLocale(Country country)
     {
-        this(country, country.instance().defaultLanguage());
+        this(country, country.instance().languages());
+    }
+
+    public MapLocale(Region<?> region, Collection<LocaleLanguage> languages)
+    {
+        super(region.country().locale().region(), languages);
+        this.region = region;
     }
 
     public MapLocale(Region<?> region, LocaleLanguage language)
     {
-        super(language);
-        this.region = region;
+        this(region, ObjectList.objectList(language));
     }
 
     /**
@@ -95,8 +104,8 @@ public class MapLocale extends Locale
         // Try to load most specific first
         try
         {
-            var languagePackage = packageReference + ".locales." + languages().name().toLowerCase();
-            var language = languages().name().replaceAll("[_ ]", "");
+            var languagePackage = packageReference + ".locales." + primaryLanguage().name().toLowerCase();
+            var language = primaryLanguage().name().replaceAll("[_ ]", "");
             var region = region().name().replaceAll("[_ ]", "");
             var className = language + region + suffix;
             return (T) Type.typeForName(languagePackage + "." + className).newInstance();
@@ -109,7 +118,7 @@ public class MapLocale extends Locale
         // Try to load language without region
         try
         {
-            var language = packageReference + ".locales." + languages().name().toLowerCase();
+            var language = packageReference + ".locales." + primaryLanguage().name().toLowerCase();
             return (T) Type.typeForName(language + "." + languages() + "" + suffix).newInstance();
         }
         catch (Exception e)
@@ -120,7 +129,7 @@ public class MapLocale extends Locale
         return null;
     }
 
-    public Region<?> region()
+    public Region<?> mapRegion()
     {
         return region;
     }

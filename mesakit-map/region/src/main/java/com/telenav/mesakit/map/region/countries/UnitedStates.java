@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.region.countries;
 
-import com.telenav.kivakit.core.locale.LocaleCountry;
+import com.telenav.kivakit.core.locale.LocaleRegion;
 import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
@@ -141,7 +141,7 @@ public class UnitedStates extends Country
                 .withOrdinal(229)
                 .withIdentity(new RegionIdentity("United States")
                         .withCountryTmcCode(new CountryTmcCode(0x01))
-                        .withCountryIsoCode(LocaleCountry.UNITED_STATES))
+                        .withCountryIsoCode(LocaleRegion.UNITED_STATES))
                 .withLanguage(LocaleLanguage.ENGLISH)
                 .withLanguage(LocaleLanguage.SPANISH)
                 .withAutomotiveSupportLevel(AutomotiveSupportLevel.SUPPORTED)

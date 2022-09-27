@@ -21,6 +21,7 @@ package com.telenav.mesakit.map.region;
 import com.telenav.kivakit.commandline.ArgumentParser;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.language.Patterns;
 import com.telenav.kivakit.core.string.ObjectFormatter;
@@ -764,7 +765,7 @@ public abstract class Region<T extends Region<T>> implements
         return instance.isValid();
     }
 
-    public List<LocaleLanguage> languages()
+    public ObjectList<LocaleLanguage> languages()
     {
         return instance().languages();
     }

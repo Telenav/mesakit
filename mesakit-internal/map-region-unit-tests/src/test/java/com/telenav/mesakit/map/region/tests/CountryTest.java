@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.region.tests;
 
-import com.telenav.kivakit.core.locale.LocaleCountry;
+import com.telenav.kivakit.core.locale.LocaleRegion;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.loggers.ConsoleLogger;
 import com.telenav.mesakit.map.geography.Location;
@@ -103,7 +103,7 @@ public class CountryTest extends RegionUnitTest
                 LOGGER.glitch("No country for numeric country code $", value);
             }
             ensure(country != null);
-            LocaleCountry iso = ensureNotNull(country).identity().countryIsoCode();
+            LocaleRegion iso = ensureNotNull(country).identity().countryIsoCode();
             ensureEqual(key, iso.alpha3Code());
         });
     }

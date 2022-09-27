@@ -27,25 +27,25 @@ import com.telenav.mesakit.map.region.countries.UnitedStates;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
 
-import static com.telenav.kivakit.core.locale.LocaleCountry.ANGUILLA;
-import static com.telenav.kivakit.core.locale.LocaleCountry.BAHAMAS;
-import static com.telenav.kivakit.core.locale.LocaleCountry.BERMUDA;
-import static com.telenav.kivakit.core.locale.LocaleCountry.CAYMAN_ISLANDS;
-import static com.telenav.kivakit.core.locale.LocaleCountry.CUBA;
-import static com.telenav.kivakit.core.locale.LocaleCountry.DOMINICAN_REPUBLIC;
-import static com.telenav.kivakit.core.locale.LocaleCountry.EL_SALVADOR;
-import static com.telenav.kivakit.core.locale.LocaleCountry.HAITI;
-import static com.telenav.kivakit.core.locale.LocaleCountry.JAMAICA;
-import static com.telenav.kivakit.core.locale.LocaleCountry.PUERTO_RICO;
-import static com.telenav.kivakit.core.locale.LocaleCountry.SAINT_BARTHELEMY;
-import static com.telenav.kivakit.core.locale.LocaleCountry.SAINT_KITTS_AND_NEVIS;
-import static com.telenav.kivakit.core.locale.LocaleCountry.SAINT_MARTIN_FRENCH_PART;
-import static com.telenav.kivakit.core.locale.LocaleCountry.SAINT_PIERRE_AND_MIQUELON;
-import static com.telenav.kivakit.core.locale.LocaleCountry.SVALBARD_AND_JAN_MAYEN_ISLANDS;
-import static com.telenav.kivakit.core.locale.LocaleCountry.TURKS_AND_CAICOS_ISLANDS;
-import static com.telenav.kivakit.core.locale.LocaleCountry.UNITED_STATES_MINOR_OUTLYING_ISLANDS;
-import static com.telenav.kivakit.core.locale.LocaleCountry.VIRGIN_ISLANDS;
-import static com.telenav.kivakit.core.locale.LocaleCountry.VIRGIN_ISLANDS_BRITISH;
+import static com.telenav.kivakit.core.locale.LocaleRegion.ANGUILLA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.BAHAMAS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.BERMUDA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.CAYMAN_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.CUBA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.DOMINICAN_REPUBLIC;
+import static com.telenav.kivakit.core.locale.LocaleRegion.EL_SALVADOR;
+import static com.telenav.kivakit.core.locale.LocaleRegion.HAITI;
+import static com.telenav.kivakit.core.locale.LocaleRegion.JAMAICA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.PUERTO_RICO;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SAINT_BARTHELEMY;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SAINT_KITTS_AND_NEVIS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SAINT_MARTIN_FRENCH_PART;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SAINT_PIERRE_AND_MIQUELON;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SVALBARD_AND_JAN_MAYEN_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.TURKS_AND_CAICOS_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.UNITED_STATES_MINOR_OUTLYING_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.VIRGIN_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.VIRGIN_ISLANDS_BRITISH;
 
 public class NorthAmerica extends Continent
 {
