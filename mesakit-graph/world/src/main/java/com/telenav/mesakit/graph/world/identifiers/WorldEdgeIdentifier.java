@@ -92,7 +92,7 @@ public class WorldEdgeIdentifier extends EdgeIdentifier
     @Override
     public int hashCode()
     {
-        return Hash.many(worldCell, super.hashCode());
+        return Hash.hashMany(worldCell, super.hashCode());
     }
 
     @Override

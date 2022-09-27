@@ -116,7 +116,7 @@ public class MapEdgeIdentifier
     @Override
     public int hashCode()
     {
-        return Hash.many(way, from, to);
+        return Hash.hashMany(way, from, to);
     }
 
     public MapNodeIdentifier to()

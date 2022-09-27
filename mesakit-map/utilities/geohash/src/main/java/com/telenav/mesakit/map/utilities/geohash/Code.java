@@ -85,7 +85,7 @@ public class Code implements CharSequence
     @Override
     public int hashCode()
     {
-        return Hash.many(alphabet, value);
+        return Hash.hashMany(alphabet, value);
     }
 
     public boolean isRoot()

@@ -229,7 +229,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
     @Override
     public int hashCode()
     {
-        return Hash.many(start(), end());
+        return Hash.hashMany(start(), end());
     }
 
     @Override

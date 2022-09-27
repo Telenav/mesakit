@@ -117,7 +117,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
         if (object instanceof WorldGraphReference)
         {
             var that = (WorldGraphReference) object;
-            return Objects.equalPairs(folder(), that.folder(), deployment, that.deployment);
+            return Objects.areEqualPairs(folder(), that.folder(), deployment, that.deployment);
         }
         return false;
     }
@@ -156,7 +156,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
     @Override
     public int hashCode()
     {
-        return Hash.many(folder(), deployment);
+        return Hash.hashMany(folder(), deployment);
     }
 
     /**

@@ -130,7 +130,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
     {
         if (that instanceof Geohash)
         {
-            return Objects.equal(code, ((Geohash) that).code);
+            return Objects.isEqual(code, ((Geohash) that).code);
         }
         return false;
     }

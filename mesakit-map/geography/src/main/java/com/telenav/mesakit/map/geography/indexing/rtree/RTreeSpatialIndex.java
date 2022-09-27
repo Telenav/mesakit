@@ -175,7 +175,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
         if (object instanceof RTreeSpatialIndex)
         {
             var that = (RTreeSpatialIndex) object;
-            return Objects.equalPairs(root, that.root);
+            return Objects.areEqualPairs(root, that.root);
         }
         return false;
     }

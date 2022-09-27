@@ -160,7 +160,7 @@ public class MutableWay extends BaseMutableWay
 
     public void changeSetIdentifier(PbfChangeSetIdentifier changeSetIdentifier)
     {
-        if (!Objects.equal(changeSetIdentifier, this.changeSetIdentifier))
+        if (!Objects.isEqual(changeSetIdentifier, this.changeSetIdentifier))
         {
             this.changeSetIdentifier = changeSetIdentifier;
             modified("changed-change-set-identifier");
@@ -267,7 +267,7 @@ public class MutableWay extends BaseMutableWay
 
     public void shape(Polyline shape)
     {
-        if (!Objects.equal(shape, this.shape))
+        if (!Objects.isEqual(shape, this.shape))
         {
             this.shape = shape;
             modified("changed-shape");
@@ -338,7 +338,7 @@ public class MutableWay extends BaseMutableWay
 
     public void userIdentifier(PbfUserIdentifier userIdentifier)
     {
-        if (!Objects.equal(userIdentifier, this.userIdentifier))
+        if (!Objects.isEqual(userIdentifier, this.userIdentifier))
         {
             this.userIdentifier = userIdentifier;
             modified("changed-user-identifier");
@@ -347,7 +347,7 @@ public class MutableWay extends BaseMutableWay
 
     public void userName(PbfUserName userName)
     {
-        if (!Objects.equal(userName, this.userName))
+        if (!Objects.isEqual(userName, this.userName))
         {
             this.userName = userName;
             modified("changed-user-name");

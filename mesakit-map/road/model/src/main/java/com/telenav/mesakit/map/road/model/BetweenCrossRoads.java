@@ -74,9 +74,9 @@ public class BetweenCrossRoads
         if (object instanceof BetweenCrossRoads)
         {
             var that = (BetweenCrossRoads) object;
-            return Objects.equal(mainRoad, that.mainRoad)
-                    && Objects.equal(firstCrossStreet, that.firstCrossStreet)
-                    && Objects.equal(secondCrossStreet, that.secondCrossStreet);
+            return Objects.isEqual(mainRoad, that.mainRoad)
+                    && Objects.isEqual(firstCrossStreet, that.firstCrossStreet)
+                    && Objects.isEqual(secondCrossStreet, that.secondCrossStreet);
         }
         return false;
     }
@@ -99,6 +99,6 @@ public class BetweenCrossRoads
     @Override
     public int hashCode()
     {
-        return Hash.many(mainRoad, firstCrossStreet, secondCrossStreet);
+        return Hash.hashMany(mainRoad, firstCrossStreet, secondCrossStreet);
     }
 }

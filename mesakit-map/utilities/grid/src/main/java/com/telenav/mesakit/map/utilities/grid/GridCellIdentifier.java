@@ -74,7 +74,7 @@ public class GridCellIdentifier implements StringFormattable
     @Override
     public int hashCode()
     {
-        return Hash.many(longitudeIndex, latitudeIndex);
+        return Hash.hashMany(longitudeIndex, latitudeIndex);
     }
 
     public int identifier()

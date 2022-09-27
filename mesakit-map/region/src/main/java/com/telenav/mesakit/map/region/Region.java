@@ -608,7 +608,7 @@ public abstract class Region<T extends Region<T>> implements
         if (object instanceof Region)
         {
             @SuppressWarnings("unchecked") var that = (Region<T>) object;
-            return Objects.equal(identity(), that.identity());
+            return Objects.isEqual(identity(), that.identity());
         }
         return false;
     }

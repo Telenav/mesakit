@@ -1382,7 +1382,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     @Override
     public int hashCode()
     {
-        return Hash.many(Iterables.hashCode(this), startOffset, endOffset);
+        return Hash.hashMany(Iterables.hashCode(this), startOffset, endOffset);
     }
 
     public Route head()

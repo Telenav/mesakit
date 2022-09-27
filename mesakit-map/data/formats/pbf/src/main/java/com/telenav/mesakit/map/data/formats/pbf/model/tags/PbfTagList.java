@@ -270,7 +270,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
     @Override
     public int hashCode()
     {
-        return Hash.many(key0, value0,
+        return Hash.hashMany(key0, value0,
                 key1, value1,
                 key2, value2,
                 key3, value3,

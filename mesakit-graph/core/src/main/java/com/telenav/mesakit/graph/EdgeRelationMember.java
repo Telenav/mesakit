@@ -101,7 +101,7 @@ public class EdgeRelationMember implements AsIndentedString
     @Override
     public int hashCode()
     {
-        return Hash.many(relation, identifier);
+        return Hash.hashMany(relation, identifier);
     }
 
     public MapIdentifier identifier()

@@ -139,7 +139,7 @@ public class DataBuild
     @Override
     public int hashCode()
     {
-        return Hash.many(year, month, day, hour, minute, zoneId);
+        return Hash.hashMany(year, month, day, hour, minute, zoneId);
     }
 
     public LocalTime localTime()

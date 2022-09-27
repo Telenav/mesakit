@@ -124,7 +124,7 @@ public class DataVersion
     @Override
     public int hashCode()
     {
-        return Hash.many(year, quarter);
+        return Hash.hashMany(year, quarter);
     }
 
     public boolean isValid()
