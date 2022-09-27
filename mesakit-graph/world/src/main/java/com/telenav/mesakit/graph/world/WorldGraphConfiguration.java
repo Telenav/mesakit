@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.world;
 
 import com.telenav.kivakit.conversion.core.language.object.KivaKitConverted;
-import com.telenav.kivakit.core.language.object.ObjectFormatter;
+import com.telenav.kivakit.core.string.ObjectFormatter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;

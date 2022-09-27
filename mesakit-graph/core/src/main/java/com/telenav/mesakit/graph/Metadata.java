@@ -24,7 +24,7 @@ import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
-import com.telenav.kivakit.core.language.object.KivaKitFormatProperty;
+import com.telenav.kivakit.core.string.KivaKitFormat;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
@@ -654,7 +654,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      * @return The data's specification
      */
     @KivaKitIncludeProperty
-    @KivaKitFormatProperty
+    @KivaKitFormat
     public DataSpecification dataSpecification()
     {
         return dataSpecification;

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.utilities.grid;
 
-import com.telenav.kivakit.core.language.object.ObjectFormatter;
+import com.telenav.kivakit.core.string.ObjectFormatter;
 import com.telenav.kivakit.core.language.primitive.Ints;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.value.count.Count;
