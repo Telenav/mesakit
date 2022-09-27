@@ -72,7 +72,7 @@ public class SerialPbfReader extends BasePbfReader
         finally
         {
             // Close the input
-            IO.close(in);
+            IO.close(this, in);
         }
 
         return dataStatistics();

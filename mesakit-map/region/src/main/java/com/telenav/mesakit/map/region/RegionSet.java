@@ -18,9 +18,11 @@
 
 package com.telenav.mesakit.map.region;
 
+import com.telenav.kivakit.core.collections.BaseCollection;
 import com.telenav.kivakit.core.collections.set.BaseSet;
 import com.telenav.kivakit.core.string.Join;
 import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -30,6 +32,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.value.count.Maximum.MAXIMUM;
 
 @SuppressWarnings("rawtypes")
 @UmlClassDiagram(diagram = DiagramRegion.class)
@@ -39,18 +42,24 @@ public class RegionSet extends BaseSet<Region>
 {
     public RegionSet()
     {
-        super(new LinkedHashSet<>());
+        super(MAXIMUM, new LinkedHashSet<>());
+    }
+
+    @Override
+    protected Set<Region> newSet()
+    {
+        return new RegionSet();
     }
 
     public RegionSet(Iterable<? extends Region> regions)
     {
-        super(new LinkedHashSet<>());
+        super(MAXIMUM, new LinkedHashSet<>());
         addAll(regions);
     }
 
     public RegionSet(Set<Region> set)
     {
-        super(set);
+        super(MAXIMUM, set);
     }
 
     @Override
@@ -76,6 +85,12 @@ public class RegionSet extends BaseSet<Region>
     public String toString()
     {
         return Join.join(this, ", ");
+    }
+
+    @Override
+    protected BaseCollection<Region> onNewCollection()
+    {
+        return new RegionSet();
     }
 
     @SuppressWarnings("unchecked")

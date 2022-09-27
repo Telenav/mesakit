@@ -1,8 +1,8 @@
 package com.telenav.mesakit.graph.query.program.expressions.terminal.value;
 
-import com.telenav.kivakit.interfaces.naming.Named;
-import com.telenav.kivakit.primitive.collections.Quantizable;
 import com.telenav.kivakit.core.string.Strip;
+import com.telenav.kivakit.interfaces.naming.Named;
+import com.telenav.kivakit.interfaces.value.LongValued;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.analytics.classification.classifiers.turn.TurnType;
 import com.telenav.mesakit.map.road.model.BridgeType;
@@ -27,7 +27,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
  *
  * @author jonathanl (shibo)
  */
-public class Value
+@SuppressWarnings("unused") public class Value
 {
     public static Value TRUE = of(true);
 
@@ -59,9 +59,9 @@ public class Value
     @SuppressWarnings("unchecked")
     public Double asNumber()
     {
-        if (value instanceof Quantizable)
+        if (value instanceof LongValued)
         {
-            return (double) ((Quantizable) value).longValue();
+            return (double) ((LongValued) value).longValue();
         }
         if (value instanceof Number)
         {
@@ -76,9 +76,9 @@ public class Value
                 try
                 {
                     var enumValue = Enum.valueOf(type, enumName);
-                    if (enumValue instanceof Quantizable)
+                    if (enumValue instanceof LongValued)
                     {
-                        return (double) ((Quantizable) enumValue).longValue();
+                        return (double) ((LongValued) enumValue).longValue();
                     }
                 }
                 catch (Exception ignored)

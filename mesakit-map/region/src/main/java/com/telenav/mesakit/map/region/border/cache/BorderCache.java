@@ -598,7 +598,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
             }
             finally
             {
-                IO.close(archive);
+                IO.close(this, archive);
             }
 
             // Give all users access to this data
@@ -702,7 +702,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
                     }
                     finally
                     {
-                        IO.close(input);
+                        IO.close(this, input);
                     }
                 }
                 catch (Exception e)

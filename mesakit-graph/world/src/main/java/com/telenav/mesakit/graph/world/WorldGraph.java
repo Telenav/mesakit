@@ -102,12 +102,13 @@ import static com.telenav.mesakit.graph.Metadata.CountType.REQUIRE_EXACT;
  * world graphs are copied to the local repository in ~/.mesakit so that data can be read by the graph API (graph files
  * are zip files which must be local files to be accessed in Java).
  * <p>
- * Methods in {@link Graph} are overridden to provide scoping of virtual graph elements ({@link WorldEdge}, {@link
- * WorldVertex}, {@link WorldRelation} and {@link WorldPlace} by the sub-graph (cell) containing their data. This gives
- * the illusion of one large graph even though the graph is broken down into cells each having their own graph object.
+ * Methods in {@link Graph} are overridden to provide scoping of virtual graph elements ({@link WorldEdge},
+ * {@link WorldVertex}, {@link WorldRelation} and {@link WorldPlace} by the sub-graph (cell) containing their data. This
+ * gives the illusion of one large graph even though the graph is broken down into cells each having their own graph
+ * object.
  *
  * <p><b>Force-Loading Graph Element Attributes</b></p>
- *
+ * <p>
  * The graphs and graph element attributes in all cells are lazy-loaded, but they can be forced into memory with these
  * load methods:
  * <ul>
@@ -118,7 +119,7 @@ import static com.telenav.mesakit.graph.Metadata.CountType.REQUIRE_EXACT;
  *
  * @author jonathanl (shibo)
  */
-@SuppressWarnings({ "rawtypes", "unused" })
+@SuppressWarnings({ "rawtypes", "unused", "SpellCheckingInspection" })
 public class WorldGraph extends Graph
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
@@ -650,7 +651,7 @@ public class WorldGraph extends Graph
     private void forEachWorldCell(Callback<WorldCell> code)
     {
         var executor = Threads.threadPool("WorldCell");
-        allWorldCells().forEach(worldCell -> executor.submit(() -> code.onCallback(worldCell)));
+        allWorldCells().forEach(worldCell -> executor.submit(() -> code.call(worldCell)));
         Threads.shutdownAndAwait(executor);
     }
 

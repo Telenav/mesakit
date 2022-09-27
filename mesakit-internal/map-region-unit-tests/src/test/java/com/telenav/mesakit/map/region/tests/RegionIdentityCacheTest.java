@@ -61,7 +61,7 @@ public class RegionIdentityCacheTest extends RegionUnitTest
         // Load and create region objects for the identities
         var input = new ByteArrayInputStream(data.toByteArray());
         ensure(cache.load(input, session));
-        IO.close(input);
+        IO.close(this, input);
 
         // Ensure the region objects
         State ca = State.forRegionCode(code("US-CA"));
@@ -81,7 +81,6 @@ public class RegionIdentityCacheTest extends RegionUnitTest
         return identities;
     }
 
-    @SuppressWarnings("SpellCheckingInspection")
     private RegionIdentity identity(String name, String iso, String mesakit)
     {
         return new RegionIdentity(name)
