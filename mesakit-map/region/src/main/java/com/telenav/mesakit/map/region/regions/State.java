@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.region.regions;
 
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.core.locale.LanguageIsoCode;
+import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
@@ -107,7 +107,7 @@ public class State extends Region<State>
                 .description(description);
     }
 
-    private final List<LanguageIsoCode> languages;
+    private final List<LocaleLanguage> languages;
 
     public State(Country country, RegionInstance<State> instance)
     {
@@ -160,7 +160,7 @@ public class State extends Region<State>
     }
 
     @Override
-    public List<LanguageIsoCode> languages()
+    public List<LocaleLanguage> languages()
     {
         return languages;
     }

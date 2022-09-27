@@ -26,7 +26,7 @@ import com.telenav.kivakit.core.language.Patterns;
 import com.telenav.kivakit.core.string.ObjectFormatter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.locale.LanguageIsoCode;
+import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
@@ -764,7 +764,7 @@ public abstract class Region<T extends Region<T>> implements
         return instance.isValid();
     }
 
-    public List<LanguageIsoCode> languages()
+    public List<LocaleLanguage> languages()
     {
         return instance().languages();
     }

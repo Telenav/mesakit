@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.region;
 
 import com.telenav.kivakit.core.collections.set.ConcurrentHashSet;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
-import com.telenav.kivakit.core.locale.LanguageIsoCode;
+import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
@@ -72,7 +72,7 @@ public class RegionInstance<T extends Region<T>> implements StringFormattable
     private RegionIdentity identity;
 
     @UmlAggregation
-    private List<LanguageIsoCode> languages = new ArrayList<>();
+    private List<LocaleLanguage> languages = new ArrayList<>();
 
     @UmlAggregation
     private MapLocale locale;
@@ -170,9 +170,9 @@ public class RegionInstance<T extends Region<T>> implements StringFormattable
         return set;
     }
 
-    public LanguageIsoCode defaultLanguage()
+    public LocaleLanguage defaultLanguage()
     {
-        return languages().isEmpty() ? LanguageIsoCode.ENGLISH : languages().get(0);
+        return languages().isEmpty() ? LocaleLanguage.ENGLISH : languages().get(0);
     }
 
     public final Country.DrivingSide drivingSide()
@@ -196,7 +196,7 @@ public class RegionInstance<T extends Region<T>> implements StringFormattable
         return identity != null && identity().isValid();
     }
 
-    public final List<LanguageIsoCode> languages()
+    public final List<LocaleLanguage> languages()
     {
         return languages;
     }
@@ -294,14 +294,14 @@ public class RegionInstance<T extends Region<T>> implements StringFormattable
         return copy;
     }
 
-    public RegionInstance<T> withLanguage(LanguageIsoCode language)
+    public RegionInstance<T> withLanguage(LocaleLanguage language)
     {
         var copy = new RegionInstance<>(this);
         copy.languages.add(language);
         return copy;
     }
 
-    public RegionInstance<T> withLanguages(List<LanguageIsoCode> languages)
+    public RegionInstance<T> withLanguages(List<LocaleLanguage> languages)
     {
         var copy = new RegionInstance<>(this);
         copy.languages = languages;

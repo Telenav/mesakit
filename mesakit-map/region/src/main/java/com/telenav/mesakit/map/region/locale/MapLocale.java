@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.region.locale;
 
 import com.telenav.kivakit.core.language.reflection.Type;
-import com.telenav.kivakit.core.locale.LanguageIsoCode;
+import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.kivakit.core.locale.Locale;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
@@ -37,35 +37,35 @@ import com.telenav.mesakit.map.region.regions.World;
  */
 public class MapLocale extends Locale
 {
-    public static final Lazy<MapLocale> ENGLISH_UNITED_STATES = Lazy.of(() -> new MapLocale(Country.UNITED_STATES, LanguageIsoCode.ENGLISH));
+    public static final Lazy<MapLocale> ENGLISH_UNITED_STATES = Lazy.of(() -> new MapLocale(Country.UNITED_STATES, LocaleLanguage.ENGLISH));
 
-    public static final Lazy<MapLocale> ENGLISH_CANADA = Lazy.of(() -> new MapLocale(Country.CANADA, LanguageIsoCode.ENGLISH));
+    public static final Lazy<MapLocale> ENGLISH_CANADA = Lazy.of(() -> new MapLocale(Country.CANADA, LocaleLanguage.ENGLISH));
 
-    public static final Lazy<MapLocale> ENGLISH_UNITED_KINGDOM = Lazy.of(() -> new MapLocale(Country.UNITED_KINGDOM, LanguageIsoCode.ENGLISH));
+    public static final Lazy<MapLocale> ENGLISH_UNITED_KINGDOM = Lazy.of(() -> new MapLocale(Country.UNITED_KINGDOM, LocaleLanguage.ENGLISH));
 
-    public static final Lazy<MapLocale> ENGLISH_WORLD = Lazy.of(() -> new MapLocale(World.INSTANCE, LanguageIsoCode.ENGLISH));
+    public static final Lazy<MapLocale> ENGLISH_WORLD = Lazy.of(() -> new MapLocale(World.INSTANCE, LocaleLanguage.ENGLISH));
 
-    public static final Lazy<MapLocale> SPANISH_MEXICO = Lazy.of(() -> new MapLocale(Country.MEXICO, LanguageIsoCode.SPANISH));
+    public static final Lazy<MapLocale> SPANISH_MEXICO = Lazy.of(() -> new MapLocale(Country.MEXICO, LocaleLanguage.SPANISH));
 
-    public static final Lazy<MapLocale> SPANISH_SPAIN = Lazy.of(() -> new MapLocale(Country.SPAIN, LanguageIsoCode.SPANISH));
+    public static final Lazy<MapLocale> SPANISH_SPAIN = Lazy.of(() -> new MapLocale(Country.SPAIN, LocaleLanguage.SPANISH));
 
-    public static final Lazy<MapLocale> SPANISH_WORLD = Lazy.of(() -> new MapLocale(World.INSTANCE, LanguageIsoCode.SPANISH));
+    public static final Lazy<MapLocale> SPANISH_WORLD = Lazy.of(() -> new MapLocale(World.INSTANCE, LocaleLanguage.SPANISH));
 
-    public static final Lazy<MapLocale> FRENCH_FRANCE = Lazy.of(() -> new MapLocale(Country.FRANCE, LanguageIsoCode.FRENCH));
+    public static final Lazy<MapLocale> FRENCH_FRANCE = Lazy.of(() -> new MapLocale(Country.FRANCE, LocaleLanguage.FRENCH));
 
-    public static final Lazy<MapLocale> FRENCH_CANADA = Lazy.of(() -> new MapLocale(Country.CANADA, LanguageIsoCode.FRENCH));
+    public static final Lazy<MapLocale> FRENCH_CANADA = Lazy.of(() -> new MapLocale(Country.CANADA, LocaleLanguage.FRENCH));
 
-    public static final Lazy<MapLocale> FRENCH_WORLD = Lazy.of(() -> new MapLocale(World.INSTANCE, LanguageIsoCode.FRENCH));
+    public static final Lazy<MapLocale> FRENCH_WORLD = Lazy.of(() -> new MapLocale(World.INSTANCE, LocaleLanguage.FRENCH));
 
-    public static final Lazy<MapLocale> GERMAN_GERMANY = Lazy.of(() -> new MapLocale(Country.GERMANY, LanguageIsoCode.GERMAN));
+    public static final Lazy<MapLocale> GERMAN_GERMANY = Lazy.of(() -> new MapLocale(Country.GERMANY, LocaleLanguage.GERMAN));
 
-    public static final Lazy<MapLocale> PORTUGUESE_BRAZIL = Lazy.of(() -> new MapLocale(Country.BRAZIL, LanguageIsoCode.PORTUGUESE));
+    public static final Lazy<MapLocale> PORTUGUESE_BRAZIL = Lazy.of(() -> new MapLocale(Country.BRAZIL, LocaleLanguage.PORTUGUESE));
 
-    public static final Lazy<MapLocale> PORTUGUESE_PORTUGAL = Lazy.of(() -> new MapLocale(Country.PORTUGAL, LanguageIsoCode.PORTUGUESE));
+    public static final Lazy<MapLocale> PORTUGUESE_PORTUGAL = Lazy.of(() -> new MapLocale(Country.PORTUGAL, LocaleLanguage.PORTUGUESE));
 
-    public static final Lazy<MapLocale> MANDARIN_CHINA = Lazy.of(() -> new MapLocale(Country.CHINA, LanguageIsoCode.CHINESE_MANDARIN));
+    public static final Lazy<MapLocale> MANDARIN_CHINA = Lazy.of(() -> new MapLocale(Country.CHINA, LocaleLanguage.CHINESE_MANDARIN));
 
-    public static final Lazy<MapLocale> INDONESIA = Lazy.of(() -> new MapLocale(Country.INDONESIA, LanguageIsoCode.INDONESIAN));
+    public static final Lazy<MapLocale> INDONESIA = Lazy.of(() -> new MapLocale(Country.INDONESIA, LocaleLanguage.INDONESIAN));
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -78,7 +78,7 @@ public class MapLocale extends Locale
         this(country, country.instance().defaultLanguage());
     }
 
-    public MapLocale(Region<?> region, LanguageIsoCode language)
+    public MapLocale(Region<?> region, LocaleLanguage language)
     {
         super(language);
         this.region = region;
@@ -95,8 +95,8 @@ public class MapLocale extends Locale
         // Try to load most specific first
         try
         {
-            var languagePackage = packageReference + ".locales." + language().name().toLowerCase();
-            var language = language().name().replaceAll("[_ ]", "");
+            var languagePackage = packageReference + ".locales." + languages().name().toLowerCase();
+            var language = languages().name().replaceAll("[_ ]", "");
             var region = region().name().replaceAll("[_ ]", "");
             var className = language + region + suffix;
             return (T) Type.typeForName(languagePackage + "." + className).newInstance();
@@ -109,8 +109,8 @@ public class MapLocale extends Locale
         // Try to load language without region
         try
         {
-            var language = packageReference + ".locales." + language().name().toLowerCase();
-            return (T) Type.typeForName(language + "." + language() + "" + suffix).newInstance();
+            var language = packageReference + ".locales." + languages().name().toLowerCase();
+            return (T) Type.typeForName(language + "." + languages() + "" + suffix).newInstance();
         }
         catch (Exception e)
         {
@@ -128,6 +128,6 @@ public class MapLocale extends Locale
     @Override
     public String toString()
     {
-        return language() + ", " + region.fileName();
+        return languages() + ", " + region.fileName();
     }
 }

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.graph.loader.extractors;
 
-import com.telenav.kivakit.core.locale.LanguageIsoCode;
+import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
@@ -126,7 +126,7 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
         }
     }
 
-    protected List<LanguageIsoCode> languageCodes(PbfWay way)
+    protected List<LocaleLanguage> languageCodes(PbfWay way)
     {
         // Get any ISO code from the way
         var iso = way.tagValue("iso");
@@ -142,7 +142,7 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
         }
 
         // otherwise, return the default language for the locale
-        return List.of(locale.language());
+        return List.of(locale.languages());
     }
 
     /**
