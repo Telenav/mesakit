@@ -99,7 +99,7 @@ public class MapLocale extends Locale
             var language = language().name().replaceAll("[_ ]", "");
             var region = region().name().replaceAll("[_ ]", "");
             var className = language + region + suffix;
-            return (T) Type.forName(languagePackage + "." + className).newInstance();
+            return (T) Type.typeForName(languagePackage + "." + className).newInstance();
         }
         catch (Exception e)
         {
@@ -110,7 +110,7 @@ public class MapLocale extends Locale
         try
         {
             var language = packageReference + ".locales." + language().name().toLowerCase();
-            return (T) Type.forName(language + "." + language() + "" + suffix).newInstance();
+            return (T) Type.typeForName(language + "." + language() + "" + suffix).newInstance();
         }
         catch (Exception e)
         {

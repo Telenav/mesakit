@@ -133,7 +133,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
         this.fieldName = fieldName;
 
         // Store a field reference for the named field in the given store
-        field = Type.forClass(this.store.getClass()).field(fieldName);
+        field = Type.typeForClass(this.store.getClass()).field(fieldName);
         assert field != null : store.objectName() + "." + fieldName + " does not exist";
 
         // and add this attribute reference to the store's attribute loader
