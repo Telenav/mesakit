@@ -29,7 +29,7 @@ public class RelationAttributes extends GraphElementAttributes<EdgeRelation>
     // The attributes in this class are shared (from the common data specification) so they need to have the
     // same identifiers in all subclasses. See the superclass of this class for details.
 
-    private static final Lazy<RelationAttributes> singleton = Lazy.of(RelationAttributes::new);
+    private static final Lazy<RelationAttributes> singleton = Lazy.lazy(RelationAttributes::new);
 
     public static RelationAttributes get()
     {

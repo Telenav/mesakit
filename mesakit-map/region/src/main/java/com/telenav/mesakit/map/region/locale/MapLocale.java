@@ -41,35 +41,35 @@ import java.util.Collection;
 @SuppressWarnings("unused")
 public class MapLocale extends Locale
 {
-    public static final Lazy<MapLocale> ENGLISH_UNITED_STATES = Lazy.of(() -> new MapLocale(Country.UNITED_STATES, LocaleLanguage.ENGLISH));
+    public static final Lazy<MapLocale> ENGLISH_UNITED_STATES = Lazy.lazy(() -> new MapLocale(Country.UNITED_STATES, LocaleLanguage.ENGLISH));
 
-    public static final Lazy<MapLocale> ENGLISH_CANADA = Lazy.of(() -> new MapLocale(Country.CANADA, LocaleLanguage.ENGLISH));
+    public static final Lazy<MapLocale> ENGLISH_CANADA = Lazy.lazy(() -> new MapLocale(Country.CANADA, LocaleLanguage.ENGLISH));
 
-    public static final Lazy<MapLocale> ENGLISH_UNITED_KINGDOM = Lazy.of(() -> new MapLocale(Country.UNITED_KINGDOM, LocaleLanguage.ENGLISH));
+    public static final Lazy<MapLocale> ENGLISH_UNITED_KINGDOM = Lazy.lazy(() -> new MapLocale(Country.UNITED_KINGDOM, LocaleLanguage.ENGLISH));
 
-    public static final Lazy<MapLocale> ENGLISH_WORLD = Lazy.of(() -> new MapLocale(World.INSTANCE, LocaleLanguage.ENGLISH));
+    public static final Lazy<MapLocale> ENGLISH_WORLD = Lazy.lazy(() -> new MapLocale(World.INSTANCE, LocaleLanguage.ENGLISH));
 
-    public static final Lazy<MapLocale> SPANISH_MEXICO = Lazy.of(() -> new MapLocale(Country.MEXICO, LocaleLanguage.SPANISH));
+    public static final Lazy<MapLocale> SPANISH_MEXICO = Lazy.lazy(() -> new MapLocale(Country.MEXICO, LocaleLanguage.SPANISH));
 
-    public static final Lazy<MapLocale> SPANISH_SPAIN = Lazy.of(() -> new MapLocale(Country.SPAIN, LocaleLanguage.SPANISH));
+    public static final Lazy<MapLocale> SPANISH_SPAIN = Lazy.lazy(() -> new MapLocale(Country.SPAIN, LocaleLanguage.SPANISH));
 
-    public static final Lazy<MapLocale> SPANISH_WORLD = Lazy.of(() -> new MapLocale(World.INSTANCE, LocaleLanguage.SPANISH));
+    public static final Lazy<MapLocale> SPANISH_WORLD = Lazy.lazy(() -> new MapLocale(World.INSTANCE, LocaleLanguage.SPANISH));
 
-    public static final Lazy<MapLocale> FRENCH_FRANCE = Lazy.of(() -> new MapLocale(Country.FRANCE, LocaleLanguage.FRENCH));
+    public static final Lazy<MapLocale> FRENCH_FRANCE = Lazy.lazy(() -> new MapLocale(Country.FRANCE, LocaleLanguage.FRENCH));
 
-    public static final Lazy<MapLocale> FRENCH_CANADA = Lazy.of(() -> new MapLocale(Country.CANADA, LocaleLanguage.FRENCH));
+    public static final Lazy<MapLocale> FRENCH_CANADA = Lazy.lazy(() -> new MapLocale(Country.CANADA, LocaleLanguage.FRENCH));
 
-    public static final Lazy<MapLocale> FRENCH_WORLD = Lazy.of(() -> new MapLocale(World.INSTANCE, LocaleLanguage.FRENCH));
+    public static final Lazy<MapLocale> FRENCH_WORLD = Lazy.lazy(() -> new MapLocale(World.INSTANCE, LocaleLanguage.FRENCH));
 
-    public static final Lazy<MapLocale> GERMAN_GERMANY = Lazy.of(() -> new MapLocale(Country.GERMANY, LocaleLanguage.GERMAN));
+    public static final Lazy<MapLocale> GERMAN_GERMANY = Lazy.lazy(() -> new MapLocale(Country.GERMANY, LocaleLanguage.GERMAN));
 
-    public static final Lazy<MapLocale> PORTUGUESE_BRAZIL = Lazy.of(() -> new MapLocale(Country.BRAZIL, LocaleLanguage.PORTUGUESE));
+    public static final Lazy<MapLocale> PORTUGUESE_BRAZIL = Lazy.lazy(() -> new MapLocale(Country.BRAZIL, LocaleLanguage.PORTUGUESE));
 
-    public static final Lazy<MapLocale> PORTUGUESE_PORTUGAL = Lazy.of(() -> new MapLocale(Country.PORTUGAL, LocaleLanguage.PORTUGUESE));
+    public static final Lazy<MapLocale> PORTUGUESE_PORTUGAL = Lazy.lazy(() -> new MapLocale(Country.PORTUGAL, LocaleLanguage.PORTUGUESE));
 
-    public static final Lazy<MapLocale> MANDARIN_CHINA = Lazy.of(() -> new MapLocale(Country.CHINA, LocaleLanguage.CHINESE_MANDARIN));
+    public static final Lazy<MapLocale> MANDARIN_CHINA = Lazy.lazy(() -> new MapLocale(Country.CHINA, LocaleLanguage.CHINESE_MANDARIN));
 
-    public static final Lazy<MapLocale> INDONESIA = Lazy.of(() -> new MapLocale(Country.INDONESIA, LocaleLanguage.INDONESIAN));
+    public static final Lazy<MapLocale> INDONESIA = Lazy.lazy(() -> new MapLocale(Country.INDONESIA, LocaleLanguage.INDONESIAN));
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
