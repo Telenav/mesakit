@@ -32,7 +32,7 @@ import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.string.AsIndentedString;
-import com.telenav.kivakit.core.string.AsStringIndenter;
+import com.telenav.kivakit.core.string.ObjectIndenter;
 import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.string.Differences;
 import com.telenav.kivakit.core.string.Strings;
@@ -446,7 +446,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     @Override
-    public AsStringIndenter asString(Format format, AsStringIndenter indenter)
+    public ObjectIndenter asString(Format format, ObjectIndenter indenter)
     {
         indenter.labeled("resource", resource().path().asContraction(120));
         indenter.indented("metadata", () -> metadata().asString(format, indenter));

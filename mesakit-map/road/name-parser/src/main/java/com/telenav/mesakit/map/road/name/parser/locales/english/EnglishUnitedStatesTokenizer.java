@@ -105,7 +105,7 @@ public class EnglishUnitedStatesTokenizer extends EnglishTokenizer
         // WA-520, GA-99, etc.
         for (var state : Country.UNITED_STATES.states())
         {
-            var code = Paths.optionalSuffix(state.identity().iso().code(), '-');
+            var code = Paths.pathOptionalSuffix(state.identity().iso().code(), '-');
             US_HIGHWAY.matches(code, (stream) ->
             {
                 stream.next();

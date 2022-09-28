@@ -32,7 +32,7 @@ import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.string.AsIndentedString;
-import com.telenav.kivakit.core.string.AsStringIndenter;
+import com.telenav.kivakit.core.string.ObjectIndenter;
 import com.telenav.kivakit.core.string.Strip;
 import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.value.count.Count;
@@ -555,7 +555,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     @Override
-    public AsStringIndenter asString(StringFormattable.Format format, AsStringIndenter indenter)
+    public ObjectIndenter asString(StringFormattable.Format format, ObjectIndenter indenter)
     {
         indenter.asString(this);
         indenter.labeled("nodes", nodeCount(REQUIRE_EXACT));

@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.specifications.common.edge;
 import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.function.Functions;
 import com.telenav.kivakit.core.object.Lazy;
-import com.telenav.kivakit.core.string.StringTo;
+import com.telenav.kivakit.core.string.StringConversions;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.specifications.common.element.GraphElementProperties;
 import com.telenav.mesakit.graph.specifications.library.attributes.Attribute;
@@ -249,7 +249,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
         public Object value(Edge edge)
         {
             var relations = new StringList();
-            edge.relations().forEach(relation -> relations.add(StringTo.string(relation.identifier())));
+            edge.relations().forEach(relation -> relations.add(StringConversions.toString(relation.identifier())));
             return relations.join(", ");
         }
     };
