@@ -26,7 +26,7 @@ import com.telenav.mesakit.graph.specifications.library.attributes.Attribute;
 
 public class VertexProperties extends GraphElementProperties<Vertex>
 {
-    private static final Lazy<VertexProperties> singleton = Lazy.of(VertexProperties::new);
+    private static final Lazy<VertexProperties> singleton = Lazy.lazy(VertexProperties::new);
 
     public static VertexProperties get()
     {

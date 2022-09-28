@@ -29,7 +29,7 @@ public class NodeAttributes extends GraphElementAttributes<Vertex>
     // The attributes in this class are shared (from the common data specification) so they need to have the
     // same identifiers in all subclasses. See the superclass of this class for details.
 
-    private static final Lazy<NodeAttributes> singleton = Lazy.of(NodeAttributes::new);
+    private static final Lazy<NodeAttributes> singleton = Lazy.lazy(NodeAttributes::new);
 
     public static NodeAttributes get()
     {

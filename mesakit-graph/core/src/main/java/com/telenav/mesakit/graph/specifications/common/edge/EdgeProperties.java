@@ -29,7 +29,7 @@ import com.telenav.mesakit.map.road.model.RoadName;
 
 public class EdgeProperties extends GraphElementProperties<Edge>
 {
-    private static final Lazy<EdgeProperties> singleton = Lazy.of(EdgeProperties::new);
+    private static final Lazy<EdgeProperties> singleton = Lazy.lazy(EdgeProperties::new);
 
     public static EdgeProperties get()
     {

@@ -19,22 +19,22 @@ import static com.telenav.kivakit.data.compression.codecs.huffman.character.Huff
 @UmlClassDiagram(diagram = DiagramPbfModelCompression.class)
 public class PbfDefaultCodecs
 {
-    private static final Lazy<PbfDefaultCodecs> defaultCodecs = Lazy.of(PbfDefaultCodecs::new);
+    private static final Lazy<PbfDefaultCodecs> defaultCodecs = Lazy.lazy(PbfDefaultCodecs::new);
 
     public static PbfDefaultCodecs get()
     {
         return defaultCodecs.get();
     }
 
-    private final Lazy<PropertyMap> keyCharacterCodecFrequencies = Lazy.of(() -> load("codecs/default-key-character.codec"));
+    private final Lazy<PropertyMap> keyCharacterCodecFrequencies = Lazy.lazy(() -> load("codecs/default-key-character.codec"));
 
-    private final Lazy<PropertyMap> keyStringCodecFrequencies = Lazy.of(() -> load("codecs/default-key-string.codec"));
+    private final Lazy<PropertyMap> keyStringCodecFrequencies = Lazy.lazy(() -> load("codecs/default-key-string.codec"));
 
-    private final Lazy<PropertyMap> roadNameCharacterCodecFrequencies = Lazy.of(() -> load("codecs/default-road-name-character.codec"));
+    private final Lazy<PropertyMap> roadNameCharacterCodecFrequencies = Lazy.lazy(() -> load("codecs/default-road-name-character.codec"));
 
-    private final Lazy<PropertyMap> valueCharacterCodecFrequencies = Lazy.of(() -> load("codecs/default-value-character.codec"));
+    private final Lazy<PropertyMap> valueCharacterCodecFrequencies = Lazy.lazy(() -> load("codecs/default-value-character.codec"));
 
-    private final Lazy<PropertyMap> valueStringCodecFrequencies = Lazy.of(() -> load("codecs/default-value-string.codec"));
+    private final Lazy<PropertyMap> valueStringCodecFrequencies = Lazy.lazy(() -> load("codecs/default-value-string.codec"));
 
     protected PbfDefaultCodecs()
     {

@@ -27,7 +27,7 @@ import com.telenav.mesakit.graph.specifications.library.properties.GraphElementP
 
 public class PlaceProperties extends GraphElementPropertySet<Place>
 {
-    private static final Lazy<PlaceProperties> singleton = Lazy.of(PlaceProperties::new);
+    private static final Lazy<PlaceProperties> singleton = Lazy.lazy(PlaceProperties::new);
 
     public static PlaceProperties get()
     {

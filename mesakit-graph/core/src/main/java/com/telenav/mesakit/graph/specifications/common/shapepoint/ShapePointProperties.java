@@ -26,7 +26,7 @@ import com.telenav.mesakit.graph.specifications.library.attributes.Attribute;
 
 public class ShapePointProperties extends GraphElementProperties<ShapePoint>
 {
-    private static final Lazy<ShapePointProperties> singleton = Lazy.of(ShapePointProperties::new);
+    private static final Lazy<ShapePointProperties> singleton = Lazy.lazy(ShapePointProperties::new);
 
     public static ShapePointProperties get()
     {

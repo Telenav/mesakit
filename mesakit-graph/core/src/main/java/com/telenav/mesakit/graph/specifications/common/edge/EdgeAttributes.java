@@ -30,7 +30,7 @@ public class EdgeAttributes extends GraphElementAttributes<Edge>
     // The attributes in this class are shared (from the common data specification) so they need to have the
     // same identifiers in all subclasses. See the superclass of this class for details.
 
-    private static final Lazy<EdgeAttributes> singleton = Lazy.of(EdgeAttributes::new);
+    private static final Lazy<EdgeAttributes> singleton = Lazy.lazy(EdgeAttributes::new);
 
     public static EdgeAttributes get()
     {

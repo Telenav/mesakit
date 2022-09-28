@@ -90,26 +90,26 @@ public abstract class GraphUnitTest extends RegionUnitTest
 {
     private static int nextOsmRelationIdentifier = 1;
 
-    private final Lazy<Graph> osmGreenLakeSeattleLarge = Lazy.of(
+    private final Lazy<Graph> osmGreenLakeSeattleLarge = Lazy.lazy(
             () -> graph(OsmDataSpecification.get(), "Green_Lake_Seattle_Large",
                     Country.UNITED_STATES.WASHINGTON.SEATTLE.GREEN_LAKE.bounds().expanded(Distance.ONE_MILE)));
 
-    private final Lazy<Graph> osmGreenLakeSeattle = Lazy.of(
+    private final Lazy<Graph> osmGreenLakeSeattle = Lazy.lazy(
             () -> graph(OsmDataSpecification.get(), "Green_Lake_Seattle", Country.UNITED_STATES.WASHINGTON.SEATTLE.GREEN_LAKE.bounds()));
 
-    private final Lazy<Graph> osmDowntownSeattle = Lazy.of(
+    private final Lazy<Graph> osmDowntownSeattle = Lazy.lazy(
             () -> graph(OsmDataSpecification.get(), "Downtown_Seattle", Country.UNITED_STATES.WASHINGTON.SEATTLE.DOWNTOWN.bounds()));
 
-    private final Lazy<Graph> osmDowntownSeattleTest = Lazy.of(
+    private final Lazy<Graph> osmDowntownSeattleTest = Lazy.lazy(
             () -> graph(OsmDataSpecification.get(), "Downtown_Seattle_Test", Rectangle.parse("47.587309,-122.346791:47.616221,-122.317879")));
 
-    private final Lazy<Graph> osmBellevueWashington = Lazy.of(
+    private final Lazy<Graph> osmBellevueWashington = Lazy.lazy(
             () -> graph(OsmDataSpecification.get(), "Bellevue_Washington", Location.degrees(47.61302, -122.188).within(Distance.miles(2))));
 
-    private final Lazy<Graph> osmBuffalo = Lazy.of(
+    private final Lazy<Graph> osmBuffalo = Lazy.lazy(
             () -> graph(OsmDataSpecification.get(), "Buffalo_New_York", Country.UNITED_STATES.NEW_YORK.BUFFALO.bounds()));
 
-    private final Lazy<Graph> osmHuronCharter = Lazy.of(
+    private final Lazy<Graph> osmHuronCharter = Lazy.lazy(
             () -> graph(OsmDataSpecification.get(), "Huron_Charter", Rectangle.fromLocations(Location.degrees(42.179459, -83.423221),
                     Location.degrees(42.094242, -83.303885))));
 

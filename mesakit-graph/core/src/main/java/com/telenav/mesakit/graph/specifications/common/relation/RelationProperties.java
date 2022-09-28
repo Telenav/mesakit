@@ -27,7 +27,7 @@ import com.telenav.mesakit.graph.specifications.library.properties.GraphElementP
 
 public class RelationProperties extends GraphElementPropertySet<EdgeRelation>
 {
-    private static final Lazy<RelationProperties> singleton = Lazy.of(RelationProperties::new);
+    private static final Lazy<RelationProperties> singleton = Lazy.lazy(RelationProperties::new);
 
     public static RelationProperties get()
     {
