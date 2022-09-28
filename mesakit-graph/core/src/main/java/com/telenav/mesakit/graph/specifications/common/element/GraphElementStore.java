@@ -410,7 +410,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
             compressionMethod = method;
 
             // Must specify -javaagent to VM, see JavaVirtualMachine.sizeOfObjectGraph()
-            JavaVirtualMachine.local().traceSizeChange(this, "compress", this, Bytes.kilobytes(100), () ->
+            JavaVirtualMachine.javaVirtualMachine().traceSizeChange(this, "compress", this, Bytes.kilobytes(100), () ->
             {
                 var size = CompressibleCollection.compressReachableObjects(this, this, method, event ->
                         DEBUG.trace("Compressed $", NamedObject.syntheticName(event)));

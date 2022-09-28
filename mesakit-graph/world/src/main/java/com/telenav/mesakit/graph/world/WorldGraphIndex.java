@@ -209,7 +209,7 @@ public class WorldGraphIndex implements
         // store the size of the graph in the index
         if (DEBUG.isDebugOn())
         {
-            memorySize.put(worldCell.gridCell(), JavaVirtualMachine.local().sizeOfObjectGraph(cellGraph.loadAll(),
+            memorySize.put(worldCell.gridCell(), JavaVirtualMachine.javaVirtualMachine().sizeOfObjectGraph(cellGraph.loadAll(),
                     "WorldGraphIndex.graph", Bytes.kilobytes(100)));
         }
 

@@ -209,10 +209,10 @@ public class GraphArchive extends FieldArchive implements
         graph.addListener(listener);
         graph.load(this);
 
-        if (isDebugOn() && JavaVirtualMachine.local().instrument())
+        if (isDebugOn() && JavaVirtualMachine.javaVirtualMachine().instrument())
         {
             graph.loadAll();
-            var memory = JavaVirtualMachine.local().sizeOfObjectGraph(graph, "GraphResource.load.graph",
+            var memory = JavaVirtualMachine.javaVirtualMachine().sizeOfObjectGraph(graph, "GraphResource.load.graph",
                     Bytes.megabytes(1));
             var disk = resource().sizeInBytes();
             trace("Graph memory = $, disk = $, memory/disk = $%", memory, disk,

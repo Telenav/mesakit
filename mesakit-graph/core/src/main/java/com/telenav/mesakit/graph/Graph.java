@@ -960,7 +960,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     {
         if (estimatedMemorySize == null)
         {
-            estimatedMemorySize = JavaVirtualMachine.local().sizeOfObjectGraph(graphStore, "graph.store", Bytes.megabytes(1));
+            estimatedMemorySize = JavaVirtualMachine.javaVirtualMachine().sizeOfObjectGraph(graphStore, "graph.store", Bytes.megabytes(1));
         }
         return estimatedMemorySize;
     }

@@ -257,7 +257,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
                 onUnloading(archive);
 
                 // Must specify -javaagent to VM, see JavaVirtualMachine.sizeOfObjectGraph()
-                JavaVirtualMachine.local().traceSizeChange(this, "unload", this, Bytes.kilobytes(100), () ->
+                JavaVirtualMachine.javaVirtualMachine().traceSizeChange(this, "unload", this, Bytes.kilobytes(100), () ->
                 {
                     for (var object : Type.type(this).reachableObjects(this))
                     {

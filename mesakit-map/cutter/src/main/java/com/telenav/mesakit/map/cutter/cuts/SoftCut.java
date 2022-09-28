@@ -98,7 +98,7 @@ public class SoftCut extends Cut
             {
                 if (DEBUG.isDebugOn())
                 {
-                    var size = JavaVirtualMachine.local().sizeOfObjectGraph(nodesInsideRegion(),
+                    var size = JavaVirtualMachine.javaVirtualMachine().sizeOfObjectGraph(nodesInsideRegion(),
                             "nodesInsideRegion", Bytes.kilobytes(100));
                     LOGGER.information("nodesInsideRegion = $", size);
                 }
@@ -109,9 +109,9 @@ public class SoftCut extends Cut
             {
                 if (DEBUG.isDebugOn())
                 {
-                    LOGGER.information("exteriorRegionsForNode = " + JavaVirtualMachine.local().sizeOfObjectGraph(
+                    LOGGER.information("exteriorRegionsForNode = " + JavaVirtualMachine.javaVirtualMachine().sizeOfObjectGraph(
                             exteriorRegionsForNode(), "SoftCut.exteriorRegionsForNode", Bytes.kilobytes(100)));
-                    LOGGER.information("waysBelongingToRegion = " + JavaVirtualMachine.local().sizeOfObjectGraph(
+                    LOGGER.information("waysBelongingToRegion = " + JavaVirtualMachine.javaVirtualMachine().sizeOfObjectGraph(
                             waysBelongingToRegion(), "SoftCut.waysBelongingToRegion", Bytes.kilobytes(100)));
                 }
             }
