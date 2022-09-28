@@ -61,7 +61,7 @@ public class StringListTagCodecTest extends UnitTest
         test(codec, PbfTagList.create().add("z", "z"));
         test(codec, tags());
 
-        var progress = BroadcastingProgressReporter.create();
+        var progress = BroadcastingProgressReporter.createProgressReporter();
         _1_000.loop(() ->
         {
             test(codec, randomTags());

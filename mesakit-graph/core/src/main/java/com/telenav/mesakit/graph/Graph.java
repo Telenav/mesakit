@@ -688,7 +688,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     public final Differences differencesFrom(Graph that, Rectangle bounds, Maximum maximumDifferences)
     {
         var differences = new Differences();
-        var progress = BroadcastingProgressReporter.create(this);
+        var progress = BroadcastingProgressReporter.createProgressReporter(this);
 
         // Then compare edge counts
         if (!edgeCount().equals(that.edgeCount()))
@@ -702,7 +702,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
         }
 
         // Compare all edges in this graph with corresponding edges in that graph
-        progress = progress.withItemName("edges");
+        progress = progress.withUnits("edges");
         progress.feedback("Comparing edges");
         progress.start();
         for (var edge : edges().within(bounds))
@@ -739,7 +739,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
             differences.add("Edge spatial index in graph " + name() + " is different from spatial index in graph " + that.name());
         }
 
-        progress = progress.withItemName("places");
+        progress = progress.withUnits("places");
         progress.feedback("Comparing places");
         progress.reset();
         for (var place : placesInside(bounds))

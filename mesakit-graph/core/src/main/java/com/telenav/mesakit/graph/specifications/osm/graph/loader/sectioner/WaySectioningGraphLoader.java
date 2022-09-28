@@ -73,7 +73,7 @@ public class WaySectioningGraphLoader extends BaseGraphLoader
     {
         // To add sectioned edges to the graph,
         var start = Time.now();
-        var progress = ConcurrentBroadcastingProgressReporter.createConcurrent(this, "edges",
+        var progress = ConcurrentBroadcastingProgressReporter.createConcurrentProgressReporter(this, "edges",
                 raw.forwardEdgeCount().asMaximum()).withPhase("  [Sectioning Ways] ");
         progress.start();
 

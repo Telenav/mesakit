@@ -138,7 +138,7 @@ public class WorldGraph extends Graph
     {
         if (remote != null)
         {
-            var progress = BroadcastingProgressReporter.create(LOGGER, "bytes");
+            var progress = BroadcastingProgressReporter.createProgressReporter(LOGGER, "bytes");
             remote.copyTo(local, CopyMode.OVERWRITE, progress);
         }
 

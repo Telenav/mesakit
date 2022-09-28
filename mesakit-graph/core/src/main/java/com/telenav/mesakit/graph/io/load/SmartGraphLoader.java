@@ -160,7 +160,7 @@ public class SmartGraphLoader extends BaseRepeater implements Named
 
     public Graph load(Listener listener)
     {
-        return load(listener, BroadcastingProgressReporter.create(LOGGER, "bytes"));
+        return load(listener, BroadcastingProgressReporter.createProgressReporter(LOGGER, "bytes"));
     }
 
     @SuppressWarnings("resource")

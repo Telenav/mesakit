@@ -194,7 +194,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      */
     public static Metadata from(File input, CountType countType)
     {
-        input = input.materialized(BroadcastingProgressReporter.create(LOGGER));
+        input = input.materialized(BroadcastingProgressReporter.createProgressReporter(LOGGER));
         var format = DataFormat.of(input);
         switch (format)
         {
