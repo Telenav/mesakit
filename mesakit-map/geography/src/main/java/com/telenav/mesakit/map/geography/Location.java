@@ -150,7 +150,7 @@ public class Location implements
 
     public static final Location ORIGIN = new Location(Latitude.ORIGIN, Longitude.ORIGIN);
 
-    public static final BitCount SIZE_IN_BITS = BitCount.bitCount(64);
+    public static final BitCount SIZE_IN_BITS = BitCount.bits(64);
 
     public static final Location TELENAV_HEADQUARTERS = new Location(Latitude.degrees(37.3859),
             Longitude.degrees(-122.0046));
