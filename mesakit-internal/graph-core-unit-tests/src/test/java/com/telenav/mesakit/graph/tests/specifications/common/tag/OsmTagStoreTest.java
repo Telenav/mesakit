@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.graph.tests.specifications.common.tag;
 
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.CharacterFrequencies;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.list.HuffmanStringListCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.StringFrequencies;
-import com.telenav.kivakit.core.value.count.Count;
-import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
@@ -132,7 +132,7 @@ public class OsmTagStoreTest extends GraphUnitTest
                 valueFrequencies.symbols());
 
         var keyStringCodec = HuffmanStringCodec.from(
-                new StringFrequencies(Count._128, Maximum.MAXIMUM)
+                new StringFrequencies(Maximum.MAXIMUM)
                         .add("abc")
                         .add("def")
                         .add("ghi")
@@ -141,7 +141,7 @@ public class OsmTagStoreTest extends GraphUnitTest
                         .add("ghi").symbols());
 
         var valueStringCodec = HuffmanStringCodec.from(
-                new StringFrequencies(Count._128, Maximum.MAXIMUM)
+                new StringFrequencies(Maximum.MAXIMUM)
                         .add("jkl")
                         .add("mno")
                         .add("mno")

@@ -57,7 +57,7 @@ import static com.telenav.mesakit.map.geography.Precision.DM7;
  * @author jonathanl (shibo)
  * @author matthieun
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({ "unused", "SpellCheckingInspection" })
 @UmlClassDiagram(diagram = DiagramRectangle.class)
 public class Rectangle implements Intersectable, LocationSequence, Bounded, Outline, Dimensioned
 {

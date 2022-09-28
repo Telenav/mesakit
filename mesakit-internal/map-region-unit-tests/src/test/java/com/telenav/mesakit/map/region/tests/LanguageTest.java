@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.region.tests;
 
-import com.telenav.kivakit.core.locale.LanguageIsoCode;
+import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.mesakit.map.region.testing.RegionUnitTest;
 import org.junit.Test;
 
@@ -28,11 +28,11 @@ public class LanguageTest extends RegionUnitTest
     public void test()
     {
         //noinspection EqualsWithItself
-        ensure(LanguageIsoCode.ENGLISH.equals(LanguageIsoCode.ENGLISH));
-        ensureEqual("en", LanguageIsoCode.ENGLISH.iso2Code());
-        ensureEqual("eng", LanguageIsoCode.ENGLISH.iso3Code());
-        ensureEqual("de", LanguageIsoCode.GERMAN.iso2Code());
-        ensureEqual(LanguageIsoCode.ENGLISH, LanguageIsoCode.forIso2Code("en"));
-        ensureEqual(LanguageIsoCode.ENGLISH, LanguageIsoCode.forIso2Code("EN"));
+        ensure(LocaleLanguage.ENGLISH.equals(LocaleLanguage.ENGLISH));
+        ensureEqual("en", LocaleLanguage.ENGLISH.iso2Code());
+        ensureEqual("eng", LocaleLanguage.ENGLISH.iso3Code());
+        ensureEqual("de", LocaleLanguage.GERMAN.iso2Code());
+        ensureEqual(LocaleLanguage.ENGLISH, LocaleLanguage.languageForIso2Code("en"));
+        ensureEqual(LocaleLanguage.ENGLISH, LocaleLanguage.languageForIso2Code("EN"));
     }
 }

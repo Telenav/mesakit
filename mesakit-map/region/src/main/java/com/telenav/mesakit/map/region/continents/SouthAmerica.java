@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.region.continents;
 
-import com.telenav.kivakit.core.locale.LanguageIsoCode;
+import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.regions.Continent;
@@ -26,40 +26,40 @@ import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.Country.CountryTmcCode;
 import com.telenav.mesakit.map.region.regions.Country.DrivingSide;
 
-import static com.telenav.kivakit.core.locale.CountryIsoCode.ANTIGUA_AND_BARBUDA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.ARGENTINA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.ARUBA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.BARBADOS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.BELIZE;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.BOLIVIA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.BRAZIL;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.CHILE;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.COLOMBIA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.COSTA_RICA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.DOMINICA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.ECUADOR;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.FALKLAND_ISLANDS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.FRENCH_GUIANA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.FRENCH_SOUTHERN_AND_ANTARCTIC_LANDS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.GRENADA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.GUADELOUPE;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.GUATEMALA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.GUYANA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.HONDURAS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.MARTINIQUE;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.MONTSERRAT;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.NETHERLANDS_ANTILLES;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.NICARAGUA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.PANAMA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.PARAGUAY;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.PERU;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SAINT_LUCIA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SAINT_VINCENT_AND_THE_GRENADINES;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SOUTH_GEORGIA_AND_SOUTH_SANDWICH_ISLANDS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SURINAME;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.TRINIDAD_AND_TOBAGO;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.URUGUAY;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.VENEZUELA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.ANTIGUA_AND_BARBUDA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.ARGENTINA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.ARUBA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.BARBADOS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.BELIZE;
+import static com.telenav.kivakit.core.locale.LocaleRegion.BOLIVIA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.BRAZIL;
+import static com.telenav.kivakit.core.locale.LocaleRegion.CHILE;
+import static com.telenav.kivakit.core.locale.LocaleRegion.COLOMBIA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.COSTA_RICA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.DOMINICA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.ECUADOR;
+import static com.telenav.kivakit.core.locale.LocaleRegion.FALKLAND_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.FRENCH_GUIANA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.FRENCH_SOUTHERN_AND_ANTARCTIC_LANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.GRENADA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.GUADELOUPE;
+import static com.telenav.kivakit.core.locale.LocaleRegion.GUATEMALA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.GUYANA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.HONDURAS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.MARTINIQUE;
+import static com.telenav.kivakit.core.locale.LocaleRegion.MONTSERRAT;
+import static com.telenav.kivakit.core.locale.LocaleRegion.NETHERLANDS_ANTILLES;
+import static com.telenav.kivakit.core.locale.LocaleRegion.NICARAGUA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.PANAMA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.PARAGUAY;
+import static com.telenav.kivakit.core.locale.LocaleRegion.PERU;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SAINT_LUCIA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SAINT_VINCENT_AND_THE_GRENADINES;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SOUTH_GEORGIA_AND_SOUTH_SANDWICH_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SURINAME;
+import static com.telenav.kivakit.core.locale.LocaleRegion.TRINIDAD_AND_TOBAGO;
+import static com.telenav.kivakit.core.locale.LocaleRegion.URUGUAY;
+import static com.telenav.kivakit.core.locale.LocaleRegion.VENEZUELA;
 
 public class SouthAmerica extends Continent
 {
@@ -91,7 +91,7 @@ public class SouthAmerica extends Continent
                         .withName("Argentina")
                         .withCountryOrdinal(10)
                         .withCountryIsoCode(ARGENTINA))
-                .withLanguage(LanguageIsoCode.SPANISH)) {};
+                .withLanguage(LocaleLanguage.SPANISH)) {};
 
         Country.ARUBA = new Country(this, Country.baseInstance()
                 .withIdentity(Country.baseRegionCode()
@@ -118,7 +118,7 @@ public class SouthAmerica extends Continent
                         .withCountryOrdinal(30)
                         .withCountryTmcCode(new CountryTmcCode(0x0b))
                         .withCountryIsoCode(BRAZIL))
-                .withLanguage(LanguageIsoCode.PORTUGUESE)) {};
+                .withLanguage(LocaleLanguage.PORTUGUESE)) {};
 
         Country.BELIZE = new Country(this, Country.baseInstance()
                 .withIdentity(Country.baseRegionCode()
@@ -131,14 +131,14 @@ public class SouthAmerica extends Continent
                         .withName("Chile")
                         .withCountryOrdinal(45)
                         .withCountryIsoCode(CHILE))
-                .withLanguage(LanguageIsoCode.SPANISH)) {};
+                .withLanguage(LocaleLanguage.SPANISH)) {};
 
         Country.COLOMBIA = new Country(this, Country.baseInstance()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Colombia")
                         .withCountryOrdinal(48)
                         .withCountryIsoCode(COLOMBIA))
-                .withLanguage(LanguageIsoCode.SPANISH)) {};
+                .withLanguage(LocaleLanguage.SPANISH)) {};
 
         //noinspection SpellCheckingInspection
         Country.COSTA_RICA = new Country(this, Country.baseInstance()
@@ -146,7 +146,7 @@ public class SouthAmerica extends Continent
                         .withName("Costa Rica")
                         .withCountryOrdinal(49)
                         .withCountryIsoCode(COSTA_RICA))
-                .withLanguage(LanguageIsoCode.SPANISH)) {};
+                .withLanguage(LocaleLanguage.SPANISH)) {};
 
         Country.DOMINICA = new Country(this, Country.baseInstance()
                 .withIdentity(Country.baseRegionCode()
@@ -160,7 +160,7 @@ public class SouthAmerica extends Continent
                         .withName("Ecuador")
                         .withCountryOrdinal(61)
                         .withCountryIsoCode(ECUADOR))
-                .withLanguage(LanguageIsoCode.SPANISH)) {};
+                .withLanguage(LocaleLanguage.SPANISH)) {};
 
         Country.FALKLAND_ISLANDS = new Country(this, Country.baseInstance()
                 .withIdentity(Country.baseRegionCode()
@@ -217,7 +217,7 @@ public class SouthAmerica extends Continent
                         .withName("Honduras")
                         .withCountryOrdinal(95)
                         .withCountryIsoCode(HONDURAS))
-                .withLanguage(LanguageIsoCode.SPANISH)) {};
+                .withLanguage(LocaleLanguage.SPANISH)) {};
 
         Country.SAINT_LUCIA = new Country(this, Country.baseInstance()
                 .withIdentity(Country.baseRegionCode()
@@ -243,7 +243,7 @@ public class SouthAmerica extends Continent
                         .withName("Nicaragua")
                         .withCountryOrdinal(163)
                         .withCountryIsoCode(NICARAGUA))
-                .withLanguage(LanguageIsoCode.SPANISH)) {};
+                .withLanguage(LocaleLanguage.SPANISH)) {};
 
         Country.PANAMA = new Country(this, Country.baseInstance()
                 .withIdentity(Country.baseRegionCode()
@@ -262,7 +262,7 @@ public class SouthAmerica extends Continent
                         .withName("Paraguay")
                         .withCountryOrdinal(184)
                         .withCountryIsoCode(PARAGUAY))
-                .withLanguage(LanguageIsoCode.SPANISH)) {};
+                .withLanguage(LocaleLanguage.SPANISH)) {};
 
         Country.SURINAME = new Country(this, Country.baseInstance()
                 .withIdentity(Country.baseRegionCode()
@@ -296,6 +296,6 @@ public class SouthAmerica extends Continent
                         .withName("Venezuela")
                         .withCountryOrdinal(234)
                         .withCountryIsoCode(VENEZUELA))
-                .withLanguage(LanguageIsoCode.SPANISH)) {};
+                .withLanguage(LocaleLanguage.SPANISH)) {};
     }
 }

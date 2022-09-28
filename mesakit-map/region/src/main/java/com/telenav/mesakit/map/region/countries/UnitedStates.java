@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.map.region.countries;
 
-import com.telenav.kivakit.core.locale.CountryIsoCode;
-import com.telenav.kivakit.core.locale.LanguageIsoCode;
+import com.telenav.kivakit.core.locale.LocaleRegion;
+import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.countries.states.California;
@@ -141,9 +141,9 @@ public class UnitedStates extends Country
                 .withOrdinal(229)
                 .withIdentity(new RegionIdentity("United States")
                         .withCountryTmcCode(new CountryTmcCode(0x01))
-                        .withCountryIsoCode(CountryIsoCode.UNITED_STATES))
-                .withLanguage(LanguageIsoCode.ENGLISH)
-                .withLanguage(LanguageIsoCode.SPANISH)
+                        .withCountryIsoCode(LocaleRegion.UNITED_STATES))
+                .withLanguage(LocaleLanguage.ENGLISH)
+                .withLanguage(LocaleLanguage.SPANISH)
                 .withAutomotiveSupportLevel(AutomotiveSupportLevel.SUPPORTED)
                 .withDrivingSide(DrivingSide.RIGHT));
     }

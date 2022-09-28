@@ -25,7 +25,7 @@ import com.esotericsoftware.kryo.io.Output;
 import com.telenav.kivakit.core.string.ObjectFormatter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.locale.CountryIsoCode;
+import com.telenav.kivakit.core.locale.LocaleRegion;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.interfaces.string.StringFormattable;
@@ -105,7 +105,7 @@ public class RegionIdentity implements StringFormattable, KryoSerializable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    private CountryIsoCode countryIsoCode;
+    private LocaleRegion countryIsoCode;
 
     private int countryOrdinal;
 
@@ -165,7 +165,7 @@ public class RegionIdentity implements StringFormattable, KryoSerializable
     }
 
     @KivaKitIncludeProperty
-    public CountryIsoCode countryIsoCode()
+    public LocaleRegion countryIsoCode()
     {
         return countryIsoCode;
     }
@@ -427,7 +427,7 @@ public class RegionIdentity implements StringFormattable, KryoSerializable
         var alpha3CountryCode = kryo.readObjectOrNull(input, String.class);
         var numericCountryCode = kryo.readObjectOrNull(input, Integer.class);
         countryIsoCode = alpha2CountryCode == null ? null :
-                new CountryIsoCode(name, alpha2CountryCode, alpha3CountryCode, numericCountryCode);
+                new LocaleRegion(name, alpha2CountryCode, alpha3CountryCode, numericCountryCode);
     }
 
     public State state()
@@ -459,7 +459,7 @@ public class RegionIdentity implements StringFormattable, KryoSerializable
         return identity;
     }
 
-    public RegionIdentity withCountryIsoCode(CountryIsoCode code)
+    public RegionIdentity withCountryIsoCode(LocaleRegion code)
     {
         var copy = new RegionIdentity(this);
         copy.countryIsoCode = code;

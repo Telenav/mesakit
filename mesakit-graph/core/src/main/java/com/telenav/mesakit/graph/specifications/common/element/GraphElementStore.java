@@ -36,7 +36,6 @@ import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.interfaces.collection.Addable;
-import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitCharArray;
@@ -73,7 +72,6 @@ import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.compression.PbfTagCodec;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -340,15 +338,9 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
             return new Addable<>()
             {
                 @Override
-                public boolean onAdd(final T t)
+                public boolean onAdd(T t)
                 {
                     return internalAdd(t);
-                }
-
-                @Override
-                public @NotNull Iterator<T> asIterator(final Matcher<T> matcher)
-                {
-                    throw new UnsupportedOperationException();
                 }
 
                 @Override

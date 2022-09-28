@@ -18,41 +18,41 @@
 
 package com.telenav.mesakit.map.region.continents;
 
-import com.telenav.kivakit.core.locale.LanguageIsoCode;
+import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.Country.DrivingSide;
 
-import static com.telenav.kivakit.core.locale.CountryIsoCode.AMERICAN_SAMOA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.AUSTRALIA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.CHRISTMAS_ISLAND;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.COCOS_KEELING_ISLANDS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.COOK_ISLANDS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.FIJI;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.FRENCH_POLYNESIA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.GUAM;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.INDONESIA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.KIRIBATI;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.MARSHALL_ISLANDS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.MICRONESIA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.NAURU;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.NEW_CALEDONIA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.NEW_ZEALAND;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.NIUE;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.NORFOLK_ISLAND;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.NORTHERN_MARIANA_ISLANDS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.PALAU;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.PAPUA_NEW_GUINEA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.PITCAIRN;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SAMOA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SOLOMON_ISLANDS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.TIMOR_LESTE;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.TOKELAU;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.TUVALU;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.VANUATU;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.WALLIS_AND_FUTUNA_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.AMERICAN_SAMOA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.AUSTRALIA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.CHRISTMAS_ISLAND;
+import static com.telenav.kivakit.core.locale.LocaleRegion.COCOS_KEELING_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.COOK_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.FIJI;
+import static com.telenav.kivakit.core.locale.LocaleRegion.FRENCH_POLYNESIA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.GUAM;
+import static com.telenav.kivakit.core.locale.LocaleRegion.INDONESIA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.KIRIBATI;
+import static com.telenav.kivakit.core.locale.LocaleRegion.MARSHALL_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.MICRONESIA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.NAURU;
+import static com.telenav.kivakit.core.locale.LocaleRegion.NEW_CALEDONIA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.NEW_ZEALAND;
+import static com.telenav.kivakit.core.locale.LocaleRegion.NIUE;
+import static com.telenav.kivakit.core.locale.LocaleRegion.NORFOLK_ISLAND;
+import static com.telenav.kivakit.core.locale.LocaleRegion.NORTHERN_MARIANA_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.PALAU;
+import static com.telenav.kivakit.core.locale.LocaleRegion.PAPUA_NEW_GUINEA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.PITCAIRN;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SAMOA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SOLOMON_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.TIMOR_LESTE;
+import static com.telenav.kivakit.core.locale.LocaleRegion.TOKELAU;
+import static com.telenav.kivakit.core.locale.LocaleRegion.TUVALU;
+import static com.telenav.kivakit.core.locale.LocaleRegion.VANUATU;
+import static com.telenav.kivakit.core.locale.LocaleRegion.WALLIS_AND_FUTUNA_ISLANDS;
 
 public class Oceania extends Continent
 {
@@ -77,7 +77,7 @@ public class Oceania extends Continent
                         .withName("Australia")
                         .withCountryOrdinal(13)
                         .withCountryIsoCode(AUSTRALIA))
-                .withLanguage(LanguageIsoCode.ENGLISH)
+                .withLanguage(LocaleLanguage.ENGLISH)
                 .withDrivingSide(DrivingSide.LEFT)) {};
 
         Country.COCOS_KEELING_ISLANDS = new Country(this, Country.baseInstance()
@@ -122,7 +122,7 @@ public class Oceania extends Continent
                         .withName("Indonesia")
                         .withCountryOrdinal(99)
                         .withCountryIsoCode(INDONESIA))
-                .withLanguage(LanguageIsoCode.INDONESIAN)
+                .withLanguage(LocaleLanguage.INDONESIAN)
                 .withDrivingSide(DrivingSide.LEFT)) {};
 
         Country.KIRIBATI = new Country(this, Country.baseInstance()
@@ -175,7 +175,7 @@ public class Oceania extends Continent
                         .withName("New Zealand")
                         .withCountryOrdinal(169)
                         .withCountryIsoCode(NEW_ZEALAND))
-                .withLanguage(LanguageIsoCode.ENGLISH)
+                .withLanguage(LocaleLanguage.ENGLISH)
                 .withDrivingSide(DrivingSide.LEFT)) {};
 
         Country.FRENCH_POLYNESIA = new Country(this, Country.baseInstance()

@@ -71,7 +71,7 @@ public class EdgeStoreTest extends GraphUnitTest
         var output = new ByteArrayOutputStream();
         var path = StringPath.stringPath("test");
         serializer.write(output, path, index, ObjectMetadata.TYPE);
-        IO.close(output);
+        IO.close(this, output);
 
         var input = new ByteArrayInputStream(output.toByteArray());
         var deserialized = serializer.read(input, path, ObjectMetadata.TYPE).object();

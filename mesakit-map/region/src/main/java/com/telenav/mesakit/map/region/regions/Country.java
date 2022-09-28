@@ -22,7 +22,7 @@ import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.string.ObjectFormatter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.locale.LanguageIsoCode;
+import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
@@ -730,9 +730,9 @@ public abstract class Country extends Region<Country> implements LongValued
         return islands;
     }
 
-    protected static List<LanguageIsoCode> languages(LanguageIsoCode... languages)
+    protected static List<LocaleLanguage> languages(LocaleLanguage... languages)
     {
-        List<LanguageIsoCode> list = new ArrayList<>();
+        List<LocaleLanguage> list = new ArrayList<>();
         Collections.addAll(list, languages);
         return list;
     }

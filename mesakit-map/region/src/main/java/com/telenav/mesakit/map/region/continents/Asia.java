@@ -18,59 +18,59 @@
 
 package com.telenav.mesakit.map.region.continents;
 
-import com.telenav.kivakit.core.locale.LanguageIsoCode;
+import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
 
-import static com.telenav.kivakit.core.locale.CountryIsoCode.AFGHANISTAN;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.AZERBAIJAN;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.BAHRAIN;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.BANGLADESH;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.BHUTAN;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.BRITISH_INDIAN_OCEAN_TERRITORY;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.BRUNEI_DARUSSALAM;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.CAMBODIA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.CHINA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.GEORGIA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.HONG_KONG;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.INDIA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.IRAN;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.IRAQ;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.ISRAEL;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.JAPAN;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.JORDAN;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.KAZAKHSTAN;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.KOREA_NORTH;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.KOREA_SOUTH;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.KUWAIT;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.KYRGYZSTAN;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.LAOS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.LEBANON;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.MACAU;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.MALAYSIA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.MALDIVES;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.MONGOLIA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.MYANMAR;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.NEPAL;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.OMAN;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.PAKISTAN;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.PALESTINE;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.PHILIPPINES;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.QATAR;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SAUDI_ARABIA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SINGAPORE;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SRI_LANKA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SYRIA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.TAIWAN;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.TAJIKISTAN;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.THAILAND;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.TURKMENISTAN;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.UNITED_ARAB_EMIRATES;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.UZBEKISTAN;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.VIETNAM;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.YEMEN;
+import static com.telenav.kivakit.core.locale.LocaleRegion.AFGHANISTAN;
+import static com.telenav.kivakit.core.locale.LocaleRegion.AZERBAIJAN;
+import static com.telenav.kivakit.core.locale.LocaleRegion.BAHRAIN;
+import static com.telenav.kivakit.core.locale.LocaleRegion.BANGLADESH;
+import static com.telenav.kivakit.core.locale.LocaleRegion.BHUTAN;
+import static com.telenav.kivakit.core.locale.LocaleRegion.BRITISH_INDIAN_OCEAN_TERRITORY;
+import static com.telenav.kivakit.core.locale.LocaleRegion.BRUNEI_DARUSSALAM;
+import static com.telenav.kivakit.core.locale.LocaleRegion.CAMBODIA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.CHINA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.GEORGIA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.HONG_KONG;
+import static com.telenav.kivakit.core.locale.LocaleRegion.INDIA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.IRAN;
+import static com.telenav.kivakit.core.locale.LocaleRegion.IRAQ;
+import static com.telenav.kivakit.core.locale.LocaleRegion.ISRAEL;
+import static com.telenav.kivakit.core.locale.LocaleRegion.JAPAN;
+import static com.telenav.kivakit.core.locale.LocaleRegion.JORDAN;
+import static com.telenav.kivakit.core.locale.LocaleRegion.KAZAKHSTAN;
+import static com.telenav.kivakit.core.locale.LocaleRegion.KOREA_NORTH;
+import static com.telenav.kivakit.core.locale.LocaleRegion.KOREA_SOUTH;
+import static com.telenav.kivakit.core.locale.LocaleRegion.KUWAIT;
+import static com.telenav.kivakit.core.locale.LocaleRegion.KYRGYZSTAN;
+import static com.telenav.kivakit.core.locale.LocaleRegion.LAOS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.LEBANON;
+import static com.telenav.kivakit.core.locale.LocaleRegion.MACAU;
+import static com.telenav.kivakit.core.locale.LocaleRegion.MALAYSIA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.MALDIVES;
+import static com.telenav.kivakit.core.locale.LocaleRegion.MONGOLIA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.MYANMAR;
+import static com.telenav.kivakit.core.locale.LocaleRegion.NEPAL;
+import static com.telenav.kivakit.core.locale.LocaleRegion.OMAN;
+import static com.telenav.kivakit.core.locale.LocaleRegion.PAKISTAN;
+import static com.telenav.kivakit.core.locale.LocaleRegion.PALESTINE;
+import static com.telenav.kivakit.core.locale.LocaleRegion.PHILIPPINES;
+import static com.telenav.kivakit.core.locale.LocaleRegion.QATAR;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SAUDI_ARABIA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SINGAPORE;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SRI_LANKA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SYRIA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.TAIWAN;
+import static com.telenav.kivakit.core.locale.LocaleRegion.TAJIKISTAN;
+import static com.telenav.kivakit.core.locale.LocaleRegion.THAILAND;
+import static com.telenav.kivakit.core.locale.LocaleRegion.TURKMENISTAN;
+import static com.telenav.kivakit.core.locale.LocaleRegion.UNITED_ARAB_EMIRATES;
+import static com.telenav.kivakit.core.locale.LocaleRegion.UZBEKISTAN;
+import static com.telenav.kivakit.core.locale.LocaleRegion.VIETNAM;
+import static com.telenav.kivakit.core.locale.LocaleRegion.YEMEN;
 
 public class Asia extends Continent
 {
@@ -136,7 +136,7 @@ public class Asia extends Continent
                         .withCountryOrdinal(47)
                         .withCountryTmcCode(new Country.CountryTmcCode(0x0c))
                         .withCountryIsoCode(CHINA))
-                .withLanguage(LanguageIsoCode.CHINESE_MANDARIN)) {};
+                .withLanguage(LocaleLanguage.CHINESE_MANDARIN)) {};
 
         Country.GEORGIA = new Country(this, Country.baseInstance()
                 .withIdentity(Country.baseRegionCode()

@@ -3,7 +3,6 @@ package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.string.AsciiArt;
-import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.value.count.Minimum;
 import com.telenav.kivakit.core.value.count.MutableCount;
@@ -52,9 +51,9 @@ public class PbfTagCodecBuilder
     private Maximum charactersMaximumBits = Maximum._12;
 
     @UmlAggregation(label = "collects", referentCardinality = "2")
-    private final StringFrequencies keyStringFrequencies = new StringFrequencies(Count._10_000_000, Maximum.maximum(50_000_000));
+    private final StringFrequencies keyStringFrequencies = new StringFrequencies(Maximum.maximum(50_000_000));
 
-    private final StringFrequencies valueStringFrequencies = new StringFrequencies(Count._10_000_000, Maximum.maximum(50_000_000));
+    private final StringFrequencies valueStringFrequencies = new StringFrequencies(Maximum.maximum(50_000_000));
 
     @UmlAggregation(label = "collects", referentCardinality = "2")
     private final CharacterFrequencies keyCharacterFrequencies = new CharacterFrequencies();

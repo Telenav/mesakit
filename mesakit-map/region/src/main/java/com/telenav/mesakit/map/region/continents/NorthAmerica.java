@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.region.continents;
 
-import com.telenav.kivakit.core.locale.LanguageIsoCode;
+import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.countries.Canada;
@@ -27,25 +27,25 @@ import com.telenav.mesakit.map.region.countries.UnitedStates;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
 
-import static com.telenav.kivakit.core.locale.CountryIsoCode.ANGUILLA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.BAHAMAS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.BERMUDA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.CAYMAN_ISLANDS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.CUBA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.DOMINICAN_REPUBLIC;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.EL_SALVADOR;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.HAITI;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.JAMAICA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.PUERTO_RICO;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SAINT_BARTHELEMY;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SAINT_KITTS_AND_NEVIS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SAINT_MARTIN_FRENCH_PART;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SAINT_PIERRE_AND_MIQUELON;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SVALBARD_AND_JAN_MAYEN_ISLANDS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.TURKS_AND_CAICOS_ISLANDS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.UNITED_STATES_MINOR_OUTLYING_ISLANDS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.VIRGIN_ISLANDS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.VIRGIN_ISLANDS_BRITISH;
+import static com.telenav.kivakit.core.locale.LocaleRegion.ANGUILLA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.BAHAMAS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.BERMUDA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.CAYMAN_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.CUBA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.DOMINICAN_REPUBLIC;
+import static com.telenav.kivakit.core.locale.LocaleRegion.EL_SALVADOR;
+import static com.telenav.kivakit.core.locale.LocaleRegion.HAITI;
+import static com.telenav.kivakit.core.locale.LocaleRegion.JAMAICA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.PUERTO_RICO;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SAINT_BARTHELEMY;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SAINT_KITTS_AND_NEVIS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SAINT_MARTIN_FRENCH_PART;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SAINT_PIERRE_AND_MIQUELON;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SVALBARD_AND_JAN_MAYEN_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.TURKS_AND_CAICOS_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.UNITED_STATES_MINOR_OUTLYING_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.VIRGIN_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.VIRGIN_ISLANDS_BRITISH;
 
 public class NorthAmerica extends Continent
 {
@@ -99,7 +99,7 @@ public class NorthAmerica extends Continent
                         .withName("Cuba")
                         .withCountryOrdinal(50)
                         .withCountryIsoCode(CUBA))
-                .withLanguage(LanguageIsoCode.SPANISH)) {};
+                .withLanguage(LocaleLanguage.SPANISH)) {};
 
         Country.DOMINICAN_REPUBLIC = new Country(this, Country.baseInstance()
                 .withIdentity(Country.baseRegionCode()
@@ -151,8 +151,8 @@ public class NorthAmerica extends Continent
                         .withName("Puerto Rico")
                         .withCountryOrdinal(180)
                         .withCountryIsoCode(PUERTO_RICO))
-                .withLanguage(LanguageIsoCode.SPANISH)
-                .withLanguage(LanguageIsoCode.ENGLISH)) {};
+                .withLanguage(LocaleLanguage.SPANISH)
+                .withLanguage(LocaleLanguage.ENGLISH)) {};
 
         //noinspection SpellCheckingInspection
         Country.SVALBARD_AND_JAN_MAYEN_ISLANDS = new Country(this, Country.baseInstance()
@@ -166,7 +166,7 @@ public class NorthAmerica extends Continent
                         .withName("El Salvador")
                         .withCountryOrdinal(207)
                         .withCountryIsoCode(EL_SALVADOR))
-                .withLanguage(LanguageIsoCode.SPANISH)) {};
+                .withLanguage(LocaleLanguage.SPANISH)) {};
 
         //noinspection SpellCheckingInspection
         Country.TURKS_AND_CAICOS_ISLANDS = new Country(this, Country.baseInstance()

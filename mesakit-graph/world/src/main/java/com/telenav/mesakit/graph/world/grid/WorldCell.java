@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.graph.world.grid;
 
-import com.telenav.kivakit.core.collections.Sets;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
@@ -52,6 +51,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
@@ -85,7 +85,7 @@ import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.R
  * @see WorldGraphRepositoryFolder
  * @see GridCell
  */
-@JavaVirtualMachine.KivaKitExcludeFromSizeOf
+@SuppressWarnings("unused") @JavaVirtualMachine.KivaKitExcludeFromSizeOf
 public class WorldCell extends Region<WorldCell> implements Unloadable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
@@ -186,7 +186,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     @Override
     public Collection<Polygon> borders()
     {
-        return Sets.hashSet(bounds().asPolygon());
+        return Set.of(bounds().asPolygon());
     }
 
     @Override
