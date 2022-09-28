@@ -652,7 +652,7 @@ public class WorldGraph extends Graph
     {
         var executor = Threads.threadPool("WorldCell");
         allWorldCells().forEach(worldCell -> executor.submit(() -> code.call(worldCell)));
-        Threads.shutdownAndAwait(executor);
+        Threads.shutdownAndAwaitTermination(executor);
     }
 
     private Graph smallestGraph()

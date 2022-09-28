@@ -257,7 +257,7 @@ public abstract class Region<T extends Region<T>> implements
             executor.execute(() -> type(State.class).loadIdentities());
             executor.execute(() -> type(MetropolitanArea.class).loadIdentities());
             executor.execute(() -> type(County.class).loadIdentities());
-            Threads.shutdownAndAwait(executor);
+            Threads.shutdownAndAwaitTermination(executor);
         }
     }
 
