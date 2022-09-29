@@ -47,6 +47,8 @@ import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
+import com.telenav.mesakit.graph.GraphLimits;
+import com.telenav.mesakit.graph.GraphLimits.Limit;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.collections.EdgeSequence;
@@ -57,8 +59,6 @@ import com.telenav.mesakit.graph.identifiers.RelationIdentifier;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.io.load.GraphConstraints;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
-import com.telenav.mesakit.graph.GraphLimits;
-import com.telenav.mesakit.graph.GraphLimits.Limit;
 import com.telenav.mesakit.graph.specifications.common.edge.EdgeAttributes;
 import com.telenav.mesakit.graph.specifications.common.edge.HeavyWeightEdge;
 import com.telenav.mesakit.graph.specifications.common.edge.store.index.CompressedEdgeBulkSpatialIndexer;
@@ -104,6 +104,7 @@ import java.util.Map;
 import java.util.Set;
 
 import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
+import static com.telenav.kivakit.validation.Validator.emptyValidator;
 import static com.telenav.mesakit.graph.GraphElement.NULL_IDENTIFIER;
 import static com.telenav.mesakit.graph.GraphElement.VALIDATE_RAW;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
@@ -123,18 +124,19 @@ import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
  * efficiency. When edges are retrieved, a negative {@link EdgeIdentifier} signals that the data for the forward edge
  * should be flipped around to return the reverse edge. Whether an edge is forward or reversed can be determined with
  * {@link Edge#isForward()} and {@link Edge#isReverse()}. Because only forward edges are stored, the size of the store
- * as returned by {@link #size()} will be smaller than from the number of edges in the store as returned by {@link
- * #count()}. In some instances it is desirable to retrieve only the forward edges in the store. This can be achieved
- * with {@link #forwardEdges()}.
+ * as returned by {@link #size()} will be smaller than from the number of edges in the store as returned by
+ * {@link #count()}. In some instances it is desirable to retrieve only the forward edges in the store. This can be
+ * achieved with {@link #forwardEdges()}.
  * <p>
- * A mapping is maintained between {@link EdgeIdentifier} and an index, which is stored as a property of each {@link
- * Edge} (it is stored by the parent class {@link GraphElement} along with the edge's {@link Graph} and its {@link
- * GraphElementIdentifier}). This index can be retrieved with {@link Edge#index()} and is used to efficiently retrieve
- * values from the store with calls to the various retrieve* methods.
+ * A mapping is maintained between {@link EdgeIdentifier} and an index, which is stored as a property of each
+ * {@link Edge} (it is stored by the parent class {@link GraphElement} along with the edge's {@link Graph} and its
+ * {@link GraphElementIdentifier}). This index can be retrieved with {@link Edge#index()} and is used to efficiently
+ * retrieve values from the store with calls to the various retrieve* methods.
  * <p>
  * An edge store maintains an {@link RTreeSpatialIndex} of the edge poly-lines to allow fast spatial searches, such as
- * finding all the edges that intersect a given {@link Rectangle}. This index is also used when querying {@link
- * EdgeRelation}s by finding the relevant edges and then returning the set of all relations that those edges reference.
+ * finding all the edges that intersect a given {@link Rectangle}. This index is also used when querying
+ * {@link EdgeRelation}s by finding the relevant edges and then returning the set of all relations that those edges
+ * reference.
  * <p>
  * This store {@link Validatable} so that it can be validated before saving to a {@link GraphArchive} with a call to
  * {@link #validator(ValidationType)}. See {@link Validatable} and {@link Validator} for details of how validation
@@ -882,8 +884,8 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The state of the given road among {@link RoadState#ONE_WAY}, {@link RoadState#TWO_WAY} and {@link
-     * RoadState#CLOSED}
+     * @return The state of the given road among {@link RoadState#ONE_WAY}, {@link RoadState#TWO_WAY} and
+     * {@link RoadState#CLOSED}
      */
     public final RoadState retrieveRoadState(Edge edge)
     {
@@ -1023,6 +1025,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
         if (spatialIndex == null)
         {
             // and there is an archive
+            //noinspection resource
             if (archive() != null)
             {
                 // then load the spatial index from the graph file
@@ -1306,7 +1309,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     public Validator validator(ValidationType validation)
     {
         var outer = this;
-        return !validation.shouldValidate(getClass()) ? Validator.NULL : new StoreValidator()
+        return !validation.shouldValidate(getClass()) ? emptyValidator() : new StoreValidator()
         {
             @Override
             protected void onValidate()
@@ -1520,11 +1523,13 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
 
     private void configureSerializer()
     {
-        var session = require(KryoSerializationSessionFactory.class).newSession(this);
-        var types = session.kryoTypes();
-        types.registerDynamic(CompressedEdgeSpatialIndex.class,
-                new CompressedEdgeSpatialIndexKryoSerializer(graph()),
-                CompressedEdgeSpatialIndexKryoSerializer.IDENTIFIER);
+        try (var session = require(KryoSerializationSessionFactory.class).newSession(this))
+        {
+            var types = session.kryoTypes();
+            types.registerDynamic(CompressedEdgeSpatialIndex.class,
+                    new CompressedEdgeSpatialIndexKryoSerializer(graph()),
+                    CompressedEdgeSpatialIndexKryoSerializer.IDENTIFIER);
+        }
     }
 
     /**

@@ -256,7 +256,7 @@ public class GraphArchive extends FieldArchive implements
 
     public void saveMetadata(Metadata metadata)
     {
-        metadata.assertValid(ValidationType.VALIDATE_ALL);
+        metadata.assertValid(ValidationType.validateAll());
         zip().save(require(KryoObjectSerializer.class), "metadata", new SerializableObject<>(metadata, VERSION));
     }
 

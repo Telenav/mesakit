@@ -157,7 +157,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         }
 
         @Override
-        protected boolean validationReport()
+        protected boolean shouldShowValidationReport()
         {
             return true;
         }

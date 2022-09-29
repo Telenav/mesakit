@@ -59,7 +59,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
-import static com.telenav.kivakit.validation.ValidationType.VALIDATE_ALL;
+import static com.telenav.kivakit.validation.ValidationType.validateAll();
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 
 /**
@@ -271,9 +271,9 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
     {
         var outer = this;
 
-        var validator = validation == VALIDATE_ALL;
+        var validator = validation == ValidationType.validateAll();
 
-        return !validator ? Validator.NULL : new StoreValidator()
+        return !validator ? Validator.emptyValidator() : new StoreValidator()
         {
             @Override
             protected void onValidate()
@@ -347,7 +347,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
                 if (DEBUG.isDebugOn())
                 {
                     var retrieved = dataSpecification().newRelation(graph(), identifier);
-                    assert retrieved.validator(VALIDATE_ALL).validate(LOGGER);
+                    assert retrieved.validator(ValidationType.validateAll()).validate(LOGGER);
                     assert relation.equals(retrieved);
                 }
             }

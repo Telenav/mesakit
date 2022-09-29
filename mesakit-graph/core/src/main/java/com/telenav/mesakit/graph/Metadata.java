@@ -932,7 +932,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
                 problemIf(dataFormat() == null, "Data format is missing");
                 problemIf(dataSupplier() == null, "Data supplier is missing");
 
-                if (type == ValidationType.VALIDATE_ALL)
+                if (type == ValidationType.validateAll())
                 {
                     problemIf(dataBounds() == null, "Data bounds is missing");
                     problemIf(isZero(nodeCount(REQUIRE_EXACT)), "No nodes");

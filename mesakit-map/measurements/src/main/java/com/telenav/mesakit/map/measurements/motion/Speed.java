@@ -35,6 +35,9 @@ import com.telenav.mesakit.map.measurements.internal.lexakai.DiagramMapMeasureme
 
 import java.util.regex.Pattern;
 
+import static com.telenav.kivakit.core.time.Duration.ONE_HOUR;
+import static com.telenav.kivakit.core.time.Duration.ONE_SECOND;
+
 /**
  * A unit-less speed, as the {@link Distance} traveled over a given {@link Duration}, both of which are also unit-less.
  *
@@ -96,22 +99,22 @@ public class Speed implements Comparable<Speed>, LongValued
 
     public static Speed kilometersPerHour(double kph)
     {
-        return new Speed(Distance.kilometers(kph), Duration.ONE_HOUR);
+        return new Speed(Distance.kilometers(kph), ONE_HOUR);
     }
 
     public static Speed metersPerHour(double metersPerHour)
     {
-        return new Speed(Distance.meters(metersPerHour), Duration.ONE_HOUR);
+        return new Speed(Distance.meters(metersPerHour), ONE_HOUR);
     }
 
     public static Speed metersPerSecond(double metersPerSecond)
     {
-        return new Speed(Distance.meters(metersPerSecond), Duration.ONE_SECOND);
+        return new Speed(Distance.meters(metersPerSecond), ONE_SECOND);
     }
 
     public static Speed microDegreesPerSecond(int value)
     {
-        return milesPerHour(Duration.ONE_HOUR.dividedBy(Duration.ONE_SECOND) * value / Distance.ONE_MILE.asDm6());
+        return milesPerHour(ONE_HOUR.dividedBy(ONE_SECOND).asInt() * value / Distance.ONE_MILE.asDm6());
     }
 
     public static Speed milesPerHour(double mph)
@@ -125,16 +128,16 @@ public class Speed implements Comparable<Speed>, LongValued
         {
             if (hundredthsOfMilesPerHourCache[index] == null)
             {
-                hundredthsOfMilesPerHourCache[index] = new Speed(Distance.miles(mph), Duration.ONE_HOUR);
+                hundredthsOfMilesPerHourCache[index] = new Speed(Distance.miles(mph), ONE_HOUR);
             }
             return hundredthsOfMilesPerHourCache[index];
         }
-        return new Speed(Distance.miles(mph), Duration.ONE_HOUR);
+        return new Speed(Distance.miles(mph), ONE_HOUR);
     }
 
     public static Speed millimetersPerHour(long millimetersPerHour)
     {
-        return new Speed(Distance.millimeters(millimetersPerHour), Duration.ONE_HOUR);
+        return new Speed(Distance.millimeters(millimetersPerHour), ONE_HOUR);
     }
 
     public static Speed parse(String text)
@@ -273,32 +276,32 @@ public class Speed implements Comparable<Speed>, LongValued
 
     public double asKilometersPerHour()
     {
-        return distance.asKilometers() / duration.dividedBy(Duration.ONE_HOUR);
+        return distance.asKilometers() / duration.dividedBy(ONE_HOUR).doubleValue();
     }
 
     public double asMetersPerHour()
     {
-        return distance.asMeters() / duration.dividedBy(Duration.ONE_HOUR);
+        return distance.asMeters() / duration.dividedBy(ONE_HOUR).doubleValue();
     }
 
     public double asMetersPerSecond()
     {
-        return distance.asMeters() / duration.dividedBy(Duration.ONE_SECOND);
+        return distance.asMeters() / duration.dividedBy(ONE_SECOND).doubleValue();
     }
 
     public int asMicroDegreesPerSecond()
     {
-        return round(asMilesPerHour() * Distance.ONE_MILE.asDm6() / Duration.ONE_HOUR.dividedBy(Duration.ONE_SECOND));
+        return round(asMilesPerHour() * Distance.ONE_MILE.asDm6() / ONE_HOUR.dividedBy(ONE_SECOND).doubleValue());
     }
 
     public double asMilesPerHour()
     {
-        return distance.asMiles() / duration.dividedBy(Duration.ONE_HOUR);
+        return distance.asMiles() / duration.dividedBy(ONE_HOUR).doubleValue();
     }
 
     public double asMillimetersPerHour()
     {
-        return distance.asMillimeters() / duration.dividedBy(Duration.ONE_HOUR);
+        return distance.asMillimeters() / duration.dividedBy(ONE_HOUR).doubleValue();
     }
 
     @SuppressWarnings("NullableProblems")
@@ -368,6 +371,12 @@ public class Speed implements Comparable<Speed>, LongValued
         return equals(NONE);
     }
 
+    @Override
+    public long longValue()
+    {
+        return (long) asKilometersPerHour();
+    }
+
     public Speed maximum(Speed that)
     {
         return isGreaterThan(that) ? this : that;
@@ -376,12 +385,6 @@ public class Speed implements Comparable<Speed>, LongValued
     public Speed minimum(Speed that)
     {
         return isLessThan(that) ? this : that;
-    }
-
-    @Override
-    public long longValue()
-    {
-        return (long) asKilometersPerHour();
     }
 
     public Speed scale(Level coefficient)
@@ -396,7 +399,7 @@ public class Speed implements Comparable<Speed>, LongValued
 
     public long timeToTravelInMilliseconds(Distance length)
     {
-        return length.asMillimeters() * (long) duration.dividedBy(Duration.ONE_MILLISECOND) / distance.asMillimeters();
+        return length.asMillimeters() * (long) duration.dividedBy(Duration.ONE_MILLISECOND).doubleValue() / distance.asMillimeters();
     }
 
     @Override

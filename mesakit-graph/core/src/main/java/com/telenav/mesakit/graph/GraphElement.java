@@ -27,8 +27,8 @@ import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.messaging.messages.status.Quibble;
 import com.telenav.kivakit.core.messaging.messages.status.Warning;
 import com.telenav.kivakit.core.string.AsIndentedString;
-import com.telenav.kivakit.core.string.ObjectIndenter;
 import com.telenav.kivakit.core.string.CaseFormat;
+import com.telenav.kivakit.core.string.ObjectIndenter;
 import com.telenav.kivakit.core.string.StringConversions;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Maximum;
@@ -176,7 +176,7 @@ public abstract class GraphElement implements
         AsIndentedString
 {
     /** Validation when adding elements */
-    public static final ValidationType VALIDATE_RAW = new ValidationType("VALIDATE_FOR_ADDING");
+    public static final ValidationType VALIDATE_RAW = new ValidationType() {};
 
     /** Null index */
     public static final int NULL_INDEX = 0;

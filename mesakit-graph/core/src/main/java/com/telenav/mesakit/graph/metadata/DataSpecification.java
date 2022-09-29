@@ -475,7 +475,7 @@ public abstract class DataSpecification implements NamedObject
 
     protected Graph onNewGraph(Metadata metadata)
     {
-        metadata.assertValid(ValidationType.VALIDATE_ALL);
+        metadata.assertValid(ValidationType.validateAll());
         return new CommonGraph(metadata);
     }
 
