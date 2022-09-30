@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.name.parser.tokenizer;
 
-import com.telenav.kivakit.collections.map.MultiMap;
+import com.telenav.kivakit.core.collections.map.MultiMap;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.symbols.Symbol;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.symbols.SymbolList;
 import com.telenav.mesakit.map.road.name.parser.tokenizer.symbols.SymbolStream;

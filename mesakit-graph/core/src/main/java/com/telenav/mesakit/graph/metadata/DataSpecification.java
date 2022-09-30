@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.metadata;
 
-import com.telenav.kivakit.collections.map.MultiMap;
+import com.telenav.kivakit.core.collections.map.MultiMap;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.logging.Logger;

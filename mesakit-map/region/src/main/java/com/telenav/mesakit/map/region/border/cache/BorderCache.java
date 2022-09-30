@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.region.border.cache;
 
-import com.telenav.kivakit.collections.map.MultiMap;
+import com.telenav.kivakit.core.collections.map.MultiMap;
 import com.telenav.kivakit.component.BaseComponent;
 import com.telenav.kivakit.core.io.IO;
 import com.telenav.kivakit.core.language.Objects;
