@@ -252,7 +252,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      */
     public static Metadata parse(FileName name)
     {
-        return parse(name.base().name());
+        return parse(name.baseName().name());
     }
 
     /**

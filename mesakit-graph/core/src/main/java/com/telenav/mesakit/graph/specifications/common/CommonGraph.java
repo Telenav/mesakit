@@ -234,7 +234,7 @@ public class CommonGraph extends Graph
     @Override
     public VertexSequence vertexesInside(Rectangle bounds)
     {
-        return vertexesInside(bounds, Filter.acceptingAll());
+        return vertexesInside(bounds, Filter.acceptAll());
     }
 
     @Override

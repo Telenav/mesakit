@@ -490,7 +490,7 @@ public class WorldGraph extends Graph
 
     public RelationSet relationsInside(Region region)
     {
-        return relationsIntersecting(region.bounds(), Filter.acceptingAll()).matching(relation ->
+        return relationsIntersecting(region.bounds(), Filter.acceptAll()).matching(relation ->
         {
             for (var edge : relation.edgeSet())
             {

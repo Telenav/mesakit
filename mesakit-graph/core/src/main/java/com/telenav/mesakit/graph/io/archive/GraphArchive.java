@@ -100,10 +100,10 @@ public class GraphArchive extends FieldArchive implements
             var prefix = current + ":";
             if (specifier.toUpperCase().startsWith(prefix))
             {
-                return Resource.resolve(listener, specifier.substring(prefix.length()));
+                return Resource.resolveResource(listener, specifier.substring(prefix.length()));
             }
         }
-        return Resource.resolve(listener, specifier);
+        return Resource.resolveResource(listener, specifier);
     }
 
     public static SwitchParser.Builder<Graph> graphArchiveSwitchParser(Listener listener,

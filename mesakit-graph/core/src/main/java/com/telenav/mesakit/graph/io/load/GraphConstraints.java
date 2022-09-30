@@ -52,16 +52,16 @@ public class GraphConstraints
     private Rectangle bounds = Rectangle.MAXIMUM;
 
     /** An edge matcher for filtering */
-    private Matcher<Edge> edgeMatcher = Filter.acceptingAll();
+    private Matcher<Edge> edgeMatcher = Filter.acceptAll();
 
     /** A place matcher for filtering */
-    private Matcher<Place> placeMatcher = Filter.acceptingAll();
+    private Matcher<Place> placeMatcher = Filter.acceptAll();
 
     /** A relation matcher for filtering */
-    private Matcher<EdgeRelation> relationMatcher = Filter.acceptingAll();
+    private Matcher<EdgeRelation> relationMatcher = Filter.acceptAll();
 
     /** A vertex matcher for filtering */
-    private Matcher<Vertex> vertexMatcher = Filter.acceptingAll();
+    private Matcher<Vertex> vertexMatcher = Filter.acceptAll();
 
     /**
      * Construct default graph constraints, which includes all edge types, all vertex attributes and all edge attributes
@@ -165,7 +165,7 @@ public class GraphConstraints
      */
     public MessageList satisfies(GraphConstraints required)
     {
-        var messages = new MessageList(Filter.acceptingAll());
+        var messages = new MessageList(Filter.acceptAll());
         if (!required.bounds.intersects(bounds))
         {
             messages.add(new Problem("Bounds $ doesn't intersect with $", bounds, required.bounds));

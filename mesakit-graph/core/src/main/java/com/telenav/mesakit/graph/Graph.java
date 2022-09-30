@@ -876,7 +876,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
      */
     public final EdgeSequence edgesIntersecting(Rectangle bounds)
     {
-        return edgesIntersecting(bounds, Filter.acceptingAll(), EDGES);
+        return edgesIntersecting(bounds, Filter.acceptAll(), EDGES);
     }
 
     /**
@@ -1003,7 +1003,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
      */
     public final EdgeSequence forwardEdgesIntersecting(Rectangle bounds)
     {
-        return forwardEdgesIntersecting(bounds, Filter.acceptingAll());
+        return forwardEdgesIntersecting(bounds, Filter.acceptAll());
     }
 
     /**
@@ -1526,7 +1526,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
      */
     public final RelationSet relationsIntersecting(Rectangle bounds)
     {
-        return relationsIntersecting(bounds, Filter.acceptingAll());
+        return relationsIntersecting(bounds, Filter.acceptAll());
     }
 
     /**
