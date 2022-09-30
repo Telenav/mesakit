@@ -37,7 +37,7 @@ import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.ResourceKryoTypes;
 import com.telenav.kivakit.serialization.properties.PropertiesObjectSerializer;
-import com.telenav.kivakit.settings.Settings;
+import com.telenav.kivakit.settings.SettingsRegistry;
 import com.telenav.kivakit.settings.stores.ResourceFolderSettingsStore;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
@@ -132,7 +132,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
         serializers.add(Extension.PROPERTIES, new PropertiesObjectSerializer());
         register(serializers);
 
-        var store = Settings.of(this);
+        var store = SettingsRegistry.settingsRegistryFor(this);
         listenTo(store);
         store.registerSettingsIn(new ResourceFolderSettingsStore(this, Folder.parseFolder(this, "configuration")));
     }
