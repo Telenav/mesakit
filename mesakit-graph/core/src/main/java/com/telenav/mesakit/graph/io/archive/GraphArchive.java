@@ -197,7 +197,7 @@ public class GraphArchive extends FieldArchive implements
 
     public Time lastModified()
     {
-        return resource().modifiedAt();
+        return resource().lastModified();
     }
 
     public Graph load(Listener listener)

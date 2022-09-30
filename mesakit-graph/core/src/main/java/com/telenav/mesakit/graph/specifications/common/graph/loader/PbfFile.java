@@ -118,7 +118,7 @@ public class PbfFile extends BaseRepeater implements Named
 
     public Time modifiedAt()
     {
-        return file.modifiedAt();
+        return file.lastModified();
     }
 
     @Override
