@@ -270,10 +270,10 @@ public class PbfTagCodecBuilder
         System.out.println(AsciiArt.box("Value String Codec"));
         System.out.println(valueStringCodec);
 
-        keyCharacterCodec.asProperties().save(keyCharacterCodec.toString(), File.parseFile(consoleListener(), "default-key-character.codec"));
-        valueCharacterCodec.asProperties().save(valueCharacterCodec.toString(), File.parseFile(consoleListener(), "default-value-character.codec"));
-        keyStringCodec.asProperties().save(keyStringCodec.toString(), File.parseFile(consoleListener(), "default-key-string.codec"));
-        valueStringCodec.asProperties().save(valueStringCodec.toString(), File.parseFile(consoleListener(), "default-value-string.codec"));
+        keyCharacterCodec.asProperties().save(File.parseFile(consoleListener(), "default-key-character.codec"), keyCharacterCodec.toString());
+        valueCharacterCodec.asProperties().save(File.parseFile(consoleListener(), "default-value-character.codec"), valueCharacterCodec.toString());
+        keyStringCodec.asProperties().save(File.parseFile(consoleListener(), "default-key-string.codec"), keyStringCodec.toString());
+        valueStringCodec.asProperties().save(File.parseFile(consoleListener(), "default-value-string.codec"), valueStringCodec.toString());
     }
 
     public PbfTagCodecBuilder relationFilter(RelationFilter relationFilter)
