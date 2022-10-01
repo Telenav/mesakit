@@ -48,7 +48,7 @@ public class GraphList extends AbstractList<Graph>
         var resource = files.get(index);
         try
         {
-            return new GraphArchive(LOGGER, resource, READ, ProgressReporter.none()).load(LOGGER);
+            return new GraphArchive(LOGGER, resource, READ, ProgressReporter.nullProgressReporter()).load(LOGGER);
         }
         catch (Exception e)
         {

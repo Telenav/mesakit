@@ -400,7 +400,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
                 // Load the graph file
                 DEBUG.trace("Loading graph for $", name());
                 @SuppressWarnings(
-                        "resource") var archive = new GraphArchive(LOGGER, cellGraphFile(), READ, ProgressReporter.none());
+                        "resource") var archive = new GraphArchive(LOGGER, cellGraphFile(), READ, ProgressReporter.nullProgressReporter());
                 var graph = archive.load(DEBUG.isDebugOn() ? DEBUG.listener() : Listener.emptyListener());
                 if (graph == null)
                 {

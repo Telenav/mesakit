@@ -186,9 +186,9 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
 
     public BasePbfReader noProgress()
     {
-        nodeProgress = ProgressReporter.none();
-        wayProgress = ProgressReporter.none();
-        relationProgress = ProgressReporter.none();
+        nodeProgress = ProgressReporter.nullProgressReporter();
+        wayProgress = ProgressReporter.nullProgressReporter();
+        relationProgress = ProgressReporter.nullProgressReporter();
         return this;
     }
 

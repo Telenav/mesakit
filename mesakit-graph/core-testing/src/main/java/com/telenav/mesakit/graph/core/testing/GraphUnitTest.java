@@ -369,7 +369,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
                 // then try to copy it from the test data folder
                 var destination = listenTo(resolveProject(GraphProject.class).graphFolder().folder("overpass"));
                 var source = listenTo(Package.parsePackage(this, GraphUnitTest.class, "data"));
-                source.copyTo(destination, CopyMode.OVERWRITE, OSM_PBF::matches, ProgressReporter.none());
+                source.copyTo(destination, CopyMode.OVERWRITE, OSM_PBF::matches, ProgressReporter.nullProgressReporter());
             }
 
             // and if we can't find it there, and it's an OSM graph being requested,
@@ -392,7 +392,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
                     if (graph != null)
                     {
                         // and if we succeeded, then save the graph file and return the graph
-                        graph.save(new GraphArchive(this, graphFile, ZipArchive.AccessMode.WRITE, ProgressReporter.none()));
+                        graph.save(new GraphArchive(this, graphFile, ZipArchive.AccessMode.WRITE, ProgressReporter.nullProgressReporter()));
                         return listenTo(graph);
                     }
 
@@ -410,7 +410,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
         }
         else
         {
-            return new GraphArchive(this, graphFile, READ, ProgressReporter.none()).load(emptyListener());
+            return new GraphArchive(this, graphFile, READ, ProgressReporter.nullProgressReporter()).load(emptyListener());
         }
         return null;
     }

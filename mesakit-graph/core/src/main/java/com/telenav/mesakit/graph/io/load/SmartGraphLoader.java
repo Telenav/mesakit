@@ -155,7 +155,7 @@ public class SmartGraphLoader extends BaseRepeater implements Named
 
     public Graph load()
     {
-        return load(this, ProgressReporter.none());
+        return load(this, ProgressReporter.nullProgressReporter());
     }
 
     public Graph load(Listener listener)

@@ -239,10 +239,10 @@ public class WorldGraphIndex implements
             var start = Time.now();
 
             // If the resource is a virtual file, it must be materialized to read it as a zip file
-            file = file.materialized(ProgressReporter.none());
+            file = file.materialized(ProgressReporter.nullProgressReporter());
 
             // Attach the zip archive and the field archive based on it
-            archive = new FieldArchive(file, ProgressReporter.none(), READ);
+            archive = new FieldArchive(file, ProgressReporter.nullProgressReporter(), READ);
 
             // Clear out fields we will load from archive
             clearLazyLoadedFields();

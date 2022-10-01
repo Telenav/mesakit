@@ -48,7 +48,7 @@ public class WayFilter implements Filter<PbfWay>, Named
     public static WayFilter exclude(String name, Resource resource)
     {
         var filter = new WayFilter(name, "exclude list from resource");
-        for (var line : resource.reader().lines(ProgressReporter.none()))
+        for (var line : resource.reader().readLines(ProgressReporter.nullProgressReporter()))
         {
             var highway = line.trim();
             if (!Strings.isEmpty(highway))
@@ -72,7 +72,7 @@ public class WayFilter implements Filter<PbfWay>, Named
     public static WayFilter include(String name, Resource resource)
     {
         var filter = new WayFilter(name, "include list from resource");
-        for (var line : resource.reader().lines(ProgressReporter.none()))
+        for (var line : resource.reader().readLines(ProgressReporter.nullProgressReporter()))
         {
             var highway = line.trim();
             if (!Strings.isEmpty(highway))

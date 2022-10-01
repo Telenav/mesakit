@@ -526,7 +526,7 @@ public class WorldGrid
                 {
                     LOGGER.warning("No cells found for " + region);
                 }
-                cached.print(toString(cells));
+                cached.saveText(toString(cells));
             }
         }
         return included;

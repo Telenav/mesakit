@@ -52,7 +52,7 @@ public final class OsmGraph extends CommonGraph
             information(AsciiArt.topLine(20, "Marking double-digitized edges"));
             var start = Time.now();
             var count = new MutableCount();
-            var progress = isDeaf() ? ProgressReporter.none() : BroadcastingProgressReporter.createProgressReporter(this, "edges");
+            var progress = isDeaf() ? ProgressReporter.nullProgressReporter() : BroadcastingProgressReporter.createProgressReporter(this, "edges");
             progress.steps(edgeCount().asMaximum());
             progress.start();
             for (var edge : forwardEdges())

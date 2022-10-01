@@ -137,7 +137,7 @@ public class GraphArchive extends FieldArchive implements
 
         public Converter(Listener listener)
         {
-            this(listener, ProgressReporter.none());
+            this(listener, ProgressReporter.nullProgressReporter());
         }
 
         @Override

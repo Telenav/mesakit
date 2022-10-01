@@ -113,7 +113,7 @@ public class CommonGraph extends Graph
     public final void loadFreeFlow(Resource side)
     {
         var speedConverter = new Speed.KilometersPerHourConverter(this);
-        for (var line : side.reader().lines())
+        for (var line : side.reader().readLines())
         {
             var columns = line.split(";");
             if (columns.length < 2)
@@ -160,7 +160,7 @@ public class CommonGraph extends Graph
     public final void loadTurnRestrictions(Resource side)
     {
         var routeConverter = new Route.MapIdentifierConverter(this, new Separators(","), this);
-        for (var line : side.reader().lines())
+        for (var line : side.reader().readLines())
         {
             var columns = line.split(";");
             if (columns.length < 4)
