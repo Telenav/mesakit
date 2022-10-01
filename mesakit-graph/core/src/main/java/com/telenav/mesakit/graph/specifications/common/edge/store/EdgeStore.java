@@ -104,7 +104,7 @@ import java.util.Map;
 import java.util.Set;
 
 import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
-import static com.telenav.kivakit.validation.Validator.emptyValidator;
+import static com.telenav.kivakit.validation.Validator.nullValidator;
 import static com.telenav.mesakit.graph.GraphElement.NULL_IDENTIFIER;
 import static com.telenav.mesakit.graph.GraphElement.VALIDATE_RAW;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
@@ -1309,7 +1309,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     public Validator validator(ValidationType validation)
     {
         var outer = this;
-        return !validation.shouldValidate(getClass()) ? emptyValidator() : new StoreValidator()
+        return !validation.shouldValidate(getClass()) ? nullValidator() : new StoreValidator()
         {
             @Override
             protected void onValidate()

@@ -708,7 +708,7 @@ public class VertexStore extends NodeStore<Vertex>
     @Override
     public Validator validator(ValidationType validation)
     {
-        return !validation.shouldValidate(getClass()) ? Validator.emptyValidator() : new StoreValidator()
+        return !validation.shouldValidate(getClass()) ? Validator.nullValidator() : new StoreValidator()
         {
             @Override
             protected void onValidate()

@@ -153,7 +153,7 @@ public class GraphArchive extends FieldArchive implements
             var file = new File.Converter(this).convert(path);
             if (file != null)
             {
-                return new GraphArchive(this, file, ZipArchive.Mode.READ, reporter).load(this);
+                return new GraphArchive(this, file, ZipArchive.AccessMode.READ, reporter).load(this);
             }
             warning("Unable to load graph archive '$'", path);
             return null;
@@ -188,7 +188,7 @@ public class GraphArchive extends FieldArchive implements
 
     public GraphArchive(Listener listener,
                         File file,
-                        ZipArchive.Mode mode,
+                        ZipArchive.AccessMode mode,
                         ProgressReporter reporter)
     {
         super(file, reporter, mode);
@@ -231,7 +231,7 @@ public class GraphArchive extends FieldArchive implements
 
     public Metadata metadata()
     {
-        VersionedObject<Metadata> metadata = zip().load(require(KryoObjectSerializer.class), "metadata");
+        VersionedObject<Metadata> metadata = zip().loadVersionedObject(require(KryoObjectSerializer.class), "metadata");
         return metadata == null ? null : metadata.object();
     }
 

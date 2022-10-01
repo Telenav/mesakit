@@ -59,7 +59,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
-import static com.telenav.kivakit.validation.ValidationType.validateAll();
+();
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 
 /**
@@ -273,7 +273,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
 
         var validator = validation == ValidationType.validateAll();
 
-        return !validator ? Validator.emptyValidator() : new StoreValidator()
+        return !validator ? Validator.nullValidator() : new StoreValidator()
         {
             @Override
             protected void onValidate()

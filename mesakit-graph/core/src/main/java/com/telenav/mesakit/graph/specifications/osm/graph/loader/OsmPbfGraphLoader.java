@@ -123,7 +123,7 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
 
             if (isSystemPropertyOrEnvironmentVariableTrue("MESAKIT_DEBUG_SAVE_RAW_GRAPH"))
             {
-                raw.save(new GraphArchive(this, resolveProject(GraphProject.class).userGraphFolder().file("raw.graph"), ZipArchive.Mode.WRITE, ProgressReporter.none()));
+                raw.save(new GraphArchive(this, resolveProject(GraphProject.class).userGraphFolder().file("raw.graph"), ZipArchive.AccessMode.WRITE, ProgressReporter.none()));
             }
 
             // and then section the raw graph by loading it into the destination graph

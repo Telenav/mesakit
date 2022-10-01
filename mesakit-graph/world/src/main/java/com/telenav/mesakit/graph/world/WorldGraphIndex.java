@@ -65,8 +65,8 @@ import java.util.List;
 import java.util.Map;
 
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
-import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
-import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.WRITE;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.READ;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.WRITE;
 
 /**
  * The world graph index stores metadata and provides spatial indexing services for a {@link WorldGraph} which can't
@@ -233,7 +233,7 @@ public class WorldGraphIndex implements
     {
         // Validate that the resource is a zip archive. If it's not then the file is some earlier
         // placeholder index file that we can ignore.
-        if (ZipArchive.is(LOGGER, file))
+        if (ZipArchive.isZipArchive(LOGGER, file))
         {
             // Record start time
             var start = Time.now();
@@ -251,7 +251,7 @@ public class WorldGraphIndex implements
             {
                 // Load archived fields
                 var version = archive.version();
-                VersionedObject<Metadata> metadata = archive.zip().load(require(KryoObjectSerializer.class), "metadata");
+                VersionedObject<Metadata> metadata = archive.zip().loadVersionedObject(require(KryoObjectSerializer.class), "metadata");
                 if (metadata != null)
                 {
                     this.metadata = metadata.object();

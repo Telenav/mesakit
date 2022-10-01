@@ -75,7 +75,7 @@ import static com.telenav.kivakit.core.messaging.Listener.emptyListener;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.resource.Extension.GRAPH;
 import static com.telenav.kivakit.resource.Extension.OSM_PBF;
-import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.READ;
 import static com.telenav.mesakit.graph.metadata.DataSupplier.OSM;
 import static com.telenav.mesakit.graph.specifications.library.pbf.PbfFileMetadataAnnotator.Mode.STRIP_UNREFERENCED_NODES;
 import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
@@ -392,7 +392,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
                     if (graph != null)
                     {
                         // and if we succeeded, then save the graph file and return the graph
-                        graph.save(new GraphArchive(this, graphFile, ZipArchive.Mode.WRITE, ProgressReporter.none()));
+                        graph.save(new GraphArchive(this, graphFile, ZipArchive.AccessMode.WRITE, ProgressReporter.none()));
                         return listenTo(graph);
                     }
 

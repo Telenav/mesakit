@@ -41,7 +41,7 @@ import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.quadtree.QuadTreeSpatialIndex;
 
 import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
-import static com.telenav.kivakit.validation.ValidationType.validateAll();
+();
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 import static com.telenav.mesakit.map.geography.Precision.DM7;
 
@@ -149,7 +149,7 @@ public class PlaceStore extends ArchivedGraphElementStore<Place>
     {
         var outer = this;
 
-        return !validation.shouldValidate(getClass()) ? Validator.emptyValidator() : new StoreValidator()
+        return !validation.shouldValidate(getClass()) ? Validator.nullValidator() : new StoreValidator()
         {
             @Override
             protected void onValidate()

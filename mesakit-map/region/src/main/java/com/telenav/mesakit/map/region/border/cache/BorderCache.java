@@ -100,7 +100,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.kivakit.core.messaging.Listener.consoleListener;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
-import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.READ;
 import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.DISCARDED;
@@ -496,7 +496,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
             // and the zip file target we're going to download to and unzip.
             var jar = localJar(NETWORK_PATH.fileName());
             trace("Trying to open $", jar);
-            var archive = ZipArchive.open(this, jar, READ);
+            var archive = ZipArchive.zipArchive(this, jar, READ);
             try
             {
                 // If archive isn't valid,
@@ -527,7 +527,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
 
                         // and try to open the archive again
                         trace("Trying to open $", jar);
-                        archive = ZipArchive.open(this, jar, READ);
+                        archive = ZipArchive.zipArchive(this, jar, READ);
                     }
                     catch (Throwable e)
                     {
