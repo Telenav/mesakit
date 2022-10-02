@@ -29,7 +29,7 @@ import com.telenav.kivakit.resource.CopyMode;
 import com.telenav.kivakit.resource.Extension;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.packages.Package;
-import com.telenav.kivakit.resource.serialization.ObjectSerializers;
+import com.telenav.kivakit.resource.serialization.ObjectSerializerRegistry;
 import com.telenav.kivakit.serialization.gson.GsonObjectSerializer;
 import com.telenav.kivakit.serialization.gson.factory.CoreGsonFactory;
 import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
@@ -127,7 +127,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
         register(new CoreGsonFactory(this));
         register(new KryoObjectSerializer(kryoTypes()));
 
-        var serializers = new ObjectSerializers();
+        var serializers = new ObjectSerializerRegistry();
         serializers.add(Extension.JSON, new GsonObjectSerializer());
         serializers.add(Extension.PROPERTIES, new PropertiesObjectSerializer());
         register(serializers);
