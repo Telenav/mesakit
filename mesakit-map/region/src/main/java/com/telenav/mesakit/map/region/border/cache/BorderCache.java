@@ -101,7 +101,7 @@ import static com.telenav.kivakit.core.messaging.Listener.consoleListener;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.READ;
-import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE;
+import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE_SERIALIZATION_SESSION;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.DISCARDED;
 
@@ -352,7 +352,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
                     {
                         // and save the identities to it
                         var session = serializationSession();
-                        session.open(out, RESOURCE, kivakit().projectVersion());
+                        session.open(out, RESOURCE_SERIALIZATION_SESSION, kivakit().projectVersion());
                         identityCache.save(session, regionProject().borderDataVersion(), identities);
                     }
                     catch (Exception e)
@@ -971,7 +971,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
             try (var output = borderCacheFile().openForWriting())
             {
                 var session = serializationSession();
-                session.open(output, RESOURCE, kivakit().projectVersion());
+                session.open(output, RESOURCE_SERIALIZATION_SESSION, kivakit().projectVersion());
                 session.write(new SerializableObject<>(index(), regionProject().borderDataVersion()));
                 session.close();
             }

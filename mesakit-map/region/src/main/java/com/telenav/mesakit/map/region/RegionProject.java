@@ -24,7 +24,7 @@ import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsKryoTypes;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
-import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KivaKitCoreKryoTypes;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.map.geography.GeographyKryoTypes;
 import com.telenav.mesakit.map.measurements.MeasurementsKryoTypes;
@@ -46,7 +46,7 @@ import static com.telenav.kivakit.core.messaging.Listener.throwingListener;
                 .mergedWith(new GeographyKryoTypes())
                 .mergedWith(new MeasurementsKryoTypes())
                 .mergedWith(new PrimitiveCollectionsKryoTypes())
-                .mergedWith(new CoreKryoTypes())));
+                .mergedWith(new KivaKitCoreKryoTypes())));
     }
 
     /**

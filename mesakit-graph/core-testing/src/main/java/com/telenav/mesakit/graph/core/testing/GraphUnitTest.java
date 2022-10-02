@@ -31,11 +31,11 @@ import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.packages.Package;
 import com.telenav.kivakit.resource.serialization.ObjectSerializerRegistry;
 import com.telenav.kivakit.serialization.gson.GsonObjectSerializer;
-import com.telenav.kivakit.serialization.gson.factory.CoreGsonFactory;
+import com.telenav.kivakit.serialization.gson.factory.KivaKitCoreGsonFactory;
 import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
-import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KivaKitCoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
-import com.telenav.kivakit.serialization.kryo.types.ResourceKryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KivaKitResourceKryoTypes;
 import com.telenav.kivakit.serialization.properties.PropertiesObjectSerializer;
 import com.telenav.kivakit.settings.SettingsRegistry;
 import com.telenav.kivakit.settings.stores.ResourceFolderSettingsStore;
@@ -124,7 +124,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
     {
         initializeProject(GraphProject.class);
 
-        register(new CoreGsonFactory(this));
+        register(new KivaKitCoreGsonFactory(this));
         register(new KryoObjectSerializer(kryoTypes()));
 
         var serializers = new ObjectSerializerRegistry();
@@ -199,9 +199,9 @@ public abstract class GraphUnitTest extends RegionUnitTest
     @Override
     protected KryoTypes kryoTypes()
     {
-        return new CoreKryoTypes()
+        return new KivaKitCoreKryoTypes()
                 .mergedWith(new MeasurementsKryoTypes())
-                .mergedWith(new ResourceKryoTypes())
+                .mergedWith(new KivaKitResourceKryoTypes())
                 .mergedWith(new DataCompressionKryoTypes())
                 .mergedWith(new GeographyKryoTypes())
                 .mergedWith(new PrimitiveCollectionsKryoTypes())

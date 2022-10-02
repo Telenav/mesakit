@@ -36,7 +36,7 @@ import java.util.Set;
 
 import static com.telenav.kivakit.core.messaging.Listener.emptyListener;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
-import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE;
+import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE_SERIALIZATION_SESSION;
 
 public class RegionIdentityCacheTest extends RegionUnitTest
 {
@@ -53,7 +53,7 @@ public class RegionIdentityCacheTest extends RegionUnitTest
 
         // Save the identities
         var version = resolveProject(RegionProject.class).borderDataVersion();
-        session.open(output, RESOURCE, kivakit().projectVersion());
+        session.open(output, RESOURCE_SERIALIZATION_SESSION, kivakit().projectVersion());
         session.write(new SerializableObject<>(identities(), version));
         session.close();
         output.close();
