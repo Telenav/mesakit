@@ -113,13 +113,13 @@ public abstract class DataSpecification implements NamedObject
     public static SwitchParser.Builder<DataSpecification> dataSpecificationSwitchParser(String name,
                                                                                         String description)
     {
-        return SwitchParser.builder(DataSpecification.class).name(name).converter(new Converter(LOGGER))
+        return SwitchParser.switchParserBuilder(DataSpecification.class).name(name).converter(new Converter(LOGGER))
                 .description(description);
     }
 
     public static SwitchParser.Builder<DataSpecification> dataSpecificationSwitchParser()
     {
-        return SwitchParser.builder(DataSpecification.class).name("data-specification").converter(new Converter(LOGGER))
+        return SwitchParser.switchParserBuilder(DataSpecification.class).name("data-specification").converter(new Converter(LOGGER))
                 .description("The data specification to use, either OSM or UniDb");
     }
 

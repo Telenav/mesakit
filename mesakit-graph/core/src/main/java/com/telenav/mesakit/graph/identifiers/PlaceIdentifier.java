@@ -41,7 +41,7 @@ public class PlaceIdentifier extends MapNodeIdentifier implements GraphElementId
                                                                                     String name,
                                                                                     String description)
     {
-        return SwitchParser.builder(PlaceIdentifier.class)
+        return SwitchParser.switchParserBuilder(PlaceIdentifier.class)
                 .name(name)
                 .description(description)
                 .converter(new Converter(listener));

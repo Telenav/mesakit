@@ -226,7 +226,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
 
     public static SwitchParser.Builder<Metadata> metadataSwitchParser(String name, String description)
     {
-        return SwitchParser.builder(Metadata.class)
+        return SwitchParser.switchParserBuilder(Metadata.class)
                 .name(name)
                 .converter(new Converter(LOGGER))
                 .description(description);

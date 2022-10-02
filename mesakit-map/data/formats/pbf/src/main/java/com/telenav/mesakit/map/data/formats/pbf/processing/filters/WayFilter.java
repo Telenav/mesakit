@@ -86,7 +86,7 @@ public class WayFilter implements Filter<PbfWay>, Named
     public static SwitchParser.Builder<WayFilter> wayFilterSwitchParser(Listener listener, String name,
                                                                         String description)
     {
-        return SwitchParser.builder(WayFilter.class)
+        return SwitchParser.switchParserBuilder(WayFilter.class)
                 .name(name)
                 .description(description)
                 .converter(new Converter(listener));

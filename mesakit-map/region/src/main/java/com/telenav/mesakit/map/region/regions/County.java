@@ -100,7 +100,7 @@ public class County extends Region<County>
 
     public static SwitchParser.Builder<County> countySwitchParser(String name, String description)
     {
-        return SwitchParser.builder(County.class)
+        return SwitchParser.switchParserBuilder(County.class)
                 .name(name)
                 .converter(new Converter<>(LOGGER()))
                 .description(description);

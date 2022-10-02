@@ -52,6 +52,7 @@ import com.telenav.mesakit.map.geography.shape.segment.Segment;
 import com.telenav.mesakit.map.measurements.geographic.Angle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.Point;
 import java.io.Serializable;
@@ -306,7 +307,7 @@ public class Location implements
 
     public static SwitchParser.Builder<Location> locationSwitchParser(String name, String description)
     {
-        return SwitchParser.builder(Location.class)
+        return SwitchParser.switchParserBuilder(Location.class)
                 .name(name)
                 .converter(new DegreesConverter(LOGGER))
                 .description(description);
@@ -687,7 +688,7 @@ public class Location implements
     }
 
     @Override
-    public String asString(Format format)
+    public String asString(@NotNull Format format)
     {
         switch (format)
         {

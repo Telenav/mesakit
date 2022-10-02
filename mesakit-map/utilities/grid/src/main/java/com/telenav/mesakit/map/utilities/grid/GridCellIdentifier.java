@@ -21,6 +21,7 @@ package com.telenav.mesakit.map.utilities.grid;
 import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.core.language.primitive.Ints;
 import com.telenav.kivakit.interfaces.string.StringFormattable;
+import org.jetbrains.annotations.NotNull;
 
 public class GridCellIdentifier implements StringFormattable
 {
@@ -55,7 +56,7 @@ public class GridCellIdentifier implements StringFormattable
     }
 
     @Override
-    public String asString(Format format)
+    public String asString(@NotNull Format format)
     {
         return "[CellIdentifier " + this + "]";
     }

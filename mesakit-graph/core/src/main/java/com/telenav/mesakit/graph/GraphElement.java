@@ -66,6 +66,7 @@ import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserName;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import org.jetbrains.annotations.NotNull;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
@@ -278,7 +279,7 @@ public abstract class GraphElement implements
     public abstract GraphElement asHeavyWeight();
 
     @Override
-    public String asString(Format format)
+    public String asString(@NotNull Format format)
     {
         if (format == PROGRAMMATIC)
         {

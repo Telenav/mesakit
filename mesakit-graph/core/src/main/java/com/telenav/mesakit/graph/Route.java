@@ -319,7 +319,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
         }
 
         @Override
-        public String asString(Format format)
+        public String asString(@NotNull Format format)
         {
             return "[Route edges = [" + new ObjectList<>().appendAll(this) + "], length = " + length()
                     + ", travelTime = " + travelTime() + "]";
@@ -576,7 +576,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
         }
 
         @Override
-        public String asString(Format format)
+        public String asString(@NotNull Format format)
         {
             return "[Route edges = " + edge + ", length = " + length() + ", travelTime = " + travelTime()
                     + "]";

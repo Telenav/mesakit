@@ -112,7 +112,7 @@ public class TimeZone extends Region<TimeZone>
 
     public static SwitchParser.Builder<TimeZone> timeZoneSwitchParser(String name, String description)
     {
-        return SwitchParser.builder(TimeZone.class)
+        return SwitchParser.switchParserBuilder(TimeZone.class)
                 .name(name)
                 .converter(new Converter<>(LOGGER()))
                 .description(description);

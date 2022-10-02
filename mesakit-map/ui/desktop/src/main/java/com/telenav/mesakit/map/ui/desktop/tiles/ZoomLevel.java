@@ -26,6 +26,7 @@ import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingR
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingSize;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -139,7 +140,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     @Override
-    public String asString(Format format)
+    public String asString(@NotNull Format format)
     {
         return "[ZoomLevel level = " + level + ", widthInTiles = " + widthInTiles() + "]";
     }

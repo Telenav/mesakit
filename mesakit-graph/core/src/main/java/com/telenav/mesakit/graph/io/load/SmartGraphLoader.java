@@ -67,7 +67,7 @@ public class SmartGraphLoader extends BaseRepeater implements Named
                                                                                String description,
                                                                                PbfToGraphConverter.Configuration configuration)
     {
-        return ArgumentParser.builder(SmartGraphLoader.class)
+        return ArgumentParser.argumentParserBuilder(SmartGraphLoader.class)
                 .description(description)
                 .converter(new Converter(listener, configuration));
     }
@@ -83,7 +83,7 @@ public class SmartGraphLoader extends BaseRepeater implements Named
                                                                            String description,
                                                                            PbfToGraphConverter.Configuration configuration)
     {
-        return SwitchParser.builder(SmartGraphLoader.class)
+        return SwitchParser.switchParserBuilder(SmartGraphLoader.class)
                 .name(name)
                 .description(description)
                 .converter(new Converter(LOGGER, configuration));

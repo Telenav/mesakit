@@ -46,7 +46,7 @@ public abstract class PbfEntity<T extends Entity> implements StringFormattable, 
     }
 
     @Override
-    public String asString(Format format)
+    public String asString(@NotNull Format format)
     {
         switch (format)
         {

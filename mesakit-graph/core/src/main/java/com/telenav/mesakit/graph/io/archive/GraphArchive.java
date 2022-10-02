@@ -88,7 +88,7 @@ public class GraphArchive extends FieldArchive implements
 
     public static ArgumentParser.Builder<Graph> argumentParser(Listener listener, String description)
     {
-        return ArgumentParser.builder(Graph.class)
+        return ArgumentParser.argumentParserBuilder(Graph.class)
                 .description(description)
                 .converter(new GraphArchive.Converter(listener));
     }
@@ -110,7 +110,7 @@ public class GraphArchive extends FieldArchive implements
                                                                        String name,
                                                                        String description)
     {
-        return SwitchParser.builder(Graph.class)
+        return SwitchParser.switchParserBuilder(Graph.class)
                 .name(name)
                 .description(description)
                 .converter(new Converter(listener));
@@ -119,7 +119,7 @@ public class GraphArchive extends FieldArchive implements
     public static SwitchParser.Builder<GraphList> graphListSwitchParser(Listener listener, String name,
                                                                         String description)
     {
-        return SwitchParser.builder(GraphList.class)
+        return SwitchParser.switchParserBuilder(GraphList.class)
                 .name(name)
                 .description(description)
                 .converter(new GraphArchive.ListConverter(listener));
