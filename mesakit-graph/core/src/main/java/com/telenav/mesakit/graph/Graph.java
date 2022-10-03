@@ -32,9 +32,9 @@ import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.string.AsIndentedString;
-import com.telenav.kivakit.core.string.ObjectIndenter;
 import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.string.Differences;
+import com.telenav.kivakit.core.string.ObjectIndenter;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Bytes;
@@ -42,7 +42,6 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.version.Version;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.interfaces.collection.NextIterator;
 import com.telenav.kivakit.interfaces.comparison.Filter;
@@ -140,9 +139,9 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.EDGES;
 import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_EDGES;
 
 /**
- * The base class for directional graphs representing a road network, composed of {@link GraphElement}s. {@link
- * Vertex}es are connected by {@link Edge}s and {@link EdgeRelation}s relate vertexes and edges to each other to form
- * higher level features like turn restrictions.
+ * The base class for directional graphs representing a road network, composed of {@link GraphElement}s.
+ * {@link Vertex}es are connected by {@link Edge}s and {@link EdgeRelation}s relate vertexes and edges to each other to
+ * form higher level features like turn restrictions.
  * <p>
  * Graphs support spatial indexing and implement a variety of efficient queries for graph elements as well as simple
  * data access methods that give statistics about the elements and retrieve elements by identifier.
@@ -173,7 +172,6 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
  *     <li>{@link #dataSpecification()} - The {@link DataSpecification} for data in the graph</li>
  *     <li>{@link #bounds()} - The bounding rectangle that encloses all graph elements</li>
  *     <li>{@link #precision()} - The {@link Precision} of graph data, and in particular polygon data</li>
- *     <li>{@link #estimatedMemorySize()} - An estimate of the size of the graph in memory</li>
  *     <li>{@link #supports(Attribute)} - True if the graph supports the given {@link Attribute}</li>
  *     <li>{@link #supportedEdgeAttributes()} - The list of all {@link Edge} attributes in the graph</li>
  *     <li>{@link #supportedPlaceAttributes()} - The list of all {@link Place} attributes in the graph</li>
@@ -950,19 +948,6 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
             }
         }
         return matches;
-    }
-
-    /**
-     * @return An estimate of the size of this graph in memory. This will not be especially accurate, but it should give
-     * a very rough idea of the memory consumption of a graph.
-     */
-    public Bytes estimatedMemorySize()
-    {
-        if (estimatedMemorySize == null)
-        {
-            estimatedMemorySize = JavaVirtualMachine.javaVirtualMachine().sizeOfObjectGraph(graphStore, "graph.store", Bytes.megabytes(1));
-        }
-        return estimatedMemorySize;
     }
 
     /**

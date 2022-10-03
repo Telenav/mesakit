@@ -58,6 +58,7 @@ import java.awt.Point;
 import java.io.Serializable;
 
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.messaging.Listener.nullListener;
 import static com.telenav.mesakit.map.geography.Precision.DM7;
 
 /**
@@ -126,7 +127,7 @@ import static com.telenav.mesakit.map.geography.Precision.DM7;
  * @see Bounded
  * @see Intersectable
  */
-@SuppressWarnings("SwitchStatementWithTooFewBranches")
+@SuppressWarnings({ "SwitchStatementWithTooFewBranches", "unused", "SpellCheckingInspection" })
 @UmlClassDiagram(diagram = DiagramLocation.class)
 @UmlExcludeSuperTypes({ Validatable.class, Identifiable.class, StringFormattable.class, Serializable.class })
 @UmlRelation(label = "represented at", referent = Precision.class)
@@ -592,7 +593,6 @@ public class Location implements
         assert DM7.isValidLongitude(longitudeInDm7) : "DM7 longitude " + longitudeInDm7 + " is out of range";
     }
 
-    @SuppressWarnings("CopyConstructorMissesField")
     public Location(Location location)
     {
         this(location.latitude(), location.longitude());
@@ -645,6 +645,7 @@ public class Location implements
         return asRectangle().height();
     }
 
+    @Override
     public long asLong()
     {
         return asLong(Precision.DEFAULT);
@@ -706,8 +707,8 @@ public class Location implements
     }
 
     /**
-     * @return A zero-area bounding rectangle at this location, which can be expanded with {@link
-     * Rectangle#expanded(Distance)}
+     * @return A zero-area bounding rectangle at this location, which can be expanded with
+     * {@link Rectangle#expanded(Distance)}
      */
     @Override
     public Rectangle bounds()
@@ -730,9 +731,9 @@ public class Location implements
 
     /**
      * Computes the distance from this location to the given location. If the latitudinal difference between the two
-     * points is close (less than 0.05 degrees, or about 5.5 kilometers), then the faster {@link
-     * #equirectangularDistanceTo(Location)} method is used. When the distance is more than this, the slower but more
-     * accurate {@link #lawOfCosinesDistanceTo(Location)} is used. This gives a nice balance between efficiency and
+     * points is close (less than 0.05 degrees, or about 5.5 kilometers), then the faster
+     * {@link #equirectangularDistanceTo(Location)} method is used. When the distance is more than this, the slower but
+     * more accurate {@link #lawOfCosinesDistanceTo(Location)} is used. This gives a nice balance between efficiency and
      * accuracy.
      *
      * @return The distance from this location to the given location
@@ -797,6 +798,7 @@ public class Location implements
      * @return The distance to the given location using the Haversine formula. Adapted from:
      * http://www.movable-type.co.uk/scripts/latlong.html
      */
+    @SuppressWarnings("JavadocLinkAsPlainText")
     public Distance haversineDistanceTo(Location that)
     {
         /*
@@ -818,6 +820,7 @@ public class Location implements
      * Computes the heading from start to end. See a sample algorithm here:
      * http://www.movable-type.co.uk/scripts/latlong.html
      */
+    @SuppressWarnings("JavadocLinkAsPlainText")
     public Heading headingTo(Location that)
     {
         var longitudeDifference = DM7.toRadians(that.longitudeInDm7 - longitudeInDm7);
@@ -970,6 +973,7 @@ public class Location implements
      * @return The new Location. If this location is on the other side of the -180/180 day separation line, then the
      * Longitudes will be adjusted to be between -180 and 180.
      */
+    @SuppressWarnings("JavadocLinkAsPlainText")
     public Location moved(Heading heading, Distance offset)
     {
         var latitude = latitude().asRadians();
@@ -1080,8 +1084,8 @@ public class Location implements
             {
                 problemIfNull(latitude(), "Latitude is missing");
                 problemIfNull(longitude(), "Longitude is missing");
-                problemIf(!latitude().isValid(), "Latitude is invalid");
-                problemIf(!longitude().isValid(), "Longitude is invalid");
+                problemIf(!latitude().isValid(nullListener()), "Latitude is invalid");
+                problemIf(!longitude().isValid(nullListener()), "Longitude is invalid");
             }
         };
     }

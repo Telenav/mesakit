@@ -81,7 +81,7 @@ public class Heading extends Angle implements Headed
 
     public static Heading parse(String text)
     {
-        return new Converter(Listener.emptyListener()).convert(text);
+        return new Converter(Listener.nullListener()).convert(text);
     }
 
     public static Heading radians(double radians)

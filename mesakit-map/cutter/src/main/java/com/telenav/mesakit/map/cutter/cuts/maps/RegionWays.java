@@ -19,7 +19,6 @@
 package com.telenav.mesakit.map.cutter.cuts.maps;
 
 import com.telenav.kivakit.core.collections.map.MultiMap;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine.KivaKitExcludeFromSizeOf;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.region.Region;
@@ -35,11 +34,9 @@ import java.util.Set;
 public class RegionWays
 {
     /** Map between region indexes and regions */
-    @KivaKitExcludeFromSizeOf
     private final RegionIndexMap regionIndexMap;
 
     /** Set of regions that are in this store */
-    @KivaKitExcludeFromSizeOf
     private final Set<Integer> regionIndexes = new HashSet<>();
 
     /** Primary (first) region for each way */

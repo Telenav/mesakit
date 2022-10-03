@@ -23,8 +23,6 @@ import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.string.AsciiArt;
-import com.telenav.kivakit.core.value.count.Bytes;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.cutter.Cut;
@@ -93,29 +91,6 @@ public class SoftCut extends Cut
         data.phase("Analyzing");
         data.process(new PbfDataProcessor()
         {
-            @Override
-            public void onEndNodes()
-            {
-                if (DEBUG.isDebugOn())
-                {
-                    var size = JavaVirtualMachine.javaVirtualMachine().sizeOfObjectGraph(nodesInsideRegion(),
-                            "nodesInsideRegion", Bytes.kilobytes(100));
-                    LOGGER.information("nodesInsideRegion = $", size);
-                }
-            }
-
-            @Override
-            public void onEndWays()
-            {
-                if (DEBUG.isDebugOn())
-                {
-                    LOGGER.information("exteriorRegionsForNode = " + JavaVirtualMachine.javaVirtualMachine().sizeOfObjectGraph(
-                            exteriorRegionsForNode(), "SoftCut.exteriorRegionsForNode", Bytes.kilobytes(100)));
-                    LOGGER.information("waysBelongingToRegion = " + JavaVirtualMachine.javaVirtualMachine().sizeOfObjectGraph(
-                            waysBelongingToRegion(), "SoftCut.waysBelongingToRegion", Bytes.kilobytes(100)));
-                }
-            }
-
             @Override
             public Action onNode(PbfNode node)
             {

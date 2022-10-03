@@ -45,7 +45,7 @@ public class IndonesianRoadNameStandardizerTest extends RoadNameStandardizerTest
     public void test()
     {
         List<String> lines = new ArrayList<>();
-        for (String line : testCases().reader().linesAsStringList())
+        for (String line : testCases().reader().readLines())
         {
             var columns = line.split(",");
             if (columns.length == 2)

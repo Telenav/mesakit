@@ -24,7 +24,6 @@ import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.value.count.Bytes;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.loading.Unloadable;
@@ -85,7 +84,7 @@ import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Access
  * @see WorldGraphRepositoryFolder
  * @see GridCell
  */
-@SuppressWarnings("unused") @JavaVirtualMachine.KivaKitExcludeFromSizeOf
+@SuppressWarnings("unused")
 public class WorldCell extends Region<WorldCell> implements Unloadable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
@@ -348,12 +347,6 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
         return worldGrid.included(this);
     }
 
-    public Bytes memorySize()
-    {
-        var graph = worldGrid.worldGraph();
-        return graph == null ? null : graph.estimatedMemorySize(this);
-    }
-
     /**
      * @return The (up to) 8 cells that are neighbors of this cell (and have graph data)
      */
@@ -385,13 +378,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
             @Override
             public String name()
             {
-                return outer.name() + " (" + memorySize() + ")";
-            }
-
-            @Override
-            protected Bytes memorySize()
-            {
-                return outer.memorySize();
+                return outer.name();
             }
 
             @Override
@@ -401,7 +388,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
                 DEBUG.trace("Loading graph for $", name());
                 @SuppressWarnings(
                         "resource") var archive = new GraphArchive(LOGGER, cellGraphFile(), READ, ProgressReporter.nullProgressReporter());
-                var graph = archive.load(DEBUG.isDebugOn() ? DEBUG.listener() : Listener.emptyListener());
+                var graph = archive.load(DEBUG.isDebugOn() ? DEBUG.listener() : Listener.nullListener());
                 if (graph == null)
                 {
                     LOGGER.warning("Unable to load graph for $", name());

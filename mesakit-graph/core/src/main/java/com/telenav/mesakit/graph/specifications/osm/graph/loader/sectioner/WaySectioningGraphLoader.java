@@ -183,6 +183,6 @@ public class WaySectioningGraphLoader extends BaseGraphLoader
     @Override
     public ValidationType validation()
     {
-        return new ValidationType("VALIDATE_WAY_SECTIONING").exclude(RelationStore.class);
+        return new ValidationType().exclude(RelationStore.class);
     }
 }

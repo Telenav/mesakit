@@ -30,11 +30,9 @@ import com.telenav.kivakit.core.messaging.messages.status.Warning;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.thread.Batcher;
 import com.telenav.kivakit.core.time.Time;
-import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.interfaces.collection.Addable;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
@@ -409,17 +407,8 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         {
             compressionMethod = method;
 
-            // Must specify -javaagent to VM, see JavaVirtualMachine.sizeOfObjectGraph()
-            JavaVirtualMachine.javaVirtualMachine().traceSizeChange(this, "compress", this, Bytes.kilobytes(100), () ->
-            {
-                var size = CompressibleCollection.compressReachableObjects(this, this, method, event ->
-                        DEBUG.trace("Compressed $", NamedObject.syntheticName(event)));
-                if (size != null)
-                {
-                    graph().estimatedMemorySize(size);
-                }
-            });
-
+            CompressibleCollection.compressReachableObjects(this, this, method, event ->
+                    DEBUG.trace("Compressed $", NamedObject.syntheticName(event)));
             return method;
         }
 

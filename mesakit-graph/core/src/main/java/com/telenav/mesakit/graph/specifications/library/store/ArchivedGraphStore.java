@@ -26,8 +26,6 @@ import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.time.Time;
-import com.telenav.kivakit.core.value.count.Bytes;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.interfaces.loading.Unloadable;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.graph.Graph;
@@ -196,7 +194,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
     public final void save(GraphArchive archive)
     {
         // If the store is invalid
-        if (!isValid())
+        if (!isValid(this))
         {
             // we cannot save
             throw new IllegalStateException("Cannot save invalid graph to " + archive.zip().resource());
@@ -257,16 +255,13 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
                 onUnloading(archive);
 
                 // Must specify -javaagent to VM, see JavaVirtualMachine.sizeOfObjectGraph()
-                JavaVirtualMachine.javaVirtualMachine().traceSizeChange(this, "unload", this, Bytes.kilobytes(100), () ->
+                for (var object : Type.type(this).reachableObjects(this))
                 {
-                    for (var object : Type.type(this).reachableObjects(this))
+                    if (object instanceof Unloadable)
                     {
-                        if (object instanceof Unloadable)
-                        {
-                            ((Unloadable) object).unload();
-                        }
+                        ((Unloadable) object).unload();
                     }
-                });
+                }
 
                 onUnloaded(archive);
             }

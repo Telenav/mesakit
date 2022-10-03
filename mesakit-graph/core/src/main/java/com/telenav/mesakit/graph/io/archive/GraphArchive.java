@@ -208,17 +208,6 @@ public class GraphArchive extends FieldArchive implements
         var graph = metadata.dataSpecification().newGraph(metadata.withName(resource().fileName().name()));
         graph.addListener(listener);
         graph.load(this);
-
-        if (isDebugOn() && JavaVirtualMachine.javaVirtualMachine().instrument())
-        {
-            graph.loadAll();
-            var memory = JavaVirtualMachine.javaVirtualMachine().sizeOfObjectGraph(graph, "GraphResource.load.graph",
-                    Bytes.megabytes(1));
-            var disk = resource().sizeInBytes();
-            trace("Graph memory = $, disk = $, memory/disk = $%", memory, disk,
-                    Doubles.format((double) memory.asBytes() / (double) disk.asBytes() * 100.0, 1));
-        }
-
         return graph;
     }
 

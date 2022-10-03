@@ -34,7 +34,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.telenav.kivakit.core.messaging.Listener.emptyListener;
+import static com.telenav.kivakit.core.messaging.Listener.nullListener;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE_SERIALIZATION_SESSION;
 
@@ -47,7 +47,7 @@ public class RegionIdentityCacheTest extends RegionUnitTest
         RegionIdentityCache<State> cache = listenTo(new RegionIdentityCache<>(State.class));
 
         // Create kryo output to memory
-        var session = sessionFactory().newSession(emptyListener());
+        var session = sessionFactory().newSession(nullListener());
         var data = new ByteArrayOutputStream(20_000);
         var output = new Output(data);
 

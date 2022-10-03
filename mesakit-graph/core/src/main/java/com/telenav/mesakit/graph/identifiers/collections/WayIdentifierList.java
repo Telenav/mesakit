@@ -31,7 +31,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.telenav.kivakit.core.messaging.Listener.emptyListener;
+import static com.telenav.kivakit.core.messaging.Listener.nullListener;
 
 public class WayIdentifierList extends ObjectList<PbfWayIdentifier>
 {
@@ -50,7 +50,7 @@ public class WayIdentifierList extends ObjectList<PbfWayIdentifier>
 
     public static WayIdentifierList parse(String string)
     {
-        return new Converter(emptyListener(), new Separators(",")).convert(string);
+        return new Converter(nullListener(), new Separators(",")).convert(string);
     }
 
     public static class Converter extends BaseStringConverter<WayIdentifierList>

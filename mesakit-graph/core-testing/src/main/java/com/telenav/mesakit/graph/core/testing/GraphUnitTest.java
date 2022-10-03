@@ -71,7 +71,7 @@ import com.telenav.mesakit.map.region.RegionKryoTypes;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.testing.RegionUnitTest;
 
-import static com.telenav.kivakit.core.messaging.Listener.emptyListener;
+import static com.telenav.kivakit.core.messaging.Listener.nullListener;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.resource.Extension.GRAPH;
 import static com.telenav.kivakit.resource.Extension.OSM_PBF;
@@ -410,7 +410,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
         }
         else
         {
-            return new GraphArchive(this, graphFile, READ, ProgressReporter.nullProgressReporter()).load(emptyListener());
+            return new GraphArchive(this, graphFile, READ, ProgressReporter.nullProgressReporter()).load(nullListener());
         }
         return null;
     }
