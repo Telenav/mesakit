@@ -19,6 +19,7 @@
 package com.telenav.mesakit.map.road.name.standardizer;
 
 import com.telenav.kivakit.core.language.module.PackageReference;
+import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.thread.KivaKitThread;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.model.RoadName;
@@ -29,6 +30,7 @@ import java.util.Map;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
+@SuppressWarnings("SpellCheckingInspection")
 public interface RoadNameStandardizer
 {
     Map<String, RoadNameStandardizer> standardizers = new HashMap<>();
@@ -51,9 +53,9 @@ public interface RoadNameStandardizer
         }
     }
 
-    static void loadInBackground(MapLocale locale, Mode mode)
+    static void loadInBackground(Listener listener, MapLocale locale, Mode mode)
     {
-        KivaKitThread.run("RoadStandardizerLoader", () -> get(locale, mode));
+        KivaKitThread.run(listener, "RoadStandardizerLoader", () -> get(locale, mode));
     }
 
     enum Mode

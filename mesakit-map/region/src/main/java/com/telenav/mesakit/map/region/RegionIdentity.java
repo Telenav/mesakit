@@ -40,6 +40,7 @@ import com.telenav.mesakit.map.region.regions.County;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
 import com.telenav.mesakit.map.region.regions.TimeZone;
+import org.jetbrains.annotations.NotNull;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
@@ -144,7 +145,7 @@ public class RegionIdentity implements StringFormattable, KryoSerializable
     }
 
     @Override
-    public String asString(Format format)
+    public String asString(@NotNull Format format)
     {
         return new ObjectFormatter(this).toString();
     }

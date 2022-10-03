@@ -53,7 +53,7 @@ public class VertexIdentifier extends IntegerIdentifier implements GraphElementI
                                                                                       String name,
                                                                                       String description)
     {
-        return SwitchParser.builder(VertexIdentifier.class)
+        return SwitchParser.switchParserBuilder(VertexIdentifier.class)
                 .name(name)
                 .description(description)
                 .converter(new Converter(listener));

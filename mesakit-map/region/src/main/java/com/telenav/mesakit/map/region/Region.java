@@ -71,6 +71,7 @@ import com.telenav.mesakit.map.region.regions.District;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
 import com.telenav.mesakit.map.region.regions.World;
+import org.jetbrains.annotations.NotNull;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -257,7 +258,7 @@ public abstract class Region<T extends Region<T>> implements
             executor.execute(() -> type(State.class).loadIdentities());
             executor.execute(() -> type(MetropolitanArea.class).loadIdentities());
             executor.execute(() -> type(County.class).loadIdentities());
-            Threads.shutdownAndAwait(executor);
+            Threads.shutdownAndAwaitTermination(executor);
         }
     }
 
@@ -319,13 +320,13 @@ public abstract class Region<T extends Region<T>> implements
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public static ArgumentParser.Builder<Region> regionArgumentParser(Listener listener, String description)
     {
-        return ArgumentParser.builder(Region.class).converter(new Converter(listener)).description(description);
+        return ArgumentParser.argumentParserBuilder(Region.class).converter(new Converter(listener)).description(description);
     }
 
     public static SwitchParser.Builder<RegionSet> regionListSwitchParser(Listener listener, String name,
                                                                          String description)
     {
-        return SwitchParser.builder(RegionSet.class)
+        return SwitchParser.switchParserBuilder(RegionSet.class)
                 .name(name)
                 .description(description)
                 .converter(new SetConverter(listener));
@@ -334,7 +335,7 @@ public abstract class Region<T extends Region<T>> implements
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public static SwitchParser.Builder<Region> regionSwitchParser(Listener listener, String name, String description)
     {
-        return SwitchParser.builder(Region.class).name(name).description(description).converter(new Converter(listener));
+        return SwitchParser.switchParserBuilder(Region.class).name(name).description(description).converter(new Converter(listener));
     }
 
     @SuppressWarnings({ "rawtypes" })
@@ -490,7 +491,7 @@ public abstract class Region<T extends Region<T>> implements
     }
 
     @Override
-    public String asString(Format format)
+    public String asString(@NotNull Format format)
     {
         return new ObjectFormatter(this).toString();
     }

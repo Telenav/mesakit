@@ -34,6 +34,7 @@ import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.measurements.internal.lexakai.DiagramMapMeasurementGeographic;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 import java.util.regex.Pattern;
@@ -164,7 +165,7 @@ public class Angle implements
 
     public static SwitchParser.Builder<Angle> angleSwitchParser(String name, String description)
     {
-        return SwitchParser.builder(Angle.class).name(name).converter(new DegreesConverter(LOGGER))
+        return SwitchParser.switchParserBuilder(Angle.class).name(name).converter(new DegreesConverter(LOGGER))
                 .description(description);
     }
 
@@ -354,7 +355,7 @@ public class Angle implements
     }
 
     @Override
-    public String asString(Format format)
+    public String asString(@NotNull Format format)
     {
         switch (format)
         {

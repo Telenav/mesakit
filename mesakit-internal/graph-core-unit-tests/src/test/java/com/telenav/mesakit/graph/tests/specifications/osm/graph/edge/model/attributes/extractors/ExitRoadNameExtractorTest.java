@@ -29,7 +29,7 @@ import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 import java.util.ArrayList;
 import java.util.Set;
 
-import static com.telenav.kivakit.core.messaging.Listener.emptyListener;
+import static com.telenav.kivakit.core.messaging.Listener.nullListener;
 import static com.telenav.mesakit.map.road.name.standardizer.RoadNameStandardizer.Mode.MESAKIT_STANDARDIZATION;
 
 public class ExitRoadNameExtractorTest extends RegionUnitTest
@@ -44,7 +44,7 @@ public class ExitRoadNameExtractorTest extends RegionUnitTest
 
     private Set<String> extract(PbfWay way)
     {
-        var extractor = new ExitRoadNameExtractor(MapLocale.ENGLISH_UNITED_STATES.get(), MESAKIT_STANDARDIZATION, emptyListener());
+        var extractor = new ExitRoadNameExtractor(MapLocale.ENGLISH_UNITED_STATES.get(), MESAKIT_STANDARDIZATION, nullListener());
         var roadNames = extractor.extract(way);
         return StringList.stringList(roadNames).asSet();
     }

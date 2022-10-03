@@ -116,6 +116,7 @@ import java.util.Locale;
 import java.util.Set;
 
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.messaging.Listener.throwingListener;
 
 /**
  * An edge in a {@link Graph} connecting two {@link Vertex}es. In the case of PBF graphs, edges are sections of ways
@@ -1539,7 +1540,7 @@ public abstract class Edge extends GraphElement implements
     @Override
     public boolean isValid()
     {
-        return super.isValid();
+        return super.isValid(throwingListener());
     }
 
     /**

@@ -89,7 +89,7 @@ public class PolylineTest extends UnitTest
         ensure(a.intersects(b));
         ensureNotNull(a.intersection(b));
 
-        var bounds = new Rectangle.Converter(Listener.emptyListener()).convert("30.9489,-84.0:32.9489,-82.0");
+        var bounds = new Rectangle.Converter(Listener.nullListener()).convert("30.9489,-84.0:32.9489,-82.0");
         ensure(bounds.asPolyline().intersects(b));
         ensureNotNull(bounds.asPolyline().intersection(b));
     }

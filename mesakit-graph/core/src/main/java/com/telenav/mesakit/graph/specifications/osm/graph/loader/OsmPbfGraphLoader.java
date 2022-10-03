@@ -40,7 +40,7 @@ import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
-import static com.telenav.kivakit.core.vm.Properties.isPropertyTrue;
+import static com.telenav.kivakit.core.vm.Properties.isSystemPropertyOrEnvironmentVariableTrue;
 import static com.telenav.mesakit.graph.Metadata.VALIDATE_EXCEPT_STATISTICS;
 
 /**
@@ -121,16 +121,16 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
                     .withEdgeCount(estimatedSectionedEdges)
                     .withName(graphName));
 
-            if (isPropertyTrue("MESAKIT_DEBUG_SAVE_RAW_GRAPH"))
+            if (isSystemPropertyOrEnvironmentVariableTrue("MESAKIT_DEBUG_SAVE_RAW_GRAPH"))
             {
-                raw.save(new GraphArchive(this, resolveProject(GraphProject.class).userGraphFolder().file("raw.graph"), ZipArchive.Mode.WRITE, ProgressReporter.none()));
+                raw.save(new GraphArchive(this, resolveProject(GraphProject.class).userGraphFolder().file("raw.graph"), ZipArchive.AccessMode.WRITE, ProgressReporter.nullProgressReporter()));
             }
 
             // and then section the raw graph by loading it into the destination graph
             var edgeSectioner = listenTo(new EdgeSectioner(
                     destination, analysis, loader.edgeNodes(), Distance.MAXIMUM));
             var waySectioner = new WaySectioningGraphLoader(raw, edgeSectioner);
-            var ways = Properties.property("MESAKIT_DEBUG_WAY_SECTIONS");
+            var ways = Properties.systemPropertyOrEnvironmentVariable("MESAKIT_DEBUG_WAY_SECTIONS");
             if (ways != null)
             {
                 var wayIdentifiers = WayIdentifierList.parse(ways).asSet();

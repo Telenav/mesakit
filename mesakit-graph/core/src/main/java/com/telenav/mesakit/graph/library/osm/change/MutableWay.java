@@ -318,7 +318,7 @@ public class MutableWay extends BaseMutableWay
         {
             if (name == null || !"name".equals(tag.getKey()))
             {
-                lines.add("    <tag k=\"" + tag.getKey() + "\" v=\"" + Escape.xml(tag.getValue()) + "\"/>");
+                lines.add("    <tag k=\"" + tag.getKey() + "\" v=\"" + Escape.escapeXml(tag.getValue()) + "\"/>");
             }
         }
 
@@ -326,7 +326,7 @@ public class MutableWay extends BaseMutableWay
         if (name != null)
         {
             // add a name tag
-            lines.add("    <tag k=\"name\" v=\"" + Escape.xml(name.name()) + "\"/>");
+            lines.add("    <tag k=\"name\" v=\"" + Escape.escapeXml(name.name()) + "\"/>");
         }
 
         // Close way tag

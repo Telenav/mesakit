@@ -24,7 +24,6 @@ import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
-import com.telenav.kivakit.core.string.KivaKitFormat;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
@@ -32,7 +31,8 @@ import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.string.AsIndentedString;
-import com.telenav.kivakit.core.string.AsStringIndenter;
+import com.telenav.kivakit.core.string.KivaKitFormat;
+import com.telenav.kivakit.core.string.ObjectIndenter;
 import com.telenav.kivakit.core.string.Strip;
 import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.value.count.Count;
@@ -46,9 +46,9 @@ import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.kivakit.properties.PropertyMap;
+import com.telenav.kivakit.resource.FileName;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
-import com.telenav.kivakit.resource.FileName;
 import com.telenav.kivakit.validation.BaseValidator;
 import com.telenav.kivakit.validation.Validatable;
 import com.telenav.kivakit.validation.ValidationType;
@@ -81,7 +81,7 @@ import java.util.regex.Pattern;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
-import static com.telenav.kivakit.core.messaging.Listener.emptyListener;
+import static com.telenav.kivakit.core.messaging.Listener.nullListener;
 import static com.telenav.kivakit.core.messaging.Listener.throwingListener;
 import static com.telenav.kivakit.core.value.level.Percent.percent;
 import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
@@ -155,7 +155,7 @@ import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
 @SuppressWarnings({ "DuplicateBranchesInSwitch", "DuplicatedCode" })
 public class Metadata implements Named, AsIndentedString, KryoSerializable, Validatable
 {
-    public static final ValidationType VALIDATE_EXCEPT_STATISTICS = new ValidationType("VALIDATE_EXCEPT_STATISTICS");
+    public static final ValidationType VALIDATE_EXCEPT_STATISTICS = new ValidationType();
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -194,12 +194,12 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      */
     public static Metadata from(File input, CountType countType)
     {
-        input = input.materialized(BroadcastingProgressReporter.create(LOGGER));
+        input = input.materialized(BroadcastingProgressReporter.createProgressReporter(LOGGER));
         var format = DataFormat.of(input);
         switch (format)
         {
             case Graph:
-                try (var archive = new GraphArchive(LOGGER, input, ZipArchive.Mode.READ, ProgressReporter.none()))
+                try (var archive = new GraphArchive(LOGGER, input, ZipArchive.AccessMode.READ, ProgressReporter.nullProgressReporter()))
                 {
                     return archive.metadata();
                 }
@@ -226,7 +226,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
 
     public static SwitchParser.Builder<Metadata> metadataSwitchParser(String name, String description)
     {
-        return SwitchParser.builder(Metadata.class)
+        return SwitchParser.switchParserBuilder(Metadata.class)
                 .name(name)
                 .converter(new Converter(LOGGER))
                 .description(description);
@@ -252,7 +252,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      */
     public static Metadata parse(FileName name)
     {
-        return parse(name.base().name());
+        return parse(name.baseName().name());
     }
 
     /**
@@ -555,7 +555,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     @Override
-    public AsStringIndenter asString(StringFormattable.Format format, AsStringIndenter indenter)
+    public ObjectIndenter asString(StringFormattable.Format format, ObjectIndenter indenter)
     {
         indenter.asString(this);
         indenter.labeled("nodes", nodeCount(REQUIRE_EXACT));
@@ -932,7 +932,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
                 problemIf(dataFormat() == null, "Data format is missing");
                 problemIf(dataSupplier() == null, "Data supplier is missing");
 
-                if (type == ValidationType.VALIDATE_ALL)
+                if (type == ValidationType.validateAll())
                 {
                     problemIf(dataBounds() == null, "Data bounds is missing");
                     problemIf(isZero(nodeCount(REQUIRE_EXACT)), "No nodes");
@@ -1266,7 +1266,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         var descriptor = tags.get("telenav-data-descriptor");
 
         var build = tags.get("telenav-data-build");
-        var size = Bytes.parseBytes(emptyListener(), tags.get("telenav-data-size"));
+        var size = Bytes.parseBytes(nullListener(), tags.get("telenav-data-size"));
         var precision = tags.get("telenav-data-precision");
         var bounds = tags.get("telenav-data-bounds");
         var nodes = tags.get("telenav-data-nodes");

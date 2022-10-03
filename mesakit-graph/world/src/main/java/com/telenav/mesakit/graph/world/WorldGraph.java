@@ -25,7 +25,6 @@ import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.thread.Threads;
 import com.telenav.kivakit.core.time.Duration;
-import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.version.Version;
@@ -138,7 +137,7 @@ public class WorldGraph extends Graph
     {
         if (remote != null)
         {
-            var progress = BroadcastingProgressReporter.create(LOGGER, "bytes");
+            var progress = BroadcastingProgressReporter.createProgressReporter(LOGGER, "bytes");
             remote.copyTo(local, CopyMode.OVERWRITE, progress);
         }
 
@@ -270,33 +269,6 @@ public class WorldGraph extends Graph
     public EdgeSequence edgesIntersecting(Rectangle bounds, Matcher<Edge> matcher)
     {
         return worldCellsWithin(bounds).edgesIntersecting(bounds, matcher);
-    }
-
-    public Bytes estimatedMemorySize(WorldCell worldCell)
-    {
-        var size = worldGrid().index().memorySize(worldCell);
-        if (size != null)
-        {
-            return size;
-        }
-        if (worldCell.fileSize() != null)
-        {
-            return worldCell.fileSize().times(2);
-        }
-        return Bytes.megabytes(32);
-    }
-
-    @Override
-    public Bytes estimatedMemorySize()
-    {
-        var total = Bytes._0;
-        for (var graph : worldCells().cellGraphs())
-        {
-            var size = graph.estimatedMemorySize();
-            LOGGER.information("$ => $", graph.name(), size);
-            total = total.plus(size);
-        }
-        return total;
     }
 
     public WorldGraphRepositoryFolder folder()
@@ -490,7 +462,7 @@ public class WorldGraph extends Graph
 
     public RelationSet relationsInside(Region region)
     {
-        return relationsIntersecting(region.bounds(), Filter.acceptingAll()).matching(relation ->
+        return relationsIntersecting(region.bounds(), Filter.acceptAll()).matching(relation ->
         {
             for (var edge : relation.edgeSet())
             {
@@ -652,7 +624,7 @@ public class WorldGraph extends Graph
     {
         var executor = Threads.threadPool("WorldCell");
         allWorldCells().forEach(worldCell -> executor.submit(() -> code.call(worldCell)));
-        Threads.shutdownAndAwait(executor);
+        Threads.shutdownAndAwaitTermination(executor);
     }
 
     private Graph smallestGraph()

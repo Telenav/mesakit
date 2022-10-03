@@ -19,15 +19,14 @@
 package com.telenav.mesakit.map.cutter.cuts.maps;
 
 import com.telenav.kivakit.core.language.primitive.Longs;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine.KivaKitExcludeFromSizeOf;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToLongMap;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
 import com.telenav.mesakit.map.region.Region;
-import com.telenav.mesakit.map.region.RegionSet;
 import com.telenav.mesakit.map.region.RegionLimits;
+import com.telenav.mesakit.map.region.RegionSet;
 import org.openstreetmap.osmosis.core.domain.v0_6.Node;
 
 import java.util.ArrayList;
@@ -43,11 +42,9 @@ public class RegionNodes
     private static final Debug DEBUG = new Debug(LOGGER);
 
     /** Map between region indexes and regions */
-    @KivaKitExcludeFromSizeOf
     private final RegionIndexMap regionIndexMap;
 
     /** Set of regions that are in this store */
-    @KivaKitExcludeFromSizeOf
     private final Set<Integer> regionIndexes = new HashSet<>();
 
     /** Regions for each node */

@@ -25,11 +25,9 @@ import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.registry.RegistryTrait;
 import com.telenav.kivakit.core.time.Time;
-import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.core.version.VersionedObject;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.interfaces.collection.NextIterator;
 import com.telenav.kivakit.interfaces.naming.Named;
@@ -55,18 +53,15 @@ import com.telenav.mesakit.map.geography.indexing.quadtree.QuadTreeSpatialIndex;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.region.RegionLimits;
-import com.telenav.mesakit.map.utilities.grid.GridCell;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
-import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
-import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.WRITE;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.READ;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.WRITE;
 
 /**
  * The world graph index stores metadata and provides spatial indexing services for a {@link WorldGraph} which can't
@@ -77,22 +72,22 @@ import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.W
  * <p>
  * <b>Attributes</b>
  * <p>
- * A world graph index has metadata describing the contents of the entire world graph. This is accessed with {@link
- * #metadata()}. The version of the graph index can be retrieved with {@link #version()}.
+ * A world graph index has metadata describing the contents of the entire world graph. This is accessed with
+ * {@link #metadata()}. The version of the graph index can be retrieved with {@link #version()}.
  * <p>
  * <b>Persistence</b>
  * <p>
  * The world graph index for a {@link WorldGraph} is stored in the {@link WorldGraphRepositoryFolder} that contains the
  * cell graphs. The file containing the index is called "index.world". This file is a {@link FieldArchive} stored in zip
  * format where each stream in the zip file stores an object in this index. A world graph index can be loaded from an
- * "index.world" file with {@link #loadFrom(File)} and it can be saved to such a file with {@link #save(File,
- * Metadata)}.
+ * "index.world" file with {@link #loadFrom(File)} and it can be saved to such a file with
+ * {@link #save(File, Metadata)}.
  * <p>
  * <b>Places</b>
  * <p>
  * Since there is a frequent need to query places from many neighboring cells, this is made more efficient with a single
- * spatial index for all places in a world graph. The number of places in this index can be retrieved with {@link
- * #placeCount()} and queries for places can be conducted with:
+ * spatial index for all places in a world graph. The number of places in this index can be retrieved with
+ * {@link #placeCount()} and queries for places can be conducted with:
  * <ul>
  *     <li>{@link #placesInside(Rectangle)} - A sequence of places inside the given bounds</li>
  *     <li>{@link #placeForLocation(Location)} - The place (if any) at the given location</li>
@@ -180,9 +175,6 @@ public class WorldGraphIndex implements
     @KivaKitArchivedField(lazy = true)
     private SplitLongToIntMap cellForWayIdentifier;
 
-    @KivaKitArchivedField
-    private final Map<GridCell, Bytes> memorySize = new HashMap<>();
-
     /** Metadata about this world graph */
     private Metadata metadata;
 
@@ -206,13 +198,6 @@ public class WorldGraphIndex implements
         var worldGrid = worldCell.worldGrid();
         assert worldGrid.worldGraph() != null;
 
-        // store the size of the graph in the index
-        if (DEBUG.isDebugOn())
-        {
-            memorySize.put(worldCell.gridCell(), JavaVirtualMachine.local().sizeOfObjectGraph(cellGraph.loadAll(),
-                    "WorldGraphIndex.graph", Bytes.kilobytes(100)));
-        }
-
         // and add all places having a population
         for (var place : cellGraph.placesWithPopulationOfAtLeast(Count._1))
         {
@@ -233,16 +218,16 @@ public class WorldGraphIndex implements
     {
         // Validate that the resource is a zip archive. If it's not then the file is some earlier
         // placeholder index file that we can ignore.
-        if (ZipArchive.is(LOGGER, file))
+        if (ZipArchive.isZipArchive(LOGGER, file))
         {
             // Record start time
             var start = Time.now();
 
             // If the resource is a virtual file, it must be materialized to read it as a zip file
-            file = file.materialized(ProgressReporter.none());
+            file = file.materialized(ProgressReporter.nullProgressReporter());
 
             // Attach the zip archive and the field archive based on it
-            archive = new FieldArchive(file, ProgressReporter.none(), READ);
+            archive = new FieldArchive(file, ProgressReporter.nullProgressReporter(), READ);
 
             // Clear out fields we will load from archive
             clearLazyLoadedFields();
@@ -251,7 +236,7 @@ public class WorldGraphIndex implements
             {
                 // Load archived fields
                 var version = archive.version();
-                VersionedObject<Metadata> metadata = archive.zip().load(require(KryoObjectSerializer.class), "metadata");
+                VersionedObject<Metadata> metadata = archive.zip().loadVersionedObject(require(KryoObjectSerializer.class), "metadata");
                 if (metadata != null)
                 {
                     this.metadata = metadata.object();
@@ -275,14 +260,6 @@ public class WorldGraphIndex implements
             fail("Unable to load index: $ is not a zip archive", file);
         }
         return this;
-    }
-
-    public Bytes memorySize(WorldCell worldCell)
-    {
-        synchronized (memorySize)
-        {
-            return memorySize.get(worldCell.gridCell());
-        }
     }
 
     public Metadata metadata()

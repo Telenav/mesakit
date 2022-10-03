@@ -52,8 +52,8 @@ public class WorldEdgeIdentifier extends EdgeIdentifier
         @Override
         protected WorldEdgeIdentifier onToValue(String value)
         {
-            var cellName = Paths.withoutSuffix(value, '-');
-            var identifier = Long.parseLong(Paths.optionalSuffix(value, '-'));
+            var cellName = Paths.pathWithoutSuffix(value, '-');
+            var identifier = Long.parseLong(Paths.pathOptionalSuffix(value, '-'));
             return new WorldEdgeIdentifier(grid.worldCell(cellName), new EdgeIdentifier(identifier));
         }
     }

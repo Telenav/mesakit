@@ -61,7 +61,7 @@ public class StringListTagCodecTest extends UnitTest
         test(codec, PbfTagList.create().add("z", "z"));
         test(codec, tags());
 
-        var progress = BroadcastingProgressReporter.create();
+        var progress = BroadcastingProgressReporter.createProgressReporter();
         _1_000.loop(() ->
         {
             test(codec, randomTags());
@@ -76,7 +76,7 @@ public class StringListTagCodecTest extends UnitTest
 
     private PropertyMap frequencies(String name)
     {
-        return PropertyMap.load(this, thisPackage(), "codecs/" + name);
+        return PropertyMap.loadPropertyMap(this, packageForThis(), "codecs/" + name);
     }
 
     private PbfTagList randomTags()

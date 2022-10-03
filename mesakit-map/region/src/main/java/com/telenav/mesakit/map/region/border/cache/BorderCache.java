@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.region.border.cache;
 
-import com.telenav.kivakit.collections.map.MultiMap;
+import com.telenav.kivakit.core.collections.map.MultiMap;
 import com.telenav.kivakit.component.BaseComponent;
 import com.telenav.kivakit.core.io.IO;
 import com.telenav.kivakit.core.language.Objects;
@@ -100,8 +100,8 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.kivakit.core.messaging.Listener.consoleListener;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
-import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
-import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.READ;
+import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE_SERIALIZATION_SESSION;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.DISCARDED;
 
@@ -352,7 +352,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
                     {
                         // and save the identities to it
                         var session = serializationSession();
-                        session.open(out, RESOURCE, kivakit().projectVersion());
+                        session.open(out, RESOURCE_SERIALIZATION_SESSION, kivakit().projectVersion());
                         identityCache.save(session, regionProject().borderDataVersion(), identities);
                     }
                     catch (Exception e)
@@ -496,7 +496,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
             // and the zip file target we're going to download to and unzip.
             var jar = localJar(NETWORK_PATH.fileName());
             trace("Trying to open $", jar);
-            var archive = ZipArchive.open(this, jar, READ);
+            var archive = ZipArchive.zipArchive(this, jar, READ);
             try
             {
                 // If archive isn't valid,
@@ -519,7 +519,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
                         // try to download the data into the cache
                         information(AsciiArt.textBox("Downloading", "from: $\nto: $",
                                 NETWORK_PATH.asContraction(80), jar.path().asContraction(80)) + "\n ");
-                        var downloadProgress = BroadcastingProgressReporter.create(this, "bytes");
+                        var downloadProgress = BroadcastingProgressReporter.createProgressReporter(this, "bytes");
                         downloadProgress.start("Downloading");
                         information("Downloading $ to $", source, jar);
                         cache().add(source.get(), OVERWRITE, downloadProgress);
@@ -527,7 +527,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
 
                         // and try to open the archive again
                         trace("Trying to open $", jar);
-                        archive = ZipArchive.open(this, jar, READ);
+                        archive = ZipArchive.zipArchive(this, jar, READ);
                     }
                     catch (Throwable e)
                     {
@@ -971,7 +971,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
             try (var output = borderCacheFile().openForWriting())
             {
                 var session = serializationSession();
-                session.open(output, RESOURCE, kivakit().projectVersion());
+                session.open(output, RESOURCE_SERIALIZATION_SESSION, kivakit().projectVersion());
                 session.write(new SerializableObject<>(index(), regionProject().borderDataVersion()));
                 session.close();
             }

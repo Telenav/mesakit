@@ -41,7 +41,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
  */
 public abstract class GraphElementSpatialIndex<T extends GraphElement>
 {
-    private final Matcher<T> allElements = Filter.acceptingAll();
+    private final Matcher<T> allElements = Filter.acceptAll();
 
     private transient Graph graph;
 

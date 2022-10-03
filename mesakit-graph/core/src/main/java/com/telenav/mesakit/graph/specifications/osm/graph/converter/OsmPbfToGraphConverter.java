@@ -197,7 +197,7 @@ public class OsmPbfToGraphConverter extends PbfToGraphConverter
         loader.dataSourceFactory(dataSource, metadata);
 
         var loadedMetadata = graph.load(loader, GraphConstraints.ALL);
-        if (loadedMetadata != null && loadedMetadata.isValid())
+        if (loadedMetadata != null && loadedMetadata.isValid(this))
         {
             return graph;
         }

@@ -27,9 +27,9 @@ import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.messaging.messages.status.Quibble;
 import com.telenav.kivakit.core.messaging.messages.status.Warning;
 import com.telenav.kivakit.core.string.AsIndentedString;
-import com.telenav.kivakit.core.string.AsStringIndenter;
 import com.telenav.kivakit.core.string.CaseFormat;
-import com.telenav.kivakit.core.string.StringTo;
+import com.telenav.kivakit.core.string.ObjectIndenter;
+import com.telenav.kivakit.core.string.StringConversions;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.interfaces.collection.Indexed;
@@ -66,6 +66,7 @@ import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserName;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import org.jetbrains.annotations.NotNull;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
@@ -176,7 +177,7 @@ public abstract class GraphElement implements
         AsIndentedString
 {
     /** Validation when adding elements */
-    public static final ValidationType VALIDATE_RAW = new ValidationType("VALIDATE_FOR_ADDING");
+    public static final ValidationType VALIDATE_RAW = new ValidationType() {};
 
     /** Null index */
     public static final int NULL_INDEX = 0;
@@ -278,26 +279,26 @@ public abstract class GraphElement implements
     public abstract GraphElement asHeavyWeight();
 
     @Override
-    public String asString(Format format)
+    public String asString(@NotNull Format format)
     {
         if (format == PROGRAMMATIC)
         {
             return Long.toString(identifierAsLong());
         }
 
-        var indenter = new AsStringIndenter(format)
+        var indenter = new ObjectIndenter(format)
                 .levels(Maximum._8)
                 .pruneAt(Edge.class);
 
         var string = asString(format, indenter).toString();
-        return format == Format.HTML ? StringTo.html(string) : string;
+        return format == Format.HTML ? StringConversions.toHtmlString(string) : string;
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public AsStringIndenter asString(Format format, AsStringIndenter indenter)
+    public ObjectIndenter asString(Format format, ObjectIndenter indenter)
     {
         if (indenter.indentationLevel() > 1 && !indenter.canExplore(this))
         {

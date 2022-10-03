@@ -83,7 +83,7 @@ public abstract class AllNodeDiskStore
             }
             else
             {
-                return !folder.files().matching(name -> name.baseName().startsWith(name())).isEmpty();
+                return !folder.files().matching(name -> name.baseFileName().startsWith(name())).isEmpty();
             }
         }
         return containsData;

@@ -340,7 +340,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     {
         ensure(data != null);
         ensure(metadata != null);
-        ensure(metadata.validator(Metadata.VALIDATE_EXCEPT_STATISTICS).validate(), "Metadata is invalid");
+        ensure(metadata.validator(Metadata.VALIDATE_EXCEPT_STATISTICS).validate(this), "Metadata is invalid");
         ensure(tagFilter != null);
 
         dataSourceFactory(data, metadata);
@@ -556,7 +556,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     @Override
     public ValidationType validation()
     {
-        return new ValidationType("VALIDATE_RAW_GRAPH_STORE")
+        return new ValidationType()
                 .exclude(RelationStore.class)
                 .exclude(VertexStore.class);
     }

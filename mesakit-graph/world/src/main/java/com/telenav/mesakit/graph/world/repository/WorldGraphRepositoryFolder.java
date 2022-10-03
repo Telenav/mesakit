@@ -62,14 +62,14 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
 
     /** A switch parser to select an existing world graph folder */
     public static SwitchParser.Builder<WorldGraphRepositoryFolder> SWITCH_PARSER_EXISTING =
-            SwitchParser.builder(WorldGraphRepositoryFolder.class)
+            SwitchParser.switchParserBuilder(WorldGraphRepositoryFolder.class)
                     .name("world-graph-folder")
                     .converter(new Converter(LOGGER, Check.EXISTS))
                     .description("Full path to world graph data folder");
 
     /** A switch parser to select a non-existing world graph folder */
     public static SwitchParser.Builder<WorldGraphRepositoryFolder> SWITCH_PARSER_NON_EXISTING =
-            SwitchParser.builder(WorldGraphRepositoryFolder.class)
+            SwitchParser.switchParserBuilder(WorldGraphRepositoryFolder.class)
                     .name("world-graph-folder")
                     .converter(new Converter(LOGGER, Check.IS_VALID))
                     .description("Full path to world graph data folder");

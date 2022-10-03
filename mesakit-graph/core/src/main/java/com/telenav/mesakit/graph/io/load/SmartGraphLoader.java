@@ -37,7 +37,7 @@ import com.telenav.mesakit.graph.io.archive.GraphArchive;
 import com.telenav.mesakit.graph.specifications.common.graph.loader.PbfToGraphConverter;
 
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
-import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.READ;
 
 /**
  * Loads any kind of resource to produce a graph, including:
@@ -67,7 +67,7 @@ public class SmartGraphLoader extends BaseRepeater implements Named
                                                                                String description,
                                                                                PbfToGraphConverter.Configuration configuration)
     {
-        return ArgumentParser.builder(SmartGraphLoader.class)
+        return ArgumentParser.argumentParserBuilder(SmartGraphLoader.class)
                 .description(description)
                 .converter(new Converter(listener, configuration));
     }
@@ -83,7 +83,7 @@ public class SmartGraphLoader extends BaseRepeater implements Named
                                                                            String description,
                                                                            PbfToGraphConverter.Configuration configuration)
     {
-        return SwitchParser.builder(SmartGraphLoader.class)
+        return SwitchParser.switchParserBuilder(SmartGraphLoader.class)
                 .name(name)
                 .description(description)
                 .converter(new Converter(LOGGER, configuration));
@@ -150,17 +150,17 @@ public class SmartGraphLoader extends BaseRepeater implements Named
 
     public Time modifiedAt()
     {
-        return file.modifiedAt();
+        return file.lastModified();
     }
 
     public Graph load()
     {
-        return load(this, ProgressReporter.none());
+        return load(this, ProgressReporter.nullProgressReporter());
     }
 
     public Graph load(Listener listener)
     {
-        return load(listener, BroadcastingProgressReporter.create(LOGGER, "bytes"));
+        return load(listener, BroadcastingProgressReporter.createProgressReporter(LOGGER, "bytes"));
     }
 
     @SuppressWarnings("resource")

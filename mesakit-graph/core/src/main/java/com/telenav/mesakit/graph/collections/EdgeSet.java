@@ -340,7 +340,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
 
     @Override
     @SuppressWarnings("SwitchStatementWithTooFewBranches")
-    public String asString(Format format)
+    public String asString(@NotNull Format format)
     {
         switch (format)
         {

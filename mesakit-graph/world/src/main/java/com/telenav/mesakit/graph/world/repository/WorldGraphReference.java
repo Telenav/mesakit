@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.world.repository;
 
 import com.telenav.kivakit.settings.Deployment;
-import com.telenav.kivakit.settings.Settings;
+import com.telenav.kivakit.settings.SettingsRegistry;
 import com.telenav.kivakit.core.collections.map.CountMap;
 import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.core.language.Objects;
@@ -140,7 +140,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
                 if (graph == null)
                 {
                     // install the deployment in case it wasn't installed yet,
-                    Settings.global().registerSettingsIn(new WorldGraphDeployments(LOGGER).deployment(deployment.name()));
+                    SettingsRegistry.global().registerSettingsIn(new WorldGraphDeployments(LOGGER).deployment(deployment.name()));
 
                     // create the world graph,
                     graph = LOGGER.listenTo(WorldGraph.load(folder()));

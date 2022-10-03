@@ -20,9 +20,9 @@ package com.telenav.mesakit.map.road.name.standardizer;
 
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.mesakit.map.region.locale.MapLocale;
+import com.telenav.mesakit.map.region.testing.RegionUnitTest;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.ParsedRoadName;
-import com.telenav.mesakit.map.region.testing.RegionUnitTest;
 import org.junit.Ignore;
 
 import java.util.ArrayList;
@@ -49,7 +49,7 @@ public abstract class RoadNameStandardizerTest extends RegionUnitTest
         if (lines == null)
         {
             lines = new ArrayList<>();
-            for (String line : resource.reader().linesAsStringList())
+            for (String line : resource.reader().readLines())
             {
                 if (!line.startsWith("#"))
                 {

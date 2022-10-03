@@ -155,7 +155,7 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
                 while (keys.hasNext())
                 {
                     var at = keys.next();
-                    if (!Strings.equals(that.get(at), get(at)))
+                    if (!Strings.equalsAllowNull(that.get(at), get(at)))
                     {
                         return false;
                     }

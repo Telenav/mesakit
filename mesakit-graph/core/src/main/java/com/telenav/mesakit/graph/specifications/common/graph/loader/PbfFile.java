@@ -32,8 +32,8 @@ import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
-import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
-import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.WRITE;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.READ;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.WRITE;
 
 /**
  * An OSM PBF resource that can be converted to a graph by calling {@link #graph(ProgressReporter)}.
@@ -81,7 +81,7 @@ public class PbfFile extends BaseRepeater implements Named
         var metadata = Metadata.from(file);
         if (metadata != null)
         {
-            var output = Folder.temporaryForProcess(Folder.Type.CLEAN_UP_ON_EXIT)
+            var output = Folder.temporaryForProcess(Folder.FolderType.CLEAN_UP_ON_EXIT)
                     .temporaryFile(file.fileName().withoutExtension(Extension.OSM_PBF)
                             .withoutExtension(Extension.parseExtension(this, ".pbf.gz")), Extension.GRAPH);
 
@@ -118,7 +118,7 @@ public class PbfFile extends BaseRepeater implements Named
 
     public Time modifiedAt()
     {
-        return file.modifiedAt();
+        return file.lastModified();
     }
 
     @Override
