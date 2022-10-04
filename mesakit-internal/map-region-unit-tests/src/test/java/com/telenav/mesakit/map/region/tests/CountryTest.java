@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.region.tests;
 
-import com.telenav.kivakit.core.locale.CountryIsoCode;
+import com.telenav.kivakit.core.locale.LocaleRegion;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.loggers.ConsoleLogger;
 import com.telenav.mesakit.map.geography.Location;
@@ -32,12 +32,12 @@ import org.junit.Test;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.core.locale.LanguageIsoCode.CHINESE_MANDARIN;
-import static com.telenav.kivakit.core.locale.LanguageIsoCode.ENGLISH;
-import static com.telenav.kivakit.core.locale.LanguageIsoCode.FRENCH;
-import static com.telenav.kivakit.core.locale.LanguageIsoCode.GERMAN;
-import static com.telenav.kivakit.core.locale.LanguageIsoCode.PORTUGUESE;
-import static com.telenav.kivakit.core.locale.LanguageIsoCode.SPANISH;
+import static com.telenav.kivakit.core.locale.LocaleLanguage.CHINESE_MANDARIN;
+import static com.telenav.kivakit.core.locale.LocaleLanguage.ENGLISH;
+import static com.telenav.kivakit.core.locale.LocaleLanguage.FRENCH;
+import static com.telenav.kivakit.core.locale.LocaleLanguage.GERMAN;
+import static com.telenav.kivakit.core.locale.LocaleLanguage.PORTUGUESE;
+import static com.telenav.kivakit.core.locale.LocaleLanguage.SPANISH;
 
 public class CountryTest extends RegionUnitTest
 {
@@ -103,7 +103,7 @@ public class CountryTest extends RegionUnitTest
                 LOGGER.glitch("No country for numeric country code $", value);
             }
             ensure(country != null);
-            CountryIsoCode iso = ensureNotNull(country).identity().countryIsoCode();
+            LocaleRegion iso = ensureNotNull(country).identity().countryIsoCode();
             ensureEqual(key, iso.alpha3Code());
         });
     }

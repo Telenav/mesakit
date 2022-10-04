@@ -28,6 +28,7 @@ import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.resource.FileName;
 import com.telenav.kivakit.filesystem.FilePath;
 import com.telenav.mesakit.graph.Metadata;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 
@@ -61,7 +62,7 @@ public class WorldGraphRepository extends Folder implements Serializable
 
     public static SwitchParser.Builder<WorldGraphRepository> worldGraphRepositorySwitchParser(String description)
     {
-        return SwitchParser.builder(WorldGraphRepository.class).name("world-graph-repository")
+        return SwitchParser.switchParserBuilder(WorldGraphRepository.class).name("world-graph-repository")
                 .converter(new Converter(LOGGER)).description(description);
     }
 
@@ -100,13 +101,13 @@ public class WorldGraphRepository extends Folder implements Serializable
     }
 
     @Override
-    public WorldGraphRepositoryFolder folder(FileName child)
+    public WorldGraphRepositoryFolder folder(@NotNull FileName child)
     {
         return unsupported();
     }
 
     @Override
-    public WorldGraphRepositoryFolder folder(Folder child)
+    public WorldGraphRepositoryFolder folder(@NotNull Folder child)
     {
         return unsupported();
     }

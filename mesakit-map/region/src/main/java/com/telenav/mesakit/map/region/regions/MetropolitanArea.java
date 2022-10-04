@@ -103,7 +103,7 @@ public class MetropolitanArea extends Region<MetropolitanArea>
     public static SwitchParser.Builder<MetropolitanArea> metropolitanAreaSwitchParser(String name,
                                                                                       String description)
     {
-        return SwitchParser.builder(MetropolitanArea.class).name(name)
+        return SwitchParser.switchParserBuilder(MetropolitanArea.class).name(name)
                 .converter(new Converter<>(LOGGER())).description(description);
     }
 

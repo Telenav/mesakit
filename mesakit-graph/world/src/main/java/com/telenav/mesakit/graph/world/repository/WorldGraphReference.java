@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.world.repository;
 
 import com.telenav.kivakit.settings.Deployment;
-import com.telenav.kivakit.settings.Settings;
+import com.telenav.kivakit.settings.SettingsRegistry;
 import com.telenav.kivakit.core.collections.map.CountMap;
 import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.core.language.Objects;
@@ -99,7 +99,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
 
         synchronized (WorldGraphReference.class)
         {
-            if (!referenceCount.contains(this))
+            if (!referenceCount.containsKey(this))
             {
                 increment();
             }
@@ -117,7 +117,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
         if (object instanceof WorldGraphReference)
         {
             var that = (WorldGraphReference) object;
-            return Objects.equalPairs(folder(), that.folder(), deployment, that.deployment);
+            return Objects.areEqualPairs(folder(), that.folder(), deployment, that.deployment);
         }
         return false;
     }
@@ -140,7 +140,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
                 if (graph == null)
                 {
                     // install the deployment in case it wasn't installed yet,
-                    Settings.global().registerSettingsIn(new WorldGraphDeployments(LOGGER).deployment(deployment.name()));
+                    SettingsRegistry.global().registerSettingsIn(new WorldGraphDeployments(LOGGER).deployment(deployment.name()));
 
                     // create the world graph,
                     graph = LOGGER.listenTo(WorldGraph.load(folder()));
@@ -156,7 +156,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
     @Override
     public int hashCode()
     {
-        return Hash.many(folder(), deployment);
+        return Hash.hashMany(folder(), deployment);
     }
 
     /**

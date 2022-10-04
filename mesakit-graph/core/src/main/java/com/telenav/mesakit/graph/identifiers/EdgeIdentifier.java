@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph.identifiers;
 
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseConverter;
-import com.telenav.kivakit.conversion.core.value.QuantizableConverter;
+import com.telenav.kivakit.conversion.core.value.LongValuedConverter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.value.identifier.Identifier;
@@ -52,7 +52,9 @@ import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifi
  * @see Edge#identifierAsLong()
  * @see PbfWayIdentifier
  */
-public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
+@SuppressWarnings("unused")
+public class EdgeIdentifier extends Identifier implements
+        GraphElementIdentifier
 {
     public static final int SIZE_IN_BITS = 64;
 
@@ -112,7 +114,7 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
                                                                                   String name,
                                                                                   String description)
     {
-        return SwitchParser.builder(EdgeIdentifier.class)
+        return SwitchParser.switchParserBuilder(EdgeIdentifier.class)
                 .name(name)
                 .description(description)
                 .converter(new Converter(listener));
@@ -158,7 +160,7 @@ public class EdgeIdentifier extends Identifier implements GraphElementIdentifier
         }
     }
 
-    public static class Converter extends QuantizableConverter<EdgeIdentifier>
+    public static class Converter extends LongValuedConverter<EdgeIdentifier>
     {
         public Converter(Listener listener)
         {

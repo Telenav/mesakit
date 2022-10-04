@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.tests;
 
 import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Route;
@@ -50,7 +50,7 @@ public class EdgeTest extends GraphUnitTest
     {
         final Graph graph = osmDowntownSeattleTest();
         final Edge edge = graph.edges().iterator().next();
-        ensure(edge.asString(Stringable.Format.TEXT).length() > 100);
+        ensure(edge.asString(StringFormattable.Format.TEXT).length() > 100);
     }
 
     @Test

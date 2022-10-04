@@ -41,7 +41,7 @@ import java.util.regex.Pattern;
  *
  * @author jonathanl (shibo)
  */
-@SuppressWarnings("SpellCheckingInspection") @UmlClassDiagram(diagram = DiagramMapMeasurementGeographic.class)
+@SuppressWarnings({ "SpellCheckingInspection", "unused" }) @UmlClassDiagram(diagram = DiagramMapMeasurementGeographic.class)
 @LexakaiJavadoc(complete = true)
 public class Heading extends Angle implements Headed
 {
@@ -81,7 +81,7 @@ public class Heading extends Angle implements Headed
 
     public static Heading parse(String text)
     {
-        return new Converter(Listener.emptyListener()).convert(text);
+        return new Converter(Listener.nullListener()).convert(text);
     }
 
     public static Heading radians(double radians)
@@ -96,7 +96,8 @@ public class Heading extends Angle implements Headed
      *
      * @author jonathanl (shibo)
      */
-    @SuppressWarnings("DuplicatedCode") public static class Converter extends BaseStringConverter<Heading>
+    @SuppressWarnings("DuplicatedCode")
+    public static class Converter extends BaseStringConverter<Heading>
     {
         /** Pattern to match strings */
         private static final Pattern PATTERN = Pattern.compile("([0-9]+([.,][0-9]+)?)\\s+(degree)s?",
@@ -238,7 +239,7 @@ public class Heading extends Angle implements Headed
     }
 
     @Override
-    public long quantum()
+    public long longValue()
     {
         return (long) asDegrees();
     }

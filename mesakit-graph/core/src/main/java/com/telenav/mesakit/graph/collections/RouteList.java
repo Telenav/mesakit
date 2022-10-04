@@ -19,7 +19,6 @@
 package com.telenav.mesakit.graph.collections;
 
 import com.telenav.kivakit.core.collections.list.ObjectList;
-import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
 import org.jetbrains.annotations.NotNull;
@@ -29,6 +28,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
+import static com.telenav.kivakit.core.collections.list.ObjectList.objectList;
 
 /**
  * A list of routes, not necessarily connected in any way.
@@ -45,7 +46,7 @@ import java.util.Map;
 
     public RouteList(Iterable<Route> iterable)
     {
-        Iterables.addAll(iterable, routes);
+        routes.addAll(objectList(iterable));
     }
 
     public void add(Route edge)

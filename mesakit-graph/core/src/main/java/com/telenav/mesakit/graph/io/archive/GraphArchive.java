@@ -88,7 +88,7 @@ public class GraphArchive extends FieldArchive implements
 
     public static ArgumentParser.Builder<Graph> argumentParser(Listener listener, String description)
     {
-        return ArgumentParser.builder(Graph.class)
+        return ArgumentParser.argumentParserBuilder(Graph.class)
                 .description(description)
                 .converter(new GraphArchive.Converter(listener));
     }
@@ -100,17 +100,17 @@ public class GraphArchive extends FieldArchive implements
             var prefix = current + ":";
             if (specifier.toUpperCase().startsWith(prefix))
             {
-                return Resource.resolve(listener, specifier.substring(prefix.length()));
+                return Resource.resolveResource(listener, specifier.substring(prefix.length()));
             }
         }
-        return Resource.resolve(listener, specifier);
+        return Resource.resolveResource(listener, specifier);
     }
 
     public static SwitchParser.Builder<Graph> graphArchiveSwitchParser(Listener listener,
                                                                        String name,
                                                                        String description)
     {
-        return SwitchParser.builder(Graph.class)
+        return SwitchParser.switchParserBuilder(Graph.class)
                 .name(name)
                 .description(description)
                 .converter(new Converter(listener));
@@ -119,7 +119,7 @@ public class GraphArchive extends FieldArchive implements
     public static SwitchParser.Builder<GraphList> graphListSwitchParser(Listener listener, String name,
                                                                         String description)
     {
-        return SwitchParser.builder(GraphList.class)
+        return SwitchParser.switchParserBuilder(GraphList.class)
                 .name(name)
                 .description(description)
                 .converter(new GraphArchive.ListConverter(listener));
@@ -137,7 +137,7 @@ public class GraphArchive extends FieldArchive implements
 
         public Converter(Listener listener)
         {
-            this(listener, ProgressReporter.none());
+            this(listener, ProgressReporter.nullProgressReporter());
         }
 
         @Override
@@ -153,7 +153,7 @@ public class GraphArchive extends FieldArchive implements
             var file = new File.Converter(this).convert(path);
             if (file != null)
             {
-                return new GraphArchive(this, file, ZipArchive.Mode.READ, reporter).load(this);
+                return new GraphArchive(this, file, ZipArchive.AccessMode.READ, reporter).load(this);
             }
             warning("Unable to load graph archive '$'", path);
             return null;
@@ -188,7 +188,7 @@ public class GraphArchive extends FieldArchive implements
 
     public GraphArchive(Listener listener,
                         File file,
-                        ZipArchive.Mode mode,
+                        ZipArchive.AccessMode mode,
                         ProgressReporter reporter)
     {
         super(file, reporter, mode);
@@ -197,7 +197,7 @@ public class GraphArchive extends FieldArchive implements
 
     public Time lastModified()
     {
-        return resource().modifiedAt();
+        return resource().lastModified();
     }
 
     public Graph load(Listener listener)
@@ -208,17 +208,6 @@ public class GraphArchive extends FieldArchive implements
         var graph = metadata.dataSpecification().newGraph(metadata.withName(resource().fileName().name()));
         graph.addListener(listener);
         graph.load(this);
-
-        if (isDebugOn() && JavaVirtualMachine.local().instrument())
-        {
-            graph.loadAll();
-            var memory = JavaVirtualMachine.local().sizeOfObjectGraph(graph, "GraphResource.load.graph",
-                    Bytes.megabytes(1));
-            var disk = resource().sizeInBytes();
-            trace("Graph memory = $, disk = $, memory/disk = $%", memory, disk,
-                    Doubles.format((double) memory.asBytes() / (double) disk.asBytes() * 100.0, 1));
-        }
-
         return graph;
     }
 
@@ -231,7 +220,7 @@ public class GraphArchive extends FieldArchive implements
 
     public Metadata metadata()
     {
-        VersionedObject<Metadata> metadata = zip().load(require(KryoObjectSerializer.class), "metadata");
+        VersionedObject<Metadata> metadata = zip().loadVersionedObject(require(KryoObjectSerializer.class), "metadata");
         return metadata == null ? null : metadata.object();
     }
 
@@ -256,7 +245,7 @@ public class GraphArchive extends FieldArchive implements
 
     public void saveMetadata(Metadata metadata)
     {
-        metadata.assertValid(ValidationType.VALIDATE_ALL);
+        metadata.assertValid(ValidationType.validateAll());
         zip().save(require(KryoObjectSerializer.class), "metadata", new SerializableObject<>(metadata, VERSION));
     }
 

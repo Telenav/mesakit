@@ -65,7 +65,7 @@ class OverpassOsmResource extends BaseComponent
 
     public void safeCopyTo(File destination)
     {
-        location(bounds).safeCopyTo(destination, OVERWRITE, BroadcastingProgressReporter.create(this, "bytes"));
+        location(bounds).safeCopyTo(destination, OVERWRITE, BroadcastingProgressReporter.createProgressReporter(this, "bytes"));
     }
 
     private HttpPostResource location(Rectangle bounds)

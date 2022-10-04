@@ -214,10 +214,10 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
         public Encoding(int bits)
         {
             this.bits = bits;
-            maximumLatitudeOffset = Precision.DM7.inRangeLatitudeOffset(BitCount.bitCount(this.bits).maximumSigned());
-            maximumLongitudeOffset = Precision.DM7.inRangeLongitudeOffset(BitCount.bitCount(this.bits).maximumSigned());
-            minimumLatitudeOffset = Precision.DM7.inRangeLatitudeOffset(BitCount.bitCount(this.bits).minimumSigned());
-            minimumLongitudeOffset = Precision.DM7.inRangeLongitudeOffset(BitCount.bitCount(this.bits).minimumSigned());
+            maximumLatitudeOffset = Precision.DM7.inRangeLatitudeOffset(BitCount.bits(this.bits).maximumSigned());
+            maximumLongitudeOffset = Precision.DM7.inRangeLongitudeOffset(BitCount.bits(this.bits).maximumSigned());
+            minimumLatitudeOffset = Precision.DM7.inRangeLatitudeOffset(BitCount.bits(this.bits).minimumSigned());
+            minimumLongitudeOffset = Precision.DM7.inRangeLongitudeOffset(BitCount.bits(this.bits).minimumSigned());
         }
 
         public int bits()

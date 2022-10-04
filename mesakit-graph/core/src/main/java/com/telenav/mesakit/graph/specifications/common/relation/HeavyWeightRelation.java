@@ -45,6 +45,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+@SuppressWarnings("unused")
 public class HeavyWeightRelation extends EdgeRelation
 {
     private List<EdgeRelationMember> members = new ArrayList<>();

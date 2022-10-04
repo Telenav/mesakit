@@ -18,17 +18,17 @@
 
 package com.telenav.mesakit.graph.collections;
 
-import com.telenav.kivakit.core.collections.iteration.Matching;
+import com.telenav.kivakit.core.collections.iteration.FilteredIterable;
 import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.language.Streams;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.mesakit.graph.EdgeRelation;
-import com.telenav.mesakit.graph.Route;
-import com.telenav.mesakit.graph.io.load.GraphConstraints;
 import com.telenav.mesakit.graph.GraphLimits.Estimated;
 import com.telenav.mesakit.graph.GraphLimits.Limit;
+import com.telenav.mesakit.graph.Route;
+import com.telenav.mesakit.graph.io.load.GraphConstraints;
 import com.telenav.mesakit.map.geography.shape.rectangle.Bounded;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
@@ -43,6 +43,7 @@ import java.util.stream.Stream;
  *
  * @author jonathanl (shibo)
  */
+@SuppressWarnings("unused")
 public class RelationSequence implements Iterable<EdgeRelation>, Bounded
 {
     /**
@@ -164,14 +165,7 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
      */
     public RelationSequence matching(Matcher<EdgeRelation> matcher)
     {
-        return new RelationSequence(new Matching<>(matcher)
-        {
-            @Override
-            protected Iterator<EdgeRelation> values()
-            {
-                return relations.iterator();
-            }
-        });
+        return new RelationSequence(new FilteredIterable<>(relations, matcher));
     }
 
     public Stream<EdgeRelation> parallelStream()

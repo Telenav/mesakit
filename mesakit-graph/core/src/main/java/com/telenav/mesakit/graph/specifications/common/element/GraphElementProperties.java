@@ -27,7 +27,7 @@ import com.telenav.mesakit.graph.specifications.library.properties.GraphElementP
 @SuppressWarnings("rawtypes")
 public class GraphElementProperties<T extends GraphElement> extends GraphElementPropertySet<T>
 {
-    private static final Lazy<GraphElementProperties> singleton = Lazy.of(GraphElementProperties::new);
+    private static final Lazy<GraphElementProperties> singleton = Lazy.lazy(GraphElementProperties::new);
 
     public static GraphElementProperties get()
     {

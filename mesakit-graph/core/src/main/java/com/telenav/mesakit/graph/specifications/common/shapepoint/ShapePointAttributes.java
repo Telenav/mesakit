@@ -25,7 +25,7 @@ import com.telenav.mesakit.graph.specifications.common.node.NodeAttributes;
 
 public class ShapePointAttributes extends NodeAttributes
 {
-    private static final Lazy<ShapePointAttributes> singleton = Lazy.of(ShapePointAttributes::new);
+    private static final Lazy<ShapePointAttributes> singleton = Lazy.lazy(ShapePointAttributes::new);
 
     public static ShapePointAttributes get()
     {

@@ -128,7 +128,9 @@ public abstract class Leaf<T extends Bounded & Intersectable> extends Node<T>
     protected String toString(RTreeSpatialIndex.DumpDetailLevel detail)
     {
         return "[Leaf bounds = " + bounds() + ", size = " + size() + ", elements = "
-                + (detail == RTreeSpatialIndex.DumpDetailLevel.SUMMARY_ONLY ? "" + size() : new ObjectList<>().appendAll(elements()).join())
+                + (detail == RTreeSpatialIndex.DumpDetailLevel.SUMMARY_ONLY
+                ? "" + size()
+                : new ObjectList<>().appendAllThen(elements()).join())
                 + "]";
     }
 

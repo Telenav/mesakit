@@ -82,7 +82,7 @@ public class Border<T extends Region<T>> implements Bounded, Intersectable
         if (object instanceof Border)
         {
             var that = (Border<T>) object;
-            return Objects.equal(identity, that.identity);
+            return Objects.isEqual(identity, that.identity);
         }
         return false;
     }

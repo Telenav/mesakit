@@ -45,12 +45,12 @@ public class StringListTagCodecTest extends UnitTest
     @Test
     public void test()
     {
-        var keyCharacterCodec = HuffmanCharacterCodec.from(characterSymbols(("test-key-character.codec")));
-        var keyStringCodec = HuffmanStringCodec.from(stringSymbols("test-key-string.codec"));
+        var keyCharacterCodec = HuffmanCharacterCodec.characterCodec(characterSymbols(("test-key-character.codec")));
+        var keyStringCodec = HuffmanStringCodec.stringCodec(stringSymbols("test-key-string.codec"));
         var keyStringListCodec = new HuffmanStringListCodec(keyStringCodec, keyCharacterCodec);
 
-        var valueCharacterCodec = HuffmanCharacterCodec.from(characterSymbols("test-value-character.codec"));
-        var valueStringCodec = HuffmanStringCodec.from(stringSymbols("test-value-string.codec"));
+        var valueCharacterCodec = HuffmanCharacterCodec.characterCodec(characterSymbols("test-value-character.codec"));
+        var valueStringCodec = HuffmanStringCodec.stringCodec(stringSymbols("test-value-string.codec"));
         var valueStringListCodec = new HuffmanStringListCodec(valueStringCodec, valueCharacterCodec);
 
         var codec = new PbfStringListTagCodec(keyStringListCodec, valueStringListCodec);
@@ -61,7 +61,7 @@ public class StringListTagCodecTest extends UnitTest
         test(codec, PbfTagList.create().add("z", "z"));
         test(codec, tags());
 
-        var progress = BroadcastingProgressReporter.create();
+        var progress = BroadcastingProgressReporter.createProgressReporter();
         _1_000.loop(() ->
         {
             test(codec, randomTags());
@@ -71,12 +71,12 @@ public class StringListTagCodecTest extends UnitTest
 
     private Symbols<Character> characterSymbols(String fileName)
     {
-        return Symbols.load(frequencies(fileName), ESCAPE, new HuffmanCharacterCodec.Converter(LOGGER));
+        return Symbols.loadSymbols(frequencies(fileName), ESCAPE, new HuffmanCharacterCodec.Converter(LOGGER));
     }
 
     private PropertyMap frequencies(String name)
     {
-        return PropertyMap.load(this, thisPackage(), "codecs/" + name);
+        return PropertyMap.loadPropertyMap(this, packageForThis(), "codecs/" + name);
     }
 
     private PbfTagList randomTags()
@@ -88,7 +88,7 @@ public class StringListTagCodecTest extends UnitTest
 
     private Symbols<String> stringSymbols(String fileName)
     {
-        return Symbols.load(frequencies(fileName), new HuffmanStringCodec.Converter(LOGGER));
+        return Symbols.loadSymbols(frequencies(fileName), new HuffmanStringCodec.Converter(LOGGER));
     }
 
     private PbfTagList tags()

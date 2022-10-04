@@ -183,7 +183,8 @@ public class QuadTreeSpatialIndexTest extends GeographyUnitTest
         {
             e.printStackTrace();
         }
-        var found = new ObjectList<Location>().appendAll(index.inside(rectangle));
+        var found = new ObjectList<Location>();
+        found.addAll(index.inside(rectangle));
         ensureEqual(inside.size(), found.size());
         for (Location location : found)
         {

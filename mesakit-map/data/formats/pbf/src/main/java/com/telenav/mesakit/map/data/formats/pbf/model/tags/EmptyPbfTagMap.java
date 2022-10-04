@@ -63,13 +63,13 @@ public class EmptyPbfTagMap extends PbfTagMap
     public @NotNull
     Iterator<Tag> iterator()
     {
-        return Iterators.empty();
+        return Iterators.emptyIterator();
     }
 
     @Override
     public Iterator<String> keys()
     {
-        return Iterators.empty();
+        return Iterators.emptyIterator();
     }
 
     @Override

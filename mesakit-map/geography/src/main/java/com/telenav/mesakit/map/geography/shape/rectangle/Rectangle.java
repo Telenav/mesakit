@@ -28,7 +28,7 @@ import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.value.level.Percent;
-import com.telenav.kivakit.interfaces.collection.NextValue;
+import com.telenav.kivakit.interfaces.collection.NextIterator;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
@@ -57,7 +57,7 @@ import static com.telenav.mesakit.map.geography.Precision.DM7;
  * @author jonathanl (shibo)
  * @author matthieun
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({ "unused", "SpellCheckingInspection" })
 @UmlClassDiagram(diagram = DiagramRectangle.class)
 public class Rectangle implements Intersectable, LocationSequence, Bounded, Outline, Dimensioned
 {
@@ -127,7 +127,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
 
     public static ArgumentParser.Builder<Rectangle> argumentParser(String description)
     {
-        return ArgumentParser.builder(Rectangle.class).converter(new Rectangle.Converter(LOGGER))
+        return ArgumentParser.argumentParserBuilder(Rectangle.class).converter(new Rectangle.Converter(LOGGER))
                 .description(description);
     }
 
@@ -259,7 +259,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
                                                                         String name,
                                                                         String description)
     {
-        return SwitchParser.builder(Rectangle.class)
+        return SwitchParser.switchParserBuilder(Rectangle.class)
                 .name(name)
                 .converter(new Rectangle.Converter(listener))
                 .description(description);
@@ -468,7 +468,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
 
     public Iterable<Rectangle> cells(Distance size)
     {
-        return Iterables.iterable(() -> new NextValue<>()
+        return Iterables.iterable(() -> new NextIterator<>()
         {
             private Latitude bottom = bottom();
 
@@ -993,7 +993,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
 
     public Iterable<Rectangle> verticalStrips(Distance width, Distance overlap)
     {
-        return Iterables.iterable(() -> new NextValue<>()
+        return Iterables.iterable(() -> new NextIterator<>()
         {
             private Longitude left = left();
 
@@ -1018,7 +1018,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         var difference = right().asWidth().minus(left().asWidth());
         var stripWidth = difference.dividedBy(stripCount);
 
-        return Iterables.iterable(() -> new NextValue<>()
+        return Iterables.iterable(() -> new NextIterator<>()
         {
             private Longitude left = left();
 

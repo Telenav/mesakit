@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.region;
 
+import com.telenav.kivakit.core.collections.BaseCollection;
 import com.telenav.kivakit.core.collections.set.BaseSet;
 import com.telenav.kivakit.core.string.Join;
 import com.telenav.kivakit.core.value.count.Count;
@@ -30,6 +31,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.value.count.Maximum.MAXIMUM;
 
 @SuppressWarnings("rawtypes")
 @UmlClassDiagram(diagram = DiagramRegion.class)
@@ -39,18 +41,18 @@ public class RegionSet extends BaseSet<Region>
 {
     public RegionSet()
     {
-        super(new LinkedHashSet<>());
+        super(MAXIMUM, new LinkedHashSet<>());
     }
 
     public RegionSet(Iterable<? extends Region> regions)
     {
-        super(new LinkedHashSet<>());
+        super(MAXIMUM, new LinkedHashSet<>());
         addAll(regions);
     }
 
     public RegionSet(Set<Region> set)
     {
-        super(set);
+        super(MAXIMUM, set);
     }
 
     @Override
@@ -64,12 +66,6 @@ public class RegionSet extends BaseSet<Region>
     public Count count()
     {
         return Count.count(this);
-    }
-
-    @Override
-    public BaseSet<Region> onNewInstance()
-    {
-        return new RegionSet();
     }
 
     @Override
@@ -88,5 +84,20 @@ public class RegionSet extends BaseSet<Region>
             under.addAll(region.nestedChildren());
         }
         return under;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Set<Region> onNewBackingSet()
+    {
+        return new LinkedHashSet<>();
+    }
+
+    @Override
+    protected BaseCollection<Region> onNewCollection()
+    {
+        return new RegionSet();
     }
 }

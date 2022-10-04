@@ -19,22 +19,22 @@ import static com.telenav.kivakit.data.compression.codecs.huffman.character.Huff
 @UmlClassDiagram(diagram = DiagramPbfModelCompression.class)
 public class PbfDefaultCodecs
 {
-    private static final Lazy<PbfDefaultCodecs> defaultCodecs = Lazy.of(PbfDefaultCodecs::new);
+    private static final Lazy<PbfDefaultCodecs> defaultCodecs = Lazy.lazy(PbfDefaultCodecs::new);
 
     public static PbfDefaultCodecs get()
     {
         return defaultCodecs.get();
     }
 
-    private final Lazy<PropertyMap> keyCharacterCodecFrequencies = Lazy.of(() -> load("codecs/default-key-character.codec"));
+    private final Lazy<PropertyMap> keyCharacterCodecFrequencies = Lazy.lazy(() -> load("codecs/default-key-character.codec"));
 
-    private final Lazy<PropertyMap> keyStringCodecFrequencies = Lazy.of(() -> load("codecs/default-key-string.codec"));
+    private final Lazy<PropertyMap> keyStringCodecFrequencies = Lazy.lazy(() -> load("codecs/default-key-string.codec"));
 
-    private final Lazy<PropertyMap> roadNameCharacterCodecFrequencies = Lazy.of(() -> load("codecs/default-road-name-character.codec"));
+    private final Lazy<PropertyMap> roadNameCharacterCodecFrequencies = Lazy.lazy(() -> load("codecs/default-road-name-character.codec"));
 
-    private final Lazy<PropertyMap> valueCharacterCodecFrequencies = Lazy.of(() -> load("codecs/default-value-character.codec"));
+    private final Lazy<PropertyMap> valueCharacterCodecFrequencies = Lazy.lazy(() -> load("codecs/default-value-character.codec"));
 
-    private final Lazy<PropertyMap> valueStringCodecFrequencies = Lazy.of(() -> load("codecs/default-value-string.codec"));
+    private final Lazy<PropertyMap> valueStringCodecFrequencies = Lazy.lazy(() -> load("codecs/default-value-string.codec"));
 
     protected PbfDefaultCodecs()
     {
@@ -44,26 +44,26 @@ public class PbfDefaultCodecs
     @UmlRelation(label = "provides", referentCardinality = "2")
     public HuffmanCharacterCodec defaultKeyCharacterCodec()
     {
-        return HuffmanCharacterCodec.from(throwingListener(), keyCharacterCodecFrequencies(), ESCAPE);
+        return HuffmanCharacterCodec.characterCodec(throwingListener(), keyCharacterCodecFrequencies(), ESCAPE);
     }
 
     @NotNull
     @UmlRelation(label = "provides", referentCardinality = "2")
     public HuffmanStringCodec defaultKeyStringCodec()
     {
-        return HuffmanStringCodec.from(keyStringCodecFrequencies());
+        return HuffmanStringCodec.stringCodec(keyStringCodecFrequencies());
     }
 
     @NotNull
     public HuffmanCharacterCodec defaultValueCharacterCodec()
     {
-        return HuffmanCharacterCodec.from(throwingListener(), valueCharacterCodecFrequencies(), ESCAPE);
+        return HuffmanCharacterCodec.characterCodec(throwingListener(), valueCharacterCodecFrequencies(), ESCAPE);
     }
 
     @NotNull
     public HuffmanStringCodec defaultValueStringCodec()
     {
-        return HuffmanStringCodec.from(valueStringCodecFrequencies());
+        return HuffmanStringCodec.stringCodec(valueStringCodecFrequencies());
     }
 
     public PropertyMap keyCharacterCodecFrequencies()
@@ -93,6 +93,6 @@ public class PbfDefaultCodecs
 
     private PropertyMap load(String codec)
     {
-        return PropertyMap.load(throwingListener(), Package.packageContaining(throwingListener(), PbfDefaultCodecs.class), codec);
+        return PropertyMap.loadPropertyMap(throwingListener(), Package.packageContaining(throwingListener(), PbfDefaultCodecs.class), codec);
     }
 }

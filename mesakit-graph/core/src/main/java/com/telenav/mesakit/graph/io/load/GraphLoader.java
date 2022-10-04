@@ -18,10 +18,10 @@
 
 package com.telenav.mesakit.graph.io.load;
 
-import com.telenav.kivakit.validation.ValidationType;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.messaging.Repeater;
 import com.telenav.kivakit.resource.Resource;
+import com.telenav.kivakit.validation.ValidationType;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
@@ -32,8 +32,8 @@ import com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner.WaySe
 /**
  * A graph loader takes data from some data source and loads it into a {@link GraphStore}, applying a set of constraints
  * that potentially limits which graph elements are loaded and which are not. Graph loaders are only responsible for
- * reading data and adding it to the provided {@link GraphStore}. Details about how the {@link Graph} and {@link
- * GraphStore} manage the loaded details are private to those objects.
+ * reading data and adding it to the provided {@link GraphStore}. Details about how the {@link Graph} and
+ * {@link GraphStore} manage the loaded details are private to those objects.
  * <p>
  * Graph loaders are implementation details for loading {@link Graph} objects from various data sources. If you need to
  * load a {@link GraphArchive}, use {@link GraphArchive#load(Listener)}. If  you need to load some other kind of graph
@@ -77,13 +77,13 @@ public interface GraphLoader extends Repeater
 
     /**
      * @return The kind of validation that should be performed on the data loaded by this graph loader. Many graph
-     * loaders validate all data with {@link ValidationType#VALIDATE_ALL} but some don't load complete data. An example
+     * loaders validate all data with {@link ValidationType#validateAll()} but some don't load complete data. An example
      * of an incomplete graph loader is {@link RawPbfGraphLoader}, which does not load vertexes or relations. Another is
      * {@link WaySectioningGraphLoader}, is incomplete because it does not load relations. These graph loaders may
      * specify another kind of validation.
      */
     default ValidationType validation()
     {
-        return ValidationType.VALIDATE_ALL;
+        return ValidationType.validateAll();
     }
 }

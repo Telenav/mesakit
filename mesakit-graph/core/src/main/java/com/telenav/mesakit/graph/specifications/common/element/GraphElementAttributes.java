@@ -37,7 +37,7 @@ public class GraphElementAttributes<T extends GraphElement> extends AttributeLis
     // GraphElementAttributes and so the attributes themselves will have different instances, but we need a fast
     // way to compare. Using the same identifier for shared attributes like this make this possible.
 
-    private static final Lazy<GraphElementAttributes<?>> singleton = Lazy.of(GraphElementAttributes::new);
+    private static final Lazy<GraphElementAttributes<?>> singleton = Lazy.lazy(GraphElementAttributes::new);
 
     public static GraphElementAttributes<?> get()
     {

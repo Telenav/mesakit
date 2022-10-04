@@ -42,7 +42,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 import static com.telenav.mesakit.graph.GraphLimits.Estimated;
 import static com.telenav.mesakit.graph.GraphLimits.Limit;
 
-public class HeavyWeightVertex extends Vertex
+@SuppressWarnings("unused") public class HeavyWeightVertex extends Vertex
 {
     private Location location;
 

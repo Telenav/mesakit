@@ -37,7 +37,7 @@ public class PbfSaver
         if (graph.supportsFullPbfNodeInformation())
         {
             var start = Time.now();
-            var progress = BroadcastingProgressReporter.create(LOGGER);
+            var progress = BroadcastingProgressReporter.createProgressReporter(LOGGER);
             var nodes = new PbfNodeStore(graph);
             var ways = new ModifiedWayStore(nodes);
             graph.forwardEdges().stream().forEach(edge ->

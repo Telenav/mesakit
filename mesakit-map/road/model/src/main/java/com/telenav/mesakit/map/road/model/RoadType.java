@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.interfaces.value.LongValued;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 /**
@@ -26,7 +26,8 @@ import com.telenav.mesakit.map.measurements.geographic.Distance;
  *
  * @author jonathanl (shibo)
  */
-public enum RoadType implements Quantizable
+@SuppressWarnings("unused")
+public enum RoadType implements LongValued
 {
     FREEWAY(0),
     URBAN_HIGHWAY(1),
@@ -150,6 +151,12 @@ public enum RoadType implements Quantizable
         return identifier < that.identifier;
     }
 
+    @Override
+    public long longValue()
+    {
+        return identifier;
+    }
+
     public RoadType maximum(RoadType that)
     {
         if (isMoreImportantThan(that))
@@ -175,11 +182,5 @@ public enum RoadType implements Quantizable
     public RoadType nextMostImportant()
     {
         return this == FREEWAY ? null : forIdentifier(identifier - 1);
-    }
-
-    @Override
-    public long quantum()
-    {
-        return identifier;
     }
 }

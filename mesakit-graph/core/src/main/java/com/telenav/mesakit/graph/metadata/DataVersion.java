@@ -49,7 +49,7 @@ public class DataVersion
 
     public static SwitchParser.Builder<DataVersion> dataVersionSwitchParser(String name, String description)
     {
-        return SwitchParser.builder(DataVersion.class)
+        return SwitchParser.switchParserBuilder(DataVersion.class)
                 .name(name)
                 .converter(new Converter(LOGGER))
                 .description(description);
@@ -124,7 +124,7 @@ public class DataVersion
     @Override
     public int hashCode()
     {
-        return Hash.many(year, quarter);
+        return Hash.hashMany(year, quarter);
     }
 
     public boolean isValid()

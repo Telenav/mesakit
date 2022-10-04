@@ -112,7 +112,7 @@ public class TimeZone extends Region<TimeZone>
 
     public static SwitchParser.Builder<TimeZone> timeZoneSwitchParser(String name, String description)
     {
-        return SwitchParser.builder(TimeZone.class)
+        return SwitchParser.switchParserBuilder(TimeZone.class)
                 .name(name)
                 .converter(new Converter<>(LOGGER()))
                 .description(description);
@@ -120,13 +120,13 @@ public class TimeZone extends Region<TimeZone>
 
     public TimeZone(RegionInstance<TimeZone> instance)
     {
-        super(World.INSTANCE, instance.prefix("TimeZone"));
+        super(World.WORLD, instance.prefix("TimeZone"));
     }
 
     public ZoneId asZoneId()
     {
         var code = identity().mesakit().code();
-        var zone = Paths.tail(code, "TimeZone_");
+        var zone = Paths.pathTail(code, "TimeZone_");
         if (zone != null)
         {
             return ZoneId.of(zone);

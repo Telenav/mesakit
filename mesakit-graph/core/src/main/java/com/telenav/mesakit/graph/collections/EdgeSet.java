@@ -29,16 +29,16 @@ import com.telenav.kivakit.core.language.Streams;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.messages.status.Warning;
 import com.telenav.kivakit.core.string.Differences;
 import com.telenav.kivakit.core.string.Join;
 import com.telenav.kivakit.core.string.Separators;
 import com.telenav.kivakit.core.string.Strings;
-import com.telenav.kivakit.core.time.Frequency;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.kivakit.primitive.collections.iteration.IntIterator;
 import com.telenav.mesakit.graph.Edge;
@@ -66,6 +66,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.time.Frequency.EVERY_15_SECONDS;
 import static com.telenav.mesakit.graph.GraphLimits.Limit;
 
 /**
@@ -74,7 +75,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
  *
  * @author jonathanl (shibo)
  */
-public class EdgeSet implements Set<Edge>, Stringable
+@SuppressWarnings("unused") public class EdgeSet implements Set<Edge>, StringFormattable
 {
     public static final EdgeSet EMPTY = new EdgeSet(Maximum._0, Estimate._0, Collections.emptySet());
 
@@ -235,7 +236,8 @@ public class EdgeSet implements Set<Edge>, Stringable
     {
         if (edges.size() == maximumSize.asInt())
         {
-            LOGGER.warning(Frequency.EVERY_MINUTE, "EdgeSet maximum size of $ elements would be exceeded. Ignoring edge.", maximumSize);
+            LOGGER.transmit(new Warning( "EdgeSet maximum size of $ elements would be exceeded. Ignoring edge.", maximumSize)
+                    .maximumFrequency(EVERY_15_SECONDS));
             return false;
         }
         return edges.add(edge);
@@ -338,7 +340,7 @@ public class EdgeSet implements Set<Edge>, Stringable
 
     @Override
     @SuppressWarnings("SwitchStatementWithTooFewBranches")
-    public String asString(Format format)
+    public String asString(@NotNull Format format)
     {
         switch (format)
         {

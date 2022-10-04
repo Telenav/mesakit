@@ -25,7 +25,7 @@ import com.telenav.mesakit.graph.specifications.osm.OsmDataSpecification;
 
 public class OsmEdgeAttributes extends EdgeAttributes
 {
-    private static final Lazy<OsmEdgeAttributes> singleton = Lazy.of(OsmEdgeAttributes::new);
+    private static final Lazy<OsmEdgeAttributes> singleton = Lazy.lazy(OsmEdgeAttributes::new);
 
     public static OsmEdgeAttributes get()
     {

@@ -61,7 +61,7 @@ public final class OsmRawPbfGraphLoader extends RawPbfGraphLoader
     private final ObjectMap<MapLocale, OfficialRoadNameExtractor> officialRoadNameExtractorForLocale = new ObjectMap<>()
     {
         @Override
-        protected OfficialRoadNameExtractor onInitialize(MapLocale locale)
+        protected OfficialRoadNameExtractor onCreateValue(MapLocale locale)
         {
             return new OfficialRoadNameExtractor(locale, MESAKIT_STANDARDIZATION, OsmRawPbfGraphLoader.this);
         }
@@ -70,7 +70,7 @@ public final class OsmRawPbfGraphLoader extends RawPbfGraphLoader
     private final ObjectMap<MapLocale, ExitRoadNameExtractor> exitRoadNameExtractorForLocale = new ObjectMap<>()
     {
         @Override
-        protected ExitRoadNameExtractor onInitialize(MapLocale locale)
+        protected ExitRoadNameExtractor onCreateValue(MapLocale locale)
         {
             return new ExitRoadNameExtractor(locale, MESAKIT_STANDARDIZATION, OsmRawPbfGraphLoader.this);
         }
@@ -79,7 +79,7 @@ public final class OsmRawPbfGraphLoader extends RawPbfGraphLoader
     private final ObjectMap<MapLocale, AlternateRoadNameExtractor> alternateRoadNameExtractorForLocale = new ObjectMap<>()
     {
         @Override
-        protected AlternateRoadNameExtractor onInitialize(MapLocale locale)
+        protected AlternateRoadNameExtractor onCreateValue(MapLocale locale)
         {
             return new AlternateRoadNameExtractor(locale, MESAKIT_STANDARDIZATION, OsmRawPbfGraphLoader.this);
         }
@@ -88,7 +88,7 @@ public final class OsmRawPbfGraphLoader extends RawPbfGraphLoader
     private final ObjectMap<MapLocale, RouteRoadNameExtractor> routeRoadNameExtractorForLocale = new ObjectMap<>()
     {
         @Override
-        protected RouteRoadNameExtractor onInitialize(MapLocale locale)
+        protected RouteRoadNameExtractor onCreateValue(MapLocale locale)
         {
             return new RouteRoadNameExtractor(locale, MESAKIT_STANDARDIZATION, OsmRawPbfGraphLoader.this);
         }

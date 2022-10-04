@@ -79,7 +79,7 @@ public class PolylineSection
     @Override
     public int hashCode()
     {
-        return Hash.many(shape(), fromIndex, toIndex);
+        return Hash.hashMany(shape(), fromIndex, toIndex);
     }
 
     public Polyline parent()

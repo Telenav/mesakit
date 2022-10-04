@@ -155,7 +155,7 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
                 while (keys.hasNext())
                 {
                     var at = keys.next();
-                    if (!Strings.equals(that.get(at), get(at)))
+                    if (!Strings.equalsAllowNull(that.get(at), get(at)))
                     {
                         return false;
                     }
@@ -264,7 +264,7 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
     @Override
     public int hashCode()
     {
-        return Hash.many(
+        return Hash.hashMany(
                 key0, value0,
                 key1, value1,
                 key2, value2,

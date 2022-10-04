@@ -33,7 +33,7 @@ import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.value.Source;
 import com.telenav.kivakit.resource.ResourceList;
-import com.telenav.kivakit.settings.Settings;
+import com.telenav.kivakit.settings.SettingsRegistry;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphProject;
 import com.telenav.mesakit.graph.Metadata;
@@ -432,7 +432,7 @@ public class WorldGrid
 
     private WorldGraphConfiguration configuration()
     {
-        return Settings.of(this).requireSettings(WorldGraphConfiguration.class);
+        return SettingsRegistry.settingsRegistryFor(this).requireSettings(WorldGraphConfiguration.class);
     }
 
     private void createGrid()
@@ -526,7 +526,7 @@ public class WorldGrid
                 {
                     LOGGER.warning("No cells found for " + region);
                 }
-                cached.print(toString(cells));
+                cached.saveText(toString(cells));
             }
         }
         return included;

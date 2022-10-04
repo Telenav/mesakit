@@ -35,7 +35,7 @@ import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.level.Percent;
 import com.telenav.kivakit.interfaces.collection.Indexable;
-import com.telenav.kivakit.interfaces.collection.NextValue;
+import com.telenav.kivakit.interfaces.collection.NextIterator;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
@@ -122,7 +122,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
  * @see Intersectable
  * @see Bounded
  */
-@UmlClassDiagram(diagram = DiagramPolyline.class)
+@SuppressWarnings("unused") @UmlClassDiagram(diagram = DiagramPolyline.class)
 @UmlRelation(label = "contains", referent = Location.class, referentCardinality = "2+")
 public class Polyline implements
         Indexable<Location>,
@@ -1673,7 +1673,9 @@ public class Polyline implements
     @Override
     public String toString()
     {
-        return new ObjectList<>(GeographyLimits.LOCATIONS_PER_POLYLINE).appendAll(locationSequence()).join(":");
+        return new ObjectList<>(GeographyLimits.LOCATIONS_PER_POLYLINE)
+                .appendAllThen(locationSequence())
+                .join(":");
     }
 
     public List<PolylineSection> trisect()
@@ -1714,7 +1716,7 @@ public class Polyline implements
 
     public Iterable<LocatedHeading> vectors()
     {
-        return Iterables.iterable(() -> new NextValue<>()
+        return Iterables.iterable(() -> new NextIterator<>()
         {
             boolean first = true;
 

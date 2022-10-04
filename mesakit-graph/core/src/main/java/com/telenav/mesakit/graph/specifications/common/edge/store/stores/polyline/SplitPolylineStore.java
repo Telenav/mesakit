@@ -124,7 +124,7 @@ public class SplitPolylineStore implements
         if (object instanceof SplitPolylineStore)
         {
             var that = (SplitPolylineStore) object;
-            return Objects.equalPairs(stores, that.stores, indexToStore, that.indexToStore,
+            return Objects.areEqualPairs(stores, that.stores, indexToStore, that.indexToStore,
                     indexToStoreIndex, that.indexToStoreIndex);
         }
         return false;
@@ -168,7 +168,7 @@ public class SplitPolylineStore implements
     @Override
     public int hashCode()
     {
-        return Hash.many(stores, indexToStore, indexToStoreIndex);
+        return Hash.hashMany(stores, indexToStore, indexToStoreIndex);
     }
 
     @Override

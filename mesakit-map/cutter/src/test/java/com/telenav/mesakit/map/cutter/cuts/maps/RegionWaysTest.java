@@ -32,6 +32,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static com.telenav.kivakit.core.collections.Sets.hashSet;
+
 public class RegionWaysTest extends RegionUnitTest
 {
     @Test
@@ -75,7 +77,7 @@ public class RegionWaysTest extends RegionUnitTest
                 ensure(ways.contains(regionIndexMap.indexForRegion(state), wayIdentifier + i));
             }
             ensure(ways.regions().contains(state));
-            ensureEqual(Sets.hashset(state), Sets.hashset(ways.regions(wayIdentifier)));
+            ensureEqual(hashSet(state), hashSet(ways.regions(wayIdentifier)));
             wayIdentifier += waysPerList;
         }
     }

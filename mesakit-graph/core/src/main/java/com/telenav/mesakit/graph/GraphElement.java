@@ -27,15 +27,15 @@ import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.messaging.messages.status.Quibble;
 import com.telenav.kivakit.core.messaging.messages.status.Warning;
 import com.telenav.kivakit.core.string.AsIndentedString;
-import com.telenav.kivakit.core.string.AsStringIndenter;
 import com.telenav.kivakit.core.string.CaseFormat;
-import com.telenav.kivakit.core.string.StringTo;
+import com.telenav.kivakit.core.string.ObjectIndenter;
+import com.telenav.kivakit.core.string.StringConversions;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.interfaces.collection.Indexed;
-import com.telenav.kivakit.interfaces.collection.LongKeyed;
 import com.telenav.kivakit.interfaces.naming.Named;
-import com.telenav.kivakit.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.interfaces.value.LongValued;
+import com.telenav.kivakit.primitive.collections.LongKeyed;
 import com.telenav.kivakit.validation.BaseValidator;
 import com.telenav.kivakit.validation.Validatable;
 import com.telenav.kivakit.validation.ValidationType;
@@ -66,21 +66,22 @@ import com.telenav.mesakit.map.data.formats.pbf.model.metadata.PbfUserName;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagMap;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
+import org.jetbrains.annotations.NotNull;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.messaging.context.CallStack.Matching.SUBCLASS;
 import static com.telenav.kivakit.core.messaging.context.CallStack.Proximity.DISTANT;
-import static com.telenav.kivakit.interfaces.string.Stringable.Format.PROGRAMMATIC;
+import static com.telenav.kivakit.interfaces.string.StringFormattable.Format.PROGRAMMATIC;
 
 /**
  * Base class for {@link Edge}, {@link EdgeRelation}, {@link Vertex}, {@link ShapePoint} and {@link Place} elements in a
  * {@link Graph}. This abstraction allows them to be treated the same when they are, for example, stored in a spatial
  * index. It also allows for a common data indexing scheme and storage of common attributes.
  * <p>
- * Graph elements have a {@link Graph} and a {@link GraphElementIdentifier} subclass that can be retrieved with {@link
- * #identifier()}. An {@link Edge} has an {@link EdgeIdentifier}, a vertex has a {@link VertexIdentifier} and so on.
- * This identifier can also be retrieved as a long value when the situation warrants it. Graph elements also have a
+ * Graph elements have a {@link Graph} and a {@link GraphElementIdentifier} subclass that can be retrieved with
+ * {@link #identifier()}. An {@link Edge} has an {@link EdgeIdentifier}, a vertex has a {@link VertexIdentifier} and so
+ * on. This identifier can also be retrieved as a long value when the situation warrants it. Graph elements also have a
  * {@link MapIdentifier} subclass retrieved by {@link #mapIdentifier()} that relates to the entity they were derived
  * from in the source data. For example, {@link Edge}s are associated with {@link PbfWayIdentifier}s, {@link Vertex}es
  * are associated with {@link PbfNodeIdentifier}s and so on.
@@ -145,8 +146,8 @@ import static com.telenav.kivakit.interfaces.string.Stringable.Format.PROGRAMMAT
  * Graph elements support the {@link #hashCode()} / {@link #equals(Object)} contract and are {@link Validatable}.
  * Subclasses override the {@link Validatable#validator(ValidationType)} method to provide validation before elements
  * are saved to a {@link GraphArchive} and before a {@link GraphLoader} adds them to a {@link GraphElementStore}.
- * To allow elements to be treated the same as many other objects that are {@link Quantizable} to a long value (in
- * this case the identifier), {@link GraphElement} implements {@link #quantum()}.
+ * To allow elements to be treated the same as many other objects that are {@link LongValued} to a long value (in
+ * this case the identifier), {@link GraphElement} implements {@link #longValue()}.
  *
  * @author jonathanl (shibo)
  * @see GraphElementIdentifier
@@ -160,16 +161,23 @@ import static com.telenav.kivakit.interfaces.string.Stringable.Format.PROGRAMMAT
  * @see GraphElementStore
  * @see DataSpecification
  * @see Validatable
- * @see Quantizable
+ * @see LongValued
  * @see Iterable
  * @see Indexed
  * @see GraphLoader
  * @see AsIndentedString
  */
-public abstract class GraphElement implements Named, Indexed, LongKeyed, Validatable, AsIndentedString
+@SuppressWarnings("unused")
+public abstract class GraphElement implements
+        Named,
+        Indexed,
+        LongValued,
+        LongKeyed,
+        Validatable,
+        AsIndentedString
 {
     /** Validation when adding elements */
-    public static final ValidationType VALIDATE_RAW = new ValidationType("VALIDATE_FOR_ADDING");
+    public static final ValidationType VALIDATE_RAW = new ValidationType() {};
 
     /** Null index */
     public static final int NULL_INDEX = 0;
@@ -271,26 +279,26 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
     public abstract GraphElement asHeavyWeight();
 
     @Override
-    public String asString(Format format)
+    public String asString(@NotNull Format format)
     {
         if (format == PROGRAMMATIC)
         {
             return Long.toString(identifierAsLong());
         }
 
-        var indenter = new AsStringIndenter(format)
+        var indenter = new ObjectIndenter(format)
                 .levels(Maximum._8)
                 .pruneAt(Edge.class);
 
         var string = asString(format, indenter).toString();
-        return format == Format.HTML ? StringTo.html(string) : string;
+        return format == Format.HTML ? StringConversions.toHtmlString(string) : string;
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public AsStringIndenter asString(Format format, AsStringIndenter indenter)
+    public ObjectIndenter asString(Format format, ObjectIndenter indenter)
     {
         if (indenter.indentationLevel() > 1 && !indenter.canExplore(this))
         {
@@ -442,8 +450,8 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
     }
 
     /**
-     * @return The index for this element, suitable for quickly retrieving data from this element's corresponding {@link
-     * GraphElementStore}.
+     * @return The index for this element, suitable for quickly retrieving data from this element's corresponding
+     * {@link GraphElementStore}.
      */
     @Override
     @SuppressWarnings("unchecked")
@@ -514,6 +522,12 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
         return store().retrieveLastModificationTime(this);
     }
 
+    @Override
+    public long longValue()
+    {
+        return index();
+    }
+
     /**
      * @return The map identifier (node, way or relation) of this element
      */
@@ -571,12 +585,6 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
      * @return PropertyMap for this graph element
      */
     public abstract GraphElementPropertySet<? extends GraphElement> properties();
-
-    @Override
-    public final long quantum()
-    {
-        return index();
-    }
 
     /**
      * @return True if this element supports the given attribute, under the owning graph's data specification
@@ -655,10 +663,10 @@ public abstract class GraphElement implements Named, Indexed, LongKeyed, Validat
     protected abstract GraphElementStore store();
 
     /**
-     * @return The graph where this {@link GraphElement} is stored, distinct from {@link #graph()}. If this {@link
-     * GraphElement} is in a normal graph, this value  will be the same as graph(). However, if this element is in a
-     * world graph, this method will return the graph for the cell in which this resides (the cell graph) and graph()
-     * will return the WorldGraph, as expected.
+     * @return The graph where this {@link GraphElement} is stored, distinct from {@link #graph()}. If this
+     * {@link GraphElement} is in a normal graph, this value  will be the same as graph(). However, if this element is
+     * in a world graph, this method will return the graph for the cell in which this resides (the cell graph) and
+     * graph() will return the WorldGraph, as expected.
      */
     protected Graph subgraph()
     {

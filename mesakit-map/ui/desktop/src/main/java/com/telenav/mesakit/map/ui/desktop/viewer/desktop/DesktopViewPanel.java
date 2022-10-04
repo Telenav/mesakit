@@ -66,7 +66,7 @@ import java.awt.geom.Point2D;
 import java.util.function.Function;
 
 import static com.telenav.kivakit.core.value.level.Percent.percent;
-import static com.telenav.kivakit.interfaces.string.Stringable.Format.USER_LABEL;
+import static com.telenav.kivakit.interfaces.string.StringFormattable.Format.USER_LABEL;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle.pixels;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle.rectangle;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.surfaces.java2d.Java2dDrawingSurface.surface;

@@ -77,7 +77,7 @@ public class SegmentRTreeSpatialIndex extends RTreeSpatialIndex<Segment>
                                     Iterable<Segment> segments)
     {
         super(objectName, new RTreeSettings());
-        bulkLoad(new ObjectList<Segment>(segmentCount).appendAll(segments));
+        bulkLoad(new ObjectList<Segment>(segmentCount).appendAllThen(segments));
     }
 
     @Override
