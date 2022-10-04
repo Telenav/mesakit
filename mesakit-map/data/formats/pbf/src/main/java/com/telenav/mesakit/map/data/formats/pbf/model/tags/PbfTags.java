@@ -53,7 +53,7 @@ public class PbfTags
 
     public static PropertyMap tags(String prefix, Collection<Tag> tags)
     {
-        var properties = PropertyMap.create();
+        var properties = PropertyMap.propertyMap();
         for (var tag : tags)
         {
             var key = tag.getKey();

@@ -173,7 +173,7 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
         });
 
         return new Metadata()
-                .withDataBuild(DataBuild.at(file.modifiedAt().asLocalTime()))
+                .withDataBuild(DataBuild.at(file.lastModified().asLocalTime()))
                 .withDataSize(file.sizeInBytes())
                 .withDataBounds(bounds.build())
                 .withWayCount(statistics.ways())

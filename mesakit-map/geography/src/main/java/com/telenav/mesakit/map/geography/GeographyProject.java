@@ -3,7 +3,7 @@ package com.telenav.mesakit.map.geography;
 import com.telenav.kivakit.core.project.Project;
 import com.telenav.kivakit.core.project.ProjectTrait;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
-import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KivaKitCoreKryoTypes;
 import com.telenav.mesakit.map.measurements.MeasurementsKryoTypes;
 
 /**
@@ -20,6 +20,6 @@ public class GeographyProject extends Project
     {
         register(new KryoSerializationSessionFactory(new GeographyKryoTypes()
                 .mergedWith(new MeasurementsKryoTypes())
-                .mergedWith(new CoreKryoTypes())));
+                .mergedWith(new KivaKitCoreKryoTypes())));
     }
 }

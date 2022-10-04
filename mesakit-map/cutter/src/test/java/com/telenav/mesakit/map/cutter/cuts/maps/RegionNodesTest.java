@@ -18,14 +18,15 @@
 
 package com.telenav.mesakit.map.cutter.cuts.maps;
 
-import com.telenav.kivakit.core.collections.Sets;
 import com.telenav.mesakit.map.region.RegionSet;
-import com.telenav.mesakit.map.region.testing.RegionUnitTest;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
+import com.telenav.mesakit.map.region.testing.RegionUnitTest;
 import org.junit.Ignore;
 import org.junit.Test;
+
+import static com.telenav.kivakit.core.collections.Sets.hashSet;
 
 @Ignore
 public class RegionNodesTest extends RegionUnitTest
@@ -90,7 +91,7 @@ public class RegionNodesTest extends RegionUnitTest
             ensure(nodes.inRegion(nodeIdentifier, regionIndexMap.indexForRegion(state)));
             ensure(nodes.inRegion(nodeIdentifier, regionIndexMap.indexForRegion(state)));
             ensure(nodes.regions().contains(state));
-            ensureEqual(Sets.hashset(state), Sets.hashset(nodes.regions(nodeIdentifier)));
+            ensureEqual(hashSet(state), hashSet(nodes.regions(nodeIdentifier)));
             nodeIdentifier++;
         }
 

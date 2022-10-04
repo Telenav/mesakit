@@ -26,7 +26,7 @@ public class ShieldIcon
             RoadLimits.SHIELD_ICONS)
     {
         @Override
-        protected ShieldIcon onInitialize(String identifier)
+        protected ShieldIcon onCreateValue(String identifier)
         {
             return new ShieldIcon(identifier);
         }

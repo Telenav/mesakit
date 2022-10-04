@@ -57,7 +57,7 @@ public class UncompressedLeaf<T extends Bounded & Intersectable> extends Leaf<T>
     @Override
     public int hashCode()
     {
-        return Hash.many(super.hashCode(), elements);
+        return Hash.hashMany(super.hashCode(), elements);
     }
 
     @Override

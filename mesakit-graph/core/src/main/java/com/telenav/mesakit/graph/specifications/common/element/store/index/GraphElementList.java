@@ -64,7 +64,7 @@ final class GraphElementList<T extends GraphElement> implements Iterable<T>
     {
         if (isEmpty())
         {
-            return Iterators.empty();
+            return Iterators.emptyIterator();
         }
         else
         {

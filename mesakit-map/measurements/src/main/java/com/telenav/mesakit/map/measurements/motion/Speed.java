@@ -26,7 +26,7 @@ import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.value.level.Level;
-import com.telenav.kivakit.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.interfaces.value.LongValued;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -35,14 +35,17 @@ import com.telenav.mesakit.map.measurements.internal.lexakai.DiagramMapMeasureme
 
 import java.util.regex.Pattern;
 
+import static com.telenav.kivakit.core.time.Duration.ONE_HOUR;
+import static com.telenav.kivakit.core.time.Duration.ONE_SECOND;
+
 /**
  * A unit-less speed, as the {@link Distance} traveled over a given {@link Duration}, both of which are also unit-less.
  *
  * @author jonathanl (shibo)
  */
-@UmlClassDiagram(diagram = DiagramMapMeasurementMotion.class)
-@UmlExcludeSuperTypes(Quantizable.class)
-public class Speed implements Comparable<Speed>, Quantizable
+@SuppressWarnings("unused") @UmlClassDiagram(diagram = DiagramMapMeasurementMotion.class)
+@UmlExcludeSuperTypes(LongValued.class)
+public class Speed implements Comparable<Speed>, LongValued
 {
     public static final Speed INVALID = new Speed(Distance.MAXIMUM, Duration.milliseconds(1));
 
@@ -96,22 +99,22 @@ public class Speed implements Comparable<Speed>, Quantizable
 
     public static Speed kilometersPerHour(double kph)
     {
-        return new Speed(Distance.kilometers(kph), Duration.ONE_HOUR);
+        return new Speed(Distance.kilometers(kph), ONE_HOUR);
     }
 
     public static Speed metersPerHour(double metersPerHour)
     {
-        return new Speed(Distance.meters(metersPerHour), Duration.ONE_HOUR);
+        return new Speed(Distance.meters(metersPerHour), ONE_HOUR);
     }
 
     public static Speed metersPerSecond(double metersPerSecond)
     {
-        return new Speed(Distance.meters(metersPerSecond), Duration.ONE_SECOND);
+        return new Speed(Distance.meters(metersPerSecond), ONE_SECOND);
     }
 
     public static Speed microDegreesPerSecond(int value)
     {
-        return milesPerHour(Duration.ONE_HOUR.dividedBy(Duration.ONE_SECOND) * value / Distance.ONE_MILE.asDm6());
+        return milesPerHour(ONE_HOUR.dividedBy(ONE_SECOND) * value / Distance.ONE_MILE.asDm6());
     }
 
     public static Speed milesPerHour(double mph)
@@ -125,16 +128,16 @@ public class Speed implements Comparable<Speed>, Quantizable
         {
             if (hundredthsOfMilesPerHourCache[index] == null)
             {
-                hundredthsOfMilesPerHourCache[index] = new Speed(Distance.miles(mph), Duration.ONE_HOUR);
+                hundredthsOfMilesPerHourCache[index] = new Speed(Distance.miles(mph), ONE_HOUR);
             }
             return hundredthsOfMilesPerHourCache[index];
         }
-        return new Speed(Distance.miles(mph), Duration.ONE_HOUR);
+        return new Speed(Distance.miles(mph), ONE_HOUR);
     }
 
     public static Speed millimetersPerHour(long millimetersPerHour)
     {
-        return new Speed(Distance.millimeters(millimetersPerHour), Duration.ONE_HOUR);
+        return new Speed(Distance.millimeters(millimetersPerHour), ONE_HOUR);
     }
 
     public static Speed parse(String text)
@@ -144,7 +147,7 @@ public class Speed implements Comparable<Speed>, Quantizable
 
     public static SwitchParser.Builder<Speed> speedSwitchParser(String name, String description)
     {
-        return SwitchParser.builder(Speed.class)
+        return SwitchParser.switchParserBuilder(Speed.class)
                 .name(name)
                 .converter(new Speed.Converter(LOGGER))
                 .description(description);
@@ -153,9 +156,7 @@ public class Speed implements Comparable<Speed>, Quantizable
     /**
      * Converts the given <code>String</code> to a new <code>Speed</code> object. The input string is expected to be of
      * the format of a floating point number followed by a unit identifier (mph, msec, kph, etc.). Examples would
-     * include '55.4 mph', '13 msec', or '65 kph'.
-     *
-     * @author ericg
+     * include '55.4 mph', '13 msec', or "65 kph".
      */
     @SuppressWarnings("SpellCheckingInspection")
     public static class Converter extends BaseStringConverter<Speed>
@@ -275,32 +276,32 @@ public class Speed implements Comparable<Speed>, Quantizable
 
     public double asKilometersPerHour()
     {
-        return distance.asKilometers() / duration.dividedBy(Duration.ONE_HOUR);
+        return distance.asKilometers() / duration.dividedBy(ONE_HOUR);
     }
 
     public double asMetersPerHour()
     {
-        return distance.asMeters() / duration.dividedBy(Duration.ONE_HOUR);
+        return distance.asMeters() / duration.dividedBy(ONE_HOUR);
     }
 
     public double asMetersPerSecond()
     {
-        return distance.asMeters() / duration.dividedBy(Duration.ONE_SECOND);
+        return distance.asMeters() / duration.dividedBy(ONE_SECOND);
     }
 
     public int asMicroDegreesPerSecond()
     {
-        return round(asMilesPerHour() * Distance.ONE_MILE.asDm6() / Duration.ONE_HOUR.dividedBy(Duration.ONE_SECOND));
+        return round(asMilesPerHour() * Distance.ONE_MILE.asDm6() / ONE_HOUR.dividedBy(ONE_SECOND));
     }
 
     public double asMilesPerHour()
     {
-        return distance.asMiles() / duration.dividedBy(Duration.ONE_HOUR);
+        return distance.asMiles() / duration.dividedBy(ONE_HOUR);
     }
 
     public double asMillimetersPerHour()
     {
-        return distance.asMillimeters() / duration.dividedBy(Duration.ONE_HOUR);
+        return distance.asMillimeters() / duration.dividedBy(ONE_HOUR);
     }
 
     @SuppressWarnings("NullableProblems")
@@ -370,6 +371,12 @@ public class Speed implements Comparable<Speed>, Quantizable
         return equals(NONE);
     }
 
+    @Override
+    public long longValue()
+    {
+        return (long) asKilometersPerHour();
+    }
+
     public Speed maximum(Speed that)
     {
         return isGreaterThan(that) ? this : that;
@@ -378,12 +385,6 @@ public class Speed implements Comparable<Speed>, Quantizable
     public Speed minimum(Speed that)
     {
         return isLessThan(that) ? this : that;
-    }
-
-    @Override
-    public long quantum()
-    {
-        return (long) asKilometersPerHour();
     }
 
     public Speed scale(Level coefficient)

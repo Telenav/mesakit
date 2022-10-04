@@ -18,13 +18,13 @@
 
 package com.telenav.mesakit.graph.tests.specifications.common.tag;
 
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.CharacterFrequencies;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.list.HuffmanStringListCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.StringFrequencies;
-import com.telenav.kivakit.core.value.count.Count;
-import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
@@ -121,18 +121,18 @@ public class OsmTagStoreTest extends GraphUnitTest
     private PbfStringListTagCodec codec()
     {
         var characterFrequencies = new CharacterFrequencies().add("abc").add("def");
-        characterFrequencies.frequencies().add(HuffmanCharacterCodec.ESCAPE, Count._16);
+        characterFrequencies.frequencies().plus(HuffmanCharacterCodec.ESCAPE, Count._16);
 
-        var keyCharacterCodec = HuffmanCharacterCodec.from(
+        var keyCharacterCodec = HuffmanCharacterCodec.characterCodec(
                 characterFrequencies.symbols());
 
         var valueFrequencies = new CharacterFrequencies().add("bcd").add("ghi");
-        valueFrequencies.frequencies().add(HuffmanCharacterCodec.ESCAPE, Count._16);
-        var valueCharacterCodec = HuffmanCharacterCodec.from(
+        valueFrequencies.frequencies().plus(HuffmanCharacterCodec.ESCAPE, Count._16);
+        var valueCharacterCodec = HuffmanCharacterCodec.characterCodec(
                 valueFrequencies.symbols());
 
-        var keyStringCodec = HuffmanStringCodec.from(
-                new StringFrequencies(Count._128, Maximum.MAXIMUM)
+        var keyStringCodec = HuffmanStringCodec.stringCodec(
+                new StringFrequencies(Maximum.MAXIMUM)
                         .add("abc")
                         .add("def")
                         .add("ghi")
@@ -140,8 +140,8 @@ public class OsmTagStoreTest extends GraphUnitTest
                         .add("ghi")
                         .add("ghi").symbols());
 
-        var valueStringCodec = HuffmanStringCodec.from(
-                new StringFrequencies(Count._128, Maximum.MAXIMUM)
+        var valueStringCodec = HuffmanStringCodec.stringCodec(
+                new StringFrequencies(Maximum.MAXIMUM)
                         .add("jkl")
                         .add("mno")
                         .add("mno")

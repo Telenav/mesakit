@@ -54,7 +54,7 @@ public class IntersectionMapTest extends GraphUnitTest
         var intersections = 0;
         while (intersections < minimumIntersections)
         {
-            var identifier = random.randomInt(1, maximum);
+            var identifier = random.randomIntInclusive(1, maximum);
             identifiers.add(identifier);
             var count = references.get(identifier);
             if (count == null)

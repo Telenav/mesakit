@@ -156,7 +156,7 @@ public class WorldVertex extends Vertex
     {
         if (isClipped() || isSynthetic())
         {
-            return Hash.many(location(), vertex(this).gradeSeparation());
+            return Hash.hashMany(location(), vertex(this).gradeSeparation());
         }
         else
         {

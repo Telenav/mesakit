@@ -18,8 +18,8 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.Strings;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;
@@ -38,9 +38,9 @@ import java.util.Set;
 /**
  * An edge in a {@link WorldGraph}, scoped by a {@link WorldCell} and having a {@link WorldEdgeIdentifier}. The cell for
  * this graph element can be retrieved with {@link #worldCell()} and an override of the {@link #identifier()} method
- * from {@link Edge} returns the {@link WorldEdgeIdentifier} for the edge. Other methods ({@link #from()}, {@link
- * #to()}, etc) are overridden to ensure that graph elements accessed through a world edge continue to be scoped by
- * cell.
+ * from {@link Edge} returns the {@link WorldEdgeIdentifier} for the edge. Other methods ({@link #from()},
+ * {@link #to()}, etc) are overridden to ensure that graph elements accessed through a world edge continue to be scoped
+ * by cell.
  * <p>
  * Note that there are two methods to retrieve the graph of this {@link GraphElement}. The {@link #graph()} method
  * overrides {@link #graph()} to return the {@link WorldGraph} that contains this element, while the {@link #subgraph()}
@@ -73,7 +73,7 @@ public class WorldEdge extends Edge
         protected Edge onToValue(String value)
         {
             // Try to find the third '-' in the string value (for example, "cell-60-36-")
-            var end = Strings.nth(value, 3, '-');
+            var end = Strings.nthCharacter(value, 3, '-');
 
             // and if we found a third '-'
             if (end > 0)

@@ -37,7 +37,7 @@ import com.telenav.mesakit.graph.specifications.library.store.GraphStore;
  */
 public class CommonDataSpecification extends DataSpecification
 {
-    private static final Lazy<CommonDataSpecification> singleton = Lazy.of(CommonDataSpecification::new);
+    private static final Lazy<CommonDataSpecification> singleton = Lazy.lazy(CommonDataSpecification::new);
 
     public static CommonDataSpecification get()
     {

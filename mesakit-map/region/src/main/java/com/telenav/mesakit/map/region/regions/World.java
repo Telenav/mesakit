@@ -40,7 +40,7 @@ public class World extends Region<World>
     /**
      * The one and only World object
      */
-    public static final World INSTANCE = new World();
+    public static final World WORLD = new World();
 
     private World()
     {

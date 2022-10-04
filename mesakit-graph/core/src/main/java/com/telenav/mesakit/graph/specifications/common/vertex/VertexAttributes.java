@@ -28,7 +28,7 @@ public class VertexAttributes extends NodeAttributes
     // The attributes in this class are shared (from the common data specification) so they need to have the
     // same identifiers in all subclasses. See the superclass of this class for details.
 
-    private static final Lazy<VertexAttributes> singleton = Lazy.of(VertexAttributes::new);
+    private static final Lazy<VertexAttributes> singleton = Lazy.lazy(VertexAttributes::new);
 
     public static VertexAttributes get()
     {

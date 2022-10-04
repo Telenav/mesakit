@@ -53,6 +53,6 @@ public class GraphQueryErrorListener implements ANTLRErrorListener
                             int character, String message, RecognitionException e)
     {
         error = true;
-        errorHandler.callback(Strings.format("Syntax error at $: $", character, message));
+        errorHandler.call(Strings.format("Syntax error at $: $", character, message));
     }
 }

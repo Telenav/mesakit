@@ -53,7 +53,7 @@ public class Intersection
         if (object instanceof Intersection)
         {
             var that = (Intersection) object;
-            return Objects.equal(mainStreet, that.mainStreet) && Objects.equal(crossStreet, that.crossStreet);
+            return Objects.isEqual(mainStreet, that.mainStreet) && Objects.isEqual(crossStreet, that.crossStreet);
         }
         return false;
     }
@@ -61,7 +61,7 @@ public class Intersection
     @Override
     public int hashCode()
     {
-        return Hash.many(mainStreet, crossStreet);
+        return Hash.hashMany(mainStreet, crossStreet);
     }
 
     public RoadName mainStreet()

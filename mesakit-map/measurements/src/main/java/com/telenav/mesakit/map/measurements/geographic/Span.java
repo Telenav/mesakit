@@ -66,7 +66,7 @@ public class Span
     @Override
     public int hashCode()
     {
-        return Hash.many(start, end);
+        return Hash.hashMany(start, end);
     }
 
     public Distance length()

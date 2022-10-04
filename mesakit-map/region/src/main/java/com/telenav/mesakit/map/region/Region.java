@@ -21,17 +21,19 @@ package com.telenav.mesakit.map.region;
 import com.telenav.kivakit.commandline.ArgumentParser;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.language.Patterns;
-import com.telenav.kivakit.core.language.object.ObjectFormatter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.locale.LanguageIsoCode;
+import com.telenav.kivakit.core.locale.LocaleLanguage;
+import com.telenav.kivakit.core.locale.LocaleRegion;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.string.AsciiArt;
+import com.telenav.kivakit.core.string.ObjectFormatter;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.thread.KivaKitThread;
 import com.telenav.kivakit.core.thread.Threads;
@@ -40,7 +42,7 @@ import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.naming.Nameable;
 import com.telenav.kivakit.interfaces.naming.Named;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.resource.FileName;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
@@ -48,6 +50,7 @@ import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfEntity;
 import com.telenav.mesakit.map.geography.Location;
+import com.telenav.mesakit.map.geography.indexing.rtree.RTreeSpatialIndex;
 import com.telenav.mesakit.map.geography.shape.Outline;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
@@ -69,6 +72,7 @@ import com.telenav.mesakit.map.region.regions.District;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
 import com.telenav.mesakit.map.region.regions.World;
+import org.jetbrains.annotations.NotNull;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -83,12 +87,14 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 import static com.telenav.kivakit.filesystem.Folder.parseFolder;
+import static com.telenav.mesakit.map.region.locale.MapLocale.ENGLISH_WORLD;
 
 /**
  * @author Jonathan Locke
  */
+@UmlClassDiagram(diagram = DiagramRegion.class)
 @SuppressWarnings("unused") @UmlClassDiagram(diagram = DiagramRegion.class)
-@UmlExcludeSuperTypes({ Stringable.class, Comparable.class, Nameable.class, Named.class })
+@UmlExcludeSuperTypes({ StringFormattable.class, Comparable.class, Nameable.class, Named.class })
 public abstract class Region<T extends Region<T>> implements
         Bounded,
         Bordered,
@@ -97,7 +103,7 @@ public abstract class Region<T extends Region<T>> implements
         Nameable,
         Named,
         Comparable<Region<T>>,
-        Stringable
+        StringFormattable
 {
     public static final RegionIdentifier WORLD_IDENTIFIER_MINIMUM = new RegionIdentifier(1_000_000);
 
@@ -247,13 +253,14 @@ public abstract class Region<T extends Region<T>> implements
             Continent.create();
 
             // Load region identity data
-            var executor = Executors.newFixedThreadPool(1);
+            @SuppressWarnings("ConditionalExpressionWithIdenticalBranches")
+            var executor = Executors.newFixedThreadPool(RTreeSpatialIndex.visualDebug() ? 1 : 1);
             executor.execute(() -> type(Continent.class).loadIdentities());
             executor.execute(() -> type(Country.class).loadIdentities());
             executor.execute(() -> type(State.class).loadIdentities());
             executor.execute(() -> type(MetropolitanArea.class).loadIdentities());
             executor.execute(() -> type(County.class).loadIdentities());
-            Threads.shutdownAndAwait(executor);
+            Threads.shutdownAndAwaitTermination(executor);
         }
     }
 
@@ -315,13 +322,13 @@ public abstract class Region<T extends Region<T>> implements
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public static ArgumentParser.Builder<Region> regionArgumentParser(Listener listener, String description)
     {
-        return ArgumentParser.builder(Region.class).converter(new Converter(listener)).description(description);
+        return ArgumentParser.argumentParserBuilder(Region.class).converter(new Converter(listener)).description(description);
     }
 
     public static SwitchParser.Builder<RegionSet> regionListSwitchParser(Listener listener, String name,
                                                                          String description)
     {
-        return SwitchParser.builder(RegionSet.class)
+        return SwitchParser.switchParserBuilder(RegionSet.class)
                 .name(name)
                 .description(description)
                 .converter(new SetConverter(listener));
@@ -330,7 +337,7 @@ public abstract class Region<T extends Region<T>> implements
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public static SwitchParser.Builder<Region> regionSwitchParser(Listener listener, String name, String description)
     {
-        return SwitchParser.builder(Region.class).name(name).description(description).converter(new Converter(listener));
+        return SwitchParser.switchParserBuilder(Region.class).name(name).description(description).converter(new Converter(listener));
     }
 
     @SuppressWarnings({ "rawtypes" })
@@ -486,9 +493,15 @@ public abstract class Region<T extends Region<T>> implements
     }
 
     @Override
-    public String asString(Format format)
+    public String asString(@NotNull Format format)
     {
         return new ObjectFormatter(this).toString();
+    }
+
+    @Override
+    public void assignName(String name)
+    {
+        instance().identity().name(name);
     }
 
     @Override
@@ -605,7 +618,7 @@ public abstract class Region<T extends Region<T>> implements
         if (object instanceof Region)
         {
             @SuppressWarnings("unchecked") var that = (Region<T>) object;
-            return Objects.equal(identity(), that.identity());
+            return Objects.isEqual(identity(), that.identity());
         }
         return false;
     }
@@ -761,7 +774,7 @@ public abstract class Region<T extends Region<T>> implements
         return instance.isValid();
     }
 
-    public List<LanguageIsoCode> languages()
+    public ObjectList<LocaleLanguage> languages()
     {
         return instance().languages();
     }
@@ -795,11 +808,16 @@ public abstract class Region<T extends Region<T>> implements
         // Other cases
         if (!instance().languages().isEmpty())
         {
-            return new MapLocale(this, instance().defaultLanguage());
+            return new MapLocale(localeRegion(), this, instance().defaultLanguage());
         }
 
         // Default is World English
-        return MapLocale.ENGLISH_WORLD.get();
+        return ENGLISH_WORLD.get();
+    }
+
+    public LocaleRegion localeRegion()
+    {
+        return null;
     }
 
     public Object metadata()
@@ -817,12 +835,6 @@ public abstract class Region<T extends Region<T>> implements
     public final String name()
     {
         return identity().name();
-    }
-
-    @Override
-    public void assignName(String name)
-    {
-        instance().identity().name(name);
     }
 
     public final Collection<Region<?>> nestedChildren()

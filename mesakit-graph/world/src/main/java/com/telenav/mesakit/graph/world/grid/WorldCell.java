@@ -18,14 +18,12 @@
 
 package com.telenav.mesakit.graph.world.grid;
 
-import com.telenav.kivakit.core.collections.Sets;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.value.count.Bytes;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.loading.Unloadable;
@@ -52,9 +50,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.READ;
 
 /**
  * A world cell is a square {@link Region} in a {@link WorldGrid}. The actual layout of this cell in a grid is handled
@@ -85,7 +84,7 @@ import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.R
  * @see WorldGraphRepositoryFolder
  * @see GridCell
  */
-@JavaVirtualMachine.KivaKitExcludeFromSizeOf
+@SuppressWarnings("unused")
 public class WorldCell extends Region<WorldCell> implements Unloadable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
@@ -186,7 +185,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     @Override
     public Collection<Polygon> borders()
     {
-        return Sets.of(bounds().asPolygon());
+        return Set.of(bounds().asPolygon());
     }
 
     @Override
@@ -348,12 +347,6 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
         return worldGrid.included(this);
     }
 
-    public Bytes memorySize()
-    {
-        var graph = worldGrid.worldGraph();
-        return graph == null ? null : graph.estimatedMemorySize(this);
-    }
-
     /**
      * @return The (up to) 8 cells that are neighbors of this cell (and have graph data)
      */
@@ -385,13 +378,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
             @Override
             public String name()
             {
-                return outer.name() + " (" + memorySize() + ")";
-            }
-
-            @Override
-            protected Bytes memorySize()
-            {
-                return outer.memorySize();
+                return outer.name();
             }
 
             @Override
@@ -400,8 +387,8 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
                 // Load the graph file
                 DEBUG.trace("Loading graph for $", name());
                 @SuppressWarnings(
-                        "resource") var archive = new GraphArchive(LOGGER, cellGraphFile(), READ, ProgressReporter.none());
-                var graph = archive.load(DEBUG.isDebugOn() ? DEBUG.listener() : Listener.emptyListener());
+                        "resource") var archive = new GraphArchive(LOGGER, cellGraphFile(), READ, ProgressReporter.nullProgressReporter());
+                var graph = archive.load(DEBUG.isDebugOn() ? DEBUG.listener() : Listener.nullListener());
                 if (graph == null)
                 {
                     LOGGER.warning("Unable to load graph for $", name());

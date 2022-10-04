@@ -31,6 +31,7 @@ import com.telenav.mesakit.map.measurements.internal.lexakai.DiagramMapMeasureme
  * @author matthieun
  * @author jonathanl (shibo)
  */
+@SuppressWarnings("unused")
 @UmlClassDiagram(diagram = DiagramMapMeasurementMotion.class)
 @LexakaiJavadoc(complete = true)
 public class Acceleration
@@ -62,7 +63,7 @@ public class Acceleration
         this.duration = duration;
         this.negative = negative;
     }
-    
+
     public double asMetersPerSecondSquared()
     {
         return (negative ? -1.0 : 1.0) * speed.asMetersPerSecond() / duration.dividedBy(Duration.ONE_SECOND);

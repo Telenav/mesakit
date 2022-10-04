@@ -27,7 +27,7 @@ import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.level.Percent;
-import com.telenav.kivakit.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.interfaces.value.LongValued;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.measurements.internal.lexakai.DiagramMapMeasurementGeographic;
@@ -41,9 +41,9 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
  *
  * @author jonathanl (shibo)
  */
-@UmlClassDiagram(diagram = DiagramMapMeasurementGeographic.class)
+@SuppressWarnings("unused") @UmlClassDiagram(diagram = DiagramMapMeasurementGeographic.class)
 @LexakaiJavadoc(complete = true)
-public final class Distance implements Quantizable, Comparable<Distance>
+public final class Distance implements LongValued, Comparable<Distance>
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -120,7 +120,7 @@ public final class Distance implements Quantizable, Comparable<Distance>
 
     public static ArgumentParser.Builder<Distance> argumentParser(String description)
     {
-        return ArgumentParser.builder(Distance.class).converter(new Converter(LOGGER)).description(description);
+        return ArgumentParser.argumentParserBuilder(Distance.class).converter(new Converter(LOGGER)).description(description);
     }
 
     public static Distance centimeters(long centimeters)
@@ -135,7 +135,7 @@ public final class Distance implements Quantizable, Comparable<Distance>
 
     public static SwitchParser.Builder<Distance> distanceSwitchParser(String name, String description)
     {
-        return SwitchParser.builder(Distance.class).name(name).converter(new Converter(LOGGER))
+        return SwitchParser.switchParserBuilder(Distance.class).name(name).converter(new Converter(LOGGER))
                 .description(description);
     }
 
@@ -515,6 +515,12 @@ public final class Distance implements Quantizable, Comparable<Distance>
         return equals(ZERO);
     }
 
+    @Override
+    public long longValue()
+    {
+        return millimeters;
+    }
+
     public Distance maximum(Distance that)
     {
         return isGreaterThan(that) ? this : that;
@@ -545,12 +551,6 @@ public final class Distance implements Quantizable, Comparable<Distance>
         return Percent.percent(100.0 * Doubles.inRange(asMeters() / that.asMeters(), 0.0, 1.0));
     }
 
-    @Override
-    public long quantum()
-    {
-        return millimeters;
-    }
-
     public double ratio(Distance divisor)
     {
         assert divisor.asMillimeters() > 0 : "Unable to divide by zero or a negative value " + divisor;
@@ -577,7 +577,7 @@ public final class Distance implements Quantizable, Comparable<Distance>
         return millimeters((long) (asMillimeters() * multiplier));
     }
 
-    public String toCommaSeparatedString()
+    public String asCommaSeparatedString()
     {
         if (asMeters() < 1000)
         {

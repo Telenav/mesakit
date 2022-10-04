@@ -32,9 +32,9 @@ import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.string.AsIndentedString;
-import com.telenav.kivakit.core.string.AsStringIndenter;
 import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.string.Differences;
+import com.telenav.kivakit.core.string.ObjectIndenter;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Bytes;
@@ -42,9 +42,8 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.version.Version;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.interfaces.collection.NextValue;
+import com.telenav.kivakit.interfaces.collection.NextIterator;
 import com.telenav.kivakit.interfaces.comparison.Filter;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.interfaces.naming.Named;
@@ -140,9 +139,9 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.EDGES;
 import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_EDGES;
 
 /**
- * The base class for directional graphs representing a road network, composed of {@link GraphElement}s. {@link
- * Vertex}es are connected by {@link Edge}s and {@link EdgeRelation}s relate vertexes and edges to each other to form
- * higher level features like turn restrictions.
+ * The base class for directional graphs representing a road network, composed of {@link GraphElement}s.
+ * {@link Vertex}es are connected by {@link Edge}s and {@link EdgeRelation}s relate vertexes and edges to each other to
+ * form higher level features like turn restrictions.
  * <p>
  * Graphs support spatial indexing and implement a variety of efficient queries for graph elements as well as simple
  * data access methods that give statistics about the elements and retrieve elements by identifier.
@@ -173,7 +172,6 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
  *     <li>{@link #dataSpecification()} - The {@link DataSpecification} for data in the graph</li>
  *     <li>{@link #bounds()} - The bounding rectangle that encloses all graph elements</li>
  *     <li>{@link #precision()} - The {@link Precision} of graph data, and in particular polygon data</li>
- *     <li>{@link #estimatedMemorySize()} - An estimate of the size of the graph in memory</li>
  *     <li>{@link #supports(Attribute)} - True if the graph supports the given {@link Attribute}</li>
  *     <li>{@link #supportedEdgeAttributes()} - The list of all {@link Edge} attributes in the graph</li>
  *     <li>{@link #supportedPlaceAttributes()} - The list of all {@link Place} attributes in the graph</li>
@@ -371,7 +369,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
      */
     public static Graph createCompatible(File input)
     {
-        var metadata = Metadata.from(input);
+        var metadata = Metadata.metadata(input);
         return metadata == null ? null : metadata.newGraph();
     }
 
@@ -446,7 +444,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     @Override
-    public AsStringIndenter asString(Format format, AsStringIndenter indenter)
+    public ObjectIndenter asString(Format format, ObjectIndenter indenter)
     {
         indenter.labeled("resource", resource().path().asContraction(120));
         indenter.indented("metadata", () -> metadata().asString(format, indenter));
@@ -688,7 +686,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     public final Differences differencesFrom(Graph that, Rectangle bounds, Maximum maximumDifferences)
     {
         var differences = new Differences();
-        var progress = BroadcastingProgressReporter.create(this);
+        var progress = BroadcastingProgressReporter.createProgressReporter(this);
 
         // Then compare edge counts
         if (!edgeCount().equals(that.edgeCount()))
@@ -702,7 +700,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
         }
 
         // Compare all edges in this graph with corresponding edges in that graph
-        progress = progress.withItemName("edges");
+        progress = progress.withUnits("edges");
         progress.feedback("Comparing edges");
         progress.start();
         for (var edge : edges().within(bounds))
@@ -739,7 +737,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
             differences.add("Edge spatial index in graph " + name() + " is different from spatial index in graph " + that.name());
         }
 
-        progress = progress.withItemName("places");
+        progress = progress.withUnits("places");
         progress.feedback("Comparing places");
         progress.reset();
         for (var place : placesInside(bounds))
@@ -876,7 +874,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
      */
     public final EdgeSequence edgesIntersecting(Rectangle bounds)
     {
-        return edgesIntersecting(bounds, Filter.acceptingAll(), EDGES);
+        return edgesIntersecting(bounds, Filter.acceptAll(), EDGES);
     }
 
     /**
@@ -953,19 +951,6 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return An estimate of the size of this graph in memory. This will not be especially accurate, but it should give
-     * a very rough idea of the memory consumption of a graph.
-     */
-    public Bytes estimatedMemorySize()
-    {
-        if (estimatedMemorySize == null)
-        {
-            estimatedMemorySize = JavaVirtualMachine.local().sizeOfObjectGraph(graphStore, "graph.store", Bytes.megabytes(1));
-        }
-        return estimatedMemorySize;
-    }
-
-    /**
      * @param size An estimate of the in-memory size of this graph
      */
     public final void estimatedMemorySize(Bytes size)
@@ -1003,7 +988,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
      */
     public final EdgeSequence forwardEdgesIntersecting(Rectangle bounds)
     {
-        return forwardEdgesIntersecting(bounds, Filter.acceptingAll());
+        return forwardEdgesIntersecting(bounds, Filter.acceptAll());
     }
 
     /**
@@ -1397,7 +1382,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
      */
     public final Iterable<Place> placesInside(Region<?> region)
     {
-        return Iterables.iterable(() -> new NextValue<>()
+        return Iterables.iterable(() -> new NextIterator<>()
         {
             final Iterator<Place> places = placesInside(region.bounds()).iterator();
 
@@ -1526,7 +1511,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
      */
     public final RelationSet relationsIntersecting(Rectangle bounds)
     {
-        return relationsIntersecting(bounds, Filter.acceptingAll());
+        return relationsIntersecting(bounds, Filter.acceptAll());
     }
 
     /**

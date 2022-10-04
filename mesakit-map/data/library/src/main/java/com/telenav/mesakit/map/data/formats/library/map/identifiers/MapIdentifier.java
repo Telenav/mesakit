@@ -30,6 +30,7 @@ import java.util.Map;
  *
  * @author jonathanl (shibo)
  */
+@SuppressWarnings("unused")
 @UmlClassDiagram(diagram = DiagramDataMapIdentifier.class)
 public abstract class MapIdentifier extends Identifier
 {

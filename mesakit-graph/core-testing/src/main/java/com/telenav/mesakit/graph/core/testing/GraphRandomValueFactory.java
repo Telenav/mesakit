@@ -40,7 +40,7 @@ public class GraphRandomValueFactory extends GeographyRandomValueFactory
 
         protected RandomListBuilder(int minimum, int maximum)
         {
-            for (var i = 0; i < randomInt(minimum, maximum); i++)
+            for (var i = 0; i < randomIntInclusive(minimum, maximum); i++)
             {
                 list.add(newElement());
             }

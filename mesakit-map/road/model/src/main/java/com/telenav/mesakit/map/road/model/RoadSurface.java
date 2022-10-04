@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.interfaces.value.LongValued;
 
-public enum RoadSurface implements Quantizable
+public enum RoadSurface implements LongValued
 {
     PAVED(0),
     UNPAVED(1),
@@ -52,7 +52,7 @@ public enum RoadSurface implements Quantizable
     }
 
     @Override
-    public long quantum()
+    public long longValue()
     {
         return identifier;
     }

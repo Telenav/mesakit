@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.geography.projection;
 
-import com.telenav.kivakit.core.language.object.ObjectFormatter;
+import com.telenav.kivakit.core.string.ObjectFormatter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 
 /**

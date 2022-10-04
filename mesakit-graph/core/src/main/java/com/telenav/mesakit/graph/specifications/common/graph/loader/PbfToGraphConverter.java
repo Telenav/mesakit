@@ -182,10 +182,10 @@ public abstract class PbfToGraphConverter extends BaseRepeater implements GraphC
     public final Graph convert(File file)
     {
         // Ensure that the file is local
-        file = file.materialized(BroadcastingProgressReporter.create(this));
+        file = file.materialized(BroadcastingProgressReporter.createProgressReporter(this));
 
         // Extract metadata from the file,
-        var metadata = this.metadata != null ? this.metadata : Metadata.from(file);
+        var metadata = this.metadata != null ? this.metadata : Metadata.metadata(file);
         if (metadata != null)
         {
             // create a reader for the data,

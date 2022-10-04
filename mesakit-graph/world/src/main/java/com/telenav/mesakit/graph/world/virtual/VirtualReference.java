@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.graph.world.virtual;
 
-import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.interfaces.value.Source;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.graph.world.virtual.types.HardReferencedValue;
@@ -68,8 +67,8 @@ public abstract class VirtualReference<T>
     private final VirtualReferenceTracker<T> tracker;
 
     /**
-     * The value, which might be a {@link HardReferencedValue}, a {@link SoftReferencedValue} or a {@link
-     * WeakReferencedValue}.
+     * The value, which might be a {@link HardReferencedValue}, a {@link SoftReferencedValue} or a
+     * {@link WeakReferencedValue}.
      */
     private volatile Source<T> value = new HardReferencedValue<>(null);
 
@@ -116,8 +115,6 @@ public abstract class VirtualReference<T>
     {
         return name();
     }
-
-    protected abstract Bytes memorySize();
 
     protected abstract String name();
 

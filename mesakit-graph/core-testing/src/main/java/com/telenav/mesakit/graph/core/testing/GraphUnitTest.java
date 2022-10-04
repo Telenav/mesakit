@@ -29,15 +29,15 @@ import com.telenav.kivakit.resource.CopyMode;
 import com.telenav.kivakit.resource.Extension;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.packages.Package;
-import com.telenav.kivakit.resource.serialization.ObjectSerializers;
+import com.telenav.kivakit.resource.serialization.ObjectSerializerRegistry;
 import com.telenav.kivakit.serialization.gson.GsonObjectSerializer;
-import com.telenav.kivakit.serialization.gson.factory.CoreGsonFactory;
+import com.telenav.kivakit.serialization.gson.factory.KivaKitCoreGsonFactory;
 import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
-import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KivaKitCoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
-import com.telenav.kivakit.serialization.kryo.types.ResourceKryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KivaKitResourceKryoTypes;
 import com.telenav.kivakit.serialization.properties.PropertiesObjectSerializer;
-import com.telenav.kivakit.settings.Settings;
+import com.telenav.kivakit.settings.SettingsRegistry;
 import com.telenav.kivakit.settings.stores.ResourceFolderSettingsStore;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
@@ -71,11 +71,12 @@ import com.telenav.mesakit.map.region.RegionKryoTypes;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.testing.RegionUnitTest;
 
-import static com.telenav.kivakit.core.messaging.Listener.emptyListener;
+import static com.telenav.kivakit.core.messaging.Listener.nullListener;
+import static com.telenav.kivakit.core.object.Lazy.lazy;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.resource.Extension.GRAPH;
 import static com.telenav.kivakit.resource.Extension.OSM_PBF;
-import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.READ;
 import static com.telenav.mesakit.graph.metadata.DataSupplier.OSM;
 import static com.telenav.mesakit.graph.specifications.library.pbf.PbfFileMetadataAnnotator.Mode.STRIP_UNREFERENCED_NODES;
 import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
@@ -90,26 +91,26 @@ public abstract class GraphUnitTest extends RegionUnitTest
 {
     private static int nextOsmRelationIdentifier = 1;
 
-    private final Lazy<Graph> osmGreenLakeSeattleLarge = Lazy.of(
+    private final Lazy<Graph> osmGreenLakeSeattleLarge = lazy(
             () -> graph(OsmDataSpecification.get(), "Green_Lake_Seattle_Large",
                     Country.UNITED_STATES.WASHINGTON.SEATTLE.GREEN_LAKE.bounds().expanded(Distance.ONE_MILE)));
 
-    private final Lazy<Graph> osmGreenLakeSeattle = Lazy.of(
+    private final Lazy<Graph> osmGreenLakeSeattle = lazy(
             () -> graph(OsmDataSpecification.get(), "Green_Lake_Seattle", Country.UNITED_STATES.WASHINGTON.SEATTLE.GREEN_LAKE.bounds()));
 
-    private final Lazy<Graph> osmDowntownSeattle = Lazy.of(
+    private final Lazy<Graph> osmDowntownSeattle = lazy(
             () -> graph(OsmDataSpecification.get(), "Downtown_Seattle", Country.UNITED_STATES.WASHINGTON.SEATTLE.DOWNTOWN.bounds()));
 
-    private final Lazy<Graph> osmDowntownSeattleTest = Lazy.of(
+    private final Lazy<Graph> osmDowntownSeattleTest = lazy(
             () -> graph(OsmDataSpecification.get(), "Downtown_Seattle_Test", Rectangle.parse("47.587309,-122.346791:47.616221,-122.317879")));
 
-    private final Lazy<Graph> osmBellevueWashington = Lazy.of(
+    private final Lazy<Graph> osmBellevueWashington = lazy(
             () -> graph(OsmDataSpecification.get(), "Bellevue_Washington", Location.degrees(47.61302, -122.188).within(Distance.miles(2))));
 
-    private final Lazy<Graph> osmBuffalo = Lazy.of(
+    private final Lazy<Graph> osmBuffalo = lazy(
             () -> graph(OsmDataSpecification.get(), "Buffalo_New_York", Country.UNITED_STATES.NEW_YORK.BUFFALO.bounds()));
 
-    private final Lazy<Graph> osmHuronCharter = Lazy.of(
+    private final Lazy<Graph> osmHuronCharter = lazy(
             () -> graph(OsmDataSpecification.get(), "Huron_Charter", Rectangle.fromLocations(Location.degrees(42.179459, -83.423221),
                     Location.degrees(42.094242, -83.303885))));
 
@@ -124,15 +125,15 @@ public abstract class GraphUnitTest extends RegionUnitTest
     {
         initializeProject(GraphProject.class);
 
-        register(new CoreGsonFactory(this));
+        register(new KivaKitCoreGsonFactory(this));
         register(new KryoObjectSerializer(kryoTypes()));
 
-        var serializers = new ObjectSerializers();
+        var serializers = new ObjectSerializerRegistry();
         serializers.add(Extension.JSON, new GsonObjectSerializer());
         serializers.add(Extension.PROPERTIES, new PropertiesObjectSerializer());
         register(serializers);
 
-        var store = Settings.of(this);
+        var store = SettingsRegistry.settingsRegistryFor(this);
         listenTo(store);
         store.registerSettingsIn(new ResourceFolderSettingsStore(this, Folder.parseFolder(this, "configuration")));
     }
@@ -199,9 +200,9 @@ public abstract class GraphUnitTest extends RegionUnitTest
     @Override
     protected KryoTypes kryoTypes()
     {
-        return new CoreKryoTypes()
+        return new KivaKitCoreKryoTypes()
                 .mergedWith(new MeasurementsKryoTypes())
-                .mergedWith(new ResourceKryoTypes())
+                .mergedWith(new KivaKitResourceKryoTypes())
                 .mergedWith(new DataCompressionKryoTypes())
                 .mergedWith(new GeographyKryoTypes())
                 .mergedWith(new PrimitiveCollectionsKryoTypes())
@@ -335,7 +336,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
         var pbf = overpass.pbf(dataDescriptor, bounds);
 
         // then make sure it has metadata
-        var metadata = Metadata.from(pbf);
+        var metadata = Metadata.metadata(pbf);
         if (metadata == null)
         {
             var annotator = listenTo(new PbfFileMetadataAnnotator(
@@ -369,7 +370,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
                 // then try to copy it from the test data folder
                 var destination = listenTo(resolveProject(GraphProject.class).graphFolder().folder("overpass"));
                 var source = listenTo(Package.parsePackage(this, GraphUnitTest.class, "data"));
-                source.copyTo(destination, CopyMode.OVERWRITE, OSM_PBF::matches, ProgressReporter.none());
+                source.copyTo(destination, CopyMode.OVERWRITE, OSM_PBF::matches, ProgressReporter.nullProgressReporter());
             }
 
             // and if we can't find it there, and it's an OSM graph being requested,
@@ -383,7 +384,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
             if (pbfFile.exists())
             {
                 // get its metadata
-                Metadata metadata = Metadata.from(pbfFile);
+                Metadata metadata = Metadata.metadata(pbfFile);
                 if (metadata != null)
                 {
                     // and convert the PBF file to a graph file using the right kind of converter for the metadata
@@ -392,7 +393,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
                     if (graph != null)
                     {
                         // and if we succeeded, then save the graph file and return the graph
-                        graph.save(new GraphArchive(this, graphFile, ZipArchive.Mode.WRITE, ProgressReporter.none()));
+                        graph.save(new GraphArchive(this, graphFile, ZipArchive.AccessMode.WRITE, ProgressReporter.nullProgressReporter()));
                         return listenTo(graph);
                     }
 
@@ -410,7 +411,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
         }
         else
         {
-            return new GraphArchive(this, graphFile, READ, ProgressReporter.none()).load(emptyListener());
+            return new GraphArchive(this, graphFile, READ, ProgressReporter.nullProgressReporter()).load(nullListener());
         }
         return null;
     }

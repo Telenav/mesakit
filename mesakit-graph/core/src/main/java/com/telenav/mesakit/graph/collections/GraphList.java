@@ -28,7 +28,7 @@ import com.telenav.mesakit.graph.io.archive.GraphArchive;
 
 import java.util.AbstractList;
 
-import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.READ;
 
 public class GraphList extends AbstractList<Graph>
 {
@@ -48,7 +48,7 @@ public class GraphList extends AbstractList<Graph>
         var resource = files.get(index);
         try
         {
-            return new GraphArchive(LOGGER, resource, READ, ProgressReporter.none()).load(LOGGER);
+            return new GraphArchive(LOGGER, resource, READ, ProgressReporter.nullProgressReporter()).load(LOGGER);
         }
         catch (Exception e)
         {

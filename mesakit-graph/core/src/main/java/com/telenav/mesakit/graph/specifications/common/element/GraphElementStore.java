@@ -30,11 +30,9 @@ import com.telenav.kivakit.core.messaging.messages.status.Warning;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.thread.Batcher;
 import com.telenav.kivakit.core.time.Time;
-import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.interfaces.collection.Addable;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
@@ -87,7 +85,11 @@ import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
  * @see ArchivedGraphElementStore
  */
 @SuppressWarnings({ "unused", "SpellCheckingInspection" })
-public abstract class GraphElementStore<T extends GraphElement> extends BaseRepeater implements Iterable<T>, CompressibleCollection, AttributeStore, Validatable
+public abstract class GraphElementStore<T extends GraphElement> extends BaseRepeater implements
+        Iterable<T>,
+        CompressibleCollection,
+        AttributeStore,
+        Validatable
 {
     private static final boolean BATCHING_ENABLED = false;
 
@@ -153,7 +155,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         }
 
         @Override
-        protected boolean validationReport()
+        protected boolean shouldShowValidationReport()
         {
             return true;
         }
@@ -330,7 +332,21 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         }
         else
         {
-            return this::internalAdd;
+            var outer = this;
+            return new Addable<>()
+            {
+                @Override
+                public boolean onAdd(T t)
+                {
+                    return internalAdd(t);
+                }
+
+                @Override
+                public int size()
+                {
+                    return outer.size();
+                }
+            };
         }
     }
 
@@ -391,17 +407,8 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
         {
             compressionMethod = method;
 
-            // Must specify -javaagent to VM, see JavaVirtualMachine.sizeOfObjectGraph()
-            JavaVirtualMachine.local().traceSizeChange(this, "compress", this, Bytes.kilobytes(100), () ->
-            {
-                var size = CompressibleCollection.compressReachableObjects(this, this, method, event ->
-                        DEBUG.trace("Compressed $", NamedObject.syntheticName(event)));
-                if (size != null)
-                {
-                    graph().estimatedMemorySize(size);
-                }
-            });
-
+            CompressibleCollection.compressReachableObjects(this, this, method, event ->
+                    DEBUG.trace("Compressed $", NamedObject.syntheticName(event)));
             return method;
         }
 
@@ -723,7 +730,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     /**
      * @return The tag store for this store
      */
-    @SuppressWarnings({ "exports", "ClassEscapesDefinedScope" })
+    @SuppressWarnings({ "exports" })
     public TagStore tags()
     {
         if (!TAGS.load())

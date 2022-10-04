@@ -19,10 +19,10 @@
 package com.telenav.mesakit.graph.specifications.library.pbf;
 
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
-import com.telenav.kivakit.core.string.AsStringIndenter;
+import com.telenav.kivakit.core.string.ObjectIndenter;
 import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.string.Strings;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.primitive.collections.set.SplitLongSet;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.specifications.common.node.store.all.disk.PbfAllNodeDiskStores;
@@ -187,8 +187,8 @@ public class PbfDataAnalysis extends BaseRepeater
                 .withWayCount(statistics.ways())
                 .withRelationCount(statistics.relations());
 
-        var indenter = new AsStringIndenter(Stringable.Format.USER_MULTILINE);
-        indenter.indented("metadata", () -> metadata().asString(Stringable.Format.USER_MULTILINE, indenter));
+        var indenter = new ObjectIndenter(StringFormattable.Format.USER_MULTILINE);
+        indenter.indented("metadata", () -> metadata().asString(StringFormattable.Format.USER_MULTILINE, indenter));
         information(AsciiArt.textBox(Strings.format("PBF Data Analysis of $", fileName), indenter.toString()));
     }
 

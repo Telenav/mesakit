@@ -64,7 +64,7 @@ public class GraphQuery
         if (!parser.isMatchedEOF())
         {
             // report that
-            errorHandler.callback("Parser did not match all input in query expression");
+            errorHandler.call("Parser did not match all input in query expression");
             return Sets.empty();
         }
 
@@ -72,7 +72,7 @@ public class GraphQuery
         if (parser.getNumberOfSyntaxErrors() > 0)
         {
             // return an empty set
-            errorHandler.callback("Syntax error");
+            errorHandler.call("Syntax error");
             return Sets.empty();
         }
 

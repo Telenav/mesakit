@@ -59,7 +59,7 @@ public class WorldRelationIdentifier extends RelationIdentifier
     @Override
     public int hashCode()
     {
-        return Hash.many(worldCell, super.hashCode());
+        return Hash.hashMany(worldCell, super.hashCode());
     }
 
     public WorldRelation relation()

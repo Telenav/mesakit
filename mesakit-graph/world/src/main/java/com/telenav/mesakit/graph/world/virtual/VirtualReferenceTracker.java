@@ -28,6 +28,9 @@ import java.lang.ref.ReferenceQueue;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import static com.telenav.kivakit.core.value.count.Bytes.megabytes;
+import static com.telenav.kivakit.core.vm.JavaVirtualMachine.javaVirtualMachine;
+
 public class VirtualReferenceTracker<T> extends BaseRepeater
 {
     /** True to turn on GC debugging */
@@ -37,25 +40,20 @@ public class VirtualReferenceTracker<T> extends BaseRepeater
     @UmlAggregation(label = "loads, weakens, hardens")
     private final LinkedList<VirtualReference<T>> loaded = new LinkedList<>();
 
-    /** The approximate maximum amount of memory to hard reference */
-    private final Bytes maximum;
+    /** The minimum free memory before freeing hard references */
+    private Bytes minimumFree = megabytes(4);
 
     /** Reference queue for notifications that soft and weak references have been collected */
     private final ReferenceQueue<T> queue = new ReferenceQueue<>();
-
-    /** The current memory consumption estimate */
-    private Bytes total = Bytes._0;
 
     /** CheckType of references to keep */
     @UmlAggregation
     private final VirtualReferenceType type;
 
-    public VirtualReferenceTracker(Bytes maximum, VirtualReferenceType type)
+    public VirtualReferenceTracker(Bytes minimumFree, VirtualReferenceType type)
     {
-        this.maximum = Ensure.ensureNotNull(maximum);
+        this.minimumFree = Ensure.ensureNotNull(minimumFree);
         this.type = Ensure.ensureNotNull(type);
-
-        trace("Reference tracker keeping hard references to approximately $", maximum);
 
         // NOTE: This debug feature will cause hard references to stay live even if nothing
         // references this tracker anymore
@@ -86,29 +84,31 @@ public class VirtualReferenceTracker<T> extends BaseRepeater
     {
         assert reference != null : "Reference must not be null";
 
-        // Increase memory consumption by the size of the referenced value
-        total = total.plus(reference.memorySize());
-
         // Add the given reference to the end of the list of hardened references
         loaded.addLast(reference);
 
         // If we are using too much memory,
-        while (total.isGreaterThan(maximum))
+        while (true)
         {
-            // show debug details (using a copy of the loaded list since we will be modifying it)
-            trace("Total of $ exceeds maximum of $: $", total, maximum, new ArrayList<>(loaded));
+            var freeMemory = javaVirtualMachine().freeMemory();
+            if (freeMemory.isLessThan(minimumFree))
+            {
+                // show debug details (using a copy of the loaded list since we will be modifying it)
+                trace("Free memory of $ is less than the minimum of $: $", freeMemory, minimumFree, new ArrayList<>(loaded));
 
-            // soften the reference that we loaded the longest ago
-            var oldest = loaded.removeFirst();
-            trace("Softening $", oldest.name());
-            oldest.soften();
+                // soften the reference that we loaded the longest ago
+                var oldest = loaded.removeFirst();
+                trace("Softening $", oldest.name());
+                oldest.soften();
 
-            // and reduce hard-referenced memory estimate
-            total = total.minus(oldest.memorySize());
+                // and force a garbage collection to free up memory
+                System.gc();
+            }
+            else
+            {
+                break;
+            }
         }
-
-        // Give details of how much is currently being hard-referenced
-        trace("Hard referencing $ of $", total, maximum);
     }
 
     ReferenceQueue<T> queue()

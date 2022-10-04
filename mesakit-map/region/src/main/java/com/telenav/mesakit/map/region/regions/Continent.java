@@ -113,7 +113,7 @@ public abstract class Continent extends Region<Continent> implements Iterable<Co
 
     public static SwitchParser.Builder<Continent> continentSwitchParser(String name, String description)
     {
-        return SwitchParser.builder(Continent.class)
+        return SwitchParser.switchParserBuilder(Continent.class)
                 .name(name)
                 .converter(new Converter<>(LOGGER()))
                 .description(description);

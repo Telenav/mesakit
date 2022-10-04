@@ -89,7 +89,7 @@ public class InteriorNode<T extends Bounded & Intersectable> extends Node<T>
     @Override
     public int hashCode()
     {
-        return Hash.many(super.hashCode(), children.hashCode());
+        return Hash.hashMany(super.hashCode(), children.hashCode());
     }
 
     /**

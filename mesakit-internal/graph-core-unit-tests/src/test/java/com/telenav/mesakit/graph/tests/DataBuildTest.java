@@ -44,8 +44,8 @@ public class DataBuildTest extends UnitTest
         var time = LocalTime.now();
         var build = DataBuild.parse(time.toString());
 
-        ensureEqual(Paths.withoutSuffix(time.toString(), '_'), Paths.withoutSuffix(build.toString(), '_'));
-        ensureEqual(TimeZones.shortDisplayName(time.timeZone()), Paths.optionalSuffix(build.toString(), '_'));
+        ensureEqual(Paths.pathWithoutSuffix(time.toString(), '_'), Paths.pathWithoutSuffix(build.toString(), '_'));
+        ensureEqual(TimeZones.shortDisplayName(time.timeZone()), Paths.pathOptionalSuffix(build.toString(), '_'));
     }
 
     @Test
