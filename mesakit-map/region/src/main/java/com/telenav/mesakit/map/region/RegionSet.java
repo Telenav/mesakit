@@ -22,7 +22,6 @@ import com.telenav.kivakit.core.collections.BaseCollection;
 import com.telenav.kivakit.core.collections.set.BaseSet;
 import com.telenav.kivakit.core.string.Join;
 import com.telenav.kivakit.core.value.count.Count;
-import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -43,12 +42,6 @@ public class RegionSet extends BaseSet<Region>
     public RegionSet()
     {
         super(MAXIMUM, new LinkedHashSet<>());
-    }
-
-    @Override
-    protected Set<Region> newSet()
-    {
-        return new RegionSet();
     }
 
     public RegionSet(Iterable<? extends Region> regions)
@@ -87,12 +80,6 @@ public class RegionSet extends BaseSet<Region>
         return Join.join(this, ", ");
     }
 
-    @Override
-    protected BaseCollection<Region> onNewCollection()
-    {
-        return new RegionSet();
-    }
-
     @SuppressWarnings("unchecked")
     public RegionSet under()
     {
@@ -103,5 +90,20 @@ public class RegionSet extends BaseSet<Region>
             under.addAll(region.nestedChildren());
         }
         return under;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Set<Region> onNewBackingSet()
+    {
+        return new LinkedHashSet<>();
+    }
+
+    @Override
+    protected BaseCollection<Region> onNewCollection()
+    {
+        return new RegionSet();
     }
 }

@@ -1674,7 +1674,7 @@ public class Polyline implements
     public String toString()
     {
         return new ObjectList<>(GeographyLimits.LOCATIONS_PER_POLYLINE)
-                .appendThen(locationSequence())
+                .appendAllThen(locationSequence())
                 .join(":");
     }
 

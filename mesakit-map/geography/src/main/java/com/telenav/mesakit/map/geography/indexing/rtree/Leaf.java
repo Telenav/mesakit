@@ -130,7 +130,7 @@ public abstract class Leaf<T extends Bounded & Intersectable> extends Node<T>
         return "[Leaf bounds = " + bounds() + ", size = " + size() + ", elements = "
                 + (detail == RTreeSpatialIndex.DumpDetailLevel.SUMMARY_ONLY
                 ? "" + size()
-                : new ObjectList<>().appendThen(elements()).join())
+                : new ObjectList<>().appendAllThen(elements()).join())
                 + "]";
     }
 
