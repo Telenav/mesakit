@@ -33,7 +33,7 @@ public class PbfCharacterCodecBuilder
         frequencies.frequencies().plus(ESCAPE, escapes);
         var symbols = frequencies.symbols(charactersMinimumOccurrences);
         return symbols.size() < 16 ? PbfDefaultCodecs.get().defaultKeyCharacterCodec() :
-                HuffmanCharacterCodec.from(symbols, charactersMaximumBits);
+                HuffmanCharacterCodec.characterCodec(symbols, charactersMaximumBits);
     }
 
     public void sample(PbfEntity<?> entity)

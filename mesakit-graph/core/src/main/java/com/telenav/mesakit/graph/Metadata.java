@@ -93,7 +93,7 @@ import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
 /**
  * Information about map data in a resource like a file.
  * <p>
- * Metadata in a {@link Resource} containing map data, can be extracted with {@link #from(File)}. The structure of
+ * Metadata in a {@link Resource} containing map data, can be extracted with {@link #metadata(File)}. The structure of
  * metadata in a PBF resource is described in the link above. Partial metadata can be obtained from a metadata
  * descriptor with {@link #parseDescriptor(String)} and the descriptor for a {@link Metadata} object can be retrieved
  * with {@link #descriptor()}.
@@ -152,7 +152,7 @@ import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
  * @see Validatable
  * @see StringFormattable
  */
-@SuppressWarnings({ "DuplicateBranchesInSwitch", "DuplicatedCode" })
+@SuppressWarnings({ "DuplicateBranchesInSwitch", "DuplicatedCode", "unused" })
 public class Metadata implements Named, AsIndentedString, KryoSerializable, Validatable
 {
     public static final ValidationType VALIDATE_EXCEPT_STATISTICS = new ValidationType();
@@ -183,16 +183,16 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * @return Metadata from the given input file, allowing for an estimate of entities based on file size
      */
-    public static Metadata from(File input)
+    public static Metadata metadata(File input)
     {
-        return from(input, ALLOW_ESTIMATE);
+        return metadata(input, ALLOW_ESTIMATE);
     }
 
     /**
      * @return Complete metadata read for the given input resource. For resources that don't support all the statistics
      * values, those values may be estimates based on the size of the resource.
      */
-    public static Metadata from(File input, CountType countType)
+    public static Metadata metadata(File input, CountType countType)
     {
         input = input.materialized(BroadcastingProgressReporter.createProgressReporter(LOGGER));
         var format = DataFormat.of(input);
@@ -882,7 +882,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     {
         if (roadNameCharacterCodec == null)
         {
-            roadNameCharacterCodec = HuffmanCharacterCodec.from(throwingListener(), roadNameCharacterCodecFrequencies, ESCAPE);
+            roadNameCharacterCodec = HuffmanCharacterCodec.characterCodec(throwingListener(), roadNameCharacterCodecFrequencies, ESCAPE);
         }
         return roadNameCharacterCodec;
     }

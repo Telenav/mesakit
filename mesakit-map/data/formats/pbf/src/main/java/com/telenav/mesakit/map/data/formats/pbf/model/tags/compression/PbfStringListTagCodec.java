@@ -52,8 +52,8 @@ import static com.telenav.kivakit.data.compression.SymbolConsumer.Directive.STOP
  *     <li>default-key-string.codec</li>
  *     <li>default-value-string.codec</li>
  * </ul>
- * The properties files can be used to construct the codecs with {@link HuffmanCharacterCodec#from(Listener, PropertyMap, Character)}
- * for character based compression or {@link HuffmanStringCodec#from(PropertyMap)}, and these two codecs can be passed
+ * The properties files can be used to construct the codecs with {@link HuffmanCharacterCodec#characterCodec(Listener, PropertyMap, Character)}
+ * for character based compression or {@link HuffmanStringCodec#stringCodec(PropertyMap)}, and these two codecs can be passed
  * to the constructor of this class.
  *
  * @author jonathanl (shibo)

@@ -44,26 +44,26 @@ public class PbfDefaultCodecs
     @UmlRelation(label = "provides", referentCardinality = "2")
     public HuffmanCharacterCodec defaultKeyCharacterCodec()
     {
-        return HuffmanCharacterCodec.from(throwingListener(), keyCharacterCodecFrequencies(), ESCAPE);
+        return HuffmanCharacterCodec.characterCodec(throwingListener(), keyCharacterCodecFrequencies(), ESCAPE);
     }
 
     @NotNull
     @UmlRelation(label = "provides", referentCardinality = "2")
     public HuffmanStringCodec defaultKeyStringCodec()
     {
-        return HuffmanStringCodec.from(keyStringCodecFrequencies());
+        return HuffmanStringCodec.stringCodec(keyStringCodecFrequencies());
     }
 
     @NotNull
     public HuffmanCharacterCodec defaultValueCharacterCodec()
     {
-        return HuffmanCharacterCodec.from(throwingListener(), valueCharacterCodecFrequencies(), ESCAPE);
+        return HuffmanCharacterCodec.characterCodec(throwingListener(), valueCharacterCodecFrequencies(), ESCAPE);
     }
 
     @NotNull
     public HuffmanStringCodec defaultValueStringCodec()
     {
-        return HuffmanStringCodec.from(valueStringCodecFrequencies());
+        return HuffmanStringCodec.stringCodec(valueStringCodecFrequencies());
     }
 
     public PropertyMap keyCharacterCodecFrequencies()

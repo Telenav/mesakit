@@ -69,12 +69,6 @@ public class RegionSet extends BaseSet<Region>
     }
 
     @Override
-    public BaseSet<Region> onNewInstance()
-    {
-        return new RegionSet();
-    }
-
-    @Override
     public String toString()
     {
         return Join.join(this, ", ");

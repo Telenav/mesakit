@@ -20,12 +20,13 @@ package com.telenav.mesakit.map.region.regions;
 
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
-import com.telenav.kivakit.core.string.ObjectFormatter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.locale.LocaleLanguage;
+import com.telenav.kivakit.core.locale.LocaleRegion;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.ObjectFormatter;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.value.identifier.IntegerIdentifier;
 import com.telenav.kivakit.extraction.BaseExtractor;
@@ -43,12 +44,12 @@ import com.telenav.mesakit.map.region.RegionCode;
 import com.telenav.mesakit.map.region.RegionIdentifier;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
+import com.telenav.mesakit.map.region.RegionLimits;
 import com.telenav.mesakit.map.region.border.Border;
 import com.telenav.mesakit.map.region.border.cache.BorderCache;
 import com.telenav.mesakit.map.region.countries.Canada;
 import com.telenav.mesakit.map.region.countries.Mexico;
 import com.telenav.mesakit.map.region.countries.UnitedStates;
-import com.telenav.mesakit.map.region.RegionLimits;
 import com.telenav.mesakit.map.region.internal.lexakai.DiagramRegions;
 
 import java.util.ArrayList;
@@ -62,7 +63,7 @@ import java.util.Set;
 
 @SuppressWarnings({ "DuplicatedCode", "unused" })
 @UmlClassDiagram(diagram = DiagramRegions.class)
-@UmlExcludeSuperTypes(LongValued .class)
+@UmlExcludeSuperTypes(LongValued.class)
 public abstract class Country extends Region<Country> implements LongValued
 {
     public static Country AFGHANISTAN;
@@ -602,7 +603,7 @@ public abstract class Country extends Region<Country> implements LongValued
         return allLargerThan(Area.squareMiles(0));
     }
 
-    public static RegionInstance<Country> baseInstance()
+    public static RegionInstance<Country> baseCountry()
     {
         return new RegionInstance<>(Country.class)
                 .withAutomotiveSupportLevel(AutomotiveSupportLevel.UNSUPPORTED)
@@ -823,9 +824,17 @@ public abstract class Country extends Region<Country> implements LongValued
         }
     }
 
-    protected Country(Continent continent, RegionInstance<Country> instance)
+    private final LocaleRegion localeRegion;
+
+    protected Country(Continent continent, LocaleRegion localeRegion, RegionInstance<Country> instance)
     {
         super(continent, instance);
+        this.localeRegion = localeRegion;
+    }
+
+    protected Country(Continent continent, RegionInstance<Country> instance)
+    {
+        this(continent, instance != null && instance.locale() != null ? instance.locale().region() : null, instance);
     }
 
     @Override
@@ -875,6 +884,12 @@ public abstract class Country extends Region<Country> implements LongValued
     public boolean isIsland()
     {
         return islands().contains(this);
+    }
+
+    @Override
+    public LocaleRegion localeRegion()
+    {
+        return localeRegion;
     }
 
     @Override

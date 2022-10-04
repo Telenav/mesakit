@@ -180,7 +180,7 @@ public class SmartGraphLoader extends BaseRepeater implements Named
 
                 case ".pbf":
                 {
-                    var metadata = Metadata.from(file);
+                    var metadata = Metadata.metadata(file);
                     if (metadata != null)
                     {
                         var converter = (PbfToGraphConverter) metadata.dataSpecification().newGraphConverter(metadata);

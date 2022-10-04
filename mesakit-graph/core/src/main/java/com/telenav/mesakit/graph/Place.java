@@ -400,7 +400,7 @@ public class Place extends GraphElement implements
     @Override
     public long longValue()
     {
-        return identifierAsLong();
+        return index();
     }
 
     /**

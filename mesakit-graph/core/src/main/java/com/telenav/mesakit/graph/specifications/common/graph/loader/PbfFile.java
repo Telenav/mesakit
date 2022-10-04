@@ -78,7 +78,7 @@ public class PbfFile extends BaseRepeater implements Named
      */
     public Graph graph(ProgressReporter reporter)
     {
-        var metadata = Metadata.from(file);
+        var metadata = Metadata.metadata(file);
         if (metadata != null)
         {
             var output = Folder.temporaryForProcess(Folder.FolderType.CLEAN_UP_ON_EXIT)

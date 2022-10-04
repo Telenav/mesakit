@@ -18,27 +18,27 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
+import com.telenav.kivakit.core.string.KivaKitFormat;
 import com.telenav.kivakit.core.string.ObjectFormatter;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
 
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
-public class RTreeSettings
+@SuppressWarnings("unused") public class RTreeSettings
 {
     public static final RTreeSettings DEFAULT = new RTreeSettings();
 
     /** The maximum children for an interior node before it must be split */
-    @KivaKitIncludeProperty
+    @KivaKitFormat
     private Maximum maximumChildrenPerInteriorNode = Maximum.maximum(8);
 
     /** Initial allocation size for interior node */
     private final Estimate estimatedChildrenPerInteriorNode = maximumChildrenPerInteriorNode.asEstimate();
 
     /** The maximum elements in a leaf node before it must be split */
-    @KivaKitIncludeProperty
+    @KivaKitFormat
     private Maximum maximumElementsPerLeaf = Maximum.maximum(32);
 
     /** Initial allocation size for lead node */
@@ -66,25 +66,25 @@ public class RTreeSettings
         return unsupported();
     }
 
-    @KivaKitIncludeProperty
+    @KivaKitFormat
     public Estimate estimatedChildrenPerInteriorNode()
     {
         return estimatedChildrenPerInteriorNode;
     }
 
-    @KivaKitIncludeProperty
+    @KivaKitFormat
     public Estimate estimatedChildrenPerLeaf()
     {
         return estimatedChildrenPerLeaf;
     }
 
-    @KivaKitIncludeProperty
+    @KivaKitFormat
     public Estimate estimatedElements()
     {
         return estimatedNodes;
     }
 
-    @KivaKitIncludeProperty
+    @KivaKitFormat
     public Estimate estimatedLeaves()
     {
         return estimatedElements().dividedBy(maximumElementsPerLeaf);
@@ -106,13 +106,13 @@ public class RTreeSettings
         return size.isGreaterThanOrEqualTo(maximumElementsPerLeaf);
     }
 
-    @KivaKitIncludeProperty
+    @KivaKitFormat
     public Maximum maximumChildrenPerInteriorNode()
     {
         return maximumChildrenPerInteriorNode;
     }
 
-    @KivaKitIncludeProperty
+    @KivaKitFormat
     public Maximum maximumChildrenPerLeaf()
     {
         return maximumElementsPerLeaf;

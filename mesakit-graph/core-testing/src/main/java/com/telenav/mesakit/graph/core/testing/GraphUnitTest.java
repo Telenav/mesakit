@@ -72,6 +72,7 @@ import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.testing.RegionUnitTest;
 
 import static com.telenav.kivakit.core.messaging.Listener.nullListener;
+import static com.telenav.kivakit.core.object.Lazy.lazy;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.resource.Extension.GRAPH;
 import static com.telenav.kivakit.resource.Extension.OSM_PBF;
@@ -90,26 +91,26 @@ public abstract class GraphUnitTest extends RegionUnitTest
 {
     private static int nextOsmRelationIdentifier = 1;
 
-    private final Lazy<Graph> osmGreenLakeSeattleLarge = Lazy.lazy(
+    private final Lazy<Graph> osmGreenLakeSeattleLarge = lazy(
             () -> graph(OsmDataSpecification.get(), "Green_Lake_Seattle_Large",
                     Country.UNITED_STATES.WASHINGTON.SEATTLE.GREEN_LAKE.bounds().expanded(Distance.ONE_MILE)));
 
-    private final Lazy<Graph> osmGreenLakeSeattle = Lazy.lazy(
+    private final Lazy<Graph> osmGreenLakeSeattle = lazy(
             () -> graph(OsmDataSpecification.get(), "Green_Lake_Seattle", Country.UNITED_STATES.WASHINGTON.SEATTLE.GREEN_LAKE.bounds()));
 
-    private final Lazy<Graph> osmDowntownSeattle = Lazy.lazy(
+    private final Lazy<Graph> osmDowntownSeattle = lazy(
             () -> graph(OsmDataSpecification.get(), "Downtown_Seattle", Country.UNITED_STATES.WASHINGTON.SEATTLE.DOWNTOWN.bounds()));
 
-    private final Lazy<Graph> osmDowntownSeattleTest = Lazy.lazy(
+    private final Lazy<Graph> osmDowntownSeattleTest = lazy(
             () -> graph(OsmDataSpecification.get(), "Downtown_Seattle_Test", Rectangle.parse("47.587309,-122.346791:47.616221,-122.317879")));
 
-    private final Lazy<Graph> osmBellevueWashington = Lazy.lazy(
+    private final Lazy<Graph> osmBellevueWashington = lazy(
             () -> graph(OsmDataSpecification.get(), "Bellevue_Washington", Location.degrees(47.61302, -122.188).within(Distance.miles(2))));
 
-    private final Lazy<Graph> osmBuffalo = Lazy.lazy(
+    private final Lazy<Graph> osmBuffalo = lazy(
             () -> graph(OsmDataSpecification.get(), "Buffalo_New_York", Country.UNITED_STATES.NEW_YORK.BUFFALO.bounds()));
 
-    private final Lazy<Graph> osmHuronCharter = Lazy.lazy(
+    private final Lazy<Graph> osmHuronCharter = lazy(
             () -> graph(OsmDataSpecification.get(), "Huron_Charter", Rectangle.fromLocations(Location.degrees(42.179459, -83.423221),
                     Location.degrees(42.094242, -83.303885))));
 
@@ -335,7 +336,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
         var pbf = overpass.pbf(dataDescriptor, bounds);
 
         // then make sure it has metadata
-        var metadata = Metadata.from(pbf);
+        var metadata = Metadata.metadata(pbf);
         if (metadata == null)
         {
             var annotator = listenTo(new PbfFileMetadataAnnotator(
@@ -383,7 +384,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
             if (pbfFile.exists())
             {
                 // get its metadata
-                Metadata metadata = Metadata.from(pbfFile);
+                Metadata metadata = Metadata.metadata(pbfFile);
                 if (metadata != null)
                 {
                     // and convert the PBF file to a graph file using the right kind of converter for the metadata

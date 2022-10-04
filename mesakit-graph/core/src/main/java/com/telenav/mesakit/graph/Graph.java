@@ -369,7 +369,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
      */
     public static Graph createCompatible(File input)
     {
-        var metadata = Metadata.from(input);
+        var metadata = Metadata.metadata(input);
         return metadata == null ? null : metadata.newGraph();
     }
 

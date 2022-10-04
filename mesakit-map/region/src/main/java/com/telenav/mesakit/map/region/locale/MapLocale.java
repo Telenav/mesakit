@@ -18,20 +18,41 @@
 
 package com.telenav.mesakit.map.region.locale;
 
-import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.language.module.PackageReference;
 import com.telenav.kivakit.core.language.reflection.Type;
 import com.telenav.kivakit.core.locale.Locale;
 import com.telenav.kivakit.core.locale.LocaleLanguage;
+import com.telenav.kivakit.core.locale.LocaleRegion;
 import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.mesakit.map.region.Region;
 import com.telenav.mesakit.map.region.regions.Country;
-import com.telenav.mesakit.map.region.regions.World;
 
 import java.util.Collection;
+
+import static com.telenav.kivakit.core.collections.list.ObjectList.objectList;
+import static com.telenav.kivakit.core.locale.LocaleLanguage.CHINESE_MANDARIN;
+import static com.telenav.kivakit.core.locale.LocaleLanguage.ENGLISH;
+import static com.telenav.kivakit.core.locale.LocaleLanguage.FRENCH;
+import static com.telenav.kivakit.core.locale.LocaleLanguage.GERMAN;
+import static com.telenav.kivakit.core.locale.LocaleLanguage.INDONESIAN;
+import static com.telenav.kivakit.core.locale.LocaleLanguage.PORTUGUESE;
+import static com.telenav.kivakit.core.locale.LocaleLanguage.SPANISH;
+import static com.telenav.kivakit.core.locale.LocaleRegion.INDONESIA;
+import static com.telenav.kivakit.core.logging.LoggerFactory.newLogger;
+import static com.telenav.kivakit.core.object.Lazy.lazy;
+import static com.telenav.mesakit.map.region.regions.Country.BRAZIL;
+import static com.telenav.mesakit.map.region.regions.Country.CANADA;
+import static com.telenav.mesakit.map.region.regions.Country.CHINA;
+import static com.telenav.mesakit.map.region.regions.Country.FRANCE;
+import static com.telenav.mesakit.map.region.regions.Country.GERMANY;
+import static com.telenav.mesakit.map.region.regions.Country.MEXICO;
+import static com.telenav.mesakit.map.region.regions.Country.PORTUGAL;
+import static com.telenav.mesakit.map.region.regions.Country.SPAIN;
+import static com.telenav.mesakit.map.region.regions.Country.UNITED_KINGDOM;
+import static com.telenav.mesakit.map.region.regions.Country.UNITED_STATES;
+import static com.telenav.mesakit.map.region.regions.World.WORLD;
 
 /**
  * A locale
@@ -41,56 +62,56 @@ import java.util.Collection;
 @SuppressWarnings("unused")
 public class MapLocale extends Locale
 {
-    public static final Lazy<MapLocale> ENGLISH_UNITED_STATES = Lazy.lazy(() -> new MapLocale(Country.UNITED_STATES, LocaleLanguage.ENGLISH));
+    public static final Lazy<MapLocale> ENGLISH_UNITED_STATES = lazy(() -> new MapLocale(LocaleRegion.UNITED_STATES, UNITED_STATES, ENGLISH));
 
-    public static final Lazy<MapLocale> ENGLISH_CANADA = Lazy.lazy(() -> new MapLocale(Country.CANADA, LocaleLanguage.ENGLISH));
+    public static final Lazy<MapLocale> ENGLISH_CANADA = lazy(() -> new MapLocale(LocaleRegion.CANADA, CANADA, ENGLISH));
 
-    public static final Lazy<MapLocale> ENGLISH_UNITED_KINGDOM = Lazy.lazy(() -> new MapLocale(Country.UNITED_KINGDOM, LocaleLanguage.ENGLISH));
+    public static final Lazy<MapLocale> ENGLISH_UNITED_KINGDOM = lazy(() -> new MapLocale(LocaleRegion.UNITED_KINGDOM, UNITED_KINGDOM, ENGLISH));
 
-    public static final Lazy<MapLocale> ENGLISH_WORLD = Lazy.lazy(() -> new MapLocale(World.INSTANCE, LocaleLanguage.ENGLISH));
+    public static final Lazy<MapLocale> ENGLISH_WORLD = lazy(() -> new MapLocale(LocaleRegion.WORLD, WORLD, ENGLISH));
 
-    public static final Lazy<MapLocale> SPANISH_MEXICO = Lazy.lazy(() -> new MapLocale(Country.MEXICO, LocaleLanguage.SPANISH));
+    public static final Lazy<MapLocale> SPANISH_MEXICO = lazy(() -> new MapLocale(LocaleRegion.MEXICO, MEXICO, SPANISH));
 
-    public static final Lazy<MapLocale> SPANISH_SPAIN = Lazy.lazy(() -> new MapLocale(Country.SPAIN, LocaleLanguage.SPANISH));
+    public static final Lazy<MapLocale> SPANISH_SPAIN = lazy(() -> new MapLocale(LocaleRegion.SPAIN, SPAIN, SPANISH));
 
-    public static final Lazy<MapLocale> SPANISH_WORLD = Lazy.lazy(() -> new MapLocale(World.INSTANCE, LocaleLanguage.SPANISH));
+    public static final Lazy<MapLocale> SPANISH_WORLD = lazy(() -> new MapLocale(LocaleRegion.WORLD, WORLD, SPANISH));
 
-    public static final Lazy<MapLocale> FRENCH_FRANCE = Lazy.lazy(() -> new MapLocale(Country.FRANCE, LocaleLanguage.FRENCH));
+    public static final Lazy<MapLocale> FRENCH_FRANCE = lazy(() -> new MapLocale(LocaleRegion.FRANCE, FRANCE, FRENCH));
 
-    public static final Lazy<MapLocale> FRENCH_CANADA = Lazy.lazy(() -> new MapLocale(Country.CANADA, LocaleLanguage.FRENCH));
+    public static final Lazy<MapLocale> FRENCH_CANADA = lazy(() -> new MapLocale(LocaleRegion.CANADA, CANADA, FRENCH));
 
-    public static final Lazy<MapLocale> FRENCH_WORLD = Lazy.lazy(() -> new MapLocale(World.INSTANCE, LocaleLanguage.FRENCH));
+    public static final Lazy<MapLocale> FRENCH_WORLD = lazy(() -> new MapLocale(LocaleRegion.WORLD, WORLD, FRENCH));
 
-    public static final Lazy<MapLocale> GERMAN_GERMANY = Lazy.lazy(() -> new MapLocale(Country.GERMANY, LocaleLanguage.GERMAN));
+    public static final Lazy<MapLocale> GERMAN_GERMANY = lazy(() -> new MapLocale(LocaleRegion.GERMANY, GERMANY, GERMAN));
 
-    public static final Lazy<MapLocale> PORTUGUESE_BRAZIL = Lazy.lazy(() -> new MapLocale(Country.BRAZIL, LocaleLanguage.PORTUGUESE));
+    public static final Lazy<MapLocale> PORTUGUESE_BRAZIL = lazy(() -> new MapLocale(LocaleRegion.BRAZIL, BRAZIL, PORTUGUESE));
 
-    public static final Lazy<MapLocale> PORTUGUESE_PORTUGAL = Lazy.lazy(() -> new MapLocale(Country.PORTUGAL, LocaleLanguage.PORTUGUESE));
+    public static final Lazy<MapLocale> PORTUGUESE_PORTUGAL = lazy(() -> new MapLocale(LocaleRegion.PORTUGAL, PORTUGAL, PORTUGUESE));
 
-    public static final Lazy<MapLocale> MANDARIN_CHINA = Lazy.lazy(() -> new MapLocale(Country.CHINA, LocaleLanguage.CHINESE_MANDARIN));
+    public static final Lazy<MapLocale> MANDARIN_CHINA = lazy(() -> new MapLocale(LocaleRegion.CHINA, CHINA, CHINESE_MANDARIN));
 
-    public static final Lazy<MapLocale> INDONESIA = Lazy.lazy(() -> new MapLocale(Country.INDONESIA, LocaleLanguage.INDONESIAN));
+    public static final Lazy<MapLocale> INDONESIA_INDONESIAN = lazy(() -> new MapLocale(INDONESIA, Country.INDONESIA, INDONESIAN));
 
-    private static final Logger LOGGER = LoggerFactory.newLogger();
+    private static final Logger LOGGER = newLogger();
 
     private static final Debug DEBUG = new Debug(LOGGER);
 
     private final Region<?> region;
 
-    public MapLocale(Country country)
+    public MapLocale(LocaleRegion localeRegion, Country country)
     {
-        this(country, country.instance().languages());
+        this(localeRegion, country, country.instance().languages());
     }
 
-    public MapLocale(Region<?> region, Collection<LocaleLanguage> languages)
+    public MapLocale(LocaleRegion localeRegion, Region<?> region, Collection<LocaleLanguage> languages)
     {
-        super(region.country().locale().region(), languages);
+        super(localeRegion, languages);
         this.region = region;
     }
 
-    public MapLocale(Region<?> region, LocaleLanguage language)
+    public MapLocale(LocaleRegion localeRegion, Region<?> region, LocaleLanguage language)
     {
-        this(region, ObjectList.objectList(language));
+        this(localeRegion, region, objectList(language));
     }
 
     /**

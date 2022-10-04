@@ -114,7 +114,7 @@ public class Speed implements Comparable<Speed>, LongValued
 
     public static Speed microDegreesPerSecond(int value)
     {
-        return milesPerHour(ONE_HOUR.dividedBy(ONE_SECOND).asInt() * value / Distance.ONE_MILE.asDm6());
+        return milesPerHour(ONE_HOUR.dividedBy(ONE_SECOND) * value / Distance.ONE_MILE.asDm6());
     }
 
     public static Speed milesPerHour(double mph)
@@ -276,32 +276,32 @@ public class Speed implements Comparable<Speed>, LongValued
 
     public double asKilometersPerHour()
     {
-        return distance.asKilometers() / duration.dividedBy(ONE_HOUR).doubleValue();
+        return distance.asKilometers() / duration.dividedBy(ONE_HOUR);
     }
 
     public double asMetersPerHour()
     {
-        return distance.asMeters() / duration.dividedBy(ONE_HOUR).doubleValue();
+        return distance.asMeters() / duration.dividedBy(ONE_HOUR);
     }
 
     public double asMetersPerSecond()
     {
-        return distance.asMeters() / duration.dividedBy(ONE_SECOND).doubleValue();
+        return distance.asMeters() / duration.dividedBy(ONE_SECOND);
     }
 
     public int asMicroDegreesPerSecond()
     {
-        return round(asMilesPerHour() * Distance.ONE_MILE.asDm6() / ONE_HOUR.dividedBy(ONE_SECOND).doubleValue());
+        return round(asMilesPerHour() * Distance.ONE_MILE.asDm6() / ONE_HOUR.dividedBy(ONE_SECOND));
     }
 
     public double asMilesPerHour()
     {
-        return distance.asMiles() / duration.dividedBy(ONE_HOUR).doubleValue();
+        return distance.asMiles() / duration.dividedBy(ONE_HOUR);
     }
 
     public double asMillimetersPerHour()
     {
-        return distance.asMillimeters() / duration.dividedBy(ONE_HOUR).doubleValue();
+        return distance.asMillimeters() / duration.dividedBy(ONE_HOUR);
     }
 
     @SuppressWarnings("NullableProblems")
@@ -399,7 +399,7 @@ public class Speed implements Comparable<Speed>, LongValued
 
     public long timeToTravelInMilliseconds(Distance length)
     {
-        return length.asMillimeters() * (long) duration.dividedBy(Duration.ONE_MILLISECOND).doubleValue() / distance.asMillimeters();
+        return length.asMillimeters() * (long) duration.dividedBy(Duration.ONE_MILLISECOND) / distance.asMillimeters();
     }
 
     @Override

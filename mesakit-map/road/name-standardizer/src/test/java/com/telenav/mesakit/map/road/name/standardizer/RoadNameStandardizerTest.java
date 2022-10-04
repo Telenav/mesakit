@@ -28,6 +28,9 @@ import org.junit.Ignore;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.telenav.mesakit.map.road.name.standardizer.RoadNameStandardizer.Mode.MESAKIT_STANDARDIZATION;
+
+@SuppressWarnings("unused")
 @Ignore
 public abstract class RoadNameStandardizerTest extends RegionUnitTest
 {
@@ -37,7 +40,7 @@ public abstract class RoadNameStandardizerTest extends RegionUnitTest
 
     protected RoadNameStandardizerTest(String g2Country, String g2Language)
     {
-        standardizer = RoadNameStandardizer.get(locale(), RoadNameStandardizer.Mode.MESAKIT_STANDARDIZATION);
+        standardizer = RoadNameStandardizer.get(locale(), MESAKIT_STANDARDIZATION);
     }
 
     protected abstract MapLocale locale();

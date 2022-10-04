@@ -146,7 +146,7 @@ public class Codec
                 upper = middle;
             }
         }
-        return Range.rangeInclusive(lower, upper);
+        return Range.rangeInclusive(lower, upper, Angle::degrees);
     }
 
     private BitArray codeToBitArray(Code code)

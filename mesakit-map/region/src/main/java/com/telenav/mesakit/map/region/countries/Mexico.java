@@ -160,7 +160,7 @@ public class Mexico extends Country
                 .withIdentity(new RegionIdentity("Mexico")
                         .withCountryTmcCode(new CountryTmcCode(0x0f))
                         .withCountryIsoCode(LocaleRegion.MEXICO))
-                .withLanguage(LocaleLanguage.SPANISH)
+                .withLocaleLanguage(LocaleLanguage.SPANISH)
                 .withAutomotiveSupportLevel(AutomotiveSupportLevel.UNDER_DEVELOPMENT)
                 .withDrivingSide(DrivingSide.RIGHT));
     }

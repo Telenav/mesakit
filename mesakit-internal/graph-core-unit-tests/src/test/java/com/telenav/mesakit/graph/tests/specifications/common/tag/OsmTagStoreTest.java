@@ -123,15 +123,15 @@ public class OsmTagStoreTest extends GraphUnitTest
         var characterFrequencies = new CharacterFrequencies().add("abc").add("def");
         characterFrequencies.frequencies().plus(HuffmanCharacterCodec.ESCAPE, Count._16);
 
-        var keyCharacterCodec = HuffmanCharacterCodec.from(
+        var keyCharacterCodec = HuffmanCharacterCodec.characterCodec(
                 characterFrequencies.symbols());
 
         var valueFrequencies = new CharacterFrequencies().add("bcd").add("ghi");
         valueFrequencies.frequencies().plus(HuffmanCharacterCodec.ESCAPE, Count._16);
-        var valueCharacterCodec = HuffmanCharacterCodec.from(
+        var valueCharacterCodec = HuffmanCharacterCodec.characterCodec(
                 valueFrequencies.symbols());
 
-        var keyStringCodec = HuffmanStringCodec.from(
+        var keyStringCodec = HuffmanStringCodec.stringCodec(
                 new StringFrequencies(Maximum.MAXIMUM)
                         .add("abc")
                         .add("def")
@@ -140,7 +140,7 @@ public class OsmTagStoreTest extends GraphUnitTest
                         .add("ghi")
                         .add("ghi").symbols());
 
-        var valueStringCodec = HuffmanStringCodec.from(
+        var valueStringCodec = HuffmanStringCodec.stringCodec(
                 new StringFrequencies(Maximum.MAXIMUM)
                         .add("jkl")
                         .add("mno")

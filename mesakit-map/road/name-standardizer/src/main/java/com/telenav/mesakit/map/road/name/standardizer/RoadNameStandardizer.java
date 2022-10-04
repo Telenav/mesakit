@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.language.module.PackageReference.packageReference;
 
 @SuppressWarnings("SpellCheckingInspection")
 public interface RoadNameStandardizer
@@ -43,7 +44,7 @@ public interface RoadNameStandardizer
             var standardizer = standardizers.get(key);
             if (standardizer == null)
             {
-                var packagePath = PackageReference.packageReference(RoadNameStandardizer.class);
+                var packagePath = packageReference(RoadNameStandardizer.class);
                 standardizer = locale.create(packagePath, "RoadNameStandardizer");
                 ensureNotNull(standardizer, "Unable to create road name standardizer");
                 standardizer.mode(mode);

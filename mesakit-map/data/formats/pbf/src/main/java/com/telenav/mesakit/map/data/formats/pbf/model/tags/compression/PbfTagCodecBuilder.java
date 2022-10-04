@@ -146,7 +146,7 @@ public class PbfTagCodecBuilder
         }
         else
         {
-            keyCharacterCodec = HuffmanCharacterCodec.from(keySymbols, charactersMaximumBits);
+            keyCharacterCodec = HuffmanCharacterCodec.characterCodec(keySymbols, charactersMaximumBits);
         }
 
         var valueEscapes = valueCharacterFrequencies
@@ -160,7 +160,7 @@ public class PbfTagCodecBuilder
         }
         else
         {
-            valueCharacterCodec = HuffmanCharacterCodec.from(valueSymbols, charactersMaximumBits);
+            valueCharacterCodec = HuffmanCharacterCodec.characterCodec(valueSymbols, charactersMaximumBits);
         }
     }
 
@@ -215,7 +215,7 @@ public class PbfTagCodecBuilder
         }
         else
         {
-            keyStringCodec = HuffmanStringCodec.from(keySymbols, stringsMaximumBits);
+            keyStringCodec = HuffmanStringCodec.stringCodec(keySymbols, stringsMaximumBits);
         }
 
         var valueSymbols = valueStringFrequencies
@@ -227,7 +227,7 @@ public class PbfTagCodecBuilder
         }
         else
         {
-            valueStringCodec = HuffmanStringCodec.from(valueSymbols, stringsMaximumBits);
+            valueStringCodec = HuffmanStringCodec.stringCodec(valueSymbols, stringsMaximumBits);
         }
     }
 

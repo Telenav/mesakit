@@ -120,7 +120,7 @@ public class TimeZone extends Region<TimeZone>
 
     public TimeZone(RegionInstance<TimeZone> instance)
     {
-        super(World.INSTANCE, instance.prefix("TimeZone"));
+        super(World.WORLD, instance.prefix("TimeZone"));
     }
 
     public ZoneId asZoneId()

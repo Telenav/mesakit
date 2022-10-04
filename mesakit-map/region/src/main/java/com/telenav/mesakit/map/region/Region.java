@@ -24,15 +24,16 @@ import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.language.Patterns;
-import com.telenav.kivakit.core.string.ObjectFormatter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.locale.LocaleLanguage;
+import com.telenav.kivakit.core.locale.LocaleRegion;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.string.AsciiArt;
+import com.telenav.kivakit.core.string.ObjectFormatter;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.thread.KivaKitThread;
 import com.telenav.kivakit.core.thread.Threads;
@@ -86,6 +87,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 import static com.telenav.kivakit.filesystem.Folder.parseFolder;
+import static com.telenav.mesakit.map.region.locale.MapLocale.ENGLISH_WORLD;
 
 /**
  * @author Jonathan Locke
@@ -497,6 +499,12 @@ public abstract class Region<T extends Region<T>> implements
     }
 
     @Override
+    public void assignName(String name)
+    {
+        instance().identity().name(name);
+    }
+
+    @Override
     public Collection<Polygon> borders()
     {
         return instance().borders();
@@ -800,11 +808,16 @@ public abstract class Region<T extends Region<T>> implements
         // Other cases
         if (!instance().languages().isEmpty())
         {
-            return new MapLocale(this, instance().defaultLanguage());
+            return new MapLocale(localeRegion(), this, instance().defaultLanguage());
         }
 
         // Default is World English
-        return MapLocale.ENGLISH_WORLD.get();
+        return ENGLISH_WORLD.get();
+    }
+
+    public LocaleRegion localeRegion()
+    {
+        return null;
     }
 
     public Object metadata()
@@ -822,12 +835,6 @@ public abstract class Region<T extends Region<T>> implements
     public final String name()
     {
         return identity().name();
-    }
-
-    @Override
-    public void assignName(String name)
-    {
-        instance().identity().name(name);
     }
 
     public final Collection<Region<?>> nestedChildren()

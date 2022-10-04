@@ -71,6 +71,7 @@ import static com.telenav.kivakit.core.locale.LocaleRegion.UNITED_ARAB_EMIRATES;
 import static com.telenav.kivakit.core.locale.LocaleRegion.UZBEKISTAN;
 import static com.telenav.kivakit.core.locale.LocaleRegion.VIETNAM;
 import static com.telenav.kivakit.core.locale.LocaleRegion.YEMEN;
+import static com.telenav.mesakit.map.region.regions.Country.baseCountry;
 
 public class Asia extends Continent
 {
@@ -84,299 +85,299 @@ public class Asia extends Continent
     @Override
     public void onInitialize()
     {
-        Country.AFGHANISTAN = new Country(this, Country.baseInstance()
+        Country.AFGHANISTAN = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Afghanistan")
                         .withCountryOrdinal(0)
                         .withCountryIsoCode(AFGHANISTAN))) {};
 
-        Country.UNITED_ARAB_EMIRATES = new Country(this, Country.baseInstance()
+        Country.UNITED_ARAB_EMIRATES = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("United Arab Emirates")
                         .withCountryOrdinal(2)
                         .withCountryIsoCode(UNITED_ARAB_EMIRATES))) {};
 
-        Country.AZERBAIJAN = new Country(this, Country.baseInstance()
+        Country.AZERBAIJAN = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Azerbaijan")
                         .withCountryOrdinal(16)
                         .withCountryIsoCode(AZERBAIJAN))) {};
 
-        Country.BANGLADESH = new Country(this, Country.baseInstance()
+        Country.BANGLADESH = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Bangladesh")
                         .withCountryOrdinal(19)
                         .withCountryIsoCode(BANGLADESH))
                 .withDrivingSide(Country.DrivingSide.LEFT)) {};
 
-        Country.BAHRAIN = new Country(this, Country.baseInstance()
+        Country.BAHRAIN = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Bahrain")
                         .withCountryOrdinal(23)
                         .withCountryIsoCode(BAHRAIN))) {};
 
         //noinspection SpellCheckingInspection
-        Country.BRUNEI_DARUSSALAM = new Country(this, Country.baseInstance()
+        Country.BRUNEI_DARUSSALAM = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Brunei Darussalam")
                         .withCountryOrdinal(28)
                         .withCountryIsoCode(BRUNEI_DARUSSALAM))
                 .withDrivingSide(Country.DrivingSide.LEFT)) {};
 
-        Country.BHUTAN = new Country(this, Country.baseInstance()
+        Country.BHUTAN = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Bhutan")
                         .withCountryOrdinal(32)
                         .withCountryIsoCode(BHUTAN))
                 .withDrivingSide(Country.DrivingSide.LEFT)) {};
 
-        Country.CHINA = new Country(this, Country.baseInstance()
+        Country.CHINA = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("China")
                         .withCountryOrdinal(47)
                         .withCountryTmcCode(new Country.CountryTmcCode(0x0c))
                         .withCountryIsoCode(CHINA))
-                .withLanguage(LocaleLanguage.CHINESE_MANDARIN)) {};
+                .withLocaleLanguage(LocaleLanguage.CHINESE_MANDARIN)) {};
 
-        Country.GEORGIA = new Country(this, Country.baseInstance()
+        Country.GEORGIA = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Georgia")
                         .withCountryOrdinal(77)
                         .withCountryIsoCode(GEORGIA))) {};
 
-        Country.HONG_KONG = new Country(this, Country.baseInstance()
+        Country.HONG_KONG = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Hong Kong")
                         .withCountryOrdinal(93)
                         .withCountryIsoCode(HONG_KONG))
                 .withDrivingSide(Country.DrivingSide.LEFT)) {};
 
-        Country.ISRAEL = new Country(this, Country.baseInstance()
+        Country.ISRAEL = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Israel")
                         .withCountryOrdinal(101)
                         .withCountryIsoCode(ISRAEL))) {};
 
-        Country.INDIA = new Country(this, Country.baseInstance()
+        Country.INDIA = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("India")
                         .withCountryOrdinal(103)
                         .withCountryIsoCode(INDIA))
                 .withDrivingSide(Country.DrivingSide.LEFT)) {};
 
-        Country.BRITISH_INDIAN_OCEAN_TERRITORY = new Country(this, Country.baseInstance()
+        Country.BRITISH_INDIAN_OCEAN_TERRITORY = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("British Indian Ocean Territory")
                         .withCountryOrdinal(104)
                         .withCountryIsoCode(BRITISH_INDIAN_OCEAN_TERRITORY))) {};
 
-        Country.IRAQ = new Country(this, Country.baseInstance()
+        Country.IRAQ = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Iraq")
                         .withCountryOrdinal(105)
                         .withCountryIsoCode(IRAQ))) {};
 
-        Country.IRAN = new Country(this, Country.baseInstance()
+        Country.IRAN = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Iran")
                         .withCountryOrdinal(106)
                         .withCountryIsoCode(IRAN))) {};
 
-        Country.JORDAN = new Country(this, Country.baseInstance()
+        Country.JORDAN = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Jordan")
                         .withCountryOrdinal(111)
                         .withCountryIsoCode(JORDAN))) {};
 
-        Country.JAPAN = new Country(this, Country.baseInstance()
+        Country.JAPAN = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Japan")
                         .withCountryOrdinal(112)
                         .withCountryIsoCode(JAPAN))
                 .withDrivingSide(Country.DrivingSide.LEFT)) {};
 
-        Country.KYRGYZSTAN = new Country(this, Country.baseInstance()
+        Country.KYRGYZSTAN = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Kyrgyzstan")
                         .withCountryOrdinal(114)
                         .withCountryIsoCode(KYRGYZSTAN))) {};
 
-        Country.CAMBODIA = new Country(this, Country.baseInstance()
+        Country.CAMBODIA = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Cambodia")
                         .withCountryOrdinal(115)
                         .withCountryIsoCode(CAMBODIA))) {};
 
-        Country.KOREA_NORTH = new Country(this, Country.baseInstance()
+        Country.KOREA_NORTH = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("North Korea")
                         .withCountryOrdinal(119)
                         .withCountryIsoCode(KOREA_NORTH))) {};
 
-        Country.KOREA_SOUTH = new Country(this, Country.baseInstance()
+        Country.KOREA_SOUTH = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("South Korea")
                         .withCountryOrdinal(120)
                         .withCountryIsoCode(KOREA_SOUTH))) {};
 
-        Country.KUWAIT = new Country(this, Country.baseInstance()
+        Country.KUWAIT = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Kuwait")
                         .withCountryOrdinal(121)
                         .withCountryIsoCode(KUWAIT))) {};
 
-        Country.KAZAKHSTAN = new Country(this, Country.baseInstance()
+        Country.KAZAKHSTAN = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Kazakhstan")
                         .withCountryOrdinal(123)
                         .withCountryIsoCode(KAZAKHSTAN))) {};
 
-        Country.LAOS = new Country(this, Country.baseInstance()
+        Country.LAOS = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Laos")
                         .withCountryOrdinal(124)
                         .withCountryIsoCode(LAOS))) {};
 
-        Country.LEBANON = new Country(this, Country.baseInstance()
+        Country.LEBANON = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Lebanon")
                         .withCountryOrdinal(125)
                         .withCountryIsoCode(LEBANON))) {};
 
-        Country.SRI_LANKA = new Country(this, Country.baseInstance()
+        Country.SRI_LANKA = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Sri Lanka")
                         .withCountryOrdinal(128)
                         .withCountryIsoCode(SRI_LANKA))
                 .withDrivingSide(Country.DrivingSide.LEFT)) {};
 
-        Country.MYANMAR = new Country(this, Country.baseInstance()
+        Country.MYANMAR = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Myanmar")
                         .withCountryOrdinal(144)
                         .withCountryIsoCode(MYANMAR))) {};
 
-        Country.MONGOLIA = new Country(this, Country.baseInstance()
+        Country.MONGOLIA = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Mongolia")
                         .withCountryOrdinal(145)
                         .withCountryIsoCode(MONGOLIA))) {};
 
-        Country.MACAU = new Country(this, Country.baseInstance()
+        Country.MACAU = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Macau")
                         .withCountryOrdinal(146)
                         .withCountryIsoCode(MACAU))) {};
 
-        Country.MALDIVES = new Country(this, Country.baseInstance()
+        Country.MALDIVES = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Maldives")
                         .withCountryOrdinal(153)
                         .withCountryIsoCode(MALDIVES))
                 .withDrivingSide(Country.DrivingSide.LEFT)) {};
 
-        Country.MALAYSIA = new Country(this, Country.baseInstance()
+        Country.MALAYSIA = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Malaysia")
                         .withCountryOrdinal(156)
                         .withCountryIsoCode(MALAYSIA))
                 .withDrivingSide(Country.DrivingSide.LEFT)) {};
 
-        Country.NEPAL = new Country(this, Country.baseInstance()
+        Country.NEPAL = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Nepal")
                         .withCountryOrdinal(166)
                         .withCountryIsoCode(NEPAL))
                 .withDrivingSide(Country.DrivingSide.LEFT)) {};
 
-        Country.OMAN = new Country(this, Country.baseInstance()
+        Country.OMAN = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Oman")
                         .withCountryOrdinal(170)
                         .withCountryIsoCode(OMAN))) {};
 
-        Country.PHILIPPINES = new Country(this, Country.baseInstance()
+        Country.PHILIPPINES = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Philippines")
                         .withCountryOrdinal(175)
                         .withCountryIsoCode(PHILIPPINES))) {};
 
-        Country.PAKISTAN = new Country(this, Country.baseInstance()
+        Country.PAKISTAN = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Pakistan")
                         .withCountryOrdinal(176)
                         .withCountryIsoCode(PAKISTAN))
                 .withDrivingSide(Country.DrivingSide.LEFT)) {};
 
-        Country.PALESTINE = new Country(this, Country.baseInstance()
+        Country.PALESTINE = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Palestine")
                         .withCountryOrdinal(181)
                         .withCountryIsoCode(PALESTINE))) {};
 
-        Country.QATAR = new Country(this, Country.baseInstance()
+        Country.QATAR = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Qatar")
                         .withCountryOrdinal(185)
                         .withCountryIsoCode(QATAR))) {};
 
-        Country.SAUDI_ARABIA = new Country(this, Country.baseInstance()
+        Country.SAUDI_ARABIA = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Saudi Arabia")
                         .withCountryOrdinal(191)
                         .withCountryIsoCode(SAUDI_ARABIA))) {};
 
-        Country.SINGAPORE = new Country(this, Country.baseInstance()
+        Country.SINGAPORE = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Singapore")
                         .withCountryOrdinal(196)
                         .withCountryIsoCode(SINGAPORE))
                 .withDrivingSide(Country.DrivingSide.LEFT)) {};
 
-        Country.SYRIA = new Country(this, Country.baseInstance()
+        Country.SYRIA = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Syria")
                         .withCountryOrdinal(208)
                         .withCountryIsoCode(SYRIA))) {};
 
-        Country.THAILAND = new Country(this, Country.baseInstance()
+        Country.THAILAND = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Thailand")
                         .withCountryOrdinal(214)
                         .withCountryIsoCode(THAILAND))
                 .withDrivingSide(Country.DrivingSide.LEFT)) {};
 
-        Country.TAJIKISTAN = new Country(this, Country.baseInstance()
+        Country.TAJIKISTAN = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Tajikistan")
                         .withCountryOrdinal(215)
                         .withCountryIsoCode(TAJIKISTAN))) {};
 
-        Country.TURKMENISTAN = new Country(this, Country.baseInstance()
+        Country.TURKMENISTAN = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Turkmenistan")
                         .withCountryOrdinal(218)
                         .withCountryIsoCode(TURKMENISTAN))) {};
 
-        Country.TAIWAN = new Country(this, Country.baseInstance()
+        Country.TAIWAN = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Taiwan")
                         .withCountryOrdinal(224)
                         .withCountryIsoCode(TAIWAN))) {};
 
-        Country.UZBEKISTAN = new Country(this, Country.baseInstance()
+        Country.UZBEKISTAN = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Uzbekistan")
                         .withCountryOrdinal(231)
                         .withCountryIsoCode(UZBEKISTAN))) {};
 
-        Country.VIETNAM = new Country(this, Country.baseInstance()
+        Country.VIETNAM = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Vietnam")
                         .withCountryOrdinal(237)
                         .withCountryIsoCode(VIETNAM))) {};
 
-        Country.YEMEN = new Country(this, Country.baseInstance()
+        Country.YEMEN = new Country(this, baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Yemen")
                         .withCountryOrdinal(241)

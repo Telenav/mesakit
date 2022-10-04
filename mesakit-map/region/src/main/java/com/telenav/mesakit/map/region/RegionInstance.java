@@ -22,6 +22,7 @@ import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.collections.set.ConcurrentHashSet;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
 import com.telenav.kivakit.core.locale.LocaleLanguage;
+import com.telenav.kivakit.core.locale.LocaleRegion;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
@@ -74,10 +75,9 @@ public class RegionInstance<T extends Region<T>> implements StringFormattable
     private RegionIdentity identity;
 
     @UmlAggregation
-    private ObjectList<LocaleLanguage> languages = objectList();
+    private ObjectList<LocaleLanguage> localeLanguages = objectList();
 
-    @UmlAggregation
-    private MapLocale locale;
+    private LocaleRegion localeRegion;
 
     private int ordinal;
 
@@ -99,8 +99,8 @@ public class RegionInstance<T extends Region<T>> implements StringFormattable
         bounds = that.bounds;
         drivingSide = that.drivingSide;
         automotiveSupportLevel = that.automotiveSupportLevel;
-        languages = that.languages;
-        locale = that.locale;
+        localeLanguages = objectList(that.localeLanguages);
+        localeRegion = that.localeRegion;
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -200,12 +200,12 @@ public class RegionInstance<T extends Region<T>> implements StringFormattable
 
     public final ObjectList<LocaleLanguage> languages()
     {
-        return languages;
+        return localeLanguages;
     }
 
     public final MapLocale locale()
     {
-        return locale;
+        return new MapLocale(localeRegion, region(), localeLanguages);
     }
 
     public final String name()
@@ -296,24 +296,24 @@ public class RegionInstance<T extends Region<T>> implements StringFormattable
         return copy;
     }
 
-    public RegionInstance<T> withLanguage(LocaleLanguage language)
-    {
-        var copy = new RegionInstance<>(this);
-        copy.languages.add(language);
-        return copy;
-    }
-
     public RegionInstance<T> withLanguages(Collection<LocaleLanguage> languages)
     {
         var copy = new RegionInstance<>(this);
-        copy.languages = objectList(languages);
+        copy.localeLanguages.addAll(languages);
         return copy;
     }
 
-    public RegionInstance<T> withLocale(MapLocale locale)
+    public RegionInstance<T> withLocaleLanguage(LocaleLanguage language)
     {
         var copy = new RegionInstance<>(this);
-        copy.locale = locale;
+        copy.localeLanguages.add(language);
+        return copy;
+    }
+
+    public RegionInstance<T> withLocaleRegion(LocaleRegion region)
+    {
+        var copy = new RegionInstance<>(this);
+        copy.localeRegion = region;
         return copy;
     }
 

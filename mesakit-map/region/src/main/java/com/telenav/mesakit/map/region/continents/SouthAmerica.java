@@ -73,229 +73,229 @@ public class SouthAmerica extends Continent
     @Override
     public void onInitialize()
     {
-        Country.ANTIGUA_AND_BARBUDA = new Country(this, Country.baseInstance()
+        Country.ANTIGUA_AND_BARBUDA = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Antigua and Barbuda")
                         .withCountryOrdinal(3)
                         .withCountryIsoCode(ANTIGUA_AND_BARBUDA))
                 .withDrivingSide(DrivingSide.LEFT)) {};
 
-        Country.NETHERLANDS_ANTILLES = new Country(this, Country.baseInstance()
+        Country.NETHERLANDS_ANTILLES = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Netherlands Antilles")
                         .withCountryOrdinal(7)
                         .withCountryIsoCode(NETHERLANDS_ANTILLES))) {};
 
-        Country.ARGENTINA = new Country(this, Country.baseInstance()
+        Country.ARGENTINA = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Argentina")
                         .withCountryOrdinal(10)
                         .withCountryIsoCode(ARGENTINA))
-                .withLanguage(LocaleLanguage.SPANISH)) {};
+                .withLocaleLanguage(LocaleLanguage.SPANISH)) {};
 
-        Country.ARUBA = new Country(this, Country.baseInstance()
+        Country.ARUBA = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Aruba")
                         .withCountryOrdinal(14)
                         .withCountryIsoCode(ARUBA))) {};
 
-        Country.BARBADOS = new Country(this, Country.baseInstance()
+        Country.BARBADOS = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Barbados")
                         .withCountryOrdinal(18)
                         .withCountryIsoCode(BARBADOS))
                 .withDrivingSide(DrivingSide.LEFT)) {};
 
-        Country.BOLIVIA = new Country(this, Country.baseInstance()
+        Country.BOLIVIA = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Bolivia")
                         .withCountryOrdinal(29)
                         .withCountryIsoCode(BOLIVIA))) {};
 
-        Country.BRAZIL = new Country(this, Country.baseInstance()
+        Country.BRAZIL = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Brazil")
                         .withCountryOrdinal(30)
                         .withCountryTmcCode(new CountryTmcCode(0x0b))
                         .withCountryIsoCode(BRAZIL))
-                .withLanguage(LocaleLanguage.PORTUGUESE)) {};
+                .withLocaleLanguage(LocaleLanguage.PORTUGUESE)) {};
 
-        Country.BELIZE = new Country(this, Country.baseInstance()
+        Country.BELIZE = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Belize")
                         .withCountryOrdinal(36)
                         .withCountryIsoCode(BELIZE))) {};
 
-        Country.CHILE = new Country(this, Country.baseInstance()
+        Country.CHILE = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Chile")
                         .withCountryOrdinal(45)
                         .withCountryIsoCode(CHILE))
-                .withLanguage(LocaleLanguage.SPANISH)) {};
+                .withLocaleLanguage(LocaleLanguage.SPANISH)) {};
 
-        Country.COLOMBIA = new Country(this, Country.baseInstance()
+        Country.COLOMBIA = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Colombia")
                         .withCountryOrdinal(48)
                         .withCountryIsoCode(COLOMBIA))
-                .withLanguage(LocaleLanguage.SPANISH)) {};
+                .withLocaleLanguage(LocaleLanguage.SPANISH)) {};
 
         //noinspection SpellCheckingInspection
-        Country.COSTA_RICA = new Country(this, Country.baseInstance()
+        Country.COSTA_RICA = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Costa Rica")
                         .withCountryOrdinal(49)
                         .withCountryIsoCode(COSTA_RICA))
-                .withLanguage(LocaleLanguage.SPANISH)) {};
+                .withLocaleLanguage(LocaleLanguage.SPANISH)) {};
 
-        Country.DOMINICA = new Country(this, Country.baseInstance()
+        Country.DOMINICA = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Dominica")
                         .withCountryOrdinal(58)
                         .withCountryIsoCode(DOMINICA))
                 .withDrivingSide(DrivingSide.LEFT)) {};
 
-        Country.ECUADOR = new Country(this, Country.baseInstance()
+        Country.ECUADOR = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Ecuador")
                         .withCountryOrdinal(61)
                         .withCountryIsoCode(ECUADOR))
-                .withLanguage(LocaleLanguage.SPANISH)) {};
+                .withLocaleLanguage(LocaleLanguage.SPANISH)) {};
 
-        Country.FALKLAND_ISLANDS = new Country(this, Country.baseInstance()
+        Country.FALKLAND_ISLANDS = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Falkland Islands")
                         .withCountryOrdinal(70)
                         .withCountryIsoCode(FALKLAND_ISLANDS))) {};
 
-        Country.FRENCH_SOUTHERN_AND_ANTARCTIC_LANDS = new Country(this, Country.baseInstance()
+        Country.FRENCH_SOUTHERN_AND_ANTARCTIC_LANDS = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("French Southern and Antarctic Lands")
                         .withCountryOrdinal(246)
                         .withCountryIsoCode(FRENCH_SOUTHERN_AND_ANTARCTIC_LANDS))) {};
 
-        Country.GRENADA = new Country(this, Country.baseInstance()
+        Country.GRENADA = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Grenada")
                         .withCountryOrdinal(76)
                         .withCountryIsoCode(GRENADA))
                 .withDrivingSide(DrivingSide.LEFT)) {};
 
-        Country.FRENCH_GUIANA = new Country(this, Country.baseInstance()
+        Country.FRENCH_GUIANA = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("French Guiana")
                         .withCountryOrdinal(78)
                         .withCountryIsoCode(FRENCH_GUIANA))) {};
 
-        Country.GUADELOUPE = new Country(this, Country.baseInstance()
+        Country.GUADELOUPE = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Guadeloupe")
                         .withCountryOrdinal(85)
                         .withCountryIsoCode(GUADELOUPE))) {};
 
-        Country.SOUTH_GEORGIA_AND_SOUTH_SANDWICH_ISLANDS = new Country(this, Country.baseInstance()
+        Country.SOUTH_GEORGIA_AND_SOUTH_SANDWICH_ISLANDS = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("South Georgia and South Sandwich Islands")
                         .withCountryOrdinal(88)
                         .withCountryIsoCode(SOUTH_GEORGIA_AND_SOUTH_SANDWICH_ISLANDS))) {};
 
-        Country.GUATEMALA = new Country(this, Country.baseInstance()
+        Country.GUATEMALA = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Guatemala")
                         .withCountryOrdinal(89)
                         .withCountryIsoCode(GUATEMALA))) {};
 
-        Country.GUYANA = new Country(this, Country.baseInstance()
+        Country.GUYANA = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Guyana")
                         .withCountryOrdinal(92)
                         .withCountryIsoCode(GUYANA))
                 .withDrivingSide(DrivingSide.LEFT)) {};
 
-        Country.HONDURAS = new Country(this, Country.baseInstance()
+        Country.HONDURAS = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Honduras")
                         .withCountryOrdinal(95)
                         .withCountryIsoCode(HONDURAS))
-                .withLanguage(LocaleLanguage.SPANISH)) {};
+                .withLocaleLanguage(LocaleLanguage.SPANISH)) {};
 
-        Country.SAINT_LUCIA = new Country(this, Country.baseInstance()
+        Country.SAINT_LUCIA = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Saint Lucia")
                         .withCountryOrdinal(126)
                         .withCountryIsoCode(SAINT_LUCIA))
                 .withDrivingSide(DrivingSide.LEFT)) {};
 
-        Country.MARTINIQUE = new Country(this, Country.baseInstance()
+        Country.MARTINIQUE = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Martinique")
                         .withCountryOrdinal(148)
                         .withCountryIsoCode(MARTINIQUE))) {};
 
-        Country.MONTSERRAT = new Country(this, Country.baseInstance()
+        Country.MONTSERRAT = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Montserrat")
                         .withCountryOrdinal(150)
                         .withCountryIsoCode(MONTSERRAT))) {};
 
-        Country.NICARAGUA = new Country(this, Country.baseInstance()
+        Country.NICARAGUA = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Nicaragua")
                         .withCountryOrdinal(163)
                         .withCountryIsoCode(NICARAGUA))
-                .withLanguage(LocaleLanguage.SPANISH)) {};
+                .withLocaleLanguage(LocaleLanguage.SPANISH)) {};
 
-        Country.PANAMA = new Country(this, Country.baseInstance()
+        Country.PANAMA = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Panama")
                         .withCountryOrdinal(171)
                         .withCountryIsoCode(PANAMA))) {};
 
-        Country.PERU = new Country(this, Country.baseInstance()
+        Country.PERU = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Peru")
                         .withCountryOrdinal(172)
                         .withCountryIsoCode(PERU))) {};
 
-        Country.PARAGUAY = new Country(this, Country.baseInstance()
+        Country.PARAGUAY = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Paraguay")
                         .withCountryOrdinal(184)
                         .withCountryIsoCode(PARAGUAY))
-                .withLanguage(LocaleLanguage.SPANISH)) {};
+                .withLocaleLanguage(LocaleLanguage.SPANISH)) {};
 
-        Country.SURINAME = new Country(this, Country.baseInstance()
+        Country.SURINAME = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Suriname")
                         .withCountryOrdinal(205)
                         .withCountryIsoCode(SURINAME))
                 .withDrivingSide(DrivingSide.LEFT)) {};
 
-        Country.TRINIDAD_AND_TOBAGO = new Country(this, Country.baseInstance()
+        Country.TRINIDAD_AND_TOBAGO = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Trinidad and Tobago")
                         .withCountryOrdinal(222)
                         .withCountryIsoCode(TRINIDAD_AND_TOBAGO))
                 .withDrivingSide(DrivingSide.LEFT)) {};
 
-        Country.URUGUAY = new Country(this, Country.baseInstance()
+        Country.URUGUAY = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Uruguay")
                         .withCountryOrdinal(230)
                         .withCountryIsoCode(URUGUAY))) {};
 
-        Country.SAINT_VINCENT_AND_THE_GRENADINES = new Country(this, Country.baseInstance()
+        Country.SAINT_VINCENT_AND_THE_GRENADINES = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Saint Vincent and the Grenadines")
                         .withCountryOrdinal(233)
                         .withCountryIsoCode(SAINT_VINCENT_AND_THE_GRENADINES))
                 .withDrivingSide(DrivingSide.LEFT)) {};
 
-        Country.VENEZUELA = new Country(this, Country.baseInstance()
+        Country.VENEZUELA = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Venezuela")
                         .withCountryOrdinal(234)
                         .withCountryIsoCode(VENEZUELA))
-                .withLanguage(LocaleLanguage.SPANISH)) {};
+                .withLocaleLanguage(LocaleLanguage.SPANISH)) {};
     }
 }

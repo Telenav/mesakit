@@ -525,7 +525,7 @@ public abstract class GraphElement implements
     @Override
     public long longValue()
     {
-        return identifierAsLong();
+        return index();
     }
 
     /**

@@ -40,7 +40,8 @@ import static com.telenav.mesakit.map.geography.Precision.DM7;
  *
  * @author jonathanl (shibo)
  */
-@SuppressWarnings("SpellCheckingInspection") @UmlClassDiagram(diagram = DiagramLocation.class)
+@SuppressWarnings({ "SpellCheckingInspection", "unused" })
+@UmlClassDiagram(diagram = DiagramLocation.class)
 public final class Latitude extends Angle
 {
     public static final Range<Angle> RANGE;
@@ -63,7 +64,7 @@ public final class Latitude extends Angle
     {
         MAXIMUM = nanodegrees(MAXIMUM_NANODEGREES);
         MINIMUM = nanodegrees(MINIMUM_NANODEGREES);
-        RANGE = rangeInclusive(MINIMUM, MAXIMUM);
+        RANGE = rangeInclusive(MINIMUM, MAXIMUM, Latitude::new);
     }
 
     public static Latitude angle(Angle angle)
@@ -211,6 +212,7 @@ public final class Latitude extends Angle
         return new Location(this, Longitude.ORIGIN).distanceTo(new Location(that, Longitude.ORIGIN));
     }
 
+    @Override
     public Latitude incremented()
     {
         if (equals(MAXIMUM))

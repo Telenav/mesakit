@@ -67,7 +67,7 @@ public class IndonesianRoadNameStandardizerTest extends RoadNameStandardizerTest
     @Override
     protected MapLocale locale()
     {
-        return MapLocale.INDONESIA.get();
+        return MapLocale.INDONESIA_INDONESIAN.get();
     }
 
     @Override
