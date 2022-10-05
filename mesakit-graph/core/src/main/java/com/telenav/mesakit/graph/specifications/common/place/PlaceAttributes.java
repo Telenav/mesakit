@@ -29,7 +29,7 @@ public class PlaceAttributes extends GraphElementAttributes<Place>
     // The attributes in this class are shared (from the common data specification) so they need to have the
     // same identifiers in all subclasses. See the superclass of this class for details.
 
-    private static final Lazy<PlaceAttributes> singleton = Lazy.of(PlaceAttributes::new);
+    private static final Lazy<PlaceAttributes> singleton = Lazy.lazy(PlaceAttributes::new);
 
     public static PlaceAttributes get()
     {

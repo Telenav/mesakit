@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.world.grid;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.MutableCount;
-import com.telenav.kivakit.interfaces.collection.NextValue;
+import com.telenav.kivakit.interfaces.collection.NextIterator;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.EdgeRelation;
@@ -277,7 +277,7 @@ public class WorldCellList extends ArrayList<WorldCell>
     @SuppressWarnings("Convert2Diamond")
     private EdgeSequence edges(Function<WorldCell, EdgeSequence> sequence)
     {
-        return new EdgeSequence(Iterables.iterable(() -> new NextValue<Edge>()
+        return new EdgeSequence(Iterables.iterable(() -> new NextIterator<Edge>()
         {
             final Iterator<WorldCell> worldCellIterator = iterator();
 
@@ -307,7 +307,7 @@ public class WorldCellList extends ArrayList<WorldCell>
 
     private RelationSet relations(Function<WorldCell, Iterable<EdgeRelation>> sequence)
     {
-        return RelationSet.forIterable(GraphLimits.Limit.RELATIONS, Iterables.iterable(() -> new NextValue<>()
+        return RelationSet.forIterable(GraphLimits.Limit.RELATIONS, Iterables.iterable(() -> new NextIterator<>()
         {
             final Iterator<WorldCell> cellIterator = iterator();
 
@@ -355,7 +355,7 @@ public class WorldCellList extends ArrayList<WorldCell>
 
     private VertexSequence vertexes(Function<WorldCell, VertexSequence> sequenceForCell)
     {
-        return new VertexSequence(Iterables.iterable(() -> new NextValue<>()
+        return new VertexSequence(Iterables.iterable(() -> new NextIterator<>()
         {
             WorldCell worldCell;
 

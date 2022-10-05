@@ -29,11 +29,11 @@ public class PbfCharacterCodecBuilder
     {
         var escapes = frequencies
                 .escaped(charactersMinimumOccurrences.asMaximum()).asCount()
-                .maximum(charactersMinimumOccurrences.incremented().asCount());
-        frequencies.frequencies().add(ESCAPE, escapes);
+                .maximize(charactersMinimumOccurrences.incremented().asCount());
+        frequencies.frequencies().plus(ESCAPE, escapes);
         var symbols = frequencies.symbols(charactersMinimumOccurrences);
         return symbols.size() < 16 ? PbfDefaultCodecs.get().defaultKeyCharacterCodec() :
-                HuffmanCharacterCodec.from(symbols, charactersMaximumBits);
+                HuffmanCharacterCodec.characterCodec(symbols, charactersMaximumBits);
     }
 
     public void sample(PbfEntity<?> entity)

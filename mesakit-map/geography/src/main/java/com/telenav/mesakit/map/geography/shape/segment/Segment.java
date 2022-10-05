@@ -25,7 +25,7 @@ import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.object.Pair;
 import com.telenav.kivakit.core.string.Separators;
-import com.telenav.kivakit.interfaces.collection.NextValue;
+import com.telenav.kivakit.interfaces.collection.NextIterator;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.geography.Latitude;
@@ -229,7 +229,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
     @Override
     public int hashCode()
     {
-        return Hash.many(start(), end());
+        return Hash.hashMany(start(), end());
     }
 
     @Override
@@ -553,7 +553,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
 
     public Iterable<Segment> sections(Distance length)
     {
-        return Iterables.iterable(() -> new NextValue<>()
+        return Iterables.iterable(() -> new NextIterator<>()
         {
             private Distance offset = Distance.ZERO;
 

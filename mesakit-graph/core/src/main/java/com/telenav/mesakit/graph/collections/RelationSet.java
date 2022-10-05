@@ -27,10 +27,10 @@ import com.telenav.kivakit.core.language.Streams;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.messages.status.Warning;
 import com.telenav.kivakit.core.string.Join;
 import com.telenav.kivakit.core.string.Separators;
 import com.telenav.kivakit.core.string.Strings;
-import com.telenav.kivakit.core.time.Frequency;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
@@ -38,8 +38,8 @@ import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.graph.EdgeRelation;
 import com.telenav.mesakit.graph.Graph;
-import com.telenav.mesakit.graph.identifiers.RelationIdentifier;
 import com.telenav.mesakit.graph.GraphLimits.Limit;
+import com.telenav.mesakit.graph.identifiers.RelationIdentifier;
 import com.telenav.mesakit.graph.specifications.common.relation.HeavyWeightRelation;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapRelationIdentifier;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
@@ -54,6 +54,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.time.Frequency.EVERY_MINUTE;
 
 /**
  * A set of relations. Supports {@link #union(RelationSet)} and {@link #without(Set)} operations, that logically combine
@@ -61,6 +62,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
  *
  * @author jonathanl (shibo)
  */
+@SuppressWarnings("unused")
 public class RelationSet implements Set<EdgeRelation>
 {
     public static final RelationSet EMPTY = new RelationSet(Maximum._0, Estimate._0, Collections.emptySet());
@@ -207,8 +209,8 @@ public class RelationSet implements Set<EdgeRelation>
     {
         if (relations.size() == maximumSize.asInt())
         {
-            LOGGER.warning(Frequency.EVERY_MINUTE, "EdgeRelationSet maximum size of $ elements would be exceeded. Ignoring relation.",
-                    maximumSize);
+            LOGGER.transmit(new Warning("EdgeRelationSet maximum size of $ elements would be exceeded. Ignoring relation.",
+                    maximumSize).maximumFrequency(EVERY_MINUTE));
             return false;
         }
         return relations.add(relation);
@@ -474,7 +476,8 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return The most important relation in this set, as determined by {@link EdgeRelation#isMoreImportantThan(EdgeRelation)}
+     * @return The most important relation in this set, as determined by
+     * {@link EdgeRelation#isMoreImportantThan(EdgeRelation)}
      */
     public EdgeRelation mostImportant()
     {

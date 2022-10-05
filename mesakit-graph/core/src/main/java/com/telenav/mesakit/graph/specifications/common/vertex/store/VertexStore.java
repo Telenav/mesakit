@@ -28,7 +28,7 @@ import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.BitCount;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
-import com.telenav.kivakit.interfaces.collection.NextValue;
+import com.telenav.kivakit.interfaces.collection.NextIterator;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.primitive.collections.array.packed.SplitPackedArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
@@ -708,7 +708,7 @@ public class VertexStore extends NodeStore<Vertex>
     @Override
     public Validator validator(ValidationType validation)
     {
-        return !validation.shouldValidate(getClass()) ? Validator.NULL : new StoreValidator()
+        return !validation.shouldValidate(getClass()) ? Validator.nullValidator() : new StoreValidator()
         {
             @Override
             protected void onValidate()
@@ -774,7 +774,7 @@ public class VertexStore extends NodeStore<Vertex>
                 return fail("Unable to load spatial index");
             }
             var intersecting = index.intersecting(bounds);
-            return new VertexSequence(new DeduplicatingIterable<>(Iterables.iterable(() -> new NextValue<>()
+            return new VertexSequence(new DeduplicatingIterable<>(Iterables.iterable(() -> new NextIterator<>()
             {
                 @Override
                 public Vertex next()

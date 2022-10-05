@@ -29,7 +29,7 @@ public class ExitNumber
             RoadLimits.EXIT_NUMBERS)
     {
         @Override
-        protected ExitNumber onInitialize(String identifier)
+        protected ExitNumber onCreateValue(String identifier)
         {
             return new ExitNumber(identifier);
         }

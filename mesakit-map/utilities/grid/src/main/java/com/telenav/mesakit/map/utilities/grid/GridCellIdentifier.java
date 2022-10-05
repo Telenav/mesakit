@@ -20,9 +20,10 @@ package com.telenav.mesakit.map.utilities.grid;
 
 import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.core.language.primitive.Ints;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
+import org.jetbrains.annotations.NotNull;
 
-public class GridCellIdentifier implements Stringable
+public class GridCellIdentifier implements StringFormattable
 {
     private final int identifier;
 
@@ -55,7 +56,7 @@ public class GridCellIdentifier implements Stringable
     }
 
     @Override
-    public String asString(Format format)
+    public String asString(@NotNull Format format)
     {
         return "[CellIdentifier " + this + "]";
     }
@@ -74,7 +75,7 @@ public class GridCellIdentifier implements Stringable
     @Override
     public int hashCode()
     {
-        return Hash.many(longitudeIndex, latitudeIndex);
+        return Hash.hashMany(longitudeIndex, latitudeIndex);
     }
 
     public int identifier()

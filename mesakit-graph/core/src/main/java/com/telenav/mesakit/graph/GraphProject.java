@@ -44,7 +44,7 @@ public class GraphProject extends Project
     public GraphProject()
     {
         System.setProperty("mesakit.graph.folder", graphFolder().toString());
-        JavaVirtualMachine.local().invalidateProperties();
+        JavaVirtualMachine.javaVirtualMachine().invalidateProperties();
 
         register(new KryoObjectSerializer(new GraphKryoTypes()));
     }
@@ -85,7 +85,7 @@ public class GraphProject extends Project
 
     public Folder userGraphFolder()
     {
-        var graphFolder = systemProperty("MESAKIT_USER_GRAPH_FOLDER");
-        return graphFolder == null ? Folder.desktop() : Folder.parseFolder(this, graphFolder);
+        var graphFolder = systemPropertyOrEnvironmentVariable("MESAKIT_USER_GRAPH_FOLDER");
+        return graphFolder == null ? Folder.desktopFolder() : Folder.parseFolder(this, graphFolder);
     }
 }

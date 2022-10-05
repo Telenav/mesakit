@@ -109,7 +109,7 @@ public abstract class Node<T extends Bounded & Intersectable> implements Bounded
     @Override
     public int hashCode()
     {
-        return Hash.many(bottomLeft, topRight);
+        return Hash.hashMany(bottomLeft, topRight);
     }
 
     public void index(RTreeSpatialIndex<T> index)

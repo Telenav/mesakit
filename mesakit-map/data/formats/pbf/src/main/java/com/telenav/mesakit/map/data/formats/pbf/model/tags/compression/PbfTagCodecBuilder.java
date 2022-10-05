@@ -3,7 +3,6 @@ package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.string.AsciiArt;
-import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.value.count.Minimum;
 import com.telenav.kivakit.core.value.count.MutableCount;
@@ -52,9 +51,9 @@ public class PbfTagCodecBuilder
     private Maximum charactersMaximumBits = Maximum._12;
 
     @UmlAggregation(label = "collects", referentCardinality = "2")
-    private final StringFrequencies keyStringFrequencies = new StringFrequencies(Count._10_000_000, Maximum.maximum(50_000_000));
+    private final StringFrequencies keyStringFrequencies = new StringFrequencies(Maximum.maximum(50_000_000));
 
-    private final StringFrequencies valueStringFrequencies = new StringFrequencies(Count._10_000_000, Maximum.maximum(50_000_000));
+    private final StringFrequencies valueStringFrequencies = new StringFrequencies(Maximum.maximum(50_000_000));
 
     @UmlAggregation(label = "collects", referentCardinality = "2")
     private final CharacterFrequencies keyCharacterFrequencies = new CharacterFrequencies();
@@ -138,8 +137,8 @@ public class PbfTagCodecBuilder
     {
         var keyEscapes = keyCharacterFrequencies
                 .escaped(charactersMinimumOccurrences.asMaximum())
-                .maximum(charactersMinimumOccurrences.incremented().asCount());
-        keyCharacterFrequencies.frequencies().add(ESCAPE, keyEscapes);
+                .maximize(charactersMinimumOccurrences.incremented().asCount());
+        keyCharacterFrequencies.frequencies().plus(ESCAPE, keyEscapes);
         var keySymbols = keyCharacterFrequencies.symbols(charactersMinimumOccurrences);
         if (keySymbols.size() < 32)
         {
@@ -147,13 +146,13 @@ public class PbfTagCodecBuilder
         }
         else
         {
-            keyCharacterCodec = HuffmanCharacterCodec.from(keySymbols, charactersMaximumBits);
+            keyCharacterCodec = HuffmanCharacterCodec.characterCodec(keySymbols, charactersMaximumBits);
         }
 
         var valueEscapes = valueCharacterFrequencies
                 .escaped(charactersMinimumOccurrences.asMaximum())
-                .maximum(charactersMinimumOccurrences.incremented().asCount());
-        valueCharacterFrequencies.frequencies().add(ESCAPE, valueEscapes);
+                .maximize(charactersMinimumOccurrences.incremented().asCount());
+        valueCharacterFrequencies.frequencies().plus(ESCAPE, valueEscapes);
         var valueSymbols = valueCharacterFrequencies.symbols(charactersMinimumOccurrences);
         if (valueSymbols.size() < 32)
         {
@@ -161,7 +160,7 @@ public class PbfTagCodecBuilder
         }
         else
         {
-            valueCharacterCodec = HuffmanCharacterCodec.from(valueSymbols, charactersMaximumBits);
+            valueCharacterCodec = HuffmanCharacterCodec.characterCodec(valueSymbols, charactersMaximumBits);
         }
     }
 
@@ -216,7 +215,7 @@ public class PbfTagCodecBuilder
         }
         else
         {
-            keyStringCodec = HuffmanStringCodec.from(keySymbols, stringsMaximumBits);
+            keyStringCodec = HuffmanStringCodec.stringCodec(keySymbols, stringsMaximumBits);
         }
 
         var valueSymbols = valueStringFrequencies
@@ -228,7 +227,7 @@ public class PbfTagCodecBuilder
         }
         else
         {
-            valueStringCodec = HuffmanStringCodec.from(valueSymbols, stringsMaximumBits);
+            valueStringCodec = HuffmanStringCodec.stringCodec(valueSymbols, stringsMaximumBits);
         }
     }
 
@@ -271,10 +270,10 @@ public class PbfTagCodecBuilder
         System.out.println(AsciiArt.box("Value String Codec"));
         System.out.println(valueStringCodec);
 
-        keyCharacterCodec.asProperties().save(keyCharacterCodec.toString(), File.parseFile(consoleListener(), "default-key-character.codec"));
-        valueCharacterCodec.asProperties().save(valueCharacterCodec.toString(), File.parseFile(consoleListener(), "default-value-character.codec"));
-        keyStringCodec.asProperties().save(keyStringCodec.toString(), File.parseFile(consoleListener(), "default-key-string.codec"));
-        valueStringCodec.asProperties().save(valueStringCodec.toString(), File.parseFile(consoleListener(), "default-value-string.codec"));
+        keyCharacterCodec.asProperties().save(File.parseFile(consoleListener(), "default-key-character.codec"), keyCharacterCodec.toString());
+        valueCharacterCodec.asProperties().save(File.parseFile(consoleListener(), "default-value-character.codec"), valueCharacterCodec.toString());
+        keyStringCodec.asProperties().save(File.parseFile(consoleListener(), "default-key-string.codec"), keyStringCodec.toString());
+        valueStringCodec.asProperties().save(File.parseFile(consoleListener(), "default-value-string.codec"), valueStringCodec.toString());
     }
 
     public PbfTagCodecBuilder relationFilter(RelationFilter relationFilter)

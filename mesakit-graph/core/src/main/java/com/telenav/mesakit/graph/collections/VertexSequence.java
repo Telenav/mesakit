@@ -18,15 +18,15 @@
 
 package com.telenav.mesakit.graph.collections;
 
-import com.telenav.kivakit.core.collections.iteration.Matching;
+import com.telenav.kivakit.core.collections.iteration.FilteredIterable;
 import com.telenav.kivakit.core.language.Streams;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
+import com.telenav.mesakit.graph.GraphLimits.Limit;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.RouteBuilder;
 import com.telenav.mesakit.graph.Vertex;
-import com.telenav.mesakit.graph.GraphLimits.Limit;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 
 import java.util.Iterator;
@@ -37,6 +37,7 @@ import java.util.stream.Stream;
  *
  * @author jonathanl (shibo)
  */
+@SuppressWarnings("unused")
 public class VertexSequence implements Iterable<Vertex>
 {
     /** The vertexes in the sequence */
@@ -125,14 +126,7 @@ public class VertexSequence implements Iterable<Vertex>
      */
     public VertexSequence matching(Matcher<Vertex> matcher)
     {
-        return new VertexSequence(new Matching<>(matcher)
-        {
-            @Override
-            protected Iterator<Vertex> values()
-            {
-                return vertexes.iterator();
-            }
-        });
+        return new VertexSequence(new FilteredIterable<>(vertexes, matcher));
     }
 
     public Stream<Vertex> parallelStream()

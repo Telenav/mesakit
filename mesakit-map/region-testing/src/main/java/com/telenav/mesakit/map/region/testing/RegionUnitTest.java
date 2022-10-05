@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.region.testing;
 
-import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KivaKitCoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.mesakit.map.geography.GeographyKryoTypes;
 import com.telenav.mesakit.map.geography.testing.GeographyUnitTest;
@@ -47,7 +47,7 @@ public class RegionUnitTest extends GeographyUnitTest
     @Override
     protected KryoTypes kryoTypes()
     {
-        return new CoreKryoTypes()
+        return new KivaKitCoreKryoTypes()
                 .mergedWith(new MeasurementsKryoTypes())
                 .mergedWith(new GeographyKryoTypes())
                 .mergedWith(new RegionKryoTypes());

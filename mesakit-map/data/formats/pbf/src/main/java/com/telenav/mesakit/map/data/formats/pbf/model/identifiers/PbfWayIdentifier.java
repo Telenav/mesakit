@@ -62,7 +62,7 @@ public class PbfWayIdentifier extends MapWayIdentifier implements PbfIdentifierT
                                                                                       String name,
                                                                                       String description)
     {
-        return SwitchParser.builder(PbfWayIdentifier.class)
+        return SwitchParser.switchParserBuilder(PbfWayIdentifier.class)
                 .name(name)
                 .description(description)
                 .converter(new Converter(listener));

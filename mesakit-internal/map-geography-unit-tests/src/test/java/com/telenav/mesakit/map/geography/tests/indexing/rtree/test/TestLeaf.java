@@ -66,7 +66,7 @@ class TestLeaf extends Leaf<Polyline>
     @Override
     public int hashCode()
     {
-        return Hash.many(super.hashCode(), polylines);
+        return Hash.hashMany(super.hashCode(), polylines);
     }
 
     @Override

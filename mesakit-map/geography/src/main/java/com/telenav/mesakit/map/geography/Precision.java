@@ -119,7 +119,7 @@ public enum Precision
 
     public static SwitchParser.Builder<Precision> precisionSwitchParser(String name, String description)
     {
-        return SwitchParser.builder(Precision.class)
+        return SwitchParser.switchParserBuilder(Precision.class)
                 .name(name)
                 .converter(new EnumConverter<>(LOGGER, Precision.class))
                 .description(description);

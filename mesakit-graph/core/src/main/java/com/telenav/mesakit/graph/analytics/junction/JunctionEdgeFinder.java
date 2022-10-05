@@ -68,7 +68,7 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
 
     public void find()
     {
-        var threads = JavaVirtualMachine.local().processors();
+        var threads = JavaVirtualMachine.javaVirtualMachine().processors();
         var completion = new CountDownLatch(threads.asInt());
         edgeIterator = edges.iterator();
         var outer = this;

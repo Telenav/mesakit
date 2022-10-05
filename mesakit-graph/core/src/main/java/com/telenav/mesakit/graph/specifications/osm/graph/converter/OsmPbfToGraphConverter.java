@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.specifications.osm.graph.converter;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.io.load.GraphConstraints;
@@ -178,7 +178,7 @@ public class OsmPbfToGraphConverter extends PbfToGraphConverter
             warning("OSM file is missing relation information");
         }
 
-        DEBUG.trace(metadata.asString(Stringable.Format.TEXT));
+        DEBUG.trace(metadata.asString(StringFormattable.Format.TEXT));
 
         return analysis;
     }
@@ -197,7 +197,7 @@ public class OsmPbfToGraphConverter extends PbfToGraphConverter
         loader.dataSourceFactory(dataSource, metadata);
 
         var loadedMetadata = graph.load(loader, GraphConstraints.ALL);
-        if (loadedMetadata != null && loadedMetadata.isValid())
+        if (loadedMetadata != null && loadedMetadata.isValid(this))
         {
             return graph;
         }

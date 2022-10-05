@@ -17,7 +17,7 @@ public class Attribute extends Node implements ValueExpression
 
     public Attribute(String attributeName)
     {
-        method = Type.forClass(Edge.class).property(attributeName);
+        method = Type.typeForClass(Edge.class).property(attributeName);
         if (method == null)
         {
             fail("Unable to find edge attribute '$'", attributeName);

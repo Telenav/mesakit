@@ -61,7 +61,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
             private BoundedLeafIterator(Rectangle bounds, Matcher<Element> matcher)
             {
                 this.bounds = bounds;
-                filter(matcher);
+                matching(matcher);
             }
 
             @Override
@@ -90,7 +90,7 @@ public class QuadTreeSpatialIndex<Element extends Located>
             private QuadrantIterator(Rectangle bounds, Matcher<Element> matcher)
             {
                 this.bounds = bounds;
-                filter(matcher);
+                matching(matcher);
             }
 
             @Override

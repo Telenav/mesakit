@@ -11,7 +11,7 @@ import com.telenav.mesakit.graph.collections.EdgeSet;
 import java.util.HashSet;
 import java.util.LinkedList;
 
-import static com.telenav.kivakit.interfaces.string.Stringable.Format;
+import static com.telenav.kivakit.interfaces.string.StringFormattable.Format;
 import static com.telenav.mesakit.graph.query.program.EdgeStack.Result.ALREADY_ON_STACK;
 import static com.telenav.mesakit.graph.query.program.EdgeStack.Result.PUSHED;
 

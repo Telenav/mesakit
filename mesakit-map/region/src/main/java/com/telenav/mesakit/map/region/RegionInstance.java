@@ -18,36 +18,39 @@
 
 package com.telenav.mesakit.map.region;
 
+import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.collections.set.ConcurrentHashSet;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
-import com.telenav.kivakit.core.locale.LanguageIsoCode;
+import com.telenav.kivakit.core.locale.LocaleLanguage;
+import com.telenav.kivakit.core.locale.LocaleRegion;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.value.count.Count;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
 import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
-import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.region.internal.lexakai.DiagramRegion;
+import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.region.regions.Country;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import static com.telenav.kivakit.core.collections.list.ObjectList.objectList;
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
+@SuppressWarnings("unused")
 @UmlClassDiagram(diagram = DiagramRegion.class)
-@UmlExcludeSuperTypes(Stringable.class)
-public class RegionInstance<T extends Region<T>> implements Stringable
+@UmlExcludeSuperTypes(StringFormattable.class)
+public class RegionInstance<T extends Region<T>> implements StringFormattable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -72,10 +75,9 @@ public class RegionInstance<T extends Region<T>> implements Stringable
     private RegionIdentity identity;
 
     @UmlAggregation
-    private List<LanguageIsoCode> languages = new ArrayList<>();
+    private ObjectList<LocaleLanguage> localeLanguages = objectList();
 
-    @UmlAggregation
-    private MapLocale locale;
+    private LocaleRegion localeRegion;
 
     private int ordinal;
 
@@ -97,8 +99,8 @@ public class RegionInstance<T extends Region<T>> implements Stringable
         bounds = that.bounds;
         drivingSide = that.drivingSide;
         automotiveSupportLevel = that.automotiveSupportLevel;
-        languages = that.languages;
-        locale = that.locale;
+        localeLanguages = objectList(that.localeLanguages);
+        localeRegion = that.localeRegion;
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -116,7 +118,7 @@ public class RegionInstance<T extends Region<T>> implements Stringable
     }
 
     @Override
-    public String asString(Format format)
+    public String asString(@NotNull Format format)
     {
         return toDebugString(0);
     }
@@ -170,9 +172,9 @@ public class RegionInstance<T extends Region<T>> implements Stringable
         return set;
     }
 
-    public LanguageIsoCode defaultLanguage()
+    public LocaleLanguage defaultLanguage()
     {
-        return languages().isEmpty() ? LanguageIsoCode.ENGLISH : languages().get(0);
+        return languages().isEmpty() ? LocaleLanguage.ENGLISH : languages().get(0);
     }
 
     public final Country.DrivingSide drivingSide()
@@ -196,14 +198,14 @@ public class RegionInstance<T extends Region<T>> implements Stringable
         return identity != null && identity().isValid();
     }
 
-    public final List<LanguageIsoCode> languages()
+    public final ObjectList<LocaleLanguage> languages()
     {
-        return languages;
+        return localeLanguages;
     }
 
     public final MapLocale locale()
     {
-        return locale;
+        return new MapLocale(localeRegion, region(), localeLanguages);
     }
 
     public final String name()
@@ -294,24 +296,24 @@ public class RegionInstance<T extends Region<T>> implements Stringable
         return copy;
     }
 
-    public RegionInstance<T> withLanguage(LanguageIsoCode language)
+    public RegionInstance<T> withLanguages(Collection<LocaleLanguage> languages)
     {
         var copy = new RegionInstance<>(this);
-        copy.languages.add(language);
+        copy.localeLanguages.addAll(languages);
         return copy;
     }
 
-    public RegionInstance<T> withLanguages(List<LanguageIsoCode> languages)
+    public RegionInstance<T> withLocaleLanguage(LocaleLanguage language)
     {
         var copy = new RegionInstance<>(this);
-        copy.languages = languages;
+        copy.localeLanguages.add(language);
         return copy;
     }
 
-    public RegionInstance<T> withLocale(MapLocale locale)
+    public RegionInstance<T> withLocaleRegion(LocaleRegion region)
     {
         var copy = new RegionInstance<>(this);
-        copy.locale = locale;
+        copy.localeRegion = region;
         return copy;
     }
 

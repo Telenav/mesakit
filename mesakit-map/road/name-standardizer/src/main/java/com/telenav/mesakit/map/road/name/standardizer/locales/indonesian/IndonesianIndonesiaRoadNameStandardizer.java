@@ -42,7 +42,7 @@ import static com.telenav.mesakit.map.road.name.parser.ParsedRoadName.TypePositi
 
     // Road name parser (per thread, because of thread safety issues in the parser)
     private final ThreadLocal<RoadNameParser> parser = ThreadLocal
-            .withInitial(() -> RoadNameParser.get(MapLocale.INDONESIA.get()));
+            .withInitial(() -> RoadNameParser.get(MapLocale.INDONESIA_INDONESIAN.get()));
 
     private Mode mode;
 

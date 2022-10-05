@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.data.formats.pbf.processing.filters;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.list.StringList;
-import com.telenav.kivakit.core.collections.map.NameMap;
+import com.telenav.kivakit.core.collections.map.StringMap;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.string.Strings;
@@ -43,12 +43,12 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
 @UmlExcludeSuperTypes(Named.class)
 public class WayFilter implements Filter<PbfWay>, Named
 {
-    private static final NameMap<WayFilter> wayFilterForName = new NameMap<>();
+    private static final StringMap<WayFilter> wayFilterForName = new StringMap<>();
 
     public static WayFilter exclude(String name, Resource resource)
     {
         var filter = new WayFilter(name, "exclude list from resource");
-        for (var line : resource.reader().lines(ProgressReporter.none()))
+        for (var line : resource.reader().readLines(ProgressReporter.nullProgressReporter()))
         {
             var highway = line.trim();
             if (!Strings.isEmpty(highway))
@@ -72,7 +72,7 @@ public class WayFilter implements Filter<PbfWay>, Named
     public static WayFilter include(String name, Resource resource)
     {
         var filter = new WayFilter(name, "include list from resource");
-        for (var line : resource.reader().lines(ProgressReporter.none()))
+        for (var line : resource.reader().readLines(ProgressReporter.nullProgressReporter()))
         {
             var highway = line.trim();
             if (!Strings.isEmpty(highway))
@@ -86,7 +86,7 @@ public class WayFilter implements Filter<PbfWay>, Named
     public static SwitchParser.Builder<WayFilter> wayFilterSwitchParser(Listener listener, String name,
                                                                         String description)
     {
-        return SwitchParser.builder(WayFilter.class)
+        return SwitchParser.switchParserBuilder(WayFilter.class)
                 .name(name)
                 .description(description)
                 .converter(new Converter(listener));
@@ -124,7 +124,7 @@ public class WayFilter implements Filter<PbfWay>, Named
     {
         this.name = name;
         this.description = description;
-        wayFilterForName.add(this);
+        wayFilterForName.put(name, this);
     }
 
     @Override

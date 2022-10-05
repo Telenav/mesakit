@@ -25,6 +25,7 @@ import org.junit.Test;
 /**
  * @author jonathanl (shibo)
  */
+@SuppressWarnings("SpellCheckingInspection")
 public class EnglishCanadaRoadNameStandardizerTest extends RoadNameStandardizerTest
 {
     public EnglishCanadaRoadNameStandardizerTest()

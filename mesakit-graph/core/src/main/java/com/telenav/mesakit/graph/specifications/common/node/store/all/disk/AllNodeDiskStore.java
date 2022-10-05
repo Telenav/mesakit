@@ -69,6 +69,7 @@ public abstract class AllNodeDiskStore
         return archive;
     }
 
+    @SuppressWarnings("resource")
     public boolean containsData()
     {
         if (containsData == null)
@@ -82,7 +83,7 @@ public abstract class AllNodeDiskStore
             }
             else
             {
-                return !folder.files().matching(name -> name.baseName().startsWith(name())).isEmpty();
+                return !folder.files().matching(name -> name.baseFileName().startsWith(name())).isEmpty();
             }
         }
         return containsData;
@@ -121,6 +122,7 @@ public abstract class AllNodeDiskStore
     protected ZipEntry entry(AllNodeDiskCell DiskCell)
     {
         var file = DiskCell.toFileString(name());
+        @SuppressWarnings("resource")
         var entry = archive().zip().entry(file);
         if (entry == null)
         {
@@ -151,8 +153,8 @@ public abstract class AllNodeDiskStore
     {
         for (var out : output.values())
         {
-            IO.flush(out);
-            IO.close(out);
+            IO.flush(LOGGER, out);
+            IO.close(LOGGER, out);
         }
     }
 

@@ -162,7 +162,7 @@ public class RoadNameStore implements NamedObject, Initializable
                 else
                 {
                     var index = names.cursor();
-                    codec.encode(names, SymbolProducer.singleton(name));
+                    codec.encode(names, SymbolProducer.symbolProducer(name));
                     keyToNameIndex.put(key, index);
                     pool.put(name, index);
                 }

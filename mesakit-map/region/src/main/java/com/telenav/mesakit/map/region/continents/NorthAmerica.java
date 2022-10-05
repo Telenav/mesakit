@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.region.continents;
 
-import com.telenav.kivakit.core.locale.LanguageIsoCode;
+import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
 import com.telenav.mesakit.map.region.countries.Canada;
@@ -27,25 +27,25 @@ import com.telenav.mesakit.map.region.countries.UnitedStates;
 import com.telenav.mesakit.map.region.regions.Continent;
 import com.telenav.mesakit.map.region.regions.Country;
 
-import static com.telenav.kivakit.core.locale.CountryIsoCode.ANGUILLA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.BAHAMAS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.BERMUDA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.CAYMAN_ISLANDS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.CUBA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.DOMINICAN_REPUBLIC;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.EL_SALVADOR;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.HAITI;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.JAMAICA;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.PUERTO_RICO;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SAINT_BARTHELEMY;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SAINT_KITTS_AND_NEVIS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SAINT_MARTIN_FRENCH_PART;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SAINT_PIERRE_AND_MIQUELON;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.SVALBARD_AND_JAN_MAYEN_ISLANDS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.TURKS_AND_CAICOS_ISLANDS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.UNITED_STATES_MINOR_OUTLYING_ISLANDS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.VIRGIN_ISLANDS;
-import static com.telenav.kivakit.core.locale.CountryIsoCode.VIRGIN_ISLANDS_BRITISH;
+import static com.telenav.kivakit.core.locale.LocaleRegion.ANGUILLA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.BAHAMAS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.BERMUDA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.CAYMAN_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.CUBA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.DOMINICAN_REPUBLIC;
+import static com.telenav.kivakit.core.locale.LocaleRegion.EL_SALVADOR;
+import static com.telenav.kivakit.core.locale.LocaleRegion.HAITI;
+import static com.telenav.kivakit.core.locale.LocaleRegion.JAMAICA;
+import static com.telenav.kivakit.core.locale.LocaleRegion.PUERTO_RICO;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SAINT_BARTHELEMY;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SAINT_KITTS_AND_NEVIS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SAINT_MARTIN_FRENCH_PART;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SAINT_PIERRE_AND_MIQUELON;
+import static com.telenav.kivakit.core.locale.LocaleRegion.SVALBARD_AND_JAN_MAYEN_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.TURKS_AND_CAICOS_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.UNITED_STATES_MINOR_OUTLYING_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.VIRGIN_ISLANDS;
+import static com.telenav.kivakit.core.locale.LocaleRegion.VIRGIN_ISLANDS_BRITISH;
 
 public class NorthAmerica extends Continent
 {
@@ -68,52 +68,52 @@ public class NorthAmerica extends Continent
         Country.MEXICO = new Mexico();
         Country.MEXICO.initialize();
 
-        Country.ANGUILLA = new Country(this, Country.baseInstance()
+        Country.ANGUILLA = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Anguilla")
                         .withCountryOrdinal(4)
                         .withCountryIsoCode(ANGUILLA))) {};
 
         //noinspection SpellCheckingInspection
-        Country.SAINT_BARTHELEMY = new Country(this, Country.baseInstance()
+        Country.SAINT_BARTHELEMY = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Saint Barthelemy")
                         .withCountryOrdinal(26)
                         .withCountryIsoCode(SAINT_BARTHELEMY))) {};
 
-        Country.BERMUDA = new Country(this, Country.baseInstance()
+        Country.BERMUDA = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Bermuda")
                         .withCountryOrdinal(27)
                         .withCountryIsoCode(BERMUDA))) {};
 
-        Country.BAHAMAS = new Country(this, Country.baseInstance()
+        Country.BAHAMAS = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Bahamas")
                         .withCountryOrdinal(31)
                         .withCountryIsoCode(BAHAMAS))
                 .withDrivingSide(Country.DrivingSide.LEFT)) {};
 
-        Country.CUBA = new Country(this, Country.baseInstance()
+        Country.CUBA = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Cuba")
                         .withCountryOrdinal(50)
                         .withCountryIsoCode(CUBA))
-                .withLanguage(LanguageIsoCode.SPANISH)) {};
+                .withLocaleLanguage(LocaleLanguage.SPANISH)) {};
 
-        Country.DOMINICAN_REPUBLIC = new Country(this, Country.baseInstance()
+        Country.DOMINICAN_REPUBLIC = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Dominican Republic")
                         .withCountryOrdinal(59)
                         .withCountryIsoCode(DOMINICAN_REPUBLIC))) {};
 
-        Country.HAITI = new Country(this, Country.baseInstance()
+        Country.HAITI = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Haiti")
                         .withCountryOrdinal(97)
                         .withCountryIsoCode(HAITI))) {};
 
-        Country.JAMAICA = new Country(this, Country.baseInstance()
+        Country.JAMAICA = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Jamaica")
                         .withCountryOrdinal(110)
@@ -121,73 +121,73 @@ public class NorthAmerica extends Continent
                 .withDrivingSide(Country.DrivingSide.LEFT)) {};
 
         //noinspection SpellCheckingInspection
-        Country.SAINT_KITTS_AND_NEVIS = new Country(this, Country.baseInstance()
+        Country.SAINT_KITTS_AND_NEVIS = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Saint Kitts and Nevis")
                         .withCountryOrdinal(118)
                         .withCountryIsoCode(SAINT_KITTS_AND_NEVIS))
                 .withDrivingSide(Country.DrivingSide.LEFT)) {};
 
-        Country.CAYMAN_ISLANDS = new Country(this, Country.baseInstance()
+        Country.CAYMAN_ISLANDS = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Cayman Islands")
                         .withCountryOrdinal(122)
                         .withCountryIsoCode(CAYMAN_ISLANDS))) {};
 
-        Country.SAINT_MARTIN_FRENCH_PART = new Country(this, Country.baseInstance()
+        Country.SAINT_MARTIN_FRENCH_PART = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Saint Martin French Part")
                         .withCountryOrdinal(139)
                         .withCountryIsoCode(SAINT_MARTIN_FRENCH_PART))) {};
 
-        Country.SAINT_PIERRE_AND_MIQUELON = new Country(this, Country.baseInstance()
+        Country.SAINT_PIERRE_AND_MIQUELON = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Saint Pierre and Miquelon")
                         .withCountryOrdinal(178)
                         .withCountryIsoCode(SAINT_PIERRE_AND_MIQUELON))) {};
 
-        Country.PUERTO_RICO = new Country(this, Country.baseInstance()
+        Country.PUERTO_RICO = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Puerto Rico")
                         .withCountryOrdinal(180)
                         .withCountryIsoCode(PUERTO_RICO))
-                .withLanguage(LanguageIsoCode.SPANISH)
-                .withLanguage(LanguageIsoCode.ENGLISH)) {};
+                .withLocaleLanguage(LocaleLanguage.SPANISH)
+                .withLocaleLanguage(LocaleLanguage.ENGLISH)) {};
 
         //noinspection SpellCheckingInspection
-        Country.SVALBARD_AND_JAN_MAYEN_ISLANDS = new Country(this, Country.baseInstance()
+        Country.SVALBARD_AND_JAN_MAYEN_ISLANDS = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Svalbard and Jan Mayen Islands")
                         .withCountryOrdinal(199)
                         .withCountryIsoCode(SVALBARD_AND_JAN_MAYEN_ISLANDS))) {};
 
-        Country.EL_SALVADOR = new Country(this, Country.baseInstance()
+        Country.EL_SALVADOR = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("El Salvador")
                         .withCountryOrdinal(207)
                         .withCountryIsoCode(EL_SALVADOR))
-                .withLanguage(LanguageIsoCode.SPANISH)) {};
+                .withLocaleLanguage(LocaleLanguage.SPANISH)) {};
 
         //noinspection SpellCheckingInspection
-        Country.TURKS_AND_CAICOS_ISLANDS = new Country(this, Country.baseInstance()
+        Country.TURKS_AND_CAICOS_ISLANDS = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Turks and Caicos Islands")
                         .withCountryOrdinal(210)
                         .withCountryIsoCode(TURKS_AND_CAICOS_ISLANDS))) {};
 
-        Country.UNITED_STATES_MINOR_OUTLYING_ISLANDS = new Country(this, Country.baseInstance()
+        Country.UNITED_STATES_MINOR_OUTLYING_ISLANDS = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("United States Minor Outlying Islands")
                         .withCountryOrdinal(228)
                         .withCountryIsoCode(UNITED_STATES_MINOR_OUTLYING_ISLANDS))) {};
 
-        Country.VIRGIN_ISLANDS_BRITISH = new Country(this, Country.baseInstance()
+        Country.VIRGIN_ISLANDS_BRITISH = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Virgin Islands British")
                         .withCountryOrdinal(235)
                         .withCountryIsoCode(VIRGIN_ISLANDS_BRITISH))) {};
 
-        Country.VIRGIN_ISLANDS = new Country(this, Country.baseInstance()
+        Country.VIRGIN_ISLANDS = new Country(this, Country.baseCountry()
                 .withIdentity(Country.baseRegionCode()
                         .withName("Virgin Islands")
                         .withCountryOrdinal(236)

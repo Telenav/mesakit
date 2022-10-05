@@ -49,7 +49,7 @@ public class PbfTagPatternFilter implements PbfTagFilter
     public static SwitchParser.Builder<PbfTagPatternFilter> tagFilterSwitchParser(String name,
                                                                                   String description)
     {
-        return SwitchParser.builder(PbfTagPatternFilter.class)
+        return SwitchParser.switchParserBuilder(PbfTagPatternFilter.class)
                 .name(name)
                 .description(description)
                 .converter(new Converter(LOGGER));

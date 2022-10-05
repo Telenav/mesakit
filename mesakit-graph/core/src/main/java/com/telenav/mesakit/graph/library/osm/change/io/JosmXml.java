@@ -19,6 +19,8 @@
 package com.telenav.mesakit.graph.library.osm.change.io;
 
 import com.telenav.kivakit.core.io.IO;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.resource.writing.WritableResource;
 import com.telenav.mesakit.graph.library.osm.change.MutableWay;
 import com.telenav.mesakit.graph.library.osm.change.NewWay;
@@ -37,8 +39,11 @@ import java.util.List;
  *
  * @author jonathanl (shibo)
  */
+@SuppressWarnings({ "unused", "SpellCheckingInspection" })
 public class JosmXml
 {
+    private static final Logger LOGGER = LoggerFactory.newLogger();
+
     // The writable resource to save to
     private final WritableResource writable;
 
@@ -144,8 +149,8 @@ public class JosmXml
             out.write("</osm>\n");
 
             // Close
-            IO.flush(out);
-            IO.close(out);
+            IO.flush(LOGGER, out);
+            IO.close(LOGGER, out);
         }
         catch (Exception e)
         {

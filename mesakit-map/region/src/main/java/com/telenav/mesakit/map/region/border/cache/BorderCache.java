@@ -18,12 +18,13 @@
 
 package com.telenav.mesakit.map.region.border.cache;
 
-import com.telenav.kivakit.collections.map.MultiMap;
+import com.telenav.kivakit.core.collections.map.MultiMap;
 import com.telenav.kivakit.component.BaseComponent;
 import com.telenav.kivakit.core.io.IO;
 import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
+import com.telenav.kivakit.core.project.ProjectTrait;
 import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.thread.locks.Lock;
@@ -99,8 +100,8 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.kivakit.core.messaging.Listener.consoleListener;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
-import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Mode.READ;
-import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.READ;
+import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE_SERIALIZATION_SESSION;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.DISCARDED;
 
@@ -120,9 +121,10 @@ import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcess
  * @see RegionType
  * @see RegionInstance
  */
-@SuppressWarnings("unused") @UmlClassDiagram(diagram = DiagramBorder.class)
+@SuppressWarnings({ "unused", "SpellCheckingInspection" })
+@UmlClassDiagram(diagram = DiagramBorder.class)
 @UmlRelation(label = "loads borders for", referent = Region.class)
-public abstract class BorderCache<T extends Region<T>> extends BaseComponent
+public abstract class BorderCache<T extends Region<T>> extends BaseComponent implements ProjectTrait
 {
     /** True to show extra tracing details */
     private static final boolean DETAILED_TRACE = false;
@@ -350,7 +352,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
                     {
                         // and save the identities to it
                         var session = serializationSession();
-                        session.open(out, RESOURCE, kivakit().projectVersion());
+                        session.open(out, RESOURCE_SERIALIZATION_SESSION, kivakit().projectVersion());
                         identityCache.save(session, regionProject().borderDataVersion(), identities);
                     }
                     catch (Exception e)
@@ -494,7 +496,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
             // and the zip file target we're going to download to and unzip.
             var jar = localJar(NETWORK_PATH.fileName());
             trace("Trying to open $", jar);
-            var archive = ZipArchive.open(this, jar, READ);
+            var archive = ZipArchive.zipArchive(this, jar, READ);
             try
             {
                 // If archive isn't valid,
@@ -517,7 +519,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
                         // try to download the data into the cache
                         information(AsciiArt.textBox("Downloading", "from: $\nto: $",
                                 NETWORK_PATH.asContraction(80), jar.path().asContraction(80)) + "\n ");
-                        var downloadProgress = BroadcastingProgressReporter.create(this, "bytes");
+                        var downloadProgress = BroadcastingProgressReporter.createProgressReporter(this, "bytes");
                         downloadProgress.start("Downloading");
                         information("Downloading $ to $", source, jar);
                         cache().add(source.get(), OVERWRITE, downloadProgress);
@@ -525,7 +527,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
 
                         // and try to open the archive again
                         trace("Trying to open $", jar);
-                        archive = ZipArchive.open(this, jar, READ);
+                        archive = ZipArchive.zipArchive(this, jar, READ);
                     }
                     catch (Throwable e)
                     {
@@ -591,12 +593,12 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
                 {
                     // We were unable to install for some other reason
                     cacheFolder().clearAllAndDelete();
-                    illegalState(e, "Unable to install border data");
+                    throw new IllegalStateException("Unable to install border data", e);
                 }
             }
             finally
             {
-                IO.close(archive);
+                IO.close(this, archive);
             }
 
             // Give all users access to this data
@@ -700,7 +702,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
                     }
                     finally
                     {
-                        IO.close(input);
+                        IO.close(this, input);
                     }
                 }
                 catch (Exception e)
@@ -969,7 +971,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent
             try (var output = borderCacheFile().openForWriting())
             {
                 var session = serializationSession();
-                session.open(output, RESOURCE, kivakit().projectVersion());
+                session.open(output, RESOURCE_SERIALIZATION_SESSION, kivakit().projectVersion());
                 session.write(new SerializableObject<>(index(), regionProject().borderDataVersion()));
                 session.close();
             }

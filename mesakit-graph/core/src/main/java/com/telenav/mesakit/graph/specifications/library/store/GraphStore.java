@@ -18,16 +18,16 @@
 
 package com.telenav.mesakit.graph.specifications.library.store;
 
-import com.telenav.kivakit.validation.BaseValidator;
-import com.telenav.kivakit.validation.Validatable;
-import com.telenav.kivakit.validation.ValidationType;
-import com.telenav.kivakit.validation.Validator;
-import com.telenav.kivakit.interfaces.loading.Unloadable;
-import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.interfaces.loading.Unloadable;
+import com.telenav.kivakit.validation.BaseValidator;
+import com.telenav.kivakit.validation.Validatable;
+import com.telenav.kivakit.validation.ValidationType;
+import com.telenav.kivakit.validation.Validator;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
@@ -57,6 +57,7 @@ import java.util.function.Consumer;
  * @see Attribute
  * @see CommonGraphStore
  */
+@SuppressWarnings("unused")
 public abstract class GraphStore extends BaseRepeater implements Unloadable, Validatable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
@@ -67,7 +68,6 @@ public abstract class GraphStore extends BaseRepeater implements Unloadable, Val
     {
         public GraphStoreValidation()
         {
-            super("VALIDATE_GRAPH_STORE");
             include(EdgeStore.class);
             include(VertexStore.class);
             include(PlaceStore.class);
@@ -284,7 +284,7 @@ public abstract class GraphStore extends BaseRepeater implements Unloadable, Val
             }
 
             @Override
-            protected boolean validationReport()
+            protected boolean shouldShowValidationReport()
             {
                 return true;
             }

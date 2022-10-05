@@ -27,7 +27,7 @@ public class PbfAllNodeDiskStores
 {
     public static Folder temporary()
     {
-        return Folder.temporaryForProcess(Folder.Type.CLEAN_UP_ON_EXIT).folder("pbf-node-disk-stores");
+        return Folder.temporaryForProcess(Folder.FolderType.CLEAN_UP_ON_EXIT).folder("pbf-node-disk-stores");
     }
 
     private final PbfAllNodeIdentifierDiskStore pbfNodeIdentifierDiskStore;

@@ -53,7 +53,7 @@ public class AllNodeDiskCell
     @Override
     public int hashCode()
     {
-        return Hash.many(latitude, longitude);
+        return Hash.hashMany(latitude, longitude);
     }
 
     public String toFileString(String base)

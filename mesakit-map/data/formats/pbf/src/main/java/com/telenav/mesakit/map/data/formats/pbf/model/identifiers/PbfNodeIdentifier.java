@@ -29,6 +29,7 @@ import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfModel
 import org.openstreetmap.osmosis.core.domain.v0_6.EntityType;
 import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
 
+@SuppressWarnings("unused")
 @UmlClassDiagram(diagram = DiagramPbfModelIdentifiers.class)
 public class PbfNodeIdentifier extends MapNodeIdentifier implements PbfIdentifierType
 {
@@ -94,7 +95,7 @@ public class PbfNodeIdentifier extends MapNodeIdentifier implements PbfIdentifie
         private PbfNodeIdentifier next = SYNTHETIC_IDENTIFIER_FIRST;
 
         @Override
-        public synchronized PbfNodeIdentifier newInstance()
+        public synchronized PbfNodeIdentifier onNewInstance()
         {
             var next = this.next;
             this.next = (PbfNodeIdentifier) next.next();

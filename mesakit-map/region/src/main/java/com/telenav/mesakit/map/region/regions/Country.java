@@ -20,18 +20,19 @@ package com.telenav.mesakit.map.region.regions;
 
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
-import com.telenav.kivakit.core.language.object.ObjectFormatter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.locale.LanguageIsoCode;
+import com.telenav.kivakit.core.locale.LocaleLanguage;
+import com.telenav.kivakit.core.locale.LocaleRegion;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.ObjectFormatter;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.value.identifier.IntegerIdentifier;
 import com.telenav.kivakit.extraction.BaseExtractor;
 import com.telenav.kivakit.extraction.Extractor;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.interfaces.numeric.Quantizable;
+import com.telenav.kivakit.interfaces.value.LongValued;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfWay;
@@ -43,12 +44,12 @@ import com.telenav.mesakit.map.region.RegionCode;
 import com.telenav.mesakit.map.region.RegionIdentifier;
 import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.RegionInstance;
+import com.telenav.mesakit.map.region.RegionLimits;
 import com.telenav.mesakit.map.region.border.Border;
 import com.telenav.mesakit.map.region.border.cache.BorderCache;
 import com.telenav.mesakit.map.region.countries.Canada;
 import com.telenav.mesakit.map.region.countries.Mexico;
 import com.telenav.mesakit.map.region.countries.UnitedStates;
-import com.telenav.mesakit.map.region.RegionLimits;
 import com.telenav.mesakit.map.region.internal.lexakai.DiagramRegions;
 
 import java.util.ArrayList;
@@ -60,9 +61,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramRegions.class)
-@UmlExcludeSuperTypes(Quantizable.class)
-public abstract class Country extends Region<Country> implements Quantizable
+@SuppressWarnings({ "DuplicatedCode", "unused" })
+@UmlClassDiagram(diagram = DiagramRegions.class)
+@UmlExcludeSuperTypes(LongValued.class)
+public abstract class Country extends Region<Country> implements LongValued
 {
     public static Country AFGHANISTAN;
 
@@ -601,7 +603,7 @@ public abstract class Country extends Region<Country> implements Quantizable
         return allLargerThan(Area.squareMiles(0));
     }
 
-    public static RegionInstance<Country> baseInstance()
+    public static RegionInstance<Country> baseCountry()
     {
         return new RegionInstance<>(Country.class)
                 .withAutomotiveSupportLevel(AutomotiveSupportLevel.UNSUPPORTED)
@@ -647,7 +649,7 @@ public abstract class Country extends Region<Country> implements Quantizable
 
     public static SwitchParser.Builder<Country> countrySwitchParser(String name, String description)
     {
-        return SwitchParser.builder(Country.class).name(name).description(description).converter(new Converter(LOGGER()));
+        return SwitchParser.switchParserBuilder(Country.class).name(name).description(description).converter(new Converter(LOGGER()));
     }
 
     public static Country forIdentifier(RegionIdentifier identifier)
@@ -729,9 +731,9 @@ public abstract class Country extends Region<Country> implements Quantizable
         return islands;
     }
 
-    protected static List<LanguageIsoCode> languages(LanguageIsoCode... languages)
+    protected static List<LocaleLanguage> languages(LocaleLanguage... languages)
     {
-        List<LanguageIsoCode> list = new ArrayList<>();
+        List<LocaleLanguage> list = new ArrayList<>();
         Collections.addAll(list, languages);
         return list;
     }
@@ -822,9 +824,17 @@ public abstract class Country extends Region<Country> implements Quantizable
         }
     }
 
-    protected Country(Continent continent, RegionInstance<Country> instance)
+    private final LocaleRegion localeRegion;
+
+    protected Country(Continent continent, LocaleRegion localeRegion, RegionInstance<Country> instance)
     {
         super(continent, instance);
+        this.localeRegion = localeRegion;
+    }
+
+    protected Country(Continent continent, RegionInstance<Country> instance)
+    {
+        this(continent, instance != null && instance.locale() != null ? instance.locale().region() : null, instance);
     }
 
     @Override
@@ -877,7 +887,13 @@ public abstract class Country extends Region<Country> implements Quantizable
     }
 
     @Override
-    public final long quantum()
+    public LocaleRegion localeRegion()
+    {
+        return localeRegion;
+    }
+
+    @Override
+    public final long longValue()
     {
         return identity().identifier().asLong();
     }

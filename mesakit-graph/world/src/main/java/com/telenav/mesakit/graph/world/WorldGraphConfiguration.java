@@ -19,7 +19,7 @@
 package com.telenav.mesakit.graph.world;
 
 import com.telenav.kivakit.conversion.core.language.object.KivaKitConverted;
-import com.telenav.kivakit.core.language.object.ObjectFormatter;
+import com.telenav.kivakit.core.string.ObjectFormatter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
@@ -84,7 +84,7 @@ public final class WorldGraphConfiguration
         if (remote != null)
         {
             // copy any out-of-date files in the specified graph metadata to the local repository
-            var progress = BroadcastingProgressReporter.create(LOGGER, "bytes");
+            var progress = BroadcastingProgressReporter.createProgressReporter(LOGGER, "bytes");
             var remoteGraph = remoteRepository.folder(metadata);
             var localGraph = localRepository.folder(metadata);
             remoteGraph.copyTo(localGraph, CopyMode.UPDATE, progress);
@@ -103,7 +103,7 @@ public final class WorldGraphConfiguration
         if (remote != null)
         {
             // copy any out-of-date files to the local repository
-            var progress = BroadcastingProgressReporter.create(LOGGER, "bytes");
+            var progress = BroadcastingProgressReporter.createProgressReporter(LOGGER, "bytes");
             remote.copyTo(local, CopyMode.UPDATE, progress);
         }
 

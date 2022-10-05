@@ -20,11 +20,11 @@ package com.telenav.mesakit.map.utilities.geojson;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.telenav.kivakit.core.collections.map.StringToStringMap;
+import com.telenav.kivakit.core.collections.map.StringMap;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.kivakit.resource.writing.WritableResource;
 import com.telenav.kivakit.resource.Extension;
+import com.telenav.kivakit.resource.writing.WritableResource;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.shape.polyline.Polyline;
 import com.telenav.mesakit.map.geography.shape.rectangle.BoundingBoxBuilder;
@@ -42,6 +42,7 @@ import java.util.Map;
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.kivakit.core.messaging.Listener.consoleListener;
 
+@SuppressWarnings("unused")
 public class GeoJsonDocument implements Iterable<GeoJsonFeature>
 {
     @SuppressWarnings("SpellCheckingInspection")
@@ -126,7 +127,7 @@ public class GeoJsonDocument implements Iterable<GeoJsonFeature>
 
     public Map<String, String> propertiesAsStringToStringMap()
     {
-        var map = new StringToStringMap(Maximum.MAXIMUM);
+        var map = new StringMap<String>(Maximum.MAXIMUM);
         for (var key : properties.keySet())
         {
             map.put(key, properties.get(key).toString());

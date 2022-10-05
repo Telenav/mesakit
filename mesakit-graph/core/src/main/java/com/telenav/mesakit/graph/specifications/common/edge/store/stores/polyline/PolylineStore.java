@@ -133,7 +133,7 @@ public class PolylineStore implements Named, CompressibleCollection
         if (object instanceof PolylineStore)
         {
             var that = (PolylineStore) object;
-            return Objects.equalPairs(size(), that.size(), data, that.data, ends, that.ends);
+            return Objects.areEqualPairs(size(), that.size(), data, that.data, ends, that.ends);
         }
         return false;
     }
@@ -158,7 +158,7 @@ public class PolylineStore implements Named, CompressibleCollection
     @Override
     public int hashCode()
     {
-        return Hash.many(size(), data.hashCode(), ends.hashCode());
+        return Hash.hashMany(size(), data.hashCode(), ends.hashCode());
     }
 
     public boolean isNull(int index)

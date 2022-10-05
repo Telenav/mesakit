@@ -19,7 +19,6 @@
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
 import com.telenav.kivakit.core.language.Hash;
-import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.resource.FileName;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.drawables.Label;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingLength;
@@ -165,7 +164,7 @@ public class SlippyTile
     @Override
     public int hashCode()
     {
-        return Hash.many(x, y, zoom);
+        return Hash.hashMany(x, y, zoom);
     }
 
     public Rectangle mapArea()

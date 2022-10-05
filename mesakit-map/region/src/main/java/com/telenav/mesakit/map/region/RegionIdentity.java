@@ -22,13 +22,13 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.core.language.object.ObjectFormatter;
+import com.telenav.kivakit.core.string.ObjectFormatter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.locale.CountryIsoCode;
+import com.telenav.kivakit.core.locale.LocaleRegion;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
@@ -40,6 +40,7 @@ import com.telenav.mesakit.map.region.regions.County;
 import com.telenav.mesakit.map.region.regions.MetropolitanArea;
 import com.telenav.mesakit.map.region.regions.State;
 import com.telenav.mesakit.map.region.regions.TimeZone;
+import org.jetbrains.annotations.NotNull;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
@@ -101,11 +102,11 @@ import static com.telenav.kivakit.core.project.Project.resolveProject;
  */
 @UmlClassDiagram(diagram = DiagramRegion.class)
 @UmlExcludeSuperTypes
-public class RegionIdentity implements Stringable, KryoSerializable
+public class RegionIdentity implements StringFormattable, KryoSerializable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    private CountryIsoCode countryIsoCode;
+    private LocaleRegion countryIsoCode;
 
     private int countryOrdinal;
 
@@ -144,7 +145,7 @@ public class RegionIdentity implements Stringable, KryoSerializable
     }
 
     @Override
-    public String asString(Format format)
+    public String asString(@NotNull Format format)
     {
         return new ObjectFormatter(this).toString();
     }
@@ -165,7 +166,7 @@ public class RegionIdentity implements Stringable, KryoSerializable
     }
 
     @KivaKitIncludeProperty
-    public CountryIsoCode countryIsoCode()
+    public LocaleRegion countryIsoCode()
     {
         return countryIsoCode;
     }
@@ -427,7 +428,7 @@ public class RegionIdentity implements Stringable, KryoSerializable
         var alpha3CountryCode = kryo.readObjectOrNull(input, String.class);
         var numericCountryCode = kryo.readObjectOrNull(input, Integer.class);
         countryIsoCode = alpha2CountryCode == null ? null :
-                new CountryIsoCode(name, alpha2CountryCode, alpha3CountryCode, numericCountryCode);
+                new LocaleRegion(name, alpha2CountryCode, alpha3CountryCode, numericCountryCode);
     }
 
     public State state()
@@ -459,7 +460,7 @@ public class RegionIdentity implements Stringable, KryoSerializable
         return identity;
     }
 
-    public RegionIdentity withCountryIsoCode(CountryIsoCode code)
+    public RegionIdentity withCountryIsoCode(LocaleRegion code)
     {
         var copy = new RegionIdentity(this);
         copy.countryIsoCode = code;

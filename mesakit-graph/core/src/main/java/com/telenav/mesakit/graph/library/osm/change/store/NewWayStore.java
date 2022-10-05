@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.library.osm.change.store;
 
-import com.telenav.kivakit.collections.map.MultiMap;
+import com.telenav.kivakit.core.collections.map.MultiMap;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.mesakit.graph.library.osm.change.NewWay;
 

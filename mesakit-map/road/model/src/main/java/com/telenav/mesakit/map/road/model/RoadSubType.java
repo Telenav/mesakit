@@ -21,10 +21,11 @@ package com.telenav.mesakit.map.road.model;
 import com.telenav.kivakit.interfaces.model.Identifiable;
 
 /**
- * Represents road sub types (as defined in the TXD specification)
+ * Represents road subtypes (as defined in the TXD specification)
  *
  * @author jonathanl (shibo)
  */
+@SuppressWarnings("unused")
 public enum RoadSubType implements Identifiable
 {
     ROUNDABOUT(0),
@@ -36,6 +37,7 @@ public enum RoadSubType implements Identifiable
     SERVICE_ROAD(6),
     OPEN_TRAFFIC_AREA(7),
     FUNCTIONAL_SPECIAL_ROAD(8),
+    @SuppressWarnings("SpellCheckingInspection")
     OVERBRIDGE(9),
     UNDERPASS(10),
     TUNNEL(11),
@@ -43,7 +45,7 @@ public enum RoadSubType implements Identifiable
     NULL(15);
 
     /**
-     * @param identifier A road sub-type identifier
+     * @param identifier A road subtype identifier
      * @return The RoadSubType object for the given identifier or NULL if none exists
      */
     public static RoadSubType forIdentifier(int identifier)
@@ -95,7 +97,7 @@ public enum RoadSubType implements Identifiable
     }
 
     /**
-     * @return The identifier for the given road sub-type or NULL.identifier if the sub-type is null
+     * @return The identifier for the given road subtype or NULL.identifier if the subtype is null
      */
     public static int identifierFor(RoadSubType subType)
     {
@@ -120,7 +122,7 @@ public enum RoadSubType implements Identifiable
     }
 
     @Override
-    public long quantum()
+    public long longValue()
     {
         return identifier;
     }

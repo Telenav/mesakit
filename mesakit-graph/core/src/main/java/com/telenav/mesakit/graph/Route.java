@@ -31,14 +31,15 @@ import com.telenav.kivakit.core.language.primitive.Ints;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.string.Separators;
 import com.telenav.kivakit.core.string.Split;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.kivakit.interfaces.collection.NextValue;
-import com.telenav.kivakit.interfaces.string.Stringable;
+import com.telenav.kivakit.interfaces.collection.NextIterator;
+import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.mesakit.graph.Edge.SignPostSupport;
 import com.telenav.mesakit.graph.GraphLimits.Limit;
@@ -82,13 +83,14 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle._90_DEGREES;
 import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
 
 /**
- * A list of edges that is organized according to connectivity, forming a continuous route. Attempting to add an {@link
- * Edge} to a {@link Route} that is not connected to the edges already in the route will result in a run-time
+ * A list of edges that is organized according to connectivity, forming a continuous route. Attempting to add an
+ * {@link Edge} to a {@link Route} that is not connected to the edges already in the route will result in a run-time
  * exception.
  *
  * @author jonathanl (shibo)
  */
-@SuppressWarnings("SpellCheckingInspection") public abstract class Route implements Iterable<Edge>, Bounded, Stringable
+@SuppressWarnings({ "SpellCheckingInspection", "unused" })
+public abstract class Route implements Iterable<Edge>, Bounded, StringFormattable
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -164,8 +166,8 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * Converts routes composed of ordinary {@link EdgeIdentifier}s. To convert routes composed of {@link
-     * MapEdgeIdentifier}s (way:from-node:to-node format), see {@link MapIdentifierConverter}
+     * Converts routes composed of ordinary {@link EdgeIdentifier}s. To convert routes composed of
+     * {@link MapEdgeIdentifier}s (way:from-node:to-node format), see {@link MapIdentifierConverter}
      *
      * @author jonathanl (shibo)
      * @see MapIdentifierConverter
@@ -217,8 +219,8 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
             }
             catch (Exception e)
             {
-                problem(problemBroadcastFrequency(), e, "${class}: Problem converting ${debug} with graph ${debug}",
-                        subclass(), value, graph.name());
+                transmit(new Problem(e, "${class}: Problem converting ${debug} with graph ${debug}",
+                        subclass(), value, graph.name()).maximumFrequency(problemBroadcastFrequency()));
             }
             return null;
         }
@@ -277,8 +279,8 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
             }
             catch (Exception e)
             {
-                problem(problemBroadcastFrequency(), e, "${class}: Problem converting ${debug} with graph ${debug}", subclass(), value,
-                        graph.name());
+                transmit(new Problem(e, "${class}: Problem converting ${debug} with graph ${debug}", subclass(), value,
+                        graph.name()).maximumFrequency(problemBroadcastFrequency()));
             }
             return builder.route();
         }
@@ -317,7 +319,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
         }
 
         @Override
-        public String asString(Format format)
+        public String asString(@NotNull Format format)
         {
             return "[Route edges = [" + new ObjectList<>().appendAll(this) + "], length = " + length()
                     + ", travelTime = " + travelTime() + "]";
@@ -574,7 +576,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
         }
 
         @Override
-        public String asString(Format format)
+        public String asString(@NotNull Format format)
         {
             return "[Route edges = " + edge + ", length = " + length() + ", travelTime = " + travelTime()
                     + "]";
@@ -1380,7 +1382,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     @Override
     public int hashCode()
     {
-        return Hash.many(Iterables.hashCode(this), startOffset, endOffset);
+        return Hash.hashMany(Iterables.hashCode(this), startOffset, endOffset);
     }
 
     public Route head()
@@ -1393,7 +1395,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
      */
     public Iterable<Vertex> interiorVertexes()
     {
-        return Iterables.iterable(() -> new NextValue<>()
+        return Iterables.iterable(() -> new NextIterator<>()
         {
             // Edge iterator
             private final Iterator<Edge> edges = iterator();
@@ -1937,7 +1939,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
      */
     public Iterable<Location> vertexLocations()
     {
-        return Iterables.iterable(() -> new NextValue<>()
+        return Iterables.iterable(() -> new NextIterator<>()
         {
             private final Iterator<Vertex> vertexes = vertexes().iterator();
 
@@ -1958,7 +1960,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
      */
     public Iterable<Vertex> vertexes()
     {
-        return Iterables.iterable(() -> new NextValue<>()
+        return Iterables.iterable(() -> new NextIterator<>()
         {
             // Edge iterator
             private final Iterator<Edge> edges = iterator();

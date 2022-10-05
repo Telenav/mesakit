@@ -23,7 +23,7 @@ import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.language.primitive.Booleans;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.value.count.Count;
-import com.telenav.kivakit.interfaces.collection.NextValue;
+import com.telenav.kivakit.interfaces.collection.NextIterator;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
@@ -175,7 +175,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
         if (object instanceof RTreeSpatialIndex)
         {
             var that = (RTreeSpatialIndex) object;
-            return Objects.equalPairs(root, that.root);
+            return Objects.areEqualPairs(root, that.root);
         }
         return false;
     }
@@ -199,7 +199,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
      */
     public synchronized Iterable<Element> intersecting(Rectangle bounds, Matcher<Element> matcher)
     {
-        return Iterables.iterable(() -> new NextValue<>()
+        return Iterables.iterable(() -> new NextIterator<>()
         {
             final Iterator<Element> elements = root().intersecting(bounds, matcher);
 

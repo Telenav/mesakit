@@ -235,7 +235,7 @@ import com.telenav.mesakit.map.road.model.RoadName;
         if (object instanceof ParsedRoadName)
         {
             var that = (ParsedRoadName) object;
-            return Objects.equalPairs(baseName, that.baseName, type, that.type, direction,
+            return Objects.areEqualPairs(baseName, that.baseName, type, that.type, direction,
                     that.direction, directionFormat, that.directionFormat);
         }
         return false;
@@ -254,7 +254,7 @@ import com.telenav.mesakit.map.road.model.RoadName;
     @Override
     public int hashCode()
     {
-        return Hash.many(baseName, type, direction, directionFormat);
+        return Hash.hashMany(baseName, type, direction, directionFormat);
     }
 
     public boolean isValid()

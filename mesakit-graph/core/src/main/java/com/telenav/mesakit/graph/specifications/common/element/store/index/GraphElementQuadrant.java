@@ -41,7 +41,7 @@ final class GraphElementQuadrant<T extends GraphElement>
         private QuadrantIterator(Rectangle bounds, Matcher<T> matcher)
         {
             this.bounds = bounds;
-            filter(matcher);
+            matching(matcher);
         }
 
         @Override
@@ -77,7 +77,7 @@ final class GraphElementQuadrant<T extends GraphElement>
                 if (!edges.isEmpty())
                 {
                     // and there are matches,
-                    var iterator = edges.iterator(bounds, filter());
+                    var iterator = edges.iterator(bounds, matcher());
                     if (iterator.hasNext())
                     {
                         // return the iterator
@@ -94,7 +94,7 @@ final class GraphElementQuadrant<T extends GraphElement>
                     var child = children[childIndex++];
                     if (!child.isEmpty() && bounds.intersects(child.bounds))
                     {
-                        var iterator = child.inside(bounds, filter());
+                        var iterator = child.inside(bounds, matcher());
                         if (iterator.hasNext())
                         {
                             return iterator;
