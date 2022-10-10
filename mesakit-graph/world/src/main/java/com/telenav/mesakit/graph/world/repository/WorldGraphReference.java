@@ -140,7 +140,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
                 if (graph == null)
                 {
                     // install the deployment in case it wasn't installed yet,
-                    SettingsRegistry.global().registerSettingsIn(new WorldGraphDeployments(LOGGER).deployment(deployment.name()));
+                    SettingsRegistry.globalSettings().registerSettingsIn(new WorldGraphDeployments(LOGGER).deployment(deployment.name()));
 
                     // create the world graph,
                     graph = LOGGER.listenTo(WorldGraph.load(folder()));

@@ -133,7 +133,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
         serializers.add(Extension.PROPERTIES, new PropertiesObjectSerializer());
         register(serializers);
 
-        var store = SettingsRegistry.settingsRegistryFor(this);
+        var store = SettingsRegistry.settingsFor(this);
         listenTo(store);
         store.registerSettingsIn(new ResourceFolderSettingsStore(this, Folder.parseFolder(this, "configuration")));
     }

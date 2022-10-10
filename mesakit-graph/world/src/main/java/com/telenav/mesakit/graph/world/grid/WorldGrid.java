@@ -432,7 +432,7 @@ public class WorldGrid
 
     private WorldGraphConfiguration configuration()
     {
-        return SettingsRegistry.settingsRegistryFor(this).requireSettings(WorldGraphConfiguration.class);
+        return SettingsRegistry.settingsFor(this).requireSettings(WorldGraphConfiguration.class);
     }
 
     private void createGrid()
