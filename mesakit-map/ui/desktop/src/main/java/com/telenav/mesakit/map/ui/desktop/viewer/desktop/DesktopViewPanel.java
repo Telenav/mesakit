@@ -19,7 +19,6 @@
 package com.telenav.mesakit.map.ui.desktop.viewer.desktop;
 
 import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.core.os.Console;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.thread.StateMachine;
 import com.telenav.kivakit.core.time.Duration;
@@ -65,6 +64,7 @@ import java.awt.event.MouseWheelListener;
 import java.awt.geom.Point2D;
 import java.util.function.Function;
 
+import static com.telenav.kivakit.core.os.Console.console;
 import static com.telenav.kivakit.core.value.level.Percent.percent;
 import static com.telenav.kivakit.interfaces.string.StringFormattable.Format.USER_LABEL;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle.pixels;
@@ -345,10 +345,10 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
             else
             {
                 // We're drawing a zoom selection rectangle, so get the width and height of it
-                Console.println("dragPoint = " + dragPoint);
-                Console.println("dragStart = " + dragStart);
+                console().println("dragPoint = " + dragPoint);
+                console().println("dragStart = " + dragStart);
                 var width = dragPoint.x() - dragStart.x();
-                Console.println("width = " + width);
+                console().println("width = " + width);
                 var height = heightForWidth(width);
 
                 // If the selection is down and to the right
@@ -411,14 +411,14 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
 
         // project it to a map location,
         var pressedLocation = pointToLocation(pressedAt);
-        Console.println("Location = $", pressedLocation);
+        console().println("Location = $", pressedLocation);
 
         // and if that location is valid,
         if (pressedLocation != null)
         {
             // then the user clicked on the map, which potentially starts a drag operation.
             dragStart = pressedAt;
-            Console.println("dragStart = " + dragStart);
+            console().println("dragStart = " + dragStart);
 
             // If we're zoomed in and the control key is down,
             if (isZoomedIn && e.isControlDown())
