@@ -189,8 +189,8 @@ public class ZoomLevel implements StringFormattable
     public DrawingPoint inRange(DrawingPoint point, DrawingSize tileSize)
     {
         return DrawingPoint.point(point.coordinates(),
-                Doubles.inRange(point.x(), 0, widthInPixels(tileSize)),
-                Doubles.inRange(point.y(), 0, heightInPixels(tileSize)));
+                Doubles.doubleInRange(point.x(), 0, widthInPixels(tileSize)),
+                Doubles.doubleInRange(point.y(), 0, heightInPixels(tileSize)));
     }
 
     /**

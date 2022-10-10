@@ -303,7 +303,7 @@ public class Location implements
 
     public static int latitude(long latitudeAndLongitude)
     {
-        return Longs.high(latitudeAndLongitude);
+        return Longs.longHighWord(latitudeAndLongitude);
     }
 
     public static SwitchParser.Builder<Location> locationSwitchParser(String name, String description)
@@ -316,7 +316,7 @@ public class Location implements
 
     public static int longitude(long latitudeAndLongitude)
     {
-        return Longs.low(latitudeAndLongitude);
+        return Longs.longLowWord(latitudeAndLongitude);
     }
 
     @SuppressWarnings("UseOfSystemOutOrSystemErr")
@@ -340,7 +340,7 @@ public class Location implements
      */
     public static long toLong(int latitude, int longitude)
     {
-        return Longs.forHighLow(latitude, longitude);
+        return Longs.longForWords(latitude, longitude);
     }
 
     public static class Converter extends BaseStringConverter<Location>

@@ -390,7 +390,7 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
 
     public long valueAsLong(String key)
     {
-        return Longs.parseFast(get(key));
+        return Longs.parseFastLong(get(key));
     }
 
     public int valueAsNaturalNumber(String key)

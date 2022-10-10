@@ -560,7 +560,7 @@ public abstract class Edge extends GraphElement implements
 
         private Edge edgeForLongIdentifier(String value)
         {
-            var identifierAsLong = Longs.parseFast(value);
+            var identifierAsLong = Longs.parseFastLong(value);
             if (identifierAsLong != Longs.INVALID)
             {
                 var identifier = new EdgeIdentifier(identifierAsLong);

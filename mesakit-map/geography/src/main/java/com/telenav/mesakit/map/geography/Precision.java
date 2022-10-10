@@ -225,8 +225,8 @@ public enum Precision
     {
         if (latitude != 0)
         {
-            latitude = latitude / Ints.powerOfTen(places());
-            return latitude != 0 && Ints.isBetweenInclusive(latitude, (int) Latitude.MINIMUM_DEGREES, (int) Latitude.MAXIMUM_DEGREES);
+            latitude = latitude / Ints.intPowerOfTen(places());
+            return latitude != 0 && Ints.intIsBetweenInclusive(latitude, (int) Latitude.MINIMUM_DEGREES, (int) Latitude.MAXIMUM_DEGREES);
         }
         return true;
     }
@@ -235,30 +235,30 @@ public enum Precision
     {
         if (longitude != 0)
         {
-            longitude = longitude / Ints.powerOfTen(places());
-            return longitude != 0 && Ints.isBetweenInclusive(longitude, (int) Longitude.MINIMUM_DEGREES, (int) Longitude.MAXIMUM_DEGREES);
+            longitude = longitude / Ints.intPowerOfTen(places());
+            return longitude != 0 && Ints.intIsBetweenInclusive(longitude, (int) Longitude.MINIMUM_DEGREES, (int) Longitude.MAXIMUM_DEGREES);
         }
         return true;
     }
 
     public long inRangeLatitude(int decimal)
     {
-        return Longs.inRangeInclusive(decimal, minimumLatitude(), maximumLatitude());
+        return Longs.longInRangeInclusive(decimal, minimumLatitude(), maximumLatitude());
     }
 
     public long inRangeLatitudeOffset(long decimal)
     {
-        return Longs.inRangeInclusive(decimal, minimumLatitudeOffset(), maximumLatitudeOffset());
+        return Longs.longInRangeInclusive(decimal, minimumLatitudeOffset(), maximumLatitudeOffset());
     }
 
     public long inRangeLongitude(int decimal)
     {
-        return Longs.inRangeInclusive(decimal, minimumLongitude(), maximumLongitude());
+        return Longs.longInRangeInclusive(decimal, minimumLongitude(), maximumLongitude());
     }
 
     public long inRangeLongitudeOffset(long decimal)
     {
-        return Longs.inRangeInclusive(decimal, minimumLongitudeOffset(), maximumLongitudeOffset());
+        return Longs.longInRangeInclusive(decimal, minimumLongitudeOffset(), maximumLongitudeOffset());
     }
 
     public final boolean isMaximum(int decimal)
@@ -382,11 +382,11 @@ public enum Precision
         var difference = toPlaces - fromPlaces;
         if (difference > 0)
         {
-            return decimal * Ints.powerOfTen(difference);
+            return decimal * Ints.intPowerOfTen(difference);
         }
         if (difference < 0)
         {
-            return decimal / Ints.powerOfTen(-difference);
+            return decimal / Ints.intPowerOfTen(-difference);
         }
         return decimal;
     }

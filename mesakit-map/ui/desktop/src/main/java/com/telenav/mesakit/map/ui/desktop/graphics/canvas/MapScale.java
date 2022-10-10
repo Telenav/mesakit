@@ -37,7 +37,7 @@ public enum MapScale
     {
         for (var value : values())
         {
-            if (Doubles.isBetweenInclusive(scale, value.minimum, value.maximum))
+            if (Doubles.doubleIsBetweenInclusive(scale, value.minimum, value.maximum))
             {
                 return value;
             }

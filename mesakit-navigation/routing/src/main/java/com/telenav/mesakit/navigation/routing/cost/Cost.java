@@ -128,7 +128,7 @@ public class Cost implements Comparable<Cost>
 
     public String toString(int places)
     {
-        return Doubles.format(asDouble(), places);
+        return Doubles.formatDouble(asDouble(), places);
     }
 
     public Cost weighted(Weight weight)

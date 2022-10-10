@@ -1593,7 +1593,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     public Edge middleEdge()
     {
         var middle = size() / 2;
-        return get(Ints.inRangeInclusive(middle, 0, size() - 1));
+        return get(Ints.intInRangeInclusive(middle, 0, size() - 1));
     }
 
     /**

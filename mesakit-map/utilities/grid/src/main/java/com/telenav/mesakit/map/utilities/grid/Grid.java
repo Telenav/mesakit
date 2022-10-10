@@ -258,7 +258,7 @@ public class Grid
      */
     private int indexForLatitude(Latitude latitude)
     {
-        return Ints.inRangeInclusive(
+        return Ints.intInRangeInclusive(
                 (latitude.asMicrodegrees() + maximumLatitude.asMicrodegrees()) / cellHeightInMicroDegrees, 0,
                 latitudeCellCount - 1);
     }
@@ -269,7 +269,7 @@ public class Grid
      */
     private int indexForLongitude(Longitude longitude)
     {
-        return Ints.inRangeInclusive(
+        return Ints.intInRangeInclusive(
                 (longitude.asMicrodegrees() + Longitude.MAXIMUM.asMicrodegrees()) / cellWidthInMicroDegrees, 0,
                 longitudeCellCount - 1);
     }

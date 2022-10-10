@@ -548,7 +548,7 @@ public final class Distance implements LongValued, Comparable<Distance>
         {
             return Percent._100;
         }
-        return Percent.percent(100.0 * Doubles.inRange(asMeters() / that.asMeters(), 0.0, 1.0));
+        return Percent.percent(100.0 * Doubles.doubleInRange(asMeters() / that.asMeters(), 0.0, 1.0));
     }
 
     public double ratio(Distance divisor)
