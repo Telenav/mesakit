@@ -225,7 +225,7 @@ public class Polyline implements
             super(listener);
             this.separators = separators;
             locationConverter = new Location.DegreesConverter(listener, separators.child());
-            allowEmpty(true);
+            allowEmptyString(true);
             allowNull(true);
         }
 
@@ -470,7 +470,7 @@ public class Polyline implements
         {
             super(listener);
             longArrayConverter = new LongArray.Converter(listener, separators);
-            allowEmpty(true);
+            allowEmptyString(true);
             allowNull(true);
         }
 

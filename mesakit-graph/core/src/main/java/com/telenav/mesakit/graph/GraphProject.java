@@ -23,6 +23,7 @@ import com.telenav.kivakit.core.project.Project;
 import com.telenav.kivakit.core.project.ProjectTrait;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.filesystem.Folders;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
@@ -86,6 +87,6 @@ public class GraphProject extends Project
     public Folder userGraphFolder()
     {
         var graphFolder = systemPropertyOrEnvironmentVariable("MESAKIT_USER_GRAPH_FOLDER");
-        return graphFolder == null ? Folder.desktopFolder() : Folder.parseFolder(this, graphFolder);
+        return graphFolder == null ? Folders.desktopFolder() : Folder.parseFolder(this, graphFolder);
     }
 }
