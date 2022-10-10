@@ -58,7 +58,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 public class Way implements Road, Iterable<Edge>
 {
     /**
-     * @return The contiguous, non-branching way connected to the given edge.
+     * Returns the contiguous, non-branching way connected to the given edge.
      */
     public static Way contiguousWayForEdge(Edge edge)
     {

@@ -265,7 +265,7 @@ public class ViewModel
     }
 
     /**
-     * @return The list of entries whose outlines contain the given point, in front-to-back order
+     * Returns the list of entries whose outlines contain the given point, in front-to-back order
      */
     private List<Entry> entriesForPoint(Point2D point)
     {

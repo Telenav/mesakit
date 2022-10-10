@@ -76,7 +76,7 @@ public class ModifiedWayStore
     }
 
     /**
-     * @return The {@link MutableWay} for the given edge
+     * Returns the {@link MutableWay} for the given edge
      */
     public MutableWay modifiableWay(Edge edge)
     {
@@ -95,7 +95,7 @@ public class ModifiedWayStore
     }
 
     /**
-     * @return The {@link MutableWay} for the given edge
+     * Returns the {@link MutableWay} for the given edge
      */
     public MutableWay modifiableWay(PbfUserIdentifier userIdentifier, PbfUserName userName,
                                     PbfWayIdentifier identifier, Polyline shape, PbfTagList tags,
@@ -116,7 +116,7 @@ public class ModifiedWayStore
     }
 
     /**
-     * @return Any modified {@link MutableWay}s in this store
+     * Returns any modified {@link MutableWay}s in this store
      */
     public Collection<MutableWay> modifiedWays()
     {

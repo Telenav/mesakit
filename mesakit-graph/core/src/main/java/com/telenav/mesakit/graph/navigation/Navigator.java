@@ -118,12 +118,12 @@ public abstract class Navigator
     }
 
     /**
-     * @return The previous edge before the given edge, or null if no previous exists
+     * Returns the previous edge before the given edge, or null if no previous exists
      */
     public abstract Edge in(Edge edge);
 
     /**
-     * @return The next edge in the given direction
+     * Returns the next edge in the given direction
      */
     public Edge next(Edge edge, Direction direction)
     {
@@ -131,7 +131,7 @@ public abstract class Navigator
     }
 
     /**
-     * @return The next edge after the given edge, or null if no next exists
+     * Returns the next edge after the given edge, or null if no next exists
      */
     public abstract Edge out(Edge edge);
 }

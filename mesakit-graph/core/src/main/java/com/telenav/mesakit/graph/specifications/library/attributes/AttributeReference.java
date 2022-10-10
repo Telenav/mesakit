@@ -29,7 +29,7 @@ import com.telenav.kivakit.core.registry.RegistryTrait;
 import com.telenav.kivakit.interfaces.collection.Indexable;
 import com.telenav.kivakit.interfaces.collection.Sized;
 import com.telenav.kivakit.interfaces.factory.Factory;
-import com.telenav.kivakit.interfaces.factory.LongMapFactory;
+import com.telenav.kivakit.interfaces.function.LongMapper;
 import com.telenav.kivakit.interfaces.lifecycle.Initializable;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.interfaces.value.BooleanValued;
@@ -191,7 +191,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     }
 
     /**
-     * @return The attribute that's being referenced
+     * Returns the attribute that's being referenced
      */
     public Attribute<?> attribute()
     {
@@ -199,7 +199,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     }
 
     /**
-     * @return The name of the field in the attribute store that is being referenced
+     * Returns the name of the field in the attribute store that is being referenced
      */
     public String fieldName()
     {
@@ -207,7 +207,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     }
 
     /**
-     * @return True if the referent is loaded. Note that the store field and the reference are always assigned at the
+     * Returns true if the referent is loaded. Note that the store field and the reference are always assigned at the
      * same time with {@link #reference(NamedObject)}
      */
     public boolean isLoaded()
@@ -259,7 +259,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     }
 
     /**
-     * @return The name of this attribute reference as [store].[property]
+     * Returns the name of this attribute reference as [store].[property]
      */
     @Override
     public String objectName()
@@ -268,7 +268,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     }
 
     /**
-     * @return Returns the boolean value at the index specified by the quantizable index object
+     * Returns returns the boolean value at the index specified by the quantizable index object
      */
     public boolean retrieveBoolean(LongValued index)
     {
@@ -298,7 +298,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     }
 
     /**
-     * @return Returns the int value at the index specified by the quantizable index object
+     * Returns returns the int value at the index specified by the quantizable index object
      */
     public int retrieveInt(LongValued index)
     {
@@ -318,7 +318,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     }
 
     /**
-     * @return Returns the long value at the index specified by the quantizable index object
+     * Returns returns the long value at the index specified by the quantizable index object
      */
     public long retrieveLong(LongValued index)
     {
@@ -338,9 +338,9 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     }
 
     /**
-     * @return An object for the given quantizable value
+     * Returns an object for the given quantizable value
      */
-    public <T> T retrieveObject(LongValued index, LongMapFactory<T> factory)
+    public <T> T retrieveObject(LongValued index, LongMapper<T> factory)
     {
         if (!load())
         {
@@ -353,7 +353,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
             var value = array.safeGetPrimitive((int) index.longValue());
             if (!array.isPrimitiveNull(value))
             {
-                return factory.newInstance(value);
+                return factory.map(value);
             }
             return null;
         }
@@ -363,7 +363,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
             var value = array.getScalar((int) index.longValue());
             if (!array.isScalarValueNull(value))
             {
-                return factory.newInstance(value);
+                return factory.map(value);
             }
             return null;
         }
@@ -372,7 +372,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
         return null;
     }
 
-    public <T> ObjectList<T> retrieveObjectList(LongValued index, LongMapFactory<T> factory)
+    public <T> ObjectList<T> retrieveObjectList(LongValued index, LongMapper<T> factory)
     {
         if (!load())
         {
@@ -395,7 +395,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
         return null;
     }
 
-    public <T> ObjectList<T> retrieveSignedObjectList(LongValued index, LongMapFactory<T> factory)
+    public <T> ObjectList<T> retrieveSignedObjectList(LongValued index, LongMapper<T> factory)
     {
         if (!load())
         {
@@ -419,7 +419,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
     }
 
     /**
-     * @return Returns the long value at the index specified by the quantizable index object
+     * Returns returns the long value at the index specified by the quantizable index object
      */
     public String retrieveString(LongValued index)
     {

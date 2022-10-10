@@ -67,7 +67,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return The zoom level that is the best to fit the given bounds into the visible drawing rectangle using the
+     * Returns the zoom level that is the best to fit the given bounds into the visible drawing rectangle using the
      * given tile size
      */
     public static ZoomLevel bestFit(DrawingRectangle visible,
@@ -104,7 +104,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return The specified OSM zoom level, from 0 (furthest) to 18 (closest)
+     * Returns the specified OSM zoom level, from 0 (furthest) to 18 (closest)
      */
     public static ZoomLevel osm(int level)
     {
@@ -112,7 +112,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return The given Telenav zoom level from 0 (closest) to 17 (furthest)
+     * Returns the given Telenav zoom level from 0 (closest) to 17 (furthest)
      */
     public static ZoomLevel telenav(int level)
     {
@@ -146,7 +146,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return This zoom level as an OSM zoom level
+     * Returns this zoom level as an OSM zoom level
      */
     public int asTelenavZoomLevel()
     {
@@ -171,7 +171,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return The total height in pixels for all tiles at the given tile size
+     * Returns the total height in pixels for all tiles at the given tile size
      */
     public double heightInPixels(DrawingSize tileSize)
     {
@@ -179,7 +179,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return The number of tiles vertically at this level
+     * Returns the number of tiles vertically at this level
      */
     public int heightInTiles()
     {
@@ -194,7 +194,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return True if this zoom level is zoomed in more than the given zoom level
+     * Returns true if this zoom level is zoomed in more than the given zoom level
      */
     public boolean isCloserThan(ZoomLevel that)
     {
@@ -202,7 +202,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return True if this zoom level is a close as possible
+     * Returns true if this zoom level is a close as possible
      */
     public boolean isClosestIn()
     {
@@ -210,7 +210,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return True if this zoom level is zoomed out more than the given zoom level
+     * Returns true if this zoom level is zoomed out more than the given zoom level
      */
     public boolean isFurtherThan(ZoomLevel that)
     {
@@ -218,7 +218,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return True if this zoom level is the furthest out possible
+     * Returns true if this zoom level is the furthest out possible
      */
     public boolean isFurthestOut()
     {
@@ -226,7 +226,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return The OSM zoom level from 0 (zoomed out) to 18 (zoomed in)
+     * Returns the OSM zoom level from 0 (zoomed out) to 18 (zoomed in)
      */
     @KivaKitIncludeProperty
     public int level()
@@ -235,7 +235,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return The total dimension of an image of the world at this zoom level using the given tile size
+     * Returns the total dimension of an image of the world at this zoom level using the given tile size
      */
     public DrawingSize sizeInDrawingUnits(DrawingSize tileSize)
     {
@@ -243,7 +243,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return The tile at the given location using this zoom level
+     * Returns the tile at the given location using this zoom level
      */
     public SlippyTile tileAt(Location location)
     {
@@ -257,7 +257,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return The total number of tiles at this zoom level
+     * Returns the total number of tiles at this zoom level
      */
     public long totalTiles()
     {
@@ -265,7 +265,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return The total width in pixels for all tiles at the given tile size
+     * Returns the total width in pixels for all tiles at the given tile size
      */
     public double widthInPixels(DrawingSize tileSize)
     {
@@ -273,7 +273,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return The number of tiles horizontally at this level
+     * Returns the number of tiles horizontally at this level
      */
     public int widthInTiles()
     {
@@ -281,7 +281,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return This zoom level zoomed in one level
+     * Returns this zoom level zoomed in one level
      */
     public ZoomLevel zoomIn()
     {
@@ -289,7 +289,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return This zoom level zoomed in by the given number of levels
+     * Returns this zoom level zoomed in by the given number of levels
      */
     public ZoomLevel zoomIn(int levels)
     {
@@ -297,7 +297,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return This zoom level zoomed out one level
+     * Returns this zoom level zoomed out one level
      */
     public ZoomLevel zoomOut()
     {
@@ -305,7 +305,7 @@ public class ZoomLevel implements StringFormattable
     }
 
     /**
-     * @return This zoom level zoomed out by the given number of levels
+     * Returns this zoom level zoomed out by the given number of levels
      */
     public ZoomLevel zoomOut(int levels)
     {

@@ -195,7 +195,7 @@ public abstract class PbfGraphLoader extends BaseGraphLoader
     }
 
     /**
-     * @return The configuration of this loader
+     * Returns the configuration of this loader
      */
     protected Configuration configuration()
     {
@@ -208,7 +208,7 @@ public abstract class PbfGraphLoader extends BaseGraphLoader
     }
 
     /**
-     * @return Information about the data contained in {@link #resource()}
+     * Returns information about the data contained in {@link #resource()}
      */
     protected Metadata metadata()
     {

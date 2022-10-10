@@ -203,7 +203,7 @@ public class PbfDataAnalysis extends BaseRepeater
     }
 
     /**
-     * @return True if the PBF data includes way node locations. This is determined by looking at {@link
+     * Returns true if the PBF data includes way node locations. This is determined by looking at {@link
      * WayNode#getLatitude()} and {@link WayNode#getLongitude()} rather than at the PBF metadata, since looking at the
      * actual values is more likely to be accurate than looking at the metadata in the header.
      */

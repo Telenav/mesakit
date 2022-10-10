@@ -115,7 +115,7 @@ public class PbfAllNodeMetadata implements AttributeStore
     }
 
     /**
-     * @return The loader for this attribute store
+     * Returns the loader for this attribute store
      */
     @Override
     public AttributeLoader attributeLoader()

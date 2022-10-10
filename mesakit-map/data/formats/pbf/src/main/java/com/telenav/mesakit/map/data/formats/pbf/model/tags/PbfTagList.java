@@ -147,7 +147,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
     }
 
     /**
-     * @return A proper list of tags, possibly converted from fields
+     * Returns a proper list of tags, possibly converted from fields
      */
     public List<Tag> asList()
     {
@@ -402,7 +402,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
     }
 
     /**
-     * @return This tag list sorted alphabetically by key
+     * Returns this tag list sorted alphabetically by key
      */
     public PbfTagList sorted()
     {
@@ -623,7 +623,7 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
     }
 
     /**
-     * @return True if fields are being used to hold key / value pairs
+     * Returns true if fields are being used to hold key / value pairs
      */
     private boolean isCompact()
     {

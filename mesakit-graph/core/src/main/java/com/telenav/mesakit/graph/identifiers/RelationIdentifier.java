@@ -66,7 +66,7 @@ public class RelationIdentifier extends MapRelationIdentifier implements GraphEl
     }
 
     /**
-     * @return The next identifier
+     * Returns the next identifier
      */
     @Override
     public RelationIdentifier next()

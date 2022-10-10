@@ -33,7 +33,7 @@ import com.telenav.mesakit.map.measurements.internal.lexakai.DiagramMapMeasureme
 public interface Headed
 {
     /**
-     * @return The heading for this object
+     * Returns the heading for this object
      */
     @UmlRelation(label = "specifies")
     Heading heading();

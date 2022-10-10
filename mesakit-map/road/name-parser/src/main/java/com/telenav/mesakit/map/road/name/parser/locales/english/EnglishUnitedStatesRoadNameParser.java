@@ -133,7 +133,7 @@ import com.telenav.mesakit.map.road.name.parser.tokenizer.Token;
     }
 
     /**
-     * @return True if there should be a space between the given tokens
+     * Returns true if there should be a space between the given tokens
      */
     @SuppressWarnings("RedundantIfStatement")
     private boolean space(Token previous, Token token)

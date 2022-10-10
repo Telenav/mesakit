@@ -127,7 +127,7 @@ public abstract class Cut
     }
 
     /**
-     * @return The list of regions that contain the given location (in the world graph, this will always be a single
+     * Returns the list of regions that contain the given location (in the world graph, this will always be a single
      * cell).
      * <p>
      * NOTE: Historically, regions could nest to allow nested administrative borders like states and countries (and that

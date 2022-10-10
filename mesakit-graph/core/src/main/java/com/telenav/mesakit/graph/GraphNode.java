@@ -44,7 +44,7 @@ public abstract class GraphNode extends GraphElement implements Located
     }
 
     /**
-     * @return True if this vertex or shape point is inside the given bounding rectangle
+     * Returns true if this vertex or shape point is inside the given bounding rectangle
      */
     @Override
     public boolean isInside(Rectangle bounds)

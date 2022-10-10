@@ -63,7 +63,7 @@ import com.telenav.mesakit.map.road.model.RoadFunctionalClass;
 public class Vertex extends GraphNode
 {
     /**
-     * @return A matcher for vertexes inside the given bounds
+     * Returns a matcher for vertexes inside the given bounds
      */
     public static Matcher<Vertex> inside(Rectangle bounds)
     {
@@ -145,7 +145,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return The differences between this vertex and that vertex
+     * Returns the differences between this vertex and that vertex
      */
     public Differences differences(Vertex that, Rectangle bounds)
     {
@@ -158,7 +158,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return The edge between this vertex and the given vertex (in either direction)
+     * Returns the edge between this vertex and the given vertex (in either direction)
      */
     public Edge edgeBetween(Vertex vertex)
     {
@@ -171,7 +171,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return The number of edges attached to this vertex, regardless of their direction.
+     * Returns the number of edges attached to this vertex, regardless of their direction.
      */
     public Count edgeCount()
     {
@@ -179,7 +179,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return The set of all edges connected to this vertex
+     * Returns the set of all edges connected to this vertex
      */
     public EdgeSequence edgeSequence()
     {
@@ -199,7 +199,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return The set of all edges (both in edges and out edges) attached to this vertex
+     * Returns the set of all edges (both in edges and out edges) attached to this vertex
      */
     public EdgeSet edges()
     {
@@ -207,7 +207,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return The set of edges connecting this vertex to the given vertex
+     * Returns the set of edges connecting this vertex to the given vertex
      */
     public EdgeSet edgesBetween(Vertex that)
     {
@@ -230,7 +230,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return The set of edges connecting this vertex to the given vertex
+     * Returns the set of edges connecting this vertex to the given vertex
      */
     public EdgeSet edgesTo(Vertex vertex)
     {
@@ -246,7 +246,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return The grade separation level of this vertex
+     * Returns the grade separation level of this vertex
      */
     public GradeSeparation gradeSeparation()
     {
@@ -254,7 +254,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return The identifier for this vertex
+     * Returns the identifier for this vertex
      */
     @Override
     public VertexIdentifier identifier()
@@ -263,7 +263,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return The number of in edges
+     * Returns the number of in edges
      */
     public Count inEdgeCount()
     {
@@ -271,7 +271,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return The set of all edges connected to this vertex that have in-bound traffic (meaning traffic headed towards
+     * Returns the set of all edges connected to this vertex that have in-bound traffic (meaning traffic headed towards
      * this vertex)
      */
     public EdgeSequence inEdgeSequence()
@@ -280,7 +280,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return The set of all edges connected to this vertex that have in-bound traffic (meaning traffic headed towards
+     * Returns the set of all edges connected to this vertex that have in-bound traffic (meaning traffic headed towards
      * this vertex)
      */
     public EdgeSet inEdges()
@@ -289,7 +289,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return True if this vertex had one or more edges clipped from it due to proximity to the edge of the graph
+     * Returns true if this vertex had one or more edges clipped from it due to proximity to the edge of the graph
      */
     @KivaKitExcludeProperty
     public boolean isClipped()
@@ -298,7 +298,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return True if this vertex is connected to that vertex
+     * Returns true if this vertex is connected to that vertex
      */
     public boolean isConnectedTo(Vertex that)
     {
@@ -306,7 +306,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return True if this vertex is a dead end
+     * Returns true if this vertex is a dead end
      */
     public boolean isDeadEnd()
     {
@@ -321,7 +321,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return True if there is more than one out-bound edge connected to this vertex. Note that for two-way roads, all
+     * Returns true if there is more than one out-bound edge connected to this vertex. Note that for two-way roads, all
      * vertexes will be decision points because U-turn is a possibility. If you want to know if the road forks, call
      * {@link Edge#leadsToFork()}.
      */
@@ -343,7 +343,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return True if there is more than one way to get to this vertex
+     * Returns true if there is more than one way to get to this vertex
      */
     public boolean isMergeVertex()
     {
@@ -389,7 +389,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return True if there is exactly one in-bound and one out-bound edge connected to this vertex.
+     * Returns true if there is exactly one in-bound and one out-bound edge connected to this vertex.
      */
     public boolean isThroughVertex()
     {
@@ -460,7 +460,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return The number of out edges
+     * Returns the number of out edges
      */
     public Count outEdgeCount()
     {
@@ -468,7 +468,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return The set of all edges connected to this vertex that have out-bound traffic (meaning traffic headed away
+     * Returns the set of all edges connected to this vertex that have out-bound traffic (meaning traffic headed away
      * from this vertex)
      */
     public EdgeSequence outEdgeSequence()
@@ -477,7 +477,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return The set of all edges connected to this vertex that have out-bound traffic (meaning traffic headed away
+     * Returns the set of all edges connected to this vertex that have out-bound traffic (meaning traffic headed away
      * from this vertex)
      */
     public EdgeSet outEdges()
@@ -486,7 +486,7 @@ public class Vertex extends GraphNode
     }
 
     /**
-     * @return The properties of this element from its {@link DataSpecification},
+     * Returns the properties of this element from its {@link DataSpecification},
      * @see GraphElementPropertySet
      */
     @Override

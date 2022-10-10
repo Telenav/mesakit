@@ -43,7 +43,7 @@ public enum RoadFunctionalClass implements LongValued
     public static RoadFunctionalClass MAXIMUM = MAIN;
 
     /**
-     * @return The road type for the given identifier
+     * Returns the road type for the given identifier
      */
     public static RoadFunctionalClass forIdentifier(int identifier)
     {
@@ -70,7 +70,7 @@ public enum RoadFunctionalClass implements LongValued
     }
 
     /**
-     * @return The road type for the given identifier
+     * Returns the road type for the given identifier
      */
     public static RoadFunctionalClass forInvertedIdentifier(int identifier)
     {
@@ -97,7 +97,7 @@ public enum RoadFunctionalClass implements LongValued
     }
 
     /**
-     * @return The identifier for the given road type or NULL.identifier if the type is null
+     * Returns the identifier for the given road type or NULL.identifier if the type is null
      */
     public static int identifierFor(RoadFunctionalClass type)
     {
@@ -116,7 +116,7 @@ public enum RoadFunctionalClass implements LongValued
     }
 
     /**
-     * @return A list of road functional classes at or below this one in order of importance
+     * Returns a list of road functional classes at or below this one in order of importance
      */
     public List<RoadFunctionalClass> atOrBelow()
     {

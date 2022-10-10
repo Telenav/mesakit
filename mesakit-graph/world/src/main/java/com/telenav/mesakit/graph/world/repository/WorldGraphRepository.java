@@ -113,7 +113,7 @@ public class WorldGraphRepository extends Folder implements Serializable
     }
 
     /**
-     * @return The world graph folder for the given sub-folder in this repository with the name derived from the given
+     * Returns the world graph folder for the given sub-folder in this repository with the name derived from the given
      * metadata
      */
     public WorldGraphRepositoryFolder folder(FilePath subfolder, Metadata metadata)
@@ -132,7 +132,7 @@ public class WorldGraphRepository extends Folder implements Serializable
     }
 
     /**
-     * @return A temporary grid folder to extract new data to
+     * Returns a temporary grid folder to extract new data to
      */
     public WorldGraphRepositoryFolder temporaryFolder(FilePath subfolder)
     {

@@ -365,7 +365,7 @@ public class WorldGraph extends Graph
     }
 
     /**
-     * @return The access mode for this world graph
+     * Returns the access mode for this world graph
      */
     public AccessMode mode()
     {
@@ -595,7 +595,7 @@ public class WorldGraph extends Graph
     }
 
     /**
-     * @return The version of the world graph (as opposed to the underlying graph file version)
+     * Returns the version of the world graph (as opposed to the underlying graph file version)
      */
     public Version worldGraphVersion()
     {
@@ -608,7 +608,7 @@ public class WorldGraph extends Graph
     }
 
     /**
-     * @return A list of the world cells in this graph, with data installed locally
+     * Returns a list of the world cells in this graph, with data installed locally
      */
     private WorldCellList allWorldCells()
     {
@@ -645,7 +645,7 @@ public class WorldGraph extends Graph
     }
 
     /**
-     * @return A list of world cells in this world graph
+     * Returns a list of world cells in this world graph
      */
     private WorldCellList worldCells()
     {

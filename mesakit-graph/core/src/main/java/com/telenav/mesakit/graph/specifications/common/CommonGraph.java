@@ -59,7 +59,7 @@ public class CommonGraph extends Graph
     }
 
     /**
-     * @return The edges whose road shape intersects the given bounding rectangle which also match the given matcher
+     * Returns the edges whose road shape intersects the given bounding rectangle which also match the given matcher
      */
     @Override
     public EdgeSequence edgesIntersecting(Rectangle bounds, Matcher<Edge> matcher,

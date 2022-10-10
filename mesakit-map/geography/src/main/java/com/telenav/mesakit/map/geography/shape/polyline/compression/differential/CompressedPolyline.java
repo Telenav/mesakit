@@ -279,7 +279,7 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
     }
 
     /**
-     * @return This polyline as a byte array
+     * Returns this polyline as a byte array
      */
     public ByteList asBytes()
     {
@@ -328,7 +328,7 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
     }
 
     /**
-     * @return A decompressed heavyweight polyline for use in testing since {@link CompressedPolyline} is already a
+     * Returns a decompressed heavyweight polyline for use in testing since {@link CompressedPolyline} is already a
      * Polyline and doesn't need to be decompressed.
      */
     public Polyline decompress()

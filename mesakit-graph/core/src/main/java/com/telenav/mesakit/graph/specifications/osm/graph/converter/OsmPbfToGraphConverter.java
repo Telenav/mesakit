@@ -129,7 +129,7 @@ public class OsmPbfToGraphConverter extends PbfToGraphConverter
         }
 
         // Analyze the input file,
-        var analysis = analyze(input.newInstance(metadata),
+        var analysis = analyze(input.map(metadata),
                 metadata.withDataPrecision(Precision.DM6));
 
         // and if there is at least some valid data to load

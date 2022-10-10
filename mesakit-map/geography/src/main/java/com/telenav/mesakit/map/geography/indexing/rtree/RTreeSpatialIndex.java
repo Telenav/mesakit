@@ -51,7 +51,7 @@ import java.util.List;
 public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implements Bounded, NamedObject
 {
     /**
-     * @return True if visual debugging is enabled
+     * Returns true if visual debugging is enabled
      */
     public static boolean visualDebug()
     {
@@ -187,7 +187,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     }
 
     /**
-     * @return An iterator of elements that intersect with the given bounding rectangle
+     * Returns an iterator of elements that intersect with the given bounding rectangle
      */
     public synchronized Iterable<Element> intersecting(Rectangle bounds)
     {
@@ -195,7 +195,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     }
 
     /**
-     * @return An iterator of elements that intersect with the given bounding rectangle and match the given matcher
+     * Returns an iterator of elements that intersect with the given bounding rectangle and match the given matcher
      */
     public synchronized Iterable<Element> intersecting(Rectangle bounds, Matcher<Element> matcher)
     {

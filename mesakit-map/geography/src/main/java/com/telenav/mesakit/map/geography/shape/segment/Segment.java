@@ -141,7 +141,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
     }
 
     /**
-     * @return Approximate length of this segment (invalid for long segments)
+     * Returns approximate length of this segment (invalid for long segments)
      */
     public Distance approximateLength()
     {
@@ -154,7 +154,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
     }
 
     /**
-     * @return The location at the given distance from the start along this segment
+     * Returns the location at the given distance from the start along this segment
      */
     public Location at(Distance distance)
     {
@@ -167,7 +167,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
     }
 
     /**
-     * @return A polyline of a backward arrow with direction from end to start
+     * Returns a polyline of a backward arrow with direction from end to start
      */
     public Polyline backwardArrow(Angle offset, Distance arrowSize)
     {
@@ -216,7 +216,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
     }
 
     /**
-     * @return A polyline of a forward arrow with direction from start to end
+     * Returns a polyline of a forward arrow with direction from start to end
      */
     public Polyline forwardArrow(Angle offset, Distance arrowSize)
     {
@@ -504,7 +504,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
     }
 
     /**
-     * @return Length of this segment.
+     * Returns length of this segment.
      */
     public Distance length()
     {
@@ -536,7 +536,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
     }
 
     /**
-     * @return A segment perpendicular to this segment at the given location of the given length on both sides of this
+     * Returns a segment perpendicular to this segment at the given location of the given length on both sides of this
      * segment.
      */
     public Segment perpendicular(Location at, Distance length)
@@ -588,7 +588,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
     }
 
     /**
-     * @return The surrounding bounding box along the segment
+     * Returns the surrounding bounding box along the segment
      */
     public Polygon surroundingBox(Distance range)
     {

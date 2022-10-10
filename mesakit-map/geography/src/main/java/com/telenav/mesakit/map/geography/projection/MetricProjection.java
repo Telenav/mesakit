@@ -34,12 +34,12 @@ public interface MetricProjection
 {
 
     /**
-     * @return The given location as a coordinate in meters from the map origin (0, 0)
+     * Returns the given location as a coordinate in meters from the map origin (0, 0)
      */
     MetricCoordinate toCoordinate(Location location);
 
     /**
-     * @return The given coordinate in meters from the map origin (0, 0) as a location
+     * Returns the given coordinate in meters from the map origin (0, 0) as a location
      */
     Location toLocation(MetricCoordinate coordinate);
 }

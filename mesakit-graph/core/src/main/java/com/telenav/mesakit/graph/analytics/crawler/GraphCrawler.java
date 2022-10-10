@@ -117,7 +117,7 @@ public class GraphCrawler
     }
 
     /**
-     * @return True if the given edge has been visited
+     * Returns true if the given edge has been visited
      */
     public boolean hasVisited(Edge edge)
     {
@@ -130,7 +130,7 @@ public class GraphCrawler
     }
 
     /**
-     * @return True if the edge can be visited, false if it should be ignored
+     * Returns true if the edge can be visited, false if it should be ignored
      */
     @SuppressWarnings({ "SameReturnValue" })
     protected boolean accept(Edge edge)
@@ -139,7 +139,7 @@ public class GraphCrawler
     }
 
     /**
-     * @return The set of edges to visit from the given vertex
+     * Returns the set of edges to visit from the given vertex
      */
     protected EdgeSet candidates(Vertex vertex)
     {

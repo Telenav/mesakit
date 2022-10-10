@@ -85,7 +85,7 @@ public class PolylineStore implements Named, CompressibleCollection
     }
 
     /**
-     * @return The store index if the given polyline was added and INVALID_INDEX if it wouldn't fit
+     * Returns the store index if the given polyline was added and INVALID_INDEX if it wouldn't fit
      */
     public int add(CompressedPolyline polyline)
     {

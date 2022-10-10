@@ -909,7 +909,7 @@ public class HeavyWeightEdge extends Edge
     }
 
     /**
-     * @return The reference speed (used for historical speed calculation) in forward direction
+     * Returns the reference speed (used for historical speed calculation) in forward direction
      */
     public Speed uniDbReferenceSpeed()
     {
@@ -917,7 +917,7 @@ public class HeavyWeightEdge extends Edge
     }
 
     /**
-     * @return The reference speed (used for historical speed calculation) in backward direction
+     * Returns the reference speed (used for historical speed calculation) in backward direction
      */
     public Speed uniDbReverseReferenceSpeed()
     {

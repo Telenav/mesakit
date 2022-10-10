@@ -113,7 +113,7 @@ public enum Direction implements Named
     }
 
     /**
-     * @return The standard abbreviation for this direction in English, such as "N" or "SW"
+     * Returns the standard abbreviation for this direction in English, such as "N" or "SW"
      */
     public String abbreviation()
     {
@@ -121,7 +121,7 @@ public enum Direction implements Named
     }
 
     /**
-     * @return This direction as a {@link Heading}
+     * Returns this direction as a {@link Heading}
      */
     public Heading asHeading()
     {

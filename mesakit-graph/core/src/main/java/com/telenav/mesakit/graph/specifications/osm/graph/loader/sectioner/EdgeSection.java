@@ -74,7 +74,7 @@ public class EdgeSection
     }
 
     /**
-     * @return A single segment connecting the start of this section to the end
+     * Returns a single segment connecting the start of this section to the end
      */
     public Segment asSegment()
     {
@@ -131,7 +131,7 @@ public class EdgeSection
     }
 
     /**
-     * @return A copy of the parent edge that's been modified to have the 'from' and 'to' nodes and road shape of this
+     * Returns a copy of the parent edge that's been modified to have the 'from' and 'to' nodes and road shape of this
      * edge section.
      */
     public HeavyWeightEdge edge(EdgeIdentifier identifier)
@@ -199,7 +199,7 @@ public class EdgeSection
     }
 
     /**
-     * @return A sub-section of this edge section given a section of a {@link Polyline}
+     * Returns a sub-section of this edge section given a section of a {@link Polyline}
      */
     public EdgeSection section(PolylineSection section)
     {
@@ -207,7 +207,7 @@ public class EdgeSection
     }
 
     /**
-     * @return This edge section broken into pieces by the given sectioner
+     * Returns this edge section broken into pieces by the given sectioner
      */
     public EdgeSectionList section(PolylineSectioner sectioner)
     {

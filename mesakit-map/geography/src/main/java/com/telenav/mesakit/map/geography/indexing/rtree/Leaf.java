@@ -72,7 +72,7 @@ public abstract class Leaf<T extends Bounded & Intersectable> extends Node<T>
     public abstract void addAll(List<T> elements);
 
     /**
-     * @return An iterator over all elements in this leaf node intersecting the given rectangle. It is up to the element
+     * Returns an iterator over all elements in this leaf node intersecting the given rectangle. It is up to the element
      * to implement this efficiently.
      */
     @Override

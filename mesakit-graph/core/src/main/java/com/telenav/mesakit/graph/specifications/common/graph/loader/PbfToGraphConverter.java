@@ -159,7 +159,7 @@ public abstract class PbfToGraphConverter extends BaseRepeater implements GraphC
     }
 
     /**
-     * @return The configuration of this converter
+     * Returns the configuration of this converter
      */
     public Configuration configuration()
     {

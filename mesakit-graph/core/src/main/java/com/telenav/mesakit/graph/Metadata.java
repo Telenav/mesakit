@@ -181,7 +181,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return Metadata from the given input file, allowing for an estimate of entities based on file size
+     * Returns metadata from the given input file, allowing for an estimate of entities based on file size
      */
     public static Metadata metadata(File input)
     {
@@ -189,7 +189,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return Complete metadata read for the given input resource. For resources that don't support all the statistics
+     * Returns complete metadata read for the given input resource. For resources that don't support all the statistics
      * values, those values may be estimates based on the size of the resource.
      */
     public static Metadata metadata(File input, CountType countType)
@@ -248,7 +248,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return Metadata from the given filename
+     * Returns metadata from the given filename
      */
     public static Metadata parse(FileName name)
     {
@@ -256,7 +256,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return Metadata from the name of the given folder
+     * Returns metadata from the name of the given folder
      */
     public static Metadata parse(Folder folder)
     {
@@ -546,7 +546,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return This metadata as a folder
+     * Returns this metadata as a folder
      * @see #asFileName()
      */
     public Folder asFolder()
@@ -609,7 +609,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return Bounds encompassing all data entities
+     * Returns bounds encompassing all data entities
      */
     @KivaKitIncludeProperty
     public Rectangle dataBounds()
@@ -618,7 +618,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The version of the data in time
+     * Returns the version of the data in time
      */
     @KivaKitIncludeProperty
     public DataBuild dataBuild()
@@ -627,7 +627,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The {@link DataFormat} that the data comes from
+     * Returns the {@link DataFormat} that the data comes from
      */
     @KivaKitIncludeProperty
     public DataFormat dataFormat()
@@ -642,7 +642,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The size of this data
+     * Returns the size of this data
      */
     @KivaKitIncludeProperty
     public Bytes dataSize()
@@ -651,7 +651,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The data's specification
+     * Returns the data's specification
      */
     @KivaKitIncludeProperty
     @KivaKitFormat
@@ -661,7 +661,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The supplier of the data like HERE or OSM
+     * Returns the supplier of the data like HERE or OSM
      */
     @KivaKitIncludeProperty
     public DataSupplier dataSupplier()
@@ -670,7 +670,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The version of this data
+     * Returns the version of this data
      */
     public DataVersion dataVersion()
     {
@@ -695,7 +695,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The number of edges
+     * Returns the number of edges
      */
     public Count edgeCount(CountType type)
     {
@@ -707,7 +707,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The exact or estimated number of edge relations
+     * Returns the exact or estimated number of edge relations
      */
     public Count edgeRelationCount(CountType type)
     {
@@ -731,7 +731,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The number of forward edges (without considering bidirectional edges)
+     * Returns the number of forward edges (without considering bidirectional edges)
      */
     public Count forwardEdgeCount(CountType type)
     {
@@ -743,7 +743,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The total number of edges, vertexes and relations in this data
+     * Returns the total number of edges, vertexes and relations in this data
      */
     public Count graphElementCount(CountType type)
     {
@@ -782,7 +782,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return Creates a new graph based on this metadata
+     * Returns creates a new graph based on this metadata
      */
     public Graph newGraph()
     {
@@ -790,7 +790,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The exact or estimated (OSM) number of nodes in OSM data. Not relevant to UniDb.
+     * Returns the exact or estimated (OSM) number of nodes in OSM data. Not relevant to UniDb.
      */
     public Count nodeCount(CountType type)
     {
@@ -866,7 +866,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The exact or estimated number of relations
+     * Returns the exact or estimated number of relations
      */
     public Count relationCount(CountType type)
     {
@@ -951,7 +951,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The exact (UniDb) or estimated (OSM) number of vertexes
+     * Returns the exact (UniDb) or estimated (OSM) number of vertexes
      */
     public Count vertexCount(CountType type)
     {
@@ -963,7 +963,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The exact or estimated (OSM) number of ways in this data. Not relevant to UniDb.
+     * Returns the exact or estimated (OSM) number of ways in this data. Not relevant to UniDb.
      */
     public Count wayCount(CountType type)
     {

@@ -28,7 +28,7 @@ import com.telenav.mesakit.graph.Edge;
 public class NonBranchingWithSpursNoUTurnNavigator extends NonBranchingNoUTurnNavigator
 {
     /**
-     * @return The in edge to navigate (backwards) to from the given edge, or null if there is no such edge.
+     * Returns the in edge to navigate (backwards) to from the given edge, or null if there is no such edge.
      */
     @Override
     public Edge in(Edge edge)
@@ -38,7 +38,7 @@ public class NonBranchingWithSpursNoUTurnNavigator extends NonBranchingNoUTurnNa
     }
 
     /**
-     * @return The out edge to navigate to from the given edge, or null if there is no such edge.
+     * Returns the out edge to navigate to from the given edge, or null if there is no such edge.
      */
     @Override
     public Edge out(Edge edge)

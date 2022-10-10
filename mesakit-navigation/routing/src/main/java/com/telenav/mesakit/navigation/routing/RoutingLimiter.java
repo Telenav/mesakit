@@ -30,7 +30,7 @@ public interface RoutingLimiter
     RoutingLimiter UNLIMITED = edge -> RoutingInstruction.EXPLORE_EDGE;
 
     /**
-     * @return The routing instruction to follow for the given edge
+     * Returns the routing instruction to follow for the given edge
      */
     RoutingInstruction instruction(Edge edge);
 

@@ -42,7 +42,7 @@ import java.util.Set;
 public class VertexSet extends ObjectSet<Vertex>
 {
     /**
-     * @return A set of vertexes for the given vertex collection
+     * Returns a set of vertexes for the given vertex collection
      */
     public static VertexSet forCollection(Maximum maximum, Collection<? extends Vertex> collection)
     {
@@ -69,7 +69,7 @@ public class VertexSet extends ObjectSet<Vertex>
     }
 
     /**
-     * @return A single vertex set
+     * Returns a single vertex set
      */
     public static VertexSet singleton(Vertex vertex)
     {
@@ -103,7 +103,7 @@ public class VertexSet extends ObjectSet<Vertex>
     }
 
     /**
-     * @return The set of vertexes in this set within the bounding rectangle
+     * Returns the set of vertexes in this set within the bounding rectangle
      */
     public VertexSet inside(Rectangle bounds)
     {
@@ -111,7 +111,7 @@ public class VertexSet extends ObjectSet<Vertex>
     }
 
     /**
-     * @return The intersection of this vertex set with the given set of vertexes
+     * Returns the intersection of this vertex set with the given set of vertexes
      */
     public VertexSet intersection(Set<Vertex> vertexes)
     {
@@ -119,7 +119,7 @@ public class VertexSet extends ObjectSet<Vertex>
     }
 
     /**
-     * @return All the vertexes identifiers in this set joined into a string using the given separator. The order of
+     * Returns all the vertexes identifiers in this set joined into a string using the given separator. The order of
      * identifiers is undefined.
      */
     public String joinedIdentifiers(String separator)
@@ -128,7 +128,7 @@ public class VertexSet extends ObjectSet<Vertex>
     }
 
     /**
-     * @return Matching vertexes
+     * Returns matching vertexes
      */
     @Override
     public VertexSet matchingAsIterable(Matcher<Vertex> matcher)
@@ -137,7 +137,7 @@ public class VertexSet extends ObjectSet<Vertex>
     }
 
     /**
-     * @return The union of this set of vertexes with that set of vertexes
+     * Returns the union of this set of vertexes with that set of vertexes
      */
     public VertexSet union(Set<Vertex> that)
     {
@@ -145,7 +145,7 @@ public class VertexSet extends ObjectSet<Vertex>
     }
 
     /**
-     * @return This set of vertexes without the given vertexes
+     * Returns this set of vertexes without the given vertexes
      */
     public VertexSet without(Set<Vertex> exclude)
     {
@@ -153,7 +153,7 @@ public class VertexSet extends ObjectSet<Vertex>
     }
 
     /**
-     * @return This set of vertexes excluding the given vertex
+     * Returns this set of vertexes excluding the given vertex
      */
     public VertexSet without(Vertex exclude)
     {

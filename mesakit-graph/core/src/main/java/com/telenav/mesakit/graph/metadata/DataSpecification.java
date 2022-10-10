@@ -219,7 +219,7 @@ public abstract class DataSpecification implements NamedObject
     }
 
     /**
-     * @return All attributes supported by this specification
+     * Returns all attributes supported by this specification
      */
     public AttributeList attributes()
     {
@@ -232,7 +232,7 @@ public abstract class DataSpecification implements NamedObject
     }
 
     /**
-     * @return All attributes supported by this specification
+     * Returns all attributes supported by this specification
      */
     public AttributeList attributes(Class<? extends AttributeStore> store)
     {
@@ -410,7 +410,7 @@ public abstract class DataSpecification implements NamedObject
     }
 
     /**
-     * @return True if this data specification supports the given attribute
+     * Returns true if this data specification supports the given attribute
      */
     public boolean supports(Attribute<?> attribute)
     {
@@ -424,7 +424,7 @@ public abstract class DataSpecification implements NamedObject
     }
 
     /**
-     * @return Which data specification is being implemented
+     * Returns which data specification is being implemented
      */
     public abstract Type type();
 

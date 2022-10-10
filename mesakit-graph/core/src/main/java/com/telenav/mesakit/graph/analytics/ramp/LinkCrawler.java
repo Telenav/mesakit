@@ -151,7 +151,7 @@ class LinkCrawler
     }
 
     /**
-     * @return True if the vertex has any navigable non-link edge
+     * Returns true if the vertex has any navigable non-link edge
      */
     private boolean hasOnlyLinkEdges(Vertex vertex)
     {
@@ -166,7 +166,7 @@ class LinkCrawler
     }
 
     /**
-     * @return The set of in or out connector (connecting or ramp) edges from the given vertex
+     * Returns the set of in or out connector (connecting or ramp) edges from the given vertex
      */
     private EdgeSet links(Edge edge, Vertex vertex, Direction direction)
     {

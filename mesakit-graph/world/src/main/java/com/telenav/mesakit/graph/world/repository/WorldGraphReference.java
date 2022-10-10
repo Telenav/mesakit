@@ -123,7 +123,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
     }
 
     /**
-     * @return Loads the world graph referred to by this reference (if it is not already loaded) and returns it
+     * Returns loads the world graph referred to by this reference (if it is not already loaded) and returns it
      */
     @Override
     public WorldGraph get()
@@ -186,7 +186,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
     }
 
     /**
-     * @return A reference to a cell within the world graph referred to by this reference object
+     * Returns a reference to a cell within the world graph referred to by this reference object
      */
     public WorldCellReference worldCellSource(GridCell gridCell)
     {

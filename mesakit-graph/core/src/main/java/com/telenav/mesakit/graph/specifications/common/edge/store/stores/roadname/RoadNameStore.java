@@ -195,7 +195,7 @@ public class RoadNameStore implements NamedObject, Initializable
     }
 
     /**
-     * @return A pseudo-index for a given edgeIndex, type and road-name ordinal
+     * Returns a pseudo-index for a given edgeIndex, type and road-name ordinal
      */
     private long keyFor(int edgeIndex, RoadName.Type type, int roadNameOrdinal)
     {

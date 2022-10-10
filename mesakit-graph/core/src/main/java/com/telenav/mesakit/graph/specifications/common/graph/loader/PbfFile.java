@@ -74,7 +74,7 @@ public class PbfFile extends BaseRepeater implements Named
     }
 
     /**
-     * @return The graph for this PBF resource
+     * Returns the graph for this PBF resource
      */
     public Graph graph(ProgressReporter reporter)
     {

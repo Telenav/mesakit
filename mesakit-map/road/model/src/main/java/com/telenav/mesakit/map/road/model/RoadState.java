@@ -51,7 +51,7 @@ public enum RoadState implements LongValued
     }
 
     /**
-     * @return The identifier for the given state or NULL.identifier if the state is null
+     * Returns the identifier for the given state or NULL.identifier if the state is null
      */
     public static int identifierFor(RoadState state)
     {

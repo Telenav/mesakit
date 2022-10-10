@@ -244,7 +244,7 @@ public class PbfRegionCutter
     }
 
     /**
-     * @return True if the data has {@link WayNode} locations available. This can speed up processing and reduce memory
+     * Returns true if the data has {@link WayNode} locations available. This can speed up processing and reduce memory
      * consumption by not requiring that {@link Node} locations be kept in memory until {@link Way} processing occurs.
      */
     private boolean hasWayNodeLocations(PbfDataSource data)

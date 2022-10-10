@@ -391,7 +391,7 @@ public class RegionCode
     }
 
     /**
-     * @return Turns a raw name string into one that's compatible with region codes
+     * Returns turns a raw name string into one that's compatible with region codes
      */
     private static String nameize(String name)
     {

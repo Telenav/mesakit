@@ -30,7 +30,7 @@ import com.telenav.mesakit.map.geography.internal.lexakai.DiagramRectangle;
 public interface Bounded
 {
     /**
-     * @return The bounding rectangle
+     * Returns the bounding rectangle
      */
     Rectangle bounds();
 }

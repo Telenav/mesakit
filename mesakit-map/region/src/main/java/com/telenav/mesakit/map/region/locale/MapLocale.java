@@ -115,7 +115,7 @@ public class MapLocale extends Locale
     }
 
     /**
-     * @return An object created by loading the class which has the class name relative to the given package path of
+     * Returns an object created by loading the class which has the class name relative to the given package path of
      * "[package-path].locales.[language].[Language][Region][suffix]". For example,
      * "[package-path].locales.english.English_United_States_RoadNameParser"
      */

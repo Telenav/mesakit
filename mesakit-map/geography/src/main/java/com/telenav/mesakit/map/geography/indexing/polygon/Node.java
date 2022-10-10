@@ -221,7 +221,7 @@ public class Node extends Quadrant
     }
 
     /**
-     * @return The {@link Node} or {@link Leaf} quadrant that indexes the given bounding rectangle
+     * Returns the {@link Node} or {@link Leaf} quadrant that indexes the given bounding rectangle
      */
     private int index(Rectangle bounds)
     {

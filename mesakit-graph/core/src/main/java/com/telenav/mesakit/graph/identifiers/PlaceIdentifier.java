@@ -70,7 +70,7 @@ public class PlaceIdentifier extends MapNodeIdentifier implements GraphElementId
     }
 
     /**
-     * @return The next identifier
+     * Returns the next identifier
      */
     @Override
     public PlaceIdentifier next()

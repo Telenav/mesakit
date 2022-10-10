@@ -68,7 +68,7 @@ public class NewWayStore implements Iterable<NewWay>
     }
 
     /**
-     * @return A collection of ways that have been connected up to maximum length by name
+     * Returns a collection of ways that have been connected up to maximum length by name
      */
     public Collection<NewWay> ways()
     {

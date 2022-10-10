@@ -121,7 +121,7 @@ public class EdgeIdentifier extends Identifier implements
     }
 
     /**
-     * @return The way identifier for the given element identifier. This is obtained by shifting the element identifier
+     * Returns the way identifier for the given element identifier. This is obtained by shifting the element identifier
      * six decimal places to the right, removing the sequence number that was added to the way identifier.
      */
     public static long identifierToWayIdentifier(long elementIdentifier)
@@ -196,7 +196,7 @@ public class EdgeIdentifier extends Identifier implements
     }
 
     /**
-     * @return A directional PBF way identifier for this edge identifier (by stripping off the low 4 digits)
+     * Returns a directional PBF way identifier for this edge identifier (by stripping off the low 4 digits)
      */
     public MapWayIdentifier asDirectionalWayIdentifier()
     {
@@ -209,7 +209,7 @@ public class EdgeIdentifier extends Identifier implements
     }
 
     /**
-     * @return This edge as a forward (positive) edge identifier (if it isn't already). If the edge is a reversed
+     * Returns this edge as a forward (positive) edge identifier (if it isn't already). If the edge is a reversed
      * identifier (negative value), the corresponding positive edge identifier is returned.
      */
     public EdgeIdentifier asForward()
@@ -222,7 +222,7 @@ public class EdgeIdentifier extends Identifier implements
     }
 
     /**
-     * @return A way identifier for this edge identifier
+     * Returns a way identifier for this edge identifier
      */
     public PbfWayIdentifier asWayIdentifier()
     {
@@ -243,7 +243,7 @@ public class EdgeIdentifier extends Identifier implements
     }
 
     /**
-     * @return True if this edge identifier is for a forward edge
+     * Returns true if this edge identifier is for a forward edge
      */
     @KivaKitExcludeProperty
     public boolean isForward()
@@ -252,7 +252,7 @@ public class EdgeIdentifier extends Identifier implements
     }
 
     /**
-     * @return True if this edge identifier is for a reversed edge (a negative identifier)
+     * Returns true if this edge identifier is for a reversed edge (a negative identifier)
      */
     @KivaKitExcludeProperty
     public boolean isReverse()
@@ -261,7 +261,7 @@ public class EdgeIdentifier extends Identifier implements
     }
 
     /**
-     * @return The next identifier after this one
+     * Returns the next identifier after this one
      */
     public EdgeIdentifier next()
     {
@@ -272,7 +272,7 @@ public class EdgeIdentifier extends Identifier implements
     }
 
     /**
-     * @return The next identifier after this one
+     * Returns the next identifier after this one
      */
     public EdgeIdentifier nextChunk()
     {
@@ -280,7 +280,7 @@ public class EdgeIdentifier extends Identifier implements
     }
 
     /**
-     * @return An edge identifier in the opposite direction. If this edge identifier is forward (positive identifier),
+     * Returns an edge identifier in the opposite direction. If this edge identifier is forward (positive identifier),
      * the reverse identifier will be returned (negative identifier). If the edge identifier is reverse (negative
      * identifier), the forward identifier will be returned (positive identifier).
      */
@@ -290,7 +290,7 @@ public class EdgeIdentifier extends Identifier implements
     }
 
     /**
-     * @return The sequence number of this edge identifier. For example, the sequence number of edge 1234 000 003 is 3.
+     * Returns the sequence number of this edge identifier. For example, the sequence number of edge 1234 000 003 is 3.
      */
     public int sequenceNumber()
     {
@@ -298,7 +298,7 @@ public class EdgeIdentifier extends Identifier implements
     }
 
     /**
-     * @return This identifier with room for sequence numbers. For example, identifier 1234 becomes 1234 000 000
+     * Returns this identifier with room for sequence numbers. For example, identifier 1234 becomes 1234 000 000
      */
     public EdgeIdentifier sequenceNumbered()
     {
@@ -311,7 +311,7 @@ public class EdgeIdentifier extends Identifier implements
     }
 
     /**
-     * @return This number with the given sequence number. For example, identifier 12340003 with sequence number 7
+     * Returns this number with the given sequence number. For example, identifier 12340003 with sequence number 7
      * becomes 12340007
      */
     public EdgeIdentifier withSequenceNumber(int sequenceNumber)

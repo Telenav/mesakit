@@ -95,7 +95,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
     /**
-     * @return A route for the given edges
+     * Returns a route for the given edges
      */
     public static Route forEdges(Edge... edges)
     {
@@ -108,7 +108,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return A route for the given edges
+     * Returns a route for the given edges
      */
     public static Route forEdges(Iterable<Edge> edges)
     {
@@ -131,7 +131,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return A route for the given vertexes
+     * Returns a route for the given vertexes
      */
     public static Route forVertexes(Iterable<Vertex> vertexes)
     {
@@ -158,7 +158,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return A route for the given edge
+     * Returns a route for the given edge
      */
     public static Route fromEdge(Edge edge)
     {
@@ -708,7 +708,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return This route with the given edge appended, if the resulting route is less than the maximum length. If the
+     * Returns this route with the given edge appended, if the resulting route is less than the maximum length. If the
      * resulting route would be too long, a warning is logged and the edge is not appended.
      */
     public Route append(Maximum maximum, Edge edge)
@@ -717,7 +717,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return This route with the given route appended, if the resulting route is less than the maximum length. If the
+     * Returns this route with the given route appended, if the resulting route is less than the maximum length. If the
      * resulting route would be too long, a warning is logged and the route is not appended.
      */
     public Route append(Maximum maximum, Route that)
@@ -759,7 +759,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return This route with the given edge appended. For convenience the edge can be null and nothing will be
+     * Returns this route with the given edge appended. For convenience the edge can be null and nothing will be
      * appended.
      */
     public Route append(Edge edge)
@@ -775,7 +775,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return This route with the given route appended
+     * Returns this route with the given route appended
      */
     public Route append(Route route)
     {
@@ -783,7 +783,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return The set of all edges in this route
+     * Returns the set of all edges in this route
      */
     public EdgeSet asEdgeSet()
     {
@@ -796,7 +796,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return A primitive array of edge identifiers for this route
+     * Returns a primitive array of edge identifiers for this route
      */
     public LongArray asIdentifierArray()
     {
@@ -816,7 +816,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return This route as a list of {@link Edge}s in route order
+     * Returns this route as a list of {@link Edge}s in route order
      */
     public List<Edge> asList()
     {
@@ -834,7 +834,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return Set of all vertexes in this route
+     * Returns set of all vertexes in this route
      */
     public VertexSet asVertexSet()
     {
@@ -883,7 +883,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return Connect two routes, if possible. If either route is two-way they may be reversed to form the connection
+     * Returns connect two routes, if possible. If either route is two-way they may be reversed to form the connection
      */
     public Route connect(Route that)
     {
@@ -923,7 +923,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if this route connects to the same road
+     * Returns true if this route connects to the same road
      */
     public boolean connectsToSameRoad()
     {
@@ -956,7 +956,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if the route is very short and right between two junctions
+     * Returns true if the route is very short and right between two junctions
      */
     public boolean connectsTwoCloseJunctions()
     {
@@ -1099,7 +1099,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if the given route connects two double digitized roads with different names
+     * Returns true if the given route connects two double digitized roads with different names
      */
     public boolean connectsTwoDoubleDigitizedRoadsWithDifferentNames()
     {
@@ -1137,7 +1137,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if this route contains every edge in the given route
+     * Returns true if this route contains every edge in the given route
      */
     public boolean contains(Route that)
     {
@@ -1152,7 +1152,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if this route contains the given vertex
+     * Returns true if this route contains the given vertex
      */
     public boolean contains(Vertex that)
     {
@@ -1167,7 +1167,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if the route contains repeated edges
+     * Returns true if the route contains repeated edges
      */
     public boolean containsRepeatedEdge()
     {
@@ -1189,7 +1189,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return The location of the vertex where the given road name crosses this route
+     * Returns the location of the vertex where the given road name crosses this route
      */
     public Location crossStreet(RoadNameStandardizer standardizer, RoadName name)
     {
@@ -1225,7 +1225,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return One of connected doubly digitized edge, or null
+     * Returns one of connected doubly digitized edge, or null
      */
     public Edge doubleDigitizedEdge()
     {
@@ -1298,7 +1298,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return The total number of edges in this route
+     * Returns the total number of edges in this route
      */
     public Count edgeCount()
     {
@@ -1306,12 +1306,12 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return The vertex at which this route ends
+     * Returns the vertex at which this route ends
      */
     public abstract Vertex end();
 
     /**
-     * @return The set of edges attached to the vertex at the end of this route
+     * Returns the set of edges attached to the vertex at the end of this route
      */
     public EdgeSet endEdges()
     {
@@ -1319,7 +1319,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return The end offset of this route (the amount of the last edge that doesn't count as part of the route)
+     * Returns the end offset of this route (the amount of the last edge that doesn't count as part of the route)
      */
     public Distance endOffset()
     {
@@ -1352,12 +1352,12 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return The first edge in this route
+     * Returns the first edge in this route
      */
     public abstract Edge first();
 
     /**
-     * @return The travel time for this route based on functional class information
+     * Returns the travel time for this route based on functional class information
      */
     public Duration functionalClassTravelTime()
     {
@@ -1391,7 +1391,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return The vertexes in this route, not including the end points
+     * Returns the vertexes in this route, not including the end points
      */
     public Iterable<Vertex> interiorVertexes()
     {
@@ -1422,7 +1422,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if the given edge is connected to either end of this route
+     * Returns true if the given edge is connected to either end of this route
      */
     public boolean isConnectedTo(Edge edge)
     {
@@ -1430,7 +1430,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if this route is an in-place U-turn
+     * Returns true if this route is an in-place U-turn
      */
     public boolean isInPlaceUTurn()
     {
@@ -1452,7 +1452,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if all edges in this route are inside the given bounds
+     * Returns true if all edges in this route are inside the given bounds
      */
     public boolean isInside(Rectangle bounds)
     {
@@ -1467,7 +1467,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if this route forms a simple closed loop
+     * Returns true if this route forms a simple closed loop
      */
     public boolean isLoop()
     {
@@ -1477,7 +1477,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if any edge in this route is parallel to the given edge
+     * Returns true if any edge in this route is parallel to the given edge
      */
     public boolean isParallel(Edge that)
     {
@@ -1504,7 +1504,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if every edge in this route is on the same road as the given edge
+     * Returns true if every edge in this route is on the same road as the given edge
      */
     public boolean isSameRoadAs(Edge that)
     {
@@ -1524,7 +1524,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if the road shape of this route is straight to within a tolerance of 10 degrees
+     * Returns true if the road shape of this route is straight to within a tolerance of 10 degrees
      */
     public boolean isStraight()
     {
@@ -1538,12 +1538,12 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     public abstract Iterator<Edge> iterator();
 
     /**
-     * @return The last edge in this route
+     * Returns the last edge in this route
      */
     public abstract Edge last();
 
     /**
-     * @return True if this route leads to the given edge
+     * Returns true if this route leads to the given edge
      */
     public boolean leadsTo(Edge edge)
     {
@@ -1551,7 +1551,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if this route leads to that route
+     * Returns true if this route leads to that route
      */
     public boolean leadsTo(Route that)
     {
@@ -1559,7 +1559,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return The length of this route
+     * Returns the length of this route
      */
     public Distance length()
     {
@@ -1567,7 +1567,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return The length of this route in millimeters
+     * Returns the length of this route in millimeters
      */
     public long lengthInMillimeters()
     {
@@ -1575,7 +1575,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if the two routes meet at one or more vertexes, false if the routes are completely disjoint
+     * Returns true if the two routes meet at one or more vertexes, false if the routes are completely disjoint
      */
     public boolean meets(Route that)
     {
@@ -1597,7 +1597,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if this route shares one or more edges with that route
+     * Returns true if this route shares one or more edges with that route
      */
     public boolean overlaps(Route that)
     {
@@ -1617,7 +1617,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return The polyline for this route including all shape points in each edge
+     * Returns the polyline for this route including all shape points in each edge
      */
     public Polyline polyline()
     {
@@ -1640,7 +1640,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return This route with the given edge prepended
+     * Returns this route with the given edge prepended
      */
     public Route prepend(Edge edge)
     {
@@ -1648,7 +1648,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return This route with the given edge prepended if the resulting route would be less than the given maximum
+     * Returns this route with the given edge prepended if the resulting route would be less than the given maximum
      * length
      */
     public Route prepend(Edge edge, Distance maximum)
@@ -1661,7 +1661,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return This route with the given route appended
+     * Returns this route with the given route appended
      */
     public Route prepend(Route route)
     {
@@ -1669,7 +1669,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return This route reversed or null if not all edges are two-way
+     * Returns this route reversed or null if not all edges are two-way
      */
     public Route reversed()
     {
@@ -1686,7 +1686,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return A rough polyline for this route, including only vertexes in the route but not the shape-points of each
+     * Returns a rough polyline for this route, including only vertexes in the route but not the shape-points of each
      * individual edge
      */
     public Polyline roughPolyline()
@@ -1695,7 +1695,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return This route broken at decision points
+     * Returns this route broken at decision points
      */
     public List<Route> sectionedAtNonUTurnDecisionPoints()
     {
@@ -1733,17 +1733,17 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return The size of this route in edges
+     * Returns the size of this route in edges
      */
     public abstract int size();
 
     /**
-     * @return The vertex at which this route starts
+     * Returns the vertex at which this route starts
      */
     public abstract Vertex start();
 
     /**
-     * @return The set of edges attached to the start of this route
+     * Returns the set of edges attached to the start of this route
      */
     public EdgeSet startEdges()
     {
@@ -1751,7 +1751,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return The offset at the start of the route that is not included in the route length
+     * Returns the offset at the start of the route that is not included in the route length
      */
     public Distance startOffset()
     {
@@ -1759,7 +1759,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return The sub-route of this route starting at the given edge (inclusive)
+     * Returns the sub-route of this route starting at the given edge (inclusive)
      */
     public Route startingAt(Edge start)
     {
@@ -1767,7 +1767,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return The sub-route of this route starting at the given edge (inclusive)
+     * Returns the sub-route of this route starting at the given edge (inclusive)
      */
     public Route startingAt(Edge start, int limit)
     {
@@ -1827,7 +1827,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return This route as a comma-separated list of way identifiers
+     * Returns this route as a comma-separated list of way identifiers
      */
     public String toWayIdentifierString()
     {
@@ -1846,12 +1846,12 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return The travel time for this route, based on free flow speed
+     * Returns the travel time for this route, based on free flow speed
      */
     public abstract Duration travelTime();
 
     /**
-     * @return Travel time for this route in milliseconds, based on free flow speed
+     * Returns travel time for this route in milliseconds, based on free flow speed
      */
     public abstract int travelTimeInMilliseconds();
 
@@ -1910,7 +1910,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return The sub-route of this route from the beginning to the ending edge (inclusive)
+     * Returns the sub-route of this route from the beginning to the ending edge (inclusive)
      */
     public Route upTo(Edge end)
     {
@@ -1927,7 +1927,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return The total number of vertexes in this route
+     * Returns the total number of vertexes in this route
      */
     public Count vertexCount()
     {
@@ -1935,7 +1935,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return The location of each vertex in this route, in order
+     * Returns the location of each vertex in this route, in order
      */
     public Iterable<Location> vertexLocations()
     {
@@ -1956,7 +1956,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return The vertexes in this route, in order
+     * Returns the vertexes in this route, in order
      */
     public Iterable<Vertex> vertexes()
     {
@@ -2006,7 +2006,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return This route with the given end offset (the amount of the last edge that is not included in this route)
+     * Returns this route with the given end offset (the amount of the last edge that is not included in this route)
      */
     public Route withEndOffset(Distance offset)
     {
@@ -2018,7 +2018,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return This route with the given start offset (the amount of the first edge that is not included in this route)
+     * Returns this route with the given start offset (the amount of the first edge that is not included in this route)
      */
     public Route withStartOffset(Distance offset)
     {
@@ -2030,12 +2030,12 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return This route without the first edge
+     * Returns this route without the first edge
      */
     public abstract Route withoutFirst();
 
     /**
-     * @return This route without the last edge
+     * Returns this route without the last edge
      */
     public abstract Route withoutLast();
 
@@ -2090,7 +2090,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if the size of this route plus the size of that route
+     * Returns true if the size of this route plus the size of that route
      */
     private boolean checkSize(Maximum maximumSize, Route that)
     {
@@ -2109,7 +2109,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if the edge has a reasonable length (at least 5 meters long)
+     * Returns true if the edge has a reasonable length (at least 5 meters long)
      */
     private boolean hasReasonableLength(Edge edge)
     {
@@ -2117,7 +2117,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if the road type and functional class are same for both edges
+     * Returns true if the road type and functional class are same for both edges
      */
     private boolean hasSameTypeAndFunctionalClass(Edge edgeFrom, Edge edgeTo)
     {
@@ -2142,7 +2142,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if the edgeFrom and edgeTo are coming from same side and parallel, and they should be not parallel
+     * Returns true if the edgeFrom and edgeTo are coming from same side and parallel, and they should be not parallel
      * with the route
      */
     private boolean isAngleValid(Edge edgeFrom, Edge edgeTo)
@@ -2214,7 +2214,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     }
 
     /**
-     * @return True if the edge is a low-priority road
+     * Returns true if the edge is a low-priority road
      */
     private boolean isLowPriorityRoad(Edge edge)
     {

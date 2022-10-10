@@ -34,12 +34,12 @@ import com.telenav.mesakit.navigation.routing.cost.operators.Weighted;
 public interface CostFunction
 {
     /**
-     * @return The cost of traveling along the given edge
+     * Returns the cost of traveling along the given edge
      */
     Cost cost(Edge edge);
 
     /**
-     * @return A cost function that returns the maximum of this cost function and that cost function
+     * Returns a cost function that returns the maximum of this cost function and that cost function
      */
     default CostFunction maximum(CostFunction that)
     {
@@ -47,7 +47,7 @@ public interface CostFunction
     }
 
     /**
-     * @return A cost function that returns the minimum of this cost function and that cost function
+     * Returns a cost function that returns the minimum of this cost function and that cost function
      */
     default CostFunction minimum(CostFunction that)
     {
@@ -55,7 +55,7 @@ public interface CostFunction
     }
 
     /**
-     * @return A cost function that adds this cost function to the given cost function
+     * Returns a cost function that adds this cost function to the given cost function
      */
     default CostFunction plus(CostFunction that)
     {
@@ -63,7 +63,7 @@ public interface CostFunction
     }
 
     /**
-     * @return This cost function multiplied by the given weight
+     * Returns this cost function multiplied by the given weight
      */
     default CostFunction weighted(Weight weight)
     {
@@ -71,7 +71,7 @@ public interface CostFunction
     }
 
     /**
-     * @return This cost function plus the given cost function at the given weight
+     * Returns this cost function plus the given cost function at the given weight
      */
     default CostFunction weightedSum(Weight weight, CostFunction that)
     {

@@ -78,7 +78,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
     public static final Extension WORLD = Extension.parseExtension(LOGGER, ".world");
 
     /**
-     * @return A {@link Problem} message detailing the problem if the given folder doesn't exist or is not of the
+     * Returns a {@link Problem} message detailing the problem if the given folder doesn't exist or is not of the
      * correct form, otherwise {@link StepSuccess}.
      */
     public static Message check(Folder folder, Check check)
@@ -190,7 +190,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
     }
 
     /**
-     * @return True if this is a temporary folder (during extraction of a new world graph)
+     * Returns true if this is a temporary folder (during extraction of a new world graph)
      */
     public boolean isTemporary()
     {
@@ -204,7 +204,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
     }
 
     /**
-     * @return The repository where this world graph folder resides
+     * Returns the repository where this world graph folder resides
      */
     public WorldGraphRepository repository()
     {

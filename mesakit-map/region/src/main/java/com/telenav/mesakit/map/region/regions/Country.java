@@ -683,7 +683,7 @@ public abstract class Country extends Region<Country> implements LongValued
     }
 
     /**
-     * @return The Country that the given location is in, or null if the location is not in any country.
+     * Returns the Country that the given location is in, or null if the location is not in any country.
      */
     public static Country forLocation(Location location)
     {
@@ -691,7 +691,7 @@ public abstract class Country extends Region<Country> implements LongValued
     }
 
     /**
-     * @return The country for the given numeric code
+     * Returns the country for the given numeric code
      */
     public static Country forNumericCountryCode(int code)
     {

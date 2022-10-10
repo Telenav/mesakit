@@ -657,7 +657,7 @@ public class Polyline implements
     }
 
     /**
-     * @return This polyline as a set of locations
+     * Returns this polyline as a set of locations
      */
     public Set<Location> asLocationSet()
     {
@@ -683,7 +683,7 @@ public class Polyline implements
     }
 
     /**
-     * @return The location on this polyline at the given distance from the start of the polyline
+     * Returns the location on this polyline at the given distance from the start of the polyline
      */
     public Location at(Distance distance)
     {
@@ -702,7 +702,7 @@ public class Polyline implements
     }
 
     /**
-     * @return The location on this polyline at the given percentage from the start of the polyline, where 0% is the
+     * Returns the location on this polyline at the given percentage from the start of the polyline, where 0% is the
      * start of the polyline, 50% is the midpoint and 100% is the end.
      */
     public Location at(Percent parameter)
@@ -711,7 +711,7 @@ public class Polyline implements
     }
 
     /**
-     * @return This polyline with the given polyline attached at the closest end
+     * Returns this polyline with the given polyline attached at the closest end
      */
     public Polyline attach(Polyline that)
     {
@@ -734,7 +734,7 @@ public class Polyline implements
     }
 
     /**
-     * @return This polyline augmented with extra interpolated points so that the maximum spacing between locations is
+     * Returns this polyline augmented with extra interpolated points so that the maximum spacing between locations is
      * {@link #DEFAULT_MAXIMUM_SHAPE_POINT_SPACING}
      */
     public Polyline augmented()
@@ -743,7 +743,7 @@ public class Polyline implements
     }
 
     /**
-     * @return This polyline augmented with extra interpolated points so that the maximum spacing between locations is
+     * Returns this polyline augmented with extra interpolated points so that the maximum spacing between locations is
      * the given distance
      */
     public Polyline augmented(Distance maximumShapePointSpacing)
@@ -786,7 +786,7 @@ public class Polyline implements
     }
 
     /**
-     * @return The amount of bend of the line. If the line bends left, the angle will be less than zero. If it bends
+     * Returns the amount of bend of the line. If the line bends left, the angle will be less than zero. If it bends
      * right, it will be greater than zero.
      */
     public Angle bend()
@@ -814,7 +814,7 @@ public class Polyline implements
     }
 
     /**
-     * @return Two {@link PolylineSection}s for this polyline bisected
+     * Returns two {@link PolylineSection}s for this polyline bisected
      */
     public List<PolylineSection> bisect()
     {
@@ -840,7 +840,7 @@ public class Polyline implements
     }
 
     /**
-     * @return The minimum bounding rectangle of all shape-points
+     * Returns the minimum bounding rectangle of all shape-points
      */
     @Override
     public final Rectangle bounds()
@@ -853,7 +853,7 @@ public class Polyline implements
     }
 
     /**
-     * @return The percentage of this polyline that is within the given distance from that polyline. Areas where the
+     * Returns the percentage of this polyline that is within the given distance from that polyline. Areas where the
      * headings of the two poly-lines deviate by more than the given maximumHeadingDeviation are not considered close,
      * nor are areas where the poly-lines are more end-to-end than side-by-side.
      */
@@ -951,7 +951,7 @@ public class Polyline implements
     }
 
     /**
-     * @return Set of duplicated segments
+     * Returns set of duplicated segments
      */
     public Set<Segment> duplicateSegments()
     {
@@ -1107,7 +1107,7 @@ public class Polyline implements
     }
 
     /**
-     * @return True if any segment is more than the given tolerance out of line with the initial segment
+     * Returns true if any segment is more than the given tolerance out of line with the initial segment
      */
     public boolean isBent(Distance within, Angle tolerance)
     {
@@ -1213,7 +1213,7 @@ public class Polyline implements
     }
 
     /**
-     * @return Any loops this polyline forms (or null if it doesn't)
+     * Returns any loops this polyline forms (or null if it doesn't)
      */
     public List<Loop> loops()
     {
@@ -1300,7 +1300,7 @@ public class Polyline implements
     }
 
     /**
-     * @return Set of overlapping (common) segments with the given polyline
+     * Returns set of overlapping (common) segments with the given polyline
      */
     public Set<Segment> overlapping(Polyline that)
     {
@@ -1329,7 +1329,7 @@ public class Polyline implements
     }
 
     /**
-     * @return True if more than one point is shared between the two poly-lines
+     * Returns true if more than one point is shared between the two poly-lines
      */
     public boolean overlaps(Polyline that)
     {
@@ -1381,7 +1381,7 @@ public class Polyline implements
     }
 
     /**
-     * @return The section of this polyline between the start and end distances
+     * Returns the section of this polyline between the start and end distances
      */
     public Polyline section(Distance start, Distance end)
     {
@@ -1431,7 +1431,7 @@ public class Polyline implements
     }
 
     /**
-     * @return The section of this polyline between the start and end index (inclusive)
+     * Returns the section of this polyline between the start and end index (inclusive)
      */
     public PolylineSection section(int startIndex, int endIndex)
     {
@@ -1439,7 +1439,7 @@ public class Polyline implements
     }
 
     /**
-     * @return The section of this polyline between the start and end locations (inclusive) in polyline order.
+     * Returns the section of this polyline between the start and end locations (inclusive) in polyline order.
      */
     public Polyline section(Location start, Location end)
     {
@@ -1464,7 +1464,7 @@ public class Polyline implements
     }
 
     /**
-     * @return This polyline sectioned into pieces no longer than maximumLength
+     * Returns this polyline sectioned into pieces no longer than maximumLength
      */
     public List<PolylineSection> sections(Distance maximumLength)
     {
@@ -1587,7 +1587,7 @@ public class Polyline implements
     }
 
     /**
-     * @return The sharpest turn angle (difference between headings of two consecutive segments) in this polyline
+     * Returns the sharpest turn angle (difference between headings of two consecutive segments) in this polyline
      */
     public SegmentPair sharpestTurnAngle()
     {
@@ -1644,7 +1644,7 @@ public class Polyline implements
     }
 
     /**
-     * @return The section of this polyline between the origin and destination points
+     * Returns the section of this polyline between the origin and destination points
      */
     public Polyline snapAndSection(Location origin, Location destination)
     {
@@ -1832,7 +1832,7 @@ public class Polyline implements
     }
 
     /**
-     * @return The section of this polyline between the start and end index (inclusive)
+     * Returns the section of this polyline between the start and end index (inclusive)
      */
     Polyline shape(int startIndex, int endIndex)
     {

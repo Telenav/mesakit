@@ -68,7 +68,7 @@ import static com.telenav.kivakit.core.collections.list.ObjectList.objectList;
     }
 
     /**
-     * @return This list of routes as a single route or null if the routes cannot be connected into a single route
+     * Returns this list of routes as a single route or null if the routes cannot be connected into a single route
      */
     public Route asRoute()
     {
@@ -76,7 +76,7 @@ import static com.telenav.kivakit.core.collections.list.ObjectList.objectList;
     }
 
     /**
-     * @return The smallest list of routes formed by connecting up all the routes in this list that are connected
+     * Returns the smallest list of routes formed by connecting up all the routes in this list that are connected
      */
     public ObjectList<Route> asRoutes()
     {

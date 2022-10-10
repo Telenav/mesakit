@@ -88,7 +88,7 @@ public class EdgeSectioner extends BaseRepeater
     }
 
     /**
-     * @return A list of sectioned edges for the given edge
+     * Returns a list of sectioned edges for the given edge
      */
     public List<Edge> section(Edge edge)
     {
@@ -134,7 +134,7 @@ public class EdgeSectioner extends BaseRepeater
     }
 
     /**
-     * @return The given list of edge sections with any ambiguities resolved by bisecting a way
+     * Returns the given list of edge sections with any ambiguities resolved by bisecting a way
      */
     private EdgeSectionList sectionAmbiguousEdges(EdgeSectionList sections)
     {
@@ -183,7 +183,7 @@ public class EdgeSectioner extends BaseRepeater
     }
 
     /**
-     * @return A list of edge sections for the given section, broken at intersections
+     * Returns a list of edge sections for the given section, broken at intersections
      */
     private EdgeSectionList sectionAtIntersections(EdgeSection section)
     {

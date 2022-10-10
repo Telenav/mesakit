@@ -116,7 +116,7 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
     }
 
     /**
-     * @return Statistics on PBF data once reading has completed
+     * Returns statistics on PBF data once reading has completed
      */
     public PbfDataStatistics dataStatistics()
     {
@@ -161,7 +161,7 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
     }
 
     /**
-     * @return The maximum node identifier encountered during reading
+     * Returns the maximum node identifier encountered during reading
      */
     public Identifier maximumNodeIdentifier()
     {
@@ -169,7 +169,7 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
     }
 
     /**
-     * @return The maximum relation identifier encountered during reading
+     * Returns the maximum relation identifier encountered during reading
      */
     public Identifier maximumRelationIdentifier()
     {
@@ -177,7 +177,7 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
     }
 
     /**
-     * @return The maximum way identifier encountered during reading
+     * Returns the maximum way identifier encountered during reading
      */
     public Identifier maximumWayIdentifier()
     {

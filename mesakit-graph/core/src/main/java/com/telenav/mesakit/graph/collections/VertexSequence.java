@@ -52,7 +52,7 @@ public class VertexSequence implements Iterable<Vertex>
     }
 
     /**
-     * @return This sequence of vertexes as a route
+     * Returns this sequence of vertexes as a route
      */
     public Route asRoute()
     {
@@ -84,7 +84,7 @@ public class VertexSequence implements Iterable<Vertex>
     }
 
     /**
-     * @return The number of vertexes in this vertex sequence
+     * Returns the number of vertexes in this vertex sequence
      */
     public Count count()
     {
@@ -92,7 +92,7 @@ public class VertexSequence implements Iterable<Vertex>
     }
 
     /**
-     * @return The set of all edges connected to vertexes in this sequence
+     * Returns the set of all edges connected to vertexes in this sequence
      */
     public EdgeSet edges()
     {
@@ -105,7 +105,7 @@ public class VertexSequence implements Iterable<Vertex>
     }
 
     /**
-     * @return The sequence of vertexes within the given bounding rectangle
+     * Returns the sequence of vertexes within the given bounding rectangle
      */
     public VertexSequence inside(Rectangle bounds)
     {
@@ -122,7 +122,7 @@ public class VertexSequence implements Iterable<Vertex>
     }
 
     /**
-     * @return The sequence of matching vertexes
+     * Returns the sequence of matching vertexes
      */
     public VertexSequence matching(Matcher<Vertex> matcher)
     {

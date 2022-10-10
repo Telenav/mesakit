@@ -134,7 +134,7 @@ public class AttributeLoader implements Unloadable, NamedObject
     }
 
     /**
-     * @return The attributes being loaded by this loader
+     * Returns the attributes being loaded by this loader
      */
     public ObjectList<Attribute<?>> attributes()
     {
@@ -233,7 +233,7 @@ public class AttributeLoader implements Unloadable, NamedObject
     }
 
     /**
-     * @return All attribute references that this loader is loading
+     * Returns all attribute references that this loader is loading
      */
     public Collection<AttributeReference<?>> references()
     {
@@ -241,7 +241,7 @@ public class AttributeLoader implements Unloadable, NamedObject
     }
 
     /**
-     * @return True if this attribute loader supports the given attribute
+     * Returns true if this attribute loader supports the given attribute
      */
     public boolean supports(Attribute<?> attribute)
     {
@@ -263,7 +263,7 @@ public class AttributeLoader implements Unloadable, NamedObject
     }
 
     /**
-     * @return The attribute reference for the given attribute
+     * Returns the attribute reference for the given attribute
      */
     private AttributeReference<?> reference(Attribute<?> attribute)
     {

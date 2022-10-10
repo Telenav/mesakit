@@ -78,7 +78,7 @@ public class PbfNodeStore
     }
 
     /**
-     * @return List of nodes in this store as native OSM {@link Node} objects
+     * Returns list of nodes in this store as native OSM {@link Node} objects
      */
     public List<PbfNode> asNodes()
     {
@@ -106,7 +106,7 @@ public class PbfNodeStore
     }
 
     /**
-     * @return True if this store contains the given location
+     * Returns true if this store contains the given location
      */
     public boolean contains(Location location)
     {
@@ -128,7 +128,7 @@ public class PbfNodeStore
     }
 
     /**
-     * @return The OSM node identifier for the given location
+     * Returns the OSM node identifier for the given location
      */
     public PbfNodeIdentifier identifier(Location location)
     {
@@ -136,7 +136,7 @@ public class PbfNodeStore
     }
 
     /**
-     * @return The {@link PbfNodeIdentifier}s in this store in sorted order.
+     * Returns the {@link PbfNodeIdentifier}s in this store in sorted order.
      */
     public Iterable<PbfNodeIdentifier> identifiers()
     {
@@ -144,7 +144,7 @@ public class PbfNodeStore
     }
 
     /**
-     * @return The location for the given identifier if it exists in this store
+     * Returns the location for the given identifier if it exists in this store
      */
     public Location location(PbfNodeIdentifier identifier)
     {
@@ -152,7 +152,7 @@ public class PbfNodeStore
     }
 
     /**
-     * @return The locations in this store
+     * Returns the locations in this store
      */
     public Iterable<Location> locations()
     {
@@ -160,7 +160,7 @@ public class PbfNodeStore
     }
 
     /**
-     * @return The next available synthetic node identifier
+     * Returns the next available synthetic node identifier
      */
     public PbfNodeIdentifier nextNodeIdentifier()
     {
@@ -168,7 +168,7 @@ public class PbfNodeStore
     }
 
     /**
-     * @return The next available synthetic way identifier
+     * Returns the next available synthetic way identifier
      */
     public PbfWayIdentifier nextWayIdentifier()
     {

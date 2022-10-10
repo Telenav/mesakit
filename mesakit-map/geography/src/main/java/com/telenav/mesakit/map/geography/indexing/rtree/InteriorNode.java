@@ -93,7 +93,7 @@ public class InteriorNode<T extends Bounded & Intersectable> extends Node<T>
     }
 
     /**
-     * @return Any elements under this interior node that intersect the given rectangle
+     * Returns any elements under this interior node that intersect the given rectangle
      */
     @Override
     public Iterator<T> intersecting(Rectangle that, Matcher<T> matcher)

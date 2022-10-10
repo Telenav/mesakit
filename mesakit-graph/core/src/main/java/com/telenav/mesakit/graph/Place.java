@@ -274,7 +274,7 @@ public class Place extends GraphElement implements
     }
 
     /**
-     * @return The {@link Continent} where this place is
+     * Returns the {@link Continent} where this place is
      */
     public Continent continent()
     {
@@ -282,7 +282,7 @@ public class Place extends GraphElement implements
     }
 
     /**
-     * @return The {@link Country} where this place is
+     * Returns the {@link Country} where this place is
      */
     public Country country()
     {
@@ -290,7 +290,7 @@ public class Place extends GraphElement implements
     }
 
     /**
-     * @return The {@link County} where this place is
+     * Returns the {@link County} where this place is
      */
     public County county()
     {
@@ -298,7 +298,7 @@ public class Place extends GraphElement implements
     }
 
     /**
-     * @return Differences in attributes between this place and the given place
+     * Returns differences in attributes between this place and the given place
      */
     public Differences differences(Place that)
     {
@@ -306,7 +306,7 @@ public class Place extends GraphElement implements
     }
 
     /**
-     * @return The distance from this place to the given located object (having a location)
+     * Returns the distance from this place to the given located object (having a location)
      */
     public Distance distanceTo(Located that)
     {
@@ -332,7 +332,7 @@ public class Place extends GraphElement implements
     }
 
     /**
-     * @return True if this place is a city
+     * Returns true if this place is a city
      */
     public boolean isCity()
     {
@@ -349,7 +349,7 @@ public class Place extends GraphElement implements
     }
 
     /**
-     * @return True if this place has a larger population than the given place
+     * Returns true if this place has a larger population than the given place
      */
     public boolean isLargerThan(Place that)
     {
@@ -357,7 +357,7 @@ public class Place extends GraphElement implements
     }
 
     /**
-     * @return True if the population is exact (rather than estimated based on the type of place)
+     * Returns true if the population is exact (rather than estimated based on the type of place)
      */
     public boolean isPopulationExact()
     {
@@ -365,7 +365,7 @@ public class Place extends GraphElement implements
     }
 
     /**
-     * @return True if this place has a smaller population than the given place
+     * Returns true if this place has a smaller population than the given place
      */
     public boolean isSmallerThan(Place that)
     {
@@ -373,7 +373,7 @@ public class Place extends GraphElement implements
     }
 
     /**
-     * @return True if this place is a town
+     * Returns true if this place is a town
      */
     public boolean isTown()
     {
@@ -381,7 +381,7 @@ public class Place extends GraphElement implements
     }
 
     /**
-     * @return True if this place is a village
+     * Returns true if this place is a village
      */
     public boolean isVillage()
     {
@@ -413,7 +413,7 @@ public class Place extends GraphElement implements
     }
 
     /**
-     * @return The {@link MetropolitanArea} where this place is (if any)
+     * Returns the {@link MetropolitanArea} where this place is (if any)
      */
     public MetropolitanArea metropolitanArea()
     {
@@ -430,7 +430,7 @@ public class Place extends GraphElement implements
     }
 
     /**
-     * @return The exact or approximate (based on the type of place) population of this place
+     * Returns the exact or approximate (based on the type of place) population of this place
      */
     public Count population()
     {
@@ -472,7 +472,7 @@ public class Place extends GraphElement implements
     }
 
     /**
-     * @return The properties of this element from its {@link DataSpecification},
+     * Returns the properties of this element from its {@link DataSpecification},
      * @see GraphElementPropertySet
      * @see StringFormattable
      * @see AsIndentedString
@@ -484,7 +484,7 @@ public class Place extends GraphElement implements
     }
 
     /**
-     * @return The regions to which this place belongs
+     * Returns the regions to which this place belongs
      */
     public List<Region<?>> regions()
     {
@@ -498,7 +498,7 @@ public class Place extends GraphElement implements
     }
 
     /**
-     * @return The state where this place is
+     * Returns the state where this place is
      */
     public State state()
     {
@@ -515,7 +515,7 @@ public class Place extends GraphElement implements
     }
 
     /**
-     * @return The type of place: city, suburb, neighborhood, town, village or hamlet
+     * Returns the type of place: city, suburb, neighborhood, town, village or hamlet
      */
     public Type type()
     {

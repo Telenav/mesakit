@@ -32,7 +32,7 @@ public class BooleanAttribute extends Node implements BooleanExpression
     }
 
     /**
-     * @return The value extracted from the edge on top of the stack
+     * Returns the value extracted from the edge on top of the stack
      */
     @Override
     public boolean evaluate()

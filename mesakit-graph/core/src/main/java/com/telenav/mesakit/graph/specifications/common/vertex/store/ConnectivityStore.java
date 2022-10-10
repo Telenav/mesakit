@@ -235,7 +235,7 @@ public class ConnectivityStore implements
     }
 
     /**
-     * @return The total number of edges attached to the given vertex
+     * Returns the total number of edges attached to the given vertex
      */
     public final int retrieveEdgeCount(int vertexIndex)
     {
@@ -251,7 +251,7 @@ public class ConnectivityStore implements
     }
 
     /**
-     * @return The total number of "in" edges, including two-way roads
+     * Returns the total number of "in" edges, including two-way roads
      */
     public final int retrieveInEdgeCount(int vertexIndex)
     {
@@ -260,7 +260,7 @@ public class ConnectivityStore implements
     }
 
     /**
-     * @return A sequences of "in" edges to the given vertex
+     * Returns a sequences of "in" edges to the given vertex
      */
     public EdgeSequence retrieveInEdgeSequence(int vertexIndex)
     {
@@ -269,7 +269,7 @@ public class ConnectivityStore implements
     }
 
     /**
-     * @return The edge set for the given index
+     * Returns the edge set for the given index
      */
     public EdgeSet retrieveInEdges(int vertexIndex)
     {
@@ -278,7 +278,7 @@ public class ConnectivityStore implements
     }
 
     /**
-     * @return The total number of "out" edges, including two-way roads
+     * Returns the total number of "out" edges, including two-way roads
      */
     public final int retrieveOutEdgeCount(int vertexIndex)
     {
@@ -287,7 +287,7 @@ public class ConnectivityStore implements
     }
 
     /**
-     * @return The sequence of "out" edges for the given vertex
+     * Returns the sequence of "out" edges for the given vertex
      */
     public EdgeSequence retrieveOutEdgeSequence(int vertexIndex)
     {
@@ -296,7 +296,7 @@ public class ConnectivityStore implements
     }
 
     /**
-     * @return The edge set for the given index
+     * Returns the edge set for the given index
      */
     public EdgeSet retrieveOutEdges(int vertexIndex)
     {
@@ -305,7 +305,7 @@ public class ConnectivityStore implements
     }
 
     /**
-     * @return The number of two-way edges attached to the given vertex
+     * Returns the number of two-way edges attached to the given vertex
      */
     public final int retrieveTwoWayEdgeCount(int vertexIndex)
     {
@@ -314,7 +314,7 @@ public class ConnectivityStore implements
     }
 
     /**
-     * @return An iterator over the two-way edges for the given vertex
+     * Returns an iterator over the two-way edges for the given vertex
      */
     public EdgeSequence retrieveTwoWayEdgeSequence(int vertexIndex)
     {
@@ -404,7 +404,7 @@ public class ConnectivityStore implements
     }
 
     /**
-     * @return True if the given "from" and "to" vertex identifiers are connected
+     * Returns true if the given "from" and "to" vertex identifiers are connected
      */
     public boolean temporaryIsConnected(int fromVertexIndex, int toVertexIndex)
     {
@@ -440,7 +440,7 @@ public class ConnectivityStore implements
     }
 
     /**
-     * @return The number of vertexes in this connectivity store
+     * Returns the number of vertexes in this connectivity store
      */
     public int vertexCount()
     {
@@ -456,7 +456,7 @@ public class ConnectivityStore implements
     }
 
     /**
-     * @return The edge store associated with the graph associated with this store
+     * Returns the edge store associated with the graph associated with this store
      */
     private EdgeStore edgeStore()
     {
@@ -464,7 +464,7 @@ public class ConnectivityStore implements
     }
 
     /**
-     * @return The sequence of all edges for the given vertex
+     * Returns the sequence of all edges for the given vertex
      */
     private EdgeSequence retrieveEdgeSequence(int vertexIndex, Sequence sequence)
     {
@@ -549,7 +549,7 @@ public class ConnectivityStore implements
     }
 
     /**
-     * @return The set of all inbound edge indexes connected to the given vertex index
+     * Returns the set of all inbound edge indexes connected to the given vertex index
      */
     private Set<Integer> temporaryInEdges(int vertexIndex)
     {
@@ -576,7 +576,7 @@ public class ConnectivityStore implements
     }
 
     /**
-     * @return The set of "out" edges for the given vertex index
+     * Returns the set of "out" edges for the given vertex index
      */
     private Set<Integer> temporaryOutEdges(int vertexIndex)
     {
@@ -639,7 +639,7 @@ public class ConnectivityStore implements
     }
 
     /**
-     * @return The vertex store associated with the graph associated with this store
+     * Returns the vertex store associated with the graph associated with this store
      */
     private VertexStore vertexStore()
     {

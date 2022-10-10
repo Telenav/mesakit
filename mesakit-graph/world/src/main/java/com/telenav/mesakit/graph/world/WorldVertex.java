@@ -319,7 +319,7 @@ public class WorldVertex extends Vertex
     }
 
     /**
-     * @return Clipped vertexes at the same exact location in neighboring cells
+     * Returns clipped vertexes at the same exact location in neighboring cells
      */
     private List<WorldVertex> equivalentNeighboringVertexes()
     {

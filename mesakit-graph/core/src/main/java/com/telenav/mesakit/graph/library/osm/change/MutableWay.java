@@ -275,7 +275,7 @@ public class MutableWay extends BaseMutableWay
     }
 
     /**
-     * @return The shape of this modified way
+     * Returns the shape of this modified way
      */
     public Polyline shape()
     {

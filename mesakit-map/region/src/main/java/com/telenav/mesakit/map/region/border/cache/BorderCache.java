@@ -627,7 +627,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
     }
 
     /**
-     * @return True if the polygon spatial index could be read from the CACHED_SPATIAL_INDEX file.
+     * Returns true if the polygon spatial index could be read from the CACHED_SPATIAL_INDEX file.
      */
     @SuppressWarnings("unchecked")
     private boolean loadBordersFromCache()

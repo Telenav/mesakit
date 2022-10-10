@@ -104,7 +104,7 @@ public class RoadName extends Name
     }
 
     /**
-     * @return The direction the road is headed. For example, "I-5 Northbound" will return Direction.NORTH.
+     * Returns the direction the road is headed. For example, "I-5 Northbound" will return Direction.NORTH.
      */
     public Direction extractDirection()
     {
@@ -112,7 +112,7 @@ public class RoadName extends Name
     }
 
     /**
-     * @return This road name without any direction or octant information. For example, "West Greenlake Way North"
+     * Returns this road name without any direction or octant information. For example, "West Greenlake Way North"
      * becomes "Greenlake Way"
      */
     @SuppressWarnings("SpellCheckingInspection")
@@ -122,7 +122,7 @@ public class RoadName extends Name
     }
 
     /**
-     * @return The octant (quadrant but including all 8 directions) of a city that a road is in, for example "North 1st
+     * Returns the octant (quadrant but including all 8 directions) of a city that a road is in, for example "North 1st
      * Street" or "Westlake Avenue North"
      */
     @SuppressWarnings("SpellCheckingInspection")
@@ -220,7 +220,7 @@ public class RoadName extends Name
     }
 
     /**
-     * @return A street name object stripped of the standard highway identifiers and descriptors.
+     * Returns a street name object stripped of the standard highway identifiers and descriptors.
      */
     public RoadName withoutHighwayIdentifiers()
     {
@@ -273,7 +273,7 @@ public class RoadName extends Name
     }
 
     /**
-     * @return True if the heading difference between the two directions is no more than 45 degree, such as EAST and
+     * Returns true if the heading difference between the two directions is no more than 45 degree, such as EAST and
      * NORTHEAST.
      */
     private boolean isCloseTo(Direction a, Direction b)

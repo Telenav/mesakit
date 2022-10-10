@@ -55,7 +55,7 @@ public class JunctionEdgeOptimizer
     }
 
     /**
-     * @return another vertex of edge other than the shared vertex of edge and junctionEdge
+     * Returns another vertex of edge other than the shared vertex of edge and junctionEdge
      */
     private Vertex anotherVertex(Edge edge, Edge junctionEdge)
     {
@@ -80,7 +80,7 @@ public class JunctionEdgeOptimizer
     }
 
     /**
-     * @return Ture if the difference of length is less or equals to 15 meters
+     * Returns ture if the difference of length is less or equals to 15 meters
      */
     private boolean isLengthValid(Edge edge, Edge junctionEdge)
     {

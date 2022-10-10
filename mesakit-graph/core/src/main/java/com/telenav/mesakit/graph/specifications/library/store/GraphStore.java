@@ -126,7 +126,7 @@ public abstract class GraphStore extends BaseRepeater implements Unloadable, Val
     }
 
     /**
-     * @return The bounding rectangle around all elements in this graph.
+     * Returns the bounding rectangle around all elements in this graph.
      */
     public final Rectangle bounds()
     {
@@ -163,7 +163,7 @@ public abstract class GraphStore extends BaseRepeater implements Unloadable, Val
     }
 
     /**
-     * @return The edge store used to store edge information, generally in a compressed format in memory.
+     * Returns the edge store used to store edge information, generally in a compressed format in memory.
      */
     public final EdgeStore edgeStore()
     {
@@ -186,7 +186,7 @@ public abstract class GraphStore extends BaseRepeater implements Unloadable, Val
     }
 
     /**
-     * @return True if all graph element stores are empty
+     * Returns true if all graph element stores are empty
      */
     public final boolean isEmpty()
     {
@@ -201,7 +201,7 @@ public abstract class GraphStore extends BaseRepeater implements Unloadable, Val
     }
 
     /**
-     * @return The graph's metadata with accurate counts for sub-stores
+     * Returns the graph's metadata with accurate counts for sub-stores
      */
     public final Metadata metadata()
     {
@@ -249,7 +249,7 @@ public abstract class GraphStore extends BaseRepeater implements Unloadable, Val
     }
 
     /**
-     * @return The tag codec used in storing tag data for this graph
+     * Returns the tag codec used in storing tag data for this graph
      */
     public final PbfTagCodec tagCodec()
     {

@@ -80,7 +80,7 @@ public class PbfStringListTagCodec implements PbfTagCodec
     }
 
     /**
-     * @return A {@link PbfTagList} decompressed from the given {@link BitReader} using the trained Huffman codec
+     * Returns a {@link PbfTagList} decompressed from the given {@link BitReader} using the trained Huffman codec
      */
     @Override
     public PbfTagList decode(ByteList input)
@@ -109,7 +109,7 @@ public class PbfStringListTagCodec implements PbfTagCodec
     }
 
     /**
-     * @return A {@link PbfTagList} decompressed from the given {@link BitReader} using the trained Huffman codec
+     * Returns a {@link PbfTagList} decompressed from the given {@link BitReader} using the trained Huffman codec
      */
     @Override
     public PbfTagMap decodeMap(ByteList input)

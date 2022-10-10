@@ -40,40 +40,40 @@ import com.telenav.mesakit.graph.specifications.common.vertex.store.VertexStore;
 public interface AttributeStore extends NamedObject
 {
     /**
-     * @return The archive associated with the attribute store
+     * Returns the archive associated with the attribute store
      */
     GraphArchive archive();
 
     /**
-     * @return The attribute loader responsible for loading and unloading individual attributes as referenced by {@link
+     * Returns the attribute loader responsible for loading and unloading individual attributes as referenced by {@link
      * AttributeReference}
      */
     AttributeLoader attributeLoader();
 
     /**
-     * @return A list of attributes supported by this store
+     * Returns a list of attributes supported by this store
      */
     AttributeList attributes();
 
     /**
-     * @return The graph that owns this store
+     * Returns the graph that owns this store
      */
     Graph graph();
 
     /**
-     * @return The estimated size of this attribute store at allocation time. Returning a more accurate estimated size
+     * Returns the estimated size of this attribute store at allocation time. Returning a more accurate estimated size
      * can reduce the number of re-allocations that occur. In large attribute stores, it can be expensive to grow
      * dynamic data structures.
      */
     Estimate initialSize();
 
     /**
-     * @return The number of attributes in this store
+     * Returns the number of attributes in this store
      */
     int size();
 
     /**
-     * @return True if this store supports the given attribute
+     * Returns true if this store supports the given attribute
      */
     boolean supports(Attribute<?> attribute);
 }

@@ -31,7 +31,7 @@ import com.telenav.mesakit.graph.Route;
 public interface RouteLimiter
 {
     /**
-     * @return True if the given route can be extended by the given edge
+     * Returns true if the given route can be extended by the given edge
      */
     boolean canExtendRoute(Route route, Edge edge);
 }

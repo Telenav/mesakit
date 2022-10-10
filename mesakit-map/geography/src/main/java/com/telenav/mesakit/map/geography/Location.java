@@ -294,7 +294,7 @@ public class Location implements
     }
 
     /**
-     * @return A location for the given long value in DM7
+     * Returns a location for the given long value in DM7
      */
     public static Location fromLong(long locationInDm7)
     {
@@ -335,7 +335,7 @@ public class Location implements
     }
 
     /**
-     * @return The given latitude and longitude as a single long value, with latitude in the high 32 bits and longitude
+     * Returns the given latitude and longitude as a single long value, with latitude in the high 32 bits and longitude
      * in the low 32 bits. The latitude and longitude may be in any {@link Precision}.
      */
     public static long toLong(int latitude, int longitude)
@@ -652,7 +652,7 @@ public class Location implements
     }
 
     /**
-     * @return This location as a single long value, with latitude integer in the high 32 bits and longitude integer
+     * Returns this location as a single long value, with latitude integer in the high 32 bits and longitude integer
      * value in the low 32 bits. The high and low values are either 6 or 7 decimals. If decimals is 0 (probably due to
      * an uninitialized serialized field), then 6 is assumed to allow for easy defaulting of old 6 decimal graph api
      * values.
@@ -676,7 +676,7 @@ public class Location implements
     }
 
     /**
-     * @return A rectangle including the origin and this point
+     * Returns a rectangle including the origin and this point
      */
     public Rectangle asRectangle()
     {
@@ -707,7 +707,7 @@ public class Location implements
     }
 
     /**
-     * @return A zero-area bounding rectangle at this location, which can be expanded with
+     * Returns a zero-area bounding rectangle at this location, which can be expanded with
      * {@link Rectangle#expanded(Distance)}
      */
     @Override
@@ -722,7 +722,7 @@ public class Location implements
     }
 
     /**
-     * @return The distance from this location to the given {@link Located} object
+     * Returns the distance from this location to the given {@link Located} object
      */
     public Distance distanceTo(Located that)
     {
@@ -766,7 +766,7 @@ public class Location implements
     }
 
     /**
-     * @return The distance to the given location using an efficient formula consistent with an equirectangular
+     * Returns the distance to the given location using an efficient formula consistent with an equirectangular
      * projection. NOTE: This formula is accurate enough for "short" distances (up to a few kilometers), but gets less
      * and less accurate as the latitude difference increases.
      * @see #equirectangularDistanceToInMillimeters(Location)
@@ -795,7 +795,7 @@ public class Location implements
     }
 
     /**
-     * @return The distance to the given location using the Haversine formula. Adapted from:
+     * Returns the distance to the given location using the Haversine formula. Adapted from:
      * http://www.movable-type.co.uk/scripts/latlong.html
      */
     @SuppressWarnings("JavadocLinkAsPlainText")
@@ -863,7 +863,7 @@ public class Location implements
     }
 
     /**
-     * @return True if the given location is as close or closer than the given distance from this location
+     * Returns true if the given location is as close or closer than the given distance from this location
      */
     public boolean isClose(Location that, Distance distance)
     {
@@ -871,7 +871,7 @@ public class Location implements
     }
 
     /**
-     * @return True if the location is 0.0, 0.0
+     * Returns true if the location is 0.0, 0.0
      */
     public boolean isOrigin()
     {
@@ -879,7 +879,7 @@ public class Location implements
     }
 
     /**
-     * @return The latitude of this location
+     * Returns the latitude of this location
      */
     public Latitude latitude()
     {
@@ -926,7 +926,7 @@ public class Location implements
     }
 
     /**
-     * @return The longitude of this location
+     * Returns the longitude of this location
      */
     public Longitude longitude()
     {

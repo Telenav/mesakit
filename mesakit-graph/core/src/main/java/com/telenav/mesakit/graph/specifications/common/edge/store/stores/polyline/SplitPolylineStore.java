@@ -131,7 +131,7 @@ public class SplitPolylineStore implements
     }
 
     /**
-     * @return The polyline for the given index
+     * Returns the polyline for the given index
      */
     public Polyline get(Indexed indexed)
     {
@@ -139,7 +139,7 @@ public class SplitPolylineStore implements
     }
 
     /**
-     * @return The polyline for the given index
+     * Returns the polyline for the given index
      */
     public Polyline get(int index)
     {

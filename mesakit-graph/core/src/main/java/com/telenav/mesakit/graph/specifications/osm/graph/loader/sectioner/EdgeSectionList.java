@@ -33,7 +33,7 @@ public class EdgeSectionList extends ArrayList<EdgeSection>
     private static final long serialVersionUID = -7153302710382047193L;
 
     /**
-     * @return A list of edges created from the edge sections in this list with sequential identifiers assigned. For
+     * Returns a list of edges created from the edge sections in this list with sequential identifiers assigned. For
      * example, if the edge identifier of the sectioned edge were 1234 000 000, a sequence of edges returned by this
      * method might be 1234 000 000, 1234 000 001, 1234 000 002, etc.
      */

@@ -416,7 +416,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         var discardedWays = new MutableCount();
         var discardedRelations = new MutableCount();
 
-        var dataSource = dataSourceFactory().newInstance(metadata);
+        var dataSource = dataSourceFactory().map(metadata);
         metadata.configure(dataSource);
         dataSource.process(new PbfDataProcessor()
         {
@@ -624,18 +624,18 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     }
 
     /**
-     * @return True if the given node should be processed
+     * Returns true if the given node should be processed
      */
     @SuppressWarnings({ "SameReturnValue" })
     protected abstract ProcessingDirective onProcessingNode(GraphStore store, PbfNode node);
 
     /**
-     * @return True if the given relation should be processed
+     * Returns true if the given relation should be processed
      */
     protected abstract ProcessingDirective onProcessingRelation(GraphStore store, PbfRelation relation);
 
     /**
-     * @return True if the given way should be processed
+     * Returns true if the given way should be processed
      */
     protected abstract ProcessingDirective onProcessingWay(GraphStore store, PbfWay way);
 
@@ -690,7 +690,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     }
 
     /**
-     * @return A single chunk for the given way
+     * Returns a single chunk for the given way
      */
     private WayChunk chunk(GraphStore store, PbfWay way)
     {
@@ -764,7 +764,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     }
 
     /**
-     * @return Breaks the given way into chunks if it crosses the clean-cutting region border
+     * Returns breaks the given way into chunks if it crosses the clean-cutting region border
      */
     private List<WayChunk> cleanCut(GraphStore store, PbfWay way)
     {
@@ -917,7 +917,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     }
 
     /**
-     * @return A list of {@link HeavyWeightEdge}s for the given way. The tag map is just passed in for the sake of
+     * Returns a list of {@link HeavyWeightEdge}s for the given way. The tag map is just passed in for the sake of
      * efficiency since we already have it in the calling code.
      */
     @SuppressWarnings("SpellCheckingInspection")
@@ -1237,7 +1237,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     }
 
     /**
-     * @return The given way broken into chunks if we're clean cutting, and it crosses the clean-cutting region, or in a
+     * Returns the given way broken into chunks if we're clean cutting, and it crosses the clean-cutting region, or in a
      * single chunk if we're not clean-cutting.
      */
     private List<WayChunk> wayChunks(GraphStore store, PbfWay way)

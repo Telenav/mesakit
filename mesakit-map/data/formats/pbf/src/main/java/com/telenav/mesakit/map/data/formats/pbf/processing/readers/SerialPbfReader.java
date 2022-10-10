@@ -79,7 +79,7 @@ public class SerialPbfReader extends BasePbfReader
     }
 
     /**
-     * @return Callback implementation for {@link OsmosisReader}
+     * Returns callback implementation for {@link OsmosisReader}
      */
     private Sink sink()
     {

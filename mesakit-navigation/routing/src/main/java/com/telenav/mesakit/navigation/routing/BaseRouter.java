@@ -46,12 +46,12 @@ public abstract class BaseRouter implements Router
     }
 
     /**
-     * @return The route from start to end
+     * Returns the route from start to end
      */
     public abstract RoutingResponse onFindRoute(RoutingRequest request);
 
     /**
-     * @return A routing result if trivial routing is possible, Null otherwise.
+     * Returns a routing result if trivial routing is possible, Null otherwise.
      */
     private RoutingResponse trivialRoute(RoutingRequest request)
     {

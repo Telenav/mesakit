@@ -56,7 +56,7 @@ public class GraphSnapper
     }
 
     /**
-     * @return The given location and heading snapped to the best edge, or null if there is no reasonable snap
+     * Returns the given location and heading snapped to the best edge, or null if there is no reasonable snap
      */
     public GraphSnap snap(Location location, Heading heading)
     {

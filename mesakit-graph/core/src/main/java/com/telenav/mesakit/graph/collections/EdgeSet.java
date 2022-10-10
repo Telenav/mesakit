@@ -82,7 +82,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
     /**
-     * @return An edge set for a collection of edges
+     * Returns an edge set for a collection of edges
      */
     @SuppressWarnings("unchecked")
     public static EdgeSet forCollection(Maximum maximumSize, Collection<? extends Edge> collection)
@@ -112,7 +112,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return An edge set for a sequence of edges
+     * Returns an edge set for a sequence of edges
      */
     public static EdgeSet forIterable(Estimate estimate, Iterable<? extends Edge> collection)
     {
@@ -140,7 +140,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return An edge set containing a single edge
+     * Returns an edge set containing a single edge
      */
     public static EdgeSet singleton(Edge edge)
     {
@@ -283,7 +283,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return This edge set as a primitive {@link LongArray} of edge identifiers
+     * Returns this edge set as a primitive {@link LongArray} of edge identifiers
      */
     public LongArray asIdentifierArray()
     {
@@ -316,7 +316,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return This set of edges as one or more routes, if it can be assembled into one, null if it cannot.
+     * Returns this set of edges as one or more routes, if it can be assembled into one, null if it cannot.
      */
     public List<Route> asRoutes()
     {
@@ -324,7 +324,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return This edge set as a sequence
+     * Returns this edge set as a sequence
      */
     public EdgeSequence asSequence()
     {
@@ -377,7 +377,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The smallest rectangle that contains all edges in this set
+     * Returns the smallest rectangle that contains all edges in this set
      */
     public Rectangle bounds()
     {
@@ -440,7 +440,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return True if this set contains any edge in the given collection
+     * Returns true if this set contains any edge in the given collection
      */
     public boolean containsAny(Collection<Edge> edges)
     {
@@ -455,7 +455,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The number of edges in this set
+     * Returns the number of edges in this set
      */
     public Count count()
     {
@@ -463,7 +463,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The differences that would turn this edge set into that edge set
+     * Returns the differences that would turn this edge set into that edge set
      */
     public Differences differences(EdgeSet that)
     {
@@ -486,7 +486,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return A primitive iterator over the edge indexes in this set (for internal use only)
+     * Returns a primitive iterator over the edge indexes in this set (for internal use only)
      */
     public IntIterator edgeIndexIterator()
     {
@@ -523,7 +523,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The first edge in this set (an arbitrary edge since sets are not ordered)
+     * Returns the first edge in this set (an arbitrary edge since sets are not ordered)
      */
     public Edge first()
     {
@@ -545,7 +545,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return True if any edge in this set is one way
+     * Returns true if any edge in this set is one way
      */
     public boolean hasOneWay()
     {
@@ -560,7 +560,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return True if any edge in this set is two-way
+     * Returns true if any edge in this set is two-way
      */
     public boolean hasTwoWay()
     {
@@ -584,7 +584,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The set of edges in this set that are in edges to the given vertex
+     * Returns the set of edges in this set that are in edges to the given vertex
      */
     public EdgeSet inEdges(Vertex vertex)
     {
@@ -597,7 +597,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The set of all edges in this set that are also in the given set
+     * Returns the set of all edges in this set that are also in the given set
      */
     public EdgeSet intersection(EdgeSet that)
     {
@@ -614,7 +614,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return True if every edge in this set is one way
+     * Returns true if every edge in this set is one way
      */
     public boolean isOneWay()
     {
@@ -629,7 +629,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return True if every edge in this set is two-way
+     * Returns true if every edge in this set is two-way
      */
     public boolean isTwoWay()
     {
@@ -653,7 +653,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return All the edge identifiers in this edge set joined into a string using the given separator. The order of
+     * Returns all the edge identifiers in this edge set joined into a string using the given separator. The order of
      * identifiers is undefined.
      */
     public String joinedIdentifiers(String separator)
@@ -662,7 +662,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The total length of all edges in this set
+     * Returns the total length of all edges in this set
      */
     public Distance length()
     {
@@ -675,7 +675,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return An edge set of the {@link LogicalSet} of all matching edges
+     * Returns an edge set of the {@link LogicalSet} of all matching edges
      */
     public EdgeSet logicalSetMatching(Matcher<Edge> matcher)
     {
@@ -683,7 +683,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The set of edges matching the given matcher
+     * Returns the set of edges matching the given matcher
      */
     public EdgeSet matching(Matcher<Edge> matcher)
     {
@@ -699,7 +699,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The maximum size of this edge set
+     * Returns the maximum size of this edge set
      */
     public Maximum maximumSize()
     {
@@ -707,7 +707,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The most important edge in this set, as determined by {@link Edge#isMoreImportantThan(Edge)}
+     * Returns the most important edge in this set, as determined by {@link Edge#isMoreImportantThan(Edge)}
      */
     public Edge mostImportant()
     {
@@ -723,7 +723,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return Set of all edges in this set that are one-way
+     * Returns set of all edges in this set that are one-way
      */
     public EdgeSet oneWayEdges()
     {
@@ -731,7 +731,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The set of all one way edges in this set that lead to the given vertex
+     * Returns the set of all one way edges in this set that lead to the given vertex
      */
     public EdgeSet oneWayInEdges(Vertex vertex)
     {
@@ -739,7 +739,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The set of all one way edges in this set that depart from the given vertex
+     * Returns the set of all one way edges in this set that depart from the given vertex
      */
     public EdgeSet oneWayOutEdges(Vertex vertex)
     {
@@ -747,7 +747,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The set of all edges in this set that depart from the given vertex
+     * Returns the set of all edges in this set that depart from the given vertex
      */
     public EdgeSet outEdges(Vertex vertex)
     {
@@ -755,7 +755,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The edge in this set (most) parallel to the given edge (but never the given edge itself) or null if none
+     * Returns the edge in this set (most) parallel to the given edge (but never the given edge itself) or null if none
      * are considered parallel
      */
     public Edge parallelTo(Edge that)
@@ -764,7 +764,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The edge in this set most parallel to the given edge (but never the given edge itself) or null if none
+     * Returns the edge in this set most parallel to the given edge (but never the given edge itself) or null if none
      * are considered parallel
      */
     public Edge parallelTo(Edge that, Angle tolerance)
@@ -824,7 +824,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The set of all edges in this set reversed. Edges that are not reversible (one way edges) are discarded.
+     * Returns the set of all edges in this set reversed. Edges that are not reversible (one way edges) are discarded.
      */
     public EdgeSet reversed()
     {
@@ -902,7 +902,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return Set of all edges in this set that are two-way
+     * Returns set of all edges in this set that are two-way
      */
     public EdgeSet twoWayEdges()
     {
@@ -910,7 +910,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The union of this edge set with another set of edges
+     * Returns the union of this edge set with another set of edges
      */
     public EdgeSet union(EdgeSet edges)
     {
@@ -918,7 +918,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The set of all {@link Vertex}es referenced by edges in this set
+     * Returns the set of all {@link Vertex}es referenced by edges in this set
      */
     public VertexSet vertexes()
     {
@@ -942,7 +942,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The set of edges with the given road name
+     * Returns the set of edges with the given road name
      */
     public EdgeSet withRoadName(RoadName name)
     {
@@ -954,7 +954,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The set of edges within the given bounds
+     * Returns the set of edges within the given bounds
      */
     public EdgeSet within(Rectangle bounds)
     {
@@ -962,7 +962,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return This set of edges without the given edge
+     * Returns this set of edges without the given edge
      */
     public EdgeSet without(Edge exclude)
     {
@@ -970,7 +970,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return The set of all edges that don't match
+     * Returns the set of all edges that don't match
      */
     public EdgeSet without(Matcher<Edge> matcher)
     {
@@ -978,7 +978,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     }
 
     /**
-     * @return This set of edges without the given set of edges
+     * Returns this set of edges without the given set of edges
      */
     public EdgeSet without(Set<Edge> exclude)
     {

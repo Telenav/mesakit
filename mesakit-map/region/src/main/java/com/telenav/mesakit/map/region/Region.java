@@ -648,7 +648,7 @@ public abstract class Region<T extends Region<T>> implements
     }
 
     /**
-     * @return This region's name as a file name
+     * Returns this region's name as a file name
      */
     @KivaKitIncludeProperty
     public FileName fileName()
@@ -657,7 +657,7 @@ public abstract class Region<T extends Region<T>> implements
     }
 
     /**
-     * @return The folder path of this region
+     * Returns the folder path of this region
      */
     @KivaKitIncludeProperty
     public Folder folder()
@@ -756,7 +756,7 @@ public abstract class Region<T extends Region<T>> implements
     }
 
     /**
-     * @return True if this region is an island having an isolated road network
+     * Returns true if this region is an island having an isolated road network
      */
     public boolean isIsland()
     {

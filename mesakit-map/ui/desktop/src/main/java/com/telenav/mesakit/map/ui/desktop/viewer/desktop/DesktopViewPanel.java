@@ -682,7 +682,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     }
 
     /**
-     * @return The height for the given width fitting the aspect ratio of the window
+     * Returns the height for the given width fitting the aspect ratio of the window
      */
     private double heightForWidth(double width)
     {
@@ -690,7 +690,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     }
 
     /**
-     * @return True while the mouse is being dragged
+     * Returns true while the mouse is being dragged
      */
     private boolean isDragging()
     {
@@ -698,7 +698,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     }
 
     /**
-     * @return True if panning is going on
+     * Returns true if panning is going on
      */
     private boolean isPanning()
     {
@@ -730,7 +730,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     }
 
     /**
-     * @return The view area to display for the given center location and zoom level
+     * Returns the view area to display for the given center location and zoom level
      */
     private Rectangle viewArea(Location centerLocation,
                                ZoomLevel zoom)

@@ -82,7 +82,7 @@ public class RouteBuilder
     }
 
     /**
-     * @return True if the given edge can be appended to the route being built
+     * Returns true if the given edge can be appended to the route being built
      */
     public boolean canAppend(Edge edge)
     {
@@ -90,7 +90,7 @@ public class RouteBuilder
     }
 
     /**
-     * @return True if the given route can be appended to the route being built
+     * Returns true if the given route can be appended to the route being built
      */
     public boolean canAppend(Route route)
     {
@@ -112,7 +112,7 @@ public class RouteBuilder
     }
 
     /**
-     * @return True if there is a valid route that can be constructed by calling {@link #route()}
+     * Returns true if there is a valid route that can be constructed by calling {@link #route()}
      */
     public boolean isValid()
     {
@@ -120,7 +120,7 @@ public class RouteBuilder
     }
 
     /**
-     * @return The total length of the route built so far
+     * Returns the total length of the route built so far
      */
     public Distance length()
     {
@@ -155,7 +155,7 @@ public class RouteBuilder
     }
 
     /**
-     * @return The route that has been built
+     * Returns the route that has been built
      */
     public Route route()
     {
@@ -235,7 +235,7 @@ public class RouteBuilder
     }
 
     /**
-     * @return The number of edges in this route so far
+     * Returns the number of edges in this route so far
      */
     public int size()
     {

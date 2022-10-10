@@ -10,7 +10,7 @@ import com.telenav.mesakit.graph.query.program.Expression;
 public interface ValueExpression extends Expression
 {
     /**
-     * @return The value from evaluating the expression
+     * Returns the value from evaluating the expression
      */
     Value evaluate();
 }

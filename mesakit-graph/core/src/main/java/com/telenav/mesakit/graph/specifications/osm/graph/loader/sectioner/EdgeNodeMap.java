@@ -60,7 +60,7 @@ public class EdgeNodeMap
     }
 
     /**
-     * @return The list of node identifiers (in order) for the given edge identifier
+     * Returns the list of node identifiers (in order) for the given edge identifier
      */
     public List<MapNodeIdentifier> get(EdgeIdentifier identifier)
     {

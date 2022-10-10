@@ -115,7 +115,7 @@ public class IntersectionMap implements Named
     }
 
     /**
-     * @return True if the given node identifier is an intersection (has more than TWO references, one for an incoming
+     * Returns true if the given node identifier is an intersection (has more than TWO references, one for an incoming
      * way and one for an outgoing way)
      */
     public boolean isIntersection(long nodeIdentifier)

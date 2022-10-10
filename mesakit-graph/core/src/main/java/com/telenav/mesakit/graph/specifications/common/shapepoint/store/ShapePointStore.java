@@ -42,7 +42,7 @@ public class ShapePointStore extends NodeStore<ShapePoint>
     }
 
     /**
-     * @return Any shape point associated with the given location
+     * Returns any shape point associated with the given location
      */
     public ShapePoint forLocation(Location location)
     {

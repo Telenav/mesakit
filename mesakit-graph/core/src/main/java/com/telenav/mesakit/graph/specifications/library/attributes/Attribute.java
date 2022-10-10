@@ -82,7 +82,7 @@ public class Attribute<T> implements Comparable<Attribute<T>>
     }
 
     /**
-     * @return The attribute's identifier. This is a value from 1 to n, where n is the total number of attributes. This
+     * Returns the attribute's identifier. This is a value from 1 to n, where n is the total number of attributes. This
      * identifier is used by the attribute loader as an index to determine what attributes are supported.
      */
     public int identifier()
@@ -91,7 +91,7 @@ public class Attribute<T> implements Comparable<Attribute<T>>
     }
 
     /**
-     * @return The name of the attribute
+     * Returns the name of the attribute
      */
     public String name()
     {

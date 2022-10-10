@@ -97,7 +97,7 @@ public enum RoadSubType implements Identifiable
     }
 
     /**
-     * @return The identifier for the given road subtype or NULL.identifier if the subtype is null
+     * Returns the identifier for the given road subtype or NULL.identifier if the subtype is null
      */
     public static int identifierFor(RoadSubType subType)
     {

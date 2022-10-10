@@ -59,7 +59,7 @@ public class ConsoleRoutingDebugger implements RoutingDebugger
     }
 
     /**
-     * @return True if the given route spans more than one world cell
+     * Returns true if the given route spans more than one world cell
      */
     private boolean oneCell(Route route)
     {

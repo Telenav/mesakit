@@ -107,7 +107,7 @@ public abstract class GraphElementSpatialIndex<T extends GraphElement>
     }
 
     /**
-     * @return All elements completely contained by the given bounding rectangle which match the given matcher
+     * Returns all elements completely contained by the given bounding rectangle which match the given matcher
      */
     public Iterable<T> inside(Rectangle bounds, Matcher<T> matcher)
     {
@@ -137,7 +137,7 @@ public abstract class GraphElementSpatialIndex<T extends GraphElement>
     }
 
     /**
-     * @return All elements completely contained by the given bounding rectangle
+     * Returns all elements completely contained by the given bounding rectangle
      */
     public Iterable<T> inside(Rectangle bounds)
     {
@@ -145,7 +145,7 @@ public abstract class GraphElementSpatialIndex<T extends GraphElement>
     }
 
     /**
-     * @return The number of elements in this index
+     * Returns the number of elements in this index
      */
     public int size()
     {
@@ -153,7 +153,7 @@ public abstract class GraphElementSpatialIndex<T extends GraphElement>
     }
 
     /**
-     * @return The graph element for the given identifier
+     * Returns the graph element for the given identifier
      */
     protected abstract T forIdentifier(long identifier);
 

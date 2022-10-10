@@ -180,7 +180,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     }
 
     /**
-     * @return A rectangle for the given DM7 ints
+     * Returns a rectangle for the given DM7 ints
      */
     public static Rectangle fromInts(int bottom, int left, int top, int right)
     {
@@ -188,7 +188,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     }
 
     /**
-     * @return A zero size rectangle at the given location
+     * Returns a zero size rectangle at the given location
      */
     public static Rectangle fromLocation(Location location)
     {
@@ -196,7 +196,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     }
 
     /**
-     * @return A rectangle of the given width and height with the bottom left at the given location
+     * Returns a rectangle of the given width and height with the bottom left at the given location
      */
     public static Rectangle fromLocationWidthAndHeight(Location location, Width width, Height height)
     {
@@ -230,7 +230,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     }
 
     /**
-     * @return A rectangle for the given DM7 longs
+     * Returns a rectangle for the given DM7 longs
      */
     public static Rectangle fromLongs(long bottomLeft, long topRight)
     {
@@ -241,7 +241,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     }
 
     /**
-     * @return A rectangle from the given string of the form: [latitude-1],[longitude-1]:[latitude-2],[latitude-2]
+     * Returns a rectangle from the given string of the form: [latitude-1],[longitude-1]:[latitude-2],[latitude-2]
      */
     public static Rectangle parse(String string)
     {
@@ -497,7 +497,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     }
 
     /**
-     * @return The center of this rectangle
+     * Returns the center of this rectangle
      */
     public Location center()
     {
@@ -507,7 +507,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     }
 
     /**
-     * @return A value for use in a {@link Comparator} that sorts rectangles by longitude
+     * Returns a value for use in a {@link Comparator} that sorts rectangles by longitude
      */
     public int compareHorizontal(Rectangle that)
     {
@@ -517,7 +517,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     }
 
     /**
-     * @return A value for use in a {@link Comparator} that sorts rectangles by longitude
+     * Returns a value for use in a {@link Comparator} that sorts rectangles by longitude
      */
     public int compareVertical(Rectangle that)
     {
@@ -638,7 +638,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     }
 
     /**
-     * @return True if this segment crosses the equator
+     * Returns true if this segment crosses the equator
      */
     public boolean crossesEquator()
     {
@@ -646,7 +646,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     }
 
     /**
-     * @return A new rectangle with the top right corner decremented by one Dm7 unit.
+     * Returns a new rectangle with the top right corner decremented by one Dm7 unit.
      */
     public Rectangle decremented()
     {
@@ -760,7 +760,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     }
 
     /**
-     * @return The height of this rectangle as a distance
+     * Returns the height of this rectangle as a distance
      */
     public Distance heightAsDistance()
     {
@@ -773,7 +773,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     }
 
     /**
-     * @return A new rectangle with the top right corner incremented
+     * Returns a new rectangle with the top right corner incremented
      */
     public Rectangle incremented()
     {
@@ -819,7 +819,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     }
 
     /**
-     * @return True if this rectangle is wider than it is tall
+     * Returns true if this rectangle is wider than it is tall
      */
     public boolean isHorizontal()
     {
@@ -832,7 +832,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     }
 
     /**
-     * @return True if this rectangle is taller than it is wide
+     * Returns true if this rectangle is taller than it is wide
      */
     public boolean isVertical()
     {
@@ -1044,7 +1044,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     }
 
     /**
-     * @return The widest width of this rectangle
+     * Returns the widest width of this rectangle
      */
     public Distance widestWidth()
     {

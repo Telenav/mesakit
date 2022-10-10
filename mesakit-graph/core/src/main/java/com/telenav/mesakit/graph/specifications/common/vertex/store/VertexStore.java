@@ -216,7 +216,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * @return True if this vertex store contains the given vertex
+     * Returns true if this vertex store contains the given vertex
      */
     public boolean contains(Vertex vertex)
     {
@@ -225,7 +225,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * @return True if this vertex store contains the given identifier
+     * Returns true if this vertex store contains the given identifier
      */
     public boolean contains(VertexIdentifier identifier)
     {
@@ -389,7 +389,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * @return True if the two nodes are connected
+     * Returns true if the two nodes are connected
      */
     public boolean internalIsConnected(MapNodeIdentifier from, MapNodeIdentifier to)
     {
@@ -454,7 +454,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * @return The vertex at the given location when full node information is supported
+     * Returns the vertex at the given location when full node information is supported
      */
     public GraphNode node(Location location)
     {
@@ -485,7 +485,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * @return The total number of edges (in and out) attached to the given vertex
+     * Returns the total number of edges (in and out) attached to the given vertex
      */
     public final Count retrieveEdgeCount(Vertex vertex)
     {
@@ -493,7 +493,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * @return The sequence of edges attached to the given vertex
+     * Returns the sequence of edges attached to the given vertex
      */
     public final EdgeSequence retrieveEdgeSequence(Vertex vertex)
     {
@@ -513,7 +513,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * @return The number of "in" edges attached to the given vertex
+     * Returns the number of "in" edges attached to the given vertex
      */
     public final Count retrieveInEdgeCount(Vertex vertex)
     {
@@ -521,7 +521,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * @return The sequence of all "in" edges to the given vertex
+     * Returns the sequence of all "in" edges to the given vertex
      */
 
     public final EdgeSequence retrieveInEdgeSequence(Vertex vertex)
@@ -536,7 +536,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * @return The set of "in" edges to the given vertex
+     * Returns the set of "in" edges to the given vertex
      */
     public final EdgeSet retrieveInEdges(Vertex vertex)
     {
@@ -550,7 +550,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * @return The index for the given vertex
+     * Returns the index for the given vertex
      */
     @Override
     public final int retrieveIndex(Vertex vertex)
@@ -560,7 +560,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * @return True if the given vertex was added as a result of edge clipping at a region boundary
+     * Returns true if the given vertex was added as a result of edge clipping at a region boundary
      */
     public final boolean retrieveIsClipped(Vertex vertex)
     {
@@ -569,7 +569,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * @return The number of "out" edges attached to the given vertex
+     * Returns the number of "out" edges attached to the given vertex
      */
     public final Count retrieveOutEdgeCount(Vertex vertex)
     {
@@ -577,7 +577,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * @return The sequence of all "out" edges attached to the given vertex
+     * Returns the sequence of all "out" edges attached to the given vertex
      */
     public final EdgeSequence retrieveOutEdgeSequence(Vertex vertex)
     {
@@ -591,7 +591,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * @return The set of all "out" edges attached to the given vertex
+     * Returns the set of all "out" edges attached to the given vertex
      */
     public final EdgeSet retrieveOutEdges(Vertex vertex)
     {
@@ -625,7 +625,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * @return True if this vertex store supports all node tags (full node information)
+     * Returns true if this vertex store supports all node tags (full node information)
      */
     public boolean supportsAllNodeTags()
     {
@@ -745,7 +745,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * @return The vertex, if any, for the given node identifier
+     * Returns the vertex, if any, for the given node identifier
      */
     public Vertex vertexForNodeIdentifier(long nodeIdentifier)
     {
@@ -758,7 +758,7 @@ public class VertexStore extends NodeStore<Vertex>
     }
 
     /**
-     * @return The vertexes inside the given bounding rectangle that match the given matcher
+     * Returns the vertexes inside the given bounding rectangle that match the given matcher
      */
     public VertexSequence vertexesInside(Rectangle bounds, Matcher<Vertex> matcher)
     {

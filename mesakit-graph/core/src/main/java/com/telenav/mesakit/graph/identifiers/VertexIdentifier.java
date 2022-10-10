@@ -92,7 +92,7 @@ public class VertexIdentifier extends IntegerIdentifier implements GraphElementI
     }
 
     /**
-     * @return The next vertex identifier higher than this one
+     * Returns the next vertex identifier higher than this one
      */
     public VertexIdentifier next()
     {

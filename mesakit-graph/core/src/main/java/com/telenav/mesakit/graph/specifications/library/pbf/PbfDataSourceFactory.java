@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.library.pbf;
 
-import com.telenav.kivakit.interfaces.factory.MapFactory;
+import com.telenav.kivakit.interfaces.function.Mapper;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.resource.Resource;
@@ -31,13 +31,13 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
- * Creates data sources of a given type to read a resource. The method {@link #newInstance(Metadata)} creates a data
+ * Creates data sources of a given type to read a resource. The method {@link #map(Metadata)} creates a data
  * source using the provided metadata. This design avoids the need for {@link PbfDataSource} objects to be resettable,
  * which might be error-prone. Instead, data sources can be discarded and a new data source created by this factory.
  *
  * @author jonathanl (shibo)
  */
-public class PbfDataSourceFactory extends BaseRepeater implements MapFactory<Metadata, PbfDataSource>
+public class PbfDataSourceFactory extends BaseRepeater implements Mapper<Metadata, PbfDataSource>
 {
     public enum Type
     {
@@ -63,7 +63,7 @@ public class PbfDataSourceFactory extends BaseRepeater implements MapFactory<Met
     }
 
     @Override
-    public PbfDataSource newInstance(Metadata metadata)
+    public PbfDataSource map(Metadata metadata)
     {
         switch (type)
         {

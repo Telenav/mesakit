@@ -56,7 +56,7 @@ public class GraphProject extends Project
     }
 
     /**
-     * @return The graph folder where various kinds of data are cached
+     * Returns the graph folder where various kinds of data are cached
      */
     public Folder graphFolder()
     {

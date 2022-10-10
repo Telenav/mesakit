@@ -348,7 +348,7 @@ public class EdgeRelation extends GraphElement implements Bounded
     }
 
     /**
-     * @return This edge as a heavyweight edge (if it's not already one)
+     * Returns this edge as a heavyweight edge (if it's not already one)
      */
     @Override
     public HeavyWeightRelation asHeavyWeight()
@@ -612,7 +612,7 @@ public class EdgeRelation extends GraphElement implements Bounded
     }
 
     /**
-     * @return The properties of this element from its {@link DataSpecification},
+     * Returns the properties of this element from its {@link DataSpecification},
      * @see GraphElementPropertySet
      * @see StringFormattable
      * @see AsIndentedString

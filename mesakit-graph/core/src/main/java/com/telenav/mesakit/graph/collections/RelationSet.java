@@ -70,7 +70,7 @@ public class RelationSet implements Set<EdgeRelation>
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
     /**
-     * @return A relation set for a collection of relations
+     * Returns a relation set for a collection of relations
      */
     @SuppressWarnings({ "unchecked" })
     public static RelationSet forCollection(Maximum maximumSize,
@@ -101,7 +101,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return A relation set for a sequence of relations
+     * Returns a relation set for a sequence of relations
      */
     public static RelationSet forIterable(Maximum maximum, Iterable<? extends EdgeRelation> collection)
     {
@@ -114,7 +114,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return A relation set containing a single relation
+     * Returns a relation set containing a single relation
      */
     public static RelationSet singleton(EdgeRelation relation)
     {
@@ -242,7 +242,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return This set of {@link EdgeRelation}s as {@link HeavyWeightRelation}s
+     * Returns this set of {@link EdgeRelation}s as {@link HeavyWeightRelation}s
      */
     public RelationSet asHeavyWeight()
     {
@@ -274,7 +274,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return This relation set as a primitive {@link LongArray} of relation identifiers
+     * Returns this relation set as a primitive {@link LongArray} of relation identifiers
      */
     public LongArray asIdentifierArray()
     {
@@ -287,7 +287,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return This relation set as a sequence
+     * Returns this relation set as a sequence
      */
     public RelationSequence asSequence()
     {
@@ -295,7 +295,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return The smallest rectangle that contains all relations in this set
+     * Returns the smallest rectangle that contains all relations in this set
      */
     public Rectangle bounds()
     {
@@ -341,7 +341,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return True if this set contains any relation in the given collection
+     * Returns true if this set contains any relation in the given collection
      */
     public boolean containsAny(Collection<EdgeRelation> relations)
     {
@@ -356,7 +356,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return The number of relations in this set
+     * Returns the number of relations in this set
      */
     public Count count()
     {
@@ -378,7 +378,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return The first relation in this set (an arbitrary relation since sets are not ordered)
+     * Returns the first relation in this set (an arbitrary relation since sets are not ordered)
      */
     public EdgeRelation first()
     {
@@ -412,7 +412,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return The set of all relations in this set that are also in the given set
+     * Returns the set of all relations in this set that are also in the given set
      */
     public RelationSet intersection(RelationSet that)
     {
@@ -438,7 +438,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return All the relation identifiers in this relation set joined into a string using the given separator. The
+     * Returns all the relation identifiers in this relation set joined into a string using the given separator. The
      * order of identifiers is undefined.
      */
     public String joinedIdentifiers(String separator)
@@ -447,7 +447,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return The total length of all relations in this set
+     * Returns the total length of all relations in this set
      */
     public Distance length()
     {
@@ -460,7 +460,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return The set of all matching relations
+     * Returns the set of all matching relations
      */
     public RelationSet matching(Matcher<EdgeRelation> matcher)
     {
@@ -468,7 +468,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return The maximum size of this relation set
+     * Returns the maximum size of this relation set
      */
     public Maximum maximumSize()
     {
@@ -476,7 +476,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return The most important relation in this set, as determined by
+     * Returns the most important relation in this set, as determined by
      * {@link EdgeRelation#isMoreImportantThan(EdgeRelation)}
      */
     public EdgeRelation mostImportant()
@@ -586,7 +586,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return The union of this relation set with another set of relations
+     * Returns the union of this relation set with another set of relations
      */
     public RelationSet union(RelationSet relations)
     {
@@ -594,7 +594,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return The set of relations within the given bounds
+     * Returns the set of relations within the given bounds
      */
     public RelationSet within(Rectangle bounds)
     {
@@ -602,7 +602,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return This set of relations without the given relation
+     * Returns this set of relations without the given relation
      */
     public RelationSet without(EdgeRelation exclude)
     {
@@ -610,7 +610,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return The set of all relations that don't match
+     * Returns the set of all relations that don't match
      */
     public RelationSet without(Matcher<EdgeRelation> matcher)
     {
@@ -619,7 +619,7 @@ public class RelationSet implements Set<EdgeRelation>
     }
 
     /**
-     * @return This set of relations without the given set of relations
+     * Returns this set of relations without the given set of relations
      */
     public RelationSet without(Set<EdgeRelation> exclude)
     {

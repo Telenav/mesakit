@@ -28,12 +28,12 @@ import java.util.Collection;
 public interface Viewer
 {
     /**
-     * @return The view with the given name
+     * Returns the view with the given name
      */
     View view(String title);
 
     /**
-     * @return The collection of views held by this viewer
+     * Returns the collection of views held by this viewer
      */
     Collection<View> views();
 }

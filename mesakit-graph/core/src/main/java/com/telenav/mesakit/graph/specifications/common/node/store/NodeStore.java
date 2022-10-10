@@ -128,7 +128,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     }
 
     /**
-     * @return True if this node store contains the given identifier
+     * Returns true if this node store contains the given identifier
      */
     public boolean contains(MapNodeIdentifier identifier)
     {
@@ -137,7 +137,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     }
 
     /**
-     * @return True if this node store contains all node information, including for shape points
+     * Returns true if this node store contains all node information, including for shape points
      */
     public boolean containsAllPbfNodeInformation()
     {
@@ -169,7 +169,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     }
 
     /**
-     * @return True if the given node is synthetic (not in the original source data)
+     * Returns true if the given node is synthetic (not in the original source data)
      */
     public final boolean retrieveIsNodeSynthetic(GraphNode node)
     {
@@ -181,7 +181,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     }
 
     /**
-     * @return The location of the given vertex
+     * Returns the location of the given vertex
      */
     public final long retrieveLocationAsLong(Vertex vertex)
     {
@@ -194,7 +194,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     }
 
     /**
-     * @return The location of the given vertex
+     * Returns the location of the given vertex
      */
     public final long retrieveLocationAsLong(int vertexIndex)
     {
@@ -221,7 +221,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     }
 
     /**
-     * @return The node identifier for the given node
+     * Returns the node identifier for the given node
      */
     public MapNodeIdentifier retrieveNodeIdentifier(GraphNode node)
     {
@@ -317,7 +317,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     }
 
     /**
-     * @return Store for the tags of all nodes, when full node information is available
+     * Returns store for the tags of all nodes, when full node information is available
      */
     @SuppressWarnings("ClassEscapesDefinedScope")
     protected PbfAllGraphElementTagStore allNodeTagStore()
@@ -330,7 +330,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     }
 
     /**
-     * @return The index for the given node identifier, or a new index if none exists. For all {@link GraphNode}
+     * Returns the index for the given node identifier, or a new index if none exists. For all {@link GraphNode}
      * elements, the index will serve as the identifier, since node elements are synthetic.
      */
     protected int maybeCreateNodeIdentifierToIndex(long nodeIdentifier)
@@ -355,7 +355,7 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     }
 
     /**
-     * @return The index for the given node identifier, or a new index if none exists. For all {@link GraphNode}
+     * Returns the index for the given node identifier, or a new index if none exists. For all {@link GraphNode}
      * elements, the index will serve as the identifier, since node elements are synthetic.
      */
     protected int nodeIdentifierToIndex(long nodeIdentifier)

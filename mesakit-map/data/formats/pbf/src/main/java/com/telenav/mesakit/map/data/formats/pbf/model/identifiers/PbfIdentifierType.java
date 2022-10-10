@@ -37,7 +37,7 @@ public interface PbfIdentifierType
     BitDiagram.BitField IDENTIFIER = TYPE_AND_IDENTIFIER.field('I');
 
     /**
-     * @return An {@link MapIdentifier} of the correct type for the TYPE {@link BitDiagram.BitField}
+     * Returns an {@link MapIdentifier} of the correct type for the TYPE {@link BitDiagram.BitField}
      */
     static MapIdentifier forIdentifierAndType(long identifierAndType)
     {
@@ -82,7 +82,7 @@ public interface PbfIdentifierType
     MapIdentifier.Type type();
 
     /**
-     * @return This OSM identifier with the type encoded in it according to the {@link BitDiagram} layout
+     * Returns this OSM identifier with the type encoded in it according to the {@link BitDiagram} layout
      * TYPE_AND_IDENTIFIER
      */
     default MapIdentifier withType()
@@ -93,7 +93,7 @@ public interface PbfIdentifierType
     }
 
     /**
-     * @return This OSM identifier with the type encoded in it according to the {@link BitDiagram} layout
+     * Returns this OSM identifier with the type encoded in it according to the {@link BitDiagram} layout
      * TYPE_AND_IDENTIFIER
      */
     default MapIdentifier withType(MapIdentifier identifier, MapIdentifier.Type type)
@@ -104,7 +104,7 @@ public interface PbfIdentifierType
     }
 
     /**
-     * @return This OSM identifier with the type encoded in it according to the {@link BitDiagram} layout
+     * Returns this OSM identifier with the type encoded in it according to the {@link BitDiagram} layout
      * TYPE_AND_IDENTIFIER
      */
     default MapIdentifier withoutType()

@@ -117,7 +117,7 @@ public class OsmEdge extends Edge
     }
 
     /**
-     * @return True if this edge is part of a double digitized pair
+     * Returns true if this edge is part of a double digitized pair
      */
     @Override
     public Boolean osmIsDoubleDigitized()
