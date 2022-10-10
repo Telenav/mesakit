@@ -165,7 +165,7 @@ public class Angle implements
 
     public static SwitchParser.Builder<Angle> angleSwitchParser(String name, String description)
     {
-        return SwitchParser.switchParserBuilder(Angle.class).name(name).converter(new DegreesConverter(LOGGER))
+        return SwitchParser.switchParser(Angle.class).name(name).converter(new DegreesConverter(LOGGER))
                 .description(description);
     }
 

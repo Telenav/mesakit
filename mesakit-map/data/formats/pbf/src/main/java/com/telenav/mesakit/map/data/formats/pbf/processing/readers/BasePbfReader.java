@@ -58,11 +58,11 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
 public abstract class BasePbfReader extends BaseRepeater implements PbfDataSource
 {
     // Progress in processing each entity type
-    private ProgressReporter nodeProgress = BroadcastingProgressReporter.createProgressReporter(this, "nodes");
+    private ProgressReporter nodeProgress = BroadcastingProgressReporter.progressReporter(this, "nodes");
 
-    private ProgressReporter wayProgress = BroadcastingProgressReporter.createProgressReporter(this, "ways");
+    private ProgressReporter wayProgress = BroadcastingProgressReporter.progressReporter(this, "ways");
 
-    private ProgressReporter relationProgress = BroadcastingProgressReporter.createProgressReporter(this, "relations");
+    private ProgressReporter relationProgress = BroadcastingProgressReporter.progressReporter(this, "relations");
 
     // The resource being read
     @UmlAggregation

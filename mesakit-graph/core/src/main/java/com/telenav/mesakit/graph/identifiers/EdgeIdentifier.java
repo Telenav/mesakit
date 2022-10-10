@@ -114,7 +114,7 @@ public class EdgeIdentifier extends Identifier implements
                                                                                   String name,
                                                                                   String description)
     {
-        return SwitchParser.switchParserBuilder(EdgeIdentifier.class)
+        return SwitchParser.switchParser(EdgeIdentifier.class)
                 .name(name)
                 .description(description)
                 .converter(new Converter(listener));

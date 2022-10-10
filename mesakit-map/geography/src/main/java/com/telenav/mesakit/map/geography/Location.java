@@ -308,7 +308,7 @@ public class Location implements
 
     public static SwitchParser.Builder<Location> locationSwitchParser(String name, String description)
     {
-        return SwitchParser.switchParserBuilder(Location.class)
+        return SwitchParser.switchParser(Location.class)
                 .name(name)
                 .converter(new DegreesConverter(LOGGER))
                 .description(description);

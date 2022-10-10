@@ -686,7 +686,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     public final Differences differencesFrom(Graph that, Rectangle bounds, Maximum maximumDifferences)
     {
         var differences = new Differences();
-        var progress = BroadcastingProgressReporter.createProgressReporter(this);
+        var progress = BroadcastingProgressReporter.progressReporter(this);
 
         // Then compare edge counts
         if (!edgeCount().equals(that.edgeCount()))

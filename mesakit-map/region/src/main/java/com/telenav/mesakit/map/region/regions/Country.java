@@ -649,7 +649,7 @@ public abstract class Country extends Region<Country> implements LongValued
 
     public static SwitchParser.Builder<Country> countrySwitchParser(String name, String description)
     {
-        return SwitchParser.switchParserBuilder(Country.class).name(name).description(description).converter(new Converter(LOGGER()));
+        return SwitchParser.switchParser(Country.class).name(name).description(description).converter(new Converter(LOGGER()));
     }
 
     public static Country forIdentifier(RegionIdentifier identifier)

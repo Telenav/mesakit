@@ -194,7 +194,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      */
     public static Metadata metadata(File input, CountType countType)
     {
-        input = input.materialized(BroadcastingProgressReporter.createProgressReporter(LOGGER));
+        input = input.materialized(BroadcastingProgressReporter.progressReporter(LOGGER));
         var format = DataFormat.of(input);
         switch (format)
         {
@@ -226,7 +226,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
 
     public static SwitchParser.Builder<Metadata> metadataSwitchParser(String name, String description)
     {
-        return SwitchParser.switchParserBuilder(Metadata.class)
+        return SwitchParser.switchParser(Metadata.class)
                 .name(name)
                 .converter(new Converter(LOGGER))
                 .description(description);

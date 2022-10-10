@@ -37,7 +37,7 @@ public class RelationIdentifier extends MapRelationIdentifier implements GraphEl
                                                                                           String name,
                                                                                           String description)
     {
-        return SwitchParser.switchParserBuilder(RelationIdentifier.class)
+        return SwitchParser.switchParser(RelationIdentifier.class)
                 .name(name)
                 .description(description)
                 .converter(new Converter(listener));

@@ -85,7 +85,7 @@ public class PbfNodeStore
         List<PbfNode> nodes = new ArrayList<>();
 
         // Go through each identifier
-        var progress = BroadcastingProgressReporter.createProgressReporter(LOGGER);
+        var progress = BroadcastingProgressReporter.progressReporter(LOGGER);
         for (var identifier : identifiers())
         {
             // and get the node or shape point as a Node object

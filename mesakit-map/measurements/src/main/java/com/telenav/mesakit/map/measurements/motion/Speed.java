@@ -147,7 +147,7 @@ public class Speed implements Comparable<Speed>, LongValued
 
     public static SwitchParser.Builder<Speed> speedSwitchParser(String name, String description)
     {
-        return SwitchParser.switchParserBuilder(Speed.class)
+        return SwitchParser.switchParser(Speed.class)
                 .name(name)
                 .converter(new Speed.Converter(LOGGER))
                 .description(description);

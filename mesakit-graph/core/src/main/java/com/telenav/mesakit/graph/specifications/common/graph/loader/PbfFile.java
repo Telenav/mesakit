@@ -81,7 +81,7 @@ public class PbfFile extends BaseRepeater implements Named
         var metadata = Metadata.metadata(file);
         if (metadata != null)
         {
-            var output = Folder.temporaryForProcess(Folder.FolderType.CLEAN_UP_ON_EXIT)
+            var output = Folder.temporaryFolderForProcess(Folder.FolderType.CLEAN_UP_ON_EXIT)
                     .temporaryFile(file.fileName().withoutExtension(Extension.OSM_PBF)
                             .withoutExtension(Extension.parseExtension(this, ".pbf.gz")), Extension.GRAPH);
 

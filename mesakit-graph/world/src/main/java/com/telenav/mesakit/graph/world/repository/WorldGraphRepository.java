@@ -62,7 +62,7 @@ public class WorldGraphRepository extends Folder implements Serializable
 
     public static SwitchParser.Builder<WorldGraphRepository> worldGraphRepositorySwitchParser(String description)
     {
-        return SwitchParser.switchParserBuilder(WorldGraphRepository.class).name("world-graph-repository")
+        return SwitchParser.switchParser(WorldGraphRepository.class).name("world-graph-repository")
                 .converter(new Converter(LOGGER)).description(description);
     }
 

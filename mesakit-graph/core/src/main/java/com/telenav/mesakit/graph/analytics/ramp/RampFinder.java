@@ -59,7 +59,7 @@ public abstract class RampFinder extends BaseRepeater
     public void find()
     {
         // Visit each edge in the sequence
-        var progress = isDeaf() ? ProgressReporter.nullProgressReporter() : BroadcastingProgressReporter.createProgressReporter(this, "edges");
+        var progress = isDeaf() ? ProgressReporter.nullProgressReporter() : BroadcastingProgressReporter.progressReporter(this, "edges");
         progress.steps(graph.edgeCount().asMaximum());
         progress.start();
         for (var edge : graph.edges())

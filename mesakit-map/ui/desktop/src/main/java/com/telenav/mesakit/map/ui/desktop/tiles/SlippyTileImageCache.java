@@ -43,7 +43,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 import static com.telenav.kivakit.core.project.Project.resolveProject;
-import static com.telenav.kivakit.network.core.NetworkAccessConstraints.DEFAULT;
+import static com.telenav.kivakit.network.core.NetworkAccessConstraints.defaultNetworkAccessConstraints;
 import static java.awt.AlphaComposite.SRC_OVER;
 
 /**
@@ -141,7 +141,7 @@ public abstract class SlippyTileImageCache extends BaseRepeater
         if (resource == null)
         {
             // then download the resource into the cache
-            resource = cache.add(tile, new HttpGetResource(networkLocation(tile), DEFAULT)
+            resource = cache.add(tile, new HttpGetResource(networkLocation(tile), defaultNetworkAccessConstraints())
             {
                 @Override
                 public void onInitialize(HttpRequest request)

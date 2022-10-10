@@ -179,7 +179,7 @@ public abstract class Region<T extends Region<T>> implements
     @SuppressWarnings("rawtypes")
     public static RegionSet allRegionsMatching(String simplifiedPattern)
     {
-        var pattern = Patterns.simplified(simplifiedPattern);
+        var pattern = Patterns.simplifiedPattern(simplifiedPattern);
         var matches = new RegionSet();
         for (var object : all.allUntyped())
         {
@@ -322,13 +322,13 @@ public abstract class Region<T extends Region<T>> implements
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public static ArgumentParser.Builder<Region> regionArgumentParser(Listener listener, String description)
     {
-        return ArgumentParser.argumentParserBuilder(Region.class).converter(new Converter(listener)).description(description);
+        return ArgumentParser.argumentParser(Region.class).converter(new Converter(listener)).description(description);
     }
 
     public static SwitchParser.Builder<RegionSet> regionListSwitchParser(Listener listener, String name,
                                                                          String description)
     {
-        return SwitchParser.switchParserBuilder(RegionSet.class)
+        return SwitchParser.switchParser(RegionSet.class)
                 .name(name)
                 .description(description)
                 .converter(new SetConverter(listener));
@@ -337,7 +337,7 @@ public abstract class Region<T extends Region<T>> implements
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public static SwitchParser.Builder<Region> regionSwitchParser(Listener listener, String name, String description)
     {
-        return SwitchParser.switchParserBuilder(Region.class).name(name).description(description).converter(new Converter(listener));
+        return SwitchParser.switchParser(Region.class).name(name).description(description).converter(new Converter(listener));
     }
 
     @SuppressWarnings({ "rawtypes" })

@@ -120,7 +120,7 @@ public final class Distance implements LongValued, Comparable<Distance>
 
     public static ArgumentParser.Builder<Distance> argumentParser(String description)
     {
-        return ArgumentParser.argumentParserBuilder(Distance.class).converter(new Converter(LOGGER)).description(description);
+        return ArgumentParser.argumentParser(Distance.class).converter(new Converter(LOGGER)).description(description);
     }
 
     public static Distance centimeters(long centimeters)
@@ -135,7 +135,7 @@ public final class Distance implements LongValued, Comparable<Distance>
 
     public static SwitchParser.Builder<Distance> distanceSwitchParser(String name, String description)
     {
-        return SwitchParser.switchParserBuilder(Distance.class).name(name).converter(new Converter(LOGGER))
+        return SwitchParser.switchParser(Distance.class).name(name).converter(new Converter(LOGGER))
                 .description(description);
     }
 

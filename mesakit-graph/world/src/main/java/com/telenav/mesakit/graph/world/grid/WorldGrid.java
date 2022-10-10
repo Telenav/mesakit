@@ -244,7 +244,7 @@ public class WorldGrid
         if (extracted != null)
         {
             refreshCellData(repositoryFolder);
-            LOGGER.information(AsciiArt.box("Extracted $ cells to $ in $", extracted.count(), repositoryFolder, start.elapsedSince()));
+            LOGGER.information(AsciiArt.textBox("Extracted $ cells to $ in $", extracted.count(), repositoryFolder, start.elapsedSince()));
             return extracted.count();
         }
         return Count._0;

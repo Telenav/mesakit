@@ -127,7 +127,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
 
     public static ArgumentParser.Builder<Rectangle> argumentParser(String description)
     {
-        return ArgumentParser.argumentParserBuilder(Rectangle.class).converter(new Rectangle.Converter(LOGGER))
+        return ArgumentParser.argumentParser(Rectangle.class).converter(new Rectangle.Converter(LOGGER))
                 .description(description);
     }
 
@@ -259,7 +259,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
                                                                         String name,
                                                                         String description)
     {
-        return SwitchParser.switchParserBuilder(Rectangle.class)
+        return SwitchParser.switchParser(Rectangle.class)
                 .name(name)
                 .converter(new Rectangle.Converter(listener))
                 .description(description);
