@@ -93,6 +93,6 @@ public class PbfDefaultCodecs
 
     private PropertyMap load(String codec)
     {
-        return PropertyMap.loadPropertyMap(throwingListener(), Package.packageContaining(throwingListener(), PbfDefaultCodecs.class), codec);
+        return PropertyMap.loadPropertyMap(throwingListener(), Package.packageFor(throwingListener(), PbfDefaultCodecs.class), codec);
     }
 }

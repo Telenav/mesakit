@@ -117,7 +117,7 @@ public class DataBuild
 
     public FileName asFileName()
     {
-        return FileName.dateTime(localTime());
+        return FileName.fileNameForDateTime(localTime());
     }
 
     @Override
