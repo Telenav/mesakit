@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.identifiers;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseConverter;
 import com.telenav.kivakit.conversion.core.value.LongValuedConverter;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.ExcludeProperty;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.value.identifier.Identifier;
 import com.telenav.mesakit.graph.Edge;
@@ -245,7 +245,7 @@ public class EdgeIdentifier extends Identifier implements
     /**
      * Returns true if this edge identifier is for a forward edge
      */
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public boolean isForward()
     {
         return !isReverse();
@@ -254,7 +254,7 @@ public class EdgeIdentifier extends Identifier implements
     /**
      * Returns true if this edge identifier is for a reversed edge (a negative identifier)
      */
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public boolean isReverse()
     {
         return asLong() < 0;

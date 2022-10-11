@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.list.ObjectList;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.IncludeProperty;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
@@ -592,7 +592,7 @@ public class EdgeRelation extends GraphElement implements Bounded
         return null;
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public List<EdgeRelationMember> members()
     {
         return store().retrieveMembers(this);

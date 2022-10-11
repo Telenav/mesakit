@@ -24,7 +24,7 @@ import com.telenav.kivakit.primitive.collections.array.scalars.SplitCharArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
 import com.telenav.kivakit.primitive.collections.list.store.PackedStringStore;
-import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.resource.compression.archive.ArchivedField;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.graph.io.archive.GraphArchive;
@@ -47,26 +47,26 @@ import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 @SuppressWarnings("unused")
 public class PbfAllNodeMetadata implements AttributeStore
 {
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray changeSetIdentifier;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray lastModified;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitCharArray revisionNumber;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private TagStore tags;
 
     private final AttributeReference<PackedStringStore> USER_NAME =
             new AttributeReference<>(this, GraphElementAttributes.get().PBF_USER_NAME, "userName",
                     () -> new PackedStringStore("userName"));
 
-    @KivaKitArchivedField
+    @ArchivedField
     private PackedStringStore userName;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitIntArray userIdentifier;
 
     /** Attribute loader for this store */

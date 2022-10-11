@@ -35,7 +35,7 @@ import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.interfaces.value.Source;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
 import com.telenav.kivakit.resource.compression.archive.FieldArchive;
-import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.resource.compression.archive.ArchivedField;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
@@ -172,7 +172,7 @@ public class WorldGraphIndex implements
     private FieldArchive archive;
 
     /** Edge identifier to cell map */
-    @KivaKitArchivedField(lazy = true)
+    @ArchivedField(lazy = true)
     private SplitLongToIntMap cellForWayIdentifier;
 
     /** Metadata about this world graph */
@@ -181,7 +181,7 @@ public class WorldGraphIndex implements
     /** Spatial index of places */
     private transient QuadTreeSpatialIndex<WorldPlace> placeSpatialIndex;
 
-    @KivaKitArchivedField(lazy = true)
+    @ArchivedField(lazy = true)
     private List<WorldPlace> places;
 
     private WorldGraph worldGraph;

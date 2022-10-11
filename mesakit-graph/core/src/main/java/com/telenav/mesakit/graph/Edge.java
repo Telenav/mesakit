@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.language.primitive.Longs;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.ExcludeProperty;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
@@ -926,7 +926,7 @@ public abstract class Edge extends GraphElement implements
     /**
      * Returns the identifier of the "from" vertex
      */
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public VertexIdentifier fromVertexIdentifier()
     {
         return new VertexIdentifier(store().retrieveFromVertexIdentifier(this));
@@ -1370,7 +1370,7 @@ public abstract class Edge extends GraphElement implements
      * Returns true if this edge is a {@link Type#NORMAL} edge. This is true unless the edge is a "routing shortcut"
      * used to enhance the performance of navigation.
      */
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public boolean isNormal()
     {
         return type() == Type.NORMAL;
@@ -1470,7 +1470,7 @@ public abstract class Edge extends GraphElement implements
     /**
      * Returns true if this edge is a {@link Type#ROUTING_SHORTCUT} edge
      */
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public boolean isRoutingShortCut()
     {
         return type() == Type.ROUTING_SHORTCUT;
@@ -2151,7 +2151,7 @@ public abstract class Edge extends GraphElement implements
      * Returns the shape of this directed edge on the map as a {@link Polyline}
      */
     @Override
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public Polyline roadShape()
     {
         var polyline = store().retrieveRoadShape(this);
@@ -2476,7 +2476,7 @@ public abstract class Edge extends GraphElement implements
     /**
      * Returns the identifier of the "to" vertex
      */
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public VertexIdentifier toVertexIdentifier()
     {
         return new VertexIdentifier(store().retrieveToVertexIdentifier(this));

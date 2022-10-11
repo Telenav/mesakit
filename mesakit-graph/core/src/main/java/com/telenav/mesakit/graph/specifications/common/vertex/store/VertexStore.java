@@ -34,7 +34,7 @@ import com.telenav.kivakit.primitive.collections.array.packed.SplitPackedArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.kivakit.primitive.collections.map.scalars.IntToByteMap;
 import com.telenav.kivakit.primitive.collections.set.LongSet;
-import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.resource.compression.archive.ArchivedField;
 import com.telenav.kivakit.validation.ValidationType;
 import com.telenav.kivakit.validation.Validator;
 import com.telenav.mesakit.graph.Edge;
@@ -124,10 +124,10 @@ public class VertexStore extends NodeStore<Vertex>
                             .initialSize(estimatedElements()));
 
     /** Edge and vertex connectivity information */
-    @KivaKitArchivedField
+    @ArchivedField
     private ConnectivityStore connectivity;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private IntToByteMap gradeSeparation;
 
     /** Cached reference to graph store for performance reasons */
@@ -136,7 +136,7 @@ public class VertexStore extends NodeStore<Vertex>
     /**
      * The clip state of each vertex
      */
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray isClipped;
 
     /** Locations where vertexes have been created due to clipping at geographic boundaries */

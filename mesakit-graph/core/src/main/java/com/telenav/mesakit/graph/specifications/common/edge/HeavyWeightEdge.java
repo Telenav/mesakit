@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.specifications.common.edge;
 import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.function.Functions;
 import com.telenav.kivakit.core.language.Objects;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.ExcludeProperty;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Count;
@@ -388,7 +388,7 @@ public class HeavyWeightEdge extends Edge
     }
 
     @Override
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public VertexIdentifier fromVertexIdentifier()
     {
         return from != null ? from.identifier() : null;
@@ -697,7 +697,7 @@ public class HeavyWeightEdge extends Edge
     }
 
     @Override
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public Polyline roadShape()
     {
         if (roadShape == null)
@@ -875,7 +875,7 @@ public class HeavyWeightEdge extends Edge
     }
 
     @Override
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public VertexIdentifier toVertexIdentifier()
     {
         return to != null ? to.identifier() : null;

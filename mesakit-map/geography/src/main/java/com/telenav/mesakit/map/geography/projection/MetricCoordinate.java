@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.geography.projection;
 
 import com.telenav.kivakit.core.string.ObjectFormatter;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.IncludeProperty;
 
 /**
  * An x,y cartesian coordinate in meters from the origin
@@ -28,11 +28,11 @@ import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludePrope
  */
 public class MetricCoordinate
 {
-    @KivaKitIncludeProperty
+    @IncludeProperty
     final
     double xInMeters;
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     final
     double yInMeters;
 

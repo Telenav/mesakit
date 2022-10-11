@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.geography;
 
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
-import com.telenav.kivakit.conversion.core.language.object.KivaKitConverted;
+import com.telenav.kivakit.conversion.core.language.object.ConvertedProperty;
 import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.language.primitive.Longs;
 import com.telenav.kivakit.core.logging.Logger;
@@ -559,13 +559,13 @@ public class Location implements
         }
     }
 
-    @KivaKitConverted(Latitude.DegreesConverter.class)
+    @ConvertedProperty(Latitude.DegreesConverter.class)
     @UmlAggregation
     private Latitude latitude;
 
     private final int latitudeInDm7;
 
-    @KivaKitConverted(Longitude.DegreesConverter.class)
+    @ConvertedProperty(Longitude.DegreesConverter.class)
     @UmlAggregation
     private Longitude longitude;
 

@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.specifications.common.node.store;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToLongMap;
-import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.resource.compression.archive.ArchivedField;
 import com.telenav.kivakit.validation.ValidationType;
 import com.telenav.kivakit.validation.Validator;
 import com.telenav.mesakit.graph.Graph;
@@ -101,13 +101,13 @@ public abstract class NodeStore<T extends GraphNode> extends ArchivedGraphElemen
     /** Store of all PBF node tags */
     private PbfAllGraphElementTagStore allPbfNodeTagStore;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray nodeIdentifier;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongToIntMap nodeIdentifierToIndex;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray nodeLocation;
 
     /** PBF node identifier -> node location map which holds this information until vertexes are created */

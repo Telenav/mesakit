@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.region.regions;
 
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.IncludeProperty;
 import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.kivakit.core.locale.LocaleRegion;
 import com.telenav.kivakit.core.logging.Logger;
@@ -857,13 +857,13 @@ public abstract class Country extends Region<Country> implements LongValued
     }
 
     @Override
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Continent continent()
     {
         return (Continent) parent();
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public DrivingSide drivingSide()
     {
         return instance().drivingSide();
@@ -898,7 +898,7 @@ public abstract class Country extends Region<Country> implements LongValued
         return identity().identifier().asLong();
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Iterable<State> states()
     {
         return children(State.class);

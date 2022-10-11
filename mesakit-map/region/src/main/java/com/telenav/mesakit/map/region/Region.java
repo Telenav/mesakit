@@ -24,8 +24,8 @@ import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.language.Patterns;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.ExcludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.IncludeProperty;
 import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.kivakit.core.locale.LocaleRegion;
 import com.telenav.kivakit.core.logging.Logger;
@@ -511,13 +511,13 @@ public abstract class Region<T extends Region<T>> implements
     }
 
     @Override
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Rectangle bounds()
     {
         return instance().bounds();
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Location center()
     {
         return bounds().center();
@@ -590,7 +590,7 @@ public abstract class Region<T extends Region<T>> implements
         return false;
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Continent continent()
     {
         Region<?> at = this;
@@ -601,7 +601,7 @@ public abstract class Region<T extends Region<T>> implements
         return (Continent) at;
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Country country()
     {
         Region<?> at = this;
@@ -650,7 +650,7 @@ public abstract class Region<T extends Region<T>> implements
     /**
      * Returns this region's name as a file name
      */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public FileName fileName()
     {
         return FileName.parseFileName(LOGGER, name());
@@ -659,7 +659,7 @@ public abstract class Region<T extends Region<T>> implements
     /**
      * Returns the folder path of this region
      */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Folder folder()
     {
         if (parent == null)
@@ -673,7 +673,7 @@ public abstract class Region<T extends Region<T>> implements
     }
 
     @SuppressWarnings({ "HttpUrlsUsage", "SpellCheckingInspection" })
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public URI geofabrikUri()
     {
         try
@@ -702,7 +702,7 @@ public abstract class Region<T extends Region<T>> implements
     }
 
     @Override
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public final RegionIdentity identity()
     {
         return instance().identity();
@@ -768,7 +768,7 @@ public abstract class Region<T extends Region<T>> implements
         return largestArea().isGreaterThan(that.largestArea());
     }
 
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public boolean isValid()
     {
         return instance.isValid();
@@ -802,7 +802,7 @@ public abstract class Region<T extends Region<T>> implements
         return largest;
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public MapLocale locale()
     {
         // Other cases
@@ -831,7 +831,7 @@ public abstract class Region<T extends Region<T>> implements
     }
 
     @Override
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public final String name()
     {
         return identity().name();

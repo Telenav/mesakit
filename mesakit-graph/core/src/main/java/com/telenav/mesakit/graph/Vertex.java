@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.collections.set.operations.Intersection;
 import com.telenav.kivakit.conversion.BaseStringConverter;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.ExcludeProperty;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.string.Differences;
 import com.telenav.kivakit.core.time.Time;
@@ -291,7 +291,7 @@ public class Vertex extends GraphNode
     /**
      * Returns true if this vertex had one or more edges clipped from it due to proximity to the edge of the graph
      */
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public boolean isClipped()
     {
         return store().retrieveIsClipped(this);

@@ -31,7 +31,7 @@ import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
 import com.telenav.kivakit.primitive.collections.map.scalars.LongToIntMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.fixed.IntToLongFixedMultiMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.fixed.IntToPackedArrayFixedMultiMap;
-import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.resource.compression.archive.ArchivedField;
 import com.telenav.kivakit.validation.ValidationType;
 import com.telenav.kivakit.validation.Validator;
 import com.telenav.mesakit.graph.EdgeRelation;
@@ -82,7 +82,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
                             .nullByte((byte) EdgeRelation.Type.UNKNOWN.identifier())
                             .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray type;
 
     private final AttributeReference<LongToIntMap> MAP_IDENTIFIER =
@@ -90,7 +90,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
                     () -> (LongToIntMap) new LongToIntMap("mapIdentifierToIdentifier")
                             .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
+    @ArchivedField
     private LongToIntMap mapIdentifierToIdentifier;
 
     private final AttributeReference<IntToLongFixedMultiMap> MEMBER_IDENTIFIERS =
@@ -99,7 +99,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
                             .initialChildSize(Estimated.EDGES_PER_RELATION)
                             .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
+    @ArchivedField
     private IntToLongFixedMultiMap memberIdentifiers;
 
     private final AttributeReference<IntToPackedArrayFixedMultiMap> MEMBER_ROLES =
@@ -110,7 +110,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
                             .initialChildSize(Estimated.EDGES_PER_RELATION)
                             .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
+    @ArchivedField
     private IntToPackedArrayFixedMultiMap memberRoles;
 
     private final AttributeReference<SplitLongArray> VIA_NODE_LOCATION =
@@ -118,7 +118,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
                     () -> (SplitLongArray) new SplitLongArray("viaNodeLocation")
                             .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray viaNodeLocation;
 
     public RelationStore(Graph graph)

@@ -24,14 +24,14 @@ import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.IncludeProperty;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.string.AsIndentedString;
-import com.telenav.kivakit.core.string.KivaKitFormat;
+import com.telenav.kivakit.core.string.FormatProperty;
 import com.telenav.kivakit.core.string.ObjectIndenter;
 import com.telenav.kivakit.core.string.Strip;
 import com.telenav.kivakit.core.value.count.Bytes;
@@ -611,7 +611,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * Returns bounds encompassing all data entities
      */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Rectangle dataBounds()
     {
         return dataBounds;
@@ -620,7 +620,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * Returns the version of the data in time
      */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public DataBuild dataBuild()
     {
         return dataBuild;
@@ -629,13 +629,13 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * Returns the {@link DataFormat} that the data comes from
      */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public DataFormat dataFormat()
     {
         return dataFormat;
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Precision dataPrecision()
     {
         return dataPrecision;
@@ -644,7 +644,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * Returns the size of this data
      */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Bytes dataSize()
     {
         return dataSize;
@@ -653,8 +653,8 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * Returns the data's specification
      */
-    @KivaKitIncludeProperty
-    @KivaKitFormat
+    @IncludeProperty
+    @FormatProperty
     public DataSpecification dataSpecification()
     {
         return dataSpecification;
@@ -663,7 +663,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     /**
      * Returns the supplier of the data like HERE or OSM
      */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public DataSupplier dataSupplier()
     {
         return dataSupplier;
@@ -684,7 +684,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      * <p>
      * HERE-UniDb-PBF-North_America-2020Q1
      */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public String descriptor()
     {
         return dataSupplier
@@ -775,7 +775,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      * The common name of this data
      */
     @Override
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public String name()
     {
         return name;

@@ -42,7 +42,7 @@ import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
 import com.telenav.kivakit.primitive.collections.list.PrimitiveList;
 import com.telenav.kivakit.primitive.collections.list.store.PackedStringStore;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
-import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.resource.compression.archive.ArchivedField;
 import com.telenav.kivakit.validation.BaseValidator;
 import com.telenav.kivakit.validation.Validatable;
 import com.telenav.kivakit.validation.ValidationType;
@@ -256,42 +256,42 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
                 }
             };
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray identifier;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongToIntMap identifierToIndex;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray lastModified;
 
     /**
      * The next index for an element in this store. Note that we start index values at 1 rather than 0 because we want
      * to catch bugs that involve uninitialized index values (the default value for an int in Java is zero).
      */
-    @KivaKitArchivedField
+    @ArchivedField
     private int nextIndex = 1;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray pbfChangeSetIdentifier;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitCharArray pbfRevisionNumber;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitIntArray pbfUserIdentifier;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private PackedStringStore pbfUserName;
 
     /** The number of elements in this store (distinct from the count(), which takes into account reversible edges) */
-    @KivaKitArchivedField
+    @ArchivedField
     private int size;
 
     /**
      * Tags for this attribute
      */
-    @KivaKitArchivedField
+    @ArchivedField
     private TagStore tags;
 
     /** True if this store has been trimmed to its minimum size */

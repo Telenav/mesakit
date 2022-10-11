@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.io.load;
 import com.telenav.kivakit.core.collections.iteration.FilteredIterable;
 import com.telenav.kivakit.interfaces.comparison.Filter;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.IncludeProperty;
 import com.telenav.kivakit.core.string.ObjectFormatter;
 import com.telenav.kivakit.core.messaging.listeners.MessageList;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
@@ -88,7 +88,7 @@ public class GraphConstraints
     /**
      * Returns the constraint bounds
      */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Rectangle bounds()
     {
         return bounds;

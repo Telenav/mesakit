@@ -18,9 +18,9 @@
 
 package com.telenav.mesakit.graph.world;
 
-import com.telenav.kivakit.conversion.core.language.object.KivaKitConverted;
+import com.telenav.kivakit.conversion.core.language.object.ConvertedProperty;
 import com.telenav.kivakit.core.string.ObjectFormatter;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.IncludeProperty;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
@@ -43,13 +43,13 @@ public final class WorldGraphConfiguration
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     private Angle cellSize;
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     private WorldGraphRepository localRepository;
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     private WorldGraphRepository remoteRepository;
 
     public Angle cellSize()
@@ -57,7 +57,7 @@ public final class WorldGraphConfiguration
         return cellSize;
     }
 
-    @KivaKitConverted(Angle.Converter.class)
+    @ConvertedProperty(Angle.Converter.class)
     public void cellSize(Angle size)
     {
         cellSize = size;
@@ -68,7 +68,7 @@ public final class WorldGraphConfiguration
         return localRepository;
     }
 
-    @KivaKitConverted(Folder.Converter.class)
+    @ConvertedProperty(Folder.Converter.class)
     public void localRepository(Folder local)
     {
         localRepository = new WorldGraphRepository(local);
@@ -110,7 +110,7 @@ public final class WorldGraphConfiguration
         return local;
     }
 
-    @KivaKitConverted(Folder.Converter.class)
+    @ConvertedProperty(Folder.Converter.class)
     public void remoteRepository(Folder remote)
     {
         remoteRepository = new WorldGraphRepository(remote);

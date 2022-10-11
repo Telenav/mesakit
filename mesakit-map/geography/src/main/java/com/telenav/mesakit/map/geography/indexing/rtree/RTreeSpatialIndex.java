@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.geography.indexing.rtree;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.language.primitive.Booleans;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.IncludeProperty;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.interfaces.collection.NextIterator;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
@@ -88,7 +88,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     private String objectName;
 
     /** Settings that determine how the tree is laid out */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     private RTreeSettings settings;
 
     /** The root of the tree, initially just a root node with a single leaf */
@@ -134,7 +134,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
         new RTreeBulkLoader<>(this).load(elements);
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Count count()
     {
         return Count.count(all());

@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.ui.desktop.tiles;
 
 import com.telenav.kivakit.core.language.primitive.Doubles;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.IncludeProperty;
 import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingRectangle;
@@ -228,7 +228,7 @@ public class ZoomLevel implements StringFormattable
     /**
      * Returns the OSM zoom level from 0 (zoomed out) to 18 (zoomed in)
      */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public int level()
     {
         return level;

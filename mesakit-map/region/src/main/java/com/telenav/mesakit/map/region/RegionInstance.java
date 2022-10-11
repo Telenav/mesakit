@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.region;
 
 import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.collections.set.ConcurrentHashSet;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.ExcludeProperty;
 import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.kivakit.core.locale.LocaleRegion;
 import com.telenav.kivakit.core.logging.Logger;
@@ -63,7 +63,7 @@ public class RegionInstance<T extends Region<T>> implements StringFormattable
     @UmlAggregation(label = "bounds")
     private Rectangle bounds;
 
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     @UmlAggregation(label = "children")
     private final RegionSet children = new RegionSet(new ConcurrentHashSet<>());
 

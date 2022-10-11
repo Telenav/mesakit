@@ -36,7 +36,7 @@ import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
 import com.telenav.kivakit.primitive.collections.iteration.IntIterator;
 import com.telenav.kivakit.primitive.collections.list.store.IntLinkedListStore;
-import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.resource.compression.archive.ArchivedField;
 import com.telenav.kivakit.validation.BaseValidator;
 import com.telenav.kivakit.validation.Validatable;
 import com.telenav.kivakit.validation.ValidationType;
@@ -114,15 +114,15 @@ public class ConnectivityStore implements
     private transient volatile Graph graph;
 
     /** Indexes of edge sets stored in the store */
-    @KivaKitArchivedField
+    @ArchivedField
     private EdgeArrayStore inEdges;
 
     /** Indexes of edge sets stored in the store */
-    @KivaKitArchivedField
+    @ArchivedField
     private EdgeArrayStore outEdges;
 
     /** Indexes of edge sets stored in the store */
-    @KivaKitArchivedField
+    @ArchivedField
     private EdgeArrayStore twoWayEdges;
 
     /** Temporary "in" edge lists in the temporaryVertexEdgeStore while loading a graph */

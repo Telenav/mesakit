@@ -38,7 +38,7 @@ import com.telenav.kivakit.primitive.collections.map.multi.dynamic.LongToIntMult
 import com.telenav.kivakit.primitive.collections.map.scalars.IntToByteMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.LongToIntMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.fixed.LongToLongFixedMultiMap;
-import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.resource.compression.archive.ArchivedField;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.kivakit.validation.Validatable;
 import com.telenav.kivakit.validation.ValidationType;
@@ -327,13 +327,13 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
                     .initialChildSize(GraphLimits.Estimated.RELATIONS_PER_EDGE)
                     .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray boundsBottomLeft;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray boundsTopRight;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray bridgeType;
 
     /** Used by tests */
@@ -343,37 +343,37 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
      * The number of edges in this graph (this is different from edgeIndex because edge count reflects two-way edges,
      * while edge index does not)
      */
-    @KivaKitArchivedField
+    @ArchivedField
     private int count;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray country;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray freeFlowSpeedCategory;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray fromNodeIdentifier;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitIntArray fromVertexIdentifier;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray hovLaneCount;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private IntToByteMap isClosedToThroughTraffic;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private IntToByteMap isTollRoad;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private IntToByteMap isUnderConstruction;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray laneCount;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitIntArray lengthInMillimeters;
 
     /** True if merging edges into this store */
@@ -382,35 +382,35 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     /** Next relation identifier */
     private RelationIdentifier nextRelationIdentifier = new RelationIdentifier(1_000_000_000);
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray roadFunctionalClass;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private RoadNameStore roadName;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPolylineStore roadShape;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private ByteArray roadState;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray roadSubType;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray roadSurface;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray roadType;
 
     /** A spatial index for the edges in this graph */
-    @KivaKitArchivedField(lazy = true)
+    @ArchivedField(lazy = true)
     private CompressedEdgeSpatialIndex spatialIndex;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitByteArray speedLimit;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitIntArray speedPatternIdentifier;
 
     /** Edges that are clean cut by location */
@@ -420,16 +420,16 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
 
     private LongToIntMap temporaryWayIdentifierToRelationIndex;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray toNodeIdentifier;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitIntArray toVertexIdentifier;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private LongToIntMultiMap wayIdentifierToEdgeIndex;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private LongToLongFixedMultiMap wayIdentifierToRelationIdentifiers;
 
     protected EdgeStore(Graph graph)
