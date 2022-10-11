@@ -138,7 +138,7 @@ public class AttributeLoader implements Unloadable, NamedObject
      */
     public ObjectList<Attribute<?>> attributes()
     {
-        return ObjectList.objectList(referenceForAttribute.keySet()).sorted();
+        return ObjectList.list(referenceForAttribute.keySet()).sorted();
     }
 
     /**

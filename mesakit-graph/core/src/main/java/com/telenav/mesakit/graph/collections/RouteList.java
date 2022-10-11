@@ -29,8 +29,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import static com.telenav.kivakit.core.collections.list.ObjectList.objectList;
-
 /**
  * A list of routes, not necessarily connected in any way.
  *
@@ -46,7 +44,7 @@ import static com.telenav.kivakit.core.collections.list.ObjectList.objectList;
 
     public RouteList(Iterable<Route> iterable)
     {
-        routes.addAll(objectList(iterable));
+        routes.addAll(ObjectList.list(iterable));
     }
 
     public void add(Route edge)

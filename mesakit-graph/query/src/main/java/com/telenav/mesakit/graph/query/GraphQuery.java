@@ -1,5 +1,6 @@
 package com.telenav.mesakit.graph.query;
 
+import com.telenav.kivakit.core.collections.set.ObjectSet;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.interfaces.code.Callback;
@@ -15,7 +16,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.telenav.kivakit.core.collections.set.ObjectSet.objectSet;
+import static com.telenav.kivakit.core.collections.set.ObjectSet.set;
 
 /**
  * Evaluates a sequence of candidate edges against a query, return up to the given maximum number of matches.
@@ -58,7 +59,7 @@ public class GraphQuery
         if (listener.error())
         {
             // return nothing
-            return objectSet();
+            return ObjectSet.set();
         }
 
         // or if the parser ran out of input
@@ -66,7 +67,7 @@ public class GraphQuery
         {
             // report that
             errorHandler.call("Parser did not match all input in query expression");
-            return objectSet();
+            return ObjectSet.set();
         }
 
         // or if there's a syntax error
@@ -74,7 +75,7 @@ public class GraphQuery
         {
             // return an empty set
             errorHandler.call("Syntax error");
-            return objectSet();
+            return ObjectSet.set();
         }
 
         // otherwise, create a query compiler,

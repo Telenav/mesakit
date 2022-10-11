@@ -613,7 +613,7 @@ public class HeavyWeightEdge extends Edge
         referenceSpeed(Speed.FIFTY_MILES_PER_HOUR);
         uniDbReverseReferenceSpeed(Speed.FIFTY_MILES_PER_HOUR);
         roadFunctionalClass(RoadFunctionalClass.FIRST_CLASS);
-        roadNames(RoadName.Type.OFFICIAL, ObjectList.objectList(Maximum._8, RoadName.forName("Shibo Boulevard")));
+        roadNames(RoadName.Type.OFFICIAL, ObjectList.list(Maximum._8, RoadName.forName("Shibo Boulevard")));
         roadShapeAndLength(testPolyline(), testPolyline().start(), testPolyline().end());
         roadState(TWO_WAY);
         roadSubType(RoadSubType.MAIN_ROAD);

@@ -44,7 +44,7 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
 
-import static com.telenav.kivakit.core.collections.list.ObjectList.objectList;
+import static com.telenav.kivakit.core.collections.list.ObjectList.list;
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 @SuppressWarnings("unused")
@@ -75,7 +75,7 @@ public class RegionInstance<T extends Region<T>> implements StringFormattable
     private RegionIdentity identity;
 
     @UmlAggregation
-    private ObjectList<LocaleLanguage> localeLanguages = objectList();
+    private ObjectList<LocaleLanguage> localeLanguages = list();
 
     private LocaleRegion localeRegion;
 
@@ -99,7 +99,7 @@ public class RegionInstance<T extends Region<T>> implements StringFormattable
         bounds = that.bounds;
         drivingSide = that.drivingSide;
         automotiveSupportLevel = that.automotiveSupportLevel;
-        localeLanguages = objectList(that.localeLanguages);
+        localeLanguages = ObjectList.list(that.localeLanguages);
         localeRegion = that.localeRegion;
     }
 

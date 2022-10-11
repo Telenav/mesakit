@@ -388,7 +388,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
             {
                 return values.asList(factory);
             }
-            return ObjectList.emptyObjectList();
+            return ObjectList.emptyList();
         }
 
         failedToRetrieveAttribute();
@@ -411,7 +411,7 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
             {
                 return values.asList(factory);
             }
-            return ObjectList.emptyObjectList();
+            return ObjectList.emptyList();
         }
 
         failedToRetrieveAttribute();
