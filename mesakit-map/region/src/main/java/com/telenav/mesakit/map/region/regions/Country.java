@@ -788,7 +788,7 @@ public abstract class Country extends Region<Country> implements LongValued
         @Override
         protected Country onToValue(String country)
         {
-            if (!Strings.isNullOrEmpty(country) && !"NULL".equalsIgnoreCase(country))
+            if (!Strings.isNullOrBlank(country) && !"NULL".equalsIgnoreCase(country))
             {
                 var regions = Region.allRegionsMatching(country);
                 if (!regions.isEmpty())

@@ -51,7 +51,7 @@ public class PbfWayIdentifier extends MapWayIdentifier implements PbfIdentifierT
     public static PbfWayIdentifier parse(String string)
     {
         var identifier = Longs.parseFastLong(Strip.stripTrailing(string, "L"));
-        if (identifier != Longs.INVALID)
+        if (identifier != Longs.INVALID_LONG)
         {
             return new PbfWayIdentifier(identifier);
         }

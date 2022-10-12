@@ -739,10 +739,10 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     @Override
     public int hashCode()
     {
-        var hashCode = Hash.SEED + bottomInDm7;
-        hashCode = hashCode * Hash.SEED + leftInDm7;
-        hashCode = hashCode * Hash.SEED + topInDm7;
-        hashCode = hashCode * Hash.SEED + rightInDm7;
+        var hashCode = Hash.HASH_SEED + bottomInDm7;
+        hashCode = hashCode * Hash.HASH_SEED + leftInDm7;
+        hashCode = hashCode * Hash.HASH_SEED + topInDm7;
+        hashCode = hashCode * Hash.HASH_SEED + rightInDm7;
         return hashCode;
     }
 

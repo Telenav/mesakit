@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.library.osm.change;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
 
-import static com.telenav.kivakit.core.string.Strings.isNullOrEmpty;
+import static com.telenav.kivakit.core.string.Strings.isNullOrBlank;
 
 /**
  * Mutable way is the superclass of {@link MutableWay} and {@link NewWay} since both modifiable ways in the base may and
@@ -81,7 +81,7 @@ public abstract class BaseMutableWay
     {
         // If the tag value is non-empty and the base doesn't have a value for the tag
         var value = enhancing.tagValue(tag);
-        if (!isNullOrEmpty(value) && !base.hasTag(tag))
+        if (!isNullOrBlank(value) && !base.hasTag(tag))
         {
             // then add the enhancing tag
             addTag(tag, value);

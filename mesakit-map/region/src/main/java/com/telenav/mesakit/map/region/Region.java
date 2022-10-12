@@ -369,7 +369,7 @@ public abstract class Region<T extends Region<T>> implements
         @SuppressWarnings("unchecked")
         protected R onToValue(String value)
         {
-            if (!Strings.isNullOrEmpty(value) && !"NULL".equalsIgnoreCase(value))
+            if (!Strings.isNullOrBlank(value) && !"NULL".equalsIgnoreCase(value))
             {
                 var regions = allRegionsMatching(value);
                 if (regions.size() == 1)

@@ -314,7 +314,7 @@ public class RegionCode
 
     public RegionCode withoutPrefix(String prefix)
     {
-        ensure(!Strings.isNullOrEmpty(prefix));
+        ensure(!Strings.isNullOrBlank(prefix));
         var code = Strip.stripLeading(code(), prefix);
         code = Strip.stripLeading(code, "_");
         return parse(code);

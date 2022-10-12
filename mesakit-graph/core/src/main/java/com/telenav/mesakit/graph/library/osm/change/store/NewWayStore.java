@@ -85,7 +85,7 @@ public class NewWayStore implements Iterable<NewWay>
             if (list != null)
             {
                 // and the name is non-empty
-                if (!Strings.isNullOrEmpty(name))
+                if (!Strings.isNullOrBlank(name))
                 {
                     // then compact the ways as much as possible
                     list = compact(list);

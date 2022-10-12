@@ -486,7 +486,7 @@ public class WorldGrid
             if (cached.exists())
             {
                 var cellNames = cached.reader().asString();
-                if (!Strings.isNullOrEmpty(cellNames))
+                if (!Strings.isNullOrBlank(cellNames))
                 {
                     for (var cellName : cellNames.split(","))
                     {

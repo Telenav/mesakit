@@ -44,6 +44,6 @@ public class GradeSeparationExtractor extends BaseExtractor<GradeSeparation, Pbf
     public GradeSeparation onExtract(PbfWay tags)
     {
         var level = tags.tagValueAsNaturalNumber(type == Type.FROM ? "zlevel:ref" : "zlevel:nonref");
-        return level == Ints.INVALID ? GradeSeparation.GROUND : GradeSeparation.of(level);
+        return level == Ints.INVALID_INT ? GradeSeparation.GROUND : GradeSeparation.of(level);
     }
 }

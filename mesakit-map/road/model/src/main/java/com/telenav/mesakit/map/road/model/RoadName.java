@@ -62,7 +62,7 @@ public class RoadName extends Name
 
     public static RoadName forName(String name)
     {
-        if (Strings.isNullOrEmpty(name))
+        if (Strings.isNullOrBlank(name))
         {
             return null;
         }
@@ -196,7 +196,7 @@ public class RoadName extends Name
                 (1. - (double) levenshteinDistance / (double) maximumLength) / directionDivisor);
 
         // Add for cases like 'US 101' and '101', 'CA 85' and '85'
-        if (!Strings.isNullOrEmpty(thatStreetName) && !Strings.isNullOrEmpty(thisName) && !thatStreetName.equalsIgnoreCase(thisName)
+        if (!Strings.isNullOrBlank(thatStreetName) && !Strings.isNullOrBlank(thisName) && !thatStreetName.equalsIgnoreCase(thisName)
                 && (thatStreetName.contains(thisName) || (thisName.contains(thatStreetName))))
         {
             var confidenceForSimilarNames = Confidence.confidence(0.8 / directionDivisor);

@@ -682,7 +682,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         if (ref != null && network != null)
         {
             var name = network.replaceAll("\\w+:", "") + "-" + ref;
-            if (!Strings.isNullOrEmpty(name))
+            if (!Strings.isNullOrBlank(name))
             {
                 store.edgeStore().storeRoadName(edge, RoadName.Type.ROUTE, RoadName.forName(name));
             }

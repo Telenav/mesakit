@@ -385,7 +385,7 @@ public class RelationStore extends ArchivedGraphElementStore<EdgeRelation>
         {
             // get the member's grade level
             var level = Ints.parseInt(this, member.role());
-            if (level != Ints.INVALID)
+            if (level != Ints.INVALID_INT)
             {
                 // and add to the set of edges at that level
                 var route = member.route();

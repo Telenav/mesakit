@@ -92,7 +92,7 @@ public class PlaceExtractor extends BaseExtractor<Place, PbfEntity<?>>
             }
             place.name(name);
             var population = map.get("population");
-            if (!Strings.isNullOrEmpty(population) && Strings.isNaturalNumber(population))
+            if (!Strings.isNullOrBlank(population) && Strings.isNaturalNumber(population))
             {
                 place.population(Count.parseCount(this, population));
             }

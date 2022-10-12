@@ -70,11 +70,11 @@ public class EdgeStoreTest extends GraphUnitTest
         var serializer = new KryoObjectSerializer(kryoTypes());
         var output = new ByteArrayOutputStream();
         var path = StringPath.stringPath("test");
-        serializer.writeObject(output, path, index, ObjectMetadata.OBJECT_TYPE);
+        serializer.writeObject(output, path, index, ObjectMetadata.METADATA_OBJECT_TYPE);
         IO.close(this, output);
 
         var input = new ByteArrayInputStream(output.toByteArray());
-        var deserialized = serializer.readObject(input, path, ObjectMetadata.OBJECT_TYPE).object();
+        var deserialized = serializer.readObject(input, path, ObjectMetadata.METADATA_OBJECT_TYPE).object();
 
         ensureEqual(index, deserialized);
     }

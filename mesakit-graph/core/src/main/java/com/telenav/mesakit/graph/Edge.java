@@ -561,7 +561,7 @@ public abstract class Edge extends GraphElement implements
         private Edge edgeForLongIdentifier(String value)
         {
             var identifierAsLong = Longs.parseFastLong(value);
-            if (identifierAsLong != Longs.INVALID)
+            if (identifierAsLong != Longs.INVALID_LONG)
             {
                 var identifier = new EdgeIdentifier(identifierAsLong);
                 if (graph.contains(identifier))
@@ -1293,7 +1293,7 @@ public abstract class Edge extends GraphElement implements
     public boolean isNameless()
     {
         var name = roadName();
-        return name == null || Strings.isNullOrEmpty(name.name()) || "Unnamed".equalsIgnoreCase(name.name());
+        return name == null || Strings.isNullOrBlank(name.name()) || "Unnamed".equalsIgnoreCase(name.name());
     }
 
     /**

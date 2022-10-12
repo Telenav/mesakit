@@ -82,7 +82,7 @@ public class SpeedCategoryExtractor extends BaseExtractor<SpeedCategory, PbfWay>
     {
         {
             var category = way.tagValueAsNaturalNumber("sc");
-            if (category != Ints.INVALID)
+            if (category != Ints.INVALID_INT)
             {
                 return SpeedCategory.forIdentifier(category);
             }

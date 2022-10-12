@@ -201,7 +201,7 @@ public class Polyline implements
 
     public static Polyline parse(String value)
     {
-        if (!Strings.isNullOrEmpty(value))
+        if (!Strings.isNullOrBlank(value))
         {
             var builder = new PolylineBuilder();
             var converter = new Location.DegreesConverter(LOGGER);
@@ -249,7 +249,7 @@ public class Polyline implements
         @Override
         protected Polyline onToValue(String value)
         {
-            if (!Strings.isNullOrEmpty(value))
+            if (!Strings.isNullOrBlank(value))
             {
                 var builder = new PolylineBuilder();
                 for (var location : Split.split(value, separators.current()))
@@ -493,7 +493,7 @@ public class Polyline implements
         @Override
         protected Polyline onToValue(String value)
         {
-            if (!Strings.isNullOrEmpty(value))
+            if (!Strings.isNullOrBlank(value))
             {
                 var converted = longArrayConverter.convert(value);
                 return converted == null ? null : fromLongArray(converted);
