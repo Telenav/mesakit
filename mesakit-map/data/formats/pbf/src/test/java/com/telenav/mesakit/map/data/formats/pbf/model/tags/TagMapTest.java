@@ -38,11 +38,11 @@ public class TagMapTest extends UnitTest
         ensure(map.size() == 3);
         var keys = map.keys();
         ensure(keys.hasNext());
-        ensure(keys.next().equals("a"));
+        ensure("a".equals(keys.next()));
         ensure(keys.hasNext());
-        ensure(keys.next().equals("c"));
+        ensure("c".equals(keys.next()));
         ensure(keys.hasNext());
-        ensure(keys.next().equals("e"));
+        ensure("e".equals(keys.next()));
         ensure(!keys.hasNext());
 
         ensure("y".equals(map.get("x", "y")));

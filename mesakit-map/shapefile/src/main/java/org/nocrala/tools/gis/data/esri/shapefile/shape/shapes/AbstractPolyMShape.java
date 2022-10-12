@@ -27,9 +27,9 @@ public abstract class AbstractPolyMShape extends AbstractPolyShape
 
     private final double[] m;
 
-    public AbstractPolyMShape(final ShapeHeader shapeHeader,
-                              final ShapeType shapeType, final InputStream is,
-                              final ValidationPreferences rules) throws IOException,
+    protected AbstractPolyMShape(ShapeHeader shapeHeader,
+                                 ShapeType shapeType, InputStream is,
+                                 ValidationPreferences rules) throws IOException,
             InvalidShapeFileException
     {
 
@@ -67,7 +67,7 @@ public abstract class AbstractPolyMShape extends AbstractPolyShape
 
     // Accessors
 
-    public double[] getMOfPart(final int i)
+    public double[] getMOfPart(int i)
     {
         if (i < 0 || i >= this.numberOfParts)
         {

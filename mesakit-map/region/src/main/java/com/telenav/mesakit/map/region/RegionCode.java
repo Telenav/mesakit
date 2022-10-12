@@ -110,7 +110,7 @@ public class RegionCode
 
     public RegionCode aonized()
     {
-        return RegionCode.parse(aonize(code()));
+        return parse(aonize(code()));
     }
 
     public RegionCode append(RegionCode that)
@@ -146,7 +146,7 @@ public class RegionCode
 
     public RegionCode first(int count)
     {
-        return RegionCode.parse(new StringList(Maximum._4, parts).first(Count.count(count)).join('-'));
+        return parse(new StringList(Maximum._4, parts).first(Count.count(count)).join('-'));
     }
 
     public RegionCode fourth()
@@ -264,7 +264,7 @@ public class RegionCode
 
     public RegionCode isoized()
     {
-        return RegionCode.parse(isoize(code()));
+        return parse(isoize(code()));
     }
 
     public RegionCode last()
@@ -278,12 +278,12 @@ public class RegionCode
 
     public RegionCode nameized()
     {
-        return RegionCode.parse(nameize(code()));
+        return parse(nameize(code()));
     }
 
     public RegionCode normalized()
     {
-        return RegionCode.parse(normalizeName(code()));
+        return parse(normalizeName(code()));
     }
 
     public RegionCode second()
@@ -314,10 +314,10 @@ public class RegionCode
 
     public RegionCode withoutPrefix(String prefix)
     {
-        ensure(!Strings.isEmpty(prefix));
-        var code = Strip.leading(code(), prefix);
-        code = Strip.leading(code, "_");
-        return RegionCode.parse(code);
+        ensure(!Strings.isNullOrEmpty(prefix));
+        var code = Strip.stripLeading(code(), prefix);
+        code = Strip.stripLeading(code, "_");
+        return parse(code);
     }
 
     private static Pattern ISO_PATTERN()
@@ -407,7 +407,7 @@ public class RegionCode
 
         // HOTSPOT: This method has been determined to be a hotspot by YourKit profiling
 
-        name = Strip.ending(name, "-");
+        name = Strip.stripEnding(name, "-");
         name = Strings.replaceAll(name, "--", "\u2014");
         name = Strings.replaceAll(name, " - ", "\u2014");
         return name;
@@ -417,7 +417,7 @@ public class RegionCode
     {
         if (index < parts.length)
         {
-            return RegionCode.parse(parts[index]);
+            return parse(parts[index]);
         }
         return null;
     }

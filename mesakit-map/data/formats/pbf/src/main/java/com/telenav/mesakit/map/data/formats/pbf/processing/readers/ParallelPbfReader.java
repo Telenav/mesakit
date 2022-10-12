@@ -47,19 +47,19 @@ public class ParallelPbfReader extends BaseRepeater implements PbfDataSource
 
     private PbfDataProcessor processor;
 
-    private final Batcher<PbfNode> nodeBatcher = Batcher.<PbfNode>create()
+    private final Batcher<PbfNode> nodeBatcher = Batcher.<PbfNode>batcher()
             .withName("Node")
             .withQueueSize(QUEUE_SIZE)
             .withBatchSize(BATCH_SIZE)
             .withConsumer(batch -> outer().processor.onNodes(batch));
 
-    private final Batcher<PbfWay> wayBatcher = Batcher.<PbfWay>create()
+    private final Batcher<PbfWay> wayBatcher = Batcher.<PbfWay>batcher()
             .withName("Way")
             .withQueueSize(QUEUE_SIZE)
             .withBatchSize(BATCH_SIZE)
             .withConsumer(batch -> outer().processor.onWays(batch));
 
-    private final Batcher<PbfRelation> relationBatcher = Batcher.<PbfRelation>create()
+    private final Batcher<PbfRelation> relationBatcher = Batcher.<PbfRelation>batcher()
             .withName("Relation")
             .withQueueSize(QUEUE_SIZE)
             .withBatchSize(BATCH_SIZE)

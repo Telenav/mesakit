@@ -15,9 +15,9 @@ import java.io.InputStream;
 
 public class PolylineZShape extends AbstractPolyZShape
 {
-    public PolylineZShape(final ShapeHeader shapeHeader,
-                          final ShapeType shapeType, final InputStream is,
-                          final ValidationPreferences rules) throws IOException,
+    public PolylineZShape(ShapeHeader shapeHeader,
+                          ShapeType shapeType, InputStream is,
+                          ValidationPreferences rules) throws IOException,
             InvalidShapeFileException
     {
         super(shapeHeader, shapeType, is, rules);

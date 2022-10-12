@@ -3,7 +3,7 @@ package org.nocrala.tools.gis.data.esri.shapefile.util;
 @SuppressWarnings("unused")
 public class BAUtil
 {
-    public static void displayByteArray(final String prompt, final byte[] b)
+    public static void displayByteArray(String prompt, byte[] b)
     {
         if (b == null)
         {

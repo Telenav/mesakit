@@ -30,7 +30,7 @@ public class OsmEdgeProperties extends EdgeProperties
 
     public static OsmEdgeProperties get()
     {
-        return OsmEdgeProperties.singleton.get();
+        return singleton.get();
     }
 
     public abstract class OsmEdgeProperty extends EdgeProperty

@@ -10,6 +10,5 @@ public class DataStreamEOFException extends Exception
 
     public DataStreamEOFException()
     {
-        super();
     }
 }

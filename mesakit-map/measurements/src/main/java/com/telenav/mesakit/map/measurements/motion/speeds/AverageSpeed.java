@@ -36,7 +36,7 @@ public class AverageSpeed extends Average
 {
     public void add(Speed speed)
     {
-        super.add(speed.asMetersPerHour());
+        add(speed.asMetersPerHour());
     }
 
     @UmlRelation(label = "computes")

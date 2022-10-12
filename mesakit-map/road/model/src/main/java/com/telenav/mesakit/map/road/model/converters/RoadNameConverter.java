@@ -50,7 +50,7 @@ public class RoadNameConverter extends BaseStringConverter<RoadName>
      */
     private static String normalizeSymbolsAndAccents(String string)
     {
-        if (Strings.isEmpty(string))
+        if (Strings.isNullOrEmpty(string))
         {
             string = "";
         }

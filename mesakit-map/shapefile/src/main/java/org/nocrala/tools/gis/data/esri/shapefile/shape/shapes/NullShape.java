@@ -18,8 +18,8 @@ public class NullShape extends AbstractShape
 {
     private static final int FIXED_CONTENT_LENGTH = (4) / 2;
 
-    public NullShape(final ShapeHeader shapeHeader, final ShapeType shapeType,
-                     final InputStream is, final ValidationPreferences rules)
+    public NullShape(ShapeHeader shapeHeader, ShapeType shapeType,
+                     InputStream is, ValidationPreferences rules)
             throws InvalidShapeFileException
     {
         super(shapeHeader, shapeType, is, rules);

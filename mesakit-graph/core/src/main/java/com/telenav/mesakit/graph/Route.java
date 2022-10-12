@@ -879,7 +879,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
 
     public Route connect(Edge edge)
     {
-        return connect(Route.fromEdge(edge));
+        return connect(fromEdge(edge));
     }
 
     /**
@@ -1343,7 +1343,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
                 }
                 if (lengthInMillimeters() == that.lengthInMillimeters())
                 {
-                    return Iterables.equals(this, that) && Objects.equals(startOffset, that.startOffset)
+                    return Iterables.equalIterables(this, that) && Objects.equals(startOffset, that.startOffset)
                             && Objects.equals(endOffset, that.endOffset);
                 }
             }
@@ -1382,7 +1382,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     @Override
     public int hashCode()
     {
-        return Hash.hashMany(Iterables.hashCode(this), startOffset, endOffset);
+        return Hash.hashMany(Iterables.iterableHashCode(this), startOffset, endOffset);
     }
 
     public Route head()

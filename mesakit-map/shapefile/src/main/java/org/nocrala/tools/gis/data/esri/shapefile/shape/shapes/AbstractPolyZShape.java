@@ -29,9 +29,9 @@ public abstract class AbstractPolyZShape extends AbstractPolyShape {
   private final double maxM;
   private final double[] measures;
 
-  public AbstractPolyZShape(final ShapeHeader shapeHeader,
-      final ShapeType shapeType, final InputStream is,
-      final ValidationPreferences rules) throws IOException,
+  protected AbstractPolyZShape(ShapeHeader shapeHeader,
+                               ShapeType shapeType, InputStream is,
+                               ValidationPreferences rules) throws IOException,
       InvalidShapeFileException {
 
     super(shapeHeader, shapeType, is, rules);
@@ -67,7 +67,7 @@ public abstract class AbstractPolyZShape extends AbstractPolyShape {
 
   }
 
-  public double[] getMOfPart(final int i) {
+  public double[] getMOfPart(int i) {
     if (i < 0 || i >= this.numberOfParts) {
       throw new RuntimeException("Invalid part " + i + ". Available parts [0:"
           + this.numberOfParts + "].");
@@ -91,7 +91,7 @@ public abstract class AbstractPolyZShape extends AbstractPolyShape {
     return Arrays.copyOfRange(this.measures, from, to);
   }
 
-  public double[] getZOfPart(final int i) {
+  public double[] getZOfPart(int i) {
     if (i < 0 || i >= this.numberOfParts) {
       throw new RuntimeException("Invalid part " + i + ". Available parts [0:"
           + this.numberOfParts + "].");

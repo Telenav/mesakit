@@ -34,19 +34,19 @@ public abstract class LabeledMapShape extends BaseMapDrawable
 
     private DrawingHeight labelCornerHeight;
 
-    public LabeledMapShape(Style style, String label)
+    protected LabeledMapShape(Style style, String label)
     {
         super(style);
         this.label = label;
     }
 
-    public LabeledMapShape(Style style, Location at, String label)
+    protected LabeledMapShape(Style style, Location at, String label)
     {
         super(style, at);
         this.label = label;
     }
 
-    public LabeledMapShape(LabeledMapShape that)
+    protected LabeledMapShape(LabeledMapShape that)
     {
         super(that);
         labelCornerWidth = that.labelCornerWidth;

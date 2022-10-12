@@ -93,7 +93,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
 
         serializedWorldGraphRepository = folder.repository().path().toString();
         serializedPath = folder.path().toString().substring(serializedWorldGraphRepository.length());
-        serializedPath = Strip.ending(serializedPath, ".world");
+        serializedPath = Strip.stripEnding(serializedPath, ".world");
 
         ensure(folder.isLocal());
 

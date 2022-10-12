@@ -51,7 +51,7 @@ final class BitArray
         @SuppressWarnings("UnusedReturnValue")
         Builder appendBits(int value, int bitCount)
         {
-            return appendBits(Align.right(Integer.toString(value, 2), bitCount, '0'));
+            return appendBits(Align.alignRight(Integer.toString(value, 2), bitCount, '0'));
         }
 
         Builder appendBits(String bitsAsString)

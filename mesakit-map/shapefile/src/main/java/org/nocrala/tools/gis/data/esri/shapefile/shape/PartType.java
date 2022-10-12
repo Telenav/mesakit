@@ -14,9 +14,9 @@ public enum PartType
     FIRST_RING(4), //
     RING(5); //
 
-    public static PartType parse(final int tid)
+    public static PartType parse(int tid)
     {
-        for (PartType st : PartType.values())
+        for (PartType st : values())
         {
             if (st.getId() == tid)
             {

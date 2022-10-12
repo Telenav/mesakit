@@ -8,7 +8,7 @@ public class IntSerializer
 {
     private static final int BYTE_ARRAY_SIZE = 4;
 
-    public static int deserializeBigEndian(final ByteBuffer b)
+    public static int deserializeBigEndian(ByteBuffer b)
     {
         if (b == null)
         {
@@ -26,7 +26,7 @@ public class IntSerializer
         return b.getInt();
     }
 
-    public static int deserializeLittleEndian(final ByteBuffer b)
+    public static int deserializeLittleEndian(ByteBuffer b)
     {
         if (b == null)
         {
@@ -43,7 +43,7 @@ public class IntSerializer
         return b.getInt();
     }
 
-    public static void serializeBigEndian(final int value, final ByteBuffer b)
+    public static void serializeBigEndian(int value, ByteBuffer b)
     {
         if (b == null)
         {
@@ -60,7 +60,7 @@ public class IntSerializer
         b.putInt(value);
     }
 
-    public static void serializeLittleEndian(final int value, final ByteBuffer b)
+    public static void serializeLittleEndian(int value, ByteBuffer b)
     {
         if (b == null)
         {

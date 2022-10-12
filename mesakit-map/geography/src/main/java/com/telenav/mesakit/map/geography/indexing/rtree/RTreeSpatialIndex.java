@@ -73,7 +73,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     public static class All<Element> implements Matcher<Element>
     {
         @Override
-        public boolean matches(final Element element)
+        public boolean matches(Element element)
         {
             return true;
         }

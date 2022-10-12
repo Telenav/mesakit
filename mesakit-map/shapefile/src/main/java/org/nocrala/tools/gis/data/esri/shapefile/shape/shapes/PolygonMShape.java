@@ -15,9 +15,9 @@ import java.io.InputStream;
 
 public class PolygonMShape extends AbstractPolyMShape
 {
-    public PolygonMShape(final ShapeHeader shapeHeader,
-                         final ShapeType shapeType, final InputStream is,
-                         final ValidationPreferences rules) throws IOException,
+    public PolygonMShape(ShapeHeader shapeHeader,
+                         ShapeType shapeType, InputStream is,
+                         ValidationPreferences rules) throws IOException,
             InvalidShapeFileException
     {
 

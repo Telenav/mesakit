@@ -60,7 +60,7 @@ public class Slope extends Angle
 
     public Slope difference(Slope that)
     {
-        return of(super.difference(that, Chirality.SMALLEST));
+        return of(difference(that, Chirality.SMALLEST));
     }
 
     @Override

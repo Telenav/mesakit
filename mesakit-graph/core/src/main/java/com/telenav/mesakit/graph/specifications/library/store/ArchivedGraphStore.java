@@ -24,7 +24,7 @@ import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.string.AsciiArt;
-import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.interfaces.loading.Unloadable;
 import com.telenav.kivakit.resource.Resource;
@@ -115,7 +115,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
         loaded(archive);
 
         // Done!
-        graph().information(AsciiArt.textBox(Strings.format("Loaded from $ in $",
+        graph().information(AsciiArt.textBox(Formatter.format("Loaded from $ in $",
                 graph().metadata().descriptor(), start.elapsedSince()), graph().asString()));
     }
 
@@ -238,7 +238,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
         report.add("output: " + archive);
         report.add("elapsed: " + start.elapsedSince());
         report.add(graph().asString());
-        information(AsciiArt.textBox(Strings.format("Saved $", metadata().descriptor()), report.join("\n")));
+        information(AsciiArt.textBox(Formatter.format("Saved $", metadata().descriptor()), report.join("\n")));
     }
 
     /**

@@ -19,7 +19,6 @@
 package com.telenav.mesakit.map.region;
 
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
-import com.telenav.mesakit.map.region.RegionIdentity;
 import com.telenav.mesakit.map.region.border.Border;
 import com.telenav.mesakit.map.region.border.BorderSpatialIndex;
 import com.telenav.mesakit.map.region.border.BorderSpatialIndexKryoSerializer;

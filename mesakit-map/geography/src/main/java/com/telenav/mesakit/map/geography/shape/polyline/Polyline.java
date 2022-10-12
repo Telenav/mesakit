@@ -201,7 +201,7 @@ public class Polyline implements
 
     public static Polyline parse(String value)
     {
-        if (!Strings.isEmpty(value))
+        if (!Strings.isNullOrEmpty(value))
         {
             var builder = new PolylineBuilder();
             var converter = new Location.DegreesConverter(LOGGER);
@@ -249,7 +249,7 @@ public class Polyline implements
         @Override
         protected Polyline onToValue(String value)
         {
-            if (!Strings.isEmpty(value))
+            if (!Strings.isNullOrEmpty(value))
             {
                 var builder = new PolylineBuilder();
                 for (var location : Split.split(value, separators.current()))
@@ -493,7 +493,7 @@ public class Polyline implements
         @Override
         protected Polyline onToValue(String value)
         {
-            if (!Strings.isEmpty(value))
+            if (!Strings.isNullOrEmpty(value))
             {
                 var converted = longArrayConverter.convert(value);
                 return converted == null ? null : fromLongArray(converted);
@@ -1367,7 +1367,7 @@ public class Polyline implements
     public Polyline reversed()
     {
         var reversed = locationsInDecimal();
-        Arrays.reverse(reversed);
+        Arrays.reverseArray(reversed);
         return new Polyline(reversed);
     }
 

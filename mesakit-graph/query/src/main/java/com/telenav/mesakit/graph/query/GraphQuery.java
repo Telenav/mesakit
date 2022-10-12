@@ -59,7 +59,7 @@ public class GraphQuery
         if (listener.error())
         {
             // return nothing
-            return ObjectSet.set();
+            return set();
         }
 
         // or if the parser ran out of input
@@ -67,7 +67,7 @@ public class GraphQuery
         {
             // report that
             errorHandler.call("Parser did not match all input in query expression");
-            return ObjectSet.set();
+            return set();
         }
 
         // or if there's a syntax error
@@ -75,7 +75,7 @@ public class GraphQuery
         {
             // return an empty set
             errorHandler.call("Syntax error");
-            return ObjectSet.set();
+            return set();
         }
 
         // otherwise, create a query compiler,

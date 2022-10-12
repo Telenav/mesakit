@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.ui.desktop.viewer.desktop;
 
 import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.core.thread.StateMachine;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.value.count.Maximum;
@@ -461,7 +461,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
     @Override
     public String name()
     {
-        return super.getName();
+        return getName();
     }
 
     /**
@@ -650,7 +650,7 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
 
                 return new HttpNetworkLocation(Host.parseHost(this, "b.tile.openstreetmap.org")
                         .http()
-                        .path(this, Strings.format("/${long}/${long}/${long}.png", z, x, y)));
+                        .path(this, Formatter.format("/${long}/${long}/${long}.png", z, x, y)));
             }
 
             /**

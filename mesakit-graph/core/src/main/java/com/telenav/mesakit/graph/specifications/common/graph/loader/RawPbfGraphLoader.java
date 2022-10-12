@@ -118,24 +118,24 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
 
     private static final Set<String> ignoreHighwayTypes = new HashSet<>();
 
-    private static final Debug DEBUG = new Debug(RawPbfGraphLoader.LOGGER);
+    private static final Debug DEBUG = new Debug(LOGGER);
 
     static
     {
-        RawPbfGraphLoader.ignoreHighwayTypes.add("abandoned");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("raceway");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("dismantled");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("disused");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("escape");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("planned");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("razed");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("platform");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("bus_stop");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("corridor");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("elevator");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("crossing");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("yes");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("dummy");
+        ignoreHighwayTypes.add("abandoned");
+        ignoreHighwayTypes.add("raceway");
+        ignoreHighwayTypes.add("dismantled");
+        ignoreHighwayTypes.add("disused");
+        ignoreHighwayTypes.add("escape");
+        ignoreHighwayTypes.add("planned");
+        ignoreHighwayTypes.add("razed");
+        ignoreHighwayTypes.add("platform");
+        ignoreHighwayTypes.add("bus_stop");
+        ignoreHighwayTypes.add("corridor");
+        ignoreHighwayTypes.add("elevator");
+        ignoreHighwayTypes.add("crossing");
+        ignoreHighwayTypes.add("yes");
+        ignoreHighwayTypes.add("dummy");
     }
 
     protected enum ProcessingDirective
@@ -682,7 +682,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         if (ref != null && network != null)
         {
             var name = network.replaceAll("\\w+:", "") + "-" + ref;
-            if (!Strings.isEmpty(name))
+            if (!Strings.isNullOrEmpty(name))
             {
                 store.edgeStore().storeRoadName(edge, RoadName.Type.ROUTE, RoadName.forName(name));
             }
@@ -731,7 +731,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                 }
                 else
                 {
-                    RawPbfGraphLoader.DEBUG.trace("Discarding $ because node ${long} has no location", way, node.getNodeId());
+                    DEBUG.trace("Discarding $ because node ${long} has no location", way, node.getNodeId());
                     return null;
                 }
             }
@@ -924,7 +924,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     private List<HeavyWeightEdge> extractEdges(GraphStore store, PbfWay way)
     {
         // We don't want to process certain highway types for any data supplier
-        if (RawPbfGraphLoader.ignoreHighwayTypes.contains(way.highway()))
+        if (ignoreHighwayTypes.contains(way.highway()))
         {
             return Collections.emptyList();
         }
@@ -1031,7 +1031,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                 edge.tags(pbfTags);
             }
 
-            if (edge.validator(VALIDATE_RAW).validate(RawPbfGraphLoader.LOGGER))
+            if (edge.validator(VALIDATE_RAW).validate(LOGGER))
             {
                 edges.add(edge);
             }
@@ -1169,7 +1169,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                     {
                         // In many PBF input files, relations do reference non-existent ways, so this is a debug
                         // statement rather than a warning
-                        RawPbfGraphLoader.DEBUG.glitch("Relation $ references missing way identifier $", relation.identifierAsLong(), wayIdentifier);
+                        DEBUG.glitch("Relation $ references missing way identifier $", relation.identifierAsLong(), wayIdentifier);
                     }
                 }
             }

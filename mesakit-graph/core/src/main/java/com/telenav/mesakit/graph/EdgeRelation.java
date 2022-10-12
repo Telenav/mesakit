@@ -472,7 +472,7 @@ public class EdgeRelation extends GraphElement implements Bounded
 
     public boolean hasNetworkOrRefTag()
     {
-        return !Strings.isEmpty(tagValue("network")) || !Strings.isEmpty(tagValue("ref"));
+        return !Strings.isNullOrEmpty(tagValue("network")) || !Strings.isNullOrEmpty(tagValue("ref"));
     }
 
     @Override

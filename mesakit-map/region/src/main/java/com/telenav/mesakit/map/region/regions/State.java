@@ -216,7 +216,7 @@ public class State extends Region<State>
             {
                 // Get name and ISO codes
                 var name = Region.name(way);
-                if (name == null || Strings.isEmpty(name.code()))
+                if (name == null || Strings.isNullOrEmpty(name.code()))
                 {
                     DEBUG().trace("Can't extract a name from $", way);
                     return null;

@@ -34,8 +34,8 @@ import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.string.AsIndentedString;
 import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.string.Differences;
+import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.core.string.ObjectIndenter;
-import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.value.count.Count;
@@ -1109,7 +1109,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
                     if (graphStore.validator(loader.validation()).validate(this))
                     {
                         // we have succeeded in loading the graph,
-                        information(AsciiArt.textBox(Strings.format("${class} loaded $ in $", loader.getClass(),
+                        information(AsciiArt.textBox(Formatter.format("${class} loaded $ in $", loader.getClass(),
                                 metadata().descriptor(), start.elapsedSince()), asString()));
 
                         // so return its metadata.

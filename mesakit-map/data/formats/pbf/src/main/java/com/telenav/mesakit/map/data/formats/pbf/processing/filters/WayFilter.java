@@ -51,7 +51,7 @@ public class WayFilter implements Filter<PbfWay>, Named
         for (var line : resource.reader().readLines(ProgressReporter.nullProgressReporter()))
         {
             var highway = line.trim();
-            if (!Strings.isEmpty(highway))
+            if (!Strings.isNullOrEmpty(highway))
             {
                 filter.exclude(highway);
             }
@@ -75,7 +75,7 @@ public class WayFilter implements Filter<PbfWay>, Named
         for (var line : resource.reader().readLines(ProgressReporter.nullProgressReporter()))
         {
             var highway = line.trim();
-            if (!Strings.isEmpty(highway))
+            if (!Strings.isNullOrEmpty(highway))
             {
                 filter.include(highway);
             }

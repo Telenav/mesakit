@@ -673,7 +673,7 @@ public abstract class Country extends Region<Country> implements LongValued
             if (code != null)
             {
                 // get the country for that code
-                country = Country.forRegionCode(code);
+                country = forRegionCode(code);
 
                 // and store it in the map for the future
                 isoToCountry.put(iso, country);
@@ -788,7 +788,7 @@ public abstract class Country extends Region<Country> implements LongValued
         @Override
         protected Country onToValue(String country)
         {
-            if (!Strings.isEmpty(country) && !"NULL".equalsIgnoreCase(country))
+            if (!Strings.isNullOrEmpty(country) && !"NULL".equalsIgnoreCase(country))
             {
                 var regions = Region.allRegionsMatching(country);
                 if (!regions.isEmpty())

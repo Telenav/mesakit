@@ -577,7 +577,7 @@ public class Angle implements
     @Override
     public Angle map(Long degrees)
     {
-        return Angle.nanodegrees(degrees);
+        return nanodegrees(degrees);
     }
 
     @Override

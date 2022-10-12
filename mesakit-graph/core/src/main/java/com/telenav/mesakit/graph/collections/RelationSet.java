@@ -149,7 +149,7 @@ public class RelationSet implements Set<EdgeRelation>
         protected RelationSet onToValue(String value)
         {
             var relations = new RelationSet(Limit.RELATIONS, Estimate._16);
-            if (!Strings.isEmpty(value))
+            if (!Strings.isNullOrEmpty(value))
             {
                 for (var relation : value.split(separators.current()))
                 {

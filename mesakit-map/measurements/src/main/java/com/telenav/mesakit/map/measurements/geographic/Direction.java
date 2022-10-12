@@ -58,18 +58,18 @@ public enum Direction implements Named
         for (var direction : values())
         {
             // NORTH
-            Direction.nameToDirection.put(direction.name(), direction);
+            nameToDirection.put(direction.name(), direction);
 
             // N
-            Direction.nameToDirection.put(direction.abbreviation(), direction);
+            nameToDirection.put(direction.abbreviation(), direction);
 
             if (direction.abbreviation().length() == 1)
             {
                 // NB
-                Direction.nameToDirection.put(direction.abbreviation() + "B", direction);
+                nameToDirection.put(direction.abbreviation() + "B", direction);
 
                 // NORTHBOUND
-                Direction.nameToDirection.put(direction.name() + "BOUND", direction);
+                nameToDirection.put(direction.name() + "BOUND", direction);
             }
         }
     }

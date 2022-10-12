@@ -5,7 +5,7 @@ public class HexaUtil
 {
     private static final String HEXA_DIGITS = "0123456789abcdef";
 
-    public static String byteArrayToString(final byte[] b)
+    public static String byteArrayToString(byte[] b)
     {
         StringBuilder sb = new StringBuilder();
         for (byte value : b)
@@ -21,7 +21,7 @@ public class HexaUtil
 
     // Util
 
-    public static byte[] stringToByteArray(final String orig)
+    public static byte[] stringToByteArray(String orig)
     {
 
         String txt = orig.toLowerCase();
@@ -55,12 +55,12 @@ public class HexaUtil
         return result;
     }
 
-    private static char decimalToHexa(final int d)
+    private static char decimalToHexa(int d)
     {
         return HEXA_DIGITS.charAt(d);
     }
 
-    private static int hexaToDecimal(final char c)
+    private static int hexaToDecimal(char c)
     {
         for (int i = 0; i < HEXA_DIGITS.length(); i++)
         {

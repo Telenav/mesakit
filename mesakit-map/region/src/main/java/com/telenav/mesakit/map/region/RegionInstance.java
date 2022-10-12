@@ -99,7 +99,7 @@ public class RegionInstance<T extends Region<T>> implements StringFormattable
         bounds = that.bounds;
         drivingSide = that.drivingSide;
         automotiveSupportLevel = that.automotiveSupportLevel;
-        localeLanguages = ObjectList.list(that.localeLanguages);
+        localeLanguages = list(that.localeLanguages);
         localeRegion = that.localeRegion;
     }
 

@@ -113,7 +113,7 @@ import com.telenav.mesakit.map.road.name.parser.tokenizer.Token;
     {
         if (lookingAt(TOKENIZER.STATE_ROUTE))
         {
-            var state = Strip.trailing(current().text().trim(), "-");
+            var state = Strip.stripTrailing(current().text().trim(), "-");
             next();
             skipAny(TOKENIZER.WHITESPACE);
             if (lookingAt(TOKENIZER.DASH))

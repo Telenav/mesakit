@@ -276,7 +276,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      */
     public static Metadata parse(String value)
     {
-        value = Strip.trailing(value, ".world");
+        value = Strip.stripTrailing(value, ".world");
 
         Pattern pattern = Pattern.compile
                 (

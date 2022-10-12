@@ -43,8 +43,8 @@ public class ShapeFileHeader
 	private final double boxMinM;
 	private final double boxMaxM;
 
-	public ShapeFileHeader(final InputStream is,
-			final ValidationPreferences rules) throws IOException,
+	public ShapeFileHeader(InputStream is,
+                           ValidationPreferences rules) throws IOException,
 			InvalidShapeFileException {
 
 		try {

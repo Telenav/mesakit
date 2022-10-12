@@ -16,13 +16,13 @@ import java.io.InputStream;
 
 public abstract class AbstractPointShape extends AbstractShape
 {
-    private double x;
+    private final double x;
 
-    private double y;
+    private final double y;
 
-    public AbstractPointShape(final ShapeHeader shapeHeader,
-                              final ShapeType shapeType, final InputStream is,
-                              final ValidationPreferences rules) throws IOException
+    protected AbstractPointShape(ShapeHeader shapeHeader,
+                                 ShapeType shapeType, InputStream is,
+                                 ValidationPreferences rules) throws IOException
     {
         super(shapeHeader, shapeType, is, rules);
 

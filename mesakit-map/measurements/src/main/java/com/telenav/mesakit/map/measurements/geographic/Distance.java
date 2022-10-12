@@ -130,7 +130,7 @@ public final class Distance implements LongValued, Comparable<Distance>
 
     public static Distance degrees(double degrees)
     {
-        return Distance.meters(degrees * DM7_PER_DEGREE * KILOMETERS_PER_DM7);
+        return meters(degrees * DM7_PER_DEGREE * KILOMETERS_PER_DM7);
     }
 
     public static SwitchParser.Builder<Distance> distanceSwitchParser(String name, String description)

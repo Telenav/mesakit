@@ -54,15 +54,15 @@ public class EdgeSetTest extends GraphUnitTest
     @Test
     public void test()
     {
-        final Graph graph = osmDowntownSeattleTest();
-        final Iterator<Edge> edges = graph.edges().iterator();
+        Graph graph = osmDowntownSeattleTest();
+        Iterator<Edge> edges = graph.edges().iterator();
 
-        final EdgeSet a = new EdgeSet();
+        EdgeSet a = new EdgeSet();
         a.add(edges.next());
         a.add(edges.next());
         a.add(edges.next());
 
-        final EdgeSet b = new EdgeSet();
+        EdgeSet b = new EdgeSet();
         b.addAll(a);
 
         ensureEqual(a, b);
@@ -71,9 +71,9 @@ public class EdgeSetTest extends GraphUnitTest
     @Test
     public void testMatching()
     {
-        final Graph graph = osmDowntownSeattle();
-        final Vertex center = graph.vertexNearest(Location.degrees(47.611069, -122.3426071));
-        final EdgeSet allEdges = center.edges();
+        Graph graph = osmDowntownSeattle();
+        Vertex center = graph.vertexNearest(Location.degrees(47.611069, -122.3426071));
+        EdgeSet allEdges = center.edges();
         ensureEqual(6, allEdges.size());
         ensureEqual(3, allEdges.inEdges(center).size());
         ensureEqual(3, allEdges.outEdges(center).size());
@@ -84,15 +84,15 @@ public class EdgeSetTest extends GraphUnitTest
     @Test
     public void testParallel()
     {
-        final EdgeSet set1 = EdgeSet.singleton(edge1);
+        EdgeSet set1 = EdgeSet.singleton(edge1);
         ensureEqual(edge1, set1.parallelTo(parallelEdge));
         ensureEqual(null, set1.parallelTo(nonparallelEdge));
 
         // should return edge with smaller diff angle
-        final List<Edge> edgeList = new ArrayList<>();
+        List<Edge> edgeList = new ArrayList<>();
         edgeList.add(edge3);
         edgeList.add(edge2);
-        final EdgeSet set2 = EdgeSet.forCollection(Maximum._3, edgeList);
+        EdgeSet set2 = EdgeSet.forCollection(Maximum._3, edgeList);
 
         ensureNotEqual(null, set2.parallelTo(parallelEdge));
         ensureEqual(null, set2.parallelTo(nonparallelEdge));
@@ -101,11 +101,11 @@ public class EdgeSetTest extends GraphUnitTest
     @Test
     public void testSort()
     {
-        final EdgeSet set = new EdgeSet();
+        EdgeSet set = new EdgeSet();
         set.add(edge1);
         set.add(edge3);
         set.add(edge2);
-        final List<Edge> sorted = set.asSortedList();
+        List<Edge> sorted = set.asSortedList();
         ensureEqual(edge1, sorted.get(0));
         ensureEqual(edge2, sorted.get(1));
         ensureEqual(edge3, sorted.get(2));
@@ -114,18 +114,18 @@ public class EdgeSetTest extends GraphUnitTest
     @Test
     public void testUnion()
     {
-        final EdgeSet set1 = EdgeSet.singleton(edge1).union(EdgeSet.singleton(edge2));
-        final List<Edge> edgeList = new ArrayList<>();
+        EdgeSet set1 = EdgeSet.singleton(edge1).union(EdgeSet.singleton(edge2));
+        List<Edge> edgeList = new ArrayList<>();
         edgeList.add(edge1);
         edgeList.add(edge2);
-        final EdgeSet set2 = EdgeSet.forCollection(Maximum._2, edgeList);
+        EdgeSet set2 = EdgeSet.forCollection(Maximum._2, edgeList);
 
         // we can't use assertEquals(set1,set2) here, why?
         ensure(set1.containsAll(set2));
         ensure(set2.containsAll(set1));
 
         // same as above
-        final EdgeSet set3 = set1.union(EdgeSet.singleton(edge1));
+        EdgeSet set3 = set1.union(EdgeSet.singleton(edge1));
         ensure(set1.containsAll(set3));
         ensure(set3.containsAll(set1));
     }
@@ -133,12 +133,12 @@ public class EdgeSetTest extends GraphUnitTest
     @Test
     public void testWithout()
     {
-        final EdgeSet set1 = EdgeSet.singleton(edge1);
-        final EdgeSet set2 = EdgeSet.singleton(edge2);
-        final List<Edge> edgeList = new ArrayList<>();
+        EdgeSet set1 = EdgeSet.singleton(edge1);
+        EdgeSet set2 = EdgeSet.singleton(edge2);
+        List<Edge> edgeList = new ArrayList<>();
         edgeList.add(edge1);
         edgeList.add(edge2);
-        final EdgeSet set3 = EdgeSet.forCollection(Maximum._2, edgeList);
+        EdgeSet set3 = EdgeSet.forCollection(Maximum._2, edgeList);
 
         // we can't use assertEquals(set1,set2) here, why?
         ensure(set3.without(set1).containsAll(set2));

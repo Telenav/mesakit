@@ -145,7 +145,7 @@ public final class OsmRawPbfGraphLoader extends RawPbfGraphLoader
         var user = lastModifierExtractor.extract(way);
         if (user != null)
         {
-            if (!Strings.isEmpty(user.getName()))
+            if (!Strings.isNullOrEmpty(user.getName()))
             {
                 edge.pbfUserName(new PbfUserName(user.getName()));
             }

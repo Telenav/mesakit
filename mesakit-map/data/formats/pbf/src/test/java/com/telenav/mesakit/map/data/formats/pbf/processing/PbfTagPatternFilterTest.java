@@ -29,7 +29,7 @@ public class PbfTagPatternFilterTest extends UnitTest
     public void test()
     {
         // filter out adas and phonetics tags
-        final PbfTagPatternFilter filter = new PbfTagPatternFilter("^(?!.*(adas:|phonetics)).*$");
+        PbfTagPatternFilter filter = new PbfTagPatternFilter("^(?!.*(adas:|phonetics)).*$");
 
         ensureFalse(filter.accepts(new Tag("adas:chs", "")));
         ensureFalse(filter.accepts(new Tag("adas:route_type", "")));

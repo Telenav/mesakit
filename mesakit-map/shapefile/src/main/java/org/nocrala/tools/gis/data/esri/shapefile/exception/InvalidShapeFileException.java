@@ -10,7 +10,6 @@ public class InvalidShapeFileException extends Exception
 
     public InvalidShapeFileException()
     {
-        super();
     }
 
     public InvalidShapeFileException(String message, Throwable cause)

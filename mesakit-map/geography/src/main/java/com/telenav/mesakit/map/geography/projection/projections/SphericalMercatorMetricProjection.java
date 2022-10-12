@@ -58,7 +58,7 @@ public class SphericalMercatorMetricProjection implements MetricProjection
     private double latitudeInDegreesToMeters(double latitudeInDegrees)
     {
         var latitudeInRadians = toRadians(Latitude.inRange(latitudeInDegrees));
-        return EARTH_RADIUS_IN_METERS * Math.log(Math.tan(Math.PI / 4 + latitudeInRadians / 2));
+        return EARTH_RADIUS_IN_METERS * Math.log(Math.tan(PI / 4 + latitudeInRadians / 2));
     }
 
     private double longitudeInDegreesToMeters(double longitudeInDegrees)

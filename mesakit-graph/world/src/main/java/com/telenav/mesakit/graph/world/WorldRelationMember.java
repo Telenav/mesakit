@@ -88,7 +88,7 @@ public class WorldRelationMember extends EdgeRelationMember
         }
 
         // We couldn't find the vertex for this member in this cell, so look in neighboring cells
-        var identifier = new PbfNodeIdentifier(super.identifier().asLong());
+        var identifier = new PbfNodeIdentifier(identifier().asLong());
         for (var neighbor : worldCell.neighbors())
         {
             var neighborGraph = neighbor.cellGraph();

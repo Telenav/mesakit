@@ -699,7 +699,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
      */
     public Count retrieveForwardEdgeCount()
     {
-        return Count.count(super.size());
+        return Count.count(size());
     }
 
     /**

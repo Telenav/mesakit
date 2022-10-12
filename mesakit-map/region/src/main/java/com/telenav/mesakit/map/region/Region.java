@@ -184,7 +184,7 @@ public abstract class Region<T extends Region<T>> implements
         for (var object : all.allUntyped())
         {
             var region = (Region) object;
-            if (Patterns.matches(pattern, region.identity().mesakit().code()))
+            if (Patterns.patternMatches(pattern, region.identity().mesakit().code()))
             {
                 matches.add(region);
             }
@@ -369,7 +369,7 @@ public abstract class Region<T extends Region<T>> implements
         @SuppressWarnings("unchecked")
         protected R onToValue(String value)
         {
-            if (!Strings.isEmpty(value) && !"NULL".equalsIgnoreCase(value))
+            if (!Strings.isNullOrEmpty(value) && !"NULL".equalsIgnoreCase(value))
             {
                 var regions = allRegionsMatching(value);
                 if (regions.size() == 1)

@@ -18,9 +18,9 @@ public abstract class AbstractPolyPlainShape extends AbstractPolyShape
 {
     private static final int BASE_CONTENT_LENGTH = (4 + 8 * 4 + 4 + 4) / 2;
 
-    public AbstractPolyPlainShape(final ShapeHeader shapeHeader,
-                                  final ShapeType shapeType, final InputStream is,
-                                  final ValidationPreferences rules) throws IOException,
+    protected AbstractPolyPlainShape(ShapeHeader shapeHeader,
+                                     ShapeType shapeType, InputStream is,
+                                     ValidationPreferences rules) throws IOException,
             InvalidShapeFileException
     {
 

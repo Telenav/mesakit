@@ -53,7 +53,7 @@ public class RoutingResponse
 
     public boolean failed()
     {
-        return this != RoutingResponse.STEP_SUCCEEDED && route == null;
+        return this != STEP_SUCCEEDED && route == null;
     }
 
     public Route route()

@@ -77,7 +77,7 @@ public class DijkstraRoutingRequest extends RoutingRequest
     public RoutingResponse done(Route route)
     {
         var response = new RoutingResponse(route, elapsed());
-        super.onEndRouting(response);
+        onEndRouting(response);
         return response;
     }
 

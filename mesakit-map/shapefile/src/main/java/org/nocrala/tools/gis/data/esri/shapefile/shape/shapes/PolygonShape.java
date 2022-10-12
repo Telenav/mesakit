@@ -15,8 +15,8 @@ import java.io.InputStream;
 
 public class PolygonShape extends AbstractPolyPlainShape
 {
-    public PolygonShape(final ShapeHeader shapeHeader, final ShapeType shapeType,
-                        final InputStream is, final ValidationPreferences rules)
+    public PolygonShape(ShapeHeader shapeHeader, ShapeType shapeType,
+                        InputStream is, ValidationPreferences rules)
             throws IOException, InvalidShapeFileException
     {
         super(shapeHeader, shapeType, is, rules);

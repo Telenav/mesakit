@@ -53,7 +53,7 @@ public class GraphProject extends Project
     @Override
     public ObjectSet<Class<? extends Project>> dependencies()
     {
-        return ObjectSet.set(RegionProject.class);
+        return set(RegionProject.class);
     }
 
     /**

@@ -33,7 +33,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
 
     public static EdgeProperties get()
     {
-        return EdgeProperties.singleton.get();
+        return singleton.get();
     }
 
     public abstract class EdgeProperty extends GraphElementProperty
@@ -249,7 +249,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
         public Object value(Edge edge)
         {
             var relations = new StringList();
-            edge.relations().forEach(relation -> relations.add(StringConversions.toString(relation.identifier())));
+            edge.relations().forEach(relation -> relations.add(StringConversions.toHumanizedString(relation.identifier())));
             return relations.join(", ");
         }
     };

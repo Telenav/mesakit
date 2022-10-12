@@ -474,7 +474,7 @@ public abstract class Edge extends GraphElement implements
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    private static final Debug DEBUG = new Debug(Edge.LOGGER);
+    private static final Debug DEBUG = new Debug(LOGGER);
 
     /**
      * Returns a matcher for edges intersecting the given bounds
@@ -1293,7 +1293,7 @@ public abstract class Edge extends GraphElement implements
     public boolean isNameless()
     {
         var name = roadName();
-        return name == null || Strings.isEmpty(name.name()) || "Unnamed".equalsIgnoreCase(name.name());
+        return name == null || Strings.isNullOrEmpty(name.name()) || "Unnamed".equalsIgnoreCase(name.name());
     }
 
     /**
@@ -1540,7 +1540,7 @@ public abstract class Edge extends GraphElement implements
     @Override
     public boolean isValid()
     {
-        return super.isValid(throwingListener());
+        return isValid(throwingListener());
     }
 
     /**
@@ -2463,7 +2463,7 @@ public abstract class Edge extends GraphElement implements
     @Override
     public String toString()
     {
-        if (Edge.DEBUG.isDebugOn())
+        if (DEBUG.isDebugOn())
         {
             return asString();
         }

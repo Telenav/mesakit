@@ -60,7 +60,7 @@ public class MapStroke extends Stroke
 
     public void apply(Graphics2D graphics, MapCanvas canvas)
     {
-        super.apply(graphics);
+        apply(graphics);
         drawingWidth = canvas.toDrawing(width).asWidth();
     }
 

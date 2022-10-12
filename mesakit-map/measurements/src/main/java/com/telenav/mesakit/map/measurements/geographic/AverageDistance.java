@@ -35,7 +35,7 @@ public class AverageDistance extends Average
 {
     public void add(Distance distance)
     {
-        super.add(distance.asMillimeters());
+        add(distance.asMillimeters());
     }
 
     @UmlRelation(label = "computes")

@@ -119,7 +119,7 @@ public class DijkstraRouter extends BaseRouter
                         switch (instruction.meaning())
                         {
                             case STOP_ROUTING:
-                                DijkstraRouter.LOGGER.warning("Routing halted by ${class}: $", request.limiter().getClass(), instruction.message());
+                                LOGGER.warning("Routing halted by ${class}: $", request.limiter().getClass(), instruction.message());
                                 return request.failed();
 
                             case EXPLORE_EDGE:

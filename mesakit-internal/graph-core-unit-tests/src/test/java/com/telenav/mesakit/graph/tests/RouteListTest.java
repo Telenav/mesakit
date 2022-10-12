@@ -47,7 +47,7 @@ public class RouteListTest extends GraphUnitTest
     @Test
     public void testAsRoutes()
     {
-        final RouteList routes = new RouteList();
+        RouteList routes = new RouteList();
         routes.add(Route.forEdges(edge3, edge4));
         routes.add(Route.forEdges(edge1, edge2));
 

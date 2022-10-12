@@ -180,7 +180,7 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
     @Override
     public DrawingSize drawingSize()
     {
-        return super.drawingArea().size();
+        return drawingArea().size();
     }
 
     /**

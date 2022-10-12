@@ -40,7 +40,7 @@ public abstract class PbfEntity<T extends Entity> implements StringFormattable, 
 
     private PbfTagMap tagMap;
 
-    public PbfEntity(T entity)
+    protected PbfEntity(T entity)
     {
         this.entity = entity;
     }

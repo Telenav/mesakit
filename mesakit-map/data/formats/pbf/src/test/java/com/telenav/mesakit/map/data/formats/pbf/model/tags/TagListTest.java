@@ -32,7 +32,7 @@ public class TagListTest
     public void addGetValueForKey()
     {
         {
-            final PbfTagList tags = PbfTagList.create();
+            PbfTagList tags = PbfTagList.create();
             ensure(tags.isEmpty());
             tags.add("a", "b");
             tags.add(new Tag("b", "x"));
@@ -42,7 +42,7 @@ public class TagListTest
             ensure("x".equalsIgnoreCase(tags.valueForKey("b")));
         }
         {
-            final PbfTagList tags = PbfTagList.create();
+            PbfTagList tags = PbfTagList.create();
             tags.add(new Tag("1", "b"));
             tags.add("2", "b");
             tags.add(new Tag("3", "b"));
@@ -58,13 +58,13 @@ public class TagListTest
     public void containsKey()
     {
         {
-            final PbfTagList tags = PbfTagList.create();
+            PbfTagList tags = PbfTagList.create();
             tags.add(new Tag("a", "b"));
             ensure(tags.containsKey("a"));
             ensure(!tags.containsKey("b"));
         }
         {
-            final PbfTagList tags = PbfTagList.create();
+            PbfTagList tags = PbfTagList.create();
             tags.add(new Tag("1", "b"));
             tags.add(new Tag("2", "b"));
             tags.add(new Tag("3", "b"));
@@ -79,7 +79,7 @@ public class TagListTest
     {
         for (int i = 0; i < 20; i++)
         {
-            final PbfTagList tags = PbfTagList.create();
+            PbfTagList tags = PbfTagList.create();
             for (int j = 0; j < i; j++)
             {
                 tags.add(new Tag("key-" + j, "b"));
@@ -92,16 +92,16 @@ public class TagListTest
     @Test
     public void testHashEquals()
     {
-        final PbfTagList ab = PbfTagList.create();
+        PbfTagList ab = PbfTagList.create();
         ab.add(new Tag("a", "b"));
 
-        final PbfTagList cd = PbfTagList.create();
+        PbfTagList cd = PbfTagList.create();
         cd.add(new Tag("c", "d"));
 
-        final PbfTagList ef = PbfTagList.create();
+        PbfTagList ef = PbfTagList.create();
         ef.add(new Tag("e", "f"));
 
-        final Map<PbfTagList, String> map = new HashMap<>();
+        Map<PbfTagList, String> map = new HashMap<>();
         map.put(ab, "ab");
         map.put(cd, "cd");
         map.put(ef, "ef");

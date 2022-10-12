@@ -26,7 +26,7 @@ import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.project.ProjectTrait;
 import com.telenav.kivakit.core.string.AsciiArt;
-import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.core.thread.locks.Lock;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Bytes;
@@ -134,7 +134,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
      */
     private static final NetworkPath NETWORK_PATH = Host.parseHost(consoleListener(), "www.mesakit.org")
             .https()
-            .path(consoleListener(), Strings.format("/data/$/administrative-borders-$.jar",
+            .path(consoleListener(), Formatter.format("/data/$/administrative-borders-$.jar",
                     resolveProject(RegionProject.class).borderDataVersion(),
                     resolveProject(RegionProject.class).borderDataVersion()));
 

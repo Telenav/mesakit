@@ -37,9 +37,9 @@ public abstract class AbstractPolyShape extends AbstractShape
 
     protected PointData[] points;
 
-    public AbstractPolyShape(final ShapeHeader shapeHeader,
-                             final ShapeType shapeType, final InputStream is,
-                             final ValidationPreferences rules) throws IOException,
+    protected AbstractPolyShape(ShapeHeader shapeHeader,
+                                ShapeType shapeType, InputStream is,
+                                ValidationPreferences rules) throws IOException,
             InvalidShapeFileException
     {
 
@@ -148,7 +148,7 @@ public abstract class AbstractPolyShape extends AbstractShape
         return points;
     }
 
-    public PointData[] getPointsOfPart(final int i)
+    public PointData[] getPointsOfPart(int i)
     {
         if (i < 0 || i >= this.numberOfParts)
         {

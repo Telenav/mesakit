@@ -175,7 +175,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
         protected EdgeSet onToValue(String value)
         {
             var edges = new EdgeSet(Limit.EDGES, Estimate._16);
-            if (!Strings.isEmpty(value))
+            if (!Strings.isNullOrEmpty(value))
             {
                 for (var edge : value.split(separators.current()))
                 {

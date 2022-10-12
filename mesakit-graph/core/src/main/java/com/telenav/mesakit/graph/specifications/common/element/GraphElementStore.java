@@ -999,7 +999,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     {
         if (batcher == null)
         {
-            batcher = Batcher.<T>create()
+            batcher = Batcher.<T>batcher()
                     .withName(qualifiedName())
                     .withQueueSize(QUEUE_SIZE)
                     .withBatchSize(BATCH_SIZE)
