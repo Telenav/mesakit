@@ -144,7 +144,7 @@ public class EdgeStack
         {
             return "[empty]";
         }
-        return ObjectList.list(stack).reversed().mapped(edge -> edge.asString(Format.PROGRAMMATIC)).join(":") + " [top]";
+        return ObjectList.list(stack).reversed().map(edge -> edge.asString(Format.PROGRAMMATIC)).join(":") + " [top]";
     }
 
     /**
