@@ -26,7 +26,6 @@ import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsKryoTypes;
 import com.telenav.kivakit.resource.CopyMode;
-import com.telenav.kivakit.resource.Extension;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.packages.Package;
 import com.telenav.kivakit.resource.serialization.ObjectSerializerRegistry;
@@ -34,10 +33,9 @@ import com.telenav.kivakit.serialization.gson.GsonObjectSerializer;
 import com.telenav.kivakit.serialization.gson.factory.KivaKitCoreGsonFactory;
 import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
 import com.telenav.kivakit.serialization.kryo.types.KivaKitCoreKryoTypes;
-import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KivaKitResourceKryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.kivakit.serialization.properties.PropertiesObjectSerializer;
-import com.telenav.kivakit.settings.SettingsRegistry;
 import com.telenav.kivakit.settings.stores.ResourceFolderSettingsStore;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
@@ -74,9 +72,13 @@ import com.telenav.mesakit.map.region.testing.RegionUnitTest;
 import static com.telenav.kivakit.core.messaging.Listener.nullListener;
 import static com.telenav.kivakit.core.object.Lazy.lazy;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
+import static com.telenav.kivakit.filesystem.Folder.parseFolder;
 import static com.telenav.kivakit.resource.Extension.GRAPH;
+import static com.telenav.kivakit.resource.Extension.JSON;
 import static com.telenav.kivakit.resource.Extension.OSM_PBF;
+import static com.telenav.kivakit.resource.Extension.PROPERTIES;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.READ;
+import static com.telenav.kivakit.settings.SettingsRegistry.settingsFor;
 import static com.telenav.mesakit.graph.metadata.DataSupplier.OSM;
 import static com.telenav.mesakit.graph.specifications.library.pbf.PbfFileMetadataAnnotator.Mode.STRIP_UNREFERENCED_NODES;
 import static com.telenav.mesakit.map.data.formats.library.DataFormat.PBF;
@@ -125,17 +127,17 @@ public abstract class GraphUnitTest extends RegionUnitTest
     {
         initializeProject(GraphProject.class);
 
-        register(new KivaKitCoreGsonFactory(this));
-        register(new KryoObjectSerializer(kryoTypes()));
+        register(listenTo(new KivaKitCoreGsonFactory(this)));
+        register(listenTo(new KryoObjectSerializer(kryoTypes())));
 
         var serializers = new ObjectSerializerRegistry();
-        serializers.add(Extension.JSON, new GsonObjectSerializer());
-        serializers.add(Extension.PROPERTIES, new PropertiesObjectSerializer());
+        serializers.add(JSON, new GsonObjectSerializer());
+        serializers.add(PROPERTIES, new PropertiesObjectSerializer());
         register(serializers);
 
-        var store = SettingsRegistry.settingsFor(this);
+        var store = settingsFor(this);
         listenTo(store);
-        store.registerSettingsIn(new ResourceFolderSettingsStore(this, Folder.parseFolder(this, "configuration")));
+        store.registerSettingsIn(new ResourceFolderSettingsStore(this, parseFolder(this, "configuration")));
     }
 
     public synchronized Graph osmBellevueWashington()

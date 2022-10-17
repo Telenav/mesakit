@@ -67,7 +67,7 @@ public class EdgeStoreTest extends GraphUnitTest
         var index = new CompressedEdgeSpatialIndex("test", graph, new RTreeSettings());
         index.bulkLoad(graph.edges().asList());
 
-        var serializer = new KryoObjectSerializer(kryoTypes());
+        var serializer = listenTo(new KryoObjectSerializer(kryoTypes()));
         var output = new ByteArrayOutputStream();
         var path = StringPath.stringPath("test");
         serializer.writeObject(output, path, index, ObjectMetadata.METADATA_OBJECT_TYPE);

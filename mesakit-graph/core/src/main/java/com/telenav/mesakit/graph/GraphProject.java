@@ -21,9 +21,7 @@ package com.telenav.mesakit.graph;
 import com.telenav.kivakit.core.collections.set.ObjectSet;
 import com.telenav.kivakit.core.project.Project;
 import com.telenav.kivakit.core.project.ProjectTrait;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.filesystem.Folders;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
@@ -32,6 +30,8 @@ import com.telenav.mesakit.map.data.formats.pbf.processing.filters.PbfFilters;
 import com.telenav.mesakit.map.region.RegionProject;
 
 import static com.telenav.kivakit.core.collections.set.ObjectSet.set;
+import static com.telenav.kivakit.filesystem.Folder.parseFolder;
+import static com.telenav.kivakit.filesystem.Folders.desktopFolder;
 
 /**
  * This class defines a KivaKit {@link Project}. It cannot be constructed with the new operator since it has a private
@@ -40,14 +40,15 @@ import static com.telenav.kivakit.core.collections.set.ObjectSet.set;
  *
  * @author jonathanl (shibo)
  */
+@SuppressWarnings("unused")
 public class GraphProject extends Project
 {
     public GraphProject()
     {
         System.setProperty("mesakit.graph.folder", graphFolder().toString());
-        JavaVirtualMachine.javaVirtualMachine().invalidateProperties();
+        javaVirtualMachine().invalidateProperties();
 
-        register(new KryoObjectSerializer(new GraphKryoTypes()));
+        register(listenTo(new KryoObjectSerializer(new GraphKryoTypes())));
     }
 
     @Override
@@ -61,7 +62,8 @@ public class GraphProject extends Project
      */
     public Folder graphFolder()
     {
-        return resolveProject(MesaKit.class).mesakitCacheFolder()
+        return resolveProject(MesaKit.class)
+                .mesakitCacheFolder()
                 .folder("graph")
                 .mkdirs();
     }
@@ -87,6 +89,6 @@ public class GraphProject extends Project
     public Folder userGraphFolder()
     {
         var graphFolder = systemPropertyOrEnvironmentVariable("MESAKIT_USER_GRAPH_FOLDER");
-        return graphFolder == null ? Folders.desktopFolder() : Folder.parseFolder(this, graphFolder);
+        return graphFolder == null ? desktopFolder() : parseFolder(this, graphFolder);
     }
 }
