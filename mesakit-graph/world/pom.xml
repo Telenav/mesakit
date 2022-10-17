@@ -33,10 +33,6 @@
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-network-http</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-filesystems-hdfs</artifactId>
-        </dependency>
 
         <!-- MesaKit -->
 
