@@ -26,7 +26,7 @@ import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.project.ProjectTrait;
 import com.telenav.kivakit.core.string.AsciiArt;
-import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.core.thread.locks.Lock;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Bytes;
@@ -134,7 +134,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
      */
     private static final NetworkPath NETWORK_PATH = Host.parseHost(consoleListener(), "www.mesakit.org")
             .https()
-            .path(consoleListener(), Strings.format("/data/$/administrative-borders-$.jar",
+            .path(consoleListener(), Formatter.format("/data/$/administrative-borders-$.jar",
                     resolveProject(RegionProject.class).borderDataVersion(),
                     resolveProject(RegionProject.class).borderDataVersion()));
 
@@ -519,7 +519,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
                         // try to download the data into the cache
                         information(AsciiArt.textBox("Downloading", "from: $\nto: $",
                                 NETWORK_PATH.asContraction(80), jar.path().asContraction(80)) + "\n ");
-                        var downloadProgress = BroadcastingProgressReporter.createProgressReporter(this, "bytes");
+                        var downloadProgress = BroadcastingProgressReporter.progressReporter(this, "bytes");
                         downloadProgress.start("Downloading");
                         information("Downloading $ to $", source, jar);
                         cache().add(source.get(), OVERWRITE, downloadProgress);
@@ -627,7 +627,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
     }
 
     /**
-     * @return True if the polygon spatial index could be read from the CACHED_SPATIAL_INDEX file.
+     * Returns true if the polygon spatial index could be read from the CACHED_SPATIAL_INDEX file.
      */
     @SuppressWarnings("unchecked")
     private boolean loadBordersFromCache()

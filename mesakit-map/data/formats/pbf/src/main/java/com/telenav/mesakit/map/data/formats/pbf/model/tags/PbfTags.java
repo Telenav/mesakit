@@ -46,7 +46,7 @@ public class PbfTags
         {
             var key = matcher.group("key");
             var value = matcher.group("value");
-            return new Tag(key, Strip.quotes(value));
+            return new Tag(key, Strip.stripQuotes(value));
         }
         return null;
     }

@@ -40,16 +40,16 @@ public class EdgeTest extends GraphUnitTest
     @Test
     public void test()
     {
-        final Graph graph = osmDowntownSeattleTest();
-        final Edge edge = graph.edges().iterator().next();
+        Graph graph = osmDowntownSeattleTest();
+        Edge edge = graph.edges().iterator().next();
         ensureNotNull(edge);
     }
 
     @Test
     public void testAsString()
     {
-        final Graph graph = osmDowntownSeattleTest();
-        final Edge edge = graph.edges().iterator().next();
+        Graph graph = osmDowntownSeattleTest();
+        Edge edge = graph.edges().iterator().next();
         ensure(edge.asString(StringFormattable.Format.TEXT).length() > 100);
     }
 
@@ -91,9 +91,9 @@ public class EdgeTest extends GraphUnitTest
     @Test
     public void testInRoute()
     {
-        final RouteLimiter limiter = new LengthRouteLimiter(Distance.miles(1), LengthRouteLimiter.Type.LENIENT);
+        RouteLimiter limiter = new LengthRouteLimiter(Distance.miles(1), LengthRouteLimiter.Type.LENIENT);
         {
-            final Route route = osmGreenLakeSeattleEdge(743150397000003L).inRoute(Navigator.NON_BRANCHING_NO_UTURN, limiter);
+            Route route = osmGreenLakeSeattleEdge(743150397000003L).inRoute(Navigator.NON_BRANCHING_NO_UTURN, limiter);
             ensureEqual(route, Route.forEdges(osmGreenLakeSeattleEdge(743150397000002L), osmGreenLakeSeattleEdge(743150397000003L)));
         }
     }
@@ -110,9 +110,9 @@ public class EdgeTest extends GraphUnitTest
     @Test
     public void testOutRoute()
     {
-        final RouteLimiter limiter = new LengthRouteLimiter(Distance.miles(1), LengthRouteLimiter.Type.LENIENT);
+        RouteLimiter limiter = new LengthRouteLimiter(Distance.miles(1), LengthRouteLimiter.Type.LENIENT);
         {
-            final Route route = osmGreenLakeSeattleEdge(743150397000002L).outRoute(Navigator.NON_BRANCHING_NO_UTURN, limiter);
+            Route route = osmGreenLakeSeattleEdge(743150397000002L).outRoute(Navigator.NON_BRANCHING_NO_UTURN, limiter);
             ensureEqual(route, Route.forEdges(osmGreenLakeSeattleEdge(743150397000002L), osmGreenLakeSeattleEdge(743150397000003L)));
         }
     }
@@ -120,7 +120,7 @@ public class EdgeTest extends GraphUnitTest
     @Test
     public void testRoadNames()
     {
-        final Edge edge = osmGreenLakeSeattleEdge(48003053000001L);
+        Edge edge = osmGreenLakeSeattleEdge(48003053000001L);
         ensureEqual("Aurora Ave N", edge.roadName().toString());
         ensureEqual("WA-99", edge.roadName(RoadName.Type.ROUTE).toString());
     }

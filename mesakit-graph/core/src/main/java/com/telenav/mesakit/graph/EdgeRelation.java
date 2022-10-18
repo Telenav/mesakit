@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.list.ObjectList;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.IncludeProperty;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
@@ -348,7 +348,7 @@ public class EdgeRelation extends GraphElement implements Bounded
     }
 
     /**
-     * @return This edge as a heavyweight edge (if it's not already one)
+     * Returns this edge as a heavyweight edge (if it's not already one)
      */
     @Override
     public HeavyWeightRelation asHeavyWeight()
@@ -472,7 +472,7 @@ public class EdgeRelation extends GraphElement implements Bounded
 
     public boolean hasNetworkOrRefTag()
     {
-        return !Strings.isEmpty(tagValue("network")) || !Strings.isEmpty(tagValue("ref"));
+        return !Strings.isNullOrBlank(tagValue("network")) || !Strings.isNullOrBlank(tagValue("ref"));
     }
 
     @Override
@@ -592,7 +592,7 @@ public class EdgeRelation extends GraphElement implements Bounded
         return null;
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public List<EdgeRelationMember> members()
     {
         return store().retrieveMembers(this);
@@ -612,7 +612,7 @@ public class EdgeRelation extends GraphElement implements Bounded
     }
 
     /**
-     * @return The properties of this element from its {@link DataSpecification},
+     * Returns the properties of this element from its {@link DataSpecification},
      * @see GraphElementPropertySet
      * @see StringFormattable
      * @see AsIndentedString

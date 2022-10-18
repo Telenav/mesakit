@@ -100,7 +100,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
         {
             string = ((Named) value).name();
         }
-        return string == null ? null : Strip.quotes(string);
+        return string == null ? null : Strip.stripQuotes(string);
     }
 
     public Object asValue()

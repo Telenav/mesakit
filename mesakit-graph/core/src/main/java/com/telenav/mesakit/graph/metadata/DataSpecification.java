@@ -113,13 +113,13 @@ public abstract class DataSpecification implements NamedObject
     public static SwitchParser.Builder<DataSpecification> dataSpecificationSwitchParser(String name,
                                                                                         String description)
     {
-        return SwitchParser.switchParserBuilder(DataSpecification.class).name(name).converter(new Converter(LOGGER))
+        return SwitchParser.switchParser(DataSpecification.class).name(name).converter(new Converter(LOGGER))
                 .description(description);
     }
 
     public static SwitchParser.Builder<DataSpecification> dataSpecificationSwitchParser()
     {
-        return SwitchParser.switchParserBuilder(DataSpecification.class).name("data-specification").converter(new Converter(LOGGER))
+        return SwitchParser.switchParser(DataSpecification.class).name("data-specification").converter(new Converter(LOGGER))
                 .description("The data specification to use, either OSM or UniDb");
     }
 
@@ -219,7 +219,7 @@ public abstract class DataSpecification implements NamedObject
     }
 
     /**
-     * @return All attributes supported by this specification
+     * Returns all attributes supported by this specification
      */
     public AttributeList attributes()
     {
@@ -232,7 +232,7 @@ public abstract class DataSpecification implements NamedObject
     }
 
     /**
-     * @return All attributes supported by this specification
+     * Returns all attributes supported by this specification
      */
     public AttributeList attributes(Class<? extends AttributeStore> store)
     {
@@ -410,7 +410,7 @@ public abstract class DataSpecification implements NamedObject
     }
 
     /**
-     * @return True if this data specification supports the given attribute
+     * Returns true if this data specification supports the given attribute
      */
     public boolean supports(Attribute<?> attribute)
     {
@@ -424,7 +424,7 @@ public abstract class DataSpecification implements NamedObject
     }
 
     /**
-     * @return Which data specification is being implemented
+     * Returns which data specification is being implemented
      */
     public abstract Type type();
 

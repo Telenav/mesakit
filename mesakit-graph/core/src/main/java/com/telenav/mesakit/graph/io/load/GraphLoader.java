@@ -70,13 +70,13 @@ public interface GraphLoader extends Repeater
     Metadata onLoad(GraphStore store, GraphConstraints constraints);
 
     /**
-     * @return The resource from which loaded data originates. In the case of a database or some similar source that is
+     * Returns the resource from which loaded data originates. In the case of a database or some similar source that is
      * not a {@link Resource}, the value returned may be null.
      */
     Resource resource();
 
     /**
-     * @return The kind of validation that should be performed on the data loaded by this graph loader. Many graph
+     * Returns the kind of validation that should be performed on the data loaded by this graph loader. Many graph
      * loaders validate all data with {@link ValidationType#validateAll()} but some don't load complete data. An example
      * of an incomplete graph loader is {@link RawPbfGraphLoader}, which does not load vertexes or relations. Another is
      * {@link WaySectioningGraphLoader}, is incomplete because it does not load relations. These graph loaders may

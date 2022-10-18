@@ -42,7 +42,7 @@ import com.telenav.mesakit.map.measurements.motion.Speed;
         {
             if (maxspeed.endsWith("mph"))
             {
-                var value = Strip.trailing(maxspeed, "mph").trim();
+                var value = Strip.stripTrailing(maxspeed, "mph").trim();
                 var semicolon = value.lastIndexOf(';');
                 if (semicolon > 0)
                 {

@@ -28,7 +28,7 @@ import com.telenav.kivakit.primitive.collections.array.packed.SplitPackedArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.kivakit.primitive.collections.list.store.PackedStringStore;
-import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.resource.compression.archive.ArchivedField;
 import com.telenav.kivakit.validation.ValidationType;
 import com.telenav.kivakit.validation.Validator;
 import com.telenav.mesakit.graph.Graph;
@@ -61,14 +61,14 @@ public class PlaceStore extends ArchivedGraphElementStore<Place>
             new AttributeReference<>(this, PlaceAttributes.get().LOCATION, "location",
                     () -> (LongArray) new LongArray("location").initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
+    @ArchivedField
     private LongArray location;
 
     private final AttributeReference<IntArray> POPULATION =
             new AttributeReference<>(this, PlaceAttributes.get().POPULATION, "population",
                     () -> (IntArray) new IntArray("population").initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
+    @ArchivedField
     private IntArray population;
 
     private final AttributeReference<PackedStringStore> NAME =
@@ -76,7 +76,7 @@ public class PlaceStore extends ArchivedGraphElementStore<Place>
                     () -> (PackedStringStore) new PackedStringStore("name")
                             .initialSize(estimatedElements()).initialChildSize(32));
 
-    @KivaKitArchivedField
+    @ArchivedField
     private PackedStringStore name;
 
     private final AttributeReference<SplitPackedArray> TYPE = new AttributeReference<>(this, PlaceAttributes.get().TYPE, "type",
@@ -84,7 +84,7 @@ public class PlaceStore extends ArchivedGraphElementStore<Place>
                     .bits(BitCount._4, NO_OVERFLOW)
                     .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray type;
 
     /** A spatial index for the edges in this graph */

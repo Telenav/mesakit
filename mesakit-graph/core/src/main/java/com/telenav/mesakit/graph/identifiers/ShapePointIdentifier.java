@@ -62,7 +62,7 @@ public class ShapePointIdentifier extends Identifier implements GraphElementIden
     }
 
     /**
-     * @return The next identifier higher than this one
+     * Returns the next identifier higher than this one
      */
     public ShapePointIdentifier next()
     {

@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph;
 
 import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.language.primitive.Longs;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.ExcludeProperty;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
@@ -474,10 +474,10 @@ public abstract class Edge extends GraphElement implements
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    private static final Debug DEBUG = new Debug(Edge.LOGGER);
+    private static final Debug DEBUG = new Debug(LOGGER);
 
     /**
-     * @return A matcher for edges intersecting the given bounds
+     * Returns a matcher for edges intersecting the given bounds
      */
     public static Matcher<Edge> intersecting(Rectangle bounds)
     {
@@ -485,7 +485,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return A matcher for edges inside the given bounds
+     * Returns a matcher for edges inside the given bounds
      */
     public static Matcher<Edge> within(Rectangle bounds)
     {
@@ -560,8 +560,8 @@ public abstract class Edge extends GraphElement implements
 
         private Edge edgeForLongIdentifier(String value)
         {
-            var identifierAsLong = Longs.parseFast(value);
-            if (identifierAsLong != Longs.INVALID)
+            var identifierAsLong = Longs.parseFastLong(value);
+            if (identifierAsLong != Longs.INVALID_LONG)
             {
                 var identifier = new EdgeIdentifier(identifierAsLong);
                 if (graph.contains(identifier))
@@ -621,7 +621,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return A copy of this edge as a mutable {@link HeavyWeightEdge}. If this edge is already a {@link
+     * Returns a copy of this edge as a mutable {@link HeavyWeightEdge}. If this edge is already a {@link
      * HeavyWeightEdge}, there is no expense incurred.
      */
     @Override
@@ -637,7 +637,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return This edge as a one-edge {@link Route}
+     * Returns this edge as a one-edge {@link Route}
      */
     @Override
     public Route asRoute()
@@ -646,7 +646,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return This edge as a {@link Segment} along the direct distance from the "from" {@link Vertex} to the "to"
+     * Returns this edge as a {@link Segment} along the direct distance from the "from" {@link Vertex} to the "to"
      * {@link Vertex}.
      */
     public Segment asSegment()
@@ -664,7 +664,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The bounding rectangle for this edge's {@link #roadShape()}.
+     * Returns the bounding rectangle for this edge's {@link #roadShape()}.
      */
     @Override
     public Rectangle bounds()
@@ -673,7 +673,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The type of bridge for this edge, if any
+     * Returns the type of bridge for this edge, if any
      */
     public BridgeType bridgeType()
     {
@@ -681,7 +681,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The set of all edges (both in and out edges) connected to both ends of this edge (at "from" vertex and
+     * Returns the set of all edges (both in and out edges) connected to both ends of this edge (at "from" vertex and
      * "to" vertex), but not this edge itself.
      */
     public EdgeSet connectedEdges()
@@ -690,7 +690,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return In edges of "from" vertex and out edges of "to" vertex, but not this edge or the reversed edge.
+     * Returns in edges of "from" vertex and out edges of "to" vertex, but not this edge or the reversed edge.
      */
     public EdgeSet connectedEdgesWithoutReversed()
     {
@@ -698,7 +698,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The {@link Continent} where this edge exists
+     * Returns the {@link Continent} where this edge exists
      */
     public Continent continent()
     {
@@ -706,7 +706,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The {@link Country} where this edge exists
+     * Returns the {@link Country} where this edge exists
      */
     public Country country()
     {
@@ -714,7 +714,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The {@link County} where this edge exists
+     * Returns the {@link County} where this edge exists
      */
     public County county()
     {
@@ -722,7 +722,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge's road shape crosses that edge's road shape
+     * Returns true if this edge's road shape crosses that edge's road shape
      */
     public boolean crosses(Edge that)
     {
@@ -730,7 +730,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The differences between this edge and that edge
+     * Returns the differences between this edge and that edge
      */
     public Differences differencesFrom(Edge that)
     {
@@ -738,7 +738,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The {@link PbfWayIdentifier} for this edge, but <i>negative</i> if the edge is reversed
+     * Returns the {@link PbfWayIdentifier} for this edge, but <i>negative</i> if the edge is reversed
      */
     public MapWayIdentifier directionalWayIdentifier()
     {
@@ -746,7 +746,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The primary road name of this edge formatted for display to an end user
+     * Returns the primary road name of this edge formatted for display to an end user
      */
     public String displayRoadName()
     {
@@ -754,7 +754,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The shortest distance between any node on this edge and the road shape of that edge
+     * Returns the shortest distance between any node on this edge and the road shape of that edge
      */
     public Distance distanceTo(Edge that)
     {
@@ -784,7 +784,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge leads into a roundabout
+     * Returns true if this edge leads into a roundabout
      */
     public boolean entersRoundabout()
     {
@@ -799,7 +799,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The heading of the final segment in this edge's road shape
+     * Returns the heading of the final segment in this edge's road shape
      */
     public Heading finalHeading()
     {
@@ -807,7 +807,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The first segment of this edge's road shape
+     * Returns the first segment of this edge's road shape
      */
     public Segment firstSegment()
     {
@@ -815,7 +815,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The forward edge (always having a positive identifier) for this edge. There is always a forward edge,
+     * Returns the forward edge (always having a positive identifier) for this edge. There is always a forward edge,
      * whether the road is one-way or two-way. There is only a reverse edge (with a negative identifier) if the edge is
      * two-way.
      * @see #reversed
@@ -832,7 +832,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return Typical free flow speed for this edge's functional class
+     * Returns typical free flow speed for this edge's functional class
      */
     public Speed freeFlowForFunctionalClass()
     {
@@ -857,7 +857,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The free flow speed category (a quantized range of speeds)
+     * Returns the free flow speed category (a quantized range of speeds)
      */
     public SpeedCategory freeFlowSpeed()
     {
@@ -865,7 +865,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The "from" vertex of this (directed) edge
+     * Returns the "from" vertex of this (directed) edge
      */
     @Override
     public Vertex from()
@@ -874,7 +874,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The set of edges attached to the "from" vertex of this edge, not including the reverse of this edge if it
+     * Returns the set of edges attached to the "from" vertex of this edge, not including the reverse of this edge if it
      * is a two-way road
      */
     public EdgeSet fromEdgesWithoutThisEdge()
@@ -891,7 +891,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The starting location of the edge
+     * Returns the starting location of the edge
      * <p>
      * <b>Note</b>: If the edge doesn't yet have a "from" vertex, the first coordinate in the road shape will be used.
      * This method is necessary when loading edges into a graph because vertexes are not determined and added to the
@@ -908,7 +908,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The "from" location of this edge as a DM7 long value
+     * Returns the "from" location of this edge as a DM7 long value
      */
     public long fromLocationAsLong()
     {
@@ -916,7 +916,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The node identifier of the "from" vertex
+     * Returns the node identifier of the "from" vertex
      */
     public MapNodeIdentifier fromNodeIdentifier()
     {
@@ -924,16 +924,16 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The identifier of the "from" vertex
+     * Returns the identifier of the "from" vertex
      */
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public VertexIdentifier fromVertexIdentifier()
     {
         return new VertexIdentifier(store().retrieveFromVertexIdentifier(this));
     }
 
     /**
-     * @return The hardest left-turn edge from this edge where a left turn is determined by a counter-clockwise angle
+     * Returns the hardest left-turn edge from this edge where a left turn is determined by a counter-clockwise angle
      * between the two edges, within the given tolerance
      */
     public Edge hardestLeft(Angle tolerance)
@@ -957,7 +957,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The hardest right-turn edge from this edge within the given tolerance
+     * Returns the hardest right-turn edge from this edge within the given tolerance
      */
     public Edge hardestRight(Angle tolerance)
     {
@@ -980,7 +980,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge has a road name
+     * Returns true if this edge has a road name
      */
     public boolean hasRoadName()
     {
@@ -988,7 +988,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge has the same base name as the given edge
+     * Returns true if this edge has the same base name as the given edge
      */
     public boolean hasSameRoadNameAs(Edge that)
     {
@@ -1002,7 +1002,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if the road has the same standardized root name as the given edge. For example, "Main St" and "Main
+     * Returns true if the road has the same standardized root name as the given edge. For example, "Main St" and "Main
      * Street NE" would match.
      */
     @SuppressWarnings("SpellCheckingInspection")
@@ -1019,7 +1019,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The heading of this edge.
+     * Returns the heading of this edge.
      */
     public Heading heading()
     {
@@ -1027,7 +1027,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The number of HOV lanes on this edge
+     * Returns the number of HOV lanes on this edge
      */
     public Count hovLaneCount()
     {
@@ -1035,7 +1035,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The identifier for this edge. Edge identifiers are normally derived from an underlying way identifier by
+     * Returns the identifier for this edge. Edge identifiers are normally derived from an underlying way identifier by
      * adding a suffix of extra digits, identifying which part of the way the identifier represents. For example, the
      * way with identifier 1234 might be sectioned into 3 edges with identifiers 1234000001, 1234000002 and 1234000003.
      * @see EdgeIdentifier
@@ -1047,7 +1047,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The sequence of "in" edges attached to the "from" vertex of this edge
+     * Returns the sequence of "in" edges attached to the "from" vertex of this edge
      */
     public EdgeSequence inEdgeSequence()
     {
@@ -1055,7 +1055,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The set of "in" edges attached to the "from" vertex of this edge
+     * Returns the set of "in" edges attached to the "from" vertex of this edge
      */
     public EdgeSet inEdges()
     {
@@ -1063,7 +1063,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The set of "in" edges attached to the "from" vertex of this edge, not including the reverse of this edge
+     * Returns the set of "in" edges attached to the "from" vertex of this edge, not including the reverse of this edge
      */
     public EdgeSet inEdgesWithoutReversed()
     {
@@ -1071,7 +1071,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return A continuous non-branching route ending with this directed edge and extended using the given navigator
+     * Returns a continuous non-branching route ending with this directed edge and extended using the given navigator
      * for as long as the route limiter allows
      */
     public Route inRoute(Navigator navigator, RouteLimiter limiter)
@@ -1091,7 +1091,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The heading of the first segment in the road shape for this edge
+     * Returns the heading of the first segment in the road shape for this edge
      */
     public Heading initialHeading()
     {
@@ -1099,7 +1099,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge intersects the given rectangle. Intersects in this context means that it intersects or
+     * Returns true if this edge intersects the given rectangle. Intersects in this context means that it intersects or
      * is contained by the given rectangle. Used in spatial indexing.
      * @see Intersectable
      */
@@ -1112,7 +1112,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if either end of this way was clipped (clean cut) by a graph loader. Clean cutting is used by
+     * Returns true if either end of this way was clipped (clean cut) by a graph loader. Clean cutting is used by
      * composite graphs like WorldGraphs to break a large area of graph data down into cells containing sub-graphs.
      */
     public boolean isClipped()
@@ -1121,7 +1121,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is closed to traffic
+     * Returns true if this edge is closed to traffic
      */
     public boolean isClosedToThroughTraffic()
     {
@@ -1129,7 +1129,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is connected to that one (at either vertex)
+     * Returns true if this edge is connected to that one (at either vertex)
      */
     public boolean isConnectedTo(Edge that)
     {
@@ -1137,7 +1137,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is connected to the given vertex (the vertex must be the "from" vertex or the "to"
+     * Returns true if this edge is connected to the given vertex (the vertex must be the "from" vertex or the "to"
      * vertex of the edge)
      */
     public boolean isConnectedTo(Vertex vertex)
@@ -1146,7 +1146,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is a connector (if it has the road subtype "connecting road"
+     * Returns true if this edge is a connector (if it has the road subtype "connecting road"
      */
     public boolean isConnector()
     {
@@ -1154,7 +1154,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge can be driven on
+     * Returns true if this edge can be driven on
      */
     public boolean isDrivable()
     {
@@ -1162,7 +1162,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is a forward edge
+     * Returns true if this edge is a forward edge
      */
     public boolean isForward()
     {
@@ -1170,7 +1170,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is either the forward or the reverse of the given edge
+     * Returns true if this edge is either the forward or the reverse of the given edge
      */
     public boolean isForwardOrReverseOf(Edge that)
     {
@@ -1178,7 +1178,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is fully contained within the given bounds
+     * Returns true if this edge is fully contained within the given bounds
      */
     @Override
     public final boolean isInside(Rectangle bounds)
@@ -1191,7 +1191,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is in an intersection
+     * Returns true if this edge is in an intersection
      */
     public boolean isIntersectionEdge()
     {
@@ -1199,7 +1199,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge joins two incoming edges.
+     * Returns true if this edge joins two incoming edges.
      */
     public boolean isJoiningEdge()
     {
@@ -1216,7 +1216,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this is a junction edge (an intersection link)
+     * Returns true if this is a junction edge (an intersection link)
      */
     public boolean isJunctionEdge()
     {
@@ -1224,7 +1224,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is a connecting road or a ramp
+     * Returns true if this edge is a connecting road or a ramp
      */
     public boolean isLink()
     {
@@ -1232,7 +1232,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is a loop (a circle where the "from" vertex and "to" vertex are the same, and you can go
+     * Returns true if this edge is a loop (a circle where the "from" vertex and "to" vertex are the same, and you can go
      * around and around).
      */
     public boolean isLoop()
@@ -1241,7 +1241,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is considered part of a main road. In addition, bridges, tunnels and underpasses are
+     * Returns true if this edge is considered part of a main road. In addition, bridges, tunnels and underpasses are
      * included.
      */
     public boolean isMainRoad()
@@ -1262,7 +1262,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return Whichever edge is more important this edge or that edge.  Importance based on functional class, and on
+     * Returns whichever edge is more important this edge or that edge.  Importance based on functional class, and on
      * road type if the two edges have the same functional class.
      */
     public boolean isMoreImportantThan(Edge that)
@@ -1280,7 +1280,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge has a road name
+     * Returns true if this edge has a road name
      */
     public boolean isNamed()
     {
@@ -1288,16 +1288,16 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge doesn't have a road name
+     * Returns true if this edge doesn't have a road name
      */
     public boolean isNameless()
     {
         var name = roadName();
-        return name == null || Strings.isEmpty(name.name()) || "Unnamed".equalsIgnoreCase(name.name());
+        return name == null || Strings.isNullOrBlank(name.name()) || "Unnamed".equalsIgnoreCase(name.name());
     }
 
     /**
-     * @return True if this edge can be navigated in the given transport mode (walking, driving, biking, etc)
+     * Returns true if this edge can be navigated in the given transport mode (walking, driving, biking, etc)
      * @see TransportMode
      */
     public boolean isNavigable(TransportMode mode)
@@ -1367,17 +1367,17 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is a {@link Type#NORMAL} edge. This is true unless the edge is a "routing shortcut"
+     * Returns true if this edge is a {@link Type#NORMAL} edge. This is true unless the edge is a "routing shortcut"
      * used to enhance the performance of navigation.
      */
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public boolean isNormal()
     {
         return type() == Type.NORMAL;
     }
 
     /**
-     * @return True if this edge is a freeway off-ramp
+     * Returns true if this edge is a freeway off-ramp
      */
     public boolean isOffRamp()
     {
@@ -1385,7 +1385,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is a freeway on-ramp
+     * Returns true if this edge is a freeway on-ramp
      */
     public boolean isOnRamp()
     {
@@ -1393,7 +1393,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is on the same logical road, as determined by name (not considering N, S, E, NW, etc.),
+     * Returns true if this edge is on the same logical road, as determined by name (not considering N, S, E, NW, etc.),
      * as the given edge
      */
     public boolean isOnSameRoadAs(Edge that)
@@ -1402,7 +1402,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge and that edge have the same road type and subtype and are on the same road as
+     * Returns true if this edge and that edge have the same road type and subtype and are on the same road as
      * determined by the road name
      */
     public boolean isOnSameRoadWithSameTypeAs(Edge that)
@@ -1411,7 +1411,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is on the same way as the given edge
+     * Returns true if this edge is on the same way as the given edge
      */
     public boolean isOnSameWay(Edge that)
     {
@@ -1419,7 +1419,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is on a one-way road.
+     * Returns true if this edge is on a one-way road.
      */
     public boolean isOneWay()
     {
@@ -1427,7 +1427,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is considered parallel to the given edge
+     * Returns true if this edge is considered parallel to the given edge
      */
     public boolean isParallelTo(Edge that)
     {
@@ -1435,7 +1435,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is considered perpendicular to the given edge
+     * Returns true if this edge is considered perpendicular to the given edge
      */
     public boolean isPerpendicularTo(Edge that)
     {
@@ -1443,7 +1443,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is a ramp
+     * Returns true if this edge is a ramp
      */
     public boolean isRamp()
     {
@@ -1451,7 +1451,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is a reverse edge. Reversed edges have an identifier that is the negative of the
+     * Returns true if this edge is a reverse edge. Reversed edges have an identifier that is the negative of the
      * forward identifier, which is always positive.
      */
     public boolean isReverse()
@@ -1460,7 +1460,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is part of a roundabout
+     * Returns true if this edge is part of a roundabout
      */
     public boolean isRoundabout()
     {
@@ -1468,16 +1468,16 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is a {@link Type#ROUTING_SHORTCUT} edge
+     * Returns true if this edge is a {@link Type#ROUTING_SHORTCUT} edge
      */
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public boolean isRoutingShortCut()
     {
         return type() == Type.ROUTING_SHORTCUT;
     }
 
     /**
-     * @return True if this edge has the same {@link RoadFunctionalClass} as the given edge
+     * Returns true if this edge has the same {@link RoadFunctionalClass} as the given edge
      */
     public boolean isSameFunctionalClassAs(Edge that)
     {
@@ -1485,7 +1485,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is a single segment (it is straight from the "from" node to the "to" node and therefore
+     * Returns true if this edge is a single segment (it is straight from the "from" node to the "to" node and therefore
      * has no road shape polyline in the edge store)
      */
     public boolean isSegment()
@@ -1494,7 +1494,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge has a road shape with more than one segment
+     * Returns true if this edge has a road shape with more than one segment
      */
     public boolean isShaped()
     {
@@ -1502,7 +1502,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge was soft-cut. See SoftCut.
+     * Returns true if this edge was soft-cut. See SoftCut.
      */
     public boolean isSoftCut()
     {
@@ -1510,7 +1510,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is on a toll road
+     * Returns true if this edge is on a toll road
      */
     public boolean isTollRoad()
     {
@@ -1518,7 +1518,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge represents one direction on a two-way road. If this method returns true, you can call
+     * Returns true if this edge represents one direction on a two-way road. If this method returns true, you can call
      * {@link #reversed()} to get edge in the opposite direction.
      */
     public boolean isTwoWay()
@@ -1527,7 +1527,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is under construction
+     * Returns true if this edge is under construction
      */
     public boolean isUnderConstruction()
     {
@@ -1540,11 +1540,11 @@ public abstract class Edge extends GraphElement implements
     @Override
     public boolean isValid()
     {
-        return super.isValid(throwingListener());
+        return isValid(throwingListener());
     }
 
     /**
-     * @return A key to use for this edge when putting it in a {@link PrimitiveMap}
+     * Returns a key to use for this edge when putting it in a {@link PrimitiveMap}
      * @see LongKeyed
      */
     @Override
@@ -1554,7 +1554,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The number of lanes this edge has
+     * Returns the number of lanes this edge has
      */
     @Override
     public Count laneCount()
@@ -1563,7 +1563,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The final segment of this edge's road shape
+     * Returns the final segment of this edge's road shape
      */
     public Segment lastSegment()
     {
@@ -1571,7 +1571,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge leads to that edge
+     * Returns true if this edge leads to that edge
      */
     public boolean leadsTo(Edge that)
     {
@@ -1579,7 +1579,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge leads to that route
+     * Returns true if this edge leads to that route
      */
     public boolean leadsTo(Route that)
     {
@@ -1587,7 +1587,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this directional edge leads to a dead end
+     * Returns true if this directional edge leads to a dead end
      */
     public boolean leadsToDeadEnd()
     {
@@ -1595,7 +1595,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge forks. This is different from whether the "to" vertex is a decision point because it
+     * Returns true if this edge forks. This is different from whether the "to" vertex is a decision point because it
      * <i>does not</i> consider uturns.
      */
     public boolean leadsToFork()
@@ -1613,7 +1613,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The counter-clockwise (left) turn angle to the given edge
+     * Returns the counter-clockwise (left) turn angle to the given edge
      */
     public Angle leftTurnAngleTo(Edge that)
     {
@@ -1621,7 +1621,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The length of this edge
+     * Returns the length of this edge
      */
     @Override
     public Distance length()
@@ -1630,7 +1630,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The length of this edge in millimeters
+     * Returns the length of this edge in millimeters
      */
     public long lengthInMillimeters()
     {
@@ -1638,7 +1638,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The locale for this edge
+     * Returns the locale for this edge
      */
     public MapLocale locale()
     {
@@ -1646,7 +1646,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The locations in this edge's road shape.
+     * Returns the locations in this edge's road shape.
      */
     @Override
     public Iterable<Location> locationSequence()
@@ -1665,7 +1665,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return This edge as a {@link MapIdentifier}, in this case a {@link PbfWayIdentifier}
+     * Returns this edge as a {@link MapIdentifier}, in this case a {@link PbfWayIdentifier}
      * @see MapIdentifier
      */
     @Override
@@ -1675,7 +1675,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return This edge as a way in the map data
+     * Returns this edge as a way in the map data
      */
     public MapWay mapWay()
     {
@@ -1683,7 +1683,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The {@link MetropolitanArea} where this edge exists
+     * Returns the {@link MetropolitanArea} where this edge exists
      */
     public MetropolitanArea metropolitanArea()
     {
@@ -1691,7 +1691,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The most straight-on edge from this edge within the given tolerance
+     * Returns the most straight-on edge from this edge within the given tolerance
      */
     public Edge mostStraightOn(Angle tolerance)
     {
@@ -1718,7 +1718,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return All edges within the given <i>rectangular</i> distance (not radius) that match the given matcher
+     * Returns all edges within the given <i>rectangular</i> distance (not radius) that match the given matcher
      */
     public EdgeSet nearbyEdges(Distance range, Matcher<Edge> matcher)
     {
@@ -1741,7 +1741,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The edge that this edge leads to. If there is a fork, an arbitrary edge will be returned.
+     * Returns the edge that this edge leads to. If there is a fork, an arbitrary edge will be returned.
      */
     public Edge next()
     {
@@ -1749,7 +1749,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The longest non-branching route or null if the maximum number of edges is exceeded.
+     * Returns the longest non-branching route or null if the maximum number of edges is exceeded.
      */
     public Route nonBranchingRoute(Maximum maximumEdges)
     {
@@ -1776,7 +1776,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The non-branching route that contains maximum number edges which have same road name as this edge
+     * Returns the non-branching route that contains maximum number edges which have same road name as this edge
      */
     @SuppressWarnings("SameParameterValue")
     public Route nonBranchingRouteWithSameName(Maximum extensionNumber)
@@ -1816,7 +1816,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The opposite vertex on this edge from the given vertex
+     * Returns the opposite vertex on this edge from the given vertex
      */
     public Vertex oppositeVertex(Vertex vertex)
     {
@@ -1842,7 +1842,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is on a way that is tagged with a destination tag for a sign-post.
+     * Returns true if this edge is on a way that is tagged with a destination tag for a sign-post.
      */
     public boolean osmIsDestinationTagged()
     {
@@ -1858,7 +1858,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is part of a double digitized road, also known as a separated road, where a separate
+     * Returns true if this edge is part of a double digitized road, also known as a separated road, where a separate
      * road runs parallel to the edge, usually separated by a median or divider.
      */
     public Boolean osmIsDoubleDigitized()
@@ -1867,7 +1867,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is tagged with "exit to" in OSM.
+     * Returns true if this edge is tagged with "exit to" in OSM.
      */
     public boolean osmIsExitToTagged()
     {
@@ -1875,7 +1875,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is an OSM link. This is specific to the {@link OsmDataSpecification}.
+     * Returns true if this edge is an OSM link. This is specific to the {@link OsmDataSpecification}.
      */
     public boolean osmIsLink()
     {
@@ -1884,7 +1884,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if the edge has a reference tag. This is only relevant to the {@link OsmDataSpecification}.
+     * Returns true if the edge has a reference tag. This is only relevant to the {@link OsmDataSpecification}.
      */
     public boolean osmIsMotorwayJunctionReferenceTagged()
     {
@@ -1896,7 +1896,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is labeled as one-way in OSM. This is specific to the {@link OsmDataSpecification}.
+     * Returns true if this edge is labeled as one-way in OSM. This is specific to the {@link OsmDataSpecification}.
      */
     public boolean osmIsOneWay()
     {
@@ -1910,7 +1910,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge labeled as a roundabout in OSM. This is specific to the {@link OsmDataSpecification}.
+     * Returns true if this edge labeled as a roundabout in OSM. This is specific to the {@link OsmDataSpecification}.
      */
     public boolean osmIsRoundabout()
     {
@@ -1918,7 +1918,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge is an OSM service way. This is specific to the {@link OsmDataSpecification}.
+     * Returns true if this edge is an OSM service way. This is specific to the {@link OsmDataSpecification}.
      */
     public boolean osmIsServiceWay()
     {
@@ -1941,7 +1941,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return All the edges other than this one that are connected to this edge at the given vertex
+     * Returns all the edges other than this one that are connected to this edge at the given vertex
      */
     public EdgeSet otherEdges(Vertex vertex)
     {
@@ -1953,7 +1953,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The sequence of out edges connected to the "to" vertex of this edge
+     * Returns the sequence of out edges connected to the "to" vertex of this edge
      */
     public EdgeSequence outEdgeSequence()
     {
@@ -1961,7 +1961,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The set of outbound edges from this edge's "to" vertex, including two-way roads.
+     * Returns the set of outbound edges from this edge's "to" vertex, including two-way roads.
      */
     public EdgeSet outEdges()
     {
@@ -1969,7 +1969,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The set of out edges from this edge's "to" vertex, not including the reverse of this edge if it is a
+     * Returns the set of out edges from this edge's "to" vertex, not including the reverse of this edge if it is a
      * two-way road
      */
     public EdgeSet outEdgesWithoutReversed()
@@ -1978,7 +1978,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return A continuous non-branching route starting with this directed edge and extended using the given navigator
+     * Returns a continuous non-branching route starting with this directed edge and extended using the given navigator
      * for as long as the route limiter allows
      */
     public Route outRoute(Navigator navigator, RouteLimiter limiter)
@@ -2008,7 +2008,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The edge that this edge leads to. If there is a fork, an arbitrary edge will be returned.
+     * Returns the edge that this edge leads to. If there is a fork, an arbitrary edge will be returned.
      */
     public Edge previous()
     {
@@ -2016,7 +2016,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The properties of this edge from the edge's {@link DataSpecification}, for use in producing a debug
+     * Returns the properties of this edge from the edge's {@link DataSpecification}, for use in producing a debug
      * string for the edge
      * @see GraphElementPropertySet
      * @see StringFormattable
@@ -2038,7 +2038,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The set of relations that reference this edge
+     * Returns the set of relations that reference this edge
      */
     public Set<EdgeRelation> relations()
     {
@@ -2046,7 +2046,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The reverse edge for this edge, if it is a two-way road, otherwise the edge itself
+     * Returns the reverse edge for this edge, if it is a two-way road, otherwise the edge itself
      * @see #forward()
      * @see #isForward()
      */
@@ -2060,7 +2060,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The reverse of this edge if the road is two-way, or null if it is not.
+     * Returns the reverse of this edge if the road is two-way, or null if it is not.
      */
     @Override
     public Edge reversed()
@@ -2073,7 +2073,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The clockwise (right) turn angle to the given edge
+     * Returns the clockwise (right) turn angle to the given edge
      */
     public Angle rightTurnAngleTo(Edge that)
     {
@@ -2081,7 +2081,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The functional class of this edge
+     * Returns the functional class of this edge
      * @see RoadFunctionalClass
      */
     @Override
@@ -2091,7 +2091,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The most important road name of this edge, either official, alternate or route, in that order
+     * Returns the most important road name of this edge, either official, alternate or route, in that order
      */
     @Override
     public RoadName roadName()
@@ -2109,7 +2109,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The first road name of the given type or null if none exists
+     * Returns the first road name of the given type or null if none exists
      */
     @Override
     public RoadName roadName(RoadName.Type type)
@@ -2127,7 +2127,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return Set of all unique road names of all types
+     * Returns set of all unique road names of all types
      */
     public Set<RoadName> roadNames()
     {
@@ -2140,7 +2140,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return All road names of the given type
+     * Returns all road names of the given type
      */
     public List<RoadName> roadNames(RoadName.Type type)
     {
@@ -2148,10 +2148,10 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The shape of this directed edge on the map as a {@link Polyline}
+     * Returns the shape of this directed edge on the map as a {@link Polyline}
      */
     @Override
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public Polyline roadShape()
     {
         var polyline = store().retrieveRoadShape(this);
@@ -2165,7 +2165,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The road state of this edge: one-way, two-way or closed.
+     * Returns the road state of this edge: one-way, two-way or closed.
      */
     @Override
     public RoadState roadState()
@@ -2174,7 +2174,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The road subtype for this edge, such as roundabout, service road, main road, etc.
+     * Returns the road subtype for this edge, such as roundabout, service road, main road, etc.
      */
     @Override
     public RoadSubType roadSubType()
@@ -2183,7 +2183,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The surface of this edge: paved, unpaved or poor condition.
+     * Returns the surface of this edge: paved, unpaved or poor condition.
      */
     public RoadSurface roadSurface()
     {
@@ -2191,7 +2191,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The road type of this edge such as: freeway, highway, local road, etc.
+     * Returns the road type of this edge such as: freeway, highway, local road, etc.
      */
     @Override
     public RoadType roadType()
@@ -2200,7 +2200,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return A route starting with this edge and extending as far as possible via "in" and "out" edges that match the
+     * Returns a route starting with this edge and extending as far as possible via "in" and "out" edges that match the
      * given matcher. Loops are detected to avoid non-termination.
      */
     public Route route(Matcher<Edge> matcher)
@@ -2257,7 +2257,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return A route, as navigated by the given {@link Navigator} for up to the maximum distance. The final edge in
+     * Returns a route, as navigated by the given {@link Navigator} for up to the maximum distance. The final edge in
      * the route may extend beyond the maximum distance.
      */
     public Route route(Navigator navigator, Distance maximum)
@@ -2268,7 +2268,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return A route, as navigated by the given {@link Navigator} for up to the maximum number of edges.
+     * Returns a route, as navigated by the given {@link Navigator} for up to the maximum number of edges.
      */
     public Route route(Navigator navigator, Maximum maximum)
     {
@@ -2276,7 +2276,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return A route, as navigated by the given {@link Navigator} as limited by the given {@link RouteLimiter}
+     * Returns a route, as navigated by the given {@link Navigator} as limited by the given {@link RouteLimiter}
      */
     public Route route(Navigator navigator, RouteLimiter routeLimiter)
     {
@@ -2301,7 +2301,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The road name or "unnamed" if there is no road name
+     * Returns the road name or "unnamed" if there is no road name
      */
     public String safeRoadName()
     {
@@ -2309,7 +2309,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The list of {@link ShapePoint}s as {@link MapNodeIdentifier}s. This method is only meaningful if full
+     * Returns the list of {@link ShapePoint}s as {@link MapNodeIdentifier}s. This method is only meaningful if full
      * node information is available, as determined by {@link Graph#supportsFullPbfNodeInformation()}.
      */
     public List<MapNodeIdentifier> shapePointNodeIdentifiers()
@@ -2323,7 +2323,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The shape points for this edge.  This method is only meaningful if full node information is available, as
+     * Returns the shape points for this edge.  This method is only meaningful if full node information is available, as
      * determined by {@link Graph#supportsFullPbfNodeInformation()}.
      */
     public List<ShapePoint> shapePoints()
@@ -2332,7 +2332,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The shape points for this edge, not including vertexes.  This method is only meaningful if full node
+     * Returns the shape points for this edge, not including vertexes.  This method is only meaningful if full node
      * information is available, as determined by {@link Graph#supportsFullPbfNodeInformation()}.
      */
     public List<ShapePoint> shapePointsWithoutVertexes()
@@ -2347,7 +2347,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return Available support for sign posts
+     * Returns available support for sign posts
      */
     public Set<SignPostSupport> signPostSupport()
     {
@@ -2368,7 +2368,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The speed limit on this edge
+     * Returns the speed limit on this edge
      */
     public Speed speedLimit()
     {
@@ -2376,7 +2376,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The {@link State} where this edge exists
+     * Returns the {@link State} where this edge exists
      */
     public State state()
     {
@@ -2384,7 +2384,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The smallest turn angle from this edge to the given edge
+     * Returns the smallest turn angle from this edge to the given edge
      */
     public Angle straightOnTurnAngleTo(Edge that)
     {
@@ -2392,7 +2392,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return True if this edge supports node identifiers
+     * Returns true if this edge supports node identifiers
      */
     public boolean supportsNodeIdentifiers()
     {
@@ -2400,7 +2400,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The "to" end-point of this edge (in terms of traffic flow)
+     * Returns the "to" end-point of this edge (in terms of traffic flow)
      */
     @Override
     public Vertex to()
@@ -2409,7 +2409,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The set of edges attached to the "to" vertex of this edge, not including this edge or the reverse of this
+     * Returns the set of edges attached to the "to" vertex of this edge, not including this edge or the reverse of this
      * edge if it is a two-way road
      */
     public EdgeSet toEdgesWithoutThisEdge()
@@ -2418,7 +2418,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The grade separation level at the "to" vertex of this edge
+     * Returns the grade separation level at the "to" vertex of this edge
      */
     public GradeSeparation toGradeSeparation()
     {
@@ -2426,7 +2426,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The ending location of the edge. If the edge doesn't yet have a "to" vertex, the last coordinate in the
+     * Returns the ending location of the edge. If the edge doesn't yet have a "to" vertex, the last coordinate in the
      * road shape will be used. This method is useful when loading edges into a graph because the vertexes are not
      * determined until the end of graph loading, so getTo().getLocation() will not work during the loading process to
      * determine which edges are inside a given bounding rectangle.
@@ -2442,7 +2442,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The "to" location of this edge as a DM7 long value
+     * Returns the "to" location of this edge as a DM7 long value
      */
     public long toLocationAsLong()
     {
@@ -2450,7 +2450,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The node identifier of the "to" vertex of this edge
+     * Returns the node identifier of the "to" vertex of this edge
      */
     public MapNodeIdentifier toNodeIdentifier()
     {
@@ -2463,7 +2463,7 @@ public abstract class Edge extends GraphElement implements
     @Override
     public String toString()
     {
-        if (Edge.DEBUG.isDebugOn())
+        if (DEBUG.isDebugOn())
         {
             return asString();
         }
@@ -2474,16 +2474,16 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The identifier of the "to" vertex
+     * Returns the identifier of the "to" vertex
      */
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public VertexIdentifier toVertexIdentifier()
     {
         return new VertexIdentifier(store().retrieveToVertexIdentifier(this));
     }
 
     /**
-     * @return The amount of time it should take to travel the length of this edge at the average free-flow speed
+     * Returns the amount of time it should take to travel the length of this edge at the average free-flow speed
      */
     public Duration travelTime()
     {
@@ -2491,7 +2491,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The amount of time it would take to travel the length of this edge at the given speed
+     * Returns the amount of time it would take to travel the length of this edge at the given speed
      */
     public Duration travelTime(Speed speed)
     {
@@ -2499,7 +2499,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The travel time along this edge based on the road type rather than free flow
+     * Returns the travel time along this edge based on the road type rather than free flow
      */
     public Duration travelTimeForFunctionalClass()
     {
@@ -2507,7 +2507,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The travel time in milliseconds
+     * Returns the travel time in milliseconds
      * @see #travelTime()
      */
     public int travelTimeInMilliseconds()
@@ -2516,7 +2516,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The turn angle from this edge to the given edge in the given chirality (clockwise, counter-clockwise or
+     * Returns the turn angle from this edge to the given edge in the given chirality (clockwise, counter-clockwise or
      * smallest angle)
      * @see Chirality
      */
@@ -2526,7 +2526,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return Set of all turn restriction routes that this edge participates in
+     * Returns set of all turn restriction routes that this edge participates in
      */
     public Set<EdgeRelation> turnRestrictions()
     {
@@ -2547,7 +2547,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return Set of turn restriction routes that begin at this edge
+     * Returns set of turn restriction routes that begin at this edge
      */
     public Set<EdgeRelation> turnRestrictionsBeginningAt()
     {
@@ -2575,7 +2575,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The type of turn from this edge to that edge, like: left, right, u-turn, hard left, etc.
+     * Returns the type of turn from this edge to that edge, like: left, right, u-turn, hard left, etc.
      */
     public TurnType turnType(Edge that)
     {
@@ -2583,7 +2583,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The type of turn from this edge to that edge using the given turn classifier
+     * Returns the type of turn from this edge to that edge using the given turn classifier
      */
     public TurnType turnType(Edge that, TwoHeadingTurnClassifier classifier)
     {
@@ -2591,7 +2591,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The type of edge
+     * Returns the type of edge
      */
     public Type type()
     {
@@ -2639,7 +2639,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The vertex that connects this edge with that edge or null if the two edges are not connected at a vertex
+     * Returns the vertex that connects this edge with that edge or null if the two edges are not connected at a vertex
      */
     public Vertex vertexConnecting(Edge that)
     {
@@ -2666,7 +2666,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The way that this edge is a part of as a {@link Route}
+     * Returns the way that this edge is a part of as a {@link Route}
      */
     public Route wayAsRoute()
     {
@@ -2685,7 +2685,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return The way identifier for this edge
+     * Returns the way identifier for this edge
      */
     @Override
     public PbfWayIdentifier wayIdentifier()
@@ -2714,7 +2714,7 @@ public abstract class Edge extends GraphElement implements
     }
 
     /**
-     * @return IllegalArgument exception for a vertex that is not connected to this edge
+     * Returns illegalArgument exception for a vertex that is not connected to this edge
      */
     private IllegalArgumentException invalidVertex(Vertex vertex)
     {

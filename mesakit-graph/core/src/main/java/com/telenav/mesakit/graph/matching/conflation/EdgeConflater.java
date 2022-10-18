@@ -56,7 +56,7 @@ public class EdgeConflater
     private static final boolean DEBUG_VIEWER = false;
 
     /**
-     * @return True if visual debugging is enabled
+     * Returns true if visual debugging is enabled
      */
     @SuppressWarnings("SpellCheckingInspection")
     public static boolean visualDebug()
@@ -121,7 +121,7 @@ public class EdgeConflater
     }
 
     /**
-     * @return The set of conflations in the base map for the given enhancing edge.
+     * Returns the set of conflations in the base map for the given enhancing edge.
      */
     public ConflationSet conflate(Edge enhancing)
     {
@@ -242,7 +242,7 @@ public class EdgeConflater
     }
 
     /**
-     * @return True if the given edge should be conflated to the base graph candidate edge
+     * Returns true if the given edge should be conflated to the base graph candidate edge
      */
     private boolean shouldConflate(Edge edge, Edge baseCandidate)
     {

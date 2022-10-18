@@ -52,7 +52,7 @@ public class SegmentPair
     }
 
     /**
-     * @return The acute angle (smallest) difference between the first segment's heading and the second segment's
+     * Returns the acute angle (smallest) difference between the first segment's heading and the second segment's
      * heading
      */
     public Angle angle()
@@ -61,7 +61,7 @@ public class SegmentPair
     }
 
     /**
-     * @return This segment pair joined at any common point and facing outwards like clock hands, or null if the
+     * Returns this segment pair joined at any common point and facing outwards like clock hands, or null if the
      * segments don't share a common point
      */
     public SegmentPair asClockHands()
@@ -91,7 +91,7 @@ public class SegmentPair
     }
 
     /**
-     * @return The first segment in this pair
+     * Returns the first segment in this pair
      */
     public Segment first()
     {
@@ -99,7 +99,7 @@ public class SegmentPair
     }
 
     /**
-     * @return The second segment in this pair
+     * Returns the second segment in this pair
      */
     public Segment second()
     {

@@ -11,7 +11,7 @@ import com.telenav.mesakit.graph.query.program.expressions.closure.OneOrMore;
 public interface BooleanExpression extends Expression
 {
     /**
-     * @return True if the expression can be evaluated again. This method is implemented by the {@link OneOrMore} class
+     * Returns true if the expression can be evaluated again. This method is implemented by the {@link OneOrMore} class
      * to potentially evaluate the same expression multiple times as the closure includes more and more edges.
      */
     default boolean canEvaluateAgain()
@@ -20,7 +20,7 @@ public interface BooleanExpression extends Expression
     }
 
     /**
-     * @return True if the expression evaluates to true
+     * Returns true if the expression evaluates to true
      */
     boolean evaluate();
 }

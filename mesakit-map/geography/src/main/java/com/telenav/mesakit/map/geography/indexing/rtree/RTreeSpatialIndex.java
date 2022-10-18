@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.geography.indexing.rtree;
 import com.telenav.kivakit.core.collections.iteration.Iterables;
 import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.language.primitive.Booleans;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.IncludeProperty;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.interfaces.collection.NextIterator;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
@@ -51,7 +51,7 @@ import java.util.List;
 public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implements Bounded, NamedObject
 {
     /**
-     * @return True if visual debugging is enabled
+     * Returns true if visual debugging is enabled
      */
     public static boolean visualDebug()
     {
@@ -73,7 +73,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     public static class All<Element> implements Matcher<Element>
     {
         @Override
-        public boolean matches(final Element element)
+        public boolean matches(Element element)
         {
             return true;
         }
@@ -88,7 +88,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     private String objectName;
 
     /** Settings that determine how the tree is laid out */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     private RTreeSettings settings;
 
     /** The root of the tree, initially just a root node with a single leaf */
@@ -134,7 +134,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
         new RTreeBulkLoader<>(this).load(elements);
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Count count()
     {
         return Count.count(all());
@@ -187,7 +187,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     }
 
     /**
-     * @return An iterator of elements that intersect with the given bounding rectangle
+     * Returns an iterator of elements that intersect with the given bounding rectangle
      */
     public synchronized Iterable<Element> intersecting(Rectangle bounds)
     {
@@ -195,7 +195,7 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     }
 
     /**
-     * @return An iterator of elements that intersect with the given bounding rectangle and match the given matcher
+     * Returns an iterator of elements that intersect with the given bounding rectangle and match the given matcher
      */
     public synchronized Iterable<Element> intersecting(Rectangle bounds, Matcher<Element> matcher)
     {

@@ -29,13 +29,12 @@ import java.util.List;
 
 public class AlternateRoadNameExtractor extends BaseRoadNameExtractor
 {
-    private static final String[] KEYS = new String[]
-            {
-                    "alt",
-                    "altname",
-                    "alt_name_1",
-                    "alt_name_2",
-            };
+    private static final String[] KEYS = {
+            "alt",
+            "altname",
+            "alt_name_1",
+            "alt_name_2",
+    };
 
     public AlternateRoadNameExtractor(MapLocale locale, RoadNameStandardizer.Mode mode,
                                       Listener listener)

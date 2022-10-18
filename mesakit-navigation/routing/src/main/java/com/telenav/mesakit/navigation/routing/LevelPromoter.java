@@ -52,7 +52,7 @@ public interface LevelPromoter
     void onSettle(Edge edge);
 
     /**
-     * @return True if the given edge should be explored
+     * Returns true if the given edge should be explored
      */
     boolean shouldExplore(Edge edge);
 }

@@ -198,7 +198,7 @@ public class WorldGrid
     }
 
     /**
-     * @return List of world cells in the given grid folder with the given data
+     * Returns list of world cells in the given grid folder with the given data
      */
     public WorldCellList cells(WorldGraphRepositoryFolder repositoryFolder, WorldCell.DataType data)
     {
@@ -206,7 +206,7 @@ public class WorldGrid
     }
 
     /**
-     * @return List of world cells intersecting the given bounds in the given grid folder with the given data
+     * Returns list of world cells intersecting the given bounds in the given grid folder with the given data
      */
     public WorldCellList cells(WorldGraphRepositoryFolder repositoryFolder, WorldCell.DataType data,
                                Rectangle bounds)
@@ -244,7 +244,7 @@ public class WorldGrid
         if (extracted != null)
         {
             refreshCellData(repositoryFolder);
-            LOGGER.information(AsciiArt.box("Extracted $ cells to $ in $", extracted.count(), repositoryFolder, start.elapsedSince()));
+            LOGGER.information(AsciiArt.textBox("Extracted $ cells to $ in $", extracted.count(), repositoryFolder, start.elapsedSince()));
             return extracted.count();
         }
         return Count._0;
@@ -256,7 +256,7 @@ public class WorldGrid
     }
 
     /**
-     * @return The world cells included in the current set of regions
+     * Returns the world cells included in the current set of regions
      */
     public ObjectSet<WorldCell> included()
     {
@@ -264,7 +264,7 @@ public class WorldGrid
     }
 
     /**
-     * @return True if the cell is included in the current set of regions
+     * Returns true if the cell is included in the current set of regions
      */
     public boolean included(WorldCell worldCell)
     {
@@ -272,7 +272,7 @@ public class WorldGrid
     }
 
     /**
-     * @return The loaded {@link WorldGraphIndex} for this folder or null if there is no index
+     * Returns the loaded {@link WorldGraphIndex} for this folder or null if there is no index
      */
     public WorldGraphIndex index()
     {
@@ -313,7 +313,7 @@ public class WorldGrid
     }
 
     /**
-     * @return The cells near the given location having graphs
+     * Returns the cells near the given location having graphs
      */
     public WorldCellList neighbors(Location location)
     {
@@ -339,7 +339,7 @@ public class WorldGrid
     }
 
     /**
-     * @return The repository folder
+     * Returns the repository folder
      */
     public WorldGraphRepositoryFolder repositoryFolder()
     {
@@ -357,7 +357,7 @@ public class WorldGrid
     }
 
     /**
-     * @return The world cell for the given grid cell
+     * Returns the world cell for the given grid cell
      */
     public WorldCell worldCell(GridCell gridCell)
     {
@@ -378,7 +378,7 @@ public class WorldGrid
     }
 
     /**
-     * @return The world cell for the given location
+     * Returns the world cell for the given location
      */
     public WorldCell worldCell(Location location)
     {
@@ -423,7 +423,7 @@ public class WorldGrid
     }
 
     /**
-     * @return List of world cells near the given location in the given grid folder with the given data
+     * Returns list of world cells near the given location in the given grid folder with the given data
      */
     private WorldCellList cellsNear(WorldGraphRepositoryFolder repositoryFolder, Location location)
     {
@@ -432,7 +432,7 @@ public class WorldGrid
 
     private WorldGraphConfiguration configuration()
     {
-        return SettingsRegistry.settingsRegistryFor(this).requireSettings(WorldGraphConfiguration.class);
+        return SettingsRegistry.settingsFor(this).requireSettings(WorldGraphConfiguration.class);
     }
 
     private void createGrid()
@@ -450,7 +450,7 @@ public class WorldGrid
     }
 
     /**
-     * @return The PBF files extracted from the given pbf file into the given world grid folder
+     * Returns the PBF files extracted from the given pbf file into the given world grid folder
      */
     private ResourceList extractCells(Source<PbfDataSource> data,
                                       WorldGraphRepositoryFolder repositoryFolder)
@@ -472,7 +472,7 @@ public class WorldGrid
     }
 
     /**
-     * @return A set of cells that are included by the {@link #includedRegions()}
+     * Returns a set of cells that are included by the {@link #includedRegions()}
      */
     private ObjectSet<WorldCell> findIncludedCells()
     {
@@ -486,7 +486,7 @@ public class WorldGrid
             if (cached.exists())
             {
                 var cellNames = cached.reader().asString();
-                if (!Strings.isEmpty(cellNames))
+                if (!Strings.isNullOrBlank(cellNames))
                 {
                     for (var cellName : cellNames.split(","))
                     {
@@ -533,7 +533,7 @@ public class WorldGrid
     }
 
     /**
-     * @return The regions we want data for
+     * Returns the regions we want data for
      */
     private RegionSet includedRegions()
     {

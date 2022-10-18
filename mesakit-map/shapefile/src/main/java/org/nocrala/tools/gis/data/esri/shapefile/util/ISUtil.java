@@ -16,14 +16,14 @@ public class ISUtil
 
     // Big endian int
 
-    public static synchronized double readBeDouble(final InputStream is)
+    public static synchronized double readBeDouble(InputStream is)
             throws IOException
     {
         readIntoBuffer(is, 8);
         return DoubleSerializer.deserializeBigEndian(BYTE_BUFFER);
     }
 
-    public static synchronized double readBeDoubleMaybeEOF(final InputStream is)
+    public static synchronized double readBeDoubleMaybeEOF(InputStream is)
             throws DataStreamEOFException, IOException
     {
         readIntoBufferMaybeEOF(is, 8);
@@ -32,14 +32,14 @@ public class ISUtil
 
     // Big endian double
 
-    public static synchronized int readBeInt(final InputStream is)
+    public static synchronized int readBeInt(InputStream is)
             throws IOException
     {
         readIntoBuffer(is, 4);
         return IntSerializer.deserializeBigEndian(BYTE_BUFFER);
     }
 
-    public static synchronized int readBeIntMaybeEOF(final InputStream is)
+    public static synchronized int readBeIntMaybeEOF(InputStream is)
             throws DataStreamEOFException, IOException
     {
         readIntoBufferMaybeEOF(is, 4);
@@ -48,14 +48,14 @@ public class ISUtil
 
     // Little endian int
 
-    public static synchronized double readLeDouble(final InputStream is)
+    public static synchronized double readLeDouble(InputStream is)
             throws IOException
     {
         readIntoBuffer(is, 8);
         return DoubleSerializer.deserializeLittleEndian(BYTE_BUFFER);
     }
 
-    public static synchronized double readLeDoubleMaybeEOF(final InputStream is)
+    public static synchronized double readLeDoubleMaybeEOF(InputStream is)
             throws DataStreamEOFException, IOException
     {
         readIntoBufferMaybeEOF(is, 8);
@@ -64,7 +64,7 @@ public class ISUtil
 
     // Little endian double
 
-    public static synchronized int readLeInt(final InputStream is)
+    public static synchronized int readLeInt(InputStream is)
             throws IOException
     {
         readIntoBuffer(is, 4);
@@ -72,7 +72,7 @@ public class ISUtil
         return IntSerializer.deserializeLittleEndian(BYTE_BUFFER);
     }
 
-    public static synchronized int readLeIntMaybeEOF(final InputStream is)
+    public static synchronized int readLeIntMaybeEOF(InputStream is)
             throws DataStreamEOFException, IOException
     {
         readIntoBufferMaybeEOF(is, 4);
@@ -81,7 +81,7 @@ public class ISUtil
 
     // Utils
 
-    private static void readIntoBuffer(final InputStream is, final int length)
+    private static void readIntoBuffer(InputStream is, int length)
             throws IOException
     {
         int read = is.read(BUFFER, 0, length);
@@ -91,8 +91,8 @@ public class ISUtil
         }
     }
 
-    private static void readIntoBufferMaybeEOF(final InputStream is,
-                                               final int length) throws DataStreamEOFException, IOException
+    private static void readIntoBufferMaybeEOF(InputStream is,
+                                               int length) throws DataStreamEOFException, IOException
     {
         try
         {

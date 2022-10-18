@@ -74,7 +74,7 @@ public class Size implements Dimensioned
     }
 
     /**
-     * @return True if both width and height of this size are greater than the given size
+     * Returns true if both width and height of this size are greater than the given size
      */
     public boolean isGreaterThan(Dimensioned that)
     {

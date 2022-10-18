@@ -19,10 +19,6 @@
 package com.telenav.mesakit.navigation.routing;
 
 import com.telenav.kivakit.core.value.level.Weight;
-
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.mesakit.graph.Route;
 import com.telenav.mesakit.graph.Vertex;
 import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
@@ -36,14 +32,14 @@ import com.telenav.mesakit.navigation.routing.cost.functions.heuristic.RoadTypeC
 import org.junit.Before;
 import org.junit.Test;
 
+@SuppressWarnings("CommentedOutCode")
 public class BiDijkstraRouterTest extends GraphUnitTest
 {
-    private static final Logger LOGGER = LoggerFactory.newLogger();
+    /*
+    private static RoutingDebugger DEBUGGER = new ConsoleRoutingDebugger();
+    private static RoutingDebugger DEBUGGER = new SwingRoutingDebugger();
+    */
 
-    private static final Debug DEBUG = new Debug(LOGGER);
-
-    // private static RoutingDebugger DEBUGGER = new ConsoleRoutingDebugger();
-    // private static RoutingDebugger DEBUGGER = new SwingRoutingDebugger();
     private static final RoutingDebugger DEBUGGER = RoutingDebugger.NULL;
 
     @SuppressWarnings("EmptyMethod")
@@ -119,7 +115,7 @@ public class BiDijkstraRouterTest extends GraphUnitTest
     {
         RoutingRequest request = new BiDijkstraRoutingRequest(start, end).withDebugger(DEBUGGER);
         var routeResult = new BiDijkstraRouter(costFunction).findRoute(request);
-        DEBUG.trace("Found route ${debug}", routeResult);
+        trace("Found route ${debug}", routeResult);
         return routeResult.route();
     }
 

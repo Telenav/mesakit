@@ -24,8 +24,8 @@ import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.language.Patterns;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.ExcludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.IncludeProperty;
 import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.kivakit.core.locale.LocaleRegion;
 import com.telenav.kivakit.core.logging.Logger;
@@ -179,12 +179,12 @@ public abstract class Region<T extends Region<T>> implements
     @SuppressWarnings("rawtypes")
     public static RegionSet allRegionsMatching(String simplifiedPattern)
     {
-        var pattern = Patterns.simplified(simplifiedPattern);
+        var pattern = Patterns.simplifiedPattern(simplifiedPattern);
         var matches = new RegionSet();
         for (var object : all.allUntyped())
         {
             var region = (Region) object;
-            if (Patterns.matches(pattern, region.identity().mesakit().code()))
+            if (Patterns.patternMatches(pattern, region.identity().mesakit().code()))
             {
                 matches.add(region);
             }
@@ -322,13 +322,13 @@ public abstract class Region<T extends Region<T>> implements
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public static ArgumentParser.Builder<Region> regionArgumentParser(Listener listener, String description)
     {
-        return ArgumentParser.argumentParserBuilder(Region.class).converter(new Converter(listener)).description(description);
+        return ArgumentParser.argumentParser(Region.class).converter(new Converter(listener)).description(description);
     }
 
     public static SwitchParser.Builder<RegionSet> regionListSwitchParser(Listener listener, String name,
                                                                          String description)
     {
-        return SwitchParser.switchParserBuilder(RegionSet.class)
+        return SwitchParser.switchParser(RegionSet.class)
                 .name(name)
                 .description(description)
                 .converter(new SetConverter(listener));
@@ -337,7 +337,7 @@ public abstract class Region<T extends Region<T>> implements
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public static SwitchParser.Builder<Region> regionSwitchParser(Listener listener, String name, String description)
     {
-        return SwitchParser.switchParserBuilder(Region.class).name(name).description(description).converter(new Converter(listener));
+        return SwitchParser.switchParser(Region.class).name(name).description(description).converter(new Converter(listener));
     }
 
     @SuppressWarnings({ "rawtypes" })
@@ -369,7 +369,7 @@ public abstract class Region<T extends Region<T>> implements
         @SuppressWarnings("unchecked")
         protected R onToValue(String value)
         {
-            if (!Strings.isEmpty(value) && !"NULL".equalsIgnoreCase(value))
+            if (!Strings.isNullOrBlank(value) && !"NULL".equalsIgnoreCase(value))
             {
                 var regions = allRegionsMatching(value);
                 if (regions.size() == 1)
@@ -511,13 +511,13 @@ public abstract class Region<T extends Region<T>> implements
     }
 
     @Override
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Rectangle bounds()
     {
         return instance().bounds();
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Location center()
     {
         return bounds().center();
@@ -590,7 +590,7 @@ public abstract class Region<T extends Region<T>> implements
         return false;
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Continent continent()
     {
         Region<?> at = this;
@@ -601,7 +601,7 @@ public abstract class Region<T extends Region<T>> implements
         return (Continent) at;
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Country country()
     {
         Region<?> at = this;
@@ -648,18 +648,18 @@ public abstract class Region<T extends Region<T>> implements
     }
 
     /**
-     * @return This region's name as a file name
+     * Returns this region's name as a file name
      */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public FileName fileName()
     {
         return FileName.parseFileName(LOGGER, name());
     }
 
     /**
-     * @return The folder path of this region
+     * Returns the folder path of this region
      */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Folder folder()
     {
         if (parent == null)
@@ -673,7 +673,7 @@ public abstract class Region<T extends Region<T>> implements
     }
 
     @SuppressWarnings({ "HttpUrlsUsage", "SpellCheckingInspection" })
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public URI geofabrikUri()
     {
         try
@@ -702,7 +702,7 @@ public abstract class Region<T extends Region<T>> implements
     }
 
     @Override
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public final RegionIdentity identity()
     {
         return instance().identity();
@@ -756,7 +756,7 @@ public abstract class Region<T extends Region<T>> implements
     }
 
     /**
-     * @return True if this region is an island having an isolated road network
+     * Returns true if this region is an island having an isolated road network
      */
     public boolean isIsland()
     {
@@ -768,7 +768,7 @@ public abstract class Region<T extends Region<T>> implements
         return largestArea().isGreaterThan(that.largestArea());
     }
 
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public boolean isValid()
     {
         return instance.isValid();
@@ -802,7 +802,7 @@ public abstract class Region<T extends Region<T>> implements
         return largest;
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public MapLocale locale()
     {
         // Other cases
@@ -831,7 +831,7 @@ public abstract class Region<T extends Region<T>> implements
     }
 
     @Override
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public final String name()
     {
         return identity().name();

@@ -33,7 +33,7 @@ import java.util.Objects;
 public interface RoadNameParser
 {
     /**
-     * @return RoadNameParser for the given locale
+     * Returns roadNameParser for the given locale
      */
     static RoadNameParser get(MapLocale locale)
     {

@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.io.load;
 import com.telenav.kivakit.core.collections.iteration.FilteredIterable;
 import com.telenav.kivakit.interfaces.comparison.Filter;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.IncludeProperty;
 import com.telenav.kivakit.core.string.ObjectFormatter;
 import com.telenav.kivakit.core.messaging.listeners.MessageList;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
@@ -86,9 +86,9 @@ public class GraphConstraints
     }
 
     /**
-     * @return The constraint bounds
+     * Returns the constraint bounds
      */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Rectangle bounds()
     {
         return bounds;
@@ -100,7 +100,7 @@ public class GraphConstraints
     }
 
     /**
-     * @return A Matcher that satisfies all the constraints, including the specified matcher as well as the bounds.
+     * Returns a Matcher that satisfies all the constraints, including the specified matcher as well as the bounds.
      */
     public Matcher<Edge> edgeMatcher()
     {
@@ -108,7 +108,7 @@ public class GraphConstraints
     }
 
     /**
-     * @return The sequence of edges matching this constraints object
+     * Returns the sequence of edges matching this constraints object
      */
     public EdgeSequence edges(Iterable<Edge> edges)
     {
@@ -116,7 +116,7 @@ public class GraphConstraints
     }
 
     /**
-     * @return True if the constraints include the given edge
+     * Returns true if the constraints include the given edge
      */
     public boolean includes(Edge edge)
     {
@@ -138,7 +138,7 @@ public class GraphConstraints
     }
 
     /**
-     * @return True if the constraints include the given vertex
+     * Returns true if the constraints include the given vertex
      */
     public boolean includes(Vertex vertex)
     {
@@ -193,7 +193,7 @@ public class GraphConstraints
     }
 
     /**
-     * @return A copy of this constraints object with the given bounds
+     * Returns a copy of this constraints object with the given bounds
      */
     public GraphConstraints withBounds(Rectangle bounds)
     {
@@ -203,7 +203,7 @@ public class GraphConstraints
     }
 
     /**
-     * @return A copy of this constraints object with the given edge matcher
+     * Returns a copy of this constraints object with the given edge matcher
      */
     public GraphConstraints withEdgeMatcher(Matcher<Edge> edgeMatcher)
     {

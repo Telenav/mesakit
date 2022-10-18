@@ -137,7 +137,7 @@ public abstract class Node<T extends Bounded & Intersectable> implements Bounded
     protected abstract void add(Node<T> child);
 
     /**
-     * @return The node from the given list whose area would be least increased by the addition of the given element
+     * Returns the node from the given list whose area would be least increased by the addition of the given element
      */
     protected <N extends Node<T>> Node<T> bestFit(List<N> nodes, Bounded element)
     {

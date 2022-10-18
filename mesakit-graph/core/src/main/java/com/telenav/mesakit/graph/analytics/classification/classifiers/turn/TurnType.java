@@ -253,7 +253,7 @@ public enum TurnType
     }
 
     /**
-     * @return true if the turn type is one of the followings: LEFT, SLIGHT_LEFT, HARD_LEFT, LEFT_SIDE_STRAIGHT_ON and
+     * Returns true if the turn type is one of the followings: LEFT, SLIGHT_LEFT, HARD_LEFT, LEFT_SIDE_STRAIGHT_ON and
      * LEFT_SIDE_U_TURN
      */
     public boolean isLeftSideTurn()
@@ -267,7 +267,7 @@ public enum TurnType
     }
 
     /**
-     * @return true if the turn type is one of the followings: RIGHT, SLIGHT_RIGHT, HARD_RIGHT, RIGHT_SIDE_STRAIGHT_ON
+     * Returns true if the turn type is one of the followings: RIGHT, SLIGHT_RIGHT, HARD_RIGHT, RIGHT_SIDE_STRAIGHT_ON
      * and RIGHT_SIDE_U_TURN
      */
     public boolean isRightSideTurn()
@@ -286,7 +286,7 @@ public enum TurnType
     }
 
     /**
-     * @return if this turn contains both obvious left and right turns
+     * Returns if this turn contains both obvious left and right turns
      */
     public boolean isZigzag()
     {

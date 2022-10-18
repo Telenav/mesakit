@@ -71,7 +71,7 @@ public class VertexState implements Comparable<VertexState>
     }
 
     /**
-     * @return Any edge from the previous vertex to this vertex (if we're going forward) or from this vertex to the
+     * Returns any edge from the previous vertex to this vertex (if we're going forward) or from this vertex to the
      * previous vertex (if we're going backward) or null if there's no such edge (either because there's no previous, or
      * because there's no edge, as in the case of a one-way street).
      */

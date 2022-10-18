@@ -195,7 +195,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     }
 
     /**
-     * @return The graph for this cell
+     * Returns the graph for this cell
      */
     public Graph cellGraph()
     {
@@ -208,7 +208,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     }
 
     /**
-     * @return The graph file for this cell
+     * Returns the graph file for this cell
      */
     public File cellGraphFile()
     {
@@ -216,7 +216,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     }
 
     /**
-     * @return The graph file in the given grid folder
+     * Returns the graph file in the given grid folder
      */
     public File cellGraphFile(WorldGraphRepositoryFolder repositoryFolder)
     {
@@ -273,7 +273,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     }
 
     /**
-     * @return The grid cell
+     * Returns the grid cell
      */
     public GridCell gridCell()
     {
@@ -281,7 +281,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     }
 
     /**
-     * @return True if the given grid folder has the given data
+     * Returns true if the given grid folder has the given data
      */
     public boolean hasData(WorldGraphRepositoryFolder repositoryFolder, DataType data)
     {
@@ -305,7 +305,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     }
 
     /**
-     * @return True if there is a graph file for this cell in the given grid folder
+     * Returns true if there is a graph file for this cell in the given grid folder
      */
     public boolean hasGraphFile(WorldGraphRepositoryFolder repositoryFolder)
     {
@@ -322,7 +322,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     }
 
     /**
-     * @return True if there is a PBF file for this cell in the given grid folder
+     * Returns true if there is a PBF file for this cell in the given grid folder
      */
     public boolean hasPbfFile(WorldGraphRepositoryFolder repositoryFolder)
     {
@@ -340,7 +340,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     }
 
     /**
-     * @return True if this cell is included
+     * Returns true if this cell is included
      */
     public boolean isIncluded()
     {
@@ -348,7 +348,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     }
 
     /**
-     * @return The (up to) 8 cells that are neighbors of this cell (and have graph data)
+     * Returns the (up to) 8 cells that are neighbors of this cell (and have graph data)
      */
     public WorldCellList neighbors()
     {
@@ -358,7 +358,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     }
 
     /**
-     * @return The (up to) 8 cells that are neighbors of this cell (and have graph data)
+     * Returns the (up to) 8 cells that are neighbors of this cell (and have graph data)
      */
     public WorldCellList neighborsAndThis()
     {
@@ -404,7 +404,7 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     }
 
     /**
-     * @return The PBF file in the given grid folder
+     * Returns the PBF file in the given grid folder
      */
     public File pbfFile(WorldGraphRepositoryFolder repositoryFolder)
     {

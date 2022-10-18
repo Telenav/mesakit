@@ -29,7 +29,7 @@ public class SymbolListTest extends UnitTest
     @Test
     public void test()
     {
-        final SymbolList list = SymbolList.of(" North   125th  Street ");
+        SymbolList list = SymbolList.of(" North   125th  Street ");
         var i = 0;
         ensureEqual(Symbol.WHITESPACE, list.get(i++));
         ensureEqual(Symbol.of("North"), list.get(i++));
@@ -47,7 +47,7 @@ public class SymbolListTest extends UnitTest
     @Test
     public void test2()
     {
-        final SymbolList list = SymbolList.of("I-5 North");
+        SymbolList list = SymbolList.of("I-5 North");
         var i = 0;
         ensureEqual(Symbol.of("I"), list.get(i++));
         ensureEqual(Symbol.DASH, list.get(i++));

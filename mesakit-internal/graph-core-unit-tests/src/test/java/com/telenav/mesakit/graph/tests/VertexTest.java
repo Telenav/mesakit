@@ -32,7 +32,7 @@ public class VertexTest extends GraphUnitTest
     @Test
     public void testInEdges()
     {
-        final Vertex firstAndVirginia = osmDowntownSeattleTest().vertexNearest(Location.degrees(47.611069, -122.3426071));
+        Vertex firstAndVirginia = osmDowntownSeattleTest().vertexNearest(Location.degrees(47.611069, -122.3426071));
         ensureEqual(firstAndVirginia.inEdgeCount(), Count._3);
         ensure(firstAndVirginia.inEdges().contains(osmDowntownSeattleTestEdge(206880348000003L)));
         ensure(firstAndVirginia.inEdges().contains(osmDowntownSeattleTestEdge(693449123000003L)));
@@ -42,7 +42,7 @@ public class VertexTest extends GraphUnitTest
     @Test
     public void testOutEdges()
     {
-        final Vertex firstAndVirginia = osmDowntownSeattleTest().vertexNearest(Location.degrees(47.611069, -122.3426071));
+        Vertex firstAndVirginia = osmDowntownSeattleTest().vertexNearest(Location.degrees(47.611069, -122.3426071));
         ensureEqual(firstAndVirginia.outEdgeCount(), Count._3);
         ensure(firstAndVirginia.outEdges().contains(osmDowntownSeattleTestEdge(192005425000000L)));
         ensure(firstAndVirginia.outEdges().contains(osmDowntownSeattleTestEdge(-693449123000003L)));

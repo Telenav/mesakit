@@ -120,7 +120,7 @@ public class EdgeArrayStore extends BaseRepeater implements
     }
 
     /**
-     * @return A sequence of edges from the given edge store created from the list stored at the given index
+     * Returns a sequence of edges from the given edge store created from the list stored at the given index
      */
     public EdgeSequence edgeSequence(EdgeStore store, int index)
     {
@@ -190,7 +190,7 @@ public class EdgeArrayStore extends BaseRepeater implements
     }
 
     /**
-     * @return An {@link IntList} for the given index that is backed by the store (no new object is created aside from
+     * Returns an {@link IntList} for the given index that is backed by the store (no new object is created aside from
      * the anonymous {@link IntList} subclass).
      */
     public IntList list(int index)
@@ -251,7 +251,7 @@ public class EdgeArrayStore extends BaseRepeater implements
     }
 
     /**
-     * @return The number of lists in this store
+     * Returns the number of lists in this store
      */
     public int size()
     {
@@ -259,7 +259,7 @@ public class EdgeArrayStore extends BaseRepeater implements
     }
 
     /**
-     * @return The size of the list at the given index
+     * Returns the size of the list at the given index
      */
     public int size(int index)
     {

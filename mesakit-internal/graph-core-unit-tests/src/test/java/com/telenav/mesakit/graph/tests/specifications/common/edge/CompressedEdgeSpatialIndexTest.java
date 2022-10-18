@@ -38,8 +38,8 @@ public class CompressedEdgeSpatialIndexTest extends GraphUnitTest
     @Test
     public void test()
     {
-        final Graph graph = osmDowntownSeattleTest();
-        final CompressedEdgeSpatialIndex index = new CompressedEdgeSpatialIndex("test", graph, RTreeSettings.DEFAULT);
+        Graph graph = osmDowntownSeattleTest();
+        CompressedEdgeSpatialIndex index = new CompressedEdgeSpatialIndex("test", graph, RTreeSettings.DEFAULT);
         index.bulkLoad(graph.edges().asList());
         ensureEqual(graph.edgeCount(), Count.count(index.intersecting(Rectangle.MAXIMUM)));
     }

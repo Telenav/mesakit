@@ -190,7 +190,7 @@ public class PbfFileMetadataAnnotator extends BaseRepeater
     public boolean write(Metadata metadata)
     {
         var reader = reader();
-        var temporary = file.parent().file(file.fileName().withExtension(Extension.TMP));
+        var temporary = file.parent().file(file.fileName().withExtension(Extension.TEMPORARY));
         var writer = new PbfWriter(temporary, false);
 
         var processedFirstNode = new MutableValue<>(false);

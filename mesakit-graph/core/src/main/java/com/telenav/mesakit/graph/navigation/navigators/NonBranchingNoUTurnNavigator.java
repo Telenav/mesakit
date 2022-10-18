@@ -31,7 +31,7 @@ import com.telenav.mesakit.graph.navigation.Navigator;
 public class NonBranchingNoUTurnNavigator extends Navigator
 {
     /**
-     * @return The in edge to navigate (backwards) to from the given edge, or null if there is no such edge.
+     * Returns the in edge to navigate (backwards) to from the given edge, or null if there is no such edge.
      */
     @Override
     public Edge in(Edge edge)
@@ -42,7 +42,7 @@ public class NonBranchingNoUTurnNavigator extends Navigator
     }
 
     /**
-     * @return The out edge to navigate to from the given edge, or null if there is no such edge.
+     * Returns the out edge to navigate to from the given edge, or null if there is no such edge.
      */
     @Override
     public Edge out(Edge edge)
@@ -53,7 +53,7 @@ public class NonBranchingNoUTurnNavigator extends Navigator
     }
 
     /**
-     * @return The next edge from the set of next edges that doesn't branch or u-turn
+     * Returns the next edge from the set of next edges that doesn't branch or u-turn
      */
     protected Edge next(Edge edge, Count size, EdgeSequence nextEdges)
     {

@@ -20,7 +20,7 @@ package com.telenav.mesakit.map.utilities.grid;
 
 import com.telenav.kivakit.core.string.ObjectFormatter;
 import com.telenav.kivakit.core.language.primitive.Ints;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.IncludeProperty;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Location;
@@ -101,7 +101,7 @@ public class Grid
         return cellForIndices(indexForLatitude(location.latitude()), indexForLongitude(location.longitude()));
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Count cellCount()
     {
         return Count.count((long) latitudeCellCount * longitudeCellCount);
@@ -136,7 +136,7 @@ public class Grid
         return new ArrayList<>();
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Size cellSize()
     {
         return new Size(Width.microdegrees(cellWidthInMicroDegrees),
@@ -193,14 +193,14 @@ public class Grid
     }
 
     /** Return cells north/south */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Count latitudeCellCount()
     {
         return Count.count(latitudeCellCount);
     }
 
     /** Return cells east/west */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Count longitudeCellCount()
     {
         return Count.count(longitudeCellCount);
@@ -258,7 +258,7 @@ public class Grid
      */
     private int indexForLatitude(Latitude latitude)
     {
-        return Ints.inRangeInclusive(
+        return Ints.intInRangeInclusive(
                 (latitude.asMicrodegrees() + maximumLatitude.asMicrodegrees()) / cellHeightInMicroDegrees, 0,
                 latitudeCellCount - 1);
     }
@@ -269,7 +269,7 @@ public class Grid
      */
     private int indexForLongitude(Longitude longitude)
     {
-        return Ints.inRangeInclusive(
+        return Ints.intInRangeInclusive(
                 (longitude.asMicrodegrees() + Longitude.MAXIMUM.asMicrodegrees()) / cellWidthInMicroDegrees, 0,
                 longitudeCellCount - 1);
     }

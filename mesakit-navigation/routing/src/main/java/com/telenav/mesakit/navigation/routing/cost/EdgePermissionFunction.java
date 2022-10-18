@@ -36,7 +36,7 @@ public interface EdgePermissionFunction
     }
 
     /**
-     * @return True if the given edge is allowed
+     * Returns true if the given edge is allowed
      */
     Permission allowed(Edge edge);
 }

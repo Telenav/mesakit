@@ -34,7 +34,7 @@ public class Cost implements Comparable<Cost>
     public static final Cost MAXIMUM = new Cost(Integer.MAX_VALUE);
 
     /**
-     * @return A cost of 1.0 minus the given cost value
+     * Returns a cost of 1.0 minus the given cost value
      */
     public static Cost inverse(double value)
     {
@@ -42,7 +42,7 @@ public class Cost implements Comparable<Cost>
     }
 
     /**
-     * @return The given cost between 0.0 and 1.0, inclusive
+     * Returns the given cost between 0.0 and 1.0, inclusive
      */
     public static Cost of(double value)
     {
@@ -128,7 +128,7 @@ public class Cost implements Comparable<Cost>
 
     public String toString(int places)
     {
-        return Doubles.format(asDouble(), places);
+        return Doubles.formatDouble(asDouble(), places);
     }
 
     public Cost weighted(Weight weight)

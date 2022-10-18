@@ -58,7 +58,7 @@ public class RegionIndexMap
     }
 
     /**
-     * @return An index &gt; 0 for the region in the index map
+     * Returns an index &gt; 0 for the region in the index map
      */
     public Integer indexForRegion(Region region)
     {
@@ -83,7 +83,7 @@ public class RegionIndexMap
     }
 
     /**
-     * @return The region for an index &gt; 0
+     * Returns the region for an index &gt; 0
      */
     public Region regionForIndex(int index)
     {

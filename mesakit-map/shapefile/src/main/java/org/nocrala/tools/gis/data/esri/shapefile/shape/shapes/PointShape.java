@@ -18,8 +18,8 @@ public class PointShape extends AbstractPointShape
 {
     private static final int FIXED_CONTENT_LENGTH = (4 + 8 + 8) / 2;
 
-    public PointShape(final ShapeHeader shapeHeader, final ShapeType shapeType,
-                      final InputStream is, final ValidationPreferences rules)
+    public PointShape(ShapeHeader shapeHeader, ShapeType shapeType,
+                      InputStream is, ValidationPreferences rules)
             throws IOException, InvalidShapeFileException
     {
         super(shapeHeader, shapeType, is, rules);

@@ -31,7 +31,7 @@ import com.telenav.mesakit.map.region.regions.Country;
 
 import java.util.Collection;
 
-import static com.telenav.kivakit.core.collections.list.ObjectList.objectList;
+import static com.telenav.kivakit.core.collections.list.ObjectList.list;
 import static com.telenav.kivakit.core.locale.LocaleLanguage.CHINESE_MANDARIN;
 import static com.telenav.kivakit.core.locale.LocaleLanguage.ENGLISH;
 import static com.telenav.kivakit.core.locale.LocaleLanguage.FRENCH;
@@ -111,11 +111,11 @@ public class MapLocale extends Locale
 
     public MapLocale(LocaleRegion localeRegion, Region<?> region, LocaleLanguage language)
     {
-        this(localeRegion, region, objectList(language));
+        this(localeRegion, region, list(language));
     }
 
     /**
-     * @return An object created by loading the class which has the class name relative to the given package path of
+     * Returns an object created by loading the class which has the class name relative to the given package path of
      * "[package-path].locales.[language].[Language][Region][suffix]". For example,
      * "[package-path].locales.english.English_United_States_RoadNameParser"
      */

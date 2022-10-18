@@ -43,7 +43,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 import static com.telenav.kivakit.core.project.Project.resolveProject;
-import static com.telenav.kivakit.network.core.NetworkAccessConstraints.DEFAULT;
+import static com.telenav.kivakit.network.core.NetworkAccessConstraints.defaultNetworkAccessConstraints;
 import static java.awt.AlphaComposite.SRC_OVER;
 
 /**
@@ -116,13 +116,13 @@ public abstract class SlippyTileImageCache extends BaseRepeater
     }
 
     /**
-     * @return The size of a slippy tile in pixels, as determined by fetching a tile from the server
+     * Returns the size of a slippy tile in pixels, as determined by fetching a tile from the server
      */
     @SuppressWarnings("SameReturnValue")
     public abstract DrawingSize tileSize();
 
     /**
-     * @return The HTTP network location of the given slippy tile
+     * Returns the HTTP network location of the given slippy tile
      */
     protected abstract HttpNetworkLocation networkLocation(SlippyTile tile);
 
@@ -132,7 +132,7 @@ public abstract class SlippyTileImageCache extends BaseRepeater
     protected abstract void onCacheUpdated();
 
     /**
-     * @return The image for the given tile
+     * Returns the image for the given tile
      */
     private BufferedImage download(SlippyTile tile)
     {
@@ -141,7 +141,7 @@ public abstract class SlippyTileImageCache extends BaseRepeater
         if (resource == null)
         {
             // then download the resource into the cache
-            resource = cache.add(tile, new HttpGetResource(networkLocation(tile), DEFAULT)
+            resource = cache.add(tile, new HttpGetResource(networkLocation(tile), defaultNetworkAccessConstraints())
             {
                 @Override
                 public void onInitialize(HttpRequest request)
@@ -199,7 +199,7 @@ public abstract class SlippyTileImageCache extends BaseRepeater
     }
 
     /**
-     * @return The current buffered image for the given tile from the cache. If the image is not available it is
+     * Returns the current buffered image for the given tile from the cache. If the image is not available it is
      * requested so it will be available in the future.
      */
     private BufferedImage image(SlippyTile tile)
@@ -223,7 +223,7 @@ public abstract class SlippyTileImageCache extends BaseRepeater
     }
 
     /**
-     * @return True if the given tile is being downloaded or is requested to be downloaded
+     * Returns true if the given tile is being downloaded or is requested to be downloaded
      */
     private boolean isRequested(SlippyTile tile)
     {

@@ -56,7 +56,7 @@ class LinkSetJudger
     }
 
     /**
-     * @return true, if the edge set are ramps; false, if the edge set are connections.
+     * Returns true, if the edge set are ramps; false, if the edge set are connections.
      */
     boolean isRamp()
     {

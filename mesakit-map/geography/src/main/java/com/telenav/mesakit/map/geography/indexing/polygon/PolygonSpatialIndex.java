@@ -98,7 +98,7 @@ public class PolygonSpatialIndex implements Intersectable, Bounded, Outline
     }
 
     /**
-     * @return True if this spatially indexed polygon contains the given location.
+     * Returns true if this spatially indexed polygon contains the given location.
      */
     @Override
     public Containment containment(Location location)

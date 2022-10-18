@@ -43,7 +43,7 @@ public class WorldGraphDeployments extends DeploymentSet
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
     /**
-     * @return A deployment of the world graph with a local repository in ~/.mesakit
+     * Returns a deployment of the world graph with a local repository in ~/.mesakit
      */
     public static Deployment localDeployment()
     {

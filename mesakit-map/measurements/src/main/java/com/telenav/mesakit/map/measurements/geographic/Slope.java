@@ -33,7 +33,7 @@ import com.telenav.mesakit.map.measurements.internal.lexakai.DiagramMapMeasureme
 public class Slope extends Angle
 {
     /**
-     * @return The slope for the number of degrees
+     * Returns the slope for the number of degrees
      */
     public static Slope degrees(double degrees)
     {
@@ -41,7 +41,7 @@ public class Slope extends Angle
     }
 
     /**
-     * @return A slope of the given angle of steepness
+     * Returns a slope of the given angle of steepness
      */
     public static Slope of(Angle angle)
     {
@@ -60,7 +60,7 @@ public class Slope extends Angle
 
     public Slope difference(Slope that)
     {
-        return of(super.difference(that, Chirality.SMALLEST));
+        return of(difference(that, Chirality.SMALLEST));
     }
 
     @Override
@@ -76,7 +76,7 @@ public class Slope extends Angle
     }
 
     /**
-     * @return The quantum of a slope is integral degrees
+     * Returns the quantum of a slope is integral degrees
      */
     @Override
     public long longValue()

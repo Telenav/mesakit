@@ -104,7 +104,7 @@ public class State extends Region<State>
 
     public static SwitchParser.Builder<State> stateSwitchParser(String name, String description)
     {
-        return SwitchParser.switchParserBuilder(State.class).name(name).converter(new Converter<>(LOGGER()))
+        return SwitchParser.switchParser(State.class).name(name).converter(new Converter<>(LOGGER()))
                 .description(description);
     }
 
@@ -216,7 +216,7 @@ public class State extends Region<State>
             {
                 // Get name and ISO codes
                 var name = Region.name(way);
-                if (name == null || Strings.isEmpty(name.code()))
+                if (name == null || Strings.isNullOrBlank(name.code()))
                 {
                     DEBUG().trace("Can't extract a name from $", way);
                     return null;

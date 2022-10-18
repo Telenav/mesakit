@@ -103,8 +103,8 @@ public class SlippyTileCoordinateSystem extends DrawingCoordinateSystem
 
     public SlippyTile tileForPoint(DrawingPoint point)
     {
-        var x = Ints.inRangeInclusive((int) (point.x() / tileSize.widthInUnits()), 0, zoom.widthInTiles() - 1);
-        var y = Ints.inRangeInclusive((int) (point.y() / tileSize.heightInUnits()), 0, zoom.heightInTiles() - 1);
+        var x = Ints.intInRangeInclusive((int) (point.x() / tileSize.widthInUnits()), 0, zoom.widthInTiles() - 1);
+        var y = Ints.intInRangeInclusive((int) (point.y() / tileSize.heightInUnits()), 0, zoom.heightInTiles() - 1);
 
         return new SlippyTile(zoom, x, y);
     }

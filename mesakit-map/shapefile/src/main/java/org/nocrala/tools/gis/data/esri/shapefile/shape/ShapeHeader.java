@@ -20,7 +20,7 @@ public class ShapeHeader
 
     private final int contentLength;
 
-    public ShapeHeader(final InputStream is, final ValidationPreferences rules)
+    public ShapeHeader(InputStream is, ValidationPreferences rules)
             throws DataStreamEOFException, IOException, InvalidShapeFileException
     {
 

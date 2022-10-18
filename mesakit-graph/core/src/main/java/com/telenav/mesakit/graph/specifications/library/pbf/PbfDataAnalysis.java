@@ -19,9 +19,9 @@
 package com.telenav.mesakit.graph.specifications.library.pbf;
 
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.core.string.ObjectIndenter;
 import com.telenav.kivakit.core.string.AsciiArt;
-import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.primitive.collections.set.SplitLongSet;
 import com.telenav.mesakit.graph.Metadata;
@@ -189,7 +189,7 @@ public class PbfDataAnalysis extends BaseRepeater
 
         var indenter = new ObjectIndenter(StringFormattable.Format.USER_MULTILINE);
         indenter.indented("metadata", () -> metadata().asString(StringFormattable.Format.USER_MULTILINE, indenter));
-        information(AsciiArt.textBox(Strings.format("PBF Data Analysis of $", fileName), indenter.toString()));
+        information(AsciiArt.textBox(Formatter.format("PBF Data Analysis of $", fileName), indenter.toString()));
     }
 
     public void freeIntersectionMap()
@@ -203,7 +203,7 @@ public class PbfDataAnalysis extends BaseRepeater
     }
 
     /**
-     * @return True if the PBF data includes way node locations. This is determined by looking at {@link
+     * Returns true if the PBF data includes way node locations. This is determined by looking at {@link
      * WayNode#getLatitude()} and {@link WayNode#getLongitude()} rather than at the PBF metadata, since looking at the
      * actual values is more likely to be accurate than looking at the metadata in the header.
      */

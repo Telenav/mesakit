@@ -78,7 +78,7 @@ public class TagStore implements KryoSerializable, NamedObject, Initializable
     private SplitPackedArray length;
 
     /** Map from hashcode to entry for compressing tag entries in the tag store */
-    private transient final Map<Integer, Entry> hashToEntry = new CacheMap<>(Maximum._8192);
+    private final transient Map<Integer, Entry> hashToEntry = new CacheMap<>(Maximum._8192);
 
     /**
      * @param objectName The name of this object

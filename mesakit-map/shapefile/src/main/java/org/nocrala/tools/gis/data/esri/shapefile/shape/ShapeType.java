@@ -26,9 +26,9 @@ public enum ShapeType
 
     MULTIPATCH(31); //
 
-    public static ShapeType parse(final int tid)
+    public static ShapeType parse(int tid)
     {
-        for (ShapeType st : ShapeType.values())
+        for (ShapeType st : values())
         {
             if (st.getId() == tid)
             {

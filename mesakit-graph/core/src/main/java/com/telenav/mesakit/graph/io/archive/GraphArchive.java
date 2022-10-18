@@ -22,15 +22,12 @@ import com.esotericsoftware.kryo.Kryo;
 import com.telenav.kivakit.commandline.ArgumentParser;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
-import com.telenav.kivakit.core.language.primitive.Doubles;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.registry.RegistryTrait;
 import com.telenav.kivakit.core.time.Time;
-import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.core.version.VersionedObject;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.FileList;
 import com.telenav.kivakit.interfaces.naming.Named;
@@ -88,7 +85,7 @@ public class GraphArchive extends FieldArchive implements
 
     public static ArgumentParser.Builder<Graph> argumentParser(Listener listener, String description)
     {
-        return ArgumentParser.argumentParserBuilder(Graph.class)
+        return ArgumentParser.argumentParser(Graph.class)
                 .description(description)
                 .converter(new GraphArchive.Converter(listener));
     }
@@ -110,7 +107,7 @@ public class GraphArchive extends FieldArchive implements
                                                                        String name,
                                                                        String description)
     {
-        return SwitchParser.switchParserBuilder(Graph.class)
+        return SwitchParser.switchParser(Graph.class)
                 .name(name)
                 .description(description)
                 .converter(new Converter(listener));
@@ -119,7 +116,7 @@ public class GraphArchive extends FieldArchive implements
     public static SwitchParser.Builder<GraphList> graphListSwitchParser(Listener listener, String name,
                                                                         String description)
     {
-        return SwitchParser.switchParserBuilder(GraphList.class)
+        return SwitchParser.switchParser(GraphList.class)
                 .name(name)
                 .description(description)
                 .converter(new GraphArchive.ListConverter(listener));

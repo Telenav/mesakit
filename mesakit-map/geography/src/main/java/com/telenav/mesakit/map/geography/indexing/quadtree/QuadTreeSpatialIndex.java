@@ -23,6 +23,7 @@ import com.telenav.kivakit.core.collections.list.LinkedObjectList;
 import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
+import com.telenav.kivakit.interfaces.serialization.SerializedObject;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Latitude;
 import com.telenav.mesakit.map.geography.Located;
@@ -45,8 +46,8 @@ import static com.telenav.kivakit.core.ensure.Ensure.illegalState;
  * @param <Element> The {@link Located} type
  * @author jonathanl (shibo)
  */
-@UmlClassDiagram(diagram = DiagramSpatialIndex.class)
-public class QuadTreeSpatialIndex<Element extends Located>
+@SuppressWarnings("unused") @UmlClassDiagram(diagram = DiagramSpatialIndex.class)
+public class QuadTreeSpatialIndex<Element extends Located> implements SerializedObject
 {
     private static final int QUADRANTS = 4;
 
@@ -376,7 +377,9 @@ public class QuadTreeSpatialIndex<Element extends Located>
 
     private final Longitude minimumWidth;
 
-    private final AtomicInteger size = new AtomicInteger();
+    private transient AtomicInteger size;
+
+    private int serializedSize;
 
     public QuadTreeSpatialIndex()
     {
@@ -428,7 +431,8 @@ public class QuadTreeSpatialIndex<Element extends Located>
     public void clear()
     {
         root = new Quadrant(Rectangle.MAXIMUM);
-        size.set(0);
+        serializedSize = 0;
+        size = new AtomicInteger(serializedSize);
     }
 
     public Count count()
@@ -449,6 +453,18 @@ public class QuadTreeSpatialIndex<Element extends Located>
     public Iterator<Element> inside(Rectangle bounds, Matcher<Element> matcher)
     {
         return root.inside(bounds, matcher);
+    }
+
+    @Override
+    public void onDeserialized()
+    {
+        size = new AtomicInteger(serializedSize);
+    }
+
+    @Override
+    public void onSerializing()
+    {
+        serializedSize = size.get();
     }
 
     public void remove(Element object)

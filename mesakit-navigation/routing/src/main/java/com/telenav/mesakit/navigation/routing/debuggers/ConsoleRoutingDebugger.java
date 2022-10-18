@@ -37,29 +37,29 @@ public class ConsoleRoutingDebugger implements RoutingDebugger
     @Override
     public void onEnd(RoutingRequest request, RoutingResponse response)
     {
-        ConsoleRoutingDebugger.LOGGER.information("Completed $ from $ to $", request.description(), request.start(), request.end());
+        LOGGER.information("Completed $ from $ to $", request.description(), request.start(), request.end());
     }
 
     @Override
     public void onRelaxed(Route route, Cost cost)
     {
-        ConsoleRoutingDebugger.LOGGER.information("${nowrap}Relaxed (cost $) $ at end of $", cost, route.last(), simplified(route));
+        LOGGER.information("${nowrap}Relaxed (cost $) $ at end of $", cost, route.last(), simplified(route));
     }
 
     @Override
     public void onSettled(Vertex vertex, Cost cost)
     {
-        ConsoleRoutingDebugger.LOGGER.information("${nowrap}Settled (cost $) $", cost, vertex);
+        LOGGER.information("${nowrap}Settled (cost $) $", cost, vertex);
     }
 
     @Override
     public void onStart(RoutingRequest request)
     {
-        ConsoleRoutingDebugger.LOGGER.information("Starting $ from $ to $", request.description(), request.start(), request.end());
+        LOGGER.information("Starting $ from $ to $", request.description(), request.start(), request.end());
     }
 
     /**
-     * @return True if the given route spans more than one world cell
+     * Returns true if the given route spans more than one world cell
      */
     private boolean oneCell(Route route)
     {

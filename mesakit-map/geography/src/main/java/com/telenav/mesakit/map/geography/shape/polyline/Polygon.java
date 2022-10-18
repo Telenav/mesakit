@@ -246,7 +246,7 @@ public class Polygon extends Polyline implements Shape
     }
 
     /**
-     * @return A list of up to the given maximum number segments intersecting the given bounds
+     * Returns a list of up to the given maximum number segments intersecting the given bounds
      */
     public List<Segment> intersections(Rectangle bounds, Count maximum)
     {
@@ -320,7 +320,7 @@ public class Polygon extends Polyline implements Shape
     }
 
     /**
-     * @return Lazily create the appropriate outline
+     * Returns lazily create the appropriate outline
      */
     public Outline outline()
     {

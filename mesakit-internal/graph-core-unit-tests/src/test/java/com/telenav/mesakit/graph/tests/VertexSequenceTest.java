@@ -40,36 +40,36 @@ public class VertexSequenceTest extends GraphUnitTest
     @Test
     public void test()
     {
-        final Edge edge1 = osmDowntownSeattleTestEdge(6428348000002L);
-        final Edge edge2 = osmDowntownSeattleTestEdge(6428348000003L);
-        final Edge edge3 = osmDowntownSeattleTestEdge(6428348000004L);
+        Edge edge1 = osmDowntownSeattleTestEdge(6428348000002L);
+        Edge edge2 = osmDowntownSeattleTestEdge(6428348000003L);
+        Edge edge3 = osmDowntownSeattleTestEdge(6428348000004L);
 
         // test asRoute, vertex1,2,3,4 are in sequence
-        final Vertex vertex2 = edge1.vertexConnecting(edge2);
-        final Vertex vertex1 = edge1.oppositeVertex(vertex2);
-        final Vertex vertex3 = edge2.vertexConnecting(edge3);
-        final Vertex vertex4 = edge3.oppositeVertex(vertex3);
+        Vertex vertex2 = edge1.vertexConnecting(edge2);
+        Vertex vertex1 = edge1.oppositeVertex(vertex2);
+        Vertex vertex3 = edge2.vertexConnecting(edge3);
+        Vertex vertex4 = edge3.oppositeVertex(vertex3);
 
-        final List<Vertex> vertexes = new ArrayList<>();
+        List<Vertex> vertexes = new ArrayList<>();
         vertexes.add(vertex1);
         vertexes.add(vertex2);
         vertexes.add(vertex3);
         vertexes.add(vertex4);
 
-        final VertexSequence vertexSequence1 = new VertexSequence(vertexes);
-        final Route route1 = vertexSequence1.asRoute();
+        VertexSequence vertexSequence1 = new VertexSequence(vertexes);
+        Route route1 = vertexSequence1.asRoute();
 
         ensureEqual(route1, Route.forEdges(edge1, edge2, edge3));
 
-        final Rectangle rectangle = Rectangle.fromLocations(vertex1.location(),
+        Rectangle rectangle = Rectangle.fromLocations(vertex1.location(),
                 vertex2.location()).expanded(Distance.meters(1));
 
         // vertexSequence2 should have only first two vertexes of vertexSequence1
-        final VertexSequence vertexSequence2 = vertexSequence1.inside(rectangle);
-        final List<Vertex> firstTwoVertexes = new ArrayList<>();
+        VertexSequence vertexSequence2 = vertexSequence1.inside(rectangle);
+        List<Vertex> firstTwoVertexes = new ArrayList<>();
         firstTwoVertexes.add(vertex1);
         firstTwoVertexes.add(vertex2);
-        final VertexSequence vertexSequence3 = new VertexSequence(firstTwoVertexes);
-        ensure(Iterables.equals(vertexSequence2, vertexSequence3));
+        VertexSequence vertexSequence3 = new VertexSequence(firstTwoVertexes);
+        ensure(Iterables.equalIterables(vertexSequence2, vertexSequence3));
     }
 }

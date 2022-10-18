@@ -105,13 +105,13 @@ public class EmptyPbfTagMap extends PbfTagMap
     @Override
     public int valueAsInt(String key)
     {
-        return Ints.INVALID;
+        return Ints.INVALID_INT;
     }
 
     @Override
     public int valueAsNaturalNumber(String key)
     {
-        return Ints.INVALID;
+        return Ints.INVALID_INT;
     }
 
     @Override

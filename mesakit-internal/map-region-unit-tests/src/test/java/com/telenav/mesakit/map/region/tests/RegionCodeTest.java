@@ -45,7 +45,7 @@ public class RegionCodeTest extends RegionUnitTest
     @Test
     public void testHashAndEquals()
     {
-        final Set<RegionCode> codes = new HashSet<>();
+        Set<RegionCode> codes = new HashSet<>();
         var code = code("US-CA-COUNTY_ALAMEDA");
         codes.add(code);
         codes.add(code);

@@ -68,7 +68,7 @@ public class SlippyTile
     public static final DrawingSize STANDARD_TILE_SIZE = DrawingSize.pixels(256, 256);
 
     /**
-     * @return The smallest tile that is larger than the given size
+     * Returns the smallest tile that is larger than the given size
      */
     public static SlippyTile largerThan(Size size)
     {

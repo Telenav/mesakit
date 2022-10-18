@@ -34,12 +34,12 @@ import com.telenav.mesakit.graph.GraphElement;
 public interface GraphElementIdentifier
 {
     /**
-     * @return This graph identifier value as a long
+     * Returns this graph identifier value as a long
      */
     long asLong();
 
     /**
-     * @return The graph element for this graph identifier from the given graph
+     * Returns the graph element for this graph identifier from the given graph
      */
     GraphElement element(Graph graph);
 }

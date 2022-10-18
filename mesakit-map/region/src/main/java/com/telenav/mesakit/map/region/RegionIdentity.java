@@ -23,8 +23,8 @@ import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.telenav.kivakit.core.string.ObjectFormatter;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.ExcludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.IncludeProperty;
 import com.telenav.kivakit.core.locale.LocaleRegion;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
@@ -165,7 +165,7 @@ public class RegionIdentity implements StringFormattable, KryoSerializable
         return Country.forIdentity(this);
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public LocaleRegion countryIsoCode()
     {
         return countryIsoCode;
@@ -176,7 +176,7 @@ public class RegionIdentity implements StringFormattable, KryoSerializable
         return countryOrdinal;
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Country.CountryTmcCode countryTmcCode()
     {
         return countryTmcCode;
@@ -309,7 +309,7 @@ public class RegionIdentity implements StringFormattable, KryoSerializable
         throw new IllegalStateException();
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public final RegionIdentifier identifier()
     {
         return identifier;
@@ -321,67 +321,67 @@ public class RegionIdentity implements StringFormattable, KryoSerializable
         return this;
     }
 
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public boolean isCity()
     {
         return (hasIsoCode() && iso().isCity()) || (hasMesaKitCode() && mesakit().isCity());
     }
 
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public boolean isContinent()
     {
         return (hasIsoCode() && iso().isContinent()) || (hasMesaKitCode() && mesakit().isContinent());
     }
 
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public boolean isCountry()
     {
         return (hasIsoCode() && iso().isCountry()) || (hasMesaKitCode() && mesakit().isCountry());
     }
 
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public boolean isCounty()
     {
         return (hasIsoCode() && iso().isCounty()) || (hasMesaKitCode() && mesakit().isCounty());
     }
 
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public boolean isDistrict()
     {
         return (hasIsoCode() && iso().isDistrict()) || (hasMesaKitCode() && mesakit().isDistrict());
     }
 
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public boolean isMetropolitanArea()
     {
         return (hasIsoCode() && iso().isMetropolitanArea()) || (hasMesaKitCode() && mesakit().isMetropolitanArea());
     }
 
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public boolean isState()
     {
         return (hasIsoCode() && iso().isState()) || (hasMesaKitCode() && mesakit().isState());
     }
 
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public boolean isTimeZone()
     {
         return (hasIsoCode() && iso().isTimeZone()) || (hasMesaKitCode() && mesakit().isTimeZone());
     }
 
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public boolean isValid()
     {
         return hasName() && (hasIsoCode() || hasMesaKitCode() && hasIdentifier());
     }
 
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public boolean isWorld()
     {
         return (hasIsoCode() && iso().isWorld()) || (hasMesaKitCode() && mesakit().isWorld());
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public RegionCode iso()
     {
         return iso;
@@ -395,7 +395,7 @@ public class RegionIdentity implements StringFormattable, KryoSerializable
         return copy;
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public RegionCode mesakit()
     {
         return mesakit;
@@ -406,7 +406,7 @@ public class RegionIdentity implements StringFormattable, KryoSerializable
         return MetropolitanArea.forIdentity(this);
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public String name()
     {
         return name;

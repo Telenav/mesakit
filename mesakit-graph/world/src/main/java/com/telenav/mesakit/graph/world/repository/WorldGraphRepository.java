@@ -62,7 +62,7 @@ public class WorldGraphRepository extends Folder implements Serializable
 
     public static SwitchParser.Builder<WorldGraphRepository> worldGraphRepositorySwitchParser(String description)
     {
-        return SwitchParser.switchParserBuilder(WorldGraphRepository.class).name("world-graph-repository")
+        return SwitchParser.switchParser(WorldGraphRepository.class).name("world-graph-repository")
                 .converter(new Converter(LOGGER)).description(description);
     }
 
@@ -113,7 +113,7 @@ public class WorldGraphRepository extends Folder implements Serializable
     }
 
     /**
-     * @return The world graph folder for the given sub-folder in this repository with the name derived from the given
+     * Returns the world graph folder for the given sub-folder in this repository with the name derived from the given
      * metadata
      */
     public WorldGraphRepositoryFolder folder(FilePath subfolder, Metadata metadata)
@@ -132,7 +132,7 @@ public class WorldGraphRepository extends Folder implements Serializable
     }
 
     /**
-     * @return A temporary grid folder to extract new data to
+     * Returns a temporary grid folder to extract new data to
      */
     public WorldGraphRepositoryFolder temporaryFolder(FilePath subfolder)
     {

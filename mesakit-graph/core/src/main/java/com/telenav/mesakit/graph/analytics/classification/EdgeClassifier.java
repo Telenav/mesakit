@@ -30,7 +30,7 @@ import com.telenav.mesakit.graph.Edge;
 public interface EdgeClassifier
 {
     /**
-     * @return True if the given edge is accepted in some classification scheme
+     * Returns true if the given edge is accepted in some classification scheme
      */
     boolean accept(Edge edge);
 }

@@ -93,7 +93,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
 
         serializedWorldGraphRepository = folder.repository().path().toString();
         serializedPath = folder.path().toString().substring(serializedWorldGraphRepository.length());
-        serializedPath = Strip.ending(serializedPath, ".world");
+        serializedPath = Strip.stripEnding(serializedPath, ".world");
 
         ensure(folder.isLocal());
 
@@ -123,7 +123,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
     }
 
     /**
-     * @return Loads the world graph referred to by this reference (if it is not already loaded) and returns it
+     * Returns loads the world graph referred to by this reference (if it is not already loaded) and returns it
      */
     @Override
     public WorldGraph get()
@@ -140,7 +140,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
                 if (graph == null)
                 {
                     // install the deployment in case it wasn't installed yet,
-                    SettingsRegistry.global().registerSettingsIn(new WorldGraphDeployments(LOGGER).deployment(deployment.name()));
+                    SettingsRegistry.globalSettings().registerSettingsIn(new WorldGraphDeployments(LOGGER).deployment(deployment.name()));
 
                     // create the world graph,
                     graph = LOGGER.listenTo(WorldGraph.load(folder()));
@@ -186,7 +186,7 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
     }
 
     /**
-     * @return A reference to a cell within the world graph referred to by this reference object
+     * Returns a reference to a cell within the world graph referred to by this reference object
      */
     public WorldCellReference worldCellSource(GridCell gridCell)
     {

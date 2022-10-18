@@ -48,7 +48,7 @@ public enum RoadType implements LongValued
     NULL(31);
 
     /**
-     * @return The road type for the given identifier
+     * Returns the road type for the given identifier
      */
     public static RoadType forIdentifier(int identifier)
     {
@@ -108,7 +108,7 @@ public enum RoadType implements LongValued
     }
 
     /**
-     * @return The identifier for the given road type or NULL.identifier if the type is null
+     * Returns the identifier for the given road type or NULL.identifier if the type is null
      */
     public static int identifierFor(RoadType type)
     {

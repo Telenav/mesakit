@@ -53,9 +53,9 @@ import java.util.Arrays;
 
     private final double[] m;
 
-    public MultiPatchShape(final ShapeHeader shapeHeader,
-                           final ShapeType shapeType, final InputStream is,
-                           final ValidationPreferences rules) throws IOException,
+    public MultiPatchShape(ShapeHeader shapeHeader,
+                           ShapeType shapeType, InputStream is,
+                           ValidationPreferences rules) throws IOException,
             InvalidShapeFileException
     {
 
@@ -204,7 +204,7 @@ import java.util.Arrays;
     }
 
     @SuppressWarnings("DuplicatedCode")
-    public double[] getMOfPart(final int i)
+    public double[] getMOfPart(int i)
     {
         if (i < 0 || i >= this.numberOfParts)
         {
@@ -278,7 +278,7 @@ import java.util.Arrays;
     }
 
     @SuppressWarnings("DuplicatedCode")
-    public PointData[] getPointsOfPart(final int i)
+    public PointData[] getPointsOfPart(int i)
     {
         if (i < 0 || i >= this.numberOfParts)
         {
@@ -312,7 +312,7 @@ import java.util.Arrays;
     }
 
     @SuppressWarnings("DuplicatedCode")
-    public double[] getZOfPart(final int i)
+    public double[] getZOfPart(int i)
     {
         if (i < 0 || i >= this.numberOfParts)
         {

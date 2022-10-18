@@ -89,7 +89,7 @@ public class AttributeList implements Iterable<Attribute<?>>
     }
 
     /**
-     * @return The attributes, sorted alphabetically
+     * Returns the attributes, sorted alphabetically
      */
     public synchronized ObjectList<Attribute<?>> attributes()
     {

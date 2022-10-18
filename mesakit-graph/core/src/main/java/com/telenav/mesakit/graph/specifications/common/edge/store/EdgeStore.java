@@ -38,7 +38,7 @@ import com.telenav.kivakit.primitive.collections.map.multi.dynamic.LongToIntMult
 import com.telenav.kivakit.primitive.collections.map.scalars.IntToByteMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.LongToIntMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.fixed.LongToLongFixedMultiMap;
-import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.resource.compression.archive.ArchivedField;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.kivakit.validation.Validatable;
 import com.telenav.kivakit.validation.ValidationType;
@@ -327,13 +327,13 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
                     .initialChildSize(GraphLimits.Estimated.RELATIONS_PER_EDGE)
                     .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray boundsBottomLeft;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray boundsTopRight;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray bridgeType;
 
     /** Used by tests */
@@ -343,37 +343,37 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
      * The number of edges in this graph (this is different from edgeIndex because edge count reflects two-way edges,
      * while edge index does not)
      */
-    @KivaKitArchivedField
+    @ArchivedField
     private int count;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray country;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray freeFlowSpeedCategory;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray fromNodeIdentifier;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitIntArray fromVertexIdentifier;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray hovLaneCount;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private IntToByteMap isClosedToThroughTraffic;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private IntToByteMap isTollRoad;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private IntToByteMap isUnderConstruction;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray laneCount;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitIntArray lengthInMillimeters;
 
     /** True if merging edges into this store */
@@ -382,35 +382,35 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     /** Next relation identifier */
     private RelationIdentifier nextRelationIdentifier = new RelationIdentifier(1_000_000_000);
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray roadFunctionalClass;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private RoadNameStore roadName;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPolylineStore roadShape;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private ByteArray roadState;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray roadSubType;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray roadSurface;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray roadType;
 
     /** A spatial index for the edges in this graph */
-    @KivaKitArchivedField(lazy = true)
+    @ArchivedField(lazy = true)
     private CompressedEdgeSpatialIndex spatialIndex;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitByteArray speedLimit;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitIntArray speedPatternIdentifier;
 
     /** Edges that are clean cut by location */
@@ -420,16 +420,16 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
 
     private LongToIntMap temporaryWayIdentifierToRelationIndex;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray toNodeIdentifier;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitIntArray toVertexIdentifier;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private LongToIntMultiMap wayIdentifierToEdgeIndex;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private LongToLongFixedMultiMap wayIdentifierToRelationIdentifiers;
 
     protected EdgeStore(Graph graph)
@@ -475,7 +475,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return True if this store contains the given edge
+     * Returns true if this store contains the given edge
      */
     public boolean contains(Edge edge)
     {
@@ -483,7 +483,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return True if this store contains the given edge identifier
+     * Returns true if this store contains the given edge identifier
      */
     public boolean contains(EdgeIdentifier identifier)
     {
@@ -491,7 +491,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return True if this store contains the given way identifier
+     * Returns true if this store contains the given way identifier
      */
     public boolean contains(PbfWayIdentifier identifier)
     {
@@ -529,7 +529,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The number of directional edges in this store
+     * Returns the number of directional edges in this store
      */
     @Override
     public int count()
@@ -538,7 +538,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The edge for the given index. If the index is negative, then the reverse edge is returned.
+     * Returns the edge for the given index. If the index is negative, then the reverse edge is returned.
      */
     public Edge edgeForIndex(int index)
     {
@@ -553,7 +553,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The sequence of all edges in this graph
+     * Returns the sequence of all edges in this graph
      */
     public EdgeSequence edges()
     {
@@ -562,7 +562,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The sequence of all forward edges in this graph. This sequence does not include reverse edges.
+     * Returns the sequence of all forward edges in this graph. This sequence does not include reverse edges.
      */
     public EdgeSequence forwardEdges()
     {
@@ -655,7 +655,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The bounds of the given edge
+     * Returns the bounds of the given edge
      */
     public final Rectangle retrieveBounds(Edge edge)
     {
@@ -669,7 +669,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The bridge type for the given edge
+     * Returns the bridge type for the given edge
      */
     public final BridgeType retrieveBridgeType(Edge edge)
     {
@@ -677,7 +677,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The country for the given edge, as determined by the 'from' vertex.
+     * Returns the country for the given edge, as determined by the 'from' vertex.
      */
     public final Country retrieveCountry(Edge edge)
     {
@@ -695,15 +695,15 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The number of non-directional forward edges
+     * Returns the number of non-directional forward edges
      */
     public Count retrieveForwardEdgeCount()
     {
-        return Count.count(super.size());
+        return Count.count(size());
     }
 
     /**
-     * @return Free flow for the edge
+     * Returns free flow for the edge
      * @see SpeedCategory
      */
     public final SpeedCategory retrieveFreeFlow(Edge edge)
@@ -716,7 +716,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The node identifier of the 'from' vertex
+     * Returns the node identifier of the 'from' vertex
      */
     public final MapNodeIdentifier retrieveFromNodeIdentifier(Edge edge)
     {
@@ -731,7 +731,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The vertex identifier of the 'from' vertex
+     * Returns the vertex identifier of the 'from' vertex
      */
     public final int retrieveFromVertexIdentifier(Edge edge)
     {
@@ -754,7 +754,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The number of HOV lanes for the given edge
+     * Returns the number of HOV lanes for the given edge
      */
     public final Count retrieveHovLaneCount(Edge edge)
     {
@@ -762,7 +762,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return True if the edge is closed to through traffic
+     * Returns true if the edge is closed to through traffic
      */
     public final boolean retrieveIsClosedToThroughTraffic(Edge edge)
     {
@@ -770,7 +770,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return True if the given edge is on a toll road
+     * Returns true if the given edge is on a toll road
      */
     public final boolean retrieveIsTollRoad(Edge edge)
     {
@@ -778,7 +778,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return True if the given edge is under construction
+     * Returns true if the given edge is under construction
      */
     public final boolean retrieveIsUnderConstruction(Edge edge)
     {
@@ -786,7 +786,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The number of lanes for the given edge
+     * Returns the number of lanes for the given edge
      */
     public final Count retrieveLaneCount(Edge edge)
     {
@@ -794,7 +794,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The length of the given edge as a unit-less {@link Distance} value
+     * Returns the length of the given edge as a unit-less {@link Distance} value
      */
     public final long retrieveLengthInMillimeters(Edge edge)
     {
@@ -811,7 +811,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The relations for which the given edge is a member
+     * Returns the relations for which the given edge is a member
      * @see EdgeRelation
      */
     public final Set<EdgeRelation> retrieveRelations(Edge edge)
@@ -837,7 +837,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The functional class of the given edge
+     * Returns the functional class of the given edge
      * @see RoadFunctionalClass
      */
     public final RoadFunctionalClass retrieveRoadFunctionalClass(Edge edge)
@@ -875,7 +875,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The shape of the given edge as a {@link Polyline}, or null if the road is segmental
+     * Returns the shape of the given edge as a {@link Polyline}, or null if the road is segmental
      */
     public final Polyline retrieveRoadShape(Edge edge)
     {
@@ -884,7 +884,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The state of the given road among {@link RoadState#ONE_WAY}, {@link RoadState#TWO_WAY} and
+     * Returns the state of the given road among {@link RoadState#ONE_WAY}, {@link RoadState#TWO_WAY} and
      * {@link RoadState#CLOSED}
      */
     public final RoadState retrieveRoadState(Edge edge)
@@ -897,7 +897,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The road subtype, for example, a main road, a ramp or a bridge.
+     * Returns the road subtype, for example, a main road, a ramp or a bridge.
      * @see RoadSubType
      */
     public final RoadSubType retrieveRoadSubType(Edge edge)
@@ -906,7 +906,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The road surface, among paved, unpaved and poor condition
+     * Returns the road surface, among paved, unpaved and poor condition
      * @see RoadSurface
      */
     public final RoadSurface retrieveRoadSurface(Edge edge)
@@ -915,7 +915,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The type of road, for example a highway, local road or freeway
+     * Returns the type of road, for example a highway, local road or freeway
      */
     public final RoadType retrieveRoadType(Edge edge)
     {
@@ -927,7 +927,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The sequence of edges that correspond to the given way identifier
+     * Returns the sequence of edges that correspond to the given way identifier
      */
     @SuppressWarnings("StatementWithEmptyBody")
     public Route retrieveRouteForWayIdentifier(MapWayIdentifier wayIdentifier)
@@ -960,7 +960,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The speed limit along the given edge
+     * Returns the speed limit along the given edge
      */
     public final Speed retrieveSpeedLimit(Edge edge)
     {
@@ -978,7 +978,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The node identifier of the "to" vertex of the edge
+     * Returns the node identifier of the "to" vertex of the edge
      */
     public final MapNodeIdentifier retrieveToNodeIdentifier(Edge edge)
     {
@@ -993,7 +993,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The identifier of the "to" vertex of the edge
+     * Returns the identifier of the "to" vertex of the edge
      */
     public final int retrieveToVertexIdentifier(Edge edge)
     {
@@ -1016,7 +1016,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return The edge spatial index either created freshly, or loaded from any {@link GraphArchive} attached to this
+     * Returns the edge spatial index either created freshly, or loaded from any {@link GraphArchive} attached to this
      * store (by virtue of the store being loaded from a graph file)
      */
     public synchronized RTreeSpatialIndex<Edge> spatialIndex()
@@ -1607,7 +1607,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return True if the edge at the given index is two-way
+     * Returns true if the edge at the given index is two-way
      */
     private boolean isOneWay(int index)
     {
@@ -1619,7 +1619,7 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
     }
 
     /**
-     * @return True if the edge at the given index is two-way
+     * Returns true if the edge at the given index is two-way
      */
     private boolean isTwoWay(int index)
     {

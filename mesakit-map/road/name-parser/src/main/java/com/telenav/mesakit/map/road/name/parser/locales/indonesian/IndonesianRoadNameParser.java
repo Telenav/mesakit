@@ -245,7 +245,7 @@ import static com.telenav.mesakit.map.road.name.parser.ParsedRoadName.DirectionF
     }
 
     /**
-     * @return True if there should be a space between the given tokens
+     * Returns true if there should be a space between the given tokens
      */
     private boolean space(Token previous, Token token)
     {

@@ -76,7 +76,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return The angle between the headings of the two edges in this pair using the given {@link Chirality}, whether
+     * Returns the angle between the headings of the two edges in this pair using the given {@link Chirality}, whether
      * the edges are connected or not.
      */
     public Angle angleBetween(Chirality chirality)
@@ -85,7 +85,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return This pair as a connected route of two edges
+     * Returns this pair as a connected route of two edges
      */
     public Route asRoute()
     {
@@ -93,7 +93,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return The average heading of the two edges in this pair
+     * Returns the average heading of the two edges in this pair
      */
     public Heading averageHeading(Chirality chirality)
     {
@@ -101,7 +101,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return The smallest rectangle that contains both edges in this pair
+     * Returns the smallest rectangle that contains both edges in this pair
      */
     @Override
     public Rectangle bounds()
@@ -110,7 +110,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return The percentage in which the two edges are close to one another given distance and angle constraints
+     * Returns the percentage in which the two edges are close to one another given distance and angle constraints
      */
     public Percent closeness(Distance maximumSeparation, Angle maximumHeadingDeviation)
     {
@@ -121,7 +121,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return The vertex connecting the two edges (or null if they are not connected)
+     * Returns the vertex connecting the two edges (or null if they are not connected)
      */
     public Vertex connectingVertex()
     {
@@ -129,7 +129,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return True if this pair contains the given edge
+     * Returns true if this pair contains the given edge
      */
     public boolean contains(Edge edge)
     {
@@ -151,7 +151,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return The first edge in this pair
+     * Returns the first edge in this pair
      */
     public Edge first()
     {
@@ -168,7 +168,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return True if the two edges in this pair are connected
+     * Returns true if the two edges in this pair are connected
      */
     public boolean isConnected()
     {
@@ -176,7 +176,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return True if this edge pair is connected within a given distance limit along some non-branching route
+     * Returns true if this edge pair is connected within a given distance limit along some non-branching route
      */
     public boolean isConnectedByRoute(Navigator navigator, Distance within)
     {
@@ -187,7 +187,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return True if the two edges are connected in the same direction, so you can go from the first edge to the
+     * Returns true if the two edges are connected in the same direction, so you can go from the first edge to the
      * second edge or from the second edge to the first edge.
      */
     public boolean isConnectedInSameDirection()
@@ -196,7 +196,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return True if this pair of edges forms a double-digitized pair
+     * Returns true if this pair of edges forms a double-digitized pair
      */
     public boolean isDoubleDigitized()
     {
@@ -204,7 +204,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return True if this pair of edges forms a double-digitized pair
+     * Returns true if this pair of edges forms a double-digitized pair
      */
     public boolean isDoubleDigitized(DoubleDigitizedType type, Angle maximumHeadingDeviation)
     {
@@ -239,7 +239,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return True if the edges overlap, meaning that the perpendicular drawn from at least one segment of the road
+     * Returns true if the edges overlap, meaning that the perpendicular drawn from at least one segment of the road
      * shape for one edge intersects a segment from the road shape for the other edge.
      */
     public boolean isOverlapping()
@@ -253,7 +253,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return True if the two edges in this pair are parallel
+     * Returns true if the two edges in this pair are parallel
      */
     public boolean isParallel()
     {
@@ -261,7 +261,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return True if the two edges in this pair are parallel
+     * Returns true if the two edges in this pair are parallel
      */
     public boolean isParallel(Angle tolerance)
     {
@@ -269,7 +269,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return True if the two edges in this pair are perpendicular
+     * Returns true if the two edges in this pair are perpendicular
      */
     public boolean isPerpendicular()
     {
@@ -277,7 +277,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return True if the two edges in this pair are perpendicular
+     * Returns true if the two edges in this pair are perpendicular
      */
     public boolean isPerpendicular(Angle tolerance)
     {
@@ -285,7 +285,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return True if the edges in this pair are on the same logical road (not considering direction modifiers like N,
+     * Returns true if the edges in this pair are on the same logical road (not considering direction modifiers like N,
      * SW or Eastbound)
      */
     public boolean isSameRoad()
@@ -300,7 +300,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return True if the edge pair form an angle that is straight within a tolerance of 45 degrees
+     * Returns true if the edge pair form an angle that is straight within a tolerance of 45 degrees
      */
     public boolean isStraight()
     {
@@ -308,7 +308,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return True if the edge pair form an angle that is straight within the given amount of tolerance
+     * Returns true if the edge pair form an angle that is straight within the given amount of tolerance
      */
     public boolean isStraight(Angle tolerance)
     {
@@ -349,7 +349,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return The second edge in this pair
+     * Returns the second edge in this pair
      */
     public Edge second()
     {
@@ -357,7 +357,7 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     }
 
     /**
-     * @return The smallest angle formed by the two given edges. This value can never be greater than 90 degrees (if it
+     * Returns the smallest angle formed by the two given edges. This value can never be greater than 90 degrees (if it
      * were 91 degrees, the complementary angle of 89 degrees would be smaller)
      */
     public Angle smallestAngleBetween()

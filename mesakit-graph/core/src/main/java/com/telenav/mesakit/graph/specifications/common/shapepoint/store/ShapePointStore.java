@@ -20,7 +20,7 @@ package com.telenav.mesakit.graph.specifications.common.shapepoint.store;
 
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.primitive.collections.map.scalars.LongToIntMap;
-import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.resource.compression.archive.ArchivedField;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.ShapePoint;
 import com.telenav.mesakit.graph.metadata.DataSpecification;
@@ -32,7 +32,7 @@ import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 public class ShapePointStore extends NodeStore<ShapePoint>
 {
     /** A reverse map from shape point identifier back to shape point index */
-    @KivaKitArchivedField
+    @ArchivedField
     @SuppressWarnings({ "FieldCanBeLocal" })
     private LongToIntMap shapePointIdentifierToShapePointIndex;
 
@@ -42,7 +42,7 @@ public class ShapePointStore extends NodeStore<ShapePoint>
     }
 
     /**
-     * @return Any shape point associated with the given location
+     * Returns any shape point associated with the given location
      */
     public ShapePoint forLocation(Location location)
     {

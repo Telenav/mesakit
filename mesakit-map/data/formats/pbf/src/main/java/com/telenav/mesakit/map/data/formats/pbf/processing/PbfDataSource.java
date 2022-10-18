@@ -54,7 +54,7 @@ public interface PbfDataSource extends Resourceful, Broadcaster
     void expectedWays(Count ways);
 
     /**
-     * @return The metadata record of this PBF data source
+     * Returns the metadata record of this PBF data source
      */
     default Map<String, String> metadata()
     {
@@ -80,7 +80,7 @@ public interface PbfDataSource extends Resourceful, Broadcaster
     }
 
     /**
-     * @return The number of nodes in this data source
+     * Returns the number of nodes in this data source
      */
     Count nodes();
 
@@ -130,12 +130,12 @@ public interface PbfDataSource extends Resourceful, Broadcaster
     }
 
     /**
-     * @return The number of relations in this data source
+     * Returns the number of relations in this data source
      */
     Count relations();
 
     /**
-     * @return The number of ways in this data source
+     * Returns the number of ways in this data source
      */
     Count ways();
 }

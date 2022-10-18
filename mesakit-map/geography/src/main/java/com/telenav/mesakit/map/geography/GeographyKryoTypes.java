@@ -19,10 +19,6 @@
 package com.telenav.mesakit.map.geography;
 
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
-import com.telenav.mesakit.map.geography.Latitude;
-import com.telenav.mesakit.map.geography.Location;
-import com.telenav.mesakit.map.geography.Longitude;
-import com.telenav.mesakit.map.geography.Precision;
 import com.telenav.mesakit.map.geography.indexing.polygon.Leaf;
 import com.telenav.mesakit.map.geography.indexing.polygon.LocationArray;
 import com.telenav.mesakit.map.geography.indexing.polygon.PolygonSpatialIndex;

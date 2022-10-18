@@ -113,7 +113,7 @@ import com.telenav.mesakit.map.road.name.parser.tokenizer.Token;
     {
         if (lookingAt(TOKENIZER.STATE_ROUTE))
         {
-            var state = Strip.trailing(current().text().trim(), "-");
+            var state = Strip.stripTrailing(current().text().trim(), "-");
             next();
             skipAny(TOKENIZER.WHITESPACE);
             if (lookingAt(TOKENIZER.DASH))
@@ -133,7 +133,7 @@ import com.telenav.mesakit.map.road.name.parser.tokenizer.Token;
     }
 
     /**
-     * @return True if there should be a space between the given tokens
+     * Returns true if there should be a space between the given tokens
      */
     @SuppressWarnings("RedundantIfStatement")
     private boolean space(Token previous, Token token)

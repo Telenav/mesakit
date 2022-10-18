@@ -44,13 +44,13 @@ public class GridCellIdentifier implements StringFormattable
     public GridCellIdentifier(Grid grid, int identifier)
     {
         this.identifier = identifier;
-        latitudeIndex = Ints.high(identifier);
-        longitudeIndex = Ints.low(identifier);
+        latitudeIndex = Ints.intHighWord(identifier);
+        longitudeIndex = Ints.intLowWord(identifier);
     }
 
     public GridCellIdentifier(Grid grid, int latitudeIndex, int longitudeIndex)
     {
-        identifier = Ints.forHighLow(latitudeIndex, longitudeIndex);
+        identifier = Ints.intForWords(latitudeIndex, longitudeIndex);
         this.longitudeIndex = longitudeIndex;
         this.latitudeIndex = latitudeIndex;
     }

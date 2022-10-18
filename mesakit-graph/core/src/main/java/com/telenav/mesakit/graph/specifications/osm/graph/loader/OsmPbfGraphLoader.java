@@ -151,7 +151,7 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
 
                 // load vertex tags while we still have the location -> vertex map available,
                 var vertexStore = store.vertexStore();
-                vertexStore.postCommit(() -> vertexStore.loadVertexTags(dataSourceFactory().newInstance(destination.metadata()), tagFilter));
+                vertexStore.postCommit(() -> vertexStore.loadVertexTags(dataSourceFactory().map(destination.metadata()), tagFilter));
 
                 // and return information about what we loaded.
                 return metadata.withName(graphName);

@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.graph.specifications.common.shapepoint;
 
-import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.ExcludeProperty;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.ShapePoint;
 import com.telenav.mesakit.map.data.formats.pbf.model.tags.PbfTagList;
@@ -38,7 +38,7 @@ public class HeavyWeightShapePoint extends ShapePoint
     }
 
     @Override
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public int index()
     {
         return index;

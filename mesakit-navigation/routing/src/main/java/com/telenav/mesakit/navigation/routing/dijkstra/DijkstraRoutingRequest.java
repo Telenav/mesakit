@@ -77,7 +77,7 @@ public class DijkstraRoutingRequest extends RoutingRequest
     public RoutingResponse done(Route route)
     {
         var response = new RoutingResponse(route, elapsed());
-        super.onEndRouting(response);
+        onEndRouting(response);
         return response;
     }
 
@@ -93,7 +93,7 @@ public class DijkstraRoutingRequest extends RoutingRequest
     }
 
     /**
-     * @return Information about the meeting point if this routing request has reached a vertex already settled by that
+     * Returns information about the meeting point if this routing request has reached a vertex already settled by that
      * routing request. This is used by the {@link BiDijkstraRouter} to determine when the forward and backward routing
      * requests have met.
      */

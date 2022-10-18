@@ -256,18 +256,18 @@ public class PbfTagCodecBuilder
     @SuppressWarnings("UseOfSystemOutOrSystemErr")
     public void output()
     {
-        System.out.println(AsciiArt.box("The properties files output by this program can be be read by a PbfStringListTagCodec.\n"
+        System.out.println(AsciiArt.textBox("The properties files output by this program can be be read by a PbfStringListTagCodec.\n"
                 + "See OsmDataSpecification for an example."));
         System.out.println();
 
-        System.out.println(AsciiArt.box("Key Character Codec"));
+        System.out.println(AsciiArt.textBox("Key Character Codec"));
         System.out.println(keyCharacterCodec);
-        System.out.println(AsciiArt.box("Value Character Codec"));
+        System.out.println(AsciiArt.textBox("Value Character Codec"));
         System.out.println(valueCharacterCodec);
 
-        System.out.println(AsciiArt.box("Key String Codec"));
+        System.out.println(AsciiArt.textBox("Key String Codec"));
         System.out.println(keyStringCodec);
-        System.out.println(AsciiArt.box("Value String Codec"));
+        System.out.println(AsciiArt.textBox("Value String Codec"));
         System.out.println(valueStringCodec);
 
         keyCharacterCodec.asProperties().save(File.parseFile(consoleListener(), "default-key-character.codec"), keyCharacterCodec.toString());

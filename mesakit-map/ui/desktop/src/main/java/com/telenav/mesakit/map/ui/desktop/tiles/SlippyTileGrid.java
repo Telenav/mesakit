@@ -101,7 +101,7 @@ public class SlippyTileGrid extends BaseRepeater implements Iterable<SlippyTile>
     }
 
     /**
-     * @return True if this grid contains the given tile
+     * Returns true if this grid contains the given tile
      */
     public boolean contains(SlippyTile tile)
     {
@@ -134,7 +134,7 @@ public class SlippyTileGrid extends BaseRepeater implements Iterable<SlippyTile>
     }
 
     /**
-     * @return The number of tiles in this grid
+     * Returns the number of tiles in this grid
      */
     public int size()
     {
@@ -142,7 +142,7 @@ public class SlippyTileGrid extends BaseRepeater implements Iterable<SlippyTile>
     }
 
     /**
-     * @return The zoom level of tiles in this grid
+     * Returns the zoom level of tiles in this grid
      */
     public ZoomLevel zoomLevel()
     {

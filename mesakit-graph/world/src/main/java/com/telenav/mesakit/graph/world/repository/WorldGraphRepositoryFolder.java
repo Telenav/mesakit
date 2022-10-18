@@ -62,14 +62,14 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
 
     /** A switch parser to select an existing world graph folder */
     public static SwitchParser.Builder<WorldGraphRepositoryFolder> SWITCH_PARSER_EXISTING =
-            SwitchParser.switchParserBuilder(WorldGraphRepositoryFolder.class)
+            SwitchParser.switchParser(WorldGraphRepositoryFolder.class)
                     .name("world-graph-folder")
                     .converter(new Converter(LOGGER, Check.EXISTS))
                     .description("Full path to world graph data folder");
 
     /** A switch parser to select a non-existing world graph folder */
     public static SwitchParser.Builder<WorldGraphRepositoryFolder> SWITCH_PARSER_NON_EXISTING =
-            SwitchParser.switchParserBuilder(WorldGraphRepositoryFolder.class)
+            SwitchParser.switchParser(WorldGraphRepositoryFolder.class)
                     .name("world-graph-folder")
                     .converter(new Converter(LOGGER, Check.IS_VALID))
                     .description("Full path to world graph data folder");
@@ -78,7 +78,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
     public static final Extension WORLD = Extension.parseExtension(LOGGER, ".world");
 
     /**
-     * @return A {@link Problem} message detailing the problem if the given folder doesn't exist or is not of the
+     * Returns a {@link Problem} message detailing the problem if the given folder doesn't exist or is not of the
      * correct form, otherwise {@link StepSuccess}.
      */
     public static Message check(Folder folder, Check check)
@@ -101,7 +101,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
                 return new Problem("World graph $ does not end in .world", folder);
             }
         }
-        return StepSuccess.INSTANCE;
+        return new StepSuccess();
     }
 
     /**
@@ -190,7 +190,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
     }
 
     /**
-     * @return True if this is a temporary folder (during extraction of a new world graph)
+     * Returns true if this is a temporary folder (during extraction of a new world graph)
      */
     public boolean isTemporary()
     {
@@ -204,7 +204,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
     }
 
     /**
-     * @return The repository where this world graph folder resides
+     * Returns the repository where this world graph folder resides
      */
     public WorldGraphRepository repository()
     {

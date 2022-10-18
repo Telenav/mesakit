@@ -38,7 +38,7 @@ public class BiDijkstraRouter extends BaseRouter
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    public static final Debug DEBUG = new Debug(BiDijkstraRouter.LOGGER);
+    public static final Debug DEBUG = new Debug(LOGGER);
 
     /** The cost function for routing */
     private final CostFunction costFunction;

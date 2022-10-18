@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.specifications.osm.graph.edge.store;
 import com.telenav.kivakit.core.value.count.BitCount;
 import com.telenav.kivakit.primitive.collections.array.packed.SplitPackedArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
-import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.resource.compression.archive.ArchivedField;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
@@ -47,7 +47,7 @@ import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimi
 @SuppressWarnings({ "unused" })
 public final class OsmEdgeStore extends EdgeStore
 {
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitPackedArray isDoubleDigitized;
 
     private final AttributeReference<SplitPackedArray> IS_DOUBLE_DIGITIZED =
@@ -76,7 +76,7 @@ public final class OsmEdgeStore extends EdgeStore
                     () -> (SplitLongArray) new SplitLongArray("rawIdentifier")
                             .initialSize(estimatedElements()));
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray rawIdentifier;
 
     public OsmEdgeStore(Graph graph)

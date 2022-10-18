@@ -76,7 +76,7 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
     }
 
     /**
-     * @return This relation sequence as a list
+     * Returns this relation sequence as a list
      */
     public List<EdgeRelation> asList()
     {
@@ -89,7 +89,7 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
     }
 
     /**
-     * @return This relation sequence as a route. If the relation sequence doesn't form a valid route, an exception will
+     * Returns this relation sequence as a route. If the relation sequence doesn't form a valid route, an exception will
      * be thrown.
      */
     public Route asRoute()
@@ -98,7 +98,7 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
     }
 
     /**
-     * @return This sequence as an {@link RelationSet}
+     * Returns this sequence as an {@link RelationSet}
      */
     public RelationSet asSet(Maximum maximum)
     {
@@ -106,7 +106,7 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
     }
 
     /**
-     * @return The bounding rectangle for this sequence of relations
+     * Returns the bounding rectangle for this sequence of relations
      */
     @Override
     public Rectangle bounds()
@@ -119,7 +119,7 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
     }
 
     /**
-     * @return The number of relations in this sequence
+     * Returns the number of relations in this sequence
      */
     public Count count()
     {
@@ -136,7 +136,7 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
     }
 
     /**
-     * @return The relations in this sequence within the given bounds
+     * Returns the relations in this sequence within the given bounds
      */
     public RelationSequence intersecting(Rectangle bounds)
     {
@@ -153,7 +153,7 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
     }
 
     /**
-     * @return The sequence of relations matching the given graph constraints
+     * Returns the sequence of relations matching the given graph constraints
      */
     public RelationSequence matching(GraphConstraints constraints)
     {
@@ -161,7 +161,7 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
     }
 
     /**
-     * @return The relations in this sequence that match the given matcher
+     * Returns the relations in this sequence that match the given matcher
      */
     public RelationSequence matching(Matcher<EdgeRelation> matcher)
     {
@@ -193,7 +193,7 @@ public class RelationSequence implements Iterable<EdgeRelation>, Bounded
     }
 
     /**
-     * @return The relations in this sequence within the given bounds
+     * Returns the relations in this sequence within the given bounds
      */
     public RelationSequence within(Rectangle bounds)
     {

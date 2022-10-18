@@ -25,7 +25,7 @@ public class Attribute extends Node implements ValueExpression
     }
 
     /**
-     * @return The value extracted from the edge on top of the stack
+     * Returns the value extracted from the edge on top of the stack
      */
     @Override
     public Value evaluate()

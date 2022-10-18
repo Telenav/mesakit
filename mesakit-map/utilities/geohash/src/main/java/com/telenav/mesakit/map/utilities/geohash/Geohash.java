@@ -91,7 +91,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
     }
 
     /**
-     * @return This geohash's children, or an empty collection if this geohash is at the maximum allowed depth
+     * Returns this geohash's children, or an empty collection if this geohash is at the maximum allowed depth
      */
     public Collection<Geohash> children()
     {

@@ -71,7 +71,7 @@ public class ShapePoint extends GraphNode
     }
 
     /**
-     * @return The location of this shape point
+     * Returns the location of this shape point
      */
     @Override
     public Location location()
@@ -92,7 +92,7 @@ public class ShapePoint extends GraphNode
     }
 
     /**
-     * @return The properties of this element from its {@link DataSpecification},
+     * Returns the properties of this element from its {@link DataSpecification},
      * @see GraphElementPropertySet
      * @see StringFormattable
      * @see AsIndentedString
@@ -104,7 +104,7 @@ public class ShapePoint extends GraphNode
     }
 
     /**
-     * @return The graph store for this shape point
+     * Returns the graph store for this shape point
      */
     @Override
     public final ShapePointStore store()

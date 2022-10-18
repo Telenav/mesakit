@@ -118,24 +118,24 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
 
     private static final Set<String> ignoreHighwayTypes = new HashSet<>();
 
-    private static final Debug DEBUG = new Debug(RawPbfGraphLoader.LOGGER);
+    private static final Debug DEBUG = new Debug(LOGGER);
 
     static
     {
-        RawPbfGraphLoader.ignoreHighwayTypes.add("abandoned");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("raceway");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("dismantled");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("disused");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("escape");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("planned");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("razed");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("platform");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("bus_stop");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("corridor");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("elevator");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("crossing");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("yes");
-        RawPbfGraphLoader.ignoreHighwayTypes.add("dummy");
+        ignoreHighwayTypes.add("abandoned");
+        ignoreHighwayTypes.add("raceway");
+        ignoreHighwayTypes.add("dismantled");
+        ignoreHighwayTypes.add("disused");
+        ignoreHighwayTypes.add("escape");
+        ignoreHighwayTypes.add("planned");
+        ignoreHighwayTypes.add("razed");
+        ignoreHighwayTypes.add("platform");
+        ignoreHighwayTypes.add("bus_stop");
+        ignoreHighwayTypes.add("corridor");
+        ignoreHighwayTypes.add("elevator");
+        ignoreHighwayTypes.add("crossing");
+        ignoreHighwayTypes.add("yes");
+        ignoreHighwayTypes.add("dummy");
     }
 
     protected enum ProcessingDirective
@@ -416,7 +416,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         var discardedWays = new MutableCount();
         var discardedRelations = new MutableCount();
 
-        var dataSource = dataSourceFactory().newInstance(metadata);
+        var dataSource = dataSourceFactory().map(metadata);
         metadata.configure(dataSource);
         dataSource.process(new PbfDataProcessor()
         {
@@ -624,18 +624,18 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     }
 
     /**
-     * @return True if the given node should be processed
+     * Returns true if the given node should be processed
      */
     @SuppressWarnings({ "SameReturnValue" })
     protected abstract ProcessingDirective onProcessingNode(GraphStore store, PbfNode node);
 
     /**
-     * @return True if the given relation should be processed
+     * Returns true if the given relation should be processed
      */
     protected abstract ProcessingDirective onProcessingRelation(GraphStore store, PbfRelation relation);
 
     /**
-     * @return True if the given way should be processed
+     * Returns true if the given way should be processed
      */
     protected abstract ProcessingDirective onProcessingWay(GraphStore store, PbfWay way);
 
@@ -682,7 +682,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
         if (ref != null && network != null)
         {
             var name = network.replaceAll("\\w+:", "") + "-" + ref;
-            if (!Strings.isEmpty(name))
+            if (!Strings.isNullOrBlank(name))
             {
                 store.edgeStore().storeRoadName(edge, RoadName.Type.ROUTE, RoadName.forName(name));
             }
@@ -690,7 +690,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     }
 
     /**
-     * @return A single chunk for the given way
+     * Returns a single chunk for the given way
      */
     private WayChunk chunk(GraphStore store, PbfWay way)
     {
@@ -731,7 +731,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                 }
                 else
                 {
-                    RawPbfGraphLoader.DEBUG.trace("Discarding $ because node ${long} has no location", way, node.getNodeId());
+                    DEBUG.trace("Discarding $ because node ${long} has no location", way, node.getNodeId());
                     return null;
                 }
             }
@@ -764,7 +764,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     }
 
     /**
-     * @return Breaks the given way into chunks if it crosses the clean-cutting region border
+     * Returns breaks the given way into chunks if it crosses the clean-cutting region border
      */
     private List<WayChunk> cleanCut(GraphStore store, PbfWay way)
     {
@@ -917,14 +917,14 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     }
 
     /**
-     * @return A list of {@link HeavyWeightEdge}s for the given way. The tag map is just passed in for the sake of
+     * Returns a list of {@link HeavyWeightEdge}s for the given way. The tag map is just passed in for the sake of
      * efficiency since we already have it in the calling code.
      */
     @SuppressWarnings("SpellCheckingInspection")
     private List<HeavyWeightEdge> extractEdges(GraphStore store, PbfWay way)
     {
         // We don't want to process certain highway types for any data supplier
-        if (RawPbfGraphLoader.ignoreHighwayTypes.contains(way.highway()))
+        if (ignoreHighwayTypes.contains(way.highway()))
         {
             return Collections.emptyList();
         }
@@ -1031,7 +1031,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                 edge.tags(pbfTags);
             }
 
-            if (edge.validator(VALIDATE_RAW).validate(RawPbfGraphLoader.LOGGER))
+            if (edge.validator(VALIDATE_RAW).validate(LOGGER))
             {
                 edges.add(edge);
             }
@@ -1169,7 +1169,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                     {
                         // In many PBF input files, relations do reference non-existent ways, so this is a debug
                         // statement rather than a warning
-                        RawPbfGraphLoader.DEBUG.glitch("Relation $ references missing way identifier $", relation.identifierAsLong(), wayIdentifier);
+                        DEBUG.glitch("Relation $ references missing way identifier $", relation.identifierAsLong(), wayIdentifier);
                     }
                 }
             }
@@ -1237,7 +1237,7 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
     }
 
     /**
-     * @return The given way broken into chunks if we're clean cutting, and it crosses the clean-cutting region, or in a
+     * Returns the given way broken into chunks if we're clean cutting, and it crosses the clean-cutting region, or in a
      * single chunk if we're not clean-cutting.
      */
     private List<WayChunk> wayChunks(GraphStore store, PbfWay way)

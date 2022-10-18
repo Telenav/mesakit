@@ -29,11 +29,10 @@ import java.util.List;
 
 public class RouteRoadNameExtractor extends BaseRoadNameExtractor
 {
-    private static final String[] KEYS = new String[]
-            {
-                    "ref",
-                    "ref_1",
-            };
+    private static final String[] KEYS = {
+            "ref",
+            "ref_1",
+    };
 
     public RouteRoadNameExtractor(MapLocale locale, RoadNameStandardizer.Mode mode,
                                   Listener listener)

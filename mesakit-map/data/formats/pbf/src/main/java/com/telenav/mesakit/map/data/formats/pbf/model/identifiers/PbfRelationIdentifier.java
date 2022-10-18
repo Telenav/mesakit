@@ -52,7 +52,7 @@ public class PbfRelationIdentifier extends MapRelationIdentifier implements PbfI
     public static SwitchParser.Builder<PbfRelationIdentifier> pbfRelationIdentifierSwitchParser(String name,
                                                                                                 String description)
     {
-        return SwitchParser.switchParserBuilder(PbfRelationIdentifier.class).name(name).description(description)
+        return SwitchParser.switchParser(PbfRelationIdentifier.class).name(name).description(description)
                 .converter(new Converter(LOGGER));
     }
 

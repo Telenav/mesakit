@@ -30,7 +30,7 @@ public interface RoutePermissionFunction
     RoutePermissionFunction NULL = route -> true;
 
     /**
-     * @return True if the given route is allowed
+     * Returns true if the given route is allowed
      */
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     boolean allowed(Route route);

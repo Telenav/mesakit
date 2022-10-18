@@ -31,9 +31,9 @@ import java.io.InputStream;
 
     private final double[] m;
 
-    public MultiPointZShape(final ShapeHeader shapeHeader,
-                            final ShapeType shapeType, final InputStream is,
-                            final ValidationPreferences rules) throws IOException,
+    public MultiPointZShape(ShapeHeader shapeHeader,
+                            ShapeType shapeType, InputStream is,
+                            ValidationPreferences rules) throws IOException,
             InvalidShapeFileException
     {
         super(shapeHeader, shapeType, is, rules);

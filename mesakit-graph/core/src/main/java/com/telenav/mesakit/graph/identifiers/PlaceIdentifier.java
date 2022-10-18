@@ -41,7 +41,7 @@ public class PlaceIdentifier extends MapNodeIdentifier implements GraphElementId
                                                                                     String name,
                                                                                     String description)
     {
-        return SwitchParser.switchParserBuilder(PlaceIdentifier.class)
+        return SwitchParser.switchParser(PlaceIdentifier.class)
                 .name(name)
                 .description(description)
                 .converter(new Converter(listener));
@@ -70,7 +70,7 @@ public class PlaceIdentifier extends MapNodeIdentifier implements GraphElementId
     }
 
     /**
-     * @return The next identifier
+     * Returns the next identifier
      */
     @Override
     public PlaceIdentifier next()

@@ -274,7 +274,7 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return A copy of this element as a heavyweight
+     * Returns a copy of this element as a heavyweight
      */
     public abstract GraphElement asHeavyWeight();
 
@@ -346,12 +346,12 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return The attributes for this element
+     * Returns the attributes for this element
      */
     public abstract GraphElementAttributes<?> attributes();
 
     /**
-     * @return A bounding rectangle that completely contains this element
+     * Returns a bounding rectangle that completely contains this element
      */
     public abstract Rectangle bounds();
 
@@ -376,7 +376,7 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return True if the given object is a {@link GraphElement} with the same identifier as this element
+     * Returns true if the given object is a {@link GraphElement} with the same identifier as this element
      */
     @Override
     public boolean equals(Object object)
@@ -390,7 +390,7 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return The graph that owns this element
+     * Returns the graph that owns this element
      */
     public Graph graph()
     {
@@ -408,7 +408,7 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return True if this element has a tag with the given key
+     * Returns true if this element has a tag with the given key
      */
     public final boolean hasTag(String key)
     {
@@ -425,7 +425,7 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return The identifier for this graph element
+     * Returns the identifier for this graph element
      */
     public abstract GraphElementIdentifier identifier();
 
@@ -438,7 +438,7 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return The identifier for this element
+     * Returns the identifier for this element
      */
     public long identifierAsLong()
     {
@@ -450,7 +450,7 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return The index for this element, suitable for quickly retrieving data from this element's corresponding
+     * Returns the index for this element, suitable for quickly retrieving data from this element's corresponding
      * {@link GraphElementStore}.
      */
     @Override
@@ -481,7 +481,7 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return True if this element is completely contained within the given bounding rectangle
+     * Returns true if this element is completely contained within the given bounding rectangle
      */
     public abstract boolean isInside(Rectangle bounds);
 
@@ -506,7 +506,7 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return The key to use for this graph element in maps
+     * Returns the key to use for this graph element in maps
      */
     @Override
     public long key()
@@ -515,7 +515,7 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return The last modification time of this graph element
+     * Returns the last modification time of this graph element
      */
     public Time lastModificationTime()
     {
@@ -529,7 +529,7 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return The map identifier (node, way or relation) of this element
+     * Returns the map identifier (node, way or relation) of this element
      */
     public abstract MapIdentifier mapIdentifier();
 
@@ -550,7 +550,7 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return The PBF-specific identifier for the most recent set of changes where this element was altered
+     * Returns the PBF-specific identifier for the most recent set of changes where this element was altered
      */
     public PbfChangeSetIdentifier pbfChangeSetIdentifier()
     {
@@ -558,7 +558,7 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return The current PBF-specific revision number of this element
+     * Returns the current PBF-specific revision number of this element
      */
     public PbfRevisionNumber pbfRevisionNumber()
     {
@@ -566,7 +566,7 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return The user identifier for the user that last changed this element
+     * Returns the user identifier for the user that last changed this element
      */
     public PbfUserIdentifier pbfUserIdentifier()
     {
@@ -574,7 +574,7 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return The username of the user that last changed this element
+     * Returns the username of the user that last changed this element
      */
     public PbfUserName pbfUserName()
     {
@@ -582,12 +582,12 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return PropertyMap for this graph element
+     * Returns propertyMap for this graph element
      */
     public abstract GraphElementPropertySet<? extends GraphElement> properties();
 
     /**
-     * @return True if this element supports the given attribute, under the owning graph's data specification
+     * Returns true if this element supports the given attribute, under the owning graph's data specification
      */
     public final boolean supports(Attribute<?> attribute)
     {
@@ -595,7 +595,7 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return A tag for the given key, if any
+     * Returns a tag for the given key, if any
      */
     public final Tag tag(String key)
     {
@@ -603,7 +603,7 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return A list of the tags for this element
+     * Returns a list of the tags for this element
      */
     public PbfTagList tagList()
     {
@@ -615,7 +615,7 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return A list of the tags for this element
+     * Returns a list of the tags for this element
      */
     public PbfTagMap tagMap()
     {
@@ -627,7 +627,7 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return The value of any tag with the given key, or null if no such tag exists
+     * Returns the value of any tag with the given key, or null if no such tag exists
      */
     public final String tagValue(String key)
     {
@@ -657,13 +657,13 @@ public abstract class GraphElement implements
     }
 
     /**
-     * @return The store for this kind of element
+     * Returns the store for this kind of element
      */
     @SuppressWarnings("rawtypes")
     protected abstract GraphElementStore store();
 
     /**
-     * @return The graph where this {@link GraphElement} is stored, distinct from {@link #graph()}. If this
+     * Returns the graph where this {@link GraphElement} is stored, distinct from {@link #graph()}. If this
      * {@link GraphElement} is in a normal graph, this value  will be the same as graph(). However, if this element is
      * in a world graph, this method will return the graph for the cell in which this resides (the cell graph) and
      * graph() will return the WorldGraph, as expected.

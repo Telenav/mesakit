@@ -83,7 +83,7 @@ public abstract class MapIdentifier extends Identifier
     }
 
     /**
-     * @return The next identifier after this one
+     * Returns the next identifier after this one
      */
     public MapIdentifier next()
     {
@@ -91,7 +91,7 @@ public abstract class MapIdentifier extends Identifier
     }
 
     /**
-     * @return The type of map identifier
+     * Returns the type of map identifier
      */
     public abstract Type type();
 

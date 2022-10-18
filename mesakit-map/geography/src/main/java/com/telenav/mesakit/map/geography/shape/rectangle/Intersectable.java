@@ -30,7 +30,7 @@ import com.telenav.mesakit.map.geography.internal.lexakai.DiagramRectangle;
 public interface Intersectable
 {
     /**
-     * @return True if this object intersects or is completely contained by the given rectangle, false if the object
+     * Returns true if this object intersects or is completely contained by the given rectangle, false if the object
      * lies outside the rectangle and does not intersect it.
      */
     boolean intersects(Rectangle rectangle);

@@ -38,7 +38,7 @@ import com.telenav.mesakit.graph.specifications.osm.graph.converter.OsmPbfToGrap
 public interface GraphConverter extends Repeater
 {
     /**
-     * @return A graph constructed from data in the given file
+     * Returns a graph constructed from data in the given file
      */
     Graph convert(File input);
 }

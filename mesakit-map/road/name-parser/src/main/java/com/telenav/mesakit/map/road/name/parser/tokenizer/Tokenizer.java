@@ -58,7 +58,7 @@ public class Tokenizer
     public final Token WHITESPACE = create("Whitespace").matchesAnyOf(" ");
 
     /**
-     * @return A new token with the next available token identifier
+     * Returns a new token with the next available token identifier
      */
     public Token create(String name)
     {

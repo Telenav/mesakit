@@ -37,9 +37,9 @@ public abstract class AbstractMultiPointShape extends AbstractShape
     /** No comment */
     protected PointData[] points;
 
-    public AbstractMultiPointShape(final ShapeHeader shapeHeader,
-                                   final ShapeType shapeType, final InputStream is,
-                                   final ValidationPreferences rules) throws IOException,
+    protected AbstractMultiPointShape(ShapeHeader shapeHeader,
+                                      ShapeType shapeType, InputStream is,
+                                      ValidationPreferences rules) throws IOException,
             InvalidShapeFileException
     {
         super(shapeHeader, shapeType, is, rules);

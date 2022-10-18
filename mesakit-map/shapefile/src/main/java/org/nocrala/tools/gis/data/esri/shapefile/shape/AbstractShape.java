@@ -16,9 +16,9 @@ public abstract class AbstractShape
     protected ShapeType shapeType;
 
     @SuppressWarnings("unused")
-    public AbstractShape(final ShapeHeader shapeHeader,
-                         final ShapeType shapeType, final InputStream is,
-                         final ValidationPreferences rules)
+    protected AbstractShape(ShapeHeader shapeHeader,
+                            ShapeType shapeType, InputStream is,
+                            ValidationPreferences rules)
     {
         this.header = shapeHeader;
         this.shapeType = shapeType;

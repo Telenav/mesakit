@@ -32,7 +32,7 @@ import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 abstract class Quadrant
 {
     /**
-     * @return True if the location is inside the polygon as indexed by this quadrant
+     * Returns true if the location is inside the polygon as indexed by this quadrant
      */
     public abstract Containment contains(Location location, Rectangle bounds);
 

@@ -7,7 +7,7 @@ import java.nio.ByteOrder;
 {
     private static final int BYTE_ARRAY_SIZE = 8;
 
-    public static double deserializeBigEndian(final ByteBuffer b)
+    public static double deserializeBigEndian(ByteBuffer b)
     {
         //noinspection DuplicatedCode
         if (b == null)
@@ -25,7 +25,7 @@ import java.nio.ByteOrder;
         return b.getDouble();
     }
 
-    public static double deserializeLittleEndian(final ByteBuffer b)
+    public static double deserializeLittleEndian(ByteBuffer b)
     {
         if (b == null)
         {
@@ -42,7 +42,7 @@ import java.nio.ByteOrder;
         return b.getDouble();
     }
 
-    public static void serializeBigEndian(final double value, final ByteBuffer b)
+    public static void serializeBigEndian(double value, ByteBuffer b)
     {
       //noinspection DuplicatedCode
       if (b == null)
@@ -60,8 +60,8 @@ import java.nio.ByteOrder;
         b.putDouble(value);
     }
 
-    public static void serializeLittleEndian(final double value,
-                                             final ByteBuffer b)
+    public static void serializeLittleEndian(double value,
+                                             ByteBuffer b)
     {
         if (b == null)
         {

@@ -59,7 +59,7 @@ public class CommonGraph extends Graph
     }
 
     /**
-     * @return The edges whose road shape intersects the given bounding rectangle which also match the given matcher
+     * Returns the edges whose road shape intersects the given bounding rectangle which also match the given matcher
      */
     @Override
     public EdgeSequence edgesIntersecting(Rectangle bounds, Matcher<Edge> matcher,
@@ -211,7 +211,7 @@ public class CommonGraph extends Graph
         var file = archive.file();
 
         // then save to that file with a ".tmp" extension"
-        var temporaryFile = file.withExtension(Extension.TMP);
+        var temporaryFile = file.withExtension(Extension.TEMPORARY);
         temporaryFile.delete();
         var temporary = new GraphArchive(this, temporaryFile, archive.mode(), archive.progressReporter());
         super.save(temporary);

@@ -18,9 +18,9 @@ public class MultiPointPlainShape extends AbstractMultiPointShape
 {
     private static final int BASE_CONTENT_LENGTH = (4 + 8 * 4 + 4) / 2;
 
-    public MultiPointPlainShape(final ShapeHeader shapeHeader,
-                                final ShapeType shapeType, final InputStream is,
-                                final ValidationPreferences rules) throws IOException,
+    public MultiPointPlainShape(ShapeHeader shapeHeader,
+                                ShapeType shapeType, InputStream is,
+                                ValidationPreferences rules) throws IOException,
             InvalidShapeFileException
     {
 

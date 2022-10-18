@@ -21,8 +21,8 @@ public class PointMShape extends AbstractPointShape
 
     private final double m;
 
-    public PointMShape(final ShapeHeader shapeHeader, final ShapeType shapeType,
-                       final InputStream is, final ValidationPreferences rules)
+    public PointMShape(ShapeHeader shapeHeader, ShapeType shapeType,
+                       InputStream is, ValidationPreferences rules)
             throws IOException, InvalidShapeFileException
     {
         super(shapeHeader, shapeType, is, rules);

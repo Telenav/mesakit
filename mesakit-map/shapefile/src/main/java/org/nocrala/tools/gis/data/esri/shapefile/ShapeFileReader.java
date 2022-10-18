@@ -56,7 +56,7 @@ public class ShapeFileReader
      * @throws InvalidShapeFileException if the data is malformed, according to the ESRI ShapeFile specification.
      * @throws IOException if it's not possible to read from the InputStream.
      */
-    public ShapeFileReader(final InputStream is)
+    public ShapeFileReader(InputStream is)
             throws InvalidShapeFileException, IOException
     {
         ValidationPreferences rules = new ValidationPreferences();
@@ -79,8 +79,8 @@ public class ShapeFileReader
      * @throws InvalidShapeFileException if the data is malformed, according to the specified preferences.
      * @throws IOException if it's not possible to read from the InputStream.
      */
-    public ShapeFileReader(final InputStream is,
-                           final ValidationPreferences preferences)
+    public ShapeFileReader(InputStream is,
+                           ValidationPreferences preferences)
             throws InvalidShapeFileException, IOException
     {
         initialize(is, preferences);
@@ -240,8 +240,8 @@ public class ShapeFileReader
 
     // Getters
 
-    private void initialize(final InputStream is,
-                            final ValidationPreferences preferences) throws IOException,
+    private void initialize(InputStream is,
+                            ValidationPreferences preferences) throws IOException,
             InvalidShapeFileException
     {
         if (is == null)

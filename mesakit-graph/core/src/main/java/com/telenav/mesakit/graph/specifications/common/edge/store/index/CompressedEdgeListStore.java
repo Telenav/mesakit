@@ -77,7 +77,7 @@ public class CompressedEdgeListStore implements CompressibleCollection, NamedObj
     }
 
     /**
-     * @return The edge list for the given index
+     * Returns the edge list for the given index
      */
     public List<Edge> get(int list)
     {

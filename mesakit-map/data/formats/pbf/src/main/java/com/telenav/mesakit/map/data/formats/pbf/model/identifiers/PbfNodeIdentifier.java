@@ -68,8 +68,8 @@ public class PbfNodeIdentifier extends MapNodeIdentifier implements PbfIdentifie
 
     public static PbfNodeIdentifier parse(String string)
     {
-        var identifier = Longs.parseFast(Strip.trailing(string, "L"));
-        if (identifier != Longs.INVALID)
+        var identifier = Longs.parseFastLong(Strip.stripTrailing(string, "L"));
+        if (identifier != Longs.INVALID_LONG)
         {
             return new PbfNodeIdentifier(identifier);
         }

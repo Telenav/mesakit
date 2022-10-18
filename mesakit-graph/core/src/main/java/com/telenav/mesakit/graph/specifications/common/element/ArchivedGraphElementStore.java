@@ -84,7 +84,7 @@ public abstract class ArchivedGraphElementStore<T extends GraphElement> extends 
     }
 
     /**
-     * @return The graph archive for this element store
+     * Returns the graph archive for this element store
      */
     @Override
     public GraphArchive archive()
@@ -115,7 +115,7 @@ public abstract class ArchivedGraphElementStore<T extends GraphElement> extends 
     }
 
     /**
-     * @return The loader for this attribute store
+     * Returns the loader for this attribute store
      */
     @Override
     public AttributeLoader attributeLoader()
@@ -188,7 +188,7 @@ public abstract class ArchivedGraphElementStore<T extends GraphElement> extends 
     }
 
     /**
-     * @return Metadata for the graph that owns this element store
+     * Returns metadata for the graph that owns this element store
      */
     @Override
     public Metadata metadata()

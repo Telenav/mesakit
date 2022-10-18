@@ -90,7 +90,7 @@ public class PolylineSnap extends Location
     }
 
     /**
-     * @return The angle between the snap vector and the segment it snapped to
+     * Returns the angle between the snap vector and the segment it snapped to
      */
     public Angle angle()
     {
@@ -98,7 +98,7 @@ public class PolylineSnap extends Location
     }
 
     /**
-     * @return The distance between the source point, and the polyline
+     * Returns the distance between the source point, and the polyline
      */
     public Distance distanceToSource()
     {
@@ -106,7 +106,7 @@ public class PolylineSnap extends Location
     }
 
     /**
-     * @return True if the source point is on the left side of the directed segment
+     * Returns true if the source point is on the left side of the directed segment
      */
     public boolean isLeft()
     {
@@ -114,7 +114,7 @@ public class PolylineSnap extends Location
     }
 
     /**
-     * @return True if the source point is on the right side of the directed segment
+     * Returns true if the source point is on the right side of the directed segment
      */
     public boolean isRight()
     {
@@ -123,7 +123,7 @@ public class PolylineSnap extends Location
     }
 
     /**
-     * @return The offset of the snap point on the whole polyline
+     * Returns the offset of the snap point on the whole polyline
      */
     public Level offset()
     {
@@ -175,7 +175,7 @@ public class PolylineSnap extends Location
     }
 
     /**
-     * @return The offset of the snapped point on the Segment in the polyline on which it has been snapped onto
+     * Returns the offset of the snapped point on the Segment in the polyline on which it has been snapped onto
      */
     public Level offsetOnSegment()
     {
@@ -188,7 +188,7 @@ public class PolylineSnap extends Location
     }
 
     /**
-     * @return The segment in the polyline on which the point has been snapped
+     * Returns the segment in the polyline on which the point has been snapped
      */
     public Segment segment()
     {
@@ -215,7 +215,7 @@ public class PolylineSnap extends Location
     }
 
     /**
-     * @return The heading of the segment in the polyline on which the point has been snapped
+     * Returns the heading of the segment in the polyline on which the point has been snapped
      */
     public Heading segmentHeading()
     {
@@ -250,7 +250,7 @@ public class PolylineSnap extends Location
     }
 
     /**
-     * @return The vector from the source to this snap location
+     * Returns the vector from the source to this snap location
      */
     public Segment vector()
     {

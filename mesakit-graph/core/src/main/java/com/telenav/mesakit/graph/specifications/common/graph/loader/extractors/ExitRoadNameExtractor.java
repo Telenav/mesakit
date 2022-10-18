@@ -29,10 +29,9 @@ import java.util.List;
 
 public class ExitRoadNameExtractor extends BaseRoadNameExtractor
 {
-    private static final String[] KEYS = new String[]
-            {
-                    "exit_ref",
-            };
+    private static final String[] KEYS = {
+            "exit_ref",
+    };
 
     public ExitRoadNameExtractor(MapLocale locale, RoadNameStandardizer.Mode mode,
                                  Listener listener)

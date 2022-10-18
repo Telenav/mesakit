@@ -41,22 +41,22 @@ public class EdgePairTest extends GraphUnitTest
     @Before
     public void initialize()
     {
-        final Graph graph = osmDowntownSeattleTest();
+        Graph graph = osmDowntownSeattleTest();
 
-        final Edge edge1 = graph.edgeForIdentifier(new EdgeIdentifier(-759056694000002L));
+        Edge edge1 = graph.edgeForIdentifier(new EdgeIdentifier(-759056694000002L));
         ensureNotNull(edge1);
-        final Edge edge2 = graph.edgeForIdentifier(new EdgeIdentifier(-759056694000001L));
+        Edge edge2 = graph.edgeForIdentifier(new EdgeIdentifier(-759056694000001L));
         ensureNotNull(edge2);
-        final Edge edge3 = graph.edgeForIdentifier(new EdgeIdentifier(293753570000012L));
+        Edge edge3 = graph.edgeForIdentifier(new EdgeIdentifier(293753570000012L));
         ensureNotNull(edge3);
 
         connectedEdgePair1 = new EdgePair(edge1, edge2);
         connectedEdgePair2 = new EdgePair(edge1, edge3);
         unconnectedEdgePair = new EdgePair(edge2, edge3);
 
-        final Edge i5North1 = graph.edgeForIdentifier(new EdgeIdentifier(4712853000000L));
+        Edge i5North1 = graph.edgeForIdentifier(new EdgeIdentifier(4712853000000L));
         ensureNotNull(i5North1);
-        final Edge i5North2 = graph.edgeForIdentifier(new EdgeIdentifier(15257843000000L));
+        Edge i5North2 = graph.edgeForIdentifier(new EdgeIdentifier(15257843000000L));
         ensureNotNull(i5North2);
         nonBranchingUnconnectedEdgePair = new EdgePair(i5North1, i5North2);
     }
@@ -85,7 +85,7 @@ public class EdgePairTest extends GraphUnitTest
         ensureFalse(nonBranchingUnconnectedEdgePair.isConnected());
 
         // non-branching route
-        final Distance distance = Distance.miles(1);
+        Distance distance = Distance.miles(1);
         ensure(nonBranchingUnconnectedEdgePair.isConnectedByRoute(Navigator.NON_BRANCHING, distance));
         ensureFalse(unconnectedEdgePair.isConnectedByRoute(Navigator.NON_BRANCHING, distance));
         ensure(nonBranchingUnconnectedEdgePair.isConnectedByRoute(Navigator.NON_BRANCHING, distance));

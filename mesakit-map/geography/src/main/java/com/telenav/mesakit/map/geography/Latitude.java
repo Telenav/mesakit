@@ -166,7 +166,7 @@ public final class Latitude extends Angle
                 var minutes = Float.parseFloat(matcher.group(2));
                 var seconds = 0F;
                 var group4 = matcher.group(4);
-                if (!Strings.isEmpty(group4))
+                if (!Strings.isNullOrBlank(group4))
                 {
                     seconds = Float.parseFloat(group4);
                 }

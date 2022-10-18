@@ -42,7 +42,7 @@ import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
 import com.telenav.kivakit.primitive.collections.list.PrimitiveList;
 import com.telenav.kivakit.primitive.collections.list.store.PackedStringStore;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
-import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.resource.compression.archive.ArchivedField;
 import com.telenav.kivakit.validation.BaseValidator;
 import com.telenav.kivakit.validation.Validatable;
 import com.telenav.kivakit.validation.ValidationType;
@@ -256,42 +256,42 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
                 }
             };
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray identifier;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongToIntMap identifierToIndex;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray lastModified;
 
     /**
      * The next index for an element in this store. Note that we start index values at 1 rather than 0 because we want
      * to catch bugs that involve uninitialized index values (the default value for an int in Java is zero).
      */
-    @KivaKitArchivedField
+    @ArchivedField
     private int nextIndex = 1;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitLongArray pbfChangeSetIdentifier;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitCharArray pbfRevisionNumber;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private SplitIntArray pbfUserIdentifier;
 
-    @KivaKitArchivedField
+    @ArchivedField
     private PackedStringStore pbfUserName;
 
     /** The number of elements in this store (distinct from the count(), which takes into account reversible edges) */
-    @KivaKitArchivedField
+    @ArchivedField
     private int size;
 
     /**
      * Tags for this attribute
      */
-    @KivaKitArchivedField
+    @ArchivedField
     private TagStore tags;
 
     /** True if this store has been trimmed to its minimum size */
@@ -307,7 +307,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return An interface through which elements can be added to this store. When batching is enabled, this will be a
+     * Returns an interface through which elements can be added to this store. When batching is enabled, this will be a
      * {@link Batcher.BatchAdder} and when it's not, it will be a reference to {@link #internalAdd(GraphElement)}.
      */
     public synchronized Addable<T> adder()
@@ -357,7 +357,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return Iterator of graph element batches of the given size
+     * Returns iterator of graph element batches of the given size
      */
     public Iterator<List<T>> batches(Count batchSize)
     {
@@ -422,7 +422,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return True if this store contains the given element identifier
+     * Returns true if this store contains the given element identifier
      */
     public final boolean containsIdentifier(GraphElementIdentifier identifier)
     {
@@ -430,7 +430,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return True if this store contains the given element identifier
+     * Returns true if this store contains the given element identifier
      */
     public boolean containsIdentifier(long identifier)
     {
@@ -442,7 +442,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return The number of elements in this store. This is distinct from the store {@link #size()}. The store size is
+     * Returns the number of elements in this store. This is distinct from the store {@link #size()}. The store size is
      * the number of elements being physically stored. The count is the number of elements, taking into account
      * reversible edges (in the EdgeStore subclass).
      */
@@ -454,7 +454,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return The number of elements discarded by {@link #internalAdd(GraphElement)} due to failing validation
+     * Returns the number of elements discarded by {@link #internalAdd(GraphElement)} due to failing validation
      */
     public Count discarded()
     {
@@ -477,7 +477,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return The graph associated with this element store
+     * Returns the graph associated with this element store
      */
     @Override
     public final Graph graph()
@@ -486,7 +486,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return True if this store has no elements
+     * Returns true if this store has no elements
      */
     public boolean isEmpty()
     {
@@ -494,7 +494,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return The sequence of all elements in this store
+     * Returns the sequence of all elements in this store
      */
     @Override
     public Iterator<T> iterator()
@@ -550,7 +550,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return The number of directional edges in this store. For the number of forward edges, call {@link #size()}.
+     * Returns the number of directional edges in this store. For the number of forward edges, call {@link #size()}.
      */
     public Count retrieveCount()
     {
@@ -589,7 +589,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return The last modification time of the given {@link GraphElement}
+     * Returns the last modification time of the given {@link GraphElement}
      */
     public Time retrieveLastModificationTime(GraphElement element)
     {
@@ -648,7 +648,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return The list of tags for this {@link GraphElement}.
+     * Returns the list of tags for this {@link GraphElement}.
      */
     public final PbfTagList retrieveTagList(GraphElement element)
     {
@@ -657,7 +657,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return The list of tags for this {@link GraphElement}.
+     * Returns the list of tags for this {@link GraphElement}.
      */
     public final PbfTagMap retrieveTagMap(GraphElement element)
     {
@@ -666,7 +666,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return The number of physical {@link GraphElement}s that are stored in this store. This is distinct from the
+     * Returns the number of physical {@link GraphElement}s that are stored in this store. This is distinct from the
      * {@link #count()}, which takes into account reversible edges in the EdgeStore subclass.
      */
     @Override
@@ -719,7 +719,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return The tag codec being used to compress tags in this store
+     * Returns the tag codec being used to compress tags in this store
      */
     public PbfTagCodec tagCodec()
     {
@@ -728,7 +728,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return The tag store for this store
+     * Returns the tag store for this store
      */
     @SuppressWarnings({ "exports" })
     public TagStore tags()
@@ -794,7 +794,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return The {@link EdgeStore} associated with the graph which owns this store
+     * Returns the {@link EdgeStore} associated with the graph which owns this store
      */
     protected EdgeStore edgeStore()
     {
@@ -802,12 +802,12 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return Factory that can create graph elements of type T
+     * Returns factory that can create graph elements of type T
      */
     protected abstract DataSpecification.GraphElementFactory<T> elementFactory();
 
     /**
-     * @return The class of {@link GraphElement} in this store
+     * Returns the class of {@link GraphElement} in this store
      */
     protected abstract Class<T> elementType();
 
@@ -885,7 +885,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return The next element index in this store
+     * Returns the next element index in this store
      */
     protected int nextIndex()
     {
@@ -946,7 +946,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return The place store associated with the graph that owns this store
+     * Returns the place store associated with the graph that owns this store
      */
     protected PlaceStore placeStore()
     {
@@ -954,7 +954,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return The relation store associated with the graph that owns this store
+     * Returns the relation store associated with the graph that owns this store
      */
     protected RelationStore relationStore()
     {
@@ -980,7 +980,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return The shape point store associated with the graph that owns this store
+     * Returns the shape point store associated with the graph that owns this store
      */
     protected ShapePointStore shapePointStore()
     {
@@ -988,7 +988,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     }
 
     /**
-     * @return The vertex store associated with the graph that owns this store
+     * Returns the vertex store associated with the graph that owns this store
      */
     protected VertexStore vertexStore()
     {
@@ -999,7 +999,7 @@ public abstract class GraphElementStore<T extends GraphElement> extends BaseRepe
     {
         if (batcher == null)
         {
-            batcher = Batcher.<T>create()
+            batcher = Batcher.<T>batcher()
                     .withName(qualifiedName())
                     .withQueueSize(QUEUE_SIZE)
                     .withBatchSize(BATCH_SIZE)

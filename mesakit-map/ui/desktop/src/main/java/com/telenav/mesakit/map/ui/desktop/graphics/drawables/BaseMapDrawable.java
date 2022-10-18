@@ -43,14 +43,14 @@ public abstract class BaseMapDrawable extends BaseDrawable implements MapDrawabl
 {
     private Location location;
 
-    public BaseMapDrawable(Style style,
-                           Location location)
+    protected BaseMapDrawable(Style style,
+                              Location location)
     {
         super(style);
         this.location = location;
     }
 
-    public BaseMapDrawable(BaseMapDrawable that)
+    protected BaseMapDrawable(BaseMapDrawable that)
     {
         super(that);
         location = that.location;

@@ -113,17 +113,17 @@ public class MapPolyline extends LabeledMapShape
 
         if (startLabel != null)
         {
-            shapes.add(super.drawLabel(canvas, anchor(canvas, polyline.start())));
+            shapes.add(drawLabel(canvas, anchor(canvas, polyline.start())));
         }
 
         if (centerLabel != null)
         {
-            shapes.add(super.drawLabel(canvas, anchor(canvas, polyline.midpoint())));
+            shapes.add(drawLabel(canvas, anchor(canvas, polyline.midpoint())));
         }
 
         if (endLabel != null)
         {
-            shapes.add(super.drawLabel(canvas, anchor(canvas, polyline.end())));
+            shapes.add(drawLabel(canvas, anchor(canvas, polyline.end())));
         }
 
         return Java2dShapes.combine(shapes);

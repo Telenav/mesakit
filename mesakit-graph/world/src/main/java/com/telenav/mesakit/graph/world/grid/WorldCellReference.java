@@ -48,7 +48,7 @@ public class WorldCellReference
     }
 
     /**
-     * @return The referenced world cell
+     * Returns the referenced world cell
      */
     public WorldCell worldCell()
     {

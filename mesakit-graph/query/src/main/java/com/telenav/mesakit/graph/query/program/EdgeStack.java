@@ -55,7 +55,7 @@ public class EdgeStack
     }
 
     /**
-     * @return Returns the route that matched the query
+     * Returns returns the route that matched the query
      */
     public Route match()
     {
@@ -108,7 +108,7 @@ public class EdgeStack
     }
 
     /**
-     * @return The edges reachable from the to vertex of the edge on top of the stack
+     * Returns the edges reachable from the to vertex of the edge on top of the stack
      */
     public EdgeSet reachableEdges()
     {
@@ -116,7 +116,7 @@ public class EdgeStack
     }
 
     /**
-     * @return The route from the given stack index to the top of the stack
+     * Returns the route from the given stack index to the top of the stack
      */
     public Route route(int index)
     {
@@ -130,7 +130,7 @@ public class EdgeStack
     }
 
     /**
-     * @return The number of elements on the stack
+     * Returns the number of elements on the stack
      */
     public int size()
     {
@@ -144,11 +144,11 @@ public class EdgeStack
         {
             return "[empty]";
         }
-        return ObjectList.objectList(stack).reversed().mapped(edge -> edge.asString(Format.PROGRAMMATIC)).join(":") + " [top]";
+        return ObjectList.list(stack).reversed().map(edge -> edge.asString(Format.PROGRAMMATIC)).join(":") + " [top]";
     }
 
     /**
-     * @return The edge on top of the stack
+     * Returns the edge on top of the stack
      */
     public Edge top()
     {

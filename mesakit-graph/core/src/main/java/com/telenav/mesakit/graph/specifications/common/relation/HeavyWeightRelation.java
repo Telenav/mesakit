@@ -291,7 +291,7 @@ public class HeavyWeightRelation extends EdgeRelation
         for (var member : pbfRelation.members())
         {
             var role = member.getMemberRole();
-            if (Strings.isEmpty(role))
+            if (Strings.isNullOrBlank(role))
             {
                 role = null;
             }

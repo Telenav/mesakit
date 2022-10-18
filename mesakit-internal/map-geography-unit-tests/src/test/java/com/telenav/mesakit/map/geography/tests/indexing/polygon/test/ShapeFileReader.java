@@ -87,7 +87,7 @@ public class ShapeFileReader
                         var builder = new PolygonBuilder();
                         for (PointData point : shape.getPointsOfPart(part))
                         {
-                            if (Doubles.isBetweenInclusive(point.getY(), -85, 85))
+                            if (Doubles.doubleIsBetweenInclusive(point.getY(), -85, 85))
                             {
                                 builder.add(new Location(Latitude.degrees(point.getY()),
                                         Longitude.degrees(point.getX())));

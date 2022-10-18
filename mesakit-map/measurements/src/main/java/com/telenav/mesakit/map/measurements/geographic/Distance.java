@@ -120,7 +120,7 @@ public final class Distance implements LongValued, Comparable<Distance>
 
     public static ArgumentParser.Builder<Distance> argumentParser(String description)
     {
-        return ArgumentParser.argumentParserBuilder(Distance.class).converter(new Converter(LOGGER)).description(description);
+        return ArgumentParser.argumentParser(Distance.class).converter(new Converter(LOGGER)).description(description);
     }
 
     public static Distance centimeters(long centimeters)
@@ -130,12 +130,12 @@ public final class Distance implements LongValued, Comparable<Distance>
 
     public static Distance degrees(double degrees)
     {
-        return Distance.meters(degrees * DM7_PER_DEGREE * KILOMETERS_PER_DM7);
+        return meters(degrees * DM7_PER_DEGREE * KILOMETERS_PER_DM7);
     }
 
     public static SwitchParser.Builder<Distance> distanceSwitchParser(String name, String description)
     {
-        return SwitchParser.switchParserBuilder(Distance.class).name(name).converter(new Converter(LOGGER))
+        return SwitchParser.switchParser(Distance.class).name(name).converter(new Converter(LOGGER))
                 .description(description);
     }
 
@@ -548,7 +548,7 @@ public final class Distance implements LongValued, Comparable<Distance>
         {
             return Percent._100;
         }
-        return Percent.percent(100.0 * Doubles.inRange(asMeters() / that.asMeters(), 0.0, 1.0));
+        return Percent.percent(100.0 * Doubles.doubleInRange(asMeters() / that.asMeters(), 0.0, 1.0));
     }
 
     public double ratio(Distance divisor)

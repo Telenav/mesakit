@@ -22,7 +22,7 @@ import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.value.Source;
 import com.telenav.kivakit.core.language.primitive.Booleans;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.IncludeProperty;
 import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.string.ObjectFormatter;
 import com.telenav.kivakit.core.logging.Logger;
@@ -141,7 +141,7 @@ public class PbfRegionCutter
         return data;
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     @UmlExcludeMember
     public Folder outputFolder()
     {
@@ -208,7 +208,7 @@ public class PbfRegionCutter
         return regions;
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     @UmlExcludeMember
     public RegionSet regionsToExtract()
     {
@@ -244,7 +244,7 @@ public class PbfRegionCutter
     }
 
     /**
-     * @return True if the data has {@link WayNode} locations available. This can speed up processing and reduce memory
+     * Returns true if the data has {@link WayNode} locations available. This can speed up processing and reduce memory
      * consumption by not requiring that {@link Node} locations be kept in memory until {@link Way} processing occurs.
      */
     private boolean hasWayNodeLocations(PbfDataSource data)

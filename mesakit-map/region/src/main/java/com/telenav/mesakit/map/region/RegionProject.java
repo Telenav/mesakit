@@ -58,7 +58,7 @@ import static com.telenav.kivakit.core.messaging.Listener.throwingListener;
     }
 
     /**
-     * @return The folder where various kinds of data are cached
+     * Returns the folder where various kinds of data are cached
      */
     public Folder mesakitMapFolder()
     {

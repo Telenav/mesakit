@@ -93,7 +93,7 @@ public class RegionType<T extends Region<T>>
     private RegionType(RegionType<T> that)
     {
         name = that.name;
-        all = Sets.copy(TreeSet::new, that.all);
+        all = Sets.deepCopy(TreeSet::new, that.all);
         subclass = that.subclass;
         borderCache = that.borderCache;
         nextIdentifier = that.nextIdentifier;

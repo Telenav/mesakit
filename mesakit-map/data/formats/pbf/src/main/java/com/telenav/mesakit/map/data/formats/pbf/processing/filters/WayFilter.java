@@ -51,7 +51,7 @@ public class WayFilter implements Filter<PbfWay>, Named
         for (var line : resource.reader().readLines(ProgressReporter.nullProgressReporter()))
         {
             var highway = line.trim();
-            if (!Strings.isEmpty(highway))
+            if (!Strings.isNullOrBlank(highway))
             {
                 filter.exclude(highway);
             }
@@ -75,7 +75,7 @@ public class WayFilter implements Filter<PbfWay>, Named
         for (var line : resource.reader().readLines(ProgressReporter.nullProgressReporter()))
         {
             var highway = line.trim();
-            if (!Strings.isEmpty(highway))
+            if (!Strings.isNullOrBlank(highway))
             {
                 filter.include(highway);
             }
@@ -86,7 +86,7 @@ public class WayFilter implements Filter<PbfWay>, Named
     public static SwitchParser.Builder<WayFilter> wayFilterSwitchParser(Listener listener, String name,
                                                                         String description)
     {
-        return SwitchParser.switchParserBuilder(WayFilter.class)
+        return SwitchParser.switchParser(WayFilter.class)
                 .name(name)
                 .description(description)
                 .converter(new Converter(listener));

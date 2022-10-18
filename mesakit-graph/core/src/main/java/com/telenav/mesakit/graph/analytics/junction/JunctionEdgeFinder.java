@@ -136,7 +136,7 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
     protected abstract void onJunction(Edge edge);
 
     /**
-     * @return true if any end of the route is connecting to more than two edges besides the reversed edge, or all the
+     * Returns true if any end of the route is connecting to more than two edges besides the reversed edge, or all the
      * connected roads have more than one road name
      */
     private boolean atIntersection(Route route)
@@ -167,7 +167,7 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
     }
 
     /**
-     * @return true if both ends of the route only connect to two parallel edges
+     * Returns true if both ends of the route only connect to two parallel edges
      */
     private boolean isConnectingRoute(Route route)
     {
@@ -236,7 +236,7 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
     }
 
     /**
-     * @return true if the route has appropriate length
+     * Returns true if the route has appropriate length
      */
     private boolean isValidConnectionOrBentJunction(Route route)
     {
@@ -244,7 +244,7 @@ public abstract class JunctionEdgeFinder extends BaseRepeater
     }
 
     /**
-     * @return true if the route has appropriate length
+     * Returns true if the route has appropriate length
      */
     private boolean isValidStraightJunction(Route route)
     {

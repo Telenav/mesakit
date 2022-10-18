@@ -34,7 +34,7 @@ public class EdgeAttributes extends GraphElementAttributes<Edge>
 
     public static EdgeAttributes get()
     {
-        return EdgeAttributes.singleton.get();
+        return singleton.get();
     }
 
     public static EdgeAttributes get(Graph graph)

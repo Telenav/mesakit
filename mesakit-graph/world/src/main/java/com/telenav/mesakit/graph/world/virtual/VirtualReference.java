@@ -80,7 +80,7 @@ public abstract class VirtualReference<T>
     }
 
     /**
-     * @return The value for this reference
+     * Returns the value for this reference
      */
     public T get()
     {

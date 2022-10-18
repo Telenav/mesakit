@@ -101,7 +101,7 @@ import java.awt.geom.Point2D;
 public class MapCanvas extends Java2dDrawingSurface implements MapProjection
 {
     /**
-     * @return A canvas for drawing map objects on the given graphics, at the given scale, and in the coordinate system
+     * Returns a canvas for drawing map objects on the given graphics, at the given scale, and in the coordinate system
      * provided by {@link MapProjection#drawingSize()}.
      */
     public static MapCanvas canvas(String name,
@@ -180,11 +180,11 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
     @Override
     public DrawingSize drawingSize()
     {
-        return super.drawingArea().size();
+        return drawingArea().size();
     }
 
     /**
-     * @return The map area being projected to the {@link #drawingSize()} on this canvas
+     * Returns the map area being projected to the {@link #drawingSize()} on this canvas
      */
     @Override
     public Rectangle mapArea()
@@ -193,7 +193,7 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
     }
 
     /**
-     * @return The center of the projected map area
+     * Returns the center of the projected map area
      */
     public Location mapCenter()
     {
@@ -201,7 +201,7 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
     }
 
     /**
-     * @return The scale at which the map is being viewed
+     * Returns the scale at which the map is being viewed
      */
     public MapScale mapScale()
     {
@@ -209,7 +209,7 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
     }
 
     /**
-     * @return The widest width of the projected map area
+     * Returns the widest width of the projected map area
      */
     public Distance mapWidth()
     {
@@ -227,7 +227,7 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
     }
 
     /**
-     * @return The given location in projected coordinates
+     * Returns the given location in projected coordinates
      */
     @Override
     public DrawingPoint toDrawing(Location location)
@@ -236,7 +236,7 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
     }
 
     /**
-     * @return The given map size in projected coordinates
+     * Returns the given map size in projected coordinates
      */
     @Override
     public DrawingSize toDrawing(Size size)
@@ -245,7 +245,7 @@ public class MapCanvas extends Java2dDrawingSurface implements MapProjection
     }
 
     /**
-     * @return The given coordinate as a map {@link Location}
+     * Returns the given coordinate as a map {@link Location}
      */
     @Override
     public Location toMap(DrawingPoint point)

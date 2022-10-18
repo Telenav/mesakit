@@ -50,12 +50,12 @@ import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfModel
 public interface PbfTagCodec
 {
     /**
-     * @return A {@link PbfTagList} decompressed from the given {@link BitReader} using the trained Huffman codec
+     * Returns a {@link PbfTagList} decompressed from the given {@link BitReader} using the trained Huffman codec
      */
     PbfTagList decode(ByteList input);
 
     /**
-     * @return A {@link PbfTagList} decompressed from the given {@link BitReader} using the trained Huffman codec
+     * Returns a {@link PbfTagList} decompressed from the given {@link BitReader} using the trained Huffman codec
      */
     PbfTagMap decodeMap(ByteList input);
 

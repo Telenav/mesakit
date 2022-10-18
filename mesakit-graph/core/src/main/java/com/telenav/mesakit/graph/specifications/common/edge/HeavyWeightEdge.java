@@ -21,7 +21,7 @@ package com.telenav.mesakit.graph.specifications.common.edge;
 import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.function.Functions;
 import com.telenav.kivakit.core.language.Objects;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitExcludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.ExcludeProperty;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Count;
@@ -388,7 +388,7 @@ public class HeavyWeightEdge extends Edge
     }
 
     @Override
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public VertexIdentifier fromVertexIdentifier()
     {
         return from != null ? from.identifier() : null;
@@ -613,7 +613,7 @@ public class HeavyWeightEdge extends Edge
         referenceSpeed(Speed.FIFTY_MILES_PER_HOUR);
         uniDbReverseReferenceSpeed(Speed.FIFTY_MILES_PER_HOUR);
         roadFunctionalClass(RoadFunctionalClass.FIRST_CLASS);
-        roadNames(RoadName.Type.OFFICIAL, ObjectList.objectList(Maximum._8, RoadName.forName("Shibo Boulevard")));
+        roadNames(RoadName.Type.OFFICIAL, ObjectList.list(Maximum._8, RoadName.forName("Shibo Boulevard")));
         roadShapeAndLength(testPolyline(), testPolyline().start(), testPolyline().end());
         roadState(TWO_WAY);
         roadSubType(RoadSubType.MAIN_ROAD);
@@ -697,7 +697,7 @@ public class HeavyWeightEdge extends Edge
     }
 
     @Override
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public Polyline roadShape()
     {
         if (roadShape == null)
@@ -875,7 +875,7 @@ public class HeavyWeightEdge extends Edge
     }
 
     @Override
-    @KivaKitExcludeProperty
+    @ExcludeProperty
     public VertexIdentifier toVertexIdentifier()
     {
         return to != null ? to.identifier() : null;
@@ -909,7 +909,7 @@ public class HeavyWeightEdge extends Edge
     }
 
     /**
-     * @return The reference speed (used for historical speed calculation) in forward direction
+     * Returns the reference speed (used for historical speed calculation) in forward direction
      */
     public Speed uniDbReferenceSpeed()
     {
@@ -917,7 +917,7 @@ public class HeavyWeightEdge extends Edge
     }
 
     /**
-     * @return The reference speed (used for historical speed calculation) in backward direction
+     * Returns the reference speed (used for historical speed calculation) in backward direction
      */
     public Speed uniDbReverseReferenceSpeed()
     {

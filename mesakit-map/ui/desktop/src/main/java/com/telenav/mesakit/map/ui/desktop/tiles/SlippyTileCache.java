@@ -49,7 +49,7 @@ public class SlippyTileCache extends FileCache
     }
 
     /**
-     * @return Input stream to read the given tile if it exists in this cache or null if it doesn't
+     * Returns input stream to read the given tile if it exists in this cache or null if it doesn't
      */
     public Resource resource(SlippyTile tile)
     {

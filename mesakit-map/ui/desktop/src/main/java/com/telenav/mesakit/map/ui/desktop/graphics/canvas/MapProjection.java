@@ -44,22 +44,22 @@ import com.telenav.mesakit.map.measurements.geographic.Distance;
 public interface MapProjection
 {
     /**
-     * @return The drawing area in drawing coordinates in the coordinate system for this projection
+     * Returns the drawing area in drawing coordinates in the coordinate system for this projection
      */
     DrawingSize drawingSize();
 
     /**
-     * @return The map area as a {@link Rectangle} in latitude and longitude
+     * Returns the map area as a {@link Rectangle} in latitude and longitude
      */
     Rectangle mapArea();
 
     /**
-     * @return The given {@link Location} in the drawing area
+     * Returns the given {@link Location} in the drawing area
      */
     DrawingPoint toDrawing(Location location);
 
     /**
-     * @return The given {@link Rectangle} in the drawing area
+     * Returns the given {@link Rectangle} in the drawing area
      */
     default DrawingRectangle toDrawing(Rectangle rectangle)
     {
@@ -69,7 +69,7 @@ public interface MapProjection
     }
 
     /**
-     * @return The given {@link Width} in the drawing area
+     * Returns the given {@link Width} in the drawing area
      */
     default DrawingWidth toDrawing(Width width)
     {
@@ -77,7 +77,7 @@ public interface MapProjection
     }
 
     /**
-     * @return The given {@link Distance} in the drawing area
+     * Returns the given {@link Distance} in the drawing area
      */
     default DrawingLength toDrawing(Distance distance)
     {
@@ -85,7 +85,7 @@ public interface MapProjection
     }
 
     /**
-     * @return The given {@link Height} in the drawing area
+     * Returns the given {@link Height} in the drawing area
      */
     default DrawingHeight toDrawing(Height height)
     {
@@ -93,12 +93,12 @@ public interface MapProjection
     }
 
     /**
-     * @return The given {@link Size} in the drawing area
+     * Returns the given {@link Size} in the drawing area
      */
     DrawingSize toDrawing(Size size);
 
     /**
-     * @return The given drawing area size as a map {@link Size}
+     * Returns the given drawing area size as a map {@link Size}
      */
     default Size toMap(DrawingSize size)
     {
@@ -108,7 +108,7 @@ public interface MapProjection
     }
 
     /**
-     * @return The given drawing area height as a map {@link Height}
+     * Returns the given drawing area height as a map {@link Height}
      */
     default Height toMap(DrawingHeight height)
     {
@@ -117,7 +117,7 @@ public interface MapProjection
     }
 
     /**
-     * @return The given drawing area width as a map {@link Width}
+     * Returns the given drawing area width as a map {@link Width}
      */
     default Width toMap(DrawingWidth width)
     {
@@ -126,7 +126,7 @@ public interface MapProjection
     }
 
     /**
-     * @return The given drawing area length as a map {@link Distance}
+     * Returns the given drawing area length as a map {@link Distance}
      */
     default Distance toMap(DrawingLength length)
     {
@@ -134,12 +134,12 @@ public interface MapProjection
     }
 
     /**
-     * @return The given drawing space coordinate as a map {@link Location}
+     * Returns the given drawing space coordinate as a map {@link Location}
      */
     Location toMap(DrawingPoint point);
 
     /**
-     * @return The given rectangle in drawing coordinates as a map {@link Rectangle}
+     * Returns the given rectangle in drawing coordinates as a map {@link Rectangle}
      */
     default Rectangle toMap(DrawingRectangle rectangle)
     {

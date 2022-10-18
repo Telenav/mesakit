@@ -151,7 +151,7 @@ import com.telenav.mesakit.map.road.model.RoadName;
     }
 
     /**
-     * @return The road name reconstructed from the raw (non-standardized) parsed data
+     * Returns the road name reconstructed from the raw (non-standardized) parsed data
      */
     public RoadName asRawRoadName()
     {
@@ -181,7 +181,7 @@ import com.telenav.mesakit.map.road.model.RoadName;
     }
 
     /**
-     * @return The parsed and (partially) standardized road name
+     * Returns the parsed and (partially) standardized road name
      */
     public RoadName asRoadName()
     {

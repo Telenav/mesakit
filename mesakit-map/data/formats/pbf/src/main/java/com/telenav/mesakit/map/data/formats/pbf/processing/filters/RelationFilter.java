@@ -61,7 +61,7 @@ public class RelationFilter implements Filter<PbfRelation>, Named
     public static SwitchParser.Builder<RelationFilter> relationFilterSwitchParser(Listener listener, String name,
                                                                                   String description)
     {
-        return SwitchParser.switchParserBuilder(RelationFilter.class).name(name).description(description)
+        return SwitchParser.switchParser(RelationFilter.class).name(name).description(description)
                 .converter(new Converter(listener));
     }
 

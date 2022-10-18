@@ -110,7 +110,7 @@ public class RegionNodes
         var value = regionsForNode.get(nodeIdentifier);
         if (!regionsForNode.isNull(value))
         {
-            return Longs.searchWords(value, 16, regionIndex);
+            return Longs.longSearchWords(value, 16, regionIndex);
         }
         return false;
     }

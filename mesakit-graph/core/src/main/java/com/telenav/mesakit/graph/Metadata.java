@@ -24,14 +24,14 @@ import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.language.reflection.property.IncludeProperty;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.string.AsIndentedString;
-import com.telenav.kivakit.core.string.KivaKitFormat;
+import com.telenav.kivakit.core.string.FormatProperty;
 import com.telenav.kivakit.core.string.ObjectIndenter;
 import com.telenav.kivakit.core.string.Strip;
 import com.telenav.kivakit.core.value.count.Bytes;
@@ -181,7 +181,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return Metadata from the given input file, allowing for an estimate of entities based on file size
+     * Returns metadata from the given input file, allowing for an estimate of entities based on file size
      */
     public static Metadata metadata(File input)
     {
@@ -189,12 +189,12 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return Complete metadata read for the given input resource. For resources that don't support all the statistics
+     * Returns complete metadata read for the given input resource. For resources that don't support all the statistics
      * values, those values may be estimates based on the size of the resource.
      */
     public static Metadata metadata(File input, CountType countType)
     {
-        input = input.materialized(BroadcastingProgressReporter.createProgressReporter(LOGGER));
+        input = input.materialized(BroadcastingProgressReporter.progressReporter(LOGGER));
         var format = DataFormat.of(input);
         switch (format)
         {
@@ -226,7 +226,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
 
     public static SwitchParser.Builder<Metadata> metadataSwitchParser(String name, String description)
     {
-        return SwitchParser.switchParserBuilder(Metadata.class)
+        return SwitchParser.switchParser(Metadata.class)
                 .name(name)
                 .converter(new Converter(LOGGER))
                 .description(description);
@@ -248,7 +248,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return Metadata from the given filename
+     * Returns metadata from the given filename
      */
     public static Metadata parse(FileName name)
     {
@@ -256,7 +256,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return Metadata from the name of the given folder
+     * Returns metadata from the name of the given folder
      */
     public static Metadata parse(Folder folder)
     {
@@ -276,7 +276,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      */
     public static Metadata parse(String value)
     {
-        value = Strip.trailing(value, ".world");
+        value = Strip.stripTrailing(value, ".world");
 
         Pattern pattern = Pattern.compile
                 (
@@ -546,7 +546,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return This metadata as a folder
+     * Returns this metadata as a folder
      * @see #asFileName()
      */
     public Folder asFolder()
@@ -609,68 +609,68 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return Bounds encompassing all data entities
+     * Returns bounds encompassing all data entities
      */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Rectangle dataBounds()
     {
         return dataBounds;
     }
 
     /**
-     * @return The version of the data in time
+     * Returns the version of the data in time
      */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public DataBuild dataBuild()
     {
         return dataBuild;
     }
 
     /**
-     * @return The {@link DataFormat} that the data comes from
+     * Returns the {@link DataFormat} that the data comes from
      */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public DataFormat dataFormat()
     {
         return dataFormat;
     }
 
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Precision dataPrecision()
     {
         return dataPrecision;
     }
 
     /**
-     * @return The size of this data
+     * Returns the size of this data
      */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public Bytes dataSize()
     {
         return dataSize;
     }
 
     /**
-     * @return The data's specification
+     * Returns the data's specification
      */
-    @KivaKitIncludeProperty
-    @KivaKitFormat
+    @IncludeProperty
+    @FormatProperty
     public DataSpecification dataSpecification()
     {
         return dataSpecification;
     }
 
     /**
-     * @return The supplier of the data like HERE or OSM
+     * Returns the supplier of the data like HERE or OSM
      */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public DataSupplier dataSupplier()
     {
         return dataSupplier;
     }
 
     /**
-     * @return The version of this data
+     * Returns the version of this data
      */
     public DataVersion dataVersion()
     {
@@ -684,7 +684,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      * <p>
      * HERE-UniDb-PBF-North_America-2020Q1
      */
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public String descriptor()
     {
         return dataSupplier
@@ -695,7 +695,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The number of edges
+     * Returns the number of edges
      */
     public Count edgeCount(CountType type)
     {
@@ -707,7 +707,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The exact or estimated number of edge relations
+     * Returns the exact or estimated number of edge relations
      */
     public Count edgeRelationCount(CountType type)
     {
@@ -731,7 +731,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The number of forward edges (without considering bidirectional edges)
+     * Returns the number of forward edges (without considering bidirectional edges)
      */
     public Count forwardEdgeCount(CountType type)
     {
@@ -743,7 +743,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The total number of edges, vertexes and relations in this data
+     * Returns the total number of edges, vertexes and relations in this data
      */
     public Count graphElementCount(CountType type)
     {
@@ -775,14 +775,14 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      * The common name of this data
      */
     @Override
-    @KivaKitIncludeProperty
+    @IncludeProperty
     public String name()
     {
         return name;
     }
 
     /**
-     * @return Creates a new graph based on this metadata
+     * Returns creates a new graph based on this metadata
      */
     public Graph newGraph()
     {
@@ -790,7 +790,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The exact or estimated (OSM) number of nodes in OSM data. Not relevant to UniDb.
+     * Returns the exact or estimated (OSM) number of nodes in OSM data. Not relevant to UniDb.
      */
     public Count nodeCount(CountType type)
     {
@@ -866,7 +866,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The exact or estimated number of relations
+     * Returns the exact or estimated number of relations
      */
     public Count relationCount(CountType type)
     {
@@ -951,7 +951,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The exact (UniDb) or estimated (OSM) number of vertexes
+     * Returns the exact (UniDb) or estimated (OSM) number of vertexes
      */
     public Count vertexCount(CountType type)
     {
@@ -963,7 +963,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     }
 
     /**
-     * @return The exact or estimated (OSM) number of ways in this data. Not relevant to UniDb.
+     * Returns the exact or estimated (OSM) number of ways in this data. Not relevant to UniDb.
      */
     public Count wayCount(CountType type)
     {

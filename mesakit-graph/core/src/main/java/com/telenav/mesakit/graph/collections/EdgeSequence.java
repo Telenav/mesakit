@@ -75,7 +75,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     }
 
     /**
-     * @return This forward edge sequence where edges are also returned as reverse edges if the edge is two-way
+     * Returns this forward edge sequence where edges are also returned as reverse edges if the edge is two-way
      */
     public EdgeSequence asDirectional()
     {
@@ -108,7 +108,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     }
 
     /**
-     * @return This edge sequence as a list
+     * Returns this edge sequence as a list
      */
     public List<Edge> asList()
     {
@@ -121,7 +121,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     }
 
     /**
-     * @return This edge sequence as a route. If the edge sequence doesn't form a valid route, an exception will be
+     * Returns this edge sequence as a route. If the edge sequence doesn't form a valid route, an exception will be
      * thrown.
      */
     public Route asRoute()
@@ -140,7 +140,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     }
 
     /**
-     * @return This sequence as an {@link EdgeSet}
+     * Returns this sequence as an {@link EdgeSet}
      */
     public EdgeSet asSet(Estimate estimate)
     {
@@ -148,7 +148,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     }
 
     /**
-     * @return The bounding rectangle for this sequence of edges
+     * Returns the bounding rectangle for this sequence of edges
      */
     @Override
     public Rectangle bounds()
@@ -161,7 +161,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     }
 
     /**
-     * @return The number of edges in this sequence
+     * Returns the number of edges in this sequence
      */
     public Count count()
     {
@@ -178,7 +178,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     }
 
     /**
-     * @return True if any edge in this sequence crosses the given edge
+     * Returns true if any edge in this sequence crosses the given edge
      */
     public boolean crosses(Edge that)
     {
@@ -193,7 +193,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     }
 
     /**
-     * @return The edges in this sequence within the given bounds
+     * Returns the edges in this sequence within the given bounds
      */
     public EdgeSequence intersecting(Rectangle bounds)
     {
@@ -210,7 +210,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     }
 
     /**
-     * @return The sequence of edges matching the given graph constraints
+     * Returns the sequence of edges matching the given graph constraints
      */
     public EdgeSequence matching(GraphConstraints constraints)
     {
@@ -218,7 +218,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     }
 
     /**
-     * @return The edges in this sequence that match the given matcher
+     * Returns the edges in this sequence that match the given matcher
      */
     public EdgeSequence matching(Matcher<Edge> matcher)
     {
@@ -226,7 +226,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     }
 
     /**
-     * @return The edges in this sequence of the given type
+     * Returns the edges in this sequence of the given type
      */
     public EdgeSequence ofType(Edge.Type type)
     {
@@ -282,7 +282,7 @@ public class EdgeSequence implements Iterable<Edge>, Bounded
     }
 
     /**
-     * @return The edges in this sequence within the given bounds
+     * Returns the edges in this sequence within the given bounds
      */
     public EdgeSequence within(Rectangle bounds)
     {

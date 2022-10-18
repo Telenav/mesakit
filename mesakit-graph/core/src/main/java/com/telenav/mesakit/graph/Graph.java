@@ -34,8 +34,8 @@ import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.string.AsIndentedString;
 import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.string.Differences;
+import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.core.string.ObjectIndenter;
-import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.value.count.Count;
@@ -436,7 +436,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The archive that this graph was loaded from, if any
+     * Returns the archive that this graph was loaded from, if any
      */
     public GraphArchive archive()
     {
@@ -464,7 +464,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The user defined object attached to this graph.
+     * Returns the user defined object attached to this graph.
      * <p>
      * NOTE: This method is used internally by world graph, so it's not a good idea to use it
      */
@@ -475,7 +475,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return Batches of edges of the given size
+     * Returns batches of edges of the given size
      */
     public Iterator<List<Edge>> batches(Count batchSize)
     {
@@ -483,7 +483,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The bounding rectangle that encloses all elements in this graph
+     * Returns the bounding rectangle that encloses all elements in this graph
      */
     public Rectangle bounds()
     {
@@ -491,7 +491,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return A new graph restricted to all the graph elements that intersect the given bounding rectangle
+     * Returns a new graph restricted to all the graph elements that intersect the given bounding rectangle
      */
     public final Graph clippedTo(Rectangle bounds)
     {
@@ -507,7 +507,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return True if the given edge is in this graph
+     * Returns true if the given edge is in this graph
      */
     public boolean contains(Edge edge)
     {
@@ -515,7 +515,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return True if the given edge identifier is in this graph
+     * Returns true if the given edge identifier is in this graph
      */
     public final boolean contains(EdgeIdentifier identifier)
     {
@@ -523,7 +523,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return True if the given edge relation is in this graph
+     * Returns true if the given edge relation is in this graph
      */
     public boolean contains(EdgeRelation relation)
     {
@@ -531,7 +531,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return True if the given node, way or relation identifier is in this graph
+     * Returns true if the given node, way or relation identifier is in this graph
      */
     public final boolean contains(MapIdentifier identifier)
     {
@@ -554,7 +554,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return True if the given node identifier is in this graph
+     * Returns true if the given node identifier is in this graph
      */
     public final boolean contains(MapNodeIdentifier identifier)
     {
@@ -562,7 +562,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return True if the given relation identifier is in this graph
+     * Returns true if the given relation identifier is in this graph
      */
     public final boolean contains(MapRelationIdentifier identifier)
     {
@@ -570,7 +570,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return True if the given way identifier is in this graph
+     * Returns true if the given way identifier is in this graph
      */
     public final boolean contains(PbfWayIdentifier identifier)
     {
@@ -578,7 +578,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return True if the given place identifier is in this graph
+     * Returns true if the given place identifier is in this graph
      */
     public final boolean contains(PlaceIdentifier identifier)
     {
@@ -586,7 +586,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return True if the given vertex is in this graph
+     * Returns true if the given vertex is in this graph
      */
     public boolean contains(Vertex vertex)
     {
@@ -594,7 +594,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return True if the given vertex identifier is in this graph
+     * Returns true if the given vertex identifier is in this graph
      */
     public final boolean contains(VertexIdentifier identifier)
     {
@@ -602,7 +602,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return An empty graph that is compatible with this graph's data specification and which has the same tag codecs
+     * Returns an empty graph that is compatible with this graph's data specification and which has the same tag codecs
      * and other special attributes.
      */
     public final Graph createCompatible()
@@ -611,7 +611,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return An empty graph that is compatible with the data specification in the given metadata.
+     * Returns an empty graph that is compatible with the data specification in the given metadata.
      */
     public final Graph createCompatible(Metadata metadata)
     {
@@ -619,7 +619,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return An empty graph that is compatible with this graph. Any special attributes like tag codecs will be copied
+     * Returns an empty graph that is compatible with this graph. Any special attributes like tag codecs will be copied
      * into the clone.
      */
     public final Graph createCompatible(String name)
@@ -645,7 +645,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return A copy of this graph containing only edges that match the given edge matcher
+     * Returns a copy of this graph containing only edges that match the given edge matcher
      */
     public final Graph createConstrained(Matcher<Edge> matcher)
     {
@@ -672,7 +672,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The data specification for this graph
+     * Returns the data specification for this graph
      * @see DataSpecification
      */
     public DataSpecification dataSpecification()
@@ -681,12 +681,12 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The deep differences between this graph and the given graph within the given bounds.
+     * Returns the deep differences between this graph and the given graph within the given bounds.
      */
     public final Differences differencesFrom(Graph that, Rectangle bounds, Maximum maximumDifferences)
     {
         var differences = new Differences();
-        var progress = BroadcastingProgressReporter.createProgressReporter(this);
+        var progress = BroadcastingProgressReporter.progressReporter(this);
 
         // Then compare edge counts
         if (!edgeCount().equals(that.edgeCount()))
@@ -763,7 +763,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The number of edges in this graph
+     * Returns the number of edges in this graph
      */
     public Count edgeCount()
     {
@@ -830,7 +830,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The closest edge to the given location
+     * Returns the closest edge to the given location
      */
     public final Edge edgeNearest(Location location)
     {
@@ -838,7 +838,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The closest edge to the given location
+     * Returns the closest edge to the given location
      */
     public final Edge edgeNearest(Location location, Distance near)
     {
@@ -846,7 +846,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The closest edge to the given location
+     * Returns the closest edge to the given location
      */
     public final Edge edgeNearest(Location location, Distance near, Edge.TransportMode mode)
     {
@@ -854,7 +854,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The edge store used to store edge information, generally in a compressed format in memory.
+     * Returns the edge store used to store edge information, generally in a compressed format in memory.
      */
     public final EdgeStore edgeStore()
     {
@@ -862,7 +862,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return A sequence of all edges in this graph
+     * Returns a sequence of all edges in this graph
      */
     public EdgeSequence edges()
     {
@@ -870,7 +870,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The edges whose road shape intersects the given bounding rectangle
+     * Returns the edges whose road shape intersects the given bounding rectangle
      */
     public final EdgeSequence edgesIntersecting(Rectangle bounds)
     {
@@ -878,7 +878,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The edges whose road shape intersects the given bounding rectangle which also match the given matcher
+     * Returns the edges whose road shape intersects the given bounding rectangle which also match the given matcher
      */
     public EdgeSequence edgesIntersecting(Rectangle bounds, Matcher<Edge> matcher)
     {
@@ -886,7 +886,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The edges whose road shape intersects the given bounding rectangle which also match the given matcher
+     * Returns the edges whose road shape intersects the given bounding rectangle which also match the given matcher
      */
     public EdgeSequence edgesIntersecting(Rectangle bounds, Matcher<Edge> matcher,
                                           EdgeSequence.Type type)
@@ -935,7 +935,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The edge in this graph that is equivalent to the given edge (probably an edge in another graph)
+     * Returns the edge in this graph that is equivalent to the given edge (probably an edge in another graph)
      */
     public final EdgeSet equivalentEdges(Edge edge)
     {
@@ -959,7 +959,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The number of forward edges in this graph
+     * Returns the number of forward edges in this graph
      */
     public Count forwardEdgeCount()
     {
@@ -967,7 +967,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The forward (non-reversed) edges in this graph. All forward edges have positive edge identifiers. All
+     * Returns the forward (non-reversed) edges in this graph. All forward edges have positive edge identifiers. All
      * reversed edges have negative edge identifiers.
      */
     public EdgeSequence forwardEdges()
@@ -976,7 +976,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The forward (non-reversed) edges intersecting the given bounds which match the given predicate.
+     * Returns the forward (non-reversed) edges intersecting the given bounds which match the given predicate.
      */
     public EdgeSequence forwardEdgesIntersecting(Rectangle bounds, Matcher<Edge> matcher)
     {
@@ -984,7 +984,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return Forward (non-reversed) edges that intersect the given bounds
+     * Returns forward (non-reversed) edges that intersect the given bounds
      */
     public final EdgeSequence forwardEdgesIntersecting(Rectangle bounds)
     {
@@ -992,7 +992,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The number of forward edges within the given distance of the given location
+     * Returns the number of forward edges within the given distance of the given location
      */
     public final EdgeSequence forwardEdgesNear(Location location, Distance distance)
     {
@@ -1000,7 +1000,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The store that is holding all of this graph's attributes
+     * Returns the store that is holding all of this graph's attributes
      * @see GraphStore
      */
     public ArchivedGraphStore graphStore()
@@ -1020,7 +1020,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return True if this graph is composed of sub-graphs (as in a WorldGraph)
+     * Returns true if this graph is composed of sub-graphs (as in a WorldGraph)
      */
     public boolean isComposite()
     {
@@ -1028,7 +1028,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return True if there is no data in this graph
+     * Returns true if there is no data in this graph
      */
     public final boolean isEmpty()
     {
@@ -1036,7 +1036,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return True if this is graph meets the {@link OsmDataSpecification}
+     * Returns true if this is graph meets the {@link OsmDataSpecification}
      */
     public final boolean isOsm()
     {
@@ -1044,7 +1044,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return True if the graph store for this graph is not loaded
+     * Returns true if the graph store for this graph is not loaded
      */
     public boolean isUnloaded()
     {
@@ -1109,7 +1109,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
                     if (graphStore.validator(loader.validation()).validate(this))
                     {
                         // we have succeeded in loading the graph,
-                        information(AsciiArt.textBox(Strings.format("${class} loaded $ in $", loader.getClass(),
+                        information(AsciiArt.textBox(Formatter.format("${class} loaded $ in $", loader.getClass(),
                                 metadata().descriptor(), start.elapsedSince()), asString()));
 
                         // so return its metadata.
@@ -1191,7 +1191,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return Information about the data in this graph
+     * Returns information about the data in this graph
      */
     public final Metadata metadata()
     {
@@ -1216,7 +1216,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The name of this graph from the graph {@link Metadata}.
+     * Returns the name of this graph from the graph {@link Metadata}.
      */
     @Override
     public String name()
@@ -1226,7 +1226,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return A new {@link Edge} with the given identifier, created from this graph's data specification
+     * Returns a new {@link Edge} with the given identifier, created from this graph's data specification
      */
     @SuppressWarnings("unchecked")
     public <T extends Edge> T newEdge(EdgeIdentifier identifier)
@@ -1235,7 +1235,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return A new {@link HeavyWeightEdge} with the given identifier, created from this graph's data specification
+     * Returns a new {@link HeavyWeightEdge} with the given identifier, created from this graph's data specification
      */
     @SuppressWarnings("unchecked")
     public final <T extends HeavyWeightEdge> T newHeavyWeightEdge(EdgeIdentifier identifier)
@@ -1244,7 +1244,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return A new {@link HeavyWeightPlace} with the given identifier, created from this graph's data specification
+     * Returns a new {@link HeavyWeightPlace} with the given identifier, created from this graph's data specification
      */
     @SuppressWarnings({ "unchecked" })
     public final <T extends HeavyWeightPlace> T newHeavyWeightPlace(PlaceIdentifier identifier)
@@ -1253,7 +1253,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return A new {@link HeavyWeightRelation} with the given identifier, created from this graph's data specification
+     * Returns a new {@link HeavyWeightRelation} with the given identifier, created from this graph's data specification
      */
     @SuppressWarnings("unchecked")
     public final <T extends HeavyWeightRelation> T newHeavyWeightRelation(RelationIdentifier identifier)
@@ -1262,7 +1262,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return A new {@link HeavyWeightVertex} with the given identifier, created from this graph's data specification
+     * Returns a new {@link HeavyWeightVertex} with the given identifier, created from this graph's data specification
      */
     @SuppressWarnings("unchecked")
     public final <T extends HeavyWeightVertex> T newHeavyWeightVertex(VertexIdentifier identifier)
@@ -1271,7 +1271,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return A new {@link Place} with the given identifier, created from this graph's data specification
+     * Returns a new {@link Place} with the given identifier, created from this graph's data specification
      */
     @SuppressWarnings("unchecked")
     public <T extends Place> T newPlace(PlaceIdentifier identifier)
@@ -1280,7 +1280,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return A new {@link EdgeRelation} with the given identifier, created from this graph's data specification
+     * Returns a new {@link EdgeRelation} with the given identifier, created from this graph's data specification
      */
     @SuppressWarnings("unchecked")
     public <T extends EdgeRelation> T newRelation(RelationIdentifier identifier)
@@ -1289,7 +1289,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return A new {@link ShapePoint} with the given identifier, created from this graph's data specification
+     * Returns a new {@link ShapePoint} with the given identifier, created from this graph's data specification
      */
     public final ShapePoint newShapePoint(ShapePointIdentifier identifier, Location location)
     {
@@ -1299,7 +1299,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return A new {@link Vertex} with the given identifier, created from this graph's data specification
+     * Returns a new {@link Vertex} with the given identifier, created from this graph's data specification
      */
     @SuppressWarnings("unchecked")
     public <T extends Vertex> T newVertex(VertexIdentifier identifier)
@@ -1308,7 +1308,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return A parallel {@link Stream} of edges in this graph
+     * Returns a parallel {@link Stream} of edges in this graph
      */
     public final Stream<Edge> parallelStream()
     {
@@ -1326,7 +1326,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The place for the given identifier, if any
+     * Returns the place for the given identifier, if any
      */
     public final Place placeForIdentifier(PlaceIdentifier identifier)
     {
@@ -1338,7 +1338,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return Any place within 5 meters of the given location
+     * Returns any place within 5 meters of the given location
      */
     public Place placeNear(Location location)
     {
@@ -1354,7 +1354,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The place sub-store of the graph store
+     * Returns the place sub-store of the graph store
      */
     public final PlaceStore placeStore()
     {
@@ -1362,7 +1362,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The places in this graph
+     * Returns the places in this graph
      */
     public Iterable<Place> places()
     {
@@ -1370,7 +1370,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The places inside the given bounding rectangle
+     * Returns the places inside the given bounding rectangle
      */
     public Iterable<Place> placesInside(Rectangle bounds)
     {
@@ -1378,7 +1378,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The places inside the given region
+     * Returns the places inside the given region
      */
     public final Iterable<Place> placesInside(Region<?> region)
     {
@@ -1403,7 +1403,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The closest maximum number of places to the given location within the given maximum distance with the
+     * Returns the closest maximum number of places to the given location within the given maximum distance with the
      * given minimum population
      */
     public final Iterable<Place> placesNear(Location location, Count minimumPopulation,
@@ -1413,7 +1413,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The closest maximum places from a minimum distance to the given location within the given maximum
+     * Returns the closest maximum places from a minimum distance to the given location within the given maximum
      * distance with the given minimum population
      */
     @SuppressWarnings("SameParameterValue")
@@ -1438,7 +1438,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return A list of places in this graph with a non-zero population
+     * Returns a list of places in this graph with a non-zero population
      */
     public final List<Place> placesWithNonZeroPopulation()
     {
@@ -1446,7 +1446,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return A list of places in this graph with at least the given population
+     * Returns a list of places in this graph with at least the given population
      */
     public final List<Place> placesWithPopulationOfAtLeast(Count minimumPopulation)
     {
@@ -1455,7 +1455,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The data {@link Precision} of elements in this graph (from DM5 to DM7)
+     * Returns the data {@link Precision} of elements in this graph (from DM5 to DM7)
      */
     public Precision precision()
     {
@@ -1463,7 +1463,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The number of edge relations in this graph
+     * Returns the number of edge relations in this graph
      */
     public Count relationCount()
     {
@@ -1471,7 +1471,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The relation for the given identifier
+     * Returns the relation for the given identifier
      */
     public EdgeRelation relationForIdentifier(RelationIdentifier identifier)
     {
@@ -1483,7 +1483,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The relation for the given map relation identifier, such as a PBF relation id.
+     * Returns the relation for the given map relation identifier, such as a PBF relation id.
      */
     public final EdgeRelation relationForMapRelationIdentifier(MapRelationIdentifier identifier)
     {
@@ -1491,7 +1491,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The graph store's relation sub-store
+     * Returns the graph store's relation sub-store
      */
     public final RelationStore relationStore()
     {
@@ -1499,7 +1499,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The edge relations in this graph
+     * Returns the edge relations in this graph
      */
     public Iterable<EdgeRelation> relations()
     {
@@ -1507,7 +1507,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The edge relations that intersect the given bounding rectangle
+     * Returns the edge relations that intersect the given bounding rectangle
      */
     public final RelationSet relationsIntersecting(Rectangle bounds)
     {
@@ -1515,7 +1515,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The set of relations inside the given bounds that match the given matcher predicate
+     * Returns the set of relations inside the given bounds that match the given matcher predicate
      */
     public RelationSet relationsIntersecting(Rectangle bounds, Matcher<EdgeRelation> matcher)
     {
@@ -1534,7 +1534,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return Any resource this graph was loaded from
+     * Returns any resource this graph was loaded from
      */
     public Resource resource()
     {
@@ -1546,7 +1546,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return Restriction relations intersecting the given bounds
+     * Returns restriction relations intersecting the given bounds
      */
     public final Set<EdgeRelation> restrictionRelationsIntersecting(Rectangle bounds)
     {
@@ -1562,7 +1562,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The sequence of edges that covers the given way
+     * Returns the sequence of edges that covers the given way
      */
     public Route routeForWayIdentifier(MapWayIdentifier wayIdentifier)
     {
@@ -1581,7 +1581,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The shape point at the given location
+     * Returns the shape point at the given location
      */
     public final ShapePoint shapePointForLocation(Location location)
     {
@@ -1589,7 +1589,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The graph store's shape point sub-store
+     * Returns the graph store's shape point sub-store
      */
     public final ShapePointStore shapePointStore()
     {
@@ -1601,7 +1601,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return Shape points for the given polyline
+     * Returns shape points for the given polyline
      */
     public final List<ShapePoint> shapePoints(Polyline line)
     {
@@ -1621,7 +1621,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return A {@link Stream} of the edges in this graph
+     * Returns a {@link Stream} of the edges in this graph
      */
     public final Stream<Edge> stream()
     {
@@ -1629,7 +1629,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The edge attributes that are supported by this graph.
+     * Returns the edge attributes that are supported by this graph.
      */
     public final EdgeAttributes supportedEdgeAttributes()
     {
@@ -1637,7 +1637,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The place attributes supported by this graph
+     * Returns the place attributes supported by this graph
      */
     public final PlaceAttributes supportedPlaceAttributes()
     {
@@ -1645,7 +1645,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The relation attributes supported by this graph
+     * Returns the relation attributes supported by this graph
      */
     public final RelationAttributes supportedRelationAttributes()
     {
@@ -1653,7 +1653,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The vertex attributes supported in this graph
+     * Returns the vertex attributes supported in this graph
      */
     public final VertexAttributes supportedVertexAttributes()
     {
@@ -1661,7 +1661,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return True if this graph supports the given attribute
+     * Returns true if this graph supports the given attribute
      */
     public boolean supports(Attribute<?> attribute)
     {
@@ -1669,7 +1669,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return True if this graph contains all PBF node identifier information (both node identifiers and node tags).
+     * Returns true if this graph contains all PBF node identifier information (both node identifiers and node tags).
      * Normally this information is not available in a graph, but in the case of graph editing by the OpenTerra team, it
      * is necessary for graphs to contain all information in the PBF source file or the data cannot be uploaded to the
      * OSM community. In general this information is voluminous and so it is stored on disk, and it is generally a good
@@ -1690,7 +1690,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return Turn restriction {@link EdgeRelation}s in this graph
+     * Returns turn restriction {@link EdgeRelation}s in this graph
      */
     public final Set<EdgeRelation> turnRestrictionRelations()
     {
@@ -1723,7 +1723,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The number of vertexes in this graph
+     * Returns the number of vertexes in this graph
      */
     public Count vertexCount()
     {
@@ -1745,7 +1745,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The vertex for the given node identifier, if any
+     * Returns the vertex for the given node identifier, if any
      */
     public final Vertex vertexForNodeIdentifier(MapNodeIdentifier identifier)
     {
@@ -1753,7 +1753,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return Any vertex within the given distance of the given location. It's not guaranteed that this is the closest
+     * Returns any vertex within the given distance of the given location. It's not guaranteed that this is the closest
      * vertex to the location, only that it is within the given distance.
      */
     public Vertex vertexNear(Location location, Distance near)
@@ -1766,7 +1766,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return A vertex within the given distance of the given location that is connected to at least one edge with the
+     * Returns a vertex within the given distance of the given location that is connected to at least one edge with the
      * given road functional class.
      */
     public final Vertex vertexNear(Location location, Distance near,
@@ -1783,7 +1783,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The vertex closest to the location (but no further than 1km)
+     * Returns the vertex closest to the location (but no further than 1km)
      */
     public final Vertex vertexNearest(Location location)
     {
@@ -1791,7 +1791,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The vertex nearest to the given location, within the maximum distance
+     * Returns the vertex nearest to the given location, within the maximum distance
      */
     public Vertex vertexNearest(Location location, Distance maximum)
     {
@@ -1799,7 +1799,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The vertex nearest to the given location, within the maximum distance
+     * Returns the vertex nearest to the given location, within the maximum distance
      */
     @SuppressWarnings("SameParameterValue")
     public Vertex vertexNearest(Location location, Distance maximum,
@@ -1841,7 +1841,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The vertex sub-store of the graph store for this graph
+     * Returns the vertex sub-store of the graph store for this graph
      */
     public final VertexStore vertexStore()
     {
@@ -1849,7 +1849,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return A sequence of all vertexes in this graph
+     * Returns a sequence of all vertexes in this graph
      */
     public VertexSequence vertexes()
     {
@@ -1857,7 +1857,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The vertexes inside the given bounding rectangle
+     * Returns the vertexes inside the given bounding rectangle
      */
     public VertexSequence vertexesInside(Rectangle bounds)
     {
@@ -1865,7 +1865,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The vertexes inside the given bounding rectangle that match the given matcher
+     * Returns the vertexes inside the given bounding rectangle that match the given matcher
      */
     public VertexSequence vertexesInside(Rectangle bounds, Matcher<Vertex> matcher)
     {
@@ -1873,7 +1873,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The number of ways in this graph
+     * Returns the number of ways in this graph
      */
     public final Count wayCount()
     {
@@ -1881,7 +1881,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The set of way identifiers in this graph
+     * Returns the set of way identifiers in this graph
      */
     public final Set<PbfWayIdentifier> wayIdentifiers()
     {
@@ -1894,7 +1894,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The closest edge to the given location
+     * Returns the closest edge to the given location
      */
     @SuppressWarnings("SameParameterValue")
     private Edge edgeNearest(Location location, Distance near, Heading heading,
@@ -1909,7 +1909,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * @return The set of edges matching the given edge
+     * Returns the set of edges matching the given edge
      */
     private EdgeSet edgesMatching(Edge edge)
     {

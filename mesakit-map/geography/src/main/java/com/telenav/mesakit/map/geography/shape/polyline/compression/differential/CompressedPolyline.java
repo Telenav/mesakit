@@ -133,8 +133,8 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
             {
                 var bits = encoding.bits();
 
-                var latitudeOffset = Ints.signExtend(reader.read(bits), bits);
-                var longitudeOffset = Ints.signExtend(reader.read(bits), bits);
+                var latitudeOffset = Ints.intSignExtend(reader.read(bits), bits);
+                var longitudeOffset = Ints.intSignExtend(reader.read(bits), bits);
 
                 var latitude = lastLatitude + latitudeOffset;
                 var longitude = lastLongitude + longitudeOffset;
@@ -182,8 +182,8 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
                 var bits = encoding.bits();
 
                 // If the relative latitude can be expressed by this proximity
-                if (Ints.isBetweenInclusive(latitudeOffset, minimumLatitudeOffset, maximumLatitudeOffset)
-                        && Ints.isBetweenInclusive(longitudeOffset, minimumLongitudeOffset, maximumLongitudeOffset))
+                if (Ints.intIsBetweenInclusive(latitudeOffset, minimumLatitudeOffset, maximumLatitudeOffset)
+                        && Ints.intIsBetweenInclusive(longitudeOffset, minimumLongitudeOffset, maximumLongitudeOffset))
                 {
                     // write out the proximity identifier
                     writer.write(identifier(), PROXIMITY_TYPE_BITS);
@@ -279,7 +279,7 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
     }
 
     /**
-     * @return This polyline as a byte array
+     * Returns this polyline as a byte array
      */
     public ByteList asBytes()
     {
@@ -328,7 +328,7 @@ public class CompressedPolyline extends Polyline implements CompressibleCollecti
     }
 
     /**
-     * @return A decompressed heavyweight polyline for use in testing since {@link CompressedPolyline} is already a
+     * Returns a decompressed heavyweight polyline for use in testing since {@link CompressedPolyline} is already a
      * Polyline and doesn't need to be decompressed.
      */
     public Polyline decompress()

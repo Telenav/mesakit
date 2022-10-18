@@ -126,7 +126,7 @@ public class NewWay extends BaseMutableWay
     }
 
     /**
-     * @return The connection angle with the given way
+     * Returns the connection angle with the given way
      */
     public Angle connectionAngle(NewWay that)
     {
@@ -177,7 +177,7 @@ public class NewWay extends BaseMutableWay
     }
 
     /**
-     * @return True if this way is connected to that way
+     * Returns true if this way is connected to that way
      */
     public boolean isConnected(NewWay that)
     {
@@ -185,7 +185,7 @@ public class NewWay extends BaseMutableWay
     }
 
     /**
-     * @return True if this way is the same way as that. Note that presently, this only checks the name for an exact
+     * Returns true if this way is the same way as that. Note that presently, this only checks the name for an exact
      * match.
      */
     public boolean isSameWay(NewWay that)
@@ -195,7 +195,7 @@ public class NewWay extends BaseMutableWay
     }
 
     /**
-     * @return The way's name from the OSM name tag
+     * Returns the way's name from the OSM name tag
      */
     public String name()
     {
@@ -203,7 +203,7 @@ public class NewWay extends BaseMutableWay
     }
 
     /**
-     * @return The OSM tag value for the given key
+     * Returns the OSM tag value for the given key
      */
     public String pbfTag(String key)
     {
@@ -246,7 +246,7 @@ public class NewWay extends BaseMutableWay
     }
 
     /**
-     * @return The shape of this new way
+     * Returns the shape of this new way
      */
     public Polyline shape()
     {

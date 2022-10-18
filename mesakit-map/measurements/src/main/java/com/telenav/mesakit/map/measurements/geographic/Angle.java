@@ -165,7 +165,7 @@ public class Angle implements
 
     public static SwitchParser.Builder<Angle> angleSwitchParser(String name, String description)
     {
-        return SwitchParser.switchParserBuilder(Angle.class).name(name).converter(new DegreesConverter(LOGGER))
+        return SwitchParser.switchParser(Angle.class).name(name).converter(new DegreesConverter(LOGGER))
                 .description(description);
     }
 
@@ -407,7 +407,7 @@ public class Angle implements
     }
 
     /**
-     * @return This angle reduced by one nanodegree
+     * Returns this angle reduced by one nanodegree
      */
     @Override
     public Angle decremented()
@@ -575,9 +575,9 @@ public class Angle implements
     }
 
     @Override
-    public Angle newInstance(Long degrees)
+    public Angle map(Long degrees)
     {
-        return Angle.nanodegrees(degrees);
+        return nanodegrees(degrees);
     }
 
     @Override
@@ -592,7 +592,7 @@ public class Angle implements
     }
 
     /**
-     * @return The distance on earth's surface of this angle from the center of the earth, assuming the earth is a
+     * Returns the distance on earth's surface of this angle from the center of the earth, assuming the earth is a
      * perfect sphere.
      */
     public Distance projectionOnEarthSurface()

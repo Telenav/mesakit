@@ -49,7 +49,7 @@ public class CompressedEdgeBulkSpatialIndexer extends BaseRepeater implements Na
     }
 
     /**
-     * @return A comparison result for the centers of the given edges that is suitable for use in a sort algorithm
+     * Returns a comparison result for the centers of the given edges that is suitable for use in a sort algorithm
      * @see Comparable#compareTo(Object)
      */
     public final int compareHorizontal(Edge a, Edge b)
@@ -60,7 +60,7 @@ public class CompressedEdgeBulkSpatialIndexer extends BaseRepeater implements Na
     }
 
     /**
-     * @return A comparison result for the centers of the given edges that is suitable for use in a sort algorithm.
+     * Returns a comparison result for the centers of the given edges that is suitable for use in a sort algorithm.
      * @see Comparable#compareTo(Object)
      */
     public final int compareVertical(Edge a, Edge b)

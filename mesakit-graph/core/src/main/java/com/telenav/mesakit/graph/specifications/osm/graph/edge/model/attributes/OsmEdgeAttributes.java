@@ -29,7 +29,7 @@ public class OsmEdgeAttributes extends EdgeAttributes
 
     public static OsmEdgeAttributes get()
     {
-        return OsmEdgeAttributes.singleton.get();
+        return singleton.get();
     }
 
     public class OsmEdgeAttribute extends GraphElementAttribute
