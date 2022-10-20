@@ -41,7 +41,7 @@ MesaKit provides useful APIs and tools for complex back-end map data analysis an
 [**About MesaKit**](#about)  
 [**Example Code**](https://github.com/Telenav/mesakit-examples)  
 [**Published Releases**](https://repo1.maven.org/maven2/com/telenav/mesakit/)  
-[**How to Build This Project**](https://github.com/Telenav/telenav-build/blob/release/0.9.18-SNAPSHOT/documentation/building.md) <!-- [cactus.replacement-branch-name] --> 
+[**How to Build This Project**](https://github.com/Telenav/telenav-build/blob/release/0.9.18/documentation/building.md) <!-- [cactus.replacement-branch-name] --> 
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
 
@@ -61,8 +61,8 @@ MesaKit provides useful APIs and tools for complex back-end map data analysis an
 
 [**Setup and Build**](#setup-and-build)  
 [**Development**](#development)  
-[**Javadoc**](https://telenav.github.io/mesakit/2.0.3-SNAPSHOT/javadoc)  <!-- [cactus.replacement-version] -->   
-[**CodeFlowers**](https://www.mesakit.org/2.0.3-SNAPSHOT/codeflowers/site/index.html)  <!-- [cactus.replacement-version] -->   
+[**Javadoc**](https://telenav.github.io/mesakit/0.9.18/javadoc)  <!-- [cactus.replacement-version] -->   
+[**CodeFlowers**](https://www.mesakit.org/0.9.18/codeflowers/site/index.html)  <!-- [cactus.replacement-version] -->   
 [**System Properties**](documentation/markdown/system-properties.md)
 
 <a name = "about"></a>
@@ -102,14 +102,14 @@ MesaKit provides support for:
 
 ### Setup and Build <a name = "setup-and-build"></a> &nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/box-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/box-24-2x.png 2x"/>
 
-[**Initial Setup**](https://github.com/Telenav/telenav-build/blob/release/0.9.18-SNAPSHOT/documentation/initial-setup-instructions.md)  <!-- [cactus.replacement-branch-name] -->  
-[**Building**](https://github.com/Telenav/telenav-build/blob/release/0.9.18-SNAPSHOT/documentation/building.md)  <!-- [cactus.replacement-branch-name] -->  
+[**Initial Setup**](https://github.com/Telenav/telenav-build/blob/release/0.9.18/documentation/initial-setup-instructions.md)  <!-- [cactus.replacement-branch-name] -->  
+[**Building**](https://github.com/Telenav/telenav-build/blob/release/0.9.18/documentation/building.md)  <!-- [cactus.replacement-branch-name] -->  
 
 ### Development <a name = "development"></a> &nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/gears-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/gears-32-2x.png 2x"/>
 
 [**Maven Dependencies**](maven-dependencies.md)  
-[**Developing**](https://github.com/Telenav/telenav-build/blob/release/0.9.18-SNAPSHOT/documentation/developing.md) <!-- [cactus.replacement-branch-name] -->  
-[**Releasing**](https://github.com/Telenav/telenav-build/blob/release/0.9.18-SNAPSHOT/documentation/releasing.md) <!-- [cactus.replacement-branch-name] -->
+[**Developing**](https://github.com/Telenav/telenav-build/blob/release/0.9.18/documentation/developing.md) <!-- [cactus.replacement-branch-name] -->  
+[**Releasing**](https://github.com/Telenav/telenav-build/blob/release/0.9.18/documentation/releasing.md) <!-- [cactus.replacement-branch-name] -->
 
 ### Downloads <a name = "downloads"></a>&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/down-arrow-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/down-arrow-24-2x.png 2x"/>
 
