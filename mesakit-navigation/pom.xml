@@ -23,7 +23,7 @@
 
     <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit-navigation</artifactId>
-    <version>0.9.18</version>
+    <version>0.9.19</version>
     <packaging>pom</packaging>
 
     <modules>
