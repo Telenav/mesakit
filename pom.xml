@@ -1,72 +1,183 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- //
- // © 2011-2022 Telenav, Inc.
- // Licensed under Apache License, Version 2.0
- //
- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- -->
-<project
-        xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
-        xmlns = "http://maven.apache.org/POM/4.0.0"
-        xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!--  -->
+<!-- © 2011-2022 Telenav, Inc. -->
+<!-- Licensed under Apache License, Version 2.0 -->
+<!--  -->
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<project xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>com.telenav</groupId>
-        <artifactId>telenav-superpom-project-family</artifactId>
-        <version>2.0.4</version>
+        <artifactId>telenav-root-superpom</artifactId>
+        <version>1.0.4</version>
         <relativePath/>
     </parent>
-    
-    <groupId>com.telenav.mesakit</groupId>
-    <artifactId>mesakit</artifactId>
-    <version>0.9.18</version>
-    
-    <packaging>pom</packaging>
-    <description>
-        MesaKit is a framework for developing mapping and navigation software.
-    </description>
 
-    <!-- Licensing -->
+    <groupId>com.telenav.mesakit</groupId>
+    <artifactId>mesakit-parent</artifactId>
+    <version>0.9.19</version>
+
+    <packaging>pom</packaging>
+
+    <name>Mesakit Parent</name>
+    <description>MesaKit is a framework for developing mapping and navigation software.</description>
+
+    <modules>
+        <module>mesakit</module>
+        <module>mesakit-core</module>
+        <module>mesakit-graph</module>
+        <module>mesakit-internal</module>
+        <module>mesakit-map</module>
+        <module>mesakit-navigation</module>
+    </modules>
+
+    <properties>
+        <antlr.version>4.10.1</antlr.version>
+        <apache-commons.version>3.7</apache-commons.version>
+        <commons-collections.version>3.2.2</commons-collections.version>
+        <google-maps.version>2.1.0</google-maps.version>
+        <httpcomponents.version>4.5.13</httpcomponents.version>
+        <junit.version>4.13.2</junit.version>
+        <kivakit.version>1.8.2</kivakit.version>
+        <osmosis.version>0.48.1</osmosis.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- Pull in libraries defined in Kivakit -->
+            <dependency>
+                <groupId>com.telenav.kivakit</groupId>
+                <artifactId>kivakit</artifactId>
+                <version>${kivakit.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Pull in libraries defined in Kivakit Stuff -->
+            <dependency>
+                <groupId>com.telenav.kivakit</groupId>
+                <artifactId>kivakit-stuff</artifactId>
+                <version>${kivakit.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Dependencies on modules defined in this aggregator project, Mesakit -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>mesakit</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Google Maps -->
+            <dependency>
+                <groupId>com.google.maps</groupId>
+                <artifactId>google-maps-services</artifactId>
+                <version>${google-maps.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-stdlib</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-stdlib-common</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.google.code.gson</groupId>
+                        <artifactId>gson</artifactId>
+                    </exclusion>
+                </exclusions>                
+            </dependency>
+
+            <!-- Commons Collections -->
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${commons-collections.version}</version>
+            </dependency>
+
+            <!-- Antlr -->
+            <dependency>
+                <groupId>org.antlr</groupId>
+                <artifactId>antlr4-runtime</artifactId>
+                <version>${antlr.version}</version>
+            </dependency>
+
+            <!-- Apache Commons -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${apache-commons.version}</version>
+            </dependency>
+
+            <!-- Httpcomponents -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpcomponents.version}</version>
+            </dependency>
+
+            <!-- Osmosis -->
+            <dependency>
+                <groupId>org.openstreetmap.osmosis</groupId>
+                <artifactId>osmosis-pbf</artifactId>
+                <version>${osmosis.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.openstreetmap.osmosis</groupId>
+                <artifactId>osmosis-xml</artifactId>
+                <version>${osmosis.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- Junit -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
-            <url>https://www.apache.org/licenses/LICENSfE-2.0.txt</url>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
 
-    <!-- Modules -->
 
-    <modules>
-        <module>mesakit-core</module>
-        <module>mesakit-navigation</module>
-        <module>mesakit-map</module>
-        <module>mesakit-graph</module>
-        <module>mesakit-internal</module>
-    </modules>
-
-    <!-- Source Code -->
+    <url>https://mesakit.org</url>
 
     <scm>
-        <connection>scm:git:https://Telenav/mesakit.git</connection>
-        <developerConnection>scm:git:https://Telenav/mesakit.git</developerConnection>
-        <url>https://Telenav/mesakit.git</url>
+        <connection>scm:git:https://github.com/Telenav/mesakit.git</connection>
+        <developerConnection>scm:git:https://github.com/Telenav/mesakit.git</developerConnection>
+        <url>https://github.com/Telenav/mesakit</url>
     </scm>
-
-    <!-- Project -->
-
-    <url>https://www.mesakit.org</url>
-
-    <!-- Issue Tracking -->
 
     <issueManagement>
         <system>GitHub</system>
         <url>https://github.com/Telenav/mesakit/issues</url>
     </issueManagement>
-        
 </project>

@@ -17,25 +17,27 @@
 
     <parent>
         <groupId>com.telenav.mesakit</groupId>
-        <artifactId>telenav-superpom-mesakit</artifactId>
-        <version>2.0.13</version>
-        <relativePath/>
+        <artifactId>mesakit-parent</artifactId>
+        <version>0.9.19</version>
+        <relativePath>../../../pom.xml</relativePath>
     </parent>
 
     <artifactId>mesakit-map-road-name-standardizer</artifactId>
-    <version>0.9.18</version>
-
     <dependencies>
 
         <!-- MesaKit -->
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-map-road-name-parser</artifactId>
+            <artifactId>mesakit-map-geography</artifactId>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-map-data-formats-pbf</artifactId>
+            <artifactId>mesakit-map-region</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>mesakit-map-road-name-parser</artifactId>
         </dependency>
 
         <!-- Testing -->
@@ -43,7 +45,6 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-region-testing</artifactId>
-            <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

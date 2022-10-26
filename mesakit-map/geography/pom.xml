@@ -16,14 +16,12 @@
 
     <parent>
         <groupId>com.telenav.mesakit</groupId>
-        <artifactId>telenav-superpom-mesakit</artifactId>
-        <version>2.0.13</version>
-        <relativePath/>
+        <artifactId>mesakit-parent</artifactId>
+        <version>0.9.19</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>mesakit-map-geography</artifactId>
-    <version>0.9.18</version>
-
     <dependencies>
 
         <!-- KivaKit -->
@@ -34,25 +32,8 @@
         </dependency>
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-resource</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-serialization-kryo</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-math</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-data-compression</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-collections</artifactId>
-        </dependency>
-
         <!-- MesaKit -->
 
         <dependency>
@@ -66,7 +47,6 @@
 
             <groupId>com.google.maps</groupId>
             <artifactId>google-maps-services</artifactId>
-            <version>2.0.0</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.jetbrains.kotlin</groupId>

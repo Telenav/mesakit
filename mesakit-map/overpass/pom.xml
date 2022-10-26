@@ -17,14 +17,12 @@
 
     <parent>
         <groupId>com.telenav.mesakit</groupId>
-        <artifactId>telenav-superpom-mesakit</artifactId>
-        <version>2.0.13</version>
-        <relativePath/>
+        <artifactId>mesakit-parent</artifactId>
+        <version>0.9.19</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>mesakit-map-overpass</artifactId>
-    <version>0.9.18</version>
-
     <dependencies>
 
         <!-- KivaKit -->
@@ -36,10 +34,6 @@
 
         <!-- MesaKit -->
 
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-map-geography</artifactId>
-        </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-data-formats-pbf</artifactId>

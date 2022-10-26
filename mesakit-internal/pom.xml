@@ -15,16 +15,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.telenav</groupId>
-        <artifactId>telenav-superpom-intermediate-bom</artifactId>
-        <version>2.0.3</version>
-        <relativePath/>
+        <groupId>com.telenav.mesakit</groupId>
+        <artifactId>mesakit-parent</artifactId>
+        <version>0.9.19</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit-internal</artifactId>
-    <version>0.9.18</version>
-
     <packaging>pom</packaging>
 
     <modules>
