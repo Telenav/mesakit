@@ -23,8 +23,6 @@
     </parent>
 
     <artifactId>mesakit-map-road-name-standardizer</artifactId>
-    <version>0.9.19</version>
-
     <dependencies>
 
         <!-- MesaKit -->

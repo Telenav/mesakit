@@ -23,8 +23,6 @@
     </parent>
 
     <artifactId>mesakit-graph-query</artifactId>
-    <version>0.9.19</version>
-
     <dependencies>
 
         <!-- KivaKit -->

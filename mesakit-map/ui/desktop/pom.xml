@@ -23,8 +23,6 @@
     </parent>
 
     <artifactId>mesakit-map-ui-desktop</artifactId>
-    <version>0.9.19</version>
-
     <dependencies>
 
         <!-- KivaKit -->

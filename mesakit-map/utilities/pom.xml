@@ -23,8 +23,6 @@
 
     <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit-map-utilities</artifactId>
-    <version>0.9.19</version>
-
     <packaging>pom</packaging>
 
     <modules>

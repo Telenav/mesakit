@@ -23,8 +23,6 @@
     </parent>
 
     <artifactId>mesakit-map-utilities-geohash</artifactId>
-    <version>0.9.19</version>
-
     <dependencies>
 
         <!-- MesaKit -->

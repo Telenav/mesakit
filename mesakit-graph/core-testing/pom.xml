@@ -23,8 +23,6 @@
     </parent>
 
     <artifactId>mesakit-graph-core-testing</artifactId>
-    <version>0.9.19</version>
-
     <dependencies>
 
         <!-- MesaKit -->

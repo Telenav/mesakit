@@ -22,8 +22,6 @@
     </parent>
 
     <artifactId>mesakit-map-shapefile</artifactId>
-    <version>0.9.19</version>
-
     <properties>
         <!--<maven.javadoc.skip>true</maven.javadoc.skip>-->
     </properties>
