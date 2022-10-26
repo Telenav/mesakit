@@ -127,9 +127,8 @@ public class Area implements Comparable<Area>
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof Area)
+        if (object instanceof Area that)
         {
-            var that = (Area) object;
             return asSquareMeters() == that.asSquareMeters();
         }
         return false;

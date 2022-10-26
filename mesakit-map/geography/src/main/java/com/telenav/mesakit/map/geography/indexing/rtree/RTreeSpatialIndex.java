@@ -172,9 +172,8 @@ public class RTreeSpatialIndex<Element extends Bounded & Intersectable> implemen
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof RTreeSpatialIndex)
+        if (object instanceof RTreeSpatialIndex that)
         {
-            var that = (RTreeSpatialIndex) object;
             return Objects.areEqualPairs(root, that.root);
         }
         return false;

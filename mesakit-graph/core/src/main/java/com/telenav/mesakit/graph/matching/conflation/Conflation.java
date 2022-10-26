@@ -59,9 +59,8 @@ public class Conflation
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof Conflation)
+        if (object instanceof Conflation that)
         {
-            var that = (Conflation) object;
             return base.equals(that.base);
         }
         return false;

@@ -83,9 +83,8 @@ public class WorldPlace extends Place
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof WorldPlace)
+        if (object instanceof WorldPlace that)
         {
-            var that = (WorldPlace) object;
             return location().equals(that.location());
         }
         return false;

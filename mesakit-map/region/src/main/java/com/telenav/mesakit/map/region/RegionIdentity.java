@@ -190,9 +190,8 @@ public class RegionIdentity implements StringFormattable, KryoSerializable
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof RegionIdentity)
+        if (object instanceof RegionIdentity that)
         {
-            var that = (RegionIdentity) object;
             if (hasIsoCode() && that.hasIsoCode())
             {
                 return iso().equals(that.iso());
@@ -600,9 +599,8 @@ public class RegionIdentity implements StringFormattable, KryoSerializable
     private <T> T assertNonNullAndNonEmpty(T object)
     {
         ensure(object != null);
-        if (object instanceof String)
+        if (object instanceof String string)
         {
-            var string = (String) object;
             ensure(!string.contains("null") && !string.contains("NULL"));
             ensure(!"".equals(string));
         }

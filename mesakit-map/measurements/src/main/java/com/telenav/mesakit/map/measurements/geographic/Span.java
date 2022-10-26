@@ -55,9 +55,8 @@ public class Span
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof Span)
+        if (object instanceof Span that)
         {
-            var that = (Span) object;
             return start.equals(that.start) && end.equals(that.end);
         }
         return false;

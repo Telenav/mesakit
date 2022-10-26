@@ -154,9 +154,8 @@ public class NewWay extends BaseMutableWay
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof NewWay)
+        if (object instanceof NewWay that)
         {
-            var that = (NewWay) object;
             return identifier.equals(that.identifier);
         }
         return false;

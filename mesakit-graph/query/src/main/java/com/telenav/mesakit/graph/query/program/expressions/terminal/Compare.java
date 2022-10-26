@@ -71,33 +71,17 @@ public class Compare extends Node implements BooleanExpression
                 boolean result;
                 switch (type)
                 {
-                    case EQUAL:
-                        result = leftNumber.equals(rightNumber);
-                        break;
-
-                    case NOT_EQUAL:
-                        result = !leftNumber.equals(rightNumber);
-                        break;
-
-                    case LESS_THAN:
-                        result = leftNumber < rightNumber;
-                        break;
-
-                    case GREATER_THAN:
-                        result = leftNumber > rightNumber;
-                        break;
-
-                    case LESS_THAN_OR_EQUAL:
-                        result = leftNumber <= rightNumber;
-                        break;
-
-                    case GREATER_THAN_OR_EQUAL:
-                        result = leftNumber >= rightNumber;
-                        break;
-
-                    default:
+                    case EQUAL -> result = leftNumber.equals(rightNumber);
+                    case NOT_EQUAL -> result = !leftNumber.equals(rightNumber);
+                    case LESS_THAN -> result = leftNumber < rightNumber;
+                    case GREATER_THAN -> result = leftNumber > rightNumber;
+                    case LESS_THAN_OR_EQUAL -> result = leftNumber <= rightNumber;
+                    case GREATER_THAN_OR_EQUAL -> result = leftNumber >= rightNumber;
+                    default ->
+                    {
                         unsupported("Unsupported comparison operator in expression '$'", code());
                         return false;
+                    }
                 }
                 trace("Evaluates to $", result);
                 return result;

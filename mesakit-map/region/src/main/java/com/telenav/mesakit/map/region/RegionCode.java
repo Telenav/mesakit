@@ -131,9 +131,8 @@ public class RegionCode
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof RegionCode)
+        if (object instanceof RegionCode that)
         {
-            var that = (RegionCode) object;
             return Arrays.equals(parts, that.parts);
         }
         return false;

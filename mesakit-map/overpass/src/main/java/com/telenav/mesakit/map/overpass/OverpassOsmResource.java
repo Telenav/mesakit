@@ -19,10 +19,8 @@
 package com.telenav.mesakit.map.overpass;
 
 import com.telenav.kivakit.component.BaseComponent;
-import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.network.http.HttpPostResource;
 import com.telenav.kivakit.resource.packages.PackageResource;
@@ -31,6 +29,8 @@ import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.overpass.internal.lexakai.DiagramOverpass;
 
+import static com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter.progressReporter;
+import static com.telenav.kivakit.core.string.Formatter.format;
 import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
 
 /**
@@ -65,12 +65,12 @@ class OverpassOsmResource extends BaseComponent
 
     public void safeCopyTo(File destination)
     {
-        location(bounds).safeCopyTo(destination, OVERWRITE, BroadcastingProgressReporter.progressReporter(this, "bytes"));
+        location(bounds).safeCopyTo(destination, OVERWRITE, progressReporter(this, "bytes"));
     }
 
     private HttpPostResource location(Rectangle bounds)
     {
-        var payload = Formatter.format(template, bounds.toCommaSeparatedString());
+        var payload = format(template, bounds.toCommaSeparatedString());
         return new HttpNetworkLocation(require(OverpassDataDownloader.class).HOST.http().path(this, "/api/interpreter")).post(payload);
     }
 }

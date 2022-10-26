@@ -673,10 +673,9 @@ public class VertexStore extends NodeStore<Vertex>
         var toVertexIdentifier = storeNodeLocation(toNodeIdentifier, toLocation);
 
         // If this edge is not already in a graph
-        if (edge instanceof HeavyWeightEdge)
+        if (edge instanceof HeavyWeightEdge heavyweight)
         {
             // then create new vertex objects
-            var heavyweight = (HeavyWeightEdge) edge;
             var from = graph().newHeavyWeightVertex(new VertexIdentifier(fromVertexIdentifier));
             var to = graph().newHeavyWeightVertex(new VertexIdentifier(toVertexIdentifier));
             from.location(fromLocation);

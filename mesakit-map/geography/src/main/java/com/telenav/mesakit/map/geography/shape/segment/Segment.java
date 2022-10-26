@@ -207,9 +207,8 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof Segment)
+        if (object instanceof Segment that)
         {
-            var that = (Segment) object;
             return start().equals(that.start) && end().equals(that.end());
         }
         return false;
@@ -361,26 +360,32 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
             double q;
             switch (side)
             {
-                case 0:
+                case 0 ->
+                {
                     p = -dx;
                     q = -(left - x0);
-                    break;
-                case 1:
+                }
+                case 1 ->
+                {
                     p = dx;
                     q = (right - x0);
-                    break;
-                case 2:
+                }
+                case 2 ->
+                {
                     p = -dy;
                     q = -(bottom - y0);
-                    break;
-                case 3:
+                }
+                case 3 ->
+                {
                     p = dy;
                     q = (top - y0);
-                    break;
-                default:
+                }
+                default ->
+                {
                     // Not possible, but compiler wants p and q to be assigned
                     p = 0;
                     q = 0;
+                }
             }
             var r = q / p;
             if (p == 0 && q < 0)

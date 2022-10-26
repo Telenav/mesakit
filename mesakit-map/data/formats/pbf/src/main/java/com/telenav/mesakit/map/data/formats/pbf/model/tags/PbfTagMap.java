@@ -146,9 +146,8 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof PbfTagMap)
+        if (object instanceof PbfTagMap that)
         {
-            var that = (PbfTagMap) object;
             if (size() == that.size())
             {
                 var keys = keys();
@@ -430,11 +429,11 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
             {
                 switch (value.charAt(at))
                 {
-                    case ';':
-                    case ':':
+                    case ';', ':' ->
+                    {
                         split.add(value.substring(start, at));
                         start = at + 1;
-                        break;
+                    }
                 }
             }
             if (start <= end)
@@ -507,45 +506,46 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
     {
         switch (index)
         {
-            case 0:
+            case 0 ->
+            {
                 key0 = key;
                 value0 = value;
-                break;
-
-            case 1:
+            }
+            case 1 ->
+            {
                 key1 = key;
                 value1 = value;
-                break;
-
-            case 2:
+            }
+            case 2 ->
+            {
                 key2 = key;
                 value2 = value;
-                break;
-
-            case 3:
+            }
+            case 3 ->
+            {
                 key3 = key;
                 value3 = value;
-                break;
-
-            case 4:
+            }
+            case 4 ->
+            {
                 key4 = key;
                 value4 = value;
-                break;
-
-            case 5:
+            }
+            case 5 ->
+            {
                 key5 = key;
                 value5 = value;
-                break;
-
-            case 6:
+            }
+            case 6 ->
+            {
                 key6 = key;
                 value6 = value;
-                break;
-
-            case 7:
+            }
+            case 7 ->
+            {
                 key7 = key;
                 value7 = value;
-                break;
+            }
         }
     }
 }

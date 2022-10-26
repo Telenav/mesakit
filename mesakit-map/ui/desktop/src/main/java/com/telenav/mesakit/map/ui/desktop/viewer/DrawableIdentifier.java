@@ -37,9 +37,8 @@ public class DrawableIdentifier
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof DrawableIdentifier)
+        if (object instanceof DrawableIdentifier that)
         {
-            var that = (DrawableIdentifier) object;
             return this.object.equals(that.object);
         }
         return false;

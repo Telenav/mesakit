@@ -71,9 +71,8 @@ public class BetweenCrossRoads
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof BetweenCrossRoads)
+        if (object instanceof BetweenCrossRoads that)
         {
-            var that = (BetweenCrossRoads) object;
             return Objects.isEqual(mainRoad, that.mainRoad)
                     && Objects.isEqual(firstCrossStreet, that.firstCrossStreet)
                     && Objects.isEqual(secondCrossStreet, that.secondCrossStreet);

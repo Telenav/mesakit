@@ -722,9 +722,8 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof Metadata)
+        if (object instanceof Metadata that)
         {
-            var that = (Metadata) object;
             return descriptor().equals(that.descriptor());
         }
         return false;

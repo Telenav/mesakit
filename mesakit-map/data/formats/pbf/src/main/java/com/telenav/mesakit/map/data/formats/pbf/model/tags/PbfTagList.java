@@ -185,9 +185,8 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof PbfTagList)
+        if (object instanceof PbfTagList that)
         {
-            var that = (PbfTagList) object;
             var size = size();
             if (size == that.size())
             {
@@ -516,37 +515,14 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
     {
         switch (index)
         {
-            case 0:
-                key0 = key;
-                break;
-
-            case 1:
-                key1 = key;
-                break;
-
-            case 2:
-                key2 = key;
-                break;
-
-            case 3:
-                key3 = key;
-                break;
-
-            case 4:
-                key4 = key;
-                break;
-
-            case 5:
-                key5 = key;
-                break;
-
-            case 6:
-                key6 = key;
-                break;
-
-            case 7:
-                key7 = key;
-                break;
+            case 0 -> key0 = key;
+            case 1 -> key1 = key;
+            case 2 -> key2 = key;
+            case 3 -> key3 = key;
+            case 4 -> key4 = key;
+            case 5 -> key5 = key;
+            case 6 -> key6 = key;
+            case 7 -> key7 = key;
         }
     }
 
@@ -585,40 +561,15 @@ public class PbfTagList implements Iterable<Tag>, AsIndentedString
     {
         switch (index)
         {
-            case 0:
-                value0 = value;
-                break;
-
-            case 1:
-                value1 = value;
-                break;
-
-            case 2:
-                value2 = value;
-                break;
-
-            case 3:
-                value3 = value;
-                break;
-
-            case 4:
-                value4 = value;
-                break;
-
-            case 5:
-                value5 = value;
-                break;
-
-            case 6:
-                value6 = value;
-                break;
-
-            case 7:
-                value7 = value;
-                break;
-
-            default:
-                fail("Invalid field index");
+            case 0 -> value0 = value;
+            case 1 -> value1 = value;
+            case 2 -> value2 = value;
+            case 3 -> value3 = value;
+            case 4 -> value4 = value;
+            case 5 -> value5 = value;
+            case 6 -> value6 = value;
+            case 7 -> value7 = value;
+            default -> fail("Invalid field index");
         }
     }
 

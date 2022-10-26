@@ -67,9 +67,8 @@ public class EdgeRelationMember implements AsIndentedString
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof EdgeRelationMember)
+        if (object instanceof EdgeRelationMember that)
         {
-            var that = (EdgeRelationMember) object;
             return relation.equals(that.relation) && identifier.equals(that.identifier);
         }
         return false;

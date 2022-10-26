@@ -74,9 +74,8 @@ public class Code implements CharSequence
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof Code)
+        if (object instanceof Code that)
         {
-            var that = (Code) object;
             return alphabet.equals(that.alphabet) && value.equals(that.value);
         }
         return false;

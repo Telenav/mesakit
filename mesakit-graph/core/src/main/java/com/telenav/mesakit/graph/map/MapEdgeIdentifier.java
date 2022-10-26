@@ -100,9 +100,8 @@ public class MapEdgeIdentifier
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof MapEdgeIdentifier)
+        if (object instanceof MapEdgeIdentifier that)
         {
-            var that = (MapEdgeIdentifier) object;
             return way.equals(that.way) && from.equals(that.from) && to.equals(that.to);
         }
         return false;

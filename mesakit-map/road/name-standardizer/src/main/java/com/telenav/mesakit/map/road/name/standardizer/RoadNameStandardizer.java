@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.map.road.name.standardizer;
 
-import com.telenav.kivakit.core.language.module.PackageReference;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.thread.KivaKitThread;
 import com.telenav.mesakit.map.region.locale.MapLocale;

@@ -60,15 +60,10 @@ final class BitArray
             {
                 switch (c)
                 {
-                    case '0':
-                        bits.add(false);
-                        break;
-                    case '1':
-                        bits.add(true);
-                        break;
-                    default:
-                        throw new IllegalArgumentException(
-                                "Incorrect bit array: " + bitsAsString + "; contains invalid bit value: " + c);
+                    case '0' -> bits.add(false);
+                    case '1' -> bits.add(true);
+                    default -> throw new IllegalArgumentException(
+                            "Incorrect bit array: " + bitsAsString + "; contains invalid bit value: " + c);
                 }
             }
             return this;

@@ -168,9 +168,8 @@ public class EdgeSection
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof EdgeSection)
+        if (object instanceof EdgeSection that)
         {
-            var that = (EdgeSection) object;
             return this == that;
         }
         return false;

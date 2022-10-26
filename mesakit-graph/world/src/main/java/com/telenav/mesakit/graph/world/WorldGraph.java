@@ -230,10 +230,9 @@ public class WorldGraph extends Graph
     public Edge edgeForIdentifier(EdgeIdentifier identifier)
     {
         // If we have a fully-qualified world edge identifier
-        if (identifier instanceof WorldEdgeIdentifier)
+        if (identifier instanceof WorldEdgeIdentifier worldIdentifier)
         {
             // then return the world graph edge
-            var worldIdentifier = (WorldEdgeIdentifier) identifier;
             return worldIdentifier.edge();
         }
 

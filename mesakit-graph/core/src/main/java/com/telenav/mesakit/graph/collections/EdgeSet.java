@@ -514,9 +514,8 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof EdgeSet)
+        if (object instanceof EdgeSet that)
         {
-            var that = (EdgeSet) object;
             return edges.equals(that.edges);
         }
         return false;

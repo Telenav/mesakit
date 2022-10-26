@@ -66,9 +66,8 @@ public class Symbol
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof Symbol)
+        if (object instanceof Symbol that)
         {
-            var that = (Symbol) object;
             return text.equalsIgnoreCase(that.text);
         }
         return false;

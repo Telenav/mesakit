@@ -110,9 +110,8 @@ public class Way implements Road, Iterable<Edge>
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof Way)
+        if (object instanceof Way that)
         {
-            var that = (Way) object;
             return wayIdentifier().equals(that.wayIdentifier());
         }
         return false;

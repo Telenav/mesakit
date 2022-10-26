@@ -50,9 +50,8 @@ public class Intersection
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof Intersection)
+        if (object instanceof Intersection that)
         {
-            var that = (Intersection) object;
             return Objects.isEqual(mainStreet, that.mainStreet) && Objects.isEqual(crossStreet, that.crossStreet);
         }
         return false;

@@ -61,9 +61,8 @@ public class Token
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof Token)
+        if (object instanceof Token that)
         {
-            var that = (Token) object;
             return identifier == that.identifier;
         }
         return false;

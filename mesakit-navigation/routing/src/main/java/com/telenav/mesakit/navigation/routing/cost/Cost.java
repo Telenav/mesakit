@@ -76,9 +76,8 @@ public class Cost implements Comparable<Cost>
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof Cost)
+        if (object instanceof Cost that)
         {
-            var that = (Cost) object;
             return cost == that.cost;
         }
         return false;

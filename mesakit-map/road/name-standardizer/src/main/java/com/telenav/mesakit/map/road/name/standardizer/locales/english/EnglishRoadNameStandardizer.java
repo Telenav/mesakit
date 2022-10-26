@@ -196,18 +196,10 @@ public class EnglishRoadNameStandardizer extends BaseRoadNameStandardizer
             {
                 switch (words.get(i))
                 {
-                    case "North":
-                        words.set(i, "N");
-                        break;
-                    case "South":
-                        words.set(i, "S");
-                        break;
-                    case "East":
-                        words.set(i, "E");
-                        break;
-                    case "West":
-                        words.set(i, "W");
-                        break;
+                    case "North" -> words.set(i, "N");
+                    case "South" -> words.set(i, "S");
+                    case "East" -> words.set(i, "E");
+                    case "West" -> words.set(i, "W");
                 }
             }
         }

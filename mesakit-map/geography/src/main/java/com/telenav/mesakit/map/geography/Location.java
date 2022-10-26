@@ -757,9 +757,8 @@ public class Location implements
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof Location)
+        if (object instanceof Location that)
         {
-            var that = (Location) object;
             return latitudeInDm7 == that.latitudeInDm7 && longitudeInDm7 == that.longitudeInDm7;
         }
         return false;

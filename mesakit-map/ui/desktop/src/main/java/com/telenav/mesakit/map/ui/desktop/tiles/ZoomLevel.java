@@ -156,9 +156,8 @@ public class ZoomLevel implements StringFormattable
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof ZoomLevel)
+        if (object instanceof ZoomLevel that)
         {
-            var that = (ZoomLevel) object;
             return level == that.level;
         }
         return false;

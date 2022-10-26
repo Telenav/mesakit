@@ -319,9 +319,8 @@ public abstract class GraphElement implements
                         var value = property.valueFromObject(this);
                         if (value != null && indenter.canExplore(value))
                         {
-                            if (value instanceof Iterable<?>)
+                            if (value instanceof Iterable<?> collection)
                             {
-                                var collection = (Iterable<?>) value;
                                 indenter.label(CaseFormat.camelCaseToHyphenated(propertyName));
                                 indenter.bracketed(collection, indenter::asString);
                             }
@@ -381,9 +380,8 @@ public abstract class GraphElement implements
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof GraphElement)
+        if (object instanceof GraphElement that)
         {
-            var that = (GraphElement) object;
             return identifierAsLong() == that.identifierAsLong();
         }
         return false;

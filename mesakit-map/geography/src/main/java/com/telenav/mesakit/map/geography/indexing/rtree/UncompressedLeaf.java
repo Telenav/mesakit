@@ -46,9 +46,8 @@ public class UncompressedLeaf<T extends Bounded & Intersectable> extends Leaf<T>
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof UncompressedLeaf)
+        if (object instanceof UncompressedLeaf that)
         {
-            var that = (UncompressedLeaf) object;
             return super.equals(that) && elements().equals(that.elements());
         }
         return false;

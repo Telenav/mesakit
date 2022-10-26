@@ -19,15 +19,12 @@
 package com.telenav.mesakit.graph.core.testing;
 
 import com.telenav.kivakit.core.object.Lazy;
-import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.os.Console;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.data.compression.DataCompressionKryoTypes;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsKryoTypes;
-import com.telenav.kivakit.resource.CopyMode;
-import com.telenav.kivakit.resource.compression.archive.ZipArchive;
-import com.telenav.kivakit.resource.packages.Package;
 import com.telenav.kivakit.resource.serialization.ObjectSerializerRegistry;
 import com.telenav.kivakit.serialization.gson.GsonObjectSerializer;
 import com.telenav.kivakit.serialization.gson.factory.KivaKitCoreGsonFactory;
@@ -71,13 +68,18 @@ import com.telenav.mesakit.map.region.testing.RegionUnitTest;
 
 import static com.telenav.kivakit.core.messaging.Listener.nullListener;
 import static com.telenav.kivakit.core.object.Lazy.lazy;
+import static com.telenav.kivakit.core.progress.ProgressReporter.nullProgressReporter;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.filesystem.Folder.parseFolder;
+import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
 import static com.telenav.kivakit.resource.Extension.GRAPH;
 import static com.telenav.kivakit.resource.Extension.JSON;
 import static com.telenav.kivakit.resource.Extension.OSM_PBF;
 import static com.telenav.kivakit.resource.Extension.PROPERTIES;
+import static com.telenav.kivakit.resource.FolderCopyMode.FLATTEN;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.READ;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.WRITE;
+import static com.telenav.kivakit.resource.packages.Package.parsePackage;
 import static com.telenav.kivakit.settings.SettingsRegistry.settingsFor;
 import static com.telenav.mesakit.graph.metadata.DataSupplier.OSM;
 import static com.telenav.mesakit.graph.specifications.library.pbf.PbfFileMetadataAnnotator.Mode.STRIP_UNREFERENCED_NODES;
@@ -334,7 +336,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
     private void downloadFromOverpass(String dataDescriptor, Rectangle bounds)
     {
         information("Downloading $_$", dataDescriptor, bounds.toFileString());
-        var overpass = listenTo(new OverpassDataDownloader(cacheFolder()));
+        var overpass = listenTo(register(new OverpassDataDownloader(cacheFolder())));
         var pbf = overpass.pbf(dataDescriptor, bounds);
 
         // then make sure it has metadata
@@ -362,17 +364,17 @@ public abstract class GraphUnitTest extends RegionUnitTest
     {
         // If we can't find the graph file
         var dataDescriptor = "OSM-OSM-PBF-" + name;
-        var graphFile = file(dataDescriptor, bounds).withExtension(GRAPH);
+        var graphFile = listenTo(file(dataDescriptor, bounds).withExtension(GRAPH));
         if (!graphFile.exists())
         {
             // and the PBF file doesn't exist
-            var pbfFile = file(dataDescriptor, bounds).withExtension(OSM_PBF);
+            var pbfFile = listenTo(file(dataDescriptor, bounds).withExtension(OSM_PBF));
             if (!pbfFile.exists())
             {
                 // then try to copy it from the test data folder
-                var destination = listenTo(resolveProject(GraphProject.class).graphFolder().folder("overpass"));
-                var source = listenTo(Package.parsePackage(this, GraphUnitTest.class, "data"));
-                source.copyTo(destination, CopyMode.OVERWRITE, OSM_PBF::matches, ProgressReporter.nullProgressReporter());
+                var source = listenTo(parsePackage(this, GraphUnitTest.class, "data"));
+                var destination = pbfFile.parent().mkdirs();
+                source.copyTo(destination, OVERWRITE, FLATTEN, OSM_PBF::matches, nullProgressReporter());
             }
 
             // and if we can't find it there, and it's an OSM graph being requested,
@@ -395,7 +397,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
                     if (graph != null)
                     {
                         // and if we succeeded, then save the graph file and return the graph
-                        graph.save(new GraphArchive(this, graphFile, ZipArchive.AccessMode.WRITE, ProgressReporter.nullProgressReporter()));
+                        graph.save(new GraphArchive(this, graphFile, WRITE, nullProgressReporter()));
                         return listenTo(graph);
                     }
 
@@ -413,7 +415,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
         }
         else
         {
-            return new GraphArchive(this, graphFile, READ, ProgressReporter.nullProgressReporter()).load(nullListener());
+            return new GraphArchive(this, graphFile, READ, nullProgressReporter()).load(nullListener());
         }
         return null;
     }

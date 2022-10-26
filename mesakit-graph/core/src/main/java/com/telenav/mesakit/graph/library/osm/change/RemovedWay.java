@@ -43,9 +43,8 @@ public class RemovedWay
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof RemovedWay)
+        if (object instanceof RemovedWay that)
         {
-            var that = (RemovedWay) object;
             return identifier.equals(that.identifier);
         }
         return false;

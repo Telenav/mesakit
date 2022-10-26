@@ -660,9 +660,8 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
         {
             return true;
         }
-        if (object instanceof Rectangle)
+        if (object instanceof Rectangle that)
         {
-            var that = (Rectangle) object;
             return bottomInDm7 == that.bottomInDm7
                     && leftInDm7 == that.leftInDm7
                     && topInDm7 == that.topInDm7

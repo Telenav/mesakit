@@ -26,8 +26,6 @@ import org.junit.Test;
 
 import java.util.Collection;
 
-import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
-
 /**
  * Note that the coordinates for geohashing are restricted from -85 to 85 latitude
  *

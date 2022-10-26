@@ -127,9 +127,8 @@ public class WorldEdge extends Edge
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof WorldEdge)
+        if (object instanceof WorldEdge that)
         {
-            var that = (WorldEdge) object;
             return worldCell.equals(that.worldCell) && super.equals(that);
         }
         return false;

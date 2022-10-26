@@ -130,9 +130,8 @@ public class PolylineStore implements Named, CompressibleCollection
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof PolylineStore)
+        if (object instanceof PolylineStore that)
         {
-            var that = (PolylineStore) object;
             return Objects.areEqualPairs(size(), that.size(), data, that.data, ends, that.ends);
         }
         return false;

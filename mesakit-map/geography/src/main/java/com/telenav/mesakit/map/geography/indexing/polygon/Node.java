@@ -233,7 +233,7 @@ public class Node extends Quadrant
         // Switch on the number of intersections we found
         switch (intersections.size())
         {
-            case 0:
+            case 0 ->
             {
                 // No intersections were found, so if the polygon completely contains the
                 // quadrant bounding rectangle,
@@ -246,15 +246,13 @@ public class Node extends Quadrant
                 // The quadrant is completely outside the polygon
                 return 0;
             }
-
-            case 1:
+            case 1 ->
             {
                 // A single intersection was found, so we have a leaf with just one segment
                 var a = intersections.iterator().next();
                 return spatialIndex.store().add(new Leaf(a, null, inside(a, null)));
             }
-
-            case 2:
+            case 2 ->
             {
                 // Two intersections were found, so get those two segments
                 var iterator = intersections.iterator();
@@ -283,8 +281,7 @@ public class Node extends Quadrant
                 }
                 return 0;
             }
-
-            case 3:
+            case 3 ->
             {
                 // If the bounds is not too small
                 if (bounds.widthAtBase().isGreaterThan(MINIMUM_QUADRANT_SIZE)
@@ -297,9 +294,7 @@ public class Node extends Quadrant
                 // Bounding box is too small to break down further
                 return 0;
             }
-
-            default:
-                throw new IllegalStateException();
+            default -> throw new IllegalStateException();
         }
     }
 

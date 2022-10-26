@@ -90,9 +90,8 @@ public class RoadName extends Name
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof RoadName)
+        if (object instanceof RoadName that)
         {
-            var that = (RoadName) object;
             return name().equalsIgnoreCase(that.name());
         }
         return false;

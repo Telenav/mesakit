@@ -1,6 +1,5 @@
 package com.telenav.mesakit.graph.query;
 
-import com.telenav.kivakit.core.collections.set.ObjectSet;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.interfaces.code.Callback;

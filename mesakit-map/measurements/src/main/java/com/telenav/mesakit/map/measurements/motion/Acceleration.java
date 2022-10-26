@@ -77,9 +77,8 @@ public class Acceleration
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof Acceleration)
+        if (object instanceof Acceleration that)
         {
-            var that = (Acceleration) object;
             return speed.equals(that.speed) && duration.equals(that.duration)
                     && negative == that.negative;
         }

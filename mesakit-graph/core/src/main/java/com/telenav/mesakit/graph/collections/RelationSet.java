@@ -369,9 +369,8 @@ public class RelationSet implements Set<EdgeRelation>
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof RelationSet)
+        if (object instanceof RelationSet that)
         {
-            var that = (RelationSet) object;
             return relations.equals(that.relations);
         }
         return false;
