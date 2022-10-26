@@ -10,6 +10,13 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>com.telenav</groupId>
+        <artifactId>telenav-root-superpom</artifactId>
+        <version>1.0.3</version>
+        <relativePath/>
+    </parent>
+
     <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit</artifactId>
     <version>0.9.19</version>
