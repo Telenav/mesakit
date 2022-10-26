@@ -32,7 +32,6 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-measurements</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <!-- Testing -->
