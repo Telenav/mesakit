@@ -34,25 +34,8 @@
         </dependency>
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-resource</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-serialization-kryo</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-math</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-data-compression</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-collections</artifactId>
-        </dependency>
-
         <!-- MesaKit -->
 
         <dependency>

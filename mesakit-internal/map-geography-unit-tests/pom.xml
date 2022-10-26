@@ -36,10 +36,6 @@
             <artifactId>mesakit-map-geography-testing</artifactId>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-map-geography</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.telenav.mesakit</groupId>
             <artifactId>mesakit-map-shapefile</artifactId>
         </dependency>

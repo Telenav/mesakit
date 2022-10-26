@@ -31,10 +31,6 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-map-geography</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-data-library</artifactId>
         </dependency>
 
@@ -46,31 +42,10 @@
         </dependency>
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-data-compression</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-math</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-extraction</artifactId>
         </dependency>
 
         <!-- OSM -->
-
-        <dependency>
-            <groupId>org.openstreetmap.osmosis</groupId>
-            <artifactId>osmosis-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.openstreetmap.osmosis</groupId>
-            <artifactId>osmosis-osm-binary</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.openstreetmap.osmosis</groupId>
-            <artifactId>osmosis-pbf</artifactId>
-        </dependency>
 
         <!-- Testing -->
 

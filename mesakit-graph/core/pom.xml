@@ -29,29 +29,8 @@
 
         <!-- KivaKit -->
 
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-primitive-collections</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-settings</artifactId>
-        </dependency>
-
         <!-- MesaKit -->
 
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-map-measurements</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-map-region</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-map-ui-debug</artifactId>
-        </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-overpass</artifactId>
@@ -60,19 +39,6 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-road-name-standardizer</artifactId>
         </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-map-ui-desktop</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-map-utilities-grid</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-map-data-formats-pbf</artifactId>
-        </dependency>
-
         <!-- Testing -->
 
         <dependency>
@@ -84,11 +50,6 @@
 
         <!-- Utility -->
 
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-
-    </dependencies>
+        </dependencies>
 
 </project>

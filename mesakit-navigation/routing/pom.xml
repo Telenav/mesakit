@@ -29,11 +29,6 @@
 
         <!-- KivaKit -->
 
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-core</artifactId>
-        </dependency>
-
         <!-- MesaKit -->
 
         <dependency>

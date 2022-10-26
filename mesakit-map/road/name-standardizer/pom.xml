@@ -33,11 +33,6 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-road-name-parser</artifactId>
         </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>mesakit-map-data-formats-pbf</artifactId>
-        </dependency>
-
         <!-- Testing -->
 
         <dependency>

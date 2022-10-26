@@ -29,15 +29,6 @@
 
         <!-- KivaKit -->
 
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-resource</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-serialization-gson</artifactId>
-        </dependency>
-
         <!-- MesaKit -->
 
         <dependency>
