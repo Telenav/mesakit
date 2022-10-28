@@ -30,35 +30,35 @@
         <module>mesakit</module>
         <module>mesakit-core</module>
         
-        <module>mesakit-graph/core</module>
-        <module>mesakit-graph/core-testing</module>
-        <module>mesakit-graph/query</module>
-        <module>mesakit-graph/world</module>
-        <module>mesakit-graph/world-testing</module>
-        <module>mesakit-internal/graph-core-unit-tests</module>
-        <module>mesakit-internal/map-geography-unit-tests</module>
-        <module>mesakit-internal/map-measurements-unit-tests</module>
-        <module>mesakit-internal/map-region-unit-tests</module>
-        <module>mesakit-map/cutter</module>
-        <module>mesakit-map/data/formats/pbf</module>
-        <module>mesakit-map/data/library</module>
-        <module>mesakit-map/geography</module>
-        <module>mesakit-map/geography-testing</module>
-        <module>mesakit-map/measurements</module>
-        <module>mesakit-map/measurements-testing</module>
-        <module>mesakit-map/overpass</module>
+        <module>mesakit-map/ui/desktop</module>
+        <module>mesakit-map/ui/debug</module>
         <module>mesakit-map/region</module>
         <module>mesakit-map/region-testing</module>
+        <module>mesakit-internal/graph-core-unit-tests</module>
+        <module>mesakit-map/cutter</module>
+        <module>mesakit-map/shapefile</module>
+        <module>mesakit-map/measurements</module>
+        <module>mesakit-internal/map-region-unit-tests</module>
         <module>mesakit-map/road/model</module>
+        <module>mesakit-map/measurements-testing</module>
+        <module>mesakit-map/geography</module>
+        <module>mesakit-map/utilities/geojson</module>
+        <module>mesakit-map/data/library</module>
+        <module>mesakit-map/utilities/geohash</module>
+        <module>mesakit-map/utilities/grid</module>
+        <module>mesakit-map/geography-testing</module>
+        <module>mesakit-map/data/formats/pbf</module>
+        <module>mesakit-map/overpass</module>
+        <module>mesakit-internal/map-geography-unit-tests</module>
         <module>mesakit-map/road/name-parser</module>
         <module>mesakit-map/road/name-standardizer</module>
-        <module>mesakit-map/shapefile</module>
-        <module>mesakit-map/ui/debug</module>
-        <module>mesakit-map/ui/desktop</module>
-        <module>mesakit-map/utilities/geohash</module>
-        <module>mesakit-map/utilities/geojson</module>
-        <module>mesakit-map/utilities/grid</module>
+        <module>mesakit-graph/core</module>
+        <module>mesakit-graph/world</module>
         <module>mesakit-navigation/routing</module>
+        <module>mesakit-graph/core-testing</module>
+        <module>mesakit-internal/map-measurements-unit-tests</module>
+        <module>mesakit-graph/world-testing</module>
+        <module>mesakit-graph/query</module>
     </modules>
 
     <properties>
