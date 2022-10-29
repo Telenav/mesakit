@@ -53,6 +53,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>${maven-jar-plugin.version}</version>
                 <configuration>
+                    <skipIfEmpty>true</skipIfEmpty>
                     <archive>
                         <manifestEntries>
                             <Automatic-Module-Name>mesakit.internal.map.region.unit.tests</Automatic-Module-Name>
