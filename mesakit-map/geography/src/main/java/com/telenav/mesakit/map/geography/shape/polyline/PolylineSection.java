@@ -61,9 +61,8 @@ public class PolylineSection
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof PolylineSection)
+        if (object instanceof PolylineSection that)
         {
-            var that = (PolylineSection) object;
             return shape().equals(that.shape())
                     && fromIndex == that.fromIndex
                     && toIndex == that.toIndex;

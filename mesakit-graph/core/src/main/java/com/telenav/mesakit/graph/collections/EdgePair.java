@@ -142,9 +142,8 @@ import static com.telenav.mesakit.map.measurements.geographic.Angle.degrees;
     @Override
     public boolean equals(Object other)
     {
-        if (other instanceof EdgePair)
+        if (other instanceof EdgePair that)
         {
-            var that = (EdgePair) other;
             return first().equals(that.first()) && second().equals(that.second());
         }
         return false;

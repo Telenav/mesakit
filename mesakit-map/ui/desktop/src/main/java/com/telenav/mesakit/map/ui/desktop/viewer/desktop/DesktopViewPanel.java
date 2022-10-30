@@ -187,42 +187,14 @@ class DesktopViewPanel extends KivaKitPanel implements InteractiveView, MouseMot
 
                 switch (e.getKeyChar())
                 {
-                    case 'p':
-                        state.transitionTo(PAUSED);
-                        break;
-
-                    case 'r':
-                        state.transitionTo(RUNNING);
-                        break;
-
-                    case 'n':
-                        nextFrame();
-                        break;
-
-                    case 'f':
-                        zoomToContents(percent(5));
-                        break;
-
-                    case '+':
-                    case '=':
-                    case 'i':
-                        zoomIn();
-                        break;
-
-                    case '-':
-                    case 'o':
-                        zoomOut();
-                        break;
-
-                    case '<':
-                    case 's':
-                        slowDown();
-                        break;
-
-                    case '>':
-                    case 'q':
-                        speedUp();
-                        break;
+                    case 'p' -> state.transitionTo(PAUSED);
+                    case 'r' -> state.transitionTo(RUNNING);
+                    case 'n' -> nextFrame();
+                    case 'f' -> zoomToContents(percent(5));
+                    case '+', '=', 'i' -> zoomIn();
+                    case '-', 'o' -> zoomOut();
+                    case '<', 's' -> slowDown();
+                    case '>', 'q' -> speedUp();
                 }
             }
         });

@@ -235,11 +235,9 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
 
         switch (type)
         {
-            case Bound:
-                processor.onBounds((Bound) entity);
-                break;
-
-            case Node:
+            case Bound -> processor.onBounds((Bound) entity);
+            case Node ->
+            {
 
                 // Now we're reading nodes
                 startProcessingNodes();
@@ -248,14 +246,13 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
                 var node = new PbfNode((Node) entity);
                 processor.onEntity(node);
                 processNode(node);
-                break;
-
-            case Relation:
+            }
+            case Relation ->
+            {
 
                 // If we didn't get any nodes or ways, these might not have been called yet
                 startProcessingNodes();
                 doneProcessingNodes();
-
                 startProcessingWays();
                 doneProcessingWays();
 
@@ -263,9 +260,9 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
                 var relation = new PbfRelation((Relation) entity);
                 processor.onEntity(relation);
                 processRelation(relation);
-                break;
-
-            case Way:
+            }
+            case Way ->
+            {
 
                 // If we didn't get any nodes, these might not have been called yet
                 startProcessingNodes();
@@ -278,7 +275,7 @@ public abstract class BasePbfReader extends BaseRepeater implements PbfDataSourc
                 var way = new PbfWay((Way) entity);
                 processor.onEntity(way);
                 processWay(way);
-                break;
+            }
         }
     }
 

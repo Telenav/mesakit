@@ -64,9 +64,8 @@ public class WorldRelation extends EdgeRelation
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof WorldRelation)
+        if (object instanceof WorldRelation that)
         {
-            var that = (WorldRelation) object;
             return worldCell.equals(that.worldCell) && super.equals(that);
         }
         return false;

@@ -114,9 +114,8 @@ public class WorldGraphReference implements Source<WorldGraph>, Serializable
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof WorldGraphReference)
+        if (object instanceof WorldGraphReference that)
         {
-            var that = (WorldGraphReference) object;
             return Objects.areEqualPairs(folder(), that.folder(), deployment, that.deployment);
         }
         return false;

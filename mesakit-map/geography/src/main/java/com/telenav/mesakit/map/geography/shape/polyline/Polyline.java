@@ -983,9 +983,8 @@ public class Polyline implements
     @Override
     public final boolean equals(Object object)
     {
-        if (object instanceof Polyline)
+        if (object instanceof Polyline that)
         {
-            var that = (Polyline) object;
             return isEqualTo(that);
         }
         return false;

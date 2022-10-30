@@ -123,9 +123,8 @@ public class DataBuild
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof DataBuild)
+        if (object instanceof DataBuild that)
         {
-            var that = (DataBuild) object;
             return year == that.year
                     && month == that.month
                     && day == that.day

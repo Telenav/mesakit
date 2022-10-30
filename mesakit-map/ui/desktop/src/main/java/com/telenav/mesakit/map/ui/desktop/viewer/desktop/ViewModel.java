@@ -57,9 +57,8 @@ public class ViewModel
         @Override
         public boolean equals(Object object)
         {
-            if (object instanceof Entry)
+            if (object instanceof Entry that)
             {
-                var that = (Entry) object;
                 return identifier.equals(that.identifier);
             }
             return false;

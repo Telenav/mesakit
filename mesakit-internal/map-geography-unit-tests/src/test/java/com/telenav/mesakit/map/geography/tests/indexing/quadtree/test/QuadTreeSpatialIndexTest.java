@@ -43,7 +43,7 @@ public class QuadTreeSpatialIndexTest extends GeographyUnitTest
 
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
-    @Test
+    @Test(timeout=60000)
     public void test()
     {
         var index = new QuadTreeSpatialIndex<Location>(2, Distance.miles(10));
@@ -75,7 +75,7 @@ public class QuadTreeSpatialIndexTest extends GeographyUnitTest
         ensureEqual(Count.count(10), Count.count(index.inside(rectangle)));
     }
 
-    @Test
+    @Test(timeout=60000)
     public void test4()
     {
         var index = new QuadTreeSpatialIndex<Location>(2, Distance.miles(10));
@@ -106,7 +106,7 @@ public class QuadTreeSpatialIndexTest extends GeographyUnitTest
         ensureEqual(Count.count(16), Count.count(index.inside(rectangle)));
     }
 
-    @Test
+    @Test(timeout=60000)
     public void testBoundaries()
     {
         var index = new QuadTreeSpatialIndex<Location>(8, Distance.miles(10));
@@ -131,7 +131,7 @@ public class QuadTreeSpatialIndexTest extends GeographyUnitTest
         ensureEqual(9, count);
     }
 
-    @Test
+    @Test(timeout=60000)
     public void testRandom()
     {
         for (var iteration = 0; iteration < 3; iteration++)
@@ -155,18 +155,24 @@ public class QuadTreeSpatialIndexTest extends GeographyUnitTest
                 @Override
                 protected void onRun()
                 {
-                    var count = random().randomIntExclusive(100, 1000);
-                    total.addAndGet(count);
-                    for (var i = 0; i < count; i++)
+                    try 
                     {
-                        var location = newRandomValueFactory().newLocation();
-                        index.add(location);
-                        if (rectangle.contains(location))
+                        var count = random().randomIntExclusive(100, 1000);
+                        total.addAndGet(count);
+                        for (var i = 0; i < count; i++)
                         {
-                            inside.add(location);
+                            var location = newRandomValueFactory().newLocation();
+                            index.add(location);
+                            if (rectangle.contains(location))
+                            {
+                                inside.add(location);
+                            }
                         }
                     }
-                    exited.countDown();
+                    finally 
+                    {
+                        exited.countDown();
+                    }
                 }
 
                 {

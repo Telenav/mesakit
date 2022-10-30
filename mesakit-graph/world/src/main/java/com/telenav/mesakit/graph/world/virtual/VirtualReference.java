@@ -134,17 +134,9 @@ public abstract class VirtualReference<T>
                 // Weaken the reference
                 switch (tracker.type())
                 {
-                    case SOFT:
-                        this.value = new SoftReferencedValue<>(name(), value, tracker.queue());
-                        break;
-
-                    case WEAK:
-                        this.value = new WeakReferencedValue<>(name(), value, tracker.queue());
-                        break;
-
-                    case NONE:
-                        this.value = null;
-                        break;
+                    case SOFT -> this.value = new SoftReferencedValue<>(name(), value, tracker.queue());
+                    case WEAK -> this.value = new WeakReferencedValue<>(name(), value, tracker.queue());
+                    case NONE -> this.value = null;
                 }
             }
         }

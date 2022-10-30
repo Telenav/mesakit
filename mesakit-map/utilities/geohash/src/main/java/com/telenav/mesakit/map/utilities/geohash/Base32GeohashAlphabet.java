@@ -83,9 +83,8 @@ class Base32GeohashAlphabet implements GeohashAlphabet
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof Base32GeohashAlphabet)
+        if (object instanceof Base32GeohashAlphabet that)
         {
-            var that = (Base32GeohashAlphabet) object;
             return Arrays.equals(characters, that.characters);
         }
         return false;

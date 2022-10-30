@@ -50,9 +50,8 @@ public class GraphQueryCompiler extends GraphQueryBaseVisitor<Node>
     public Program compile(ParseTree tree, Maximum maximumClosureLength)
     {
         var node = visit(tree);
-        if (node instanceof Select)
+        if (node instanceof Select select)
         {
-            var select = (Select) node;
             return new Program(select, maximumClosureLength);
         }
         return fail("Compiled query must be a select expression with a boolean query");

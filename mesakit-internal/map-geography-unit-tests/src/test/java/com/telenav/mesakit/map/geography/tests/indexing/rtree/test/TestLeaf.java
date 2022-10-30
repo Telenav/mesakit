@@ -55,9 +55,8 @@ class TestLeaf extends Leaf<Polyline>
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof TestLeaf)
+        if (object instanceof TestLeaf that)
         {
-            var that = (TestLeaf) object;
             return super.equals(that) && polylines.equals(that.polylines);
         }
         return false;

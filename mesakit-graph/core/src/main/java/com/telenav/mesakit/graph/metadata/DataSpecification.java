@@ -133,16 +133,9 @@ public abstract class DataSpecification implements NamedObject
         {
             switch (name.toLowerCase())
             {
-                case "osm":
-                    name = "Osm";
-                    break;
-
-                case "unidb":
-                    name = "UniDb";
-                    break;
-
-                default:
-                    fail("Unrecognized data specification '$'", name);
+                case "osm" -> name = "Osm";
+                case "unidb" -> name = "UniDb";
+                default -> fail("Unrecognized data specification '$'", name);
             }
 
             var className = "com.telenav.mesakit.graph.specifications." + name.toLowerCase() + "." + name + "DataSpecification";

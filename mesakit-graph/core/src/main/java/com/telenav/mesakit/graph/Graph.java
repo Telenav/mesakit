@@ -926,9 +926,8 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof Graph)
+        if (object instanceof Graph that)
         {
-            var that = (Graph) object;
             return metadata().equals(that.metadata());
         }
         return false;

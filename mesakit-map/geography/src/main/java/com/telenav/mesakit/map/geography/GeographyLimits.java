@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.map.geography;
 
-import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.value.count.Maximum;
 
 import static com.telenav.kivakit.core.messaging.Listener.consoleListener;

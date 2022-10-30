@@ -113,9 +113,8 @@ public class DataVersion
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof DataVersion)
+        if (object instanceof DataVersion that)
         {
-            var that = (DataVersion) object;
             return year == that.year && quarter == that.quarter;
         }
         return false;

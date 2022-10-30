@@ -64,9 +64,8 @@ public class GridCellIdentifier implements StringFormattable
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof GridCellIdentifier)
+        if (object instanceof GridCellIdentifier that)
         {
-            var that = (GridCellIdentifier) object;
             return longitudeIndex == that.longitudeIndex && latitudeIndex == that.latitudeIndex;
         }
         return false;

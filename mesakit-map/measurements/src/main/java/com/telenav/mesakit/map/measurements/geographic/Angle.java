@@ -481,9 +481,8 @@ public class Angle implements
     @Override
     public boolean equals(Object obj)
     {
-        if (obj instanceof Angle)
+        if (obj instanceof Angle that)
         {
-            var that = (Angle) obj;
 
             // Two angles are considered to be equal if they are pointing in the
             // same direction. In other words, -1 and 359 are equal.

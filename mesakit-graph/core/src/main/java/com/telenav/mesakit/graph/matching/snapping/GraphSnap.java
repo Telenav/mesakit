@@ -56,9 +56,8 @@ public class GraphSnap
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof GraphSnap)
+        if (object instanceof GraphSnap that)
         {
-            var that = (GraphSnap) object;
             return closestSnap.equals(that.closestSnap);
         }
         return false;

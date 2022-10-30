@@ -78,9 +78,8 @@ public class InteriorNode<T extends Bounded & Intersectable> extends Node<T>
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof InteriorNode)
+        if (object instanceof InteriorNode that)
         {
-            var that = (InteriorNode) object;
             return super.equals(that) && children.equals(that.children);
         }
         return false;

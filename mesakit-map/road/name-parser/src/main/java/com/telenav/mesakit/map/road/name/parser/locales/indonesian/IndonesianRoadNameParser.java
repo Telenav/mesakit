@@ -224,18 +224,9 @@ import static com.telenav.mesakit.map.road.name.parser.ParsedRoadName.DirectionF
                 {
                     switch (capitalization(previous, token))
                     {
-                        case LOWERCASE:
-                            builder.append(token.text().toLowerCase());
-                            break;
-
-                        case UPPERCASE:
-                            builder.append(token.text().toUpperCase());
-                            break;
-
-                        case CAPITALIZED:
-                        default:
-                            builder.append(CaseFormat.capitalizeOnlyFirstLetter(token.text()));
-                            break;
+                        case LOWERCASE -> builder.append(token.text().toLowerCase());
+                        case UPPERCASE -> builder.append(token.text().toUpperCase());
+                        default -> builder.append(CaseFormat.capitalizeOnlyFirstLetter(token.text()));
                     }
                 }
                 previous = token;

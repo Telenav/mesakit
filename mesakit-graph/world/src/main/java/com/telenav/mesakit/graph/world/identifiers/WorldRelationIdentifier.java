@@ -48,9 +48,8 @@ public class WorldRelationIdentifier extends RelationIdentifier
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof WorldRelationIdentifier)
+        if (object instanceof WorldRelationIdentifier that)
         {
-            var that = (WorldRelationIdentifier) object;
             return worldCell.equals(that.worldCell) && super.equals(that);
         }
         return false;

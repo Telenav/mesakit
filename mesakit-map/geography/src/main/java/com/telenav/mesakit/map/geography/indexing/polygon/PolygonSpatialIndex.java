@@ -118,9 +118,8 @@ public class PolygonSpatialIndex implements Intersectable, Bounded, Outline
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof PolygonSpatialIndex)
+        if (object instanceof PolygonSpatialIndex that)
         {
-            var that = (PolygonSpatialIndex) object;
             return bounds.equals(that.bounds);
         }
         return false;

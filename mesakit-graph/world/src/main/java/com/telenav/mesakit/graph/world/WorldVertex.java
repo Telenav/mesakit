@@ -104,10 +104,9 @@ public class WorldVertex extends Vertex
     public boolean equals(Object object)
     {
         // If the object is a world vertex
-        if (object instanceof WorldVertex)
+        if (object instanceof WorldVertex that)
         {
             // and the vertex is clipped or synthetic,
-            var that = (WorldVertex) object;
             if (isClipped() || isSynthetic())
             {
                 // it doesn't have an identifier that will compare with vertexes in neighboring

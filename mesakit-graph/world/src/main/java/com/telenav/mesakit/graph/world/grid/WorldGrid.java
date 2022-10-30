@@ -280,13 +280,8 @@ public class WorldGrid
         {
             switch (mode())
             {
-                case READ:
-                    index = WorldGraphIndex.load(repositoryFolder().indexFile());
-                    break;
-
-                case CREATE:
-                    index = WorldGraphIndex.create();
-                    break;
+                case READ -> index = WorldGraphIndex.load(repositoryFolder().indexFile());
+                case CREATE -> index = WorldGraphIndex.create();
             }
         }
         return index;
@@ -554,7 +549,7 @@ public class WorldGrid
 
         switch (mode)
         {
-            case READ:
+            case READ ->
             {
                 ensureNotNull(folder, "Required repository folder is missing");
                 folder.ensure(WorldGraphRepositoryFolder.Check.EXISTS);
@@ -562,15 +557,8 @@ public class WorldGrid
                 repositoryFolder = folder;
                 metadata = index().metadata();
             }
-            break;
-
-            case WRITE:
-            case CREATE:
-                repositoryFolder = folder;
-                break;
-
-            default:
-                fail("Unknown mode $", mode);
+            case WRITE, CREATE -> repositoryFolder = folder;
+            default -> fail("Unknown mode $", mode);
         }
 
         // Create grid

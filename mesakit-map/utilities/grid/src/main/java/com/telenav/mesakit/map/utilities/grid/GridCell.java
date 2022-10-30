@@ -55,9 +55,8 @@ public class GridCell extends Rectangle
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof GridCell)
+        if (object instanceof GridCell that)
         {
-            var that = (GridCell) object;
             return this == that || identifier.equals(that.identifier);
         }
         return false;

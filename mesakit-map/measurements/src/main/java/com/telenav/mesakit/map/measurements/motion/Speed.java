@@ -320,9 +320,8 @@ public class Speed implements Comparable<Speed>, LongValued
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof Speed)
+        if (object instanceof Speed that)
         {
-            var that = (Speed) object;
 
             // Two speeds that are within 0.1 mm/hour are considered equal
             return Math.abs(asMillimetersPerHour() - that.asMillimetersPerHour()) < 0.1;

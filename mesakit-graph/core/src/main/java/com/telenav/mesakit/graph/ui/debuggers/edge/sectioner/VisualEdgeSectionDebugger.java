@@ -20,8 +20,6 @@ package com.telenav.mesakit.graph.ui.debuggers.edge.sectioner;
 
 import com.telenav.kivakit.core.time.Duration;
 
-import com.telenav.kivakit.core.value.level.Percent;
-
 import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Rainbow;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner.EdgeSection;
 import com.telenav.mesakit.graph.specifications.osm.graph.loader.sectioner.EdgeSectionerDebugger;

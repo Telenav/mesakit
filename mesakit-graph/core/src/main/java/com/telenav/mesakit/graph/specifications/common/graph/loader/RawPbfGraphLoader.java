@@ -448,17 +448,9 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                 var action = processNode(store, node);
                 switch (action)
                 {
-                    case ACCEPTED:
-                        acceptedNodes.increment();
-                        break;
-
-                    case DISCARDED:
-                        discardedNodes.increment();
-                        break;
-
-                    case FILTERED_OUT:
-                        filteredNodes.increment();
-                        break;
+                    case ACCEPTED -> acceptedNodes.increment();
+                    case DISCARDED -> discardedNodes.increment();
+                    case FILTERED_OUT -> filteredNodes.increment();
                 }
                 return action;
             }
@@ -479,17 +471,9 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                 var action = processRelation(store, relation);
                 switch (action)
                 {
-                    case ACCEPTED:
-                        acceptedRelations.increment();
-                        break;
-
-                    case DISCARDED:
-                        discardedRelations.increment();
-                        break;
-
-                    case FILTERED_OUT:
-                        filteredRelations.increment();
-                        break;
+                    case ACCEPTED -> acceptedRelations.increment();
+                    case DISCARDED -> discardedRelations.increment();
+                    case FILTERED_OUT -> filteredRelations.increment();
                 }
                 return action;
             }
@@ -500,17 +484,9 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                 var action = processWay(store, way);
                 switch (action)
                 {
-                    case ACCEPTED:
-                        acceptedWays.increment();
-                        break;
-
-                    case DISCARDED:
-                        discardedWays.increment();
-                        break;
-
-                    case FILTERED_OUT:
-                        filteredWays.increment();
-                        break;
+                    case ACCEPTED -> acceptedWays.increment();
+                    case DISCARDED -> discardedWays.increment();
+                    case FILTERED_OUT -> filteredWays.increment();
                 }
                 return action;
             }
@@ -815,8 +791,8 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
 
                         switch (now)
                         {
-                            case INDETERMINATE:
-                            case INSIDE:
+                            case INDETERMINATE, INSIDE ->
+                            {
 
                                 // The 'from' location is synthetic at the border intersection,
                                 // while the 'to' node is normal.
@@ -830,11 +806,10 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                                 // and then the node itself which is inside the region.
                                 builder.add(location);
                                 nodes.add(new PbfNodeIdentifier(node));
-
                                 onCleanCutInside(node, location);
-                                break;
-
-                            case OUTSIDE:
+                            }
+                            case OUTSIDE ->
+                            {
 
                                 // The 'to' location is synthetic at the border intersection
                                 toOnBorder = true;
@@ -842,12 +817,9 @@ public abstract class RawPbfGraphLoader extends PbfGraphLoader
                                 // We left the region, so add the synthetic border intersection
                                 builder.add(intersection);
                                 nodes.add(synthetic);
-
                                 onCleanCutOutside(node, location);
-                                break;
-
-                            case ON_BORDER:
-                                throw new IllegalStateException();
+                            }
+                            case ON_BORDER -> throw new IllegalStateException();
                         }
                     }
                 }

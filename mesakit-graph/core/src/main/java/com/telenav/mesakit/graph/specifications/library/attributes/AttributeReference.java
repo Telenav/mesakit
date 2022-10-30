@@ -277,19 +277,16 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
             allocate();
         }
 
-        if (reference instanceof LongList)
+        if (reference instanceof LongList list)
         {
-            var list = (LongList) reference;
             return list.safeGet((int) index.longValue()) != 0;
         }
-        else if (reference instanceof PrimitiveSet)
+        else if (reference instanceof PrimitiveSet set)
         {
-            var set = (PrimitiveSet) reference;
             return set.contains(index.longValue());
         }
-        else if (reference instanceof PrimitiveScalarMap)
+        else if (reference instanceof PrimitiveScalarMap map)
         {
-            var map = (PrimitiveScalarMap) reference;
             return map.getScalar(index.longValue()) == 1;
         }
 
@@ -307,9 +304,8 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
             allocate();
         }
 
-        if (reference instanceof IntList)
+        if (reference instanceof IntList list)
         {
-            var list = (IntList) reference;
             return list.safeGet((int) index.longValue());
         }
 
@@ -327,9 +323,8 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
             allocate();
         }
 
-        if (reference instanceof LongList)
+        if (reference instanceof LongList list)
         {
-            var list = (LongList) reference;
             return list.safeGet((int) index.longValue());
         }
 
@@ -347,9 +342,8 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
             allocate();
         }
 
-        if (reference instanceof PrimitiveList)
+        if (reference instanceof PrimitiveList array)
         {
-            var array = (PrimitiveList) reference;
             var value = array.safeGetPrimitive((int) index.longValue());
             if (!array.isPrimitiveNull(value))
             {
@@ -357,9 +351,8 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
             }
             return null;
         }
-        else if (reference instanceof PrimitiveScalarMap)
+        else if (reference instanceof PrimitiveScalarMap array)
         {
-            var array = (PrimitiveScalarMap) reference;
             var value = array.getScalar((int) index.longValue());
             if (!array.isScalarValueNull(value))
             {
@@ -379,9 +372,8 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
             allocate();
         }
 
-        if (reference instanceof PrimitiveScalarMultiMap)
+        if (reference instanceof PrimitiveScalarMultiMap map)
         {
-            var map = (PrimitiveScalarMultiMap) reference;
             ensure(index != null);
             var values = map.getPrimitiveList(index.longValue());
             if (values != null)
@@ -402,9 +394,8 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
             allocate();
         }
 
-        if (reference instanceof PrimitiveScalarMultiMap)
+        if (reference instanceof PrimitiveScalarMultiMap map)
         {
-            var map = (PrimitiveScalarMultiMap) reference;
             ensure(index != null);
             var values = map.getSignedPrimitiveList(index.longValue());
             if (values != null)
@@ -490,9 +481,8 @@ public class AttributeReference<Referent extends NamedObject & Initializable> im
             {
                 ((PrimitiveList) attribute).setPrimitive((int) index.longValue(), value);
             }
-            else if (reference instanceof PrimitiveScalarMap)
+            else if (reference instanceof PrimitiveScalarMap map)
             {
-                var map = (PrimitiveScalarMap) reference;
                 map.putScalar(index.longValue(), value);
             }
             else if (reference instanceof PrimitiveSet)

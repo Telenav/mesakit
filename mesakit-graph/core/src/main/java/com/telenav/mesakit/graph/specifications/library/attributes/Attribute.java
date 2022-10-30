@@ -67,9 +67,8 @@ public class Attribute<T> implements Comparable<Attribute<T>>
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof Attribute)
+        if (object instanceof Attribute<?> that)
         {
-            var that = (Attribute<?>) object;
             return identifier == that.identifier;
         }
         return false;

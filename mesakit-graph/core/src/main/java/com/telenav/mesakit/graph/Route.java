@@ -1332,9 +1332,8 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof Route)
+        if (object instanceof Route that)
         {
-            var that = (Route) object;
             if (size() == that.size())
             {
                 if (this == that)

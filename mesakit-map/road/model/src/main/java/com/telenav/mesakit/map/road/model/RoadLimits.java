@@ -19,7 +19,6 @@
 package com.telenav.mesakit.map.road.model;
 
 import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.kivakit.core.messaging.Listener;
 
 import static com.telenav.kivakit.core.messaging.Listener.consoleListener;
 

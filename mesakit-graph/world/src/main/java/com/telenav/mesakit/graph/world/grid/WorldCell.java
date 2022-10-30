@@ -241,9 +241,8 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof WorldCell)
+        if (object instanceof WorldCell that)
         {
-            var that = (WorldCell) object;
             return this == that || gridCell.equals(that.gridCell);
         }
         return false;

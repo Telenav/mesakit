@@ -1125,9 +1125,8 @@ public abstract class EdgeStore extends ArchivedGraphElementStore<Edge> implemen
         }
 
         // If we've got a heavy-weight edge,
-        if (edge instanceof HeavyWeightEdge)
+        if (edge instanceof HeavyWeightEdge heavy)
         {
-            var heavy = (HeavyWeightEdge) edge;
 
             // store its vertex clip state (if any)
             if (heavy.isFromVertexClipped() == Boolean.TRUE)

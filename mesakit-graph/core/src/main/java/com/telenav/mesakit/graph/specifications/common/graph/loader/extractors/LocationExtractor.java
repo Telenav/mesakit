@@ -46,15 +46,14 @@ public class LocationExtractor extends BaseExtractor<Location, PbfEntity<?>>
     {
         switch (entity.type())
         {
-            case Node:
+            case Node ->
             {
                 var node = (PbfNode) entity;
                 var latitude = Latitude.degrees(node.latitude());
                 var longitude = Longitude.degrees(node.longitude());
                 return new Location(latitude, longitude);
             }
-
-            case Way:
+            case Way ->
             {
                 var way = (PbfWay) entity;
                 var builder = new BoundingBoxBuilder();

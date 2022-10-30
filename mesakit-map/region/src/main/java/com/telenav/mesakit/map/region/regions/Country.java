@@ -872,9 +872,8 @@ public abstract class Country extends Region<Country> implements LongValued
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof Country)
+        if (object instanceof Country that)
         {
-            var that = (Country) object;
             return identity().equals(that.identity());
         }
         return false;

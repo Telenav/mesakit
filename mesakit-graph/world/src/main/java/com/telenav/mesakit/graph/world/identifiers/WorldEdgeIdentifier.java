@@ -81,9 +81,8 @@ public class WorldEdgeIdentifier extends EdgeIdentifier
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof WorldEdgeIdentifier)
+        if (object instanceof WorldEdgeIdentifier that)
         {
-            var that = (WorldEdgeIdentifier) object;
             return worldCell.equals(that.worldCell) && super.equals(that);
         }
         return false;

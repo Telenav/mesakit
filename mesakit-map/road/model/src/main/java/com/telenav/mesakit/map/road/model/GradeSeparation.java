@@ -100,9 +100,8 @@ public class GradeSeparation implements LongValued
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof GradeSeparation)
+        if (object instanceof GradeSeparation that)
         {
-            var that = (GradeSeparation) object;
             return level == that.level;
         }
         return false;

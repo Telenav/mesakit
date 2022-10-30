@@ -121,9 +121,8 @@ public class SplitPolylineStore implements
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof SplitPolylineStore)
+        if (object instanceof SplitPolylineStore that)
         {
-            var that = (SplitPolylineStore) object;
             return Objects.areEqualPairs(stores, that.stores, indexToStore, that.indexToStore,
                     indexToStoreIndex, that.indexToStoreIndex);
         }

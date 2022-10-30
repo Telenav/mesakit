@@ -20,7 +20,6 @@ package com.telenav.mesakit.map.region;
 
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.kivakit.core.messaging.Listener;
 
 import static com.telenav.kivakit.core.messaging.Listener.consoleListener;
 

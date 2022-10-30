@@ -888,19 +888,16 @@ public abstract class Region<T extends Region<T>> implements
             }
             return parent().geofabrikPath() + "/" + geofabrikize(name);
         }
-        if (this instanceof State)
+        if (this instanceof State state)
         {
-            var state = (State) this;
             return parent().geofabrikPath() + "/" + geofabrikize(state.name());
         }
-        if (this instanceof County)
+        if (this instanceof County county)
         {
-            var county = (County) this;
             return parent().geofabrikPath() + "/" + geofabrikize(county.name());
         }
-        if (this instanceof MetropolitanArea)
+        if (this instanceof MetropolitanArea metro)
         {
-            var metro = (MetropolitanArea) this;
             return parent().geofabrikPath() + "/" + geofabrikize(metro.name());
         }
         return fail("Can't form geofabrik path for " + identity().mesakit());

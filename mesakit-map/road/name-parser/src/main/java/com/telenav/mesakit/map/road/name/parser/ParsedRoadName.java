@@ -232,9 +232,8 @@ import com.telenav.mesakit.map.road.model.RoadName;
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof ParsedRoadName)
+        if (object instanceof ParsedRoadName that)
         {
-            var that = (ParsedRoadName) object;
             return Objects.areEqualPairs(baseName, that.baseName, type, that.type, direction,
                     that.direction, directionFormat, that.directionFormat);
         }

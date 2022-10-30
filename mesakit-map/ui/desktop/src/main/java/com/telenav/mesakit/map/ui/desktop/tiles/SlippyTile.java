@@ -148,9 +148,8 @@ public class SlippyTile
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof SlippyTile)
+        if (object instanceof SlippyTile that)
         {
-            var that = (SlippyTile) object;
             return x == that.x && y == that.y && zoom.equals(that.zoom);
         }
         return false;

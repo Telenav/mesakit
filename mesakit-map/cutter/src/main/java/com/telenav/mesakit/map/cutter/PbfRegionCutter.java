@@ -113,9 +113,8 @@ public class PbfRegionCutter
             {
                 if (resource.sizeInBytes().isZero())
                 {
-                    if (resource instanceof File)
+                    if (resource instanceof File file)
                     {
-                        var file = (File) resource;
                         file.delete();
                         if (file.parent().isEmpty())
                         {

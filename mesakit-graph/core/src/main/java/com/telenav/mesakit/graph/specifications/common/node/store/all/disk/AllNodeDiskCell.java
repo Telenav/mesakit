@@ -42,9 +42,8 @@ public class AllNodeDiskCell
     @Override
     public boolean equals(Object object)
     {
-        if (object instanceof AllNodeDiskCell)
+        if (object instanceof AllNodeDiskCell that)
         {
-            var that = (AllNodeDiskCell) object;
             return latitude == that.latitude && longitude == that.longitude;
         }
         return false;
