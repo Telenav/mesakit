@@ -23,7 +23,6 @@
 
     <packaging>pom</packaging>
 
-    <name>Mesakit Parent</name>
     <description>MesaKit is a framework for developing mapping and navigation software.</description>
 
     <modules>

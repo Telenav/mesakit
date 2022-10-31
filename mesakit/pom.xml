@@ -23,7 +23,6 @@
 
     <packaging>pom</packaging>
 
-    <name>Mesakit</name>
     <description>Bill Of Materials for Mesakit.
         Import this pom as a pom-type, import scope dependency in your dependencyManagement
         section to depend on a consistent set of versions of mesakit.</description>
