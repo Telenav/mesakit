@@ -32,9 +32,7 @@ import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.string.AsIndentedString;
-import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.string.Differences;
-import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.core.string.ObjectIndenter;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Bytes;
@@ -133,6 +131,9 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 import static com.telenav.kivakit.core.messaging.context.CallStack.Matching.SUBCLASS;
 import static com.telenav.kivakit.core.messaging.context.CallStack.Proximity.DISTANT;
+import static com.telenav.kivakit.core.string.AsciiArt.textBox;
+import static com.telenav.kivakit.core.string.Formatter.format;
+import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 import static com.telenav.mesakit.graph.Metadata.CountType.REQUIRE_EXACT;
 import static com.telenav.mesakit.graph.Metadata.VALIDATE_EXCEPT_STATISTICS;
 import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.EDGES;
@@ -446,7 +447,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     @Override
     public ObjectIndenter asString(Format format, ObjectIndenter indenter)
     {
-        indenter.labeled("resource", resource().path().asContraction(120));
+        indenter.labeled("resource", resource().path().asContraction(100));
         indenter.indented("metadata", () -> metadata().asString(format, indenter));
         return indenter;
     }
@@ -673,6 +674,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
 
     /**
      * Returns the data specification for this graph
+     *
      * @see DataSpecification
      */
     public DataSpecification dataSpecification()
@@ -1000,6 +1002,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
 
     /**
      * Returns the store that is holding all of this graph's attributes
+     *
      * @see GraphStore
      */
     public ArchivedGraphStore graphStore()
@@ -1078,7 +1081,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
         {
             // Load the graph
             var metadata = loader.onLoad(graphStore, constraints);
-            if (metadata != null && metadata.edgeCount(Metadata.CountType.ALLOW_ESTIMATE).isNonZero()
+            if (metadata != null && metadata.edgeCount(ALLOW_ESTIMATE).isNonZero()
                     && metadata.validator(loader.validation()).validate(this))
             {
                 // flush any queued changes to the graph store,
@@ -1108,7 +1111,7 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
                     if (graphStore.validator(loader.validation()).validate(this))
                     {
                         // we have succeeded in loading the graph,
-                        information(AsciiArt.textBox(Formatter.format("${class} loaded $ in $", loader.getClass(),
+                        information(textBox(format("${class} loaded $ in $", loader.getClass(),
                                 metadata().descriptor(), start.elapsedSince()), asString()));
 
                         // so return its metadata.
@@ -1252,7 +1255,8 @@ import static com.telenav.mesakit.graph.collections.EdgeSequence.Type.FORWARD_ED
     }
 
     /**
-     * Returns a new {@link HeavyWeightRelation} with the given identifier, created from this graph's data specification
+     * Returns a new {@link HeavyWeightRelation} with the given identifier, created from this graph's data
+     * specification
      */
     @SuppressWarnings("unchecked")
     public final <T extends HeavyWeightRelation> T newHeavyWeightRelation(RelationIdentifier identifier)

@@ -40,6 +40,8 @@ import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
+import static com.telenav.kivakit.core.string.AsciiArt.bottomLine;
+import static com.telenav.kivakit.core.string.AsciiArt.topLine;
 import static com.telenav.kivakit.core.vm.Properties.isSystemPropertyOrEnvironmentVariableTrue;
 import static com.telenav.mesakit.graph.Metadata.VALIDATE_EXCEPT_STATISTICS;
 
@@ -56,6 +58,7 @@ import static com.telenav.mesakit.graph.Metadata.VALIDATE_EXCEPT_STATISTICS;
  * @see PbfGraphLoader
  * @see PbfToGraphConverter
  */
+@SuppressWarnings("UnusedReturnValue")
 public final class OsmPbfGraphLoader extends PbfGraphLoader
 {
     /** Data from the first pass of analyzing the PBF input */
@@ -112,7 +115,7 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
             metadata.assertValid(VALIDATE_EXCEPT_STATISTICS);
 
             // Next, estimate how many sectioned edges there will be
-            information(AsciiArt.topLine(30, "Sectioning Ways"));
+            information(topLine("Sectioning Ways"));
             var estimatedSectionedEdges = raw.forwardEdgeCount().times(6);
             information("Estimating there will be $ sectioned edges", estimatedSectionedEdges);
 
@@ -141,7 +144,7 @@ public final class OsmPbfGraphLoader extends PbfGraphLoader
             }
             waySectioner.addListener(this);
             metadata = destination.load(waySectioner, constraints);
-            information(AsciiArt.bottomLine(30, "Sectioning Ways"));
+            information(bottomLine(80, "Sectioning Ways"));
             if (metadata != null)
             {
                 // free the raw graph and the intersection map,

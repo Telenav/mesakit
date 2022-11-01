@@ -18,14 +18,12 @@
 
 package com.telenav.mesakit.map.region.border.cache;
 
-import com.telenav.kivakit.core.collections.map.MultiMap;
 import com.telenav.kivakit.component.BaseComponent;
+import com.telenav.kivakit.core.collections.map.MultiMap;
 import com.telenav.kivakit.core.io.IO;
 import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
-import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.project.ProjectTrait;
-import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.core.thread.locks.Lock;
 import com.telenav.kivakit.core.time.Time;
@@ -45,7 +43,6 @@ import com.telenav.kivakit.network.http.secure.SecureHttpNetworkLocation;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.resource.FileName;
 import com.telenav.kivakit.resource.Resource;
-import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.kivakit.serialization.core.SerializationSession;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
@@ -98,9 +95,12 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.core.ensure.Ensure.ensureEqual;
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.kivakit.core.messaging.Listener.consoleListener;
+import static com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter.progressReporter;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
+import static com.telenav.kivakit.core.string.AsciiArt.textBox;
 import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.READ;
+import static com.telenav.kivakit.resource.compression.archive.ZipArchive.zipArchive;
 import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE_SERIALIZATION_SESSION;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.DISCARDED;
@@ -496,7 +496,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
             // and the zip file target we're going to download to and unzip.
             var jar = localJar(NETWORK_PATH.fileName());
             trace("Trying to open $", jar);
-            var archive = ZipArchive.zipArchive(this, jar, READ);
+            var archive = zipArchive(this, jar, READ);
             try
             {
                 // If archive isn't valid,
@@ -517,17 +517,17 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
                     try
                     {
                         // try to download the data into the cache
-                        information(AsciiArt.textBox("Downloading", "from: $\nto: $",
-                                NETWORK_PATH.asContraction(80), jar.path().asContraction(80)) + "\n ");
-                        var downloadProgress = BroadcastingProgressReporter.progressReporter(this, "bytes");
+                        information(textBox("Downloading", "FROM: $\n  TO: $",
+                                NETWORK_PATH.asContraction(80),
+                                jar.path().asContraction(80)) + "\n ");
+                        var downloadProgress = progressReporter(this, "bytes");
                         downloadProgress.start("Downloading");
-                        information("Downloading $ to $", source, jar);
                         cache().add(source.get(), OVERWRITE, downloadProgress);
                         downloadProgress.end("Downloaded");
 
                         // and try to open the archive again
                         trace("Trying to open $", jar);
-                        archive = ZipArchive.zipArchive(this, jar, READ);
+                        archive = zipArchive(this, jar, READ);
                     }
                     catch (Throwable e)
                     {
@@ -727,7 +727,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
     {
         synchronized (cacheLock)
         {
-            information(AsciiArt.textBox("Building " + type().getSimpleName() + " Borders",
+            information(textBox("Building " + type().getSimpleName() + " Borders",
                     "Building borders from $\nThis may take a little while...", resource.fileName()));
 
             var start = Time.now();

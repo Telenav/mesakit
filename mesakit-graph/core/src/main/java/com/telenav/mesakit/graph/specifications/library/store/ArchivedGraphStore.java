@@ -23,8 +23,6 @@ import com.telenav.kivakit.core.language.reflection.Type;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
-import com.telenav.kivakit.core.string.AsciiArt;
-import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.interfaces.loading.Unloadable;
 import com.telenav.kivakit.resource.Resource;
@@ -34,6 +32,8 @@ import com.telenav.mesakit.graph.specifications.common.element.ArchivedGraphElem
 import com.telenav.mesakit.graph.specifications.library.attributes.AttributeSet;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.string.AsciiArt.textBox;
+import static com.telenav.kivakit.core.string.Formatter.format;
 
 @SuppressWarnings("unused") public abstract class ArchivedGraphStore extends GraphStore
 {
@@ -115,7 +115,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
         loaded(archive);
 
         // Done!
-        graph().information(AsciiArt.textBox(Formatter.format("Loaded from $ in $",
+        graph().information(textBox(format("Loaded from $ in $",
                 graph().metadata().descriptor(), start.elapsedSince()), graph().asString()));
     }
 
@@ -238,7 +238,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
         report.add("output: " + archive);
         report.add("elapsed: " + start.elapsedSince());
         report.add(graph().asString());
-        information(AsciiArt.textBox(Formatter.format("Saved $", metadata().descriptor()), report.join("\n")));
+        information(textBox(format("Saved $", metadata().descriptor()), report.join("\n")));
     }
 
     /**

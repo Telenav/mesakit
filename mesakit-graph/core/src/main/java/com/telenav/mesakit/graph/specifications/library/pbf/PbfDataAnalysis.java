@@ -19,10 +19,7 @@
 package com.telenav.mesakit.graph.specifications.library.pbf;
 
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
-import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.core.string.ObjectIndenter;
-import com.telenav.kivakit.core.string.AsciiArt;
-import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.kivakit.primitive.collections.set.SplitLongSet;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.specifications.common.node.store.all.disk.PbfAllNodeDiskStores;
@@ -40,8 +37,13 @@ import org.openstreetmap.osmosis.core.domain.v0_6.WayNode;
 import java.util.Collection;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.string.AsciiArt.maximumWidth;
+import static com.telenav.kivakit.core.string.AsciiArt.textBox;
+import static com.telenav.kivakit.core.string.AsciiArt.widestLine;
+import static com.telenav.kivakit.interfaces.string.StringFormattable.Format.USER_MULTILINE;
 import static com.telenav.mesakit.graph.Metadata.CountType.ALLOW_ESTIMATE;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
+import static java.lang.Math.max;
 
 /**
  * Holds information obtained by analyzing an PBF resource, including basic information:
@@ -59,6 +61,7 @@ import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcess
  *
  * @author jonathanl (shibo)
  */
+@SuppressWarnings("unused")
 public class PbfDataAnalysis extends BaseRepeater
 {
     public enum AnalysisType
@@ -187,9 +190,12 @@ public class PbfDataAnalysis extends BaseRepeater
                 .withWayCount(statistics.ways())
                 .withRelationCount(statistics.relations());
 
-        var indenter = new ObjectIndenter(StringFormattable.Format.USER_MULTILINE);
-        indenter.indented("metadata", () -> metadata().asString(StringFormattable.Format.USER_MULTILINE, indenter));
-        information(AsciiArt.textBox(Formatter.format("PBF Data Analysis of $", fileName), indenter.toString()));
+        var indenter = new ObjectIndenter(USER_MULTILINE);
+        indenter.indented("metadata", () -> metadata().asString(USER_MULTILINE, indenter));
+        indenter.indented("file", fileName::name);
+        var indented = indenter.toString();
+        information(textBox(max(maximumWidth(), widestLine(indented)),
+                "PBF Data Analysis", indented));
     }
 
     public void freeIntersectionMap()
@@ -203,9 +209,9 @@ public class PbfDataAnalysis extends BaseRepeater
     }
 
     /**
-     * Returns true if the PBF data includes way node locations. This is determined by looking at {@link
-     * WayNode#getLatitude()} and {@link WayNode#getLongitude()} rather than at the PBF metadata, since looking at the
-     * actual values is more likely to be accurate than looking at the metadata in the header.
+     * Returns true if the PBF data includes way node locations. This is determined by looking at
+     * {@link WayNode#getLatitude()} and {@link WayNode#getLongitude()} rather than at the PBF metadata, since looking
+     * at the actual values is more likely to be accurate than looking at the metadata in the header.
      */
     public boolean hasWayNodeLocations()
     {
@@ -281,7 +287,7 @@ public class PbfDataAnalysis extends BaseRepeater
         if (wayFilter.accepts(way))
         {
             // Possibly increase the highest identifier
-            highestNodeIdentifier = Math.max(highestNodeIdentifier, way.identifierAsLong());
+            highestNodeIdentifier = max(highestNodeIdentifier, way.identifierAsLong());
 
             // Increase reference counts to way nodes and store identifiers for later
             processWayNodes(way);
@@ -302,7 +308,7 @@ public class PbfDataAnalysis extends BaseRepeater
             this.wayNodes.add(nodeIdentifier);
 
             // Possibly increase the highest node identifier
-            highestNodeIdentifier = Math.max(highestNodeIdentifier, nodeIdentifier);
+            highestNodeIdentifier = max(highestNodeIdentifier, nodeIdentifier);
 
             // If way nodes have locations, make a note of it
             hasWayNodeLocations = hasWayNodeLocations

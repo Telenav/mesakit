@@ -42,6 +42,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static com.telenav.kivakit.core.string.AsciiArt.bottomLine;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.ACCEPTED;
 import static com.telenav.mesakit.map.data.formats.pbf.processing.PbfDataProcessor.Action.FILTERED_OUT;
 
@@ -140,7 +141,7 @@ public class SoftCut extends Cut
                 return FILTERED_OUT;
             }
         });
-        LOGGER.information(AsciiArt.bottomLine(20, "Done Analyzing $", data.resource()));
+        LOGGER.information(bottomLine(80, "Done Analyzing $", data.resource()));
     }
 
     private void checkRegionIndex(Integer regionIndex)
@@ -260,7 +261,7 @@ public class SoftCut extends Cut
                 return ACCEPTED;
             }
         });
-        LOGGER.information(AsciiArt.bottomLine(20, "Done Extracting Cells From $", data.resource()));
+        LOGGER.information(bottomLine(80, "Done Extracting Cells From $", data.resource()));
     }
 
     private boolean isSoftCut(Region region, PbfWay way)

@@ -19,7 +19,6 @@
 package com.telenav.mesakit.map.data.formats.pbf.processing;
 
 import com.telenav.kivakit.core.messaging.Broadcaster;
-import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.mutable.MutableValue;
@@ -27,18 +26,21 @@ import com.telenav.kivakit.resource.Resourceful;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;
+import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfProcessing;
 import com.telenav.mesakit.map.data.formats.pbf.model.entities.PbfNode;
 import com.telenav.mesakit.map.data.formats.pbf.processing.readers.SerialPbfReader;
-import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfProcessing;
 
 import java.util.Map;
 
+import static com.telenav.kivakit.core.string.AsciiArt.bottomLine;
+
 /**
- * A source of PBF data which can be processed by an {@link PbfDataProcessor}. The method {@link
- * #process(PbfDataProcessor)} pushes data to the data processor object, which processes the ways, nodes and relations
- * in receives. The number of ways, nodes and relations in the data source can be retrieved with {@link #ways()}, {@link
- * #nodes()} and {@link #relations()}, respectively. Metadata from the PBF file can be accessed with {@link
- * #metadata()}. The methods {@link #onStart()} are called {@link #onEnd()} are called before and after processing.
+ * A source of PBF data which can be processed by an {@link PbfDataProcessor}. The method
+ * {@link #process(PbfDataProcessor)} pushes data to the data processor object, which processes the ways, nodes and
+ * relations in receives. The number of ways, nodes and relations in the data source can be retrieved with
+ * {@link #ways()}, {@link #nodes()} and {@link #relations()}, respectively. Metadata from the PBF file can be accessed
+ * with {@link #metadata()}. The methods {@link #onStart()} are called {@link #onEnd()} are called before and after
+ * processing.
  *
  * @author jonathanl (shibo)
  */
@@ -125,7 +127,7 @@ public interface PbfDataSource extends Resourceful, Broadcaster
         finally
         {
             onEnd();
-            information(AsciiArt.bottomLine(30, "Completed processing in $", start.elapsedSince()));
+            information(bottomLine(80, "Completed processing in $", start.elapsedSince()));
         }
     }
 
