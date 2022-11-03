@@ -24,20 +24,20 @@ This module contains code for working with the geojason map data presentation fo
 
 
 
-[**Dependencies**](#dependencies) | [**Class Diagrams**](#class-diagrams) | [**Package Diagrams**](#package-diagrams) | [**Javadoc**](#javadoc)
+[**Dependencies**](#dependencies) | [**Code Quality**](#code-quality) | [**Class Diagrams**](#class-diagrams) | [**Package Diagrams**](#package-diagrams)
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512-2x.png 2x"/>
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/dependencies-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.mesakit.org/0.9.17/lexakai/mesakit/mesakit-map/utilities/geojson/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/0.9.19/lexakai/mesakit/mesakit-map/utilities/geojson/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-utilities-geojson</artifactId>
-        <version>0.9.17</version>
+        <version>0.9.19</version>
     </dependency>
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
@@ -50,6 +50,20 @@ This module contains code for working with the geojason map data presentation fo
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
 
+### Code Quality <a name="code-quality"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/ruler-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/ruler-32-2x.png 2x"/>
+
+Code quality for this project is 0.0%.  
+  
+&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meters/meter-0-96.png" srcset="https://telenav.github.io/telenav-assets/images/meters/meter-0-96-2x.png 2x"/>
+
+| Measurement   | Value                    |
+|---------------|--------------------------|
+| Stability     | 0.0%&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meters/meter-0-96.png" srcset="https://telenav.github.io/telenav-assets/images/meters/meter-0-96-2x.png 2x"/>     |
+| Testing       | 0.0%&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meters/meter-0-96.png" srcset="https://telenav.github.io/telenav-assets/images/meters/meter-0-96-2x.png 2x"/>       |
+| Documentation | 0.0%&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meters/meter-0-96.png" srcset="https://telenav.github.io/telenav-assets/images/meters/meter-0-96-2x.png 2x"/> |
+
+<img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
+
 ### Class Diagrams <a name="class-diagrams"></a> &nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/diagram-40.png" srcset="https://telenav.github.io/telenav-assets/images/icons/diagram-40-2x.png 2x"/>
 
 None
@@ -58,32 +72,20 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/box-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/box-24-2x.png 2x"/>
 
-[*com.telenav.mesakit.map.utilities.geojson*](https://www.mesakit.org/0.9.17/lexakai/mesakit/mesakit-map/utilities/geojson/documentation/diagrams/com.telenav.mesakit.map.utilities.geojson.svg)
+[*com.telenav.mesakit.map.utilities.geojson*](https://www.mesakit.org/0.9.19/lexakai/mesakit/mesakit-map/utilities/geojson/documentation/diagrams/com.telenav.mesakit.map.utilities.geojson.svg)
 
-<img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
+### Javadoc <a name="code-quality"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/books-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/books-24-2x.png 2x"/>
 
-### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/books-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/books-24-2x.png 2x"/>
-
-Javadoc coverage for this project is 16.7%.  
-  
-&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meters/meter-20-96.png" srcset="https://telenav.github.io/telenav-assets/images/meters/meter-20-96-2x.png 2x"/>
-
-
-The following significant classes are undocumented:  
-
-- com.telenav.mesakit.map.utilities.geojson.GeoJsonDocument  
-- com.telenav.mesakit.map.utilities.geojson.GeoJsonFeature
-
-| Class | Documentation Sections |
-|---|---|
-| [*GeoJsonDocument*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.utilities.geojson//////////////////////////////////////////////////////////.html) |  |  
-| [*GeoJsonFeature*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.utilities.geojson/////////////////////////////////////////////////////////.html) |  |  
-| [*GeoJsonGeometry*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.utilities.geojson//////////////////////////////////////////////////////////.html) |  |  
-| [*GeoJsonGeometryCollection*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.utilities.geojson////////////////////////////////////////////////////////////////////.html) |  |  
-| [*GeoJsonGeometryTypeAdapter*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.utilities.geojson/////////////////////////////////////////////////////////////////////.html) |  |  
-| [*GeoJsonPoint*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.utilities.geojson///////////////////////////////////////////////////////.html) |  |  
-| [*GeoJsonPolygon*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.utilities.geojson/////////////////////////////////////////////////////////.html) |  |  
-| [*GeoJsonPolyline*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.utilities.geojson//////////////////////////////////////////////////////////.html) |  |  
+| Class | Documentation Sections  |
+|-------|-------------------------|
+| [*GeoJsonDocument*](https://www.mesakit.org/0.9.19/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonDocument.html) |  |  
+| [*GeoJsonFeature*](https://www.mesakit.org/0.9.19/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonFeature.html) |  |  
+| [*GeoJsonGeometry*](https://www.mesakit.org/0.9.19/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonGeometry.html) |  |  
+| [*GeoJsonGeometryCollection*](https://www.mesakit.org/0.9.19/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonGeometryCollection.html) |  |  
+| [*GeoJsonGeometryTypeAdapter*](https://www.mesakit.org/0.9.19/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonGeometryTypeAdapter.html) |  |  
+| [*GeoJsonPoint*](https://www.mesakit.org/0.9.19/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonPoint.html) |  |  
+| [*GeoJsonPolygon*](https://www.mesakit.org/0.9.19/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonPolygon.html) |  |  
+| [*GeoJsonPolyline*](https://www.mesakit.org/0.9.19/javadoc/mesakit/mesakit.map.utilities.geojson/com/telenav/mesakit/map/utilities/geojson/GeoJsonPolyline.html) |  |  
 
 [//]: # (start-user-text)
 
