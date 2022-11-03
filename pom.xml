@@ -19,7 +19,7 @@
 
     <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit-parent</artifactId>
-    <version>0.9.19</version>
+    <version>0.9.20</version>
 
     <packaging>pom</packaging>
 
