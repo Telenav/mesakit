@@ -67,7 +67,7 @@
         <google-maps.version>2.1.0</google-maps.version>
         <httpcomponents.version>4.5.13</httpcomponents.version>
         <junit.version>4.13.2</junit.version>
-        <kivakit.version>1.8.3</kivakit.version>
+        <kivakit.version>1.8.4</kivakit.version>
         <osmosis.version>0.48.1</osmosis.version>
     </properties>
 
