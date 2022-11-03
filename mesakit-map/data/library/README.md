@@ -24,20 +24,20 @@ This module contains common code used by different map data formats
 
 
 
-[**Dependencies**](#dependencies) | [**Class Diagrams**](#class-diagrams) | [**Package Diagrams**](#package-diagrams) | [**Javadoc**](#javadoc)
+[**Dependencies**](#dependencies) | [**Code Quality**](#code-quality) | [**Class Diagrams**](#class-diagrams) | [**Package Diagrams**](#package-diagrams)
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-512-2x.png 2x"/>
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/dependencies-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.mesakit.org/0.9.17/lexakai/mesakit/mesakit-map/data/library/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/0.9.19/lexakai/mesakit/mesakit-map/data/library/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-data-library</artifactId>
-        <version>0.9.17</version>
+        <version>0.9.19</version>
     </dependency>
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
@@ -50,41 +50,46 @@ This module contains common code used by different map data formats
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
 
+### Code Quality <a name="code-quality"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/ruler-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/ruler-32-2x.png 2x"/>
+
+Code quality for this project is 22.2%.  
+  
+&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meters/meter-20-96.png" srcset="https://telenav.github.io/telenav-assets/images/meters/meter-20-96-2x.png 2x"/>
+
+| Measurement   | Value                    |
+|---------------|--------------------------|
+| Stability     | 22.2%&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meters/meter-20-96.png" srcset="https://telenav.github.io/telenav-assets/images/meters/meter-20-96-2x.png 2x"/>     |
+| Testing       | 22.2%&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meters/meter-20-96.png" srcset="https://telenav.github.io/telenav-assets/images/meters/meter-20-96-2x.png 2x"/>       |
+| Documentation | 22.2%&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meters/meter-20-96.png" srcset="https://telenav.github.io/telenav-assets/images/meters/meter-20-96-2x.png 2x"/> |
+
+<img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
+
 ### Class Diagrams <a name="class-diagrams"></a> &nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/diagram-40.png" srcset="https://telenav.github.io/telenav-assets/images/icons/diagram-40-2x.png 2x"/>
 
-[*Map Data Formats*](https://www.mesakit.org/0.9.17/lexakai/mesakit/mesakit-map/data/library/documentation/diagrams/diagram-data-format.svg)  
-[*Map Identifiers*](https://www.mesakit.org/0.9.17/lexakai/mesakit/mesakit-map/data/library/documentation/diagrams/diagram-data-map-identifier.svg)
+[*Map Data Formats*](https://www.mesakit.org/0.9.19/lexakai/mesakit/mesakit-map/data/library/documentation/diagrams/diagram-data-format.svg)  
+[*Map Identifiers*](https://www.mesakit.org/0.9.19/lexakai/mesakit/mesakit-map/data/library/documentation/diagrams/diagram-data-map-identifier.svg)
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/box-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/box-24-2x.png 2x"/>
 
-[*com.telenav.mesakit.map.data.formats.library*](https://www.mesakit.org/0.9.17/lexakai/mesakit/mesakit-map/data/library/documentation/diagrams/com.telenav.mesakit.map.data.formats.library.svg)  
-[*com.telenav.mesakit.map.data.formats.library.internal.lexakai*](https://www.mesakit.org/0.9.17/lexakai/mesakit/mesakit-map/data/library/documentation/diagrams/com.telenav.mesakit.map.data.formats.library.internal.lexakai.svg)  
-[*com.telenav.mesakit.map.data.formats.library.map.identifiers*](https://www.mesakit.org/0.9.17/lexakai/mesakit/mesakit-map/data/library/documentation/diagrams/com.telenav.mesakit.map.data.formats.library.map.identifiers.svg)
+[*com.telenav.mesakit.map.data.formats.library*](https://www.mesakit.org/0.9.19/lexakai/mesakit/mesakit-map/data/library/documentation/diagrams/com.telenav.mesakit.map.data.formats.library.svg)  
+[*com.telenav.mesakit.map.data.formats.library.internal.lexakai*](https://www.mesakit.org/0.9.19/lexakai/mesakit/mesakit-map/data/library/documentation/diagrams/com.telenav.mesakit.map.data.formats.library.internal.lexakai.svg)  
+[*com.telenav.mesakit.map.data.formats.library.map.identifiers*](https://www.mesakit.org/0.9.19/lexakai/mesakit/mesakit-map/data/library/documentation/diagrams/com.telenav.mesakit.map.data.formats.library.map.identifiers.svg)
 
-<img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
+### Javadoc <a name="code-quality"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/books-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/books-24-2x.png 2x"/>
 
-### Javadoc <a name="javadoc"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/books-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/books-24-2x.png 2x"/>
-
-Javadoc coverage for this project is 52.6%.  
-  
-&nbsp; &nbsp; <img src="https://telenav.github.io/telenav-assets/images/meters/meter-50-96.png" srcset="https://telenav.github.io/telenav-assets/images/meters/meter-50-96-2x.png 2x"/>
-
-
-
-
-| Class | Documentation Sections |
-|---|---|
-| [*DataFormat*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.data.library////////////////////////////////////////////////////////.html) |  |  
-| [*DiagramDataFormat*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.data.library////////////////////////////////////////////////////////////////////////////////.html) |  |  
-| [*DiagramDataMapIdentifier*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.data.library///////////////////////////////////////////////////////////////////////////////////////.html) |  |  
-| [*MapIdentifier*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.data.library///////////////////////////////////////////////////////////////////////////.html) |  |  
-| [*MapIdentifier.Type*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.data.library////////////////////////////////////////////////////////////////////////////////.html) |  |  
-| [*MapNodeIdentifier*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.data.library///////////////////////////////////////////////////////////////////////////////.html) |  |  
-| [*MapNodeIdentifier.Comparator*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.data.library//////////////////////////////////////////////////////////////////////////////////////////.html) |  |  
-| [*MapRelationIdentifier*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.data.library///////////////////////////////////////////////////////////////////////////////////.html) |  |  
-| [*MapWayIdentifier*](https://www.mesakit.org/0.9.17/javadoc/mesakit/mesakit.map.data.library//////////////////////////////////////////////////////////////////////////////.html) |  |  
+| Class | Documentation Sections  |
+|-------|-------------------------|
+| [*DataFormat*](https://www.mesakit.org/0.9.19/javadoc/mesakit/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/DataFormat.html) |  |  
+| [*DiagramDataFormat*](https://www.mesakit.org/0.9.19/javadoc/mesakit/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/internal/lexakai/DiagramDataFormat.html) |  |  
+| [*DiagramDataMapIdentifier*](https://www.mesakit.org/0.9.19/javadoc/mesakit/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/internal/lexakai/DiagramDataMapIdentifier.html) |  |  
+| [*MapIdentifier*](https://www.mesakit.org/0.9.19/javadoc/mesakit/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapIdentifier.html) |  |  
+| [*MapIdentifier.Type*](https://www.mesakit.org/0.9.19/javadoc/mesakit/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapIdentifier.Type.html) |  |  
+| [*MapNodeIdentifier*](https://www.mesakit.org/0.9.19/javadoc/mesakit/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapNodeIdentifier.html) |  |  
+| [*MapNodeIdentifier.Comparator*](https://www.mesakit.org/0.9.19/javadoc/mesakit/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapNodeIdentifier.Comparator.html) |  |  
+| [*MapRelationIdentifier*](https://www.mesakit.org/0.9.19/javadoc/mesakit/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapRelationIdentifier.html) |  |  
+| [*MapWayIdentifier*](https://www.mesakit.org/0.9.19/javadoc/mesakit/mesakit.map.data.library/com/telenav/mesakit/map/data/formats/library/map/identifiers/MapWayIdentifier.html) |  |  
 
 [//]: # (start-user-text)
 
