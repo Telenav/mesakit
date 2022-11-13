@@ -23,26 +23,38 @@
     </parent>
 
     <artifactId>mesakit-internal-map-region-unit-tests</artifactId>
+
     <properties>
+
+        <!-- Documentation -->
+
         <maven.javadoc.skip>true</maven.javadoc.skip>
-        <do.not.publish>true</do.not.publish>
-        <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
+        <cactus.lexakai.skip>true</cactus.lexakai.skip>
+
+        <!-- Nexus publishing -->
+
+        <nexus.deploy.skip>true</nexus.deploy.skip>
+        <nexus.release>false</nexus.release>
+
     </properties>
 
     <dependencies>
 
-        <!-- MesaKit -->
+        <!-- Mapping -->
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-region</artifactId>
+            <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-region-testing</artifactId>
+            <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -51,7 +63,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven-jar-plugin.version}</version>
+                <version>${maven.jar.plugin.version}</version>
                 <configuration>
                     <skipIfEmpty>true</skipIfEmpty>
                     <archive>
@@ -64,6 +76,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
+                <version>${maven.install.plugin.version}</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>
@@ -71,6 +84,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven.gpg.plugin.version}</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>
