@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  //
  // © 2011-2022 Telenav, Inc.
  // Licensed under Apache License, Version 2.0
  //
  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
--->
+ -->
 
-<project
-        xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
-        xmlns = "http://maven.apache.org/POM/4.0.0"
-        xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns = "http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-parent</artifactId>
-        <version>0.9.20</version>
+        <version>0.9.21</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
@@ -30,13 +30,15 @@
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-network-http</artifactId>
+            <version>${kivakit.version}</version>
         </dependency>
 
-        <!-- MesaKit -->
+        <!-- Mapping -->
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-data-formats-pbf</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <!-- OSM -->
@@ -44,7 +46,73 @@
         <dependency>
             <groupId>org.openstreetmap.osmosis</groupId>
             <artifactId>osmosis-xml</artifactId>
+            <version>${mapping.osmosis.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.codehaus.woodstox</groupId>
+                    <artifactId>stax2-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.woodstox</groupId>
+                    <artifactId>woodstox-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-compress</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-beans</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>xerces</groupId>
+                    <artifactId>xercesImpl</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>${utilities.parsing.xml.xerxes.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${frameworks.spring.beans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${frameworks.spring.beans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>${data.compression.commons.compress.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${data.compression.commons.codec.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.woodstox</groupId>
+            <artifactId>woodstox-core</artifactId>
+            <version>${utilities.parsing.xml.woodstox.version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>

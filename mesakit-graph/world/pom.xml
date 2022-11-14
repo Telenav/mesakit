@@ -1,45 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// © 2011-2022 Telenav, Inc.
-// Licensed under Apache License, Version 2.0
-//
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
--->
 
-<project
-        xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
-        xmlns = "http://maven.apache.org/POM/4.0.0"
-        xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<!--
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ //
+ // © 2011-2022 Telenav, Inc.
+ // Licensed under Apache License, Version 2.0
+ //
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ -->
+
+<project xmlns = "http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-parent</artifactId>
-        <version>0.9.20</version>
+        <version>0.9.21</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>mesakit-graph-world</artifactId>
+
     <dependencies>
 
-        <!-- KivaKit -->
-
-        <!-- MesaKit -->
+        <!-- Mapping -->
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-graph-core</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-utilities-geojson</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-cutter</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <!-- HTTP -->
@@ -47,6 +49,13 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
+            <version>${networking.httpclient.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
     </dependencies>

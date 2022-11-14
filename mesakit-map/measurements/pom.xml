@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  //
  // © 2011-2022 Telenav, Inc.
  // Licensed under Apache License, Version 2.0
  //
  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
--->
+ -->
 
-<project
-        xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
-        xmlns = "http://maven.apache.org/POM/4.0.0"
-        xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns = "http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-parent</artifactId>
-        <version>0.9.20</version>
+        <version>0.9.21</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>mesakit-map-measurements</artifactId>
+
     <dependencies>
 
         <!-- KivaKit -->
@@ -30,10 +31,12 @@
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-math</artifactId>
+            <version>${kivakit.version}</version>
         </dependency>
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-serialization-kryo</artifactId>
+            <version>${kivakit.version}</version>
         </dependency>
 
         <!-- Testing -->
@@ -41,13 +44,16 @@
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-testing</artifactId>
+            <version>${kivakit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-serialization-kryo-testing</artifactId>
+            <version>${kivakit.version}</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
 </project>

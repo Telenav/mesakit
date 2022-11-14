@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!--  -->
-<!-- © 2011-2022 Telenav, Inc. -->
-<!-- Licensed under Apache License, Version 2.0 -->
-<!--  -->
-<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<project xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://maven.apache.org/POM/4.0.0"
+
+<!--
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ //
+ // © 2011-2022 Telenav, Inc.
+ // Licensed under Apache License, Version 2.0
+ //
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ -->
+
+<project xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+         xmlns = "http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.telenav</groupId>
-        <artifactId>telenav-root-superpom</artifactId>
-        <version>1.0.15</version>
-        <relativePath/>
+        <groupId>com.telenav.mesakit</groupId>
+        <artifactId>mesakit-parent</artifactId>
+        <version>0.9.21</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit</artifactId>
-    <version>0.9.20</version>
 
     <packaging>pom</packaging>
-
-    <description>Bill Of Materials for Mesakit.
-        Import this pom as a pom-type, import scope dependency in your dependencyManagement
-        section to depend on a consistent set of versions of mesakit.</description>
 
     <dependencyManagement>
         <dependencies>
@@ -186,25 +185,4 @@
         </dependencies>
     </dependencyManagement>
 
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
-
-    <url>https://mesakit.org</url>
-
-    <scm>
-        <connection>scm:git:https://github.com/Telenav/mesakit.git</connection>
-        <developerConnection>scm:git:https://github.com/Telenav/mesakit.git</developerConnection>
-        <url>https://github.com/Telenav/mesakit</url>
-    </scm>
-
-    <issueManagement>
-        <system>GitHub</system>
-        <url>https://github.com/Telenav/mesakit/issues</url>
-    </issueManagement>
 </project>
