@@ -18,16 +18,24 @@
     <parent>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-parent</artifactId>
-        <version>0.9.21</version>
+        <version>0.9.22</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>mesakit-internal-graph-core-unit-tests</artifactId>
 
     <properties>
+
+        <!-- Documentation -->
+
         <maven.javadoc.skip>true</maven.javadoc.skip>
-        <do.not.publish>true</do.not.publish>
-        <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
+        <cactus.lexakai.skip>true</cactus.lexakai.skip>
+
+        <!-- Nexus publishing -->
+
+        <nexus.deploy.skip>true</nexus.deploy.skip>
+        <nexus.release>false</nexus.release>
+
     </properties>
 
     <dependencies>
