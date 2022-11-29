@@ -18,12 +18,11 @@
 
 package com.telenav.mesakit.map.geography.tests.indexing.polygon.test;
 
-import com.telenav.kivakit.resource.packages.PackageResource;
 import com.telenav.kivakit.testing.SlowTest;
-import com.telenav.mesakit.map.geography.testing.GeographyUnitTest;
 import com.telenav.mesakit.map.geography.Location;
 import com.telenav.mesakit.map.geography.indexing.polygon.PolygonSpatialIndex;
 import com.telenav.mesakit.map.geography.shape.polyline.Polygon;
+import com.telenav.mesakit.map.geography.testing.GeographyUnitTest;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.geographic.Heading;
 import org.junit.Test;
@@ -151,6 +150,6 @@ public class PolygonSpatialIndexTest extends GeographyUnitTest
 
     private ShapeFileReader world()
     {
-        return new ShapeFileReader(this, PackageResource.packageResource(this, PolygonSpatialIndexTest.class, "world.shp"));
+        return new ShapeFileReader(this, packageResource("world.shp"));
     }
 }
