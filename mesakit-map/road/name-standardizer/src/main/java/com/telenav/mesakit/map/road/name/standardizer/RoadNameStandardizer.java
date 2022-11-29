@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
-import static com.telenav.kivakit.core.language.module.PackageReference.packageReference;
+import static com.telenav.kivakit.core.language.packaging.PackageReference.packageReference;
 
 @SuppressWarnings("SpellCheckingInspection")
 public interface RoadNameStandardizer

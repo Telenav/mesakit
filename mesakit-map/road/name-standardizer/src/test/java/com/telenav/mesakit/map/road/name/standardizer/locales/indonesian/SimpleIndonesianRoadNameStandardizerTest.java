@@ -65,7 +65,7 @@ public class SimpleIndonesianRoadNameStandardizerTest extends UnitTest
 
     protected PackageResource testCases()
     {
-        return PackageResource.packageResource(this, getClass(), "test-cases.csv");
+        return packageResource("test-cases.csv");
     }
 
     private void test(String expected, String given)

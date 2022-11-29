@@ -18,7 +18,7 @@
 
 package com.telenav.mesakit.map.region.locale;
 
-import com.telenav.kivakit.core.language.module.PackageReference;
+import com.telenav.kivakit.core.language.packaging.PackageReference;
 import com.telenav.kivakit.core.language.reflection.Type;
 import com.telenav.kivakit.core.locale.Locale;
 import com.telenav.kivakit.core.locale.LocaleLanguage;

@@ -19,8 +19,8 @@
 package com.telenav.mesakit.map.road.name.standardizer.locales.indonesian;
 
 import com.telenav.kivakit.core.string.Strings;
-import com.telenav.kivakit.testing.SlowTest;
 import com.telenav.kivakit.resource.packages.PackageResource;
+import com.telenav.kivakit.testing.SlowTest;
 import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.name.standardizer.RoadNameStandardizerTest;
 import org.junit.Test;
@@ -33,7 +33,6 @@ import java.util.List;
  * @author jonathanl (shibo)
  */
 @Category({ SlowTest.class })
-@SuppressWarnings("SpellCheckingInspection")
 public class IndonesianRoadNameStandardizerTest extends RoadNameStandardizerTest
 {
     public IndonesianRoadNameStandardizerTest()
@@ -78,6 +77,6 @@ public class IndonesianRoadNameStandardizerTest extends RoadNameStandardizerTest
 
     protected PackageResource testCases()
     {
-        return PackageResource.packageResource(this, getClass(), "test-cases.csv");
+        return packageResource("test-cases.csv");
     }
 }
