@@ -559,13 +559,13 @@ public class Location implements
         }
     }
 
-    @ConvertedProperty(Latitude.DegreesConverter.class)
+    @ConvertedProperty(converter = Latitude.DegreesConverter.class)
     @UmlAggregation
     private Latitude latitude;
 
     private final int latitudeInDm7;
 
-    @ConvertedProperty(Longitude.DegreesConverter.class)
+    @ConvertedProperty(converter = Longitude.DegreesConverter.class)
     @UmlAggregation
     private Longitude longitude;
 
