@@ -23,7 +23,7 @@ import com.telenav.kivakit.core.language.reflection.Type;
 import com.telenav.kivakit.core.locale.Locale;
 import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.kivakit.core.locale.LocaleRegion;
-import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.mesakit.map.region.Region;
@@ -40,7 +40,6 @@ import static com.telenav.kivakit.core.locale.LocaleLanguage.INDONESIAN;
 import static com.telenav.kivakit.core.locale.LocaleLanguage.PORTUGUESE;
 import static com.telenav.kivakit.core.locale.LocaleLanguage.SPANISH;
 import static com.telenav.kivakit.core.locale.LocaleRegion.INDONESIA;
-import static com.telenav.kivakit.core.logging.LoggerFactory.newLogger;
 import static com.telenav.kivakit.core.object.Lazy.lazy;
 import static com.telenav.mesakit.map.region.regions.Country.BRAZIL;
 import static com.telenav.mesakit.map.region.regions.Country.CANADA;
@@ -92,9 +91,7 @@ public class MapLocale extends Locale
 
     public static final Lazy<MapLocale> INDONESIA_INDONESIAN = lazy(() -> new MapLocale(INDONESIA, Country.INDONESIA, INDONESIAN));
 
-    private static final Logger LOGGER = newLogger();
-
-    private static final Debug DEBUG = new Debug(LOGGER);
+    private static final Debug DEBUG = new Debug(LoggerFactory.globalLogger());
 
     private final Region<?> region;
 
