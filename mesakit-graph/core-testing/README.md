@@ -20,14 +20,14 @@ This module contains code for testing the core model for MesaKit directed road n
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/dependencies-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.mesakit.org/0.9.23/lexakai/mesakit/mesakit-graph/core-testing/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/0.9.24/lexakai/mesakit/mesakit-graph/core-testing/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-graph-core-testing</artifactId>
-        <version>0.9.23</version>
+        <version>0.9.24</version>
     </dependency>
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
@@ -62,15 +62,15 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/box-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/box-24-2x.png 2x"/>
 
-[*com.telenav.mesakit.graph.core.testing*](https://www.mesakit.org/0.9.23/lexakai/mesakit/mesakit-graph/core-testing/documentation/diagrams/com.telenav.mesakit.graph.core.testing.svg)
+[*com.telenav.mesakit.graph.core.testing*](https://www.mesakit.org/0.9.24/lexakai/mesakit/mesakit-graph/core-testing/documentation/diagrams/com.telenav.mesakit.graph.core.testing.svg)
 
 ### Javadoc <a name="code-quality"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/books-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/books-24-2x.png 2x"/>
 
 | Class | Documentation Sections  |
 |-------|-------------------------|
-| [*GraphRandomValueFactory*](https://www.mesakit.org/0.9.23/javadoc/mesakit/mesakit-graph-core-testing/com/telenav/mesakit/graph/core/testing/GraphRandomValueFactory.html) |  |  
-| [*GraphRandomValueFactory.RandomListBuilder*](https://www.mesakit.org/0.9.23/javadoc/mesakit/mesakit-graph-core-testing/com/telenav/mesakit/graph/core/testing/GraphRandomValueFactory.RandomListBuilder.html) |  |  
-| [*GraphUnitTest*](https://www.mesakit.org/0.9.23/javadoc/mesakit/mesakit-graph-core-testing/com/telenav/mesakit/graph/core/testing/GraphUnitTest.html) |  |  
+| [*GraphRandomValueFactory*](https://www.mesakit.org/0.9.24/javadoc/mesakit/mesakit-graph-core-testing/com/telenav/mesakit/graph/core/testing/GraphRandomValueFactory.html) |  |  
+| [*GraphRandomValueFactory.RandomListBuilder*](https://www.mesakit.org/0.9.24/javadoc/mesakit/mesakit-graph-core-testing/com/telenav/mesakit/graph/core/testing/GraphRandomValueFactory.RandomListBuilder.html) |  |  
+| [*GraphUnitTest*](https://www.mesakit.org/0.9.24/javadoc/mesakit/mesakit-graph-core-testing/com/telenav/mesakit/graph/core/testing/GraphUnitTest.html) |  |  
 
 [//]: # (start-user-text)
 
