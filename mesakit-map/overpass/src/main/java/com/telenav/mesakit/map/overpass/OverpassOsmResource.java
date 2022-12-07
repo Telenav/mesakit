@@ -23,7 +23,7 @@ import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.network.http.HttpPostResource;
-import com.telenav.kivakit.resource.packages.PackageResource;
+import com.telenav.kivakit.resource.packages.PackageTrait;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
@@ -40,11 +40,11 @@ import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
  */
 @UmlClassDiagram(diagram = DiagramOverpass.class)
 @UmlRelation(label = "copies data to", referent = Folder.class)
-class OverpassOsmResource extends BaseComponent
+class OverpassOsmResource extends BaseComponent implements PackageTrait
 {
     private final Rectangle bounds;
 
-    private final String template = PackageResource.packageResource(this, getClass(), "OverpassRequestTemplate.txt")
+    private final String template = packageResource("OverpassRequestTemplate.txt")
             .reader()
             .asString();
 

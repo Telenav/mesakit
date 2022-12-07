@@ -1,23 +1,26 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags.compression;
 
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
 import com.telenav.kivakit.properties.PropertyMap;
-import com.telenav.kivakit.resource.packages.Package;
+import com.telenav.kivakit.resource.packages.PackageTrait;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.data.formats.pbf.internal.lexakai.DiagramPbfModelCompression;
 import org.jetbrains.annotations.NotNull;
 
+import static com.telenav.kivakit.core.messaging.Listener.consoleListener;
 import static com.telenav.kivakit.core.messaging.Listener.throwingListener;
 import static com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec.ESCAPE;
+import static com.telenav.kivakit.properties.PropertyMap.loadPropertyMap;
 
 /**
  * @author jonathanl (shibo)
  */
 @UmlClassDiagram(diagram = DiagramPbfModelCompression.class)
-public class PbfDefaultCodecs
+public class PbfDefaultCodecs extends BaseRepeater implements PackageTrait
 {
     private static final Lazy<PbfDefaultCodecs> defaultCodecs = Lazy.lazy(PbfDefaultCodecs::new);
 
@@ -38,6 +41,7 @@ public class PbfDefaultCodecs
 
     protected PbfDefaultCodecs()
     {
+        consoleListener().listenTo(this);
     }
 
     @NotNull
@@ -93,6 +97,6 @@ public class PbfDefaultCodecs
 
     private PropertyMap load(String codec)
     {
-        return PropertyMap.loadPropertyMap(throwingListener(), Package.packageFor(throwingListener(), PbfDefaultCodecs.class), codec);
+        return loadPropertyMap(this, packageFor(PbfDefaultCodecs.class), codec);
     }
 }
