@@ -20,14 +20,14 @@ This module contains modules for visual debugging of maps and routing
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/dependencies-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.mesakit.org/0.9.25/lexakai/mesakit/mesakit-map/ui/debug/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/0.9.26/lexakai/mesakit/mesakit-map/ui/debug/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-map-ui-debug</artifactId>
-        <version>0.9.25</version>
+        <version>0.9.26</version>
     </dependency>
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
@@ -62,19 +62,19 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/box-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/box-24-2x.png 2x"/>
 
-[*com.telenav.mesakit.map.ui.debug*](https://www.mesakit.org/0.9.25/lexakai/mesakit/mesakit-map/ui/debug/documentation/diagrams/com.telenav.mesakit.map.ui.debug.svg)  
-[*com.telenav.mesakit.map.ui.debug.debuggers*](https://www.mesakit.org/0.9.25/lexakai/mesakit/mesakit-map/ui/debug/documentation/diagrams/com.telenav.mesakit.map.ui.debug.debuggers.svg)  
-[*com.telenav.mesakit.map.ui.debug.theme*](https://www.mesakit.org/0.9.25/lexakai/mesakit/mesakit-map/ui/debug/documentation/diagrams/com.telenav.mesakit.map.ui.debug.theme.svg)
+[*com.telenav.mesakit.map.ui.debug*](https://www.mesakit.org/0.9.26/lexakai/mesakit/mesakit-map/ui/debug/documentation/diagrams/com.telenav.mesakit.map.ui.debug.svg)  
+[*com.telenav.mesakit.map.ui.debug.debuggers*](https://www.mesakit.org/0.9.26/lexakai/mesakit/mesakit-map/ui/debug/documentation/diagrams/com.telenav.mesakit.map.ui.debug.debuggers.svg)  
+[*com.telenav.mesakit.map.ui.debug.theme*](https://www.mesakit.org/0.9.26/lexakai/mesakit/mesakit-map/ui/debug/documentation/diagrams/com.telenav.mesakit.map.ui.debug.theme.svg)
 
 ### Javadoc <a name="code-quality"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/books-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/books-24-2x.png 2x"/>
 
 | Class | Documentation Sections  |
 |-------|-------------------------|
-| [*DebugViewer*](https://www.mesakit.org/0.9.25/javadoc/mesakit/mesakit-map-ui-debug/com/telenav/mesakit/map/ui/debug/DebugViewer.html) |  |  
-| [*DebugViewerIcons*](https://www.mesakit.org/0.9.25/javadoc/mesakit/mesakit-map-ui-debug/com/telenav/mesakit/map/ui/debug/theme/DebugViewerIcons.html) |  |  
-| [*DebugViewerStyles*](https://www.mesakit.org/0.9.25/javadoc/mesakit/mesakit-map-ui-debug/com/telenav/mesakit/map/ui/debug/theme/DebugViewerStyles.html) |  |  
-| [*PolygonSpatialIndexVisualDebugger*](https://www.mesakit.org/0.9.25/javadoc/mesakit/mesakit-map-ui-debug/com/telenav/mesakit/map/ui/debug/debuggers/PolygonSpatialIndexVisualDebugger.html) |  |  
-| [*RTreeSpatialIndexVisualDebugger*](https://www.mesakit.org/0.9.25/javadoc/mesakit/mesakit-map-ui-debug/com/telenav/mesakit/map/ui/debug/debuggers/RTreeSpatialIndexVisualDebugger.html) |  |  
+| [*DebugViewer*](https://www.mesakit.org/0.9.26/javadoc/mesakit/mesakit-map-ui-debug/com/telenav/mesakit/map/ui/debug/DebugViewer.html) |  |  
+| [*DebugViewerIcons*](https://www.mesakit.org/0.9.26/javadoc/mesakit/mesakit-map-ui-debug/com/telenav/mesakit/map/ui/debug/theme/DebugViewerIcons.html) |  |  
+| [*DebugViewerStyles*](https://www.mesakit.org/0.9.26/javadoc/mesakit/mesakit-map-ui-debug/com/telenav/mesakit/map/ui/debug/theme/DebugViewerStyles.html) |  |  
+| [*PolygonSpatialIndexVisualDebugger*](https://www.mesakit.org/0.9.26/javadoc/mesakit/mesakit-map-ui-debug/com/telenav/mesakit/map/ui/debug/debuggers/PolygonSpatialIndexVisualDebugger.html) |  |  
+| [*RTreeSpatialIndexVisualDebugger*](https://www.mesakit.org/0.9.26/javadoc/mesakit/mesakit-map-ui-debug/com/telenav/mesakit/map/ui/debug/debuggers/RTreeSpatialIndexVisualDebugger.html) |  |  
 
 [//]: # (start-user-text)
 
