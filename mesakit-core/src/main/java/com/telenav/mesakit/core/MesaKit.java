@@ -13,7 +13,7 @@ import com.telenav.kivakit.filesystem.Folders;
  * @author jonathanl (shibo)
  */
 @SuppressWarnings("unused")
-public class MesaKit extends Project
+public class MesaKit extends BaseMesaKitProject
 {
     public Folder mesakitAllVersionsCacheFolder()
     {

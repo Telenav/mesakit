@@ -25,6 +25,7 @@ import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsKryoTypes;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.kivakit.serialization.kryo.types.KivaKitCoreKryoTypes;
+import com.telenav.mesakit.core.BaseMesaKitProject;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.map.geography.GeographyKryoTypes;
 import com.telenav.mesakit.map.measurements.MeasurementsKryoTypes;
@@ -38,7 +39,7 @@ import static com.telenav.kivakit.core.messaging.Listener.throwingListener;
  *
  * @author jonathanl (shibo)
  */
-@SuppressWarnings("SpellCheckingInspection") public class RegionProject extends Project
+public class RegionProject extends BaseMesaKitProject
 {
     public RegionProject()
     {
