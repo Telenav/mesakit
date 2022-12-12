@@ -69,8 +69,8 @@ import static com.telenav.kivakit.resource.compression.archive.ZipArchive.Access
  * <b>Graph Data</b>
  * <p>
  * The data for a world cell is contained in a {@link Folder} accessed with {@link #folder()} and the specific data for
- * the cell can be accessed with {@link #cellGraphFile()} and {@link #cellGraph()}. The size of data in byes is
- * available with {@link #fileSize()} and t estimated size in memory with {@link #memorySize()}.
+ * the cell can be accessed with {@link #cellGraphFile()} and {@link #cellGraph()}. The size of data in bytes is
+ * available with {@link #fileSize()}.
  * <p>
  * <b>Neighboring Cells</b>
  * <p>
@@ -284,15 +284,11 @@ public class WorldCell extends Region<WorldCell> implements Unloadable
      */
     public boolean hasData(WorldGraphRepositoryFolder repositoryFolder, DataType data)
     {
-        switch (data)
-        {
-            case GRAPH:
-                return hasGraphFile(repositoryFolder);
-
-            case PBF:
-                return hasPbfFile(repositoryFolder);
-        }
-        return false;
+        return switch (data)
+                {
+                    case GRAPH -> hasGraphFile(repositoryFolder);
+                    case PBF -> hasPbfFile(repositoryFolder);
+                };
     }
 
     /**

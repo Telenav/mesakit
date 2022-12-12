@@ -517,7 +517,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
                     try
                     {
                         // try to download the data into the cache
-                        information(textBox("Downloading", "FROM: $\n  TO: $",
+                        information(textBox("Downloading", "from: $\n  to: $",
                                 NETWORK_PATH.asContraction(80),
                                 jar.path().asContraction(80)) + "\n ");
                         var downloadProgress = progressReporter(this, "bytes");
