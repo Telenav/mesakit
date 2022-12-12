@@ -9,8 +9,8 @@
  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  -->
 
-<project xmlns = "http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+         xmlns = "http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
@@ -18,7 +18,7 @@
     <parent>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-parent</artifactId>
-        <version>0.9.27</version>
+        <version>0.10.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -33,5 +33,29 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <plugins>
+           <plugin>
+                <groupId>com.telenav.cactus.metadata</groupId>
+                <artifactId>cactus-metadata-maven-plugin</artifactId>
+                <version>${utilities.cactus.metadata.version}</version>
+                <executions>
+                    <execution>
+                        <id>project-metadata</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>project-information</goal>
+                            <goal>build-metadata</goal>
+                        </goals>
+                        <configuration>
+                            <buildPropertiesDestination>target/classes/MesaKit-build.properties</buildPropertiesDestination>
+                            <projectPropertiesDestination>target/classes/MesaKit-project.properties</projectPropertiesDestination>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

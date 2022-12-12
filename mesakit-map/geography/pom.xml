@@ -18,20 +18,12 @@
     <parent>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-parent</artifactId>
-        <version>0.9.27</version>
+        <version>0.10.0</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>mesakit-map-geography</artifactId>
     <dependencies>
-
-        <!-- MesaKit -->
-
-        <dependency>
-            <groupId>com.telenav.mesakit</groupId>
-            <artifactId>mesakit-core</artifactId>
-            <version>${project.version}</version>
-        </dependency>
 
         <!-- KivaKit -->
 
@@ -48,6 +40,11 @@
 
         <!-- Mapping -->
 
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>mesakit-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>mesakit-map-measurements</artifactId>
@@ -86,5 +83,30 @@
         </dependency>
 
     </dependencies>
+
+
+    <build>
+        <plugins>
+           <plugin>
+                <groupId>com.telenav.cactus.metadata</groupId>
+                <artifactId>cactus-metadata-maven-plugin</artifactId>
+                <version>${utilities.cactus.metadata.version}</version>
+                <executions>
+                    <execution>
+                        <id>project-metadata</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>project-information</goal>
+                            <goal>build-metadata</goal>
+                        </goals>
+                        <configuration>
+                            <buildPropertiesDestination>target/classes/GeographyProject-build.properties</buildPropertiesDestination>
+                            <projectPropertiesDestination>target/classes/GeographyProject-project.properties</projectPropertiesDestination>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

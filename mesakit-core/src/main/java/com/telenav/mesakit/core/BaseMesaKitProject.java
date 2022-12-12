@@ -11,7 +11,7 @@ import com.telenav.kivakit.core.project.Project;
 public abstract class BaseMesaKitProject extends Project
 {
     @Override
-    protected final Class<?> metadataType()
+    protected Class<?> metadataType()
     {
         return MesaKit.class;
     }

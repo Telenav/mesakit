@@ -19,7 +19,6 @@
 package com.telenav.mesakit.graph.core.testing;
 
 import com.telenav.kivakit.core.object.Lazy;
-import com.telenav.kivakit.core.os.Console;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.data.compression.DataCompressionKryoTypes;
 import com.telenav.kivakit.filesystem.File;
@@ -66,7 +65,6 @@ import com.telenav.mesakit.map.region.RegionKryoTypes;
 import com.telenav.mesakit.map.region.regions.Country;
 import com.telenav.mesakit.map.region.testing.RegionUnitTest;
 
-import static com.telenav.kivakit.core.messaging.Listener.nullListener;
 import static com.telenav.kivakit.core.object.Lazy.lazy;
 import static com.telenav.kivakit.core.progress.ProgressReporter.nullProgressReporter;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
@@ -333,6 +331,13 @@ public abstract class GraphUnitTest extends RegionUnitTest
         return resolveProject(GraphProject.class).overpassFolder();
     }
 
+    /**
+     * Downloads the specified PBF data
+     *
+     * @param dataDescriptor The data descriptor
+     * @param bounds The bounds to download
+     * @throws IllegalStateException Thrown if the data cannot be downloaded
+     */
     private void downloadFromOverpass(String dataDescriptor, Rectangle bounds)
     {
         information("Downloading $_$", dataDescriptor, bounds.toFileString());
@@ -362,61 +367,70 @@ public abstract class GraphUnitTest extends RegionUnitTest
                         String name,
                         Rectangle bounds)
     {
-        // If we can't find the graph file
-        var dataDescriptor = "OSM-OSM-PBF-" + name;
-        var graphFile = listenTo(file(dataDescriptor, bounds).withExtension(GRAPH));
-        if (!graphFile.exists())
+        try
         {
-            // and the PBF file doesn't exist
-            var pbfFile = listenTo(file(dataDescriptor, bounds).withExtension(OSM_PBF));
-            if (!pbfFile.exists())
+            // If we can't find the graph file
+            var dataDescriptor = "OSM-OSM-PBF-" + name;
+            var graphFile = listenTo(file(dataDescriptor, bounds).withExtension(GRAPH));
+            if (!graphFile.exists())
             {
-                // then try to copy it from the test data folder
-                var source = listenTo(parsePackage(this, GraphUnitTest.class, "data"));
-                var destination = pbfFile.parent().mkdirs();
-                source.copyTo(destination, OVERWRITE, FLATTEN, OSM_PBF::matches, nullProgressReporter());
-            }
-
-            // and if we can't find it there, and it's an OSM graph being requested,
-            if (!pbfFile.exists() && specification.isOsm())
-            {
-                // then download the area from overpass.
-                downloadFromOverpass(dataDescriptor, bounds);
-            }
-
-            // Now that the PBF file exists,
-            if (pbfFile.exists())
-            {
-                // get its metadata
-                Metadata metadata = Metadata.metadata(pbfFile);
-                if (metadata != null)
+                // and the PBF file doesn't exist
+                var pbfFile = listenTo(file(dataDescriptor, bounds).withExtension(OSM_PBF));
+                if (!pbfFile.exists())
                 {
-                    // and convert the PBF file to a graph file using the right kind of converter for the metadata
-                    var converter = listenTo(metadata.dataSpecification().newGraphConverter(metadata));
-                    var graph = converter.convert(pbfFile);
-                    if (graph != null)
-                    {
-                        // and if we succeeded, then save the graph file and return the graph
-                        graph.save(new GraphArchive(this, graphFile, WRITE, nullProgressReporter()));
-                        return listenTo(graph);
-                    }
+                    // then try to copy it from the test data folder
+                    var source = listenTo(parsePackage(this, GraphUnitTest.class, "data"));
+                    var destination = listenTo(pbfFile.parent()).mkdirs();
+                    source.copyTo(destination, OVERWRITE, FLATTEN, OSM_PBF::matches, nullProgressReporter());
+                }
 
-                    problem("Unable to extract graph from $", pbfFile);
+                // and if we can't find it there, and it's an OSM graph being requested,
+                if (!pbfFile.exists() && specification.isOsm())
+                {
+                    // then download the area from overpass.
+                    downloadFromOverpass(dataDescriptor, bounds);
+                }
+
+                // Now that the PBF file exists,
+                if (pbfFile.exists())
+                {
+                    // get its metadata
+                    Metadata metadata = Metadata.metadata(pbfFile);
+                    if (metadata != null)
+                    {
+                        // and convert the PBF file to a graph file using the right kind of converter for the metadata
+                        var converter = listenTo(metadata.dataSpecification().newGraphConverter(metadata));
+                        var graph = converter.convert(pbfFile);
+                        if (graph != null)
+                        {
+                            // and if we succeeded, then save the graph file and return the graph
+                            graph.save(new GraphArchive(this, graphFile, WRITE, nullProgressReporter()));
+                            return listenTo(graph);
+                        }
+
+                        problem("Unable to extract graph from $", pbfFile);
+                    }
+                    else
+                    {
+                        problem("No metadata found in $", pbfFile);
+                    }
                 }
                 else
                 {
-                    problem("No metadata found in $", pbfFile);
+                    problem("Unable to install PBF file $", pbfFile);
                 }
+                return null;
             }
             else
             {
-                problem("Unable to install PBF file $", pbfFile);
+                return new GraphArchive(this, graphFile, READ, nullProgressReporter())
+                        .load(this);
             }
         }
-        else
+        catch (Exception e)
         {
-            return new GraphArchive(this, graphFile, READ, nullProgressReporter()).load(nullListener());
+            problem(e, "Unable to create graph for $ $ $", specification, name, bounds);
+            return null;
         }
-        return null;
     }
 }
