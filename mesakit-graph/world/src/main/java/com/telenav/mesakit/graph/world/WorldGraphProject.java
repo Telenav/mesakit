@@ -23,6 +23,8 @@ import com.telenav.kivakit.core.project.Project;
 import com.telenav.kivakit.core.project.ProjectTrait;
 import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
+import com.telenav.mesakit.core.BaseMesaKitProject;
+import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.graph.GraphProject;
 
 import static com.telenav.kivakit.core.collections.set.ObjectSet.set;
@@ -34,7 +36,8 @@ import static com.telenav.kivakit.core.collections.set.ObjectSet.set;
  *
  * @author jonathanl (shibo)
  */
-public class WorldGraphProject extends Project
+@SuppressWarnings("unused")
+public class WorldGraphProject extends BaseMesaKitProject
 {
     public WorldGraphProject()
     {

@@ -25,6 +25,7 @@ import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
+import com.telenav.mesakit.core.BaseMesaKitProject;
 import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.map.data.formats.pbf.processing.filters.PbfFilters;
 import com.telenav.mesakit.map.region.RegionProject;
@@ -41,7 +42,7 @@ import static com.telenav.kivakit.filesystem.Folders.desktopFolder;
  * @author jonathanl (shibo)
  */
 @SuppressWarnings("unused")
-public class GraphProject extends Project
+public class GraphProject extends BaseMesaKitProject
 {
     public GraphProject()
     {

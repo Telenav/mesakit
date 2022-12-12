@@ -4,6 +4,7 @@ import com.telenav.kivakit.core.project.Project;
 import com.telenav.kivakit.core.project.ProjectTrait;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.kivakit.serialization.kryo.types.KivaKitCoreKryoTypes;
+import com.telenav.mesakit.core.BaseMesaKitProject;
 import com.telenav.mesakit.map.measurements.MeasurementsKryoTypes;
 
 /**
@@ -14,7 +15,7 @@ import com.telenav.mesakit.map.measurements.MeasurementsKryoTypes;
  * @author jonathanl (shibo)
  */
 
-public class GeographyProject extends Project
+public class GeographyProject extends BaseMesaKitProject
 {
     public GeographyProject()
     {

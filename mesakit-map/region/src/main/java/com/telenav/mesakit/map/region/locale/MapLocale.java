@@ -30,7 +30,7 @@ import com.telenav.mesakit.map.region.regions.Country;
 
 import java.util.Collection;
 
-import static com.telenav.kivakit.core.KivaKit.globalListener;
+import static com.telenav.kivakit.core.KivaKit.globalLogger;
 import static com.telenav.kivakit.core.collections.list.ObjectList.list;
 import static com.telenav.kivakit.core.locale.LocaleLanguage.CHINESE_MANDARIN;
 import static com.telenav.kivakit.core.locale.LocaleLanguage.ENGLISH;
@@ -91,7 +91,7 @@ public class MapLocale extends Locale
 
     public static final Lazy<MapLocale> INDONESIA_INDONESIAN = lazy(() -> new MapLocale(INDONESIA, Country.INDONESIA, INDONESIAN));
 
-    private static final Debug DEBUG = new Debug(globalListener());
+    private static final Debug DEBUG = new Debug(globalLogger());
 
     private final Region<?> region;
 
