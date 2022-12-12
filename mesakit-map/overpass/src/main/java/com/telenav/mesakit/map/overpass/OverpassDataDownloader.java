@@ -18,19 +18,21 @@
 
 package com.telenav.mesakit.map.overpass;
 
-import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.network.core.Host;
-import com.telenav.kivakit.resource.Extension;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.mesakit.map.geography.shape.rectangle.Rectangle;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
-import com.telenav.mesakit.map.overpass.pbf.OsmToPbfConverter;
 import com.telenav.mesakit.map.overpass.internal.lexakai.DiagramOverpass;
+import com.telenav.mesakit.map.overpass.pbf.OsmToPbfConverter;
+
+import static com.telenav.kivakit.core.ensure.Ensure.illegalState;
+import static com.telenav.kivakit.resource.Extension.OSM;
+import static com.telenav.kivakit.resource.Extension.OSM_PBF;
 
 /**
  * @author jonathanl (shibo)
@@ -44,8 +46,6 @@ public class OverpassDataDownloader extends BaseRepeater
 
     public final Host HOST = Host.parseHost(this, "overpass-api.de");
 
-    private final Debug DEBUG = new Debug(this);
-
     @UmlAggregation(label = "caches data in")
     private final Folder cache;
 
@@ -54,9 +54,17 @@ public class OverpassDataDownloader extends BaseRepeater
         this.cache = cache.mkdirs();
     }
 
+    /**
+     * Downloads the given .osm file
+     *
+     * @param descriptor The data descriptor
+     * @param bounds The bounds of the request
+     * @return The .osm file
+     * @throws IllegalStateException Thrown if the data cannot be downloaded
+     */
     public File osm(String descriptor, Rectangle bounds)
     {
-        var osm = file(descriptor, bounds).withExtension(Extension.OSM);
+        var osm = file(descriptor, bounds).withExtension(OSM);
         if (osm.exists())
         {
             trace("Using cached overpass data for $ from $", bounds, osm);
@@ -73,15 +81,22 @@ public class OverpassDataDownloader extends BaseRepeater
             }
             catch (Exception e)
             {
-                problem(e, "Unable to extract $ to $", bounds, osm);
+                return illegalState(e, "Unable to download $ to $", bounds, osm);
             }
-            return null;
         }
     }
 
+    /**
+     * Returns a PBF file for the given base name and bounds
+     *
+     * @param baseName The base name of the PBF file
+     * @param bounds The bounds of the request
+     * @return The PBF file
+     * @throws IllegalStateException Thrown if the PBF file cannot be produced
+     */
     public File pbf(String baseName, Rectangle bounds)
     {
-        var pbf = file(baseName, bounds).withExtension(Extension.OSM_PBF);
+        var pbf = file(baseName, bounds).withExtension(OSM_PBF);
         if (pbf.exists())
         {
             trace("Using cached pbf data for $ from $", bounds, pbf);
@@ -89,24 +104,21 @@ public class OverpassDataDownloader extends BaseRepeater
         }
         else
         {
+            File osm = null;
             try
             {
-                var osm = osm(baseName, bounds);
-                if (osm != null)
+                osm = osm(baseName, bounds);
+                new OsmToPbfConverter(this).convert(osm, pbf);
+                if (isDebugOn())
                 {
-                    new OsmToPbfConverter(this).convert(osm, pbf);
-                    if (!DEBUG.isDebugOn())
-                    {
-                        osm.delete();
-                    }
-                    return pbf;
+                    osm.delete();
                 }
+                return pbf;
             }
             catch (Exception e)
             {
-                problem(e, "Unable to extract $ to $", bounds, pbf);
+                return illegalState(e, "Unable to convert osm file $ ($) to $", osm, bounds, pbf);
             }
-            return null;
         }
     }
 
