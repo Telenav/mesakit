@@ -31,7 +31,7 @@ import com.telenav.mesakit.map.overpass.internal.lexakai.DiagramOverpass;
 
 import static com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter.progressReporter;
 import static com.telenav.kivakit.core.string.Formatter.format;
-import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
+import static com.telenav.kivakit.resource.WriteMode.OVERWRITE;
 
 /**
  * <b>Not public API</b>

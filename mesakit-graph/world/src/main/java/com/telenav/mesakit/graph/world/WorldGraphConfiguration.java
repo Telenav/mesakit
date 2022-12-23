@@ -25,7 +25,7 @@ import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.resource.CopyMode;
+import com.telenav.kivakit.resource.WriteMode;
 import com.telenav.kivakit.filesystem.FilePath;
 import com.telenav.mesakit.graph.Metadata;
 import com.telenav.mesakit.graph.world.repository.WorldGraphRepository;
@@ -87,7 +87,7 @@ public final class WorldGraphConfiguration
             var progress = BroadcastingProgressReporter.progressReporter(LOGGER, "bytes");
             var remoteGraph = remoteRepository.folder(metadata);
             var localGraph = localRepository.folder(metadata);
-            remoteGraph.copyTo(localGraph, CopyMode.UPDATE, progress);
+            remoteGraph.copyTo(localGraph, WriteMode.UPDATE, progress);
         }
 
         return local.folder(FilePath.parseFilePath(LOGGER, "/"), metadata);
@@ -104,7 +104,7 @@ public final class WorldGraphConfiguration
         {
             // copy any out-of-date files to the local repository
             var progress = BroadcastingProgressReporter.progressReporter(LOGGER, "bytes");
-            remote.copyTo(local, CopyMode.UPDATE, progress);
+            remote.copyTo(local, WriteMode.UPDATE, progress);
         }
 
         return local;
