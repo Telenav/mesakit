@@ -31,7 +31,7 @@ import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.interfaces.code.Callback;
 import com.telenav.kivakit.interfaces.comparison.Filter;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.resource.CopyMode;
+import com.telenav.kivakit.resource.WriteMode;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.settings.Deployment;
 import com.telenav.mesakit.graph.Edge;
@@ -138,7 +138,7 @@ public class WorldGraph extends Graph
         if (remote != null)
         {
             var progress = BroadcastingProgressReporter.progressReporter(LOGGER, "bytes");
-            remote.copyTo(local, CopyMode.OVERWRITE, progress);
+            remote.copyTo(local, WriteMode.OVERWRITE, progress);
         }
 
         var index = WorldGraphIndex.load(local.indexFile());

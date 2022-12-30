@@ -21,7 +21,7 @@ package com.telenav.mesakit.map.ui.desktop.tiles;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.FileCache;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.resource.CopyMode;
+import com.telenav.kivakit.resource.WriteMode;
 import com.telenav.kivakit.resource.Resource;
 
 /**
@@ -45,7 +45,7 @@ public class SlippyTileCache extends FileCache
      */
     public File add(SlippyTile tile, Resource image)
     {
-        return addAs(image, tile.asFileName(), CopyMode.OVERWRITE);
+        return addAs(image, tile.asFileName(), WriteMode.OVERWRITE);
     }
 
     /**
