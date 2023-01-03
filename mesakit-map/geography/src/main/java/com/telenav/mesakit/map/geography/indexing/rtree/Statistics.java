@@ -18,21 +18,21 @@
 
 package com.telenav.mesakit.map.geography.indexing.rtree;
 
+import com.telenav.kivakit.core.string.FormatProperty;
 import com.telenav.kivakit.core.string.ObjectFormatter;
-import com.telenav.kivakit.core.language.reflection.property.IncludeProperty;
 
 public class Statistics
 {
-    @IncludeProperty
+    @FormatProperty
     int maximumDepth;
 
-    @IncludeProperty
+    @FormatProperty
     int interiorNodes;
 
-    @IncludeProperty
+    @FormatProperty
     int leaves;
 
-    @IncludeProperty
+    @FormatProperty
     int elements;
 
     @Override

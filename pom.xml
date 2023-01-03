@@ -16,7 +16,7 @@
 
     <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit-parent</artifactId>
-    <version>0.9.26</version>
+    <version>0.10.0</version>
 
     <packaging>pom</packaging>
 
@@ -98,7 +98,7 @@
 
         <!-- Telenav -->
 
-        <kivakit.version>1.9.0</kivakit.version>
+        <kivakit.version>1.10.0</kivakit.version>
 
         <!-- Plugins -->
 
@@ -373,10 +373,6 @@
                             <goal>project-information</goal>
                             <goal>build-metadata</goal>
                         </goals>
-                        <configuration>
-                            <buildPropertiesDestination>target/classes/MesaKit-build.properties</buildPropertiesDestination>
-                            <projectPropertiesDestination>target/classes/MesaKit-project.properties</projectPropertiesDestination>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -538,7 +534,7 @@
                         <inherited>false</inherited>
                         <executions>
                             <execution>
-                                <id>install-jbpm</id>
+                                <id>install-lexakai</id>
                                 <phase>prepare-package</phase>
                                 <goals>
                                     <goal>wget</goal>

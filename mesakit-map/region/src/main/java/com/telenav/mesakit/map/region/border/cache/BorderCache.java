@@ -98,7 +98,7 @@ import static com.telenav.kivakit.core.messaging.Listener.consoleListener;
 import static com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter.progressReporter;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.core.string.AsciiArt.textBox;
-import static com.telenav.kivakit.resource.CopyMode.OVERWRITE;
+import static com.telenav.kivakit.resource.WriteMode.OVERWRITE;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.READ;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.zipArchive;
 import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE_SERIALIZATION_SESSION;
@@ -517,7 +517,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
                     try
                     {
                         // try to download the data into the cache
-                        information(textBox("Downloading", "FROM: $\n  TO: $",
+                        information(textBox("Downloading", "from: $\n  to: $",
                                 NETWORK_PATH.asContraction(80),
                                 jar.path().asContraction(80)) + "\n ");
                         var downloadProgress = progressReporter(this, "bytes");

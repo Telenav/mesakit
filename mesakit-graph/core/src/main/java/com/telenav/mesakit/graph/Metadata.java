@@ -80,6 +80,7 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 import static com.telenav.kivakit.core.messaging.Listener.nullListener;
 import static com.telenav.kivakit.core.messaging.Listener.throwingListener;
@@ -194,7 +195,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
      */
     public static Metadata metadata(File input, CountType countType)
     {
-        input = input.materialized(BroadcastingProgressReporter.progressReporter(LOGGER));
+        input = ensureNotNull(input).materialized(BroadcastingProgressReporter.progressReporter(LOGGER));
         var format = DataFormat.of(input);
         switch (format)
         {
