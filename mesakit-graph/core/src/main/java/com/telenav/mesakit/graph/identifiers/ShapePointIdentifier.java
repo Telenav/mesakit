@@ -38,7 +38,7 @@ public class ShapePointIdentifier extends Identifier implements GraphElementIden
     {
         public Converter(Listener listener)
         {
-            super(listener, ShapePointIdentifier::new);
+            super(listener, ShapePointIdentifier.class, ShapePointIdentifier::new);
         }
     }
 

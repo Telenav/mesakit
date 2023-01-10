@@ -51,7 +51,7 @@ public class MapRoute implements Iterable<MapEdgeIdentifier>
 
         public Converter(Listener listener, Graph graph, Separators separators)
         {
-            super(listener);
+            super(listener, MapRoute.class);
             this.graph = graph;
             this.separators = separators;
             edgeConverter = new MapEdgeIdentifier.EdgeConverter(listener, this.graph);

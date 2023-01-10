@@ -105,7 +105,7 @@ public class Heading extends Angle implements Headed
 
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, Heading.class);
         }
 
         @Override
@@ -153,7 +153,7 @@ public class Heading extends Angle implements Headed
     {
         public DegreesConverter(Listener listener)
         {
-            super(listener);
+            super(listener, Heading.class);
         }
 
         @Override

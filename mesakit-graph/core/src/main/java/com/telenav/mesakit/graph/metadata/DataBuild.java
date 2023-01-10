@@ -69,7 +69,7 @@ public class DataBuild
     {
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, DataBuild.class);
         }
 
         @Override

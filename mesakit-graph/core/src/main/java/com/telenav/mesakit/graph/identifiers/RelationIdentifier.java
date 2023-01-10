@@ -26,6 +26,8 @@ import com.telenav.mesakit.graph.GraphElement;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapIdentifier;
 import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapRelationIdentifier;
 
+import static com.telenav.kivakit.commandline.SwitchParser.switchParser;
+
 /**
  * Identifier of relations in a map graph
  *
@@ -37,7 +39,7 @@ public class RelationIdentifier extends MapRelationIdentifier implements GraphEl
                                                                                           String name,
                                                                                           String description)
     {
-        return SwitchParser.switchParser(RelationIdentifier.class)
+        return switchParser(RelationIdentifier.class)
                 .name(name)
                 .description(description)
                 .converter(new Converter(listener));
@@ -47,7 +49,7 @@ public class RelationIdentifier extends MapRelationIdentifier implements GraphEl
     {
         public Converter(Listener listener)
         {
-            super(listener, RelationIdentifier::new);
+            super(listener, RelationIdentifier.class, RelationIdentifier::new);
         }
     }
 

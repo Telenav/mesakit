@@ -76,7 +76,7 @@ public class Vertex extends GraphNode
 
         public Converter(Graph graph, Listener listener)
         {
-            super(listener);
+            super(listener, Vertex.class);
             this.graph = graph;
         }
 

@@ -128,7 +128,7 @@ public class GraphArchive extends FieldArchive implements
 
         public Converter(Listener listener, ProgressReporter reporter)
         {
-            super(listener);
+            super(listener, Graph.class);
             this.reporter = reporter;
         }
 
@@ -161,7 +161,7 @@ public class GraphArchive extends FieldArchive implements
     {
         public ListConverter(Listener listener)
         {
-            super(listener);
+            super(listener, GraphList.class);
         }
 
         @Override

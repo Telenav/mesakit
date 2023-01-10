@@ -69,7 +69,7 @@ public class RelationFilter implements Filter<PbfRelation>, Named
     {
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, RelationFilter.class);
         }
 
         @Override

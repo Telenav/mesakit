@@ -75,7 +75,7 @@ public class DataVersion
     {
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, DataVersion.class);
         }
 
         @Override
