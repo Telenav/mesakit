@@ -79,7 +79,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
 
         public Converter(Listener listener, Separators separators)
         {
-            super(listener);
+            super(listener, Segment.class);
             this.separators = separators;
             locationConverter = new Location.DegreesConverter(listener);
         }
@@ -283,9 +283,9 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
 
         // Compute intersection
         var xi = (that_dx * (this_x1 * this_y2 - this_y1 * this_x2) - this_dx * (that_x1 * that_y2 - that_y1 * that_x2))
-                / denominator;
+            / denominator;
         var yi = (that_dy * (this_x1 * this_y2 - this_y1 * this_x2) - this_dy * (that_x1 * that_y2 - that_y1 * that_x2))
-                / denominator;
+            / denominator;
 
         // If this line is vertical
         if (this_x1 == this_x2)
@@ -295,7 +295,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
 
             // and the y intersection is out of range on either segment
             if (yi < Math.min(this_y1, this_y2) || yi > Math.max(this_y1, this_y2) || yi < Math.min(that_y1, that_y2)
-                    || yi > Math.max(that_y1, that_y2))
+                || yi > Math.max(that_y1, that_y2))
             {
                 // then there is no intersection
                 return null;
@@ -310,7 +310,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
 
             // If the x intersection is out of range on either segment
             if (xi < Math.min(this_x1, this_x2) || xi > Math.max(this_x1, this_x2) || xi < Math.min(that_x1, that_x2)
-                    || xi > Math.max(that_x1, that_x2))
+                || xi > Math.max(that_x1, that_x2))
             {
                 // then there is no intersection
                 return null;
@@ -480,7 +480,7 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
     public boolean isConnectedTo(Segment that)
     {
         return start().equals(that.start()) || start().equals(that.end()) || end().equals(that.start())
-                || end().equals(that.end());
+            || end().equals(that.end());
     }
 
     public boolean isHorizontal()
@@ -601,20 +601,20 @@ public class Segment implements Bounded, Intersectable, Headed, Serializable, Lo
         var reversedHeading = heading().reversed();
 
         var location1 = start()
-                .moved(reversedHeading, range)
-                .moved(reversedHeading.plus(Angle._90_DEGREES), range);
+            .moved(reversedHeading, range)
+            .moved(reversedHeading.plus(Angle._90_DEGREES), range);
 
         var location2 = start()
-                .moved(reversedHeading, range)
-                .moved(reversedHeading.minus(Angle._90_DEGREES), range);
+            .moved(reversedHeading, range)
+            .moved(reversedHeading.minus(Angle._90_DEGREES), range);
 
         var location3 = end()
-                .moved(heading, range)
-                .moved(heading.plus(Angle._90_DEGREES), range);
+            .moved(heading, range)
+            .moved(heading.plus(Angle._90_DEGREES), range);
 
         var location4 = end()
-                .moved(heading, range)
-                .moved(heading.minus(Angle._90_DEGREES), range);
+            .moved(heading, range)
+            .moved(heading.minus(Angle._90_DEGREES), range);
 
         return Polygon.fromLocationSequence(location1, location2, location3, location4);
     }

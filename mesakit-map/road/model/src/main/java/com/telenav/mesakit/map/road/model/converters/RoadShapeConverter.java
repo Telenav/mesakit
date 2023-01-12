@@ -44,7 +44,7 @@ public class RoadShapeConverter extends BaseStringConverter<Polyline>
 
     public RoadShapeConverter(Listener listener, int columns)
     {
-        super(listener);
+        super(listener, Polyline.class);
         this.columns = columns;
     }
 

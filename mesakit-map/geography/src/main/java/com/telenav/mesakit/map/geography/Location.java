@@ -132,13 +132,13 @@ import static com.telenav.mesakit.map.geography.Precision.DM7;
 @UmlExcludeSuperTypes({ Validatable.class, Identifiable.class, StringFormattable.class, Serializable.class })
 @UmlRelation(label = "represented at", referent = Precision.class)
 public class Location implements
-        Validatable,
-        Located,
-        Identifiable,
-        Bounded,
-        Intersectable,
-        StringFormattable,
-        Serializable
+    Validatable,
+    Located,
+    Identifiable,
+    Bounded,
+    Intersectable,
+    StringFormattable,
+    Serializable
 {
     private static final long EARTH_RADIUS_IN_METERS = (long) Distance.EARTH_RADIUS_MINOR.asMeters();
 
@@ -155,7 +155,7 @@ public class Location implements
     public static final BitCount SIZE_IN_BITS = BitCount.bits(64);
 
     public static final Location TELENAV_HEADQUARTERS = new Location(Latitude.degrees(37.3859),
-            Longitude.degrees(-122.0046));
+        Longitude.degrees(-122.0046));
 
     public static final Location TOP_LEFT = new Location(Latitude.MAXIMUM, Longitude.MINIMUM);
 
@@ -166,24 +166,24 @@ public class Location implements
     public static final Location TOP_RIGHT = new Location(Latitude.MAXIMUM, Longitude.MAXIMUM);
 
     private static final double[] latitudeCosine = { 1.0,
-            0.9998476951563913, 0.9993908270190958, 0.9986295347545738, 0.9975640502598242, 0.9961946980917455,
-            0.9945218953682733, 0.992546151641322, 0.9902680687415704, 0.9876883405951378, 0.984807753012208,
-            0.981627183447664, 0.9781476007338057, 0.9743700647852352, 0.9702957262759965, 0.9659258262890683,
-            0.9612616959383189, 0.9563047559630354, 0.9510565162951535, 0.9455185755993168, 0.9396926207859084,
-            0.9335804264972017, 0.9271838545667874, 0.9205048534524404, 0.9135454576426009, 0.9063077870366499,
-            0.898794046299167, 0.8910065241883679, 0.882947592858927, 0.8746197071393957, 0.8660254037844387,
-            0.8571673007021123, 0.848048096156426, 0.838670567945424, 0.8290375725550416, 0.8191520442889918,
-            0.8090169943749475, 0.7986355100472928, 0.7880107536067219, 0.7771459614569709, 0.766044443118978,
-            0.754709580222772, 0.7431448254773942, 0.7313537016191705, 0.7193398003386512, 0.7071067811865476,
-            0.6946583704589973, 0.6819983600624985, 0.6691306063588582, 0.6560590289905073, 0.6427876096865394,
-            0.6293203910498375, 0.6156614753256583, 0.6018150231520484, 0.5877852522924731, 0.5735764363510462,
-            0.5591929034707468, 0.5446390350150271, 0.5299192642332049, 0.5150380749100542, 0.5000000000000001,
-            0.4848096202463371, 0.46947156278589086, 0.4539904997395468, 0.43837114678907746, 0.42261826174069944,
-            0.4067366430758002, 0.3907311284892737, 0.37460659341591196, 0.3583679495453004, 0.3420201433256688,
-            0.32556815445715676, 0.30901699437494745, 0.29237170472273677, 0.27563735581699916, 0.25881904510252074,
-            0.24192189559966767, 0.22495105434386492, 0.20791169081775945, 0.19080899537654492, 0.17364817766693041,
-            0.15643446504023092, 0.13917310096006547, 0.12186934340514749, 0.10452846326765346, 0.08715574274765814,
-            0.06975647374412523, 0.052335956242943966, 0.03489949670250108, 0.0174524064372836, 0.0
+        0.9998476951563913, 0.9993908270190958, 0.9986295347545738, 0.9975640502598242, 0.9961946980917455,
+        0.9945218953682733, 0.992546151641322, 0.9902680687415704, 0.9876883405951378, 0.984807753012208,
+        0.981627183447664, 0.9781476007338057, 0.9743700647852352, 0.9702957262759965, 0.9659258262890683,
+        0.9612616959383189, 0.9563047559630354, 0.9510565162951535, 0.9455185755993168, 0.9396926207859084,
+        0.9335804264972017, 0.9271838545667874, 0.9205048534524404, 0.9135454576426009, 0.9063077870366499,
+        0.898794046299167, 0.8910065241883679, 0.882947592858927, 0.8746197071393957, 0.8660254037844387,
+        0.8571673007021123, 0.848048096156426, 0.838670567945424, 0.8290375725550416, 0.8191520442889918,
+        0.8090169943749475, 0.7986355100472928, 0.7880107536067219, 0.7771459614569709, 0.766044443118978,
+        0.754709580222772, 0.7431448254773942, 0.7313537016191705, 0.7193398003386512, 0.7071067811865476,
+        0.6946583704589973, 0.6819983600624985, 0.6691306063588582, 0.6560590289905073, 0.6427876096865394,
+        0.6293203910498375, 0.6156614753256583, 0.6018150231520484, 0.5877852522924731, 0.5735764363510462,
+        0.5591929034707468, 0.5446390350150271, 0.5299192642332049, 0.5150380749100542, 0.5000000000000001,
+        0.4848096202463371, 0.46947156278589086, 0.4539904997395468, 0.43837114678907746, 0.42261826174069944,
+        0.4067366430758002, 0.3907311284892737, 0.37460659341591196, 0.3583679495453004, 0.3420201433256688,
+        0.32556815445715676, 0.30901699437494745, 0.29237170472273677, 0.27563735581699916, 0.25881904510252074,
+        0.24192189559966767, 0.22495105434386492, 0.20791169081775945, 0.19080899537654492, 0.17364817766693041,
+        0.15643446504023092, 0.13917310096006547, 0.12186934340514749, 0.10452846326765346, 0.08715574274765814,
+        0.06975647374412523, 0.052335956242943966, 0.03489949670250108, 0.0174524064372836, 0.0
     };
 
     public static Location degrees(double latitude, double longitude)
@@ -191,7 +191,7 @@ public class Location implements
         var latitudeRound = latitude < 0 ? -0.000_000_05 : 0.000_000_05;
         var longitudeRound = longitude < 0 ? -0.000_000_05 : 0.000_000_05;
         return new Location((int) ((latitude + latitudeRound) * 1_000_000_0),
-                (int) ((longitude + longitudeRound) * 1_000_000_0));
+            (int) ((longitude + longitudeRound) * 1_000_000_0));
     }
 
     public static Location dm5(int latitudeInDm5, int longitudeInDm5)
@@ -279,8 +279,8 @@ public class Location implements
      * @see "http://www.movable-type.co.uk/scripts/latlong.html"
      */
     public static long equirectangularDistanceBetweenInMillimeters(
-            long fromLatitudeInDm7, long fromLongitudeInDm7,
-            long toLatitudeInDm7, long toLongitudeInDm7)
+        long fromLatitudeInDm7, long fromLongitudeInDm7,
+        long toLatitudeInDm7, long toLongitudeInDm7)
     {
         var fromLatitude = fromLatitudeInDm7 / 1E7;
         var fromLongitude = fromLongitudeInDm7 / 1E7;
@@ -309,9 +309,9 @@ public class Location implements
     public static SwitchParser.Builder<Location> locationSwitchParser(String name, String description)
     {
         return SwitchParser.switchParser(Location.class)
-                .name(name)
-                .converter(new DegreesConverter(LOGGER))
-                .description(description);
+            .name(name)
+            .converter(new DegreesConverter(LOGGER))
+            .description(description);
     }
 
     public static int longitude(long latitudeAndLongitude)
@@ -355,7 +355,7 @@ public class Location implements
 
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, Location.class);
         }
 
         public void type(Type type)
@@ -408,7 +408,7 @@ public class Location implements
 
         public DegreesConverter(Listener listener, Separators separators)
         {
-            super(listener);
+            super(listener, Location.class);
             this.separators = separators;
             latitudeConverter = new Latitude.DegreesConverter(listener);
             longitudeConverter = new Longitude.DegreesConverter(listener);
@@ -463,7 +463,7 @@ public class Location implements
 
         public DegreesMinutesAndSecondsConverter(Listener listener, Separators separators)
         {
-            super(listener);
+            super(listener, Location.class);
             this.separators = separators;
             latitudeConverter = new Latitude.DegreesMinutesAndSecondsConverter(listener);
             longitudeConverter = new Longitude.DegreesMinutesAndSecondsConverter(listener);
@@ -518,7 +518,7 @@ public class Location implements
 
         public Dm5Converter(Listener listener, Separators separators)
         {
-            super(listener);
+            super(listener, Location.class);
             this.separators = separators;
             latitudeConverter = new Precision.Dm5LatitudeConverter(listener);
             longitudeConverter = new Precision.Dm5LongitudeConverter(listener);
@@ -528,7 +528,7 @@ public class Location implements
         protected String onToString(Location value)
         {
             return latitudeConverter.unconvert(value.latitude()) + separators.current()
-                    + longitudeConverter.unconvert(value.longitude());
+                + longitudeConverter.unconvert(value.longitude());
         }
 
         /**
@@ -663,15 +663,19 @@ public class Location implements
 
         switch (precision)
         {
-            case DM6:
+            case DM6 ->
+            {
                 return asDm6Long();
-
-            case DM7:
+            }
+            case DM7 ->
+            {
                 return asDm7Long();
-
-            default:
+            }
+            default ->
+            {
                 fail("Precision $ not supported", precision);
                 return -1;
+            }
         }
     }
 
@@ -691,14 +695,12 @@ public class Location implements
     @Override
     public String asString(@NotNull Format format)
     {
-        switch (format)
-        {
-            case USER_LABEL:
-                return String.format("latitude = %.07f, longitude = %.07f", latitude().asDegrees(), longitude().asDegrees());
-
-            default:
-                return latitude() + "," + longitude();
-        }
+        return switch (format)
+            {
+                case USER_LABEL ->
+                    String.format("latitude = %.07f, longitude = %.07f", latitude().asDegrees(), longitude().asDegrees());
+                default -> latitude() + "," + longitude();
+            };
     }
 
     public Width asWidth()
@@ -768,6 +770,7 @@ public class Location implements
      * Returns the distance to the given location using an efficient formula consistent with an equirectangular
      * projection. NOTE: This formula is accurate enough for "short" distances (up to a few kilometers), but gets less
      * and less accurate as the latitude difference increases.
+     *
      * @see #equirectangularDistanceToInMillimeters(Location)
      * @see #equirectangularDistanceBetweenInMillimeters(long, long, long, long)
      */
@@ -781,7 +784,7 @@ public class Location implements
         // HOTSPOT: This method has been determined to be a hotspot by YourKit profiling
 
         return equirectangularDistanceBetweenInMillimeters(latitudeInDm7, longitudeInDm7,
-                that.latitudeInDm7, that.longitudeInDm7);
+            that.latitudeInDm7, that.longitudeInDm7);
     }
 
     /**
@@ -809,8 +812,8 @@ public class Location implements
          */
         Angle longitudeDifference = that.longitude().minus(longitude());
         var hav = Math.pow(Math.sin(latitudeDifference.asRadians() / 2.0), 2.0)
-                + Math.pow(Math.sin(longitudeDifference.asRadians() / 2.0), 2.0) * Math.cos(latitude().asRadians())
-                * Math.cos(that.latitude().asRadians());
+            + Math.pow(Math.sin(longitudeDifference.asRadians() / 2.0), 2.0) * Math.cos(latitude().asRadians())
+            * Math.cos(that.latitude().asRadians());
         var resultAngle = 2.0 * Math.atan2(Math.sqrt(hav), Math.sqrt(1.0 - hav));
         return Distance.meters(Distance.EARTH_RADIUS_MINOR.asMeters() * resultAngle);
     }
@@ -827,7 +830,7 @@ public class Location implements
         var endLatitude = DM7.toRadians(that.latitudeInDm7);
         var y = Math.sin(longitudeDifference) * Math.cos(endLatitude);
         var x = Math.cos(startLatitude) * Math.sin(endLatitude)
-                - Math.sin(startLatitude) * Math.cos(endLatitude) * Math.cos(longitudeDifference);
+            - Math.sin(startLatitude) * Math.cos(endLatitude) * Math.cos(longitudeDifference);
         return Heading.radians(Trigonometry.arcTangent2(y, x));
     }
 
@@ -980,10 +983,10 @@ public class Location implements
         var angularDistance = offset.ratio(Distance.EARTH_RADIUS_MINOR);
 
         var movedLatitude = Math.asin(Math.sin(latitude) * Math.cos(angularDistance)
-                + Math.cos(latitude) * Math.sin(angularDistance) * Math.cos(heading.asRadians()));
+            + Math.cos(latitude) * Math.sin(angularDistance) * Math.cos(heading.asRadians()));
         var movedLongitude = longitude
-                + Math.atan2(Math.sin(heading.asRadians()) * Math.sin(angularDistance) * Math.cos(latitude),
-                Math.cos(angularDistance) - Math.sin(latitude) * Math.sin(movedLatitude));
+            + Math.atan2(Math.sin(heading.asRadians()) * Math.sin(angularDistance) * Math.cos(latitude),
+            Math.cos(angularDistance) - Math.sin(latitude) * Math.sin(movedLatitude));
         var newLongitude = Angle.radians(movedLongitude);
         if (newLongitude.isLessThan(Longitude.MINIMUM))
         {
@@ -1019,7 +1022,7 @@ public class Location implements
     public Offset offsetTo(Location at)
     {
         return new Offset(at.longitude().minus(longitude()).asWidth(),
-                at.latitude().minus(latitude()).asHeight());
+            at.latitude().minus(latitude()).asHeight());
     }
 
     public Distance preciseDistanceTo(Location that)
@@ -1031,9 +1034,9 @@ public class Location implements
     {
         var quantumMicrodegrees = quantum.asAngle().asMicrodegrees();
         var latitude = Latitude.microdegrees(
-                (latitude().asMicrodegrees() + (quantumMicrodegrees / 2)) / quantumMicrodegrees * quantumMicrodegrees);
+            (latitude().asMicrodegrees() + (quantumMicrodegrees / 2)) / quantumMicrodegrees * quantumMicrodegrees);
         var longitude = Longitude.microdegrees(
-                (longitude().asMicrodegrees() + (quantumMicrodegrees / 2)) / quantumMicrodegrees * quantumMicrodegrees);
+            (longitude().asMicrodegrees() + (quantumMicrodegrees / 2)) / quantumMicrodegrees * quantumMicrodegrees);
         return new Location(latitude, longitude);
     }
 

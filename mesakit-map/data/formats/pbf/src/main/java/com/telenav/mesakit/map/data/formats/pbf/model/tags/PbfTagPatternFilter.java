@@ -64,7 +64,7 @@ public class PbfTagPatternFilter implements PbfTagFilter
     {
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, PbfTagPatternFilter.class);
         }
 
         @Override

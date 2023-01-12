@@ -123,7 +123,7 @@ public class WorldGraphRepositoryFolder extends Folder implements Serializable
 
         public Converter(Listener listener, Check existence)
         {
-            super(listener);
+            super(listener, WorldGraphRepositoryFolder.class);
             this.existence = existence;
         }
 

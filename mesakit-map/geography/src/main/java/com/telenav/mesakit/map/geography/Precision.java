@@ -129,7 +129,7 @@ public enum Precision
     {
         public Dm5LatitudeConverter(Listener listener)
         {
-            super(listener);
+            super(listener, Latitude.class);
         }
 
         @Override
@@ -143,7 +143,7 @@ public enum Precision
     {
         public Dm5LongitudeConverter(Listener listener)
         {
-            super(listener);
+            super(listener, Longitude.class);
         }
 
         @Override
@@ -157,7 +157,7 @@ public enum Precision
     {
         public Dm6LatitudeConverter(Listener listener)
         {
-            super(listener);
+            super(listener, Latitude.class);
         }
 
         @Override
@@ -171,7 +171,7 @@ public enum Precision
     {
         public Dm6LongitudeConverter(Listener listener)
         {
-            super(listener);
+            super(listener, Longitude.class);
         }
 
         @Override
@@ -185,7 +185,7 @@ public enum Precision
     {
         public Dm7LatitudeConverter(Listener listener)
         {
-            super(listener);
+            super(listener, Latitude.class);
         }
 
         @Override
@@ -199,7 +199,7 @@ public enum Precision
     {
         public Dm7LongitudeConverter(Listener listener)
         {
-            super(listener);
+            super(listener, Longitude.class);
         }
 
         @Override

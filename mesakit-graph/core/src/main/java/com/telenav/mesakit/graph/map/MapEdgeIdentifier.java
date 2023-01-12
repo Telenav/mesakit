@@ -40,7 +40,7 @@ public class MapEdgeIdentifier
     {
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, MapEdgeIdentifier.class);
         }
 
         @Override
@@ -66,7 +66,7 @@ public class MapEdgeIdentifier
 
         public EdgeConverter(Listener listener, Graph graph)
         {
-            super(listener);
+            super(listener, Edge.class);
             this.graph = graph;
             identifierConverter = new Converter(listener);
         }

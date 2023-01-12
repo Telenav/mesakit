@@ -80,7 +80,7 @@ public class PbfNodeIdentifier extends MapNodeIdentifier implements PbfIdentifie
     {
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, PbfNodeIdentifier.class);
         }
 
         @Override

@@ -32,13 +32,13 @@ import com.telenav.mesakit.map.data.formats.library.map.identifiers.MapWayIdenti
 import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifier;
 
 /**
- * An identifier of {@link Edge}s in a {@link Graph} that can be used to retrieve the identified edge with {@link
- * Graph#edgeForIdentifier(EdgeIdentifier)}. Edge identifiers can be forward (positive sign) or reverse (negative sign).
- * This can be determined with {@link #isForward()} and {@link #isReverse()}.  The forward identifier can be retrieved
- * for any edge identifier with {@link #asForward()}. The edge identifier in the opposite direction can be retrieved
- * with {@link #reversed()}, which changes the sign from positive to negative or negative to positive. In certain
- * applications, it may be desirable to retrieve this identifier without the wrapper object. This can be achieved with
- * {@link Edge#identifierAsLong()}.
+ * An identifier of {@link Edge}s in a {@link Graph} that can be used to retrieve the identified edge with
+ * {@link Graph#edgeForIdentifier(EdgeIdentifier)}. Edge identifiers can be forward (positive sign) or reverse (negative
+ * sign). This can be determined with {@link #isForward()} and {@link #isReverse()}.  The forward identifier can be
+ * retrieved for any edge identifier with {@link #asForward()}. The edge identifier in the opposite direction can be
+ * retrieved with {@link #reversed()}, which changes the sign from positive to negative or negative to positive. In
+ * certain applications, it may be desirable to retrieve this identifier without the wrapper object. This can be
+ * achieved with {@link Edge#identifierAsLong()}.
  * <p>
  * Edge identifiers have a numeric scheme that adds edge-specific information to an underlying {@link PbfWayIdentifier},
  * which is a kind of {@link MapIdentifier} in the original source data. The method {@link #asWayIdentifier()} can be
@@ -54,7 +54,7 @@ import com.telenav.mesakit.map.data.formats.pbf.model.identifiers.PbfWayIdentifi
  */
 @SuppressWarnings("unused")
 public class EdgeIdentifier extends Identifier implements
-        GraphElementIdentifier
+    GraphElementIdentifier
 {
     public static final int SIZE_IN_BITS = 64;
 
@@ -115,9 +115,9 @@ public class EdgeIdentifier extends Identifier implements
                                                                                   String description)
     {
         return SwitchParser.switchParser(EdgeIdentifier.class)
-                .name(name)
-                .description(description)
-                .converter(new Converter(listener));
+            .name(name)
+            .description(description)
+            .converter(new Converter(listener));
     }
 
     /**
@@ -164,7 +164,7 @@ public class EdgeIdentifier extends Identifier implements
     {
         public Converter(Listener listener)
         {
-            super(listener, EdgeIdentifier::new);
+            super(listener, EdgeIdentifier.class, EdgeIdentifier::new);
         }
     }
 
@@ -177,7 +177,7 @@ public class EdgeIdentifier extends Identifier implements
     {
         public ToWayIdentifierConverter(Listener listener)
         {
-            super(listener);
+            super(listener, EdgeIdentifier.class, PbfWayIdentifier.class);
         }
 
         @Override

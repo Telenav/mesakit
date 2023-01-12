@@ -41,6 +41,8 @@ import com.telenav.mesakit.map.region.internal.lexakai.DiagramRegions;
 import java.time.ZoneId;
 import java.util.Collection;
 
+import static com.telenav.kivakit.commandline.SwitchParser.switchParser;
+
 /**
  * @author Jonathan Locke
  */
@@ -112,9 +114,9 @@ public class TimeZone extends Region<TimeZone>
 
     public static SwitchParser.Builder<TimeZone> timeZoneSwitchParser(String name, String description)
     {
-        return SwitchParser.switchParser(TimeZone.class)
+        return switchParser(TimeZone.class)
                 .name(name)
-                .converter(new Converter<>(LOGGER()))
+                .converter(new Converter<>(LOGGER(), TimeZone.class))
                 .description(description);
     }
 

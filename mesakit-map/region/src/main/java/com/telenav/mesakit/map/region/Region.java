@@ -96,14 +96,14 @@ import static com.telenav.mesakit.map.region.locale.MapLocale.ENGLISH_WORLD;
 @SuppressWarnings("unused") @UmlClassDiagram(diagram = DiagramRegion.class)
 @UmlExcludeSuperTypes({ StringFormattable.class, Comparable.class, Nameable.class, Named.class })
 public abstract class Region<T extends Region<T>> implements
-        Bounded,
-        Bordered,
-        Intersectable,
-        Outline,
-        Nameable,
-        Named,
-        Comparable<Region<T>>,
-        StringFormattable
+    Bounded,
+    Bordered,
+    Intersectable,
+    Outline,
+    Nameable,
+    Named,
+    Comparable<Region<T>>,
+    StringFormattable
 {
     public static final RegionIdentifier WORLD_IDENTIFIER_MINIMUM = new RegionIdentifier(1_000_000);
 
@@ -120,11 +120,11 @@ public abstract class Region<T extends Region<T>> implements
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
     public static SwitchParser.Builder<RegionSet> REGIONS = regionListSwitchParser(LOGGER, "regions",
-            "A comma separated list of regions");
+        "A comma separated list of regions");
 
     @SuppressWarnings({ "rawtypes" })
     public static SwitchParser.Builder<Region> REGION = regionSwitchParser(LOGGER, "region",
-            "A comma separated list of regions");
+        "A comma separated list of regions");
 
     private static final Debug DEBUG = new Debug(LOGGER);
 
@@ -158,9 +158,9 @@ public abstract class Region<T extends Region<T>> implements
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     private static final RegionType all = new RegionType(Region.class)
-            .withMinimumIdentifier(COUNTRY_IDENTIFIER_MINIMUM)
-            .withMaximumIdentifier(WORLD_IDENTIFIER_MAXIMUM)
-            .withName("Region");
+        .withMinimumIdentifier(COUNTRY_IDENTIFIER_MINIMUM)
+        .withMaximumIdentifier(WORLD_IDENTIFIER_MAXIMUM)
+        .withName("Region");
 
     private static boolean registered;
 
@@ -201,53 +201,53 @@ public abstract class Region<T extends Region<T>> implements
             DEBUG.trace("Registering regions and loading region identities");
 
             register(World.class, new RegionType<>(World.class)
-                    .withName("World")
-                    .withMinimumIdentifier(WORLD_IDENTIFIER_MINIMUM)
-                    .withMaximumIdentifier(WORLD_IDENTIFIER_MAXIMUM));
+                .withName("World")
+                .withMinimumIdentifier(WORLD_IDENTIFIER_MINIMUM)
+                .withMaximumIdentifier(WORLD_IDENTIFIER_MAXIMUM));
 
             register(Continent.class, new RegionType<>(Continent.class)
-                    .withName("Continent")
-                    .withMinimumIdentifier(CONTINENT_IDENTIFIER_MINIMUM)
-                    .withMaximumIdentifier(CONTINENT_IDENTIFIER_MAXIMUM)
-                    .withBorderCache(Continent.borderCache()));
+                .withName("Continent")
+                .withMinimumIdentifier(CONTINENT_IDENTIFIER_MINIMUM)
+                .withMaximumIdentifier(CONTINENT_IDENTIFIER_MAXIMUM)
+                .withBorderCache(Continent.borderCache()));
 
             register(Country.class, new RegionType<>(Country.class)
-                    .withName("Country")
-                    .withMinimumIdentifier(COUNTRY_IDENTIFIER_MINIMUM)
-                    .withMaximumIdentifier(COUNTRY_IDENTIFIER_MAXIMUM)
-                    .withBorderCache(Country.borderCache()));
+                .withName("Country")
+                .withMinimumIdentifier(COUNTRY_IDENTIFIER_MINIMUM)
+                .withMaximumIdentifier(COUNTRY_IDENTIFIER_MAXIMUM)
+                .withBorderCache(Country.borderCache()));
 
             register(State.class, new RegionType<>(State.class)
-                    .withName("State")
-                    .withMinimumIdentifier(STATE_IDENTIFIER_MINIMUM)
-                    .withMaximumIdentifier(STATE_IDENTIFIER_MAXIMUM)
-                    .withBorderCache(State.borderCache()));
+                .withName("State")
+                .withMinimumIdentifier(STATE_IDENTIFIER_MINIMUM)
+                .withMaximumIdentifier(STATE_IDENTIFIER_MAXIMUM)
+                .withBorderCache(State.borderCache()));
 
             register(County.class, new RegionType<>(County.class)
-                    .withName("County")
-                    .withMinimumIdentifier(COUNTY_IDENTIFIER_MINIMUM)
-                    .withMaximumIdentifier(COUNTY_IDENTIFIER_MAXIMUM)
-                    .withBorderCache(County.borderCache()));
+                .withName("County")
+                .withMinimumIdentifier(COUNTY_IDENTIFIER_MINIMUM)
+                .withMaximumIdentifier(COUNTY_IDENTIFIER_MAXIMUM)
+                .withBorderCache(County.borderCache()));
 
             register(MetropolitanArea.class, new RegionType<>(MetropolitanArea.class)
-                    .withName("Metropolitan Area")
-                    .withMinimumIdentifier(METROPOLITAN_AREA_IDENTIFIER_MINIMUM)
-                    .withMaximumIdentifier(METROPOLITAN_AREA_IDENTIFIER_MAXIMUM)
-                    .withBorderCache(MetropolitanArea.borderCache()));
+                .withName("Metropolitan Area")
+                .withMinimumIdentifier(METROPOLITAN_AREA_IDENTIFIER_MINIMUM)
+                .withMaximumIdentifier(METROPOLITAN_AREA_IDENTIFIER_MAXIMUM)
+                .withBorderCache(MetropolitanArea.borderCache()));
 
             // No border cache (yet) because we don't know how to extract these since
             // there is no PBF data for this kind of region
             register(City.class, new RegionType<>(City.class)
-                    .withName("City")
-                    .withMinimumIdentifier(CITY_IDENTIFIER_MINIMUM)
-                    .withMaximumIdentifier(CITY_IDENTIFIER_MAXIMUM));
+                .withName("City")
+                .withMinimumIdentifier(CITY_IDENTIFIER_MINIMUM)
+                .withMaximumIdentifier(CITY_IDENTIFIER_MAXIMUM));
 
             // No border cache (yet) because we don't know how to extract these since
             // there is no PBF data for this kind of region
             register(District.class, new RegionType<>(District.class)
-                    .withName("District")
-                    .withMinimumIdentifier(DISTRICT_IDENTIFIER_MINIMUM)
-                    .withMaximumIdentifier(DISTRICT_IDENTIFIER_MAXIMUM));
+                .withName("District")
+                .withMinimumIdentifier(DISTRICT_IDENTIFIER_MINIMUM)
+                .withMaximumIdentifier(DISTRICT_IDENTIFIER_MAXIMUM));
 
             // Initialize all the continents and their child regions
             Continent.create();
@@ -322,22 +322,27 @@ public abstract class Region<T extends Region<T>> implements
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public static ArgumentParser.Builder<Region> regionArgumentParser(Listener listener, String description)
     {
-        return ArgumentParser.argumentParser(Region.class).converter(new Converter(listener)).description(description);
+        return ArgumentParser.argumentParser(Region.class)
+            .converter(new Converter(listener, Region.class))
+            .description(description);
     }
 
     public static SwitchParser.Builder<RegionSet> regionListSwitchParser(Listener listener, String name,
                                                                          String description)
     {
         return SwitchParser.switchParser(RegionSet.class)
-                .name(name)
-                .description(description)
-                .converter(new SetConverter(listener));
+            .name(name)
+            .description(description)
+            .converter(new SetConverter(listener));
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public static SwitchParser.Builder<Region> regionSwitchParser(Listener listener, String name, String description)
     {
-        return SwitchParser.switchParser(Region.class).name(name).description(description).converter(new Converter(listener));
+        return SwitchParser.switchParser(Region.class)
+            .name(name)
+            .description(description)
+            .converter(new Converter(listener, Region.class));
     }
 
     @SuppressWarnings({ "rawtypes" })
@@ -354,9 +359,9 @@ public abstract class Region<T extends Region<T>> implements
 
     public static class Converter<R extends Region<R>> extends BaseStringConverter<R>
     {
-        public Converter(Listener listener)
+        public Converter(Listener listener, Class<R> type)
         {
-            super(listener);
+            super(listener, type);
         }
 
         @Override
@@ -377,7 +382,7 @@ public abstract class Region<T extends Region<T>> implements
                     return (R) regions.first();
                 }
                 LOGGER.warning("Region pattern was ambiguous, matching $ regions: $", regions.size(),
-                        AsciiArt.bulleted(regions));
+                    AsciiArt.bulleted(regions));
             }
             return null;
         }
@@ -387,7 +392,7 @@ public abstract class Region<T extends Region<T>> implements
     {
         public SetConverter(Listener listener)
         {
-            super(listener);
+            super(listener, RegionSet.class);
         }
 
         @Override

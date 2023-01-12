@@ -776,7 +776,7 @@ public abstract class Country extends Region<Country> implements LongValued
     {
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, Country.class);
         }
 
         @Override

@@ -72,7 +72,7 @@ public class PbfWayIdentifier extends MapWayIdentifier implements PbfIdentifierT
     {
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, PbfWayIdentifier.class);
         }
 
         @Override

@@ -32,7 +32,7 @@ public class RoadNameConverter extends BaseStringConverter<RoadName>
 
     public RoadNameConverter(Listener listener)
     {
-        super(listener);
+        super(listener, RoadName.class);
     }
 
     @Override

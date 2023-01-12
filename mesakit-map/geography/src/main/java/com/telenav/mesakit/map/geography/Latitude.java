@@ -135,7 +135,7 @@ public final class Latitude extends Angle
     {
         public DegreesConverter(Listener listener)
         {
-            super(listener);
+            super(listener, Latitude.class);
         }
 
         @Override
@@ -153,7 +153,7 @@ public final class Latitude extends Angle
 
         public DegreesMinutesAndSecondsConverter(Listener listener)
         {
-            super(listener);
+            super(listener, Latitude.class);
         }
 
         @Override

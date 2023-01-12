@@ -160,7 +160,7 @@ import static com.telenav.mesakit.graph.GraphLimits.Limit;
 
         public Converter(Graph graph, Separators separators, Listener listener)
         {
-            super(listener);
+            super(listener, EdgeSet.class);
             this.separators = separators;
             converter = new Edge.Converter(graph, listener);
         }

@@ -45,7 +45,7 @@ public class WorldEdgeIdentifier extends EdgeIdentifier
 
         public Converter(WorldGrid grid, Listener listener)
         {
-            super(listener);
+            super(listener, WorldEdgeIdentifier.class);
             this.grid = grid;
         }
 

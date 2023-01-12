@@ -532,7 +532,7 @@ public abstract class Edge extends GraphElement implements
 
         public Converter(Graph graph, Listener listener)
         {
-            super(listener);
+            super(listener, Edge.class);
             this.graph = graph;
         }
 

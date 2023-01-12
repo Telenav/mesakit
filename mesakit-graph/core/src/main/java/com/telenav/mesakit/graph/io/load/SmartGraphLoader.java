@@ -116,7 +116,7 @@ public class SmartGraphLoader extends BaseRepeater implements Named
 
         public Converter(Listener listener, PbfToGraphConverter.Configuration configuration)
         {
-            super(listener);
+            super(listener, SmartGraphLoader.class);
             this.configuration = configuration;
         }
 
@@ -175,10 +175,11 @@ public class SmartGraphLoader extends BaseRepeater implements Named
             // and load the file accordingly
             switch (extension.toString())
             {
-                case ".graph":
+                case ".graph" ->
+                {
                     return new GraphArchive(listener, file, READ, reporter).loadAll(listener);
-
-                case ".pbf":
+                }
+                case ".pbf" ->
                 {
                     var metadata = Metadata.metadata(file);
                     if (metadata != null)
@@ -191,9 +192,7 @@ public class SmartGraphLoader extends BaseRepeater implements Named
                     problem("PBF file '$' does not contain metadata. Use mesakit-tools to add metadata.", file);
                     return null;
                 }
-
-                default:
-                    throw new IllegalStateException("Unrecognized graph resource: " + file);
+                default -> throw new IllegalStateException("Unrecognized graph resource: " + file);
             }
         }
         warning("File '$' does not exist", file);

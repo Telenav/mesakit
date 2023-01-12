@@ -32,7 +32,7 @@ public class DeCartaRoadTypeConverter extends BaseStringConverter<DeCartaRoadTyp
 
     public DeCartaRoadTypeConverter(Listener listener)
     {
-        super(listener);
+        super(listener, DeCartaRoadType.class);
         integerConverter = new IntegerConverter(listener);
     }
 

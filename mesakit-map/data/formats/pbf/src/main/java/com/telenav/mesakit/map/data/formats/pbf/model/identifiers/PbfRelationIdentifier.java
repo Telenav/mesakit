@@ -60,7 +60,7 @@ public class PbfRelationIdentifier extends MapRelationIdentifier implements PbfI
     {
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, PbfRelationIdentifier.class);
         }
 
         @Override

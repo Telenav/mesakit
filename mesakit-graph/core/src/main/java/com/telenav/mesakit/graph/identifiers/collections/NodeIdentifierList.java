@@ -37,7 +37,7 @@ public class NodeIdentifierList extends ObjectList<MapNodeIdentifier>
 
         public Converter(Listener listener, Separators separators)
         {
-            super(listener);
+            super(listener, NodeIdentifierList.class);
             this.separators = separators;
         }
 

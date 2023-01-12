@@ -63,7 +63,7 @@ public class VertexIdentifier extends IntegerIdentifier implements GraphElementI
     {
         public Converter(Listener listener)
         {
-            super(listener, identifier ->
+            super(listener, VertexIdentifier.class, identifier ->
             {
                 if (identifier > 0 && identifier < Integer.MAX_VALUE)
                 {

@@ -51,7 +51,7 @@ public class PlaceIdentifier extends MapNodeIdentifier implements GraphElementId
     {
         public Converter(Listener listener)
         {
-            super(listener, PlaceIdentifier::new);
+            super(listener, PlaceIdentifier.class, PlaceIdentifier::new);
         }
     }
 

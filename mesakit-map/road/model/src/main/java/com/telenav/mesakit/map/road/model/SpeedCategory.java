@@ -79,7 +79,7 @@ public class SpeedCategory implements LongValued
     {
         public Converter(Listener listener)
         {
-            super(listener, value -> forIdentifier(value.intValue()));
+            super(listener, SpeedCategory.class, value -> forIdentifier(value.intValue()));
         }
     }
 
