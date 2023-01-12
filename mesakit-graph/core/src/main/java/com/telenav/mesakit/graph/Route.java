@@ -188,7 +188,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
         public Converter(Graph graph, Separators separators, Listener listener,
                          Edge.Converter edgeConverter)
         {
-            super(listener);
+            super(listener, Route.class);
             this.graph = graph;
             this.separators = separators;
             this.edgeConverter = edgeConverter;
@@ -243,7 +243,7 @@ public abstract class Route implements Iterable<Edge>, Bounded, StringFormattabl
 
         public MapIdentifierConverter(Graph graph, Separators separators, Listener listener)
         {
-            super(listener);
+            super(listener, Route.class);
             this.graph = graph;
             this.separators = separators;
             edgeConverter = new MapEdgeIdentifier.EdgeConverter(listener, graph);

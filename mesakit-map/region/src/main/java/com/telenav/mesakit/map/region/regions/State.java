@@ -43,6 +43,7 @@ import com.telenav.mesakit.map.region.internal.lexakai.DiagramRegions;
 import java.util.Collection;
 import java.util.Set;
 
+import static com.telenav.kivakit.commandline.SwitchParser.switchParser;
 import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 @SuppressWarnings("unused")
@@ -70,12 +71,12 @@ public class State extends Region<State>
         if (borderCache == null)
         {
             var settings = new BorderCache.Settings<State>()
-                    .withType(State.class)
-                    .withMaximumObjects(RegionLimits.STATES)
-                    .withMaximumPolygonsPerObject(RegionLimits.POLYGONS_PER_STATE)
-                    .withMinimumBorderArea(Area.squareMiles(5))
-                    .withRegionExtractor(newExtractor())
-                    .withRegionFactory((identity) -> identity.findOrCreateRegion(State.class));
+                .withType(State.class)
+                .withMaximumObjects(RegionLimits.STATES)
+                .withMaximumPolygonsPerObject(RegionLimits.POLYGONS_PER_STATE)
+                .withMinimumBorderArea(Area.squareMiles(5))
+                .withRegionExtractor(newExtractor())
+                .withRegionFactory((identity) -> identity.findOrCreateRegion(State.class));
 
             borderCache = LOGGER.listenTo(new RegionBorderCache<>(settings));
         }
@@ -104,8 +105,10 @@ public class State extends Region<State>
 
     public static SwitchParser.Builder<State> stateSwitchParser(String name, String description)
     {
-        return SwitchParser.switchParser(State.class).name(name).converter(new Converter<>(LOGGER()))
-                .description(description);
+        return switchParser(State.class)
+            .name(name)
+            .converter(new Converter<>(LOGGER(), State.class))
+            .description(description);
     }
 
     private final ObjectList<LocaleLanguage> languages;
@@ -260,8 +263,8 @@ public class State extends Region<State>
 
                 // Construct region identity
                 var identity = new RegionIdentity(name.code())
-                        .withIsoCode(iso.last().isoized())
-                        .withMesaKitCode(mesakit.last().aonized());
+                    .withIsoCode(iso.last().isoized())
+                    .withMesaKitCode(mesakit.last().aonized());
 
                 if (!identity.isValid())
                 {
@@ -273,7 +276,7 @@ public class State extends Region<State>
                     // Create new region so identity gets hierarchically populated and
                     // inserted into the RegionType cache for this region type
                     var instance = new RegionInstance<>(State.class)
-                            .withIdentity(identity);
+                        .withIdentity(identity);
 
                     // Return either some old instance or the new one
                     var newRegion = new State(country, instance);

@@ -79,10 +79,11 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
  *     for (var location : polyline) { ... }
  * </pre>
  * Poly-lines also have a bounding rectangle retrieved with {@link Bounded#bounds()}. It can be determined if the
- * polyline intersects a rectangle or segment with {@link Intersectable#intersects(Rectangle)} and {@link
- * #intersects(Segment)}, and whether it intersects itself with {@link #selfIntersection()}. The point of intersection
- * with another polyline or with a segment can be determined with {@link #intersection(Polyline)} and {@link
- * #intersection(Segment)}. Whether two poly-lines cross each other can be determined with {@link #crosses(Polyline)}.
+ * polyline intersects a rectangle or segment with {@link Intersectable#intersects(Rectangle)} and
+ * {@link #intersects(Segment)}, and whether it intersects itself with {@link #selfIntersection()}. The point of
+ * intersection with another polyline or with a segment can be determined with {@link #intersection(Polyline)} and
+ * {@link #intersection(Segment)}. Whether two poly-lines cross each other can be determined with
+ * {@link #crosses(Polyline)}.
  * <p>
  * Segments of the polyline can be retrieved with:
  * <ul>
@@ -125,11 +126,11 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 @SuppressWarnings("unused") @UmlClassDiagram(diagram = DiagramPolyline.class)
 @UmlRelation(label = "contains", referent = Location.class, referentCardinality = "2+")
 public class Polyline implements
-        Indexable<Location>,
-        Bounded,
-        Intersectable,
-        LocationSequence,
-        Iterable<Location>
+    Indexable<Location>,
+    Bounded,
+    Intersectable,
+    LocationSequence,
+    Iterable<Location>
 {
     public static final Distance DEFAULT_MAXIMUM_SHAPE_POINT_SPACING = Distance.meters(15);
 
@@ -222,7 +223,7 @@ public class Polyline implements
 
         public Converter(Listener listener, Separators separators)
         {
-            super(listener);
+            super(listener, Polyline.class);
             this.separators = separators;
             locationConverter = new Location.DegreesConverter(listener, separators.child());
             allowEmptyString(true);
@@ -271,7 +272,7 @@ public class Polyline implements
     {
         public GoogleEncodingConverter(Listener listener)
         {
-            super(listener);
+            super(listener, Polyline.class);
         }
 
         @Override
@@ -334,8 +335,8 @@ public class Polyline implements
             {
                 // Use matcher.start() and .end() to replace "\" with "\\"
                 temp = temp.substring(0, matcher.start())
-                        + temp.substring(matcher.start(), matcher.end()).replaceAll("\\\\", "\\\\\\\\")
-                        + temp.substring(matcher.end());
+                    + temp.substring(matcher.start(), matcher.end()).replaceAll("\\\\", "\\\\\\\\")
+                    + temp.substring(matcher.end());
             }
             return temp;
         }
@@ -468,7 +469,7 @@ public class Polyline implements
 
         public LongArrayConverter(Listener listener, Separators separators)
         {
-            super(listener);
+            super(listener, Polyline.class);
             longArrayConverter = new LongArray.Converter(listener, separators);
             allowEmptyString(true);
             allowNull(true);
@@ -756,7 +757,7 @@ public class Polyline implements
             {
                 var segment = new Segment(last, location);
                 for (var at = maximumShapePointSpacing; at
-                        .isLessThan(segment.length()); at = at.add(maximumShapePointSpacing))
+                    .isLessThan(segment.length()); at = at.add(maximumShapePointSpacing))
                 {
                     builder.add(segment.at(at));
                 }
@@ -877,11 +878,11 @@ public class Polyline implements
 
             // If the snap is close enough and the heading is within tolerance,
             if (snap.distanceToSource().isLessThan(maximumDistance)
-                    && snap.segmentHeading().isCloseOrReverseIsClose(segment.heading(), maximumHeadingDeviation))
+                && snap.segmentHeading().isCloseOrReverseIsClose(segment.heading(), maximumHeadingDeviation))
             {
                 // and the snap angle is roughly perpendicular (indicating the segments are not end-to-end)
                 if (snap.distanceToSource().isLessThan(Distance.meters(1))
-                        || snap.angle().isClose(Angle._90_DEGREES, Angle._45_DEGREES))
+                    || snap.angle().isClose(Angle._90_DEGREES, Angle._45_DEGREES))
                 {
                     // then add the segment to the amount of this polyline considered close
                     close = close.add(segment.length());
@@ -905,11 +906,11 @@ public class Polyline implements
                 for (var thatSegment : that.segments())
                 {
                     if (!thisSegment.start().equals(thatSegment.start())
-                            && !thisSegment.start().equals(thatSegment.end())
-                            && !thisSegment.end().equals(thatSegment.start())
-                            && !thisSegment.end().equals(thatSegment.end())
+                        && !thisSegment.start().equals(thatSegment.end())
+                        && !thisSegment.end().equals(thatSegment.start())
+                        && !thisSegment.end().equals(thatSegment.end())
 
-                            && thisSegment.intersects(thatSegment))
+                        && thisSegment.intersects(thatSegment))
                     {
                         return true;
                     }
@@ -1673,8 +1674,8 @@ public class Polyline implements
     public String toString()
     {
         return new ObjectList<>(GeographyLimits.LOCATIONS_PER_POLYLINE)
-                .appending(locationSequence())
-                .join(":");
+            .appending(locationSequence())
+            .join(":");
     }
 
     public List<PolylineSection> trisect()
@@ -1851,7 +1852,7 @@ public class Polyline implements
             if (index++ > 0)
             {
                 lengthInMillimeters += Location.equirectangularDistanceBetweenInMillimeters(
-                        latitudeInDm7, longitudeInDm7, previousLatitudeInDm7, previousLongitudeInDm7);
+                    latitudeInDm7, longitudeInDm7, previousLatitudeInDm7, previousLongitudeInDm7);
             }
             previousLatitudeInDm7 = latitudeInDm7;
             previousLongitudeInDm7 = longitudeInDm7;
@@ -1901,7 +1902,7 @@ public class Polyline implements
             var a = new Segment(get(i - 1), get(i));
             var b = new Segment(get(i), get(i + 1));
             if (a.heading().isClose(b.heading(), tolerance) || a.length().isLessThan(Distance.meters(20))
-                    || b.length().isLessThan(Distance.meters(20)))
+                || b.length().isLessThan(Distance.meters(20)))
             {
                 builder.add(get(i));
             }

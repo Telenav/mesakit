@@ -37,7 +37,7 @@ public class RelationIdentifierList extends ObjectList<MapRelationIdentifier>
 
         public Converter(Listener listener, Separators separators)
         {
-            super(listener);
+            super(listener, RelationIdentifierList.class);
             this.separators = separators;
         }
 

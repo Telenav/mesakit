@@ -291,7 +291,7 @@ public class EdgeRelation extends GraphElement implements Bounded
 
         public Converter(Graph graph, Listener listener)
         {
-            super(listener);
+            super(listener, EdgeRelation.class);
             this.graph = graph;
         }
 

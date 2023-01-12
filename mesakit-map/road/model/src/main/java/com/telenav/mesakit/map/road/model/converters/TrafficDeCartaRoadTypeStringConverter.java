@@ -173,7 +173,7 @@ public class TrafficDeCartaRoadTypeStringConverter extends BaseStringConverter<D
 
     public TrafficDeCartaRoadTypeStringConverter(Listener listener)
     {
-        super(listener);
+        super(listener, DeCartaRoadType.class);
     }
 
     @Override

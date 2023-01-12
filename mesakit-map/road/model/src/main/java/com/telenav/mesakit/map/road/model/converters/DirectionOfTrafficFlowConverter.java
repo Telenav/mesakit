@@ -26,7 +26,7 @@ public class DirectionOfTrafficFlowConverter extends BaseStringConverter<Directi
 {
     public DirectionOfTrafficFlowConverter(Listener listener)
     {
-        super(listener);
+        super(listener, DirectionOfTrafficFlow.class);
     }
 
     @Override

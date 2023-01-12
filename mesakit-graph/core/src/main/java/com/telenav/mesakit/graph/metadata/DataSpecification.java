@@ -183,7 +183,7 @@ public abstract class DataSpecification implements NamedObject
     {
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, DataSpecification.class);
         }
 
         @Override

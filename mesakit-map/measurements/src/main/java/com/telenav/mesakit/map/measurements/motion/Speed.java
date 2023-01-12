@@ -167,7 +167,7 @@ public class Speed implements Comparable<Speed>, LongValued
 
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, Speed.class);
         }
 
         /**
@@ -211,7 +211,7 @@ public class Speed implements Comparable<Speed>, LongValued
     {
         public KilometersPerHourConverter(Listener listener)
         {
-            super(listener);
+            super(listener, Speed.class);
         }
 
         @Override
@@ -227,7 +227,7 @@ public class Speed implements Comparable<Speed>, LongValued
 
         public MicroDegreesPerSecondConverter(Listener listener)
         {
-            super(listener);
+            super(listener, Speed.class);
             integerConverter = new IntegerConverter(listener);
         }
 
@@ -247,7 +247,7 @@ public class Speed implements Comparable<Speed>, LongValued
     {
         public MilesPerHourConverter(Listener listener)
         {
-            super(listener);
+            super(listener, Speed.class);
         }
 
         @Override

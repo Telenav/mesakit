@@ -70,7 +70,7 @@ public class WorldGraphRepository extends Folder implements Serializable
     {
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, WorldGraphRepository.class);
         }
 
         @Override

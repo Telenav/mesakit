@@ -59,7 +59,7 @@ public class WayIdentifierList extends ObjectList<PbfWayIdentifier>
 
         public Converter(Listener listener, Separators separators)
         {
-            super(listener);
+            super(listener, WayIdentifierList.class);
             this.separators = separators;
         }
 

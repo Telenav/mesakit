@@ -222,7 +222,7 @@ public class Angle implements
 
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, Angle.class);
         }
 
         @Override
@@ -265,7 +265,7 @@ public class Angle implements
     {
         public DegreesConverter(Listener listener)
         {
-            super(listener);
+            super(listener, Angle.class);
         }
 
         @Override

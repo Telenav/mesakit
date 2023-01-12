@@ -279,7 +279,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
     {
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, Rectangle.class);
         }
 
         @Override
@@ -311,7 +311,7 @@ public class Rectangle implements Intersectable, LocationSequence, Bounded, Outl
 
         public FileNameConverter(Listener listener)
         {
-            super(listener);
+            super(listener, Rectangle.class);
             latitudeConverter = new Latitude.DegreesConverter(listener);
             longitudeConverter = new Longitude.DegreesConverter(listener);
         }

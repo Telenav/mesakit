@@ -104,7 +104,7 @@ public class MetropolitanArea extends Region<MetropolitanArea>
                                                                                       String description)
     {
         return SwitchParser.switchParser(MetropolitanArea.class).name(name)
-                .converter(new Converter<>(LOGGER())).description(description);
+                .converter(new Converter<>(LOGGER(), MetropolitanArea.class)).description(description);
     }
 
     public MetropolitanArea(State state, RegionInstance<MetropolitanArea> instance)

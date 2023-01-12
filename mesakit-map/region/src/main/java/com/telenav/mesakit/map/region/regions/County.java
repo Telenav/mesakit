@@ -42,6 +42,7 @@ import com.telenav.mesakit.map.region.internal.lexakai.DiagramRegions;
 
 import java.util.Collection;
 
+import static com.telenav.kivakit.commandline.SwitchParser.switchParser;
 import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 /**
@@ -100,9 +101,9 @@ public class County extends Region<County>
 
     public static SwitchParser.Builder<County> countySwitchParser(String name, String description)
     {
-        return SwitchParser.switchParser(County.class)
+        return switchParser(County.class)
                 .name(name)
-                .converter(new Converter<>(LOGGER()))
+                .converter(new Converter<>(LOGGER(), County.class))
                 .description(description);
     }
 

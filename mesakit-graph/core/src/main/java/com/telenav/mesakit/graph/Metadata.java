@@ -199,24 +199,30 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
         var format = DataFormat.of(input);
         switch (format)
         {
-            case Graph:
+            case Graph ->
+            {
                 try (var archive = new GraphArchive(LOGGER, input, ZipArchive.AccessMode.READ, ProgressReporter.nullProgressReporter()))
                 {
                     return archive.metadata();
                 }
-
-            case CSV:
+            }
+            case CSV ->
+            {
                 return unsupported();
-
-            case XML:
+            }
+            case XML ->
+            {
                 return unsupported();
-
-            case PBF:
+            }
+            case PBF ->
+            {
                 return extractPbfMetadata(input);
-
-            default:
+            }
+            default ->
+            {
                 ensure(false);
                 return null;
+            }
         }
     }
 
@@ -375,7 +381,7 @@ public class Metadata implements Named, AsIndentedString, KryoSerializable, Vali
     {
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, Metadata.class);
         }
 
         @Override

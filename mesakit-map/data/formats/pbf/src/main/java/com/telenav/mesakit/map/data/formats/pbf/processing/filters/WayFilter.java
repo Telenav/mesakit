@@ -102,7 +102,7 @@ public class WayFilter implements Filter<PbfWay>, Named
     {
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, WayFilter.class);
         }
 
         @Override

@@ -90,7 +90,7 @@ public enum Direction implements Named
     {
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, Direction.class);
         }
 
         @Override

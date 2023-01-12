@@ -134,7 +134,7 @@ public class RelationSet implements Set<EdgeRelation>
 
         public Converter(Graph graph, Separators separators, Listener listener)
         {
-            super(listener);
+            super(listener, RelationSet.class);
             this.separators = separators;
             converter = new EdgeRelation.Converter(graph, listener);
         }

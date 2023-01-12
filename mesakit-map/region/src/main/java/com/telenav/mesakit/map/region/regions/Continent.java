@@ -52,6 +52,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import static com.telenav.kivakit.commandline.SwitchParser.switchParser;
+
 @UmlClassDiagram(diagram = DiagramRegions.class)
 @UmlExcludeSuperTypes(Iterable.class)
 public abstract class Continent extends Region<Continent> implements Iterable<Country>
@@ -113,9 +115,9 @@ public abstract class Continent extends Region<Continent> implements Iterable<Co
 
     public static SwitchParser.Builder<Continent> continentSwitchParser(String name, String description)
     {
-        return SwitchParser.switchParser(Continent.class)
+        return switchParser(Continent.class)
                 .name(name)
-                .converter(new Converter<>(LOGGER()))
+                .converter(new Converter<>(LOGGER(), Continent.class))
                 .description(description);
     }
 

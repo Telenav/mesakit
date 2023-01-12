@@ -223,7 +223,7 @@ public final class Distance implements LongValued, Comparable<Distance>
 
         public Converter(Listener listener)
         {
-            super(listener);
+            super(listener, Distance.class);
         }
 
         @Override
@@ -281,7 +281,7 @@ public final class Distance implements LongValued, Comparable<Distance>
     {
         public KilometersConverter(Listener listener)
         {
-            super(listener);
+            super(listener, Distance.class);
         }
 
         @Override
@@ -295,7 +295,7 @@ public final class Distance implements LongValued, Comparable<Distance>
     {
         public MetersConverter(Listener listener)
         {
-            super(listener);
+            super(listener, Distance.class);
         }
 
         @Override
@@ -309,7 +309,7 @@ public final class Distance implements LongValued, Comparable<Distance>
     {
         public MilesConverter(Listener listener)
         {
-            super(listener);
+            super(listener, Distance.class);
         }
 
         @Override
@@ -323,7 +323,7 @@ public final class Distance implements LongValued, Comparable<Distance>
     {
         public MillimetersConverter(Listener listener)
         {
-            super(listener);
+            super(listener, Distance.class);
         }
 
         @Override
