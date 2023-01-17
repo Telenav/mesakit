@@ -117,7 +117,7 @@ public class DataBuild
 
     public FileName asFileName()
     {
-        return FileName.fileNameForDateTime(localTime());
+        return FileName.kivakitFileName(localTime());
     }
 
     @Override
