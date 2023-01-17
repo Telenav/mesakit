@@ -25,6 +25,7 @@ import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.filesystem.FolderConverter;
 import com.telenav.kivakit.resource.WriteMode;
 import com.telenav.kivakit.filesystem.FilePath;
 import com.telenav.mesakit.graph.Metadata;
@@ -68,7 +69,7 @@ public final class WorldGraphConfiguration
         return localRepository;
     }
 
-    @ConvertedProperty(Folder.Converter.class)
+    @ConvertedProperty(FolderConverter.class)
     public void localRepository(Folder local)
     {
         localRepository = new WorldGraphRepository(local);
@@ -110,7 +111,7 @@ public final class WorldGraphConfiguration
         return local;
     }
 
-    @ConvertedProperty(Folder.Converter.class)
+    @ConvertedProperty(FolderConverter.class)
     public void remoteRepository(Folder remote)
     {
         remoteRepository = new WorldGraphRepository(remote);

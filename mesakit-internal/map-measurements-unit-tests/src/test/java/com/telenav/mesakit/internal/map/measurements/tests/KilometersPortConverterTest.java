@@ -24,7 +24,7 @@ import com.telenav.mesakit.map.measurements.geographic.Distance;
 import com.telenav.mesakit.map.measurements.testing.MeasurementsUnitTest;
 import org.junit.Test;
 
-public class KilometersConverterTest extends MeasurementsUnitTest
+public class KilometersPortConverterTest extends MeasurementsUnitTest
 {
     @Test
     public void testToObject()
