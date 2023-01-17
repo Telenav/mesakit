@@ -133,7 +133,7 @@ public class SymbolList implements Iterable<Symbol>
 
     private static boolean isLetter(char character)
     {
-        // Characters that are considered to be letters so they are part of a word (like "can't
+        // Characters that are considered to be letters, so they are part of a word (like "can't
         // drive")
         if (character == '\'')
         {
