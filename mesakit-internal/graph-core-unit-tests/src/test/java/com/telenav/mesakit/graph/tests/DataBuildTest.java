@@ -25,12 +25,14 @@ import com.telenav.kivakit.testing.UnitTest;
 import com.telenav.mesakit.graph.metadata.DataBuild;
 import org.junit.Test;
 
+import java.time.ZoneId;
+
 public class DataBuildTest extends UnitTest
 {
     @Test
     public void testConstructDataBuildFromTimeString()
     {
-        final String given = "2020.08.06_09.59AM_PT";
+        final String given    = "2020.08.06_09.59AM_PT";
         final String expected = "2020.08.06_09.59AM_PT";
 
         var build = DataBuild.parse(given);

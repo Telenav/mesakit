@@ -29,7 +29,8 @@ import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.core.version.VersionedObject;
 import com.telenav.kivakit.filesystem.File;
-import com.telenav.kivakit.filesystem.FileList;
+import com.telenav.kivakit.filesystem.FileConverter;
+import com.telenav.kivakit.filesystem.FileListConverter;
 import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.serialization.SerializableObject;
@@ -147,7 +148,7 @@ public class GraphArchive extends FieldArchive implements
         @Override
         protected Graph onToValue(String path)
         {
-            var file = new File.Converter(this).convert(path);
+            var file = new FileConverter(this).convert(path);
             if (file != null)
             {
                 return new GraphArchive(this, file, ZipArchive.AccessMode.READ, reporter).load(this);
@@ -173,7 +174,7 @@ public class GraphArchive extends FieldArchive implements
         @Override
         protected GraphList onToValue(String value)
         {
-            var files = new FileList.Converter(this, Extension.GRAPH).convert(value);
+            var files = new FileListConverter(this, Extension.GRAPH).convert(value);
             if (files != null)
             {
                 return new GraphList(files);
