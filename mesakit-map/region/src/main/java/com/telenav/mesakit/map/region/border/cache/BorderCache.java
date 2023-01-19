@@ -184,7 +184,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
 
         public boolean isValid()
         {
-            return !Objects.isAnyNull(type, regionFactory, maximumObjects,
+            return !Objects.areAnyNull(type, regionFactory, maximumObjects,
                     maximumPolygonsPerObject, regionExtractor, minimumBorderArea);
         }
 

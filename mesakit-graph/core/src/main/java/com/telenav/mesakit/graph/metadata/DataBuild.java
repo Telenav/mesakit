@@ -162,7 +162,7 @@ public class DataBuild
 
     public LocalTime utcTime()
     {
-        return localTime().inTimeZone(LocalTime.utcTimeZone());
+        return localTime().asLocalTime(LocalTime.utcTimeZone());
     }
 
     public DataBuild withDay(Day day)
