@@ -39,7 +39,7 @@ import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.lifecycle.Configurable;
 import com.telenav.kivakit.network.core.Host;
 import com.telenav.kivakit.network.core.NetworkPath;
-import com.telenav.kivakit.network.http.secure.SecureHttpNetworkLocation;
+import com.telenav.kivakit.network.https.HttpsNetworkLocation;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.resource.FileName;
 import com.telenav.kivakit.resource.Resource;
@@ -184,7 +184,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
 
         public boolean isValid()
         {
-            return !Objects.isAnyNull(type, regionFactory, maximumObjects,
+            return !Objects.areAnyNull(type, regionFactory, maximumObjects,
                     maximumPolygonsPerObject, regionExtractor, minimumBorderArea);
         }
 
@@ -513,7 +513,7 @@ public abstract class BorderCache<T extends Region<T>> extends BaseComponent imp
                     }
 
                     // then get the jar location on mesakit.org,
-                    var source = new SecureHttpNetworkLocation(NETWORK_PATH);
+                    var source = new HttpsNetworkLocation(NETWORK_PATH);
                     try
                     {
                         // try to download the data into the cache

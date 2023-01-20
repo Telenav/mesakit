@@ -465,12 +465,12 @@ public class Polyline implements
 
     public static class LongArrayConverter extends BaseStringConverter<Polyline>
     {
-        private final LongArray.Converter longArrayConverter;
+        private final com.telenav.kivakit.primitive.collections.array.scalars.LongArrayConverter longArrayConverter;
 
         public LongArrayConverter(Listener listener, Separators separators)
         {
             super(listener, Polyline.class);
-            longArrayConverter = new LongArray.Converter(listener, separators);
+            longArrayConverter = new com.telenav.kivakit.primitive.collections.array.scalars.LongArrayConverter(listener, separators);
             allowEmptyString(true);
             allowNull(true);
         }
