@@ -102,7 +102,7 @@ public class PbfDataAnalysis extends BaseRepeater
     private final WayFilter wayFilter;
 
     /**
-     * Way nodes for the second pass so we can store information about only the nodes we will actually use
+     * Way nodes for the second pass, so we can store information about only the nodes we will actually use
      */
     private SplitLongSet wayNodes;
 
@@ -185,17 +185,17 @@ public class PbfDataAnalysis extends BaseRepeater
         bounds = builder.build();
 
         metadata = metadata
-                .withDataBounds(bounds)
-                .withNodeCount(statistics.nodes())
-                .withWayCount(statistics.ways())
-                .withRelationCount(statistics.relations());
+            .withDataBounds(bounds)
+            .withNodeCount(statistics.nodes())
+            .withWayCount(statistics.ways())
+            .withRelationCount(statistics.relations());
 
         var indenter = new ObjectIndenter(USER_MULTILINE);
         indenter.indented("metadata", () -> metadata().asString(USER_MULTILINE, indenter));
         indenter.indented("file", fileName::name);
         var indented = indenter.toString();
         information(textBox(max(maximumWidth(), widestLine(indented)),
-                "PBF Data Analysis", indented));
+            "PBF Data Analysis", indented));
     }
 
     public void freeIntersectionMap()
@@ -239,7 +239,6 @@ public class PbfDataAnalysis extends BaseRepeater
         return metadata;
     }
 
-    @SuppressWarnings("ClassEscapesDefinedScope")
     public PbfAllNodeDiskStores pbfNodeDiskStores()
     {
         return pbfNodeDiskStores;
@@ -312,7 +311,7 @@ public class PbfDataAnalysis extends BaseRepeater
 
             // If way nodes have locations, make a note of it
             hasWayNodeLocations = hasWayNodeLocations
-                    || (node.getLatitude() != 0 && node.getLongitude() != 0);
+                || (node.getLatitude() != 0 && node.getLongitude() != 0);
 
             // The end-point segment counts are incremented once, while the interior
             // point segment counts are incremented twice (because they are used by
@@ -353,7 +352,7 @@ public class PbfDataAnalysis extends BaseRepeater
         }
         if (barrier != null || signal != null)
         {
-            // A barrier is marked as an intersection so it will be broken up by
+            // A barrier is marked as an intersection, so it will be broken up by
             // the edge sectioner when it sections intersections
             var identifier = node.identifierAsLong();
             reference(identifier);
