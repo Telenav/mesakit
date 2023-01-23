@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.road.name.standardizer;
 
+import com.telenav.kivakit.core.collections.map.StringMap;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.thread.KivaKitThread;
 import com.telenav.mesakit.map.region.locale.MapLocale;
@@ -33,7 +34,7 @@ import static com.telenav.kivakit.core.language.packaging.PackageReference.packa
 @SuppressWarnings("SpellCheckingInspection")
 public interface RoadNameStandardizer
 {
-    Map<String, RoadNameStandardizer> standardizers = new HashMap<>();
+    StringMap<RoadNameStandardizer> standardizers = new StringMap<>();
 
     static RoadNameStandardizer get(MapLocale locale, Mode mode)
     {

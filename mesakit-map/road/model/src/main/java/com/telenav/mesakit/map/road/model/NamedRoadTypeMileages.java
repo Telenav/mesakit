@@ -18,6 +18,7 @@
 
 package com.telenav.mesakit.map.road.model;
 
+import com.telenav.kivakit.core.collections.map.StringMap;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ import java.util.Map.Entry;
  */
 public class NamedRoadTypeMileages
 {
-    private final Map<String, RoadTypeMileages> namedRoadTypeMileages = new HashMap<>();
+    private final StringMap<RoadTypeMileages> namedRoadTypeMileages = new StringMap<>();
 
     private Distance mileages = Distance.ZERO;
 

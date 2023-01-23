@@ -19,11 +19,13 @@
 package com.telenav.mesakit.map.road.model;
 
 import com.telenav.kivakit.core.collections.map.BaseMap;
+import com.telenav.kivakit.core.collections.map.StringMap;
+
+import static com.telenav.mesakit.map.road.model.RoadLimits.SHIELD_ICONS;
 
 public class ShieldIcon
 {
-    private static final BaseMap<String, ShieldIcon> forIdentifier = new BaseMap<>(
-            RoadLimits.SHIELD_ICONS)
+    private static final StringMap<ShieldIcon> forIdentifier = new StringMap<>(SHIELD_ICONS)
     {
         @Override
         protected ShieldIcon onCreateValue(String identifier)

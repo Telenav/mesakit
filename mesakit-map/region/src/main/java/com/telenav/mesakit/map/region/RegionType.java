@@ -84,8 +84,8 @@ public class RegionType<T extends Region<T>>
     public RegionType(Class<T> subclass)
     {
         this.subclass = subclass;
-        forIsoCode = new StringMap<T>().withKeyCaseSensitivity(FOLD_CASE_LOWER);
-        forMesaKitCode = new StringMap<T>().withKeyCaseSensitivity(FOLD_CASE_LOWER);
+        forIsoCode = new StringMap<>();
+        forMesaKitCode = new StringMap<>();
         forNumericCountryCode = new HashMap<>();
         forRegionIdentifier = new HashMap<>();
     }
