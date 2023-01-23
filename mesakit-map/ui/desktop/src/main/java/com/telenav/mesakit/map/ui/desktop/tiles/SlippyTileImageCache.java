@@ -144,10 +144,11 @@ public abstract class SlippyTileImageCache extends BaseRepeater
             resource = cache.add(tile, new HttpGetResource(networkLocation(tile), defaultNetworkAccessConstraints())
             {
                 @Override
-                public void onInitialize(HttpRequest request)
+                public HttpRequest.Builder onInitialize(HttpRequest.Builder request)
                 {
-                    header(request, "User-Agent", "MesaKit");
-                    header(request, "Referer", "https://www.mesakit.org");
+                    return request
+                        .header("User-Agent", "MesaKit")
+                        .header("Referer", "https://www.mesakit.org");
                 }
             });
         }
@@ -200,7 +201,7 @@ public abstract class SlippyTileImageCache extends BaseRepeater
 
     /**
      * Returns the current buffered image for the given tile from the cache. If the image is not available it is
-     * requested so it will be available in the future.
+     * requested, so it will be available in the future.
      */
     private BufferedImage image(SlippyTile tile)
     {
