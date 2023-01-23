@@ -19,10 +19,7 @@
 package com.telenav.mesakit.map.data.formats.pbf.model.tags;
 
 import com.telenav.kivakit.core.collections.list.StringList;
-import com.telenav.kivakit.core.language.Hash;
-import com.telenav.kivakit.core.language.primitive.Ints;
-import com.telenav.kivakit.core.language.primitive.Longs;
-import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.collections.map.StringMap;
 import com.telenav.kivakit.interfaces.collection.Keyed;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
@@ -33,9 +30,10 @@ import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
-import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.language.primitive.Ints.parseFastNaturalNumber;
+import static com.telenav.kivakit.core.language.primitive.Ints.parseInt;
+import static com.telenav.kivakit.core.language.primitive.Longs.parseFastLong;
 import static com.telenav.kivakit.core.messaging.Listener.consoleListener;
 
 /**
@@ -53,8 +51,6 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
 {
     /** Empty tag map */
     public static final PbfTagMap EMPTY = new EmptyPbfTagMap();
-
-    private static final int FIELDS = 8;
 
     public static PbfTagMap create()
     {
@@ -93,54 +89,16 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
     }
 
     // Full hashmap when there are more than FIELDS tags
-    private Map<String, String> tags;
-
-    // The size of this map
-    private int size;
-
-    // Simple fields when the size <= FIELDS
-    private String key0, value0;
-
-    private String key1, value1;
-
-    private String key2, value2;
-
-    private String key3, value3;
-
-    private String key4, value4;
-
-    private String key5, value5;
-
-    private String key6, value6;
-
-    private String key7, value7;
+    private final StringMap<String> tags;
 
     protected PbfTagMap(int initialCapacity)
     {
-        if (initialCapacity > 8)
-        {
-            // Allocate with initial capacity to prevent resizing at 75% occupancy
-            tags = new HashMap<>(initialCapacity * 4 / 3);
-        }
+        tags = new StringMap<>();
     }
 
     public boolean containsKey(String key)
     {
-        if (isCompact())
-        {
-            for (var i = 0; i < size(); i++)
-            {
-                if (key.equals(compactKey(i)))
-                {
-                    return true;
-                }
-            }
-        }
-        else
-        {
-            return tags.containsKey(key);
-        }
-        return false;
+        return tags.containsKey(key);
     }
 
     @Override
@@ -148,19 +106,7 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
     {
         if (object instanceof PbfTagMap that)
         {
-            if (size() == that.size())
-            {
-                var keys = keys();
-                while (keys.hasNext())
-                {
-                    var at = keys.next();
-                    if (!Strings.equalsAllowNull(that.get(at), get(at)))
-                    {
-                        return false;
-                    }
-                }
-                return true;
-            }
+            return tags.equals(that.tags);
         }
         return false;
     }
@@ -168,116 +114,23 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
     @Override
     public String get(String key)
     {
-        if (isCompact())
-        {
-            if (key0 == null)
-            {
-                return null;
-            }
-            if (key.equals(key0))
-            {
-                return value0;
-            }
-
-            if (key1 == null)
-            {
-                return null;
-            }
-            if (key.equals(key1))
-            {
-                return value1;
-            }
-
-            if (key2 == null)
-            {
-                return null;
-            }
-            if (key.equals(key2))
-            {
-                return value2;
-            }
-
-            if (key3 == null)
-            {
-                return null;
-            }
-            if (key.equals(key3))
-            {
-                return value3;
-            }
-
-            if (key4 == null)
-            {
-                return null;
-            }
-            if (key.equals(key4))
-            {
-                return value4;
-            }
-
-            if (key5 == null)
-            {
-                return null;
-            }
-            if (key.equals(key5))
-            {
-                return value5;
-            }
-
-            if (key6 == null)
-            {
-                return null;
-            }
-            if (key.equals(key6))
-            {
-                return value6;
-            }
-
-            if (key7 == null)
-            {
-                return null;
-            }
-            if (key.equals(key7))
-            {
-                return value7;
-            }
-
-            return null;
-        }
-        else
-        {
-            return tags.get(key);
-        }
+        return tags.get(key);
     }
 
     public String get(String key, String defaultValue)
     {
-        var value = get(key);
-        if (value == null)
-        {
-            return defaultValue;
-        }
-        return value;
+        return tags.getOrDefault(key, defaultValue);
     }
 
     @Override
     public int hashCode()
     {
-        return Hash.hashMany(
-                key0, value0,
-                key1, value1,
-                key2, value2,
-                key3, value3,
-                key4, value4,
-                key5, value5,
-                key6, value6,
-                key7, value7,
-                tags);
+        return tags.hashCode();
     }
 
     public boolean isEmpty()
     {
-        return size() == 0;
+        return tags.isEmpty();
     }
 
     @Override
@@ -304,59 +157,12 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
 
     public Iterator<String> keys()
     {
-        if (isCompact())
-        {
-            return new Iterator<>()
-            {
-                private int index;
-
-                @Override
-                public boolean hasNext()
-                {
-                    return index < size();
-                }
-
-                @Override
-                public String next()
-                {
-                    return compactKey(index++);
-                }
-            };
-        }
-        else
-        {
-            return tags.keySet().iterator();
-        }
+        return tags.keySet().iterator();
     }
 
     public void put(String key, String value)
     {
-        if (isCompact())
-        {
-            for (var i = 0; i < size(); i++)
-            {
-                if (key.equals(compactKey(i)))
-                {
-                    setField(i, key, value);
-                    return;
-                }
-            }
-        }
-
-        // Increase the size of the map
-        capacity(size() + 1);
-
-        // and if it's still compact
-        if (isCompact())
-        {
-            // put the key value pair into fields
-            setField(size++, key, value);
-        }
-        else
-        {
-            // otherwise store it in a hashmap
-            tags.put(key, value);
-        }
+        tags.put(key, value);
     }
 
     public void putAll(Iterable<Tag> tags)
@@ -369,7 +175,7 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
 
     public int size()
     {
-        return tags == null ? size : tags.size();
+        return tags.size();
     }
 
     public Tag tag(String key)
@@ -384,17 +190,17 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
 
     public int valueAsInt(String key)
     {
-        return Ints.parseInt(consoleListener(), get(key));
+        return parseInt(consoleListener(), get(key));
     }
 
     public long valueAsLong(String key)
     {
-        return Longs.parseFastLong(get(key));
+        return parseFastLong(get(key));
     }
 
     public int valueAsNaturalNumber(String key)
     {
-        return Ints.parseFastNaturalNumber(get(key));
+        return parseFastNaturalNumber(get(key));
     }
 
     public boolean valueIsNo(String key)
@@ -442,110 +248,5 @@ public class PbfTagMap implements Iterable<Tag>, Keyed<String, String>
             }
         }
         return split;
-    }
-
-    private void capacity(int capacity)
-    {
-        if (tags == null && capacity > FIELDS)
-        {
-            tags = new HashMap<>(32);
-
-            put(key0, value0);
-            put(key1, value1);
-            put(key2, value2);
-            put(key3, value3);
-            put(key4, value4);
-            put(key5, value5);
-            put(key6, value6);
-            put(key7, value7);
-
-            key0 = value0 = null;
-            key1 = value1 = null;
-            key2 = value2 = null;
-            key3 = value3 = null;
-            key4 = value4 = null;
-            key5 = value5 = null;
-            key6 = value6 = null;
-            key7 = value7 = null;
-
-            size = -1;
-        }
-    }
-
-    private String compactKey(int index)
-    {
-        switch (index)
-        {
-            case 0:
-                return key0;
-            case 1:
-                return key1;
-            case 2:
-                return key2;
-            case 3:
-                return key3;
-            case 4:
-                return key4;
-            case 5:
-                return key5;
-            case 6:
-                return key6;
-            case 7:
-                return key7;
-        }
-        ensure(false);
-        return null;
-    }
-
-    private boolean isCompact()
-    {
-        return tags == null;
-    }
-
-    private void setField(int index, String key, String value)
-    {
-        switch (index)
-        {
-            case 0 ->
-            {
-                key0 = key;
-                value0 = value;
-            }
-            case 1 ->
-            {
-                key1 = key;
-                value1 = value;
-            }
-            case 2 ->
-            {
-                key2 = key;
-                value2 = value;
-            }
-            case 3 ->
-            {
-                key3 = key;
-                value3 = value;
-            }
-            case 4 ->
-            {
-                key4 = key;
-                value4 = value;
-            }
-            case 5 ->
-            {
-                key5 = key;
-                value5 = value;
-            }
-            case 6 ->
-            {
-                key6 = key;
-                value6 = value;
-            }
-            case 7 ->
-            {
-                key7 = key;
-                value7 = value;
-            }
-        }
     }
 }

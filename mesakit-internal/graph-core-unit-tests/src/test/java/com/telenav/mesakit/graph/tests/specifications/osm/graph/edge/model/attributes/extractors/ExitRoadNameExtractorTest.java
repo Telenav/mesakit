@@ -29,7 +29,9 @@ import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 import java.util.ArrayList;
 import java.util.Set;
 
+import static com.telenav.kivakit.core.collections.list.StringList.stringList;
 import static com.telenav.kivakit.core.messaging.Listener.nullListener;
+import static com.telenav.mesakit.map.region.locale.MapLocale.ENGLISH_UNITED_STATES;
 import static com.telenav.mesakit.map.road.name.standardizer.RoadNameStandardizer.Mode.MESAKIT_STANDARDIZATION;
 
 public class ExitRoadNameExtractorTest extends RegionUnitTest
@@ -37,16 +39,16 @@ public class ExitRoadNameExtractorTest extends RegionUnitTest
     @Test
     public void test()
     {
-        ensureEqual(extract(way("exit_ref:eng", "Shibo Lane")), Set.of("Shibo Ln"));
         ensureEqual(extract(way("exit_ref:eng:trans:spa", "Camino de Shibo")), Set.of("Camino de Shibo"));
+        ensureEqual(extract(way("exit_ref:eng", "Shibo Lane")), Set.of("Shibo Ln"));
         ensureEqual(extract(way("exit_ref:eng", "Shibo Lane", "exit_ref:spa:trans:eng", "Shibo Road")), Set.of("Shibo Ln", "Shibo Rd"));
     }
 
     private Set<String> extract(PbfWay way)
     {
-        var extractor = new ExitRoadNameExtractor(MapLocale.ENGLISH_UNITED_STATES.get(), MESAKIT_STANDARDIZATION, nullListener());
+        var extractor = new ExitRoadNameExtractor(ENGLISH_UNITED_STATES.get(), MESAKIT_STANDARDIZATION, nullListener());
         var roadNames = extractor.extract(way);
-        return StringList.stringList(roadNames).asSet();
+        return stringList(roadNames).asSet();
     }
 
     private PbfWay way(String... values)

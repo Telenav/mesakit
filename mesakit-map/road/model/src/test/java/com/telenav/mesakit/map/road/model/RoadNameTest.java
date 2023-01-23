@@ -22,16 +22,18 @@ import com.telenav.mesakit.map.geography.testing.GeographyUnitTest;
 import com.telenav.mesakit.map.measurements.geographic.Direction;
 import org.junit.Test;
 
+import static com.telenav.mesakit.map.measurements.geographic.Direction.*;
+
 @SuppressWarnings("ConstantConditions")
 public class RoadNameTest extends GeographyUnitTest
 {
     @Test
     public void testExtractDirection()
     {
-        ensureEqual(Direction.NORTH, RoadName.forName("I-5 N").extractDirection());
-        ensureEqual(Direction.WEST, RoadName.forName("I-405 WB").extractDirection());
-        ensureEqual(Direction.SOUTH, RoadName.forName("North Street South").extractDirection());
-        ensureEqual(Direction.NORTH, RoadName.forName("I-5//N").extractDirection());
+        ensureEqual(NORTH, RoadName.forName("I-5 N").extractDirection());
+        ensureEqual(WEST, RoadName.forName("I-405 WB").extractDirection());
+        ensureEqual(SOUTH, RoadName.forName("North Street South").extractDirection());
+        ensureEqual(NORTH, RoadName.forName("I-5//N").extractDirection());
         ensureNull(RoadName.forName("I-405").extractDirection());
     }
 

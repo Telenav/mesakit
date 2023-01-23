@@ -34,6 +34,7 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.telenav.kivakit.core.collections.map.StringMap.KeyCaseSensitivity.FOLD_CASE_LOWER;
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 @SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPbfProcessingFilters.class)

@@ -19,14 +19,16 @@
 package com.telenav.mesakit.map.road.model;
 
 import com.telenav.kivakit.core.collections.map.BaseMap;
+import com.telenav.kivakit.core.collections.map.StringMap;
+
+import static com.telenav.mesakit.map.road.model.RoadLimits.EXIT_NUMBERS;
 
 /**
  * An exit number is a name rather than a number because of exits like "21a".
  */
 public class ExitNumber
 {
-    private static final BaseMap<String, ExitNumber> forIdentifier = new BaseMap<>(
-            RoadLimits.EXIT_NUMBERS)
+    private static final StringMap<ExitNumber> forIdentifier = new StringMap<>(EXIT_NUMBERS)
     {
         @Override
         protected ExitNumber onCreateValue(String identifier)

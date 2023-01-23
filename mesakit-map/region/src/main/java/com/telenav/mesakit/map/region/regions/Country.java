@@ -20,6 +20,7 @@ package com.telenav.mesakit.map.region.regions;
 
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.collections.map.StringMap;
 import com.telenav.kivakit.core.language.reflection.property.IncludeProperty;
 import com.telenav.kivakit.core.locale.LocaleLanguage;
 import com.telenav.kivakit.core.locale.LocaleRegion;
@@ -55,11 +56,11 @@ import com.telenav.mesakit.map.region.internal.lexakai.DiagramRegions;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
+
+import static com.telenav.kivakit.core.collections.map.StringMap.KeyCaseSensitivity.FOLD_CASE_LOWER;
 
 @SuppressWarnings({ "DuplicatedCode", "unused" })
 @UmlClassDiagram(diagram = DiagramRegions.class)
@@ -582,7 +583,7 @@ public abstract class Country extends Region<Country> implements LongValued
 
     private static Set<Country> islands;
 
-    private static final Map<String, Country> isoToCountry = new HashMap<>();
+    private static final StringMap<Country> isoToCountry = new StringMap<>();
 
     public static Collection<Country> all()
     {
@@ -606,8 +607,8 @@ public abstract class Country extends Region<Country> implements LongValued
     public static RegionInstance<Country> baseCountry()
     {
         return new RegionInstance<>(Country.class)
-                .withAutomotiveSupportLevel(AutomotiveSupportLevel.UNSUPPORTED)
-                .withDrivingSide(DrivingSide.RIGHT);
+            .withAutomotiveSupportLevel(AutomotiveSupportLevel.UNSUPPORTED)
+            .withDrivingSide(DrivingSide.RIGHT);
     }
 
     public static RegionIdentity baseRegionCode()
@@ -620,19 +621,19 @@ public abstract class Country extends Region<Country> implements LongValued
         if (borderCache == null)
         {
             var settings = new BorderCache.Settings<Country>()
-                    .withType(Country.class)
-                    .withMaximumObjects(RegionLimits.COUNTRIES)
-                    .withMaximumPolygonsPerObject(RegionLimits.POLYGONS_PER_COUNTRY)
-                    .withMinimumBorderArea(Area.squareMiles(5))
-                    .withRegionExtractor(newExtractor())
-                    .withRegionFactory((identity) -> identity.findOrCreateRegion(Country.class));
+                .withType(Country.class)
+                .withMaximumObjects(RegionLimits.COUNTRIES)
+                .withMaximumPolygonsPerObject(RegionLimits.POLYGONS_PER_COUNTRY)
+                .withMinimumBorderArea(Area.squareMiles(5))
+                .withRegionExtractor(newExtractor())
+                .withRegionFactory((identity) -> identity.findOrCreateRegion(Country.class));
 
             borderCache = LOGGER.listenTo(new RegionBorderCache<>(settings)
             {
                 @Override
                 protected void assignMultiPolygonIdentity(
-                        PbfTagMap relationTags,
-                        Collection<Border<Country>> objects)
+                    PbfTagMap relationTags,
+                    Collection<Border<Country>> objects)
                 {
                     if (relationTags.containsKey("ISO3166-1"))
                     {
