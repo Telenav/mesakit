@@ -26,7 +26,7 @@ import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsKryoTypes;
 import com.telenav.kivakit.resource.serialization.ObjectSerializerRegistry;
 import com.telenav.kivakit.serialization.gson.GsonObjectSerializer;
-import com.telenav.kivakit.serialization.gson.factory.KivaKitCoreGsonFactory;
+import com.telenav.kivakit.serialization.gson.KivaKitCoreGsonFactory;
 import com.telenav.kivakit.serialization.kryo.KryoObjectSerializer;
 import com.telenav.kivakit.serialization.kryo.types.KivaKitCoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KivaKitResourceKryoTypes;
@@ -69,12 +69,12 @@ import static com.telenav.kivakit.core.object.Lazy.lazy;
 import static com.telenav.kivakit.core.progress.ProgressReporter.nullProgressReporter;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.filesystem.Folder.parseFolder;
-import static com.telenav.kivakit.resource.WriteMode.OVERWRITE;
 import static com.telenav.kivakit.resource.Extension.GRAPH;
 import static com.telenav.kivakit.resource.Extension.JSON;
 import static com.telenav.kivakit.resource.Extension.OSM_PBF;
 import static com.telenav.kivakit.resource.Extension.PROPERTIES;
 import static com.telenav.kivakit.resource.FolderCopyMode.FLATTEN;
+import static com.telenav.kivakit.resource.WriteMode.OVERWRITE;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.READ;
 import static com.telenav.kivakit.resource.compression.archive.ZipArchive.AccessMode.WRITE;
 import static com.telenav.kivakit.resource.packages.Package.parsePackage;
@@ -94,32 +94,32 @@ public abstract class GraphUnitTest extends RegionUnitTest
     private static int nextOsmRelationIdentifier = 1;
 
     private final Lazy<Graph> osmGreenLakeSeattleLarge = lazy(
-            () -> graph(OsmDataSpecification.get(), "Green_Lake_Seattle_Large",
-                    Country.UNITED_STATES.WASHINGTON.SEATTLE.GREEN_LAKE.bounds().expanded(Distance.ONE_MILE)));
+        () -> graph(OsmDataSpecification.get(), "Green_Lake_Seattle_Large",
+            Country.UNITED_STATES.WASHINGTON.SEATTLE.GREEN_LAKE.bounds().expanded(Distance.ONE_MILE)));
 
     private final Lazy<Graph> osmGreenLakeSeattle = lazy(
-            () -> graph(OsmDataSpecification.get(), "Green_Lake_Seattle", Country.UNITED_STATES.WASHINGTON.SEATTLE.GREEN_LAKE.bounds()));
+        () -> graph(OsmDataSpecification.get(), "Green_Lake_Seattle", Country.UNITED_STATES.WASHINGTON.SEATTLE.GREEN_LAKE.bounds()));
 
     private final Lazy<Graph> osmDowntownSeattle = lazy(
-            () -> graph(OsmDataSpecification.get(), "Downtown_Seattle", Country.UNITED_STATES.WASHINGTON.SEATTLE.DOWNTOWN.bounds()));
+        () -> graph(OsmDataSpecification.get(), "Downtown_Seattle", Country.UNITED_STATES.WASHINGTON.SEATTLE.DOWNTOWN.bounds()));
 
     private final Lazy<Graph> osmDowntownSeattleTest = lazy(
-            () -> graph(OsmDataSpecification.get(), "Downtown_Seattle_Test", Rectangle.parse("47.587309,-122.346791:47.616221,-122.317879")));
+        () -> graph(OsmDataSpecification.get(), "Downtown_Seattle_Test", Rectangle.parse("47.587309,-122.346791:47.616221,-122.317879")));
 
     private final Lazy<Graph> osmBellevueWashington = lazy(
-            () -> graph(OsmDataSpecification.get(), "Bellevue_Washington", Location.degrees(47.61302, -122.188).within(Distance.miles(2))));
+        () -> graph(OsmDataSpecification.get(), "Bellevue_Washington", Location.degrees(47.61302, -122.188).within(Distance.miles(2))));
 
     private final Lazy<Graph> osmBuffalo = lazy(
-            () -> graph(OsmDataSpecification.get(), "Buffalo_New_York", Country.UNITED_STATES.NEW_YORK.BUFFALO.bounds()));
+        () -> graph(OsmDataSpecification.get(), "Buffalo_New_York", Country.UNITED_STATES.NEW_YORK.BUFFALO.bounds()));
 
     private final Lazy<Graph> osmHuronCharter = lazy(
-            () -> graph(OsmDataSpecification.get(), "Huron_Charter", Rectangle.fromLocations(Location.degrees(42.179459, -83.423221),
-                    Location.degrees(42.094242, -83.303885))));
+        () -> graph(OsmDataSpecification.get(), "Huron_Charter", Rectangle.fromLocations(Location.degrees(42.179459, -83.423221),
+            Location.degrees(42.094242, -83.303885))));
 
     private final Location.DegreesConverter locationInDegreesConverter = new Location.DegreesConverter(this);
 
     private final Location.DegreesMinutesAndSecondsConverter locationInDegreesMinutesAndSecondsConverter =
-            new Location.DegreesMinutesAndSecondsConverter(this);
+        new Location.DegreesMinutesAndSecondsConverter(this);
 
     private int nextOsmEdgeIdentifier = 1;
 
@@ -127,7 +127,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
     {
         initializeProject(GraphProject.class);
 
-        register(listenTo(new KivaKitCoreGsonFactory(this)));
+        register(listenTo(new KivaKitCoreGsonFactory()));
         register(listenTo(new KryoObjectSerializer(kryoTypes())));
 
         var serializers = new ObjectSerializerRegistry();
@@ -203,13 +203,13 @@ public abstract class GraphUnitTest extends RegionUnitTest
     protected KryoTypes kryoTypes()
     {
         return new KivaKitCoreKryoTypes()
-                .mergedWith(new MeasurementsKryoTypes())
-                .mergedWith(new KivaKitResourceKryoTypes())
-                .mergedWith(new DataCompressionKryoTypes())
-                .mergedWith(new GeographyKryoTypes())
-                .mergedWith(new PrimitiveCollectionsKryoTypes())
-                .mergedWith(new RegionKryoTypes())
-                .mergedWith(new GraphKryoTypes());
+            .mergedWith(new MeasurementsKryoTypes())
+            .mergedWith(new KivaKitResourceKryoTypes())
+            .mergedWith(new DataCompressionKryoTypes())
+            .mergedWith(new GeographyKryoTypes())
+            .mergedWith(new PrimitiveCollectionsKryoTypes())
+            .mergedWith(new RegionKryoTypes())
+            .mergedWith(new GraphKryoTypes());
     }
 
     protected Location location(String location)
@@ -349,10 +349,10 @@ public abstract class GraphUnitTest extends RegionUnitTest
         if (metadata == null)
         {
             var annotator = listenTo(new PbfFileMetadataAnnotator(
-                    pbf, STRIP_UNREFERENCED_NODES, new OsmNavigableWayFilter(), new OsmRelationsFilter()));
+                pbf, STRIP_UNREFERENCED_NODES, new OsmNavigableWayFilter(), new OsmRelationsFilter()));
             metadata = annotator.read()
-                    .withDataPrecision(Precision.DM6)
-                    .withMetadata(Metadata.parseDescriptor(dataDescriptor));
+                .withDataPrecision(Precision.DM6)
+                .withMetadata(Metadata.parseDescriptor(dataDescriptor));
             annotator.write(metadata);
         }
     }
@@ -424,7 +424,7 @@ public abstract class GraphUnitTest extends RegionUnitTest
             else
             {
                 return new GraphArchive(this, graphFile, READ, nullProgressReporter())
-                        .load(this);
+                    .load(this);
             }
         }
         catch (Exception e)

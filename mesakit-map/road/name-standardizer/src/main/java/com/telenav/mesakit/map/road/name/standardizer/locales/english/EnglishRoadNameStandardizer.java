@@ -19,6 +19,7 @@
 package com.telenav.mesakit.map.road.name.standardizer.locales.english;
 
 import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.collections.map.StringMap;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.mesakit.map.region.locale.MapLocale;
@@ -40,9 +41,9 @@ public class EnglishRoadNameStandardizer extends BaseRoadNameStandardizer
 
     private final ThreadLocal<RoadNameParser> parser;
 
-    private final Map<String, String> baseName = new HashMap<>();
+    private final StringMap<String> baseName = new StringMap<>();
 
-    private final Map<String, String> type = new HashMap<>();
+    private final StringMap<String> type = new StringMap<>();
 
     private Mode mode;
 
@@ -173,10 +174,14 @@ public class EnglishRoadNameStandardizer extends BaseRoadNameStandardizer
 
     private ParsedRoadName standardize(ParsedRoadName name)
     {
-        var builder = new ParsedRoadName.Builder(name);
-        builder.type(standardizedType(name.type()), name.rawType());
-        builder.baseName(standardizedBaseName(name), name.rawBaseName());
-        return builder.build();
+        if (name.type() !=null)
+        {
+            var builder = new ParsedRoadName.Builder(name);
+            builder.type(standardizedType(name.type()), name.rawType());
+            builder.baseName(standardizedBaseName(name), name.rawBaseName());
+            return builder.build();
+        }
+        return null;
     }
 
     private String standardizedBaseName(ParsedRoadName name)

@@ -19,11 +19,10 @@
 package com.telenav.mesakit.map.region;
 
 import com.telenav.kivakit.core.collections.Sets;
-import com.telenav.kivakit.core.collections.map.CaseFoldingStringMap;
+import com.telenav.kivakit.core.collections.map.StringMap;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
-import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.mesakit.map.geography.Location;
@@ -38,6 +37,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
+import static com.telenav.kivakit.core.collections.map.StringMap.KeyCaseSensitivity.FOLD_CASE_LOWER;
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 @UmlClassDiagram(diagram = DiagramRegion.class)
@@ -73,9 +73,9 @@ public class RegionType<T extends Region<T>>
     private RegionIdentifier maximumIdentifier;
 
     // Maps from different codes to region instances
-    private final Map<String, T> forIsoCode;
+    private final StringMap<T> forIsoCode;
 
-    private final Map<String, T> forMesaKitCode;
+    private final StringMap<T> forMesaKitCode;
 
     private final Map<Integer, T> forNumericCountryCode;
 
@@ -84,8 +84,8 @@ public class RegionType<T extends Region<T>>
     public RegionType(Class<T> subclass)
     {
         this.subclass = subclass;
-        forIsoCode = new CaseFoldingStringMap<>(Maximum.MAXIMUM);
-        forMesaKitCode = new CaseFoldingStringMap<>(Maximum.MAXIMUM);
+        forIsoCode = new StringMap<>();
+        forMesaKitCode = new StringMap<>();
         forNumericCountryCode = new HashMap<>();
         forRegionIdentifier = new HashMap<>();
     }
@@ -114,7 +114,7 @@ public class RegionType<T extends Region<T>>
         if (nextIdentifier.asInt() < size() && forRegionIdentifier.get(nextIdentifier) != null)
         {
             throw new IllegalArgumentException("Identifier " + nextIdentifier + " has already been used by "
-                    + forRegionIdentifier.get(nextIdentifier));
+                + forRegionIdentifier.get(nextIdentifier));
         }
         if (nextIdentifier.isLessThan(maximumIdentifier))
         {
@@ -124,7 +124,7 @@ public class RegionType<T extends Region<T>>
         else
         {
             throw new IllegalArgumentException(subclass.getSimpleName() + " identifier must be between "
-                    + minimumIdentifier() + " and " + maximumIdentifier());
+                + minimumIdentifier() + " and " + maximumIdentifier());
         }
 
         if (all.add(region))

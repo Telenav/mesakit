@@ -18,11 +18,11 @@
 
 package com.telenav.mesakit.graph.tests;
 
-import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
 import com.telenav.kivakit.interfaces.string.StringFormattable;
 import com.telenav.mesakit.graph.Edge;
 import com.telenav.mesakit.graph.Graph;
 import com.telenav.mesakit.graph.Route;
+import com.telenav.mesakit.graph.core.testing.GraphUnitTest;
 import com.telenav.mesakit.graph.identifiers.EdgeIdentifier;
 import com.telenav.mesakit.graph.navigation.Navigator;
 import com.telenav.mesakit.graph.navigation.RouteLimiter;
@@ -122,7 +122,7 @@ public class EdgeTest extends GraphUnitTest
     {
         Edge edge = osmGreenLakeSeattleEdge(48003053000001L);
         ensureEqual("Aurora Ave N", edge.roadName().toString());
-        ensureEqual("WA-99", edge.roadName(RoadName.Type.ROUTE).toString());
+        ensureEqual("WA 99", edge.roadName(RoadName.Type.ROUTE).toString());
     }
 
     @Test

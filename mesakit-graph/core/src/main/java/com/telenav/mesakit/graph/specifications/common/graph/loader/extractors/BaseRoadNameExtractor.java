@@ -108,13 +108,10 @@ public abstract class BaseRoadNameExtractor extends BaseExtractor<List<RoadName>
             }
             for (var translation : languages)
             {
-                if (translation != language)
+                var translated = way.tagValue(key + ":" + language.iso3Code() + ":trans:" + translation.iso3Code());
+                if (translated != null)
                 {
-                    var translated = way.tagValue(key + ":" + language.iso3Code() + ":trans:" + translation.iso3Code());
-                    if (translated != null)
-                    {
-                        addRoadName(names, translated);
-                    }
+                    addRoadName(names, translated);
                 }
             }
         }

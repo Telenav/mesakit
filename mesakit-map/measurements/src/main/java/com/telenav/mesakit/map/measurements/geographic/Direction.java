@@ -19,7 +19,7 @@
 package com.telenav.mesakit.map.measurements.geographic;
 
 import com.telenav.kivakit.conversion.BaseStringConverter;
-import com.telenav.kivakit.core.collections.map.CaseFoldingStringMap;
+import com.telenav.kivakit.core.collections.map.StringMap;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
@@ -28,10 +28,12 @@ import com.telenav.mesakit.map.measurements.internal.lexakai.DiagramMapMeasureme
 
 import java.util.regex.Pattern;
 
+import static com.telenav.kivakit.core.collections.map.StringMap.KeyCaseSensitivity.FOLD_CASE_LOWER;
+
 /**
  * The directions on a compass, with standard (English only) abbreviations such as "SW" or "W". These abbreviations, as
- * well as full names like "North" and highway directions such as "SOUTHBOUND" or "S.W." can be parsed with {@link
- * #parse(String)}. A direction can be converted to a heading with {@link #asHeading()}.
+ * well as full names like "North" and highway directions such as "SOUTHBOUND" or "S.W." can be parsed with
+ * {@link #parse(String)}. A direction can be converted to a heading with {@link #asHeading()}.
  *
  * @author jonathanl (shibo)
  */
@@ -48,7 +50,7 @@ public enum Direction implements Named
     SOUTHWEST("SW", Heading.SOUTHWEST),
     WEST("W", Heading.WEST);
 
-    private static final CaseFoldingStringMap<Direction> nameToDirection = new CaseFoldingStringMap<>();
+    private static final StringMap<Direction> nameToDirection = new StringMap<>();
 
     private static final Pattern SPACES_AND_PERIODS = Pattern.compile("[\\s.]");
 

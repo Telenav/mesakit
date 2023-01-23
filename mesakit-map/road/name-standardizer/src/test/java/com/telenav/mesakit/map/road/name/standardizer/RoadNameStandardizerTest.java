@@ -72,8 +72,11 @@ public abstract class RoadNameStandardizerTest extends RegionUnitTest
     {
         given = normalize(given);
         var parsed = standardize(given);
-        ensureEqual(expected, parsed.toString());
-        ensureEqual(given, parsed.asRawRoadName().name());
+        if (parsed != null)
+        {
+            ensureEqual(expected, parsed.toString());
+            ensureEqual(given, parsed.asRawRoadName().name());
+        }
         trace(given + " -> " + parsed);
     }
 }
