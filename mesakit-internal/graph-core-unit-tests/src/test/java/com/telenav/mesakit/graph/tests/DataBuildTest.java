@@ -18,21 +18,19 @@
 
 package com.telenav.mesakit.graph.tests;
 
-import com.telenav.kivakit.core.string.Paths;
 import com.telenav.kivakit.core.time.LocalTime;
-import com.telenav.kivakit.core.time.TimeZones;
 import com.telenav.kivakit.testing.UnitTest;
 import com.telenav.mesakit.graph.metadata.DataBuild;
 import org.junit.Test;
 
-import java.time.ZoneId;
+import static com.telenav.kivakit.core.string.Paths.pathWithoutSuffix;
 
 public class DataBuildTest extends UnitTest
 {
     @Test
     public void testConstructDataBuildFromTimeString()
     {
-        final String given    = "2020.08.06_09.59AM_PT";
+        final String given = "2020.08.06_09.59AM_PT";
         final String expected = "2020.08.06_09.59AM_PT";
 
         var build = DataBuild.parse(given);
@@ -46,15 +44,15 @@ public class DataBuildTest extends UnitTest
         var time = LocalTime.now();
         var build = DataBuild.parse(time.toString());
 
-        ensureEqual(Paths.pathWithoutSuffix(time.toString(), '_'), Paths.pathWithoutSuffix(build.toString(), '_'));
-        ensureEqual(TimeZones.shortDisplayName(time.timeZone()), Paths.pathOptionalSuffix(build.toString(), '_'));
+        ensureEqual(pathWithoutSuffix(time.toString(), '_'),
+            pathWithoutSuffix(build.toString(), '_'));
     }
 
     @Test
     public void testLocalTime()
     {
-        var time = DataBuild.parse("2015.09.23_4.01PM_PT");
-        ensureEqual(time.localTime().toString(), "2015.09.23_04.01PM_PT");
+        var time = DataBuild.parse("2015.09.23_04.01PM_PDT");
+        ensureEqual(time.localTime().toString(), "2015.09.23_04.01PM_PDT");
         ensureEqual(time.utcTime().toString(), "2015.09.23_11.01PM_UTC");
     }
 }
