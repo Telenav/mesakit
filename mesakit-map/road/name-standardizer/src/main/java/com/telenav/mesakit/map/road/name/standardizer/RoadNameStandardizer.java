@@ -25,9 +25,6 @@ import com.telenav.mesakit.map.region.locale.MapLocale;
 import com.telenav.mesakit.map.road.model.RoadName;
 import com.telenav.mesakit.map.road.name.parser.ParsedRoadName;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 import static com.telenav.kivakit.core.language.packaging.PackageReference.packageReference;
 

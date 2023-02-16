@@ -28,8 +28,6 @@ import com.telenav.mesakit.map.measurements.internal.lexakai.DiagramMapMeasureme
 
 import java.util.regex.Pattern;
 
-import static com.telenav.kivakit.core.collections.map.StringMap.KeyCaseSensitivity.FOLD_CASE_LOWER;
-
 /**
  * The directions on a compass, with standard (English only) abbreviations such as "SW" or "W". These abbreviations, as
  * well as full names like "North" and highway directions such as "SOUTHBOUND" or "S.W." can be parsed with

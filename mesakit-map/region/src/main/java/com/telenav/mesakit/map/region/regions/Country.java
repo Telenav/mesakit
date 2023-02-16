@@ -60,8 +60,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.telenav.kivakit.core.collections.map.StringMap.KeyCaseSensitivity.FOLD_CASE_LOWER;
-
 @SuppressWarnings({ "DuplicatedCode", "unused" })
 @UmlClassDiagram(diagram = DiagramRegions.class)
 @UmlExcludeSuperTypes(LongValued.class)

@@ -19,7 +19,6 @@
 package com.telenav.mesakit.map.road.model;
 
 import com.telenav.mesakit.map.geography.testing.GeographyUnitTest;
-import com.telenav.mesakit.map.measurements.geographic.Direction;
 import org.junit.Test;
 
 import static com.telenav.mesakit.map.measurements.geographic.Direction.*;
