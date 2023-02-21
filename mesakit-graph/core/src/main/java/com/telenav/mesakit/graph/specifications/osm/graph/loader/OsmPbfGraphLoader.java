@@ -19,7 +19,6 @@
 package com.telenav.mesakit.graph.specifications.osm.graph.loader;
 
 import com.telenav.kivakit.core.progress.ProgressReporter;
-import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.vm.Properties;
 import com.telenav.kivakit.resource.compression.archive.ZipArchive;
 import com.telenav.mesakit.graph.GraphProject;

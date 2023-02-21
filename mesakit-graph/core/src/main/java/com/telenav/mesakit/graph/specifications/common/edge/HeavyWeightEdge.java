@@ -780,7 +780,7 @@ public class HeavyWeightEdge extends Edge
 
     public void speedLimit(Speed speedLimit)
     {
-        this.speedLimit = Functions.apply(speedLimit, speed -> speed.minimum(Speed.kilometersPerHour(160)));
+        this.speedLimit = Functions.applyTo(speedLimit, speed -> speed.minimum(Speed.kilometersPerHour(160)));
     }
 
     @Override

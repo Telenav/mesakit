@@ -37,7 +37,6 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
-import static com.telenav.kivakit.core.collections.map.StringMap.KeyCaseSensitivity.FOLD_CASE_LOWER;
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 @UmlClassDiagram(diagram = DiagramRegion.class)

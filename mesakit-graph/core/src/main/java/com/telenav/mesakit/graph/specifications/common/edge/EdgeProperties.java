@@ -199,7 +199,7 @@ public class EdgeProperties extends GraphElementProperties<Edge>
         @Override
         public Object value(Edge edge)
         {
-            return Functions.apply(edge.metropolitanArea(), metro -> metro.identity().mesakit().third());
+            return Functions.applyTo(edge.metropolitanArea(), metro -> metro.identity().mesakit().third());
         }
     };
 

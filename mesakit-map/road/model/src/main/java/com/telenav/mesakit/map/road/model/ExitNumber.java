@@ -18,7 +18,6 @@
 
 package com.telenav.mesakit.map.road.model;
 
-import com.telenav.kivakit.core.collections.map.BaseMap;
 import com.telenav.kivakit.core.collections.map.StringMap;
 
 import static com.telenav.mesakit.map.road.model.RoadLimits.EXIT_NUMBERS;

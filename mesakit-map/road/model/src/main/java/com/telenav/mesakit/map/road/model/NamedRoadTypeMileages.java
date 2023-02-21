@@ -22,9 +22,7 @@ import com.telenav.kivakit.core.collections.map.StringMap;
 import com.telenav.mesakit.map.measurements.geographic.Distance;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 
 /**

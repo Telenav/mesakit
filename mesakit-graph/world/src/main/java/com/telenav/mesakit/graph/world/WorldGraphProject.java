@@ -24,7 +24,6 @@ import com.telenav.kivakit.core.project.ProjectTrait;
 import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.mesakit.core.BaseMesaKitProject;
-import com.telenav.mesakit.core.MesaKit;
 import com.telenav.mesakit.graph.GraphProject;
 
 import static com.telenav.kivakit.core.collections.set.ObjectSet.set;
