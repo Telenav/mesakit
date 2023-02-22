@@ -20,14 +20,14 @@ This module contains the core MesaKit project.
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/dependencies-32.png" srcset="https://telenav.github.io/telenav-assets/images/icons/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.mesakit.org/0.17.0/lexakai/mesakit/mesakit-core/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.mesakit.org/0.17.1/lexakai/mesakit/mesakit-core/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.mesakit</groupId>
         <artifactId>mesakit-core</artifactId>
-        <version>0.17.0</version>
+        <version>0.17.1</version>
     </dependency>
 
 <img src="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128.png" srcset="https://telenav.github.io/telenav-assets/images/separators/horizontal-line-128-2x.png 2x"/>
@@ -62,14 +62,14 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/box-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/box-24-2x.png 2x"/>
 
-[*com.telenav.mesakit.core*](https://www.mesakit.org/0.17.0/lexakai/mesakit/mesakit-core/documentation/diagrams/com.telenav.mesakit.core.svg)
+[*com.telenav.mesakit.core*](https://www.mesakit.org/0.17.1/lexakai/mesakit/mesakit-core/documentation/diagrams/com.telenav.mesakit.core.svg)
 
 ### Javadoc <a name="code-quality"></a> &nbsp;&nbsp; <img src="https://telenav.github.io/telenav-assets/images/icons/books-24.png" srcset="https://telenav.github.io/telenav-assets/images/icons/books-24-2x.png 2x"/>
 
 | Class | Documentation Sections  |
 |-------|-------------------------|
-| [*BaseMesaKitProject*](https://www.mesakit.org/0.17.0/javadoc/mesakit/mesakit-core/com/telenav/mesakit/core/BaseMesaKitProject.html) |  |  
-| [*MesaKit*](https://www.mesakit.org/0.17.0/javadoc/mesakit/mesakit-core/com/telenav/mesakit/core/MesaKit.html) |  |  
+| [*BaseMesaKitProject*](https://www.mesakit.org/0.17.1/javadoc/mesakit/mesakit-core/com/telenav/mesakit/core/BaseMesaKitProject.html) |  |  
+| [*MesaKit*](https://www.mesakit.org/0.17.1/javadoc/mesakit/mesakit-core/com/telenav/mesakit/core/MesaKit.html) |  |  
 
 [//]: # (start-user-text)
 
