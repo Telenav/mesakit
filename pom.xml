@@ -16,7 +16,7 @@
 
     <groupId>com.telenav.mesakit</groupId>
     <artifactId>mesakit-parent</artifactId>
-    <version>0.17.1</version>
+    <version>0.18.0</version>
 
     <packaging>pom</packaging>
 
@@ -98,7 +98,7 @@
 
         <!-- Telenav -->
 
-        <kivakit.version>1.17.1</kivakit.version>
+        <kivakit.version>1.18.0</kivakit.version>
 
         <!-- Plugins -->
 
